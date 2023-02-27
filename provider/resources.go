@@ -73,15 +73,16 @@ func Provider() tfbridge.ProviderInfo {
 
 	// Create a Pulumi provider mapping
 	prov := tfbridge.ProviderInfo{
-		P:           p,
-		Name:        "spotinst",
-		Description: "A Pulumi package for creating and managing spotinst cloud resources.",
-		Keywords:    []string{"pulumi", "spotinst"},
-		License:     "Apache-2.0",
-		Homepage:    "https://pulumi.io",
-		GitHubOrg:   "spotinst",
-		Repository:  "https://github.com/pulumi/pulumi-spotinst",
-		Config:      map[string]*tfbridge.SchemaInfo{},
+		P:                p,
+		Name:             "spotinst",
+		Description:      "A Pulumi package for creating and managing spotinst cloud resources.",
+		Keywords:         []string{"pulumi", "spotinst"},
+		License:          "Apache-2.0",
+		Homepage:         "https://pulumi.io",
+		GitHubOrg:        "spotinst",
+		Repository:       "https://github.com/pulumi/pulumi-spotinst",
+		Config:           map[string]*tfbridge.SchemaInfo{},
+		UpstreamRepoPath: "./upstream",
 		Resources: map[string]*tfbridge.ResourceInfo{
 			"spotinst_elastigroup_aws":              {Tok: makeResource(awsMod, "Elastigroup")},
 			"spotinst_elastigroup_aws_beanstalk":    {Tok: makeResource(awsMod, "Beanstalk")},

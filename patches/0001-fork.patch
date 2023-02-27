@@ -1,0 +1,1571 @@
+diff --git b/CHANGELOG.md a/CHANGELOG.md
+index 740ff25f..3af8e68e 100644
+--- b/CHANGELOG.md
++++ a/CHANGELOG.md
+@@ -368,7 +368,7 @@ BUG FIXES:
+ ## 1.53.0 (July 15, 2021)
+ 
+ ENHANCEMENTS:
+-* resource/spotinst_ocean_aks: added support for `managed_service_identity` 
++* resource/spotinst_ocean_aks: added support for `managed_service_identity`
+ 
+ ## 1.52.0 (July 7, 2021)
+ 
+@@ -407,19 +407,19 @@ BUG FIXES:
+ ## 1.48.0 (June 10, 2021)
+ 
+ ENHANCEMENTS:
+-* resource/spotinst_ocean_aks: added support for `resource_group_name` 
++* resource/spotinst_ocean_aks: added support for `resource_group_name`
+ * resource/spotinst_ocean_aks: added support for `custom_data`
+-* resource/spotinst_ocean_aks: added support for `vm_sizes` 
+-* resource/spotinst_ocean_aks: added support for `os_disk` 
+-* resource/spotinst_ocean_aks: added support for `image` 
+-* resource/spotinst_ocean_aks: added support for `strategy` 
+-* resource/spotinst_ocean_aks: added support for `health` 
+-* resource/spotinst_ocean_aks: added support for `network` 
+-* resource/spotinst_ocean_aks: added support for `extension` 
+-* resource/spotinst_ocean_aks: added support for `load_balancer` 
++* resource/spotinst_ocean_aks: added support for `vm_sizes`
++* resource/spotinst_ocean_aks: added support for `os_disk`
++* resource/spotinst_ocean_aks: added support for `image`
++* resource/spotinst_ocean_aks: added support for `strategy`
++* resource/spotinst_ocean_aks: added support for `health`
++* resource/spotinst_ocean_aks: added support for `network`
++* resource/spotinst_ocean_aks: added support for `extension`
++* resource/spotinst_ocean_aks: added support for `load_balancer`
+ * resource/spotinst_ocean_aks: added support for `autoscaler`
+ * resource/spotinst_ocean_aks: added support for `tag`
+-		
++
+ ## 1.47.0 (June 6, 2021)
+ 
+ ENHANCEMENTS:
+@@ -468,7 +468,7 @@ BUG FIXES:
+ ## 1.40.0 (April 25, 2021)
+ 
+ BUG FIXES:
+-* resource/spotinst_ocean_ecs: resolved error with update `capacity` fields to 0 
++* resource/spotinst_ocean_ecs: resolved error with update `capacity` fields to 0
+ 
+ ## 1.39.0 (April 20, 2021)
+ 
+diff --git b/docs/resources/elastigroup_aws.md a/docs/resources/elastigroup_aws.md
+index 50006a2e..7e66178e 100644
+--- b/docs/resources/elastigroup_aws.md
++++ a/docs/resources/elastigroup_aws.md
+@@ -17,7 +17,7 @@ Provides a Spotinst AWS group resource.
+ resource "spotinst_elastigroup_aws" "default-elastigroup" {
+ 
+   name        = "default-elastigroup"
+-  description = "created by Terraform"
++  description = "created by Pulumi"
+   product     = "Linux/UNIX"
+ 
+   max_size         = 0
+@@ -135,7 +135,7 @@ The following arguments are supported:
+ 
+ * `name` - (Required) The group name.
+ * `description` - (Optional) The group description.
+-* `product` - (Required) Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`. 
++* `product` - (Required) Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`.
+ For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.    
+ 
+ * `availability_zones` - (Optional) List of Strings of availability zones. When this parameter is set, `subnet_ids` should be left unused.
+@@ -148,7 +148,7 @@ Note: When this parameter is set, `availability_zones` should be left unused.
+ * `region` - (Optional) The AWS region your group will be created in.
+ Note: This parameter is required if you specify subnets (through subnet_ids). This parameter is optional if you specify Availability Zones (through availability_zones).
+ 
+-* `preferred_availability_zones` - The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs. 
++* `preferred_availability_zones` - The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs.
+ Note: Must be a sublist of `availability_zones` and `orientation` value must not be `"equalAzDistribution"`.
+ 
+ * `max_size` - (Optional, Required if using scaling policies) The maximum number of instances the group should have at any time.
+@@ -183,7 +183,7 @@ Note: Elastigroup can be configured with either imageId or images, but not both.
+ * `cpu_credits` - (Optional) Controls how T3 instances are launched. Valid values: `standard`, `unlimited`.
+ * `fallback_to_ondemand` - (Required) In a case of no Spot instances available, Elastigroup will launch on-demand instances instead.
+ * `wait_for_capacity` - (Optional) Minimum number of instances in a 'HEALTHY' status that is required before continuing. This is ignored when updating with blue/green deployment. Cannot exceed `desired_capacity`.
+-* `wait_for_capacity_timeout` - (Optional) Time (seconds) to wait for instances to report a 'HEALTHY' status. Useful for plans with multiple dependencies that take some time to initialize. Leave undefined or set to `0` to indicate no wait. This is ignored when updating with blue/green deployment. 
++* `wait_for_capacity_timeout` - (Optional) Time (seconds) to wait for instances to report a 'HEALTHY' status. Useful for plans with multiple dependencies that take some time to initialize. Leave undefined or set to `0` to indicate no wait. This is ignored when updating with blue/green deployment.
+ * `orientation` - (Required, Default: `balanced`) Select a prediction strategy. Valid values: `balanced`, `costOriented`, `equalAzDistribution`, `availabilityOriented`. You can read more in our documentation.
+ * `spot_percentage` - (Optional; Required if not using `ondemand_count`) The percentage of Spot instances that would spin up from the `desired_capacity` number.
+ * `ondemand_count` - (Optional; Required if not using `spot_percentage`) Number of on demand instances to launch in the group. All other instances will be spot instances. When this parameter is set the `spot_percentage` parameter is being ignored.
+@@ -200,7 +200,7 @@ Note: Elastigroup can be configured with either imageId or images, but not both.
+ 
+ * `tags` - (Optional) A key/value mapping of tags to assign to the resource.
+ * `elastic_ips` - (Optional) A list of [AWS Elastic IP](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html) allocation IDs to associate to the group instances.
+-    
++
+ * `revert_to_spot` - (Optional) Hold settings for strategy correction – replacing On-Demand for Spot instances. Supported Values: `"never"`, `"always"`, `"timeWindow"`
+     * `perform_at` - (Required) In the event of a fallback to On-Demand instances, select the time period to revert back to Spot. Supported Arguments – always (default), timeWindow, never. For timeWindow or never to be valid the group must have availabilityOriented OR persistence defined.
+     * `time_windows` - (Optional) Specify a list of time windows for to execute revertToSpot strategy. Time window format: `ddd:hh:mm-ddd:hh:mm`. Example: `Mon:03:00-Wed:02:30`
+@@ -210,35 +210,33 @@ Note: Elastigroup can be configured with either imageId or images, but not both.
+     * `should_tag_volumes`   - (Optional) Tag specification for Volume resources.
+     * `should_tag_snapshots` - (Optional) Tag specification for Snapshot resources.
+     * `should_tag_amis`      - (Optional) Tag specification for AMI resources.
+-    
+-<a id="load-balancers"></a>
+-## Load Balancers
+-    
++
++### Load Balancers
++
+ * `elastic_load_balancers` - (Optional) List of Elastic Load Balancers names (ELB).
+ * `target_group_arns` - (Optional) List of Target Group ARNs to register the instances to.
+-* `multai_target_sets` - (Optional) Set of targets to register. 
++* `multai_target_sets` - (Optional) Set of targets to register.
+     * `target_set_id` - (Required) ID of Multai target set.
+     * `balancer_id` - (Required) ID of Multai Load Balancer.
+-    
++
+ Usage:
+ 
+ ```hcl
+   elastic_load_balancers = ["bal5", "bal2"]
+   target_group_arns      = ["tg-arn"]
+-  
++
+   multai_target_sets {
+     target_set_id = "ts-123",
+     balancer_id   = "bal-123"
+   }
+-  
++
+   multai_target_sets {
+     target_set_id = "ts-234",
+     balancer_id   = "bal-234"
+   }
+ ```
+ 
+-<a id="signal"></a>
+-## Signals
++### Signals
+ 
+ Each `signal` supports the following:
+ 
+@@ -254,8 +252,7 @@ Usage:
+   }
+ ```
+ 
+-<a id="scheduled-task"></a>
+-## Scheduled Tasks
++### Scheduled Tasks
+ 
+ Each `scheduled_task` supports the following:
+ 
+@@ -295,8 +292,7 @@ Usage:
+   }
+ ```
+ 
+-<a id="scaling-policy"></a>
+-## Scaling Policies
++### Scaling Policies
+ 
+ `scaling_up_policy` supports the following:
+ 
+@@ -414,17 +410,17 @@ Usage:
+     statistic   = "average"
+     unit        = ""
+     cooldown    = 60
+-    
++
+     dimensions {
+         name  = "name-1"
+         value = "value-1"
+     }
+-    
++
+     threshold          = 10
+     operator           = "gt"
+     evaluation_periods = 10
+     period             = 60
+-    
++
+     step_adjustments {
+         threshold = 50
+         action {
+@@ -432,25 +428,25 @@ Usage:
+             min_target_capacity = "3"
+         }
+     }
+-  
++
+     // === MIN TARGET ===================
+     action_type         = "setMinTarget"
+     min_target_capacity = 1
+     // ==================================
+-  
++
+     // === ADJUSTMENT ===================
+     # action_type = "adjustment"
+     # action_type = "percentageAdjustment"
+     # adjustment  = "MAX(5,10)"
+     // ==================================
+-  
++
+     // === UPDATE CAPACITY ==============
+     # action_type = "updateCapacity"
+     # minimum     = 0
+     # maximum     = 10
+     # target      = 5
+     // ==================================
+-  
++
+   }
+ ```
+ 
+@@ -479,7 +475,7 @@ Usage:
+     * `name` - (Required) The expression name.
+ * `metrics` - (Optional) Array of objects (Metric config)
+     * `metric_name` - (Required) The name of the source metric.
+-    * `name` - (Required) The expression name. 
++    * `name` - (Required) The expression name.
+     * `name_space` - (Required, default: `AWS/EC2`) The namespace for the alarm's associated metric.
+     * `statistic` - (Optional) The metric statistics to return. Valid values: `"average"`, `"sum"`, `"sampleCount"`, `"maximum"`, `"minimum"`, `"percentile"`.
+     * `extended_statistic` - (Optional) Percentile statistic. Valid values: `"p0.1"` - `"p100"`.
+@@ -504,8 +500,7 @@ Usage:
+   }
+ ```
+ 
+-<a id="network-interface"></a>
+-## Network Interfaces
++### Network Interfaces
+ 
+ Each of the `network_interface` attributes controls a portion of the AWS
+ Instance's "Elastic Network Interfaces". It's a good idea to familiarize yourself with [AWS's Elastic Network
+@@ -524,8 +519,8 @@ to understand the implications of using these attributes.
+ Usage:
+ 
+ ```hcl
+-  network_interface { 
+-    network_interface_id               = "" 
++  network_interface {
++    network_interface_id               = ""
+     device_index                       = 1
+     description                        = "nic description in here"
+     private_ip_address                 = "1.1.1.1"
+@@ -535,8 +530,7 @@ Usage:
+   }
+ ```
+ 
+-<a id="block-devices"></a>
+-## Block Devices
++### Block Devices
+ 
+ Each of the `*_block_device` attributes controls a portion of the AWS
+ Instance's "Block Device Mapping". It's a good idea to familiarize yourself with [AWS's Block Device
+@@ -561,8 +555,8 @@ Usage:
+ 
+ ```hcl
+   ebs_block_device {
+-     device_name           = "/dev/sdb" 
+-     snapshot_id           = "" 
++     device_name           = "/dev/sdb"
++     snapshot_id           = ""
+      volume_type           = "gp2"  
+      volume_size           = 8
+      iops                  = 1
+@@ -570,10 +564,10 @@ Usage:
+      encrypted             = false
+      kms_key_id            = "kms-key-01"
+    }
+-   
++
+    ebs_block_device {
+-     device_name           = "/dev/sdc" 
+-     snapshot_id           = "" 
++     device_name           = "/dev/sdc"
++     snapshot_id           = ""
+      volume_type           = "gp3"  
+      volume_size           = 8  
+      iops                  = 1
+@@ -589,7 +583,7 @@ Each `ephemeral_block_device` supports the following:
+ * `device_name` - (Required) The name of the block device to mount on the instance.
+ * `virtual_name` - (Required) The [Instance Store Device Name](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html#InstanceStoreDeviceNames)
+   (e.g. `"ephemeral0"`).
+-  
++
+ Usage:
+ 
+ ```hcl
+@@ -599,8 +593,7 @@ Usage:
+   }
+ ```
+ 
+-<a id="stateful"></a>
+-## Stateful
++### Stateful
+ 
+ We support instance persistence via the following configurations. all values are boolean.
+ For more information on instance persistence please see: [Stateful configuration](https://docs.spot.io/elastigroup/features/stateful-instance/stateful-instances)
+@@ -621,15 +614,14 @@ Usage:
+   private_ips           = ["1.1.1.1", "2.2.2.2"]
+ ```
+ 
+-<a id="stateful-deallocation"></a>
+-## Stateful Deallocation
++### Stateful Deallocation
+ 
+ * `stateful_deallocation` - (Optional)
+     * `should_delete_images` - (Optional) For stateful groups: remove persistent images.
+     * `should_delete_network_interfaces` - (Optional) For stateful groups: remove network interfaces.
+     * `should_delete_volumes` - (Optional) For stateful groups: remove persistent volumes.
+     * `should_delete_snapshots` - (Optional) For stateful groups: remove snapshots.
+-    
++
+ Usage:
+ 
+ ```hcl
+@@ -641,8 +633,7 @@ Usage:
+    }
+ ```    
+ 
+-<a id="stateful_instance_action"></a>
+-## Stateful Instance Action
++### Stateful Instance Action
+ 
+ * `stateful_instance_action` - (Optional)
+     * `stateful_instance_id` - (Required) String, Stateful Instance ID on which the action should be performed.
+@@ -662,8 +653,7 @@ Usage:
+   }    
+ ```  
+ 
+-<a id="health-check"></a>
+-## Health Check
++### Health Check
+ 
+ * `health_check_type` - (Optional) The service that will perform health checks for the instance. Supported values : `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"CUSTOM"`, `"K8S_NODE"`, `"MLB"`, `"EC2"`, `"MULTAI_TARGET_SET"`, `"MLB_RUNTIME"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
+ * `health_check_grace_period` - (Optional) The amount of time, in seconds, after the instance has launched to starts and check its health
+@@ -672,13 +662,12 @@ Usage:
+ Usage:
+ 
+ ```hcl
+-  health_check_type                                  = "ELB" 
++  health_check_type                                  = "ELB"
+   health_check_grace_period                          = 100
+   health_check_unhealthy_duration_before_replacement = 120
+ ```
+ 
+-<a id="third-party-integrations"></a>
+-## Third-Party Integrations
++### Third-Party Integrations
+ 
+ * `integration_rancher` - (Optional) Describes the [Rancher](http://rancherlabs.com/) integration.
+ 
+@@ -718,23 +707,23 @@ Usage:
+ Usage:
+ 
+ ```hcl
+-  integration_ecs { 
++  integration_ecs {
+     cluster_name         = "ecs-cluster"
+     autoscale_is_enabled = false
+     autoscale_cooldown   = 300
+     autoscale_scale_down_non_service_tasks = false
+-    
++
+     autoscale_headroom {
+       cpu_per_unit    = 1024
+       memory_per_unit = 512
+       num_of_units    = 2
+     }
+-    
++
+     autoscale_down {
+       evaluation_periods        = 300
+       max_scale_down_percentage = 70
+     }
+-    
++
+     autoscale_attributes {
+       key   = "test.ecs.key"
+       value = "test.ecs.value"
+@@ -763,7 +752,7 @@ Usage:
+   integration_codedeploy {
+     cleanup_on_failure            = false
+     terminate_instance_on_failure = false
+-    
++
+     deployment_groups {
+       application_name      = "my-app"
+       deployment_group_name = "my-group"
+@@ -788,7 +777,7 @@ Usage:
+   integration_route53 {
+ 
+     # Option 1: Use A records.
+-    domains { 
++    domains {
+       hosted_zone_id   = "zone-id"
+       spotinst_acct_id = "act-123456"
+       record_set_type  = "a"
+@@ -800,7 +789,7 @@ Usage:
+     }
+ 
+     # Option 2: Use CNAME records.
+-    domains { 
++    domains {
+       hosted_zone_id   = "zone-id"
+       spotinst_acct_id = "act-123456"
+       record_set_type  = "cname"
+@@ -835,17 +824,17 @@ integration_docker_swarm {
+     master_port          = 2376
+     autoscale_is_enabled = true
+     autoscale_cooldown   = 180
+-    
++
+     autoscale_headroom {
+         cpu_per_unit    = 2048
+         memory_per_unit = 2048
+         num_of_units    = 1
+     }
+-    
++
+     autoscale_down {
+         evaluation_periods        = 3
+         max_scale_down_percentage = 30
+-    } 
++    }
+ }
+ ```
+ 
+@@ -872,34 +861,34 @@ Usage:
+   integration_kubernetes {
+     integration_mode   = "pod"
+     cluster_identifier = "my-identifier.ek8s.com"
+-    
++
+     // === SAAS ===================
+     # integration_mode = "saas"
+     # api_server       = "https://api.my-identifier.ek8s.com/api/v1/namespaces/kube-system/services/..."
+     # token            = "top-secret"
+     // ============================
+-    
++
+     autoscale_is_enabled     = false
+     autoscale_is_auto_config = false
+     autoscale_cooldown       = 300
+-    
++
+     autoscale_headroom {
+       cpu_per_unit    = 1024
+       memory_per_unit = 512
+       num_of_units    = 1
+     }
+-    
++
+     autoscale_down {
+       evaluation_periods = 300
+     }
+-    
++
+     autoscale_labels {
+       key   = "test.k8s.key"
+       value = "test.k8s.value"
+     }
+   }
+ ```
+- 
++
+ * `integration_nomad` - (Optional) Describes the [Nomad](https://www.nomadproject.io/) integration.
+ 
+     * `master_host` - (Required) The URL for the Nomad master host.
+@@ -924,27 +913,27 @@ Usage:
+     acl_token            = "top-secret"
+     autoscale_is_enabled = false
+     autoscale_cooldown   = 300
+-    
++
+     autoscale_headroom {
+       cpu_per_unit    = 1024
+       memory_per_unit = 512
+       num_of_units    = 2
+     }
+-    
++
+     autoscale_down {
+       evaluation_periods = 300
+     }
+-    
++
+     autoscale_constraints {
+       key   = "test.nomad.key"
+       value = "test.nomad.value"
+     }
+   }
+ ```
+-         
++
+ * `integration_mesosphere` - (Optional) Describes the [Mesosphere](https://mesosphere.com/) integration.
+- 
+-    * `api_server` - (Optional) The public IP of the DC/OS Master. 
++
++    * `api_server` - (Optional) The public IP of the DC/OS Master.
+ 
+ Usage:
+ 
+@@ -955,7 +944,7 @@ Usage:
+ ```
+ 
+ * `integration_multai_runtime` - (Optional) Describes the [Multai Runtime](https://spotinst.com/) integration.
+- 
++
+     * `deployment_id` - (Optional) The deployment id you want to get
+ 
+ Usage:
+@@ -965,12 +954,12 @@ Usage:
+     deployment_id = ""
+   }
+ ```
+-     
++
+ * `integration_gitlab` - (Optional) Describes the [Gitlab](https://api.spotinst.com/integration-docs/gitlab/) integration.
+- 
+-    * `runner` - (Optional) Settings for Gitlab runner. 
++
++    * `runner` - (Optional) Settings for Gitlab runner.
+         * `is_enabled` - (Optional, Default: `false`) Specifies whether the integration is enabled.
+-  
++
+ Usage:
+ 
+ ```hcl
+@@ -982,21 +971,21 @@ Usage:
+ ```
+ 
+ * `integration_beanstalk` - (Optional) Describes the [Beanstalk](https://api.spotinst.com/provisioning-ci-cd-sdk/provisioning-tools/terraform/resources/terraform-v-2/elastic-beanstalk/) integration.
+-     
++
+     * `deployment_preferences` - (Optional) Preferences when performing a roll
+         * `automatic_roll` - (Required) Should roll perform automatically
+         * `batch_size_percentage` - (Required) Percent size of each batch
+         * `grace_period` - (Required) Amount of time to wait between batches
+         * `strategy` - (Optional) Strategy parameters
+             * `action` - (Required) Action to take
+-            * `should_drain_instances` - (Required) Bool value if to wait to drain instance 
+-    
++            * `should_drain_instances` - (Required) Bool value if to wait to drain instance
++
+     * `managed_actions` - (Optional) Managed Actions parameters
+         * `platform_update` - (Optional) Platform Update parameters
+             * `perform_at` - (Required) Actions to perform (options: timeWindow, never)
+             * `time_window` - (Required) Time Window for when action occurs ex. Mon:23:50-Tue:00:20
+             * `update_level` - (Required) - Level to update
+-            
++
+ Usage:
+ 
+ ```hcl
+@@ -1023,8 +1012,7 @@ Usage:
+   }
+ ```
+ 
+-<a id="update-policy"></a>
+-## Update Policy
++### Update Policy
+ 
+ * `update_policy` - (Optional)
+ 
+@@ -1040,7 +1028,7 @@ Usage:
+         * `strategy` - (Optional) Strategy parameters
+            * `action` - (Required) Action to take. Valid values: `REPLACE_SERVER`, `RESTART_SERVER`.
+            * `should_drain_instances` - (Optional) Specify whether to drain incoming TCP connections before terminating a server.
+-           * `batch_min_healthy_percentage` - (Optional, Default `50`) Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the deployment will fail. Range `1` - `100`. 
++           * `batch_min_healthy_percentage` - (Optional, Default `50`) Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the deployment will fail. Range `1` - `100`.
+            * `on_failure` - (Optional) Set detach options to the deployment.
+                * `action_type` - (Required) Sets the action that will take place, Accepted values are: `DETACH_OLD`, `DETACH_NEW`.
+                * `should_handle_all_batches` - (Optional, Default: `false`) Indicator if the action should apply to all batches of the deployment or only the latest batch.
+@@ -1074,9 +1062,9 @@ Usage:
+     }
+   }
+ ```       
+-       
++
+ ## Attributes Reference
+ 
+ The following attributes are exported:
+ 
+-* `id` - The group ID.
++* `id` - The group ID.
+\ No newline at end of file
+diff --git b/docs/resources/elastigroup_aws_beanstalk.md a/docs/resources/elastigroup_aws_beanstalk.md
+index caf128e0..277fa01a 100644
+--- b/docs/resources/elastigroup_aws_beanstalk.md
++++ a/docs/resources/elastigroup_aws_beanstalk.md
+@@ -78,9 +78,8 @@ For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VP
+       * `perform_at` - (Required) Actions to perform (options: timeWindow, never)
+       * `time_window` - (Required) Time Window for when action occurs ex. Mon:23:50-Tue:00:20
+       * `update_level` - (Required) - Level to update
+-
+-<a id="scheduled-task"></a>
+-## Scheduled Tasks
++    
++### Scheduled Tasks
+ 
+ Each `scheduled_task` supports the following:
+ 
+diff --git b/docs/resources/elastigroup_azure.md a/docs/resources/elastigroup_azure.md
+index 7428834b..7e7c5354 100644
+--- b/docs/resources/elastigroup_azure.md
++++ a/docs/resources/elastigroup_azure.md
+@@ -182,8 +182,7 @@ The following arguments are supported:
+ * `od_count` - (Optional) Number of On-Demand instances to maintain. Required if low_priority_percentage is not specified.
+ * `draining_timeout` - (Optional, Default `120`) Time (seconds) to allow the instance to be drained from incoming TCP connections and detached from MLB before terminating it during a scale-down operation.
+ 
+-<a id="load-balancers"></a>
+-## Load Balancers
++### Load Balancers
+ 
+ * `load_balancers` - (Required) Describes a set of one or more classic load balancer target groups and/or Multai load balancer target sets.
+ * `type` - (Required) The resource type. Valid values: CLASSIC, TARGET_GROUP, MULTAI_TARGET_SET.
+@@ -200,8 +199,7 @@ The following arguments are supported:
+   }
+ ```
+ 
+-<a id="image"></a>
+-## Image
++### Image
+ 
+ * `image` - (Required) Image of a VM. An image is a template for creating new VMs. Choose from Azure image catalogue (marketplace) or use a custom image.
+ * `publisher` - (Optional) Image publisher. Required if resource_group_name is not specified.
+@@ -229,8 +227,7 @@ The following arguments are supported:
+   } 
+ ```
+ 
+-<a id="health-check"></a>
+-## Health Check
++### Health Check
+ 
+ * `health_check` - (Optional) Describes the health check configuration.
+ * `health_check_type` - (Optional) Health check used to validate VM health. Valid values: “INSTANCE_STATE”.
+@@ -245,8 +242,7 @@ The following arguments are supported:
+   }
+ ```
+ 
+-<a id="network"></a>
+-## Network
++### Network
+ 
+ * `network` - (Required) Defines the Virtual Network and Subnet for your Elastigroup.
+ * `virtual_network_name` - (Required) Name of Vnet.
+@@ -271,8 +267,7 @@ The following arguments are supported:
+   }
+ ```
+ 
+-<a id="login"></a>
+-## Login
++### Login
+ 
+ ```hcl
+   network {
+@@ -283,8 +278,7 @@ The following arguments are supported:
+   }
+ ```
+ 
+-<a id="login"></a>
+-## Login
++### Login
+ 
+ * `login` - (Required) Describes the login configuration.
+ * `user_name` - (Required) Set admin access for accessing your VMs.
+@@ -298,8 +292,7 @@ The following arguments are supported:
+   }
+ ```
+ 
+-<a id="scaling-policy"></a>
+-## Scaling Policies
++### Scaling Policies
+ 
+ Each `scaling_*_policy` supports the following:
+ 
+@@ -507,8 +500,7 @@ Usage:
+ // ----------------------------------------
+ ```
+ 
+-<a id="scheduling"></a>
+-## Scheduling
++### Scheduling
+ 
+ * `scheduled_task` - (Optional) Describes the configuration of one or more scheduled tasks.
+ * `is_enabled` - (Optional, Default: `true`) Describes whether the task is enabled. When true the task should run when false it should not run.
+@@ -539,8 +531,7 @@ Usage:
+   }
+ ```
+ 
+-<a id="update-policy"></a>
+-## Update Policy
++### Update Policy
+ 
+ * `update_policy` - (Optional)
+ 
+@@ -562,8 +553,7 @@ Usage:
+   }
+ ```        
+ 
+-<a id="third-party-integrations"></a>
+-## Third-Party Integrations
++### Third-Party Integrations
+ 
+ * `integration_kubernetes` - (Optional) Describes the [Kubernetes](https://kubernetes.io/) integration.
+     * `cluster_identifier` - (Required) The cluster ID.
+diff --git b/docs/resources/elastigroup_azure_v3.md a/docs/resources/elastigroup_azure_v3.md
+index 21e0356d..09eb53f5 100644
+--- b/docs/resources/elastigroup_azure_v3.md
++++ a/docs/resources/elastigroup_azure_v3.md
+@@ -37,7 +37,7 @@ resource "spotinst_elastigroup_azure_v3" "test_azure_group" {
+   resource_group_name = "MC_ocean-westus-dev_ocean-westus-dev-aks_westus"
+   name                = "ocean-westus-dev-aks-agentpool"
+   }
+-  
++
+   // --- IMAGE ---------------------------------------------------------
+   image {
+     marketplace {
+@@ -105,17 +105,16 @@ The following arguments are supported:
+ * `managed_service_identity` - (Optional) List of Managed Service Identity objects.
+     * `resource_group_name` - (Required) Name of the Azure Resource Group where the Managed Service Identity is located.
+     * `name` - (Required) Name of the Managed Service Identity.
+-  
++
+ * `od_sizes` - (Required) Available On-Demand sizes
+ * `spot_sizes` - (Required) Available Low-Priority sizes.
+ 
+-<a id="strategy"></a>
+-## Strategy
++### Strategy
+ 
+ * `strategy` - (Required) Describes the deployment strategy.
+     * `spot_percentage` - TODO
+     * `od_count` - (Optional) Number of On-Demand instances to maintain. Required if `low_priority_percentage` is not specified.
+-    * `fallback_to_on_demand` - 
++    * `fallback_to_on_demand` -
+     * `draining_timeout` - (Optional, Default `120`) Time (seconds) to allow the instance to be drained from incoming TCP connections and detached from MLB before terminating it during a scale-down operation.
+ 
+ ```hcl
+@@ -126,14 +125,14 @@ The following arguments are supported:
+     od_count              = 1
+   }
+ ```
+-<a id="image"></a>
+-## Image
++
++### Image
+ 
+ * `image` - (Required) Image of a VM. An image is a template for creating new VMs. Choose from Azure image catalogue (marketplace) or use a custom image.
+     * `publisher` - (Optional) Image publisher. Required if resource_group_name is not specified.
+     * `offer` - (Optional) Name of the image to use. Required if publisher is specified.
+     * `sku` - (Optional) Image's Stock Keeping Unit, which is the specific version of the image. Required if publisher is specified.
+-    * `version` - 
++    * `version` -
+     * `resource_group_name` - (Optional) Name of Resource Group for custom image. Required if publisher not specified.
+     * `image_name` - (Optional) Name of the custom image. Required if resource_group_name is specified.
+ 
+@@ -147,26 +146,25 @@ The following arguments are supported:
+       version   = "latest"
+     }
+   }
+-  
++
+   // custom image
+   image {
+     custom {
+       image_name          = "customImage"
+       resource_group_name = "resourceGroup"
+     }
+-  } 
++  }
+ ```
+ 
+-<a id="network"></a>
+-## Network
++### Network
+ 
+ * `network` - (Required) Defines the Virtual Network and Subnet for your Elastigroup.
+     * `virtual_network_name` - (Required) Name of Vnet.
+     * `resource_group_name` - (Required) Vnet Resource Group Name.
+-    * `network_interfaces` - 
++    * `network_interfaces` -
+         * `subnet_name` - (Required) ID of subnet.
+         * `assign_public_up` - (Optional, Default: `false`) Assign a public IP to each VM in the Elastigroup.
+-        * `is_primary` - 
++        * `is_primary` -
+         * `additional_ip_configs` - (Optional) Array of additional IP configuration objects.
+             * `name` - (Required) The IP configuration name.
+             * `private_ip_version` - (Optional) Available from Azure Api-Version 2017-03-30 onwards, it represents whether the specific ip configuration is IPv4 or IPv6. Valid values: `IPv4`, `IPv6`.
+@@ -197,8 +195,7 @@ The following arguments are supported:
+   }
+ ```
+ 
+-<a id="login"></a>
+-## Login
++### Login
+ 
+ * `login` - (Required) Describes the login configuration.
+     * `user_name` - (Required) Set admin access for accessing your VMs.
+@@ -211,8 +208,3 @@ The following arguments are supported:
+     ssh_public_key = "33a2s1f3g5a1df5g1ad21651sag56dfg=="
+   }
+ ```
+-
+-
+-
+-
+-    
+diff --git b/docs/resources/elastigroup_gcp.md a/docs/resources/elastigroup_gcp.md
+index 7799a3f0..22d6746d 100644
+--- b/docs/resources/elastigroup_gcp.md
++++ a/docs/resources/elastigroup_gcp.md
+@@ -138,8 +138,7 @@ The following arguments are supported:
+     * `value` - (Optional) Labels value.
+ * `tags` - (Optional) Tags to mark created instances.
+ 
+-<a id="GPU"></a>
+-## GPU
++### GPU
+ 
+ * `gpu` - (Optional) Defines the GPU configuration.
+     * `type` - (Required) The type of GPU instance. Valid values: `nvidia-tesla-v100`, `nvidia-tesla-p100`, `nvidia-tesla-k80`.
+@@ -154,8 +153,7 @@ Usage:
+   }
+ ```
+ 
+-<a id="health-check"></a>
+-## Health Check
++### Health Check
+ 
+ * `auto_healing` - (Optional) Enable auto-replacement of unhealthy instances.
+ * `health_check_grace_period` - (Optional) Period of time (seconds) to wait for VM to reach healthiness before monitoring for unhealthiness.
+@@ -169,8 +167,7 @@ Usage:
+   unhealthy_duration        = ""
+   ```
+ 
+-<a id="backend-services"></a>
+-## Backend Services
++### Backend Services
+ 
+ * `backend_services` - (Optional) Describes the backend service configurations.
+     * `service_name` - (Required) The name of the backend service.
+@@ -194,8 +191,7 @@ Usage:
+    }
+ ```
+ 
+-<a id="disks"></a>
+-## Disks
++### Disks
+ 
+ * `disks` - (Optional) Array of disks associated with this instance. Persistent disks must be created before you can assign them.
+     * `auto_delete` - (Optional) Specifies whether the disk will be auto-deleted when the instance is deleted.
+@@ -229,8 +225,7 @@ Usage:
+     }
+ ```
+ 
+-<a id="network-interface"></a>
+-## Network Interfaces
++### Network Interfaces
+ 
+ Each of the `network_interface` attributes controls a portion of the GCP
+ Instance's "Network Interfaces". It's a good idea to familiarize yourself with [GCP's Network
+@@ -259,8 +254,7 @@ to understand the implications of using these attributes.
+   }
+ ```
+ 
+-<a id="scaling-policy"></a>
+-## Scaling Policies
++### Scaling Policies
+ 
+ * `scaling_up_policy` - (Optional) Contains scaling policies for scaling the Elastigroup up.
+ * `scaling_down_policy` - (Optional) Contains scaling policies for scaling the Elastigroup down.
+@@ -305,8 +299,7 @@ Usage:
+   }
+ ```
+ 
+-<a id="third-party-integrations"></a>
+-## Third-Party Integrations
++### Third-Party Integrations
+ 
+ * `integration_docker_swarm` - (Optional) Describes the [Docker Swarm](https://api.spotinst.com/integration-docs/elastigroup/container-management/docker-swarm/docker-swarm-integration/) integration.
+     * `master_host` - (Required) IP or FQDN of one of your swarm managers.
+@@ -321,8 +314,7 @@ integration_docker_swarm = {
+ }
+ ```
+ 
+-<a id="scheduled-task"></a>
+-## Scheduled Tasks
++### Scheduled Tasks
+ 
+ Each `scheduled_task` supports the following:
+ 
+diff --git b/docs/resources/elastigroup_gke.md a/docs/resources/elastigroup_gke.md
+index b4ddc361..da5d765c 100644
+--- b/docs/resources/elastigroup_gke.md
++++ a/docs/resources/elastigroup_gke.md
+@@ -23,7 +23,7 @@ There are two main differences:
+ ```hcl
+ resource "spotinst_elastigroup_gke" "example-gke-elastigroup" {
+  name              = "example-gke"
+- // cluster_id        = "terraform-acc-test-cluster" // deprecated
++ // cluster_id        = "sample-acc-test-cluster" // deprecated
+  cluster_zone_name = "us-central1-a"
+  node_image        = "COS"
+ 
+@@ -85,8 +85,7 @@ All `spotisnt_elastigroup_gcp` arguments are supported. Please be sure to includ
+ * `cluster_id` - (Required) The name of the GKE cluster you wish to import.
+ * `node_image` - (Optional, Default: `COS`) The image that will be used for the node VMs. Possible values: COS, UBUNTU.
+ 
+-<a id="third-party-integrations"></a>
+-## Third-Party Integrations
++### Third-Party Integrations
+ 
+ * `integration_gke` - (Required) Describes the [GKE]() integration.
+ 
+@@ -114,7 +113,7 @@ Usage:
+ ```hcl
+  integration_gke {
+   location                 = "us-central1-a"
+-  cluster_id               = "terraform-acc-test-cluster"
++  cluster_id               = "sample-acc-test-cluster"
+   autoscale_is_enabled     = true
+   autoscale_is_auto_config = false
+   autoscale_cooldown       = 300
+@@ -136,8 +135,7 @@ Usage:
+  }
+ ```
+ 
+-<a id="diff-suppressed-parameters"></a>
+-## Diff-suppressed Parameters
++### Diff-suppressed Parameters
+ The following parameters are created remotely and imported. The diffs have been suppressed in order to maintain plan legibility. You may update the values of these
+ imported parameters by defining them in your template with your desired new value (including null values).
+ 
+diff --git b/docs/resources/health_check.md a/docs/resources/health_check.md
+index 50997b38..0cec10b9 100644
+--- b/docs/resources/health_check.md
++++ a/docs/resources/health_check.md
+@@ -14,7 +14,7 @@ Provides a Spotinst Health Check resource.
+ 
+ ```hcl 
+ resource "spotinst_health_check" "http_check" {
+-  name        = "terraform_healt_cheack"
++  name        = "sample_healt_check"
+   resource_id = "sig-123"
+ 
+   check {
+diff --git b/docs/resources/managed_instance_aws.md a/docs/resources/managed_instance_aws.md
+index 2bdf7acb..b2aab7af 100644
+--- b/docs/resources/managed_instance_aws.md
++++ a/docs/resources/managed_instance_aws.md
+@@ -16,7 +16,7 @@ Provides a Spotinst AWS ManagedInstance resource.
+ # Create a Manged Instance
+ resource "spotinst_managed_instance_aws" "default-managed-instance" {
+   name        = "default-managed-instance"
+-  description = "created by Terraform"
++  description = "created by Pulumi"
+   product     = "Linux/UNIX"
+ 
+   region     = "us-west-2"
+@@ -109,22 +109,22 @@ The following arguments are supported:
+ * `orientation` - (Optional) Select a prediction strategy. Valid values: `"balanced"`, `"costOriented"`, `"availabilityOriented"`, `"cheapest"`. Default: `"availabilityOriented"`.    
+ * `draining_timeout` - (Optional) The time in seconds to allow the instance be drained from incoming TCP connections and detached from ELB before terminating it, during a scale down operation.
+ * `fallback_to_ondemand` - (Optional) In case of no spots available, Managed Instance will launch an On-demand instance instead. Default: `"true"`.
+-* `utilize_reserved_instances` - (Optional) In case of any available Reserved Instances, Managed Instance will utilize them before purchasing Spot instances. Default: `"false"`. 
++* `utilize_reserved_instances` - (Optional) In case of any available Reserved Instances, Managed Instance will utilize them before purchasing Spot instances. Default: `"false"`.
+ * `optimization_windows` - (Optional) When `performAt` is `"timeWindow"`: must specify a list of `"timeWindows"` with at least one time window. Each string should be formatted as `ddd:hh:mm-ddd:hh:mm` (ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59).
+ * `perform_at` - (Optional) Valid values: `"always"`, `"never"`, `"timeWindow"`. Default `"never"`.
+ * `minimum_instnace_lifetime` - (Optional) Defines the preferred minimum instance lifetime. Markets which comply with this preference will be prioritized. Optional values: `1`, `3`, `6`, `12`, `24`.
+ * `persist_private_ip` - (Optional) Should the instance maintain its private IP.
+-* `persist_block_devices` - (Optional) Should the instance maintain its Data volumes. 
++* `persist_block_devices` - (Optional) Should the instance maintain its Data volumes.
+ * `persist_root_device` - (Optional) Should the instance maintain its root device volumes.
+ * `block_devices_mode` - (Optional) Determine the way we attach the data volumes to the data devices. Valid values: `"reattach"`, `"onLaunch"`. Default: `"onLaunch"`.
+-* `health_check_type` - (Optional) The service to use for the health check. Valid values: `"EC2"`, `"ELB"`, `"TARGET_GROUP"`, `"MULTAI_TARGET_SET"`. Default: `"EC2"`. 
+-* `auto_healing` - (Optional) Enable the auto healing which auto replaces the instance in case the health check fails, default: `"true"`. 
++* `health_check_type` - (Optional) The service to use for the health check. Valid values: `"EC2"`, `"ELB"`, `"TARGET_GROUP"`, `"MULTAI_TARGET_SET"`. Default: `"EC2"`.
++* `auto_healing` - (Optional) Enable the auto healing which auto replaces the instance in case the health check fails, default: `"true"`.
+ * `grace_period` - (Optional) The amount of time, in seconds, after the instance has launched to starts and check its health, default `"120"`.
+ * `unhealthy_duration` - (Optional) The amount of time, in seconds, an existing instance should remain active after becoming unhealthy. After the set time out the instance will be replaced, default `"120"`.
+ * `subnet_ids` - (Required) A comma-separated list of subnet identifiers for your instance.
+ * `vpcId` - (Required) VPC id for your instance.
+ * `elastic_ip` - (Optional) Elastic IP Allocation Id to associate to the instance.
+-* `private_ip` - (Optional) Private IP Allocation Id to associate to the instance. 
++* `private_ip` - (Optional) Private IP Allocation Id to associate to the instance.
+ * `product` - (Required) Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`, `"Red Hat Enterprise Linux"`, `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`,  `"Red Hat Enterprise Linux (Amazon VPC)"`.    
+ * `instance_types` - (Required) Comma separated list of available instance types for instance.
+ * `preferred_type` - (Required) Preferred instance types for the instance. We will automatically select optional similar instance types to ensure optimized cost efficiency
+@@ -145,8 +145,7 @@ Default: default
+ * `shutdown_script` - (Optional) The Base64-encoded shutdown script to execute prior to instance termination.
+ * `cpu_credits` - (Optional) cpuCredits can have one of two values: `"unlimited"`, `"standard"`.
+ 
+-<a id="block-device-mapping"></a>
+-## Block Device Mapping
++### Block Device Mapping
+ 
+ * `block_device_mappings` - (Optional) Attributes controls a portion of the AWS:
+     * `device_name` - (Required) The name of the device to mount.
+@@ -172,8 +171,7 @@ block_device_mappings {
+ }
+ ```      
+ 
+-<a id="resource-tag-specification"></a>
+-## Resource Tag Specification
++### Resource Tag Specification
+ 
+ * `resource_tag_specification` - (Optional) User will specify which resources should be tagged with group tags.
+     * `should_tag_enis`      - (Optional) Tag specification for ENI resources.
+@@ -192,8 +190,7 @@ resource_tag_specification {
+ }
+ ```        
+ 
+-<a id="network-interface"></a>
+-## Network Interface 
++### Network Interface
+ 
+ * `network-interface`- (Optional) List of network interfaces in an EC2 instance.
+     * `device_index` - (Optional) The position of the network interface in the attachment order. A primary network interface has a device index of 0. If you specify a network interface when launching an instance, you must specify the device index.
+@@ -210,8 +207,7 @@ network_interface {
+ }
+ ```       
+ 
+-<a id="scheduled-task"></a>
+-## Scheduled Tasks
++### Scheduled Tasks
+ 
+ Each `scheduled_task` supports the following:
+ 
+@@ -235,8 +231,8 @@ scheduled_task {
+ }
+ ```
+ 
+-<a id="load-balancers"></a>
+-## Load Balancers
++### Load Balancers
++
+ * `load_balancers` - (Optional) List of load balancers configs.
+     * `name` - The AWS resource name. Required for Classic Load Balancer. Optional for Application Load Balancer.
+     * `arn` - The AWS resource ARN (Required only for ALB target groups).
+@@ -259,9 +255,8 @@ load_balancers {
+ }
+ ```
+ 
+-<a id="route53"></a>
+-## Route53
+- 
++### Route53
++
+ * `integration_route53` - (Optional) Describes the [Route53](https://aws.amazon.com/documentation/route53/?id=docs_gateway) integration.
+    * `domains` - (Required) Route 53 Domain configurations.
+        * `hosted_zone_id` - (Required) The Route 53 Hosted Zone Id for the registered Domain.
+@@ -278,11 +273,11 @@ Usage:
+ integration_route53 {
+ 
+     # Option 1: Use A records.
+-    domains { 
++    domains {
+       hosted_zone_id   = "zone-id"
+       spotinst_acct_id = "act-123456"
+       record_set_type  = "a"
+-    
++
+       record_sets {
+         name          = "foo.example.com"
+         use_public_ip = true
+@@ -290,11 +285,11 @@ integration_route53 {
+     }
+ 
+     # Option 2: Use CNAME records.
+-    domains { 
++    domains {
+       hosted_zone_id   = "zone-id"
+       spotinst_acct_id = "act-123456"
+       record_set_type  = "cname"
+-    
++
+       record_sets {
+         name           = "foo.example.com"
+         use_public_dns = true
+@@ -303,8 +298,7 @@ integration_route53 {
+ }
+ ```
+ 
+-<a id="managed_instance_action"></a>
+-## Managed Instance Action
++### Managed Instance Action
+ 
+ * `managed_instance_action` - (Optional)
+     * `type` - (Required) String, Action type. Supported action types: `pause`, `resume`, `recycle`.
+@@ -312,7 +306,7 @@ integration_route53 {
+ Usage:
+ 
+ ```hcl
+-managed_instance_action { 
++managed_instance_action {
+   type  = "pause"
+ }    
+ ```
+diff --git b/docs/resources/mrscaler_aws.md a/docs/resources/mrscaler_aws.md
+index 05d783c0..7cd006b9 100644
+--- b/docs/resources/mrscaler_aws.md
++++ a/docs/resources/mrscaler_aws.md
+@@ -10,14 +10,16 @@ description: |-
+ 
+ Provides a Spotinst AWS MrScaler resource.
+ 
+-## Example Usage - New Strategy
++## Example Usage
++
++### New Strategy
+ 
+ ```hcl
+ # Create a Mr Scaler with New strategy
+ 
+-resource "spotinst_mrscaler_aws" "Terraform-MrScaler-01" {
+-  name        = "Terraform-MrScaler-01"
+-  description = "Testing MrScaler creation via Terraform"
++resource "spotinst_mrscaler_aws" "sample-MrScaler-01" {
++  name        = "sample-MrScaler-01"
++  description = "Testing MrScaler creation"
+   region      = "us-west-2"
+   strategy    = "new"
+   release_label = "emr-5.17.0"
+@@ -85,7 +87,7 @@ resource "spotinst_mrscaler_aws" "Terraform-MrScaler-01" {
+   }
+ 
+   bootstrap_actions_file {
+-    bucket = "terraform-emr-test"
++    bucket = "sample-emr-test"
+     key = "bootstrap-actions.json"
+   }
+ // -------------------------
+@@ -138,28 +140,28 @@ resource "spotinst_mrscaler_aws" "Terraform-MrScaler-01" {
+ // --- TAGS -------------------
+   tags {
+       key   = "Creator"
+-      value = "Terraform"
++      value = "Pulumi"
+   }
+ // ----------------------------
+ }
+ ```
+ 
+-## Example Usage - Clone Strategy
++### Clone Strategy
+ 
+ ```hcl
+ # Create a Mr Scaler with Clone strategy and Task scaling
+ 
+ output "mrscaler-name" {
+-  value = "${spotinst_mrscaler_aws.Terraform-MrScaler-01.name}"
++  value = "${spotinst_mrscaler_aws.sample-MrScaler-01.name}"
+ }
+ 
+ output "mrscaler-created-cluster-id" {
+-  value = "${spotinst_mrscaler_aws.Terraform-MrScaler-01.output_cluster_id}"
++  value = "${spotinst_mrscaler_aws.sample-MrScaler-01.output_cluster_id}"
+ }
+ 
+-resource "spotinst_mrscaler_aws" "Terraform-MrScaler-01" {
+-  name        = "Terraform-MrScaler-01"
+-  description = "Testing MrScaler creation via Terraform"
++resource "spotinst_mrscaler_aws" "sample-MrScaler-01" {
++  name        = "sample-MrScaler-01"
++  description = "Testing MrScaler creation"
+   region      = "us-west-2"
+   strategy    = "clone"
+   
+@@ -216,7 +218,7 @@ resource "spotinst_mrscaler_aws" "Terraform-MrScaler-01" {
+ // --- TAGS -------------------
+   tags {
+       key   = "Creator"
+-      value = "Terraform"
++      value = "Pulumi"
+   }
+ // ----------------------------
+ 
+@@ -250,14 +252,14 @@ resource "spotinst_mrscaler_aws" "Terraform-MrScaler-01" {
+ }
+ ```
+ 
+-## Example Usage - Wrap Strategy
++### Wrap Strategy
+ 
+ ```hcl
+ # Create a Mr Scaler with Wrap strategy
+ 
+ resource "spotinst_mrscaler_aws" "example-scaler-2" {
+   name        = "spotinst-mr-scaler-2"
+-  description = "created by Terraform"
++  description = "created by Pulumi"
+   region      = "us-west-2"
+   strategy    = "wrap"
+   cluster_id  = "j-27UVDEHXL4OQM"
+@@ -289,15 +291,13 @@ The following arguments are supported:
+ * `region` - (Required) The MrScaler region.
+ * `strategy` - (Required) The MrScaler strategy. Allowed values are `new` `clone` and `wrap`.
+ * `cluster_id` - (Optional) The MrScaler cluster id.
+-* `expose_cluster_id` - (Optional) Allow the `cluster_id` to set a Terraform output variable.
++* `expose_cluster_id` - (Optional) Allow the `cluster_id` to set a provider output variable.
+ 
+-<a id="provisioning-timeout"></a>
+-## Provisioning Timeout (Clone, New strategies)
++### Provisioning Timeout (Clone, New strategies)
+ * `timeout` - (Optional) The amount of time (minutes) after which the cluster is automatically terminated if it's still in provisioning status. Minimum: '15'.
+ * `timeout_action` - (Optional) The action to take if the timeout is exceeded. Valid values: `terminate`, `terminateAndRetry`.
+ 
+-<a id="cluster-config"></a>
+-## Cluster Configuration (New strategy only)
++### Cluster Configuration (New strategy only)
+ * `log_uri` - (Optional) The path to the Amazon S3 location where logs for this cluster are stored.
+ * `additional_info` - (Optional) This is meta information about third-party applications that third-party vendors use for testing purposes.
+ * `security_config` - (Optional) The name of the security configuration applied to the cluster.
+@@ -307,8 +307,7 @@ The following arguments are supported:
+ * `keep_job_flow_alive` - (Optional) Specifies whether the cluster should remain available after completing all steps.
+ * `retries` - (Optional; Requires: `timeout_action` is set to `terminateAndRetry`) Specifies the maximum number of times a capacity provisioning should be retried if the provisioning timeout is exceeded. Valid values: `1-5`. 
+ 
+-<a id="task-group"></a>
+-## Task Group (Wrap, Clone, and New strategies)
++### Task Group (Wrap, Clone, and New strategies)
+ * `task_instance_types` - (Required) The MrScaler instance types for the task nodes.
+ * `task_desired_capacity` - (Required) amount of instances in task group.
+ * `task_max_size` - (Optional) maximal amount of instances in task group.
+@@ -321,9 +320,8 @@ The following arguments are supported:
+     * `volume_type` - (Required) volume type. Allowed values are 'gp2', 'io1' and others.
+     * `size_in_gb` - (Required) Size of the volume, in GBs.
+     * `iops` - (Optional) IOPS for the volume. Required in some volume types, such as io1.
+-
+-<a id="core-group"></a>
+-## Core Group (Clone, New strategies)
++  
++### Core Group (Clone, New strategies)
+ * `core_instance_types` - (Required) The MrScaler instance types for the core nodes.
+ * `core_desired_capacity` - (Required) amount of instances in core group.
+ * `core_max_size` - (Optional) maximal amount of instances in core group.
+@@ -337,8 +335,7 @@ The following arguments are supported:
+     * `size_in_gb` - (Required) Size of the volume, in GBs.
+     * `iops` - (Optional) IOPS for the volume. Required in some volume types, such as io1.
+ 
+-<a id="master-group"></a>
+-## Master Group (Clone, New strategies)
++### Master Group (Clone, New strategies)
+ * `master_instance_types` - (Required) The MrScaler instance types for the master nodes.
+ * `master_lifecycle` - (Required) The MrScaler lifecycle for instances in master group. Allowed values are 'SPOT' and 'ON_DEMAND'.
+ * `master_target` - (Optional; Default 1) Number of instances in the master group.
+@@ -349,14 +346,12 @@ The following arguments are supported:
+     * `size_in_gb` - (Required) Size of the volume, in GBs.
+     * `iops` - (Optional) IOPS for the volume. Required in some volume types, such as io1.
+ 
+-<a id="tags"></a>
+-## Tags (Clone, New strategies)
++### Tags (Clone, New strategies)
+ * `tags` - (Optional) A list of tags to assign to the resource. You may define multiple tags.
+     * `key` - (Required) Tag key.
+     * `value` - (Required) Tag value.
+-
+-<a id="Optional Compute Parameters"></a>  
+-## Optional Compute Parameters (New strategy)
++  
++### Optional Compute Parameters (New strategy)
+ * `managed_primary_security_group` - (Optional) EMR Managed Security group that will be set to the primary instance group.
+ * `managed_replica_security_group` - (Optional) EMR Managed Security group that will be set to the replica instance group.
+ * `service_access_security_group` - (Optional) The identifier of the Amazon EC2 security group for the Amazon EMR service to access clusters in VPC private subnets.
+@@ -372,33 +367,28 @@ The following arguments are supported:
+ * `instance_weights` - (Optional) Describes the instance and weights. Check out [Elastigroup Weighted Instances](https://api.spotinst.com/elastigroup-for-aws/concepts/general-concepts/elastigroup-capacity-instances-or-weighted) for more info.
+     * `instance_type` - (Required) The type of the instance.
+     * `weighted_capacity` - (Required) The weight given to the associated instance type. 
+-
+-<a id="availability-zone"></a>
+-## Availability Zones (Clone, New strategies)
++  
++### Availability Zones (Clone, New strategies)
+ 
+ * `availability_zones` - (Required in Clone) List of AZs and their subnet Ids. See example above for usage.
+ 
+-<a id="configurations"></a>
+-## Configurations (Clone, New strategies)
++### Configurations (Clone, New strategies)
+ 
+ * `configurations_file` - (Optional) Describes path to S3 file containing description of configurations. [More Information](https://api.spotinst.com/elastigroup-for-aws/services-integrations/elastic-mapreduce/import-an-emr-cluster/advanced/)
+     * `bucket` - (Required) S3 Bucket name for configurations.
+     * `key`- (Required) S3 key for configurations.
+-    
+-<a id="steps"></a>
+-## Steps (Clone, New strategies)
++  
++### Steps (Clone, New strategies)
+ * `steps_file` - (Optional) Steps from S3.
+     * `bucket` - (Required) S3 Bucket name for steps.
+     * `key`- (Required) S3 key for steps.
+-    
+-<a id="boostrap-actions"></a>
+-## Bootstrap Actions (Clone, New strategies)   
++
++### Bootstrap Actions (Clone, New strategies)   
+ * `bootstrap_actions_file` - (Optional) Describes path to S3 file containing description of bootstrap actions. [More Information](https://api.spotinst.com/elastigroup-for-aws/services-integrations/elastic-mapreduce/import-an-emr-cluster/advanced/)
+     * `bucket` - (Required) S3 Bucket name for bootstrap actions.
+     * `key`- (Required) S3 key for bootstrap actions.
+-
+-<a id="scaling-policy"></a>
+-## Scaling Policies
++  
++### Scaling Policies
+ 
+ Possible task group scaling policies (Wrap, Clone, and New strategies):
+ * `task_scaling_up_policy`
+@@ -429,8 +419,7 @@ Each `*_scaling_*_policy` supports the following:
+ * `target` - (Optional) The number of instances to set when scale is needed.
+ * `action_type` - (Required) The type of action to perform. Allowed values are : 'adjustment', 'setMinTarget', 'setMaxTarget', 'updateCapacity', 'percentageAdjustment'
+ 
+-<a id="scheduled-task"></a>
+-## Scheduled Tasks
++### Scheduled Tasks
+ 
+ * `scheduled_task` - (Optional) An array of scheduled tasks.
+   * `is_enabled` - (Optional) Enable/Disable the specified scheduling task.
+@@ -441,10 +430,9 @@ Each `*_scaling_*_policy` supports the following:
+   * `min_capacity` - (Optional) New min capacity for the elastigroup.
+   * `max_capacity` - (Optional) New max capacity for the elastigroup.
+ 
+-<a id="termination-policies"></a>
+-## termination policies
++### termination policies
+ 
+-## Example Usage
++#### Example Usage
+ 
+ ```hcl
+   termination_policies {
+diff --git b/docs/resources/ocean_aws.md a/docs/resources/ocean_aws.md
+index 3710bce1..d852c34b 100644
+--- b/docs/resources/ocean_aws.md
++++ a/docs/resources/ocean_aws.md
+@@ -97,7 +97,7 @@ resource "spotinst_ocean_aws" "example" {
+   }
+   // endregion
+ 
+-  // region STRATEGY 
++  // region STRATEGY
+   fallback_to_ondemand       = true
+   draining_timeout           = 120
+   utilize_reserved_instances = false
+@@ -204,8 +204,7 @@ The following arguments are supported:
+         * `s3` - (Optional) Exports your cluster's logs to the S3 bucket and subdir configured on the S3 data integration given.
+             * `id` - (Required) The identifier of The S3 data integration to export the logs to.
+ 
+-<a id="auto-scaler"></a>
+-## Auto Scaler
++### Auto Scaler
+ * `autoscaler` - (Optional) Describes the Ocean Kubernetes Auto Scaler.
+     * `autoscale_is_enabled` - (Optional, Default: `true`) Enable the Ocean Kubernetes Auto Scaler.
+     * `autoscale_is_auto_config` - (Optional, Default: `true`) Automatically configure and optimize headroom resources.
+@@ -252,8 +251,7 @@ autoscaler {
+ }
+ ```
+ 
+-<a id="update-policy"></a>
+-## Update Policy
++### Update Policy
+ 
+ * `update_policy` - (Optional)
+     * `should_roll` - (Required) Enables the roll.
+@@ -289,13 +287,13 @@ update_policy {
+         * `is_enabled` - (Required)  Describes whether the task is enabled. When true the task should run when false it should not run. Required for `cluster.scheduling.tasks` object.
+         * `cron_expression` - (Required) A valid cron expression. The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of `frequency` or `cronExpression` should be used at a time. Required for `cluster.scheduling.tasks` object. (Example: `0 1 * * *`).
+         * `task_type` - (Required) Valid values: `clusterRoll`. Required for `cluster.scheduling.tasks` object. (Example: `clusterRoll`).
+-             
++
+ ```hcl
+ scheduled_task {
+   shutdown_hours {
+     is_enabled   = true
+     time_windows = [
+-      "Fri:15:30-Sat:13:30", 
++      "Fri:15:30-Sat:13:30",
+       "Sun:15:30-Mon:13:30",
+     ]
+   }
+diff --git b/docs/resources/ocean_ecs.md a/docs/resources/ocean_ecs.md
+index c2386962..7ed8db2a 100644
+--- b/docs/resources/ocean_ecs.md
++++ a/docs/resources/ocean_ecs.md
+@@ -15,12 +15,12 @@ Manages a Spotinst Ocean ECS resource.
+ ```hcl
+ resource "spotinst_ocean_ecs" "example" {
+     region = "us-west-2"
+-    name = "terraform-ecs-cluster"
+-    cluster_name = "terraform-ecs-cluster"
+-  
++    name = "sample-ecs-cluster"
++    cluster_name = "sample-ecs-cluster"
++
+     min_size         = "0"
+     max_size         = "1"
+-    desired_capacity = "0" 
++    desired_capacity = "0"
+ 
+     subnet_ids = ["subnet-12345"]
+     instanceTypes {
+@@ -54,7 +54,7 @@ resource "spotinst_ocean_ecs" "example" {
+     security_group_ids = ["sg-12345"]
+     image_id = "ami-12345"
+     iam_instance_profile = "iam-profile"
+-  
++
+     key_pair = "KeyPair"
+     user_data = "echo hello world"
+     associate_public_ip_address = false
+@@ -179,16 +179,15 @@ The following arguments are supported:
+             * `id` - (Required) The identifier of The S3 data integration to export the logs to.
+ 
+ 
+-<a id="block-devices"></a>
+-## Block Devices
++### Block Devices
+ * `block_device_mappings` - (Optional) Object. List of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.   
+     * `device_name` - (Optional) String. Set device name. Example: `/dev/xvda1`.
+     * `ebs` - (Optional) Object. Set Elastic Block Store properties.
+-        * `delete_on_termination` - (Optional) Boolean. Toggles EBS deletion upon instance termination. 
++        * `delete_on_termination` - (Optional) Boolean. Toggles EBS deletion upon instance termination.
+         * `encrypted` - (Optional) Boolean. Enables [EBS encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) on the volume.
+         * `iops` - (Required for requests to create `io1` volumes; it is not used in requests to create `gp2`, `st1`, `sc1`, or standard volumes) Int. The number of I/O operations per second (IOPS) that the volume supports.
+         * `kms_key_id` - (Optional) String. Identifier (key ID, key alias, ID ARN, or alias ARN) for a customer managed CMK under which the EBS volume is encrypted.
+-        * `snapshot_id` - (Optional) (Optional) String. The snapshot ID to mount by. 
++        * `snapshot_id` - (Optional) (Optional) String. The snapshot ID to mount by.
+         * `volume_type` - (Optional, Default: `standard`) String. The type of the volume. Example: `gp2`.
+         * `volume_size` - (Optional) Int. The size (in GB) of the volume.
+         * `throughput`- (Optional) The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volume_type` = gp3.
+@@ -201,10 +200,8 @@ The following arguments are supported:
+     * `perform_at` - (Required) String. Valid values: "always" "never" "timeWindow".
+     * `time_windows` - (Optional; Required if not using `perform_at` = timeWindow) Array of strings. Set time windows for image update, at least one time window. Each string is in the format of ddd:hh:mm-ddd:hh:mm ddd. Time windows should not overlap.
+     * `should_optimize_ecs_ami` - (Required) Boolean. Enable auto image (AMI) update for the ECS container instances. The auto update applies for ECS-Optimized AMIs.
+-    
+ 
+-<a id="auto-scaler"></a>
+-## Auto Scaler
++### Auto Scaler
+ * `autoscaler` - (Optional) Describes the Ocean ECS autoscaler.
+     * `is_enabled` - (Optional, Default: `true`) Enable the Ocean ECS autoscaler.
+     * `is_auto_config` - (Optional, Default: `true`) Automatically configure and optimize headroom resources.
+@@ -241,20 +238,18 @@ The following arguments are supported:
+       max_vcpu       = 1024
+       max_memory_gib = 20
+     }
+-   
++
+     auto_headroom_percentage = 10
+     should_scale_down_non_service_tasks = false
+   }
+ ```
+ 
+-
+-<a id="update-policy"></a>
+-## Update Policy
++### Update Policy
+ * `update_policy` - (Optional) While used, you can control whether the group should perform a deployment after an update to the configuration.
+     * `should_roll` - (Required) Enables the roll.
+     * `conditioned_roll` - (Optional, Default: false) Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as AMI, Key Pair, user data, instance types, load balancers, etc).
+     * `auto_apply_tags` - (Optional, Default: false) will update instance tags on the fly without rolling the cluster.
+-    * `roll_config` - (Required) 
++    * `roll_config` - (Required)
+         * `batch_size_percentage` - (Required) Sets the percentage of the instances to deploy in each batch.
+         * `batch_min_healthy_percentage` - (Optional) Default: 50. Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
+ 
+@@ -263,7 +258,7 @@ The following arguments are supported:
+     should_roll = false
+     conditioned_roll = true
+     auto_apply_tags = true
+-    
++
+     roll_config {
+       batch_size_percentage = 33
+       batch_min_healthy_percentage = 20
+@@ -271,9 +266,7 @@ The following arguments are supported:
+   }
+ ```
+ 
+-
+-<a id="scheduled-tasks"></a>
+-## Scheduled Tasks
++### scheduled task
+ * `scheduled_task` - (Optional) While used, you can control whether the group should perform a deployment after an update to the configuration.
+     * `shutdown_hours` - (Optional) Set shutdown hours for cluster object.
+         * `is_enabled` - (Optional)  Flag to enable / disable the shutdown hours.
+@@ -282,7 +275,7 @@ The following arguments are supported:
+         * `is_enabled` - (Required) Describes whether the task is enabled. When true the task should run when false it should not run. Required for `cluster.scheduling.tasks` object.
+         * `cron_expression` - (Required) A valid cron expression. The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of `frequency` or `cronExpression` should be used at a time. Required for `cluster.scheduling.tasks` object. Example: `0 1 * * *`.
+         * `task_type` - (Required) Valid values: "clusterRoll". Required for `cluster.scheduling.tasks object`. Example: `clusterRoll`.
+-             
++
+ ```hcl
+   scheduled_task  {
+     shutdown_hours  {
+diff --git b/docs/resources/ocean_gke_import.md a/docs/resources/ocean_gke_import.md
+index bc7bc82e..ce5d4733 100644
+--- b/docs/resources/ocean_gke_import.md
++++ a/docs/resources/ocean_gke_import.md
+@@ -36,18 +36,18 @@ resource "spotinst_ocean_gke_import" "example" {
+   cluster_name = "example-cluster-name"
+   controller_cluster_id = "example-controller-123124"
+   location     = "us-central1-a"
+-  
++
+   min_size = 0
+   max_size = 2
+   desired_capacity = 0
+-  
++
+   whitelist = ["n1-standard-1", "n1-standard-2"]
+-  
++
+   backend_services {
+     service_name  = "example-backend-service"
+     location_type = "regional"
+     scheme        = "INTERNAL"
+-    
++
+     named_ports {
+       name  = "http"
+       ports = [80, 8080]
+@@ -72,12 +72,12 @@ output "ocean_id" {
+ 
+ The following arguments are supported:
+ 
+-* `cluster_name` - (Required) The GKE cluster name. 
++* `cluster_name` - (Required) The GKE cluster name.
+ * `controller_cluster_id` - (Required) A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
+-* `location` - (Required) The zone the master cluster is located in. 
++* `location` - (Required) The zone the master cluster is located in.
+ * `max_size` - (Optional, Default: `1000`) The upper limit of instances the cluster can scale up to.
+ * `min_size` - (Optional) The lower limit of instances the cluster can scale down to.
+-* `desired_capacity` - (Optional) The number of instances to launch and maintain in the cluster. 
++* `desired_capacity` - (Optional) The number of instances to launch and maintain in the cluster.
+ * `whitelist` - (Optional) Instance types allowed in the Ocean cluster. Cannot be configured if blacklist list is configured.
+ * `blacklist` - (Optional) Instance types to avoid launching in the Ocean cluster. Cannot be configured if whitelist list is configured.
+ * `draining_timeout` - (Optional) The draining timeout (in seconds) before terminating the instance.
+@@ -95,8 +95,7 @@ The following arguments are supported:
+ * `use_as_template_only` - (Optional, Default: false) launch specification defined on the Ocean object will function only as a template for virtual node groups.
+ 
+ 
+-<a id="scheduled-task"></a>
+-## Scheduled task
++### Scheduled task
+ * `scheduled_task` - (Optional) Set scheduling object.
+     * `shutdown_hours` - (Optional) Set shutdown hours for cluster object.
+         * `is_enabled` - (Optional)  Flag to enable / disable the shutdown hours.
+@@ -110,8 +109,8 @@ The following arguments are supported:
+         * `task_type` - (Required) Valid values: "clusterRoll". Required for cluster.scheduling.tasks object.
+         * `batch_size_percentage` - (Optional)  Value in % to set size of batch in roll. Valid values are 0-100
+                                                 Example: 20.
+-                          
+-             
++
++
+ ```hcl
+   scheduled_task  {
+     shutdown_hours  {
+@@ -127,8 +126,7 @@ The following arguments are supported:
+   }
+ ```
+ 
+-<a id="autoscaler"></a>
+-## Autoscaler
++### Autoscaler
+ 
+ * `autoscaler` - (Optional) The Ocean Kubernetes Autoscaler object.
+     * `is_enabled` - (Optional, Default: `true`) Enable the Ocean Kubernetes Autoscaler.
