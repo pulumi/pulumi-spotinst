@@ -25,6 +25,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Elastigroup{}
 	case "spotinst:azure/ocean:Ocean":
 		r = &Ocean{}
+	case "spotinst:azure/oceanNp:OceanNp":
+		r = &OceanNp{}
 	case "spotinst:azure/oceanVirtualNodeGroup:OceanVirtualNodeGroup":
 		r = &OceanVirtualNodeGroup{}
 	default:
@@ -48,6 +50,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"spotinst",
 		"azure/ocean",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"spotinst",
+		"azure/oceanNp",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

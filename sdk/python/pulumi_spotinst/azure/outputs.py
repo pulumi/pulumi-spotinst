@@ -45,6 +45,13 @@ __all__ = [
     'OceanNetworkNetworkInterface',
     'OceanNetworkNetworkInterfaceAdditionalIpConfig',
     'OceanNetworkNetworkInterfaceSecurityGroup',
+    'OceanNpAutoscaler',
+    'OceanNpAutoscalerAutoscaleDown',
+    'OceanNpAutoscalerAutoscaleHeadroom',
+    'OceanNpAutoscalerAutoscaleHeadroomAutomatic',
+    'OceanNpAutoscalerResourceLimits',
+    'OceanNpHealth',
+    'OceanNpTaint',
     'OceanOsDisk',
     'OceanStrategy',
     'OceanTag',
@@ -2304,6 +2311,243 @@ class OceanNetworkNetworkInterfaceSecurityGroup(dict):
         The Resource Group name of the Load Balancer.
         """
         return pulumi.get(self, "resource_group_name")
+
+
+@pulumi.output_type
+class OceanNpAutoscaler(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "autoscaleDown":
+            suggest = "autoscale_down"
+        elif key == "autoscaleHeadroom":
+            suggest = "autoscale_headroom"
+        elif key == "autoscaleIsEnabled":
+            suggest = "autoscale_is_enabled"
+        elif key == "resourceLimits":
+            suggest = "resource_limits"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OceanNpAutoscaler. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OceanNpAutoscaler.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OceanNpAutoscaler.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 autoscale_down: Optional['outputs.OceanNpAutoscalerAutoscaleDown'] = None,
+                 autoscale_headroom: Optional['outputs.OceanNpAutoscalerAutoscaleHeadroom'] = None,
+                 autoscale_is_enabled: Optional[bool] = None,
+                 resource_limits: Optional['outputs.OceanNpAutoscalerResourceLimits'] = None):
+        if autoscale_down is not None:
+            pulumi.set(__self__, "autoscale_down", autoscale_down)
+        if autoscale_headroom is not None:
+            pulumi.set(__self__, "autoscale_headroom", autoscale_headroom)
+        if autoscale_is_enabled is not None:
+            pulumi.set(__self__, "autoscale_is_enabled", autoscale_is_enabled)
+        if resource_limits is not None:
+            pulumi.set(__self__, "resource_limits", resource_limits)
+
+    @property
+    @pulumi.getter(name="autoscaleDown")
+    def autoscale_down(self) -> Optional['outputs.OceanNpAutoscalerAutoscaleDown']:
+        return pulumi.get(self, "autoscale_down")
+
+    @property
+    @pulumi.getter(name="autoscaleHeadroom")
+    def autoscale_headroom(self) -> Optional['outputs.OceanNpAutoscalerAutoscaleHeadroom']:
+        return pulumi.get(self, "autoscale_headroom")
+
+    @property
+    @pulumi.getter(name="autoscaleIsEnabled")
+    def autoscale_is_enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "autoscale_is_enabled")
+
+    @property
+    @pulumi.getter(name="resourceLimits")
+    def resource_limits(self) -> Optional['outputs.OceanNpAutoscalerResourceLimits']:
+        return pulumi.get(self, "resource_limits")
+
+
+@pulumi.output_type
+class OceanNpAutoscalerAutoscaleDown(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxScaleDownPercentage":
+            suggest = "max_scale_down_percentage"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OceanNpAutoscalerAutoscaleDown. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OceanNpAutoscalerAutoscaleDown.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OceanNpAutoscalerAutoscaleDown.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 max_scale_down_percentage: Optional[int] = None):
+        if max_scale_down_percentage is not None:
+            pulumi.set(__self__, "max_scale_down_percentage", max_scale_down_percentage)
+
+    @property
+    @pulumi.getter(name="maxScaleDownPercentage")
+    def max_scale_down_percentage(self) -> Optional[int]:
+        return pulumi.get(self, "max_scale_down_percentage")
+
+
+@pulumi.output_type
+class OceanNpAutoscalerAutoscaleHeadroom(dict):
+    def __init__(__self__, *,
+                 automatic: Optional['outputs.OceanNpAutoscalerAutoscaleHeadroomAutomatic'] = None):
+        if automatic is not None:
+            pulumi.set(__self__, "automatic", automatic)
+
+    @property
+    @pulumi.getter
+    def automatic(self) -> Optional['outputs.OceanNpAutoscalerAutoscaleHeadroomAutomatic']:
+        return pulumi.get(self, "automatic")
+
+
+@pulumi.output_type
+class OceanNpAutoscalerAutoscaleHeadroomAutomatic(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "isEnabled":
+            suggest = "is_enabled"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OceanNpAutoscalerAutoscaleHeadroomAutomatic. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OceanNpAutoscalerAutoscaleHeadroomAutomatic.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OceanNpAutoscalerAutoscaleHeadroomAutomatic.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 is_enabled: Optional[bool] = None,
+                 percentage: Optional[int] = None):
+        if is_enabled is not None:
+            pulumi.set(__self__, "is_enabled", is_enabled)
+        if percentage is not None:
+            pulumi.set(__self__, "percentage", percentage)
+
+    @property
+    @pulumi.getter(name="isEnabled")
+    def is_enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "is_enabled")
+
+    @property
+    @pulumi.getter
+    def percentage(self) -> Optional[int]:
+        return pulumi.get(self, "percentage")
+
+
+@pulumi.output_type
+class OceanNpAutoscalerResourceLimits(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxMemoryGib":
+            suggest = "max_memory_gib"
+        elif key == "maxVcpu":
+            suggest = "max_vcpu"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OceanNpAutoscalerResourceLimits. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OceanNpAutoscalerResourceLimits.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OceanNpAutoscalerResourceLimits.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 max_memory_gib: Optional[int] = None,
+                 max_vcpu: Optional[int] = None):
+        if max_memory_gib is not None:
+            pulumi.set(__self__, "max_memory_gib", max_memory_gib)
+        if max_vcpu is not None:
+            pulumi.set(__self__, "max_vcpu", max_vcpu)
+
+    @property
+    @pulumi.getter(name="maxMemoryGib")
+    def max_memory_gib(self) -> Optional[int]:
+        return pulumi.get(self, "max_memory_gib")
+
+    @property
+    @pulumi.getter(name="maxVcpu")
+    def max_vcpu(self) -> Optional[int]:
+        return pulumi.get(self, "max_vcpu")
+
+
+@pulumi.output_type
+class OceanNpHealth(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "gracePeriod":
+            suggest = "grace_period"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OceanNpHealth. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OceanNpHealth.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OceanNpHealth.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 grace_period: Optional[int] = None):
+        if grace_period is not None:
+            pulumi.set(__self__, "grace_period", grace_period)
+
+    @property
+    @pulumi.getter(name="gracePeriod")
+    def grace_period(self) -> Optional[int]:
+        return pulumi.get(self, "grace_period")
+
+
+@pulumi.output_type
+class OceanNpTaint(dict):
+    def __init__(__self__, *,
+                 effect: str,
+                 key: str,
+                 value: str):
+        pulumi.set(__self__, "effect", effect)
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def effect(self) -> str:
+        return pulumi.get(self, "effect")
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type

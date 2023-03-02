@@ -3602,6 +3602,41 @@ export namespace azure {
         resourceGroupName?: pulumi.Input<string>;
     }
 
+    export interface OceanNpAutoscaler {
+        autoscaleDown?: pulumi.Input<inputs.azure.OceanNpAutoscalerAutoscaleDown>;
+        autoscaleHeadroom?: pulumi.Input<inputs.azure.OceanNpAutoscalerAutoscaleHeadroom>;
+        autoscaleIsEnabled?: pulumi.Input<boolean>;
+        resourceLimits?: pulumi.Input<inputs.azure.OceanNpAutoscalerResourceLimits>;
+    }
+
+    export interface OceanNpAutoscalerAutoscaleDown {
+        maxScaleDownPercentage?: pulumi.Input<number>;
+    }
+
+    export interface OceanNpAutoscalerAutoscaleHeadroom {
+        automatic?: pulumi.Input<inputs.azure.OceanNpAutoscalerAutoscaleHeadroomAutomatic>;
+    }
+
+    export interface OceanNpAutoscalerAutoscaleHeadroomAutomatic {
+        isEnabled?: pulumi.Input<boolean>;
+        percentage?: pulumi.Input<number>;
+    }
+
+    export interface OceanNpAutoscalerResourceLimits {
+        maxMemoryGib?: pulumi.Input<number>;
+        maxVcpu?: pulumi.Input<number>;
+    }
+
+    export interface OceanNpHealth {
+        gracePeriod?: pulumi.Input<number>;
+    }
+
+    export interface OceanNpTaint {
+        effect: pulumi.Input<string>;
+        key: pulumi.Input<string>;
+        value: pulumi.Input<string>;
+    }
+
     export interface OceanOsDisk {
         /**
          * The size of the OS disk in GB.
@@ -5203,6 +5238,13 @@ export namespace spark {
          * - Enable/disable the collection of driver logs. When enabled, driver logs are stored by NetApp and can be downloaded from the Spot console web interface. The driver logs are deleted after 30 days.
          */
         collectDriverLogs?: pulumi.Input<boolean>;
+    }
+
+    export interface OceanSpark {
+        /**
+         * - List of Kubernetes namespaces that should be configured to run Spark applications, in addition to the default Spark application namespace `spark-apps`.
+         */
+        additionalAppNamespaces?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface OceanWebhook {

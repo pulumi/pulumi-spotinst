@@ -1092,6 +1092,143 @@ func (o OceanLogCollectionPtrOutput) CollectDriverLogs() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+type OceanSpark struct {
+	// - List of Kubernetes namespaces that should be configured to run Spark applications, in addition to the default Spark application namespace `spark-apps`.
+	AdditionalAppNamespaces []string `pulumi:"additionalAppNamespaces"`
+}
+
+// OceanSparkInput is an input type that accepts OceanSparkArgs and OceanSparkOutput values.
+// You can construct a concrete instance of `OceanSparkInput` via:
+//
+//	OceanSparkArgs{...}
+type OceanSparkInput interface {
+	pulumi.Input
+
+	ToOceanSparkOutput() OceanSparkOutput
+	ToOceanSparkOutputWithContext(context.Context) OceanSparkOutput
+}
+
+type OceanSparkArgs struct {
+	// - List of Kubernetes namespaces that should be configured to run Spark applications, in addition to the default Spark application namespace `spark-apps`.
+	AdditionalAppNamespaces pulumi.StringArrayInput `pulumi:"additionalAppNamespaces"`
+}
+
+func (OceanSparkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanSpark)(nil)).Elem()
+}
+
+func (i OceanSparkArgs) ToOceanSparkOutput() OceanSparkOutput {
+	return i.ToOceanSparkOutputWithContext(context.Background())
+}
+
+func (i OceanSparkArgs) ToOceanSparkOutputWithContext(ctx context.Context) OceanSparkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanSparkOutput)
+}
+
+func (i OceanSparkArgs) ToOceanSparkPtrOutput() OceanSparkPtrOutput {
+	return i.ToOceanSparkPtrOutputWithContext(context.Background())
+}
+
+func (i OceanSparkArgs) ToOceanSparkPtrOutputWithContext(ctx context.Context) OceanSparkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanSparkOutput).ToOceanSparkPtrOutputWithContext(ctx)
+}
+
+// OceanSparkPtrInput is an input type that accepts OceanSparkArgs, OceanSparkPtr and OceanSparkPtrOutput values.
+// You can construct a concrete instance of `OceanSparkPtrInput` via:
+//
+//	        OceanSparkArgs{...}
+//
+//	or:
+//
+//	        nil
+type OceanSparkPtrInput interface {
+	pulumi.Input
+
+	ToOceanSparkPtrOutput() OceanSparkPtrOutput
+	ToOceanSparkPtrOutputWithContext(context.Context) OceanSparkPtrOutput
+}
+
+type oceanSparkPtrType OceanSparkArgs
+
+func OceanSparkPtr(v *OceanSparkArgs) OceanSparkPtrInput {
+	return (*oceanSparkPtrType)(v)
+}
+
+func (*oceanSparkPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanSpark)(nil)).Elem()
+}
+
+func (i *oceanSparkPtrType) ToOceanSparkPtrOutput() OceanSparkPtrOutput {
+	return i.ToOceanSparkPtrOutputWithContext(context.Background())
+}
+
+func (i *oceanSparkPtrType) ToOceanSparkPtrOutputWithContext(ctx context.Context) OceanSparkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanSparkPtrOutput)
+}
+
+type OceanSparkOutput struct{ *pulumi.OutputState }
+
+func (OceanSparkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanSpark)(nil)).Elem()
+}
+
+func (o OceanSparkOutput) ToOceanSparkOutput() OceanSparkOutput {
+	return o
+}
+
+func (o OceanSparkOutput) ToOceanSparkOutputWithContext(ctx context.Context) OceanSparkOutput {
+	return o
+}
+
+func (o OceanSparkOutput) ToOceanSparkPtrOutput() OceanSparkPtrOutput {
+	return o.ToOceanSparkPtrOutputWithContext(context.Background())
+}
+
+func (o OceanSparkOutput) ToOceanSparkPtrOutputWithContext(ctx context.Context) OceanSparkPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OceanSpark) *OceanSpark {
+		return &v
+	}).(OceanSparkPtrOutput)
+}
+
+// - List of Kubernetes namespaces that should be configured to run Spark applications, in addition to the default Spark application namespace `spark-apps`.
+func (o OceanSparkOutput) AdditionalAppNamespaces() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OceanSpark) []string { return v.AdditionalAppNamespaces }).(pulumi.StringArrayOutput)
+}
+
+type OceanSparkPtrOutput struct{ *pulumi.OutputState }
+
+func (OceanSparkPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanSpark)(nil)).Elem()
+}
+
+func (o OceanSparkPtrOutput) ToOceanSparkPtrOutput() OceanSparkPtrOutput {
+	return o
+}
+
+func (o OceanSparkPtrOutput) ToOceanSparkPtrOutputWithContext(ctx context.Context) OceanSparkPtrOutput {
+	return o
+}
+
+func (o OceanSparkPtrOutput) Elem() OceanSparkOutput {
+	return o.ApplyT(func(v *OceanSpark) OceanSpark {
+		if v != nil {
+			return *v
+		}
+		var ret OceanSpark
+		return ret
+	}).(OceanSparkOutput)
+}
+
+// - List of Kubernetes namespaces that should be configured to run Spark applications, in addition to the default Spark application namespace `spark-apps`.
+func (o OceanSparkPtrOutput) AdditionalAppNamespaces() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OceanSpark) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AdditionalAppNamespaces
+	}).(pulumi.StringArrayOutput)
+}
+
 type OceanWebhook struct {
 	// - List of ports allowed to use on the host network - if empty default is `25554`.
 	HostNetworkPorts []int `pulumi:"hostNetworkPorts"`
@@ -1263,6 +1400,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanIngressPrivateLinkPtrInput)(nil)).Elem(), OceanIngressPrivateLinkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLogCollectionInput)(nil)).Elem(), OceanLogCollectionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLogCollectionPtrInput)(nil)).Elem(), OceanLogCollectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanSparkInput)(nil)).Elem(), OceanSparkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanSparkPtrInput)(nil)).Elem(), OceanSparkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanWebhookInput)(nil)).Elem(), OceanWebhookArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanWebhookPtrInput)(nil)).Elem(), OceanWebhookArgs{})
 	pulumi.RegisterOutputType(OceanComputeOutput{})
@@ -1279,6 +1418,8 @@ func init() {
 	pulumi.RegisterOutputType(OceanIngressPrivateLinkPtrOutput{})
 	pulumi.RegisterOutputType(OceanLogCollectionOutput{})
 	pulumi.RegisterOutputType(OceanLogCollectionPtrOutput{})
+	pulumi.RegisterOutputType(OceanSparkOutput{})
+	pulumi.RegisterOutputType(OceanSparkPtrOutput{})
 	pulumi.RegisterOutputType(OceanWebhookOutput{})
 	pulumi.RegisterOutputType(OceanWebhookPtrOutput{})
 }
