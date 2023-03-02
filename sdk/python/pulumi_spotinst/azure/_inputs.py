@@ -44,6 +44,13 @@ __all__ = [
     'OceanNetworkNetworkInterfaceArgs',
     'OceanNetworkNetworkInterfaceAdditionalIpConfigArgs',
     'OceanNetworkNetworkInterfaceSecurityGroupArgs',
+    'OceanNpAutoscalerArgs',
+    'OceanNpAutoscalerAutoscaleDownArgs',
+    'OceanNpAutoscalerAutoscaleHeadroomArgs',
+    'OceanNpAutoscalerAutoscaleHeadroomAutomaticArgs',
+    'OceanNpAutoscalerResourceLimitsArgs',
+    'OceanNpHealthArgs',
+    'OceanNpTaintArgs',
     'OceanOsDiskArgs',
     'OceanStrategyArgs',
     'OceanTagArgs',
@@ -2256,6 +2263,206 @@ class OceanNetworkNetworkInterfaceSecurityGroupArgs:
     @resource_group_name.setter
     def resource_group_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "resource_group_name", value)
+
+
+@pulumi.input_type
+class OceanNpAutoscalerArgs:
+    def __init__(__self__, *,
+                 autoscale_down: Optional[pulumi.Input['OceanNpAutoscalerAutoscaleDownArgs']] = None,
+                 autoscale_headroom: Optional[pulumi.Input['OceanNpAutoscalerAutoscaleHeadroomArgs']] = None,
+                 autoscale_is_enabled: Optional[pulumi.Input[bool]] = None,
+                 resource_limits: Optional[pulumi.Input['OceanNpAutoscalerResourceLimitsArgs']] = None):
+        if autoscale_down is not None:
+            pulumi.set(__self__, "autoscale_down", autoscale_down)
+        if autoscale_headroom is not None:
+            pulumi.set(__self__, "autoscale_headroom", autoscale_headroom)
+        if autoscale_is_enabled is not None:
+            pulumi.set(__self__, "autoscale_is_enabled", autoscale_is_enabled)
+        if resource_limits is not None:
+            pulumi.set(__self__, "resource_limits", resource_limits)
+
+    @property
+    @pulumi.getter(name="autoscaleDown")
+    def autoscale_down(self) -> Optional[pulumi.Input['OceanNpAutoscalerAutoscaleDownArgs']]:
+        return pulumi.get(self, "autoscale_down")
+
+    @autoscale_down.setter
+    def autoscale_down(self, value: Optional[pulumi.Input['OceanNpAutoscalerAutoscaleDownArgs']]):
+        pulumi.set(self, "autoscale_down", value)
+
+    @property
+    @pulumi.getter(name="autoscaleHeadroom")
+    def autoscale_headroom(self) -> Optional[pulumi.Input['OceanNpAutoscalerAutoscaleHeadroomArgs']]:
+        return pulumi.get(self, "autoscale_headroom")
+
+    @autoscale_headroom.setter
+    def autoscale_headroom(self, value: Optional[pulumi.Input['OceanNpAutoscalerAutoscaleHeadroomArgs']]):
+        pulumi.set(self, "autoscale_headroom", value)
+
+    @property
+    @pulumi.getter(name="autoscaleIsEnabled")
+    def autoscale_is_enabled(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "autoscale_is_enabled")
+
+    @autoscale_is_enabled.setter
+    def autoscale_is_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "autoscale_is_enabled", value)
+
+    @property
+    @pulumi.getter(name="resourceLimits")
+    def resource_limits(self) -> Optional[pulumi.Input['OceanNpAutoscalerResourceLimitsArgs']]:
+        return pulumi.get(self, "resource_limits")
+
+    @resource_limits.setter
+    def resource_limits(self, value: Optional[pulumi.Input['OceanNpAutoscalerResourceLimitsArgs']]):
+        pulumi.set(self, "resource_limits", value)
+
+
+@pulumi.input_type
+class OceanNpAutoscalerAutoscaleDownArgs:
+    def __init__(__self__, *,
+                 max_scale_down_percentage: Optional[pulumi.Input[int]] = None):
+        if max_scale_down_percentage is not None:
+            pulumi.set(__self__, "max_scale_down_percentage", max_scale_down_percentage)
+
+    @property
+    @pulumi.getter(name="maxScaleDownPercentage")
+    def max_scale_down_percentage(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "max_scale_down_percentage")
+
+    @max_scale_down_percentage.setter
+    def max_scale_down_percentage(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_scale_down_percentage", value)
+
+
+@pulumi.input_type
+class OceanNpAutoscalerAutoscaleHeadroomArgs:
+    def __init__(__self__, *,
+                 automatic: Optional[pulumi.Input['OceanNpAutoscalerAutoscaleHeadroomAutomaticArgs']] = None):
+        if automatic is not None:
+            pulumi.set(__self__, "automatic", automatic)
+
+    @property
+    @pulumi.getter
+    def automatic(self) -> Optional[pulumi.Input['OceanNpAutoscalerAutoscaleHeadroomAutomaticArgs']]:
+        return pulumi.get(self, "automatic")
+
+    @automatic.setter
+    def automatic(self, value: Optional[pulumi.Input['OceanNpAutoscalerAutoscaleHeadroomAutomaticArgs']]):
+        pulumi.set(self, "automatic", value)
+
+
+@pulumi.input_type
+class OceanNpAutoscalerAutoscaleHeadroomAutomaticArgs:
+    def __init__(__self__, *,
+                 is_enabled: Optional[pulumi.Input[bool]] = None,
+                 percentage: Optional[pulumi.Input[int]] = None):
+        if is_enabled is not None:
+            pulumi.set(__self__, "is_enabled", is_enabled)
+        if percentage is not None:
+            pulumi.set(__self__, "percentage", percentage)
+
+    @property
+    @pulumi.getter(name="isEnabled")
+    def is_enabled(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "is_enabled")
+
+    @is_enabled.setter
+    def is_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_enabled", value)
+
+    @property
+    @pulumi.getter
+    def percentage(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "percentage")
+
+    @percentage.setter
+    def percentage(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "percentage", value)
+
+
+@pulumi.input_type
+class OceanNpAutoscalerResourceLimitsArgs:
+    def __init__(__self__, *,
+                 max_memory_gib: Optional[pulumi.Input[int]] = None,
+                 max_vcpu: Optional[pulumi.Input[int]] = None):
+        if max_memory_gib is not None:
+            pulumi.set(__self__, "max_memory_gib", max_memory_gib)
+        if max_vcpu is not None:
+            pulumi.set(__self__, "max_vcpu", max_vcpu)
+
+    @property
+    @pulumi.getter(name="maxMemoryGib")
+    def max_memory_gib(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "max_memory_gib")
+
+    @max_memory_gib.setter
+    def max_memory_gib(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_memory_gib", value)
+
+    @property
+    @pulumi.getter(name="maxVcpu")
+    def max_vcpu(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "max_vcpu")
+
+    @max_vcpu.setter
+    def max_vcpu(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_vcpu", value)
+
+
+@pulumi.input_type
+class OceanNpHealthArgs:
+    def __init__(__self__, *,
+                 grace_period: Optional[pulumi.Input[int]] = None):
+        if grace_period is not None:
+            pulumi.set(__self__, "grace_period", grace_period)
+
+    @property
+    @pulumi.getter(name="gracePeriod")
+    def grace_period(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "grace_period")
+
+    @grace_period.setter
+    def grace_period(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "grace_period", value)
+
+
+@pulumi.input_type
+class OceanNpTaintArgs:
+    def __init__(__self__, *,
+                 effect: pulumi.Input[str],
+                 key: pulumi.Input[str],
+                 value: pulumi.Input[str]):
+        pulumi.set(__self__, "effect", effect)
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def effect(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "effect")
+
+    @effect.setter
+    def effect(self, value: pulumi.Input[str]):
+        pulumi.set(self, "effect", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value", value)
 
 
 @pulumi.input_type

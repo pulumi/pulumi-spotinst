@@ -84,12 +84,16 @@ func Provider() tfbridge.ProviderInfo {
 		Config:           map[string]*tfbridge.SchemaInfo{},
 		UpstreamRepoPath: "./upstream",
 		Resources: map[string]*tfbridge.ResourceInfo{
-			"spotinst_elastigroup_aws":              {Tok: makeResource(awsMod, "Elastigroup")},
-			"spotinst_elastigroup_aws_beanstalk":    {Tok: makeResource(awsMod, "Beanstalk")},
-			"spotinst_elastigroup_aws_suspension":   {Tok: makeResource(awsMod, "Suspension")},
-			"spotinst_managed_instance_aws":         {Tok: makeResource(awsMod, "ManagedInstance")},
-			"spotinst_elastigroup_azure":            {Tok: makeResource(azureMod, "Elastigroup")},
-			"spotinst_ocean_aks":                    {Tok: makeResource(azureMod, "Ocean")},
+			"spotinst_elastigroup_aws":            {Tok: makeResource(awsMod, "Elastigroup")},
+			"spotinst_elastigroup_aws_beanstalk":  {Tok: makeResource(awsMod, "Beanstalk")},
+			"spotinst_elastigroup_aws_suspension": {Tok: makeResource(awsMod, "Suspension")},
+			"spotinst_managed_instance_aws":       {Tok: makeResource(awsMod, "ManagedInstance")},
+			"spotinst_elastigroup_azure":          {Tok: makeResource(azureMod, "Elastigroup")},
+			"spotinst_ocean_aks":                  {Tok: makeResource(azureMod, "Ocean")},
+			"spotinst_ocean_aks_np": {
+				Tok:  makeResource(azureMod, "OceanNp"),
+				Docs: noUpstreamDocs,
+			},
 			"spotinst_ocean_aks_virtual_node_group": {Tok: makeResource(azureMod, "OceanVirtualNodeGroup")},
 			"spotinst_elastigroup_gcp": {
 				Tok: makeResource(gcpMod, "Elastigroup"),
@@ -108,27 +112,27 @@ func Provider() tfbridge.ProviderInfo {
 			// Lack of docs is tracked in: https://github.com/pulumi/pulumi-spotinst/issues/193
 			"spotinst_multai_balancer": {
 				Tok:  makeResource(multaiMod, "Balancer"),
-				Docs: noUpstreamDocs(),
+				Docs: noUpstreamDocs,
 			},
 			"spotinst_multai_deployment": {
 				Tok:  makeResource(multaiMod, "Deployment"),
-				Docs: noUpstreamDocs(),
+				Docs: noUpstreamDocs,
 			},
 			"spotinst_multai_listener": {
 				Tok:  makeResource(multaiMod, "Listener"),
-				Docs: noUpstreamDocs(),
+				Docs: noUpstreamDocs,
 			},
 			"spotinst_multai_routing_rule": {
 				Tok:  makeResource(multaiMod, "RoutingRule"),
-				Docs: noUpstreamDocs(),
+				Docs: noUpstreamDocs,
 			},
 			"spotinst_multai_target": {
 				Tok:  makeResource(multaiMod, "Target"),
-				Docs: noUpstreamDocs(),
+				Docs: noUpstreamDocs,
 			},
 			"spotinst_multai_target_set": {
 				Tok:  makeResource(multaiMod, "TargetSet"),
-				Docs: noUpstreamDocs(),
+				Docs: noUpstreamDocs,
 			},
 
 			"spotinst_ocean_aws":                              {Tok: makeResource(awsMod, "Ocean")},
@@ -140,6 +144,7 @@ func Provider() tfbridge.ProviderInfo {
 			"spotinst_ocean_gke_launch_spec":                  {Tok: makeResource(gkeMod, "OceanLaunchSpec")},
 			"spotinst_ocean_gke_launch_spec_import":           {Tok: makeResource(gkeMod, "OceanLaunchSpecImport")},
 			"spotinst_ocean_spark":                            {Tok: makeResource(sparkMod, "Ocean")},
+			"spotinst_ocean_spark_virtual_node_group":         {Tok: makeResource(sparkMod, "OceanVirtualNodeGroup")},
 			"spotinst_subscription":                           {Tok: makeResource(mainMod, "Subscription")},
 			"spotinst_health_check":                           {Tok: makeResource(mainMod, "HealthCheck")},
 			"spotinst_elastigroup_azure_v3":                   {Tok: makeResource(mainMod, "ElastigroupAzureV3")},
@@ -184,8 +189,6 @@ func Provider() tfbridge.ProviderInfo {
 	return prov
 }
 
-func noUpstreamDocs() *tfbridge.DocInfo {
-	return &tfbridge.DocInfo{
-		Markdown: []byte(" "),
-	}
+var noUpstreamDocs = &tfbridge.DocInfo{
+	Markdown: []byte(" "),
 }

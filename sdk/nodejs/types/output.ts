@@ -3604,6 +3604,41 @@ export namespace azure {
         resourceGroupName: string;
     }
 
+    export interface OceanNpAutoscaler {
+        autoscaleDown: outputs.azure.OceanNpAutoscalerAutoscaleDown;
+        autoscaleHeadroom: outputs.azure.OceanNpAutoscalerAutoscaleHeadroom;
+        autoscaleIsEnabled?: boolean;
+        resourceLimits: outputs.azure.OceanNpAutoscalerResourceLimits;
+    }
+
+    export interface OceanNpAutoscalerAutoscaleDown {
+        maxScaleDownPercentage?: number;
+    }
+
+    export interface OceanNpAutoscalerAutoscaleHeadroom {
+        automatic: outputs.azure.OceanNpAutoscalerAutoscaleHeadroomAutomatic;
+    }
+
+    export interface OceanNpAutoscalerAutoscaleHeadroomAutomatic {
+        isEnabled?: boolean;
+        percentage: number;
+    }
+
+    export interface OceanNpAutoscalerResourceLimits {
+        maxMemoryGib?: number;
+        maxVcpu?: number;
+    }
+
+    export interface OceanNpHealth {
+        gracePeriod?: number;
+    }
+
+    export interface OceanNpTaint {
+        effect: string;
+        key: string;
+        value: string;
+    }
+
     export interface OceanOsDisk {
         /**
          * The size of the OS disk in GB.
@@ -5210,6 +5245,13 @@ export namespace spark {
          * - Enable/disable the collection of driver logs. When enabled, driver logs are stored by NetApp and can be downloaded from the Spot console web interface. The driver logs are deleted after 30 days.
          */
         collectDriverLogs: boolean;
+    }
+
+    export interface OceanSpark {
+        /**
+         * - List of Kubernetes namespaces that should be configured to run Spark applications, in addition to the default Spark application namespace `spark-apps`.
+         */
+        additionalAppNamespaces: string[];
     }
 
     export interface OceanWebhook {

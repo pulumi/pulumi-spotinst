@@ -17,6 +17,7 @@ __all__ = [
     'OceanIngressLoadBalancerArgs',
     'OceanIngressPrivateLinkArgs',
     'OceanLogCollectionArgs',
+    'OceanSparkArgs',
     'OceanWebhookArgs',
 ]
 
@@ -267,6 +268,29 @@ class OceanLogCollectionArgs:
     @collect_driver_logs.setter
     def collect_driver_logs(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "collect_driver_logs", value)
+
+
+@pulumi.input_type
+class OceanSparkArgs:
+    def __init__(__self__, *,
+                 additional_app_namespaces: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] additional_app_namespaces: - List of Kubernetes namespaces that should be configured to run Spark applications, in addition to the default Spark application namespace `spark-apps`.
+        """
+        if additional_app_namespaces is not None:
+            pulumi.set(__self__, "additional_app_namespaces", additional_app_namespaces)
+
+    @property
+    @pulumi.getter(name="additionalAppNamespaces")
+    def additional_app_namespaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        - List of Kubernetes namespaces that should be configured to run Spark applications, in addition to the default Spark application namespace `spark-apps`.
+        """
+        return pulumi.get(self, "additional_app_namespaces")
+
+    @additional_app_namespaces.setter
+    def additional_app_namespaces(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "additional_app_namespaces", value)
 
 
 @pulumi.input_type

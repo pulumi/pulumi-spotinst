@@ -7,6 +7,7 @@ import typing
 # Export this package's modules as members:
 from .elastigroup import *
 from .ocean import *
+from .ocean_np import *
 from .ocean_virtual_node_group import *
 from ._inputs import *
 from . import outputs
