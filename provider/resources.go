@@ -25,6 +25,7 @@ import (
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/x"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
+	"github.com/pulumi/pulumi/sdk/v3/go/common/util/contract"
 	"github.com/spotinst/terraform-provider-spotinst/spotinst"
 )
 
@@ -184,7 +185,16 @@ func Provider() tfbridge.ProviderInfo {
 			Namespaces: namespaceMap,
 		},
 	}
-	x
+	err := x.ComputeDefaults(&prov, x.TokensKnownModules("spotinst_", mainMod, []string{
+		"aws_",
+		"ecs_",
+		"gcp_",
+		"gke_",
+		"azure_",
+		"multai_",
+		"spark_",
+	}, x.MakeStandardToken(mainPkg)))
+	contract.AssertNoError(err)
 	prov.SetAutonaming(255, "-")
 
 	return prov
