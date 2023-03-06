@@ -8246,181 +8246,6 @@
                 }
             }
         },
-        "spotinst:azure/OceanNpAutoscaler:OceanNpAutoscaler": {
-            "properties": {
-                "autoscaleDown": {
-                    "$ref": "#/types/spotinst:azure/OceanNpAutoscalerAutoscaleDown:OceanNpAutoscalerAutoscaleDown",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
-                },
-                "autoscaleHeadroom": {
-                    "$ref": "#/types/spotinst:azure/OceanNpAutoscalerAutoscaleHeadroom:OceanNpAutoscalerAutoscaleHeadroom",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
-                },
-                "autoscaleIsEnabled": {
-                    "type": "boolean",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
-                },
-                "resourceLimits": {
-                    "$ref": "#/types/spotinst:azure/OceanNpAutoscalerResourceLimits:OceanNpAutoscalerResourceLimits",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
-                }
-            },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "autoscaleDown",
-                        "autoscaleHeadroom",
-                        "resourceLimits"
-                    ]
-                }
-            }
-        },
-        "spotinst:azure/OceanNpAutoscalerAutoscaleDown:OceanNpAutoscalerAutoscaleDown": {
-            "properties": {
-                "maxScaleDownPercentage": {
-                    "type": "integer",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
-                }
-            },
-            "type": "object"
-        },
-        "spotinst:azure/OceanNpAutoscalerAutoscaleHeadroom:OceanNpAutoscalerAutoscaleHeadroom": {
-            "properties": {
-                "automatic": {
-                    "$ref": "#/types/spotinst:azure/OceanNpAutoscalerAutoscaleHeadroomAutomatic:OceanNpAutoscalerAutoscaleHeadroomAutomatic",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
-                }
-            },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "automatic"
-                    ]
-                }
-            }
-        },
-        "spotinst:azure/OceanNpAutoscalerAutoscaleHeadroomAutomatic:OceanNpAutoscalerAutoscaleHeadroomAutomatic": {
-            "properties": {
-                "isEnabled": {
-                    "type": "boolean",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
-                },
-                "percentage": {
-                    "type": "integer",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
-                }
-            },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "percentage"
-                    ]
-                }
-            }
-        },
-        "spotinst:azure/OceanNpAutoscalerResourceLimits:OceanNpAutoscalerResourceLimits": {
-            "properties": {
-                "maxMemoryGib": {
-                    "type": "integer",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
-                },
-                "maxVcpu": {
-                    "type": "integer",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
-                }
-            },
-            "type": "object"
-        },
-        "spotinst:azure/OceanNpHealth:OceanNpHealth": {
-            "properties": {
-                "gracePeriod": {
-                    "type": "integer",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
-                }
-            },
-            "type": "object"
-        },
-        "spotinst:azure/OceanNpTaint:OceanNpTaint": {
-            "properties": {
-                "effect": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
-                },
-                "key": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
-                },
-                "value": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
-                }
-            },
-            "type": "object",
-            "required": [
-                "effect",
-                "key",
-                "value"
-            ]
-        },
         "spotinst:azure/OceanOsDisk:OceanOsDisk": {
             "properties": {
                 "sizeGb": {
@@ -14959,30 +14784,6 @@
                 }
             }
         },
-        "spotinst:spark/OceanSpark:OceanSpark": {
-            "properties": {
-                "additionalAppNamespaces": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    },
-                    "description": "- List of Kubernetes namespaces that should be configured to run Spark applications, in addition to the default Spark application namespace `spark-apps`.\n",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
-                }
-            },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "additionalAppNamespaces"
-                    ]
-                }
-            }
-        },
         "spotinst:spark/OceanWebhook:OceanWebhook": {
             "properties": {
                 "hostNetworkPorts": {
@@ -19820,259 +19621,6 @@
                 "type": "object"
             }
         },
-        "spotinst:azure/oceanNp:OceanNp": {
-            "properties": {
-                "aksClusterName": {
-                    "type": "string"
-                },
-                "aksInfrastructureResourceGroupName": {
-                    "type": "string"
-                },
-                "aksRegion": {
-                    "type": "string"
-                },
-                "aksResourceGroupName": {
-                    "type": "string"
-                },
-                "autoscaler": {
-                    "$ref": "#/types/spotinst:azure/OceanNpAutoscaler:OceanNpAutoscaler"
-                },
-                "availabilityZones": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    }
-                },
-                "controllerClusterId": {
-                    "type": "string"
-                },
-                "enableNodePublicIp": {
-                    "type": "boolean"
-                },
-                "fallbackToOndemand": {
-                    "type": "boolean"
-                },
-                "health": {
-                    "$ref": "#/types/spotinst:azure/OceanNpHealth:OceanNpHealth"
-                },
-                "labels": {
-                    "type": "object",
-                    "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
-                    }
-                },
-                "maxCount": {
-                    "type": "integer"
-                },
-                "maxPodsPerNode": {
-                    "type": "integer"
-                },
-                "minCount": {
-                    "type": "integer"
-                },
-                "name": {
-                    "type": "string"
-                },
-                "osDiskSizeGb": {
-                    "type": "integer"
-                },
-                "osDiskType": {
-                    "type": "string"
-                },
-                "osType": {
-                    "type": "string"
-                },
-                "spotPercentage": {
-                    "type": "integer"
-                },
-                "tags": {
-                    "type": "object",
-                    "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
-                    }
-                },
-                "taints": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/spotinst:azure/OceanNpTaint:OceanNpTaint"
-                    }
-                }
-            },
-            "required": [
-                "aksClusterName",
-                "aksInfrastructureResourceGroupName",
-                "aksRegion",
-                "aksResourceGroupName",
-                "availabilityZones",
-                "controllerClusterId",
-                "health",
-                "name"
-            ],
-            "inputProperties": {
-                "aksClusterName": {
-                    "type": "string"
-                },
-                "aksInfrastructureResourceGroupName": {
-                    "type": "string"
-                },
-                "aksRegion": {
-                    "type": "string"
-                },
-                "aksResourceGroupName": {
-                    "type": "string"
-                },
-                "autoscaler": {
-                    "$ref": "#/types/spotinst:azure/OceanNpAutoscaler:OceanNpAutoscaler"
-                },
-                "availabilityZones": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    }
-                },
-                "controllerClusterId": {
-                    "type": "string"
-                },
-                "enableNodePublicIp": {
-                    "type": "boolean"
-                },
-                "fallbackToOndemand": {
-                    "type": "boolean"
-                },
-                "health": {
-                    "$ref": "#/types/spotinst:azure/OceanNpHealth:OceanNpHealth"
-                },
-                "labels": {
-                    "type": "object",
-                    "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
-                    }
-                },
-                "maxCount": {
-                    "type": "integer"
-                },
-                "maxPodsPerNode": {
-                    "type": "integer"
-                },
-                "minCount": {
-                    "type": "integer"
-                },
-                "name": {
-                    "type": "string"
-                },
-                "osDiskSizeGb": {
-                    "type": "integer"
-                },
-                "osDiskType": {
-                    "type": "string"
-                },
-                "osType": {
-                    "type": "string"
-                },
-                "spotPercentage": {
-                    "type": "integer"
-                },
-                "tags": {
-                    "type": "object",
-                    "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
-                    }
-                },
-                "taints": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/spotinst:azure/OceanNpTaint:OceanNpTaint"
-                    }
-                }
-            },
-            "requiredInputs": [
-                "aksClusterName",
-                "aksInfrastructureResourceGroupName",
-                "aksRegion",
-                "aksResourceGroupName"
-            ],
-            "stateInputs": {
-                "description": "Input properties used for looking up and filtering OceanNp resources.\n",
-                "properties": {
-                    "aksClusterName": {
-                        "type": "string"
-                    },
-                    "aksInfrastructureResourceGroupName": {
-                        "type": "string"
-                    },
-                    "aksRegion": {
-                        "type": "string"
-                    },
-                    "aksResourceGroupName": {
-                        "type": "string"
-                    },
-                    "autoscaler": {
-                        "$ref": "#/types/spotinst:azure/OceanNpAutoscaler:OceanNpAutoscaler"
-                    },
-                    "availabilityZones": {
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        }
-                    },
-                    "controllerClusterId": {
-                        "type": "string"
-                    },
-                    "enableNodePublicIp": {
-                        "type": "boolean"
-                    },
-                    "fallbackToOndemand": {
-                        "type": "boolean"
-                    },
-                    "health": {
-                        "$ref": "#/types/spotinst:azure/OceanNpHealth:OceanNpHealth"
-                    },
-                    "labels": {
-                        "type": "object",
-                        "additionalProperties": {
-                            "$ref": "pulumi.json#/Any"
-                        }
-                    },
-                    "maxCount": {
-                        "type": "integer"
-                    },
-                    "maxPodsPerNode": {
-                        "type": "integer"
-                    },
-                    "minCount": {
-                        "type": "integer"
-                    },
-                    "name": {
-                        "type": "string"
-                    },
-                    "osDiskSizeGb": {
-                        "type": "integer"
-                    },
-                    "osDiskType": {
-                        "type": "string"
-                    },
-                    "osType": {
-                        "type": "string"
-                    },
-                    "spotPercentage": {
-                        "type": "integer"
-                    },
-                    "tags": {
-                        "type": "object",
-                        "additionalProperties": {
-                            "$ref": "pulumi.json#/Any"
-                        }
-                    },
-                    "taints": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/types/spotinst:azure/OceanNpTaint:OceanNpTaint"
-                        }
-                    }
-                },
-                "type": "object"
-            }
-        },
         "spotinst:azure/oceanVirtualNodeGroup:OceanVirtualNodeGroup": {
             "description": "Manages a Spotinst Ocean AKS Virtual Node Group resource.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as spotinst from \"@pulumi/spotinst\";\n\nconst example = new spotinst.azure.OceanVirtualNodeGroup(\"example\", {\n    autoscales: [{\n        autoHeadroomPercentage: 5,\n        autoscaleHeadrooms: [{\n            cpuPerUnit: 4,\n            gpuPerUnit: 8,\n            memoryPerUnit: 100,\n            numOfUnits: 16,\n        }],\n    }],\n    labels: [{\n        key: \"label_key\",\n        value: \"label_value\",\n    }],\n    launchSpecifications: [{\n        maxPods: 30,\n        osDisk: {\n            sizeGb: 100,\n            type: \"Standard_LRS\",\n            utilizeEphemeralStorage: false,\n        },\n        tags: [{\n            key: \"label_key\",\n            value: \"label_value\",\n        }],\n    }],\n    oceanId: \"o-12345\",\n    resourceLimits: [{\n        maxInstanceCount: 4,\n    }],\n    taints: [{\n        effect: \"NoSchedule\",\n        key: \"taint_key\",\n        value: \"taint_value\",\n    }],\n    zones: [\n        \"1\",\n        \"2\",\n        \"3\",\n    ],\n});\n```\n```python\nimport pulumi\nimport pulumi_spotinst as spotinst\n\nexample = spotinst.azure.OceanVirtualNodeGroup(\"example\",\n    autoscales=[spotinst.azure.OceanVirtualNodeGroupAutoscaleArgs(\n        auto_headroom_percentage=5,\n        autoscale_headrooms=[spotinst.azure.OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArgs(\n            cpu_per_unit=4,\n            gpu_per_unit=8,\n            memory_per_unit=100,\n            num_of_units=16,\n        )],\n    )],\n    labels=[spotinst.azure.OceanVirtualNodeGroupLabelArgs(\n        key=\"label_key\",\n        value=\"label_value\",\n    )],\n    launch_specifications=[spotinst.azure.OceanVirtualNodeGroupLaunchSpecificationArgs(\n        max_pods=30,\n        os_disk=spotinst.azure.OceanVirtualNodeGroupLaunchSpecificationOsDiskArgs(\n            size_gb=100,\n            type=\"Standard_LRS\",\n            utilize_ephemeral_storage=False,\n        ),\n        tags=[spotinst.azure.OceanVirtualNodeGroupLaunchSpecificationTagArgs(\n            key=\"label_key\",\n            value=\"label_value\",\n        )],\n    )],\n    ocean_id=\"o-12345\",\n    resource_limits=[spotinst.azure.OceanVirtualNodeGroupResourceLimitArgs(\n        max_instance_count=4,\n    )],\n    taints=[spotinst.azure.OceanVirtualNodeGroupTaintArgs(\n        effect=\"NoSchedule\",\n        key=\"taint_key\",\n        value=\"taint_value\",\n    )],\n    zones=[\n        \"1\",\n        \"2\",\n        \"3\",\n    ])\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing SpotInst = Pulumi.SpotInst;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new SpotInst.Azure.OceanVirtualNodeGroup(\"example\", new()\n    {\n        Autoscales = new[]\n        {\n            new SpotInst.Azure.Inputs.OceanVirtualNodeGroupAutoscaleArgs\n            {\n                AutoHeadroomPercentage = 5,\n                AutoscaleHeadrooms = new[]\n                {\n                    new SpotInst.Azure.Inputs.OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArgs\n                    {\n                        CpuPerUnit = 4,\n                        GpuPerUnit = 8,\n                        MemoryPerUnit = 100,\n                        NumOfUnits = 16,\n                    },\n                },\n            },\n        },\n        Labels = new[]\n        {\n            new SpotInst.Azure.Inputs.OceanVirtualNodeGroupLabelArgs\n            {\n                Key = \"label_key\",\n                Value = \"label_value\",\n            },\n        },\n        LaunchSpecifications = new[]\n        {\n            new SpotInst.Azure.Inputs.OceanVirtualNodeGroupLaunchSpecificationArgs\n            {\n                MaxPods = 30,\n                OsDisk = new SpotInst.Azure.Inputs.OceanVirtualNodeGroupLaunchSpecificationOsDiskArgs\n                {\n                    SizeGb = 100,\n                    Type = \"Standard_LRS\",\n                    UtilizeEphemeralStorage = false,\n                },\n                Tags = new[]\n                {\n                    new SpotInst.Azure.Inputs.OceanVirtualNodeGroupLaunchSpecificationTagArgs\n                    {\n                        Key = \"label_key\",\n                        Value = \"label_value\",\n                    },\n                },\n            },\n        },\n        OceanId = \"o-12345\",\n        ResourceLimits = new[]\n        {\n            new SpotInst.Azure.Inputs.OceanVirtualNodeGroupResourceLimitArgs\n            {\n                MaxInstanceCount = 4,\n            },\n        },\n        Taints = new[]\n        {\n            new SpotInst.Azure.Inputs.OceanVirtualNodeGroupTaintArgs\n            {\n                Effect = \"NoSchedule\",\n                Key = \"taint_key\",\n                Value = \"taint_value\",\n            },\n        },\n        Zones = new[]\n        {\n            \"1\",\n            \"2\",\n            \"3\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst/azure\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := azure.NewOceanVirtualNodeGroup(ctx, \"example\", \u0026azure.OceanVirtualNodeGroupArgs{\n\t\t\tAutoscales: azure.OceanVirtualNodeGroupAutoscaleArray{\n\t\t\t\t\u0026azure.OceanVirtualNodeGroupAutoscaleArgs{\n\t\t\t\t\tAutoHeadroomPercentage: pulumi.Int(5),\n\t\t\t\t\tAutoscaleHeadrooms: azure.OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArray{\n\t\t\t\t\t\t\u0026azure.OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArgs{\n\t\t\t\t\t\t\tCpuPerUnit:    pulumi.Int(4),\n\t\t\t\t\t\t\tGpuPerUnit:    pulumi.Int(8),\n\t\t\t\t\t\t\tMemoryPerUnit: pulumi.Int(100),\n\t\t\t\t\t\t\tNumOfUnits:    pulumi.Int(16),\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tLabels: azure.OceanVirtualNodeGroupLabelArray{\n\t\t\t\t\u0026azure.OceanVirtualNodeGroupLabelArgs{\n\t\t\t\t\tKey:   pulumi.String(\"label_key\"),\n\t\t\t\t\tValue: pulumi.String(\"label_value\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tLaunchSpecifications: azure.OceanVirtualNodeGroupLaunchSpecificationArray{\n\t\t\t\t\u0026azure.OceanVirtualNodeGroupLaunchSpecificationArgs{\n\t\t\t\t\tMaxPods: pulumi.Int(30),\n\t\t\t\t\tOsDisk: \u0026azure.OceanVirtualNodeGroupLaunchSpecificationOsDiskArgs{\n\t\t\t\t\t\tSizeGb:                  pulumi.Int(100),\n\t\t\t\t\t\tType:                    pulumi.String(\"Standard_LRS\"),\n\t\t\t\t\t\tUtilizeEphemeralStorage: pulumi.Bool(false),\n\t\t\t\t\t},\n\t\t\t\t\tTags: azure.OceanVirtualNodeGroupLaunchSpecificationTagArray{\n\t\t\t\t\t\t\u0026azure.OceanVirtualNodeGroupLaunchSpecificationTagArgs{\n\t\t\t\t\t\t\tKey:   pulumi.String(\"label_key\"),\n\t\t\t\t\t\t\tValue: pulumi.String(\"label_value\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tOceanId: pulumi.String(\"o-12345\"),\n\t\t\tResourceLimits: azure.OceanVirtualNodeGroupResourceLimitArray{\n\t\t\t\t\u0026azure.OceanVirtualNodeGroupResourceLimitArgs{\n\t\t\t\t\tMaxInstanceCount: pulumi.Int(4),\n\t\t\t\t},\n\t\t\t},\n\t\t\tTaints: azure.OceanVirtualNodeGroupTaintArray{\n\t\t\t\t\u0026azure.OceanVirtualNodeGroupTaintArgs{\n\t\t\t\t\tEffect: pulumi.String(\"NoSchedule\"),\n\t\t\t\t\tKey:    pulumi.String(\"taint_key\"),\n\t\t\t\t\tValue:  pulumi.String(\"taint_value\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tZones: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"1\"),\n\t\t\t\tpulumi.String(\"2\"),\n\t\t\t\tpulumi.String(\"3\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.spotinst.azure.OceanVirtualNodeGroup;\nimport com.pulumi.spotinst.azure.OceanVirtualNodeGroupArgs;\nimport com.pulumi.spotinst.azure.inputs.OceanVirtualNodeGroupAutoscaleArgs;\nimport com.pulumi.spotinst.azure.inputs.OceanVirtualNodeGroupLabelArgs;\nimport com.pulumi.spotinst.azure.inputs.OceanVirtualNodeGroupLaunchSpecificationArgs;\nimport com.pulumi.spotinst.azure.inputs.OceanVirtualNodeGroupLaunchSpecificationOsDiskArgs;\nimport com.pulumi.spotinst.azure.inputs.OceanVirtualNodeGroupResourceLimitArgs;\nimport com.pulumi.spotinst.azure.inputs.OceanVirtualNodeGroupTaintArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new OceanVirtualNodeGroup(\"example\", OceanVirtualNodeGroupArgs.builder()        \n            .autoscales(OceanVirtualNodeGroupAutoscaleArgs.builder()\n                .autoHeadroomPercentage(5)\n                .autoscaleHeadrooms(OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArgs.builder()\n                    .cpuPerUnit(4)\n                    .gpuPerUnit(8)\n                    .memoryPerUnit(100)\n                    .numOfUnits(16)\n                    .build())\n                .build())\n            .labels(OceanVirtualNodeGroupLabelArgs.builder()\n                .key(\"label_key\")\n                .value(\"label_value\")\n                .build())\n            .launchSpecifications(OceanVirtualNodeGroupLaunchSpecificationArgs.builder()\n                .maxPods(30)\n                .osDisk(OceanVirtualNodeGroupLaunchSpecificationOsDiskArgs.builder()\n                    .sizeGb(100)\n                    .type(\"Standard_LRS\")\n                    .utilizeEphemeralStorage(false)\n                    .build())\n                .tags(OceanVirtualNodeGroupLaunchSpecificationTagArgs.builder()\n                    .key(\"label_key\")\n                    .value(\"label_value\")\n                    .build())\n                .build())\n            .oceanId(\"o-12345\")\n            .resourceLimits(OceanVirtualNodeGroupResourceLimitArgs.builder()\n                .maxInstanceCount(4)\n                .build())\n            .taints(OceanVirtualNodeGroupTaintArgs.builder()\n                .effect(\"NoSchedule\")\n                .key(\"taint_key\")\n                .value(\"taint_value\")\n                .build())\n            .zones(            \n                \"1\",\n                \"2\",\n                \"3\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: spotinst:azure:OceanVirtualNodeGroup\n    properties:\n      autoscales:\n        - autoHeadroomPercentage: 5\n          autoscaleHeadrooms:\n            - cpuPerUnit: 4\n              gpuPerUnit: 8\n              memoryPerUnit: 100\n              numOfUnits: 16\n      labels:\n        - key: label_key\n          value: label_value\n      launchSpecifications:\n        - maxPods: 30\n          osDisk:\n            sizeGb: 100\n            type: Standard_LRS\n            utilizeEphemeralStorage: false\n          tags:\n            - key: label_key\n              value: label_value\n      oceanId: o-12345\n      resourceLimits:\n        - maxInstanceCount: 4\n      taints:\n        - effect: NoSchedule\n          key: taint_key\n          value: taint_value\n      zones:\n        - '1'\n        - '2'\n        - '3'\n```\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\n\nexport const oceanId = spotinst_ocean_aks_.example.id;\n```\n```python\nimport pulumi\n\npulumi.export(\"oceanId\", spotinst_ocean_aks_[\"example\"][\"id\"])\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"oceanId\"] = spotinst_ocean_aks_.Example.Id,\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tctx.Export(\"oceanId\", spotinst_ocean_aks_.Example.Id)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        ctx.export(\"oceanId\", spotinst_ocean_aks_.example().id());\n    }\n}\n```\n```yaml\noutputs:\n  oceanId: ${spotinst_ocean_aks_.example.id}\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
@@ -24195,7 +23743,7 @@
             }
         },
         "spotinst:spark/ocean:Ocean": {
-            "description": "Manages a Spotinst Ocean Spark resource on AWS or GCP.\n\n## Prerequisites\n\nAn existing Ocean cluster is required by this resource. See e.g. the `spotinst.aws.Ocean` resource.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as spotinst from \"@pulumi/spotinst\";\n\nconst example = new spotinst.spark.Ocean(\"example\", {\n    oceanClusterId: \"ocean-cluster-id\",\n    ingress: {\n        controller: {\n            managed: true,\n        },\n        loadBalancer: {\n            managed: true,\n            targetGroupArn: \"arn:aws:elasticloadbalancing:eu-north-1:XXXXXXXXXXXX:targetgroup/my-spark-cluster-nlb-tg/a38c2b83XXXXXXXX\",\n            serviceAnnotations: {\n                \"service.beta.kubernetes.io/aws-load-balancer-security-groups\": \"sg-XXXXXXXXXXXXXXXXX\",\n                \"some-service-annotation-2\": \"some-service-annotation-value-2\",\n            },\n        },\n        customEndpoint: {\n            enabled: false,\n            address: \"my-spark-cluster-nlb-8cbb8da7XXXXXXXX.elb.us-east-1.amazonaws.com\",\n        },\n        privateLink: {\n            enabled: false,\n            vpcEndpointService: \"com.amazonaws.vpce.eu-north-1.vpce-svc-XXXXXXXXXXXXXXXXX\",\n        },\n    },\n    compute: {\n        createVngs: true,\n        useTaints: true,\n    },\n    logCollection: {\n        collectDriverLogs: true,\n    },\n    webhook: {\n        useHostNetwork: false,\n        hostNetworkPorts: [25554],\n    },\n    spark: {\n        additionalAppNamespaces: [\n            \"extra-spark-app-ns-1\",\n            \"extra-spark-app-ns-2\",\n        ],\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_spotinst as spotinst\n\nexample = spotinst.spark.Ocean(\"example\",\n    ocean_cluster_id=\"ocean-cluster-id\",\n    ingress=spotinst.spark.OceanIngressArgs(\n        controller=spotinst.spark.OceanIngressControllerArgs(\n            managed=True,\n        ),\n        load_balancer=spotinst.spark.OceanIngressLoadBalancerArgs(\n            managed=True,\n            target_group_arn=\"arn:aws:elasticloadbalancing:eu-north-1:XXXXXXXXXXXX:targetgroup/my-spark-cluster-nlb-tg/a38c2b83XXXXXXXX\",\n            service_annotations={\n                \"service.beta.kubernetes.io/aws-load-balancer-security-groups\": \"sg-XXXXXXXXXXXXXXXXX\",\n                \"some-service-annotation-2\": \"some-service-annotation-value-2\",\n            },\n        ),\n        custom_endpoint=spotinst.spark.OceanIngressCustomEndpointArgs(\n            enabled=False,\n            address=\"my-spark-cluster-nlb-8cbb8da7XXXXXXXX.elb.us-east-1.amazonaws.com\",\n        ),\n        private_link=spotinst.spark.OceanIngressPrivateLinkArgs(\n            enabled=False,\n            vpc_endpoint_service=\"com.amazonaws.vpce.eu-north-1.vpce-svc-XXXXXXXXXXXXXXXXX\",\n        ),\n    ),\n    compute=spotinst.spark.OceanComputeArgs(\n        create_vngs=True,\n        use_taints=True,\n    ),\n    log_collection=spotinst.spark.OceanLogCollectionArgs(\n        collect_driver_logs=True,\n    ),\n    webhook=spotinst.spark.OceanWebhookArgs(\n        use_host_network=False,\n        host_network_ports=[25554],\n    ),\n    spark=spotinst.spark.OceanSparkArgs(\n        additional_app_namespaces=[\n            \"extra-spark-app-ns-1\",\n            \"extra-spark-app-ns-2\",\n        ],\n    ))\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing SpotInst = Pulumi.SpotInst;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new SpotInst.Spark.Ocean(\"example\", new()\n    {\n        OceanClusterId = \"ocean-cluster-id\",\n        Ingress = new SpotInst.Spark.Inputs.OceanIngressArgs\n        {\n            Controller = new SpotInst.Spark.Inputs.OceanIngressControllerArgs\n            {\n                Managed = true,\n            },\n            LoadBalancer = new SpotInst.Spark.Inputs.OceanIngressLoadBalancerArgs\n            {\n                Managed = true,\n                TargetGroupArn = \"arn:aws:elasticloadbalancing:eu-north-1:XXXXXXXXXXXX:targetgroup/my-spark-cluster-nlb-tg/a38c2b83XXXXXXXX\",\n                ServiceAnnotations = \n                {\n                    { \"service.beta.kubernetes.io/aws-load-balancer-security-groups\", \"sg-XXXXXXXXXXXXXXXXX\" },\n                    { \"some-service-annotation-2\", \"some-service-annotation-value-2\" },\n                },\n            },\n            CustomEndpoint = new SpotInst.Spark.Inputs.OceanIngressCustomEndpointArgs\n            {\n                Enabled = false,\n                Address = \"my-spark-cluster-nlb-8cbb8da7XXXXXXXX.elb.us-east-1.amazonaws.com\",\n            },\n            PrivateLink = new SpotInst.Spark.Inputs.OceanIngressPrivateLinkArgs\n            {\n                Enabled = false,\n                VpcEndpointService = \"com.amazonaws.vpce.eu-north-1.vpce-svc-XXXXXXXXXXXXXXXXX\",\n            },\n        },\n        Compute = new SpotInst.Spark.Inputs.OceanComputeArgs\n        {\n            CreateVngs = true,\n            UseTaints = true,\n        },\n        LogCollection = new SpotInst.Spark.Inputs.OceanLogCollectionArgs\n        {\n            CollectDriverLogs = true,\n        },\n        Webhook = new SpotInst.Spark.Inputs.OceanWebhookArgs\n        {\n            UseHostNetwork = false,\n            HostNetworkPorts = new[]\n            {\n                25554,\n            },\n        },\n        Spark = new SpotInst.Spark.Inputs.OceanSparkArgs\n        {\n            AdditionalAppNamespaces = new[]\n            {\n                \"extra-spark-app-ns-1\",\n                \"extra-spark-app-ns-2\",\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst/spark\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := spark.NewOcean(ctx, \"example\", \u0026spark.OceanArgs{\n\t\t\tOceanClusterId: pulumi.String(\"ocean-cluster-id\"),\n\t\t\tIngress: \u0026spark.OceanIngressArgs{\n\t\t\t\tController: \u0026spark.OceanIngressControllerArgs{\n\t\t\t\t\tManaged: pulumi.Bool(true),\n\t\t\t\t},\n\t\t\t\tLoadBalancer: \u0026spark.OceanIngressLoadBalancerArgs{\n\t\t\t\t\tManaged:        pulumi.Bool(true),\n\t\t\t\t\tTargetGroupArn: pulumi.String(\"arn:aws:elasticloadbalancing:eu-north-1:XXXXXXXXXXXX:targetgroup/my-spark-cluster-nlb-tg/a38c2b83XXXXXXXX\"),\n\t\t\t\t\tServiceAnnotations: pulumi.StringMap{\n\t\t\t\t\t\t\"service.beta.kubernetes.io/aws-load-balancer-security-groups\": pulumi.String(\"sg-XXXXXXXXXXXXXXXXX\"),\n\t\t\t\t\t\t\"some-service-annotation-2\":                                    pulumi.String(\"some-service-annotation-value-2\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\tCustomEndpoint: \u0026spark.OceanIngressCustomEndpointArgs{\n\t\t\t\t\tEnabled: pulumi.Bool(false),\n\t\t\t\t\tAddress: pulumi.String(\"my-spark-cluster-nlb-8cbb8da7XXXXXXXX.elb.us-east-1.amazonaws.com\"),\n\t\t\t\t},\n\t\t\t\tPrivateLink: \u0026spark.OceanIngressPrivateLinkArgs{\n\t\t\t\t\tEnabled:            pulumi.Bool(false),\n\t\t\t\t\tVpcEndpointService: pulumi.String(\"com.amazonaws.vpce.eu-north-1.vpce-svc-XXXXXXXXXXXXXXXXX\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tCompute: \u0026spark.OceanComputeArgs{\n\t\t\t\tCreateVngs: pulumi.Bool(true),\n\t\t\t\tUseTaints:  pulumi.Bool(true),\n\t\t\t},\n\t\t\tLogCollection: \u0026spark.OceanLogCollectionArgs{\n\t\t\t\tCollectDriverLogs: pulumi.Bool(true),\n\t\t\t},\n\t\t\tWebhook: \u0026spark.OceanWebhookArgs{\n\t\t\t\tUseHostNetwork: pulumi.Bool(false),\n\t\t\t\tHostNetworkPorts: pulumi.IntArray{\n\t\t\t\t\tpulumi.Int(25554),\n\t\t\t\t},\n\t\t\t},\n\t\t\tSpark: \u0026spark.OceanSparkArgs{\n\t\t\t\tAdditionalAppNamespaces: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"extra-spark-app-ns-1\"),\n\t\t\t\t\tpulumi.String(\"extra-spark-app-ns-2\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.spotinst.spark.Ocean;\nimport com.pulumi.spotinst.spark.OceanArgs;\nimport com.pulumi.spotinst.spark.inputs.OceanIngressArgs;\nimport com.pulumi.spotinst.spark.inputs.OceanIngressControllerArgs;\nimport com.pulumi.spotinst.spark.inputs.OceanIngressLoadBalancerArgs;\nimport com.pulumi.spotinst.spark.inputs.OceanIngressCustomEndpointArgs;\nimport com.pulumi.spotinst.spark.inputs.OceanIngressPrivateLinkArgs;\nimport com.pulumi.spotinst.spark.inputs.OceanComputeArgs;\nimport com.pulumi.spotinst.spark.inputs.OceanLogCollectionArgs;\nimport com.pulumi.spotinst.spark.inputs.OceanWebhookArgs;\nimport com.pulumi.spotinst.spark.inputs.OceanSparkArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new Ocean(\"example\", OceanArgs.builder()        \n            .oceanClusterId(\"ocean-cluster-id\")\n            .ingress(OceanIngressArgs.builder()\n                .controller(OceanIngressControllerArgs.builder()\n                    .managed(true)\n                    .build())\n                .loadBalancer(OceanIngressLoadBalancerArgs.builder()\n                    .managed(true)\n                    .targetGroupArn(\"arn:aws:elasticloadbalancing:eu-north-1:XXXXXXXXXXXX:targetgroup/my-spark-cluster-nlb-tg/a38c2b83XXXXXXXX\")\n                    .serviceAnnotations(Map.ofEntries(\n                        Map.entry(\"service.beta.kubernetes.io/aws-load-balancer-security-groups\", \"sg-XXXXXXXXXXXXXXXXX\"),\n                        Map.entry(\"some-service-annotation-2\", \"some-service-annotation-value-2\")\n                    ))\n                    .build())\n                .customEndpoint(OceanIngressCustomEndpointArgs.builder()\n                    .enabled(false)\n                    .address(\"my-spark-cluster-nlb-8cbb8da7XXXXXXXX.elb.us-east-1.amazonaws.com\")\n                    .build())\n                .privateLink(OceanIngressPrivateLinkArgs.builder()\n                    .enabled(false)\n                    .vpcEndpointService(\"com.amazonaws.vpce.eu-north-1.vpce-svc-XXXXXXXXXXXXXXXXX\")\n                    .build())\n                .build())\n            .compute(OceanComputeArgs.builder()\n                .createVngs(true)\n                .useTaints(true)\n                .build())\n            .logCollection(OceanLogCollectionArgs.builder()\n                .collectDriverLogs(true)\n                .build())\n            .webhook(OceanWebhookArgs.builder()\n                .useHostNetwork(false)\n                .hostNetworkPorts(25554)\n                .build())\n            .spark(OceanSparkArgs.builder()\n                .additionalAppNamespaces(                \n                    \"extra-spark-app-ns-1\",\n                    \"extra-spark-app-ns-2\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: spotinst:spark:Ocean\n    properties:\n      oceanClusterId: ocean-cluster-id\n      ingress:\n        controller:\n          managed: true\n        loadBalancer:\n          managed: true\n          targetGroupArn: arn:aws:elasticloadbalancing:eu-north-1:XXXXXXXXXXXX:targetgroup/my-spark-cluster-nlb-tg/a38c2b83XXXXXXXX\n          serviceAnnotations:\n            service.beta.kubernetes.io/aws-load-balancer-security-groups: sg-XXXXXXXXXXXXXXXXX\n            some-service-annotation-2: some-service-annotation-value-2\n        customEndpoint:\n          enabled: false\n          address: my-spark-cluster-nlb-8cbb8da7XXXXXXXX.elb.us-east-1.amazonaws.com\n        privateLink:\n          enabled: false\n          vpcEndpointService: com.amazonaws.vpce.eu-north-1.vpce-svc-XXXXXXXXXXXXXXXXX\n      compute:\n        createVngs: true\n        useTaints: true\n      logCollection:\n        collectDriverLogs: true\n      webhook:\n        useHostNetwork: false\n        hostNetworkPorts:\n          - 25554\n      spark:\n        additionalAppNamespaces:\n          - extra-spark-app-ns-1\n          - extra-spark-app-ns-2\n```\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\n\nexport const oceanSparkId = spotinst_ocean_spark.example.id;\n```\n```python\nimport pulumi\n\npulumi.export(\"oceanSparkId\", spotinst_ocean_spark[\"example\"][\"id\"])\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"oceanSparkId\"] = spotinst_ocean_spark.Example.Id,\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tctx.Export(\"oceanSparkId\", spotinst_ocean_spark.Example.Id)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        ctx.export(\"oceanSparkId\", spotinst_ocean_spark.example().id());\n    }\n}\n```\n```yaml\noutputs:\n  oceanSparkId: ${spotinst_ocean_spark.example.id}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "Manages a Spotinst Ocean Spark resource on AWS or GCP.\n\n## Prerequisites\n\nAn existing Ocean cluster is required by this resource. See e.g. the `spotinst.aws.Ocean` resource.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as spotinst from \"@pulumi/spotinst\";\n\nconst example = new spotinst.spark.Ocean(\"example\", {\n    oceanClusterId: \"ocean-cluster-id\",\n    ingress: {\n        controller: {\n            managed: true,\n        },\n        loadBalancer: {\n            managed: true,\n            targetGroupArn: \"arn:aws:elasticloadbalancing:eu-north-1:XXXXXXXXXXXX:targetgroup/my-spark-cluster-nlb-tg/a38c2b83XXXXXXXX\",\n            serviceAnnotations: {\n                \"service.beta.kubernetes.io/aws-load-balancer-security-groups\": \"sg-XXXXXXXXXXXXXXXXX\",\n                \"some-service-annotation-2\": \"some-service-annotation-value-2\",\n            },\n        },\n        customEndpoint: {\n            enabled: false,\n            address: \"my-spark-cluster-nlb-8cbb8da7XXXXXXXX.elb.us-east-1.amazonaws.com\",\n        },\n        privateLink: {\n            enabled: false,\n            vpcEndpointService: \"com.amazonaws.vpce.eu-north-1.vpce-svc-XXXXXXXXXXXXXXXXX\",\n        },\n    },\n    compute: {\n        createVngs: true,\n        useTaints: true,\n    },\n    logCollection: {\n        collectDriverLogs: true,\n    },\n    webhook: {\n        useHostNetwork: false,\n        hostNetworkPorts: [25554],\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_spotinst as spotinst\n\nexample = spotinst.spark.Ocean(\"example\",\n    ocean_cluster_id=\"ocean-cluster-id\",\n    ingress=spotinst.spark.OceanIngressArgs(\n        controller=spotinst.spark.OceanIngressControllerArgs(\n            managed=True,\n        ),\n        load_balancer=spotinst.spark.OceanIngressLoadBalancerArgs(\n            managed=True,\n            target_group_arn=\"arn:aws:elasticloadbalancing:eu-north-1:XXXXXXXXXXXX:targetgroup/my-spark-cluster-nlb-tg/a38c2b83XXXXXXXX\",\n            service_annotations={\n                \"service.beta.kubernetes.io/aws-load-balancer-security-groups\": \"sg-XXXXXXXXXXXXXXXXX\",\n                \"some-service-annotation-2\": \"some-service-annotation-value-2\",\n            },\n        ),\n        custom_endpoint=spotinst.spark.OceanIngressCustomEndpointArgs(\n            enabled=False,\n            address=\"my-spark-cluster-nlb-8cbb8da7XXXXXXXX.elb.us-east-1.amazonaws.com\",\n        ),\n        private_link=spotinst.spark.OceanIngressPrivateLinkArgs(\n            enabled=False,\n            vpc_endpoint_service=\"com.amazonaws.vpce.eu-north-1.vpce-svc-XXXXXXXXXXXXXXXXX\",\n        ),\n    ),\n    compute=spotinst.spark.OceanComputeArgs(\n        create_vngs=True,\n        use_taints=True,\n    ),\n    log_collection=spotinst.spark.OceanLogCollectionArgs(\n        collect_driver_logs=True,\n    ),\n    webhook=spotinst.spark.OceanWebhookArgs(\n        use_host_network=False,\n        host_network_ports=[25554],\n    ))\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing SpotInst = Pulumi.SpotInst;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new SpotInst.Spark.Ocean(\"example\", new()\n    {\n        OceanClusterId = \"ocean-cluster-id\",\n        Ingress = new SpotInst.Spark.Inputs.OceanIngressArgs\n        {\n            Controller = new SpotInst.Spark.Inputs.OceanIngressControllerArgs\n            {\n                Managed = true,\n            },\n            LoadBalancer = new SpotInst.Spark.Inputs.OceanIngressLoadBalancerArgs\n            {\n                Managed = true,\n                TargetGroupArn = \"arn:aws:elasticloadbalancing:eu-north-1:XXXXXXXXXXXX:targetgroup/my-spark-cluster-nlb-tg/a38c2b83XXXXXXXX\",\n                ServiceAnnotations = \n                {\n                    { \"service.beta.kubernetes.io/aws-load-balancer-security-groups\", \"sg-XXXXXXXXXXXXXXXXX\" },\n                    { \"some-service-annotation-2\", \"some-service-annotation-value-2\" },\n                },\n            },\n            CustomEndpoint = new SpotInst.Spark.Inputs.OceanIngressCustomEndpointArgs\n            {\n                Enabled = false,\n                Address = \"my-spark-cluster-nlb-8cbb8da7XXXXXXXX.elb.us-east-1.amazonaws.com\",\n            },\n            PrivateLink = new SpotInst.Spark.Inputs.OceanIngressPrivateLinkArgs\n            {\n                Enabled = false,\n                VpcEndpointService = \"com.amazonaws.vpce.eu-north-1.vpce-svc-XXXXXXXXXXXXXXXXX\",\n            },\n        },\n        Compute = new SpotInst.Spark.Inputs.OceanComputeArgs\n        {\n            CreateVngs = true,\n            UseTaints = true,\n        },\n        LogCollection = new SpotInst.Spark.Inputs.OceanLogCollectionArgs\n        {\n            CollectDriverLogs = true,\n        },\n        Webhook = new SpotInst.Spark.Inputs.OceanWebhookArgs\n        {\n            UseHostNetwork = false,\n            HostNetworkPorts = new[]\n            {\n                25554,\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst/spark\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := spark.NewOcean(ctx, \"example\", \u0026spark.OceanArgs{\n\t\t\tOceanClusterId: pulumi.String(\"ocean-cluster-id\"),\n\t\t\tIngress: \u0026spark.OceanIngressArgs{\n\t\t\t\tController: \u0026spark.OceanIngressControllerArgs{\n\t\t\t\t\tManaged: pulumi.Bool(true),\n\t\t\t\t},\n\t\t\t\tLoadBalancer: \u0026spark.OceanIngressLoadBalancerArgs{\n\t\t\t\t\tManaged:        pulumi.Bool(true),\n\t\t\t\t\tTargetGroupArn: pulumi.String(\"arn:aws:elasticloadbalancing:eu-north-1:XXXXXXXXXXXX:targetgroup/my-spark-cluster-nlb-tg/a38c2b83XXXXXXXX\"),\n\t\t\t\t\tServiceAnnotations: pulumi.StringMap{\n\t\t\t\t\t\t\"service.beta.kubernetes.io/aws-load-balancer-security-groups\": pulumi.String(\"sg-XXXXXXXXXXXXXXXXX\"),\n\t\t\t\t\t\t\"some-service-annotation-2\":                                    pulumi.String(\"some-service-annotation-value-2\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\tCustomEndpoint: \u0026spark.OceanIngressCustomEndpointArgs{\n\t\t\t\t\tEnabled: pulumi.Bool(false),\n\t\t\t\t\tAddress: pulumi.String(\"my-spark-cluster-nlb-8cbb8da7XXXXXXXX.elb.us-east-1.amazonaws.com\"),\n\t\t\t\t},\n\t\t\t\tPrivateLink: \u0026spark.OceanIngressPrivateLinkArgs{\n\t\t\t\t\tEnabled:            pulumi.Bool(false),\n\t\t\t\t\tVpcEndpointService: pulumi.String(\"com.amazonaws.vpce.eu-north-1.vpce-svc-XXXXXXXXXXXXXXXXX\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tCompute: \u0026spark.OceanComputeArgs{\n\t\t\t\tCreateVngs: pulumi.Bool(true),\n\t\t\t\tUseTaints:  pulumi.Bool(true),\n\t\t\t},\n\t\t\tLogCollection: \u0026spark.OceanLogCollectionArgs{\n\t\t\t\tCollectDriverLogs: pulumi.Bool(true),\n\t\t\t},\n\t\t\tWebhook: \u0026spark.OceanWebhookArgs{\n\t\t\t\tUseHostNetwork: pulumi.Bool(false),\n\t\t\t\tHostNetworkPorts: pulumi.IntArray{\n\t\t\t\t\tpulumi.Int(25554),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.spotinst.spark.Ocean;\nimport com.pulumi.spotinst.spark.OceanArgs;\nimport com.pulumi.spotinst.spark.inputs.OceanIngressArgs;\nimport com.pulumi.spotinst.spark.inputs.OceanIngressControllerArgs;\nimport com.pulumi.spotinst.spark.inputs.OceanIngressLoadBalancerArgs;\nimport com.pulumi.spotinst.spark.inputs.OceanIngressCustomEndpointArgs;\nimport com.pulumi.spotinst.spark.inputs.OceanIngressPrivateLinkArgs;\nimport com.pulumi.spotinst.spark.inputs.OceanComputeArgs;\nimport com.pulumi.spotinst.spark.inputs.OceanLogCollectionArgs;\nimport com.pulumi.spotinst.spark.inputs.OceanWebhookArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new Ocean(\"example\", OceanArgs.builder()        \n            .oceanClusterId(\"ocean-cluster-id\")\n            .ingress(OceanIngressArgs.builder()\n                .controller(OceanIngressControllerArgs.builder()\n                    .managed(true)\n                    .build())\n                .loadBalancer(OceanIngressLoadBalancerArgs.builder()\n                    .managed(true)\n                    .targetGroupArn(\"arn:aws:elasticloadbalancing:eu-north-1:XXXXXXXXXXXX:targetgroup/my-spark-cluster-nlb-tg/a38c2b83XXXXXXXX\")\n                    .serviceAnnotations(Map.ofEntries(\n                        Map.entry(\"service.beta.kubernetes.io/aws-load-balancer-security-groups\", \"sg-XXXXXXXXXXXXXXXXX\"),\n                        Map.entry(\"some-service-annotation-2\", \"some-service-annotation-value-2\")\n                    ))\n                    .build())\n                .customEndpoint(OceanIngressCustomEndpointArgs.builder()\n                    .enabled(false)\n                    .address(\"my-spark-cluster-nlb-8cbb8da7XXXXXXXX.elb.us-east-1.amazonaws.com\")\n                    .build())\n                .privateLink(OceanIngressPrivateLinkArgs.builder()\n                    .enabled(false)\n                    .vpcEndpointService(\"com.amazonaws.vpce.eu-north-1.vpce-svc-XXXXXXXXXXXXXXXXX\")\n                    .build())\n                .build())\n            .compute(OceanComputeArgs.builder()\n                .createVngs(true)\n                .useTaints(true)\n                .build())\n            .logCollection(OceanLogCollectionArgs.builder()\n                .collectDriverLogs(true)\n                .build())\n            .webhook(OceanWebhookArgs.builder()\n                .useHostNetwork(false)\n                .hostNetworkPorts(25554)\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: spotinst:spark:Ocean\n    properties:\n      oceanClusterId: ocean-cluster-id\n      ingress:\n        controller:\n          managed: true\n        loadBalancer:\n          managed: true\n          targetGroupArn: arn:aws:elasticloadbalancing:eu-north-1:XXXXXXXXXXXX:targetgroup/my-spark-cluster-nlb-tg/a38c2b83XXXXXXXX\n          serviceAnnotations:\n            service.beta.kubernetes.io/aws-load-balancer-security-groups: sg-XXXXXXXXXXXXXXXXX\n            some-service-annotation-2: some-service-annotation-value-2\n        customEndpoint:\n          enabled: false\n          address: my-spark-cluster-nlb-8cbb8da7XXXXXXXX.elb.us-east-1.amazonaws.com\n        privateLink:\n          enabled: false\n          vpcEndpointService: com.amazonaws.vpce.eu-north-1.vpce-svc-XXXXXXXXXXXXXXXXX\n      compute:\n        createVngs: true\n        useTaints: true\n      logCollection:\n        collectDriverLogs: true\n      webhook:\n        useHostNetwork: false\n        hostNetworkPorts:\n          - 25554\n```\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\n\nexport const oceanSparkId = spotinst_ocean_spark.example.id;\n```\n```python\nimport pulumi\n\npulumi.export(\"oceanSparkId\", spotinst_ocean_spark[\"example\"][\"id\"])\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"oceanSparkId\"] = spotinst_ocean_spark.Example.Id,\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tctx.Export(\"oceanSparkId\", spotinst_ocean_spark.Example.Id)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        ctx.export(\"oceanSparkId\", spotinst_ocean_spark.example().id());\n    }\n}\n```\n```yaml\noutputs:\n  oceanSparkId: ${spotinst_ocean_spark.example.id}\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "compute": {
                     "$ref": "#/types/spotinst:spark/OceanCompute:OceanCompute"
@@ -24210,9 +23758,6 @@
                     "type": "string",
                     "description": "- The ID of the Ocean cluster that Ocean for Apache Spark should be installed on.\n"
                 },
-                "spark": {
-                    "$ref": "#/types/spotinst:spark/OceanSpark:OceanSpark"
-                },
                 "webhook": {
                     "$ref": "#/types/spotinst:spark/OceanWebhook:OceanWebhook"
                 }
@@ -24222,7 +23767,6 @@
                 "ingress",
                 "logCollection",
                 "oceanClusterId",
-                "spark",
                 "webhook"
             ],
             "inputProperties": {
@@ -24239,9 +23783,6 @@
                     "type": "string",
                     "description": "- The ID of the Ocean cluster that Ocean for Apache Spark should be installed on.\n",
                     "willReplaceOnChanges": true
-                },
-                "spark": {
-                    "$ref": "#/types/spotinst:spark/OceanSpark:OceanSpark"
                 },
                 "webhook": {
                     "$ref": "#/types/spotinst:spark/OceanWebhook:OceanWebhook"
@@ -24267,52 +23808,8 @@
                         "description": "- The ID of the Ocean cluster that Ocean for Apache Spark should be installed on.\n",
                         "willReplaceOnChanges": true
                     },
-                    "spark": {
-                        "$ref": "#/types/spotinst:spark/OceanSpark:OceanSpark"
-                    },
                     "webhook": {
                         "$ref": "#/types/spotinst:spark/OceanWebhook:OceanWebhook"
-                    }
-                },
-                "type": "object"
-            }
-        },
-        "spotinst:spark/oceanVirtualNodeGroup:OceanVirtualNodeGroup": {
-            "description": "Manage a dedicated Spotinst Ocean Spark Virtual Node Group resource\n\n## Prerequisites\n\nAn existing Ocean cluster and Ocean VNG is required by this resource\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as spotinst from \"@pulumi/spotinst\";\n\nconst example = new spotinst.spark.OceanVirtualNodeGroup(\"example\", {\n    oceanSparkClusterId: \"cluster_id\",\n    virtualNodeGroupId: \"vng_id\",\n});\n```\n```python\nimport pulumi\nimport pulumi_spotinst as spotinst\n\nexample = spotinst.spark.OceanVirtualNodeGroup(\"example\",\n    ocean_spark_cluster_id=\"cluster_id\",\n    virtual_node_group_id=\"vng_id\")\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing SpotInst = Pulumi.SpotInst;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new SpotInst.Spark.OceanVirtualNodeGroup(\"example\", new()\n    {\n        OceanSparkClusterId = \"cluster_id\",\n        VirtualNodeGroupId = \"vng_id\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst/spark\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := spark.NewOceanVirtualNodeGroup(ctx, \"example\", \u0026spark.OceanVirtualNodeGroupArgs{\n\t\t\tOceanSparkClusterId: pulumi.String(\"cluster_id\"),\n\t\t\tVirtualNodeGroupId:  pulumi.String(\"vng_id\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.spotinst.spark.OceanVirtualNodeGroup;\nimport com.pulumi.spotinst.spark.OceanVirtualNodeGroupArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new OceanVirtualNodeGroup(\"example\", OceanVirtualNodeGroupArgs.builder()        \n            .oceanSparkClusterId(\"cluster_id\")\n            .virtualNodeGroupId(\"vng_id\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: spotinst:spark:OceanVirtualNodeGroup\n    properties:\n      oceanSparkClusterId: cluster_id\n      virtualNodeGroupId: vng_id\n```\n{{% /example %}}\n{{% /examples %}}",
-            "properties": {
-                "oceanSparkClusterId": {
-                    "type": "string"
-                },
-                "virtualNodeGroupId": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "oceanSparkClusterId",
-                "virtualNodeGroupId"
-            ],
-            "inputProperties": {
-                "oceanSparkClusterId": {
-                    "type": "string",
-                    "willReplaceOnChanges": true
-                },
-                "virtualNodeGroupId": {
-                    "type": "string"
-                }
-            },
-            "requiredInputs": [
-                "oceanSparkClusterId",
-                "virtualNodeGroupId"
-            ],
-            "stateInputs": {
-                "description": "Input properties used for looking up and filtering OceanVirtualNodeGroup resources.\n",
-                "properties": {
-                    "oceanSparkClusterId": {
-                        "type": "string",
-                        "willReplaceOnChanges": true
-                    },
-                    "virtualNodeGroupId": {
-                        "type": "string"
                     }
                 },
                 "type": "object"

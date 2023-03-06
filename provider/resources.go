@@ -92,10 +92,10 @@ func Provider() tfbridge.ProviderInfo {
 			"spotinst_managed_instance_aws":       {Tok: makeResource(awsMod, "ManagedInstance")},
 			"spotinst_elastigroup_azure":          {Tok: makeResource(azureMod, "Elastigroup")},
 			"spotinst_ocean_aks":                  {Tok: makeResource(azureMod, "Ocean")},
-			"spotinst_ocean_aks_np": {
-				Tok:  makeResource(azureMod, "OceanNp"),
-				Docs: noUpstreamDocs,
-			},
+			// "spotinst_ocean_aks_np": {
+			// 	Tok:  makeResource(azureMod, "OceanNp"),
+			// 	Docs: noUpstreamDocs,
+			// },
 			"spotinst_ocean_aks_virtual_node_group": {Tok: makeResource(azureMod, "OceanVirtualNodeGroup")},
 			"spotinst_elastigroup_gcp": {
 				Tok: makeResource(gcpMod, "Elastigroup"),
@@ -146,12 +146,12 @@ func Provider() tfbridge.ProviderInfo {
 			"spotinst_ocean_gke_launch_spec":                  {Tok: makeResource(gkeMod, "OceanLaunchSpec")},
 			"spotinst_ocean_gke_launch_spec_import":           {Tok: makeResource(gkeMod, "OceanLaunchSpecImport")},
 			"spotinst_ocean_spark":                            {Tok: makeResource(sparkMod, "Ocean")},
-			"spotinst_ocean_spark_virtual_node_group":         {Tok: makeResource(sparkMod, "OceanVirtualNodeGroup")},
-			"spotinst_subscription":                           {Tok: makeResource(mainMod, "Subscription")},
-			"spotinst_health_check":                           {Tok: makeResource(mainMod, "HealthCheck")},
-			"spotinst_elastigroup_azure_v3":                   {Tok: makeResource(mainMod, "ElastigroupAzureV3")},
-			"spotinst_data_integration":                       {Tok: makeResource(mainMod, "DataIntegration")},
-			"spotinst_stateful_node_azure":                    {Tok: makeResource(mainMod, "StatefulNodeAzure")},
+			// "spotinst_ocean_spark_virtual_node_group":         {Tok: makeResource(sparkMod, "OceanVirtualNodeGroup")},
+			"spotinst_subscription":         {Tok: makeResource(mainMod, "Subscription")},
+			"spotinst_health_check":         {Tok: makeResource(mainMod, "HealthCheck")},
+			"spotinst_elastigroup_azure_v3": {Tok: makeResource(mainMod, "ElastigroupAzureV3")},
+			"spotinst_data_integration":     {Tok: makeResource(mainMod, "DataIntegration")},
+			"spotinst_stateful_node_azure":  {Tok: makeResource(mainMod, "StatefulNodeAzure")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{},
 		JavaScript: &tfbridge.JavaScriptInfo{
