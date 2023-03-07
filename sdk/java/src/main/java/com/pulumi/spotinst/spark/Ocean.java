@@ -13,7 +13,6 @@ import com.pulumi.spotinst.spark.inputs.OceanState;
 import com.pulumi.spotinst.spark.outputs.OceanCompute;
 import com.pulumi.spotinst.spark.outputs.OceanIngress;
 import com.pulumi.spotinst.spark.outputs.OceanLogCollection;
-import com.pulumi.spotinst.spark.outputs.OceanSpark;
 import com.pulumi.spotinst.spark.outputs.OceanWebhook;
 import java.lang.String;
 import javax.annotation.Nullable;
@@ -42,7 +41,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.spotinst.spark.inputs.OceanComputeArgs;
  * import com.pulumi.spotinst.spark.inputs.OceanLogCollectionArgs;
  * import com.pulumi.spotinst.spark.inputs.OceanWebhookArgs;
- * import com.pulumi.spotinst.spark.inputs.OceanSparkArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -89,11 +87,6 @@ import javax.annotation.Nullable;
  *             .webhook(OceanWebhookArgs.builder()
  *                 .useHostNetwork(false)
  *                 .hostNetworkPorts(25554)
- *                 .build())
- *             .spark(OceanSparkArgs.builder()
- *                 .additionalAppNamespaces(                
- *                     &#34;extra-spark-app-ns-1&#34;,
- *                     &#34;extra-spark-app-ns-2&#34;)
  *                 .build())
  *             .build());
  * 
@@ -158,12 +151,6 @@ public class Ocean extends com.pulumi.resources.CustomResource {
      */
     public Output<String> oceanClusterId() {
         return this.oceanClusterId;
-    }
-    @Export(name="spark", type=OceanSpark.class, parameters={})
-    private Output<OceanSpark> spark;
-
-    public Output<OceanSpark> spark() {
-        return this.spark;
     }
     @Export(name="webhook", type=OceanWebhook.class, parameters={})
     private Output<OceanWebhook> webhook;

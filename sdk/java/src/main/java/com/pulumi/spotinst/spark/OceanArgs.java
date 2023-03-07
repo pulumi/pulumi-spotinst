@@ -8,7 +8,6 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.spotinst.spark.inputs.OceanComputeArgs;
 import com.pulumi.spotinst.spark.inputs.OceanIngressArgs;
 import com.pulumi.spotinst.spark.inputs.OceanLogCollectionArgs;
-import com.pulumi.spotinst.spark.inputs.OceanSparkArgs;
 import com.pulumi.spotinst.spark.inputs.OceanWebhookArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -56,13 +55,6 @@ public final class OceanArgs extends com.pulumi.resources.ResourceArgs {
         return this.oceanClusterId;
     }
 
-    @Import(name="spark")
-    private @Nullable Output<OceanSparkArgs> spark;
-
-    public Optional<Output<OceanSparkArgs>> spark() {
-        return Optional.ofNullable(this.spark);
-    }
-
     @Import(name="webhook")
     private @Nullable Output<OceanWebhookArgs> webhook;
 
@@ -77,7 +69,6 @@ public final class OceanArgs extends com.pulumi.resources.ResourceArgs {
         this.ingress = $.ingress;
         this.logCollection = $.logCollection;
         this.oceanClusterId = $.oceanClusterId;
-        this.spark = $.spark;
         this.webhook = $.webhook;
     }
 
@@ -145,15 +136,6 @@ public final class OceanArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder oceanClusterId(String oceanClusterId) {
             return oceanClusterId(Output.of(oceanClusterId));
-        }
-
-        public Builder spark(@Nullable Output<OceanSparkArgs> spark) {
-            $.spark = spark;
-            return this;
-        }
-
-        public Builder spark(OceanSparkArgs spark) {
-            return spark(Output.of(spark));
         }
 
         public Builder webhook(@Nullable Output<OceanWebhookArgs> webhook) {

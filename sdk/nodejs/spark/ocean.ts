@@ -53,12 +53,6 @@ import * as utilities from "../utilities";
  *         useHostNetwork: false,
  *         hostNetworkPorts: [25554],
  *     },
- *     spark: {
- *         additionalAppNamespaces: [
- *             "extra-spark-app-ns-1",
- *             "extra-spark-app-ns-2",
- *         ],
- *     },
  * });
  * ```
  * ```typescript
@@ -102,7 +96,6 @@ export class Ocean extends pulumi.CustomResource {
      * - The ID of the Ocean cluster that Ocean for Apache Spark should be installed on.
      */
     public readonly oceanClusterId!: pulumi.Output<string>;
-    public readonly spark!: pulumi.Output<outputs.spark.OceanSpark>;
     public readonly webhook!: pulumi.Output<outputs.spark.OceanWebhook>;
 
     /**
@@ -122,7 +115,6 @@ export class Ocean extends pulumi.CustomResource {
             resourceInputs["ingress"] = state ? state.ingress : undefined;
             resourceInputs["logCollection"] = state ? state.logCollection : undefined;
             resourceInputs["oceanClusterId"] = state ? state.oceanClusterId : undefined;
-            resourceInputs["spark"] = state ? state.spark : undefined;
             resourceInputs["webhook"] = state ? state.webhook : undefined;
         } else {
             const args = argsOrState as OceanArgs | undefined;
@@ -133,7 +125,6 @@ export class Ocean extends pulumi.CustomResource {
             resourceInputs["ingress"] = args ? args.ingress : undefined;
             resourceInputs["logCollection"] = args ? args.logCollection : undefined;
             resourceInputs["oceanClusterId"] = args ? args.oceanClusterId : undefined;
-            resourceInputs["spark"] = args ? args.spark : undefined;
             resourceInputs["webhook"] = args ? args.webhook : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -152,7 +143,6 @@ export interface OceanState {
      * - The ID of the Ocean cluster that Ocean for Apache Spark should be installed on.
      */
     oceanClusterId?: pulumi.Input<string>;
-    spark?: pulumi.Input<inputs.spark.OceanSpark>;
     webhook?: pulumi.Input<inputs.spark.OceanWebhook>;
 }
 
@@ -167,6 +157,5 @@ export interface OceanArgs {
      * - The ID of the Ocean cluster that Ocean for Apache Spark should be installed on.
      */
     oceanClusterId: pulumi.Input<string>;
-    spark?: pulumi.Input<inputs.spark.OceanSpark>;
     webhook?: pulumi.Input<inputs.spark.OceanWebhook>;
 }

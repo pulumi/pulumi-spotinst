@@ -72,14 +72,6 @@ namespace Pulumi.SpotInst.Spark
     ///                 25554,
     ///             },
     ///         },
-    ///         Spark = new SpotInst.Spark.Inputs.OceanSparkArgs
-    ///         {
-    ///             AdditionalAppNamespaces = new[]
-    ///             {
-    ///                 "extra-spark-app-ns-1",
-    ///                 "extra-spark-app-ns-2",
-    ///             },
-    ///         },
     ///     });
     /// 
     /// });
@@ -114,9 +106,6 @@ namespace Pulumi.SpotInst.Spark
         /// </summary>
         [Output("oceanClusterId")]
         public Output<string> OceanClusterId { get; private set; } = null!;
-
-        [Output("spark")]
-        public Output<Outputs.OceanSpark> Spark { get; private set; } = null!;
 
         [Output("webhook")]
         public Output<Outputs.OceanWebhook> Webhook { get; private set; } = null!;
@@ -182,9 +171,6 @@ namespace Pulumi.SpotInst.Spark
         [Input("oceanClusterId", required: true)]
         public Input<string> OceanClusterId { get; set; } = null!;
 
-        [Input("spark")]
-        public Input<Inputs.OceanSparkArgs>? Spark { get; set; }
-
         [Input("webhook")]
         public Input<Inputs.OceanWebhookArgs>? Webhook { get; set; }
 
@@ -210,9 +196,6 @@ namespace Pulumi.SpotInst.Spark
         /// </summary>
         [Input("oceanClusterId")]
         public Input<string>? OceanClusterId { get; set; }
-
-        [Input("spark")]
-        public Input<Inputs.OceanSparkGetArgs>? Spark { get; set; }
 
         [Input("webhook")]
         public Input<Inputs.OceanWebhookGetArgs>? Webhook { get; set; }

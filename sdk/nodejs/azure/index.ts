@@ -15,11 +15,6 @@ export type Ocean = import("./ocean").Ocean;
 export const Ocean: typeof import("./ocean").Ocean = null as any;
 utilities.lazyLoad(exports, ["Ocean"], () => require("./ocean"));
 
-export { OceanNpArgs, OceanNpState } from "./oceanNp";
-export type OceanNp = import("./oceanNp").OceanNp;
-export const OceanNp: typeof import("./oceanNp").OceanNp = null as any;
-utilities.lazyLoad(exports, ["OceanNp"], () => require("./oceanNp"));
-
 export { OceanVirtualNodeGroupArgs, OceanVirtualNodeGroupState } from "./oceanVirtualNodeGroup";
 export type OceanVirtualNodeGroup = import("./oceanVirtualNodeGroup").OceanVirtualNodeGroup;
 export const OceanVirtualNodeGroup: typeof import("./oceanVirtualNodeGroup").OceanVirtualNodeGroup = null as any;
@@ -34,8 +29,6 @@ const _module = {
                 return new Elastigroup(name, <any>undefined, { urn })
             case "spotinst:azure/ocean:Ocean":
                 return new Ocean(name, <any>undefined, { urn })
-            case "spotinst:azure/oceanNp:OceanNp":
-                return new OceanNp(name, <any>undefined, { urn })
             case "spotinst:azure/oceanVirtualNodeGroup:OceanVirtualNodeGroup":
                 return new OceanVirtualNodeGroup(name, <any>undefined, { urn })
             default:
@@ -45,5 +38,4 @@ const _module = {
 };
 pulumi.runtime.registerResourceModule("spotinst", "azure/elastigroup", _module)
 pulumi.runtime.registerResourceModule("spotinst", "azure/ocean", _module)
-pulumi.runtime.registerResourceModule("spotinst", "azure/oceanNp", _module)
 pulumi.runtime.registerResourceModule("spotinst", "azure/oceanVirtualNodeGroup", _module)

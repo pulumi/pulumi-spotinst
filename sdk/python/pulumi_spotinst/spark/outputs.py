@@ -18,7 +18,6 @@ __all__ = [
     'OceanIngressLoadBalancer',
     'OceanIngressPrivateLink',
     'OceanLogCollection',
-    'OceanSpark',
     'OceanWebhook',
 ]
 
@@ -300,42 +299,6 @@ class OceanLogCollection(dict):
         - Enable/disable the collection of driver logs. When enabled, driver logs are stored by NetApp and can be downloaded from the Spot console web interface. The driver logs are deleted after 30 days.
         """
         return pulumi.get(self, "collect_driver_logs")
-
-
-@pulumi.output_type
-class OceanSpark(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "additionalAppNamespaces":
-            suggest = "additional_app_namespaces"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in OceanSpark. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        OceanSpark.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        OceanSpark.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 additional_app_namespaces: Optional[Sequence[str]] = None):
-        """
-        :param Sequence[str] additional_app_namespaces: - List of Kubernetes namespaces that should be configured to run Spark applications, in addition to the default Spark application namespace `spark-apps`.
-        """
-        if additional_app_namespaces is not None:
-            pulumi.set(__self__, "additional_app_namespaces", additional_app_namespaces)
-
-    @property
-    @pulumi.getter(name="additionalAppNamespaces")
-    def additional_app_namespaces(self) -> Optional[Sequence[str]]:
-        """
-        - List of Kubernetes namespaces that should be configured to run Spark applications, in addition to the default Spark application namespace `spark-apps`.
-        """
-        return pulumi.get(self, "additional_app_namespaces")
 
 
 @pulumi.output_type

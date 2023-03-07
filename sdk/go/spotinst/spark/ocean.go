@@ -67,12 +67,6 @@ import (
 //						pulumi.Int(25554),
 //					},
 //				},
-//				Spark: &spark.OceanSparkArgs{
-//					AdditionalAppNamespaces: pulumi.StringArray{
-//						pulumi.String("extra-spark-app-ns-1"),
-//						pulumi.String("extra-spark-app-ns-2"),
-//					},
-//				},
 //			})
 //			if err != nil {
 //				return err
@@ -107,7 +101,6 @@ type Ocean struct {
 	LogCollection OceanLogCollectionOutput `pulumi:"logCollection"`
 	// - The ID of the Ocean cluster that Ocean for Apache Spark should be installed on.
 	OceanClusterId pulumi.StringOutput `pulumi:"oceanClusterId"`
-	Spark          OceanSparkOutput    `pulumi:"spark"`
 	Webhook        OceanWebhookOutput  `pulumi:"webhook"`
 }
 
@@ -148,7 +141,6 @@ type oceanState struct {
 	LogCollection *OceanLogCollection `pulumi:"logCollection"`
 	// - The ID of the Ocean cluster that Ocean for Apache Spark should be installed on.
 	OceanClusterId *string       `pulumi:"oceanClusterId"`
-	Spark          *OceanSpark   `pulumi:"spark"`
 	Webhook        *OceanWebhook `pulumi:"webhook"`
 }
 
@@ -158,7 +150,6 @@ type OceanState struct {
 	LogCollection OceanLogCollectionPtrInput
 	// - The ID of the Ocean cluster that Ocean for Apache Spark should be installed on.
 	OceanClusterId pulumi.StringPtrInput
-	Spark          OceanSparkPtrInput
 	Webhook        OceanWebhookPtrInput
 }
 
@@ -172,7 +163,6 @@ type oceanArgs struct {
 	LogCollection *OceanLogCollection `pulumi:"logCollection"`
 	// - The ID of the Ocean cluster that Ocean for Apache Spark should be installed on.
 	OceanClusterId string        `pulumi:"oceanClusterId"`
-	Spark          *OceanSpark   `pulumi:"spark"`
 	Webhook        *OceanWebhook `pulumi:"webhook"`
 }
 
@@ -183,7 +173,6 @@ type OceanArgs struct {
 	LogCollection OceanLogCollectionPtrInput
 	// - The ID of the Ocean cluster that Ocean for Apache Spark should be installed on.
 	OceanClusterId pulumi.StringInput
-	Spark          OceanSparkPtrInput
 	Webhook        OceanWebhookPtrInput
 }
 
@@ -289,10 +278,6 @@ func (o OceanOutput) LogCollection() OceanLogCollectionOutput {
 // - The ID of the Ocean cluster that Ocean for Apache Spark should be installed on.
 func (o OceanOutput) OceanClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Ocean) pulumi.StringOutput { return v.OceanClusterId }).(pulumi.StringOutput)
-}
-
-func (o OceanOutput) Spark() OceanSparkOutput {
-	return o.ApplyT(func(v *Ocean) OceanSparkOutput { return v.Spark }).(OceanSparkOutput)
 }
 
 func (o OceanOutput) Webhook() OceanWebhookOutput {

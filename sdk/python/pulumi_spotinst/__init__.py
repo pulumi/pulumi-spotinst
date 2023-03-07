@@ -127,14 +127,6 @@ _utilities.register(
  },
  {
   "pkg": "spotinst",
-  "mod": "azure/oceanNp",
-  "fqn": "pulumi_spotinst.azure",
-  "classes": {
-   "spotinst:azure/oceanNp:OceanNp": "OceanNp"
-  }
- },
- {
-  "pkg": "spotinst",
   "mod": "azure/oceanVirtualNodeGroup",
   "fqn": "pulumi_spotinst.azure",
   "classes": {
@@ -291,14 +283,6 @@ _utilities.register(
   "fqn": "pulumi_spotinst.spark",
   "classes": {
    "spotinst:spark/ocean:Ocean": "Ocean"
-  }
- },
- {
-  "pkg": "spotinst",
-  "mod": "spark/oceanVirtualNodeGroup",
-  "fqn": "pulumi_spotinst.spark",
-  "classes": {
-   "spotinst:spark/oceanVirtualNodeGroup:OceanVirtualNodeGroup": "OceanVirtualNodeGroup"
   }
  }
 ]
