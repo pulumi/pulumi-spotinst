@@ -20,8 +20,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -33,10 +31,10 @@ import (
 //				Endpoint:  pulumi.String("http://endpoint.com"),
 //				EventType: pulumi.String("AWS_EC2_INSTANCE_LAUNCH"),
 //				Format: pulumi.AnyMap{
-//					"event":         pulumi.Any(fmt.Sprintf("%vevent%v", "%", "%")),
-//					"instance_id":   pulumi.Any(fmt.Sprintf("%vinstance-id%v", "%", "%")),
-//					"resource_id":   pulumi.Any(fmt.Sprintf("%vresource-id%v", "%", "%")),
-//					"resource_name": pulumi.Any(fmt.Sprintf("%vresource-name%v", "%", "%")),
+//					"event":         pulumi.Any("%event%"),
+//					"instance_id":   pulumi.Any("%instance-id%"),
+//					"resource_id":   pulumi.Any("%resource-id%"),
+//					"resource_name": pulumi.Any("%resource-name%"),
 //					"tags":          pulumi.Any("foo,baz,baz"),
 //				},
 //				Protocol:   pulumi.String("http"),
