@@ -57,6 +57,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new Ocean(&#34;example&#34;, OceanArgs.builder()        
+ *             .associateIpv6Address(true)
  *             .associatePublicIpAddress(true)
  *             .clusterOrientations(OceanClusterOrientationArgs.builder()
  *                 .availabilityVsCost(&#34;balanced&#34;)
@@ -180,6 +181,20 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="spotinst:aws/ocean:Ocean")
 public class Ocean extends com.pulumi.resources.CustomResource {
+    /**
+     * Configure IPv6 address allocation.
+     * 
+     */
+    @Export(name="associateIpv6Address", type=Boolean.class, parameters={})
+    private Output</* @Nullable */ Boolean> associateIpv6Address;
+
+    /**
+     * @return Configure IPv6 address allocation.
+     * 
+     */
+    public Output<Optional<Boolean>> associateIpv6Address() {
+        return Codegen.optional(this.associateIpv6Address);
+    }
     /**
      * Configure public IP address allocation.
      * 

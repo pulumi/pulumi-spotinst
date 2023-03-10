@@ -53,6 +53,8 @@ import (
 type Ocean struct {
 	pulumi.CustomResourceState
 
+	// Configure IPv6 address allocation.
+	AssociateIpv6Address pulumi.BoolPtrOutput `pulumi:"associateIpv6Address"`
 	// Configure public IP address allocation.
 	AssociatePublicIpAddress pulumi.BoolPtrOutput `pulumi:"associatePublicIpAddress"`
 	// Describes the Ocean Kubernetes Auto Scaler.
@@ -158,6 +160,8 @@ func GetOcean(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Ocean resources.
 type oceanState struct {
+	// Configure IPv6 address allocation.
+	AssociateIpv6Address *bool `pulumi:"associateIpv6Address"`
 	// Configure public IP address allocation.
 	AssociatePublicIpAddress *bool `pulumi:"associatePublicIpAddress"`
 	// Describes the Ocean Kubernetes Auto Scaler.
@@ -229,6 +233,8 @@ type oceanState struct {
 }
 
 type OceanState struct {
+	// Configure IPv6 address allocation.
+	AssociateIpv6Address pulumi.BoolPtrInput
 	// Configure public IP address allocation.
 	AssociatePublicIpAddress pulumi.BoolPtrInput
 	// Describes the Ocean Kubernetes Auto Scaler.
@@ -304,6 +310,8 @@ func (OceanState) ElementType() reflect.Type {
 }
 
 type oceanArgs struct {
+	// Configure IPv6 address allocation.
+	AssociateIpv6Address *bool `pulumi:"associateIpv6Address"`
 	// Configure public IP address allocation.
 	AssociatePublicIpAddress *bool `pulumi:"associatePublicIpAddress"`
 	// Describes the Ocean Kubernetes Auto Scaler.
@@ -376,6 +384,8 @@ type oceanArgs struct {
 
 // The set of arguments for constructing a Ocean resource.
 type OceanArgs struct {
+	// Configure IPv6 address allocation.
+	AssociateIpv6Address pulumi.BoolPtrInput
 	// Configure public IP address allocation.
 	AssociatePublicIpAddress pulumi.BoolPtrInput
 	// Describes the Ocean Kubernetes Auto Scaler.
@@ -531,6 +541,11 @@ func (o OceanOutput) ToOceanOutput() OceanOutput {
 
 func (o OceanOutput) ToOceanOutputWithContext(ctx context.Context) OceanOutput {
 	return o
+}
+
+// Configure IPv6 address allocation.
+func (o OceanOutput) AssociateIpv6Address() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Ocean) pulumi.BoolPtrOutput { return v.AssociateIpv6Address }).(pulumi.BoolPtrOutput)
 }
 
 // Configure public IP address allocation.

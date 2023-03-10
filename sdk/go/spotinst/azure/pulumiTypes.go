@@ -5957,6 +5957,224 @@ func (o OceanNpTaintArrayOutput) Index(i pulumi.IntInput) OceanNpTaintOutput {
 	}).(OceanNpTaintOutput)
 }
 
+type OceanNpVirtualNodeGroupHeadroom struct {
+	CpuPerUnit    *int `pulumi:"cpuPerUnit"`
+	GpuPerUnit    *int `pulumi:"gpuPerUnit"`
+	MemoryPerUnit *int `pulumi:"memoryPerUnit"`
+	NumOfUnits    int  `pulumi:"numOfUnits"`
+}
+
+// OceanNpVirtualNodeGroupHeadroomInput is an input type that accepts OceanNpVirtualNodeGroupHeadroomArgs and OceanNpVirtualNodeGroupHeadroomOutput values.
+// You can construct a concrete instance of `OceanNpVirtualNodeGroupHeadroomInput` via:
+//
+//	OceanNpVirtualNodeGroupHeadroomArgs{...}
+type OceanNpVirtualNodeGroupHeadroomInput interface {
+	pulumi.Input
+
+	ToOceanNpVirtualNodeGroupHeadroomOutput() OceanNpVirtualNodeGroupHeadroomOutput
+	ToOceanNpVirtualNodeGroupHeadroomOutputWithContext(context.Context) OceanNpVirtualNodeGroupHeadroomOutput
+}
+
+type OceanNpVirtualNodeGroupHeadroomArgs struct {
+	CpuPerUnit    pulumi.IntPtrInput `pulumi:"cpuPerUnit"`
+	GpuPerUnit    pulumi.IntPtrInput `pulumi:"gpuPerUnit"`
+	MemoryPerUnit pulumi.IntPtrInput `pulumi:"memoryPerUnit"`
+	NumOfUnits    pulumi.IntInput    `pulumi:"numOfUnits"`
+}
+
+func (OceanNpVirtualNodeGroupHeadroomArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanNpVirtualNodeGroupHeadroom)(nil)).Elem()
+}
+
+func (i OceanNpVirtualNodeGroupHeadroomArgs) ToOceanNpVirtualNodeGroupHeadroomOutput() OceanNpVirtualNodeGroupHeadroomOutput {
+	return i.ToOceanNpVirtualNodeGroupHeadroomOutputWithContext(context.Background())
+}
+
+func (i OceanNpVirtualNodeGroupHeadroomArgs) ToOceanNpVirtualNodeGroupHeadroomOutputWithContext(ctx context.Context) OceanNpVirtualNodeGroupHeadroomOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanNpVirtualNodeGroupHeadroomOutput)
+}
+
+// OceanNpVirtualNodeGroupHeadroomArrayInput is an input type that accepts OceanNpVirtualNodeGroupHeadroomArray and OceanNpVirtualNodeGroupHeadroomArrayOutput values.
+// You can construct a concrete instance of `OceanNpVirtualNodeGroupHeadroomArrayInput` via:
+//
+//	OceanNpVirtualNodeGroupHeadroomArray{ OceanNpVirtualNodeGroupHeadroomArgs{...} }
+type OceanNpVirtualNodeGroupHeadroomArrayInput interface {
+	pulumi.Input
+
+	ToOceanNpVirtualNodeGroupHeadroomArrayOutput() OceanNpVirtualNodeGroupHeadroomArrayOutput
+	ToOceanNpVirtualNodeGroupHeadroomArrayOutputWithContext(context.Context) OceanNpVirtualNodeGroupHeadroomArrayOutput
+}
+
+type OceanNpVirtualNodeGroupHeadroomArray []OceanNpVirtualNodeGroupHeadroomInput
+
+func (OceanNpVirtualNodeGroupHeadroomArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanNpVirtualNodeGroupHeadroom)(nil)).Elem()
+}
+
+func (i OceanNpVirtualNodeGroupHeadroomArray) ToOceanNpVirtualNodeGroupHeadroomArrayOutput() OceanNpVirtualNodeGroupHeadroomArrayOutput {
+	return i.ToOceanNpVirtualNodeGroupHeadroomArrayOutputWithContext(context.Background())
+}
+
+func (i OceanNpVirtualNodeGroupHeadroomArray) ToOceanNpVirtualNodeGroupHeadroomArrayOutputWithContext(ctx context.Context) OceanNpVirtualNodeGroupHeadroomArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanNpVirtualNodeGroupHeadroomArrayOutput)
+}
+
+type OceanNpVirtualNodeGroupHeadroomOutput struct{ *pulumi.OutputState }
+
+func (OceanNpVirtualNodeGroupHeadroomOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanNpVirtualNodeGroupHeadroom)(nil)).Elem()
+}
+
+func (o OceanNpVirtualNodeGroupHeadroomOutput) ToOceanNpVirtualNodeGroupHeadroomOutput() OceanNpVirtualNodeGroupHeadroomOutput {
+	return o
+}
+
+func (o OceanNpVirtualNodeGroupHeadroomOutput) ToOceanNpVirtualNodeGroupHeadroomOutputWithContext(ctx context.Context) OceanNpVirtualNodeGroupHeadroomOutput {
+	return o
+}
+
+func (o OceanNpVirtualNodeGroupHeadroomOutput) CpuPerUnit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OceanNpVirtualNodeGroupHeadroom) *int { return v.CpuPerUnit }).(pulumi.IntPtrOutput)
+}
+
+func (o OceanNpVirtualNodeGroupHeadroomOutput) GpuPerUnit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OceanNpVirtualNodeGroupHeadroom) *int { return v.GpuPerUnit }).(pulumi.IntPtrOutput)
+}
+
+func (o OceanNpVirtualNodeGroupHeadroomOutput) MemoryPerUnit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OceanNpVirtualNodeGroupHeadroom) *int { return v.MemoryPerUnit }).(pulumi.IntPtrOutput)
+}
+
+func (o OceanNpVirtualNodeGroupHeadroomOutput) NumOfUnits() pulumi.IntOutput {
+	return o.ApplyT(func(v OceanNpVirtualNodeGroupHeadroom) int { return v.NumOfUnits }).(pulumi.IntOutput)
+}
+
+type OceanNpVirtualNodeGroupHeadroomArrayOutput struct{ *pulumi.OutputState }
+
+func (OceanNpVirtualNodeGroupHeadroomArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanNpVirtualNodeGroupHeadroom)(nil)).Elem()
+}
+
+func (o OceanNpVirtualNodeGroupHeadroomArrayOutput) ToOceanNpVirtualNodeGroupHeadroomArrayOutput() OceanNpVirtualNodeGroupHeadroomArrayOutput {
+	return o
+}
+
+func (o OceanNpVirtualNodeGroupHeadroomArrayOutput) ToOceanNpVirtualNodeGroupHeadroomArrayOutputWithContext(ctx context.Context) OceanNpVirtualNodeGroupHeadroomArrayOutput {
+	return o
+}
+
+func (o OceanNpVirtualNodeGroupHeadroomArrayOutput) Index(i pulumi.IntInput) OceanNpVirtualNodeGroupHeadroomOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OceanNpVirtualNodeGroupHeadroom {
+		return vs[0].([]OceanNpVirtualNodeGroupHeadroom)[vs[1].(int)]
+	}).(OceanNpVirtualNodeGroupHeadroomOutput)
+}
+
+type OceanNpVirtualNodeGroupTaint struct {
+	Effect string `pulumi:"effect"`
+	Key    string `pulumi:"key"`
+	Value  string `pulumi:"value"`
+}
+
+// OceanNpVirtualNodeGroupTaintInput is an input type that accepts OceanNpVirtualNodeGroupTaintArgs and OceanNpVirtualNodeGroupTaintOutput values.
+// You can construct a concrete instance of `OceanNpVirtualNodeGroupTaintInput` via:
+//
+//	OceanNpVirtualNodeGroupTaintArgs{...}
+type OceanNpVirtualNodeGroupTaintInput interface {
+	pulumi.Input
+
+	ToOceanNpVirtualNodeGroupTaintOutput() OceanNpVirtualNodeGroupTaintOutput
+	ToOceanNpVirtualNodeGroupTaintOutputWithContext(context.Context) OceanNpVirtualNodeGroupTaintOutput
+}
+
+type OceanNpVirtualNodeGroupTaintArgs struct {
+	Effect pulumi.StringInput `pulumi:"effect"`
+	Key    pulumi.StringInput `pulumi:"key"`
+	Value  pulumi.StringInput `pulumi:"value"`
+}
+
+func (OceanNpVirtualNodeGroupTaintArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanNpVirtualNodeGroupTaint)(nil)).Elem()
+}
+
+func (i OceanNpVirtualNodeGroupTaintArgs) ToOceanNpVirtualNodeGroupTaintOutput() OceanNpVirtualNodeGroupTaintOutput {
+	return i.ToOceanNpVirtualNodeGroupTaintOutputWithContext(context.Background())
+}
+
+func (i OceanNpVirtualNodeGroupTaintArgs) ToOceanNpVirtualNodeGroupTaintOutputWithContext(ctx context.Context) OceanNpVirtualNodeGroupTaintOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanNpVirtualNodeGroupTaintOutput)
+}
+
+// OceanNpVirtualNodeGroupTaintArrayInput is an input type that accepts OceanNpVirtualNodeGroupTaintArray and OceanNpVirtualNodeGroupTaintArrayOutput values.
+// You can construct a concrete instance of `OceanNpVirtualNodeGroupTaintArrayInput` via:
+//
+//	OceanNpVirtualNodeGroupTaintArray{ OceanNpVirtualNodeGroupTaintArgs{...} }
+type OceanNpVirtualNodeGroupTaintArrayInput interface {
+	pulumi.Input
+
+	ToOceanNpVirtualNodeGroupTaintArrayOutput() OceanNpVirtualNodeGroupTaintArrayOutput
+	ToOceanNpVirtualNodeGroupTaintArrayOutputWithContext(context.Context) OceanNpVirtualNodeGroupTaintArrayOutput
+}
+
+type OceanNpVirtualNodeGroupTaintArray []OceanNpVirtualNodeGroupTaintInput
+
+func (OceanNpVirtualNodeGroupTaintArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanNpVirtualNodeGroupTaint)(nil)).Elem()
+}
+
+func (i OceanNpVirtualNodeGroupTaintArray) ToOceanNpVirtualNodeGroupTaintArrayOutput() OceanNpVirtualNodeGroupTaintArrayOutput {
+	return i.ToOceanNpVirtualNodeGroupTaintArrayOutputWithContext(context.Background())
+}
+
+func (i OceanNpVirtualNodeGroupTaintArray) ToOceanNpVirtualNodeGroupTaintArrayOutputWithContext(ctx context.Context) OceanNpVirtualNodeGroupTaintArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanNpVirtualNodeGroupTaintArrayOutput)
+}
+
+type OceanNpVirtualNodeGroupTaintOutput struct{ *pulumi.OutputState }
+
+func (OceanNpVirtualNodeGroupTaintOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanNpVirtualNodeGroupTaint)(nil)).Elem()
+}
+
+func (o OceanNpVirtualNodeGroupTaintOutput) ToOceanNpVirtualNodeGroupTaintOutput() OceanNpVirtualNodeGroupTaintOutput {
+	return o
+}
+
+func (o OceanNpVirtualNodeGroupTaintOutput) ToOceanNpVirtualNodeGroupTaintOutputWithContext(ctx context.Context) OceanNpVirtualNodeGroupTaintOutput {
+	return o
+}
+
+func (o OceanNpVirtualNodeGroupTaintOutput) Effect() pulumi.StringOutput {
+	return o.ApplyT(func(v OceanNpVirtualNodeGroupTaint) string { return v.Effect }).(pulumi.StringOutput)
+}
+
+func (o OceanNpVirtualNodeGroupTaintOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v OceanNpVirtualNodeGroupTaint) string { return v.Key }).(pulumi.StringOutput)
+}
+
+func (o OceanNpVirtualNodeGroupTaintOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v OceanNpVirtualNodeGroupTaint) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type OceanNpVirtualNodeGroupTaintArrayOutput struct{ *pulumi.OutputState }
+
+func (OceanNpVirtualNodeGroupTaintArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanNpVirtualNodeGroupTaint)(nil)).Elem()
+}
+
+func (o OceanNpVirtualNodeGroupTaintArrayOutput) ToOceanNpVirtualNodeGroupTaintArrayOutput() OceanNpVirtualNodeGroupTaintArrayOutput {
+	return o
+}
+
+func (o OceanNpVirtualNodeGroupTaintArrayOutput) ToOceanNpVirtualNodeGroupTaintArrayOutputWithContext(ctx context.Context) OceanNpVirtualNodeGroupTaintArrayOutput {
+	return o
+}
+
+func (o OceanNpVirtualNodeGroupTaintArrayOutput) Index(i pulumi.IntInput) OceanNpVirtualNodeGroupTaintOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OceanNpVirtualNodeGroupTaint {
+		return vs[0].([]OceanNpVirtualNodeGroupTaint)[vs[1].(int)]
+	}).(OceanNpVirtualNodeGroupTaintOutput)
+}
+
 type OceanOsDisk struct {
 	// The size of the OS disk in GB.
 	SizeGb int `pulumi:"sizeGb"`
@@ -7452,6 +7670,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpHealthPtrInput)(nil)).Elem(), OceanNpHealthArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpTaintInput)(nil)).Elem(), OceanNpTaintArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpTaintArrayInput)(nil)).Elem(), OceanNpTaintArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpVirtualNodeGroupHeadroomInput)(nil)).Elem(), OceanNpVirtualNodeGroupHeadroomArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpVirtualNodeGroupHeadroomArrayInput)(nil)).Elem(), OceanNpVirtualNodeGroupHeadroomArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpVirtualNodeGroupTaintInput)(nil)).Elem(), OceanNpVirtualNodeGroupTaintArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpVirtualNodeGroupTaintArrayInput)(nil)).Elem(), OceanNpVirtualNodeGroupTaintArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanOsDiskInput)(nil)).Elem(), OceanOsDiskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanOsDiskPtrInput)(nil)).Elem(), OceanOsDiskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanStrategyInput)(nil)).Elem(), OceanStrategyArgs{})
@@ -7558,6 +7780,10 @@ func init() {
 	pulumi.RegisterOutputType(OceanNpHealthPtrOutput{})
 	pulumi.RegisterOutputType(OceanNpTaintOutput{})
 	pulumi.RegisterOutputType(OceanNpTaintArrayOutput{})
+	pulumi.RegisterOutputType(OceanNpVirtualNodeGroupHeadroomOutput{})
+	pulumi.RegisterOutputType(OceanNpVirtualNodeGroupHeadroomArrayOutput{})
+	pulumi.RegisterOutputType(OceanNpVirtualNodeGroupTaintOutput{})
+	pulumi.RegisterOutputType(OceanNpVirtualNodeGroupTaintArrayOutput{})
 	pulumi.RegisterOutputType(OceanOsDiskOutput{})
 	pulumi.RegisterOutputType(OceanOsDiskPtrOutput{})
 	pulumi.RegisterOutputType(OceanStrategyOutput{})

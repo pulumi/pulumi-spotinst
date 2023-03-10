@@ -45,6 +45,11 @@ export class ElastigroupAzureV3 extends pulumi.CustomResource {
      * The desired number of instances the group should have at any time.
      */
     public readonly desiredCapacity!: pulumi.Output<number | undefined>;
+    /**
+     * Time (seconds) to allow the instance to be drained from incoming TCP connections and detached from MLB before terminating it during a scale-down operation.
+     */
+    public readonly drainingTimeout!: pulumi.Output<number>;
+    public readonly fallbackToOnDemand!: pulumi.Output<boolean>;
     public readonly images!: pulumi.Output<outputs.ElastigroupAzureV3Image[] | undefined>;
     public readonly login!: pulumi.Output<outputs.ElastigroupAzureV3Login | undefined>;
     /**
@@ -68,6 +73,7 @@ export class ElastigroupAzureV3 extends pulumi.CustomResource {
      * Available On-Demand sizes
      */
     public readonly odSizes!: pulumi.Output<string[]>;
+    public readonly onDemandCount!: pulumi.Output<number | undefined>;
     /**
      * Type of the operating system. Valid values: `"Linux"`, `"Windows"`.
      */
@@ -81,10 +87,13 @@ export class ElastigroupAzureV3 extends pulumi.CustomResource {
      */
     public readonly resourceGroupName!: pulumi.Output<string>;
     /**
+     * TODO
+     */
+    public readonly spotPercentage!: pulumi.Output<number | undefined>;
+    /**
      * Available Low-Priority sizes.
      */
     public readonly spotSizes!: pulumi.Output<string[]>;
-    public readonly strategy!: pulumi.Output<outputs.ElastigroupAzureV3Strategy>;
 
     /**
      * Create a ElastigroupAzureV3 resource with the given unique name, arguments, and options.
@@ -101,6 +110,8 @@ export class ElastigroupAzureV3 extends pulumi.CustomResource {
             const state = argsOrState as ElastigroupAzureV3State | undefined;
             resourceInputs["customData"] = state ? state.customData : undefined;
             resourceInputs["desiredCapacity"] = state ? state.desiredCapacity : undefined;
+            resourceInputs["drainingTimeout"] = state ? state.drainingTimeout : undefined;
+            resourceInputs["fallbackToOnDemand"] = state ? state.fallbackToOnDemand : undefined;
             resourceInputs["images"] = state ? state.images : undefined;
             resourceInputs["login"] = state ? state.login : undefined;
             resourceInputs["managedServiceIdentities"] = state ? state.managedServiceIdentities : undefined;
@@ -109,13 +120,17 @@ export class ElastigroupAzureV3 extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["network"] = state ? state.network : undefined;
             resourceInputs["odSizes"] = state ? state.odSizes : undefined;
+            resourceInputs["onDemandCount"] = state ? state.onDemandCount : undefined;
             resourceInputs["os"] = state ? state.os : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
             resourceInputs["resourceGroupName"] = state ? state.resourceGroupName : undefined;
+            resourceInputs["spotPercentage"] = state ? state.spotPercentage : undefined;
             resourceInputs["spotSizes"] = state ? state.spotSizes : undefined;
-            resourceInputs["strategy"] = state ? state.strategy : undefined;
         } else {
             const args = argsOrState as ElastigroupAzureV3Args | undefined;
+            if ((!args || args.fallbackToOnDemand === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'fallbackToOnDemand'");
+            }
             if ((!args || args.network === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'network'");
             }
@@ -134,11 +149,10 @@ export class ElastigroupAzureV3 extends pulumi.CustomResource {
             if ((!args || args.spotSizes === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'spotSizes'");
             }
-            if ((!args || args.strategy === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'strategy'");
-            }
             resourceInputs["customData"] = args ? args.customData : undefined;
             resourceInputs["desiredCapacity"] = args ? args.desiredCapacity : undefined;
+            resourceInputs["drainingTimeout"] = args ? args.drainingTimeout : undefined;
+            resourceInputs["fallbackToOnDemand"] = args ? args.fallbackToOnDemand : undefined;
             resourceInputs["images"] = args ? args.images : undefined;
             resourceInputs["login"] = args ? args.login : undefined;
             resourceInputs["managedServiceIdentities"] = args ? args.managedServiceIdentities : undefined;
@@ -147,11 +161,12 @@ export class ElastigroupAzureV3 extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["network"] = args ? args.network : undefined;
             resourceInputs["odSizes"] = args ? args.odSizes : undefined;
+            resourceInputs["onDemandCount"] = args ? args.onDemandCount : undefined;
             resourceInputs["os"] = args ? args.os : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
+            resourceInputs["spotPercentage"] = args ? args.spotPercentage : undefined;
             resourceInputs["spotSizes"] = args ? args.spotSizes : undefined;
-            resourceInputs["strategy"] = args ? args.strategy : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ElastigroupAzureV3.__pulumiType, name, resourceInputs, opts);
@@ -170,6 +185,11 @@ export interface ElastigroupAzureV3State {
      * The desired number of instances the group should have at any time.
      */
     desiredCapacity?: pulumi.Input<number>;
+    /**
+     * Time (seconds) to allow the instance to be drained from incoming TCP connections and detached from MLB before terminating it during a scale-down operation.
+     */
+    drainingTimeout?: pulumi.Input<number>;
+    fallbackToOnDemand?: pulumi.Input<boolean>;
     images?: pulumi.Input<pulumi.Input<inputs.ElastigroupAzureV3Image>[]>;
     login?: pulumi.Input<inputs.ElastigroupAzureV3Login>;
     /**
@@ -193,6 +213,7 @@ export interface ElastigroupAzureV3State {
      * Available On-Demand sizes
      */
     odSizes?: pulumi.Input<pulumi.Input<string>[]>;
+    onDemandCount?: pulumi.Input<number>;
     /**
      * Type of the operating system. Valid values: `"Linux"`, `"Windows"`.
      */
@@ -206,10 +227,13 @@ export interface ElastigroupAzureV3State {
      */
     resourceGroupName?: pulumi.Input<string>;
     /**
+     * TODO
+     */
+    spotPercentage?: pulumi.Input<number>;
+    /**
      * Available Low-Priority sizes.
      */
     spotSizes?: pulumi.Input<pulumi.Input<string>[]>;
-    strategy?: pulumi.Input<inputs.ElastigroupAzureV3Strategy>;
 }
 
 /**
@@ -224,6 +248,11 @@ export interface ElastigroupAzureV3Args {
      * The desired number of instances the group should have at any time.
      */
     desiredCapacity?: pulumi.Input<number>;
+    /**
+     * Time (seconds) to allow the instance to be drained from incoming TCP connections and detached from MLB before terminating it during a scale-down operation.
+     */
+    drainingTimeout?: pulumi.Input<number>;
+    fallbackToOnDemand: pulumi.Input<boolean>;
     images?: pulumi.Input<pulumi.Input<inputs.ElastigroupAzureV3Image>[]>;
     login?: pulumi.Input<inputs.ElastigroupAzureV3Login>;
     /**
@@ -247,6 +276,7 @@ export interface ElastigroupAzureV3Args {
      * Available On-Demand sizes
      */
     odSizes: pulumi.Input<pulumi.Input<string>[]>;
+    onDemandCount?: pulumi.Input<number>;
     /**
      * Type of the operating system. Valid values: `"Linux"`, `"Windows"`.
      */
@@ -260,8 +290,11 @@ export interface ElastigroupAzureV3Args {
      */
     resourceGroupName: pulumi.Input<string>;
     /**
+     * TODO
+     */
+    spotPercentage?: pulumi.Input<number>;
+    /**
      * Available Low-Priority sizes.
      */
     spotSizes: pulumi.Input<pulumi.Input<string>[]>;
-    strategy: pulumi.Input<inputs.ElastigroupAzureV3Strategy>;
 }

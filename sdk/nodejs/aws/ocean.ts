@@ -61,6 +61,10 @@ export class Ocean extends pulumi.CustomResource {
     }
 
     /**
+     * Configure IPv6 address allocation.
+     */
+    public readonly associateIpv6Address!: pulumi.Output<boolean | undefined>;
+    /**
      * Configure public IP address allocation.
      */
     public readonly associatePublicIpAddress!: pulumi.Output<boolean | undefined>;
@@ -206,6 +210,7 @@ export class Ocean extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as OceanState | undefined;
+            resourceInputs["associateIpv6Address"] = state ? state.associateIpv6Address : undefined;
             resourceInputs["associatePublicIpAddress"] = state ? state.associatePublicIpAddress : undefined;
             resourceInputs["autoscaler"] = state ? state.autoscaler : undefined;
             resourceInputs["blacklists"] = state ? state.blacklists : undefined;
@@ -249,6 +254,7 @@ export class Ocean extends pulumi.CustomResource {
             if ((!args || args.subnetIds === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'subnetIds'");
             }
+            resourceInputs["associateIpv6Address"] = args ? args.associateIpv6Address : undefined;
             resourceInputs["associatePublicIpAddress"] = args ? args.associatePublicIpAddress : undefined;
             resourceInputs["autoscaler"] = args ? args.autoscaler : undefined;
             resourceInputs["blacklists"] = args ? args.blacklists : undefined;
@@ -294,6 +300,10 @@ export class Ocean extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Ocean resources.
  */
 export interface OceanState {
+    /**
+     * Configure IPv6 address allocation.
+     */
+    associateIpv6Address?: pulumi.Input<boolean>;
     /**
      * Configure public IP address allocation.
      */
@@ -432,6 +442,10 @@ export interface OceanState {
  * The set of arguments for constructing a Ocean resource.
  */
 export interface OceanArgs {
+    /**
+     * Configure IPv6 address allocation.
+     */
+    associateIpv6Address?: pulumi.Input<boolean>;
     /**
      * Configure public IP address allocation.
      */

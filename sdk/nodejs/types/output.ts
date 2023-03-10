@@ -123,22 +123,6 @@ export interface ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGro
     resourceGroupName: string;
 }
 
-export interface ElastigroupAzureV3Strategy {
-    /**
-     * Time (seconds) to allow the instance to be drained from incoming TCP connections and detached from MLB before terminating it during a scale-down operation.
-     */
-    drainingTimeout?: number;
-    fallbackToOnDemand?: boolean;
-    /**
-     * Number of On-Demand instances to maintain. Required if `lowPriorityPercentage` is not specified.
-     */
-    odCount?: number;
-    /**
-     * TODO
-     */
-    spotPercentage?: number;
-}
-
 export interface HealthCheckCheck {
     endPoint?: string;
     /**
@@ -3634,6 +3618,19 @@ export namespace azure {
     }
 
     export interface OceanNpTaint {
+        effect: string;
+        key: string;
+        value: string;
+    }
+
+    export interface OceanNpVirtualNodeGroupHeadroom {
+        cpuPerUnit?: number;
+        gpuPerUnit?: number;
+        memoryPerUnit?: number;
+        numOfUnits: number;
+    }
+
+    export interface OceanNpVirtualNodeGroupTaint {
         effect: string;
         key: string;
         value: string;

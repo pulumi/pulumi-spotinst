@@ -14,7 +14,7 @@ import com.pulumi.spotinst.outputs.ElastigroupAzureV3Image;
 import com.pulumi.spotinst.outputs.ElastigroupAzureV3Login;
 import com.pulumi.spotinst.outputs.ElastigroupAzureV3ManagedServiceIdentity;
 import com.pulumi.spotinst.outputs.ElastigroupAzureV3Network;
-import com.pulumi.spotinst.outputs.ElastigroupAzureV3Strategy;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -38,7 +38,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.spotinst.inputs.ElastigroupAzureV3LoginArgs;
  * import com.pulumi.spotinst.inputs.ElastigroupAzureV3ManagedServiceIdentityArgs;
  * import com.pulumi.spotinst.inputs.ElastigroupAzureV3NetworkArgs;
- * import com.pulumi.spotinst.inputs.ElastigroupAzureV3StrategyArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -55,6 +54,8 @@ import javax.annotation.Nullable;
  *         var testAzureGroup = new ElastigroupAzureV3(&#34;testAzureGroup&#34;, ElastigroupAzureV3Args.builder()        
  *             .customData(&#34;IyEvYmluL2Jhc2gKZWNobyAidGVzdCI=&#34;)
  *             .desiredCapacity(1)
+ *             .drainingTimeout(300)
+ *             .fallbackToOnDemand(true)
  *             .images(ElastigroupAzureV3ImageArgs.builder()
  *                 .marketplaces(ElastigroupAzureV3ImageMarketplaceArgs.builder()
  *                     .offer(&#34;UbuntuServer&#34;)
@@ -93,15 +94,10 @@ import javax.annotation.Nullable;
  *             .os(&#34;Linux&#34;)
  *             .region(&#34;eastus&#34;)
  *             .resourceGroupName(&#34;spotinst-azure&#34;)
+ *             .spotPercentage(65)
  *             .spotSizes(            
  *                 &#34;standard_a1_v1&#34;,
  *                 &#34;standard_a1_v2&#34;)
- *             .strategy(ElastigroupAzureV3StrategyArgs.builder()
- *                 .drainingTimeout(300)
- *                 .fallbackToOnDemand(true)
- *                 .odCount(1)
- *                 .spotPercentage(65)
- *                 .build())
  *             .build());
  * 
  *     }
@@ -138,6 +134,26 @@ public class ElastigroupAzureV3 extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Integer>> desiredCapacity() {
         return Codegen.optional(this.desiredCapacity);
+    }
+    /**
+     * Time (seconds) to allow the instance to be drained from incoming TCP connections and detached from MLB before terminating it during a scale-down operation.
+     * 
+     */
+    @Export(name="drainingTimeout", type=Integer.class, parameters={})
+    private Output<Integer> drainingTimeout;
+
+    /**
+     * @return Time (seconds) to allow the instance to be drained from incoming TCP connections and detached from MLB before terminating it during a scale-down operation.
+     * 
+     */
+    public Output<Integer> drainingTimeout() {
+        return this.drainingTimeout;
+    }
+    @Export(name="fallbackToOnDemand", type=Boolean.class, parameters={})
+    private Output<Boolean> fallbackToOnDemand;
+
+    public Output<Boolean> fallbackToOnDemand() {
+        return this.fallbackToOnDemand;
     }
     @Export(name="images", type=List.class, parameters={ElastigroupAzureV3Image.class})
     private Output</* @Nullable */ List<ElastigroupAzureV3Image>> images;
@@ -227,6 +243,12 @@ public class ElastigroupAzureV3 extends com.pulumi.resources.CustomResource {
     public Output<List<String>> odSizes() {
         return this.odSizes;
     }
+    @Export(name="onDemandCount", type=Integer.class, parameters={})
+    private Output</* @Nullable */ Integer> onDemandCount;
+
+    public Output<Optional<Integer>> onDemandCount() {
+        return Codegen.optional(this.onDemandCount);
+    }
     /**
      * Type of the operating system. Valid values: `&#34;Linux&#34;`, `&#34;Windows&#34;`.
      * 
@@ -270,6 +292,20 @@ public class ElastigroupAzureV3 extends com.pulumi.resources.CustomResource {
         return this.resourceGroupName;
     }
     /**
+     * TODO
+     * 
+     */
+    @Export(name="spotPercentage", type=Integer.class, parameters={})
+    private Output</* @Nullable */ Integer> spotPercentage;
+
+    /**
+     * @return TODO
+     * 
+     */
+    public Output<Optional<Integer>> spotPercentage() {
+        return Codegen.optional(this.spotPercentage);
+    }
+    /**
      * Available Low-Priority sizes.
      * 
      */
@@ -282,12 +318,6 @@ public class ElastigroupAzureV3 extends com.pulumi.resources.CustomResource {
      */
     public Output<List<String>> spotSizes() {
         return this.spotSizes;
-    }
-    @Export(name="strategy", type=ElastigroupAzureV3Strategy.class, parameters={})
-    private Output<ElastigroupAzureV3Strategy> strategy;
-
-    public Output<ElastigroupAzureV3Strategy> strategy() {
-        return this.strategy;
     }
 
     /**
