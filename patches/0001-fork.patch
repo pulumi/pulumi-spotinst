@@ -1,8 +1,29 @@
-diff --git b/CHANGELOG.md a/CHANGELOG.md
-index 740ff25f..3af8e68e 100644
---- b/CHANGELOG.md
-+++ a/CHANGELOG.md
-@@ -368,7 +368,7 @@ BUG FIXES:
+From 9e33b47ad71714150965b8d0ad9b00d582ca3e30 Mon Sep 17 00:00:00 2001
+From: Ian Wahbe <ian@wahbe.com>
+Date: Fri, 10 Mar 2023 18:37:00 +0100
+Subject: [PATCH] fork
+
+---
+ CHANGELOG.md                                |  24 +--
+ docs/resources/elastigroup_aws.md           | 162 +++++++++-----------
+ docs/resources/elastigroup_aws_beanstalk.md |   5 +-
+ docs/resources/elastigroup_azure.md         |  30 ++--
+ docs/resources/elastigroup_azure_v3.md      |  50 +++---
+ docs/resources/elastigroup_gcp.md           |  24 +--
+ docs/resources/elastigroup_gke.md           |  10 +-
+ docs/resources/health_check.md              |   2 +-
+ docs/resources/managed_instance_aws.md      |  46 +++---
+ docs/resources/mrscaler_aws.md              |  90 +++++------
+ docs/resources/ocean_aws.md                 |  12 +-
+ docs/resources/ocean_ecs.md                 |  37 ++---
+ docs/resources/ocean_gke_import.md          |  24 ++-
+ 13 files changed, 228 insertions(+), 288 deletions(-)
+
+diff --git a/CHANGELOG.md b/CHANGELOG.md
+index 19323a14..0a29f0c6 100644
+--- a/CHANGELOG.md
++++ b/CHANGELOG.md
+@@ -389,7 +389,7 @@ BUG FIXES:
  ## 1.53.0 (July 15, 2021)
  
  ENHANCEMENTS:
@@ -11,7 +32,7 @@ index 740ff25f..3af8e68e 100644
  
  ## 1.52.0 (July 7, 2021)
  
-@@ -407,19 +407,19 @@ BUG FIXES:
+@@ -428,19 +428,19 @@ BUG FIXES:
  ## 1.48.0 (June 10, 2021)
  
  ENHANCEMENTS:
@@ -41,7 +62,7 @@ index 740ff25f..3af8e68e 100644
  ## 1.47.0 (June 6, 2021)
  
  ENHANCEMENTS:
-@@ -468,7 +468,7 @@ BUG FIXES:
+@@ -489,7 +489,7 @@ BUG FIXES:
  ## 1.40.0 (April 25, 2021)
  
  BUG FIXES:
@@ -50,10 +71,10 @@ index 740ff25f..3af8e68e 100644
  
  ## 1.39.0 (April 20, 2021)
  
-diff --git b/docs/resources/elastigroup_aws.md a/docs/resources/elastigroup_aws.md
+diff --git a/docs/resources/elastigroup_aws.md b/docs/resources/elastigroup_aws.md
 index 50006a2e..7e66178e 100644
---- b/docs/resources/elastigroup_aws.md
-+++ a/docs/resources/elastigroup_aws.md
+--- a/docs/resources/elastigroup_aws.md
++++ b/docs/resources/elastigroup_aws.md
 @@ -17,7 +17,7 @@ Provides a Spotinst AWS group resource.
  resource "spotinst_elastigroup_aws" "default-elastigroup" {
  
@@ -587,10 +608,10 @@ index 50006a2e..7e66178e 100644
 -* `id` - The group ID.
 +* `id` - The group ID.
 \ No newline at end of file
-diff --git b/docs/resources/elastigroup_aws_beanstalk.md a/docs/resources/elastigroup_aws_beanstalk.md
+diff --git a/docs/resources/elastigroup_aws_beanstalk.md b/docs/resources/elastigroup_aws_beanstalk.md
 index caf128e0..277fa01a 100644
---- b/docs/resources/elastigroup_aws_beanstalk.md
-+++ a/docs/resources/elastigroup_aws_beanstalk.md
+--- a/docs/resources/elastigroup_aws_beanstalk.md
++++ b/docs/resources/elastigroup_aws_beanstalk.md
 @@ -78,9 +78,8 @@ For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VP
        * `perform_at` - (Required) Actions to perform (options: timeWindow, never)
        * `time_window` - (Required) Time Window for when action occurs ex. Mon:23:50-Tue:00:20
@@ -603,10 +624,10 @@ index caf128e0..277fa01a 100644
  
  Each `scheduled_task` supports the following:
  
-diff --git b/docs/resources/elastigroup_azure.md a/docs/resources/elastigroup_azure.md
+diff --git a/docs/resources/elastigroup_azure.md b/docs/resources/elastigroup_azure.md
 index 7428834b..7e7c5354 100644
---- b/docs/resources/elastigroup_azure.md
-+++ a/docs/resources/elastigroup_azure.md
+--- a/docs/resources/elastigroup_azure.md
++++ b/docs/resources/elastigroup_azure.md
 @@ -182,8 +182,7 @@ The following arguments are supported:
  * `od_count` - (Optional) Number of On-Demand instances to maintain. Required if low_priority_percentage is not specified.
  * `draining_timeout` - (Optional, Default `120`) Time (seconds) to allow the instance to be drained from incoming TCP connections and detached from MLB before terminating it during a scale-down operation.
@@ -707,10 +728,10 @@ index 7428834b..7e7c5354 100644
  
  * `integration_kubernetes` - (Optional) Describes the [Kubernetes](https://kubernetes.io/) integration.
      * `cluster_identifier` - (Required) The cluster ID.
-diff --git b/docs/resources/elastigroup_azure_v3.md a/docs/resources/elastigroup_azure_v3.md
-index 21e0356d..09eb53f5 100644
---- b/docs/resources/elastigroup_azure_v3.md
-+++ a/docs/resources/elastigroup_azure_v3.md
+diff --git a/docs/resources/elastigroup_azure_v3.md b/docs/resources/elastigroup_azure_v3.md
+index 7c6a0272..a38782f9 100644
+--- a/docs/resources/elastigroup_azure_v3.md
++++ b/docs/resources/elastigroup_azure_v3.md
 @@ -37,7 +37,7 @@ resource "spotinst_elastigroup_azure_v3" "test_azure_group" {
    resource_group_name = "MC_ocean-westus-dev_ocean-westus-dev-aks_westus"
    name                = "ocean-westus-dev-aks-agentpool"
@@ -720,7 +741,7 @@ index 21e0356d..09eb53f5 100644
    // --- IMAGE ---------------------------------------------------------
    image {
      marketplace {
-@@ -105,17 +105,16 @@ The following arguments are supported:
+@@ -103,25 +103,34 @@ The following arguments are supported:
  * `managed_service_identity` - (Optional) List of Managed Service Identity objects.
      * `resource_group_name` - (Required) Name of the Azure Resource Group where the Managed Service Identity is located.
      * `name` - (Required) Name of the Managed Service Identity.
@@ -731,23 +752,29 @@ index 21e0356d..09eb53f5 100644
  
 -<a id="strategy"></a>
 -## Strategy
+-* `spot_percentage` - (Optional) Percentage of Spot-VMs to maintain. Required if `on_demand_count` is not specified.
+-* `on_demand_count` - (Optional) Number of On-Demand VMs to maintain. Required if `spot_percentage` is not specified.
+-* `fallback_to_on_demand` - 
+-* `draining_timeout` - (Optional, Default `120`) Time (seconds) to allow the instance to be drained from incoming TCP connections and detached from MLB before terminating it during a scale-down operation.
 +### Strategy
- 
- * `strategy` - (Required) Describes the deployment strategy.
-     * `spot_percentage` - TODO
-     * `od_count` - (Optional) Number of On-Demand instances to maintain. Required if `low_priority_percentage` is not specified.
--    * `fallback_to_on_demand` - 
++
++* `strategy` - (Required) Describes the deployment strategy.
++    * `spot_percentage` - TODO
++    * `od_count` - (Optional) Number of On-Demand instances to maintain. Required if `low_priority_percentage` is not specified.
 +    * `fallback_to_on_demand` -
-     * `draining_timeout` - (Optional, Default `120`) Time (seconds) to allow the instance to be drained from incoming TCP connections and detached from MLB before terminating it during a scale-down operation.
++    * `draining_timeout` - (Optional, Default `120`) Time (seconds) to allow the instance to be drained from incoming TCP connections and detached from MLB before terminating it during a scale-down operation.
++
++```hcl
++  strategy {
++    spot_percentage       = 65
++    draining_timeout      = 30
++    fallback_to_on_demand = true
++    od_count              = 1
++  }
++```
  
- ```hcl
-@@ -126,14 +125,14 @@ The following arguments are supported:
-     od_count              = 1
-   }
- ```
 -<a id="image"></a>
 -## Image
-+
 +### Image
  
  * `image` - (Required) Image of a VM. An image is a template for creating new VMs. Choose from Azure image catalogue (marketplace) or use a custom image.
@@ -759,7 +786,7 @@ index 21e0356d..09eb53f5 100644
      * `resource_group_name` - (Optional) Name of Resource Group for custom image. Required if publisher not specified.
      * `image_name` - (Optional) Name of the custom image. Required if resource_group_name is specified.
  
-@@ -147,26 +146,25 @@ The following arguments are supported:
+@@ -135,26 +144,25 @@ The following arguments are supported:
        version   = "latest"
      }
    }
@@ -791,7 +818,7 @@ index 21e0356d..09eb53f5 100644
          * `additional_ip_configs` - (Optional) Array of additional IP configuration objects.
              * `name` - (Required) The IP configuration name.
              * `private_ip_version` - (Optional) Available from Azure Api-Version 2017-03-30 onwards, it represents whether the specific ip configuration is IPv4 or IPv6. Valid values: `IPv4`, `IPv6`.
-@@ -197,8 +195,7 @@ The following arguments are supported:
+@@ -185,8 +193,7 @@ The following arguments are supported:
    }
  ```
  
@@ -801,7 +828,7 @@ index 21e0356d..09eb53f5 100644
  
  * `login` - (Required) Describes the login configuration.
      * `user_name` - (Required) Set admin access for accessing your VMs.
-@@ -211,8 +208,3 @@ The following arguments are supported:
+@@ -199,8 +206,3 @@ The following arguments are supported:
      ssh_public_key = "33a2s1f3g5a1df5g1ad21651sag56dfg=="
    }
  ```
@@ -810,10 +837,10 @@ index 21e0356d..09eb53f5 100644
 -
 -
 -    
-diff --git b/docs/resources/elastigroup_gcp.md a/docs/resources/elastigroup_gcp.md
+diff --git a/docs/resources/elastigroup_gcp.md b/docs/resources/elastigroup_gcp.md
 index 7799a3f0..22d6746d 100644
---- b/docs/resources/elastigroup_gcp.md
-+++ a/docs/resources/elastigroup_gcp.md
+--- a/docs/resources/elastigroup_gcp.md
++++ b/docs/resources/elastigroup_gcp.md
 @@ -138,8 +138,7 @@ The following arguments are supported:
      * `value` - (Optional) Labels value.
  * `tags` - (Optional) Tags to mark created instances.
@@ -894,10 +921,10 @@ index 7799a3f0..22d6746d 100644
  
  Each `scheduled_task` supports the following:
  
-diff --git b/docs/resources/elastigroup_gke.md a/docs/resources/elastigroup_gke.md
+diff --git a/docs/resources/elastigroup_gke.md b/docs/resources/elastigroup_gke.md
 index b4ddc361..da5d765c 100644
---- b/docs/resources/elastigroup_gke.md
-+++ a/docs/resources/elastigroup_gke.md
+--- a/docs/resources/elastigroup_gke.md
++++ b/docs/resources/elastigroup_gke.md
 @@ -23,7 +23,7 @@ There are two main differences:
  ```hcl
  resource "spotinst_elastigroup_gke" "example-gke-elastigroup" {
@@ -936,10 +963,10 @@ index b4ddc361..da5d765c 100644
  The following parameters are created remotely and imported. The diffs have been suppressed in order to maintain plan legibility. You may update the values of these
  imported parameters by defining them in your template with your desired new value (including null values).
  
-diff --git b/docs/resources/health_check.md a/docs/resources/health_check.md
+diff --git a/docs/resources/health_check.md b/docs/resources/health_check.md
 index 50997b38..0cec10b9 100644
---- b/docs/resources/health_check.md
-+++ a/docs/resources/health_check.md
+--- a/docs/resources/health_check.md
++++ b/docs/resources/health_check.md
 @@ -14,7 +14,7 @@ Provides a Spotinst Health Check resource.
  
  ```hcl 
@@ -949,10 +976,10 @@ index 50997b38..0cec10b9 100644
    resource_id = "sig-123"
  
    check {
-diff --git b/docs/resources/managed_instance_aws.md a/docs/resources/managed_instance_aws.md
+diff --git a/docs/resources/managed_instance_aws.md b/docs/resources/managed_instance_aws.md
 index 2bdf7acb..b2aab7af 100644
---- b/docs/resources/managed_instance_aws.md
-+++ a/docs/resources/managed_instance_aws.md
+--- a/docs/resources/managed_instance_aws.md
++++ b/docs/resources/managed_instance_aws.md
 @@ -16,7 +16,7 @@ Provides a Spotinst AWS ManagedInstance resource.
  # Create a Manged Instance
  resource "spotinst_managed_instance_aws" "default-managed-instance" {
@@ -1100,10 +1127,10 @@ index 2bdf7acb..b2aab7af 100644
    type  = "pause"
  }    
  ```
-diff --git b/docs/resources/mrscaler_aws.md a/docs/resources/mrscaler_aws.md
+diff --git a/docs/resources/mrscaler_aws.md b/docs/resources/mrscaler_aws.md
 index 05d783c0..7cd006b9 100644
---- b/docs/resources/mrscaler_aws.md
-+++ a/docs/resources/mrscaler_aws.md
+--- a/docs/resources/mrscaler_aws.md
++++ b/docs/resources/mrscaler_aws.md
 @@ -10,14 +10,16 @@ description: |-
  
  Provides a Spotinst AWS MrScaler resource.
@@ -1331,11 +1358,11 @@ index 05d783c0..7cd006b9 100644
  
  ```hcl
    termination_policies {
-diff --git b/docs/resources/ocean_aws.md a/docs/resources/ocean_aws.md
-index 3710bce1..d852c34b 100644
---- b/docs/resources/ocean_aws.md
-+++ a/docs/resources/ocean_aws.md
-@@ -97,7 +97,7 @@ resource "spotinst_ocean_aws" "example" {
+diff --git a/docs/resources/ocean_aws.md b/docs/resources/ocean_aws.md
+index fe1a0490..1722cb2c 100644
+--- a/docs/resources/ocean_aws.md
++++ b/docs/resources/ocean_aws.md
+@@ -98,7 +98,7 @@ resource "spotinst_ocean_aws" "example" {
    }
    // endregion
  
@@ -1344,7 +1371,7 @@ index 3710bce1..d852c34b 100644
    fallback_to_ondemand       = true
    draining_timeout           = 120
    utilize_reserved_instances = false
-@@ -204,8 +204,7 @@ The following arguments are supported:
+@@ -206,8 +206,7 @@ The following arguments are supported:
          * `s3` - (Optional) Exports your cluster's logs to the S3 bucket and subdir configured on the S3 data integration given.
              * `id` - (Required) The identifier of The S3 data integration to export the logs to.
  
@@ -1354,7 +1381,7 @@ index 3710bce1..d852c34b 100644
  * `autoscaler` - (Optional) Describes the Ocean Kubernetes Auto Scaler.
      * `autoscale_is_enabled` - (Optional, Default: `true`) Enable the Ocean Kubernetes Auto Scaler.
      * `autoscale_is_auto_config` - (Optional, Default: `true`) Automatically configure and optimize headroom resources.
-@@ -252,8 +251,7 @@ autoscaler {
+@@ -254,8 +253,7 @@ autoscaler {
  }
  ```
  
@@ -1364,7 +1391,7 @@ index 3710bce1..d852c34b 100644
  
  * `update_policy` - (Optional)
      * `should_roll` - (Required) Enables the roll.
-@@ -289,13 +287,13 @@ update_policy {
+@@ -291,13 +289,13 @@ update_policy {
          * `is_enabled` - (Required)  Describes whether the task is enabled. When true the task should run when false it should not run. Required for `cluster.scheduling.tasks` object.
          * `cron_expression` - (Required) A valid cron expression. The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of `frequency` or `cronExpression` should be used at a time. Required for `cluster.scheduling.tasks` object. (Example: `0 1 * * *`).
          * `task_type` - (Required) Valid values: `clusterRoll`. Required for `cluster.scheduling.tasks` object. (Example: `clusterRoll`).
@@ -1380,10 +1407,10 @@ index 3710bce1..d852c34b 100644
        "Sun:15:30-Mon:13:30",
      ]
    }
-diff --git b/docs/resources/ocean_ecs.md a/docs/resources/ocean_ecs.md
+diff --git a/docs/resources/ocean_ecs.md b/docs/resources/ocean_ecs.md
 index c2386962..7ed8db2a 100644
---- b/docs/resources/ocean_ecs.md
-+++ a/docs/resources/ocean_ecs.md
+--- a/docs/resources/ocean_ecs.md
++++ b/docs/resources/ocean_ecs.md
 @@ -15,12 +15,12 @@ Manages a Spotinst Ocean ECS resource.
  ```hcl
  resource "spotinst_ocean_ecs" "example" {
@@ -1495,10 +1522,10 @@ index c2386962..7ed8db2a 100644
  ```hcl
    scheduled_task  {
      shutdown_hours  {
-diff --git b/docs/resources/ocean_gke_import.md a/docs/resources/ocean_gke_import.md
+diff --git a/docs/resources/ocean_gke_import.md b/docs/resources/ocean_gke_import.md
 index bc7bc82e..ce5d4733 100644
---- b/docs/resources/ocean_gke_import.md
-+++ a/docs/resources/ocean_gke_import.md
+--- a/docs/resources/ocean_gke_import.md
++++ b/docs/resources/ocean_gke_import.md
 @@ -36,18 +36,18 @@ resource "spotinst_ocean_gke_import" "example" {
    cluster_name = "example-cluster-name"
    controller_cluster_id = "example-controller-123124"
@@ -1569,3 +1596,6 @@ index bc7bc82e..ce5d4733 100644
  
  * `autoscaler` - (Optional) The Ocean Kubernetes Autoscaler object.
      * `is_enabled` - (Optional, Default: `true`) Enable the Ocean Kubernetes Autoscaler.
+-- 
+2.39.1
+

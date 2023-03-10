@@ -90,6 +90,10 @@ func Provider() tfbridge.ProviderInfo {
 			"spotinst_managed_instance_aws":       {Tok: makeResource(awsMod, "ManagedInstance")},
 			"spotinst_elastigroup_azure":          {Tok: makeResource(azureMod, "Elastigroup")},
 			"spotinst_ocean_aks":                  {Tok: makeResource(azureMod, "Ocean")},
+			"spotinst_ocean_aks_np_virtual_node_group": {
+				Tok:  makeResource(azureMod, "OceanNpVirtualNodeGroup"),
+				Docs: noUpstreamDocs,
+			},
 			"spotinst_ocean_aks_np": {
 				Tok:  makeResource(azureMod, "OceanNp"),
 				Docs: noUpstreamDocs,
