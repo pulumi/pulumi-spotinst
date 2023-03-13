@@ -18,6 +18,7 @@ class OceanArgs:
     def __init__(__self__, *,
                  security_groups: pulumi.Input[Sequence[pulumi.Input[str]]],
                  subnet_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 associate_ipv6_address: Optional[pulumi.Input[bool]] = None,
                  associate_public_ip_address: Optional[pulumi.Input[bool]] = None,
                  autoscaler: Optional[pulumi.Input['OceanAutoscalerArgs']] = None,
                  blacklists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -55,6 +56,7 @@ class OceanArgs:
         The set of arguments for constructing a Ocean resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: One or more security group ids.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public IP.
+        :param pulumi.Input[bool] associate_ipv6_address: Configure IPv6 address allocation.
         :param pulumi.Input[bool] associate_public_ip_address: Configure public IP address allocation.
         :param pulumi.Input['OceanAutoscalerArgs'] autoscaler: Describes the Ocean Kubernetes Auto Scaler.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] blacklists: Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist` is configured.
@@ -89,6 +91,8 @@ class OceanArgs:
         """
         pulumi.set(__self__, "security_groups", security_groups)
         pulumi.set(__self__, "subnet_ids", subnet_ids)
+        if associate_ipv6_address is not None:
+            pulumi.set(__self__, "associate_ipv6_address", associate_ipv6_address)
         if associate_public_ip_address is not None:
             pulumi.set(__self__, "associate_public_ip_address", associate_public_ip_address)
         if autoscaler is not None:
@@ -179,6 +183,18 @@ class OceanArgs:
     @subnet_ids.setter
     def subnet_ids(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "subnet_ids", value)
+
+    @property
+    @pulumi.getter(name="associateIpv6Address")
+    def associate_ipv6_address(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Configure IPv6 address allocation.
+        """
+        return pulumi.get(self, "associate_ipv6_address")
+
+    @associate_ipv6_address.setter
+    def associate_ipv6_address(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "associate_ipv6_address", value)
 
     @property
     @pulumi.getter(name="associatePublicIpAddress")
@@ -572,6 +588,7 @@ class OceanArgs:
 @pulumi.input_type
 class _OceanState:
     def __init__(__self__, *,
+                 associate_ipv6_address: Optional[pulumi.Input[bool]] = None,
                  associate_public_ip_address: Optional[pulumi.Input[bool]] = None,
                  autoscaler: Optional[pulumi.Input['OceanAutoscalerArgs']] = None,
                  blacklists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -609,6 +626,7 @@ class _OceanState:
                  whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering Ocean resources.
+        :param pulumi.Input[bool] associate_ipv6_address: Configure IPv6 address allocation.
         :param pulumi.Input[bool] associate_public_ip_address: Configure public IP address allocation.
         :param pulumi.Input['OceanAutoscalerArgs'] autoscaler: Describes the Ocean Kubernetes Auto Scaler.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] blacklists: Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist` is configured.
@@ -643,6 +661,8 @@ class _OceanState:
         :param pulumi.Input[bool] utilize_reserved_instances: If Reserved instances exist, Ocean will utilize them before launching Spot instances.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] whitelists: Instance types allowed in the Ocean cluster. Cannot be configured if `blacklist` is configured.
         """
+        if associate_ipv6_address is not None:
+            pulumi.set(__self__, "associate_ipv6_address", associate_ipv6_address)
         if associate_public_ip_address is not None:
             pulumi.set(__self__, "associate_public_ip_address", associate_public_ip_address)
         if autoscaler is not None:
@@ -713,6 +733,18 @@ class _OceanState:
             pulumi.set(__self__, "utilize_reserved_instances", utilize_reserved_instances)
         if whitelists is not None:
             pulumi.set(__self__, "whitelists", whitelists)
+
+    @property
+    @pulumi.getter(name="associateIpv6Address")
+    def associate_ipv6_address(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Configure IPv6 address allocation.
+        """
+        return pulumi.get(self, "associate_ipv6_address")
+
+    @associate_ipv6_address.setter
+    def associate_ipv6_address(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "associate_ipv6_address", value)
 
     @property
     @pulumi.getter(name="associatePublicIpAddress")
@@ -1132,6 +1164,7 @@ class Ocean(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 associate_ipv6_address: Optional[pulumi.Input[bool]] = None,
                  associate_public_ip_address: Optional[pulumi.Input[bool]] = None,
                  autoscaler: Optional[pulumi.Input[pulumi.InputType['OceanAutoscalerArgs']]] = None,
                  blacklists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1196,6 +1229,7 @@ class Ocean(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] associate_ipv6_address: Configure IPv6 address allocation.
         :param pulumi.Input[bool] associate_public_ip_address: Configure public IP address allocation.
         :param pulumi.Input[pulumi.InputType['OceanAutoscalerArgs']] autoscaler: Describes the Ocean Kubernetes Auto Scaler.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] blacklists: Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist` is configured.
@@ -1277,6 +1311,7 @@ class Ocean(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 associate_ipv6_address: Optional[pulumi.Input[bool]] = None,
                  associate_public_ip_address: Optional[pulumi.Input[bool]] = None,
                  autoscaler: Optional[pulumi.Input[pulumi.InputType['OceanAutoscalerArgs']]] = None,
                  blacklists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1321,6 +1356,7 @@ class Ocean(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = OceanArgs.__new__(OceanArgs)
 
+            __props__.__dict__["associate_ipv6_address"] = associate_ipv6_address
             __props__.__dict__["associate_public_ip_address"] = associate_public_ip_address
             __props__.__dict__["autoscaler"] = autoscaler
             __props__.__dict__["blacklists"] = blacklists
@@ -1370,6 +1406,7 @@ class Ocean(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            associate_ipv6_address: Optional[pulumi.Input[bool]] = None,
             associate_public_ip_address: Optional[pulumi.Input[bool]] = None,
             autoscaler: Optional[pulumi.Input[pulumi.InputType['OceanAutoscalerArgs']]] = None,
             blacklists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1412,6 +1449,7 @@ class Ocean(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] associate_ipv6_address: Configure IPv6 address allocation.
         :param pulumi.Input[bool] associate_public_ip_address: Configure public IP address allocation.
         :param pulumi.Input[pulumi.InputType['OceanAutoscalerArgs']] autoscaler: Describes the Ocean Kubernetes Auto Scaler.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] blacklists: Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist` is configured.
@@ -1450,6 +1488,7 @@ class Ocean(pulumi.CustomResource):
 
         __props__ = _OceanState.__new__(_OceanState)
 
+        __props__.__dict__["associate_ipv6_address"] = associate_ipv6_address
         __props__.__dict__["associate_public_ip_address"] = associate_public_ip_address
         __props__.__dict__["autoscaler"] = autoscaler
         __props__.__dict__["blacklists"] = blacklists
@@ -1486,6 +1525,14 @@ class Ocean(pulumi.CustomResource):
         __props__.__dict__["utilize_reserved_instances"] = utilize_reserved_instances
         __props__.__dict__["whitelists"] = whitelists
         return Ocean(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="associateIpv6Address")
+    def associate_ipv6_address(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Configure IPv6 address allocation.
+        """
+        return pulumi.get(self, "associate_ipv6_address")
 
     @property
     @pulumi.getter(name="associatePublicIpAddress")

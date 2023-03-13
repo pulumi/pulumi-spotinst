@@ -52,6 +52,8 @@ __all__ = [
     'OceanNpAutoscalerResourceLimits',
     'OceanNpHealth',
     'OceanNpTaint',
+    'OceanNpVirtualNodeGroupHeadroom',
+    'OceanNpVirtualNodeGroupTaint',
     'OceanOsDisk',
     'OceanStrategy',
     'OceanTag',
@@ -2526,6 +2528,91 @@ class OceanNpHealth(dict):
 
 @pulumi.output_type
 class OceanNpTaint(dict):
+    def __init__(__self__, *,
+                 effect: str,
+                 key: str,
+                 value: str):
+        pulumi.set(__self__, "effect", effect)
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def effect(self) -> str:
+        return pulumi.get(self, "effect")
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class OceanNpVirtualNodeGroupHeadroom(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "numOfUnits":
+            suggest = "num_of_units"
+        elif key == "cpuPerUnit":
+            suggest = "cpu_per_unit"
+        elif key == "gpuPerUnit":
+            suggest = "gpu_per_unit"
+        elif key == "memoryPerUnit":
+            suggest = "memory_per_unit"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OceanNpVirtualNodeGroupHeadroom. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OceanNpVirtualNodeGroupHeadroom.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OceanNpVirtualNodeGroupHeadroom.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 num_of_units: int,
+                 cpu_per_unit: Optional[int] = None,
+                 gpu_per_unit: Optional[int] = None,
+                 memory_per_unit: Optional[int] = None):
+        pulumi.set(__self__, "num_of_units", num_of_units)
+        if cpu_per_unit is not None:
+            pulumi.set(__self__, "cpu_per_unit", cpu_per_unit)
+        if gpu_per_unit is not None:
+            pulumi.set(__self__, "gpu_per_unit", gpu_per_unit)
+        if memory_per_unit is not None:
+            pulumi.set(__self__, "memory_per_unit", memory_per_unit)
+
+    @property
+    @pulumi.getter(name="numOfUnits")
+    def num_of_units(self) -> int:
+        return pulumi.get(self, "num_of_units")
+
+    @property
+    @pulumi.getter(name="cpuPerUnit")
+    def cpu_per_unit(self) -> Optional[int]:
+        return pulumi.get(self, "cpu_per_unit")
+
+    @property
+    @pulumi.getter(name="gpuPerUnit")
+    def gpu_per_unit(self) -> Optional[int]:
+        return pulumi.get(self, "gpu_per_unit")
+
+    @property
+    @pulumi.getter(name="memoryPerUnit")
+    def memory_per_unit(self) -> Optional[int]:
+        return pulumi.get(self, "memory_per_unit")
+
+
+@pulumi.output_type
+class OceanNpVirtualNodeGroupTaint(dict):
     def __init__(__self__, *,
                  effect: str,
                  key: str,

@@ -26,6 +26,7 @@
         "azure/index.ts",
         "azure/ocean.ts",
         "azure/oceanNp.ts",
+        "azure/oceanNpVirtualNodeGroup.ts",
         "azure/oceanVirtualNodeGroup.ts",
         "config/index.ts",
         "config/vars.ts",

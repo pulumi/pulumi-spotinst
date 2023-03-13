@@ -9,7 +9,7 @@ import com.pulumi.spotinst.inputs.ElastigroupAzureV3ImageArgs;
 import com.pulumi.spotinst.inputs.ElastigroupAzureV3LoginArgs;
 import com.pulumi.spotinst.inputs.ElastigroupAzureV3ManagedServiceIdentityArgs;
 import com.pulumi.spotinst.inputs.ElastigroupAzureV3NetworkArgs;
-import com.pulumi.spotinst.inputs.ElastigroupAzureV3StrategyArgs;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -50,6 +50,28 @@ public final class ElastigroupAzureV3State extends com.pulumi.resources.Resource
      */
     public Optional<Output<Integer>> desiredCapacity() {
         return Optional.ofNullable(this.desiredCapacity);
+    }
+
+    /**
+     * Time (seconds) to allow the instance to be drained from incoming TCP connections and detached from MLB before terminating it during a scale-down operation.
+     * 
+     */
+    @Import(name="drainingTimeout")
+    private @Nullable Output<Integer> drainingTimeout;
+
+    /**
+     * @return Time (seconds) to allow the instance to be drained from incoming TCP connections and detached from MLB before terminating it during a scale-down operation.
+     * 
+     */
+    public Optional<Output<Integer>> drainingTimeout() {
+        return Optional.ofNullable(this.drainingTimeout);
+    }
+
+    @Import(name="fallbackToOnDemand")
+    private @Nullable Output<Boolean> fallbackToOnDemand;
+
+    public Optional<Output<Boolean>> fallbackToOnDemand() {
+        return Optional.ofNullable(this.fallbackToOnDemand);
     }
 
     @Import(name="images")
@@ -148,6 +170,13 @@ public final class ElastigroupAzureV3State extends com.pulumi.resources.Resource
         return Optional.ofNullable(this.odSizes);
     }
 
+    @Import(name="onDemandCount")
+    private @Nullable Output<Integer> onDemandCount;
+
+    public Optional<Output<Integer>> onDemandCount() {
+        return Optional.ofNullable(this.onDemandCount);
+    }
+
     /**
      * Type of the operating system. Valid values: `&#34;Linux&#34;`, `&#34;Windows&#34;`.
      * 
@@ -194,6 +223,21 @@ public final class ElastigroupAzureV3State extends com.pulumi.resources.Resource
     }
 
     /**
+     * TODO
+     * 
+     */
+    @Import(name="spotPercentage")
+    private @Nullable Output<Integer> spotPercentage;
+
+    /**
+     * @return TODO
+     * 
+     */
+    public Optional<Output<Integer>> spotPercentage() {
+        return Optional.ofNullable(this.spotPercentage);
+    }
+
+    /**
      * Available Low-Priority sizes.
      * 
      */
@@ -208,18 +252,13 @@ public final class ElastigroupAzureV3State extends com.pulumi.resources.Resource
         return Optional.ofNullable(this.spotSizes);
     }
 
-    @Import(name="strategy")
-    private @Nullable Output<ElastigroupAzureV3StrategyArgs> strategy;
-
-    public Optional<Output<ElastigroupAzureV3StrategyArgs>> strategy() {
-        return Optional.ofNullable(this.strategy);
-    }
-
     private ElastigroupAzureV3State() {}
 
     private ElastigroupAzureV3State(ElastigroupAzureV3State $) {
         this.customData = $.customData;
         this.desiredCapacity = $.desiredCapacity;
+        this.drainingTimeout = $.drainingTimeout;
+        this.fallbackToOnDemand = $.fallbackToOnDemand;
         this.images = $.images;
         this.login = $.login;
         this.managedServiceIdentities = $.managedServiceIdentities;
@@ -228,11 +267,12 @@ public final class ElastigroupAzureV3State extends com.pulumi.resources.Resource
         this.name = $.name;
         this.network = $.network;
         this.odSizes = $.odSizes;
+        this.onDemandCount = $.onDemandCount;
         this.os = $.os;
         this.region = $.region;
         this.resourceGroupName = $.resourceGroupName;
+        this.spotPercentage = $.spotPercentage;
         this.spotSizes = $.spotSizes;
-        this.strategy = $.strategy;
     }
 
     public static Builder builder() {
@@ -293,6 +333,36 @@ public final class ElastigroupAzureV3State extends com.pulumi.resources.Resource
          */
         public Builder desiredCapacity(Integer desiredCapacity) {
             return desiredCapacity(Output.of(desiredCapacity));
+        }
+
+        /**
+         * @param drainingTimeout Time (seconds) to allow the instance to be drained from incoming TCP connections and detached from MLB before terminating it during a scale-down operation.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder drainingTimeout(@Nullable Output<Integer> drainingTimeout) {
+            $.drainingTimeout = drainingTimeout;
+            return this;
+        }
+
+        /**
+         * @param drainingTimeout Time (seconds) to allow the instance to be drained from incoming TCP connections and detached from MLB before terminating it during a scale-down operation.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder drainingTimeout(Integer drainingTimeout) {
+            return drainingTimeout(Output.of(drainingTimeout));
+        }
+
+        public Builder fallbackToOnDemand(@Nullable Output<Boolean> fallbackToOnDemand) {
+            $.fallbackToOnDemand = fallbackToOnDemand;
+            return this;
+        }
+
+        public Builder fallbackToOnDemand(Boolean fallbackToOnDemand) {
+            return fallbackToOnDemand(Output.of(fallbackToOnDemand));
         }
 
         public Builder images(@Nullable Output<List<ElastigroupAzureV3ImageArgs>> images) {
@@ -451,6 +521,15 @@ public final class ElastigroupAzureV3State extends com.pulumi.resources.Resource
             return odSizes(List.of(odSizes));
         }
 
+        public Builder onDemandCount(@Nullable Output<Integer> onDemandCount) {
+            $.onDemandCount = onDemandCount;
+            return this;
+        }
+
+        public Builder onDemandCount(Integer onDemandCount) {
+            return onDemandCount(Output.of(onDemandCount));
+        }
+
         /**
          * @param os Type of the operating system. Valid values: `&#34;Linux&#34;`, `&#34;Windows&#34;`.
          * 
@@ -515,6 +594,27 @@ public final class ElastigroupAzureV3State extends com.pulumi.resources.Resource
         }
 
         /**
+         * @param spotPercentage TODO
+         * 
+         * @return builder
+         * 
+         */
+        public Builder spotPercentage(@Nullable Output<Integer> spotPercentage) {
+            $.spotPercentage = spotPercentage;
+            return this;
+        }
+
+        /**
+         * @param spotPercentage TODO
+         * 
+         * @return builder
+         * 
+         */
+        public Builder spotPercentage(Integer spotPercentage) {
+            return spotPercentage(Output.of(spotPercentage));
+        }
+
+        /**
          * @param spotSizes Available Low-Priority sizes.
          * 
          * @return builder
@@ -543,15 +643,6 @@ public final class ElastigroupAzureV3State extends com.pulumi.resources.Resource
          */
         public Builder spotSizes(String... spotSizes) {
             return spotSizes(List.of(spotSizes));
-        }
-
-        public Builder strategy(@Nullable Output<ElastigroupAzureV3StrategyArgs> strategy) {
-            $.strategy = strategy;
-            return this;
-        }
-
-        public Builder strategy(ElastigroupAzureV3StrategyArgs strategy) {
-            return strategy(Output.of(strategy));
         }
 
         public ElastigroupAzureV3State build() {

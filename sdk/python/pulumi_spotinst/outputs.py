@@ -21,7 +21,6 @@ __all__ = [
     'ElastigroupAzureV3NetworkNetworkInterface',
     'ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfig',
     'ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroup',
-    'ElastigroupAzureV3Strategy',
     'HealthCheckCheck',
     'StatefulNodeAzureAttachDataDisk',
     'StatefulNodeAzureBootDiagnostic',
@@ -553,80 +552,6 @@ class ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroup(dict):
         Name of the Azure Resource Group where the Managed Service Identity is located.
         """
         return pulumi.get(self, "resource_group_name")
-
-
-@pulumi.output_type
-class ElastigroupAzureV3Strategy(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "drainingTimeout":
-            suggest = "draining_timeout"
-        elif key == "fallbackToOnDemand":
-            suggest = "fallback_to_on_demand"
-        elif key == "odCount":
-            suggest = "od_count"
-        elif key == "spotPercentage":
-            suggest = "spot_percentage"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ElastigroupAzureV3Strategy. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ElastigroupAzureV3Strategy.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ElastigroupAzureV3Strategy.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 draining_timeout: Optional[int] = None,
-                 fallback_to_on_demand: Optional[bool] = None,
-                 od_count: Optional[int] = None,
-                 spot_percentage: Optional[int] = None):
-        """
-        :param int draining_timeout: Time (seconds) to allow the instance to be drained from incoming TCP connections and detached from MLB before terminating it during a scale-down operation.
-        :param int od_count: Number of On-Demand instances to maintain. Required if `low_priority_percentage` is not specified.
-        :param int spot_percentage: TODO
-        """
-        if draining_timeout is not None:
-            pulumi.set(__self__, "draining_timeout", draining_timeout)
-        if fallback_to_on_demand is not None:
-            pulumi.set(__self__, "fallback_to_on_demand", fallback_to_on_demand)
-        if od_count is not None:
-            pulumi.set(__self__, "od_count", od_count)
-        if spot_percentage is not None:
-            pulumi.set(__self__, "spot_percentage", spot_percentage)
-
-    @property
-    @pulumi.getter(name="drainingTimeout")
-    def draining_timeout(self) -> Optional[int]:
-        """
-        Time (seconds) to allow the instance to be drained from incoming TCP connections and detached from MLB before terminating it during a scale-down operation.
-        """
-        return pulumi.get(self, "draining_timeout")
-
-    @property
-    @pulumi.getter(name="fallbackToOnDemand")
-    def fallback_to_on_demand(self) -> Optional[bool]:
-        return pulumi.get(self, "fallback_to_on_demand")
-
-    @property
-    @pulumi.getter(name="odCount")
-    def od_count(self) -> Optional[int]:
-        """
-        Number of On-Demand instances to maintain. Required if `low_priority_percentage` is not specified.
-        """
-        return pulumi.get(self, "od_count")
-
-    @property
-    @pulumi.getter(name="spotPercentage")
-    def spot_percentage(self) -> Optional[int]:
-        """
-        TODO
-        """
-        return pulumi.get(self, "spot_percentage")
 
 
 @pulumi.output_type

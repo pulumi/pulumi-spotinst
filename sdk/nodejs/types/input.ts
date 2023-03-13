@@ -123,22 +123,6 @@ export interface ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGro
     resourceGroupName: pulumi.Input<string>;
 }
 
-export interface ElastigroupAzureV3Strategy {
-    /**
-     * Time (seconds) to allow the instance to be drained from incoming TCP connections and detached from MLB before terminating it during a scale-down operation.
-     */
-    drainingTimeout?: pulumi.Input<number>;
-    fallbackToOnDemand?: pulumi.Input<boolean>;
-    /**
-     * Number of On-Demand instances to maintain. Required if `lowPriorityPercentage` is not specified.
-     */
-    odCount?: pulumi.Input<number>;
-    /**
-     * TODO
-     */
-    spotPercentage?: pulumi.Input<number>;
-}
-
 export interface HealthCheckCheck {
     endPoint?: pulumi.Input<string>;
     /**
@@ -3632,6 +3616,19 @@ export namespace azure {
     }
 
     export interface OceanNpTaint {
+        effect: pulumi.Input<string>;
+        key: pulumi.Input<string>;
+        value: pulumi.Input<string>;
+    }
+
+    export interface OceanNpVirtualNodeGroupHeadroom {
+        cpuPerUnit?: pulumi.Input<number>;
+        gpuPerUnit?: pulumi.Input<number>;
+        memoryPerUnit?: pulumi.Input<number>;
+        numOfUnits: pulumi.Input<number>;
+    }
+
+    export interface OceanNpVirtualNodeGroupTaint {
         effect: pulumi.Input<string>;
         key: pulumi.Input<string>;
         value: pulumi.Input<string>;

@@ -44,6 +44,12 @@ namespace Pulumi.SpotInst.Aws
     public partial class Ocean : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Configure IPv6 address allocation.
+        /// </summary>
+        [Output("associateIpv6Address")]
+        public Output<bool?> AssociateIpv6Address { get; private set; } = null!;
+
+        /// <summary>
         /// Configure public IP address allocation.
         /// </summary>
         [Output("associatePublicIpAddress")]
@@ -291,6 +297,12 @@ namespace Pulumi.SpotInst.Aws
 
     public sealed class OceanArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Configure IPv6 address allocation.
+        /// </summary>
+        [Input("associateIpv6Address")]
+        public Input<bool>? AssociateIpv6Address { get; set; }
+
         /// <summary>
         /// Configure public IP address allocation.
         /// </summary>
@@ -547,6 +559,12 @@ namespace Pulumi.SpotInst.Aws
 
     public sealed class OceanState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Configure IPv6 address allocation.
+        /// </summary>
+        [Input("associateIpv6Address")]
+        public Input<bool>? AssociateIpv6Address { get; set; }
+
         /// <summary>
         /// Configure public IP address allocation.
         /// </summary>

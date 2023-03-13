@@ -27,6 +27,15 @@ namespace Pulumi.SpotInst
         [Output("desiredCapacity")]
         public Output<int?> DesiredCapacity { get; private set; } = null!;
 
+        /// <summary>
+        /// Time (seconds) to allow the instance to be drained from incoming TCP connections and detached from MLB before terminating it during a scale-down operation.
+        /// </summary>
+        [Output("drainingTimeout")]
+        public Output<int> DrainingTimeout { get; private set; } = null!;
+
+        [Output("fallbackToOnDemand")]
+        public Output<bool> FallbackToOnDemand { get; private set; } = null!;
+
         [Output("images")]
         public Output<ImmutableArray<Outputs.ElastigroupAzureV3Image>> Images { get; private set; } = null!;
 
@@ -66,6 +75,9 @@ namespace Pulumi.SpotInst
         [Output("odSizes")]
         public Output<ImmutableArray<string>> OdSizes { get; private set; } = null!;
 
+        [Output("onDemandCount")]
+        public Output<int?> OnDemandCount { get; private set; } = null!;
+
         /// <summary>
         /// Type of the operating system. Valid values: `"Linux"`, `"Windows"`.
         /// </summary>
@@ -85,13 +97,16 @@ namespace Pulumi.SpotInst
         public Output<string> ResourceGroupName { get; private set; } = null!;
 
         /// <summary>
+        /// TODO
+        /// </summary>
+        [Output("spotPercentage")]
+        public Output<int?> SpotPercentage { get; private set; } = null!;
+
+        /// <summary>
         /// Available Low-Priority sizes.
         /// </summary>
         [Output("spotSizes")]
         public Output<ImmutableArray<string>> SpotSizes { get; private set; } = null!;
-
-        [Output("strategy")]
-        public Output<Outputs.ElastigroupAzureV3Strategy> Strategy { get; private set; } = null!;
 
 
         /// <summary>
@@ -151,6 +166,15 @@ namespace Pulumi.SpotInst
         [Input("desiredCapacity")]
         public Input<int>? DesiredCapacity { get; set; }
 
+        /// <summary>
+        /// Time (seconds) to allow the instance to be drained from incoming TCP connections and detached from MLB before terminating it during a scale-down operation.
+        /// </summary>
+        [Input("drainingTimeout")]
+        public Input<int>? DrainingTimeout { get; set; }
+
+        [Input("fallbackToOnDemand", required: true)]
+        public Input<bool> FallbackToOnDemand { get; set; } = null!;
+
         [Input("images")]
         private InputList<Inputs.ElastigroupAzureV3ImageArgs>? _images;
         public InputList<Inputs.ElastigroupAzureV3ImageArgs> Images
@@ -207,6 +231,9 @@ namespace Pulumi.SpotInst
             set => _odSizes = value;
         }
 
+        [Input("onDemandCount")]
+        public Input<int>? OnDemandCount { get; set; }
+
         /// <summary>
         /// Type of the operating system. Valid values: `"Linux"`, `"Windows"`.
         /// </summary>
@@ -225,6 +252,12 @@ namespace Pulumi.SpotInst
         [Input("resourceGroupName", required: true)]
         public Input<string> ResourceGroupName { get; set; } = null!;
 
+        /// <summary>
+        /// TODO
+        /// </summary>
+        [Input("spotPercentage")]
+        public Input<int>? SpotPercentage { get; set; }
+
         [Input("spotSizes", required: true)]
         private InputList<string>? _spotSizes;
 
@@ -236,9 +269,6 @@ namespace Pulumi.SpotInst
             get => _spotSizes ?? (_spotSizes = new InputList<string>());
             set => _spotSizes = value;
         }
-
-        [Input("strategy", required: true)]
-        public Input<Inputs.ElastigroupAzureV3StrategyArgs> Strategy { get; set; } = null!;
 
         public ElastigroupAzureV3Args()
         {
@@ -259,6 +289,15 @@ namespace Pulumi.SpotInst
         /// </summary>
         [Input("desiredCapacity")]
         public Input<int>? DesiredCapacity { get; set; }
+
+        /// <summary>
+        /// Time (seconds) to allow the instance to be drained from incoming TCP connections and detached from MLB before terminating it during a scale-down operation.
+        /// </summary>
+        [Input("drainingTimeout")]
+        public Input<int>? DrainingTimeout { get; set; }
+
+        [Input("fallbackToOnDemand")]
+        public Input<bool>? FallbackToOnDemand { get; set; }
 
         [Input("images")]
         private InputList<Inputs.ElastigroupAzureV3ImageGetArgs>? _images;
@@ -316,6 +355,9 @@ namespace Pulumi.SpotInst
             set => _odSizes = value;
         }
 
+        [Input("onDemandCount")]
+        public Input<int>? OnDemandCount { get; set; }
+
         /// <summary>
         /// Type of the operating system. Valid values: `"Linux"`, `"Windows"`.
         /// </summary>
@@ -334,6 +376,12 @@ namespace Pulumi.SpotInst
         [Input("resourceGroupName")]
         public Input<string>? ResourceGroupName { get; set; }
 
+        /// <summary>
+        /// TODO
+        /// </summary>
+        [Input("spotPercentage")]
+        public Input<int>? SpotPercentage { get; set; }
+
         [Input("spotSizes")]
         private InputList<string>? _spotSizes;
 
@@ -345,9 +393,6 @@ namespace Pulumi.SpotInst
             get => _spotSizes ?? (_spotSizes = new InputList<string>());
             set => _spotSizes = value;
         }
-
-        [Input("strategy")]
-        public Input<Inputs.ElastigroupAzureV3StrategyGetArgs>? Strategy { get; set; }
 
         public ElastigroupAzureV3State()
         {

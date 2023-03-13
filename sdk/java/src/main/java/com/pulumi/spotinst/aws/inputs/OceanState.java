@@ -28,6 +28,21 @@ public final class OceanState extends com.pulumi.resources.ResourceArgs {
     public static final OceanState Empty = new OceanState();
 
     /**
+     * Configure IPv6 address allocation.
+     * 
+     */
+    @Import(name="associateIpv6Address")
+    private @Nullable Output<Boolean> associateIpv6Address;
+
+    /**
+     * @return Configure IPv6 address allocation.
+     * 
+     */
+    public Optional<Output<Boolean>> associateIpv6Address() {
+        return Optional.ofNullable(this.associateIpv6Address);
+    }
+
+    /**
      * Configure public IP address allocation.
      * 
      */
@@ -533,6 +548,7 @@ public final class OceanState extends com.pulumi.resources.ResourceArgs {
     private OceanState() {}
 
     private OceanState(OceanState $) {
+        this.associateIpv6Address = $.associateIpv6Address;
         this.associatePublicIpAddress = $.associatePublicIpAddress;
         this.autoscaler = $.autoscaler;
         this.blacklists = $.blacklists;
@@ -586,6 +602,27 @@ public final class OceanState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(OceanState defaults) {
             $ = new OceanState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param associateIpv6Address Configure IPv6 address allocation.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder associateIpv6Address(@Nullable Output<Boolean> associateIpv6Address) {
+            $.associateIpv6Address = associateIpv6Address;
+            return this;
+        }
+
+        /**
+         * @param associateIpv6Address Configure IPv6 address allocation.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder associateIpv6Address(Boolean associateIpv6Address) {
+            return associateIpv6Address(Output.of(associateIpv6Address));
         }
 
         /**

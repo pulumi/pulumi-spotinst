@@ -51,6 +51,8 @@ __all__ = [
     'OceanNpAutoscalerResourceLimitsArgs',
     'OceanNpHealthArgs',
     'OceanNpTaintArgs',
+    'OceanNpVirtualNodeGroupHeadroomArgs',
+    'OceanNpVirtualNodeGroupTaintArgs',
     'OceanOsDiskArgs',
     'OceanStrategyArgs',
     'OceanTagArgs',
@@ -2429,6 +2431,96 @@ class OceanNpHealthArgs:
 
 @pulumi.input_type
 class OceanNpTaintArgs:
+    def __init__(__self__, *,
+                 effect: pulumi.Input[str],
+                 key: pulumi.Input[str],
+                 value: pulumi.Input[str]):
+        pulumi.set(__self__, "effect", effect)
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def effect(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "effect")
+
+    @effect.setter
+    def effect(self, value: pulumi.Input[str]):
+        pulumi.set(self, "effect", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
+class OceanNpVirtualNodeGroupHeadroomArgs:
+    def __init__(__self__, *,
+                 num_of_units: pulumi.Input[int],
+                 cpu_per_unit: Optional[pulumi.Input[int]] = None,
+                 gpu_per_unit: Optional[pulumi.Input[int]] = None,
+                 memory_per_unit: Optional[pulumi.Input[int]] = None):
+        pulumi.set(__self__, "num_of_units", num_of_units)
+        if cpu_per_unit is not None:
+            pulumi.set(__self__, "cpu_per_unit", cpu_per_unit)
+        if gpu_per_unit is not None:
+            pulumi.set(__self__, "gpu_per_unit", gpu_per_unit)
+        if memory_per_unit is not None:
+            pulumi.set(__self__, "memory_per_unit", memory_per_unit)
+
+    @property
+    @pulumi.getter(name="numOfUnits")
+    def num_of_units(self) -> pulumi.Input[int]:
+        return pulumi.get(self, "num_of_units")
+
+    @num_of_units.setter
+    def num_of_units(self, value: pulumi.Input[int]):
+        pulumi.set(self, "num_of_units", value)
+
+    @property
+    @pulumi.getter(name="cpuPerUnit")
+    def cpu_per_unit(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "cpu_per_unit")
+
+    @cpu_per_unit.setter
+    def cpu_per_unit(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "cpu_per_unit", value)
+
+    @property
+    @pulumi.getter(name="gpuPerUnit")
+    def gpu_per_unit(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "gpu_per_unit")
+
+    @gpu_per_unit.setter
+    def gpu_per_unit(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "gpu_per_unit", value)
+
+    @property
+    @pulumi.getter(name="memoryPerUnit")
+    def memory_per_unit(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "memory_per_unit")
+
+    @memory_per_unit.setter
+    def memory_per_unit(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "memory_per_unit", value)
+
+
+@pulumi.input_type
+class OceanNpVirtualNodeGroupTaintArgs:
     def __init__(__self__, *,
                  effect: pulumi.Input[str],
                  key: pulumi.Input[str],

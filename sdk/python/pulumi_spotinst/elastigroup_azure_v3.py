@@ -16,21 +16,24 @@ __all__ = ['ElastigroupAzureV3Args', 'ElastigroupAzureV3']
 @pulumi.input_type
 class ElastigroupAzureV3Args:
     def __init__(__self__, *,
+                 fallback_to_on_demand: pulumi.Input[bool],
                  network: pulumi.Input['ElastigroupAzureV3NetworkArgs'],
                  od_sizes: pulumi.Input[Sequence[pulumi.Input[str]]],
                  os: pulumi.Input[str],
                  region: pulumi.Input[str],
                  resource_group_name: pulumi.Input[str],
                  spot_sizes: pulumi.Input[Sequence[pulumi.Input[str]]],
-                 strategy: pulumi.Input['ElastigroupAzureV3StrategyArgs'],
                  custom_data: Optional[pulumi.Input[str]] = None,
                  desired_capacity: Optional[pulumi.Input[int]] = None,
+                 draining_timeout: Optional[pulumi.Input[int]] = None,
                  images: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ImageArgs']]]] = None,
                  login: Optional[pulumi.Input['ElastigroupAzureV3LoginArgs']] = None,
                  managed_service_identities: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ManagedServiceIdentityArgs']]]] = None,
                  max_size: Optional[pulumi.Input[int]] = None,
                  min_size: Optional[pulumi.Input[int]] = None,
-                 name: Optional[pulumi.Input[str]] = None):
+                 name: Optional[pulumi.Input[str]] = None,
+                 on_demand_count: Optional[pulumi.Input[int]] = None,
+                 spot_percentage: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a ElastigroupAzureV3 resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] od_sizes: Available On-Demand sizes
@@ -40,22 +43,26 @@ class ElastigroupAzureV3Args:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] spot_sizes: Available Low-Priority sizes.
         :param pulumi.Input[str] custom_data: Custom init script file or text in Base64 encoded format.
         :param pulumi.Input[int] desired_capacity: The desired number of instances the group should have at any time.
+        :param pulumi.Input[int] draining_timeout: Time (seconds) to allow the instance to be drained from incoming TCP connections and detached from MLB before terminating it during a scale-down operation.
         :param pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ManagedServiceIdentityArgs']]] managed_service_identities: List of Managed Service Identity objects.
         :param pulumi.Input[int] max_size: The maximum number of instances the group should have at any time.
         :param pulumi.Input[int] min_size: The minimum number of instances the group should have at any time.
         :param pulumi.Input[str] name: Name of the Managed Service Identity.
+        :param pulumi.Input[int] spot_percentage: TODO
         """
+        pulumi.set(__self__, "fallback_to_on_demand", fallback_to_on_demand)
         pulumi.set(__self__, "network", network)
         pulumi.set(__self__, "od_sizes", od_sizes)
         pulumi.set(__self__, "os", os)
         pulumi.set(__self__, "region", region)
         pulumi.set(__self__, "resource_group_name", resource_group_name)
         pulumi.set(__self__, "spot_sizes", spot_sizes)
-        pulumi.set(__self__, "strategy", strategy)
         if custom_data is not None:
             pulumi.set(__self__, "custom_data", custom_data)
         if desired_capacity is not None:
             pulumi.set(__self__, "desired_capacity", desired_capacity)
+        if draining_timeout is not None:
+            pulumi.set(__self__, "draining_timeout", draining_timeout)
         if images is not None:
             pulumi.set(__self__, "images", images)
         if login is not None:
@@ -68,6 +75,19 @@ class ElastigroupAzureV3Args:
             pulumi.set(__self__, "min_size", min_size)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if on_demand_count is not None:
+            pulumi.set(__self__, "on_demand_count", on_demand_count)
+        if spot_percentage is not None:
+            pulumi.set(__self__, "spot_percentage", spot_percentage)
+
+    @property
+    @pulumi.getter(name="fallbackToOnDemand")
+    def fallback_to_on_demand(self) -> pulumi.Input[bool]:
+        return pulumi.get(self, "fallback_to_on_demand")
+
+    @fallback_to_on_demand.setter
+    def fallback_to_on_demand(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "fallback_to_on_demand", value)
 
     @property
     @pulumi.getter
@@ -139,15 +159,6 @@ class ElastigroupAzureV3Args:
         pulumi.set(self, "spot_sizes", value)
 
     @property
-    @pulumi.getter
-    def strategy(self) -> pulumi.Input['ElastigroupAzureV3StrategyArgs']:
-        return pulumi.get(self, "strategy")
-
-    @strategy.setter
-    def strategy(self, value: pulumi.Input['ElastigroupAzureV3StrategyArgs']):
-        pulumi.set(self, "strategy", value)
-
-    @property
     @pulumi.getter(name="customData")
     def custom_data(self) -> Optional[pulumi.Input[str]]:
         """
@@ -170,6 +181,18 @@ class ElastigroupAzureV3Args:
     @desired_capacity.setter
     def desired_capacity(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "desired_capacity", value)
+
+    @property
+    @pulumi.getter(name="drainingTimeout")
+    def draining_timeout(self) -> Optional[pulumi.Input[int]]:
+        """
+        Time (seconds) to allow the instance to be drained from incoming TCP connections and detached from MLB before terminating it during a scale-down operation.
+        """
+        return pulumi.get(self, "draining_timeout")
+
+    @draining_timeout.setter
+    def draining_timeout(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "draining_timeout", value)
 
     @property
     @pulumi.getter
@@ -237,12 +260,35 @@ class ElastigroupAzureV3Args:
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
 
+    @property
+    @pulumi.getter(name="onDemandCount")
+    def on_demand_count(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "on_demand_count")
+
+    @on_demand_count.setter
+    def on_demand_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "on_demand_count", value)
+
+    @property
+    @pulumi.getter(name="spotPercentage")
+    def spot_percentage(self) -> Optional[pulumi.Input[int]]:
+        """
+        TODO
+        """
+        return pulumi.get(self, "spot_percentage")
+
+    @spot_percentage.setter
+    def spot_percentage(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "spot_percentage", value)
+
 
 @pulumi.input_type
 class _ElastigroupAzureV3State:
     def __init__(__self__, *,
                  custom_data: Optional[pulumi.Input[str]] = None,
                  desired_capacity: Optional[pulumi.Input[int]] = None,
+                 draining_timeout: Optional[pulumi.Input[int]] = None,
+                 fallback_to_on_demand: Optional[pulumi.Input[bool]] = None,
                  images: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ImageArgs']]]] = None,
                  login: Optional[pulumi.Input['ElastigroupAzureV3LoginArgs']] = None,
                  managed_service_identities: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ManagedServiceIdentityArgs']]]] = None,
@@ -251,15 +297,17 @@ class _ElastigroupAzureV3State:
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input['ElastigroupAzureV3NetworkArgs']] = None,
                  od_sizes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 on_demand_count: Optional[pulumi.Input[int]] = None,
                  os: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  resource_group_name: Optional[pulumi.Input[str]] = None,
-                 spot_sizes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 strategy: Optional[pulumi.Input['ElastigroupAzureV3StrategyArgs']] = None):
+                 spot_percentage: Optional[pulumi.Input[int]] = None,
+                 spot_sizes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering ElastigroupAzureV3 resources.
         :param pulumi.Input[str] custom_data: Custom init script file or text in Base64 encoded format.
         :param pulumi.Input[int] desired_capacity: The desired number of instances the group should have at any time.
+        :param pulumi.Input[int] draining_timeout: Time (seconds) to allow the instance to be drained from incoming TCP connections and detached from MLB before terminating it during a scale-down operation.
         :param pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ManagedServiceIdentityArgs']]] managed_service_identities: List of Managed Service Identity objects.
         :param pulumi.Input[int] max_size: The maximum number of instances the group should have at any time.
         :param pulumi.Input[int] min_size: The minimum number of instances the group should have at any time.
@@ -268,12 +316,17 @@ class _ElastigroupAzureV3State:
         :param pulumi.Input[str] os: Type of the operating system. Valid values: `"Linux"`, `"Windows"`.
         :param pulumi.Input[str] region: The region your Azure group will be created in.
         :param pulumi.Input[str] resource_group_name: Name of the Azure Resource Group where the Managed Service Identity is located.
+        :param pulumi.Input[int] spot_percentage: TODO
         :param pulumi.Input[Sequence[pulumi.Input[str]]] spot_sizes: Available Low-Priority sizes.
         """
         if custom_data is not None:
             pulumi.set(__self__, "custom_data", custom_data)
         if desired_capacity is not None:
             pulumi.set(__self__, "desired_capacity", desired_capacity)
+        if draining_timeout is not None:
+            pulumi.set(__self__, "draining_timeout", draining_timeout)
+        if fallback_to_on_demand is not None:
+            pulumi.set(__self__, "fallback_to_on_demand", fallback_to_on_demand)
         if images is not None:
             pulumi.set(__self__, "images", images)
         if login is not None:
@@ -290,16 +343,18 @@ class _ElastigroupAzureV3State:
             pulumi.set(__self__, "network", network)
         if od_sizes is not None:
             pulumi.set(__self__, "od_sizes", od_sizes)
+        if on_demand_count is not None:
+            pulumi.set(__self__, "on_demand_count", on_demand_count)
         if os is not None:
             pulumi.set(__self__, "os", os)
         if region is not None:
             pulumi.set(__self__, "region", region)
         if resource_group_name is not None:
             pulumi.set(__self__, "resource_group_name", resource_group_name)
+        if spot_percentage is not None:
+            pulumi.set(__self__, "spot_percentage", spot_percentage)
         if spot_sizes is not None:
             pulumi.set(__self__, "spot_sizes", spot_sizes)
-        if strategy is not None:
-            pulumi.set(__self__, "strategy", strategy)
 
     @property
     @pulumi.getter(name="customData")
@@ -324,6 +379,27 @@ class _ElastigroupAzureV3State:
     @desired_capacity.setter
     def desired_capacity(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "desired_capacity", value)
+
+    @property
+    @pulumi.getter(name="drainingTimeout")
+    def draining_timeout(self) -> Optional[pulumi.Input[int]]:
+        """
+        Time (seconds) to allow the instance to be drained from incoming TCP connections and detached from MLB before terminating it during a scale-down operation.
+        """
+        return pulumi.get(self, "draining_timeout")
+
+    @draining_timeout.setter
+    def draining_timeout(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "draining_timeout", value)
+
+    @property
+    @pulumi.getter(name="fallbackToOnDemand")
+    def fallback_to_on_demand(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "fallback_to_on_demand")
+
+    @fallback_to_on_demand.setter
+    def fallback_to_on_demand(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "fallback_to_on_demand", value)
 
     @property
     @pulumi.getter
@@ -413,6 +489,15 @@ class _ElastigroupAzureV3State:
         pulumi.set(self, "od_sizes", value)
 
     @property
+    @pulumi.getter(name="onDemandCount")
+    def on_demand_count(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "on_demand_count")
+
+    @on_demand_count.setter
+    def on_demand_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "on_demand_count", value)
+
+    @property
     @pulumi.getter
     def os(self) -> Optional[pulumi.Input[str]]:
         """
@@ -449,6 +534,18 @@ class _ElastigroupAzureV3State:
         pulumi.set(self, "resource_group_name", value)
 
     @property
+    @pulumi.getter(name="spotPercentage")
+    def spot_percentage(self) -> Optional[pulumi.Input[int]]:
+        """
+        TODO
+        """
+        return pulumi.get(self, "spot_percentage")
+
+    @spot_percentage.setter
+    def spot_percentage(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "spot_percentage", value)
+
+    @property
     @pulumi.getter(name="spotSizes")
     def spot_sizes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -460,15 +557,6 @@ class _ElastigroupAzureV3State:
     def spot_sizes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "spot_sizes", value)
 
-    @property
-    @pulumi.getter
-    def strategy(self) -> Optional[pulumi.Input['ElastigroupAzureV3StrategyArgs']]:
-        return pulumi.get(self, "strategy")
-
-    @strategy.setter
-    def strategy(self, value: Optional[pulumi.Input['ElastigroupAzureV3StrategyArgs']]):
-        pulumi.set(self, "strategy", value)
-
 
 class ElastigroupAzureV3(pulumi.CustomResource):
     @overload
@@ -477,6 +565,8 @@ class ElastigroupAzureV3(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  custom_data: Optional[pulumi.Input[str]] = None,
                  desired_capacity: Optional[pulumi.Input[int]] = None,
+                 draining_timeout: Optional[pulumi.Input[int]] = None,
+                 fallback_to_on_demand: Optional[pulumi.Input[bool]] = None,
                  images: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupAzureV3ImageArgs']]]]] = None,
                  login: Optional[pulumi.Input[pulumi.InputType['ElastigroupAzureV3LoginArgs']]] = None,
                  managed_service_identities: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupAzureV3ManagedServiceIdentityArgs']]]]] = None,
@@ -485,11 +575,12 @@ class ElastigroupAzureV3(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[pulumi.InputType['ElastigroupAzureV3NetworkArgs']]] = None,
                  od_sizes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 on_demand_count: Optional[pulumi.Input[int]] = None,
                  os: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  resource_group_name: Optional[pulumi.Input[str]] = None,
+                 spot_percentage: Optional[pulumi.Input[int]] = None,
                  spot_sizes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 strategy: Optional[pulumi.Input[pulumi.InputType['ElastigroupAzureV3StrategyArgs']]] = None,
                  __props__=None):
         """
         Provides a Spotinst elastigroup Azure resource.
@@ -498,6 +589,7 @@ class ElastigroupAzureV3(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] custom_data: Custom init script file or text in Base64 encoded format.
         :param pulumi.Input[int] desired_capacity: The desired number of instances the group should have at any time.
+        :param pulumi.Input[int] draining_timeout: Time (seconds) to allow the instance to be drained from incoming TCP connections and detached from MLB before terminating it during a scale-down operation.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupAzureV3ManagedServiceIdentityArgs']]]] managed_service_identities: List of Managed Service Identity objects.
         :param pulumi.Input[int] max_size: The maximum number of instances the group should have at any time.
         :param pulumi.Input[int] min_size: The minimum number of instances the group should have at any time.
@@ -506,6 +598,7 @@ class ElastigroupAzureV3(pulumi.CustomResource):
         :param pulumi.Input[str] os: Type of the operating system. Valid values: `"Linux"`, `"Windows"`.
         :param pulumi.Input[str] region: The region your Azure group will be created in.
         :param pulumi.Input[str] resource_group_name: Name of the Azure Resource Group where the Managed Service Identity is located.
+        :param pulumi.Input[int] spot_percentage: TODO
         :param pulumi.Input[Sequence[pulumi.Input[str]]] spot_sizes: Available Low-Priority sizes.
         """
         ...
@@ -534,6 +627,8 @@ class ElastigroupAzureV3(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  custom_data: Optional[pulumi.Input[str]] = None,
                  desired_capacity: Optional[pulumi.Input[int]] = None,
+                 draining_timeout: Optional[pulumi.Input[int]] = None,
+                 fallback_to_on_demand: Optional[pulumi.Input[bool]] = None,
                  images: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupAzureV3ImageArgs']]]]] = None,
                  login: Optional[pulumi.Input[pulumi.InputType['ElastigroupAzureV3LoginArgs']]] = None,
                  managed_service_identities: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupAzureV3ManagedServiceIdentityArgs']]]]] = None,
@@ -542,11 +637,12 @@ class ElastigroupAzureV3(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[pulumi.InputType['ElastigroupAzureV3NetworkArgs']]] = None,
                  od_sizes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 on_demand_count: Optional[pulumi.Input[int]] = None,
                  os: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  resource_group_name: Optional[pulumi.Input[str]] = None,
+                 spot_percentage: Optional[pulumi.Input[int]] = None,
                  spot_sizes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 strategy: Optional[pulumi.Input[pulumi.InputType['ElastigroupAzureV3StrategyArgs']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -558,6 +654,10 @@ class ElastigroupAzureV3(pulumi.CustomResource):
 
             __props__.__dict__["custom_data"] = custom_data
             __props__.__dict__["desired_capacity"] = desired_capacity
+            __props__.__dict__["draining_timeout"] = draining_timeout
+            if fallback_to_on_demand is None and not opts.urn:
+                raise TypeError("Missing required property 'fallback_to_on_demand'")
+            __props__.__dict__["fallback_to_on_demand"] = fallback_to_on_demand
             __props__.__dict__["images"] = images
             __props__.__dict__["login"] = login
             __props__.__dict__["managed_service_identities"] = managed_service_identities
@@ -570,6 +670,7 @@ class ElastigroupAzureV3(pulumi.CustomResource):
             if od_sizes is None and not opts.urn:
                 raise TypeError("Missing required property 'od_sizes'")
             __props__.__dict__["od_sizes"] = od_sizes
+            __props__.__dict__["on_demand_count"] = on_demand_count
             if os is None and not opts.urn:
                 raise TypeError("Missing required property 'os'")
             __props__.__dict__["os"] = os
@@ -579,12 +680,10 @@ class ElastigroupAzureV3(pulumi.CustomResource):
             if resource_group_name is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_group_name'")
             __props__.__dict__["resource_group_name"] = resource_group_name
+            __props__.__dict__["spot_percentage"] = spot_percentage
             if spot_sizes is None and not opts.urn:
                 raise TypeError("Missing required property 'spot_sizes'")
             __props__.__dict__["spot_sizes"] = spot_sizes
-            if strategy is None and not opts.urn:
-                raise TypeError("Missing required property 'strategy'")
-            __props__.__dict__["strategy"] = strategy
         super(ElastigroupAzureV3, __self__).__init__(
             'spotinst:index/elastigroupAzureV3:ElastigroupAzureV3',
             resource_name,
@@ -597,6 +696,8 @@ class ElastigroupAzureV3(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             custom_data: Optional[pulumi.Input[str]] = None,
             desired_capacity: Optional[pulumi.Input[int]] = None,
+            draining_timeout: Optional[pulumi.Input[int]] = None,
+            fallback_to_on_demand: Optional[pulumi.Input[bool]] = None,
             images: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupAzureV3ImageArgs']]]]] = None,
             login: Optional[pulumi.Input[pulumi.InputType['ElastigroupAzureV3LoginArgs']]] = None,
             managed_service_identities: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupAzureV3ManagedServiceIdentityArgs']]]]] = None,
@@ -605,11 +706,12 @@ class ElastigroupAzureV3(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             network: Optional[pulumi.Input[pulumi.InputType['ElastigroupAzureV3NetworkArgs']]] = None,
             od_sizes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            on_demand_count: Optional[pulumi.Input[int]] = None,
             os: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
             resource_group_name: Optional[pulumi.Input[str]] = None,
-            spot_sizes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            strategy: Optional[pulumi.Input[pulumi.InputType['ElastigroupAzureV3StrategyArgs']]] = None) -> 'ElastigroupAzureV3':
+            spot_percentage: Optional[pulumi.Input[int]] = None,
+            spot_sizes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'ElastigroupAzureV3':
         """
         Get an existing ElastigroupAzureV3 resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -619,6 +721,7 @@ class ElastigroupAzureV3(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] custom_data: Custom init script file or text in Base64 encoded format.
         :param pulumi.Input[int] desired_capacity: The desired number of instances the group should have at any time.
+        :param pulumi.Input[int] draining_timeout: Time (seconds) to allow the instance to be drained from incoming TCP connections and detached from MLB before terminating it during a scale-down operation.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupAzureV3ManagedServiceIdentityArgs']]]] managed_service_identities: List of Managed Service Identity objects.
         :param pulumi.Input[int] max_size: The maximum number of instances the group should have at any time.
         :param pulumi.Input[int] min_size: The minimum number of instances the group should have at any time.
@@ -627,6 +730,7 @@ class ElastigroupAzureV3(pulumi.CustomResource):
         :param pulumi.Input[str] os: Type of the operating system. Valid values: `"Linux"`, `"Windows"`.
         :param pulumi.Input[str] region: The region your Azure group will be created in.
         :param pulumi.Input[str] resource_group_name: Name of the Azure Resource Group where the Managed Service Identity is located.
+        :param pulumi.Input[int] spot_percentage: TODO
         :param pulumi.Input[Sequence[pulumi.Input[str]]] spot_sizes: Available Low-Priority sizes.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -635,6 +739,8 @@ class ElastigroupAzureV3(pulumi.CustomResource):
 
         __props__.__dict__["custom_data"] = custom_data
         __props__.__dict__["desired_capacity"] = desired_capacity
+        __props__.__dict__["draining_timeout"] = draining_timeout
+        __props__.__dict__["fallback_to_on_demand"] = fallback_to_on_demand
         __props__.__dict__["images"] = images
         __props__.__dict__["login"] = login
         __props__.__dict__["managed_service_identities"] = managed_service_identities
@@ -643,11 +749,12 @@ class ElastigroupAzureV3(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["network"] = network
         __props__.__dict__["od_sizes"] = od_sizes
+        __props__.__dict__["on_demand_count"] = on_demand_count
         __props__.__dict__["os"] = os
         __props__.__dict__["region"] = region
         __props__.__dict__["resource_group_name"] = resource_group_name
+        __props__.__dict__["spot_percentage"] = spot_percentage
         __props__.__dict__["spot_sizes"] = spot_sizes
-        __props__.__dict__["strategy"] = strategy
         return ElastigroupAzureV3(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -665,6 +772,19 @@ class ElastigroupAzureV3(pulumi.CustomResource):
         The desired number of instances the group should have at any time.
         """
         return pulumi.get(self, "desired_capacity")
+
+    @property
+    @pulumi.getter(name="drainingTimeout")
+    def draining_timeout(self) -> pulumi.Output[int]:
+        """
+        Time (seconds) to allow the instance to be drained from incoming TCP connections and detached from MLB before terminating it during a scale-down operation.
+        """
+        return pulumi.get(self, "draining_timeout")
+
+    @property
+    @pulumi.getter(name="fallbackToOnDemand")
+    def fallback_to_on_demand(self) -> pulumi.Output[bool]:
+        return pulumi.get(self, "fallback_to_on_demand")
 
     @property
     @pulumi.getter
@@ -722,6 +842,11 @@ class ElastigroupAzureV3(pulumi.CustomResource):
         return pulumi.get(self, "od_sizes")
 
     @property
+    @pulumi.getter(name="onDemandCount")
+    def on_demand_count(self) -> pulumi.Output[Optional[int]]:
+        return pulumi.get(self, "on_demand_count")
+
+    @property
     @pulumi.getter
     def os(self) -> pulumi.Output[str]:
         """
@@ -746,15 +871,18 @@ class ElastigroupAzureV3(pulumi.CustomResource):
         return pulumi.get(self, "resource_group_name")
 
     @property
+    @pulumi.getter(name="spotPercentage")
+    def spot_percentage(self) -> pulumi.Output[Optional[int]]:
+        """
+        TODO
+        """
+        return pulumi.get(self, "spot_percentage")
+
+    @property
     @pulumi.getter(name="spotSizes")
     def spot_sizes(self) -> pulumi.Output[Sequence[str]]:
         """
         Available Low-Priority sizes.
         """
         return pulumi.get(self, "spot_sizes")
-
-    @property
-    @pulumi.getter
-    def strategy(self) -> pulumi.Output['outputs.ElastigroupAzureV3Strategy']:
-        return pulumi.get(self, "strategy")
 
