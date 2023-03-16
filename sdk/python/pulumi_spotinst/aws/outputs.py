@@ -3153,6 +3153,8 @@ class ElastigroupMetadataOptions(dict):
             suggest = "http_tokens"
         elif key == "httpPutResponseHopLimit":
             suggest = "http_put_response_hop_limit"
+        elif key == "instanceMetadataTags":
+            suggest = "instance_metadata_tags"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ElastigroupMetadataOptions. Access the value via the '{suggest}' property getter instead.")
@@ -3167,14 +3169,18 @@ class ElastigroupMetadataOptions(dict):
 
     def __init__(__self__, *,
                  http_tokens: str,
-                 http_put_response_hop_limit: Optional[int] = None):
+                 http_put_response_hop_limit: Optional[int] = None,
+                 instance_metadata_tags: Optional[str] = None):
         """
         :param str http_tokens: The state of token usage for your instance metadata requests. Valid values: `optional` or `required`.
         :param int http_put_response_hop_limit: The desired HTTP PUT response hop limit for instance metadata requests. The larger the number, the further instance metadata requests can travel. Valid values: Integers from `1` to `64`.
+        :param str instance_metadata_tags: Indicates whether access to instance tags from the instance metadata is enabled or disabled. Can’t be null.
         """
         pulumi.set(__self__, "http_tokens", http_tokens)
         if http_put_response_hop_limit is not None:
             pulumi.set(__self__, "http_put_response_hop_limit", http_put_response_hop_limit)
+        if instance_metadata_tags is not None:
+            pulumi.set(__self__, "instance_metadata_tags", instance_metadata_tags)
 
     @property
     @pulumi.getter(name="httpTokens")
@@ -3191,6 +3197,14 @@ class ElastigroupMetadataOptions(dict):
         The desired HTTP PUT response hop limit for instance metadata requests. The larger the number, the further instance metadata requests can travel. Valid values: Integers from `1` to `64`.
         """
         return pulumi.get(self, "http_put_response_hop_limit")
+
+    @property
+    @pulumi.getter(name="instanceMetadataTags")
+    def instance_metadata_tags(self) -> Optional[str]:
+        """
+        Indicates whether access to instance tags from the instance metadata is enabled or disabled. Can’t be null.
+        """
+        return pulumi.get(self, "instance_metadata_tags")
 
 
 @pulumi.output_type

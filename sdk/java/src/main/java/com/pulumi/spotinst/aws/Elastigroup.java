@@ -117,6 +117,7 @@ import javax.annotation.Nullable;
  *             .metadataOptions(ElastigroupMetadataOptionsArgs.builder()
  *                 .httpPutResponseHopLimit(10)
  *                 .httpTokens(&#34;optional&#34;)
+ *                 .instanceMetadataTags(&#34;enabled&#34;)
  *                 .build())
  *             .minSize(0)
  *             .minimumInstanceLifetime(12)

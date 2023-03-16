@@ -21,15 +21,22 @@ namespace Pulumi.SpotInst.Aws.Outputs
         /// The state of token usage for your instance metadata requests. Valid values: `optional` or `required`.
         /// </summary>
         public readonly string HttpTokens;
+        /// <summary>
+        /// Indicates whether access to instance tags from the instance metadata is enabled or disabled. Can’t be null.
+        /// </summary>
+        public readonly string? InstanceMetadataTags;
 
         [OutputConstructor]
         private ElastigroupMetadataOptions(
             int? httpPutResponseHopLimit,
 
-            string httpTokens)
+            string httpTokens,
+
+            string? instanceMetadataTags)
         {
             HttpPutResponseHopLimit = httpPutResponseHopLimit;
             HttpTokens = httpTokens;
+            InstanceMetadataTags = instanceMetadataTags;
         }
     }
 }

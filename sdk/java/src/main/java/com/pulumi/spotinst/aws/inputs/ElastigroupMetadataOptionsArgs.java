@@ -46,11 +46,27 @@ public final class ElastigroupMetadataOptionsArgs extends com.pulumi.resources.R
         return this.httpTokens;
     }
 
+    /**
+     * Indicates whether access to instance tags from the instance metadata is enabled or disabled. Can’t be null.
+     * 
+     */
+    @Import(name="instanceMetadataTags")
+    private @Nullable Output<String> instanceMetadataTags;
+
+    /**
+     * @return Indicates whether access to instance tags from the instance metadata is enabled or disabled. Can’t be null.
+     * 
+     */
+    public Optional<Output<String>> instanceMetadataTags() {
+        return Optional.ofNullable(this.instanceMetadataTags);
+    }
+
     private ElastigroupMetadataOptionsArgs() {}
 
     private ElastigroupMetadataOptionsArgs(ElastigroupMetadataOptionsArgs $) {
         this.httpPutResponseHopLimit = $.httpPutResponseHopLimit;
         this.httpTokens = $.httpTokens;
+        this.instanceMetadataTags = $.instanceMetadataTags;
     }
 
     public static Builder builder() {
@@ -111,6 +127,27 @@ public final class ElastigroupMetadataOptionsArgs extends com.pulumi.resources.R
          */
         public Builder httpTokens(String httpTokens) {
             return httpTokens(Output.of(httpTokens));
+        }
+
+        /**
+         * @param instanceMetadataTags Indicates whether access to instance tags from the instance metadata is enabled or disabled. Can’t be null.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceMetadataTags(@Nullable Output<String> instanceMetadataTags) {
+            $.instanceMetadataTags = instanceMetadataTags;
+            return this;
+        }
+
+        /**
+         * @param instanceMetadataTags Indicates whether access to instance tags from the instance metadata is enabled or disabled. Can’t be null.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceMetadataTags(String instanceMetadataTags) {
+            return instanceMetadataTags(Output.of(instanceMetadataTags));
         }
 
         public ElastigroupMetadataOptionsArgs build() {

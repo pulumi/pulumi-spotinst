@@ -1060,6 +1060,10 @@ export namespace aws {
          * The state of token usage for your instance metadata requests. Valid values: `optional` or `required`.
          */
         httpTokens: pulumi.Input<string>;
+        /**
+         * Indicates whether access to instance tags from the instance metadata is enabled or disabled. Can’t be null.
+         */
+        instanceMetadataTags?: pulumi.Input<string>;
     }
 
     export interface ElastigroupMultaiTargetSet {
