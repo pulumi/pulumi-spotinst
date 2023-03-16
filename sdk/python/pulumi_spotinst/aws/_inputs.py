@@ -2924,14 +2924,18 @@ class ElastigroupItfTargetGroupConfigTagArgs:
 class ElastigroupMetadataOptionsArgs:
     def __init__(__self__, *,
                  http_tokens: pulumi.Input[str],
-                 http_put_response_hop_limit: Optional[pulumi.Input[int]] = None):
+                 http_put_response_hop_limit: Optional[pulumi.Input[int]] = None,
+                 instance_metadata_tags: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] http_tokens: The state of token usage for your instance metadata requests. Valid values: `optional` or `required`.
         :param pulumi.Input[int] http_put_response_hop_limit: The desired HTTP PUT response hop limit for instance metadata requests. The larger the number, the further instance metadata requests can travel. Valid values: Integers from `1` to `64`.
+        :param pulumi.Input[str] instance_metadata_tags: Indicates whether access to instance tags from the instance metadata is enabled or disabled. Can’t be null.
         """
         pulumi.set(__self__, "http_tokens", http_tokens)
         if http_put_response_hop_limit is not None:
             pulumi.set(__self__, "http_put_response_hop_limit", http_put_response_hop_limit)
+        if instance_metadata_tags is not None:
+            pulumi.set(__self__, "instance_metadata_tags", instance_metadata_tags)
 
     @property
     @pulumi.getter(name="httpTokens")
@@ -2956,6 +2960,18 @@ class ElastigroupMetadataOptionsArgs:
     @http_put_response_hop_limit.setter
     def http_put_response_hop_limit(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "http_put_response_hop_limit", value)
+
+    @property
+    @pulumi.getter(name="instanceMetadataTags")
+    def instance_metadata_tags(self) -> Optional[pulumi.Input[str]]:
+        """
+        Indicates whether access to instance tags from the instance metadata is enabled or disabled. Can’t be null.
+        """
+        return pulumi.get(self, "instance_metadata_tags")
+
+    @instance_metadata_tags.setter
+    def instance_metadata_tags(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_metadata_tags", value)
 
 
 @pulumi.input_type

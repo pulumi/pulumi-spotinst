@@ -22,6 +22,11 @@ public final class ElastigroupMetadataOptions {
      * 
      */
     private String httpTokens;
+    /**
+     * @return Indicates whether access to instance tags from the instance metadata is enabled or disabled. Can’t be null.
+     * 
+     */
+    private @Nullable String instanceMetadataTags;
 
     private ElastigroupMetadataOptions() {}
     /**
@@ -38,6 +43,13 @@ public final class ElastigroupMetadataOptions {
     public String httpTokens() {
         return this.httpTokens;
     }
+    /**
+     * @return Indicates whether access to instance tags from the instance metadata is enabled or disabled. Can’t be null.
+     * 
+     */
+    public Optional<String> instanceMetadataTags() {
+        return Optional.ofNullable(this.instanceMetadataTags);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -50,11 +62,13 @@ public final class ElastigroupMetadataOptions {
     public static final class Builder {
         private @Nullable Integer httpPutResponseHopLimit;
         private String httpTokens;
+        private @Nullable String instanceMetadataTags;
         public Builder() {}
         public Builder(ElastigroupMetadataOptions defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.httpPutResponseHopLimit = defaults.httpPutResponseHopLimit;
     	      this.httpTokens = defaults.httpTokens;
+    	      this.instanceMetadataTags = defaults.instanceMetadataTags;
         }
 
         @CustomType.Setter
@@ -67,10 +81,16 @@ public final class ElastigroupMetadataOptions {
             this.httpTokens = Objects.requireNonNull(httpTokens);
             return this;
         }
+        @CustomType.Setter
+        public Builder instanceMetadataTags(@Nullable String instanceMetadataTags) {
+            this.instanceMetadataTags = instanceMetadataTags;
+            return this;
+        }
         public ElastigroupMetadataOptions build() {
             final var o = new ElastigroupMetadataOptions();
             o.httpPutResponseHopLimit = httpPutResponseHopLimit;
             o.httpTokens = httpTokens;
+            o.instanceMetadataTags = instanceMetadataTags;
             return o;
         }
     }

@@ -7648,6 +7648,8 @@ type ElastigroupMetadataOptions struct {
 	HttpPutResponseHopLimit *int `pulumi:"httpPutResponseHopLimit"`
 	// The state of token usage for your instance metadata requests. Valid values: `optional` or `required`.
 	HttpTokens string `pulumi:"httpTokens"`
+	// Indicates whether access to instance tags from the instance metadata is enabled or disabled. Can’t be null.
+	InstanceMetadataTags *string `pulumi:"instanceMetadataTags"`
 }
 
 // ElastigroupMetadataOptionsInput is an input type that accepts ElastigroupMetadataOptionsArgs and ElastigroupMetadataOptionsOutput values.
@@ -7666,6 +7668,8 @@ type ElastigroupMetadataOptionsArgs struct {
 	HttpPutResponseHopLimit pulumi.IntPtrInput `pulumi:"httpPutResponseHopLimit"`
 	// The state of token usage for your instance metadata requests. Valid values: `optional` or `required`.
 	HttpTokens pulumi.StringInput `pulumi:"httpTokens"`
+	// Indicates whether access to instance tags from the instance metadata is enabled or disabled. Can’t be null.
+	InstanceMetadataTags pulumi.StringPtrInput `pulumi:"instanceMetadataTags"`
 }
 
 func (ElastigroupMetadataOptionsArgs) ElementType() reflect.Type {
@@ -7755,6 +7759,11 @@ func (o ElastigroupMetadataOptionsOutput) HttpTokens() pulumi.StringOutput {
 	return o.ApplyT(func(v ElastigroupMetadataOptions) string { return v.HttpTokens }).(pulumi.StringOutput)
 }
 
+// Indicates whether access to instance tags from the instance metadata is enabled or disabled. Can’t be null.
+func (o ElastigroupMetadataOptionsOutput) InstanceMetadataTags() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ElastigroupMetadataOptions) *string { return v.InstanceMetadataTags }).(pulumi.StringPtrOutput)
+}
+
 type ElastigroupMetadataOptionsPtrOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupMetadataOptionsPtrOutput) ElementType() reflect.Type {
@@ -7796,6 +7805,16 @@ func (o ElastigroupMetadataOptionsPtrOutput) HttpTokens() pulumi.StringPtrOutput
 			return nil
 		}
 		return &v.HttpTokens
+	}).(pulumi.StringPtrOutput)
+}
+
+// Indicates whether access to instance tags from the instance metadata is enabled or disabled. Can’t be null.
+func (o ElastigroupMetadataOptionsPtrOutput) InstanceMetadataTags() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ElastigroupMetadataOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InstanceMetadataTags
 	}).(pulumi.StringPtrOutput)
 }
 

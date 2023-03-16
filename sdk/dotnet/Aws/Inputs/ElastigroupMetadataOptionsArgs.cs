@@ -24,6 +24,12 @@ namespace Pulumi.SpotInst.Aws.Inputs
         [Input("httpTokens", required: true)]
         public Input<string> HttpTokens { get; set; } = null!;
 
+        /// <summary>
+        /// Indicates whether access to instance tags from the instance metadata is enabled or disabled. Can’t be null.
+        /// </summary>
+        [Input("instanceMetadataTags")]
+        public Input<string>? InstanceMetadataTags { get; set; }
+
         public ElastigroupMetadataOptionsArgs()
         {
         }

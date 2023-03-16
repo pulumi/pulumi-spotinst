@@ -1061,6 +1061,10 @@ export namespace aws {
          * The state of token usage for your instance metadata requests. Valid values: `optional` or `required`.
          */
         httpTokens: string;
+        /**
+         * Indicates whether access to instance tags from the instance metadata is enabled or disabled. Can’t be null.
+         */
+        instanceMetadataTags?: string;
     }
 
     export interface ElastigroupMultaiTargetSet {
