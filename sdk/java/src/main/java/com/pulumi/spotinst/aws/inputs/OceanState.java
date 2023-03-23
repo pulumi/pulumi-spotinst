@@ -6,6 +6,7 @@ package com.pulumi.spotinst.aws.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.spotinst.aws.inputs.OceanAutoscalerArgs;
+import com.pulumi.spotinst.aws.inputs.OceanBlockDeviceMappingArgs;
 import com.pulumi.spotinst.aws.inputs.OceanClusterOrientationArgs;
 import com.pulumi.spotinst.aws.inputs.OceanFiltersArgs;
 import com.pulumi.spotinst.aws.inputs.OceanInstanceMetadataOptionsArgs;
@@ -85,6 +86,21 @@ public final class OceanState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<List<String>>> blacklists() {
         return Optional.ofNullable(this.blacklists);
+    }
+
+    /**
+     * Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
+     * 
+     */
+    @Import(name="blockDeviceMappings")
+    private @Nullable Output<List<OceanBlockDeviceMappingArgs>> blockDeviceMappings;
+
+    /**
+     * @return Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
+     * 
+     */
+    public Optional<Output<List<OceanBlockDeviceMappingArgs>>> blockDeviceMappings() {
+        return Optional.ofNullable(this.blockDeviceMappings);
     }
 
     @Import(name="clusterOrientations")
@@ -552,6 +568,7 @@ public final class OceanState extends com.pulumi.resources.ResourceArgs {
         this.associatePublicIpAddress = $.associatePublicIpAddress;
         this.autoscaler = $.autoscaler;
         this.blacklists = $.blacklists;
+        this.blockDeviceMappings = $.blockDeviceMappings;
         this.clusterOrientations = $.clusterOrientations;
         this.controllerId = $.controllerId;
         this.desiredCapacity = $.desiredCapacity;
@@ -696,6 +713,37 @@ public final class OceanState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder blacklists(String... blacklists) {
             return blacklists(List.of(blacklists));
+        }
+
+        /**
+         * @param blockDeviceMappings Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder blockDeviceMappings(@Nullable Output<List<OceanBlockDeviceMappingArgs>> blockDeviceMappings) {
+            $.blockDeviceMappings = blockDeviceMappings;
+            return this;
+        }
+
+        /**
+         * @param blockDeviceMappings Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder blockDeviceMappings(List<OceanBlockDeviceMappingArgs> blockDeviceMappings) {
+            return blockDeviceMappings(Output.of(blockDeviceMappings));
+        }
+
+        /**
+         * @param blockDeviceMappings Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder blockDeviceMappings(OceanBlockDeviceMappingArgs... blockDeviceMappings) {
+            return blockDeviceMappings(List.of(blockDeviceMappings));
         }
 
         public Builder clusterOrientations(@Nullable Output<List<OceanClusterOrientationArgs>> clusterOrientations) {

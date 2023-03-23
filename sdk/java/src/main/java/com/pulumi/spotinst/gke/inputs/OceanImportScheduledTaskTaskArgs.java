@@ -5,8 +5,8 @@ package com.pulumi.spotinst.gke.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.spotinst.gke.inputs.OceanImportScheduledTaskTaskTaskParametersArgs;
 import java.lang.Boolean;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,23 +16,6 @@ import javax.annotation.Nullable;
 public final class OceanImportScheduledTaskTaskArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final OceanImportScheduledTaskTaskArgs Empty = new OceanImportScheduledTaskTaskArgs();
-
-    /**
-     * Value in % to set size of batch in roll. Valid values are 0-100
-     * Example: 20.
-     * 
-     */
-    @Import(name="batchSizePercentage")
-    private @Nullable Output<Integer> batchSizePercentage;
-
-    /**
-     * @return Value in % to set size of batch in roll. Valid values are 0-100
-     * Example: 20.
-     * 
-     */
-    public Optional<Output<Integer>> batchSizePercentage() {
-        return Optional.ofNullable(this.batchSizePercentage);
-    }
 
     /**
      * A valid cron expression. For example : &#34; * * * * * &#34;.The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of ‘frequency’ or ‘cronExpression’ should be used at a time. Required for cluster.scheduling.tasks object
@@ -68,6 +51,13 @@ public final class OceanImportScheduledTaskTaskArgs extends com.pulumi.resources
         return this.isEnabled;
     }
 
+    @Import(name="taskParameters")
+    private @Nullable Output<OceanImportScheduledTaskTaskTaskParametersArgs> taskParameters;
+
+    public Optional<Output<OceanImportScheduledTaskTaskTaskParametersArgs>> taskParameters() {
+        return Optional.ofNullable(this.taskParameters);
+    }
+
     /**
      * Valid values: &#34;clusterRoll&#34;. Required for cluster.scheduling.tasks object.
      * 
@@ -86,9 +76,9 @@ public final class OceanImportScheduledTaskTaskArgs extends com.pulumi.resources
     private OceanImportScheduledTaskTaskArgs() {}
 
     private OceanImportScheduledTaskTaskArgs(OceanImportScheduledTaskTaskArgs $) {
-        this.batchSizePercentage = $.batchSizePercentage;
         this.cronExpression = $.cronExpression;
         this.isEnabled = $.isEnabled;
+        this.taskParameters = $.taskParameters;
         this.taskType = $.taskType;
     }
 
@@ -108,29 +98,6 @@ public final class OceanImportScheduledTaskTaskArgs extends com.pulumi.resources
 
         public Builder(OceanImportScheduledTaskTaskArgs defaults) {
             $ = new OceanImportScheduledTaskTaskArgs(Objects.requireNonNull(defaults));
-        }
-
-        /**
-         * @param batchSizePercentage Value in % to set size of batch in roll. Valid values are 0-100
-         * Example: 20.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder batchSizePercentage(@Nullable Output<Integer> batchSizePercentage) {
-            $.batchSizePercentage = batchSizePercentage;
-            return this;
-        }
-
-        /**
-         * @param batchSizePercentage Value in % to set size of batch in roll. Valid values are 0-100
-         * Example: 20.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder batchSizePercentage(Integer batchSizePercentage) {
-            return batchSizePercentage(Output.of(batchSizePercentage));
         }
 
         /**
@@ -177,6 +144,15 @@ public final class OceanImportScheduledTaskTaskArgs extends com.pulumi.resources
          */
         public Builder isEnabled(Boolean isEnabled) {
             return isEnabled(Output.of(isEnabled));
+        }
+
+        public Builder taskParameters(@Nullable Output<OceanImportScheduledTaskTaskTaskParametersArgs> taskParameters) {
+            $.taskParameters = taskParameters;
+            return this;
+        }
+
+        public Builder taskParameters(OceanImportScheduledTaskTaskTaskParametersArgs taskParameters) {
+            return taskParameters(Output.of(taskParameters));
         }
 
         /**

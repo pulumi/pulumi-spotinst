@@ -17036,6 +17036,578 @@ func (o OceanAutoscalerResourceLimitsPtrOutput) MaxVcpu() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+type OceanBlockDeviceMapping struct {
+	// String. Set device name. (Example: `/dev/xvda`).
+	DeviceName *string `pulumi:"deviceName"`
+	// Object. Set Elastic Block Store properties .
+	Ebs *OceanBlockDeviceMappingEbs `pulumi:"ebs"`
+}
+
+// OceanBlockDeviceMappingInput is an input type that accepts OceanBlockDeviceMappingArgs and OceanBlockDeviceMappingOutput values.
+// You can construct a concrete instance of `OceanBlockDeviceMappingInput` via:
+//
+//	OceanBlockDeviceMappingArgs{...}
+type OceanBlockDeviceMappingInput interface {
+	pulumi.Input
+
+	ToOceanBlockDeviceMappingOutput() OceanBlockDeviceMappingOutput
+	ToOceanBlockDeviceMappingOutputWithContext(context.Context) OceanBlockDeviceMappingOutput
+}
+
+type OceanBlockDeviceMappingArgs struct {
+	// String. Set device name. (Example: `/dev/xvda`).
+	DeviceName pulumi.StringPtrInput `pulumi:"deviceName"`
+	// Object. Set Elastic Block Store properties .
+	Ebs OceanBlockDeviceMappingEbsPtrInput `pulumi:"ebs"`
+}
+
+func (OceanBlockDeviceMappingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanBlockDeviceMapping)(nil)).Elem()
+}
+
+func (i OceanBlockDeviceMappingArgs) ToOceanBlockDeviceMappingOutput() OceanBlockDeviceMappingOutput {
+	return i.ToOceanBlockDeviceMappingOutputWithContext(context.Background())
+}
+
+func (i OceanBlockDeviceMappingArgs) ToOceanBlockDeviceMappingOutputWithContext(ctx context.Context) OceanBlockDeviceMappingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanBlockDeviceMappingOutput)
+}
+
+// OceanBlockDeviceMappingArrayInput is an input type that accepts OceanBlockDeviceMappingArray and OceanBlockDeviceMappingArrayOutput values.
+// You can construct a concrete instance of `OceanBlockDeviceMappingArrayInput` via:
+//
+//	OceanBlockDeviceMappingArray{ OceanBlockDeviceMappingArgs{...} }
+type OceanBlockDeviceMappingArrayInput interface {
+	pulumi.Input
+
+	ToOceanBlockDeviceMappingArrayOutput() OceanBlockDeviceMappingArrayOutput
+	ToOceanBlockDeviceMappingArrayOutputWithContext(context.Context) OceanBlockDeviceMappingArrayOutput
+}
+
+type OceanBlockDeviceMappingArray []OceanBlockDeviceMappingInput
+
+func (OceanBlockDeviceMappingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanBlockDeviceMapping)(nil)).Elem()
+}
+
+func (i OceanBlockDeviceMappingArray) ToOceanBlockDeviceMappingArrayOutput() OceanBlockDeviceMappingArrayOutput {
+	return i.ToOceanBlockDeviceMappingArrayOutputWithContext(context.Background())
+}
+
+func (i OceanBlockDeviceMappingArray) ToOceanBlockDeviceMappingArrayOutputWithContext(ctx context.Context) OceanBlockDeviceMappingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanBlockDeviceMappingArrayOutput)
+}
+
+type OceanBlockDeviceMappingOutput struct{ *pulumi.OutputState }
+
+func (OceanBlockDeviceMappingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanBlockDeviceMapping)(nil)).Elem()
+}
+
+func (o OceanBlockDeviceMappingOutput) ToOceanBlockDeviceMappingOutput() OceanBlockDeviceMappingOutput {
+	return o
+}
+
+func (o OceanBlockDeviceMappingOutput) ToOceanBlockDeviceMappingOutputWithContext(ctx context.Context) OceanBlockDeviceMappingOutput {
+	return o
+}
+
+// String. Set device name. (Example: `/dev/xvda`).
+func (o OceanBlockDeviceMappingOutput) DeviceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OceanBlockDeviceMapping) *string { return v.DeviceName }).(pulumi.StringPtrOutput)
+}
+
+// Object. Set Elastic Block Store properties .
+func (o OceanBlockDeviceMappingOutput) Ebs() OceanBlockDeviceMappingEbsPtrOutput {
+	return o.ApplyT(func(v OceanBlockDeviceMapping) *OceanBlockDeviceMappingEbs { return v.Ebs }).(OceanBlockDeviceMappingEbsPtrOutput)
+}
+
+type OceanBlockDeviceMappingArrayOutput struct{ *pulumi.OutputState }
+
+func (OceanBlockDeviceMappingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanBlockDeviceMapping)(nil)).Elem()
+}
+
+func (o OceanBlockDeviceMappingArrayOutput) ToOceanBlockDeviceMappingArrayOutput() OceanBlockDeviceMappingArrayOutput {
+	return o
+}
+
+func (o OceanBlockDeviceMappingArrayOutput) ToOceanBlockDeviceMappingArrayOutputWithContext(ctx context.Context) OceanBlockDeviceMappingArrayOutput {
+	return o
+}
+
+func (o OceanBlockDeviceMappingArrayOutput) Index(i pulumi.IntInput) OceanBlockDeviceMappingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OceanBlockDeviceMapping {
+		return vs[0].([]OceanBlockDeviceMapping)[vs[1].(int)]
+	}).(OceanBlockDeviceMappingOutput)
+}
+
+type OceanBlockDeviceMappingEbs struct {
+	// Boolean. Flag to delete the EBS on instance termination.
+	DeleteOnTermination *bool `pulumi:"deleteOnTermination"`
+	// Object. Set dynamic volume size properties. When using this object, you cannot use volumeSize. You must use one or the other.
+	DynamicVolumeSize *OceanBlockDeviceMappingEbsDynamicVolumeSize `pulumi:"dynamicVolumeSize"`
+	// Boolean. Enables [EBS encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) on the volume.
+	Encrypted *bool `pulumi:"encrypted"`
+	// Int. The number of I/O operations per second (IOPS) that the volume supports.
+	Iops *int `pulumi:"iops"`
+	// String. Identifier (key ID, key alias, ID ARN, or alias ARN) for a customer managed CMK under which the EBS volume is encrypted.
+	KmsKeyId *string `pulumi:"kmsKeyId"`
+	// (Optional) String. The Snapshot ID to mount by.
+	SnapshotId *string `pulumi:"snapshotId"`
+	// The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volumeType` = `gp3`.
+	Throughput *int `pulumi:"throughput"`
+	// Int. The size, in GB of the volume.
+	VolumeSize *int `pulumi:"volumeSize"`
+	// String. The type of the volume. (Example: `gp2`).
+	VolumeType *string `pulumi:"volumeType"`
+}
+
+// OceanBlockDeviceMappingEbsInput is an input type that accepts OceanBlockDeviceMappingEbsArgs and OceanBlockDeviceMappingEbsOutput values.
+// You can construct a concrete instance of `OceanBlockDeviceMappingEbsInput` via:
+//
+//	OceanBlockDeviceMappingEbsArgs{...}
+type OceanBlockDeviceMappingEbsInput interface {
+	pulumi.Input
+
+	ToOceanBlockDeviceMappingEbsOutput() OceanBlockDeviceMappingEbsOutput
+	ToOceanBlockDeviceMappingEbsOutputWithContext(context.Context) OceanBlockDeviceMappingEbsOutput
+}
+
+type OceanBlockDeviceMappingEbsArgs struct {
+	// Boolean. Flag to delete the EBS on instance termination.
+	DeleteOnTermination pulumi.BoolPtrInput `pulumi:"deleteOnTermination"`
+	// Object. Set dynamic volume size properties. When using this object, you cannot use volumeSize. You must use one or the other.
+	DynamicVolumeSize OceanBlockDeviceMappingEbsDynamicVolumeSizePtrInput `pulumi:"dynamicVolumeSize"`
+	// Boolean. Enables [EBS encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) on the volume.
+	Encrypted pulumi.BoolPtrInput `pulumi:"encrypted"`
+	// Int. The number of I/O operations per second (IOPS) that the volume supports.
+	Iops pulumi.IntPtrInput `pulumi:"iops"`
+	// String. Identifier (key ID, key alias, ID ARN, or alias ARN) for a customer managed CMK under which the EBS volume is encrypted.
+	KmsKeyId pulumi.StringPtrInput `pulumi:"kmsKeyId"`
+	// (Optional) String. The Snapshot ID to mount by.
+	SnapshotId pulumi.StringPtrInput `pulumi:"snapshotId"`
+	// The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volumeType` = `gp3`.
+	Throughput pulumi.IntPtrInput `pulumi:"throughput"`
+	// Int. The size, in GB of the volume.
+	VolumeSize pulumi.IntPtrInput `pulumi:"volumeSize"`
+	// String. The type of the volume. (Example: `gp2`).
+	VolumeType pulumi.StringPtrInput `pulumi:"volumeType"`
+}
+
+func (OceanBlockDeviceMappingEbsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanBlockDeviceMappingEbs)(nil)).Elem()
+}
+
+func (i OceanBlockDeviceMappingEbsArgs) ToOceanBlockDeviceMappingEbsOutput() OceanBlockDeviceMappingEbsOutput {
+	return i.ToOceanBlockDeviceMappingEbsOutputWithContext(context.Background())
+}
+
+func (i OceanBlockDeviceMappingEbsArgs) ToOceanBlockDeviceMappingEbsOutputWithContext(ctx context.Context) OceanBlockDeviceMappingEbsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanBlockDeviceMappingEbsOutput)
+}
+
+func (i OceanBlockDeviceMappingEbsArgs) ToOceanBlockDeviceMappingEbsPtrOutput() OceanBlockDeviceMappingEbsPtrOutput {
+	return i.ToOceanBlockDeviceMappingEbsPtrOutputWithContext(context.Background())
+}
+
+func (i OceanBlockDeviceMappingEbsArgs) ToOceanBlockDeviceMappingEbsPtrOutputWithContext(ctx context.Context) OceanBlockDeviceMappingEbsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanBlockDeviceMappingEbsOutput).ToOceanBlockDeviceMappingEbsPtrOutputWithContext(ctx)
+}
+
+// OceanBlockDeviceMappingEbsPtrInput is an input type that accepts OceanBlockDeviceMappingEbsArgs, OceanBlockDeviceMappingEbsPtr and OceanBlockDeviceMappingEbsPtrOutput values.
+// You can construct a concrete instance of `OceanBlockDeviceMappingEbsPtrInput` via:
+//
+//	        OceanBlockDeviceMappingEbsArgs{...}
+//
+//	or:
+//
+//	        nil
+type OceanBlockDeviceMappingEbsPtrInput interface {
+	pulumi.Input
+
+	ToOceanBlockDeviceMappingEbsPtrOutput() OceanBlockDeviceMappingEbsPtrOutput
+	ToOceanBlockDeviceMappingEbsPtrOutputWithContext(context.Context) OceanBlockDeviceMappingEbsPtrOutput
+}
+
+type oceanBlockDeviceMappingEbsPtrType OceanBlockDeviceMappingEbsArgs
+
+func OceanBlockDeviceMappingEbsPtr(v *OceanBlockDeviceMappingEbsArgs) OceanBlockDeviceMappingEbsPtrInput {
+	return (*oceanBlockDeviceMappingEbsPtrType)(v)
+}
+
+func (*oceanBlockDeviceMappingEbsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanBlockDeviceMappingEbs)(nil)).Elem()
+}
+
+func (i *oceanBlockDeviceMappingEbsPtrType) ToOceanBlockDeviceMappingEbsPtrOutput() OceanBlockDeviceMappingEbsPtrOutput {
+	return i.ToOceanBlockDeviceMappingEbsPtrOutputWithContext(context.Background())
+}
+
+func (i *oceanBlockDeviceMappingEbsPtrType) ToOceanBlockDeviceMappingEbsPtrOutputWithContext(ctx context.Context) OceanBlockDeviceMappingEbsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanBlockDeviceMappingEbsPtrOutput)
+}
+
+type OceanBlockDeviceMappingEbsOutput struct{ *pulumi.OutputState }
+
+func (OceanBlockDeviceMappingEbsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanBlockDeviceMappingEbs)(nil)).Elem()
+}
+
+func (o OceanBlockDeviceMappingEbsOutput) ToOceanBlockDeviceMappingEbsOutput() OceanBlockDeviceMappingEbsOutput {
+	return o
+}
+
+func (o OceanBlockDeviceMappingEbsOutput) ToOceanBlockDeviceMappingEbsOutputWithContext(ctx context.Context) OceanBlockDeviceMappingEbsOutput {
+	return o
+}
+
+func (o OceanBlockDeviceMappingEbsOutput) ToOceanBlockDeviceMappingEbsPtrOutput() OceanBlockDeviceMappingEbsPtrOutput {
+	return o.ToOceanBlockDeviceMappingEbsPtrOutputWithContext(context.Background())
+}
+
+func (o OceanBlockDeviceMappingEbsOutput) ToOceanBlockDeviceMappingEbsPtrOutputWithContext(ctx context.Context) OceanBlockDeviceMappingEbsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OceanBlockDeviceMappingEbs) *OceanBlockDeviceMappingEbs {
+		return &v
+	}).(OceanBlockDeviceMappingEbsPtrOutput)
+}
+
+// Boolean. Flag to delete the EBS on instance termination.
+func (o OceanBlockDeviceMappingEbsOutput) DeleteOnTermination() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OceanBlockDeviceMappingEbs) *bool { return v.DeleteOnTermination }).(pulumi.BoolPtrOutput)
+}
+
+// Object. Set dynamic volume size properties. When using this object, you cannot use volumeSize. You must use one or the other.
+func (o OceanBlockDeviceMappingEbsOutput) DynamicVolumeSize() OceanBlockDeviceMappingEbsDynamicVolumeSizePtrOutput {
+	return o.ApplyT(func(v OceanBlockDeviceMappingEbs) *OceanBlockDeviceMappingEbsDynamicVolumeSize {
+		return v.DynamicVolumeSize
+	}).(OceanBlockDeviceMappingEbsDynamicVolumeSizePtrOutput)
+}
+
+// Boolean. Enables [EBS encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) on the volume.
+func (o OceanBlockDeviceMappingEbsOutput) Encrypted() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OceanBlockDeviceMappingEbs) *bool { return v.Encrypted }).(pulumi.BoolPtrOutput)
+}
+
+// Int. The number of I/O operations per second (IOPS) that the volume supports.
+func (o OceanBlockDeviceMappingEbsOutput) Iops() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OceanBlockDeviceMappingEbs) *int { return v.Iops }).(pulumi.IntPtrOutput)
+}
+
+// String. Identifier (key ID, key alias, ID ARN, or alias ARN) for a customer managed CMK under which the EBS volume is encrypted.
+func (o OceanBlockDeviceMappingEbsOutput) KmsKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OceanBlockDeviceMappingEbs) *string { return v.KmsKeyId }).(pulumi.StringPtrOutput)
+}
+
+// (Optional) String. The Snapshot ID to mount by.
+func (o OceanBlockDeviceMappingEbsOutput) SnapshotId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OceanBlockDeviceMappingEbs) *string { return v.SnapshotId }).(pulumi.StringPtrOutput)
+}
+
+// The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volumeType` = `gp3`.
+func (o OceanBlockDeviceMappingEbsOutput) Throughput() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OceanBlockDeviceMappingEbs) *int { return v.Throughput }).(pulumi.IntPtrOutput)
+}
+
+// Int. The size, in GB of the volume.
+func (o OceanBlockDeviceMappingEbsOutput) VolumeSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OceanBlockDeviceMappingEbs) *int { return v.VolumeSize }).(pulumi.IntPtrOutput)
+}
+
+// String. The type of the volume. (Example: `gp2`).
+func (o OceanBlockDeviceMappingEbsOutput) VolumeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OceanBlockDeviceMappingEbs) *string { return v.VolumeType }).(pulumi.StringPtrOutput)
+}
+
+type OceanBlockDeviceMappingEbsPtrOutput struct{ *pulumi.OutputState }
+
+func (OceanBlockDeviceMappingEbsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanBlockDeviceMappingEbs)(nil)).Elem()
+}
+
+func (o OceanBlockDeviceMappingEbsPtrOutput) ToOceanBlockDeviceMappingEbsPtrOutput() OceanBlockDeviceMappingEbsPtrOutput {
+	return o
+}
+
+func (o OceanBlockDeviceMappingEbsPtrOutput) ToOceanBlockDeviceMappingEbsPtrOutputWithContext(ctx context.Context) OceanBlockDeviceMappingEbsPtrOutput {
+	return o
+}
+
+func (o OceanBlockDeviceMappingEbsPtrOutput) Elem() OceanBlockDeviceMappingEbsOutput {
+	return o.ApplyT(func(v *OceanBlockDeviceMappingEbs) OceanBlockDeviceMappingEbs {
+		if v != nil {
+			return *v
+		}
+		var ret OceanBlockDeviceMappingEbs
+		return ret
+	}).(OceanBlockDeviceMappingEbsOutput)
+}
+
+// Boolean. Flag to delete the EBS on instance termination.
+func (o OceanBlockDeviceMappingEbsPtrOutput) DeleteOnTermination() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OceanBlockDeviceMappingEbs) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DeleteOnTermination
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Object. Set dynamic volume size properties. When using this object, you cannot use volumeSize. You must use one or the other.
+func (o OceanBlockDeviceMappingEbsPtrOutput) DynamicVolumeSize() OceanBlockDeviceMappingEbsDynamicVolumeSizePtrOutput {
+	return o.ApplyT(func(v *OceanBlockDeviceMappingEbs) *OceanBlockDeviceMappingEbsDynamicVolumeSize {
+		if v == nil {
+			return nil
+		}
+		return v.DynamicVolumeSize
+	}).(OceanBlockDeviceMappingEbsDynamicVolumeSizePtrOutput)
+}
+
+// Boolean. Enables [EBS encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) on the volume.
+func (o OceanBlockDeviceMappingEbsPtrOutput) Encrypted() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OceanBlockDeviceMappingEbs) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Encrypted
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Int. The number of I/O operations per second (IOPS) that the volume supports.
+func (o OceanBlockDeviceMappingEbsPtrOutput) Iops() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OceanBlockDeviceMappingEbs) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Iops
+	}).(pulumi.IntPtrOutput)
+}
+
+// String. Identifier (key ID, key alias, ID ARN, or alias ARN) for a customer managed CMK under which the EBS volume is encrypted.
+func (o OceanBlockDeviceMappingEbsPtrOutput) KmsKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OceanBlockDeviceMappingEbs) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KmsKeyId
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Optional) String. The Snapshot ID to mount by.
+func (o OceanBlockDeviceMappingEbsPtrOutput) SnapshotId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OceanBlockDeviceMappingEbs) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SnapshotId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volumeType` = `gp3`.
+func (o OceanBlockDeviceMappingEbsPtrOutput) Throughput() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OceanBlockDeviceMappingEbs) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Throughput
+	}).(pulumi.IntPtrOutput)
+}
+
+// Int. The size, in GB of the volume.
+func (o OceanBlockDeviceMappingEbsPtrOutput) VolumeSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OceanBlockDeviceMappingEbs) *int {
+		if v == nil {
+			return nil
+		}
+		return v.VolumeSize
+	}).(pulumi.IntPtrOutput)
+}
+
+// String. The type of the volume. (Example: `gp2`).
+func (o OceanBlockDeviceMappingEbsPtrOutput) VolumeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OceanBlockDeviceMappingEbs) *string {
+		if v == nil {
+			return nil
+		}
+		return v.VolumeType
+	}).(pulumi.StringPtrOutput)
+}
+
+type OceanBlockDeviceMappingEbsDynamicVolumeSize struct {
+	// Int. Initial size for volume. (Example: 50)
+	BaseSize int `pulumi:"baseSize"`
+	// String. Resource type to increase volume size dynamically by. (Valid values: `CPU`)
+	Resource string `pulumi:"resource"`
+	// Int. Additional size (in GB) per resource unit. (Example: `baseSize=50`, `sizePerResourceUnit=20`, and instance with 2 CPU is launched; its total disk size will be: 90GB).
+	SizePerResourceUnit int `pulumi:"sizePerResourceUnit"`
+}
+
+// OceanBlockDeviceMappingEbsDynamicVolumeSizeInput is an input type that accepts OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs and OceanBlockDeviceMappingEbsDynamicVolumeSizeOutput values.
+// You can construct a concrete instance of `OceanBlockDeviceMappingEbsDynamicVolumeSizeInput` via:
+//
+//	OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs{...}
+type OceanBlockDeviceMappingEbsDynamicVolumeSizeInput interface {
+	pulumi.Input
+
+	ToOceanBlockDeviceMappingEbsDynamicVolumeSizeOutput() OceanBlockDeviceMappingEbsDynamicVolumeSizeOutput
+	ToOceanBlockDeviceMappingEbsDynamicVolumeSizeOutputWithContext(context.Context) OceanBlockDeviceMappingEbsDynamicVolumeSizeOutput
+}
+
+type OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs struct {
+	// Int. Initial size for volume. (Example: 50)
+	BaseSize pulumi.IntInput `pulumi:"baseSize"`
+	// String. Resource type to increase volume size dynamically by. (Valid values: `CPU`)
+	Resource pulumi.StringInput `pulumi:"resource"`
+	// Int. Additional size (in GB) per resource unit. (Example: `baseSize=50`, `sizePerResourceUnit=20`, and instance with 2 CPU is launched; its total disk size will be: 90GB).
+	SizePerResourceUnit pulumi.IntInput `pulumi:"sizePerResourceUnit"`
+}
+
+func (OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanBlockDeviceMappingEbsDynamicVolumeSize)(nil)).Elem()
+}
+
+func (i OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs) ToOceanBlockDeviceMappingEbsDynamicVolumeSizeOutput() OceanBlockDeviceMappingEbsDynamicVolumeSizeOutput {
+	return i.ToOceanBlockDeviceMappingEbsDynamicVolumeSizeOutputWithContext(context.Background())
+}
+
+func (i OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs) ToOceanBlockDeviceMappingEbsDynamicVolumeSizeOutputWithContext(ctx context.Context) OceanBlockDeviceMappingEbsDynamicVolumeSizeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanBlockDeviceMappingEbsDynamicVolumeSizeOutput)
+}
+
+func (i OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs) ToOceanBlockDeviceMappingEbsDynamicVolumeSizePtrOutput() OceanBlockDeviceMappingEbsDynamicVolumeSizePtrOutput {
+	return i.ToOceanBlockDeviceMappingEbsDynamicVolumeSizePtrOutputWithContext(context.Background())
+}
+
+func (i OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs) ToOceanBlockDeviceMappingEbsDynamicVolumeSizePtrOutputWithContext(ctx context.Context) OceanBlockDeviceMappingEbsDynamicVolumeSizePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanBlockDeviceMappingEbsDynamicVolumeSizeOutput).ToOceanBlockDeviceMappingEbsDynamicVolumeSizePtrOutputWithContext(ctx)
+}
+
+// OceanBlockDeviceMappingEbsDynamicVolumeSizePtrInput is an input type that accepts OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs, OceanBlockDeviceMappingEbsDynamicVolumeSizePtr and OceanBlockDeviceMappingEbsDynamicVolumeSizePtrOutput values.
+// You can construct a concrete instance of `OceanBlockDeviceMappingEbsDynamicVolumeSizePtrInput` via:
+//
+//	        OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs{...}
+//
+//	or:
+//
+//	        nil
+type OceanBlockDeviceMappingEbsDynamicVolumeSizePtrInput interface {
+	pulumi.Input
+
+	ToOceanBlockDeviceMappingEbsDynamicVolumeSizePtrOutput() OceanBlockDeviceMappingEbsDynamicVolumeSizePtrOutput
+	ToOceanBlockDeviceMappingEbsDynamicVolumeSizePtrOutputWithContext(context.Context) OceanBlockDeviceMappingEbsDynamicVolumeSizePtrOutput
+}
+
+type oceanBlockDeviceMappingEbsDynamicVolumeSizePtrType OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs
+
+func OceanBlockDeviceMappingEbsDynamicVolumeSizePtr(v *OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs) OceanBlockDeviceMappingEbsDynamicVolumeSizePtrInput {
+	return (*oceanBlockDeviceMappingEbsDynamicVolumeSizePtrType)(v)
+}
+
+func (*oceanBlockDeviceMappingEbsDynamicVolumeSizePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanBlockDeviceMappingEbsDynamicVolumeSize)(nil)).Elem()
+}
+
+func (i *oceanBlockDeviceMappingEbsDynamicVolumeSizePtrType) ToOceanBlockDeviceMappingEbsDynamicVolumeSizePtrOutput() OceanBlockDeviceMappingEbsDynamicVolumeSizePtrOutput {
+	return i.ToOceanBlockDeviceMappingEbsDynamicVolumeSizePtrOutputWithContext(context.Background())
+}
+
+func (i *oceanBlockDeviceMappingEbsDynamicVolumeSizePtrType) ToOceanBlockDeviceMappingEbsDynamicVolumeSizePtrOutputWithContext(ctx context.Context) OceanBlockDeviceMappingEbsDynamicVolumeSizePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanBlockDeviceMappingEbsDynamicVolumeSizePtrOutput)
+}
+
+type OceanBlockDeviceMappingEbsDynamicVolumeSizeOutput struct{ *pulumi.OutputState }
+
+func (OceanBlockDeviceMappingEbsDynamicVolumeSizeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanBlockDeviceMappingEbsDynamicVolumeSize)(nil)).Elem()
+}
+
+func (o OceanBlockDeviceMappingEbsDynamicVolumeSizeOutput) ToOceanBlockDeviceMappingEbsDynamicVolumeSizeOutput() OceanBlockDeviceMappingEbsDynamicVolumeSizeOutput {
+	return o
+}
+
+func (o OceanBlockDeviceMappingEbsDynamicVolumeSizeOutput) ToOceanBlockDeviceMappingEbsDynamicVolumeSizeOutputWithContext(ctx context.Context) OceanBlockDeviceMappingEbsDynamicVolumeSizeOutput {
+	return o
+}
+
+func (o OceanBlockDeviceMappingEbsDynamicVolumeSizeOutput) ToOceanBlockDeviceMappingEbsDynamicVolumeSizePtrOutput() OceanBlockDeviceMappingEbsDynamicVolumeSizePtrOutput {
+	return o.ToOceanBlockDeviceMappingEbsDynamicVolumeSizePtrOutputWithContext(context.Background())
+}
+
+func (o OceanBlockDeviceMappingEbsDynamicVolumeSizeOutput) ToOceanBlockDeviceMappingEbsDynamicVolumeSizePtrOutputWithContext(ctx context.Context) OceanBlockDeviceMappingEbsDynamicVolumeSizePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OceanBlockDeviceMappingEbsDynamicVolumeSize) *OceanBlockDeviceMappingEbsDynamicVolumeSize {
+		return &v
+	}).(OceanBlockDeviceMappingEbsDynamicVolumeSizePtrOutput)
+}
+
+// Int. Initial size for volume. (Example: 50)
+func (o OceanBlockDeviceMappingEbsDynamicVolumeSizeOutput) BaseSize() pulumi.IntOutput {
+	return o.ApplyT(func(v OceanBlockDeviceMappingEbsDynamicVolumeSize) int { return v.BaseSize }).(pulumi.IntOutput)
+}
+
+// String. Resource type to increase volume size dynamically by. (Valid values: `CPU`)
+func (o OceanBlockDeviceMappingEbsDynamicVolumeSizeOutput) Resource() pulumi.StringOutput {
+	return o.ApplyT(func(v OceanBlockDeviceMappingEbsDynamicVolumeSize) string { return v.Resource }).(pulumi.StringOutput)
+}
+
+// Int. Additional size (in GB) per resource unit. (Example: `baseSize=50`, `sizePerResourceUnit=20`, and instance with 2 CPU is launched; its total disk size will be: 90GB).
+func (o OceanBlockDeviceMappingEbsDynamicVolumeSizeOutput) SizePerResourceUnit() pulumi.IntOutput {
+	return o.ApplyT(func(v OceanBlockDeviceMappingEbsDynamicVolumeSize) int { return v.SizePerResourceUnit }).(pulumi.IntOutput)
+}
+
+type OceanBlockDeviceMappingEbsDynamicVolumeSizePtrOutput struct{ *pulumi.OutputState }
+
+func (OceanBlockDeviceMappingEbsDynamicVolumeSizePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanBlockDeviceMappingEbsDynamicVolumeSize)(nil)).Elem()
+}
+
+func (o OceanBlockDeviceMappingEbsDynamicVolumeSizePtrOutput) ToOceanBlockDeviceMappingEbsDynamicVolumeSizePtrOutput() OceanBlockDeviceMappingEbsDynamicVolumeSizePtrOutput {
+	return o
+}
+
+func (o OceanBlockDeviceMappingEbsDynamicVolumeSizePtrOutput) ToOceanBlockDeviceMappingEbsDynamicVolumeSizePtrOutputWithContext(ctx context.Context) OceanBlockDeviceMappingEbsDynamicVolumeSizePtrOutput {
+	return o
+}
+
+func (o OceanBlockDeviceMappingEbsDynamicVolumeSizePtrOutput) Elem() OceanBlockDeviceMappingEbsDynamicVolumeSizeOutput {
+	return o.ApplyT(func(v *OceanBlockDeviceMappingEbsDynamicVolumeSize) OceanBlockDeviceMappingEbsDynamicVolumeSize {
+		if v != nil {
+			return *v
+		}
+		var ret OceanBlockDeviceMappingEbsDynamicVolumeSize
+		return ret
+	}).(OceanBlockDeviceMappingEbsDynamicVolumeSizeOutput)
+}
+
+// Int. Initial size for volume. (Example: 50)
+func (o OceanBlockDeviceMappingEbsDynamicVolumeSizePtrOutput) BaseSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OceanBlockDeviceMappingEbsDynamicVolumeSize) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.BaseSize
+	}).(pulumi.IntPtrOutput)
+}
+
+// String. Resource type to increase volume size dynamically by. (Valid values: `CPU`)
+func (o OceanBlockDeviceMappingEbsDynamicVolumeSizePtrOutput) Resource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OceanBlockDeviceMappingEbsDynamicVolumeSize) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Resource
+	}).(pulumi.StringPtrOutput)
+}
+
+// Int. Additional size (in GB) per resource unit. (Example: `baseSize=50`, `sizePerResourceUnit=20`, and instance with 2 CPU is launched; its total disk size will be: 90GB).
+func (o OceanBlockDeviceMappingEbsDynamicVolumeSizePtrOutput) SizePerResourceUnit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OceanBlockDeviceMappingEbsDynamicVolumeSize) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.SizePerResourceUnit
+	}).(pulumi.IntPtrOutput)
+}
+
 type OceanClusterOrientation struct {
 	// You can control the approach that Ocean takes while launching nodes by configuring this value. Possible values: `costOriented`,`balanced`,`cheapest`.
 	AvailabilityVsCost *string `pulumi:"availabilityVsCost"`
@@ -22246,6 +22818,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanAutoscalerAutoscaleHeadroomPtrInput)(nil)).Elem(), OceanAutoscalerAutoscaleHeadroomArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanAutoscalerResourceLimitsInput)(nil)).Elem(), OceanAutoscalerResourceLimitsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanAutoscalerResourceLimitsPtrInput)(nil)).Elem(), OceanAutoscalerResourceLimitsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanBlockDeviceMappingInput)(nil)).Elem(), OceanBlockDeviceMappingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanBlockDeviceMappingArrayInput)(nil)).Elem(), OceanBlockDeviceMappingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanBlockDeviceMappingEbsInput)(nil)).Elem(), OceanBlockDeviceMappingEbsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanBlockDeviceMappingEbsPtrInput)(nil)).Elem(), OceanBlockDeviceMappingEbsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanBlockDeviceMappingEbsDynamicVolumeSizeInput)(nil)).Elem(), OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanBlockDeviceMappingEbsDynamicVolumeSizePtrInput)(nil)).Elem(), OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanClusterOrientationInput)(nil)).Elem(), OceanClusterOrientationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanClusterOrientationArrayInput)(nil)).Elem(), OceanClusterOrientationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanFiltersInput)(nil)).Elem(), OceanFiltersArgs{})
@@ -22538,6 +23116,12 @@ func init() {
 	pulumi.RegisterOutputType(OceanAutoscalerAutoscaleHeadroomPtrOutput{})
 	pulumi.RegisterOutputType(OceanAutoscalerResourceLimitsOutput{})
 	pulumi.RegisterOutputType(OceanAutoscalerResourceLimitsPtrOutput{})
+	pulumi.RegisterOutputType(OceanBlockDeviceMappingOutput{})
+	pulumi.RegisterOutputType(OceanBlockDeviceMappingArrayOutput{})
+	pulumi.RegisterOutputType(OceanBlockDeviceMappingEbsOutput{})
+	pulumi.RegisterOutputType(OceanBlockDeviceMappingEbsPtrOutput{})
+	pulumi.RegisterOutputType(OceanBlockDeviceMappingEbsDynamicVolumeSizeOutput{})
+	pulumi.RegisterOutputType(OceanBlockDeviceMappingEbsDynamicVolumeSizePtrOutput{})
 	pulumi.RegisterOutputType(OceanClusterOrientationOutput{})
 	pulumi.RegisterOutputType(OceanClusterOrientationArrayOutput{})
 	pulumi.RegisterOutputType(OceanFiltersOutput{})

@@ -39,6 +39,8 @@ __all__ = [
     'OceanImportScheduledTaskArgs',
     'OceanImportScheduledTaskShutdownHoursArgs',
     'OceanImportScheduledTaskTaskArgs',
+    'OceanImportScheduledTaskTaskTaskParametersArgs',
+    'OceanImportScheduledTaskTaskTaskParametersClusterRollArgs',
     'OceanImportShieldedInstanceConfigArgs',
     'OceanImportStrategyArgs',
     'OceanImportUpdatePolicyArgs',
@@ -1673,21 +1675,19 @@ class OceanImportScheduledTaskTaskArgs:
                  cron_expression: pulumi.Input[str],
                  is_enabled: pulumi.Input[bool],
                  task_type: pulumi.Input[str],
-                 batch_size_percentage: Optional[pulumi.Input[int]] = None):
+                 task_parameters: Optional[pulumi.Input['OceanImportScheduledTaskTaskTaskParametersArgs']] = None):
         """
         :param pulumi.Input[str] cron_expression: A valid cron expression. For example : " * * * * * ".The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of ‘frequency’ or ‘cronExpression’ should be used at a time. Required for cluster.scheduling.tasks object
                Example: 0 1 * * *
         :param pulumi.Input[bool] is_enabled: Flag to enable / disable the shutdown hours.
                Example: True
         :param pulumi.Input[str] task_type: Valid values: "clusterRoll". Required for cluster.scheduling.tasks object.
-        :param pulumi.Input[int] batch_size_percentage: Value in % to set size of batch in roll. Valid values are 0-100
-               Example: 20.
         """
         pulumi.set(__self__, "cron_expression", cron_expression)
         pulumi.set(__self__, "is_enabled", is_enabled)
         pulumi.set(__self__, "task_type", task_type)
-        if batch_size_percentage is not None:
-            pulumi.set(__self__, "batch_size_percentage", batch_size_percentage)
+        if task_parameters is not None:
+            pulumi.set(__self__, "task_parameters", task_parameters)
 
     @property
     @pulumi.getter(name="cronExpression")
@@ -1728,6 +1728,62 @@ class OceanImportScheduledTaskTaskArgs:
         pulumi.set(self, "task_type", value)
 
     @property
+    @pulumi.getter(name="taskParameters")
+    def task_parameters(self) -> Optional[pulumi.Input['OceanImportScheduledTaskTaskTaskParametersArgs']]:
+        return pulumi.get(self, "task_parameters")
+
+    @task_parameters.setter
+    def task_parameters(self, value: Optional[pulumi.Input['OceanImportScheduledTaskTaskTaskParametersArgs']]):
+        pulumi.set(self, "task_parameters", value)
+
+
+@pulumi.input_type
+class OceanImportScheduledTaskTaskTaskParametersArgs:
+    def __init__(__self__, *,
+                 cluster_roll: Optional[pulumi.Input['OceanImportScheduledTaskTaskTaskParametersClusterRollArgs']] = None):
+        if cluster_roll is not None:
+            pulumi.set(__self__, "cluster_roll", cluster_roll)
+
+    @property
+    @pulumi.getter(name="clusterRoll")
+    def cluster_roll(self) -> Optional[pulumi.Input['OceanImportScheduledTaskTaskTaskParametersClusterRollArgs']]:
+        return pulumi.get(self, "cluster_roll")
+
+    @cluster_roll.setter
+    def cluster_roll(self, value: Optional[pulumi.Input['OceanImportScheduledTaskTaskTaskParametersClusterRollArgs']]):
+        pulumi.set(self, "cluster_roll", value)
+
+
+@pulumi.input_type
+class OceanImportScheduledTaskTaskTaskParametersClusterRollArgs:
+    def __init__(__self__, *,
+                 batch_min_healthy_percentage: Optional[pulumi.Input[int]] = None,
+                 batch_size_percentage: Optional[pulumi.Input[int]] = None,
+                 comment: Optional[pulumi.Input[str]] = None,
+                 respect_pdb: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[int] batch_size_percentage: Value in % to set size of batch in roll. Valid values are 0-100
+               Example: 20.
+        """
+        if batch_min_healthy_percentage is not None:
+            pulumi.set(__self__, "batch_min_healthy_percentage", batch_min_healthy_percentage)
+        if batch_size_percentage is not None:
+            pulumi.set(__self__, "batch_size_percentage", batch_size_percentage)
+        if comment is not None:
+            pulumi.set(__self__, "comment", comment)
+        if respect_pdb is not None:
+            pulumi.set(__self__, "respect_pdb", respect_pdb)
+
+    @property
+    @pulumi.getter(name="batchMinHealthyPercentage")
+    def batch_min_healthy_percentage(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "batch_min_healthy_percentage")
+
+    @batch_min_healthy_percentage.setter
+    def batch_min_healthy_percentage(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "batch_min_healthy_percentage", value)
+
+    @property
     @pulumi.getter(name="batchSizePercentage")
     def batch_size_percentage(self) -> Optional[pulumi.Input[int]]:
         """
@@ -1739,6 +1795,24 @@ class OceanImportScheduledTaskTaskArgs:
     @batch_size_percentage.setter
     def batch_size_percentage(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "batch_size_percentage", value)
+
+    @property
+    @pulumi.getter
+    def comment(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "comment")
+
+    @comment.setter
+    def comment(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "comment", value)
+
+    @property
+    @pulumi.getter(name="respectPdb")
+    def respect_pdb(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "respect_pdb")
+
+    @respect_pdb.setter
+    def respect_pdb(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "respect_pdb", value)
 
 
 @pulumi.input_type
@@ -1872,7 +1946,8 @@ class OceanImportUpdatePolicyRollConfigArgs:
     def __init__(__self__, *,
                  batch_size_percentage: pulumi.Input[int],
                  batch_min_healthy_percentage: Optional[pulumi.Input[int]] = None,
-                 launch_spec_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 launch_spec_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 respect_pdb: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[int] batch_size_percentage: Value in % to set size of batch in roll. Valid values are 0-100
                Example: 20.
@@ -1882,6 +1957,8 @@ class OceanImportUpdatePolicyRollConfigArgs:
             pulumi.set(__self__, "batch_min_healthy_percentage", batch_min_healthy_percentage)
         if launch_spec_ids is not None:
             pulumi.set(__self__, "launch_spec_ids", launch_spec_ids)
+        if respect_pdb is not None:
+            pulumi.set(__self__, "respect_pdb", respect_pdb)
 
     @property
     @pulumi.getter(name="batchSizePercentage")
@@ -1913,6 +1990,15 @@ class OceanImportUpdatePolicyRollConfigArgs:
     @launch_spec_ids.setter
     def launch_spec_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "launch_spec_ids", value)
+
+    @property
+    @pulumi.getter(name="respectPdb")
+    def respect_pdb(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "respect_pdb")
+
+    @respect_pdb.setter
+    def respect_pdb(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "respect_pdb", value)
 
 
 @pulumi.input_type

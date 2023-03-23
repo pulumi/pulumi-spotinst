@@ -60,7 +60,9 @@ type Ocean struct {
 	// Describes the Ocean Kubernetes Auto Scaler.
 	Autoscaler OceanAutoscalerPtrOutput `pulumi:"autoscaler"`
 	// Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist` is configured.
-	Blacklists          pulumi.StringArrayOutput           `pulumi:"blacklists"`
+	Blacklists pulumi.StringArrayOutput `pulumi:"blacklists"`
+	// Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
+	BlockDeviceMappings OceanBlockDeviceMappingArrayOutput `pulumi:"blockDeviceMappings"`
 	ClusterOrientations OceanClusterOrientationArrayOutput `pulumi:"clusterOrientations"`
 	// A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
 	ControllerId pulumi.StringPtrOutput `pulumi:"controllerId"`
@@ -167,7 +169,9 @@ type oceanState struct {
 	// Describes the Ocean Kubernetes Auto Scaler.
 	Autoscaler *OceanAutoscaler `pulumi:"autoscaler"`
 	// Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist` is configured.
-	Blacklists          []string                  `pulumi:"blacklists"`
+	Blacklists []string `pulumi:"blacklists"`
+	// Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
+	BlockDeviceMappings []OceanBlockDeviceMapping `pulumi:"blockDeviceMappings"`
 	ClusterOrientations []OceanClusterOrientation `pulumi:"clusterOrientations"`
 	// A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
 	ControllerId *string `pulumi:"controllerId"`
@@ -240,7 +244,9 @@ type OceanState struct {
 	// Describes the Ocean Kubernetes Auto Scaler.
 	Autoscaler OceanAutoscalerPtrInput
 	// Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist` is configured.
-	Blacklists          pulumi.StringArrayInput
+	Blacklists pulumi.StringArrayInput
+	// Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
+	BlockDeviceMappings OceanBlockDeviceMappingArrayInput
 	ClusterOrientations OceanClusterOrientationArrayInput
 	// A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
 	ControllerId pulumi.StringPtrInput
@@ -317,7 +323,9 @@ type oceanArgs struct {
 	// Describes the Ocean Kubernetes Auto Scaler.
 	Autoscaler *OceanAutoscaler `pulumi:"autoscaler"`
 	// Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist` is configured.
-	Blacklists          []string                  `pulumi:"blacklists"`
+	Blacklists []string `pulumi:"blacklists"`
+	// Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
+	BlockDeviceMappings []OceanBlockDeviceMapping `pulumi:"blockDeviceMappings"`
 	ClusterOrientations []OceanClusterOrientation `pulumi:"clusterOrientations"`
 	// A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
 	ControllerId *string `pulumi:"controllerId"`
@@ -391,7 +399,9 @@ type OceanArgs struct {
 	// Describes the Ocean Kubernetes Auto Scaler.
 	Autoscaler OceanAutoscalerPtrInput
 	// Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist` is configured.
-	Blacklists          pulumi.StringArrayInput
+	Blacklists pulumi.StringArrayInput
+	// Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
+	BlockDeviceMappings OceanBlockDeviceMappingArrayInput
 	ClusterOrientations OceanClusterOrientationArrayInput
 	// A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
 	ControllerId pulumi.StringPtrInput
@@ -561,6 +571,11 @@ func (o OceanOutput) Autoscaler() OceanAutoscalerPtrOutput {
 // Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist` is configured.
 func (o OceanOutput) Blacklists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Ocean) pulumi.StringArrayOutput { return v.Blacklists }).(pulumi.StringArrayOutput)
+}
+
+// Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
+func (o OceanOutput) BlockDeviceMappings() OceanBlockDeviceMappingArrayOutput {
+	return o.ApplyT(func(v *Ocean) OceanBlockDeviceMappingArrayOutput { return v.BlockDeviceMappings }).(OceanBlockDeviceMappingArrayOutput)
 }
 
 func (o OceanOutput) ClusterOrientations() OceanClusterOrientationArrayOutput {

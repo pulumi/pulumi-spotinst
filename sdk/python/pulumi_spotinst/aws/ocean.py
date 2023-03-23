@@ -22,6 +22,7 @@ class OceanArgs:
                  associate_public_ip_address: Optional[pulumi.Input[bool]] = None,
                  autoscaler: Optional[pulumi.Input['OceanAutoscalerArgs']] = None,
                  blacklists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 block_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input['OceanBlockDeviceMappingArgs']]]] = None,
                  cluster_orientations: Optional[pulumi.Input[Sequence[pulumi.Input['OceanClusterOrientationArgs']]]] = None,
                  controller_id: Optional[pulumi.Input[str]] = None,
                  desired_capacity: Optional[pulumi.Input[int]] = None,
@@ -60,6 +61,7 @@ class OceanArgs:
         :param pulumi.Input[bool] associate_public_ip_address: Configure public IP address allocation.
         :param pulumi.Input['OceanAutoscalerArgs'] autoscaler: Describes the Ocean Kubernetes Auto Scaler.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] blacklists: Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist` is configured.
+        :param pulumi.Input[Sequence[pulumi.Input['OceanBlockDeviceMappingArgs']]] block_device_mappings: Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
         :param pulumi.Input[str] controller_id: A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
         :param pulumi.Input[int] desired_capacity: The number of instances to launch and maintain in the cluster.
         :param pulumi.Input[int] draining_timeout: The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
@@ -99,6 +101,8 @@ class OceanArgs:
             pulumi.set(__self__, "autoscaler", autoscaler)
         if blacklists is not None:
             pulumi.set(__self__, "blacklists", blacklists)
+        if block_device_mappings is not None:
+            pulumi.set(__self__, "block_device_mappings", block_device_mappings)
         if cluster_orientations is not None:
             pulumi.set(__self__, "cluster_orientations", cluster_orientations)
         if controller_id is not None:
@@ -231,6 +235,18 @@ class OceanArgs:
     @blacklists.setter
     def blacklists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "blacklists", value)
+
+    @property
+    @pulumi.getter(name="blockDeviceMappings")
+    def block_device_mappings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanBlockDeviceMappingArgs']]]]:
+        """
+        Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
+        """
+        return pulumi.get(self, "block_device_mappings")
+
+    @block_device_mappings.setter
+    def block_device_mappings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanBlockDeviceMappingArgs']]]]):
+        pulumi.set(self, "block_device_mappings", value)
 
     @property
     @pulumi.getter(name="clusterOrientations")
@@ -592,6 +608,7 @@ class _OceanState:
                  associate_public_ip_address: Optional[pulumi.Input[bool]] = None,
                  autoscaler: Optional[pulumi.Input['OceanAutoscalerArgs']] = None,
                  blacklists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 block_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input['OceanBlockDeviceMappingArgs']]]] = None,
                  cluster_orientations: Optional[pulumi.Input[Sequence[pulumi.Input['OceanClusterOrientationArgs']]]] = None,
                  controller_id: Optional[pulumi.Input[str]] = None,
                  desired_capacity: Optional[pulumi.Input[int]] = None,
@@ -630,6 +647,7 @@ class _OceanState:
         :param pulumi.Input[bool] associate_public_ip_address: Configure public IP address allocation.
         :param pulumi.Input['OceanAutoscalerArgs'] autoscaler: Describes the Ocean Kubernetes Auto Scaler.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] blacklists: Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist` is configured.
+        :param pulumi.Input[Sequence[pulumi.Input['OceanBlockDeviceMappingArgs']]] block_device_mappings: Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
         :param pulumi.Input[str] controller_id: A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
         :param pulumi.Input[int] desired_capacity: The number of instances to launch and maintain in the cluster.
         :param pulumi.Input[int] draining_timeout: The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
@@ -669,6 +687,8 @@ class _OceanState:
             pulumi.set(__self__, "autoscaler", autoscaler)
         if blacklists is not None:
             pulumi.set(__self__, "blacklists", blacklists)
+        if block_device_mappings is not None:
+            pulumi.set(__self__, "block_device_mappings", block_device_mappings)
         if cluster_orientations is not None:
             pulumi.set(__self__, "cluster_orientations", cluster_orientations)
         if controller_id is not None:
@@ -781,6 +801,18 @@ class _OceanState:
     @blacklists.setter
     def blacklists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "blacklists", value)
+
+    @property
+    @pulumi.getter(name="blockDeviceMappings")
+    def block_device_mappings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanBlockDeviceMappingArgs']]]]:
+        """
+        Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
+        """
+        return pulumi.get(self, "block_device_mappings")
+
+    @block_device_mappings.setter
+    def block_device_mappings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanBlockDeviceMappingArgs']]]]):
+        pulumi.set(self, "block_device_mappings", value)
 
     @property
     @pulumi.getter(name="clusterOrientations")
@@ -1168,6 +1200,7 @@ class Ocean(pulumi.CustomResource):
                  associate_public_ip_address: Optional[pulumi.Input[bool]] = None,
                  autoscaler: Optional[pulumi.Input[pulumi.InputType['OceanAutoscalerArgs']]] = None,
                  blacklists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 block_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanBlockDeviceMappingArgs']]]]] = None,
                  cluster_orientations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanClusterOrientationArgs']]]]] = None,
                  controller_id: Optional[pulumi.Input[str]] = None,
                  desired_capacity: Optional[pulumi.Input[int]] = None,
@@ -1233,6 +1266,7 @@ class Ocean(pulumi.CustomResource):
         :param pulumi.Input[bool] associate_public_ip_address: Configure public IP address allocation.
         :param pulumi.Input[pulumi.InputType['OceanAutoscalerArgs']] autoscaler: Describes the Ocean Kubernetes Auto Scaler.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] blacklists: Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist` is configured.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanBlockDeviceMappingArgs']]]] block_device_mappings: Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
         :param pulumi.Input[str] controller_id: A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
         :param pulumi.Input[int] desired_capacity: The number of instances to launch and maintain in the cluster.
         :param pulumi.Input[int] draining_timeout: The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
@@ -1315,6 +1349,7 @@ class Ocean(pulumi.CustomResource):
                  associate_public_ip_address: Optional[pulumi.Input[bool]] = None,
                  autoscaler: Optional[pulumi.Input[pulumi.InputType['OceanAutoscalerArgs']]] = None,
                  blacklists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 block_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanBlockDeviceMappingArgs']]]]] = None,
                  cluster_orientations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanClusterOrientationArgs']]]]] = None,
                  controller_id: Optional[pulumi.Input[str]] = None,
                  desired_capacity: Optional[pulumi.Input[int]] = None,
@@ -1360,6 +1395,7 @@ class Ocean(pulumi.CustomResource):
             __props__.__dict__["associate_public_ip_address"] = associate_public_ip_address
             __props__.__dict__["autoscaler"] = autoscaler
             __props__.__dict__["blacklists"] = blacklists
+            __props__.__dict__["block_device_mappings"] = block_device_mappings
             __props__.__dict__["cluster_orientations"] = cluster_orientations
             __props__.__dict__["controller_id"] = controller_id
             __props__.__dict__["desired_capacity"] = desired_capacity
@@ -1410,6 +1446,7 @@ class Ocean(pulumi.CustomResource):
             associate_public_ip_address: Optional[pulumi.Input[bool]] = None,
             autoscaler: Optional[pulumi.Input[pulumi.InputType['OceanAutoscalerArgs']]] = None,
             blacklists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            block_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanBlockDeviceMappingArgs']]]]] = None,
             cluster_orientations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanClusterOrientationArgs']]]]] = None,
             controller_id: Optional[pulumi.Input[str]] = None,
             desired_capacity: Optional[pulumi.Input[int]] = None,
@@ -1453,6 +1490,7 @@ class Ocean(pulumi.CustomResource):
         :param pulumi.Input[bool] associate_public_ip_address: Configure public IP address allocation.
         :param pulumi.Input[pulumi.InputType['OceanAutoscalerArgs']] autoscaler: Describes the Ocean Kubernetes Auto Scaler.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] blacklists: Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist` is configured.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanBlockDeviceMappingArgs']]]] block_device_mappings: Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
         :param pulumi.Input[str] controller_id: A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
         :param pulumi.Input[int] desired_capacity: The number of instances to launch and maintain in the cluster.
         :param pulumi.Input[int] draining_timeout: The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
@@ -1492,6 +1530,7 @@ class Ocean(pulumi.CustomResource):
         __props__.__dict__["associate_public_ip_address"] = associate_public_ip_address
         __props__.__dict__["autoscaler"] = autoscaler
         __props__.__dict__["blacklists"] = blacklists
+        __props__.__dict__["block_device_mappings"] = block_device_mappings
         __props__.__dict__["cluster_orientations"] = cluster_orientations
         __props__.__dict__["controller_id"] = controller_id
         __props__.__dict__["desired_capacity"] = desired_capacity
@@ -1557,6 +1596,14 @@ class Ocean(pulumi.CustomResource):
         Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist` is configured.
         """
         return pulumi.get(self, "blacklists")
+
+    @property
+    @pulumi.getter(name="blockDeviceMappings")
+    def block_device_mappings(self) -> pulumi.Output[Optional[Sequence['outputs.OceanBlockDeviceMapping']]]:
+        """
+        Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
+        """
+        return pulumi.get(self, "block_device_mappings")
 
     @property
     @pulumi.getter(name="clusterOrientations")

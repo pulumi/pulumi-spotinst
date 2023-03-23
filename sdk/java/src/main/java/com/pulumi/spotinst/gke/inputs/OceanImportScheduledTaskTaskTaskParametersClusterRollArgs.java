@@ -8,15 +8,14 @@ import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 
-public final class OceanImportUpdatePolicyRollConfigArgs extends com.pulumi.resources.ResourceArgs {
+public final class OceanImportScheduledTaskTaskTaskParametersClusterRollArgs extends com.pulumi.resources.ResourceArgs {
 
-    public static final OceanImportUpdatePolicyRollConfigArgs Empty = new OceanImportUpdatePolicyRollConfigArgs();
+    public static final OceanImportScheduledTaskTaskTaskParametersClusterRollArgs Empty = new OceanImportScheduledTaskTaskTaskParametersClusterRollArgs();
 
     @Import(name="batchMinHealthyPercentage")
     private @Nullable Output<Integer> batchMinHealthyPercentage;
@@ -30,23 +29,23 @@ public final class OceanImportUpdatePolicyRollConfigArgs extends com.pulumi.reso
      * Example: 20.
      * 
      */
-    @Import(name="batchSizePercentage", required=true)
-    private Output<Integer> batchSizePercentage;
+    @Import(name="batchSizePercentage")
+    private @Nullable Output<Integer> batchSizePercentage;
 
     /**
      * @return Value in % to set size of batch in roll. Valid values are 0-100
      * Example: 20.
      * 
      */
-    public Output<Integer> batchSizePercentage() {
-        return this.batchSizePercentage;
+    public Optional<Output<Integer>> batchSizePercentage() {
+        return Optional.ofNullable(this.batchSizePercentage);
     }
 
-    @Import(name="launchSpecIds")
-    private @Nullable Output<List<String>> launchSpecIds;
+    @Import(name="comment")
+    private @Nullable Output<String> comment;
 
-    public Optional<Output<List<String>>> launchSpecIds() {
-        return Optional.ofNullable(this.launchSpecIds);
+    public Optional<Output<String>> comment() {
+        return Optional.ofNullable(this.comment);
     }
 
     @Import(name="respectPdb")
@@ -56,31 +55,31 @@ public final class OceanImportUpdatePolicyRollConfigArgs extends com.pulumi.reso
         return Optional.ofNullable(this.respectPdb);
     }
 
-    private OceanImportUpdatePolicyRollConfigArgs() {}
+    private OceanImportScheduledTaskTaskTaskParametersClusterRollArgs() {}
 
-    private OceanImportUpdatePolicyRollConfigArgs(OceanImportUpdatePolicyRollConfigArgs $) {
+    private OceanImportScheduledTaskTaskTaskParametersClusterRollArgs(OceanImportScheduledTaskTaskTaskParametersClusterRollArgs $) {
         this.batchMinHealthyPercentage = $.batchMinHealthyPercentage;
         this.batchSizePercentage = $.batchSizePercentage;
-        this.launchSpecIds = $.launchSpecIds;
+        this.comment = $.comment;
         this.respectPdb = $.respectPdb;
     }
 
     public static Builder builder() {
         return new Builder();
     }
-    public static Builder builder(OceanImportUpdatePolicyRollConfigArgs defaults) {
+    public static Builder builder(OceanImportScheduledTaskTaskTaskParametersClusterRollArgs defaults) {
         return new Builder(defaults);
     }
 
     public static final class Builder {
-        private OceanImportUpdatePolicyRollConfigArgs $;
+        private OceanImportScheduledTaskTaskTaskParametersClusterRollArgs $;
 
         public Builder() {
-            $ = new OceanImportUpdatePolicyRollConfigArgs();
+            $ = new OceanImportScheduledTaskTaskTaskParametersClusterRollArgs();
         }
 
-        public Builder(OceanImportUpdatePolicyRollConfigArgs defaults) {
-            $ = new OceanImportUpdatePolicyRollConfigArgs(Objects.requireNonNull(defaults));
+        public Builder(OceanImportScheduledTaskTaskTaskParametersClusterRollArgs defaults) {
+            $ = new OceanImportScheduledTaskTaskTaskParametersClusterRollArgs(Objects.requireNonNull(defaults));
         }
 
         public Builder batchMinHealthyPercentage(@Nullable Output<Integer> batchMinHealthyPercentage) {
@@ -99,7 +98,7 @@ public final class OceanImportUpdatePolicyRollConfigArgs extends com.pulumi.reso
          * @return builder
          * 
          */
-        public Builder batchSizePercentage(Output<Integer> batchSizePercentage) {
+        public Builder batchSizePercentage(@Nullable Output<Integer> batchSizePercentage) {
             $.batchSizePercentage = batchSizePercentage;
             return this;
         }
@@ -115,17 +114,13 @@ public final class OceanImportUpdatePolicyRollConfigArgs extends com.pulumi.reso
             return batchSizePercentage(Output.of(batchSizePercentage));
         }
 
-        public Builder launchSpecIds(@Nullable Output<List<String>> launchSpecIds) {
-            $.launchSpecIds = launchSpecIds;
+        public Builder comment(@Nullable Output<String> comment) {
+            $.comment = comment;
             return this;
         }
 
-        public Builder launchSpecIds(List<String> launchSpecIds) {
-            return launchSpecIds(Output.of(launchSpecIds));
-        }
-
-        public Builder launchSpecIds(String... launchSpecIds) {
-            return launchSpecIds(List.of(launchSpecIds));
+        public Builder comment(String comment) {
+            return comment(Output.of(comment));
         }
 
         public Builder respectPdb(@Nullable Output<Boolean> respectPdb) {
@@ -137,8 +132,7 @@ public final class OceanImportUpdatePolicyRollConfigArgs extends com.pulumi.reso
             return respectPdb(Output.of(respectPdb));
         }
 
-        public OceanImportUpdatePolicyRollConfigArgs build() {
-            $.batchSizePercentage = Objects.requireNonNull($.batchSizePercentage, "expected parameter 'batchSizePercentage' to be non-null");
+        public OceanImportScheduledTaskTaskTaskParametersClusterRollArgs build() {
             return $;
         }
     }

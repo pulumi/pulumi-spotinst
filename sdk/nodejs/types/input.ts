@@ -2529,6 +2529,71 @@ export namespace aws {
         maxVcpu?: pulumi.Input<number>;
     }
 
+    export interface OceanBlockDeviceMapping {
+        /**
+         * String. Set device name. (Example: `/dev/xvda`).
+         */
+        deviceName?: pulumi.Input<string>;
+        /**
+         * Object. Set Elastic Block Store properties .
+         */
+        ebs?: pulumi.Input<inputs.aws.OceanBlockDeviceMappingEbs>;
+    }
+
+    export interface OceanBlockDeviceMappingEbs {
+        /**
+         * Boolean. Flag to delete the EBS on instance termination.
+         */
+        deleteOnTermination?: pulumi.Input<boolean>;
+        /**
+         * Object. Set dynamic volume size properties. When using this object, you cannot use volumeSize. You must use one or the other.
+         */
+        dynamicVolumeSize?: pulumi.Input<inputs.aws.OceanBlockDeviceMappingEbsDynamicVolumeSize>;
+        /**
+         * Boolean. Enables [EBS encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) on the volume.
+         */
+        encrypted?: pulumi.Input<boolean>;
+        /**
+         * Int. The number of I/O operations per second (IOPS) that the volume supports.
+         */
+        iops?: pulumi.Input<number>;
+        /**
+         * String. Identifier (key ID, key alias, ID ARN, or alias ARN) for a customer managed CMK under which the EBS volume is encrypted.
+         */
+        kmsKeyId?: pulumi.Input<string>;
+        /**
+         * (Optional) String. The Snapshot ID to mount by.
+         */
+        snapshotId?: pulumi.Input<string>;
+        /**
+         * The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volumeType` = `gp3`.
+         */
+        throughput?: pulumi.Input<number>;
+        /**
+         * Int. The size, in GB of the volume.
+         */
+        volumeSize?: pulumi.Input<number>;
+        /**
+         * String. The type of the volume. (Example: `gp2`).
+         */
+        volumeType?: pulumi.Input<string>;
+    }
+
+    export interface OceanBlockDeviceMappingEbsDynamicVolumeSize {
+        /**
+         * Int. Initial size for volume. (Example: 50)
+         */
+        baseSize: pulumi.Input<number>;
+        /**
+         * String. Resource type to increase volume size dynamically by. (Valid values: `CPU`)
+         */
+        resource: pulumi.Input<string>;
+        /**
+         * Int. Additional size (in GB) per resource unit. (Example: `baseSize=50`, `sizePerResourceUnit=20`, and instance with 2 CPU is launched; its total disk size will be: 90GB).
+         */
+        sizePerResourceUnit: pulumi.Input<number>;
+    }
+
     export interface OceanClusterOrientation {
         /**
          * You can control the approach that Ocean takes while launching nodes by configuring this value. Possible values: `costOriented`,`balanced`,`cheapest`.
@@ -4937,11 +5002,6 @@ export namespace gke {
 
     export interface OceanImportScheduledTaskTask {
         /**
-         * Value in % to set size of batch in roll. Valid values are 0-100
-         * Example: 20.
-         */
-        batchSizePercentage?: pulumi.Input<number>;
-        /**
          * A valid cron expression. For example : " * * * * * ".The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of ‘frequency’ or ‘cronExpression’ should be used at a time. Required for cluster.scheduling.tasks object
          * Example: 0 1 * * *
          */
@@ -4951,10 +5011,26 @@ export namespace gke {
          * Example: True
          */
         isEnabled: pulumi.Input<boolean>;
+        taskParameters?: pulumi.Input<inputs.gke.OceanImportScheduledTaskTaskTaskParameters>;
         /**
          * Valid values: "clusterRoll". Required for cluster.scheduling.tasks object.
          */
         taskType: pulumi.Input<string>;
+    }
+
+    export interface OceanImportScheduledTaskTaskTaskParameters {
+        clusterRoll?: pulumi.Input<inputs.gke.OceanImportScheduledTaskTaskTaskParametersClusterRoll>;
+    }
+
+    export interface OceanImportScheduledTaskTaskTaskParametersClusterRoll {
+        batchMinHealthyPercentage?: pulumi.Input<number>;
+        /**
+         * Value in % to set size of batch in roll. Valid values are 0-100
+         * Example: 20.
+         */
+        batchSizePercentage?: pulumi.Input<number>;
+        comment?: pulumi.Input<string>;
+        respectPdb?: pulumi.Input<boolean>;
     }
 
     export interface OceanImportShieldedInstanceConfig {
@@ -4991,6 +5067,7 @@ export namespace gke {
          */
         batchSizePercentage: pulumi.Input<number>;
         launchSpecIds?: pulumi.Input<pulumi.Input<string>[]>;
+        respectPdb?: pulumi.Input<boolean>;
     }
 
     export interface OceanLaunchSpecAutoscaleHeadroom {

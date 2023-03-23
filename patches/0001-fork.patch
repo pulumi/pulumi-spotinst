@@ -1,6 +1,6 @@
-From 9e33b47ad71714150965b8d0ad9b00d582ca3e30 Mon Sep 17 00:00:00 2001
+From 1a220a831fa674ddbb84c31b054e46a3371ba6be Mon Sep 17 00:00:00 2001
 From: Ian Wahbe <ian@wahbe.com>
-Date: Fri, 10 Mar 2023 18:37:00 +0100
+Date: Thu, 23 Mar 2023 16:23:46 +0100
 Subject: [PATCH] fork
 
 ---
@@ -16,14 +16,14 @@ Subject: [PATCH] fork
  docs/resources/mrscaler_aws.md              |  90 +++++------
  docs/resources/ocean_aws.md                 |  12 +-
  docs/resources/ocean_ecs.md                 |  37 ++---
- docs/resources/ocean_gke_import.md          |  24 ++-
- 13 files changed, 228 insertions(+), 288 deletions(-)
+ docs/resources/ocean_gke_import.md          |  29 ++--
+ 13 files changed, 228 insertions(+), 293 deletions(-)
 
 diff --git a/CHANGELOG.md b/CHANGELOG.md
-index 19323a14..0a29f0c6 100644
+index 9d90fc6d..6fb2ee8c 100644
 --- a/CHANGELOG.md
 +++ b/CHANGELOG.md
-@@ -389,7 +389,7 @@ BUG FIXES:
+@@ -405,7 +405,7 @@ BUG FIXES:
  ## 1.53.0 (July 15, 2021)
  
  ENHANCEMENTS:
@@ -32,7 +32,7 @@ index 19323a14..0a29f0c6 100644
  
  ## 1.52.0 (July 7, 2021)
  
-@@ -428,19 +428,19 @@ BUG FIXES:
+@@ -444,19 +444,19 @@ BUG FIXES:
  ## 1.48.0 (June 10, 2021)
  
  ENHANCEMENTS:
@@ -62,7 +62,7 @@ index 19323a14..0a29f0c6 100644
  ## 1.47.0 (June 6, 2021)
  
  ENHANCEMENTS:
-@@ -489,7 +489,7 @@ BUG FIXES:
+@@ -505,7 +505,7 @@ BUG FIXES:
  ## 1.40.0 (April 25, 2021)
  
  BUG FIXES:
@@ -72,7 +72,7 @@ index 19323a14..0a29f0c6 100644
  ## 1.39.0 (April 20, 2021)
  
 diff --git a/docs/resources/elastigroup_aws.md b/docs/resources/elastigroup_aws.md
-index 50006a2e..7e66178e 100644
+index 9d33db4a..ab1a391f 100644
 --- a/docs/resources/elastigroup_aws.md
 +++ b/docs/resources/elastigroup_aws.md
 @@ -17,7 +17,7 @@ Provides a Spotinst AWS group resource.
@@ -84,7 +84,7 @@ index 50006a2e..7e66178e 100644
    product     = "Linux/UNIX"
  
    max_size         = 0
-@@ -135,7 +135,7 @@ The following arguments are supported:
+@@ -136,7 +136,7 @@ The following arguments are supported:
  
  * `name` - (Required) The group name.
  * `description` - (Optional) The group description.
@@ -93,7 +93,7 @@ index 50006a2e..7e66178e 100644
  For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.    
  
  * `availability_zones` - (Optional) List of Strings of availability zones. When this parameter is set, `subnet_ids` should be left unused.
-@@ -148,7 +148,7 @@ Note: When this parameter is set, `availability_zones` should be left unused.
+@@ -149,7 +149,7 @@ Note: When this parameter is set, `availability_zones` should be left unused.
  * `region` - (Optional) The AWS region your group will be created in.
  Note: This parameter is required if you specify subnets (through subnet_ids). This parameter is optional if you specify Availability Zones (through availability_zones).
  
@@ -102,7 +102,7 @@ index 50006a2e..7e66178e 100644
  Note: Must be a sublist of `availability_zones` and `orientation` value must not be `"equalAzDistribution"`.
  
  * `max_size` - (Optional, Required if using scaling policies) The maximum number of instances the group should have at any time.
-@@ -183,7 +183,7 @@ Note: Elastigroup can be configured with either imageId or images, but not both.
+@@ -185,7 +185,7 @@ Note: Elastigroup can be configured with either imageId or images, but not both.
  * `cpu_credits` - (Optional) Controls how T3 instances are launched. Valid values: `standard`, `unlimited`.
  * `fallback_to_ondemand` - (Required) In a case of no Spot instances available, Elastigroup will launch on-demand instances instead.
  * `wait_for_capacity` - (Optional) Minimum number of instances in a 'HEALTHY' status that is required before continuing. This is ignored when updating with blue/green deployment. Cannot exceed `desired_capacity`.
@@ -111,7 +111,7 @@ index 50006a2e..7e66178e 100644
  * `orientation` - (Required, Default: `balanced`) Select a prediction strategy. Valid values: `balanced`, `costOriented`, `equalAzDistribution`, `availabilityOriented`. You can read more in our documentation.
  * `spot_percentage` - (Optional; Required if not using `ondemand_count`) The percentage of Spot instances that would spin up from the `desired_capacity` number.
  * `ondemand_count` - (Optional; Required if not using `spot_percentage`) Number of on demand instances to launch in the group. All other instances will be spot instances. When this parameter is set the `spot_percentage` parameter is being ignored.
-@@ -200,7 +200,7 @@ Note: Elastigroup can be configured with either imageId or images, but not both.
+@@ -202,7 +202,7 @@ Note: Elastigroup can be configured with either imageId or images, but not both.
  
  * `tags` - (Optional) A key/value mapping of tags to assign to the resource.
  * `elastic_ips` - (Optional) A list of [AWS Elastic IP](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html) allocation IDs to associate to the group instances.
@@ -120,7 +120,7 @@ index 50006a2e..7e66178e 100644
  * `revert_to_spot` - (Optional) Hold settings for strategy correction – replacing On-Demand for Spot instances. Supported Values: `"never"`, `"always"`, `"timeWindow"`
      * `perform_at` - (Required) In the event of a fallback to On-Demand instances, select the time period to revert back to Spot. Supported Arguments – always (default), timeWindow, never. For timeWindow or never to be valid the group must have availabilityOriented OR persistence defined.
      * `time_windows` - (Optional) Specify a list of time windows for to execute revertToSpot strategy. Time window format: `ddd:hh:mm-ddd:hh:mm`. Example: `Mon:03:00-Wed:02:30`
-@@ -210,35 +210,33 @@ Note: Elastigroup can be configured with either imageId or images, but not both.
+@@ -212,35 +212,33 @@ Note: Elastigroup can be configured with either imageId or images, but not both.
      * `should_tag_volumes`   - (Optional) Tag specification for Volume resources.
      * `should_tag_snapshots` - (Optional) Tag specification for Snapshot resources.
      * `should_tag_amis`      - (Optional) Tag specification for AMI resources.
@@ -164,7 +164,7 @@ index 50006a2e..7e66178e 100644
  
  Each `signal` supports the following:
  
-@@ -254,8 +252,7 @@ Usage:
+@@ -256,8 +254,7 @@ Usage:
    }
  ```
  
@@ -174,7 +174,7 @@ index 50006a2e..7e66178e 100644
  
  Each `scheduled_task` supports the following:
  
-@@ -295,8 +292,7 @@ Usage:
+@@ -297,8 +294,7 @@ Usage:
    }
  ```
  
@@ -184,7 +184,7 @@ index 50006a2e..7e66178e 100644
  
  `scaling_up_policy` supports the following:
  
-@@ -414,17 +410,17 @@ Usage:
+@@ -416,17 +412,17 @@ Usage:
      statistic   = "average"
      unit        = ""
      cooldown    = 60
@@ -205,7 +205,7 @@ index 50006a2e..7e66178e 100644
      step_adjustments {
          threshold = 50
          action {
-@@ -432,25 +428,25 @@ Usage:
+@@ -434,25 +430,25 @@ Usage:
              min_target_capacity = "3"
          }
      }
@@ -235,7 +235,7 @@ index 50006a2e..7e66178e 100644
    }
  ```
  
-@@ -479,7 +475,7 @@ Usage:
+@@ -481,7 +477,7 @@ Usage:
      * `name` - (Required) The expression name.
  * `metrics` - (Optional) Array of objects (Metric config)
      * `metric_name` - (Required) The name of the source metric.
@@ -244,7 +244,7 @@ index 50006a2e..7e66178e 100644
      * `name_space` - (Required, default: `AWS/EC2`) The namespace for the alarm's associated metric.
      * `statistic` - (Optional) The metric statistics to return. Valid values: `"average"`, `"sum"`, `"sampleCount"`, `"maximum"`, `"minimum"`, `"percentile"`.
      * `extended_statistic` - (Optional) Percentile statistic. Valid values: `"p0.1"` - `"p100"`.
-@@ -504,8 +500,7 @@ Usage:
+@@ -506,8 +502,7 @@ Usage:
    }
  ```
  
@@ -254,7 +254,7 @@ index 50006a2e..7e66178e 100644
  
  Each of the `network_interface` attributes controls a portion of the AWS
  Instance's "Elastic Network Interfaces". It's a good idea to familiarize yourself with [AWS's Elastic Network
-@@ -524,8 +519,8 @@ to understand the implications of using these attributes.
+@@ -526,8 +521,8 @@ to understand the implications of using these attributes.
  Usage:
  
  ```hcl
@@ -265,7 +265,7 @@ index 50006a2e..7e66178e 100644
      device_index                       = 1
      description                        = "nic description in here"
      private_ip_address                 = "1.1.1.1"
-@@ -535,8 +530,7 @@ Usage:
+@@ -537,8 +532,7 @@ Usage:
    }
  ```
  
@@ -275,7 +275,7 @@ index 50006a2e..7e66178e 100644
  
  Each of the `*_block_device` attributes controls a portion of the AWS
  Instance's "Block Device Mapping". It's a good idea to familiarize yourself with [AWS's Block Device
-@@ -561,8 +555,8 @@ Usage:
+@@ -563,8 +557,8 @@ Usage:
  
  ```hcl
    ebs_block_device {
@@ -286,7 +286,7 @@ index 50006a2e..7e66178e 100644
       volume_type           = "gp2"  
       volume_size           = 8
       iops                  = 1
-@@ -570,10 +564,10 @@ Usage:
+@@ -572,10 +566,10 @@ Usage:
       encrypted             = false
       kms_key_id            = "kms-key-01"
     }
@@ -300,7 +300,7 @@ index 50006a2e..7e66178e 100644
       volume_type           = "gp3"  
       volume_size           = 8  
       iops                  = 1
-@@ -589,7 +583,7 @@ Each `ephemeral_block_device` supports the following:
+@@ -591,7 +585,7 @@ Each `ephemeral_block_device` supports the following:
  * `device_name` - (Required) The name of the block device to mount on the instance.
  * `virtual_name` - (Required) The [Instance Store Device Name](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html#InstanceStoreDeviceNames)
    (e.g. `"ephemeral0"`).
@@ -309,7 +309,7 @@ index 50006a2e..7e66178e 100644
  Usage:
  
  ```hcl
-@@ -599,8 +593,7 @@ Usage:
+@@ -601,8 +595,7 @@ Usage:
    }
  ```
  
@@ -319,7 +319,7 @@ index 50006a2e..7e66178e 100644
  
  We support instance persistence via the following configurations. all values are boolean.
  For more information on instance persistence please see: [Stateful configuration](https://docs.spot.io/elastigroup/features/stateful-instance/stateful-instances)
-@@ -621,15 +614,14 @@ Usage:
+@@ -623,15 +616,14 @@ Usage:
    private_ips           = ["1.1.1.1", "2.2.2.2"]
  ```
  
@@ -337,7 +337,7 @@ index 50006a2e..7e66178e 100644
  Usage:
  
  ```hcl
-@@ -641,8 +633,7 @@ Usage:
+@@ -643,8 +635,7 @@ Usage:
     }
  ```    
  
@@ -347,7 +347,7 @@ index 50006a2e..7e66178e 100644
  
  * `stateful_instance_action` - (Optional)
      * `stateful_instance_id` - (Required) String, Stateful Instance ID on which the action should be performed.
-@@ -662,8 +653,7 @@ Usage:
+@@ -664,8 +655,7 @@ Usage:
    }    
  ```  
  
@@ -357,7 +357,7 @@ index 50006a2e..7e66178e 100644
  
  * `health_check_type` - (Optional) The service that will perform health checks for the instance. Supported values : `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"CUSTOM"`, `"K8S_NODE"`, `"MLB"`, `"EC2"`, `"MULTAI_TARGET_SET"`, `"MLB_RUNTIME"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
  * `health_check_grace_period` - (Optional) The amount of time, in seconds, after the instance has launched to starts and check its health
-@@ -672,13 +662,12 @@ Usage:
+@@ -674,13 +664,12 @@ Usage:
  Usage:
  
  ```hcl
@@ -373,7 +373,7 @@ index 50006a2e..7e66178e 100644
  
  * `integration_rancher` - (Optional) Describes the [Rancher](http://rancherlabs.com/) integration.
  
-@@ -718,23 +707,23 @@ Usage:
+@@ -720,23 +709,23 @@ Usage:
  Usage:
  
  ```hcl
@@ -401,7 +401,7 @@ index 50006a2e..7e66178e 100644
      autoscale_attributes {
        key   = "test.ecs.key"
        value = "test.ecs.value"
-@@ -763,7 +752,7 @@ Usage:
+@@ -765,7 +754,7 @@ Usage:
    integration_codedeploy {
      cleanup_on_failure            = false
      terminate_instance_on_failure = false
@@ -410,7 +410,7 @@ index 50006a2e..7e66178e 100644
      deployment_groups {
        application_name      = "my-app"
        deployment_group_name = "my-group"
-@@ -788,7 +777,7 @@ Usage:
+@@ -790,7 +779,7 @@ Usage:
    integration_route53 {
  
      # Option 1: Use A records.
@@ -419,7 +419,7 @@ index 50006a2e..7e66178e 100644
        hosted_zone_id   = "zone-id"
        spotinst_acct_id = "act-123456"
        record_set_type  = "a"
-@@ -800,7 +789,7 @@ Usage:
+@@ -802,7 +791,7 @@ Usage:
      }
  
      # Option 2: Use CNAME records.
@@ -428,7 +428,7 @@ index 50006a2e..7e66178e 100644
        hosted_zone_id   = "zone-id"
        spotinst_acct_id = "act-123456"
        record_set_type  = "cname"
-@@ -835,17 +824,17 @@ integration_docker_swarm {
+@@ -837,17 +826,17 @@ integration_docker_swarm {
      master_port          = 2376
      autoscale_is_enabled = true
      autoscale_cooldown   = 180
@@ -449,7 +449,7 @@ index 50006a2e..7e66178e 100644
  }
  ```
  
-@@ -872,34 +861,34 @@ Usage:
+@@ -874,34 +863,34 @@ Usage:
    integration_kubernetes {
      integration_mode   = "pod"
      cluster_identifier = "my-identifier.ek8s.com"
@@ -490,7 +490,7 @@ index 50006a2e..7e66178e 100644
  * `integration_nomad` - (Optional) Describes the [Nomad](https://www.nomadproject.io/) integration.
  
      * `master_host` - (Required) The URL for the Nomad master host.
-@@ -924,27 +913,27 @@ Usage:
+@@ -926,27 +915,27 @@ Usage:
      acl_token            = "top-secret"
      autoscale_is_enabled = false
      autoscale_cooldown   = 300
@@ -524,7 +524,7 @@ index 50006a2e..7e66178e 100644
  
  Usage:
  
-@@ -955,7 +944,7 @@ Usage:
+@@ -957,7 +946,7 @@ Usage:
  ```
  
  * `integration_multai_runtime` - (Optional) Describes the [Multai Runtime](https://spotinst.com/) integration.
@@ -533,7 +533,7 @@ index 50006a2e..7e66178e 100644
      * `deployment_id` - (Optional) The deployment id you want to get
  
  Usage:
-@@ -965,12 +954,12 @@ Usage:
+@@ -967,12 +956,12 @@ Usage:
      deployment_id = ""
    }
  ```
@@ -550,7 +550,7 @@ index 50006a2e..7e66178e 100644
  Usage:
  
  ```hcl
-@@ -982,21 +971,21 @@ Usage:
+@@ -984,21 +973,21 @@ Usage:
  ```
  
  * `integration_beanstalk` - (Optional) Describes the [Beanstalk](https://api.spotinst.com/provisioning-ci-cd-sdk/provisioning-tools/terraform/resources/terraform-v-2/elastic-beanstalk/) integration.
@@ -576,7 +576,7 @@ index 50006a2e..7e66178e 100644
  Usage:
  
  ```hcl
-@@ -1023,8 +1012,7 @@ Usage:
+@@ -1025,8 +1014,7 @@ Usage:
    }
  ```
  
@@ -586,7 +586,7 @@ index 50006a2e..7e66178e 100644
  
  * `update_policy` - (Optional)
  
-@@ -1040,7 +1028,7 @@ Usage:
+@@ -1042,7 +1030,7 @@ Usage:
          * `strategy` - (Optional) Strategy parameters
             * `action` - (Required) Action to take. Valid values: `REPLACE_SERVER`, `RESTART_SERVER`.
             * `should_drain_instances` - (Optional) Specify whether to drain incoming TCP connections before terminating a server.
@@ -595,7 +595,7 @@ index 50006a2e..7e66178e 100644
             * `on_failure` - (Optional) Set detach options to the deployment.
                 * `action_type` - (Required) Sets the action that will take place, Accepted values are: `DETACH_OLD`, `DETACH_NEW`.
                 * `should_handle_all_batches` - (Optional, Default: `false`) Indicator if the action should apply to all batches of the deployment or only the latest batch.
-@@ -1074,9 +1062,9 @@ Usage:
+@@ -1076,9 +1064,9 @@ Usage:
      }
    }
  ```       
@@ -1359,7 +1359,7 @@ index 05d783c0..7cd006b9 100644
  ```hcl
    termination_policies {
 diff --git a/docs/resources/ocean_aws.md b/docs/resources/ocean_aws.md
-index fe1a0490..1722cb2c 100644
+index 63cb34f3..25bdb370 100644
 --- a/docs/resources/ocean_aws.md
 +++ b/docs/resources/ocean_aws.md
 @@ -98,7 +98,7 @@ resource "spotinst_ocean_aws" "example" {
@@ -1371,17 +1371,17 @@ index fe1a0490..1722cb2c 100644
    fallback_to_ondemand       = true
    draining_timeout           = 120
    utilize_reserved_instances = false
-@@ -206,8 +206,7 @@ The following arguments are supported:
+@@ -236,7 +236,8 @@ The following arguments are supported:
+     * `export` - (Optional) Logging Export configuration.
          * `s3` - (Optional) Exports your cluster's logs to the S3 bucket and subdir configured on the S3 data integration given.
              * `id` - (Required) The identifier of The S3 data integration to export the logs to.
- 
--<a id="auto-scaler"></a>
 -## Auto Scaler
++
 +### Auto Scaler
  * `autoscaler` - (Optional) Describes the Ocean Kubernetes Auto Scaler.
      * `autoscale_is_enabled` - (Optional, Default: `true`) Enable the Ocean Kubernetes Auto Scaler.
      * `autoscale_is_auto_config` - (Optional, Default: `true`) Automatically configure and optimize headroom resources.
-@@ -254,8 +253,7 @@ autoscaler {
+@@ -283,8 +284,7 @@ autoscaler {
  }
  ```
  
@@ -1391,7 +1391,7 @@ index fe1a0490..1722cb2c 100644
  
  * `update_policy` - (Optional)
      * `should_roll` - (Required) Enables the roll.
-@@ -291,13 +289,13 @@ update_policy {
+@@ -320,13 +320,13 @@ update_policy {
          * `is_enabled` - (Required)  Describes whether the task is enabled. When true the task should run when false it should not run. Required for `cluster.scheduling.tasks` object.
          * `cron_expression` - (Required) A valid cron expression. The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of `frequency` or `cronExpression` should be used at a time. Required for `cluster.scheduling.tasks` object. (Example: `0 1 * * *`).
          * `task_type` - (Required) Valid values: `clusterRoll`. Required for `cluster.scheduling.tasks` object. (Example: `clusterRoll`).
@@ -1523,7 +1523,7 @@ index c2386962..7ed8db2a 100644
    scheduled_task  {
      shutdown_hours  {
 diff --git a/docs/resources/ocean_gke_import.md b/docs/resources/ocean_gke_import.md
-index bc7bc82e..ce5d4733 100644
+index 91266c3a..2aa41f11 100644
 --- a/docs/resources/ocean_gke_import.md
 +++ b/docs/resources/ocean_gke_import.md
 @@ -36,18 +36,18 @@ resource "spotinst_ocean_gke_import" "example" {
@@ -1549,7 +1549,7 @@ index bc7bc82e..ce5d4733 100644
      named_ports {
        name  = "http"
        ports = [80, 8080]
-@@ -72,12 +72,12 @@ output "ocean_id" {
+@@ -73,12 +73,12 @@ output "ocean_id" {
  
  The following arguments are supported:
  
@@ -1565,7 +1565,7 @@ index bc7bc82e..ce5d4733 100644
  * `whitelist` - (Optional) Instance types allowed in the Ocean cluster. Cannot be configured if blacklist list is configured.
  * `blacklist` - (Optional) Instance types to avoid launching in the Ocean cluster. Cannot be configured if whitelist list is configured.
  * `draining_timeout` - (Optional) The draining timeout (in seconds) before terminating the instance.
-@@ -95,8 +95,7 @@ The following arguments are supported:
+@@ -96,8 +96,7 @@ The following arguments are supported:
  * `use_as_template_only` - (Optional, Default: false) launch specification defined on the Ocean object will function only as a template for virtual node groups.
  
  
@@ -1575,18 +1575,23 @@ index bc7bc82e..ce5d4733 100644
  * `scheduled_task` - (Optional) Set scheduling object.
      * `shutdown_hours` - (Optional) Set shutdown hours for cluster object.
          * `is_enabled` - (Optional)  Flag to enable / disable the shutdown hours.
-@@ -110,8 +109,8 @@ The following arguments are supported:
+@@ -111,14 +110,7 @@ The following arguments are supported:
          * `task_type` - (Required) Valid values: "clusterRoll". Required for cluster.scheduling.tasks object.
          * `batch_size_percentage` - (Optional)  Value in % to set size of batch in roll. Valid values are 0-100
                                                  Example: 20.
+-        * `task_parameters` - (Optional) The scheduling parameters for the cluster.
+-          * `cluster_roll` - (Optional)  The cluster roll parameters for the cluster.
+-            * `batch_min_healthy_percentage` - (Optional, Default: 50)  Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
+-            * `batch_size_percentage` - (Optional)  Value as a percent to set the size of a batch in a roll. Valid values are 0-100.
+-            * `comment` - (Optional)  Add a comment description for the roll. The comment is limited to 256 chars.
+-            * `respect_pdb` - (Optional, Default: 'false' )  During the roll, if the parameter is set to true we honor PDB during the instance replacement.
 -                          
 -             
-+
 +
  ```hcl
    scheduled_task  {
      shutdown_hours  {
-@@ -127,8 +126,7 @@ The following arguments are supported:
+@@ -141,8 +133,7 @@ The following arguments are supported:
    }
  ```
  

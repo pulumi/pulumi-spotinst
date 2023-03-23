@@ -7,24 +7,23 @@ import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
-public final class OceanImportUpdatePolicyRollConfig {
+public final class OceanImportScheduledTaskTaskTaskParametersClusterRoll {
     private @Nullable Integer batchMinHealthyPercentage;
     /**
      * @return Value in % to set size of batch in roll. Valid values are 0-100
      * Example: 20.
      * 
      */
-    private Integer batchSizePercentage;
-    private @Nullable List<String> launchSpecIds;
+    private @Nullable Integer batchSizePercentage;
+    private @Nullable String comment;
     private @Nullable Boolean respectPdb;
 
-    private OceanImportUpdatePolicyRollConfig() {}
+    private OceanImportScheduledTaskTaskTaskParametersClusterRoll() {}
     public Optional<Integer> batchMinHealthyPercentage() {
         return Optional.ofNullable(this.batchMinHealthyPercentage);
     }
@@ -33,11 +32,11 @@ public final class OceanImportUpdatePolicyRollConfig {
      * Example: 20.
      * 
      */
-    public Integer batchSizePercentage() {
-        return this.batchSizePercentage;
+    public Optional<Integer> batchSizePercentage() {
+        return Optional.ofNullable(this.batchSizePercentage);
     }
-    public List<String> launchSpecIds() {
-        return this.launchSpecIds == null ? List.of() : this.launchSpecIds;
+    public Optional<String> comment() {
+        return Optional.ofNullable(this.comment);
     }
     public Optional<Boolean> respectPdb() {
         return Optional.ofNullable(this.respectPdb);
@@ -47,21 +46,21 @@ public final class OceanImportUpdatePolicyRollConfig {
         return new Builder();
     }
 
-    public static Builder builder(OceanImportUpdatePolicyRollConfig defaults) {
+    public static Builder builder(OceanImportScheduledTaskTaskTaskParametersClusterRoll defaults) {
         return new Builder(defaults);
     }
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer batchMinHealthyPercentage;
-        private Integer batchSizePercentage;
-        private @Nullable List<String> launchSpecIds;
+        private @Nullable Integer batchSizePercentage;
+        private @Nullable String comment;
         private @Nullable Boolean respectPdb;
         public Builder() {}
-        public Builder(OceanImportUpdatePolicyRollConfig defaults) {
+        public Builder(OceanImportScheduledTaskTaskTaskParametersClusterRoll defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.batchMinHealthyPercentage = defaults.batchMinHealthyPercentage;
     	      this.batchSizePercentage = defaults.batchSizePercentage;
-    	      this.launchSpecIds = defaults.launchSpecIds;
+    	      this.comment = defaults.comment;
     	      this.respectPdb = defaults.respectPdb;
         }
 
@@ -71,28 +70,25 @@ public final class OceanImportUpdatePolicyRollConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder batchSizePercentage(Integer batchSizePercentage) {
-            this.batchSizePercentage = Objects.requireNonNull(batchSizePercentage);
+        public Builder batchSizePercentage(@Nullable Integer batchSizePercentage) {
+            this.batchSizePercentage = batchSizePercentage;
             return this;
         }
         @CustomType.Setter
-        public Builder launchSpecIds(@Nullable List<String> launchSpecIds) {
-            this.launchSpecIds = launchSpecIds;
+        public Builder comment(@Nullable String comment) {
+            this.comment = comment;
             return this;
-        }
-        public Builder launchSpecIds(String... launchSpecIds) {
-            return launchSpecIds(List.of(launchSpecIds));
         }
         @CustomType.Setter
         public Builder respectPdb(@Nullable Boolean respectPdb) {
             this.respectPdb = respectPdb;
             return this;
         }
-        public OceanImportUpdatePolicyRollConfig build() {
-            final var o = new OceanImportUpdatePolicyRollConfig();
+        public OceanImportScheduledTaskTaskTaskParametersClusterRoll build() {
+            final var o = new OceanImportScheduledTaskTaskTaskParametersClusterRoll();
             o.batchMinHealthyPercentage = batchMinHealthyPercentage;
             o.batchSizePercentage = batchSizePercentage;
-            o.launchSpecIds = launchSpecIds;
+            o.comment = comment;
             o.respectPdb = respectPdb;
             return o;
         }

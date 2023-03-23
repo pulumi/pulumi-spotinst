@@ -2530,6 +2530,71 @@ export namespace aws {
         maxVcpu?: number;
     }
 
+    export interface OceanBlockDeviceMapping {
+        /**
+         * String. Set device name. (Example: `/dev/xvda`).
+         */
+        deviceName?: string;
+        /**
+         * Object. Set Elastic Block Store properties .
+         */
+        ebs?: outputs.aws.OceanBlockDeviceMappingEbs;
+    }
+
+    export interface OceanBlockDeviceMappingEbs {
+        /**
+         * Boolean. Flag to delete the EBS on instance termination.
+         */
+        deleteOnTermination: boolean;
+        /**
+         * Object. Set dynamic volume size properties. When using this object, you cannot use volumeSize. You must use one or the other.
+         */
+        dynamicVolumeSize?: outputs.aws.OceanBlockDeviceMappingEbsDynamicVolumeSize;
+        /**
+         * Boolean. Enables [EBS encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) on the volume.
+         */
+        encrypted: boolean;
+        /**
+         * Int. The number of I/O operations per second (IOPS) that the volume supports.
+         */
+        iops?: number;
+        /**
+         * String. Identifier (key ID, key alias, ID ARN, or alias ARN) for a customer managed CMK under which the EBS volume is encrypted.
+         */
+        kmsKeyId?: string;
+        /**
+         * (Optional) String. The Snapshot ID to mount by.
+         */
+        snapshotId?: string;
+        /**
+         * The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volumeType` = `gp3`.
+         */
+        throughput?: number;
+        /**
+         * Int. The size, in GB of the volume.
+         */
+        volumeSize?: number;
+        /**
+         * String. The type of the volume. (Example: `gp2`).
+         */
+        volumeType: string;
+    }
+
+    export interface OceanBlockDeviceMappingEbsDynamicVolumeSize {
+        /**
+         * Int. Initial size for volume. (Example: 50)
+         */
+        baseSize: number;
+        /**
+         * String. Resource type to increase volume size dynamically by. (Valid values: `CPU`)
+         */
+        resource: string;
+        /**
+         * Int. Additional size (in GB) per resource unit. (Example: `baseSize=50`, `sizePerResourceUnit=20`, and instance with 2 CPU is launched; its total disk size will be: 90GB).
+         */
+        sizePerResourceUnit: number;
+    }
+
     export interface OceanClusterOrientation {
         /**
          * You can control the approach that Ocean takes while launching nodes by configuring this value. Possible values: `costOriented`,`balanced`,`cheapest`.
@@ -4942,11 +5007,6 @@ export namespace gke {
 
     export interface OceanImportScheduledTaskTask {
         /**
-         * Value in % to set size of batch in roll. Valid values are 0-100
-         * Example: 20.
-         */
-        batchSizePercentage?: number;
-        /**
          * A valid cron expression. For example : " * * * * * ".The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of ‘frequency’ or ‘cronExpression’ should be used at a time. Required for cluster.scheduling.tasks object
          * Example: 0 1 * * *
          */
@@ -4956,10 +5016,26 @@ export namespace gke {
          * Example: True
          */
         isEnabled: boolean;
+        taskParameters?: outputs.gke.OceanImportScheduledTaskTaskTaskParameters;
         /**
          * Valid values: "clusterRoll". Required for cluster.scheduling.tasks object.
          */
         taskType: string;
+    }
+
+    export interface OceanImportScheduledTaskTaskTaskParameters {
+        clusterRoll?: outputs.gke.OceanImportScheduledTaskTaskTaskParametersClusterRoll;
+    }
+
+    export interface OceanImportScheduledTaskTaskTaskParametersClusterRoll {
+        batchMinHealthyPercentage?: number;
+        /**
+         * Value in % to set size of batch in roll. Valid values are 0-100
+         * Example: 20.
+         */
+        batchSizePercentage?: number;
+        comment?: string;
+        respectPdb?: boolean;
     }
 
     export interface OceanImportShieldedInstanceConfig {
@@ -4996,6 +5072,7 @@ export namespace gke {
          */
         batchSizePercentage: number;
         launchSpecIds?: string[];
+        respectPdb?: boolean;
     }
 
     export interface OceanLaunchSpecAutoscaleHeadroom {

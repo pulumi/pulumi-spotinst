@@ -11,6 +11,7 @@ import com.pulumi.spotinst.Utilities;
 import com.pulumi.spotinst.aws.OceanArgs;
 import com.pulumi.spotinst.aws.inputs.OceanState;
 import com.pulumi.spotinst.aws.outputs.OceanAutoscaler;
+import com.pulumi.spotinst.aws.outputs.OceanBlockDeviceMapping;
 import com.pulumi.spotinst.aws.outputs.OceanClusterOrientation;
 import com.pulumi.spotinst.aws.outputs.OceanFilters;
 import com.pulumi.spotinst.aws.outputs.OceanInstanceMetadataOptions;
@@ -37,6 +38,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.spotinst.aws.Ocean;
  * import com.pulumi.spotinst.aws.OceanArgs;
+ * import com.pulumi.spotinst.aws.inputs.OceanBlockDeviceMappingArgs;
+ * import com.pulumi.spotinst.aws.inputs.OceanBlockDeviceMappingEbsArgs;
+ * import com.pulumi.spotinst.aws.inputs.OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs;
  * import com.pulumi.spotinst.aws.inputs.OceanClusterOrientationArgs;
  * import com.pulumi.spotinst.aws.inputs.OceanInstanceMetadataOptionsArgs;
  * import com.pulumi.spotinst.aws.inputs.OceanLoadBalancerArgs;
@@ -59,6 +63,21 @@ import javax.annotation.Nullable;
  *         var example = new Ocean(&#34;example&#34;, OceanArgs.builder()        
  *             .associateIpv6Address(true)
  *             .associatePublicIpAddress(true)
+ *             .blockDeviceMappings(OceanBlockDeviceMappingArgs.builder()
+ *                 .deviceName(&#34;/dev/xvda&#34;)
+ *                 .ebs(OceanBlockDeviceMappingEbsArgs.builder()
+ *                     .deleteOnTermination(&#34;true&#34;)
+ *                     .dynamicVolumeSize(OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs.builder()
+ *                         .baseSize(50)
+ *                         .resource(&#34;CPU&#34;)
+ *                         .sizePerResourceUnit(20)
+ *                         .build())
+ *                     .encrypted(&#34;false&#34;)
+ *                     .throughput(500)
+ *                     .volumeSize(50)
+ *                     .volumeType(&#34;gp2&#34;)
+ *                     .build())
+ *                 .build())
  *             .clusterOrientations(OceanClusterOrientationArgs.builder()
  *                 .availabilityVsCost(&#34;balanced&#34;)
  *                 .build())
@@ -236,6 +255,20 @@ public class Ocean extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<List<String>>> blacklists() {
         return Codegen.optional(this.blacklists);
+    }
+    /**
+     * Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
+     * 
+     */
+    @Export(name="blockDeviceMappings", type=List.class, parameters={OceanBlockDeviceMapping.class})
+    private Output</* @Nullable */ List<OceanBlockDeviceMapping>> blockDeviceMappings;
+
+    /**
+     * @return Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
+     * 
+     */
+    public Output<Optional<List<OceanBlockDeviceMapping>>> blockDeviceMappings() {
+        return Codegen.optional(this.blockDeviceMappings);
     }
     @Export(name="clusterOrientations", type=List.class, parameters={OceanClusterOrientation.class})
     private Output</* @Nullable */ List<OceanClusterOrientation>> clusterOrientations;
