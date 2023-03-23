@@ -67,6 +67,12 @@ namespace Pulumi.SpotInst.Aws
         [Output("blacklists")]
         public Output<ImmutableArray<string>> Blacklists { get; private set; } = null!;
 
+        /// <summary>
+        /// Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
+        /// </summary>
+        [Output("blockDeviceMappings")]
+        public Output<ImmutableArray<Outputs.OceanBlockDeviceMapping>> BlockDeviceMappings { get; private set; } = null!;
+
         [Output("clusterOrientations")]
         public Output<ImmutableArray<Outputs.OceanClusterOrientation>> ClusterOrientations { get; private set; } = null!;
 
@@ -325,6 +331,18 @@ namespace Pulumi.SpotInst.Aws
         {
             get => _blacklists ?? (_blacklists = new InputList<string>());
             set => _blacklists = value;
+        }
+
+        [Input("blockDeviceMappings")]
+        private InputList<Inputs.OceanBlockDeviceMappingArgs>? _blockDeviceMappings;
+
+        /// <summary>
+        /// Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
+        /// </summary>
+        public InputList<Inputs.OceanBlockDeviceMappingArgs> BlockDeviceMappings
+        {
+            get => _blockDeviceMappings ?? (_blockDeviceMappings = new InputList<Inputs.OceanBlockDeviceMappingArgs>());
+            set => _blockDeviceMappings = value;
         }
 
         [Input("clusterOrientations")]
@@ -587,6 +605,18 @@ namespace Pulumi.SpotInst.Aws
         {
             get => _blacklists ?? (_blacklists = new InputList<string>());
             set => _blacklists = value;
+        }
+
+        [Input("blockDeviceMappings")]
+        private InputList<Inputs.OceanBlockDeviceMappingGetArgs>? _blockDeviceMappings;
+
+        /// <summary>
+        /// Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
+        /// </summary>
+        public InputList<Inputs.OceanBlockDeviceMappingGetArgs> BlockDeviceMappings
+        {
+            get => _blockDeviceMappings ?? (_blockDeviceMappings = new InputList<Inputs.OceanBlockDeviceMappingGetArgs>());
+            set => _blockDeviceMappings = value;
         }
 
         [Input("clusterOrientations")]

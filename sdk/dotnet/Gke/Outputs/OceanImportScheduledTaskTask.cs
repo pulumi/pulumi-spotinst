@@ -14,11 +14,6 @@ namespace Pulumi.SpotInst.Gke.Outputs
     public sealed class OceanImportScheduledTaskTask
     {
         /// <summary>
-        /// Value in % to set size of batch in roll. Valid values are 0-100
-        /// Example: 20.
-        /// </summary>
-        public readonly int? BatchSizePercentage;
-        /// <summary>
         /// A valid cron expression. For example : " * * * * * ".The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of ‘frequency’ or ‘cronExpression’ should be used at a time. Required for cluster.scheduling.tasks object
         /// Example: 0 1 * * *
         /// </summary>
@@ -28,6 +23,7 @@ namespace Pulumi.SpotInst.Gke.Outputs
         /// Example: True
         /// </summary>
         public readonly bool IsEnabled;
+        public readonly Outputs.OceanImportScheduledTaskTaskTaskParameters? TaskParameters;
         /// <summary>
         /// Valid values: "clusterRoll". Required for cluster.scheduling.tasks object.
         /// </summary>
@@ -35,17 +31,17 @@ namespace Pulumi.SpotInst.Gke.Outputs
 
         [OutputConstructor]
         private OceanImportScheduledTaskTask(
-            int? batchSizePercentage,
-
             string cronExpression,
 
             bool isEnabled,
 
+            Outputs.OceanImportScheduledTaskTaskTaskParameters? taskParameters,
+
             string taskType)
         {
-            BatchSizePercentage = batchSizePercentage;
             CronExpression = cronExpression;
             IsEnabled = isEnabled;
+            TaskParameters = taskParameters;
             TaskType = taskType;
         }
     }

@@ -40,6 +40,8 @@ __all__ = [
     'OceanImportScheduledTask',
     'OceanImportScheduledTaskShutdownHours',
     'OceanImportScheduledTaskTask',
+    'OceanImportScheduledTaskTaskTaskParameters',
+    'OceanImportScheduledTaskTaskTaskParametersClusterRoll',
     'OceanImportShieldedInstanceConfig',
     'OceanImportStrategy',
     'OceanImportUpdatePolicy',
@@ -1646,8 +1648,8 @@ class OceanImportScheduledTaskTask(dict):
             suggest = "is_enabled"
         elif key == "taskType":
             suggest = "task_type"
-        elif key == "batchSizePercentage":
-            suggest = "batch_size_percentage"
+        elif key == "taskParameters":
+            suggest = "task_parameters"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in OceanImportScheduledTaskTask. Access the value via the '{suggest}' property getter instead.")
@@ -1664,21 +1666,19 @@ class OceanImportScheduledTaskTask(dict):
                  cron_expression: str,
                  is_enabled: bool,
                  task_type: str,
-                 batch_size_percentage: Optional[int] = None):
+                 task_parameters: Optional['outputs.OceanImportScheduledTaskTaskTaskParameters'] = None):
         """
         :param str cron_expression: A valid cron expression. For example : " * * * * * ".The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of ‘frequency’ or ‘cronExpression’ should be used at a time. Required for cluster.scheduling.tasks object
                Example: 0 1 * * *
         :param bool is_enabled: Flag to enable / disable the shutdown hours.
                Example: True
         :param str task_type: Valid values: "clusterRoll". Required for cluster.scheduling.tasks object.
-        :param int batch_size_percentage: Value in % to set size of batch in roll. Valid values are 0-100
-               Example: 20.
         """
         pulumi.set(__self__, "cron_expression", cron_expression)
         pulumi.set(__self__, "is_enabled", is_enabled)
         pulumi.set(__self__, "task_type", task_type)
-        if batch_size_percentage is not None:
-            pulumi.set(__self__, "batch_size_percentage", batch_size_percentage)
+        if task_parameters is not None:
+            pulumi.set(__self__, "task_parameters", task_parameters)
 
     @property
     @pulumi.getter(name="cronExpression")
@@ -1707,6 +1707,88 @@ class OceanImportScheduledTaskTask(dict):
         return pulumi.get(self, "task_type")
 
     @property
+    @pulumi.getter(name="taskParameters")
+    def task_parameters(self) -> Optional['outputs.OceanImportScheduledTaskTaskTaskParameters']:
+        return pulumi.get(self, "task_parameters")
+
+
+@pulumi.output_type
+class OceanImportScheduledTaskTaskTaskParameters(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clusterRoll":
+            suggest = "cluster_roll"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OceanImportScheduledTaskTaskTaskParameters. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OceanImportScheduledTaskTaskTaskParameters.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OceanImportScheduledTaskTaskTaskParameters.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cluster_roll: Optional['outputs.OceanImportScheduledTaskTaskTaskParametersClusterRoll'] = None):
+        if cluster_roll is not None:
+            pulumi.set(__self__, "cluster_roll", cluster_roll)
+
+    @property
+    @pulumi.getter(name="clusterRoll")
+    def cluster_roll(self) -> Optional['outputs.OceanImportScheduledTaskTaskTaskParametersClusterRoll']:
+        return pulumi.get(self, "cluster_roll")
+
+
+@pulumi.output_type
+class OceanImportScheduledTaskTaskTaskParametersClusterRoll(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "batchMinHealthyPercentage":
+            suggest = "batch_min_healthy_percentage"
+        elif key == "batchSizePercentage":
+            suggest = "batch_size_percentage"
+        elif key == "respectPdb":
+            suggest = "respect_pdb"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OceanImportScheduledTaskTaskTaskParametersClusterRoll. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OceanImportScheduledTaskTaskTaskParametersClusterRoll.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OceanImportScheduledTaskTaskTaskParametersClusterRoll.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 batch_min_healthy_percentage: Optional[int] = None,
+                 batch_size_percentage: Optional[int] = None,
+                 comment: Optional[str] = None,
+                 respect_pdb: Optional[bool] = None):
+        """
+        :param int batch_size_percentage: Value in % to set size of batch in roll. Valid values are 0-100
+               Example: 20.
+        """
+        if batch_min_healthy_percentage is not None:
+            pulumi.set(__self__, "batch_min_healthy_percentage", batch_min_healthy_percentage)
+        if batch_size_percentage is not None:
+            pulumi.set(__self__, "batch_size_percentage", batch_size_percentage)
+        if comment is not None:
+            pulumi.set(__self__, "comment", comment)
+        if respect_pdb is not None:
+            pulumi.set(__self__, "respect_pdb", respect_pdb)
+
+    @property
+    @pulumi.getter(name="batchMinHealthyPercentage")
+    def batch_min_healthy_percentage(self) -> Optional[int]:
+        return pulumi.get(self, "batch_min_healthy_percentage")
+
+    @property
     @pulumi.getter(name="batchSizePercentage")
     def batch_size_percentage(self) -> Optional[int]:
         """
@@ -1714,6 +1796,16 @@ class OceanImportScheduledTaskTask(dict):
         Example: 20.
         """
         return pulumi.get(self, "batch_size_percentage")
+
+    @property
+    @pulumi.getter
+    def comment(self) -> Optional[str]:
+        return pulumi.get(self, "comment")
+
+    @property
+    @pulumi.getter(name="respectPdb")
+    def respect_pdb(self) -> Optional[bool]:
+        return pulumi.get(self, "respect_pdb")
 
 
 @pulumi.output_type
@@ -1882,6 +1974,8 @@ class OceanImportUpdatePolicyRollConfig(dict):
             suggest = "batch_min_healthy_percentage"
         elif key == "launchSpecIds":
             suggest = "launch_spec_ids"
+        elif key == "respectPdb":
+            suggest = "respect_pdb"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in OceanImportUpdatePolicyRollConfig. Access the value via the '{suggest}' property getter instead.")
@@ -1897,7 +1991,8 @@ class OceanImportUpdatePolicyRollConfig(dict):
     def __init__(__self__, *,
                  batch_size_percentage: int,
                  batch_min_healthy_percentage: Optional[int] = None,
-                 launch_spec_ids: Optional[Sequence[str]] = None):
+                 launch_spec_ids: Optional[Sequence[str]] = None,
+                 respect_pdb: Optional[bool] = None):
         """
         :param int batch_size_percentage: Value in % to set size of batch in roll. Valid values are 0-100
                Example: 20.
@@ -1907,6 +2002,8 @@ class OceanImportUpdatePolicyRollConfig(dict):
             pulumi.set(__self__, "batch_min_healthy_percentage", batch_min_healthy_percentage)
         if launch_spec_ids is not None:
             pulumi.set(__self__, "launch_spec_ids", launch_spec_ids)
+        if respect_pdb is not None:
+            pulumi.set(__self__, "respect_pdb", respect_pdb)
 
     @property
     @pulumi.getter(name="batchSizePercentage")
@@ -1926,6 +2023,11 @@ class OceanImportUpdatePolicyRollConfig(dict):
     @pulumi.getter(name="launchSpecIds")
     def launch_spec_ids(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "launch_spec_ids")
+
+    @property
+    @pulumi.getter(name="respectPdb")
+    def respect_pdb(self) -> Optional[bool]:
+        return pulumi.get(self, "respect_pdb")
 
 
 @pulumi.output_type

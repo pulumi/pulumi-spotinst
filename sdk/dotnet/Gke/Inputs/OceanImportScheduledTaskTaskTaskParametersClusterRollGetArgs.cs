@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Gke.Inputs
 {
 
-    public sealed class OceanImportUpdatePolicyRollConfigArgs : global::Pulumi.ResourceArgs
+    public sealed class OceanImportScheduledTaskTaskTaskParametersClusterRollGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("batchMinHealthyPercentage")]
         public Input<int>? BatchMinHealthyPercentage { get; set; }
@@ -19,23 +19,18 @@ namespace Pulumi.SpotInst.Gke.Inputs
         /// Value in % to set size of batch in roll. Valid values are 0-100
         /// Example: 20.
         /// </summary>
-        [Input("batchSizePercentage", required: true)]
-        public Input<int> BatchSizePercentage { get; set; } = null!;
+        [Input("batchSizePercentage")]
+        public Input<int>? BatchSizePercentage { get; set; }
 
-        [Input("launchSpecIds")]
-        private InputList<string>? _launchSpecIds;
-        public InputList<string> LaunchSpecIds
-        {
-            get => _launchSpecIds ?? (_launchSpecIds = new InputList<string>());
-            set => _launchSpecIds = value;
-        }
+        [Input("comment")]
+        public Input<string>? Comment { get; set; }
 
         [Input("respectPdb")]
         public Input<bool>? RespectPdb { get; set; }
 
-        public OceanImportUpdatePolicyRollConfigArgs()
+        public OceanImportScheduledTaskTaskTaskParametersClusterRollGetArgs()
         {
         }
-        public static new OceanImportUpdatePolicyRollConfigArgs Empty => new OceanImportUpdatePolicyRollConfigArgs();
+        public static new OceanImportScheduledTaskTaskTaskParametersClusterRollGetArgs Empty => new OceanImportScheduledTaskTaskTaskParametersClusterRollGetArgs();
     }
 }

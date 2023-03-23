@@ -30,6 +30,9 @@ namespace Pulumi.SpotInst.Gke.Inputs
             set => _launchSpecIds = value;
         }
 
+        [Input("respectPdb")]
+        public Input<bool>? RespectPdb { get; set; }
+
         public OceanImportUpdatePolicyRollConfigGetArgs()
         {
         }

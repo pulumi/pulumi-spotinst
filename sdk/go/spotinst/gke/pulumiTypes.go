@@ -3858,15 +3858,13 @@ func (o OceanImportScheduledTaskShutdownHoursPtrOutput) TimeWindows() pulumi.Str
 }
 
 type OceanImportScheduledTaskTask struct {
-	// Value in % to set size of batch in roll. Valid values are 0-100
-	// Example: 20.
-	BatchSizePercentage *int `pulumi:"batchSizePercentage"`
 	// A valid cron expression. For example : " * * * * * ".The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of ‘frequency’ or ‘cronExpression’ should be used at a time. Required for cluster.scheduling.tasks object
 	// Example: 0 1 * * *
 	CronExpression string `pulumi:"cronExpression"`
 	// Flag to enable / disable the shutdown hours.
 	// Example: True
-	IsEnabled bool `pulumi:"isEnabled"`
+	IsEnabled      bool                                        `pulumi:"isEnabled"`
+	TaskParameters *OceanImportScheduledTaskTaskTaskParameters `pulumi:"taskParameters"`
 	// Valid values: "clusterRoll". Required for cluster.scheduling.tasks object.
 	TaskType string `pulumi:"taskType"`
 }
@@ -3883,15 +3881,13 @@ type OceanImportScheduledTaskTaskInput interface {
 }
 
 type OceanImportScheduledTaskTaskArgs struct {
-	// Value in % to set size of batch in roll. Valid values are 0-100
-	// Example: 20.
-	BatchSizePercentage pulumi.IntPtrInput `pulumi:"batchSizePercentage"`
 	// A valid cron expression. For example : " * * * * * ".The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of ‘frequency’ or ‘cronExpression’ should be used at a time. Required for cluster.scheduling.tasks object
 	// Example: 0 1 * * *
 	CronExpression pulumi.StringInput `pulumi:"cronExpression"`
 	// Flag to enable / disable the shutdown hours.
 	// Example: True
-	IsEnabled pulumi.BoolInput `pulumi:"isEnabled"`
+	IsEnabled      pulumi.BoolInput                                   `pulumi:"isEnabled"`
+	TaskParameters OceanImportScheduledTaskTaskTaskParametersPtrInput `pulumi:"taskParameters"`
 	// Valid values: "clusterRoll". Required for cluster.scheduling.tasks object.
 	TaskType pulumi.StringInput `pulumi:"taskType"`
 }
@@ -3947,12 +3943,6 @@ func (o OceanImportScheduledTaskTaskOutput) ToOceanImportScheduledTaskTaskOutput
 	return o
 }
 
-// Value in % to set size of batch in roll. Valid values are 0-100
-// Example: 20.
-func (o OceanImportScheduledTaskTaskOutput) BatchSizePercentage() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v OceanImportScheduledTaskTask) *int { return v.BatchSizePercentage }).(pulumi.IntPtrOutput)
-}
-
 // A valid cron expression. For example : " * * * * * ".The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of ‘frequency’ or ‘cronExpression’ should be used at a time. Required for cluster.scheduling.tasks object
 // Example: 0 1 * * *
 func (o OceanImportScheduledTaskTaskOutput) CronExpression() pulumi.StringOutput {
@@ -3963,6 +3953,12 @@ func (o OceanImportScheduledTaskTaskOutput) CronExpression() pulumi.StringOutput
 // Example: True
 func (o OceanImportScheduledTaskTaskOutput) IsEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v OceanImportScheduledTaskTask) bool { return v.IsEnabled }).(pulumi.BoolOutput)
+}
+
+func (o OceanImportScheduledTaskTaskOutput) TaskParameters() OceanImportScheduledTaskTaskTaskParametersPtrOutput {
+	return o.ApplyT(func(v OceanImportScheduledTaskTask) *OceanImportScheduledTaskTaskTaskParameters {
+		return v.TaskParameters
+	}).(OceanImportScheduledTaskTaskTaskParametersPtrOutput)
 }
 
 // Valid values: "clusterRoll". Required for cluster.scheduling.tasks object.
@@ -3988,6 +3984,327 @@ func (o OceanImportScheduledTaskTaskArrayOutput) Index(i pulumi.IntInput) OceanI
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OceanImportScheduledTaskTask {
 		return vs[0].([]OceanImportScheduledTaskTask)[vs[1].(int)]
 	}).(OceanImportScheduledTaskTaskOutput)
+}
+
+type OceanImportScheduledTaskTaskTaskParameters struct {
+	ClusterRoll *OceanImportScheduledTaskTaskTaskParametersClusterRoll `pulumi:"clusterRoll"`
+}
+
+// OceanImportScheduledTaskTaskTaskParametersInput is an input type that accepts OceanImportScheduledTaskTaskTaskParametersArgs and OceanImportScheduledTaskTaskTaskParametersOutput values.
+// You can construct a concrete instance of `OceanImportScheduledTaskTaskTaskParametersInput` via:
+//
+//	OceanImportScheduledTaskTaskTaskParametersArgs{...}
+type OceanImportScheduledTaskTaskTaskParametersInput interface {
+	pulumi.Input
+
+	ToOceanImportScheduledTaskTaskTaskParametersOutput() OceanImportScheduledTaskTaskTaskParametersOutput
+	ToOceanImportScheduledTaskTaskTaskParametersOutputWithContext(context.Context) OceanImportScheduledTaskTaskTaskParametersOutput
+}
+
+type OceanImportScheduledTaskTaskTaskParametersArgs struct {
+	ClusterRoll OceanImportScheduledTaskTaskTaskParametersClusterRollPtrInput `pulumi:"clusterRoll"`
+}
+
+func (OceanImportScheduledTaskTaskTaskParametersArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanImportScheduledTaskTaskTaskParameters)(nil)).Elem()
+}
+
+func (i OceanImportScheduledTaskTaskTaskParametersArgs) ToOceanImportScheduledTaskTaskTaskParametersOutput() OceanImportScheduledTaskTaskTaskParametersOutput {
+	return i.ToOceanImportScheduledTaskTaskTaskParametersOutputWithContext(context.Background())
+}
+
+func (i OceanImportScheduledTaskTaskTaskParametersArgs) ToOceanImportScheduledTaskTaskTaskParametersOutputWithContext(ctx context.Context) OceanImportScheduledTaskTaskTaskParametersOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanImportScheduledTaskTaskTaskParametersOutput)
+}
+
+func (i OceanImportScheduledTaskTaskTaskParametersArgs) ToOceanImportScheduledTaskTaskTaskParametersPtrOutput() OceanImportScheduledTaskTaskTaskParametersPtrOutput {
+	return i.ToOceanImportScheduledTaskTaskTaskParametersPtrOutputWithContext(context.Background())
+}
+
+func (i OceanImportScheduledTaskTaskTaskParametersArgs) ToOceanImportScheduledTaskTaskTaskParametersPtrOutputWithContext(ctx context.Context) OceanImportScheduledTaskTaskTaskParametersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanImportScheduledTaskTaskTaskParametersOutput).ToOceanImportScheduledTaskTaskTaskParametersPtrOutputWithContext(ctx)
+}
+
+// OceanImportScheduledTaskTaskTaskParametersPtrInput is an input type that accepts OceanImportScheduledTaskTaskTaskParametersArgs, OceanImportScheduledTaskTaskTaskParametersPtr and OceanImportScheduledTaskTaskTaskParametersPtrOutput values.
+// You can construct a concrete instance of `OceanImportScheduledTaskTaskTaskParametersPtrInput` via:
+//
+//	        OceanImportScheduledTaskTaskTaskParametersArgs{...}
+//
+//	or:
+//
+//	        nil
+type OceanImportScheduledTaskTaskTaskParametersPtrInput interface {
+	pulumi.Input
+
+	ToOceanImportScheduledTaskTaskTaskParametersPtrOutput() OceanImportScheduledTaskTaskTaskParametersPtrOutput
+	ToOceanImportScheduledTaskTaskTaskParametersPtrOutputWithContext(context.Context) OceanImportScheduledTaskTaskTaskParametersPtrOutput
+}
+
+type oceanImportScheduledTaskTaskTaskParametersPtrType OceanImportScheduledTaskTaskTaskParametersArgs
+
+func OceanImportScheduledTaskTaskTaskParametersPtr(v *OceanImportScheduledTaskTaskTaskParametersArgs) OceanImportScheduledTaskTaskTaskParametersPtrInput {
+	return (*oceanImportScheduledTaskTaskTaskParametersPtrType)(v)
+}
+
+func (*oceanImportScheduledTaskTaskTaskParametersPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanImportScheduledTaskTaskTaskParameters)(nil)).Elem()
+}
+
+func (i *oceanImportScheduledTaskTaskTaskParametersPtrType) ToOceanImportScheduledTaskTaskTaskParametersPtrOutput() OceanImportScheduledTaskTaskTaskParametersPtrOutput {
+	return i.ToOceanImportScheduledTaskTaskTaskParametersPtrOutputWithContext(context.Background())
+}
+
+func (i *oceanImportScheduledTaskTaskTaskParametersPtrType) ToOceanImportScheduledTaskTaskTaskParametersPtrOutputWithContext(ctx context.Context) OceanImportScheduledTaskTaskTaskParametersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanImportScheduledTaskTaskTaskParametersPtrOutput)
+}
+
+type OceanImportScheduledTaskTaskTaskParametersOutput struct{ *pulumi.OutputState }
+
+func (OceanImportScheduledTaskTaskTaskParametersOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanImportScheduledTaskTaskTaskParameters)(nil)).Elem()
+}
+
+func (o OceanImportScheduledTaskTaskTaskParametersOutput) ToOceanImportScheduledTaskTaskTaskParametersOutput() OceanImportScheduledTaskTaskTaskParametersOutput {
+	return o
+}
+
+func (o OceanImportScheduledTaskTaskTaskParametersOutput) ToOceanImportScheduledTaskTaskTaskParametersOutputWithContext(ctx context.Context) OceanImportScheduledTaskTaskTaskParametersOutput {
+	return o
+}
+
+func (o OceanImportScheduledTaskTaskTaskParametersOutput) ToOceanImportScheduledTaskTaskTaskParametersPtrOutput() OceanImportScheduledTaskTaskTaskParametersPtrOutput {
+	return o.ToOceanImportScheduledTaskTaskTaskParametersPtrOutputWithContext(context.Background())
+}
+
+func (o OceanImportScheduledTaskTaskTaskParametersOutput) ToOceanImportScheduledTaskTaskTaskParametersPtrOutputWithContext(ctx context.Context) OceanImportScheduledTaskTaskTaskParametersPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OceanImportScheduledTaskTaskTaskParameters) *OceanImportScheduledTaskTaskTaskParameters {
+		return &v
+	}).(OceanImportScheduledTaskTaskTaskParametersPtrOutput)
+}
+
+func (o OceanImportScheduledTaskTaskTaskParametersOutput) ClusterRoll() OceanImportScheduledTaskTaskTaskParametersClusterRollPtrOutput {
+	return o.ApplyT(func(v OceanImportScheduledTaskTaskTaskParameters) *OceanImportScheduledTaskTaskTaskParametersClusterRoll {
+		return v.ClusterRoll
+	}).(OceanImportScheduledTaskTaskTaskParametersClusterRollPtrOutput)
+}
+
+type OceanImportScheduledTaskTaskTaskParametersPtrOutput struct{ *pulumi.OutputState }
+
+func (OceanImportScheduledTaskTaskTaskParametersPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanImportScheduledTaskTaskTaskParameters)(nil)).Elem()
+}
+
+func (o OceanImportScheduledTaskTaskTaskParametersPtrOutput) ToOceanImportScheduledTaskTaskTaskParametersPtrOutput() OceanImportScheduledTaskTaskTaskParametersPtrOutput {
+	return o
+}
+
+func (o OceanImportScheduledTaskTaskTaskParametersPtrOutput) ToOceanImportScheduledTaskTaskTaskParametersPtrOutputWithContext(ctx context.Context) OceanImportScheduledTaskTaskTaskParametersPtrOutput {
+	return o
+}
+
+func (o OceanImportScheduledTaskTaskTaskParametersPtrOutput) Elem() OceanImportScheduledTaskTaskTaskParametersOutput {
+	return o.ApplyT(func(v *OceanImportScheduledTaskTaskTaskParameters) OceanImportScheduledTaskTaskTaskParameters {
+		if v != nil {
+			return *v
+		}
+		var ret OceanImportScheduledTaskTaskTaskParameters
+		return ret
+	}).(OceanImportScheduledTaskTaskTaskParametersOutput)
+}
+
+func (o OceanImportScheduledTaskTaskTaskParametersPtrOutput) ClusterRoll() OceanImportScheduledTaskTaskTaskParametersClusterRollPtrOutput {
+	return o.ApplyT(func(v *OceanImportScheduledTaskTaskTaskParameters) *OceanImportScheduledTaskTaskTaskParametersClusterRoll {
+		if v == nil {
+			return nil
+		}
+		return v.ClusterRoll
+	}).(OceanImportScheduledTaskTaskTaskParametersClusterRollPtrOutput)
+}
+
+type OceanImportScheduledTaskTaskTaskParametersClusterRoll struct {
+	BatchMinHealthyPercentage *int `pulumi:"batchMinHealthyPercentage"`
+	// Value in % to set size of batch in roll. Valid values are 0-100
+	// Example: 20.
+	BatchSizePercentage *int    `pulumi:"batchSizePercentage"`
+	Comment             *string `pulumi:"comment"`
+	RespectPdb          *bool   `pulumi:"respectPdb"`
+}
+
+// OceanImportScheduledTaskTaskTaskParametersClusterRollInput is an input type that accepts OceanImportScheduledTaskTaskTaskParametersClusterRollArgs and OceanImportScheduledTaskTaskTaskParametersClusterRollOutput values.
+// You can construct a concrete instance of `OceanImportScheduledTaskTaskTaskParametersClusterRollInput` via:
+//
+//	OceanImportScheduledTaskTaskTaskParametersClusterRollArgs{...}
+type OceanImportScheduledTaskTaskTaskParametersClusterRollInput interface {
+	pulumi.Input
+
+	ToOceanImportScheduledTaskTaskTaskParametersClusterRollOutput() OceanImportScheduledTaskTaskTaskParametersClusterRollOutput
+	ToOceanImportScheduledTaskTaskTaskParametersClusterRollOutputWithContext(context.Context) OceanImportScheduledTaskTaskTaskParametersClusterRollOutput
+}
+
+type OceanImportScheduledTaskTaskTaskParametersClusterRollArgs struct {
+	BatchMinHealthyPercentage pulumi.IntPtrInput `pulumi:"batchMinHealthyPercentage"`
+	// Value in % to set size of batch in roll. Valid values are 0-100
+	// Example: 20.
+	BatchSizePercentage pulumi.IntPtrInput    `pulumi:"batchSizePercentage"`
+	Comment             pulumi.StringPtrInput `pulumi:"comment"`
+	RespectPdb          pulumi.BoolPtrInput   `pulumi:"respectPdb"`
+}
+
+func (OceanImportScheduledTaskTaskTaskParametersClusterRollArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanImportScheduledTaskTaskTaskParametersClusterRoll)(nil)).Elem()
+}
+
+func (i OceanImportScheduledTaskTaskTaskParametersClusterRollArgs) ToOceanImportScheduledTaskTaskTaskParametersClusterRollOutput() OceanImportScheduledTaskTaskTaskParametersClusterRollOutput {
+	return i.ToOceanImportScheduledTaskTaskTaskParametersClusterRollOutputWithContext(context.Background())
+}
+
+func (i OceanImportScheduledTaskTaskTaskParametersClusterRollArgs) ToOceanImportScheduledTaskTaskTaskParametersClusterRollOutputWithContext(ctx context.Context) OceanImportScheduledTaskTaskTaskParametersClusterRollOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanImportScheduledTaskTaskTaskParametersClusterRollOutput)
+}
+
+func (i OceanImportScheduledTaskTaskTaskParametersClusterRollArgs) ToOceanImportScheduledTaskTaskTaskParametersClusterRollPtrOutput() OceanImportScheduledTaskTaskTaskParametersClusterRollPtrOutput {
+	return i.ToOceanImportScheduledTaskTaskTaskParametersClusterRollPtrOutputWithContext(context.Background())
+}
+
+func (i OceanImportScheduledTaskTaskTaskParametersClusterRollArgs) ToOceanImportScheduledTaskTaskTaskParametersClusterRollPtrOutputWithContext(ctx context.Context) OceanImportScheduledTaskTaskTaskParametersClusterRollPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanImportScheduledTaskTaskTaskParametersClusterRollOutput).ToOceanImportScheduledTaskTaskTaskParametersClusterRollPtrOutputWithContext(ctx)
+}
+
+// OceanImportScheduledTaskTaskTaskParametersClusterRollPtrInput is an input type that accepts OceanImportScheduledTaskTaskTaskParametersClusterRollArgs, OceanImportScheduledTaskTaskTaskParametersClusterRollPtr and OceanImportScheduledTaskTaskTaskParametersClusterRollPtrOutput values.
+// You can construct a concrete instance of `OceanImportScheduledTaskTaskTaskParametersClusterRollPtrInput` via:
+//
+//	        OceanImportScheduledTaskTaskTaskParametersClusterRollArgs{...}
+//
+//	or:
+//
+//	        nil
+type OceanImportScheduledTaskTaskTaskParametersClusterRollPtrInput interface {
+	pulumi.Input
+
+	ToOceanImportScheduledTaskTaskTaskParametersClusterRollPtrOutput() OceanImportScheduledTaskTaskTaskParametersClusterRollPtrOutput
+	ToOceanImportScheduledTaskTaskTaskParametersClusterRollPtrOutputWithContext(context.Context) OceanImportScheduledTaskTaskTaskParametersClusterRollPtrOutput
+}
+
+type oceanImportScheduledTaskTaskTaskParametersClusterRollPtrType OceanImportScheduledTaskTaskTaskParametersClusterRollArgs
+
+func OceanImportScheduledTaskTaskTaskParametersClusterRollPtr(v *OceanImportScheduledTaskTaskTaskParametersClusterRollArgs) OceanImportScheduledTaskTaskTaskParametersClusterRollPtrInput {
+	return (*oceanImportScheduledTaskTaskTaskParametersClusterRollPtrType)(v)
+}
+
+func (*oceanImportScheduledTaskTaskTaskParametersClusterRollPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanImportScheduledTaskTaskTaskParametersClusterRoll)(nil)).Elem()
+}
+
+func (i *oceanImportScheduledTaskTaskTaskParametersClusterRollPtrType) ToOceanImportScheduledTaskTaskTaskParametersClusterRollPtrOutput() OceanImportScheduledTaskTaskTaskParametersClusterRollPtrOutput {
+	return i.ToOceanImportScheduledTaskTaskTaskParametersClusterRollPtrOutputWithContext(context.Background())
+}
+
+func (i *oceanImportScheduledTaskTaskTaskParametersClusterRollPtrType) ToOceanImportScheduledTaskTaskTaskParametersClusterRollPtrOutputWithContext(ctx context.Context) OceanImportScheduledTaskTaskTaskParametersClusterRollPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanImportScheduledTaskTaskTaskParametersClusterRollPtrOutput)
+}
+
+type OceanImportScheduledTaskTaskTaskParametersClusterRollOutput struct{ *pulumi.OutputState }
+
+func (OceanImportScheduledTaskTaskTaskParametersClusterRollOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanImportScheduledTaskTaskTaskParametersClusterRoll)(nil)).Elem()
+}
+
+func (o OceanImportScheduledTaskTaskTaskParametersClusterRollOutput) ToOceanImportScheduledTaskTaskTaskParametersClusterRollOutput() OceanImportScheduledTaskTaskTaskParametersClusterRollOutput {
+	return o
+}
+
+func (o OceanImportScheduledTaskTaskTaskParametersClusterRollOutput) ToOceanImportScheduledTaskTaskTaskParametersClusterRollOutputWithContext(ctx context.Context) OceanImportScheduledTaskTaskTaskParametersClusterRollOutput {
+	return o
+}
+
+func (o OceanImportScheduledTaskTaskTaskParametersClusterRollOutput) ToOceanImportScheduledTaskTaskTaskParametersClusterRollPtrOutput() OceanImportScheduledTaskTaskTaskParametersClusterRollPtrOutput {
+	return o.ToOceanImportScheduledTaskTaskTaskParametersClusterRollPtrOutputWithContext(context.Background())
+}
+
+func (o OceanImportScheduledTaskTaskTaskParametersClusterRollOutput) ToOceanImportScheduledTaskTaskTaskParametersClusterRollPtrOutputWithContext(ctx context.Context) OceanImportScheduledTaskTaskTaskParametersClusterRollPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OceanImportScheduledTaskTaskTaskParametersClusterRoll) *OceanImportScheduledTaskTaskTaskParametersClusterRoll {
+		return &v
+	}).(OceanImportScheduledTaskTaskTaskParametersClusterRollPtrOutput)
+}
+
+func (o OceanImportScheduledTaskTaskTaskParametersClusterRollOutput) BatchMinHealthyPercentage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OceanImportScheduledTaskTaskTaskParametersClusterRoll) *int { return v.BatchMinHealthyPercentage }).(pulumi.IntPtrOutput)
+}
+
+// Value in % to set size of batch in roll. Valid values are 0-100
+// Example: 20.
+func (o OceanImportScheduledTaskTaskTaskParametersClusterRollOutput) BatchSizePercentage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OceanImportScheduledTaskTaskTaskParametersClusterRoll) *int { return v.BatchSizePercentage }).(pulumi.IntPtrOutput)
+}
+
+func (o OceanImportScheduledTaskTaskTaskParametersClusterRollOutput) Comment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OceanImportScheduledTaskTaskTaskParametersClusterRoll) *string { return v.Comment }).(pulumi.StringPtrOutput)
+}
+
+func (o OceanImportScheduledTaskTaskTaskParametersClusterRollOutput) RespectPdb() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OceanImportScheduledTaskTaskTaskParametersClusterRoll) *bool { return v.RespectPdb }).(pulumi.BoolPtrOutput)
+}
+
+type OceanImportScheduledTaskTaskTaskParametersClusterRollPtrOutput struct{ *pulumi.OutputState }
+
+func (OceanImportScheduledTaskTaskTaskParametersClusterRollPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanImportScheduledTaskTaskTaskParametersClusterRoll)(nil)).Elem()
+}
+
+func (o OceanImportScheduledTaskTaskTaskParametersClusterRollPtrOutput) ToOceanImportScheduledTaskTaskTaskParametersClusterRollPtrOutput() OceanImportScheduledTaskTaskTaskParametersClusterRollPtrOutput {
+	return o
+}
+
+func (o OceanImportScheduledTaskTaskTaskParametersClusterRollPtrOutput) ToOceanImportScheduledTaskTaskTaskParametersClusterRollPtrOutputWithContext(ctx context.Context) OceanImportScheduledTaskTaskTaskParametersClusterRollPtrOutput {
+	return o
+}
+
+func (o OceanImportScheduledTaskTaskTaskParametersClusterRollPtrOutput) Elem() OceanImportScheduledTaskTaskTaskParametersClusterRollOutput {
+	return o.ApplyT(func(v *OceanImportScheduledTaskTaskTaskParametersClusterRoll) OceanImportScheduledTaskTaskTaskParametersClusterRoll {
+		if v != nil {
+			return *v
+		}
+		var ret OceanImportScheduledTaskTaskTaskParametersClusterRoll
+		return ret
+	}).(OceanImportScheduledTaskTaskTaskParametersClusterRollOutput)
+}
+
+func (o OceanImportScheduledTaskTaskTaskParametersClusterRollPtrOutput) BatchMinHealthyPercentage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OceanImportScheduledTaskTaskTaskParametersClusterRoll) *int {
+		if v == nil {
+			return nil
+		}
+		return v.BatchMinHealthyPercentage
+	}).(pulumi.IntPtrOutput)
+}
+
+// Value in % to set size of batch in roll. Valid values are 0-100
+// Example: 20.
+func (o OceanImportScheduledTaskTaskTaskParametersClusterRollPtrOutput) BatchSizePercentage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OceanImportScheduledTaskTaskTaskParametersClusterRoll) *int {
+		if v == nil {
+			return nil
+		}
+		return v.BatchSizePercentage
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o OceanImportScheduledTaskTaskTaskParametersClusterRollPtrOutput) Comment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OceanImportScheduledTaskTaskTaskParametersClusterRoll) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Comment
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o OceanImportScheduledTaskTaskTaskParametersClusterRollPtrOutput) RespectPdb() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OceanImportScheduledTaskTaskTaskParametersClusterRoll) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RespectPdb
+	}).(pulumi.BoolPtrOutput)
 }
 
 type OceanImportShieldedInstanceConfig struct {
@@ -4424,6 +4741,7 @@ type OceanImportUpdatePolicyRollConfig struct {
 	// Example: 20.
 	BatchSizePercentage int      `pulumi:"batchSizePercentage"`
 	LaunchSpecIds       []string `pulumi:"launchSpecIds"`
+	RespectPdb          *bool    `pulumi:"respectPdb"`
 }
 
 // OceanImportUpdatePolicyRollConfigInput is an input type that accepts OceanImportUpdatePolicyRollConfigArgs and OceanImportUpdatePolicyRollConfigOutput values.
@@ -4443,6 +4761,7 @@ type OceanImportUpdatePolicyRollConfigArgs struct {
 	// Example: 20.
 	BatchSizePercentage pulumi.IntInput         `pulumi:"batchSizePercentage"`
 	LaunchSpecIds       pulumi.StringArrayInput `pulumi:"launchSpecIds"`
+	RespectPdb          pulumi.BoolPtrInput     `pulumi:"respectPdb"`
 }
 
 func (OceanImportUpdatePolicyRollConfigArgs) ElementType() reflect.Type {
@@ -4536,6 +4855,10 @@ func (o OceanImportUpdatePolicyRollConfigOutput) LaunchSpecIds() pulumi.StringAr
 	return o.ApplyT(func(v OceanImportUpdatePolicyRollConfig) []string { return v.LaunchSpecIds }).(pulumi.StringArrayOutput)
 }
 
+func (o OceanImportUpdatePolicyRollConfigOutput) RespectPdb() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OceanImportUpdatePolicyRollConfig) *bool { return v.RespectPdb }).(pulumi.BoolPtrOutput)
+}
+
 type OceanImportUpdatePolicyRollConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (OceanImportUpdatePolicyRollConfigPtrOutput) ElementType() reflect.Type {
@@ -4587,6 +4910,15 @@ func (o OceanImportUpdatePolicyRollConfigPtrOutput) LaunchSpecIds() pulumi.Strin
 		}
 		return v.LaunchSpecIds
 	}).(pulumi.StringArrayOutput)
+}
+
+func (o OceanImportUpdatePolicyRollConfigPtrOutput) RespectPdb() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OceanImportUpdatePolicyRollConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RespectPdb
+	}).(pulumi.BoolPtrOutput)
 }
 
 type OceanLaunchSpecAutoscaleHeadroom struct {
@@ -6273,6 +6605,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanImportScheduledTaskShutdownHoursPtrInput)(nil)).Elem(), OceanImportScheduledTaskShutdownHoursArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanImportScheduledTaskTaskInput)(nil)).Elem(), OceanImportScheduledTaskTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanImportScheduledTaskTaskArrayInput)(nil)).Elem(), OceanImportScheduledTaskTaskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanImportScheduledTaskTaskTaskParametersInput)(nil)).Elem(), OceanImportScheduledTaskTaskTaskParametersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanImportScheduledTaskTaskTaskParametersPtrInput)(nil)).Elem(), OceanImportScheduledTaskTaskTaskParametersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanImportScheduledTaskTaskTaskParametersClusterRollInput)(nil)).Elem(), OceanImportScheduledTaskTaskTaskParametersClusterRollArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanImportScheduledTaskTaskTaskParametersClusterRollPtrInput)(nil)).Elem(), OceanImportScheduledTaskTaskTaskParametersClusterRollArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanImportShieldedInstanceConfigInput)(nil)).Elem(), OceanImportShieldedInstanceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanImportShieldedInstanceConfigPtrInput)(nil)).Elem(), OceanImportShieldedInstanceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanImportStrategyInput)(nil)).Elem(), OceanImportStrategyArgs{})
@@ -6365,6 +6701,10 @@ func init() {
 	pulumi.RegisterOutputType(OceanImportScheduledTaskShutdownHoursPtrOutput{})
 	pulumi.RegisterOutputType(OceanImportScheduledTaskTaskOutput{})
 	pulumi.RegisterOutputType(OceanImportScheduledTaskTaskArrayOutput{})
+	pulumi.RegisterOutputType(OceanImportScheduledTaskTaskTaskParametersOutput{})
+	pulumi.RegisterOutputType(OceanImportScheduledTaskTaskTaskParametersPtrOutput{})
+	pulumi.RegisterOutputType(OceanImportScheduledTaskTaskTaskParametersClusterRollOutput{})
+	pulumi.RegisterOutputType(OceanImportScheduledTaskTaskTaskParametersClusterRollPtrOutput{})
 	pulumi.RegisterOutputType(OceanImportShieldedInstanceConfigOutput{})
 	pulumi.RegisterOutputType(OceanImportShieldedInstanceConfigPtrOutput{})
 	pulumi.RegisterOutputType(OceanImportStrategyOutput{})

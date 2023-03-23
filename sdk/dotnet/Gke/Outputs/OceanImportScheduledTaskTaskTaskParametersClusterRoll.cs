@@ -11,30 +11,30 @@ namespace Pulumi.SpotInst.Gke.Outputs
 {
 
     [OutputType]
-    public sealed class OceanImportUpdatePolicyRollConfig
+    public sealed class OceanImportScheduledTaskTaskTaskParametersClusterRoll
     {
         public readonly int? BatchMinHealthyPercentage;
         /// <summary>
         /// Value in % to set size of batch in roll. Valid values are 0-100
         /// Example: 20.
         /// </summary>
-        public readonly int BatchSizePercentage;
-        public readonly ImmutableArray<string> LaunchSpecIds;
+        public readonly int? BatchSizePercentage;
+        public readonly string? Comment;
         public readonly bool? RespectPdb;
 
         [OutputConstructor]
-        private OceanImportUpdatePolicyRollConfig(
+        private OceanImportScheduledTaskTaskTaskParametersClusterRoll(
             int? batchMinHealthyPercentage,
 
-            int batchSizePercentage,
+            int? batchSizePercentage,
 
-            ImmutableArray<string> launchSpecIds,
+            string? comment,
 
             bool? respectPdb)
         {
             BatchMinHealthyPercentage = batchMinHealthyPercentage;
             BatchSizePercentage = batchSizePercentage;
-            LaunchSpecIds = launchSpecIds;
+            Comment = comment;
             RespectPdb = respectPdb;
         }
     }

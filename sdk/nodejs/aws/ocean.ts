@@ -76,6 +76,10 @@ export class Ocean extends pulumi.CustomResource {
      * Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist` is configured.
      */
     public readonly blacklists!: pulumi.Output<string[] | undefined>;
+    /**
+     * Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
+     */
+    public readonly blockDeviceMappings!: pulumi.Output<outputs.aws.OceanBlockDeviceMapping[] | undefined>;
     public readonly clusterOrientations!: pulumi.Output<outputs.aws.OceanClusterOrientation[] | undefined>;
     /**
      * A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
@@ -214,6 +218,7 @@ export class Ocean extends pulumi.CustomResource {
             resourceInputs["associatePublicIpAddress"] = state ? state.associatePublicIpAddress : undefined;
             resourceInputs["autoscaler"] = state ? state.autoscaler : undefined;
             resourceInputs["blacklists"] = state ? state.blacklists : undefined;
+            resourceInputs["blockDeviceMappings"] = state ? state.blockDeviceMappings : undefined;
             resourceInputs["clusterOrientations"] = state ? state.clusterOrientations : undefined;
             resourceInputs["controllerId"] = state ? state.controllerId : undefined;
             resourceInputs["desiredCapacity"] = state ? state.desiredCapacity : undefined;
@@ -258,6 +263,7 @@ export class Ocean extends pulumi.CustomResource {
             resourceInputs["associatePublicIpAddress"] = args ? args.associatePublicIpAddress : undefined;
             resourceInputs["autoscaler"] = args ? args.autoscaler : undefined;
             resourceInputs["blacklists"] = args ? args.blacklists : undefined;
+            resourceInputs["blockDeviceMappings"] = args ? args.blockDeviceMappings : undefined;
             resourceInputs["clusterOrientations"] = args ? args.clusterOrientations : undefined;
             resourceInputs["controllerId"] = args ? args.controllerId : undefined;
             resourceInputs["desiredCapacity"] = args ? args.desiredCapacity : undefined;
@@ -316,6 +322,10 @@ export interface OceanState {
      * Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist` is configured.
      */
     blacklists?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
+     */
+    blockDeviceMappings?: pulumi.Input<pulumi.Input<inputs.aws.OceanBlockDeviceMapping>[]>;
     clusterOrientations?: pulumi.Input<pulumi.Input<inputs.aws.OceanClusterOrientation>[]>;
     /**
      * A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
@@ -458,6 +468,10 @@ export interface OceanArgs {
      * Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist` is configured.
      */
     blacklists?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
+     */
+    blockDeviceMappings?: pulumi.Input<pulumi.Input<inputs.aws.OceanBlockDeviceMapping>[]>;
     clusterOrientations?: pulumi.Input<pulumi.Input<inputs.aws.OceanClusterOrientation>[]>;
     /**
      * A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
