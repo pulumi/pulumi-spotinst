@@ -12,6 +12,7 @@ import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecBlockDeviceMappingArgs;
 import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecCreateOptionsArgs;
 import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecDeleteOptionsArgs;
 import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecElasticIpPoolArgs;
+import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecImageArgs;
 import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecInstanceMetadataOptionsArgs;
 import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecLabelArgs;
 import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecResourceLimitArgs;
@@ -166,6 +167,13 @@ public final class OceanLaunchSpecState extends com.pulumi.resources.ResourceArg
      */
     public Optional<Output<String>> imageId() {
         return Optional.ofNullable(this.imageId);
+    }
+
+    @Import(name="images")
+    private @Nullable Output<List<OceanLaunchSpecImageArgs>> images;
+
+    public Optional<Output<List<OceanLaunchSpecImageArgs>>> images() {
+        return Optional.ofNullable(this.images);
     }
 
     /**
@@ -427,6 +435,7 @@ public final class OceanLaunchSpecState extends com.pulumi.resources.ResourceArg
         this.elasticIpPools = $.elasticIpPools;
         this.iamInstanceProfile = $.iamInstanceProfile;
         this.imageId = $.imageId;
+        this.images = $.images;
         this.instanceMetadataOptions = $.instanceMetadataOptions;
         this.instanceTypes = $.instanceTypes;
         this.labels = $.labels;
@@ -699,6 +708,19 @@ public final class OceanLaunchSpecState extends com.pulumi.resources.ResourceArg
          */
         public Builder imageId(String imageId) {
             return imageId(Output.of(imageId));
+        }
+
+        public Builder images(@Nullable Output<List<OceanLaunchSpecImageArgs>> images) {
+            $.images = images;
+            return this;
+        }
+
+        public Builder images(List<OceanLaunchSpecImageArgs> images) {
+            return images(Output.of(images));
+        }
+
+        public Builder images(OceanLaunchSpecImageArgs... images) {
+            return images(List.of(images));
         }
 
         /**

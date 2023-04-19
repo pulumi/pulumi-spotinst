@@ -24,6 +24,7 @@ class ElastigroupArgs:
                  draining_timeout: Optional[pulumi.Input[int]] = None,
                  fallback_to_ondemand: Optional[pulumi.Input[bool]] = None,
                  gpu: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupGpuArgs']]]] = None,
+                 instance_name_prefix: Optional[pulumi.Input[str]] = None,
                  instance_types_customs: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupInstanceTypesCustomArgs']]]] = None,
                  instance_types_ondemand: Optional[pulumi.Input[str]] = None,
                  instance_types_preemptibles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -70,6 +71,8 @@ class ElastigroupArgs:
             pulumi.set(__self__, "fallback_to_ondemand", fallback_to_ondemand)
         if gpu is not None:
             pulumi.set(__self__, "gpu", gpu)
+        if instance_name_prefix is not None:
+            pulumi.set(__self__, "instance_name_prefix", instance_name_prefix)
         if instance_types_customs is not None:
             pulumi.set(__self__, "instance_types_customs", instance_types_customs)
         if instance_types_ondemand is not None:
@@ -192,6 +195,15 @@ class ElastigroupArgs:
     @gpu.setter
     def gpu(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupGpuArgs']]]]):
         pulumi.set(self, "gpu", value)
+
+    @property
+    @pulumi.getter(name="instanceNamePrefix")
+    def instance_name_prefix(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "instance_name_prefix")
+
+    @instance_name_prefix.setter
+    def instance_name_prefix(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_name_prefix", value)
 
     @property
     @pulumi.getter(name="instanceTypesCustoms")
@@ -409,6 +421,7 @@ class _ElastigroupState:
                  draining_timeout: Optional[pulumi.Input[int]] = None,
                  fallback_to_ondemand: Optional[pulumi.Input[bool]] = None,
                  gpu: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupGpuArgs']]]] = None,
+                 instance_name_prefix: Optional[pulumi.Input[str]] = None,
                  instance_types_customs: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupInstanceTypesCustomArgs']]]] = None,
                  instance_types_ondemand: Optional[pulumi.Input[str]] = None,
                  instance_types_preemptibles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -457,6 +470,8 @@ class _ElastigroupState:
             pulumi.set(__self__, "fallback_to_ondemand", fallback_to_ondemand)
         if gpu is not None:
             pulumi.set(__self__, "gpu", gpu)
+        if instance_name_prefix is not None:
+            pulumi.set(__self__, "instance_name_prefix", instance_name_prefix)
         if instance_types_customs is not None:
             pulumi.set(__self__, "instance_types_customs", instance_types_customs)
         if instance_types_ondemand is not None:
@@ -579,6 +594,15 @@ class _ElastigroupState:
     @gpu.setter
     def gpu(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupGpuArgs']]]]):
         pulumi.set(self, "gpu", value)
+
+    @property
+    @pulumi.getter(name="instanceNamePrefix")
+    def instance_name_prefix(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "instance_name_prefix")
+
+    @instance_name_prefix.setter
+    def instance_name_prefix(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_name_prefix", value)
 
     @property
     @pulumi.getter(name="instanceTypesCustoms")
@@ -798,6 +822,7 @@ class Elastigroup(pulumi.CustomResource):
                  draining_timeout: Optional[pulumi.Input[int]] = None,
                  fallback_to_ondemand: Optional[pulumi.Input[bool]] = None,
                  gpu: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupGpuArgs']]]]] = None,
+                 instance_name_prefix: Optional[pulumi.Input[str]] = None,
                  instance_types_customs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupInstanceTypesCustomArgs']]]]] = None,
                  instance_types_ondemand: Optional[pulumi.Input[str]] = None,
                  instance_types_preemptibles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -977,6 +1002,7 @@ class Elastigroup(pulumi.CustomResource):
                  draining_timeout: Optional[pulumi.Input[int]] = None,
                  fallback_to_ondemand: Optional[pulumi.Input[bool]] = None,
                  gpu: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupGpuArgs']]]]] = None,
+                 instance_name_prefix: Optional[pulumi.Input[str]] = None,
                  instance_types_customs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupInstanceTypesCustomArgs']]]]] = None,
                  instance_types_ondemand: Optional[pulumi.Input[str]] = None,
                  instance_types_preemptibles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1023,6 +1049,7 @@ class Elastigroup(pulumi.CustomResource):
             __props__.__dict__["draining_timeout"] = draining_timeout
             __props__.__dict__["fallback_to_ondemand"] = fallback_to_ondemand
             __props__.__dict__["gpu"] = gpu
+            __props__.__dict__["instance_name_prefix"] = instance_name_prefix
             __props__.__dict__["instance_types_customs"] = instance_types_customs
             __props__.__dict__["instance_types_ondemand"] = instance_types_ondemand
             __props__.__dict__["instance_types_preemptibles"] = instance_types_preemptibles
@@ -1063,6 +1090,7 @@ class Elastigroup(pulumi.CustomResource):
             draining_timeout: Optional[pulumi.Input[int]] = None,
             fallback_to_ondemand: Optional[pulumi.Input[bool]] = None,
             gpu: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupGpuArgs']]]]] = None,
+            instance_name_prefix: Optional[pulumi.Input[str]] = None,
             instance_types_customs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupInstanceTypesCustomArgs']]]]] = None,
             instance_types_ondemand: Optional[pulumi.Input[str]] = None,
             instance_types_preemptibles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1109,6 +1137,7 @@ class Elastigroup(pulumi.CustomResource):
         __props__.__dict__["draining_timeout"] = draining_timeout
         __props__.__dict__["fallback_to_ondemand"] = fallback_to_ondemand
         __props__.__dict__["gpu"] = gpu
+        __props__.__dict__["instance_name_prefix"] = instance_name_prefix
         __props__.__dict__["instance_types_customs"] = instance_types_customs
         __props__.__dict__["instance_types_ondemand"] = instance_types_ondemand
         __props__.__dict__["instance_types_preemptibles"] = instance_types_preemptibles
@@ -1178,6 +1207,11 @@ class Elastigroup(pulumi.CustomResource):
     @pulumi.getter
     def gpu(self) -> pulumi.Output[Optional[Sequence['outputs.ElastigroupGpu']]]:
         return pulumi.get(self, "gpu")
+
+    @property
+    @pulumi.getter(name="instanceNamePrefix")
+    def instance_name_prefix(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "instance_name_prefix")
 
     @property
     @pulumi.getter(name="instanceTypesCustoms")

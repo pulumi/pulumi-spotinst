@@ -17,6 +17,7 @@ import com.pulumi.spotinst.aws.outputs.OceanLaunchSpecBlockDeviceMapping;
 import com.pulumi.spotinst.aws.outputs.OceanLaunchSpecCreateOptions;
 import com.pulumi.spotinst.aws.outputs.OceanLaunchSpecDeleteOptions;
 import com.pulumi.spotinst.aws.outputs.OceanLaunchSpecElasticIpPool;
+import com.pulumi.spotinst.aws.outputs.OceanLaunchSpecImage;
 import com.pulumi.spotinst.aws.outputs.OceanLaunchSpecInstanceMetadataOptions;
 import com.pulumi.spotinst.aws.outputs.OceanLaunchSpecLabel;
 import com.pulumi.spotinst.aws.outputs.OceanLaunchSpecResourceLimit;
@@ -358,6 +359,12 @@ public class OceanLaunchSpec extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> imageId() {
         return Codegen.optional(this.imageId);
+    }
+    @Export(name="images", type=List.class, parameters={OceanLaunchSpecImage.class})
+    private Output</* @Nullable */ List<OceanLaunchSpecImage>> images;
+
+    public Output<Optional<List<OceanLaunchSpecImage>>> images() {
+        return Codegen.optional(this.images);
     }
     /**
      * Ocean instance metadata options object for IMDSv2.

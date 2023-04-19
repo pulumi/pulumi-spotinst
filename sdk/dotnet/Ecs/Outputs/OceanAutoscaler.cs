@@ -26,6 +26,10 @@ namespace Pulumi.SpotInst.Ecs.Outputs
         /// </summary>
         public readonly Outputs.OceanAutoscalerDown? Down;
         /// <summary>
+        /// When set to true, both automatic and per custom launch specification manual headroom to be saved concurrently and independently in the cluster. prerequisite: isAutoConfig must be true
+        /// </summary>
+        public readonly bool? EnableAutomaticAndManualHeadroom;
+        /// <summary>
         /// Spare resource capacity management enabling fast assignment of tasks without waiting for new resources to launch.
         /// </summary>
         public readonly Outputs.OceanAutoscalerHeadroom? Headroom;
@@ -54,6 +58,8 @@ namespace Pulumi.SpotInst.Ecs.Outputs
 
             Outputs.OceanAutoscalerDown? down,
 
+            bool? enableAutomaticAndManualHeadroom,
+
             Outputs.OceanAutoscalerHeadroom? headroom,
 
             bool? isAutoConfig,
@@ -67,6 +73,7 @@ namespace Pulumi.SpotInst.Ecs.Outputs
             AutoHeadroomPercentage = autoHeadroomPercentage;
             Cooldown = cooldown;
             Down = down;
+            EnableAutomaticAndManualHeadroom = enableAutomaticAndManualHeadroom;
             Headroom = headroom;
             IsAutoConfig = isAutoConfig;
             IsEnabled = isEnabled;

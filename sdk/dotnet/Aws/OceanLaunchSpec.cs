@@ -16,6 +16,7 @@ namespace Pulumi.SpotInst.Aws
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using SpotInst = Pulumi.SpotInst;
     /// 
@@ -194,6 +195,7 @@ namespace Pulumi.SpotInst.Aws
     /// ```
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
@@ -213,6 +215,7 @@ namespace Pulumi.SpotInst.Aws
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
@@ -276,6 +279,9 @@ namespace Pulumi.SpotInst.Aws
         /// </summary>
         [Output("imageId")]
         public Output<string?> ImageId { get; private set; } = null!;
+
+        [Output("images")]
+        public Output<ImmutableArray<Outputs.OceanLaunchSpecImage>> Images { get; private set; } = null!;
 
         /// <summary>
         /// Ocean instance metadata options object for IMDSv2.
@@ -505,6 +511,14 @@ namespace Pulumi.SpotInst.Aws
         /// </summary>
         [Input("imageId")]
         public Input<string>? ImageId { get; set; }
+
+        [Input("images")]
+        private InputList<Inputs.OceanLaunchSpecImageArgs>? _images;
+        public InputList<Inputs.OceanLaunchSpecImageArgs> Images
+        {
+            get => _images ?? (_images = new InputList<Inputs.OceanLaunchSpecImageArgs>());
+            set => _images = value;
+        }
 
         /// <summary>
         /// Ocean instance metadata options object for IMDSv2.
@@ -754,6 +768,14 @@ namespace Pulumi.SpotInst.Aws
         /// </summary>
         [Input("imageId")]
         public Input<string>? ImageId { get; set; }
+
+        [Input("images")]
+        private InputList<Inputs.OceanLaunchSpecImageGetArgs>? _images;
+        public InputList<Inputs.OceanLaunchSpecImageGetArgs> Images
+        {
+            get => _images ?? (_images = new InputList<Inputs.OceanLaunchSpecImageGetArgs>());
+            set => _images = value;
+        }
 
         /// <summary>
         /// Ocean instance metadata options object for IMDSv2.

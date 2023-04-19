@@ -226,7 +226,8 @@ type OceanLaunchSpec struct {
 	// The ARN or name of an IAM instance profile to associate with launched instances.
 	IamInstanceProfile pulumi.StringPtrOutput `pulumi:"iamInstanceProfile"`
 	// ID of the image used to launch the instances.
-	ImageId pulumi.StringPtrOutput `pulumi:"imageId"`
+	ImageId pulumi.StringPtrOutput          `pulumi:"imageId"`
+	Images  OceanLaunchSpecImageArrayOutput `pulumi:"images"`
 	// Ocean instance metadata options object for IMDSv2.
 	InstanceMetadataOptions OceanLaunchSpecInstanceMetadataOptionsPtrOutput `pulumi:"instanceMetadataOptions"`
 	// A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the cluster.
@@ -311,7 +312,8 @@ type oceanLaunchSpecState struct {
 	// The ARN or name of an IAM instance profile to associate with launched instances.
 	IamInstanceProfile *string `pulumi:"iamInstanceProfile"`
 	// ID of the image used to launch the instances.
-	ImageId *string `pulumi:"imageId"`
+	ImageId *string                `pulumi:"imageId"`
+	Images  []OceanLaunchSpecImage `pulumi:"images"`
 	// Ocean instance metadata options object for IMDSv2.
 	InstanceMetadataOptions *OceanLaunchSpecInstanceMetadataOptions `pulumi:"instanceMetadataOptions"`
 	// A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the cluster.
@@ -366,6 +368,7 @@ type OceanLaunchSpecState struct {
 	IamInstanceProfile pulumi.StringPtrInput
 	// ID of the image used to launch the instances.
 	ImageId pulumi.StringPtrInput
+	Images  OceanLaunchSpecImageArrayInput
 	// Ocean instance metadata options object for IMDSv2.
 	InstanceMetadataOptions OceanLaunchSpecInstanceMetadataOptionsPtrInput
 	// A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the cluster.
@@ -423,7 +426,8 @@ type oceanLaunchSpecArgs struct {
 	// The ARN or name of an IAM instance profile to associate with launched instances.
 	IamInstanceProfile *string `pulumi:"iamInstanceProfile"`
 	// ID of the image used to launch the instances.
-	ImageId *string `pulumi:"imageId"`
+	ImageId *string                `pulumi:"imageId"`
+	Images  []OceanLaunchSpecImage `pulumi:"images"`
 	// Ocean instance metadata options object for IMDSv2.
 	InstanceMetadataOptions *OceanLaunchSpecInstanceMetadataOptions `pulumi:"instanceMetadataOptions"`
 	// A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the cluster.
@@ -479,6 +483,7 @@ type OceanLaunchSpecArgs struct {
 	IamInstanceProfile pulumi.StringPtrInput
 	// ID of the image used to launch the instances.
 	ImageId pulumi.StringPtrInput
+	Images  OceanLaunchSpecImageArrayInput
 	// Ocean instance metadata options object for IMDSv2.
 	InstanceMetadataOptions OceanLaunchSpecInstanceMetadataOptionsPtrInput
 	// A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the cluster.
@@ -649,6 +654,10 @@ func (o OceanLaunchSpecOutput) IamInstanceProfile() pulumi.StringPtrOutput {
 // ID of the image used to launch the instances.
 func (o OceanLaunchSpecOutput) ImageId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OceanLaunchSpec) pulumi.StringPtrOutput { return v.ImageId }).(pulumi.StringPtrOutput)
+}
+
+func (o OceanLaunchSpecOutput) Images() OceanLaunchSpecImageArrayOutput {
+	return o.ApplyT(func(v *OceanLaunchSpec) OceanLaunchSpecImageArrayOutput { return v.Images }).(OceanLaunchSpecImageArrayOutput)
 }
 
 // Ocean instance metadata options object for IMDSv2.

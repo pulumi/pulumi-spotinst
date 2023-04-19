@@ -106,6 +106,7 @@ type Elastigroup struct {
 	DrainingTimeout           pulumi.IntPtrOutput                        `pulumi:"drainingTimeout"`
 	FallbackToOndemand        pulumi.BoolPtrOutput                       `pulumi:"fallbackToOndemand"`
 	Gpu                       ElastigroupGpuArrayOutput                  `pulumi:"gpu"`
+	InstanceNamePrefix        pulumi.StringPtrOutput                     `pulumi:"instanceNamePrefix"`
 	InstanceTypesCustoms      ElastigroupInstanceTypesCustomArrayOutput  `pulumi:"instanceTypesCustoms"`
 	InstanceTypesOndemand     pulumi.StringPtrOutput                     `pulumi:"instanceTypesOndemand"`
 	InstanceTypesPreemptibles pulumi.StringArrayOutput                   `pulumi:"instanceTypesPreemptibles"`
@@ -179,6 +180,7 @@ type elastigroupState struct {
 	DrainingTimeout           *int                               `pulumi:"drainingTimeout"`
 	FallbackToOndemand        *bool                              `pulumi:"fallbackToOndemand"`
 	Gpu                       []ElastigroupGpu                   `pulumi:"gpu"`
+	InstanceNamePrefix        *string                            `pulumi:"instanceNamePrefix"`
 	InstanceTypesCustoms      []ElastigroupInstanceTypesCustom   `pulumi:"instanceTypesCustoms"`
 	InstanceTypesOndemand     *string                            `pulumi:"instanceTypesOndemand"`
 	InstanceTypesPreemptibles []string                           `pulumi:"instanceTypesPreemptibles"`
@@ -218,6 +220,7 @@ type ElastigroupState struct {
 	DrainingTimeout           pulumi.IntPtrInput
 	FallbackToOndemand        pulumi.BoolPtrInput
 	Gpu                       ElastigroupGpuArrayInput
+	InstanceNamePrefix        pulumi.StringPtrInput
 	InstanceTypesCustoms      ElastigroupInstanceTypesCustomArrayInput
 	InstanceTypesOndemand     pulumi.StringPtrInput
 	InstanceTypesPreemptibles pulumi.StringArrayInput
@@ -261,6 +264,7 @@ type elastigroupArgs struct {
 	DrainingTimeout           *int                               `pulumi:"drainingTimeout"`
 	FallbackToOndemand        *bool                              `pulumi:"fallbackToOndemand"`
 	Gpu                       []ElastigroupGpu                   `pulumi:"gpu"`
+	InstanceNamePrefix        *string                            `pulumi:"instanceNamePrefix"`
 	InstanceTypesCustoms      []ElastigroupInstanceTypesCustom   `pulumi:"instanceTypesCustoms"`
 	InstanceTypesOndemand     *string                            `pulumi:"instanceTypesOndemand"`
 	InstanceTypesPreemptibles []string                           `pulumi:"instanceTypesPreemptibles"`
@@ -301,6 +305,7 @@ type ElastigroupArgs struct {
 	DrainingTimeout           pulumi.IntPtrInput
 	FallbackToOndemand        pulumi.BoolPtrInput
 	Gpu                       ElastigroupGpuArrayInput
+	InstanceNamePrefix        pulumi.StringPtrInput
 	InstanceTypesCustoms      ElastigroupInstanceTypesCustomArrayInput
 	InstanceTypesOndemand     pulumi.StringPtrInput
 	InstanceTypesPreemptibles pulumi.StringArrayInput
@@ -448,6 +453,10 @@ func (o ElastigroupOutput) FallbackToOndemand() pulumi.BoolPtrOutput {
 
 func (o ElastigroupOutput) Gpu() ElastigroupGpuArrayOutput {
 	return o.ApplyT(func(v *Elastigroup) ElastigroupGpuArrayOutput { return v.Gpu }).(ElastigroupGpuArrayOutput)
+}
+
+func (o ElastigroupOutput) InstanceNamePrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Elastigroup) pulumi.StringPtrOutput { return v.InstanceNamePrefix }).(pulumi.StringPtrOutput)
 }
 
 func (o ElastigroupOutput) InstanceTypesCustoms() ElastigroupInstanceTypesCustomArrayOutput {

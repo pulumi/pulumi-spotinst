@@ -111,6 +111,7 @@ export class Elastigroup extends pulumi.CustomResource {
     public readonly drainingTimeout!: pulumi.Output<number | undefined>;
     public readonly fallbackToOndemand!: pulumi.Output<boolean | undefined>;
     public readonly gpu!: pulumi.Output<outputs.gke.ElastigroupGpu[] | undefined>;
+    public readonly instanceNamePrefix!: pulumi.Output<string | undefined>;
     public readonly instanceTypesCustoms!: pulumi.Output<outputs.gke.ElastigroupInstanceTypesCustom[] | undefined>;
     public readonly instanceTypesOndemand!: pulumi.Output<string | undefined>;
     public readonly instanceTypesPreemptibles!: pulumi.Output<string[] | undefined>;
@@ -161,6 +162,7 @@ export class Elastigroup extends pulumi.CustomResource {
             resourceInputs["drainingTimeout"] = state ? state.drainingTimeout : undefined;
             resourceInputs["fallbackToOndemand"] = state ? state.fallbackToOndemand : undefined;
             resourceInputs["gpu"] = state ? state.gpu : undefined;
+            resourceInputs["instanceNamePrefix"] = state ? state.instanceNamePrefix : undefined;
             resourceInputs["instanceTypesCustoms"] = state ? state.instanceTypesCustoms : undefined;
             resourceInputs["instanceTypesOndemand"] = state ? state.instanceTypesOndemand : undefined;
             resourceInputs["instanceTypesPreemptibles"] = state ? state.instanceTypesPreemptibles : undefined;
@@ -199,6 +201,7 @@ export class Elastigroup extends pulumi.CustomResource {
             resourceInputs["drainingTimeout"] = args ? args.drainingTimeout : undefined;
             resourceInputs["fallbackToOndemand"] = args ? args.fallbackToOndemand : undefined;
             resourceInputs["gpu"] = args ? args.gpu : undefined;
+            resourceInputs["instanceNamePrefix"] = args ? args.instanceNamePrefix : undefined;
             resourceInputs["instanceTypesCustoms"] = args ? args.instanceTypesCustoms : undefined;
             resourceInputs["instanceTypesOndemand"] = args ? args.instanceTypesOndemand : undefined;
             resourceInputs["instanceTypesPreemptibles"] = args ? args.instanceTypesPreemptibles : undefined;
@@ -247,6 +250,7 @@ export interface ElastigroupState {
     drainingTimeout?: pulumi.Input<number>;
     fallbackToOndemand?: pulumi.Input<boolean>;
     gpu?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupGpu>[]>;
+    instanceNamePrefix?: pulumi.Input<string>;
     instanceTypesCustoms?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupInstanceTypesCustom>[]>;
     instanceTypesOndemand?: pulumi.Input<string>;
     instanceTypesPreemptibles?: pulumi.Input<pulumi.Input<string>[]>;
@@ -297,6 +301,7 @@ export interface ElastigroupArgs {
     drainingTimeout?: pulumi.Input<number>;
     fallbackToOndemand?: pulumi.Input<boolean>;
     gpu?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupGpu>[]>;
+    instanceNamePrefix?: pulumi.Input<string>;
     instanceTypesCustoms?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupInstanceTypesCustom>[]>;
     instanceTypesOndemand?: pulumi.Input<string>;
     instanceTypesPreemptibles?: pulumi.Input<pulumi.Input<string>[]>;

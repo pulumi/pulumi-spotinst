@@ -27,6 +27,7 @@ class OceanLaunchSpecArgs:
                  elastic_ip_pools: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecElasticIpPoolArgs']]]] = None,
                  iam_instance_profile: Optional[pulumi.Input[str]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
+                 images: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecImageArgs']]]] = None,
                  instance_metadata_options: Optional[pulumi.Input['OceanLaunchSpecInstanceMetadataOptionsArgs']] = None,
                  instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  labels: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecLabelArgs']]]] = None,
@@ -91,6 +92,8 @@ class OceanLaunchSpecArgs:
             pulumi.set(__self__, "iam_instance_profile", iam_instance_profile)
         if image_id is not None:
             pulumi.set(__self__, "image_id", image_id)
+        if images is not None:
+            pulumi.set(__self__, "images", images)
         if instance_metadata_options is not None:
             pulumi.set(__self__, "instance_metadata_options", instance_metadata_options)
         if instance_types is not None:
@@ -251,6 +254,15 @@ class OceanLaunchSpecArgs:
     @image_id.setter
     def image_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "image_id", value)
+
+    @property
+    @pulumi.getter
+    def images(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecImageArgs']]]]:
+        return pulumi.get(self, "images")
+
+    @images.setter
+    def images(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecImageArgs']]]]):
+        pulumi.set(self, "images", value)
 
     @property
     @pulumi.getter(name="instanceMetadataOptions")
@@ -461,6 +473,7 @@ class _OceanLaunchSpecState:
                  elastic_ip_pools: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecElasticIpPoolArgs']]]] = None,
                  iam_instance_profile: Optional[pulumi.Input[str]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
+                 images: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecImageArgs']]]] = None,
                  instance_metadata_options: Optional[pulumi.Input['OceanLaunchSpecInstanceMetadataOptionsArgs']] = None,
                  instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  labels: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecLabelArgs']]]] = None,
@@ -525,6 +538,8 @@ class _OceanLaunchSpecState:
             pulumi.set(__self__, "iam_instance_profile", iam_instance_profile)
         if image_id is not None:
             pulumi.set(__self__, "image_id", image_id)
+        if images is not None:
+            pulumi.set(__self__, "images", images)
         if instance_metadata_options is not None:
             pulumi.set(__self__, "instance_metadata_options", instance_metadata_options)
         if instance_types is not None:
@@ -675,6 +690,15 @@ class _OceanLaunchSpecState:
     @image_id.setter
     def image_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "image_id", value)
+
+    @property
+    @pulumi.getter
+    def images(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecImageArgs']]]]:
+        return pulumi.get(self, "images")
+
+    @images.setter
+    def images(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecImageArgs']]]]):
+        pulumi.set(self, "images", value)
 
     @property
     @pulumi.getter(name="instanceMetadataOptions")
@@ -899,6 +923,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
                  elastic_ip_pools: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecElasticIpPoolArgs']]]]] = None,
                  iam_instance_profile: Optional[pulumi.Input[str]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
+                 images: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecImageArgs']]]]] = None,
                  instance_metadata_options: Optional[pulumi.Input[pulumi.InputType['OceanLaunchSpecInstanceMetadataOptionsArgs']]] = None,
                  instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  labels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecLabelArgs']]]]] = None,
@@ -1231,6 +1256,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
                  elastic_ip_pools: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecElasticIpPoolArgs']]]]] = None,
                  iam_instance_profile: Optional[pulumi.Input[str]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
+                 images: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecImageArgs']]]]] = None,
                  instance_metadata_options: Optional[pulumi.Input[pulumi.InputType['OceanLaunchSpecInstanceMetadataOptionsArgs']]] = None,
                  instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  labels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecLabelArgs']]]]] = None,
@@ -1268,6 +1294,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
             __props__.__dict__["elastic_ip_pools"] = elastic_ip_pools
             __props__.__dict__["iam_instance_profile"] = iam_instance_profile
             __props__.__dict__["image_id"] = image_id
+            __props__.__dict__["images"] = images
             __props__.__dict__["instance_metadata_options"] = instance_metadata_options
             __props__.__dict__["instance_types"] = instance_types
             __props__.__dict__["labels"] = labels
@@ -1308,6 +1335,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
             elastic_ip_pools: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecElasticIpPoolArgs']]]]] = None,
             iam_instance_profile: Optional[pulumi.Input[str]] = None,
             image_id: Optional[pulumi.Input[str]] = None,
+            images: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecImageArgs']]]]] = None,
             instance_metadata_options: Optional[pulumi.Input[pulumi.InputType['OceanLaunchSpecInstanceMetadataOptionsArgs']]] = None,
             instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             labels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecLabelArgs']]]]] = None,
@@ -1371,6 +1399,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
         __props__.__dict__["elastic_ip_pools"] = elastic_ip_pools
         __props__.__dict__["iam_instance_profile"] = iam_instance_profile
         __props__.__dict__["image_id"] = image_id
+        __props__.__dict__["images"] = images
         __props__.__dict__["instance_metadata_options"] = instance_metadata_options
         __props__.__dict__["instance_types"] = instance_types
         __props__.__dict__["labels"] = labels
@@ -1464,6 +1493,11 @@ class OceanLaunchSpec(pulumi.CustomResource):
         ID of the image used to launch the instances.
         """
         return pulumi.get(self, "image_id")
+
+    @property
+    @pulumi.getter
+    def images(self) -> pulumi.Output[Optional[Sequence['outputs.OceanLaunchSpecImage']]]:
+        return pulumi.get(self, "images")
 
     @property
     @pulumi.getter(name="instanceMetadataOptions")

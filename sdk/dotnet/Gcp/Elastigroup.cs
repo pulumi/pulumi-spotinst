@@ -16,6 +16,7 @@ namespace Pulumi.SpotInst.Gcp
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using SpotInst = Pulumi.SpotInst;
     /// 
@@ -74,6 +75,7 @@ namespace Pulumi.SpotInst.Gcp
     ///         },
     ///         DrainingTimeout = 180,
     ///         FallbackToOndemand = true,
+    ///         InstanceNamePrefix = "test-123a",
     ///         InstanceTypesCustoms = new[]
     ///         {
     ///             new SpotInst.Gcp.Inputs.ElastigroupInstanceTypesCustomArgs
@@ -216,6 +218,14 @@ namespace Pulumi.SpotInst.Gcp
         /// </summary>
         [Output("healthCheckType")]
         public Output<string?> HealthCheckType { get; private set; } = null!;
+
+        /// <summary>
+        /// Set an instance name prefix to be used for all launched instances and their boot disk. The prefix value should comply with the following limitations: 
+        /// * A maximal length of 25 characters.
+        /// * The first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
+        /// </summary>
+        [Output("instanceNamePrefix")]
+        public Output<string?> InstanceNamePrefix { get; private set; } = null!;
 
         /// <summary>
         /// Defines a set of custom instance types. Required if instance_types_preemptible and instance_types_ondemand are not set.
@@ -473,6 +483,14 @@ namespace Pulumi.SpotInst.Gcp
         /// </summary>
         [Input("healthCheckType")]
         public Input<string>? HealthCheckType { get; set; }
+
+        /// <summary>
+        /// Set an instance name prefix to be used for all launched instances and their boot disk. The prefix value should comply with the following limitations: 
+        /// * A maximal length of 25 characters.
+        /// * The first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
+        /// </summary>
+        [Input("instanceNamePrefix")]
+        public Input<string>? InstanceNamePrefix { get; set; }
 
         [Input("instanceTypesCustoms")]
         private InputList<Inputs.ElastigroupInstanceTypesCustomArgs>? _instanceTypesCustoms;
@@ -751,6 +769,14 @@ namespace Pulumi.SpotInst.Gcp
         /// </summary>
         [Input("healthCheckType")]
         public Input<string>? HealthCheckType { get; set; }
+
+        /// <summary>
+        /// Set an instance name prefix to be used for all launched instances and their boot disk. The prefix value should comply with the following limitations: 
+        /// * A maximal length of 25 characters.
+        /// * The first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
+        /// </summary>
+        [Input("instanceNamePrefix")]
+        public Input<string>? InstanceNamePrefix { get; set; }
 
         [Input("instanceTypesCustoms")]
         private InputList<Inputs.ElastigroupInstanceTypesCustomGetArgs>? _instanceTypesCustoms;

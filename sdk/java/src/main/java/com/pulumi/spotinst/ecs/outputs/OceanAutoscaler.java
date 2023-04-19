@@ -31,6 +31,11 @@ public final class OceanAutoscaler {
      */
     private @Nullable OceanAutoscalerDown down;
     /**
+     * @return When set to true, both automatic and per custom launch specification manual headroom to be saved concurrently and independently in the cluster. prerequisite: isAutoConfig must be true
+     * 
+     */
+    private @Nullable Boolean enableAutomaticAndManualHeadroom;
+    /**
      * @return Spare resource capacity management enabling fast assignment of tasks without waiting for new resources to launch.
      * 
      */
@@ -77,6 +82,13 @@ public final class OceanAutoscaler {
      */
     public Optional<OceanAutoscalerDown> down() {
         return Optional.ofNullable(this.down);
+    }
+    /**
+     * @return When set to true, both automatic and per custom launch specification manual headroom to be saved concurrently and independently in the cluster. prerequisite: isAutoConfig must be true
+     * 
+     */
+    public Optional<Boolean> enableAutomaticAndManualHeadroom() {
+        return Optional.ofNullable(this.enableAutomaticAndManualHeadroom);
     }
     /**
      * @return Spare resource capacity management enabling fast assignment of tasks without waiting for new resources to launch.
@@ -126,6 +138,7 @@ public final class OceanAutoscaler {
         private @Nullable Integer autoHeadroomPercentage;
         private @Nullable Integer cooldown;
         private @Nullable OceanAutoscalerDown down;
+        private @Nullable Boolean enableAutomaticAndManualHeadroom;
         private @Nullable OceanAutoscalerHeadroom headroom;
         private @Nullable Boolean isAutoConfig;
         private @Nullable Boolean isEnabled;
@@ -137,6 +150,7 @@ public final class OceanAutoscaler {
     	      this.autoHeadroomPercentage = defaults.autoHeadroomPercentage;
     	      this.cooldown = defaults.cooldown;
     	      this.down = defaults.down;
+    	      this.enableAutomaticAndManualHeadroom = defaults.enableAutomaticAndManualHeadroom;
     	      this.headroom = defaults.headroom;
     	      this.isAutoConfig = defaults.isAutoConfig;
     	      this.isEnabled = defaults.isEnabled;
@@ -157,6 +171,11 @@ public final class OceanAutoscaler {
         @CustomType.Setter
         public Builder down(@Nullable OceanAutoscalerDown down) {
             this.down = down;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder enableAutomaticAndManualHeadroom(@Nullable Boolean enableAutomaticAndManualHeadroom) {
+            this.enableAutomaticAndManualHeadroom = enableAutomaticAndManualHeadroom;
             return this;
         }
         @CustomType.Setter
@@ -189,6 +208,7 @@ public final class OceanAutoscaler {
             o.autoHeadroomPercentage = autoHeadroomPercentage;
             o.cooldown = cooldown;
             o.down = down;
+            o.enableAutomaticAndManualHeadroom = enableAutomaticAndManualHeadroom;
             o.headroom = headroom;
             o.isAutoConfig = isAutoConfig;
             o.isEnabled = isEnabled;

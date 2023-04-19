@@ -138,6 +138,7 @@ __all__ = [
     'OceanLaunchSpecDeleteOptionsArgs',
     'OceanLaunchSpecElasticIpPoolArgs',
     'OceanLaunchSpecElasticIpPoolTagSelectorArgs',
+    'OceanLaunchSpecImageArgs',
     'OceanLaunchSpecInstanceMetadataOptionsArgs',
     'OceanLaunchSpecLabelArgs',
     'OceanLaunchSpecResourceLimitArgs',
@@ -9592,6 +9593,29 @@ class OceanLaunchSpecElasticIpPoolTagSelectorArgs:
     @tag_value.setter
     def tag_value(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "tag_value", value)
+
+
+@pulumi.input_type
+class OceanLaunchSpecImageArgs:
+    def __init__(__self__, *,
+                 image_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] image_id: ID of the image used to launch the instances.
+        """
+        if image_id is not None:
+            pulumi.set(__self__, "image_id", image_id)
+
+    @property
+    @pulumi.getter(name="imageId")
+    def image_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        ID of the image used to launch the instances.
+        """
+        return pulumi.get(self, "image_id")
+
+    @image_id.setter
+    def image_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "image_id", value)
 
 
 @pulumi.input_type

@@ -19791,6 +19791,103 @@ func (o OceanLaunchSpecElasticIpPoolTagSelectorPtrOutput) TagValue() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
+type OceanLaunchSpecImage struct {
+	// ID of the image used to launch the instances.
+	ImageId *string `pulumi:"imageId"`
+}
+
+// OceanLaunchSpecImageInput is an input type that accepts OceanLaunchSpecImageArgs and OceanLaunchSpecImageOutput values.
+// You can construct a concrete instance of `OceanLaunchSpecImageInput` via:
+//
+//	OceanLaunchSpecImageArgs{...}
+type OceanLaunchSpecImageInput interface {
+	pulumi.Input
+
+	ToOceanLaunchSpecImageOutput() OceanLaunchSpecImageOutput
+	ToOceanLaunchSpecImageOutputWithContext(context.Context) OceanLaunchSpecImageOutput
+}
+
+type OceanLaunchSpecImageArgs struct {
+	// ID of the image used to launch the instances.
+	ImageId pulumi.StringPtrInput `pulumi:"imageId"`
+}
+
+func (OceanLaunchSpecImageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanLaunchSpecImage)(nil)).Elem()
+}
+
+func (i OceanLaunchSpecImageArgs) ToOceanLaunchSpecImageOutput() OceanLaunchSpecImageOutput {
+	return i.ToOceanLaunchSpecImageOutputWithContext(context.Background())
+}
+
+func (i OceanLaunchSpecImageArgs) ToOceanLaunchSpecImageOutputWithContext(ctx context.Context) OceanLaunchSpecImageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLaunchSpecImageOutput)
+}
+
+// OceanLaunchSpecImageArrayInput is an input type that accepts OceanLaunchSpecImageArray and OceanLaunchSpecImageArrayOutput values.
+// You can construct a concrete instance of `OceanLaunchSpecImageArrayInput` via:
+//
+//	OceanLaunchSpecImageArray{ OceanLaunchSpecImageArgs{...} }
+type OceanLaunchSpecImageArrayInput interface {
+	pulumi.Input
+
+	ToOceanLaunchSpecImageArrayOutput() OceanLaunchSpecImageArrayOutput
+	ToOceanLaunchSpecImageArrayOutputWithContext(context.Context) OceanLaunchSpecImageArrayOutput
+}
+
+type OceanLaunchSpecImageArray []OceanLaunchSpecImageInput
+
+func (OceanLaunchSpecImageArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanLaunchSpecImage)(nil)).Elem()
+}
+
+func (i OceanLaunchSpecImageArray) ToOceanLaunchSpecImageArrayOutput() OceanLaunchSpecImageArrayOutput {
+	return i.ToOceanLaunchSpecImageArrayOutputWithContext(context.Background())
+}
+
+func (i OceanLaunchSpecImageArray) ToOceanLaunchSpecImageArrayOutputWithContext(ctx context.Context) OceanLaunchSpecImageArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLaunchSpecImageArrayOutput)
+}
+
+type OceanLaunchSpecImageOutput struct{ *pulumi.OutputState }
+
+func (OceanLaunchSpecImageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanLaunchSpecImage)(nil)).Elem()
+}
+
+func (o OceanLaunchSpecImageOutput) ToOceanLaunchSpecImageOutput() OceanLaunchSpecImageOutput {
+	return o
+}
+
+func (o OceanLaunchSpecImageOutput) ToOceanLaunchSpecImageOutputWithContext(ctx context.Context) OceanLaunchSpecImageOutput {
+	return o
+}
+
+// ID of the image used to launch the instances.
+func (o OceanLaunchSpecImageOutput) ImageId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OceanLaunchSpecImage) *string { return v.ImageId }).(pulumi.StringPtrOutput)
+}
+
+type OceanLaunchSpecImageArrayOutput struct{ *pulumi.OutputState }
+
+func (OceanLaunchSpecImageArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanLaunchSpecImage)(nil)).Elem()
+}
+
+func (o OceanLaunchSpecImageArrayOutput) ToOceanLaunchSpecImageArrayOutput() OceanLaunchSpecImageArrayOutput {
+	return o
+}
+
+func (o OceanLaunchSpecImageArrayOutput) ToOceanLaunchSpecImageArrayOutputWithContext(ctx context.Context) OceanLaunchSpecImageArrayOutput {
+	return o
+}
+
+func (o OceanLaunchSpecImageArrayOutput) Index(i pulumi.IntInput) OceanLaunchSpecImageOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OceanLaunchSpecImage {
+		return vs[0].([]OceanLaunchSpecImage)[vs[1].(int)]
+	}).(OceanLaunchSpecImageOutput)
+}
+
 type OceanLaunchSpecInstanceMetadataOptions struct {
 	// An integer from 1 through 64. The desired HTTP PUT response hop limit for instance metadata requests. The larger the number, the further the instance metadata requests can travel.
 	HttpPutResponseHopLimit *int `pulumi:"httpPutResponseHopLimit"`
@@ -22850,6 +22947,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecElasticIpPoolArrayInput)(nil)).Elem(), OceanLaunchSpecElasticIpPoolArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecElasticIpPoolTagSelectorInput)(nil)).Elem(), OceanLaunchSpecElasticIpPoolTagSelectorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecElasticIpPoolTagSelectorPtrInput)(nil)).Elem(), OceanLaunchSpecElasticIpPoolTagSelectorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecImageInput)(nil)).Elem(), OceanLaunchSpecImageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecImageArrayInput)(nil)).Elem(), OceanLaunchSpecImageArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecInstanceMetadataOptionsInput)(nil)).Elem(), OceanLaunchSpecInstanceMetadataOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecInstanceMetadataOptionsPtrInput)(nil)).Elem(), OceanLaunchSpecInstanceMetadataOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecLabelInput)(nil)).Elem(), OceanLaunchSpecLabelArgs{})
@@ -23148,6 +23247,8 @@ func init() {
 	pulumi.RegisterOutputType(OceanLaunchSpecElasticIpPoolArrayOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecElasticIpPoolTagSelectorOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecElasticIpPoolTagSelectorPtrOutput{})
+	pulumi.RegisterOutputType(OceanLaunchSpecImageOutput{})
+	pulumi.RegisterOutputType(OceanLaunchSpecImageArrayOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecInstanceMetadataOptionsOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecInstanceMetadataOptionsPtrOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecLabelOutput{})
