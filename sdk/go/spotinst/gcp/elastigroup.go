@@ -69,6 +69,7 @@ import (
 //				},
 //				DrainingTimeout:    pulumi.Int(180),
 //				FallbackToOndemand: pulumi.Bool(true),
+//				InstanceNamePrefix: pulumi.String("test-123a"),
 //				InstanceTypesCustoms: gcp.ElastigroupInstanceTypesCustomArray{
 //					&gcp.ElastigroupInstanceTypesCustomArgs{
 //						MemoryGib: pulumi.Int(7),
@@ -165,6 +166,10 @@ type Elastigroup struct {
 	HealthCheckGracePeriod pulumi.IntPtrOutput `pulumi:"healthCheckGracePeriod"`
 	// The kind of health check to perform when monitoring for unhealthiness.
 	HealthCheckType pulumi.StringPtrOutput `pulumi:"healthCheckType"`
+	// Set an instance name prefix to be used for all launched instances and their boot disk. The prefix value should comply with the following limitations:
+	// * A maximal length of 25 characters.
+	// * The first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
+	InstanceNamePrefix pulumi.StringPtrOutput `pulumi:"instanceNamePrefix"`
 	// Defines a set of custom instance types. Required if instanceTypesPreemptible and instanceTypesOndemand are not set.
 	InstanceTypesCustoms ElastigroupInstanceTypesCustomArrayOutput `pulumi:"instanceTypesCustoms"`
 	// The regular VM instance type to use for mixed-type groups and when falling back to on-demand. Required if instanceTypesPreemptible is not set.
@@ -264,6 +269,10 @@ type elastigroupState struct {
 	HealthCheckGracePeriod *int `pulumi:"healthCheckGracePeriod"`
 	// The kind of health check to perform when monitoring for unhealthiness.
 	HealthCheckType *string `pulumi:"healthCheckType"`
+	// Set an instance name prefix to be used for all launched instances and their boot disk. The prefix value should comply with the following limitations:
+	// * A maximal length of 25 characters.
+	// * The first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
+	InstanceNamePrefix *string `pulumi:"instanceNamePrefix"`
 	// Defines a set of custom instance types. Required if instanceTypesPreemptible and instanceTypesOndemand are not set.
 	InstanceTypesCustoms []ElastigroupInstanceTypesCustom `pulumi:"instanceTypesCustoms"`
 	// The regular VM instance type to use for mixed-type groups and when falling back to on-demand. Required if instanceTypesPreemptible is not set.
@@ -332,6 +341,10 @@ type ElastigroupState struct {
 	HealthCheckGracePeriod pulumi.IntPtrInput
 	// The kind of health check to perform when monitoring for unhealthiness.
 	HealthCheckType pulumi.StringPtrInput
+	// Set an instance name prefix to be used for all launched instances and their boot disk. The prefix value should comply with the following limitations:
+	// * A maximal length of 25 characters.
+	// * The first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
+	InstanceNamePrefix pulumi.StringPtrInput
 	// Defines a set of custom instance types. Required if instanceTypesPreemptible and instanceTypesOndemand are not set.
 	InstanceTypesCustoms ElastigroupInstanceTypesCustomArrayInput
 	// The regular VM instance type to use for mixed-type groups and when falling back to on-demand. Required if instanceTypesPreemptible is not set.
@@ -404,6 +417,10 @@ type elastigroupArgs struct {
 	HealthCheckGracePeriod *int `pulumi:"healthCheckGracePeriod"`
 	// The kind of health check to perform when monitoring for unhealthiness.
 	HealthCheckType *string `pulumi:"healthCheckType"`
+	// Set an instance name prefix to be used for all launched instances and their boot disk. The prefix value should comply with the following limitations:
+	// * A maximal length of 25 characters.
+	// * The first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
+	InstanceNamePrefix *string `pulumi:"instanceNamePrefix"`
 	// Defines a set of custom instance types. Required if instanceTypesPreemptible and instanceTypesOndemand are not set.
 	InstanceTypesCustoms []ElastigroupInstanceTypesCustom `pulumi:"instanceTypesCustoms"`
 	// The regular VM instance type to use for mixed-type groups and when falling back to on-demand. Required if instanceTypesPreemptible is not set.
@@ -473,6 +490,10 @@ type ElastigroupArgs struct {
 	HealthCheckGracePeriod pulumi.IntPtrInput
 	// The kind of health check to perform when monitoring for unhealthiness.
 	HealthCheckType pulumi.StringPtrInput
+	// Set an instance name prefix to be used for all launched instances and their boot disk. The prefix value should comply with the following limitations:
+	// * A maximal length of 25 characters.
+	// * The first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
+	InstanceNamePrefix pulumi.StringPtrInput
 	// Defines a set of custom instance types. Required if instanceTypesPreemptible and instanceTypesOndemand are not set.
 	InstanceTypesCustoms ElastigroupInstanceTypesCustomArrayInput
 	// The regular VM instance type to use for mixed-type groups and when falling back to on-demand. Required if instanceTypesPreemptible is not set.
@@ -658,6 +679,13 @@ func (o ElastigroupOutput) HealthCheckGracePeriod() pulumi.IntPtrOutput {
 // The kind of health check to perform when monitoring for unhealthiness.
 func (o ElastigroupOutput) HealthCheckType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Elastigroup) pulumi.StringPtrOutput { return v.HealthCheckType }).(pulumi.StringPtrOutput)
+}
+
+// Set an instance name prefix to be used for all launched instances and their boot disk. The prefix value should comply with the following limitations:
+// * A maximal length of 25 characters.
+// * The first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
+func (o ElastigroupOutput) InstanceNamePrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Elastigroup) pulumi.StringPtrOutput { return v.InstanceNamePrefix }).(pulumi.StringPtrOutput)
 }
 
 // Defines a set of custom instance types. Required if instanceTypesPreemptible and instanceTypesOndemand are not set.

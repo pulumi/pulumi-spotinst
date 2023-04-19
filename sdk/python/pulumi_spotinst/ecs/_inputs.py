@@ -48,6 +48,7 @@ class OceanAutoscalerArgs:
                  auto_headroom_percentage: Optional[pulumi.Input[int]] = None,
                  cooldown: Optional[pulumi.Input[int]] = None,
                  down: Optional[pulumi.Input['OceanAutoscalerDownArgs']] = None,
+                 enable_automatic_and_manual_headroom: Optional[pulumi.Input[bool]] = None,
                  headroom: Optional[pulumi.Input['OceanAutoscalerHeadroomArgs']] = None,
                  is_auto_config: Optional[pulumi.Input[bool]] = None,
                  is_enabled: Optional[pulumi.Input[bool]] = None,
@@ -57,6 +58,7 @@ class OceanAutoscalerArgs:
         :param pulumi.Input[int] auto_headroom_percentage: The auto-headroom percentage. Set a number between 0-200 to control the headroom % of the cluster. Relevant when `isAutoConfig`= true.
         :param pulumi.Input[int] cooldown: Cooldown period between scaling actions.
         :param pulumi.Input['OceanAutoscalerDownArgs'] down: Auto Scaling scale down operations.
+        :param pulumi.Input[bool] enable_automatic_and_manual_headroom: When set to true, both automatic and per custom launch specification manual headroom to be saved concurrently and independently in the cluster. prerequisite: isAutoConfig must be true
         :param pulumi.Input['OceanAutoscalerHeadroomArgs'] headroom: Spare resource capacity management enabling fast assignment of tasks without waiting for new resources to launch.
         :param pulumi.Input[bool] is_auto_config: Automatically configure and optimize headroom resources.
         :param pulumi.Input[bool] is_enabled: Enable the Ocean ECS autoscaler.
@@ -69,6 +71,8 @@ class OceanAutoscalerArgs:
             pulumi.set(__self__, "cooldown", cooldown)
         if down is not None:
             pulumi.set(__self__, "down", down)
+        if enable_automatic_and_manual_headroom is not None:
+            pulumi.set(__self__, "enable_automatic_and_manual_headroom", enable_automatic_and_manual_headroom)
         if headroom is not None:
             pulumi.set(__self__, "headroom", headroom)
         if is_auto_config is not None:
@@ -115,6 +119,18 @@ class OceanAutoscalerArgs:
     @down.setter
     def down(self, value: Optional[pulumi.Input['OceanAutoscalerDownArgs']]):
         pulumi.set(self, "down", value)
+
+    @property
+    @pulumi.getter(name="enableAutomaticAndManualHeadroom")
+    def enable_automatic_and_manual_headroom(self) -> Optional[pulumi.Input[bool]]:
+        """
+        When set to true, both automatic and per custom launch specification manual headroom to be saved concurrently and independently in the cluster. prerequisite: isAutoConfig must be true
+        """
+        return pulumi.get(self, "enable_automatic_and_manual_headroom")
+
+    @enable_automatic_and_manual_headroom.setter
+    def enable_automatic_and_manual_headroom(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_automatic_and_manual_headroom", value)
 
     @property
     @pulumi.getter

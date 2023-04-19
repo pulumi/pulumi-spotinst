@@ -109,6 +109,13 @@ public final class ElastigroupState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.gpu);
     }
 
+    @Import(name="instanceNamePrefix")
+    private @Nullable Output<String> instanceNamePrefix;
+
+    public Optional<Output<String>> instanceNamePrefix() {
+        return Optional.ofNullable(this.instanceNamePrefix);
+    }
+
     @Import(name="instanceTypesCustoms")
     private @Nullable Output<List<ElastigroupInstanceTypesCustomArgs>> instanceTypesCustoms;
 
@@ -290,6 +297,7 @@ public final class ElastigroupState extends com.pulumi.resources.ResourceArgs {
         this.drainingTimeout = $.drainingTimeout;
         this.fallbackToOndemand = $.fallbackToOndemand;
         this.gpu = $.gpu;
+        this.instanceNamePrefix = $.instanceNamePrefix;
         this.instanceTypesCustoms = $.instanceTypesCustoms;
         this.instanceTypesOndemand = $.instanceTypesOndemand;
         this.instanceTypesPreemptibles = $.instanceTypesPreemptibles;
@@ -446,6 +454,15 @@ public final class ElastigroupState extends com.pulumi.resources.ResourceArgs {
 
         public Builder gpu(ElastigroupGpuArgs... gpu) {
             return gpu(List.of(gpu));
+        }
+
+        public Builder instanceNamePrefix(@Nullable Output<String> instanceNamePrefix) {
+            $.instanceNamePrefix = instanceNamePrefix;
+            return this;
+        }
+
+        public Builder instanceNamePrefix(String instanceNamePrefix) {
+            return instanceNamePrefix(Output.of(instanceNamePrefix));
         }
 
         public Builder instanceTypesCustoms(@Nullable Output<List<ElastigroupInstanceTypesCustomArgs>> instanceTypesCustoms) {

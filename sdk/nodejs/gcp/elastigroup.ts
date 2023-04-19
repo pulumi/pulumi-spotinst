@@ -49,6 +49,7 @@ import * as utilities from "../utilities";
  *     }],
  *     drainingTimeout: 180,
  *     fallbackToOndemand: true,
+ *     instanceNamePrefix: "test-123a",
  *     instanceTypesCustoms: [{
  *         memoryGib: 7,
  *         vcpu: 2,
@@ -167,6 +168,12 @@ export class Elastigroup extends pulumi.CustomResource {
      */
     public readonly healthCheckType!: pulumi.Output<string | undefined>;
     /**
+     * Set an instance name prefix to be used for all launched instances and their boot disk. The prefix value should comply with the following limitations: 
+     * * A maximal length of 25 characters.
+     * * The first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
+     */
+    public readonly instanceNamePrefix!: pulumi.Output<string | undefined>;
+    /**
      * Defines a set of custom instance types. Required if instanceTypesPreemptible and instanceTypesOndemand are not set.
      */
     public readonly instanceTypesCustoms!: pulumi.Output<outputs.gcp.ElastigroupInstanceTypesCustom[] | undefined>;
@@ -275,6 +282,7 @@ export class Elastigroup extends pulumi.CustomResource {
             resourceInputs["gpu"] = state ? state.gpu : undefined;
             resourceInputs["healthCheckGracePeriod"] = state ? state.healthCheckGracePeriod : undefined;
             resourceInputs["healthCheckType"] = state ? state.healthCheckType : undefined;
+            resourceInputs["instanceNamePrefix"] = state ? state.instanceNamePrefix : undefined;
             resourceInputs["instanceTypesCustoms"] = state ? state.instanceTypesCustoms : undefined;
             resourceInputs["instanceTypesOndemand"] = state ? state.instanceTypesOndemand : undefined;
             resourceInputs["instanceTypesPreemptibles"] = state ? state.instanceTypesPreemptibles : undefined;
@@ -315,6 +323,7 @@ export class Elastigroup extends pulumi.CustomResource {
             resourceInputs["gpu"] = args ? args.gpu : undefined;
             resourceInputs["healthCheckGracePeriod"] = args ? args.healthCheckGracePeriod : undefined;
             resourceInputs["healthCheckType"] = args ? args.healthCheckType : undefined;
+            resourceInputs["instanceNamePrefix"] = args ? args.instanceNamePrefix : undefined;
             resourceInputs["instanceTypesCustoms"] = args ? args.instanceTypesCustoms : undefined;
             resourceInputs["instanceTypesOndemand"] = args ? args.instanceTypesOndemand : undefined;
             resourceInputs["instanceTypesPreemptibles"] = args ? args.instanceTypesPreemptibles : undefined;
@@ -386,6 +395,12 @@ export interface ElastigroupState {
      * The kind of health check to perform when monitoring for unhealthiness.
      */
     healthCheckType?: pulumi.Input<string>;
+    /**
+     * Set an instance name prefix to be used for all launched instances and their boot disk. The prefix value should comply with the following limitations: 
+     * * A maximal length of 25 characters.
+     * * The first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
+     */
+    instanceNamePrefix?: pulumi.Input<string>;
     /**
      * Defines a set of custom instance types. Required if instanceTypesPreemptible and instanceTypesOndemand are not set.
      */
@@ -513,6 +528,12 @@ export interface ElastigroupArgs {
      * The kind of health check to perform when monitoring for unhealthiness.
      */
     healthCheckType?: pulumi.Input<string>;
+    /**
+     * Set an instance name prefix to be used for all launched instances and their boot disk. The prefix value should comply with the following limitations: 
+     * * A maximal length of 25 characters.
+     * * The first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
+     */
+    instanceNamePrefix?: pulumi.Input<string>;
     /**
      * Defines a set of custom instance types. Required if instanceTypesPreemptible and instanceTypesOndemand are not set.
      */

@@ -27,6 +27,7 @@ class ElastigroupArgs:
                  gpu: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupGpuArgs']]]] = None,
                  health_check_grace_period: Optional[pulumi.Input[int]] = None,
                  health_check_type: Optional[pulumi.Input[str]] = None,
+                 instance_name_prefix: Optional[pulumi.Input[str]] = None,
                  instance_types_customs: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupInstanceTypesCustomArgs']]]] = None,
                  instance_types_ondemand: Optional[pulumi.Input[str]] = None,
                  instance_types_preemptibles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -61,6 +62,9 @@ class ElastigroupArgs:
         :param pulumi.Input[bool] fallback_to_ondemand: Activate fallback-to-on-demand. When provisioning an instance, if no Preemptible market is available, fallback-to-on-demand will provision an On-Demand instance to maintain the group capacity.
         :param pulumi.Input[int] health_check_grace_period: Period of time (seconds) to wait for VM to reach healthiness before monitoring for unhealthiness.
         :param pulumi.Input[str] health_check_type: The kind of health check to perform when monitoring for unhealthiness.
+        :param pulumi.Input[str] instance_name_prefix: Set an instance name prefix to be used for all launched instances and their boot disk. The prefix value should comply with the following limitations: 
+               * A maximal length of 25 characters.
+               * The first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
         :param pulumi.Input[Sequence[pulumi.Input['ElastigroupInstanceTypesCustomArgs']]] instance_types_customs: Defines a set of custom instance types. Required if instance_types_preemptible and instance_types_ondemand are not set.
         :param pulumi.Input[str] instance_types_ondemand: The regular VM instance type to use for mixed-type groups and when falling back to on-demand. Required if instance_types_preemptible is not set.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types_preemptibles: The preemptible VMs instance type. To maximize cost savings and market availability, select as many types as possible. Required if instance_types_ondemand is not set.
@@ -106,6 +110,8 @@ class ElastigroupArgs:
             pulumi.set(__self__, "health_check_grace_period", health_check_grace_period)
         if health_check_type is not None:
             pulumi.set(__self__, "health_check_type", health_check_type)
+        if instance_name_prefix is not None:
+            pulumi.set(__self__, "instance_name_prefix", instance_name_prefix)
         if instance_types_customs is not None:
             pulumi.set(__self__, "instance_types_customs", instance_types_customs)
         if instance_types_ondemand is not None:
@@ -277,6 +283,20 @@ class ElastigroupArgs:
     @health_check_type.setter
     def health_check_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "health_check_type", value)
+
+    @property
+    @pulumi.getter(name="instanceNamePrefix")
+    def instance_name_prefix(self) -> Optional[pulumi.Input[str]]:
+        """
+        Set an instance name prefix to be used for all launched instances and their boot disk. The prefix value should comply with the following limitations: 
+        * A maximal length of 25 characters.
+        * The first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
+        """
+        return pulumi.get(self, "instance_name_prefix")
+
+    @instance_name_prefix.setter
+    def instance_name_prefix(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_name_prefix", value)
 
     @property
     @pulumi.getter(name="instanceTypesCustoms")
@@ -569,6 +589,7 @@ class _ElastigroupState:
                  gpu: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupGpuArgs']]]] = None,
                  health_check_grace_period: Optional[pulumi.Input[int]] = None,
                  health_check_type: Optional[pulumi.Input[str]] = None,
+                 instance_name_prefix: Optional[pulumi.Input[str]] = None,
                  instance_types_customs: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupInstanceTypesCustomArgs']]]] = None,
                  instance_types_ondemand: Optional[pulumi.Input[str]] = None,
                  instance_types_preemptibles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -603,6 +624,9 @@ class _ElastigroupState:
         :param pulumi.Input[bool] fallback_to_ondemand: Activate fallback-to-on-demand. When provisioning an instance, if no Preemptible market is available, fallback-to-on-demand will provision an On-Demand instance to maintain the group capacity.
         :param pulumi.Input[int] health_check_grace_period: Period of time (seconds) to wait for VM to reach healthiness before monitoring for unhealthiness.
         :param pulumi.Input[str] health_check_type: The kind of health check to perform when monitoring for unhealthiness.
+        :param pulumi.Input[str] instance_name_prefix: Set an instance name prefix to be used for all launched instances and their boot disk. The prefix value should comply with the following limitations: 
+               * A maximal length of 25 characters.
+               * The first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
         :param pulumi.Input[Sequence[pulumi.Input['ElastigroupInstanceTypesCustomArgs']]] instance_types_customs: Defines a set of custom instance types. Required if instance_types_preemptible and instance_types_ondemand are not set.
         :param pulumi.Input[str] instance_types_ondemand: The regular VM instance type to use for mixed-type groups and when falling back to on-demand. Required if instance_types_preemptible is not set.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types_preemptibles: The preemptible VMs instance type. To maximize cost savings and market availability, select as many types as possible. Required if instance_types_ondemand is not set.
@@ -649,6 +673,8 @@ class _ElastigroupState:
             pulumi.set(__self__, "health_check_grace_period", health_check_grace_period)
         if health_check_type is not None:
             pulumi.set(__self__, "health_check_type", health_check_type)
+        if instance_name_prefix is not None:
+            pulumi.set(__self__, "instance_name_prefix", instance_name_prefix)
         if instance_types_customs is not None:
             pulumi.set(__self__, "instance_types_customs", instance_types_customs)
         if instance_types_ondemand is not None:
@@ -820,6 +846,20 @@ class _ElastigroupState:
     @health_check_type.setter
     def health_check_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "health_check_type", value)
+
+    @property
+    @pulumi.getter(name="instanceNamePrefix")
+    def instance_name_prefix(self) -> Optional[pulumi.Input[str]]:
+        """
+        Set an instance name prefix to be used for all launched instances and their boot disk. The prefix value should comply with the following limitations: 
+        * A maximal length of 25 characters.
+        * The first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
+        """
+        return pulumi.get(self, "instance_name_prefix")
+
+    @instance_name_prefix.setter
+    def instance_name_prefix(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_name_prefix", value)
 
     @property
     @pulumi.getter(name="instanceTypesCustoms")
@@ -1114,6 +1154,7 @@ class Elastigroup(pulumi.CustomResource):
                  gpu: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupGpuArgs']]]]] = None,
                  health_check_grace_period: Optional[pulumi.Input[int]] = None,
                  health_check_type: Optional[pulumi.Input[str]] = None,
+                 instance_name_prefix: Optional[pulumi.Input[str]] = None,
                  instance_types_customs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupInstanceTypesCustomArgs']]]]] = None,
                  instance_types_ondemand: Optional[pulumi.Input[str]] = None,
                  instance_types_preemptibles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1182,6 +1223,7 @@ class Elastigroup(pulumi.CustomResource):
             )],
             draining_timeout=180,
             fallback_to_ondemand=True,
+            instance_name_prefix="test-123a",
             instance_types_customs=[spotinst.gcp.ElastigroupInstanceTypesCustomArgs(
                 memory_gib=7,
                 vcpu=2,
@@ -1243,6 +1285,9 @@ class Elastigroup(pulumi.CustomResource):
         :param pulumi.Input[bool] fallback_to_ondemand: Activate fallback-to-on-demand. When provisioning an instance, if no Preemptible market is available, fallback-to-on-demand will provision an On-Demand instance to maintain the group capacity.
         :param pulumi.Input[int] health_check_grace_period: Period of time (seconds) to wait for VM to reach healthiness before monitoring for unhealthiness.
         :param pulumi.Input[str] health_check_type: The kind of health check to perform when monitoring for unhealthiness.
+        :param pulumi.Input[str] instance_name_prefix: Set an instance name prefix to be used for all launched instances and their boot disk. The prefix value should comply with the following limitations: 
+               * A maximal length of 25 characters.
+               * The first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupInstanceTypesCustomArgs']]]] instance_types_customs: Defines a set of custom instance types. Required if instance_types_preemptible and instance_types_ondemand are not set.
         :param pulumi.Input[str] instance_types_ondemand: The regular VM instance type to use for mixed-type groups and when falling back to on-demand. Required if instance_types_preemptible is not set.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types_preemptibles: The preemptible VMs instance type. To maximize cost savings and market availability, select as many types as possible. Required if instance_types_ondemand is not set.
@@ -1313,6 +1358,7 @@ class Elastigroup(pulumi.CustomResource):
             )],
             draining_timeout=180,
             fallback_to_ondemand=True,
+            instance_name_prefix="test-123a",
             instance_types_customs=[spotinst.gcp.ElastigroupInstanceTypesCustomArgs(
                 memory_gib=7,
                 vcpu=2,
@@ -1390,6 +1436,7 @@ class Elastigroup(pulumi.CustomResource):
                  gpu: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupGpuArgs']]]]] = None,
                  health_check_grace_period: Optional[pulumi.Input[int]] = None,
                  health_check_type: Optional[pulumi.Input[str]] = None,
+                 instance_name_prefix: Optional[pulumi.Input[str]] = None,
                  instance_types_customs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupInstanceTypesCustomArgs']]]]] = None,
                  instance_types_ondemand: Optional[pulumi.Input[str]] = None,
                  instance_types_preemptibles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1439,6 +1486,7 @@ class Elastigroup(pulumi.CustomResource):
             __props__.__dict__["gpu"] = gpu
             __props__.__dict__["health_check_grace_period"] = health_check_grace_period
             __props__.__dict__["health_check_type"] = health_check_type
+            __props__.__dict__["instance_name_prefix"] = instance_name_prefix
             __props__.__dict__["instance_types_customs"] = instance_types_customs
             __props__.__dict__["instance_types_ondemand"] = instance_types_ondemand
             __props__.__dict__["instance_types_preemptibles"] = instance_types_preemptibles
@@ -1484,6 +1532,7 @@ class Elastigroup(pulumi.CustomResource):
             gpu: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupGpuArgs']]]]] = None,
             health_check_grace_period: Optional[pulumi.Input[int]] = None,
             health_check_type: Optional[pulumi.Input[str]] = None,
+            instance_name_prefix: Optional[pulumi.Input[str]] = None,
             instance_types_customs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupInstanceTypesCustomArgs']]]]] = None,
             instance_types_ondemand: Optional[pulumi.Input[str]] = None,
             instance_types_preemptibles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1523,6 +1572,9 @@ class Elastigroup(pulumi.CustomResource):
         :param pulumi.Input[bool] fallback_to_ondemand: Activate fallback-to-on-demand. When provisioning an instance, if no Preemptible market is available, fallback-to-on-demand will provision an On-Demand instance to maintain the group capacity.
         :param pulumi.Input[int] health_check_grace_period: Period of time (seconds) to wait for VM to reach healthiness before monitoring for unhealthiness.
         :param pulumi.Input[str] health_check_type: The kind of health check to perform when monitoring for unhealthiness.
+        :param pulumi.Input[str] instance_name_prefix: Set an instance name prefix to be used for all launched instances and their boot disk. The prefix value should comply with the following limitations: 
+               * A maximal length of 25 characters.
+               * The first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupInstanceTypesCustomArgs']]]] instance_types_customs: Defines a set of custom instance types. Required if instance_types_preemptible and instance_types_ondemand are not set.
         :param pulumi.Input[str] instance_types_ondemand: The regular VM instance type to use for mixed-type groups and when falling back to on-demand. Required if instance_types_preemptible is not set.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types_preemptibles: The preemptible VMs instance type. To maximize cost savings and market availability, select as many types as possible. Required if instance_types_ondemand is not set.
@@ -1559,6 +1611,7 @@ class Elastigroup(pulumi.CustomResource):
         __props__.__dict__["gpu"] = gpu
         __props__.__dict__["health_check_grace_period"] = health_check_grace_period
         __props__.__dict__["health_check_type"] = health_check_type
+        __props__.__dict__["instance_name_prefix"] = instance_name_prefix
         __props__.__dict__["instance_types_customs"] = instance_types_customs
         __props__.__dict__["instance_types_ondemand"] = instance_types_ondemand
         __props__.__dict__["instance_types_preemptibles"] = instance_types_preemptibles
@@ -1663,6 +1716,16 @@ class Elastigroup(pulumi.CustomResource):
         The kind of health check to perform when monitoring for unhealthiness.
         """
         return pulumi.get(self, "health_check_type")
+
+    @property
+    @pulumi.getter(name="instanceNamePrefix")
+    def instance_name_prefix(self) -> pulumi.Output[Optional[str]]:
+        """
+        Set an instance name prefix to be used for all launched instances and their boot disk. The prefix value should comply with the following limitations: 
+        * A maximal length of 25 characters.
+        * The first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
+        """
+        return pulumi.get(self, "instance_name_prefix")
 
     @property
     @pulumi.getter(name="instanceTypesCustoms")

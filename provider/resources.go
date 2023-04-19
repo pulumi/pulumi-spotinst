@@ -16,14 +16,18 @@ package spotinst
 
 import (
 	"fmt"
+	// embed is used to store bridge-metadata.json in the compiled binary
+	_ "embed"
 	"path/filepath"
 	"strings"
 	"unicode"
 
 	"github.com/pulumi/pulumi-spotinst/provider/v3/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/x"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
+	"github.com/pulumi/pulumi/sdk/v3/go/common/util/contract"
 	"github.com/spotinst/terraform-provider-spotinst/spotinst"
 )
 
@@ -185,8 +189,10 @@ func Provider() tfbridge.ProviderInfo {
 				"Pulumi": "3.*",
 			},
 			Namespaces: namespaceMap,
-		},
+		}, MetadataInfo: tfbridge.NewProviderMetadata(metadata),
 	}
+	err := x.AutoAliasing(&prov, prov.GetMetadata())
+	contract.AssertNoErrorf(err, "auto aliasing apply failed")
 
 	prov.SetAutonaming(255, "-")
 
@@ -196,3 +202,6 @@ func Provider() tfbridge.ProviderInfo {
 var noUpstreamDocs = &tfbridge.DocInfo{
 	Markdown: []byte(" "),
 }
+
+//go:embed cmd/pulumi-resource-spotinst/bridge-metadata.json
+var metadata []byte

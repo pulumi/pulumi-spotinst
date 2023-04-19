@@ -31,6 +31,12 @@ namespace Pulumi.SpotInst.Ecs.Inputs
         public Input<Inputs.OceanAutoscalerDownArgs>? Down { get; set; }
 
         /// <summary>
+        /// When set to true, both automatic and per custom launch specification manual headroom to be saved concurrently and independently in the cluster. prerequisite: isAutoConfig must be true
+        /// </summary>
+        [Input("enableAutomaticAndManualHeadroom")]
+        public Input<bool>? EnableAutomaticAndManualHeadroom { get; set; }
+
+        /// <summary>
         /// Spare resource capacity management enabling fast assignment of tasks without waiting for new resources to launch.
         /// </summary>
         [Input("headroom")]

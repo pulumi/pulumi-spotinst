@@ -197,6 +197,7 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
      * ID of the image used to launch the instances.
      */
     public readonly imageId!: pulumi.Output<string | undefined>;
+    public readonly images!: pulumi.Output<outputs.aws.OceanLaunchSpecImage[] | undefined>;
     /**
      * Ocean instance metadata options object for IMDSv2.
      */
@@ -284,6 +285,7 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
             resourceInputs["elasticIpPools"] = state ? state.elasticIpPools : undefined;
             resourceInputs["iamInstanceProfile"] = state ? state.iamInstanceProfile : undefined;
             resourceInputs["imageId"] = state ? state.imageId : undefined;
+            resourceInputs["images"] = state ? state.images : undefined;
             resourceInputs["instanceMetadataOptions"] = state ? state.instanceMetadataOptions : undefined;
             resourceInputs["instanceTypes"] = state ? state.instanceTypes : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
@@ -317,6 +319,7 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
             resourceInputs["elasticIpPools"] = args ? args.elasticIpPools : undefined;
             resourceInputs["iamInstanceProfile"] = args ? args.iamInstanceProfile : undefined;
             resourceInputs["imageId"] = args ? args.imageId : undefined;
+            resourceInputs["images"] = args ? args.images : undefined;
             resourceInputs["instanceMetadataOptions"] = args ? args.instanceMetadataOptions : undefined;
             resourceInputs["instanceTypes"] = args ? args.instanceTypes : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
@@ -379,6 +382,7 @@ export interface OceanLaunchSpecState {
      * ID of the image used to launch the instances.
      */
     imageId?: pulumi.Input<string>;
+    images?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecImage>[]>;
     /**
      * Ocean instance metadata options object for IMDSv2.
      */
@@ -482,6 +486,7 @@ export interface OceanLaunchSpecArgs {
      * ID of the image used to launch the instances.
      */
     imageId?: pulumi.Input<string>;
+    images?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecImage>[]>;
     /**
      * Ocean instance metadata options object for IMDSv2.
      */

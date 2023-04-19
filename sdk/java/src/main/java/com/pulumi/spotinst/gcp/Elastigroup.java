@@ -94,6 +94,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .drainingTimeout(180)
  *             .fallbackToOndemand(true)
+ *             .instanceNamePrefix(&#34;test-123a&#34;)
  *             .instanceTypesCustoms(ElastigroupInstanceTypesCustomArgs.builder()
  *                 .memoryGib(7)
  *                 .vcpu(2)
@@ -283,6 +284,24 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> healthCheckType() {
         return Codegen.optional(this.healthCheckType);
+    }
+    /**
+     * Set an instance name prefix to be used for all launched instances and their boot disk. The prefix value should comply with the following limitations:
+     * * A maximal length of 25 characters.
+     * * The first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
+     * 
+     */
+    @Export(name="instanceNamePrefix", type=String.class, parameters={})
+    private Output</* @Nullable */ String> instanceNamePrefix;
+
+    /**
+     * @return Set an instance name prefix to be used for all launched instances and their boot disk. The prefix value should comply with the following limitations:
+     * * A maximal length of 25 characters.
+     * * The first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
+     * 
+     */
+    public Output<Optional<String>> instanceNamePrefix() {
+        return Codegen.optional(this.instanceNamePrefix);
     }
     /**
      * Defines a set of custom instance types. Required if instance_types_preemptible and instance_types_ondemand are not set.

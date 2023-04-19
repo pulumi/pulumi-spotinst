@@ -181,6 +181,25 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Set an instance name prefix to be used for all launched instances and their boot disk. The prefix value should comply with the following limitations:
+     * * A maximal length of 25 characters.
+     * * The first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
+     * 
+     */
+    @Import(name="instanceNamePrefix")
+    private @Nullable Output<String> instanceNamePrefix;
+
+    /**
+     * @return Set an instance name prefix to be used for all launched instances and their boot disk. The prefix value should comply with the following limitations:
+     * * A maximal length of 25 characters.
+     * * The first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
+     * 
+     */
+    public Optional<Output<String>> instanceNamePrefix() {
+        return Optional.ofNullable(this.instanceNamePrefix);
+    }
+
+    /**
      * Defines a set of custom instance types. Required if instance_types_preemptible and instance_types_ondemand are not set.
      * 
      */
@@ -522,6 +541,7 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
         this.gpu = $.gpu;
         this.healthCheckGracePeriod = $.healthCheckGracePeriod;
         this.healthCheckType = $.healthCheckType;
+        this.instanceNamePrefix = $.instanceNamePrefix;
         this.instanceTypesCustoms = $.instanceTypesCustoms;
         this.instanceTypesOndemand = $.instanceTypesOndemand;
         this.instanceTypesPreemptibles = $.instanceTypesPreemptibles;
@@ -793,6 +813,31 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder healthCheckType(String healthCheckType) {
             return healthCheckType(Output.of(healthCheckType));
+        }
+
+        /**
+         * @param instanceNamePrefix Set an instance name prefix to be used for all launched instances and their boot disk. The prefix value should comply with the following limitations:
+         * * A maximal length of 25 characters.
+         * * The first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceNamePrefix(@Nullable Output<String> instanceNamePrefix) {
+            $.instanceNamePrefix = instanceNamePrefix;
+            return this;
+        }
+
+        /**
+         * @param instanceNamePrefix Set an instance name prefix to be used for all launched instances and their boot disk. The prefix value should comply with the following limitations:
+         * * A maximal length of 25 characters.
+         * * The first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceNamePrefix(String instanceNamePrefix) {
+            return instanceNamePrefix(Output.of(instanceNamePrefix));
         }
 
         /**

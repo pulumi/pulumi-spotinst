@@ -2830,6 +2830,13 @@ export namespace aws {
         tagValue?: pulumi.Input<string>;
     }
 
+    export interface OceanLaunchSpecImage {
+        /**
+         * ID of the image used to launch the instances.
+         */
+        imageId?: pulumi.Input<string>;
+    }
+
     export interface OceanLaunchSpecInstanceMetadataOptions {
         /**
          * An integer from 1 through 64. The desired HTTP PUT response hop limit for instance metadata requests. The larger the number, the further the instance metadata requests can travel.
@@ -3859,6 +3866,10 @@ export namespace ecs {
          * Auto Scaling scale down operations.
          */
         down?: pulumi.Input<inputs.ecs.OceanAutoscalerDown>;
+        /**
+         * When set to true, both automatic and per custom launch specification manual headroom to be saved concurrently and independently in the cluster. prerequisite: isAutoConfig must be true
+         */
+        enableAutomaticAndManualHeadroom?: pulumi.Input<boolean>;
         /**
          * Spare resource capacity management enabling fast assignment of tasks without waiting for new resources to launch.
          */

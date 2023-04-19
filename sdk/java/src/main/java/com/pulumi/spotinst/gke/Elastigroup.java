@@ -181,6 +181,12 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
     public Output<Optional<List<ElastigroupGpu>>> gpu() {
         return Codegen.optional(this.gpu);
     }
+    @Export(name="instanceNamePrefix", type=String.class, parameters={})
+    private Output</* @Nullable */ String> instanceNamePrefix;
+
+    public Output<Optional<String>> instanceNamePrefix() {
+        return Codegen.optional(this.instanceNamePrefix);
+    }
     @Export(name="instanceTypesCustoms", type=List.class, parameters={ElastigroupInstanceTypesCustom.class})
     private Output</* @Nullable */ List<ElastigroupInstanceTypesCustom>> instanceTypesCustoms;
 

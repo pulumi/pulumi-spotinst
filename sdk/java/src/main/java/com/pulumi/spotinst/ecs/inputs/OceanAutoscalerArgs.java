@@ -65,6 +65,21 @@ public final class OceanAutoscalerArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * When set to true, both automatic and per custom launch specification manual headroom to be saved concurrently and independently in the cluster. prerequisite: isAutoConfig must be true
+     * 
+     */
+    @Import(name="enableAutomaticAndManualHeadroom")
+    private @Nullable Output<Boolean> enableAutomaticAndManualHeadroom;
+
+    /**
+     * @return When set to true, both automatic and per custom launch specification manual headroom to be saved concurrently and independently in the cluster. prerequisite: isAutoConfig must be true
+     * 
+     */
+    public Optional<Output<Boolean>> enableAutomaticAndManualHeadroom() {
+        return Optional.ofNullable(this.enableAutomaticAndManualHeadroom);
+    }
+
+    /**
      * Spare resource capacity management enabling fast assignment of tasks without waiting for new resources to launch.
      * 
      */
@@ -145,6 +160,7 @@ public final class OceanAutoscalerArgs extends com.pulumi.resources.ResourceArgs
         this.autoHeadroomPercentage = $.autoHeadroomPercentage;
         this.cooldown = $.cooldown;
         this.down = $.down;
+        this.enableAutomaticAndManualHeadroom = $.enableAutomaticAndManualHeadroom;
         this.headroom = $.headroom;
         this.isAutoConfig = $.isAutoConfig;
         this.isEnabled = $.isEnabled;
@@ -231,6 +247,27 @@ public final class OceanAutoscalerArgs extends com.pulumi.resources.ResourceArgs
          */
         public Builder down(OceanAutoscalerDownArgs down) {
             return down(Output.of(down));
+        }
+
+        /**
+         * @param enableAutomaticAndManualHeadroom When set to true, both automatic and per custom launch specification manual headroom to be saved concurrently and independently in the cluster. prerequisite: isAutoConfig must be true
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableAutomaticAndManualHeadroom(@Nullable Output<Boolean> enableAutomaticAndManualHeadroom) {
+            $.enableAutomaticAndManualHeadroom = enableAutomaticAndManualHeadroom;
+            return this;
+        }
+
+        /**
+         * @param enableAutomaticAndManualHeadroom When set to true, both automatic and per custom launch specification manual headroom to be saved concurrently and independently in the cluster. prerequisite: isAutoConfig must be true
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableAutomaticAndManualHeadroom(Boolean enableAutomaticAndManualHeadroom) {
+            return enableAutomaticAndManualHeadroom(Output.of(enableAutomaticAndManualHeadroom));
         }
 
         /**

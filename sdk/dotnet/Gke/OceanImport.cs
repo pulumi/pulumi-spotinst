@@ -14,6 +14,7 @@ namespace Pulumi.SpotInst.Gke
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using SpotInst = Pulumi.SpotInst;
     /// 
@@ -67,6 +68,7 @@ namespace Pulumi.SpotInst.Gke
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
@@ -86,6 +88,7 @@ namespace Pulumi.SpotInst.Gke
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
@@ -108,6 +111,7 @@ namespace Pulumi.SpotInst.Gke
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 

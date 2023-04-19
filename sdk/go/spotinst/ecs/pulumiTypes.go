@@ -17,6 +17,8 @@ type OceanAutoscaler struct {
 	Cooldown *int `pulumi:"cooldown"`
 	// Auto Scaling scale down operations.
 	Down *OceanAutoscalerDown `pulumi:"down"`
+	// When set to true, both automatic and per custom launch specification manual headroom to be saved concurrently and independently in the cluster. prerequisite: isAutoConfig must be true
+	EnableAutomaticAndManualHeadroom *bool `pulumi:"enableAutomaticAndManualHeadroom"`
 	// Spare resource capacity management enabling fast assignment of tasks without waiting for new resources to launch.
 	Headroom *OceanAutoscalerHeadroom `pulumi:"headroom"`
 	// Automatically configure and optimize headroom resources.
@@ -47,6 +49,8 @@ type OceanAutoscalerArgs struct {
 	Cooldown pulumi.IntPtrInput `pulumi:"cooldown"`
 	// Auto Scaling scale down operations.
 	Down OceanAutoscalerDownPtrInput `pulumi:"down"`
+	// When set to true, both automatic and per custom launch specification manual headroom to be saved concurrently and independently in the cluster. prerequisite: isAutoConfig must be true
+	EnableAutomaticAndManualHeadroom pulumi.BoolPtrInput `pulumi:"enableAutomaticAndManualHeadroom"`
 	// Spare resource capacity management enabling fast assignment of tasks without waiting for new resources to launch.
 	Headroom OceanAutoscalerHeadroomPtrInput `pulumi:"headroom"`
 	// Automatically configure and optimize headroom resources.
@@ -151,6 +155,11 @@ func (o OceanAutoscalerOutput) Down() OceanAutoscalerDownPtrOutput {
 	return o.ApplyT(func(v OceanAutoscaler) *OceanAutoscalerDown { return v.Down }).(OceanAutoscalerDownPtrOutput)
 }
 
+// When set to true, both automatic and per custom launch specification manual headroom to be saved concurrently and independently in the cluster. prerequisite: isAutoConfig must be true
+func (o OceanAutoscalerOutput) EnableAutomaticAndManualHeadroom() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OceanAutoscaler) *bool { return v.EnableAutomaticAndManualHeadroom }).(pulumi.BoolPtrOutput)
+}
+
 // Spare resource capacity management enabling fast assignment of tasks without waiting for new resources to launch.
 func (o OceanAutoscalerOutput) Headroom() OceanAutoscalerHeadroomPtrOutput {
 	return o.ApplyT(func(v OceanAutoscaler) *OceanAutoscalerHeadroom { return v.Headroom }).(OceanAutoscalerHeadroomPtrOutput)
@@ -228,6 +237,16 @@ func (o OceanAutoscalerPtrOutput) Down() OceanAutoscalerDownPtrOutput {
 		}
 		return v.Down
 	}).(OceanAutoscalerDownPtrOutput)
+}
+
+// When set to true, both automatic and per custom launch specification manual headroom to be saved concurrently and independently in the cluster. prerequisite: isAutoConfig must be true
+func (o OceanAutoscalerPtrOutput) EnableAutomaticAndManualHeadroom() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OceanAutoscaler) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableAutomaticAndManualHeadroom
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Spare resource capacity management enabling fast assignment of tasks without waiting for new resources to launch.

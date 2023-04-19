@@ -23,6 +23,7 @@ namespace Pulumi.SpotInst.Gke
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using SpotInst = Pulumi.SpotInst;
     /// 
@@ -125,6 +126,9 @@ namespace Pulumi.SpotInst.Gke
 
         [Output("gpu")]
         public Output<ImmutableArray<Outputs.ElastigroupGpu>> Gpu { get; private set; } = null!;
+
+        [Output("instanceNamePrefix")]
+        public Output<string?> InstanceNamePrefix { get; private set; } = null!;
 
         [Output("instanceTypesCustoms")]
         public Output<ImmutableArray<Outputs.ElastigroupInstanceTypesCustom>> InstanceTypesCustoms { get; private set; } = null!;
@@ -288,6 +292,9 @@ namespace Pulumi.SpotInst.Gke
             get => _gpu ?? (_gpu = new InputList<Inputs.ElastigroupGpuArgs>());
             set => _gpu = value;
         }
+
+        [Input("instanceNamePrefix")]
+        public Input<string>? InstanceNamePrefix { get; set; }
 
         [Input("instanceTypesCustoms")]
         private InputList<Inputs.ElastigroupInstanceTypesCustomArgs>? _instanceTypesCustoms;
@@ -453,6 +460,9 @@ namespace Pulumi.SpotInst.Gke
             get => _gpu ?? (_gpu = new InputList<Inputs.ElastigroupGpuGetArgs>());
             set => _gpu = value;
         }
+
+        [Input("instanceNamePrefix")]
+        public Input<string>? InstanceNamePrefix { get; set; }
 
         [Input("instanceTypesCustoms")]
         private InputList<Inputs.ElastigroupInstanceTypesCustomGetArgs>? _instanceTypesCustoms;
