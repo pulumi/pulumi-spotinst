@@ -3,25 +3,23 @@
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 jobs:
-  update_bridge:
+  upgrade-provider:
     if: ${{ github.event.pull_request.title }} =~ 'Upgrade terraform-provider-'
-    name: upgrade-provider
+    name: upgrade
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/github-script@v6
+    - uses: pulumi/pulumi-upgrade-provider-action@v0.0.1
       with:
-        github-token: ${{ secrets.PULUMI_BOT_TOKEN }}
-        script: |-
-          await github.rest.actions.createWorkflowDispatch({
-              owner: 'pulumi',
-              repo: 'upgrade-provider',
-              workflow_id: 'upgrade-provider.yml',
-              ref: 'main',
-              inputs: {
-          	    'provider-name': 'pulumi-spotinst'
-              }})
+        provider-repo: "pulumi-spotinst"
+        gh-token: ${{ secrets.PULUMI_BOT_TOKEN }}
+        branch: "master"
+        slack-webhook: ${{ secrets.SLACK_WEBHOOK_URL }}
+        slack-channel: "provider-upgrade-status"
+        git-username: "Pulumi bot"
+        git-email: "bot@pulumi.com"
 name: Upgrade provider
 on:
   pull_request:
     types:
     - opened
+  push: 
