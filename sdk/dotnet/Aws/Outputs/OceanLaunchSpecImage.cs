@@ -14,7 +14,7 @@ namespace Pulumi.SpotInst.Aws.Outputs
     public sealed class OceanLaunchSpecImage
     {
         /// <summary>
-        /// ID of the image used to launch the instances.
+        /// Identifier of the image in AWS. Valid values: any string which is not empty or null.
         /// </summary>
         public readonly string? ImageId;
 

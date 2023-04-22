@@ -5354,6 +5354,346 @@ func (o OceanLaunchSpecMetadataArrayOutput) Index(i pulumi.IntInput) OceanLaunch
 	}).(OceanLaunchSpecMetadataOutput)
 }
 
+type OceanLaunchSpecNetworkInterface struct {
+	// The network protocol of the VNG.
+	AccessConfigs []OceanLaunchSpecNetworkInterfaceAccessConfig `pulumi:"accessConfigs"`
+	// use the imported node pool’s associated aliasIpRange to assign secondary IP addresses to the nodes. Cannot be changed after VNG creation.
+	AliasIpRanges []OceanLaunchSpecNetworkInterfaceAliasIpRange `pulumi:"aliasIpRanges"`
+	// The name of the network.
+	Network string `pulumi:"network"`
+	// Use a network resource from a different project. Set the project identifier to use its network resource. This parameter is relevant only if the network resource is in a different project.
+	ProjectId *string `pulumi:"projectId"`
+}
+
+// OceanLaunchSpecNetworkInterfaceInput is an input type that accepts OceanLaunchSpecNetworkInterfaceArgs and OceanLaunchSpecNetworkInterfaceOutput values.
+// You can construct a concrete instance of `OceanLaunchSpecNetworkInterfaceInput` via:
+//
+//	OceanLaunchSpecNetworkInterfaceArgs{...}
+type OceanLaunchSpecNetworkInterfaceInput interface {
+	pulumi.Input
+
+	ToOceanLaunchSpecNetworkInterfaceOutput() OceanLaunchSpecNetworkInterfaceOutput
+	ToOceanLaunchSpecNetworkInterfaceOutputWithContext(context.Context) OceanLaunchSpecNetworkInterfaceOutput
+}
+
+type OceanLaunchSpecNetworkInterfaceArgs struct {
+	// The network protocol of the VNG.
+	AccessConfigs OceanLaunchSpecNetworkInterfaceAccessConfigArrayInput `pulumi:"accessConfigs"`
+	// use the imported node pool’s associated aliasIpRange to assign secondary IP addresses to the nodes. Cannot be changed after VNG creation.
+	AliasIpRanges OceanLaunchSpecNetworkInterfaceAliasIpRangeArrayInput `pulumi:"aliasIpRanges"`
+	// The name of the network.
+	Network pulumi.StringInput `pulumi:"network"`
+	// Use a network resource from a different project. Set the project identifier to use its network resource. This parameter is relevant only if the network resource is in a different project.
+	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
+}
+
+func (OceanLaunchSpecNetworkInterfaceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanLaunchSpecNetworkInterface)(nil)).Elem()
+}
+
+func (i OceanLaunchSpecNetworkInterfaceArgs) ToOceanLaunchSpecNetworkInterfaceOutput() OceanLaunchSpecNetworkInterfaceOutput {
+	return i.ToOceanLaunchSpecNetworkInterfaceOutputWithContext(context.Background())
+}
+
+func (i OceanLaunchSpecNetworkInterfaceArgs) ToOceanLaunchSpecNetworkInterfaceOutputWithContext(ctx context.Context) OceanLaunchSpecNetworkInterfaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLaunchSpecNetworkInterfaceOutput)
+}
+
+// OceanLaunchSpecNetworkInterfaceArrayInput is an input type that accepts OceanLaunchSpecNetworkInterfaceArray and OceanLaunchSpecNetworkInterfaceArrayOutput values.
+// You can construct a concrete instance of `OceanLaunchSpecNetworkInterfaceArrayInput` via:
+//
+//	OceanLaunchSpecNetworkInterfaceArray{ OceanLaunchSpecNetworkInterfaceArgs{...} }
+type OceanLaunchSpecNetworkInterfaceArrayInput interface {
+	pulumi.Input
+
+	ToOceanLaunchSpecNetworkInterfaceArrayOutput() OceanLaunchSpecNetworkInterfaceArrayOutput
+	ToOceanLaunchSpecNetworkInterfaceArrayOutputWithContext(context.Context) OceanLaunchSpecNetworkInterfaceArrayOutput
+}
+
+type OceanLaunchSpecNetworkInterfaceArray []OceanLaunchSpecNetworkInterfaceInput
+
+func (OceanLaunchSpecNetworkInterfaceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanLaunchSpecNetworkInterface)(nil)).Elem()
+}
+
+func (i OceanLaunchSpecNetworkInterfaceArray) ToOceanLaunchSpecNetworkInterfaceArrayOutput() OceanLaunchSpecNetworkInterfaceArrayOutput {
+	return i.ToOceanLaunchSpecNetworkInterfaceArrayOutputWithContext(context.Background())
+}
+
+func (i OceanLaunchSpecNetworkInterfaceArray) ToOceanLaunchSpecNetworkInterfaceArrayOutputWithContext(ctx context.Context) OceanLaunchSpecNetworkInterfaceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLaunchSpecNetworkInterfaceArrayOutput)
+}
+
+type OceanLaunchSpecNetworkInterfaceOutput struct{ *pulumi.OutputState }
+
+func (OceanLaunchSpecNetworkInterfaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanLaunchSpecNetworkInterface)(nil)).Elem()
+}
+
+func (o OceanLaunchSpecNetworkInterfaceOutput) ToOceanLaunchSpecNetworkInterfaceOutput() OceanLaunchSpecNetworkInterfaceOutput {
+	return o
+}
+
+func (o OceanLaunchSpecNetworkInterfaceOutput) ToOceanLaunchSpecNetworkInterfaceOutputWithContext(ctx context.Context) OceanLaunchSpecNetworkInterfaceOutput {
+	return o
+}
+
+// The network protocol of the VNG.
+func (o OceanLaunchSpecNetworkInterfaceOutput) AccessConfigs() OceanLaunchSpecNetworkInterfaceAccessConfigArrayOutput {
+	return o.ApplyT(func(v OceanLaunchSpecNetworkInterface) []OceanLaunchSpecNetworkInterfaceAccessConfig {
+		return v.AccessConfigs
+	}).(OceanLaunchSpecNetworkInterfaceAccessConfigArrayOutput)
+}
+
+// use the imported node pool’s associated aliasIpRange to assign secondary IP addresses to the nodes. Cannot be changed after VNG creation.
+func (o OceanLaunchSpecNetworkInterfaceOutput) AliasIpRanges() OceanLaunchSpecNetworkInterfaceAliasIpRangeArrayOutput {
+	return o.ApplyT(func(v OceanLaunchSpecNetworkInterface) []OceanLaunchSpecNetworkInterfaceAliasIpRange {
+		return v.AliasIpRanges
+	}).(OceanLaunchSpecNetworkInterfaceAliasIpRangeArrayOutput)
+}
+
+// The name of the network.
+func (o OceanLaunchSpecNetworkInterfaceOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v OceanLaunchSpecNetworkInterface) string { return v.Network }).(pulumi.StringOutput)
+}
+
+// Use a network resource from a different project. Set the project identifier to use its network resource. This parameter is relevant only if the network resource is in a different project.
+func (o OceanLaunchSpecNetworkInterfaceOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OceanLaunchSpecNetworkInterface) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
+}
+
+type OceanLaunchSpecNetworkInterfaceArrayOutput struct{ *pulumi.OutputState }
+
+func (OceanLaunchSpecNetworkInterfaceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanLaunchSpecNetworkInterface)(nil)).Elem()
+}
+
+func (o OceanLaunchSpecNetworkInterfaceArrayOutput) ToOceanLaunchSpecNetworkInterfaceArrayOutput() OceanLaunchSpecNetworkInterfaceArrayOutput {
+	return o
+}
+
+func (o OceanLaunchSpecNetworkInterfaceArrayOutput) ToOceanLaunchSpecNetworkInterfaceArrayOutputWithContext(ctx context.Context) OceanLaunchSpecNetworkInterfaceArrayOutput {
+	return o
+}
+
+func (o OceanLaunchSpecNetworkInterfaceArrayOutput) Index(i pulumi.IntInput) OceanLaunchSpecNetworkInterfaceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OceanLaunchSpecNetworkInterface {
+		return vs[0].([]OceanLaunchSpecNetworkInterface)[vs[1].(int)]
+	}).(OceanLaunchSpecNetworkInterfaceOutput)
+}
+
+type OceanLaunchSpecNetworkInterfaceAccessConfig struct {
+	// The name of the access configuration.
+	Name *string `pulumi:"name"`
+	// The type of the access configuration.
+	Type *string `pulumi:"type"`
+}
+
+// OceanLaunchSpecNetworkInterfaceAccessConfigInput is an input type that accepts OceanLaunchSpecNetworkInterfaceAccessConfigArgs and OceanLaunchSpecNetworkInterfaceAccessConfigOutput values.
+// You can construct a concrete instance of `OceanLaunchSpecNetworkInterfaceAccessConfigInput` via:
+//
+//	OceanLaunchSpecNetworkInterfaceAccessConfigArgs{...}
+type OceanLaunchSpecNetworkInterfaceAccessConfigInput interface {
+	pulumi.Input
+
+	ToOceanLaunchSpecNetworkInterfaceAccessConfigOutput() OceanLaunchSpecNetworkInterfaceAccessConfigOutput
+	ToOceanLaunchSpecNetworkInterfaceAccessConfigOutputWithContext(context.Context) OceanLaunchSpecNetworkInterfaceAccessConfigOutput
+}
+
+type OceanLaunchSpecNetworkInterfaceAccessConfigArgs struct {
+	// The name of the access configuration.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The type of the access configuration.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (OceanLaunchSpecNetworkInterfaceAccessConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanLaunchSpecNetworkInterfaceAccessConfig)(nil)).Elem()
+}
+
+func (i OceanLaunchSpecNetworkInterfaceAccessConfigArgs) ToOceanLaunchSpecNetworkInterfaceAccessConfigOutput() OceanLaunchSpecNetworkInterfaceAccessConfigOutput {
+	return i.ToOceanLaunchSpecNetworkInterfaceAccessConfigOutputWithContext(context.Background())
+}
+
+func (i OceanLaunchSpecNetworkInterfaceAccessConfigArgs) ToOceanLaunchSpecNetworkInterfaceAccessConfigOutputWithContext(ctx context.Context) OceanLaunchSpecNetworkInterfaceAccessConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLaunchSpecNetworkInterfaceAccessConfigOutput)
+}
+
+// OceanLaunchSpecNetworkInterfaceAccessConfigArrayInput is an input type that accepts OceanLaunchSpecNetworkInterfaceAccessConfigArray and OceanLaunchSpecNetworkInterfaceAccessConfigArrayOutput values.
+// You can construct a concrete instance of `OceanLaunchSpecNetworkInterfaceAccessConfigArrayInput` via:
+//
+//	OceanLaunchSpecNetworkInterfaceAccessConfigArray{ OceanLaunchSpecNetworkInterfaceAccessConfigArgs{...} }
+type OceanLaunchSpecNetworkInterfaceAccessConfigArrayInput interface {
+	pulumi.Input
+
+	ToOceanLaunchSpecNetworkInterfaceAccessConfigArrayOutput() OceanLaunchSpecNetworkInterfaceAccessConfigArrayOutput
+	ToOceanLaunchSpecNetworkInterfaceAccessConfigArrayOutputWithContext(context.Context) OceanLaunchSpecNetworkInterfaceAccessConfigArrayOutput
+}
+
+type OceanLaunchSpecNetworkInterfaceAccessConfigArray []OceanLaunchSpecNetworkInterfaceAccessConfigInput
+
+func (OceanLaunchSpecNetworkInterfaceAccessConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanLaunchSpecNetworkInterfaceAccessConfig)(nil)).Elem()
+}
+
+func (i OceanLaunchSpecNetworkInterfaceAccessConfigArray) ToOceanLaunchSpecNetworkInterfaceAccessConfigArrayOutput() OceanLaunchSpecNetworkInterfaceAccessConfigArrayOutput {
+	return i.ToOceanLaunchSpecNetworkInterfaceAccessConfigArrayOutputWithContext(context.Background())
+}
+
+func (i OceanLaunchSpecNetworkInterfaceAccessConfigArray) ToOceanLaunchSpecNetworkInterfaceAccessConfigArrayOutputWithContext(ctx context.Context) OceanLaunchSpecNetworkInterfaceAccessConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLaunchSpecNetworkInterfaceAccessConfigArrayOutput)
+}
+
+type OceanLaunchSpecNetworkInterfaceAccessConfigOutput struct{ *pulumi.OutputState }
+
+func (OceanLaunchSpecNetworkInterfaceAccessConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanLaunchSpecNetworkInterfaceAccessConfig)(nil)).Elem()
+}
+
+func (o OceanLaunchSpecNetworkInterfaceAccessConfigOutput) ToOceanLaunchSpecNetworkInterfaceAccessConfigOutput() OceanLaunchSpecNetworkInterfaceAccessConfigOutput {
+	return o
+}
+
+func (o OceanLaunchSpecNetworkInterfaceAccessConfigOutput) ToOceanLaunchSpecNetworkInterfaceAccessConfigOutputWithContext(ctx context.Context) OceanLaunchSpecNetworkInterfaceAccessConfigOutput {
+	return o
+}
+
+// The name of the access configuration.
+func (o OceanLaunchSpecNetworkInterfaceAccessConfigOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OceanLaunchSpecNetworkInterfaceAccessConfig) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The type of the access configuration.
+func (o OceanLaunchSpecNetworkInterfaceAccessConfigOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OceanLaunchSpecNetworkInterfaceAccessConfig) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type OceanLaunchSpecNetworkInterfaceAccessConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (OceanLaunchSpecNetworkInterfaceAccessConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanLaunchSpecNetworkInterfaceAccessConfig)(nil)).Elem()
+}
+
+func (o OceanLaunchSpecNetworkInterfaceAccessConfigArrayOutput) ToOceanLaunchSpecNetworkInterfaceAccessConfigArrayOutput() OceanLaunchSpecNetworkInterfaceAccessConfigArrayOutput {
+	return o
+}
+
+func (o OceanLaunchSpecNetworkInterfaceAccessConfigArrayOutput) ToOceanLaunchSpecNetworkInterfaceAccessConfigArrayOutputWithContext(ctx context.Context) OceanLaunchSpecNetworkInterfaceAccessConfigArrayOutput {
+	return o
+}
+
+func (o OceanLaunchSpecNetworkInterfaceAccessConfigArrayOutput) Index(i pulumi.IntInput) OceanLaunchSpecNetworkInterfaceAccessConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OceanLaunchSpecNetworkInterfaceAccessConfig {
+		return vs[0].([]OceanLaunchSpecNetworkInterfaceAccessConfig)[vs[1].(int)]
+	}).(OceanLaunchSpecNetworkInterfaceAccessConfigOutput)
+}
+
+type OceanLaunchSpecNetworkInterfaceAliasIpRange struct {
+	// specify the IP address range in CIDR notation that can be used for the alias IP addresses associated with the imported node pool.
+	IpCidrRange string `pulumi:"ipCidrRange"`
+	// specify the IP address range for the subnet secondary IP range.
+	SubnetworkRangeName string `pulumi:"subnetworkRangeName"`
+}
+
+// OceanLaunchSpecNetworkInterfaceAliasIpRangeInput is an input type that accepts OceanLaunchSpecNetworkInterfaceAliasIpRangeArgs and OceanLaunchSpecNetworkInterfaceAliasIpRangeOutput values.
+// You can construct a concrete instance of `OceanLaunchSpecNetworkInterfaceAliasIpRangeInput` via:
+//
+//	OceanLaunchSpecNetworkInterfaceAliasIpRangeArgs{...}
+type OceanLaunchSpecNetworkInterfaceAliasIpRangeInput interface {
+	pulumi.Input
+
+	ToOceanLaunchSpecNetworkInterfaceAliasIpRangeOutput() OceanLaunchSpecNetworkInterfaceAliasIpRangeOutput
+	ToOceanLaunchSpecNetworkInterfaceAliasIpRangeOutputWithContext(context.Context) OceanLaunchSpecNetworkInterfaceAliasIpRangeOutput
+}
+
+type OceanLaunchSpecNetworkInterfaceAliasIpRangeArgs struct {
+	// specify the IP address range in CIDR notation that can be used for the alias IP addresses associated with the imported node pool.
+	IpCidrRange pulumi.StringInput `pulumi:"ipCidrRange"`
+	// specify the IP address range for the subnet secondary IP range.
+	SubnetworkRangeName pulumi.StringInput `pulumi:"subnetworkRangeName"`
+}
+
+func (OceanLaunchSpecNetworkInterfaceAliasIpRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanLaunchSpecNetworkInterfaceAliasIpRange)(nil)).Elem()
+}
+
+func (i OceanLaunchSpecNetworkInterfaceAliasIpRangeArgs) ToOceanLaunchSpecNetworkInterfaceAliasIpRangeOutput() OceanLaunchSpecNetworkInterfaceAliasIpRangeOutput {
+	return i.ToOceanLaunchSpecNetworkInterfaceAliasIpRangeOutputWithContext(context.Background())
+}
+
+func (i OceanLaunchSpecNetworkInterfaceAliasIpRangeArgs) ToOceanLaunchSpecNetworkInterfaceAliasIpRangeOutputWithContext(ctx context.Context) OceanLaunchSpecNetworkInterfaceAliasIpRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLaunchSpecNetworkInterfaceAliasIpRangeOutput)
+}
+
+// OceanLaunchSpecNetworkInterfaceAliasIpRangeArrayInput is an input type that accepts OceanLaunchSpecNetworkInterfaceAliasIpRangeArray and OceanLaunchSpecNetworkInterfaceAliasIpRangeArrayOutput values.
+// You can construct a concrete instance of `OceanLaunchSpecNetworkInterfaceAliasIpRangeArrayInput` via:
+//
+//	OceanLaunchSpecNetworkInterfaceAliasIpRangeArray{ OceanLaunchSpecNetworkInterfaceAliasIpRangeArgs{...} }
+type OceanLaunchSpecNetworkInterfaceAliasIpRangeArrayInput interface {
+	pulumi.Input
+
+	ToOceanLaunchSpecNetworkInterfaceAliasIpRangeArrayOutput() OceanLaunchSpecNetworkInterfaceAliasIpRangeArrayOutput
+	ToOceanLaunchSpecNetworkInterfaceAliasIpRangeArrayOutputWithContext(context.Context) OceanLaunchSpecNetworkInterfaceAliasIpRangeArrayOutput
+}
+
+type OceanLaunchSpecNetworkInterfaceAliasIpRangeArray []OceanLaunchSpecNetworkInterfaceAliasIpRangeInput
+
+func (OceanLaunchSpecNetworkInterfaceAliasIpRangeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanLaunchSpecNetworkInterfaceAliasIpRange)(nil)).Elem()
+}
+
+func (i OceanLaunchSpecNetworkInterfaceAliasIpRangeArray) ToOceanLaunchSpecNetworkInterfaceAliasIpRangeArrayOutput() OceanLaunchSpecNetworkInterfaceAliasIpRangeArrayOutput {
+	return i.ToOceanLaunchSpecNetworkInterfaceAliasIpRangeArrayOutputWithContext(context.Background())
+}
+
+func (i OceanLaunchSpecNetworkInterfaceAliasIpRangeArray) ToOceanLaunchSpecNetworkInterfaceAliasIpRangeArrayOutputWithContext(ctx context.Context) OceanLaunchSpecNetworkInterfaceAliasIpRangeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLaunchSpecNetworkInterfaceAliasIpRangeArrayOutput)
+}
+
+type OceanLaunchSpecNetworkInterfaceAliasIpRangeOutput struct{ *pulumi.OutputState }
+
+func (OceanLaunchSpecNetworkInterfaceAliasIpRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanLaunchSpecNetworkInterfaceAliasIpRange)(nil)).Elem()
+}
+
+func (o OceanLaunchSpecNetworkInterfaceAliasIpRangeOutput) ToOceanLaunchSpecNetworkInterfaceAliasIpRangeOutput() OceanLaunchSpecNetworkInterfaceAliasIpRangeOutput {
+	return o
+}
+
+func (o OceanLaunchSpecNetworkInterfaceAliasIpRangeOutput) ToOceanLaunchSpecNetworkInterfaceAliasIpRangeOutputWithContext(ctx context.Context) OceanLaunchSpecNetworkInterfaceAliasIpRangeOutput {
+	return o
+}
+
+// specify the IP address range in CIDR notation that can be used for the alias IP addresses associated with the imported node pool.
+func (o OceanLaunchSpecNetworkInterfaceAliasIpRangeOutput) IpCidrRange() pulumi.StringOutput {
+	return o.ApplyT(func(v OceanLaunchSpecNetworkInterfaceAliasIpRange) string { return v.IpCidrRange }).(pulumi.StringOutput)
+}
+
+// specify the IP address range for the subnet secondary IP range.
+func (o OceanLaunchSpecNetworkInterfaceAliasIpRangeOutput) SubnetworkRangeName() pulumi.StringOutput {
+	return o.ApplyT(func(v OceanLaunchSpecNetworkInterfaceAliasIpRange) string { return v.SubnetworkRangeName }).(pulumi.StringOutput)
+}
+
+type OceanLaunchSpecNetworkInterfaceAliasIpRangeArrayOutput struct{ *pulumi.OutputState }
+
+func (OceanLaunchSpecNetworkInterfaceAliasIpRangeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanLaunchSpecNetworkInterfaceAliasIpRange)(nil)).Elem()
+}
+
+func (o OceanLaunchSpecNetworkInterfaceAliasIpRangeArrayOutput) ToOceanLaunchSpecNetworkInterfaceAliasIpRangeArrayOutput() OceanLaunchSpecNetworkInterfaceAliasIpRangeArrayOutput {
+	return o
+}
+
+func (o OceanLaunchSpecNetworkInterfaceAliasIpRangeArrayOutput) ToOceanLaunchSpecNetworkInterfaceAliasIpRangeArrayOutputWithContext(ctx context.Context) OceanLaunchSpecNetworkInterfaceAliasIpRangeArrayOutput {
+	return o
+}
+
+func (o OceanLaunchSpecNetworkInterfaceAliasIpRangeArrayOutput) Index(i pulumi.IntInput) OceanLaunchSpecNetworkInterfaceAliasIpRangeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OceanLaunchSpecNetworkInterfaceAliasIpRange {
+		return vs[0].([]OceanLaunchSpecNetworkInterfaceAliasIpRange)[vs[1].(int)]
+	}).(OceanLaunchSpecNetworkInterfaceAliasIpRangeOutput)
+}
+
 type OceanLaunchSpecResourceLimits struct {
 	// Option to set a maximum number of instances per virtual node group. Can be null. If set, the value must be greater than or equal to 0.
 	MaxInstanceCount *int `pulumi:"maxInstanceCount"`
@@ -6625,6 +6965,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecLabelArrayInput)(nil)).Elem(), OceanLaunchSpecLabelArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecMetadataInput)(nil)).Elem(), OceanLaunchSpecMetadataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecMetadataArrayInput)(nil)).Elem(), OceanLaunchSpecMetadataArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecNetworkInterfaceInput)(nil)).Elem(), OceanLaunchSpecNetworkInterfaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecNetworkInterfaceArrayInput)(nil)).Elem(), OceanLaunchSpecNetworkInterfaceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecNetworkInterfaceAccessConfigInput)(nil)).Elem(), OceanLaunchSpecNetworkInterfaceAccessConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecNetworkInterfaceAccessConfigArrayInput)(nil)).Elem(), OceanLaunchSpecNetworkInterfaceAccessConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecNetworkInterfaceAliasIpRangeInput)(nil)).Elem(), OceanLaunchSpecNetworkInterfaceAliasIpRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecNetworkInterfaceAliasIpRangeArrayInput)(nil)).Elem(), OceanLaunchSpecNetworkInterfaceAliasIpRangeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecResourceLimitsInput)(nil)).Elem(), OceanLaunchSpecResourceLimitsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecResourceLimitsPtrInput)(nil)).Elem(), OceanLaunchSpecResourceLimitsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecSchedulingTaskInput)(nil)).Elem(), OceanLaunchSpecSchedulingTaskArgs{})
@@ -6721,6 +7067,12 @@ func init() {
 	pulumi.RegisterOutputType(OceanLaunchSpecLabelArrayOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecMetadataOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecMetadataArrayOutput{})
+	pulumi.RegisterOutputType(OceanLaunchSpecNetworkInterfaceOutput{})
+	pulumi.RegisterOutputType(OceanLaunchSpecNetworkInterfaceArrayOutput{})
+	pulumi.RegisterOutputType(OceanLaunchSpecNetworkInterfaceAccessConfigOutput{})
+	pulumi.RegisterOutputType(OceanLaunchSpecNetworkInterfaceAccessConfigArrayOutput{})
+	pulumi.RegisterOutputType(OceanLaunchSpecNetworkInterfaceAliasIpRangeOutput{})
+	pulumi.RegisterOutputType(OceanLaunchSpecNetworkInterfaceAliasIpRangeArrayOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecResourceLimitsOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecResourceLimitsPtrOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecSchedulingTaskOutput{})

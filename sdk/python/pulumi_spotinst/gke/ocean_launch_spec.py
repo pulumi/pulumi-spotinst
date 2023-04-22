@@ -23,6 +23,7 @@ class OceanLaunchSpecArgs:
                  labels: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecLabelArgs']]]] = None,
                  metadatas: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecMetadataArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecNetworkInterfaceArgs']]]] = None,
                  node_pool_name: Optional[pulumi.Input[str]] = None,
                  resource_limits: Optional[pulumi.Input['OceanLaunchSpecResourceLimitsArgs']] = None,
                  restrict_scale_down: Optional[pulumi.Input[bool]] = None,
@@ -45,7 +46,8 @@ class OceanLaunchSpecArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: List of supported machine types for the Launch Spec.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecLabelArgs']]] labels: Optionally adds labels to instances launched in an Ocean cluster.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecMetadataArgs']]] metadatas: Cluster's metadata.
-        :param pulumi.Input[str] name: The launch specification name.
+        :param pulumi.Input[str] name: The name of the access configuration.
+        :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecNetworkInterfaceArgs']]] network_interfaces: Settings for network interfaces.
         :param pulumi.Input[str] node_pool_name: The node pool you wish to use in your Launch Spec.
         :param pulumi.Input['OceanLaunchSpecResourceLimitsArgs'] resource_limits: The Ocean virtual node group resource limits object.
         :param pulumi.Input[bool] restrict_scale_down: Boolean. When set to `true`, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
@@ -73,6 +75,8 @@ class OceanLaunchSpecArgs:
             pulumi.set(__self__, "metadatas", metadatas)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if network_interfaces is not None:
+            pulumi.set(__self__, "network_interfaces", network_interfaces)
         if node_pool_name is not None:
             pulumi.set(__self__, "node_pool_name", node_pool_name)
         if resource_limits is not None:
@@ -178,13 +182,25 @@ class OceanLaunchSpecArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The launch specification name.
+        The name of the access configuration.
         """
         return pulumi.get(self, "name")
 
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="networkInterfaces")
+    def network_interfaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecNetworkInterfaceArgs']]]]:
+        """
+        Settings for network interfaces.
+        """
+        return pulumi.get(self, "network_interfaces")
+
+    @network_interfaces.setter
+    def network_interfaces(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecNetworkInterfaceArgs']]]]):
+        pulumi.set(self, "network_interfaces", value)
 
     @property
     @pulumi.getter(name="nodePoolName")
@@ -361,6 +377,7 @@ class _OceanLaunchSpecState:
                  labels: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecLabelArgs']]]] = None,
                  metadatas: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecMetadataArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecNetworkInterfaceArgs']]]] = None,
                  node_pool_name: Optional[pulumi.Input[str]] = None,
                  ocean_id: Optional[pulumi.Input[str]] = None,
                  resource_limits: Optional[pulumi.Input['OceanLaunchSpecResourceLimitsArgs']] = None,
@@ -383,7 +400,8 @@ class _OceanLaunchSpecState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: List of supported machine types for the Launch Spec.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecLabelArgs']]] labels: Optionally adds labels to instances launched in an Ocean cluster.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecMetadataArgs']]] metadatas: Cluster's metadata.
-        :param pulumi.Input[str] name: The launch specification name.
+        :param pulumi.Input[str] name: The name of the access configuration.
+        :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecNetworkInterfaceArgs']]] network_interfaces: Settings for network interfaces.
         :param pulumi.Input[str] node_pool_name: The node pool you wish to use in your Launch Spec.
         :param pulumi.Input[str] ocean_id: The Ocean cluster ID.
         :param pulumi.Input['OceanLaunchSpecResourceLimitsArgs'] resource_limits: The Ocean virtual node group resource limits object.
@@ -411,6 +429,8 @@ class _OceanLaunchSpecState:
             pulumi.set(__self__, "metadatas", metadatas)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if network_interfaces is not None:
+            pulumi.set(__self__, "network_interfaces", network_interfaces)
         if node_pool_name is not None:
             pulumi.set(__self__, "node_pool_name", node_pool_name)
         if ocean_id is not None:
@@ -506,13 +526,25 @@ class _OceanLaunchSpecState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The launch specification name.
+        The name of the access configuration.
         """
         return pulumi.get(self, "name")
 
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="networkInterfaces")
+    def network_interfaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecNetworkInterfaceArgs']]]]:
+        """
+        Settings for network interfaces.
+        """
+        return pulumi.get(self, "network_interfaces")
+
+    @network_interfaces.setter
+    def network_interfaces(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecNetworkInterfaceArgs']]]]):
+        pulumi.set(self, "network_interfaces", value)
 
     @property
     @pulumi.getter(name="nodePoolName")
@@ -703,6 +735,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecLabelArgs']]]]] = None,
                  metadatas: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecMetadataArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecNetworkInterfaceArgs']]]]] = None,
                  node_pool_name: Optional[pulumi.Input[str]] = None,
                  ocean_id: Optional[pulumi.Input[str]] = None,
                  resource_limits: Optional[pulumi.Input[pulumi.InputType['OceanLaunchSpecResourceLimitsArgs']]] = None,
@@ -748,6 +781,18 @@ class OceanLaunchSpec(pulumi.CustomResource):
             metadatas=[spotinst.gke.OceanLaunchSpecMetadataArgs(
                 key="gci-update-strategy",
                 value="update_disabled",
+            )],
+            network_interfaces=[spotinst.gke.OceanLaunchSpecNetworkInterfaceArgs(
+                access_configs=[spotinst.gke.OceanLaunchSpecNetworkInterfaceAccessConfigArgs(
+                    name="external-nat-vng",
+                    type="ONE_TO_ONE_NAT",
+                )],
+                alias_ip_ranges=[spotinst.gke.OceanLaunchSpecNetworkInterfaceAliasIpRangeArgs(
+                    ip_cidr_range="/25",
+                    subnetwork_range_name="gke-test-native-vpc-pods-123456-vng",
+                )],
+                network="test-vng-network",
+                project_id="test-vng-network-project",
             )],
             node_pool_name="default-pool",
             ocean_id="o-123456",
@@ -814,7 +859,8 @@ class OceanLaunchSpec(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: List of supported machine types for the Launch Spec.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecLabelArgs']]]] labels: Optionally adds labels to instances launched in an Ocean cluster.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecMetadataArgs']]]] metadatas: Cluster's metadata.
-        :param pulumi.Input[str] name: The launch specification name.
+        :param pulumi.Input[str] name: The name of the access configuration.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecNetworkInterfaceArgs']]]] network_interfaces: Settings for network interfaces.
         :param pulumi.Input[str] node_pool_name: The node pool you wish to use in your Launch Spec.
         :param pulumi.Input[str] ocean_id: The Ocean cluster ID.
         :param pulumi.Input[pulumi.InputType['OceanLaunchSpecResourceLimitsArgs']] resource_limits: The Ocean virtual node group resource limits object.
@@ -865,6 +911,18 @@ class OceanLaunchSpec(pulumi.CustomResource):
             metadatas=[spotinst.gke.OceanLaunchSpecMetadataArgs(
                 key="gci-update-strategy",
                 value="update_disabled",
+            )],
+            network_interfaces=[spotinst.gke.OceanLaunchSpecNetworkInterfaceArgs(
+                access_configs=[spotinst.gke.OceanLaunchSpecNetworkInterfaceAccessConfigArgs(
+                    name="external-nat-vng",
+                    type="ONE_TO_ONE_NAT",
+                )],
+                alias_ip_ranges=[spotinst.gke.OceanLaunchSpecNetworkInterfaceAliasIpRangeArgs(
+                    ip_cidr_range="/25",
+                    subnetwork_range_name="gke-test-native-vpc-pods-123456-vng",
+                )],
+                network="test-vng-network",
+                project_id="test-vng-network-project",
             )],
             node_pool_name="default-pool",
             ocean_id="o-123456",
@@ -945,6 +1003,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecLabelArgs']]]]] = None,
                  metadatas: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecMetadataArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecNetworkInterfaceArgs']]]]] = None,
                  node_pool_name: Optional[pulumi.Input[str]] = None,
                  ocean_id: Optional[pulumi.Input[str]] = None,
                  resource_limits: Optional[pulumi.Input[pulumi.InputType['OceanLaunchSpecResourceLimitsArgs']]] = None,
@@ -975,6 +1034,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
             __props__.__dict__["labels"] = labels
             __props__.__dict__["metadatas"] = metadatas
             __props__.__dict__["name"] = name
+            __props__.__dict__["network_interfaces"] = network_interfaces
             __props__.__dict__["node_pool_name"] = node_pool_name
             if ocean_id is None and not opts.urn:
                 raise TypeError("Missing required property 'ocean_id'")
@@ -1008,6 +1068,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
             labels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecLabelArgs']]]]] = None,
             metadatas: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecMetadataArgs']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
+            network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecNetworkInterfaceArgs']]]]] = None,
             node_pool_name: Optional[pulumi.Input[str]] = None,
             ocean_id: Optional[pulumi.Input[str]] = None,
             resource_limits: Optional[pulumi.Input[pulumi.InputType['OceanLaunchSpecResourceLimitsArgs']]] = None,
@@ -1035,7 +1096,8 @@ class OceanLaunchSpec(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: List of supported machine types for the Launch Spec.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecLabelArgs']]]] labels: Optionally adds labels to instances launched in an Ocean cluster.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecMetadataArgs']]]] metadatas: Cluster's metadata.
-        :param pulumi.Input[str] name: The launch specification name.
+        :param pulumi.Input[str] name: The name of the access configuration.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecNetworkInterfaceArgs']]]] network_interfaces: Settings for network interfaces.
         :param pulumi.Input[str] node_pool_name: The node pool you wish to use in your Launch Spec.
         :param pulumi.Input[str] ocean_id: The Ocean cluster ID.
         :param pulumi.Input[pulumi.InputType['OceanLaunchSpecResourceLimitsArgs']] resource_limits: The Ocean virtual node group resource limits object.
@@ -1061,6 +1123,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
         __props__.__dict__["labels"] = labels
         __props__.__dict__["metadatas"] = metadatas
         __props__.__dict__["name"] = name
+        __props__.__dict__["network_interfaces"] = network_interfaces
         __props__.__dict__["node_pool_name"] = node_pool_name
         __props__.__dict__["ocean_id"] = ocean_id
         __props__.__dict__["resource_limits"] = resource_limits
@@ -1122,9 +1185,17 @@ class OceanLaunchSpec(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The launch specification name.
+        The name of the access configuration.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="networkInterfaces")
+    def network_interfaces(self) -> pulumi.Output[Optional[Sequence['outputs.OceanLaunchSpecNetworkInterface']]]:
+        """
+        Settings for network interfaces.
+        """
+        return pulumi.get(self, "network_interfaces")
 
     @property
     @pulumi.getter(name="nodePoolName")

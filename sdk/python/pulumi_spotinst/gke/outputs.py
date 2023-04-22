@@ -50,6 +50,9 @@ __all__ = [
     'OceanLaunchSpecAutoscaleHeadroomsAutomatic',
     'OceanLaunchSpecLabel',
     'OceanLaunchSpecMetadata',
+    'OceanLaunchSpecNetworkInterface',
+    'OceanLaunchSpecNetworkInterfaceAccessConfig',
+    'OceanLaunchSpecNetworkInterfaceAliasIpRange',
     'OceanLaunchSpecResourceLimits',
     'OceanLaunchSpecSchedulingTask',
     'OceanLaunchSpecSchedulingTaskTaskHeadroom',
@@ -2203,6 +2206,160 @@ class OceanLaunchSpecMetadata(dict):
         The label value.
         """
         return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class OceanLaunchSpecNetworkInterface(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessConfigs":
+            suggest = "access_configs"
+        elif key == "aliasIpRanges":
+            suggest = "alias_ip_ranges"
+        elif key == "projectId":
+            suggest = "project_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OceanLaunchSpecNetworkInterface. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OceanLaunchSpecNetworkInterface.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OceanLaunchSpecNetworkInterface.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 network: str,
+                 access_configs: Optional[Sequence['outputs.OceanLaunchSpecNetworkInterfaceAccessConfig']] = None,
+                 alias_ip_ranges: Optional[Sequence['outputs.OceanLaunchSpecNetworkInterfaceAliasIpRange']] = None,
+                 project_id: Optional[str] = None):
+        """
+        :param str network: The name of the network.
+        :param Sequence['OceanLaunchSpecNetworkInterfaceAccessConfigArgs'] access_configs: The network protocol of the VNG.
+        :param Sequence['OceanLaunchSpecNetworkInterfaceAliasIpRangeArgs'] alias_ip_ranges: use the imported node pool’s associated aliasIpRange to assign secondary IP addresses to the nodes. Cannot be changed after VNG creation.
+        :param str project_id: Use a network resource from a different project. Set the project identifier to use its network resource. This parameter is relevant only if the network resource is in a different project.
+        """
+        pulumi.set(__self__, "network", network)
+        if access_configs is not None:
+            pulumi.set(__self__, "access_configs", access_configs)
+        if alias_ip_ranges is not None:
+            pulumi.set(__self__, "alias_ip_ranges", alias_ip_ranges)
+        if project_id is not None:
+            pulumi.set(__self__, "project_id", project_id)
+
+    @property
+    @pulumi.getter
+    def network(self) -> str:
+        """
+        The name of the network.
+        """
+        return pulumi.get(self, "network")
+
+    @property
+    @pulumi.getter(name="accessConfigs")
+    def access_configs(self) -> Optional[Sequence['outputs.OceanLaunchSpecNetworkInterfaceAccessConfig']]:
+        """
+        The network protocol of the VNG.
+        """
+        return pulumi.get(self, "access_configs")
+
+    @property
+    @pulumi.getter(name="aliasIpRanges")
+    def alias_ip_ranges(self) -> Optional[Sequence['outputs.OceanLaunchSpecNetworkInterfaceAliasIpRange']]:
+        """
+        use the imported node pool’s associated aliasIpRange to assign secondary IP addresses to the nodes. Cannot be changed after VNG creation.
+        """
+        return pulumi.get(self, "alias_ip_ranges")
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> Optional[str]:
+        """
+        Use a network resource from a different project. Set the project identifier to use its network resource. This parameter is relevant only if the network resource is in a different project.
+        """
+        return pulumi.get(self, "project_id")
+
+
+@pulumi.output_type
+class OceanLaunchSpecNetworkInterfaceAccessConfig(dict):
+    def __init__(__self__, *,
+                 name: Optional[str] = None,
+                 type: Optional[str] = None):
+        """
+        :param str name: The name of the access configuration.
+        :param str type: The type of the access configuration.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        The name of the access configuration.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        """
+        The type of the access configuration.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class OceanLaunchSpecNetworkInterfaceAliasIpRange(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ipCidrRange":
+            suggest = "ip_cidr_range"
+        elif key == "subnetworkRangeName":
+            suggest = "subnetwork_range_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OceanLaunchSpecNetworkInterfaceAliasIpRange. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OceanLaunchSpecNetworkInterfaceAliasIpRange.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OceanLaunchSpecNetworkInterfaceAliasIpRange.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ip_cidr_range: str,
+                 subnetwork_range_name: str):
+        """
+        :param str ip_cidr_range: specify the IP address range in CIDR notation that can be used for the alias IP addresses associated with the imported node pool.
+        :param str subnetwork_range_name: specify the IP address range for the subnet secondary IP range.
+        """
+        pulumi.set(__self__, "ip_cidr_range", ip_cidr_range)
+        pulumi.set(__self__, "subnetwork_range_name", subnetwork_range_name)
+
+    @property
+    @pulumi.getter(name="ipCidrRange")
+    def ip_cidr_range(self) -> str:
+        """
+        specify the IP address range in CIDR notation that can be used for the alias IP addresses associated with the imported node pool.
+        """
+        return pulumi.get(self, "ip_cidr_range")
+
+    @property
+    @pulumi.getter(name="subnetworkRangeName")
+    def subnetwork_range_name(self) -> str:
+        """
+        specify the IP address range for the subnet secondary IP range.
+        """
+        return pulumi.get(self, "subnetwork_range_name")
 
 
 @pulumi.output_type

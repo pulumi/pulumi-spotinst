@@ -19792,7 +19792,7 @@ func (o OceanLaunchSpecElasticIpPoolTagSelectorPtrOutput) TagValue() pulumi.Stri
 }
 
 type OceanLaunchSpecImage struct {
-	// ID of the image used to launch the instances.
+	// Identifier of the image in AWS. Valid values: any string which is not empty or null.
 	ImageId *string `pulumi:"imageId"`
 }
 
@@ -19808,7 +19808,7 @@ type OceanLaunchSpecImageInput interface {
 }
 
 type OceanLaunchSpecImageArgs struct {
-	// ID of the image used to launch the instances.
+	// Identifier of the image in AWS. Valid values: any string which is not empty or null.
 	ImageId pulumi.StringPtrInput `pulumi:"imageId"`
 }
 
@@ -19863,7 +19863,7 @@ func (o OceanLaunchSpecImageOutput) ToOceanLaunchSpecImageOutputWithContext(ctx 
 	return o
 }
 
-// ID of the image used to launch the instances.
+// Identifier of the image in AWS. Valid values: any string which is not empty or null.
 func (o OceanLaunchSpecImageOutput) ImageId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OceanLaunchSpecImage) *string { return v.ImageId }).(pulumi.StringPtrOutput)
 }

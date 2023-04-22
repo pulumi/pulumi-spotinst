@@ -55,7 +55,9 @@ class OceanLaunchSpecArgs:
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecBlockDeviceMappingArgs']]] block_device_mappings: Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecElasticIpPoolArgs']]] elastic_ip_pools: Assign an Elastic IP to the instances spun by the Virtual Node Group. Can be null.
         :param pulumi.Input[str] iam_instance_profile: The ARN or name of an IAM instance profile to associate with launched instances.
-        :param pulumi.Input[str] image_id: ID of the image used to launch the instances.
+        :param pulumi.Input[str] image_id: Identifier of the image in AWS. Valid values: any string which is not empty or null.
+        :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecImageArgs']]] images: Array of objects (Image object, containing the id of the image used to launch instances.) You can configure VNG with either the imageId or images objects, but not both simultaneously.
+               For each architecture type (amd64, arm64) only one AMI is allowed. Valid values: null, or an array with at least one element.
         :param pulumi.Input['OceanLaunchSpecInstanceMetadataOptionsArgs'] instance_metadata_options: Ocean instance metadata options object for IMDSv2.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the cluster.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecLabelArgs']]] labels: Optionally adds labels to instances launched in the cluster.
@@ -247,7 +249,7 @@ class OceanLaunchSpecArgs:
     @pulumi.getter(name="imageId")
     def image_id(self) -> Optional[pulumi.Input[str]]:
         """
-        ID of the image used to launch the instances.
+        Identifier of the image in AWS. Valid values: any string which is not empty or null.
         """
         return pulumi.get(self, "image_id")
 
@@ -258,6 +260,10 @@ class OceanLaunchSpecArgs:
     @property
     @pulumi.getter
     def images(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecImageArgs']]]]:
+        """
+        Array of objects (Image object, containing the id of the image used to launch instances.) You can configure VNG with either the imageId or images objects, but not both simultaneously.
+        For each architecture type (amd64, arm64) only one AMI is allowed. Valid values: null, or an array with at least one element.
+        """
         return pulumi.get(self, "images")
 
     @images.setter
@@ -501,7 +507,9 @@ class _OceanLaunchSpecState:
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecBlockDeviceMappingArgs']]] block_device_mappings: Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecElasticIpPoolArgs']]] elastic_ip_pools: Assign an Elastic IP to the instances spun by the Virtual Node Group. Can be null.
         :param pulumi.Input[str] iam_instance_profile: The ARN or name of an IAM instance profile to associate with launched instances.
-        :param pulumi.Input[str] image_id: ID of the image used to launch the instances.
+        :param pulumi.Input[str] image_id: Identifier of the image in AWS. Valid values: any string which is not empty or null.
+        :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecImageArgs']]] images: Array of objects (Image object, containing the id of the image used to launch instances.) You can configure VNG with either the imageId or images objects, but not both simultaneously.
+               For each architecture type (amd64, arm64) only one AMI is allowed. Valid values: null, or an array with at least one element.
         :param pulumi.Input['OceanLaunchSpecInstanceMetadataOptionsArgs'] instance_metadata_options: Ocean instance metadata options object for IMDSv2.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the cluster.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecLabelArgs']]] labels: Optionally adds labels to instances launched in the cluster.
@@ -683,7 +691,7 @@ class _OceanLaunchSpecState:
     @pulumi.getter(name="imageId")
     def image_id(self) -> Optional[pulumi.Input[str]]:
         """
-        ID of the image used to launch the instances.
+        Identifier of the image in AWS. Valid values: any string which is not empty or null.
         """
         return pulumi.get(self, "image_id")
 
@@ -694,6 +702,10 @@ class _OceanLaunchSpecState:
     @property
     @pulumi.getter
     def images(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecImageArgs']]]]:
+        """
+        Array of objects (Image object, containing the id of the image used to launch instances.) You can configure VNG with either the imageId or images objects, but not both simultaneously.
+        For each architecture type (amd64, arm64) only one AMI is allowed. Valid values: null, or an array with at least one element.
+        """
         return pulumi.get(self, "images")
 
     @images.setter
@@ -996,6 +1008,9 @@ class OceanLaunchSpec(pulumi.CustomResource):
             )],
             iam_instance_profile="iam-profile",
             image_id="ami-123456",
+            images=[spotinst.aws.OceanLaunchSpecImageArgs(
+                image_id="ami-id",
+            )],
             instance_metadata_options=spotinst.aws.OceanLaunchSpecInstanceMetadataOptionsArgs(
                 http_put_response_hop_limit=10,
                 http_tokens="required",
@@ -1080,7 +1095,9 @@ class OceanLaunchSpec(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecBlockDeviceMappingArgs']]]] block_device_mappings: Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecElasticIpPoolArgs']]]] elastic_ip_pools: Assign an Elastic IP to the instances spun by the Virtual Node Group. Can be null.
         :param pulumi.Input[str] iam_instance_profile: The ARN or name of an IAM instance profile to associate with launched instances.
-        :param pulumi.Input[str] image_id: ID of the image used to launch the instances.
+        :param pulumi.Input[str] image_id: Identifier of the image in AWS. Valid values: any string which is not empty or null.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecImageArgs']]]] images: Array of objects (Image object, containing the id of the image used to launch instances.) You can configure VNG with either the imageId or images objects, but not both simultaneously.
+               For each architecture type (amd64, arm64) only one AMI is allowed. Valid values: null, or an array with at least one element.
         :param pulumi.Input[pulumi.InputType['OceanLaunchSpecInstanceMetadataOptionsArgs']] instance_metadata_options: Ocean instance metadata options object for IMDSv2.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the cluster.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecLabelArgs']]]] labels: Optionally adds labels to instances launched in the cluster.
@@ -1156,6 +1173,9 @@ class OceanLaunchSpec(pulumi.CustomResource):
             )],
             iam_instance_profile="iam-profile",
             image_id="ami-123456",
+            images=[spotinst.aws.OceanLaunchSpecImageArgs(
+                image_id="ami-id",
+            )],
             instance_metadata_options=spotinst.aws.OceanLaunchSpecInstanceMetadataOptionsArgs(
                 http_put_response_hop_limit=10,
                 http_tokens="required",
@@ -1368,7 +1388,9 @@ class OceanLaunchSpec(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecBlockDeviceMappingArgs']]]] block_device_mappings: Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecElasticIpPoolArgs']]]] elastic_ip_pools: Assign an Elastic IP to the instances spun by the Virtual Node Group. Can be null.
         :param pulumi.Input[str] iam_instance_profile: The ARN or name of an IAM instance profile to associate with launched instances.
-        :param pulumi.Input[str] image_id: ID of the image used to launch the instances.
+        :param pulumi.Input[str] image_id: Identifier of the image in AWS. Valid values: any string which is not empty or null.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecImageArgs']]]] images: Array of objects (Image object, containing the id of the image used to launch instances.) You can configure VNG with either the imageId or images objects, but not both simultaneously.
+               For each architecture type (amd64, arm64) only one AMI is allowed. Valid values: null, or an array with at least one element.
         :param pulumi.Input[pulumi.InputType['OceanLaunchSpecInstanceMetadataOptionsArgs']] instance_metadata_options: Ocean instance metadata options object for IMDSv2.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the cluster.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecLabelArgs']]]] labels: Optionally adds labels to instances launched in the cluster.
@@ -1490,13 +1512,17 @@ class OceanLaunchSpec(pulumi.CustomResource):
     @pulumi.getter(name="imageId")
     def image_id(self) -> pulumi.Output[Optional[str]]:
         """
-        ID of the image used to launch the instances.
+        Identifier of the image in AWS. Valid values: any string which is not empty or null.
         """
         return pulumi.get(self, "image_id")
 
     @property
     @pulumi.getter
     def images(self) -> pulumi.Output[Optional[Sequence['outputs.OceanLaunchSpecImage']]]:
+        """
+        Array of objects (Image object, containing the id of the image used to launch instances.) You can configure VNG with either the imageId or images objects, but not both simultaneously.
+        For each architecture type (amd64, arm64) only one AMI is allowed. Valid values: null, or an array with at least one element.
+        """
         return pulumi.get(self, "images")
 
     @property

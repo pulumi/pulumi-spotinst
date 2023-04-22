@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class OceanLaunchSpecImage {
     /**
-     * @return ID of the image used to launch the instances.
+     * @return Identifier of the image in AWS. Valid values: any string which is not empty or null.
      * 
      */
     private @Nullable String imageId;
 
     private OceanLaunchSpecImage() {}
     /**
-     * @return ID of the image used to launch the instances.
+     * @return Identifier of the image in AWS. Valid values: any string which is not empty or null.
      * 
      */
     public Optional<String> imageId() {

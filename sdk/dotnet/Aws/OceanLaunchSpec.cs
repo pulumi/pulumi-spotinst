@@ -92,6 +92,13 @@ namespace Pulumi.SpotInst.Aws
     ///         },
     ///         IamInstanceProfile = "iam-profile",
     ///         ImageId = "ami-123456",
+    ///         Images = new[]
+    ///         {
+    ///             new SpotInst.Aws.Inputs.OceanLaunchSpecImageArgs
+    ///             {
+    ///                 ImageId = "ami-id",
+    ///             },
+    ///         },
     ///         InstanceMetadataOptions = new SpotInst.Aws.Inputs.OceanLaunchSpecInstanceMetadataOptionsArgs
     ///         {
     ///             HttpPutResponseHopLimit = 10,
@@ -275,11 +282,15 @@ namespace Pulumi.SpotInst.Aws
         public Output<string?> IamInstanceProfile { get; private set; } = null!;
 
         /// <summary>
-        /// ID of the image used to launch the instances.
+        /// Identifier of the image in AWS. Valid values: any string which is not empty or null.
         /// </summary>
         [Output("imageId")]
         public Output<string?> ImageId { get; private set; } = null!;
 
+        /// <summary>
+        /// Array of objects (Image object, containing the id of the image used to launch instances.) You can configure VNG with either the imageId or images objects, but not both simultaneously.
+        /// For each architecture type (amd64, arm64) only one AMI is allowed. Valid values: null, or an array with at least one element.
+        /// </summary>
         [Output("images")]
         public Output<ImmutableArray<Outputs.OceanLaunchSpecImage>> Images { get; private set; } = null!;
 
@@ -507,13 +518,18 @@ namespace Pulumi.SpotInst.Aws
         public Input<string>? IamInstanceProfile { get; set; }
 
         /// <summary>
-        /// ID of the image used to launch the instances.
+        /// Identifier of the image in AWS. Valid values: any string which is not empty or null.
         /// </summary>
         [Input("imageId")]
         public Input<string>? ImageId { get; set; }
 
         [Input("images")]
         private InputList<Inputs.OceanLaunchSpecImageArgs>? _images;
+
+        /// <summary>
+        /// Array of objects (Image object, containing the id of the image used to launch instances.) You can configure VNG with either the imageId or images objects, but not both simultaneously.
+        /// For each architecture type (amd64, arm64) only one AMI is allowed. Valid values: null, or an array with at least one element.
+        /// </summary>
         public InputList<Inputs.OceanLaunchSpecImageArgs> Images
         {
             get => _images ?? (_images = new InputList<Inputs.OceanLaunchSpecImageArgs>());
@@ -764,13 +780,18 @@ namespace Pulumi.SpotInst.Aws
         public Input<string>? IamInstanceProfile { get; set; }
 
         /// <summary>
-        /// ID of the image used to launch the instances.
+        /// Identifier of the image in AWS. Valid values: any string which is not empty or null.
         /// </summary>
         [Input("imageId")]
         public Input<string>? ImageId { get; set; }
 
         [Input("images")]
         private InputList<Inputs.OceanLaunchSpecImageGetArgs>? _images;
+
+        /// <summary>
+        /// Array of objects (Image object, containing the id of the image used to launch instances.) You can configure VNG with either the imageId or images objects, but not both simultaneously.
+        /// For each architecture type (amd64, arm64) only one AMI is allowed. Valid values: null, or an array with at least one element.
+        /// </summary>
         public InputList<Inputs.OceanLaunchSpecImageGetArgs> Images
         {
             get => _images ?? (_images = new InputList<Inputs.OceanLaunchSpecImageGetArgs>());

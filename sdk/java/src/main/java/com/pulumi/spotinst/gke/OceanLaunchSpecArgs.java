@@ -9,6 +9,7 @@ import com.pulumi.spotinst.gke.inputs.OceanLaunchSpecAutoscaleHeadroomArgs;
 import com.pulumi.spotinst.gke.inputs.OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs;
 import com.pulumi.spotinst.gke.inputs.OceanLaunchSpecLabelArgs;
 import com.pulumi.spotinst.gke.inputs.OceanLaunchSpecMetadataArgs;
+import com.pulumi.spotinst.gke.inputs.OceanLaunchSpecNetworkInterfaceArgs;
 import com.pulumi.spotinst.gke.inputs.OceanLaunchSpecResourceLimitsArgs;
 import com.pulumi.spotinst.gke.inputs.OceanLaunchSpecSchedulingTaskArgs;
 import com.pulumi.spotinst.gke.inputs.OceanLaunchSpecShieldedInstanceConfigArgs;
@@ -105,18 +106,33 @@ public final class OceanLaunchSpecArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The launch specification name.
+     * The name of the access configuration.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The launch specification name.
+     * @return The name of the access configuration.
      * 
      */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
+    }
+
+    /**
+     * Settings for network interfaces.
+     * 
+     */
+    @Import(name="networkInterfaces")
+    private @Nullable Output<List<OceanLaunchSpecNetworkInterfaceArgs>> networkInterfaces;
+
+    /**
+     * @return Settings for network interfaces.
+     * 
+     */
+    public Optional<Output<List<OceanLaunchSpecNetworkInterfaceArgs>>> networkInterfaces() {
+        return Optional.ofNullable(this.networkInterfaces);
     }
 
     /**
@@ -345,6 +361,7 @@ public final class OceanLaunchSpecArgs extends com.pulumi.resources.ResourceArgs
         this.labels = $.labels;
         this.metadatas = $.metadatas;
         this.name = $.name;
+        this.networkInterfaces = $.networkInterfaces;
         this.nodePoolName = $.nodePoolName;
         this.oceanId = $.oceanId;
         this.resourceLimits = $.resourceLimits;
@@ -536,7 +553,7 @@ public final class OceanLaunchSpecArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param name The launch specification name.
+         * @param name The name of the access configuration.
          * 
          * @return builder
          * 
@@ -547,13 +564,44 @@ public final class OceanLaunchSpecArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param name The launch specification name.
+         * @param name The name of the access configuration.
          * 
          * @return builder
          * 
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param networkInterfaces Settings for network interfaces.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networkInterfaces(@Nullable Output<List<OceanLaunchSpecNetworkInterfaceArgs>> networkInterfaces) {
+            $.networkInterfaces = networkInterfaces;
+            return this;
+        }
+
+        /**
+         * @param networkInterfaces Settings for network interfaces.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networkInterfaces(List<OceanLaunchSpecNetworkInterfaceArgs> networkInterfaces) {
+            return networkInterfaces(Output.of(networkInterfaces));
+        }
+
+        /**
+         * @param networkInterfaces Settings for network interfaces.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networkInterfaces(OceanLaunchSpecNetworkInterfaceArgs... networkInterfaces) {
+            return networkInterfaces(List.of(networkInterfaces));
         }
 
         /**
