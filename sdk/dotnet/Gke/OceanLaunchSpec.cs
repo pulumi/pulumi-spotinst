@@ -63,6 +63,30 @@ namespace Pulumi.SpotInst.Gke
     ///                 Value = "update_disabled",
     ///             },
     ///         },
+    ///         NetworkInterfaces = new[]
+    ///         {
+    ///             new SpotInst.Gke.Inputs.OceanLaunchSpecNetworkInterfaceArgs
+    ///             {
+    ///                 AccessConfigs = new[]
+    ///                 {
+    ///                     new SpotInst.Gke.Inputs.OceanLaunchSpecNetworkInterfaceAccessConfigArgs
+    ///                     {
+    ///                         Name = "external-nat-vng",
+    ///                         Type = "ONE_TO_ONE_NAT",
+    ///                     },
+    ///                 },
+    ///                 AliasIpRanges = new[]
+    ///                 {
+    ///                     new SpotInst.Gke.Inputs.OceanLaunchSpecNetworkInterfaceAliasIpRangeArgs
+    ///                     {
+    ///                         IpCidrRange = "/25",
+    ///                         SubnetworkRangeName = "gke-test-native-vpc-pods-123456-vng",
+    ///                     },
+    ///                 },
+    ///                 Network = "test-vng-network",
+    ///                 ProjectId = "test-vng-network-project",
+    ///             },
+    ///         },
     ///         NodePoolName = "default-pool",
     ///         OceanId = "o-123456",
     ///         ResourceLimits = new SpotInst.Gke.Inputs.OceanLaunchSpecResourceLimitsArgs
@@ -192,10 +216,16 @@ namespace Pulumi.SpotInst.Gke
         public Output<ImmutableArray<Outputs.OceanLaunchSpecMetadata>> Metadatas { get; private set; } = null!;
 
         /// <summary>
-        /// The launch specification name.
+        /// The name of the access configuration.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Settings for network interfaces.
+        /// </summary>
+        [Output("networkInterfaces")]
+        public Output<ImmutableArray<Outputs.OceanLaunchSpecNetworkInterface>> NetworkInterfaces { get; private set; } = null!;
 
         /// <summary>
         /// The node pool you wish to use in your Launch Spec.
@@ -391,10 +421,22 @@ namespace Pulumi.SpotInst.Gke
         }
 
         /// <summary>
-        /// The launch specification name.
+        /// The name of the access configuration.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        [Input("networkInterfaces")]
+        private InputList<Inputs.OceanLaunchSpecNetworkInterfaceArgs>? _networkInterfaces;
+
+        /// <summary>
+        /// Settings for network interfaces.
+        /// </summary>
+        public InputList<Inputs.OceanLaunchSpecNetworkInterfaceArgs> NetworkInterfaces
+        {
+            get => _networkInterfaces ?? (_networkInterfaces = new InputList<Inputs.OceanLaunchSpecNetworkInterfaceArgs>());
+            set => _networkInterfaces = value;
+        }
 
         /// <summary>
         /// The node pool you wish to use in your Launch Spec.
@@ -576,10 +618,22 @@ namespace Pulumi.SpotInst.Gke
         }
 
         /// <summary>
-        /// The launch specification name.
+        /// The name of the access configuration.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        [Input("networkInterfaces")]
+        private InputList<Inputs.OceanLaunchSpecNetworkInterfaceGetArgs>? _networkInterfaces;
+
+        /// <summary>
+        /// Settings for network interfaces.
+        /// </summary>
+        public InputList<Inputs.OceanLaunchSpecNetworkInterfaceGetArgs> NetworkInterfaces
+        {
+            get => _networkInterfaces ?? (_networkInterfaces = new InputList<Inputs.OceanLaunchSpecNetworkInterfaceGetArgs>());
+            set => _networkInterfaces = value;
+        }
 
         /// <summary>
         /// The node pool you wish to use in your Launch Spec.

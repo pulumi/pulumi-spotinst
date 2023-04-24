@@ -1694,6 +1694,15 @@
             "spotinst:gke/OceanLaunchSpecAutoscaleHeadroomsAutomatic:OceanLaunchSpecAutoscaleHeadroomsAutomatic": {
                 "autoHeadroomPercentage": "auto_headroom_percentage"
             },
+            "spotinst:gke/OceanLaunchSpecNetworkInterface:OceanLaunchSpecNetworkInterface": {
+                "accessConfigs": "access_configs",
+                "aliasIpRanges": "alias_ip_ranges",
+                "projectId": "project_id"
+            },
+            "spotinst:gke/OceanLaunchSpecNetworkInterfaceAliasIpRange:OceanLaunchSpecNetworkInterfaceAliasIpRange": {
+                "ipCidrRange": "ip_cidr_range",
+                "subnetworkRangeName": "subnetwork_range_name"
+            },
             "spotinst:gke/OceanLaunchSpecResourceLimits:OceanLaunchSpecResourceLimits": {
                 "maxInstanceCount": "max_instance_count",
                 "minInstanceCount": "min_instance_count"
@@ -1778,6 +1787,7 @@
                 "autoscaleHeadroomsAutomatics": "autoscale_headrooms_automatic",
                 "instanceTypes": "instance_types",
                 "metadatas": "metadata",
+                "networkInterfaces": "network_interfaces",
                 "nodePoolName": "node_pool_name",
                 "oceanId": "ocean_id",
                 "resourceLimits": "resource_limits",

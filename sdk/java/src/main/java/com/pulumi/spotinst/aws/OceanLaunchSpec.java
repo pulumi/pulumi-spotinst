@@ -56,6 +56,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecDeleteOptionsArgs;
  * import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecElasticIpPoolArgs;
  * import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecElasticIpPoolTagSelectorArgs;
+ * import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecImageArgs;
  * import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecInstanceMetadataOptionsArgs;
  * import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecLabelArgs;
  * import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecResourceLimitArgs;
@@ -121,6 +122,9 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .iamInstanceProfile(&#34;iam-profile&#34;)
  *             .imageId(&#34;ami-123456&#34;)
+ *             .images(OceanLaunchSpecImageArgs.builder()
+ *                 .imageId(&#34;ami-id&#34;)
+ *                 .build())
  *             .instanceMetadataOptions(OceanLaunchSpecInstanceMetadataOptionsArgs.builder()
  *                 .httpPutResponseHopLimit(10)
  *                 .httpTokens(&#34;required&#34;)
@@ -347,22 +351,32 @@ public class OceanLaunchSpec extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.iamInstanceProfile);
     }
     /**
-     * ID of the image used to launch the instances.
+     * Identifier of the image in AWS. Valid values: any string which is not empty or null.
      * 
      */
     @Export(name="imageId", type=String.class, parameters={})
     private Output</* @Nullable */ String> imageId;
 
     /**
-     * @return ID of the image used to launch the instances.
+     * @return Identifier of the image in AWS. Valid values: any string which is not empty or null.
      * 
      */
     public Output<Optional<String>> imageId() {
         return Codegen.optional(this.imageId);
     }
+    /**
+     * Array of objects (Image object, containing the id of the image used to launch instances.) You can configure VNG with either the imageId or images objects, but not both simultaneously.
+     * For each architecture type (amd64, arm64) only one AMI is allowed. Valid values: null, or an array with at least one element.
+     * 
+     */
     @Export(name="images", type=List.class, parameters={OceanLaunchSpecImage.class})
     private Output</* @Nullable */ List<OceanLaunchSpecImage>> images;
 
+    /**
+     * @return Array of objects (Image object, containing the id of the image used to launch instances.) You can configure VNG with either the imageId or images objects, but not both simultaneously.
+     * For each architecture type (amd64, arm64) only one AMI is allowed. Valid values: null, or an array with at least one element.
+     * 
+     */
     public Output<Optional<List<OceanLaunchSpecImage>>> images() {
         return Codegen.optional(this.images);
     }

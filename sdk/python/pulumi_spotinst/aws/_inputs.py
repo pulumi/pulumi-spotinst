@@ -9600,7 +9600,7 @@ class OceanLaunchSpecImageArgs:
     def __init__(__self__, *,
                  image_id: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] image_id: ID of the image used to launch the instances.
+        :param pulumi.Input[str] image_id: Identifier of the image in AWS. Valid values: any string which is not empty or null.
         """
         if image_id is not None:
             pulumi.set(__self__, "image_id", image_id)
@@ -9609,7 +9609,7 @@ class OceanLaunchSpecImageArgs:
     @pulumi.getter(name="imageId")
     def image_id(self) -> Optional[pulumi.Input[str]]:
         """
-        ID of the image used to launch the instances.
+        Identifier of the image in AWS. Valid values: any string which is not empty or null.
         """
         return pulumi.get(self, "image_id")
 

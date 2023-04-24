@@ -36,6 +36,18 @@ import * as utilities from "../utilities";
  *         key: "gci-update-strategy",
  *         value: "update_disabled",
  *     }],
+ *     networkInterfaces: [{
+ *         accessConfigs: [{
+ *             name: "external-nat-vng",
+ *             type: "ONE_TO_ONE_NAT",
+ *         }],
+ *         aliasIpRanges: [{
+ *             ipCidrRange: "/25",
+ *             subnetworkRangeName: "gke-test-native-vpc-pods-123456-vng",
+ *         }],
+ *         network: "test-vng-network",
+ *         projectId: "test-vng-network-project",
+ *     }],
  *     nodePoolName: "default-pool",
  *     oceanId: "o-123456",
  *     resourceLimits: {
@@ -144,9 +156,13 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
      */
     public readonly metadatas!: pulumi.Output<outputs.gke.OceanLaunchSpecMetadata[]>;
     /**
-     * The launch specification name.
+     * The name of the access configuration.
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * Settings for network interfaces.
+     */
+    public readonly networkInterfaces!: pulumi.Output<outputs.gke.OceanLaunchSpecNetworkInterface[] | undefined>;
     /**
      * The node pool you wish to use in your Launch Spec.
      */
@@ -224,6 +240,7 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["metadatas"] = state ? state.metadatas : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["networkInterfaces"] = state ? state.networkInterfaces : undefined;
             resourceInputs["nodePoolName"] = state ? state.nodePoolName : undefined;
             resourceInputs["oceanId"] = state ? state.oceanId : undefined;
             resourceInputs["resourceLimits"] = state ? state.resourceLimits : undefined;
@@ -250,6 +267,7 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["metadatas"] = args ? args.metadatas : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["networkInterfaces"] = args ? args.networkInterfaces : undefined;
             resourceInputs["nodePoolName"] = args ? args.nodePoolName : undefined;
             resourceInputs["oceanId"] = args ? args.oceanId : undefined;
             resourceInputs["resourceLimits"] = args ? args.resourceLimits : undefined;
@@ -296,9 +314,13 @@ export interface OceanLaunchSpecState {
      */
     metadatas?: pulumi.Input<pulumi.Input<inputs.gke.OceanLaunchSpecMetadata>[]>;
     /**
-     * The launch specification name.
+     * The name of the access configuration.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Settings for network interfaces.
+     */
+    networkInterfaces?: pulumi.Input<pulumi.Input<inputs.gke.OceanLaunchSpecNetworkInterface>[]>;
     /**
      * The node pool you wish to use in your Launch Spec.
      */
@@ -383,9 +405,13 @@ export interface OceanLaunchSpecArgs {
      */
     metadatas?: pulumi.Input<pulumi.Input<inputs.gke.OceanLaunchSpecMetadata>[]>;
     /**
-     * The launch specification name.
+     * The name of the access configuration.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Settings for network interfaces.
+     */
+    networkInterfaces?: pulumi.Input<pulumi.Input<inputs.gke.OceanLaunchSpecNetworkInterface>[]>;
     /**
      * The node pool you wish to use in your Launch Spec.
      */

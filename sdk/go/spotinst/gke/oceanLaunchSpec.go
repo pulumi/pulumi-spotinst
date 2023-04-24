@@ -58,6 +58,24 @@ import (
 //						Value: pulumi.String("update_disabled"),
 //					},
 //				},
+//				NetworkInterfaces: gke.OceanLaunchSpecNetworkInterfaceArray{
+//					&gke.OceanLaunchSpecNetworkInterfaceArgs{
+//						AccessConfigs: gke.OceanLaunchSpecNetworkInterfaceAccessConfigArray{
+//							&gke.OceanLaunchSpecNetworkInterfaceAccessConfigArgs{
+//								Name: pulumi.String("external-nat-vng"),
+//								Type: pulumi.String("ONE_TO_ONE_NAT"),
+//							},
+//						},
+//						AliasIpRanges: gke.OceanLaunchSpecNetworkInterfaceAliasIpRangeArray{
+//							&gke.OceanLaunchSpecNetworkInterfaceAliasIpRangeArgs{
+//								IpCidrRange:         pulumi.String("/25"),
+//								SubnetworkRangeName: pulumi.String("gke-test-native-vpc-pods-123456-vng"),
+//							},
+//						},
+//						Network:   pulumi.String("test-vng-network"),
+//						ProjectId: pulumi.String("test-vng-network-project"),
+//					},
+//				},
 //				NodePoolName: pulumi.String("default-pool"),
 //				OceanId:      pulumi.String("o-123456"),
 //				ResourceLimits: &gke.OceanLaunchSpecResourceLimitsArgs{
@@ -169,8 +187,10 @@ type OceanLaunchSpec struct {
 	Labels OceanLaunchSpecLabelArrayOutput `pulumi:"labels"`
 	// Cluster's metadata.
 	Metadatas OceanLaunchSpecMetadataArrayOutput `pulumi:"metadatas"`
-	// The launch specification name.
+	// The name of the access configuration.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Settings for network interfaces.
+	NetworkInterfaces OceanLaunchSpecNetworkInterfaceArrayOutput `pulumi:"networkInterfaces"`
 	// The node pool you wish to use in your Launch Spec.
 	NodePoolName pulumi.StringPtrOutput `pulumi:"nodePoolName"`
 	// The Ocean cluster ID.
@@ -244,8 +264,10 @@ type oceanLaunchSpecState struct {
 	Labels []OceanLaunchSpecLabel `pulumi:"labels"`
 	// Cluster's metadata.
 	Metadatas []OceanLaunchSpecMetadata `pulumi:"metadatas"`
-	// The launch specification name.
+	// The name of the access configuration.
 	Name *string `pulumi:"name"`
+	// Settings for network interfaces.
+	NetworkInterfaces []OceanLaunchSpecNetworkInterface `pulumi:"networkInterfaces"`
 	// The node pool you wish to use in your Launch Spec.
 	NodePoolName *string `pulumi:"nodePoolName"`
 	// The Ocean cluster ID.
@@ -288,8 +310,10 @@ type OceanLaunchSpecState struct {
 	Labels OceanLaunchSpecLabelArrayInput
 	// Cluster's metadata.
 	Metadatas OceanLaunchSpecMetadataArrayInput
-	// The launch specification name.
+	// The name of the access configuration.
 	Name pulumi.StringPtrInput
+	// Settings for network interfaces.
+	NetworkInterfaces OceanLaunchSpecNetworkInterfaceArrayInput
 	// The node pool you wish to use in your Launch Spec.
 	NodePoolName pulumi.StringPtrInput
 	// The Ocean cluster ID.
@@ -336,8 +360,10 @@ type oceanLaunchSpecArgs struct {
 	Labels []OceanLaunchSpecLabel `pulumi:"labels"`
 	// Cluster's metadata.
 	Metadatas []OceanLaunchSpecMetadata `pulumi:"metadatas"`
-	// The launch specification name.
+	// The name of the access configuration.
 	Name *string `pulumi:"name"`
+	// Settings for network interfaces.
+	NetworkInterfaces []OceanLaunchSpecNetworkInterface `pulumi:"networkInterfaces"`
 	// The node pool you wish to use in your Launch Spec.
 	NodePoolName *string `pulumi:"nodePoolName"`
 	// The Ocean cluster ID.
@@ -381,8 +407,10 @@ type OceanLaunchSpecArgs struct {
 	Labels OceanLaunchSpecLabelArrayInput
 	// Cluster's metadata.
 	Metadatas OceanLaunchSpecMetadataArrayInput
-	// The launch specification name.
+	// The name of the access configuration.
 	Name pulumi.StringPtrInput
+	// Settings for network interfaces.
+	NetworkInterfaces OceanLaunchSpecNetworkInterfaceArrayInput
 	// The node pool you wish to use in your Launch Spec.
 	NodePoolName pulumi.StringPtrInput
 	// The Ocean cluster ID.
@@ -528,9 +556,14 @@ func (o OceanLaunchSpecOutput) Metadatas() OceanLaunchSpecMetadataArrayOutput {
 	return o.ApplyT(func(v *OceanLaunchSpec) OceanLaunchSpecMetadataArrayOutput { return v.Metadatas }).(OceanLaunchSpecMetadataArrayOutput)
 }
 
-// The launch specification name.
+// The name of the access configuration.
 func (o OceanLaunchSpecOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *OceanLaunchSpec) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Settings for network interfaces.
+func (o OceanLaunchSpecOutput) NetworkInterfaces() OceanLaunchSpecNetworkInterfaceArrayOutput {
+	return o.ApplyT(func(v *OceanLaunchSpec) OceanLaunchSpecNetworkInterfaceArrayOutput { return v.NetworkInterfaces }).(OceanLaunchSpecNetworkInterfaceArrayOutput)
 }
 
 // The node pool you wish to use in your Launch Spec.

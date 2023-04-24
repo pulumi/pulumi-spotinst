@@ -14,6 +14,7 @@ import com.pulumi.spotinst.gke.outputs.OceanLaunchSpecAutoscaleHeadroom;
 import com.pulumi.spotinst.gke.outputs.OceanLaunchSpecAutoscaleHeadroomsAutomatic;
 import com.pulumi.spotinst.gke.outputs.OceanLaunchSpecLabel;
 import com.pulumi.spotinst.gke.outputs.OceanLaunchSpecMetadata;
+import com.pulumi.spotinst.gke.outputs.OceanLaunchSpecNetworkInterface;
 import com.pulumi.spotinst.gke.outputs.OceanLaunchSpecResourceLimits;
 import com.pulumi.spotinst.gke.outputs.OceanLaunchSpecSchedulingTask;
 import com.pulumi.spotinst.gke.outputs.OceanLaunchSpecShieldedInstanceConfig;
@@ -46,6 +47,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.spotinst.gke.inputs.OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs;
  * import com.pulumi.spotinst.gke.inputs.OceanLaunchSpecLabelArgs;
  * import com.pulumi.spotinst.gke.inputs.OceanLaunchSpecMetadataArgs;
+ * import com.pulumi.spotinst.gke.inputs.OceanLaunchSpecNetworkInterfaceArgs;
  * import com.pulumi.spotinst.gke.inputs.OceanLaunchSpecResourceLimitsArgs;
  * import com.pulumi.spotinst.gke.inputs.OceanLaunchSpecSchedulingTaskArgs;
  * import com.pulumi.spotinst.gke.inputs.OceanLaunchSpecShieldedInstanceConfigArgs;
@@ -83,6 +85,18 @@ import javax.annotation.Nullable;
  *             .metadatas(OceanLaunchSpecMetadataArgs.builder()
  *                 .key(&#34;gci-update-strategy&#34;)
  *                 .value(&#34;update_disabled&#34;)
+ *                 .build())
+ *             .networkInterfaces(OceanLaunchSpecNetworkInterfaceArgs.builder()
+ *                 .accessConfigs(OceanLaunchSpecNetworkInterfaceAccessConfigArgs.builder()
+ *                     .name(&#34;external-nat-vng&#34;)
+ *                     .type(&#34;ONE_TO_ONE_NAT&#34;)
+ *                     .build())
+ *                 .aliasIpRanges(OceanLaunchSpecNetworkInterfaceAliasIpRangeArgs.builder()
+ *                     .ipCidrRange(&#34;/25&#34;)
+ *                     .subnetworkRangeName(&#34;gke-test-native-vpc-pods-123456-vng&#34;)
+ *                     .build())
+ *                 .network(&#34;test-vng-network&#34;)
+ *                 .projectId(&#34;test-vng-network-project&#34;)
  *                 .build())
  *             .nodePoolName(&#34;default-pool&#34;)
  *             .oceanId(&#34;o-123456&#34;)
@@ -255,18 +269,32 @@ public class OceanLaunchSpec extends com.pulumi.resources.CustomResource {
         return this.metadatas;
     }
     /**
-     * The launch specification name.
+     * The name of the access configuration.
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return The launch specification name.
+     * @return The name of the access configuration.
      * 
      */
     public Output<String> name() {
         return this.name;
+    }
+    /**
+     * Settings for network interfaces.
+     * 
+     */
+    @Export(name="networkInterfaces", type=List.class, parameters={OceanLaunchSpecNetworkInterface.class})
+    private Output</* @Nullable */ List<OceanLaunchSpecNetworkInterface>> networkInterfaces;
+
+    /**
+     * @return Settings for network interfaces.
+     * 
+     */
+    public Output<Optional<List<OceanLaunchSpecNetworkInterface>>> networkInterfaces() {
+        return Codegen.optional(this.networkInterfaces);
     }
     /**
      * The node pool you wish to use in your Launch Spec.

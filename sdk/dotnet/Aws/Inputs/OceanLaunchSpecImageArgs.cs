@@ -13,7 +13,7 @@ namespace Pulumi.SpotInst.Aws.Inputs
     public sealed class OceanLaunchSpecImageArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// ID of the image used to launch the instances.
+        /// Identifier of the image in AWS. Valid values: any string which is not empty or null.
         /// </summary>
         [Input("imageId")]
         public Input<string>? ImageId { get; set; }

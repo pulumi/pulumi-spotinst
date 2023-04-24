@@ -155,23 +155,33 @@ public final class OceanLaunchSpecState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * ID of the image used to launch the instances.
+     * Identifier of the image in AWS. Valid values: any string which is not empty or null.
      * 
      */
     @Import(name="imageId")
     private @Nullable Output<String> imageId;
 
     /**
-     * @return ID of the image used to launch the instances.
+     * @return Identifier of the image in AWS. Valid values: any string which is not empty or null.
      * 
      */
     public Optional<Output<String>> imageId() {
         return Optional.ofNullable(this.imageId);
     }
 
+    /**
+     * Array of objects (Image object, containing the id of the image used to launch instances.) You can configure VNG with either the imageId or images objects, but not both simultaneously.
+     * For each architecture type (amd64, arm64) only one AMI is allowed. Valid values: null, or an array with at least one element.
+     * 
+     */
     @Import(name="images")
     private @Nullable Output<List<OceanLaunchSpecImageArgs>> images;
 
+    /**
+     * @return Array of objects (Image object, containing the id of the image used to launch instances.) You can configure VNG with either the imageId or images objects, but not both simultaneously.
+     * For each architecture type (amd64, arm64) only one AMI is allowed. Valid values: null, or an array with at least one element.
+     * 
+     */
     public Optional<Output<List<OceanLaunchSpecImageArgs>>> images() {
         return Optional.ofNullable(this.images);
     }
@@ -690,7 +700,7 @@ public final class OceanLaunchSpecState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param imageId ID of the image used to launch the instances.
+         * @param imageId Identifier of the image in AWS. Valid values: any string which is not empty or null.
          * 
          * @return builder
          * 
@@ -701,7 +711,7 @@ public final class OceanLaunchSpecState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param imageId ID of the image used to launch the instances.
+         * @param imageId Identifier of the image in AWS. Valid values: any string which is not empty or null.
          * 
          * @return builder
          * 
@@ -710,15 +720,36 @@ public final class OceanLaunchSpecState extends com.pulumi.resources.ResourceArg
             return imageId(Output.of(imageId));
         }
 
+        /**
+         * @param images Array of objects (Image object, containing the id of the image used to launch instances.) You can configure VNG with either the imageId or images objects, but not both simultaneously.
+         * For each architecture type (amd64, arm64) only one AMI is allowed. Valid values: null, or an array with at least one element.
+         * 
+         * @return builder
+         * 
+         */
         public Builder images(@Nullable Output<List<OceanLaunchSpecImageArgs>> images) {
             $.images = images;
             return this;
         }
 
+        /**
+         * @param images Array of objects (Image object, containing the id of the image used to launch instances.) You can configure VNG with either the imageId or images objects, but not both simultaneously.
+         * For each architecture type (amd64, arm64) only one AMI is allowed. Valid values: null, or an array with at least one element.
+         * 
+         * @return builder
+         * 
+         */
         public Builder images(List<OceanLaunchSpecImageArgs> images) {
             return images(Output.of(images));
         }
 
+        /**
+         * @param images Array of objects (Image object, containing the id of the image used to launch instances.) You can configure VNG with either the imageId or images objects, but not both simultaneously.
+         * For each architecture type (amd64, arm64) only one AMI is allowed. Valid values: null, or an array with at least one element.
+         * 
+         * @return builder
+         * 
+         */
         public Builder images(OceanLaunchSpecImageArgs... images) {
             return images(List.of(images));
         }

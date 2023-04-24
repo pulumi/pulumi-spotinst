@@ -2833,7 +2833,7 @@ export namespace aws {
 
     export interface OceanLaunchSpecImage {
         /**
-         * ID of the image used to launch the instances.
+         * Identifier of the image in AWS. Valid values: any string which is not empty or null.
          */
         imageId?: string;
     }
@@ -5132,6 +5132,47 @@ export namespace gke {
          * The label value.
          */
         value: string;
+    }
+
+    export interface OceanLaunchSpecNetworkInterface {
+        /**
+         * The network protocol of the VNG.
+         */
+        accessConfigs?: outputs.gke.OceanLaunchSpecNetworkInterfaceAccessConfig[];
+        /**
+         * use the imported node pool’s associated aliasIpRange to assign secondary IP addresses to the nodes. Cannot be changed after VNG creation.
+         */
+        aliasIpRanges?: outputs.gke.OceanLaunchSpecNetworkInterfaceAliasIpRange[];
+        /**
+         * The name of the network.
+         */
+        network: string;
+        /**
+         * Use a network resource from a different project. Set the project identifier to use its network resource. This parameter is relevant only if the network resource is in a different project.
+         */
+        projectId?: string;
+    }
+
+    export interface OceanLaunchSpecNetworkInterfaceAccessConfig {
+        /**
+         * The name of the access configuration.
+         */
+        name?: string;
+        /**
+         * The type of the access configuration.
+         */
+        type?: string;
+    }
+
+    export interface OceanLaunchSpecNetworkInterfaceAliasIpRange {
+        /**
+         * specify the IP address range in CIDR notation that can be used for the alias IP addresses associated with the imported node pool.
+         */
+        ipCidrRange: string;
+        /**
+         * specify the IP address range for the subnet secondary IP range.
+         */
+        subnetworkRangeName: string;
     }
 
     export interface OceanLaunchSpecResourceLimits {
