@@ -69,6 +69,7 @@ import (
 //				},
 //				MaxSize: pulumi.Int(1),
 //				MinSize: pulumi.Int(0),
+//				Name:    pulumi.String("example_elastigroup_azure"),
 //				Network: &azure.ElastigroupNetworkArgs{
 //					AssignPublicIp:     pulumi.Bool(true),
 //					ResourceGroupName:  pulumi.String("subnetResourceGroup"),
@@ -213,6 +214,9 @@ func NewElastigroup(ctx *pulumi.Context,
 
 	if args.LowPrioritySizes == nil {
 		return nil, errors.New("invalid value for required argument 'LowPrioritySizes'")
+	}
+	if args.Name == nil {
+		return nil, errors.New("invalid value for required argument 'Name'")
 	}
 	if args.Network == nil {
 		return nil, errors.New("invalid value for required argument 'Network'")
@@ -363,7 +367,7 @@ type elastigroupArgs struct {
 	// The minimum number of instances the group should have at any time.
 	MinSize *int `pulumi:"minSize"`
 	// The name of the managed identity.
-	Name    *string            `pulumi:"name"`
+	Name    string             `pulumi:"name"`
 	Network ElastigroupNetwork `pulumi:"network"`
 	// Available On-Demand sizes
 	OdSizes []string `pulumi:"odSizes"`
@@ -407,7 +411,7 @@ type ElastigroupArgs struct {
 	// The minimum number of instances the group should have at any time.
 	MinSize pulumi.IntPtrInput
 	// The name of the managed identity.
-	Name    pulumi.StringPtrInput
+	Name    pulumi.StringInput
 	Network ElastigroupNetworkInput
 	// Available On-Demand sizes
 	OdSizes pulumi.StringArrayInput

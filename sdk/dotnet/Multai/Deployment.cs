@@ -23,7 +23,7 @@ namespace Pulumi.SpotInst.Multai
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Deployment(string name, DeploymentArgs? args = null, CustomResourceOptions? options = null)
+        public Deployment(string name, DeploymentArgs args, CustomResourceOptions? options = null)
             : base("spotinst:multai/deployment:Deployment", name, args ?? new DeploymentArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -61,8 +61,8 @@ namespace Pulumi.SpotInst.Multai
 
     public sealed class DeploymentArgs : global::Pulumi.ResourceArgs
     {
-        [Input("name")]
-        public Input<string>? Name { get; set; }
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
 
         public DeploymentArgs()
         {

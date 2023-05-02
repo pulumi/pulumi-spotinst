@@ -63,6 +63,7 @@ namespace Pulumi.SpotInst.Gke
     ///                 Value = "update_disabled",
     ///             },
     ///         },
+    ///         Name = "specialty.nodes.spotk8s.com",
     ///         NetworkInterfaces = new[]
     ///         {
     ///             new SpotInst.Gke.Inputs.OceanLaunchSpecNetworkInterfaceArgs

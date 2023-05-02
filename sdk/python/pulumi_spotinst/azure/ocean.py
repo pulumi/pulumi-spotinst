@@ -19,6 +19,7 @@ class OceanArgs:
                  acd_identifier: pulumi.Input[str],
                  aks_name: pulumi.Input[str],
                  aks_resource_group_name: pulumi.Input[str],
+                 name: pulumi.Input[str],
                  ssh_public_key: pulumi.Input[str],
                  autoscaler: Optional[pulumi.Input['OceanAutoscalerArgs']] = None,
                  controller_cluster_id: Optional[pulumi.Input[str]] = None,
@@ -29,7 +30,6 @@ class OceanArgs:
                  load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLoadBalancerArgs']]]] = None,
                  managed_service_identities: Optional[pulumi.Input[Sequence[pulumi.Input['OceanManagedServiceIdentityArgs']]]] = None,
                  max_pods: Optional[pulumi.Input[int]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input['OceanNetworkArgs']] = None,
                  os_disk: Optional[pulumi.Input['OceanOsDiskArgs']] = None,
                  resource_group_name: Optional[pulumi.Input[str]] = None,
@@ -43,6 +43,7 @@ class OceanArgs:
         :param pulumi.Input[str] acd_identifier: The AKS identifier. A valid identifier should be formatted as `acd-nnnnnnnn` and previously used identifiers cannot be reused.
         :param pulumi.Input[str] aks_name: The AKS cluster name.
         :param pulumi.Input[str] aks_resource_group_name: Name of the Azure Resource Group where the AKS cluster is located.
+        :param pulumi.Input[str] name: Name of the Load Balancer.
         :param pulumi.Input[str] ssh_public_key: SSH public key for admin access to Linux VMs.
         :param pulumi.Input['OceanAutoscalerArgs'] autoscaler: The Ocean Kubernetes Autoscaler object.
         :param pulumi.Input[str] controller_cluster_id: A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
@@ -53,7 +54,6 @@ class OceanArgs:
         :param pulumi.Input[Sequence[pulumi.Input['OceanLoadBalancerArgs']]] load_balancers: Configure Load Balancer.
         :param pulumi.Input[Sequence[pulumi.Input['OceanManagedServiceIdentityArgs']]] managed_service_identities: List of Managed Service Identity objects.
         :param pulumi.Input[int] max_pods: The maximum number of pods per node in an AKS cluster.
-        :param pulumi.Input[str] name: Name of the Load Balancer.
         :param pulumi.Input['OceanNetworkArgs'] network: Define the Virtual Network and Subnet.
         :param pulumi.Input['OceanOsDiskArgs'] os_disk: OS disk specifications.
         :param pulumi.Input[str] resource_group_name: The Resource Group name of the Load Balancer.
@@ -66,6 +66,7 @@ class OceanArgs:
         pulumi.set(__self__, "acd_identifier", acd_identifier)
         pulumi.set(__self__, "aks_name", aks_name)
         pulumi.set(__self__, "aks_resource_group_name", aks_resource_group_name)
+        pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "ssh_public_key", ssh_public_key)
         if autoscaler is not None:
             pulumi.set(__self__, "autoscaler", autoscaler)
@@ -85,8 +86,6 @@ class OceanArgs:
             pulumi.set(__self__, "managed_service_identities", managed_service_identities)
         if max_pods is not None:
             pulumi.set(__self__, "max_pods", max_pods)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
         if network is not None:
             pulumi.set(__self__, "network", network)
         if os_disk is not None:
@@ -139,6 +138,18 @@ class OceanArgs:
     @aks_resource_group_name.setter
     def aks_resource_group_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "aks_resource_group_name", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        Name of the Load Balancer.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter(name="sshPublicKey")
@@ -259,18 +270,6 @@ class OceanArgs:
     @max_pods.setter
     def max_pods(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_pods", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Name of the Load Balancer.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
@@ -856,6 +855,8 @@ class Ocean(pulumi.CustomResource):
             __props__.__dict__["load_balancers"] = load_balancers
             __props__.__dict__["managed_service_identities"] = managed_service_identities
             __props__.__dict__["max_pods"] = max_pods
+            if name is None and not opts.urn:
+                raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
             __props__.__dict__["network"] = network
             __props__.__dict__["os_disk"] = os_disk

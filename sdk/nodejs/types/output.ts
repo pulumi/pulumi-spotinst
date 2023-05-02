@@ -5371,6 +5371,7 @@ export namespace spark {
     }
 
     export interface OceanLogCollection {
+        collectAppLogs: boolean;
         /**
          * - Enable/disable the collection of driver logs. When enabled, driver logs are stored by NetApp and can be downloaded from the Spot console web interface. The driver logs are deleted after 30 days.
          */

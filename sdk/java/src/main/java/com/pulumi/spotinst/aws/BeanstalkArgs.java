@@ -151,15 +151,15 @@ public final class BeanstalkArgs extends com.pulumi.resources.ResourceArgs {
      * The group name.
      * 
      */
-    @Import(name="name")
-    private @Nullable Output<String> name;
+    @Import(name="name", required=true)
+    private Output<String> name;
 
     /**
      * @return The group name.
      * 
      */
-    public Optional<Output<String>> name() {
-        return Optional.ofNullable(this.name);
+    public Output<String> name() {
+        return this.name;
     }
 
     /**
@@ -430,7 +430,7 @@ public final class BeanstalkArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder name(@Nullable Output<String> name) {
+        public Builder name(Output<String> name) {
             $.name = name;
             return this;
         }
@@ -507,6 +507,7 @@ public final class BeanstalkArgs extends com.pulumi.resources.ResourceArgs {
             $.instanceTypesSpots = Objects.requireNonNull($.instanceTypesSpots, "expected parameter 'instanceTypesSpots' to be non-null");
             $.maxSize = Objects.requireNonNull($.maxSize, "expected parameter 'maxSize' to be non-null");
             $.minSize = Objects.requireNonNull($.minSize, "expected parameter 'minSize' to be non-null");
+            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
             $.product = Objects.requireNonNull($.product, "expected parameter 'product' to be non-null");
             $.region = Objects.requireNonNull($.region, "expected parameter 'region' to be non-null");
             return $;

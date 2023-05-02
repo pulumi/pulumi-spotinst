@@ -184,6 +184,9 @@ func NewElastigroup(ctx *pulumi.Context,
 	if args.InstanceTypesSpots == nil {
 		return nil, errors.New("invalid value for required argument 'InstanceTypesSpots'")
 	}
+	if args.Name == nil {
+		return nil, errors.New("invalid value for required argument 'Name'")
+	}
 	if args.Orientation == nil {
 		return nil, errors.New("invalid value for required argument 'Orientation'")
 	}
@@ -617,7 +620,7 @@ type elastigroupArgs struct {
 	MultaiTargetSets []ElastigroupMultaiTargetSet `pulumi:"multaiTargetSets"`
 	MultipleMetrics  *ElastigroupMultipleMetrics  `pulumi:"multipleMetrics"`
 	// The group name.
-	Name              *string                       `pulumi:"name"`
+	Name              string                        `pulumi:"name"`
 	NetworkInterfaces []ElastigroupNetworkInterface `pulumi:"networkInterfaces"`
 	// Number of on demand instances to launch in the group. All other instances will be spot instances. When this parameter is set the `spotPercentage` parameter is being ignored.
 	OndemandCount *int `pulumi:"ondemandCount"`
@@ -772,7 +775,7 @@ type ElastigroupArgs struct {
 	MultaiTargetSets ElastigroupMultaiTargetSetArrayInput
 	MultipleMetrics  ElastigroupMultipleMetricsPtrInput
 	// The group name.
-	Name              pulumi.StringPtrInput
+	Name              pulumi.StringInput
 	NetworkInterfaces ElastigroupNetworkInterfaceArrayInput
 	// Number of on demand instances to launch in the group. All other instances will be spot instances. When this parameter is set the `spotPercentage` parameter is being ignored.
 	OndemandCount pulumi.IntPtrInput

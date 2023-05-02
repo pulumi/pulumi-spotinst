@@ -17,6 +17,7 @@ __all__ = ['ElastigroupAzureV3Args', 'ElastigroupAzureV3']
 class ElastigroupAzureV3Args:
     def __init__(__self__, *,
                  fallback_to_on_demand: pulumi.Input[bool],
+                 name: pulumi.Input[str],
                  network: pulumi.Input['ElastigroupAzureV3NetworkArgs'],
                  od_sizes: pulumi.Input[Sequence[pulumi.Input[str]]],
                  os: pulumi.Input[str],
@@ -31,11 +32,11 @@ class ElastigroupAzureV3Args:
                  managed_service_identities: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ManagedServiceIdentityArgs']]]] = None,
                  max_size: Optional[pulumi.Input[int]] = None,
                  min_size: Optional[pulumi.Input[int]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
                  on_demand_count: Optional[pulumi.Input[int]] = None,
                  spot_percentage: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a ElastigroupAzureV3 resource.
+        :param pulumi.Input[str] name: Name of the Managed Service Identity.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] od_sizes: Available On-Demand sizes
         :param pulumi.Input[str] os: Type of the operating system. Valid values: `"Linux"`, `"Windows"`.
         :param pulumi.Input[str] region: The region your Azure group will be created in.
@@ -47,10 +48,10 @@ class ElastigroupAzureV3Args:
         :param pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ManagedServiceIdentityArgs']]] managed_service_identities: List of Managed Service Identity objects.
         :param pulumi.Input[int] max_size: The maximum number of instances the group should have at any time.
         :param pulumi.Input[int] min_size: The minimum number of instances the group should have at any time.
-        :param pulumi.Input[str] name: Name of the Managed Service Identity.
         :param pulumi.Input[int] spot_percentage: TODO
         """
         pulumi.set(__self__, "fallback_to_on_demand", fallback_to_on_demand)
+        pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "network", network)
         pulumi.set(__self__, "od_sizes", od_sizes)
         pulumi.set(__self__, "os", os)
@@ -73,8 +74,6 @@ class ElastigroupAzureV3Args:
             pulumi.set(__self__, "max_size", max_size)
         if min_size is not None:
             pulumi.set(__self__, "min_size", min_size)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
         if on_demand_count is not None:
             pulumi.set(__self__, "on_demand_count", on_demand_count)
         if spot_percentage is not None:
@@ -88,6 +87,18 @@ class ElastigroupAzureV3Args:
     @fallback_to_on_demand.setter
     def fallback_to_on_demand(self, value: pulumi.Input[bool]):
         pulumi.set(self, "fallback_to_on_demand", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        Name of the Managed Service Identity.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
@@ -247,18 +258,6 @@ class ElastigroupAzureV3Args:
     @min_size.setter
     def min_size(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "min_size", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Name of the Managed Service Identity.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter(name="onDemandCount")
@@ -663,6 +662,8 @@ class ElastigroupAzureV3(pulumi.CustomResource):
             __props__.__dict__["managed_service_identities"] = managed_service_identities
             __props__.__dict__["max_size"] = max_size
             __props__.__dict__["min_size"] = min_size
+            if name is None and not opts.urn:
+                raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
             if network is None and not opts.urn:
                 raise TypeError("Missing required property 'network'")

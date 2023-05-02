@@ -14,20 +14,19 @@ __all__ = ['DeploymentArgs', 'Deployment']
 @pulumi.input_type
 class DeploymentArgs:
     def __init__(__self__, *,
-                 name: Optional[pulumi.Input[str]] = None):
+                 name: pulumi.Input[str]):
         """
         The set of arguments for constructing a Deployment resource.
         """
-        if name is not None:
-            pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
+    def name(self) -> pulumi.Input[str]:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
+    def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
 
 
@@ -67,7 +66,7 @@ class Deployment(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Optional[DeploymentArgs] = None,
+                 args: DeploymentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Create a Deployment resource with the given unique name, props, and options.
@@ -96,6 +95,8 @@ class Deployment(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = DeploymentArgs.__new__(DeploymentArgs)
 
+            if name is None and not opts.urn:
+                raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
         super(Deployment, __self__).__init__(
             'spotinst:multai/deployment:Deployment',

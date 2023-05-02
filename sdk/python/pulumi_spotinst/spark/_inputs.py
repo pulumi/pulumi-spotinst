@@ -250,12 +250,24 @@ class OceanIngressPrivateLinkArgs:
 @pulumi.input_type
 class OceanLogCollectionArgs:
     def __init__(__self__, *,
+                 collect_app_logs: Optional[pulumi.Input[bool]] = None,
                  collect_driver_logs: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[bool] collect_driver_logs: - Enable/disable the collection of driver logs. When enabled, driver logs are stored by NetApp and can be downloaded from the Spot console web interface. The driver logs are deleted after 30 days.
         """
+        if collect_app_logs is not None:
+            pulumi.set(__self__, "collect_app_logs", collect_app_logs)
         if collect_driver_logs is not None:
             pulumi.set(__self__, "collect_driver_logs", collect_driver_logs)
+
+    @property
+    @pulumi.getter(name="collectAppLogs")
+    def collect_app_logs(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "collect_app_logs")
+
+    @collect_app_logs.setter
+    def collect_app_logs(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "collect_app_logs", value)
 
     @property
     @pulumi.getter(name="collectDriverLogs")

@@ -42,6 +42,7 @@ import * as utilities from "../utilities";
  *     },
  *     maxSize: 1,
  *     minSize: 0,
+ *     name: "example-elastigroup-beanstalk",
  *     product: "Linux/UNIX",
  *     region: "us-west-2",
  * });
@@ -163,6 +164,9 @@ export class Beanstalk extends pulumi.CustomResource {
             if ((!args || args.minSize === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'minSize'");
             }
+            if ((!args || args.name === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'name'");
+            }
             if ((!args || args.product === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'product'");
             }
@@ -281,7 +285,7 @@ export interface BeanstalkArgs {
     /**
      * The group name.
      */
-    name?: pulumi.Input<string>;
+    name: pulumi.Input<string>;
     /**
      * Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`.
      * For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.

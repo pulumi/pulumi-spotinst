@@ -28,6 +28,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := aws.NewOceanExtendedResourceDefinition(ctx, "example", &aws.OceanExtendedResourceDefinitionArgs{
+//				Name: pulumi.String("terraform_extended_resource_definition"),
 //				ResourceMapping: pulumi.AnyMap{
 //					"c3.large":  pulumi.Any("2Ki"),
 //					"c3.xlarge": pulumi.Any("4Ki"),
@@ -58,6 +59,9 @@ func NewOceanExtendedResourceDefinition(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.Name == nil {
+		return nil, errors.New("invalid value for required argument 'Name'")
+	}
 	if args.ResourceMapping == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceMapping'")
 	}
@@ -105,7 +109,7 @@ func (OceanExtendedResourceDefinitionState) ElementType() reflect.Type {
 type oceanExtendedResourceDefinitionArgs struct {
 	// The extended resource name as should be requested by your pods and registered to the nodes. Cannot be updated.
 	// The name should be a valid Kubernetes extended resource name.
-	Name *string `pulumi:"name"`
+	Name string `pulumi:"name"`
 	// A mapping between AWS instanceType or * as default and its value for the given extended resource.
 	ResourceMapping map[string]interface{} `pulumi:"resourceMapping"`
 }
@@ -114,7 +118,7 @@ type oceanExtendedResourceDefinitionArgs struct {
 type OceanExtendedResourceDefinitionArgs struct {
 	// The extended resource name as should be requested by your pods and registered to the nodes. Cannot be updated.
 	// The name should be a valid Kubernetes extended resource name.
-	Name pulumi.StringPtrInput
+	Name pulumi.StringInput
 	// A mapping between AWS instanceType or * as default and its value for the given extended resource.
 	ResourceMapping pulumi.MapInput
 }

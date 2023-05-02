@@ -99,6 +99,9 @@ func NewOcean(ctx *pulumi.Context,
 	if args.ClusterName == nil {
 		return nil, errors.New("invalid value for required argument 'ClusterName'")
 	}
+	if args.Name == nil {
+		return nil, errors.New("invalid value for required argument 'Name'")
+	}
 	if args.Region == nil {
 		return nil, errors.New("invalid value for required argument 'Region'")
 	}
@@ -300,7 +303,7 @@ type oceanArgs struct {
 	// Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
 	Monitoring *bool `pulumi:"monitoring"`
 	// The Ocean cluster name.
-	Name *string `pulumi:"name"`
+	Name string `pulumi:"name"`
 	// Object. Set auto image update settings.
 	OptimizeImages *OceanOptimizeImages `pulumi:"optimizeImages"`
 	// The region the cluster will run in.
@@ -366,7 +369,7 @@ type OceanArgs struct {
 	// Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
 	Monitoring pulumi.BoolPtrInput
 	// The Ocean cluster name.
-	Name pulumi.StringPtrInput
+	Name pulumi.StringInput
 	// Object. Set auto image update settings.
 	OptimizeImages OceanOptimizeImagesPtrInput
 	// The region the cluster will run in.

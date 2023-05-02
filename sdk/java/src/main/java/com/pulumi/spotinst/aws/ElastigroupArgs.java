@@ -702,15 +702,15 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
      * The group name.
      * 
      */
-    @Import(name="name")
-    private @Nullable Output<String> name;
+    @Import(name="name", required=true)
+    private Output<String> name;
 
     /**
      * @return The group name.
      * 
      */
-    public Optional<Output<String>> name() {
-        return Optional.ofNullable(this.name);
+    public Output<String> name() {
+        return this.name;
     }
 
     @Import(name="networkInterfaces")
@@ -2238,7 +2238,7 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder name(@Nullable Output<String> name) {
+        public Builder name(Output<String> name) {
             $.name = name;
             return this;
         }
@@ -2948,6 +2948,7 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
             $.fallbackToOndemand = Objects.requireNonNull($.fallbackToOndemand, "expected parameter 'fallbackToOndemand' to be non-null");
             $.instanceTypesOndemand = Objects.requireNonNull($.instanceTypesOndemand, "expected parameter 'instanceTypesOndemand' to be non-null");
             $.instanceTypesSpots = Objects.requireNonNull($.instanceTypesSpots, "expected parameter 'instanceTypesSpots' to be non-null");
+            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
             $.orientation = Objects.requireNonNull($.orientation, "expected parameter 'orientation' to be non-null");
             $.product = Objects.requireNonNull($.product, "expected parameter 'product' to be non-null");
             $.securityGroups = Objects.requireNonNull($.securityGroups, "expected parameter 'securityGroups' to be non-null");

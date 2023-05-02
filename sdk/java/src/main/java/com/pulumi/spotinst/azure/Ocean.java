@@ -118,6 +118,7 @@ import javax.annotation.Nullable;
  *                 .resourceGroupName(&#34;MC_ocean-westus-dev_ocean-westus-dev-aks_westus&#34;)
  *                 .build())
  *             .maxPods(30)
+ *             .name(&#34;ocean-westus-dev-aks&#34;)
  *             .network(OceanNetworkArgs.builder()
  *                 .networkInterfaces(OceanNetworkNetworkInterfaceArgs.builder()
  *                     .additionalIpConfig(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))

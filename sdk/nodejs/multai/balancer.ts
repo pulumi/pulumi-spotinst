@@ -47,7 +47,7 @@ export class Balancer extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: BalancerArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args: BalancerArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: BalancerArgs | BalancerState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -60,6 +60,9 @@ export class Balancer extends pulumi.CustomResource {
             resourceInputs["tags"] = state ? state.tags : undefined;
         } else {
             const args = argsOrState as BalancerArgs | undefined;
+            if ((!args || args.name === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'name'");
+            }
             resourceInputs["connectionTimeouts"] = args ? args.connectionTimeouts : undefined;
             resourceInputs["dnsCnameAliases"] = args ? args.dnsCnameAliases : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -88,7 +91,7 @@ export interface BalancerState {
 export interface BalancerArgs {
     connectionTimeouts?: pulumi.Input<inputs.multai.BalancerConnectionTimeouts>;
     dnsCnameAliases?: pulumi.Input<pulumi.Input<string>[]>;
-    name?: pulumi.Input<string>;
+    name: pulumi.Input<string>;
     scheme?: pulumi.Input<string>;
     tags?: pulumi.Input<pulumi.Input<inputs.multai.BalancerTag>[]>;
 }

@@ -59,9 +59,14 @@ import * as utilities from "../utilities";
  *     }],
  *     iamInstanceProfile: "iam-profile",
  *     imageId: "ami-123456",
- *     images: [{
- *         imageId: "ami-id",
- *     }],
+ *     images: [
+ *         {
+ *             imageId: "ami-id1",
+ *         },
+ *         {
+ *             imageId: "ami-id2",
+ *         },
+ *     ],
  *     instanceMetadataOptions: {
  *         httpPutResponseHopLimit: 10,
  *         httpTokens: "required",
@@ -76,6 +81,7 @@ import * as utilities from "../utilities";
  *         key: "key1",
  *         value: "value1",
  *     }],
+ *     name: "example",
  *     oceanId: "o-123456",
  *     preferredSpotTypes: [
  *         "m4.large",
@@ -220,7 +226,7 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
     /**
      * The name of the Virtual Node Group.
      */
-    public readonly name!: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string | undefined>;
     /**
      * The ID of the Ocean cluster.
      */

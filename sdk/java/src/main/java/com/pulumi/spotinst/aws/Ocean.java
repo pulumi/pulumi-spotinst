@@ -112,6 +112,7 @@ import javax.annotation.Nullable;
  *             .maxSize(2)
  *             .minSize(1)
  *             .monitoring(true)
+ *             .name(&#34;demo&#34;)
  *             .region(&#34;us-west-2&#34;)
  *             .rootVolumeSize(20)
  *             .securityGroups(&#34;sg-987654321&#34;)
@@ -505,14 +506,14 @@ public class Ocean extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="name", type=String.class, parameters={})
-    private Output<String> name;
+    private Output</* @Nullable */ String> name;
 
     /**
      * @return Required if type is set to `CLASSIC`
      * 
      */
-    public Output<String> name() {
-        return this.name;
+    public Output<Optional<String>> name() {
+        return Codegen.optional(this.name);
     }
     /**
      * The region the cluster will run in.

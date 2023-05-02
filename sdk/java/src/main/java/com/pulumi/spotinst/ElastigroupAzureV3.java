@@ -74,6 +74,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .maxSize(1)
  *             .minSize(0)
+ *             .name(&#34;example_elastigroup_azure&#34;)
  *             .network(ElastigroupAzureV3NetworkArgs.builder()
  *                 .networkInterfaces(ElastigroupAzureV3NetworkNetworkInterfaceArgs.builder()
  *                     .additionalIpConfigs(ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArgs.builder()

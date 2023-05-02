@@ -36,6 +36,7 @@ import * as utilities from "../utilities";
  *         key: "gci-update-strategy",
  *         value: "update_disabled",
  *     }],
+ *     name: "specialty.nodes.spotk8s.com",
  *     networkInterfaces: [{
  *         accessConfigs: [{
  *             name: "external-nat-vng",

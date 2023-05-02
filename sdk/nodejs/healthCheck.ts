@@ -25,6 +25,7 @@ import * as utilities from "./utilities";
  *         timeout: 10,
  *         unhealthy: 1,
  *     },
+ *     name: "sample_healt_check",
  *     proxyAddress: "http://proxy.com",
  *     proxyPort: 80,
  *     resourceId: "sig-123",
@@ -66,7 +67,7 @@ export class HealthCheck extends pulumi.CustomResource {
     /**
      * The name of the health check.
      */
-    public readonly name!: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string | undefined>;
     public readonly proxyAddress!: pulumi.Output<string>;
     public readonly proxyPort!: pulumi.Output<number | undefined>;
     /**

@@ -437,8 +437,8 @@ namespace Pulumi.SpotInst.Aws
         /// <summary>
         /// The ManagedInstance name.
         /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
 
         [Input("networkInterfaces")]
         private InputList<Inputs.ManagedInstanceNetworkInterfaceArgs>? _networkInterfaces;

@@ -62,6 +62,7 @@ import * as utilities from "../utilities";
  *     },
  *     maxSize: 5,
  *     minSize: 1,
+ *     name: "example-gke",
  *     nodeImage: "COS",
  *     preemptiblePercentage: 100,
  * });
@@ -193,6 +194,9 @@ export class Elastigroup extends pulumi.CustomResource {
             if ((!args || args.desiredCapacity === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'desiredCapacity'");
             }
+            if ((!args || args.name === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'name'");
+            }
             resourceInputs["backendServices"] = args ? args.backendServices : undefined;
             resourceInputs["clusterId"] = args ? args.clusterId : undefined;
             resourceInputs["clusterZoneName"] = args ? args.clusterZoneName : undefined;
@@ -315,7 +319,7 @@ export interface ElastigroupArgs {
     maxSize?: pulumi.Input<number>;
     metadatas?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupMetadata>[]>;
     minSize?: pulumi.Input<number>;
-    name?: pulumi.Input<string>;
+    name: pulumi.Input<string>;
     networkInterfaces?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupNetworkInterface>[]>;
     /**
      * The image that will be used for the node VMs. Possible values: COS, UBUNTU.

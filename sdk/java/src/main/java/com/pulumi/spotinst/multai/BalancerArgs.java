@@ -32,11 +32,11 @@ public final class BalancerArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.dnsCnameAliases);
     }
 
-    @Import(name="name")
-    private @Nullable Output<String> name;
+    @Import(name="name", required=true)
+    private Output<String> name;
 
-    public Optional<Output<String>> name() {
-        return Optional.ofNullable(this.name);
+    public Output<String> name() {
+        return this.name;
     }
 
     @Import(name="scheme")
@@ -103,7 +103,7 @@ public final class BalancerArgs extends com.pulumi.resources.ResourceArgs {
             return dnsCnameAliases(List.of(dnsCnameAliases));
         }
 
-        public Builder name(@Nullable Output<String> name) {
+        public Builder name(Output<String> name) {
             $.name = name;
             return this;
         }
@@ -135,6 +135,7 @@ public final class BalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public BalancerArgs build() {
+            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
             return $;
         }
     }

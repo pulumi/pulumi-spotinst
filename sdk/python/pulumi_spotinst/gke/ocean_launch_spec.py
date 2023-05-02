@@ -782,6 +782,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
                 key="gci-update-strategy",
                 value="update_disabled",
             )],
+            name="specialty.nodes.spotk8s.com",
             network_interfaces=[spotinst.gke.OceanLaunchSpecNetworkInterfaceArgs(
                 access_configs=[spotinst.gke.OceanLaunchSpecNetworkInterfaceAccessConfigArgs(
                     name="external-nat-vng",
@@ -912,6 +913,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
                 key="gci-update-strategy",
                 value="update_disabled",
             )],
+            name="specialty.nodes.spotk8s.com",
             network_interfaces=[spotinst.gke.OceanLaunchSpecNetworkInterfaceArgs(
                 access_configs=[spotinst.gke.OceanLaunchSpecNetworkInterfaceAccessConfigArgs(
                     name="external-nat-vng",

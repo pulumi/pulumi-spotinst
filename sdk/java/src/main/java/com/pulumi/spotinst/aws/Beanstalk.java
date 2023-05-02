@@ -73,6 +73,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .maxSize(1)
  *             .minSize(0)
+ *             .name(&#34;example-elastigroup-beanstalk&#34;)
  *             .product(&#34;Linux/UNIX&#34;)
  *             .region(&#34;us-west-2&#34;)
  *             .build());

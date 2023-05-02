@@ -122,9 +122,13 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .iamInstanceProfile(&#34;iam-profile&#34;)
  *             .imageId(&#34;ami-123456&#34;)
- *             .images(OceanLaunchSpecImageArgs.builder()
- *                 .imageId(&#34;ami-id&#34;)
- *                 .build())
+ *             .images(            
+ *                 OceanLaunchSpecImageArgs.builder()
+ *                     .imageId(&#34;ami-id1&#34;)
+ *                     .build(),
+ *                 OceanLaunchSpecImageArgs.builder()
+ *                     .imageId(&#34;ami-id2&#34;)
+ *                     .build())
  *             .instanceMetadataOptions(OceanLaunchSpecInstanceMetadataOptionsArgs.builder()
  *                 .httpPutResponseHopLimit(10)
  *                 .httpTokens(&#34;required&#34;)
@@ -138,6 +142,7 @@ import javax.annotation.Nullable;
  *                 .key(&#34;key1&#34;)
  *                 .value(&#34;value1&#34;)
  *                 .build())
+ *             .name(&#34;example&#34;)
  *             .oceanId(&#34;o-123456&#34;)
  *             .preferredSpotTypes(            
  *                 &#34;m4.large&#34;,
@@ -427,14 +432,14 @@ public class OceanLaunchSpec extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="name", type=String.class, parameters={})
-    private Output<String> name;
+    private Output</* @Nullable */ String> name;
 
     /**
      * @return The name of the Virtual Node Group.
      * 
      */
-    public Output<String> name() {
-        return this.name;
+    public Output<Optional<String>> name() {
+        return Codegen.optional(this.name);
     }
     /**
      * The ID of the Ocean cluster.

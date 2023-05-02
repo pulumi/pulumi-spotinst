@@ -104,6 +104,9 @@ export class OceanNp extends pulumi.CustomResource {
             if ((!args || args.aksResourceGroupName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'aksResourceGroupName'");
             }
+            if ((!args || args.name === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'name'");
+            }
             resourceInputs["aksClusterName"] = args ? args.aksClusterName : undefined;
             resourceInputs["aksInfrastructureResourceGroupName"] = args ? args.aksInfrastructureResourceGroupName : undefined;
             resourceInputs["aksRegion"] = args ? args.aksRegion : undefined;
@@ -176,7 +179,7 @@ export interface OceanNpArgs {
     maxCount?: pulumi.Input<number>;
     maxPodsPerNode?: pulumi.Input<number>;
     minCount?: pulumi.Input<number>;
-    name?: pulumi.Input<string>;
+    name: pulumi.Input<string>;
     osDiskSizeGb?: pulumi.Input<number>;
     osDiskType?: pulumi.Input<string>;
     osType?: pulumi.Input<string>;

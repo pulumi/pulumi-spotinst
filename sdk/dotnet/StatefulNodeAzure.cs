@@ -484,8 +484,8 @@ namespace Pulumi.SpotInst
             set => _managedServiceIdentities = value;
         }
 
-        [Input("name")]
-        public Input<string>? Name { get; set; }
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
 
         [Input("network", required: true)]
         public Input<Inputs.StatefulNodeAzureNetworkArgs> Network { get; set; } = null!;

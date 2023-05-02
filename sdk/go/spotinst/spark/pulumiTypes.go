@@ -956,6 +956,7 @@ func (o OceanIngressPrivateLinkPtrOutput) VpcEndpointService() pulumi.StringPtrO
 }
 
 type OceanLogCollection struct {
+	CollectAppLogs *bool `pulumi:"collectAppLogs"`
 	// - Enable/disable the collection of driver logs. When enabled, driver logs are stored by NetApp and can be downloaded from the Spot console web interface. The driver logs are deleted after 30 days.
 	CollectDriverLogs *bool `pulumi:"collectDriverLogs"`
 }
@@ -972,6 +973,7 @@ type OceanLogCollectionInput interface {
 }
 
 type OceanLogCollectionArgs struct {
+	CollectAppLogs pulumi.BoolPtrInput `pulumi:"collectAppLogs"`
 	// - Enable/disable the collection of driver logs. When enabled, driver logs are stored by NetApp and can be downloaded from the Spot console web interface. The driver logs are deleted after 30 days.
 	CollectDriverLogs pulumi.BoolPtrInput `pulumi:"collectDriverLogs"`
 }
@@ -1053,6 +1055,10 @@ func (o OceanLogCollectionOutput) ToOceanLogCollectionPtrOutputWithContext(ctx c
 	}).(OceanLogCollectionPtrOutput)
 }
 
+func (o OceanLogCollectionOutput) CollectAppLogs() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OceanLogCollection) *bool { return v.CollectAppLogs }).(pulumi.BoolPtrOutput)
+}
+
 // - Enable/disable the collection of driver logs. When enabled, driver logs are stored by NetApp and can be downloaded from the Spot console web interface. The driver logs are deleted after 30 days.
 func (o OceanLogCollectionOutput) CollectDriverLogs() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OceanLogCollection) *bool { return v.CollectDriverLogs }).(pulumi.BoolPtrOutput)
@@ -1080,6 +1086,15 @@ func (o OceanLogCollectionPtrOutput) Elem() OceanLogCollectionOutput {
 		var ret OceanLogCollection
 		return ret
 	}).(OceanLogCollectionOutput)
+}
+
+func (o OceanLogCollectionPtrOutput) CollectAppLogs() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OceanLogCollection) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.CollectAppLogs
+	}).(pulumi.BoolPtrOutput)
 }
 
 // - Enable/disable the collection of driver logs. When enabled, driver logs are stored by NetApp and can be downloaded from the Spot console web interface. The driver logs are deleted after 30 days.

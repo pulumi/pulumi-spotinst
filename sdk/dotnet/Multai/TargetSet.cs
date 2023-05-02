@@ -22,7 +22,7 @@ namespace Pulumi.SpotInst.Multai
         public Output<Outputs.TargetSetHealthCheck> HealthCheck { get; private set; } = null!;
 
         [Output("name")]
-        public Output<string> Name { get; private set; } = null!;
+        public Output<string?> Name { get; private set; } = null!;
 
         [Output("port")]
         public Output<int?> Port { get; private set; } = null!;

@@ -56,6 +56,9 @@ func NewOceanNp(ctx *pulumi.Context,
 	if args.AksResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'AksResourceGroupName'")
 	}
+	if args.Name == nil {
+		return nil, errors.New("invalid value for required argument 'Name'")
+	}
 	var resource OceanNp
 	err := ctx.RegisterResource("spotinst:azure/oceanNp:OceanNp", name, args, &resource, opts...)
 	if err != nil {
@@ -144,7 +147,7 @@ type oceanNpArgs struct {
 	MaxCount                           *int                   `pulumi:"maxCount"`
 	MaxPodsPerNode                     *int                   `pulumi:"maxPodsPerNode"`
 	MinCount                           *int                   `pulumi:"minCount"`
-	Name                               *string                `pulumi:"name"`
+	Name                               string                 `pulumi:"name"`
 	OsDiskSizeGb                       *int                   `pulumi:"osDiskSizeGb"`
 	OsDiskType                         *string                `pulumi:"osDiskType"`
 	OsType                             *string                `pulumi:"osType"`
@@ -169,7 +172,7 @@ type OceanNpArgs struct {
 	MaxCount                           pulumi.IntPtrInput
 	MaxPodsPerNode                     pulumi.IntPtrInput
 	MinCount                           pulumi.IntPtrInput
-	Name                               pulumi.StringPtrInput
+	Name                               pulumi.StringInput
 	OsDiskSizeGb                       pulumi.IntPtrInput
 	OsDiskType                         pulumi.StringPtrInput
 	OsType                             pulumi.StringPtrInput

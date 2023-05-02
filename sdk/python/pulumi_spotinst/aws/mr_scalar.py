@@ -16,6 +16,7 @@ __all__ = ['MrScalarArgs', 'MrScalar']
 @pulumi.input_type
 class MrScalarArgs:
     def __init__(__self__, *,
+                 name: pulumi.Input[str],
                  strategy: pulumi.Input[str],
                  additional_info: Optional[pulumi.Input[str]] = None,
                  additional_primary_security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -51,7 +52,6 @@ class MrScalarArgs:
                  master_instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  master_lifecycle: Optional[pulumi.Input[str]] = None,
                  master_target: Optional[pulumi.Input[int]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
                  provisioning_timeout: Optional[pulumi.Input['MrScalarProvisioningTimeoutArgs']] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  release_label: Optional[pulumi.Input[str]] = None,
@@ -78,6 +78,7 @@ class MrScalarArgs:
                  visible_to_all_users: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a MrScalar resource.
+        :param pulumi.Input[str] name: The MrScaler name.
         :param pulumi.Input[str] strategy: The MrScaler strategy. Allowed values are `new` `clone` and `wrap`.
         :param pulumi.Input[str] additional_info: This is meta information about third-party applications that third-party vendors use for testing purposes.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] additional_primary_security_groups: A list of additional Amazon EC2 security group IDs for the master node.
@@ -110,7 +111,6 @@ class MrScalarArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] master_instance_types: The MrScaler instance types for the master nodes.
         :param pulumi.Input[str] master_lifecycle: The MrScaler lifecycle for instances in master group. Allowed values are 'SPOT' and 'ON_DEMAND'.
         :param pulumi.Input[int] master_target: Number of instances in the master group.
-        :param pulumi.Input[str] name: The MrScaler name.
         :param pulumi.Input[str] region: The MrScaler region.
         :param pulumi.Input[str] repo_upgrade_on_boot: Applies only when `custom_ami_id` is used. Specifies the type of updates that are applied from the Amazon Linux AMI package repositories when an instance boots using the AMI. Possible values include: `SECURITY`, `NONE`.
         :param pulumi.Input[int] retries: Specifies the maximum number of times a capacity provisioning should be retried if the provisioning timeout is exceeded. Valid values: `1-5`.
@@ -131,6 +131,7 @@ class MrScalarArgs:
         :param pulumi.Input[Sequence[pulumi.Input['MrScalarTerminationPolicyArgs']]] termination_policies: Allows defining termination policies for EMR clusters based on CloudWatch Metrics.
         :param pulumi.Input[bool] termination_protected: Specifies whether the Amazon EC2 instances in the cluster are protected from termination by API calls, user intervention, or in the event of a job-flow error.
         """
+        pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "strategy", strategy)
         if additional_info is not None:
             pulumi.set(__self__, "additional_info", additional_info)
@@ -200,8 +201,6 @@ class MrScalarArgs:
             pulumi.set(__self__, "master_lifecycle", master_lifecycle)
         if master_target is not None:
             pulumi.set(__self__, "master_target", master_target)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
         if provisioning_timeout is not None:
             pulumi.set(__self__, "provisioning_timeout", provisioning_timeout)
         if region is not None:
@@ -253,6 +252,18 @@ class MrScalarArgs:
             pulumi.log.warn("""visible_to_all_users is deprecated: This field has been removed from our API and is no longer functional.""")
         if visible_to_all_users is not None:
             pulumi.set(__self__, "visible_to_all_users", visible_to_all_users)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        The MrScaler name.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
@@ -664,18 +675,6 @@ class MrScalarArgs:
     @master_target.setter
     def master_target(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "master_target", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The MrScaler name.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter(name="provisioningTimeout")
@@ -2049,6 +2048,7 @@ class MrScalar(pulumi.CustomResource):
             master_instance_types=["c3.xlarge"],
             master_lifecycle="SPOT",
             master_target=1,
+            name="sample-MrScaler-01",
             provisioning_timeout=spotinst.aws.MrScalarProvisioningTimeoutArgs(
                 timeout=15,
                 timeout_action="terminateAndRetry",
@@ -2121,6 +2121,7 @@ class MrScalar(pulumi.CustomResource):
             master_instance_types=["c3.xlarge"],
             master_lifecycle="SPOT",
             master_target=1,
+            name="sample-MrScaler-01",
             region="us-west-2",
             strategy="clone",
             tags=[spotinst.aws.MrScalarTagArgs(
@@ -2176,6 +2177,7 @@ class MrScalar(pulumi.CustomResource):
         example_scaler_2 = spotinst.aws.MrScalar("example-scaler-2",
             cluster_id="j-27UVDEHXL4OQM",
             description="created by Pulumi",
+            name="spotinst-mr-scaler-2",
             region="us-west-2",
             strategy="wrap",
             task_desired_capacity=2,
@@ -2336,6 +2338,7 @@ class MrScalar(pulumi.CustomResource):
             master_instance_types=["c3.xlarge"],
             master_lifecycle="SPOT",
             master_target=1,
+            name="sample-MrScaler-01",
             provisioning_timeout=spotinst.aws.MrScalarProvisioningTimeoutArgs(
                 timeout=15,
                 timeout_action="terminateAndRetry",
@@ -2408,6 +2411,7 @@ class MrScalar(pulumi.CustomResource):
             master_instance_types=["c3.xlarge"],
             master_lifecycle="SPOT",
             master_target=1,
+            name="sample-MrScaler-01",
             region="us-west-2",
             strategy="clone",
             tags=[spotinst.aws.MrScalarTagArgs(
@@ -2463,6 +2467,7 @@ class MrScalar(pulumi.CustomResource):
         example_scaler_2 = spotinst.aws.MrScalar("example-scaler-2",
             cluster_id="j-27UVDEHXL4OQM",
             description="created by Pulumi",
+            name="spotinst-mr-scaler-2",
             region="us-west-2",
             strategy="wrap",
             task_desired_capacity=2,
@@ -2599,6 +2604,8 @@ class MrScalar(pulumi.CustomResource):
             __props__.__dict__["master_instance_types"] = master_instance_types
             __props__.__dict__["master_lifecycle"] = master_lifecycle
             __props__.__dict__["master_target"] = master_target
+            if name is None and not opts.urn:
+                raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
             __props__.__dict__["provisioning_timeout"] = provisioning_timeout
             __props__.__dict__["region"] = region

@@ -16,6 +16,7 @@ __all__ = ['OceanLaunchSpecArgs', 'OceanLaunchSpec']
 @pulumi.input_type
 class OceanLaunchSpecArgs:
     def __init__(__self__, *,
+                 name: pulumi.Input[str],
                  ocean_id: pulumi.Input[str],
                  attributes: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecAttributeArgs']]]] = None,
                  autoscale_headrooms: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecAutoscaleHeadroomArgs']]]] = None,
@@ -24,7 +25,6 @@ class OceanLaunchSpecArgs:
                  image_id: Optional[pulumi.Input[str]] = None,
                  instance_metadata_options: Optional[pulumi.Input['OceanLaunchSpecInstanceMetadataOptionsArgs']] = None,
                  instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
                  preferred_spot_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  restrict_scale_down: Optional[pulumi.Input[bool]] = None,
                  scheduling_tasks: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecSchedulingTaskArgs']]]] = None,
@@ -35,6 +35,7 @@ class OceanLaunchSpecArgs:
                  user_data: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a OceanLaunchSpec resource.
+        :param pulumi.Input[str] name: The Ocean Launch Specification name.
         :param pulumi.Input[str] ocean_id: The Ocean cluster ID .
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecAttributeArgs']]] attributes: Optionally adds labels to instances launched in an Ocean cluster.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecAutoscaleHeadroomArgs']]] autoscale_headrooms: Set custom headroom per launch spec. provide list of headrooms object.
@@ -42,7 +43,6 @@ class OceanLaunchSpecArgs:
         :param pulumi.Input[str] image_id: ID of the image used to launch the instances.
         :param pulumi.Input['OceanLaunchSpecInstanceMetadataOptionsArgs'] instance_metadata_options: Ocean instance metadata options object for IMDSv2.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the Ocean cluster.
-        :param pulumi.Input[str] name: The Ocean Launch Specification name.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] preferred_spot_types: When Ocean scales up instances, it takes your preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
         :param pulumi.Input[bool] restrict_scale_down: Boolean. When set to “True”, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecSchedulingTaskArgs']]] scheduling_tasks: Used to define scheduled tasks such as a manual headroom update.
@@ -52,6 +52,7 @@ class OceanLaunchSpecArgs:
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecTagArgs']]] tags: A key/value mapping of tags to assign to the resource.
         :param pulumi.Input[str] user_data: Base64-encoded MIME user data to make available to the instances.
         """
+        pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "ocean_id", ocean_id)
         if attributes is not None:
             pulumi.set(__self__, "attributes", attributes)
@@ -67,8 +68,6 @@ class OceanLaunchSpecArgs:
             pulumi.set(__self__, "instance_metadata_options", instance_metadata_options)
         if instance_types is not None:
             pulumi.set(__self__, "instance_types", instance_types)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
         if preferred_spot_types is not None:
             pulumi.set(__self__, "preferred_spot_types", preferred_spot_types)
         if restrict_scale_down is not None:
@@ -85,6 +84,18 @@ class OceanLaunchSpecArgs:
             pulumi.set(__self__, "tags", tags)
         if user_data is not None:
             pulumi.set(__self__, "user_data", user_data)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        The Ocean Launch Specification name.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter(name="oceanId")
@@ -178,18 +189,6 @@ class OceanLaunchSpecArgs:
     @instance_types.setter
     def instance_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "instance_types", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The Ocean Launch Specification name.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter(name="preferredSpotTypes")
@@ -882,6 +881,8 @@ class OceanLaunchSpec(pulumi.CustomResource):
             __props__.__dict__["image_id"] = image_id
             __props__.__dict__["instance_metadata_options"] = instance_metadata_options
             __props__.__dict__["instance_types"] = instance_types
+            if name is None and not opts.urn:
+                raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
             if ocean_id is None and not opts.urn:
                 raise TypeError("Missing required property 'ocean_id'")

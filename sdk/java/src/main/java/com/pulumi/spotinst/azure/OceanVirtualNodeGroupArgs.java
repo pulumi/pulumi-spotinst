@@ -70,15 +70,15 @@ public final class OceanVirtualNodeGroupArgs extends com.pulumi.resources.Resour
      * Set name for the virtual node group.
      * 
      */
-    @Import(name="name")
-    private @Nullable Output<String> name;
+    @Import(name="name", required=true)
+    private Output<String> name;
 
     /**
      * @return Set name for the virtual node group.
      * 
      */
-    public Optional<Output<String>> name() {
-        return Optional.ofNullable(this.name);
+    public Output<String> name() {
+        return this.name;
     }
 
     /**
@@ -271,7 +271,7 @@ public final class OceanVirtualNodeGroupArgs extends com.pulumi.resources.Resour
          * @return builder
          * 
          */
-        public Builder name(@Nullable Output<String> name) {
+        public Builder name(Output<String> name) {
             $.name = name;
             return this;
         }
@@ -401,6 +401,7 @@ public final class OceanVirtualNodeGroupArgs extends com.pulumi.resources.Resour
         }
 
         public OceanVirtualNodeGroupArgs build() {
+            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
             $.oceanId = Objects.requireNonNull($.oceanId, "expected parameter 'oceanId' to be non-null");
             return $;
         }

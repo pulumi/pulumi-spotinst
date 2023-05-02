@@ -41,6 +41,7 @@ import * as utilities from "../utilities";
  *             value: "label_value",
  *         }],
  *     }],
+ *     name: "vng_name",
  *     oceanId: "o-12345",
  *     resourceLimits: [{
  *         maxInstanceCount: 4,
@@ -148,6 +149,9 @@ export class OceanVirtualNodeGroup extends pulumi.CustomResource {
             resourceInputs["zones"] = state ? state.zones : undefined;
         } else {
             const args = argsOrState as OceanVirtualNodeGroupArgs | undefined;
+            if ((!args || args.name === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'name'");
+            }
             if ((!args || args.oceanId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'oceanId'");
             }
@@ -222,7 +226,7 @@ export interface OceanVirtualNodeGroupArgs {
     /**
      * Set name for the virtual node group.
      */
-    name?: pulumi.Input<string>;
+    name: pulumi.Input<string>;
     /**
      * The Ocean cluster ID.
      */

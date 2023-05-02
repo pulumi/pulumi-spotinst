@@ -102,6 +102,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .maxSize(5)
  *             .minSize(1)
+ *             .name(&#34;example-gke&#34;)
  *             .nodeImage(&#34;COS&#34;)
  *             .preemptiblePercentage(100)
  *             .build());

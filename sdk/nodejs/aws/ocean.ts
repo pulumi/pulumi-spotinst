@@ -148,7 +148,7 @@ export class Ocean extends pulumi.CustomResource {
     /**
      * Required if type is set to `CLASSIC`
      */
-    public readonly name!: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string | undefined>;
     /**
      * The region the cluster will run in.
      */

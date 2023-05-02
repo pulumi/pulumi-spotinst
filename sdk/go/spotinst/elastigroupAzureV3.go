@@ -58,6 +58,9 @@ func NewElastigroupAzureV3(ctx *pulumi.Context,
 	if args.FallbackToOnDemand == nil {
 		return nil, errors.New("invalid value for required argument 'FallbackToOnDemand'")
 	}
+	if args.Name == nil {
+		return nil, errors.New("invalid value for required argument 'Name'")
+	}
 	if args.Network == nil {
 		return nil, errors.New("invalid value for required argument 'Network'")
 	}
@@ -186,7 +189,7 @@ type elastigroupAzureV3Args struct {
 	// The minimum number of instances the group should have at any time.
 	MinSize *int `pulumi:"minSize"`
 	// Name of the Managed Service Identity.
-	Name    *string                   `pulumi:"name"`
+	Name    string                    `pulumi:"name"`
 	Network ElastigroupAzureV3Network `pulumi:"network"`
 	// Available On-Demand sizes
 	OdSizes       []string `pulumi:"odSizes"`
@@ -221,7 +224,7 @@ type ElastigroupAzureV3Args struct {
 	// The minimum number of instances the group should have at any time.
 	MinSize pulumi.IntPtrInput
 	// Name of the Managed Service Identity.
-	Name    pulumi.StringPtrInput
+	Name    pulumi.StringInput
 	Network ElastigroupAzureV3NetworkInput
 	// Available On-Demand sizes
 	OdSizes       pulumi.StringArrayInput

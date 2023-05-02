@@ -39,6 +39,9 @@ func NewOceanNpVirtualNodeGroup(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.Name == nil {
+		return nil, errors.New("invalid value for required argument 'Name'")
+	}
 	if args.OceanId == nil {
 		return nil, errors.New("invalid value for required argument 'OceanId'")
 	}
@@ -114,7 +117,7 @@ type oceanNpVirtualNodeGroupArgs struct {
 	MaxCount           *int                              `pulumi:"maxCount"`
 	MaxPodsPerNode     *int                              `pulumi:"maxPodsPerNode"`
 	MinCount           *int                              `pulumi:"minCount"`
-	Name               *string                           `pulumi:"name"`
+	Name               string                            `pulumi:"name"`
 	OceanId            string                            `pulumi:"oceanId"`
 	OsDiskSizeGb       *int                              `pulumi:"osDiskSizeGb"`
 	OsDiskType         *string                           `pulumi:"osDiskType"`
@@ -134,7 +137,7 @@ type OceanNpVirtualNodeGroupArgs struct {
 	MaxCount           pulumi.IntPtrInput
 	MaxPodsPerNode     pulumi.IntPtrInput
 	MinCount           pulumi.IntPtrInput
-	Name               pulumi.StringPtrInput
+	Name               pulumi.StringInput
 	OceanId            pulumi.StringInput
 	OsDiskSizeGb       pulumi.IntPtrInput
 	OsDiskType         pulumi.StringPtrInput

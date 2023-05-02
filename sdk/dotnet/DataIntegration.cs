@@ -24,6 +24,7 @@ namespace Pulumi.SpotInst
     /// {
     ///     var example = new SpotInst.DataIntegration("example", new()
     ///     {
+    ///         Name = "foo",
     ///         S3 = new SpotInst.Inputs.DataIntegrationS3Args
     ///         {
     ///             BucketName = "terraform-test-do-not-delete",
@@ -64,7 +65,7 @@ namespace Pulumi.SpotInst
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public DataIntegration(string name, DataIntegrationArgs? args = null, CustomResourceOptions? options = null)
+        public DataIntegration(string name, DataIntegrationArgs args, CustomResourceOptions? options = null)
             : base("spotinst:index/dataIntegration:DataIntegration", name, args ?? new DataIntegrationArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -105,8 +106,8 @@ namespace Pulumi.SpotInst
         /// <summary>
         /// The name of the data integration.
         /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
 
         /// <summary>
         /// When vendor value is s3, the following fields are included:

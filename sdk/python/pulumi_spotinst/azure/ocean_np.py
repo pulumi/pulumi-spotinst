@@ -20,6 +20,7 @@ class OceanNpArgs:
                  aks_infrastructure_resource_group_name: pulumi.Input[str],
                  aks_region: pulumi.Input[str],
                  aks_resource_group_name: pulumi.Input[str],
+                 name: pulumi.Input[str],
                  autoscaler: Optional[pulumi.Input['OceanNpAutoscalerArgs']] = None,
                  availability_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  controller_cluster_id: Optional[pulumi.Input[str]] = None,
@@ -30,7 +31,6 @@ class OceanNpArgs:
                  max_count: Optional[pulumi.Input[int]] = None,
                  max_pods_per_node: Optional[pulumi.Input[int]] = None,
                  min_count: Optional[pulumi.Input[int]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
                  os_disk_size_gb: Optional[pulumi.Input[int]] = None,
                  os_disk_type: Optional[pulumi.Input[str]] = None,
                  os_type: Optional[pulumi.Input[str]] = None,
@@ -44,6 +44,7 @@ class OceanNpArgs:
         pulumi.set(__self__, "aks_infrastructure_resource_group_name", aks_infrastructure_resource_group_name)
         pulumi.set(__self__, "aks_region", aks_region)
         pulumi.set(__self__, "aks_resource_group_name", aks_resource_group_name)
+        pulumi.set(__self__, "name", name)
         if autoscaler is not None:
             pulumi.set(__self__, "autoscaler", autoscaler)
         if availability_zones is not None:
@@ -64,8 +65,6 @@ class OceanNpArgs:
             pulumi.set(__self__, "max_pods_per_node", max_pods_per_node)
         if min_count is not None:
             pulumi.set(__self__, "min_count", min_count)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
         if os_disk_size_gb is not None:
             pulumi.set(__self__, "os_disk_size_gb", os_disk_size_gb)
         if os_disk_type is not None:
@@ -114,6 +113,15 @@ class OceanNpArgs:
     @aks_resource_group_name.setter
     def aks_resource_group_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "aks_resource_group_name", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
@@ -204,15 +212,6 @@ class OceanNpArgs:
     @min_count.setter
     def min_count(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "min_count", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter(name="osDiskSizeGb")
@@ -636,6 +635,8 @@ class OceanNp(pulumi.CustomResource):
             __props__.__dict__["max_count"] = max_count
             __props__.__dict__["max_pods_per_node"] = max_pods_per_node
             __props__.__dict__["min_count"] = min_count
+            if name is None and not opts.urn:
+                raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
             __props__.__dict__["os_disk_size_gb"] = os_disk_size_gb
             __props__.__dict__["os_disk_type"] = os_disk_type

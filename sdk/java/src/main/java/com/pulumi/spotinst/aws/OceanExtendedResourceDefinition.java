@@ -41,6 +41,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new OceanExtendedResourceDefinition(&#34;example&#34;, OceanExtendedResourceDefinitionArgs.builder()        
+ *             .name(&#34;terraform_extended_resource_definition&#34;)
  *             .resourceMapping(Map.ofEntries(
  *                 Map.entry(&#34;c3.large&#34;, &#34;2Ki&#34;),
  *                 Map.entry(&#34;c3.xlarge&#34;, &#34;4Ki&#34;)

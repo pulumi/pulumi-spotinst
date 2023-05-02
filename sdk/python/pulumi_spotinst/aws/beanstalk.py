@@ -20,6 +20,7 @@ class BeanstalkArgs:
                  instance_types_spots: pulumi.Input[Sequence[pulumi.Input[str]]],
                  max_size: pulumi.Input[int],
                  min_size: pulumi.Input[int],
+                 name: pulumi.Input[str],
                  product: pulumi.Input[str],
                  region: pulumi.Input[str],
                  beanstalk_environment_id: Optional[pulumi.Input[str]] = None,
@@ -27,7 +28,6 @@ class BeanstalkArgs:
                  deployment_preferences: Optional[pulumi.Input['BeanstalkDeploymentPreferencesArgs']] = None,
                  maintenance: Optional[pulumi.Input[str]] = None,
                  managed_actions: Optional[pulumi.Input['BeanstalkManagedActionsArgs']] = None,
-                 name: Optional[pulumi.Input[str]] = None,
                  scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input['BeanstalkScheduledTaskArgs']]]] = None):
         """
         The set of arguments for constructing a Beanstalk resource.
@@ -35,6 +35,7 @@ class BeanstalkArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types_spots: One or more instance types. To maximize the availability of Spot instances, select as many instance types as possible.
         :param pulumi.Input[int] max_size: The maximum number of instances the group should have at any time.
         :param pulumi.Input[int] min_size: The minimum number of instances the group should have at any time.
+        :param pulumi.Input[str] name: The group name.
         :param pulumi.Input[str] product: Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`.
                For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
         :param pulumi.Input[str] region: The AWS region your group will be created in. Cannot be changed after the group has been created.
@@ -42,12 +43,12 @@ class BeanstalkArgs:
         :param pulumi.Input[str] beanstalk_environment_name: The name of an existing Beanstalk environment.
         :param pulumi.Input['BeanstalkDeploymentPreferencesArgs'] deployment_preferences: Preferences when performing a roll
         :param pulumi.Input['BeanstalkManagedActionsArgs'] managed_actions: Managed Actions parameters
-        :param pulumi.Input[str] name: The group name.
         """
         pulumi.set(__self__, "desired_capacity", desired_capacity)
         pulumi.set(__self__, "instance_types_spots", instance_types_spots)
         pulumi.set(__self__, "max_size", max_size)
         pulumi.set(__self__, "min_size", min_size)
+        pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "product", product)
         pulumi.set(__self__, "region", region)
         if beanstalk_environment_id is not None:
@@ -60,8 +61,6 @@ class BeanstalkArgs:
             pulumi.set(__self__, "maintenance", maintenance)
         if managed_actions is not None:
             pulumi.set(__self__, "managed_actions", managed_actions)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
         if scheduled_tasks is not None:
             pulumi.set(__self__, "scheduled_tasks", scheduled_tasks)
 
@@ -112,6 +111,18 @@ class BeanstalkArgs:
     @min_size.setter
     def min_size(self, value: pulumi.Input[int]):
         pulumi.set(self, "min_size", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        The group name.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
@@ -194,18 +205,6 @@ class BeanstalkArgs:
     @managed_actions.setter
     def managed_actions(self, value: Optional[pulumi.Input['BeanstalkManagedActionsArgs']]):
         pulumi.set(self, "managed_actions", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The group name.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter(name="scheduledTasks")
@@ -482,6 +481,7 @@ class Beanstalk(pulumi.CustomResource):
             ),
             max_size=1,
             min_size=0,
+            name="example-elastigroup-beanstalk",
             product="Linux/UNIX",
             region="us-west-2")
         ```
@@ -543,6 +543,7 @@ class Beanstalk(pulumi.CustomResource):
             ),
             max_size=1,
             min_size=0,
+            name="example-elastigroup-beanstalk",
             product="Linux/UNIX",
             region="us-west-2")
         ```
@@ -601,6 +602,8 @@ class Beanstalk(pulumi.CustomResource):
             if min_size is None and not opts.urn:
                 raise TypeError("Missing required property 'min_size'")
             __props__.__dict__["min_size"] = min_size
+            if name is None and not opts.urn:
+                raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
             if product is None and not opts.urn:
                 raise TypeError("Missing required property 'product'")

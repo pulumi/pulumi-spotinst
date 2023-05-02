@@ -16,24 +16,32 @@ __all__ = ['BalancerArgs', 'Balancer']
 @pulumi.input_type
 class BalancerArgs:
     def __init__(__self__, *,
+                 name: pulumi.Input[str],
                  connection_timeouts: Optional[pulumi.Input['BalancerConnectionTimeoutsArgs']] = None,
                  dns_cname_aliases: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
                  scheme: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['BalancerTagArgs']]]] = None):
         """
         The set of arguments for constructing a Balancer resource.
         """
+        pulumi.set(__self__, "name", name)
         if connection_timeouts is not None:
             pulumi.set(__self__, "connection_timeouts", connection_timeouts)
         if dns_cname_aliases is not None:
             pulumi.set(__self__, "dns_cname_aliases", dns_cname_aliases)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
         if scheme is not None:
             pulumi.set(__self__, "scheme", scheme)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter(name="connectionTimeouts")
@@ -52,15 +60,6 @@ class BalancerArgs:
     @dns_cname_aliases.setter
     def dns_cname_aliases(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "dns_cname_aliases", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
@@ -169,7 +168,7 @@ class Balancer(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Optional[BalancerArgs] = None,
+                 args: BalancerArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Create a Balancer resource with the given unique name, props, and options.
@@ -204,6 +203,8 @@ class Balancer(pulumi.CustomResource):
 
             __props__.__dict__["connection_timeouts"] = connection_timeouts
             __props__.__dict__["dns_cname_aliases"] = dns_cname_aliases
+            if name is None and not opts.urn:
+                raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
             __props__.__dict__["scheme"] = scheme
             __props__.__dict__["tags"] = tags

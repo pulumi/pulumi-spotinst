@@ -87,6 +87,7 @@ import * as utilities from "../utilities";
  *     masterInstanceTypes: ["c3.xlarge"],
  *     masterLifecycle: "SPOT",
  *     masterTarget: 1,
+ *     name: "sample-MrScaler-01",
  *     provisioningTimeout: {
  *         timeout: 15,
  *         timeoutAction: "terminateAndRetry",
@@ -161,6 +162,7 @@ import * as utilities from "../utilities";
  *         masterInstanceTypes: ["c3.xlarge"],
  *         masterLifecycle: "SPOT",
  *         masterTarget: 1,
+ *         name: "sample-MrScaler-01",
  *         region: "us-west-2",
  *         strategy: "clone",
  *         tags: [{
@@ -222,6 +224,7 @@ import * as utilities from "../utilities";
  * const example_scaler_2 = new spotinst.aws.MrScalar("example-scaler-2", {
  *     clusterId: "j-27UVDEHXL4OQM",
  *     description: "created by Pulumi",
+ *     name: "spotinst-mr-scaler-2",
  *     region: "us-west-2",
  *     strategy: "wrap",
  *     taskDesiredCapacity: 2,
@@ -566,6 +569,9 @@ export class MrScalar extends pulumi.CustomResource {
             resourceInputs["visibleToAllUsers"] = state ? state.visibleToAllUsers : undefined;
         } else {
             const args = argsOrState as MrScalarArgs | undefined;
+            if ((!args || args.name === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'name'");
+            }
             if ((!args || args.strategy === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'strategy'");
             }
@@ -996,7 +1002,7 @@ export interface MrScalarArgs {
     /**
      * The MrScaler name.
      */
-    name?: pulumi.Input<string>;
+    name: pulumi.Input<string>;
     provisioningTimeout?: pulumi.Input<inputs.aws.MrScalarProvisioningTimeout>;
     /**
      * The MrScaler region.

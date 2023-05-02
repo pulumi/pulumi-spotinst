@@ -36,7 +36,7 @@ export class Target extends pulumi.CustomResource {
 
     public readonly balancerId!: pulumi.Output<string>;
     public readonly host!: pulumi.Output<string>;
-    public readonly name!: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string | undefined>;
     public readonly port!: pulumi.Output<number | undefined>;
     public readonly tags!: pulumi.Output<outputs.multai.TargetTag[] | undefined>;
     public readonly targetSetId!: pulumi.Output<string>;

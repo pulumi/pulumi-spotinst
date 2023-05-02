@@ -380,8 +380,8 @@ namespace Pulumi.SpotInst.Ecs
         /// <summary>
         /// The Ocean cluster name.
         /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
 
         /// <summary>
         /// Object. Set auto image update settings.

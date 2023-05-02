@@ -1008,9 +1008,14 @@ class OceanLaunchSpec(pulumi.CustomResource):
             )],
             iam_instance_profile="iam-profile",
             image_id="ami-123456",
-            images=[spotinst.aws.OceanLaunchSpecImageArgs(
-                image_id="ami-id",
-            )],
+            images=[
+                spotinst.aws.OceanLaunchSpecImageArgs(
+                    image_id="ami-id1",
+                ),
+                spotinst.aws.OceanLaunchSpecImageArgs(
+                    image_id="ami-id2",
+                ),
+            ],
             instance_metadata_options=spotinst.aws.OceanLaunchSpecInstanceMetadataOptionsArgs(
                 http_put_response_hop_limit=10,
                 http_tokens="required",
@@ -1025,6 +1030,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
                 key="key1",
                 value="value1",
             )],
+            name="example",
             ocean_id="o-123456",
             preferred_spot_types=[
                 "m4.large",
@@ -1173,9 +1179,14 @@ class OceanLaunchSpec(pulumi.CustomResource):
             )],
             iam_instance_profile="iam-profile",
             image_id="ami-123456",
-            images=[spotinst.aws.OceanLaunchSpecImageArgs(
-                image_id="ami-id",
-            )],
+            images=[
+                spotinst.aws.OceanLaunchSpecImageArgs(
+                    image_id="ami-id1",
+                ),
+                spotinst.aws.OceanLaunchSpecImageArgs(
+                    image_id="ami-id2",
+                ),
+            ],
             instance_metadata_options=spotinst.aws.OceanLaunchSpecInstanceMetadataOptionsArgs(
                 http_put_response_hop_limit=10,
                 http_tokens="required",
@@ -1190,6 +1201,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
                 key="key1",
                 value="value1",
             )],
+            name="example",
             ocean_id="o-123456",
             preferred_spot_types=[
                 "m4.large",
@@ -1551,7 +1563,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> pulumi.Output[str]:
+    def name(self) -> pulumi.Output[Optional[str]]:
         """
         The name of the Virtual Node Group.
         """

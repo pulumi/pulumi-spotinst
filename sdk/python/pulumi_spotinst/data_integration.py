@@ -16,7 +16,7 @@ __all__ = ['DataIntegrationArgs', 'DataIntegration']
 @pulumi.input_type
 class DataIntegrationArgs:
     def __init__(__self__, *,
-                 name: Optional[pulumi.Input[str]] = None,
+                 name: pulumi.Input[str],
                  s3: Optional[pulumi.Input['DataIntegrationS3Args']] = None,
                  status: Optional[pulumi.Input[str]] = None):
         """
@@ -25,8 +25,7 @@ class DataIntegrationArgs:
         :param pulumi.Input['DataIntegrationS3Args'] s3: When vendor value is s3, the following fields are included:
         :param pulumi.Input[str] status: Determines if this data integration is on or off. Valid values: `"enabled"`, `"disabled"`
         """
-        if name is not None:
-            pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "name", name)
         if s3 is not None:
             pulumi.set(__self__, "s3", s3)
         if status is not None:
@@ -34,14 +33,14 @@ class DataIntegrationArgs:
 
     @property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
+    def name(self) -> pulumi.Input[str]:
         """
         The name of the data integration.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
+    def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
 
     @property
@@ -144,6 +143,7 @@ class DataIntegration(pulumi.CustomResource):
         import pulumi_spotinst as spotinst
 
         example = spotinst.DataIntegration("example",
+            name="foo",
             s3=spotinst.DataIntegrationS3Args(
                 bucket_name="terraform-test-do-not-delete",
                 subdir="terraform-test-data-integration",
@@ -161,7 +161,7 @@ class DataIntegration(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Optional[DataIntegrationArgs] = None,
+                 args: DataIntegrationArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a Spotinst Data Integration resource.
@@ -173,6 +173,7 @@ class DataIntegration(pulumi.CustomResource):
         import pulumi_spotinst as spotinst
 
         example = spotinst.DataIntegration("example",
+            name="foo",
             s3=spotinst.DataIntegrationS3Args(
                 bucket_name="terraform-test-do-not-delete",
                 subdir="terraform-test-data-integration",
@@ -207,6 +208,8 @@ class DataIntegration(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = DataIntegrationArgs.__new__(DataIntegrationArgs)
 
+            if name is None and not opts.urn:
+                raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
             __props__.__dict__["s3"] = s3
             __props__.__dict__["status"] = status

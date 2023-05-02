@@ -76,6 +76,7 @@ namespace Pulumi.SpotInst.Azure
     ///         },
     ///         MaxSize = 1,
     ///         MinSize = 0,
+    ///         Name = "example_elastigroup_azure",
     ///         Network = new SpotInst.Azure.Inputs.ElastigroupNetworkArgs
     ///         {
     ///             AssignPublicIp = true,
@@ -423,8 +424,8 @@ namespace Pulumi.SpotInst.Azure
         /// <summary>
         /// The name of the managed identity.
         /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
 
         [Input("network", required: true)]
         public Input<Inputs.ElastigroupNetworkArgs> Network { get; set; } = null!;

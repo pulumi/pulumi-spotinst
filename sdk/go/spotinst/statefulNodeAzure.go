@@ -287,6 +287,9 @@ func NewStatefulNodeAzure(ctx *pulumi.Context,
 	if args.Login == nil {
 		return nil, errors.New("invalid value for required argument 'Login'")
 	}
+	if args.Name == nil {
+		return nil, errors.New("invalid value for required argument 'Name'")
+	}
 	if args.Network == nil {
 		return nil, errors.New("invalid value for required argument 'Network'")
 	}
@@ -440,7 +443,7 @@ type statefulNodeAzureArgs struct {
 	LoadBalancers            []StatefulNodeAzureLoadBalancer           `pulumi:"loadBalancers"`
 	Login                    StatefulNodeAzureLogin                    `pulumi:"login"`
 	ManagedServiceIdentities []StatefulNodeAzureManagedServiceIdentity `pulumi:"managedServiceIdentities"`
-	Name                     *string                                   `pulumi:"name"`
+	Name                     string                                    `pulumi:"name"`
 	Network                  StatefulNodeAzureNetwork                  `pulumi:"network"`
 	OdSizes                  []string                                  `pulumi:"odSizes"`
 	Os                       string                                    `pulumi:"os"`
@@ -482,7 +485,7 @@ type StatefulNodeAzureArgs struct {
 	LoadBalancers            StatefulNodeAzureLoadBalancerArrayInput
 	Login                    StatefulNodeAzureLoginInput
 	ManagedServiceIdentities StatefulNodeAzureManagedServiceIdentityArrayInput
-	Name                     pulumi.StringPtrInput
+	Name                     pulumi.StringInput
 	Network                  StatefulNodeAzureNetworkInput
 	OdSizes                  pulumi.StringArrayInput
 	Os                       pulumi.StringInput

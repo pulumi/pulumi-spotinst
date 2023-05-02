@@ -109,6 +109,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .maxSize(1)
  *             .minSize(0)
+ *             .name(&#34;example-gcp&#34;)
  *             .networkInterfaces(ElastigroupNetworkInterfaceArgs.builder()
  *                 .network(&#34;spot-network&#34;)
  *                 .build())

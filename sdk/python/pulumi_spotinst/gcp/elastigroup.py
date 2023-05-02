@@ -17,6 +17,7 @@ __all__ = ['ElastigroupArgs', 'Elastigroup']
 class ElastigroupArgs:
     def __init__(__self__, *,
                  desired_capacity: pulumi.Input[int],
+                 name: pulumi.Input[str],
                  auto_healing: Optional[pulumi.Input[bool]] = None,
                  availability_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  backend_services: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupBackendServiceArgs']]]] = None,
@@ -38,7 +39,6 @@ class ElastigroupArgs:
                  max_size: Optional[pulumi.Input[int]] = None,
                  metadatas: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupMetadataArgs']]]] = None,
                  min_size: Optional[pulumi.Input[int]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupNetworkInterfaceArgs']]]] = None,
                  ondemand_count: Optional[pulumi.Input[int]] = None,
                  preemptible_percentage: Optional[pulumi.Input[int]] = None,
@@ -55,6 +55,7 @@ class ElastigroupArgs:
         """
         The set of arguments for constructing a Elastigroup resource.
         :param pulumi.Input[int] desired_capacity: The desired number of instances the group should have at any time.
+        :param pulumi.Input[str] name: The group name.
         :param pulumi.Input[bool] auto_healing: Enable auto-replacement of unhealthy instances.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] availability_zones: List of availability zones for the group.
         :param pulumi.Input[str] description: The region your GCP group will be created in.
@@ -73,7 +74,6 @@ class ElastigroupArgs:
         :param pulumi.Input[int] max_size: The maximum number of instances the group should have at any time.
         :param pulumi.Input[Sequence[pulumi.Input['ElastigroupMetadataArgs']]] metadatas: Array of objects with key-value pairs.
         :param pulumi.Input[int] min_size: The minimum number of instances the group should have at any time.
-        :param pulumi.Input[str] name: The group name.
         :param pulumi.Input[Sequence[pulumi.Input['ElastigroupNetworkInterfaceArgs']]] network_interfaces: Array of objects representing the network configuration for the elastigroup.
         :param pulumi.Input[int] preemptible_percentage: Percentage of Preemptible VMs to spin up from the "desired_capacity".
         :param pulumi.Input[str] provisioning_model: Valid values: "SPOT", "PREEMPTIBLE". Define the provisioning model of the launched instances. Default value is "PREEMPTIBLE".
@@ -87,6 +87,7 @@ class ElastigroupArgs:
         :param pulumi.Input[int] unhealthy_duration: Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
         """
         pulumi.set(__self__, "desired_capacity", desired_capacity)
+        pulumi.set(__self__, "name", name)
         if auto_healing is not None:
             pulumi.set(__self__, "auto_healing", auto_healing)
         if availability_zones is not None:
@@ -132,8 +133,6 @@ class ElastigroupArgs:
             pulumi.set(__self__, "metadatas", metadatas)
         if min_size is not None:
             pulumi.set(__self__, "min_size", min_size)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
         if network_interfaces is not None:
             pulumi.set(__self__, "network_interfaces", network_interfaces)
         if ondemand_count is not None:
@@ -172,6 +171,18 @@ class ElastigroupArgs:
     @desired_capacity.setter
     def desired_capacity(self, value: pulumi.Input[int]):
         pulumi.set(self, "desired_capacity", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        The group name.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter(name="autoHealing")
@@ -411,18 +422,6 @@ class ElastigroupArgs:
     @min_size.setter
     def min_size(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "min_size", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The group name.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter(name="networkInterfaces")
@@ -1239,6 +1238,7 @@ class Elastigroup(pulumi.CustomResource):
             )],
             max_size=1,
             min_size=0,
+            name="example-gcp",
             network_interfaces=[spotinst.gcp.ElastigroupNetworkInterfaceArgs(
                 network="spot-network",
             )],
@@ -1374,6 +1374,7 @@ class Elastigroup(pulumi.CustomResource):
             )],
             max_size=1,
             min_size=0,
+            name="example-gcp",
             network_interfaces=[spotinst.gcp.ElastigroupNetworkInterfaceArgs(
                 network="spot-network",
             )],
@@ -1497,6 +1498,8 @@ class Elastigroup(pulumi.CustomResource):
             __props__.__dict__["max_size"] = max_size
             __props__.__dict__["metadatas"] = metadatas
             __props__.__dict__["min_size"] = min_size
+            if name is None and not opts.urn:
+                raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
             __props__.__dict__["network_interfaces"] = network_interfaces
             __props__.__dict__["ondemand_count"] = ondemand_count

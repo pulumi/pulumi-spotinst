@@ -19,6 +19,7 @@ class ElastigroupArgs:
                  fallback_to_ondemand: pulumi.Input[bool],
                  instance_types_ondemand: pulumi.Input[str],
                  instance_types_spots: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 name: pulumi.Input[str],
                  orientation: pulumi.Input[str],
                  product: pulumi.Input[str],
                  security_groups: pulumi.Input[Sequence[pulumi.Input[str]]],
@@ -66,7 +67,6 @@ class ElastigroupArgs:
                  minimum_instance_lifetime: Optional[pulumi.Input[int]] = None,
                  multai_target_sets: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupMultaiTargetSetArgs']]]] = None,
                  multiple_metrics: Optional[pulumi.Input['ElastigroupMultipleMetricsArgs']] = None,
-                 name: Optional[pulumi.Input[str]] = None,
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupNetworkInterfaceArgs']]]] = None,
                  ondemand_count: Optional[pulumi.Input[int]] = None,
                  persist_block_devices: Optional[pulumi.Input[bool]] = None,
@@ -102,6 +102,7 @@ class ElastigroupArgs:
         :param pulumi.Input[bool] fallback_to_ondemand: In a case of no Spot instances available, Elastigroup will launch on-demand instances instead.
         :param pulumi.Input[str] instance_types_ondemand: The type of instance determines your instance's CPU capacity, memory and storage (e.g., m1.small, c1.xlarge).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types_spots: One or more instance types.
+        :param pulumi.Input[str] name: The group name.
         :param pulumi.Input[str] orientation: Select a prediction strategy. Valid values: `balanced`, `costOriented`, `equalAzDistribution`, `availabilityOriented`. You can read more in our documentation.
         :param pulumi.Input[str] product: Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`.
                For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
@@ -145,7 +146,6 @@ class ElastigroupArgs:
         :param pulumi.Input[int] min_size: The minimum number of instances the group should have at any time.
         :param pulumi.Input[int] minimum_instance_lifetime: Defines the preferred minimum instance lifetime in hours. Markets which comply with this preference will be prioritized. Optional values: 1, 3, 6, 12, 24.
         :param pulumi.Input[Sequence[pulumi.Input['ElastigroupMultaiTargetSetArgs']]] multai_target_sets: Set of targets to register.
-        :param pulumi.Input[str] name: The group name.
         :param pulumi.Input[int] ondemand_count: Number of on demand instances to launch in the group. All other instances will be spot instances. When this parameter is set the `spot_percentage` parameter is being ignored.
         :param pulumi.Input[bool] persist_block_devices: Boolean, should the instance maintain its Data volumes.
         :param pulumi.Input[bool] persist_private_ip: Boolean, should the instance maintain its private IP.
@@ -173,6 +173,7 @@ class ElastigroupArgs:
         pulumi.set(__self__, "fallback_to_ondemand", fallback_to_ondemand)
         pulumi.set(__self__, "instance_types_ondemand", instance_types_ondemand)
         pulumi.set(__self__, "instance_types_spots", instance_types_spots)
+        pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "orientation", orientation)
         pulumi.set(__self__, "product", product)
         pulumi.set(__self__, "security_groups", security_groups)
@@ -264,8 +265,6 @@ class ElastigroupArgs:
             pulumi.set(__self__, "multai_target_sets", multai_target_sets)
         if multiple_metrics is not None:
             pulumi.set(__self__, "multiple_metrics", multiple_metrics)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
         if network_interfaces is not None:
             pulumi.set(__self__, "network_interfaces", network_interfaces)
         if ondemand_count is not None:
@@ -362,6 +361,18 @@ class ElastigroupArgs:
     @instance_types_spots.setter
     def instance_types_spots(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "instance_types_spots", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        The group name.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
@@ -906,18 +917,6 @@ class ElastigroupArgs:
     @multiple_metrics.setter
     def multiple_metrics(self, value: Optional[pulumi.Input['ElastigroupMultipleMetricsArgs']]):
         pulumi.set(self, "multiple_metrics", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The group name.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter(name="networkInterfaces")
@@ -2829,6 +2828,8 @@ class Elastigroup(pulumi.CustomResource):
             __props__.__dict__["minimum_instance_lifetime"] = minimum_instance_lifetime
             __props__.__dict__["multai_target_sets"] = multai_target_sets
             __props__.__dict__["multiple_metrics"] = multiple_metrics
+            if name is None and not opts.urn:
+                raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
             __props__.__dict__["network_interfaces"] = network_interfaces
             __props__.__dict__["ondemand_count"] = ondemand_count

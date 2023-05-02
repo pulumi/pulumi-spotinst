@@ -78,11 +78,11 @@ public final class OceanNpVirtualNodeGroupArgs extends com.pulumi.resources.Reso
         return Optional.ofNullable(this.minCount);
     }
 
-    @Import(name="name")
-    private @Nullable Output<String> name;
+    @Import(name="name", required=true)
+    private Output<String> name;
 
-    public Optional<Output<String>> name() {
-        return Optional.ofNullable(this.name);
+    public Output<String> name() {
+        return this.name;
     }
 
     @Import(name="oceanId", required=true)
@@ -253,7 +253,7 @@ public final class OceanNpVirtualNodeGroupArgs extends com.pulumi.resources.Reso
             return minCount(Output.of(minCount));
         }
 
-        public Builder name(@Nullable Output<String> name) {
+        public Builder name(Output<String> name) {
             $.name = name;
             return this;
         }
@@ -330,6 +330,7 @@ public final class OceanNpVirtualNodeGroupArgs extends com.pulumi.resources.Reso
         }
 
         public OceanNpVirtualNodeGroupArgs build() {
+            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
             $.oceanId = Objects.requireNonNull($.oceanId, "expected parameter 'oceanId' to be non-null");
             return $;
         }

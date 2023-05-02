@@ -42,6 +42,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new DataIntegration(&#34;example&#34;, DataIntegrationArgs.builder()        
+ *             .name(&#34;foo&#34;)
  *             .s3(DataIntegrationS3Args.builder()
  *                 .bucketName(&#34;terraform-test-do-not-delete&#34;)
  *                 .subdir(&#34;terraform-test-data-integration&#34;)
@@ -111,7 +112,7 @@ public class DataIntegration extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public DataIntegration(String name, @Nullable DataIntegrationArgs args) {
+    public DataIntegration(String name, DataIntegrationArgs args) {
         this(name, args, null);
     }
     /**
@@ -120,7 +121,7 @@ public class DataIntegration extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public DataIntegration(String name, @Nullable DataIntegrationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public DataIntegration(String name, DataIntegrationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("spotinst:index/dataIntegration:DataIntegration", name, args == null ? DataIntegrationArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 

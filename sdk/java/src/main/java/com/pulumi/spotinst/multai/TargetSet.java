@@ -39,10 +39,10 @@ public class TargetSet extends com.pulumi.resources.CustomResource {
         return this.healthCheck;
     }
     @Export(name="name", type=String.class, parameters={})
-    private Output<String> name;
+    private Output</* @Nullable */ String> name;
 
-    public Output<String> name() {
-        return this.name;
+    public Output<Optional<String>> name() {
+        return Codegen.optional(this.name);
     }
     @Export(name="port", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> port;

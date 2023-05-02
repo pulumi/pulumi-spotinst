@@ -63,6 +63,7 @@ import (
 //						},
 //					},
 //				},
+//				Name:    pulumi.String("vng_name"),
 //				OceanId: pulumi.String("o-12345"),
 //				ResourceLimits: azure.OceanVirtualNodeGroupResourceLimitArray{
 //					&azure.OceanVirtualNodeGroupResourceLimitArgs{
@@ -136,6 +137,9 @@ func NewOceanVirtualNodeGroup(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.Name == nil {
+		return nil, errors.New("invalid value for required argument 'Name'")
+	}
 	if args.OceanId == nil {
 		return nil, errors.New("invalid value for required argument 'OceanId'")
 	}
@@ -210,7 +214,7 @@ type oceanVirtualNodeGroupArgs struct {
 	// .
 	LaunchSpecifications []OceanVirtualNodeGroupLaunchSpecification `pulumi:"launchSpecifications"`
 	// Set name for the virtual node group.
-	Name *string `pulumi:"name"`
+	Name string `pulumi:"name"`
 	// The Ocean cluster ID.
 	OceanId string `pulumi:"oceanId"`
 	// .
@@ -230,7 +234,7 @@ type OceanVirtualNodeGroupArgs struct {
 	// .
 	LaunchSpecifications OceanVirtualNodeGroupLaunchSpecificationArrayInput
 	// Set name for the virtual node group.
-	Name pulumi.StringPtrInput
+	Name pulumi.StringInput
 	// The Ocean cluster ID.
 	OceanId pulumi.StringInput
 	// .

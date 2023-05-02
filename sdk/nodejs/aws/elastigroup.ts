@@ -420,6 +420,9 @@ export class Elastigroup extends pulumi.CustomResource {
             if ((!args || args.instanceTypesSpots === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceTypesSpots'");
             }
+            if ((!args || args.name === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'name'");
+            }
             if ((!args || args.orientation === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'orientation'");
             }
@@ -973,7 +976,7 @@ export interface ElastigroupArgs {
     /**
      * The group name.
      */
-    name?: pulumi.Input<string>;
+    name: pulumi.Input<string>;
     networkInterfaces?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupNetworkInterface>[]>;
     /**
      * Number of on demand instances to launch in the group. All other instances will be spot instances. When this parameter is set the `spotPercentage` parameter is being ignored.

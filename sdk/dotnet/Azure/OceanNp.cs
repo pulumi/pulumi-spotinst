@@ -173,8 +173,8 @@ namespace Pulumi.SpotInst.Azure
         [Input("minCount")]
         public Input<int>? MinCount { get; set; }
 
-        [Input("name")]
-        public Input<string>? Name { get; set; }
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
 
         [Input("osDiskSizeGb")]
         public Input<int>? OsDiskSizeGb { get; set; }

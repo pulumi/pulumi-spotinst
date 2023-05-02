@@ -18,6 +18,7 @@ class ElastigroupArgs:
     def __init__(__self__, *,
                  cluster_zone_name: pulumi.Input[str],
                  desired_capacity: pulumi.Input[int],
+                 name: pulumi.Input[str],
                  backend_services: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupBackendServiceArgs']]]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  disks: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupDiskArgs']]]] = None,
@@ -35,7 +36,6 @@ class ElastigroupArgs:
                  max_size: Optional[pulumi.Input[int]] = None,
                  metadatas: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupMetadataArgs']]]] = None,
                  min_size: Optional[pulumi.Input[int]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupNetworkInterfaceArgs']]]] = None,
                  node_image: Optional[pulumi.Input[str]] = None,
                  ondemand_count: Optional[pulumi.Input[int]] = None,
@@ -56,6 +56,7 @@ class ElastigroupArgs:
         """
         pulumi.set(__self__, "cluster_zone_name", cluster_zone_name)
         pulumi.set(__self__, "desired_capacity", desired_capacity)
+        pulumi.set(__self__, "name", name)
         if backend_services is not None:
             pulumi.set(__self__, "backend_services", backend_services)
         if cluster_id is not None:
@@ -93,8 +94,6 @@ class ElastigroupArgs:
             pulumi.set(__self__, "metadatas", metadatas)
         if min_size is not None:
             pulumi.set(__self__, "min_size", min_size)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
         if network_interfaces is not None:
             pulumi.set(__self__, "network_interfaces", network_interfaces)
         if node_image is not None:
@@ -138,6 +137,15 @@ class ElastigroupArgs:
     @desired_capacity.setter
     def desired_capacity(self, value: pulumi.Input[int]):
         pulumi.set(self, "desired_capacity", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter(name="backendServices")
@@ -297,15 +305,6 @@ class ElastigroupArgs:
     @min_size.setter
     def min_size(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "min_size", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter(name="networkInterfaces")
@@ -902,6 +901,7 @@ class Elastigroup(pulumi.CustomResource):
             ),
             max_size=5,
             min_size=1,
+            name="example-gke",
             node_image="COS",
             preemptible_percentage=100)
         ```
@@ -975,6 +975,7 @@ class Elastigroup(pulumi.CustomResource):
             ),
             max_size=5,
             min_size=1,
+            name="example-gke",
             node_image="COS",
             preemptible_percentage=100)
         ```
@@ -1060,6 +1061,8 @@ class Elastigroup(pulumi.CustomResource):
             __props__.__dict__["max_size"] = max_size
             __props__.__dict__["metadatas"] = metadatas
             __props__.__dict__["min_size"] = min_size
+            if name is None and not opts.urn:
+                raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
             __props__.__dict__["network_interfaces"] = network_interfaces
             __props__.__dict__["node_image"] = node_image

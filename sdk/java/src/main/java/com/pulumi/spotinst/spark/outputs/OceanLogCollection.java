@@ -11,6 +11,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class OceanLogCollection {
+    private @Nullable Boolean collectAppLogs;
     /**
      * @return - Enable/disable the collection of driver logs. When enabled, driver logs are stored by NetApp and can be downloaded from the Spot console web interface. The driver logs are deleted after 30 days.
      * 
@@ -18,6 +19,9 @@ public final class OceanLogCollection {
     private @Nullable Boolean collectDriverLogs;
 
     private OceanLogCollection() {}
+    public Optional<Boolean> collectAppLogs() {
+        return Optional.ofNullable(this.collectAppLogs);
+    }
     /**
      * @return - Enable/disable the collection of driver logs. When enabled, driver logs are stored by NetApp and can be downloaded from the Spot console web interface. The driver logs are deleted after 30 days.
      * 
@@ -35,13 +39,20 @@ public final class OceanLogCollection {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable Boolean collectAppLogs;
         private @Nullable Boolean collectDriverLogs;
         public Builder() {}
         public Builder(OceanLogCollection defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.collectAppLogs = defaults.collectAppLogs;
     	      this.collectDriverLogs = defaults.collectDriverLogs;
         }
 
+        @CustomType.Setter
+        public Builder collectAppLogs(@Nullable Boolean collectAppLogs) {
+            this.collectAppLogs = collectAppLogs;
+            return this;
+        }
         @CustomType.Setter
         public Builder collectDriverLogs(@Nullable Boolean collectDriverLogs) {
             this.collectDriverLogs = collectDriverLogs;
@@ -49,6 +60,7 @@ public final class OceanLogCollection {
         }
         public OceanLogCollection build() {
             final var o = new OceanLogCollection();
+            o.collectAppLogs = collectAppLogs;
             o.collectDriverLogs = collectDriverLogs;
             return o;
         }

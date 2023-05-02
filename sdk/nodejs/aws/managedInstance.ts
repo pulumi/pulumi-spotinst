@@ -255,6 +255,9 @@ export class ManagedInstance extends pulumi.CustomResource {
             if ((!args || args.instanceTypes === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceTypes'");
             }
+            if ((!args || args.name === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'name'");
+            }
             if ((!args || args.persistBlockDevices === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'persistBlockDevices'");
             }
@@ -556,7 +559,7 @@ export interface ManagedInstanceArgs {
     /**
      * The ManagedInstance name.
      */
-    name?: pulumi.Input<string>;
+    name: pulumi.Input<string>;
     networkInterfaces?: pulumi.Input<pulumi.Input<inputs.aws.ManagedInstanceNetworkInterface>[]>;
     /**
      * When `performAt` is `"timeWindow"`: must specify a list of `"timeWindows"` with at least one time window. Each string should be formatted as `ddd:hh:mm-ddd:hh:mm` (ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59).

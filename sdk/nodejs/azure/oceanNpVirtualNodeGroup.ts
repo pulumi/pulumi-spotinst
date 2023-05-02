@@ -82,6 +82,9 @@ export class OceanNpVirtualNodeGroup extends pulumi.CustomResource {
             resourceInputs["taints"] = state ? state.taints : undefined;
         } else {
             const args = argsOrState as OceanNpVirtualNodeGroupArgs | undefined;
+            if ((!args || args.name === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'name'");
+            }
             if ((!args || args.oceanId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'oceanId'");
             }
@@ -141,7 +144,7 @@ export interface OceanNpVirtualNodeGroupArgs {
     maxCount?: pulumi.Input<number>;
     maxPodsPerNode?: pulumi.Input<number>;
     minCount?: pulumi.Input<number>;
-    name?: pulumi.Input<string>;
+    name: pulumi.Input<string>;
     oceanId: pulumi.Input<string>;
     osDiskSizeGb?: pulumi.Input<number>;
     osDiskType?: pulumi.Input<string>;
