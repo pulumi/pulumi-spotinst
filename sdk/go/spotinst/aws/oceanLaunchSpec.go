@@ -83,7 +83,10 @@ import (
 //				ImageId:            pulumi.String("ami-123456"),
 //				Images: aws.OceanLaunchSpecImageArray{
 //					&aws.OceanLaunchSpecImageArgs{
-//						ImageId: pulumi.String("ami-id"),
+//						ImageId: pulumi.String("ami-id1"),
+//					},
+//					&aws.OceanLaunchSpecImageArgs{
+//						ImageId: pulumi.String("ami-id2"),
 //					},
 //				},
 //				InstanceMetadataOptions: &aws.OceanLaunchSpecInstanceMetadataOptionsArgs{

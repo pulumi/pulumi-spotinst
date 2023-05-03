@@ -59,9 +59,14 @@ import * as utilities from "../utilities";
  *     }],
  *     iamInstanceProfile: "iam-profile",
  *     imageId: "ami-123456",
- *     images: [{
- *         imageId: "ami-id",
- *     }],
+ *     images: [
+ *         {
+ *             imageId: "ami-id1",
+ *         },
+ *         {
+ *             imageId: "ami-id2",
+ *         },
+ *     ],
  *     instanceMetadataOptions: {
  *         httpPutResponseHopLimit: 10,
  *         httpTokens: "required",

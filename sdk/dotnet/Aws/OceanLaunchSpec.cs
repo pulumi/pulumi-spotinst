@@ -96,7 +96,11 @@ namespace Pulumi.SpotInst.Aws
     ///         {
     ///             new SpotInst.Aws.Inputs.OceanLaunchSpecImageArgs
     ///             {
-    ///                 ImageId = "ami-id",
+    ///                 ImageId = "ami-id1",
+    ///             },
+    ///             new SpotInst.Aws.Inputs.OceanLaunchSpecImageArgs
+    ///             {
+    ///                 ImageId = "ami-id2",
     ///             },
     ///         },
     ///         InstanceMetadataOptions = new SpotInst.Aws.Inputs.OceanLaunchSpecInstanceMetadataOptionsArgs

@@ -122,9 +122,13 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .iamInstanceProfile(&#34;iam-profile&#34;)
  *             .imageId(&#34;ami-123456&#34;)
- *             .images(OceanLaunchSpecImageArgs.builder()
- *                 .imageId(&#34;ami-id&#34;)
- *                 .build())
+ *             .images(            
+ *                 OceanLaunchSpecImageArgs.builder()
+ *                     .imageId(&#34;ami-id1&#34;)
+ *                     .build(),
+ *                 OceanLaunchSpecImageArgs.builder()
+ *                     .imageId(&#34;ami-id2&#34;)
+ *                     .build())
  *             .instanceMetadataOptions(OceanLaunchSpecInstanceMetadataOptionsArgs.builder()
  *                 .httpPutResponseHopLimit(10)
  *                 .httpTokens(&#34;required&#34;)
