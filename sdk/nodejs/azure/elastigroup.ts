@@ -49,7 +49,6 @@ import * as utilities from "../utilities";
  *     }],
  *     maxSize: 1,
  *     minSize: 0,
- *     name: "example_elastigroup_azure",
  *     network: {
  *         assignPublicIp: true,
  *         resourceGroupName: "subnetResourceGroup",
@@ -268,9 +267,6 @@ export class Elastigroup extends pulumi.CustomResource {
             if ((!args || args.lowPrioritySizes === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'lowPrioritySizes'");
             }
-            if ((!args || args.name === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'name'");
-            }
             if ((!args || args.network === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'network'");
             }
@@ -433,7 +429,7 @@ export interface ElastigroupArgs {
     /**
      * The name of the managed identity.
      */
-    name: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     network: pulumi.Input<inputs.azure.ElastigroupNetwork>;
     /**
      * Available On-Demand sizes

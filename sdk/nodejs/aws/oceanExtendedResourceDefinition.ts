@@ -13,13 +13,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as spotinst from "@pulumi/spotinst";
  *
- * const example = new spotinst.aws.OceanExtendedResourceDefinition("example", {
- *     name: "terraform_extended_resource_definition",
- *     resourceMapping: {
- *         "c3.large": "2Ki",
- *         "c3.xlarge": "4Ki",
- *     },
- * });
+ * const example = new spotinst.aws.OceanExtendedResourceDefinition("example", {resourceMapping: {
+ *     "c3.large": "2Ki",
+ *     "c3.xlarge": "4Ki",
+ * }});
  * ```
  */
 export class OceanExtendedResourceDefinition extends pulumi.CustomResource {
@@ -77,9 +74,6 @@ export class OceanExtendedResourceDefinition extends pulumi.CustomResource {
             resourceInputs["resourceMapping"] = state ? state.resourceMapping : undefined;
         } else {
             const args = argsOrState as OceanExtendedResourceDefinitionArgs | undefined;
-            if ((!args || args.name === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'name'");
-            }
             if ((!args || args.resourceMapping === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'resourceMapping'");
             }
@@ -114,7 +108,7 @@ export interface OceanExtendedResourceDefinitionArgs {
      * The extended resource name as should be requested by your pods and registered to the nodes. Cannot be updated.
      * The name should be a valid Kubernetes extended resource name.
      */
-    name: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * A mapping between AWS instanceType or * as default and its value for the given extended resource.
      */

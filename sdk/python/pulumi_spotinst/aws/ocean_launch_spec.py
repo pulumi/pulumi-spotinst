@@ -1030,7 +1030,6 @@ class OceanLaunchSpec(pulumi.CustomResource):
                 key="key1",
                 value="value1",
             )],
-            name="example",
             ocean_id="o-123456",
             preferred_spot_types=[
                 "m4.large",
@@ -1201,7 +1200,6 @@ class OceanLaunchSpec(pulumi.CustomResource):
                 key="key1",
                 value="value1",
             )],
-            name="example",
             ocean_id="o-123456",
             preferred_spot_types=[
                 "m4.large",
@@ -1563,7 +1561,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> pulumi.Output[Optional[str]]:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the Virtual Node Group.
         """

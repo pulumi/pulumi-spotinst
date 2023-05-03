@@ -70,7 +70,6 @@ namespace Pulumi.SpotInst.Azure
     ///                 },
     ///             },
     ///         },
-    ///         Name = "vng_name",
     ///         OceanId = "o-12345",
     ///         ResourceLimits = new[]
     ///         {
@@ -249,8 +248,8 @@ namespace Pulumi.SpotInst.Azure
         /// <summary>
         /// Set name for the virtual node group.
         /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
+        [Input("name")]
+        public Input<string>? Name { get; set; }
 
         /// <summary>
         /// The Ocean cluster ID.

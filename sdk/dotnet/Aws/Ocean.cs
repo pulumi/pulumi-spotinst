@@ -177,7 +177,7 @@ namespace Pulumi.SpotInst.Aws
         /// Required if type is set to `CLASSIC`
         /// </summary>
         [Output("name")]
-        public Output<string?> Name { get; private set; } = null!;
+        public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
         /// The region the cluster will run in.

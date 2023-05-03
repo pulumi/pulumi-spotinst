@@ -34,7 +34,7 @@ public class Deployment extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Deployment(String name, DeploymentArgs args) {
+    public Deployment(String name, @Nullable DeploymentArgs args) {
         this(name, args, null);
     }
     /**
@@ -43,7 +43,7 @@ public class Deployment extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Deployment(String name, DeploymentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public Deployment(String name, @Nullable DeploymentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("spotinst:multai/deployment:Deployment", name, args == null ? DeploymentArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 

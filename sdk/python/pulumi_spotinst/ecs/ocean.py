@@ -17,7 +17,6 @@ __all__ = ['OceanArgs', 'Ocean']
 class OceanArgs:
     def __init__(__self__, *,
                  cluster_name: pulumi.Input[str],
-                 name: pulumi.Input[str],
                  region: pulumi.Input[str],
                  security_group_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
                  subnet_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
@@ -38,6 +37,7 @@ class OceanArgs:
                  max_size: Optional[pulumi.Input[int]] = None,
                  min_size: Optional[pulumi.Input[int]] = None,
                  monitoring: Optional[pulumi.Input[bool]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
                  optimize_images: Optional[pulumi.Input['OceanOptimizeImagesArgs']] = None,
                  scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input['OceanScheduledTaskArgs']]]] = None,
                  spot_percentage: Optional[pulumi.Input[int]] = None,
@@ -51,7 +51,6 @@ class OceanArgs:
         """
         The set of arguments for constructing a Ocean resource.
         :param pulumi.Input[str] cluster_name: The name of the ECS cluster.
-        :param pulumi.Input[str] name: The Ocean cluster name.
         :param pulumi.Input[str] region: The region the cluster will run in.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: One or more security group ids.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public ip.
@@ -71,6 +70,7 @@ class OceanArgs:
         :param pulumi.Input[int] max_size: The upper limit of instances the cluster can scale up to.
         :param pulumi.Input[int] min_size: The lower limit of instances the cluster can scale down to.
         :param pulumi.Input[bool] monitoring: Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
+        :param pulumi.Input[str] name: The Ocean cluster name.
         :param pulumi.Input['OceanOptimizeImagesArgs'] optimize_images: Object. Set auto image update settings.
         :param pulumi.Input[Sequence[pulumi.Input['OceanScheduledTaskArgs']]] scheduled_tasks: While used, you can control whether the group should perform a deployment after an update to the configuration.
         :param pulumi.Input[int] spot_percentage: The percentage of Spot instances that would spin up from the `desired_capacity` number.
@@ -82,7 +82,6 @@ class OceanArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] whitelists: Instance types allowed in the Ocean cluster. Cannot be configured if `blacklist`/`filters` is configured.
         """
         pulumi.set(__self__, "cluster_name", cluster_name)
-        pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "region", region)
         pulumi.set(__self__, "security_group_ids", security_group_ids)
         pulumi.set(__self__, "subnet_ids", subnet_ids)
@@ -120,6 +119,8 @@ class OceanArgs:
             pulumi.set(__self__, "min_size", min_size)
         if monitoring is not None:
             pulumi.set(__self__, "monitoring", monitoring)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
         if optimize_images is not None:
             pulumi.set(__self__, "optimize_images", optimize_images)
         if scheduled_tasks is not None:
@@ -152,18 +153,6 @@ class OceanArgs:
     @cluster_name.setter
     def cluster_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "cluster_name", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> pulumi.Input[str]:
-        """
-        The Ocean cluster name.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: pulumi.Input[str]):
-        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
@@ -401,6 +390,18 @@ class OceanArgs:
     @monitoring.setter
     def monitoring(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "monitoring", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Ocean cluster name.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter(name="optimizeImages")
@@ -1207,8 +1208,6 @@ class Ocean(pulumi.CustomResource):
             __props__.__dict__["max_size"] = max_size
             __props__.__dict__["min_size"] = min_size
             __props__.__dict__["monitoring"] = monitoring
-            if name is None and not opts.urn:
-                raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
             __props__.__dict__["optimize_images"] = optimize_images
             if region is None and not opts.urn:

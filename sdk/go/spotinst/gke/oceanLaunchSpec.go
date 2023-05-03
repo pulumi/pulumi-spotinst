@@ -58,7 +58,6 @@ import (
 //						Value: pulumi.String("update_disabled"),
 //					},
 //				},
-//				Name: pulumi.String("specialty.nodes.spotk8s.com"),
 //				NetworkInterfaces: gke.OceanLaunchSpecNetworkInterfaceArray{
 //					&gke.OceanLaunchSpecNetworkInterfaceArgs{
 //						AccessConfigs: gke.OceanLaunchSpecNetworkInterfaceAccessConfigArray{

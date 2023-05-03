@@ -244,9 +244,6 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
             resourceInputs["userData"] = state ? state.userData : undefined;
         } else {
             const args = argsOrState as OceanLaunchSpecArgs | undefined;
-            if ((!args || args.name === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'name'");
-            }
             if ((!args || args.oceanId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'oceanId'");
             }
@@ -376,7 +373,7 @@ export interface OceanLaunchSpecArgs {
     /**
      * The Ocean Launch Specification name.
      */
-    name: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The Ocean cluster ID .
      */

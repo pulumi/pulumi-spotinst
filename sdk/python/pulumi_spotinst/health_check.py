@@ -201,7 +201,6 @@ class HealthCheck(pulumi.CustomResource):
                 timeout=10,
                 unhealthy=1,
             ),
-            name="sample_healt_check",
             proxy_address="http://proxy.com",
             proxy_port=80,
             resource_id="sig-123")
@@ -238,7 +237,6 @@ class HealthCheck(pulumi.CustomResource):
                 timeout=10,
                 unhealthy=1,
             ),
-            name="sample_healt_check",
             proxy_address="http://proxy.com",
             proxy_port=80,
             resource_id="sig-123")
@@ -329,7 +327,7 @@ class HealthCheck(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> pulumi.Output[Optional[str]]:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the health check.
         """

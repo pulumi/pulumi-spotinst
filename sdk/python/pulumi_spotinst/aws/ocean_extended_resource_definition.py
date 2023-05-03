@@ -14,29 +14,17 @@ __all__ = ['OceanExtendedResourceDefinitionArgs', 'OceanExtendedResourceDefiniti
 @pulumi.input_type
 class OceanExtendedResourceDefinitionArgs:
     def __init__(__self__, *,
-                 name: pulumi.Input[str],
-                 resource_mapping: pulumi.Input[Mapping[str, Any]]):
+                 resource_mapping: pulumi.Input[Mapping[str, Any]],
+                 name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a OceanExtendedResourceDefinition resource.
+        :param pulumi.Input[Mapping[str, Any]] resource_mapping: A mapping between AWS instanceType or * as default and its value for the given extended resource.
         :param pulumi.Input[str] name: The extended resource name as should be requested by your pods and registered to the nodes. Cannot be updated.
                The name should be a valid Kubernetes extended resource name.
-        :param pulumi.Input[Mapping[str, Any]] resource_mapping: A mapping between AWS instanceType or * as default and its value for the given extended resource.
         """
-        pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "resource_mapping", resource_mapping)
-
-    @property
-    @pulumi.getter
-    def name(self) -> pulumi.Input[str]:
-        """
-        The extended resource name as should be requested by your pods and registered to the nodes. Cannot be updated.
-        The name should be a valid Kubernetes extended resource name.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: pulumi.Input[str]):
-        pulumi.set(self, "name", value)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter(name="resourceMapping")
@@ -49,6 +37,19 @@ class OceanExtendedResourceDefinitionArgs:
     @resource_mapping.setter
     def resource_mapping(self, value: pulumi.Input[Mapping[str, Any]]):
         pulumi.set(self, "resource_mapping", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The extended resource name as should be requested by your pods and registered to the nodes. Cannot be updated.
+        The name should be a valid Kubernetes extended resource name.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
 
 
 @pulumi.input_type
@@ -110,12 +111,10 @@ class OceanExtendedResourceDefinition(pulumi.CustomResource):
         import pulumi
         import pulumi_spotinst as spotinst
 
-        example = spotinst.aws.OceanExtendedResourceDefinition("example",
-            name="terraform_extended_resource_definition",
-            resource_mapping={
-                "c3.large": "2Ki",
-                "c3.xlarge": "4Ki",
-            })
+        example = spotinst.aws.OceanExtendedResourceDefinition("example", resource_mapping={
+            "c3.large": "2Ki",
+            "c3.xlarge": "4Ki",
+        })
         ```
 
         :param str resource_name: The name of the resource.
@@ -139,12 +138,10 @@ class OceanExtendedResourceDefinition(pulumi.CustomResource):
         import pulumi
         import pulumi_spotinst as spotinst
 
-        example = spotinst.aws.OceanExtendedResourceDefinition("example",
-            name="terraform_extended_resource_definition",
-            resource_mapping={
-                "c3.large": "2Ki",
-                "c3.xlarge": "4Ki",
-            })
+        example = spotinst.aws.OceanExtendedResourceDefinition("example", resource_mapping={
+            "c3.large": "2Ki",
+            "c3.xlarge": "4Ki",
+        })
         ```
 
         :param str resource_name: The name of the resource.
@@ -173,8 +170,6 @@ class OceanExtendedResourceDefinition(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = OceanExtendedResourceDefinitionArgs.__new__(OceanExtendedResourceDefinitionArgs)
 
-            if name is None and not opts.urn:
-                raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
             if resource_mapping is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_mapping'")

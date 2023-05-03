@@ -34,7 +34,6 @@ namespace Pulumi.SpotInst
     ///             Timeout = 10,
     ///             Unhealthy = 1,
     ///         },
-    ///         Name = "sample_healt_check",
     ///         ProxyAddress = "http://proxy.com",
     ///         ProxyPort = 80,
     ///         ResourceId = "sig-123",
@@ -56,7 +55,7 @@ namespace Pulumi.SpotInst
         /// The name of the health check.
         /// </summary>
         [Output("name")]
-        public Output<string?> Name { get; private set; } = null!;
+        public Output<string> Name { get; private set; } = null!;
 
         [Output("proxyAddress")]
         public Output<string> ProxyAddress { get; private set; } = null!;

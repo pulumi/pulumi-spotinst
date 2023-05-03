@@ -289,8 +289,8 @@ namespace Pulumi.SpotInst.Azure
         /// <summary>
         /// Name of the Load Balancer.
         /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
+        [Input("name")]
+        public Input<string>? Name { get; set; }
 
         /// <summary>
         /// Define the Virtual Network and Subnet.

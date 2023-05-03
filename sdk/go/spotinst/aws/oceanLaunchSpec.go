@@ -105,7 +105,6 @@ import (
 //						Value: pulumi.String("value1"),
 //					},
 //				},
-//				Name:    pulumi.String("example"),
 //				OceanId: pulumi.String("o-123456"),
 //				PreferredSpotTypes: pulumi.StringArray{
 //					pulumi.String("m4.large"),
@@ -246,7 +245,7 @@ type OceanLaunchSpec struct {
 	// Optionally adds labels to instances launched in the cluster.
 	Labels OceanLaunchSpecLabelArrayOutput `pulumi:"labels"`
 	// The name of the Virtual Node Group.
-	Name pulumi.StringPtrOutput `pulumi:"name"`
+	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the Ocean cluster.
 	OceanId pulumi.StringOutput `pulumi:"oceanId"`
 	// A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
@@ -699,8 +698,8 @@ func (o OceanLaunchSpecOutput) Labels() OceanLaunchSpecLabelArrayOutput {
 }
 
 // The name of the Virtual Node Group.
-func (o OceanLaunchSpecOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *OceanLaunchSpec) pulumi.StringPtrOutput { return v.Name }).(pulumi.StringPtrOutput)
+func (o OceanLaunchSpecOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *OceanLaunchSpec) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
 // The ID of the Ocean cluster.

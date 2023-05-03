@@ -194,11 +194,11 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.minSize);
     }
 
-    @Import(name="name", required=true)
-    private Output<String> name;
+    @Import(name="name")
+    private @Nullable Output<String> name;
 
-    public Output<String> name() {
-        return this.name;
+    public Optional<Output<String>> name() {
+        return Optional.ofNullable(this.name);
     }
 
     @Import(name="networkInterfaces")
@@ -583,7 +583,7 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
             return minSize(Output.of(minSize));
         }
 
-        public Builder name(Output<String> name) {
+        public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
@@ -722,7 +722,6 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
         public ElastigroupArgs build() {
             $.clusterZoneName = Objects.requireNonNull($.clusterZoneName, "expected parameter 'clusterZoneName' to be non-null");
             $.desiredCapacity = Objects.requireNonNull($.desiredCapacity, "expected parameter 'desiredCapacity' to be non-null");
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
             return $;
         }
     }

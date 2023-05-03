@@ -17,7 +17,6 @@ __all__ = ['ElastigroupArgs', 'Elastigroup']
 class ElastigroupArgs:
     def __init__(__self__, *,
                  low_priority_sizes: pulumi.Input[Sequence[pulumi.Input[str]]],
-                 name: pulumi.Input[str],
                  network: pulumi.Input['ElastigroupNetworkArgs'],
                  od_sizes: pulumi.Input[Sequence[pulumi.Input[str]]],
                  product: pulumi.Input[str],
@@ -35,6 +34,7 @@ class ElastigroupArgs:
                  managed_service_identities: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupManagedServiceIdentityArgs']]]] = None,
                  max_size: Optional[pulumi.Input[int]] = None,
                  min_size: Optional[pulumi.Input[int]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
                  scaling_down_policies: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingDownPolicyArgs']]]] = None,
                  scaling_up_policies: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingUpPolicyArgs']]]] = None,
                  scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScheduledTaskArgs']]]] = None,
@@ -44,7 +44,6 @@ class ElastigroupArgs:
         """
         The set of arguments for constructing a Elastigroup resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] low_priority_sizes: Available Low-Priority sizes.
-        :param pulumi.Input[str] name: The name of the managed identity.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] od_sizes: Available On-Demand sizes
         :param pulumi.Input[str] product: Operation system type. Valid values: `"Linux"`, `"Windows"`.
         :param pulumi.Input[str] region: The region your Azure group will be created in.
@@ -55,12 +54,12 @@ class ElastigroupArgs:
         :param pulumi.Input['ElastigroupIntegrationMultaiRuntimeArgs'] integration_multai_runtime: Describes the [Multai Runtime](https://spotinst.com/) integration.
         :param pulumi.Input[int] max_size: The maximum number of instances the group should have at any time.
         :param pulumi.Input[int] min_size: The minimum number of instances the group should have at any time.
+        :param pulumi.Input[str] name: The name of the managed identity.
         :param pulumi.Input[Sequence[pulumi.Input['ElastigroupScheduledTaskArgs']]] scheduled_tasks: Describes the configuration of one or more scheduled tasks.
         :param pulumi.Input[str] shutdown_script: Shutdown script for the group. Value should be passed as a string encoded at Base64 only.
         :param pulumi.Input[str] user_data: Base64-encoded MIME user data to make available to the instances.
         """
         pulumi.set(__self__, "low_priority_sizes", low_priority_sizes)
-        pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "network", network)
         pulumi.set(__self__, "od_sizes", od_sizes)
         pulumi.set(__self__, "product", product)
@@ -89,6 +88,8 @@ class ElastigroupArgs:
             pulumi.set(__self__, "max_size", max_size)
         if min_size is not None:
             pulumi.set(__self__, "min_size", min_size)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
         if scaling_down_policies is not None:
             pulumi.set(__self__, "scaling_down_policies", scaling_down_policies)
         if scaling_up_policies is not None:
@@ -113,18 +114,6 @@ class ElastigroupArgs:
     @low_priority_sizes.setter
     def low_priority_sizes(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "low_priority_sizes", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> pulumi.Input[str]:
-        """
-        The name of the managed identity.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: pulumi.Input[str]):
-        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
@@ -308,6 +297,18 @@ class ElastigroupArgs:
     @min_size.setter
     def min_size(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "min_size", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the managed identity.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter(name="scalingDownPolicies")
@@ -815,7 +816,6 @@ class Elastigroup(pulumi.CustomResource):
             )],
             max_size=1,
             min_size=0,
-            name="example_elastigroup_azure",
             network=spotinst.azure.ElastigroupNetworkArgs(
                 assign_public_ip=True,
                 resource_group_name="subnetResourceGroup",
@@ -958,7 +958,6 @@ class Elastigroup(pulumi.CustomResource):
             )],
             max_size=1,
             min_size=0,
-            name="example_elastigroup_azure",
             network=spotinst.azure.ElastigroupNetworkArgs(
                 assign_public_ip=True,
                 resource_group_name="subnetResourceGroup",
@@ -1097,8 +1096,6 @@ class Elastigroup(pulumi.CustomResource):
             __props__.__dict__["managed_service_identities"] = managed_service_identities
             __props__.__dict__["max_size"] = max_size
             __props__.__dict__["min_size"] = min_size
-            if name is None and not opts.urn:
-                raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
             if network is None and not opts.urn:
                 raise TypeError("Missing required property 'network'")

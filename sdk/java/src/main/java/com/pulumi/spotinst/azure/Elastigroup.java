@@ -97,7 +97,6 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .maxSize(1)
  *             .minSize(0)
- *             .name(&#34;example_elastigroup_azure&#34;)
  *             .network(ElastigroupNetworkArgs.builder()
  *                 .assignPublicIp(true)
  *                 .resourceGroupName(&#34;subnetResourceGroup&#34;)

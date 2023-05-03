@@ -166,15 +166,15 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
      * The name of the managed identity.
      * 
      */
-    @Import(name="name", required=true)
-    private Output<String> name;
+    @Import(name="name")
+    private @Nullable Output<String> name;
 
     /**
      * @return The name of the managed identity.
      * 
      */
-    public Output<String> name() {
-        return this.name;
+    public Optional<Output<String>> name() {
+        return Optional.ofNullable(this.name);
     }
 
     @Import(name="network", required=true)
@@ -581,7 +581,7 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder name(Output<String> name) {
+        public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
@@ -830,7 +830,6 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
 
         public ElastigroupArgs build() {
             $.lowPrioritySizes = Objects.requireNonNull($.lowPrioritySizes, "expected parameter 'lowPrioritySizes' to be non-null");
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
             $.network = Objects.requireNonNull($.network, "expected parameter 'network' to be non-null");
             $.odSizes = Objects.requireNonNull($.odSizes, "expected parameter 'odSizes' to be non-null");
             $.product = Objects.requireNonNull($.product, "expected parameter 'product' to be non-null");

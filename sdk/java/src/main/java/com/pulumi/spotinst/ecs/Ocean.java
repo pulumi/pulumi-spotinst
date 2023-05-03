@@ -102,7 +102,6 @@ import javax.annotation.Nullable;
  *             .maxSize(&#34;1&#34;)
  *             .minSize(&#34;0&#34;)
  *             .monitoring(true)
- *             .name(&#34;sample-ecs-cluster&#34;)
  *             .optimizeImages(OceanOptimizeImagesArgs.builder()
  *                 .performAt(&#34;timeWindow&#34;)
  *                 .shouldOptimizeEcsAmi(true)

@@ -112,9 +112,6 @@ func NewManagedInstance(ctx *pulumi.Context,
 	if args.InstanceTypes == nil {
 		return nil, errors.New("invalid value for required argument 'InstanceTypes'")
 	}
-	if args.Name == nil {
-		return nil, errors.New("invalid value for required argument 'Name'")
-	}
 	if args.PersistBlockDevices == nil {
 		return nil, errors.New("invalid value for required argument 'PersistBlockDevices'")
 	}
@@ -364,7 +361,7 @@ type managedInstanceArgs struct {
 	ManagedInstanceAction   *ManagedInstanceManagedInstanceAction `pulumi:"managedInstanceAction"`
 	MinimumInstanceLifetime *int                                  `pulumi:"minimumInstanceLifetime"`
 	// The ManagedInstance name.
-	Name              string                            `pulumi:"name"`
+	Name              *string                           `pulumi:"name"`
 	NetworkInterfaces []ManagedInstanceNetworkInterface `pulumi:"networkInterfaces"`
 	// When `performAt` is `"timeWindow"`: must specify a list of `"timeWindows"` with at least one time window. Each string should be formatted as `ddd:hh:mm-ddd:hh:mm` (ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59).
 	OptimizationWindows []string `pulumi:"optimizationWindows"`
@@ -450,7 +447,7 @@ type ManagedInstanceArgs struct {
 	ManagedInstanceAction   ManagedInstanceManagedInstanceActionPtrInput
 	MinimumInstanceLifetime pulumi.IntPtrInput
 	// The ManagedInstance name.
-	Name              pulumi.StringInput
+	Name              pulumi.StringPtrInput
 	NetworkInterfaces ManagedInstanceNetworkInterfaceArrayInput
 	// When `performAt` is `"timeWindow"`: must specify a list of `"timeWindows"` with at least one time window. Each string should be formatted as `ddd:hh:mm-ddd:hh:mm` (ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59).
 	OptimizationWindows pulumi.StringArrayInput

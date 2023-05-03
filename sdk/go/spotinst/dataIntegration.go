@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -28,7 +27,6 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := spotinst.NewDataIntegration(ctx, "example", &spotinst.DataIntegrationArgs{
-//				Name: pulumi.String("foo"),
 //				S3: &spotinst.DataIntegrationS3Args{
 //					BucketName: pulumi.String("terraform-test-do-not-delete"),
 //					Subdir:     pulumi.String("terraform-test-data-integration"),
@@ -58,12 +56,9 @@ type DataIntegration struct {
 func NewDataIntegration(ctx *pulumi.Context,
 	name string, args *DataIntegrationArgs, opts ...pulumi.ResourceOption) (*DataIntegration, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &DataIntegrationArgs{}
 	}
 
-	if args.Name == nil {
-		return nil, errors.New("invalid value for required argument 'Name'")
-	}
 	var resource DataIntegration
 	err := ctx.RegisterResource("spotinst:index/dataIntegration:DataIntegration", name, args, &resource, opts...)
 	if err != nil {
@@ -109,7 +104,7 @@ func (DataIntegrationState) ElementType() reflect.Type {
 
 type dataIntegrationArgs struct {
 	// The name of the data integration.
-	Name string `pulumi:"name"`
+	Name *string `pulumi:"name"`
 	// When vendor value is s3, the following fields are included:
 	S3 *DataIntegrationS3 `pulumi:"s3"`
 	// Determines if this data integration is on or off. Valid values: `"enabled"`, `"disabled"`
@@ -119,7 +114,7 @@ type dataIntegrationArgs struct {
 // The set of arguments for constructing a DataIntegration resource.
 type DataIntegrationArgs struct {
 	// The name of the data integration.
-	Name pulumi.StringInput
+	Name pulumi.StringPtrInput
 	// When vendor value is s3, the following fields are included:
 	S3 DataIntegrationS3PtrInput
 	// Determines if this data integration is on or off. Valid values: `"enabled"`, `"disabled"`

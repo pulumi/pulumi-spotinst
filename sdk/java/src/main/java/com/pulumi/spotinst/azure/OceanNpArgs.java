@@ -121,11 +121,11 @@ public final class OceanNpArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.minCount);
     }
 
-    @Import(name="name", required=true)
-    private Output<String> name;
+    @Import(name="name")
+    private @Nullable Output<String> name;
 
-    public Output<String> name() {
-        return this.name;
+    public Optional<Output<String>> name() {
+        return Optional.ofNullable(this.name);
     }
 
     @Import(name="osDiskSizeGb")
@@ -344,7 +344,7 @@ public final class OceanNpArgs extends com.pulumi.resources.ResourceArgs {
             return minCount(Output.of(minCount));
         }
 
-        public Builder name(Output<String> name) {
+        public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
@@ -416,7 +416,6 @@ public final class OceanNpArgs extends com.pulumi.resources.ResourceArgs {
             $.aksInfrastructureResourceGroupName = Objects.requireNonNull($.aksInfrastructureResourceGroupName, "expected parameter 'aksInfrastructureResourceGroupName' to be non-null");
             $.aksRegion = Objects.requireNonNull($.aksRegion, "expected parameter 'aksRegion' to be non-null");
             $.aksResourceGroupName = Objects.requireNonNull($.aksResourceGroupName, "expected parameter 'aksResourceGroupName' to be non-null");
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
             return $;
         }
     }

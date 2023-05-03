@@ -169,9 +169,6 @@ export class Ocean extends pulumi.CustomResource {
             if ((!args || args.aksResourceGroupName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'aksResourceGroupName'");
             }
-            if ((!args || args.name === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'name'");
-            }
             if ((!args || args.sshPublicKey === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'sshPublicKey'");
             }
@@ -352,7 +349,7 @@ export interface OceanArgs {
     /**
      * Name of the Load Balancer.
      */
-    name: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Define the Virtual Network and Subnet.
      */

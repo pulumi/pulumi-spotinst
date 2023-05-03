@@ -213,8 +213,8 @@ namespace Pulumi.SpotInst
         /// <summary>
         /// Name of the Managed Service Identity.
         /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
+        [Input("name")]
+        public Input<string>? Name { get; set; }
 
         [Input("network", required: true)]
         public Input<Inputs.ElastigroupAzureV3NetworkArgs> Network { get; set; } = null!;

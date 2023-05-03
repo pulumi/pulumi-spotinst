@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -25,12 +24,9 @@ type Balancer struct {
 func NewBalancer(ctx *pulumi.Context,
 	name string, args *BalancerArgs, opts ...pulumi.ResourceOption) (*Balancer, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &BalancerArgs{}
 	}
 
-	if args.Name == nil {
-		return nil, errors.New("invalid value for required argument 'Name'")
-	}
 	var resource Balancer
 	err := ctx.RegisterResource("spotinst:multai/balancer:Balancer", name, args, &resource, opts...)
 	if err != nil {
@@ -75,7 +71,7 @@ func (BalancerState) ElementType() reflect.Type {
 type balancerArgs struct {
 	ConnectionTimeouts *BalancerConnectionTimeouts `pulumi:"connectionTimeouts"`
 	DnsCnameAliases    []string                    `pulumi:"dnsCnameAliases"`
-	Name               string                      `pulumi:"name"`
+	Name               *string                     `pulumi:"name"`
 	Scheme             *string                     `pulumi:"scheme"`
 	Tags               []BalancerTag               `pulumi:"tags"`
 }
@@ -84,7 +80,7 @@ type balancerArgs struct {
 type BalancerArgs struct {
 	ConnectionTimeouts BalancerConnectionTimeoutsPtrInput
 	DnsCnameAliases    pulumi.StringArrayInput
-	Name               pulumi.StringInput
+	Name               pulumi.StringPtrInput
 	Scheme             pulumi.StringPtrInput
 	Tags               BalancerTagArrayInput
 }

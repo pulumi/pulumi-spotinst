@@ -17,7 +17,7 @@ type TargetSet struct {
 	BalancerId   pulumi.StringOutput        `pulumi:"balancerId"`
 	DeploymentId pulumi.StringOutput        `pulumi:"deploymentId"`
 	HealthCheck  TargetSetHealthCheckOutput `pulumi:"healthCheck"`
-	Name         pulumi.StringPtrOutput     `pulumi:"name"`
+	Name         pulumi.StringOutput        `pulumi:"name"`
 	Port         pulumi.IntPtrOutput        `pulumi:"port"`
 	Protocol     pulumi.StringOutput        `pulumi:"protocol"`
 	Tags         TargetSetTagArrayOutput    `pulumi:"tags"`
@@ -215,8 +215,8 @@ func (o TargetSetOutput) HealthCheck() TargetSetHealthCheckOutput {
 	return o.ApplyT(func(v *TargetSet) TargetSetHealthCheckOutput { return v.HealthCheck }).(TargetSetHealthCheckOutput)
 }
 
-func (o TargetSetOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TargetSet) pulumi.StringPtrOutput { return v.Name }).(pulumi.StringPtrOutput)
+func (o TargetSetOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *TargetSet) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
 func (o TargetSetOutput) Port() pulumi.IntPtrOutput {

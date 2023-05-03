@@ -91,7 +91,6 @@ import javax.annotation.Nullable;
  *             .keyPair(&#34;labs-oregon&#34;)
  *             .lifeCycle(&#34;on_demand&#34;)
  *             .minimumInstanceLifetime(&#34;1&#34;)
- *             .name(&#34;default-managed-instance&#34;)
  *             .optimizationWindows(&#34;Mon:03:00-Wed:02:20&#34;)
  *             .orientation(&#34;balanced&#34;)
  *             .persistBlockDevices(&#34;true&#34;)

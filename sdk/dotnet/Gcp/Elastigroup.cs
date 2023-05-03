@@ -100,7 +100,6 @@ namespace Pulumi.SpotInst.Gcp
     ///         },
     ///         MaxSize = 1,
     ///         MinSize = 0,
-    ///         Name = "example-gcp",
     ///         NetworkInterfaces = new[]
     ///         {
     ///             new SpotInst.Gcp.Inputs.ElastigroupNetworkInterfaceArgs
@@ -574,8 +573,8 @@ namespace Pulumi.SpotInst.Gcp
         /// <summary>
         /// The group name.
         /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
+        [Input("name")]
+        public Input<string>? Name { get; set; }
 
         [Input("networkInterfaces")]
         private InputList<Inputs.ElastigroupNetworkInterfaceArgs>? _networkInterfaces;

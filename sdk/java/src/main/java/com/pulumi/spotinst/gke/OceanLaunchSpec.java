@@ -86,7 +86,6 @@ import javax.annotation.Nullable;
  *                 .key(&#34;gci-update-strategy&#34;)
  *                 .value(&#34;update_disabled&#34;)
  *                 .build())
- *             .name(&#34;specialty.nodes.spotk8s.com&#34;)
  *             .networkInterfaces(OceanLaunchSpecNetworkInterfaceArgs.builder()
  *                 .accessConfigs(OceanLaunchSpecNetworkInterfaceAccessConfigArgs.builder()
  *                     .name(&#34;external-nat-vng&#34;)

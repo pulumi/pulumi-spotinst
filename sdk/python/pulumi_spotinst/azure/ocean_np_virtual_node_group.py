@@ -16,7 +16,6 @@ __all__ = ['OceanNpVirtualNodeGroupArgs', 'OceanNpVirtualNodeGroup']
 @pulumi.input_type
 class OceanNpVirtualNodeGroupArgs:
     def __init__(__self__, *,
-                 name: pulumi.Input[str],
                  ocean_id: pulumi.Input[str],
                  availability_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  enable_node_public_ip: Optional[pulumi.Input[bool]] = None,
@@ -26,6 +25,7 @@ class OceanNpVirtualNodeGroupArgs:
                  max_count: Optional[pulumi.Input[int]] = None,
                  max_pods_per_node: Optional[pulumi.Input[int]] = None,
                  min_count: Optional[pulumi.Input[int]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
                  os_disk_size_gb: Optional[pulumi.Input[int]] = None,
                  os_disk_type: Optional[pulumi.Input[str]] = None,
                  os_type: Optional[pulumi.Input[str]] = None,
@@ -35,7 +35,6 @@ class OceanNpVirtualNodeGroupArgs:
         """
         The set of arguments for constructing a OceanNpVirtualNodeGroup resource.
         """
-        pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "ocean_id", ocean_id)
         if availability_zones is not None:
             pulumi.set(__self__, "availability_zones", availability_zones)
@@ -53,6 +52,8 @@ class OceanNpVirtualNodeGroupArgs:
             pulumi.set(__self__, "max_pods_per_node", max_pods_per_node)
         if min_count is not None:
             pulumi.set(__self__, "min_count", min_count)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
         if os_disk_size_gb is not None:
             pulumi.set(__self__, "os_disk_size_gb", os_disk_size_gb)
         if os_disk_type is not None:
@@ -65,15 +66,6 @@ class OceanNpVirtualNodeGroupArgs:
             pulumi.set(__self__, "tags", tags)
         if taints is not None:
             pulumi.set(__self__, "taints", taints)
-
-    @property
-    @pulumi.getter
-    def name(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: pulumi.Input[str]):
-        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter(name="oceanId")
@@ -155,6 +147,15 @@ class OceanNpVirtualNodeGroupArgs:
     @min_count.setter
     def min_count(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "min_count", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter(name="osDiskSizeGb")
@@ -494,8 +495,6 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
             __props__.__dict__["max_count"] = max_count
             __props__.__dict__["max_pods_per_node"] = max_pods_per_node
             __props__.__dict__["min_count"] = min_count
-            if name is None and not opts.urn:
-                raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
             if ocean_id is None and not opts.urn:
                 raise TypeError("Missing required property 'ocean_id'")

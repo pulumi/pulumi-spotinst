@@ -115,7 +115,6 @@ import (
 //				},
 //				MasterLifecycle: pulumi.String("SPOT"),
 //				MasterTarget:    pulumi.Int(1),
-//				Name:            pulumi.String("sample-MrScaler-01"),
 //				ProvisioningTimeout: &aws.MrScalarProvisioningTimeoutArgs{
 //					Timeout:       pulumi.Int(15),
 //					TimeoutAction: pulumi.String("terminateAndRetry"),
@@ -218,7 +217,6 @@ import (
 //				},
 //				MasterLifecycle: pulumi.String("SPOT"),
 //				MasterTarget:    pulumi.Int(1),
-//				Name:            pulumi.String("sample-MrScaler-01"),
 //				Region:          pulumi.String("us-west-2"),
 //				Strategy:        pulumi.String("clone"),
 //				Tags: aws.MrScalarTagArray{
@@ -296,7 +294,6 @@ import (
 //			_, err := aws.NewMrScalar(ctx, "example-scaler-2", &aws.MrScalarArgs{
 //				ClusterId:           pulumi.String("j-27UVDEHXL4OQM"),
 //				Description:         pulumi.String("created by Pulumi"),
-//				Name:                pulumi.String("spotinst-mr-scaler-2"),
 //				Region:              pulumi.String("us-west-2"),
 //				Strategy:            pulumi.String("wrap"),
 //				TaskDesiredCapacity: pulumi.Int(2),
@@ -450,9 +447,6 @@ func NewMrScalar(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Name == nil {
-		return nil, errors.New("invalid value for required argument 'Name'")
-	}
 	if args.Strategy == nil {
 		return nil, errors.New("invalid value for required argument 'Strategy'")
 	}
@@ -782,7 +776,7 @@ type mrScalarArgs struct {
 	// Number of instances in the master group.
 	MasterTarget *int `pulumi:"masterTarget"`
 	// The MrScaler name.
-	Name                string                       `pulumi:"name"`
+	Name                *string                      `pulumi:"name"`
 	ProvisioningTimeout *MrScalarProvisioningTimeout `pulumi:"provisioningTimeout"`
 	// The MrScaler region.
 	Region       *string `pulumi:"region"`
@@ -899,7 +893,7 @@ type MrScalarArgs struct {
 	// Number of instances in the master group.
 	MasterTarget pulumi.IntPtrInput
 	// The MrScaler name.
-	Name                pulumi.StringInput
+	Name                pulumi.StringPtrInput
 	ProvisioningTimeout MrScalarProvisioningTimeoutPtrInput
 	// The MrScaler region.
 	Region       pulumi.StringPtrInput

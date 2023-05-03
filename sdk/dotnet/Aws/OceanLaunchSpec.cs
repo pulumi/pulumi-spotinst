@@ -123,7 +123,6 @@ namespace Pulumi.SpotInst.Aws
     ///                 Value = "value1",
     ///             },
     ///         },
-    ///         Name = "example",
     ///         OceanId = "o-123456",
     ///         PreferredSpotTypes = new[]
     ///         {
@@ -321,7 +320,7 @@ namespace Pulumi.SpotInst.Aws
         /// The name of the Virtual Node Group.
         /// </summary>
         [Output("name")]
-        public Output<string?> Name { get; private set; } = null!;
+        public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the Ocean cluster.

@@ -24,7 +24,6 @@ namespace Pulumi.SpotInst.Aws
     /// {
     ///     var example = new SpotInst.Aws.OceanExtendedResourceDefinition("example", new()
     ///     {
-    ///         Name = "terraform_extended_resource_definition",
     ///         ResourceMapping = 
     ///         {
     ///             { "c3.large", "2Ki" },
@@ -101,8 +100,8 @@ namespace Pulumi.SpotInst.Aws
         /// The extended resource name as should be requested by your pods and registered to the nodes. Cannot be updated.
         /// The name should be a valid Kubernetes extended resource name.
         /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
+        [Input("name")]
+        public Input<string>? Name { get; set; }
 
         [Input("resourceMapping", required: true)]
         private InputMap<object>? _resourceMapping;

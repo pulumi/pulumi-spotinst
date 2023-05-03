@@ -87,7 +87,6 @@ namespace Pulumi.SpotInst.Gke
     ///         },
     ///         MaxSize = 5,
     ///         MinSize = 1,
-    ///         Name = "example-gke",
     ///         NodeImage = "COS",
     ///         PreemptiblePercentage = 100,
     ///     });
@@ -350,8 +349,8 @@ namespace Pulumi.SpotInst.Gke
         [Input("minSize")]
         public Input<int>? MinSize { get; set; }
 
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
+        [Input("name")]
+        public Input<string>? Name { get; set; }
 
         [Input("networkInterfaces")]
         private InputList<Inputs.ElastigroupNetworkInterfaceArgs>? _networkInterfaces;

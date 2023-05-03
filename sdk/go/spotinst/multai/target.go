@@ -14,13 +14,13 @@ import (
 type Target struct {
 	pulumi.CustomResourceState
 
-	BalancerId  pulumi.StringOutput    `pulumi:"balancerId"`
-	Host        pulumi.StringOutput    `pulumi:"host"`
-	Name        pulumi.StringPtrOutput `pulumi:"name"`
-	Port        pulumi.IntPtrOutput    `pulumi:"port"`
-	Tags        TargetTagArrayOutput   `pulumi:"tags"`
-	TargetSetId pulumi.StringOutput    `pulumi:"targetSetId"`
-	Weight      pulumi.IntOutput       `pulumi:"weight"`
+	BalancerId  pulumi.StringOutput  `pulumi:"balancerId"`
+	Host        pulumi.StringOutput  `pulumi:"host"`
+	Name        pulumi.StringOutput  `pulumi:"name"`
+	Port        pulumi.IntPtrOutput  `pulumi:"port"`
+	Tags        TargetTagArrayOutput `pulumi:"tags"`
+	TargetSetId pulumi.StringOutput  `pulumi:"targetSetId"`
+	Weight      pulumi.IntOutput     `pulumi:"weight"`
 }
 
 // NewTarget registers a new resource with the given unique name, arguments, and options.
@@ -203,8 +203,8 @@ func (o TargetOutput) Host() pulumi.StringOutput {
 	return o.ApplyT(func(v *Target) pulumi.StringOutput { return v.Host }).(pulumi.StringOutput)
 }
 
-func (o TargetOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Target) pulumi.StringPtrOutput { return v.Name }).(pulumi.StringPtrOutput)
+func (o TargetOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Target) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
 func (o TargetOutput) Port() pulumi.IntPtrOutput {

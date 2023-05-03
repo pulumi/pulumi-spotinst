@@ -76,9 +76,6 @@ func NewOcean(ctx *pulumi.Context,
 	if args.AksResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'AksResourceGroupName'")
 	}
-	if args.Name == nil {
-		return nil, errors.New("invalid value for required argument 'Name'")
-	}
 	if args.SshPublicKey == nil {
 		return nil, errors.New("invalid value for required argument 'SshPublicKey'")
 	}
@@ -227,7 +224,7 @@ type oceanArgs struct {
 	// The maximum number of pods per node in an AKS cluster.
 	MaxPods *int `pulumi:"maxPods"`
 	// Name of the Load Balancer.
-	Name string `pulumi:"name"`
+	Name *string `pulumi:"name"`
 	// Define the Virtual Network and Subnet.
 	Network *OceanNetwork `pulumi:"network"`
 	// OS disk specifications.
@@ -275,7 +272,7 @@ type OceanArgs struct {
 	// The maximum number of pods per node in an AKS cluster.
 	MaxPods pulumi.IntPtrInput
 	// Name of the Load Balancer.
-	Name pulumi.StringInput
+	Name pulumi.StringPtrInput
 	// Define the Virtual Network and Subnet.
 	Network OceanNetworkPtrInput
 	// OS disk specifications.

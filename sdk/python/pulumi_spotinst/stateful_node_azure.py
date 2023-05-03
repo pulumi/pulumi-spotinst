@@ -18,7 +18,6 @@ class StatefulNodeAzureArgs:
     def __init__(__self__, *,
                  image: pulumi.Input['StatefulNodeAzureImageArgs'],
                  login: pulumi.Input['StatefulNodeAzureLoginArgs'],
-                 name: pulumi.Input[str],
                  network: pulumi.Input['StatefulNodeAzureNetworkArgs'],
                  od_sizes: pulumi.Input[Sequence[pulumi.Input[str]]],
                  os: pulumi.Input[str],
@@ -42,6 +41,7 @@ class StatefulNodeAzureArgs:
                  import_vms: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureImportVmArgs']]]] = None,
                  load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureLoadBalancerArgs']]]] = None,
                  managed_service_identities: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureManagedServiceIdentityArgs']]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
                  os_disk: Optional[pulumi.Input['StatefulNodeAzureOsDiskArgs']] = None,
                  os_disk_persistence_mode: Optional[pulumi.Input[str]] = None,
                  preferred_spot_sizes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -59,7 +59,6 @@ class StatefulNodeAzureArgs:
         """
         pulumi.set(__self__, "image", image)
         pulumi.set(__self__, "login", login)
-        pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "network", network)
         pulumi.set(__self__, "od_sizes", od_sizes)
         pulumi.set(__self__, "os", os)
@@ -96,6 +95,8 @@ class StatefulNodeAzureArgs:
             pulumi.set(__self__, "load_balancers", load_balancers)
         if managed_service_identities is not None:
             pulumi.set(__self__, "managed_service_identities", managed_service_identities)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
         if os_disk is not None:
             pulumi.set(__self__, "os_disk", os_disk)
         if os_disk_persistence_mode is not None:
@@ -138,15 +139,6 @@ class StatefulNodeAzureArgs:
     @login.setter
     def login(self, value: pulumi.Input['StatefulNodeAzureLoginArgs']):
         pulumi.set(self, "login", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: pulumi.Input[str]):
-        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
@@ -354,6 +346,15 @@ class StatefulNodeAzureArgs:
     @managed_service_identities.setter
     def managed_service_identities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureManagedServiceIdentityArgs']]]]):
         pulumi.set(self, "managed_service_identities", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter(name="osDisk")
@@ -1506,8 +1507,6 @@ class StatefulNodeAzure(pulumi.CustomResource):
                 raise TypeError("Missing required property 'login'")
             __props__.__dict__["login"] = login
             __props__.__dict__["managed_service_identities"] = managed_service_identities
-            if name is None and not opts.urn:
-                raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
             if network is None and not opts.urn:
                 raise TypeError("Missing required property 'network'")

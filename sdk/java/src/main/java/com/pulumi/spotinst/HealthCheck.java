@@ -52,7 +52,6 @@ import javax.annotation.Nullable;
  *                 .timeout(10)
  *                 .unhealthy(1)
  *                 .build())
- *             .name(&#34;sample_healt_check&#34;)
  *             .proxyAddress(&#34;http://proxy.com&#34;)
  *             .proxyPort(80)
  *             .resourceId(&#34;sig-123&#34;)
@@ -84,14 +83,14 @@ public class HealthCheck extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="name", type=String.class, parameters={})
-    private Output</* @Nullable */ String> name;
+    private Output<String> name;
 
     /**
      * @return The name of the health check.
      * 
      */
-    public Output<Optional<String>> name() {
-        return Codegen.optional(this.name);
+    public Output<String> name() {
+        return this.name;
     }
     @Export(name="proxyAddress", type=String.class, parameters={})
     private Output<String> proxyAddress;

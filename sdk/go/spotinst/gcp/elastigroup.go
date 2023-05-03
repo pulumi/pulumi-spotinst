@@ -89,7 +89,6 @@ import (
 //				},
 //				MaxSize: pulumi.Int(1),
 //				MinSize: pulumi.Int(0),
-//				Name:    pulumi.String("example-gcp"),
 //				NetworkInterfaces: gcp.ElastigroupNetworkInterfaceArray{
 //					&gcp.ElastigroupNetworkInterfaceArgs{
 //						Network: pulumi.String("spot-network"),
@@ -226,9 +225,6 @@ func NewElastigroup(ctx *pulumi.Context,
 
 	if args.DesiredCapacity == nil {
 		return nil, errors.New("invalid value for required argument 'DesiredCapacity'")
-	}
-	if args.Name == nil {
-		return nil, errors.New("invalid value for required argument 'Name'")
 	}
 	var resource Elastigroup
 	err := ctx.RegisterResource("spotinst:gcp/elastigroup:Elastigroup", name, args, &resource, opts...)
@@ -444,7 +440,7 @@ type elastigroupArgs struct {
 	// The minimum number of instances the group should have at any time.
 	MinSize *int `pulumi:"minSize"`
 	// The group name.
-	Name string `pulumi:"name"`
+	Name *string `pulumi:"name"`
 	// Array of objects representing the network configuration for the elastigroup.
 	NetworkInterfaces []ElastigroupNetworkInterface `pulumi:"networkInterfaces"`
 	OndemandCount     *int                          `pulumi:"ondemandCount"`
@@ -517,7 +513,7 @@ type ElastigroupArgs struct {
 	// The minimum number of instances the group should have at any time.
 	MinSize pulumi.IntPtrInput
 	// The group name.
-	Name pulumi.StringInput
+	Name pulumi.StringPtrInput
 	// Array of objects representing the network configuration for the elastigroup.
 	NetworkInterfaces ElastigroupNetworkInterfaceArrayInput
 	OndemandCount     pulumi.IntPtrInput

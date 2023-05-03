@@ -65,7 +65,6 @@ import * as utilities from "../utilities";
  *     }],
  *     maxSize: 1,
  *     minSize: 0,
- *     name: "example-gcp",
  *     networkInterfaces: [{
  *         network: "spot-network",
  *     }],
@@ -312,9 +311,6 @@ export class Elastigroup extends pulumi.CustomResource {
             const args = argsOrState as ElastigroupArgs | undefined;
             if ((!args || args.desiredCapacity === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'desiredCapacity'");
-            }
-            if ((!args || args.name === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'name'");
             }
             resourceInputs["autoHealing"] = args ? args.autoHealing : undefined;
             resourceInputs["availabilityZones"] = args ? args.availabilityZones : undefined;
@@ -575,7 +571,7 @@ export interface ElastigroupArgs {
     /**
      * The group name.
      */
-    name: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Array of objects representing the network configuration for the elastigroup.
      */

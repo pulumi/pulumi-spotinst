@@ -18,7 +18,6 @@ class ManagedInstanceArgs:
     def __init__(__self__, *,
                  image_id: pulumi.Input[str],
                  instance_types: pulumi.Input[Sequence[pulumi.Input[str]]],
-                 name: pulumi.Input[str],
                  persist_block_devices: pulumi.Input[bool],
                  product: pulumi.Input[str],
                  subnet_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
@@ -42,6 +41,7 @@ class ManagedInstanceArgs:
                  load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedInstanceLoadBalancerArgs']]]] = None,
                  managed_instance_action: Optional[pulumi.Input['ManagedInstanceManagedInstanceActionArgs']] = None,
                  minimum_instance_lifetime: Optional[pulumi.Input[int]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedInstanceNetworkInterfaceArgs']]]] = None,
                  optimization_windows: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  orientation: Optional[pulumi.Input[str]] = None,
@@ -64,7 +64,6 @@ class ManagedInstanceArgs:
         The set of arguments for constructing a ManagedInstance resource.
         :param pulumi.Input[str] image_id: The ID of the image used to launch the instance.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: Comma separated list of available instance types for instance.
-        :param pulumi.Input[str] name: The ManagedInstance name.
         :param pulumi.Input[bool] persist_block_devices: Should the instance maintain its Data volumes.
         :param pulumi.Input[str] product: Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`, `"Red Hat Enterprise Linux"`, `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`,  `"Red Hat Enterprise Linux (Amazon VPC)"`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: A comma-separated list of subnet identifiers for your instance.
@@ -85,6 +84,7 @@ class ManagedInstanceArgs:
         :param pulumi.Input['ManagedInstanceIntegrationRoute53Args'] integration_route53: Describes the [Route53](https://aws.amazon.com/documentation/route53/?id=docs_gateway) integration.
         :param pulumi.Input[str] key_pair: Specify a Key Pair to attach to the instances.
         :param pulumi.Input[str] life_cycle: Set lifecycle, valid values: `"spot"`, `"on_demand"`. Default `"spot"`.
+        :param pulumi.Input[str] name: The ManagedInstance name.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] optimization_windows: When `performAt` is `"timeWindow"`: must specify a list of `"timeWindows"` with at least one time window. Each string should be formatted as `ddd:hh:mm-ddd:hh:mm` (ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59).
         :param pulumi.Input[str] orientation: Select a prediction strategy. Valid values: `"balanced"`, `"costOriented"`, `"availabilityOriented"`, `"cheapest"`. Default: `"availabilityOriented"`.
         :param pulumi.Input[bool] persist_private_ip: Should the instance maintain its private IP.
@@ -103,7 +103,6 @@ class ManagedInstanceArgs:
         """
         pulumi.set(__self__, "image_id", image_id)
         pulumi.set(__self__, "instance_types", instance_types)
-        pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "persist_block_devices", persist_block_devices)
         pulumi.set(__self__, "product", product)
         pulumi.set(__self__, "subnet_ids", subnet_ids)
@@ -146,6 +145,8 @@ class ManagedInstanceArgs:
             pulumi.set(__self__, "managed_instance_action", managed_instance_action)
         if minimum_instance_lifetime is not None:
             pulumi.set(__self__, "minimum_instance_lifetime", minimum_instance_lifetime)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
         if network_interfaces is not None:
             pulumi.set(__self__, "network_interfaces", network_interfaces)
         if optimization_windows is not None:
@@ -206,18 +207,6 @@ class ManagedInstanceArgs:
     @instance_types.setter
     def instance_types(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "instance_types", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> pulumi.Input[str]:
-        """
-        The ManagedInstance name.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: pulumi.Input[str]):
-        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter(name="persistBlockDevices")
@@ -481,6 +470,18 @@ class ManagedInstanceArgs:
     @minimum_instance_lifetime.setter
     def minimum_instance_lifetime(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "minimum_instance_lifetime", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ManagedInstance name.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter(name="networkInterfaces")
@@ -1566,8 +1567,6 @@ class ManagedInstance(pulumi.CustomResource):
             __props__.__dict__["load_balancers"] = load_balancers
             __props__.__dict__["managed_instance_action"] = managed_instance_action
             __props__.__dict__["minimum_instance_lifetime"] = minimum_instance_lifetime
-            if name is None and not opts.urn:
-                raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
             __props__.__dict__["network_interfaces"] = network_interfaces
             __props__.__dict__["optimization_windows"] = optimization_windows

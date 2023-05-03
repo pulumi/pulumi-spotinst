@@ -37,7 +37,7 @@ export class TargetSet extends pulumi.CustomResource {
     public readonly balancerId!: pulumi.Output<string>;
     public readonly deploymentId!: pulumi.Output<string>;
     public readonly healthCheck!: pulumi.Output<outputs.multai.TargetSetHealthCheck>;
-    public readonly name!: pulumi.Output<string | undefined>;
+    public readonly name!: pulumi.Output<string>;
     public readonly port!: pulumi.Output<number | undefined>;
     public readonly protocol!: pulumi.Output<string>;
     public readonly tags!: pulumi.Output<outputs.multai.TargetSetTag[] | undefined>;

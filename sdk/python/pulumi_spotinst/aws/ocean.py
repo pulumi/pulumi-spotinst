@@ -1740,7 +1740,7 @@ class Ocean(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> pulumi.Output[Optional[str]]:
+    def name(self) -> pulumi.Output[str]:
         """
         Required if type is set to `CLASSIC`
         """

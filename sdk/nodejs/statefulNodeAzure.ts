@@ -354,9 +354,6 @@ export class StatefulNodeAzure extends pulumi.CustomResource {
             if ((!args || args.login === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'login'");
             }
-            if ((!args || args.name === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'name'");
-            }
             if ((!args || args.network === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'network'");
             }
@@ -494,7 +491,7 @@ export interface StatefulNodeAzureArgs {
     loadBalancers?: pulumi.Input<pulumi.Input<inputs.StatefulNodeAzureLoadBalancer>[]>;
     login: pulumi.Input<inputs.StatefulNodeAzureLogin>;
     managedServiceIdentities?: pulumi.Input<pulumi.Input<inputs.StatefulNodeAzureManagedServiceIdentity>[]>;
-    name: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     network: pulumi.Input<inputs.StatefulNodeAzureNetwork>;
     odSizes: pulumi.Input<pulumi.Input<string>[]>;
     os: pulumi.Input<string>;

@@ -212,15 +212,15 @@ public final class OceanArgs extends com.pulumi.resources.ResourceArgs {
      * Name of the Load Balancer.
      * 
      */
-    @Import(name="name", required=true)
-    private Output<String> name;
+    @Import(name="name")
+    private @Nullable Output<String> name;
 
     /**
      * @return Name of the Load Balancer.
      * 
      */
-    public Output<String> name() {
-        return this.name;
+    public Optional<Output<String>> name() {
+        return Optional.ofNullable(this.name);
     }
 
     /**
@@ -701,7 +701,7 @@ public final class OceanArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder name(Output<String> name) {
+        public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
@@ -949,7 +949,6 @@ public final class OceanArgs extends com.pulumi.resources.ResourceArgs {
             $.acdIdentifier = Objects.requireNonNull($.acdIdentifier, "expected parameter 'acdIdentifier' to be non-null");
             $.aksName = Objects.requireNonNull($.aksName, "expected parameter 'aksName' to be non-null");
             $.aksResourceGroupName = Objects.requireNonNull($.aksResourceGroupName, "expected parameter 'aksResourceGroupName' to be non-null");
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
             $.sshPublicKey = Objects.requireNonNull($.sshPublicKey, "expected parameter 'sshPublicKey' to be non-null");
             return $;
         }

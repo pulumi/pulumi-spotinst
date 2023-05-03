@@ -121,7 +121,6 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .minSize(0)
  *             .minimumInstanceLifetime(12)
- *             .name(&#34;default-elastigroup&#34;)
  *             .orientation(&#34;balanced&#34;)
  *             .placementTenancy(&#34;default&#34;)
  *             .product(&#34;Linux/UNIX&#34;)

@@ -32,10 +32,10 @@ public class Target extends com.pulumi.resources.CustomResource {
         return this.host;
     }
     @Export(name="name", type=String.class, parameters={})
-    private Output</* @Nullable */ String> name;
+    private Output<String> name;
 
-    public Output<Optional<String>> name() {
-        return Codegen.optional(this.name);
+    public Output<String> name() {
+        return this.name;
     }
     @Export(name="port", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> port;

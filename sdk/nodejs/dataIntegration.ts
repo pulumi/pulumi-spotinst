@@ -16,7 +16,6 @@ import * as utilities from "./utilities";
  * import * as spotinst from "@pulumi/spotinst";
  *
  * const example = new spotinst.DataIntegration("example", {
- *     name: "foo",
  *     s3: {
  *         bucketName: "terraform-test-do-not-delete",
  *         subdir: "terraform-test-data-integration",
@@ -73,7 +72,7 @@ export class DataIntegration extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: DataIntegrationArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: DataIntegrationArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DataIntegrationArgs | DataIntegrationState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -84,9 +83,6 @@ export class DataIntegration extends pulumi.CustomResource {
             resourceInputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as DataIntegrationArgs | undefined;
-            if ((!args || args.name === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'name'");
-            }
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["s3"] = args ? args.s3 : undefined;
             resourceInputs["status"] = args ? args.status : undefined;
@@ -121,7 +117,7 @@ export interface DataIntegrationArgs {
     /**
      * The name of the data integration.
      */
-    name: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * When vendor value is s3, the following fields are included:
      */

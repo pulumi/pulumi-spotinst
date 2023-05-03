@@ -132,7 +132,6 @@ namespace Pulumi.SpotInst.Aws
     ///         },
     ///         MasterLifecycle = "SPOT",
     ///         MasterTarget = 1,
-    ///         Name = "sample-MrScaler-01",
     ///         ProvisioningTimeout = new SpotInst.Aws.Inputs.MrScalarProvisioningTimeoutArgs
     ///         {
     ///             Timeout = 15,
@@ -242,7 +241,6 @@ namespace Pulumi.SpotInst.Aws
     ///         },
     ///         MasterLifecycle = "SPOT",
     ///         MasterTarget = 1,
-    ///         Name = "sample-MrScaler-01",
     ///         Region = "us-west-2",
     ///         Strategy = "clone",
     ///         Tags = new[]
@@ -323,7 +321,6 @@ namespace Pulumi.SpotInst.Aws
     ///     {
     ///         ClusterId = "j-27UVDEHXL4OQM",
     ///         Description = "created by Pulumi",
-    ///         Name = "spotinst-mr-scaler-2",
     ///         Region = "us-west-2",
     ///         Strategy = "wrap",
     ///         TaskDesiredCapacity = 2,
@@ -1012,8 +1009,8 @@ namespace Pulumi.SpotInst.Aws
         /// <summary>
         /// The MrScaler name.
         /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
+        [Input("name")]
+        public Input<string>? Name { get; set; }
 
         [Input("provisioningTimeout")]
         public Input<Inputs.MrScalarProvisioningTimeoutArgs>? ProvisioningTimeout { get; set; }

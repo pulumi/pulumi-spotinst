@@ -77,7 +77,6 @@ import javax.annotation.Nullable;
  *                     .value(&#34;label_value&#34;)
  *                     .build())
  *                 .build())
- *             .name(&#34;vng_name&#34;)
  *             .oceanId(&#34;o-12345&#34;)
  *             .resourceLimits(OceanVirtualNodeGroupResourceLimitArgs.builder()
  *                 .maxInstanceCount(4)

@@ -58,7 +58,6 @@ namespace Pulumi.SpotInst.Aws
     ///         },
     ///         MaxSize = 1,
     ///         MinSize = 0,
-    ///         Name = "example-elastigroup-beanstalk",
     ///         Product = "Linux/UNIX",
     ///         Region = "us-west-2",
     ///     });
@@ -248,8 +247,8 @@ namespace Pulumi.SpotInst.Aws
         /// <summary>
         /// The group name.
         /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
+        [Input("name")]
+        public Input<string>? Name { get; set; }
 
         /// <summary>
         /// Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`.

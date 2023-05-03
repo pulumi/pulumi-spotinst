@@ -211,9 +211,6 @@ func NewOceanLaunchSpec(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Name == nil {
-		return nil, errors.New("invalid value for required argument 'Name'")
-	}
 	if args.OceanId == nil {
 		return nil, errors.New("invalid value for required argument 'OceanId'")
 	}
@@ -329,7 +326,7 @@ type oceanLaunchSpecArgs struct {
 	// A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the Ocean cluster.
 	InstanceTypes []string `pulumi:"instanceTypes"`
 	// The Ocean Launch Specification name.
-	Name string `pulumi:"name"`
+	Name *string `pulumi:"name"`
 	// The Ocean cluster ID .
 	OceanId string `pulumi:"oceanId"`
 	// When Ocean scales up instances, it takes your preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
@@ -366,7 +363,7 @@ type OceanLaunchSpecArgs struct {
 	// A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the Ocean cluster.
 	InstanceTypes pulumi.StringArrayInput
 	// The Ocean Launch Specification name.
-	Name pulumi.StringInput
+	Name pulumi.StringPtrInput
 	// The Ocean cluster ID .
 	OceanId pulumi.StringInput
 	// When Ocean scales up instances, it takes your preferred types into consideration while maintaining a variety of machine types running for optimized distribution.

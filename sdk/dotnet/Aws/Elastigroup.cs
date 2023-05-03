@@ -827,8 +827,8 @@ namespace Pulumi.SpotInst.Aws
         /// <summary>
         /// The group name.
         /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
+        [Input("name")]
+        public Input<string>? Name { get; set; }
 
         [Input("networkInterfaces")]
         private InputList<Inputs.ElastigroupNetworkInterfaceArgs>? _networkInterfaces;

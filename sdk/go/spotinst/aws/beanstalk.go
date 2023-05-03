@@ -56,7 +56,6 @@ import (
 //				},
 //				MaxSize: pulumi.Int(1),
 //				MinSize: pulumi.Int(0),
-//				Name:    pulumi.String("example-elastigroup-beanstalk"),
 //				Product: pulumi.String("Linux/UNIX"),
 //				Region:  pulumi.String("us-west-2"),
 //			})
@@ -116,9 +115,6 @@ func NewBeanstalk(ctx *pulumi.Context,
 	}
 	if args.MinSize == nil {
 		return nil, errors.New("invalid value for required argument 'MinSize'")
-	}
-	if args.Name == nil {
-		return nil, errors.New("invalid value for required argument 'Name'")
 	}
 	if args.Product == nil {
 		return nil, errors.New("invalid value for required argument 'Product'")
@@ -226,7 +222,7 @@ type beanstalkArgs struct {
 	// The minimum number of instances the group should have at any time.
 	MinSize int `pulumi:"minSize"`
 	// The group name.
-	Name string `pulumi:"name"`
+	Name *string `pulumi:"name"`
 	// Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`.
 	// For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
 	Product string `pulumi:"product"`
@@ -255,7 +251,7 @@ type BeanstalkArgs struct {
 	// The minimum number of instances the group should have at any time.
 	MinSize pulumi.IntInput
 	// The group name.
-	Name pulumi.StringInput
+	Name pulumi.StringPtrInput
 	// Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`.
 	// For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
 	Product pulumi.StringInput

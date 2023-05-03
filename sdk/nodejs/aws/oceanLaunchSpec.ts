@@ -81,7 +81,6 @@ import * as utilities from "../utilities";
  *         key: "key1",
  *         value: "value1",
  *     }],
- *     name: "example",
  *     oceanId: "o-123456",
  *     preferredSpotTypes: [
  *         "m4.large",
@@ -226,7 +225,7 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
     /**
      * The name of the Virtual Node Group.
      */
-    public readonly name!: pulumi.Output<string | undefined>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The ID of the Ocean cluster.
      */

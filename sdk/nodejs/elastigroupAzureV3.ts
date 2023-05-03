@@ -131,9 +131,6 @@ export class ElastigroupAzureV3 extends pulumi.CustomResource {
             if ((!args || args.fallbackToOnDemand === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'fallbackToOnDemand'");
             }
-            if ((!args || args.name === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'name'");
-            }
             if ((!args || args.network === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'network'");
             }
@@ -273,7 +270,7 @@ export interface ElastigroupAzureV3Args {
     /**
      * Name of the Managed Service Identity.
      */
-    name: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     network: pulumi.Input<inputs.ElastigroupAzureV3Network>;
     /**
      * Available On-Demand sizes

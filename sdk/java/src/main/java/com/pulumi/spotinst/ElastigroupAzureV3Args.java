@@ -137,15 +137,15 @@ public final class ElastigroupAzureV3Args extends com.pulumi.resources.ResourceA
      * Name of the Managed Service Identity.
      * 
      */
-    @Import(name="name", required=true)
-    private Output<String> name;
+    @Import(name="name")
+    private @Nullable Output<String> name;
 
     /**
      * @return Name of the Managed Service Identity.
      * 
      */
-    public Output<String> name() {
-        return this.name;
+    public Optional<Output<String>> name() {
+        return Optional.ofNullable(this.name);
     }
 
     @Import(name="network", required=true)
@@ -466,7 +466,7 @@ public final class ElastigroupAzureV3Args extends com.pulumi.resources.ResourceA
          * @return builder
          * 
          */
-        public Builder name(Output<String> name) {
+        public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
@@ -647,7 +647,6 @@ public final class ElastigroupAzureV3Args extends com.pulumi.resources.ResourceA
 
         public ElastigroupAzureV3Args build() {
             $.fallbackToOnDemand = Objects.requireNonNull($.fallbackToOnDemand, "expected parameter 'fallbackToOnDemand' to be non-null");
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
             $.network = Objects.requireNonNull($.network, "expected parameter 'network' to be non-null");
             $.odSizes = Objects.requireNonNull($.odSizes, "expected parameter 'odSizes' to be non-null");
             $.os = Objects.requireNonNull($.os, "expected parameter 'os' to be non-null");

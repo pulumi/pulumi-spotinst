@@ -97,7 +97,7 @@ type Ocean struct {
 	// Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
 	Monitoring pulumi.BoolPtrOutput `pulumi:"monitoring"`
 	// Required if type is set to `CLASSIC`
-	Name pulumi.StringPtrOutput `pulumi:"name"`
+	Name pulumi.StringOutput `pulumi:"name"`
 	// The region the cluster will run in.
 	Region pulumi.StringPtrOutput `pulumi:"region"`
 	// The size (in Gb) to allocate for the root volume. Minimum `20`.
@@ -663,8 +663,8 @@ func (o OceanOutput) Monitoring() pulumi.BoolPtrOutput {
 }
 
 // Required if type is set to `CLASSIC`
-func (o OceanOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Ocean) pulumi.StringPtrOutput { return v.Name }).(pulumi.StringPtrOutput)
+func (o OceanOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Ocean) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
 // The region the cluster will run in.

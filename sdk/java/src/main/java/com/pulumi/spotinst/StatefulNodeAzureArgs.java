@@ -142,11 +142,11 @@ public final class StatefulNodeAzureArgs extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.managedServiceIdentities);
     }
 
-    @Import(name="name", required=true)
-    private Output<String> name;
+    @Import(name="name")
+    private @Nullable Output<String> name;
 
-    public Output<String> name() {
-        return this.name;
+    public Optional<Output<String>> name() {
+        return Optional.ofNullable(this.name);
     }
 
     @Import(name="network", required=true)
@@ -535,7 +535,7 @@ public final class StatefulNodeAzureArgs extends com.pulumi.resources.ResourceAr
             return managedServiceIdentities(List.of(managedServiceIdentities));
         }
 
-        public Builder name(Output<String> name) {
+        public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
@@ -781,7 +781,6 @@ public final class StatefulNodeAzureArgs extends com.pulumi.resources.ResourceAr
         public StatefulNodeAzureArgs build() {
             $.image = Objects.requireNonNull($.image, "expected parameter 'image' to be non-null");
             $.login = Objects.requireNonNull($.login, "expected parameter 'login' to be non-null");
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
             $.network = Objects.requireNonNull($.network, "expected parameter 'network' to be non-null");
             $.odSizes = Objects.requireNonNull($.odSizes, "expected parameter 'odSizes' to be non-null");
             $.os = Objects.requireNonNull($.os, "expected parameter 'os' to be non-null");

@@ -37,7 +37,6 @@ import (
 //					Timeout:   pulumi.Int(10),
 //					Unhealthy: pulumi.Int(1),
 //				},
-//				Name:         pulumi.String("sample_healt_check"),
 //				ProxyAddress: pulumi.String("http://proxy.com"),
 //				ProxyPort:    pulumi.Int(80),
 //				ResourceId:   pulumi.String("sig-123"),
@@ -56,9 +55,9 @@ type HealthCheck struct {
 	// Describes the check to execute.
 	Check HealthCheckCheckPtrOutput `pulumi:"check"`
 	// The name of the health check.
-	Name         pulumi.StringPtrOutput `pulumi:"name"`
-	ProxyAddress pulumi.StringOutput    `pulumi:"proxyAddress"`
-	ProxyPort    pulumi.IntPtrOutput    `pulumi:"proxyPort"`
+	Name         pulumi.StringOutput `pulumi:"name"`
+	ProxyAddress pulumi.StringOutput `pulumi:"proxyAddress"`
+	ProxyPort    pulumi.IntPtrOutput `pulumi:"proxyPort"`
 	// The ID of the resource to check.
 	ResourceId pulumi.StringOutput `pulumi:"resourceId"`
 }
@@ -239,8 +238,8 @@ func (o HealthCheckOutput) Check() HealthCheckCheckPtrOutput {
 }
 
 // The name of the health check.
-func (o HealthCheckOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *HealthCheck) pulumi.StringPtrOutput { return v.Name }).(pulumi.StringPtrOutput)
+func (o HealthCheckOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *HealthCheck) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
 func (o HealthCheckOutput) ProxyAddress() pulumi.StringOutput {

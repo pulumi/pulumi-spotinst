@@ -80,7 +80,6 @@ import (
 //				},
 //				MaxSize:               pulumi.Int(5),
 //				MinSize:               pulumi.Int(1),
-//				Name:                  pulumi.String("example-gke"),
 //				NodeImage:             pulumi.String("COS"),
 //				PreemptiblePercentage: pulumi.Int(100),
 //			})
@@ -146,9 +145,6 @@ func NewElastigroup(ctx *pulumi.Context,
 	}
 	if args.DesiredCapacity == nil {
 		return nil, errors.New("invalid value for required argument 'DesiredCapacity'")
-	}
-	if args.Name == nil {
-		return nil, errors.New("invalid value for required argument 'Name'")
 	}
 	var resource Elastigroup
 	err := ctx.RegisterResource("spotinst:gke/elastigroup:Elastigroup", name, args, &resource, opts...)
@@ -280,7 +276,7 @@ type elastigroupArgs struct {
 	MaxSize           *int                          `pulumi:"maxSize"`
 	Metadatas         []ElastigroupMetadata         `pulumi:"metadatas"`
 	MinSize           *int                          `pulumi:"minSize"`
-	Name              string                        `pulumi:"name"`
+	Name              *string                       `pulumi:"name"`
 	NetworkInterfaces []ElastigroupNetworkInterface `pulumi:"networkInterfaces"`
 	// The image that will be used for the node VMs. Possible values: COS, UBUNTU.
 	NodeImage             *string                        `pulumi:"nodeImage"`
@@ -321,7 +317,7 @@ type ElastigroupArgs struct {
 	MaxSize           pulumi.IntPtrInput
 	Metadatas         ElastigroupMetadataArrayInput
 	MinSize           pulumi.IntPtrInput
-	Name              pulumi.StringInput
+	Name              pulumi.StringPtrInput
 	NetworkInterfaces ElastigroupNetworkInterfaceArrayInput
 	// The image that will be used for the node VMs. Possible values: COS, UBUNTU.
 	NodeImage             pulumi.StringPtrInput
