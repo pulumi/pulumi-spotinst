@@ -1082,7 +1082,7 @@ class StatefulNodeAzure(pulumi.CustomResource):
             * `is_primary` - (Required) Defines whether the network interface is primary or not.
             * `subnet_name` - (Required) Subnet name.
             * `assign_public_ip` - (Optional) Assign public IP.
-            * `public_ip_sku` - (Optional) Required if assignPublicIp=true values=[STANDARD/BASIC].
+            * `public_ip_sku` - (Optional) Required if assignPublicIp=true values=[Standard/Basic].
             * `network_security_group` - (Optional) Network Security Group.
               * `network_resource_group_name` - (Required) Requires valid security group name.
               * `name` - (Required) Requires valid resource group name.
@@ -1313,7 +1313,7 @@ class StatefulNodeAzure(pulumi.CustomResource):
             * `is_primary` - (Required) Defines whether the network interface is primary or not.
             * `subnet_name` - (Required) Subnet name.
             * `assign_public_ip` - (Optional) Assign public IP.
-            * `public_ip_sku` - (Optional) Required if assignPublicIp=true values=[STANDARD/BASIC].
+            * `public_ip_sku` - (Optional) Required if assignPublicIp=true values=[Standard/Basic].
             * `network_security_group` - (Optional) Network Security Group.
               * `network_resource_group_name` - (Required) Requires valid security group name.
               * `name` - (Required) Requires valid resource group name.
