@@ -115,7 +115,7 @@ import * as utilities from "./utilities";
  *     * `isPrimary` - (Required) Defines whether the network interface is primary or not.
  *     * `subnetName` - (Required) Subnet name.
  *     * `assignPublicIp` - (Optional) Assign public IP.
- *     * `publicIpSku` - (Optional) Required if assignPublicIp=true values=[STANDARD/BASIC].
+ *     * `publicIpSku` - (Optional) Required if assignPublicIp=true values=[Standard/Basic].
  *     * `networkSecurityGroup` - (Optional) Network Security Group.
  *       * `networkResourceGroupName` - (Required) Requires valid security group name.
  *       * `name` - (Required) Requires valid resource group name.
