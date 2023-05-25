@@ -19,6 +19,18 @@ namespace Pulumi.SpotInst.Aws.Outputs
         public readonly string? Adjustment;
         /// <summary>
         /// The percentage of instances to add or remove.
+        /// 
+        /// Usage:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        /// });
+        /// ```
         /// </summary>
         public readonly string? AdjustmentPercentage;
         /// <summary>

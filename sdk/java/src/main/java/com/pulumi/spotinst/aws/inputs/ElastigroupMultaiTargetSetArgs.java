@@ -16,12 +16,60 @@ public final class ElastigroupMultaiTargetSetArgs extends com.pulumi.resources.R
     /**
      * ID of Multai Load Balancer.
      * 
+     * Usage:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *     }
+     * }
+     * ```
+     * 
      */
     @Import(name="balancerId", required=true)
     private Output<String> balancerId;
 
     /**
      * @return ID of Multai Load Balancer.
+     * 
+     * Usage:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *     }
+     * }
+     * ```
      * 
      */
     public Output<String> balancerId() {
@@ -71,6 +119,30 @@ public final class ElastigroupMultaiTargetSetArgs extends com.pulumi.resources.R
         /**
          * @param balancerId ID of Multai Load Balancer.
          * 
+         * Usage:
+         * ```java
+         * package generated_program;
+         * 
+         * import com.pulumi.Context;
+         * import com.pulumi.Pulumi;
+         * import com.pulumi.core.Output;
+         * import java.util.List;
+         * import java.util.ArrayList;
+         * import java.util.Map;
+         * import java.io.File;
+         * import java.nio.file.Files;
+         * import java.nio.file.Paths;
+         * 
+         * public class App {
+         *     public static void main(String[] args) {
+         *         Pulumi.run(App::stack);
+         *     }
+         * 
+         *     public static void stack(Context ctx) {
+         *     }
+         * }
+         * ```
+         * 
          * @return builder
          * 
          */
@@ -81,6 +153,30 @@ public final class ElastigroupMultaiTargetSetArgs extends com.pulumi.resources.R
 
         /**
          * @param balancerId ID of Multai Load Balancer.
+         * 
+         * Usage:
+         * ```java
+         * package generated_program;
+         * 
+         * import com.pulumi.Context;
+         * import com.pulumi.Pulumi;
+         * import com.pulumi.core.Output;
+         * import java.util.List;
+         * import java.util.ArrayList;
+         * import java.util.Map;
+         * import java.io.File;
+         * import java.nio.file.Files;
+         * import java.nio.file.Paths;
+         * 
+         * public class App {
+         *     public static void main(String[] args) {
+         *         Pulumi.run(App::stack);
+         *     }
+         * 
+         *     public static void stack(Context ctx) {
+         *     }
+         * }
+         * ```
          * 
          * @return builder
          * 

@@ -13,17 +13,9 @@ public final class ElastigroupIntegrationKubernetesArgs extends com.pulumi.resou
 
     public static final ElastigroupIntegrationKubernetesArgs Empty = new ElastigroupIntegrationKubernetesArgs();
 
-    /**
-     * The cluster ID.
-     * 
-     */
     @Import(name="clusterIdentifier", required=true)
     private Output<String> clusterIdentifier;
 
-    /**
-     * @return The cluster ID.
-     * 
-     */
     public Output<String> clusterIdentifier() {
         return this.clusterIdentifier;
     }
@@ -52,23 +44,11 @@ public final class ElastigroupIntegrationKubernetesArgs extends com.pulumi.resou
             $ = new ElastigroupIntegrationKubernetesArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param clusterIdentifier The cluster ID.
-         * 
-         * @return builder
-         * 
-         */
         public Builder clusterIdentifier(Output<String> clusterIdentifier) {
             $.clusterIdentifier = clusterIdentifier;
             return this;
         }
 
-        /**
-         * @param clusterIdentifier The cluster ID.
-         * 
-         * @return builder
-         * 
-         */
         public Builder clusterIdentifier(String clusterIdentifier) {
             return clusterIdentifier(Output.of(clusterIdentifier));
         }

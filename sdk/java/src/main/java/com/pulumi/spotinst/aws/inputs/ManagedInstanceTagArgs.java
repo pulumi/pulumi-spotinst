@@ -15,32 +15,16 @@ public final class ManagedInstanceTagArgs extends com.pulumi.resources.ResourceA
 
     public static final ManagedInstanceTagArgs Empty = new ManagedInstanceTagArgs();
 
-    /**
-     * Tag&#39;s key.
-     * 
-     */
     @Import(name="key")
     private @Nullable Output<String> key;
 
-    /**
-     * @return Tag&#39;s key.
-     * 
-     */
     public Optional<Output<String>> key() {
         return Optional.ofNullable(this.key);
     }
 
-    /**
-     * Tag&#39;s name.
-     * 
-     */
     @Import(name="value")
     private @Nullable Output<String> value;
 
-    /**
-     * @return Tag&#39;s name.
-     * 
-     */
     public Optional<Output<String>> value() {
         return Optional.ofNullable(this.value);
     }
@@ -70,44 +54,20 @@ public final class ManagedInstanceTagArgs extends com.pulumi.resources.ResourceA
             $ = new ManagedInstanceTagArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param key Tag&#39;s key.
-         * 
-         * @return builder
-         * 
-         */
         public Builder key(@Nullable Output<String> key) {
             $.key = key;
             return this;
         }
 
-        /**
-         * @param key Tag&#39;s key.
-         * 
-         * @return builder
-         * 
-         */
         public Builder key(String key) {
             return key(Output.of(key));
         }
 
-        /**
-         * @param value Tag&#39;s name.
-         * 
-         * @return builder
-         * 
-         */
         public Builder value(@Nullable Output<String> value) {
             $.value = value;
             return this;
         }
 
-        /**
-         * @param value Tag&#39;s name.
-         * 
-         * @return builder
-         * 
-         */
         public Builder value(String value) {
             return value(Output.of(value));
         }

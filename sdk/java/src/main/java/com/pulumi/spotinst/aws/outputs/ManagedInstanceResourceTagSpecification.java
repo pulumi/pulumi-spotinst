@@ -11,53 +11,21 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ManagedInstanceResourceTagSpecification {
-    /**
-     * @return Tag specification for AMI resources.
-     * 
-     */
     private @Nullable Boolean shouldTagAmis;
-    /**
-     * @return Tag specification for ENI resources.
-     * 
-     */
     private @Nullable Boolean shouldTagEnis;
-    /**
-     * @return Tag specification for Snapshot resources.
-     * 
-     */
     private @Nullable Boolean shouldTagSnapshots;
-    /**
-     * @return Tag specification for Volume resources.
-     * 
-     */
     private @Nullable Boolean shouldTagVolumes;
 
     private ManagedInstanceResourceTagSpecification() {}
-    /**
-     * @return Tag specification for AMI resources.
-     * 
-     */
     public Optional<Boolean> shouldTagAmis() {
         return Optional.ofNullable(this.shouldTagAmis);
     }
-    /**
-     * @return Tag specification for ENI resources.
-     * 
-     */
     public Optional<Boolean> shouldTagEnis() {
         return Optional.ofNullable(this.shouldTagEnis);
     }
-    /**
-     * @return Tag specification for Snapshot resources.
-     * 
-     */
     public Optional<Boolean> shouldTagSnapshots() {
         return Optional.ofNullable(this.shouldTagSnapshots);
     }
-    /**
-     * @return Tag specification for Volume resources.
-     * 
-     */
     public Optional<Boolean> shouldTagVolumes() {
         return Optional.ofNullable(this.shouldTagVolumes);
     }

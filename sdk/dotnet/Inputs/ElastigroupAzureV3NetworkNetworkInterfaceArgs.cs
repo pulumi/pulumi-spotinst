@@ -14,10 +14,6 @@ namespace Pulumi.SpotInst.Inputs
     {
         [Input("additionalIpConfigs")]
         private InputList<Inputs.ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArgs>? _additionalIpConfigs;
-
-        /// <summary>
-        /// Array of additional IP configuration objects.
-        /// </summary>
         public InputList<Inputs.ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArgs> AdditionalIpConfigs
         {
             get => _additionalIpConfigs ?? (_additionalIpConfigs = new InputList<Inputs.ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArgs>());
@@ -26,10 +22,6 @@ namespace Pulumi.SpotInst.Inputs
 
         [Input("applicationSecurityGroups")]
         private InputList<Inputs.ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArgs>? _applicationSecurityGroups;
-
-        /// <summary>
-        /// List of Application Security Groups that will be associated to the primary ip configuration of the network interface.
-        /// </summary>
         public InputList<Inputs.ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArgs> ApplicationSecurityGroups
         {
             get => _applicationSecurityGroups ?? (_applicationSecurityGroups = new InputList<Inputs.ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArgs>());
@@ -42,9 +34,6 @@ namespace Pulumi.SpotInst.Inputs
         [Input("isPrimary", required: true)]
         public Input<bool> IsPrimary { get; set; } = null!;
 
-        /// <summary>
-        /// ID of subnet.
-        /// </summary>
         [Input("subnetName", required: true)]
         public Input<string> SubnetName { get; set; } = null!;
 

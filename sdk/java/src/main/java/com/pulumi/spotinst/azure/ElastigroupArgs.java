@@ -30,9 +30,17 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ElastigroupArgs Empty = new ElastigroupArgs();
 
+    /**
+     * Custom init script file or text in Base64 encoded format.
+     * 
+     */
     @Import(name="customData")
     private @Nullable Output<String> customData;
 
+    /**
+     * @return Custom init script file or text in Base64 encoded format.
+     * 
+     */
     public Optional<Output<String>> customData() {
         return Optional.ofNullable(this.customData);
     }
@@ -66,32 +74,16 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.images);
     }
 
-    /**
-     * Describes the [Kubernetes](https://kubernetes.io/) integration.
-     * 
-     */
     @Import(name="integrationKubernetes")
     private @Nullable Output<ElastigroupIntegrationKubernetesArgs> integrationKubernetes;
 
-    /**
-     * @return Describes the [Kubernetes](https://kubernetes.io/) integration.
-     * 
-     */
     public Optional<Output<ElastigroupIntegrationKubernetesArgs>> integrationKubernetes() {
         return Optional.ofNullable(this.integrationKubernetes);
     }
 
-    /**
-     * Describes the [Multai Runtime](https://spotinst.com/) integration.
-     * 
-     */
     @Import(name="integrationMultaiRuntime")
     private @Nullable Output<ElastigroupIntegrationMultaiRuntimeArgs> integrationMultaiRuntime;
 
-    /**
-     * @return Describes the [Multai Runtime](https://spotinst.com/) integration.
-     * 
-     */
     public Optional<Output<ElastigroupIntegrationMultaiRuntimeArgs>> integrationMultaiRuntime() {
         return Optional.ofNullable(this.integrationMultaiRuntime);
     }
@@ -110,17 +102,9 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.login);
     }
 
-    /**
-     * Available Low-Priority sizes.
-     * 
-     */
     @Import(name="lowPrioritySizes", required=true)
     private Output<List<String>> lowPrioritySizes;
 
-    /**
-     * @return Available Low-Priority sizes.
-     * 
-     */
     public Output<List<String>> lowPrioritySizes() {
         return this.lowPrioritySizes;
     }
@@ -163,14 +147,14 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the managed identity.
+     * Name of the Managed Service Identity.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the managed identity.
+     * @return Name of the Managed Service Identity.
      * 
      */
     public Optional<Output<String>> name() {
@@ -199,17 +183,9 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
         return this.odSizes;
     }
 
-    /**
-     * Operation system type. Valid values: `&#34;Linux&#34;`, `&#34;Windows&#34;`.
-     * 
-     */
     @Import(name="product", required=true)
     private Output<String> product;
 
-    /**
-     * @return Operation system type. Valid values: `&#34;Linux&#34;`, `&#34;Windows&#34;`.
-     * 
-     */
     public Output<String> product() {
         return this.product;
     }
@@ -230,14 +206,14 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Resource Group that the user-assigned managed identity resides in.
+     * Name of the Azure Resource Group where the Managed Service Identity is located.
      * 
      */
     @Import(name="resourceGroupName", required=true)
     private Output<String> resourceGroupName;
 
     /**
-     * @return The Resource Group that the user-assigned managed identity resides in.
+     * @return Name of the Azure Resource Group where the Managed Service Identity is located.
      * 
      */
     public Output<String> resourceGroupName() {
@@ -258,47 +234,23 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.scalingUpPolicies);
     }
 
-    /**
-     * Describes the configuration of one or more scheduled tasks.
-     * 
-     */
     @Import(name="scheduledTasks")
     private @Nullable Output<List<ElastigroupScheduledTaskArgs>> scheduledTasks;
 
-    /**
-     * @return Describes the configuration of one or more scheduled tasks.
-     * 
-     */
     public Optional<Output<List<ElastigroupScheduledTaskArgs>>> scheduledTasks() {
         return Optional.ofNullable(this.scheduledTasks);
     }
 
-    /**
-     * Shutdown script for the group. Value should be passed as a string encoded at Base64 only.
-     * 
-     */
     @Import(name="shutdownScript")
     private @Nullable Output<String> shutdownScript;
 
-    /**
-     * @return Shutdown script for the group. Value should be passed as a string encoded at Base64 only.
-     * 
-     */
     public Optional<Output<String>> shutdownScript() {
         return Optional.ofNullable(this.shutdownScript);
     }
 
-    /**
-     * Describes the deployment strategy.
-     * 
-     */
     @Import(name="strategy", required=true)
     private Output<ElastigroupStrategyArgs> strategy;
 
-    /**
-     * @return Describes the deployment strategy.
-     * 
-     */
     public Output<ElastigroupStrategyArgs> strategy() {
         return this.strategy;
     }
@@ -310,17 +262,9 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.updatePolicy);
     }
 
-    /**
-     * Base64-encoded MIME user data to make available to the instances.
-     * 
-     */
     @Import(name="userData")
     private @Nullable Output<String> userData;
 
-    /**
-     * @return Base64-encoded MIME user data to make available to the instances.
-     * 
-     */
     public Optional<Output<String>> userData() {
         return Optional.ofNullable(this.userData);
     }
@@ -373,11 +317,23 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
             $ = new ElastigroupArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param customData Custom init script file or text in Base64 encoded format.
+         * 
+         * @return builder
+         * 
+         */
         public Builder customData(@Nullable Output<String> customData) {
             $.customData = customData;
             return this;
         }
 
+        /**
+         * @param customData Custom init script file or text in Base64 encoded format.
+         * 
+         * @return builder
+         * 
+         */
         public Builder customData(String customData) {
             return customData(Output.of(customData));
         }
@@ -425,44 +381,20 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
             return images(List.of(images));
         }
 
-        /**
-         * @param integrationKubernetes Describes the [Kubernetes](https://kubernetes.io/) integration.
-         * 
-         * @return builder
-         * 
-         */
         public Builder integrationKubernetes(@Nullable Output<ElastigroupIntegrationKubernetesArgs> integrationKubernetes) {
             $.integrationKubernetes = integrationKubernetes;
             return this;
         }
 
-        /**
-         * @param integrationKubernetes Describes the [Kubernetes](https://kubernetes.io/) integration.
-         * 
-         * @return builder
-         * 
-         */
         public Builder integrationKubernetes(ElastigroupIntegrationKubernetesArgs integrationKubernetes) {
             return integrationKubernetes(Output.of(integrationKubernetes));
         }
 
-        /**
-         * @param integrationMultaiRuntime Describes the [Multai Runtime](https://spotinst.com/) integration.
-         * 
-         * @return builder
-         * 
-         */
         public Builder integrationMultaiRuntime(@Nullable Output<ElastigroupIntegrationMultaiRuntimeArgs> integrationMultaiRuntime) {
             $.integrationMultaiRuntime = integrationMultaiRuntime;
             return this;
         }
 
-        /**
-         * @param integrationMultaiRuntime Describes the [Multai Runtime](https://spotinst.com/) integration.
-         * 
-         * @return builder
-         * 
-         */
         public Builder integrationMultaiRuntime(ElastigroupIntegrationMultaiRuntimeArgs integrationMultaiRuntime) {
             return integrationMultaiRuntime(Output.of(integrationMultaiRuntime));
         }
@@ -489,33 +421,15 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
             return login(Output.of(login));
         }
 
-        /**
-         * @param lowPrioritySizes Available Low-Priority sizes.
-         * 
-         * @return builder
-         * 
-         */
         public Builder lowPrioritySizes(Output<List<String>> lowPrioritySizes) {
             $.lowPrioritySizes = lowPrioritySizes;
             return this;
         }
 
-        /**
-         * @param lowPrioritySizes Available Low-Priority sizes.
-         * 
-         * @return builder
-         * 
-         */
         public Builder lowPrioritySizes(List<String> lowPrioritySizes) {
             return lowPrioritySizes(Output.of(lowPrioritySizes));
         }
 
-        /**
-         * @param lowPrioritySizes Available Low-Priority sizes.
-         * 
-         * @return builder
-         * 
-         */
         public Builder lowPrioritySizes(String... lowPrioritySizes) {
             return lowPrioritySizes(List.of(lowPrioritySizes));
         }
@@ -576,7 +490,7 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of the managed identity.
+         * @param name Name of the Managed Service Identity.
          * 
          * @return builder
          * 
@@ -587,7 +501,7 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of the managed identity.
+         * @param name Name of the Managed Service Identity.
          * 
          * @return builder
          * 
@@ -636,23 +550,11 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
             return odSizes(List.of(odSizes));
         }
 
-        /**
-         * @param product Operation system type. Valid values: `&#34;Linux&#34;`, `&#34;Windows&#34;`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder product(Output<String> product) {
             $.product = product;
             return this;
         }
 
-        /**
-         * @param product Operation system type. Valid values: `&#34;Linux&#34;`, `&#34;Windows&#34;`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder product(String product) {
             return product(Output.of(product));
         }
@@ -679,7 +581,7 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceGroupName The Resource Group that the user-assigned managed identity resides in.
+         * @param resourceGroupName Name of the Azure Resource Group where the Managed Service Identity is located.
          * 
          * @return builder
          * 
@@ -690,7 +592,7 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceGroupName The Resource Group that the user-assigned managed identity resides in.
+         * @param resourceGroupName Name of the Azure Resource Group where the Managed Service Identity is located.
          * 
          * @return builder
          * 
@@ -725,75 +627,33 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
             return scalingUpPolicies(List.of(scalingUpPolicies));
         }
 
-        /**
-         * @param scheduledTasks Describes the configuration of one or more scheduled tasks.
-         * 
-         * @return builder
-         * 
-         */
         public Builder scheduledTasks(@Nullable Output<List<ElastigroupScheduledTaskArgs>> scheduledTasks) {
             $.scheduledTasks = scheduledTasks;
             return this;
         }
 
-        /**
-         * @param scheduledTasks Describes the configuration of one or more scheduled tasks.
-         * 
-         * @return builder
-         * 
-         */
         public Builder scheduledTasks(List<ElastigroupScheduledTaskArgs> scheduledTasks) {
             return scheduledTasks(Output.of(scheduledTasks));
         }
 
-        /**
-         * @param scheduledTasks Describes the configuration of one or more scheduled tasks.
-         * 
-         * @return builder
-         * 
-         */
         public Builder scheduledTasks(ElastigroupScheduledTaskArgs... scheduledTasks) {
             return scheduledTasks(List.of(scheduledTasks));
         }
 
-        /**
-         * @param shutdownScript Shutdown script for the group. Value should be passed as a string encoded at Base64 only.
-         * 
-         * @return builder
-         * 
-         */
         public Builder shutdownScript(@Nullable Output<String> shutdownScript) {
             $.shutdownScript = shutdownScript;
             return this;
         }
 
-        /**
-         * @param shutdownScript Shutdown script for the group. Value should be passed as a string encoded at Base64 only.
-         * 
-         * @return builder
-         * 
-         */
         public Builder shutdownScript(String shutdownScript) {
             return shutdownScript(Output.of(shutdownScript));
         }
 
-        /**
-         * @param strategy Describes the deployment strategy.
-         * 
-         * @return builder
-         * 
-         */
         public Builder strategy(Output<ElastigroupStrategyArgs> strategy) {
             $.strategy = strategy;
             return this;
         }
 
-        /**
-         * @param strategy Describes the deployment strategy.
-         * 
-         * @return builder
-         * 
-         */
         public Builder strategy(ElastigroupStrategyArgs strategy) {
             return strategy(Output.of(strategy));
         }
@@ -807,23 +667,11 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
             return updatePolicy(Output.of(updatePolicy));
         }
 
-        /**
-         * @param userData Base64-encoded MIME user data to make available to the instances.
-         * 
-         * @return builder
-         * 
-         */
         public Builder userData(@Nullable Output<String> userData) {
             $.userData = userData;
             return this;
         }
 
-        /**
-         * @param userData Base64-encoded MIME user data to make available to the instances.
-         * 
-         * @return builder
-         * 
-         */
         public Builder userData(String userData) {
             return userData(Output.of(userData));
         }

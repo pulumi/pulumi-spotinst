@@ -48,12 +48,60 @@ public final class ElastigroupStatefulDeallocationArgs extends com.pulumi.resour
     /**
      * For stateful groups: remove snapshots.
      * 
+     * Usage:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *     }
+     * }
+     * ```
+     * 
      */
     @Import(name="shouldDeleteSnapshots")
     private @Nullable Output<Boolean> shouldDeleteSnapshots;
 
     /**
      * @return For stateful groups: remove snapshots.
+     * 
+     * Usage:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *     }
+     * }
+     * ```
      * 
      */
     public Optional<Output<Boolean>> shouldDeleteSnapshots() {
@@ -147,6 +195,30 @@ public final class ElastigroupStatefulDeallocationArgs extends com.pulumi.resour
         /**
          * @param shouldDeleteSnapshots For stateful groups: remove snapshots.
          * 
+         * Usage:
+         * ```java
+         * package generated_program;
+         * 
+         * import com.pulumi.Context;
+         * import com.pulumi.Pulumi;
+         * import com.pulumi.core.Output;
+         * import java.util.List;
+         * import java.util.ArrayList;
+         * import java.util.Map;
+         * import java.io.File;
+         * import java.nio.file.Files;
+         * import java.nio.file.Paths;
+         * 
+         * public class App {
+         *     public static void main(String[] args) {
+         *         Pulumi.run(App::stack);
+         *     }
+         * 
+         *     public static void stack(Context ctx) {
+         *     }
+         * }
+         * ```
+         * 
          * @return builder
          * 
          */
@@ -157,6 +229,30 @@ public final class ElastigroupStatefulDeallocationArgs extends com.pulumi.resour
 
         /**
          * @param shouldDeleteSnapshots For stateful groups: remove snapshots.
+         * 
+         * Usage:
+         * ```java
+         * package generated_program;
+         * 
+         * import com.pulumi.Context;
+         * import com.pulumi.Pulumi;
+         * import com.pulumi.core.Output;
+         * import java.util.List;
+         * import java.util.ArrayList;
+         * import java.util.Map;
+         * import java.io.File;
+         * import java.nio.file.Files;
+         * import java.nio.file.Paths;
+         * 
+         * public class App {
+         *     public static void main(String[] args) {
+         *         Pulumi.run(App::stack);
+         *     }
+         * 
+         *     public static void stack(Context ctx) {
+         *     }
+         * }
+         * ```
          * 
          * @return builder
          * 

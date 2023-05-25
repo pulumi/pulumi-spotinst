@@ -911,12 +911,60 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
     /**
      * List of Private IPs to associate to the group instances.(e.g. &#34;172.1.1.0&#34;). Please note: This setting will only apply if persistence.persist_private_ip is set to true.
      * 
+     * Usage:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *     }
+     * }
+     * ```
+     * 
      */
     @Export(name="privateIps", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> privateIps;
 
     /**
      * @return List of Private IPs to associate to the group instances.(e.g. &#34;172.1.1.0&#34;). Please note: This setting will only apply if persistence.persist_private_ip is set to true.
+     * 
+     * Usage:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *     }
+     * }
+     * ```
      * 
      */
     public Output<Optional<List<String>>> privateIps() {

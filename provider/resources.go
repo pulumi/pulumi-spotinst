@@ -91,9 +91,12 @@ func Provider() tfbridge.ProviderInfo {
 			"spotinst_elastigroup_aws":            {Tok: makeResource(awsMod, "Elastigroup")},
 			"spotinst_elastigroup_aws_beanstalk":  {Tok: makeResource(awsMod, "Beanstalk")},
 			"spotinst_elastigroup_aws_suspension": {Tok: makeResource(awsMod, "Suspension")},
-			"spotinst_managed_instance_aws":       {Tok: makeResource(awsMod, "ManagedInstance")},
-			"spotinst_elastigroup_azure":          {Tok: makeResource(azureMod, "Elastigroup")},
-			"spotinst_ocean_aks":                  {Tok: makeResource(azureMod, "Ocean")},
+			"spotinst_managed_instance_aws": {
+				Tok:  makeResource(awsMod, "ManagedInstance"),
+				Docs: noUpstreamDocs,
+			},
+			"spotinst_elastigroup_azure": {Tok: makeResource(azureMod, "Elastigroup")},
+			"spotinst_ocean_aks":         {Tok: makeResource(azureMod, "Ocean")},
 			"spotinst_ocean_aks_np_virtual_node_group": {
 				Tok:  makeResource(azureMod, "OceanNpVirtualNodeGroup"),
 				Docs: noUpstreamDocs,
@@ -155,9 +158,12 @@ func Provider() tfbridge.ProviderInfo {
 			"spotinst_ocean_spark_virtual_node_group":         {Tok: makeResource(sparkMod, "OceanVirtualNodeGroup")},
 			"spotinst_subscription":                           {Tok: makeResource(mainMod, "Subscription")},
 			"spotinst_health_check":                           {Tok: makeResource(mainMod, "HealthCheck")},
-			"spotinst_elastigroup_azure_v3":                   {Tok: makeResource(mainMod, "ElastigroupAzureV3")},
-			"spotinst_data_integration":                       {Tok: makeResource(mainMod, "DataIntegration")},
-			"spotinst_stateful_node_azure":                    {Tok: makeResource(mainMod, "StatefulNodeAzure")},
+			"spotinst_elastigroup_azure_v3": {
+				Tok:  makeResource(mainMod, "ElastigroupAzureV3"),
+				Docs: noUpstreamDocs,
+			},
+			"spotinst_data_integration":    {Tok: makeResource(mainMod, "DataIntegration")},
+			"spotinst_stateful_node_azure": {Tok: makeResource(mainMod, "StatefulNodeAzure")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{},
 		JavaScript: &tfbridge.JavaScriptInfo{

@@ -19,6 +19,18 @@ namespace Pulumi.SpotInst.Aws.Outputs
         public readonly string Name;
         /// <summary>
         /// Designates whether the DNS address should be exposed to connections outside the VPC.
+        /// 
+        /// Usage:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        /// });
+        /// ```
         /// </summary>
         public readonly bool? UsePublicDns;
         /// <summary>

@@ -27,6 +27,8 @@ namespace Pulumi.SpotInst.Aws.Outputs
         public readonly int? EvaluationPeriods;
         /// <summary>
         /// String, restrict the maximal number of instances which can be added in each scale-up action.
+        /// 
+        /// `scaling_target_policies` support predictive scaling:
         /// </summary>
         public readonly string? MaxCapacityPerScale;
         /// <summary>
@@ -47,6 +49,28 @@ namespace Pulumi.SpotInst.Aws.Outputs
         public readonly string PolicyName;
         /// <summary>
         /// Start a metric prediction process to determine the expected target metric value within the next two days. See [Predictive Autoscaling](https://api.spotinst.com/elastigroup-for-aws/concepts/scaling-concepts/predictive-autoscaling/) documentation for more info. Valid values: `FORECAST_AND_SCALE`, `FORECAST_ONLY`.
+        /// 
+        /// Usage:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        /// });
+        /// ```
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        /// });
+        /// ```
         /// </summary>
         public readonly string? PredictiveMode;
         /// <summary>

@@ -440,6 +440,9 @@ namespace Pulumi.SpotInst.Aws
         [Output("coreMinSize")]
         public Output<int?> CoreMinSize { get; private set; } = null!;
 
+        /// <summary>
+        /// Each `*_scaling_*_policy` supports the following:
+        /// </summary>
         [Output("coreScalingDownPolicies")]
         public Output<ImmutableArray<Outputs.MrScalarCoreScalingDownPolicy>> CoreScalingDownPolicies { get; private set; } = null!;
 
@@ -662,6 +665,9 @@ namespace Pulumi.SpotInst.Aws
         [Output("taskMinSize")]
         public Output<int?> TaskMinSize { get; private set; } = null!;
 
+        /// <summary>
+        /// Possible core group scaling policies (Clone, New strategies):
+        /// </summary>
         [Output("taskScalingDownPolicies")]
         public Output<ImmutableArray<Outputs.MrScalarTaskScalingDownPolicy>> TaskScalingDownPolicies { get; private set; } = null!;
 
@@ -875,6 +881,10 @@ namespace Pulumi.SpotInst.Aws
 
         [Input("coreScalingDownPolicies")]
         private InputList<Inputs.MrScalarCoreScalingDownPolicyArgs>? _coreScalingDownPolicies;
+
+        /// <summary>
+        /// Each `*_scaling_*_policy` supports the following:
+        /// </summary>
         public InputList<Inputs.MrScalarCoreScalingDownPolicyArgs> CoreScalingDownPolicies
         {
             get => _coreScalingDownPolicies ?? (_coreScalingDownPolicies = new InputList<Inputs.MrScalarCoreScalingDownPolicyArgs>());
@@ -1152,6 +1162,10 @@ namespace Pulumi.SpotInst.Aws
 
         [Input("taskScalingDownPolicies")]
         private InputList<Inputs.MrScalarTaskScalingDownPolicyArgs>? _taskScalingDownPolicies;
+
+        /// <summary>
+        /// Possible core group scaling policies (Clone, New strategies):
+        /// </summary>
         public InputList<Inputs.MrScalarTaskScalingDownPolicyArgs> TaskScalingDownPolicies
         {
             get => _taskScalingDownPolicies ?? (_taskScalingDownPolicies = new InputList<Inputs.MrScalarTaskScalingDownPolicyArgs>());
@@ -1341,6 +1355,10 @@ namespace Pulumi.SpotInst.Aws
 
         [Input("coreScalingDownPolicies")]
         private InputList<Inputs.MrScalarCoreScalingDownPolicyGetArgs>? _coreScalingDownPolicies;
+
+        /// <summary>
+        /// Each `*_scaling_*_policy` supports the following:
+        /// </summary>
         public InputList<Inputs.MrScalarCoreScalingDownPolicyGetArgs> CoreScalingDownPolicies
         {
             get => _coreScalingDownPolicies ?? (_coreScalingDownPolicies = new InputList<Inputs.MrScalarCoreScalingDownPolicyGetArgs>());
@@ -1621,6 +1639,10 @@ namespace Pulumi.SpotInst.Aws
 
         [Input("taskScalingDownPolicies")]
         private InputList<Inputs.MrScalarTaskScalingDownPolicyGetArgs>? _taskScalingDownPolicies;
+
+        /// <summary>
+        /// Possible core group scaling policies (Clone, New strategies):
+        /// </summary>
         public InputList<Inputs.MrScalarTaskScalingDownPolicyGetArgs> TaskScalingDownPolicies
         {
             get => _taskScalingDownPolicies ?? (_taskScalingDownPolicies = new InputList<Inputs.MrScalarTaskScalingDownPolicyGetArgs>());

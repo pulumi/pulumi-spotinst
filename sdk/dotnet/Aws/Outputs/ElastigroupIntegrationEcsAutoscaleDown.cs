@@ -20,6 +20,16 @@ namespace Pulumi.SpotInst.Aws.Outputs
         /// <summary>
         /// Represents the maximum percent to scale-down. Number between 1-100.
         /// Usage:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        /// });
+        /// ```
         /// </summary>
         public readonly double? MaxScaleDownPercentage;
 

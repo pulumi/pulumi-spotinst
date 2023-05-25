@@ -16,32 +16,16 @@ public final class ManagedInstanceBlockDeviceMappingArgs extends com.pulumi.reso
 
     public static final ManagedInstanceBlockDeviceMappingArgs Empty = new ManagedInstanceBlockDeviceMappingArgs();
 
-    /**
-     * The name of the device to mount.
-     * 
-     */
     @Import(name="deviceName", required=true)
     private Output<String> deviceName;
 
-    /**
-     * @return The name of the device to mount.
-     * 
-     */
     public Output<String> deviceName() {
         return this.deviceName;
     }
 
-    /**
-     * Object
-     * 
-     */
     @Import(name="ebs")
     private @Nullable Output<ManagedInstanceBlockDeviceMappingEbsArgs> ebs;
 
-    /**
-     * @return Object
-     * 
-     */
     public Optional<Output<ManagedInstanceBlockDeviceMappingEbsArgs>> ebs() {
         return Optional.ofNullable(this.ebs);
     }
@@ -71,44 +55,20 @@ public final class ManagedInstanceBlockDeviceMappingArgs extends com.pulumi.reso
             $ = new ManagedInstanceBlockDeviceMappingArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param deviceName The name of the device to mount.
-         * 
-         * @return builder
-         * 
-         */
         public Builder deviceName(Output<String> deviceName) {
             $.deviceName = deviceName;
             return this;
         }
 
-        /**
-         * @param deviceName The name of the device to mount.
-         * 
-         * @return builder
-         * 
-         */
         public Builder deviceName(String deviceName) {
             return deviceName(Output.of(deviceName));
         }
 
-        /**
-         * @param ebs Object
-         * 
-         * @return builder
-         * 
-         */
         public Builder ebs(@Nullable Output<ManagedInstanceBlockDeviceMappingEbsArgs> ebs) {
             $.ebs = ebs;
             return this;
         }
 
-        /**
-         * @param ebs Object
-         * 
-         * @return builder
-         * 
-         */
         public Builder ebs(ManagedInstanceBlockDeviceMappingEbsArgs ebs) {
             return ebs(Output.of(ebs));
         }

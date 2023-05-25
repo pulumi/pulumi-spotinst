@@ -12,14 +12,11 @@ namespace Pulumi.SpotInst.Azure.Inputs
 
     public sealed class ElastigroupImageCustomGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Name of the custom image. Required if resource_group_name is specified.
-        /// </summary>
         [Input("imageName", required: true)]
         public Input<string> ImageName { get; set; } = null!;
 
         /// <summary>
-        /// The Resource Group that the user-assigned managed identity resides in.
+        /// Name of the Azure Resource Group where the Managed Service Identity is located.
         /// </summary>
         [Input("resourceGroupName", required: true)]
         public Input<string> ResourceGroupName { get; set; } = null!;

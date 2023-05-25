@@ -13,6 +13,19 @@ namespace Pulumi.SpotInst.Aws.Outputs
     [OutputType]
     public sealed class ElastigroupIntegrationMesosphere
     {
+        /// <summary>
+        /// Usage:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        /// });
+        /// ```
+        /// </summary>
         public readonly string ApiServer;
 
         [OutputConstructor]

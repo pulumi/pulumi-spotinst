@@ -18,17 +18,9 @@ public final class ElastigroupNetworkArgs extends com.pulumi.resources.ResourceA
 
     public static final ElastigroupNetworkArgs Empty = new ElastigroupNetworkArgs();
 
-    /**
-     * Array of additional IP configuration objects.
-     * 
-     */
     @Import(name="additionalIpConfigs")
     private @Nullable Output<List<ElastigroupNetworkAdditionalIpConfigArgs>> additionalIpConfigs;
 
-    /**
-     * @return Array of additional IP configuration objects.
-     * 
-     */
     public Optional<Output<List<ElastigroupNetworkAdditionalIpConfigArgs>>> additionalIpConfigs() {
         return Optional.ofNullable(this.additionalIpConfigs);
     }
@@ -41,46 +33,30 @@ public final class ElastigroupNetworkArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Vnet Resource Group Name.
+     * Name of the Azure Resource Group where the Managed Service Identity is located.
      * 
      */
     @Import(name="resourceGroupName", required=true)
     private Output<String> resourceGroupName;
 
     /**
-     * @return Vnet Resource Group Name.
+     * @return Name of the Azure Resource Group where the Managed Service Identity is located.
      * 
      */
     public Output<String> resourceGroupName() {
         return this.resourceGroupName;
     }
 
-    /**
-     * ID of subnet.
-     * 
-     */
     @Import(name="subnetName", required=true)
     private Output<String> subnetName;
 
-    /**
-     * @return ID of subnet.
-     * 
-     */
     public Output<String> subnetName() {
         return this.subnetName;
     }
 
-    /**
-     * Name of Vnet.
-     * 
-     */
     @Import(name="virtualNetworkName", required=true)
     private Output<String> virtualNetworkName;
 
-    /**
-     * @return Name of Vnet.
-     * 
-     */
     public Output<String> virtualNetworkName() {
         return this.virtualNetworkName;
     }
@@ -113,33 +89,15 @@ public final class ElastigroupNetworkArgs extends com.pulumi.resources.ResourceA
             $ = new ElastigroupNetworkArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param additionalIpConfigs Array of additional IP configuration objects.
-         * 
-         * @return builder
-         * 
-         */
         public Builder additionalIpConfigs(@Nullable Output<List<ElastigroupNetworkAdditionalIpConfigArgs>> additionalIpConfigs) {
             $.additionalIpConfigs = additionalIpConfigs;
             return this;
         }
 
-        /**
-         * @param additionalIpConfigs Array of additional IP configuration objects.
-         * 
-         * @return builder
-         * 
-         */
         public Builder additionalIpConfigs(List<ElastigroupNetworkAdditionalIpConfigArgs> additionalIpConfigs) {
             return additionalIpConfigs(Output.of(additionalIpConfigs));
         }
 
-        /**
-         * @param additionalIpConfigs Array of additional IP configuration objects.
-         * 
-         * @return builder
-         * 
-         */
         public Builder additionalIpConfigs(ElastigroupNetworkAdditionalIpConfigArgs... additionalIpConfigs) {
             return additionalIpConfigs(List.of(additionalIpConfigs));
         }
@@ -154,7 +112,7 @@ public final class ElastigroupNetworkArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param resourceGroupName Vnet Resource Group Name.
+         * @param resourceGroupName Name of the Azure Resource Group where the Managed Service Identity is located.
          * 
          * @return builder
          * 
@@ -165,7 +123,7 @@ public final class ElastigroupNetworkArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param resourceGroupName Vnet Resource Group Name.
+         * @param resourceGroupName Name of the Azure Resource Group where the Managed Service Identity is located.
          * 
          * @return builder
          * 
@@ -174,44 +132,20 @@ public final class ElastigroupNetworkArgs extends com.pulumi.resources.ResourceA
             return resourceGroupName(Output.of(resourceGroupName));
         }
 
-        /**
-         * @param subnetName ID of subnet.
-         * 
-         * @return builder
-         * 
-         */
         public Builder subnetName(Output<String> subnetName) {
             $.subnetName = subnetName;
             return this;
         }
 
-        /**
-         * @param subnetName ID of subnet.
-         * 
-         * @return builder
-         * 
-         */
         public Builder subnetName(String subnetName) {
             return subnetName(Output.of(subnetName));
         }
 
-        /**
-         * @param virtualNetworkName Name of Vnet.
-         * 
-         * @return builder
-         * 
-         */
         public Builder virtualNetworkName(Output<String> virtualNetworkName) {
             $.virtualNetworkName = virtualNetworkName;
             return this;
         }
 
-        /**
-         * @param virtualNetworkName Name of Vnet.
-         * 
-         * @return builder
-         * 
-         */
         public Builder virtualNetworkName(String virtualNetworkName) {
             return virtualNetworkName(Output.of(virtualNetworkName));
         }

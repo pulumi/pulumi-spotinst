@@ -17,77 +17,37 @@ public final class ManagedInstanceBlockDeviceMappingEbsArgs extends com.pulumi.r
 
     public static final ManagedInstanceBlockDeviceMappingEbsArgs Empty = new ManagedInstanceBlockDeviceMappingEbsArgs();
 
-    /**
-     * Whether the volume should be destroyed on instance termination.
-     * 
-     */
     @Import(name="deleteOnTermination")
     private @Nullable Output<Boolean> deleteOnTermination;
 
-    /**
-     * @return Whether the volume should be destroyed on instance termination.
-     * 
-     */
     public Optional<Output<Boolean>> deleteOnTermination() {
         return Optional.ofNullable(this.deleteOnTermination);
     }
 
-    /**
-     * The amount of provisioned [IOPS](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-io-characteristics.html). This must be set with a `volume_type` of `&#34;io1&#34;`.
-     * 
-     */
     @Import(name="iops")
     private @Nullable Output<Integer> iops;
 
-    /**
-     * @return The amount of provisioned [IOPS](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-io-characteristics.html). This must be set with a `volume_type` of `&#34;io1&#34;`.
-     * 
-     */
     public Optional<Output<Integer>> iops() {
         return Optional.ofNullable(this.iops);
     }
 
-    /**
-     * The throughput that the volume supports, in MiB/s. Minimum value of 125. Maximum value of 1000. Valid only if `volume_type` is set to `&#34;gp3&#34;`.
-     * 
-     */
     @Import(name="throughput")
     private @Nullable Output<Integer> throughput;
 
-    /**
-     * @return The throughput that the volume supports, in MiB/s. Minimum value of 125. Maximum value of 1000. Valid only if `volume_type` is set to `&#34;gp3&#34;`.
-     * 
-     */
     public Optional<Output<Integer>> throughput() {
         return Optional.ofNullable(this.throughput);
     }
 
-    /**
-     * The size of the volume, in GiBs.
-     * 
-     */
     @Import(name="volumeSize")
     private @Nullable Output<Integer> volumeSize;
 
-    /**
-     * @return The size of the volume, in GiBs.
-     * 
-     */
     public Optional<Output<Integer>> volumeSize() {
         return Optional.ofNullable(this.volumeSize);
     }
 
-    /**
-     * The type of volume. Can be `&#34;standard&#34;`, `&#34;gp2&#34;`, `&#34;gp3&#34;`, `&#34;io1&#34;`, `&#34;st1&#34;` or `&#34;sc1&#34;`.
-     * 
-     */
     @Import(name="volumeType")
     private @Nullable Output<String> volumeType;
 
-    /**
-     * @return The type of volume. Can be `&#34;standard&#34;`, `&#34;gp2&#34;`, `&#34;gp3&#34;`, `&#34;io1&#34;`, `&#34;st1&#34;` or `&#34;sc1&#34;`.
-     * 
-     */
     public Optional<Output<String>> volumeType() {
         return Optional.ofNullable(this.volumeType);
     }
@@ -120,107 +80,47 @@ public final class ManagedInstanceBlockDeviceMappingEbsArgs extends com.pulumi.r
             $ = new ManagedInstanceBlockDeviceMappingEbsArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param deleteOnTermination Whether the volume should be destroyed on instance termination.
-         * 
-         * @return builder
-         * 
-         */
         public Builder deleteOnTermination(@Nullable Output<Boolean> deleteOnTermination) {
             $.deleteOnTermination = deleteOnTermination;
             return this;
         }
 
-        /**
-         * @param deleteOnTermination Whether the volume should be destroyed on instance termination.
-         * 
-         * @return builder
-         * 
-         */
         public Builder deleteOnTermination(Boolean deleteOnTermination) {
             return deleteOnTermination(Output.of(deleteOnTermination));
         }
 
-        /**
-         * @param iops The amount of provisioned [IOPS](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-io-characteristics.html). This must be set with a `volume_type` of `&#34;io1&#34;`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder iops(@Nullable Output<Integer> iops) {
             $.iops = iops;
             return this;
         }
 
-        /**
-         * @param iops The amount of provisioned [IOPS](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-io-characteristics.html). This must be set with a `volume_type` of `&#34;io1&#34;`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder iops(Integer iops) {
             return iops(Output.of(iops));
         }
 
-        /**
-         * @param throughput The throughput that the volume supports, in MiB/s. Minimum value of 125. Maximum value of 1000. Valid only if `volume_type` is set to `&#34;gp3&#34;`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder throughput(@Nullable Output<Integer> throughput) {
             $.throughput = throughput;
             return this;
         }
 
-        /**
-         * @param throughput The throughput that the volume supports, in MiB/s. Minimum value of 125. Maximum value of 1000. Valid only if `volume_type` is set to `&#34;gp3&#34;`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder throughput(Integer throughput) {
             return throughput(Output.of(throughput));
         }
 
-        /**
-         * @param volumeSize The size of the volume, in GiBs.
-         * 
-         * @return builder
-         * 
-         */
         public Builder volumeSize(@Nullable Output<Integer> volumeSize) {
             $.volumeSize = volumeSize;
             return this;
         }
 
-        /**
-         * @param volumeSize The size of the volume, in GiBs.
-         * 
-         * @return builder
-         * 
-         */
         public Builder volumeSize(Integer volumeSize) {
             return volumeSize(Output.of(volumeSize));
         }
 
-        /**
-         * @param volumeType The type of volume. Can be `&#34;standard&#34;`, `&#34;gp2&#34;`, `&#34;gp3&#34;`, `&#34;io1&#34;`, `&#34;st1&#34;` or `&#34;sc1&#34;`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder volumeType(@Nullable Output<String> volumeType) {
             $.volumeType = volumeType;
             return this;
         }
 
-        /**
-         * @param volumeType The type of volume. Can be `&#34;standard&#34;`, `&#34;gp2&#34;`, `&#34;gp3&#34;`, `&#34;io1&#34;`, `&#34;st1&#34;` or `&#34;sc1&#34;`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder volumeType(String volumeType) {
             return volumeType(Output.of(volumeType));
         }

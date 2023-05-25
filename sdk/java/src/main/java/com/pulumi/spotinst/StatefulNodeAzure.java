@@ -39,6 +39,219 @@ import javax.annotation.Nullable;
 /**
  * Provides a Spotinst stateful node Azure resource.
  * 
+ * ## Example Usage
+ * 
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.spotinst.StatefulNodeAzure;
+ * import com.pulumi.spotinst.StatefulNodeAzureArgs;
+ * import com.pulumi.spotinst.inputs.StatefulNodeAzureStrategyArgs;
+ * import com.pulumi.spotinst.inputs.StatefulNodeAzureStrategyRevertToSpotArgs;
+ * import com.pulumi.spotinst.inputs.StatefulNodeAzureBootDiagnosticArgs;
+ * import com.pulumi.spotinst.inputs.StatefulNodeAzureDataDiskArgs;
+ * import com.pulumi.spotinst.inputs.StatefulNodeAzureExtensionArgs;
+ * import com.pulumi.spotinst.inputs.StatefulNodeAzureImageArgs;
+ * import com.pulumi.spotinst.inputs.StatefulNodeAzureLoadBalancerArgs;
+ * import com.pulumi.spotinst.inputs.StatefulNodeAzureLoginArgs;
+ * import com.pulumi.spotinst.inputs.StatefulNodeAzureManagedServiceIdentityArgs;
+ * import com.pulumi.spotinst.inputs.StatefulNodeAzureNetworkArgs;
+ * import com.pulumi.spotinst.inputs.StatefulNodeAzureOsDiskArgs;
+ * import com.pulumi.spotinst.inputs.StatefulNodeAzureSecretArgs;
+ * import com.pulumi.spotinst.inputs.StatefulNodeAzureTagArgs;
+ * import com.pulumi.spotinst.inputs.StatefulNodeAzureHealthArgs;
+ * import com.pulumi.spotinst.inputs.StatefulNodeAzureSchedulingTaskArgs;
+ * import com.pulumi.spotinst.inputs.StatefulNodeAzureSignalArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var testStatefulNodeAzure = new StatefulNodeAzure(&#34;testStatefulNodeAzure&#34;, StatefulNodeAzureArgs.builder()        
+ *             .region(&#34;eastus&#34;)
+ *             .resourceGroupName(&#34;spotinst-azure&#34;)
+ *             .description(&#34;example_stateful_node_azure_description&#34;)
+ *             .strategy(StatefulNodeAzureStrategyArgs.builder()
+ *                 .drainingTimeout(30)
+ *                 .fallbackToOnDemand(true)
+ *                 .optimizationWindows(&#34;Tue:19:46-Tue:20:46&#34;)
+ *                 .revertToSpot(StatefulNodeAzureStrategyRevertToSpotArgs.builder()
+ *                     .performAt(&#34;timeWindow&#34;)
+ *                     .build())
+ *                 .preferredLifeCycle(&#34;od&#34;)
+ *                 .build())
+ *             .os(&#34;Linux&#34;)
+ *             .odSizes(            
+ *                 &#34;standard_ds1_v2&#34;,
+ *                 &#34;standard_ds2_v2&#34;)
+ *             .spotSizes(            
+ *                 &#34;standard_ds1_v2&#34;,
+ *                 &#34;standard_ds2_v2&#34;)
+ *             .preferredSpotSizes(&#34;standard_ds1_v2&#34;)
+ *             .zones(            
+ *                 &#34;1&#34;,
+ *                 &#34;3&#34;)
+ *             .preferredZones(&#34;1&#34;)
+ *             .customData(&#34;&#34;)
+ *             .shutdownScript(&#34;&#34;)
+ *             .bootDiagnostics(StatefulNodeAzureBootDiagnosticArgs.builder()
+ *                 .isEnabled(true)
+ *                 .storageUrl(&#34;https://.blob.core.windows.net/test&#34;)
+ *                 .type(&#34;unmanaged&#34;)
+ *                 .build())
+ *             .dataDisks(            
+ *                 StatefulNodeAzureDataDiskArgs.builder()
+ *                     .sizeGb(1)
+ *                     .lun(1)
+ *                     .type(&#34;Standard_LRS&#34;)
+ *                     .build(),
+ *                 StatefulNodeAzureDataDiskArgs.builder()
+ *                     .sizeGb(10)
+ *                     .lun(2)
+ *                     .type(&#34;Standard_LRS&#34;)
+ *                     .build())
+ *             .extensions(StatefulNodeAzureExtensionArgs.builder()
+ *                 .name(&#34;extensionName&#34;)
+ *                 .type(&#34;customScript&#34;)
+ *                 .publisher(&#34;Microsoft.Azure.Extensions&#34;)
+ *                 .apiVersion(&#34;2.0&#34;)
+ *                 .minorVersionAutoUpgrade(true)
+ *                 .protectedSettings(Map.of(&#34;script&#34;, &#34;IyEvYmluL2Jhc2gKZWNobyAibmlyIiA+IC9ob29uaXIudHh0Cg==&#34;))
+ *                 .build())
+ *             .image(StatefulNodeAzureImageArgs.builder()
+ *                 .marketplaceImages(StatefulNodeAzureImageMarketplaceImageArgs.builder()
+ *                     .publisher(&#34;Canonical&#34;)
+ *                     .offer(&#34;UbuntuServer&#34;)
+ *                     .sku(&#34;16.04-LTS&#34;)
+ *                     .version(&#34;latest&#34;)
+ *                     .build())
+ *                 .build())
+ *             .loadBalancers(StatefulNodeAzureLoadBalancerArgs.builder()
+ *                 .type(&#34;loadBalancer&#34;)
+ *                 .resourceGroupName(&#34;testResourceGroup&#34;)
+ *                 .name(&#34;testLoadBalancer&#34;)
+ *                 .sku(&#34;Standard&#34;)
+ *                 .backendPoolNames(                
+ *                     &#34;testBackendPool1&#34;,
+ *                     &#34;testBackendPool2&#34;)
+ *                 .build())
+ *             .login(StatefulNodeAzureLoginArgs.builder()
+ *                 .userName(&#34;admin&#34;)
+ *                 .sshPublicKey(&#34;33a2s1f3g5a1df5g1ad3f2g1adfg56dfg==&#34;)
+ *                 .build())
+ *             .managedServiceIdentities(StatefulNodeAzureManagedServiceIdentityArgs.builder()
+ *                 .name(&#34;mySI2&#34;)
+ *                 .resourceGroupName(&#34;myResourceGroup&#34;)
+ *                 .build())
+ *             .network(StatefulNodeAzureNetworkArgs.builder()
+ *                 .networkResourceGroupName(&#34;subnetResourceGroup&#34;)
+ *                 .virtualNetworkName(&#34;vname&#34;)
+ *                 .networkInterfaces(StatefulNodeAzureNetworkNetworkInterfaceArgs.builder()
+ *                     .isPrimary(true)
+ *                     .subnetName(&#34;testSubnet&#34;)
+ *                     .assignPublicIp(true)
+ *                     .publicIpSku(&#34;Standard&#34;)
+ *                     .networkSecurityGroups(StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupArgs.builder()
+ *                         .networkResourceGroupName(&#34;test&#34;)
+ *                         .name(&#34;test&#34;)
+ *                         .build())
+ *                     .enableIpForwarding(true)
+ *                     .privateIpAddresses(&#34;172.23.4.20&#34;)
+ *                     .additionalIpConfigurations(StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationArgs.builder()
+ *                         .name(&#34;test&#34;)
+ *                         .privateIpAddressVersion(&#34;IPv4&#34;)
+ *                         .build())
+ *                     .publicIps(StatefulNodeAzureNetworkNetworkInterfacePublicIpArgs.builder()
+ *                         .resourceGroupName(&#34;resourceGroup&#34;)
+ *                         .name(&#34;test&#34;)
+ *                         .build())
+ *                     .applicationSecurityGroups(StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArgs.builder()
+ *                         .resourceGroupName(&#34;AsgResourceGroup&#34;)
+ *                         .name(&#34;AsgName&#34;)
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .osDisk(StatefulNodeAzureOsDiskArgs.builder()
+ *                 .sizeGb(30)
+ *                 .type(&#34;Standard_LRS&#34;)
+ *                 .build())
+ *             .secrets(StatefulNodeAzureSecretArgs.builder()
+ *                 .sourceVaults(StatefulNodeAzureSecretSourceVaultArgs.builder()
+ *                     .name(&#34;string&#34;)
+ *                     .resourceGroupName(&#34;string&#34;)
+ *                     .build())
+ *                 .vaultCertificates(StatefulNodeAzureSecretVaultCertificateArgs.builder()
+ *                     .certificateUrl(&#34;string&#34;)
+ *                     .certificateStore(&#34;string&#34;)
+ *                     .build())
+ *                 .build())
+ *             .tags(StatefulNodeAzureTagArgs.builder()
+ *                 .tagKey(&#34;Creator&#34;)
+ *                 .tagValue(&#34;string&#34;)
+ *                 .build())
+ *             .health(StatefulNodeAzureHealthArgs.builder()
+ *                 .healthCheckTypes(&#34;vmState&#34;)
+ *                 .unhealthyDuration(300)
+ *                 .gracePeriod(120)
+ *                 .autoHealing(true)
+ *                 .build())
+ *             .shouldPersistOsDisk(false)
+ *             .osDiskPersistenceMode(&#34;reattach&#34;)
+ *             .shouldPersistDataDisks(true)
+ *             .dataDisksPersistenceMode(&#34;reattach&#34;)
+ *             .shouldPersistNetwork(true)
+ *             .schedulingTasks(            
+ *                 StatefulNodeAzureSchedulingTaskArgs.builder()
+ *                     .isEnabled(true)
+ *                     .type(&#34;pause&#34;)
+ *                     .cronExpression(&#34;44 10 * * *&#34;)
+ *                     .build(),
+ *                 StatefulNodeAzureSchedulingTaskArgs.builder()
+ *                     .isEnabled(true)
+ *                     .type(&#34;resume&#34;)
+ *                     .cronExpression(&#34;48 10 * * *&#34;)
+ *                     .build(),
+ *                 StatefulNodeAzureSchedulingTaskArgs.builder()
+ *                     .isEnabled(true)
+ *                     .type(&#34;recycle&#34;)
+ *                     .cronExpression(&#34;52 10 * * *&#34;)
+ *                     .build())
+ *             .signals(            
+ *                 StatefulNodeAzureSignalArgs.builder()
+ *                     .type(&#34;vmReady&#34;)
+ *                     .timeout(20)
+ *                     .build(),
+ *                 StatefulNodeAzureSignalArgs.builder()
+ *                     .type(&#34;vmReady&#34;)
+ *                     .timeout(40)
+ *                     .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * # Argument Reference
+ * 
+ * The following arguments are supported:
+ * 
+ * * `name` - (Required) Azure stateful node name.
+ * * `region` - (Required) The Azure region your stateful node will be created in.
+ * * `resource_group_name` - (Required) Name of the Resource Group for stateful node.
+ * * `description` - (Optional) Describe your Azure stateful node.
+ * 
+ * &lt;a id=&#34;strategy&#34;&gt;&lt;/a&gt;
  * ## Strategy
  * 
  * * `strategy` - (Required) Strategy for stateful node.

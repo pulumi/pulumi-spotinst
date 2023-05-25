@@ -28,6 +28,38 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Manages a Spotinst Ocean AKS resource.
+ * 
+ * &gt; This resource contains arguments (such as `image` and `extension`) that are automatically populated from the data reported by the Ocean AKS Connector deployed into your cluster. You can override the upstream configuration by defining the corresponding arguments.
+ * 
+ * ## Prerequisites
+ * 
+ * Installation of the Ocean controller is required by this resource. You can accomplish this by using the spotinst/ocean-controller module as follows:
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *     }
+ * }
+ * ```
+ * 
+ * &gt; You must configure the same `cluster_identifier` and `acd_identifier` both for the Ocean controller and for the `spotinst.azure.Ocean` resource.
+ * 
  * ## Example Usage
  * 
  * ```java

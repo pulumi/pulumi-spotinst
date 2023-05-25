@@ -10,6 +10,24 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Gke
 {
     /// <summary>
+    /// Manages a Spotinst Ocean GKE resource.
+    /// 
+    /// ## Prerequisites
+    /// 
+    /// Installation of the Ocean controller is required by this resource. You can accomplish this by using the spotinst/ocean-controller module as follows:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    /// });
+    /// ```
+    /// 
+    /// &gt; You must configure the same `cluster_identifier` both for the Ocean controller and for the `spotinst.gke.OceanImport` resource.
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp

@@ -48,12 +48,60 @@ public final class ElastigroupDiskInitializeParamArgs extends com.pulumi.resourc
     /**
      * A source image used to create the disk. You can provide a private (custom) image, and Compute Engine will use the corresponding image from your project.
      * 
+     * Usage:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *     }
+     * }
+     * ```
+     * 
      */
     @Import(name="sourceImage", required=true)
     private Output<String> sourceImage;
 
     /**
      * @return A source image used to create the disk. You can provide a private (custom) image, and Compute Engine will use the corresponding image from your project.
+     * 
+     * Usage:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *     }
+     * }
+     * ```
      * 
      */
     public Output<String> sourceImage() {
@@ -131,6 +179,30 @@ public final class ElastigroupDiskInitializeParamArgs extends com.pulumi.resourc
         /**
          * @param sourceImage A source image used to create the disk. You can provide a private (custom) image, and Compute Engine will use the corresponding image from your project.
          * 
+         * Usage:
+         * ```java
+         * package generated_program;
+         * 
+         * import com.pulumi.Context;
+         * import com.pulumi.Pulumi;
+         * import com.pulumi.core.Output;
+         * import java.util.List;
+         * import java.util.ArrayList;
+         * import java.util.Map;
+         * import java.io.File;
+         * import java.nio.file.Files;
+         * import java.nio.file.Paths;
+         * 
+         * public class App {
+         *     public static void main(String[] args) {
+         *         Pulumi.run(App::stack);
+         *     }
+         * 
+         *     public static void stack(Context ctx) {
+         *     }
+         * }
+         * ```
+         * 
          * @return builder
          * 
          */
@@ -141,6 +213,30 @@ public final class ElastigroupDiskInitializeParamArgs extends com.pulumi.resourc
 
         /**
          * @param sourceImage A source image used to create the disk. You can provide a private (custom) image, and Compute Engine will use the corresponding image from your project.
+         * 
+         * Usage:
+         * ```java
+         * package generated_program;
+         * 
+         * import com.pulumi.Context;
+         * import com.pulumi.Pulumi;
+         * import com.pulumi.core.Output;
+         * import java.util.List;
+         * import java.util.ArrayList;
+         * import java.util.Map;
+         * import java.io.File;
+         * import java.nio.file.Files;
+         * import java.nio.file.Paths;
+         * 
+         * public class App {
+         *     public static void main(String[] args) {
+         *         Pulumi.run(App::stack);
+         *     }
+         * 
+         *     public static void stack(Context ctx) {
+         *     }
+         * }
+         * ```
          * 
          * @return builder
          * 

@@ -23,47 +23,23 @@ public final class ElastigroupLoadBalancerArgs extends com.pulumi.resources.Reso
         return Optional.ofNullable(this.autoWeight);
     }
 
-    /**
-     * The balancer ID.
-     * 
-     */
     @Import(name="balancerId")
     private @Nullable Output<String> balancerId;
 
-    /**
-     * @return The balancer ID.
-     * 
-     */
     public Optional<Output<String>> balancerId() {
         return Optional.ofNullable(this.balancerId);
     }
 
-    /**
-     * The scale set ID associated with the load balancer.
-     * 
-     */
     @Import(name="targetSetId")
     private @Nullable Output<String> targetSetId;
 
-    /**
-     * @return The scale set ID associated with the load balancer.
-     * 
-     */
     public Optional<Output<String>> targetSetId() {
         return Optional.ofNullable(this.targetSetId);
     }
 
-    /**
-     * The resource type. Valid values: CLASSIC, TARGET_GROUP, MULTAI_TARGET_SET.
-     * 
-     */
     @Import(name="type", required=true)
     private Output<String> type;
 
-    /**
-     * @return The resource type. Valid values: CLASSIC, TARGET_GROUP, MULTAI_TARGET_SET.
-     * 
-     */
     public Output<String> type() {
         return this.type;
     }
@@ -104,65 +80,29 @@ public final class ElastigroupLoadBalancerArgs extends com.pulumi.resources.Reso
             return autoWeight(Output.of(autoWeight));
         }
 
-        /**
-         * @param balancerId The balancer ID.
-         * 
-         * @return builder
-         * 
-         */
         public Builder balancerId(@Nullable Output<String> balancerId) {
             $.balancerId = balancerId;
             return this;
         }
 
-        /**
-         * @param balancerId The balancer ID.
-         * 
-         * @return builder
-         * 
-         */
         public Builder balancerId(String balancerId) {
             return balancerId(Output.of(balancerId));
         }
 
-        /**
-         * @param targetSetId The scale set ID associated with the load balancer.
-         * 
-         * @return builder
-         * 
-         */
         public Builder targetSetId(@Nullable Output<String> targetSetId) {
             $.targetSetId = targetSetId;
             return this;
         }
 
-        /**
-         * @param targetSetId The scale set ID associated with the load balancer.
-         * 
-         * @return builder
-         * 
-         */
         public Builder targetSetId(String targetSetId) {
             return targetSetId(Output.of(targetSetId));
         }
 
-        /**
-         * @param type The resource type. Valid values: CLASSIC, TARGET_GROUP, MULTAI_TARGET_SET.
-         * 
-         * @return builder
-         * 
-         */
         public Builder type(Output<String> type) {
             $.type = type;
             return this;
         }
 
-        /**
-         * @param type The resource type. Valid values: CLASSIC, TARGET_GROUP, MULTAI_TARGET_SET.
-         * 
-         * @return builder
-         * 
-         */
         public Builder type(String type) {
             return type(Output.of(type));
         }

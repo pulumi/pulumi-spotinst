@@ -16,31 +16,23 @@ public final class ElastigroupNetworkAdditionalIpConfigArgs extends com.pulumi.r
     public static final ElastigroupNetworkAdditionalIpConfigArgs Empty = new ElastigroupNetworkAdditionalIpConfigArgs();
 
     /**
-     * The name of the managed identity.
+     * Name of the Managed Service Identity.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return The name of the managed identity.
+     * @return Name of the Managed Service Identity.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
 
-    /**
-     * Available from Azure Api-Version 2017-03-30 onwards, it represents whether the specific ipconfiguration is IPv4 or IPv6. Valid values: `IPv4`, `IPv6`.
-     * 
-     */
     @Import(name="privateIpVersion")
     private @Nullable Output<String> privateIpVersion;
 
-    /**
-     * @return Available from Azure Api-Version 2017-03-30 onwards, it represents whether the specific ipconfiguration is IPv4 or IPv6. Valid values: `IPv4`, `IPv6`.
-     * 
-     */
     public Optional<Output<String>> privateIpVersion() {
         return Optional.ofNullable(this.privateIpVersion);
     }
@@ -71,7 +63,7 @@ public final class ElastigroupNetworkAdditionalIpConfigArgs extends com.pulumi.r
         }
 
         /**
-         * @param name The name of the managed identity.
+         * @param name Name of the Managed Service Identity.
          * 
          * @return builder
          * 
@@ -82,7 +74,7 @@ public final class ElastigroupNetworkAdditionalIpConfigArgs extends com.pulumi.r
         }
 
         /**
-         * @param name The name of the managed identity.
+         * @param name Name of the Managed Service Identity.
          * 
          * @return builder
          * 
@@ -91,23 +83,11 @@ public final class ElastigroupNetworkAdditionalIpConfigArgs extends com.pulumi.r
             return name(Output.of(name));
         }
 
-        /**
-         * @param privateIpVersion Available from Azure Api-Version 2017-03-30 onwards, it represents whether the specific ipconfiguration is IPv4 or IPv6. Valid values: `IPv4`, `IPv6`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder privateIpVersion(@Nullable Output<String> privateIpVersion) {
             $.privateIpVersion = privateIpVersion;
             return this;
         }
 
-        /**
-         * @param privateIpVersion Available from Azure Api-Version 2017-03-30 onwards, it represents whether the specific ipconfiguration is IPv4 or IPv6. Valid values: `IPv4`, `IPv6`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder privateIpVersion(String privateIpVersion) {
             return privateIpVersion(Output.of(privateIpVersion));
         }

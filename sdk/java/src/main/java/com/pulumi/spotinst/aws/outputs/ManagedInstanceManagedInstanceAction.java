@@ -9,17 +9,9 @@ import java.util.Objects;
 
 @CustomType
 public final class ManagedInstanceManagedInstanceAction {
-    /**
-     * @return String, Action type. Supported action types: `pause`, `resume`, `recycle`.
-     * 
-     */
     private String type;
 
     private ManagedInstanceManagedInstanceAction() {}
-    /**
-     * @return String, Action type. Supported action types: `pause`, `resume`, `recycle`.
-     * 
-     */
     public String type() {
         return this.type;
     }

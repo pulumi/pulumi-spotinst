@@ -15,6 +15,18 @@ namespace Pulumi.SpotInst.Gcp.Outputs
     {
         /// <summary>
         /// The number of GPUs. Must be 0, 2, 4, 6, 8.
+        /// 
+        /// Usage:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        /// });
+        /// ```
         /// </summary>
         public readonly int Count;
         /// <summary>

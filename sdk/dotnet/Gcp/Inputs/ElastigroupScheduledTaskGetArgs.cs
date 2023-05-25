@@ -26,6 +26,18 @@ namespace Pulumi.SpotInst.Gcp.Inputs
 
         /// <summary>
         /// The maximum number of instances the group should have.
+        /// 
+        /// Usage:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        /// });
+        /// ```
         /// </summary>
         [Input("maxCapacity")]
         public Input<string>? MaxCapacity { get; set; }

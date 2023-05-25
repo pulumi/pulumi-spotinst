@@ -12,15 +12,9 @@ namespace Pulumi.SpotInst.Azure.Inputs
 
     public sealed class ElastigroupUpdatePolicyGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// While used, you can control whether the group should perform a deployment after an update to the configuration.
-        /// </summary>
         [Input("rollConfig")]
         public Input<Inputs.ElastigroupUpdatePolicyRollConfigGetArgs>? RollConfig { get; set; }
 
-        /// <summary>
-        /// Sets the enablement of the roll option.
-        /// </summary>
         [Input("shouldRoll", required: true)]
         public Input<bool> ShouldRoll { get; set; } = null!;
 

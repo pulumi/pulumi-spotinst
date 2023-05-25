@@ -14,6 +14,7 @@ import com.pulumi.spotinst.outputs.ElastigroupAzureV3Image;
 import com.pulumi.spotinst.outputs.ElastigroupAzureV3Login;
 import com.pulumi.spotinst.outputs.ElastigroupAzureV3ManagedServiceIdentity;
 import com.pulumi.spotinst.outputs.ElastigroupAzureV3Network;
+import com.pulumi.spotinst.outputs.ElastigroupAzureV3Tag;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -21,131 +22,23 @@ import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
-/**
- * Provides a Spotinst elastigroup Azure resource.
- * 
- * ## Example Usage
- * 
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.spotinst.ElastigroupAzureV3;
- * import com.pulumi.spotinst.ElastigroupAzureV3Args;
- * import com.pulumi.spotinst.inputs.ElastigroupAzureV3ImageArgs;
- * import com.pulumi.spotinst.inputs.ElastigroupAzureV3LoginArgs;
- * import com.pulumi.spotinst.inputs.ElastigroupAzureV3ManagedServiceIdentityArgs;
- * import com.pulumi.spotinst.inputs.ElastigroupAzureV3NetworkArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var testAzureGroup = new ElastigroupAzureV3(&#34;testAzureGroup&#34;, ElastigroupAzureV3Args.builder()        
- *             .customData(&#34;IyEvYmluL2Jhc2gKZWNobyAidGVzdCI=&#34;)
- *             .desiredCapacity(1)
- *             .drainingTimeout(300)
- *             .fallbackToOnDemand(true)
- *             .images(ElastigroupAzureV3ImageArgs.builder()
- *                 .marketplaces(ElastigroupAzureV3ImageMarketplaceArgs.builder()
- *                     .offer(&#34;UbuntuServer&#34;)
- *                     .publisher(&#34;Canonical&#34;)
- *                     .sku(&#34;18.04-LTS&#34;)
- *                     .version(&#34;latest&#34;)
- *                     .build())
- *                 .build())
- *             .login(ElastigroupAzureV3LoginArgs.builder()
- *                 .sshPublicKey(&#34;33a2s1f3g5a1df5g1ad3f2g1adfg56dfg==&#34;)
- *                 .userName(&#34;admin&#34;)
- *                 .build())
- *             .managedServiceIdentities(ElastigroupAzureV3ManagedServiceIdentityArgs.builder()
- *                 .name(&#34;ocean-westus-dev-aks-agentpool&#34;)
- *                 .resourceGroupName(&#34;MC_ocean-westus-dev_ocean-westus-dev-aks_westus&#34;)
- *                 .build())
- *             .maxSize(1)
- *             .minSize(0)
- *             .network(ElastigroupAzureV3NetworkArgs.builder()
- *                 .networkInterfaces(ElastigroupAzureV3NetworkNetworkInterfaceArgs.builder()
- *                     .additionalIpConfigs(ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArgs.builder()
- *                         .privateIPVersion(&#34;IPv4&#34;)
- *                         .name(&#34;SecondaryIPConfig&#34;)
- *                         .build())
- *                     .applicationSecurityGroup(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
- *                     .assignPublicIp(false)
- *                     .isPrimary(true)
- *                     .subnetName(&#34;default&#34;)
- *                     .build())
- *                 .resourceGroupName(&#34;ResourceGroup&#34;)
- *                 .virtualNetworkName(&#34;VirtualNetworkName&#34;)
- *                 .build())
- *             .odSizes(            
- *                 &#34;standard_a1_v1&#34;,
- *                 &#34;standard_a1_v2&#34;)
- *             .os(&#34;Linux&#34;)
- *             .region(&#34;eastus&#34;)
- *             .resourceGroupName(&#34;spotinst-azure&#34;)
- *             .spotPercentage(65)
- *             .spotSizes(            
- *                 &#34;standard_a1_v1&#34;,
- *                 &#34;standard_a1_v2&#34;)
- *             .build());
- * 
- *     }
- * }
- * ```
- * 
- */
 @ResourceType(type="spotinst:index/elastigroupAzureV3:ElastigroupAzureV3")
 public class ElastigroupAzureV3 extends com.pulumi.resources.CustomResource {
-    /**
-     * Custom init script file or text in Base64 encoded format.
-     * 
-     */
     @Export(name="customData", type=String.class, parameters={})
     private Output</* @Nullable */ String> customData;
 
-    /**
-     * @return Custom init script file or text in Base64 encoded format.
-     * 
-     */
     public Output<Optional<String>> customData() {
         return Codegen.optional(this.customData);
     }
-    /**
-     * The desired number of instances the group should have at any time.
-     * 
-     */
     @Export(name="desiredCapacity", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> desiredCapacity;
 
-    /**
-     * @return The desired number of instances the group should have at any time.
-     * 
-     */
     public Output<Optional<Integer>> desiredCapacity() {
         return Codegen.optional(this.desiredCapacity);
     }
-    /**
-     * Time (seconds) to allow the instance to be drained from incoming TCP connections and detached from MLB before terminating it during a scale-down operation.
-     * 
-     */
     @Export(name="drainingTimeout", type=Integer.class, parameters={})
     private Output<Integer> drainingTimeout;
 
-    /**
-     * @return Time (seconds) to allow the instance to be drained from incoming TCP connections and detached from MLB before terminating it during a scale-down operation.
-     * 
-     */
     public Output<Integer> drainingTimeout() {
         return this.drainingTimeout;
     }
@@ -167,59 +60,27 @@ public class ElastigroupAzureV3 extends com.pulumi.resources.CustomResource {
     public Output<Optional<ElastigroupAzureV3Login>> login() {
         return Codegen.optional(this.login);
     }
-    /**
-     * List of Managed Service Identity objects.
-     * 
-     */
     @Export(name="managedServiceIdentities", type=List.class, parameters={ElastigroupAzureV3ManagedServiceIdentity.class})
     private Output</* @Nullable */ List<ElastigroupAzureV3ManagedServiceIdentity>> managedServiceIdentities;
 
-    /**
-     * @return List of Managed Service Identity objects.
-     * 
-     */
     public Output<Optional<List<ElastigroupAzureV3ManagedServiceIdentity>>> managedServiceIdentities() {
         return Codegen.optional(this.managedServiceIdentities);
     }
-    /**
-     * The maximum number of instances the group should have at any time.
-     * 
-     */
     @Export(name="maxSize", type=Integer.class, parameters={})
     private Output<Integer> maxSize;
 
-    /**
-     * @return The maximum number of instances the group should have at any time.
-     * 
-     */
     public Output<Integer> maxSize() {
         return this.maxSize;
     }
-    /**
-     * The minimum number of instances the group should have at any time.
-     * 
-     */
     @Export(name="minSize", type=Integer.class, parameters={})
     private Output<Integer> minSize;
 
-    /**
-     * @return The minimum number of instances the group should have at any time.
-     * 
-     */
     public Output<Integer> minSize() {
         return this.minSize;
     }
-    /**
-     * Name of the Managed Service Identity.
-     * 
-     */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
-    /**
-     * @return Name of the Managed Service Identity.
-     * 
-     */
     public Output<String> name() {
         return this.name;
     }
@@ -229,17 +90,9 @@ public class ElastigroupAzureV3 extends com.pulumi.resources.CustomResource {
     public Output<ElastigroupAzureV3Network> network() {
         return this.network;
     }
-    /**
-     * Available On-Demand sizes
-     * 
-     */
     @Export(name="odSizes", type=List.class, parameters={String.class})
     private Output<List<String>> odSizes;
 
-    /**
-     * @return Available On-Demand sizes
-     * 
-     */
     public Output<List<String>> odSizes() {
         return this.odSizes;
     }
@@ -249,75 +102,41 @@ public class ElastigroupAzureV3 extends com.pulumi.resources.CustomResource {
     public Output<Optional<Integer>> onDemandCount() {
         return Codegen.optional(this.onDemandCount);
     }
-    /**
-     * Type of the operating system. Valid values: `&#34;Linux&#34;`, `&#34;Windows&#34;`.
-     * 
-     */
     @Export(name="os", type=String.class, parameters={})
     private Output<String> os;
 
-    /**
-     * @return Type of the operating system. Valid values: `&#34;Linux&#34;`, `&#34;Windows&#34;`.
-     * 
-     */
     public Output<String> os() {
         return this.os;
     }
-    /**
-     * The region your Azure group will be created in.
-     * 
-     */
     @Export(name="region", type=String.class, parameters={})
     private Output<String> region;
 
-    /**
-     * @return The region your Azure group will be created in.
-     * 
-     */
     public Output<String> region() {
         return this.region;
     }
-    /**
-     * Name of the Azure Resource Group where the Managed Service Identity is located.
-     * 
-     */
     @Export(name="resourceGroupName", type=String.class, parameters={})
     private Output<String> resourceGroupName;
 
-    /**
-     * @return Name of the Azure Resource Group where the Managed Service Identity is located.
-     * 
-     */
     public Output<String> resourceGroupName() {
         return this.resourceGroupName;
     }
-    /**
-     * TODO
-     * 
-     */
     @Export(name="spotPercentage", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> spotPercentage;
 
-    /**
-     * @return TODO
-     * 
-     */
     public Output<Optional<Integer>> spotPercentage() {
         return Codegen.optional(this.spotPercentage);
     }
-    /**
-     * Available Low-Priority sizes.
-     * 
-     */
     @Export(name="spotSizes", type=List.class, parameters={String.class})
     private Output<List<String>> spotSizes;
 
-    /**
-     * @return Available Low-Priority sizes.
-     * 
-     */
     public Output<List<String>> spotSizes() {
         return this.spotSizes;
+    }
+    @Export(name="tags", type=List.class, parameters={ElastigroupAzureV3Tag.class})
+    private Output</* @Nullable */ List<ElastigroupAzureV3Tag>> tags;
+
+    public Output<Optional<List<ElastigroupAzureV3Tag>>> tags() {
+        return Codegen.optional(this.tags);
     }
 
     /**

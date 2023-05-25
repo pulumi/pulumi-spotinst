@@ -118,6 +118,12 @@ class ElastigroupBackendServiceNamedPort(dict):
         """
         :param str name: The group name.
         :param Sequence[str] ports: A list of ports.
+               
+               Usage:
+               
+               ```python
+               import pulumi
+               ```
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "ports", ports)
@@ -135,6 +141,12 @@ class ElastigroupBackendServiceNamedPort(dict):
     def ports(self) -> Sequence[str]:
         """
         A list of ports.
+
+        Usage:
+
+        ```python
+        import pulumi
+        ```
         """
         return pulumi.get(self, "ports")
 
@@ -180,6 +192,10 @@ class ElastigroupDisk(dict):
         :param str mode: The mode in which to attach this disk, either READ_WRITE or READ_ONLY.
         :param str source: Specifies a valid partial or full URL to an existing Persistent Disk resource. This field is only applicable for persistent disks.
         :param str type: The type of GPU instance. Valid values: `nvidia-tesla-v100`, `nvidia-tesla-p100`, `nvidia-tesla-k80`.
+               
+               ```python
+               import pulumi
+               ```
         """
         if auto_delete is not None:
             pulumi.set(__self__, "auto_delete", auto_delete)
@@ -259,6 +275,10 @@ class ElastigroupDisk(dict):
     def type(self) -> Optional[str]:
         """
         The type of GPU instance. Valid values: `nvidia-tesla-v100`, `nvidia-tesla-p100`, `nvidia-tesla-k80`.
+
+        ```python
+        import pulumi
+        ```
         """
         return pulumi.get(self, "type")
 
@@ -292,6 +312,12 @@ class ElastigroupDiskInitializeParam(dict):
                  disk_type: Optional[str] = None):
         """
         :param str source_image: A source image used to create the disk. You can provide a private (custom) image, and Compute Engine will use the corresponding image from your project.
+               
+               Usage:
+               
+               ```python
+               import pulumi
+               ```
         :param str disk_size_gb: Specifies disk size in gigabytes. Must be in increments of 2.
         :param str disk_type: Specifies the disk type to use to create the instance. Valid values: pd-ssd, local-ssd.
         """
@@ -306,6 +332,12 @@ class ElastigroupDiskInitializeParam(dict):
     def source_image(self) -> str:
         """
         A source image used to create the disk. You can provide a private (custom) image, and Compute Engine will use the corresponding image from your project.
+
+        Usage:
+
+        ```python
+        import pulumi
+        ```
         """
         return pulumi.get(self, "source_image")
 
@@ -333,6 +365,12 @@ class ElastigroupGpu(dict):
                  type: str):
         """
         :param int count: The number of GPUs. Must be 0, 2, 4, 6, 8.
+               
+               Usage:
+               
+               ```python
+               import pulumi
+               ```
         :param str type: The type of GPU instance. Valid values: `nvidia-tesla-v100`, `nvidia-tesla-p100`, `nvidia-tesla-k80`.
         """
         pulumi.set(__self__, "count", count)
@@ -343,6 +381,12 @@ class ElastigroupGpu(dict):
     def count(self) -> int:
         """
         The number of GPUs. Must be 0, 2, 4, 6, 8.
+
+        Usage:
+
+        ```python
+        import pulumi
+        ```
         """
         return pulumi.get(self, "count")
 
@@ -424,6 +468,12 @@ class ElastigroupIntegrationDockerSwarm(dict):
         """
         :param str master_host: IP or FQDN of one of your swarm managers.
         :param int master_port: Network port used by your swarm.
+               
+               Usage:
+               
+               ```python
+               import pulumi
+               ```
         """
         pulumi.set(__self__, "master_host", master_host)
         pulumi.set(__self__, "master_port", master_port)
@@ -441,6 +491,12 @@ class ElastigroupIntegrationDockerSwarm(dict):
     def master_port(self) -> int:
         """
         Network port used by your swarm.
+
+        Usage:
+
+        ```python
+        import pulumi
+        ```
         """
         return pulumi.get(self, "master_port")
 
@@ -791,6 +847,10 @@ class ElastigroupNetworkInterfaceAccessConfig(dict):
         """
         :param str name: The group name.
         :param str type: The type of GPU instance. Valid values: `nvidia-tesla-v100`, `nvidia-tesla-p100`, `nvidia-tesla-k80`.
+               
+               ```python
+               import pulumi
+               ```
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -810,6 +870,10 @@ class ElastigroupNetworkInterfaceAccessConfig(dict):
     def type(self) -> Optional[str]:
         """
         The type of GPU instance. Valid values: `nvidia-tesla-v100`, `nvidia-tesla-p100`, `nvidia-tesla-k80`.
+
+        ```python
+        import pulumi
+        ```
         """
         return pulumi.get(self, "type")
 
@@ -1323,6 +1387,12 @@ class ElastigroupScheduledTask(dict):
         :param str cron_expression: A valid cron expression. The cron is running in UTC time zone and is in [Unix cron format](https://en.wikipedia.org/wiki/Cron).
         :param bool is_enabled: Setting the task to being enabled or disabled.
         :param str max_capacity: The maximum number of instances the group should have.
+               
+               Usage:
+               
+               ```python
+               import pulumi
+               ```
         :param str min_capacity: The minimum number of instances the group should have.
         :param str target_capacity: The desired number of instances the group should have.
         """
@@ -1367,6 +1437,12 @@ class ElastigroupScheduledTask(dict):
     def max_capacity(self) -> Optional[str]:
         """
         The maximum number of instances the group should have.
+
+        Usage:
+
+        ```python
+        import pulumi
+        ```
         """
         return pulumi.get(self, "max_capacity")
 

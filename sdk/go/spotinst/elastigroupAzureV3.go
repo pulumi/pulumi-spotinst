@@ -11,41 +11,28 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Spotinst elastigroup Azure resource.
 type ElastigroupAzureV3 struct {
 	pulumi.CustomResourceState
 
-	// Custom init script file or text in Base64 encoded format.
-	CustomData pulumi.StringPtrOutput `pulumi:"customData"`
-	// The desired number of instances the group should have at any time.
-	DesiredCapacity pulumi.IntPtrOutput `pulumi:"desiredCapacity"`
-	// Time (seconds) to allow the instance to be drained from incoming TCP connections and detached from MLB before terminating it during a scale-down operation.
-	DrainingTimeout    pulumi.IntOutput                   `pulumi:"drainingTimeout"`
-	FallbackToOnDemand pulumi.BoolOutput                  `pulumi:"fallbackToOnDemand"`
-	Images             ElastigroupAzureV3ImageArrayOutput `pulumi:"images"`
-	Login              ElastigroupAzureV3LoginPtrOutput   `pulumi:"login"`
-	// List of Managed Service Identity objects.
+	CustomData               pulumi.StringPtrOutput                              `pulumi:"customData"`
+	DesiredCapacity          pulumi.IntPtrOutput                                 `pulumi:"desiredCapacity"`
+	DrainingTimeout          pulumi.IntOutput                                    `pulumi:"drainingTimeout"`
+	FallbackToOnDemand       pulumi.BoolOutput                                   `pulumi:"fallbackToOnDemand"`
+	Images                   ElastigroupAzureV3ImageArrayOutput                  `pulumi:"images"`
+	Login                    ElastigroupAzureV3LoginPtrOutput                    `pulumi:"login"`
 	ManagedServiceIdentities ElastigroupAzureV3ManagedServiceIdentityArrayOutput `pulumi:"managedServiceIdentities"`
-	// The maximum number of instances the group should have at any time.
-	MaxSize pulumi.IntOutput `pulumi:"maxSize"`
-	// The minimum number of instances the group should have at any time.
-	MinSize pulumi.IntOutput `pulumi:"minSize"`
-	// Name of the Managed Service Identity.
-	Name    pulumi.StringOutput             `pulumi:"name"`
-	Network ElastigroupAzureV3NetworkOutput `pulumi:"network"`
-	// Available On-Demand sizes
-	OdSizes       pulumi.StringArrayOutput `pulumi:"odSizes"`
-	OnDemandCount pulumi.IntPtrOutput      `pulumi:"onDemandCount"`
-	// Type of the operating system. Valid values: `"Linux"`, `"Windows"`.
-	Os pulumi.StringOutput `pulumi:"os"`
-	// The region your Azure group will be created in.
-	Region pulumi.StringOutput `pulumi:"region"`
-	// Name of the Azure Resource Group where the Managed Service Identity is located.
-	ResourceGroupName pulumi.StringOutput `pulumi:"resourceGroupName"`
-	// TODO
-	SpotPercentage pulumi.IntPtrOutput `pulumi:"spotPercentage"`
-	// Available Low-Priority sizes.
-	SpotSizes pulumi.StringArrayOutput `pulumi:"spotSizes"`
+	MaxSize                  pulumi.IntOutput                                    `pulumi:"maxSize"`
+	MinSize                  pulumi.IntOutput                                    `pulumi:"minSize"`
+	Name                     pulumi.StringOutput                                 `pulumi:"name"`
+	Network                  ElastigroupAzureV3NetworkOutput                     `pulumi:"network"`
+	OdSizes                  pulumi.StringArrayOutput                            `pulumi:"odSizes"`
+	OnDemandCount            pulumi.IntPtrOutput                                 `pulumi:"onDemandCount"`
+	Os                       pulumi.StringOutput                                 `pulumi:"os"`
+	Region                   pulumi.StringOutput                                 `pulumi:"region"`
+	ResourceGroupName        pulumi.StringOutput                                 `pulumi:"resourceGroupName"`
+	SpotPercentage           pulumi.IntPtrOutput                                 `pulumi:"spotPercentage"`
+	SpotSizes                pulumi.StringArrayOutput                            `pulumi:"spotSizes"`
+	Tags                     ElastigroupAzureV3TagArrayOutput                    `pulumi:"tags"`
 }
 
 // NewElastigroupAzureV3 registers a new resource with the given unique name, arguments, and options.
@@ -98,71 +85,47 @@ func GetElastigroupAzureV3(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ElastigroupAzureV3 resources.
 type elastigroupAzureV3State struct {
-	// Custom init script file or text in Base64 encoded format.
-	CustomData *string `pulumi:"customData"`
-	// The desired number of instances the group should have at any time.
-	DesiredCapacity *int `pulumi:"desiredCapacity"`
-	// Time (seconds) to allow the instance to be drained from incoming TCP connections and detached from MLB before terminating it during a scale-down operation.
-	DrainingTimeout    *int                      `pulumi:"drainingTimeout"`
-	FallbackToOnDemand *bool                     `pulumi:"fallbackToOnDemand"`
-	Images             []ElastigroupAzureV3Image `pulumi:"images"`
-	Login              *ElastigroupAzureV3Login  `pulumi:"login"`
-	// List of Managed Service Identity objects.
+	CustomData               *string                                    `pulumi:"customData"`
+	DesiredCapacity          *int                                       `pulumi:"desiredCapacity"`
+	DrainingTimeout          *int                                       `pulumi:"drainingTimeout"`
+	FallbackToOnDemand       *bool                                      `pulumi:"fallbackToOnDemand"`
+	Images                   []ElastigroupAzureV3Image                  `pulumi:"images"`
+	Login                    *ElastigroupAzureV3Login                   `pulumi:"login"`
 	ManagedServiceIdentities []ElastigroupAzureV3ManagedServiceIdentity `pulumi:"managedServiceIdentities"`
-	// The maximum number of instances the group should have at any time.
-	MaxSize *int `pulumi:"maxSize"`
-	// The minimum number of instances the group should have at any time.
-	MinSize *int `pulumi:"minSize"`
-	// Name of the Managed Service Identity.
-	Name    *string                    `pulumi:"name"`
-	Network *ElastigroupAzureV3Network `pulumi:"network"`
-	// Available On-Demand sizes
-	OdSizes       []string `pulumi:"odSizes"`
-	OnDemandCount *int     `pulumi:"onDemandCount"`
-	// Type of the operating system. Valid values: `"Linux"`, `"Windows"`.
-	Os *string `pulumi:"os"`
-	// The region your Azure group will be created in.
-	Region *string `pulumi:"region"`
-	// Name of the Azure Resource Group where the Managed Service Identity is located.
-	ResourceGroupName *string `pulumi:"resourceGroupName"`
-	// TODO
-	SpotPercentage *int `pulumi:"spotPercentage"`
-	// Available Low-Priority sizes.
-	SpotSizes []string `pulumi:"spotSizes"`
+	MaxSize                  *int                                       `pulumi:"maxSize"`
+	MinSize                  *int                                       `pulumi:"minSize"`
+	Name                     *string                                    `pulumi:"name"`
+	Network                  *ElastigroupAzureV3Network                 `pulumi:"network"`
+	OdSizes                  []string                                   `pulumi:"odSizes"`
+	OnDemandCount            *int                                       `pulumi:"onDemandCount"`
+	Os                       *string                                    `pulumi:"os"`
+	Region                   *string                                    `pulumi:"region"`
+	ResourceGroupName        *string                                    `pulumi:"resourceGroupName"`
+	SpotPercentage           *int                                       `pulumi:"spotPercentage"`
+	SpotSizes                []string                                   `pulumi:"spotSizes"`
+	Tags                     []ElastigroupAzureV3Tag                    `pulumi:"tags"`
 }
 
 type ElastigroupAzureV3State struct {
-	// Custom init script file or text in Base64 encoded format.
-	CustomData pulumi.StringPtrInput
-	// The desired number of instances the group should have at any time.
-	DesiredCapacity pulumi.IntPtrInput
-	// Time (seconds) to allow the instance to be drained from incoming TCP connections and detached from MLB before terminating it during a scale-down operation.
-	DrainingTimeout    pulumi.IntPtrInput
-	FallbackToOnDemand pulumi.BoolPtrInput
-	Images             ElastigroupAzureV3ImageArrayInput
-	Login              ElastigroupAzureV3LoginPtrInput
-	// List of Managed Service Identity objects.
+	CustomData               pulumi.StringPtrInput
+	DesiredCapacity          pulumi.IntPtrInput
+	DrainingTimeout          pulumi.IntPtrInput
+	FallbackToOnDemand       pulumi.BoolPtrInput
+	Images                   ElastigroupAzureV3ImageArrayInput
+	Login                    ElastigroupAzureV3LoginPtrInput
 	ManagedServiceIdentities ElastigroupAzureV3ManagedServiceIdentityArrayInput
-	// The maximum number of instances the group should have at any time.
-	MaxSize pulumi.IntPtrInput
-	// The minimum number of instances the group should have at any time.
-	MinSize pulumi.IntPtrInput
-	// Name of the Managed Service Identity.
-	Name    pulumi.StringPtrInput
-	Network ElastigroupAzureV3NetworkPtrInput
-	// Available On-Demand sizes
-	OdSizes       pulumi.StringArrayInput
-	OnDemandCount pulumi.IntPtrInput
-	// Type of the operating system. Valid values: `"Linux"`, `"Windows"`.
-	Os pulumi.StringPtrInput
-	// The region your Azure group will be created in.
-	Region pulumi.StringPtrInput
-	// Name of the Azure Resource Group where the Managed Service Identity is located.
-	ResourceGroupName pulumi.StringPtrInput
-	// TODO
-	SpotPercentage pulumi.IntPtrInput
-	// Available Low-Priority sizes.
-	SpotSizes pulumi.StringArrayInput
+	MaxSize                  pulumi.IntPtrInput
+	MinSize                  pulumi.IntPtrInput
+	Name                     pulumi.StringPtrInput
+	Network                  ElastigroupAzureV3NetworkPtrInput
+	OdSizes                  pulumi.StringArrayInput
+	OnDemandCount            pulumi.IntPtrInput
+	Os                       pulumi.StringPtrInput
+	Region                   pulumi.StringPtrInput
+	ResourceGroupName        pulumi.StringPtrInput
+	SpotPercentage           pulumi.IntPtrInput
+	SpotSizes                pulumi.StringArrayInput
+	Tags                     ElastigroupAzureV3TagArrayInput
 }
 
 func (ElastigroupAzureV3State) ElementType() reflect.Type {
@@ -170,72 +133,48 @@ func (ElastigroupAzureV3State) ElementType() reflect.Type {
 }
 
 type elastigroupAzureV3Args struct {
-	// Custom init script file or text in Base64 encoded format.
-	CustomData *string `pulumi:"customData"`
-	// The desired number of instances the group should have at any time.
-	DesiredCapacity *int `pulumi:"desiredCapacity"`
-	// Time (seconds) to allow the instance to be drained from incoming TCP connections and detached from MLB before terminating it during a scale-down operation.
-	DrainingTimeout    *int                      `pulumi:"drainingTimeout"`
-	FallbackToOnDemand bool                      `pulumi:"fallbackToOnDemand"`
-	Images             []ElastigroupAzureV3Image `pulumi:"images"`
-	Login              *ElastigroupAzureV3Login  `pulumi:"login"`
-	// List of Managed Service Identity objects.
+	CustomData               *string                                    `pulumi:"customData"`
+	DesiredCapacity          *int                                       `pulumi:"desiredCapacity"`
+	DrainingTimeout          *int                                       `pulumi:"drainingTimeout"`
+	FallbackToOnDemand       bool                                       `pulumi:"fallbackToOnDemand"`
+	Images                   []ElastigroupAzureV3Image                  `pulumi:"images"`
+	Login                    *ElastigroupAzureV3Login                   `pulumi:"login"`
 	ManagedServiceIdentities []ElastigroupAzureV3ManagedServiceIdentity `pulumi:"managedServiceIdentities"`
-	// The maximum number of instances the group should have at any time.
-	MaxSize *int `pulumi:"maxSize"`
-	// The minimum number of instances the group should have at any time.
-	MinSize *int `pulumi:"minSize"`
-	// Name of the Managed Service Identity.
-	Name    *string                   `pulumi:"name"`
-	Network ElastigroupAzureV3Network `pulumi:"network"`
-	// Available On-Demand sizes
-	OdSizes       []string `pulumi:"odSizes"`
-	OnDemandCount *int     `pulumi:"onDemandCount"`
-	// Type of the operating system. Valid values: `"Linux"`, `"Windows"`.
-	Os string `pulumi:"os"`
-	// The region your Azure group will be created in.
-	Region string `pulumi:"region"`
-	// Name of the Azure Resource Group where the Managed Service Identity is located.
-	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// TODO
-	SpotPercentage *int `pulumi:"spotPercentage"`
-	// Available Low-Priority sizes.
-	SpotSizes []string `pulumi:"spotSizes"`
+	MaxSize                  *int                                       `pulumi:"maxSize"`
+	MinSize                  *int                                       `pulumi:"minSize"`
+	Name                     *string                                    `pulumi:"name"`
+	Network                  ElastigroupAzureV3Network                  `pulumi:"network"`
+	OdSizes                  []string                                   `pulumi:"odSizes"`
+	OnDemandCount            *int                                       `pulumi:"onDemandCount"`
+	Os                       string                                     `pulumi:"os"`
+	Region                   string                                     `pulumi:"region"`
+	ResourceGroupName        string                                     `pulumi:"resourceGroupName"`
+	SpotPercentage           *int                                       `pulumi:"spotPercentage"`
+	SpotSizes                []string                                   `pulumi:"spotSizes"`
+	Tags                     []ElastigroupAzureV3Tag                    `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a ElastigroupAzureV3 resource.
 type ElastigroupAzureV3Args struct {
-	// Custom init script file or text in Base64 encoded format.
-	CustomData pulumi.StringPtrInput
-	// The desired number of instances the group should have at any time.
-	DesiredCapacity pulumi.IntPtrInput
-	// Time (seconds) to allow the instance to be drained from incoming TCP connections and detached from MLB before terminating it during a scale-down operation.
-	DrainingTimeout    pulumi.IntPtrInput
-	FallbackToOnDemand pulumi.BoolInput
-	Images             ElastigroupAzureV3ImageArrayInput
-	Login              ElastigroupAzureV3LoginPtrInput
-	// List of Managed Service Identity objects.
+	CustomData               pulumi.StringPtrInput
+	DesiredCapacity          pulumi.IntPtrInput
+	DrainingTimeout          pulumi.IntPtrInput
+	FallbackToOnDemand       pulumi.BoolInput
+	Images                   ElastigroupAzureV3ImageArrayInput
+	Login                    ElastigroupAzureV3LoginPtrInput
 	ManagedServiceIdentities ElastigroupAzureV3ManagedServiceIdentityArrayInput
-	// The maximum number of instances the group should have at any time.
-	MaxSize pulumi.IntPtrInput
-	// The minimum number of instances the group should have at any time.
-	MinSize pulumi.IntPtrInput
-	// Name of the Managed Service Identity.
-	Name    pulumi.StringPtrInput
-	Network ElastigroupAzureV3NetworkInput
-	// Available On-Demand sizes
-	OdSizes       pulumi.StringArrayInput
-	OnDemandCount pulumi.IntPtrInput
-	// Type of the operating system. Valid values: `"Linux"`, `"Windows"`.
-	Os pulumi.StringInput
-	// The region your Azure group will be created in.
-	Region pulumi.StringInput
-	// Name of the Azure Resource Group where the Managed Service Identity is located.
-	ResourceGroupName pulumi.StringInput
-	// TODO
-	SpotPercentage pulumi.IntPtrInput
-	// Available Low-Priority sizes.
-	SpotSizes pulumi.StringArrayInput
+	MaxSize                  pulumi.IntPtrInput
+	MinSize                  pulumi.IntPtrInput
+	Name                     pulumi.StringPtrInput
+	Network                  ElastigroupAzureV3NetworkInput
+	OdSizes                  pulumi.StringArrayInput
+	OnDemandCount            pulumi.IntPtrInput
+	Os                       pulumi.StringInput
+	Region                   pulumi.StringInput
+	ResourceGroupName        pulumi.StringInput
+	SpotPercentage           pulumi.IntPtrInput
+	SpotSizes                pulumi.StringArrayInput
+	Tags                     ElastigroupAzureV3TagArrayInput
 }
 
 func (ElastigroupAzureV3Args) ElementType() reflect.Type {
@@ -325,17 +264,14 @@ func (o ElastigroupAzureV3Output) ToElastigroupAzureV3OutputWithContext(ctx cont
 	return o
 }
 
-// Custom init script file or text in Base64 encoded format.
 func (o ElastigroupAzureV3Output) CustomData() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ElastigroupAzureV3) pulumi.StringPtrOutput { return v.CustomData }).(pulumi.StringPtrOutput)
 }
 
-// The desired number of instances the group should have at any time.
 func (o ElastigroupAzureV3Output) DesiredCapacity() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ElastigroupAzureV3) pulumi.IntPtrOutput { return v.DesiredCapacity }).(pulumi.IntPtrOutput)
 }
 
-// Time (seconds) to allow the instance to be drained from incoming TCP connections and detached from MLB before terminating it during a scale-down operation.
 func (o ElastigroupAzureV3Output) DrainingTimeout() pulumi.IntOutput {
 	return o.ApplyT(func(v *ElastigroupAzureV3) pulumi.IntOutput { return v.DrainingTimeout }).(pulumi.IntOutput)
 }
@@ -352,24 +288,20 @@ func (o ElastigroupAzureV3Output) Login() ElastigroupAzureV3LoginPtrOutput {
 	return o.ApplyT(func(v *ElastigroupAzureV3) ElastigroupAzureV3LoginPtrOutput { return v.Login }).(ElastigroupAzureV3LoginPtrOutput)
 }
 
-// List of Managed Service Identity objects.
 func (o ElastigroupAzureV3Output) ManagedServiceIdentities() ElastigroupAzureV3ManagedServiceIdentityArrayOutput {
 	return o.ApplyT(func(v *ElastigroupAzureV3) ElastigroupAzureV3ManagedServiceIdentityArrayOutput {
 		return v.ManagedServiceIdentities
 	}).(ElastigroupAzureV3ManagedServiceIdentityArrayOutput)
 }
 
-// The maximum number of instances the group should have at any time.
 func (o ElastigroupAzureV3Output) MaxSize() pulumi.IntOutput {
 	return o.ApplyT(func(v *ElastigroupAzureV3) pulumi.IntOutput { return v.MaxSize }).(pulumi.IntOutput)
 }
 
-// The minimum number of instances the group should have at any time.
 func (o ElastigroupAzureV3Output) MinSize() pulumi.IntOutput {
 	return o.ApplyT(func(v *ElastigroupAzureV3) pulumi.IntOutput { return v.MinSize }).(pulumi.IntOutput)
 }
 
-// Name of the Managed Service Identity.
 func (o ElastigroupAzureV3Output) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ElastigroupAzureV3) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -378,7 +310,6 @@ func (o ElastigroupAzureV3Output) Network() ElastigroupAzureV3NetworkOutput {
 	return o.ApplyT(func(v *ElastigroupAzureV3) ElastigroupAzureV3NetworkOutput { return v.Network }).(ElastigroupAzureV3NetworkOutput)
 }
 
-// Available On-Demand sizes
 func (o ElastigroupAzureV3Output) OdSizes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ElastigroupAzureV3) pulumi.StringArrayOutput { return v.OdSizes }).(pulumi.StringArrayOutput)
 }
@@ -387,29 +318,28 @@ func (o ElastigroupAzureV3Output) OnDemandCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ElastigroupAzureV3) pulumi.IntPtrOutput { return v.OnDemandCount }).(pulumi.IntPtrOutput)
 }
 
-// Type of the operating system. Valid values: `"Linux"`, `"Windows"`.
 func (o ElastigroupAzureV3Output) Os() pulumi.StringOutput {
 	return o.ApplyT(func(v *ElastigroupAzureV3) pulumi.StringOutput { return v.Os }).(pulumi.StringOutput)
 }
 
-// The region your Azure group will be created in.
 func (o ElastigroupAzureV3Output) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *ElastigroupAzureV3) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
-// Name of the Azure Resource Group where the Managed Service Identity is located.
 func (o ElastigroupAzureV3Output) ResourceGroupName() pulumi.StringOutput {
 	return o.ApplyT(func(v *ElastigroupAzureV3) pulumi.StringOutput { return v.ResourceGroupName }).(pulumi.StringOutput)
 }
 
-// TODO
 func (o ElastigroupAzureV3Output) SpotPercentage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ElastigroupAzureV3) pulumi.IntPtrOutput { return v.SpotPercentage }).(pulumi.IntPtrOutput)
 }
 
-// Available Low-Priority sizes.
 func (o ElastigroupAzureV3Output) SpotSizes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ElastigroupAzureV3) pulumi.StringArrayOutput { return v.SpotSizes }).(pulumi.StringArrayOutput)
+}
+
+func (o ElastigroupAzureV3Output) Tags() ElastigroupAzureV3TagArrayOutput {
+	return o.ApplyT(func(v *ElastigroupAzureV3) ElastigroupAzureV3TagArrayOutput { return v.Tags }).(ElastigroupAzureV3TagArrayOutput)
 }
 
 type ElastigroupAzureV3ArrayOutput struct{ *pulumi.OutputState }

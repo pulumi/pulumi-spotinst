@@ -11,29 +11,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ManagedInstanceTag {
-    /**
-     * @return Tag&#39;s key.
-     * 
-     */
     private @Nullable String key;
-    /**
-     * @return Tag&#39;s name.
-     * 
-     */
     private @Nullable String value;
 
     private ManagedInstanceTag() {}
-    /**
-     * @return Tag&#39;s key.
-     * 
-     */
     public Optional<String> key() {
         return Optional.ofNullable(this.key);
     }
-    /**
-     * @return Tag&#39;s name.
-     * 
-     */
     public Optional<String> value() {
         return Optional.ofNullable(this.value);
     }

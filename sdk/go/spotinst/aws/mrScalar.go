@@ -353,7 +353,8 @@ type MrScalar struct {
 	// maximal amount of instances in core group.
 	CoreMaxSize pulumi.IntPtrOutput `pulumi:"coreMaxSize"`
 	// The minimal amount of instances in core group.
-	CoreMinSize             pulumi.IntPtrOutput                      `pulumi:"coreMinSize"`
+	CoreMinSize pulumi.IntPtrOutput `pulumi:"coreMinSize"`
+	// Each `*_scaling_*_policy` supports the following:
 	CoreScalingDownPolicies MrScalarCoreScalingDownPolicyArrayOutput `pulumi:"coreScalingDownPolicies"`
 	CoreScalingUpPolicies   MrScalarCoreScalingUpPolicyArrayOutput   `pulumi:"coreScalingUpPolicies"`
 	// Unit of task group for target, min and max. The unit could be `instance` or `weight`. instance - amount of instances. weight - amount of vCPU.
@@ -427,7 +428,8 @@ type MrScalar struct {
 	// maximal amount of instances in task group.
 	TaskMaxSize pulumi.IntPtrOutput `pulumi:"taskMaxSize"`
 	// The minimal amount of instances in task group.
-	TaskMinSize             pulumi.IntPtrOutput                      `pulumi:"taskMinSize"`
+	TaskMinSize pulumi.IntPtrOutput `pulumi:"taskMinSize"`
+	// Possible core group scaling policies (Clone, New strategies):
 	TaskScalingDownPolicies MrScalarTaskScalingDownPolicyArrayOutput `pulumi:"taskScalingDownPolicies"`
 	TaskScalingUpPolicies   MrScalarTaskScalingUpPolicyArrayOutput   `pulumi:"taskScalingUpPolicies"`
 	// Unit of task group for target, min and max. The unit could be `instance` or `weight`. instance - amount of instances. weight - amount of vCPU.
@@ -501,7 +503,8 @@ type mrScalarState struct {
 	// maximal amount of instances in core group.
 	CoreMaxSize *int `pulumi:"coreMaxSize"`
 	// The minimal amount of instances in core group.
-	CoreMinSize             *int                            `pulumi:"coreMinSize"`
+	CoreMinSize *int `pulumi:"coreMinSize"`
+	// Each `*_scaling_*_policy` supports the following:
 	CoreScalingDownPolicies []MrScalarCoreScalingDownPolicy `pulumi:"coreScalingDownPolicies"`
 	CoreScalingUpPolicies   []MrScalarCoreScalingUpPolicy   `pulumi:"coreScalingUpPolicies"`
 	// Unit of task group for target, min and max. The unit could be `instance` or `weight`. instance - amount of instances. weight - amount of vCPU.
@@ -575,7 +578,8 @@ type mrScalarState struct {
 	// maximal amount of instances in task group.
 	TaskMaxSize *int `pulumi:"taskMaxSize"`
 	// The minimal amount of instances in task group.
-	TaskMinSize             *int                            `pulumi:"taskMinSize"`
+	TaskMinSize *int `pulumi:"taskMinSize"`
+	// Possible core group scaling policies (Clone, New strategies):
 	TaskScalingDownPolicies []MrScalarTaskScalingDownPolicy `pulumi:"taskScalingDownPolicies"`
 	TaskScalingUpPolicies   []MrScalarTaskScalingUpPolicy   `pulumi:"taskScalingUpPolicies"`
 	// Unit of task group for target, min and max. The unit could be `instance` or `weight`. instance - amount of instances. weight - amount of vCPU.
@@ -618,7 +622,8 @@ type MrScalarState struct {
 	// maximal amount of instances in core group.
 	CoreMaxSize pulumi.IntPtrInput
 	// The minimal amount of instances in core group.
-	CoreMinSize             pulumi.IntPtrInput
+	CoreMinSize pulumi.IntPtrInput
+	// Each `*_scaling_*_policy` supports the following:
 	CoreScalingDownPolicies MrScalarCoreScalingDownPolicyArrayInput
 	CoreScalingUpPolicies   MrScalarCoreScalingUpPolicyArrayInput
 	// Unit of task group for target, min and max. The unit could be `instance` or `weight`. instance - amount of instances. weight - amount of vCPU.
@@ -692,7 +697,8 @@ type MrScalarState struct {
 	// maximal amount of instances in task group.
 	TaskMaxSize pulumi.IntPtrInput
 	// The minimal amount of instances in task group.
-	TaskMinSize             pulumi.IntPtrInput
+	TaskMinSize pulumi.IntPtrInput
+	// Possible core group scaling policies (Clone, New strategies):
 	TaskScalingDownPolicies MrScalarTaskScalingDownPolicyArrayInput
 	TaskScalingUpPolicies   MrScalarTaskScalingUpPolicyArrayInput
 	// Unit of task group for target, min and max. The unit could be `instance` or `weight`. instance - amount of instances. weight - amount of vCPU.
@@ -739,7 +745,8 @@ type mrScalarArgs struct {
 	// maximal amount of instances in core group.
 	CoreMaxSize *int `pulumi:"coreMaxSize"`
 	// The minimal amount of instances in core group.
-	CoreMinSize             *int                            `pulumi:"coreMinSize"`
+	CoreMinSize *int `pulumi:"coreMinSize"`
+	// Each `*_scaling_*_policy` supports the following:
 	CoreScalingDownPolicies []MrScalarCoreScalingDownPolicy `pulumi:"coreScalingDownPolicies"`
 	CoreScalingUpPolicies   []MrScalarCoreScalingUpPolicy   `pulumi:"coreScalingUpPolicies"`
 	// Unit of task group for target, min and max. The unit could be `instance` or `weight`. instance - amount of instances. weight - amount of vCPU.
@@ -812,7 +819,8 @@ type mrScalarArgs struct {
 	// maximal amount of instances in task group.
 	TaskMaxSize *int `pulumi:"taskMaxSize"`
 	// The minimal amount of instances in task group.
-	TaskMinSize             *int                            `pulumi:"taskMinSize"`
+	TaskMinSize *int `pulumi:"taskMinSize"`
+	// Possible core group scaling policies (Clone, New strategies):
 	TaskScalingDownPolicies []MrScalarTaskScalingDownPolicy `pulumi:"taskScalingDownPolicies"`
 	TaskScalingUpPolicies   []MrScalarTaskScalingUpPolicy   `pulumi:"taskScalingUpPolicies"`
 	// Unit of task group for target, min and max. The unit could be `instance` or `weight`. instance - amount of instances. weight - amount of vCPU.
@@ -856,7 +864,8 @@ type MrScalarArgs struct {
 	// maximal amount of instances in core group.
 	CoreMaxSize pulumi.IntPtrInput
 	// The minimal amount of instances in core group.
-	CoreMinSize             pulumi.IntPtrInput
+	CoreMinSize pulumi.IntPtrInput
+	// Each `*_scaling_*_policy` supports the following:
 	CoreScalingDownPolicies MrScalarCoreScalingDownPolicyArrayInput
 	CoreScalingUpPolicies   MrScalarCoreScalingUpPolicyArrayInput
 	// Unit of task group for target, min and max. The unit could be `instance` or `weight`. instance - amount of instances. weight - amount of vCPU.
@@ -929,7 +938,8 @@ type MrScalarArgs struct {
 	// maximal amount of instances in task group.
 	TaskMaxSize pulumi.IntPtrInput
 	// The minimal amount of instances in task group.
-	TaskMinSize             pulumi.IntPtrInput
+	TaskMinSize pulumi.IntPtrInput
+	// Possible core group scaling policies (Clone, New strategies):
 	TaskScalingDownPolicies MrScalarTaskScalingDownPolicyArrayInput
 	TaskScalingUpPolicies   MrScalarTaskScalingUpPolicyArrayInput
 	// Unit of task group for target, min and max. The unit could be `instance` or `weight`. instance - amount of instances. weight - amount of vCPU.
@@ -1104,6 +1114,7 @@ func (o MrScalarOutput) CoreMinSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *MrScalar) pulumi.IntPtrOutput { return v.CoreMinSize }).(pulumi.IntPtrOutput)
 }
 
+// Each `*_scaling_*_policy` supports the following:
 func (o MrScalarOutput) CoreScalingDownPolicies() MrScalarCoreScalingDownPolicyArrayOutput {
 	return o.ApplyT(func(v *MrScalar) MrScalarCoreScalingDownPolicyArrayOutput { return v.CoreScalingDownPolicies }).(MrScalarCoreScalingDownPolicyArrayOutput)
 }
@@ -1298,6 +1309,7 @@ func (o MrScalarOutput) TaskMinSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *MrScalar) pulumi.IntPtrOutput { return v.TaskMinSize }).(pulumi.IntPtrOutput)
 }
 
+// Possible core group scaling policies (Clone, New strategies):
 func (o MrScalarOutput) TaskScalingDownPolicies() MrScalarTaskScalingDownPolicyArrayOutput {
 	return o.ApplyT(func(v *MrScalar) MrScalarTaskScalingDownPolicyArrayOutput { return v.TaskScalingDownPolicies }).(MrScalarTaskScalingDownPolicyArrayOutput)
 }

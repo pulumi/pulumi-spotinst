@@ -20,6 +20,19 @@ namespace Pulumi.SpotInst.Gke.Inputs
 
         /// <summary>
         /// The label value.
+        /// 
+        /// 
+        /// Usage:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        /// });
+        /// ```
         /// </summary>
         [Input("value", required: true)]
         public Input<string> Value { get; set; } = null!;

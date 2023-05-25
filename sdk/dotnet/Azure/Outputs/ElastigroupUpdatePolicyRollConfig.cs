@@ -13,17 +13,8 @@ namespace Pulumi.SpotInst.Azure.Outputs
     [OutputType]
     public sealed class ElastigroupUpdatePolicyRollConfig
     {
-        /// <summary>
-        /// The percentage size of each batch in the scheduled deployment roll. Required when the 'task_type' is 'roll'.
-        /// </summary>
         public readonly int BatchSizePercentage;
-        /// <summary>
-        /// Period of time (seconds) to wait for VM to reach healthiness before monitoring for unhealthiness.
-        /// </summary>
         public readonly int? GracePeriod;
-        /// <summary>
-        /// Health check used to validate VM health. Valid values: “INSTANCE_STATE”.
-        /// </summary>
         public readonly string? HealthCheckType;
 
         [OutputConstructor]

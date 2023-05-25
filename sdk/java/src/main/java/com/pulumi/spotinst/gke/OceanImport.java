@@ -24,6 +24,36 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Manages a Spotinst Ocean GKE resource.
+ * 
+ * ## Prerequisites
+ * 
+ * Installation of the Ocean controller is required by this resource. You can accomplish this by using the spotinst/ocean-controller module as follows:
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *     }
+ * }
+ * ```
+ * 
+ * &gt; You must configure the same `cluster_identifier` both for the Ocean controller and for the `spotinst.gke.OceanImport` resource.
+ * 
  * ## Example Usage
  * ```java
  * package generated_program;

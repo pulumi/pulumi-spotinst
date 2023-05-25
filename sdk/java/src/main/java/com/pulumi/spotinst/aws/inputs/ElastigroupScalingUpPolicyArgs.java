@@ -301,12 +301,26 @@ public final class ElastigroupScalingUpPolicyArgs extends com.pulumi.resources.R
     /**
      * The value against which the specified statistic is compared in order to determine if a step should be applied.
      * 
+     * If you do not specify an action type, you can only use – `adjustment`, `minTargetCapacity`, `maxTargetCapacity`.
+     * While using action_type, please also set the following:
+     * 
+     * When using `adjustment`           – set the field `adjustment`
+     * When using `setMinTarget`         – set the field `min_target_capacity`
+     * When using `updateCapacity`       – set the fields `minimum`, `maximum`, and `target`
+     * 
      */
     @Import(name="threshold")
     private @Nullable Output<Double> threshold;
 
     /**
      * @return The value against which the specified statistic is compared in order to determine if a step should be applied.
+     * 
+     * If you do not specify an action type, you can only use – `adjustment`, `minTargetCapacity`, `maxTargetCapacity`.
+     * While using action_type, please also set the following:
+     * 
+     * When using `adjustment`           – set the field `adjustment`
+     * When using `setMinTarget`         – set the field `min_target_capacity`
+     * When using `updateCapacity`       – set the fields `minimum`, `maximum`, and `target`
      * 
      */
     public Optional<Output<Double>> threshold() {
@@ -776,6 +790,13 @@ public final class ElastigroupScalingUpPolicyArgs extends com.pulumi.resources.R
         /**
          * @param threshold The value against which the specified statistic is compared in order to determine if a step should be applied.
          * 
+         * If you do not specify an action type, you can only use – `adjustment`, `minTargetCapacity`, `maxTargetCapacity`.
+         * While using action_type, please also set the following:
+         * 
+         * When using `adjustment`           – set the field `adjustment`
+         * When using `setMinTarget`         – set the field `min_target_capacity`
+         * When using `updateCapacity`       – set the fields `minimum`, `maximum`, and `target`
+         * 
          * @return builder
          * 
          */
@@ -786,6 +807,13 @@ public final class ElastigroupScalingUpPolicyArgs extends com.pulumi.resources.R
 
         /**
          * @param threshold The value against which the specified statistic is compared in order to determine if a step should be applied.
+         * 
+         * If you do not specify an action type, you can only use – `adjustment`, `minTargetCapacity`, `maxTargetCapacity`.
+         * While using action_type, please also set the following:
+         * 
+         * When using `adjustment`           – set the field `adjustment`
+         * When using `setMinTarget`         – set the field `min_target_capacity`
+         * When using `updateCapacity`       – set the fields `minimum`, `maximum`, and `target`
          * 
          * @return builder
          * 

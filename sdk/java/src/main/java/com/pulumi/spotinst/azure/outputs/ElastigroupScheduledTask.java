@@ -12,125 +12,45 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ElastigroupScheduledTask {
-    /**
-     * @return Value to which the action type will be adjusted. Required if using `numeric` or `percentage_adjustment` action types.
-     * 
-     */
     private @Nullable String adjustment;
-    /**
-     * @return The percent of instances to add/remove to/from the target capacity when scale is needed.
-     * 
-     */
     private @Nullable String adjustmentPercentage;
-    /**
-     * @return The percentage size of each batch in the scheduled deployment roll. Required when the &#39;task_type&#39; is &#39;roll&#39;.
-     * 
-     */
     private @Nullable String batchSizePercentage;
-    /**
-     * @return A valid cron expression (`* * * * *`). The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script.
-     * 
-     */
     private String cronExpression;
-    /**
-     * @return Period of time (seconds) to wait for VM to reach healthiness before monitoring for unhealthiness.
-     * 
-     */
     private @Nullable String gracePeriod;
-    /**
-     * @return Describes whether the task is enabled. When true the task should run when false it should not run.
-     * 
-     */
     private @Nullable Boolean isEnabled;
-    /**
-     * @return The max capacity of the group. Required when ‘task_type&#39; is ‘scale&#39;.
-     * 
-     */
     private @Nullable String scaleMaxCapacity;
-    /**
-     * @return The min capacity of the group. Should be used when choosing ‘task_type&#39; of ‘scale&#39;.
-     * 
-     */
     private @Nullable String scaleMinCapacity;
-    /**
-     * @return The target capacity of the group. Should be used when choosing ‘task_type&#39; of ‘scale&#39;.
-     * 
-     */
     private @Nullable String scaleTargetCapacity;
-    /**
-     * @return The task type to run. Valid Values: `backup_ami`, `scale`, `scaleUp`, `roll`, `statefulUpdateCapacity`, `statefulRecycle`.
-     * 
-     */
     private String taskType;
 
     private ElastigroupScheduledTask() {}
-    /**
-     * @return Value to which the action type will be adjusted. Required if using `numeric` or `percentage_adjustment` action types.
-     * 
-     */
     public Optional<String> adjustment() {
         return Optional.ofNullable(this.adjustment);
     }
-    /**
-     * @return The percent of instances to add/remove to/from the target capacity when scale is needed.
-     * 
-     */
     public Optional<String> adjustmentPercentage() {
         return Optional.ofNullable(this.adjustmentPercentage);
     }
-    /**
-     * @return The percentage size of each batch in the scheduled deployment roll. Required when the &#39;task_type&#39; is &#39;roll&#39;.
-     * 
-     */
     public Optional<String> batchSizePercentage() {
         return Optional.ofNullable(this.batchSizePercentage);
     }
-    /**
-     * @return A valid cron expression (`* * * * *`). The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script.
-     * 
-     */
     public String cronExpression() {
         return this.cronExpression;
     }
-    /**
-     * @return Period of time (seconds) to wait for VM to reach healthiness before monitoring for unhealthiness.
-     * 
-     */
     public Optional<String> gracePeriod() {
         return Optional.ofNullable(this.gracePeriod);
     }
-    /**
-     * @return Describes whether the task is enabled. When true the task should run when false it should not run.
-     * 
-     */
     public Optional<Boolean> isEnabled() {
         return Optional.ofNullable(this.isEnabled);
     }
-    /**
-     * @return The max capacity of the group. Required when ‘task_type&#39; is ‘scale&#39;.
-     * 
-     */
     public Optional<String> scaleMaxCapacity() {
         return Optional.ofNullable(this.scaleMaxCapacity);
     }
-    /**
-     * @return The min capacity of the group. Should be used when choosing ‘task_type&#39; of ‘scale&#39;.
-     * 
-     */
     public Optional<String> scaleMinCapacity() {
         return Optional.ofNullable(this.scaleMinCapacity);
     }
-    /**
-     * @return The target capacity of the group. Should be used when choosing ‘task_type&#39; of ‘scale&#39;.
-     * 
-     */
     public Optional<String> scaleTargetCapacity() {
         return Optional.ofNullable(this.scaleTargetCapacity);
     }
-    /**
-     * @return The task type to run. Valid Values: `backup_ami`, `scale`, `scaleUp`, `roll`, `statefulUpdateCapacity`, `statefulRecycle`.
-     * 
-     */
     public String taskType() {
         return this.taskType;
     }

@@ -112,6 +112,12 @@ class ElastigroupBackendServiceNamedPortArgs:
         """
         :param pulumi.Input[str] name: The group name.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ports: A list of ports.
+               
+               Usage:
+               
+               ```python
+               import pulumi
+               ```
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "ports", ports)
@@ -133,6 +139,12 @@ class ElastigroupBackendServiceNamedPortArgs:
     def ports(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         A list of ports.
+
+        Usage:
+
+        ```python
+        import pulumi
+        ```
         """
         return pulumi.get(self, "ports")
 
@@ -161,6 +173,10 @@ class ElastigroupDiskArgs:
         :param pulumi.Input[str] mode: The mode in which to attach this disk, either READ_WRITE or READ_ONLY.
         :param pulumi.Input[str] source: Specifies a valid partial or full URL to an existing Persistent Disk resource. This field is only applicable for persistent disks.
         :param pulumi.Input[str] type: The type of GPU instance. Valid values: `nvidia-tesla-v100`, `nvidia-tesla-p100`, `nvidia-tesla-k80`.
+               
+               ```python
+               import pulumi
+               ```
         """
         if auto_delete is not None:
             pulumi.set(__self__, "auto_delete", auto_delete)
@@ -268,6 +284,10 @@ class ElastigroupDiskArgs:
     def type(self) -> Optional[pulumi.Input[str]]:
         """
         The type of GPU instance. Valid values: `nvidia-tesla-v100`, `nvidia-tesla-p100`, `nvidia-tesla-k80`.
+
+        ```python
+        import pulumi
+        ```
         """
         return pulumi.get(self, "type")
 
@@ -284,6 +304,12 @@ class ElastigroupDiskInitializeParamArgs:
                  disk_type: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] source_image: A source image used to create the disk. You can provide a private (custom) image, and Compute Engine will use the corresponding image from your project.
+               
+               Usage:
+               
+               ```python
+               import pulumi
+               ```
         :param pulumi.Input[str] disk_size_gb: Specifies disk size in gigabytes. Must be in increments of 2.
         :param pulumi.Input[str] disk_type: Specifies the disk type to use to create the instance. Valid values: pd-ssd, local-ssd.
         """
@@ -298,6 +324,12 @@ class ElastigroupDiskInitializeParamArgs:
     def source_image(self) -> pulumi.Input[str]:
         """
         A source image used to create the disk. You can provide a private (custom) image, and Compute Engine will use the corresponding image from your project.
+
+        Usage:
+
+        ```python
+        import pulumi
+        ```
         """
         return pulumi.get(self, "source_image")
 
@@ -337,6 +369,12 @@ class ElastigroupGpuArgs:
                  type: pulumi.Input[str]):
         """
         :param pulumi.Input[int] count: The number of GPUs. Must be 0, 2, 4, 6, 8.
+               
+               Usage:
+               
+               ```python
+               import pulumi
+               ```
         :param pulumi.Input[str] type: The type of GPU instance. Valid values: `nvidia-tesla-v100`, `nvidia-tesla-p100`, `nvidia-tesla-k80`.
         """
         pulumi.set(__self__, "count", count)
@@ -347,6 +385,12 @@ class ElastigroupGpuArgs:
     def count(self) -> pulumi.Input[int]:
         """
         The number of GPUs. Must be 0, 2, 4, 6, 8.
+
+        Usage:
+
+        ```python
+        import pulumi
+        ```
         """
         return pulumi.get(self, "count")
 
@@ -408,6 +452,12 @@ class ElastigroupIntegrationDockerSwarmArgs:
         """
         :param pulumi.Input[str] master_host: IP or FQDN of one of your swarm managers.
         :param pulumi.Input[int] master_port: Network port used by your swarm.
+               
+               Usage:
+               
+               ```python
+               import pulumi
+               ```
         """
         pulumi.set(__self__, "master_host", master_host)
         pulumi.set(__self__, "master_port", master_port)
@@ -429,6 +479,12 @@ class ElastigroupIntegrationDockerSwarmArgs:
     def master_port(self) -> pulumi.Input[int]:
         """
         Network port used by your swarm.
+
+        Usage:
+
+        ```python
+        import pulumi
+        ```
         """
         return pulumi.get(self, "master_port")
 
@@ -783,6 +839,10 @@ class ElastigroupNetworkInterfaceAccessConfigArgs:
         """
         :param pulumi.Input[str] name: The group name.
         :param pulumi.Input[str] type: The type of GPU instance. Valid values: `nvidia-tesla-v100`, `nvidia-tesla-p100`, `nvidia-tesla-k80`.
+               
+               ```python
+               import pulumi
+               ```
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -806,6 +866,10 @@ class ElastigroupNetworkInterfaceAccessConfigArgs:
     def type(self) -> Optional[pulumi.Input[str]]:
         """
         The type of GPU instance. Valid values: `nvidia-tesla-v100`, `nvidia-tesla-p100`, `nvidia-tesla-k80`.
+
+        ```python
+        import pulumi
+        ```
         """
         return pulumi.get(self, "type")
 
@@ -1367,6 +1431,12 @@ class ElastigroupScheduledTaskArgs:
         :param pulumi.Input[str] cron_expression: A valid cron expression. The cron is running in UTC time zone and is in [Unix cron format](https://en.wikipedia.org/wiki/Cron).
         :param pulumi.Input[bool] is_enabled: Setting the task to being enabled or disabled.
         :param pulumi.Input[str] max_capacity: The maximum number of instances the group should have.
+               
+               Usage:
+               
+               ```python
+               import pulumi
+               ```
         :param pulumi.Input[str] min_capacity: The minimum number of instances the group should have.
         :param pulumi.Input[str] target_capacity: The desired number of instances the group should have.
         """
@@ -1423,6 +1493,12 @@ class ElastigroupScheduledTaskArgs:
     def max_capacity(self) -> Optional[pulumi.Input[str]]:
         """
         The maximum number of instances the group should have.
+
+        Usage:
+
+        ```python
+        import pulumi
+        ```
         """
         return pulumi.get(self, "max_capacity")
 

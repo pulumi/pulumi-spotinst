@@ -758,7 +758,20 @@ class Ocean(pulumi.CustomResource):
                  zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
-        Create a Ocean resource with the given unique name, props, and options.
+        Manages a Spotinst Ocean AKS resource.
+
+        > This resource contains arguments (such as `image` and `extension`) that are automatically populated from the data reported by the Ocean AKS Connector deployed into your cluster. You can override the upstream configuration by defining the corresponding arguments.
+
+        ## Prerequisites
+
+        Installation of the Ocean controller is required by this resource. You can accomplish this by using the spotinst/ocean-controller module as follows:
+
+        ```python
+        import pulumi
+        ```
+
+        > You must configure the same `cluster_identifier` and `acd_identifier` both for the Ocean controller and for the `azure.Ocean` resource.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] acd_identifier: The AKS identifier. A valid identifier should be formatted as `acd-nnnnnnnn` and previously used identifiers cannot be reused.
@@ -791,7 +804,20 @@ class Ocean(pulumi.CustomResource):
                  args: OceanArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a Ocean resource with the given unique name, props, and options.
+        Manages a Spotinst Ocean AKS resource.
+
+        > This resource contains arguments (such as `image` and `extension`) that are automatically populated from the data reported by the Ocean AKS Connector deployed into your cluster. You can override the upstream configuration by defining the corresponding arguments.
+
+        ## Prerequisites
+
+        Installation of the Ocean controller is required by this resource. You can accomplish this by using the spotinst/ocean-controller module as follows:
+
+        ```python
+        import pulumi
+        ```
+
+        > You must configure the same `cluster_identifier` and `acd_identifier` both for the Ocean controller and for the `azure.Ocean` resource.
+
         :param str resource_name: The name of the resource.
         :param OceanArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

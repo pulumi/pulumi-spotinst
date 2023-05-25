@@ -11,41 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ElastigroupAzureV3Login {
-    /**
-     * @return Password for admin access to Windows VMs. Required for Windows OS types.
-     * 
-     */
     private @Nullable String password;
-    /**
-     * @return SSH for admin access to Linux VMs. Required for Linux OS types.
-     * 
-     */
     private @Nullable String sshPublicKey;
-    /**
-     * @return Set admin access for accessing your VMs.
-     * 
-     */
     private String userName;
 
     private ElastigroupAzureV3Login() {}
-    /**
-     * @return Password for admin access to Windows VMs. Required for Windows OS types.
-     * 
-     */
     public Optional<String> password() {
         return Optional.ofNullable(this.password);
     }
-    /**
-     * @return SSH for admin access to Linux VMs. Required for Linux OS types.
-     * 
-     */
     public Optional<String> sshPublicKey() {
         return Optional.ofNullable(this.sshPublicKey);
     }
-    /**
-     * @return Set admin access for accessing your VMs.
-     * 
-     */
     public String userName() {
         return this.userName;
     }

@@ -23,6 +23,18 @@ namespace Pulumi.SpotInst.Aws.Inputs
 
         /// <summary>
         /// A key/value mapping of tags to assign to the resource.
+        /// 
+        /// Usage:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        /// });
+        /// ```
         /// </summary>
         public InputList<Inputs.ElastigroupIntegrationNomadAutoscaleConstraintGetArgs> AutoscaleConstraints
         {

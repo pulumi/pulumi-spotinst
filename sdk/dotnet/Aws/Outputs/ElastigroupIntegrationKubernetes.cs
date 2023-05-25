@@ -13,6 +13,19 @@ namespace Pulumi.SpotInst.Aws.Outputs
     [OutputType]
     public sealed class ElastigroupIntegrationKubernetes
     {
+        /// <summary>
+        /// Usage:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        /// });
+        /// ```
+        /// </summary>
         public readonly string? ApiServer;
         /// <summary>
         /// The amount of time, in seconds, after a scaling activity completes before any further trigger-related scaling activities can start.
@@ -36,6 +49,18 @@ namespace Pulumi.SpotInst.Aws.Outputs
         public readonly bool? AutoscaleIsEnabled;
         /// <summary>
         /// A key/value mapping of tags to assign to the resource.
+        /// 
+        /// Usage:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        /// });
+        /// ```
         /// </summary>
         public readonly ImmutableArray<Outputs.ElastigroupIntegrationKubernetesAutoscaleLabel> AutoscaleLabels;
         public readonly string? ClusterIdentifier;

@@ -19,12 +19,60 @@ public final class ElastigroupNetworkInterfaceArgs extends com.pulumi.resources.
     /**
      * Indicates whether to assign IPV6 addresses to your instance. Requires a subnet with IPV6 CIDR block ranges.
      * 
+     * Usage:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *     }
+     * }
+     * ```
+     * 
      */
     @Import(name="associateIpv6Address")
     private @Nullable Output<Boolean> associateIpv6Address;
 
     /**
      * @return Indicates whether to assign IPV6 addresses to your instance. Requires a subnet with IPV6 CIDR block ranges.
+     * 
+     * Usage:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *     }
+     * }
+     * ```
      * 
      */
     public Optional<Output<Boolean>> associateIpv6Address() {
@@ -170,6 +218,30 @@ public final class ElastigroupNetworkInterfaceArgs extends com.pulumi.resources.
         /**
          * @param associateIpv6Address Indicates whether to assign IPV6 addresses to your instance. Requires a subnet with IPV6 CIDR block ranges.
          * 
+         * Usage:
+         * ```java
+         * package generated_program;
+         * 
+         * import com.pulumi.Context;
+         * import com.pulumi.Pulumi;
+         * import com.pulumi.core.Output;
+         * import java.util.List;
+         * import java.util.ArrayList;
+         * import java.util.Map;
+         * import java.io.File;
+         * import java.nio.file.Files;
+         * import java.nio.file.Paths;
+         * 
+         * public class App {
+         *     public static void main(String[] args) {
+         *         Pulumi.run(App::stack);
+         *     }
+         * 
+         *     public static void stack(Context ctx) {
+         *     }
+         * }
+         * ```
+         * 
          * @return builder
          * 
          */
@@ -180,6 +252,30 @@ public final class ElastigroupNetworkInterfaceArgs extends com.pulumi.resources.
 
         /**
          * @param associateIpv6Address Indicates whether to assign IPV6 addresses to your instance. Requires a subnet with IPV6 CIDR block ranges.
+         * 
+         * Usage:
+         * ```java
+         * package generated_program;
+         * 
+         * import com.pulumi.Context;
+         * import com.pulumi.Pulumi;
+         * import com.pulumi.core.Output;
+         * import java.util.List;
+         * import java.util.ArrayList;
+         * import java.util.Map;
+         * import java.io.File;
+         * import java.nio.file.Files;
+         * import java.nio.file.Paths;
+         * 
+         * public class App {
+         *     public static void main(String[] args) {
+         *         Pulumi.run(App::stack);
+         *     }
+         * 
+         *     public static void stack(Context ctx) {
+         *     }
+         * }
+         * ```
          * 
          * @return builder
          * 

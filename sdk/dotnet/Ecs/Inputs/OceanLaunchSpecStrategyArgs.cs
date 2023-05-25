@@ -14,6 +14,8 @@ namespace Pulumi.SpotInst.Ecs.Inputs
     {
         /// <summary>
         /// When set, Ocean will proactively try to maintain as close as possible to the percentage of Spot instances out of all the Virtual Node Group instances.
+        /// 
+        /// &lt;a id="block-devices"&gt;&lt;/a&gt;
         /// </summary>
         [Input("spotPercentage")]
         public Input<int>? SpotPercentage { get; set; }

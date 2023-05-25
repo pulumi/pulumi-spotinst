@@ -12,21 +12,12 @@ namespace Pulumi.SpotInst.Azure.Inputs
 
     public sealed class ElastigroupLoginGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Password for admin access to Windows VMs. Required for Windows product types.
-        /// </summary>
         [Input("password")]
         public Input<string>? Password { get; set; }
 
-        /// <summary>
-        /// SSH for admin access to Linux VMs. Required for Linux product types.
-        /// </summary>
         [Input("sshPublicKey")]
         public Input<string>? SshPublicKey { get; set; }
 
-        /// <summary>
-        /// Set admin access for accessing your VMs.
-        /// </summary>
         [Input("userName", required: true)]
         public Input<string> UserName { get; set; } = null!;
 

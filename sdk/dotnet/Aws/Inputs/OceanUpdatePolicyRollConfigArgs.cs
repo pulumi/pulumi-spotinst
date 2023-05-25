@@ -38,6 +38,17 @@ namespace Pulumi.SpotInst.Aws.Inputs
 
         /// <summary>
         /// During the roll, if the parameter is set to True we honor PDB during the instance replacement.
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        /// });
+        /// ```
+        /// 
+        /// &lt;a id="scheduled-task"&gt;&lt;/a&gt;
         /// </summary>
         [Input("respectPdb")]
         public Input<bool>? RespectPdb { get; set; }

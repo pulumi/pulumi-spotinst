@@ -20,16 +20,9 @@ namespace Pulumi.SpotInst.Inputs
             set => _networkInterfaces = value;
         }
 
-        /// <summary>
-        /// The resource group of the Application Security Group.
-        /// }
-        /// </summary>
         [Input("resourceGroupName", required: true)]
         public Input<string> ResourceGroupName { get; set; } = null!;
 
-        /// <summary>
-        /// Name of Vnet.
-        /// </summary>
         [Input("virtualNetworkName", required: true)]
         public Input<string> VirtualNetworkName { get; set; } = null!;
 

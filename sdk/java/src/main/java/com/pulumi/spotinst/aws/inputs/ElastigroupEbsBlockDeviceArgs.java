@@ -110,12 +110,64 @@ public final class ElastigroupEbsBlockDeviceArgs extends com.pulumi.resources.Re
     /**
      * The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volume_type` = gp3.
      * 
+     * Modifying any `ebs_block_device` currently requires resource replacement.
+     * 
+     * Usage:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *     }
+     * }
+     * ```
+     * 
      */
     @Import(name="throughput")
     private @Nullable Output<Integer> throughput;
 
     /**
      * @return The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volume_type` = gp3.
+     * 
+     * Modifying any `ebs_block_device` currently requires resource replacement.
+     * 
+     * Usage:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *     }
+     * }
+     * ```
      * 
      */
     public Optional<Output<Integer>> throughput() {
@@ -313,6 +365,32 @@ public final class ElastigroupEbsBlockDeviceArgs extends com.pulumi.resources.Re
         /**
          * @param throughput The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volume_type` = gp3.
          * 
+         * Modifying any `ebs_block_device` currently requires resource replacement.
+         * 
+         * Usage:
+         * ```java
+         * package generated_program;
+         * 
+         * import com.pulumi.Context;
+         * import com.pulumi.Pulumi;
+         * import com.pulumi.core.Output;
+         * import java.util.List;
+         * import java.util.ArrayList;
+         * import java.util.Map;
+         * import java.io.File;
+         * import java.nio.file.Files;
+         * import java.nio.file.Paths;
+         * 
+         * public class App {
+         *     public static void main(String[] args) {
+         *         Pulumi.run(App::stack);
+         *     }
+         * 
+         *     public static void stack(Context ctx) {
+         *     }
+         * }
+         * ```
+         * 
          * @return builder
          * 
          */
@@ -323,6 +401,32 @@ public final class ElastigroupEbsBlockDeviceArgs extends com.pulumi.resources.Re
 
         /**
          * @param throughput The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volume_type` = gp3.
+         * 
+         * Modifying any `ebs_block_device` currently requires resource replacement.
+         * 
+         * Usage:
+         * ```java
+         * package generated_program;
+         * 
+         * import com.pulumi.Context;
+         * import com.pulumi.Pulumi;
+         * import com.pulumi.core.Output;
+         * import java.util.List;
+         * import java.util.ArrayList;
+         * import java.util.Map;
+         * import java.io.File;
+         * import java.nio.file.Files;
+         * import java.nio.file.Paths;
+         * 
+         * public class App {
+         *     public static void main(String[] args) {
+         *         Pulumi.run(App::stack);
+         *     }
+         * 
+         *     public static void stack(Context ctx) {
+         *     }
+         * }
+         * ```
          * 
          * @return builder
          * 

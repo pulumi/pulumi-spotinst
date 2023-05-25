@@ -78,6 +78,8 @@ class ElastigroupArgs:
         :param pulumi.Input[int] preemptible_percentage: Percentage of Preemptible VMs to spin up from the "desired_capacity".
         :param pulumi.Input[str] provisioning_model: Valid values: "SPOT", "PREEMPTIBLE". Define the provisioning model of the launched instances. Default value is "PREEMPTIBLE".
         :param pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingDownPolicyArgs']]] scaling_down_policies: Contains scaling policies for scaling the Elastigroup down.
+               
+               Each `scaling_*_policy` supports the following:
         :param pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingUpPolicyArgs']]] scaling_up_policies: Contains scaling policies for scaling the Elastigroup up.
         :param pulumi.Input[str] service_account: The email of the service account in which the group instances will be launched.
         :param pulumi.Input[str] shutdown_script: The Base64-encoded shutdown script that executes prior to instance termination, for more information please see: [Shutdown Script](https://api.spotinst.com/integration-docs/elastigroup/concepts/compute-concepts/shutdown-scripts/)
@@ -85,6 +87,10 @@ class ElastigroupArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ElastigroupSubnetArgs']]] subnets: A list of regions and subnets.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to mark created instances.
         :param pulumi.Input[int] unhealthy_duration: Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
+               
+               ```python
+               import pulumi
+               ```
         """
         pulumi.set(__self__, "desired_capacity", desired_capacity)
         if auto_healing is not None:
@@ -474,6 +480,8 @@ class ElastigroupArgs:
     def scaling_down_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingDownPolicyArgs']]]]:
         """
         Contains scaling policies for scaling the Elastigroup down.
+
+        Each `scaling_*_policy` supports the following:
         """
         return pulumi.get(self, "scaling_down_policies")
 
@@ -567,6 +575,10 @@ class ElastigroupArgs:
     def unhealthy_duration(self) -> Optional[pulumi.Input[int]]:
         """
         Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
+
+        ```python
+        import pulumi
+        ```
         """
         return pulumi.get(self, "unhealthy_duration")
 
@@ -640,6 +652,8 @@ class _ElastigroupState:
         :param pulumi.Input[int] preemptible_percentage: Percentage of Preemptible VMs to spin up from the "desired_capacity".
         :param pulumi.Input[str] provisioning_model: Valid values: "SPOT", "PREEMPTIBLE". Define the provisioning model of the launched instances. Default value is "PREEMPTIBLE".
         :param pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingDownPolicyArgs']]] scaling_down_policies: Contains scaling policies for scaling the Elastigroup down.
+               
+               Each `scaling_*_policy` supports the following:
         :param pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingUpPolicyArgs']]] scaling_up_policies: Contains scaling policies for scaling the Elastigroup up.
         :param pulumi.Input[str] service_account: The email of the service account in which the group instances will be launched.
         :param pulumi.Input[str] shutdown_script: The Base64-encoded shutdown script that executes prior to instance termination, for more information please see: [Shutdown Script](https://api.spotinst.com/integration-docs/elastigroup/concepts/compute-concepts/shutdown-scripts/)
@@ -647,6 +661,10 @@ class _ElastigroupState:
         :param pulumi.Input[Sequence[pulumi.Input['ElastigroupSubnetArgs']]] subnets: A list of regions and subnets.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to mark created instances.
         :param pulumi.Input[int] unhealthy_duration: Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
+               
+               ```python
+               import pulumi
+               ```
         """
         if auto_healing is not None:
             pulumi.set(__self__, "auto_healing", auto_healing)
@@ -1037,6 +1055,8 @@ class _ElastigroupState:
     def scaling_down_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingDownPolicyArgs']]]]:
         """
         Contains scaling policies for scaling the Elastigroup down.
+
+        Each `scaling_*_policy` supports the following:
         """
         return pulumi.get(self, "scaling_down_policies")
 
@@ -1130,6 +1150,10 @@ class _ElastigroupState:
     def unhealthy_duration(self) -> Optional[pulumi.Input[int]]:
         """
         Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
+
+        ```python
+        import pulumi
+        ```
         """
         return pulumi.get(self, "unhealthy_duration")
 
@@ -1301,6 +1325,8 @@ class Elastigroup(pulumi.CustomResource):
         :param pulumi.Input[int] preemptible_percentage: Percentage of Preemptible VMs to spin up from the "desired_capacity".
         :param pulumi.Input[str] provisioning_model: Valid values: "SPOT", "PREEMPTIBLE". Define the provisioning model of the launched instances. Default value is "PREEMPTIBLE".
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupScalingDownPolicyArgs']]]] scaling_down_policies: Contains scaling policies for scaling the Elastigroup down.
+               
+               Each `scaling_*_policy` supports the following:
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupScalingUpPolicyArgs']]]] scaling_up_policies: Contains scaling policies for scaling the Elastigroup up.
         :param pulumi.Input[str] service_account: The email of the service account in which the group instances will be launched.
         :param pulumi.Input[str] shutdown_script: The Base64-encoded shutdown script that executes prior to instance termination, for more information please see: [Shutdown Script](https://api.spotinst.com/integration-docs/elastigroup/concepts/compute-concepts/shutdown-scripts/)
@@ -1308,6 +1334,10 @@ class Elastigroup(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupSubnetArgs']]]] subnets: A list of regions and subnets.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to mark created instances.
         :param pulumi.Input[int] unhealthy_duration: Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
+               
+               ```python
+               import pulumi
+               ```
         """
         ...
     @overload
@@ -1588,6 +1618,8 @@ class Elastigroup(pulumi.CustomResource):
         :param pulumi.Input[int] preemptible_percentage: Percentage of Preemptible VMs to spin up from the "desired_capacity".
         :param pulumi.Input[str] provisioning_model: Valid values: "SPOT", "PREEMPTIBLE". Define the provisioning model of the launched instances. Default value is "PREEMPTIBLE".
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupScalingDownPolicyArgs']]]] scaling_down_policies: Contains scaling policies for scaling the Elastigroup down.
+               
+               Each `scaling_*_policy` supports the following:
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupScalingUpPolicyArgs']]]] scaling_up_policies: Contains scaling policies for scaling the Elastigroup up.
         :param pulumi.Input[str] service_account: The email of the service account in which the group instances will be launched.
         :param pulumi.Input[str] shutdown_script: The Base64-encoded shutdown script that executes prior to instance termination, for more information please see: [Shutdown Script](https://api.spotinst.com/integration-docs/elastigroup/concepts/compute-concepts/shutdown-scripts/)
@@ -1595,6 +1627,10 @@ class Elastigroup(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupSubnetArgs']]]] subnets: A list of regions and subnets.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to mark created instances.
         :param pulumi.Input[int] unhealthy_duration: Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
+               
+               ```python
+               import pulumi
+               ```
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1843,6 +1879,8 @@ class Elastigroup(pulumi.CustomResource):
     def scaling_down_policies(self) -> pulumi.Output[Optional[Sequence['outputs.ElastigroupScalingDownPolicy']]]:
         """
         Contains scaling policies for scaling the Elastigroup down.
+
+        Each `scaling_*_policy` supports the following:
         """
         return pulumi.get(self, "scaling_down_policies")
 
@@ -1904,6 +1942,10 @@ class Elastigroup(pulumi.CustomResource):
     def unhealthy_duration(self) -> pulumi.Output[Optional[int]]:
         """
         Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
+
+        ```python
+        import pulumi
+        ```
         """
         return pulumi.get(self, "unhealthy_duration")
 

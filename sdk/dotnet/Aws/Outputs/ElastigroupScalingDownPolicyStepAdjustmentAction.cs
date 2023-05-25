@@ -39,6 +39,18 @@ namespace Pulumi.SpotInst.Aws.Outputs
         public readonly string? Target;
         /// <summary>
         /// The type of the action to take when scale up is needed. Valid types: `"adjustment"`, `"updateCapacity"`, `"setMinTarget"`, `"percentageAdjustment"`.
+        /// 
+        /// Usage:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        /// });
+        /// ```
         /// </summary>
         public readonly string Type;
 

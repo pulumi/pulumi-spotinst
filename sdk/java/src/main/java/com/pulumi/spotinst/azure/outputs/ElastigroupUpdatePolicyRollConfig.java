@@ -12,41 +12,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ElastigroupUpdatePolicyRollConfig {
-    /**
-     * @return The percentage size of each batch in the scheduled deployment roll. Required when the &#39;task_type&#39; is &#39;roll&#39;.
-     * 
-     */
     private Integer batchSizePercentage;
-    /**
-     * @return Period of time (seconds) to wait for VM to reach healthiness before monitoring for unhealthiness.
-     * 
-     */
     private @Nullable Integer gracePeriod;
-    /**
-     * @return Health check used to validate VM health. Valid values: “INSTANCE_STATE”.
-     * 
-     */
     private @Nullable String healthCheckType;
 
     private ElastigroupUpdatePolicyRollConfig() {}
-    /**
-     * @return The percentage size of each batch in the scheduled deployment roll. Required when the &#39;task_type&#39; is &#39;roll&#39;.
-     * 
-     */
     public Integer batchSizePercentage() {
         return this.batchSizePercentage;
     }
-    /**
-     * @return Period of time (seconds) to wait for VM to reach healthiness before monitoring for unhealthiness.
-     * 
-     */
     public Optional<Integer> gracePeriod() {
         return Optional.ofNullable(this.gracePeriod);
     }
-    /**
-     * @return Health check used to validate VM health. Valid values: “INSTANCE_STATE”.
-     * 
-     */
     public Optional<String> healthCheckType() {
         return Optional.ofNullable(this.healthCheckType);
     }

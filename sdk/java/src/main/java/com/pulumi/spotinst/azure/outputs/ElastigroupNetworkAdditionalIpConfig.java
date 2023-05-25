@@ -12,28 +12,20 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ElastigroupNetworkAdditionalIpConfig {
     /**
-     * @return The name of the managed identity.
+     * @return Name of the Managed Service Identity.
      * 
      */
     private String name;
-    /**
-     * @return Available from Azure Api-Version 2017-03-30 onwards, it represents whether the specific ipconfiguration is IPv4 or IPv6. Valid values: `IPv4`, `IPv6`.
-     * 
-     */
     private @Nullable String privateIpVersion;
 
     private ElastigroupNetworkAdditionalIpConfig() {}
     /**
-     * @return The name of the managed identity.
+     * @return Name of the Managed Service Identity.
      * 
      */
     public String name() {
         return this.name;
     }
-    /**
-     * @return Available from Azure Api-Version 2017-03-30 onwards, it represents whether the specific ipconfiguration is IPv4 or IPv6. Valid values: `IPv4`, `IPv6`.
-     * 
-     */
     public Optional<String> privateIpVersion() {
         return Optional.ofNullable(this.privateIpVersion);
     }

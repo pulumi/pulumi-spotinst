@@ -62,44 +62,6 @@ class ManagedInstanceArgs:
                  utilize_reserved_instances: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a ManagedInstance resource.
-        :param pulumi.Input[str] image_id: The ID of the image used to launch the instance.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: Comma separated list of available instance types for instance.
-        :param pulumi.Input[bool] persist_block_devices: Should the instance maintain its Data volumes.
-        :param pulumi.Input[str] product: Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`, `"Red Hat Enterprise Linux"`, `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`,  `"Red Hat Enterprise Linux (Amazon VPC)"`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: A comma-separated list of subnet identifiers for your instance.
-        :param pulumi.Input[bool] auto_healing: Enable the auto healing which auto replaces the instance in case the health check fails, default: `"true"`.
-        :param pulumi.Input[Sequence[pulumi.Input['ManagedInstanceBlockDeviceMappingArgs']]] block_device_mappings: Attributes controls a portion of the AWS:
-        :param pulumi.Input[str] block_devices_mode: Determine the way we attach the data volumes to the data devices. Valid values: `"reattach"`, `"onLaunch"`. Default: `"onLaunch"`.
-        :param pulumi.Input[str] cpu_credits: cpuCredits can have one of two values: `"unlimited"`, `"standard"`.
-        :param pulumi.Input[str] description: The ManagedInstance description.
-        :param pulumi.Input[int] draining_timeout: The time in seconds to allow the instance be drained from incoming TCP connections and detached from ELB before terminating it, during a scale down operation.
-        :param pulumi.Input[bool] ebs_optimized: Enable EBS optimization for supported instances. Note: Additional charges will be applied by the Cloud Provider.
-               Default: false
-        :param pulumi.Input[str] elastic_ip: Elastic IP Allocation Id to associate to the instance.
-        :param pulumi.Input[bool] enable_monitoring: Describes whether instance Enhanced Monitoring is enabled.
-               Default: false
-        :param pulumi.Input[int] grace_period: The amount of time, in seconds, after the instance has launched to starts and check its health, default `"120"`.
-        :param pulumi.Input[str] health_check_type: The service to use for the health check. Valid values: `"EC2"`, `"ELB"`, `"TARGET_GROUP"`, `"MULTAI_TARGET_SET"`. Default: `"EC2"`.
-        :param pulumi.Input[str] iam_instance_profile: Set IAM profile to instance. Set only one of ARN or Name.
-        :param pulumi.Input['ManagedInstanceIntegrationRoute53Args'] integration_route53: Describes the [Route53](https://aws.amazon.com/documentation/route53/?id=docs_gateway) integration.
-        :param pulumi.Input[str] key_pair: Specify a Key Pair to attach to the instances.
-        :param pulumi.Input[str] life_cycle: Set lifecycle, valid values: `"spot"`, `"on_demand"`. Default `"spot"`.
-        :param pulumi.Input[str] name: The ManagedInstance name.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] optimization_windows: When `performAt` is `"timeWindow"`: must specify a list of `"timeWindows"` with at least one time window. Each string should be formatted as `ddd:hh:mm-ddd:hh:mm` (ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59).
-        :param pulumi.Input[str] orientation: Select a prediction strategy. Valid values: `"balanced"`, `"costOriented"`, `"availabilityOriented"`, `"cheapest"`. Default: `"availabilityOriented"`.
-        :param pulumi.Input[bool] persist_private_ip: Should the instance maintain its private IP.
-        :param pulumi.Input[bool] persist_root_device: Should the instance maintain its root device volumes.
-        :param pulumi.Input[str] placement_tenancy: Valid values: `"default"`, `"dedicated"`.
-               Default: default
-        :param pulumi.Input[str] preferred_type: Preferred instance types for the instance. We will automatically select optional similar instance types to ensure optimized cost efficiency
-        :param pulumi.Input[str] private_ip: Private IP Allocation Id to associate to the instance.
-        :param pulumi.Input[str] region: The AWS region your group will be created in.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: One or more security group IDs.
-        :param pulumi.Input[str] shutdown_script: The Base64-encoded shutdown script to execute prior to instance termination.
-        :param pulumi.Input[Sequence[pulumi.Input['ManagedInstanceTagArgs']]] tags: Set tags for the instance. Items should be unique.
-        :param pulumi.Input[int] unhealthy_duration: The amount of time, in seconds, an existing instance should remain active after becoming unhealthy. After the set time out the instance will be replaced, default `"120"`.
-        :param pulumi.Input[str] user_data: The Base64-encoded MIME user data to make available to the instances.
-        :param pulumi.Input[bool] utilize_reserved_instances: In case of any available Reserved Instances, Managed Instance will utilize them before purchasing Spot instances. Default: `"false"`.
         """
         pulumi.set(__self__, "image_id", image_id)
         pulumi.set(__self__, "instance_types", instance_types)
@@ -187,9 +149,6 @@ class ManagedInstanceArgs:
     @property
     @pulumi.getter(name="imageId")
     def image_id(self) -> pulumi.Input[str]:
-        """
-        The ID of the image used to launch the instance.
-        """
         return pulumi.get(self, "image_id")
 
     @image_id.setter
@@ -199,9 +158,6 @@ class ManagedInstanceArgs:
     @property
     @pulumi.getter(name="instanceTypes")
     def instance_types(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
-        """
-        Comma separated list of available instance types for instance.
-        """
         return pulumi.get(self, "instance_types")
 
     @instance_types.setter
@@ -211,9 +167,6 @@ class ManagedInstanceArgs:
     @property
     @pulumi.getter(name="persistBlockDevices")
     def persist_block_devices(self) -> pulumi.Input[bool]:
-        """
-        Should the instance maintain its Data volumes.
-        """
         return pulumi.get(self, "persist_block_devices")
 
     @persist_block_devices.setter
@@ -223,9 +176,6 @@ class ManagedInstanceArgs:
     @property
     @pulumi.getter
     def product(self) -> pulumi.Input[str]:
-        """
-        Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`, `"Red Hat Enterprise Linux"`, `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`,  `"Red Hat Enterprise Linux (Amazon VPC)"`.
-        """
         return pulumi.get(self, "product")
 
     @product.setter
@@ -235,9 +185,6 @@ class ManagedInstanceArgs:
     @property
     @pulumi.getter(name="subnetIds")
     def subnet_ids(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
-        """
-        A comma-separated list of subnet identifiers for your instance.
-        """
         return pulumi.get(self, "subnet_ids")
 
     @subnet_ids.setter
@@ -256,9 +203,6 @@ class ManagedInstanceArgs:
     @property
     @pulumi.getter(name="autoHealing")
     def auto_healing(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Enable the auto healing which auto replaces the instance in case the health check fails, default: `"true"`.
-        """
         return pulumi.get(self, "auto_healing")
 
     @auto_healing.setter
@@ -268,9 +212,6 @@ class ManagedInstanceArgs:
     @property
     @pulumi.getter(name="blockDeviceMappings")
     def block_device_mappings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ManagedInstanceBlockDeviceMappingArgs']]]]:
-        """
-        Attributes controls a portion of the AWS:
-        """
         return pulumi.get(self, "block_device_mappings")
 
     @block_device_mappings.setter
@@ -280,9 +221,6 @@ class ManagedInstanceArgs:
     @property
     @pulumi.getter(name="blockDevicesMode")
     def block_devices_mode(self) -> Optional[pulumi.Input[str]]:
-        """
-        Determine the way we attach the data volumes to the data devices. Valid values: `"reattach"`, `"onLaunch"`. Default: `"onLaunch"`.
-        """
         return pulumi.get(self, "block_devices_mode")
 
     @block_devices_mode.setter
@@ -292,9 +230,6 @@ class ManagedInstanceArgs:
     @property
     @pulumi.getter(name="cpuCredits")
     def cpu_credits(self) -> Optional[pulumi.Input[str]]:
-        """
-        cpuCredits can have one of two values: `"unlimited"`, `"standard"`.
-        """
         return pulumi.get(self, "cpu_credits")
 
     @cpu_credits.setter
@@ -304,9 +239,6 @@ class ManagedInstanceArgs:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ManagedInstance description.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -316,9 +248,6 @@ class ManagedInstanceArgs:
     @property
     @pulumi.getter(name="drainingTimeout")
     def draining_timeout(self) -> Optional[pulumi.Input[int]]:
-        """
-        The time in seconds to allow the instance be drained from incoming TCP connections and detached from ELB before terminating it, during a scale down operation.
-        """
         return pulumi.get(self, "draining_timeout")
 
     @draining_timeout.setter
@@ -328,10 +257,6 @@ class ManagedInstanceArgs:
     @property
     @pulumi.getter(name="ebsOptimized")
     def ebs_optimized(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Enable EBS optimization for supported instances. Note: Additional charges will be applied by the Cloud Provider.
-        Default: false
-        """
         return pulumi.get(self, "ebs_optimized")
 
     @ebs_optimized.setter
@@ -341,9 +266,6 @@ class ManagedInstanceArgs:
     @property
     @pulumi.getter(name="elasticIp")
     def elastic_ip(self) -> Optional[pulumi.Input[str]]:
-        """
-        Elastic IP Allocation Id to associate to the instance.
-        """
         return pulumi.get(self, "elastic_ip")
 
     @elastic_ip.setter
@@ -353,10 +275,6 @@ class ManagedInstanceArgs:
     @property
     @pulumi.getter(name="enableMonitoring")
     def enable_monitoring(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Describes whether instance Enhanced Monitoring is enabled.
-        Default: false
-        """
         return pulumi.get(self, "enable_monitoring")
 
     @enable_monitoring.setter
@@ -375,9 +293,6 @@ class ManagedInstanceArgs:
     @property
     @pulumi.getter(name="gracePeriod")
     def grace_period(self) -> Optional[pulumi.Input[int]]:
-        """
-        The amount of time, in seconds, after the instance has launched to starts and check its health, default `"120"`.
-        """
         return pulumi.get(self, "grace_period")
 
     @grace_period.setter
@@ -387,9 +302,6 @@ class ManagedInstanceArgs:
     @property
     @pulumi.getter(name="healthCheckType")
     def health_check_type(self) -> Optional[pulumi.Input[str]]:
-        """
-        The service to use for the health check. Valid values: `"EC2"`, `"ELB"`, `"TARGET_GROUP"`, `"MULTAI_TARGET_SET"`. Default: `"EC2"`.
-        """
         return pulumi.get(self, "health_check_type")
 
     @health_check_type.setter
@@ -399,9 +311,6 @@ class ManagedInstanceArgs:
     @property
     @pulumi.getter(name="iamInstanceProfile")
     def iam_instance_profile(self) -> Optional[pulumi.Input[str]]:
-        """
-        Set IAM profile to instance. Set only one of ARN or Name.
-        """
         return pulumi.get(self, "iam_instance_profile")
 
     @iam_instance_profile.setter
@@ -411,9 +320,6 @@ class ManagedInstanceArgs:
     @property
     @pulumi.getter(name="integrationRoute53")
     def integration_route53(self) -> Optional[pulumi.Input['ManagedInstanceIntegrationRoute53Args']]:
-        """
-        Describes the [Route53](https://aws.amazon.com/documentation/route53/?id=docs_gateway) integration.
-        """
         return pulumi.get(self, "integration_route53")
 
     @integration_route53.setter
@@ -423,9 +329,6 @@ class ManagedInstanceArgs:
     @property
     @pulumi.getter(name="keyPair")
     def key_pair(self) -> Optional[pulumi.Input[str]]:
-        """
-        Specify a Key Pair to attach to the instances.
-        """
         return pulumi.get(self, "key_pair")
 
     @key_pair.setter
@@ -435,9 +338,6 @@ class ManagedInstanceArgs:
     @property
     @pulumi.getter(name="lifeCycle")
     def life_cycle(self) -> Optional[pulumi.Input[str]]:
-        """
-        Set lifecycle, valid values: `"spot"`, `"on_demand"`. Default `"spot"`.
-        """
         return pulumi.get(self, "life_cycle")
 
     @life_cycle.setter
@@ -474,9 +374,6 @@ class ManagedInstanceArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ManagedInstance name.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -495,9 +392,6 @@ class ManagedInstanceArgs:
     @property
     @pulumi.getter(name="optimizationWindows")
     def optimization_windows(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        When `performAt` is `"timeWindow"`: must specify a list of `"timeWindows"` with at least one time window. Each string should be formatted as `ddd:hh:mm-ddd:hh:mm` (ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59).
-        """
         return pulumi.get(self, "optimization_windows")
 
     @optimization_windows.setter
@@ -507,9 +401,6 @@ class ManagedInstanceArgs:
     @property
     @pulumi.getter
     def orientation(self) -> Optional[pulumi.Input[str]]:
-        """
-        Select a prediction strategy. Valid values: `"balanced"`, `"costOriented"`, `"availabilityOriented"`, `"cheapest"`. Default: `"availabilityOriented"`.
-        """
         return pulumi.get(self, "orientation")
 
     @orientation.setter
@@ -519,9 +410,6 @@ class ManagedInstanceArgs:
     @property
     @pulumi.getter(name="persistPrivateIp")
     def persist_private_ip(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Should the instance maintain its private IP.
-        """
         return pulumi.get(self, "persist_private_ip")
 
     @persist_private_ip.setter
@@ -531,9 +419,6 @@ class ManagedInstanceArgs:
     @property
     @pulumi.getter(name="persistRootDevice")
     def persist_root_device(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Should the instance maintain its root device volumes.
-        """
         return pulumi.get(self, "persist_root_device")
 
     @persist_root_device.setter
@@ -543,10 +428,6 @@ class ManagedInstanceArgs:
     @property
     @pulumi.getter(name="placementTenancy")
     def placement_tenancy(self) -> Optional[pulumi.Input[str]]:
-        """
-        Valid values: `"default"`, `"dedicated"`.
-        Default: default
-        """
         return pulumi.get(self, "placement_tenancy")
 
     @placement_tenancy.setter
@@ -556,9 +437,6 @@ class ManagedInstanceArgs:
     @property
     @pulumi.getter(name="preferredType")
     def preferred_type(self) -> Optional[pulumi.Input[str]]:
-        """
-        Preferred instance types for the instance. We will automatically select optional similar instance types to ensure optimized cost efficiency
-        """
         return pulumi.get(self, "preferred_type")
 
     @preferred_type.setter
@@ -568,9 +446,6 @@ class ManagedInstanceArgs:
     @property
     @pulumi.getter(name="privateIp")
     def private_ip(self) -> Optional[pulumi.Input[str]]:
-        """
-        Private IP Allocation Id to associate to the instance.
-        """
         return pulumi.get(self, "private_ip")
 
     @private_ip.setter
@@ -580,9 +455,6 @@ class ManagedInstanceArgs:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
-        """
-        The AWS region your group will be created in.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -619,9 +491,6 @@ class ManagedInstanceArgs:
     @property
     @pulumi.getter(name="securityGroupIds")
     def security_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        One or more security group IDs.
-        """
         return pulumi.get(self, "security_group_ids")
 
     @security_group_ids.setter
@@ -631,9 +500,6 @@ class ManagedInstanceArgs:
     @property
     @pulumi.getter(name="shutdownScript")
     def shutdown_script(self) -> Optional[pulumi.Input[str]]:
-        """
-        The Base64-encoded shutdown script to execute prior to instance termination.
-        """
         return pulumi.get(self, "shutdown_script")
 
     @shutdown_script.setter
@@ -643,9 +509,6 @@ class ManagedInstanceArgs:
     @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ManagedInstanceTagArgs']]]]:
-        """
-        Set tags for the instance. Items should be unique.
-        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -655,9 +518,6 @@ class ManagedInstanceArgs:
     @property
     @pulumi.getter(name="unhealthyDuration")
     def unhealthy_duration(self) -> Optional[pulumi.Input[int]]:
-        """
-        The amount of time, in seconds, an existing instance should remain active after becoming unhealthy. After the set time out the instance will be replaced, default `"120"`.
-        """
         return pulumi.get(self, "unhealthy_duration")
 
     @unhealthy_duration.setter
@@ -667,9 +527,6 @@ class ManagedInstanceArgs:
     @property
     @pulumi.getter(name="userData")
     def user_data(self) -> Optional[pulumi.Input[str]]:
-        """
-        The Base64-encoded MIME user data to make available to the instances.
-        """
         return pulumi.get(self, "user_data")
 
     @user_data.setter
@@ -679,9 +536,6 @@ class ManagedInstanceArgs:
     @property
     @pulumi.getter(name="utilizeReservedInstances")
     def utilize_reserved_instances(self) -> Optional[pulumi.Input[bool]]:
-        """
-        In case of any available Reserved Instances, Managed Instance will utilize them before purchasing Spot instances. Default: `"false"`.
-        """
         return pulumi.get(self, "utilize_reserved_instances")
 
     @utilize_reserved_instances.setter
@@ -738,44 +592,6 @@ class _ManagedInstanceState:
                  vpc_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ManagedInstance resources.
-        :param pulumi.Input[bool] auto_healing: Enable the auto healing which auto replaces the instance in case the health check fails, default: `"true"`.
-        :param pulumi.Input[Sequence[pulumi.Input['ManagedInstanceBlockDeviceMappingArgs']]] block_device_mappings: Attributes controls a portion of the AWS:
-        :param pulumi.Input[str] block_devices_mode: Determine the way we attach the data volumes to the data devices. Valid values: `"reattach"`, `"onLaunch"`. Default: `"onLaunch"`.
-        :param pulumi.Input[str] cpu_credits: cpuCredits can have one of two values: `"unlimited"`, `"standard"`.
-        :param pulumi.Input[str] description: The ManagedInstance description.
-        :param pulumi.Input[int] draining_timeout: The time in seconds to allow the instance be drained from incoming TCP connections and detached from ELB before terminating it, during a scale down operation.
-        :param pulumi.Input[bool] ebs_optimized: Enable EBS optimization for supported instances. Note: Additional charges will be applied by the Cloud Provider.
-               Default: false
-        :param pulumi.Input[str] elastic_ip: Elastic IP Allocation Id to associate to the instance.
-        :param pulumi.Input[bool] enable_monitoring: Describes whether instance Enhanced Monitoring is enabled.
-               Default: false
-        :param pulumi.Input[int] grace_period: The amount of time, in seconds, after the instance has launched to starts and check its health, default `"120"`.
-        :param pulumi.Input[str] health_check_type: The service to use for the health check. Valid values: `"EC2"`, `"ELB"`, `"TARGET_GROUP"`, `"MULTAI_TARGET_SET"`. Default: `"EC2"`.
-        :param pulumi.Input[str] iam_instance_profile: Set IAM profile to instance. Set only one of ARN or Name.
-        :param pulumi.Input[str] image_id: The ID of the image used to launch the instance.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: Comma separated list of available instance types for instance.
-        :param pulumi.Input['ManagedInstanceIntegrationRoute53Args'] integration_route53: Describes the [Route53](https://aws.amazon.com/documentation/route53/?id=docs_gateway) integration.
-        :param pulumi.Input[str] key_pair: Specify a Key Pair to attach to the instances.
-        :param pulumi.Input[str] life_cycle: Set lifecycle, valid values: `"spot"`, `"on_demand"`. Default `"spot"`.
-        :param pulumi.Input[str] name: The ManagedInstance name.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] optimization_windows: When `performAt` is `"timeWindow"`: must specify a list of `"timeWindows"` with at least one time window. Each string should be formatted as `ddd:hh:mm-ddd:hh:mm` (ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59).
-        :param pulumi.Input[str] orientation: Select a prediction strategy. Valid values: `"balanced"`, `"costOriented"`, `"availabilityOriented"`, `"cheapest"`. Default: `"availabilityOriented"`.
-        :param pulumi.Input[bool] persist_block_devices: Should the instance maintain its Data volumes.
-        :param pulumi.Input[bool] persist_private_ip: Should the instance maintain its private IP.
-        :param pulumi.Input[bool] persist_root_device: Should the instance maintain its root device volumes.
-        :param pulumi.Input[str] placement_tenancy: Valid values: `"default"`, `"dedicated"`.
-               Default: default
-        :param pulumi.Input[str] preferred_type: Preferred instance types for the instance. We will automatically select optional similar instance types to ensure optimized cost efficiency
-        :param pulumi.Input[str] private_ip: Private IP Allocation Id to associate to the instance.
-        :param pulumi.Input[str] product: Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`, `"Red Hat Enterprise Linux"`, `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`,  `"Red Hat Enterprise Linux (Amazon VPC)"`.
-        :param pulumi.Input[str] region: The AWS region your group will be created in.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: One or more security group IDs.
-        :param pulumi.Input[str] shutdown_script: The Base64-encoded shutdown script to execute prior to instance termination.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: A comma-separated list of subnet identifiers for your instance.
-        :param pulumi.Input[Sequence[pulumi.Input['ManagedInstanceTagArgs']]] tags: Set tags for the instance. Items should be unique.
-        :param pulumi.Input[int] unhealthy_duration: The amount of time, in seconds, an existing instance should remain active after becoming unhealthy. After the set time out the instance will be replaced, default `"120"`.
-        :param pulumi.Input[str] user_data: The Base64-encoded MIME user data to make available to the instances.
-        :param pulumi.Input[bool] utilize_reserved_instances: In case of any available Reserved Instances, Managed Instance will utilize them before purchasing Spot instances. Default: `"false"`.
         """
         if auto_healing is not None:
             pulumi.set(__self__, "auto_healing", auto_healing)
@@ -869,9 +685,6 @@ class _ManagedInstanceState:
     @property
     @pulumi.getter(name="autoHealing")
     def auto_healing(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Enable the auto healing which auto replaces the instance in case the health check fails, default: `"true"`.
-        """
         return pulumi.get(self, "auto_healing")
 
     @auto_healing.setter
@@ -881,9 +694,6 @@ class _ManagedInstanceState:
     @property
     @pulumi.getter(name="blockDeviceMappings")
     def block_device_mappings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ManagedInstanceBlockDeviceMappingArgs']]]]:
-        """
-        Attributes controls a portion of the AWS:
-        """
         return pulumi.get(self, "block_device_mappings")
 
     @block_device_mappings.setter
@@ -893,9 +703,6 @@ class _ManagedInstanceState:
     @property
     @pulumi.getter(name="blockDevicesMode")
     def block_devices_mode(self) -> Optional[pulumi.Input[str]]:
-        """
-        Determine the way we attach the data volumes to the data devices. Valid values: `"reattach"`, `"onLaunch"`. Default: `"onLaunch"`.
-        """
         return pulumi.get(self, "block_devices_mode")
 
     @block_devices_mode.setter
@@ -905,9 +712,6 @@ class _ManagedInstanceState:
     @property
     @pulumi.getter(name="cpuCredits")
     def cpu_credits(self) -> Optional[pulumi.Input[str]]:
-        """
-        cpuCredits can have one of two values: `"unlimited"`, `"standard"`.
-        """
         return pulumi.get(self, "cpu_credits")
 
     @cpu_credits.setter
@@ -917,9 +721,6 @@ class _ManagedInstanceState:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ManagedInstance description.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -929,9 +730,6 @@ class _ManagedInstanceState:
     @property
     @pulumi.getter(name="drainingTimeout")
     def draining_timeout(self) -> Optional[pulumi.Input[int]]:
-        """
-        The time in seconds to allow the instance be drained from incoming TCP connections and detached from ELB before terminating it, during a scale down operation.
-        """
         return pulumi.get(self, "draining_timeout")
 
     @draining_timeout.setter
@@ -941,10 +739,6 @@ class _ManagedInstanceState:
     @property
     @pulumi.getter(name="ebsOptimized")
     def ebs_optimized(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Enable EBS optimization for supported instances. Note: Additional charges will be applied by the Cloud Provider.
-        Default: false
-        """
         return pulumi.get(self, "ebs_optimized")
 
     @ebs_optimized.setter
@@ -954,9 +748,6 @@ class _ManagedInstanceState:
     @property
     @pulumi.getter(name="elasticIp")
     def elastic_ip(self) -> Optional[pulumi.Input[str]]:
-        """
-        Elastic IP Allocation Id to associate to the instance.
-        """
         return pulumi.get(self, "elastic_ip")
 
     @elastic_ip.setter
@@ -966,10 +757,6 @@ class _ManagedInstanceState:
     @property
     @pulumi.getter(name="enableMonitoring")
     def enable_monitoring(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Describes whether instance Enhanced Monitoring is enabled.
-        Default: false
-        """
         return pulumi.get(self, "enable_monitoring")
 
     @enable_monitoring.setter
@@ -988,9 +775,6 @@ class _ManagedInstanceState:
     @property
     @pulumi.getter(name="gracePeriod")
     def grace_period(self) -> Optional[pulumi.Input[int]]:
-        """
-        The amount of time, in seconds, after the instance has launched to starts and check its health, default `"120"`.
-        """
         return pulumi.get(self, "grace_period")
 
     @grace_period.setter
@@ -1000,9 +784,6 @@ class _ManagedInstanceState:
     @property
     @pulumi.getter(name="healthCheckType")
     def health_check_type(self) -> Optional[pulumi.Input[str]]:
-        """
-        The service to use for the health check. Valid values: `"EC2"`, `"ELB"`, `"TARGET_GROUP"`, `"MULTAI_TARGET_SET"`. Default: `"EC2"`.
-        """
         return pulumi.get(self, "health_check_type")
 
     @health_check_type.setter
@@ -1012,9 +793,6 @@ class _ManagedInstanceState:
     @property
     @pulumi.getter(name="iamInstanceProfile")
     def iam_instance_profile(self) -> Optional[pulumi.Input[str]]:
-        """
-        Set IAM profile to instance. Set only one of ARN or Name.
-        """
         return pulumi.get(self, "iam_instance_profile")
 
     @iam_instance_profile.setter
@@ -1024,9 +802,6 @@ class _ManagedInstanceState:
     @property
     @pulumi.getter(name="imageId")
     def image_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the image used to launch the instance.
-        """
         return pulumi.get(self, "image_id")
 
     @image_id.setter
@@ -1036,9 +811,6 @@ class _ManagedInstanceState:
     @property
     @pulumi.getter(name="instanceTypes")
     def instance_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Comma separated list of available instance types for instance.
-        """
         return pulumi.get(self, "instance_types")
 
     @instance_types.setter
@@ -1048,9 +820,6 @@ class _ManagedInstanceState:
     @property
     @pulumi.getter(name="integrationRoute53")
     def integration_route53(self) -> Optional[pulumi.Input['ManagedInstanceIntegrationRoute53Args']]:
-        """
-        Describes the [Route53](https://aws.amazon.com/documentation/route53/?id=docs_gateway) integration.
-        """
         return pulumi.get(self, "integration_route53")
 
     @integration_route53.setter
@@ -1060,9 +829,6 @@ class _ManagedInstanceState:
     @property
     @pulumi.getter(name="keyPair")
     def key_pair(self) -> Optional[pulumi.Input[str]]:
-        """
-        Specify a Key Pair to attach to the instances.
-        """
         return pulumi.get(self, "key_pair")
 
     @key_pair.setter
@@ -1072,9 +838,6 @@ class _ManagedInstanceState:
     @property
     @pulumi.getter(name="lifeCycle")
     def life_cycle(self) -> Optional[pulumi.Input[str]]:
-        """
-        Set lifecycle, valid values: `"spot"`, `"on_demand"`. Default `"spot"`.
-        """
         return pulumi.get(self, "life_cycle")
 
     @life_cycle.setter
@@ -1111,9 +874,6 @@ class _ManagedInstanceState:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ManagedInstance name.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -1132,9 +892,6 @@ class _ManagedInstanceState:
     @property
     @pulumi.getter(name="optimizationWindows")
     def optimization_windows(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        When `performAt` is `"timeWindow"`: must specify a list of `"timeWindows"` with at least one time window. Each string should be formatted as `ddd:hh:mm-ddd:hh:mm` (ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59).
-        """
         return pulumi.get(self, "optimization_windows")
 
     @optimization_windows.setter
@@ -1144,9 +901,6 @@ class _ManagedInstanceState:
     @property
     @pulumi.getter
     def orientation(self) -> Optional[pulumi.Input[str]]:
-        """
-        Select a prediction strategy. Valid values: `"balanced"`, `"costOriented"`, `"availabilityOriented"`, `"cheapest"`. Default: `"availabilityOriented"`.
-        """
         return pulumi.get(self, "orientation")
 
     @orientation.setter
@@ -1156,9 +910,6 @@ class _ManagedInstanceState:
     @property
     @pulumi.getter(name="persistBlockDevices")
     def persist_block_devices(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Should the instance maintain its Data volumes.
-        """
         return pulumi.get(self, "persist_block_devices")
 
     @persist_block_devices.setter
@@ -1168,9 +919,6 @@ class _ManagedInstanceState:
     @property
     @pulumi.getter(name="persistPrivateIp")
     def persist_private_ip(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Should the instance maintain its private IP.
-        """
         return pulumi.get(self, "persist_private_ip")
 
     @persist_private_ip.setter
@@ -1180,9 +928,6 @@ class _ManagedInstanceState:
     @property
     @pulumi.getter(name="persistRootDevice")
     def persist_root_device(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Should the instance maintain its root device volumes.
-        """
         return pulumi.get(self, "persist_root_device")
 
     @persist_root_device.setter
@@ -1192,10 +937,6 @@ class _ManagedInstanceState:
     @property
     @pulumi.getter(name="placementTenancy")
     def placement_tenancy(self) -> Optional[pulumi.Input[str]]:
-        """
-        Valid values: `"default"`, `"dedicated"`.
-        Default: default
-        """
         return pulumi.get(self, "placement_tenancy")
 
     @placement_tenancy.setter
@@ -1205,9 +946,6 @@ class _ManagedInstanceState:
     @property
     @pulumi.getter(name="preferredType")
     def preferred_type(self) -> Optional[pulumi.Input[str]]:
-        """
-        Preferred instance types for the instance. We will automatically select optional similar instance types to ensure optimized cost efficiency
-        """
         return pulumi.get(self, "preferred_type")
 
     @preferred_type.setter
@@ -1217,9 +955,6 @@ class _ManagedInstanceState:
     @property
     @pulumi.getter(name="privateIp")
     def private_ip(self) -> Optional[pulumi.Input[str]]:
-        """
-        Private IP Allocation Id to associate to the instance.
-        """
         return pulumi.get(self, "private_ip")
 
     @private_ip.setter
@@ -1229,9 +964,6 @@ class _ManagedInstanceState:
     @property
     @pulumi.getter
     def product(self) -> Optional[pulumi.Input[str]]:
-        """
-        Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`, `"Red Hat Enterprise Linux"`, `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`,  `"Red Hat Enterprise Linux (Amazon VPC)"`.
-        """
         return pulumi.get(self, "product")
 
     @product.setter
@@ -1241,9 +973,6 @@ class _ManagedInstanceState:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
-        """
-        The AWS region your group will be created in.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -1280,9 +1009,6 @@ class _ManagedInstanceState:
     @property
     @pulumi.getter(name="securityGroupIds")
     def security_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        One or more security group IDs.
-        """
         return pulumi.get(self, "security_group_ids")
 
     @security_group_ids.setter
@@ -1292,9 +1018,6 @@ class _ManagedInstanceState:
     @property
     @pulumi.getter(name="shutdownScript")
     def shutdown_script(self) -> Optional[pulumi.Input[str]]:
-        """
-        The Base64-encoded shutdown script to execute prior to instance termination.
-        """
         return pulumi.get(self, "shutdown_script")
 
     @shutdown_script.setter
@@ -1304,9 +1027,6 @@ class _ManagedInstanceState:
     @property
     @pulumi.getter(name="subnetIds")
     def subnet_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        A comma-separated list of subnet identifiers for your instance.
-        """
         return pulumi.get(self, "subnet_ids")
 
     @subnet_ids.setter
@@ -1316,9 +1036,6 @@ class _ManagedInstanceState:
     @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ManagedInstanceTagArgs']]]]:
-        """
-        Set tags for the instance. Items should be unique.
-        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -1328,9 +1045,6 @@ class _ManagedInstanceState:
     @property
     @pulumi.getter(name="unhealthyDuration")
     def unhealthy_duration(self) -> Optional[pulumi.Input[int]]:
-        """
-        The amount of time, in seconds, an existing instance should remain active after becoming unhealthy. After the set time out the instance will be replaced, default `"120"`.
-        """
         return pulumi.get(self, "unhealthy_duration")
 
     @unhealthy_duration.setter
@@ -1340,9 +1054,6 @@ class _ManagedInstanceState:
     @property
     @pulumi.getter(name="userData")
     def user_data(self) -> Optional[pulumi.Input[str]]:
-        """
-        The Base64-encoded MIME user data to make available to the instances.
-        """
         return pulumi.get(self, "user_data")
 
     @user_data.setter
@@ -1352,9 +1063,6 @@ class _ManagedInstanceState:
     @property
     @pulumi.getter(name="utilizeReservedInstances")
     def utilize_reserved_instances(self) -> Optional[pulumi.Input[bool]]:
-        """
-        In case of any available Reserved Instances, Managed Instance will utilize them before purchasing Spot instances. Default: `"false"`.
-        """
         return pulumi.get(self, "utilize_reserved_instances")
 
     @utilize_reserved_instances.setter
@@ -1422,48 +1130,9 @@ class ManagedInstance(pulumi.CustomResource):
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a Spotinst AWS ManagedInstance resource.
-
+        Create a ManagedInstance resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] auto_healing: Enable the auto healing which auto replaces the instance in case the health check fails, default: `"true"`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ManagedInstanceBlockDeviceMappingArgs']]]] block_device_mappings: Attributes controls a portion of the AWS:
-        :param pulumi.Input[str] block_devices_mode: Determine the way we attach the data volumes to the data devices. Valid values: `"reattach"`, `"onLaunch"`. Default: `"onLaunch"`.
-        :param pulumi.Input[str] cpu_credits: cpuCredits can have one of two values: `"unlimited"`, `"standard"`.
-        :param pulumi.Input[str] description: The ManagedInstance description.
-        :param pulumi.Input[int] draining_timeout: The time in seconds to allow the instance be drained from incoming TCP connections and detached from ELB before terminating it, during a scale down operation.
-        :param pulumi.Input[bool] ebs_optimized: Enable EBS optimization for supported instances. Note: Additional charges will be applied by the Cloud Provider.
-               Default: false
-        :param pulumi.Input[str] elastic_ip: Elastic IP Allocation Id to associate to the instance.
-        :param pulumi.Input[bool] enable_monitoring: Describes whether instance Enhanced Monitoring is enabled.
-               Default: false
-        :param pulumi.Input[int] grace_period: The amount of time, in seconds, after the instance has launched to starts and check its health, default `"120"`.
-        :param pulumi.Input[str] health_check_type: The service to use for the health check. Valid values: `"EC2"`, `"ELB"`, `"TARGET_GROUP"`, `"MULTAI_TARGET_SET"`. Default: `"EC2"`.
-        :param pulumi.Input[str] iam_instance_profile: Set IAM profile to instance. Set only one of ARN or Name.
-        :param pulumi.Input[str] image_id: The ID of the image used to launch the instance.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: Comma separated list of available instance types for instance.
-        :param pulumi.Input[pulumi.InputType['ManagedInstanceIntegrationRoute53Args']] integration_route53: Describes the [Route53](https://aws.amazon.com/documentation/route53/?id=docs_gateway) integration.
-        :param pulumi.Input[str] key_pair: Specify a Key Pair to attach to the instances.
-        :param pulumi.Input[str] life_cycle: Set lifecycle, valid values: `"spot"`, `"on_demand"`. Default `"spot"`.
-        :param pulumi.Input[str] name: The ManagedInstance name.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] optimization_windows: When `performAt` is `"timeWindow"`: must specify a list of `"timeWindows"` with at least one time window. Each string should be formatted as `ddd:hh:mm-ddd:hh:mm` (ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59).
-        :param pulumi.Input[str] orientation: Select a prediction strategy. Valid values: `"balanced"`, `"costOriented"`, `"availabilityOriented"`, `"cheapest"`. Default: `"availabilityOriented"`.
-        :param pulumi.Input[bool] persist_block_devices: Should the instance maintain its Data volumes.
-        :param pulumi.Input[bool] persist_private_ip: Should the instance maintain its private IP.
-        :param pulumi.Input[bool] persist_root_device: Should the instance maintain its root device volumes.
-        :param pulumi.Input[str] placement_tenancy: Valid values: `"default"`, `"dedicated"`.
-               Default: default
-        :param pulumi.Input[str] preferred_type: Preferred instance types for the instance. We will automatically select optional similar instance types to ensure optimized cost efficiency
-        :param pulumi.Input[str] private_ip: Private IP Allocation Id to associate to the instance.
-        :param pulumi.Input[str] product: Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`, `"Red Hat Enterprise Linux"`, `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`,  `"Red Hat Enterprise Linux (Amazon VPC)"`.
-        :param pulumi.Input[str] region: The AWS region your group will be created in.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: One or more security group IDs.
-        :param pulumi.Input[str] shutdown_script: The Base64-encoded shutdown script to execute prior to instance termination.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: A comma-separated list of subnet identifiers for your instance.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ManagedInstanceTagArgs']]]] tags: Set tags for the instance. Items should be unique.
-        :param pulumi.Input[int] unhealthy_duration: The amount of time, in seconds, an existing instance should remain active after becoming unhealthy. After the set time out the instance will be replaced, default `"120"`.
-        :param pulumi.Input[str] user_data: The Base64-encoded MIME user data to make available to the instances.
-        :param pulumi.Input[bool] utilize_reserved_instances: In case of any available Reserved Instances, Managed Instance will utilize them before purchasing Spot instances. Default: `"false"`.
         """
         ...
     @overload
@@ -1472,8 +1141,7 @@ class ManagedInstance(pulumi.CustomResource):
                  args: ManagedInstanceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Spotinst AWS ManagedInstance resource.
-
+        Create a ManagedInstance resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param ManagedInstanceArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1659,44 +1327,6 @@ class ManagedInstance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] auto_healing: Enable the auto healing which auto replaces the instance in case the health check fails, default: `"true"`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ManagedInstanceBlockDeviceMappingArgs']]]] block_device_mappings: Attributes controls a portion of the AWS:
-        :param pulumi.Input[str] block_devices_mode: Determine the way we attach the data volumes to the data devices. Valid values: `"reattach"`, `"onLaunch"`. Default: `"onLaunch"`.
-        :param pulumi.Input[str] cpu_credits: cpuCredits can have one of two values: `"unlimited"`, `"standard"`.
-        :param pulumi.Input[str] description: The ManagedInstance description.
-        :param pulumi.Input[int] draining_timeout: The time in seconds to allow the instance be drained from incoming TCP connections and detached from ELB before terminating it, during a scale down operation.
-        :param pulumi.Input[bool] ebs_optimized: Enable EBS optimization for supported instances. Note: Additional charges will be applied by the Cloud Provider.
-               Default: false
-        :param pulumi.Input[str] elastic_ip: Elastic IP Allocation Id to associate to the instance.
-        :param pulumi.Input[bool] enable_monitoring: Describes whether instance Enhanced Monitoring is enabled.
-               Default: false
-        :param pulumi.Input[int] grace_period: The amount of time, in seconds, after the instance has launched to starts and check its health, default `"120"`.
-        :param pulumi.Input[str] health_check_type: The service to use for the health check. Valid values: `"EC2"`, `"ELB"`, `"TARGET_GROUP"`, `"MULTAI_TARGET_SET"`. Default: `"EC2"`.
-        :param pulumi.Input[str] iam_instance_profile: Set IAM profile to instance. Set only one of ARN or Name.
-        :param pulumi.Input[str] image_id: The ID of the image used to launch the instance.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: Comma separated list of available instance types for instance.
-        :param pulumi.Input[pulumi.InputType['ManagedInstanceIntegrationRoute53Args']] integration_route53: Describes the [Route53](https://aws.amazon.com/documentation/route53/?id=docs_gateway) integration.
-        :param pulumi.Input[str] key_pair: Specify a Key Pair to attach to the instances.
-        :param pulumi.Input[str] life_cycle: Set lifecycle, valid values: `"spot"`, `"on_demand"`. Default `"spot"`.
-        :param pulumi.Input[str] name: The ManagedInstance name.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] optimization_windows: When `performAt` is `"timeWindow"`: must specify a list of `"timeWindows"` with at least one time window. Each string should be formatted as `ddd:hh:mm-ddd:hh:mm` (ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59).
-        :param pulumi.Input[str] orientation: Select a prediction strategy. Valid values: `"balanced"`, `"costOriented"`, `"availabilityOriented"`, `"cheapest"`. Default: `"availabilityOriented"`.
-        :param pulumi.Input[bool] persist_block_devices: Should the instance maintain its Data volumes.
-        :param pulumi.Input[bool] persist_private_ip: Should the instance maintain its private IP.
-        :param pulumi.Input[bool] persist_root_device: Should the instance maintain its root device volumes.
-        :param pulumi.Input[str] placement_tenancy: Valid values: `"default"`, `"dedicated"`.
-               Default: default
-        :param pulumi.Input[str] preferred_type: Preferred instance types for the instance. We will automatically select optional similar instance types to ensure optimized cost efficiency
-        :param pulumi.Input[str] private_ip: Private IP Allocation Id to associate to the instance.
-        :param pulumi.Input[str] product: Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`, `"Red Hat Enterprise Linux"`, `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`,  `"Red Hat Enterprise Linux (Amazon VPC)"`.
-        :param pulumi.Input[str] region: The AWS region your group will be created in.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: One or more security group IDs.
-        :param pulumi.Input[str] shutdown_script: The Base64-encoded shutdown script to execute prior to instance termination.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: A comma-separated list of subnet identifiers for your instance.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ManagedInstanceTagArgs']]]] tags: Set tags for the instance. Items should be unique.
-        :param pulumi.Input[int] unhealthy_duration: The amount of time, in seconds, an existing instance should remain active after becoming unhealthy. After the set time out the instance will be replaced, default `"120"`.
-        :param pulumi.Input[str] user_data: The Base64-encoded MIME user data to make available to the instances.
-        :param pulumi.Input[bool] utilize_reserved_instances: In case of any available Reserved Instances, Managed Instance will utilize them before purchasing Spot instances. Default: `"false"`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1751,75 +1381,46 @@ class ManagedInstance(pulumi.CustomResource):
     @property
     @pulumi.getter(name="autoHealing")
     def auto_healing(self) -> pulumi.Output[Optional[bool]]:
-        """
-        Enable the auto healing which auto replaces the instance in case the health check fails, default: `"true"`.
-        """
         return pulumi.get(self, "auto_healing")
 
     @property
     @pulumi.getter(name="blockDeviceMappings")
     def block_device_mappings(self) -> pulumi.Output[Optional[Sequence['outputs.ManagedInstanceBlockDeviceMapping']]]:
-        """
-        Attributes controls a portion of the AWS:
-        """
         return pulumi.get(self, "block_device_mappings")
 
     @property
     @pulumi.getter(name="blockDevicesMode")
     def block_devices_mode(self) -> pulumi.Output[Optional[str]]:
-        """
-        Determine the way we attach the data volumes to the data devices. Valid values: `"reattach"`, `"onLaunch"`. Default: `"onLaunch"`.
-        """
         return pulumi.get(self, "block_devices_mode")
 
     @property
     @pulumi.getter(name="cpuCredits")
     def cpu_credits(self) -> pulumi.Output[Optional[str]]:
-        """
-        cpuCredits can have one of two values: `"unlimited"`, `"standard"`.
-        """
         return pulumi.get(self, "cpu_credits")
 
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
-        """
-        The ManagedInstance description.
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="drainingTimeout")
     def draining_timeout(self) -> pulumi.Output[Optional[int]]:
-        """
-        The time in seconds to allow the instance be drained from incoming TCP connections and detached from ELB before terminating it, during a scale down operation.
-        """
         return pulumi.get(self, "draining_timeout")
 
     @property
     @pulumi.getter(name="ebsOptimized")
     def ebs_optimized(self) -> pulumi.Output[bool]:
-        """
-        Enable EBS optimization for supported instances. Note: Additional charges will be applied by the Cloud Provider.
-        Default: false
-        """
         return pulumi.get(self, "ebs_optimized")
 
     @property
     @pulumi.getter(name="elasticIp")
     def elastic_ip(self) -> pulumi.Output[Optional[str]]:
-        """
-        Elastic IP Allocation Id to associate to the instance.
-        """
         return pulumi.get(self, "elastic_ip")
 
     @property
     @pulumi.getter(name="enableMonitoring")
     def enable_monitoring(self) -> pulumi.Output[Optional[bool]]:
-        """
-        Describes whether instance Enhanced Monitoring is enabled.
-        Default: false
-        """
         return pulumi.get(self, "enable_monitoring")
 
     @property
@@ -1830,65 +1431,41 @@ class ManagedInstance(pulumi.CustomResource):
     @property
     @pulumi.getter(name="gracePeriod")
     def grace_period(self) -> pulumi.Output[Optional[int]]:
-        """
-        The amount of time, in seconds, after the instance has launched to starts and check its health, default `"120"`.
-        """
         return pulumi.get(self, "grace_period")
 
     @property
     @pulumi.getter(name="healthCheckType")
     def health_check_type(self) -> pulumi.Output[Optional[str]]:
-        """
-        The service to use for the health check. Valid values: `"EC2"`, `"ELB"`, `"TARGET_GROUP"`, `"MULTAI_TARGET_SET"`. Default: `"EC2"`.
-        """
         return pulumi.get(self, "health_check_type")
 
     @property
     @pulumi.getter(name="iamInstanceProfile")
     def iam_instance_profile(self) -> pulumi.Output[Optional[str]]:
-        """
-        Set IAM profile to instance. Set only one of ARN or Name.
-        """
         return pulumi.get(self, "iam_instance_profile")
 
     @property
     @pulumi.getter(name="imageId")
     def image_id(self) -> pulumi.Output[str]:
-        """
-        The ID of the image used to launch the instance.
-        """
         return pulumi.get(self, "image_id")
 
     @property
     @pulumi.getter(name="instanceTypes")
     def instance_types(self) -> pulumi.Output[Sequence[str]]:
-        """
-        Comma separated list of available instance types for instance.
-        """
         return pulumi.get(self, "instance_types")
 
     @property
     @pulumi.getter(name="integrationRoute53")
     def integration_route53(self) -> pulumi.Output[Optional['outputs.ManagedInstanceIntegrationRoute53']]:
-        """
-        Describes the [Route53](https://aws.amazon.com/documentation/route53/?id=docs_gateway) integration.
-        """
         return pulumi.get(self, "integration_route53")
 
     @property
     @pulumi.getter(name="keyPair")
     def key_pair(self) -> pulumi.Output[Optional[str]]:
-        """
-        Specify a Key Pair to attach to the instances.
-        """
         return pulumi.get(self, "key_pair")
 
     @property
     @pulumi.getter(name="lifeCycle")
     def life_cycle(self) -> pulumi.Output[Optional[str]]:
-        """
-        Set lifecycle, valid values: `"spot"`, `"on_demand"`. Default `"spot"`.
-        """
         return pulumi.get(self, "life_cycle")
 
     @property
@@ -1909,9 +1486,6 @@ class ManagedInstance(pulumi.CustomResource):
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        The ManagedInstance name.
-        """
         return pulumi.get(self, "name")
 
     @property
@@ -1922,82 +1496,51 @@ class ManagedInstance(pulumi.CustomResource):
     @property
     @pulumi.getter(name="optimizationWindows")
     def optimization_windows(self) -> pulumi.Output[Optional[Sequence[str]]]:
-        """
-        When `performAt` is `"timeWindow"`: must specify a list of `"timeWindows"` with at least one time window. Each string should be formatted as `ddd:hh:mm-ddd:hh:mm` (ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59).
-        """
         return pulumi.get(self, "optimization_windows")
 
     @property
     @pulumi.getter
     def orientation(self) -> pulumi.Output[Optional[str]]:
-        """
-        Select a prediction strategy. Valid values: `"balanced"`, `"costOriented"`, `"availabilityOriented"`, `"cheapest"`. Default: `"availabilityOriented"`.
-        """
         return pulumi.get(self, "orientation")
 
     @property
     @pulumi.getter(name="persistBlockDevices")
     def persist_block_devices(self) -> pulumi.Output[bool]:
-        """
-        Should the instance maintain its Data volumes.
-        """
         return pulumi.get(self, "persist_block_devices")
 
     @property
     @pulumi.getter(name="persistPrivateIp")
     def persist_private_ip(self) -> pulumi.Output[Optional[bool]]:
-        """
-        Should the instance maintain its private IP.
-        """
         return pulumi.get(self, "persist_private_ip")
 
     @property
     @pulumi.getter(name="persistRootDevice")
     def persist_root_device(self) -> pulumi.Output[Optional[bool]]:
-        """
-        Should the instance maintain its root device volumes.
-        """
         return pulumi.get(self, "persist_root_device")
 
     @property
     @pulumi.getter(name="placementTenancy")
     def placement_tenancy(self) -> pulumi.Output[Optional[str]]:
-        """
-        Valid values: `"default"`, `"dedicated"`.
-        Default: default
-        """
         return pulumi.get(self, "placement_tenancy")
 
     @property
     @pulumi.getter(name="preferredType")
     def preferred_type(self) -> pulumi.Output[Optional[str]]:
-        """
-        Preferred instance types for the instance. We will automatically select optional similar instance types to ensure optimized cost efficiency
-        """
         return pulumi.get(self, "preferred_type")
 
     @property
     @pulumi.getter(name="privateIp")
     def private_ip(self) -> pulumi.Output[Optional[str]]:
-        """
-        Private IP Allocation Id to associate to the instance.
-        """
         return pulumi.get(self, "private_ip")
 
     @property
     @pulumi.getter
     def product(self) -> pulumi.Output[str]:
-        """
-        Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`, `"Red Hat Enterprise Linux"`, `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`,  `"Red Hat Enterprise Linux (Amazon VPC)"`.
-        """
         return pulumi.get(self, "product")
 
     @property
     @pulumi.getter
     def region(self) -> pulumi.Output[Optional[str]]:
-        """
-        The AWS region your group will be created in.
-        """
         return pulumi.get(self, "region")
 
     @property
@@ -2018,57 +1561,36 @@ class ManagedInstance(pulumi.CustomResource):
     @property
     @pulumi.getter(name="securityGroupIds")
     def security_group_ids(self) -> pulumi.Output[Optional[Sequence[str]]]:
-        """
-        One or more security group IDs.
-        """
         return pulumi.get(self, "security_group_ids")
 
     @property
     @pulumi.getter(name="shutdownScript")
     def shutdown_script(self) -> pulumi.Output[Optional[str]]:
-        """
-        The Base64-encoded shutdown script to execute prior to instance termination.
-        """
         return pulumi.get(self, "shutdown_script")
 
     @property
     @pulumi.getter(name="subnetIds")
     def subnet_ids(self) -> pulumi.Output[Sequence[str]]:
-        """
-        A comma-separated list of subnet identifiers for your instance.
-        """
         return pulumi.get(self, "subnet_ids")
 
     @property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Sequence['outputs.ManagedInstanceTag']]]:
-        """
-        Set tags for the instance. Items should be unique.
-        """
         return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="unhealthyDuration")
     def unhealthy_duration(self) -> pulumi.Output[Optional[int]]:
-        """
-        The amount of time, in seconds, an existing instance should remain active after becoming unhealthy. After the set time out the instance will be replaced, default `"120"`.
-        """
         return pulumi.get(self, "unhealthy_duration")
 
     @property
     @pulumi.getter(name="userData")
     def user_data(self) -> pulumi.Output[Optional[str]]:
-        """
-        The Base64-encoded MIME user data to make available to the instances.
-        """
         return pulumi.get(self, "user_data")
 
     @property
     @pulumi.getter(name="utilizeReservedInstances")
     def utilize_reserved_instances(self) -> pulumi.Output[Optional[bool]]:
-        """
-        In case of any available Reserved Instances, Managed Instance will utilize them before purchasing Spot instances. Default: `"false"`.
-        """
         return pulumi.get(self, "utilize_reserved_instances")
 
     @property

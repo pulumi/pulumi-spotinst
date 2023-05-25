@@ -329,6 +329,9 @@ export class MrScalar extends pulumi.CustomResource {
      * The minimal amount of instances in core group.
      */
     public readonly coreMinSize!: pulumi.Output<number | undefined>;
+    /**
+     * Each `*_scaling_*_policy` supports the following:
+     */
     public readonly coreScalingDownPolicies!: pulumi.Output<outputs.aws.MrScalarCoreScalingDownPolicy[] | undefined>;
     public readonly coreScalingUpPolicies!: pulumi.Output<outputs.aws.MrScalarCoreScalingUpPolicy[] | undefined>;
     /**
@@ -471,6 +474,9 @@ export class MrScalar extends pulumi.CustomResource {
      * The minimal amount of instances in task group.
      */
     public readonly taskMinSize!: pulumi.Output<number | undefined>;
+    /**
+     * Possible core group scaling policies (Clone, New strategies):
+     */
     public readonly taskScalingDownPolicies!: pulumi.Output<outputs.aws.MrScalarTaskScalingDownPolicy[] | undefined>;
     public readonly taskScalingUpPolicies!: pulumi.Output<outputs.aws.MrScalarTaskScalingUpPolicy[] | undefined>;
     /**
@@ -700,6 +706,9 @@ export interface MrScalarState {
      * The minimal amount of instances in core group.
      */
     coreMinSize?: pulumi.Input<number>;
+    /**
+     * Each `*_scaling_*_policy` supports the following:
+     */
     coreScalingDownPolicies?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarCoreScalingDownPolicy>[]>;
     coreScalingUpPolicies?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarCoreScalingUpPolicy>[]>;
     /**
@@ -842,6 +851,9 @@ export interface MrScalarState {
      * The minimal amount of instances in task group.
      */
     taskMinSize?: pulumi.Input<number>;
+    /**
+     * Possible core group scaling policies (Clone, New strategies):
+     */
     taskScalingDownPolicies?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarTaskScalingDownPolicy>[]>;
     taskScalingUpPolicies?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarTaskScalingUpPolicy>[]>;
     /**
@@ -926,6 +938,9 @@ export interface MrScalarArgs {
      * The minimal amount of instances in core group.
      */
     coreMinSize?: pulumi.Input<number>;
+    /**
+     * Each `*_scaling_*_policy` supports the following:
+     */
     coreScalingDownPolicies?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarCoreScalingDownPolicy>[]>;
     coreScalingUpPolicies?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarCoreScalingUpPolicy>[]>;
     /**
@@ -1067,6 +1082,9 @@ export interface MrScalarArgs {
      * The minimal amount of instances in task group.
      */
     taskMinSize?: pulumi.Input<number>;
+    /**
+     * Possible core group scaling policies (Clone, New strategies):
+     */
     taskScalingDownPolicies?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarTaskScalingDownPolicy>[]>;
     taskScalingUpPolicies?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarTaskScalingUpPolicy>[]>;
     /**

@@ -13,17 +13,8 @@ namespace Pulumi.SpotInst.Azure.Outputs
     [OutputType]
     public sealed class ElastigroupHealthCheck
     {
-        /// <summary>
-        /// Enable auto-healing of unhealthy VMs.
-        /// </summary>
         public readonly bool? AutoHealing;
-        /// <summary>
-        /// Period of time (seconds) to wait for VM to reach healthiness before monitoring for unhealthiness.
-        /// </summary>
         public readonly int? GracePeriod;
-        /// <summary>
-        /// Health check used to validate VM health. Valid values: “INSTANCE_STATE”.
-        /// </summary>
         public readonly string HealthCheckType;
 
         [OutputConstructor]

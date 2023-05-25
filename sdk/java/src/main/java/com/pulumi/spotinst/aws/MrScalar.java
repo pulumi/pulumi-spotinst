@@ -540,9 +540,17 @@ public class MrScalar extends com.pulumi.resources.CustomResource {
     public Output<Optional<Integer>> coreMinSize() {
         return Codegen.optional(this.coreMinSize);
     }
+    /**
+     * Each `*_scaling_*_policy` supports the following:
+     * 
+     */
     @Export(name="coreScalingDownPolicies", type=List.class, parameters={MrScalarCoreScalingDownPolicy.class})
     private Output</* @Nullable */ List<MrScalarCoreScalingDownPolicy>> coreScalingDownPolicies;
 
+    /**
+     * @return Each `*_scaling_*_policy` supports the following:
+     * 
+     */
     public Output<Optional<List<MrScalarCoreScalingDownPolicy>>> coreScalingDownPolicies() {
         return Codegen.optional(this.coreScalingDownPolicies);
     }
@@ -1052,9 +1060,17 @@ public class MrScalar extends com.pulumi.resources.CustomResource {
     public Output<Optional<Integer>> taskMinSize() {
         return Codegen.optional(this.taskMinSize);
     }
+    /**
+     * Possible core group scaling policies (Clone, New strategies):
+     * 
+     */
     @Export(name="taskScalingDownPolicies", type=List.class, parameters={MrScalarTaskScalingDownPolicy.class})
     private Output</* @Nullable */ List<MrScalarTaskScalingDownPolicy>> taskScalingDownPolicies;
 
+    /**
+     * @return Possible core group scaling policies (Clone, New strategies):
+     * 
+     */
     public Output<Optional<List<MrScalarTaskScalingDownPolicy>>> taskScalingDownPolicies() {
         return Codegen.optional(this.taskScalingDownPolicies);
     }

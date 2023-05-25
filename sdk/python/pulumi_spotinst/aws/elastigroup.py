@@ -154,6 +154,12 @@ class ElastigroupArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] preferred_availability_zones: The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs.
                Note: Must be a sublist of `availability_zones` and `orientation` value must not be `"equalAzDistribution"`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] private_ips: List of Private IPs to associate to the group instances.(e.g. "172.1.1.0"). Please note: This setting will only apply if persistence.persist_private_ip is set to true.
+               
+               Usage:
+               
+               ```python
+               import pulumi
+               ```
         :param pulumi.Input[str] region: The AWS region your group will be created in.
                Note: This parameter is required if you specify subnets (through subnet_ids). This parameter is optional if you specify Availability Zones (through availability_zones).
         :param pulumi.Input[Sequence[pulumi.Input['ElastigroupResourceTagSpecificationArgs']]] resource_tag_specifications: User will specify which resources should be tagged with group tags.
@@ -1006,6 +1012,12 @@ class ElastigroupArgs:
     def private_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         List of Private IPs to associate to the group instances.(e.g. "172.1.1.0"). Please note: This setting will only apply if persistence.persist_private_ip is set to true.
+
+        Usage:
+
+        ```python
+        import pulumi
+        ```
         """
         return pulumi.get(self, "private_ips")
 
@@ -1391,6 +1403,12 @@ class _ElastigroupState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] preferred_availability_zones: The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs.
                Note: Must be a sublist of `availability_zones` and `orientation` value must not be `"equalAzDistribution"`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] private_ips: List of Private IPs to associate to the group instances.(e.g. "172.1.1.0"). Please note: This setting will only apply if persistence.persist_private_ip is set to true.
+               
+               Usage:
+               
+               ```python
+               import pulumi
+               ```
         :param pulumi.Input[str] product: Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`.
                For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
         :param pulumi.Input[str] region: The AWS region your group will be created in.
@@ -2227,6 +2245,12 @@ class _ElastigroupState:
     def private_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         List of Private IPs to associate to the group instances.(e.g. "172.1.1.0"). Please note: This setting will only apply if persistence.persist_private_ip is set to true.
+
+        Usage:
+
+        ```python
+        import pulumi
+        ```
         """
         return pulumi.get(self, "private_ips")
 
@@ -2643,6 +2667,12 @@ class Elastigroup(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] preferred_availability_zones: The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs.
                Note: Must be a sublist of `availability_zones` and `orientation` value must not be `"equalAzDistribution"`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] private_ips: List of Private IPs to associate to the group instances.(e.g. "172.1.1.0"). Please note: This setting will only apply if persistence.persist_private_ip is set to true.
+               
+               Usage:
+               
+               ```python
+               import pulumi
+               ```
         :param pulumi.Input[str] product: Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`.
                For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
         :param pulumi.Input[str] region: The AWS region your group will be created in.
@@ -3019,6 +3049,12 @@ class Elastigroup(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] preferred_availability_zones: The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs.
                Note: Must be a sublist of `availability_zones` and `orientation` value must not be `"equalAzDistribution"`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] private_ips: List of Private IPs to associate to the group instances.(e.g. "172.1.1.0"). Please note: This setting will only apply if persistence.persist_private_ip is set to true.
+               
+               Usage:
+               
+               ```python
+               import pulumi
+               ```
         :param pulumi.Input[str] product: Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`.
                For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
         :param pulumi.Input[str] region: The AWS region your group will be created in.
@@ -3555,6 +3591,12 @@ class Elastigroup(pulumi.CustomResource):
     def private_ips(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         List of Private IPs to associate to the group instances.(e.g. "172.1.1.0"). Please note: This setting will only apply if persistence.persist_private_ip is set to true.
+
+        Usage:
+
+        ```python
+        import pulumi
+        ```
         """
         return pulumi.get(self, "private_ips")
 

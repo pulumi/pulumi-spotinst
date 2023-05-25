@@ -12,9 +12,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
 
     public sealed class ManagedInstanceRevertToSpotGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Valid values: `"always"`, `"never"`, `"timeWindow"`. Default `"never"`.
-        /// </summary>
         [Input("performAt", required: true)]
         public Input<string> PerformAt { get; set; } = null!;
 

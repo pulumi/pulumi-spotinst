@@ -15,62 +15,30 @@ public final class ManagedInstanceResourceTagSpecificationArgs extends com.pulum
 
     public static final ManagedInstanceResourceTagSpecificationArgs Empty = new ManagedInstanceResourceTagSpecificationArgs();
 
-    /**
-     * Tag specification for AMI resources.
-     * 
-     */
     @Import(name="shouldTagAmis")
     private @Nullable Output<Boolean> shouldTagAmis;
 
-    /**
-     * @return Tag specification for AMI resources.
-     * 
-     */
     public Optional<Output<Boolean>> shouldTagAmis() {
         return Optional.ofNullable(this.shouldTagAmis);
     }
 
-    /**
-     * Tag specification for ENI resources.
-     * 
-     */
     @Import(name="shouldTagEnis")
     private @Nullable Output<Boolean> shouldTagEnis;
 
-    /**
-     * @return Tag specification for ENI resources.
-     * 
-     */
     public Optional<Output<Boolean>> shouldTagEnis() {
         return Optional.ofNullable(this.shouldTagEnis);
     }
 
-    /**
-     * Tag specification for Snapshot resources.
-     * 
-     */
     @Import(name="shouldTagSnapshots")
     private @Nullable Output<Boolean> shouldTagSnapshots;
 
-    /**
-     * @return Tag specification for Snapshot resources.
-     * 
-     */
     public Optional<Output<Boolean>> shouldTagSnapshots() {
         return Optional.ofNullable(this.shouldTagSnapshots);
     }
 
-    /**
-     * Tag specification for Volume resources.
-     * 
-     */
     @Import(name="shouldTagVolumes")
     private @Nullable Output<Boolean> shouldTagVolumes;
 
-    /**
-     * @return Tag specification for Volume resources.
-     * 
-     */
     public Optional<Output<Boolean>> shouldTagVolumes() {
         return Optional.ofNullable(this.shouldTagVolumes);
     }
@@ -102,86 +70,38 @@ public final class ManagedInstanceResourceTagSpecificationArgs extends com.pulum
             $ = new ManagedInstanceResourceTagSpecificationArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param shouldTagAmis Tag specification for AMI resources.
-         * 
-         * @return builder
-         * 
-         */
         public Builder shouldTagAmis(@Nullable Output<Boolean> shouldTagAmis) {
             $.shouldTagAmis = shouldTagAmis;
             return this;
         }
 
-        /**
-         * @param shouldTagAmis Tag specification for AMI resources.
-         * 
-         * @return builder
-         * 
-         */
         public Builder shouldTagAmis(Boolean shouldTagAmis) {
             return shouldTagAmis(Output.of(shouldTagAmis));
         }
 
-        /**
-         * @param shouldTagEnis Tag specification for ENI resources.
-         * 
-         * @return builder
-         * 
-         */
         public Builder shouldTagEnis(@Nullable Output<Boolean> shouldTagEnis) {
             $.shouldTagEnis = shouldTagEnis;
             return this;
         }
 
-        /**
-         * @param shouldTagEnis Tag specification for ENI resources.
-         * 
-         * @return builder
-         * 
-         */
         public Builder shouldTagEnis(Boolean shouldTagEnis) {
             return shouldTagEnis(Output.of(shouldTagEnis));
         }
 
-        /**
-         * @param shouldTagSnapshots Tag specification for Snapshot resources.
-         * 
-         * @return builder
-         * 
-         */
         public Builder shouldTagSnapshots(@Nullable Output<Boolean> shouldTagSnapshots) {
             $.shouldTagSnapshots = shouldTagSnapshots;
             return this;
         }
 
-        /**
-         * @param shouldTagSnapshots Tag specification for Snapshot resources.
-         * 
-         * @return builder
-         * 
-         */
         public Builder shouldTagSnapshots(Boolean shouldTagSnapshots) {
             return shouldTagSnapshots(Output.of(shouldTagSnapshots));
         }
 
-        /**
-         * @param shouldTagVolumes Tag specification for Volume resources.
-         * 
-         * @return builder
-         * 
-         */
         public Builder shouldTagVolumes(@Nullable Output<Boolean> shouldTagVolumes) {
             $.shouldTagVolumes = shouldTagVolumes;
             return this;
         }
 
-        /**
-         * @param shouldTagVolumes Tag specification for Volume resources.
-         * 
-         * @return builder
-         * 
-         */
         public Builder shouldTagVolumes(Boolean shouldTagVolumes) {
             return shouldTagVolumes(Output.of(shouldTagVolumes));
         }

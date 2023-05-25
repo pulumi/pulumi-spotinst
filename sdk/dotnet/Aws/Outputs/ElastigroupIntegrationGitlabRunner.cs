@@ -15,6 +15,18 @@ namespace Pulumi.SpotInst.Aws.Outputs
     {
         /// <summary>
         /// Setting the task to being enabled or disabled.
+        /// 
+        /// Usage:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        /// });
+        /// ```
         /// </summary>
         public readonly bool? IsEnabled;
 

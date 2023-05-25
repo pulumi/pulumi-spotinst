@@ -16,107 +16,51 @@ public final class ManagedInstanceLoadBalancerArgs extends com.pulumi.resources.
 
     public static final ManagedInstanceLoadBalancerArgs Empty = new ManagedInstanceLoadBalancerArgs();
 
-    /**
-     * The AWS resource ARN (Required only for ALB target groups).
-     * 
-     */
     @Import(name="arn")
     private @Nullable Output<String> arn;
 
-    /**
-     * @return The AWS resource ARN (Required only for ALB target groups).
-     * 
-     */
     public Optional<Output<String>> arn() {
         return Optional.ofNullable(this.arn);
     }
 
-    /**
-     * &#34;Auto Weight&#34; will automatically provide a higher weight for instances that are larger as appropriate. For example, if you have configured your Elastigroup with m4.large and m4.xlarge instances the m4.large will have half the weight of an m4.xlarge. This ensures that larger instances receive a higher number of MLB requests.
-     * 
-     */
     @Import(name="autoWeight")
     private @Nullable Output<Boolean> autoWeight;
 
-    /**
-     * @return &#34;Auto Weight&#34; will automatically provide a higher weight for instances that are larger as appropriate. For example, if you have configured your Elastigroup with m4.large and m4.xlarge instances the m4.large will have half the weight of an m4.xlarge. This ensures that larger instances receive a higher number of MLB requests.
-     * 
-     */
     public Optional<Output<Boolean>> autoWeight() {
         return Optional.ofNullable(this.autoWeight);
     }
 
-    /**
-     * &#34;AZ Awareness&#34; will ensure that instances within the same AZ are using the corresponding MLB runtime instance in the same AZ. This feature reduces multi-zone data transfer fees.
-     * 
-     */
     @Import(name="azAwareness")
     private @Nullable Output<Boolean> azAwareness;
 
-    /**
-     * @return &#34;AZ Awareness&#34; will ensure that instances within the same AZ are using the corresponding MLB runtime instance in the same AZ. This feature reduces multi-zone data transfer fees.
-     * 
-     */
     public Optional<Output<Boolean>> azAwareness() {
         return Optional.ofNullable(this.azAwareness);
     }
 
-    /**
-     * The Multai load balancer ID. Example: lb-123456
-     * 
-     */
     @Import(name="balancerId")
     private @Nullable Output<String> balancerId;
 
-    /**
-     * @return The Multai load balancer ID. Example: lb-123456
-     * 
-     */
     public Optional<Output<String>> balancerId() {
         return Optional.ofNullable(this.balancerId);
     }
 
-    /**
-     * The AWS resource name. Required for Classic Load Balancer. Optional for Application Load Balancer.
-     * 
-     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
-    /**
-     * @return The AWS resource name. Required for Classic Load Balancer. Optional for Application Load Balancer.
-     * 
-     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
-    /**
-     * The Multai load target set ID. Example: ts-123456
-     * 
-     */
     @Import(name="targetSetId")
     private @Nullable Output<String> targetSetId;
 
-    /**
-     * @return The Multai load target set ID. Example: ts-123456
-     * 
-     */
     public Optional<Output<String>> targetSetId() {
         return Optional.ofNullable(this.targetSetId);
     }
 
-    /**
-     * The resource type. Valid Values: `&#34;CLASSIC&#34;`, `&#34;TARGET_GROUP&#34;`, `&#34;MULTAI_TARGET_SET&#34;`.
-     * 
-     */
     @Import(name="type", required=true)
     private Output<String> type;
 
-    /**
-     * @return The resource type. Valid Values: `&#34;CLASSIC&#34;`, `&#34;TARGET_GROUP&#34;`, `&#34;MULTAI_TARGET_SET&#34;`.
-     * 
-     */
     public Output<String> type() {
         return this.type;
     }
@@ -151,149 +95,65 @@ public final class ManagedInstanceLoadBalancerArgs extends com.pulumi.resources.
             $ = new ManagedInstanceLoadBalancerArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param arn The AWS resource ARN (Required only for ALB target groups).
-         * 
-         * @return builder
-         * 
-         */
         public Builder arn(@Nullable Output<String> arn) {
             $.arn = arn;
             return this;
         }
 
-        /**
-         * @param arn The AWS resource ARN (Required only for ALB target groups).
-         * 
-         * @return builder
-         * 
-         */
         public Builder arn(String arn) {
             return arn(Output.of(arn));
         }
 
-        /**
-         * @param autoWeight &#34;Auto Weight&#34; will automatically provide a higher weight for instances that are larger as appropriate. For example, if you have configured your Elastigroup with m4.large and m4.xlarge instances the m4.large will have half the weight of an m4.xlarge. This ensures that larger instances receive a higher number of MLB requests.
-         * 
-         * @return builder
-         * 
-         */
         public Builder autoWeight(@Nullable Output<Boolean> autoWeight) {
             $.autoWeight = autoWeight;
             return this;
         }
 
-        /**
-         * @param autoWeight &#34;Auto Weight&#34; will automatically provide a higher weight for instances that are larger as appropriate. For example, if you have configured your Elastigroup with m4.large and m4.xlarge instances the m4.large will have half the weight of an m4.xlarge. This ensures that larger instances receive a higher number of MLB requests.
-         * 
-         * @return builder
-         * 
-         */
         public Builder autoWeight(Boolean autoWeight) {
             return autoWeight(Output.of(autoWeight));
         }
 
-        /**
-         * @param azAwareness &#34;AZ Awareness&#34; will ensure that instances within the same AZ are using the corresponding MLB runtime instance in the same AZ. This feature reduces multi-zone data transfer fees.
-         * 
-         * @return builder
-         * 
-         */
         public Builder azAwareness(@Nullable Output<Boolean> azAwareness) {
             $.azAwareness = azAwareness;
             return this;
         }
 
-        /**
-         * @param azAwareness &#34;AZ Awareness&#34; will ensure that instances within the same AZ are using the corresponding MLB runtime instance in the same AZ. This feature reduces multi-zone data transfer fees.
-         * 
-         * @return builder
-         * 
-         */
         public Builder azAwareness(Boolean azAwareness) {
             return azAwareness(Output.of(azAwareness));
         }
 
-        /**
-         * @param balancerId The Multai load balancer ID. Example: lb-123456
-         * 
-         * @return builder
-         * 
-         */
         public Builder balancerId(@Nullable Output<String> balancerId) {
             $.balancerId = balancerId;
             return this;
         }
 
-        /**
-         * @param balancerId The Multai load balancer ID. Example: lb-123456
-         * 
-         * @return builder
-         * 
-         */
         public Builder balancerId(String balancerId) {
             return balancerId(Output.of(balancerId));
         }
 
-        /**
-         * @param name The AWS resource name. Required for Classic Load Balancer. Optional for Application Load Balancer.
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
-        /**
-         * @param name The AWS resource name. Required for Classic Load Balancer. Optional for Application Load Balancer.
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
-        /**
-         * @param targetSetId The Multai load target set ID. Example: ts-123456
-         * 
-         * @return builder
-         * 
-         */
         public Builder targetSetId(@Nullable Output<String> targetSetId) {
             $.targetSetId = targetSetId;
             return this;
         }
 
-        /**
-         * @param targetSetId The Multai load target set ID. Example: ts-123456
-         * 
-         * @return builder
-         * 
-         */
         public Builder targetSetId(String targetSetId) {
             return targetSetId(Output.of(targetSetId));
         }
 
-        /**
-         * @param type The resource type. Valid Values: `&#34;CLASSIC&#34;`, `&#34;TARGET_GROUP&#34;`, `&#34;MULTAI_TARGET_SET&#34;`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder type(Output<String> type) {
             $.type = type;
             return this;
         }
 
-        /**
-         * @param type The resource type. Valid Values: `&#34;CLASSIC&#34;`, `&#34;TARGET_GROUP&#34;`, `&#34;MULTAI_TARGET_SET&#34;`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder type(String type) {
             return type(Output.of(type));
         }

@@ -19,108 +19,55 @@ export interface ElastigroupAzureV3Image {
 }
 
 export interface ElastigroupAzureV3ImageCustom {
-    /**
-     * Name of the custom image. Required if resourceGroupName is specified.
-     */
     imageName: pulumi.Input<string>;
-    /**
-     * Name of the Azure Resource Group where the Managed Service Identity is located.
-     */
     resourceGroupName: pulumi.Input<string>;
 }
 
 export interface ElastigroupAzureV3ImageMarketplace {
-    /**
-     * Name of the image to use. Required if publisher is specified.
-     */
     offer: pulumi.Input<string>;
-    /**
-     * Image publisher. Required if resourceGroupName is not specified.
-     */
     publisher: pulumi.Input<string>;
-    /**
-     * Image's Stock Keeping Unit, which is the specific version of the image. Required if publisher is specified.
-     */
     sku: pulumi.Input<string>;
     version: pulumi.Input<string>;
 }
 
 export interface ElastigroupAzureV3Login {
-    /**
-     * Password for admin access to Windows VMs. Required for Windows OS types.
-     */
     password?: pulumi.Input<string>;
-    /**
-     * SSH for admin access to Linux VMs. Required for Linux OS types.
-     */
     sshPublicKey?: pulumi.Input<string>;
-    /**
-     * Set admin access for accessing your VMs.
-     */
     userName: pulumi.Input<string>;
 }
 
 export interface ElastigroupAzureV3ManagedServiceIdentity {
-    /**
-     * Name of the Managed Service Identity.
-     */
     name: pulumi.Input<string>;
-    /**
-     * Name of the Azure Resource Group where the Managed Service Identity is located.
-     */
     resourceGroupName: pulumi.Input<string>;
 }
 
 export interface ElastigroupAzureV3Network {
     networkInterfaces: pulumi.Input<pulumi.Input<inputs.ElastigroupAzureV3NetworkNetworkInterface>[]>;
-    /**
-     * The resource group of the Application Security Group.
-     * }
-     */
     resourceGroupName: pulumi.Input<string>;
-    /**
-     * Name of Vnet.
-     */
     virtualNetworkName: pulumi.Input<string>;
 }
 
 export interface ElastigroupAzureV3NetworkNetworkInterface {
-    /**
-     * Array of additional IP configuration objects.
-     */
     additionalIpConfigs?: pulumi.Input<pulumi.Input<inputs.ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfig>[]>;
-    /**
-     * List of Application Security Groups that will be associated to the primary ip configuration of the network interface.
-     */
     applicationSecurityGroups?: pulumi.Input<pulumi.Input<inputs.ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroup>[]>;
     assignPublicIp: pulumi.Input<boolean>;
     isPrimary: pulumi.Input<boolean>;
-    /**
-     * ID of subnet.
-     */
     subnetName: pulumi.Input<string>;
 }
 
 export interface ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfig {
-    /**
-     * Name of the Managed Service Identity.
-     */
     name: pulumi.Input<string>;
-    /**
-     * Available from Azure Api-Version 2017-03-30 onwards, it represents whether the specific ip configuration is IPv4 or IPv6. Valid values: `IPv4`, `IPv6`.
-     */
     privateIpVersion?: pulumi.Input<string>;
 }
 
 export interface ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroup {
-    /**
-     * Name of the Managed Service Identity.
-     */
     name: pulumi.Input<string>;
-    /**
-     * Name of the Azure Resource Group where the Managed Service Identity is located.
-     */
     resourceGroupName: pulumi.Input<string>;
+}
+
+export interface ElastigroupAzureV3Tag {
+    key: pulumi.Input<string>;
+    value: pulumi.Input<string>;
 }
 
 export interface HealthCheckCheck {
@@ -414,6 +361,12 @@ export namespace aws {
         adjustment?: pulumi.Input<string>;
         /**
          * The percentage of instances to add or remove.
+         *
+         * Usage:
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          */
         adjustmentPercentage?: pulumi.Input<string>;
         /**
@@ -504,6 +457,14 @@ export namespace aws {
         snapshotId?: pulumi.Input<string>;
         /**
          * The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volumeType` = gp3.
+         *
+         * Modifying any `ebsBlockDevice` currently requires resource replacement.
+         *
+         * Usage:
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          */
         throughput?: pulumi.Input<number>;
         /**
@@ -524,6 +485,12 @@ export namespace aws {
         /**
          * The [Instance Store Device Name](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html#InstanceStoreDeviceNames)
          * (e.g. `"ephemeral0"`).
+         *
+         * Usage:
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          */
         virtualName: pulumi.Input<string>;
     }
@@ -610,6 +577,12 @@ export namespace aws {
         timeWindow?: pulumi.Input<string>;
         /**
          * Level to update
+         *
+         * Usage:
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          */
         updateLevel?: pulumi.Input<string>;
     }
@@ -636,6 +609,12 @@ export namespace aws {
         applicationName: pulumi.Input<string>;
         /**
          * The deployment group name.
+         *
+         * Usage:
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          */
         deploymentGroupName: pulumi.Input<string>;
     }
@@ -675,6 +654,10 @@ export namespace aws {
         /**
          * Represents the maximum percent to scale-down. Number between 1-100.
          * Usage:
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          */
         maxScaleDownPercentage?: pulumi.Input<number>;
     }
@@ -737,6 +720,10 @@ export namespace aws {
         key: pulumi.Input<string>;
         /**
          * The dimension value.
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          */
         value: pulumi.Input<string>;
     }
@@ -749,6 +736,10 @@ export namespace aws {
         /**
          * Represents the maximum percent to scale-down. Number between 1-100.
          * Usage:
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          */
         maxScaleDownPercentage?: pulumi.Input<number>;
     }
@@ -771,6 +762,12 @@ export namespace aws {
     export interface ElastigroupIntegrationEcsBatch {
         /**
          * Array of strings.
+         *
+         * Usage:
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          */
         jobQueueNames: pulumi.Input<pulumi.Input<string>[]>;
     }
@@ -785,11 +782,24 @@ export namespace aws {
     export interface ElastigroupIntegrationGitlabRunner {
         /**
          * Setting the task to being enabled or disabled.
+         *
+         * Usage:
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          */
         isEnabled?: pulumi.Input<boolean>;
     }
 
     export interface ElastigroupIntegrationKubernetes {
+        /**
+         * Usage:
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
+         */
         apiServer?: pulumi.Input<string>;
         /**
          * The amount of time, in seconds, after a scaling activity completes before any further trigger-related scaling activities can start.
@@ -813,6 +823,12 @@ export namespace aws {
         autoscaleIsEnabled?: pulumi.Input<boolean>;
         /**
          * A key/value mapping of tags to assign to the resource.
+         *
+         * Usage:
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          */
         autoscaleLabels?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupIntegrationKubernetesAutoscaleLabel>[]>;
         clusterIdentifier?: pulumi.Input<string>;
@@ -852,17 +868,34 @@ export namespace aws {
         key: pulumi.Input<string>;
         /**
          * The dimension value.
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          */
         value: pulumi.Input<string>;
     }
 
     export interface ElastigroupIntegrationMesosphere {
+        /**
+         * Usage:
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
+         */
         apiServer: pulumi.Input<string>;
     }
 
     export interface ElastigroupIntegrationMultaiRuntime {
         /**
          * The deployment id you want to get
+         *
+         * Usage:
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          */
         deploymentId: pulumi.Input<string>;
     }
@@ -874,6 +907,12 @@ export namespace aws {
         aclToken?: pulumi.Input<string>;
         /**
          * A key/value mapping of tags to assign to the resource.
+         *
+         * Usage:
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          */
         autoscaleConstraints?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupIntegrationNomadAutoscaleConstraint>[]>;
         /**
@@ -906,6 +945,10 @@ export namespace aws {
         key: pulumi.Input<string>;
         /**
          * The dimension value.
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          */
         value: pulumi.Input<string>;
     }
@@ -948,6 +991,10 @@ export namespace aws {
         /**
          * The Rancher version. Must be `"1"` or `"2"`. If this field is omitted, it’s assumed that the Rancher cluster is version 1. Note that Kubernetes is required when using Rancher version 2^.
          * Usage:
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          */
         version?: pulumi.Input<string>;
     }
@@ -985,6 +1032,12 @@ export namespace aws {
         name: pulumi.Input<string>;
         /**
          * Designates whether the DNS address should be exposed to connections outside the VPC.
+         *
+         * Usage:
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          */
         usePublicDns?: pulumi.Input<boolean>;
         /**
@@ -1069,6 +1122,12 @@ export namespace aws {
     export interface ElastigroupMultaiTargetSet {
         /**
          * ID of Multai Load Balancer.
+         *
+         * Usage:
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          */
         balancerId: pulumi.Input<string>;
         /**
@@ -1137,6 +1196,10 @@ export namespace aws {
         name: pulumi.Input<string>;
         /**
          * The dimension value.
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          */
         value?: pulumi.Input<string>;
     }
@@ -1144,6 +1207,12 @@ export namespace aws {
     export interface ElastigroupNetworkInterface {
         /**
          * Indicates whether to assign IPV6 addresses to your instance. Requires a subnet with IPV6 CIDR block ranges.
+         *
+         * Usage:
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          */
         associateIpv6Address?: pulumi.Input<boolean>;
         /**
@@ -1282,6 +1351,13 @@ export namespace aws {
         target?: pulumi.Input<string>;
         /**
          * The value against which the specified statistic is compared in order to determine if a step should be applied.
+         *
+         *
+         * If you do not specify an action type, you can only use – `adjustment`, `minTargetCapacity`, `maxTargetCapacity`.
+         * While using action_type, please also set the following:
+         *
+         * When using `adjustment`           – set the field `adjustment`
+         * When using `updateCapacity`       – set the fields `minimum`, `maximum`, and `target`
          */
         threshold?: pulumi.Input<number>;
         /**
@@ -1297,6 +1373,10 @@ export namespace aws {
         name: pulumi.Input<string>;
         /**
          * The dimension value.
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          */
         value?: pulumi.Input<string>;
     }
@@ -1308,6 +1388,22 @@ export namespace aws {
         action: pulumi.Input<inputs.aws.ElastigroupScalingDownPolicyStepAdjustmentAction>;
         /**
          * The value against which the specified statistic is compared. If a `stepAdjustment` object is defined, then it cannot be specified.
+         *
+         *
+         * If you do not specify an action type, you can only use – `adjustment`, `minTargetCapacity`, `maxTargetCapacity`.
+         * While using action_type, please also set the following:
+         *
+         * When using `adjustment`           – set the field `adjustment`
+         * When using `setMinTarget`         – set the field `minTargetCapacity`
+         * When using `updateCapacity`       – set the fields `minimum`, `maximum`, and `target`
+         *
+         *
+         *
+         * If you do not specify an action type, you can only use – `adjustment`, `minTargetCapacity`, `maxTargetCapacity`.
+         * While using action_type, please also set the following:
+         *
+         * When using `adjustment`           – set the field `adjustment`
+         * When using `updateCapacity`       – set the fields `minimum`, `maximum`, and `target`
          */
         threshold: pulumi.Input<number>;
     }
@@ -1339,6 +1435,12 @@ export namespace aws {
         target?: pulumi.Input<string>;
         /**
          * The type of the action to take when scale up is needed. Valid types: `"adjustment"`, `"updateCapacity"`, `"setMinTarget"`, `"percentageAdjustment"`.
+         *
+         * Usage:
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          */
         type: pulumi.Input<string>;
     }
@@ -1369,6 +1471,8 @@ export namespace aws {
         evaluationPeriods?: pulumi.Input<number>;
         /**
          * String, restrict the maximal number of instances which can be added in each scale-up action.
+         *
+         * `scalingTargetPolicies` support predictive scaling:
          */
         maxCapacityPerScale?: pulumi.Input<string>;
         /**
@@ -1389,6 +1493,16 @@ export namespace aws {
         policyName: pulumi.Input<string>;
         /**
          * Start a metric prediction process to determine the expected target metric value within the next two days. See [Predictive Autoscaling](https://api.spotinst.com/elastigroup-for-aws/concepts/scaling-concepts/predictive-autoscaling/) documentation for more info. Valid values: `FORECAST_AND_SCALE`, `FORECAST_ONLY`.
+         *
+         * Usage:
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          */
         predictiveMode?: pulumi.Input<string>;
         /**
@@ -1416,6 +1530,10 @@ export namespace aws {
         name: pulumi.Input<string>;
         /**
          * The dimension value.
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          */
         value?: pulumi.Input<string>;
     }
@@ -1496,6 +1614,14 @@ export namespace aws {
         target?: pulumi.Input<string>;
         /**
          * The value against which the specified statistic is compared in order to determine if a step should be applied.
+         *
+         *
+         * If you do not specify an action type, you can only use – `adjustment`, `minTargetCapacity`, `maxTargetCapacity`.
+         * While using action_type, please also set the following:
+         *
+         * When using `adjustment`           – set the field `adjustment`
+         * When using `setMinTarget`         – set the field `minTargetCapacity`
+         * When using `updateCapacity`       – set the fields `minimum`, `maximum`, and `target`
          */
         threshold?: pulumi.Input<number>;
         /**
@@ -1511,6 +1637,10 @@ export namespace aws {
         name: pulumi.Input<string>;
         /**
          * The dimension value.
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          */
         value?: pulumi.Input<string>;
     }
@@ -1522,6 +1652,22 @@ export namespace aws {
         action: pulumi.Input<inputs.aws.ElastigroupScalingUpPolicyStepAdjustmentAction>;
         /**
          * The value against which the specified statistic is compared. If a `stepAdjustment` object is defined, then it cannot be specified.
+         *
+         *
+         * If you do not specify an action type, you can only use – `adjustment`, `minTargetCapacity`, `maxTargetCapacity`.
+         * While using action_type, please also set the following:
+         *
+         * When using `adjustment`           – set the field `adjustment`
+         * When using `setMinTarget`         – set the field `minTargetCapacity`
+         * When using `updateCapacity`       – set the fields `minimum`, `maximum`, and `target`
+         *
+         *
+         *
+         * If you do not specify an action type, you can only use – `adjustment`, `minTargetCapacity`, `maxTargetCapacity`.
+         * While using action_type, please also set the following:
+         *
+         * When using `adjustment`           – set the field `adjustment`
+         * When using `updateCapacity`       – set the fields `minimum`, `maximum`, and `target`
          */
         threshold: pulumi.Input<number>;
     }
@@ -1553,6 +1699,12 @@ export namespace aws {
         target?: pulumi.Input<string>;
         /**
          * The type of the action to take when scale up is needed. Valid types: `"adjustment"`, `"updateCapacity"`, `"setMinTarget"`, `"percentageAdjustment"`.
+         *
+         * Usage:
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          */
         type: pulumi.Input<string>;
     }
@@ -1564,6 +1716,12 @@ export namespace aws {
         adjustment?: pulumi.Input<string>;
         /**
          * The percentage of instances to add or remove.
+         *
+         * Usage:
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          */
         adjustmentPercentage?: pulumi.Input<string>;
         /**
@@ -1627,6 +1785,12 @@ export namespace aws {
         name: pulumi.Input<string>;
         /**
          * The signals defined timeout- default is 40 minutes (1800 seconds).
+         *
+         * Usage:
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          */
         timeout?: pulumi.Input<number>;
     }
@@ -1642,6 +1806,12 @@ export namespace aws {
         shouldDeleteNetworkInterfaces?: pulumi.Input<boolean>;
         /**
          * For stateful groups: remove snapshots.
+         *
+         * Usage:
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          */
         shouldDeleteSnapshots?: pulumi.Input<boolean>;
         /**
@@ -1657,6 +1827,12 @@ export namespace aws {
         statefulInstanceId: pulumi.Input<string>;
         /**
          * String, Action type. Supported action types: `pause`, `resume`, `recycle`, `deallocate`.
+         *
+         * Usage:
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          */
         type: pulumi.Input<string>;
     }
@@ -1665,6 +1841,10 @@ export namespace aws {
         key?: pulumi.Input<string>;
         /**
          * The dimension value.
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          */
         value?: pulumi.Input<string>;
     }
@@ -1746,6 +1926,10 @@ export namespace aws {
         drainingTimeout?: pulumi.Input<number>;
         /**
          * Decrementing the group target capacity after detaching the instances.
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          */
         shouldDecrementTargetCapacity?: pulumi.Input<boolean>;
         /**
@@ -1755,192 +1939,76 @@ export namespace aws {
     }
 
     export interface ManagedInstanceBlockDeviceMapping {
-        /**
-         * The name of the device to mount.
-         */
         deviceName: pulumi.Input<string>;
-        /**
-         * Object
-         */
         ebs?: pulumi.Input<inputs.aws.ManagedInstanceBlockDeviceMappingEbs>;
     }
 
     export interface ManagedInstanceBlockDeviceMappingEbs {
-        /**
-         * Whether the volume should be destroyed on instance termination.
-         */
         deleteOnTermination?: pulumi.Input<boolean>;
-        /**
-         * The amount of provisioned [IOPS](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-io-characteristics.html). This must be set with a `volumeType` of `"io1"`.
-         */
         iops?: pulumi.Input<number>;
-        /**
-         * The throughput that the volume supports, in MiB/s. Minimum value of 125. Maximum value of 1000. Valid only if `volumeType` is set to `"gp3"`.
-         */
         throughput?: pulumi.Input<number>;
-        /**
-         * The size of the volume, in GiBs.
-         */
         volumeSize?: pulumi.Input<number>;
-        /**
-         * The type of volume. Can be `"standard"`, `"gp2"`, `"gp3"`, `"io1"`, `"st1"` or `"sc1"`.
-         */
         volumeType?: pulumi.Input<string>;
     }
 
     export interface ManagedInstanceIntegrationRoute53 {
-        /**
-         * Route 53 Domain configurations.
-         */
         domains: pulumi.Input<pulumi.Input<inputs.aws.ManagedInstanceIntegrationRoute53Domain>[]>;
     }
 
     export interface ManagedInstanceIntegrationRoute53Domain {
-        /**
-         * The Route 53 Hosted Zone Id for the registered Domain.
-         */
         hostedZoneId: pulumi.Input<string>;
-        /**
-         * The type of the record set. Valid values: `"a"`, `"cname"`.
-         */
         recordSetType?: pulumi.Input<string>;
-        /**
-         * List of record sets
-         */
         recordSets: pulumi.Input<pulumi.Input<inputs.aws.ManagedInstanceIntegrationRoute53DomainRecordSet>[]>;
-        /**
-         * The Spotinst account ID that is linked to the AWS account that holds the Route 53 hosted Zone Id. The default is the user Spotinst account provided as a URL parameter.
-         */
         spotinstAcctId?: pulumi.Input<string>;
     }
 
     export interface ManagedInstanceIntegrationRoute53DomainRecordSet {
-        /**
-         * The ManagedInstance name.
-         */
         name: pulumi.Input<string>;
-        /**
-         * Designates whether the DNS address should be exposed to connections outside the VPC.
-         */
         usePublicDns?: pulumi.Input<boolean>;
-        /**
-         * Designates whether the IP address should be exposed to connections outside the VPC.
-         */
         usePublicIp?: pulumi.Input<boolean>;
     }
 
     export interface ManagedInstanceLoadBalancer {
-        /**
-         * The AWS resource ARN (Required only for ALB target groups).
-         */
         arn?: pulumi.Input<string>;
-        /**
-         * "Auto Weight" will automatically provide a higher weight for instances that are larger as appropriate. For example, if you have configured your Elastigroup with m4.large and m4.xlarge instances the m4.large will have half the weight of an m4.xlarge. This ensures that larger instances receive a higher number of MLB requests.
-         */
         autoWeight?: pulumi.Input<boolean>;
-        /**
-         * "AZ Awareness" will ensure that instances within the same AZ are using the corresponding MLB runtime instance in the same AZ. This feature reduces multi-zone data transfer fees.
-         */
         azAwareness?: pulumi.Input<boolean>;
-        /**
-         * The Multai load balancer ID. Example: lb-123456
-         */
         balancerId?: pulumi.Input<string>;
-        /**
-         * The AWS resource name. Required for Classic Load Balancer. Optional for Application Load Balancer.
-         */
         name?: pulumi.Input<string>;
-        /**
-         * The Multai load target set ID. Example: ts-123456
-         */
         targetSetId?: pulumi.Input<string>;
-        /**
-         * The resource type. Valid Values: `"CLASSIC"`, `"TARGET_GROUP"`, `"MULTAI_TARGET_SET"`.
-         */
         type: pulumi.Input<string>;
     }
 
     export interface ManagedInstanceManagedInstanceAction {
-        /**
-         * String, Action type. Supported action types: `pause`, `resume`, `recycle`.
-         */
         type: pulumi.Input<string>;
     }
 
     export interface ManagedInstanceNetworkInterface {
-        /**
-         * Indicates whether to assign an IPv6 address. Amazon EC2 chooses the IPv6 addresses from the range of the subnet. Default: `false`
-         */
         associateIpv6Address?: pulumi.Input<boolean>;
-        /**
-         * Indicates whether to assign a public IPv4 address to an instance you launch in a VPC. The public IP address can only be assigned to a network interface for eth0, and can only be assigned to a new network interface, not an existing one. You cannot specify more than one network interface in the request. If launching into a default subnet, the default value is true.
-         */
         associatePublicIpAddress?: pulumi.Input<boolean>;
-        /**
-         * The position of the network interface in the attachment order. A primary network interface has a device index of 0. If you specify a network interface when launching an instance, you must specify the device index.
-         */
         deviceIndex: pulumi.Input<string>;
     }
 
     export interface ManagedInstanceResourceTagSpecification {
-        /**
-         * Tag specification for AMI resources.
-         */
         shouldTagAmis?: pulumi.Input<boolean>;
-        /**
-         * Tag specification for ENI resources.
-         */
         shouldTagEnis?: pulumi.Input<boolean>;
-        /**
-         * Tag specification for Snapshot resources.
-         */
         shouldTagSnapshots?: pulumi.Input<boolean>;
-        /**
-         * Tag specification for Volume resources.
-         */
         shouldTagVolumes?: pulumi.Input<boolean>;
     }
 
     export interface ManagedInstanceRevertToSpot {
-        /**
-         * Valid values: `"always"`, `"never"`, `"timeWindow"`. Default `"never"`.
-         */
         performAt: pulumi.Input<string>;
     }
 
     export interface ManagedInstanceScheduledTask {
-        /**
-         * A valid cron expression. The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of ‘frequency’ or ‘cronExpression’ should be used at a time.
-         * Example: `"0 1 * * *"`.
-         */
         cronExpression?: pulumi.Input<string>;
-        /**
-         * Set frequency for the task. Valid values: "hourly", "daily", "weekly", "continuous".
-         */
         frequency?: pulumi.Input<string>;
-        /**
-         * Describes whether the task is enabled. When true the task should run when false it should not run.
-         */
         isEnabled?: pulumi.Input<boolean>;
-        /**
-         * DATETIME in ISO-8601 format. Sets a start time for scheduled actions. If "frequency" or "cronExpression" are not used - the task will run only once at the start time and will then be deleted from the instance configuration.
-         * Example: `"2019-05-23T10:55:09Z"`
-         */
         startTime?: pulumi.Input<string>;
-        /**
-         * The task type to run. Valid values: `"pause"`, `"resume"`, `"recycle"`.
-         */
         taskType: pulumi.Input<string>;
     }
 
     export interface ManagedInstanceTag {
-        /**
-         * Tag's key.
-         */
         key?: pulumi.Input<string>;
-        /**
-         * Tag's name.
-         */
         value?: pulumi.Input<string>;
     }
 
@@ -2483,6 +2551,10 @@ export namespace aws {
         enableAutomaticAndManualHeadroom?: pulumi.Input<boolean>;
         /**
          * List of Ocean extended resource definitions to use in this cluster.
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          */
         extendedResourceDefinitions?: pulumi.Input<pulumi.Input<string>[]>;
         /**
@@ -2840,6 +2912,8 @@ export namespace aws {
     export interface OceanLaunchSpecInstanceMetadataOptions {
         /**
          * An integer from 1 through 64. The desired HTTP PUT response hop limit for instance metadata requests. The larger the number, the further the instance metadata requests can travel.
+         *
+         * <a id="update-policy"></a>
          */
         httpPutResponseHopLimit?: pulumi.Input<number>;
         /**
@@ -3058,6 +3132,11 @@ export namespace aws {
         launchSpecIds?: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * During the roll, if the parameter is set to True we honor PDB during the instance replacement.
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
+         *
+         * <a id="scheduled-task"></a>
          */
         respectPdb?: pulumi.Input<boolean>;
     }
@@ -3072,17 +3151,8 @@ export namespace aws {
 
 export namespace azure {
     export interface ElastigroupHealthCheck {
-        /**
-         * Enable auto-healing of unhealthy VMs.
-         */
         autoHealing?: pulumi.Input<boolean>;
-        /**
-         * Period of time (seconds) to wait for VM to reach healthiness before monitoring for unhealthiness.
-         */
         gracePeriod?: pulumi.Input<number>;
-        /**
-         * Health check used to validate VM health. Valid values: “INSTANCE_STATE”.
-         */
         healthCheckType: pulumi.Input<string>;
     }
 
@@ -3092,371 +3162,161 @@ export namespace azure {
     }
 
     export interface ElastigroupImageCustom {
-        /**
-         * Name of the custom image. Required if resourceGroupName is specified.
-         */
         imageName: pulumi.Input<string>;
         /**
-         * The Resource Group that the user-assigned managed identity resides in.
+         * Name of the Azure Resource Group where the Managed Service Identity is located.
          */
         resourceGroupName: pulumi.Input<string>;
     }
 
     export interface ElastigroupImageMarketplace {
-        /**
-         * Name of the image to use. Required if publisher is specified.
-         */
         offer: pulumi.Input<string>;
-        /**
-         * Image publisher. Required if resourceGroupName is not specified.
-         */
         publisher: pulumi.Input<string>;
-        /**
-         * Image's Stock Keeping Unit, which is the specific version of the image. Required if publisher is specified.
-         */
         sku: pulumi.Input<string>;
     }
 
     export interface ElastigroupIntegrationKubernetes {
-        /**
-         * The cluster ID.
-         */
         clusterIdentifier: pulumi.Input<string>;
     }
 
     export interface ElastigroupIntegrationMultaiRuntime {
-        /**
-         * The deployment id you want to get
-         */
         deploymentId: pulumi.Input<string>;
     }
 
     export interface ElastigroupLoadBalancer {
         autoWeight?: pulumi.Input<boolean>;
-        /**
-         * The balancer ID.
-         */
         balancerId?: pulumi.Input<string>;
-        /**
-         * The scale set ID associated with the load balancer.
-         */
         targetSetId?: pulumi.Input<string>;
-        /**
-         * The resource type. Valid values: CLASSIC, TARGET_GROUP, MULTAI_TARGET_SET.
-         */
         type: pulumi.Input<string>;
     }
 
     export interface ElastigroupLogin {
-        /**
-         * Password for admin access to Windows VMs. Required for Windows product types.
-         */
         password?: pulumi.Input<string>;
-        /**
-         * SSH for admin access to Linux VMs. Required for Linux product types.
-         */
         sshPublicKey?: pulumi.Input<string>;
-        /**
-         * Set admin access for accessing your VMs.
-         */
         userName: pulumi.Input<string>;
     }
 
     export interface ElastigroupManagedServiceIdentity {
         /**
-         * The name of the managed identity.
+         * Name of the Managed Service Identity.
          */
         name: pulumi.Input<string>;
         /**
-         * The Resource Group that the user-assigned managed identity resides in.
+         * Name of the Azure Resource Group where the Managed Service Identity is located.
          */
         resourceGroupName: pulumi.Input<string>;
     }
 
     export interface ElastigroupNetwork {
-        /**
-         * Array of additional IP configuration objects.
-         */
         additionalIpConfigs?: pulumi.Input<pulumi.Input<inputs.azure.ElastigroupNetworkAdditionalIpConfig>[]>;
         assignPublicIp?: pulumi.Input<boolean>;
         /**
-         * Vnet Resource Group Name.
+         * Name of the Azure Resource Group where the Managed Service Identity is located.
          */
         resourceGroupName: pulumi.Input<string>;
-        /**
-         * ID of subnet.
-         */
         subnetName: pulumi.Input<string>;
-        /**
-         * Name of Vnet.
-         */
         virtualNetworkName: pulumi.Input<string>;
     }
 
     export interface ElastigroupNetworkAdditionalIpConfig {
         /**
-         * The name of the managed identity.
+         * Name of the Managed Service Identity.
          */
         name: pulumi.Input<string>;
-        /**
-         * Available from Azure Api-Version 2017-03-30 onwards, it represents whether the specific ipconfiguration is IPv4 or IPv6. Valid values: `IPv4`, `IPv6`.
-         */
         privateIpVersion?: pulumi.Input<string>;
     }
 
     export interface ElastigroupScalingDownPolicy {
-        /**
-         * The type of action to perform for scaling. Valid values: `"adjustment"`, `"percentageAdjustment"`, `"setMaxTarget"`, `"setMinTarget"`, `"updateCapacity"`.
-         */
         actionType?: pulumi.Input<string>;
-        /**
-         * Value to which the action type will be adjusted. Required if using `numeric` or `percentageAdjustment` action types.
-         */
         adjustment?: pulumi.Input<string>;
-        /**
-         * The amount of time, in seconds, after a scaling activity completes and before the next scaling activity can start. If this parameter is not specified, the default cooldown period for the group applies.
-         */
         cooldown?: pulumi.Input<number>;
-        /**
-         * A list of dimensions describing qualities of the metric. Required when `namespace` is defined AND not `"Microsoft.Compute"`.
-         */
         dimensions?: pulumi.Input<pulumi.Input<inputs.azure.ElastigroupScalingDownPolicyDimension>[]>;
-        /**
-         * The number of periods over which data is compared to the specified threshold.
-         */
         evaluationPeriods?: pulumi.Input<number>;
-        /**
-         * . The number of the desired target (and maximum) capacity
-         */
         maxTargetCapacity?: pulumi.Input<string>;
-        /**
-         * The maximal number of instances to have in the group.
-         */
         maximum?: pulumi.Input<string>;
-        /**
-         * Metric to monitor by Azure metric display name.
-         */
         metricName: pulumi.Input<string>;
-        /**
-         * . The number of the desired target (and minimum) capacity
-         */
         minTargetCapacity?: pulumi.Input<string>;
-        /**
-         * The minimal number of instances to have in the group.
-         */
         minimum?: pulumi.Input<string>;
-        /**
-         * The namespace for the alarm's associated metric. Valid values:
-         */
         namespace: pulumi.Input<string>;
-        /**
-         * The operator to use in order to determine if the scaling policy is applicable. Valid values: `"gt"`, `"gte"`, `"lt"`, `"lte"`.
-         */
         operator?: pulumi.Input<string>;
-        /**
-         * The granularity, in seconds, of the returned datapoints. Period must be at least 60 seconds and must be a multiple of 60.
-         */
         period?: pulumi.Input<number>;
-        /**
-         * The name of the policy.
-         */
         policyName: pulumi.Input<string>;
-        /**
-         * The metric statistics to return. Valid values: `average`.
-         */
         statistic?: pulumi.Input<string>;
-        /**
-         * The target number of instances to have in the group.
-         */
         target?: pulumi.Input<string>;
-        /**
-         * The value against which the specified statistic is compared.
-         */
         threshold: pulumi.Input<number>;
-        /**
-         * The unit for the alarm's associated metric. Valid values: `"percent`, `"seconds"`, `"microseconds"`, `"milliseconds"`, `"bytes"`, `"kilobytes"`, `"megabytes"`, `"gigabytes"`, `"terabytes"`, `"bits"`, `"kilobits"`, `"megabits"`, `"gigabits"`, `"terabits"`, `"count"`, `"bytes/second"`, `"kilobytes/second"`, `"megabytes/second"`, `"gigabytes/second"`, `"terabytes/second"`, `"bits/second"`, `"kilobits/second"`, `"megabits/second"`, `"gigabits/second"`, `"terabits/second"`, `"count/second"`, `"none"`.
-         */
         unit?: pulumi.Input<string>;
     }
 
     export interface ElastigroupScalingDownPolicyDimension {
         /**
-         * The name of the managed identity.
+         * Name of the Managed Service Identity.
          */
         name: pulumi.Input<string>;
         /**
-         * The dimension value.
+         * Tag Value for Vms in Elastigroup.
          */
         value?: pulumi.Input<string>;
     }
 
     export interface ElastigroupScalingUpPolicy {
-        /**
-         * The type of action to perform for scaling. Valid values: `"adjustment"`, `"percentageAdjustment"`, `"setMaxTarget"`, `"setMinTarget"`, `"updateCapacity"`.
-         */
         actionType?: pulumi.Input<string>;
-        /**
-         * Value to which the action type will be adjusted. Required if using `numeric` or `percentageAdjustment` action types.
-         */
         adjustment?: pulumi.Input<string>;
-        /**
-         * The amount of time, in seconds, after a scaling activity completes and before the next scaling activity can start. If this parameter is not specified, the default cooldown period for the group applies.
-         */
         cooldown?: pulumi.Input<number>;
-        /**
-         * A list of dimensions describing qualities of the metric. Required when `namespace` is defined AND not `"Microsoft.Compute"`.
-         */
         dimensions?: pulumi.Input<pulumi.Input<inputs.azure.ElastigroupScalingUpPolicyDimension>[]>;
-        /**
-         * The number of periods over which data is compared to the specified threshold.
-         */
         evaluationPeriods?: pulumi.Input<number>;
-        /**
-         * . The number of the desired target (and maximum) capacity
-         */
         maxTargetCapacity?: pulumi.Input<string>;
-        /**
-         * The maximal number of instances to have in the group.
-         */
         maximum?: pulumi.Input<string>;
-        /**
-         * Metric to monitor by Azure metric display name.
-         */
         metricName: pulumi.Input<string>;
-        /**
-         * . The number of the desired target (and minimum) capacity
-         */
         minTargetCapacity?: pulumi.Input<string>;
-        /**
-         * The minimal number of instances to have in the group.
-         */
         minimum?: pulumi.Input<string>;
-        /**
-         * The namespace for the alarm's associated metric. Valid values:
-         */
         namespace: pulumi.Input<string>;
-        /**
-         * The operator to use in order to determine if the scaling policy is applicable. Valid values: `"gt"`, `"gte"`, `"lt"`, `"lte"`.
-         */
         operator?: pulumi.Input<string>;
-        /**
-         * The granularity, in seconds, of the returned datapoints. Period must be at least 60 seconds and must be a multiple of 60.
-         */
         period?: pulumi.Input<number>;
-        /**
-         * The name of the policy.
-         */
         policyName: pulumi.Input<string>;
-        /**
-         * The metric statistics to return. Valid values: `average`.
-         */
         statistic?: pulumi.Input<string>;
-        /**
-         * The target number of instances to have in the group.
-         */
         target?: pulumi.Input<string>;
-        /**
-         * The value against which the specified statistic is compared.
-         */
         threshold: pulumi.Input<number>;
-        /**
-         * The unit for the alarm's associated metric. Valid values: `"percent`, `"seconds"`, `"microseconds"`, `"milliseconds"`, `"bytes"`, `"kilobytes"`, `"megabytes"`, `"gigabytes"`, `"terabytes"`, `"bits"`, `"kilobits"`, `"megabits"`, `"gigabits"`, `"terabits"`, `"count"`, `"bytes/second"`, `"kilobytes/second"`, `"megabytes/second"`, `"gigabytes/second"`, `"terabytes/second"`, `"bits/second"`, `"kilobits/second"`, `"megabits/second"`, `"gigabits/second"`, `"terabits/second"`, `"count/second"`, `"none"`.
-         */
         unit?: pulumi.Input<string>;
     }
 
     export interface ElastigroupScalingUpPolicyDimension {
         /**
-         * The name of the managed identity.
+         * Name of the Managed Service Identity.
          */
         name: pulumi.Input<string>;
         /**
-         * The dimension value.
+         * Tag Value for Vms in Elastigroup.
          */
         value?: pulumi.Input<string>;
     }
 
     export interface ElastigroupScheduledTask {
-        /**
-         * Value to which the action type will be adjusted. Required if using `numeric` or `percentageAdjustment` action types.
-         */
         adjustment?: pulumi.Input<string>;
-        /**
-         * The percent of instances to add/remove to/from the target capacity when scale is needed.
-         */
         adjustmentPercentage?: pulumi.Input<string>;
-        /**
-         * The percentage size of each batch in the scheduled deployment roll. Required when the 'task_type' is 'roll'.
-         */
         batchSizePercentage?: pulumi.Input<string>;
-        /**
-         * A valid cron expression (`* * * * *`). The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script.
-         */
         cronExpression: pulumi.Input<string>;
-        /**
-         * Period of time (seconds) to wait for VM to reach healthiness before monitoring for unhealthiness.
-         */
         gracePeriod?: pulumi.Input<string>;
-        /**
-         * Describes whether the task is enabled. When true the task should run when false it should not run.
-         */
         isEnabled?: pulumi.Input<boolean>;
-        /**
-         * The max capacity of the group. Required when ‘task_type' is ‘scale'.
-         */
         scaleMaxCapacity?: pulumi.Input<string>;
-        /**
-         * The min capacity of the group. Should be used when choosing ‘task_type' of ‘scale'.
-         */
         scaleMinCapacity?: pulumi.Input<string>;
-        /**
-         * The target capacity of the group. Should be used when choosing ‘task_type' of ‘scale'.
-         */
         scaleTargetCapacity?: pulumi.Input<string>;
-        /**
-         * The task type to run. Valid Values: `backupAmi`, `scale`, `scaleUp`, `roll`, `statefulUpdateCapacity`, `statefulRecycle`.
-         */
         taskType: pulumi.Input<string>;
     }
 
     export interface ElastigroupStrategy {
-        /**
-         * Time (seconds) to allow the instance to be drained from incoming TCP connections and detached from MLB before terminating it during a scale-down operation.
-         */
         drainingTimeout?: pulumi.Input<number>;
-        /**
-         * Percentage of Low Priority instances to maintain. Required if `odCount` is not specified.
-         */
         lowPriorityPercentage?: pulumi.Input<number>;
-        /**
-         * Number of On-Demand instances to maintain. Required if lowPriorityPercentage is not specified.
-         */
         odCount?: pulumi.Input<number>;
     }
 
     export interface ElastigroupUpdatePolicy {
-        /**
-         * While used, you can control whether the group should perform a deployment after an update to the configuration.
-         */
         rollConfig?: pulumi.Input<inputs.azure.ElastigroupUpdatePolicyRollConfig>;
-        /**
-         * Sets the enablement of the roll option.
-         */
         shouldRoll: pulumi.Input<boolean>;
     }
 
     export interface ElastigroupUpdatePolicyRollConfig {
-        /**
-         * The percentage size of each batch in the scheduled deployment roll. Required when the 'task_type' is 'roll'.
-         */
         batchSizePercentage: pulumi.Input<number>;
-        /**
-         * Period of time (seconds) to wait for VM to reach healthiness before monitoring for unhealthiness.
-         */
         gracePeriod?: pulumi.Input<number>;
-        /**
-         * Health check used to validate VM health. Valid values: “INSTANCE_STATE”.
-         */
         healthCheckType?: pulumi.Input<string>;
     }
 
@@ -3868,6 +3728,10 @@ export namespace ecs {
         down?: pulumi.Input<inputs.ecs.OceanAutoscalerDown>;
         /**
          * When set to true, both automatic and per custom launch specification manual headroom to be saved concurrently and independently in the cluster. prerequisite: isAutoConfig must be true
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          */
         enableAutomaticAndManualHeadroom?: pulumi.Input<boolean>;
         /**
@@ -4191,6 +4055,8 @@ export namespace ecs {
     export interface OceanLaunchSpecStrategy {
         /**
          * When set, Ocean will proactively try to maintain as close as possible to the percentage of Spot instances out of all the Virtual Node Group instances.
+         *
+         * <a id="block-devices"></a>
          */
         spotPercentage?: pulumi.Input<number>;
     }
@@ -4275,6 +4141,13 @@ export namespace ecs {
         isEnabled: pulumi.Input<boolean>;
         /**
          * Valid values: "clusterRoll". Required for `cluster.scheduling.tasks object`. Example: `clusterRoll`.
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
+         *
+         *
+         * <a id="attributes-reference"></a>
          */
         taskType: pulumi.Input<string>;
     }
@@ -4309,6 +4182,10 @@ export namespace ecs {
     export interface OceanUpdatePolicyRollConfig {
         /**
          * Default: 50. Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          */
         batchMinHealthyPercentage?: pulumi.Input<number>;
         /**
@@ -4345,6 +4222,12 @@ export namespace gcp {
         name: pulumi.Input<string>;
         /**
          * A list of ports.
+         *
+         * Usage:
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          */
         ports: pulumi.Input<pulumi.Input<string>[]>;
     }
@@ -4380,6 +4263,10 @@ export namespace gcp {
         source?: pulumi.Input<string>;
         /**
          * The type of GPU instance. Valid values: `nvidia-tesla-v100`, `nvidia-tesla-p100`, `nvidia-tesla-k80`.
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          */
         type?: pulumi.Input<string>;
     }
@@ -4395,6 +4282,12 @@ export namespace gcp {
         diskType?: pulumi.Input<string>;
         /**
          * A source image used to create the disk. You can provide a private (custom) image, and Compute Engine will use the corresponding image from your project.
+         *
+         * Usage:
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          */
         sourceImage: pulumi.Input<string>;
     }
@@ -4402,6 +4295,12 @@ export namespace gcp {
     export interface ElastigroupGpu {
         /**
          * The number of GPUs. Must be 0, 2, 4, 6, 8.
+         *
+         * Usage:
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          */
         count: pulumi.Input<number>;
         /**
@@ -4425,6 +4324,12 @@ export namespace gcp {
         masterHost: pulumi.Input<string>;
         /**
          * Network port used by your swarm.
+         *
+         * Usage:
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          */
         masterPort: pulumi.Input<number>;
     }
@@ -4506,6 +4411,10 @@ export namespace gcp {
         name?: pulumi.Input<string>;
         /**
          * The type of GPU instance. Valid values: `nvidia-tesla-v100`, `nvidia-tesla-p100`, `nvidia-tesla-k80`.
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          */
         type?: pulumi.Input<string>;
     }
@@ -4654,6 +4563,12 @@ export namespace gcp {
         isEnabled?: pulumi.Input<boolean>;
         /**
          * The maximum number of instances the group should have.
+         *
+         * Usage:
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          */
         maxCapacity?: pulumi.Input<string>;
         /**
@@ -4789,6 +4704,13 @@ export namespace gke {
         key: pulumi.Input<string>;
         /**
          * The label value.
+         *
+         *
+         * Usage:
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          */
         value: pulumi.Input<string>;
     }
@@ -4800,6 +4722,13 @@ export namespace gke {
         key: pulumi.Input<string>;
         /**
          * The label value.
+         *
+         *
+         * Usage:
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          */
         value: pulumi.Input<string>;
     }
@@ -4811,6 +4740,13 @@ export namespace gke {
         key: pulumi.Input<string>;
         /**
          * The label value.
+         *
+         *
+         * Usage:
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          */
         value: pulumi.Input<string>;
     }
@@ -4855,6 +4791,13 @@ export namespace gke {
         name: pulumi.Input<string>;
         /**
          * The label value.
+         *
+         *
+         * Usage:
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          */
         value?: pulumi.Input<string>;
     }
@@ -4883,6 +4826,13 @@ export namespace gke {
         name: pulumi.Input<string>;
         /**
          * The label value.
+         *
+         *
+         * Usage:
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          */
         value?: pulumi.Input<string>;
     }
@@ -4955,6 +4905,12 @@ export namespace gke {
     export interface OceanImportAutoscalerResourceLimits {
         /**
          * The maximum memory in GiB units that can be allocated to the cluster.
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
+         *
+         * <a id="strategy"></a>
          */
         maxMemoryGib?: pulumi.Input<number>;
         /**
@@ -5038,6 +4994,10 @@ export namespace gke {
         /**
          * Value in % to set size of batch in roll. Valid values are 0-100
          * Example: 20.
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          */
         batchSizePercentage?: pulumi.Input<number>;
         comment?: pulumi.Input<string>;
@@ -5075,6 +5035,10 @@ export namespace gke {
         /**
          * Value in % to set size of batch in roll. Valid values are 0-100
          * Example: 20.
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          */
         batchSizePercentage: pulumi.Input<number>;
         launchSpecIds?: pulumi.Input<pulumi.Input<string>[]>;
@@ -5166,6 +5130,8 @@ export namespace gke {
         ipCidrRange: pulumi.Input<string>;
         /**
          * specify the IP address range for the subnet secondary IP range.
+         *
+         * <a id="update-policy"></a>
          */
         subnetworkRangeName: pulumi.Input<string>;
     }

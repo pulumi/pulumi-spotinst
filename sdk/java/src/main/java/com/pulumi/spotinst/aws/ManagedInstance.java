@@ -26,242 +26,59 @@ import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
-/**
- * Provides a Spotinst AWS ManagedInstance resource.
- * 
- * ## Example Usage
- * 
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.spotinst.aws.ManagedInstance;
- * import com.pulumi.spotinst.aws.ManagedInstanceArgs;
- * import com.pulumi.spotinst.aws.inputs.ManagedInstanceBlockDeviceMappingArgs;
- * import com.pulumi.spotinst.aws.inputs.ManagedInstanceBlockDeviceMappingEbsArgs;
- * import com.pulumi.spotinst.aws.inputs.ManagedInstanceResourceTagSpecificationArgs;
- * import com.pulumi.spotinst.aws.inputs.ManagedInstanceRevertToSpotArgs;
- * import com.pulumi.spotinst.aws.inputs.ManagedInstanceTagArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var default_managed_instance = new ManagedInstance(&#34;default-managed-instance&#34;, ManagedInstanceArgs.builder()        
- *             .autoHealing(&#34;true&#34;)
- *             .blockDeviceMappings(ManagedInstanceBlockDeviceMappingArgs.builder()
- *                 .deviceName(&#34;/dev/xvdcz&#34;)
- *                 .ebs(ManagedInstanceBlockDeviceMappingEbsArgs.builder()
- *                     .deleteOnTermination(&#34;true&#34;)
- *                     .iops(100)
- *                     .throughput(125)
- *                     .volumeSize(50)
- *                     .volumeType(&#34;gp3&#34;)
- *                     .build())
- *                 .build())
- *             .blockDevicesMode(&#34;reattach&#34;)
- *             .cpuCredits(&#34;standard&#34;)
- *             .description(&#34;created by Pulumi&#34;)
- *             .drainingTimeout(&#34;120&#34;)
- *             .ebsOptimized(&#34;true&#34;)
- *             .elasticIp(&#34;ip&#34;)
- *             .enableMonitoring(&#34;true&#34;)
- *             .fallbackToOndemand(false)
- *             .gracePeriod(&#34;180&#34;)
- *             .healthCheckType(&#34;EC2&#34;)
- *             .iamInstanceProfile(&#34;iam-profile&#34;)
- *             .imageId(&#34;ami-1234&#34;)
- *             .instanceTypes(            
- *                 &#34;t1.micro&#34;,
- *                 &#34;t3.medium&#34;,
- *                 &#34;t3.large&#34;,
- *                 &#34;t2.medium&#34;,
- *                 &#34;t2.large&#34;,
- *                 &#34;z1d.large&#34;)
- *             .keyPair(&#34;labs-oregon&#34;)
- *             .lifeCycle(&#34;on_demand&#34;)
- *             .minimumInstanceLifetime(&#34;1&#34;)
- *             .optimizationWindows(&#34;Mon:03:00-Wed:02:20&#34;)
- *             .orientation(&#34;balanced&#34;)
- *             .persistBlockDevices(&#34;true&#34;)
- *             .persistPrivateIp(&#34;false&#34;)
- *             .persistRootDevice(&#34;true&#34;)
- *             .placementTenancy(&#34;default&#34;)
- *             .preferredType(&#34;t1.micro&#34;)
- *             .privateIp(&#34;ip&#34;)
- *             .product(&#34;Linux/UNIX&#34;)
- *             .region(&#34;us-west-2&#34;)
- *             .resourceTagSpecifications(ManagedInstanceResourceTagSpecificationArgs.builder()
- *                 .shouldTagAmis(true)
- *                 .shouldTagEnis(true)
- *                 .shouldTagSnapshots(true)
- *                 .shouldTagVolumes(true)
- *                 .build())
- *             .revertToSpot(ManagedInstanceRevertToSpotArgs.builder()
- *                 .performAt(&#34;always&#34;)
- *                 .build())
- *             .securityGroupIds(&#34;sg-234&#34;)
- *             .shutdownScript(&#34;managed instance bye world&#34;)
- *             .subnetIds(&#34;subnet-123&#34;)
- *             .tags(            
- *                 ManagedInstanceTagArgs.builder()
- *                     .key(&#34;explicit1&#34;)
- *                     .value(&#34;value1&#34;)
- *                     .build(),
- *                 ManagedInstanceTagArgs.builder()
- *                     .key(&#34;explicit2&#34;)
- *                     .value(&#34;value2&#34;)
- *                     .build())
- *             .unhealthyDuration(&#34;60&#34;)
- *             .userData(&#34;managed instance hello world&#34;)
- *             .utilizeReservedInstances(true)
- *             .vpcId(&#34;vpc-123&#34;)
- *             .build());
- * 
- *     }
- * }
- * ```
- * 
- */
 @ResourceType(type="spotinst:aws/managedInstance:ManagedInstance")
 public class ManagedInstance extends com.pulumi.resources.CustomResource {
-    /**
-     * Enable the auto healing which auto replaces the instance in case the health check fails, default: `&#34;true&#34;`.
-     * 
-     */
     @Export(name="autoHealing", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> autoHealing;
 
-    /**
-     * @return Enable the auto healing which auto replaces the instance in case the health check fails, default: `&#34;true&#34;`.
-     * 
-     */
     public Output<Optional<Boolean>> autoHealing() {
         return Codegen.optional(this.autoHealing);
     }
-    /**
-     * Attributes controls a portion of the AWS:
-     * 
-     */
     @Export(name="blockDeviceMappings", type=List.class, parameters={ManagedInstanceBlockDeviceMapping.class})
     private Output</* @Nullable */ List<ManagedInstanceBlockDeviceMapping>> blockDeviceMappings;
 
-    /**
-     * @return Attributes controls a portion of the AWS:
-     * 
-     */
     public Output<Optional<List<ManagedInstanceBlockDeviceMapping>>> blockDeviceMappings() {
         return Codegen.optional(this.blockDeviceMappings);
     }
-    /**
-     * Determine the way we attach the data volumes to the data devices. Valid values: `&#34;reattach&#34;`, `&#34;onLaunch&#34;`. Default: `&#34;onLaunch&#34;`.
-     * 
-     */
     @Export(name="blockDevicesMode", type=String.class, parameters={})
     private Output</* @Nullable */ String> blockDevicesMode;
 
-    /**
-     * @return Determine the way we attach the data volumes to the data devices. Valid values: `&#34;reattach&#34;`, `&#34;onLaunch&#34;`. Default: `&#34;onLaunch&#34;`.
-     * 
-     */
     public Output<Optional<String>> blockDevicesMode() {
         return Codegen.optional(this.blockDevicesMode);
     }
-    /**
-     * cpuCredits can have one of two values: `&#34;unlimited&#34;`, `&#34;standard&#34;`.
-     * 
-     */
     @Export(name="cpuCredits", type=String.class, parameters={})
     private Output</* @Nullable */ String> cpuCredits;
 
-    /**
-     * @return cpuCredits can have one of two values: `&#34;unlimited&#34;`, `&#34;standard&#34;`.
-     * 
-     */
     public Output<Optional<String>> cpuCredits() {
         return Codegen.optional(this.cpuCredits);
     }
-    /**
-     * The ManagedInstance description.
-     * 
-     */
     @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
-    /**
-     * @return The ManagedInstance description.
-     * 
-     */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
-    /**
-     * The time in seconds to allow the instance be drained from incoming TCP connections and detached from ELB before terminating it, during a scale down operation.
-     * 
-     */
     @Export(name="drainingTimeout", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> drainingTimeout;
 
-    /**
-     * @return The time in seconds to allow the instance be drained from incoming TCP connections and detached from ELB before terminating it, during a scale down operation.
-     * 
-     */
     public Output<Optional<Integer>> drainingTimeout() {
         return Codegen.optional(this.drainingTimeout);
     }
-    /**
-     * Enable EBS optimization for supported instances. Note: Additional charges will be applied by the Cloud Provider.
-     * Default: false
-     * 
-     */
     @Export(name="ebsOptimized", type=Boolean.class, parameters={})
     private Output<Boolean> ebsOptimized;
 
-    /**
-     * @return Enable EBS optimization for supported instances. Note: Additional charges will be applied by the Cloud Provider.
-     * Default: false
-     * 
-     */
     public Output<Boolean> ebsOptimized() {
         return this.ebsOptimized;
     }
-    /**
-     * Elastic IP Allocation Id to associate to the instance.
-     * 
-     */
     @Export(name="elasticIp", type=String.class, parameters={})
     private Output</* @Nullable */ String> elasticIp;
 
-    /**
-     * @return Elastic IP Allocation Id to associate to the instance.
-     * 
-     */
     public Output<Optional<String>> elasticIp() {
         return Codegen.optional(this.elasticIp);
     }
-    /**
-     * Describes whether instance Enhanced Monitoring is enabled.
-     * Default: false
-     * 
-     */
     @Export(name="enableMonitoring", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> enableMonitoring;
 
-    /**
-     * @return Describes whether instance Enhanced Monitoring is enabled.
-     * Default: false
-     * 
-     */
     public Output<Optional<Boolean>> enableMonitoring() {
         return Codegen.optional(this.enableMonitoring);
     }
@@ -271,115 +88,51 @@ public class ManagedInstance extends com.pulumi.resources.CustomResource {
     public Output<Optional<Boolean>> fallBackToOd() {
         return Codegen.optional(this.fallBackToOd);
     }
-    /**
-     * The amount of time, in seconds, after the instance has launched to starts and check its health, default `&#34;120&#34;`.
-     * 
-     */
     @Export(name="gracePeriod", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> gracePeriod;
 
-    /**
-     * @return The amount of time, in seconds, after the instance has launched to starts and check its health, default `&#34;120&#34;`.
-     * 
-     */
     public Output<Optional<Integer>> gracePeriod() {
         return Codegen.optional(this.gracePeriod);
     }
-    /**
-     * The service to use for the health check. Valid values: `&#34;EC2&#34;`, `&#34;ELB&#34;`, `&#34;TARGET_GROUP&#34;`, `&#34;MULTAI_TARGET_SET&#34;`. Default: `&#34;EC2&#34;`.
-     * 
-     */
     @Export(name="healthCheckType", type=String.class, parameters={})
     private Output</* @Nullable */ String> healthCheckType;
 
-    /**
-     * @return The service to use for the health check. Valid values: `&#34;EC2&#34;`, `&#34;ELB&#34;`, `&#34;TARGET_GROUP&#34;`, `&#34;MULTAI_TARGET_SET&#34;`. Default: `&#34;EC2&#34;`.
-     * 
-     */
     public Output<Optional<String>> healthCheckType() {
         return Codegen.optional(this.healthCheckType);
     }
-    /**
-     * Set IAM profile to instance. Set only one of ARN or Name.
-     * 
-     */
     @Export(name="iamInstanceProfile", type=String.class, parameters={})
     private Output</* @Nullable */ String> iamInstanceProfile;
 
-    /**
-     * @return Set IAM profile to instance. Set only one of ARN or Name.
-     * 
-     */
     public Output<Optional<String>> iamInstanceProfile() {
         return Codegen.optional(this.iamInstanceProfile);
     }
-    /**
-     * The ID of the image used to launch the instance.
-     * 
-     */
     @Export(name="imageId", type=String.class, parameters={})
     private Output<String> imageId;
 
-    /**
-     * @return The ID of the image used to launch the instance.
-     * 
-     */
     public Output<String> imageId() {
         return this.imageId;
     }
-    /**
-     * Comma separated list of available instance types for instance.
-     * 
-     */
     @Export(name="instanceTypes", type=List.class, parameters={String.class})
     private Output<List<String>> instanceTypes;
 
-    /**
-     * @return Comma separated list of available instance types for instance.
-     * 
-     */
     public Output<List<String>> instanceTypes() {
         return this.instanceTypes;
     }
-    /**
-     * Describes the [Route53](https://aws.amazon.com/documentation/route53/?id=docs_gateway) integration.
-     * 
-     */
     @Export(name="integrationRoute53", type=ManagedInstanceIntegrationRoute53.class, parameters={})
     private Output</* @Nullable */ ManagedInstanceIntegrationRoute53> integrationRoute53;
 
-    /**
-     * @return Describes the [Route53](https://aws.amazon.com/documentation/route53/?id=docs_gateway) integration.
-     * 
-     */
     public Output<Optional<ManagedInstanceIntegrationRoute53>> integrationRoute53() {
         return Codegen.optional(this.integrationRoute53);
     }
-    /**
-     * Specify a Key Pair to attach to the instances.
-     * 
-     */
     @Export(name="keyPair", type=String.class, parameters={})
     private Output</* @Nullable */ String> keyPair;
 
-    /**
-     * @return Specify a Key Pair to attach to the instances.
-     * 
-     */
     public Output<Optional<String>> keyPair() {
         return Codegen.optional(this.keyPair);
     }
-    /**
-     * Set lifecycle, valid values: `&#34;spot&#34;`, `&#34;on_demand&#34;`. Default `&#34;spot&#34;`.
-     * 
-     */
     @Export(name="lifeCycle", type=String.class, parameters={})
     private Output</* @Nullable */ String> lifeCycle;
 
-    /**
-     * @return Set lifecycle, valid values: `&#34;spot&#34;`, `&#34;on_demand&#34;`. Default `&#34;spot&#34;`.
-     * 
-     */
     public Output<Optional<String>> lifeCycle() {
         return Codegen.optional(this.lifeCycle);
     }
@@ -401,17 +154,9 @@ public class ManagedInstance extends com.pulumi.resources.CustomResource {
     public Output<Optional<Integer>> minimumInstanceLifetime() {
         return Codegen.optional(this.minimumInstanceLifetime);
     }
-    /**
-     * The ManagedInstance name.
-     * 
-     */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
-    /**
-     * @return The ManagedInstance name.
-     * 
-     */
     public Output<String> name() {
         return this.name;
     }
@@ -421,145 +166,63 @@ public class ManagedInstance extends com.pulumi.resources.CustomResource {
     public Output<Optional<List<ManagedInstanceNetworkInterface>>> networkInterfaces() {
         return Codegen.optional(this.networkInterfaces);
     }
-    /**
-     * When `performAt` is `&#34;timeWindow&#34;`: must specify a list of `&#34;timeWindows&#34;` with at least one time window. Each string should be formatted as `ddd:hh:mm-ddd:hh:mm` (ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59).
-     * 
-     */
     @Export(name="optimizationWindows", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> optimizationWindows;
 
-    /**
-     * @return When `performAt` is `&#34;timeWindow&#34;`: must specify a list of `&#34;timeWindows&#34;` with at least one time window. Each string should be formatted as `ddd:hh:mm-ddd:hh:mm` (ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59).
-     * 
-     */
     public Output<Optional<List<String>>> optimizationWindows() {
         return Codegen.optional(this.optimizationWindows);
     }
-    /**
-     * Select a prediction strategy. Valid values: `&#34;balanced&#34;`, `&#34;costOriented&#34;`, `&#34;availabilityOriented&#34;`, `&#34;cheapest&#34;`. Default: `&#34;availabilityOriented&#34;`.
-     * 
-     */
     @Export(name="orientation", type=String.class, parameters={})
     private Output</* @Nullable */ String> orientation;
 
-    /**
-     * @return Select a prediction strategy. Valid values: `&#34;balanced&#34;`, `&#34;costOriented&#34;`, `&#34;availabilityOriented&#34;`, `&#34;cheapest&#34;`. Default: `&#34;availabilityOriented&#34;`.
-     * 
-     */
     public Output<Optional<String>> orientation() {
         return Codegen.optional(this.orientation);
     }
-    /**
-     * Should the instance maintain its Data volumes.
-     * 
-     */
     @Export(name="persistBlockDevices", type=Boolean.class, parameters={})
     private Output<Boolean> persistBlockDevices;
 
-    /**
-     * @return Should the instance maintain its Data volumes.
-     * 
-     */
     public Output<Boolean> persistBlockDevices() {
         return this.persistBlockDevices;
     }
-    /**
-     * Should the instance maintain its private IP.
-     * 
-     */
     @Export(name="persistPrivateIp", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> persistPrivateIp;
 
-    /**
-     * @return Should the instance maintain its private IP.
-     * 
-     */
     public Output<Optional<Boolean>> persistPrivateIp() {
         return Codegen.optional(this.persistPrivateIp);
     }
-    /**
-     * Should the instance maintain its root device volumes.
-     * 
-     */
     @Export(name="persistRootDevice", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> persistRootDevice;
 
-    /**
-     * @return Should the instance maintain its root device volumes.
-     * 
-     */
     public Output<Optional<Boolean>> persistRootDevice() {
         return Codegen.optional(this.persistRootDevice);
     }
-    /**
-     * Valid values: `&#34;default&#34;`, `&#34;dedicated&#34;`.
-     * Default: default
-     * 
-     */
     @Export(name="placementTenancy", type=String.class, parameters={})
     private Output</* @Nullable */ String> placementTenancy;
 
-    /**
-     * @return Valid values: `&#34;default&#34;`, `&#34;dedicated&#34;`.
-     * Default: default
-     * 
-     */
     public Output<Optional<String>> placementTenancy() {
         return Codegen.optional(this.placementTenancy);
     }
-    /**
-     * Preferred instance types for the instance. We will automatically select optional similar instance types to ensure optimized cost efficiency
-     * 
-     */
     @Export(name="preferredType", type=String.class, parameters={})
     private Output</* @Nullable */ String> preferredType;
 
-    /**
-     * @return Preferred instance types for the instance. We will automatically select optional similar instance types to ensure optimized cost efficiency
-     * 
-     */
     public Output<Optional<String>> preferredType() {
         return Codegen.optional(this.preferredType);
     }
-    /**
-     * Private IP Allocation Id to associate to the instance.
-     * 
-     */
     @Export(name="privateIp", type=String.class, parameters={})
     private Output</* @Nullable */ String> privateIp;
 
-    /**
-     * @return Private IP Allocation Id to associate to the instance.
-     * 
-     */
     public Output<Optional<String>> privateIp() {
         return Codegen.optional(this.privateIp);
     }
-    /**
-     * Operation system type. Valid values: `&#34;Linux/UNIX&#34;`, `&#34;SUSE Linux&#34;`, `&#34;Windows&#34;`, `&#34;Red Hat Enterprise Linux&#34;`, `&#34;Linux/UNIX (Amazon VPC)&#34;`, `&#34;SUSE Linux (Amazon VPC)&#34;`, `&#34;Windows (Amazon VPC)&#34;`,  `&#34;Red Hat Enterprise Linux (Amazon VPC)&#34;`.
-     * 
-     */
     @Export(name="product", type=String.class, parameters={})
     private Output<String> product;
 
-    /**
-     * @return Operation system type. Valid values: `&#34;Linux/UNIX&#34;`, `&#34;SUSE Linux&#34;`, `&#34;Windows&#34;`, `&#34;Red Hat Enterprise Linux&#34;`, `&#34;Linux/UNIX (Amazon VPC)&#34;`, `&#34;SUSE Linux (Amazon VPC)&#34;`, `&#34;Windows (Amazon VPC)&#34;`,  `&#34;Red Hat Enterprise Linux (Amazon VPC)&#34;`.
-     * 
-     */
     public Output<String> product() {
         return this.product;
     }
-    /**
-     * The AWS region your group will be created in.
-     * 
-     */
     @Export(name="region", type=String.class, parameters={})
     private Output</* @Nullable */ String> region;
 
-    /**
-     * @return The AWS region your group will be created in.
-     * 
-     */
     public Output<Optional<String>> region() {
         return Codegen.optional(this.region);
     }
@@ -581,101 +244,45 @@ public class ManagedInstance extends com.pulumi.resources.CustomResource {
     public Output<Optional<List<ManagedInstanceScheduledTask>>> scheduledTasks() {
         return Codegen.optional(this.scheduledTasks);
     }
-    /**
-     * One or more security group IDs.
-     * 
-     */
     @Export(name="securityGroupIds", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> securityGroupIds;
 
-    /**
-     * @return One or more security group IDs.
-     * 
-     */
     public Output<Optional<List<String>>> securityGroupIds() {
         return Codegen.optional(this.securityGroupIds);
     }
-    /**
-     * The Base64-encoded shutdown script to execute prior to instance termination.
-     * 
-     */
     @Export(name="shutdownScript", type=String.class, parameters={})
     private Output</* @Nullable */ String> shutdownScript;
 
-    /**
-     * @return The Base64-encoded shutdown script to execute prior to instance termination.
-     * 
-     */
     public Output<Optional<String>> shutdownScript() {
         return Codegen.optional(this.shutdownScript);
     }
-    /**
-     * A comma-separated list of subnet identifiers for your instance.
-     * 
-     */
     @Export(name="subnetIds", type=List.class, parameters={String.class})
     private Output<List<String>> subnetIds;
 
-    /**
-     * @return A comma-separated list of subnet identifiers for your instance.
-     * 
-     */
     public Output<List<String>> subnetIds() {
         return this.subnetIds;
     }
-    /**
-     * Set tags for the instance. Items should be unique.
-     * 
-     */
     @Export(name="tags", type=List.class, parameters={ManagedInstanceTag.class})
     private Output</* @Nullable */ List<ManagedInstanceTag>> tags;
 
-    /**
-     * @return Set tags for the instance. Items should be unique.
-     * 
-     */
     public Output<Optional<List<ManagedInstanceTag>>> tags() {
         return Codegen.optional(this.tags);
     }
-    /**
-     * The amount of time, in seconds, an existing instance should remain active after becoming unhealthy. After the set time out the instance will be replaced, default `&#34;120&#34;`.
-     * 
-     */
     @Export(name="unhealthyDuration", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> unhealthyDuration;
 
-    /**
-     * @return The amount of time, in seconds, an existing instance should remain active after becoming unhealthy. After the set time out the instance will be replaced, default `&#34;120&#34;`.
-     * 
-     */
     public Output<Optional<Integer>> unhealthyDuration() {
         return Codegen.optional(this.unhealthyDuration);
     }
-    /**
-     * The Base64-encoded MIME user data to make available to the instances.
-     * 
-     */
     @Export(name="userData", type=String.class, parameters={})
     private Output</* @Nullable */ String> userData;
 
-    /**
-     * @return The Base64-encoded MIME user data to make available to the instances.
-     * 
-     */
     public Output<Optional<String>> userData() {
         return Codegen.optional(this.userData);
     }
-    /**
-     * In case of any available Reserved Instances, Managed Instance will utilize them before purchasing Spot instances. Default: `&#34;false&#34;`.
-     * 
-     */
     @Export(name="utilizeReservedInstances", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> utilizeReservedInstances;
 
-    /**
-     * @return In case of any available Reserved Instances, Managed Instance will utilize them before purchasing Spot instances. Default: `&#34;false&#34;`.
-     * 
-     */
     public Output<Optional<Boolean>> utilizeReservedInstances() {
         return Codegen.optional(this.utilizeReservedInstances);
     }

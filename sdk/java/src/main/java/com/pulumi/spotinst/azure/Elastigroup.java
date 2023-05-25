@@ -33,24 +33,20 @@ import javax.annotation.Nullable;
  * Provides a Spotinst elastigroup Azure resource.
  * 
  * ## Example Usage
+ * 
  * ```java
  * package generated_program;
  * 
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.spotinst.azure.Elastigroup;
- * import com.pulumi.spotinst.azure.ElastigroupArgs;
- * import com.pulumi.spotinst.azure.inputs.ElastigroupHealthCheckArgs;
- * import com.pulumi.spotinst.azure.inputs.ElastigroupImageArgs;
- * import com.pulumi.spotinst.azure.inputs.ElastigroupLoadBalancerArgs;
- * import com.pulumi.spotinst.azure.inputs.ElastigroupLoginArgs;
- * import com.pulumi.spotinst.azure.inputs.ElastigroupManagedServiceIdentityArgs;
- * import com.pulumi.spotinst.azure.inputs.ElastigroupNetworkArgs;
- * import com.pulumi.spotinst.azure.inputs.ElastigroupScalingDownPolicyArgs;
- * import com.pulumi.spotinst.azure.inputs.ElastigroupScalingUpPolicyArgs;
- * import com.pulumi.spotinst.azure.inputs.ElastigroupScheduledTaskArgs;
- * import com.pulumi.spotinst.azure.inputs.ElastigroupStrategyArgs;
+ * import com.pulumi.spotinst.ElastigroupAzureV3;
+ * import com.pulumi.spotinst.ElastigroupAzureV3Args;
+ * import com.pulumi.spotinst.inputs.ElastigroupAzureV3ImageArgs;
+ * import com.pulumi.spotinst.inputs.ElastigroupAzureV3LoginArgs;
+ * import com.pulumi.spotinst.inputs.ElastigroupAzureV3ManagedServiceIdentityArgs;
+ * import com.pulumi.spotinst.inputs.ElastigroupAzureV3NetworkArgs;
+ * import com.pulumi.spotinst.inputs.ElastigroupAzureV3TagArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -64,112 +60,172 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var testAzureGroup = new Elastigroup(&#34;testAzureGroup&#34;, ElastigroupArgs.builder()        
+ *         var testAzureGroup = new ElastigroupAzureV3(&#34;testAzureGroup&#34;, ElastigroupAzureV3Args.builder()        
+ *             .customData(&#34;IyEvYmluL2Jhc2gKZWNobyAidGVzdCI=&#34;)
  *             .desiredCapacity(1)
- *             .healthCheck(ElastigroupHealthCheckArgs.builder()
- *                 .autoHealing(true)
- *                 .gracePeriod(120)
- *                 .healthCheckType(&#34;INSTANCE_STATE&#34;)
- *                 .build())
- *             .images(ElastigroupImageArgs.builder()
- *                 .marketplaces(ElastigroupImageMarketplaceArgs.builder()
+ *             .drainingTimeout(300)
+ *             .fallbackToOnDemand(true)
+ *             .images(ElastigroupAzureV3ImageArgs.builder()
+ *                 .marketplaces(ElastigroupAzureV3ImageMarketplaceArgs.builder()
  *                     .offer(&#34;UbuntuServer&#34;)
  *                     .publisher(&#34;Canonical&#34;)
- *                     .sku(&#34;16.04-LTS&#34;)
+ *                     .sku(&#34;18.04-LTS&#34;)
+ *                     .version(&#34;latest&#34;)
  *                     .build())
  *                 .build())
- *             .loadBalancers(ElastigroupLoadBalancerArgs.builder()
- *                 .autoWeight(true)
- *                 .balancerId(&#34;lb-1ee2e3q&#34;)
- *                 .targetSetId(&#34;ts-3eq&#34;)
- *                 .type(&#34;MULTAI_TARGET_SET&#34;)
- *                 .build())
- *             .login(ElastigroupLoginArgs.builder()
+ *             .login(ElastigroupAzureV3LoginArgs.builder()
  *                 .sshPublicKey(&#34;33a2s1f3g5a1df5g1ad3f2g1adfg56dfg==&#34;)
  *                 .userName(&#34;admin&#34;)
  *                 .build())
- *             .lowPrioritySizes(            
- *                 &#34;standard_a1_v1&#34;,
- *                 &#34;standard_a1_v2&#34;)
- *             .managedServiceIdentities(ElastigroupManagedServiceIdentityArgs.builder()
- *                 .name(&#34;example-identity&#34;)
- *                 .resourceGroupName(&#34;spotinst-azure&#34;)
+ *             .managedServiceIdentities(ElastigroupAzureV3ManagedServiceIdentityArgs.builder()
+ *                 .name(&#34;ocean-westus-dev-aks-agentpool&#34;)
+ *                 .resourceGroupName(&#34;MC_ocean-westus-dev_ocean-westus-dev-aks_westus&#34;)
  *                 .build())
  *             .maxSize(1)
  *             .minSize(0)
- *             .network(ElastigroupNetworkArgs.builder()
- *                 .assignPublicIp(true)
- *                 .resourceGroupName(&#34;subnetResourceGroup&#34;)
- *                 .subnetName(&#34;my-subnet-name&#34;)
- *                 .virtualNetworkName(&#34;vname&#34;)
+ *             .network(ElastigroupAzureV3NetworkArgs.builder()
+ *                 .networkInterfaces(ElastigroupAzureV3NetworkNetworkInterfaceArgs.builder()
+ *                     .additionalIpConfigs(ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArgs.builder()
+ *                         .privateIPVersion(&#34;IPv4&#34;)
+ *                         .name(&#34;SecondaryIPConfig&#34;)
+ *                         .build())
+ *                     .applicationSecurityGroup(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+ *                     .assignPublicIp(false)
+ *                     .isPrimary(true)
+ *                     .subnetName(&#34;default&#34;)
+ *                     .build())
+ *                 .resourceGroupName(&#34;ResourceGroup&#34;)
+ *                 .virtualNetworkName(&#34;VirtualNetworkName&#34;)
  *                 .build())
  *             .odSizes(            
  *                 &#34;standard_a1_v1&#34;,
  *                 &#34;standard_a1_v2&#34;)
- *             .product(&#34;Linux&#34;)
+ *             .os(&#34;Linux&#34;)
  *             .region(&#34;eastus&#34;)
  *             .resourceGroupName(&#34;spotinst-azure&#34;)
- *             .scalingDownPolicies(ElastigroupScalingDownPolicyArgs.builder()
- *                 .actionType(&#34;adjustment&#34;)
- *                 .adjustment(&#34;MIN(5,10)&#34;)
- *                 .cooldown(60)
- *                 .dimensions(ElastigroupScalingDownPolicyDimensionArgs.builder()
- *                     .name(&#34;name-1&#34;)
- *                     .value(&#34;value-1&#34;)
+ *             .spotPercentage(65)
+ *             .spotSizes(            
+ *                 &#34;standard_a1_v1&#34;,
+ *                 &#34;standard_a1_v2&#34;)
+ *             .tags(            
+ *                 ElastigroupAzureV3TagArgs.builder()
+ *                     .key(&#34;key1&#34;)
+ *                     .value(&#34;value1&#34;)
+ *                     .build(),
+ *                 ElastigroupAzureV3TagArgs.builder()
+ *                     .key(&#34;key2&#34;)
+ *                     .value(&#34;value2&#34;)
  *                     .build())
- *                 .evaluationPeriods(&#34;10&#34;)
- *                 .metricName(&#34;CPUUtilization&#34;)
- *                 .namespace(&#34;Microsoft.Compute&#34;)
- *                 .operator(&#34;gt&#34;)
- *                 .period(&#34;60&#34;)
- *                 .policyName(&#34;policy-name&#34;)
- *                 .statistic(&#34;average&#34;)
- *                 .threshold(10)
- *                 .unit(&#34;percent&#34;)
- *                 .build())
- *             .scalingUpPolicies(ElastigroupScalingUpPolicyArgs.builder()
- *                 .actionType(&#34;setMinTarget&#34;)
- *                 .cooldown(60)
- *                 .dimensions(                
- *                     ElastigroupScalingUpPolicyDimensionArgs.builder()
- *                         .name(&#34;resourceName&#34;)
- *                         .value(&#34;resource-name&#34;)
- *                         .build(),
- *                     ElastigroupScalingUpPolicyDimensionArgs.builder()
- *                         .name(&#34;resourceGroupName&#34;)
- *                         .value(&#34;resource-group-name&#34;)
- *                         .build())
- *                 .evaluationPeriods(&#34;10&#34;)
- *                 .metricName(&#34;CPUUtilization&#34;)
- *                 .minTargetCapacity(1)
- *                 .namespace(&#34;Microsoft.Compute&#34;)
- *                 .operator(&#34;gt&#34;)
- *                 .period(&#34;60&#34;)
- *                 .policyName(&#34;policy-name&#34;)
- *                 .statistic(&#34;average&#34;)
- *                 .threshold(10)
- *                 .unit(&#34;percent&#34;)
- *                 .build())
- *             .scheduledTasks(ElastigroupScheduledTaskArgs.builder()
- *                 .adjustment(2)
- *                 .adjustmentPercentage(50)
- *                 .batchSizePercentage(33)
- *                 .cronExpression(&#34;* * * * *&#34;)
- *                 .gracePeriod(300)
- *                 .isEnabled(true)
- *                 .scaleMaxCapacity(8)
- *                 .scaleMinCapacity(5)
- *                 .scaleTargetCapacity(6)
- *                 .taskType(&#34;scale&#34;)
- *                 .build())
- *             .shutdownScript(&#34;&#34;)
- *             .strategy(ElastigroupStrategyArgs.builder()
- *                 .drainingTimeout(300)
- *                 .odCount(1)
- *                 .build())
- *             .userData(&#34;&#34;)
  *             .build());
  * 
+ *     }
+ * }
+ * ```
+ * ## Strategy
+ * 
+ * * `spot_percentage` - (Optional) Percentage of Spot-VMs to maintain. Required if `on_demand_count` is not specified.
+ * * `on_demand_count` - (Optional) Number of On-Demand VMs to maintain. Required if `spot_percentage` is not specified.
+ * * `fallback_to_on_demand` -
+ * * `draining_timeout` - (Optional, Default `120`) Time (seconds) to allow the instance to be drained from incoming TCP connections and detached from MLB before terminating it during a scale-down operation.
+ * 
+ * &lt;a id=&#34;image&#34;&gt;&lt;/a&gt;
+ * ## Image
+ * 
+ * * `image` - (Required) Image of a VM. An image is a template for creating new VMs. Choose from Azure image catalogue (marketplace) or use a custom image.
+ *     * `publisher` - (Optional) Image publisher. Required if resource_group_name is not specified.
+ *     * `offer` - (Optional) Name of the image to use. Required if publisher is specified.
+ *     * `sku` - (Optional) Image&#39;s Stock Keeping Unit, which is the specific version of the image. Required if publisher is specified.
+ *     * `version` -
+ *     * `resource_group_name` - (Optional) Name of Resource Group for custom image. Required if publisher not specified.
+ *     * `image_name` - (Optional) Name of the custom image. Required if resource_group_name is specified.
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *     }
+ * }
+ * ```
+ * 
+ * &lt;a id=&#34;network&#34;&gt;&lt;/a&gt;
+ * ## Network
+ * 
+ * * `network` - (Required) Defines the Virtual Network and Subnet for your Elastigroup.
+ *     * `virtual_network_name` - (Required) Name of Vnet.
+ *     * `resource_group_name` - (Required) Vnet Resource Group Name.
+ *     * `network_interfaces` -
+ *         * `subnet_name` - (Required) ID of subnet.
+ *         * `assign_public_up` - (Optional, Default: `false`) Assign a public IP to each VM in the Elastigroup.
+ *         * `is_primary` -
+ *         * `additional_ip_configs` - (Optional) Array of additional IP configuration objects.
+ *             * `name` - (Required) The IP configuration name.
+ *             * `private_ip_version` - (Optional) Available from Azure Api-Version 2017-03-30 onwards, it represents whether the specific ip configuration is IPv4 or IPv6. Valid values: `IPv4`, `IPv6`.
+ *         * `application_security_group` - (Optional) - List of Application Security Groups that will be associated to the primary ip configuration of the network interface.
+ *             * `name` - (Required) - The name of the Application Security group.
+ *             * `resource_group_name` - (Required) - The resource group of the Application Security Group.
+ *               }
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *     }
+ * }
+ * ```
+ * 
+ * ### Login
+ * 
+ * * `login` - (Required) Describes the login configuration.
+ *     * `user_name` - (Required) Set admin access for accessing your VMs.
+ *     * `ssh_public_key` - (Optional) SSH for admin access to Linux VMs. Required for Linux OS types.
+ *     * `password` - (Optional) Password for admin access to Windows VMs. Required for Windows OS types.
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
  *     }
  * }
  * ```
@@ -177,9 +233,17 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="spotinst:azure/elastigroup:Elastigroup")
 public class Elastigroup extends com.pulumi.resources.CustomResource {
+    /**
+     * Custom init script file or text in Base64 encoded format.
+     * 
+     */
     @Export(name="customData", type=String.class, parameters={})
     private Output</* @Nullable */ String> customData;
 
+    /**
+     * @return Custom init script file or text in Base64 encoded format.
+     * 
+     */
     public Output<Optional<String>> customData() {
         return Codegen.optional(this.customData);
     }
@@ -209,31 +273,15 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
     public Output<Optional<List<ElastigroupImage>>> images() {
         return Codegen.optional(this.images);
     }
-    /**
-     * Describes the [Kubernetes](https://kubernetes.io/) integration.
-     * 
-     */
     @Export(name="integrationKubernetes", type=ElastigroupIntegrationKubernetes.class, parameters={})
     private Output</* @Nullable */ ElastigroupIntegrationKubernetes> integrationKubernetes;
 
-    /**
-     * @return Describes the [Kubernetes](https://kubernetes.io/) integration.
-     * 
-     */
     public Output<Optional<ElastigroupIntegrationKubernetes>> integrationKubernetes() {
         return Codegen.optional(this.integrationKubernetes);
     }
-    /**
-     * Describes the [Multai Runtime](https://spotinst.com/) integration.
-     * 
-     */
     @Export(name="integrationMultaiRuntime", type=ElastigroupIntegrationMultaiRuntime.class, parameters={})
     private Output</* @Nullable */ ElastigroupIntegrationMultaiRuntime> integrationMultaiRuntime;
 
-    /**
-     * @return Describes the [Multai Runtime](https://spotinst.com/) integration.
-     * 
-     */
     public Output<Optional<ElastigroupIntegrationMultaiRuntime>> integrationMultaiRuntime() {
         return Codegen.optional(this.integrationMultaiRuntime);
     }
@@ -249,17 +297,9 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
     public Output<Optional<ElastigroupLogin>> login() {
         return Codegen.optional(this.login);
     }
-    /**
-     * Available Low-Priority sizes.
-     * 
-     */
     @Export(name="lowPrioritySizes", type=List.class, parameters={String.class})
     private Output<List<String>> lowPrioritySizes;
 
-    /**
-     * @return Available Low-Priority sizes.
-     * 
-     */
     public Output<List<String>> lowPrioritySizes() {
         return this.lowPrioritySizes;
     }
@@ -298,14 +338,14 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
         return this.minSize;
     }
     /**
-     * The name of the managed identity.
+     * Name of the Managed Service Identity.
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return The name of the managed identity.
+     * @return Name of the Managed Service Identity.
      * 
      */
     public Output<String> name() {
@@ -331,17 +371,9 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
     public Output<List<String>> odSizes() {
         return this.odSizes;
     }
-    /**
-     * Operation system type. Valid values: `&#34;Linux&#34;`, `&#34;Windows&#34;`.
-     * 
-     */
     @Export(name="product", type=String.class, parameters={})
     private Output<String> product;
 
-    /**
-     * @return Operation system type. Valid values: `&#34;Linux&#34;`, `&#34;Windows&#34;`.
-     * 
-     */
     public Output<String> product() {
         return this.product;
     }
@@ -360,14 +392,14 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
         return this.region;
     }
     /**
-     * The Resource Group that the user-assigned managed identity resides in.
+     * Name of the Azure Resource Group where the Managed Service Identity is located.
      * 
      */
     @Export(name="resourceGroupName", type=String.class, parameters={})
     private Output<String> resourceGroupName;
 
     /**
-     * @return The Resource Group that the user-assigned managed identity resides in.
+     * @return Name of the Azure Resource Group where the Managed Service Identity is located.
      * 
      */
     public Output<String> resourceGroupName() {
@@ -385,45 +417,21 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
     public Output<Optional<List<ElastigroupScalingUpPolicy>>> scalingUpPolicies() {
         return Codegen.optional(this.scalingUpPolicies);
     }
-    /**
-     * Describes the configuration of one or more scheduled tasks.
-     * 
-     */
     @Export(name="scheduledTasks", type=List.class, parameters={ElastigroupScheduledTask.class})
     private Output</* @Nullable */ List<ElastigroupScheduledTask>> scheduledTasks;
 
-    /**
-     * @return Describes the configuration of one or more scheduled tasks.
-     * 
-     */
     public Output<Optional<List<ElastigroupScheduledTask>>> scheduledTasks() {
         return Codegen.optional(this.scheduledTasks);
     }
-    /**
-     * Shutdown script for the group. Value should be passed as a string encoded at Base64 only.
-     * 
-     */
     @Export(name="shutdownScript", type=String.class, parameters={})
     private Output</* @Nullable */ String> shutdownScript;
 
-    /**
-     * @return Shutdown script for the group. Value should be passed as a string encoded at Base64 only.
-     * 
-     */
     public Output<Optional<String>> shutdownScript() {
         return Codegen.optional(this.shutdownScript);
     }
-    /**
-     * Describes the deployment strategy.
-     * 
-     */
     @Export(name="strategy", type=ElastigroupStrategy.class, parameters={})
     private Output<ElastigroupStrategy> strategy;
 
-    /**
-     * @return Describes the deployment strategy.
-     * 
-     */
     public Output<ElastigroupStrategy> strategy() {
         return this.strategy;
     }
@@ -433,17 +441,9 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
     public Output<Optional<ElastigroupUpdatePolicy>> updatePolicy() {
         return Codegen.optional(this.updatePolicy);
     }
-    /**
-     * Base64-encoded MIME user data to make available to the instances.
-     * 
-     */
     @Export(name="userData", type=String.class, parameters={})
     private Output</* @Nullable */ String> userData;
 
-    /**
-     * @return Base64-encoded MIME user data to make available to the instances.
-     * 
-     */
     public Output<Optional<String>> userData() {
         return Codegen.optional(this.userData);
     }

@@ -13,9 +13,6 @@ namespace Pulumi.SpotInst.Aws.Outputs
     [OutputType]
     public sealed class ManagedInstanceIntegrationRoute53
     {
-        /// <summary>
-        /// Route 53 Domain configurations.
-        /// </summary>
         public readonly ImmutableArray<Outputs.ManagedInstanceIntegrationRoute53Domain> Domains;
 
         [OutputConstructor]

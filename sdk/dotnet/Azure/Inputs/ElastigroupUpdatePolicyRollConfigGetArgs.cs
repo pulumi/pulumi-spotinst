@@ -12,21 +12,12 @@ namespace Pulumi.SpotInst.Azure.Inputs
 
     public sealed class ElastigroupUpdatePolicyRollConfigGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The percentage size of each batch in the scheduled deployment roll. Required when the 'task_type' is 'roll'.
-        /// </summary>
         [Input("batchSizePercentage", required: true)]
         public Input<int> BatchSizePercentage { get; set; } = null!;
 
-        /// <summary>
-        /// Period of time (seconds) to wait for VM to reach healthiness before monitoring for unhealthiness.
-        /// </summary>
         [Input("gracePeriod")]
         public Input<int>? GracePeriod { get; set; }
 
-        /// <summary>
-        /// Health check used to validate VM health. Valid values: “INSTANCE_STATE”.
-        /// </summary>
         [Input("healthCheckType")]
         public Input<string>? HealthCheckType { get; set; }
 

@@ -13,53 +13,21 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ManagedInstanceIntegrationRoute53Domain {
-    /**
-     * @return The Route 53 Hosted Zone Id for the registered Domain.
-     * 
-     */
     private String hostedZoneId;
-    /**
-     * @return The type of the record set. Valid values: `&#34;a&#34;`, `&#34;cname&#34;`.
-     * 
-     */
     private @Nullable String recordSetType;
-    /**
-     * @return List of record sets
-     * 
-     */
     private List<ManagedInstanceIntegrationRoute53DomainRecordSet> recordSets;
-    /**
-     * @return The Spotinst account ID that is linked to the AWS account that holds the Route 53 hosted Zone Id. The default is the user Spotinst account provided as a URL parameter.
-     * 
-     */
     private @Nullable String spotinstAcctId;
 
     private ManagedInstanceIntegrationRoute53Domain() {}
-    /**
-     * @return The Route 53 Hosted Zone Id for the registered Domain.
-     * 
-     */
     public String hostedZoneId() {
         return this.hostedZoneId;
     }
-    /**
-     * @return The type of the record set. Valid values: `&#34;a&#34;`, `&#34;cname&#34;`.
-     * 
-     */
     public Optional<String> recordSetType() {
         return Optional.ofNullable(this.recordSetType);
     }
-    /**
-     * @return List of record sets
-     * 
-     */
     public List<ManagedInstanceIntegrationRoute53DomainRecordSet> recordSets() {
         return this.recordSets;
     }
-    /**
-     * @return The Spotinst account ID that is linked to the AWS account that holds the Route 53 hosted Zone Id. The default is the user Spotinst account provided as a URL parameter.
-     * 
-     */
     public Optional<String> spotinstAcctId() {
         return Optional.ofNullable(this.spotinstAcctId);
     }

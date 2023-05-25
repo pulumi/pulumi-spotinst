@@ -19,12 +19,16 @@ public final class OceanLaunchSpecInstanceMetadataOptionsArgs extends com.pulumi
     /**
      * An integer from 1 through 64. The desired HTTP PUT response hop limit for instance metadata requests. The larger the number, the further the instance metadata requests can travel.
      * 
+     * &lt;a id=&#34;update-policy&#34;&gt;&lt;/a&gt;
+     * 
      */
     @Import(name="httpPutResponseHopLimit")
     private @Nullable Output<Integer> httpPutResponseHopLimit;
 
     /**
      * @return An integer from 1 through 64. The desired HTTP PUT response hop limit for instance metadata requests. The larger the number, the further the instance metadata requests can travel.
+     * 
+     * &lt;a id=&#34;update-policy&#34;&gt;&lt;/a&gt;
      * 
      */
     public Optional<Output<Integer>> httpPutResponseHopLimit() {
@@ -74,6 +78,8 @@ public final class OceanLaunchSpecInstanceMetadataOptionsArgs extends com.pulumi
         /**
          * @param httpPutResponseHopLimit An integer from 1 through 64. The desired HTTP PUT response hop limit for instance metadata requests. The larger the number, the further the instance metadata requests can travel.
          * 
+         * &lt;a id=&#34;update-policy&#34;&gt;&lt;/a&gt;
+         * 
          * @return builder
          * 
          */
@@ -84,6 +90,8 @@ public final class OceanLaunchSpecInstanceMetadataOptionsArgs extends com.pulumi
 
         /**
          * @param httpPutResponseHopLimit An integer from 1 through 64. The desired HTTP PUT response hop limit for instance metadata requests. The larger the number, the further the instance metadata requests can travel.
+         * 
+         * &lt;a id=&#34;update-policy&#34;&gt;&lt;/a&gt;
          * 
          * @return builder
          * 

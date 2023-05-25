@@ -16,47 +16,23 @@ public final class ElastigroupUpdatePolicyRollConfigArgs extends com.pulumi.reso
 
     public static final ElastigroupUpdatePolicyRollConfigArgs Empty = new ElastigroupUpdatePolicyRollConfigArgs();
 
-    /**
-     * The percentage size of each batch in the scheduled deployment roll. Required when the &#39;task_type&#39; is &#39;roll&#39;.
-     * 
-     */
     @Import(name="batchSizePercentage", required=true)
     private Output<Integer> batchSizePercentage;
 
-    /**
-     * @return The percentage size of each batch in the scheduled deployment roll. Required when the &#39;task_type&#39; is &#39;roll&#39;.
-     * 
-     */
     public Output<Integer> batchSizePercentage() {
         return this.batchSizePercentage;
     }
 
-    /**
-     * Period of time (seconds) to wait for VM to reach healthiness before monitoring for unhealthiness.
-     * 
-     */
     @Import(name="gracePeriod")
     private @Nullable Output<Integer> gracePeriod;
 
-    /**
-     * @return Period of time (seconds) to wait for VM to reach healthiness before monitoring for unhealthiness.
-     * 
-     */
     public Optional<Output<Integer>> gracePeriod() {
         return Optional.ofNullable(this.gracePeriod);
     }
 
-    /**
-     * Health check used to validate VM health. Valid values: “INSTANCE_STATE”.
-     * 
-     */
     @Import(name="healthCheckType")
     private @Nullable Output<String> healthCheckType;
 
-    /**
-     * @return Health check used to validate VM health. Valid values: “INSTANCE_STATE”.
-     * 
-     */
     public Optional<Output<String>> healthCheckType() {
         return Optional.ofNullable(this.healthCheckType);
     }
@@ -87,65 +63,29 @@ public final class ElastigroupUpdatePolicyRollConfigArgs extends com.pulumi.reso
             $ = new ElastigroupUpdatePolicyRollConfigArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param batchSizePercentage The percentage size of each batch in the scheduled deployment roll. Required when the &#39;task_type&#39; is &#39;roll&#39;.
-         * 
-         * @return builder
-         * 
-         */
         public Builder batchSizePercentage(Output<Integer> batchSizePercentage) {
             $.batchSizePercentage = batchSizePercentage;
             return this;
         }
 
-        /**
-         * @param batchSizePercentage The percentage size of each batch in the scheduled deployment roll. Required when the &#39;task_type&#39; is &#39;roll&#39;.
-         * 
-         * @return builder
-         * 
-         */
         public Builder batchSizePercentage(Integer batchSizePercentage) {
             return batchSizePercentage(Output.of(batchSizePercentage));
         }
 
-        /**
-         * @param gracePeriod Period of time (seconds) to wait for VM to reach healthiness before monitoring for unhealthiness.
-         * 
-         * @return builder
-         * 
-         */
         public Builder gracePeriod(@Nullable Output<Integer> gracePeriod) {
             $.gracePeriod = gracePeriod;
             return this;
         }
 
-        /**
-         * @param gracePeriod Period of time (seconds) to wait for VM to reach healthiness before monitoring for unhealthiness.
-         * 
-         * @return builder
-         * 
-         */
         public Builder gracePeriod(Integer gracePeriod) {
             return gracePeriod(Output.of(gracePeriod));
         }
 
-        /**
-         * @param healthCheckType Health check used to validate VM health. Valid values: “INSTANCE_STATE”.
-         * 
-         * @return builder
-         * 
-         */
         public Builder healthCheckType(@Nullable Output<String> healthCheckType) {
             $.healthCheckType = healthCheckType;
             return this;
         }
 
-        /**
-         * @param healthCheckType Health check used to validate VM health. Valid values: “INSTANCE_STATE”.
-         * 
-         * @return builder
-         * 
-         */
         public Builder healthCheckType(String healthCheckType) {
             return healthCheckType(Output.of(healthCheckType));
         }

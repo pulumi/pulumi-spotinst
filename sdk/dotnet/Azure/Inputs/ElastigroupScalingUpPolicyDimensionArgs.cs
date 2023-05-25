@@ -13,13 +13,13 @@ namespace Pulumi.SpotInst.Azure.Inputs
     public sealed class ElastigroupScalingUpPolicyDimensionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the managed identity.
+        /// Name of the Managed Service Identity.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// The dimension value.
+        /// Tag Value for Vms in Elastigroup.
         /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }

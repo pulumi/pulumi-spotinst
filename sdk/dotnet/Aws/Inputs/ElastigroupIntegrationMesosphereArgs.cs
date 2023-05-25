@@ -12,6 +12,19 @@ namespace Pulumi.SpotInst.Aws.Inputs
 
     public sealed class ElastigroupIntegrationMesosphereArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Usage:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        /// });
+        /// ```
+        /// </summary>
         [Input("apiServer", required: true)]
         public Input<string> ApiServer { get; set; } = null!;
 

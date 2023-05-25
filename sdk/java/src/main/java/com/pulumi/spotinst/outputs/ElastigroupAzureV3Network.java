@@ -12,34 +12,16 @@ import java.util.Objects;
 @CustomType
 public final class ElastigroupAzureV3Network {
     private List<ElastigroupAzureV3NetworkNetworkInterface> networkInterfaces;
-    /**
-     * @return The resource group of the Application Security Group.
-     * }
-     * 
-     */
     private String resourceGroupName;
-    /**
-     * @return Name of Vnet.
-     * 
-     */
     private String virtualNetworkName;
 
     private ElastigroupAzureV3Network() {}
     public List<ElastigroupAzureV3NetworkNetworkInterface> networkInterfaces() {
         return this.networkInterfaces;
     }
-    /**
-     * @return The resource group of the Application Security Group.
-     * }
-     * 
-     */
     public String resourceGroupName() {
         return this.resourceGroupName;
     }
-    /**
-     * @return Name of Vnet.
-     * 
-     */
     public String virtualNetworkName() {
         return this.virtualNetworkName;
     }

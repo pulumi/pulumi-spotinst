@@ -17,6 +17,8 @@ public final class OceanLaunchSpecNetworkInterfaceAliasIpRange {
     /**
      * @return specify the IP address range for the subnet secondary IP range.
      * 
+     * &lt;a id=&#34;update-policy&#34;&gt;&lt;/a&gt;
+     * 
      */
     private String subnetworkRangeName;
 
@@ -30,6 +32,8 @@ public final class OceanLaunchSpecNetworkInterfaceAliasIpRange {
     }
     /**
      * @return specify the IP address range for the subnet secondary IP range.
+     * 
+     * &lt;a id=&#34;update-policy&#34;&gt;&lt;/a&gt;
      * 
      */
     public String subnetworkRangeName() {

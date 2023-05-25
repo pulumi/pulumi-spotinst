@@ -12,21 +12,12 @@ namespace Pulumi.SpotInst.Azure.Inputs
 
     public sealed class ElastigroupHealthCheckGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Enable auto-healing of unhealthy VMs.
-        /// </summary>
         [Input("autoHealing")]
         public Input<bool>? AutoHealing { get; set; }
 
-        /// <summary>
-        /// Period of time (seconds) to wait for VM to reach healthiness before monitoring for unhealthiness.
-        /// </summary>
         [Input("gracePeriod")]
         public Input<int>? GracePeriod { get; set; }
 
-        /// <summary>
-        /// Health check used to validate VM health. Valid values: “INSTANCE_STATE”.
-        /// </summary>
         [Input("healthCheckType", required: true)]
         public Input<string> HealthCheckType { get; set; } = null!;
 

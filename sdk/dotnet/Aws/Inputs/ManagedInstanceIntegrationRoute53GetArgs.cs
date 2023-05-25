@@ -14,10 +14,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
     {
         [Input("domains", required: true)]
         private InputList<Inputs.ManagedInstanceIntegrationRoute53DomainGetArgs>? _domains;
-
-        /// <summary>
-        /// Route 53 Domain configurations.
-        /// </summary>
         public InputList<Inputs.ManagedInstanceIntegrationRoute53DomainGetArgs> Domains
         {
             get => _domains ?? (_domains = new InputList<Inputs.ManagedInstanceIntegrationRoute53DomainGetArgs>());

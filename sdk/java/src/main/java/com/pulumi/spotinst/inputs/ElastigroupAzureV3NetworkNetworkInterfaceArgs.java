@@ -19,32 +19,16 @@ public final class ElastigroupAzureV3NetworkNetworkInterfaceArgs extends com.pul
 
     public static final ElastigroupAzureV3NetworkNetworkInterfaceArgs Empty = new ElastigroupAzureV3NetworkNetworkInterfaceArgs();
 
-    /**
-     * Array of additional IP configuration objects.
-     * 
-     */
     @Import(name="additionalIpConfigs")
     private @Nullable Output<List<ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArgs>> additionalIpConfigs;
 
-    /**
-     * @return Array of additional IP configuration objects.
-     * 
-     */
     public Optional<Output<List<ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArgs>>> additionalIpConfigs() {
         return Optional.ofNullable(this.additionalIpConfigs);
     }
 
-    /**
-     * List of Application Security Groups that will be associated to the primary ip configuration of the network interface.
-     * 
-     */
     @Import(name="applicationSecurityGroups")
     private @Nullable Output<List<ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArgs>> applicationSecurityGroups;
 
-    /**
-     * @return List of Application Security Groups that will be associated to the primary ip configuration of the network interface.
-     * 
-     */
     public Optional<Output<List<ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArgs>>> applicationSecurityGroups() {
         return Optional.ofNullable(this.applicationSecurityGroups);
     }
@@ -63,17 +47,9 @@ public final class ElastigroupAzureV3NetworkNetworkInterfaceArgs extends com.pul
         return this.isPrimary;
     }
 
-    /**
-     * ID of subnet.
-     * 
-     */
     @Import(name="subnetName", required=true)
     private Output<String> subnetName;
 
-    /**
-     * @return ID of subnet.
-     * 
-     */
     public Output<String> subnetName() {
         return this.subnetName;
     }
@@ -106,64 +82,28 @@ public final class ElastigroupAzureV3NetworkNetworkInterfaceArgs extends com.pul
             $ = new ElastigroupAzureV3NetworkNetworkInterfaceArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param additionalIpConfigs Array of additional IP configuration objects.
-         * 
-         * @return builder
-         * 
-         */
         public Builder additionalIpConfigs(@Nullable Output<List<ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArgs>> additionalIpConfigs) {
             $.additionalIpConfigs = additionalIpConfigs;
             return this;
         }
 
-        /**
-         * @param additionalIpConfigs Array of additional IP configuration objects.
-         * 
-         * @return builder
-         * 
-         */
         public Builder additionalIpConfigs(List<ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArgs> additionalIpConfigs) {
             return additionalIpConfigs(Output.of(additionalIpConfigs));
         }
 
-        /**
-         * @param additionalIpConfigs Array of additional IP configuration objects.
-         * 
-         * @return builder
-         * 
-         */
         public Builder additionalIpConfigs(ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArgs... additionalIpConfigs) {
             return additionalIpConfigs(List.of(additionalIpConfigs));
         }
 
-        /**
-         * @param applicationSecurityGroups List of Application Security Groups that will be associated to the primary ip configuration of the network interface.
-         * 
-         * @return builder
-         * 
-         */
         public Builder applicationSecurityGroups(@Nullable Output<List<ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArgs>> applicationSecurityGroups) {
             $.applicationSecurityGroups = applicationSecurityGroups;
             return this;
         }
 
-        /**
-         * @param applicationSecurityGroups List of Application Security Groups that will be associated to the primary ip configuration of the network interface.
-         * 
-         * @return builder
-         * 
-         */
         public Builder applicationSecurityGroups(List<ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArgs> applicationSecurityGroups) {
             return applicationSecurityGroups(Output.of(applicationSecurityGroups));
         }
 
-        /**
-         * @param applicationSecurityGroups List of Application Security Groups that will be associated to the primary ip configuration of the network interface.
-         * 
-         * @return builder
-         * 
-         */
         public Builder applicationSecurityGroups(ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArgs... applicationSecurityGroups) {
             return applicationSecurityGroups(List.of(applicationSecurityGroups));
         }
@@ -186,23 +126,11 @@ public final class ElastigroupAzureV3NetworkNetworkInterfaceArgs extends com.pul
             return isPrimary(Output.of(isPrimary));
         }
 
-        /**
-         * @param subnetName ID of subnet.
-         * 
-         * @return builder
-         * 
-         */
         public Builder subnetName(Output<String> subnetName) {
             $.subnetName = subnetName;
             return this;
         }
 
-        /**
-         * @param subnetName ID of subnet.
-         * 
-         * @return builder
-         * 
-         */
         public Builder subnetName(String subnetName) {
             return subnetName(Output.of(subnetName));
         }

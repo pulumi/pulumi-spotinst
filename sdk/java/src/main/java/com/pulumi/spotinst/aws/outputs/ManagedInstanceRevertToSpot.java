@@ -9,17 +9,9 @@ import java.util.Objects;
 
 @CustomType
 public final class ManagedInstanceRevertToSpot {
-    /**
-     * @return Valid values: `&#34;always&#34;`, `&#34;never&#34;`, `&#34;timeWindow&#34;`. Default `&#34;never&#34;`.
-     * 
-     */
     private String performAt;
 
     private ManagedInstanceRevertToSpot() {}
-    /**
-     * @return Valid values: `&#34;always&#34;`, `&#34;never&#34;`, `&#34;timeWindow&#34;`. Default `&#34;never&#34;`.
-     * 
-     */
     public String performAt() {
         return this.performAt;
     }

@@ -9,120 +9,58 @@ import * as utilities from "../utilities";
 /**
  * Provides a Spotinst elastigroup Azure resource.
  *
- * ## Example Usage
+ * ## Strategy
+ *
+ * * `spotPercentage` - (Optional) Percentage of Spot-VMs to maintain. Required if `onDemandCount` is not specified.
+ * * `onDemandCount` - (Optional) Number of On-Demand VMs to maintain. Required if `spotPercentage` is not specified.
+ * * `fallbackToOnDemand` -
+ * * `drainingTimeout` - (Optional, Default `120`) Time (seconds) to allow the instance to be drained from incoming TCP connections and detached from MLB before terminating it during a scale-down operation.
+ *
+ * <a id="image"></a>
+ * ## Image
+ *
+ * * `image` - (Required) Image of a VM. An image is a template for creating new VMs. Choose from Azure image catalogue (marketplace) or use a custom image.
+ *     * `publisher` - (Optional) Image publisher. Required if resourceGroupName is not specified.
+ *     * `offer` - (Optional) Name of the image to use. Required if publisher is specified.
+ *     * `sku` - (Optional) Image's Stock Keeping Unit, which is the specific version of the image. Required if publisher is specified.
+ *     * `version` -
+ *     * `resourceGroupName` - (Optional) Name of Resource Group for custom image. Required if publisher not specified.
+ *     * `imageName` - (Optional) Name of the custom image. Required if resourceGroupName is specified.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as spotinst from "@pulumi/spotinst";
+ * ```
  *
- * const testAzureGroup = new spotinst.azure.Elastigroup("testAzureGroup", {
- *     desiredCapacity: 1,
- *     healthCheck: {
- *         autoHealing: true,
- *         gracePeriod: 120,
- *         healthCheckType: "INSTANCE_STATE",
- *     },
- *     images: [{
- *         marketplaces: [{
- *             offer: "UbuntuServer",
- *             publisher: "Canonical",
- *             sku: "16.04-LTS",
- *         }],
- *     }],
- *     loadBalancers: [{
- *         autoWeight: true,
- *         balancerId: "lb-1ee2e3q",
- *         targetSetId: "ts-3eq",
- *         type: "MULTAI_TARGET_SET",
- *     }],
- *     login: {
- *         sshPublicKey: "33a2s1f3g5a1df5g1ad3f2g1adfg56dfg==",
- *         userName: "admin",
- *     },
- *     lowPrioritySizes: [
- *         "standard_a1_v1",
- *         "standard_a1_v2",
- *     ],
- *     managedServiceIdentities: [{
- *         name: "example-identity",
- *         resourceGroupName: "spotinst-azure",
- *     }],
- *     maxSize: 1,
- *     minSize: 0,
- *     network: {
- *         assignPublicIp: true,
- *         resourceGroupName: "subnetResourceGroup",
- *         subnetName: "my-subnet-name",
- *         virtualNetworkName: "vname",
- *     },
- *     odSizes: [
- *         "standard_a1_v1",
- *         "standard_a1_v2",
- *     ],
- *     product: "Linux",
- *     region: "eastus",
- *     resourceGroupName: "spotinst-azure",
- *     scalingDownPolicies: [{
- *         actionType: "adjustment",
- *         adjustment: "MIN(5,10)",
- *         cooldown: 60,
- *         dimensions: [{
- *             name: "name-1",
- *             value: "value-1",
- *         }],
- *         evaluationPeriods: 10,
- *         metricName: "CPUUtilization",
- *         namespace: "Microsoft.Compute",
- *         operator: "gt",
- *         period: 60,
- *         policyName: "policy-name",
- *         statistic: "average",
- *         threshold: 10,
- *         unit: "percent",
- *     }],
- *     scalingUpPolicies: [{
- *         actionType: "setMinTarget",
- *         cooldown: 60,
- *         dimensions: [
- *             {
- *                 name: "resourceName",
- *                 value: "resource-name",
- *             },
- *             {
- *                 name: "resourceGroupName",
- *                 value: "resource-group-name",
- *             },
- *         ],
- *         evaluationPeriods: 10,
- *         metricName: "CPUUtilization",
- *         minTargetCapacity: "1",
- *         namespace: "Microsoft.Compute",
- *         operator: "gt",
- *         period: 60,
- *         policyName: "policy-name",
- *         statistic: "average",
- *         threshold: 10,
- *         unit: "percent",
- *     }],
- *     scheduledTasks: [{
- *         adjustment: "2",
- *         adjustmentPercentage: "50",
- *         batchSizePercentage: "33",
- *         cronExpression: "* * * * *",
- *         gracePeriod: "300",
- *         isEnabled: true,
- *         scaleMaxCapacity: "8",
- *         scaleMinCapacity: "5",
- *         scaleTargetCapacity: "6",
- *         taskType: "scale",
- *     }],
- *     shutdownScript: "",
- *     strategy: {
- *         drainingTimeout: 300,
- *         odCount: 1,
- *     },
- *     userData: "",
- * });
+ * <a id="network"></a>
+ * ## Network
+ *
+ * * `network` - (Required) Defines the Virtual Network and Subnet for your Elastigroup.
+ *     * `virtualNetworkName` - (Required) Name of Vnet.
+ *     * `resourceGroupName` - (Required) Vnet Resource Group Name.
+ *     * `networkInterfaces` -
+ *         * `subnetName` - (Required) ID of subnet.
+ *         * `assignPublicUp` - (Optional, Default: `false`) Assign a public IP to each VM in the Elastigroup.
+ *         * `isPrimary` -
+ *         * `additionalIpConfigs` - (Optional) Array of additional IP configuration objects.
+ *             * `name` - (Required) The IP configuration name.
+ *             * `privateIpVersion` - (Optional) Available from Azure Api-Version 2017-03-30 onwards, it represents whether the specific ip configuration is IPv4 or IPv6. Valid values: `IPv4`, `IPv6`.
+ *         * `applicationSecurityGroup` - (Optional) - List of Application Security Groups that will be associated to the primary ip configuration of the network interface.
+ *             * `name` - (Required) - The name of the Application Security group.
+ *             * `resourceGroupName` - (Required) - The resource group of the Application Security Group.
+ *               }
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * ```
+ *
+ * ### Login
+ *
+ * * `login` - (Required) Describes the login configuration.
+ *     * `userName` - (Required) Set admin access for accessing your VMs.
+ *     * `sshPublicKey` - (Optional) SSH for admin access to Linux VMs. Required for Linux OS types.
+ *     * `password` - (Optional) Password for admin access to Windows VMs. Required for Windows OS types.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
  * ```
  */
 export class Elastigroup extends pulumi.CustomResource {
@@ -153,6 +91,9 @@ export class Elastigroup extends pulumi.CustomResource {
         return obj['__pulumiType'] === Elastigroup.__pulumiType;
     }
 
+    /**
+     * Custom init script file or text in Base64 encoded format.
+     */
     public readonly customData!: pulumi.Output<string | undefined>;
     /**
      * The desired number of instances the group should have at any time.
@@ -160,19 +101,10 @@ export class Elastigroup extends pulumi.CustomResource {
     public readonly desiredCapacity!: pulumi.Output<number | undefined>;
     public readonly healthCheck!: pulumi.Output<outputs.azure.ElastigroupHealthCheck | undefined>;
     public readonly images!: pulumi.Output<outputs.azure.ElastigroupImage[] | undefined>;
-    /**
-     * Describes the [Kubernetes](https://kubernetes.io/) integration.
-     */
     public readonly integrationKubernetes!: pulumi.Output<outputs.azure.ElastigroupIntegrationKubernetes | undefined>;
-    /**
-     * Describes the [Multai Runtime](https://spotinst.com/) integration.
-     */
     public readonly integrationMultaiRuntime!: pulumi.Output<outputs.azure.ElastigroupIntegrationMultaiRuntime | undefined>;
     public readonly loadBalancers!: pulumi.Output<outputs.azure.ElastigroupLoadBalancer[] | undefined>;
     public readonly login!: pulumi.Output<outputs.azure.ElastigroupLogin | undefined>;
-    /**
-     * Available Low-Priority sizes.
-     */
     public readonly lowPrioritySizes!: pulumi.Output<string[]>;
     public readonly managedServiceIdentities!: pulumi.Output<outputs.azure.ElastigroupManagedServiceIdentity[] | undefined>;
     /**
@@ -184,7 +116,7 @@ export class Elastigroup extends pulumi.CustomResource {
      */
     public readonly minSize!: pulumi.Output<number>;
     /**
-     * The name of the managed identity.
+     * Name of the Managed Service Identity.
      */
     public readonly name!: pulumi.Output<string>;
     public readonly network!: pulumi.Output<outputs.azure.ElastigroupNetwork>;
@@ -192,36 +124,21 @@ export class Elastigroup extends pulumi.CustomResource {
      * Available On-Demand sizes
      */
     public readonly odSizes!: pulumi.Output<string[]>;
-    /**
-     * Operation system type. Valid values: `"Linux"`, `"Windows"`.
-     */
     public readonly product!: pulumi.Output<string>;
     /**
      * The region your Azure group will be created in.
      */
     public readonly region!: pulumi.Output<string>;
     /**
-     * The Resource Group that the user-assigned managed identity resides in.
+     * Name of the Azure Resource Group where the Managed Service Identity is located.
      */
     public readonly resourceGroupName!: pulumi.Output<string>;
     public readonly scalingDownPolicies!: pulumi.Output<outputs.azure.ElastigroupScalingDownPolicy[] | undefined>;
     public readonly scalingUpPolicies!: pulumi.Output<outputs.azure.ElastigroupScalingUpPolicy[] | undefined>;
-    /**
-     * Describes the configuration of one or more scheduled tasks.
-     */
     public readonly scheduledTasks!: pulumi.Output<outputs.azure.ElastigroupScheduledTask[] | undefined>;
-    /**
-     * Shutdown script for the group. Value should be passed as a string encoded at Base64 only.
-     */
     public readonly shutdownScript!: pulumi.Output<string | undefined>;
-    /**
-     * Describes the deployment strategy.
-     */
     public readonly strategy!: pulumi.Output<outputs.azure.ElastigroupStrategy>;
     public readonly updatePolicy!: pulumi.Output<outputs.azure.ElastigroupUpdatePolicy | undefined>;
-    /**
-     * Base64-encoded MIME user data to make available to the instances.
-     */
     public readonly userData!: pulumi.Output<string | undefined>;
 
     /**
@@ -320,6 +237,9 @@ export class Elastigroup extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Elastigroup resources.
  */
 export interface ElastigroupState {
+    /**
+     * Custom init script file or text in Base64 encoded format.
+     */
     customData?: pulumi.Input<string>;
     /**
      * The desired number of instances the group should have at any time.
@@ -327,19 +247,10 @@ export interface ElastigroupState {
     desiredCapacity?: pulumi.Input<number>;
     healthCheck?: pulumi.Input<inputs.azure.ElastigroupHealthCheck>;
     images?: pulumi.Input<pulumi.Input<inputs.azure.ElastigroupImage>[]>;
-    /**
-     * Describes the [Kubernetes](https://kubernetes.io/) integration.
-     */
     integrationKubernetes?: pulumi.Input<inputs.azure.ElastigroupIntegrationKubernetes>;
-    /**
-     * Describes the [Multai Runtime](https://spotinst.com/) integration.
-     */
     integrationMultaiRuntime?: pulumi.Input<inputs.azure.ElastigroupIntegrationMultaiRuntime>;
     loadBalancers?: pulumi.Input<pulumi.Input<inputs.azure.ElastigroupLoadBalancer>[]>;
     login?: pulumi.Input<inputs.azure.ElastigroupLogin>;
-    /**
-     * Available Low-Priority sizes.
-     */
     lowPrioritySizes?: pulumi.Input<pulumi.Input<string>[]>;
     managedServiceIdentities?: pulumi.Input<pulumi.Input<inputs.azure.ElastigroupManagedServiceIdentity>[]>;
     /**
@@ -351,7 +262,7 @@ export interface ElastigroupState {
      */
     minSize?: pulumi.Input<number>;
     /**
-     * The name of the managed identity.
+     * Name of the Managed Service Identity.
      */
     name?: pulumi.Input<string>;
     network?: pulumi.Input<inputs.azure.ElastigroupNetwork>;
@@ -359,36 +270,21 @@ export interface ElastigroupState {
      * Available On-Demand sizes
      */
     odSizes?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Operation system type. Valid values: `"Linux"`, `"Windows"`.
-     */
     product?: pulumi.Input<string>;
     /**
      * The region your Azure group will be created in.
      */
     region?: pulumi.Input<string>;
     /**
-     * The Resource Group that the user-assigned managed identity resides in.
+     * Name of the Azure Resource Group where the Managed Service Identity is located.
      */
     resourceGroupName?: pulumi.Input<string>;
     scalingDownPolicies?: pulumi.Input<pulumi.Input<inputs.azure.ElastigroupScalingDownPolicy>[]>;
     scalingUpPolicies?: pulumi.Input<pulumi.Input<inputs.azure.ElastigroupScalingUpPolicy>[]>;
-    /**
-     * Describes the configuration of one or more scheduled tasks.
-     */
     scheduledTasks?: pulumi.Input<pulumi.Input<inputs.azure.ElastigroupScheduledTask>[]>;
-    /**
-     * Shutdown script for the group. Value should be passed as a string encoded at Base64 only.
-     */
     shutdownScript?: pulumi.Input<string>;
-    /**
-     * Describes the deployment strategy.
-     */
     strategy?: pulumi.Input<inputs.azure.ElastigroupStrategy>;
     updatePolicy?: pulumi.Input<inputs.azure.ElastigroupUpdatePolicy>;
-    /**
-     * Base64-encoded MIME user data to make available to the instances.
-     */
     userData?: pulumi.Input<string>;
 }
 
@@ -396,6 +292,9 @@ export interface ElastigroupState {
  * The set of arguments for constructing a Elastigroup resource.
  */
 export interface ElastigroupArgs {
+    /**
+     * Custom init script file or text in Base64 encoded format.
+     */
     customData?: pulumi.Input<string>;
     /**
      * The desired number of instances the group should have at any time.
@@ -403,19 +302,10 @@ export interface ElastigroupArgs {
     desiredCapacity?: pulumi.Input<number>;
     healthCheck?: pulumi.Input<inputs.azure.ElastigroupHealthCheck>;
     images?: pulumi.Input<pulumi.Input<inputs.azure.ElastigroupImage>[]>;
-    /**
-     * Describes the [Kubernetes](https://kubernetes.io/) integration.
-     */
     integrationKubernetes?: pulumi.Input<inputs.azure.ElastigroupIntegrationKubernetes>;
-    /**
-     * Describes the [Multai Runtime](https://spotinst.com/) integration.
-     */
     integrationMultaiRuntime?: pulumi.Input<inputs.azure.ElastigroupIntegrationMultaiRuntime>;
     loadBalancers?: pulumi.Input<pulumi.Input<inputs.azure.ElastigroupLoadBalancer>[]>;
     login?: pulumi.Input<inputs.azure.ElastigroupLogin>;
-    /**
-     * Available Low-Priority sizes.
-     */
     lowPrioritySizes: pulumi.Input<pulumi.Input<string>[]>;
     managedServiceIdentities?: pulumi.Input<pulumi.Input<inputs.azure.ElastigroupManagedServiceIdentity>[]>;
     /**
@@ -427,7 +317,7 @@ export interface ElastigroupArgs {
      */
     minSize?: pulumi.Input<number>;
     /**
-     * The name of the managed identity.
+     * Name of the Managed Service Identity.
      */
     name?: pulumi.Input<string>;
     network: pulumi.Input<inputs.azure.ElastigroupNetwork>;
@@ -435,35 +325,20 @@ export interface ElastigroupArgs {
      * Available On-Demand sizes
      */
     odSizes: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Operation system type. Valid values: `"Linux"`, `"Windows"`.
-     */
     product: pulumi.Input<string>;
     /**
      * The region your Azure group will be created in.
      */
     region: pulumi.Input<string>;
     /**
-     * The Resource Group that the user-assigned managed identity resides in.
+     * Name of the Azure Resource Group where the Managed Service Identity is located.
      */
     resourceGroupName: pulumi.Input<string>;
     scalingDownPolicies?: pulumi.Input<pulumi.Input<inputs.azure.ElastigroupScalingDownPolicy>[]>;
     scalingUpPolicies?: pulumi.Input<pulumi.Input<inputs.azure.ElastigroupScalingUpPolicy>[]>;
-    /**
-     * Describes the configuration of one or more scheduled tasks.
-     */
     scheduledTasks?: pulumi.Input<pulumi.Input<inputs.azure.ElastigroupScheduledTask>[]>;
-    /**
-     * Shutdown script for the group. Value should be passed as a string encoded at Base64 only.
-     */
     shutdownScript?: pulumi.Input<string>;
-    /**
-     * Describes the deployment strategy.
-     */
     strategy: pulumi.Input<inputs.azure.ElastigroupStrategy>;
     updatePolicy?: pulumi.Input<inputs.azure.ElastigroupUpdatePolicy>;
-    /**
-     * Base64-encoded MIME user data to make available to the instances.
-     */
     userData?: pulumi.Input<string>;
 }

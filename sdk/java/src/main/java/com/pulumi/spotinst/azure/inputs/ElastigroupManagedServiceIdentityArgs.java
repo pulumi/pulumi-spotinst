@@ -14,14 +14,14 @@ public final class ElastigroupManagedServiceIdentityArgs extends com.pulumi.reso
     public static final ElastigroupManagedServiceIdentityArgs Empty = new ElastigroupManagedServiceIdentityArgs();
 
     /**
-     * The name of the managed identity.
+     * Name of the Managed Service Identity.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return The name of the managed identity.
+     * @return Name of the Managed Service Identity.
      * 
      */
     public Output<String> name() {
@@ -29,14 +29,14 @@ public final class ElastigroupManagedServiceIdentityArgs extends com.pulumi.reso
     }
 
     /**
-     * The Resource Group that the user-assigned managed identity resides in.
+     * Name of the Azure Resource Group where the Managed Service Identity is located.
      * 
      */
     @Import(name="resourceGroupName", required=true)
     private Output<String> resourceGroupName;
 
     /**
-     * @return The Resource Group that the user-assigned managed identity resides in.
+     * @return Name of the Azure Resource Group where the Managed Service Identity is located.
      * 
      */
     public Output<String> resourceGroupName() {
@@ -69,7 +69,7 @@ public final class ElastigroupManagedServiceIdentityArgs extends com.pulumi.reso
         }
 
         /**
-         * @param name The name of the managed identity.
+         * @param name Name of the Managed Service Identity.
          * 
          * @return builder
          * 
@@ -80,7 +80,7 @@ public final class ElastigroupManagedServiceIdentityArgs extends com.pulumi.reso
         }
 
         /**
-         * @param name The name of the managed identity.
+         * @param name Name of the Managed Service Identity.
          * 
          * @return builder
          * 
@@ -90,7 +90,7 @@ public final class ElastigroupManagedServiceIdentityArgs extends com.pulumi.reso
         }
 
         /**
-         * @param resourceGroupName The Resource Group that the user-assigned managed identity resides in.
+         * @param resourceGroupName Name of the Azure Resource Group where the Managed Service Identity is located.
          * 
          * @return builder
          * 
@@ -101,7 +101,7 @@ public final class ElastigroupManagedServiceIdentityArgs extends com.pulumi.reso
         }
 
         /**
-         * @param resourceGroupName The Resource Group that the user-assigned managed identity resides in.
+         * @param resourceGroupName Name of the Azure Resource Group where the Managed Service Identity is located.
          * 
          * @return builder
          * 

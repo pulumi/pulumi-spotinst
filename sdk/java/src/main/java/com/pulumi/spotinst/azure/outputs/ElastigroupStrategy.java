@@ -11,41 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ElastigroupStrategy {
-    /**
-     * @return Time (seconds) to allow the instance to be drained from incoming TCP connections and detached from MLB before terminating it during a scale-down operation.
-     * 
-     */
     private @Nullable Integer drainingTimeout;
-    /**
-     * @return Percentage of Low Priority instances to maintain. Required if `od_count` is not specified.
-     * 
-     */
     private @Nullable Integer lowPriorityPercentage;
-    /**
-     * @return Number of On-Demand instances to maintain. Required if low_priority_percentage is not specified.
-     * 
-     */
     private @Nullable Integer odCount;
 
     private ElastigroupStrategy() {}
-    /**
-     * @return Time (seconds) to allow the instance to be drained from incoming TCP connections and detached from MLB before terminating it during a scale-down operation.
-     * 
-     */
     public Optional<Integer> drainingTimeout() {
         return Optional.ofNullable(this.drainingTimeout);
     }
-    /**
-     * @return Percentage of Low Priority instances to maintain. Required if `od_count` is not specified.
-     * 
-     */
     public Optional<Integer> lowPriorityPercentage() {
         return Optional.ofNullable(this.lowPriorityPercentage);
     }
-    /**
-     * @return Number of On-Demand instances to maintain. Required if low_priority_percentage is not specified.
-     * 
-     */
     public Optional<Integer> odCount() {
         return Optional.ofNullable(this.odCount);
     }

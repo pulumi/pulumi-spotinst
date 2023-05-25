@@ -259,9 +259,17 @@ public final class MrScalarArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.coreMinSize);
     }
 
+    /**
+     * Each `*_scaling_*_policy` supports the following:
+     * 
+     */
     @Import(name="coreScalingDownPolicies")
     private @Nullable Output<List<MrScalarCoreScalingDownPolicyArgs>> coreScalingDownPolicies;
 
+    /**
+     * @return Each `*_scaling_*_policy` supports the following:
+     * 
+     */
     public Optional<Output<List<MrScalarCoreScalingDownPolicyArgs>>> coreScalingDownPolicies() {
         return Optional.ofNullable(this.coreScalingDownPolicies);
     }
@@ -804,9 +812,17 @@ public final class MrScalarArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.taskMinSize);
     }
 
+    /**
+     * Possible core group scaling policies (Clone, New strategies):
+     * 
+     */
     @Import(name="taskScalingDownPolicies")
     private @Nullable Output<List<MrScalarTaskScalingDownPolicyArgs>> taskScalingDownPolicies;
 
+    /**
+     * @return Possible core group scaling policies (Clone, New strategies):
+     * 
+     */
     public Optional<Output<List<MrScalarTaskScalingDownPolicyArgs>>> taskScalingDownPolicies() {
         return Optional.ofNullable(this.taskScalingDownPolicies);
     }
@@ -1360,15 +1376,33 @@ public final class MrScalarArgs extends com.pulumi.resources.ResourceArgs {
             return coreMinSize(Output.of(coreMinSize));
         }
 
+        /**
+         * @param coreScalingDownPolicies Each `*_scaling_*_policy` supports the following:
+         * 
+         * @return builder
+         * 
+         */
         public Builder coreScalingDownPolicies(@Nullable Output<List<MrScalarCoreScalingDownPolicyArgs>> coreScalingDownPolicies) {
             $.coreScalingDownPolicies = coreScalingDownPolicies;
             return this;
         }
 
+        /**
+         * @param coreScalingDownPolicies Each `*_scaling_*_policy` supports the following:
+         * 
+         * @return builder
+         * 
+         */
         public Builder coreScalingDownPolicies(List<MrScalarCoreScalingDownPolicyArgs> coreScalingDownPolicies) {
             return coreScalingDownPolicies(Output.of(coreScalingDownPolicies));
         }
 
+        /**
+         * @param coreScalingDownPolicies Each `*_scaling_*_policy` supports the following:
+         * 
+         * @return builder
+         * 
+         */
         public Builder coreScalingDownPolicies(MrScalarCoreScalingDownPolicyArgs... coreScalingDownPolicies) {
             return coreScalingDownPolicies(List.of(coreScalingDownPolicies));
         }
@@ -2207,15 +2241,33 @@ public final class MrScalarArgs extends com.pulumi.resources.ResourceArgs {
             return taskMinSize(Output.of(taskMinSize));
         }
 
+        /**
+         * @param taskScalingDownPolicies Possible core group scaling policies (Clone, New strategies):
+         * 
+         * @return builder
+         * 
+         */
         public Builder taskScalingDownPolicies(@Nullable Output<List<MrScalarTaskScalingDownPolicyArgs>> taskScalingDownPolicies) {
             $.taskScalingDownPolicies = taskScalingDownPolicies;
             return this;
         }
 
+        /**
+         * @param taskScalingDownPolicies Possible core group scaling policies (Clone, New strategies):
+         * 
+         * @return builder
+         * 
+         */
         public Builder taskScalingDownPolicies(List<MrScalarTaskScalingDownPolicyArgs> taskScalingDownPolicies) {
             return taskScalingDownPolicies(Output.of(taskScalingDownPolicies));
         }
 
+        /**
+         * @param taskScalingDownPolicies Possible core group scaling policies (Clone, New strategies):
+         * 
+         * @return builder
+         * 
+         */
         public Builder taskScalingDownPolicies(MrScalarTaskScalingDownPolicyArgs... taskScalingDownPolicies) {
             return taskScalingDownPolicies(List.of(taskScalingDownPolicies));
         }

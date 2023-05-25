@@ -11,6 +11,31 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Manages a Spotinst Ocean GKE resource.
+//
+// ## Prerequisites
+//
+// Installation of the Ocean controller is required by this resource. You can accomplish this by using the spotinst/ocean-controller module as follows:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// > You must configure the same `clusterIdentifier` both for the Ocean controller and for the `gke.OceanImport` resource.
+//
 // ## Example Usage
 //
 // ```go

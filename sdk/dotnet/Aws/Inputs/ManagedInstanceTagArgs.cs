@@ -12,15 +12,9 @@ namespace Pulumi.SpotInst.Aws.Inputs
 
     public sealed class ManagedInstanceTagArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Tag's key.
-        /// </summary>
         [Input("key")]
         public Input<string>? Key { get; set; }
 
-        /// <summary>
-        /// Tag's name.
-        /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }
 

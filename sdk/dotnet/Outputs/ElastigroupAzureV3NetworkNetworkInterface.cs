@@ -13,19 +13,10 @@ namespace Pulumi.SpotInst.Outputs
     [OutputType]
     public sealed class ElastigroupAzureV3NetworkNetworkInterface
     {
-        /// <summary>
-        /// Array of additional IP configuration objects.
-        /// </summary>
         public readonly ImmutableArray<Outputs.ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfig> AdditionalIpConfigs;
-        /// <summary>
-        /// List of Application Security Groups that will be associated to the primary ip configuration of the network interface.
-        /// </summary>
         public readonly ImmutableArray<Outputs.ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroup> ApplicationSecurityGroups;
         public readonly bool AssignPublicIp;
         public readonly bool IsPrimary;
-        /// <summary>
-        /// ID of subnet.
-        /// </summary>
         public readonly string SubnetName;
 
         [OutputConstructor]

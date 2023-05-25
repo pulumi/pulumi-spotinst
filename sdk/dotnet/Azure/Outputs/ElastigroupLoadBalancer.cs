@@ -14,17 +14,8 @@ namespace Pulumi.SpotInst.Azure.Outputs
     public sealed class ElastigroupLoadBalancer
     {
         public readonly bool? AutoWeight;
-        /// <summary>
-        /// The balancer ID.
-        /// </summary>
         public readonly string? BalancerId;
-        /// <summary>
-        /// The scale set ID associated with the load balancer.
-        /// </summary>
         public readonly string? TargetSetId;
-        /// <summary>
-        /// The resource type. Valid values: CLASSIC, TARGET_GROUP, MULTAI_TARGET_SET.
-        /// </summary>
         public readonly string Type;
 
         [OutputConstructor]
