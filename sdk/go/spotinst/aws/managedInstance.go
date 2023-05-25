@@ -11,92 +11,53 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Spotinst AWS ManagedInstance resource.
 type ManagedInstance struct {
 	pulumi.CustomResourceState
 
-	// Enable the auto healing which auto replaces the instance in case the health check fails, default: `"true"`.
-	AutoHealing pulumi.BoolPtrOutput `pulumi:"autoHealing"`
-	// Attributes controls a portion of the AWS:
-	BlockDeviceMappings ManagedInstanceBlockDeviceMappingArrayOutput `pulumi:"blockDeviceMappings"`
-	// Determine the way we attach the data volumes to the data devices. Valid values: `"reattach"`, `"onLaunch"`. Default: `"onLaunch"`.
-	BlockDevicesMode pulumi.StringPtrOutput `pulumi:"blockDevicesMode"`
-	// cpuCredits can have one of two values: `"unlimited"`, `"standard"`.
-	CpuCredits pulumi.StringPtrOutput `pulumi:"cpuCredits"`
-	// The ManagedInstance description.
-	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The time in seconds to allow the instance be drained from incoming TCP connections and detached from ELB before terminating it, during a scale down operation.
-	DrainingTimeout pulumi.IntPtrOutput `pulumi:"drainingTimeout"`
-	// Enable EBS optimization for supported instances. Note: Additional charges will be applied by the Cloud Provider.
-	// Default: false
-	EbsOptimized pulumi.BoolOutput `pulumi:"ebsOptimized"`
-	// Elastic IP Allocation Id to associate to the instance.
-	ElasticIp pulumi.StringPtrOutput `pulumi:"elasticIp"`
-	// Describes whether instance Enhanced Monitoring is enabled.
-	// Default: false
-	EnableMonitoring pulumi.BoolPtrOutput `pulumi:"enableMonitoring"`
-	FallBackToOd     pulumi.BoolPtrOutput `pulumi:"fallBackToOd"`
-	// The amount of time, in seconds, after the instance has launched to starts and check its health, default `"120"`.
-	GracePeriod pulumi.IntPtrOutput `pulumi:"gracePeriod"`
-	// The service to use for the health check. Valid values: `"EC2"`, `"ELB"`, `"TARGET_GROUP"`, `"MULTAI_TARGET_SET"`. Default: `"EC2"`.
-	HealthCheckType pulumi.StringPtrOutput `pulumi:"healthCheckType"`
-	// Set IAM profile to instance. Set only one of ARN or Name.
-	IamInstanceProfile pulumi.StringPtrOutput `pulumi:"iamInstanceProfile"`
-	// The ID of the image used to launch the instance.
-	ImageId pulumi.StringOutput `pulumi:"imageId"`
-	// Comma separated list of available instance types for instance.
-	InstanceTypes pulumi.StringArrayOutput `pulumi:"instanceTypes"`
-	// Describes the [Route53](https://aws.amazon.com/documentation/route53/?id=docs_gateway) integration.
-	IntegrationRoute53 ManagedInstanceIntegrationRoute53PtrOutput `pulumi:"integrationRoute53"`
-	// Specify a Key Pair to attach to the instances.
-	KeyPair pulumi.StringPtrOutput `pulumi:"keyPair"`
-	// Set lifecycle, valid values: `"spot"`, `"onDemand"`. Default `"spot"`.
-	LifeCycle               pulumi.StringPtrOutput                        `pulumi:"lifeCycle"`
-	LoadBalancers           ManagedInstanceLoadBalancerArrayOutput        `pulumi:"loadBalancers"`
-	ManagedInstanceAction   ManagedInstanceManagedInstanceActionPtrOutput `pulumi:"managedInstanceAction"`
-	MinimumInstanceLifetime pulumi.IntPtrOutput                           `pulumi:"minimumInstanceLifetime"`
-	// The ManagedInstance name.
-	Name              pulumi.StringOutput                        `pulumi:"name"`
-	NetworkInterfaces ManagedInstanceNetworkInterfaceArrayOutput `pulumi:"networkInterfaces"`
-	// When `performAt` is `"timeWindow"`: must specify a list of `"timeWindows"` with at least one time window. Each string should be formatted as `ddd:hh:mm-ddd:hh:mm` (ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59).
-	OptimizationWindows pulumi.StringArrayOutput `pulumi:"optimizationWindows"`
-	// Select a prediction strategy. Valid values: `"balanced"`, `"costOriented"`, `"availabilityOriented"`, `"cheapest"`. Default: `"availabilityOriented"`.
-	Orientation pulumi.StringPtrOutput `pulumi:"orientation"`
-	// Should the instance maintain its Data volumes.
-	PersistBlockDevices pulumi.BoolOutput `pulumi:"persistBlockDevices"`
-	// Should the instance maintain its private IP.
-	PersistPrivateIp pulumi.BoolPtrOutput `pulumi:"persistPrivateIp"`
-	// Should the instance maintain its root device volumes.
-	PersistRootDevice pulumi.BoolPtrOutput `pulumi:"persistRootDevice"`
-	// Valid values: `"default"`, `"dedicated"`.
-	// Default: default
-	PlacementTenancy pulumi.StringPtrOutput `pulumi:"placementTenancy"`
-	// Preferred instance types for the instance. We will automatically select optional similar instance types to ensure optimized cost efficiency
-	PreferredType pulumi.StringPtrOutput `pulumi:"preferredType"`
-	// Private IP Allocation Id to associate to the instance.
-	PrivateIp pulumi.StringPtrOutput `pulumi:"privateIp"`
-	// Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`, `"Red Hat Enterprise Linux"`, `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`,  `"Red Hat Enterprise Linux (Amazon VPC)"`.
-	Product pulumi.StringOutput `pulumi:"product"`
-	// The AWS region your group will be created in.
+	AutoHealing               pulumi.BoolPtrOutput                               `pulumi:"autoHealing"`
+	BlockDeviceMappings       ManagedInstanceBlockDeviceMappingArrayOutput       `pulumi:"blockDeviceMappings"`
+	BlockDevicesMode          pulumi.StringPtrOutput                             `pulumi:"blockDevicesMode"`
+	CpuCredits                pulumi.StringPtrOutput                             `pulumi:"cpuCredits"`
+	Description               pulumi.StringPtrOutput                             `pulumi:"description"`
+	DrainingTimeout           pulumi.IntPtrOutput                                `pulumi:"drainingTimeout"`
+	EbsOptimized              pulumi.BoolOutput                                  `pulumi:"ebsOptimized"`
+	ElasticIp                 pulumi.StringPtrOutput                             `pulumi:"elasticIp"`
+	EnableMonitoring          pulumi.BoolPtrOutput                               `pulumi:"enableMonitoring"`
+	FallBackToOd              pulumi.BoolPtrOutput                               `pulumi:"fallBackToOd"`
+	GracePeriod               pulumi.IntPtrOutput                                `pulumi:"gracePeriod"`
+	HealthCheckType           pulumi.StringPtrOutput                             `pulumi:"healthCheckType"`
+	IamInstanceProfile        pulumi.StringPtrOutput                             `pulumi:"iamInstanceProfile"`
+	ImageId                   pulumi.StringOutput                                `pulumi:"imageId"`
+	InstanceTypes             pulumi.StringArrayOutput                           `pulumi:"instanceTypes"`
+	IntegrationRoute53        ManagedInstanceIntegrationRoute53PtrOutput         `pulumi:"integrationRoute53"`
+	KeyPair                   pulumi.StringPtrOutput                             `pulumi:"keyPair"`
+	LifeCycle                 pulumi.StringPtrOutput                             `pulumi:"lifeCycle"`
+	LoadBalancers             ManagedInstanceLoadBalancerArrayOutput             `pulumi:"loadBalancers"`
+	ManagedInstanceAction     ManagedInstanceManagedInstanceActionPtrOutput      `pulumi:"managedInstanceAction"`
+	MinimumInstanceLifetime   pulumi.IntPtrOutput                                `pulumi:"minimumInstanceLifetime"`
+	Name                      pulumi.StringOutput                                `pulumi:"name"`
+	NetworkInterfaces         ManagedInstanceNetworkInterfaceArrayOutput         `pulumi:"networkInterfaces"`
+	OptimizationWindows       pulumi.StringArrayOutput                           `pulumi:"optimizationWindows"`
+	Orientation               pulumi.StringPtrOutput                             `pulumi:"orientation"`
+	PersistBlockDevices       pulumi.BoolOutput                                  `pulumi:"persistBlockDevices"`
+	PersistPrivateIp          pulumi.BoolPtrOutput                               `pulumi:"persistPrivateIp"`
+	PersistRootDevice         pulumi.BoolPtrOutput                               `pulumi:"persistRootDevice"`
+	PlacementTenancy          pulumi.StringPtrOutput                             `pulumi:"placementTenancy"`
+	PreferredType             pulumi.StringPtrOutput                             `pulumi:"preferredType"`
+	PrivateIp                 pulumi.StringPtrOutput                             `pulumi:"privateIp"`
+	Product                   pulumi.StringOutput                                `pulumi:"product"`
 	Region                    pulumi.StringPtrOutput                             `pulumi:"region"`
 	ResourceTagSpecifications ManagedInstanceResourceTagSpecificationArrayOutput `pulumi:"resourceTagSpecifications"`
 	RevertToSpot              ManagedInstanceRevertToSpotPtrOutput               `pulumi:"revertToSpot"`
 	ScheduledTasks            ManagedInstanceScheduledTaskArrayOutput            `pulumi:"scheduledTasks"`
-	// One or more security group IDs.
-	SecurityGroupIds pulumi.StringArrayOutput `pulumi:"securityGroupIds"`
-	// The Base64-encoded shutdown script to execute prior to instance termination.
-	ShutdownScript pulumi.StringPtrOutput `pulumi:"shutdownScript"`
-	// A comma-separated list of subnet identifiers for your instance.
-	SubnetIds pulumi.StringArrayOutput `pulumi:"subnetIds"`
-	// Set tags for the instance. Items should be unique.
-	Tags ManagedInstanceTagArrayOutput `pulumi:"tags"`
-	// The amount of time, in seconds, an existing instance should remain active after becoming unhealthy. After the set time out the instance will be replaced, default `"120"`.
-	UnhealthyDuration pulumi.IntPtrOutput `pulumi:"unhealthyDuration"`
-	// The Base64-encoded MIME user data to make available to the instances.
-	UserData pulumi.StringPtrOutput `pulumi:"userData"`
-	// In case of any available Reserved Instances, Managed Instance will utilize them before purchasing Spot instances. Default: `"false"`.
-	UtilizeReservedInstances pulumi.BoolPtrOutput `pulumi:"utilizeReservedInstances"`
-	VpcId                    pulumi.StringOutput  `pulumi:"vpcId"`
+	SecurityGroupIds          pulumi.StringArrayOutput                           `pulumi:"securityGroupIds"`
+	ShutdownScript            pulumi.StringPtrOutput                             `pulumi:"shutdownScript"`
+	SubnetIds                 pulumi.StringArrayOutput                           `pulumi:"subnetIds"`
+	Tags                      ManagedInstanceTagArrayOutput                      `pulumi:"tags"`
+	UnhealthyDuration         pulumi.IntPtrOutput                                `pulumi:"unhealthyDuration"`
+	UserData                  pulumi.StringPtrOutput                             `pulumi:"userData"`
+	UtilizeReservedInstances  pulumi.BoolPtrOutput                               `pulumi:"utilizeReservedInstances"`
+	VpcId                     pulumi.StringOutput                                `pulumi:"vpcId"`
 }
 
 // NewManagedInstance registers a new resource with the given unique name, arguments, and options.
@@ -146,173 +107,97 @@ func GetManagedInstance(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ManagedInstance resources.
 type managedInstanceState struct {
-	// Enable the auto healing which auto replaces the instance in case the health check fails, default: `"true"`.
-	AutoHealing *bool `pulumi:"autoHealing"`
-	// Attributes controls a portion of the AWS:
-	BlockDeviceMappings []ManagedInstanceBlockDeviceMapping `pulumi:"blockDeviceMappings"`
-	// Determine the way we attach the data volumes to the data devices. Valid values: `"reattach"`, `"onLaunch"`. Default: `"onLaunch"`.
-	BlockDevicesMode *string `pulumi:"blockDevicesMode"`
-	// cpuCredits can have one of two values: `"unlimited"`, `"standard"`.
-	CpuCredits *string `pulumi:"cpuCredits"`
-	// The ManagedInstance description.
-	Description *string `pulumi:"description"`
-	// The time in seconds to allow the instance be drained from incoming TCP connections and detached from ELB before terminating it, during a scale down operation.
-	DrainingTimeout *int `pulumi:"drainingTimeout"`
-	// Enable EBS optimization for supported instances. Note: Additional charges will be applied by the Cloud Provider.
-	// Default: false
-	EbsOptimized *bool `pulumi:"ebsOptimized"`
-	// Elastic IP Allocation Id to associate to the instance.
-	ElasticIp *string `pulumi:"elasticIp"`
-	// Describes whether instance Enhanced Monitoring is enabled.
-	// Default: false
-	EnableMonitoring *bool `pulumi:"enableMonitoring"`
-	FallBackToOd     *bool `pulumi:"fallBackToOd"`
-	// The amount of time, in seconds, after the instance has launched to starts and check its health, default `"120"`.
-	GracePeriod *int `pulumi:"gracePeriod"`
-	// The service to use for the health check. Valid values: `"EC2"`, `"ELB"`, `"TARGET_GROUP"`, `"MULTAI_TARGET_SET"`. Default: `"EC2"`.
-	HealthCheckType *string `pulumi:"healthCheckType"`
-	// Set IAM profile to instance. Set only one of ARN or Name.
-	IamInstanceProfile *string `pulumi:"iamInstanceProfile"`
-	// The ID of the image used to launch the instance.
-	ImageId *string `pulumi:"imageId"`
-	// Comma separated list of available instance types for instance.
-	InstanceTypes []string `pulumi:"instanceTypes"`
-	// Describes the [Route53](https://aws.amazon.com/documentation/route53/?id=docs_gateway) integration.
-	IntegrationRoute53 *ManagedInstanceIntegrationRoute53 `pulumi:"integrationRoute53"`
-	// Specify a Key Pair to attach to the instances.
-	KeyPair *string `pulumi:"keyPair"`
-	// Set lifecycle, valid values: `"spot"`, `"onDemand"`. Default `"spot"`.
-	LifeCycle               *string                               `pulumi:"lifeCycle"`
-	LoadBalancers           []ManagedInstanceLoadBalancer         `pulumi:"loadBalancers"`
-	ManagedInstanceAction   *ManagedInstanceManagedInstanceAction `pulumi:"managedInstanceAction"`
-	MinimumInstanceLifetime *int                                  `pulumi:"minimumInstanceLifetime"`
-	// The ManagedInstance name.
-	Name              *string                           `pulumi:"name"`
-	NetworkInterfaces []ManagedInstanceNetworkInterface `pulumi:"networkInterfaces"`
-	// When `performAt` is `"timeWindow"`: must specify a list of `"timeWindows"` with at least one time window. Each string should be formatted as `ddd:hh:mm-ddd:hh:mm` (ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59).
-	OptimizationWindows []string `pulumi:"optimizationWindows"`
-	// Select a prediction strategy. Valid values: `"balanced"`, `"costOriented"`, `"availabilityOriented"`, `"cheapest"`. Default: `"availabilityOriented"`.
-	Orientation *string `pulumi:"orientation"`
-	// Should the instance maintain its Data volumes.
-	PersistBlockDevices *bool `pulumi:"persistBlockDevices"`
-	// Should the instance maintain its private IP.
-	PersistPrivateIp *bool `pulumi:"persistPrivateIp"`
-	// Should the instance maintain its root device volumes.
-	PersistRootDevice *bool `pulumi:"persistRootDevice"`
-	// Valid values: `"default"`, `"dedicated"`.
-	// Default: default
-	PlacementTenancy *string `pulumi:"placementTenancy"`
-	// Preferred instance types for the instance. We will automatically select optional similar instance types to ensure optimized cost efficiency
-	PreferredType *string `pulumi:"preferredType"`
-	// Private IP Allocation Id to associate to the instance.
-	PrivateIp *string `pulumi:"privateIp"`
-	// Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`, `"Red Hat Enterprise Linux"`, `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`,  `"Red Hat Enterprise Linux (Amazon VPC)"`.
-	Product *string `pulumi:"product"`
-	// The AWS region your group will be created in.
+	AutoHealing               *bool                                     `pulumi:"autoHealing"`
+	BlockDeviceMappings       []ManagedInstanceBlockDeviceMapping       `pulumi:"blockDeviceMappings"`
+	BlockDevicesMode          *string                                   `pulumi:"blockDevicesMode"`
+	CpuCredits                *string                                   `pulumi:"cpuCredits"`
+	Description               *string                                   `pulumi:"description"`
+	DrainingTimeout           *int                                      `pulumi:"drainingTimeout"`
+	EbsOptimized              *bool                                     `pulumi:"ebsOptimized"`
+	ElasticIp                 *string                                   `pulumi:"elasticIp"`
+	EnableMonitoring          *bool                                     `pulumi:"enableMonitoring"`
+	FallBackToOd              *bool                                     `pulumi:"fallBackToOd"`
+	GracePeriod               *int                                      `pulumi:"gracePeriod"`
+	HealthCheckType           *string                                   `pulumi:"healthCheckType"`
+	IamInstanceProfile        *string                                   `pulumi:"iamInstanceProfile"`
+	ImageId                   *string                                   `pulumi:"imageId"`
+	InstanceTypes             []string                                  `pulumi:"instanceTypes"`
+	IntegrationRoute53        *ManagedInstanceIntegrationRoute53        `pulumi:"integrationRoute53"`
+	KeyPair                   *string                                   `pulumi:"keyPair"`
+	LifeCycle                 *string                                   `pulumi:"lifeCycle"`
+	LoadBalancers             []ManagedInstanceLoadBalancer             `pulumi:"loadBalancers"`
+	ManagedInstanceAction     *ManagedInstanceManagedInstanceAction     `pulumi:"managedInstanceAction"`
+	MinimumInstanceLifetime   *int                                      `pulumi:"minimumInstanceLifetime"`
+	Name                      *string                                   `pulumi:"name"`
+	NetworkInterfaces         []ManagedInstanceNetworkInterface         `pulumi:"networkInterfaces"`
+	OptimizationWindows       []string                                  `pulumi:"optimizationWindows"`
+	Orientation               *string                                   `pulumi:"orientation"`
+	PersistBlockDevices       *bool                                     `pulumi:"persistBlockDevices"`
+	PersistPrivateIp          *bool                                     `pulumi:"persistPrivateIp"`
+	PersistRootDevice         *bool                                     `pulumi:"persistRootDevice"`
+	PlacementTenancy          *string                                   `pulumi:"placementTenancy"`
+	PreferredType             *string                                   `pulumi:"preferredType"`
+	PrivateIp                 *string                                   `pulumi:"privateIp"`
+	Product                   *string                                   `pulumi:"product"`
 	Region                    *string                                   `pulumi:"region"`
 	ResourceTagSpecifications []ManagedInstanceResourceTagSpecification `pulumi:"resourceTagSpecifications"`
 	RevertToSpot              *ManagedInstanceRevertToSpot              `pulumi:"revertToSpot"`
 	ScheduledTasks            []ManagedInstanceScheduledTask            `pulumi:"scheduledTasks"`
-	// One or more security group IDs.
-	SecurityGroupIds []string `pulumi:"securityGroupIds"`
-	// The Base64-encoded shutdown script to execute prior to instance termination.
-	ShutdownScript *string `pulumi:"shutdownScript"`
-	// A comma-separated list of subnet identifiers for your instance.
-	SubnetIds []string `pulumi:"subnetIds"`
-	// Set tags for the instance. Items should be unique.
-	Tags []ManagedInstanceTag `pulumi:"tags"`
-	// The amount of time, in seconds, an existing instance should remain active after becoming unhealthy. After the set time out the instance will be replaced, default `"120"`.
-	UnhealthyDuration *int `pulumi:"unhealthyDuration"`
-	// The Base64-encoded MIME user data to make available to the instances.
-	UserData *string `pulumi:"userData"`
-	// In case of any available Reserved Instances, Managed Instance will utilize them before purchasing Spot instances. Default: `"false"`.
-	UtilizeReservedInstances *bool   `pulumi:"utilizeReservedInstances"`
-	VpcId                    *string `pulumi:"vpcId"`
+	SecurityGroupIds          []string                                  `pulumi:"securityGroupIds"`
+	ShutdownScript            *string                                   `pulumi:"shutdownScript"`
+	SubnetIds                 []string                                  `pulumi:"subnetIds"`
+	Tags                      []ManagedInstanceTag                      `pulumi:"tags"`
+	UnhealthyDuration         *int                                      `pulumi:"unhealthyDuration"`
+	UserData                  *string                                   `pulumi:"userData"`
+	UtilizeReservedInstances  *bool                                     `pulumi:"utilizeReservedInstances"`
+	VpcId                     *string                                   `pulumi:"vpcId"`
 }
 
 type ManagedInstanceState struct {
-	// Enable the auto healing which auto replaces the instance in case the health check fails, default: `"true"`.
-	AutoHealing pulumi.BoolPtrInput
-	// Attributes controls a portion of the AWS:
-	BlockDeviceMappings ManagedInstanceBlockDeviceMappingArrayInput
-	// Determine the way we attach the data volumes to the data devices. Valid values: `"reattach"`, `"onLaunch"`. Default: `"onLaunch"`.
-	BlockDevicesMode pulumi.StringPtrInput
-	// cpuCredits can have one of two values: `"unlimited"`, `"standard"`.
-	CpuCredits pulumi.StringPtrInput
-	// The ManagedInstance description.
-	Description pulumi.StringPtrInput
-	// The time in seconds to allow the instance be drained from incoming TCP connections and detached from ELB before terminating it, during a scale down operation.
-	DrainingTimeout pulumi.IntPtrInput
-	// Enable EBS optimization for supported instances. Note: Additional charges will be applied by the Cloud Provider.
-	// Default: false
-	EbsOptimized pulumi.BoolPtrInput
-	// Elastic IP Allocation Id to associate to the instance.
-	ElasticIp pulumi.StringPtrInput
-	// Describes whether instance Enhanced Monitoring is enabled.
-	// Default: false
-	EnableMonitoring pulumi.BoolPtrInput
-	FallBackToOd     pulumi.BoolPtrInput
-	// The amount of time, in seconds, after the instance has launched to starts and check its health, default `"120"`.
-	GracePeriod pulumi.IntPtrInput
-	// The service to use for the health check. Valid values: `"EC2"`, `"ELB"`, `"TARGET_GROUP"`, `"MULTAI_TARGET_SET"`. Default: `"EC2"`.
-	HealthCheckType pulumi.StringPtrInput
-	// Set IAM profile to instance. Set only one of ARN or Name.
-	IamInstanceProfile pulumi.StringPtrInput
-	// The ID of the image used to launch the instance.
-	ImageId pulumi.StringPtrInput
-	// Comma separated list of available instance types for instance.
-	InstanceTypes pulumi.StringArrayInput
-	// Describes the [Route53](https://aws.amazon.com/documentation/route53/?id=docs_gateway) integration.
-	IntegrationRoute53 ManagedInstanceIntegrationRoute53PtrInput
-	// Specify a Key Pair to attach to the instances.
-	KeyPair pulumi.StringPtrInput
-	// Set lifecycle, valid values: `"spot"`, `"onDemand"`. Default `"spot"`.
-	LifeCycle               pulumi.StringPtrInput
-	LoadBalancers           ManagedInstanceLoadBalancerArrayInput
-	ManagedInstanceAction   ManagedInstanceManagedInstanceActionPtrInput
-	MinimumInstanceLifetime pulumi.IntPtrInput
-	// The ManagedInstance name.
-	Name              pulumi.StringPtrInput
-	NetworkInterfaces ManagedInstanceNetworkInterfaceArrayInput
-	// When `performAt` is `"timeWindow"`: must specify a list of `"timeWindows"` with at least one time window. Each string should be formatted as `ddd:hh:mm-ddd:hh:mm` (ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59).
-	OptimizationWindows pulumi.StringArrayInput
-	// Select a prediction strategy. Valid values: `"balanced"`, `"costOriented"`, `"availabilityOriented"`, `"cheapest"`. Default: `"availabilityOriented"`.
-	Orientation pulumi.StringPtrInput
-	// Should the instance maintain its Data volumes.
-	PersistBlockDevices pulumi.BoolPtrInput
-	// Should the instance maintain its private IP.
-	PersistPrivateIp pulumi.BoolPtrInput
-	// Should the instance maintain its root device volumes.
-	PersistRootDevice pulumi.BoolPtrInput
-	// Valid values: `"default"`, `"dedicated"`.
-	// Default: default
-	PlacementTenancy pulumi.StringPtrInput
-	// Preferred instance types for the instance. We will automatically select optional similar instance types to ensure optimized cost efficiency
-	PreferredType pulumi.StringPtrInput
-	// Private IP Allocation Id to associate to the instance.
-	PrivateIp pulumi.StringPtrInput
-	// Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`, `"Red Hat Enterprise Linux"`, `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`,  `"Red Hat Enterprise Linux (Amazon VPC)"`.
-	Product pulumi.StringPtrInput
-	// The AWS region your group will be created in.
+	AutoHealing               pulumi.BoolPtrInput
+	BlockDeviceMappings       ManagedInstanceBlockDeviceMappingArrayInput
+	BlockDevicesMode          pulumi.StringPtrInput
+	CpuCredits                pulumi.StringPtrInput
+	Description               pulumi.StringPtrInput
+	DrainingTimeout           pulumi.IntPtrInput
+	EbsOptimized              pulumi.BoolPtrInput
+	ElasticIp                 pulumi.StringPtrInput
+	EnableMonitoring          pulumi.BoolPtrInput
+	FallBackToOd              pulumi.BoolPtrInput
+	GracePeriod               pulumi.IntPtrInput
+	HealthCheckType           pulumi.StringPtrInput
+	IamInstanceProfile        pulumi.StringPtrInput
+	ImageId                   pulumi.StringPtrInput
+	InstanceTypes             pulumi.StringArrayInput
+	IntegrationRoute53        ManagedInstanceIntegrationRoute53PtrInput
+	KeyPair                   pulumi.StringPtrInput
+	LifeCycle                 pulumi.StringPtrInput
+	LoadBalancers             ManagedInstanceLoadBalancerArrayInput
+	ManagedInstanceAction     ManagedInstanceManagedInstanceActionPtrInput
+	MinimumInstanceLifetime   pulumi.IntPtrInput
+	Name                      pulumi.StringPtrInput
+	NetworkInterfaces         ManagedInstanceNetworkInterfaceArrayInput
+	OptimizationWindows       pulumi.StringArrayInput
+	Orientation               pulumi.StringPtrInput
+	PersistBlockDevices       pulumi.BoolPtrInput
+	PersistPrivateIp          pulumi.BoolPtrInput
+	PersistRootDevice         pulumi.BoolPtrInput
+	PlacementTenancy          pulumi.StringPtrInput
+	PreferredType             pulumi.StringPtrInput
+	PrivateIp                 pulumi.StringPtrInput
+	Product                   pulumi.StringPtrInput
 	Region                    pulumi.StringPtrInput
 	ResourceTagSpecifications ManagedInstanceResourceTagSpecificationArrayInput
 	RevertToSpot              ManagedInstanceRevertToSpotPtrInput
 	ScheduledTasks            ManagedInstanceScheduledTaskArrayInput
-	// One or more security group IDs.
-	SecurityGroupIds pulumi.StringArrayInput
-	// The Base64-encoded shutdown script to execute prior to instance termination.
-	ShutdownScript pulumi.StringPtrInput
-	// A comma-separated list of subnet identifiers for your instance.
-	SubnetIds pulumi.StringArrayInput
-	// Set tags for the instance. Items should be unique.
-	Tags ManagedInstanceTagArrayInput
-	// The amount of time, in seconds, an existing instance should remain active after becoming unhealthy. After the set time out the instance will be replaced, default `"120"`.
-	UnhealthyDuration pulumi.IntPtrInput
-	// The Base64-encoded MIME user data to make available to the instances.
-	UserData pulumi.StringPtrInput
-	// In case of any available Reserved Instances, Managed Instance will utilize them before purchasing Spot instances. Default: `"false"`.
-	UtilizeReservedInstances pulumi.BoolPtrInput
-	VpcId                    pulumi.StringPtrInput
+	SecurityGroupIds          pulumi.StringArrayInput
+	ShutdownScript            pulumi.StringPtrInput
+	SubnetIds                 pulumi.StringArrayInput
+	Tags                      ManagedInstanceTagArrayInput
+	UnhealthyDuration         pulumi.IntPtrInput
+	UserData                  pulumi.StringPtrInput
+	UtilizeReservedInstances  pulumi.BoolPtrInput
+	VpcId                     pulumi.StringPtrInput
 }
 
 func (ManagedInstanceState) ElementType() reflect.Type {
@@ -320,174 +205,98 @@ func (ManagedInstanceState) ElementType() reflect.Type {
 }
 
 type managedInstanceArgs struct {
-	// Enable the auto healing which auto replaces the instance in case the health check fails, default: `"true"`.
-	AutoHealing *bool `pulumi:"autoHealing"`
-	// Attributes controls a portion of the AWS:
-	BlockDeviceMappings []ManagedInstanceBlockDeviceMapping `pulumi:"blockDeviceMappings"`
-	// Determine the way we attach the data volumes to the data devices. Valid values: `"reattach"`, `"onLaunch"`. Default: `"onLaunch"`.
-	BlockDevicesMode *string `pulumi:"blockDevicesMode"`
-	// cpuCredits can have one of two values: `"unlimited"`, `"standard"`.
-	CpuCredits *string `pulumi:"cpuCredits"`
-	// The ManagedInstance description.
-	Description *string `pulumi:"description"`
-	// The time in seconds to allow the instance be drained from incoming TCP connections and detached from ELB before terminating it, during a scale down operation.
-	DrainingTimeout *int `pulumi:"drainingTimeout"`
-	// Enable EBS optimization for supported instances. Note: Additional charges will be applied by the Cloud Provider.
-	// Default: false
-	EbsOptimized *bool `pulumi:"ebsOptimized"`
-	// Elastic IP Allocation Id to associate to the instance.
-	ElasticIp *string `pulumi:"elasticIp"`
-	// Describes whether instance Enhanced Monitoring is enabled.
-	// Default: false
-	EnableMonitoring *bool `pulumi:"enableMonitoring"`
-	FallBackToOd     *bool `pulumi:"fallBackToOd"`
-	// The amount of time, in seconds, after the instance has launched to starts and check its health, default `"120"`.
-	GracePeriod *int `pulumi:"gracePeriod"`
-	// The service to use for the health check. Valid values: `"EC2"`, `"ELB"`, `"TARGET_GROUP"`, `"MULTAI_TARGET_SET"`. Default: `"EC2"`.
-	HealthCheckType *string `pulumi:"healthCheckType"`
-	// Set IAM profile to instance. Set only one of ARN or Name.
-	IamInstanceProfile *string `pulumi:"iamInstanceProfile"`
-	// The ID of the image used to launch the instance.
-	ImageId string `pulumi:"imageId"`
-	// Comma separated list of available instance types for instance.
-	InstanceTypes []string `pulumi:"instanceTypes"`
-	// Describes the [Route53](https://aws.amazon.com/documentation/route53/?id=docs_gateway) integration.
-	IntegrationRoute53 *ManagedInstanceIntegrationRoute53 `pulumi:"integrationRoute53"`
-	// Specify a Key Pair to attach to the instances.
-	KeyPair *string `pulumi:"keyPair"`
-	// Set lifecycle, valid values: `"spot"`, `"onDemand"`. Default `"spot"`.
-	LifeCycle               *string                               `pulumi:"lifeCycle"`
-	LoadBalancers           []ManagedInstanceLoadBalancer         `pulumi:"loadBalancers"`
-	ManagedInstanceAction   *ManagedInstanceManagedInstanceAction `pulumi:"managedInstanceAction"`
-	MinimumInstanceLifetime *int                                  `pulumi:"minimumInstanceLifetime"`
-	// The ManagedInstance name.
-	Name              *string                           `pulumi:"name"`
-	NetworkInterfaces []ManagedInstanceNetworkInterface `pulumi:"networkInterfaces"`
-	// When `performAt` is `"timeWindow"`: must specify a list of `"timeWindows"` with at least one time window. Each string should be formatted as `ddd:hh:mm-ddd:hh:mm` (ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59).
-	OptimizationWindows []string `pulumi:"optimizationWindows"`
-	// Select a prediction strategy. Valid values: `"balanced"`, `"costOriented"`, `"availabilityOriented"`, `"cheapest"`. Default: `"availabilityOriented"`.
-	Orientation *string `pulumi:"orientation"`
-	// Should the instance maintain its Data volumes.
-	PersistBlockDevices bool `pulumi:"persistBlockDevices"`
-	// Should the instance maintain its private IP.
-	PersistPrivateIp *bool `pulumi:"persistPrivateIp"`
-	// Should the instance maintain its root device volumes.
-	PersistRootDevice *bool `pulumi:"persistRootDevice"`
-	// Valid values: `"default"`, `"dedicated"`.
-	// Default: default
-	PlacementTenancy *string `pulumi:"placementTenancy"`
-	// Preferred instance types for the instance. We will automatically select optional similar instance types to ensure optimized cost efficiency
-	PreferredType *string `pulumi:"preferredType"`
-	// Private IP Allocation Id to associate to the instance.
-	PrivateIp *string `pulumi:"privateIp"`
-	// Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`, `"Red Hat Enterprise Linux"`, `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`,  `"Red Hat Enterprise Linux (Amazon VPC)"`.
-	Product string `pulumi:"product"`
-	// The AWS region your group will be created in.
+	AutoHealing               *bool                                     `pulumi:"autoHealing"`
+	BlockDeviceMappings       []ManagedInstanceBlockDeviceMapping       `pulumi:"blockDeviceMappings"`
+	BlockDevicesMode          *string                                   `pulumi:"blockDevicesMode"`
+	CpuCredits                *string                                   `pulumi:"cpuCredits"`
+	Description               *string                                   `pulumi:"description"`
+	DrainingTimeout           *int                                      `pulumi:"drainingTimeout"`
+	EbsOptimized              *bool                                     `pulumi:"ebsOptimized"`
+	ElasticIp                 *string                                   `pulumi:"elasticIp"`
+	EnableMonitoring          *bool                                     `pulumi:"enableMonitoring"`
+	FallBackToOd              *bool                                     `pulumi:"fallBackToOd"`
+	GracePeriod               *int                                      `pulumi:"gracePeriod"`
+	HealthCheckType           *string                                   `pulumi:"healthCheckType"`
+	IamInstanceProfile        *string                                   `pulumi:"iamInstanceProfile"`
+	ImageId                   string                                    `pulumi:"imageId"`
+	InstanceTypes             []string                                  `pulumi:"instanceTypes"`
+	IntegrationRoute53        *ManagedInstanceIntegrationRoute53        `pulumi:"integrationRoute53"`
+	KeyPair                   *string                                   `pulumi:"keyPair"`
+	LifeCycle                 *string                                   `pulumi:"lifeCycle"`
+	LoadBalancers             []ManagedInstanceLoadBalancer             `pulumi:"loadBalancers"`
+	ManagedInstanceAction     *ManagedInstanceManagedInstanceAction     `pulumi:"managedInstanceAction"`
+	MinimumInstanceLifetime   *int                                      `pulumi:"minimumInstanceLifetime"`
+	Name                      *string                                   `pulumi:"name"`
+	NetworkInterfaces         []ManagedInstanceNetworkInterface         `pulumi:"networkInterfaces"`
+	OptimizationWindows       []string                                  `pulumi:"optimizationWindows"`
+	Orientation               *string                                   `pulumi:"orientation"`
+	PersistBlockDevices       bool                                      `pulumi:"persistBlockDevices"`
+	PersistPrivateIp          *bool                                     `pulumi:"persistPrivateIp"`
+	PersistRootDevice         *bool                                     `pulumi:"persistRootDevice"`
+	PlacementTenancy          *string                                   `pulumi:"placementTenancy"`
+	PreferredType             *string                                   `pulumi:"preferredType"`
+	PrivateIp                 *string                                   `pulumi:"privateIp"`
+	Product                   string                                    `pulumi:"product"`
 	Region                    *string                                   `pulumi:"region"`
 	ResourceTagSpecifications []ManagedInstanceResourceTagSpecification `pulumi:"resourceTagSpecifications"`
 	RevertToSpot              *ManagedInstanceRevertToSpot              `pulumi:"revertToSpot"`
 	ScheduledTasks            []ManagedInstanceScheduledTask            `pulumi:"scheduledTasks"`
-	// One or more security group IDs.
-	SecurityGroupIds []string `pulumi:"securityGroupIds"`
-	// The Base64-encoded shutdown script to execute prior to instance termination.
-	ShutdownScript *string `pulumi:"shutdownScript"`
-	// A comma-separated list of subnet identifiers for your instance.
-	SubnetIds []string `pulumi:"subnetIds"`
-	// Set tags for the instance. Items should be unique.
-	Tags []ManagedInstanceTag `pulumi:"tags"`
-	// The amount of time, in seconds, an existing instance should remain active after becoming unhealthy. After the set time out the instance will be replaced, default `"120"`.
-	UnhealthyDuration *int `pulumi:"unhealthyDuration"`
-	// The Base64-encoded MIME user data to make available to the instances.
-	UserData *string `pulumi:"userData"`
-	// In case of any available Reserved Instances, Managed Instance will utilize them before purchasing Spot instances. Default: `"false"`.
-	UtilizeReservedInstances *bool  `pulumi:"utilizeReservedInstances"`
-	VpcId                    string `pulumi:"vpcId"`
+	SecurityGroupIds          []string                                  `pulumi:"securityGroupIds"`
+	ShutdownScript            *string                                   `pulumi:"shutdownScript"`
+	SubnetIds                 []string                                  `pulumi:"subnetIds"`
+	Tags                      []ManagedInstanceTag                      `pulumi:"tags"`
+	UnhealthyDuration         *int                                      `pulumi:"unhealthyDuration"`
+	UserData                  *string                                   `pulumi:"userData"`
+	UtilizeReservedInstances  *bool                                     `pulumi:"utilizeReservedInstances"`
+	VpcId                     string                                    `pulumi:"vpcId"`
 }
 
 // The set of arguments for constructing a ManagedInstance resource.
 type ManagedInstanceArgs struct {
-	// Enable the auto healing which auto replaces the instance in case the health check fails, default: `"true"`.
-	AutoHealing pulumi.BoolPtrInput
-	// Attributes controls a portion of the AWS:
-	BlockDeviceMappings ManagedInstanceBlockDeviceMappingArrayInput
-	// Determine the way we attach the data volumes to the data devices. Valid values: `"reattach"`, `"onLaunch"`. Default: `"onLaunch"`.
-	BlockDevicesMode pulumi.StringPtrInput
-	// cpuCredits can have one of two values: `"unlimited"`, `"standard"`.
-	CpuCredits pulumi.StringPtrInput
-	// The ManagedInstance description.
-	Description pulumi.StringPtrInput
-	// The time in seconds to allow the instance be drained from incoming TCP connections and detached from ELB before terminating it, during a scale down operation.
-	DrainingTimeout pulumi.IntPtrInput
-	// Enable EBS optimization for supported instances. Note: Additional charges will be applied by the Cloud Provider.
-	// Default: false
-	EbsOptimized pulumi.BoolPtrInput
-	// Elastic IP Allocation Id to associate to the instance.
-	ElasticIp pulumi.StringPtrInput
-	// Describes whether instance Enhanced Monitoring is enabled.
-	// Default: false
-	EnableMonitoring pulumi.BoolPtrInput
-	FallBackToOd     pulumi.BoolPtrInput
-	// The amount of time, in seconds, after the instance has launched to starts and check its health, default `"120"`.
-	GracePeriod pulumi.IntPtrInput
-	// The service to use for the health check. Valid values: `"EC2"`, `"ELB"`, `"TARGET_GROUP"`, `"MULTAI_TARGET_SET"`. Default: `"EC2"`.
-	HealthCheckType pulumi.StringPtrInput
-	// Set IAM profile to instance. Set only one of ARN or Name.
-	IamInstanceProfile pulumi.StringPtrInput
-	// The ID of the image used to launch the instance.
-	ImageId pulumi.StringInput
-	// Comma separated list of available instance types for instance.
-	InstanceTypes pulumi.StringArrayInput
-	// Describes the [Route53](https://aws.amazon.com/documentation/route53/?id=docs_gateway) integration.
-	IntegrationRoute53 ManagedInstanceIntegrationRoute53PtrInput
-	// Specify a Key Pair to attach to the instances.
-	KeyPair pulumi.StringPtrInput
-	// Set lifecycle, valid values: `"spot"`, `"onDemand"`. Default `"spot"`.
-	LifeCycle               pulumi.StringPtrInput
-	LoadBalancers           ManagedInstanceLoadBalancerArrayInput
-	ManagedInstanceAction   ManagedInstanceManagedInstanceActionPtrInput
-	MinimumInstanceLifetime pulumi.IntPtrInput
-	// The ManagedInstance name.
-	Name              pulumi.StringPtrInput
-	NetworkInterfaces ManagedInstanceNetworkInterfaceArrayInput
-	// When `performAt` is `"timeWindow"`: must specify a list of `"timeWindows"` with at least one time window. Each string should be formatted as `ddd:hh:mm-ddd:hh:mm` (ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59).
-	OptimizationWindows pulumi.StringArrayInput
-	// Select a prediction strategy. Valid values: `"balanced"`, `"costOriented"`, `"availabilityOriented"`, `"cheapest"`. Default: `"availabilityOriented"`.
-	Orientation pulumi.StringPtrInput
-	// Should the instance maintain its Data volumes.
-	PersistBlockDevices pulumi.BoolInput
-	// Should the instance maintain its private IP.
-	PersistPrivateIp pulumi.BoolPtrInput
-	// Should the instance maintain its root device volumes.
-	PersistRootDevice pulumi.BoolPtrInput
-	// Valid values: `"default"`, `"dedicated"`.
-	// Default: default
-	PlacementTenancy pulumi.StringPtrInput
-	// Preferred instance types for the instance. We will automatically select optional similar instance types to ensure optimized cost efficiency
-	PreferredType pulumi.StringPtrInput
-	// Private IP Allocation Id to associate to the instance.
-	PrivateIp pulumi.StringPtrInput
-	// Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`, `"Red Hat Enterprise Linux"`, `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`,  `"Red Hat Enterprise Linux (Amazon VPC)"`.
-	Product pulumi.StringInput
-	// The AWS region your group will be created in.
+	AutoHealing               pulumi.BoolPtrInput
+	BlockDeviceMappings       ManagedInstanceBlockDeviceMappingArrayInput
+	BlockDevicesMode          pulumi.StringPtrInput
+	CpuCredits                pulumi.StringPtrInput
+	Description               pulumi.StringPtrInput
+	DrainingTimeout           pulumi.IntPtrInput
+	EbsOptimized              pulumi.BoolPtrInput
+	ElasticIp                 pulumi.StringPtrInput
+	EnableMonitoring          pulumi.BoolPtrInput
+	FallBackToOd              pulumi.BoolPtrInput
+	GracePeriod               pulumi.IntPtrInput
+	HealthCheckType           pulumi.StringPtrInput
+	IamInstanceProfile        pulumi.StringPtrInput
+	ImageId                   pulumi.StringInput
+	InstanceTypes             pulumi.StringArrayInput
+	IntegrationRoute53        ManagedInstanceIntegrationRoute53PtrInput
+	KeyPair                   pulumi.StringPtrInput
+	LifeCycle                 pulumi.StringPtrInput
+	LoadBalancers             ManagedInstanceLoadBalancerArrayInput
+	ManagedInstanceAction     ManagedInstanceManagedInstanceActionPtrInput
+	MinimumInstanceLifetime   pulumi.IntPtrInput
+	Name                      pulumi.StringPtrInput
+	NetworkInterfaces         ManagedInstanceNetworkInterfaceArrayInput
+	OptimizationWindows       pulumi.StringArrayInput
+	Orientation               pulumi.StringPtrInput
+	PersistBlockDevices       pulumi.BoolInput
+	PersistPrivateIp          pulumi.BoolPtrInput
+	PersistRootDevice         pulumi.BoolPtrInput
+	PlacementTenancy          pulumi.StringPtrInput
+	PreferredType             pulumi.StringPtrInput
+	PrivateIp                 pulumi.StringPtrInput
+	Product                   pulumi.StringInput
 	Region                    pulumi.StringPtrInput
 	ResourceTagSpecifications ManagedInstanceResourceTagSpecificationArrayInput
 	RevertToSpot              ManagedInstanceRevertToSpotPtrInput
 	ScheduledTasks            ManagedInstanceScheduledTaskArrayInput
-	// One or more security group IDs.
-	SecurityGroupIds pulumi.StringArrayInput
-	// The Base64-encoded shutdown script to execute prior to instance termination.
-	ShutdownScript pulumi.StringPtrInput
-	// A comma-separated list of subnet identifiers for your instance.
-	SubnetIds pulumi.StringArrayInput
-	// Set tags for the instance. Items should be unique.
-	Tags ManagedInstanceTagArrayInput
-	// The amount of time, in seconds, an existing instance should remain active after becoming unhealthy. After the set time out the instance will be replaced, default `"120"`.
-	UnhealthyDuration pulumi.IntPtrInput
-	// The Base64-encoded MIME user data to make available to the instances.
-	UserData pulumi.StringPtrInput
-	// In case of any available Reserved Instances, Managed Instance will utilize them before purchasing Spot instances. Default: `"false"`.
-	UtilizeReservedInstances pulumi.BoolPtrInput
-	VpcId                    pulumi.StringInput
+	SecurityGroupIds          pulumi.StringArrayInput
+	ShutdownScript            pulumi.StringPtrInput
+	SubnetIds                 pulumi.StringArrayInput
+	Tags                      ManagedInstanceTagArrayInput
+	UnhealthyDuration         pulumi.IntPtrInput
+	UserData                  pulumi.StringPtrInput
+	UtilizeReservedInstances  pulumi.BoolPtrInput
+	VpcId                     pulumi.StringInput
 }
 
 func (ManagedInstanceArgs) ElementType() reflect.Type {
@@ -577,49 +386,38 @@ func (o ManagedInstanceOutput) ToManagedInstanceOutputWithContext(ctx context.Co
 	return o
 }
 
-// Enable the auto healing which auto replaces the instance in case the health check fails, default: `"true"`.
 func (o ManagedInstanceOutput) AutoHealing() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ManagedInstance) pulumi.BoolPtrOutput { return v.AutoHealing }).(pulumi.BoolPtrOutput)
 }
 
-// Attributes controls a portion of the AWS:
 func (o ManagedInstanceOutput) BlockDeviceMappings() ManagedInstanceBlockDeviceMappingArrayOutput {
 	return o.ApplyT(func(v *ManagedInstance) ManagedInstanceBlockDeviceMappingArrayOutput { return v.BlockDeviceMappings }).(ManagedInstanceBlockDeviceMappingArrayOutput)
 }
 
-// Determine the way we attach the data volumes to the data devices. Valid values: `"reattach"`, `"onLaunch"`. Default: `"onLaunch"`.
 func (o ManagedInstanceOutput) BlockDevicesMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ManagedInstance) pulumi.StringPtrOutput { return v.BlockDevicesMode }).(pulumi.StringPtrOutput)
 }
 
-// cpuCredits can have one of two values: `"unlimited"`, `"standard"`.
 func (o ManagedInstanceOutput) CpuCredits() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ManagedInstance) pulumi.StringPtrOutput { return v.CpuCredits }).(pulumi.StringPtrOutput)
 }
 
-// The ManagedInstance description.
 func (o ManagedInstanceOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ManagedInstance) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The time in seconds to allow the instance be drained from incoming TCP connections and detached from ELB before terminating it, during a scale down operation.
 func (o ManagedInstanceOutput) DrainingTimeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ManagedInstance) pulumi.IntPtrOutput { return v.DrainingTimeout }).(pulumi.IntPtrOutput)
 }
 
-// Enable EBS optimization for supported instances. Note: Additional charges will be applied by the Cloud Provider.
-// Default: false
 func (o ManagedInstanceOutput) EbsOptimized() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ManagedInstance) pulumi.BoolOutput { return v.EbsOptimized }).(pulumi.BoolOutput)
 }
 
-// Elastic IP Allocation Id to associate to the instance.
 func (o ManagedInstanceOutput) ElasticIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ManagedInstance) pulumi.StringPtrOutput { return v.ElasticIp }).(pulumi.StringPtrOutput)
 }
 
-// Describes whether instance Enhanced Monitoring is enabled.
-// Default: false
 func (o ManagedInstanceOutput) EnableMonitoring() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ManagedInstance) pulumi.BoolPtrOutput { return v.EnableMonitoring }).(pulumi.BoolPtrOutput)
 }
@@ -628,42 +426,34 @@ func (o ManagedInstanceOutput) FallBackToOd() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ManagedInstance) pulumi.BoolPtrOutput { return v.FallBackToOd }).(pulumi.BoolPtrOutput)
 }
 
-// The amount of time, in seconds, after the instance has launched to starts and check its health, default `"120"`.
 func (o ManagedInstanceOutput) GracePeriod() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ManagedInstance) pulumi.IntPtrOutput { return v.GracePeriod }).(pulumi.IntPtrOutput)
 }
 
-// The service to use for the health check. Valid values: `"EC2"`, `"ELB"`, `"TARGET_GROUP"`, `"MULTAI_TARGET_SET"`. Default: `"EC2"`.
 func (o ManagedInstanceOutput) HealthCheckType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ManagedInstance) pulumi.StringPtrOutput { return v.HealthCheckType }).(pulumi.StringPtrOutput)
 }
 
-// Set IAM profile to instance. Set only one of ARN or Name.
 func (o ManagedInstanceOutput) IamInstanceProfile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ManagedInstance) pulumi.StringPtrOutput { return v.IamInstanceProfile }).(pulumi.StringPtrOutput)
 }
 
-// The ID of the image used to launch the instance.
 func (o ManagedInstanceOutput) ImageId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ManagedInstance) pulumi.StringOutput { return v.ImageId }).(pulumi.StringOutput)
 }
 
-// Comma separated list of available instance types for instance.
 func (o ManagedInstanceOutput) InstanceTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ManagedInstance) pulumi.StringArrayOutput { return v.InstanceTypes }).(pulumi.StringArrayOutput)
 }
 
-// Describes the [Route53](https://aws.amazon.com/documentation/route53/?id=docs_gateway) integration.
 func (o ManagedInstanceOutput) IntegrationRoute53() ManagedInstanceIntegrationRoute53PtrOutput {
 	return o.ApplyT(func(v *ManagedInstance) ManagedInstanceIntegrationRoute53PtrOutput { return v.IntegrationRoute53 }).(ManagedInstanceIntegrationRoute53PtrOutput)
 }
 
-// Specify a Key Pair to attach to the instances.
 func (o ManagedInstanceOutput) KeyPair() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ManagedInstance) pulumi.StringPtrOutput { return v.KeyPair }).(pulumi.StringPtrOutput)
 }
 
-// Set lifecycle, valid values: `"spot"`, `"onDemand"`. Default `"spot"`.
 func (o ManagedInstanceOutput) LifeCycle() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ManagedInstance) pulumi.StringPtrOutput { return v.LifeCycle }).(pulumi.StringPtrOutput)
 }
@@ -680,7 +470,6 @@ func (o ManagedInstanceOutput) MinimumInstanceLifetime() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ManagedInstance) pulumi.IntPtrOutput { return v.MinimumInstanceLifetime }).(pulumi.IntPtrOutput)
 }
 
-// The ManagedInstance name.
 func (o ManagedInstanceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ManagedInstance) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -689,53 +478,42 @@ func (o ManagedInstanceOutput) NetworkInterfaces() ManagedInstanceNetworkInterfa
 	return o.ApplyT(func(v *ManagedInstance) ManagedInstanceNetworkInterfaceArrayOutput { return v.NetworkInterfaces }).(ManagedInstanceNetworkInterfaceArrayOutput)
 }
 
-// When `performAt` is `"timeWindow"`: must specify a list of `"timeWindows"` with at least one time window. Each string should be formatted as `ddd:hh:mm-ddd:hh:mm` (ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59).
 func (o ManagedInstanceOutput) OptimizationWindows() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ManagedInstance) pulumi.StringArrayOutput { return v.OptimizationWindows }).(pulumi.StringArrayOutput)
 }
 
-// Select a prediction strategy. Valid values: `"balanced"`, `"costOriented"`, `"availabilityOriented"`, `"cheapest"`. Default: `"availabilityOriented"`.
 func (o ManagedInstanceOutput) Orientation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ManagedInstance) pulumi.StringPtrOutput { return v.Orientation }).(pulumi.StringPtrOutput)
 }
 
-// Should the instance maintain its Data volumes.
 func (o ManagedInstanceOutput) PersistBlockDevices() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ManagedInstance) pulumi.BoolOutput { return v.PersistBlockDevices }).(pulumi.BoolOutput)
 }
 
-// Should the instance maintain its private IP.
 func (o ManagedInstanceOutput) PersistPrivateIp() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ManagedInstance) pulumi.BoolPtrOutput { return v.PersistPrivateIp }).(pulumi.BoolPtrOutput)
 }
 
-// Should the instance maintain its root device volumes.
 func (o ManagedInstanceOutput) PersistRootDevice() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ManagedInstance) pulumi.BoolPtrOutput { return v.PersistRootDevice }).(pulumi.BoolPtrOutput)
 }
 
-// Valid values: `"default"`, `"dedicated"`.
-// Default: default
 func (o ManagedInstanceOutput) PlacementTenancy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ManagedInstance) pulumi.StringPtrOutput { return v.PlacementTenancy }).(pulumi.StringPtrOutput)
 }
 
-// Preferred instance types for the instance. We will automatically select optional similar instance types to ensure optimized cost efficiency
 func (o ManagedInstanceOutput) PreferredType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ManagedInstance) pulumi.StringPtrOutput { return v.PreferredType }).(pulumi.StringPtrOutput)
 }
 
-// Private IP Allocation Id to associate to the instance.
 func (o ManagedInstanceOutput) PrivateIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ManagedInstance) pulumi.StringPtrOutput { return v.PrivateIp }).(pulumi.StringPtrOutput)
 }
 
-// Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`, `"Red Hat Enterprise Linux"`, `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`,  `"Red Hat Enterprise Linux (Amazon VPC)"`.
 func (o ManagedInstanceOutput) Product() pulumi.StringOutput {
 	return o.ApplyT(func(v *ManagedInstance) pulumi.StringOutput { return v.Product }).(pulumi.StringOutput)
 }
 
-// The AWS region your group will be created in.
 func (o ManagedInstanceOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ManagedInstance) pulumi.StringPtrOutput { return v.Region }).(pulumi.StringPtrOutput)
 }
@@ -754,37 +532,30 @@ func (o ManagedInstanceOutput) ScheduledTasks() ManagedInstanceScheduledTaskArra
 	return o.ApplyT(func(v *ManagedInstance) ManagedInstanceScheduledTaskArrayOutput { return v.ScheduledTasks }).(ManagedInstanceScheduledTaskArrayOutput)
 }
 
-// One or more security group IDs.
 func (o ManagedInstanceOutput) SecurityGroupIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ManagedInstance) pulumi.StringArrayOutput { return v.SecurityGroupIds }).(pulumi.StringArrayOutput)
 }
 
-// The Base64-encoded shutdown script to execute prior to instance termination.
 func (o ManagedInstanceOutput) ShutdownScript() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ManagedInstance) pulumi.StringPtrOutput { return v.ShutdownScript }).(pulumi.StringPtrOutput)
 }
 
-// A comma-separated list of subnet identifiers for your instance.
 func (o ManagedInstanceOutput) SubnetIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ManagedInstance) pulumi.StringArrayOutput { return v.SubnetIds }).(pulumi.StringArrayOutput)
 }
 
-// Set tags for the instance. Items should be unique.
 func (o ManagedInstanceOutput) Tags() ManagedInstanceTagArrayOutput {
 	return o.ApplyT(func(v *ManagedInstance) ManagedInstanceTagArrayOutput { return v.Tags }).(ManagedInstanceTagArrayOutput)
 }
 
-// The amount of time, in seconds, an existing instance should remain active after becoming unhealthy. After the set time out the instance will be replaced, default `"120"`.
 func (o ManagedInstanceOutput) UnhealthyDuration() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ManagedInstance) pulumi.IntPtrOutput { return v.UnhealthyDuration }).(pulumi.IntPtrOutput)
 }
 
-// The Base64-encoded MIME user data to make available to the instances.
 func (o ManagedInstanceOutput) UserData() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ManagedInstance) pulumi.StringPtrOutput { return v.UserData }).(pulumi.StringPtrOutput)
 }
 
-// In case of any available Reserved Instances, Managed Instance will utilize them before purchasing Spot instances. Default: `"false"`.
 func (o ManagedInstanceOutput) UtilizeReservedInstances() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ManagedInstance) pulumi.BoolPtrOutput { return v.UtilizeReservedInstances }).(pulumi.BoolPtrOutput)
 }

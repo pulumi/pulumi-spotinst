@@ -12,26 +12,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ElastigroupScalingDownPolicyDimension {
     /**
-     * @return The name of the managed identity.
+     * @return Name of the Managed Service Identity.
      * 
      */
     private String name;
     /**
-     * @return The dimension value.
+     * @return Tag Value for Vms in Elastigroup.
      * 
      */
     private @Nullable String value;
 
     private ElastigroupScalingDownPolicyDimension() {}
     /**
-     * @return The name of the managed identity.
+     * @return Name of the Managed Service Identity.
      * 
      */
     public String name() {
         return this.name;
     }
     /**
-     * @return The dimension value.
+     * @return Tag Value for Vms in Elastigroup.
      * 
      */
     public Optional<String> value() {

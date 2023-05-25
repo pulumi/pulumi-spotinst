@@ -9,27 +9,15 @@ using Pulumi.Serialization;
 
 namespace Pulumi.SpotInst
 {
-    /// <summary>
-    /// Provides a Spotinst elastigroup Azure resource.
-    /// </summary>
     [SpotInstResourceType("spotinst:index/elastigroupAzureV3:ElastigroupAzureV3")]
     public partial class ElastigroupAzureV3 : global::Pulumi.CustomResource
     {
-        /// <summary>
-        /// Custom init script file or text in Base64 encoded format.
-        /// </summary>
         [Output("customData")]
         public Output<string?> CustomData { get; private set; } = null!;
 
-        /// <summary>
-        /// The desired number of instances the group should have at any time.
-        /// </summary>
         [Output("desiredCapacity")]
         public Output<int?> DesiredCapacity { get; private set; } = null!;
 
-        /// <summary>
-        /// Time (seconds) to allow the instance to be drained from incoming TCP connections and detached from MLB before terminating it during a scale-down operation.
-        /// </summary>
         [Output("drainingTimeout")]
         public Output<int> DrainingTimeout { get; private set; } = null!;
 
@@ -42,71 +30,44 @@ namespace Pulumi.SpotInst
         [Output("login")]
         public Output<Outputs.ElastigroupAzureV3Login?> Login { get; private set; } = null!;
 
-        /// <summary>
-        /// List of Managed Service Identity objects.
-        /// </summary>
         [Output("managedServiceIdentities")]
         public Output<ImmutableArray<Outputs.ElastigroupAzureV3ManagedServiceIdentity>> ManagedServiceIdentities { get; private set; } = null!;
 
-        /// <summary>
-        /// The maximum number of instances the group should have at any time.
-        /// </summary>
         [Output("maxSize")]
         public Output<int> MaxSize { get; private set; } = null!;
 
-        /// <summary>
-        /// The minimum number of instances the group should have at any time.
-        /// </summary>
         [Output("minSize")]
         public Output<int> MinSize { get; private set; } = null!;
 
-        /// <summary>
-        /// Name of the Managed Service Identity.
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         [Output("network")]
         public Output<Outputs.ElastigroupAzureV3Network> Network { get; private set; } = null!;
 
-        /// <summary>
-        /// Available On-Demand sizes
-        /// </summary>
         [Output("odSizes")]
         public Output<ImmutableArray<string>> OdSizes { get; private set; } = null!;
 
         [Output("onDemandCount")]
         public Output<int?> OnDemandCount { get; private set; } = null!;
 
-        /// <summary>
-        /// Type of the operating system. Valid values: `"Linux"`, `"Windows"`.
-        /// </summary>
         [Output("os")]
         public Output<string> Os { get; private set; } = null!;
 
-        /// <summary>
-        /// The region your Azure group will be created in.
-        /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
 
-        /// <summary>
-        /// Name of the Azure Resource Group where the Managed Service Identity is located.
-        /// </summary>
         [Output("resourceGroupName")]
         public Output<string> ResourceGroupName { get; private set; } = null!;
 
-        /// <summary>
-        /// TODO
-        /// </summary>
         [Output("spotPercentage")]
         public Output<int?> SpotPercentage { get; private set; } = null!;
 
-        /// <summary>
-        /// Available Low-Priority sizes.
-        /// </summary>
         [Output("spotSizes")]
         public Output<ImmutableArray<string>> SpotSizes { get; private set; } = null!;
+
+        [Output("tags")]
+        public Output<ImmutableArray<Outputs.ElastigroupAzureV3Tag>> Tags { get; private set; } = null!;
 
 
         /// <summary>
@@ -154,21 +115,12 @@ namespace Pulumi.SpotInst
 
     public sealed class ElastigroupAzureV3Args : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Custom init script file or text in Base64 encoded format.
-        /// </summary>
         [Input("customData")]
         public Input<string>? CustomData { get; set; }
 
-        /// <summary>
-        /// The desired number of instances the group should have at any time.
-        /// </summary>
         [Input("desiredCapacity")]
         public Input<int>? DesiredCapacity { get; set; }
 
-        /// <summary>
-        /// Time (seconds) to allow the instance to be drained from incoming TCP connections and detached from MLB before terminating it during a scale-down operation.
-        /// </summary>
         [Input("drainingTimeout")]
         public Input<int>? DrainingTimeout { get; set; }
 
@@ -188,31 +140,18 @@ namespace Pulumi.SpotInst
 
         [Input("managedServiceIdentities")]
         private InputList<Inputs.ElastigroupAzureV3ManagedServiceIdentityArgs>? _managedServiceIdentities;
-
-        /// <summary>
-        /// List of Managed Service Identity objects.
-        /// </summary>
         public InputList<Inputs.ElastigroupAzureV3ManagedServiceIdentityArgs> ManagedServiceIdentities
         {
             get => _managedServiceIdentities ?? (_managedServiceIdentities = new InputList<Inputs.ElastigroupAzureV3ManagedServiceIdentityArgs>());
             set => _managedServiceIdentities = value;
         }
 
-        /// <summary>
-        /// The maximum number of instances the group should have at any time.
-        /// </summary>
         [Input("maxSize")]
         public Input<int>? MaxSize { get; set; }
 
-        /// <summary>
-        /// The minimum number of instances the group should have at any time.
-        /// </summary>
         [Input("minSize")]
         public Input<int>? MinSize { get; set; }
 
-        /// <summary>
-        /// Name of the Managed Service Identity.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -221,10 +160,6 @@ namespace Pulumi.SpotInst
 
         [Input("odSizes", required: true)]
         private InputList<string>? _odSizes;
-
-        /// <summary>
-        /// Available On-Demand sizes
-        /// </summary>
         public InputList<string> OdSizes
         {
             get => _odSizes ?? (_odSizes = new InputList<string>());
@@ -234,40 +169,32 @@ namespace Pulumi.SpotInst
         [Input("onDemandCount")]
         public Input<int>? OnDemandCount { get; set; }
 
-        /// <summary>
-        /// Type of the operating system. Valid values: `"Linux"`, `"Windows"`.
-        /// </summary>
         [Input("os", required: true)]
         public Input<string> Os { get; set; } = null!;
 
-        /// <summary>
-        /// The region your Azure group will be created in.
-        /// </summary>
         [Input("region", required: true)]
         public Input<string> Region { get; set; } = null!;
 
-        /// <summary>
-        /// Name of the Azure Resource Group where the Managed Service Identity is located.
-        /// </summary>
         [Input("resourceGroupName", required: true)]
         public Input<string> ResourceGroupName { get; set; } = null!;
 
-        /// <summary>
-        /// TODO
-        /// </summary>
         [Input("spotPercentage")]
         public Input<int>? SpotPercentage { get; set; }
 
         [Input("spotSizes", required: true)]
         private InputList<string>? _spotSizes;
-
-        /// <summary>
-        /// Available Low-Priority sizes.
-        /// </summary>
         public InputList<string> SpotSizes
         {
             get => _spotSizes ?? (_spotSizes = new InputList<string>());
             set => _spotSizes = value;
+        }
+
+        [Input("tags")]
+        private InputList<Inputs.ElastigroupAzureV3TagArgs>? _tags;
+        public InputList<Inputs.ElastigroupAzureV3TagArgs> Tags
+        {
+            get => _tags ?? (_tags = new InputList<Inputs.ElastigroupAzureV3TagArgs>());
+            set => _tags = value;
         }
 
         public ElastigroupAzureV3Args()
@@ -278,21 +205,12 @@ namespace Pulumi.SpotInst
 
     public sealed class ElastigroupAzureV3State : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Custom init script file or text in Base64 encoded format.
-        /// </summary>
         [Input("customData")]
         public Input<string>? CustomData { get; set; }
 
-        /// <summary>
-        /// The desired number of instances the group should have at any time.
-        /// </summary>
         [Input("desiredCapacity")]
         public Input<int>? DesiredCapacity { get; set; }
 
-        /// <summary>
-        /// Time (seconds) to allow the instance to be drained from incoming TCP connections and detached from MLB before terminating it during a scale-down operation.
-        /// </summary>
         [Input("drainingTimeout")]
         public Input<int>? DrainingTimeout { get; set; }
 
@@ -312,31 +230,18 @@ namespace Pulumi.SpotInst
 
         [Input("managedServiceIdentities")]
         private InputList<Inputs.ElastigroupAzureV3ManagedServiceIdentityGetArgs>? _managedServiceIdentities;
-
-        /// <summary>
-        /// List of Managed Service Identity objects.
-        /// </summary>
         public InputList<Inputs.ElastigroupAzureV3ManagedServiceIdentityGetArgs> ManagedServiceIdentities
         {
             get => _managedServiceIdentities ?? (_managedServiceIdentities = new InputList<Inputs.ElastigroupAzureV3ManagedServiceIdentityGetArgs>());
             set => _managedServiceIdentities = value;
         }
 
-        /// <summary>
-        /// The maximum number of instances the group should have at any time.
-        /// </summary>
         [Input("maxSize")]
         public Input<int>? MaxSize { get; set; }
 
-        /// <summary>
-        /// The minimum number of instances the group should have at any time.
-        /// </summary>
         [Input("minSize")]
         public Input<int>? MinSize { get; set; }
 
-        /// <summary>
-        /// Name of the Managed Service Identity.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -345,10 +250,6 @@ namespace Pulumi.SpotInst
 
         [Input("odSizes")]
         private InputList<string>? _odSizes;
-
-        /// <summary>
-        /// Available On-Demand sizes
-        /// </summary>
         public InputList<string> OdSizes
         {
             get => _odSizes ?? (_odSizes = new InputList<string>());
@@ -358,40 +259,32 @@ namespace Pulumi.SpotInst
         [Input("onDemandCount")]
         public Input<int>? OnDemandCount { get; set; }
 
-        /// <summary>
-        /// Type of the operating system. Valid values: `"Linux"`, `"Windows"`.
-        /// </summary>
         [Input("os")]
         public Input<string>? Os { get; set; }
 
-        /// <summary>
-        /// The region your Azure group will be created in.
-        /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 
-        /// <summary>
-        /// Name of the Azure Resource Group where the Managed Service Identity is located.
-        /// </summary>
         [Input("resourceGroupName")]
         public Input<string>? ResourceGroupName { get; set; }
 
-        /// <summary>
-        /// TODO
-        /// </summary>
         [Input("spotPercentage")]
         public Input<int>? SpotPercentage { get; set; }
 
         [Input("spotSizes")]
         private InputList<string>? _spotSizes;
-
-        /// <summary>
-        /// Available Low-Priority sizes.
-        /// </summary>
         public InputList<string> SpotSizes
         {
             get => _spotSizes ?? (_spotSizes = new InputList<string>());
             set => _spotSizes = value;
+        }
+
+        [Input("tags")]
+        private InputList<Inputs.ElastigroupAzureV3TagGetArgs>? _tags;
+        public InputList<Inputs.ElastigroupAzureV3TagGetArgs> Tags
+        {
+            get => _tags ?? (_tags = new InputList<Inputs.ElastigroupAzureV3TagGetArgs>());
+            set => _tags = value;
         }
 
         public ElastigroupAzureV3State()

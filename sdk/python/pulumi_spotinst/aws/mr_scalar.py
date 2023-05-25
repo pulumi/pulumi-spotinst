@@ -94,6 +94,7 @@ class MrScalarArgs:
         :param pulumi.Input[str] core_lifecycle: The MrScaler lifecycle for instances in core group. Allowed values are 'SPOT' and 'ON_DEMAND'.
         :param pulumi.Input[int] core_max_size: maximal amount of instances in core group.
         :param pulumi.Input[int] core_min_size: The minimal amount of instances in core group.
+        :param pulumi.Input[Sequence[pulumi.Input['MrScalarCoreScalingDownPolicyArgs']]] core_scaling_down_policies: Each `*_scaling_*_policy` supports the following:
         :param pulumi.Input[str] core_unit: Unit of task group for target, min and max. The unit could be `instance` or `weight`. instance - amount of instances. weight - amount of vCPU.
         :param pulumi.Input[str] custom_ami_id: The ID of a custom Amazon EBS-backed Linux AMI if the cluster uses a custom AMI.
         :param pulumi.Input[str] description: The MrScaler description.
@@ -127,6 +128,7 @@ class MrScalarArgs:
         :param pulumi.Input[str] task_lifecycle: The MrScaler lifecycle for instances in task group. Allowed values are 'SPOT' and 'ON_DEMAND'.
         :param pulumi.Input[int] task_max_size: maximal amount of instances in task group.
         :param pulumi.Input[int] task_min_size: The minimal amount of instances in task group.
+        :param pulumi.Input[Sequence[pulumi.Input['MrScalarTaskScalingDownPolicyArgs']]] task_scaling_down_policies: Possible core group scaling policies (Clone, New strategies):
         :param pulumi.Input[str] task_unit: Unit of task group for target, min and max. The unit could be `instance` or `weight`. instance - amount of instances. weight - amount of vCPU.
         :param pulumi.Input[Sequence[pulumi.Input['MrScalarTerminationPolicyArgs']]] termination_policies: Allows defining termination policies for EMR clusters based on CloudWatch Metrics.
         :param pulumi.Input[bool] termination_protected: Specifies whether the Amazon EC2 instances in the cluster are protected from termination by API calls, user intervention, or in the event of a job-flow error.
@@ -449,6 +451,9 @@ class MrScalarArgs:
     @property
     @pulumi.getter(name="coreScalingDownPolicies")
     def core_scaling_down_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MrScalarCoreScalingDownPolicyArgs']]]]:
+        """
+        Each `*_scaling_*_policy` supports the following:
+        """
         return pulumi.get(self, "core_scaling_down_policies")
 
     @core_scaling_down_policies.setter
@@ -890,6 +895,9 @@ class MrScalarArgs:
     @property
     @pulumi.getter(name="taskScalingDownPolicies")
     def task_scaling_down_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MrScalarTaskScalingDownPolicyArgs']]]]:
+        """
+        Possible core group scaling policies (Clone, New strategies):
+        """
         return pulumi.get(self, "task_scaling_down_policies")
 
     @task_scaling_down_policies.setter
@@ -1032,6 +1040,7 @@ class _MrScalarState:
         :param pulumi.Input[str] core_lifecycle: The MrScaler lifecycle for instances in core group. Allowed values are 'SPOT' and 'ON_DEMAND'.
         :param pulumi.Input[int] core_max_size: maximal amount of instances in core group.
         :param pulumi.Input[int] core_min_size: The minimal amount of instances in core group.
+        :param pulumi.Input[Sequence[pulumi.Input['MrScalarCoreScalingDownPolicyArgs']]] core_scaling_down_policies: Each `*_scaling_*_policy` supports the following:
         :param pulumi.Input[str] core_unit: Unit of task group for target, min and max. The unit could be `instance` or `weight`. instance - amount of instances. weight - amount of vCPU.
         :param pulumi.Input[str] custom_ami_id: The ID of a custom Amazon EBS-backed Linux AMI if the cluster uses a custom AMI.
         :param pulumi.Input[str] description: The MrScaler description.
@@ -1066,6 +1075,7 @@ class _MrScalarState:
         :param pulumi.Input[str] task_lifecycle: The MrScaler lifecycle for instances in task group. Allowed values are 'SPOT' and 'ON_DEMAND'.
         :param pulumi.Input[int] task_max_size: maximal amount of instances in task group.
         :param pulumi.Input[int] task_min_size: The minimal amount of instances in task group.
+        :param pulumi.Input[Sequence[pulumi.Input['MrScalarTaskScalingDownPolicyArgs']]] task_scaling_down_policies: Possible core group scaling policies (Clone, New strategies):
         :param pulumi.Input[str] task_unit: Unit of task group for target, min and max. The unit could be `instance` or `weight`. instance - amount of instances. weight - amount of vCPU.
         :param pulumi.Input[Sequence[pulumi.Input['MrScalarTerminationPolicyArgs']]] termination_policies: Allows defining termination policies for EMR clusters based on CloudWatch Metrics.
         :param pulumi.Input[bool] termination_protected: Specifies whether the Amazon EC2 instances in the cluster are protected from termination by API calls, user intervention, or in the event of a job-flow error.
@@ -1379,6 +1389,9 @@ class _MrScalarState:
     @property
     @pulumi.getter(name="coreScalingDownPolicies")
     def core_scaling_down_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MrScalarCoreScalingDownPolicyArgs']]]]:
+        """
+        Each `*_scaling_*_policy` supports the following:
+        """
         return pulumi.get(self, "core_scaling_down_policies")
 
     @core_scaling_down_policies.setter
@@ -1841,6 +1854,9 @@ class _MrScalarState:
     @property
     @pulumi.getter(name="taskScalingDownPolicies")
     def task_scaling_down_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MrScalarTaskScalingDownPolicyArgs']]]]:
+        """
+        Possible core group scaling policies (Clone, New strategies):
+        """
         return pulumi.get(self, "task_scaling_down_policies")
 
     @task_scaling_down_policies.setter
@@ -2211,6 +2227,7 @@ class MrScalar(pulumi.CustomResource):
         :param pulumi.Input[str] core_lifecycle: The MrScaler lifecycle for instances in core group. Allowed values are 'SPOT' and 'ON_DEMAND'.
         :param pulumi.Input[int] core_max_size: maximal amount of instances in core group.
         :param pulumi.Input[int] core_min_size: The minimal amount of instances in core group.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MrScalarCoreScalingDownPolicyArgs']]]] core_scaling_down_policies: Each `*_scaling_*_policy` supports the following:
         :param pulumi.Input[str] core_unit: Unit of task group for target, min and max. The unit could be `instance` or `weight`. instance - amount of instances. weight - amount of vCPU.
         :param pulumi.Input[str] custom_ami_id: The ID of a custom Amazon EBS-backed Linux AMI if the cluster uses a custom AMI.
         :param pulumi.Input[str] description: The MrScaler description.
@@ -2245,6 +2262,7 @@ class MrScalar(pulumi.CustomResource):
         :param pulumi.Input[str] task_lifecycle: The MrScaler lifecycle for instances in task group. Allowed values are 'SPOT' and 'ON_DEMAND'.
         :param pulumi.Input[int] task_max_size: maximal amount of instances in task group.
         :param pulumi.Input[int] task_min_size: The minimal amount of instances in task group.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MrScalarTaskScalingDownPolicyArgs']]]] task_scaling_down_policies: Possible core group scaling policies (Clone, New strategies):
         :param pulumi.Input[str] task_unit: Unit of task group for target, min and max. The unit could be `instance` or `weight`. instance - amount of instances. weight - amount of vCPU.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MrScalarTerminationPolicyArgs']]]] termination_policies: Allows defining termination policies for EMR clusters based on CloudWatch Metrics.
         :param pulumi.Input[bool] termination_protected: Specifies whether the Amazon EC2 instances in the cluster are protected from termination by API calls, user intervention, or in the event of a job-flow error.
@@ -2724,6 +2742,7 @@ class MrScalar(pulumi.CustomResource):
         :param pulumi.Input[str] core_lifecycle: The MrScaler lifecycle for instances in core group. Allowed values are 'SPOT' and 'ON_DEMAND'.
         :param pulumi.Input[int] core_max_size: maximal amount of instances in core group.
         :param pulumi.Input[int] core_min_size: The minimal amount of instances in core group.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MrScalarCoreScalingDownPolicyArgs']]]] core_scaling_down_policies: Each `*_scaling_*_policy` supports the following:
         :param pulumi.Input[str] core_unit: Unit of task group for target, min and max. The unit could be `instance` or `weight`. instance - amount of instances. weight - amount of vCPU.
         :param pulumi.Input[str] custom_ami_id: The ID of a custom Amazon EBS-backed Linux AMI if the cluster uses a custom AMI.
         :param pulumi.Input[str] description: The MrScaler description.
@@ -2758,6 +2777,7 @@ class MrScalar(pulumi.CustomResource):
         :param pulumi.Input[str] task_lifecycle: The MrScaler lifecycle for instances in task group. Allowed values are 'SPOT' and 'ON_DEMAND'.
         :param pulumi.Input[int] task_max_size: maximal amount of instances in task group.
         :param pulumi.Input[int] task_min_size: The minimal amount of instances in task group.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MrScalarTaskScalingDownPolicyArgs']]]] task_scaling_down_policies: Possible core group scaling policies (Clone, New strategies):
         :param pulumi.Input[str] task_unit: Unit of task group for target, min and max. The unit could be `instance` or `weight`. instance - amount of instances. weight - amount of vCPU.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MrScalarTerminationPolicyArgs']]]] termination_policies: Allows defining termination policies for EMR clusters based on CloudWatch Metrics.
         :param pulumi.Input[bool] termination_protected: Specifies whether the Amazon EC2 instances in the cluster are protected from termination by API calls, user intervention, or in the event of a job-flow error.
@@ -2952,6 +2972,9 @@ class MrScalar(pulumi.CustomResource):
     @property
     @pulumi.getter(name="coreScalingDownPolicies")
     def core_scaling_down_policies(self) -> pulumi.Output[Optional[Sequence['outputs.MrScalarCoreScalingDownPolicy']]]:
+        """
+        Each `*_scaling_*_policy` supports the following:
+        """
         return pulumi.get(self, "core_scaling_down_policies")
 
     @property
@@ -3254,6 +3277,9 @@ class MrScalar(pulumi.CustomResource):
     @property
     @pulumi.getter(name="taskScalingDownPolicies")
     def task_scaling_down_policies(self) -> pulumi.Output[Optional[Sequence['outputs.MrScalarTaskScalingDownPolicy']]]:
+        """
+        Possible core group scaling policies (Clone, New strategies):
+        """
         return pulumi.get(self, "task_scaling_down_policies")
 
     @property

@@ -23,6 +23,18 @@ namespace Pulumi.SpotInst.Gcp.Outputs
         public readonly bool? IsEnabled;
         /// <summary>
         /// The maximum number of instances the group should have.
+        /// 
+        /// Usage:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        /// });
+        /// ```
         /// </summary>
         public readonly string? MaxCapacity;
         /// <summary>

@@ -593,6 +593,13 @@ class ElastigroupIntegrationGkeAutoscaleLabelArgs:
         """
         :param pulumi.Input[str] key: The label name.
         :param pulumi.Input[str] value: The label value.
+               
+               
+               Usage:
+               
+               ```python
+               import pulumi
+               ```
         """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "value", value)
@@ -614,6 +621,13 @@ class ElastigroupIntegrationGkeAutoscaleLabelArgs:
     def value(self) -> pulumi.Input[str]:
         """
         The label value.
+
+
+        Usage:
+
+        ```python
+        import pulumi
+        ```
         """
         return pulumi.get(self, "value")
 
@@ -630,6 +644,13 @@ class ElastigroupLabelArgs:
         """
         :param pulumi.Input[str] key: The label name.
         :param pulumi.Input[str] value: The label value.
+               
+               
+               Usage:
+               
+               ```python
+               import pulumi
+               ```
         """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "value", value)
@@ -651,6 +672,13 @@ class ElastigroupLabelArgs:
     def value(self) -> pulumi.Input[str]:
         """
         The label value.
+
+
+        Usage:
+
+        ```python
+        import pulumi
+        ```
         """
         return pulumi.get(self, "value")
 
@@ -667,6 +695,13 @@ class ElastigroupMetadataArgs:
         """
         :param pulumi.Input[str] key: The label name.
         :param pulumi.Input[str] value: The label value.
+               
+               
+               Usage:
+               
+               ```python
+               import pulumi
+               ```
         """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "value", value)
@@ -688,6 +723,13 @@ class ElastigroupMetadataArgs:
     def value(self) -> pulumi.Input[str]:
         """
         The label value.
+
+
+        Usage:
+
+        ```python
+        import pulumi
+        ```
         """
         return pulumi.get(self, "value")
 
@@ -973,6 +1015,13 @@ class ElastigroupScalingDownPolicyDimensionArgs:
                  value: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] value: The label value.
+               
+               
+               Usage:
+               
+               ```python
+               import pulumi
+               ```
         """
         pulumi.set(__self__, "name", name)
         if value is not None:
@@ -992,6 +1041,13 @@ class ElastigroupScalingDownPolicyDimensionArgs:
     def value(self) -> Optional[pulumi.Input[str]]:
         """
         The label value.
+
+
+        Usage:
+
+        ```python
+        import pulumi
+        ```
         """
         return pulumi.get(self, "value")
 
@@ -1181,6 +1237,13 @@ class ElastigroupScalingUpPolicyDimensionArgs:
                  value: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] value: The label value.
+               
+               
+               Usage:
+               
+               ```python
+               import pulumi
+               ```
         """
         pulumi.set(__self__, "name", name)
         if value is not None:
@@ -1200,6 +1263,13 @@ class ElastigroupScalingUpPolicyDimensionArgs:
     def value(self) -> Optional[pulumi.Input[str]]:
         """
         The label value.
+
+
+        Usage:
+
+        ```python
+        import pulumi
+        ```
         """
         return pulumi.get(self, "value")
 
@@ -1460,6 +1530,12 @@ class OceanImportAutoscalerResourceLimitsArgs:
                  max_vcpu: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[int] max_memory_gib: The maximum memory in GiB units that can be allocated to the cluster.
+               
+               ```python
+               import pulumi
+               ```
+               
+               <a id="strategy"></a>
         :param pulumi.Input[int] max_vcpu: The maximum cpu in vCpu units that can be allocated to the cluster.
         """
         if max_memory_gib is not None:
@@ -1472,6 +1548,12 @@ class OceanImportAutoscalerResourceLimitsArgs:
     def max_memory_gib(self) -> Optional[pulumi.Input[int]]:
         """
         The maximum memory in GiB units that can be allocated to the cluster.
+
+        ```python
+        import pulumi
+        ```
+
+        <a id="strategy"></a>
         """
         return pulumi.get(self, "max_memory_gib")
 
@@ -1767,6 +1849,10 @@ class OceanImportScheduledTaskTaskTaskParametersClusterRollArgs:
         """
         :param pulumi.Input[int] batch_size_percentage: Value in % to set size of batch in roll. Valid values are 0-100
                Example: 20.
+               
+               ```python
+               import pulumi
+               ```
         """
         if batch_min_healthy_percentage is not None:
             pulumi.set(__self__, "batch_min_healthy_percentage", batch_min_healthy_percentage)
@@ -1792,6 +1878,10 @@ class OceanImportScheduledTaskTaskTaskParametersClusterRollArgs:
         """
         Value in % to set size of batch in roll. Valid values are 0-100
         Example: 20.
+
+        ```python
+        import pulumi
+        ```
         """
         return pulumi.get(self, "batch_size_percentage")
 
@@ -1954,6 +2044,10 @@ class OceanImportUpdatePolicyRollConfigArgs:
         """
         :param pulumi.Input[int] batch_size_percentage: Value in % to set size of batch in roll. Valid values are 0-100
                Example: 20.
+               
+               ```python
+               import pulumi
+               ```
         """
         pulumi.set(__self__, "batch_size_percentage", batch_size_percentage)
         if batch_min_healthy_percentage is not None:
@@ -1969,6 +2063,10 @@ class OceanImportUpdatePolicyRollConfigArgs:
         """
         Value in % to set size of batch in roll. Valid values are 0-100
         Example: 20.
+
+        ```python
+        import pulumi
+        ```
         """
         return pulumi.get(self, "batch_size_percentage")
 
@@ -2292,6 +2390,8 @@ class OceanLaunchSpecNetworkInterfaceAliasIpRangeArgs:
         """
         :param pulumi.Input[str] ip_cidr_range: specify the IP address range in CIDR notation that can be used for the alias IP addresses associated with the imported node pool.
         :param pulumi.Input[str] subnetwork_range_name: specify the IP address range for the subnet secondary IP range.
+               
+               <a id="update-policy"></a>
         """
         pulumi.set(__self__, "ip_cidr_range", ip_cidr_range)
         pulumi.set(__self__, "subnetwork_range_name", subnetwork_range_name)
@@ -2313,6 +2413,8 @@ class OceanLaunchSpecNetworkInterfaceAliasIpRangeArgs:
     def subnetwork_range_name(self) -> pulumi.Input[str]:
         """
         specify the IP address range for the subnet secondary IP range.
+
+        <a id="update-policy"></a>
         """
         return pulumi.get(self, "subnetwork_range_name")
 

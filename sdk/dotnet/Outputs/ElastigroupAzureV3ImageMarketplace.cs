@@ -13,17 +13,8 @@ namespace Pulumi.SpotInst.Outputs
     [OutputType]
     public sealed class ElastigroupAzureV3ImageMarketplace
     {
-        /// <summary>
-        /// Name of the image to use. Required if publisher is specified.
-        /// </summary>
         public readonly string Offer;
-        /// <summary>
-        /// Image publisher. Required if resource_group_name is not specified.
-        /// </summary>
         public readonly string Publisher;
-        /// <summary>
-        /// Image's Stock Keeping Unit, which is the specific version of the image. Required if publisher is specified.
-        /// </summary>
         public readonly string Sku;
         public readonly string Version;
 

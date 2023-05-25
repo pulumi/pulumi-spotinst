@@ -13,41 +13,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ElastigroupHealthCheck {
-    /**
-     * @return Enable auto-healing of unhealthy VMs.
-     * 
-     */
     private @Nullable Boolean autoHealing;
-    /**
-     * @return Period of time (seconds) to wait for VM to reach healthiness before monitoring for unhealthiness.
-     * 
-     */
     private @Nullable Integer gracePeriod;
-    /**
-     * @return Health check used to validate VM health. Valid values: “INSTANCE_STATE”.
-     * 
-     */
     private String healthCheckType;
 
     private ElastigroupHealthCheck() {}
-    /**
-     * @return Enable auto-healing of unhealthy VMs.
-     * 
-     */
     public Optional<Boolean> autoHealing() {
         return Optional.ofNullable(this.autoHealing);
     }
-    /**
-     * @return Period of time (seconds) to wait for VM to reach healthiness before monitoring for unhealthiness.
-     * 
-     */
     public Optional<Integer> gracePeriod() {
         return Optional.ofNullable(this.gracePeriod);
     }
-    /**
-     * @return Health check used to validate VM health. Valid values: “INSTANCE_STATE”.
-     * 
-     */
     public String healthCheckType() {
         return this.healthCheckType;
     }

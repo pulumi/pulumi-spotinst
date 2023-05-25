@@ -13,13 +13,13 @@ namespace Pulumi.SpotInst.Azure.Inputs
     public sealed class ElastigroupManagedServiceIdentityArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the managed identity.
+        /// Name of the Managed Service Identity.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// The Resource Group that the user-assigned managed identity resides in.
+        /// Name of the Azure Resource Group where the Managed Service Identity is located.
         /// </summary>
         [Input("resourceGroupName", required: true)]
         public Input<string> ResourceGroupName { get; set; } = null!;

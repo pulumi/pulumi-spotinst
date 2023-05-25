@@ -13,77 +13,23 @@ namespace Pulumi.SpotInst.Azure.Outputs
     [OutputType]
     public sealed class ElastigroupScalingDownPolicy
     {
-        /// <summary>
-        /// The type of action to perform for scaling. Valid values: `"adjustment"`, `"percentageAdjustment"`, `"setMaxTarget"`, `"setMinTarget"`, `"updateCapacity"`.
-        /// </summary>
         public readonly string? ActionType;
-        /// <summary>
-        /// Value to which the action type will be adjusted. Required if using `numeric` or `percentage_adjustment` action types.
-        /// </summary>
         public readonly string? Adjustment;
-        /// <summary>
-        /// The amount of time, in seconds, after a scaling activity completes and before the next scaling activity can start. If this parameter is not specified, the default cooldown period for the group applies.
-        /// </summary>
         public readonly int? Cooldown;
-        /// <summary>
-        /// A list of dimensions describing qualities of the metric. Required when `namespace` is defined AND not `"Microsoft.Compute"`.
-        /// </summary>
         public readonly ImmutableArray<Outputs.ElastigroupScalingDownPolicyDimension> Dimensions;
-        /// <summary>
-        /// The number of periods over which data is compared to the specified threshold.
-        /// </summary>
         public readonly int? EvaluationPeriods;
-        /// <summary>
-        /// . The number of the desired target (and maximum) capacity
-        /// </summary>
         public readonly string? MaxTargetCapacity;
-        /// <summary>
-        /// The maximal number of instances to have in the group.
-        /// </summary>
         public readonly string? Maximum;
-        /// <summary>
-        /// Metric to monitor by Azure metric display name.
-        /// </summary>
         public readonly string MetricName;
-        /// <summary>
-        /// . The number of the desired target (and minimum) capacity
-        /// </summary>
         public readonly string? MinTargetCapacity;
-        /// <summary>
-        /// The minimal number of instances to have in the group.
-        /// </summary>
         public readonly string? Minimum;
-        /// <summary>
-        /// The namespace for the alarm's associated metric. Valid values:
-        /// </summary>
         public readonly string Namespace;
-        /// <summary>
-        /// The operator to use in order to determine if the scaling policy is applicable. Valid values: `"gt"`, `"gte"`, `"lt"`, `"lte"`.
-        /// </summary>
         public readonly string? Operator;
-        /// <summary>
-        /// The granularity, in seconds, of the returned datapoints. Period must be at least 60 seconds and must be a multiple of 60.
-        /// </summary>
         public readonly int? Period;
-        /// <summary>
-        /// The name of the policy.
-        /// </summary>
         public readonly string PolicyName;
-        /// <summary>
-        /// The metric statistics to return. Valid values: `average`.
-        /// </summary>
         public readonly string? Statistic;
-        /// <summary>
-        /// The target number of instances to have in the group.
-        /// </summary>
         public readonly string? Target;
-        /// <summary>
-        /// The value against which the specified statistic is compared.
-        /// </summary>
         public readonly double Threshold;
-        /// <summary>
-        /// The unit for the alarm's associated metric. Valid values: `"percent`, `"seconds"`, `"microseconds"`, `"milliseconds"`, `"bytes"`, `"kilobytes"`, `"megabytes"`, `"gigabytes"`, `"terabytes"`, `"bits"`, `"kilobits"`, `"megabits"`, `"gigabits"`, `"terabits"`, `"count"`, `"bytes/second"`, `"kilobytes/second"`, `"megabytes/second"`, `"gigabytes/second"`, `"terabytes/second"`, `"bits/second"`, `"kilobits/second"`, `"megabits/second"`, `"gigabits/second"`, `"terabits/second"`, `"count/second"`, `"none"`.
-        /// </summary>
         public readonly string? Unit;
 
         [OutputConstructor]

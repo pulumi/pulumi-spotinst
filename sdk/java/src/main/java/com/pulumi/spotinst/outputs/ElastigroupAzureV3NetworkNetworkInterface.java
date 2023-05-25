@@ -14,36 +14,16 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ElastigroupAzureV3NetworkNetworkInterface {
-    /**
-     * @return Array of additional IP configuration objects.
-     * 
-     */
     private @Nullable List<ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfig> additionalIpConfigs;
-    /**
-     * @return List of Application Security Groups that will be associated to the primary ip configuration of the network interface.
-     * 
-     */
     private @Nullable List<ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroup> applicationSecurityGroups;
     private Boolean assignPublicIp;
     private Boolean isPrimary;
-    /**
-     * @return ID of subnet.
-     * 
-     */
     private String subnetName;
 
     private ElastigroupAzureV3NetworkNetworkInterface() {}
-    /**
-     * @return Array of additional IP configuration objects.
-     * 
-     */
     public List<ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfig> additionalIpConfigs() {
         return this.additionalIpConfigs == null ? List.of() : this.additionalIpConfigs;
     }
-    /**
-     * @return List of Application Security Groups that will be associated to the primary ip configuration of the network interface.
-     * 
-     */
     public List<ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroup> applicationSecurityGroups() {
         return this.applicationSecurityGroups == null ? List.of() : this.applicationSecurityGroups;
     }
@@ -53,10 +33,6 @@ public final class ElastigroupAzureV3NetworkNetworkInterface {
     public Boolean isPrimary() {
         return this.isPrimary;
     }
-    /**
-     * @return ID of subnet.
-     * 
-     */
     public String subnetName() {
         return this.subnetName;
     }

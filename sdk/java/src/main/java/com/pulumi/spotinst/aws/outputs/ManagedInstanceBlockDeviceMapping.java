@@ -12,29 +12,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ManagedInstanceBlockDeviceMapping {
-    /**
-     * @return The name of the device to mount.
-     * 
-     */
     private String deviceName;
-    /**
-     * @return Object
-     * 
-     */
     private @Nullable ManagedInstanceBlockDeviceMappingEbs ebs;
 
     private ManagedInstanceBlockDeviceMapping() {}
-    /**
-     * @return The name of the device to mount.
-     * 
-     */
     public String deviceName() {
         return this.deviceName;
     }
-    /**
-     * @return Object
-     * 
-     */
     public Optional<ManagedInstanceBlockDeviceMappingEbs> ebs() {
         return Optional.ofNullable(this.ebs);
     }

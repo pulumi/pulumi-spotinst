@@ -16,6 +16,16 @@ namespace Pulumi.SpotInst.Aws.Outputs
         public readonly string? Key;
         /// <summary>
         /// The dimension value.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        /// });
+        /// ```
         /// </summary>
         public readonly string? Value;
 

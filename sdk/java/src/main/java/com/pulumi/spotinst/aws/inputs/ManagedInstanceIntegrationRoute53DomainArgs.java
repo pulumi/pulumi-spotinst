@@ -17,62 +17,30 @@ public final class ManagedInstanceIntegrationRoute53DomainArgs extends com.pulum
 
     public static final ManagedInstanceIntegrationRoute53DomainArgs Empty = new ManagedInstanceIntegrationRoute53DomainArgs();
 
-    /**
-     * The Route 53 Hosted Zone Id for the registered Domain.
-     * 
-     */
     @Import(name="hostedZoneId", required=true)
     private Output<String> hostedZoneId;
 
-    /**
-     * @return The Route 53 Hosted Zone Id for the registered Domain.
-     * 
-     */
     public Output<String> hostedZoneId() {
         return this.hostedZoneId;
     }
 
-    /**
-     * The type of the record set. Valid values: `&#34;a&#34;`, `&#34;cname&#34;`.
-     * 
-     */
     @Import(name="recordSetType")
     private @Nullable Output<String> recordSetType;
 
-    /**
-     * @return The type of the record set. Valid values: `&#34;a&#34;`, `&#34;cname&#34;`.
-     * 
-     */
     public Optional<Output<String>> recordSetType() {
         return Optional.ofNullable(this.recordSetType);
     }
 
-    /**
-     * List of record sets
-     * 
-     */
     @Import(name="recordSets", required=true)
     private Output<List<ManagedInstanceIntegrationRoute53DomainRecordSetArgs>> recordSets;
 
-    /**
-     * @return List of record sets
-     * 
-     */
     public Output<List<ManagedInstanceIntegrationRoute53DomainRecordSetArgs>> recordSets() {
         return this.recordSets;
     }
 
-    /**
-     * The Spotinst account ID that is linked to the AWS account that holds the Route 53 hosted Zone Id. The default is the user Spotinst account provided as a URL parameter.
-     * 
-     */
     @Import(name="spotinstAcctId")
     private @Nullable Output<String> spotinstAcctId;
 
-    /**
-     * @return The Spotinst account ID that is linked to the AWS account that holds the Route 53 hosted Zone Id. The default is the user Spotinst account provided as a URL parameter.
-     * 
-     */
     public Optional<Output<String>> spotinstAcctId() {
         return Optional.ofNullable(this.spotinstAcctId);
     }
@@ -104,96 +72,42 @@ public final class ManagedInstanceIntegrationRoute53DomainArgs extends com.pulum
             $ = new ManagedInstanceIntegrationRoute53DomainArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param hostedZoneId The Route 53 Hosted Zone Id for the registered Domain.
-         * 
-         * @return builder
-         * 
-         */
         public Builder hostedZoneId(Output<String> hostedZoneId) {
             $.hostedZoneId = hostedZoneId;
             return this;
         }
 
-        /**
-         * @param hostedZoneId The Route 53 Hosted Zone Id for the registered Domain.
-         * 
-         * @return builder
-         * 
-         */
         public Builder hostedZoneId(String hostedZoneId) {
             return hostedZoneId(Output.of(hostedZoneId));
         }
 
-        /**
-         * @param recordSetType The type of the record set. Valid values: `&#34;a&#34;`, `&#34;cname&#34;`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder recordSetType(@Nullable Output<String> recordSetType) {
             $.recordSetType = recordSetType;
             return this;
         }
 
-        /**
-         * @param recordSetType The type of the record set. Valid values: `&#34;a&#34;`, `&#34;cname&#34;`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder recordSetType(String recordSetType) {
             return recordSetType(Output.of(recordSetType));
         }
 
-        /**
-         * @param recordSets List of record sets
-         * 
-         * @return builder
-         * 
-         */
         public Builder recordSets(Output<List<ManagedInstanceIntegrationRoute53DomainRecordSetArgs>> recordSets) {
             $.recordSets = recordSets;
             return this;
         }
 
-        /**
-         * @param recordSets List of record sets
-         * 
-         * @return builder
-         * 
-         */
         public Builder recordSets(List<ManagedInstanceIntegrationRoute53DomainRecordSetArgs> recordSets) {
             return recordSets(Output.of(recordSets));
         }
 
-        /**
-         * @param recordSets List of record sets
-         * 
-         * @return builder
-         * 
-         */
         public Builder recordSets(ManagedInstanceIntegrationRoute53DomainRecordSetArgs... recordSets) {
             return recordSets(List.of(recordSets));
         }
 
-        /**
-         * @param spotinstAcctId The Spotinst account ID that is linked to the AWS account that holds the Route 53 hosted Zone Id. The default is the user Spotinst account provided as a URL parameter.
-         * 
-         * @return builder
-         * 
-         */
         public Builder spotinstAcctId(@Nullable Output<String> spotinstAcctId) {
             $.spotinstAcctId = spotinstAcctId;
             return this;
         }
 
-        /**
-         * @param spotinstAcctId The Spotinst account ID that is linked to the AWS account that holds the Route 53 hosted Zone Id. The default is the user Spotinst account provided as a URL parameter.
-         * 
-         * @return builder
-         * 
-         */
         public Builder spotinstAcctId(String spotinstAcctId) {
             return spotinstAcctId(Output.of(spotinstAcctId));
         }

@@ -13,13 +13,7 @@ namespace Pulumi.SpotInst.Outputs
     [OutputType]
     public sealed class ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroup
     {
-        /// <summary>
-        /// Name of the Managed Service Identity.
-        /// </summary>
         public readonly string Name;
-        /// <summary>
-        /// Name of the Azure Resource Group where the Managed Service Identity is located.
-        /// </summary>
         public readonly string ResourceGroupName;
 
         [OutputConstructor]

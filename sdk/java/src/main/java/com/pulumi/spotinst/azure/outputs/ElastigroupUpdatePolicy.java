@@ -12,29 +12,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ElastigroupUpdatePolicy {
-    /**
-     * @return While used, you can control whether the group should perform a deployment after an update to the configuration.
-     * 
-     */
     private @Nullable ElastigroupUpdatePolicyRollConfig rollConfig;
-    /**
-     * @return Sets the enablement of the roll option.
-     * 
-     */
     private Boolean shouldRoll;
 
     private ElastigroupUpdatePolicy() {}
-    /**
-     * @return While used, you can control whether the group should perform a deployment after an update to the configuration.
-     * 
-     */
     public Optional<ElastigroupUpdatePolicyRollConfig> rollConfig() {
         return Optional.ofNullable(this.rollConfig);
     }
-    /**
-     * @return Sets the enablement of the roll option.
-     * 
-     */
     public Boolean shouldRoll() {
         return this.shouldRoll;
     }

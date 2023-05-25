@@ -22,34 +22,16 @@ public final class ElastigroupAzureV3NetworkArgs extends com.pulumi.resources.Re
         return this.networkInterfaces;
     }
 
-    /**
-     * The resource group of the Application Security Group.
-     * }
-     * 
-     */
     @Import(name="resourceGroupName", required=true)
     private Output<String> resourceGroupName;
 
-    /**
-     * @return The resource group of the Application Security Group.
-     * }
-     * 
-     */
     public Output<String> resourceGroupName() {
         return this.resourceGroupName;
     }
 
-    /**
-     * Name of Vnet.
-     * 
-     */
     @Import(name="virtualNetworkName", required=true)
     private Output<String> virtualNetworkName;
 
-    /**
-     * @return Name of Vnet.
-     * 
-     */
     public Output<String> virtualNetworkName() {
         return this.virtualNetworkName;
     }
@@ -93,46 +75,20 @@ public final class ElastigroupAzureV3NetworkArgs extends com.pulumi.resources.Re
             return networkInterfaces(List.of(networkInterfaces));
         }
 
-        /**
-         * @param resourceGroupName The resource group of the Application Security Group.
-         * }
-         * 
-         * @return builder
-         * 
-         */
         public Builder resourceGroupName(Output<String> resourceGroupName) {
             $.resourceGroupName = resourceGroupName;
             return this;
         }
 
-        /**
-         * @param resourceGroupName The resource group of the Application Security Group.
-         * }
-         * 
-         * @return builder
-         * 
-         */
         public Builder resourceGroupName(String resourceGroupName) {
             return resourceGroupName(Output.of(resourceGroupName));
         }
 
-        /**
-         * @param virtualNetworkName Name of Vnet.
-         * 
-         * @return builder
-         * 
-         */
         public Builder virtualNetworkName(Output<String> virtualNetworkName) {
             $.virtualNetworkName = virtualNetworkName;
             return this;
         }
 
-        /**
-         * @param virtualNetworkName Name of Vnet.
-         * 
-         * @return builder
-         * 
-         */
         public Builder virtualNetworkName(String virtualNetworkName) {
             return virtualNetworkName(Output.of(virtualNetworkName));
         }

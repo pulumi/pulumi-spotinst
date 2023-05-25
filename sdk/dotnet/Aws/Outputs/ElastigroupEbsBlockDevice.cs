@@ -39,6 +39,20 @@ namespace Pulumi.SpotInst.Aws.Outputs
         public readonly string? SnapshotId;
         /// <summary>
         /// The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volume_type` = gp3.
+        /// 
+        /// Modifying any `ebs_block_device` currently requires resource replacement.
+        /// 
+        /// Usage:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        /// });
+        /// ```
         /// </summary>
         public readonly int? Throughput;
         /// <summary>

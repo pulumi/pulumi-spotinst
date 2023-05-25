@@ -14,33 +14,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ElastigroupNetwork {
-    /**
-     * @return Array of additional IP configuration objects.
-     * 
-     */
     private @Nullable List<ElastigroupNetworkAdditionalIpConfig> additionalIpConfigs;
     private @Nullable Boolean assignPublicIp;
     /**
-     * @return Vnet Resource Group Name.
+     * @return Name of the Azure Resource Group where the Managed Service Identity is located.
      * 
      */
     private String resourceGroupName;
-    /**
-     * @return ID of subnet.
-     * 
-     */
     private String subnetName;
-    /**
-     * @return Name of Vnet.
-     * 
-     */
     private String virtualNetworkName;
 
     private ElastigroupNetwork() {}
-    /**
-     * @return Array of additional IP configuration objects.
-     * 
-     */
     public List<ElastigroupNetworkAdditionalIpConfig> additionalIpConfigs() {
         return this.additionalIpConfigs == null ? List.of() : this.additionalIpConfigs;
     }
@@ -48,23 +32,15 @@ public final class ElastigroupNetwork {
         return Optional.ofNullable(this.assignPublicIp);
     }
     /**
-     * @return Vnet Resource Group Name.
+     * @return Name of the Azure Resource Group where the Managed Service Identity is located.
      * 
      */
     public String resourceGroupName() {
         return this.resourceGroupName;
     }
-    /**
-     * @return ID of subnet.
-     * 
-     */
     public String subnetName() {
         return this.subnetName;
     }
-    /**
-     * @return Name of Vnet.
-     * 
-     */
     public String virtualNetworkName() {
         return this.virtualNetworkName;
     }

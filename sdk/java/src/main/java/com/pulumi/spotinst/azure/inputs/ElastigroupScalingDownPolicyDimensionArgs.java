@@ -16,14 +16,14 @@ public final class ElastigroupScalingDownPolicyDimensionArgs extends com.pulumi.
     public static final ElastigroupScalingDownPolicyDimensionArgs Empty = new ElastigroupScalingDownPolicyDimensionArgs();
 
     /**
-     * The name of the managed identity.
+     * Name of the Managed Service Identity.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return The name of the managed identity.
+     * @return Name of the Managed Service Identity.
      * 
      */
     public Output<String> name() {
@@ -31,14 +31,14 @@ public final class ElastigroupScalingDownPolicyDimensionArgs extends com.pulumi.
     }
 
     /**
-     * The dimension value.
+     * Tag Value for Vms in Elastigroup.
      * 
      */
     @Import(name="value")
     private @Nullable Output<String> value;
 
     /**
-     * @return The dimension value.
+     * @return Tag Value for Vms in Elastigroup.
      * 
      */
     public Optional<Output<String>> value() {
@@ -71,7 +71,7 @@ public final class ElastigroupScalingDownPolicyDimensionArgs extends com.pulumi.
         }
 
         /**
-         * @param name The name of the managed identity.
+         * @param name Name of the Managed Service Identity.
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class ElastigroupScalingDownPolicyDimensionArgs extends com.pulumi.
         }
 
         /**
-         * @param name The name of the managed identity.
+         * @param name Name of the Managed Service Identity.
          * 
          * @return builder
          * 
@@ -92,7 +92,7 @@ public final class ElastigroupScalingDownPolicyDimensionArgs extends com.pulumi.
         }
 
         /**
-         * @param value The dimension value.
+         * @param value Tag Value for Vms in Elastigroup.
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class ElastigroupScalingDownPolicyDimensionArgs extends com.pulumi.
         }
 
         /**
-         * @param value The dimension value.
+         * @param value Tag Value for Vms in Elastigroup.
          * 
          * @return builder
          * 

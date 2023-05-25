@@ -15,6 +15,8 @@ public final class OceanLaunchSpecInstanceMetadataOptions {
     /**
      * @return An integer from 1 through 64. The desired HTTP PUT response hop limit for instance metadata requests. The larger the number, the further the instance metadata requests can travel.
      * 
+     * &lt;a id=&#34;update-policy&#34;&gt;&lt;/a&gt;
+     * 
      */
     private @Nullable Integer httpPutResponseHopLimit;
     /**
@@ -26,6 +28,8 @@ public final class OceanLaunchSpecInstanceMetadataOptions {
     private OceanLaunchSpecInstanceMetadataOptions() {}
     /**
      * @return An integer from 1 through 64. The desired HTTP PUT response hop limit for instance metadata requests. The larger the number, the further the instance metadata requests can travel.
+     * 
+     * &lt;a id=&#34;update-policy&#34;&gt;&lt;/a&gt;
      * 
      */
     public Optional<Integer> httpPutResponseHopLimit() {

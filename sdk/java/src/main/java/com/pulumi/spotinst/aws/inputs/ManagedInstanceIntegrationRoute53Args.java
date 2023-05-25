@@ -14,17 +14,9 @@ public final class ManagedInstanceIntegrationRoute53Args extends com.pulumi.reso
 
     public static final ManagedInstanceIntegrationRoute53Args Empty = new ManagedInstanceIntegrationRoute53Args();
 
-    /**
-     * Route 53 Domain configurations.
-     * 
-     */
     @Import(name="domains", required=true)
     private Output<List<ManagedInstanceIntegrationRoute53DomainArgs>> domains;
 
-    /**
-     * @return Route 53 Domain configurations.
-     * 
-     */
     public Output<List<ManagedInstanceIntegrationRoute53DomainArgs>> domains() {
         return this.domains;
     }
@@ -53,33 +45,15 @@ public final class ManagedInstanceIntegrationRoute53Args extends com.pulumi.reso
             $ = new ManagedInstanceIntegrationRoute53Args(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param domains Route 53 Domain configurations.
-         * 
-         * @return builder
-         * 
-         */
         public Builder domains(Output<List<ManagedInstanceIntegrationRoute53DomainArgs>> domains) {
             $.domains = domains;
             return this;
         }
 
-        /**
-         * @param domains Route 53 Domain configurations.
-         * 
-         * @return builder
-         * 
-         */
         public Builder domains(List<ManagedInstanceIntegrationRoute53DomainArgs> domains) {
             return domains(Output.of(domains));
         }
 
-        /**
-         * @param domains Route 53 Domain configurations.
-         * 
-         * @return builder
-         * 
-         */
         public Builder domains(ManagedInstanceIntegrationRoute53DomainArgs... domains) {
             return domains(List.of(domains));
         }

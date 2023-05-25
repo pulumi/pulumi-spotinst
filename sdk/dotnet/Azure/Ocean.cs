@@ -9,6 +9,27 @@ using Pulumi.Serialization;
 
 namespace Pulumi.SpotInst.Azure
 {
+    /// <summary>
+    /// Manages a Spotinst Ocean AKS resource.
+    /// 
+    /// &gt; This resource contains arguments (such as `image` and `extension`) that are automatically populated from the data reported by the Ocean AKS Connector deployed into your cluster. You can override the upstream configuration by defining the corresponding arguments.
+    /// 
+    /// ## Prerequisites
+    /// 
+    /// Installation of the Ocean controller is required by this resource. You can accomplish this by using the spotinst/ocean-controller module as follows:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    /// });
+    /// ```
+    /// 
+    /// &gt; You must configure the same `cluster_identifier` and `acd_identifier` both for the Ocean controller and for the `spotinst.azure.Ocean` resource.
+    /// </summary>
     [SpotInstResourceType("spotinst:azure/ocean:Ocean")]
     public partial class Ocean : global::Pulumi.CustomResource
     {

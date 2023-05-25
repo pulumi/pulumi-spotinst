@@ -13,9 +13,6 @@ namespace Pulumi.SpotInst.Azure.Outputs
     [OutputType]
     public sealed class ElastigroupIntegrationKubernetes
     {
-        /// <summary>
-        /// The cluster ID.
-        /// </summary>
         public readonly string ClusterIdentifier;
 
         [OutputConstructor]

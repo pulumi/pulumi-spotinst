@@ -13,22 +13,13 @@ namespace Pulumi.SpotInst.Azure.Outputs
     [OutputType]
     public sealed class ElastigroupNetwork
     {
-        /// <summary>
-        /// Array of additional IP configuration objects.
-        /// </summary>
         public readonly ImmutableArray<Outputs.ElastigroupNetworkAdditionalIpConfig> AdditionalIpConfigs;
         public readonly bool? AssignPublicIp;
         /// <summary>
-        /// Vnet Resource Group Name.
+        /// Name of the Azure Resource Group where the Managed Service Identity is located.
         /// </summary>
         public readonly string ResourceGroupName;
-        /// <summary>
-        /// ID of subnet.
-        /// </summary>
         public readonly string SubnetName;
-        /// <summary>
-        /// Name of Vnet.
-        /// </summary>
         public readonly string VirtualNetworkName;
 
         [OutputConstructor]

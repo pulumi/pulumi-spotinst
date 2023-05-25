@@ -9,17 +9,9 @@ import java.util.Objects;
 
 @CustomType
 public final class ElastigroupIntegrationMultaiRuntime {
-    /**
-     * @return The deployment id you want to get
-     * 
-     */
     private String deploymentId;
 
     private ElastigroupIntegrationMultaiRuntime() {}
-    /**
-     * @return The deployment id you want to get
-     * 
-     */
     public String deploymentId() {
         return this.deploymentId;
     }

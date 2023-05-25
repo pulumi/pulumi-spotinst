@@ -226,6 +226,8 @@ export class Elastigroup extends pulumi.CustomResource {
     public readonly provisioningModel!: pulumi.Output<string | undefined>;
     /**
      * Contains scaling policies for scaling the Elastigroup down.
+     *
+     * Each `scaling_*_policy` supports the following:
      */
     public readonly scalingDownPolicies!: pulumi.Output<outputs.gcp.ElastigroupScalingDownPolicy[] | undefined>;
     /**
@@ -255,6 +257,10 @@ export class Elastigroup extends pulumi.CustomResource {
     public readonly tags!: pulumi.Output<string[] | undefined>;
     /**
      * Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
+     *
+     * ```typescript
+     * import * as pulumi from "@pulumi/pulumi";
+     * ```
      */
     public readonly unhealthyDuration!: pulumi.Output<number | undefined>;
 
@@ -454,6 +460,8 @@ export interface ElastigroupState {
     provisioningModel?: pulumi.Input<string>;
     /**
      * Contains scaling policies for scaling the Elastigroup down.
+     *
+     * Each `scaling_*_policy` supports the following:
      */
     scalingDownPolicies?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupScalingDownPolicy>[]>;
     /**
@@ -483,6 +491,10 @@ export interface ElastigroupState {
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
+     *
+     * ```typescript
+     * import * as pulumi from "@pulumi/pulumi";
+     * ```
      */
     unhealthyDuration?: pulumi.Input<number>;
 }
@@ -587,6 +599,8 @@ export interface ElastigroupArgs {
     provisioningModel?: pulumi.Input<string>;
     /**
      * Contains scaling policies for scaling the Elastigroup down.
+     *
+     * Each `scaling_*_policy` supports the following:
      */
     scalingDownPolicies?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupScalingDownPolicy>[]>;
     /**
@@ -616,6 +630,10 @@ export interface ElastigroupArgs {
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
+     *
+     * ```typescript
+     * import * as pulumi from "@pulumi/pulumi";
+     * ```
      */
     unhealthyDuration?: pulumi.Input<number>;
 }

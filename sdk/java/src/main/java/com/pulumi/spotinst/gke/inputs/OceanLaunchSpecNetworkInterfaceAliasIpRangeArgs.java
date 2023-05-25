@@ -31,12 +31,16 @@ public final class OceanLaunchSpecNetworkInterfaceAliasIpRangeArgs extends com.p
     /**
      * specify the IP address range for the subnet secondary IP range.
      * 
+     * &lt;a id=&#34;update-policy&#34;&gt;&lt;/a&gt;
+     * 
      */
     @Import(name="subnetworkRangeName", required=true)
     private Output<String> subnetworkRangeName;
 
     /**
      * @return specify the IP address range for the subnet secondary IP range.
+     * 
+     * &lt;a id=&#34;update-policy&#34;&gt;&lt;/a&gt;
      * 
      */
     public Output<String> subnetworkRangeName() {
@@ -92,6 +96,8 @@ public final class OceanLaunchSpecNetworkInterfaceAliasIpRangeArgs extends com.p
         /**
          * @param subnetworkRangeName specify the IP address range for the subnet secondary IP range.
          * 
+         * &lt;a id=&#34;update-policy&#34;&gt;&lt;/a&gt;
+         * 
          * @return builder
          * 
          */
@@ -102,6 +108,8 @@ public final class OceanLaunchSpecNetworkInterfaceAliasIpRangeArgs extends com.p
 
         /**
          * @param subnetworkRangeName specify the IP address range for the subnet secondary IP range.
+         * 
+         * &lt;a id=&#34;update-policy&#34;&gt;&lt;/a&gt;
          * 
          * @return builder
          * 

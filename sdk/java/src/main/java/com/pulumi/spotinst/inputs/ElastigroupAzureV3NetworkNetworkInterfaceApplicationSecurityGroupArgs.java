@@ -13,32 +13,16 @@ public final class ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityG
 
     public static final ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArgs Empty = new ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArgs();
 
-    /**
-     * Name of the Managed Service Identity.
-     * 
-     */
     @Import(name="name", required=true)
     private Output<String> name;
 
-    /**
-     * @return Name of the Managed Service Identity.
-     * 
-     */
     public Output<String> name() {
         return this.name;
     }
 
-    /**
-     * Name of the Azure Resource Group where the Managed Service Identity is located.
-     * 
-     */
     @Import(name="resourceGroupName", required=true)
     private Output<String> resourceGroupName;
 
-    /**
-     * @return Name of the Azure Resource Group where the Managed Service Identity is located.
-     * 
-     */
     public Output<String> resourceGroupName() {
         return this.resourceGroupName;
     }
@@ -68,44 +52,20 @@ public final class ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityG
             $ = new ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param name Name of the Managed Service Identity.
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(Output<String> name) {
             $.name = name;
             return this;
         }
 
-        /**
-         * @param name Name of the Managed Service Identity.
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
-        /**
-         * @param resourceGroupName Name of the Azure Resource Group where the Managed Service Identity is located.
-         * 
-         * @return builder
-         * 
-         */
         public Builder resourceGroupName(Output<String> resourceGroupName) {
             $.resourceGroupName = resourceGroupName;
             return this;
         }
 
-        /**
-         * @param resourceGroupName Name of the Azure Resource Group where the Managed Service Identity is located.
-         * 
-         * @return builder
-         * 
-         */
         public Builder resourceGroupName(String resourceGroupName) {
             return resourceGroupName(Output.of(resourceGroupName));
         }

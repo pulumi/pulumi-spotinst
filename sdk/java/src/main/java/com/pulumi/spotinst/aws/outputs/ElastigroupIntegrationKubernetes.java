@@ -17,6 +17,32 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ElastigroupIntegrationKubernetes {
+    /**
+     * @return Usage:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *     }
+     * }
+     * ```
+     * 
+     */
     private @Nullable String apiServer;
     /**
      * @return The amount of time, in seconds, after a scaling activity completes before any further trigger-related scaling activities can start.
@@ -46,6 +72,30 @@ public final class ElastigroupIntegrationKubernetes {
     /**
      * @return A key/value mapping of tags to assign to the resource.
      * 
+     * Usage:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *     }
+     * }
+     * ```
+     * 
      */
     private @Nullable List<ElastigroupIntegrationKubernetesAutoscaleLabel> autoscaleLabels;
     private @Nullable String clusterIdentifier;
@@ -61,6 +111,32 @@ public final class ElastigroupIntegrationKubernetes {
     private @Nullable String token;
 
     private ElastigroupIntegrationKubernetes() {}
+    /**
+     * @return Usage:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *     }
+     * }
+     * ```
+     * 
+     */
     public Optional<String> apiServer() {
         return Optional.ofNullable(this.apiServer);
     }
@@ -101,6 +177,30 @@ public final class ElastigroupIntegrationKubernetes {
     }
     /**
      * @return A key/value mapping of tags to assign to the resource.
+     * 
+     * Usage:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *     }
+     * }
+     * ```
      * 
      */
     public List<ElastigroupIntegrationKubernetesAutoscaleLabel> autoscaleLabels() {

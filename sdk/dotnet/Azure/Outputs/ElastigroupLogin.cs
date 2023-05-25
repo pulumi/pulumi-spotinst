@@ -13,17 +13,8 @@ namespace Pulumi.SpotInst.Azure.Outputs
     [OutputType]
     public sealed class ElastigroupLogin
     {
-        /// <summary>
-        /// Password for admin access to Windows VMs. Required for Windows product types.
-        /// </summary>
         public readonly string? Password;
-        /// <summary>
-        /// SSH for admin access to Linux VMs. Required for Linux product types.
-        /// </summary>
         public readonly string? SshPublicKey;
-        /// <summary>
-        /// Set admin access for accessing your VMs.
-        /// </summary>
         public readonly string UserName;
 
         [OutputConstructor]

@@ -9,17 +9,9 @@ import java.util.Objects;
 
 @CustomType
 public final class ElastigroupIntegrationKubernetes {
-    /**
-     * @return The cluster ID.
-     * 
-     */
     private String clusterIdentifier;
 
     private ElastigroupIntegrationKubernetes() {}
-    /**
-     * @return The cluster ID.
-     * 
-     */
     public String clusterIdentifier() {
         return this.clusterIdentifier;
     }

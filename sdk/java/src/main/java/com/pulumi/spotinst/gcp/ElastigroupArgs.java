@@ -403,12 +403,16 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Contains scaling policies for scaling the Elastigroup down.
      * 
+     * Each `scaling_*_policy` supports the following:
+     * 
      */
     @Import(name="scalingDownPolicies")
     private @Nullable Output<List<ElastigroupScalingDownPolicyArgs>> scalingDownPolicies;
 
     /**
      * @return Contains scaling policies for scaling the Elastigroup down.
+     * 
+     * Each `scaling_*_policy` supports the following:
      * 
      */
     public Optional<Output<List<ElastigroupScalingDownPolicyArgs>>> scalingDownPolicies() {
@@ -514,6 +518,28 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *     }
+     * }
+     * ```
      * 
      */
     @Import(name="unhealthyDuration")
@@ -521,6 +547,28 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *     }
+     * }
+     * ```
      * 
      */
     public Optional<Output<Integer>> unhealthyDuration() {
@@ -1172,6 +1220,8 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param scalingDownPolicies Contains scaling policies for scaling the Elastigroup down.
          * 
+         * Each `scaling_*_policy` supports the following:
+         * 
          * @return builder
          * 
          */
@@ -1183,6 +1233,8 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param scalingDownPolicies Contains scaling policies for scaling the Elastigroup down.
          * 
+         * Each `scaling_*_policy` supports the following:
+         * 
          * @return builder
          * 
          */
@@ -1192,6 +1244,8 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param scalingDownPolicies Contains scaling policies for scaling the Elastigroup down.
+         * 
+         * Each `scaling_*_policy` supports the following:
          * 
          * @return builder
          * 
@@ -1371,6 +1425,28 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param unhealthyDuration Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
+         * ```java
+         * package generated_program;
+         * 
+         * import com.pulumi.Context;
+         * import com.pulumi.Pulumi;
+         * import com.pulumi.core.Output;
+         * import java.util.List;
+         * import java.util.ArrayList;
+         * import java.util.Map;
+         * import java.io.File;
+         * import java.nio.file.Files;
+         * import java.nio.file.Paths;
+         * 
+         * public class App {
+         *     public static void main(String[] args) {
+         *         Pulumi.run(App::stack);
+         *     }
+         * 
+         *     public static void stack(Context ctx) {
+         *     }
+         * }
+         * ```
          * 
          * @return builder
          * 
@@ -1382,6 +1458,28 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param unhealthyDuration Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
+         * ```java
+         * package generated_program;
+         * 
+         * import com.pulumi.Context;
+         * import com.pulumi.Pulumi;
+         * import com.pulumi.core.Output;
+         * import java.util.List;
+         * import java.util.ArrayList;
+         * import java.util.Map;
+         * import java.io.File;
+         * import java.nio.file.Files;
+         * import java.nio.file.Paths;
+         * 
+         * public class App {
+         *     public static void main(String[] args) {
+         *         Pulumi.run(App::stack);
+         *     }
+         * 
+         *     public static void stack(Context ctx) {
+         *     }
+         * }
+         * ```
          * 
          * @return builder
          * 

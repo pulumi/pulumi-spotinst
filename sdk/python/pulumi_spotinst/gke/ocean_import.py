@@ -542,6 +542,18 @@ class OceanImport(pulumi.CustomResource):
                  whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
+        Manages a Spotinst Ocean GKE resource.
+
+        ## Prerequisites
+
+        Installation of the Ocean controller is required by this resource. You can accomplish this by using the spotinst/ocean-controller module as follows:
+
+        ```python
+        import pulumi
+        ```
+
+        > You must configure the same `cluster_identifier` both for the Ocean controller and for the `gke.OceanImport` resource.
+
         ## Example Usage
 
         ```python
@@ -634,6 +646,18 @@ class OceanImport(pulumi.CustomResource):
                  args: OceanImportArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Manages a Spotinst Ocean GKE resource.
+
+        ## Prerequisites
+
+        Installation of the Ocean controller is required by this resource. You can accomplish this by using the spotinst/ocean-controller module as follows:
+
+        ```python
+        import pulumi
+        ```
+
+        > You must configure the same `cluster_identifier` both for the Ocean controller and for the `gke.OceanImport` resource.
+
         ## Example Usage
 
         ```python

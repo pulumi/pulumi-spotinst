@@ -13,13 +13,7 @@ namespace Pulumi.SpotInst.Outputs
     [OutputType]
     public sealed class ElastigroupAzureV3ImageCustom
     {
-        /// <summary>
-        /// Name of the custom image. Required if resource_group_name is specified.
-        /// </summary>
         public readonly string ImageName;
-        /// <summary>
-        /// Name of the Azure Resource Group where the Managed Service Identity is located.
-        /// </summary>
         public readonly string ResourceGroupName;
 
         [OutputConstructor]

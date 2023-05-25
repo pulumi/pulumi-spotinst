@@ -13,14 +13,11 @@ namespace Pulumi.SpotInst.Azure.Inputs
     public sealed class ElastigroupNetworkAdditionalIpConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the managed identity.
+        /// Name of the Managed Service Identity.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
-        /// <summary>
-        /// Available from Azure Api-Version 2017-03-30 onwards, it represents whether the specific ipconfiguration is IPv4 or IPv6. Valid values: `IPv4`, `IPv6`.
-        /// </summary>
         [Input("privateIpVersion")]
         public Input<string>? PrivateIpVersion { get; set; }
 

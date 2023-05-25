@@ -15,6 +15,8 @@ namespace Pulumi.SpotInst.Aws.Outputs
     {
         /// <summary>
         /// An integer from 1 through 64. The desired HTTP PUT response hop limit for instance metadata requests. The larger the number, the further the instance metadata requests can travel.
+        /// 
+        /// &lt;a id="update-policy"&gt;&lt;/a&gt;
         /// </summary>
         public readonly int? HttpPutResponseHopLimit;
         /// <summary>

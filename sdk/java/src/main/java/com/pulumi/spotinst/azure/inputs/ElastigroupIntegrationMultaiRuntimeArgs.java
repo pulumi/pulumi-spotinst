@@ -13,17 +13,9 @@ public final class ElastigroupIntegrationMultaiRuntimeArgs extends com.pulumi.re
 
     public static final ElastigroupIntegrationMultaiRuntimeArgs Empty = new ElastigroupIntegrationMultaiRuntimeArgs();
 
-    /**
-     * The deployment id you want to get
-     * 
-     */
     @Import(name="deploymentId", required=true)
     private Output<String> deploymentId;
 
-    /**
-     * @return The deployment id you want to get
-     * 
-     */
     public Output<String> deploymentId() {
         return this.deploymentId;
     }
@@ -52,23 +44,11 @@ public final class ElastigroupIntegrationMultaiRuntimeArgs extends com.pulumi.re
             $ = new ElastigroupIntegrationMultaiRuntimeArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param deploymentId The deployment id you want to get
-         * 
-         * @return builder
-         * 
-         */
         public Builder deploymentId(Output<String> deploymentId) {
             $.deploymentId = deploymentId;
             return this;
         }
 
-        /**
-         * @param deploymentId The deployment id you want to get
-         * 
-         * @return builder
-         * 
-         */
         public Builder deploymentId(String deploymentId) {
             return deploymentId(Output.of(deploymentId));
         }

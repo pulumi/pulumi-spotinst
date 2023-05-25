@@ -13,17 +13,9 @@ public final class ManagedInstanceManagedInstanceActionArgs extends com.pulumi.r
 
     public static final ManagedInstanceManagedInstanceActionArgs Empty = new ManagedInstanceManagedInstanceActionArgs();
 
-    /**
-     * String, Action type. Supported action types: `pause`, `resume`, `recycle`.
-     * 
-     */
     @Import(name="type", required=true)
     private Output<String> type;
 
-    /**
-     * @return String, Action type. Supported action types: `pause`, `resume`, `recycle`.
-     * 
-     */
     public Output<String> type() {
         return this.type;
     }
@@ -52,23 +44,11 @@ public final class ManagedInstanceManagedInstanceActionArgs extends com.pulumi.r
             $ = new ManagedInstanceManagedInstanceActionArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param type String, Action type. Supported action types: `pause`, `resume`, `recycle`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder type(Output<String> type) {
             $.type = type;
             return this;
         }
 
-        /**
-         * @param type String, Action type. Supported action types: `pause`, `resume`, `recycle`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder type(String type) {
             return type(Output.of(type));
         }

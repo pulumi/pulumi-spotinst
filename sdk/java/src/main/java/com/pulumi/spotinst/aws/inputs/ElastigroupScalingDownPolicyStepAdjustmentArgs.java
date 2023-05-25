@@ -32,12 +32,38 @@ public final class ElastigroupScalingDownPolicyStepAdjustmentArgs extends com.pu
     /**
      * The value against which the specified statistic is compared. If a `step_adjustment` object is defined, then it cannot be specified.
      * 
+     * If you do not specify an action type, you can only use – `adjustment`, `minTargetCapacity`, `maxTargetCapacity`.
+     * While using action_type, please also set the following:
+     * 
+     * When using `adjustment`           – set the field `adjustment`
+     * When using `setMinTarget`         – set the field `min_target_capacity`
+     * When using `updateCapacity`       – set the fields `minimum`, `maximum`, and `target`
+     * 
+     * If you do not specify an action type, you can only use – `adjustment`, `minTargetCapacity`, `maxTargetCapacity`.
+     * While using action_type, please also set the following:
+     * 
+     * When using `adjustment`           – set the field `adjustment`
+     * When using `updateCapacity`       – set the fields `minimum`, `maximum`, and `target`
+     * 
      */
     @Import(name="threshold", required=true)
     private Output<Integer> threshold;
 
     /**
      * @return The value against which the specified statistic is compared. If a `step_adjustment` object is defined, then it cannot be specified.
+     * 
+     * If you do not specify an action type, you can only use – `adjustment`, `minTargetCapacity`, `maxTargetCapacity`.
+     * While using action_type, please also set the following:
+     * 
+     * When using `adjustment`           – set the field `adjustment`
+     * When using `setMinTarget`         – set the field `min_target_capacity`
+     * When using `updateCapacity`       – set the fields `minimum`, `maximum`, and `target`
+     * 
+     * If you do not specify an action type, you can only use – `adjustment`, `minTargetCapacity`, `maxTargetCapacity`.
+     * While using action_type, please also set the following:
+     * 
+     * When using `adjustment`           – set the field `adjustment`
+     * When using `updateCapacity`       – set the fields `minimum`, `maximum`, and `target`
      * 
      */
     public Output<Integer> threshold() {
@@ -93,6 +119,19 @@ public final class ElastigroupScalingDownPolicyStepAdjustmentArgs extends com.pu
         /**
          * @param threshold The value against which the specified statistic is compared. If a `step_adjustment` object is defined, then it cannot be specified.
          * 
+         * If you do not specify an action type, you can only use – `adjustment`, `minTargetCapacity`, `maxTargetCapacity`.
+         * While using action_type, please also set the following:
+         * 
+         * When using `adjustment`           – set the field `adjustment`
+         * When using `setMinTarget`         – set the field `min_target_capacity`
+         * When using `updateCapacity`       – set the fields `minimum`, `maximum`, and `target`
+         * 
+         * If you do not specify an action type, you can only use – `adjustment`, `minTargetCapacity`, `maxTargetCapacity`.
+         * While using action_type, please also set the following:
+         * 
+         * When using `adjustment`           – set the field `adjustment`
+         * When using `updateCapacity`       – set the fields `minimum`, `maximum`, and `target`
+         * 
          * @return builder
          * 
          */
@@ -103,6 +142,19 @@ public final class ElastigroupScalingDownPolicyStepAdjustmentArgs extends com.pu
 
         /**
          * @param threshold The value against which the specified statistic is compared. If a `step_adjustment` object is defined, then it cannot be specified.
+         * 
+         * If you do not specify an action type, you can only use – `adjustment`, `minTargetCapacity`, `maxTargetCapacity`.
+         * While using action_type, please also set the following:
+         * 
+         * When using `adjustment`           – set the field `adjustment`
+         * When using `setMinTarget`         – set the field `min_target_capacity`
+         * When using `updateCapacity`       – set the fields `minimum`, `maximum`, and `target`
+         * 
+         * If you do not specify an action type, you can only use – `adjustment`, `minTargetCapacity`, `maxTargetCapacity`.
+         * While using action_type, please also set the following:
+         * 
+         * When using `adjustment`           – set the field `adjustment`
+         * When using `updateCapacity`       – set the fields `minimum`, `maximum`, and `target`
          * 
          * @return builder
          * 

@@ -13,44 +13,20 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ElastigroupLoadBalancer {
     private @Nullable Boolean autoWeight;
-    /**
-     * @return The balancer ID.
-     * 
-     */
     private @Nullable String balancerId;
-    /**
-     * @return The scale set ID associated with the load balancer.
-     * 
-     */
     private @Nullable String targetSetId;
-    /**
-     * @return The resource type. Valid values: CLASSIC, TARGET_GROUP, MULTAI_TARGET_SET.
-     * 
-     */
     private String type;
 
     private ElastigroupLoadBalancer() {}
     public Optional<Boolean> autoWeight() {
         return Optional.ofNullable(this.autoWeight);
     }
-    /**
-     * @return The balancer ID.
-     * 
-     */
     public Optional<String> balancerId() {
         return Optional.ofNullable(this.balancerId);
     }
-    /**
-     * @return The scale set ID associated with the load balancer.
-     * 
-     */
     public Optional<String> targetSetId() {
         return Optional.ofNullable(this.targetSetId);
     }
-    /**
-     * @return The resource type. Valid values: CLASSIC, TARGET_GROUP, MULTAI_TARGET_SET.
-     * 
-     */
     public String type() {
         return this.type;
     }

@@ -15,21 +15,12 @@ namespace Pulumi.SpotInst.Azure.Inputs
         [Input("autoWeight")]
         public Input<bool>? AutoWeight { get; set; }
 
-        /// <summary>
-        /// The balancer ID.
-        /// </summary>
         [Input("balancerId")]
         public Input<string>? BalancerId { get; set; }
 
-        /// <summary>
-        /// The scale set ID associated with the load balancer.
-        /// </summary>
         [Input("targetSetId")]
         public Input<string>? TargetSetId { get; set; }
 
-        /// <summary>
-        /// The resource type. Valid values: CLASSIC, TARGET_GROUP, MULTAI_TARGET_SET.
-        /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
 

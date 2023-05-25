@@ -12,89 +12,33 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ManagedInstanceLoadBalancer {
-    /**
-     * @return The AWS resource ARN (Required only for ALB target groups).
-     * 
-     */
     private @Nullable String arn;
-    /**
-     * @return &#34;Auto Weight&#34; will automatically provide a higher weight for instances that are larger as appropriate. For example, if you have configured your Elastigroup with m4.large and m4.xlarge instances the m4.large will have half the weight of an m4.xlarge. This ensures that larger instances receive a higher number of MLB requests.
-     * 
-     */
     private @Nullable Boolean autoWeight;
-    /**
-     * @return &#34;AZ Awareness&#34; will ensure that instances within the same AZ are using the corresponding MLB runtime instance in the same AZ. This feature reduces multi-zone data transfer fees.
-     * 
-     */
     private @Nullable Boolean azAwareness;
-    /**
-     * @return The Multai load balancer ID. Example: lb-123456
-     * 
-     */
     private @Nullable String balancerId;
-    /**
-     * @return The AWS resource name. Required for Classic Load Balancer. Optional for Application Load Balancer.
-     * 
-     */
     private @Nullable String name;
-    /**
-     * @return The Multai load target set ID. Example: ts-123456
-     * 
-     */
     private @Nullable String targetSetId;
-    /**
-     * @return The resource type. Valid Values: `&#34;CLASSIC&#34;`, `&#34;TARGET_GROUP&#34;`, `&#34;MULTAI_TARGET_SET&#34;`.
-     * 
-     */
     private String type;
 
     private ManagedInstanceLoadBalancer() {}
-    /**
-     * @return The AWS resource ARN (Required only for ALB target groups).
-     * 
-     */
     public Optional<String> arn() {
         return Optional.ofNullable(this.arn);
     }
-    /**
-     * @return &#34;Auto Weight&#34; will automatically provide a higher weight for instances that are larger as appropriate. For example, if you have configured your Elastigroup with m4.large and m4.xlarge instances the m4.large will have half the weight of an m4.xlarge. This ensures that larger instances receive a higher number of MLB requests.
-     * 
-     */
     public Optional<Boolean> autoWeight() {
         return Optional.ofNullable(this.autoWeight);
     }
-    /**
-     * @return &#34;AZ Awareness&#34; will ensure that instances within the same AZ are using the corresponding MLB runtime instance in the same AZ. This feature reduces multi-zone data transfer fees.
-     * 
-     */
     public Optional<Boolean> azAwareness() {
         return Optional.ofNullable(this.azAwareness);
     }
-    /**
-     * @return The Multai load balancer ID. Example: lb-123456
-     * 
-     */
     public Optional<String> balancerId() {
         return Optional.ofNullable(this.balancerId);
     }
-    /**
-     * @return The AWS resource name. Required for Classic Load Balancer. Optional for Application Load Balancer.
-     * 
-     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
-    /**
-     * @return The Multai load target set ID. Example: ts-123456
-     * 
-     */
     public Optional<String> targetSetId() {
         return Optional.ofNullable(this.targetSetId);
     }
-    /**
-     * @return The resource type. Valid Values: `&#34;CLASSIC&#34;`, `&#34;TARGET_GROUP&#34;`, `&#34;MULTAI_TARGET_SET&#34;`.
-     * 
-     */
     public String type() {
         return this.type;
     }

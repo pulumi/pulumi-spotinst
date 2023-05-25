@@ -9,41 +9,17 @@ import java.util.Objects;
 
 @CustomType
 public final class ElastigroupImageMarketplace {
-    /**
-     * @return Name of the image to use. Required if publisher is specified.
-     * 
-     */
     private String offer;
-    /**
-     * @return Image publisher. Required if resource_group_name is not specified.
-     * 
-     */
     private String publisher;
-    /**
-     * @return Image&#39;s Stock Keeping Unit, which is the specific version of the image. Required if publisher is specified.
-     * 
-     */
     private String sku;
 
     private ElastigroupImageMarketplace() {}
-    /**
-     * @return Name of the image to use. Required if publisher is specified.
-     * 
-     */
     public String offer() {
         return this.offer;
     }
-    /**
-     * @return Image publisher. Required if resource_group_name is not specified.
-     * 
-     */
     public String publisher() {
         return this.publisher;
     }
-    /**
-     * @return Image&#39;s Stock Keeping Unit, which is the specific version of the image. Required if publisher is specified.
-     * 
-     */
     public String sku() {
         return this.sku;
     }

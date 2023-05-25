@@ -13,17 +13,8 @@ namespace Pulumi.SpotInst.Azure.Outputs
     [OutputType]
     public sealed class ElastigroupStrategy
     {
-        /// <summary>
-        /// Time (seconds) to allow the instance to be drained from incoming TCP connections and detached from MLB before terminating it during a scale-down operation.
-        /// </summary>
         public readonly int? DrainingTimeout;
-        /// <summary>
-        /// Percentage of Low Priority instances to maintain. Required if `od_count` is not specified.
-        /// </summary>
         public readonly int? LowPriorityPercentage;
-        /// <summary>
-        /// Number of On-Demand instances to maintain. Required if low_priority_percentage is not specified.
-        /// </summary>
         public readonly int? OdCount;
 
         [OutputConstructor]

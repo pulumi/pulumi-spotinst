@@ -13,65 +13,25 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ManagedInstanceBlockDeviceMappingEbs {
-    /**
-     * @return Whether the volume should be destroyed on instance termination.
-     * 
-     */
     private @Nullable Boolean deleteOnTermination;
-    /**
-     * @return The amount of provisioned [IOPS](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-io-characteristics.html). This must be set with a `volume_type` of `&#34;io1&#34;`.
-     * 
-     */
     private @Nullable Integer iops;
-    /**
-     * @return The throughput that the volume supports, in MiB/s. Minimum value of 125. Maximum value of 1000. Valid only if `volume_type` is set to `&#34;gp3&#34;`.
-     * 
-     */
     private @Nullable Integer throughput;
-    /**
-     * @return The size of the volume, in GiBs.
-     * 
-     */
     private @Nullable Integer volumeSize;
-    /**
-     * @return The type of volume. Can be `&#34;standard&#34;`, `&#34;gp2&#34;`, `&#34;gp3&#34;`, `&#34;io1&#34;`, `&#34;st1&#34;` or `&#34;sc1&#34;`.
-     * 
-     */
     private @Nullable String volumeType;
 
     private ManagedInstanceBlockDeviceMappingEbs() {}
-    /**
-     * @return Whether the volume should be destroyed on instance termination.
-     * 
-     */
     public Optional<Boolean> deleteOnTermination() {
         return Optional.ofNullable(this.deleteOnTermination);
     }
-    /**
-     * @return The amount of provisioned [IOPS](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-io-characteristics.html). This must be set with a `volume_type` of `&#34;io1&#34;`.
-     * 
-     */
     public Optional<Integer> iops() {
         return Optional.ofNullable(this.iops);
     }
-    /**
-     * @return The throughput that the volume supports, in MiB/s. Minimum value of 125. Maximum value of 1000. Valid only if `volume_type` is set to `&#34;gp3&#34;`.
-     * 
-     */
     public Optional<Integer> throughput() {
         return Optional.ofNullable(this.throughput);
     }
-    /**
-     * @return The size of the volume, in GiBs.
-     * 
-     */
     public Optional<Integer> volumeSize() {
         return Optional.ofNullable(this.volumeSize);
     }
-    /**
-     * @return The type of volume. Can be `&#34;standard&#34;`, `&#34;gp2&#34;`, `&#34;gp3&#34;`, `&#34;io1&#34;`, `&#34;st1&#34;` or `&#34;sc1&#34;`.
-     * 
-     */
     public Optional<String> volumeType() {
         return Optional.ofNullable(this.volumeType);
     }

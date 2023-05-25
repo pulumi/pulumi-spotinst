@@ -13,9 +13,6 @@ namespace Pulumi.SpotInst.Aws.Outputs
     [OutputType]
     public sealed class ManagedInstanceManagedInstanceAction
     {
-        /// <summary>
-        /// String, Action type. Supported action types: `pause`, `resume`, `recycle`.
-        /// </summary>
         public readonly string Type;
 
         [OutputConstructor]

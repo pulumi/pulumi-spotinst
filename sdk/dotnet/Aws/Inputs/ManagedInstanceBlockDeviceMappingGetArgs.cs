@@ -12,15 +12,9 @@ namespace Pulumi.SpotInst.Aws.Inputs
 
     public sealed class ManagedInstanceBlockDeviceMappingGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The name of the device to mount.
-        /// </summary>
         [Input("deviceName", required: true)]
         public Input<string> DeviceName { get; set; } = null!;
 
-        /// <summary>
-        /// Object
-        /// </summary>
         [Input("ebs")]
         public Input<Inputs.ManagedInstanceBlockDeviceMappingEbsGetArgs>? Ebs { get; set; }
 

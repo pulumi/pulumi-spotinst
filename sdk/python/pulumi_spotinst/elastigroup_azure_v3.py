@@ -33,22 +33,10 @@ class ElastigroupAzureV3Args:
                  min_size: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  on_demand_count: Optional[pulumi.Input[int]] = None,
-                 spot_percentage: Optional[pulumi.Input[int]] = None):
+                 spot_percentage: Optional[pulumi.Input[int]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3TagArgs']]]] = None):
         """
         The set of arguments for constructing a ElastigroupAzureV3 resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] od_sizes: Available On-Demand sizes
-        :param pulumi.Input[str] os: Type of the operating system. Valid values: `"Linux"`, `"Windows"`.
-        :param pulumi.Input[str] region: The region your Azure group will be created in.
-        :param pulumi.Input[str] resource_group_name: Name of the Azure Resource Group where the Managed Service Identity is located.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] spot_sizes: Available Low-Priority sizes.
-        :param pulumi.Input[str] custom_data: Custom init script file or text in Base64 encoded format.
-        :param pulumi.Input[int] desired_capacity: The desired number of instances the group should have at any time.
-        :param pulumi.Input[int] draining_timeout: Time (seconds) to allow the instance to be drained from incoming TCP connections and detached from MLB before terminating it during a scale-down operation.
-        :param pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ManagedServiceIdentityArgs']]] managed_service_identities: List of Managed Service Identity objects.
-        :param pulumi.Input[int] max_size: The maximum number of instances the group should have at any time.
-        :param pulumi.Input[int] min_size: The minimum number of instances the group should have at any time.
-        :param pulumi.Input[str] name: Name of the Managed Service Identity.
-        :param pulumi.Input[int] spot_percentage: TODO
         """
         pulumi.set(__self__, "fallback_to_on_demand", fallback_to_on_demand)
         pulumi.set(__self__, "network", network)
@@ -79,6 +67,8 @@ class ElastigroupAzureV3Args:
             pulumi.set(__self__, "on_demand_count", on_demand_count)
         if spot_percentage is not None:
             pulumi.set(__self__, "spot_percentage", spot_percentage)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter(name="fallbackToOnDemand")
@@ -101,9 +91,6 @@ class ElastigroupAzureV3Args:
     @property
     @pulumi.getter(name="odSizes")
     def od_sizes(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
-        """
-        Available On-Demand sizes
-        """
         return pulumi.get(self, "od_sizes")
 
     @od_sizes.setter
@@ -113,9 +100,6 @@ class ElastigroupAzureV3Args:
     @property
     @pulumi.getter
     def os(self) -> pulumi.Input[str]:
-        """
-        Type of the operating system. Valid values: `"Linux"`, `"Windows"`.
-        """
         return pulumi.get(self, "os")
 
     @os.setter
@@ -125,9 +109,6 @@ class ElastigroupAzureV3Args:
     @property
     @pulumi.getter
     def region(self) -> pulumi.Input[str]:
-        """
-        The region your Azure group will be created in.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -137,9 +118,6 @@ class ElastigroupAzureV3Args:
     @property
     @pulumi.getter(name="resourceGroupName")
     def resource_group_name(self) -> pulumi.Input[str]:
-        """
-        Name of the Azure Resource Group where the Managed Service Identity is located.
-        """
         return pulumi.get(self, "resource_group_name")
 
     @resource_group_name.setter
@@ -149,9 +127,6 @@ class ElastigroupAzureV3Args:
     @property
     @pulumi.getter(name="spotSizes")
     def spot_sizes(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
-        """
-        Available Low-Priority sizes.
-        """
         return pulumi.get(self, "spot_sizes")
 
     @spot_sizes.setter
@@ -161,9 +136,6 @@ class ElastigroupAzureV3Args:
     @property
     @pulumi.getter(name="customData")
     def custom_data(self) -> Optional[pulumi.Input[str]]:
-        """
-        Custom init script file or text in Base64 encoded format.
-        """
         return pulumi.get(self, "custom_data")
 
     @custom_data.setter
@@ -173,9 +145,6 @@ class ElastigroupAzureV3Args:
     @property
     @pulumi.getter(name="desiredCapacity")
     def desired_capacity(self) -> Optional[pulumi.Input[int]]:
-        """
-        The desired number of instances the group should have at any time.
-        """
         return pulumi.get(self, "desired_capacity")
 
     @desired_capacity.setter
@@ -185,9 +154,6 @@ class ElastigroupAzureV3Args:
     @property
     @pulumi.getter(name="drainingTimeout")
     def draining_timeout(self) -> Optional[pulumi.Input[int]]:
-        """
-        Time (seconds) to allow the instance to be drained from incoming TCP connections and detached from MLB before terminating it during a scale-down operation.
-        """
         return pulumi.get(self, "draining_timeout")
 
     @draining_timeout.setter
@@ -215,9 +181,6 @@ class ElastigroupAzureV3Args:
     @property
     @pulumi.getter(name="managedServiceIdentities")
     def managed_service_identities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ManagedServiceIdentityArgs']]]]:
-        """
-        List of Managed Service Identity objects.
-        """
         return pulumi.get(self, "managed_service_identities")
 
     @managed_service_identities.setter
@@ -227,9 +190,6 @@ class ElastigroupAzureV3Args:
     @property
     @pulumi.getter(name="maxSize")
     def max_size(self) -> Optional[pulumi.Input[int]]:
-        """
-        The maximum number of instances the group should have at any time.
-        """
         return pulumi.get(self, "max_size")
 
     @max_size.setter
@@ -239,9 +199,6 @@ class ElastigroupAzureV3Args:
     @property
     @pulumi.getter(name="minSize")
     def min_size(self) -> Optional[pulumi.Input[int]]:
-        """
-        The minimum number of instances the group should have at any time.
-        """
         return pulumi.get(self, "min_size")
 
     @min_size.setter
@@ -251,9 +208,6 @@ class ElastigroupAzureV3Args:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Name of the Managed Service Identity.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -272,14 +226,20 @@ class ElastigroupAzureV3Args:
     @property
     @pulumi.getter(name="spotPercentage")
     def spot_percentage(self) -> Optional[pulumi.Input[int]]:
-        """
-        TODO
-        """
         return pulumi.get(self, "spot_percentage")
 
     @spot_percentage.setter
     def spot_percentage(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "spot_percentage", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3TagArgs']]]]:
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3TagArgs']]]]):
+        pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
@@ -302,22 +262,10 @@ class _ElastigroupAzureV3State:
                  region: Optional[pulumi.Input[str]] = None,
                  resource_group_name: Optional[pulumi.Input[str]] = None,
                  spot_percentage: Optional[pulumi.Input[int]] = None,
-                 spot_sizes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 spot_sizes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3TagArgs']]]] = None):
         """
         Input properties used for looking up and filtering ElastigroupAzureV3 resources.
-        :param pulumi.Input[str] custom_data: Custom init script file or text in Base64 encoded format.
-        :param pulumi.Input[int] desired_capacity: The desired number of instances the group should have at any time.
-        :param pulumi.Input[int] draining_timeout: Time (seconds) to allow the instance to be drained from incoming TCP connections and detached from MLB before terminating it during a scale-down operation.
-        :param pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ManagedServiceIdentityArgs']]] managed_service_identities: List of Managed Service Identity objects.
-        :param pulumi.Input[int] max_size: The maximum number of instances the group should have at any time.
-        :param pulumi.Input[int] min_size: The minimum number of instances the group should have at any time.
-        :param pulumi.Input[str] name: Name of the Managed Service Identity.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] od_sizes: Available On-Demand sizes
-        :param pulumi.Input[str] os: Type of the operating system. Valid values: `"Linux"`, `"Windows"`.
-        :param pulumi.Input[str] region: The region your Azure group will be created in.
-        :param pulumi.Input[str] resource_group_name: Name of the Azure Resource Group where the Managed Service Identity is located.
-        :param pulumi.Input[int] spot_percentage: TODO
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] spot_sizes: Available Low-Priority sizes.
         """
         if custom_data is not None:
             pulumi.set(__self__, "custom_data", custom_data)
@@ -355,13 +303,12 @@ class _ElastigroupAzureV3State:
             pulumi.set(__self__, "spot_percentage", spot_percentage)
         if spot_sizes is not None:
             pulumi.set(__self__, "spot_sizes", spot_sizes)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter(name="customData")
     def custom_data(self) -> Optional[pulumi.Input[str]]:
-        """
-        Custom init script file or text in Base64 encoded format.
-        """
         return pulumi.get(self, "custom_data")
 
     @custom_data.setter
@@ -371,9 +318,6 @@ class _ElastigroupAzureV3State:
     @property
     @pulumi.getter(name="desiredCapacity")
     def desired_capacity(self) -> Optional[pulumi.Input[int]]:
-        """
-        The desired number of instances the group should have at any time.
-        """
         return pulumi.get(self, "desired_capacity")
 
     @desired_capacity.setter
@@ -383,9 +327,6 @@ class _ElastigroupAzureV3State:
     @property
     @pulumi.getter(name="drainingTimeout")
     def draining_timeout(self) -> Optional[pulumi.Input[int]]:
-        """
-        Time (seconds) to allow the instance to be drained from incoming TCP connections and detached from MLB before terminating it during a scale-down operation.
-        """
         return pulumi.get(self, "draining_timeout")
 
     @draining_timeout.setter
@@ -422,9 +363,6 @@ class _ElastigroupAzureV3State:
     @property
     @pulumi.getter(name="managedServiceIdentities")
     def managed_service_identities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ManagedServiceIdentityArgs']]]]:
-        """
-        List of Managed Service Identity objects.
-        """
         return pulumi.get(self, "managed_service_identities")
 
     @managed_service_identities.setter
@@ -434,9 +372,6 @@ class _ElastigroupAzureV3State:
     @property
     @pulumi.getter(name="maxSize")
     def max_size(self) -> Optional[pulumi.Input[int]]:
-        """
-        The maximum number of instances the group should have at any time.
-        """
         return pulumi.get(self, "max_size")
 
     @max_size.setter
@@ -446,9 +381,6 @@ class _ElastigroupAzureV3State:
     @property
     @pulumi.getter(name="minSize")
     def min_size(self) -> Optional[pulumi.Input[int]]:
-        """
-        The minimum number of instances the group should have at any time.
-        """
         return pulumi.get(self, "min_size")
 
     @min_size.setter
@@ -458,9 +390,6 @@ class _ElastigroupAzureV3State:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Name of the Managed Service Identity.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -479,9 +408,6 @@ class _ElastigroupAzureV3State:
     @property
     @pulumi.getter(name="odSizes")
     def od_sizes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Available On-Demand sizes
-        """
         return pulumi.get(self, "od_sizes")
 
     @od_sizes.setter
@@ -500,9 +426,6 @@ class _ElastigroupAzureV3State:
     @property
     @pulumi.getter
     def os(self) -> Optional[pulumi.Input[str]]:
-        """
-        Type of the operating system. Valid values: `"Linux"`, `"Windows"`.
-        """
         return pulumi.get(self, "os")
 
     @os.setter
@@ -512,9 +435,6 @@ class _ElastigroupAzureV3State:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
-        """
-        The region your Azure group will be created in.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -524,9 +444,6 @@ class _ElastigroupAzureV3State:
     @property
     @pulumi.getter(name="resourceGroupName")
     def resource_group_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Name of the Azure Resource Group where the Managed Service Identity is located.
-        """
         return pulumi.get(self, "resource_group_name")
 
     @resource_group_name.setter
@@ -536,9 +453,6 @@ class _ElastigroupAzureV3State:
     @property
     @pulumi.getter(name="spotPercentage")
     def spot_percentage(self) -> Optional[pulumi.Input[int]]:
-        """
-        TODO
-        """
         return pulumi.get(self, "spot_percentage")
 
     @spot_percentage.setter
@@ -548,14 +462,20 @@ class _ElastigroupAzureV3State:
     @property
     @pulumi.getter(name="spotSizes")
     def spot_sizes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Available Low-Priority sizes.
-        """
         return pulumi.get(self, "spot_sizes")
 
     @spot_sizes.setter
     def spot_sizes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "spot_sizes", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3TagArgs']]]]:
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3TagArgs']]]]):
+        pulumi.set(self, "tags", value)
 
 
 class ElastigroupAzureV3(pulumi.CustomResource):
@@ -581,25 +501,12 @@ class ElastigroupAzureV3(pulumi.CustomResource):
                  resource_group_name: Optional[pulumi.Input[str]] = None,
                  spot_percentage: Optional[pulumi.Input[int]] = None,
                  spot_sizes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupAzureV3TagArgs']]]]] = None,
                  __props__=None):
         """
-        Provides a Spotinst elastigroup Azure resource.
-
+        Create a ElastigroupAzureV3 resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] custom_data: Custom init script file or text in Base64 encoded format.
-        :param pulumi.Input[int] desired_capacity: The desired number of instances the group should have at any time.
-        :param pulumi.Input[int] draining_timeout: Time (seconds) to allow the instance to be drained from incoming TCP connections and detached from MLB before terminating it during a scale-down operation.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupAzureV3ManagedServiceIdentityArgs']]]] managed_service_identities: List of Managed Service Identity objects.
-        :param pulumi.Input[int] max_size: The maximum number of instances the group should have at any time.
-        :param pulumi.Input[int] min_size: The minimum number of instances the group should have at any time.
-        :param pulumi.Input[str] name: Name of the Managed Service Identity.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] od_sizes: Available On-Demand sizes
-        :param pulumi.Input[str] os: Type of the operating system. Valid values: `"Linux"`, `"Windows"`.
-        :param pulumi.Input[str] region: The region your Azure group will be created in.
-        :param pulumi.Input[str] resource_group_name: Name of the Azure Resource Group where the Managed Service Identity is located.
-        :param pulumi.Input[int] spot_percentage: TODO
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] spot_sizes: Available Low-Priority sizes.
         """
         ...
     @overload
@@ -608,8 +515,7 @@ class ElastigroupAzureV3(pulumi.CustomResource):
                  args: ElastigroupAzureV3Args,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Spotinst elastigroup Azure resource.
-
+        Create a ElastigroupAzureV3 resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param ElastigroupAzureV3Args args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -643,6 +549,7 @@ class ElastigroupAzureV3(pulumi.CustomResource):
                  resource_group_name: Optional[pulumi.Input[str]] = None,
                  spot_percentage: Optional[pulumi.Input[int]] = None,
                  spot_sizes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupAzureV3TagArgs']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -684,6 +591,7 @@ class ElastigroupAzureV3(pulumi.CustomResource):
             if spot_sizes is None and not opts.urn:
                 raise TypeError("Missing required property 'spot_sizes'")
             __props__.__dict__["spot_sizes"] = spot_sizes
+            __props__.__dict__["tags"] = tags
         super(ElastigroupAzureV3, __self__).__init__(
             'spotinst:index/elastigroupAzureV3:ElastigroupAzureV3',
             resource_name,
@@ -711,7 +619,8 @@ class ElastigroupAzureV3(pulumi.CustomResource):
             region: Optional[pulumi.Input[str]] = None,
             resource_group_name: Optional[pulumi.Input[str]] = None,
             spot_percentage: Optional[pulumi.Input[int]] = None,
-            spot_sizes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'ElastigroupAzureV3':
+            spot_sizes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupAzureV3TagArgs']]]]] = None) -> 'ElastigroupAzureV3':
         """
         Get an existing ElastigroupAzureV3 resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -719,19 +628,6 @@ class ElastigroupAzureV3(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] custom_data: Custom init script file or text in Base64 encoded format.
-        :param pulumi.Input[int] desired_capacity: The desired number of instances the group should have at any time.
-        :param pulumi.Input[int] draining_timeout: Time (seconds) to allow the instance to be drained from incoming TCP connections and detached from MLB before terminating it during a scale-down operation.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupAzureV3ManagedServiceIdentityArgs']]]] managed_service_identities: List of Managed Service Identity objects.
-        :param pulumi.Input[int] max_size: The maximum number of instances the group should have at any time.
-        :param pulumi.Input[int] min_size: The minimum number of instances the group should have at any time.
-        :param pulumi.Input[str] name: Name of the Managed Service Identity.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] od_sizes: Available On-Demand sizes
-        :param pulumi.Input[str] os: Type of the operating system. Valid values: `"Linux"`, `"Windows"`.
-        :param pulumi.Input[str] region: The region your Azure group will be created in.
-        :param pulumi.Input[str] resource_group_name: Name of the Azure Resource Group where the Managed Service Identity is located.
-        :param pulumi.Input[int] spot_percentage: TODO
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] spot_sizes: Available Low-Priority sizes.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -755,30 +651,22 @@ class ElastigroupAzureV3(pulumi.CustomResource):
         __props__.__dict__["resource_group_name"] = resource_group_name
         __props__.__dict__["spot_percentage"] = spot_percentage
         __props__.__dict__["spot_sizes"] = spot_sizes
+        __props__.__dict__["tags"] = tags
         return ElastigroupAzureV3(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="customData")
     def custom_data(self) -> pulumi.Output[Optional[str]]:
-        """
-        Custom init script file or text in Base64 encoded format.
-        """
         return pulumi.get(self, "custom_data")
 
     @property
     @pulumi.getter(name="desiredCapacity")
     def desired_capacity(self) -> pulumi.Output[Optional[int]]:
-        """
-        The desired number of instances the group should have at any time.
-        """
         return pulumi.get(self, "desired_capacity")
 
     @property
     @pulumi.getter(name="drainingTimeout")
     def draining_timeout(self) -> pulumi.Output[int]:
-        """
-        Time (seconds) to allow the instance to be drained from incoming TCP connections and detached from MLB before terminating it during a scale-down operation.
-        """
         return pulumi.get(self, "draining_timeout")
 
     @property
@@ -799,33 +687,21 @@ class ElastigroupAzureV3(pulumi.CustomResource):
     @property
     @pulumi.getter(name="managedServiceIdentities")
     def managed_service_identities(self) -> pulumi.Output[Optional[Sequence['outputs.ElastigroupAzureV3ManagedServiceIdentity']]]:
-        """
-        List of Managed Service Identity objects.
-        """
         return pulumi.get(self, "managed_service_identities")
 
     @property
     @pulumi.getter(name="maxSize")
     def max_size(self) -> pulumi.Output[int]:
-        """
-        The maximum number of instances the group should have at any time.
-        """
         return pulumi.get(self, "max_size")
 
     @property
     @pulumi.getter(name="minSize")
     def min_size(self) -> pulumi.Output[int]:
-        """
-        The minimum number of instances the group should have at any time.
-        """
         return pulumi.get(self, "min_size")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        Name of the Managed Service Identity.
-        """
         return pulumi.get(self, "name")
 
     @property
@@ -836,9 +712,6 @@ class ElastigroupAzureV3(pulumi.CustomResource):
     @property
     @pulumi.getter(name="odSizes")
     def od_sizes(self) -> pulumi.Output[Sequence[str]]:
-        """
-        Available On-Demand sizes
-        """
         return pulumi.get(self, "od_sizes")
 
     @property
@@ -849,40 +722,30 @@ class ElastigroupAzureV3(pulumi.CustomResource):
     @property
     @pulumi.getter
     def os(self) -> pulumi.Output[str]:
-        """
-        Type of the operating system. Valid values: `"Linux"`, `"Windows"`.
-        """
         return pulumi.get(self, "os")
 
     @property
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
-        """
-        The region your Azure group will be created in.
-        """
         return pulumi.get(self, "region")
 
     @property
     @pulumi.getter(name="resourceGroupName")
     def resource_group_name(self) -> pulumi.Output[str]:
-        """
-        Name of the Azure Resource Group where the Managed Service Identity is located.
-        """
         return pulumi.get(self, "resource_group_name")
 
     @property
     @pulumi.getter(name="spotPercentage")
     def spot_percentage(self) -> pulumi.Output[Optional[int]]:
-        """
-        TODO
-        """
         return pulumi.get(self, "spot_percentage")
 
     @property
     @pulumi.getter(name="spotSizes")
     def spot_sizes(self) -> pulumi.Output[Sequence[str]]:
-        """
-        Available Low-Priority sizes.
-        """
         return pulumi.get(self, "spot_sizes")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Sequence['outputs.ElastigroupAzureV3Tag']]]:
+        return pulumi.get(self, "tags")
 

@@ -7,6 +7,18 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * Manages a Spotinst Ocean GKE resource.
+ *
+ * ## Prerequisites
+ *
+ * Installation of the Ocean controller is required by this resource. You can accomplish this by using the spotinst/ocean-controller module as follows:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * ```
+ *
+ * > You must configure the same `clusterIdentifier` both for the Ocean controller and for the `spotinst.gke.OceanImport` resource.
+ *
  * ## Example Usage
  *
  * ```typescript

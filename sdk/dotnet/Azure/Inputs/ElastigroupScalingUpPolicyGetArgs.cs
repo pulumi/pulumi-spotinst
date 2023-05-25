@@ -12,117 +12,62 @@ namespace Pulumi.SpotInst.Azure.Inputs
 
     public sealed class ElastigroupScalingUpPolicyGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The type of action to perform for scaling. Valid values: `"adjustment"`, `"percentageAdjustment"`, `"setMaxTarget"`, `"setMinTarget"`, `"updateCapacity"`.
-        /// </summary>
         [Input("actionType")]
         public Input<string>? ActionType { get; set; }
 
-        /// <summary>
-        /// Value to which the action type will be adjusted. Required if using `numeric` or `percentage_adjustment` action types.
-        /// </summary>
         [Input("adjustment")]
         public Input<string>? Adjustment { get; set; }
 
-        /// <summary>
-        /// The amount of time, in seconds, after a scaling activity completes and before the next scaling activity can start. If this parameter is not specified, the default cooldown period for the group applies.
-        /// </summary>
         [Input("cooldown")]
         public Input<int>? Cooldown { get; set; }
 
         [Input("dimensions")]
         private InputList<Inputs.ElastigroupScalingUpPolicyDimensionGetArgs>? _dimensions;
-
-        /// <summary>
-        /// A list of dimensions describing qualities of the metric. Required when `namespace` is defined AND not `"Microsoft.Compute"`.
-        /// </summary>
         public InputList<Inputs.ElastigroupScalingUpPolicyDimensionGetArgs> Dimensions
         {
             get => _dimensions ?? (_dimensions = new InputList<Inputs.ElastigroupScalingUpPolicyDimensionGetArgs>());
             set => _dimensions = value;
         }
 
-        /// <summary>
-        /// The number of periods over which data is compared to the specified threshold.
-        /// </summary>
         [Input("evaluationPeriods")]
         public Input<int>? EvaluationPeriods { get; set; }
 
-        /// <summary>
-        /// . The number of the desired target (and maximum) capacity
-        /// </summary>
         [Input("maxTargetCapacity")]
         public Input<string>? MaxTargetCapacity { get; set; }
 
-        /// <summary>
-        /// The maximal number of instances to have in the group.
-        /// </summary>
         [Input("maximum")]
         public Input<string>? Maximum { get; set; }
 
-        /// <summary>
-        /// Metric to monitor by Azure metric display name.
-        /// </summary>
         [Input("metricName", required: true)]
         public Input<string> MetricName { get; set; } = null!;
 
-        /// <summary>
-        /// . The number of the desired target (and minimum) capacity
-        /// </summary>
         [Input("minTargetCapacity")]
         public Input<string>? MinTargetCapacity { get; set; }
 
-        /// <summary>
-        /// The minimal number of instances to have in the group.
-        /// </summary>
         [Input("minimum")]
         public Input<string>? Minimum { get; set; }
 
-        /// <summary>
-        /// The namespace for the alarm's associated metric. Valid values:
-        /// </summary>
         [Input("namespace", required: true)]
         public Input<string> Namespace { get; set; } = null!;
 
-        /// <summary>
-        /// The operator to use in order to determine if the scaling policy is applicable. Valid values: `"gt"`, `"gte"`, `"lt"`, `"lte"`.
-        /// </summary>
         [Input("operator")]
         public Input<string>? Operator { get; set; }
 
-        /// <summary>
-        /// The granularity, in seconds, of the returned datapoints. Period must be at least 60 seconds and must be a multiple of 60.
-        /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
 
-        /// <summary>
-        /// The name of the policy.
-        /// </summary>
         [Input("policyName", required: true)]
         public Input<string> PolicyName { get; set; } = null!;
 
-        /// <summary>
-        /// The metric statistics to return. Valid values: `average`.
-        /// </summary>
         [Input("statistic")]
         public Input<string>? Statistic { get; set; }
 
-        /// <summary>
-        /// The target number of instances to have in the group.
-        /// </summary>
         [Input("target")]
         public Input<string>? Target { get; set; }
 
-        /// <summary>
-        /// The value against which the specified statistic is compared.
-        /// </summary>
         [Input("threshold", required: true)]
         public Input<double> Threshold { get; set; } = null!;
 
-        /// <summary>
-        /// The unit for the alarm's associated metric. Valid values: `"percent`, `"seconds"`, `"microseconds"`, `"milliseconds"`, `"bytes"`, `"kilobytes"`, `"megabytes"`, `"gigabytes"`, `"terabytes"`, `"bits"`, `"kilobits"`, `"megabits"`, `"gigabits"`, `"terabits"`, `"count"`, `"bytes/second"`, `"kilobytes/second"`, `"megabytes/second"`, `"gigabytes/second"`, `"terabytes/second"`, `"bits/second"`, `"kilobits/second"`, `"megabits/second"`, `"gigabits/second"`, `"terabits/second"`, `"count/second"`, `"none"`.
-        /// </summary>
         [Input("unit")]
         public Input<string>? Unit { get; set; }
 

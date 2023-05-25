@@ -19,6 +19,18 @@ namespace Pulumi.SpotInst.Aws.Outputs
         public readonly string ApplicationName;
         /// <summary>
         /// The deployment group name.
+        /// 
+        /// Usage:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        /// });
+        /// ```
         /// </summary>
         public readonly string DeploymentGroupName;
 

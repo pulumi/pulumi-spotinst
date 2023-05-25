@@ -13,13 +13,7 @@ namespace Pulumi.SpotInst.Outputs
     [OutputType]
     public sealed class ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfig
     {
-        /// <summary>
-        /// Name of the Managed Service Identity.
-        /// </summary>
         public readonly string Name;
-        /// <summary>
-        /// Available from Azure Api-Version 2017-03-30 onwards, it represents whether the specific ip configuration is IPv4 or IPv6. Valid values: `IPv4`, `IPv6`.
-        /// </summary>
         public readonly string? PrivateIpVersion;
 
         [OutputConstructor]

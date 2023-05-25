@@ -9,6 +9,7 @@ import com.pulumi.spotinst.inputs.ElastigroupAzureV3ImageArgs;
 import com.pulumi.spotinst.inputs.ElastigroupAzureV3LoginArgs;
 import com.pulumi.spotinst.inputs.ElastigroupAzureV3ManagedServiceIdentityArgs;
 import com.pulumi.spotinst.inputs.ElastigroupAzureV3NetworkArgs;
+import com.pulumi.spotinst.inputs.ElastigroupAzureV3TagArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -22,47 +23,23 @@ public final class ElastigroupAzureV3State extends com.pulumi.resources.Resource
 
     public static final ElastigroupAzureV3State Empty = new ElastigroupAzureV3State();
 
-    /**
-     * Custom init script file or text in Base64 encoded format.
-     * 
-     */
     @Import(name="customData")
     private @Nullable Output<String> customData;
 
-    /**
-     * @return Custom init script file or text in Base64 encoded format.
-     * 
-     */
     public Optional<Output<String>> customData() {
         return Optional.ofNullable(this.customData);
     }
 
-    /**
-     * The desired number of instances the group should have at any time.
-     * 
-     */
     @Import(name="desiredCapacity")
     private @Nullable Output<Integer> desiredCapacity;
 
-    /**
-     * @return The desired number of instances the group should have at any time.
-     * 
-     */
     public Optional<Output<Integer>> desiredCapacity() {
         return Optional.ofNullable(this.desiredCapacity);
     }
 
-    /**
-     * Time (seconds) to allow the instance to be drained from incoming TCP connections and detached from MLB before terminating it during a scale-down operation.
-     * 
-     */
     @Import(name="drainingTimeout")
     private @Nullable Output<Integer> drainingTimeout;
 
-    /**
-     * @return Time (seconds) to allow the instance to be drained from incoming TCP connections and detached from MLB before terminating it during a scale-down operation.
-     * 
-     */
     public Optional<Output<Integer>> drainingTimeout() {
         return Optional.ofNullable(this.drainingTimeout);
     }
@@ -88,62 +65,30 @@ public final class ElastigroupAzureV3State extends com.pulumi.resources.Resource
         return Optional.ofNullable(this.login);
     }
 
-    /**
-     * List of Managed Service Identity objects.
-     * 
-     */
     @Import(name="managedServiceIdentities")
     private @Nullable Output<List<ElastigroupAzureV3ManagedServiceIdentityArgs>> managedServiceIdentities;
 
-    /**
-     * @return List of Managed Service Identity objects.
-     * 
-     */
     public Optional<Output<List<ElastigroupAzureV3ManagedServiceIdentityArgs>>> managedServiceIdentities() {
         return Optional.ofNullable(this.managedServiceIdentities);
     }
 
-    /**
-     * The maximum number of instances the group should have at any time.
-     * 
-     */
     @Import(name="maxSize")
     private @Nullable Output<Integer> maxSize;
 
-    /**
-     * @return The maximum number of instances the group should have at any time.
-     * 
-     */
     public Optional<Output<Integer>> maxSize() {
         return Optional.ofNullable(this.maxSize);
     }
 
-    /**
-     * The minimum number of instances the group should have at any time.
-     * 
-     */
     @Import(name="minSize")
     private @Nullable Output<Integer> minSize;
 
-    /**
-     * @return The minimum number of instances the group should have at any time.
-     * 
-     */
     public Optional<Output<Integer>> minSize() {
         return Optional.ofNullable(this.minSize);
     }
 
-    /**
-     * Name of the Managed Service Identity.
-     * 
-     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
-    /**
-     * @return Name of the Managed Service Identity.
-     * 
-     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
@@ -155,17 +100,9 @@ public final class ElastigroupAzureV3State extends com.pulumi.resources.Resource
         return Optional.ofNullable(this.network);
     }
 
-    /**
-     * Available On-Demand sizes
-     * 
-     */
     @Import(name="odSizes")
     private @Nullable Output<List<String>> odSizes;
 
-    /**
-     * @return Available On-Demand sizes
-     * 
-     */
     public Optional<Output<List<String>>> odSizes() {
         return Optional.ofNullable(this.odSizes);
     }
@@ -177,79 +114,46 @@ public final class ElastigroupAzureV3State extends com.pulumi.resources.Resource
         return Optional.ofNullable(this.onDemandCount);
     }
 
-    /**
-     * Type of the operating system. Valid values: `&#34;Linux&#34;`, `&#34;Windows&#34;`.
-     * 
-     */
     @Import(name="os")
     private @Nullable Output<String> os;
 
-    /**
-     * @return Type of the operating system. Valid values: `&#34;Linux&#34;`, `&#34;Windows&#34;`.
-     * 
-     */
     public Optional<Output<String>> os() {
         return Optional.ofNullable(this.os);
     }
 
-    /**
-     * The region your Azure group will be created in.
-     * 
-     */
     @Import(name="region")
     private @Nullable Output<String> region;
 
-    /**
-     * @return The region your Azure group will be created in.
-     * 
-     */
     public Optional<Output<String>> region() {
         return Optional.ofNullable(this.region);
     }
 
-    /**
-     * Name of the Azure Resource Group where the Managed Service Identity is located.
-     * 
-     */
     @Import(name="resourceGroupName")
     private @Nullable Output<String> resourceGroupName;
 
-    /**
-     * @return Name of the Azure Resource Group where the Managed Service Identity is located.
-     * 
-     */
     public Optional<Output<String>> resourceGroupName() {
         return Optional.ofNullable(this.resourceGroupName);
     }
 
-    /**
-     * TODO
-     * 
-     */
     @Import(name="spotPercentage")
     private @Nullable Output<Integer> spotPercentage;
 
-    /**
-     * @return TODO
-     * 
-     */
     public Optional<Output<Integer>> spotPercentage() {
         return Optional.ofNullable(this.spotPercentage);
     }
 
-    /**
-     * Available Low-Priority sizes.
-     * 
-     */
     @Import(name="spotSizes")
     private @Nullable Output<List<String>> spotSizes;
 
-    /**
-     * @return Available Low-Priority sizes.
-     * 
-     */
     public Optional<Output<List<String>>> spotSizes() {
         return Optional.ofNullable(this.spotSizes);
+    }
+
+    @Import(name="tags")
+    private @Nullable Output<List<ElastigroupAzureV3TagArgs>> tags;
+
+    public Optional<Output<List<ElastigroupAzureV3TagArgs>>> tags() {
+        return Optional.ofNullable(this.tags);
     }
 
     private ElastigroupAzureV3State() {}
@@ -273,6 +177,7 @@ public final class ElastigroupAzureV3State extends com.pulumi.resources.Resource
         this.resourceGroupName = $.resourceGroupName;
         this.spotPercentage = $.spotPercentage;
         this.spotSizes = $.spotSizes;
+        this.tags = $.tags;
     }
 
     public static Builder builder() {
@@ -293,65 +198,29 @@ public final class ElastigroupAzureV3State extends com.pulumi.resources.Resource
             $ = new ElastigroupAzureV3State(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param customData Custom init script file or text in Base64 encoded format.
-         * 
-         * @return builder
-         * 
-         */
         public Builder customData(@Nullable Output<String> customData) {
             $.customData = customData;
             return this;
         }
 
-        /**
-         * @param customData Custom init script file or text in Base64 encoded format.
-         * 
-         * @return builder
-         * 
-         */
         public Builder customData(String customData) {
             return customData(Output.of(customData));
         }
 
-        /**
-         * @param desiredCapacity The desired number of instances the group should have at any time.
-         * 
-         * @return builder
-         * 
-         */
         public Builder desiredCapacity(@Nullable Output<Integer> desiredCapacity) {
             $.desiredCapacity = desiredCapacity;
             return this;
         }
 
-        /**
-         * @param desiredCapacity The desired number of instances the group should have at any time.
-         * 
-         * @return builder
-         * 
-         */
         public Builder desiredCapacity(Integer desiredCapacity) {
             return desiredCapacity(Output.of(desiredCapacity));
         }
 
-        /**
-         * @param drainingTimeout Time (seconds) to allow the instance to be drained from incoming TCP connections and detached from MLB before terminating it during a scale-down operation.
-         * 
-         * @return builder
-         * 
-         */
         public Builder drainingTimeout(@Nullable Output<Integer> drainingTimeout) {
             $.drainingTimeout = drainingTimeout;
             return this;
         }
 
-        /**
-         * @param drainingTimeout Time (seconds) to allow the instance to be drained from incoming TCP connections and detached from MLB before terminating it during a scale-down operation.
-         * 
-         * @return builder
-         * 
-         */
         public Builder drainingTimeout(Integer drainingTimeout) {
             return drainingTimeout(Output.of(drainingTimeout));
         }
@@ -387,96 +256,42 @@ public final class ElastigroupAzureV3State extends com.pulumi.resources.Resource
             return login(Output.of(login));
         }
 
-        /**
-         * @param managedServiceIdentities List of Managed Service Identity objects.
-         * 
-         * @return builder
-         * 
-         */
         public Builder managedServiceIdentities(@Nullable Output<List<ElastigroupAzureV3ManagedServiceIdentityArgs>> managedServiceIdentities) {
             $.managedServiceIdentities = managedServiceIdentities;
             return this;
         }
 
-        /**
-         * @param managedServiceIdentities List of Managed Service Identity objects.
-         * 
-         * @return builder
-         * 
-         */
         public Builder managedServiceIdentities(List<ElastigroupAzureV3ManagedServiceIdentityArgs> managedServiceIdentities) {
             return managedServiceIdentities(Output.of(managedServiceIdentities));
         }
 
-        /**
-         * @param managedServiceIdentities List of Managed Service Identity objects.
-         * 
-         * @return builder
-         * 
-         */
         public Builder managedServiceIdentities(ElastigroupAzureV3ManagedServiceIdentityArgs... managedServiceIdentities) {
             return managedServiceIdentities(List.of(managedServiceIdentities));
         }
 
-        /**
-         * @param maxSize The maximum number of instances the group should have at any time.
-         * 
-         * @return builder
-         * 
-         */
         public Builder maxSize(@Nullable Output<Integer> maxSize) {
             $.maxSize = maxSize;
             return this;
         }
 
-        /**
-         * @param maxSize The maximum number of instances the group should have at any time.
-         * 
-         * @return builder
-         * 
-         */
         public Builder maxSize(Integer maxSize) {
             return maxSize(Output.of(maxSize));
         }
 
-        /**
-         * @param minSize The minimum number of instances the group should have at any time.
-         * 
-         * @return builder
-         * 
-         */
         public Builder minSize(@Nullable Output<Integer> minSize) {
             $.minSize = minSize;
             return this;
         }
 
-        /**
-         * @param minSize The minimum number of instances the group should have at any time.
-         * 
-         * @return builder
-         * 
-         */
         public Builder minSize(Integer minSize) {
             return minSize(Output.of(minSize));
         }
 
-        /**
-         * @param name Name of the Managed Service Identity.
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
-        /**
-         * @param name Name of the Managed Service Identity.
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
@@ -490,33 +305,15 @@ public final class ElastigroupAzureV3State extends com.pulumi.resources.Resource
             return network(Output.of(network));
         }
 
-        /**
-         * @param odSizes Available On-Demand sizes
-         * 
-         * @return builder
-         * 
-         */
         public Builder odSizes(@Nullable Output<List<String>> odSizes) {
             $.odSizes = odSizes;
             return this;
         }
 
-        /**
-         * @param odSizes Available On-Demand sizes
-         * 
-         * @return builder
-         * 
-         */
         public Builder odSizes(List<String> odSizes) {
             return odSizes(Output.of(odSizes));
         }
 
-        /**
-         * @param odSizes Available On-Demand sizes
-         * 
-         * @return builder
-         * 
-         */
         public Builder odSizes(String... odSizes) {
             return odSizes(List.of(odSizes));
         }
@@ -530,119 +327,66 @@ public final class ElastigroupAzureV3State extends com.pulumi.resources.Resource
             return onDemandCount(Output.of(onDemandCount));
         }
 
-        /**
-         * @param os Type of the operating system. Valid values: `&#34;Linux&#34;`, `&#34;Windows&#34;`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder os(@Nullable Output<String> os) {
             $.os = os;
             return this;
         }
 
-        /**
-         * @param os Type of the operating system. Valid values: `&#34;Linux&#34;`, `&#34;Windows&#34;`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder os(String os) {
             return os(Output.of(os));
         }
 
-        /**
-         * @param region The region your Azure group will be created in.
-         * 
-         * @return builder
-         * 
-         */
         public Builder region(@Nullable Output<String> region) {
             $.region = region;
             return this;
         }
 
-        /**
-         * @param region The region your Azure group will be created in.
-         * 
-         * @return builder
-         * 
-         */
         public Builder region(String region) {
             return region(Output.of(region));
         }
 
-        /**
-         * @param resourceGroupName Name of the Azure Resource Group where the Managed Service Identity is located.
-         * 
-         * @return builder
-         * 
-         */
         public Builder resourceGroupName(@Nullable Output<String> resourceGroupName) {
             $.resourceGroupName = resourceGroupName;
             return this;
         }
 
-        /**
-         * @param resourceGroupName Name of the Azure Resource Group where the Managed Service Identity is located.
-         * 
-         * @return builder
-         * 
-         */
         public Builder resourceGroupName(String resourceGroupName) {
             return resourceGroupName(Output.of(resourceGroupName));
         }
 
-        /**
-         * @param spotPercentage TODO
-         * 
-         * @return builder
-         * 
-         */
         public Builder spotPercentage(@Nullable Output<Integer> spotPercentage) {
             $.spotPercentage = spotPercentage;
             return this;
         }
 
-        /**
-         * @param spotPercentage TODO
-         * 
-         * @return builder
-         * 
-         */
         public Builder spotPercentage(Integer spotPercentage) {
             return spotPercentage(Output.of(spotPercentage));
         }
 
-        /**
-         * @param spotSizes Available Low-Priority sizes.
-         * 
-         * @return builder
-         * 
-         */
         public Builder spotSizes(@Nullable Output<List<String>> spotSizes) {
             $.spotSizes = spotSizes;
             return this;
         }
 
-        /**
-         * @param spotSizes Available Low-Priority sizes.
-         * 
-         * @return builder
-         * 
-         */
         public Builder spotSizes(List<String> spotSizes) {
             return spotSizes(Output.of(spotSizes));
         }
 
-        /**
-         * @param spotSizes Available Low-Priority sizes.
-         * 
-         * @return builder
-         * 
-         */
         public Builder spotSizes(String... spotSizes) {
             return spotSizes(List.of(spotSizes));
+        }
+
+        public Builder tags(@Nullable Output<List<ElastigroupAzureV3TagArgs>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        public Builder tags(List<ElastigroupAzureV3TagArgs> tags) {
+            return tags(Output.of(tags));
+        }
+
+        public Builder tags(ElastigroupAzureV3TagArgs... tags) {
+            return tags(List.of(tags));
         }
 
         public ElastigroupAzureV3State build() {

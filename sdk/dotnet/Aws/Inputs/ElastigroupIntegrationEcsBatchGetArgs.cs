@@ -17,6 +17,18 @@ namespace Pulumi.SpotInst.Aws.Inputs
 
         /// <summary>
         /// Array of strings.
+        /// 
+        /// Usage:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        /// });
+        /// ```
         /// </summary>
         public InputList<string> JobQueueNames
         {

@@ -240,6 +240,12 @@ export class Elastigroup extends pulumi.CustomResource {
     public readonly preferredAvailabilityZones!: pulumi.Output<string[] | undefined>;
     /**
      * List of Private IPs to associate to the group instances.(e.g. "172.1.1.0"). Please note: This setting will only apply if persistence.persist_private_ip is set to true.
+     *
+     * Usage:
+     *
+     * ```typescript
+     * import * as pulumi from "@pulumi/pulumi";
+     * ```
      */
     public readonly privateIps!: pulumi.Output<string[] | undefined>;
     /**
@@ -723,6 +729,12 @@ export interface ElastigroupState {
     preferredAvailabilityZones?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * List of Private IPs to associate to the group instances.(e.g. "172.1.1.0"). Please note: This setting will only apply if persistence.persist_private_ip is set to true.
+     *
+     * Usage:
+     *
+     * ```typescript
+     * import * as pulumi from "@pulumi/pulumi";
+     * ```
      */
     privateIps?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -1006,6 +1018,12 @@ export interface ElastigroupArgs {
     preferredAvailabilityZones?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * List of Private IPs to associate to the group instances.(e.g. "172.1.1.0"). Please note: This setting will only apply if persistence.persist_private_ip is set to true.
+     *
+     * Usage:
+     *
+     * ```typescript
+     * import * as pulumi from "@pulumi/pulumi";
+     * ```
      */
     privateIps?: pulumi.Input<pulumi.Input<string>[]>;
     /**

@@ -310,6 +310,8 @@ namespace Pulumi.SpotInst.Gcp
 
         /// <summary>
         /// Contains scaling policies for scaling the Elastigroup down.
+        /// 
+        /// Each `scaling_*_policy` supports the following:
         /// </summary>
         [Output("scalingDownPolicies")]
         public Output<ImmutableArray<Outputs.ElastigroupScalingDownPolicy>> ScalingDownPolicies { get; private set; } = null!;
@@ -355,6 +357,16 @@ namespace Pulumi.SpotInst.Gcp
 
         /// <summary>
         /// Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        /// });
+        /// ```
         /// </summary>
         [Output("unhealthyDuration")]
         public Output<int?> UnhealthyDuration { get; private set; } = null!;
@@ -608,6 +620,8 @@ namespace Pulumi.SpotInst.Gcp
 
         /// <summary>
         /// Contains scaling policies for scaling the Elastigroup down.
+        /// 
+        /// Each `scaling_*_policy` supports the following:
         /// </summary>
         public InputList<Inputs.ElastigroupScalingDownPolicyArgs> ScalingDownPolicies
         {
@@ -679,6 +693,16 @@ namespace Pulumi.SpotInst.Gcp
 
         /// <summary>
         /// Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        /// });
+        /// ```
         /// </summary>
         [Input("unhealthyDuration")]
         public Input<int>? UnhealthyDuration { get; set; }
@@ -894,6 +918,8 @@ namespace Pulumi.SpotInst.Gcp
 
         /// <summary>
         /// Contains scaling policies for scaling the Elastigroup down.
+        /// 
+        /// Each `scaling_*_policy` supports the following:
         /// </summary>
         public InputList<Inputs.ElastigroupScalingDownPolicyGetArgs> ScalingDownPolicies
         {
@@ -965,6 +991,16 @@ namespace Pulumi.SpotInst.Gcp
 
         /// <summary>
         /// Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        /// });
+        /// ```
         /// </summary>
         [Input("unhealthyDuration")]
         public Input<int>? UnhealthyDuration { get; set; }

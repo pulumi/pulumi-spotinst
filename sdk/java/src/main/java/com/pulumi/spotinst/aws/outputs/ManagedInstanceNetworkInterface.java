@@ -12,41 +12,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ManagedInstanceNetworkInterface {
-    /**
-     * @return Indicates whether to assign an IPv6 address. Amazon EC2 chooses the IPv6 addresses from the range of the subnet. Default: `false`
-     * 
-     */
     private @Nullable Boolean associateIpv6Address;
-    /**
-     * @return Indicates whether to assign a public IPv4 address to an instance you launch in a VPC. The public IP address can only be assigned to a network interface for eth0, and can only be assigned to a new network interface, not an existing one. You cannot specify more than one network interface in the request. If launching into a default subnet, the default value is true.
-     * 
-     */
     private @Nullable Boolean associatePublicIpAddress;
-    /**
-     * @return The position of the network interface in the attachment order. A primary network interface has a device index of 0. If you specify a network interface when launching an instance, you must specify the device index.
-     * 
-     */
     private String deviceIndex;
 
     private ManagedInstanceNetworkInterface() {}
-    /**
-     * @return Indicates whether to assign an IPv6 address. Amazon EC2 chooses the IPv6 addresses from the range of the subnet. Default: `false`
-     * 
-     */
     public Optional<Boolean> associateIpv6Address() {
         return Optional.ofNullable(this.associateIpv6Address);
     }
-    /**
-     * @return Indicates whether to assign a public IPv4 address to an instance you launch in a VPC. The public IP address can only be assigned to a network interface for eth0, and can only be assigned to a new network interface, not an existing one. You cannot specify more than one network interface in the request. If launching into a default subnet, the default value is true.
-     * 
-     */
     public Optional<Boolean> associatePublicIpAddress() {
         return Optional.ofNullable(this.associatePublicIpAddress);
     }
-    /**
-     * @return The position of the network interface in the attachment order. A primary network interface has a device index of 0. If you specify a network interface when launching an instance, you must specify the device index.
-     * 
-     */
     public String deviceIndex() {
         return this.deviceIndex;
     }

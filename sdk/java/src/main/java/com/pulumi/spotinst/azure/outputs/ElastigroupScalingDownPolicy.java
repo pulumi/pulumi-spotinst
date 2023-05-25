@@ -15,221 +15,77 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ElastigroupScalingDownPolicy {
-    /**
-     * @return The type of action to perform for scaling. Valid values: `&#34;adjustment&#34;`, `&#34;percentageAdjustment&#34;`, `&#34;setMaxTarget&#34;`, `&#34;setMinTarget&#34;`, `&#34;updateCapacity&#34;`.
-     * 
-     */
     private @Nullable String actionType;
-    /**
-     * @return Value to which the action type will be adjusted. Required if using `numeric` or `percentage_adjustment` action types.
-     * 
-     */
     private @Nullable String adjustment;
-    /**
-     * @return The amount of time, in seconds, after a scaling activity completes and before the next scaling activity can start. If this parameter is not specified, the default cooldown period for the group applies.
-     * 
-     */
     private @Nullable Integer cooldown;
-    /**
-     * @return A list of dimensions describing qualities of the metric. Required when `namespace` is defined AND not `&#34;Microsoft.Compute&#34;`.
-     * 
-     */
     private @Nullable List<ElastigroupScalingDownPolicyDimension> dimensions;
-    /**
-     * @return The number of periods over which data is compared to the specified threshold.
-     * 
-     */
     private @Nullable Integer evaluationPeriods;
-    /**
-     * @return . The number of the desired target (and maximum) capacity
-     * 
-     */
     private @Nullable String maxTargetCapacity;
-    /**
-     * @return The maximal number of instances to have in the group.
-     * 
-     */
     private @Nullable String maximum;
-    /**
-     * @return Metric to monitor by Azure metric display name.
-     * 
-     */
     private String metricName;
-    /**
-     * @return . The number of the desired target (and minimum) capacity
-     * 
-     */
     private @Nullable String minTargetCapacity;
-    /**
-     * @return The minimal number of instances to have in the group.
-     * 
-     */
     private @Nullable String minimum;
-    /**
-     * @return The namespace for the alarm&#39;s associated metric. Valid values:
-     * 
-     */
     private String namespace;
-    /**
-     * @return The operator to use in order to determine if the scaling policy is applicable. Valid values: `&#34;gt&#34;`, `&#34;gte&#34;`, `&#34;lt&#34;`, `&#34;lte&#34;`.
-     * 
-     */
     private @Nullable String operator;
-    /**
-     * @return The granularity, in seconds, of the returned datapoints. Period must be at least 60 seconds and must be a multiple of 60.
-     * 
-     */
     private @Nullable Integer period;
-    /**
-     * @return The name of the policy.
-     * 
-     */
     private String policyName;
-    /**
-     * @return The metric statistics to return. Valid values: `average`.
-     * 
-     */
     private @Nullable String statistic;
-    /**
-     * @return The target number of instances to have in the group.
-     * 
-     */
     private @Nullable String target;
-    /**
-     * @return The value against which the specified statistic is compared.
-     * 
-     */
     private Double threshold;
-    /**
-     * @return The unit for the alarm&#39;s associated metric. Valid values: `&#34;percent`, `&#34;seconds&#34;`, `&#34;microseconds&#34;`, `&#34;milliseconds&#34;`, `&#34;bytes&#34;`, `&#34;kilobytes&#34;`, `&#34;megabytes&#34;`, `&#34;gigabytes&#34;`, `&#34;terabytes&#34;`, `&#34;bits&#34;`, `&#34;kilobits&#34;`, `&#34;megabits&#34;`, `&#34;gigabits&#34;`, `&#34;terabits&#34;`, `&#34;count&#34;`, `&#34;bytes/second&#34;`, `&#34;kilobytes/second&#34;`, `&#34;megabytes/second&#34;`, `&#34;gigabytes/second&#34;`, `&#34;terabytes/second&#34;`, `&#34;bits/second&#34;`, `&#34;kilobits/second&#34;`, `&#34;megabits/second&#34;`, `&#34;gigabits/second&#34;`, `&#34;terabits/second&#34;`, `&#34;count/second&#34;`, `&#34;none&#34;`.
-     * 
-     */
     private @Nullable String unit;
 
     private ElastigroupScalingDownPolicy() {}
-    /**
-     * @return The type of action to perform for scaling. Valid values: `&#34;adjustment&#34;`, `&#34;percentageAdjustment&#34;`, `&#34;setMaxTarget&#34;`, `&#34;setMinTarget&#34;`, `&#34;updateCapacity&#34;`.
-     * 
-     */
     public Optional<String> actionType() {
         return Optional.ofNullable(this.actionType);
     }
-    /**
-     * @return Value to which the action type will be adjusted. Required if using `numeric` or `percentage_adjustment` action types.
-     * 
-     */
     public Optional<String> adjustment() {
         return Optional.ofNullable(this.adjustment);
     }
-    /**
-     * @return The amount of time, in seconds, after a scaling activity completes and before the next scaling activity can start. If this parameter is not specified, the default cooldown period for the group applies.
-     * 
-     */
     public Optional<Integer> cooldown() {
         return Optional.ofNullable(this.cooldown);
     }
-    /**
-     * @return A list of dimensions describing qualities of the metric. Required when `namespace` is defined AND not `&#34;Microsoft.Compute&#34;`.
-     * 
-     */
     public List<ElastigroupScalingDownPolicyDimension> dimensions() {
         return this.dimensions == null ? List.of() : this.dimensions;
     }
-    /**
-     * @return The number of periods over which data is compared to the specified threshold.
-     * 
-     */
     public Optional<Integer> evaluationPeriods() {
         return Optional.ofNullable(this.evaluationPeriods);
     }
-    /**
-     * @return . The number of the desired target (and maximum) capacity
-     * 
-     */
     public Optional<String> maxTargetCapacity() {
         return Optional.ofNullable(this.maxTargetCapacity);
     }
-    /**
-     * @return The maximal number of instances to have in the group.
-     * 
-     */
     public Optional<String> maximum() {
         return Optional.ofNullable(this.maximum);
     }
-    /**
-     * @return Metric to monitor by Azure metric display name.
-     * 
-     */
     public String metricName() {
         return this.metricName;
     }
-    /**
-     * @return . The number of the desired target (and minimum) capacity
-     * 
-     */
     public Optional<String> minTargetCapacity() {
         return Optional.ofNullable(this.minTargetCapacity);
     }
-    /**
-     * @return The minimal number of instances to have in the group.
-     * 
-     */
     public Optional<String> minimum() {
         return Optional.ofNullable(this.minimum);
     }
-    /**
-     * @return The namespace for the alarm&#39;s associated metric. Valid values:
-     * 
-     */
     public String namespace() {
         return this.namespace;
     }
-    /**
-     * @return The operator to use in order to determine if the scaling policy is applicable. Valid values: `&#34;gt&#34;`, `&#34;gte&#34;`, `&#34;lt&#34;`, `&#34;lte&#34;`.
-     * 
-     */
     public Optional<String> operator() {
         return Optional.ofNullable(this.operator);
     }
-    /**
-     * @return The granularity, in seconds, of the returned datapoints. Period must be at least 60 seconds and must be a multiple of 60.
-     * 
-     */
     public Optional<Integer> period() {
         return Optional.ofNullable(this.period);
     }
-    /**
-     * @return The name of the policy.
-     * 
-     */
     public String policyName() {
         return this.policyName;
     }
-    /**
-     * @return The metric statistics to return. Valid values: `average`.
-     * 
-     */
     public Optional<String> statistic() {
         return Optional.ofNullable(this.statistic);
     }
-    /**
-     * @return The target number of instances to have in the group.
-     * 
-     */
     public Optional<String> target() {
         return Optional.ofNullable(this.target);
     }
-    /**
-     * @return The value against which the specified statistic is compared.
-     * 
-     */
     public Double threshold() {
         return this.threshold;
     }
-    /**
-     * @return The unit for the alarm&#39;s associated metric. Valid values: `&#34;percent`, `&#34;seconds&#34;`, `&#34;microseconds&#34;`, `&#34;milliseconds&#34;`, `&#34;bytes&#34;`, `&#34;kilobytes&#34;`, `&#34;megabytes&#34;`, `&#34;gigabytes&#34;`, `&#34;terabytes&#34;`, `&#34;bits&#34;`, `&#34;kilobits&#34;`, `&#34;megabits&#34;`, `&#34;gigabits&#34;`, `&#34;terabits&#34;`, `&#34;count&#34;`, `&#34;bytes/second&#34;`, `&#34;kilobytes/second&#34;`, `&#34;megabytes/second&#34;`, `&#34;gigabytes/second&#34;`, `&#34;terabytes/second&#34;`, `&#34;bits/second&#34;`, `&#34;kilobits/second&#34;`, `&#34;megabits/second&#34;`, `&#34;gigabits/second&#34;`, `&#34;terabits/second&#34;`, `&#34;count/second&#34;`, `&#34;none&#34;`.
-     * 
-     */
     public Optional<String> unit() {
         return Optional.ofNullable(this.unit);
     }

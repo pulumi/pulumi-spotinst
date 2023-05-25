@@ -13,13 +13,7 @@ namespace Pulumi.SpotInst.Aws.Outputs
     [OutputType]
     public sealed class ManagedInstanceTag
     {
-        /// <summary>
-        /// Tag's key.
-        /// </summary>
         public readonly string? Key;
-        /// <summary>
-        /// Tag's name.
-        /// </summary>
         public readonly string? Value;
 
         [OutputConstructor]

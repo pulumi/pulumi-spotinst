@@ -16,32 +16,16 @@ public final class ElastigroupUpdatePolicyArgs extends com.pulumi.resources.Reso
 
     public static final ElastigroupUpdatePolicyArgs Empty = new ElastigroupUpdatePolicyArgs();
 
-    /**
-     * While used, you can control whether the group should perform a deployment after an update to the configuration.
-     * 
-     */
     @Import(name="rollConfig")
     private @Nullable Output<ElastigroupUpdatePolicyRollConfigArgs> rollConfig;
 
-    /**
-     * @return While used, you can control whether the group should perform a deployment after an update to the configuration.
-     * 
-     */
     public Optional<Output<ElastigroupUpdatePolicyRollConfigArgs>> rollConfig() {
         return Optional.ofNullable(this.rollConfig);
     }
 
-    /**
-     * Sets the enablement of the roll option.
-     * 
-     */
     @Import(name="shouldRoll", required=true)
     private Output<Boolean> shouldRoll;
 
-    /**
-     * @return Sets the enablement of the roll option.
-     * 
-     */
     public Output<Boolean> shouldRoll() {
         return this.shouldRoll;
     }
@@ -71,44 +55,20 @@ public final class ElastigroupUpdatePolicyArgs extends com.pulumi.resources.Reso
             $ = new ElastigroupUpdatePolicyArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param rollConfig While used, you can control whether the group should perform a deployment after an update to the configuration.
-         * 
-         * @return builder
-         * 
-         */
         public Builder rollConfig(@Nullable Output<ElastigroupUpdatePolicyRollConfigArgs> rollConfig) {
             $.rollConfig = rollConfig;
             return this;
         }
 
-        /**
-         * @param rollConfig While used, you can control whether the group should perform a deployment after an update to the configuration.
-         * 
-         * @return builder
-         * 
-         */
         public Builder rollConfig(ElastigroupUpdatePolicyRollConfigArgs rollConfig) {
             return rollConfig(Output.of(rollConfig));
         }
 
-        /**
-         * @param shouldRoll Sets the enablement of the roll option.
-         * 
-         * @return builder
-         * 
-         */
         public Builder shouldRoll(Output<Boolean> shouldRoll) {
             $.shouldRoll = shouldRoll;
             return this;
         }
 
-        /**
-         * @param shouldRoll Sets the enablement of the roll option.
-         * 
-         * @return builder
-         * 
-         */
         public Builder shouldRoll(Boolean shouldRoll) {
             return shouldRoll(Output.of(shouldRoll));
         }

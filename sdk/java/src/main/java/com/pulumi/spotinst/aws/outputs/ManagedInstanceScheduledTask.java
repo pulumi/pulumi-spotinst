@@ -12,69 +12,25 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ManagedInstanceScheduledTask {
-    /**
-     * @return A valid cron expression. The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of ‘frequency’ or ‘cronExpression’ should be used at a time.
-     * Example: `&#34;0 1 * * *&#34;`.
-     * 
-     */
     private @Nullable String cronExpression;
-    /**
-     * @return Set frequency for the task. Valid values: &#34;hourly&#34;, &#34;daily&#34;, &#34;weekly&#34;, &#34;continuous&#34;.
-     * 
-     */
     private @Nullable String frequency;
-    /**
-     * @return Describes whether the task is enabled. When true the task should run when false it should not run.
-     * 
-     */
     private @Nullable Boolean isEnabled;
-    /**
-     * @return DATETIME in ISO-8601 format. Sets a start time for scheduled actions. If &#34;frequency&#34; or &#34;cronExpression&#34; are not used - the task will run only once at the start time and will then be deleted from the instance configuration.
-     * Example: `&#34;2019-05-23T10:55:09Z&#34;`
-     * 
-     */
     private @Nullable String startTime;
-    /**
-     * @return The task type to run. Valid values: `&#34;pause&#34;`, `&#34;resume&#34;`, `&#34;recycle&#34;`.
-     * 
-     */
     private String taskType;
 
     private ManagedInstanceScheduledTask() {}
-    /**
-     * @return A valid cron expression. The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of ‘frequency’ or ‘cronExpression’ should be used at a time.
-     * Example: `&#34;0 1 * * *&#34;`.
-     * 
-     */
     public Optional<String> cronExpression() {
         return Optional.ofNullable(this.cronExpression);
     }
-    /**
-     * @return Set frequency for the task. Valid values: &#34;hourly&#34;, &#34;daily&#34;, &#34;weekly&#34;, &#34;continuous&#34;.
-     * 
-     */
     public Optional<String> frequency() {
         return Optional.ofNullable(this.frequency);
     }
-    /**
-     * @return Describes whether the task is enabled. When true the task should run when false it should not run.
-     * 
-     */
     public Optional<Boolean> isEnabled() {
         return Optional.ofNullable(this.isEnabled);
     }
-    /**
-     * @return DATETIME in ISO-8601 format. Sets a start time for scheduled actions. If &#34;frequency&#34; or &#34;cronExpression&#34; are not used - the task will run only once at the start time and will then be deleted from the instance configuration.
-     * Example: `&#34;2019-05-23T10:55:09Z&#34;`
-     * 
-     */
     public Optional<String> startTime() {
         return Optional.ofNullable(this.startTime);
     }
-    /**
-     * @return The task type to run. Valid values: `&#34;pause&#34;`, `&#34;resume&#34;`, `&#34;recycle&#34;`.
-     * 
-     */
     public String taskType() {
         return this.taskType;
     }

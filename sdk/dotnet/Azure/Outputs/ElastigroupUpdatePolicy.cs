@@ -13,13 +13,7 @@ namespace Pulumi.SpotInst.Azure.Outputs
     [OutputType]
     public sealed class ElastigroupUpdatePolicy
     {
-        /// <summary>
-        /// While used, you can control whether the group should perform a deployment after an update to the configuration.
-        /// </summary>
         public readonly Outputs.ElastigroupUpdatePolicyRollConfig? RollConfig;
-        /// <summary>
-        /// Sets the enablement of the roll option.
-        /// </summary>
         public readonly bool ShouldRoll;
 
         [OutputConstructor]

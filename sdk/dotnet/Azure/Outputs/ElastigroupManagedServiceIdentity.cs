@@ -14,11 +14,11 @@ namespace Pulumi.SpotInst.Azure.Outputs
     public sealed class ElastigroupManagedServiceIdentity
     {
         /// <summary>
-        /// The name of the managed identity.
+        /// Name of the Managed Service Identity.
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// The Resource Group that the user-assigned managed identity resides in.
+        /// Name of the Azure Resource Group where the Managed Service Identity is located.
         /// </summary>
         public readonly string ResourceGroupName;
 

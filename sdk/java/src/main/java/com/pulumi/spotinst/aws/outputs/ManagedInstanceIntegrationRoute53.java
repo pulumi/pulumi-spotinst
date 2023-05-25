@@ -10,17 +10,9 @@ import java.util.Objects;
 
 @CustomType
 public final class ManagedInstanceIntegrationRoute53 {
-    /**
-     * @return Route 53 Domain configurations.
-     * 
-     */
     private List<ManagedInstanceIntegrationRoute53Domain> domains;
 
     private ManagedInstanceIntegrationRoute53() {}
-    /**
-     * @return Route 53 Domain configurations.
-     * 
-     */
     public List<ManagedInstanceIntegrationRoute53Domain> domains() {
         return this.domains;
     }

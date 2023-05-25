@@ -17,47 +17,23 @@ public final class ElastigroupHealthCheckArgs extends com.pulumi.resources.Resou
 
     public static final ElastigroupHealthCheckArgs Empty = new ElastigroupHealthCheckArgs();
 
-    /**
-     * Enable auto-healing of unhealthy VMs.
-     * 
-     */
     @Import(name="autoHealing")
     private @Nullable Output<Boolean> autoHealing;
 
-    /**
-     * @return Enable auto-healing of unhealthy VMs.
-     * 
-     */
     public Optional<Output<Boolean>> autoHealing() {
         return Optional.ofNullable(this.autoHealing);
     }
 
-    /**
-     * Period of time (seconds) to wait for VM to reach healthiness before monitoring for unhealthiness.
-     * 
-     */
     @Import(name="gracePeriod")
     private @Nullable Output<Integer> gracePeriod;
 
-    /**
-     * @return Period of time (seconds) to wait for VM to reach healthiness before monitoring for unhealthiness.
-     * 
-     */
     public Optional<Output<Integer>> gracePeriod() {
         return Optional.ofNullable(this.gracePeriod);
     }
 
-    /**
-     * Health check used to validate VM health. Valid values: “INSTANCE_STATE”.
-     * 
-     */
     @Import(name="healthCheckType", required=true)
     private Output<String> healthCheckType;
 
-    /**
-     * @return Health check used to validate VM health. Valid values: “INSTANCE_STATE”.
-     * 
-     */
     public Output<String> healthCheckType() {
         return this.healthCheckType;
     }
@@ -88,65 +64,29 @@ public final class ElastigroupHealthCheckArgs extends com.pulumi.resources.Resou
             $ = new ElastigroupHealthCheckArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param autoHealing Enable auto-healing of unhealthy VMs.
-         * 
-         * @return builder
-         * 
-         */
         public Builder autoHealing(@Nullable Output<Boolean> autoHealing) {
             $.autoHealing = autoHealing;
             return this;
         }
 
-        /**
-         * @param autoHealing Enable auto-healing of unhealthy VMs.
-         * 
-         * @return builder
-         * 
-         */
         public Builder autoHealing(Boolean autoHealing) {
             return autoHealing(Output.of(autoHealing));
         }
 
-        /**
-         * @param gracePeriod Period of time (seconds) to wait for VM to reach healthiness before monitoring for unhealthiness.
-         * 
-         * @return builder
-         * 
-         */
         public Builder gracePeriod(@Nullable Output<Integer> gracePeriod) {
             $.gracePeriod = gracePeriod;
             return this;
         }
 
-        /**
-         * @param gracePeriod Period of time (seconds) to wait for VM to reach healthiness before monitoring for unhealthiness.
-         * 
-         * @return builder
-         * 
-         */
         public Builder gracePeriod(Integer gracePeriod) {
             return gracePeriod(Output.of(gracePeriod));
         }
 
-        /**
-         * @param healthCheckType Health check used to validate VM health. Valid values: “INSTANCE_STATE”.
-         * 
-         * @return builder
-         * 
-         */
         public Builder healthCheckType(Output<String> healthCheckType) {
             $.healthCheckType = healthCheckType;
             return this;
         }
 
-        /**
-         * @param healthCheckType Health check used to validate VM health. Valid values: “INSTANCE_STATE”.
-         * 
-         * @return builder
-         * 
-         */
         public Builder healthCheckType(String healthCheckType) {
             return healthCheckType(Output.of(healthCheckType));
         }

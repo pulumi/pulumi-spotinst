@@ -20,6 +20,8 @@ namespace Pulumi.SpotInst.Gke.Inputs
 
         /// <summary>
         /// specify the IP address range for the subnet secondary IP range.
+        /// 
+        /// &lt;a id="update-policy"&gt;&lt;/a&gt;
         /// </summary>
         [Input("subnetworkRangeName", required: true)]
         public Input<string> SubnetworkRangeName { get; set; } = null!;

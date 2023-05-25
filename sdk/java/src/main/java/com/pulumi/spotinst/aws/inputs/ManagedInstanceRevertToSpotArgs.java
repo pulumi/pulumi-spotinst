@@ -13,17 +13,9 @@ public final class ManagedInstanceRevertToSpotArgs extends com.pulumi.resources.
 
     public static final ManagedInstanceRevertToSpotArgs Empty = new ManagedInstanceRevertToSpotArgs();
 
-    /**
-     * Valid values: `&#34;always&#34;`, `&#34;never&#34;`, `&#34;timeWindow&#34;`. Default `&#34;never&#34;`.
-     * 
-     */
     @Import(name="performAt", required=true)
     private Output<String> performAt;
 
-    /**
-     * @return Valid values: `&#34;always&#34;`, `&#34;never&#34;`, `&#34;timeWindow&#34;`. Default `&#34;never&#34;`.
-     * 
-     */
     public Output<String> performAt() {
         return this.performAt;
     }
@@ -52,23 +44,11 @@ public final class ManagedInstanceRevertToSpotArgs extends com.pulumi.resources.
             $ = new ManagedInstanceRevertToSpotArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param performAt Valid values: `&#34;always&#34;`, `&#34;never&#34;`, `&#34;timeWindow&#34;`. Default `&#34;never&#34;`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder performAt(Output<String> performAt) {
             $.performAt = performAt;
             return this;
         }
 
-        /**
-         * @param performAt Valid values: `&#34;always&#34;`, `&#34;never&#34;`, `&#34;timeWindow&#34;`. Default `&#34;never&#34;`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder performAt(String performAt) {
             return performAt(Output.of(performAt));
         }

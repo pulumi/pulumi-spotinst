@@ -1411,6 +1411,22 @@ type ElastigroupIntegrationGkeAutoscaleLabel struct {
 	// The label name.
 	Key string `pulumi:"key"`
 	// The label value.
+	//
+	// Usage:
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	Value string `pulumi:"value"`
 }
 
@@ -1429,6 +1445,22 @@ type ElastigroupIntegrationGkeAutoscaleLabelArgs struct {
 	// The label name.
 	Key pulumi.StringInput `pulumi:"key"`
 	// The label value.
+	//
+	// Usage:
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -1489,6 +1521,25 @@ func (o ElastigroupIntegrationGkeAutoscaleLabelOutput) Key() pulumi.StringOutput
 }
 
 // The label value.
+//
+// Usage:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
+// ```
 func (o ElastigroupIntegrationGkeAutoscaleLabelOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v ElastigroupIntegrationGkeAutoscaleLabel) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -1517,6 +1568,22 @@ type ElastigroupLabel struct {
 	// The label name.
 	Key string `pulumi:"key"`
 	// The label value.
+	//
+	// Usage:
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	Value string `pulumi:"value"`
 }
 
@@ -1535,6 +1602,22 @@ type ElastigroupLabelArgs struct {
 	// The label name.
 	Key pulumi.StringInput `pulumi:"key"`
 	// The label value.
+	//
+	// Usage:
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -1595,6 +1678,25 @@ func (o ElastigroupLabelOutput) Key() pulumi.StringOutput {
 }
 
 // The label value.
+//
+// Usage:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
+// ```
 func (o ElastigroupLabelOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v ElastigroupLabel) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -1623,6 +1725,22 @@ type ElastigroupMetadata struct {
 	// The label name.
 	Key string `pulumi:"key"`
 	// The label value.
+	//
+	// Usage:
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	Value string `pulumi:"value"`
 }
 
@@ -1641,6 +1759,22 @@ type ElastigroupMetadataArgs struct {
 	// The label name.
 	Key pulumi.StringInput `pulumi:"key"`
 	// The label value.
+	//
+	// Usage:
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -1701,6 +1835,25 @@ func (o ElastigroupMetadataOutput) Key() pulumi.StringOutput {
 }
 
 // The label value.
+//
+// Usage:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
+// ```
 func (o ElastigroupMetadataOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v ElastigroupMetadata) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -2209,6 +2362,22 @@ func (o ElastigroupScalingDownPolicyArrayOutput) Index(i pulumi.IntInput) Elasti
 type ElastigroupScalingDownPolicyDimension struct {
 	Name string `pulumi:"name"`
 	// The label value.
+	//
+	// Usage:
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	Value *string `pulumi:"value"`
 }
 
@@ -2226,6 +2395,22 @@ type ElastigroupScalingDownPolicyDimensionInput interface {
 type ElastigroupScalingDownPolicyDimensionArgs struct {
 	Name pulumi.StringInput `pulumi:"name"`
 	// The label value.
+	//
+	// Usage:
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -2285,6 +2470,25 @@ func (o ElastigroupScalingDownPolicyDimensionOutput) Name() pulumi.StringOutput 
 }
 
 // The label value.
+//
+// Usage:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
+// ```
 func (o ElastigroupScalingDownPolicyDimensionOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElastigroupScalingDownPolicyDimension) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -2487,6 +2691,22 @@ func (o ElastigroupScalingUpPolicyArrayOutput) Index(i pulumi.IntInput) Elastigr
 type ElastigroupScalingUpPolicyDimension struct {
 	Name string `pulumi:"name"`
 	// The label value.
+	//
+	// Usage:
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	Value *string `pulumi:"value"`
 }
 
@@ -2504,6 +2724,22 @@ type ElastigroupScalingUpPolicyDimensionInput interface {
 type ElastigroupScalingUpPolicyDimensionArgs struct {
 	Name pulumi.StringInput `pulumi:"name"`
 	// The label value.
+	//
+	// Usage:
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -2563,6 +2799,25 @@ func (o ElastigroupScalingUpPolicyDimensionOutput) Name() pulumi.StringOutput {
 }
 
 // The label value.
+//
+// Usage:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
+// ```
 func (o ElastigroupScalingUpPolicyDimensionOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElastigroupScalingUpPolicyDimension) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -3209,6 +3464,22 @@ func (o OceanImportAutoscalerHeadroomPtrOutput) NumOfUnits() pulumi.IntPtrOutput
 
 type OceanImportAutoscalerResourceLimits struct {
 	// The maximum memory in GiB units that can be allocated to the cluster.
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
+	// }
+	// ```
+	//
+	// <a id="strategy"></a>
 	MaxMemoryGib *int `pulumi:"maxMemoryGib"`
 	// The maximum cpu in vCpu units that can be allocated to the cluster.
 	MaxVcpu *int `pulumi:"maxVcpu"`
@@ -3227,6 +3498,22 @@ type OceanImportAutoscalerResourceLimitsInput interface {
 
 type OceanImportAutoscalerResourceLimitsArgs struct {
 	// The maximum memory in GiB units that can be allocated to the cluster.
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
+	// }
+	// ```
+	//
+	// <a id="strategy"></a>
 	MaxMemoryGib pulumi.IntPtrInput `pulumi:"maxMemoryGib"`
 	// The maximum cpu in vCpu units that can be allocated to the cluster.
 	MaxVcpu pulumi.IntPtrInput `pulumi:"maxVcpu"`
@@ -3310,6 +3597,25 @@ func (o OceanImportAutoscalerResourceLimitsOutput) ToOceanImportAutoscalerResour
 }
 
 // The maximum memory in GiB units that can be allocated to the cluster.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// <a id="strategy"></a>
 func (o OceanImportAutoscalerResourceLimitsOutput) MaxMemoryGib() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanImportAutoscalerResourceLimits) *int { return v.MaxMemoryGib }).(pulumi.IntPtrOutput)
 }
@@ -3344,6 +3650,25 @@ func (o OceanImportAutoscalerResourceLimitsPtrOutput) Elem() OceanImportAutoscal
 }
 
 // The maximum memory in GiB units that can be allocated to the cluster.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// <a id="strategy"></a>
 func (o OceanImportAutoscalerResourceLimitsPtrOutput) MaxMemoryGib() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanImportAutoscalerResourceLimits) *int {
 		if v == nil {
@@ -4125,6 +4450,20 @@ type OceanImportScheduledTaskTaskTaskParametersClusterRoll struct {
 	BatchMinHealthyPercentage *int `pulumi:"batchMinHealthyPercentage"`
 	// Value in % to set size of batch in roll. Valid values are 0-100
 	// Example: 20.
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	BatchSizePercentage *int    `pulumi:"batchSizePercentage"`
 	Comment             *string `pulumi:"comment"`
 	RespectPdb          *bool   `pulumi:"respectPdb"`
@@ -4145,6 +4484,20 @@ type OceanImportScheduledTaskTaskTaskParametersClusterRollArgs struct {
 	BatchMinHealthyPercentage pulumi.IntPtrInput `pulumi:"batchMinHealthyPercentage"`
 	// Value in % to set size of batch in roll. Valid values are 0-100
 	// Example: 20.
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	BatchSizePercentage pulumi.IntPtrInput    `pulumi:"batchSizePercentage"`
 	Comment             pulumi.StringPtrInput `pulumi:"comment"`
 	RespectPdb          pulumi.BoolPtrInput   `pulumi:"respectPdb"`
@@ -4233,6 +4586,23 @@ func (o OceanImportScheduledTaskTaskTaskParametersClusterRollOutput) BatchMinHea
 
 // Value in % to set size of batch in roll. Valid values are 0-100
 // Example: 20.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
+// ```
 func (o OceanImportScheduledTaskTaskTaskParametersClusterRollOutput) BatchSizePercentage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanImportScheduledTaskTaskTaskParametersClusterRoll) *int { return v.BatchSizePercentage }).(pulumi.IntPtrOutput)
 }
@@ -4280,6 +4650,23 @@ func (o OceanImportScheduledTaskTaskTaskParametersClusterRollPtrOutput) BatchMin
 
 // Value in % to set size of batch in roll. Valid values are 0-100
 // Example: 20.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
+// ```
 func (o OceanImportScheduledTaskTaskTaskParametersClusterRollPtrOutput) BatchSizePercentage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanImportScheduledTaskTaskTaskParametersClusterRoll) *int {
 		if v == nil {
@@ -4739,6 +5126,20 @@ type OceanImportUpdatePolicyRollConfig struct {
 	BatchMinHealthyPercentage *int `pulumi:"batchMinHealthyPercentage"`
 	// Value in % to set size of batch in roll. Valid values are 0-100
 	// Example: 20.
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	BatchSizePercentage int      `pulumi:"batchSizePercentage"`
 	LaunchSpecIds       []string `pulumi:"launchSpecIds"`
 	RespectPdb          *bool    `pulumi:"respectPdb"`
@@ -4759,6 +5160,20 @@ type OceanImportUpdatePolicyRollConfigArgs struct {
 	BatchMinHealthyPercentage pulumi.IntPtrInput `pulumi:"batchMinHealthyPercentage"`
 	// Value in % to set size of batch in roll. Valid values are 0-100
 	// Example: 20.
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	BatchSizePercentage pulumi.IntInput         `pulumi:"batchSizePercentage"`
 	LaunchSpecIds       pulumi.StringArrayInput `pulumi:"launchSpecIds"`
 	RespectPdb          pulumi.BoolPtrInput     `pulumi:"respectPdb"`
@@ -4847,6 +5262,23 @@ func (o OceanImportUpdatePolicyRollConfigOutput) BatchMinHealthyPercentage() pul
 
 // Value in % to set size of batch in roll. Valid values are 0-100
 // Example: 20.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
+// ```
 func (o OceanImportUpdatePolicyRollConfigOutput) BatchSizePercentage() pulumi.IntOutput {
 	return o.ApplyT(func(v OceanImportUpdatePolicyRollConfig) int { return v.BatchSizePercentage }).(pulumi.IntOutput)
 }
@@ -4894,6 +5326,23 @@ func (o OceanImportUpdatePolicyRollConfigPtrOutput) BatchMinHealthyPercentage() 
 
 // Value in % to set size of batch in roll. Valid values are 0-100
 // Example: 20.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
+// ```
 func (o OceanImportUpdatePolicyRollConfigPtrOutput) BatchSizePercentage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanImportUpdatePolicyRollConfig) *int {
 		if v == nil {
@@ -5592,6 +6041,8 @@ type OceanLaunchSpecNetworkInterfaceAliasIpRange struct {
 	// specify the IP address range in CIDR notation that can be used for the alias IP addresses associated with the imported node pool.
 	IpCidrRange string `pulumi:"ipCidrRange"`
 	// specify the IP address range for the subnet secondary IP range.
+	//
+	// <a id="update-policy"></a>
 	SubnetworkRangeName string `pulumi:"subnetworkRangeName"`
 }
 
@@ -5610,6 +6061,8 @@ type OceanLaunchSpecNetworkInterfaceAliasIpRangeArgs struct {
 	// specify the IP address range in CIDR notation that can be used for the alias IP addresses associated with the imported node pool.
 	IpCidrRange pulumi.StringInput `pulumi:"ipCidrRange"`
 	// specify the IP address range for the subnet secondary IP range.
+	//
+	// <a id="update-policy"></a>
 	SubnetworkRangeName pulumi.StringInput `pulumi:"subnetworkRangeName"`
 }
 
@@ -5670,6 +6123,8 @@ func (o OceanLaunchSpecNetworkInterfaceAliasIpRangeOutput) IpCidrRange() pulumi.
 }
 
 // specify the IP address range for the subnet secondary IP range.
+//
+// <a id="update-policy"></a>
 func (o OceanLaunchSpecNetworkInterfaceAliasIpRangeOutput) SubnetworkRangeName() pulumi.StringOutput {
 	return o.ApplyT(func(v OceanLaunchSpecNetworkInterfaceAliasIpRange) string { return v.SubnetworkRangeName }).(pulumi.StringOutput)
 }

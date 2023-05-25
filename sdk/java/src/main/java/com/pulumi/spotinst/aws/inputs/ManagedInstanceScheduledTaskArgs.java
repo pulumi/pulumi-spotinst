@@ -16,81 +16,37 @@ public final class ManagedInstanceScheduledTaskArgs extends com.pulumi.resources
 
     public static final ManagedInstanceScheduledTaskArgs Empty = new ManagedInstanceScheduledTaskArgs();
 
-    /**
-     * A valid cron expression. The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of ‘frequency’ or ‘cronExpression’ should be used at a time.
-     * Example: `&#34;0 1 * * *&#34;`.
-     * 
-     */
     @Import(name="cronExpression")
     private @Nullable Output<String> cronExpression;
 
-    /**
-     * @return A valid cron expression. The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of ‘frequency’ or ‘cronExpression’ should be used at a time.
-     * Example: `&#34;0 1 * * *&#34;`.
-     * 
-     */
     public Optional<Output<String>> cronExpression() {
         return Optional.ofNullable(this.cronExpression);
     }
 
-    /**
-     * Set frequency for the task. Valid values: &#34;hourly&#34;, &#34;daily&#34;, &#34;weekly&#34;, &#34;continuous&#34;.
-     * 
-     */
     @Import(name="frequency")
     private @Nullable Output<String> frequency;
 
-    /**
-     * @return Set frequency for the task. Valid values: &#34;hourly&#34;, &#34;daily&#34;, &#34;weekly&#34;, &#34;continuous&#34;.
-     * 
-     */
     public Optional<Output<String>> frequency() {
         return Optional.ofNullable(this.frequency);
     }
 
-    /**
-     * Describes whether the task is enabled. When true the task should run when false it should not run.
-     * 
-     */
     @Import(name="isEnabled")
     private @Nullable Output<Boolean> isEnabled;
 
-    /**
-     * @return Describes whether the task is enabled. When true the task should run when false it should not run.
-     * 
-     */
     public Optional<Output<Boolean>> isEnabled() {
         return Optional.ofNullable(this.isEnabled);
     }
 
-    /**
-     * DATETIME in ISO-8601 format. Sets a start time for scheduled actions. If &#34;frequency&#34; or &#34;cronExpression&#34; are not used - the task will run only once at the start time and will then be deleted from the instance configuration.
-     * Example: `&#34;2019-05-23T10:55:09Z&#34;`
-     * 
-     */
     @Import(name="startTime")
     private @Nullable Output<String> startTime;
 
-    /**
-     * @return DATETIME in ISO-8601 format. Sets a start time for scheduled actions. If &#34;frequency&#34; or &#34;cronExpression&#34; are not used - the task will run only once at the start time and will then be deleted from the instance configuration.
-     * Example: `&#34;2019-05-23T10:55:09Z&#34;`
-     * 
-     */
     public Optional<Output<String>> startTime() {
         return Optional.ofNullable(this.startTime);
     }
 
-    /**
-     * The task type to run. Valid values: `&#34;pause&#34;`, `&#34;resume&#34;`, `&#34;recycle&#34;`.
-     * 
-     */
     @Import(name="taskType", required=true)
     private Output<String> taskType;
 
-    /**
-     * @return The task type to run. Valid values: `&#34;pause&#34;`, `&#34;resume&#34;`, `&#34;recycle&#34;`.
-     * 
-     */
     public Output<String> taskType() {
         return this.taskType;
     }
@@ -123,111 +79,47 @@ public final class ManagedInstanceScheduledTaskArgs extends com.pulumi.resources
             $ = new ManagedInstanceScheduledTaskArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param cronExpression A valid cron expression. The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of ‘frequency’ or ‘cronExpression’ should be used at a time.
-         * Example: `&#34;0 1 * * *&#34;`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder cronExpression(@Nullable Output<String> cronExpression) {
             $.cronExpression = cronExpression;
             return this;
         }
 
-        /**
-         * @param cronExpression A valid cron expression. The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of ‘frequency’ or ‘cronExpression’ should be used at a time.
-         * Example: `&#34;0 1 * * *&#34;`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder cronExpression(String cronExpression) {
             return cronExpression(Output.of(cronExpression));
         }
 
-        /**
-         * @param frequency Set frequency for the task. Valid values: &#34;hourly&#34;, &#34;daily&#34;, &#34;weekly&#34;, &#34;continuous&#34;.
-         * 
-         * @return builder
-         * 
-         */
         public Builder frequency(@Nullable Output<String> frequency) {
             $.frequency = frequency;
             return this;
         }
 
-        /**
-         * @param frequency Set frequency for the task. Valid values: &#34;hourly&#34;, &#34;daily&#34;, &#34;weekly&#34;, &#34;continuous&#34;.
-         * 
-         * @return builder
-         * 
-         */
         public Builder frequency(String frequency) {
             return frequency(Output.of(frequency));
         }
 
-        /**
-         * @param isEnabled Describes whether the task is enabled. When true the task should run when false it should not run.
-         * 
-         * @return builder
-         * 
-         */
         public Builder isEnabled(@Nullable Output<Boolean> isEnabled) {
             $.isEnabled = isEnabled;
             return this;
         }
 
-        /**
-         * @param isEnabled Describes whether the task is enabled. When true the task should run when false it should not run.
-         * 
-         * @return builder
-         * 
-         */
         public Builder isEnabled(Boolean isEnabled) {
             return isEnabled(Output.of(isEnabled));
         }
 
-        /**
-         * @param startTime DATETIME in ISO-8601 format. Sets a start time for scheduled actions. If &#34;frequency&#34; or &#34;cronExpression&#34; are not used - the task will run only once at the start time and will then be deleted from the instance configuration.
-         * Example: `&#34;2019-05-23T10:55:09Z&#34;`
-         * 
-         * @return builder
-         * 
-         */
         public Builder startTime(@Nullable Output<String> startTime) {
             $.startTime = startTime;
             return this;
         }
 
-        /**
-         * @param startTime DATETIME in ISO-8601 format. Sets a start time for scheduled actions. If &#34;frequency&#34; or &#34;cronExpression&#34; are not used - the task will run only once at the start time and will then be deleted from the instance configuration.
-         * Example: `&#34;2019-05-23T10:55:09Z&#34;`
-         * 
-         * @return builder
-         * 
-         */
         public Builder startTime(String startTime) {
             return startTime(Output.of(startTime));
         }
 
-        /**
-         * @param taskType The task type to run. Valid values: `&#34;pause&#34;`, `&#34;resume&#34;`, `&#34;recycle&#34;`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder taskType(Output<String> taskType) {
             $.taskType = taskType;
             return this;
         }
 
-        /**
-         * @param taskType The task type to run. Valid values: `&#34;pause&#34;`, `&#34;resume&#34;`, `&#34;recycle&#34;`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder taskType(String taskType) {
             return taskType(Output.of(taskType));
         }

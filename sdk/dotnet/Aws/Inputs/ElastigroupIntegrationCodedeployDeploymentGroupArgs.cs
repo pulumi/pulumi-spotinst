@@ -20,6 +20,18 @@ namespace Pulumi.SpotInst.Aws.Inputs
 
         /// <summary>
         /// The deployment group name.
+        /// 
+        /// Usage:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        /// });
+        /// ```
         /// </summary>
         [Input("deploymentGroupName", required: true)]
         public Input<string> DeploymentGroupName { get; set; } = null!;

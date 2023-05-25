@@ -15,6 +15,18 @@ namespace Pulumi.SpotInst.Gke.Outputs
     {
         /// <summary>
         /// The maximum memory in GiB units that can be allocated to the cluster.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        /// });
+        /// ```
+        /// 
+        /// &lt;a id="strategy"&gt;&lt;/a&gt;
         /// </summary>
         public readonly int? MaxMemoryGib;
         /// <summary>

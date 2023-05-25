@@ -198,6 +198,8 @@ type Elastigroup struct {
 	// Valid values: "SPOT", "PREEMPTIBLE". Define the provisioning model of the launched instances. Default value is "PREEMPTIBLE".
 	ProvisioningModel pulumi.StringPtrOutput `pulumi:"provisioningModel"`
 	// Contains scaling policies for scaling the Elastigroup down.
+	//
+	// Each `scaling_*_policy` supports the following:
 	ScalingDownPolicies ElastigroupScalingDownPolicyArrayOutput `pulumi:"scalingDownPolicies"`
 	// Contains scaling policies for scaling the Elastigroup up.
 	ScalingUpPolicies ElastigroupScalingUpPolicyArrayOutput `pulumi:"scalingUpPolicies"`
@@ -213,6 +215,20 @@ type Elastigroup struct {
 	// Tags to mark created instances.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	UnhealthyDuration pulumi.IntPtrOutput `pulumi:"unhealthyDuration"`
 }
 
@@ -301,6 +317,8 @@ type elastigroupState struct {
 	// Valid values: "SPOT", "PREEMPTIBLE". Define the provisioning model of the launched instances. Default value is "PREEMPTIBLE".
 	ProvisioningModel *string `pulumi:"provisioningModel"`
 	// Contains scaling policies for scaling the Elastigroup down.
+	//
+	// Each `scaling_*_policy` supports the following:
 	ScalingDownPolicies []ElastigroupScalingDownPolicy `pulumi:"scalingDownPolicies"`
 	// Contains scaling policies for scaling the Elastigroup up.
 	ScalingUpPolicies []ElastigroupScalingUpPolicy `pulumi:"scalingUpPolicies"`
@@ -316,6 +334,20 @@ type elastigroupState struct {
 	// Tags to mark created instances.
 	Tags []string `pulumi:"tags"`
 	// Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	UnhealthyDuration *int `pulumi:"unhealthyDuration"`
 }
 
@@ -373,6 +405,8 @@ type ElastigroupState struct {
 	// Valid values: "SPOT", "PREEMPTIBLE". Define the provisioning model of the launched instances. Default value is "PREEMPTIBLE".
 	ProvisioningModel pulumi.StringPtrInput
 	// Contains scaling policies for scaling the Elastigroup down.
+	//
+	// Each `scaling_*_policy` supports the following:
 	ScalingDownPolicies ElastigroupScalingDownPolicyArrayInput
 	// Contains scaling policies for scaling the Elastigroup up.
 	ScalingUpPolicies ElastigroupScalingUpPolicyArrayInput
@@ -388,6 +422,20 @@ type ElastigroupState struct {
 	// Tags to mark created instances.
 	Tags pulumi.StringArrayInput
 	// Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	UnhealthyDuration pulumi.IntPtrInput
 }
 
@@ -449,6 +497,8 @@ type elastigroupArgs struct {
 	// Valid values: "SPOT", "PREEMPTIBLE". Define the provisioning model of the launched instances. Default value is "PREEMPTIBLE".
 	ProvisioningModel *string `pulumi:"provisioningModel"`
 	// Contains scaling policies for scaling the Elastigroup down.
+	//
+	// Each `scaling_*_policy` supports the following:
 	ScalingDownPolicies []ElastigroupScalingDownPolicy `pulumi:"scalingDownPolicies"`
 	// Contains scaling policies for scaling the Elastigroup up.
 	ScalingUpPolicies []ElastigroupScalingUpPolicy `pulumi:"scalingUpPolicies"`
@@ -464,6 +514,20 @@ type elastigroupArgs struct {
 	// Tags to mark created instances.
 	Tags []string `pulumi:"tags"`
 	// Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	UnhealthyDuration *int `pulumi:"unhealthyDuration"`
 }
 
@@ -522,6 +586,8 @@ type ElastigroupArgs struct {
 	// Valid values: "SPOT", "PREEMPTIBLE". Define the provisioning model of the launched instances. Default value is "PREEMPTIBLE".
 	ProvisioningModel pulumi.StringPtrInput
 	// Contains scaling policies for scaling the Elastigroup down.
+	//
+	// Each `scaling_*_policy` supports the following:
 	ScalingDownPolicies ElastigroupScalingDownPolicyArrayInput
 	// Contains scaling policies for scaling the Elastigroup up.
 	ScalingUpPolicies ElastigroupScalingUpPolicyArrayInput
@@ -537,6 +603,20 @@ type ElastigroupArgs struct {
 	// Tags to mark created instances.
 	Tags pulumi.StringArrayInput
 	// Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	UnhealthyDuration pulumi.IntPtrInput
 }
 
@@ -761,6 +841,8 @@ func (o ElastigroupOutput) ProvisioningModel() pulumi.StringPtrOutput {
 }
 
 // Contains scaling policies for scaling the Elastigroup down.
+//
+// Each `scaling_*_policy` supports the following:
 func (o ElastigroupOutput) ScalingDownPolicies() ElastigroupScalingDownPolicyArrayOutput {
 	return o.ApplyT(func(v *Elastigroup) ElastigroupScalingDownPolicyArrayOutput { return v.ScalingDownPolicies }).(ElastigroupScalingDownPolicyArrayOutput)
 }
@@ -800,6 +882,23 @@ func (o ElastigroupOutput) Tags() pulumi.StringArrayOutput {
 }
 
 // Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
+// ```
 func (o ElastigroupOutput) UnhealthyDuration() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Elastigroup) pulumi.IntPtrOutput { return v.UnhealthyDuration }).(pulumi.IntPtrOutput)
 }

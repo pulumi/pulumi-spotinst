@@ -9,27 +9,19 @@ import java.util.Objects;
 
 @CustomType
 public final class ElastigroupImageCustom {
-    /**
-     * @return Name of the custom image. Required if resource_group_name is specified.
-     * 
-     */
     private String imageName;
     /**
-     * @return The Resource Group that the user-assigned managed identity resides in.
+     * @return Name of the Azure Resource Group where the Managed Service Identity is located.
      * 
      */
     private String resourceGroupName;
 
     private ElastigroupImageCustom() {}
-    /**
-     * @return Name of the custom image. Required if resource_group_name is specified.
-     * 
-     */
     public String imageName() {
         return this.imageName;
     }
     /**
-     * @return The Resource Group that the user-assigned managed identity resides in.
+     * @return Name of the Azure Resource Group where the Managed Service Identity is located.
      * 
      */
     public String resourceGroupName() {

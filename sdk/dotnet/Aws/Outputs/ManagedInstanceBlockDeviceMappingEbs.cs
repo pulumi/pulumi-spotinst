@@ -13,25 +13,10 @@ namespace Pulumi.SpotInst.Aws.Outputs
     [OutputType]
     public sealed class ManagedInstanceBlockDeviceMappingEbs
     {
-        /// <summary>
-        /// Whether the volume should be destroyed on instance termination.
-        /// </summary>
         public readonly bool? DeleteOnTermination;
-        /// <summary>
-        /// The amount of provisioned [IOPS](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-io-characteristics.html). This must be set with a `volume_type` of `"io1"`.
-        /// </summary>
         public readonly int? Iops;
-        /// <summary>
-        /// The throughput that the volume supports, in MiB/s. Minimum value of 125. Maximum value of 1000. Valid only if `volume_type` is set to `"gp3"`.
-        /// </summary>
         public readonly int? Throughput;
-        /// <summary>
-        /// The size of the volume, in GiBs.
-        /// </summary>
         public readonly int? VolumeSize;
-        /// <summary>
-        /// The type of volume. Can be `"standard"`, `"gp2"`, `"gp3"`, `"io1"`, `"st1"` or `"sc1"`.
-        /// </summary>
         public readonly string? VolumeType;
 
         [OutputConstructor]

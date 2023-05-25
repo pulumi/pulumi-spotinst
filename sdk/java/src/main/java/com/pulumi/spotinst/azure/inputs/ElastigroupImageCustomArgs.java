@@ -13,30 +13,22 @@ public final class ElastigroupImageCustomArgs extends com.pulumi.resources.Resou
 
     public static final ElastigroupImageCustomArgs Empty = new ElastigroupImageCustomArgs();
 
-    /**
-     * Name of the custom image. Required if resource_group_name is specified.
-     * 
-     */
     @Import(name="imageName", required=true)
     private Output<String> imageName;
 
-    /**
-     * @return Name of the custom image. Required if resource_group_name is specified.
-     * 
-     */
     public Output<String> imageName() {
         return this.imageName;
     }
 
     /**
-     * The Resource Group that the user-assigned managed identity resides in.
+     * Name of the Azure Resource Group where the Managed Service Identity is located.
      * 
      */
     @Import(name="resourceGroupName", required=true)
     private Output<String> resourceGroupName;
 
     /**
-     * @return The Resource Group that the user-assigned managed identity resides in.
+     * @return Name of the Azure Resource Group where the Managed Service Identity is located.
      * 
      */
     public Output<String> resourceGroupName() {
@@ -68,29 +60,17 @@ public final class ElastigroupImageCustomArgs extends com.pulumi.resources.Resou
             $ = new ElastigroupImageCustomArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param imageName Name of the custom image. Required if resource_group_name is specified.
-         * 
-         * @return builder
-         * 
-         */
         public Builder imageName(Output<String> imageName) {
             $.imageName = imageName;
             return this;
         }
 
-        /**
-         * @param imageName Name of the custom image. Required if resource_group_name is specified.
-         * 
-         * @return builder
-         * 
-         */
         public Builder imageName(String imageName) {
             return imageName(Output.of(imageName));
         }
 
         /**
-         * @param resourceGroupName The Resource Group that the user-assigned managed identity resides in.
+         * @param resourceGroupName Name of the Azure Resource Group where the Managed Service Identity is located.
          * 
          * @return builder
          * 
@@ -101,7 +81,7 @@ public final class ElastigroupImageCustomArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param resourceGroupName The Resource Group that the user-assigned managed identity resides in.
+         * @param resourceGroupName Name of the Azure Resource Group where the Managed Service Identity is located.
          * 
          * @return builder
          * 

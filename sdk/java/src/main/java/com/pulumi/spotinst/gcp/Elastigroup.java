@@ -492,12 +492,16 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
     /**
      * Contains scaling policies for scaling the Elastigroup down.
      * 
+     * Each `scaling_*_policy` supports the following:
+     * 
      */
     @Export(name="scalingDownPolicies", type=List.class, parameters={ElastigroupScalingDownPolicy.class})
     private Output</* @Nullable */ List<ElastigroupScalingDownPolicy>> scalingDownPolicies;
 
     /**
      * @return Contains scaling policies for scaling the Elastigroup down.
+     * 
+     * Each `scaling_*_policy` supports the following:
      * 
      */
     public Output<Optional<List<ElastigroupScalingDownPolicy>>> scalingDownPolicies() {
@@ -595,6 +599,28 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
     }
     /**
      * Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *     }
+     * }
+     * ```
      * 
      */
     @Export(name="unhealthyDuration", type=Integer.class, parameters={})
@@ -602,6 +628,28 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *     }
+     * }
+     * ```
      * 
      */
     public Output<Optional<Integer>> unhealthyDuration() {
