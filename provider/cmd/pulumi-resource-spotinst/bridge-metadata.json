@@ -1310,6 +1310,9 @@
                     "spot_sizes": {
                         "maxItemsOne": false,
                         "elem": {}
+                    },
+                    "tags": {
+                        "maxItemsOne": false
                     }
                 }
             },
