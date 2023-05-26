@@ -23,6 +23,7 @@ type OceanNp struct {
 	ControllerClusterId                pulumi.StringOutput        `pulumi:"controllerClusterId"`
 	EnableNodePublicIp                 pulumi.BoolPtrOutput       `pulumi:"enableNodePublicIp"`
 	FallbackToOndemand                 pulumi.BoolPtrOutput       `pulumi:"fallbackToOndemand"`
+	Headrooms                          OceanNpHeadroomArrayOutput `pulumi:"headrooms"`
 	Health                             OceanNpHealthOutput        `pulumi:"health"`
 	Labels                             pulumi.MapOutput           `pulumi:"labels"`
 	MaxCount                           pulumi.IntPtrOutput        `pulumi:"maxCount"`
@@ -32,6 +33,7 @@ type OceanNp struct {
 	OsDiskSizeGb                       pulumi.IntPtrOutput        `pulumi:"osDiskSizeGb"`
 	OsDiskType                         pulumi.StringPtrOutput     `pulumi:"osDiskType"`
 	OsType                             pulumi.StringPtrOutput     `pulumi:"osType"`
+	Scheduling                         OceanNpSchedulingPtrOutput `pulumi:"scheduling"`
 	SpotPercentage                     pulumi.IntPtrOutput        `pulumi:"spotPercentage"`
 	Tags                               pulumi.MapOutput           `pulumi:"tags"`
 	Taints                             OceanNpTaintArrayOutput    `pulumi:"taints"`
@@ -87,6 +89,7 @@ type oceanNpState struct {
 	ControllerClusterId                *string                `pulumi:"controllerClusterId"`
 	EnableNodePublicIp                 *bool                  `pulumi:"enableNodePublicIp"`
 	FallbackToOndemand                 *bool                  `pulumi:"fallbackToOndemand"`
+	Headrooms                          []OceanNpHeadroom      `pulumi:"headrooms"`
 	Health                             *OceanNpHealth         `pulumi:"health"`
 	Labels                             map[string]interface{} `pulumi:"labels"`
 	MaxCount                           *int                   `pulumi:"maxCount"`
@@ -96,6 +99,7 @@ type oceanNpState struct {
 	OsDiskSizeGb                       *int                   `pulumi:"osDiskSizeGb"`
 	OsDiskType                         *string                `pulumi:"osDiskType"`
 	OsType                             *string                `pulumi:"osType"`
+	Scheduling                         *OceanNpScheduling     `pulumi:"scheduling"`
 	SpotPercentage                     *int                   `pulumi:"spotPercentage"`
 	Tags                               map[string]interface{} `pulumi:"tags"`
 	Taints                             []OceanNpTaint         `pulumi:"taints"`
@@ -111,6 +115,7 @@ type OceanNpState struct {
 	ControllerClusterId                pulumi.StringPtrInput
 	EnableNodePublicIp                 pulumi.BoolPtrInput
 	FallbackToOndemand                 pulumi.BoolPtrInput
+	Headrooms                          OceanNpHeadroomArrayInput
 	Health                             OceanNpHealthPtrInput
 	Labels                             pulumi.MapInput
 	MaxCount                           pulumi.IntPtrInput
@@ -120,6 +125,7 @@ type OceanNpState struct {
 	OsDiskSizeGb                       pulumi.IntPtrInput
 	OsDiskType                         pulumi.StringPtrInput
 	OsType                             pulumi.StringPtrInput
+	Scheduling                         OceanNpSchedulingPtrInput
 	SpotPercentage                     pulumi.IntPtrInput
 	Tags                               pulumi.MapInput
 	Taints                             OceanNpTaintArrayInput
@@ -139,6 +145,7 @@ type oceanNpArgs struct {
 	ControllerClusterId                *string                `pulumi:"controllerClusterId"`
 	EnableNodePublicIp                 *bool                  `pulumi:"enableNodePublicIp"`
 	FallbackToOndemand                 *bool                  `pulumi:"fallbackToOndemand"`
+	Headrooms                          []OceanNpHeadroom      `pulumi:"headrooms"`
 	Health                             *OceanNpHealth         `pulumi:"health"`
 	Labels                             map[string]interface{} `pulumi:"labels"`
 	MaxCount                           *int                   `pulumi:"maxCount"`
@@ -148,6 +155,7 @@ type oceanNpArgs struct {
 	OsDiskSizeGb                       *int                   `pulumi:"osDiskSizeGb"`
 	OsDiskType                         *string                `pulumi:"osDiskType"`
 	OsType                             *string                `pulumi:"osType"`
+	Scheduling                         *OceanNpScheduling     `pulumi:"scheduling"`
 	SpotPercentage                     *int                   `pulumi:"spotPercentage"`
 	Tags                               map[string]interface{} `pulumi:"tags"`
 	Taints                             []OceanNpTaint         `pulumi:"taints"`
@@ -164,6 +172,7 @@ type OceanNpArgs struct {
 	ControllerClusterId                pulumi.StringPtrInput
 	EnableNodePublicIp                 pulumi.BoolPtrInput
 	FallbackToOndemand                 pulumi.BoolPtrInput
+	Headrooms                          OceanNpHeadroomArrayInput
 	Health                             OceanNpHealthPtrInput
 	Labels                             pulumi.MapInput
 	MaxCount                           pulumi.IntPtrInput
@@ -173,6 +182,7 @@ type OceanNpArgs struct {
 	OsDiskSizeGb                       pulumi.IntPtrInput
 	OsDiskType                         pulumi.StringPtrInput
 	OsType                             pulumi.StringPtrInput
+	Scheduling                         OceanNpSchedulingPtrInput
 	SpotPercentage                     pulumi.IntPtrInput
 	Tags                               pulumi.MapInput
 	Taints                             OceanNpTaintArrayInput
@@ -301,6 +311,10 @@ func (o OceanNpOutput) FallbackToOndemand() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OceanNp) pulumi.BoolPtrOutput { return v.FallbackToOndemand }).(pulumi.BoolPtrOutput)
 }
 
+func (o OceanNpOutput) Headrooms() OceanNpHeadroomArrayOutput {
+	return o.ApplyT(func(v *OceanNp) OceanNpHeadroomArrayOutput { return v.Headrooms }).(OceanNpHeadroomArrayOutput)
+}
+
 func (o OceanNpOutput) Health() OceanNpHealthOutput {
 	return o.ApplyT(func(v *OceanNp) OceanNpHealthOutput { return v.Health }).(OceanNpHealthOutput)
 }
@@ -335,6 +349,10 @@ func (o OceanNpOutput) OsDiskType() pulumi.StringPtrOutput {
 
 func (o OceanNpOutput) OsType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OceanNp) pulumi.StringPtrOutput { return v.OsType }).(pulumi.StringPtrOutput)
+}
+
+func (o OceanNpOutput) Scheduling() OceanNpSchedulingPtrOutput {
+	return o.ApplyT(func(v *OceanNp) OceanNpSchedulingPtrOutput { return v.Scheduling }).(OceanNpSchedulingPtrOutput)
 }
 
 func (o OceanNpOutput) SpotPercentage() pulumi.IntPtrOutput {

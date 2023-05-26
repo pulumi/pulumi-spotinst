@@ -6,7 +6,9 @@ package com.pulumi.spotinst.azure.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.spotinst.azure.inputs.OceanNpAutoscalerArgs;
+import com.pulumi.spotinst.azure.inputs.OceanNpHeadroomArgs;
 import com.pulumi.spotinst.azure.inputs.OceanNpHealthArgs;
+import com.pulumi.spotinst.azure.inputs.OceanNpSchedulingArgs;
 import com.pulumi.spotinst.azure.inputs.OceanNpTaintArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -86,6 +88,13 @@ public final class OceanNpState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.fallbackToOndemand);
     }
 
+    @Import(name="headrooms")
+    private @Nullable Output<List<OceanNpHeadroomArgs>> headrooms;
+
+    public Optional<Output<List<OceanNpHeadroomArgs>>> headrooms() {
+        return Optional.ofNullable(this.headrooms);
+    }
+
     @Import(name="health")
     private @Nullable Output<OceanNpHealthArgs> health;
 
@@ -149,6 +158,13 @@ public final class OceanNpState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.osType);
     }
 
+    @Import(name="scheduling")
+    private @Nullable Output<OceanNpSchedulingArgs> scheduling;
+
+    public Optional<Output<OceanNpSchedulingArgs>> scheduling() {
+        return Optional.ofNullable(this.scheduling);
+    }
+
     @Import(name="spotPercentage")
     private @Nullable Output<Integer> spotPercentage;
 
@@ -182,6 +198,7 @@ public final class OceanNpState extends com.pulumi.resources.ResourceArgs {
         this.controllerClusterId = $.controllerClusterId;
         this.enableNodePublicIp = $.enableNodePublicIp;
         this.fallbackToOndemand = $.fallbackToOndemand;
+        this.headrooms = $.headrooms;
         this.health = $.health;
         this.labels = $.labels;
         this.maxCount = $.maxCount;
@@ -191,6 +208,7 @@ public final class OceanNpState extends com.pulumi.resources.ResourceArgs {
         this.osDiskSizeGb = $.osDiskSizeGb;
         this.osDiskType = $.osDiskType;
         this.osType = $.osType;
+        this.scheduling = $.scheduling;
         this.spotPercentage = $.spotPercentage;
         this.tags = $.tags;
         this.taints = $.taints;
@@ -299,6 +317,19 @@ public final class OceanNpState extends com.pulumi.resources.ResourceArgs {
             return fallbackToOndemand(Output.of(fallbackToOndemand));
         }
 
+        public Builder headrooms(@Nullable Output<List<OceanNpHeadroomArgs>> headrooms) {
+            $.headrooms = headrooms;
+            return this;
+        }
+
+        public Builder headrooms(List<OceanNpHeadroomArgs> headrooms) {
+            return headrooms(Output.of(headrooms));
+        }
+
+        public Builder headrooms(OceanNpHeadroomArgs... headrooms) {
+            return headrooms(List.of(headrooms));
+        }
+
         public Builder health(@Nullable Output<OceanNpHealthArgs> health) {
             $.health = health;
             return this;
@@ -378,6 +409,15 @@ public final class OceanNpState extends com.pulumi.resources.ResourceArgs {
 
         public Builder osType(String osType) {
             return osType(Output.of(osType));
+        }
+
+        public Builder scheduling(@Nullable Output<OceanNpSchedulingArgs> scheduling) {
+            $.scheduling = scheduling;
+            return this;
+        }
+
+        public Builder scheduling(OceanNpSchedulingArgs scheduling) {
+            return scheduling(Output.of(scheduling));
         }
 
         public Builder spotPercentage(@Nullable Output<Integer> spotPercentage) {

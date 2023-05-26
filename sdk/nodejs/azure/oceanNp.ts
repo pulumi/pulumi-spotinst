@@ -43,6 +43,7 @@ export class OceanNp extends pulumi.CustomResource {
     public readonly controllerClusterId!: pulumi.Output<string>;
     public readonly enableNodePublicIp!: pulumi.Output<boolean | undefined>;
     public readonly fallbackToOndemand!: pulumi.Output<boolean | undefined>;
+    public readonly headrooms!: pulumi.Output<outputs.azure.OceanNpHeadroom[] | undefined>;
     public readonly health!: pulumi.Output<outputs.azure.OceanNpHealth>;
     public readonly labels!: pulumi.Output<{[key: string]: any} | undefined>;
     public readonly maxCount!: pulumi.Output<number | undefined>;
@@ -52,6 +53,7 @@ export class OceanNp extends pulumi.CustomResource {
     public readonly osDiskSizeGb!: pulumi.Output<number | undefined>;
     public readonly osDiskType!: pulumi.Output<string | undefined>;
     public readonly osType!: pulumi.Output<string | undefined>;
+    public readonly scheduling!: pulumi.Output<outputs.azure.OceanNpScheduling | undefined>;
     public readonly spotPercentage!: pulumi.Output<number | undefined>;
     public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
     public readonly taints!: pulumi.Output<outputs.azure.OceanNpTaint[] | undefined>;
@@ -78,6 +80,7 @@ export class OceanNp extends pulumi.CustomResource {
             resourceInputs["controllerClusterId"] = state ? state.controllerClusterId : undefined;
             resourceInputs["enableNodePublicIp"] = state ? state.enableNodePublicIp : undefined;
             resourceInputs["fallbackToOndemand"] = state ? state.fallbackToOndemand : undefined;
+            resourceInputs["headrooms"] = state ? state.headrooms : undefined;
             resourceInputs["health"] = state ? state.health : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["maxCount"] = state ? state.maxCount : undefined;
@@ -87,6 +90,7 @@ export class OceanNp extends pulumi.CustomResource {
             resourceInputs["osDiskSizeGb"] = state ? state.osDiskSizeGb : undefined;
             resourceInputs["osDiskType"] = state ? state.osDiskType : undefined;
             resourceInputs["osType"] = state ? state.osType : undefined;
+            resourceInputs["scheduling"] = state ? state.scheduling : undefined;
             resourceInputs["spotPercentage"] = state ? state.spotPercentage : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["taints"] = state ? state.taints : undefined;
@@ -113,6 +117,7 @@ export class OceanNp extends pulumi.CustomResource {
             resourceInputs["controllerClusterId"] = args ? args.controllerClusterId : undefined;
             resourceInputs["enableNodePublicIp"] = args ? args.enableNodePublicIp : undefined;
             resourceInputs["fallbackToOndemand"] = args ? args.fallbackToOndemand : undefined;
+            resourceInputs["headrooms"] = args ? args.headrooms : undefined;
             resourceInputs["health"] = args ? args.health : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["maxCount"] = args ? args.maxCount : undefined;
@@ -122,6 +127,7 @@ export class OceanNp extends pulumi.CustomResource {
             resourceInputs["osDiskSizeGb"] = args ? args.osDiskSizeGb : undefined;
             resourceInputs["osDiskType"] = args ? args.osDiskType : undefined;
             resourceInputs["osType"] = args ? args.osType : undefined;
+            resourceInputs["scheduling"] = args ? args.scheduling : undefined;
             resourceInputs["spotPercentage"] = args ? args.spotPercentage : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["taints"] = args ? args.taints : undefined;
@@ -144,6 +150,7 @@ export interface OceanNpState {
     controllerClusterId?: pulumi.Input<string>;
     enableNodePublicIp?: pulumi.Input<boolean>;
     fallbackToOndemand?: pulumi.Input<boolean>;
+    headrooms?: pulumi.Input<pulumi.Input<inputs.azure.OceanNpHeadroom>[]>;
     health?: pulumi.Input<inputs.azure.OceanNpHealth>;
     labels?: pulumi.Input<{[key: string]: any}>;
     maxCount?: pulumi.Input<number>;
@@ -153,6 +160,7 @@ export interface OceanNpState {
     osDiskSizeGb?: pulumi.Input<number>;
     osDiskType?: pulumi.Input<string>;
     osType?: pulumi.Input<string>;
+    scheduling?: pulumi.Input<inputs.azure.OceanNpScheduling>;
     spotPercentage?: pulumi.Input<number>;
     tags?: pulumi.Input<{[key: string]: any}>;
     taints?: pulumi.Input<pulumi.Input<inputs.azure.OceanNpTaint>[]>;
@@ -171,6 +179,7 @@ export interface OceanNpArgs {
     controllerClusterId?: pulumi.Input<string>;
     enableNodePublicIp?: pulumi.Input<boolean>;
     fallbackToOndemand?: pulumi.Input<boolean>;
+    headrooms?: pulumi.Input<pulumi.Input<inputs.azure.OceanNpHeadroom>[]>;
     health?: pulumi.Input<inputs.azure.OceanNpHealth>;
     labels?: pulumi.Input<{[key: string]: any}>;
     maxCount?: pulumi.Input<number>;
@@ -180,6 +189,7 @@ export interface OceanNpArgs {
     osDiskSizeGb?: pulumi.Input<number>;
     osDiskType?: pulumi.Input<string>;
     osType?: pulumi.Input<string>;
+    scheduling?: pulumi.Input<inputs.azure.OceanNpScheduling>;
     spotPercentage?: pulumi.Input<number>;
     tags?: pulumi.Input<{[key: string]: any}>;
     taints?: pulumi.Input<pulumi.Input<inputs.azure.OceanNpTaint>[]>;

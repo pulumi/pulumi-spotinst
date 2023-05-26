@@ -10,14 +10,14 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Azure.Inputs
 {
 
-    public sealed class OceanNpAutoscalerAutoscaleHeadroomAutomaticArgs : global::Pulumi.ResourceArgs
+    public sealed class OceanNpSchedulingArgs : global::Pulumi.ResourceArgs
     {
-        [Input("percentage")]
-        public Input<int>? Percentage { get; set; }
+        [Input("shutdownHours")]
+        public Input<Inputs.OceanNpSchedulingShutdownHoursArgs>? ShutdownHours { get; set; }
 
-        public OceanNpAutoscalerAutoscaleHeadroomAutomaticArgs()
+        public OceanNpSchedulingArgs()
         {
         }
-        public static new OceanNpAutoscalerAutoscaleHeadroomAutomaticArgs Empty => new OceanNpAutoscalerAutoscaleHeadroomAutomaticArgs();
+        public static new OceanNpSchedulingArgs Empty => new OceanNpSchedulingArgs();
     }
 }

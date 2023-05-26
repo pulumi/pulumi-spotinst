@@ -50,7 +50,10 @@ __all__ = [
     'OceanNpAutoscalerAutoscaleHeadroom',
     'OceanNpAutoscalerAutoscaleHeadroomAutomatic',
     'OceanNpAutoscalerResourceLimits',
+    'OceanNpHeadroom',
     'OceanNpHealth',
+    'OceanNpScheduling',
+    'OceanNpSchedulingShutdownHours',
     'OceanNpTaint',
     'OceanNpVirtualNodeGroupHeadroom',
     'OceanNpVirtualNodeGroupTaint',
@@ -2104,35 +2107,10 @@ class OceanNpAutoscalerAutoscaleHeadroom(dict):
 
 @pulumi.output_type
 class OceanNpAutoscalerAutoscaleHeadroomAutomatic(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "isEnabled":
-            suggest = "is_enabled"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in OceanNpAutoscalerAutoscaleHeadroomAutomatic. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        OceanNpAutoscalerAutoscaleHeadroomAutomatic.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        OceanNpAutoscalerAutoscaleHeadroomAutomatic.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
-                 is_enabled: Optional[bool] = None,
                  percentage: Optional[int] = None):
-        if is_enabled is not None:
-            pulumi.set(__self__, "is_enabled", is_enabled)
         if percentage is not None:
             pulumi.set(__self__, "percentage", percentage)
-
-    @property
-    @pulumi.getter(name="isEnabled")
-    def is_enabled(self) -> Optional[bool]:
-        return pulumi.get(self, "is_enabled")
 
     @property
     @pulumi.getter
@@ -2181,6 +2159,66 @@ class OceanNpAutoscalerResourceLimits(dict):
 
 
 @pulumi.output_type
+class OceanNpHeadroom(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cpuPerUnit":
+            suggest = "cpu_per_unit"
+        elif key == "gpuPerUnit":
+            suggest = "gpu_per_unit"
+        elif key == "memoryPerUnit":
+            suggest = "memory_per_unit"
+        elif key == "numOfUnits":
+            suggest = "num_of_units"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OceanNpHeadroom. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OceanNpHeadroom.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OceanNpHeadroom.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cpu_per_unit: Optional[int] = None,
+                 gpu_per_unit: Optional[int] = None,
+                 memory_per_unit: Optional[int] = None,
+                 num_of_units: Optional[int] = None):
+        if cpu_per_unit is not None:
+            pulumi.set(__self__, "cpu_per_unit", cpu_per_unit)
+        if gpu_per_unit is not None:
+            pulumi.set(__self__, "gpu_per_unit", gpu_per_unit)
+        if memory_per_unit is not None:
+            pulumi.set(__self__, "memory_per_unit", memory_per_unit)
+        if num_of_units is not None:
+            pulumi.set(__self__, "num_of_units", num_of_units)
+
+    @property
+    @pulumi.getter(name="cpuPerUnit")
+    def cpu_per_unit(self) -> Optional[int]:
+        return pulumi.get(self, "cpu_per_unit")
+
+    @property
+    @pulumi.getter(name="gpuPerUnit")
+    def gpu_per_unit(self) -> Optional[int]:
+        return pulumi.get(self, "gpu_per_unit")
+
+    @property
+    @pulumi.getter(name="memoryPerUnit")
+    def memory_per_unit(self) -> Optional[int]:
+        return pulumi.get(self, "memory_per_unit")
+
+    @property
+    @pulumi.getter(name="numOfUnits")
+    def num_of_units(self) -> Optional[int]:
+        return pulumi.get(self, "num_of_units")
+
+
+@pulumi.output_type
 class OceanNpHealth(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -2208,6 +2246,75 @@ class OceanNpHealth(dict):
     @pulumi.getter(name="gracePeriod")
     def grace_period(self) -> Optional[int]:
         return pulumi.get(self, "grace_period")
+
+
+@pulumi.output_type
+class OceanNpScheduling(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "shutdownHours":
+            suggest = "shutdown_hours"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OceanNpScheduling. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OceanNpScheduling.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OceanNpScheduling.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 shutdown_hours: Optional['outputs.OceanNpSchedulingShutdownHours'] = None):
+        if shutdown_hours is not None:
+            pulumi.set(__self__, "shutdown_hours", shutdown_hours)
+
+    @property
+    @pulumi.getter(name="shutdownHours")
+    def shutdown_hours(self) -> Optional['outputs.OceanNpSchedulingShutdownHours']:
+        return pulumi.get(self, "shutdown_hours")
+
+
+@pulumi.output_type
+class OceanNpSchedulingShutdownHours(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "timeWindows":
+            suggest = "time_windows"
+        elif key == "isEnabled":
+            suggest = "is_enabled"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OceanNpSchedulingShutdownHours. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OceanNpSchedulingShutdownHours.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OceanNpSchedulingShutdownHours.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 time_windows: Sequence[str],
+                 is_enabled: Optional[bool] = None):
+        pulumi.set(__self__, "time_windows", time_windows)
+        if is_enabled is not None:
+            pulumi.set(__self__, "is_enabled", is_enabled)
+
+    @property
+    @pulumi.getter(name="timeWindows")
+    def time_windows(self) -> Sequence[str]:
+        return pulumi.get(self, "time_windows")
+
+    @property
+    @pulumi.getter(name="isEnabled")
+    def is_enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "is_enabled")
 
 
 @pulumi.output_type
