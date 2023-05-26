@@ -49,7 +49,10 @@ __all__ = [
     'OceanNpAutoscalerAutoscaleHeadroomArgs',
     'OceanNpAutoscalerAutoscaleHeadroomAutomaticArgs',
     'OceanNpAutoscalerResourceLimitsArgs',
+    'OceanNpHeadroomArgs',
     'OceanNpHealthArgs',
+    'OceanNpSchedulingArgs',
+    'OceanNpSchedulingShutdownHoursArgs',
     'OceanNpTaintArgs',
     'OceanNpVirtualNodeGroupHeadroomArgs',
     'OceanNpVirtualNodeGroupTaintArgs',
@@ -2041,21 +2044,9 @@ class OceanNpAutoscalerAutoscaleHeadroomArgs:
 @pulumi.input_type
 class OceanNpAutoscalerAutoscaleHeadroomAutomaticArgs:
     def __init__(__self__, *,
-                 is_enabled: Optional[pulumi.Input[bool]] = None,
                  percentage: Optional[pulumi.Input[int]] = None):
-        if is_enabled is not None:
-            pulumi.set(__self__, "is_enabled", is_enabled)
         if percentage is not None:
             pulumi.set(__self__, "percentage", percentage)
-
-    @property
-    @pulumi.getter(name="isEnabled")
-    def is_enabled(self) -> Optional[pulumi.Input[bool]]:
-        return pulumi.get(self, "is_enabled")
-
-    @is_enabled.setter
-    def is_enabled(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "is_enabled", value)
 
     @property
     @pulumi.getter
@@ -2097,6 +2088,59 @@ class OceanNpAutoscalerResourceLimitsArgs:
 
 
 @pulumi.input_type
+class OceanNpHeadroomArgs:
+    def __init__(__self__, *,
+                 cpu_per_unit: Optional[pulumi.Input[int]] = None,
+                 gpu_per_unit: Optional[pulumi.Input[int]] = None,
+                 memory_per_unit: Optional[pulumi.Input[int]] = None,
+                 num_of_units: Optional[pulumi.Input[int]] = None):
+        if cpu_per_unit is not None:
+            pulumi.set(__self__, "cpu_per_unit", cpu_per_unit)
+        if gpu_per_unit is not None:
+            pulumi.set(__self__, "gpu_per_unit", gpu_per_unit)
+        if memory_per_unit is not None:
+            pulumi.set(__self__, "memory_per_unit", memory_per_unit)
+        if num_of_units is not None:
+            pulumi.set(__self__, "num_of_units", num_of_units)
+
+    @property
+    @pulumi.getter(name="cpuPerUnit")
+    def cpu_per_unit(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "cpu_per_unit")
+
+    @cpu_per_unit.setter
+    def cpu_per_unit(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "cpu_per_unit", value)
+
+    @property
+    @pulumi.getter(name="gpuPerUnit")
+    def gpu_per_unit(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "gpu_per_unit")
+
+    @gpu_per_unit.setter
+    def gpu_per_unit(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "gpu_per_unit", value)
+
+    @property
+    @pulumi.getter(name="memoryPerUnit")
+    def memory_per_unit(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "memory_per_unit")
+
+    @memory_per_unit.setter
+    def memory_per_unit(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "memory_per_unit", value)
+
+    @property
+    @pulumi.getter(name="numOfUnits")
+    def num_of_units(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "num_of_units")
+
+    @num_of_units.setter
+    def num_of_units(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "num_of_units", value)
+
+
+@pulumi.input_type
 class OceanNpHealthArgs:
     def __init__(__self__, *,
                  grace_period: Optional[pulumi.Input[int]] = None):
@@ -2111,6 +2155,51 @@ class OceanNpHealthArgs:
     @grace_period.setter
     def grace_period(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "grace_period", value)
+
+
+@pulumi.input_type
+class OceanNpSchedulingArgs:
+    def __init__(__self__, *,
+                 shutdown_hours: Optional[pulumi.Input['OceanNpSchedulingShutdownHoursArgs']] = None):
+        if shutdown_hours is not None:
+            pulumi.set(__self__, "shutdown_hours", shutdown_hours)
+
+    @property
+    @pulumi.getter(name="shutdownHours")
+    def shutdown_hours(self) -> Optional[pulumi.Input['OceanNpSchedulingShutdownHoursArgs']]:
+        return pulumi.get(self, "shutdown_hours")
+
+    @shutdown_hours.setter
+    def shutdown_hours(self, value: Optional[pulumi.Input['OceanNpSchedulingShutdownHoursArgs']]):
+        pulumi.set(self, "shutdown_hours", value)
+
+
+@pulumi.input_type
+class OceanNpSchedulingShutdownHoursArgs:
+    def __init__(__self__, *,
+                 time_windows: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 is_enabled: Optional[pulumi.Input[bool]] = None):
+        pulumi.set(__self__, "time_windows", time_windows)
+        if is_enabled is not None:
+            pulumi.set(__self__, "is_enabled", is_enabled)
+
+    @property
+    @pulumi.getter(name="timeWindows")
+    def time_windows(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        return pulumi.get(self, "time_windows")
+
+    @time_windows.setter
+    def time_windows(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "time_windows", value)
+
+    @property
+    @pulumi.getter(name="isEnabled")
+    def is_enabled(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "is_enabled")
+
+    @is_enabled.setter
+    def is_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_enabled", value)
 
 
 @pulumi.input_type

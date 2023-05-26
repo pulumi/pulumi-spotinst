@@ -39,6 +39,9 @@ namespace Pulumi.SpotInst.Azure
         [Output("fallbackToOndemand")]
         public Output<bool?> FallbackToOndemand { get; private set; } = null!;
 
+        [Output("headrooms")]
+        public Output<ImmutableArray<Outputs.OceanNpHeadroom>> Headrooms { get; private set; } = null!;
+
         [Output("health")]
         public Output<Outputs.OceanNpHealth> Health { get; private set; } = null!;
 
@@ -65,6 +68,9 @@ namespace Pulumi.SpotInst.Azure
 
         [Output("osType")]
         public Output<string?> OsType { get; private set; } = null!;
+
+        [Output("scheduling")]
+        public Output<Outputs.OceanNpScheduling?> Scheduling { get; private set; } = null!;
 
         [Output("spotPercentage")]
         public Output<int?> SpotPercentage { get; private set; } = null!;
@@ -153,6 +159,14 @@ namespace Pulumi.SpotInst.Azure
         [Input("fallbackToOndemand")]
         public Input<bool>? FallbackToOndemand { get; set; }
 
+        [Input("headrooms")]
+        private InputList<Inputs.OceanNpHeadroomArgs>? _headrooms;
+        public InputList<Inputs.OceanNpHeadroomArgs> Headrooms
+        {
+            get => _headrooms ?? (_headrooms = new InputList<Inputs.OceanNpHeadroomArgs>());
+            set => _headrooms = value;
+        }
+
         [Input("health")]
         public Input<Inputs.OceanNpHealthArgs>? Health { get; set; }
 
@@ -184,6 +198,9 @@ namespace Pulumi.SpotInst.Azure
 
         [Input("osType")]
         public Input<string>? OsType { get; set; }
+
+        [Input("scheduling")]
+        public Input<Inputs.OceanNpSchedulingArgs>? Scheduling { get; set; }
 
         [Input("spotPercentage")]
         public Input<int>? SpotPercentage { get; set; }
@@ -244,6 +261,14 @@ namespace Pulumi.SpotInst.Azure
         [Input("fallbackToOndemand")]
         public Input<bool>? FallbackToOndemand { get; set; }
 
+        [Input("headrooms")]
+        private InputList<Inputs.OceanNpHeadroomGetArgs>? _headrooms;
+        public InputList<Inputs.OceanNpHeadroomGetArgs> Headrooms
+        {
+            get => _headrooms ?? (_headrooms = new InputList<Inputs.OceanNpHeadroomGetArgs>());
+            set => _headrooms = value;
+        }
+
         [Input("health")]
         public Input<Inputs.OceanNpHealthGetArgs>? Health { get; set; }
 
@@ -275,6 +300,9 @@ namespace Pulumi.SpotInst.Azure
 
         [Input("osType")]
         public Input<string>? OsType { get; set; }
+
+        [Input("scheduling")]
+        public Input<Inputs.OceanNpSchedulingGetArgs>? Scheduling { get; set; }
 
         [Input("spotPercentage")]
         public Input<int>? SpotPercentage { get; set; }

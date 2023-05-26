@@ -11,14 +11,19 @@ namespace Pulumi.SpotInst.Azure.Outputs
 {
 
     [OutputType]
-    public sealed class OceanNpAutoscalerAutoscaleHeadroomAutomatic
+    public sealed class OceanNpSchedulingShutdownHours
     {
-        public readonly int? Percentage;
+        public readonly bool? IsEnabled;
+        public readonly ImmutableArray<string> TimeWindows;
 
         [OutputConstructor]
-        private OceanNpAutoscalerAutoscaleHeadroomAutomatic(int? percentage)
+        private OceanNpSchedulingShutdownHours(
+            bool? isEnabled,
+
+            ImmutableArray<string> timeWindows)
         {
-            Percentage = percentage;
+            IsEnabled = isEnabled;
+            TimeWindows = timeWindows;
         }
     }
 }

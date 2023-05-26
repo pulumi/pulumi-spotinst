@@ -3525,10 +3525,10 @@ export namespace azure {
     }
 
     export interface OceanNpAutoscaler {
-        autoscaleDown: outputs.azure.OceanNpAutoscalerAutoscaleDown;
-        autoscaleHeadroom: outputs.azure.OceanNpAutoscalerAutoscaleHeadroom;
+        autoscaleDown?: outputs.azure.OceanNpAutoscalerAutoscaleDown;
+        autoscaleHeadroom?: outputs.azure.OceanNpAutoscalerAutoscaleHeadroom;
         autoscaleIsEnabled?: boolean;
-        resourceLimits: outputs.azure.OceanNpAutoscalerResourceLimits;
+        resourceLimits?: outputs.azure.OceanNpAutoscalerResourceLimits;
     }
 
     export interface OceanNpAutoscalerAutoscaleDown {
@@ -3536,12 +3536,11 @@ export namespace azure {
     }
 
     export interface OceanNpAutoscalerAutoscaleHeadroom {
-        automatic: outputs.azure.OceanNpAutoscalerAutoscaleHeadroomAutomatic;
+        automatic?: outputs.azure.OceanNpAutoscalerAutoscaleHeadroomAutomatic;
     }
 
     export interface OceanNpAutoscalerAutoscaleHeadroomAutomatic {
-        isEnabled?: boolean;
-        percentage: number;
+        percentage?: number;
     }
 
     export interface OceanNpAutoscalerResourceLimits {
@@ -3549,8 +3548,24 @@ export namespace azure {
         maxVcpu?: number;
     }
 
+    export interface OceanNpHeadroom {
+        cpuPerUnit?: number;
+        gpuPerUnit?: number;
+        memoryPerUnit?: number;
+        numOfUnits?: number;
+    }
+
     export interface OceanNpHealth {
         gracePeriod?: number;
+    }
+
+    export interface OceanNpScheduling {
+        shutdownHours?: outputs.azure.OceanNpSchedulingShutdownHours;
+    }
+
+    export interface OceanNpSchedulingShutdownHours {
+        isEnabled?: boolean;
+        timeWindows: string[];
     }
 
     export interface OceanNpTaint {

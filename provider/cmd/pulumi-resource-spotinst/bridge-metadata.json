@@ -2743,6 +2743,9 @@
                     "controller_cluster_id": {},
                     "enable_node_public_ip": {},
                     "fallback_to_ondemand": {},
+                    "headrooms": {
+                        "maxItemsOne": false
+                    },
                     "health": {
                         "maxItemsOne": true,
                         "elem": {
@@ -2759,6 +2762,23 @@
                     "os_disk_size_gb": {},
                     "os_disk_type": {},
                     "os_type": {},
+                    "scheduling": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "shutdown_hours": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "time_windows": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
                     "spot_percentage": {},
                     "tags": {},
                     "taints": {
@@ -5696,15 +5716,25 @@
             "spotinst:azure/OceanNpAutoscalerAutoscaleDown:OceanNpAutoscalerAutoscaleDown": {
                 "maxScaleDownPercentage": "max_scale_down_percentage"
             },
-            "spotinst:azure/OceanNpAutoscalerAutoscaleHeadroomAutomatic:OceanNpAutoscalerAutoscaleHeadroomAutomatic": {
-                "isEnabled": "is_enabled"
-            },
             "spotinst:azure/OceanNpAutoscalerResourceLimits:OceanNpAutoscalerResourceLimits": {
                 "maxMemoryGib": "max_memory_gib",
                 "maxVcpu": "max_vcpu"
             },
+            "spotinst:azure/OceanNpHeadroom:OceanNpHeadroom": {
+                "cpuPerUnit": "cpu_per_unit",
+                "gpuPerUnit": "gpu_per_unit",
+                "memoryPerUnit": "memory_per_unit",
+                "numOfUnits": "num_of_units"
+            },
             "spotinst:azure/OceanNpHealth:OceanNpHealth": {
                 "gracePeriod": "grace_period"
+            },
+            "spotinst:azure/OceanNpScheduling:OceanNpScheduling": {
+                "shutdownHours": "shutdown_hours"
+            },
+            "spotinst:azure/OceanNpSchedulingShutdownHours:OceanNpSchedulingShutdownHours": {
+                "isEnabled": "is_enabled",
+                "timeWindows": "time_windows"
             },
             "spotinst:azure/OceanNpVirtualNodeGroupHeadroom:OceanNpVirtualNodeGroupHeadroom": {
                 "cpuPerUnit": "cpu_per_unit",

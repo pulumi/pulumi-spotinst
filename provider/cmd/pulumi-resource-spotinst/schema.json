@@ -4675,16 +4675,7 @@
                     "$ref": "#/types/spotinst:azure/OceanNpAutoscalerResourceLimits:OceanNpAutoscalerResourceLimits"
                 }
             },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "autoscaleDown",
-                        "autoscaleHeadroom",
-                        "resourceLimits"
-                    ]
-                }
-            }
+            "type": "object"
         },
         "spotinst:azure/OceanNpAutoscalerAutoscaleDown:OceanNpAutoscalerAutoscaleDown": {
             "properties": {
@@ -4700,32 +4691,15 @@
                     "$ref": "#/types/spotinst:azure/OceanNpAutoscalerAutoscaleHeadroomAutomatic:OceanNpAutoscalerAutoscaleHeadroomAutomatic"
                 }
             },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "automatic"
-                    ]
-                }
-            }
+            "type": "object"
         },
         "spotinst:azure/OceanNpAutoscalerAutoscaleHeadroomAutomatic:OceanNpAutoscalerAutoscaleHeadroomAutomatic": {
             "properties": {
-                "isEnabled": {
-                    "type": "boolean"
-                },
                 "percentage": {
                     "type": "integer"
                 }
             },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "percentage"
-                    ]
-                }
-            }
+            "type": "object"
         },
         "spotinst:azure/OceanNpAutoscalerResourceLimits:OceanNpAutoscalerResourceLimits": {
             "properties": {
@@ -4738,6 +4712,23 @@
             },
             "type": "object"
         },
+        "spotinst:azure/OceanNpHeadroom:OceanNpHeadroom": {
+            "properties": {
+                "cpuPerUnit": {
+                    "type": "integer"
+                },
+                "gpuPerUnit": {
+                    "type": "integer"
+                },
+                "memoryPerUnit": {
+                    "type": "integer"
+                },
+                "numOfUnits": {
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
         "spotinst:azure/OceanNpHealth:OceanNpHealth": {
             "properties": {
                 "gracePeriod": {
@@ -4745,6 +4736,31 @@
                 }
             },
             "type": "object"
+        },
+        "spotinst:azure/OceanNpScheduling:OceanNpScheduling": {
+            "properties": {
+                "shutdownHours": {
+                    "$ref": "#/types/spotinst:azure/OceanNpSchedulingShutdownHours:OceanNpSchedulingShutdownHours"
+                }
+            },
+            "type": "object"
+        },
+        "spotinst:azure/OceanNpSchedulingShutdownHours:OceanNpSchedulingShutdownHours": {
+            "properties": {
+                "isEnabled": {
+                    "type": "boolean"
+                },
+                "timeWindows": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "timeWindows"
+            ]
         },
         "spotinst:azure/OceanNpTaint:OceanNpTaint": {
             "properties": {
@@ -13425,6 +13441,12 @@
                 "fallbackToOndemand": {
                     "type": "boolean"
                 },
+                "headrooms": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/spotinst:azure/OceanNpHeadroom:OceanNpHeadroom"
+                    }
+                },
                 "health": {
                     "$ref": "#/types/spotinst:azure/OceanNpHealth:OceanNpHealth"
                 },
@@ -13454,6 +13476,9 @@
                 },
                 "osType": {
                     "type": "string"
+                },
+                "scheduling": {
+                    "$ref": "#/types/spotinst:azure/OceanNpScheduling:OceanNpScheduling"
                 },
                 "spotPercentage": {
                     "type": "integer"
@@ -13512,6 +13537,12 @@
                 "fallbackToOndemand": {
                     "type": "boolean"
                 },
+                "headrooms": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/spotinst:azure/OceanNpHeadroom:OceanNpHeadroom"
+                    }
+                },
                 "health": {
                     "$ref": "#/types/spotinst:azure/OceanNpHealth:OceanNpHealth"
                 },
@@ -13541,6 +13572,9 @@
                 },
                 "osType": {
                     "type": "string"
+                },
+                "scheduling": {
+                    "$ref": "#/types/spotinst:azure/OceanNpScheduling:OceanNpScheduling"
                 },
                 "spotPercentage": {
                     "type": "integer"
@@ -13597,6 +13631,12 @@
                     "fallbackToOndemand": {
                         "type": "boolean"
                     },
+                    "headrooms": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/spotinst:azure/OceanNpHeadroom:OceanNpHeadroom"
+                        }
+                    },
                     "health": {
                         "$ref": "#/types/spotinst:azure/OceanNpHealth:OceanNpHealth"
                     },
@@ -13626,6 +13666,9 @@
                     },
                     "osType": {
                         "type": "string"
+                    },
+                    "scheduling": {
+                        "$ref": "#/types/spotinst:azure/OceanNpScheduling:OceanNpScheduling"
                     },
                     "spotPercentage": {
                         "type": "integer"

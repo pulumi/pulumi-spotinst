@@ -3538,7 +3538,6 @@ export namespace azure {
     }
 
     export interface OceanNpAutoscalerAutoscaleHeadroomAutomatic {
-        isEnabled?: pulumi.Input<boolean>;
         percentage?: pulumi.Input<number>;
     }
 
@@ -3547,8 +3546,24 @@ export namespace azure {
         maxVcpu?: pulumi.Input<number>;
     }
 
+    export interface OceanNpHeadroom {
+        cpuPerUnit?: pulumi.Input<number>;
+        gpuPerUnit?: pulumi.Input<number>;
+        memoryPerUnit?: pulumi.Input<number>;
+        numOfUnits?: pulumi.Input<number>;
+    }
+
     export interface OceanNpHealth {
         gracePeriod?: pulumi.Input<number>;
+    }
+
+    export interface OceanNpScheduling {
+        shutdownHours?: pulumi.Input<inputs.azure.OceanNpSchedulingShutdownHours>;
+    }
+
+    export interface OceanNpSchedulingShutdownHours {
+        isEnabled?: pulumi.Input<boolean>;
+        timeWindows: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface OceanNpTaint {

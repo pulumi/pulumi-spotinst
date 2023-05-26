@@ -5185,8 +5185,7 @@ func (o OceanNpAutoscalerAutoscaleHeadroomPtrOutput) Automatic() OceanNpAutoscal
 }
 
 type OceanNpAutoscalerAutoscaleHeadroomAutomatic struct {
-	IsEnabled  *bool `pulumi:"isEnabled"`
-	Percentage *int  `pulumi:"percentage"`
+	Percentage *int `pulumi:"percentage"`
 }
 
 // OceanNpAutoscalerAutoscaleHeadroomAutomaticInput is an input type that accepts OceanNpAutoscalerAutoscaleHeadroomAutomaticArgs and OceanNpAutoscalerAutoscaleHeadroomAutomaticOutput values.
@@ -5201,8 +5200,7 @@ type OceanNpAutoscalerAutoscaleHeadroomAutomaticInput interface {
 }
 
 type OceanNpAutoscalerAutoscaleHeadroomAutomaticArgs struct {
-	IsEnabled  pulumi.BoolPtrInput `pulumi:"isEnabled"`
-	Percentage pulumi.IntPtrInput  `pulumi:"percentage"`
+	Percentage pulumi.IntPtrInput `pulumi:"percentage"`
 }
 
 func (OceanNpAutoscalerAutoscaleHeadroomAutomaticArgs) ElementType() reflect.Type {
@@ -5282,10 +5280,6 @@ func (o OceanNpAutoscalerAutoscaleHeadroomAutomaticOutput) ToOceanNpAutoscalerAu
 	}).(OceanNpAutoscalerAutoscaleHeadroomAutomaticPtrOutput)
 }
 
-func (o OceanNpAutoscalerAutoscaleHeadroomAutomaticOutput) IsEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v OceanNpAutoscalerAutoscaleHeadroomAutomatic) *bool { return v.IsEnabled }).(pulumi.BoolPtrOutput)
-}
-
 func (o OceanNpAutoscalerAutoscaleHeadroomAutomaticOutput) Percentage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanNpAutoscalerAutoscaleHeadroomAutomatic) *int { return v.Percentage }).(pulumi.IntPtrOutput)
 }
@@ -5312,15 +5306,6 @@ func (o OceanNpAutoscalerAutoscaleHeadroomAutomaticPtrOutput) Elem() OceanNpAuto
 		var ret OceanNpAutoscalerAutoscaleHeadroomAutomatic
 		return ret
 	}).(OceanNpAutoscalerAutoscaleHeadroomAutomaticOutput)
-}
-
-func (o OceanNpAutoscalerAutoscaleHeadroomAutomaticPtrOutput) IsEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *OceanNpAutoscalerAutoscaleHeadroomAutomatic) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.IsEnabled
-	}).(pulumi.BoolPtrOutput)
 }
 
 func (o OceanNpAutoscalerAutoscaleHeadroomAutomaticPtrOutput) Percentage() pulumi.IntPtrOutput {
@@ -5480,6 +5465,118 @@ func (o OceanNpAutoscalerResourceLimitsPtrOutput) MaxVcpu() pulumi.IntPtrOutput 
 	}).(pulumi.IntPtrOutput)
 }
 
+type OceanNpHeadroom struct {
+	CpuPerUnit    *int `pulumi:"cpuPerUnit"`
+	GpuPerUnit    *int `pulumi:"gpuPerUnit"`
+	MemoryPerUnit *int `pulumi:"memoryPerUnit"`
+	NumOfUnits    *int `pulumi:"numOfUnits"`
+}
+
+// OceanNpHeadroomInput is an input type that accepts OceanNpHeadroomArgs and OceanNpHeadroomOutput values.
+// You can construct a concrete instance of `OceanNpHeadroomInput` via:
+//
+//	OceanNpHeadroomArgs{...}
+type OceanNpHeadroomInput interface {
+	pulumi.Input
+
+	ToOceanNpHeadroomOutput() OceanNpHeadroomOutput
+	ToOceanNpHeadroomOutputWithContext(context.Context) OceanNpHeadroomOutput
+}
+
+type OceanNpHeadroomArgs struct {
+	CpuPerUnit    pulumi.IntPtrInput `pulumi:"cpuPerUnit"`
+	GpuPerUnit    pulumi.IntPtrInput `pulumi:"gpuPerUnit"`
+	MemoryPerUnit pulumi.IntPtrInput `pulumi:"memoryPerUnit"`
+	NumOfUnits    pulumi.IntPtrInput `pulumi:"numOfUnits"`
+}
+
+func (OceanNpHeadroomArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanNpHeadroom)(nil)).Elem()
+}
+
+func (i OceanNpHeadroomArgs) ToOceanNpHeadroomOutput() OceanNpHeadroomOutput {
+	return i.ToOceanNpHeadroomOutputWithContext(context.Background())
+}
+
+func (i OceanNpHeadroomArgs) ToOceanNpHeadroomOutputWithContext(ctx context.Context) OceanNpHeadroomOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanNpHeadroomOutput)
+}
+
+// OceanNpHeadroomArrayInput is an input type that accepts OceanNpHeadroomArray and OceanNpHeadroomArrayOutput values.
+// You can construct a concrete instance of `OceanNpHeadroomArrayInput` via:
+//
+//	OceanNpHeadroomArray{ OceanNpHeadroomArgs{...} }
+type OceanNpHeadroomArrayInput interface {
+	pulumi.Input
+
+	ToOceanNpHeadroomArrayOutput() OceanNpHeadroomArrayOutput
+	ToOceanNpHeadroomArrayOutputWithContext(context.Context) OceanNpHeadroomArrayOutput
+}
+
+type OceanNpHeadroomArray []OceanNpHeadroomInput
+
+func (OceanNpHeadroomArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanNpHeadroom)(nil)).Elem()
+}
+
+func (i OceanNpHeadroomArray) ToOceanNpHeadroomArrayOutput() OceanNpHeadroomArrayOutput {
+	return i.ToOceanNpHeadroomArrayOutputWithContext(context.Background())
+}
+
+func (i OceanNpHeadroomArray) ToOceanNpHeadroomArrayOutputWithContext(ctx context.Context) OceanNpHeadroomArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanNpHeadroomArrayOutput)
+}
+
+type OceanNpHeadroomOutput struct{ *pulumi.OutputState }
+
+func (OceanNpHeadroomOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanNpHeadroom)(nil)).Elem()
+}
+
+func (o OceanNpHeadroomOutput) ToOceanNpHeadroomOutput() OceanNpHeadroomOutput {
+	return o
+}
+
+func (o OceanNpHeadroomOutput) ToOceanNpHeadroomOutputWithContext(ctx context.Context) OceanNpHeadroomOutput {
+	return o
+}
+
+func (o OceanNpHeadroomOutput) CpuPerUnit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OceanNpHeadroom) *int { return v.CpuPerUnit }).(pulumi.IntPtrOutput)
+}
+
+func (o OceanNpHeadroomOutput) GpuPerUnit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OceanNpHeadroom) *int { return v.GpuPerUnit }).(pulumi.IntPtrOutput)
+}
+
+func (o OceanNpHeadroomOutput) MemoryPerUnit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OceanNpHeadroom) *int { return v.MemoryPerUnit }).(pulumi.IntPtrOutput)
+}
+
+func (o OceanNpHeadroomOutput) NumOfUnits() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OceanNpHeadroom) *int { return v.NumOfUnits }).(pulumi.IntPtrOutput)
+}
+
+type OceanNpHeadroomArrayOutput struct{ *pulumi.OutputState }
+
+func (OceanNpHeadroomArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanNpHeadroom)(nil)).Elem()
+}
+
+func (o OceanNpHeadroomArrayOutput) ToOceanNpHeadroomArrayOutput() OceanNpHeadroomArrayOutput {
+	return o
+}
+
+func (o OceanNpHeadroomArrayOutput) ToOceanNpHeadroomArrayOutputWithContext(ctx context.Context) OceanNpHeadroomArrayOutput {
+	return o
+}
+
+func (o OceanNpHeadroomArrayOutput) Index(i pulumi.IntInput) OceanNpHeadroomOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OceanNpHeadroom {
+		return vs[0].([]OceanNpHeadroom)[vs[1].(int)]
+	}).(OceanNpHeadroomOutput)
+}
+
 type OceanNpHealth struct {
 	GracePeriod *int `pulumi:"gracePeriod"`
 }
@@ -5611,6 +5708,287 @@ func (o OceanNpHealthPtrOutput) GracePeriod() pulumi.IntPtrOutput {
 		}
 		return v.GracePeriod
 	}).(pulumi.IntPtrOutput)
+}
+
+type OceanNpScheduling struct {
+	ShutdownHours *OceanNpSchedulingShutdownHours `pulumi:"shutdownHours"`
+}
+
+// OceanNpSchedulingInput is an input type that accepts OceanNpSchedulingArgs and OceanNpSchedulingOutput values.
+// You can construct a concrete instance of `OceanNpSchedulingInput` via:
+//
+//	OceanNpSchedulingArgs{...}
+type OceanNpSchedulingInput interface {
+	pulumi.Input
+
+	ToOceanNpSchedulingOutput() OceanNpSchedulingOutput
+	ToOceanNpSchedulingOutputWithContext(context.Context) OceanNpSchedulingOutput
+}
+
+type OceanNpSchedulingArgs struct {
+	ShutdownHours OceanNpSchedulingShutdownHoursPtrInput `pulumi:"shutdownHours"`
+}
+
+func (OceanNpSchedulingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanNpScheduling)(nil)).Elem()
+}
+
+func (i OceanNpSchedulingArgs) ToOceanNpSchedulingOutput() OceanNpSchedulingOutput {
+	return i.ToOceanNpSchedulingOutputWithContext(context.Background())
+}
+
+func (i OceanNpSchedulingArgs) ToOceanNpSchedulingOutputWithContext(ctx context.Context) OceanNpSchedulingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanNpSchedulingOutput)
+}
+
+func (i OceanNpSchedulingArgs) ToOceanNpSchedulingPtrOutput() OceanNpSchedulingPtrOutput {
+	return i.ToOceanNpSchedulingPtrOutputWithContext(context.Background())
+}
+
+func (i OceanNpSchedulingArgs) ToOceanNpSchedulingPtrOutputWithContext(ctx context.Context) OceanNpSchedulingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanNpSchedulingOutput).ToOceanNpSchedulingPtrOutputWithContext(ctx)
+}
+
+// OceanNpSchedulingPtrInput is an input type that accepts OceanNpSchedulingArgs, OceanNpSchedulingPtr and OceanNpSchedulingPtrOutput values.
+// You can construct a concrete instance of `OceanNpSchedulingPtrInput` via:
+//
+//	        OceanNpSchedulingArgs{...}
+//
+//	or:
+//
+//	        nil
+type OceanNpSchedulingPtrInput interface {
+	pulumi.Input
+
+	ToOceanNpSchedulingPtrOutput() OceanNpSchedulingPtrOutput
+	ToOceanNpSchedulingPtrOutputWithContext(context.Context) OceanNpSchedulingPtrOutput
+}
+
+type oceanNpSchedulingPtrType OceanNpSchedulingArgs
+
+func OceanNpSchedulingPtr(v *OceanNpSchedulingArgs) OceanNpSchedulingPtrInput {
+	return (*oceanNpSchedulingPtrType)(v)
+}
+
+func (*oceanNpSchedulingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanNpScheduling)(nil)).Elem()
+}
+
+func (i *oceanNpSchedulingPtrType) ToOceanNpSchedulingPtrOutput() OceanNpSchedulingPtrOutput {
+	return i.ToOceanNpSchedulingPtrOutputWithContext(context.Background())
+}
+
+func (i *oceanNpSchedulingPtrType) ToOceanNpSchedulingPtrOutputWithContext(ctx context.Context) OceanNpSchedulingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanNpSchedulingPtrOutput)
+}
+
+type OceanNpSchedulingOutput struct{ *pulumi.OutputState }
+
+func (OceanNpSchedulingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanNpScheduling)(nil)).Elem()
+}
+
+func (o OceanNpSchedulingOutput) ToOceanNpSchedulingOutput() OceanNpSchedulingOutput {
+	return o
+}
+
+func (o OceanNpSchedulingOutput) ToOceanNpSchedulingOutputWithContext(ctx context.Context) OceanNpSchedulingOutput {
+	return o
+}
+
+func (o OceanNpSchedulingOutput) ToOceanNpSchedulingPtrOutput() OceanNpSchedulingPtrOutput {
+	return o.ToOceanNpSchedulingPtrOutputWithContext(context.Background())
+}
+
+func (o OceanNpSchedulingOutput) ToOceanNpSchedulingPtrOutputWithContext(ctx context.Context) OceanNpSchedulingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OceanNpScheduling) *OceanNpScheduling {
+		return &v
+	}).(OceanNpSchedulingPtrOutput)
+}
+
+func (o OceanNpSchedulingOutput) ShutdownHours() OceanNpSchedulingShutdownHoursPtrOutput {
+	return o.ApplyT(func(v OceanNpScheduling) *OceanNpSchedulingShutdownHours { return v.ShutdownHours }).(OceanNpSchedulingShutdownHoursPtrOutput)
+}
+
+type OceanNpSchedulingPtrOutput struct{ *pulumi.OutputState }
+
+func (OceanNpSchedulingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanNpScheduling)(nil)).Elem()
+}
+
+func (o OceanNpSchedulingPtrOutput) ToOceanNpSchedulingPtrOutput() OceanNpSchedulingPtrOutput {
+	return o
+}
+
+func (o OceanNpSchedulingPtrOutput) ToOceanNpSchedulingPtrOutputWithContext(ctx context.Context) OceanNpSchedulingPtrOutput {
+	return o
+}
+
+func (o OceanNpSchedulingPtrOutput) Elem() OceanNpSchedulingOutput {
+	return o.ApplyT(func(v *OceanNpScheduling) OceanNpScheduling {
+		if v != nil {
+			return *v
+		}
+		var ret OceanNpScheduling
+		return ret
+	}).(OceanNpSchedulingOutput)
+}
+
+func (o OceanNpSchedulingPtrOutput) ShutdownHours() OceanNpSchedulingShutdownHoursPtrOutput {
+	return o.ApplyT(func(v *OceanNpScheduling) *OceanNpSchedulingShutdownHours {
+		if v == nil {
+			return nil
+		}
+		return v.ShutdownHours
+	}).(OceanNpSchedulingShutdownHoursPtrOutput)
+}
+
+type OceanNpSchedulingShutdownHours struct {
+	IsEnabled   *bool    `pulumi:"isEnabled"`
+	TimeWindows []string `pulumi:"timeWindows"`
+}
+
+// OceanNpSchedulingShutdownHoursInput is an input type that accepts OceanNpSchedulingShutdownHoursArgs and OceanNpSchedulingShutdownHoursOutput values.
+// You can construct a concrete instance of `OceanNpSchedulingShutdownHoursInput` via:
+//
+//	OceanNpSchedulingShutdownHoursArgs{...}
+type OceanNpSchedulingShutdownHoursInput interface {
+	pulumi.Input
+
+	ToOceanNpSchedulingShutdownHoursOutput() OceanNpSchedulingShutdownHoursOutput
+	ToOceanNpSchedulingShutdownHoursOutputWithContext(context.Context) OceanNpSchedulingShutdownHoursOutput
+}
+
+type OceanNpSchedulingShutdownHoursArgs struct {
+	IsEnabled   pulumi.BoolPtrInput     `pulumi:"isEnabled"`
+	TimeWindows pulumi.StringArrayInput `pulumi:"timeWindows"`
+}
+
+func (OceanNpSchedulingShutdownHoursArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanNpSchedulingShutdownHours)(nil)).Elem()
+}
+
+func (i OceanNpSchedulingShutdownHoursArgs) ToOceanNpSchedulingShutdownHoursOutput() OceanNpSchedulingShutdownHoursOutput {
+	return i.ToOceanNpSchedulingShutdownHoursOutputWithContext(context.Background())
+}
+
+func (i OceanNpSchedulingShutdownHoursArgs) ToOceanNpSchedulingShutdownHoursOutputWithContext(ctx context.Context) OceanNpSchedulingShutdownHoursOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanNpSchedulingShutdownHoursOutput)
+}
+
+func (i OceanNpSchedulingShutdownHoursArgs) ToOceanNpSchedulingShutdownHoursPtrOutput() OceanNpSchedulingShutdownHoursPtrOutput {
+	return i.ToOceanNpSchedulingShutdownHoursPtrOutputWithContext(context.Background())
+}
+
+func (i OceanNpSchedulingShutdownHoursArgs) ToOceanNpSchedulingShutdownHoursPtrOutputWithContext(ctx context.Context) OceanNpSchedulingShutdownHoursPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanNpSchedulingShutdownHoursOutput).ToOceanNpSchedulingShutdownHoursPtrOutputWithContext(ctx)
+}
+
+// OceanNpSchedulingShutdownHoursPtrInput is an input type that accepts OceanNpSchedulingShutdownHoursArgs, OceanNpSchedulingShutdownHoursPtr and OceanNpSchedulingShutdownHoursPtrOutput values.
+// You can construct a concrete instance of `OceanNpSchedulingShutdownHoursPtrInput` via:
+//
+//	        OceanNpSchedulingShutdownHoursArgs{...}
+//
+//	or:
+//
+//	        nil
+type OceanNpSchedulingShutdownHoursPtrInput interface {
+	pulumi.Input
+
+	ToOceanNpSchedulingShutdownHoursPtrOutput() OceanNpSchedulingShutdownHoursPtrOutput
+	ToOceanNpSchedulingShutdownHoursPtrOutputWithContext(context.Context) OceanNpSchedulingShutdownHoursPtrOutput
+}
+
+type oceanNpSchedulingShutdownHoursPtrType OceanNpSchedulingShutdownHoursArgs
+
+func OceanNpSchedulingShutdownHoursPtr(v *OceanNpSchedulingShutdownHoursArgs) OceanNpSchedulingShutdownHoursPtrInput {
+	return (*oceanNpSchedulingShutdownHoursPtrType)(v)
+}
+
+func (*oceanNpSchedulingShutdownHoursPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanNpSchedulingShutdownHours)(nil)).Elem()
+}
+
+func (i *oceanNpSchedulingShutdownHoursPtrType) ToOceanNpSchedulingShutdownHoursPtrOutput() OceanNpSchedulingShutdownHoursPtrOutput {
+	return i.ToOceanNpSchedulingShutdownHoursPtrOutputWithContext(context.Background())
+}
+
+func (i *oceanNpSchedulingShutdownHoursPtrType) ToOceanNpSchedulingShutdownHoursPtrOutputWithContext(ctx context.Context) OceanNpSchedulingShutdownHoursPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanNpSchedulingShutdownHoursPtrOutput)
+}
+
+type OceanNpSchedulingShutdownHoursOutput struct{ *pulumi.OutputState }
+
+func (OceanNpSchedulingShutdownHoursOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanNpSchedulingShutdownHours)(nil)).Elem()
+}
+
+func (o OceanNpSchedulingShutdownHoursOutput) ToOceanNpSchedulingShutdownHoursOutput() OceanNpSchedulingShutdownHoursOutput {
+	return o
+}
+
+func (o OceanNpSchedulingShutdownHoursOutput) ToOceanNpSchedulingShutdownHoursOutputWithContext(ctx context.Context) OceanNpSchedulingShutdownHoursOutput {
+	return o
+}
+
+func (o OceanNpSchedulingShutdownHoursOutput) ToOceanNpSchedulingShutdownHoursPtrOutput() OceanNpSchedulingShutdownHoursPtrOutput {
+	return o.ToOceanNpSchedulingShutdownHoursPtrOutputWithContext(context.Background())
+}
+
+func (o OceanNpSchedulingShutdownHoursOutput) ToOceanNpSchedulingShutdownHoursPtrOutputWithContext(ctx context.Context) OceanNpSchedulingShutdownHoursPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OceanNpSchedulingShutdownHours) *OceanNpSchedulingShutdownHours {
+		return &v
+	}).(OceanNpSchedulingShutdownHoursPtrOutput)
+}
+
+func (o OceanNpSchedulingShutdownHoursOutput) IsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OceanNpSchedulingShutdownHours) *bool { return v.IsEnabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o OceanNpSchedulingShutdownHoursOutput) TimeWindows() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OceanNpSchedulingShutdownHours) []string { return v.TimeWindows }).(pulumi.StringArrayOutput)
+}
+
+type OceanNpSchedulingShutdownHoursPtrOutput struct{ *pulumi.OutputState }
+
+func (OceanNpSchedulingShutdownHoursPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanNpSchedulingShutdownHours)(nil)).Elem()
+}
+
+func (o OceanNpSchedulingShutdownHoursPtrOutput) ToOceanNpSchedulingShutdownHoursPtrOutput() OceanNpSchedulingShutdownHoursPtrOutput {
+	return o
+}
+
+func (o OceanNpSchedulingShutdownHoursPtrOutput) ToOceanNpSchedulingShutdownHoursPtrOutputWithContext(ctx context.Context) OceanNpSchedulingShutdownHoursPtrOutput {
+	return o
+}
+
+func (o OceanNpSchedulingShutdownHoursPtrOutput) Elem() OceanNpSchedulingShutdownHoursOutput {
+	return o.ApplyT(func(v *OceanNpSchedulingShutdownHours) OceanNpSchedulingShutdownHours {
+		if v != nil {
+			return *v
+		}
+		var ret OceanNpSchedulingShutdownHours
+		return ret
+	}).(OceanNpSchedulingShutdownHoursOutput)
+}
+
+func (o OceanNpSchedulingShutdownHoursPtrOutput) IsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OceanNpSchedulingShutdownHours) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o OceanNpSchedulingShutdownHoursPtrOutput) TimeWindows() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OceanNpSchedulingShutdownHours) []string {
+		if v == nil {
+			return nil
+		}
+		return v.TimeWindows
+	}).(pulumi.StringArrayOutput)
 }
 
 type OceanNpTaint struct {
@@ -7428,8 +7806,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpAutoscalerAutoscaleHeadroomAutomaticPtrInput)(nil)).Elem(), OceanNpAutoscalerAutoscaleHeadroomAutomaticArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpAutoscalerResourceLimitsInput)(nil)).Elem(), OceanNpAutoscalerResourceLimitsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpAutoscalerResourceLimitsPtrInput)(nil)).Elem(), OceanNpAutoscalerResourceLimitsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpHeadroomInput)(nil)).Elem(), OceanNpHeadroomArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpHeadroomArrayInput)(nil)).Elem(), OceanNpHeadroomArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpHealthInput)(nil)).Elem(), OceanNpHealthArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpHealthPtrInput)(nil)).Elem(), OceanNpHealthArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpSchedulingInput)(nil)).Elem(), OceanNpSchedulingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpSchedulingPtrInput)(nil)).Elem(), OceanNpSchedulingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpSchedulingShutdownHoursInput)(nil)).Elem(), OceanNpSchedulingShutdownHoursArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpSchedulingShutdownHoursPtrInput)(nil)).Elem(), OceanNpSchedulingShutdownHoursArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpTaintInput)(nil)).Elem(), OceanNpTaintArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpTaintArrayInput)(nil)).Elem(), OceanNpTaintArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpVirtualNodeGroupHeadroomInput)(nil)).Elem(), OceanNpVirtualNodeGroupHeadroomArgs{})
@@ -7538,8 +7922,14 @@ func init() {
 	pulumi.RegisterOutputType(OceanNpAutoscalerAutoscaleHeadroomAutomaticPtrOutput{})
 	pulumi.RegisterOutputType(OceanNpAutoscalerResourceLimitsOutput{})
 	pulumi.RegisterOutputType(OceanNpAutoscalerResourceLimitsPtrOutput{})
+	pulumi.RegisterOutputType(OceanNpHeadroomOutput{})
+	pulumi.RegisterOutputType(OceanNpHeadroomArrayOutput{})
 	pulumi.RegisterOutputType(OceanNpHealthOutput{})
 	pulumi.RegisterOutputType(OceanNpHealthPtrOutput{})
+	pulumi.RegisterOutputType(OceanNpSchedulingOutput{})
+	pulumi.RegisterOutputType(OceanNpSchedulingPtrOutput{})
+	pulumi.RegisterOutputType(OceanNpSchedulingShutdownHoursOutput{})
+	pulumi.RegisterOutputType(OceanNpSchedulingShutdownHoursPtrOutput{})
 	pulumi.RegisterOutputType(OceanNpTaintOutput{})
 	pulumi.RegisterOutputType(OceanNpTaintArrayOutput{})
 	pulumi.RegisterOutputType(OceanNpVirtualNodeGroupHeadroomOutput{})

@@ -25,6 +25,7 @@ class OceanNpArgs:
                  controller_cluster_id: Optional[pulumi.Input[str]] = None,
                  enable_node_public_ip: Optional[pulumi.Input[bool]] = None,
                  fallback_to_ondemand: Optional[pulumi.Input[bool]] = None,
+                 headrooms: Optional[pulumi.Input[Sequence[pulumi.Input['OceanNpHeadroomArgs']]]] = None,
                  health: Optional[pulumi.Input['OceanNpHealthArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  max_count: Optional[pulumi.Input[int]] = None,
@@ -34,6 +35,7 @@ class OceanNpArgs:
                  os_disk_size_gb: Optional[pulumi.Input[int]] = None,
                  os_disk_type: Optional[pulumi.Input[str]] = None,
                  os_type: Optional[pulumi.Input[str]] = None,
+                 scheduling: Optional[pulumi.Input['OceanNpSchedulingArgs']] = None,
                  spot_percentage: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  taints: Optional[pulumi.Input[Sequence[pulumi.Input['OceanNpTaintArgs']]]] = None):
@@ -54,6 +56,8 @@ class OceanNpArgs:
             pulumi.set(__self__, "enable_node_public_ip", enable_node_public_ip)
         if fallback_to_ondemand is not None:
             pulumi.set(__self__, "fallback_to_ondemand", fallback_to_ondemand)
+        if headrooms is not None:
+            pulumi.set(__self__, "headrooms", headrooms)
         if health is not None:
             pulumi.set(__self__, "health", health)
         if labels is not None:
@@ -72,6 +76,8 @@ class OceanNpArgs:
             pulumi.set(__self__, "os_disk_type", os_disk_type)
         if os_type is not None:
             pulumi.set(__self__, "os_type", os_type)
+        if scheduling is not None:
+            pulumi.set(__self__, "scheduling", scheduling)
         if spot_percentage is not None:
             pulumi.set(__self__, "spot_percentage", spot_percentage)
         if tags is not None:
@@ -162,6 +168,15 @@ class OceanNpArgs:
 
     @property
     @pulumi.getter
+    def headrooms(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanNpHeadroomArgs']]]]:
+        return pulumi.get(self, "headrooms")
+
+    @headrooms.setter
+    def headrooms(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanNpHeadroomArgs']]]]):
+        pulumi.set(self, "headrooms", value)
+
+    @property
+    @pulumi.getter
     def health(self) -> Optional[pulumi.Input['OceanNpHealthArgs']]:
         return pulumi.get(self, "health")
 
@@ -242,6 +257,15 @@ class OceanNpArgs:
         pulumi.set(self, "os_type", value)
 
     @property
+    @pulumi.getter
+    def scheduling(self) -> Optional[pulumi.Input['OceanNpSchedulingArgs']]:
+        return pulumi.get(self, "scheduling")
+
+    @scheduling.setter
+    def scheduling(self, value: Optional[pulumi.Input['OceanNpSchedulingArgs']]):
+        pulumi.set(self, "scheduling", value)
+
+    @property
     @pulumi.getter(name="spotPercentage")
     def spot_percentage(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "spot_percentage")
@@ -281,6 +305,7 @@ class _OceanNpState:
                  controller_cluster_id: Optional[pulumi.Input[str]] = None,
                  enable_node_public_ip: Optional[pulumi.Input[bool]] = None,
                  fallback_to_ondemand: Optional[pulumi.Input[bool]] = None,
+                 headrooms: Optional[pulumi.Input[Sequence[pulumi.Input['OceanNpHeadroomArgs']]]] = None,
                  health: Optional[pulumi.Input['OceanNpHealthArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  max_count: Optional[pulumi.Input[int]] = None,
@@ -290,6 +315,7 @@ class _OceanNpState:
                  os_disk_size_gb: Optional[pulumi.Input[int]] = None,
                  os_disk_type: Optional[pulumi.Input[str]] = None,
                  os_type: Optional[pulumi.Input[str]] = None,
+                 scheduling: Optional[pulumi.Input['OceanNpSchedulingArgs']] = None,
                  spot_percentage: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  taints: Optional[pulumi.Input[Sequence[pulumi.Input['OceanNpTaintArgs']]]] = None):
@@ -314,6 +340,8 @@ class _OceanNpState:
             pulumi.set(__self__, "enable_node_public_ip", enable_node_public_ip)
         if fallback_to_ondemand is not None:
             pulumi.set(__self__, "fallback_to_ondemand", fallback_to_ondemand)
+        if headrooms is not None:
+            pulumi.set(__self__, "headrooms", headrooms)
         if health is not None:
             pulumi.set(__self__, "health", health)
         if labels is not None:
@@ -332,6 +360,8 @@ class _OceanNpState:
             pulumi.set(__self__, "os_disk_type", os_disk_type)
         if os_type is not None:
             pulumi.set(__self__, "os_type", os_type)
+        if scheduling is not None:
+            pulumi.set(__self__, "scheduling", scheduling)
         if spot_percentage is not None:
             pulumi.set(__self__, "spot_percentage", spot_percentage)
         if tags is not None:
@@ -422,6 +452,15 @@ class _OceanNpState:
 
     @property
     @pulumi.getter
+    def headrooms(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanNpHeadroomArgs']]]]:
+        return pulumi.get(self, "headrooms")
+
+    @headrooms.setter
+    def headrooms(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanNpHeadroomArgs']]]]):
+        pulumi.set(self, "headrooms", value)
+
+    @property
+    @pulumi.getter
     def health(self) -> Optional[pulumi.Input['OceanNpHealthArgs']]:
         return pulumi.get(self, "health")
 
@@ -502,6 +541,15 @@ class _OceanNpState:
         pulumi.set(self, "os_type", value)
 
     @property
+    @pulumi.getter
+    def scheduling(self) -> Optional[pulumi.Input['OceanNpSchedulingArgs']]:
+        return pulumi.get(self, "scheduling")
+
+    @scheduling.setter
+    def scheduling(self, value: Optional[pulumi.Input['OceanNpSchedulingArgs']]):
+        pulumi.set(self, "scheduling", value)
+
+    @property
     @pulumi.getter(name="spotPercentage")
     def spot_percentage(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "spot_percentage")
@@ -543,6 +591,7 @@ class OceanNp(pulumi.CustomResource):
                  controller_cluster_id: Optional[pulumi.Input[str]] = None,
                  enable_node_public_ip: Optional[pulumi.Input[bool]] = None,
                  fallback_to_ondemand: Optional[pulumi.Input[bool]] = None,
+                 headrooms: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanNpHeadroomArgs']]]]] = None,
                  health: Optional[pulumi.Input[pulumi.InputType['OceanNpHealthArgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  max_count: Optional[pulumi.Input[int]] = None,
@@ -552,6 +601,7 @@ class OceanNp(pulumi.CustomResource):
                  os_disk_size_gb: Optional[pulumi.Input[int]] = None,
                  os_disk_type: Optional[pulumi.Input[str]] = None,
                  os_type: Optional[pulumi.Input[str]] = None,
+                 scheduling: Optional[pulumi.Input[pulumi.InputType['OceanNpSchedulingArgs']]] = None,
                  spot_percentage: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  taints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanNpTaintArgs']]]]] = None,
@@ -593,6 +643,7 @@ class OceanNp(pulumi.CustomResource):
                  controller_cluster_id: Optional[pulumi.Input[str]] = None,
                  enable_node_public_ip: Optional[pulumi.Input[bool]] = None,
                  fallback_to_ondemand: Optional[pulumi.Input[bool]] = None,
+                 headrooms: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanNpHeadroomArgs']]]]] = None,
                  health: Optional[pulumi.Input[pulumi.InputType['OceanNpHealthArgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  max_count: Optional[pulumi.Input[int]] = None,
@@ -602,6 +653,7 @@ class OceanNp(pulumi.CustomResource):
                  os_disk_size_gb: Optional[pulumi.Input[int]] = None,
                  os_disk_type: Optional[pulumi.Input[str]] = None,
                  os_type: Optional[pulumi.Input[str]] = None,
+                 scheduling: Optional[pulumi.Input[pulumi.InputType['OceanNpSchedulingArgs']]] = None,
                  spot_percentage: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  taints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanNpTaintArgs']]]]] = None,
@@ -631,6 +683,7 @@ class OceanNp(pulumi.CustomResource):
             __props__.__dict__["controller_cluster_id"] = controller_cluster_id
             __props__.__dict__["enable_node_public_ip"] = enable_node_public_ip
             __props__.__dict__["fallback_to_ondemand"] = fallback_to_ondemand
+            __props__.__dict__["headrooms"] = headrooms
             __props__.__dict__["health"] = health
             __props__.__dict__["labels"] = labels
             __props__.__dict__["max_count"] = max_count
@@ -640,6 +693,7 @@ class OceanNp(pulumi.CustomResource):
             __props__.__dict__["os_disk_size_gb"] = os_disk_size_gb
             __props__.__dict__["os_disk_type"] = os_disk_type
             __props__.__dict__["os_type"] = os_type
+            __props__.__dict__["scheduling"] = scheduling
             __props__.__dict__["spot_percentage"] = spot_percentage
             __props__.__dict__["tags"] = tags
             __props__.__dict__["taints"] = taints
@@ -662,6 +716,7 @@ class OceanNp(pulumi.CustomResource):
             controller_cluster_id: Optional[pulumi.Input[str]] = None,
             enable_node_public_ip: Optional[pulumi.Input[bool]] = None,
             fallback_to_ondemand: Optional[pulumi.Input[bool]] = None,
+            headrooms: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanNpHeadroomArgs']]]]] = None,
             health: Optional[pulumi.Input[pulumi.InputType['OceanNpHealthArgs']]] = None,
             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             max_count: Optional[pulumi.Input[int]] = None,
@@ -671,6 +726,7 @@ class OceanNp(pulumi.CustomResource):
             os_disk_size_gb: Optional[pulumi.Input[int]] = None,
             os_disk_type: Optional[pulumi.Input[str]] = None,
             os_type: Optional[pulumi.Input[str]] = None,
+            scheduling: Optional[pulumi.Input[pulumi.InputType['OceanNpSchedulingArgs']]] = None,
             spot_percentage: Optional[pulumi.Input[int]] = None,
             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             taints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanNpTaintArgs']]]]] = None) -> 'OceanNp':
@@ -695,6 +751,7 @@ class OceanNp(pulumi.CustomResource):
         __props__.__dict__["controller_cluster_id"] = controller_cluster_id
         __props__.__dict__["enable_node_public_ip"] = enable_node_public_ip
         __props__.__dict__["fallback_to_ondemand"] = fallback_to_ondemand
+        __props__.__dict__["headrooms"] = headrooms
         __props__.__dict__["health"] = health
         __props__.__dict__["labels"] = labels
         __props__.__dict__["max_count"] = max_count
@@ -704,6 +761,7 @@ class OceanNp(pulumi.CustomResource):
         __props__.__dict__["os_disk_size_gb"] = os_disk_size_gb
         __props__.__dict__["os_disk_type"] = os_disk_type
         __props__.__dict__["os_type"] = os_type
+        __props__.__dict__["scheduling"] = scheduling
         __props__.__dict__["spot_percentage"] = spot_percentage
         __props__.__dict__["tags"] = tags
         __props__.__dict__["taints"] = taints
@@ -756,6 +814,11 @@ class OceanNp(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def headrooms(self) -> pulumi.Output[Optional[Sequence['outputs.OceanNpHeadroom']]]:
+        return pulumi.get(self, "headrooms")
+
+    @property
+    @pulumi.getter
     def health(self) -> pulumi.Output['outputs.OceanNpHealth']:
         return pulumi.get(self, "health")
 
@@ -798,6 +861,11 @@ class OceanNp(pulumi.CustomResource):
     @pulumi.getter(name="osType")
     def os_type(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "os_type")
+
+    @property
+    @pulumi.getter
+    def scheduling(self) -> pulumi.Output[Optional['outputs.OceanNpScheduling']]:
+        return pulumi.get(self, "scheduling")
 
     @property
     @pulumi.getter(name="spotPercentage")
