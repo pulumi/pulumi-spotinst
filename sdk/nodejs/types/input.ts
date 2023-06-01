@@ -3546,6 +3546,15 @@ export namespace azure {
         maxVcpu?: pulumi.Input<number>;
     }
 
+    export interface OceanNpFilters {
+        architectures?: pulumi.Input<pulumi.Input<string>[]>;
+        maxMemoryGib?: pulumi.Input<number>;
+        maxVcpu?: pulumi.Input<number>;
+        minMemoryGib?: pulumi.Input<number>;
+        minVcpu?: pulumi.Input<number>;
+        series?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
     export interface OceanNpHeadroom {
         cpuPerUnit?: pulumi.Input<number>;
         gpuPerUnit?: pulumi.Input<number>;
@@ -3572,11 +3581,20 @@ export namespace azure {
         value: pulumi.Input<string>;
     }
 
+    export interface OceanNpVirtualNodeGroupFilters {
+        architectures?: pulumi.Input<pulumi.Input<string>[]>;
+        maxMemoryGib?: pulumi.Input<number>;
+        maxVcpu?: pulumi.Input<number>;
+        minMemoryGib?: pulumi.Input<number>;
+        minVcpu?: pulumi.Input<number>;
+        series?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
     export interface OceanNpVirtualNodeGroupHeadroom {
         cpuPerUnit?: pulumi.Input<number>;
         gpuPerUnit?: pulumi.Input<number>;
         memoryPerUnit?: pulumi.Input<number>;
-        numOfUnits: pulumi.Input<number>;
+        numOfUnits?: pulumi.Input<number>;
     }
 
     export interface OceanNpVirtualNodeGroupTaint {

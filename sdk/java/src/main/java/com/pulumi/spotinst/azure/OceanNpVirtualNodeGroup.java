@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.spotinst.Utilities;
 import com.pulumi.spotinst.azure.OceanNpVirtualNodeGroupArgs;
 import com.pulumi.spotinst.azure.inputs.OceanNpVirtualNodeGroupState;
+import com.pulumi.spotinst.azure.outputs.OceanNpVirtualNodeGroupFilters;
 import com.pulumi.spotinst.azure.outputs.OceanNpVirtualNodeGroupHeadroom;
 import com.pulumi.spotinst.azure.outputs.OceanNpVirtualNodeGroupTaint;
 import java.lang.Boolean;
@@ -40,6 +41,12 @@ public class OceanNpVirtualNodeGroup extends com.pulumi.resources.CustomResource
 
     public Output<Optional<Boolean>> fallbackToOndemand() {
         return Codegen.optional(this.fallbackToOndemand);
+    }
+    @Export(name="filters", type=OceanNpVirtualNodeGroupFilters.class, parameters={})
+    private Output</* @Nullable */ OceanNpVirtualNodeGroupFilters> filters;
+
+    public Output<Optional<OceanNpVirtualNodeGroupFilters>> filters() {
+        return Codegen.optional(this.filters);
     }
     @Export(name="headrooms", type=List.class, parameters={OceanNpVirtualNodeGroupHeadroom.class})
     private Output</* @Nullable */ List<OceanNpVirtualNodeGroupHeadroom>> headrooms;

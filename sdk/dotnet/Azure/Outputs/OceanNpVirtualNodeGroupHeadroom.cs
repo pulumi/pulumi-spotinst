@@ -16,7 +16,7 @@ namespace Pulumi.SpotInst.Azure.Outputs
         public readonly int? CpuPerUnit;
         public readonly int? GpuPerUnit;
         public readonly int? MemoryPerUnit;
-        public readonly int NumOfUnits;
+        public readonly int? NumOfUnits;
 
         [OutputConstructor]
         private OceanNpVirtualNodeGroupHeadroom(
@@ -26,7 +26,7 @@ namespace Pulumi.SpotInst.Azure.Outputs
 
             int? memoryPerUnit,
 
-            int numOfUnits)
+            int? numOfUnits)
         {
             CpuPerUnit = cpuPerUnit;
             GpuPerUnit = gpuPerUnit;

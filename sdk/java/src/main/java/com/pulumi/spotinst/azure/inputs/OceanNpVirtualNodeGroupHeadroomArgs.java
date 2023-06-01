@@ -36,11 +36,11 @@ public final class OceanNpVirtualNodeGroupHeadroomArgs extends com.pulumi.resour
         return Optional.ofNullable(this.memoryPerUnit);
     }
 
-    @Import(name="numOfUnits", required=true)
-    private Output<Integer> numOfUnits;
+    @Import(name="numOfUnits")
+    private @Nullable Output<Integer> numOfUnits;
 
-    public Output<Integer> numOfUnits() {
-        return this.numOfUnits;
+    public Optional<Output<Integer>> numOfUnits() {
+        return Optional.ofNullable(this.numOfUnits);
     }
 
     private OceanNpVirtualNodeGroupHeadroomArgs() {}
@@ -97,7 +97,7 @@ public final class OceanNpVirtualNodeGroupHeadroomArgs extends com.pulumi.resour
             return memoryPerUnit(Output.of(memoryPerUnit));
         }
 
-        public Builder numOfUnits(Output<Integer> numOfUnits) {
+        public Builder numOfUnits(@Nullable Output<Integer> numOfUnits) {
             $.numOfUnits = numOfUnits;
             return this;
         }
@@ -107,7 +107,6 @@ public final class OceanNpVirtualNodeGroupHeadroomArgs extends com.pulumi.resour
         }
 
         public OceanNpVirtualNodeGroupHeadroomArgs build() {
-            $.numOfUnits = Objects.requireNonNull($.numOfUnits, "expected parameter 'numOfUnits' to be non-null");
             return $;
         }
     }

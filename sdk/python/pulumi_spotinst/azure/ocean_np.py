@@ -25,6 +25,7 @@ class OceanNpArgs:
                  controller_cluster_id: Optional[pulumi.Input[str]] = None,
                  enable_node_public_ip: Optional[pulumi.Input[bool]] = None,
                  fallback_to_ondemand: Optional[pulumi.Input[bool]] = None,
+                 filters: Optional[pulumi.Input['OceanNpFiltersArgs']] = None,
                  headrooms: Optional[pulumi.Input[Sequence[pulumi.Input['OceanNpHeadroomArgs']]]] = None,
                  health: Optional[pulumi.Input['OceanNpHealthArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -56,6 +57,8 @@ class OceanNpArgs:
             pulumi.set(__self__, "enable_node_public_ip", enable_node_public_ip)
         if fallback_to_ondemand is not None:
             pulumi.set(__self__, "fallback_to_ondemand", fallback_to_ondemand)
+        if filters is not None:
+            pulumi.set(__self__, "filters", filters)
         if headrooms is not None:
             pulumi.set(__self__, "headrooms", headrooms)
         if health is not None:
@@ -165,6 +168,15 @@ class OceanNpArgs:
     @fallback_to_ondemand.setter
     def fallback_to_ondemand(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "fallback_to_ondemand", value)
+
+    @property
+    @pulumi.getter
+    def filters(self) -> Optional[pulumi.Input['OceanNpFiltersArgs']]:
+        return pulumi.get(self, "filters")
+
+    @filters.setter
+    def filters(self, value: Optional[pulumi.Input['OceanNpFiltersArgs']]):
+        pulumi.set(self, "filters", value)
 
     @property
     @pulumi.getter
@@ -305,6 +317,7 @@ class _OceanNpState:
                  controller_cluster_id: Optional[pulumi.Input[str]] = None,
                  enable_node_public_ip: Optional[pulumi.Input[bool]] = None,
                  fallback_to_ondemand: Optional[pulumi.Input[bool]] = None,
+                 filters: Optional[pulumi.Input['OceanNpFiltersArgs']] = None,
                  headrooms: Optional[pulumi.Input[Sequence[pulumi.Input['OceanNpHeadroomArgs']]]] = None,
                  health: Optional[pulumi.Input['OceanNpHealthArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -340,6 +353,8 @@ class _OceanNpState:
             pulumi.set(__self__, "enable_node_public_ip", enable_node_public_ip)
         if fallback_to_ondemand is not None:
             pulumi.set(__self__, "fallback_to_ondemand", fallback_to_ondemand)
+        if filters is not None:
+            pulumi.set(__self__, "filters", filters)
         if headrooms is not None:
             pulumi.set(__self__, "headrooms", headrooms)
         if health is not None:
@@ -449,6 +464,15 @@ class _OceanNpState:
     @fallback_to_ondemand.setter
     def fallback_to_ondemand(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "fallback_to_ondemand", value)
+
+    @property
+    @pulumi.getter
+    def filters(self) -> Optional[pulumi.Input['OceanNpFiltersArgs']]:
+        return pulumi.get(self, "filters")
+
+    @filters.setter
+    def filters(self, value: Optional[pulumi.Input['OceanNpFiltersArgs']]):
+        pulumi.set(self, "filters", value)
 
     @property
     @pulumi.getter
@@ -591,6 +615,7 @@ class OceanNp(pulumi.CustomResource):
                  controller_cluster_id: Optional[pulumi.Input[str]] = None,
                  enable_node_public_ip: Optional[pulumi.Input[bool]] = None,
                  fallback_to_ondemand: Optional[pulumi.Input[bool]] = None,
+                 filters: Optional[pulumi.Input[pulumi.InputType['OceanNpFiltersArgs']]] = None,
                  headrooms: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanNpHeadroomArgs']]]]] = None,
                  health: Optional[pulumi.Input[pulumi.InputType['OceanNpHealthArgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -643,6 +668,7 @@ class OceanNp(pulumi.CustomResource):
                  controller_cluster_id: Optional[pulumi.Input[str]] = None,
                  enable_node_public_ip: Optional[pulumi.Input[bool]] = None,
                  fallback_to_ondemand: Optional[pulumi.Input[bool]] = None,
+                 filters: Optional[pulumi.Input[pulumi.InputType['OceanNpFiltersArgs']]] = None,
                  headrooms: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanNpHeadroomArgs']]]]] = None,
                  health: Optional[pulumi.Input[pulumi.InputType['OceanNpHealthArgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -683,6 +709,7 @@ class OceanNp(pulumi.CustomResource):
             __props__.__dict__["controller_cluster_id"] = controller_cluster_id
             __props__.__dict__["enable_node_public_ip"] = enable_node_public_ip
             __props__.__dict__["fallback_to_ondemand"] = fallback_to_ondemand
+            __props__.__dict__["filters"] = filters
             __props__.__dict__["headrooms"] = headrooms
             __props__.__dict__["health"] = health
             __props__.__dict__["labels"] = labels
@@ -716,6 +743,7 @@ class OceanNp(pulumi.CustomResource):
             controller_cluster_id: Optional[pulumi.Input[str]] = None,
             enable_node_public_ip: Optional[pulumi.Input[bool]] = None,
             fallback_to_ondemand: Optional[pulumi.Input[bool]] = None,
+            filters: Optional[pulumi.Input[pulumi.InputType['OceanNpFiltersArgs']]] = None,
             headrooms: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanNpHeadroomArgs']]]]] = None,
             health: Optional[pulumi.Input[pulumi.InputType['OceanNpHealthArgs']]] = None,
             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -751,6 +779,7 @@ class OceanNp(pulumi.CustomResource):
         __props__.__dict__["controller_cluster_id"] = controller_cluster_id
         __props__.__dict__["enable_node_public_ip"] = enable_node_public_ip
         __props__.__dict__["fallback_to_ondemand"] = fallback_to_ondemand
+        __props__.__dict__["filters"] = filters
         __props__.__dict__["headrooms"] = headrooms
         __props__.__dict__["health"] = health
         __props__.__dict__["labels"] = labels
@@ -794,7 +823,7 @@ class OceanNp(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="availabilityZones")
-    def availability_zones(self) -> pulumi.Output[Sequence[str]]:
+    def availability_zones(self) -> pulumi.Output[Optional[Sequence[str]]]:
         return pulumi.get(self, "availability_zones")
 
     @property
@@ -811,6 +840,11 @@ class OceanNp(pulumi.CustomResource):
     @pulumi.getter(name="fallbackToOndemand")
     def fallback_to_ondemand(self) -> pulumi.Output[Optional[bool]]:
         return pulumi.get(self, "fallback_to_ondemand")
+
+    @property
+    @pulumi.getter
+    def filters(self) -> pulumi.Output[Optional['outputs.OceanNpFilters']]:
+        return pulumi.get(self, "filters")
 
     @property
     @pulumi.getter

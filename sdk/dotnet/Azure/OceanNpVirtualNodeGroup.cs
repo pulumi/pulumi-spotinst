@@ -21,6 +21,9 @@ namespace Pulumi.SpotInst.Azure
         [Output("fallbackToOndemand")]
         public Output<bool?> FallbackToOndemand { get; private set; } = null!;
 
+        [Output("filters")]
+        public Output<Outputs.OceanNpVirtualNodeGroupFilters?> Filters { get; private set; } = null!;
+
         [Output("headrooms")]
         public Output<ImmutableArray<Outputs.OceanNpVirtualNodeGroupHeadroom>> Headrooms { get; private set; } = null!;
 
@@ -120,6 +123,9 @@ namespace Pulumi.SpotInst.Azure
         [Input("fallbackToOndemand")]
         public Input<bool>? FallbackToOndemand { get; set; }
 
+        [Input("filters")]
+        public Input<Inputs.OceanNpVirtualNodeGroupFiltersArgs>? Filters { get; set; }
+
         [Input("headrooms")]
         private InputList<Inputs.OceanNpVirtualNodeGroupHeadroomArgs>? _headrooms;
         public InputList<Inputs.OceanNpVirtualNodeGroupHeadroomArgs> Headrooms
@@ -200,6 +206,9 @@ namespace Pulumi.SpotInst.Azure
 
         [Input("fallbackToOndemand")]
         public Input<bool>? FallbackToOndemand { get; set; }
+
+        [Input("filters")]
+        public Input<Inputs.OceanNpVirtualNodeGroupFiltersGetArgs>? Filters { get; set; }
 
         [Input("headrooms")]
         private InputList<Inputs.OceanNpVirtualNodeGroupHeadroomGetArgs>? _headrooms;

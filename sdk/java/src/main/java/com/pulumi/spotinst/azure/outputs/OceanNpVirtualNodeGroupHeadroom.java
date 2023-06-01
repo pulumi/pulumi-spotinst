@@ -14,7 +14,7 @@ public final class OceanNpVirtualNodeGroupHeadroom {
     private @Nullable Integer cpuPerUnit;
     private @Nullable Integer gpuPerUnit;
     private @Nullable Integer memoryPerUnit;
-    private Integer numOfUnits;
+    private @Nullable Integer numOfUnits;
 
     private OceanNpVirtualNodeGroupHeadroom() {}
     public Optional<Integer> cpuPerUnit() {
@@ -26,8 +26,8 @@ public final class OceanNpVirtualNodeGroupHeadroom {
     public Optional<Integer> memoryPerUnit() {
         return Optional.ofNullable(this.memoryPerUnit);
     }
-    public Integer numOfUnits() {
-        return this.numOfUnits;
+    public Optional<Integer> numOfUnits() {
+        return Optional.ofNullable(this.numOfUnits);
     }
 
     public static Builder builder() {
@@ -42,7 +42,7 @@ public final class OceanNpVirtualNodeGroupHeadroom {
         private @Nullable Integer cpuPerUnit;
         private @Nullable Integer gpuPerUnit;
         private @Nullable Integer memoryPerUnit;
-        private Integer numOfUnits;
+        private @Nullable Integer numOfUnits;
         public Builder() {}
         public Builder(OceanNpVirtualNodeGroupHeadroom defaults) {
     	      Objects.requireNonNull(defaults);
@@ -68,8 +68,8 @@ public final class OceanNpVirtualNodeGroupHeadroom {
             return this;
         }
         @CustomType.Setter
-        public Builder numOfUnits(Integer numOfUnits) {
-            this.numOfUnits = Objects.requireNonNull(numOfUnits);
+        public Builder numOfUnits(@Nullable Integer numOfUnits) {
+            this.numOfUnits = numOfUnits;
             return this;
         }
         public OceanNpVirtualNodeGroupHeadroom build() {

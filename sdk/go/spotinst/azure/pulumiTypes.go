@@ -5465,6 +5465,214 @@ func (o OceanNpAutoscalerResourceLimitsPtrOutput) MaxVcpu() pulumi.IntPtrOutput 
 	}).(pulumi.IntPtrOutput)
 }
 
+type OceanNpFilters struct {
+	Architectures []string `pulumi:"architectures"`
+	MaxMemoryGib  *float64 `pulumi:"maxMemoryGib"`
+	MaxVcpu       *int     `pulumi:"maxVcpu"`
+	MinMemoryGib  *float64 `pulumi:"minMemoryGib"`
+	MinVcpu       *int     `pulumi:"minVcpu"`
+	Series        []string `pulumi:"series"`
+}
+
+// OceanNpFiltersInput is an input type that accepts OceanNpFiltersArgs and OceanNpFiltersOutput values.
+// You can construct a concrete instance of `OceanNpFiltersInput` via:
+//
+//	OceanNpFiltersArgs{...}
+type OceanNpFiltersInput interface {
+	pulumi.Input
+
+	ToOceanNpFiltersOutput() OceanNpFiltersOutput
+	ToOceanNpFiltersOutputWithContext(context.Context) OceanNpFiltersOutput
+}
+
+type OceanNpFiltersArgs struct {
+	Architectures pulumi.StringArrayInput `pulumi:"architectures"`
+	MaxMemoryGib  pulumi.Float64PtrInput  `pulumi:"maxMemoryGib"`
+	MaxVcpu       pulumi.IntPtrInput      `pulumi:"maxVcpu"`
+	MinMemoryGib  pulumi.Float64PtrInput  `pulumi:"minMemoryGib"`
+	MinVcpu       pulumi.IntPtrInput      `pulumi:"minVcpu"`
+	Series        pulumi.StringArrayInput `pulumi:"series"`
+}
+
+func (OceanNpFiltersArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanNpFilters)(nil)).Elem()
+}
+
+func (i OceanNpFiltersArgs) ToOceanNpFiltersOutput() OceanNpFiltersOutput {
+	return i.ToOceanNpFiltersOutputWithContext(context.Background())
+}
+
+func (i OceanNpFiltersArgs) ToOceanNpFiltersOutputWithContext(ctx context.Context) OceanNpFiltersOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanNpFiltersOutput)
+}
+
+func (i OceanNpFiltersArgs) ToOceanNpFiltersPtrOutput() OceanNpFiltersPtrOutput {
+	return i.ToOceanNpFiltersPtrOutputWithContext(context.Background())
+}
+
+func (i OceanNpFiltersArgs) ToOceanNpFiltersPtrOutputWithContext(ctx context.Context) OceanNpFiltersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanNpFiltersOutput).ToOceanNpFiltersPtrOutputWithContext(ctx)
+}
+
+// OceanNpFiltersPtrInput is an input type that accepts OceanNpFiltersArgs, OceanNpFiltersPtr and OceanNpFiltersPtrOutput values.
+// You can construct a concrete instance of `OceanNpFiltersPtrInput` via:
+//
+//	        OceanNpFiltersArgs{...}
+//
+//	or:
+//
+//	        nil
+type OceanNpFiltersPtrInput interface {
+	pulumi.Input
+
+	ToOceanNpFiltersPtrOutput() OceanNpFiltersPtrOutput
+	ToOceanNpFiltersPtrOutputWithContext(context.Context) OceanNpFiltersPtrOutput
+}
+
+type oceanNpFiltersPtrType OceanNpFiltersArgs
+
+func OceanNpFiltersPtr(v *OceanNpFiltersArgs) OceanNpFiltersPtrInput {
+	return (*oceanNpFiltersPtrType)(v)
+}
+
+func (*oceanNpFiltersPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanNpFilters)(nil)).Elem()
+}
+
+func (i *oceanNpFiltersPtrType) ToOceanNpFiltersPtrOutput() OceanNpFiltersPtrOutput {
+	return i.ToOceanNpFiltersPtrOutputWithContext(context.Background())
+}
+
+func (i *oceanNpFiltersPtrType) ToOceanNpFiltersPtrOutputWithContext(ctx context.Context) OceanNpFiltersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanNpFiltersPtrOutput)
+}
+
+type OceanNpFiltersOutput struct{ *pulumi.OutputState }
+
+func (OceanNpFiltersOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanNpFilters)(nil)).Elem()
+}
+
+func (o OceanNpFiltersOutput) ToOceanNpFiltersOutput() OceanNpFiltersOutput {
+	return o
+}
+
+func (o OceanNpFiltersOutput) ToOceanNpFiltersOutputWithContext(ctx context.Context) OceanNpFiltersOutput {
+	return o
+}
+
+func (o OceanNpFiltersOutput) ToOceanNpFiltersPtrOutput() OceanNpFiltersPtrOutput {
+	return o.ToOceanNpFiltersPtrOutputWithContext(context.Background())
+}
+
+func (o OceanNpFiltersOutput) ToOceanNpFiltersPtrOutputWithContext(ctx context.Context) OceanNpFiltersPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OceanNpFilters) *OceanNpFilters {
+		return &v
+	}).(OceanNpFiltersPtrOutput)
+}
+
+func (o OceanNpFiltersOutput) Architectures() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OceanNpFilters) []string { return v.Architectures }).(pulumi.StringArrayOutput)
+}
+
+func (o OceanNpFiltersOutput) MaxMemoryGib() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v OceanNpFilters) *float64 { return v.MaxMemoryGib }).(pulumi.Float64PtrOutput)
+}
+
+func (o OceanNpFiltersOutput) MaxVcpu() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OceanNpFilters) *int { return v.MaxVcpu }).(pulumi.IntPtrOutput)
+}
+
+func (o OceanNpFiltersOutput) MinMemoryGib() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v OceanNpFilters) *float64 { return v.MinMemoryGib }).(pulumi.Float64PtrOutput)
+}
+
+func (o OceanNpFiltersOutput) MinVcpu() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OceanNpFilters) *int { return v.MinVcpu }).(pulumi.IntPtrOutput)
+}
+
+func (o OceanNpFiltersOutput) Series() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OceanNpFilters) []string { return v.Series }).(pulumi.StringArrayOutput)
+}
+
+type OceanNpFiltersPtrOutput struct{ *pulumi.OutputState }
+
+func (OceanNpFiltersPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanNpFilters)(nil)).Elem()
+}
+
+func (o OceanNpFiltersPtrOutput) ToOceanNpFiltersPtrOutput() OceanNpFiltersPtrOutput {
+	return o
+}
+
+func (o OceanNpFiltersPtrOutput) ToOceanNpFiltersPtrOutputWithContext(ctx context.Context) OceanNpFiltersPtrOutput {
+	return o
+}
+
+func (o OceanNpFiltersPtrOutput) Elem() OceanNpFiltersOutput {
+	return o.ApplyT(func(v *OceanNpFilters) OceanNpFilters {
+		if v != nil {
+			return *v
+		}
+		var ret OceanNpFilters
+		return ret
+	}).(OceanNpFiltersOutput)
+}
+
+func (o OceanNpFiltersPtrOutput) Architectures() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OceanNpFilters) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Architectures
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o OceanNpFiltersPtrOutput) MaxMemoryGib() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *OceanNpFilters) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.MaxMemoryGib
+	}).(pulumi.Float64PtrOutput)
+}
+
+func (o OceanNpFiltersPtrOutput) MaxVcpu() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OceanNpFilters) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxVcpu
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o OceanNpFiltersPtrOutput) MinMemoryGib() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *OceanNpFilters) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.MinMemoryGib
+	}).(pulumi.Float64PtrOutput)
+}
+
+func (o OceanNpFiltersPtrOutput) MinVcpu() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OceanNpFilters) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinVcpu
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o OceanNpFiltersPtrOutput) Series() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OceanNpFilters) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Series
+	}).(pulumi.StringArrayOutput)
+}
+
 type OceanNpHeadroom struct {
 	CpuPerUnit    *int `pulumi:"cpuPerUnit"`
 	GpuPerUnit    *int `pulumi:"gpuPerUnit"`
@@ -6097,11 +6305,219 @@ func (o OceanNpTaintArrayOutput) Index(i pulumi.IntInput) OceanNpTaintOutput {
 	}).(OceanNpTaintOutput)
 }
 
+type OceanNpVirtualNodeGroupFilters struct {
+	Architectures []string `pulumi:"architectures"`
+	MaxMemoryGib  *float64 `pulumi:"maxMemoryGib"`
+	MaxVcpu       *int     `pulumi:"maxVcpu"`
+	MinMemoryGib  *float64 `pulumi:"minMemoryGib"`
+	MinVcpu       *int     `pulumi:"minVcpu"`
+	Series        []string `pulumi:"series"`
+}
+
+// OceanNpVirtualNodeGroupFiltersInput is an input type that accepts OceanNpVirtualNodeGroupFiltersArgs and OceanNpVirtualNodeGroupFiltersOutput values.
+// You can construct a concrete instance of `OceanNpVirtualNodeGroupFiltersInput` via:
+//
+//	OceanNpVirtualNodeGroupFiltersArgs{...}
+type OceanNpVirtualNodeGroupFiltersInput interface {
+	pulumi.Input
+
+	ToOceanNpVirtualNodeGroupFiltersOutput() OceanNpVirtualNodeGroupFiltersOutput
+	ToOceanNpVirtualNodeGroupFiltersOutputWithContext(context.Context) OceanNpVirtualNodeGroupFiltersOutput
+}
+
+type OceanNpVirtualNodeGroupFiltersArgs struct {
+	Architectures pulumi.StringArrayInput `pulumi:"architectures"`
+	MaxMemoryGib  pulumi.Float64PtrInput  `pulumi:"maxMemoryGib"`
+	MaxVcpu       pulumi.IntPtrInput      `pulumi:"maxVcpu"`
+	MinMemoryGib  pulumi.Float64PtrInput  `pulumi:"minMemoryGib"`
+	MinVcpu       pulumi.IntPtrInput      `pulumi:"minVcpu"`
+	Series        pulumi.StringArrayInput `pulumi:"series"`
+}
+
+func (OceanNpVirtualNodeGroupFiltersArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanNpVirtualNodeGroupFilters)(nil)).Elem()
+}
+
+func (i OceanNpVirtualNodeGroupFiltersArgs) ToOceanNpVirtualNodeGroupFiltersOutput() OceanNpVirtualNodeGroupFiltersOutput {
+	return i.ToOceanNpVirtualNodeGroupFiltersOutputWithContext(context.Background())
+}
+
+func (i OceanNpVirtualNodeGroupFiltersArgs) ToOceanNpVirtualNodeGroupFiltersOutputWithContext(ctx context.Context) OceanNpVirtualNodeGroupFiltersOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanNpVirtualNodeGroupFiltersOutput)
+}
+
+func (i OceanNpVirtualNodeGroupFiltersArgs) ToOceanNpVirtualNodeGroupFiltersPtrOutput() OceanNpVirtualNodeGroupFiltersPtrOutput {
+	return i.ToOceanNpVirtualNodeGroupFiltersPtrOutputWithContext(context.Background())
+}
+
+func (i OceanNpVirtualNodeGroupFiltersArgs) ToOceanNpVirtualNodeGroupFiltersPtrOutputWithContext(ctx context.Context) OceanNpVirtualNodeGroupFiltersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanNpVirtualNodeGroupFiltersOutput).ToOceanNpVirtualNodeGroupFiltersPtrOutputWithContext(ctx)
+}
+
+// OceanNpVirtualNodeGroupFiltersPtrInput is an input type that accepts OceanNpVirtualNodeGroupFiltersArgs, OceanNpVirtualNodeGroupFiltersPtr and OceanNpVirtualNodeGroupFiltersPtrOutput values.
+// You can construct a concrete instance of `OceanNpVirtualNodeGroupFiltersPtrInput` via:
+//
+//	        OceanNpVirtualNodeGroupFiltersArgs{...}
+//
+//	or:
+//
+//	        nil
+type OceanNpVirtualNodeGroupFiltersPtrInput interface {
+	pulumi.Input
+
+	ToOceanNpVirtualNodeGroupFiltersPtrOutput() OceanNpVirtualNodeGroupFiltersPtrOutput
+	ToOceanNpVirtualNodeGroupFiltersPtrOutputWithContext(context.Context) OceanNpVirtualNodeGroupFiltersPtrOutput
+}
+
+type oceanNpVirtualNodeGroupFiltersPtrType OceanNpVirtualNodeGroupFiltersArgs
+
+func OceanNpVirtualNodeGroupFiltersPtr(v *OceanNpVirtualNodeGroupFiltersArgs) OceanNpVirtualNodeGroupFiltersPtrInput {
+	return (*oceanNpVirtualNodeGroupFiltersPtrType)(v)
+}
+
+func (*oceanNpVirtualNodeGroupFiltersPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanNpVirtualNodeGroupFilters)(nil)).Elem()
+}
+
+func (i *oceanNpVirtualNodeGroupFiltersPtrType) ToOceanNpVirtualNodeGroupFiltersPtrOutput() OceanNpVirtualNodeGroupFiltersPtrOutput {
+	return i.ToOceanNpVirtualNodeGroupFiltersPtrOutputWithContext(context.Background())
+}
+
+func (i *oceanNpVirtualNodeGroupFiltersPtrType) ToOceanNpVirtualNodeGroupFiltersPtrOutputWithContext(ctx context.Context) OceanNpVirtualNodeGroupFiltersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanNpVirtualNodeGroupFiltersPtrOutput)
+}
+
+type OceanNpVirtualNodeGroupFiltersOutput struct{ *pulumi.OutputState }
+
+func (OceanNpVirtualNodeGroupFiltersOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanNpVirtualNodeGroupFilters)(nil)).Elem()
+}
+
+func (o OceanNpVirtualNodeGroupFiltersOutput) ToOceanNpVirtualNodeGroupFiltersOutput() OceanNpVirtualNodeGroupFiltersOutput {
+	return o
+}
+
+func (o OceanNpVirtualNodeGroupFiltersOutput) ToOceanNpVirtualNodeGroupFiltersOutputWithContext(ctx context.Context) OceanNpVirtualNodeGroupFiltersOutput {
+	return o
+}
+
+func (o OceanNpVirtualNodeGroupFiltersOutput) ToOceanNpVirtualNodeGroupFiltersPtrOutput() OceanNpVirtualNodeGroupFiltersPtrOutput {
+	return o.ToOceanNpVirtualNodeGroupFiltersPtrOutputWithContext(context.Background())
+}
+
+func (o OceanNpVirtualNodeGroupFiltersOutput) ToOceanNpVirtualNodeGroupFiltersPtrOutputWithContext(ctx context.Context) OceanNpVirtualNodeGroupFiltersPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OceanNpVirtualNodeGroupFilters) *OceanNpVirtualNodeGroupFilters {
+		return &v
+	}).(OceanNpVirtualNodeGroupFiltersPtrOutput)
+}
+
+func (o OceanNpVirtualNodeGroupFiltersOutput) Architectures() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OceanNpVirtualNodeGroupFilters) []string { return v.Architectures }).(pulumi.StringArrayOutput)
+}
+
+func (o OceanNpVirtualNodeGroupFiltersOutput) MaxMemoryGib() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v OceanNpVirtualNodeGroupFilters) *float64 { return v.MaxMemoryGib }).(pulumi.Float64PtrOutput)
+}
+
+func (o OceanNpVirtualNodeGroupFiltersOutput) MaxVcpu() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OceanNpVirtualNodeGroupFilters) *int { return v.MaxVcpu }).(pulumi.IntPtrOutput)
+}
+
+func (o OceanNpVirtualNodeGroupFiltersOutput) MinMemoryGib() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v OceanNpVirtualNodeGroupFilters) *float64 { return v.MinMemoryGib }).(pulumi.Float64PtrOutput)
+}
+
+func (o OceanNpVirtualNodeGroupFiltersOutput) MinVcpu() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OceanNpVirtualNodeGroupFilters) *int { return v.MinVcpu }).(pulumi.IntPtrOutput)
+}
+
+func (o OceanNpVirtualNodeGroupFiltersOutput) Series() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OceanNpVirtualNodeGroupFilters) []string { return v.Series }).(pulumi.StringArrayOutput)
+}
+
+type OceanNpVirtualNodeGroupFiltersPtrOutput struct{ *pulumi.OutputState }
+
+func (OceanNpVirtualNodeGroupFiltersPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanNpVirtualNodeGroupFilters)(nil)).Elem()
+}
+
+func (o OceanNpVirtualNodeGroupFiltersPtrOutput) ToOceanNpVirtualNodeGroupFiltersPtrOutput() OceanNpVirtualNodeGroupFiltersPtrOutput {
+	return o
+}
+
+func (o OceanNpVirtualNodeGroupFiltersPtrOutput) ToOceanNpVirtualNodeGroupFiltersPtrOutputWithContext(ctx context.Context) OceanNpVirtualNodeGroupFiltersPtrOutput {
+	return o
+}
+
+func (o OceanNpVirtualNodeGroupFiltersPtrOutput) Elem() OceanNpVirtualNodeGroupFiltersOutput {
+	return o.ApplyT(func(v *OceanNpVirtualNodeGroupFilters) OceanNpVirtualNodeGroupFilters {
+		if v != nil {
+			return *v
+		}
+		var ret OceanNpVirtualNodeGroupFilters
+		return ret
+	}).(OceanNpVirtualNodeGroupFiltersOutput)
+}
+
+func (o OceanNpVirtualNodeGroupFiltersPtrOutput) Architectures() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OceanNpVirtualNodeGroupFilters) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Architectures
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o OceanNpVirtualNodeGroupFiltersPtrOutput) MaxMemoryGib() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *OceanNpVirtualNodeGroupFilters) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.MaxMemoryGib
+	}).(pulumi.Float64PtrOutput)
+}
+
+func (o OceanNpVirtualNodeGroupFiltersPtrOutput) MaxVcpu() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OceanNpVirtualNodeGroupFilters) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxVcpu
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o OceanNpVirtualNodeGroupFiltersPtrOutput) MinMemoryGib() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *OceanNpVirtualNodeGroupFilters) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.MinMemoryGib
+	}).(pulumi.Float64PtrOutput)
+}
+
+func (o OceanNpVirtualNodeGroupFiltersPtrOutput) MinVcpu() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OceanNpVirtualNodeGroupFilters) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinVcpu
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o OceanNpVirtualNodeGroupFiltersPtrOutput) Series() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OceanNpVirtualNodeGroupFilters) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Series
+	}).(pulumi.StringArrayOutput)
+}
+
 type OceanNpVirtualNodeGroupHeadroom struct {
 	CpuPerUnit    *int `pulumi:"cpuPerUnit"`
 	GpuPerUnit    *int `pulumi:"gpuPerUnit"`
 	MemoryPerUnit *int `pulumi:"memoryPerUnit"`
-	NumOfUnits    int  `pulumi:"numOfUnits"`
+	NumOfUnits    *int `pulumi:"numOfUnits"`
 }
 
 // OceanNpVirtualNodeGroupHeadroomInput is an input type that accepts OceanNpVirtualNodeGroupHeadroomArgs and OceanNpVirtualNodeGroupHeadroomOutput values.
@@ -6119,7 +6535,7 @@ type OceanNpVirtualNodeGroupHeadroomArgs struct {
 	CpuPerUnit    pulumi.IntPtrInput `pulumi:"cpuPerUnit"`
 	GpuPerUnit    pulumi.IntPtrInput `pulumi:"gpuPerUnit"`
 	MemoryPerUnit pulumi.IntPtrInput `pulumi:"memoryPerUnit"`
-	NumOfUnits    pulumi.IntInput    `pulumi:"numOfUnits"`
+	NumOfUnits    pulumi.IntPtrInput `pulumi:"numOfUnits"`
 }
 
 func (OceanNpVirtualNodeGroupHeadroomArgs) ElementType() reflect.Type {
@@ -6185,8 +6601,8 @@ func (o OceanNpVirtualNodeGroupHeadroomOutput) MemoryPerUnit() pulumi.IntPtrOutp
 	return o.ApplyT(func(v OceanNpVirtualNodeGroupHeadroom) *int { return v.MemoryPerUnit }).(pulumi.IntPtrOutput)
 }
 
-func (o OceanNpVirtualNodeGroupHeadroomOutput) NumOfUnits() pulumi.IntOutput {
-	return o.ApplyT(func(v OceanNpVirtualNodeGroupHeadroom) int { return v.NumOfUnits }).(pulumi.IntOutput)
+func (o OceanNpVirtualNodeGroupHeadroomOutput) NumOfUnits() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OceanNpVirtualNodeGroupHeadroom) *int { return v.NumOfUnits }).(pulumi.IntPtrOutput)
 }
 
 type OceanNpVirtualNodeGroupHeadroomArrayOutput struct{ *pulumi.OutputState }
@@ -7806,6 +8222,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpAutoscalerAutoscaleHeadroomAutomaticPtrInput)(nil)).Elem(), OceanNpAutoscalerAutoscaleHeadroomAutomaticArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpAutoscalerResourceLimitsInput)(nil)).Elem(), OceanNpAutoscalerResourceLimitsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpAutoscalerResourceLimitsPtrInput)(nil)).Elem(), OceanNpAutoscalerResourceLimitsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpFiltersInput)(nil)).Elem(), OceanNpFiltersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpFiltersPtrInput)(nil)).Elem(), OceanNpFiltersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpHeadroomInput)(nil)).Elem(), OceanNpHeadroomArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpHeadroomArrayInput)(nil)).Elem(), OceanNpHeadroomArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpHealthInput)(nil)).Elem(), OceanNpHealthArgs{})
@@ -7816,6 +8234,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpSchedulingShutdownHoursPtrInput)(nil)).Elem(), OceanNpSchedulingShutdownHoursArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpTaintInput)(nil)).Elem(), OceanNpTaintArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpTaintArrayInput)(nil)).Elem(), OceanNpTaintArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpVirtualNodeGroupFiltersInput)(nil)).Elem(), OceanNpVirtualNodeGroupFiltersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpVirtualNodeGroupFiltersPtrInput)(nil)).Elem(), OceanNpVirtualNodeGroupFiltersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpVirtualNodeGroupHeadroomInput)(nil)).Elem(), OceanNpVirtualNodeGroupHeadroomArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpVirtualNodeGroupHeadroomArrayInput)(nil)).Elem(), OceanNpVirtualNodeGroupHeadroomArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpVirtualNodeGroupTaintInput)(nil)).Elem(), OceanNpVirtualNodeGroupTaintArgs{})
@@ -7922,6 +8342,8 @@ func init() {
 	pulumi.RegisterOutputType(OceanNpAutoscalerAutoscaleHeadroomAutomaticPtrOutput{})
 	pulumi.RegisterOutputType(OceanNpAutoscalerResourceLimitsOutput{})
 	pulumi.RegisterOutputType(OceanNpAutoscalerResourceLimitsPtrOutput{})
+	pulumi.RegisterOutputType(OceanNpFiltersOutput{})
+	pulumi.RegisterOutputType(OceanNpFiltersPtrOutput{})
 	pulumi.RegisterOutputType(OceanNpHeadroomOutput{})
 	pulumi.RegisterOutputType(OceanNpHeadroomArrayOutput{})
 	pulumi.RegisterOutputType(OceanNpHealthOutput{})
@@ -7932,6 +8354,8 @@ func init() {
 	pulumi.RegisterOutputType(OceanNpSchedulingShutdownHoursPtrOutput{})
 	pulumi.RegisterOutputType(OceanNpTaintOutput{})
 	pulumi.RegisterOutputType(OceanNpTaintArrayOutput{})
+	pulumi.RegisterOutputType(OceanNpVirtualNodeGroupFiltersOutput{})
+	pulumi.RegisterOutputType(OceanNpVirtualNodeGroupFiltersPtrOutput{})
 	pulumi.RegisterOutputType(OceanNpVirtualNodeGroupHeadroomOutput{})
 	pulumi.RegisterOutputType(OceanNpVirtualNodeGroupHeadroomArrayOutput{})
 	pulumi.RegisterOutputType(OceanNpVirtualNodeGroupTaintOutput{})

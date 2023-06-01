@@ -3548,6 +3548,15 @@ export namespace azure {
         maxVcpu?: number;
     }
 
+    export interface OceanNpFilters {
+        architectures?: string[];
+        maxMemoryGib?: number;
+        maxVcpu?: number;
+        minMemoryGib?: number;
+        minVcpu?: number;
+        series?: string[];
+    }
+
     export interface OceanNpHeadroom {
         cpuPerUnit?: number;
         gpuPerUnit?: number;
@@ -3574,11 +3583,20 @@ export namespace azure {
         value: string;
     }
 
+    export interface OceanNpVirtualNodeGroupFilters {
+        architectures?: string[];
+        maxMemoryGib?: number;
+        maxVcpu?: number;
+        minMemoryGib?: number;
+        minVcpu?: number;
+        series?: string[];
+    }
+
     export interface OceanNpVirtualNodeGroupHeadroom {
         cpuPerUnit?: number;
         gpuPerUnit?: number;
         memoryPerUnit?: number;
-        numOfUnits: number;
+        numOfUnits?: number;
     }
 
     export interface OceanNpVirtualNodeGroupTaint {

@@ -39,6 +39,9 @@ namespace Pulumi.SpotInst.Azure
         [Output("fallbackToOndemand")]
         public Output<bool?> FallbackToOndemand { get; private set; } = null!;
 
+        [Output("filters")]
+        public Output<Outputs.OceanNpFilters?> Filters { get; private set; } = null!;
+
         [Output("headrooms")]
         public Output<ImmutableArray<Outputs.OceanNpHeadroom>> Headrooms { get; private set; } = null!;
 
@@ -159,6 +162,9 @@ namespace Pulumi.SpotInst.Azure
         [Input("fallbackToOndemand")]
         public Input<bool>? FallbackToOndemand { get; set; }
 
+        [Input("filters")]
+        public Input<Inputs.OceanNpFiltersArgs>? Filters { get; set; }
+
         [Input("headrooms")]
         private InputList<Inputs.OceanNpHeadroomArgs>? _headrooms;
         public InputList<Inputs.OceanNpHeadroomArgs> Headrooms
@@ -260,6 +266,9 @@ namespace Pulumi.SpotInst.Azure
 
         [Input("fallbackToOndemand")]
         public Input<bool>? FallbackToOndemand { get; set; }
+
+        [Input("filters")]
+        public Input<Inputs.OceanNpFiltersGetArgs>? Filters { get; set; }
 
         [Input("headrooms")]
         private InputList<Inputs.OceanNpHeadroomGetArgs>? _headrooms;

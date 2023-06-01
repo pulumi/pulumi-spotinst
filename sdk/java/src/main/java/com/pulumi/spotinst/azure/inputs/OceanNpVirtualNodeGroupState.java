@@ -5,6 +5,7 @@ package com.pulumi.spotinst.azure.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.spotinst.azure.inputs.OceanNpVirtualNodeGroupFiltersArgs;
 import com.pulumi.spotinst.azure.inputs.OceanNpVirtualNodeGroupHeadroomArgs;
 import com.pulumi.spotinst.azure.inputs.OceanNpVirtualNodeGroupTaintArgs;
 import java.lang.Boolean;
@@ -41,6 +42,13 @@ public final class OceanNpVirtualNodeGroupState extends com.pulumi.resources.Res
 
     public Optional<Output<Boolean>> fallbackToOndemand() {
         return Optional.ofNullable(this.fallbackToOndemand);
+    }
+
+    @Import(name="filters")
+    private @Nullable Output<OceanNpVirtualNodeGroupFiltersArgs> filters;
+
+    public Optional<Output<OceanNpVirtualNodeGroupFiltersArgs>> filters() {
+        return Optional.ofNullable(this.filters);
     }
 
     @Import(name="headrooms")
@@ -140,6 +148,7 @@ public final class OceanNpVirtualNodeGroupState extends com.pulumi.resources.Res
         this.availabilityZones = $.availabilityZones;
         this.enableNodePublicIp = $.enableNodePublicIp;
         this.fallbackToOndemand = $.fallbackToOndemand;
+        this.filters = $.filters;
         this.headrooms = $.headrooms;
         this.labels = $.labels;
         this.maxCount = $.maxCount;
@@ -202,6 +211,15 @@ public final class OceanNpVirtualNodeGroupState extends com.pulumi.resources.Res
 
         public Builder fallbackToOndemand(Boolean fallbackToOndemand) {
             return fallbackToOndemand(Output.of(fallbackToOndemand));
+        }
+
+        public Builder filters(@Nullable Output<OceanNpVirtualNodeGroupFiltersArgs> filters) {
+            $.filters = filters;
+            return this;
+        }
+
+        public Builder filters(OceanNpVirtualNodeGroupFiltersArgs filters) {
+            return filters(Output.of(filters));
         }
 
         public Builder headrooms(@Nullable Output<List<OceanNpVirtualNodeGroupHeadroomArgs>> headrooms) {

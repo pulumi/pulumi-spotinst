@@ -6,6 +6,7 @@ package com.pulumi.spotinst.azure;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.spotinst.azure.inputs.OceanNpAutoscalerArgs;
+import com.pulumi.spotinst.azure.inputs.OceanNpFiltersArgs;
 import com.pulumi.spotinst.azure.inputs.OceanNpHeadroomArgs;
 import com.pulumi.spotinst.azure.inputs.OceanNpHealthArgs;
 import com.pulumi.spotinst.azure.inputs.OceanNpSchedulingArgs;
@@ -86,6 +87,13 @@ public final class OceanNpArgs extends com.pulumi.resources.ResourceArgs {
 
     public Optional<Output<Boolean>> fallbackToOndemand() {
         return Optional.ofNullable(this.fallbackToOndemand);
+    }
+
+    @Import(name="filters")
+    private @Nullable Output<OceanNpFiltersArgs> filters;
+
+    public Optional<Output<OceanNpFiltersArgs>> filters() {
+        return Optional.ofNullable(this.filters);
     }
 
     @Import(name="headrooms")
@@ -198,6 +206,7 @@ public final class OceanNpArgs extends com.pulumi.resources.ResourceArgs {
         this.controllerClusterId = $.controllerClusterId;
         this.enableNodePublicIp = $.enableNodePublicIp;
         this.fallbackToOndemand = $.fallbackToOndemand;
+        this.filters = $.filters;
         this.headrooms = $.headrooms;
         this.health = $.health;
         this.labels = $.labels;
@@ -315,6 +324,15 @@ public final class OceanNpArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder fallbackToOndemand(Boolean fallbackToOndemand) {
             return fallbackToOndemand(Output.of(fallbackToOndemand));
+        }
+
+        public Builder filters(@Nullable Output<OceanNpFiltersArgs> filters) {
+            $.filters = filters;
+            return this;
+        }
+
+        public Builder filters(OceanNpFiltersArgs filters) {
+            return filters(Output.of(filters));
         }
 
         public Builder headrooms(@Nullable Output<List<OceanNpHeadroomArgs>> headrooms) {

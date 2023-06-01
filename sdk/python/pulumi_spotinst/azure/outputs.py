@@ -50,11 +50,13 @@ __all__ = [
     'OceanNpAutoscalerAutoscaleHeadroom',
     'OceanNpAutoscalerAutoscaleHeadroomAutomatic',
     'OceanNpAutoscalerResourceLimits',
+    'OceanNpFilters',
     'OceanNpHeadroom',
     'OceanNpHealth',
     'OceanNpScheduling',
     'OceanNpSchedulingShutdownHours',
     'OceanNpTaint',
+    'OceanNpVirtualNodeGroupFilters',
     'OceanNpVirtualNodeGroupHeadroom',
     'OceanNpVirtualNodeGroupTaint',
     'OceanOsDisk',
@@ -2159,6 +2161,82 @@ class OceanNpAutoscalerResourceLimits(dict):
 
 
 @pulumi.output_type
+class OceanNpFilters(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxMemoryGib":
+            suggest = "max_memory_gib"
+        elif key == "maxVcpu":
+            suggest = "max_vcpu"
+        elif key == "minMemoryGib":
+            suggest = "min_memory_gib"
+        elif key == "minVcpu":
+            suggest = "min_vcpu"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OceanNpFilters. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OceanNpFilters.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OceanNpFilters.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 architectures: Optional[Sequence[str]] = None,
+                 max_memory_gib: Optional[float] = None,
+                 max_vcpu: Optional[int] = None,
+                 min_memory_gib: Optional[float] = None,
+                 min_vcpu: Optional[int] = None,
+                 series: Optional[Sequence[str]] = None):
+        if architectures is not None:
+            pulumi.set(__self__, "architectures", architectures)
+        if max_memory_gib is not None:
+            pulumi.set(__self__, "max_memory_gib", max_memory_gib)
+        if max_vcpu is not None:
+            pulumi.set(__self__, "max_vcpu", max_vcpu)
+        if min_memory_gib is not None:
+            pulumi.set(__self__, "min_memory_gib", min_memory_gib)
+        if min_vcpu is not None:
+            pulumi.set(__self__, "min_vcpu", min_vcpu)
+        if series is not None:
+            pulumi.set(__self__, "series", series)
+
+    @property
+    @pulumi.getter
+    def architectures(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "architectures")
+
+    @property
+    @pulumi.getter(name="maxMemoryGib")
+    def max_memory_gib(self) -> Optional[float]:
+        return pulumi.get(self, "max_memory_gib")
+
+    @property
+    @pulumi.getter(name="maxVcpu")
+    def max_vcpu(self) -> Optional[int]:
+        return pulumi.get(self, "max_vcpu")
+
+    @property
+    @pulumi.getter(name="minMemoryGib")
+    def min_memory_gib(self) -> Optional[float]:
+        return pulumi.get(self, "min_memory_gib")
+
+    @property
+    @pulumi.getter(name="minVcpu")
+    def min_vcpu(self) -> Optional[int]:
+        return pulumi.get(self, "min_vcpu")
+
+    @property
+    @pulumi.getter
+    def series(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "series")
+
+
+@pulumi.output_type
 class OceanNpHeadroom(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -2344,18 +2422,94 @@ class OceanNpTaint(dict):
 
 
 @pulumi.output_type
+class OceanNpVirtualNodeGroupFilters(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxMemoryGib":
+            suggest = "max_memory_gib"
+        elif key == "maxVcpu":
+            suggest = "max_vcpu"
+        elif key == "minMemoryGib":
+            suggest = "min_memory_gib"
+        elif key == "minVcpu":
+            suggest = "min_vcpu"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OceanNpVirtualNodeGroupFilters. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OceanNpVirtualNodeGroupFilters.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OceanNpVirtualNodeGroupFilters.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 architectures: Optional[Sequence[str]] = None,
+                 max_memory_gib: Optional[float] = None,
+                 max_vcpu: Optional[int] = None,
+                 min_memory_gib: Optional[float] = None,
+                 min_vcpu: Optional[int] = None,
+                 series: Optional[Sequence[str]] = None):
+        if architectures is not None:
+            pulumi.set(__self__, "architectures", architectures)
+        if max_memory_gib is not None:
+            pulumi.set(__self__, "max_memory_gib", max_memory_gib)
+        if max_vcpu is not None:
+            pulumi.set(__self__, "max_vcpu", max_vcpu)
+        if min_memory_gib is not None:
+            pulumi.set(__self__, "min_memory_gib", min_memory_gib)
+        if min_vcpu is not None:
+            pulumi.set(__self__, "min_vcpu", min_vcpu)
+        if series is not None:
+            pulumi.set(__self__, "series", series)
+
+    @property
+    @pulumi.getter
+    def architectures(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "architectures")
+
+    @property
+    @pulumi.getter(name="maxMemoryGib")
+    def max_memory_gib(self) -> Optional[float]:
+        return pulumi.get(self, "max_memory_gib")
+
+    @property
+    @pulumi.getter(name="maxVcpu")
+    def max_vcpu(self) -> Optional[int]:
+        return pulumi.get(self, "max_vcpu")
+
+    @property
+    @pulumi.getter(name="minMemoryGib")
+    def min_memory_gib(self) -> Optional[float]:
+        return pulumi.get(self, "min_memory_gib")
+
+    @property
+    @pulumi.getter(name="minVcpu")
+    def min_vcpu(self) -> Optional[int]:
+        return pulumi.get(self, "min_vcpu")
+
+    @property
+    @pulumi.getter
+    def series(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "series")
+
+
+@pulumi.output_type
 class OceanNpVirtualNodeGroupHeadroom(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "numOfUnits":
-            suggest = "num_of_units"
-        elif key == "cpuPerUnit":
+        if key == "cpuPerUnit":
             suggest = "cpu_per_unit"
         elif key == "gpuPerUnit":
             suggest = "gpu_per_unit"
         elif key == "memoryPerUnit":
             suggest = "memory_per_unit"
+        elif key == "numOfUnits":
+            suggest = "num_of_units"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in OceanNpVirtualNodeGroupHeadroom. Access the value via the '{suggest}' property getter instead.")
@@ -2369,22 +2523,18 @@ class OceanNpVirtualNodeGroupHeadroom(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 num_of_units: int,
                  cpu_per_unit: Optional[int] = None,
                  gpu_per_unit: Optional[int] = None,
-                 memory_per_unit: Optional[int] = None):
-        pulumi.set(__self__, "num_of_units", num_of_units)
+                 memory_per_unit: Optional[int] = None,
+                 num_of_units: Optional[int] = None):
         if cpu_per_unit is not None:
             pulumi.set(__self__, "cpu_per_unit", cpu_per_unit)
         if gpu_per_unit is not None:
             pulumi.set(__self__, "gpu_per_unit", gpu_per_unit)
         if memory_per_unit is not None:
             pulumi.set(__self__, "memory_per_unit", memory_per_unit)
-
-    @property
-    @pulumi.getter(name="numOfUnits")
-    def num_of_units(self) -> int:
-        return pulumi.get(self, "num_of_units")
+        if num_of_units is not None:
+            pulumi.set(__self__, "num_of_units", num_of_units)
 
     @property
     @pulumi.getter(name="cpuPerUnit")
@@ -2400,6 +2550,11 @@ class OceanNpVirtualNodeGroupHeadroom(dict):
     @pulumi.getter(name="memoryPerUnit")
     def memory_per_unit(self) -> Optional[int]:
         return pulumi.get(self, "memory_per_unit")
+
+    @property
+    @pulumi.getter(name="numOfUnits")
+    def num_of_units(self) -> Optional[int]:
+        return pulumi.get(self, "num_of_units")
 
 
 @pulumi.output_type
