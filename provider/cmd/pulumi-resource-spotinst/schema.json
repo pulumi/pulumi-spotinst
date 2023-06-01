@@ -4712,6 +4712,35 @@
             },
             "type": "object"
         },
+        "spotinst:azure/OceanNpFilters:OceanNpFilters": {
+            "properties": {
+                "architectures": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "maxMemoryGib": {
+                    "type": "number"
+                },
+                "maxVcpu": {
+                    "type": "integer"
+                },
+                "minMemoryGib": {
+                    "type": "number"
+                },
+                "minVcpu": {
+                    "type": "integer"
+                },
+                "series": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "type": "object"
+        },
         "spotinst:azure/OceanNpHeadroom:OceanNpHeadroom": {
             "properties": {
                 "cpuPerUnit": {
@@ -4781,6 +4810,35 @@
                 "value"
             ]
         },
+        "spotinst:azure/OceanNpVirtualNodeGroupFilters:OceanNpVirtualNodeGroupFilters": {
+            "properties": {
+                "architectures": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "maxMemoryGib": {
+                    "type": "number"
+                },
+                "maxVcpu": {
+                    "type": "integer"
+                },
+                "minMemoryGib": {
+                    "type": "number"
+                },
+                "minVcpu": {
+                    "type": "integer"
+                },
+                "series": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "type": "object"
+        },
         "spotinst:azure/OceanNpVirtualNodeGroupHeadroom:OceanNpVirtualNodeGroupHeadroom": {
             "properties": {
                 "cpuPerUnit": {
@@ -4796,10 +4854,7 @@
                     "type": "integer"
                 }
             },
-            "type": "object",
-            "required": [
-                "numOfUnits"
-            ]
+            "type": "object"
         },
         "spotinst:azure/OceanNpVirtualNodeGroupTaint:OceanNpVirtualNodeGroupTaint": {
             "properties": {
@@ -13441,6 +13496,9 @@
                 "fallbackToOndemand": {
                     "type": "boolean"
                 },
+                "filters": {
+                    "$ref": "#/types/spotinst:azure/OceanNpFilters:OceanNpFilters"
+                },
                 "headrooms": {
                     "type": "array",
                     "items": {
@@ -13501,7 +13559,6 @@
                 "aksInfrastructureResourceGroupName",
                 "aksRegion",
                 "aksResourceGroupName",
-                "availabilityZones",
                 "controllerClusterId",
                 "health",
                 "name"
@@ -13536,6 +13593,9 @@
                 },
                 "fallbackToOndemand": {
                     "type": "boolean"
+                },
+                "filters": {
+                    "$ref": "#/types/spotinst:azure/OceanNpFilters:OceanNpFilters"
                 },
                 "headrooms": {
                     "type": "array",
@@ -13631,6 +13691,9 @@
                     "fallbackToOndemand": {
                         "type": "boolean"
                     },
+                    "filters": {
+                        "$ref": "#/types/spotinst:azure/OceanNpFilters:OceanNpFilters"
+                    },
                     "headrooms": {
                         "type": "array",
                         "items": {
@@ -13703,6 +13766,9 @@
                 "fallbackToOndemand": {
                     "type": "boolean"
                 },
+                "filters": {
+                    "$ref": "#/types/spotinst:azure/OceanNpVirtualNodeGroupFilters:OceanNpVirtualNodeGroupFilters"
+                },
                 "headrooms": {
                     "type": "array",
                     "items": {
@@ -13771,6 +13837,9 @@
                 },
                 "fallbackToOndemand": {
                     "type": "boolean"
+                },
+                "filters": {
+                    "$ref": "#/types/spotinst:azure/OceanNpVirtualNodeGroupFilters:OceanNpVirtualNodeGroupFilters"
                 },
                 "headrooms": {
                     "type": "array",
@@ -13841,6 +13910,9 @@
                     },
                     "fallbackToOndemand": {
                         "type": "boolean"
+                    },
+                    "filters": {
+                        "$ref": "#/types/spotinst:azure/OceanNpVirtualNodeGroupFilters:OceanNpVirtualNodeGroupFilters"
                     },
                     "headrooms": {
                         "type": "array",
