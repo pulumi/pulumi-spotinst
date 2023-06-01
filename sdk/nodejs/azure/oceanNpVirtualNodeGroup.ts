@@ -37,6 +37,7 @@ export class OceanNpVirtualNodeGroup extends pulumi.CustomResource {
     public readonly availabilityZones!: pulumi.Output<string[] | undefined>;
     public readonly enableNodePublicIp!: pulumi.Output<boolean | undefined>;
     public readonly fallbackToOndemand!: pulumi.Output<boolean | undefined>;
+    public readonly filters!: pulumi.Output<outputs.azure.OceanNpVirtualNodeGroupFilters | undefined>;
     public readonly headrooms!: pulumi.Output<outputs.azure.OceanNpVirtualNodeGroupHeadroom[] | undefined>;
     public readonly labels!: pulumi.Output<{[key: string]: any} | undefined>;
     public readonly maxCount!: pulumi.Output<number | undefined>;
@@ -67,6 +68,7 @@ export class OceanNpVirtualNodeGroup extends pulumi.CustomResource {
             resourceInputs["availabilityZones"] = state ? state.availabilityZones : undefined;
             resourceInputs["enableNodePublicIp"] = state ? state.enableNodePublicIp : undefined;
             resourceInputs["fallbackToOndemand"] = state ? state.fallbackToOndemand : undefined;
+            resourceInputs["filters"] = state ? state.filters : undefined;
             resourceInputs["headrooms"] = state ? state.headrooms : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["maxCount"] = state ? state.maxCount : undefined;
@@ -88,6 +90,7 @@ export class OceanNpVirtualNodeGroup extends pulumi.CustomResource {
             resourceInputs["availabilityZones"] = args ? args.availabilityZones : undefined;
             resourceInputs["enableNodePublicIp"] = args ? args.enableNodePublicIp : undefined;
             resourceInputs["fallbackToOndemand"] = args ? args.fallbackToOndemand : undefined;
+            resourceInputs["filters"] = args ? args.filters : undefined;
             resourceInputs["headrooms"] = args ? args.headrooms : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["maxCount"] = args ? args.maxCount : undefined;
@@ -114,6 +117,7 @@ export interface OceanNpVirtualNodeGroupState {
     availabilityZones?: pulumi.Input<pulumi.Input<string>[]>;
     enableNodePublicIp?: pulumi.Input<boolean>;
     fallbackToOndemand?: pulumi.Input<boolean>;
+    filters?: pulumi.Input<inputs.azure.OceanNpVirtualNodeGroupFilters>;
     headrooms?: pulumi.Input<pulumi.Input<inputs.azure.OceanNpVirtualNodeGroupHeadroom>[]>;
     labels?: pulumi.Input<{[key: string]: any}>;
     maxCount?: pulumi.Input<number>;
@@ -136,6 +140,7 @@ export interface OceanNpVirtualNodeGroupArgs {
     availabilityZones?: pulumi.Input<pulumi.Input<string>[]>;
     enableNodePublicIp?: pulumi.Input<boolean>;
     fallbackToOndemand?: pulumi.Input<boolean>;
+    filters?: pulumi.Input<inputs.azure.OceanNpVirtualNodeGroupFilters>;
     headrooms?: pulumi.Input<pulumi.Input<inputs.azure.OceanNpVirtualNodeGroupHeadroom>[]>;
     labels?: pulumi.Input<{[key: string]: any}>;
     maxCount?: pulumi.Input<number>;

@@ -49,11 +49,13 @@ __all__ = [
     'OceanNpAutoscalerAutoscaleHeadroomArgs',
     'OceanNpAutoscalerAutoscaleHeadroomAutomaticArgs',
     'OceanNpAutoscalerResourceLimitsArgs',
+    'OceanNpFiltersArgs',
     'OceanNpHeadroomArgs',
     'OceanNpHealthArgs',
     'OceanNpSchedulingArgs',
     'OceanNpSchedulingShutdownHoursArgs',
     'OceanNpTaintArgs',
+    'OceanNpVirtualNodeGroupFiltersArgs',
     'OceanNpVirtualNodeGroupHeadroomArgs',
     'OceanNpVirtualNodeGroupTaintArgs',
     'OceanOsDiskArgs',
@@ -2088,6 +2090,83 @@ class OceanNpAutoscalerResourceLimitsArgs:
 
 
 @pulumi.input_type
+class OceanNpFiltersArgs:
+    def __init__(__self__, *,
+                 architectures: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 max_memory_gib: Optional[pulumi.Input[float]] = None,
+                 max_vcpu: Optional[pulumi.Input[int]] = None,
+                 min_memory_gib: Optional[pulumi.Input[float]] = None,
+                 min_vcpu: Optional[pulumi.Input[int]] = None,
+                 series: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        if architectures is not None:
+            pulumi.set(__self__, "architectures", architectures)
+        if max_memory_gib is not None:
+            pulumi.set(__self__, "max_memory_gib", max_memory_gib)
+        if max_vcpu is not None:
+            pulumi.set(__self__, "max_vcpu", max_vcpu)
+        if min_memory_gib is not None:
+            pulumi.set(__self__, "min_memory_gib", min_memory_gib)
+        if min_vcpu is not None:
+            pulumi.set(__self__, "min_vcpu", min_vcpu)
+        if series is not None:
+            pulumi.set(__self__, "series", series)
+
+    @property
+    @pulumi.getter
+    def architectures(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "architectures")
+
+    @architectures.setter
+    def architectures(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "architectures", value)
+
+    @property
+    @pulumi.getter(name="maxMemoryGib")
+    def max_memory_gib(self) -> Optional[pulumi.Input[float]]:
+        return pulumi.get(self, "max_memory_gib")
+
+    @max_memory_gib.setter
+    def max_memory_gib(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "max_memory_gib", value)
+
+    @property
+    @pulumi.getter(name="maxVcpu")
+    def max_vcpu(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "max_vcpu")
+
+    @max_vcpu.setter
+    def max_vcpu(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_vcpu", value)
+
+    @property
+    @pulumi.getter(name="minMemoryGib")
+    def min_memory_gib(self) -> Optional[pulumi.Input[float]]:
+        return pulumi.get(self, "min_memory_gib")
+
+    @min_memory_gib.setter
+    def min_memory_gib(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "min_memory_gib", value)
+
+    @property
+    @pulumi.getter(name="minVcpu")
+    def min_vcpu(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "min_vcpu")
+
+    @min_vcpu.setter
+    def min_vcpu(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "min_vcpu", value)
+
+    @property
+    @pulumi.getter
+    def series(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "series")
+
+    @series.setter
+    def series(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "series", value)
+
+
+@pulumi.input_type
 class OceanNpHeadroomArgs:
     def __init__(__self__, *,
                  cpu_per_unit: Optional[pulumi.Input[int]] = None,
@@ -2241,28 +2320,97 @@ class OceanNpTaintArgs:
 
 
 @pulumi.input_type
+class OceanNpVirtualNodeGroupFiltersArgs:
+    def __init__(__self__, *,
+                 architectures: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 max_memory_gib: Optional[pulumi.Input[float]] = None,
+                 max_vcpu: Optional[pulumi.Input[int]] = None,
+                 min_memory_gib: Optional[pulumi.Input[float]] = None,
+                 min_vcpu: Optional[pulumi.Input[int]] = None,
+                 series: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        if architectures is not None:
+            pulumi.set(__self__, "architectures", architectures)
+        if max_memory_gib is not None:
+            pulumi.set(__self__, "max_memory_gib", max_memory_gib)
+        if max_vcpu is not None:
+            pulumi.set(__self__, "max_vcpu", max_vcpu)
+        if min_memory_gib is not None:
+            pulumi.set(__self__, "min_memory_gib", min_memory_gib)
+        if min_vcpu is not None:
+            pulumi.set(__self__, "min_vcpu", min_vcpu)
+        if series is not None:
+            pulumi.set(__self__, "series", series)
+
+    @property
+    @pulumi.getter
+    def architectures(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "architectures")
+
+    @architectures.setter
+    def architectures(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "architectures", value)
+
+    @property
+    @pulumi.getter(name="maxMemoryGib")
+    def max_memory_gib(self) -> Optional[pulumi.Input[float]]:
+        return pulumi.get(self, "max_memory_gib")
+
+    @max_memory_gib.setter
+    def max_memory_gib(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "max_memory_gib", value)
+
+    @property
+    @pulumi.getter(name="maxVcpu")
+    def max_vcpu(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "max_vcpu")
+
+    @max_vcpu.setter
+    def max_vcpu(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_vcpu", value)
+
+    @property
+    @pulumi.getter(name="minMemoryGib")
+    def min_memory_gib(self) -> Optional[pulumi.Input[float]]:
+        return pulumi.get(self, "min_memory_gib")
+
+    @min_memory_gib.setter
+    def min_memory_gib(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "min_memory_gib", value)
+
+    @property
+    @pulumi.getter(name="minVcpu")
+    def min_vcpu(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "min_vcpu")
+
+    @min_vcpu.setter
+    def min_vcpu(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "min_vcpu", value)
+
+    @property
+    @pulumi.getter
+    def series(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "series")
+
+    @series.setter
+    def series(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "series", value)
+
+
+@pulumi.input_type
 class OceanNpVirtualNodeGroupHeadroomArgs:
     def __init__(__self__, *,
-                 num_of_units: pulumi.Input[int],
                  cpu_per_unit: Optional[pulumi.Input[int]] = None,
                  gpu_per_unit: Optional[pulumi.Input[int]] = None,
-                 memory_per_unit: Optional[pulumi.Input[int]] = None):
-        pulumi.set(__self__, "num_of_units", num_of_units)
+                 memory_per_unit: Optional[pulumi.Input[int]] = None,
+                 num_of_units: Optional[pulumi.Input[int]] = None):
         if cpu_per_unit is not None:
             pulumi.set(__self__, "cpu_per_unit", cpu_per_unit)
         if gpu_per_unit is not None:
             pulumi.set(__self__, "gpu_per_unit", gpu_per_unit)
         if memory_per_unit is not None:
             pulumi.set(__self__, "memory_per_unit", memory_per_unit)
-
-    @property
-    @pulumi.getter(name="numOfUnits")
-    def num_of_units(self) -> pulumi.Input[int]:
-        return pulumi.get(self, "num_of_units")
-
-    @num_of_units.setter
-    def num_of_units(self, value: pulumi.Input[int]):
-        pulumi.set(self, "num_of_units", value)
+        if num_of_units is not None:
+            pulumi.set(__self__, "num_of_units", num_of_units)
 
     @property
     @pulumi.getter(name="cpuPerUnit")
@@ -2290,6 +2438,15 @@ class OceanNpVirtualNodeGroupHeadroomArgs:
     @memory_per_unit.setter
     def memory_per_unit(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "memory_per_unit", value)
+
+    @property
+    @pulumi.getter(name="numOfUnits")
+    def num_of_units(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "num_of_units")
+
+    @num_of_units.setter
+    def num_of_units(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "num_of_units", value)
 
 
 @pulumi.input_type

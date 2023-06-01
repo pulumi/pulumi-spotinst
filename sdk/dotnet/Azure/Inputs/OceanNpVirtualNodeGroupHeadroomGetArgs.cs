@@ -21,8 +21,8 @@ namespace Pulumi.SpotInst.Azure.Inputs
         [Input("memoryPerUnit")]
         public Input<int>? MemoryPerUnit { get; set; }
 
-        [Input("numOfUnits", required: true)]
-        public Input<int> NumOfUnits { get; set; } = null!;
+        [Input("numOfUnits")]
+        public Input<int>? NumOfUnits { get; set; }
 
         public OceanNpVirtualNodeGroupHeadroomGetArgs()
         {

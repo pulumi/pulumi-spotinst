@@ -20,6 +20,7 @@ class OceanNpVirtualNodeGroupArgs:
                  availability_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  enable_node_public_ip: Optional[pulumi.Input[bool]] = None,
                  fallback_to_ondemand: Optional[pulumi.Input[bool]] = None,
+                 filters: Optional[pulumi.Input['OceanNpVirtualNodeGroupFiltersArgs']] = None,
                  headrooms: Optional[pulumi.Input[Sequence[pulumi.Input['OceanNpVirtualNodeGroupHeadroomArgs']]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  max_count: Optional[pulumi.Input[int]] = None,
@@ -42,6 +43,8 @@ class OceanNpVirtualNodeGroupArgs:
             pulumi.set(__self__, "enable_node_public_ip", enable_node_public_ip)
         if fallback_to_ondemand is not None:
             pulumi.set(__self__, "fallback_to_ondemand", fallback_to_ondemand)
+        if filters is not None:
+            pulumi.set(__self__, "filters", filters)
         if headrooms is not None:
             pulumi.set(__self__, "headrooms", headrooms)
         if labels is not None:
@@ -102,6 +105,15 @@ class OceanNpVirtualNodeGroupArgs:
     @fallback_to_ondemand.setter
     def fallback_to_ondemand(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "fallback_to_ondemand", value)
+
+    @property
+    @pulumi.getter
+    def filters(self) -> Optional[pulumi.Input['OceanNpVirtualNodeGroupFiltersArgs']]:
+        return pulumi.get(self, "filters")
+
+    @filters.setter
+    def filters(self, value: Optional[pulumi.Input['OceanNpVirtualNodeGroupFiltersArgs']]):
+        pulumi.set(self, "filters", value)
 
     @property
     @pulumi.getter
@@ -218,6 +230,7 @@ class _OceanNpVirtualNodeGroupState:
                  availability_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  enable_node_public_ip: Optional[pulumi.Input[bool]] = None,
                  fallback_to_ondemand: Optional[pulumi.Input[bool]] = None,
+                 filters: Optional[pulumi.Input['OceanNpVirtualNodeGroupFiltersArgs']] = None,
                  headrooms: Optional[pulumi.Input[Sequence[pulumi.Input['OceanNpVirtualNodeGroupHeadroomArgs']]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  max_count: Optional[pulumi.Input[int]] = None,
@@ -240,6 +253,8 @@ class _OceanNpVirtualNodeGroupState:
             pulumi.set(__self__, "enable_node_public_ip", enable_node_public_ip)
         if fallback_to_ondemand is not None:
             pulumi.set(__self__, "fallback_to_ondemand", fallback_to_ondemand)
+        if filters is not None:
+            pulumi.set(__self__, "filters", filters)
         if headrooms is not None:
             pulumi.set(__self__, "headrooms", headrooms)
         if labels is not None:
@@ -293,6 +308,15 @@ class _OceanNpVirtualNodeGroupState:
     @fallback_to_ondemand.setter
     def fallback_to_ondemand(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "fallback_to_ondemand", value)
+
+    @property
+    @pulumi.getter
+    def filters(self) -> Optional[pulumi.Input['OceanNpVirtualNodeGroupFiltersArgs']]:
+        return pulumi.get(self, "filters")
+
+    @filters.setter
+    def filters(self, value: Optional[pulumi.Input['OceanNpVirtualNodeGroupFiltersArgs']]):
+        pulumi.set(self, "filters", value)
 
     @property
     @pulumi.getter
@@ -420,6 +444,7 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
                  availability_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  enable_node_public_ip: Optional[pulumi.Input[bool]] = None,
                  fallback_to_ondemand: Optional[pulumi.Input[bool]] = None,
+                 filters: Optional[pulumi.Input[pulumi.InputType['OceanNpVirtualNodeGroupFiltersArgs']]] = None,
                  headrooms: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanNpVirtualNodeGroupHeadroomArgs']]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  max_count: Optional[pulumi.Input[int]] = None,
@@ -465,6 +490,7 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
                  availability_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  enable_node_public_ip: Optional[pulumi.Input[bool]] = None,
                  fallback_to_ondemand: Optional[pulumi.Input[bool]] = None,
+                 filters: Optional[pulumi.Input[pulumi.InputType['OceanNpVirtualNodeGroupFiltersArgs']]] = None,
                  headrooms: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanNpVirtualNodeGroupHeadroomArgs']]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  max_count: Optional[pulumi.Input[int]] = None,
@@ -490,6 +516,7 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
             __props__.__dict__["availability_zones"] = availability_zones
             __props__.__dict__["enable_node_public_ip"] = enable_node_public_ip
             __props__.__dict__["fallback_to_ondemand"] = fallback_to_ondemand
+            __props__.__dict__["filters"] = filters
             __props__.__dict__["headrooms"] = headrooms
             __props__.__dict__["labels"] = labels
             __props__.__dict__["max_count"] = max_count
@@ -518,6 +545,7 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
             availability_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             enable_node_public_ip: Optional[pulumi.Input[bool]] = None,
             fallback_to_ondemand: Optional[pulumi.Input[bool]] = None,
+            filters: Optional[pulumi.Input[pulumi.InputType['OceanNpVirtualNodeGroupFiltersArgs']]] = None,
             headrooms: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanNpVirtualNodeGroupHeadroomArgs']]]]] = None,
             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             max_count: Optional[pulumi.Input[int]] = None,
@@ -546,6 +574,7 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
         __props__.__dict__["availability_zones"] = availability_zones
         __props__.__dict__["enable_node_public_ip"] = enable_node_public_ip
         __props__.__dict__["fallback_to_ondemand"] = fallback_to_ondemand
+        __props__.__dict__["filters"] = filters
         __props__.__dict__["headrooms"] = headrooms
         __props__.__dict__["labels"] = labels
         __props__.__dict__["max_count"] = max_count
@@ -575,6 +604,11 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
     @pulumi.getter(name="fallbackToOndemand")
     def fallback_to_ondemand(self) -> pulumi.Output[Optional[bool]]:
         return pulumi.get(self, "fallback_to_ondemand")
+
+    @property
+    @pulumi.getter
+    def filters(self) -> pulumi.Output[Optional['outputs.OceanNpVirtualNodeGroupFilters']]:
+        return pulumi.get(self, "filters")
 
     @property
     @pulumi.getter

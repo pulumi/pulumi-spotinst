@@ -11,6 +11,7 @@ import com.pulumi.spotinst.Utilities;
 import com.pulumi.spotinst.azure.OceanNpArgs;
 import com.pulumi.spotinst.azure.inputs.OceanNpState;
 import com.pulumi.spotinst.azure.outputs.OceanNpAutoscaler;
+import com.pulumi.spotinst.azure.outputs.OceanNpFilters;
 import com.pulumi.spotinst.azure.outputs.OceanNpHeadroom;
 import com.pulumi.spotinst.azure.outputs.OceanNpHealth;
 import com.pulumi.spotinst.azure.outputs.OceanNpScheduling;
@@ -57,10 +58,10 @@ public class OceanNp extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.autoscaler);
     }
     @Export(name="availabilityZones", type=List.class, parameters={String.class})
-    private Output<List<String>> availabilityZones;
+    private Output</* @Nullable */ List<String>> availabilityZones;
 
-    public Output<List<String>> availabilityZones() {
-        return this.availabilityZones;
+    public Output<Optional<List<String>>> availabilityZones() {
+        return Codegen.optional(this.availabilityZones);
     }
     @Export(name="controllerClusterId", type=String.class, parameters={})
     private Output<String> controllerClusterId;
@@ -79,6 +80,12 @@ public class OceanNp extends com.pulumi.resources.CustomResource {
 
     public Output<Optional<Boolean>> fallbackToOndemand() {
         return Codegen.optional(this.fallbackToOndemand);
+    }
+    @Export(name="filters", type=OceanNpFilters.class, parameters={})
+    private Output</* @Nullable */ OceanNpFilters> filters;
+
+    public Output<Optional<OceanNpFilters>> filters() {
+        return Codegen.optional(this.filters);
     }
     @Export(name="headrooms", type=List.class, parameters={OceanNpHeadroom.class})
     private Output</* @Nullable */ List<OceanNpHeadroom>> headrooms;

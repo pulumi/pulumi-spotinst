@@ -17,6 +17,7 @@ type OceanNpVirtualNodeGroup struct {
 	AvailabilityZones  pulumi.StringArrayOutput                   `pulumi:"availabilityZones"`
 	EnableNodePublicIp pulumi.BoolPtrOutput                       `pulumi:"enableNodePublicIp"`
 	FallbackToOndemand pulumi.BoolPtrOutput                       `pulumi:"fallbackToOndemand"`
+	Filters            OceanNpVirtualNodeGroupFiltersPtrOutput    `pulumi:"filters"`
 	Headrooms          OceanNpVirtualNodeGroupHeadroomArrayOutput `pulumi:"headrooms"`
 	Labels             pulumi.MapOutput                           `pulumi:"labels"`
 	MaxCount           pulumi.IntPtrOutput                        `pulumi:"maxCount"`
@@ -67,6 +68,7 @@ type oceanNpVirtualNodeGroupState struct {
 	AvailabilityZones  []string                          `pulumi:"availabilityZones"`
 	EnableNodePublicIp *bool                             `pulumi:"enableNodePublicIp"`
 	FallbackToOndemand *bool                             `pulumi:"fallbackToOndemand"`
+	Filters            *OceanNpVirtualNodeGroupFilters   `pulumi:"filters"`
 	Headrooms          []OceanNpVirtualNodeGroupHeadroom `pulumi:"headrooms"`
 	Labels             map[string]interface{}            `pulumi:"labels"`
 	MaxCount           *int                              `pulumi:"maxCount"`
@@ -86,6 +88,7 @@ type OceanNpVirtualNodeGroupState struct {
 	AvailabilityZones  pulumi.StringArrayInput
 	EnableNodePublicIp pulumi.BoolPtrInput
 	FallbackToOndemand pulumi.BoolPtrInput
+	Filters            OceanNpVirtualNodeGroupFiltersPtrInput
 	Headrooms          OceanNpVirtualNodeGroupHeadroomArrayInput
 	Labels             pulumi.MapInput
 	MaxCount           pulumi.IntPtrInput
@@ -109,6 +112,7 @@ type oceanNpVirtualNodeGroupArgs struct {
 	AvailabilityZones  []string                          `pulumi:"availabilityZones"`
 	EnableNodePublicIp *bool                             `pulumi:"enableNodePublicIp"`
 	FallbackToOndemand *bool                             `pulumi:"fallbackToOndemand"`
+	Filters            *OceanNpVirtualNodeGroupFilters   `pulumi:"filters"`
 	Headrooms          []OceanNpVirtualNodeGroupHeadroom `pulumi:"headrooms"`
 	Labels             map[string]interface{}            `pulumi:"labels"`
 	MaxCount           *int                              `pulumi:"maxCount"`
@@ -129,6 +133,7 @@ type OceanNpVirtualNodeGroupArgs struct {
 	AvailabilityZones  pulumi.StringArrayInput
 	EnableNodePublicIp pulumi.BoolPtrInput
 	FallbackToOndemand pulumi.BoolPtrInput
+	Filters            OceanNpVirtualNodeGroupFiltersPtrInput
 	Headrooms          OceanNpVirtualNodeGroupHeadroomArrayInput
 	Labels             pulumi.MapInput
 	MaxCount           pulumi.IntPtrInput
@@ -241,6 +246,10 @@ func (o OceanNpVirtualNodeGroupOutput) EnableNodePublicIp() pulumi.BoolPtrOutput
 
 func (o OceanNpVirtualNodeGroupOutput) FallbackToOndemand() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OceanNpVirtualNodeGroup) pulumi.BoolPtrOutput { return v.FallbackToOndemand }).(pulumi.BoolPtrOutput)
+}
+
+func (o OceanNpVirtualNodeGroupOutput) Filters() OceanNpVirtualNodeGroupFiltersPtrOutput {
+	return o.ApplyT(func(v *OceanNpVirtualNodeGroup) OceanNpVirtualNodeGroupFiltersPtrOutput { return v.Filters }).(OceanNpVirtualNodeGroupFiltersPtrOutput)
 }
 
 func (o OceanNpVirtualNodeGroupOutput) Headrooms() OceanNpVirtualNodeGroupHeadroomArrayOutput {

@@ -23,6 +23,7 @@ type OceanNp struct {
 	ControllerClusterId                pulumi.StringOutput        `pulumi:"controllerClusterId"`
 	EnableNodePublicIp                 pulumi.BoolPtrOutput       `pulumi:"enableNodePublicIp"`
 	FallbackToOndemand                 pulumi.BoolPtrOutput       `pulumi:"fallbackToOndemand"`
+	Filters                            OceanNpFiltersPtrOutput    `pulumi:"filters"`
 	Headrooms                          OceanNpHeadroomArrayOutput `pulumi:"headrooms"`
 	Health                             OceanNpHealthOutput        `pulumi:"health"`
 	Labels                             pulumi.MapOutput           `pulumi:"labels"`
@@ -89,6 +90,7 @@ type oceanNpState struct {
 	ControllerClusterId                *string                `pulumi:"controllerClusterId"`
 	EnableNodePublicIp                 *bool                  `pulumi:"enableNodePublicIp"`
 	FallbackToOndemand                 *bool                  `pulumi:"fallbackToOndemand"`
+	Filters                            *OceanNpFilters        `pulumi:"filters"`
 	Headrooms                          []OceanNpHeadroom      `pulumi:"headrooms"`
 	Health                             *OceanNpHealth         `pulumi:"health"`
 	Labels                             map[string]interface{} `pulumi:"labels"`
@@ -115,6 +117,7 @@ type OceanNpState struct {
 	ControllerClusterId                pulumi.StringPtrInput
 	EnableNodePublicIp                 pulumi.BoolPtrInput
 	FallbackToOndemand                 pulumi.BoolPtrInput
+	Filters                            OceanNpFiltersPtrInput
 	Headrooms                          OceanNpHeadroomArrayInput
 	Health                             OceanNpHealthPtrInput
 	Labels                             pulumi.MapInput
@@ -145,6 +148,7 @@ type oceanNpArgs struct {
 	ControllerClusterId                *string                `pulumi:"controllerClusterId"`
 	EnableNodePublicIp                 *bool                  `pulumi:"enableNodePublicIp"`
 	FallbackToOndemand                 *bool                  `pulumi:"fallbackToOndemand"`
+	Filters                            *OceanNpFilters        `pulumi:"filters"`
 	Headrooms                          []OceanNpHeadroom      `pulumi:"headrooms"`
 	Health                             *OceanNpHealth         `pulumi:"health"`
 	Labels                             map[string]interface{} `pulumi:"labels"`
@@ -172,6 +176,7 @@ type OceanNpArgs struct {
 	ControllerClusterId                pulumi.StringPtrInput
 	EnableNodePublicIp                 pulumi.BoolPtrInput
 	FallbackToOndemand                 pulumi.BoolPtrInput
+	Filters                            OceanNpFiltersPtrInput
 	Headrooms                          OceanNpHeadroomArrayInput
 	Health                             OceanNpHealthPtrInput
 	Labels                             pulumi.MapInput
@@ -309,6 +314,10 @@ func (o OceanNpOutput) EnableNodePublicIp() pulumi.BoolPtrOutput {
 
 func (o OceanNpOutput) FallbackToOndemand() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OceanNp) pulumi.BoolPtrOutput { return v.FallbackToOndemand }).(pulumi.BoolPtrOutput)
+}
+
+func (o OceanNpOutput) Filters() OceanNpFiltersPtrOutput {
+	return o.ApplyT(func(v *OceanNp) OceanNpFiltersPtrOutput { return v.Filters }).(OceanNpFiltersPtrOutput)
 }
 
 func (o OceanNpOutput) Headrooms() OceanNpHeadroomArrayOutput {

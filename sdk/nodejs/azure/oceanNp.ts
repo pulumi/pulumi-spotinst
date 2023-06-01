@@ -39,10 +39,11 @@ export class OceanNp extends pulumi.CustomResource {
     public readonly aksRegion!: pulumi.Output<string>;
     public readonly aksResourceGroupName!: pulumi.Output<string>;
     public readonly autoscaler!: pulumi.Output<outputs.azure.OceanNpAutoscaler | undefined>;
-    public readonly availabilityZones!: pulumi.Output<string[]>;
+    public readonly availabilityZones!: pulumi.Output<string[] | undefined>;
     public readonly controllerClusterId!: pulumi.Output<string>;
     public readonly enableNodePublicIp!: pulumi.Output<boolean | undefined>;
     public readonly fallbackToOndemand!: pulumi.Output<boolean | undefined>;
+    public readonly filters!: pulumi.Output<outputs.azure.OceanNpFilters | undefined>;
     public readonly headrooms!: pulumi.Output<outputs.azure.OceanNpHeadroom[] | undefined>;
     public readonly health!: pulumi.Output<outputs.azure.OceanNpHealth>;
     public readonly labels!: pulumi.Output<{[key: string]: any} | undefined>;
@@ -80,6 +81,7 @@ export class OceanNp extends pulumi.CustomResource {
             resourceInputs["controllerClusterId"] = state ? state.controllerClusterId : undefined;
             resourceInputs["enableNodePublicIp"] = state ? state.enableNodePublicIp : undefined;
             resourceInputs["fallbackToOndemand"] = state ? state.fallbackToOndemand : undefined;
+            resourceInputs["filters"] = state ? state.filters : undefined;
             resourceInputs["headrooms"] = state ? state.headrooms : undefined;
             resourceInputs["health"] = state ? state.health : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
@@ -117,6 +119,7 @@ export class OceanNp extends pulumi.CustomResource {
             resourceInputs["controllerClusterId"] = args ? args.controllerClusterId : undefined;
             resourceInputs["enableNodePublicIp"] = args ? args.enableNodePublicIp : undefined;
             resourceInputs["fallbackToOndemand"] = args ? args.fallbackToOndemand : undefined;
+            resourceInputs["filters"] = args ? args.filters : undefined;
             resourceInputs["headrooms"] = args ? args.headrooms : undefined;
             resourceInputs["health"] = args ? args.health : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
@@ -150,6 +153,7 @@ export interface OceanNpState {
     controllerClusterId?: pulumi.Input<string>;
     enableNodePublicIp?: pulumi.Input<boolean>;
     fallbackToOndemand?: pulumi.Input<boolean>;
+    filters?: pulumi.Input<inputs.azure.OceanNpFilters>;
     headrooms?: pulumi.Input<pulumi.Input<inputs.azure.OceanNpHeadroom>[]>;
     health?: pulumi.Input<inputs.azure.OceanNpHealth>;
     labels?: pulumi.Input<{[key: string]: any}>;
@@ -179,6 +183,7 @@ export interface OceanNpArgs {
     controllerClusterId?: pulumi.Input<string>;
     enableNodePublicIp?: pulumi.Input<boolean>;
     fallbackToOndemand?: pulumi.Input<boolean>;
+    filters?: pulumi.Input<inputs.azure.OceanNpFilters>;
     headrooms?: pulumi.Input<pulumi.Input<inputs.azure.OceanNpHeadroom>[]>;
     health?: pulumi.Input<inputs.azure.OceanNpHealth>;
     labels?: pulumi.Input<{[key: string]: any}>;
