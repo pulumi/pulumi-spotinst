@@ -718,7 +718,7 @@ class ElastigroupEbsBlockDevice(dict):
                import pulumi
                ```
         :param int volume_size: The size of the volume in gigabytes.
-        :param str volume_type: The type of volume. Can be `"standard"`, `"gp2"`, `"io1"`, `"st1"` or `"sc1"`.
+        :param str volume_type: The type of volume. Can be `"standard"`, `"gp2"`, `"gp3"`, `"io1"`, `"st1"` or `"sc1"`.
         """
         pulumi.set(__self__, "device_name", device_name)
         if delete_on_termination is not None:
@@ -814,7 +814,7 @@ class ElastigroupEbsBlockDevice(dict):
     @pulumi.getter(name="volumeType")
     def volume_type(self) -> Optional[str]:
         """
-        The type of volume. Can be `"standard"`, `"gp2"`, `"io1"`, `"st1"` or `"sc1"`.
+        The type of volume. Can be `"standard"`, `"gp2"`, `"gp3"`, `"io1"`, `"st1"` or `"sc1"`.
         """
         return pulumi.get(self, "volume_type")
 

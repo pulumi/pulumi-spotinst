@@ -75,7 +75,7 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public Input<int>? VolumeSize { get; set; }
 
         /// <summary>
-        /// The type of volume. Can be `"standard"`, `"gp2"`, `"io1"`, `"st1"` or `"sc1"`.
+        /// The type of volume. Can be `"standard"`, `"gp2"`, `"gp3"`, `"io1"`, `"st1"` or `"sc1"`.
         /// </summary>
         [Input("volumeType")]
         public Input<string>? VolumeType { get; set; }

@@ -80,7 +80,7 @@ public final class ElastigroupEbsBlockDevice {
      */
     private @Nullable Integer volumeSize;
     /**
-     * @return The type of volume. Can be `&#34;standard&#34;`, `&#34;gp2&#34;`, `&#34;io1&#34;`, `&#34;st1&#34;` or `&#34;sc1&#34;`.
+     * @return The type of volume. Can be `&#34;standard&#34;`, `&#34;gp2&#34;`, `&#34;gp3&#34;`, `&#34;io1&#34;`, `&#34;st1&#34;` or `&#34;sc1&#34;`.
      * 
      */
     private @Nullable String volumeType;
@@ -169,7 +169,7 @@ public final class ElastigroupEbsBlockDevice {
         return Optional.ofNullable(this.volumeSize);
     }
     /**
-     * @return The type of volume. Can be `&#34;standard&#34;`, `&#34;gp2&#34;`, `&#34;io1&#34;`, `&#34;st1&#34;` or `&#34;sc1&#34;`.
+     * @return The type of volume. Can be `&#34;standard&#34;`, `&#34;gp2&#34;`, `&#34;gp3&#34;`, `&#34;io1&#34;`, `&#34;st1&#34;` or `&#34;sc1&#34;`.
      * 
      */
     public Optional<String> volumeType() {
