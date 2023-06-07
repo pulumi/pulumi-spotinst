@@ -956,9 +956,8 @@ func (o OceanIngressPrivateLinkPtrOutput) VpcEndpointService() pulumi.StringPtrO
 }
 
 type OceanLogCollection struct {
+	// - Enable/Disable collecting driver and executor logs. When enabled, logs are stored by NetApp and can be downloaded from the Spot console web interface. The logs are deleted after 30 days.
 	CollectAppLogs *bool `pulumi:"collectAppLogs"`
-	// - Enable/disable the collection of driver logs. When enabled, driver logs are stored by NetApp and can be downloaded from the Spot console web interface. The driver logs are deleted after 30 days.
-	CollectDriverLogs *bool `pulumi:"collectDriverLogs"`
 }
 
 // OceanLogCollectionInput is an input type that accepts OceanLogCollectionArgs and OceanLogCollectionOutput values.
@@ -973,9 +972,8 @@ type OceanLogCollectionInput interface {
 }
 
 type OceanLogCollectionArgs struct {
+	// - Enable/Disable collecting driver and executor logs. When enabled, logs are stored by NetApp and can be downloaded from the Spot console web interface. The logs are deleted after 30 days.
 	CollectAppLogs pulumi.BoolPtrInput `pulumi:"collectAppLogs"`
-	// - Enable/disable the collection of driver logs. When enabled, driver logs are stored by NetApp and can be downloaded from the Spot console web interface. The driver logs are deleted after 30 days.
-	CollectDriverLogs pulumi.BoolPtrInput `pulumi:"collectDriverLogs"`
 }
 
 func (OceanLogCollectionArgs) ElementType() reflect.Type {
@@ -1055,13 +1053,9 @@ func (o OceanLogCollectionOutput) ToOceanLogCollectionPtrOutputWithContext(ctx c
 	}).(OceanLogCollectionPtrOutput)
 }
 
+// - Enable/Disable collecting driver and executor logs. When enabled, logs are stored by NetApp and can be downloaded from the Spot console web interface. The logs are deleted after 30 days.
 func (o OceanLogCollectionOutput) CollectAppLogs() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OceanLogCollection) *bool { return v.CollectAppLogs }).(pulumi.BoolPtrOutput)
-}
-
-// - Enable/disable the collection of driver logs. When enabled, driver logs are stored by NetApp and can be downloaded from the Spot console web interface. The driver logs are deleted after 30 days.
-func (o OceanLogCollectionOutput) CollectDriverLogs() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v OceanLogCollection) *bool { return v.CollectDriverLogs }).(pulumi.BoolPtrOutput)
 }
 
 type OceanLogCollectionPtrOutput struct{ *pulumi.OutputState }
@@ -1088,22 +1082,13 @@ func (o OceanLogCollectionPtrOutput) Elem() OceanLogCollectionOutput {
 	}).(OceanLogCollectionOutput)
 }
 
+// - Enable/Disable collecting driver and executor logs. When enabled, logs are stored by NetApp and can be downloaded from the Spot console web interface. The logs are deleted after 30 days.
 func (o OceanLogCollectionPtrOutput) CollectAppLogs() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OceanLogCollection) *bool {
 		if v == nil {
 			return nil
 		}
 		return v.CollectAppLogs
-	}).(pulumi.BoolPtrOutput)
-}
-
-// - Enable/disable the collection of driver logs. When enabled, driver logs are stored by NetApp and can be downloaded from the Spot console web interface. The driver logs are deleted after 30 days.
-func (o OceanLogCollectionPtrOutput) CollectDriverLogs() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *OceanLogCollection) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.CollectDriverLogs
 	}).(pulumi.BoolPtrOutput)
 }
 

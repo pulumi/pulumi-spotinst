@@ -5363,11 +5363,10 @@ export namespace spark {
     }
 
     export interface OceanLogCollection {
-        collectAppLogs?: pulumi.Input<boolean>;
         /**
-         * - Enable/disable the collection of driver logs. When enabled, driver logs are stored by NetApp and can be downloaded from the Spot console web interface. The driver logs are deleted after 30 days.
+         * - Enable/Disable collecting driver and executor logs. When enabled, logs are stored by NetApp and can be downloaded from the Spot console web interface. The logs are deleted after 30 days.
          */
-        collectDriverLogs?: pulumi.Input<boolean>;
+        collectAppLogs?: pulumi.Input<boolean>;
     }
 
     export interface OceanSpark {
