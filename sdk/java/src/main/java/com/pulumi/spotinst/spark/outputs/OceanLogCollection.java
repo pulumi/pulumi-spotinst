@@ -11,23 +11,19 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class OceanLogCollection {
-    private @Nullable Boolean collectAppLogs;
     /**
-     * @return - Enable/disable the collection of driver logs. When enabled, driver logs are stored by NetApp and can be downloaded from the Spot console web interface. The driver logs are deleted after 30 days.
+     * @return - Enable/Disable collecting driver and executor logs. When enabled, logs are stored by NetApp and can be downloaded from the Spot console web interface. The logs are deleted after 30 days.
      * 
      */
-    private @Nullable Boolean collectDriverLogs;
+    private @Nullable Boolean collectAppLogs;
 
     private OceanLogCollection() {}
-    public Optional<Boolean> collectAppLogs() {
-        return Optional.ofNullable(this.collectAppLogs);
-    }
     /**
-     * @return - Enable/disable the collection of driver logs. When enabled, driver logs are stored by NetApp and can be downloaded from the Spot console web interface. The driver logs are deleted after 30 days.
+     * @return - Enable/Disable collecting driver and executor logs. When enabled, logs are stored by NetApp and can be downloaded from the Spot console web interface. The logs are deleted after 30 days.
      * 
      */
-    public Optional<Boolean> collectDriverLogs() {
-        return Optional.ofNullable(this.collectDriverLogs);
+    public Optional<Boolean> collectAppLogs() {
+        return Optional.ofNullable(this.collectAppLogs);
     }
 
     public static Builder builder() {
@@ -40,12 +36,10 @@ public final class OceanLogCollection {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean collectAppLogs;
-        private @Nullable Boolean collectDriverLogs;
         public Builder() {}
         public Builder(OceanLogCollection defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.collectAppLogs = defaults.collectAppLogs;
-    	      this.collectDriverLogs = defaults.collectDriverLogs;
         }
 
         @CustomType.Setter
@@ -53,15 +47,9 @@ public final class OceanLogCollection {
             this.collectAppLogs = collectAppLogs;
             return this;
         }
-        @CustomType.Setter
-        public Builder collectDriverLogs(@Nullable Boolean collectDriverLogs) {
-            this.collectDriverLogs = collectDriverLogs;
-            return this;
-        }
         public OceanLogCollection build() {
             final var o = new OceanLogCollection();
             o.collectAppLogs = collectAppLogs;
-            o.collectDriverLogs = collectDriverLogs;
             return o;
         }
     }

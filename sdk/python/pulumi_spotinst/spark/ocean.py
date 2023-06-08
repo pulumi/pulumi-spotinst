@@ -233,7 +233,7 @@ class Ocean(pulumi.CustomResource):
                 use_taints=True,
             ),
             log_collection=spotinst.spark.OceanLogCollectionArgs(
-                collect_driver_logs=True,
+                collect_app_logs=True,
             ),
             webhook=spotinst.spark.OceanWebhookArgs(
                 use_host_network=False,
@@ -303,7 +303,7 @@ class Ocean(pulumi.CustomResource):
                 use_taints=True,
             ),
             log_collection=spotinst.spark.OceanLogCollectionArgs(
-                collect_driver_logs=True,
+                collect_app_logs=True,
             ),
             webhook=spotinst.spark.OceanWebhookArgs(
                 use_host_network=False,
