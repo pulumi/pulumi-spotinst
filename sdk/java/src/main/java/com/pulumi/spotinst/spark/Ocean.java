@@ -84,7 +84,7 @@ import javax.annotation.Nullable;
  *                 .useTaints(true)
  *                 .build())
  *             .logCollection(OceanLogCollectionArgs.builder()
- *                 .collectDriverLogs(true)
+ *                 .collectAppLogs(true)
  *                 .build())
  *             .webhook(OceanWebhookArgs.builder()
  *                 .useHostNetwork(false)

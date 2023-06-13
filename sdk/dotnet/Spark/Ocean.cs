@@ -63,7 +63,7 @@ namespace Pulumi.SpotInst.Spark
     ///         },
     ///         LogCollection = new SpotInst.Spark.Inputs.OceanLogCollectionArgs
     ///         {
-    ///             CollectDriverLogs = true,
+    ///             CollectAppLogs = true,
     ///         },
     ///         Webhook = new SpotInst.Spark.Inputs.OceanWebhookArgs
     ///         {

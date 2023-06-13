@@ -15,33 +15,25 @@ public final class OceanLogCollectionArgs extends com.pulumi.resources.ResourceA
 
     public static final OceanLogCollectionArgs Empty = new OceanLogCollectionArgs();
 
+    /**
+     * - Enable/Disable collecting driver and executor logs. When enabled, logs are stored by NetApp and can be downloaded from the Spot console web interface. The logs are deleted after 30 days.
+     * 
+     */
     @Import(name="collectAppLogs")
     private @Nullable Output<Boolean> collectAppLogs;
 
+    /**
+     * @return - Enable/Disable collecting driver and executor logs. When enabled, logs are stored by NetApp and can be downloaded from the Spot console web interface. The logs are deleted after 30 days.
+     * 
+     */
     public Optional<Output<Boolean>> collectAppLogs() {
         return Optional.ofNullable(this.collectAppLogs);
-    }
-
-    /**
-     * - Enable/disable the collection of driver logs. When enabled, driver logs are stored by NetApp and can be downloaded from the Spot console web interface. The driver logs are deleted after 30 days.
-     * 
-     */
-    @Import(name="collectDriverLogs")
-    private @Nullable Output<Boolean> collectDriverLogs;
-
-    /**
-     * @return - Enable/disable the collection of driver logs. When enabled, driver logs are stored by NetApp and can be downloaded from the Spot console web interface. The driver logs are deleted after 30 days.
-     * 
-     */
-    public Optional<Output<Boolean>> collectDriverLogs() {
-        return Optional.ofNullable(this.collectDriverLogs);
     }
 
     private OceanLogCollectionArgs() {}
 
     private OceanLogCollectionArgs(OceanLogCollectionArgs $) {
         this.collectAppLogs = $.collectAppLogs;
-        this.collectDriverLogs = $.collectDriverLogs;
     }
 
     public static Builder builder() {
@@ -62,34 +54,25 @@ public final class OceanLogCollectionArgs extends com.pulumi.resources.ResourceA
             $ = new OceanLogCollectionArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param collectAppLogs - Enable/Disable collecting driver and executor logs. When enabled, logs are stored by NetApp and can be downloaded from the Spot console web interface. The logs are deleted after 30 days.
+         * 
+         * @return builder
+         * 
+         */
         public Builder collectAppLogs(@Nullable Output<Boolean> collectAppLogs) {
             $.collectAppLogs = collectAppLogs;
             return this;
         }
 
+        /**
+         * @param collectAppLogs - Enable/Disable collecting driver and executor logs. When enabled, logs are stored by NetApp and can be downloaded from the Spot console web interface. The logs are deleted after 30 days.
+         * 
+         * @return builder
+         * 
+         */
         public Builder collectAppLogs(Boolean collectAppLogs) {
             return collectAppLogs(Output.of(collectAppLogs));
-        }
-
-        /**
-         * @param collectDriverLogs - Enable/disable the collection of driver logs. When enabled, driver logs are stored by NetApp and can be downloaded from the Spot console web interface. The driver logs are deleted after 30 days.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder collectDriverLogs(@Nullable Output<Boolean> collectDriverLogs) {
-            $.collectDriverLogs = collectDriverLogs;
-            return this;
-        }
-
-        /**
-         * @param collectDriverLogs - Enable/disable the collection of driver logs. When enabled, driver logs are stored by NetApp and can be downloaded from the Spot console web interface. The driver logs are deleted after 30 days.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder collectDriverLogs(Boolean collectDriverLogs) {
-            return collectDriverLogs(Output.of(collectDriverLogs));
         }
 
         public OceanLogCollectionArgs build() {

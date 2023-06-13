@@ -47,7 +47,7 @@ import * as utilities from "../utilities";
  *         useTaints: true,
  *     },
  *     logCollection: {
- *         collectDriverLogs: true,
+ *         collectAppLogs: true,
  *     },
  *     webhook: {
  *         useHostNetwork: false,

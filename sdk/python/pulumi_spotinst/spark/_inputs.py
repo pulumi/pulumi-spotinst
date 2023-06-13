@@ -250,36 +250,24 @@ class OceanIngressPrivateLinkArgs:
 @pulumi.input_type
 class OceanLogCollectionArgs:
     def __init__(__self__, *,
-                 collect_app_logs: Optional[pulumi.Input[bool]] = None,
-                 collect_driver_logs: Optional[pulumi.Input[bool]] = None):
+                 collect_app_logs: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[bool] collect_driver_logs: - Enable/disable the collection of driver logs. When enabled, driver logs are stored by NetApp and can be downloaded from the Spot console web interface. The driver logs are deleted after 30 days.
+        :param pulumi.Input[bool] collect_app_logs: - Enable/Disable collecting driver and executor logs. When enabled, logs are stored by NetApp and can be downloaded from the Spot console web interface. The logs are deleted after 30 days.
         """
         if collect_app_logs is not None:
             pulumi.set(__self__, "collect_app_logs", collect_app_logs)
-        if collect_driver_logs is not None:
-            pulumi.set(__self__, "collect_driver_logs", collect_driver_logs)
 
     @property
     @pulumi.getter(name="collectAppLogs")
     def collect_app_logs(self) -> Optional[pulumi.Input[bool]]:
+        """
+        - Enable/Disable collecting driver and executor logs. When enabled, logs are stored by NetApp and can be downloaded from the Spot console web interface. The logs are deleted after 30 days.
+        """
         return pulumi.get(self, "collect_app_logs")
 
     @collect_app_logs.setter
     def collect_app_logs(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "collect_app_logs", value)
-
-    @property
-    @pulumi.getter(name="collectDriverLogs")
-    def collect_driver_logs(self) -> Optional[pulumi.Input[bool]]:
-        """
-        - Enable/disable the collection of driver logs. When enabled, driver logs are stored by NetApp and can be downloaded from the Spot console web interface. The driver logs are deleted after 30 days.
-        """
-        return pulumi.get(self, "collect_driver_logs")
-
-    @collect_driver_logs.setter
-    def collect_driver_logs(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "collect_driver_logs", value)
 
 
 @pulumi.input_type

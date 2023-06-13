@@ -273,8 +273,6 @@ class OceanLogCollection(dict):
         suggest = None
         if key == "collectAppLogs":
             suggest = "collect_app_logs"
-        elif key == "collectDriverLogs":
-            suggest = "collect_driver_logs"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in OceanLogCollection. Access the value via the '{suggest}' property getter instead.")
@@ -288,28 +286,20 @@ class OceanLogCollection(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 collect_app_logs: Optional[bool] = None,
-                 collect_driver_logs: Optional[bool] = None):
+                 collect_app_logs: Optional[bool] = None):
         """
-        :param bool collect_driver_logs: - Enable/disable the collection of driver logs. When enabled, driver logs are stored by NetApp and can be downloaded from the Spot console web interface. The driver logs are deleted after 30 days.
+        :param bool collect_app_logs: - Enable/Disable collecting driver and executor logs. When enabled, logs are stored by NetApp and can be downloaded from the Spot console web interface. The logs are deleted after 30 days.
         """
         if collect_app_logs is not None:
             pulumi.set(__self__, "collect_app_logs", collect_app_logs)
-        if collect_driver_logs is not None:
-            pulumi.set(__self__, "collect_driver_logs", collect_driver_logs)
 
     @property
     @pulumi.getter(name="collectAppLogs")
     def collect_app_logs(self) -> Optional[bool]:
+        """
+        - Enable/Disable collecting driver and executor logs. When enabled, logs are stored by NetApp and can be downloaded from the Spot console web interface. The logs are deleted after 30 days.
+        """
         return pulumi.get(self, "collect_app_logs")
-
-    @property
-    @pulumi.getter(name="collectDriverLogs")
-    def collect_driver_logs(self) -> Optional[bool]:
-        """
-        - Enable/disable the collection of driver logs. When enabled, driver logs are stored by NetApp and can be downloaded from the Spot console web interface. The driver logs are deleted after 30 days.
-        """
-        return pulumi.get(self, "collect_driver_logs")
 
 
 @pulumi.output_type

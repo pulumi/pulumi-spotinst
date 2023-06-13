@@ -59,7 +59,7 @@ import (
 //					UseTaints:  pulumi.Bool(true),
 //				},
 //				LogCollection: &spark.OceanLogCollectionArgs{
-//					CollectDriverLogs: pulumi.Bool(true),
+//					CollectAppLogs: pulumi.Bool(true),
 //				},
 //				Webhook: &spark.OceanWebhookArgs{
 //					UseHostNetwork: pulumi.Bool(false),

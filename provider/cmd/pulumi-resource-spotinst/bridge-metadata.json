@@ -6700,8 +6700,7 @@
                 "vpcEndpointService": "vpc_endpoint_service"
             },
             "spotinst:spark/OceanLogCollection:OceanLogCollection": {
-                "collectAppLogs": "collect_app_logs",
-                "collectDriverLogs": "collect_driver_logs"
+                "collectAppLogs": "collect_app_logs"
             },
             "spotinst:spark/OceanSpark:OceanSpark": {
                 "additionalAppNamespaces": "additional_app_namespaces"

@@ -12,14 +12,11 @@ namespace Pulumi.SpotInst.Spark.Inputs
 
     public sealed class OceanLogCollectionGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// - Enable/Disable collecting driver and executor logs. When enabled, logs are stored by NetApp and can be downloaded from the Spot console web interface. The logs are deleted after 30 days.
+        /// </summary>
         [Input("collectAppLogs")]
         public Input<bool>? CollectAppLogs { get; set; }
-
-        /// <summary>
-        /// - Enable/disable the collection of driver logs. When enabled, driver logs are stored by NetApp and can be downloaded from the Spot console web interface. The driver logs are deleted after 30 days.
-        /// </summary>
-        [Input("collectDriverLogs")]
-        public Input<bool>? CollectDriverLogs { get; set; }
 
         public OceanLogCollectionGetArgs()
         {

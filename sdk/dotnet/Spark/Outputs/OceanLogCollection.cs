@@ -13,20 +13,15 @@ namespace Pulumi.SpotInst.Spark.Outputs
     [OutputType]
     public sealed class OceanLogCollection
     {
-        public readonly bool? CollectAppLogs;
         /// <summary>
-        /// - Enable/disable the collection of driver logs. When enabled, driver logs are stored by NetApp and can be downloaded from the Spot console web interface. The driver logs are deleted after 30 days.
+        /// - Enable/Disable collecting driver and executor logs. When enabled, logs are stored by NetApp and can be downloaded from the Spot console web interface. The logs are deleted after 30 days.
         /// </summary>
-        public readonly bool? CollectDriverLogs;
+        public readonly bool? CollectAppLogs;
 
         [OutputConstructor]
-        private OceanLogCollection(
-            bool? collectAppLogs,
-
-            bool? collectDriverLogs)
+        private OceanLogCollection(bool? collectAppLogs)
         {
             CollectAppLogs = collectAppLogs;
-            CollectDriverLogs = collectDriverLogs;
         }
     }
 }
