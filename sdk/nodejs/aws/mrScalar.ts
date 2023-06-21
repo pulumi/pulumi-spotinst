@@ -205,11 +205,9 @@ import * as utilities from "../utilities";
  *         }],
  *         taskUnit: "instance",
  *     });
- *     const mrscaler_name = sample_MrScaler_01.name;
- *     const mrscaler_created_cluster_id = sample_MrScaler_01.outputClusterId;
  *     return {
- *         "mrscaler-name": mrscaler_name,
- *         "mrscaler-created-cluster-id": mrscaler_created_cluster_id,
+ *         "mrscaler-name": sample_MrScaler_01.name,
+ *         "mrscaler-created-cluster-id": sample_MrScaler_01.outputClusterId,
  *     };
  * }
  * ```
