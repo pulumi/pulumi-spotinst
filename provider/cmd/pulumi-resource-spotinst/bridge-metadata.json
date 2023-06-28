@@ -4689,8 +4689,7 @@
                     "resource_id": {}
                 }
             }
-        },
-        "datasources": {}
+        }
     },
     "renames": {
         "resources": {
