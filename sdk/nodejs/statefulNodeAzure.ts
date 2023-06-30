@@ -30,6 +30,7 @@ import * as utilities from "./utilities";
  * * `preferredZones` - (Optional, Enum `"1", "2", "3"`) The AZs to prioritize when launching VMs. If no markets are available in the Preferred AZs, VMs are launched in the non-preferred AZs. Must be a sublist of compute.zones.
  * * `customData` - (Optional) This value will hold the YAML in base64 and will be executed upon VM launch.
  * * `shutdownScript` - (Optional) Shutdown script for the stateful node. Value should be passed as a string encoded at Base64 only.
+ * * `userData` - (Optional) Define a set of scripts or other metadata that's inserted to an Azure virtual machine at provision time. (Base64 encoded)
  *
  * <a id="bootDiagnostics"></a>
  * ## Boot Diagnostics
@@ -293,6 +294,7 @@ export class StatefulNodeAzure extends pulumi.CustomResource {
     public readonly strategy!: pulumi.Output<outputs.StatefulNodeAzureStrategy>;
     public readonly tags!: pulumi.Output<outputs.StatefulNodeAzureTag[]>;
     public readonly updateStates!: pulumi.Output<outputs.StatefulNodeAzureUpdateState[] | undefined>;
+    public readonly userData!: pulumi.Output<string>;
     public readonly zones!: pulumi.Output<string[] | undefined>;
 
     /**
@@ -345,6 +347,7 @@ export class StatefulNodeAzure extends pulumi.CustomResource {
             resourceInputs["strategy"] = state ? state.strategy : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["updateStates"] = state ? state.updateStates : undefined;
+            resourceInputs["userData"] = state ? state.userData : undefined;
             resourceInputs["zones"] = state ? state.zones : undefined;
         } else {
             const args = argsOrState as StatefulNodeAzureArgs | undefined;
@@ -421,6 +424,7 @@ export class StatefulNodeAzure extends pulumi.CustomResource {
             resourceInputs["strategy"] = args ? args.strategy : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["updateStates"] = args ? args.updateStates : undefined;
+            resourceInputs["userData"] = args ? args.userData : undefined;
             resourceInputs["zones"] = args ? args.zones : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -469,6 +473,7 @@ export interface StatefulNodeAzureState {
     strategy?: pulumi.Input<inputs.StatefulNodeAzureStrategy>;
     tags?: pulumi.Input<pulumi.Input<inputs.StatefulNodeAzureTag>[]>;
     updateStates?: pulumi.Input<pulumi.Input<inputs.StatefulNodeAzureUpdateState>[]>;
+    userData?: pulumi.Input<string>;
     zones?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
@@ -513,5 +518,6 @@ export interface StatefulNodeAzureArgs {
     strategy: pulumi.Input<inputs.StatefulNodeAzureStrategy>;
     tags?: pulumi.Input<pulumi.Input<inputs.StatefulNodeAzureTag>[]>;
     updateStates?: pulumi.Input<pulumi.Input<inputs.StatefulNodeAzureUpdateState>[]>;
+    userData?: pulumi.Input<string>;
     zones?: pulumi.Input<pulumi.Input<string>[]>;
 }

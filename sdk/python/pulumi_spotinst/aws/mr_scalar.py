@@ -952,6 +952,9 @@ class MrScalarArgs:
     @property
     @pulumi.getter(name="visibleToAllUsers")
     def visible_to_all_users(self) -> Optional[pulumi.Input[bool]]:
+        warnings.warn("""This field has been removed from our API and is no longer functional.""", DeprecationWarning)
+        pulumi.log.warn("""visible_to_all_users is deprecated: This field has been removed from our API and is no longer functional.""")
+
         return pulumi.get(self, "visible_to_all_users")
 
     @visible_to_all_users.setter
@@ -1911,6 +1914,9 @@ class _MrScalarState:
     @property
     @pulumi.getter(name="visibleToAllUsers")
     def visible_to_all_users(self) -> Optional[pulumi.Input[bool]]:
+        warnings.warn("""This field has been removed from our API and is no longer functional.""", DeprecationWarning)
+        pulumi.log.warn("""visible_to_all_users is deprecated: This field has been removed from our API and is no longer functional.""")
+
         return pulumi.get(self, "visible_to_all_users")
 
     @visible_to_all_users.setter
@@ -3314,5 +3320,8 @@ class MrScalar(pulumi.CustomResource):
     @property
     @pulumi.getter(name="visibleToAllUsers")
     def visible_to_all_users(self) -> pulumi.Output[Optional[bool]]:
+        warnings.warn("""This field has been removed from our API and is no longer functional.""", DeprecationWarning)
+        pulumi.log.warn("""visible_to_all_users is deprecated: This field has been removed from our API and is no longer functional.""")
+
         return pulumi.get(self, "visible_to_all_users")
 

@@ -34,6 +34,7 @@ import (
 // * `preferredZones` - (Optional, Enum `"1", "2", "3"`) The AZs to prioritize when launching VMs. If no markets are available in the Preferred AZs, VMs are launched in the non-preferred AZs. Must be a sublist of compute.zones.
 // * `customData` - (Optional) This value will hold the YAML in base64 and will be executed upon VM launch.
 // * `shutdownScript` - (Optional) Shutdown script for the stateful node. Value should be passed as a string encoded at Base64 only.
+// * `userData` - (Optional) Define a set of scripts or other metadata that's inserted to an Azure virtual machine at provision time. (Base64 encoded)
 //
 // <a id="bootDiagnostics"></a>
 // ## Boot Diagnostics
@@ -271,6 +272,7 @@ type StatefulNodeAzure struct {
 	Strategy                 StatefulNodeAzureStrategyOutput                    `pulumi:"strategy"`
 	Tags                     StatefulNodeAzureTagArrayOutput                    `pulumi:"tags"`
 	UpdateStates             StatefulNodeAzureUpdateStateArrayOutput            `pulumi:"updateStates"`
+	UserData                 pulumi.StringOutput                                `pulumi:"userData"`
 	Zones                    pulumi.StringArrayOutput                           `pulumi:"zones"`
 }
 
@@ -376,6 +378,7 @@ type statefulNodeAzureState struct {
 	Strategy                 *StatefulNodeAzureStrategy                `pulumi:"strategy"`
 	Tags                     []StatefulNodeAzureTag                    `pulumi:"tags"`
 	UpdateStates             []StatefulNodeAzureUpdateState            `pulumi:"updateStates"`
+	UserData                 *string                                   `pulumi:"userData"`
 	Zones                    []string                                  `pulumi:"zones"`
 }
 
@@ -417,6 +420,7 @@ type StatefulNodeAzureState struct {
 	Strategy                 StatefulNodeAzureStrategyPtrInput
 	Tags                     StatefulNodeAzureTagArrayInput
 	UpdateStates             StatefulNodeAzureUpdateStateArrayInput
+	UserData                 pulumi.StringPtrInput
 	Zones                    pulumi.StringArrayInput
 }
 
@@ -462,6 +466,7 @@ type statefulNodeAzureArgs struct {
 	Strategy                 StatefulNodeAzureStrategy                 `pulumi:"strategy"`
 	Tags                     []StatefulNodeAzureTag                    `pulumi:"tags"`
 	UpdateStates             []StatefulNodeAzureUpdateState            `pulumi:"updateStates"`
+	UserData                 *string                                   `pulumi:"userData"`
 	Zones                    []string                                  `pulumi:"zones"`
 }
 
@@ -504,6 +509,7 @@ type StatefulNodeAzureArgs struct {
 	Strategy                 StatefulNodeAzureStrategyInput
 	Tags                     StatefulNodeAzureTagArrayInput
 	UpdateStates             StatefulNodeAzureUpdateStateArrayInput
+	UserData                 pulumi.StringPtrInput
 	Zones                    pulumi.StringArrayInput
 }
 
@@ -742,6 +748,10 @@ func (o StatefulNodeAzureOutput) Tags() StatefulNodeAzureTagArrayOutput {
 
 func (o StatefulNodeAzureOutput) UpdateStates() StatefulNodeAzureUpdateStateArrayOutput {
 	return o.ApplyT(func(v *StatefulNodeAzure) StatefulNodeAzureUpdateStateArrayOutput { return v.UpdateStates }).(StatefulNodeAzureUpdateStateArrayOutput)
+}
+
+func (o StatefulNodeAzureOutput) UserData() pulumi.StringOutput {
+	return o.ApplyT(func(v *StatefulNodeAzure) pulumi.StringOutput { return v.UserData }).(pulumi.StringOutput)
 }
 
 func (o StatefulNodeAzureOutput) Zones() pulumi.StringArrayOutput {

@@ -154,6 +154,9 @@ class ElastigroupArgs:
         """
         The name of the GKE cluster you wish to import.
         """
+        warnings.warn("""Please define cluster_id under integration_gke""", DeprecationWarning)
+        pulumi.log.warn("""cluster_id is deprecated: Please define cluster_id under integration_gke""")
+
         return pulumi.get(self, "cluster_id")
 
     @cluster_id.setter
@@ -532,6 +535,9 @@ class _ElastigroupState:
         """
         The name of the GKE cluster you wish to import.
         """
+        warnings.warn("""Please define cluster_id under integration_gke""", DeprecationWarning)
+        pulumi.log.warn("""cluster_id is deprecated: Please define cluster_id under integration_gke""")
+
         return pulumi.get(self, "cluster_id")
 
     @cluster_id.setter
@@ -1173,6 +1179,9 @@ class Elastigroup(pulumi.CustomResource):
         """
         The name of the GKE cluster you wish to import.
         """
+        warnings.warn("""Please define cluster_id under integration_gke""", DeprecationWarning)
+        pulumi.log.warn("""cluster_id is deprecated: Please define cluster_id under integration_gke""")
+
         return pulumi.get(self, "cluster_id")
 
     @property

@@ -197,6 +197,9 @@ class ElastigroupArgs:
         """
         List of availability zones for the group.
         """
+        warnings.warn("""This field will soon be handled by Region in Subnets""", DeprecationWarning)
+        pulumi.log.warn("""availability_zones is deprecated: This field will soon be handled by Region in Subnets""")
+
         return pulumi.get(self, "availability_zones")
 
     @availability_zones.setter
@@ -760,6 +763,9 @@ class _ElastigroupState:
         """
         List of availability zones for the group.
         """
+        warnings.warn("""This field will soon be handled by Region in Subnets""", DeprecationWarning)
+        pulumi.log.warn("""availability_zones is deprecated: This field will soon be handled by Region in Subnets""")
+
         return pulumi.get(self, "availability_zones")
 
     @availability_zones.setter
@@ -1688,6 +1694,9 @@ class Elastigroup(pulumi.CustomResource):
         """
         List of availability zones for the group.
         """
+        warnings.warn("""This field will soon be handled by Region in Subnets""", DeprecationWarning)
+        pulumi.log.warn("""availability_zones is deprecated: This field will soon be handled by Region in Subnets""")
+
         return pulumi.get(self, "availability_zones")
 
     @property
