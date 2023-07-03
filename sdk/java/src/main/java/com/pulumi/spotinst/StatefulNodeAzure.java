@@ -105,6 +105,7 @@ import javax.annotation.Nullable;
  *             .preferredZones(&#34;1&#34;)
  *             .customData(&#34;&#34;)
  *             .shutdownScript(&#34;&#34;)
+ *             .userData(&#34;&#34;)
  *             .bootDiagnostics(StatefulNodeAzureBootDiagnosticArgs.builder()
  *                 .isEnabled(true)
  *                 .storageUrl(&#34;https://.blob.core.windows.net/test&#34;)
@@ -273,6 +274,7 @@ import javax.annotation.Nullable;
  * * `preferred_zones` - (Optional, Enum `&#34;1&#34;, &#34;2&#34;, &#34;3&#34;`) The AZs to prioritize when launching VMs. If no markets are available in the Preferred AZs, VMs are launched in the non-preferred AZs. Must be a sublist of compute.zones.
  * * `custom_data` - (Optional) This value will hold the YAML in base64 and will be executed upon VM launch.
  * * `shutdown_script` - (Optional) Shutdown script for the stateful node. Value should be passed as a string encoded at Base64 only.
+ * * `user_data` - (Optional) Define a set of scripts or other metadata that&#39;s inserted to an Azure virtual machine at provision time. (Base64 encoded)
  * 
  * &lt;a id=&#34;boot_diagnostics&#34;&gt;&lt;/a&gt;
  * ## Boot Diagnostics
@@ -695,6 +697,12 @@ public class StatefulNodeAzure extends com.pulumi.resources.CustomResource {
 
     public Output<Optional<List<StatefulNodeAzureUpdateState>>> updateStates() {
         return Codegen.optional(this.updateStates);
+    }
+    @Export(name="userData", type=String.class, parameters={})
+    private Output<String> userData;
+
+    public Output<String> userData() {
+        return this.userData;
     }
     @Export(name="zones", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> zones;

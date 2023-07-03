@@ -296,6 +296,13 @@ public final class StatefulNodeAzureArgs extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.updateStates);
     }
 
+    @Import(name="userData")
+    private @Nullable Output<String> userData;
+
+    public Optional<Output<String>> userData() {
+        return Optional.ofNullable(this.userData);
+    }
+
     @Import(name="zones")
     private @Nullable Output<List<String>> zones;
 
@@ -343,6 +350,7 @@ public final class StatefulNodeAzureArgs extends com.pulumi.resources.ResourceAr
         this.strategy = $.strategy;
         this.tags = $.tags;
         this.updateStates = $.updateStates;
+        this.userData = $.userData;
         this.zones = $.zones;
     }
 
@@ -763,6 +771,15 @@ public final class StatefulNodeAzureArgs extends com.pulumi.resources.ResourceAr
 
         public Builder updateStates(StatefulNodeAzureUpdateStateArgs... updateStates) {
             return updateStates(List.of(updateStates));
+        }
+
+        public Builder userData(@Nullable Output<String> userData) {
+            $.userData = userData;
+            return this;
+        }
+
+        public Builder userData(String userData) {
+            return userData(Output.of(userData));
         }
 
         public Builder zones(@Nullable Output<List<String>> zones) {

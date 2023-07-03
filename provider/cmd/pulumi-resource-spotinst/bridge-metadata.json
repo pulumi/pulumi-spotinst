@@ -6637,7 +6637,8 @@
                 "signals": "signal",
                 "spotSizes": "spot_sizes",
                 "tags": "tag",
-                "updateStates": "update_state"
+                "updateStates": "update_state",
+                "userData": "user_data"
             },
             "spotinst:index/subscription:Subscription": {
                 "eventType": "event_type",

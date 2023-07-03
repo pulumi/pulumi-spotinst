@@ -53,6 +53,7 @@ class StatefulNodeAzureArgs:
                  signals: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureSignalArgs']]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureTagArgs']]]] = None,
                  update_states: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureUpdateStateArgs']]]] = None,
+                 user_data: Optional[pulumi.Input[str]] = None,
                  zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a StatefulNodeAzure resource.
@@ -119,6 +120,8 @@ class StatefulNodeAzureArgs:
             pulumi.set(__self__, "tags", tags)
         if update_states is not None:
             pulumi.set(__self__, "update_states", update_states)
+        if user_data is not None:
+            pulumi.set(__self__, "user_data", user_data)
         if zones is not None:
             pulumi.set(__self__, "zones", zones)
 
@@ -456,6 +459,15 @@ class StatefulNodeAzureArgs:
         pulumi.set(self, "update_states", value)
 
     @property
+    @pulumi.getter(name="userData")
+    def user_data(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "user_data")
+
+    @user_data.setter
+    def user_data(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "user_data", value)
+
+    @property
     @pulumi.getter
     def zones(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         return pulumi.get(self, "zones")
@@ -505,6 +517,7 @@ class _StatefulNodeAzureState:
                  strategy: Optional[pulumi.Input['StatefulNodeAzureStrategyArgs']] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureTagArgs']]]] = None,
                  update_states: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureUpdateStateArgs']]]] = None,
+                 user_data: Optional[pulumi.Input[str]] = None,
                  zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering StatefulNodeAzure resources.
@@ -583,6 +596,8 @@ class _StatefulNodeAzureState:
             pulumi.set(__self__, "tags", tags)
         if update_states is not None:
             pulumi.set(__self__, "update_states", update_states)
+        if user_data is not None:
+            pulumi.set(__self__, "user_data", user_data)
         if zones is not None:
             pulumi.set(__self__, "zones", zones)
 
@@ -920,6 +935,15 @@ class _StatefulNodeAzureState:
         pulumi.set(self, "update_states", value)
 
     @property
+    @pulumi.getter(name="userData")
+    def user_data(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "user_data")
+
+    @user_data.setter
+    def user_data(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "user_data", value)
+
+    @property
     @pulumi.getter
     def zones(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         return pulumi.get(self, "zones")
@@ -971,6 +995,7 @@ class StatefulNodeAzure(pulumi.CustomResource):
                  strategy: Optional[pulumi.Input[pulumi.InputType['StatefulNodeAzureStrategyArgs']]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StatefulNodeAzureTagArgs']]]]] = None,
                  update_states: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StatefulNodeAzureUpdateStateArgs']]]]] = None,
+                 user_data: Optional[pulumi.Input[str]] = None,
                  zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
@@ -997,6 +1022,7 @@ class StatefulNodeAzure(pulumi.CustomResource):
         * `preferred_zones` - (Optional, Enum `"1", "2", "3"`) The AZs to prioritize when launching VMs. If no markets are available in the Preferred AZs, VMs are launched in the non-preferred AZs. Must be a sublist of compute.zones.
         * `custom_data` - (Optional) This value will hold the YAML in base64 and will be executed upon VM launch.
         * `shutdown_script` - (Optional) Shutdown script for the stateful node. Value should be passed as a string encoded at Base64 only.
+        * `user_data` - (Optional) Define a set of scripts or other metadata that's inserted to an Azure virtual machine at provision time. (Base64 encoded)
 
         <a id="boot_diagnostics"></a>
         ## Boot Diagnostics
@@ -1228,6 +1254,7 @@ class StatefulNodeAzure(pulumi.CustomResource):
         * `preferred_zones` - (Optional, Enum `"1", "2", "3"`) The AZs to prioritize when launching VMs. If no markets are available in the Preferred AZs, VMs are launched in the non-preferred AZs. Must be a sublist of compute.zones.
         * `custom_data` - (Optional) This value will hold the YAML in base64 and will be executed upon VM launch.
         * `shutdown_script` - (Optional) Shutdown script for the stateful node. Value should be passed as a string encoded at Base64 only.
+        * `user_data` - (Optional) Define a set of scripts or other metadata that's inserted to an Azure virtual machine at provision time. (Base64 encoded)
 
         <a id="boot_diagnostics"></a>
         ## Boot Diagnostics
@@ -1478,6 +1505,7 @@ class StatefulNodeAzure(pulumi.CustomResource):
                  strategy: Optional[pulumi.Input[pulumi.InputType['StatefulNodeAzureStrategyArgs']]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StatefulNodeAzureTagArgs']]]]] = None,
                  update_states: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StatefulNodeAzureUpdateStateArgs']]]]] = None,
+                 user_data: Optional[pulumi.Input[str]] = None,
                  zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1549,6 +1577,7 @@ class StatefulNodeAzure(pulumi.CustomResource):
             __props__.__dict__["strategy"] = strategy
             __props__.__dict__["tags"] = tags
             __props__.__dict__["update_states"] = update_states
+            __props__.__dict__["user_data"] = user_data
             __props__.__dict__["zones"] = zones
         super(StatefulNodeAzure, __self__).__init__(
             'spotinst:index/statefulNodeAzure:StatefulNodeAzure',
@@ -1597,6 +1626,7 @@ class StatefulNodeAzure(pulumi.CustomResource):
             strategy: Optional[pulumi.Input[pulumi.InputType['StatefulNodeAzureStrategyArgs']]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StatefulNodeAzureTagArgs']]]]] = None,
             update_states: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StatefulNodeAzureUpdateStateArgs']]]]] = None,
+            user_data: Optional[pulumi.Input[str]] = None,
             zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'StatefulNodeAzure':
         """
         Get an existing StatefulNodeAzure resource's state with the given name, id, and optional extra
@@ -1647,6 +1677,7 @@ class StatefulNodeAzure(pulumi.CustomResource):
         __props__.__dict__["strategy"] = strategy
         __props__.__dict__["tags"] = tags
         __props__.__dict__["update_states"] = update_states
+        __props__.__dict__["user_data"] = user_data
         __props__.__dict__["zones"] = zones
         return StatefulNodeAzure(resource_name, opts=opts, __props__=__props__)
 
@@ -1834,6 +1865,11 @@ class StatefulNodeAzure(pulumi.CustomResource):
     @pulumi.getter(name="updateStates")
     def update_states(self) -> pulumi.Output[Optional[Sequence['outputs.StatefulNodeAzureUpdateState']]]:
         return pulumi.get(self, "update_states")
+
+    @property
+    @pulumi.getter(name="userData")
+    def user_data(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "user_data")
 
     @property
     @pulumi.getter
