@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class OceanLaunchSpecStrategy {
     /**
-     * @return When set, Ocean will proactively try to maintain as close as possible to the percentage of Spot instances out of all the Virtual Node Group instances.
+     * @return The desired percentage of the Spot instances out of all running instances for this VNG. Only available when the field is not set in the cluster directly (cluster.strategy.spotPercentage).
      * 
      */
     private @Nullable Integer spotPercentage;
 
     private OceanLaunchSpecStrategy() {}
     /**
-     * @return When set, Ocean will proactively try to maintain as close as possible to the percentage of Spot instances out of all the Virtual Node Group instances.
+     * @return The desired percentage of the Spot instances out of all running instances for this VNG. Only available when the field is not set in the cluster directly (cluster.strategy.spotPercentage).
      * 
      */
     public Optional<Integer> spotPercentage() {

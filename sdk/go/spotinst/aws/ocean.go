@@ -105,7 +105,7 @@ type Ocean struct {
 	ScheduledTasks OceanScheduledTaskArrayOutput `pulumi:"scheduledTasks"`
 	// One or more security group ids.
 	SecurityGroups pulumi.StringArrayOutput `pulumi:"securityGroups"`
-	// The percentage of Spot instances that would spin up from the `desiredCapacity` number.
+	// The desired percentage of Spot instances out of all running instances. Only available when the field is not set in any VNG directly (launchSpec.strategy.spotPercentage).
 	SpotPercentage pulumi.IntPtrOutput `pulumi:"spotPercentage"`
 	// Ocean will spread the nodes across markets by this value. Possible values: `vcpu` or `count`.
 	SpreadNodesBy pulumi.StringPtrOutput `pulumi:"spreadNodesBy"`
@@ -214,7 +214,7 @@ type oceanState struct {
 	ScheduledTasks []OceanScheduledTask `pulumi:"scheduledTasks"`
 	// One or more security group ids.
 	SecurityGroups []string `pulumi:"securityGroups"`
-	// The percentage of Spot instances that would spin up from the `desiredCapacity` number.
+	// The desired percentage of Spot instances out of all running instances. Only available when the field is not set in any VNG directly (launchSpec.strategy.spotPercentage).
 	SpotPercentage *int `pulumi:"spotPercentage"`
 	// Ocean will spread the nodes across markets by this value. Possible values: `vcpu` or `count`.
 	SpreadNodesBy *string `pulumi:"spreadNodesBy"`
@@ -289,7 +289,7 @@ type OceanState struct {
 	ScheduledTasks OceanScheduledTaskArrayInput
 	// One or more security group ids.
 	SecurityGroups pulumi.StringArrayInput
-	// The percentage of Spot instances that would spin up from the `desiredCapacity` number.
+	// The desired percentage of Spot instances out of all running instances. Only available when the field is not set in any VNG directly (launchSpec.strategy.spotPercentage).
 	SpotPercentage pulumi.IntPtrInput
 	// Ocean will spread the nodes across markets by this value. Possible values: `vcpu` or `count`.
 	SpreadNodesBy pulumi.StringPtrInput
@@ -368,7 +368,7 @@ type oceanArgs struct {
 	ScheduledTasks []OceanScheduledTask `pulumi:"scheduledTasks"`
 	// One or more security group ids.
 	SecurityGroups []string `pulumi:"securityGroups"`
-	// The percentage of Spot instances that would spin up from the `desiredCapacity` number.
+	// The desired percentage of Spot instances out of all running instances. Only available when the field is not set in any VNG directly (launchSpec.strategy.spotPercentage).
 	SpotPercentage *int `pulumi:"spotPercentage"`
 	// Ocean will spread the nodes across markets by this value. Possible values: `vcpu` or `count`.
 	SpreadNodesBy *string `pulumi:"spreadNodesBy"`
@@ -444,7 +444,7 @@ type OceanArgs struct {
 	ScheduledTasks OceanScheduledTaskArrayInput
 	// One or more security group ids.
 	SecurityGroups pulumi.StringArrayInput
-	// The percentage of Spot instances that would spin up from the `desiredCapacity` number.
+	// The desired percentage of Spot instances out of all running instances. Only available when the field is not set in any VNG directly (launchSpec.strategy.spotPercentage).
 	SpotPercentage pulumi.IntPtrInput
 	// Ocean will spread the nodes across markets by this value. Possible values: `vcpu` or `count`.
 	SpreadNodesBy pulumi.StringPtrInput
@@ -686,7 +686,7 @@ func (o OceanOutput) SecurityGroups() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Ocean) pulumi.StringArrayOutput { return v.SecurityGroups }).(pulumi.StringArrayOutput)
 }
 
-// The percentage of Spot instances that would spin up from the `desiredCapacity` number.
+// The desired percentage of Spot instances out of all running instances. Only available when the field is not set in any VNG directly (launchSpec.strategy.spotPercentage).
 func (o OceanOutput) SpotPercentage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Ocean) pulumi.IntPtrOutput { return v.SpotPercentage }).(pulumi.IntPtrOutput)
 }

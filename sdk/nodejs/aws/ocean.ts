@@ -163,7 +163,7 @@ export class Ocean extends pulumi.CustomResource {
      */
     public readonly securityGroups!: pulumi.Output<string[]>;
     /**
-     * The percentage of Spot instances that would spin up from the `desiredCapacity` number.
+     * The desired percentage of Spot instances out of all running instances. Only available when the field is not set in any VNG directly (launchSpec.strategy.spotPercentage).
      */
     public readonly spotPercentage!: pulumi.Output<number | undefined>;
     /**
@@ -409,7 +409,7 @@ export interface OceanState {
      */
     securityGroups?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The percentage of Spot instances that would spin up from the `desiredCapacity` number.
+     * The desired percentage of Spot instances out of all running instances. Only available when the field is not set in any VNG directly (launchSpec.strategy.spotPercentage).
      */
     spotPercentage?: pulumi.Input<number>;
     /**
@@ -555,7 +555,7 @@ export interface OceanArgs {
      */
     securityGroups: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The percentage of Spot instances that would spin up from the `desiredCapacity` number.
+     * The desired percentage of Spot instances out of all running instances. Only available when the field is not set in any VNG directly (launchSpec.strategy.spotPercentage).
      */
     spotPercentage?: pulumi.Input<number>;
     /**

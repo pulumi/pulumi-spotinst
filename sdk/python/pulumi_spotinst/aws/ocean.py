@@ -81,7 +81,7 @@ class OceanArgs:
         :param pulumi.Input[str] name: Required if type is set to `CLASSIC`
         :param pulumi.Input[str] region: The region the cluster will run in.
         :param pulumi.Input[int] root_volume_size: The size (in Gb) to allocate for the root volume. Minimum `20`.
-        :param pulumi.Input[int] spot_percentage: The percentage of Spot instances that would spin up from the `desired_capacity` number.
+        :param pulumi.Input[int] spot_percentage: The desired percentage of Spot instances out of all running instances. Only available when the field is not set in any VNG directly (launchSpec.strategy.spotPercentage).
         :param pulumi.Input[str] spread_nodes_by: Ocean will spread the nodes across markets by this value. Possible values: `vcpu` or `count`.
         :param pulumi.Input[Sequence[pulumi.Input['OceanTagArgs']]] tags: Optionally adds tags to instances launched in an Ocean cluster.
         :param pulumi.Input[bool] use_as_template_only: launch specification defined on the Ocean object will function only as a template for virtual node groups.
@@ -498,7 +498,7 @@ class OceanArgs:
     @pulumi.getter(name="spotPercentage")
     def spot_percentage(self) -> Optional[pulumi.Input[int]]:
         """
-        The percentage of Spot instances that would spin up from the `desired_capacity` number.
+        The desired percentage of Spot instances out of all running instances. Only available when the field is not set in any VNG directly (launchSpec.strategy.spotPercentage).
         """
         return pulumi.get(self, "spot_percentage")
 
@@ -668,7 +668,7 @@ class _OceanState:
         :param pulumi.Input[str] region: The region the cluster will run in.
         :param pulumi.Input[int] root_volume_size: The size (in Gb) to allocate for the root volume. Minimum `20`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: One or more security group ids.
-        :param pulumi.Input[int] spot_percentage: The percentage of Spot instances that would spin up from the `desired_capacity` number.
+        :param pulumi.Input[int] spot_percentage: The desired percentage of Spot instances out of all running instances. Only available when the field is not set in any VNG directly (launchSpec.strategy.spotPercentage).
         :param pulumi.Input[str] spread_nodes_by: Ocean will spread the nodes across markets by this value. Possible values: `vcpu` or `count`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public IP.
         :param pulumi.Input[Sequence[pulumi.Input['OceanTagArgs']]] tags: Optionally adds tags to instances launched in an Ocean cluster.
@@ -1076,7 +1076,7 @@ class _OceanState:
     @pulumi.getter(name="spotPercentage")
     def spot_percentage(self) -> Optional[pulumi.Input[int]]:
         """
-        The percentage of Spot instances that would spin up from the `desired_capacity` number.
+        The desired percentage of Spot instances out of all running instances. Only available when the field is not set in any VNG directly (launchSpec.strategy.spotPercentage).
         """
         return pulumi.get(self, "spot_percentage")
 
@@ -1287,7 +1287,7 @@ class Ocean(pulumi.CustomResource):
         :param pulumi.Input[str] region: The region the cluster will run in.
         :param pulumi.Input[int] root_volume_size: The size (in Gb) to allocate for the root volume. Minimum `20`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: One or more security group ids.
-        :param pulumi.Input[int] spot_percentage: The percentage of Spot instances that would spin up from the `desired_capacity` number.
+        :param pulumi.Input[int] spot_percentage: The desired percentage of Spot instances out of all running instances. Only available when the field is not set in any VNG directly (launchSpec.strategy.spotPercentage).
         :param pulumi.Input[str] spread_nodes_by: Ocean will spread the nodes across markets by this value. Possible values: `vcpu` or `count`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public IP.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanTagArgs']]]] tags: Optionally adds tags to instances launched in an Ocean cluster.
@@ -1511,7 +1511,7 @@ class Ocean(pulumi.CustomResource):
         :param pulumi.Input[str] region: The region the cluster will run in.
         :param pulumi.Input[int] root_volume_size: The size (in Gb) to allocate for the root volume. Minimum `20`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: One or more security group ids.
-        :param pulumi.Input[int] spot_percentage: The percentage of Spot instances that would spin up from the `desired_capacity` number.
+        :param pulumi.Input[int] spot_percentage: The desired percentage of Spot instances out of all running instances. Only available when the field is not set in any VNG directly (launchSpec.strategy.spotPercentage).
         :param pulumi.Input[str] spread_nodes_by: Ocean will spread the nodes across markets by this value. Possible values: `vcpu` or `count`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public IP.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanTagArgs']]]] tags: Optionally adds tags to instances launched in an Ocean cluster.
@@ -1779,7 +1779,7 @@ class Ocean(pulumi.CustomResource):
     @pulumi.getter(name="spotPercentage")
     def spot_percentage(self) -> pulumi.Output[Optional[int]]:
         """
-        The percentage of Spot instances that would spin up from the `desired_capacity` number.
+        The desired percentage of Spot instances out of all running instances. Only available when the field is not set in any VNG directly (launchSpec.strategy.spotPercentage).
         """
         return pulumi.get(self, "spot_percentage")
 

@@ -10271,7 +10271,7 @@ class OceanLaunchSpecStrategy(dict):
     def __init__(__self__, *,
                  spot_percentage: Optional[int] = None):
         """
-        :param int spot_percentage: When set, Ocean will proactively try to maintain as close as possible to the percentage of Spot instances out of all the Virtual Node Group instances.
+        :param int spot_percentage: The desired percentage of the Spot instances out of all running instances for this VNG. Only available when the field is not set in the cluster directly (cluster.strategy.spotPercentage).
         """
         if spot_percentage is not None:
             pulumi.set(__self__, "spot_percentage", spot_percentage)
@@ -10280,7 +10280,7 @@ class OceanLaunchSpecStrategy(dict):
     @pulumi.getter(name="spotPercentage")
     def spot_percentage(self) -> Optional[int]:
         """
-        When set, Ocean will proactively try to maintain as close as possible to the percentage of Spot instances out of all the Virtual Node Group instances.
+        The desired percentage of the Spot instances out of all running instances for this VNG. Only available when the field is not set in the cluster directly (cluster.strategy.spotPercentage).
         """
         return pulumi.get(self, "spot_percentage")
 

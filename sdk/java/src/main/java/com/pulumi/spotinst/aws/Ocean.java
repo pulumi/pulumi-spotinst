@@ -437,14 +437,14 @@ public class Ocean extends com.pulumi.resources.CustomResource {
         return this.securityGroups;
     }
     /**
-     * The percentage of Spot instances that would spin up from the `desired_capacity` number.
+     * The desired percentage of Spot instances out of all running instances. Only available when the field is not set in any VNG directly (launchSpec.strategy.spotPercentage).
      * 
      */
     @Export(name="spotPercentage", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> spotPercentage;
 
     /**
-     * @return The percentage of Spot instances that would spin up from the `desired_capacity` number.
+     * @return The desired percentage of Spot instances out of all running instances. Only available when the field is not set in any VNG directly (launchSpec.strategy.spotPercentage).
      * 
      */
     public Output<Optional<Integer>> spotPercentage() {
