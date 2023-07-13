@@ -201,7 +201,7 @@ namespace Pulumi.SpotInst.Aws
         public Output<ImmutableArray<string>> SecurityGroups { get; private set; } = null!;
 
         /// <summary>
-        /// The percentage of Spot instances that would spin up from the `desired_capacity` number.
+        /// The desired percentage of Spot instances out of all running instances. Only available when the field is not set in any VNG directly (launchSpec.strategy.spotPercentage).
         /// </summary>
         [Output("spotPercentage")]
         public Output<int?> SpotPercentage { get; private set; } = null!;
@@ -495,7 +495,7 @@ namespace Pulumi.SpotInst.Aws
         }
 
         /// <summary>
-        /// The percentage of Spot instances that would spin up from the `desired_capacity` number.
+        /// The desired percentage of Spot instances out of all running instances. Only available when the field is not set in any VNG directly (launchSpec.strategy.spotPercentage).
         /// </summary>
         [Input("spotPercentage")]
         public Input<int>? SpotPercentage { get; set; }
@@ -769,7 +769,7 @@ namespace Pulumi.SpotInst.Aws
         }
 
         /// <summary>
-        /// The percentage of Spot instances that would spin up from the `desired_capacity` number.
+        /// The desired percentage of Spot instances out of all running instances. Only available when the field is not set in any VNG directly (launchSpec.strategy.spotPercentage).
         /// </summary>
         [Input("spotPercentage")]
         public Input<int>? SpotPercentage { get; set; }

@@ -3578,7 +3578,7 @@
             "properties": {
                 "spotPercentage": {
                     "type": "integer",
-                    "description": "When set, Ocean will proactively try to maintain as close as possible to the percentage of Spot instances out of all the Virtual Node Group instances.\n"
+                    "description": "The desired percentage of the Spot instances out of all running instances for this VNG. Only available when the field is not set in the cluster directly (cluster.strategy.spotPercentage).\n"
                 }
             },
             "type": "object"
@@ -11716,7 +11716,7 @@
                 },
                 "spotPercentage": {
                     "type": "integer",
-                    "description": "The percentage of Spot instances that would spin up from the `desired_capacity` number.\n"
+                    "description": "The desired percentage of Spot instances out of all running instances. Only available when the field is not set in any VNG directly (launchSpec.strategy.spotPercentage).\n"
                 },
                 "spreadNodesBy": {
                     "type": "string",
@@ -11897,7 +11897,7 @@
                 },
                 "spotPercentage": {
                     "type": "integer",
-                    "description": "The percentage of Spot instances that would spin up from the `desired_capacity` number.\n"
+                    "description": "The desired percentage of Spot instances out of all running instances. Only available when the field is not set in any VNG directly (launchSpec.strategy.spotPercentage).\n"
                 },
                 "spreadNodesBy": {
                     "type": "string",
@@ -12077,7 +12077,7 @@
                     },
                     "spotPercentage": {
                         "type": "integer",
-                        "description": "The percentage of Spot instances that would spin up from the `desired_capacity` number.\n"
+                        "description": "The desired percentage of Spot instances out of all running instances. Only available when the field is not set in any VNG directly (launchSpec.strategy.spotPercentage).\n"
                     },
                     "spreadNodesBy": {
                         "type": "string",

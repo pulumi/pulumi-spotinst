@@ -16,14 +16,14 @@ public final class OceanLaunchSpecStrategyArgs extends com.pulumi.resources.Reso
     public static final OceanLaunchSpecStrategyArgs Empty = new OceanLaunchSpecStrategyArgs();
 
     /**
-     * When set, Ocean will proactively try to maintain as close as possible to the percentage of Spot instances out of all the Virtual Node Group instances.
+     * The desired percentage of the Spot instances out of all running instances for this VNG. Only available when the field is not set in the cluster directly (cluster.strategy.spotPercentage).
      * 
      */
     @Import(name="spotPercentage")
     private @Nullable Output<Integer> spotPercentage;
 
     /**
-     * @return When set, Ocean will proactively try to maintain as close as possible to the percentage of Spot instances out of all the Virtual Node Group instances.
+     * @return The desired percentage of the Spot instances out of all running instances for this VNG. Only available when the field is not set in the cluster directly (cluster.strategy.spotPercentage).
      * 
      */
     public Optional<Output<Integer>> spotPercentage() {
@@ -55,7 +55,7 @@ public final class OceanLaunchSpecStrategyArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param spotPercentage When set, Ocean will proactively try to maintain as close as possible to the percentage of Spot instances out of all the Virtual Node Group instances.
+         * @param spotPercentage The desired percentage of the Spot instances out of all running instances for this VNG. Only available when the field is not set in the cluster directly (cluster.strategy.spotPercentage).
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class OceanLaunchSpecStrategyArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param spotPercentage When set, Ocean will proactively try to maintain as close as possible to the percentage of Spot instances out of all the Virtual Node Group instances.
+         * @param spotPercentage The desired percentage of the Spot instances out of all running instances for this VNG. Only available when the field is not set in the cluster directly (cluster.strategy.spotPercentage).
          * 
          * @return builder
          * 

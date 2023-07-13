@@ -418,14 +418,14 @@ public final class OceanState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The percentage of Spot instances that would spin up from the `desired_capacity` number.
+     * The desired percentage of Spot instances out of all running instances. Only available when the field is not set in any VNG directly (launchSpec.strategy.spotPercentage).
      * 
      */
     @Import(name="spotPercentage")
     private @Nullable Output<Integer> spotPercentage;
 
     /**
-     * @return The percentage of Spot instances that would spin up from the `desired_capacity` number.
+     * @return The desired percentage of Spot instances out of all running instances. Only available when the field is not set in any VNG directly (launchSpec.strategy.spotPercentage).
      * 
      */
     public Optional<Output<Integer>> spotPercentage() {
@@ -1213,7 +1213,7 @@ public final class OceanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param spotPercentage The percentage of Spot instances that would spin up from the `desired_capacity` number.
+         * @param spotPercentage The desired percentage of Spot instances out of all running instances. Only available when the field is not set in any VNG directly (launchSpec.strategy.spotPercentage).
          * 
          * @return builder
          * 
@@ -1224,7 +1224,7 @@ public final class OceanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param spotPercentage The percentage of Spot instances that would spin up from the `desired_capacity` number.
+         * @param spotPercentage The desired percentage of Spot instances out of all running instances. Only available when the field is not set in any VNG directly (launchSpec.strategy.spotPercentage).
          * 
          * @return builder
          * 
