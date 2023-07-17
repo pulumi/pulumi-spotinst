@@ -13,20 +13,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class OceanAutoscalerAutoscaleDown {
     private @Nullable Integer evaluationPeriods;
-    /**
-     * @return Would represent the maximum % to scale-down. Number between 1-100.
-     * 
-     */
     private @Nullable Double maxScaleDownPercentage;
 
     private OceanAutoscalerAutoscaleDown() {}
     public Optional<Integer> evaluationPeriods() {
         return Optional.ofNullable(this.evaluationPeriods);
     }
-    /**
-     * @return Would represent the maximum % to scale-down. Number between 1-100.
-     * 
-     */
     public Optional<Double> maxScaleDownPercentage() {
         return Optional.ofNullable(this.maxScaleDownPercentage);
     }

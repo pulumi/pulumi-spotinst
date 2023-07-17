@@ -2522,72 +2522,26 @@ export namespace aws {
     }
 
     export interface OceanAutoscaler {
-        /**
-         * Set the auto headroom percentage (a number in the range [0, 200]) which controls the percentage of headroom from the cluster. Relevant only when `autoscaleIsAutoConfig` toggled on.
-         */
         autoHeadroomPercentage?: number;
-        /**
-         * Cooldown period between scaling actions.
-         */
         autoscaleCooldown?: number;
-        /**
-         * Auto Scaling scale down operations.
-         */
         autoscaleDown?: outputs.aws.OceanAutoscalerAutoscaleDown;
-        /**
-         * Spare resource capacity management enabling fast assignment of Pods without waiting for new resources to launch.
-         */
         autoscaleHeadroom?: outputs.aws.OceanAutoscalerAutoscaleHeadroom;
-        /**
-         * Automatically configure and optimize headroom resources.
-         */
         autoscaleIsAutoConfig?: boolean;
-        /**
-         * Enable the Ocean Kubernetes Auto Scaler.
-         */
         autoscaleIsEnabled?: boolean;
-        /**
-         * enables automatic and manual headroom to work in parallel. When set to false, automatic headroom overrides all other headroom definitions manually configured, whether they are at cluster or VNG level.
-         */
         enableAutomaticAndManualHeadroom?: boolean;
-        /**
-         * List of Ocean extended resource definitions to use in this cluster.
-         *
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
-         */
         extendedResourceDefinitions?: string[];
-        /**
-         * Optionally set upper and lower bounds on the resource usage of the cluster.
-         */
         resourceLimits?: outputs.aws.OceanAutoscalerResourceLimits;
     }
 
     export interface OceanAutoscalerAutoscaleDown {
         evaluationPeriods?: number;
-        /**
-         * Would represent the maximum % to scale-down. Number between 1-100.
-         */
         maxScaleDownPercentage?: number;
     }
 
     export interface OceanAutoscalerAutoscaleHeadroom {
-        /**
-         * Optionally configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
-         */
         cpuPerUnit?: number;
-        /**
-         * Optionally configure the number of GPUs to allocate the headroom.
-         */
         gpuPerUnit?: number;
-        /**
-         * Optionally configure the amount of memory (MB) to allocate the headroom.
-         */
         memoryPerUnit?: number;
-        /**
-         * The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
-         */
         numOfUnits?: number;
     }
 
@@ -3072,6 +3026,13 @@ export namespace aws {
         id: string;
     }
 
+    export interface OceanResourceTagSpecification {
+        /**
+         * Specify if Volume resources will be tagged with Virtual Node Group tags or Ocean tags.
+         */
+        shouldTagVolumes?: boolean;
+    }
+
     export interface OceanScheduledTask {
         shutdownHours?: outputs.aws.OceanScheduledTaskShutdownHours;
         tasks?: outputs.aws.OceanScheduledTaskTask[];
@@ -3100,45 +3061,16 @@ export namespace aws {
     }
 
     export interface OceanUpdatePolicy {
-        /**
-         * will update instance tags on the fly without rolling the cluster.
-         */
         autoApplyTags?: boolean;
-        /**
-         * Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as AMI, Key Pair, user data, instance types, load balancers, etc).
-         */
         conditionedRoll?: boolean;
-        /**
-         * While used, you can control whether the group should perform a deployment after an update to the configuration.
-         */
         rollConfig?: outputs.aws.OceanUpdatePolicyRollConfig;
-        /**
-         * Enables the roll.
-         */
         shouldRoll: boolean;
     }
 
     export interface OceanUpdatePolicyRollConfig {
-        /**
-         * Default: 50. Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
-         */
         batchMinHealthyPercentage?: number;
-        /**
-         * Sets the percentage of the instances to deploy in each batch.
-         */
         batchSizePercentage: number;
-        /**
-         * List of virtual node group identifiers to be rolled.
-         */
         launchSpecIds?: string[];
-        /**
-         * During the roll, if the parameter is set to True we honor PDB during the instance replacement.
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
-         *
-         * <a id="scheduled-task"></a>
-         */
         respectPdb?: boolean;
     }
 

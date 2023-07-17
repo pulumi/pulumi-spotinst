@@ -11,53 +11,21 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class OceanAutoscalerAutoscaleHeadroom {
-    /**
-     * @return Optionally configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
-     * 
-     */
     private @Nullable Integer cpuPerUnit;
-    /**
-     * @return Optionally configure the number of GPUs to allocate the headroom.
-     * 
-     */
     private @Nullable Integer gpuPerUnit;
-    /**
-     * @return Optionally configure the amount of memory (MB) to allocate the headroom.
-     * 
-     */
     private @Nullable Integer memoryPerUnit;
-    /**
-     * @return The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
-     * 
-     */
     private @Nullable Integer numOfUnits;
 
     private OceanAutoscalerAutoscaleHeadroom() {}
-    /**
-     * @return Optionally configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
-     * 
-     */
     public Optional<Integer> cpuPerUnit() {
         return Optional.ofNullable(this.cpuPerUnit);
     }
-    /**
-     * @return Optionally configure the number of GPUs to allocate the headroom.
-     * 
-     */
     public Optional<Integer> gpuPerUnit() {
         return Optional.ofNullable(this.gpuPerUnit);
     }
-    /**
-     * @return Optionally configure the amount of memory (MB) to allocate the headroom.
-     * 
-     */
     public Optional<Integer> memoryPerUnit() {
         return Optional.ofNullable(this.memoryPerUnit);
     }
-    /**
-     * @return The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
-     * 
-     */
     public Optional<Integer> numOfUnits() {
         return Optional.ofNullable(this.numOfUnits);
     }

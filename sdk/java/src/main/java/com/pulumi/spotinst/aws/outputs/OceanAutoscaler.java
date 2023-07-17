@@ -17,157 +17,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class OceanAutoscaler {
-    /**
-     * @return Set the auto headroom percentage (a number in the range [0, 200]) which controls the percentage of headroom from the cluster. Relevant only when `autoscale_is_auto_config` toggled on.
-     * 
-     */
     private @Nullable Integer autoHeadroomPercentage;
-    /**
-     * @return Cooldown period between scaling actions.
-     * 
-     */
     private @Nullable Integer autoscaleCooldown;
-    /**
-     * @return Auto Scaling scale down operations.
-     * 
-     */
     private @Nullable OceanAutoscalerAutoscaleDown autoscaleDown;
-    /**
-     * @return Spare resource capacity management enabling fast assignment of Pods without waiting for new resources to launch.
-     * 
-     */
     private @Nullable OceanAutoscalerAutoscaleHeadroom autoscaleHeadroom;
-    /**
-     * @return Automatically configure and optimize headroom resources.
-     * 
-     */
     private @Nullable Boolean autoscaleIsAutoConfig;
-    /**
-     * @return Enable the Ocean Kubernetes Auto Scaler.
-     * 
-     */
     private @Nullable Boolean autoscaleIsEnabled;
-    /**
-     * @return enables automatic and manual headroom to work in parallel. When set to false, automatic headroom overrides all other headroom definitions manually configured, whether they are at cluster or VNG level.
-     * 
-     */
     private @Nullable Boolean enableAutomaticAndManualHeadroom;
-    /**
-     * @return List of Ocean extended resource definitions to use in this cluster.
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *     }
-     * }
-     * ```
-     * 
-     */
     private @Nullable List<String> extendedResourceDefinitions;
-    /**
-     * @return Optionally set upper and lower bounds on the resource usage of the cluster.
-     * 
-     */
     private @Nullable OceanAutoscalerResourceLimits resourceLimits;
 
     private OceanAutoscaler() {}
-    /**
-     * @return Set the auto headroom percentage (a number in the range [0, 200]) which controls the percentage of headroom from the cluster. Relevant only when `autoscale_is_auto_config` toggled on.
-     * 
-     */
     public Optional<Integer> autoHeadroomPercentage() {
         return Optional.ofNullable(this.autoHeadroomPercentage);
     }
-    /**
-     * @return Cooldown period between scaling actions.
-     * 
-     */
     public Optional<Integer> autoscaleCooldown() {
         return Optional.ofNullable(this.autoscaleCooldown);
     }
-    /**
-     * @return Auto Scaling scale down operations.
-     * 
-     */
     public Optional<OceanAutoscalerAutoscaleDown> autoscaleDown() {
         return Optional.ofNullable(this.autoscaleDown);
     }
-    /**
-     * @return Spare resource capacity management enabling fast assignment of Pods without waiting for new resources to launch.
-     * 
-     */
     public Optional<OceanAutoscalerAutoscaleHeadroom> autoscaleHeadroom() {
         return Optional.ofNullable(this.autoscaleHeadroom);
     }
-    /**
-     * @return Automatically configure and optimize headroom resources.
-     * 
-     */
     public Optional<Boolean> autoscaleIsAutoConfig() {
         return Optional.ofNullable(this.autoscaleIsAutoConfig);
     }
-    /**
-     * @return Enable the Ocean Kubernetes Auto Scaler.
-     * 
-     */
     public Optional<Boolean> autoscaleIsEnabled() {
         return Optional.ofNullable(this.autoscaleIsEnabled);
     }
-    /**
-     * @return enables automatic and manual headroom to work in parallel. When set to false, automatic headroom overrides all other headroom definitions manually configured, whether they are at cluster or VNG level.
-     * 
-     */
     public Optional<Boolean> enableAutomaticAndManualHeadroom() {
         return Optional.ofNullable(this.enableAutomaticAndManualHeadroom);
     }
-    /**
-     * @return List of Ocean extended resource definitions to use in this cluster.
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *     }
-     * }
-     * ```
-     * 
-     */
     public List<String> extendedResourceDefinitions() {
         return this.extendedResourceDefinitions == null ? List.of() : this.extendedResourceDefinitions;
     }
-    /**
-     * @return Optionally set upper and lower bounds on the resource usage of the cluster.
-     * 
-     */
     public Optional<OceanAutoscalerResourceLimits> resourceLimits() {
         return Optional.ofNullable(this.resourceLimits);
     }

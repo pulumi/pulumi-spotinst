@@ -42,6 +42,7 @@ class OceanArgs:
                  monitoring: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 resource_tag_specifications: Optional[pulumi.Input[Sequence[pulumi.Input['OceanResourceTagSpecificationArgs']]]] = None,
                  root_volume_size: Optional[pulumi.Input[int]] = None,
                  scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input['OceanScheduledTaskArgs']]]] = None,
                  spot_percentage: Optional[pulumi.Input[int]] = None,
@@ -59,7 +60,6 @@ class OceanArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public IP.
         :param pulumi.Input[bool] associate_ipv6_address: Configure IPv6 address allocation.
         :param pulumi.Input[bool] associate_public_ip_address: Configure public IP address allocation.
-        :param pulumi.Input['OceanAutoscalerArgs'] autoscaler: Describes the Ocean Kubernetes Auto Scaler.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] blacklists: Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist` is configured.
         :param pulumi.Input[Sequence[pulumi.Input['OceanBlockDeviceMappingArgs']]] block_device_mappings: Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
         :param pulumi.Input[str] controller_id: A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
@@ -80,6 +80,7 @@ class OceanArgs:
         :param pulumi.Input[bool] monitoring: Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
         :param pulumi.Input[str] name: Required if type is set to `CLASSIC`
         :param pulumi.Input[str] region: The region the cluster will run in.
+        :param pulumi.Input[Sequence[pulumi.Input['OceanResourceTagSpecificationArgs']]] resource_tag_specifications: Specify which resources should be tagged with Virtual Node Group tags or Ocean tags. If tags are set on the VNG, the resources will be tagged with the VNG tags; otherwise, they will be tagged with the Ocean tags.
         :param pulumi.Input[int] root_volume_size: The size (in Gb) to allocate for the root volume. Minimum `20`.
         :param pulumi.Input[int] spot_percentage: The desired percentage of Spot instances out of all running instances. Only available when the field is not set in any VNG directly (launchSpec.strategy.spotPercentage).
         :param pulumi.Input[str] spread_nodes_by: Ocean will spread the nodes across markets by this value. Possible values: `vcpu` or `count`.
@@ -141,6 +142,8 @@ class OceanArgs:
             pulumi.set(__self__, "name", name)
         if region is not None:
             pulumi.set(__self__, "region", region)
+        if resource_tag_specifications is not None:
+            pulumi.set(__self__, "resource_tag_specifications", resource_tag_specifications)
         if root_volume_size is not None:
             pulumi.set(__self__, "root_volume_size", root_volume_size)
         if scheduled_tasks is not None:
@@ -215,9 +218,6 @@ class OceanArgs:
     @property
     @pulumi.getter
     def autoscaler(self) -> Optional[pulumi.Input['OceanAutoscalerArgs']]:
-        """
-        Describes the Ocean Kubernetes Auto Scaler.
-        """
         return pulumi.get(self, "autoscaler")
 
     @autoscaler.setter
@@ -472,6 +472,18 @@ class OceanArgs:
     @region.setter
     def region(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter(name="resourceTagSpecifications")
+    def resource_tag_specifications(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanResourceTagSpecificationArgs']]]]:
+        """
+        Specify which resources should be tagged with Virtual Node Group tags or Ocean tags. If tags are set on the VNG, the resources will be tagged with the VNG tags; otherwise, they will be tagged with the Ocean tags.
+        """
+        return pulumi.get(self, "resource_tag_specifications")
+
+    @resource_tag_specifications.setter
+    def resource_tag_specifications(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanResourceTagSpecificationArgs']]]]):
+        pulumi.set(self, "resource_tag_specifications", value)
 
     @property
     @pulumi.getter(name="rootVolumeSize")
@@ -628,6 +640,7 @@ class _OceanState:
                  monitoring: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 resource_tag_specifications: Optional[pulumi.Input[Sequence[pulumi.Input['OceanResourceTagSpecificationArgs']]]] = None,
                  root_volume_size: Optional[pulumi.Input[int]] = None,
                  scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input['OceanScheduledTaskArgs']]]] = None,
                  security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -645,7 +658,6 @@ class _OceanState:
         Input properties used for looking up and filtering Ocean resources.
         :param pulumi.Input[bool] associate_ipv6_address: Configure IPv6 address allocation.
         :param pulumi.Input[bool] associate_public_ip_address: Configure public IP address allocation.
-        :param pulumi.Input['OceanAutoscalerArgs'] autoscaler: Describes the Ocean Kubernetes Auto Scaler.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] blacklists: Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist` is configured.
         :param pulumi.Input[Sequence[pulumi.Input['OceanBlockDeviceMappingArgs']]] block_device_mappings: Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
         :param pulumi.Input[str] controller_id: A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
@@ -666,6 +678,7 @@ class _OceanState:
         :param pulumi.Input[bool] monitoring: Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
         :param pulumi.Input[str] name: Required if type is set to `CLASSIC`
         :param pulumi.Input[str] region: The region the cluster will run in.
+        :param pulumi.Input[Sequence[pulumi.Input['OceanResourceTagSpecificationArgs']]] resource_tag_specifications: Specify which resources should be tagged with Virtual Node Group tags or Ocean tags. If tags are set on the VNG, the resources will be tagged with the VNG tags; otherwise, they will be tagged with the Ocean tags.
         :param pulumi.Input[int] root_volume_size: The size (in Gb) to allocate for the root volume. Minimum `20`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: One or more security group ids.
         :param pulumi.Input[int] spot_percentage: The desired percentage of Spot instances out of all running instances. Only available when the field is not set in any VNG directly (launchSpec.strategy.spotPercentage).
@@ -727,6 +740,8 @@ class _OceanState:
             pulumi.set(__self__, "name", name)
         if region is not None:
             pulumi.set(__self__, "region", region)
+        if resource_tag_specifications is not None:
+            pulumi.set(__self__, "resource_tag_specifications", resource_tag_specifications)
         if root_volume_size is not None:
             pulumi.set(__self__, "root_volume_size", root_volume_size)
         if scheduled_tasks is not None:
@@ -781,9 +796,6 @@ class _OceanState:
     @property
     @pulumi.getter
     def autoscaler(self) -> Optional[pulumi.Input['OceanAutoscalerArgs']]:
-        """
-        Describes the Ocean Kubernetes Auto Scaler.
-        """
         return pulumi.get(self, "autoscaler")
 
     @autoscaler.setter
@@ -1038,6 +1050,18 @@ class _OceanState:
     @region.setter
     def region(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter(name="resourceTagSpecifications")
+    def resource_tag_specifications(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanResourceTagSpecificationArgs']]]]:
+        """
+        Specify which resources should be tagged with Virtual Node Group tags or Ocean tags. If tags are set on the VNG, the resources will be tagged with the VNG tags; otherwise, they will be tagged with the Ocean tags.
+        """
+        return pulumi.get(self, "resource_tag_specifications")
+
+    @resource_tag_specifications.setter
+    def resource_tag_specifications(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanResourceTagSpecificationArgs']]]]):
+        pulumi.set(self, "resource_tag_specifications", value)
 
     @property
     @pulumi.getter(name="rootVolumeSize")
@@ -1220,6 +1244,7 @@ class Ocean(pulumi.CustomResource):
                  monitoring: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 resource_tag_specifications: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanResourceTagSpecificationArgs']]]]] = None,
                  root_volume_size: Optional[pulumi.Input[int]] = None,
                  scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanScheduledTaskArgs']]]]] = None,
                  security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1235,6 +1260,46 @@ class Ocean(pulumi.CustomResource):
                  whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
+        ## Auto Scaler
+
+        * `autoscaler` - (Optional) Describes the Ocean Kubernetes Auto Scaler.
+            * `autoscale_is_enabled` - (Optional, Default: `true`) Enable the Ocean Kubernetes Auto Scaler.
+            * `autoscale_is_auto_config` - (Optional, Default: `true`) Automatically configure and optimize headroom resources.
+            * `autoscale_cooldown` - (Optional, Default: `null`) Cooldown period between scaling actions.
+            * `auto_headroom_percentage` - (Optional) Set the auto headroom percentage (a number in the range [0, 200]) which controls the percentage of headroom from the cluster. Relevant only when `autoscale_is_auto_config` toggled on.
+            * `enable_automatic_and_manual_headroom` - (Optional, Default: `false`) enables automatic and manual headroom to work in parallel. When set to false, automatic headroom overrides all other headroom definitions manually configured, whether they are at cluster or VNG level.
+            * `autoscale_headroom` - (Optional) Spare resource capacity management enabling fast assignment of Pods without waiting for new resources to launch.
+                * `cpu_per_unit` - (Optional) Optionally configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+                * `gpu_per_unit` - (Optional) Optionally configure the number of GPUs to allocate the headroom.
+                * `memory_per_unit` - (Optional) Optionally configure the amount of memory (MB) to allocate the headroom.
+                * `num_of_units` - (Optional) The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
+            * `autoscale_down` - (Optional) Auto Scaling scale down operations.
+                * `max_scale_down_percentage` - (Optional) Would represent the maximum % to scale-down. Number between 1-100.
+            * `resource_limits` - (Optional) Optionally set upper and lower bounds on the resource usage of the cluster.
+                * `max_vcpu` - (Optional) The maximum cpu in vCPU units that can be allocated to the cluster.
+                * `max_memory_gib` - (Optional) The maximum memory in GiB units that can be allocated to the cluster.
+            * `extended_resource_definitions` - (Optional) List of Ocean extended resource definitions to use in this cluster.
+
+        ```python
+        import pulumi
+        ```
+
+        ### Update Policy
+
+        * `update_policy` - (Optional)
+            * `should_roll` - (Required) Enables the roll.
+            * `conditioned_roll` - (Optional, Default: false) Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as AMI, Key Pair, user data, instance types, load balancers, etc).
+            * `auto_apply_tags` - (Optional, Default: false) will update instance tags on the fly without rolling the cluster.
+            * `roll_config` - (Required) While used, you can control whether the group should perform a deployment after an update to the configuration.
+                * `batch_size_percentage` - (Required) Sets the percentage of the instances to deploy in each batch.
+                * `launch_spec_ids` - (Optional) List of virtual node group identifiers to be rolled.
+                * `batch_min_healthy_percentage` - (Optional) Default: 50. Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
+                * `respect_pdb` - (Optional, Default: false) During the roll, if the parameter is set to True we honor PDB during the instance replacement.
+        ```python
+        import pulumi
+        ```
+
+        <a id="scheduled-task"></a>
         ## Scheduled Task
 
         * `scheduled_task` - (Optional) Set scheduling object.
@@ -1264,7 +1329,6 @@ class Ocean(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] associate_ipv6_address: Configure IPv6 address allocation.
         :param pulumi.Input[bool] associate_public_ip_address: Configure public IP address allocation.
-        :param pulumi.Input[pulumi.InputType['OceanAutoscalerArgs']] autoscaler: Describes the Ocean Kubernetes Auto Scaler.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] blacklists: Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist` is configured.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanBlockDeviceMappingArgs']]]] block_device_mappings: Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
         :param pulumi.Input[str] controller_id: A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
@@ -1285,6 +1349,7 @@ class Ocean(pulumi.CustomResource):
         :param pulumi.Input[bool] monitoring: Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
         :param pulumi.Input[str] name: Required if type is set to `CLASSIC`
         :param pulumi.Input[str] region: The region the cluster will run in.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanResourceTagSpecificationArgs']]]] resource_tag_specifications: Specify which resources should be tagged with Virtual Node Group tags or Ocean tags. If tags are set on the VNG, the resources will be tagged with the VNG tags; otherwise, they will be tagged with the Ocean tags.
         :param pulumi.Input[int] root_volume_size: The size (in Gb) to allocate for the root volume. Minimum `20`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: One or more security group ids.
         :param pulumi.Input[int] spot_percentage: The desired percentage of Spot instances out of all running instances. Only available when the field is not set in any VNG directly (launchSpec.strategy.spotPercentage).
@@ -1305,6 +1370,46 @@ class Ocean(pulumi.CustomResource):
                  args: OceanArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        ## Auto Scaler
+
+        * `autoscaler` - (Optional) Describes the Ocean Kubernetes Auto Scaler.
+            * `autoscale_is_enabled` - (Optional, Default: `true`) Enable the Ocean Kubernetes Auto Scaler.
+            * `autoscale_is_auto_config` - (Optional, Default: `true`) Automatically configure and optimize headroom resources.
+            * `autoscale_cooldown` - (Optional, Default: `null`) Cooldown period between scaling actions.
+            * `auto_headroom_percentage` - (Optional) Set the auto headroom percentage (a number in the range [0, 200]) which controls the percentage of headroom from the cluster. Relevant only when `autoscale_is_auto_config` toggled on.
+            * `enable_automatic_and_manual_headroom` - (Optional, Default: `false`) enables automatic and manual headroom to work in parallel. When set to false, automatic headroom overrides all other headroom definitions manually configured, whether they are at cluster or VNG level.
+            * `autoscale_headroom` - (Optional) Spare resource capacity management enabling fast assignment of Pods without waiting for new resources to launch.
+                * `cpu_per_unit` - (Optional) Optionally configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+                * `gpu_per_unit` - (Optional) Optionally configure the number of GPUs to allocate the headroom.
+                * `memory_per_unit` - (Optional) Optionally configure the amount of memory (MB) to allocate the headroom.
+                * `num_of_units` - (Optional) The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
+            * `autoscale_down` - (Optional) Auto Scaling scale down operations.
+                * `max_scale_down_percentage` - (Optional) Would represent the maximum % to scale-down. Number between 1-100.
+            * `resource_limits` - (Optional) Optionally set upper and lower bounds on the resource usage of the cluster.
+                * `max_vcpu` - (Optional) The maximum cpu in vCPU units that can be allocated to the cluster.
+                * `max_memory_gib` - (Optional) The maximum memory in GiB units that can be allocated to the cluster.
+            * `extended_resource_definitions` - (Optional) List of Ocean extended resource definitions to use in this cluster.
+
+        ```python
+        import pulumi
+        ```
+
+        ### Update Policy
+
+        * `update_policy` - (Optional)
+            * `should_roll` - (Required) Enables the roll.
+            * `conditioned_roll` - (Optional, Default: false) Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as AMI, Key Pair, user data, instance types, load balancers, etc).
+            * `auto_apply_tags` - (Optional, Default: false) will update instance tags on the fly without rolling the cluster.
+            * `roll_config` - (Required) While used, you can control whether the group should perform a deployment after an update to the configuration.
+                * `batch_size_percentage` - (Required) Sets the percentage of the instances to deploy in each batch.
+                * `launch_spec_ids` - (Optional) List of virtual node group identifiers to be rolled.
+                * `batch_min_healthy_percentage` - (Optional) Default: 50. Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
+                * `respect_pdb` - (Optional, Default: false) During the roll, if the parameter is set to True we honor PDB during the instance replacement.
+        ```python
+        import pulumi
+        ```
+
+        <a id="scheduled-task"></a>
         ## Scheduled Task
 
         * `scheduled_task` - (Optional) Set scheduling object.
@@ -1369,6 +1474,7 @@ class Ocean(pulumi.CustomResource):
                  monitoring: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 resource_tag_specifications: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanResourceTagSpecificationArgs']]]]] = None,
                  root_volume_size: Optional[pulumi.Input[int]] = None,
                  scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanScheduledTaskArgs']]]]] = None,
                  security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1415,6 +1521,7 @@ class Ocean(pulumi.CustomResource):
             __props__.__dict__["monitoring"] = monitoring
             __props__.__dict__["name"] = name
             __props__.__dict__["region"] = region
+            __props__.__dict__["resource_tag_specifications"] = resource_tag_specifications
             __props__.__dict__["root_volume_size"] = root_volume_size
             __props__.__dict__["scheduled_tasks"] = scheduled_tasks
             if security_groups is None and not opts.urn:
@@ -1466,6 +1573,7 @@ class Ocean(pulumi.CustomResource):
             monitoring: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
+            resource_tag_specifications: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanResourceTagSpecificationArgs']]]]] = None,
             root_volume_size: Optional[pulumi.Input[int]] = None,
             scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanScheduledTaskArgs']]]]] = None,
             security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1488,7 +1596,6 @@ class Ocean(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] associate_ipv6_address: Configure IPv6 address allocation.
         :param pulumi.Input[bool] associate_public_ip_address: Configure public IP address allocation.
-        :param pulumi.Input[pulumi.InputType['OceanAutoscalerArgs']] autoscaler: Describes the Ocean Kubernetes Auto Scaler.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] blacklists: Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist` is configured.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanBlockDeviceMappingArgs']]]] block_device_mappings: Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
         :param pulumi.Input[str] controller_id: A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
@@ -1509,6 +1616,7 @@ class Ocean(pulumi.CustomResource):
         :param pulumi.Input[bool] monitoring: Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
         :param pulumi.Input[str] name: Required if type is set to `CLASSIC`
         :param pulumi.Input[str] region: The region the cluster will run in.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanResourceTagSpecificationArgs']]]] resource_tag_specifications: Specify which resources should be tagged with Virtual Node Group tags or Ocean tags. If tags are set on the VNG, the resources will be tagged with the VNG tags; otherwise, they will be tagged with the Ocean tags.
         :param pulumi.Input[int] root_volume_size: The size (in Gb) to allocate for the root volume. Minimum `20`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: One or more security group ids.
         :param pulumi.Input[int] spot_percentage: The desired percentage of Spot instances out of all running instances. Only available when the field is not set in any VNG directly (launchSpec.strategy.spotPercentage).
@@ -1550,6 +1658,7 @@ class Ocean(pulumi.CustomResource):
         __props__.__dict__["monitoring"] = monitoring
         __props__.__dict__["name"] = name
         __props__.__dict__["region"] = region
+        __props__.__dict__["resource_tag_specifications"] = resource_tag_specifications
         __props__.__dict__["root_volume_size"] = root_volume_size
         __props__.__dict__["scheduled_tasks"] = scheduled_tasks
         __props__.__dict__["security_groups"] = security_groups
@@ -1584,9 +1693,6 @@ class Ocean(pulumi.CustomResource):
     @property
     @pulumi.getter
     def autoscaler(self) -> pulumi.Output[Optional['outputs.OceanAutoscaler']]:
-        """
-        Describes the Ocean Kubernetes Auto Scaler.
-        """
         return pulumi.get(self, "autoscaler")
 
     @property
@@ -1753,6 +1859,14 @@ class Ocean(pulumi.CustomResource):
         The region the cluster will run in.
         """
         return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="resourceTagSpecifications")
+    def resource_tag_specifications(self) -> pulumi.Output[Optional[Sequence['outputs.OceanResourceTagSpecification']]]:
+        """
+        Specify which resources should be tagged with Virtual Node Group tags or Ocean tags. If tags are set on the VNG, the resources will be tagged with the VNG tags; otherwise, they will be tagged with the Ocean tags.
+        """
+        return pulumi.get(self, "resource_tag_specifications")
 
     @property
     @pulumi.getter(name="rootVolumeSize")

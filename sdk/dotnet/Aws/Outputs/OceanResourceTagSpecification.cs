@@ -11,19 +11,17 @@ namespace Pulumi.SpotInst.Aws.Outputs
 {
 
     [OutputType]
-    public sealed class OceanAutoscalerAutoscaleDown
+    public sealed class OceanResourceTagSpecification
     {
-        public readonly int? EvaluationPeriods;
-        public readonly double? MaxScaleDownPercentage;
+        /// <summary>
+        /// Specify if Volume resources will be tagged with Virtual Node Group tags or Ocean tags.
+        /// </summary>
+        public readonly bool? ShouldTagVolumes;
 
         [OutputConstructor]
-        private OceanAutoscalerAutoscaleDown(
-            int? evaluationPeriods,
-
-            double? maxScaleDownPercentage)
+        private OceanResourceTagSpecification(bool? shouldTagVolumes)
         {
-            EvaluationPeriods = evaluationPeriods;
-            MaxScaleDownPercentage = maxScaleDownPercentage;
+            ShouldTagVolumes = shouldTagVolumes;
         }
     }
 }

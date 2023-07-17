@@ -18185,38 +18185,15 @@ func (o MrScalarTerminationPolicyStatementArrayOutput) Index(i pulumi.IntInput) 
 }
 
 type OceanAutoscaler struct {
-	// Set the auto headroom percentage (a number in the range [0, 200]) which controls the percentage of headroom from the cluster. Relevant only when `autoscaleIsAutoConfig` toggled on.
-	AutoHeadroomPercentage *int `pulumi:"autoHeadroomPercentage"`
-	// Cooldown period between scaling actions.
-	AutoscaleCooldown *int `pulumi:"autoscaleCooldown"`
-	// Auto Scaling scale down operations.
-	AutoscaleDown *OceanAutoscalerAutoscaleDown `pulumi:"autoscaleDown"`
-	// Spare resource capacity management enabling fast assignment of Pods without waiting for new resources to launch.
-	AutoscaleHeadroom *OceanAutoscalerAutoscaleHeadroom `pulumi:"autoscaleHeadroom"`
-	// Automatically configure and optimize headroom resources.
-	AutoscaleIsAutoConfig *bool `pulumi:"autoscaleIsAutoConfig"`
-	// Enable the Ocean Kubernetes Auto Scaler.
-	AutoscaleIsEnabled *bool `pulumi:"autoscaleIsEnabled"`
-	// enables automatic and manual headroom to work in parallel. When set to false, automatic headroom overrides all other headroom definitions manually configured, whether they are at cluster or VNG level.
-	EnableAutomaticAndManualHeadroom *bool `pulumi:"enableAutomaticAndManualHeadroom"`
-	// List of Ocean extended resource definitions to use in this cluster.
-	//
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
-	ExtendedResourceDefinitions []string `pulumi:"extendedResourceDefinitions"`
-	// Optionally set upper and lower bounds on the resource usage of the cluster.
-	ResourceLimits *OceanAutoscalerResourceLimits `pulumi:"resourceLimits"`
+	AutoHeadroomPercentage           *int                              `pulumi:"autoHeadroomPercentage"`
+	AutoscaleCooldown                *int                              `pulumi:"autoscaleCooldown"`
+	AutoscaleDown                    *OceanAutoscalerAutoscaleDown     `pulumi:"autoscaleDown"`
+	AutoscaleHeadroom                *OceanAutoscalerAutoscaleHeadroom `pulumi:"autoscaleHeadroom"`
+	AutoscaleIsAutoConfig            *bool                             `pulumi:"autoscaleIsAutoConfig"`
+	AutoscaleIsEnabled               *bool                             `pulumi:"autoscaleIsEnabled"`
+	EnableAutomaticAndManualHeadroom *bool                             `pulumi:"enableAutomaticAndManualHeadroom"`
+	ExtendedResourceDefinitions      []string                          `pulumi:"extendedResourceDefinitions"`
+	ResourceLimits                   *OceanAutoscalerResourceLimits    `pulumi:"resourceLimits"`
 }
 
 // OceanAutoscalerInput is an input type that accepts OceanAutoscalerArgs and OceanAutoscalerOutput values.
@@ -18231,38 +18208,15 @@ type OceanAutoscalerInput interface {
 }
 
 type OceanAutoscalerArgs struct {
-	// Set the auto headroom percentage (a number in the range [0, 200]) which controls the percentage of headroom from the cluster. Relevant only when `autoscaleIsAutoConfig` toggled on.
-	AutoHeadroomPercentage pulumi.IntPtrInput `pulumi:"autoHeadroomPercentage"`
-	// Cooldown period between scaling actions.
-	AutoscaleCooldown pulumi.IntPtrInput `pulumi:"autoscaleCooldown"`
-	// Auto Scaling scale down operations.
-	AutoscaleDown OceanAutoscalerAutoscaleDownPtrInput `pulumi:"autoscaleDown"`
-	// Spare resource capacity management enabling fast assignment of Pods without waiting for new resources to launch.
-	AutoscaleHeadroom OceanAutoscalerAutoscaleHeadroomPtrInput `pulumi:"autoscaleHeadroom"`
-	// Automatically configure and optimize headroom resources.
-	AutoscaleIsAutoConfig pulumi.BoolPtrInput `pulumi:"autoscaleIsAutoConfig"`
-	// Enable the Ocean Kubernetes Auto Scaler.
-	AutoscaleIsEnabled pulumi.BoolPtrInput `pulumi:"autoscaleIsEnabled"`
-	// enables automatic and manual headroom to work in parallel. When set to false, automatic headroom overrides all other headroom definitions manually configured, whether they are at cluster or VNG level.
-	EnableAutomaticAndManualHeadroom pulumi.BoolPtrInput `pulumi:"enableAutomaticAndManualHeadroom"`
-	// List of Ocean extended resource definitions to use in this cluster.
-	//
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
-	ExtendedResourceDefinitions pulumi.StringArrayInput `pulumi:"extendedResourceDefinitions"`
-	// Optionally set upper and lower bounds on the resource usage of the cluster.
-	ResourceLimits OceanAutoscalerResourceLimitsPtrInput `pulumi:"resourceLimits"`
+	AutoHeadroomPercentage           pulumi.IntPtrInput                       `pulumi:"autoHeadroomPercentage"`
+	AutoscaleCooldown                pulumi.IntPtrInput                       `pulumi:"autoscaleCooldown"`
+	AutoscaleDown                    OceanAutoscalerAutoscaleDownPtrInput     `pulumi:"autoscaleDown"`
+	AutoscaleHeadroom                OceanAutoscalerAutoscaleHeadroomPtrInput `pulumi:"autoscaleHeadroom"`
+	AutoscaleIsAutoConfig            pulumi.BoolPtrInput                      `pulumi:"autoscaleIsAutoConfig"`
+	AutoscaleIsEnabled               pulumi.BoolPtrInput                      `pulumi:"autoscaleIsEnabled"`
+	EnableAutomaticAndManualHeadroom pulumi.BoolPtrInput                      `pulumi:"enableAutomaticAndManualHeadroom"`
+	ExtendedResourceDefinitions      pulumi.StringArrayInput                  `pulumi:"extendedResourceDefinitions"`
+	ResourceLimits                   OceanAutoscalerResourceLimitsPtrInput    `pulumi:"resourceLimits"`
 }
 
 func (OceanAutoscalerArgs) ElementType() reflect.Type {
@@ -18342,64 +18296,38 @@ func (o OceanAutoscalerOutput) ToOceanAutoscalerPtrOutputWithContext(ctx context
 	}).(OceanAutoscalerPtrOutput)
 }
 
-// Set the auto headroom percentage (a number in the range [0, 200]) which controls the percentage of headroom from the cluster. Relevant only when `autoscaleIsAutoConfig` toggled on.
 func (o OceanAutoscalerOutput) AutoHeadroomPercentage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanAutoscaler) *int { return v.AutoHeadroomPercentage }).(pulumi.IntPtrOutput)
 }
 
-// Cooldown period between scaling actions.
 func (o OceanAutoscalerOutput) AutoscaleCooldown() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanAutoscaler) *int { return v.AutoscaleCooldown }).(pulumi.IntPtrOutput)
 }
 
-// Auto Scaling scale down operations.
 func (o OceanAutoscalerOutput) AutoscaleDown() OceanAutoscalerAutoscaleDownPtrOutput {
 	return o.ApplyT(func(v OceanAutoscaler) *OceanAutoscalerAutoscaleDown { return v.AutoscaleDown }).(OceanAutoscalerAutoscaleDownPtrOutput)
 }
 
-// Spare resource capacity management enabling fast assignment of Pods without waiting for new resources to launch.
 func (o OceanAutoscalerOutput) AutoscaleHeadroom() OceanAutoscalerAutoscaleHeadroomPtrOutput {
 	return o.ApplyT(func(v OceanAutoscaler) *OceanAutoscalerAutoscaleHeadroom { return v.AutoscaleHeadroom }).(OceanAutoscalerAutoscaleHeadroomPtrOutput)
 }
 
-// Automatically configure and optimize headroom resources.
 func (o OceanAutoscalerOutput) AutoscaleIsAutoConfig() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OceanAutoscaler) *bool { return v.AutoscaleIsAutoConfig }).(pulumi.BoolPtrOutput)
 }
 
-// Enable the Ocean Kubernetes Auto Scaler.
 func (o OceanAutoscalerOutput) AutoscaleIsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OceanAutoscaler) *bool { return v.AutoscaleIsEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// enables automatic and manual headroom to work in parallel. When set to false, automatic headroom overrides all other headroom definitions manually configured, whether they are at cluster or VNG level.
 func (o OceanAutoscalerOutput) EnableAutomaticAndManualHeadroom() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OceanAutoscaler) *bool { return v.EnableAutomaticAndManualHeadroom }).(pulumi.BoolPtrOutput)
 }
 
-// List of Ocean extended resource definitions to use in this cluster.
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
 func (o OceanAutoscalerOutput) ExtendedResourceDefinitions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v OceanAutoscaler) []string { return v.ExtendedResourceDefinitions }).(pulumi.StringArrayOutput)
 }
 
-// Optionally set upper and lower bounds on the resource usage of the cluster.
 func (o OceanAutoscalerOutput) ResourceLimits() OceanAutoscalerResourceLimitsPtrOutput {
 	return o.ApplyT(func(v OceanAutoscaler) *OceanAutoscalerResourceLimits { return v.ResourceLimits }).(OceanAutoscalerResourceLimitsPtrOutput)
 }
@@ -18428,7 +18356,6 @@ func (o OceanAutoscalerPtrOutput) Elem() OceanAutoscalerOutput {
 	}).(OceanAutoscalerOutput)
 }
 
-// Set the auto headroom percentage (a number in the range [0, 200]) which controls the percentage of headroom from the cluster. Relevant only when `autoscaleIsAutoConfig` toggled on.
 func (o OceanAutoscalerPtrOutput) AutoHeadroomPercentage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanAutoscaler) *int {
 		if v == nil {
@@ -18438,7 +18365,6 @@ func (o OceanAutoscalerPtrOutput) AutoHeadroomPercentage() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Cooldown period between scaling actions.
 func (o OceanAutoscalerPtrOutput) AutoscaleCooldown() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanAutoscaler) *int {
 		if v == nil {
@@ -18448,7 +18374,6 @@ func (o OceanAutoscalerPtrOutput) AutoscaleCooldown() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Auto Scaling scale down operations.
 func (o OceanAutoscalerPtrOutput) AutoscaleDown() OceanAutoscalerAutoscaleDownPtrOutput {
 	return o.ApplyT(func(v *OceanAutoscaler) *OceanAutoscalerAutoscaleDown {
 		if v == nil {
@@ -18458,7 +18383,6 @@ func (o OceanAutoscalerPtrOutput) AutoscaleDown() OceanAutoscalerAutoscaleDownPt
 	}).(OceanAutoscalerAutoscaleDownPtrOutput)
 }
 
-// Spare resource capacity management enabling fast assignment of Pods without waiting for new resources to launch.
 func (o OceanAutoscalerPtrOutput) AutoscaleHeadroom() OceanAutoscalerAutoscaleHeadroomPtrOutput {
 	return o.ApplyT(func(v *OceanAutoscaler) *OceanAutoscalerAutoscaleHeadroom {
 		if v == nil {
@@ -18468,7 +18392,6 @@ func (o OceanAutoscalerPtrOutput) AutoscaleHeadroom() OceanAutoscalerAutoscaleHe
 	}).(OceanAutoscalerAutoscaleHeadroomPtrOutput)
 }
 
-// Automatically configure and optimize headroom resources.
 func (o OceanAutoscalerPtrOutput) AutoscaleIsAutoConfig() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OceanAutoscaler) *bool {
 		if v == nil {
@@ -18478,7 +18401,6 @@ func (o OceanAutoscalerPtrOutput) AutoscaleIsAutoConfig() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Enable the Ocean Kubernetes Auto Scaler.
 func (o OceanAutoscalerPtrOutput) AutoscaleIsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OceanAutoscaler) *bool {
 		if v == nil {
@@ -18488,7 +18410,6 @@ func (o OceanAutoscalerPtrOutput) AutoscaleIsEnabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// enables automatic and manual headroom to work in parallel. When set to false, automatic headroom overrides all other headroom definitions manually configured, whether they are at cluster or VNG level.
 func (o OceanAutoscalerPtrOutput) EnableAutomaticAndManualHeadroom() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OceanAutoscaler) *bool {
 		if v == nil {
@@ -18498,24 +18419,6 @@ func (o OceanAutoscalerPtrOutput) EnableAutomaticAndManualHeadroom() pulumi.Bool
 	}).(pulumi.BoolPtrOutput)
 }
 
-// List of Ocean extended resource definitions to use in this cluster.
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
 func (o OceanAutoscalerPtrOutput) ExtendedResourceDefinitions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *OceanAutoscaler) []string {
 		if v == nil {
@@ -18525,7 +18428,6 @@ func (o OceanAutoscalerPtrOutput) ExtendedResourceDefinitions() pulumi.StringArr
 	}).(pulumi.StringArrayOutput)
 }
 
-// Optionally set upper and lower bounds on the resource usage of the cluster.
 func (o OceanAutoscalerPtrOutput) ResourceLimits() OceanAutoscalerResourceLimitsPtrOutput {
 	return o.ApplyT(func(v *OceanAutoscaler) *OceanAutoscalerResourceLimits {
 		if v == nil {
@@ -18536,8 +18438,7 @@ func (o OceanAutoscalerPtrOutput) ResourceLimits() OceanAutoscalerResourceLimits
 }
 
 type OceanAutoscalerAutoscaleDown struct {
-	EvaluationPeriods *int `pulumi:"evaluationPeriods"`
-	// Would represent the maximum % to scale-down. Number between 1-100.
+	EvaluationPeriods      *int     `pulumi:"evaluationPeriods"`
 	MaxScaleDownPercentage *float64 `pulumi:"maxScaleDownPercentage"`
 }
 
@@ -18553,8 +18454,7 @@ type OceanAutoscalerAutoscaleDownInput interface {
 }
 
 type OceanAutoscalerAutoscaleDownArgs struct {
-	EvaluationPeriods pulumi.IntPtrInput `pulumi:"evaluationPeriods"`
-	// Would represent the maximum % to scale-down. Number between 1-100.
+	EvaluationPeriods      pulumi.IntPtrInput     `pulumi:"evaluationPeriods"`
 	MaxScaleDownPercentage pulumi.Float64PtrInput `pulumi:"maxScaleDownPercentage"`
 }
 
@@ -18639,7 +18539,6 @@ func (o OceanAutoscalerAutoscaleDownOutput) EvaluationPeriods() pulumi.IntPtrOut
 	return o.ApplyT(func(v OceanAutoscalerAutoscaleDown) *int { return v.EvaluationPeriods }).(pulumi.IntPtrOutput)
 }
 
-// Would represent the maximum % to scale-down. Number between 1-100.
 func (o OceanAutoscalerAutoscaleDownOutput) MaxScaleDownPercentage() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v OceanAutoscalerAutoscaleDown) *float64 { return v.MaxScaleDownPercentage }).(pulumi.Float64PtrOutput)
 }
@@ -18677,7 +18576,6 @@ func (o OceanAutoscalerAutoscaleDownPtrOutput) EvaluationPeriods() pulumi.IntPtr
 	}).(pulumi.IntPtrOutput)
 }
 
-// Would represent the maximum % to scale-down. Number between 1-100.
 func (o OceanAutoscalerAutoscaleDownPtrOutput) MaxScaleDownPercentage() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *OceanAutoscalerAutoscaleDown) *float64 {
 		if v == nil {
@@ -18688,14 +18586,10 @@ func (o OceanAutoscalerAutoscaleDownPtrOutput) MaxScaleDownPercentage() pulumi.F
 }
 
 type OceanAutoscalerAutoscaleHeadroom struct {
-	// Optionally configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
-	CpuPerUnit *int `pulumi:"cpuPerUnit"`
-	// Optionally configure the number of GPUs to allocate the headroom.
-	GpuPerUnit *int `pulumi:"gpuPerUnit"`
-	// Optionally configure the amount of memory (MB) to allocate the headroom.
+	CpuPerUnit    *int `pulumi:"cpuPerUnit"`
+	GpuPerUnit    *int `pulumi:"gpuPerUnit"`
 	MemoryPerUnit *int `pulumi:"memoryPerUnit"`
-	// The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
-	NumOfUnits *int `pulumi:"numOfUnits"`
+	NumOfUnits    *int `pulumi:"numOfUnits"`
 }
 
 // OceanAutoscalerAutoscaleHeadroomInput is an input type that accepts OceanAutoscalerAutoscaleHeadroomArgs and OceanAutoscalerAutoscaleHeadroomOutput values.
@@ -18710,14 +18604,10 @@ type OceanAutoscalerAutoscaleHeadroomInput interface {
 }
 
 type OceanAutoscalerAutoscaleHeadroomArgs struct {
-	// Optionally configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
-	CpuPerUnit pulumi.IntPtrInput `pulumi:"cpuPerUnit"`
-	// Optionally configure the number of GPUs to allocate the headroom.
-	GpuPerUnit pulumi.IntPtrInput `pulumi:"gpuPerUnit"`
-	// Optionally configure the amount of memory (MB) to allocate the headroom.
+	CpuPerUnit    pulumi.IntPtrInput `pulumi:"cpuPerUnit"`
+	GpuPerUnit    pulumi.IntPtrInput `pulumi:"gpuPerUnit"`
 	MemoryPerUnit pulumi.IntPtrInput `pulumi:"memoryPerUnit"`
-	// The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
-	NumOfUnits pulumi.IntPtrInput `pulumi:"numOfUnits"`
+	NumOfUnits    pulumi.IntPtrInput `pulumi:"numOfUnits"`
 }
 
 func (OceanAutoscalerAutoscaleHeadroomArgs) ElementType() reflect.Type {
@@ -18797,22 +18687,18 @@ func (o OceanAutoscalerAutoscaleHeadroomOutput) ToOceanAutoscalerAutoscaleHeadro
 	}).(OceanAutoscalerAutoscaleHeadroomPtrOutput)
 }
 
-// Optionally configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
 func (o OceanAutoscalerAutoscaleHeadroomOutput) CpuPerUnit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanAutoscalerAutoscaleHeadroom) *int { return v.CpuPerUnit }).(pulumi.IntPtrOutput)
 }
 
-// Optionally configure the number of GPUs to allocate the headroom.
 func (o OceanAutoscalerAutoscaleHeadroomOutput) GpuPerUnit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanAutoscalerAutoscaleHeadroom) *int { return v.GpuPerUnit }).(pulumi.IntPtrOutput)
 }
 
-// Optionally configure the amount of memory (MB) to allocate the headroom.
 func (o OceanAutoscalerAutoscaleHeadroomOutput) MemoryPerUnit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanAutoscalerAutoscaleHeadroom) *int { return v.MemoryPerUnit }).(pulumi.IntPtrOutput)
 }
 
-// The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
 func (o OceanAutoscalerAutoscaleHeadroomOutput) NumOfUnits() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanAutoscalerAutoscaleHeadroom) *int { return v.NumOfUnits }).(pulumi.IntPtrOutput)
 }
@@ -18841,7 +18727,6 @@ func (o OceanAutoscalerAutoscaleHeadroomPtrOutput) Elem() OceanAutoscalerAutosca
 	}).(OceanAutoscalerAutoscaleHeadroomOutput)
 }
 
-// Optionally configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
 func (o OceanAutoscalerAutoscaleHeadroomPtrOutput) CpuPerUnit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanAutoscalerAutoscaleHeadroom) *int {
 		if v == nil {
@@ -18851,7 +18736,6 @@ func (o OceanAutoscalerAutoscaleHeadroomPtrOutput) CpuPerUnit() pulumi.IntPtrOut
 	}).(pulumi.IntPtrOutput)
 }
 
-// Optionally configure the number of GPUs to allocate the headroom.
 func (o OceanAutoscalerAutoscaleHeadroomPtrOutput) GpuPerUnit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanAutoscalerAutoscaleHeadroom) *int {
 		if v == nil {
@@ -18861,7 +18745,6 @@ func (o OceanAutoscalerAutoscaleHeadroomPtrOutput) GpuPerUnit() pulumi.IntPtrOut
 	}).(pulumi.IntPtrOutput)
 }
 
-// Optionally configure the amount of memory (MB) to allocate the headroom.
 func (o OceanAutoscalerAutoscaleHeadroomPtrOutput) MemoryPerUnit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanAutoscalerAutoscaleHeadroom) *int {
 		if v == nil {
@@ -18871,7 +18754,6 @@ func (o OceanAutoscalerAutoscaleHeadroomPtrOutput) MemoryPerUnit() pulumi.IntPtr
 	}).(pulumi.IntPtrOutput)
 }
 
-// The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
 func (o OceanAutoscalerAutoscaleHeadroomPtrOutput) NumOfUnits() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanAutoscalerAutoscaleHeadroom) *int {
 		if v == nil {
@@ -23756,6 +23638,103 @@ func (o OceanLoggingExportS3ArrayOutput) Index(i pulumi.IntInput) OceanLoggingEx
 	}).(OceanLoggingExportS3Output)
 }
 
+type OceanResourceTagSpecification struct {
+	// Specify if Volume resources will be tagged with Virtual Node Group tags or Ocean tags.
+	ShouldTagVolumes *bool `pulumi:"shouldTagVolumes"`
+}
+
+// OceanResourceTagSpecificationInput is an input type that accepts OceanResourceTagSpecificationArgs and OceanResourceTagSpecificationOutput values.
+// You can construct a concrete instance of `OceanResourceTagSpecificationInput` via:
+//
+//	OceanResourceTagSpecificationArgs{...}
+type OceanResourceTagSpecificationInput interface {
+	pulumi.Input
+
+	ToOceanResourceTagSpecificationOutput() OceanResourceTagSpecificationOutput
+	ToOceanResourceTagSpecificationOutputWithContext(context.Context) OceanResourceTagSpecificationOutput
+}
+
+type OceanResourceTagSpecificationArgs struct {
+	// Specify if Volume resources will be tagged with Virtual Node Group tags or Ocean tags.
+	ShouldTagVolumes pulumi.BoolPtrInput `pulumi:"shouldTagVolumes"`
+}
+
+func (OceanResourceTagSpecificationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanResourceTagSpecification)(nil)).Elem()
+}
+
+func (i OceanResourceTagSpecificationArgs) ToOceanResourceTagSpecificationOutput() OceanResourceTagSpecificationOutput {
+	return i.ToOceanResourceTagSpecificationOutputWithContext(context.Background())
+}
+
+func (i OceanResourceTagSpecificationArgs) ToOceanResourceTagSpecificationOutputWithContext(ctx context.Context) OceanResourceTagSpecificationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanResourceTagSpecificationOutput)
+}
+
+// OceanResourceTagSpecificationArrayInput is an input type that accepts OceanResourceTagSpecificationArray and OceanResourceTagSpecificationArrayOutput values.
+// You can construct a concrete instance of `OceanResourceTagSpecificationArrayInput` via:
+//
+//	OceanResourceTagSpecificationArray{ OceanResourceTagSpecificationArgs{...} }
+type OceanResourceTagSpecificationArrayInput interface {
+	pulumi.Input
+
+	ToOceanResourceTagSpecificationArrayOutput() OceanResourceTagSpecificationArrayOutput
+	ToOceanResourceTagSpecificationArrayOutputWithContext(context.Context) OceanResourceTagSpecificationArrayOutput
+}
+
+type OceanResourceTagSpecificationArray []OceanResourceTagSpecificationInput
+
+func (OceanResourceTagSpecificationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanResourceTagSpecification)(nil)).Elem()
+}
+
+func (i OceanResourceTagSpecificationArray) ToOceanResourceTagSpecificationArrayOutput() OceanResourceTagSpecificationArrayOutput {
+	return i.ToOceanResourceTagSpecificationArrayOutputWithContext(context.Background())
+}
+
+func (i OceanResourceTagSpecificationArray) ToOceanResourceTagSpecificationArrayOutputWithContext(ctx context.Context) OceanResourceTagSpecificationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanResourceTagSpecificationArrayOutput)
+}
+
+type OceanResourceTagSpecificationOutput struct{ *pulumi.OutputState }
+
+func (OceanResourceTagSpecificationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanResourceTagSpecification)(nil)).Elem()
+}
+
+func (o OceanResourceTagSpecificationOutput) ToOceanResourceTagSpecificationOutput() OceanResourceTagSpecificationOutput {
+	return o
+}
+
+func (o OceanResourceTagSpecificationOutput) ToOceanResourceTagSpecificationOutputWithContext(ctx context.Context) OceanResourceTagSpecificationOutput {
+	return o
+}
+
+// Specify if Volume resources will be tagged with Virtual Node Group tags or Ocean tags.
+func (o OceanResourceTagSpecificationOutput) ShouldTagVolumes() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OceanResourceTagSpecification) *bool { return v.ShouldTagVolumes }).(pulumi.BoolPtrOutput)
+}
+
+type OceanResourceTagSpecificationArrayOutput struct{ *pulumi.OutputState }
+
+func (OceanResourceTagSpecificationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanResourceTagSpecification)(nil)).Elem()
+}
+
+func (o OceanResourceTagSpecificationArrayOutput) ToOceanResourceTagSpecificationArrayOutput() OceanResourceTagSpecificationArrayOutput {
+	return o
+}
+
+func (o OceanResourceTagSpecificationArrayOutput) ToOceanResourceTagSpecificationArrayOutputWithContext(ctx context.Context) OceanResourceTagSpecificationArrayOutput {
+	return o
+}
+
+func (o OceanResourceTagSpecificationArrayOutput) Index(i pulumi.IntInput) OceanResourceTagSpecificationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OceanResourceTagSpecification {
+		return vs[0].([]OceanResourceTagSpecification)[vs[1].(int)]
+	}).(OceanResourceTagSpecificationOutput)
+}
+
 type OceanScheduledTask struct {
 	ShutdownHours *OceanScheduledTaskShutdownHours `pulumi:"shutdownHours"`
 	Tasks         []OceanScheduledTaskTask         `pulumi:"tasks"`
@@ -24217,14 +24196,10 @@ func (o OceanTagArrayOutput) Index(i pulumi.IntInput) OceanTagOutput {
 }
 
 type OceanUpdatePolicy struct {
-	// will update instance tags on the fly without rolling the cluster.
-	AutoApplyTags *bool `pulumi:"autoApplyTags"`
-	// Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as AMI, Key Pair, user data, instance types, load balancers, etc).
-	ConditionedRoll *bool `pulumi:"conditionedRoll"`
-	// While used, you can control whether the group should perform a deployment after an update to the configuration.
-	RollConfig *OceanUpdatePolicyRollConfig `pulumi:"rollConfig"`
-	// Enables the roll.
-	ShouldRoll bool `pulumi:"shouldRoll"`
+	AutoApplyTags   *bool                        `pulumi:"autoApplyTags"`
+	ConditionedRoll *bool                        `pulumi:"conditionedRoll"`
+	RollConfig      *OceanUpdatePolicyRollConfig `pulumi:"rollConfig"`
+	ShouldRoll      bool                         `pulumi:"shouldRoll"`
 }
 
 // OceanUpdatePolicyInput is an input type that accepts OceanUpdatePolicyArgs and OceanUpdatePolicyOutput values.
@@ -24239,14 +24214,10 @@ type OceanUpdatePolicyInput interface {
 }
 
 type OceanUpdatePolicyArgs struct {
-	// will update instance tags on the fly without rolling the cluster.
-	AutoApplyTags pulumi.BoolPtrInput `pulumi:"autoApplyTags"`
-	// Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as AMI, Key Pair, user data, instance types, load balancers, etc).
-	ConditionedRoll pulumi.BoolPtrInput `pulumi:"conditionedRoll"`
-	// While used, you can control whether the group should perform a deployment after an update to the configuration.
-	RollConfig OceanUpdatePolicyRollConfigPtrInput `pulumi:"rollConfig"`
-	// Enables the roll.
-	ShouldRoll pulumi.BoolInput `pulumi:"shouldRoll"`
+	AutoApplyTags   pulumi.BoolPtrInput                 `pulumi:"autoApplyTags"`
+	ConditionedRoll pulumi.BoolPtrInput                 `pulumi:"conditionedRoll"`
+	RollConfig      OceanUpdatePolicyRollConfigPtrInput `pulumi:"rollConfig"`
+	ShouldRoll      pulumi.BoolInput                    `pulumi:"shouldRoll"`
 }
 
 func (OceanUpdatePolicyArgs) ElementType() reflect.Type {
@@ -24326,22 +24297,18 @@ func (o OceanUpdatePolicyOutput) ToOceanUpdatePolicyPtrOutputWithContext(ctx con
 	}).(OceanUpdatePolicyPtrOutput)
 }
 
-// will update instance tags on the fly without rolling the cluster.
 func (o OceanUpdatePolicyOutput) AutoApplyTags() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OceanUpdatePolicy) *bool { return v.AutoApplyTags }).(pulumi.BoolPtrOutput)
 }
 
-// Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as AMI, Key Pair, user data, instance types, load balancers, etc).
 func (o OceanUpdatePolicyOutput) ConditionedRoll() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OceanUpdatePolicy) *bool { return v.ConditionedRoll }).(pulumi.BoolPtrOutput)
 }
 
-// While used, you can control whether the group should perform a deployment after an update to the configuration.
 func (o OceanUpdatePolicyOutput) RollConfig() OceanUpdatePolicyRollConfigPtrOutput {
 	return o.ApplyT(func(v OceanUpdatePolicy) *OceanUpdatePolicyRollConfig { return v.RollConfig }).(OceanUpdatePolicyRollConfigPtrOutput)
 }
 
-// Enables the roll.
 func (o OceanUpdatePolicyOutput) ShouldRoll() pulumi.BoolOutput {
 	return o.ApplyT(func(v OceanUpdatePolicy) bool { return v.ShouldRoll }).(pulumi.BoolOutput)
 }
@@ -24370,7 +24337,6 @@ func (o OceanUpdatePolicyPtrOutput) Elem() OceanUpdatePolicyOutput {
 	}).(OceanUpdatePolicyOutput)
 }
 
-// will update instance tags on the fly without rolling the cluster.
 func (o OceanUpdatePolicyPtrOutput) AutoApplyTags() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OceanUpdatePolicy) *bool {
 		if v == nil {
@@ -24380,7 +24346,6 @@ func (o OceanUpdatePolicyPtrOutput) AutoApplyTags() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as AMI, Key Pair, user data, instance types, load balancers, etc).
 func (o OceanUpdatePolicyPtrOutput) ConditionedRoll() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OceanUpdatePolicy) *bool {
 		if v == nil {
@@ -24390,7 +24355,6 @@ func (o OceanUpdatePolicyPtrOutput) ConditionedRoll() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// While used, you can control whether the group should perform a deployment after an update to the configuration.
 func (o OceanUpdatePolicyPtrOutput) RollConfig() OceanUpdatePolicyRollConfigPtrOutput {
 	return o.ApplyT(func(v *OceanUpdatePolicy) *OceanUpdatePolicyRollConfig {
 		if v == nil {
@@ -24400,7 +24364,6 @@ func (o OceanUpdatePolicyPtrOutput) RollConfig() OceanUpdatePolicyRollConfigPtrO
 	}).(OceanUpdatePolicyRollConfigPtrOutput)
 }
 
-// Enables the roll.
 func (o OceanUpdatePolicyPtrOutput) ShouldRoll() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OceanUpdatePolicy) *bool {
 		if v == nil {
@@ -24411,29 +24374,10 @@ func (o OceanUpdatePolicyPtrOutput) ShouldRoll() pulumi.BoolPtrOutput {
 }
 
 type OceanUpdatePolicyRollConfig struct {
-	// Default: 50. Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
-	BatchMinHealthyPercentage *int `pulumi:"batchMinHealthyPercentage"`
-	// Sets the percentage of the instances to deploy in each batch.
-	BatchSizePercentage int `pulumi:"batchSizePercentage"`
-	// List of virtual node group identifiers to be rolled.
-	LaunchSpecIds []string `pulumi:"launchSpecIds"`
-	// During the roll, if the parameter is set to True we honor PDB during the instance replacement.
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
-	//
-	// <a id="scheduled-task"></a>
-	RespectPdb *bool `pulumi:"respectPdb"`
+	BatchMinHealthyPercentage *int     `pulumi:"batchMinHealthyPercentage"`
+	BatchSizePercentage       int      `pulumi:"batchSizePercentage"`
+	LaunchSpecIds             []string `pulumi:"launchSpecIds"`
+	RespectPdb                *bool    `pulumi:"respectPdb"`
 }
 
 // OceanUpdatePolicyRollConfigInput is an input type that accepts OceanUpdatePolicyRollConfigArgs and OceanUpdatePolicyRollConfigOutput values.
@@ -24448,29 +24392,10 @@ type OceanUpdatePolicyRollConfigInput interface {
 }
 
 type OceanUpdatePolicyRollConfigArgs struct {
-	// Default: 50. Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
-	BatchMinHealthyPercentage pulumi.IntPtrInput `pulumi:"batchMinHealthyPercentage"`
-	// Sets the percentage of the instances to deploy in each batch.
-	BatchSizePercentage pulumi.IntInput `pulumi:"batchSizePercentage"`
-	// List of virtual node group identifiers to be rolled.
-	LaunchSpecIds pulumi.StringArrayInput `pulumi:"launchSpecIds"`
-	// During the roll, if the parameter is set to True we honor PDB during the instance replacement.
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
-	//
-	// <a id="scheduled-task"></a>
-	RespectPdb pulumi.BoolPtrInput `pulumi:"respectPdb"`
+	BatchMinHealthyPercentage pulumi.IntPtrInput      `pulumi:"batchMinHealthyPercentage"`
+	BatchSizePercentage       pulumi.IntInput         `pulumi:"batchSizePercentage"`
+	LaunchSpecIds             pulumi.StringArrayInput `pulumi:"launchSpecIds"`
+	RespectPdb                pulumi.BoolPtrInput     `pulumi:"respectPdb"`
 }
 
 func (OceanUpdatePolicyRollConfigArgs) ElementType() reflect.Type {
@@ -24550,40 +24475,18 @@ func (o OceanUpdatePolicyRollConfigOutput) ToOceanUpdatePolicyRollConfigPtrOutpu
 	}).(OceanUpdatePolicyRollConfigPtrOutput)
 }
 
-// Default: 50. Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
 func (o OceanUpdatePolicyRollConfigOutput) BatchMinHealthyPercentage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanUpdatePolicyRollConfig) *int { return v.BatchMinHealthyPercentage }).(pulumi.IntPtrOutput)
 }
 
-// Sets the percentage of the instances to deploy in each batch.
 func (o OceanUpdatePolicyRollConfigOutput) BatchSizePercentage() pulumi.IntOutput {
 	return o.ApplyT(func(v OceanUpdatePolicyRollConfig) int { return v.BatchSizePercentage }).(pulumi.IntOutput)
 }
 
-// List of virtual node group identifiers to be rolled.
 func (o OceanUpdatePolicyRollConfigOutput) LaunchSpecIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v OceanUpdatePolicyRollConfig) []string { return v.LaunchSpecIds }).(pulumi.StringArrayOutput)
 }
 
-// During the roll, if the parameter is set to True we honor PDB during the instance replacement.
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// <a id="scheduled-task"></a>
 func (o OceanUpdatePolicyRollConfigOutput) RespectPdb() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OceanUpdatePolicyRollConfig) *bool { return v.RespectPdb }).(pulumi.BoolPtrOutput)
 }
@@ -24612,7 +24515,6 @@ func (o OceanUpdatePolicyRollConfigPtrOutput) Elem() OceanUpdatePolicyRollConfig
 	}).(OceanUpdatePolicyRollConfigOutput)
 }
 
-// Default: 50. Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
 func (o OceanUpdatePolicyRollConfigPtrOutput) BatchMinHealthyPercentage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanUpdatePolicyRollConfig) *int {
 		if v == nil {
@@ -24622,7 +24524,6 @@ func (o OceanUpdatePolicyRollConfigPtrOutput) BatchMinHealthyPercentage() pulumi
 	}).(pulumi.IntPtrOutput)
 }
 
-// Sets the percentage of the instances to deploy in each batch.
 func (o OceanUpdatePolicyRollConfigPtrOutput) BatchSizePercentage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanUpdatePolicyRollConfig) *int {
 		if v == nil {
@@ -24632,7 +24533,6 @@ func (o OceanUpdatePolicyRollConfigPtrOutput) BatchSizePercentage() pulumi.IntPt
 	}).(pulumi.IntPtrOutput)
 }
 
-// List of virtual node group identifiers to be rolled.
 func (o OceanUpdatePolicyRollConfigPtrOutput) LaunchSpecIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *OceanUpdatePolicyRollConfig) []string {
 		if v == nil {
@@ -24642,25 +24542,6 @@ func (o OceanUpdatePolicyRollConfigPtrOutput) LaunchSpecIds() pulumi.StringArray
 	}).(pulumi.StringArrayOutput)
 }
 
-// During the roll, if the parameter is set to True we honor PDB during the instance replacement.
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// <a id="scheduled-task"></a>
 func (o OceanUpdatePolicyRollConfigPtrOutput) RespectPdb() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OceanUpdatePolicyRollConfig) *bool {
 		if v == nil {
@@ -25054,6 +24935,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLoggingExportPtrInput)(nil)).Elem(), OceanLoggingExportArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLoggingExportS3Input)(nil)).Elem(), OceanLoggingExportS3Args{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLoggingExportS3ArrayInput)(nil)).Elem(), OceanLoggingExportS3Array{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanResourceTagSpecificationInput)(nil)).Elem(), OceanResourceTagSpecificationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanResourceTagSpecificationArrayInput)(nil)).Elem(), OceanResourceTagSpecificationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanScheduledTaskInput)(nil)).Elem(), OceanScheduledTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanScheduledTaskArrayInput)(nil)).Elem(), OceanScheduledTaskArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanScheduledTaskShutdownHoursInput)(nil)).Elem(), OceanScheduledTaskShutdownHoursArgs{})
@@ -25354,6 +25237,8 @@ func init() {
 	pulumi.RegisterOutputType(OceanLoggingExportPtrOutput{})
 	pulumi.RegisterOutputType(OceanLoggingExportS3Output{})
 	pulumi.RegisterOutputType(OceanLoggingExportS3ArrayOutput{})
+	pulumi.RegisterOutputType(OceanResourceTagSpecificationOutput{})
+	pulumi.RegisterOutputType(OceanResourceTagSpecificationArrayOutput{})
 	pulumi.RegisterOutputType(OceanScheduledTaskOutput{})
 	pulumi.RegisterOutputType(OceanScheduledTaskArrayOutput{})
 	pulumi.RegisterOutputType(OceanScheduledTaskShutdownHoursOutput{})
