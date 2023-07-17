@@ -2961,43 +2961,34 @@
         "spotinst:aws/OceanAutoscaler:OceanAutoscaler": {
             "properties": {
                 "autoHeadroomPercentage": {
-                    "type": "integer",
-                    "description": "Set the auto headroom percentage (a number in the range [0, 200]) which controls the percentage of headroom from the cluster. Relevant only when `autoscale_is_auto_config` toggled on.\n"
+                    "type": "integer"
                 },
                 "autoscaleCooldown": {
-                    "type": "integer",
-                    "description": "Cooldown period between scaling actions.\n"
+                    "type": "integer"
                 },
                 "autoscaleDown": {
-                    "$ref": "#/types/spotinst:aws/OceanAutoscalerAutoscaleDown:OceanAutoscalerAutoscaleDown",
-                    "description": "Auto Scaling scale down operations.\n"
+                    "$ref": "#/types/spotinst:aws/OceanAutoscalerAutoscaleDown:OceanAutoscalerAutoscaleDown"
                 },
                 "autoscaleHeadroom": {
-                    "$ref": "#/types/spotinst:aws/OceanAutoscalerAutoscaleHeadroom:OceanAutoscalerAutoscaleHeadroom",
-                    "description": "Spare resource capacity management enabling fast assignment of Pods without waiting for new resources to launch.\n"
+                    "$ref": "#/types/spotinst:aws/OceanAutoscalerAutoscaleHeadroom:OceanAutoscalerAutoscaleHeadroom"
                 },
                 "autoscaleIsAutoConfig": {
-                    "type": "boolean",
-                    "description": "Automatically configure and optimize headroom resources.\n"
+                    "type": "boolean"
                 },
                 "autoscaleIsEnabled": {
-                    "type": "boolean",
-                    "description": "Enable the Ocean Kubernetes Auto Scaler.\n"
+                    "type": "boolean"
                 },
                 "enableAutomaticAndManualHeadroom": {
-                    "type": "boolean",
-                    "description": "enables automatic and manual headroom to work in parallel. When set to false, automatic headroom overrides all other headroom definitions manually configured, whether they are at cluster or VNG level.\n"
+                    "type": "boolean"
                 },
                 "extendedResourceDefinitions": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    },
-                    "description": "List of Ocean extended resource definitions to use in this cluster.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\n```\n```python\nimport pulumi\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n    }\n}\n```\n```yaml\n{}\n```\n"
+                    }
                 },
                 "resourceLimits": {
-                    "$ref": "#/types/spotinst:aws/OceanAutoscalerResourceLimits:OceanAutoscalerResourceLimits",
-                    "description": "Optionally set upper and lower bounds on the resource usage of the cluster.\n"
+                    "$ref": "#/types/spotinst:aws/OceanAutoscalerResourceLimits:OceanAutoscalerResourceLimits"
                 }
             },
             "type": "object"
@@ -3008,8 +2999,7 @@
                     "type": "integer"
                 },
                 "maxScaleDownPercentage": {
-                    "type": "number",
-                    "description": "Would represent the maximum % to scale-down. Number between 1-100.\n"
+                    "type": "number"
                 }
             },
             "type": "object"
@@ -3017,20 +3007,16 @@
         "spotinst:aws/OceanAutoscalerAutoscaleHeadroom:OceanAutoscalerAutoscaleHeadroom": {
             "properties": {
                 "cpuPerUnit": {
-                    "type": "integer",
-                    "description": "Optionally configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.\n"
+                    "type": "integer"
                 },
                 "gpuPerUnit": {
-                    "type": "integer",
-                    "description": "Optionally configure the number of GPUs to allocate the headroom.\n"
+                    "type": "integer"
                 },
                 "memoryPerUnit": {
-                    "type": "integer",
-                    "description": "Optionally configure the amount of memory (MB) to allocate the headroom.\n"
+                    "type": "integer"
                 },
                 "numOfUnits": {
-                    "type": "integer",
-                    "description": "The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.\n"
+                    "type": "integer"
                 }
             },
             "type": "object"
@@ -3697,6 +3683,15 @@
                 "id"
             ]
         },
+        "spotinst:aws/OceanResourceTagSpecification:OceanResourceTagSpecification": {
+            "properties": {
+                "shouldTagVolumes": {
+                    "type": "boolean",
+                    "description": "Specify if Volume resources will be tagged with Virtual Node Group tags or Ocean tags.\n"
+                }
+            },
+            "type": "object"
+        },
         "spotinst:aws/OceanScheduledTask:OceanScheduledTask": {
             "properties": {
                 "shutdownHours": {
@@ -3767,20 +3762,16 @@
         "spotinst:aws/OceanUpdatePolicy:OceanUpdatePolicy": {
             "properties": {
                 "autoApplyTags": {
-                    "type": "boolean",
-                    "description": "will update instance tags on the fly without rolling the cluster.\n"
+                    "type": "boolean"
                 },
                 "conditionedRoll": {
-                    "type": "boolean",
-                    "description": "Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as AMI, Key Pair, user data, instance types, load balancers, etc).\n"
+                    "type": "boolean"
                 },
                 "rollConfig": {
-                    "$ref": "#/types/spotinst:aws/OceanUpdatePolicyRollConfig:OceanUpdatePolicyRollConfig",
-                    "description": "While used, you can control whether the group should perform a deployment after an update to the configuration.\n"
+                    "$ref": "#/types/spotinst:aws/OceanUpdatePolicyRollConfig:OceanUpdatePolicyRollConfig"
                 },
                 "shouldRoll": {
-                    "type": "boolean",
-                    "description": "Enables the roll.\n"
+                    "type": "boolean"
                 }
             },
             "type": "object",
@@ -3791,23 +3782,19 @@
         "spotinst:aws/OceanUpdatePolicyRollConfig:OceanUpdatePolicyRollConfig": {
             "properties": {
                 "batchMinHealthyPercentage": {
-                    "type": "integer",
-                    "description": "Default: 50. Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.\n"
+                    "type": "integer"
                 },
                 "batchSizePercentage": {
-                    "type": "integer",
-                    "description": "Sets the percentage of the instances to deploy in each batch.\n"
+                    "type": "integer"
                 },
                 "launchSpecIds": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    },
-                    "description": "List of virtual node group identifiers to be rolled.\n"
+                    }
                 },
                 "respectPdb": {
-                    "type": "boolean",
-                    "description": "During the roll, if the parameter is set to True we honor PDB during the instance replacement.\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\n```\n```python\nimport pulumi\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n    }\n}\n```\n```yaml\n{}\n```\n\n\u003ca id=\"scheduled-task\"\u003e\u003c/a\u003e\n"
+                    "type": "boolean"
                 }
             },
             "type": "object",
@@ -11588,7 +11575,7 @@
             }
         },
         "spotinst:aws/ocean:Ocean": {
-            "description": "## Scheduled Task\n\n* `scheduled_task` - (Optional) Set scheduling object.\n    * `shutdown_hours` - (Optional) Set shutdown hours for cluster object.\n        * `is_enabled` - (Optional) Toggle the shutdown hours task. (Example: `true`).\n        * `time_windows` - (Required) Set time windows for shutdown hours. Specify a list of `timeWindows` with at least one time window Each string is in the format of: `ddd:hh:mm-ddd:hh:mm` where `ddd` = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat, `hh` = hour 24 = 0 -23, `mm` = minute = 0 - 59. Time windows should not overlap. Required if `cluster.scheduling.isEnabled` is `true`. (Example: `Fri:15:30-Wed:14:30`).\n    * `tasks` - (Optional) The scheduling tasks for the cluster.\n        * `is_enabled` - (Required)  Describes whether the task is enabled. When true the task should run when false it should not run. Required for `cluster.scheduling.tasks` object.\n        * `cron_expression` - (Required) A valid cron expression. The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of `frequency` or `cronExpression` should be used at a time. Required for `cluster.scheduling.tasks` object. (Example: `0 1 * * *`).\n        * `task_type` - (Required) Valid values: `clusterRoll`. Required for `cluster.scheduling.tasks` object. (Example: `clusterRoll`).\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\n```\n```python\nimport pulumi\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n    }\n}\n```\n```yaml\n{}\n```\n\n\u003ca id=\"attributes-reference\"\u003e\u003c/a\u003e\n\n\n## Import\n\nClusters can be imported using the Ocean `id`, e.g., hcl\n\n```sh\n $ pulumi import spotinst:aws/ocean:Ocean this o-12345678\n```\n\n ",
+            "description": "## Auto Scaler\n\n* `autoscaler` - (Optional) Describes the Ocean Kubernetes Auto Scaler.\n    * `autoscale_is_enabled` - (Optional, Default: `true`) Enable the Ocean Kubernetes Auto Scaler.\n    * `autoscale_is_auto_config` - (Optional, Default: `true`) Automatically configure and optimize headroom resources.\n    * `autoscale_cooldown` - (Optional, Default: `null`) Cooldown period between scaling actions.\n    * `auto_headroom_percentage` - (Optional) Set the auto headroom percentage (a number in the range [0, 200]) which controls the percentage of headroom from the cluster. Relevant only when `autoscale_is_auto_config` toggled on.\n    * `enable_automatic_and_manual_headroom` - (Optional, Default: `false`) enables automatic and manual headroom to work in parallel. When set to false, automatic headroom overrides all other headroom definitions manually configured, whether they are at cluster or VNG level.\n    * `autoscale_headroom` - (Optional) Spare resource capacity management enabling fast assignment of Pods without waiting for new resources to launch.\n        * `cpu_per_unit` - (Optional) Optionally configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.\n        * `gpu_per_unit` - (Optional) Optionally configure the number of GPUs to allocate the headroom.\n        * `memory_per_unit` - (Optional) Optionally configure the amount of memory (MB) to allocate the headroom.\n        * `num_of_units` - (Optional) The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.\n    * `autoscale_down` - (Optional) Auto Scaling scale down operations.\n        * `max_scale_down_percentage` - (Optional) Would represent the maximum % to scale-down. Number between 1-100.\n    * `resource_limits` - (Optional) Optionally set upper and lower bounds on the resource usage of the cluster.\n        * `max_vcpu` - (Optional) The maximum cpu in vCPU units that can be allocated to the cluster.\n        * `max_memory_gib` - (Optional) The maximum memory in GiB units that can be allocated to the cluster.\n    * `extended_resource_definitions` - (Optional) List of Ocean extended resource definitions to use in this cluster.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\n```\n```python\nimport pulumi\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n    }\n}\n```\n```yaml\n{}\n```\n\n### Update Policy\n\n* `update_policy` - (Optional)\n    * `should_roll` - (Required) Enables the roll.\n    * `conditioned_roll` - (Optional, Default: false) Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as AMI, Key Pair, user data, instance types, load balancers, etc).\n    * `auto_apply_tags` - (Optional, Default: false) will update instance tags on the fly without rolling the cluster.\n    * `roll_config` - (Required) While used, you can control whether the group should perform a deployment after an update to the configuration.\n        * `batch_size_percentage` - (Required) Sets the percentage of the instances to deploy in each batch.\n        * `launch_spec_ids` - (Optional) List of virtual node group identifiers to be rolled.\n        * `batch_min_healthy_percentage` - (Optional) Default: 50. Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.\n        * `respect_pdb` - (Optional, Default: false) During the roll, if the parameter is set to True we honor PDB during the instance replacement.\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\n```\n```python\nimport pulumi\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n    }\n}\n```\n```yaml\n{}\n```\n\n\u003ca id=\"scheduled-task\"\u003e\u003c/a\u003e\n## Scheduled Task\n\n* `scheduled_task` - (Optional) Set scheduling object.\n    * `shutdown_hours` - (Optional) Set shutdown hours for cluster object.\n        * `is_enabled` - (Optional) Toggle the shutdown hours task. (Example: `true`).\n        * `time_windows` - (Required) Set time windows for shutdown hours. Specify a list of `timeWindows` with at least one time window Each string is in the format of: `ddd:hh:mm-ddd:hh:mm` where `ddd` = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat, `hh` = hour 24 = 0 -23, `mm` = minute = 0 - 59. Time windows should not overlap. Required if `cluster.scheduling.isEnabled` is `true`. (Example: `Fri:15:30-Wed:14:30`).\n    * `tasks` - (Optional) The scheduling tasks for the cluster.\n        * `is_enabled` - (Required)  Describes whether the task is enabled. When true the task should run when false it should not run. Required for `cluster.scheduling.tasks` object.\n        * `cron_expression` - (Required) A valid cron expression. The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of `frequency` or `cronExpression` should be used at a time. Required for `cluster.scheduling.tasks` object. (Example: `0 1 * * *`).\n        * `task_type` - (Required) Valid values: `clusterRoll`. Required for `cluster.scheduling.tasks` object. (Example: `clusterRoll`).\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\n```\n```python\nimport pulumi\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n    }\n}\n```\n```yaml\n{}\n```\n\n\u003ca id=\"attributes-reference\"\u003e\u003c/a\u003e\n\n\n## Import\n\nClusters can be imported using the Ocean `id`, e.g., hcl\n\n```sh\n $ pulumi import spotinst:aws/ocean:Ocean this o-12345678\n```\n\n ",
             "properties": {
                 "associateIpv6Address": {
                     "type": "boolean",
@@ -11599,8 +11586,7 @@
                     "description": "Configure public IP address allocation.\n"
                 },
                 "autoscaler": {
-                    "$ref": "#/types/spotinst:aws/OceanAutoscaler:OceanAutoscaler",
-                    "description": "Describes the Ocean Kubernetes Auto Scaler.\n"
+                    "$ref": "#/types/spotinst:aws/OceanAutoscaler:OceanAutoscaler"
                 },
                 "blacklists": {
                     "type": "array",
@@ -11696,6 +11682,13 @@
                 "region": {
                     "type": "string",
                     "description": "The region the cluster will run in.\n"
+                },
+                "resourceTagSpecifications": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/spotinst:aws/OceanResourceTagSpecification:OceanResourceTagSpecification"
+                    },
+                    "description": "Specify which resources should be tagged with Virtual Node Group tags or Ocean tags. If tags are set on the VNG, the resources will be tagged with the VNG tags; otherwise, they will be tagged with the Ocean tags.\n"
                 },
                 "rootVolumeSize": {
                     "type": "integer",
@@ -11780,8 +11773,7 @@
                     "description": "Configure public IP address allocation.\n"
                 },
                 "autoscaler": {
-                    "$ref": "#/types/spotinst:aws/OceanAutoscaler:OceanAutoscaler",
-                    "description": "Describes the Ocean Kubernetes Auto Scaler.\n"
+                    "$ref": "#/types/spotinst:aws/OceanAutoscaler:OceanAutoscaler"
                 },
                 "blacklists": {
                     "type": "array",
@@ -11878,6 +11870,13 @@
                     "type": "string",
                     "description": "The region the cluster will run in.\n"
                 },
+                "resourceTagSpecifications": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/spotinst:aws/OceanResourceTagSpecification:OceanResourceTagSpecification"
+                    },
+                    "description": "Specify which resources should be tagged with Virtual Node Group tags or Ocean tags. If tags are set on the VNG, the resources will be tagged with the VNG tags; otherwise, they will be tagged with the Ocean tags.\n"
+                },
                 "rootVolumeSize": {
                     "type": "integer",
                     "description": "The size (in Gb) to allocate for the root volume. Minimum `20`.\n"
@@ -11960,8 +11959,7 @@
                         "description": "Configure public IP address allocation.\n"
                     },
                     "autoscaler": {
-                        "$ref": "#/types/spotinst:aws/OceanAutoscaler:OceanAutoscaler",
-                        "description": "Describes the Ocean Kubernetes Auto Scaler.\n"
+                        "$ref": "#/types/spotinst:aws/OceanAutoscaler:OceanAutoscaler"
                     },
                     "blacklists": {
                         "type": "array",
@@ -12057,6 +12055,13 @@
                     "region": {
                         "type": "string",
                         "description": "The region the cluster will run in.\n"
+                    },
+                    "resourceTagSpecifications": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/spotinst:aws/OceanResourceTagSpecification:OceanResourceTagSpecification"
+                        },
+                        "description": "Specify which resources should be tagged with Virtual Node Group tags or Ocean tags. If tags are set on the VNG, the resources will be tagged with the VNG tags; otherwise, they will be tagged with the Ocean tags.\n"
                     },
                     "rootVolumeSize": {
                         "type": "integer",

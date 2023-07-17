@@ -3146,6 +3146,9 @@
                     "monitoring": {},
                     "name": {},
                     "region": {},
+                    "resource_tag_specification": {
+                        "maxItemsOne": false
+                    },
                     "root_volume_size": {},
                     "scheduled_task": {
                         "maxItemsOne": false,
@@ -5326,6 +5329,9 @@
             "spotinst:aws/OceanLoggingExport:OceanLoggingExport": {
                 "s3s": "s3"
             },
+            "spotinst:aws/OceanResourceTagSpecification:OceanResourceTagSpecification": {
+                "shouldTagVolumes": "should_tag_volumes"
+            },
             "spotinst:aws/OceanScheduledTask:OceanScheduledTask": {
                 "shutdownHours": "shutdown_hours"
             },
@@ -5552,6 +5558,7 @@
                 "loadBalancers": "load_balancers",
                 "maxSize": "max_size",
                 "minSize": "min_size",
+                "resourceTagSpecifications": "resource_tag_specification",
                 "rootVolumeSize": "root_volume_size",
                 "scheduledTasks": "scheduled_task",
                 "securityGroups": "security_groups",
