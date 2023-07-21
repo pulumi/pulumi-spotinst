@@ -11,6 +11,73 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Auto Scaler
+//
+// * `autoscaler` - (Optional) Describes the Ocean Kubernetes Auto Scaler.
+//   - `autoscaleIsEnabled` - (Optional, Default: `true`) Enable the Ocean Kubernetes Auto Scaler.
+//   - `autoscaleIsAutoConfig` - (Optional, Default: `true`) Automatically configure and optimize headroom resources.
+//   - `autoscaleCooldown` - (Optional, Default: `null`) Cooldown period between scaling actions.
+//   - `autoHeadroomPercentage` - (Optional) Set the auto headroom percentage (a number in the range [0, 200]) which controls the percentage of headroom from the cluster. Relevant only when `autoscaleIsAutoConfig` toggled on.
+//   - `enableAutomaticAndManualHeadroom` - (Optional, Default: `false`) enables automatic and manual headroom to work in parallel. When set to false, automatic headroom overrides all other headroom definitions manually configured, whether they are at cluster or VNG level.
+//   - `autoscaleHeadroom` - (Optional) Spare resource capacity management enabling fast assignment of Pods without waiting for new resources to launch.
+//   - `cpuPerUnit` - (Optional) Optionally configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+//   - `gpuPerUnit` - (Optional) Optionally configure the number of GPUs to allocate the headroom.
+//   - `memoryPerUnit` - (Optional) Optionally configure the amount of memory (MB) to allocate the headroom.
+//   - `numOfUnits` - (Optional) The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
+//   - `autoscaleDown` - (Optional) Auto Scaling scale down operations.
+//   - `maxScaleDownPercentage` - (Optional) Would represent the maximum % to scale-down. Number between 1-100.
+//   - `resourceLimits` - (Optional) Optionally set upper and lower bounds on the resource usage of the cluster.
+//   - `maxVcpu` - (Optional) The maximum cpu in vCPU units that can be allocated to the cluster.
+//   - `maxMemoryGib` - (Optional) The maximum memory in GiB units that can be allocated to the cluster.
+//   - `extendedResourceDefinitions` - (Optional) List of Ocean extended resource definitions to use in this cluster.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Update Policy
+//
+// * `updatePolicy` - (Optional)
+//   - `shouldRoll` - (Required) Enables the roll.
+//   - `conditionedRoll` - (Optional, Default: false) Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as AMI, Key Pair, user data, instance types, load balancers, etc).
+//   - `autoApplyTags` - (Optional, Default: false) will update instance tags on the fly without rolling the cluster.
+//   - `rollConfig` - (Required) While used, you can control whether the group should perform a deployment after an update to the configuration.
+//   - `batchSizePercentage` - (Required) Sets the percentage of the instances to deploy in each batch.
+//   - `launchSpecIds` - (Optional) List of virtual node group identifiers to be rolled.
+//   - `batchMinHealthyPercentage` - (Optional) Default: 50. Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
+//   - `respectPdb` - (Optional, Default: false) During the roll, if the parameter is set to True we honor PDB during the instance replacement.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// <a id="scheduled-task"></a>
 // ## Scheduled Task
 //
 // * `scheduledTask` - (Optional) Set scheduling object.
@@ -56,9 +123,8 @@ type Ocean struct {
 	// Configure IPv6 address allocation.
 	AssociateIpv6Address pulumi.BoolPtrOutput `pulumi:"associateIpv6Address"`
 	// Configure public IP address allocation.
-	AssociatePublicIpAddress pulumi.BoolPtrOutput `pulumi:"associatePublicIpAddress"`
-	// Describes the Ocean Kubernetes Auto Scaler.
-	Autoscaler OceanAutoscalerPtrOutput `pulumi:"autoscaler"`
+	AssociatePublicIpAddress pulumi.BoolPtrOutput     `pulumi:"associatePublicIpAddress"`
+	Autoscaler               OceanAutoscalerPtrOutput `pulumi:"autoscaler"`
 	// Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist` is configured.
 	Blacklists pulumi.StringArrayOutput `pulumi:"blacklists"`
 	// Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
@@ -100,6 +166,8 @@ type Ocean struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The region the cluster will run in.
 	Region pulumi.StringPtrOutput `pulumi:"region"`
+	// Specify which resources should be tagged with Virtual Node Group tags or Ocean tags. If tags are set on the VNG, the resources will be tagged with the VNG tags; otherwise, they will be tagged with the Ocean tags.
+	ResourceTagSpecifications OceanResourceTagSpecificationArrayOutput `pulumi:"resourceTagSpecifications"`
 	// The size (in Gb) to allocate for the root volume. Minimum `20`.
 	RootVolumeSize pulumi.IntPtrOutput           `pulumi:"rootVolumeSize"`
 	ScheduledTasks OceanScheduledTaskArrayOutput `pulumi:"scheduledTasks"`
@@ -165,9 +233,8 @@ type oceanState struct {
 	// Configure IPv6 address allocation.
 	AssociateIpv6Address *bool `pulumi:"associateIpv6Address"`
 	// Configure public IP address allocation.
-	AssociatePublicIpAddress *bool `pulumi:"associatePublicIpAddress"`
-	// Describes the Ocean Kubernetes Auto Scaler.
-	Autoscaler *OceanAutoscaler `pulumi:"autoscaler"`
+	AssociatePublicIpAddress *bool            `pulumi:"associatePublicIpAddress"`
+	Autoscaler               *OceanAutoscaler `pulumi:"autoscaler"`
 	// Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist` is configured.
 	Blacklists []string `pulumi:"blacklists"`
 	// Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
@@ -209,6 +276,8 @@ type oceanState struct {
 	Name *string `pulumi:"name"`
 	// The region the cluster will run in.
 	Region *string `pulumi:"region"`
+	// Specify which resources should be tagged with Virtual Node Group tags or Ocean tags. If tags are set on the VNG, the resources will be tagged with the VNG tags; otherwise, they will be tagged with the Ocean tags.
+	ResourceTagSpecifications []OceanResourceTagSpecification `pulumi:"resourceTagSpecifications"`
 	// The size (in Gb) to allocate for the root volume. Minimum `20`.
 	RootVolumeSize *int                 `pulumi:"rootVolumeSize"`
 	ScheduledTasks []OceanScheduledTask `pulumi:"scheduledTasks"`
@@ -241,8 +310,7 @@ type OceanState struct {
 	AssociateIpv6Address pulumi.BoolPtrInput
 	// Configure public IP address allocation.
 	AssociatePublicIpAddress pulumi.BoolPtrInput
-	// Describes the Ocean Kubernetes Auto Scaler.
-	Autoscaler OceanAutoscalerPtrInput
+	Autoscaler               OceanAutoscalerPtrInput
 	// Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist` is configured.
 	Blacklists pulumi.StringArrayInput
 	// Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
@@ -284,6 +352,8 @@ type OceanState struct {
 	Name pulumi.StringPtrInput
 	// The region the cluster will run in.
 	Region pulumi.StringPtrInput
+	// Specify which resources should be tagged with Virtual Node Group tags or Ocean tags. If tags are set on the VNG, the resources will be tagged with the VNG tags; otherwise, they will be tagged with the Ocean tags.
+	ResourceTagSpecifications OceanResourceTagSpecificationArrayInput
 	// The size (in Gb) to allocate for the root volume. Minimum `20`.
 	RootVolumeSize pulumi.IntPtrInput
 	ScheduledTasks OceanScheduledTaskArrayInput
@@ -319,9 +389,8 @@ type oceanArgs struct {
 	// Configure IPv6 address allocation.
 	AssociateIpv6Address *bool `pulumi:"associateIpv6Address"`
 	// Configure public IP address allocation.
-	AssociatePublicIpAddress *bool `pulumi:"associatePublicIpAddress"`
-	// Describes the Ocean Kubernetes Auto Scaler.
-	Autoscaler *OceanAutoscaler `pulumi:"autoscaler"`
+	AssociatePublicIpAddress *bool            `pulumi:"associatePublicIpAddress"`
+	Autoscaler               *OceanAutoscaler `pulumi:"autoscaler"`
 	// Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist` is configured.
 	Blacklists []string `pulumi:"blacklists"`
 	// Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
@@ -363,6 +432,8 @@ type oceanArgs struct {
 	Name *string `pulumi:"name"`
 	// The region the cluster will run in.
 	Region *string `pulumi:"region"`
+	// Specify which resources should be tagged with Virtual Node Group tags or Ocean tags. If tags are set on the VNG, the resources will be tagged with the VNG tags; otherwise, they will be tagged with the Ocean tags.
+	ResourceTagSpecifications []OceanResourceTagSpecification `pulumi:"resourceTagSpecifications"`
 	// The size (in Gb) to allocate for the root volume. Minimum `20`.
 	RootVolumeSize *int                 `pulumi:"rootVolumeSize"`
 	ScheduledTasks []OceanScheduledTask `pulumi:"scheduledTasks"`
@@ -396,8 +467,7 @@ type OceanArgs struct {
 	AssociateIpv6Address pulumi.BoolPtrInput
 	// Configure public IP address allocation.
 	AssociatePublicIpAddress pulumi.BoolPtrInput
-	// Describes the Ocean Kubernetes Auto Scaler.
-	Autoscaler OceanAutoscalerPtrInput
+	Autoscaler               OceanAutoscalerPtrInput
 	// Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist` is configured.
 	Blacklists pulumi.StringArrayInput
 	// Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
@@ -439,6 +509,8 @@ type OceanArgs struct {
 	Name pulumi.StringPtrInput
 	// The region the cluster will run in.
 	Region pulumi.StringPtrInput
+	// Specify which resources should be tagged with Virtual Node Group tags or Ocean tags. If tags are set on the VNG, the resources will be tagged with the VNG tags; otherwise, they will be tagged with the Ocean tags.
+	ResourceTagSpecifications OceanResourceTagSpecificationArrayInput
 	// The size (in Gb) to allocate for the root volume. Minimum `20`.
 	RootVolumeSize pulumi.IntPtrInput
 	ScheduledTasks OceanScheduledTaskArrayInput
@@ -563,7 +635,6 @@ func (o OceanOutput) AssociatePublicIpAddress() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Ocean) pulumi.BoolPtrOutput { return v.AssociatePublicIpAddress }).(pulumi.BoolPtrOutput)
 }
 
-// Describes the Ocean Kubernetes Auto Scaler.
 func (o OceanOutput) Autoscaler() OceanAutoscalerPtrOutput {
 	return o.ApplyT(func(v *Ocean) OceanAutoscalerPtrOutput { return v.Autoscaler }).(OceanAutoscalerPtrOutput)
 }
@@ -670,6 +741,11 @@ func (o OceanOutput) Name() pulumi.StringOutput {
 // The region the cluster will run in.
 func (o OceanOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Ocean) pulumi.StringPtrOutput { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+// Specify which resources should be tagged with Virtual Node Group tags or Ocean tags. If tags are set on the VNG, the resources will be tagged with the VNG tags; otherwise, they will be tagged with the Ocean tags.
+func (o OceanOutput) ResourceTagSpecifications() OceanResourceTagSpecificationArrayOutput {
+	return o.ApplyT(func(v *Ocean) OceanResourceTagSpecificationArrayOutput { return v.ResourceTagSpecifications }).(OceanResourceTagSpecificationArrayOutput)
 }
 
 // The size (in Gb) to allocate for the root volume. Minimum `20`.

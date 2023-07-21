@@ -17,6 +17,7 @@ import com.pulumi.spotinst.aws.outputs.OceanFilters;
 import com.pulumi.spotinst.aws.outputs.OceanInstanceMetadataOptions;
 import com.pulumi.spotinst.aws.outputs.OceanLoadBalancer;
 import com.pulumi.spotinst.aws.outputs.OceanLogging;
+import com.pulumi.spotinst.aws.outputs.OceanResourceTagSpecification;
 import com.pulumi.spotinst.aws.outputs.OceanScheduledTask;
 import com.pulumi.spotinst.aws.outputs.OceanTag;
 import com.pulumi.spotinst.aws.outputs.OceanUpdatePolicy;
@@ -28,6 +29,83 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * ## Auto Scaler
+ * 
+ * * `autoscaler` - (Optional) Describes the Ocean Kubernetes Auto Scaler.
+ *     * `autoscale_is_enabled` - (Optional, Default: `true`) Enable the Ocean Kubernetes Auto Scaler.
+ *     * `autoscale_is_auto_config` - (Optional, Default: `true`) Automatically configure and optimize headroom resources.
+ *     * `autoscale_cooldown` - (Optional, Default: `null`) Cooldown period between scaling actions.
+ *     * `auto_headroom_percentage` - (Optional) Set the auto headroom percentage (a number in the range [0, 200]) which controls the percentage of headroom from the cluster. Relevant only when `autoscale_is_auto_config` toggled on.
+ *     * `enable_automatic_and_manual_headroom` - (Optional, Default: `false`) enables automatic and manual headroom to work in parallel. When set to false, automatic headroom overrides all other headroom definitions manually configured, whether they are at cluster or VNG level.
+ *     * `autoscale_headroom` - (Optional) Spare resource capacity management enabling fast assignment of Pods without waiting for new resources to launch.
+ *         * `cpu_per_unit` - (Optional) Optionally configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+ *         * `gpu_per_unit` - (Optional) Optionally configure the number of GPUs to allocate the headroom.
+ *         * `memory_per_unit` - (Optional) Optionally configure the amount of memory (MB) to allocate the headroom.
+ *         * `num_of_units` - (Optional) The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
+ *     * `autoscale_down` - (Optional) Auto Scaling scale down operations.
+ *         * `max_scale_down_percentage` - (Optional) Would represent the maximum % to scale-down. Number between 1-100.
+ *     * `resource_limits` - (Optional) Optionally set upper and lower bounds on the resource usage of the cluster.
+ *         * `max_vcpu` - (Optional) The maximum cpu in vCPU units that can be allocated to the cluster.
+ *         * `max_memory_gib` - (Optional) The maximum memory in GiB units that can be allocated to the cluster.
+ *     * `extended_resource_definitions` - (Optional) List of Ocean extended resource definitions to use in this cluster.
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *     }
+ * }
+ * ```
+ * 
+ * ### Update Policy
+ * 
+ * * `update_policy` - (Optional)
+ *     * `should_roll` - (Required) Enables the roll.
+ *     * `conditioned_roll` - (Optional, Default: false) Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as AMI, Key Pair, user data, instance types, load balancers, etc).
+ *     * `auto_apply_tags` - (Optional, Default: false) will update instance tags on the fly without rolling the cluster.
+ *     * `roll_config` - (Required) While used, you can control whether the group should perform a deployment after an update to the configuration.
+ *         * `batch_size_percentage` - (Required) Sets the percentage of the instances to deploy in each batch.
+ *         * `launch_spec_ids` - (Optional) List of virtual node group identifiers to be rolled.
+ *         * `batch_min_healthy_percentage` - (Optional) Default: 50. Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
+ *         * `respect_pdb` - (Optional, Default: false) During the roll, if the parameter is set to True we honor PDB during the instance replacement.
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *     }
+ * }
+ * ```
+ * 
+ * &lt;a id=&#34;scheduled-task&#34;&gt;&lt;/a&gt;
  * ## Scheduled Task
  * 
  * * `scheduled_task` - (Optional) Set scheduling object.
@@ -102,17 +180,9 @@ public class Ocean extends com.pulumi.resources.CustomResource {
     public Output<Optional<Boolean>> associatePublicIpAddress() {
         return Codegen.optional(this.associatePublicIpAddress);
     }
-    /**
-     * Describes the Ocean Kubernetes Auto Scaler.
-     * 
-     */
     @Export(name="autoscaler", type=OceanAutoscaler.class, parameters={})
     private Output</* @Nullable */ OceanAutoscaler> autoscaler;
 
-    /**
-     * @return Describes the Ocean Kubernetes Auto Scaler.
-     * 
-     */
     public Output<Optional<OceanAutoscaler>> autoscaler() {
         return Codegen.optional(this.autoscaler);
     }
@@ -401,6 +471,20 @@ public class Ocean extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> region() {
         return Codegen.optional(this.region);
+    }
+    /**
+     * Specify which resources should be tagged with Virtual Node Group tags or Ocean tags. If tags are set on the VNG, the resources will be tagged with the VNG tags; otherwise, they will be tagged with the Ocean tags.
+     * 
+     */
+    @Export(name="resourceTagSpecifications", type=List.class, parameters={OceanResourceTagSpecification.class})
+    private Output</* @Nullable */ List<OceanResourceTagSpecification>> resourceTagSpecifications;
+
+    /**
+     * @return Specify which resources should be tagged with Virtual Node Group tags or Ocean tags. If tags are set on the VNG, the resources will be tagged with the VNG tags; otherwise, they will be tagged with the Ocean tags.
+     * 
+     */
+    public Output<Optional<List<OceanResourceTagSpecification>>> resourceTagSpecifications() {
+        return Codegen.optional(this.resourceTagSpecifications);
     }
     /**
      * The size (in Gb) to allocate for the root volume. Minimum `20`.

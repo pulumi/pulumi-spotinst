@@ -12,6 +12,7 @@ import com.pulumi.spotinst.aws.inputs.OceanFiltersArgs;
 import com.pulumi.spotinst.aws.inputs.OceanInstanceMetadataOptionsArgs;
 import com.pulumi.spotinst.aws.inputs.OceanLoadBalancerArgs;
 import com.pulumi.spotinst.aws.inputs.OceanLoggingArgs;
+import com.pulumi.spotinst.aws.inputs.OceanResourceTagSpecificationArgs;
 import com.pulumi.spotinst.aws.inputs.OceanScheduledTaskArgs;
 import com.pulumi.spotinst.aws.inputs.OceanTagArgs;
 import com.pulumi.spotinst.aws.inputs.OceanUpdatePolicyArgs;
@@ -58,17 +59,9 @@ public final class OceanArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.associatePublicIpAddress);
     }
 
-    /**
-     * Describes the Ocean Kubernetes Auto Scaler.
-     * 
-     */
     @Import(name="autoscaler")
     private @Nullable Output<OceanAutoscalerArgs> autoscaler;
 
-    /**
-     * @return Describes the Ocean Kubernetes Auto Scaler.
-     * 
-     */
     public Optional<Output<OceanAutoscalerArgs>> autoscaler() {
         return Optional.ofNullable(this.autoscaler);
     }
@@ -381,6 +374,21 @@ public final class OceanArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Specify which resources should be tagged with Virtual Node Group tags or Ocean tags. If tags are set on the VNG, the resources will be tagged with the VNG tags; otherwise, they will be tagged with the Ocean tags.
+     * 
+     */
+    @Import(name="resourceTagSpecifications")
+    private @Nullable Output<List<OceanResourceTagSpecificationArgs>> resourceTagSpecifications;
+
+    /**
+     * @return Specify which resources should be tagged with Virtual Node Group tags or Ocean tags. If tags are set on the VNG, the resources will be tagged with the VNG tags; otherwise, they will be tagged with the Ocean tags.
+     * 
+     */
+    public Optional<Output<List<OceanResourceTagSpecificationArgs>>> resourceTagSpecifications() {
+        return Optional.ofNullable(this.resourceTagSpecifications);
+    }
+
+    /**
      * The size (in Gb) to allocate for the root volume. Minimum `20`.
      * 
      */
@@ -588,6 +596,7 @@ public final class OceanArgs extends com.pulumi.resources.ResourceArgs {
         this.monitoring = $.monitoring;
         this.name = $.name;
         this.region = $.region;
+        this.resourceTagSpecifications = $.resourceTagSpecifications;
         this.rootVolumeSize = $.rootVolumeSize;
         this.scheduledTasks = $.scheduledTasks;
         this.securityGroups = $.securityGroups;
@@ -663,23 +672,11 @@ public final class OceanArgs extends com.pulumi.resources.ResourceArgs {
             return associatePublicIpAddress(Output.of(associatePublicIpAddress));
         }
 
-        /**
-         * @param autoscaler Describes the Ocean Kubernetes Auto Scaler.
-         * 
-         * @return builder
-         * 
-         */
         public Builder autoscaler(@Nullable Output<OceanAutoscalerArgs> autoscaler) {
             $.autoscaler = autoscaler;
             return this;
         }
 
-        /**
-         * @param autoscaler Describes the Ocean Kubernetes Auto Scaler.
-         * 
-         * @return builder
-         * 
-         */
         public Builder autoscaler(OceanAutoscalerArgs autoscaler) {
             return autoscaler(Output.of(autoscaler));
         }
@@ -1145,6 +1142,37 @@ public final class OceanArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder region(String region) {
             return region(Output.of(region));
+        }
+
+        /**
+         * @param resourceTagSpecifications Specify which resources should be tagged with Virtual Node Group tags or Ocean tags. If tags are set on the VNG, the resources will be tagged with the VNG tags; otherwise, they will be tagged with the Ocean tags.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceTagSpecifications(@Nullable Output<List<OceanResourceTagSpecificationArgs>> resourceTagSpecifications) {
+            $.resourceTagSpecifications = resourceTagSpecifications;
+            return this;
+        }
+
+        /**
+         * @param resourceTagSpecifications Specify which resources should be tagged with Virtual Node Group tags or Ocean tags. If tags are set on the VNG, the resources will be tagged with the VNG tags; otherwise, they will be tagged with the Ocean tags.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceTagSpecifications(List<OceanResourceTagSpecificationArgs> resourceTagSpecifications) {
+            return resourceTagSpecifications(Output.of(resourceTagSpecifications));
+        }
+
+        /**
+         * @param resourceTagSpecifications Specify which resources should be tagged with Virtual Node Group tags or Ocean tags. If tags are set on the VNG, the resources will be tagged with the VNG tags; otherwise, they will be tagged with the Ocean tags.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceTagSpecifications(OceanResourceTagSpecificationArgs... resourceTagSpecifications) {
+            return resourceTagSpecifications(List.of(resourceTagSpecifications));
         }
 
         /**
