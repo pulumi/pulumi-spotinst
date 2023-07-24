@@ -1951,6 +1951,15 @@ export namespace aws {
         volumeType?: pulumi.Input<string>;
     }
 
+    export interface ManagedInstanceDelete {
+        amiBackupShouldDeleteImages?: pulumi.Input<boolean>;
+        deallocationConfigShouldDeleteImages?: pulumi.Input<boolean>;
+        shouldDeleteNetworkInterfaces?: pulumi.Input<boolean>;
+        shouldDeleteSnapshots?: pulumi.Input<boolean>;
+        shouldDeleteVolumes?: pulumi.Input<boolean>;
+        shouldTerminateInstance?: pulumi.Input<boolean>;
+    }
+
     export interface ManagedInstanceIntegrationRoute53 {
         domains: pulumi.Input<pulumi.Input<inputs.aws.ManagedInstanceIntegrationRoute53Domain>[]>;
     }

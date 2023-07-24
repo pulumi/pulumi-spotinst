@@ -31,6 +31,7 @@ import * as utilities from "./utilities";
  * * `customData` - (Optional) This value will hold the YAML in base64 and will be executed upon VM launch.
  * * `shutdownScript` - (Optional) Shutdown script for the stateful node. Value should be passed as a string encoded at Base64 only.
  * * `userData` - (Optional) Define a set of scripts or other metadata that's inserted to an Azure virtual machine at provision time. (Base64 encoded)
+ * * `vmName` - (Optional) Set a VM name that will be persisted throughout the entire node lifecycle.
  *
  * <a id="bootDiagnostics"></a>
  * ## Boot Diagnostics
@@ -295,6 +296,7 @@ export class StatefulNodeAzure extends pulumi.CustomResource {
     public readonly tags!: pulumi.Output<outputs.StatefulNodeAzureTag[]>;
     public readonly updateStates!: pulumi.Output<outputs.StatefulNodeAzureUpdateState[] | undefined>;
     public readonly userData!: pulumi.Output<string>;
+    public readonly vmName!: pulumi.Output<string | undefined>;
     public readonly zones!: pulumi.Output<string[] | undefined>;
 
     /**
@@ -348,6 +350,7 @@ export class StatefulNodeAzure extends pulumi.CustomResource {
             resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["updateStates"] = state ? state.updateStates : undefined;
             resourceInputs["userData"] = state ? state.userData : undefined;
+            resourceInputs["vmName"] = state ? state.vmName : undefined;
             resourceInputs["zones"] = state ? state.zones : undefined;
         } else {
             const args = argsOrState as StatefulNodeAzureArgs | undefined;
@@ -425,6 +428,7 @@ export class StatefulNodeAzure extends pulumi.CustomResource {
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["updateStates"] = args ? args.updateStates : undefined;
             resourceInputs["userData"] = args ? args.userData : undefined;
+            resourceInputs["vmName"] = args ? args.vmName : undefined;
             resourceInputs["zones"] = args ? args.zones : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -474,6 +478,7 @@ export interface StatefulNodeAzureState {
     tags?: pulumi.Input<pulumi.Input<inputs.StatefulNodeAzureTag>[]>;
     updateStates?: pulumi.Input<pulumi.Input<inputs.StatefulNodeAzureUpdateState>[]>;
     userData?: pulumi.Input<string>;
+    vmName?: pulumi.Input<string>;
     zones?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
@@ -519,5 +524,6 @@ export interface StatefulNodeAzureArgs {
     tags?: pulumi.Input<pulumi.Input<inputs.StatefulNodeAzureTag>[]>;
     updateStates?: pulumi.Input<pulumi.Input<inputs.StatefulNodeAzureUpdateState>[]>;
     userData?: pulumi.Input<string>;
+    vmName?: pulumi.Input<string>;
     zones?: pulumi.Input<pulumi.Input<string>[]>;
 }

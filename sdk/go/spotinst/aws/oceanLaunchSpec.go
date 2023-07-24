@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -283,6 +284,7 @@ func NewOceanLaunchSpec(ctx *pulumi.Context,
 	if args.OceanId == nil {
 		return nil, errors.New("invalid value for required argument 'OceanId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource OceanLaunchSpec
 	err := ctx.RegisterResource("spotinst:aws/oceanLaunchSpec:OceanLaunchSpec", name, args, &resource, opts...)
 	if err != nil {

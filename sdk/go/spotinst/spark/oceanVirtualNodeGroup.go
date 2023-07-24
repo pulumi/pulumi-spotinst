@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -63,6 +64,7 @@ func NewOceanVirtualNodeGroup(ctx *pulumi.Context,
 	if args.VirtualNodeGroupId == nil {
 		return nil, errors.New("invalid value for required argument 'VirtualNodeGroupId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource OceanVirtualNodeGroup
 	err := ctx.RegisterResource("spotinst:spark/oceanVirtualNodeGroup:OceanVirtualNodeGroup", name, args, &resource, opts...)
 	if err != nil {

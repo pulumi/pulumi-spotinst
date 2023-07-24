@@ -92,6 +92,7 @@ __all__ = [
     'ElastigroupUpdatePolicyRollConfigStrategyOnFailure',
     'ManagedInstanceBlockDeviceMapping',
     'ManagedInstanceBlockDeviceMappingEbs',
+    'ManagedInstanceDelete',
     'ManagedInstanceIntegrationRoute53',
     'ManagedInstanceIntegrationRoute53Domain',
     'ManagedInstanceIntegrationRoute53DomainRecordSet',
@@ -6203,6 +6204,86 @@ class ManagedInstanceBlockDeviceMappingEbs(dict):
     @pulumi.getter(name="volumeType")
     def volume_type(self) -> Optional[str]:
         return pulumi.get(self, "volume_type")
+
+
+@pulumi.output_type
+class ManagedInstanceDelete(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "amiBackupShouldDeleteImages":
+            suggest = "ami_backup_should_delete_images"
+        elif key == "deallocationConfigShouldDeleteImages":
+            suggest = "deallocation_config_should_delete_images"
+        elif key == "shouldDeleteNetworkInterfaces":
+            suggest = "should_delete_network_interfaces"
+        elif key == "shouldDeleteSnapshots":
+            suggest = "should_delete_snapshots"
+        elif key == "shouldDeleteVolumes":
+            suggest = "should_delete_volumes"
+        elif key == "shouldTerminateInstance":
+            suggest = "should_terminate_instance"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ManagedInstanceDelete. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ManagedInstanceDelete.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ManagedInstanceDelete.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ami_backup_should_delete_images: Optional[bool] = None,
+                 deallocation_config_should_delete_images: Optional[bool] = None,
+                 should_delete_network_interfaces: Optional[bool] = None,
+                 should_delete_snapshots: Optional[bool] = None,
+                 should_delete_volumes: Optional[bool] = None,
+                 should_terminate_instance: Optional[bool] = None):
+        if ami_backup_should_delete_images is not None:
+            pulumi.set(__self__, "ami_backup_should_delete_images", ami_backup_should_delete_images)
+        if deallocation_config_should_delete_images is not None:
+            pulumi.set(__self__, "deallocation_config_should_delete_images", deallocation_config_should_delete_images)
+        if should_delete_network_interfaces is not None:
+            pulumi.set(__self__, "should_delete_network_interfaces", should_delete_network_interfaces)
+        if should_delete_snapshots is not None:
+            pulumi.set(__self__, "should_delete_snapshots", should_delete_snapshots)
+        if should_delete_volumes is not None:
+            pulumi.set(__self__, "should_delete_volumes", should_delete_volumes)
+        if should_terminate_instance is not None:
+            pulumi.set(__self__, "should_terminate_instance", should_terminate_instance)
+
+    @property
+    @pulumi.getter(name="amiBackupShouldDeleteImages")
+    def ami_backup_should_delete_images(self) -> Optional[bool]:
+        return pulumi.get(self, "ami_backup_should_delete_images")
+
+    @property
+    @pulumi.getter(name="deallocationConfigShouldDeleteImages")
+    def deallocation_config_should_delete_images(self) -> Optional[bool]:
+        return pulumi.get(self, "deallocation_config_should_delete_images")
+
+    @property
+    @pulumi.getter(name="shouldDeleteNetworkInterfaces")
+    def should_delete_network_interfaces(self) -> Optional[bool]:
+        return pulumi.get(self, "should_delete_network_interfaces")
+
+    @property
+    @pulumi.getter(name="shouldDeleteSnapshots")
+    def should_delete_snapshots(self) -> Optional[bool]:
+        return pulumi.get(self, "should_delete_snapshots")
+
+    @property
+    @pulumi.getter(name="shouldDeleteVolumes")
+    def should_delete_volumes(self) -> Optional[bool]:
+        return pulumi.get(self, "should_delete_volumes")
+
+    @property
+    @pulumi.getter(name="shouldTerminateInstance")
+    def should_terminate_instance(self) -> Optional[bool]:
+        return pulumi.get(self, "should_terminate_instance")
 
 
 @pulumi.output_type

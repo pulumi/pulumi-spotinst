@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -216,6 +217,7 @@ func NewOceanImport(ctx *pulumi.Context,
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource OceanImport
 	err := ctx.RegisterResource("spotinst:gke/oceanImport:OceanImport", name, args, &resource, opts...)
 	if err != nil {

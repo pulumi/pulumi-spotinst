@@ -26,6 +26,7 @@ class ManagedInstanceArgs:
                  block_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedInstanceBlockDeviceMappingArgs']]]] = None,
                  block_devices_mode: Optional[pulumi.Input[str]] = None,
                  cpu_credits: Optional[pulumi.Input[str]] = None,
+                 deletes: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedInstanceDeleteArgs']]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  draining_timeout: Optional[pulumi.Input[int]] = None,
                  ebs_optimized: Optional[pulumi.Input[bool]] = None,
@@ -77,6 +78,8 @@ class ManagedInstanceArgs:
             pulumi.set(__self__, "block_devices_mode", block_devices_mode)
         if cpu_credits is not None:
             pulumi.set(__self__, "cpu_credits", cpu_credits)
+        if deletes is not None:
+            pulumi.set(__self__, "deletes", deletes)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if draining_timeout is not None:
@@ -235,6 +238,15 @@ class ManagedInstanceArgs:
     @cpu_credits.setter
     def cpu_credits(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "cpu_credits", value)
+
+    @property
+    @pulumi.getter
+    def deletes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ManagedInstanceDeleteArgs']]]]:
+        return pulumi.get(self, "deletes")
+
+    @deletes.setter
+    def deletes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedInstanceDeleteArgs']]]]):
+        pulumi.set(self, "deletes", value)
 
     @property
     @pulumi.getter
@@ -550,6 +562,7 @@ class _ManagedInstanceState:
                  block_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedInstanceBlockDeviceMappingArgs']]]] = None,
                  block_devices_mode: Optional[pulumi.Input[str]] = None,
                  cpu_credits: Optional[pulumi.Input[str]] = None,
+                 deletes: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedInstanceDeleteArgs']]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  draining_timeout: Optional[pulumi.Input[int]] = None,
                  ebs_optimized: Optional[pulumi.Input[bool]] = None,
@@ -601,6 +614,8 @@ class _ManagedInstanceState:
             pulumi.set(__self__, "block_devices_mode", block_devices_mode)
         if cpu_credits is not None:
             pulumi.set(__self__, "cpu_credits", cpu_credits)
+        if deletes is not None:
+            pulumi.set(__self__, "deletes", deletes)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if draining_timeout is not None:
@@ -717,6 +732,15 @@ class _ManagedInstanceState:
     @cpu_credits.setter
     def cpu_credits(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "cpu_credits", value)
+
+    @property
+    @pulumi.getter
+    def deletes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ManagedInstanceDeleteArgs']]]]:
+        return pulumi.get(self, "deletes")
+
+    @deletes.setter
+    def deletes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedInstanceDeleteArgs']]]]):
+        pulumi.set(self, "deletes", value)
 
     @property
     @pulumi.getter
@@ -1088,6 +1112,7 @@ class ManagedInstance(pulumi.CustomResource):
                  block_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ManagedInstanceBlockDeviceMappingArgs']]]]] = None,
                  block_devices_mode: Optional[pulumi.Input[str]] = None,
                  cpu_credits: Optional[pulumi.Input[str]] = None,
+                 deletes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ManagedInstanceDeleteArgs']]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  draining_timeout: Optional[pulumi.Input[int]] = None,
                  ebs_optimized: Optional[pulumi.Input[bool]] = None,
@@ -1161,6 +1186,7 @@ class ManagedInstance(pulumi.CustomResource):
                  block_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ManagedInstanceBlockDeviceMappingArgs']]]]] = None,
                  block_devices_mode: Optional[pulumi.Input[str]] = None,
                  cpu_credits: Optional[pulumi.Input[str]] = None,
+                 deletes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ManagedInstanceDeleteArgs']]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  draining_timeout: Optional[pulumi.Input[int]] = None,
                  ebs_optimized: Optional[pulumi.Input[bool]] = None,
@@ -1214,6 +1240,7 @@ class ManagedInstance(pulumi.CustomResource):
             __props__.__dict__["block_device_mappings"] = block_device_mappings
             __props__.__dict__["block_devices_mode"] = block_devices_mode
             __props__.__dict__["cpu_credits"] = cpu_credits
+            __props__.__dict__["deletes"] = deletes
             __props__.__dict__["description"] = description
             __props__.__dict__["draining_timeout"] = draining_timeout
             __props__.__dict__["ebs_optimized"] = ebs_optimized
@@ -1280,6 +1307,7 @@ class ManagedInstance(pulumi.CustomResource):
             block_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ManagedInstanceBlockDeviceMappingArgs']]]]] = None,
             block_devices_mode: Optional[pulumi.Input[str]] = None,
             cpu_credits: Optional[pulumi.Input[str]] = None,
+            deletes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ManagedInstanceDeleteArgs']]]]] = None,
             description: Optional[pulumi.Input[str]] = None,
             draining_timeout: Optional[pulumi.Input[int]] = None,
             ebs_optimized: Optional[pulumi.Input[bool]] = None,
@@ -1336,6 +1364,7 @@ class ManagedInstance(pulumi.CustomResource):
         __props__.__dict__["block_device_mappings"] = block_device_mappings
         __props__.__dict__["block_devices_mode"] = block_devices_mode
         __props__.__dict__["cpu_credits"] = cpu_credits
+        __props__.__dict__["deletes"] = deletes
         __props__.__dict__["description"] = description
         __props__.__dict__["draining_timeout"] = draining_timeout
         __props__.__dict__["ebs_optimized"] = ebs_optimized
@@ -1397,6 +1426,11 @@ class ManagedInstance(pulumi.CustomResource):
     @pulumi.getter(name="cpuCredits")
     def cpu_credits(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "cpu_credits")
+
+    @property
+    @pulumi.getter
+    def deletes(self) -> pulumi.Output[Optional[Sequence['outputs.ManagedInstanceDelete']]]:
+        return pulumi.get(self, "deletes")
 
     @property
     @pulumi.getter

@@ -4,9 +4,12 @@
 package config
 
 import (
+	"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 )
+
+var _ = internal.GetEnvOrDefault
 
 // Spotinst Account ID
 func GetAccount(ctx *pulumi.Context) string {

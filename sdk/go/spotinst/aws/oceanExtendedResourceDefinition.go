@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -61,6 +62,7 @@ func NewOceanExtendedResourceDefinition(ctx *pulumi.Context,
 	if args.ResourceMapping == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceMapping'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource OceanExtendedResourceDefinition
 	err := ctx.RegisterResource("spotinst:aws/oceanExtendedResourceDefinition:OceanExtendedResourceDefinition", name, args, &resource, opts...)
 	if err != nil {

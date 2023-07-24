@@ -7,8 +7,11 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
+
+var _ = internal.GetEnvOrDefault
 
 type BeanstalkDeploymentPreferences struct {
 	// Should roll perform automatically
@@ -14421,6 +14424,130 @@ func (o ManagedInstanceBlockDeviceMappingEbsPtrOutput) VolumeType() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
+type ManagedInstanceDelete struct {
+	AmiBackupShouldDeleteImages          *bool `pulumi:"amiBackupShouldDeleteImages"`
+	DeallocationConfigShouldDeleteImages *bool `pulumi:"deallocationConfigShouldDeleteImages"`
+	ShouldDeleteNetworkInterfaces        *bool `pulumi:"shouldDeleteNetworkInterfaces"`
+	ShouldDeleteSnapshots                *bool `pulumi:"shouldDeleteSnapshots"`
+	ShouldDeleteVolumes                  *bool `pulumi:"shouldDeleteVolumes"`
+	ShouldTerminateInstance              *bool `pulumi:"shouldTerminateInstance"`
+}
+
+// ManagedInstanceDeleteInput is an input type that accepts ManagedInstanceDeleteArgs and ManagedInstanceDeleteOutput values.
+// You can construct a concrete instance of `ManagedInstanceDeleteInput` via:
+//
+//	ManagedInstanceDeleteArgs{...}
+type ManagedInstanceDeleteInput interface {
+	pulumi.Input
+
+	ToManagedInstanceDeleteOutput() ManagedInstanceDeleteOutput
+	ToManagedInstanceDeleteOutputWithContext(context.Context) ManagedInstanceDeleteOutput
+}
+
+type ManagedInstanceDeleteArgs struct {
+	AmiBackupShouldDeleteImages          pulumi.BoolPtrInput `pulumi:"amiBackupShouldDeleteImages"`
+	DeallocationConfigShouldDeleteImages pulumi.BoolPtrInput `pulumi:"deallocationConfigShouldDeleteImages"`
+	ShouldDeleteNetworkInterfaces        pulumi.BoolPtrInput `pulumi:"shouldDeleteNetworkInterfaces"`
+	ShouldDeleteSnapshots                pulumi.BoolPtrInput `pulumi:"shouldDeleteSnapshots"`
+	ShouldDeleteVolumes                  pulumi.BoolPtrInput `pulumi:"shouldDeleteVolumes"`
+	ShouldTerminateInstance              pulumi.BoolPtrInput `pulumi:"shouldTerminateInstance"`
+}
+
+func (ManagedInstanceDeleteArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedInstanceDelete)(nil)).Elem()
+}
+
+func (i ManagedInstanceDeleteArgs) ToManagedInstanceDeleteOutput() ManagedInstanceDeleteOutput {
+	return i.ToManagedInstanceDeleteOutputWithContext(context.Background())
+}
+
+func (i ManagedInstanceDeleteArgs) ToManagedInstanceDeleteOutputWithContext(ctx context.Context) ManagedInstanceDeleteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedInstanceDeleteOutput)
+}
+
+// ManagedInstanceDeleteArrayInput is an input type that accepts ManagedInstanceDeleteArray and ManagedInstanceDeleteArrayOutput values.
+// You can construct a concrete instance of `ManagedInstanceDeleteArrayInput` via:
+//
+//	ManagedInstanceDeleteArray{ ManagedInstanceDeleteArgs{...} }
+type ManagedInstanceDeleteArrayInput interface {
+	pulumi.Input
+
+	ToManagedInstanceDeleteArrayOutput() ManagedInstanceDeleteArrayOutput
+	ToManagedInstanceDeleteArrayOutputWithContext(context.Context) ManagedInstanceDeleteArrayOutput
+}
+
+type ManagedInstanceDeleteArray []ManagedInstanceDeleteInput
+
+func (ManagedInstanceDeleteArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ManagedInstanceDelete)(nil)).Elem()
+}
+
+func (i ManagedInstanceDeleteArray) ToManagedInstanceDeleteArrayOutput() ManagedInstanceDeleteArrayOutput {
+	return i.ToManagedInstanceDeleteArrayOutputWithContext(context.Background())
+}
+
+func (i ManagedInstanceDeleteArray) ToManagedInstanceDeleteArrayOutputWithContext(ctx context.Context) ManagedInstanceDeleteArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedInstanceDeleteArrayOutput)
+}
+
+type ManagedInstanceDeleteOutput struct{ *pulumi.OutputState }
+
+func (ManagedInstanceDeleteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedInstanceDelete)(nil)).Elem()
+}
+
+func (o ManagedInstanceDeleteOutput) ToManagedInstanceDeleteOutput() ManagedInstanceDeleteOutput {
+	return o
+}
+
+func (o ManagedInstanceDeleteOutput) ToManagedInstanceDeleteOutputWithContext(ctx context.Context) ManagedInstanceDeleteOutput {
+	return o
+}
+
+func (o ManagedInstanceDeleteOutput) AmiBackupShouldDeleteImages() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ManagedInstanceDelete) *bool { return v.AmiBackupShouldDeleteImages }).(pulumi.BoolPtrOutput)
+}
+
+func (o ManagedInstanceDeleteOutput) DeallocationConfigShouldDeleteImages() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ManagedInstanceDelete) *bool { return v.DeallocationConfigShouldDeleteImages }).(pulumi.BoolPtrOutput)
+}
+
+func (o ManagedInstanceDeleteOutput) ShouldDeleteNetworkInterfaces() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ManagedInstanceDelete) *bool { return v.ShouldDeleteNetworkInterfaces }).(pulumi.BoolPtrOutput)
+}
+
+func (o ManagedInstanceDeleteOutput) ShouldDeleteSnapshots() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ManagedInstanceDelete) *bool { return v.ShouldDeleteSnapshots }).(pulumi.BoolPtrOutput)
+}
+
+func (o ManagedInstanceDeleteOutput) ShouldDeleteVolumes() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ManagedInstanceDelete) *bool { return v.ShouldDeleteVolumes }).(pulumi.BoolPtrOutput)
+}
+
+func (o ManagedInstanceDeleteOutput) ShouldTerminateInstance() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ManagedInstanceDelete) *bool { return v.ShouldTerminateInstance }).(pulumi.BoolPtrOutput)
+}
+
+type ManagedInstanceDeleteArrayOutput struct{ *pulumi.OutputState }
+
+func (ManagedInstanceDeleteArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ManagedInstanceDelete)(nil)).Elem()
+}
+
+func (o ManagedInstanceDeleteArrayOutput) ToManagedInstanceDeleteArrayOutput() ManagedInstanceDeleteArrayOutput {
+	return o
+}
+
+func (o ManagedInstanceDeleteArrayOutput) ToManagedInstanceDeleteArrayOutputWithContext(ctx context.Context) ManagedInstanceDeleteArrayOutput {
+	return o
+}
+
+func (o ManagedInstanceDeleteArrayOutput) Index(i pulumi.IntInput) ManagedInstanceDeleteOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ManagedInstanceDelete {
+		return vs[0].([]ManagedInstanceDelete)[vs[1].(int)]
+	}).(ManagedInstanceDeleteOutput)
+}
+
 type ManagedInstanceIntegrationRoute53 struct {
 	Domains []ManagedInstanceIntegrationRoute53Domain `pulumi:"domains"`
 }
@@ -24809,6 +24936,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedInstanceBlockDeviceMappingArrayInput)(nil)).Elem(), ManagedInstanceBlockDeviceMappingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedInstanceBlockDeviceMappingEbsInput)(nil)).Elem(), ManagedInstanceBlockDeviceMappingEbsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedInstanceBlockDeviceMappingEbsPtrInput)(nil)).Elem(), ManagedInstanceBlockDeviceMappingEbsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedInstanceDeleteInput)(nil)).Elem(), ManagedInstanceDeleteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedInstanceDeleteArrayInput)(nil)).Elem(), ManagedInstanceDeleteArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedInstanceIntegrationRoute53Input)(nil)).Elem(), ManagedInstanceIntegrationRoute53Args{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedInstanceIntegrationRoute53PtrInput)(nil)).Elem(), ManagedInstanceIntegrationRoute53Args{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedInstanceIntegrationRoute53DomainInput)(nil)).Elem(), ManagedInstanceIntegrationRoute53DomainArgs{})
@@ -25111,6 +25240,8 @@ func init() {
 	pulumi.RegisterOutputType(ManagedInstanceBlockDeviceMappingArrayOutput{})
 	pulumi.RegisterOutputType(ManagedInstanceBlockDeviceMappingEbsOutput{})
 	pulumi.RegisterOutputType(ManagedInstanceBlockDeviceMappingEbsPtrOutput{})
+	pulumi.RegisterOutputType(ManagedInstanceDeleteOutput{})
+	pulumi.RegisterOutputType(ManagedInstanceDeleteArrayOutput{})
 	pulumi.RegisterOutputType(ManagedInstanceIntegrationRoute53Output{})
 	pulumi.RegisterOutputType(ManagedInstanceIntegrationRoute53PtrOutput{})
 	pulumi.RegisterOutputType(ManagedInstanceIntegrationRoute53DomainOutput{})

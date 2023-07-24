@@ -7,8 +7,11 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
+
+var _ = internal.GetEnvOrDefault
 
 type OceanAutoscaler struct {
 	// The auto-headroom percentage. Set a number between 0-200 to control the headroom % of the cluster. Relevant when `isAutoConfig`= true.

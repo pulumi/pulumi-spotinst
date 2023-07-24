@@ -7,8 +7,11 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
+
+var _ = internal.GetEnvOrDefault
 
 type ElastigroupBackendService struct {
 	// Sets which location the backend services will be active. Valid values: `regional`, `global`.

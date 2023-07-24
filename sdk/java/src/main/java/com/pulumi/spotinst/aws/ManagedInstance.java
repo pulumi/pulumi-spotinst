@@ -11,6 +11,7 @@ import com.pulumi.spotinst.Utilities;
 import com.pulumi.spotinst.aws.ManagedInstanceArgs;
 import com.pulumi.spotinst.aws.inputs.ManagedInstanceState;
 import com.pulumi.spotinst.aws.outputs.ManagedInstanceBlockDeviceMapping;
+import com.pulumi.spotinst.aws.outputs.ManagedInstanceDelete;
 import com.pulumi.spotinst.aws.outputs.ManagedInstanceIntegrationRoute53;
 import com.pulumi.spotinst.aws.outputs.ManagedInstanceLoadBalancer;
 import com.pulumi.spotinst.aws.outputs.ManagedInstanceManagedInstanceAction;
@@ -51,6 +52,12 @@ public class ManagedInstance extends com.pulumi.resources.CustomResource {
 
     public Output<Optional<String>> cpuCredits() {
         return Codegen.optional(this.cpuCredits);
+    }
+    @Export(name="deletes", type=List.class, parameters={ManagedInstanceDelete.class})
+    private Output</* @Nullable */ List<ManagedInstanceDelete>> deletes;
+
+    public Output<Optional<List<ManagedInstanceDelete>>> deletes() {
+        return Codegen.optional(this.deletes);
     }
     @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;

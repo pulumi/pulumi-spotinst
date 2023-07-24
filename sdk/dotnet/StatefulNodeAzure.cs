@@ -34,6 +34,7 @@ namespace Pulumi.SpotInst
     /// * `custom_data` - (Optional) This value will hold the YAML in base64 and will be executed upon VM launch.
     /// * `shutdown_script` - (Optional) Shutdown script for the stateful node. Value should be passed as a string encoded at Base64 only.
     /// * `user_data` - (Optional) Define a set of scripts or other metadata that's inserted to an Azure virtual machine at provision time. (Base64 encoded)
+    /// * `vm_name` - (Optional) Set a VM name that will be persisted throughout the entire node lifecycle.
     /// 
     /// &lt;a id="boot_diagnostics"&gt;&lt;/a&gt;
     /// ## Boot Diagnostics
@@ -349,6 +350,9 @@ namespace Pulumi.SpotInst
         [Output("userData")]
         public Output<string> UserData { get; private set; } = null!;
 
+        [Output("vmName")]
+        public Output<string?> VmName { get; private set; } = null!;
+
         [Output("zones")]
         public Output<ImmutableArray<string>> Zones { get; private set; } = null!;
 
@@ -597,6 +601,9 @@ namespace Pulumi.SpotInst
         [Input("userData")]
         public Input<string>? UserData { get; set; }
 
+        [Input("vmName")]
+        public Input<string>? VmName { get; set; }
+
         [Input("zones")]
         private InputList<string>? _zones;
         public InputList<string> Zones
@@ -811,6 +818,9 @@ namespace Pulumi.SpotInst
 
         [Input("userData")]
         public Input<string>? UserData { get; set; }
+
+        [Input("vmName")]
+        public Input<string>? VmName { get; set; }
 
         [Input("zones")]
         private InputList<string>? _zones;

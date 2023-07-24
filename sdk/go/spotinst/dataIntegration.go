@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -59,6 +60,7 @@ func NewDataIntegration(ctx *pulumi.Context,
 		args = &DataIntegrationArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource DataIntegration
 	err := ctx.RegisterResource("spotinst:index/dataIntegration:DataIntegration", name, args, &resource, opts...)
 	if err != nil {
