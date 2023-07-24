@@ -1890,6 +1890,9 @@
                     },
                     "block_devices_mode": {},
                     "cpu_credits": {},
+                    "delete": {
+                        "maxItemsOne": false
+                    },
                     "description": {},
                     "draining_timeout": {},
                     "ebs_optimized": {},
@@ -5078,6 +5081,14 @@
                 "volumeSize": "volume_size",
                 "volumeType": "volume_type"
             },
+            "spotinst:aws/ManagedInstanceDelete:ManagedInstanceDelete": {
+                "amiBackupShouldDeleteImages": "ami_backup_should_delete_images",
+                "deallocationConfigShouldDeleteImages": "deallocation_config_should_delete_images",
+                "shouldDeleteNetworkInterfaces": "should_delete_network_interfaces",
+                "shouldDeleteSnapshots": "should_delete_snapshots",
+                "shouldDeleteVolumes": "should_delete_volumes",
+                "shouldTerminateInstance": "should_terminate_instance"
+            },
             "spotinst:aws/ManagedInstanceIntegrationRoute53Domain:ManagedInstanceIntegrationRoute53Domain": {
                 "hostedZoneId": "hosted_zone_id",
                 "recordSetType": "record_set_type",
@@ -5448,6 +5459,7 @@
                 "blockDeviceMappings": "block_device_mappings",
                 "blockDevicesMode": "block_devices_mode",
                 "cpuCredits": "cpu_credits",
+                "deletes": "delete",
                 "drainingTimeout": "draining_timeout",
                 "ebsOptimized": "ebs_optimized",
                 "elasticIp": "elastic_ip",
@@ -6645,7 +6657,8 @@
                 "spotSizes": "spot_sizes",
                 "tags": "tag",
                 "updateStates": "update_state",
-                "userData": "user_data"
+                "userData": "user_data",
+                "vmName": "vm_name"
             },
             "spotinst:index/subscription:Subscription": {
                 "eventType": "event_type",
