@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -63,6 +64,7 @@ func NewElastigroupAzureV3(ctx *pulumi.Context,
 	if args.SpotSizes == nil {
 		return nil, errors.New("invalid value for required argument 'SpotSizes'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ElastigroupAzureV3
 	err := ctx.RegisterResource("spotinst:index/elastigroupAzureV3:ElastigroupAzureV3", name, args, &resource, opts...)
 	if err != nil {

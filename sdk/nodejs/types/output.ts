@@ -1952,6 +1952,15 @@ export namespace aws {
         volumeType: string;
     }
 
+    export interface ManagedInstanceDelete {
+        amiBackupShouldDeleteImages?: boolean;
+        deallocationConfigShouldDeleteImages?: boolean;
+        shouldDeleteNetworkInterfaces?: boolean;
+        shouldDeleteSnapshots?: boolean;
+        shouldDeleteVolumes?: boolean;
+        shouldTerminateInstance?: boolean;
+    }
+
     export interface ManagedInstanceIntegrationRoute53 {
         domains: outputs.aws.ManagedInstanceIntegrationRoute53Domain[];
     }

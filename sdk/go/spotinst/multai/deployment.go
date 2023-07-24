@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -23,6 +24,7 @@ func NewDeployment(ctx *pulumi.Context,
 		args = &DeploymentArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Deployment
 	err := ctx.RegisterResource("spotinst:multai/deployment:Deployment", name, args, &resource, opts...)
 	if err != nil {

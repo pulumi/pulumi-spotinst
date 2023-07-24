@@ -38,6 +38,7 @@ export class ManagedInstance extends pulumi.CustomResource {
     public readonly blockDeviceMappings!: pulumi.Output<outputs.aws.ManagedInstanceBlockDeviceMapping[] | undefined>;
     public readonly blockDevicesMode!: pulumi.Output<string | undefined>;
     public readonly cpuCredits!: pulumi.Output<string | undefined>;
+    public readonly deletes!: pulumi.Output<outputs.aws.ManagedInstanceDelete[] | undefined>;
     public readonly description!: pulumi.Output<string | undefined>;
     public readonly drainingTimeout!: pulumi.Output<number | undefined>;
     public readonly ebsOptimized!: pulumi.Output<boolean>;
@@ -96,6 +97,7 @@ export class ManagedInstance extends pulumi.CustomResource {
             resourceInputs["blockDeviceMappings"] = state ? state.blockDeviceMappings : undefined;
             resourceInputs["blockDevicesMode"] = state ? state.blockDevicesMode : undefined;
             resourceInputs["cpuCredits"] = state ? state.cpuCredits : undefined;
+            resourceInputs["deletes"] = state ? state.deletes : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["drainingTimeout"] = state ? state.drainingTimeout : undefined;
             resourceInputs["ebsOptimized"] = state ? state.ebsOptimized : undefined;
@@ -160,6 +162,7 @@ export class ManagedInstance extends pulumi.CustomResource {
             resourceInputs["blockDeviceMappings"] = args ? args.blockDeviceMappings : undefined;
             resourceInputs["blockDevicesMode"] = args ? args.blockDevicesMode : undefined;
             resourceInputs["cpuCredits"] = args ? args.cpuCredits : undefined;
+            resourceInputs["deletes"] = args ? args.deletes : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["drainingTimeout"] = args ? args.drainingTimeout : undefined;
             resourceInputs["ebsOptimized"] = args ? args.ebsOptimized : undefined;
@@ -214,6 +217,7 @@ export interface ManagedInstanceState {
     blockDeviceMappings?: pulumi.Input<pulumi.Input<inputs.aws.ManagedInstanceBlockDeviceMapping>[]>;
     blockDevicesMode?: pulumi.Input<string>;
     cpuCredits?: pulumi.Input<string>;
+    deletes?: pulumi.Input<pulumi.Input<inputs.aws.ManagedInstanceDelete>[]>;
     description?: pulumi.Input<string>;
     drainingTimeout?: pulumi.Input<number>;
     ebsOptimized?: pulumi.Input<boolean>;
@@ -264,6 +268,7 @@ export interface ManagedInstanceArgs {
     blockDeviceMappings?: pulumi.Input<pulumi.Input<inputs.aws.ManagedInstanceBlockDeviceMapping>[]>;
     blockDevicesMode?: pulumi.Input<string>;
     cpuCredits?: pulumi.Input<string>;
+    deletes?: pulumi.Input<pulumi.Input<inputs.aws.ManagedInstanceDelete>[]>;
     description?: pulumi.Input<string>;
     drainingTimeout?: pulumi.Input<number>;
     ebsOptimized?: pulumi.Input<boolean>;

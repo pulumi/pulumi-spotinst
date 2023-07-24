@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -35,6 +36,7 @@ import (
 // * `customData` - (Optional) This value will hold the YAML in base64 and will be executed upon VM launch.
 // * `shutdownScript` - (Optional) Shutdown script for the stateful node. Value should be passed as a string encoded at Base64 only.
 // * `userData` - (Optional) Define a set of scripts or other metadata that's inserted to an Azure virtual machine at provision time. (Base64 encoded)
+// * `vmName` - (Optional) Set a VM name that will be persisted throughout the entire node lifecycle.
 //
 // <a id="bootDiagnostics"></a>
 // ## Boot Diagnostics
@@ -273,6 +275,7 @@ type StatefulNodeAzure struct {
 	Tags                     StatefulNodeAzureTagArrayOutput                    `pulumi:"tags"`
 	UpdateStates             StatefulNodeAzureUpdateStateArrayOutput            `pulumi:"updateStates"`
 	UserData                 pulumi.StringOutput                                `pulumi:"userData"`
+	VmName                   pulumi.StringPtrOutput                             `pulumi:"vmName"`
 	Zones                    pulumi.StringArrayOutput                           `pulumi:"zones"`
 }
 
@@ -319,6 +322,7 @@ func NewStatefulNodeAzure(ctx *pulumi.Context,
 	if args.Strategy == nil {
 		return nil, errors.New("invalid value for required argument 'Strategy'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource StatefulNodeAzure
 	err := ctx.RegisterResource("spotinst:index/statefulNodeAzure:StatefulNodeAzure", name, args, &resource, opts...)
 	if err != nil {
@@ -379,6 +383,7 @@ type statefulNodeAzureState struct {
 	Tags                     []StatefulNodeAzureTag                    `pulumi:"tags"`
 	UpdateStates             []StatefulNodeAzureUpdateState            `pulumi:"updateStates"`
 	UserData                 *string                                   `pulumi:"userData"`
+	VmName                   *string                                   `pulumi:"vmName"`
 	Zones                    []string                                  `pulumi:"zones"`
 }
 
@@ -421,6 +426,7 @@ type StatefulNodeAzureState struct {
 	Tags                     StatefulNodeAzureTagArrayInput
 	UpdateStates             StatefulNodeAzureUpdateStateArrayInput
 	UserData                 pulumi.StringPtrInput
+	VmName                   pulumi.StringPtrInput
 	Zones                    pulumi.StringArrayInput
 }
 
@@ -467,6 +473,7 @@ type statefulNodeAzureArgs struct {
 	Tags                     []StatefulNodeAzureTag                    `pulumi:"tags"`
 	UpdateStates             []StatefulNodeAzureUpdateState            `pulumi:"updateStates"`
 	UserData                 *string                                   `pulumi:"userData"`
+	VmName                   *string                                   `pulumi:"vmName"`
 	Zones                    []string                                  `pulumi:"zones"`
 }
 
@@ -510,6 +517,7 @@ type StatefulNodeAzureArgs struct {
 	Tags                     StatefulNodeAzureTagArrayInput
 	UpdateStates             StatefulNodeAzureUpdateStateArrayInput
 	UserData                 pulumi.StringPtrInput
+	VmName                   pulumi.StringPtrInput
 	Zones                    pulumi.StringArrayInput
 }
 
@@ -752,6 +760,10 @@ func (o StatefulNodeAzureOutput) UpdateStates() StatefulNodeAzureUpdateStateArra
 
 func (o StatefulNodeAzureOutput) UserData() pulumi.StringOutput {
 	return o.ApplyT(func(v *StatefulNodeAzure) pulumi.StringOutput { return v.UserData }).(pulumi.StringOutput)
+}
+
+func (o StatefulNodeAzureOutput) VmName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StatefulNodeAzure) pulumi.StringPtrOutput { return v.VmName }).(pulumi.StringPtrOutput)
 }
 
 func (o StatefulNodeAzureOutput) Zones() pulumi.StringArrayOutput {

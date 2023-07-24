@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -121,6 +122,7 @@ func NewOcean(ctx *pulumi.Context,
 	if args.OceanClusterId == nil {
 		return nil, errors.New("invalid value for required argument 'OceanClusterId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Ocean
 	err := ctx.RegisterResource("spotinst:spark/ocean:Ocean", name, args, &resource, opts...)
 	if err != nil {

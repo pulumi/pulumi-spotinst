@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -59,6 +60,7 @@ func NewOceanNp(ctx *pulumi.Context,
 	if args.AksResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'AksResourceGroupName'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource OceanNp
 	err := ctx.RegisterResource("spotinst:azure/oceanNp:OceanNp", name, args, &resource, opts...)
 	if err != nil {

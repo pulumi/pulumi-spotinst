@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -75,6 +76,7 @@ func NewHealthCheck(ctx *pulumi.Context,
 	if args.ResourceId == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource HealthCheck
 	err := ctx.RegisterResource("spotinst:index/healthCheck:HealthCheck", name, args, &resource, opts...)
 	if err != nil {

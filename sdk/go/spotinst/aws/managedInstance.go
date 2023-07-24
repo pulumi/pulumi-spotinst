@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -18,6 +19,7 @@ type ManagedInstance struct {
 	BlockDeviceMappings       ManagedInstanceBlockDeviceMappingArrayOutput       `pulumi:"blockDeviceMappings"`
 	BlockDevicesMode          pulumi.StringPtrOutput                             `pulumi:"blockDevicesMode"`
 	CpuCredits                pulumi.StringPtrOutput                             `pulumi:"cpuCredits"`
+	Deletes                   ManagedInstanceDeleteArrayOutput                   `pulumi:"deletes"`
 	Description               pulumi.StringPtrOutput                             `pulumi:"description"`
 	DrainingTimeout           pulumi.IntPtrOutput                                `pulumi:"drainingTimeout"`
 	EbsOptimized              pulumi.BoolOutput                                  `pulumi:"ebsOptimized"`
@@ -85,6 +87,7 @@ func NewManagedInstance(ctx *pulumi.Context,
 	if args.VpcId == nil {
 		return nil, errors.New("invalid value for required argument 'VpcId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ManagedInstance
 	err := ctx.RegisterResource("spotinst:aws/managedInstance:ManagedInstance", name, args, &resource, opts...)
 	if err != nil {
@@ -111,6 +114,7 @@ type managedInstanceState struct {
 	BlockDeviceMappings       []ManagedInstanceBlockDeviceMapping       `pulumi:"blockDeviceMappings"`
 	BlockDevicesMode          *string                                   `pulumi:"blockDevicesMode"`
 	CpuCredits                *string                                   `pulumi:"cpuCredits"`
+	Deletes                   []ManagedInstanceDelete                   `pulumi:"deletes"`
 	Description               *string                                   `pulumi:"description"`
 	DrainingTimeout           *int                                      `pulumi:"drainingTimeout"`
 	EbsOptimized              *bool                                     `pulumi:"ebsOptimized"`
@@ -158,6 +162,7 @@ type ManagedInstanceState struct {
 	BlockDeviceMappings       ManagedInstanceBlockDeviceMappingArrayInput
 	BlockDevicesMode          pulumi.StringPtrInput
 	CpuCredits                pulumi.StringPtrInput
+	Deletes                   ManagedInstanceDeleteArrayInput
 	Description               pulumi.StringPtrInput
 	DrainingTimeout           pulumi.IntPtrInput
 	EbsOptimized              pulumi.BoolPtrInput
@@ -209,6 +214,7 @@ type managedInstanceArgs struct {
 	BlockDeviceMappings       []ManagedInstanceBlockDeviceMapping       `pulumi:"blockDeviceMappings"`
 	BlockDevicesMode          *string                                   `pulumi:"blockDevicesMode"`
 	CpuCredits                *string                                   `pulumi:"cpuCredits"`
+	Deletes                   []ManagedInstanceDelete                   `pulumi:"deletes"`
 	Description               *string                                   `pulumi:"description"`
 	DrainingTimeout           *int                                      `pulumi:"drainingTimeout"`
 	EbsOptimized              *bool                                     `pulumi:"ebsOptimized"`
@@ -257,6 +263,7 @@ type ManagedInstanceArgs struct {
 	BlockDeviceMappings       ManagedInstanceBlockDeviceMappingArrayInput
 	BlockDevicesMode          pulumi.StringPtrInput
 	CpuCredits                pulumi.StringPtrInput
+	Deletes                   ManagedInstanceDeleteArrayInput
 	Description               pulumi.StringPtrInput
 	DrainingTimeout           pulumi.IntPtrInput
 	EbsOptimized              pulumi.BoolPtrInput
@@ -400,6 +407,10 @@ func (o ManagedInstanceOutput) BlockDevicesMode() pulumi.StringPtrOutput {
 
 func (o ManagedInstanceOutput) CpuCredits() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ManagedInstance) pulumi.StringPtrOutput { return v.CpuCredits }).(pulumi.StringPtrOutput)
+}
+
+func (o ManagedInstanceOutput) Deletes() ManagedInstanceDeleteArrayOutput {
+	return o.ApplyT(func(v *ManagedInstance) ManagedInstanceDeleteArrayOutput { return v.Deletes }).(ManagedInstanceDeleteArrayOutput)
 }
 
 func (o ManagedInstanceOutput) Description() pulumi.StringPtrOutput {

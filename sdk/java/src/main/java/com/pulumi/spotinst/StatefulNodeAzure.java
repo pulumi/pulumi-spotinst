@@ -106,6 +106,7 @@ import javax.annotation.Nullable;
  *             .customData(&#34;&#34;)
  *             .shutdownScript(&#34;&#34;)
  *             .userData(&#34;&#34;)
+ *             .vmName(&#34;VMName&#34;)
  *             .bootDiagnostics(StatefulNodeAzureBootDiagnosticArgs.builder()
  *                 .isEnabled(true)
  *                 .storageUrl(&#34;https://.blob.core.windows.net/test&#34;)
@@ -275,6 +276,7 @@ import javax.annotation.Nullable;
  * * `custom_data` - (Optional) This value will hold the YAML in base64 and will be executed upon VM launch.
  * * `shutdown_script` - (Optional) Shutdown script for the stateful node. Value should be passed as a string encoded at Base64 only.
  * * `user_data` - (Optional) Define a set of scripts or other metadata that&#39;s inserted to an Azure virtual machine at provision time. (Base64 encoded)
+ * * `vm_name` - (Optional) Set a VM name that will be persisted throughout the entire node lifecycle.
  * 
  * &lt;a id=&#34;boot_diagnostics&#34;&gt;&lt;/a&gt;
  * ## Boot Diagnostics
@@ -703,6 +705,12 @@ public class StatefulNodeAzure extends com.pulumi.resources.CustomResource {
 
     public Output<String> userData() {
         return this.userData;
+    }
+    @Export(name="vmName", type=String.class, parameters={})
+    private Output</* @Nullable */ String> vmName;
+
+    public Output<Optional<String>> vmName() {
+        return Codegen.optional(this.vmName);
     }
     @Export(name="zones", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> zones;

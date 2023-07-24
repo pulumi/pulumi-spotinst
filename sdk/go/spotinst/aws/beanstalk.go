@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -122,6 +123,7 @@ func NewBeanstalk(ctx *pulumi.Context,
 	if args.Region == nil {
 		return nil, errors.New("invalid value for required argument 'Region'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Beanstalk
 	err := ctx.RegisterResource("spotinst:aws/beanstalk:Beanstalk", name, args, &resource, opts...)
 	if err != nil {

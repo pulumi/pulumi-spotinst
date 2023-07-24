@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -27,6 +28,7 @@ func NewBalancer(ctx *pulumi.Context,
 		args = &BalancerArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Balancer
 	err := ctx.RegisterResource("spotinst:multai/balancer:Balancer", name, args, &resource, opts...)
 	if err != nil {

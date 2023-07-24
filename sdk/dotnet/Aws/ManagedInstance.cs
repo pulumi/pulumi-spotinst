@@ -24,6 +24,9 @@ namespace Pulumi.SpotInst.Aws
         [Output("cpuCredits")]
         public Output<string?> CpuCredits { get; private set; } = null!;
 
+        [Output("deletes")]
+        public Output<ImmutableArray<Outputs.ManagedInstanceDelete>> Deletes { get; private set; } = null!;
+
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
@@ -206,6 +209,14 @@ namespace Pulumi.SpotInst.Aws
 
         [Input("cpuCredits")]
         public Input<string>? CpuCredits { get; set; }
+
+        [Input("deletes")]
+        private InputList<Inputs.ManagedInstanceDeleteArgs>? _deletes;
+        public InputList<Inputs.ManagedInstanceDeleteArgs> Deletes
+        {
+            get => _deletes ?? (_deletes = new InputList<Inputs.ManagedInstanceDeleteArgs>());
+            set => _deletes = value;
+        }
 
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -396,6 +407,14 @@ namespace Pulumi.SpotInst.Aws
 
         [Input("cpuCredits")]
         public Input<string>? CpuCredits { get; set; }
+
+        [Input("deletes")]
+        private InputList<Inputs.ManagedInstanceDeleteGetArgs>? _deletes;
+        public InputList<Inputs.ManagedInstanceDeleteGetArgs> Deletes
+        {
+            get => _deletes ?? (_deletes = new InputList<Inputs.ManagedInstanceDeleteGetArgs>());
+            set => _deletes = value;
+        }
 
         [Input("description")]
         public Input<string>? Description { get; set; }

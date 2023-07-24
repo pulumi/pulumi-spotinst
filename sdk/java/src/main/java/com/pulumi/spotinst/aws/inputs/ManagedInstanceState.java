@@ -6,6 +6,7 @@ package com.pulumi.spotinst.aws.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.spotinst.aws.inputs.ManagedInstanceBlockDeviceMappingArgs;
+import com.pulumi.spotinst.aws.inputs.ManagedInstanceDeleteArgs;
 import com.pulumi.spotinst.aws.inputs.ManagedInstanceIntegrationRoute53Args;
 import com.pulumi.spotinst.aws.inputs.ManagedInstanceLoadBalancerArgs;
 import com.pulumi.spotinst.aws.inputs.ManagedInstanceManagedInstanceActionArgs;
@@ -53,6 +54,13 @@ public final class ManagedInstanceState extends com.pulumi.resources.ResourceArg
 
     public Optional<Output<String>> cpuCredits() {
         return Optional.ofNullable(this.cpuCredits);
+    }
+
+    @Import(name="deletes")
+    private @Nullable Output<List<ManagedInstanceDeleteArgs>> deletes;
+
+    public Optional<Output<List<ManagedInstanceDeleteArgs>>> deletes() {
+        return Optional.ofNullable(this.deletes);
     }
 
     @Import(name="description")
@@ -342,6 +350,7 @@ public final class ManagedInstanceState extends com.pulumi.resources.ResourceArg
         this.blockDeviceMappings = $.blockDeviceMappings;
         this.blockDevicesMode = $.blockDevicesMode;
         this.cpuCredits = $.cpuCredits;
+        this.deletes = $.deletes;
         this.description = $.description;
         this.drainingTimeout = $.drainingTimeout;
         this.ebsOptimized = $.ebsOptimized;
@@ -440,6 +449,19 @@ public final class ManagedInstanceState extends com.pulumi.resources.ResourceArg
 
         public Builder cpuCredits(String cpuCredits) {
             return cpuCredits(Output.of(cpuCredits));
+        }
+
+        public Builder deletes(@Nullable Output<List<ManagedInstanceDeleteArgs>> deletes) {
+            $.deletes = deletes;
+            return this;
+        }
+
+        public Builder deletes(List<ManagedInstanceDeleteArgs> deletes) {
+            return deletes(Output.of(deletes));
+        }
+
+        public Builder deletes(ManagedInstanceDeleteArgs... deletes) {
+            return deletes(List.of(deletes));
         }
 
         public Builder description(@Nullable Output<String> description) {

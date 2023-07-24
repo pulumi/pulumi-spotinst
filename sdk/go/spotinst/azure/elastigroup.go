@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -172,6 +173,7 @@ func NewElastigroup(ctx *pulumi.Context,
 	if args.Strategy == nil {
 		return nil, errors.New("invalid value for required argument 'Strategy'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Elastigroup
 	err := ctx.RegisterResource("spotinst:azure/elastigroup:Elastigroup", name, args, &resource, opts...)
 	if err != nil {
