@@ -267,7 +267,7 @@ namespace Pulumi.SpotInst
         public Output<Outputs.StatefulNodeAzureHealth> Health { get; private set; } = null!;
 
         [Output("image")]
-        public Output<Outputs.StatefulNodeAzureImage> Image { get; private set; } = null!;
+        public Output<Outputs.StatefulNodeAzureImage?> Image { get; private set; } = null!;
 
         [Output("importVms")]
         public Output<ImmutableArray<Outputs.StatefulNodeAzureImportVm>> ImportVms { get; private set; } = null!;
@@ -276,7 +276,7 @@ namespace Pulumi.SpotInst
         public Output<ImmutableArray<Outputs.StatefulNodeAzureLoadBalancer>> LoadBalancers { get; private set; } = null!;
 
         [Output("login")]
-        public Output<Outputs.StatefulNodeAzureLogin> Login { get; private set; } = null!;
+        public Output<Outputs.StatefulNodeAzureLogin?> Login { get; private set; } = null!;
 
         [Output("managedServiceIdentities")]
         public Output<ImmutableArray<Outputs.StatefulNodeAzureManagedServiceIdentity>> ManagedServiceIdentities { get; private set; } = null!;
@@ -285,7 +285,7 @@ namespace Pulumi.SpotInst
         public Output<string> Name { get; private set; } = null!;
 
         [Output("network")]
-        public Output<Outputs.StatefulNodeAzureNetwork> Network { get; private set; } = null!;
+        public Output<Outputs.StatefulNodeAzureNetwork?> Network { get; private set; } = null!;
 
         [Output("odSizes")]
         public Output<ImmutableArray<string>> OdSizes { get; private set; } = null!;
@@ -462,8 +462,8 @@ namespace Pulumi.SpotInst
         [Input("health")]
         public Input<Inputs.StatefulNodeAzureHealthArgs>? Health { get; set; }
 
-        [Input("image", required: true)]
-        public Input<Inputs.StatefulNodeAzureImageArgs> Image { get; set; } = null!;
+        [Input("image")]
+        public Input<Inputs.StatefulNodeAzureImageArgs>? Image { get; set; }
 
         [Input("importVms")]
         private InputList<Inputs.StatefulNodeAzureImportVmArgs>? _importVms;
@@ -481,8 +481,8 @@ namespace Pulumi.SpotInst
             set => _loadBalancers = value;
         }
 
-        [Input("login", required: true)]
-        public Input<Inputs.StatefulNodeAzureLoginArgs> Login { get; set; } = null!;
+        [Input("login")]
+        public Input<Inputs.StatefulNodeAzureLoginArgs>? Login { get; set; }
 
         [Input("managedServiceIdentities")]
         private InputList<Inputs.StatefulNodeAzureManagedServiceIdentityArgs>? _managedServiceIdentities;
@@ -495,8 +495,8 @@ namespace Pulumi.SpotInst
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("network", required: true)]
-        public Input<Inputs.StatefulNodeAzureNetworkArgs> Network { get; set; } = null!;
+        [Input("network")]
+        public Input<Inputs.StatefulNodeAzureNetworkArgs>? Network { get; set; }
 
         [Input("odSizes", required: true)]
         private InputList<string>? _odSizes;

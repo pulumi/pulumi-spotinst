@@ -247,13 +247,13 @@ type StatefulNodeAzure struct {
 	DetachDataDisks          StatefulNodeAzureDetachDataDiskArrayOutput         `pulumi:"detachDataDisks"`
 	Extensions               StatefulNodeAzureExtensionArrayOutput              `pulumi:"extensions"`
 	Health                   StatefulNodeAzureHealthOutput                      `pulumi:"health"`
-	Image                    StatefulNodeAzureImageOutput                       `pulumi:"image"`
+	Image                    StatefulNodeAzureImagePtrOutput                    `pulumi:"image"`
 	ImportVms                StatefulNodeAzureImportVmArrayOutput               `pulumi:"importVms"`
 	LoadBalancers            StatefulNodeAzureLoadBalancerArrayOutput           `pulumi:"loadBalancers"`
-	Login                    StatefulNodeAzureLoginOutput                       `pulumi:"login"`
+	Login                    StatefulNodeAzureLoginPtrOutput                    `pulumi:"login"`
 	ManagedServiceIdentities StatefulNodeAzureManagedServiceIdentityArrayOutput `pulumi:"managedServiceIdentities"`
 	Name                     pulumi.StringOutput                                `pulumi:"name"`
-	Network                  StatefulNodeAzureNetworkOutput                     `pulumi:"network"`
+	Network                  StatefulNodeAzureNetworkPtrOutput                  `pulumi:"network"`
 	OdSizes                  pulumi.StringArrayOutput                           `pulumi:"odSizes"`
 	Os                       pulumi.StringOutput                                `pulumi:"os"`
 	OsDisk                   StatefulNodeAzureOsDiskOutput                      `pulumi:"osDisk"`
@@ -286,15 +286,6 @@ func NewStatefulNodeAzure(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Image == nil {
-		return nil, errors.New("invalid value for required argument 'Image'")
-	}
-	if args.Login == nil {
-		return nil, errors.New("invalid value for required argument 'Login'")
-	}
-	if args.Network == nil {
-		return nil, errors.New("invalid value for required argument 'Network'")
-	}
 	if args.OdSizes == nil {
 		return nil, errors.New("invalid value for required argument 'OdSizes'")
 	}
@@ -445,13 +436,13 @@ type statefulNodeAzureArgs struct {
 	DetachDataDisks          []StatefulNodeAzureDetachDataDisk         `pulumi:"detachDataDisks"`
 	Extensions               []StatefulNodeAzureExtension              `pulumi:"extensions"`
 	Health                   *StatefulNodeAzureHealth                  `pulumi:"health"`
-	Image                    StatefulNodeAzureImage                    `pulumi:"image"`
+	Image                    *StatefulNodeAzureImage                   `pulumi:"image"`
 	ImportVms                []StatefulNodeAzureImportVm               `pulumi:"importVms"`
 	LoadBalancers            []StatefulNodeAzureLoadBalancer           `pulumi:"loadBalancers"`
-	Login                    StatefulNodeAzureLogin                    `pulumi:"login"`
+	Login                    *StatefulNodeAzureLogin                   `pulumi:"login"`
 	ManagedServiceIdentities []StatefulNodeAzureManagedServiceIdentity `pulumi:"managedServiceIdentities"`
 	Name                     *string                                   `pulumi:"name"`
-	Network                  StatefulNodeAzureNetwork                  `pulumi:"network"`
+	Network                  *StatefulNodeAzureNetwork                 `pulumi:"network"`
 	OdSizes                  []string                                  `pulumi:"odSizes"`
 	Os                       string                                    `pulumi:"os"`
 	OsDisk                   *StatefulNodeAzureOsDisk                  `pulumi:"osDisk"`
@@ -489,13 +480,13 @@ type StatefulNodeAzureArgs struct {
 	DetachDataDisks          StatefulNodeAzureDetachDataDiskArrayInput
 	Extensions               StatefulNodeAzureExtensionArrayInput
 	Health                   StatefulNodeAzureHealthPtrInput
-	Image                    StatefulNodeAzureImageInput
+	Image                    StatefulNodeAzureImagePtrInput
 	ImportVms                StatefulNodeAzureImportVmArrayInput
 	LoadBalancers            StatefulNodeAzureLoadBalancerArrayInput
-	Login                    StatefulNodeAzureLoginInput
+	Login                    StatefulNodeAzureLoginPtrInput
 	ManagedServiceIdentities StatefulNodeAzureManagedServiceIdentityArrayInput
 	Name                     pulumi.StringPtrInput
-	Network                  StatefulNodeAzureNetworkInput
+	Network                  StatefulNodeAzureNetworkPtrInput
 	OdSizes                  pulumi.StringArrayInput
 	Os                       pulumi.StringInput
 	OsDisk                   StatefulNodeAzureOsDiskPtrInput
@@ -648,8 +639,8 @@ func (o StatefulNodeAzureOutput) Health() StatefulNodeAzureHealthOutput {
 	return o.ApplyT(func(v *StatefulNodeAzure) StatefulNodeAzureHealthOutput { return v.Health }).(StatefulNodeAzureHealthOutput)
 }
 
-func (o StatefulNodeAzureOutput) Image() StatefulNodeAzureImageOutput {
-	return o.ApplyT(func(v *StatefulNodeAzure) StatefulNodeAzureImageOutput { return v.Image }).(StatefulNodeAzureImageOutput)
+func (o StatefulNodeAzureOutput) Image() StatefulNodeAzureImagePtrOutput {
+	return o.ApplyT(func(v *StatefulNodeAzure) StatefulNodeAzureImagePtrOutput { return v.Image }).(StatefulNodeAzureImagePtrOutput)
 }
 
 func (o StatefulNodeAzureOutput) ImportVms() StatefulNodeAzureImportVmArrayOutput {
@@ -660,8 +651,8 @@ func (o StatefulNodeAzureOutput) LoadBalancers() StatefulNodeAzureLoadBalancerAr
 	return o.ApplyT(func(v *StatefulNodeAzure) StatefulNodeAzureLoadBalancerArrayOutput { return v.LoadBalancers }).(StatefulNodeAzureLoadBalancerArrayOutput)
 }
 
-func (o StatefulNodeAzureOutput) Login() StatefulNodeAzureLoginOutput {
-	return o.ApplyT(func(v *StatefulNodeAzure) StatefulNodeAzureLoginOutput { return v.Login }).(StatefulNodeAzureLoginOutput)
+func (o StatefulNodeAzureOutput) Login() StatefulNodeAzureLoginPtrOutput {
+	return o.ApplyT(func(v *StatefulNodeAzure) StatefulNodeAzureLoginPtrOutput { return v.Login }).(StatefulNodeAzureLoginPtrOutput)
 }
 
 func (o StatefulNodeAzureOutput) ManagedServiceIdentities() StatefulNodeAzureManagedServiceIdentityArrayOutput {
@@ -674,8 +665,8 @@ func (o StatefulNodeAzureOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *StatefulNodeAzure) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-func (o StatefulNodeAzureOutput) Network() StatefulNodeAzureNetworkOutput {
-	return o.ApplyT(func(v *StatefulNodeAzure) StatefulNodeAzureNetworkOutput { return v.Network }).(StatefulNodeAzureNetworkOutput)
+func (o StatefulNodeAzureOutput) Network() StatefulNodeAzureNetworkPtrOutput {
+	return o.ApplyT(func(v *StatefulNodeAzure) StatefulNodeAzureNetworkPtrOutput { return v.Network }).(StatefulNodeAzureNetworkPtrOutput)
 }
 
 func (o StatefulNodeAzureOutput) OdSizes() pulumi.StringArrayOutput {

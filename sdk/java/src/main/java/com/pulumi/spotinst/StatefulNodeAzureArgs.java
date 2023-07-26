@@ -107,11 +107,11 @@ public final class StatefulNodeAzureArgs extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.health);
     }
 
-    @Import(name="image", required=true)
-    private Output<StatefulNodeAzureImageArgs> image;
+    @Import(name="image")
+    private @Nullable Output<StatefulNodeAzureImageArgs> image;
 
-    public Output<StatefulNodeAzureImageArgs> image() {
-        return this.image;
+    public Optional<Output<StatefulNodeAzureImageArgs>> image() {
+        return Optional.ofNullable(this.image);
     }
 
     @Import(name="importVms")
@@ -128,11 +128,11 @@ public final class StatefulNodeAzureArgs extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.loadBalancers);
     }
 
-    @Import(name="login", required=true)
-    private Output<StatefulNodeAzureLoginArgs> login;
+    @Import(name="login")
+    private @Nullable Output<StatefulNodeAzureLoginArgs> login;
 
-    public Output<StatefulNodeAzureLoginArgs> login() {
-        return this.login;
+    public Optional<Output<StatefulNodeAzureLoginArgs>> login() {
+        return Optional.ofNullable(this.login);
     }
 
     @Import(name="managedServiceIdentities")
@@ -149,11 +149,11 @@ public final class StatefulNodeAzureArgs extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.name);
     }
 
-    @Import(name="network", required=true)
-    private Output<StatefulNodeAzureNetworkArgs> network;
+    @Import(name="network")
+    private @Nullable Output<StatefulNodeAzureNetworkArgs> network;
 
-    public Output<StatefulNodeAzureNetworkArgs> network() {
-        return this.network;
+    public Optional<Output<StatefulNodeAzureNetworkArgs>> network() {
+        return Optional.ofNullable(this.network);
     }
 
     @Import(name="odSizes", required=true)
@@ -494,7 +494,7 @@ public final class StatefulNodeAzureArgs extends com.pulumi.resources.ResourceAr
             return health(Output.of(health));
         }
 
-        public Builder image(Output<StatefulNodeAzureImageArgs> image) {
+        public Builder image(@Nullable Output<StatefulNodeAzureImageArgs> image) {
             $.image = image;
             return this;
         }
@@ -529,7 +529,7 @@ public final class StatefulNodeAzureArgs extends com.pulumi.resources.ResourceAr
             return loadBalancers(List.of(loadBalancers));
         }
 
-        public Builder login(Output<StatefulNodeAzureLoginArgs> login) {
+        public Builder login(@Nullable Output<StatefulNodeAzureLoginArgs> login) {
             $.login = login;
             return this;
         }
@@ -560,7 +560,7 @@ public final class StatefulNodeAzureArgs extends com.pulumi.resources.ResourceAr
             return name(Output.of(name));
         }
 
-        public Builder network(Output<StatefulNodeAzureNetworkArgs> network) {
+        public Builder network(@Nullable Output<StatefulNodeAzureNetworkArgs> network) {
             $.network = network;
             return this;
         }
@@ -813,9 +813,6 @@ public final class StatefulNodeAzureArgs extends com.pulumi.resources.ResourceAr
         }
 
         public StatefulNodeAzureArgs build() {
-            $.image = Objects.requireNonNull($.image, "expected parameter 'image' to be non-null");
-            $.login = Objects.requireNonNull($.login, "expected parameter 'login' to be non-null");
-            $.network = Objects.requireNonNull($.network, "expected parameter 'network' to be non-null");
             $.odSizes = Objects.requireNonNull($.odSizes, "expected parameter 'odSizes' to be non-null");
             $.os = Objects.requireNonNull($.os, "expected parameter 'os' to be non-null");
             $.region = Objects.requireNonNull($.region, "expected parameter 'region' to be non-null");

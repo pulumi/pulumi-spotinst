@@ -17209,12 +17209,9 @@
                 "description",
                 "extensions",
                 "health",
-                "image",
                 "loadBalancers",
-                "login",
                 "managedServiceIdentities",
                 "name",
-                "network",
                 "odSizes",
                 "os",
                 "osDisk",
@@ -17413,9 +17410,6 @@
                 }
             },
             "requiredInputs": [
-                "image",
-                "login",
-                "network",
                 "odSizes",
                 "os",
                 "region",
