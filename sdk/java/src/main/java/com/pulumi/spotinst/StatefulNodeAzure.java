@@ -539,10 +539,10 @@ public class StatefulNodeAzure extends com.pulumi.resources.CustomResource {
         return this.health;
     }
     @Export(name="image", type=StatefulNodeAzureImage.class, parameters={})
-    private Output<StatefulNodeAzureImage> image;
+    private Output</* @Nullable */ StatefulNodeAzureImage> image;
 
-    public Output<StatefulNodeAzureImage> image() {
-        return this.image;
+    public Output<Optional<StatefulNodeAzureImage>> image() {
+        return Codegen.optional(this.image);
     }
     @Export(name="importVms", type=List.class, parameters={StatefulNodeAzureImportVm.class})
     private Output</* @Nullable */ List<StatefulNodeAzureImportVm>> importVms;
@@ -557,10 +557,10 @@ public class StatefulNodeAzure extends com.pulumi.resources.CustomResource {
         return this.loadBalancers;
     }
     @Export(name="login", type=StatefulNodeAzureLogin.class, parameters={})
-    private Output<StatefulNodeAzureLogin> login;
+    private Output</* @Nullable */ StatefulNodeAzureLogin> login;
 
-    public Output<StatefulNodeAzureLogin> login() {
-        return this.login;
+    public Output<Optional<StatefulNodeAzureLogin>> login() {
+        return Codegen.optional(this.login);
     }
     @Export(name="managedServiceIdentities", type=List.class, parameters={StatefulNodeAzureManagedServiceIdentity.class})
     private Output<List<StatefulNodeAzureManagedServiceIdentity>> managedServiceIdentities;
@@ -575,10 +575,10 @@ public class StatefulNodeAzure extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     @Export(name="network", type=StatefulNodeAzureNetwork.class, parameters={})
-    private Output<StatefulNodeAzureNetwork> network;
+    private Output</* @Nullable */ StatefulNodeAzureNetwork> network;
 
-    public Output<StatefulNodeAzureNetwork> network() {
-        return this.network;
+    public Output<Optional<StatefulNodeAzureNetwork>> network() {
+        return Codegen.optional(this.network);
     }
     @Export(name="odSizes", type=List.class, parameters={String.class})
     private Output<List<String>> odSizes;

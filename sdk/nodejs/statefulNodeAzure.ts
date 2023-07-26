@@ -268,13 +268,13 @@ export class StatefulNodeAzure extends pulumi.CustomResource {
     public readonly detachDataDisks!: pulumi.Output<outputs.StatefulNodeAzureDetachDataDisk[] | undefined>;
     public readonly extensions!: pulumi.Output<outputs.StatefulNodeAzureExtension[]>;
     public readonly health!: pulumi.Output<outputs.StatefulNodeAzureHealth>;
-    public readonly image!: pulumi.Output<outputs.StatefulNodeAzureImage>;
+    public readonly image!: pulumi.Output<outputs.StatefulNodeAzureImage | undefined>;
     public readonly importVms!: pulumi.Output<outputs.StatefulNodeAzureImportVm[] | undefined>;
     public readonly loadBalancers!: pulumi.Output<outputs.StatefulNodeAzureLoadBalancer[]>;
-    public readonly login!: pulumi.Output<outputs.StatefulNodeAzureLogin>;
+    public readonly login!: pulumi.Output<outputs.StatefulNodeAzureLogin | undefined>;
     public readonly managedServiceIdentities!: pulumi.Output<outputs.StatefulNodeAzureManagedServiceIdentity[]>;
     public readonly name!: pulumi.Output<string>;
-    public readonly network!: pulumi.Output<outputs.StatefulNodeAzureNetwork>;
+    public readonly network!: pulumi.Output<outputs.StatefulNodeAzureNetwork | undefined>;
     public readonly odSizes!: pulumi.Output<string[]>;
     public readonly os!: pulumi.Output<string>;
     public readonly osDisk!: pulumi.Output<outputs.StatefulNodeAzureOsDisk>;
@@ -354,15 +354,6 @@ export class StatefulNodeAzure extends pulumi.CustomResource {
             resourceInputs["zones"] = state ? state.zones : undefined;
         } else {
             const args = argsOrState as StatefulNodeAzureArgs | undefined;
-            if ((!args || args.image === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'image'");
-            }
-            if ((!args || args.login === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'login'");
-            }
-            if ((!args || args.network === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'network'");
-            }
             if ((!args || args.odSizes === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'odSizes'");
             }
@@ -496,13 +487,13 @@ export interface StatefulNodeAzureArgs {
     detachDataDisks?: pulumi.Input<pulumi.Input<inputs.StatefulNodeAzureDetachDataDisk>[]>;
     extensions?: pulumi.Input<pulumi.Input<inputs.StatefulNodeAzureExtension>[]>;
     health?: pulumi.Input<inputs.StatefulNodeAzureHealth>;
-    image: pulumi.Input<inputs.StatefulNodeAzureImage>;
+    image?: pulumi.Input<inputs.StatefulNodeAzureImage>;
     importVms?: pulumi.Input<pulumi.Input<inputs.StatefulNodeAzureImportVm>[]>;
     loadBalancers?: pulumi.Input<pulumi.Input<inputs.StatefulNodeAzureLoadBalancer>[]>;
-    login: pulumi.Input<inputs.StatefulNodeAzureLogin>;
+    login?: pulumi.Input<inputs.StatefulNodeAzureLogin>;
     managedServiceIdentities?: pulumi.Input<pulumi.Input<inputs.StatefulNodeAzureManagedServiceIdentity>[]>;
     name?: pulumi.Input<string>;
-    network: pulumi.Input<inputs.StatefulNodeAzureNetwork>;
+    network?: pulumi.Input<inputs.StatefulNodeAzureNetwork>;
     odSizes: pulumi.Input<pulumi.Input<string>[]>;
     os: pulumi.Input<string>;
     osDisk?: pulumi.Input<inputs.StatefulNodeAzureOsDisk>;

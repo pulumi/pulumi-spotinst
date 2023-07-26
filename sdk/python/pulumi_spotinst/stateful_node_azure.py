@@ -16,9 +16,6 @@ __all__ = ['StatefulNodeAzureArgs', 'StatefulNodeAzure']
 @pulumi.input_type
 class StatefulNodeAzureArgs:
     def __init__(__self__, *,
-                 image: pulumi.Input['StatefulNodeAzureImageArgs'],
-                 login: pulumi.Input['StatefulNodeAzureLoginArgs'],
-                 network: pulumi.Input['StatefulNodeAzureNetworkArgs'],
                  od_sizes: pulumi.Input[Sequence[pulumi.Input[str]]],
                  os: pulumi.Input[str],
                  region: pulumi.Input[str],
@@ -38,10 +35,13 @@ class StatefulNodeAzureArgs:
                  detach_data_disks: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureDetachDataDiskArgs']]]] = None,
                  extensions: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureExtensionArgs']]]] = None,
                  health: Optional[pulumi.Input['StatefulNodeAzureHealthArgs']] = None,
+                 image: Optional[pulumi.Input['StatefulNodeAzureImageArgs']] = None,
                  import_vms: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureImportVmArgs']]]] = None,
                  load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureLoadBalancerArgs']]]] = None,
+                 login: Optional[pulumi.Input['StatefulNodeAzureLoginArgs']] = None,
                  managed_service_identities: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureManagedServiceIdentityArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 network: Optional[pulumi.Input['StatefulNodeAzureNetworkArgs']] = None,
                  os_disk: Optional[pulumi.Input['StatefulNodeAzureOsDiskArgs']] = None,
                  os_disk_persistence_mode: Optional[pulumi.Input[str]] = None,
                  preferred_spot_sizes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -59,9 +59,6 @@ class StatefulNodeAzureArgs:
         """
         The set of arguments for constructing a StatefulNodeAzure resource.
         """
-        pulumi.set(__self__, "image", image)
-        pulumi.set(__self__, "login", login)
-        pulumi.set(__self__, "network", network)
         pulumi.set(__self__, "od_sizes", od_sizes)
         pulumi.set(__self__, "os", os)
         pulumi.set(__self__, "region", region)
@@ -91,14 +88,20 @@ class StatefulNodeAzureArgs:
             pulumi.set(__self__, "extensions", extensions)
         if health is not None:
             pulumi.set(__self__, "health", health)
+        if image is not None:
+            pulumi.set(__self__, "image", image)
         if import_vms is not None:
             pulumi.set(__self__, "import_vms", import_vms)
         if load_balancers is not None:
             pulumi.set(__self__, "load_balancers", load_balancers)
+        if login is not None:
+            pulumi.set(__self__, "login", login)
         if managed_service_identities is not None:
             pulumi.set(__self__, "managed_service_identities", managed_service_identities)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if network is not None:
+            pulumi.set(__self__, "network", network)
         if os_disk is not None:
             pulumi.set(__self__, "os_disk", os_disk)
         if os_disk_persistence_mode is not None:
@@ -127,33 +130,6 @@ class StatefulNodeAzureArgs:
             pulumi.set(__self__, "vm_name", vm_name)
         if zones is not None:
             pulumi.set(__self__, "zones", zones)
-
-    @property
-    @pulumi.getter
-    def image(self) -> pulumi.Input['StatefulNodeAzureImageArgs']:
-        return pulumi.get(self, "image")
-
-    @image.setter
-    def image(self, value: pulumi.Input['StatefulNodeAzureImageArgs']):
-        pulumi.set(self, "image", value)
-
-    @property
-    @pulumi.getter
-    def login(self) -> pulumi.Input['StatefulNodeAzureLoginArgs']:
-        return pulumi.get(self, "login")
-
-    @login.setter
-    def login(self, value: pulumi.Input['StatefulNodeAzureLoginArgs']):
-        pulumi.set(self, "login", value)
-
-    @property
-    @pulumi.getter
-    def network(self) -> pulumi.Input['StatefulNodeAzureNetworkArgs']:
-        return pulumi.get(self, "network")
-
-    @network.setter
-    def network(self, value: pulumi.Input['StatefulNodeAzureNetworkArgs']):
-        pulumi.set(self, "network", value)
 
     @property
     @pulumi.getter(name="odSizes")
@@ -327,6 +303,15 @@ class StatefulNodeAzureArgs:
         pulumi.set(self, "health", value)
 
     @property
+    @pulumi.getter
+    def image(self) -> Optional[pulumi.Input['StatefulNodeAzureImageArgs']]:
+        return pulumi.get(self, "image")
+
+    @image.setter
+    def image(self, value: Optional[pulumi.Input['StatefulNodeAzureImageArgs']]):
+        pulumi.set(self, "image", value)
+
+    @property
     @pulumi.getter(name="importVms")
     def import_vms(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureImportVmArgs']]]]:
         return pulumi.get(self, "import_vms")
@@ -345,6 +330,15 @@ class StatefulNodeAzureArgs:
         pulumi.set(self, "load_balancers", value)
 
     @property
+    @pulumi.getter
+    def login(self) -> Optional[pulumi.Input['StatefulNodeAzureLoginArgs']]:
+        return pulumi.get(self, "login")
+
+    @login.setter
+    def login(self, value: Optional[pulumi.Input['StatefulNodeAzureLoginArgs']]):
+        pulumi.set(self, "login", value)
+
+    @property
     @pulumi.getter(name="managedServiceIdentities")
     def managed_service_identities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureManagedServiceIdentityArgs']]]]:
         return pulumi.get(self, "managed_service_identities")
@@ -361,6 +355,15 @@ class StatefulNodeAzureArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def network(self) -> Optional[pulumi.Input['StatefulNodeAzureNetworkArgs']]:
+        return pulumi.get(self, "network")
+
+    @network.setter
+    def network(self, value: Optional[pulumi.Input['StatefulNodeAzureNetworkArgs']]):
+        pulumi.set(self, "network", value)
 
     @property
     @pulumi.getter(name="osDisk")
@@ -1554,18 +1557,12 @@ class StatefulNodeAzure(pulumi.CustomResource):
             __props__.__dict__["detach_data_disks"] = detach_data_disks
             __props__.__dict__["extensions"] = extensions
             __props__.__dict__["health"] = health
-            if image is None and not opts.urn:
-                raise TypeError("Missing required property 'image'")
             __props__.__dict__["image"] = image
             __props__.__dict__["import_vms"] = import_vms
             __props__.__dict__["load_balancers"] = load_balancers
-            if login is None and not opts.urn:
-                raise TypeError("Missing required property 'login'")
             __props__.__dict__["login"] = login
             __props__.__dict__["managed_service_identities"] = managed_service_identities
             __props__.__dict__["name"] = name
-            if network is None and not opts.urn:
-                raise TypeError("Missing required property 'network'")
             __props__.__dict__["network"] = network
             if od_sizes is None and not opts.urn:
                 raise TypeError("Missing required property 'od_sizes'")
@@ -1764,7 +1761,7 @@ class StatefulNodeAzure(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def image(self) -> pulumi.Output['outputs.StatefulNodeAzureImage']:
+    def image(self) -> pulumi.Output[Optional['outputs.StatefulNodeAzureImage']]:
         return pulumi.get(self, "image")
 
     @property
@@ -1779,7 +1776,7 @@ class StatefulNodeAzure(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def login(self) -> pulumi.Output['outputs.StatefulNodeAzureLogin']:
+    def login(self) -> pulumi.Output[Optional['outputs.StatefulNodeAzureLogin']]:
         return pulumi.get(self, "login")
 
     @property
@@ -1794,7 +1791,7 @@ class StatefulNodeAzure(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def network(self) -> pulumi.Output['outputs.StatefulNodeAzureNetwork']:
+    def network(self) -> pulumi.Output[Optional['outputs.StatefulNodeAzureNetwork']]:
         return pulumi.get(self, "network")
 
     @property
