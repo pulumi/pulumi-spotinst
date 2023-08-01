@@ -48,6 +48,7 @@ __all__ = [
     'StatefulNodeAzureSecretArgs',
     'StatefulNodeAzureSecretSourceVaultArgs',
     'StatefulNodeAzureSecretVaultCertificateArgs',
+    'StatefulNodeAzureSecurityArgs',
     'StatefulNodeAzureSignalArgs',
     'StatefulNodeAzureStrategyArgs',
     'StatefulNodeAzureStrategyRevertToSpotArgs',
@@ -1789,6 +1790,47 @@ class StatefulNodeAzureSecretVaultCertificateArgs:
     @certificate_url.setter
     def certificate_url(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "certificate_url", value)
+
+
+@pulumi.input_type
+class StatefulNodeAzureSecurityArgs:
+    def __init__(__self__, *,
+                 secure_boot_enabled: Optional[pulumi.Input[bool]] = None,
+                 security_type: Optional[pulumi.Input[str]] = None,
+                 vtpm_enabled: Optional[pulumi.Input[bool]] = None):
+        if secure_boot_enabled is not None:
+            pulumi.set(__self__, "secure_boot_enabled", secure_boot_enabled)
+        if security_type is not None:
+            pulumi.set(__self__, "security_type", security_type)
+        if vtpm_enabled is not None:
+            pulumi.set(__self__, "vtpm_enabled", vtpm_enabled)
+
+    @property
+    @pulumi.getter(name="secureBootEnabled")
+    def secure_boot_enabled(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "secure_boot_enabled")
+
+    @secure_boot_enabled.setter
+    def secure_boot_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "secure_boot_enabled", value)
+
+    @property
+    @pulumi.getter(name="securityType")
+    def security_type(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "security_type")
+
+    @security_type.setter
+    def security_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "security_type", value)
+
+    @property
+    @pulumi.getter(name="vtpmEnabled")
+    def vtpm_enabled(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "vtpm_enabled")
+
+    @vtpm_enabled.setter
+    def vtpm_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "vtpm_enabled", value)
 
 
 @pulumi.input_type

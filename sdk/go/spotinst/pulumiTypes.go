@@ -4769,6 +4769,169 @@ func (o StatefulNodeAzureSecretVaultCertificateArrayOutput) Index(i pulumi.IntIn
 	}).(StatefulNodeAzureSecretVaultCertificateOutput)
 }
 
+type StatefulNodeAzureSecurity struct {
+	SecureBootEnabled *bool   `pulumi:"secureBootEnabled"`
+	SecurityType      *string `pulumi:"securityType"`
+	VtpmEnabled       *bool   `pulumi:"vtpmEnabled"`
+}
+
+// StatefulNodeAzureSecurityInput is an input type that accepts StatefulNodeAzureSecurityArgs and StatefulNodeAzureSecurityOutput values.
+// You can construct a concrete instance of `StatefulNodeAzureSecurityInput` via:
+//
+//	StatefulNodeAzureSecurityArgs{...}
+type StatefulNodeAzureSecurityInput interface {
+	pulumi.Input
+
+	ToStatefulNodeAzureSecurityOutput() StatefulNodeAzureSecurityOutput
+	ToStatefulNodeAzureSecurityOutputWithContext(context.Context) StatefulNodeAzureSecurityOutput
+}
+
+type StatefulNodeAzureSecurityArgs struct {
+	SecureBootEnabled pulumi.BoolPtrInput   `pulumi:"secureBootEnabled"`
+	SecurityType      pulumi.StringPtrInput `pulumi:"securityType"`
+	VtpmEnabled       pulumi.BoolPtrInput   `pulumi:"vtpmEnabled"`
+}
+
+func (StatefulNodeAzureSecurityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatefulNodeAzureSecurity)(nil)).Elem()
+}
+
+func (i StatefulNodeAzureSecurityArgs) ToStatefulNodeAzureSecurityOutput() StatefulNodeAzureSecurityOutput {
+	return i.ToStatefulNodeAzureSecurityOutputWithContext(context.Background())
+}
+
+func (i StatefulNodeAzureSecurityArgs) ToStatefulNodeAzureSecurityOutputWithContext(ctx context.Context) StatefulNodeAzureSecurityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureSecurityOutput)
+}
+
+func (i StatefulNodeAzureSecurityArgs) ToStatefulNodeAzureSecurityPtrOutput() StatefulNodeAzureSecurityPtrOutput {
+	return i.ToStatefulNodeAzureSecurityPtrOutputWithContext(context.Background())
+}
+
+func (i StatefulNodeAzureSecurityArgs) ToStatefulNodeAzureSecurityPtrOutputWithContext(ctx context.Context) StatefulNodeAzureSecurityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureSecurityOutput).ToStatefulNodeAzureSecurityPtrOutputWithContext(ctx)
+}
+
+// StatefulNodeAzureSecurityPtrInput is an input type that accepts StatefulNodeAzureSecurityArgs, StatefulNodeAzureSecurityPtr and StatefulNodeAzureSecurityPtrOutput values.
+// You can construct a concrete instance of `StatefulNodeAzureSecurityPtrInput` via:
+//
+//	        StatefulNodeAzureSecurityArgs{...}
+//
+//	or:
+//
+//	        nil
+type StatefulNodeAzureSecurityPtrInput interface {
+	pulumi.Input
+
+	ToStatefulNodeAzureSecurityPtrOutput() StatefulNodeAzureSecurityPtrOutput
+	ToStatefulNodeAzureSecurityPtrOutputWithContext(context.Context) StatefulNodeAzureSecurityPtrOutput
+}
+
+type statefulNodeAzureSecurityPtrType StatefulNodeAzureSecurityArgs
+
+func StatefulNodeAzureSecurityPtr(v *StatefulNodeAzureSecurityArgs) StatefulNodeAzureSecurityPtrInput {
+	return (*statefulNodeAzureSecurityPtrType)(v)
+}
+
+func (*statefulNodeAzureSecurityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StatefulNodeAzureSecurity)(nil)).Elem()
+}
+
+func (i *statefulNodeAzureSecurityPtrType) ToStatefulNodeAzureSecurityPtrOutput() StatefulNodeAzureSecurityPtrOutput {
+	return i.ToStatefulNodeAzureSecurityPtrOutputWithContext(context.Background())
+}
+
+func (i *statefulNodeAzureSecurityPtrType) ToStatefulNodeAzureSecurityPtrOutputWithContext(ctx context.Context) StatefulNodeAzureSecurityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureSecurityPtrOutput)
+}
+
+type StatefulNodeAzureSecurityOutput struct{ *pulumi.OutputState }
+
+func (StatefulNodeAzureSecurityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatefulNodeAzureSecurity)(nil)).Elem()
+}
+
+func (o StatefulNodeAzureSecurityOutput) ToStatefulNodeAzureSecurityOutput() StatefulNodeAzureSecurityOutput {
+	return o
+}
+
+func (o StatefulNodeAzureSecurityOutput) ToStatefulNodeAzureSecurityOutputWithContext(ctx context.Context) StatefulNodeAzureSecurityOutput {
+	return o
+}
+
+func (o StatefulNodeAzureSecurityOutput) ToStatefulNodeAzureSecurityPtrOutput() StatefulNodeAzureSecurityPtrOutput {
+	return o.ToStatefulNodeAzureSecurityPtrOutputWithContext(context.Background())
+}
+
+func (o StatefulNodeAzureSecurityOutput) ToStatefulNodeAzureSecurityPtrOutputWithContext(ctx context.Context) StatefulNodeAzureSecurityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StatefulNodeAzureSecurity) *StatefulNodeAzureSecurity {
+		return &v
+	}).(StatefulNodeAzureSecurityPtrOutput)
+}
+
+func (o StatefulNodeAzureSecurityOutput) SecureBootEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v StatefulNodeAzureSecurity) *bool { return v.SecureBootEnabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o StatefulNodeAzureSecurityOutput) SecurityType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StatefulNodeAzureSecurity) *string { return v.SecurityType }).(pulumi.StringPtrOutput)
+}
+
+func (o StatefulNodeAzureSecurityOutput) VtpmEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v StatefulNodeAzureSecurity) *bool { return v.VtpmEnabled }).(pulumi.BoolPtrOutput)
+}
+
+type StatefulNodeAzureSecurityPtrOutput struct{ *pulumi.OutputState }
+
+func (StatefulNodeAzureSecurityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StatefulNodeAzureSecurity)(nil)).Elem()
+}
+
+func (o StatefulNodeAzureSecurityPtrOutput) ToStatefulNodeAzureSecurityPtrOutput() StatefulNodeAzureSecurityPtrOutput {
+	return o
+}
+
+func (o StatefulNodeAzureSecurityPtrOutput) ToStatefulNodeAzureSecurityPtrOutputWithContext(ctx context.Context) StatefulNodeAzureSecurityPtrOutput {
+	return o
+}
+
+func (o StatefulNodeAzureSecurityPtrOutput) Elem() StatefulNodeAzureSecurityOutput {
+	return o.ApplyT(func(v *StatefulNodeAzureSecurity) StatefulNodeAzureSecurity {
+		if v != nil {
+			return *v
+		}
+		var ret StatefulNodeAzureSecurity
+		return ret
+	}).(StatefulNodeAzureSecurityOutput)
+}
+
+func (o StatefulNodeAzureSecurityPtrOutput) SecureBootEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *StatefulNodeAzureSecurity) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SecureBootEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o StatefulNodeAzureSecurityPtrOutput) SecurityType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StatefulNodeAzureSecurity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecurityType
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o StatefulNodeAzureSecurityPtrOutput) VtpmEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *StatefulNodeAzureSecurity) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.VtpmEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
 type StatefulNodeAzureSignal struct {
 	Timeout int    `pulumi:"timeout"`
 	Type    string `pulumi:"type"`
@@ -5466,6 +5629,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*StatefulNodeAzureSecretSourceVaultArrayInput)(nil)).Elem(), StatefulNodeAzureSecretSourceVaultArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StatefulNodeAzureSecretVaultCertificateInput)(nil)).Elem(), StatefulNodeAzureSecretVaultCertificateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StatefulNodeAzureSecretVaultCertificateArrayInput)(nil)).Elem(), StatefulNodeAzureSecretVaultCertificateArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatefulNodeAzureSecurityInput)(nil)).Elem(), StatefulNodeAzureSecurityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatefulNodeAzureSecurityPtrInput)(nil)).Elem(), StatefulNodeAzureSecurityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StatefulNodeAzureSignalInput)(nil)).Elem(), StatefulNodeAzureSignalArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StatefulNodeAzureSignalArrayInput)(nil)).Elem(), StatefulNodeAzureSignalArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StatefulNodeAzureStrategyInput)(nil)).Elem(), StatefulNodeAzureStrategyArgs{})
@@ -5552,6 +5717,8 @@ func init() {
 	pulumi.RegisterOutputType(StatefulNodeAzureSecretSourceVaultArrayOutput{})
 	pulumi.RegisterOutputType(StatefulNodeAzureSecretVaultCertificateOutput{})
 	pulumi.RegisterOutputType(StatefulNodeAzureSecretVaultCertificateArrayOutput{})
+	pulumi.RegisterOutputType(StatefulNodeAzureSecurityOutput{})
+	pulumi.RegisterOutputType(StatefulNodeAzureSecurityPtrOutput{})
 	pulumi.RegisterOutputType(StatefulNodeAzureSignalOutput{})
 	pulumi.RegisterOutputType(StatefulNodeAzureSignalArrayOutput{})
 	pulumi.RegisterOutputType(StatefulNodeAzureStrategyOutput{})

@@ -48,6 +48,7 @@ class StatefulNodeAzureArgs:
                  preferred_zones: Optional[pulumi.Input[str]] = None,
                  scheduling_tasks: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureSchedulingTaskArgs']]]] = None,
                  secrets: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureSecretArgs']]]] = None,
+                 security: Optional[pulumi.Input['StatefulNodeAzureSecurityArgs']] = None,
                  should_persist_vm: Optional[pulumi.Input[bool]] = None,
                  shutdown_script: Optional[pulumi.Input[str]] = None,
                  signals: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureSignalArgs']]]] = None,
@@ -114,6 +115,8 @@ class StatefulNodeAzureArgs:
             pulumi.set(__self__, "scheduling_tasks", scheduling_tasks)
         if secrets is not None:
             pulumi.set(__self__, "secrets", secrets)
+        if security is not None:
+            pulumi.set(__self__, "security", security)
         if should_persist_vm is not None:
             pulumi.set(__self__, "should_persist_vm", should_persist_vm)
         if shutdown_script is not None:
@@ -420,6 +423,15 @@ class StatefulNodeAzureArgs:
         pulumi.set(self, "secrets", value)
 
     @property
+    @pulumi.getter
+    def security(self) -> Optional[pulumi.Input['StatefulNodeAzureSecurityArgs']]:
+        return pulumi.get(self, "security")
+
+    @security.setter
+    def security(self, value: Optional[pulumi.Input['StatefulNodeAzureSecurityArgs']]):
+        pulumi.set(self, "security", value)
+
+    @property
     @pulumi.getter(name="shouldPersistVm")
     def should_persist_vm(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "should_persist_vm")
@@ -522,6 +534,7 @@ class _StatefulNodeAzureState:
                  resource_group_name: Optional[pulumi.Input[str]] = None,
                  scheduling_tasks: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureSchedulingTaskArgs']]]] = None,
                  secrets: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureSecretArgs']]]] = None,
+                 security: Optional[pulumi.Input['StatefulNodeAzureSecurityArgs']] = None,
                  should_persist_data_disks: Optional[pulumi.Input[bool]] = None,
                  should_persist_network: Optional[pulumi.Input[bool]] = None,
                  should_persist_os_disk: Optional[pulumi.Input[bool]] = None,
@@ -592,6 +605,8 @@ class _StatefulNodeAzureState:
             pulumi.set(__self__, "scheduling_tasks", scheduling_tasks)
         if secrets is not None:
             pulumi.set(__self__, "secrets", secrets)
+        if security is not None:
+            pulumi.set(__self__, "security", security)
         if should_persist_data_disks is not None:
             pulumi.set(__self__, "should_persist_data_disks", should_persist_data_disks)
         if should_persist_network is not None:
@@ -863,6 +878,15 @@ class _StatefulNodeAzureState:
         pulumi.set(self, "secrets", value)
 
     @property
+    @pulumi.getter
+    def security(self) -> Optional[pulumi.Input['StatefulNodeAzureSecurityArgs']]:
+        return pulumi.get(self, "security")
+
+    @security.setter
+    def security(self, value: Optional[pulumi.Input['StatefulNodeAzureSecurityArgs']]):
+        pulumi.set(self, "security", value)
+
+    @property
     @pulumi.getter(name="shouldPersistDataDisks")
     def should_persist_data_disks(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "should_persist_data_disks")
@@ -1012,6 +1036,7 @@ class StatefulNodeAzure(pulumi.CustomResource):
                  resource_group_name: Optional[pulumi.Input[str]] = None,
                  scheduling_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StatefulNodeAzureSchedulingTaskArgs']]]]] = None,
                  secrets: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StatefulNodeAzureSecretArgs']]]]] = None,
+                 security: Optional[pulumi.Input[pulumi.InputType['StatefulNodeAzureSecurityArgs']]] = None,
                  should_persist_data_disks: Optional[pulumi.Input[bool]] = None,
                  should_persist_network: Optional[pulumi.Input[bool]] = None,
                  should_persist_os_disk: Optional[pulumi.Input[bool]] = None,
@@ -1173,6 +1198,14 @@ class StatefulNodeAzure(pulumi.CustomResource):
               * This field is required only when using Windows OS type
               * This field must be ‘null’ when the OS type is Linux
 
+        <a id="secutiry"></a>
+        ## Security
+
+        * `security` - (Optional) Specifies the Security related profile settings for the virtual machine.
+            * `secure_boot_enabled` - (Optional) Specifies whether secure boot should be enabled on the virtual machine.
+            * `security_type` - (Optional) Enum: `"Standard", "TrustedLaunch"` Security type refers to the different security features of a virtual machine. Security features like Trusted launch virtual machines help to improve the security of Azure generation 2 virtual machines.
+            * `vtpm_enabled` - (Optional) Specifies whether vTPM should be enabled on the virtual machine.
+
         <a id="tag"></a>
         ## Tag
 
@@ -1249,6 +1282,20 @@ class StatefulNodeAzure(pulumi.CustomResource):
           * `original_vm_name` - (Required) Azure Import Stateful Node Name.
           * `draining_timeout` - (Optional) Hours to keep resources alive.
           * `resources_retention_time` - (Optional) Hours to keep resources alive.
+
+        <a id="delete"></a>
+        ## Deallocation Config
+
+        * `delete` - (Required) Specify deallocation parameters for stateful node deletion.
+            * `should_terminate_vm` - (Required) Indicates whether to delete the stateful node's VM.
+            * `network_should_deallocate` - (Required) Indicates whether to delete the stateful node's network resources.
+            * `network_ttl_in_hours` - (Optional, Default: 96) Hours to keep the network resource alive before deletion.
+            * `disk_should_deallocate` - (Required) Indicates whether to delete the stateful node's disk resources.
+            * `disk_ttl_in_hours` - (Optional, Default: 96) Hours to keep the disk resource alive before deletion.
+            * `snapshot_should_deallocate` - (Required) Indicates whether to delete the stateful node's snapshot resources.
+            * `snapshot_ttl_in_hours` - (Optional, Default: 96) Hours to keep the snapshots alive before deletion.
+            * `public_ip_should_deallocate` - (Required) Indicates whether to delete the stateful node's public ip resources.
+            * `public_ip_ttl_in_hours` - (Optional, Default: 96) Hours to keep the public ip alive before deletion.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1406,6 +1453,14 @@ class StatefulNodeAzure(pulumi.CustomResource):
               * This field is required only when using Windows OS type
               * This field must be ‘null’ when the OS type is Linux
 
+        <a id="secutiry"></a>
+        ## Security
+
+        * `security` - (Optional) Specifies the Security related profile settings for the virtual machine.
+            * `secure_boot_enabled` - (Optional) Specifies whether secure boot should be enabled on the virtual machine.
+            * `security_type` - (Optional) Enum: `"Standard", "TrustedLaunch"` Security type refers to the different security features of a virtual machine. Security features like Trusted launch virtual machines help to improve the security of Azure generation 2 virtual machines.
+            * `vtpm_enabled` - (Optional) Specifies whether vTPM should be enabled on the virtual machine.
+
         <a id="tag"></a>
         ## Tag
 
@@ -1483,6 +1538,20 @@ class StatefulNodeAzure(pulumi.CustomResource):
           * `draining_timeout` - (Optional) Hours to keep resources alive.
           * `resources_retention_time` - (Optional) Hours to keep resources alive.
 
+        <a id="delete"></a>
+        ## Deallocation Config
+
+        * `delete` - (Required) Specify deallocation parameters for stateful node deletion.
+            * `should_terminate_vm` - (Required) Indicates whether to delete the stateful node's VM.
+            * `network_should_deallocate` - (Required) Indicates whether to delete the stateful node's network resources.
+            * `network_ttl_in_hours` - (Optional, Default: 96) Hours to keep the network resource alive before deletion.
+            * `disk_should_deallocate` - (Required) Indicates whether to delete the stateful node's disk resources.
+            * `disk_ttl_in_hours` - (Optional, Default: 96) Hours to keep the disk resource alive before deletion.
+            * `snapshot_should_deallocate` - (Required) Indicates whether to delete the stateful node's snapshot resources.
+            * `snapshot_ttl_in_hours` - (Optional, Default: 96) Hours to keep the snapshots alive before deletion.
+            * `public_ip_should_deallocate` - (Required) Indicates whether to delete the stateful node's public ip resources.
+            * `public_ip_ttl_in_hours` - (Optional, Default: 96) Hours to keep the public ip alive before deletion.
+
         :param str resource_name: The name of the resource.
         :param StatefulNodeAzureArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1525,6 +1594,7 @@ class StatefulNodeAzure(pulumi.CustomResource):
                  resource_group_name: Optional[pulumi.Input[str]] = None,
                  scheduling_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StatefulNodeAzureSchedulingTaskArgs']]]]] = None,
                  secrets: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StatefulNodeAzureSecretArgs']]]]] = None,
+                 security: Optional[pulumi.Input[pulumi.InputType['StatefulNodeAzureSecurityArgs']]] = None,
                  should_persist_data_disks: Optional[pulumi.Input[bool]] = None,
                  should_persist_network: Optional[pulumi.Input[bool]] = None,
                  should_persist_os_disk: Optional[pulumi.Input[bool]] = None,
@@ -1582,6 +1652,7 @@ class StatefulNodeAzure(pulumi.CustomResource):
             __props__.__dict__["resource_group_name"] = resource_group_name
             __props__.__dict__["scheduling_tasks"] = scheduling_tasks
             __props__.__dict__["secrets"] = secrets
+            __props__.__dict__["security"] = security
             if should_persist_data_disks is None and not opts.urn:
                 raise TypeError("Missing required property 'should_persist_data_disks'")
             __props__.__dict__["should_persist_data_disks"] = should_persist_data_disks
@@ -1642,6 +1713,7 @@ class StatefulNodeAzure(pulumi.CustomResource):
             resource_group_name: Optional[pulumi.Input[str]] = None,
             scheduling_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StatefulNodeAzureSchedulingTaskArgs']]]]] = None,
             secrets: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StatefulNodeAzureSecretArgs']]]]] = None,
+            security: Optional[pulumi.Input[pulumi.InputType['StatefulNodeAzureSecurityArgs']]] = None,
             should_persist_data_disks: Optional[pulumi.Input[bool]] = None,
             should_persist_network: Optional[pulumi.Input[bool]] = None,
             should_persist_os_disk: Optional[pulumi.Input[bool]] = None,
@@ -1694,6 +1766,7 @@ class StatefulNodeAzure(pulumi.CustomResource):
         __props__.__dict__["resource_group_name"] = resource_group_name
         __props__.__dict__["scheduling_tasks"] = scheduling_tasks
         __props__.__dict__["secrets"] = secrets
+        __props__.__dict__["security"] = security
         __props__.__dict__["should_persist_data_disks"] = should_persist_data_disks
         __props__.__dict__["should_persist_network"] = should_persist_network
         __props__.__dict__["should_persist_os_disk"] = should_persist_os_disk
@@ -1843,6 +1916,11 @@ class StatefulNodeAzure(pulumi.CustomResource):
     @pulumi.getter
     def secrets(self) -> pulumi.Output[Sequence['outputs.StatefulNodeAzureSecret']]:
         return pulumi.get(self, "secrets")
+
+    @property
+    @pulumi.getter
+    def security(self) -> pulumi.Output[Optional['outputs.StatefulNodeAzureSecurity']]:
+        return pulumi.get(self, "security")
 
     @property
     @pulumi.getter(name="shouldPersistDataDisks")

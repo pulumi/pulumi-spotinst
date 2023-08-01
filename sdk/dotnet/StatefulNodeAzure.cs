@@ -156,6 +156,14 @@ namespace Pulumi.SpotInst
     ///       * This field is required only when using Windows OS type
     ///       * This field must be ‘null’ when the OS type is Linux
     /// 
+    /// &lt;a id="secutiry"&gt;&lt;/a&gt;
+    /// ## Security
+    /// 
+    /// * `security` - (Optional) Specifies the Security related profile settings for the virtual machine.
+    ///     * `secure_boot_enabled` - (Optional) Specifies whether secure boot should be enabled on the virtual machine.
+    ///     * `security_type` - (Optional) Enum: `"Standard", "TrustedLaunch"` Security type refers to the different security features of a virtual machine. Security features like Trusted launch virtual machines help to improve the security of Azure generation 2 virtual machines.
+    ///     * `vtpm_enabled` - (Optional) Specifies whether vTPM should be enabled on the virtual machine.
+    /// 
     /// &lt;a id="tag"&gt;&lt;/a&gt;
     /// ## Tag
     /// 
@@ -232,6 +240,20 @@ namespace Pulumi.SpotInst
     ///   * `original_vm_name` - (Required) Azure Import Stateful Node Name.
     ///   * `draining_timeout` - (Optional) Hours to keep resources alive.
     ///   * `resources_retention_time` - (Optional) Hours to keep resources alive.
+    /// 
+    /// &lt;a id="delete"&gt;&lt;/a&gt;
+    /// ## Deallocation Config
+    /// 
+    /// * `delete` - (Required) Specify deallocation parameters for stateful node deletion.
+    ///     * `should_terminate_vm` - (Required) Indicates whether to delete the stateful node's VM.
+    ///     * `network_should_deallocate` - (Required) Indicates whether to delete the stateful node's network resources.
+    ///     * `network_ttl_in_hours` - (Optional, Default: 96) Hours to keep the network resource alive before deletion.
+    ///     * `disk_should_deallocate` - (Required) Indicates whether to delete the stateful node's disk resources.
+    ///     * `disk_ttl_in_hours` - (Optional, Default: 96) Hours to keep the disk resource alive before deletion.
+    ///     * `snapshot_should_deallocate` - (Required) Indicates whether to delete the stateful node's snapshot resources.
+    ///     * `snapshot_ttl_in_hours` - (Optional, Default: 96) Hours to keep the snapshots alive before deletion.
+    ///     * `public_ip_should_deallocate` - (Required) Indicates whether to delete the stateful node's public ip resources.
+    ///     * `public_ip_ttl_in_hours` - (Optional, Default: 96) Hours to keep the public ip alive before deletion.
     /// </summary>
     [SpotInstResourceType("spotinst:index/statefulNodeAzure:StatefulNodeAzure")]
     public partial class StatefulNodeAzure : global::Pulumi.CustomResource
@@ -316,6 +338,9 @@ namespace Pulumi.SpotInst
 
         [Output("secrets")]
         public Output<ImmutableArray<Outputs.StatefulNodeAzureSecret>> Secrets { get; private set; } = null!;
+
+        [Output("security")]
+        public Output<Outputs.StatefulNodeAzureSecurity?> Security { get; private set; } = null!;
 
         [Output("shouldPersistDataDisks")]
         public Output<bool> ShouldPersistDataDisks { get; private set; } = null!;
@@ -548,6 +573,9 @@ namespace Pulumi.SpotInst
             set => _secrets = value;
         }
 
+        [Input("security")]
+        public Input<Inputs.StatefulNodeAzureSecurityArgs>? Security { get; set; }
+
         [Input("shouldPersistDataDisks", required: true)]
         public Input<bool> ShouldPersistDataDisks { get; set; } = null!;
 
@@ -765,6 +793,9 @@ namespace Pulumi.SpotInst
             get => _secrets ?? (_secrets = new InputList<Inputs.StatefulNodeAzureSecretGetArgs>());
             set => _secrets = value;
         }
+
+        [Input("security")]
+        public Input<Inputs.StatefulNodeAzureSecurityGetArgs>? Security { get; set; }
 
         [Input("shouldPersistDataDisks")]
         public Input<bool>? ShouldPersistDataDisks { get; set; }
