@@ -49,6 +49,7 @@ __all__ = [
     'StatefulNodeAzureSecret',
     'StatefulNodeAzureSecretSourceVault',
     'StatefulNodeAzureSecretVaultCertificate',
+    'StatefulNodeAzureSecurity',
     'StatefulNodeAzureSignal',
     'StatefulNodeAzureStrategy',
     'StatefulNodeAzureStrategyRevertToSpot',
@@ -1942,6 +1943,56 @@ class StatefulNodeAzureSecretVaultCertificate(dict):
     @pulumi.getter(name="certificateUrl")
     def certificate_url(self) -> Optional[str]:
         return pulumi.get(self, "certificate_url")
+
+
+@pulumi.output_type
+class StatefulNodeAzureSecurity(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "secureBootEnabled":
+            suggest = "secure_boot_enabled"
+        elif key == "securityType":
+            suggest = "security_type"
+        elif key == "vtpmEnabled":
+            suggest = "vtpm_enabled"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StatefulNodeAzureSecurity. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StatefulNodeAzureSecurity.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StatefulNodeAzureSecurity.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 secure_boot_enabled: Optional[bool] = None,
+                 security_type: Optional[str] = None,
+                 vtpm_enabled: Optional[bool] = None):
+        if secure_boot_enabled is not None:
+            pulumi.set(__self__, "secure_boot_enabled", secure_boot_enabled)
+        if security_type is not None:
+            pulumi.set(__self__, "security_type", security_type)
+        if vtpm_enabled is not None:
+            pulumi.set(__self__, "vtpm_enabled", vtpm_enabled)
+
+    @property
+    @pulumi.getter(name="secureBootEnabled")
+    def secure_boot_enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "secure_boot_enabled")
+
+    @property
+    @pulumi.getter(name="securityType")
+    def security_type(self) -> Optional[str]:
+        return pulumi.get(self, "security_type")
+
+    @property
+    @pulumi.getter(name="vtpmEnabled")
+    def vtpm_enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "vtpm_enabled")
 
 
 @pulumi.output_type

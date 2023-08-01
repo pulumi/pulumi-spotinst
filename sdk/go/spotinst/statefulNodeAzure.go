@@ -158,6 +158,14 @@ import (
 //   - This field is required only when using Windows OS type
 //   - This field must be ‘null’ when the OS type is Linux
 //
+// <a id="secutiry"></a>
+// ## Security
+//
+// * `security` - (Optional) Specifies the Security related profile settings for the virtual machine.
+//   - `secureBootEnabled` - (Optional) Specifies whether secure boot should be enabled on the virtual machine.
+//   - `securityType` - (Optional) Enum: `"Standard", "TrustedLaunch"` Security type refers to the different security features of a virtual machine. Security features like Trusted launch virtual machines help to improve the security of Azure generation 2 virtual machines.
+//   - `vtpmEnabled` - (Optional) Specifies whether vTPM should be enabled on the virtual machine.
+//
 // <a id="tag"></a>
 // ## Tag
 //
@@ -234,6 +242,20 @@ import (
 //   - `originalVmName` - (Required) Azure Import Stateful Node Name.
 //   - `drainingTimeout` - (Optional) Hours to keep resources alive.
 //   - `resourcesRetentionTime` - (Optional) Hours to keep resources alive.
+//
+// <a id="delete"></a>
+// ## Deallocation Config
+//
+// * `delete` - (Required) Specify deallocation parameters for stateful node deletion.
+//   - `shouldTerminateVm` - (Required) Indicates whether to delete the stateful node's VM.
+//   - `networkShouldDeallocate` - (Required) Indicates whether to delete the stateful node's network resources.
+//   - `networkTtlInHours` - (Optional, Default: 96) Hours to keep the network resource alive before deletion.
+//   - `diskShouldDeallocate` - (Required) Indicates whether to delete the stateful node's disk resources.
+//   - `diskTtlInHours` - (Optional, Default: 96) Hours to keep the disk resource alive before deletion.
+//   - `snapshotShouldDeallocate` - (Required) Indicates whether to delete the stateful node's snapshot resources.
+//   - `snapshotTtlInHours` - (Optional, Default: 96) Hours to keep the snapshots alive before deletion.
+//   - `publicIpShouldDeallocate` - (Required) Indicates whether to delete the stateful node's public ip resources.
+//   - `publicIpTtlInHours` - (Optional, Default: 96) Hours to keep the public ip alive before deletion.
 type StatefulNodeAzure struct {
 	pulumi.CustomResourceState
 
@@ -264,6 +286,7 @@ type StatefulNodeAzure struct {
 	ResourceGroupName        pulumi.StringOutput                                `pulumi:"resourceGroupName"`
 	SchedulingTasks          StatefulNodeAzureSchedulingTaskArrayOutput         `pulumi:"schedulingTasks"`
 	Secrets                  StatefulNodeAzureSecretArrayOutput                 `pulumi:"secrets"`
+	Security                 StatefulNodeAzureSecurityPtrOutput                 `pulumi:"security"`
 	ShouldPersistDataDisks   pulumi.BoolOutput                                  `pulumi:"shouldPersistDataDisks"`
 	ShouldPersistNetwork     pulumi.BoolOutput                                  `pulumi:"shouldPersistNetwork"`
 	ShouldPersistOsDisk      pulumi.BoolOutput                                  `pulumi:"shouldPersistOsDisk"`
@@ -363,6 +386,7 @@ type statefulNodeAzureState struct {
 	ResourceGroupName        *string                                   `pulumi:"resourceGroupName"`
 	SchedulingTasks          []StatefulNodeAzureSchedulingTask         `pulumi:"schedulingTasks"`
 	Secrets                  []StatefulNodeAzureSecret                 `pulumi:"secrets"`
+	Security                 *StatefulNodeAzureSecurity                `pulumi:"security"`
 	ShouldPersistDataDisks   *bool                                     `pulumi:"shouldPersistDataDisks"`
 	ShouldPersistNetwork     *bool                                     `pulumi:"shouldPersistNetwork"`
 	ShouldPersistOsDisk      *bool                                     `pulumi:"shouldPersistOsDisk"`
@@ -406,6 +430,7 @@ type StatefulNodeAzureState struct {
 	ResourceGroupName        pulumi.StringPtrInput
 	SchedulingTasks          StatefulNodeAzureSchedulingTaskArrayInput
 	Secrets                  StatefulNodeAzureSecretArrayInput
+	Security                 StatefulNodeAzureSecurityPtrInput
 	ShouldPersistDataDisks   pulumi.BoolPtrInput
 	ShouldPersistNetwork     pulumi.BoolPtrInput
 	ShouldPersistOsDisk      pulumi.BoolPtrInput
@@ -453,6 +478,7 @@ type statefulNodeAzureArgs struct {
 	ResourceGroupName        string                                    `pulumi:"resourceGroupName"`
 	SchedulingTasks          []StatefulNodeAzureSchedulingTask         `pulumi:"schedulingTasks"`
 	Secrets                  []StatefulNodeAzureSecret                 `pulumi:"secrets"`
+	Security                 *StatefulNodeAzureSecurity                `pulumi:"security"`
 	ShouldPersistDataDisks   bool                                      `pulumi:"shouldPersistDataDisks"`
 	ShouldPersistNetwork     bool                                      `pulumi:"shouldPersistNetwork"`
 	ShouldPersistOsDisk      bool                                      `pulumi:"shouldPersistOsDisk"`
@@ -497,6 +523,7 @@ type StatefulNodeAzureArgs struct {
 	ResourceGroupName        pulumi.StringInput
 	SchedulingTasks          StatefulNodeAzureSchedulingTaskArrayInput
 	Secrets                  StatefulNodeAzureSecretArrayInput
+	Security                 StatefulNodeAzureSecurityPtrInput
 	ShouldPersistDataDisks   pulumi.BoolInput
 	ShouldPersistNetwork     pulumi.BoolInput
 	ShouldPersistOsDisk      pulumi.BoolInput
@@ -707,6 +734,10 @@ func (o StatefulNodeAzureOutput) SchedulingTasks() StatefulNodeAzureSchedulingTa
 
 func (o StatefulNodeAzureOutput) Secrets() StatefulNodeAzureSecretArrayOutput {
 	return o.ApplyT(func(v *StatefulNodeAzure) StatefulNodeAzureSecretArrayOutput { return v.Secrets }).(StatefulNodeAzureSecretArrayOutput)
+}
+
+func (o StatefulNodeAzureOutput) Security() StatefulNodeAzureSecurityPtrOutput {
+	return o.ApplyT(func(v *StatefulNodeAzure) StatefulNodeAzureSecurityPtrOutput { return v.Security }).(StatefulNodeAzureSecurityPtrOutput)
 }
 
 func (o StatefulNodeAzureOutput) ShouldPersistDataDisks() pulumi.BoolOutput {

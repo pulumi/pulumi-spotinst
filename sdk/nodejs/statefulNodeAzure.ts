@@ -153,6 +153,14 @@ import * as utilities from "./utilities";
  *       * This field is required only when using Windows OS type
  *       * This field must be ‘null’ when the OS type is Linux
  *
+ * <a id="secutiry"></a>
+ * ## Security
+ *
+ * * `security` - (Optional) Specifies the Security related profile settings for the virtual machine.
+ *     * `secureBootEnabled` - (Optional) Specifies whether secure boot should be enabled on the virtual machine.
+ *     * `securityType` - (Optional) Enum: `"Standard", "TrustedLaunch"` Security type refers to the different security features of a virtual machine. Security features like Trusted launch virtual machines help to improve the security of Azure generation 2 virtual machines.
+ *     * `vtpmEnabled` - (Optional) Specifies whether vTPM should be enabled on the virtual machine.
+ *
  * <a id="tag"></a>
  * ## Tag
  *
@@ -229,6 +237,20 @@ import * as utilities from "./utilities";
  *   * `originalVmName` - (Required) Azure Import Stateful Node Name.
  *   * `drainingTimeout` - (Optional) Hours to keep resources alive.
  *   * `resourcesRetentionTime` - (Optional) Hours to keep resources alive.
+ *
+ * <a id="delete"></a>
+ * ## Deallocation Config
+ *
+ * * `delete` - (Required) Specify deallocation parameters for stateful node deletion.
+ *     * `shouldTerminateVm` - (Required) Indicates whether to delete the stateful node's VM.
+ *     * `networkShouldDeallocate` - (Required) Indicates whether to delete the stateful node's network resources.
+ *     * `networkTtlInHours` - (Optional, Default: 96) Hours to keep the network resource alive before deletion.
+ *     * `diskShouldDeallocate` - (Required) Indicates whether to delete the stateful node's disk resources.
+ *     * `diskTtlInHours` - (Optional, Default: 96) Hours to keep the disk resource alive before deletion.
+ *     * `snapshotShouldDeallocate` - (Required) Indicates whether to delete the stateful node's snapshot resources.
+ *     * `snapshotTtlInHours` - (Optional, Default: 96) Hours to keep the snapshots alive before deletion.
+ *     * `publicIpShouldDeallocate` - (Required) Indicates whether to delete the stateful node's public ip resources.
+ *     * `publicIpTtlInHours` - (Optional, Default: 96) Hours to keep the public ip alive before deletion.
  */
 export class StatefulNodeAzure extends pulumi.CustomResource {
     /**
@@ -285,6 +307,7 @@ export class StatefulNodeAzure extends pulumi.CustomResource {
     public readonly resourceGroupName!: pulumi.Output<string>;
     public readonly schedulingTasks!: pulumi.Output<outputs.StatefulNodeAzureSchedulingTask[]>;
     public readonly secrets!: pulumi.Output<outputs.StatefulNodeAzureSecret[]>;
+    public readonly security!: pulumi.Output<outputs.StatefulNodeAzureSecurity | undefined>;
     public readonly shouldPersistDataDisks!: pulumi.Output<boolean>;
     public readonly shouldPersistNetwork!: pulumi.Output<boolean>;
     public readonly shouldPersistOsDisk!: pulumi.Output<boolean>;
@@ -339,6 +362,7 @@ export class StatefulNodeAzure extends pulumi.CustomResource {
             resourceInputs["resourceGroupName"] = state ? state.resourceGroupName : undefined;
             resourceInputs["schedulingTasks"] = state ? state.schedulingTasks : undefined;
             resourceInputs["secrets"] = state ? state.secrets : undefined;
+            resourceInputs["security"] = state ? state.security : undefined;
             resourceInputs["shouldPersistDataDisks"] = state ? state.shouldPersistDataDisks : undefined;
             resourceInputs["shouldPersistNetwork"] = state ? state.shouldPersistNetwork : undefined;
             resourceInputs["shouldPersistOsDisk"] = state ? state.shouldPersistOsDisk : undefined;
@@ -408,6 +432,7 @@ export class StatefulNodeAzure extends pulumi.CustomResource {
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["schedulingTasks"] = args ? args.schedulingTasks : undefined;
             resourceInputs["secrets"] = args ? args.secrets : undefined;
+            resourceInputs["security"] = args ? args.security : undefined;
             resourceInputs["shouldPersistDataDisks"] = args ? args.shouldPersistDataDisks : undefined;
             resourceInputs["shouldPersistNetwork"] = args ? args.shouldPersistNetwork : undefined;
             resourceInputs["shouldPersistOsDisk"] = args ? args.shouldPersistOsDisk : undefined;
@@ -458,6 +483,7 @@ export interface StatefulNodeAzureState {
     resourceGroupName?: pulumi.Input<string>;
     schedulingTasks?: pulumi.Input<pulumi.Input<inputs.StatefulNodeAzureSchedulingTask>[]>;
     secrets?: pulumi.Input<pulumi.Input<inputs.StatefulNodeAzureSecret>[]>;
+    security?: pulumi.Input<inputs.StatefulNodeAzureSecurity>;
     shouldPersistDataDisks?: pulumi.Input<boolean>;
     shouldPersistNetwork?: pulumi.Input<boolean>;
     shouldPersistOsDisk?: pulumi.Input<boolean>;
@@ -504,6 +530,7 @@ export interface StatefulNodeAzureArgs {
     resourceGroupName: pulumi.Input<string>;
     schedulingTasks?: pulumi.Input<pulumi.Input<inputs.StatefulNodeAzureSchedulingTask>[]>;
     secrets?: pulumi.Input<pulumi.Input<inputs.StatefulNodeAzureSecret>[]>;
+    security?: pulumi.Input<inputs.StatefulNodeAzureSecurity>;
     shouldPersistDataDisks: pulumi.Input<boolean>;
     shouldPersistNetwork: pulumi.Input<boolean>;
     shouldPersistOsDisk: pulumi.Input<boolean>;

@@ -276,6 +276,12 @@ export interface StatefulNodeAzureSecretVaultCertificate {
     certificateUrl: string;
 }
 
+export interface StatefulNodeAzureSecurity {
+    secureBootEnabled?: boolean;
+    securityType?: string;
+    vtpmEnabled?: boolean;
+}
+
 export interface StatefulNodeAzureSignal {
     timeout: number;
     type: string;

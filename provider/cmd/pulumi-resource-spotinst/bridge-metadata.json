@@ -4622,6 +4622,9 @@
                             }
                         }
                     },
+                    "security": {
+                        "maxItemsOne": true
+                    },
                     "should_persist_data_disks": {},
                     "should_persist_network": {},
                     "should_persist_os_disk": {},
@@ -6593,6 +6596,11 @@
             "spotinst:index/StatefulNodeAzureSecretVaultCertificate:StatefulNodeAzureSecretVaultCertificate": {
                 "certificateStore": "certificate_store",
                 "certificateUrl": "certificate_url"
+            },
+            "spotinst:index/StatefulNodeAzureSecurity:StatefulNodeAzureSecurity": {
+                "secureBootEnabled": "secure_boot_enabled",
+                "securityType": "security_type",
+                "vtpmEnabled": "vtpm_enabled"
             },
             "spotinst:index/StatefulNodeAzureStrategy:StatefulNodeAzureStrategy": {
                 "drainingTimeout": "draining_timeout",

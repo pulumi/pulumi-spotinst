@@ -21,6 +21,7 @@ import com.pulumi.spotinst.inputs.StatefulNodeAzureNetworkArgs;
 import com.pulumi.spotinst.inputs.StatefulNodeAzureOsDiskArgs;
 import com.pulumi.spotinst.inputs.StatefulNodeAzureSchedulingTaskArgs;
 import com.pulumi.spotinst.inputs.StatefulNodeAzureSecretArgs;
+import com.pulumi.spotinst.inputs.StatefulNodeAzureSecurityArgs;
 import com.pulumi.spotinst.inputs.StatefulNodeAzureSignalArgs;
 import com.pulumi.spotinst.inputs.StatefulNodeAzureStrategyArgs;
 import com.pulumi.spotinst.inputs.StatefulNodeAzureTagArgs;
@@ -226,6 +227,13 @@ public final class StatefulNodeAzureArgs extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.secrets);
     }
 
+    @Import(name="security")
+    private @Nullable Output<StatefulNodeAzureSecurityArgs> security;
+
+    public Optional<Output<StatefulNodeAzureSecurityArgs>> security() {
+        return Optional.ofNullable(this.security);
+    }
+
     @Import(name="shouldPersistDataDisks", required=true)
     private Output<Boolean> shouldPersistDataDisks;
 
@@ -347,6 +355,7 @@ public final class StatefulNodeAzureArgs extends com.pulumi.resources.ResourceAr
         this.resourceGroupName = $.resourceGroupName;
         this.schedulingTasks = $.schedulingTasks;
         this.secrets = $.secrets;
+        this.security = $.security;
         this.shouldPersistDataDisks = $.shouldPersistDataDisks;
         this.shouldPersistNetwork = $.shouldPersistNetwork;
         this.shouldPersistOsDisk = $.shouldPersistOsDisk;
@@ -673,6 +682,15 @@ public final class StatefulNodeAzureArgs extends com.pulumi.resources.ResourceAr
 
         public Builder secrets(StatefulNodeAzureSecretArgs... secrets) {
             return secrets(List.of(secrets));
+        }
+
+        public Builder security(@Nullable Output<StatefulNodeAzureSecurityArgs> security) {
+            $.security = security;
+            return this;
+        }
+
+        public Builder security(StatefulNodeAzureSecurityArgs security) {
+            return security(Output.of(security));
         }
 
         public Builder shouldPersistDataDisks(Output<Boolean> shouldPersistDataDisks) {

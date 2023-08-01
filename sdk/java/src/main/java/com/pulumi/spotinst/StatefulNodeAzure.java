@@ -26,6 +26,7 @@ import com.pulumi.spotinst.outputs.StatefulNodeAzureNetwork;
 import com.pulumi.spotinst.outputs.StatefulNodeAzureOsDisk;
 import com.pulumi.spotinst.outputs.StatefulNodeAzureSchedulingTask;
 import com.pulumi.spotinst.outputs.StatefulNodeAzureSecret;
+import com.pulumi.spotinst.outputs.StatefulNodeAzureSecurity;
 import com.pulumi.spotinst.outputs.StatefulNodeAzureSignal;
 import com.pulumi.spotinst.outputs.StatefulNodeAzureStrategy;
 import com.pulumi.spotinst.outputs.StatefulNodeAzureTag;
@@ -61,6 +62,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.spotinst.inputs.StatefulNodeAzureNetworkArgs;
  * import com.pulumi.spotinst.inputs.StatefulNodeAzureOsDiskArgs;
  * import com.pulumi.spotinst.inputs.StatefulNodeAzureSecretArgs;
+ * import com.pulumi.spotinst.inputs.StatefulNodeAzureSecurityArgs;
  * import com.pulumi.spotinst.inputs.StatefulNodeAzureTagArgs;
  * import com.pulumi.spotinst.inputs.StatefulNodeAzureHealthArgs;
  * import com.pulumi.spotinst.inputs.StatefulNodeAzureSchedulingTaskArgs;
@@ -197,6 +199,11 @@ import javax.annotation.Nullable;
  *                     .certificateUrl(&#34;string&#34;)
  *                     .certificateStore(&#34;string&#34;)
  *                     .build())
+ *                 .build())
+ *             .security(StatefulNodeAzureSecurityArgs.builder()
+ *                 .securityType(&#34;Standard&#34;)
+ *                 .secureBootEnabled(false)
+ *                 .vtpmEnabled(false)
  *                 .build())
  *             .tags(StatefulNodeAzureTagArgs.builder()
  *                 .tagKey(&#34;Creator&#34;)
@@ -398,6 +405,14 @@ import javax.annotation.Nullable;
  *       * This field is required only when using Windows OS type
  *       * This field must be ‘null’ when the OS type is Linux
  * 
+ * &lt;a id=&#34;secutiry&#34;&gt;&lt;/a&gt;
+ * ## Security
+ * 
+ * * `security` - (Optional) Specifies the Security related profile settings for the virtual machine.
+ *     * `secure_boot_enabled` - (Optional) Specifies whether secure boot should be enabled on the virtual machine.
+ *     * `security_type` - (Optional) Enum: `&#34;Standard&#34;, &#34;TrustedLaunch&#34;` Security type refers to the different security features of a virtual machine. Security features like Trusted launch virtual machines help to improve the security of Azure generation 2 virtual machines.
+ *     * `vtpm_enabled` - (Optional) Specifies whether vTPM should be enabled on the virtual machine.
+ * 
  * &lt;a id=&#34;tag&#34;&gt;&lt;/a&gt;
  * ## Tag
  * 
@@ -474,6 +489,20 @@ import javax.annotation.Nullable;
  *   * `original_vm_name` - (Required) Azure Import Stateful Node Name.
  *   * `draining_timeout` - (Optional) Hours to keep resources alive.
  *   * `resources_retention_time` - (Optional) Hours to keep resources alive.
+ * 
+ * &lt;a id=&#34;delete&#34;&gt;&lt;/a&gt;
+ * ## Deallocation Config
+ * 
+ * * `delete` - (Required) Specify deallocation parameters for stateful node deletion.
+ *     * `should_terminate_vm` - (Required) Indicates whether to delete the stateful node&#39;s VM.
+ *     * `network_should_deallocate` - (Required) Indicates whether to delete the stateful node&#39;s network resources.
+ *     * `network_ttl_in_hours` - (Optional, Default: 96) Hours to keep the network resource alive before deletion.
+ *     * `disk_should_deallocate` - (Required) Indicates whether to delete the stateful node&#39;s disk resources.
+ *     * `disk_ttl_in_hours` - (Optional, Default: 96) Hours to keep the disk resource alive before deletion.
+ *     * `snapshot_should_deallocate` - (Required) Indicates whether to delete the stateful node&#39;s snapshot resources.
+ *     * `snapshot_ttl_in_hours` - (Optional, Default: 96) Hours to keep the snapshots alive before deletion.
+ *     * `public_ip_should_deallocate` - (Required) Indicates whether to delete the stateful node&#39;s public ip resources.
+ *     * `public_ip_ttl_in_hours` - (Optional, Default: 96) Hours to keep the public ip alive before deletion.
  * 
  */
 @ResourceType(type="spotinst:index/statefulNodeAzure:StatefulNodeAzure")
@@ -639,6 +668,12 @@ public class StatefulNodeAzure extends com.pulumi.resources.CustomResource {
 
     public Output<List<StatefulNodeAzureSecret>> secrets() {
         return this.secrets;
+    }
+    @Export(name="security", type=StatefulNodeAzureSecurity.class, parameters={})
+    private Output</* @Nullable */ StatefulNodeAzureSecurity> security;
+
+    public Output<Optional<StatefulNodeAzureSecurity>> security() {
+        return Codegen.optional(this.security);
     }
     @Export(name="shouldPersistDataDisks", type=Boolean.class, parameters={})
     private Output<Boolean> shouldPersistDataDisks;

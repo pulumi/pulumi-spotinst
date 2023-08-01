@@ -276,6 +276,12 @@ export interface StatefulNodeAzureSecretVaultCertificate {
     certificateUrl?: pulumi.Input<string>;
 }
 
+export interface StatefulNodeAzureSecurity {
+    secureBootEnabled?: pulumi.Input<boolean>;
+    securityType?: pulumi.Input<string>;
+    vtpmEnabled?: pulumi.Input<boolean>;
+}
+
 export interface StatefulNodeAzureSignal {
     timeout: pulumi.Input<number>;
     type: pulumi.Input<string>;
