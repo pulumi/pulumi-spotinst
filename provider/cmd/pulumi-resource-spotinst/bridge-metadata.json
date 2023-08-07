@@ -564,6 +564,9 @@
                             }
                         }
                     },
+                    "on_demand_types": {
+                        "maxItemsOne": false
+                    },
                     "ondemand_count": {},
                     "orientation": {},
                     "persist_block_devices": {},
@@ -580,6 +583,22 @@
                     },
                     "product": {},
                     "region": {},
+                    "resource_requirements": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "excluded_instance_families": {
+                                    "maxItemsOne": false
+                                },
+                                "excluded_instance_generations": {
+                                    "maxItemsOne": false
+                                },
+                                "excluded_instance_types": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
                     "resource_tag_specification": {
                         "maxItemsOne": false,
                         "elem": {
@@ -2753,6 +2772,9 @@
                                 "architectures": {
                                     "maxItemsOne": false
                                 },
+                                "exclude_series": {
+                                    "maxItemsOne": false
+                                },
                                 "series": {
                                     "maxItemsOne": false
                                 }
@@ -2823,6 +2845,9 @@
                         "elem": {
                             "fields": {
                                 "architectures": {
+                                    "maxItemsOne": false
+                                },
+                                "exclude_series": {
                                     "maxItemsOne": false
                                 },
                                 "series": {
@@ -4978,6 +5003,17 @@
                 "privateIpAddress": "private_ip_address",
                 "secondaryPrivateIpAddressCount": "secondary_private_ip_address_count"
             },
+            "spotinst:aws/ElastigroupResourceRequirement:ElastigroupResourceRequirement": {
+                "excludedInstanceFamilies": "excluded_instance_families",
+                "excludedInstanceGenerations": "excluded_instance_generations",
+                "excludedInstanceTypes": "excluded_instance_types",
+                "requiredGpuMaximum": "required_gpu_maximum",
+                "requiredGpuMinimum": "required_gpu_minimum",
+                "requiredMemoryMaximum": "required_memory_maximum",
+                "requiredMemoryMinimum": "required_memory_minimum",
+                "requiredVcpuMaximum": "required_vcpu_maximum",
+                "requiredVcpuMinimum": "required_vcpu_minimum"
+            },
             "spotinst:aws/ElastigroupResourceTagSpecification:ElastigroupResourceTagSpecification": {
                 "shouldTagAmis": "should_tag_amis",
                 "shouldTagEnis": "should_tag_enis",
@@ -5428,6 +5464,7 @@
                 "multaiTargetSets": "multai_target_sets",
                 "multipleMetrics": "multiple_metrics",
                 "networkInterfaces": "network_interface",
+                "onDemandTypes": "on_demand_types",
                 "ondemandCount": "ondemand_count",
                 "persistBlockDevices": "persist_block_devices",
                 "persistPrivateIp": "persist_private_ip",
@@ -5435,6 +5472,7 @@
                 "placementTenancy": "placement_tenancy",
                 "preferredAvailabilityZones": "preferred_availability_zones",
                 "privateIps": "private_ips",
+                "resourceRequirements": "resource_requirements",
                 "resourceTagSpecifications": "resource_tag_specification",
                 "revertToSpot": "revert_to_spot",
                 "scalingDownPolicies": "scaling_down_policy",
@@ -5768,6 +5806,7 @@
                 "maxVcpu": "max_vcpu"
             },
             "spotinst:azure/OceanNpFilters:OceanNpFilters": {
+                "excludeSeries": "exclude_series",
                 "maxMemoryGib": "max_memory_gib",
                 "maxVcpu": "max_vcpu",
                 "minMemoryGib": "min_memory_gib",
@@ -5790,6 +5829,7 @@
                 "timeWindows": "time_windows"
             },
             "spotinst:azure/OceanNpVirtualNodeGroupFilters:OceanNpVirtualNodeGroupFilters": {
+                "excludeSeries": "exclude_series",
                 "maxMemoryGib": "max_memory_gib",
                 "maxVcpu": "max_vcpu",
                 "minMemoryGib": "min_memory_gib",
@@ -5887,6 +5927,7 @@
                 "minCount": "min_count",
                 "osDiskSizeGb": "os_disk_size_gb",
                 "osDiskType": "os_disk_type",
+                "osSku": "os_sku",
                 "osType": "os_type",
                 "spotPercentage": "spot_percentage"
             },
@@ -5900,6 +5941,7 @@
                 "oceanId": "ocean_id",
                 "osDiskSizeGb": "os_disk_size_gb",
                 "osDiskType": "os_disk_type",
+                "osSku": "os_sku",
                 "osType": "os_type",
                 "spotPercentage": "spot_percentage"
             },
