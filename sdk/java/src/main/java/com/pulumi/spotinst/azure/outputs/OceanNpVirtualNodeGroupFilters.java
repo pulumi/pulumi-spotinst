@@ -15,6 +15,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class OceanNpVirtualNodeGroupFilters {
     private @Nullable List<String> architectures;
+    private @Nullable List<String> excludeSeries;
     private @Nullable Double maxMemoryGib;
     private @Nullable Integer maxVcpu;
     private @Nullable Double minMemoryGib;
@@ -24,6 +25,9 @@ public final class OceanNpVirtualNodeGroupFilters {
     private OceanNpVirtualNodeGroupFilters() {}
     public List<String> architectures() {
         return this.architectures == null ? List.of() : this.architectures;
+    }
+    public List<String> excludeSeries() {
+        return this.excludeSeries == null ? List.of() : this.excludeSeries;
     }
     public Optional<Double> maxMemoryGib() {
         return Optional.ofNullable(this.maxMemoryGib);
@@ -51,6 +55,7 @@ public final class OceanNpVirtualNodeGroupFilters {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> architectures;
+        private @Nullable List<String> excludeSeries;
         private @Nullable Double maxMemoryGib;
         private @Nullable Integer maxVcpu;
         private @Nullable Double minMemoryGib;
@@ -60,6 +65,7 @@ public final class OceanNpVirtualNodeGroupFilters {
         public Builder(OceanNpVirtualNodeGroupFilters defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.architectures = defaults.architectures;
+    	      this.excludeSeries = defaults.excludeSeries;
     	      this.maxMemoryGib = defaults.maxMemoryGib;
     	      this.maxVcpu = defaults.maxVcpu;
     	      this.minMemoryGib = defaults.minMemoryGib;
@@ -74,6 +80,14 @@ public final class OceanNpVirtualNodeGroupFilters {
         }
         public Builder architectures(String... architectures) {
             return architectures(List.of(architectures));
+        }
+        @CustomType.Setter
+        public Builder excludeSeries(@Nullable List<String> excludeSeries) {
+            this.excludeSeries = excludeSeries;
+            return this;
+        }
+        public Builder excludeSeries(String... excludeSeries) {
+            return excludeSeries(List.of(excludeSeries));
         }
         @CustomType.Setter
         public Builder maxMemoryGib(@Nullable Double maxMemoryGib) {
@@ -106,6 +120,7 @@ public final class OceanNpVirtualNodeGroupFilters {
         public OceanNpVirtualNodeGroupFilters build() {
             final var o = new OceanNpVirtualNodeGroupFilters();
             o.architectures = architectures;
+            o.excludeSeries = excludeSeries;
             o.maxMemoryGib = maxMemoryGib;
             o.maxVcpu = maxVcpu;
             o.minMemoryGib = minMemoryGib;

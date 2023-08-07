@@ -31,6 +31,7 @@ import com.pulumi.spotinst.aws.outputs.ElastigroupMetadataOptions;
 import com.pulumi.spotinst.aws.outputs.ElastigroupMultaiTargetSet;
 import com.pulumi.spotinst.aws.outputs.ElastigroupMultipleMetrics;
 import com.pulumi.spotinst.aws.outputs.ElastigroupNetworkInterface;
+import com.pulumi.spotinst.aws.outputs.ElastigroupResourceRequirement;
 import com.pulumi.spotinst.aws.outputs.ElastigroupResourceTagSpecification;
 import com.pulumi.spotinst.aws.outputs.ElastigroupRevertToSpot;
 import com.pulumi.spotinst.aws.outputs.ElastigroupScalingDownPolicy;
@@ -66,6 +67,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.spotinst.aws.inputs.ElastigroupCpuOptionsArgs;
  * import com.pulumi.spotinst.aws.inputs.ElastigroupInstanceTypesWeightArgs;
  * import com.pulumi.spotinst.aws.inputs.ElastigroupMetadataOptionsArgs;
+ * import com.pulumi.spotinst.aws.inputs.ElastigroupResourceRequirementArgs;
  * import com.pulumi.spotinst.aws.inputs.ElastigroupResourceTagSpecificationArgs;
  * import com.pulumi.spotinst.aws.inputs.ElastigroupScalingDownPolicyArgs;
  * import com.pulumi.spotinst.aws.inputs.ElastigroupScalingStrategyArgs;
@@ -121,10 +123,26 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .minSize(0)
  *             .minimumInstanceLifetime(12)
+ *             .onDemandTypes(&#34;c3.large&#34;)
  *             .orientation(&#34;balanced&#34;)
  *             .placementTenancy(&#34;default&#34;)
  *             .product(&#34;Linux/UNIX&#34;)
  *             .region(&#34;us-west-2&#34;)
+ *             .resourceRequirements(ElastigroupResourceRequirementArgs.builder()
+ *                 .excludedInstanceFamilies(                
+ *                     &#34;a&#34;,
+ *                     &#34;m&#34;)
+ *                 .excludedInstanceGenerations(                
+ *                     &#34;1&#34;,
+ *                     &#34;2&#34;)
+ *                 .excludedInstanceTypes(&#34;m3.large&#34;)
+ *                 .requiredGpuMaximum(16)
+ *                 .requiredGpuMinimum(1)
+ *                 .requiredMemoryMaximum(512)
+ *                 .requiredMemoryMinimum(1)
+ *                 .requiredVcpuMaximum(64)
+ *                 .requiredVcpuMinimum(1)
+ *                 .build())
  *             .resourceTagSpecifications(ElastigroupResourceTagSpecificationArgs.builder()
  *                 .shouldTagAmis(true)
  *                 .shouldTagEnis(true)
@@ -489,14 +507,14 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="instanceTypesOndemand", type=String.class, parameters={})
-    private Output<String> instanceTypesOndemand;
+    private Output</* @Nullable */ String> instanceTypesOndemand;
 
     /**
      * @return The type of instance determines your instance&#39;s CPU capacity, memory and storage (e.g., m1.small, c1.xlarge).
      * 
      */
-    public Output<String> instanceTypesOndemand() {
-        return this.instanceTypesOndemand;
+    public Output<Optional<String>> instanceTypesOndemand() {
+        return Codegen.optional(this.instanceTypesOndemand);
     }
     /**
      * Prioritize a subset of spot instance types. Must be a subset of the selected spot instance types.
@@ -513,18 +531,18 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.instanceTypesPreferredSpots);
     }
     /**
-     * One or more instance types.
+     * One or more instance types. Note: Cannot be defined if &#39;resourceRequirements&#39; is defined.
      * 
      */
     @Export(name="instanceTypesSpots", type=List.class, parameters={String.class})
-    private Output<List<String>> instanceTypesSpots;
+    private Output</* @Nullable */ List<String>> instanceTypesSpots;
 
     /**
-     * @return One or more instance types.
+     * @return One or more instance types. Note: Cannot be defined if &#39;resourceRequirements&#39; is defined.
      * 
      */
-    public Output<List<String>> instanceTypesSpots() {
-        return this.instanceTypesSpots;
+    public Output<Optional<List<String>>> instanceTypesSpots() {
+        return Codegen.optional(this.instanceTypesSpots);
     }
     /**
      * List of weights per instance type for weighted groups. Each object in the list should have the following attributes:
@@ -809,6 +827,20 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.networkInterfaces);
     }
     /**
+     * Available ondemand instance types. Note: Either ondemand or onDemandTypes must be defined, but not both.
+     * 
+     */
+    @Export(name="onDemandTypes", type=List.class, parameters={String.class})
+    private Output</* @Nullable */ List<String>> onDemandTypes;
+
+    /**
+     * @return Available ondemand instance types. Note: Either ondemand or onDemandTypes must be defined, but not both.
+     * 
+     */
+    public Output<Optional<List<String>>> onDemandTypes() {
+        return Codegen.optional(this.onDemandTypes);
+    }
+    /**
      * Number of on demand instances to launch in the group. All other instances will be spot instances. When this parameter is set the `spot_percentage` parameter is being ignored.
      * 
      */
@@ -1001,6 +1033,20 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> region() {
         return Codegen.optional(this.region);
+    }
+    /**
+     * Required instance attributes. Instance types will be selected based on these requirements.
+     * 
+     */
+    @Export(name="resourceRequirements", type=List.class, parameters={ElastigroupResourceRequirement.class})
+    private Output</* @Nullable */ List<ElastigroupResourceRequirement>> resourceRequirements;
+
+    /**
+     * @return Required instance attributes. Instance types will be selected based on these requirements.
+     * 
+     */
+    public Output<Optional<List<ElastigroupResourceRequirement>>> resourceRequirements() {
+        return Codegen.optional(this.resourceRequirements);
     }
     /**
      * User will specify which resources should be tagged with group tags.

@@ -47,6 +47,7 @@ export class OceanNpVirtualNodeGroup extends pulumi.CustomResource {
     public readonly oceanId!: pulumi.Output<string>;
     public readonly osDiskSizeGb!: pulumi.Output<number | undefined>;
     public readonly osDiskType!: pulumi.Output<string | undefined>;
+    public readonly osSku!: pulumi.Output<string | undefined>;
     public readonly osType!: pulumi.Output<string | undefined>;
     public readonly spotPercentage!: pulumi.Output<number | undefined>;
     public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
@@ -78,6 +79,7 @@ export class OceanNpVirtualNodeGroup extends pulumi.CustomResource {
             resourceInputs["oceanId"] = state ? state.oceanId : undefined;
             resourceInputs["osDiskSizeGb"] = state ? state.osDiskSizeGb : undefined;
             resourceInputs["osDiskType"] = state ? state.osDiskType : undefined;
+            resourceInputs["osSku"] = state ? state.osSku : undefined;
             resourceInputs["osType"] = state ? state.osType : undefined;
             resourceInputs["spotPercentage"] = state ? state.spotPercentage : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
@@ -100,6 +102,7 @@ export class OceanNpVirtualNodeGroup extends pulumi.CustomResource {
             resourceInputs["oceanId"] = args ? args.oceanId : undefined;
             resourceInputs["osDiskSizeGb"] = args ? args.osDiskSizeGb : undefined;
             resourceInputs["osDiskType"] = args ? args.osDiskType : undefined;
+            resourceInputs["osSku"] = args ? args.osSku : undefined;
             resourceInputs["osType"] = args ? args.osType : undefined;
             resourceInputs["spotPercentage"] = args ? args.spotPercentage : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
@@ -127,6 +130,7 @@ export interface OceanNpVirtualNodeGroupState {
     oceanId?: pulumi.Input<string>;
     osDiskSizeGb?: pulumi.Input<number>;
     osDiskType?: pulumi.Input<string>;
+    osSku?: pulumi.Input<string>;
     osType?: pulumi.Input<string>;
     spotPercentage?: pulumi.Input<number>;
     tags?: pulumi.Input<{[key: string]: any}>;
@@ -150,6 +154,7 @@ export interface OceanNpVirtualNodeGroupArgs {
     oceanId: pulumi.Input<string>;
     osDiskSizeGb?: pulumi.Input<number>;
     osDiskType?: pulumi.Input<string>;
+    osSku?: pulumi.Input<string>;
     osType?: pulumi.Input<string>;
     spotPercentage?: pulumi.Input<number>;
     tags?: pulumi.Input<{[key: string]: any}>;

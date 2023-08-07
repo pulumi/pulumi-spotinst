@@ -2093,6 +2093,7 @@ class OceanNpAutoscalerResourceLimitsArgs:
 class OceanNpFiltersArgs:
     def __init__(__self__, *,
                  architectures: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 exclude_series: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  max_memory_gib: Optional[pulumi.Input[float]] = None,
                  max_vcpu: Optional[pulumi.Input[int]] = None,
                  min_memory_gib: Optional[pulumi.Input[float]] = None,
@@ -2100,6 +2101,8 @@ class OceanNpFiltersArgs:
                  series: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         if architectures is not None:
             pulumi.set(__self__, "architectures", architectures)
+        if exclude_series is not None:
+            pulumi.set(__self__, "exclude_series", exclude_series)
         if max_memory_gib is not None:
             pulumi.set(__self__, "max_memory_gib", max_memory_gib)
         if max_vcpu is not None:
@@ -2119,6 +2122,15 @@ class OceanNpFiltersArgs:
     @architectures.setter
     def architectures(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "architectures", value)
+
+    @property
+    @pulumi.getter(name="excludeSeries")
+    def exclude_series(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "exclude_series")
+
+    @exclude_series.setter
+    def exclude_series(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "exclude_series", value)
 
     @property
     @pulumi.getter(name="maxMemoryGib")
@@ -2323,6 +2335,7 @@ class OceanNpTaintArgs:
 class OceanNpVirtualNodeGroupFiltersArgs:
     def __init__(__self__, *,
                  architectures: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 exclude_series: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  max_memory_gib: Optional[pulumi.Input[float]] = None,
                  max_vcpu: Optional[pulumi.Input[int]] = None,
                  min_memory_gib: Optional[pulumi.Input[float]] = None,
@@ -2330,6 +2343,8 @@ class OceanNpVirtualNodeGroupFiltersArgs:
                  series: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         if architectures is not None:
             pulumi.set(__self__, "architectures", architectures)
+        if exclude_series is not None:
+            pulumi.set(__self__, "exclude_series", exclude_series)
         if max_memory_gib is not None:
             pulumi.set(__self__, "max_memory_gib", max_memory_gib)
         if max_vcpu is not None:
@@ -2349,6 +2364,15 @@ class OceanNpVirtualNodeGroupFiltersArgs:
     @architectures.setter
     def architectures(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "architectures", value)
+
+    @property
+    @pulumi.getter(name="excludeSeries")
+    def exclude_series(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "exclude_series")
+
+    @exclude_series.setter
+    def exclude_series(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "exclude_series", value)
 
     @property
     @pulumi.getter(name="maxMemoryGib")

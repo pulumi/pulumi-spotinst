@@ -102,6 +102,12 @@ public class OceanNpVirtualNodeGroup extends com.pulumi.resources.CustomResource
     public Output<Optional<String>> osDiskType() {
         return Codegen.optional(this.osDiskType);
     }
+    @Export(name="osSku", type=String.class, parameters={})
+    private Output</* @Nullable */ String> osSku;
+
+    public Output<Optional<String>> osSku() {
+        return Codegen.optional(this.osSku);
+    }
     @Export(name="osType", type=String.class, parameters={})
     private Output</* @Nullable */ String> osType;
 

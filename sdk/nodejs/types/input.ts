@@ -1251,6 +1251,45 @@ export namespace aws {
         secondaryPrivateIpAddressCount?: pulumi.Input<string>;
     }
 
+    export interface ElastigroupResourceRequirement {
+        /**
+         * Instance families to exclude
+         */
+        excludedInstanceFamilies?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Instance generations to exclude
+         */
+        excludedInstanceGenerations?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Instance types to exclude
+         */
+        excludedInstanceTypes?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Required maximum instance GPU (<=16)
+         */
+        requiredGpuMaximum?: pulumi.Input<number>;
+        /**
+         * Required minimum instance GPU (>=1)
+         */
+        requiredGpuMinimum?: pulumi.Input<number>;
+        /**
+         * Required maximum instance memory (<=512)
+         */
+        requiredMemoryMaximum: pulumi.Input<number>;
+        /**
+         * Required minimum instance memory (>=1)
+         */
+        requiredMemoryMinimum: pulumi.Input<number>;
+        /**
+         * Required maximum instance vCPU (<=64)
+         */
+        requiredVcpuMaximum: pulumi.Input<number>;
+        /**
+         * Required minimum instance vCPU (>=1)
+         */
+        requiredVcpuMinimum: pulumi.Input<number>;
+    }
+
     export interface ElastigroupResourceTagSpecification {
         /**
          * Tag specification for AMI resources.
@@ -3495,6 +3534,7 @@ export namespace azure {
 
     export interface OceanNpFilters {
         architectures?: pulumi.Input<pulumi.Input<string>[]>;
+        excludeSeries?: pulumi.Input<pulumi.Input<string>[]>;
         maxMemoryGib?: pulumi.Input<number>;
         maxVcpu?: pulumi.Input<number>;
         minMemoryGib?: pulumi.Input<number>;
@@ -3530,6 +3570,7 @@ export namespace azure {
 
     export interface OceanNpVirtualNodeGroupFilters {
         architectures?: pulumi.Input<pulumi.Input<string>[]>;
+        excludeSeries?: pulumi.Input<pulumi.Input<string>[]>;
         maxMemoryGib?: pulumi.Input<number>;
         maxVcpu?: pulumi.Input<number>;
         minMemoryGib?: pulumi.Input<number>;

@@ -69,6 +69,9 @@ namespace Pulumi.SpotInst.Azure
         [Output("osDiskType")]
         public Output<string?> OsDiskType { get; private set; } = null!;
 
+        [Output("osSku")]
+        public Output<string?> OsSku { get; private set; } = null!;
+
         [Output("osType")]
         public Output<string?> OsType { get; private set; } = null!;
 
@@ -202,6 +205,9 @@ namespace Pulumi.SpotInst.Azure
         [Input("osDiskType")]
         public Input<string>? OsDiskType { get; set; }
 
+        [Input("osSku")]
+        public Input<string>? OsSku { get; set; }
+
         [Input("osType")]
         public Input<string>? OsType { get; set; }
 
@@ -306,6 +312,9 @@ namespace Pulumi.SpotInst.Azure
 
         [Input("osDiskType")]
         public Input<string>? OsDiskType { get; set; }
+
+        [Input("osSku")]
+        public Input<string>? OsSku { get; set; }
 
         [Input("osType")]
         public Input<string>? OsType { get; set; }

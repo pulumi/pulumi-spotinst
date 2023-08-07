@@ -14,6 +14,7 @@ namespace Pulumi.SpotInst.Azure.Outputs
     public sealed class OceanNpVirtualNodeGroupFilters
     {
         public readonly ImmutableArray<string> Architectures;
+        public readonly ImmutableArray<string> ExcludeSeries;
         public readonly double? MaxMemoryGib;
         public readonly int? MaxVcpu;
         public readonly double? MinMemoryGib;
@@ -23,6 +24,8 @@ namespace Pulumi.SpotInst.Azure.Outputs
         [OutputConstructor]
         private OceanNpVirtualNodeGroupFilters(
             ImmutableArray<string> architectures,
+
+            ImmutableArray<string> excludeSeries,
 
             double? maxMemoryGib,
 
@@ -35,6 +38,7 @@ namespace Pulumi.SpotInst.Azure.Outputs
             ImmutableArray<string> series)
         {
             Architectures = architectures;
+            ExcludeSeries = excludeSeries;
             MaxMemoryGib = maxMemoryGib;
             MaxVcpu = maxVcpu;
             MinMemoryGib = minMemoryGib;

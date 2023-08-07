@@ -25,6 +25,13 @@ public final class OceanNpVirtualNodeGroupFiltersArgs extends com.pulumi.resourc
         return Optional.ofNullable(this.architectures);
     }
 
+    @Import(name="excludeSeries")
+    private @Nullable Output<List<String>> excludeSeries;
+
+    public Optional<Output<List<String>>> excludeSeries() {
+        return Optional.ofNullable(this.excludeSeries);
+    }
+
     @Import(name="maxMemoryGib")
     private @Nullable Output<Double> maxMemoryGib;
 
@@ -64,6 +71,7 @@ public final class OceanNpVirtualNodeGroupFiltersArgs extends com.pulumi.resourc
 
     private OceanNpVirtualNodeGroupFiltersArgs(OceanNpVirtualNodeGroupFiltersArgs $) {
         this.architectures = $.architectures;
+        this.excludeSeries = $.excludeSeries;
         this.maxMemoryGib = $.maxMemoryGib;
         this.maxVcpu = $.maxVcpu;
         this.minMemoryGib = $.minMemoryGib;
@@ -100,6 +108,19 @@ public final class OceanNpVirtualNodeGroupFiltersArgs extends com.pulumi.resourc
 
         public Builder architectures(String... architectures) {
             return architectures(List.of(architectures));
+        }
+
+        public Builder excludeSeries(@Nullable Output<List<String>> excludeSeries) {
+            $.excludeSeries = excludeSeries;
+            return this;
+        }
+
+        public Builder excludeSeries(List<String> excludeSeries) {
+            return excludeSeries(Output.of(excludeSeries));
+        }
+
+        public Builder excludeSeries(String... excludeSeries) {
+            return excludeSeries(List.of(excludeSeries));
         }
 
         public Builder maxMemoryGib(@Nullable Output<Double> maxMemoryGib) {

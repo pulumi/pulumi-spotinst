@@ -9889,6 +9889,175 @@ func (o ElastigroupNetworkInterfaceArrayOutput) Index(i pulumi.IntInput) Elastig
 	}).(ElastigroupNetworkInterfaceOutput)
 }
 
+type ElastigroupResourceRequirement struct {
+	// Instance families to exclude
+	ExcludedInstanceFamilies []string `pulumi:"excludedInstanceFamilies"`
+	// Instance generations to exclude
+	ExcludedInstanceGenerations []string `pulumi:"excludedInstanceGenerations"`
+	// Instance types to exclude
+	ExcludedInstanceTypes []string `pulumi:"excludedInstanceTypes"`
+	// Required maximum instance GPU (<=16)
+	RequiredGpuMaximum *int `pulumi:"requiredGpuMaximum"`
+	// Required minimum instance GPU (>=1)
+	RequiredGpuMinimum *int `pulumi:"requiredGpuMinimum"`
+	// Required maximum instance memory (<=512)
+	RequiredMemoryMaximum int `pulumi:"requiredMemoryMaximum"`
+	// Required minimum instance memory (>=1)
+	RequiredMemoryMinimum int `pulumi:"requiredMemoryMinimum"`
+	// Required maximum instance vCPU (<=64)
+	RequiredVcpuMaximum int `pulumi:"requiredVcpuMaximum"`
+	// Required minimum instance vCPU (>=1)
+	RequiredVcpuMinimum int `pulumi:"requiredVcpuMinimum"`
+}
+
+// ElastigroupResourceRequirementInput is an input type that accepts ElastigroupResourceRequirementArgs and ElastigroupResourceRequirementOutput values.
+// You can construct a concrete instance of `ElastigroupResourceRequirementInput` via:
+//
+//	ElastigroupResourceRequirementArgs{...}
+type ElastigroupResourceRequirementInput interface {
+	pulumi.Input
+
+	ToElastigroupResourceRequirementOutput() ElastigroupResourceRequirementOutput
+	ToElastigroupResourceRequirementOutputWithContext(context.Context) ElastigroupResourceRequirementOutput
+}
+
+type ElastigroupResourceRequirementArgs struct {
+	// Instance families to exclude
+	ExcludedInstanceFamilies pulumi.StringArrayInput `pulumi:"excludedInstanceFamilies"`
+	// Instance generations to exclude
+	ExcludedInstanceGenerations pulumi.StringArrayInput `pulumi:"excludedInstanceGenerations"`
+	// Instance types to exclude
+	ExcludedInstanceTypes pulumi.StringArrayInput `pulumi:"excludedInstanceTypes"`
+	// Required maximum instance GPU (<=16)
+	RequiredGpuMaximum pulumi.IntPtrInput `pulumi:"requiredGpuMaximum"`
+	// Required minimum instance GPU (>=1)
+	RequiredGpuMinimum pulumi.IntPtrInput `pulumi:"requiredGpuMinimum"`
+	// Required maximum instance memory (<=512)
+	RequiredMemoryMaximum pulumi.IntInput `pulumi:"requiredMemoryMaximum"`
+	// Required minimum instance memory (>=1)
+	RequiredMemoryMinimum pulumi.IntInput `pulumi:"requiredMemoryMinimum"`
+	// Required maximum instance vCPU (<=64)
+	RequiredVcpuMaximum pulumi.IntInput `pulumi:"requiredVcpuMaximum"`
+	// Required minimum instance vCPU (>=1)
+	RequiredVcpuMinimum pulumi.IntInput `pulumi:"requiredVcpuMinimum"`
+}
+
+func (ElastigroupResourceRequirementArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupResourceRequirement)(nil)).Elem()
+}
+
+func (i ElastigroupResourceRequirementArgs) ToElastigroupResourceRequirementOutput() ElastigroupResourceRequirementOutput {
+	return i.ToElastigroupResourceRequirementOutputWithContext(context.Background())
+}
+
+func (i ElastigroupResourceRequirementArgs) ToElastigroupResourceRequirementOutputWithContext(ctx context.Context) ElastigroupResourceRequirementOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupResourceRequirementOutput)
+}
+
+// ElastigroupResourceRequirementArrayInput is an input type that accepts ElastigroupResourceRequirementArray and ElastigroupResourceRequirementArrayOutput values.
+// You can construct a concrete instance of `ElastigroupResourceRequirementArrayInput` via:
+//
+//	ElastigroupResourceRequirementArray{ ElastigroupResourceRequirementArgs{...} }
+type ElastigroupResourceRequirementArrayInput interface {
+	pulumi.Input
+
+	ToElastigroupResourceRequirementArrayOutput() ElastigroupResourceRequirementArrayOutput
+	ToElastigroupResourceRequirementArrayOutputWithContext(context.Context) ElastigroupResourceRequirementArrayOutput
+}
+
+type ElastigroupResourceRequirementArray []ElastigroupResourceRequirementInput
+
+func (ElastigroupResourceRequirementArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ElastigroupResourceRequirement)(nil)).Elem()
+}
+
+func (i ElastigroupResourceRequirementArray) ToElastigroupResourceRequirementArrayOutput() ElastigroupResourceRequirementArrayOutput {
+	return i.ToElastigroupResourceRequirementArrayOutputWithContext(context.Background())
+}
+
+func (i ElastigroupResourceRequirementArray) ToElastigroupResourceRequirementArrayOutputWithContext(ctx context.Context) ElastigroupResourceRequirementArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupResourceRequirementArrayOutput)
+}
+
+type ElastigroupResourceRequirementOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupResourceRequirementOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupResourceRequirement)(nil)).Elem()
+}
+
+func (o ElastigroupResourceRequirementOutput) ToElastigroupResourceRequirementOutput() ElastigroupResourceRequirementOutput {
+	return o
+}
+
+func (o ElastigroupResourceRequirementOutput) ToElastigroupResourceRequirementOutputWithContext(ctx context.Context) ElastigroupResourceRequirementOutput {
+	return o
+}
+
+// Instance families to exclude
+func (o ElastigroupResourceRequirementOutput) ExcludedInstanceFamilies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ElastigroupResourceRequirement) []string { return v.ExcludedInstanceFamilies }).(pulumi.StringArrayOutput)
+}
+
+// Instance generations to exclude
+func (o ElastigroupResourceRequirementOutput) ExcludedInstanceGenerations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ElastigroupResourceRequirement) []string { return v.ExcludedInstanceGenerations }).(pulumi.StringArrayOutput)
+}
+
+// Instance types to exclude
+func (o ElastigroupResourceRequirementOutput) ExcludedInstanceTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ElastigroupResourceRequirement) []string { return v.ExcludedInstanceTypes }).(pulumi.StringArrayOutput)
+}
+
+// Required maximum instance GPU (<=16)
+func (o ElastigroupResourceRequirementOutput) RequiredGpuMaximum() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ElastigroupResourceRequirement) *int { return v.RequiredGpuMaximum }).(pulumi.IntPtrOutput)
+}
+
+// Required minimum instance GPU (>=1)
+func (o ElastigroupResourceRequirementOutput) RequiredGpuMinimum() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ElastigroupResourceRequirement) *int { return v.RequiredGpuMinimum }).(pulumi.IntPtrOutput)
+}
+
+// Required maximum instance memory (<=512)
+func (o ElastigroupResourceRequirementOutput) RequiredMemoryMaximum() pulumi.IntOutput {
+	return o.ApplyT(func(v ElastigroupResourceRequirement) int { return v.RequiredMemoryMaximum }).(pulumi.IntOutput)
+}
+
+// Required minimum instance memory (>=1)
+func (o ElastigroupResourceRequirementOutput) RequiredMemoryMinimum() pulumi.IntOutput {
+	return o.ApplyT(func(v ElastigroupResourceRequirement) int { return v.RequiredMemoryMinimum }).(pulumi.IntOutput)
+}
+
+// Required maximum instance vCPU (<=64)
+func (o ElastigroupResourceRequirementOutput) RequiredVcpuMaximum() pulumi.IntOutput {
+	return o.ApplyT(func(v ElastigroupResourceRequirement) int { return v.RequiredVcpuMaximum }).(pulumi.IntOutput)
+}
+
+// Required minimum instance vCPU (>=1)
+func (o ElastigroupResourceRequirementOutput) RequiredVcpuMinimum() pulumi.IntOutput {
+	return o.ApplyT(func(v ElastigroupResourceRequirement) int { return v.RequiredVcpuMinimum }).(pulumi.IntOutput)
+}
+
+type ElastigroupResourceRequirementArrayOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupResourceRequirementArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ElastigroupResourceRequirement)(nil)).Elem()
+}
+
+func (o ElastigroupResourceRequirementArrayOutput) ToElastigroupResourceRequirementArrayOutput() ElastigroupResourceRequirementArrayOutput {
+	return o
+}
+
+func (o ElastigroupResourceRequirementArrayOutput) ToElastigroupResourceRequirementArrayOutputWithContext(ctx context.Context) ElastigroupResourceRequirementArrayOutput {
+	return o
+}
+
+func (o ElastigroupResourceRequirementArrayOutput) Index(i pulumi.IntInput) ElastigroupResourceRequirementOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ElastigroupResourceRequirement {
+		return vs[0].([]ElastigroupResourceRequirement)[vs[1].(int)]
+	}).(ElastigroupResourceRequirementOutput)
+}
+
 type ElastigroupResourceTagSpecification struct {
 	// Tag specification for AMI resources.
 	ShouldTagAmis *bool `pulumi:"shouldTagAmis"`
@@ -24890,6 +25059,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupMultipleMetricsMetricDimensionArrayInput)(nil)).Elem(), ElastigroupMultipleMetricsMetricDimensionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupNetworkInterfaceInput)(nil)).Elem(), ElastigroupNetworkInterfaceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupNetworkInterfaceArrayInput)(nil)).Elem(), ElastigroupNetworkInterfaceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupResourceRequirementInput)(nil)).Elem(), ElastigroupResourceRequirementArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupResourceRequirementArrayInput)(nil)).Elem(), ElastigroupResourceRequirementArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupResourceTagSpecificationInput)(nil)).Elem(), ElastigroupResourceTagSpecificationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupResourceTagSpecificationArrayInput)(nil)).Elem(), ElastigroupResourceTagSpecificationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupRevertToSpotInput)(nil)).Elem(), ElastigroupRevertToSpotArgs{})
@@ -25194,6 +25365,8 @@ func init() {
 	pulumi.RegisterOutputType(ElastigroupMultipleMetricsMetricDimensionArrayOutput{})
 	pulumi.RegisterOutputType(ElastigroupNetworkInterfaceOutput{})
 	pulumi.RegisterOutputType(ElastigroupNetworkInterfaceArrayOutput{})
+	pulumi.RegisterOutputType(ElastigroupResourceRequirementOutput{})
+	pulumi.RegisterOutputType(ElastigroupResourceRequirementArrayOutput{})
 	pulumi.RegisterOutputType(ElastigroupResourceTagSpecificationOutput{})
 	pulumi.RegisterOutputType(ElastigroupResourceTagSpecificationArrayOutput{})
 	pulumi.RegisterOutputType(ElastigroupRevertToSpotOutput{})

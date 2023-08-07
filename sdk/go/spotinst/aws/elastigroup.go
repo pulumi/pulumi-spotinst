@@ -62,10 +62,10 @@ type Elastigroup struct {
 	Images                      ElastigroupImageArrayOutput `pulumi:"images"`
 	ImmediateOdRecoverThreshold pulumi.IntPtrOutput         `pulumi:"immediateOdRecoverThreshold"`
 	// The type of instance determines your instance's CPU capacity, memory and storage (e.g., m1.small, c1.xlarge).
-	InstanceTypesOndemand pulumi.StringOutput `pulumi:"instanceTypesOndemand"`
+	InstanceTypesOndemand pulumi.StringPtrOutput `pulumi:"instanceTypesOndemand"`
 	// Prioritize a subset of spot instance types. Must be a subset of the selected spot instance types.
 	InstanceTypesPreferredSpots pulumi.StringArrayOutput `pulumi:"instanceTypesPreferredSpots"`
-	// One or more instance types.
+	// One or more instance types. Note: Cannot be defined if 'resourceRequirements' is defined.
 	InstanceTypesSpots pulumi.StringArrayOutput `pulumi:"instanceTypesSpots"`
 	// List of weights per instance type for weighted groups. Each object in the list should have the following attributes:
 	InstanceTypesWeights ElastigroupInstanceTypesWeightArrayOutput `pulumi:"instanceTypesWeights"`
@@ -108,6 +108,8 @@ type Elastigroup struct {
 	// The group name.
 	Name              pulumi.StringOutput                    `pulumi:"name"`
 	NetworkInterfaces ElastigroupNetworkInterfaceArrayOutput `pulumi:"networkInterfaces"`
+	// Available ondemand instance types. Note: Either ondemand or onDemandTypes must be defined, but not both.
+	OnDemandTypes pulumi.StringArrayOutput `pulumi:"onDemandTypes"`
 	// Number of on demand instances to launch in the group. All other instances will be spot instances. When this parameter is set the `spotPercentage` parameter is being ignored.
 	OndemandCount pulumi.IntPtrOutput `pulumi:"ondemandCount"`
 	// Select a prediction strategy. Valid values: `balanced`, `costOriented`, `equalAzDistribution`, `availabilityOriented`. You can read more in our documentation.
@@ -147,6 +149,8 @@ type Elastigroup struct {
 	// The AWS region your group will be created in.
 	// Note: This parameter is required if you specify subnets (through subnet_ids). This parameter is optional if you specify Availability Zones (through availability_zones).
 	Region pulumi.StringPtrOutput `pulumi:"region"`
+	// Required instance attributes. Instance types will be selected based on these requirements.
+	ResourceRequirements ElastigroupResourceRequirementArrayOutput `pulumi:"resourceRequirements"`
 	// User will specify which resources should be tagged with group tags.
 	ResourceTagSpecifications ElastigroupResourceTagSpecificationArrayOutput `pulumi:"resourceTagSpecifications"`
 	// Hold settings for strategy correction – replacing On-Demand for Spot instances. Supported Values: `"never"`, `"always"`, `"timeWindow"`
@@ -194,12 +198,6 @@ func NewElastigroup(ctx *pulumi.Context,
 
 	if args.FallbackToOndemand == nil {
 		return nil, errors.New("invalid value for required argument 'FallbackToOndemand'")
-	}
-	if args.InstanceTypesOndemand == nil {
-		return nil, errors.New("invalid value for required argument 'InstanceTypesOndemand'")
-	}
-	if args.InstanceTypesSpots == nil {
-		return nil, errors.New("invalid value for required argument 'InstanceTypesSpots'")
 	}
 	if args.Orientation == nil {
 		return nil, errors.New("invalid value for required argument 'Orientation'")
@@ -282,7 +280,7 @@ type elastigroupState struct {
 	InstanceTypesOndemand *string `pulumi:"instanceTypesOndemand"`
 	// Prioritize a subset of spot instance types. Must be a subset of the selected spot instance types.
 	InstanceTypesPreferredSpots []string `pulumi:"instanceTypesPreferredSpots"`
-	// One or more instance types.
+	// One or more instance types. Note: Cannot be defined if 'resourceRequirements' is defined.
 	InstanceTypesSpots []string `pulumi:"instanceTypesSpots"`
 	// List of weights per instance type for weighted groups. Each object in the list should have the following attributes:
 	InstanceTypesWeights []ElastigroupInstanceTypesWeight `pulumi:"instanceTypesWeights"`
@@ -325,6 +323,8 @@ type elastigroupState struct {
 	// The group name.
 	Name              *string                       `pulumi:"name"`
 	NetworkInterfaces []ElastigroupNetworkInterface `pulumi:"networkInterfaces"`
+	// Available ondemand instance types. Note: Either ondemand or onDemandTypes must be defined, but not both.
+	OnDemandTypes []string `pulumi:"onDemandTypes"`
 	// Number of on demand instances to launch in the group. All other instances will be spot instances. When this parameter is set the `spotPercentage` parameter is being ignored.
 	OndemandCount *int `pulumi:"ondemandCount"`
 	// Select a prediction strategy. Valid values: `balanced`, `costOriented`, `equalAzDistribution`, `availabilityOriented`. You can read more in our documentation.
@@ -364,6 +364,8 @@ type elastigroupState struct {
 	// The AWS region your group will be created in.
 	// Note: This parameter is required if you specify subnets (through subnet_ids). This parameter is optional if you specify Availability Zones (through availability_zones).
 	Region *string `pulumi:"region"`
+	// Required instance attributes. Instance types will be selected based on these requirements.
+	ResourceRequirements []ElastigroupResourceRequirement `pulumi:"resourceRequirements"`
 	// User will specify which resources should be tagged with group tags.
 	ResourceTagSpecifications []ElastigroupResourceTagSpecification `pulumi:"resourceTagSpecifications"`
 	// Hold settings for strategy correction – replacing On-Demand for Spot instances. Supported Values: `"never"`, `"always"`, `"timeWindow"`
@@ -452,7 +454,7 @@ type ElastigroupState struct {
 	InstanceTypesOndemand pulumi.StringPtrInput
 	// Prioritize a subset of spot instance types. Must be a subset of the selected spot instance types.
 	InstanceTypesPreferredSpots pulumi.StringArrayInput
-	// One or more instance types.
+	// One or more instance types. Note: Cannot be defined if 'resourceRequirements' is defined.
 	InstanceTypesSpots pulumi.StringArrayInput
 	// List of weights per instance type for weighted groups. Each object in the list should have the following attributes:
 	InstanceTypesWeights ElastigroupInstanceTypesWeightArrayInput
@@ -495,6 +497,8 @@ type ElastigroupState struct {
 	// The group name.
 	Name              pulumi.StringPtrInput
 	NetworkInterfaces ElastigroupNetworkInterfaceArrayInput
+	// Available ondemand instance types. Note: Either ondemand or onDemandTypes must be defined, but not both.
+	OnDemandTypes pulumi.StringArrayInput
 	// Number of on demand instances to launch in the group. All other instances will be spot instances. When this parameter is set the `spotPercentage` parameter is being ignored.
 	OndemandCount pulumi.IntPtrInput
 	// Select a prediction strategy. Valid values: `balanced`, `costOriented`, `equalAzDistribution`, `availabilityOriented`. You can read more in our documentation.
@@ -534,6 +538,8 @@ type ElastigroupState struct {
 	// The AWS region your group will be created in.
 	// Note: This parameter is required if you specify subnets (through subnet_ids). This parameter is optional if you specify Availability Zones (through availability_zones).
 	Region pulumi.StringPtrInput
+	// Required instance attributes. Instance types will be selected based on these requirements.
+	ResourceRequirements ElastigroupResourceRequirementArrayInput
 	// User will specify which resources should be tagged with group tags.
 	ResourceTagSpecifications ElastigroupResourceTagSpecificationArrayInput
 	// Hold settings for strategy correction – replacing On-Demand for Spot instances. Supported Values: `"never"`, `"always"`, `"timeWindow"`
@@ -623,10 +629,10 @@ type elastigroupArgs struct {
 	Images                      []ElastigroupImage `pulumi:"images"`
 	ImmediateOdRecoverThreshold *int               `pulumi:"immediateOdRecoverThreshold"`
 	// The type of instance determines your instance's CPU capacity, memory and storage (e.g., m1.small, c1.xlarge).
-	InstanceTypesOndemand string `pulumi:"instanceTypesOndemand"`
+	InstanceTypesOndemand *string `pulumi:"instanceTypesOndemand"`
 	// Prioritize a subset of spot instance types. Must be a subset of the selected spot instance types.
 	InstanceTypesPreferredSpots []string `pulumi:"instanceTypesPreferredSpots"`
-	// One or more instance types.
+	// One or more instance types. Note: Cannot be defined if 'resourceRequirements' is defined.
 	InstanceTypesSpots []string `pulumi:"instanceTypesSpots"`
 	// List of weights per instance type for weighted groups. Each object in the list should have the following attributes:
 	InstanceTypesWeights []ElastigroupInstanceTypesWeight `pulumi:"instanceTypesWeights"`
@@ -669,6 +675,8 @@ type elastigroupArgs struct {
 	// The group name.
 	Name              *string                       `pulumi:"name"`
 	NetworkInterfaces []ElastigroupNetworkInterface `pulumi:"networkInterfaces"`
+	// Available ondemand instance types. Note: Either ondemand or onDemandTypes must be defined, but not both.
+	OnDemandTypes []string `pulumi:"onDemandTypes"`
 	// Number of on demand instances to launch in the group. All other instances will be spot instances. When this parameter is set the `spotPercentage` parameter is being ignored.
 	OndemandCount *int `pulumi:"ondemandCount"`
 	// Select a prediction strategy. Valid values: `balanced`, `costOriented`, `equalAzDistribution`, `availabilityOriented`. You can read more in our documentation.
@@ -708,6 +716,8 @@ type elastigroupArgs struct {
 	// The AWS region your group will be created in.
 	// Note: This parameter is required if you specify subnets (through subnet_ids). This parameter is optional if you specify Availability Zones (through availability_zones).
 	Region *string `pulumi:"region"`
+	// Required instance attributes. Instance types will be selected based on these requirements.
+	ResourceRequirements []ElastigroupResourceRequirement `pulumi:"resourceRequirements"`
 	// User will specify which resources should be tagged with group tags.
 	ResourceTagSpecifications []ElastigroupResourceTagSpecification `pulumi:"resourceTagSpecifications"`
 	// Hold settings for strategy correction – replacing On-Demand for Spot instances. Supported Values: `"never"`, `"always"`, `"timeWindow"`
@@ -794,10 +804,10 @@ type ElastigroupArgs struct {
 	Images                      ElastigroupImageArrayInput
 	ImmediateOdRecoverThreshold pulumi.IntPtrInput
 	// The type of instance determines your instance's CPU capacity, memory and storage (e.g., m1.small, c1.xlarge).
-	InstanceTypesOndemand pulumi.StringInput
+	InstanceTypesOndemand pulumi.StringPtrInput
 	// Prioritize a subset of spot instance types. Must be a subset of the selected spot instance types.
 	InstanceTypesPreferredSpots pulumi.StringArrayInput
-	// One or more instance types.
+	// One or more instance types. Note: Cannot be defined if 'resourceRequirements' is defined.
 	InstanceTypesSpots pulumi.StringArrayInput
 	// List of weights per instance type for weighted groups. Each object in the list should have the following attributes:
 	InstanceTypesWeights ElastigroupInstanceTypesWeightArrayInput
@@ -840,6 +850,8 @@ type ElastigroupArgs struct {
 	// The group name.
 	Name              pulumi.StringPtrInput
 	NetworkInterfaces ElastigroupNetworkInterfaceArrayInput
+	// Available ondemand instance types. Note: Either ondemand or onDemandTypes must be defined, but not both.
+	OnDemandTypes pulumi.StringArrayInput
 	// Number of on demand instances to launch in the group. All other instances will be spot instances. When this parameter is set the `spotPercentage` parameter is being ignored.
 	OndemandCount pulumi.IntPtrInput
 	// Select a prediction strategy. Valid values: `balanced`, `costOriented`, `equalAzDistribution`, `availabilityOriented`. You can read more in our documentation.
@@ -879,6 +891,8 @@ type ElastigroupArgs struct {
 	// The AWS region your group will be created in.
 	// Note: This parameter is required if you specify subnets (through subnet_ids). This parameter is optional if you specify Availability Zones (through availability_zones).
 	Region pulumi.StringPtrInput
+	// Required instance attributes. Instance types will be selected based on these requirements.
+	ResourceRequirements ElastigroupResourceRequirementArrayInput
 	// User will specify which resources should be tagged with group tags.
 	ResourceTagSpecifications ElastigroupResourceTagSpecificationArrayInput
 	// Hold settings for strategy correction – replacing On-Demand for Spot instances. Supported Values: `"never"`, `"always"`, `"timeWindow"`
@@ -1119,8 +1133,8 @@ func (o ElastigroupOutput) ImmediateOdRecoverThreshold() pulumi.IntPtrOutput {
 }
 
 // The type of instance determines your instance's CPU capacity, memory and storage (e.g., m1.small, c1.xlarge).
-func (o ElastigroupOutput) InstanceTypesOndemand() pulumi.StringOutput {
-	return o.ApplyT(func(v *Elastigroup) pulumi.StringOutput { return v.InstanceTypesOndemand }).(pulumi.StringOutput)
+func (o ElastigroupOutput) InstanceTypesOndemand() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Elastigroup) pulumi.StringPtrOutput { return v.InstanceTypesOndemand }).(pulumi.StringPtrOutput)
 }
 
 // Prioritize a subset of spot instance types. Must be a subset of the selected spot instance types.
@@ -1128,7 +1142,7 @@ func (o ElastigroupOutput) InstanceTypesPreferredSpots() pulumi.StringArrayOutpu
 	return o.ApplyT(func(v *Elastigroup) pulumi.StringArrayOutput { return v.InstanceTypesPreferredSpots }).(pulumi.StringArrayOutput)
 }
 
-// One or more instance types.
+// One or more instance types. Note: Cannot be defined if 'resourceRequirements' is defined.
 func (o ElastigroupOutput) InstanceTypesSpots() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Elastigroup) pulumi.StringArrayOutput { return v.InstanceTypesSpots }).(pulumi.StringArrayOutput)
 }
@@ -1243,6 +1257,11 @@ func (o ElastigroupOutput) NetworkInterfaces() ElastigroupNetworkInterfaceArrayO
 	return o.ApplyT(func(v *Elastigroup) ElastigroupNetworkInterfaceArrayOutput { return v.NetworkInterfaces }).(ElastigroupNetworkInterfaceArrayOutput)
 }
 
+// Available ondemand instance types. Note: Either ondemand or onDemandTypes must be defined, but not both.
+func (o ElastigroupOutput) OnDemandTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Elastigroup) pulumi.StringArrayOutput { return v.OnDemandTypes }).(pulumi.StringArrayOutput)
+}
+
 // Number of on demand instances to launch in the group. All other instances will be spot instances. When this parameter is set the `spotPercentage` parameter is being ignored.
 func (o ElastigroupOutput) OndemandCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Elastigroup) pulumi.IntPtrOutput { return v.OndemandCount }).(pulumi.IntPtrOutput)
@@ -1313,6 +1332,11 @@ func (o ElastigroupOutput) Product() pulumi.StringOutput {
 // Note: This parameter is required if you specify subnets (through subnet_ids). This parameter is optional if you specify Availability Zones (through availability_zones).
 func (o ElastigroupOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Elastigroup) pulumi.StringPtrOutput { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+// Required instance attributes. Instance types will be selected based on these requirements.
+func (o ElastigroupOutput) ResourceRequirements() ElastigroupResourceRequirementArrayOutput {
+	return o.ApplyT(func(v *Elastigroup) ElastigroupResourceRequirementArrayOutput { return v.ResourceRequirements }).(ElastigroupResourceRequirementArrayOutput)
 }
 
 // User will specify which resources should be tagged with group tags.
