@@ -35,6 +35,7 @@ class OceanNpArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  os_disk_size_gb: Optional[pulumi.Input[int]] = None,
                  os_disk_type: Optional[pulumi.Input[str]] = None,
+                 os_sku: Optional[pulumi.Input[str]] = None,
                  os_type: Optional[pulumi.Input[str]] = None,
                  scheduling: Optional[pulumi.Input['OceanNpSchedulingArgs']] = None,
                  spot_percentage: Optional[pulumi.Input[int]] = None,
@@ -77,6 +78,8 @@ class OceanNpArgs:
             pulumi.set(__self__, "os_disk_size_gb", os_disk_size_gb)
         if os_disk_type is not None:
             pulumi.set(__self__, "os_disk_type", os_disk_type)
+        if os_sku is not None:
+            pulumi.set(__self__, "os_sku", os_sku)
         if os_type is not None:
             pulumi.set(__self__, "os_type", os_type)
         if scheduling is not None:
@@ -260,6 +263,15 @@ class OceanNpArgs:
         pulumi.set(self, "os_disk_type", value)
 
     @property
+    @pulumi.getter(name="osSku")
+    def os_sku(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "os_sku")
+
+    @os_sku.setter
+    def os_sku(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "os_sku", value)
+
+    @property
     @pulumi.getter(name="osType")
     def os_type(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "os_type")
@@ -327,6 +339,7 @@ class _OceanNpState:
                  name: Optional[pulumi.Input[str]] = None,
                  os_disk_size_gb: Optional[pulumi.Input[int]] = None,
                  os_disk_type: Optional[pulumi.Input[str]] = None,
+                 os_sku: Optional[pulumi.Input[str]] = None,
                  os_type: Optional[pulumi.Input[str]] = None,
                  scheduling: Optional[pulumi.Input['OceanNpSchedulingArgs']] = None,
                  spot_percentage: Optional[pulumi.Input[int]] = None,
@@ -373,6 +386,8 @@ class _OceanNpState:
             pulumi.set(__self__, "os_disk_size_gb", os_disk_size_gb)
         if os_disk_type is not None:
             pulumi.set(__self__, "os_disk_type", os_disk_type)
+        if os_sku is not None:
+            pulumi.set(__self__, "os_sku", os_sku)
         if os_type is not None:
             pulumi.set(__self__, "os_type", os_type)
         if scheduling is not None:
@@ -556,6 +571,15 @@ class _OceanNpState:
         pulumi.set(self, "os_disk_type", value)
 
     @property
+    @pulumi.getter(name="osSku")
+    def os_sku(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "os_sku")
+
+    @os_sku.setter
+    def os_sku(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "os_sku", value)
+
+    @property
     @pulumi.getter(name="osType")
     def os_type(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "os_type")
@@ -625,6 +649,7 @@ class OceanNp(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  os_disk_size_gb: Optional[pulumi.Input[int]] = None,
                  os_disk_type: Optional[pulumi.Input[str]] = None,
+                 os_sku: Optional[pulumi.Input[str]] = None,
                  os_type: Optional[pulumi.Input[str]] = None,
                  scheduling: Optional[pulumi.Input[pulumi.InputType['OceanNpSchedulingArgs']]] = None,
                  spot_percentage: Optional[pulumi.Input[int]] = None,
@@ -678,6 +703,7 @@ class OceanNp(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  os_disk_size_gb: Optional[pulumi.Input[int]] = None,
                  os_disk_type: Optional[pulumi.Input[str]] = None,
+                 os_sku: Optional[pulumi.Input[str]] = None,
                  os_type: Optional[pulumi.Input[str]] = None,
                  scheduling: Optional[pulumi.Input[pulumi.InputType['OceanNpSchedulingArgs']]] = None,
                  spot_percentage: Optional[pulumi.Input[int]] = None,
@@ -719,6 +745,7 @@ class OceanNp(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["os_disk_size_gb"] = os_disk_size_gb
             __props__.__dict__["os_disk_type"] = os_disk_type
+            __props__.__dict__["os_sku"] = os_sku
             __props__.__dict__["os_type"] = os_type
             __props__.__dict__["scheduling"] = scheduling
             __props__.__dict__["spot_percentage"] = spot_percentage
@@ -753,6 +780,7 @@ class OceanNp(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             os_disk_size_gb: Optional[pulumi.Input[int]] = None,
             os_disk_type: Optional[pulumi.Input[str]] = None,
+            os_sku: Optional[pulumi.Input[str]] = None,
             os_type: Optional[pulumi.Input[str]] = None,
             scheduling: Optional[pulumi.Input[pulumi.InputType['OceanNpSchedulingArgs']]] = None,
             spot_percentage: Optional[pulumi.Input[int]] = None,
@@ -789,6 +817,7 @@ class OceanNp(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["os_disk_size_gb"] = os_disk_size_gb
         __props__.__dict__["os_disk_type"] = os_disk_type
+        __props__.__dict__["os_sku"] = os_sku
         __props__.__dict__["os_type"] = os_type
         __props__.__dict__["scheduling"] = scheduling
         __props__.__dict__["spot_percentage"] = spot_percentage
@@ -890,6 +919,11 @@ class OceanNp(pulumi.CustomResource):
     @pulumi.getter(name="osDiskType")
     def os_disk_type(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "os_disk_type")
+
+    @property
+    @pulumi.getter(name="osSku")
+    def os_sku(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "os_sku")
 
     @property
     @pulumi.getter(name="osType")

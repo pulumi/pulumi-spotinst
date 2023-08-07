@@ -17,8 +17,6 @@ __all__ = ['ElastigroupArgs', 'Elastigroup']
 class ElastigroupArgs:
     def __init__(__self__, *,
                  fallback_to_ondemand: pulumi.Input[bool],
-                 instance_types_ondemand: pulumi.Input[str],
-                 instance_types_spots: pulumi.Input[Sequence[pulumi.Input[str]]],
                  orientation: pulumi.Input[str],
                  product: pulumi.Input[str],
                  security_groups: pulumi.Input[Sequence[pulumi.Input[str]]],
@@ -44,7 +42,9 @@ class ElastigroupArgs:
                  image_id: Optional[pulumi.Input[str]] = None,
                  images: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupImageArgs']]]] = None,
                  immediate_od_recover_threshold: Optional[pulumi.Input[int]] = None,
+                 instance_types_ondemand: Optional[pulumi.Input[str]] = None,
                  instance_types_preferred_spots: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 instance_types_spots: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  instance_types_weights: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupInstanceTypesWeightArgs']]]] = None,
                  integration_beanstalk: Optional[pulumi.Input['ElastigroupIntegrationBeanstalkArgs']] = None,
                  integration_codedeploy: Optional[pulumi.Input['ElastigroupIntegrationCodedeployArgs']] = None,
@@ -68,6 +68,7 @@ class ElastigroupArgs:
                  multiple_metrics: Optional[pulumi.Input['ElastigroupMultipleMetricsArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupNetworkInterfaceArgs']]]] = None,
+                 on_demand_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ondemand_count: Optional[pulumi.Input[int]] = None,
                  persist_block_devices: Optional[pulumi.Input[bool]] = None,
                  persist_private_ip: Optional[pulumi.Input[bool]] = None,
@@ -76,6 +77,7 @@ class ElastigroupArgs:
                  preferred_availability_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  private_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 resource_requirements: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupResourceRequirementArgs']]]] = None,
                  resource_tag_specifications: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupResourceTagSpecificationArgs']]]] = None,
                  revert_to_spot: Optional[pulumi.Input['ElastigroupRevertToSpotArgs']] = None,
                  scaling_down_policies: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingDownPolicyArgs']]]] = None,
@@ -100,8 +102,6 @@ class ElastigroupArgs:
         """
         The set of arguments for constructing a Elastigroup resource.
         :param pulumi.Input[bool] fallback_to_ondemand: In a case of no Spot instances available, Elastigroup will launch on-demand instances instead.
-        :param pulumi.Input[str] instance_types_ondemand: The type of instance determines your instance's CPU capacity, memory and storage (e.g., m1.small, c1.xlarge).
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types_spots: One or more instance types.
         :param pulumi.Input[str] orientation: Select a prediction strategy. Valid values: `balanced`, `costOriented`, `equalAzDistribution`, `availabilityOriented`. You can read more in our documentation.
         :param pulumi.Input[str] product: Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`.
                For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
@@ -127,7 +127,9 @@ class ElastigroupArgs:
         :param pulumi.Input[str] image_id: The ID of the AMI used to launch the instance.
         :param pulumi.Input[Sequence[pulumi.Input['ElastigroupImageArgs']]] images: An array of image objects. 
                Note: Elastigroup can be configured with either imageId or images, but not both.
+        :param pulumi.Input[str] instance_types_ondemand: The type of instance determines your instance's CPU capacity, memory and storage (e.g., m1.small, c1.xlarge).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types_preferred_spots: Prioritize a subset of spot instance types. Must be a subset of the selected spot instance types.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types_spots: One or more instance types. Note: Cannot be defined if 'resourceRequirements' is defined.
         :param pulumi.Input[Sequence[pulumi.Input['ElastigroupInstanceTypesWeightArgs']]] instance_types_weights: List of weights per instance type for weighted groups. Each object in the list should have the following attributes:
         :param pulumi.Input['ElastigroupIntegrationCodedeployArgs'] integration_codedeploy: Describes the [Code Deploy](https://aws.amazon.com/documentation/codedeploy/?id=docs_gateway) integration.
         :param pulumi.Input['ElastigroupIntegrationDockerSwarmArgs'] integration_docker_swarm: Describes the [Docker Swarm](https://api.spotinst.com/integration-docs/elastigroup/container-management/docker-swarm/docker-swarm-integration/) integration.
@@ -146,6 +148,7 @@ class ElastigroupArgs:
         :param pulumi.Input[int] minimum_instance_lifetime: Defines the preferred minimum instance lifetime in hours. Markets which comply with this preference will be prioritized. Optional values: 1, 3, 6, 12, 24.
         :param pulumi.Input[Sequence[pulumi.Input['ElastigroupMultaiTargetSetArgs']]] multai_target_sets: Set of targets to register.
         :param pulumi.Input[str] name: The group name.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] on_demand_types: Available ondemand instance types. Note: Either ondemand or onDemandTypes must be defined, but not both.
         :param pulumi.Input[int] ondemand_count: Number of on demand instances to launch in the group. All other instances will be spot instances. When this parameter is set the `spot_percentage` parameter is being ignored.
         :param pulumi.Input[bool] persist_block_devices: Boolean, should the instance maintain its Data volumes.
         :param pulumi.Input[bool] persist_private_ip: Boolean, should the instance maintain its private IP.
@@ -162,6 +165,7 @@ class ElastigroupArgs:
                ```
         :param pulumi.Input[str] region: The AWS region your group will be created in.
                Note: This parameter is required if you specify subnets (through subnet_ids). This parameter is optional if you specify Availability Zones (through availability_zones).
+        :param pulumi.Input[Sequence[pulumi.Input['ElastigroupResourceRequirementArgs']]] resource_requirements: Required instance attributes. Instance types will be selected based on these requirements.
         :param pulumi.Input[Sequence[pulumi.Input['ElastigroupResourceTagSpecificationArgs']]] resource_tag_specifications: User will specify which resources should be tagged with group tags.
         :param pulumi.Input['ElastigroupRevertToSpotArgs'] revert_to_spot: Hold settings for strategy correction – replacing On-Demand for Spot instances. Supported Values: `"never"`, `"always"`, `"timeWindow"`
         :param pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingStrategyArgs']]] scaling_strategies: Set termination policy.
@@ -177,8 +181,6 @@ class ElastigroupArgs:
         :param pulumi.Input[int] wait_for_capacity_timeout: Time (seconds) to wait for instances to report a 'HEALTHY' status. Useful for plans with multiple dependencies that take some time to initialize. Leave undefined or set to `0` to indicate no wait. This is ignored when updating with blue/green deployment.
         """
         pulumi.set(__self__, "fallback_to_ondemand", fallback_to_ondemand)
-        pulumi.set(__self__, "instance_types_ondemand", instance_types_ondemand)
-        pulumi.set(__self__, "instance_types_spots", instance_types_spots)
         pulumi.set(__self__, "orientation", orientation)
         pulumi.set(__self__, "product", product)
         pulumi.set(__self__, "security_groups", security_groups)
@@ -226,8 +228,12 @@ class ElastigroupArgs:
             pulumi.set(__self__, "images", images)
         if immediate_od_recover_threshold is not None:
             pulumi.set(__self__, "immediate_od_recover_threshold", immediate_od_recover_threshold)
+        if instance_types_ondemand is not None:
+            pulumi.set(__self__, "instance_types_ondemand", instance_types_ondemand)
         if instance_types_preferred_spots is not None:
             pulumi.set(__self__, "instance_types_preferred_spots", instance_types_preferred_spots)
+        if instance_types_spots is not None:
+            pulumi.set(__self__, "instance_types_spots", instance_types_spots)
         if instance_types_weights is not None:
             pulumi.set(__self__, "instance_types_weights", instance_types_weights)
         if integration_beanstalk is not None:
@@ -274,6 +280,8 @@ class ElastigroupArgs:
             pulumi.set(__self__, "name", name)
         if network_interfaces is not None:
             pulumi.set(__self__, "network_interfaces", network_interfaces)
+        if on_demand_types is not None:
+            pulumi.set(__self__, "on_demand_types", on_demand_types)
         if ondemand_count is not None:
             pulumi.set(__self__, "ondemand_count", ondemand_count)
         if persist_block_devices is not None:
@@ -290,6 +298,8 @@ class ElastigroupArgs:
             pulumi.set(__self__, "private_ips", private_ips)
         if region is not None:
             pulumi.set(__self__, "region", region)
+        if resource_requirements is not None:
+            pulumi.set(__self__, "resource_requirements", resource_requirements)
         if resource_tag_specifications is not None:
             pulumi.set(__self__, "resource_tag_specifications", resource_tag_specifications)
         if revert_to_spot is not None:
@@ -344,30 +354,6 @@ class ElastigroupArgs:
     @fallback_to_ondemand.setter
     def fallback_to_ondemand(self, value: pulumi.Input[bool]):
         pulumi.set(self, "fallback_to_ondemand", value)
-
-    @property
-    @pulumi.getter(name="instanceTypesOndemand")
-    def instance_types_ondemand(self) -> pulumi.Input[str]:
-        """
-        The type of instance determines your instance's CPU capacity, memory and storage (e.g., m1.small, c1.xlarge).
-        """
-        return pulumi.get(self, "instance_types_ondemand")
-
-    @instance_types_ondemand.setter
-    def instance_types_ondemand(self, value: pulumi.Input[str]):
-        pulumi.set(self, "instance_types_ondemand", value)
-
-    @property
-    @pulumi.getter(name="instanceTypesSpots")
-    def instance_types_spots(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
-        """
-        One or more instance types.
-        """
-        return pulumi.get(self, "instance_types_spots")
-
-    @instance_types_spots.setter
-    def instance_types_spots(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
-        pulumi.set(self, "instance_types_spots", value)
 
     @property
     @pulumi.getter
@@ -662,6 +648,18 @@ class ElastigroupArgs:
         pulumi.set(self, "immediate_od_recover_threshold", value)
 
     @property
+    @pulumi.getter(name="instanceTypesOndemand")
+    def instance_types_ondemand(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of instance determines your instance's CPU capacity, memory and storage (e.g., m1.small, c1.xlarge).
+        """
+        return pulumi.get(self, "instance_types_ondemand")
+
+    @instance_types_ondemand.setter
+    def instance_types_ondemand(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_types_ondemand", value)
+
+    @property
     @pulumi.getter(name="instanceTypesPreferredSpots")
     def instance_types_preferred_spots(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -672,6 +670,18 @@ class ElastigroupArgs:
     @instance_types_preferred_spots.setter
     def instance_types_preferred_spots(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "instance_types_preferred_spots", value)
+
+    @property
+    @pulumi.getter(name="instanceTypesSpots")
+    def instance_types_spots(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        One or more instance types. Note: Cannot be defined if 'resourceRequirements' is defined.
+        """
+        return pulumi.get(self, "instance_types_spots")
+
+    @instance_types_spots.setter
+    def instance_types_spots(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "instance_types_spots", value)
 
     @property
     @pulumi.getter(name="instanceTypesWeights")
@@ -935,6 +945,18 @@ class ElastigroupArgs:
         pulumi.set(self, "network_interfaces", value)
 
     @property
+    @pulumi.getter(name="onDemandTypes")
+    def on_demand_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Available ondemand instance types. Note: Either ondemand or onDemandTypes must be defined, but not both.
+        """
+        return pulumi.get(self, "on_demand_types")
+
+    @on_demand_types.setter
+    def on_demand_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "on_demand_types", value)
+
+    @property
     @pulumi.getter(name="ondemandCount")
     def ondemand_count(self) -> Optional[pulumi.Input[int]]:
         """
@@ -1037,6 +1059,18 @@ class ElastigroupArgs:
     @region.setter
     def region(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter(name="resourceRequirements")
+    def resource_requirements(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupResourceRequirementArgs']]]]:
+        """
+        Required instance attributes. Instance types will be selected based on these requirements.
+        """
+        return pulumi.get(self, "resource_requirements")
+
+    @resource_requirements.setter
+    def resource_requirements(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupResourceRequirementArgs']]]]):
+        pulumi.set(self, "resource_requirements", value)
 
     @property
     @pulumi.getter(name="resourceTagSpecifications")
@@ -1317,6 +1351,7 @@ class _ElastigroupState:
                  multiple_metrics: Optional[pulumi.Input['ElastigroupMultipleMetricsArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupNetworkInterfaceArgs']]]] = None,
+                 on_demand_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ondemand_count: Optional[pulumi.Input[int]] = None,
                  orientation: Optional[pulumi.Input[str]] = None,
                  persist_block_devices: Optional[pulumi.Input[bool]] = None,
@@ -1327,6 +1362,7 @@ class _ElastigroupState:
                  private_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  product: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 resource_requirements: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupResourceRequirementArgs']]]] = None,
                  resource_tag_specifications: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupResourceTagSpecificationArgs']]]] = None,
                  revert_to_spot: Optional[pulumi.Input['ElastigroupRevertToSpotArgs']] = None,
                  scaling_down_policies: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingDownPolicyArgs']]]] = None,
@@ -1375,7 +1411,7 @@ class _ElastigroupState:
                Note: Elastigroup can be configured with either imageId or images, but not both.
         :param pulumi.Input[str] instance_types_ondemand: The type of instance determines your instance's CPU capacity, memory and storage (e.g., m1.small, c1.xlarge).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types_preferred_spots: Prioritize a subset of spot instance types. Must be a subset of the selected spot instance types.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types_spots: One or more instance types.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types_spots: One or more instance types. Note: Cannot be defined if 'resourceRequirements' is defined.
         :param pulumi.Input[Sequence[pulumi.Input['ElastigroupInstanceTypesWeightArgs']]] instance_types_weights: List of weights per instance type for weighted groups. Each object in the list should have the following attributes:
         :param pulumi.Input['ElastigroupIntegrationCodedeployArgs'] integration_codedeploy: Describes the [Code Deploy](https://aws.amazon.com/documentation/codedeploy/?id=docs_gateway) integration.
         :param pulumi.Input['ElastigroupIntegrationDockerSwarmArgs'] integration_docker_swarm: Describes the [Docker Swarm](https://api.spotinst.com/integration-docs/elastigroup/container-management/docker-swarm/docker-swarm-integration/) integration.
@@ -1394,6 +1430,7 @@ class _ElastigroupState:
         :param pulumi.Input[int] minimum_instance_lifetime: Defines the preferred minimum instance lifetime in hours. Markets which comply with this preference will be prioritized. Optional values: 1, 3, 6, 12, 24.
         :param pulumi.Input[Sequence[pulumi.Input['ElastigroupMultaiTargetSetArgs']]] multai_target_sets: Set of targets to register.
         :param pulumi.Input[str] name: The group name.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] on_demand_types: Available ondemand instance types. Note: Either ondemand or onDemandTypes must be defined, but not both.
         :param pulumi.Input[int] ondemand_count: Number of on demand instances to launch in the group. All other instances will be spot instances. When this parameter is set the `spot_percentage` parameter is being ignored.
         :param pulumi.Input[str] orientation: Select a prediction strategy. Valid values: `balanced`, `costOriented`, `equalAzDistribution`, `availabilityOriented`. You can read more in our documentation.
         :param pulumi.Input[bool] persist_block_devices: Boolean, should the instance maintain its Data volumes.
@@ -1413,6 +1450,7 @@ class _ElastigroupState:
                For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
         :param pulumi.Input[str] region: The AWS region your group will be created in.
                Note: This parameter is required if you specify subnets (through subnet_ids). This parameter is optional if you specify Availability Zones (through availability_zones).
+        :param pulumi.Input[Sequence[pulumi.Input['ElastigroupResourceRequirementArgs']]] resource_requirements: Required instance attributes. Instance types will be selected based on these requirements.
         :param pulumi.Input[Sequence[pulumi.Input['ElastigroupResourceTagSpecificationArgs']]] resource_tag_specifications: User will specify which resources should be tagged with group tags.
         :param pulumi.Input['ElastigroupRevertToSpotArgs'] revert_to_spot: Hold settings for strategy correction – replacing On-Demand for Spot instances. Supported Values: `"never"`, `"always"`, `"timeWindow"`
         :param pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingStrategyArgs']]] scaling_strategies: Set termination policy.
@@ -1526,6 +1564,8 @@ class _ElastigroupState:
             pulumi.set(__self__, "name", name)
         if network_interfaces is not None:
             pulumi.set(__self__, "network_interfaces", network_interfaces)
+        if on_demand_types is not None:
+            pulumi.set(__self__, "on_demand_types", on_demand_types)
         if ondemand_count is not None:
             pulumi.set(__self__, "ondemand_count", ondemand_count)
         if orientation is not None:
@@ -1546,6 +1586,8 @@ class _ElastigroupState:
             pulumi.set(__self__, "product", product)
         if region is not None:
             pulumi.set(__self__, "region", region)
+        if resource_requirements is not None:
+            pulumi.set(__self__, "resource_requirements", resource_requirements)
         if resource_tag_specifications is not None:
             pulumi.set(__self__, "resource_tag_specifications", resource_tag_specifications)
         if revert_to_spot is not None:
@@ -1886,7 +1928,7 @@ class _ElastigroupState:
     @pulumi.getter(name="instanceTypesSpots")
     def instance_types_spots(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        One or more instance types.
+        One or more instance types. Note: Cannot be defined if 'resourceRequirements' is defined.
         """
         return pulumi.get(self, "instance_types_spots")
 
@@ -2156,6 +2198,18 @@ class _ElastigroupState:
         pulumi.set(self, "network_interfaces", value)
 
     @property
+    @pulumi.getter(name="onDemandTypes")
+    def on_demand_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Available ondemand instance types. Note: Either ondemand or onDemandTypes must be defined, but not both.
+        """
+        return pulumi.get(self, "on_demand_types")
+
+    @on_demand_types.setter
+    def on_demand_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "on_demand_types", value)
+
+    @property
     @pulumi.getter(name="ondemandCount")
     def ondemand_count(self) -> Optional[pulumi.Input[int]]:
         """
@@ -2283,6 +2337,18 @@ class _ElastigroupState:
     @region.setter
     def region(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter(name="resourceRequirements")
+    def resource_requirements(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupResourceRequirementArgs']]]]:
+        """
+        Required instance attributes. Instance types will be selected based on these requirements.
+        """
+        return pulumi.get(self, "resource_requirements")
+
+    @resource_requirements.setter
+    def resource_requirements(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupResourceRequirementArgs']]]]):
+        pulumi.set(self, "resource_requirements", value)
 
     @property
     @pulumi.getter(name="resourceTagSpecifications")
@@ -2577,6 +2643,7 @@ class Elastigroup(pulumi.CustomResource):
                  multiple_metrics: Optional[pulumi.Input[pulumi.InputType['ElastigroupMultipleMetricsArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupNetworkInterfaceArgs']]]]] = None,
+                 on_demand_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ondemand_count: Optional[pulumi.Input[int]] = None,
                  orientation: Optional[pulumi.Input[str]] = None,
                  persist_block_devices: Optional[pulumi.Input[bool]] = None,
@@ -2587,6 +2654,7 @@ class Elastigroup(pulumi.CustomResource):
                  private_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  product: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 resource_requirements: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupResourceRequirementArgs']]]]] = None,
                  resource_tag_specifications: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupResourceTagSpecificationArgs']]]]] = None,
                  revert_to_spot: Optional[pulumi.Input[pulumi.InputType['ElastigroupRevertToSpotArgs']]] = None,
                  scaling_down_policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupScalingDownPolicyArgs']]]]] = None,
@@ -2639,7 +2707,7 @@ class Elastigroup(pulumi.CustomResource):
                Note: Elastigroup can be configured with either imageId or images, but not both.
         :param pulumi.Input[str] instance_types_ondemand: The type of instance determines your instance's CPU capacity, memory and storage (e.g., m1.small, c1.xlarge).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types_preferred_spots: Prioritize a subset of spot instance types. Must be a subset of the selected spot instance types.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types_spots: One or more instance types.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types_spots: One or more instance types. Note: Cannot be defined if 'resourceRequirements' is defined.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupInstanceTypesWeightArgs']]]] instance_types_weights: List of weights per instance type for weighted groups. Each object in the list should have the following attributes:
         :param pulumi.Input[pulumi.InputType['ElastigroupIntegrationCodedeployArgs']] integration_codedeploy: Describes the [Code Deploy](https://aws.amazon.com/documentation/codedeploy/?id=docs_gateway) integration.
         :param pulumi.Input[pulumi.InputType['ElastigroupIntegrationDockerSwarmArgs']] integration_docker_swarm: Describes the [Docker Swarm](https://api.spotinst.com/integration-docs/elastigroup/container-management/docker-swarm/docker-swarm-integration/) integration.
@@ -2658,6 +2726,7 @@ class Elastigroup(pulumi.CustomResource):
         :param pulumi.Input[int] minimum_instance_lifetime: Defines the preferred minimum instance lifetime in hours. Markets which comply with this preference will be prioritized. Optional values: 1, 3, 6, 12, 24.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupMultaiTargetSetArgs']]]] multai_target_sets: Set of targets to register.
         :param pulumi.Input[str] name: The group name.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] on_demand_types: Available ondemand instance types. Note: Either ondemand or onDemandTypes must be defined, but not both.
         :param pulumi.Input[int] ondemand_count: Number of on demand instances to launch in the group. All other instances will be spot instances. When this parameter is set the `spot_percentage` parameter is being ignored.
         :param pulumi.Input[str] orientation: Select a prediction strategy. Valid values: `balanced`, `costOriented`, `equalAzDistribution`, `availabilityOriented`. You can read more in our documentation.
         :param pulumi.Input[bool] persist_block_devices: Boolean, should the instance maintain its Data volumes.
@@ -2677,6 +2746,7 @@ class Elastigroup(pulumi.CustomResource):
                For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
         :param pulumi.Input[str] region: The AWS region your group will be created in.
                Note: This parameter is required if you specify subnets (through subnet_ids). This parameter is optional if you specify Availability Zones (through availability_zones).
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupResourceRequirementArgs']]]] resource_requirements: Required instance attributes. Instance types will be selected based on these requirements.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupResourceTagSpecificationArgs']]]] resource_tag_specifications: User will specify which resources should be tagged with group tags.
         :param pulumi.Input[pulumi.InputType['ElastigroupRevertToSpotArgs']] revert_to_spot: Hold settings for strategy correction – replacing On-Demand for Spot instances. Supported Values: `"never"`, `"always"`, `"timeWindow"`
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupScalingStrategyArgs']]]] scaling_strategies: Set termination policy.
@@ -2765,6 +2835,7 @@ class Elastigroup(pulumi.CustomResource):
                  multiple_metrics: Optional[pulumi.Input[pulumi.InputType['ElastigroupMultipleMetricsArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupNetworkInterfaceArgs']]]]] = None,
+                 on_demand_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ondemand_count: Optional[pulumi.Input[int]] = None,
                  orientation: Optional[pulumi.Input[str]] = None,
                  persist_block_devices: Optional[pulumi.Input[bool]] = None,
@@ -2775,6 +2846,7 @@ class Elastigroup(pulumi.CustomResource):
                  private_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  product: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 resource_requirements: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupResourceRequirementArgs']]]]] = None,
                  resource_tag_specifications: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupResourceTagSpecificationArgs']]]]] = None,
                  revert_to_spot: Optional[pulumi.Input[pulumi.InputType['ElastigroupRevertToSpotArgs']]] = None,
                  scaling_down_policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupScalingDownPolicyArgs']]]]] = None,
@@ -2831,12 +2903,8 @@ class Elastigroup(pulumi.CustomResource):
             __props__.__dict__["image_id"] = image_id
             __props__.__dict__["images"] = images
             __props__.__dict__["immediate_od_recover_threshold"] = immediate_od_recover_threshold
-            if instance_types_ondemand is None and not opts.urn:
-                raise TypeError("Missing required property 'instance_types_ondemand'")
             __props__.__dict__["instance_types_ondemand"] = instance_types_ondemand
             __props__.__dict__["instance_types_preferred_spots"] = instance_types_preferred_spots
-            if instance_types_spots is None and not opts.urn:
-                raise TypeError("Missing required property 'instance_types_spots'")
             __props__.__dict__["instance_types_spots"] = instance_types_spots
             __props__.__dict__["instance_types_weights"] = instance_types_weights
             __props__.__dict__["integration_beanstalk"] = integration_beanstalk
@@ -2861,6 +2929,7 @@ class Elastigroup(pulumi.CustomResource):
             __props__.__dict__["multiple_metrics"] = multiple_metrics
             __props__.__dict__["name"] = name
             __props__.__dict__["network_interfaces"] = network_interfaces
+            __props__.__dict__["on_demand_types"] = on_demand_types
             __props__.__dict__["ondemand_count"] = ondemand_count
             if orientation is None and not opts.urn:
                 raise TypeError("Missing required property 'orientation'")
@@ -2875,6 +2944,7 @@ class Elastigroup(pulumi.CustomResource):
                 raise TypeError("Missing required property 'product'")
             __props__.__dict__["product"] = product
             __props__.__dict__["region"] = region
+            __props__.__dict__["resource_requirements"] = resource_requirements
             __props__.__dict__["resource_tag_specifications"] = resource_tag_specifications
             __props__.__dict__["revert_to_spot"] = revert_to_spot
             __props__.__dict__["scaling_down_policies"] = scaling_down_policies
@@ -2958,6 +3028,7 @@ class Elastigroup(pulumi.CustomResource):
             multiple_metrics: Optional[pulumi.Input[pulumi.InputType['ElastigroupMultipleMetricsArgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupNetworkInterfaceArgs']]]]] = None,
+            on_demand_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             ondemand_count: Optional[pulumi.Input[int]] = None,
             orientation: Optional[pulumi.Input[str]] = None,
             persist_block_devices: Optional[pulumi.Input[bool]] = None,
@@ -2968,6 +3039,7 @@ class Elastigroup(pulumi.CustomResource):
             private_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             product: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
+            resource_requirements: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupResourceRequirementArgs']]]]] = None,
             resource_tag_specifications: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupResourceTagSpecificationArgs']]]]] = None,
             revert_to_spot: Optional[pulumi.Input[pulumi.InputType['ElastigroupRevertToSpotArgs']]] = None,
             scaling_down_policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupScalingDownPolicyArgs']]]]] = None,
@@ -3021,7 +3093,7 @@ class Elastigroup(pulumi.CustomResource):
                Note: Elastigroup can be configured with either imageId or images, but not both.
         :param pulumi.Input[str] instance_types_ondemand: The type of instance determines your instance's CPU capacity, memory and storage (e.g., m1.small, c1.xlarge).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types_preferred_spots: Prioritize a subset of spot instance types. Must be a subset of the selected spot instance types.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types_spots: One or more instance types.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types_spots: One or more instance types. Note: Cannot be defined if 'resourceRequirements' is defined.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupInstanceTypesWeightArgs']]]] instance_types_weights: List of weights per instance type for weighted groups. Each object in the list should have the following attributes:
         :param pulumi.Input[pulumi.InputType['ElastigroupIntegrationCodedeployArgs']] integration_codedeploy: Describes the [Code Deploy](https://aws.amazon.com/documentation/codedeploy/?id=docs_gateway) integration.
         :param pulumi.Input[pulumi.InputType['ElastigroupIntegrationDockerSwarmArgs']] integration_docker_swarm: Describes the [Docker Swarm](https://api.spotinst.com/integration-docs/elastigroup/container-management/docker-swarm/docker-swarm-integration/) integration.
@@ -3040,6 +3112,7 @@ class Elastigroup(pulumi.CustomResource):
         :param pulumi.Input[int] minimum_instance_lifetime: Defines the preferred minimum instance lifetime in hours. Markets which comply with this preference will be prioritized. Optional values: 1, 3, 6, 12, 24.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupMultaiTargetSetArgs']]]] multai_target_sets: Set of targets to register.
         :param pulumi.Input[str] name: The group name.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] on_demand_types: Available ondemand instance types. Note: Either ondemand or onDemandTypes must be defined, but not both.
         :param pulumi.Input[int] ondemand_count: Number of on demand instances to launch in the group. All other instances will be spot instances. When this parameter is set the `spot_percentage` parameter is being ignored.
         :param pulumi.Input[str] orientation: Select a prediction strategy. Valid values: `balanced`, `costOriented`, `equalAzDistribution`, `availabilityOriented`. You can read more in our documentation.
         :param pulumi.Input[bool] persist_block_devices: Boolean, should the instance maintain its Data volumes.
@@ -3059,6 +3132,7 @@ class Elastigroup(pulumi.CustomResource):
                For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
         :param pulumi.Input[str] region: The AWS region your group will be created in.
                Note: This parameter is required if you specify subnets (through subnet_ids). This parameter is optional if you specify Availability Zones (through availability_zones).
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupResourceRequirementArgs']]]] resource_requirements: Required instance attributes. Instance types will be selected based on these requirements.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupResourceTagSpecificationArgs']]]] resource_tag_specifications: User will specify which resources should be tagged with group tags.
         :param pulumi.Input[pulumi.InputType['ElastigroupRevertToSpotArgs']] revert_to_spot: Hold settings for strategy correction – replacing On-Demand for Spot instances. Supported Values: `"never"`, `"always"`, `"timeWindow"`
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupScalingStrategyArgs']]]] scaling_strategies: Set termination policy.
@@ -3127,6 +3201,7 @@ class Elastigroup(pulumi.CustomResource):
         __props__.__dict__["multiple_metrics"] = multiple_metrics
         __props__.__dict__["name"] = name
         __props__.__dict__["network_interfaces"] = network_interfaces
+        __props__.__dict__["on_demand_types"] = on_demand_types
         __props__.__dict__["ondemand_count"] = ondemand_count
         __props__.__dict__["orientation"] = orientation
         __props__.__dict__["persist_block_devices"] = persist_block_devices
@@ -3137,6 +3212,7 @@ class Elastigroup(pulumi.CustomResource):
         __props__.__dict__["private_ips"] = private_ips
         __props__.__dict__["product"] = product
         __props__.__dict__["region"] = region
+        __props__.__dict__["resource_requirements"] = resource_requirements
         __props__.__dict__["resource_tag_specifications"] = resource_tag_specifications
         __props__.__dict__["revert_to_spot"] = revert_to_spot
         __props__.__dict__["scaling_down_policies"] = scaling_down_policies
@@ -3338,7 +3414,7 @@ class Elastigroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceTypesOndemand")
-    def instance_types_ondemand(self) -> pulumi.Output[str]:
+    def instance_types_ondemand(self) -> pulumi.Output[Optional[str]]:
         """
         The type of instance determines your instance's CPU capacity, memory and storage (e.g., m1.small, c1.xlarge).
         """
@@ -3354,9 +3430,9 @@ class Elastigroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceTypesSpots")
-    def instance_types_spots(self) -> pulumi.Output[Sequence[str]]:
+    def instance_types_spots(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        One or more instance types.
+        One or more instance types. Note: Cannot be defined if 'resourceRequirements' is defined.
         """
         return pulumi.get(self, "instance_types_spots")
 
@@ -3530,6 +3606,14 @@ class Elastigroup(pulumi.CustomResource):
         return pulumi.get(self, "network_interfaces")
 
     @property
+    @pulumi.getter(name="onDemandTypes")
+    def on_demand_types(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        Available ondemand instance types. Note: Either ondemand or onDemandTypes must be defined, but not both.
+        """
+        return pulumi.get(self, "on_demand_types")
+
+    @property
     @pulumi.getter(name="ondemandCount")
     def ondemand_count(self) -> pulumi.Output[Optional[int]]:
         """
@@ -3617,6 +3701,14 @@ class Elastigroup(pulumi.CustomResource):
         Note: This parameter is required if you specify subnets (through subnet_ids). This parameter is optional if you specify Availability Zones (through availability_zones).
         """
         return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="resourceRequirements")
+    def resource_requirements(self) -> pulumi.Output[Optional[Sequence['outputs.ElastigroupResourceRequirement']]]:
+        """
+        Required instance attributes. Instance types will be selected based on these requirements.
+        """
+        return pulumi.get(self, "resource_requirements")
 
     @property
     @pulumi.getter(name="resourceTagSpecifications")

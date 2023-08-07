@@ -1252,6 +1252,45 @@ export namespace aws {
         secondaryPrivateIpAddressCount?: string;
     }
 
+    export interface ElastigroupResourceRequirement {
+        /**
+         * Instance families to exclude
+         */
+        excludedInstanceFamilies?: string[];
+        /**
+         * Instance generations to exclude
+         */
+        excludedInstanceGenerations?: string[];
+        /**
+         * Instance types to exclude
+         */
+        excludedInstanceTypes?: string[];
+        /**
+         * Required maximum instance GPU (<=16)
+         */
+        requiredGpuMaximum?: number;
+        /**
+         * Required minimum instance GPU (>=1)
+         */
+        requiredGpuMinimum?: number;
+        /**
+         * Required maximum instance memory (<=512)
+         */
+        requiredMemoryMaximum: number;
+        /**
+         * Required minimum instance memory (>=1)
+         */
+        requiredMemoryMinimum: number;
+        /**
+         * Required maximum instance vCPU (<=64)
+         */
+        requiredVcpuMaximum: number;
+        /**
+         * Required minimum instance vCPU (>=1)
+         */
+        requiredVcpuMinimum: number;
+    }
+
     export interface ElastigroupResourceTagSpecification {
         /**
          * Tag specification for AMI resources.
@@ -3497,6 +3536,7 @@ export namespace azure {
 
     export interface OceanNpFilters {
         architectures?: string[];
+        excludeSeries?: string[];
         maxMemoryGib?: number;
         maxVcpu?: number;
         minMemoryGib?: number;
@@ -3532,6 +3572,7 @@ export namespace azure {
 
     export interface OceanNpVirtualNodeGroupFilters {
         architectures?: string[];
+        excludeSeries?: string[];
         maxMemoryGib?: number;
         maxVcpu?: number;
         minMemoryGib?: number;

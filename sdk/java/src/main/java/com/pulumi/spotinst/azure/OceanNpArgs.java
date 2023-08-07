@@ -159,6 +159,13 @@ public final class OceanNpArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.osDiskType);
     }
 
+    @Import(name="osSku")
+    private @Nullable Output<String> osSku;
+
+    public Optional<Output<String>> osSku() {
+        return Optional.ofNullable(this.osSku);
+    }
+
     @Import(name="osType")
     private @Nullable Output<String> osType;
 
@@ -216,6 +223,7 @@ public final class OceanNpArgs extends com.pulumi.resources.ResourceArgs {
         this.name = $.name;
         this.osDiskSizeGb = $.osDiskSizeGb;
         this.osDiskType = $.osDiskType;
+        this.osSku = $.osSku;
         this.osType = $.osType;
         this.scheduling = $.scheduling;
         this.spotPercentage = $.spotPercentage;
@@ -418,6 +426,15 @@ public final class OceanNpArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder osDiskType(String osDiskType) {
             return osDiskType(Output.of(osDiskType));
+        }
+
+        public Builder osSku(@Nullable Output<String> osSku) {
+            $.osSku = osSku;
+            return this;
+        }
+
+        public Builder osSku(String osSku) {
+            return osSku(Output.of(osSku));
         }
 
         public Builder osType(@Nullable Output<String> osType) {

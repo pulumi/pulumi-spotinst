@@ -29,6 +29,7 @@ class OceanNpVirtualNodeGroupArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  os_disk_size_gb: Optional[pulumi.Input[int]] = None,
                  os_disk_type: Optional[pulumi.Input[str]] = None,
+                 os_sku: Optional[pulumi.Input[str]] = None,
                  os_type: Optional[pulumi.Input[str]] = None,
                  spot_percentage: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -61,6 +62,8 @@ class OceanNpVirtualNodeGroupArgs:
             pulumi.set(__self__, "os_disk_size_gb", os_disk_size_gb)
         if os_disk_type is not None:
             pulumi.set(__self__, "os_disk_type", os_disk_type)
+        if os_sku is not None:
+            pulumi.set(__self__, "os_sku", os_sku)
         if os_type is not None:
             pulumi.set(__self__, "os_type", os_type)
         if spot_percentage is not None:
@@ -188,6 +191,15 @@ class OceanNpVirtualNodeGroupArgs:
         pulumi.set(self, "os_disk_type", value)
 
     @property
+    @pulumi.getter(name="osSku")
+    def os_sku(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "os_sku")
+
+    @os_sku.setter
+    def os_sku(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "os_sku", value)
+
+    @property
     @pulumi.getter(name="osType")
     def os_type(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "os_type")
@@ -240,6 +252,7 @@ class _OceanNpVirtualNodeGroupState:
                  ocean_id: Optional[pulumi.Input[str]] = None,
                  os_disk_size_gb: Optional[pulumi.Input[int]] = None,
                  os_disk_type: Optional[pulumi.Input[str]] = None,
+                 os_sku: Optional[pulumi.Input[str]] = None,
                  os_type: Optional[pulumi.Input[str]] = None,
                  spot_percentage: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -273,6 +286,8 @@ class _OceanNpVirtualNodeGroupState:
             pulumi.set(__self__, "os_disk_size_gb", os_disk_size_gb)
         if os_disk_type is not None:
             pulumi.set(__self__, "os_disk_type", os_disk_type)
+        if os_sku is not None:
+            pulumi.set(__self__, "os_sku", os_sku)
         if os_type is not None:
             pulumi.set(__self__, "os_type", os_type)
         if spot_percentage is not None:
@@ -400,6 +415,15 @@ class _OceanNpVirtualNodeGroupState:
         pulumi.set(self, "os_disk_type", value)
 
     @property
+    @pulumi.getter(name="osSku")
+    def os_sku(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "os_sku")
+
+    @os_sku.setter
+    def os_sku(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "os_sku", value)
+
+    @property
     @pulumi.getter(name="osType")
     def os_type(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "os_type")
@@ -454,6 +478,7 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
                  ocean_id: Optional[pulumi.Input[str]] = None,
                  os_disk_size_gb: Optional[pulumi.Input[int]] = None,
                  os_disk_type: Optional[pulumi.Input[str]] = None,
+                 os_sku: Optional[pulumi.Input[str]] = None,
                  os_type: Optional[pulumi.Input[str]] = None,
                  spot_percentage: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -500,6 +525,7 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
                  ocean_id: Optional[pulumi.Input[str]] = None,
                  os_disk_size_gb: Optional[pulumi.Input[int]] = None,
                  os_disk_type: Optional[pulumi.Input[str]] = None,
+                 os_sku: Optional[pulumi.Input[str]] = None,
                  os_type: Optional[pulumi.Input[str]] = None,
                  spot_percentage: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -528,6 +554,7 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
             __props__.__dict__["ocean_id"] = ocean_id
             __props__.__dict__["os_disk_size_gb"] = os_disk_size_gb
             __props__.__dict__["os_disk_type"] = os_disk_type
+            __props__.__dict__["os_sku"] = os_sku
             __props__.__dict__["os_type"] = os_type
             __props__.__dict__["spot_percentage"] = spot_percentage
             __props__.__dict__["tags"] = tags
@@ -555,6 +582,7 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
             ocean_id: Optional[pulumi.Input[str]] = None,
             os_disk_size_gb: Optional[pulumi.Input[int]] = None,
             os_disk_type: Optional[pulumi.Input[str]] = None,
+            os_sku: Optional[pulumi.Input[str]] = None,
             os_type: Optional[pulumi.Input[str]] = None,
             spot_percentage: Optional[pulumi.Input[int]] = None,
             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -584,6 +612,7 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
         __props__.__dict__["ocean_id"] = ocean_id
         __props__.__dict__["os_disk_size_gb"] = os_disk_size_gb
         __props__.__dict__["os_disk_type"] = os_disk_type
+        __props__.__dict__["os_sku"] = os_sku
         __props__.__dict__["os_type"] = os_type
         __props__.__dict__["spot_percentage"] = spot_percentage
         __props__.__dict__["tags"] = tags
@@ -654,6 +683,11 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
     @pulumi.getter(name="osDiskType")
     def os_disk_type(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "os_disk_type")
+
+    @property
+    @pulumi.getter(name="osSku")
+    def os_sku(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "os_sku")
 
     @property
     @pulumi.getter(name="osType")

@@ -53,6 +53,7 @@ export class OceanNp extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     public readonly osDiskSizeGb!: pulumi.Output<number | undefined>;
     public readonly osDiskType!: pulumi.Output<string | undefined>;
+    public readonly osSku!: pulumi.Output<string | undefined>;
     public readonly osType!: pulumi.Output<string | undefined>;
     public readonly scheduling!: pulumi.Output<outputs.azure.OceanNpScheduling | undefined>;
     public readonly spotPercentage!: pulumi.Output<number | undefined>;
@@ -91,6 +92,7 @@ export class OceanNp extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["osDiskSizeGb"] = state ? state.osDiskSizeGb : undefined;
             resourceInputs["osDiskType"] = state ? state.osDiskType : undefined;
+            resourceInputs["osSku"] = state ? state.osSku : undefined;
             resourceInputs["osType"] = state ? state.osType : undefined;
             resourceInputs["scheduling"] = state ? state.scheduling : undefined;
             resourceInputs["spotPercentage"] = state ? state.spotPercentage : undefined;
@@ -129,6 +131,7 @@ export class OceanNp extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["osDiskSizeGb"] = args ? args.osDiskSizeGb : undefined;
             resourceInputs["osDiskType"] = args ? args.osDiskType : undefined;
+            resourceInputs["osSku"] = args ? args.osSku : undefined;
             resourceInputs["osType"] = args ? args.osType : undefined;
             resourceInputs["scheduling"] = args ? args.scheduling : undefined;
             resourceInputs["spotPercentage"] = args ? args.spotPercentage : undefined;
@@ -163,6 +166,7 @@ export interface OceanNpState {
     name?: pulumi.Input<string>;
     osDiskSizeGb?: pulumi.Input<number>;
     osDiskType?: pulumi.Input<string>;
+    osSku?: pulumi.Input<string>;
     osType?: pulumi.Input<string>;
     scheduling?: pulumi.Input<inputs.azure.OceanNpScheduling>;
     spotPercentage?: pulumi.Input<number>;
@@ -193,6 +197,7 @@ export interface OceanNpArgs {
     name?: pulumi.Input<string>;
     osDiskSizeGb?: pulumi.Input<number>;
     osDiskType?: pulumi.Input<string>;
+    osSku?: pulumi.Input<string>;
     osType?: pulumi.Input<string>;
     scheduling?: pulumi.Input<inputs.azure.OceanNpScheduling>;
     spotPercentage?: pulumi.Input<number>;

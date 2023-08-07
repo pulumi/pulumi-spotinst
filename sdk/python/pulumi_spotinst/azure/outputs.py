@@ -2165,7 +2165,9 @@ class OceanNpFilters(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "maxMemoryGib":
+        if key == "excludeSeries":
+            suggest = "exclude_series"
+        elif key == "maxMemoryGib":
             suggest = "max_memory_gib"
         elif key == "maxVcpu":
             suggest = "max_vcpu"
@@ -2187,6 +2189,7 @@ class OceanNpFilters(dict):
 
     def __init__(__self__, *,
                  architectures: Optional[Sequence[str]] = None,
+                 exclude_series: Optional[Sequence[str]] = None,
                  max_memory_gib: Optional[float] = None,
                  max_vcpu: Optional[int] = None,
                  min_memory_gib: Optional[float] = None,
@@ -2194,6 +2197,8 @@ class OceanNpFilters(dict):
                  series: Optional[Sequence[str]] = None):
         if architectures is not None:
             pulumi.set(__self__, "architectures", architectures)
+        if exclude_series is not None:
+            pulumi.set(__self__, "exclude_series", exclude_series)
         if max_memory_gib is not None:
             pulumi.set(__self__, "max_memory_gib", max_memory_gib)
         if max_vcpu is not None:
@@ -2209,6 +2214,11 @@ class OceanNpFilters(dict):
     @pulumi.getter
     def architectures(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "architectures")
+
+    @property
+    @pulumi.getter(name="excludeSeries")
+    def exclude_series(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "exclude_series")
 
     @property
     @pulumi.getter(name="maxMemoryGib")
@@ -2426,7 +2436,9 @@ class OceanNpVirtualNodeGroupFilters(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "maxMemoryGib":
+        if key == "excludeSeries":
+            suggest = "exclude_series"
+        elif key == "maxMemoryGib":
             suggest = "max_memory_gib"
         elif key == "maxVcpu":
             suggest = "max_vcpu"
@@ -2448,6 +2460,7 @@ class OceanNpVirtualNodeGroupFilters(dict):
 
     def __init__(__self__, *,
                  architectures: Optional[Sequence[str]] = None,
+                 exclude_series: Optional[Sequence[str]] = None,
                  max_memory_gib: Optional[float] = None,
                  max_vcpu: Optional[int] = None,
                  min_memory_gib: Optional[float] = None,
@@ -2455,6 +2468,8 @@ class OceanNpVirtualNodeGroupFilters(dict):
                  series: Optional[Sequence[str]] = None):
         if architectures is not None:
             pulumi.set(__self__, "architectures", architectures)
+        if exclude_series is not None:
+            pulumi.set(__self__, "exclude_series", exclude_series)
         if max_memory_gib is not None:
             pulumi.set(__self__, "max_memory_gib", max_memory_gib)
         if max_vcpu is not None:
@@ -2470,6 +2485,11 @@ class OceanNpVirtualNodeGroupFilters(dict):
     @pulumi.getter
     def architectures(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "architectures")
+
+    @property
+    @pulumi.getter(name="excludeSeries")
+    def exclude_series(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "exclude_series")
 
     @property
     @pulumi.getter(name="maxMemoryGib")

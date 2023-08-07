@@ -28,6 +28,7 @@ type OceanNpVirtualNodeGroup struct {
 	OceanId            pulumi.StringOutput                        `pulumi:"oceanId"`
 	OsDiskSizeGb       pulumi.IntPtrOutput                        `pulumi:"osDiskSizeGb"`
 	OsDiskType         pulumi.StringPtrOutput                     `pulumi:"osDiskType"`
+	OsSku              pulumi.StringPtrOutput                     `pulumi:"osSku"`
 	OsType             pulumi.StringPtrOutput                     `pulumi:"osType"`
 	SpotPercentage     pulumi.IntPtrOutput                        `pulumi:"spotPercentage"`
 	Tags               pulumi.MapOutput                           `pulumi:"tags"`
@@ -80,6 +81,7 @@ type oceanNpVirtualNodeGroupState struct {
 	OceanId            *string                           `pulumi:"oceanId"`
 	OsDiskSizeGb       *int                              `pulumi:"osDiskSizeGb"`
 	OsDiskType         *string                           `pulumi:"osDiskType"`
+	OsSku              *string                           `pulumi:"osSku"`
 	OsType             *string                           `pulumi:"osType"`
 	SpotPercentage     *int                              `pulumi:"spotPercentage"`
 	Tags               map[string]interface{}            `pulumi:"tags"`
@@ -100,6 +102,7 @@ type OceanNpVirtualNodeGroupState struct {
 	OceanId            pulumi.StringPtrInput
 	OsDiskSizeGb       pulumi.IntPtrInput
 	OsDiskType         pulumi.StringPtrInput
+	OsSku              pulumi.StringPtrInput
 	OsType             pulumi.StringPtrInput
 	SpotPercentage     pulumi.IntPtrInput
 	Tags               pulumi.MapInput
@@ -124,6 +127,7 @@ type oceanNpVirtualNodeGroupArgs struct {
 	OceanId            string                            `pulumi:"oceanId"`
 	OsDiskSizeGb       *int                              `pulumi:"osDiskSizeGb"`
 	OsDiskType         *string                           `pulumi:"osDiskType"`
+	OsSku              *string                           `pulumi:"osSku"`
 	OsType             *string                           `pulumi:"osType"`
 	SpotPercentage     *int                              `pulumi:"spotPercentage"`
 	Tags               map[string]interface{}            `pulumi:"tags"`
@@ -145,6 +149,7 @@ type OceanNpVirtualNodeGroupArgs struct {
 	OceanId            pulumi.StringInput
 	OsDiskSizeGb       pulumi.IntPtrInput
 	OsDiskType         pulumi.StringPtrInput
+	OsSku              pulumi.StringPtrInput
 	OsType             pulumi.StringPtrInput
 	SpotPercentage     pulumi.IntPtrInput
 	Tags               pulumi.MapInput
@@ -288,6 +293,10 @@ func (o OceanNpVirtualNodeGroupOutput) OsDiskSizeGb() pulumi.IntPtrOutput {
 
 func (o OceanNpVirtualNodeGroupOutput) OsDiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OceanNpVirtualNodeGroup) pulumi.StringPtrOutput { return v.OsDiskType }).(pulumi.StringPtrOutput)
+}
+
+func (o OceanNpVirtualNodeGroupOutput) OsSku() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OceanNpVirtualNodeGroup) pulumi.StringPtrOutput { return v.OsSku }).(pulumi.StringPtrOutput)
 }
 
 func (o OceanNpVirtualNodeGroupOutput) OsType() pulumi.StringPtrOutput {

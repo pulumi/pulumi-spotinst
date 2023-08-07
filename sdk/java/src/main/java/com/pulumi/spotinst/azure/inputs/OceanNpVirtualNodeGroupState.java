@@ -114,6 +114,13 @@ public final class OceanNpVirtualNodeGroupState extends com.pulumi.resources.Res
         return Optional.ofNullable(this.osDiskType);
     }
 
+    @Import(name="osSku")
+    private @Nullable Output<String> osSku;
+
+    public Optional<Output<String>> osSku() {
+        return Optional.ofNullable(this.osSku);
+    }
+
     @Import(name="osType")
     private @Nullable Output<String> osType;
 
@@ -158,6 +165,7 @@ public final class OceanNpVirtualNodeGroupState extends com.pulumi.resources.Res
         this.oceanId = $.oceanId;
         this.osDiskSizeGb = $.osDiskSizeGb;
         this.osDiskType = $.osDiskType;
+        this.osSku = $.osSku;
         this.osType = $.osType;
         this.spotPercentage = $.spotPercentage;
         this.tags = $.tags;
@@ -305,6 +313,15 @@ public final class OceanNpVirtualNodeGroupState extends com.pulumi.resources.Res
 
         public Builder osDiskType(String osDiskType) {
             return osDiskType(Output.of(osDiskType));
+        }
+
+        public Builder osSku(@Nullable Output<String> osSku) {
+            $.osSku = osSku;
+            return this;
+        }
+
+        public Builder osSku(String osSku) {
+            return osSku(Output.of(osSku));
         }
 
         public Builder osType(@Nullable Output<String> osType) {

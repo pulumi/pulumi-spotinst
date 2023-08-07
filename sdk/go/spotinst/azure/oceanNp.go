@@ -34,6 +34,7 @@ type OceanNp struct {
 	Name                               pulumi.StringOutput        `pulumi:"name"`
 	OsDiskSizeGb                       pulumi.IntPtrOutput        `pulumi:"osDiskSizeGb"`
 	OsDiskType                         pulumi.StringPtrOutput     `pulumi:"osDiskType"`
+	OsSku                              pulumi.StringPtrOutput     `pulumi:"osSku"`
 	OsType                             pulumi.StringPtrOutput     `pulumi:"osType"`
 	Scheduling                         OceanNpSchedulingPtrOutput `pulumi:"scheduling"`
 	SpotPercentage                     pulumi.IntPtrOutput        `pulumi:"spotPercentage"`
@@ -102,6 +103,7 @@ type oceanNpState struct {
 	Name                               *string                `pulumi:"name"`
 	OsDiskSizeGb                       *int                   `pulumi:"osDiskSizeGb"`
 	OsDiskType                         *string                `pulumi:"osDiskType"`
+	OsSku                              *string                `pulumi:"osSku"`
 	OsType                             *string                `pulumi:"osType"`
 	Scheduling                         *OceanNpScheduling     `pulumi:"scheduling"`
 	SpotPercentage                     *int                   `pulumi:"spotPercentage"`
@@ -129,6 +131,7 @@ type OceanNpState struct {
 	Name                               pulumi.StringPtrInput
 	OsDiskSizeGb                       pulumi.IntPtrInput
 	OsDiskType                         pulumi.StringPtrInput
+	OsSku                              pulumi.StringPtrInput
 	OsType                             pulumi.StringPtrInput
 	Scheduling                         OceanNpSchedulingPtrInput
 	SpotPercentage                     pulumi.IntPtrInput
@@ -160,6 +163,7 @@ type oceanNpArgs struct {
 	Name                               *string                `pulumi:"name"`
 	OsDiskSizeGb                       *int                   `pulumi:"osDiskSizeGb"`
 	OsDiskType                         *string                `pulumi:"osDiskType"`
+	OsSku                              *string                `pulumi:"osSku"`
 	OsType                             *string                `pulumi:"osType"`
 	Scheduling                         *OceanNpScheduling     `pulumi:"scheduling"`
 	SpotPercentage                     *int                   `pulumi:"spotPercentage"`
@@ -188,6 +192,7 @@ type OceanNpArgs struct {
 	Name                               pulumi.StringPtrInput
 	OsDiskSizeGb                       pulumi.IntPtrInput
 	OsDiskType                         pulumi.StringPtrInput
+	OsSku                              pulumi.StringPtrInput
 	OsType                             pulumi.StringPtrInput
 	Scheduling                         OceanNpSchedulingPtrInput
 	SpotPercentage                     pulumi.IntPtrInput
@@ -356,6 +361,10 @@ func (o OceanNpOutput) OsDiskSizeGb() pulumi.IntPtrOutput {
 
 func (o OceanNpOutput) OsDiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OceanNp) pulumi.StringPtrOutput { return v.OsDiskType }).(pulumi.StringPtrOutput)
+}
+
+func (o OceanNpOutput) OsSku() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OceanNp) pulumi.StringPtrOutput { return v.OsSku }).(pulumi.StringPtrOutput)
 }
 
 func (o OceanNpOutput) OsType() pulumi.StringPtrOutput {

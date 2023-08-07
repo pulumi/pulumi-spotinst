@@ -20,6 +20,14 @@ namespace Pulumi.SpotInst.Azure.Inputs
             set => _architectures = value;
         }
 
+        [Input("excludeSeries")]
+        private InputList<string>? _excludeSeries;
+        public InputList<string> ExcludeSeries
+        {
+            get => _excludeSeries ?? (_excludeSeries = new InputList<string>());
+            set => _excludeSeries = value;
+        }
+
         [Input("maxMemoryGib")]
         public Input<double>? MaxMemoryGib { get; set; }
 

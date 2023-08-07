@@ -123,15 +123,15 @@ export class Elastigroup extends pulumi.CustomResource {
     /**
      * The type of instance determines your instance's CPU capacity, memory and storage (e.g., m1.small, c1.xlarge).
      */
-    public readonly instanceTypesOndemand!: pulumi.Output<string>;
+    public readonly instanceTypesOndemand!: pulumi.Output<string | undefined>;
     /**
      * Prioritize a subset of spot instance types. Must be a subset of the selected spot instance types.
      */
     public readonly instanceTypesPreferredSpots!: pulumi.Output<string[] | undefined>;
     /**
-     * One or more instance types.
+     * One or more instance types. Note: Cannot be defined if 'resourceRequirements' is defined.
      */
-    public readonly instanceTypesSpots!: pulumi.Output<string[]>;
+    public readonly instanceTypesSpots!: pulumi.Output<string[] | undefined>;
     /**
      * List of weights per instance type for weighted groups. Each object in the list should have the following attributes:
      */
@@ -210,6 +210,10 @@ export class Elastigroup extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     public readonly networkInterfaces!: pulumi.Output<outputs.aws.ElastigroupNetworkInterface[] | undefined>;
     /**
+     * Available ondemand instance types. Note: Either ondemand or onDemandTypes must be defined, but not both.
+     */
+    public readonly onDemandTypes!: pulumi.Output<string[] | undefined>;
+    /**
      * Number of on demand instances to launch in the group. All other instances will be spot instances. When this parameter is set the `spotPercentage` parameter is being ignored.
      */
     public readonly ondemandCount!: pulumi.Output<number | undefined>;
@@ -258,6 +262,10 @@ export class Elastigroup extends pulumi.CustomResource {
      * Note: This parameter is required if you specify subnets (through subnet_ids). This parameter is optional if you specify Availability Zones (through availability_zones).
      */
     public readonly region!: pulumi.Output<string | undefined>;
+    /**
+     * Required instance attributes. Instance types will be selected based on these requirements.
+     */
+    public readonly resourceRequirements!: pulumi.Output<outputs.aws.ElastigroupResourceRequirement[] | undefined>;
     /**
      * User will specify which resources should be tagged with group tags.
      */
@@ -383,6 +391,7 @@ export class Elastigroup extends pulumi.CustomResource {
             resourceInputs["multipleMetrics"] = state ? state.multipleMetrics : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["networkInterfaces"] = state ? state.networkInterfaces : undefined;
+            resourceInputs["onDemandTypes"] = state ? state.onDemandTypes : undefined;
             resourceInputs["ondemandCount"] = state ? state.ondemandCount : undefined;
             resourceInputs["orientation"] = state ? state.orientation : undefined;
             resourceInputs["persistBlockDevices"] = state ? state.persistBlockDevices : undefined;
@@ -393,6 +402,7 @@ export class Elastigroup extends pulumi.CustomResource {
             resourceInputs["privateIps"] = state ? state.privateIps : undefined;
             resourceInputs["product"] = state ? state.product : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["resourceRequirements"] = state ? state.resourceRequirements : undefined;
             resourceInputs["resourceTagSpecifications"] = state ? state.resourceTagSpecifications : undefined;
             resourceInputs["revertToSpot"] = state ? state.revertToSpot : undefined;
             resourceInputs["scalingDownPolicies"] = state ? state.scalingDownPolicies : undefined;
@@ -419,12 +429,6 @@ export class Elastigroup extends pulumi.CustomResource {
             const args = argsOrState as ElastigroupArgs | undefined;
             if ((!args || args.fallbackToOndemand === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'fallbackToOndemand'");
-            }
-            if ((!args || args.instanceTypesOndemand === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'instanceTypesOndemand'");
-            }
-            if ((!args || args.instanceTypesSpots === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'instanceTypesSpots'");
             }
             if ((!args || args.orientation === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'orientation'");
@@ -484,6 +488,7 @@ export class Elastigroup extends pulumi.CustomResource {
             resourceInputs["multipleMetrics"] = args ? args.multipleMetrics : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["networkInterfaces"] = args ? args.networkInterfaces : undefined;
+            resourceInputs["onDemandTypes"] = args ? args.onDemandTypes : undefined;
             resourceInputs["ondemandCount"] = args ? args.ondemandCount : undefined;
             resourceInputs["orientation"] = args ? args.orientation : undefined;
             resourceInputs["persistBlockDevices"] = args ? args.persistBlockDevices : undefined;
@@ -494,6 +499,7 @@ export class Elastigroup extends pulumi.CustomResource {
             resourceInputs["privateIps"] = args ? args.privateIps : undefined;
             resourceInputs["product"] = args ? args.product : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["resourceRequirements"] = args ? args.resourceRequirements : undefined;
             resourceInputs["resourceTagSpecifications"] = args ? args.resourceTagSpecifications : undefined;
             resourceInputs["revertToSpot"] = args ? args.revertToSpot : undefined;
             resourceInputs["scalingDownPolicies"] = args ? args.scalingDownPolicies : undefined;
@@ -618,7 +624,7 @@ export interface ElastigroupState {
      */
     instanceTypesPreferredSpots?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * One or more instance types.
+     * One or more instance types. Note: Cannot be defined if 'resourceRequirements' is defined.
      */
     instanceTypesSpots?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -699,6 +705,10 @@ export interface ElastigroupState {
     name?: pulumi.Input<string>;
     networkInterfaces?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupNetworkInterface>[]>;
     /**
+     * Available ondemand instance types. Note: Either ondemand or onDemandTypes must be defined, but not both.
+     */
+    onDemandTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * Number of on demand instances to launch in the group. All other instances will be spot instances. When this parameter is set the `spotPercentage` parameter is being ignored.
      */
     ondemandCount?: pulumi.Input<number>;
@@ -747,6 +757,10 @@ export interface ElastigroupState {
      * Note: This parameter is required if you specify subnets (through subnet_ids). This parameter is optional if you specify Availability Zones (through availability_zones).
      */
     region?: pulumi.Input<string>;
+    /**
+     * Required instance attributes. Instance types will be selected based on these requirements.
+     */
+    resourceRequirements?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupResourceRequirement>[]>;
     /**
      * User will specify which resources should be tagged with group tags.
      */
@@ -901,15 +915,15 @@ export interface ElastigroupArgs {
     /**
      * The type of instance determines your instance's CPU capacity, memory and storage (e.g., m1.small, c1.xlarge).
      */
-    instanceTypesOndemand: pulumi.Input<string>;
+    instanceTypesOndemand?: pulumi.Input<string>;
     /**
      * Prioritize a subset of spot instance types. Must be a subset of the selected spot instance types.
      */
     instanceTypesPreferredSpots?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * One or more instance types.
+     * One or more instance types. Note: Cannot be defined if 'resourceRequirements' is defined.
      */
-    instanceTypesSpots: pulumi.Input<pulumi.Input<string>[]>;
+    instanceTypesSpots?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * List of weights per instance type for weighted groups. Each object in the list should have the following attributes:
      */
@@ -988,6 +1002,10 @@ export interface ElastigroupArgs {
     name?: pulumi.Input<string>;
     networkInterfaces?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupNetworkInterface>[]>;
     /**
+     * Available ondemand instance types. Note: Either ondemand or onDemandTypes must be defined, but not both.
+     */
+    onDemandTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * Number of on demand instances to launch in the group. All other instances will be spot instances. When this parameter is set the `spotPercentage` parameter is being ignored.
      */
     ondemandCount?: pulumi.Input<number>;
@@ -1036,6 +1054,10 @@ export interface ElastigroupArgs {
      * Note: This parameter is required if you specify subnets (through subnet_ids). This parameter is optional if you specify Availability Zones (through availability_zones).
      */
     region?: pulumi.Input<string>;
+    /**
+     * Required instance attributes. Instance types will be selected based on these requirements.
+     */
+    resourceRequirements?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupResourceRequirement>[]>;
     /**
      * User will specify which resources should be tagged with group tags.
      */

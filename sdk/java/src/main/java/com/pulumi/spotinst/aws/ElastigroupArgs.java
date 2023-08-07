@@ -26,6 +26,7 @@ import com.pulumi.spotinst.aws.inputs.ElastigroupMetadataOptionsArgs;
 import com.pulumi.spotinst.aws.inputs.ElastigroupMultaiTargetSetArgs;
 import com.pulumi.spotinst.aws.inputs.ElastigroupMultipleMetricsArgs;
 import com.pulumi.spotinst.aws.inputs.ElastigroupNetworkInterfaceArgs;
+import com.pulumi.spotinst.aws.inputs.ElastigroupResourceRequirementArgs;
 import com.pulumi.spotinst.aws.inputs.ElastigroupResourceTagSpecificationArgs;
 import com.pulumi.spotinst.aws.inputs.ElastigroupRevertToSpotArgs;
 import com.pulumi.spotinst.aws.inputs.ElastigroupScalingDownPolicyArgs;
@@ -374,15 +375,15 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
      * The type of instance determines your instance&#39;s CPU capacity, memory and storage (e.g., m1.small, c1.xlarge).
      * 
      */
-    @Import(name="instanceTypesOndemand", required=true)
-    private Output<String> instanceTypesOndemand;
+    @Import(name="instanceTypesOndemand")
+    private @Nullable Output<String> instanceTypesOndemand;
 
     /**
      * @return The type of instance determines your instance&#39;s CPU capacity, memory and storage (e.g., m1.small, c1.xlarge).
      * 
      */
-    public Output<String> instanceTypesOndemand() {
-        return this.instanceTypesOndemand;
+    public Optional<Output<String>> instanceTypesOndemand() {
+        return Optional.ofNullable(this.instanceTypesOndemand);
     }
 
     /**
@@ -401,18 +402,18 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * One or more instance types.
+     * One or more instance types. Note: Cannot be defined if &#39;resourceRequirements&#39; is defined.
      * 
      */
-    @Import(name="instanceTypesSpots", required=true)
-    private Output<List<String>> instanceTypesSpots;
+    @Import(name="instanceTypesSpots")
+    private @Nullable Output<List<String>> instanceTypesSpots;
 
     /**
-     * @return One or more instance types.
+     * @return One or more instance types. Note: Cannot be defined if &#39;resourceRequirements&#39; is defined.
      * 
      */
-    public Output<List<String>> instanceTypesSpots() {
-        return this.instanceTypesSpots;
+    public Optional<Output<List<String>>> instanceTypesSpots() {
+        return Optional.ofNullable(this.instanceTypesSpots);
     }
 
     /**
@@ -721,6 +722,21 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Available ondemand instance types. Note: Either ondemand or onDemandTypes must be defined, but not both.
+     * 
+     */
+    @Import(name="onDemandTypes")
+    private @Nullable Output<List<String>> onDemandTypes;
+
+    /**
+     * @return Available ondemand instance types. Note: Either ondemand or onDemandTypes must be defined, but not both.
+     * 
+     */
+    public Optional<Output<List<String>>> onDemandTypes() {
+        return Optional.ofNullable(this.onDemandTypes);
+    }
+
+    /**
      * Number of on demand instances to launch in the group. All other instances will be spot instances. When this parameter is set the `spot_percentage` parameter is being ignored.
      * 
      */
@@ -922,6 +938,21 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> region() {
         return Optional.ofNullable(this.region);
+    }
+
+    /**
+     * Required instance attributes. Instance types will be selected based on these requirements.
+     * 
+     */
+    @Import(name="resourceRequirements")
+    private @Nullable Output<List<ElastigroupResourceRequirementArgs>> resourceRequirements;
+
+    /**
+     * @return Required instance attributes. Instance types will be selected based on these requirements.
+     * 
+     */
+    public Optional<Output<List<ElastigroupResourceRequirementArgs>>> resourceRequirements() {
+        return Optional.ofNullable(this.resourceRequirements);
     }
 
     /**
@@ -1236,6 +1267,7 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
         this.multipleMetrics = $.multipleMetrics;
         this.name = $.name;
         this.networkInterfaces = $.networkInterfaces;
+        this.onDemandTypes = $.onDemandTypes;
         this.ondemandCount = $.ondemandCount;
         this.orientation = $.orientation;
         this.persistBlockDevices = $.persistBlockDevices;
@@ -1246,6 +1278,7 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
         this.privateIps = $.privateIps;
         this.product = $.product;
         this.region = $.region;
+        this.resourceRequirements = $.resourceRequirements;
         this.resourceTagSpecifications = $.resourceTagSpecifications;
         this.revertToSpot = $.revertToSpot;
         this.scalingDownPolicies = $.scalingDownPolicies;
@@ -1786,7 +1819,7 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder instanceTypesOndemand(Output<String> instanceTypesOndemand) {
+        public Builder instanceTypesOndemand(@Nullable Output<String> instanceTypesOndemand) {
             $.instanceTypesOndemand = instanceTypesOndemand;
             return this;
         }
@@ -1833,18 +1866,18 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceTypesSpots One or more instance types.
+         * @param instanceTypesSpots One or more instance types. Note: Cannot be defined if &#39;resourceRequirements&#39; is defined.
          * 
          * @return builder
          * 
          */
-        public Builder instanceTypesSpots(Output<List<String>> instanceTypesSpots) {
+        public Builder instanceTypesSpots(@Nullable Output<List<String>> instanceTypesSpots) {
             $.instanceTypesSpots = instanceTypesSpots;
             return this;
         }
 
         /**
-         * @param instanceTypesSpots One or more instance types.
+         * @param instanceTypesSpots One or more instance types. Note: Cannot be defined if &#39;resourceRequirements&#39; is defined.
          * 
          * @return builder
          * 
@@ -1854,7 +1887,7 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceTypesSpots One or more instance types.
+         * @param instanceTypesSpots One or more instance types. Note: Cannot be defined if &#39;resourceRequirements&#39; is defined.
          * 
          * @return builder
          * 
@@ -2315,6 +2348,37 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param onDemandTypes Available ondemand instance types. Note: Either ondemand or onDemandTypes must be defined, but not both.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder onDemandTypes(@Nullable Output<List<String>> onDemandTypes) {
+            $.onDemandTypes = onDemandTypes;
+            return this;
+        }
+
+        /**
+         * @param onDemandTypes Available ondemand instance types. Note: Either ondemand or onDemandTypes must be defined, but not both.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder onDemandTypes(List<String> onDemandTypes) {
+            return onDemandTypes(Output.of(onDemandTypes));
+        }
+
+        /**
+         * @param onDemandTypes Available ondemand instance types. Note: Either ondemand or onDemandTypes must be defined, but not both.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder onDemandTypes(String... onDemandTypes) {
+            return onDemandTypes(List.of(onDemandTypes));
+        }
+
+        /**
          * @param ondemandCount Number of on demand instances to launch in the group. All other instances will be spot instances. When this parameter is set the `spot_percentage` parameter is being ignored.
          * 
          * @return builder
@@ -2621,6 +2685,37 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder region(String region) {
             return region(Output.of(region));
+        }
+
+        /**
+         * @param resourceRequirements Required instance attributes. Instance types will be selected based on these requirements.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceRequirements(@Nullable Output<List<ElastigroupResourceRequirementArgs>> resourceRequirements) {
+            $.resourceRequirements = resourceRequirements;
+            return this;
+        }
+
+        /**
+         * @param resourceRequirements Required instance attributes. Instance types will be selected based on these requirements.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceRequirements(List<ElastigroupResourceRequirementArgs> resourceRequirements) {
+            return resourceRequirements(Output.of(resourceRequirements));
+        }
+
+        /**
+         * @param resourceRequirements Required instance attributes. Instance types will be selected based on these requirements.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceRequirements(ElastigroupResourceRequirementArgs... resourceRequirements) {
+            return resourceRequirements(List.of(resourceRequirements));
         }
 
         /**
@@ -3066,8 +3161,6 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
 
         public ElastigroupArgs build() {
             $.fallbackToOndemand = Objects.requireNonNull($.fallbackToOndemand, "expected parameter 'fallbackToOndemand' to be non-null");
-            $.instanceTypesOndemand = Objects.requireNonNull($.instanceTypesOndemand, "expected parameter 'instanceTypesOndemand' to be non-null");
-            $.instanceTypesSpots = Objects.requireNonNull($.instanceTypesSpots, "expected parameter 'instanceTypesSpots' to be non-null");
             $.orientation = Objects.requireNonNull($.orientation, "expected parameter 'orientation' to be non-null");
             $.product = Objects.requireNonNull($.product, "expected parameter 'product' to be non-null");
             $.securityGroups = Objects.requireNonNull($.securityGroups, "expected parameter 'securityGroups' to be non-null");

@@ -148,7 +148,7 @@ namespace Pulumi.SpotInst.Aws
         /// The type of instance determines your instance's CPU capacity, memory and storage (e.g., m1.small, c1.xlarge).
         /// </summary>
         [Output("instanceTypesOndemand")]
-        public Output<string> InstanceTypesOndemand { get; private set; } = null!;
+        public Output<string?> InstanceTypesOndemand { get; private set; } = null!;
 
         /// <summary>
         /// Prioritize a subset of spot instance types. Must be a subset of the selected spot instance types.
@@ -157,7 +157,7 @@ namespace Pulumi.SpotInst.Aws
         public Output<ImmutableArray<string>> InstanceTypesPreferredSpots { get; private set; } = null!;
 
         /// <summary>
-        /// One or more instance types.
+        /// One or more instance types. Note: Cannot be defined if 'resourceRequirements' is defined.
         /// </summary>
         [Output("instanceTypesSpots")]
         public Output<ImmutableArray<string>> InstanceTypesSpots { get; private set; } = null!;
@@ -286,6 +286,12 @@ namespace Pulumi.SpotInst.Aws
         public Output<ImmutableArray<Outputs.ElastigroupNetworkInterface>> NetworkInterfaces { get; private set; } = null!;
 
         /// <summary>
+        /// Available ondemand instance types. Note: Either ondemand or onDemandTypes must be defined, but not both.
+        /// </summary>
+        [Output("onDemandTypes")]
+        public Output<ImmutableArray<string>> OnDemandTypes { get; private set; } = null!;
+
+        /// <summary>
         /// Number of on demand instances to launch in the group. All other instances will be spot instances. When this parameter is set the `spot_percentage` parameter is being ignored.
         /// </summary>
         [Output("ondemandCount")]
@@ -359,6 +365,12 @@ namespace Pulumi.SpotInst.Aws
         /// </summary>
         [Output("region")]
         public Output<string?> Region { get; private set; } = null!;
+
+        /// <summary>
+        /// Required instance attributes. Instance types will be selected based on these requirements.
+        /// </summary>
+        [Output("resourceRequirements")]
+        public Output<ImmutableArray<Outputs.ElastigroupResourceRequirement>> ResourceRequirements { get; private set; } = null!;
 
         /// <summary>
         /// User will specify which resources should be tagged with group tags.
@@ -678,8 +690,8 @@ namespace Pulumi.SpotInst.Aws
         /// <summary>
         /// The type of instance determines your instance's CPU capacity, memory and storage (e.g., m1.small, c1.xlarge).
         /// </summary>
-        [Input("instanceTypesOndemand", required: true)]
-        public Input<string> InstanceTypesOndemand { get; set; } = null!;
+        [Input("instanceTypesOndemand")]
+        public Input<string>? InstanceTypesOndemand { get; set; }
 
         [Input("instanceTypesPreferredSpots")]
         private InputList<string>? _instanceTypesPreferredSpots;
@@ -693,11 +705,11 @@ namespace Pulumi.SpotInst.Aws
             set => _instanceTypesPreferredSpots = value;
         }
 
-        [Input("instanceTypesSpots", required: true)]
+        [Input("instanceTypesSpots")]
         private InputList<string>? _instanceTypesSpots;
 
         /// <summary>
-        /// One or more instance types.
+        /// One or more instance types. Note: Cannot be defined if 'resourceRequirements' is defined.
         /// </summary>
         public InputList<string> InstanceTypesSpots
         {
@@ -850,6 +862,18 @@ namespace Pulumi.SpotInst.Aws
             set => _networkInterfaces = value;
         }
 
+        [Input("onDemandTypes")]
+        private InputList<string>? _onDemandTypes;
+
+        /// <summary>
+        /// Available ondemand instance types. Note: Either ondemand or onDemandTypes must be defined, but not both.
+        /// </summary>
+        public InputList<string> OnDemandTypes
+        {
+            get => _onDemandTypes ?? (_onDemandTypes = new InputList<string>());
+            set => _onDemandTypes = value;
+        }
+
         /// <summary>
         /// Number of on demand instances to launch in the group. All other instances will be spot instances. When this parameter is set the `spot_percentage` parameter is being ignored.
         /// </summary>
@@ -936,6 +960,18 @@ namespace Pulumi.SpotInst.Aws
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
+
+        [Input("resourceRequirements")]
+        private InputList<Inputs.ElastigroupResourceRequirementArgs>? _resourceRequirements;
+
+        /// <summary>
+        /// Required instance attributes. Instance types will be selected based on these requirements.
+        /// </summary>
+        public InputList<Inputs.ElastigroupResourceRequirementArgs> ResourceRequirements
+        {
+            get => _resourceRequirements ?? (_resourceRequirements = new InputList<Inputs.ElastigroupResourceRequirementArgs>());
+            set => _resourceRequirements = value;
+        }
 
         [Input("resourceTagSpecifications")]
         private InputList<Inputs.ElastigroupResourceTagSpecificationArgs>? _resourceTagSpecifications;
@@ -1302,7 +1338,7 @@ namespace Pulumi.SpotInst.Aws
         private InputList<string>? _instanceTypesSpots;
 
         /// <summary>
-        /// One or more instance types.
+        /// One or more instance types. Note: Cannot be defined if 'resourceRequirements' is defined.
         /// </summary>
         public InputList<string> InstanceTypesSpots
         {
@@ -1455,6 +1491,18 @@ namespace Pulumi.SpotInst.Aws
             set => _networkInterfaces = value;
         }
 
+        [Input("onDemandTypes")]
+        private InputList<string>? _onDemandTypes;
+
+        /// <summary>
+        /// Available ondemand instance types. Note: Either ondemand or onDemandTypes must be defined, but not both.
+        /// </summary>
+        public InputList<string> OnDemandTypes
+        {
+            get => _onDemandTypes ?? (_onDemandTypes = new InputList<string>());
+            set => _onDemandTypes = value;
+        }
+
         /// <summary>
         /// Number of on demand instances to launch in the group. All other instances will be spot instances. When this parameter is set the `spot_percentage` parameter is being ignored.
         /// </summary>
@@ -1541,6 +1589,18 @@ namespace Pulumi.SpotInst.Aws
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
+
+        [Input("resourceRequirements")]
+        private InputList<Inputs.ElastigroupResourceRequirementGetArgs>? _resourceRequirements;
+
+        /// <summary>
+        /// Required instance attributes. Instance types will be selected based on these requirements.
+        /// </summary>
+        public InputList<Inputs.ElastigroupResourceRequirementGetArgs> ResourceRequirements
+        {
+            get => _resourceRequirements ?? (_resourceRequirements = new InputList<Inputs.ElastigroupResourceRequirementGetArgs>());
+            set => _resourceRequirements = value;
+        }
 
         [Input("resourceTagSpecifications")]
         private InputList<Inputs.ElastigroupResourceTagSpecificationGetArgs>? _resourceTagSpecifications;
