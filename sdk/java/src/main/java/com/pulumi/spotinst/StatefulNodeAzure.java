@@ -104,7 +104,7 @@ import javax.annotation.Nullable;
  *             .zones(            
  *                 &#34;1&#34;,
  *                 &#34;3&#34;)
- *             .preferredZones(&#34;1&#34;)
+ *             .preferredZone(&#34;1&#34;)
  *             .customData(&#34;&#34;)
  *             .shutdownScript(&#34;&#34;)
  *             .userData(&#34;&#34;)
@@ -279,7 +279,7 @@ import javax.annotation.Nullable;
  * * `spot_sizes` - (Required) Available Spot-VM sizes.
  * * `preferred_spot_sizes` - (Optional) Prioritize Spot VM sizes when launching Spot VMs for the group. If set, must be a sublist of compute.vmSizes.spotSizes.
  * * `zones` - (Optional, Enum `&#34;1&#34;, &#34;2&#34;, &#34;3&#34;`) List of Azure Availability Zones in the defined region. If not defined, Virtual machines will be launched regionally.
- * * `preferred_zones` - (Optional, Enum `&#34;1&#34;, &#34;2&#34;, &#34;3&#34;`) The AZs to prioritize when launching VMs. If no markets are available in the Preferred AZs, VMs are launched in the non-preferred AZs. Must be a sublist of compute.zones.
+ * * `preferred_zone` - (Optional, Enum `&#34;1&#34;, &#34;2&#34;, &#34;3&#34;`) The AZ to prioritize when launching VMs. If no markets are available in the Preferred AZ, VMs are launched in the non-preferred AZ. Must be a sublist of compute.zones.
  * * `custom_data` - (Optional) This value will hold the YAML in base64 and will be executed upon VM launch.
  * * `shutdown_script` - (Optional) Shutdown script for the stateful node. Value should be passed as a string encoded at Base64 only.
  * * `user_data` - (Optional) Define a set of scripts or other metadata that&#39;s inserted to an Azure virtual machine at provision time. (Base64 encoded)
@@ -526,10 +526,10 @@ public class StatefulNodeAzure extends com.pulumi.resources.CustomResource {
         return this.customData;
     }
     @Export(name="dataDisks", type=List.class, parameters={StatefulNodeAzureDataDisk.class})
-    private Output<List<StatefulNodeAzureDataDisk>> dataDisks;
+    private Output</* @Nullable */ List<StatefulNodeAzureDataDisk>> dataDisks;
 
-    public Output<List<StatefulNodeAzureDataDisk>> dataDisks() {
-        return this.dataDisks;
+    public Output<Optional<List<StatefulNodeAzureDataDisk>>> dataDisks() {
+        return Codegen.optional(this.dataDisks);
     }
     @Export(name="dataDisksPersistenceMode", type=String.class, parameters={})
     private Output<String> dataDisksPersistenceMode;
@@ -622,10 +622,10 @@ public class StatefulNodeAzure extends com.pulumi.resources.CustomResource {
         return this.os;
     }
     @Export(name="osDisk", type=StatefulNodeAzureOsDisk.class, parameters={})
-    private Output<StatefulNodeAzureOsDisk> osDisk;
+    private Output</* @Nullable */ StatefulNodeAzureOsDisk> osDisk;
 
-    public Output<StatefulNodeAzureOsDisk> osDisk() {
-        return this.osDisk;
+    public Output<Optional<StatefulNodeAzureOsDisk>> osDisk() {
+        return Codegen.optional(this.osDisk);
     }
     @Export(name="osDiskPersistenceMode", type=String.class, parameters={})
     private Output<String> osDiskPersistenceMode;
@@ -639,11 +639,11 @@ public class StatefulNodeAzure extends com.pulumi.resources.CustomResource {
     public Output<List<String>> preferredSpotSizes() {
         return this.preferredSpotSizes;
     }
-    @Export(name="preferredZones", type=String.class, parameters={})
-    private Output<String> preferredZones;
+    @Export(name="preferredZone", type=String.class, parameters={})
+    private Output<String> preferredZone;
 
-    public Output<String> preferredZones() {
-        return this.preferredZones;
+    public Output<String> preferredZone() {
+        return this.preferredZone;
     }
     @Export(name="region", type=String.class, parameters={})
     private Output<String> region;
@@ -664,10 +664,10 @@ public class StatefulNodeAzure extends com.pulumi.resources.CustomResource {
         return this.schedulingTasks;
     }
     @Export(name="secrets", type=List.class, parameters={StatefulNodeAzureSecret.class})
-    private Output<List<StatefulNodeAzureSecret>> secrets;
+    private Output</* @Nullable */ List<StatefulNodeAzureSecret>> secrets;
 
-    public Output<List<StatefulNodeAzureSecret>> secrets() {
-        return this.secrets;
+    public Output<Optional<List<StatefulNodeAzureSecret>>> secrets() {
+        return Codegen.optional(this.secrets);
     }
     @Export(name="security", type=StatefulNodeAzureSecurity.class, parameters={})
     private Output</* @Nullable */ StatefulNodeAzureSecurity> security;

@@ -6694,7 +6694,7 @@
                 "osDisk": "os_disk",
                 "osDiskPersistenceMode": "os_disk_persistence_mode",
                 "preferredSpotSizes": "preferred_spot_sizes",
-                "preferredZones": "preferred_zones",
+                "preferredZone": "preferred_zone",
                 "resourceGroupName": "resource_group_name",
                 "schedulingTasks": "scheduling_task",
                 "secrets": "secret",

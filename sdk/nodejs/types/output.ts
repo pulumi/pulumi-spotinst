@@ -201,8 +201,8 @@ export interface StatefulNodeAzureLoadBalancer {
 }
 
 export interface StatefulNodeAzureLogin {
-    password: string;
-    sshPublicKey: string;
+    password?: string;
+    sshPublicKey?: string;
     userName: string;
 }
 
@@ -218,15 +218,15 @@ export interface StatefulNodeAzureNetwork {
 }
 
 export interface StatefulNodeAzureNetworkNetworkInterface {
-    additionalIpConfigurations: outputs.StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfiguration[];
-    applicationSecurityGroups: outputs.StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroup[];
-    assignPublicIp: boolean;
-    enableIpForwarding: boolean;
+    additionalIpConfigurations?: outputs.StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfiguration[];
+    applicationSecurityGroups?: outputs.StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroup[];
+    assignPublicIp?: boolean;
+    enableIpForwarding?: boolean;
     isPrimary: boolean;
-    networkSecurityGroups: outputs.StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroup[];
-    privateIpAddresses: string[];
-    publicIpSku: string;
-    publicIps: outputs.StatefulNodeAzureNetworkNetworkInterfacePublicIp[];
+    networkSecurityGroups?: outputs.StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroup[];
+    privateIpAddresses?: string[];
+    publicIpSku?: string;
+    publicIps?: outputs.StatefulNodeAzureNetworkNetworkInterfacePublicIp[];
     subnetName: string;
 }
 
@@ -241,8 +241,8 @@ export interface StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGrou
 }
 
 export interface StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroup {
-    name: string;
-    networkResourceGroupName: string;
+    name?: string;
+    networkResourceGroupName?: string;
 }
 
 export interface StatefulNodeAzureNetworkNetworkInterfacePublicIp {
@@ -251,7 +251,7 @@ export interface StatefulNodeAzureNetworkNetworkInterfacePublicIp {
 }
 
 export interface StatefulNodeAzureOsDisk {
-    sizeGb: number;
+    sizeGb?: number;
     type: string;
 }
 
@@ -272,8 +272,8 @@ export interface StatefulNodeAzureSecretSourceVault {
 }
 
 export interface StatefulNodeAzureSecretVaultCertificate {
-    certificateStore: string;
-    certificateUrl: string;
+    certificateStore?: string;
+    certificateUrl?: string;
 }
 
 export interface StatefulNodeAzureSecurity {

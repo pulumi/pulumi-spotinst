@@ -30,7 +30,7 @@ namespace Pulumi.SpotInst
     /// * `spot_sizes` - (Required) Available Spot-VM sizes.
     /// * `preferred_spot_sizes` - (Optional) Prioritize Spot VM sizes when launching Spot VMs for the group. If set, must be a sublist of compute.vmSizes.spotSizes.
     /// * `zones` - (Optional, Enum `"1", "2", "3"`) List of Azure Availability Zones in the defined region. If not defined, Virtual machines will be launched regionally.
-    /// * `preferred_zones` - (Optional, Enum `"1", "2", "3"`) The AZs to prioritize when launching VMs. If no markets are available in the Preferred AZs, VMs are launched in the non-preferred AZs. Must be a sublist of compute.zones.
+    /// * `preferred_zone` - (Optional, Enum `"1", "2", "3"`) The AZ to prioritize when launching VMs. If no markets are available in the Preferred AZ, VMs are launched in the non-preferred AZ. Must be a sublist of compute.zones.
     /// * `custom_data` - (Optional) This value will hold the YAML in base64 and will be executed upon VM launch.
     /// * `shutdown_script` - (Optional) Shutdown script for the stateful node. Value should be passed as a string encoded at Base64 only.
     /// * `user_data` - (Optional) Define a set of scripts or other metadata that's inserted to an Azure virtual machine at provision time. (Base64 encoded)
@@ -316,7 +316,7 @@ namespace Pulumi.SpotInst
         public Output<string> Os { get; private set; } = null!;
 
         [Output("osDisk")]
-        public Output<Outputs.StatefulNodeAzureOsDisk> OsDisk { get; private set; } = null!;
+        public Output<Outputs.StatefulNodeAzureOsDisk?> OsDisk { get; private set; } = null!;
 
         [Output("osDiskPersistenceMode")]
         public Output<string> OsDiskPersistenceMode { get; private set; } = null!;
@@ -324,8 +324,8 @@ namespace Pulumi.SpotInst
         [Output("preferredSpotSizes")]
         public Output<ImmutableArray<string>> PreferredSpotSizes { get; private set; } = null!;
 
-        [Output("preferredZones")]
-        public Output<string> PreferredZones { get; private set; } = null!;
+        [Output("preferredZone")]
+        public Output<string> PreferredZone { get; private set; } = null!;
 
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
@@ -548,8 +548,8 @@ namespace Pulumi.SpotInst
             set => _preferredSpotSizes = value;
         }
 
-        [Input("preferredZones")]
-        public Input<string>? PreferredZones { get; set; }
+        [Input("preferredZone")]
+        public Input<string>? PreferredZone { get; set; }
 
         [Input("region", required: true)]
         public Input<string> Region { get; set; } = null!;
@@ -769,8 +769,8 @@ namespace Pulumi.SpotInst
             set => _preferredSpotSizes = value;
         }
 
-        [Input("preferredZones")]
-        public Input<string>? PreferredZones { get; set; }
+        [Input("preferredZone")]
+        public Input<string>? PreferredZone { get; set; }
 
         [Input("region")]
         public Input<string>? Region { get; set; }
