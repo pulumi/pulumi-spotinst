@@ -45,7 +45,7 @@ class StatefulNodeAzureArgs:
                  os_disk: Optional[pulumi.Input['StatefulNodeAzureOsDiskArgs']] = None,
                  os_disk_persistence_mode: Optional[pulumi.Input[str]] = None,
                  preferred_spot_sizes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 preferred_zones: Optional[pulumi.Input[str]] = None,
+                 preferred_zone: Optional[pulumi.Input[str]] = None,
                  scheduling_tasks: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureSchedulingTaskArgs']]]] = None,
                  secrets: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureSecretArgs']]]] = None,
                  security: Optional[pulumi.Input['StatefulNodeAzureSecurityArgs']] = None,
@@ -109,8 +109,8 @@ class StatefulNodeAzureArgs:
             pulumi.set(__self__, "os_disk_persistence_mode", os_disk_persistence_mode)
         if preferred_spot_sizes is not None:
             pulumi.set(__self__, "preferred_spot_sizes", preferred_spot_sizes)
-        if preferred_zones is not None:
-            pulumi.set(__self__, "preferred_zones", preferred_zones)
+        if preferred_zone is not None:
+            pulumi.set(__self__, "preferred_zone", preferred_zone)
         if scheduling_tasks is not None:
             pulumi.set(__self__, "scheduling_tasks", scheduling_tasks)
         if secrets is not None:
@@ -396,13 +396,13 @@ class StatefulNodeAzureArgs:
         pulumi.set(self, "preferred_spot_sizes", value)
 
     @property
-    @pulumi.getter(name="preferredZones")
-    def preferred_zones(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "preferred_zones")
+    @pulumi.getter(name="preferredZone")
+    def preferred_zone(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "preferred_zone")
 
-    @preferred_zones.setter
-    def preferred_zones(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "preferred_zones", value)
+    @preferred_zone.setter
+    def preferred_zone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "preferred_zone", value)
 
     @property
     @pulumi.getter(name="schedulingTasks")
@@ -529,7 +529,7 @@ class _StatefulNodeAzureState:
                  os_disk: Optional[pulumi.Input['StatefulNodeAzureOsDiskArgs']] = None,
                  os_disk_persistence_mode: Optional[pulumi.Input[str]] = None,
                  preferred_spot_sizes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 preferred_zones: Optional[pulumi.Input[str]] = None,
+                 preferred_zone: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  resource_group_name: Optional[pulumi.Input[str]] = None,
                  scheduling_tasks: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureSchedulingTaskArgs']]]] = None,
@@ -595,8 +595,8 @@ class _StatefulNodeAzureState:
             pulumi.set(__self__, "os_disk_persistence_mode", os_disk_persistence_mode)
         if preferred_spot_sizes is not None:
             pulumi.set(__self__, "preferred_spot_sizes", preferred_spot_sizes)
-        if preferred_zones is not None:
-            pulumi.set(__self__, "preferred_zones", preferred_zones)
+        if preferred_zone is not None:
+            pulumi.set(__self__, "preferred_zone", preferred_zone)
         if region is not None:
             pulumi.set(__self__, "region", region)
         if resource_group_name is not None:
@@ -833,13 +833,13 @@ class _StatefulNodeAzureState:
         pulumi.set(self, "preferred_spot_sizes", value)
 
     @property
-    @pulumi.getter(name="preferredZones")
-    def preferred_zones(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "preferred_zones")
+    @pulumi.getter(name="preferredZone")
+    def preferred_zone(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "preferred_zone")
 
-    @preferred_zones.setter
-    def preferred_zones(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "preferred_zones", value)
+    @preferred_zone.setter
+    def preferred_zone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "preferred_zone", value)
 
     @property
     @pulumi.getter
@@ -1031,7 +1031,7 @@ class StatefulNodeAzure(pulumi.CustomResource):
                  os_disk: Optional[pulumi.Input[pulumi.InputType['StatefulNodeAzureOsDiskArgs']]] = None,
                  os_disk_persistence_mode: Optional[pulumi.Input[str]] = None,
                  preferred_spot_sizes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 preferred_zones: Optional[pulumi.Input[str]] = None,
+                 preferred_zone: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  resource_group_name: Optional[pulumi.Input[str]] = None,
                  scheduling_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StatefulNodeAzureSchedulingTaskArgs']]]]] = None,
@@ -1072,7 +1072,7 @@ class StatefulNodeAzure(pulumi.CustomResource):
         * `spot_sizes` - (Required) Available Spot-VM sizes.
         * `preferred_spot_sizes` - (Optional) Prioritize Spot VM sizes when launching Spot VMs for the group. If set, must be a sublist of compute.vmSizes.spotSizes.
         * `zones` - (Optional, Enum `"1", "2", "3"`) List of Azure Availability Zones in the defined region. If not defined, Virtual machines will be launched regionally.
-        * `preferred_zones` - (Optional, Enum `"1", "2", "3"`) The AZs to prioritize when launching VMs. If no markets are available in the Preferred AZs, VMs are launched in the non-preferred AZs. Must be a sublist of compute.zones.
+        * `preferred_zone` - (Optional, Enum `"1", "2", "3"`) The AZ to prioritize when launching VMs. If no markets are available in the Preferred AZ, VMs are launched in the non-preferred AZ. Must be a sublist of compute.zones.
         * `custom_data` - (Optional) This value will hold the YAML in base64 and will be executed upon VM launch.
         * `shutdown_script` - (Optional) Shutdown script for the stateful node. Value should be passed as a string encoded at Base64 only.
         * `user_data` - (Optional) Define a set of scripts or other metadata that's inserted to an Azure virtual machine at provision time. (Base64 encoded)
@@ -1327,7 +1327,7 @@ class StatefulNodeAzure(pulumi.CustomResource):
         * `spot_sizes` - (Required) Available Spot-VM sizes.
         * `preferred_spot_sizes` - (Optional) Prioritize Spot VM sizes when launching Spot VMs for the group. If set, must be a sublist of compute.vmSizes.spotSizes.
         * `zones` - (Optional, Enum `"1", "2", "3"`) List of Azure Availability Zones in the defined region. If not defined, Virtual machines will be launched regionally.
-        * `preferred_zones` - (Optional, Enum `"1", "2", "3"`) The AZs to prioritize when launching VMs. If no markets are available in the Preferred AZs, VMs are launched in the non-preferred AZs. Must be a sublist of compute.zones.
+        * `preferred_zone` - (Optional, Enum `"1", "2", "3"`) The AZ to prioritize when launching VMs. If no markets are available in the Preferred AZ, VMs are launched in the non-preferred AZ. Must be a sublist of compute.zones.
         * `custom_data` - (Optional) This value will hold the YAML in base64 and will be executed upon VM launch.
         * `shutdown_script` - (Optional) Shutdown script for the stateful node. Value should be passed as a string encoded at Base64 only.
         * `user_data` - (Optional) Define a set of scripts or other metadata that's inserted to an Azure virtual machine at provision time. (Base64 encoded)
@@ -1589,7 +1589,7 @@ class StatefulNodeAzure(pulumi.CustomResource):
                  os_disk: Optional[pulumi.Input[pulumi.InputType['StatefulNodeAzureOsDiskArgs']]] = None,
                  os_disk_persistence_mode: Optional[pulumi.Input[str]] = None,
                  preferred_spot_sizes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 preferred_zones: Optional[pulumi.Input[str]] = None,
+                 preferred_zone: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  resource_group_name: Optional[pulumi.Input[str]] = None,
                  scheduling_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StatefulNodeAzureSchedulingTaskArgs']]]]] = None,
@@ -1643,7 +1643,7 @@ class StatefulNodeAzure(pulumi.CustomResource):
             __props__.__dict__["os_disk"] = os_disk
             __props__.__dict__["os_disk_persistence_mode"] = os_disk_persistence_mode
             __props__.__dict__["preferred_spot_sizes"] = preferred_spot_sizes
-            __props__.__dict__["preferred_zones"] = preferred_zones
+            __props__.__dict__["preferred_zone"] = preferred_zone
             if region is None and not opts.urn:
                 raise TypeError("Missing required property 'region'")
             __props__.__dict__["region"] = region
@@ -1708,7 +1708,7 @@ class StatefulNodeAzure(pulumi.CustomResource):
             os_disk: Optional[pulumi.Input[pulumi.InputType['StatefulNodeAzureOsDiskArgs']]] = None,
             os_disk_persistence_mode: Optional[pulumi.Input[str]] = None,
             preferred_spot_sizes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            preferred_zones: Optional[pulumi.Input[str]] = None,
+            preferred_zone: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
             resource_group_name: Optional[pulumi.Input[str]] = None,
             scheduling_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StatefulNodeAzureSchedulingTaskArgs']]]]] = None,
@@ -1761,7 +1761,7 @@ class StatefulNodeAzure(pulumi.CustomResource):
         __props__.__dict__["os_disk"] = os_disk
         __props__.__dict__["os_disk_persistence_mode"] = os_disk_persistence_mode
         __props__.__dict__["preferred_spot_sizes"] = preferred_spot_sizes
-        __props__.__dict__["preferred_zones"] = preferred_zones
+        __props__.__dict__["preferred_zone"] = preferred_zone
         __props__.__dict__["region"] = region
         __props__.__dict__["resource_group_name"] = resource_group_name
         __props__.__dict__["scheduling_tasks"] = scheduling_tasks
@@ -1799,7 +1799,7 @@ class StatefulNodeAzure(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="dataDisks")
-    def data_disks(self) -> pulumi.Output[Sequence['outputs.StatefulNodeAzureDataDisk']]:
+    def data_disks(self) -> pulumi.Output[Optional[Sequence['outputs.StatefulNodeAzureDataDisk']]]:
         return pulumi.get(self, "data_disks")
 
     @property
@@ -1879,7 +1879,7 @@ class StatefulNodeAzure(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="osDisk")
-    def os_disk(self) -> pulumi.Output['outputs.StatefulNodeAzureOsDisk']:
+    def os_disk(self) -> pulumi.Output[Optional['outputs.StatefulNodeAzureOsDisk']]:
         return pulumi.get(self, "os_disk")
 
     @property
@@ -1893,9 +1893,9 @@ class StatefulNodeAzure(pulumi.CustomResource):
         return pulumi.get(self, "preferred_spot_sizes")
 
     @property
-    @pulumi.getter(name="preferredZones")
-    def preferred_zones(self) -> pulumi.Output[str]:
-        return pulumi.get(self, "preferred_zones")
+    @pulumi.getter(name="preferredZone")
+    def preferred_zone(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "preferred_zone")
 
     @property
     @pulumi.getter
@@ -1914,7 +1914,7 @@ class StatefulNodeAzure(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def secrets(self) -> pulumi.Output[Sequence['outputs.StatefulNodeAzureSecret']]:
+    def secrets(self) -> pulumi.Output[Optional[Sequence['outputs.StatefulNodeAzureSecret']]]:
         return pulumi.get(self, "secrets")
 
     @property

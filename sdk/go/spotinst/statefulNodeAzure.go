@@ -32,7 +32,7 @@ import (
 // * `spotSizes` - (Required) Available Spot-VM sizes.
 // * `preferredSpotSizes` - (Optional) Prioritize Spot VM sizes when launching Spot VMs for the group. If set, must be a sublist of compute.vmSizes.spotSizes.
 // * `zones` - (Optional, Enum `"1", "2", "3"`) List of Azure Availability Zones in the defined region. If not defined, Virtual machines will be launched regionally.
-// * `preferredZones` - (Optional, Enum `"1", "2", "3"`) The AZs to prioritize when launching VMs. If no markets are available in the Preferred AZs, VMs are launched in the non-preferred AZs. Must be a sublist of compute.zones.
+// * `preferredZone` - (Optional, Enum `"1", "2", "3"`) The AZ to prioritize when launching VMs. If no markets are available in the Preferred AZ, VMs are launched in the non-preferred AZ. Must be a sublist of compute.zones.
 // * `customData` - (Optional) This value will hold the YAML in base64 and will be executed upon VM launch.
 // * `shutdownScript` - (Optional) Shutdown script for the stateful node. Value should be passed as a string encoded at Base64 only.
 // * `userData` - (Optional) Define a set of scripts or other metadata that's inserted to an Azure virtual machine at provision time. (Base64 encoded)
@@ -278,10 +278,10 @@ type StatefulNodeAzure struct {
 	Network                  StatefulNodeAzureNetworkPtrOutput                  `pulumi:"network"`
 	OdSizes                  pulumi.StringArrayOutput                           `pulumi:"odSizes"`
 	Os                       pulumi.StringOutput                                `pulumi:"os"`
-	OsDisk                   StatefulNodeAzureOsDiskOutput                      `pulumi:"osDisk"`
+	OsDisk                   StatefulNodeAzureOsDiskPtrOutput                   `pulumi:"osDisk"`
 	OsDiskPersistenceMode    pulumi.StringOutput                                `pulumi:"osDiskPersistenceMode"`
 	PreferredSpotSizes       pulumi.StringArrayOutput                           `pulumi:"preferredSpotSizes"`
-	PreferredZones           pulumi.StringOutput                                `pulumi:"preferredZones"`
+	PreferredZone            pulumi.StringOutput                                `pulumi:"preferredZone"`
 	Region                   pulumi.StringOutput                                `pulumi:"region"`
 	ResourceGroupName        pulumi.StringOutput                                `pulumi:"resourceGroupName"`
 	SchedulingTasks          StatefulNodeAzureSchedulingTaskArrayOutput         `pulumi:"schedulingTasks"`
@@ -381,7 +381,7 @@ type statefulNodeAzureState struct {
 	OsDisk                   *StatefulNodeAzureOsDisk                  `pulumi:"osDisk"`
 	OsDiskPersistenceMode    *string                                   `pulumi:"osDiskPersistenceMode"`
 	PreferredSpotSizes       []string                                  `pulumi:"preferredSpotSizes"`
-	PreferredZones           *string                                   `pulumi:"preferredZones"`
+	PreferredZone            *string                                   `pulumi:"preferredZone"`
 	Region                   *string                                   `pulumi:"region"`
 	ResourceGroupName        *string                                   `pulumi:"resourceGroupName"`
 	SchedulingTasks          []StatefulNodeAzureSchedulingTask         `pulumi:"schedulingTasks"`
@@ -425,7 +425,7 @@ type StatefulNodeAzureState struct {
 	OsDisk                   StatefulNodeAzureOsDiskPtrInput
 	OsDiskPersistenceMode    pulumi.StringPtrInput
 	PreferredSpotSizes       pulumi.StringArrayInput
-	PreferredZones           pulumi.StringPtrInput
+	PreferredZone            pulumi.StringPtrInput
 	Region                   pulumi.StringPtrInput
 	ResourceGroupName        pulumi.StringPtrInput
 	SchedulingTasks          StatefulNodeAzureSchedulingTaskArrayInput
@@ -473,7 +473,7 @@ type statefulNodeAzureArgs struct {
 	OsDisk                   *StatefulNodeAzureOsDisk                  `pulumi:"osDisk"`
 	OsDiskPersistenceMode    *string                                   `pulumi:"osDiskPersistenceMode"`
 	PreferredSpotSizes       []string                                  `pulumi:"preferredSpotSizes"`
-	PreferredZones           *string                                   `pulumi:"preferredZones"`
+	PreferredZone            *string                                   `pulumi:"preferredZone"`
 	Region                   string                                    `pulumi:"region"`
 	ResourceGroupName        string                                    `pulumi:"resourceGroupName"`
 	SchedulingTasks          []StatefulNodeAzureSchedulingTask         `pulumi:"schedulingTasks"`
@@ -518,7 +518,7 @@ type StatefulNodeAzureArgs struct {
 	OsDisk                   StatefulNodeAzureOsDiskPtrInput
 	OsDiskPersistenceMode    pulumi.StringPtrInput
 	PreferredSpotSizes       pulumi.StringArrayInput
-	PreferredZones           pulumi.StringPtrInput
+	PreferredZone            pulumi.StringPtrInput
 	Region                   pulumi.StringInput
 	ResourceGroupName        pulumi.StringInput
 	SchedulingTasks          StatefulNodeAzureSchedulingTaskArrayInput
@@ -704,8 +704,8 @@ func (o StatefulNodeAzureOutput) Os() pulumi.StringOutput {
 	return o.ApplyT(func(v *StatefulNodeAzure) pulumi.StringOutput { return v.Os }).(pulumi.StringOutput)
 }
 
-func (o StatefulNodeAzureOutput) OsDisk() StatefulNodeAzureOsDiskOutput {
-	return o.ApplyT(func(v *StatefulNodeAzure) StatefulNodeAzureOsDiskOutput { return v.OsDisk }).(StatefulNodeAzureOsDiskOutput)
+func (o StatefulNodeAzureOutput) OsDisk() StatefulNodeAzureOsDiskPtrOutput {
+	return o.ApplyT(func(v *StatefulNodeAzure) StatefulNodeAzureOsDiskPtrOutput { return v.OsDisk }).(StatefulNodeAzureOsDiskPtrOutput)
 }
 
 func (o StatefulNodeAzureOutput) OsDiskPersistenceMode() pulumi.StringOutput {
@@ -716,8 +716,8 @@ func (o StatefulNodeAzureOutput) PreferredSpotSizes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *StatefulNodeAzure) pulumi.StringArrayOutput { return v.PreferredSpotSizes }).(pulumi.StringArrayOutput)
 }
 
-func (o StatefulNodeAzureOutput) PreferredZones() pulumi.StringOutput {
-	return o.ApplyT(func(v *StatefulNodeAzure) pulumi.StringOutput { return v.PreferredZones }).(pulumi.StringOutput)
+func (o StatefulNodeAzureOutput) PreferredZone() pulumi.StringOutput {
+	return o.ApplyT(func(v *StatefulNodeAzure) pulumi.StringOutput { return v.PreferredZone }).(pulumi.StringOutput)
 }
 
 func (o StatefulNodeAzureOutput) Region() pulumi.StringOutput {

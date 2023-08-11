@@ -192,11 +192,11 @@ public final class StatefulNodeAzureState extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.preferredSpotSizes);
     }
 
-    @Import(name="preferredZones")
-    private @Nullable Output<String> preferredZones;
+    @Import(name="preferredZone")
+    private @Nullable Output<String> preferredZone;
 
-    public Optional<Output<String>> preferredZones() {
-        return Optional.ofNullable(this.preferredZones);
+    public Optional<Output<String>> preferredZone() {
+        return Optional.ofNullable(this.preferredZone);
     }
 
     @Import(name="region")
@@ -350,7 +350,7 @@ public final class StatefulNodeAzureState extends com.pulumi.resources.ResourceA
         this.osDisk = $.osDisk;
         this.osDiskPersistenceMode = $.osDiskPersistenceMode;
         this.preferredSpotSizes = $.preferredSpotSizes;
-        this.preferredZones = $.preferredZones;
+        this.preferredZone = $.preferredZone;
         this.region = $.region;
         this.resourceGroupName = $.resourceGroupName;
         this.schedulingTasks = $.schedulingTasks;
@@ -631,13 +631,13 @@ public final class StatefulNodeAzureState extends com.pulumi.resources.ResourceA
             return preferredSpotSizes(List.of(preferredSpotSizes));
         }
 
-        public Builder preferredZones(@Nullable Output<String> preferredZones) {
-            $.preferredZones = preferredZones;
+        public Builder preferredZone(@Nullable Output<String> preferredZone) {
+            $.preferredZone = preferredZone;
             return this;
         }
 
-        public Builder preferredZones(String preferredZones) {
-            return preferredZones(Output.of(preferredZones));
+        public Builder preferredZone(String preferredZone) {
+            return preferredZone(Output.of(preferredZone));
         }
 
         public Builder region(@Nullable Output<String> region) {
