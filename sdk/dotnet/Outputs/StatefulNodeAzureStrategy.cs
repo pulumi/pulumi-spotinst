@@ -13,6 +13,7 @@ namespace Pulumi.SpotInst.Outputs
     [OutputType]
     public sealed class StatefulNodeAzureStrategy
     {
+        public readonly ImmutableArray<Outputs.StatefulNodeAzureStrategyCapacityReservation> CapacityReservations;
         public readonly int? DrainingTimeout;
         public readonly bool FallbackToOnDemand;
         public readonly ImmutableArray<string> OptimizationWindows;
@@ -21,6 +22,8 @@ namespace Pulumi.SpotInst.Outputs
 
         [OutputConstructor]
         private StatefulNodeAzureStrategy(
+            ImmutableArray<Outputs.StatefulNodeAzureStrategyCapacityReservation> capacityReservations,
+
             int? drainingTimeout,
 
             bool fallbackToOnDemand,
@@ -31,6 +34,7 @@ namespace Pulumi.SpotInst.Outputs
 
             Outputs.StatefulNodeAzureStrategyRevertToSpot? revertToSpot)
         {
+            CapacityReservations = capacityReservations;
             DrainingTimeout = drainingTimeout;
             FallbackToOnDemand = fallbackToOnDemand;
             OptimizationWindows = optimizationWindows;

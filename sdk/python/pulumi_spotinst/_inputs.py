@@ -51,6 +51,8 @@ __all__ = [
     'StatefulNodeAzureSecurityArgs',
     'StatefulNodeAzureSignalArgs',
     'StatefulNodeAzureStrategyArgs',
+    'StatefulNodeAzureStrategyCapacityReservationArgs',
+    'StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupArgs',
     'StatefulNodeAzureStrategyRevertToSpotArgs',
     'StatefulNodeAzureTagArgs',
     'StatefulNodeAzureUpdateStateArgs',
@@ -1864,11 +1866,14 @@ class StatefulNodeAzureSignalArgs:
 class StatefulNodeAzureStrategyArgs:
     def __init__(__self__, *,
                  fallback_to_on_demand: pulumi.Input[bool],
+                 capacity_reservations: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureStrategyCapacityReservationArgs']]]] = None,
                  draining_timeout: Optional[pulumi.Input[int]] = None,
                  optimization_windows: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  preferred_life_cycle: Optional[pulumi.Input[str]] = None,
                  revert_to_spot: Optional[pulumi.Input['StatefulNodeAzureStrategyRevertToSpotArgs']] = None):
         pulumi.set(__self__, "fallback_to_on_demand", fallback_to_on_demand)
+        if capacity_reservations is not None:
+            pulumi.set(__self__, "capacity_reservations", capacity_reservations)
         if draining_timeout is not None:
             pulumi.set(__self__, "draining_timeout", draining_timeout)
         if optimization_windows is not None:
@@ -1886,6 +1891,15 @@ class StatefulNodeAzureStrategyArgs:
     @fallback_to_on_demand.setter
     def fallback_to_on_demand(self, value: pulumi.Input[bool]):
         pulumi.set(self, "fallback_to_on_demand", value)
+
+    @property
+    @pulumi.getter(name="capacityReservations")
+    def capacity_reservations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureStrategyCapacityReservationArgs']]]]:
+        return pulumi.get(self, "capacity_reservations")
+
+    @capacity_reservations.setter
+    def capacity_reservations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureStrategyCapacityReservationArgs']]]]):
+        pulumi.set(self, "capacity_reservations", value)
 
     @property
     @pulumi.getter(name="drainingTimeout")
@@ -1922,6 +1936,84 @@ class StatefulNodeAzureStrategyArgs:
     @revert_to_spot.setter
     def revert_to_spot(self, value: Optional[pulumi.Input['StatefulNodeAzureStrategyRevertToSpotArgs']]):
         pulumi.set(self, "revert_to_spot", value)
+
+
+@pulumi.input_type
+class StatefulNodeAzureStrategyCapacityReservationArgs:
+    def __init__(__self__, *,
+                 should_utilize: pulumi.Input[bool],
+                 utilization_strategy: pulumi.Input[str],
+                 capacity_reservation_groups: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupArgs']]]] = None):
+        pulumi.set(__self__, "should_utilize", should_utilize)
+        pulumi.set(__self__, "utilization_strategy", utilization_strategy)
+        if capacity_reservation_groups is not None:
+            pulumi.set(__self__, "capacity_reservation_groups", capacity_reservation_groups)
+
+    @property
+    @pulumi.getter(name="shouldUtilize")
+    def should_utilize(self) -> pulumi.Input[bool]:
+        return pulumi.get(self, "should_utilize")
+
+    @should_utilize.setter
+    def should_utilize(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "should_utilize", value)
+
+    @property
+    @pulumi.getter(name="utilizationStrategy")
+    def utilization_strategy(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "utilization_strategy")
+
+    @utilization_strategy.setter
+    def utilization_strategy(self, value: pulumi.Input[str]):
+        pulumi.set(self, "utilization_strategy", value)
+
+    @property
+    @pulumi.getter(name="capacityReservationGroups")
+    def capacity_reservation_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupArgs']]]]:
+        return pulumi.get(self, "capacity_reservation_groups")
+
+    @capacity_reservation_groups.setter
+    def capacity_reservation_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupArgs']]]]):
+        pulumi.set(self, "capacity_reservation_groups", value)
+
+
+@pulumi.input_type
+class StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupArgs:
+    def __init__(__self__, *,
+                 crg_name: pulumi.Input[str],
+                 crg_resource_group_name: pulumi.Input[str],
+                 crg_should_prioritize: Optional[pulumi.Input[bool]] = None):
+        pulumi.set(__self__, "crg_name", crg_name)
+        pulumi.set(__self__, "crg_resource_group_name", crg_resource_group_name)
+        if crg_should_prioritize is not None:
+            pulumi.set(__self__, "crg_should_prioritize", crg_should_prioritize)
+
+    @property
+    @pulumi.getter(name="crgName")
+    def crg_name(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "crg_name")
+
+    @crg_name.setter
+    def crg_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "crg_name", value)
+
+    @property
+    @pulumi.getter(name="crgResourceGroupName")
+    def crg_resource_group_name(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "crg_resource_group_name")
+
+    @crg_resource_group_name.setter
+    def crg_resource_group_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "crg_resource_group_name", value)
+
+    @property
+    @pulumi.getter(name="crgShouldPrioritize")
+    def crg_should_prioritize(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "crg_should_prioritize")
+
+    @crg_should_prioritize.setter
+    def crg_should_prioritize(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "crg_should_prioritize", value)
 
 
 @pulumi.input_type

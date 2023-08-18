@@ -52,6 +52,8 @@ __all__ = [
     'StatefulNodeAzureSecurity',
     'StatefulNodeAzureSignal',
     'StatefulNodeAzureStrategy',
+    'StatefulNodeAzureStrategyCapacityReservation',
+    'StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroup',
     'StatefulNodeAzureStrategyRevertToSpot',
     'StatefulNodeAzureTag',
     'StatefulNodeAzureUpdateState',
@@ -2021,6 +2023,8 @@ class StatefulNodeAzureStrategy(dict):
         suggest = None
         if key == "fallbackToOnDemand":
             suggest = "fallback_to_on_demand"
+        elif key == "capacityReservations":
+            suggest = "capacity_reservations"
         elif key == "drainingTimeout":
             suggest = "draining_timeout"
         elif key == "optimizationWindows":
@@ -2043,11 +2047,14 @@ class StatefulNodeAzureStrategy(dict):
 
     def __init__(__self__, *,
                  fallback_to_on_demand: bool,
+                 capacity_reservations: Optional[Sequence['outputs.StatefulNodeAzureStrategyCapacityReservation']] = None,
                  draining_timeout: Optional[int] = None,
                  optimization_windows: Optional[Sequence[str]] = None,
                  preferred_life_cycle: Optional[str] = None,
                  revert_to_spot: Optional['outputs.StatefulNodeAzureStrategyRevertToSpot'] = None):
         pulumi.set(__self__, "fallback_to_on_demand", fallback_to_on_demand)
+        if capacity_reservations is not None:
+            pulumi.set(__self__, "capacity_reservations", capacity_reservations)
         if draining_timeout is not None:
             pulumi.set(__self__, "draining_timeout", draining_timeout)
         if optimization_windows is not None:
@@ -2061,6 +2068,11 @@ class StatefulNodeAzureStrategy(dict):
     @pulumi.getter(name="fallbackToOnDemand")
     def fallback_to_on_demand(self) -> bool:
         return pulumi.get(self, "fallback_to_on_demand")
+
+    @property
+    @pulumi.getter(name="capacityReservations")
+    def capacity_reservations(self) -> Optional[Sequence['outputs.StatefulNodeAzureStrategyCapacityReservation']]:
+        return pulumi.get(self, "capacity_reservations")
 
     @property
     @pulumi.getter(name="drainingTimeout")
@@ -2081,6 +2093,102 @@ class StatefulNodeAzureStrategy(dict):
     @pulumi.getter(name="revertToSpot")
     def revert_to_spot(self) -> Optional['outputs.StatefulNodeAzureStrategyRevertToSpot']:
         return pulumi.get(self, "revert_to_spot")
+
+
+@pulumi.output_type
+class StatefulNodeAzureStrategyCapacityReservation(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "shouldUtilize":
+            suggest = "should_utilize"
+        elif key == "utilizationStrategy":
+            suggest = "utilization_strategy"
+        elif key == "capacityReservationGroups":
+            suggest = "capacity_reservation_groups"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StatefulNodeAzureStrategyCapacityReservation. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StatefulNodeAzureStrategyCapacityReservation.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StatefulNodeAzureStrategyCapacityReservation.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 should_utilize: bool,
+                 utilization_strategy: str,
+                 capacity_reservation_groups: Optional[Sequence['outputs.StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroup']] = None):
+        pulumi.set(__self__, "should_utilize", should_utilize)
+        pulumi.set(__self__, "utilization_strategy", utilization_strategy)
+        if capacity_reservation_groups is not None:
+            pulumi.set(__self__, "capacity_reservation_groups", capacity_reservation_groups)
+
+    @property
+    @pulumi.getter(name="shouldUtilize")
+    def should_utilize(self) -> bool:
+        return pulumi.get(self, "should_utilize")
+
+    @property
+    @pulumi.getter(name="utilizationStrategy")
+    def utilization_strategy(self) -> str:
+        return pulumi.get(self, "utilization_strategy")
+
+    @property
+    @pulumi.getter(name="capacityReservationGroups")
+    def capacity_reservation_groups(self) -> Optional[Sequence['outputs.StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroup']]:
+        return pulumi.get(self, "capacity_reservation_groups")
+
+
+@pulumi.output_type
+class StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroup(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "crgName":
+            suggest = "crg_name"
+        elif key == "crgResourceGroupName":
+            suggest = "crg_resource_group_name"
+        elif key == "crgShouldPrioritize":
+            suggest = "crg_should_prioritize"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroup. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroup.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroup.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 crg_name: str,
+                 crg_resource_group_name: str,
+                 crg_should_prioritize: Optional[bool] = None):
+        pulumi.set(__self__, "crg_name", crg_name)
+        pulumi.set(__self__, "crg_resource_group_name", crg_resource_group_name)
+        if crg_should_prioritize is not None:
+            pulumi.set(__self__, "crg_should_prioritize", crg_should_prioritize)
+
+    @property
+    @pulumi.getter(name="crgName")
+    def crg_name(self) -> str:
+        return pulumi.get(self, "crg_name")
+
+    @property
+    @pulumi.getter(name="crgResourceGroupName")
+    def crg_resource_group_name(self) -> str:
+        return pulumi.get(self, "crg_resource_group_name")
+
+    @property
+    @pulumi.getter(name="crgShouldPrioritize")
+    def crg_should_prioritize(self) -> Optional[bool]:
+        return pulumi.get(self, "crg_should_prioritize")
 
 
 @pulumi.output_type

@@ -288,11 +288,24 @@ export interface StatefulNodeAzureSignal {
 }
 
 export interface StatefulNodeAzureStrategy {
+    capacityReservations?: pulumi.Input<pulumi.Input<inputs.StatefulNodeAzureStrategyCapacityReservation>[]>;
     drainingTimeout?: pulumi.Input<number>;
     fallbackToOnDemand: pulumi.Input<boolean>;
     optimizationWindows?: pulumi.Input<pulumi.Input<string>[]>;
     preferredLifeCycle?: pulumi.Input<string>;
     revertToSpot?: pulumi.Input<inputs.StatefulNodeAzureStrategyRevertToSpot>;
+}
+
+export interface StatefulNodeAzureStrategyCapacityReservation {
+    capacityReservationGroups?: pulumi.Input<pulumi.Input<inputs.StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroup>[]>;
+    shouldUtilize: pulumi.Input<boolean>;
+    utilizationStrategy: pulumi.Input<string>;
+}
+
+export interface StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroup {
+    crgName: pulumi.Input<string>;
+    crgResourceGroupName: pulumi.Input<string>;
+    crgShouldPrioritize?: pulumi.Input<boolean>;
 }
 
 export interface StatefulNodeAzureStrategyRevertToSpot {

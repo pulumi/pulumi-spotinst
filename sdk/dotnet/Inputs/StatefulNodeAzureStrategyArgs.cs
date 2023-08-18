@@ -12,6 +12,14 @@ namespace Pulumi.SpotInst.Inputs
 
     public sealed class StatefulNodeAzureStrategyArgs : global::Pulumi.ResourceArgs
     {
+        [Input("capacityReservations")]
+        private InputList<Inputs.StatefulNodeAzureStrategyCapacityReservationArgs>? _capacityReservations;
+        public InputList<Inputs.StatefulNodeAzureStrategyCapacityReservationArgs> CapacityReservations
+        {
+            get => _capacityReservations ?? (_capacityReservations = new InputList<Inputs.StatefulNodeAzureStrategyCapacityReservationArgs>());
+            set => _capacityReservations = value;
+        }
+
         [Input("drainingTimeout")]
         public Input<int>? DrainingTimeout { get; set; }
 

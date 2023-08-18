@@ -92,6 +92,15 @@ import javax.annotation.Nullable;
  *                     .performAt(&#34;timeWindow&#34;)
  *                     .build())
  *                 .preferredLifeCycle(&#34;od&#34;)
+ *                 .capacityReservations(StatefulNodeAzureStrategyCapacityReservationArgs.builder()
+ *                     .shouldUtilize(true)
+ *                     .utilizationStrategy(&#34;utilizeOverOD&#34;)
+ *                     .capacityReservationGroups(StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupArgs.builder()
+ *                         .crgName(&#34;crg name&#34;)
+ *                         .crgResourceGroupName(&#34;resourceGroupName&#34;)
+ *                         .crgShouldPrioritize(true)
+ *                         .build())
+ *                     .build())
  *                 .build())
  *             .os(&#34;Linux&#34;)
  *             .odSizes(            
@@ -270,6 +279,13 @@ import javax.annotation.Nullable;
  *   * `preferred_life_cycle` - (Optional, Enum `&#34;od&#34;, &#34;spot&#34;`, Default `&#34;spot&#34;`) The desired type of VM.
  *   * `revert_to_spot` - (Optional) Hold settings for strategy correction - replacing On-Demand for Spot VMs.
  *     * `perform_at` - (Required, Enum `&#34;timeWindow&#34;, &#34;never&#34;, &#34;always&#34;`, Default `&#34;always&#34;`) Settings for maintenance strategy.
+ *   * `capacity_reservation` - (Optional) On-demand Capacity Reservation group enables you to reserve Compute capacity in an Azure region or an Availability Zone for any duration of time. [CRG can only be created on the Azure end.](https://learn.microsoft.com/en-us/azure/virtual-machines/capacity-reservation-create)
+ *     * `should_utilize` - (Required) Determines whether capacity reservations should be utilized.
+ *     * `utilization_strategy` - (Required, Enum `&#34;utilizeOverSpot&#34;, &#34;utilizeOverOD&#34;`) The priority requested for using CRG. This value will determine if CRG is used ahead of spot VMs or On-demand VMs. (`&#34;utilizeOverOD&#34;`- If picked, we will use CRG only in case On demand should be launched. `&#34;utilizeOverSpot&#34;`- CRG will be preferred over Spot. Only after CRG is fully used, spot VMs can be used.)
+ *     * `capacity_reservation_groups` - (Optional) List of the desired CRGs to use under the associated Azure subscription. When null we will utilize any available reservation that matches the launch specification.
+ *       * `crg_name` - (Required) The name of the CRG.
+ *       * `crg_resource_group_name` - (Required) Azure resource group name
+ *       * `crg_should_prioritize` - The desired CRG to utilize ahead of other CRGs in the subscription.
  * 
  * &lt;a id=&#34;compute&#34;&gt;&lt;/a&gt;
  * ## Compute
