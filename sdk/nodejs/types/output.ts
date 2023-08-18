@@ -288,11 +288,24 @@ export interface StatefulNodeAzureSignal {
 }
 
 export interface StatefulNodeAzureStrategy {
+    capacityReservations?: outputs.StatefulNodeAzureStrategyCapacityReservation[];
     drainingTimeout: number;
     fallbackToOnDemand: boolean;
     optimizationWindows?: string[];
     preferredLifeCycle: string;
     revertToSpot: outputs.StatefulNodeAzureStrategyRevertToSpot;
+}
+
+export interface StatefulNodeAzureStrategyCapacityReservation {
+    capacityReservationGroups?: outputs.StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroup[];
+    shouldUtilize: boolean;
+    utilizationStrategy: string;
+}
+
+export interface StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroup {
+    crgName: string;
+    crgResourceGroupName: string;
+    crgShouldPrioritize?: boolean;
 }
 
 export interface StatefulNodeAzureStrategyRevertToSpot {

@@ -5,6 +5,7 @@ package com.pulumi.spotinst.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.spotinst.inputs.StatefulNodeAzureStrategyCapacityReservationArgs;
 import com.pulumi.spotinst.inputs.StatefulNodeAzureStrategyRevertToSpotArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -18,6 +19,13 @@ import javax.annotation.Nullable;
 public final class StatefulNodeAzureStrategyArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final StatefulNodeAzureStrategyArgs Empty = new StatefulNodeAzureStrategyArgs();
+
+    @Import(name="capacityReservations")
+    private @Nullable Output<List<StatefulNodeAzureStrategyCapacityReservationArgs>> capacityReservations;
+
+    public Optional<Output<List<StatefulNodeAzureStrategyCapacityReservationArgs>>> capacityReservations() {
+        return Optional.ofNullable(this.capacityReservations);
+    }
 
     @Import(name="drainingTimeout")
     private @Nullable Output<Integer> drainingTimeout;
@@ -57,6 +65,7 @@ public final class StatefulNodeAzureStrategyArgs extends com.pulumi.resources.Re
     private StatefulNodeAzureStrategyArgs() {}
 
     private StatefulNodeAzureStrategyArgs(StatefulNodeAzureStrategyArgs $) {
+        this.capacityReservations = $.capacityReservations;
         this.drainingTimeout = $.drainingTimeout;
         this.fallbackToOnDemand = $.fallbackToOnDemand;
         this.optimizationWindows = $.optimizationWindows;
@@ -80,6 +89,19 @@ public final class StatefulNodeAzureStrategyArgs extends com.pulumi.resources.Re
 
         public Builder(StatefulNodeAzureStrategyArgs defaults) {
             $ = new StatefulNodeAzureStrategyArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder capacityReservations(@Nullable Output<List<StatefulNodeAzureStrategyCapacityReservationArgs>> capacityReservations) {
+            $.capacityReservations = capacityReservations;
+            return this;
+        }
+
+        public Builder capacityReservations(List<StatefulNodeAzureStrategyCapacityReservationArgs> capacityReservations) {
+            return capacityReservations(Output.of(capacityReservations));
+        }
+
+        public Builder capacityReservations(StatefulNodeAzureStrategyCapacityReservationArgs... capacityReservations) {
+            return capacityReservations(List.of(capacityReservations));
         }
 
         public Builder drainingTimeout(@Nullable Output<Integer> drainingTimeout) {

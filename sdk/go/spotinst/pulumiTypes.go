@@ -5033,11 +5033,12 @@ func (o StatefulNodeAzureSignalArrayOutput) Index(i pulumi.IntInput) StatefulNod
 }
 
 type StatefulNodeAzureStrategy struct {
-	DrainingTimeout     *int                                   `pulumi:"drainingTimeout"`
-	FallbackToOnDemand  bool                                   `pulumi:"fallbackToOnDemand"`
-	OptimizationWindows []string                               `pulumi:"optimizationWindows"`
-	PreferredLifeCycle  *string                                `pulumi:"preferredLifeCycle"`
-	RevertToSpot        *StatefulNodeAzureStrategyRevertToSpot `pulumi:"revertToSpot"`
+	CapacityReservations []StatefulNodeAzureStrategyCapacityReservation `pulumi:"capacityReservations"`
+	DrainingTimeout      *int                                           `pulumi:"drainingTimeout"`
+	FallbackToOnDemand   bool                                           `pulumi:"fallbackToOnDemand"`
+	OptimizationWindows  []string                                       `pulumi:"optimizationWindows"`
+	PreferredLifeCycle   *string                                        `pulumi:"preferredLifeCycle"`
+	RevertToSpot         *StatefulNodeAzureStrategyRevertToSpot         `pulumi:"revertToSpot"`
 }
 
 // StatefulNodeAzureStrategyInput is an input type that accepts StatefulNodeAzureStrategyArgs and StatefulNodeAzureStrategyOutput values.
@@ -5052,11 +5053,12 @@ type StatefulNodeAzureStrategyInput interface {
 }
 
 type StatefulNodeAzureStrategyArgs struct {
-	DrainingTimeout     pulumi.IntPtrInput                            `pulumi:"drainingTimeout"`
-	FallbackToOnDemand  pulumi.BoolInput                              `pulumi:"fallbackToOnDemand"`
-	OptimizationWindows pulumi.StringArrayInput                       `pulumi:"optimizationWindows"`
-	PreferredLifeCycle  pulumi.StringPtrInput                         `pulumi:"preferredLifeCycle"`
-	RevertToSpot        StatefulNodeAzureStrategyRevertToSpotPtrInput `pulumi:"revertToSpot"`
+	CapacityReservations StatefulNodeAzureStrategyCapacityReservationArrayInput `pulumi:"capacityReservations"`
+	DrainingTimeout      pulumi.IntPtrInput                                     `pulumi:"drainingTimeout"`
+	FallbackToOnDemand   pulumi.BoolInput                                       `pulumi:"fallbackToOnDemand"`
+	OptimizationWindows  pulumi.StringArrayInput                                `pulumi:"optimizationWindows"`
+	PreferredLifeCycle   pulumi.StringPtrInput                                  `pulumi:"preferredLifeCycle"`
+	RevertToSpot         StatefulNodeAzureStrategyRevertToSpotPtrInput          `pulumi:"revertToSpot"`
 }
 
 func (StatefulNodeAzureStrategyArgs) ElementType() reflect.Type {
@@ -5136,6 +5138,12 @@ func (o StatefulNodeAzureStrategyOutput) ToStatefulNodeAzureStrategyPtrOutputWit
 	}).(StatefulNodeAzureStrategyPtrOutput)
 }
 
+func (o StatefulNodeAzureStrategyOutput) CapacityReservations() StatefulNodeAzureStrategyCapacityReservationArrayOutput {
+	return o.ApplyT(func(v StatefulNodeAzureStrategy) []StatefulNodeAzureStrategyCapacityReservation {
+		return v.CapacityReservations
+	}).(StatefulNodeAzureStrategyCapacityReservationArrayOutput)
+}
+
 func (o StatefulNodeAzureStrategyOutput) DrainingTimeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v StatefulNodeAzureStrategy) *int { return v.DrainingTimeout }).(pulumi.IntPtrOutput)
 }
@@ -5178,6 +5186,15 @@ func (o StatefulNodeAzureStrategyPtrOutput) Elem() StatefulNodeAzureStrategyOutp
 		var ret StatefulNodeAzureStrategy
 		return ret
 	}).(StatefulNodeAzureStrategyOutput)
+}
+
+func (o StatefulNodeAzureStrategyPtrOutput) CapacityReservations() StatefulNodeAzureStrategyCapacityReservationArrayOutput {
+	return o.ApplyT(func(v *StatefulNodeAzureStrategy) []StatefulNodeAzureStrategyCapacityReservation {
+		if v == nil {
+			return nil
+		}
+		return v.CapacityReservations
+	}).(StatefulNodeAzureStrategyCapacityReservationArrayOutput)
 }
 
 func (o StatefulNodeAzureStrategyPtrOutput) DrainingTimeout() pulumi.IntPtrOutput {
@@ -5223,6 +5240,224 @@ func (o StatefulNodeAzureStrategyPtrOutput) RevertToSpot() StatefulNodeAzureStra
 		}
 		return v.RevertToSpot
 	}).(StatefulNodeAzureStrategyRevertToSpotPtrOutput)
+}
+
+type StatefulNodeAzureStrategyCapacityReservation struct {
+	CapacityReservationGroups []StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroup `pulumi:"capacityReservationGroups"`
+	ShouldUtilize             bool                                                                   `pulumi:"shouldUtilize"`
+	UtilizationStrategy       string                                                                 `pulumi:"utilizationStrategy"`
+}
+
+// StatefulNodeAzureStrategyCapacityReservationInput is an input type that accepts StatefulNodeAzureStrategyCapacityReservationArgs and StatefulNodeAzureStrategyCapacityReservationOutput values.
+// You can construct a concrete instance of `StatefulNodeAzureStrategyCapacityReservationInput` via:
+//
+//	StatefulNodeAzureStrategyCapacityReservationArgs{...}
+type StatefulNodeAzureStrategyCapacityReservationInput interface {
+	pulumi.Input
+
+	ToStatefulNodeAzureStrategyCapacityReservationOutput() StatefulNodeAzureStrategyCapacityReservationOutput
+	ToStatefulNodeAzureStrategyCapacityReservationOutputWithContext(context.Context) StatefulNodeAzureStrategyCapacityReservationOutput
+}
+
+type StatefulNodeAzureStrategyCapacityReservationArgs struct {
+	CapacityReservationGroups StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupArrayInput `pulumi:"capacityReservationGroups"`
+	ShouldUtilize             pulumi.BoolInput                                                               `pulumi:"shouldUtilize"`
+	UtilizationStrategy       pulumi.StringInput                                                             `pulumi:"utilizationStrategy"`
+}
+
+func (StatefulNodeAzureStrategyCapacityReservationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatefulNodeAzureStrategyCapacityReservation)(nil)).Elem()
+}
+
+func (i StatefulNodeAzureStrategyCapacityReservationArgs) ToStatefulNodeAzureStrategyCapacityReservationOutput() StatefulNodeAzureStrategyCapacityReservationOutput {
+	return i.ToStatefulNodeAzureStrategyCapacityReservationOutputWithContext(context.Background())
+}
+
+func (i StatefulNodeAzureStrategyCapacityReservationArgs) ToStatefulNodeAzureStrategyCapacityReservationOutputWithContext(ctx context.Context) StatefulNodeAzureStrategyCapacityReservationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureStrategyCapacityReservationOutput)
+}
+
+// StatefulNodeAzureStrategyCapacityReservationArrayInput is an input type that accepts StatefulNodeAzureStrategyCapacityReservationArray and StatefulNodeAzureStrategyCapacityReservationArrayOutput values.
+// You can construct a concrete instance of `StatefulNodeAzureStrategyCapacityReservationArrayInput` via:
+//
+//	StatefulNodeAzureStrategyCapacityReservationArray{ StatefulNodeAzureStrategyCapacityReservationArgs{...} }
+type StatefulNodeAzureStrategyCapacityReservationArrayInput interface {
+	pulumi.Input
+
+	ToStatefulNodeAzureStrategyCapacityReservationArrayOutput() StatefulNodeAzureStrategyCapacityReservationArrayOutput
+	ToStatefulNodeAzureStrategyCapacityReservationArrayOutputWithContext(context.Context) StatefulNodeAzureStrategyCapacityReservationArrayOutput
+}
+
+type StatefulNodeAzureStrategyCapacityReservationArray []StatefulNodeAzureStrategyCapacityReservationInput
+
+func (StatefulNodeAzureStrategyCapacityReservationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StatefulNodeAzureStrategyCapacityReservation)(nil)).Elem()
+}
+
+func (i StatefulNodeAzureStrategyCapacityReservationArray) ToStatefulNodeAzureStrategyCapacityReservationArrayOutput() StatefulNodeAzureStrategyCapacityReservationArrayOutput {
+	return i.ToStatefulNodeAzureStrategyCapacityReservationArrayOutputWithContext(context.Background())
+}
+
+func (i StatefulNodeAzureStrategyCapacityReservationArray) ToStatefulNodeAzureStrategyCapacityReservationArrayOutputWithContext(ctx context.Context) StatefulNodeAzureStrategyCapacityReservationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureStrategyCapacityReservationArrayOutput)
+}
+
+type StatefulNodeAzureStrategyCapacityReservationOutput struct{ *pulumi.OutputState }
+
+func (StatefulNodeAzureStrategyCapacityReservationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatefulNodeAzureStrategyCapacityReservation)(nil)).Elem()
+}
+
+func (o StatefulNodeAzureStrategyCapacityReservationOutput) ToStatefulNodeAzureStrategyCapacityReservationOutput() StatefulNodeAzureStrategyCapacityReservationOutput {
+	return o
+}
+
+func (o StatefulNodeAzureStrategyCapacityReservationOutput) ToStatefulNodeAzureStrategyCapacityReservationOutputWithContext(ctx context.Context) StatefulNodeAzureStrategyCapacityReservationOutput {
+	return o
+}
+
+func (o StatefulNodeAzureStrategyCapacityReservationOutput) CapacityReservationGroups() StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupArrayOutput {
+	return o.ApplyT(func(v StatefulNodeAzureStrategyCapacityReservation) []StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroup {
+		return v.CapacityReservationGroups
+	}).(StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupArrayOutput)
+}
+
+func (o StatefulNodeAzureStrategyCapacityReservationOutput) ShouldUtilize() pulumi.BoolOutput {
+	return o.ApplyT(func(v StatefulNodeAzureStrategyCapacityReservation) bool { return v.ShouldUtilize }).(pulumi.BoolOutput)
+}
+
+func (o StatefulNodeAzureStrategyCapacityReservationOutput) UtilizationStrategy() pulumi.StringOutput {
+	return o.ApplyT(func(v StatefulNodeAzureStrategyCapacityReservation) string { return v.UtilizationStrategy }).(pulumi.StringOutput)
+}
+
+type StatefulNodeAzureStrategyCapacityReservationArrayOutput struct{ *pulumi.OutputState }
+
+func (StatefulNodeAzureStrategyCapacityReservationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StatefulNodeAzureStrategyCapacityReservation)(nil)).Elem()
+}
+
+func (o StatefulNodeAzureStrategyCapacityReservationArrayOutput) ToStatefulNodeAzureStrategyCapacityReservationArrayOutput() StatefulNodeAzureStrategyCapacityReservationArrayOutput {
+	return o
+}
+
+func (o StatefulNodeAzureStrategyCapacityReservationArrayOutput) ToStatefulNodeAzureStrategyCapacityReservationArrayOutputWithContext(ctx context.Context) StatefulNodeAzureStrategyCapacityReservationArrayOutput {
+	return o
+}
+
+func (o StatefulNodeAzureStrategyCapacityReservationArrayOutput) Index(i pulumi.IntInput) StatefulNodeAzureStrategyCapacityReservationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StatefulNodeAzureStrategyCapacityReservation {
+		return vs[0].([]StatefulNodeAzureStrategyCapacityReservation)[vs[1].(int)]
+	}).(StatefulNodeAzureStrategyCapacityReservationOutput)
+}
+
+type StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroup struct {
+	CrgName              string `pulumi:"crgName"`
+	CrgResourceGroupName string `pulumi:"crgResourceGroupName"`
+	CrgShouldPrioritize  *bool  `pulumi:"crgShouldPrioritize"`
+}
+
+// StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupInput is an input type that accepts StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupArgs and StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupOutput values.
+// You can construct a concrete instance of `StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupInput` via:
+//
+//	StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupArgs{...}
+type StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupInput interface {
+	pulumi.Input
+
+	ToStatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupOutput() StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupOutput
+	ToStatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupOutputWithContext(context.Context) StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupOutput
+}
+
+type StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupArgs struct {
+	CrgName              pulumi.StringInput  `pulumi:"crgName"`
+	CrgResourceGroupName pulumi.StringInput  `pulumi:"crgResourceGroupName"`
+	CrgShouldPrioritize  pulumi.BoolPtrInput `pulumi:"crgShouldPrioritize"`
+}
+
+func (StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroup)(nil)).Elem()
+}
+
+func (i StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupArgs) ToStatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupOutput() StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupOutput {
+	return i.ToStatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupOutputWithContext(context.Background())
+}
+
+func (i StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupArgs) ToStatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupOutputWithContext(ctx context.Context) StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupOutput)
+}
+
+// StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupArrayInput is an input type that accepts StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupArray and StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupArrayOutput values.
+// You can construct a concrete instance of `StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupArrayInput` via:
+//
+//	StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupArray{ StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupArgs{...} }
+type StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupArrayInput interface {
+	pulumi.Input
+
+	ToStatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupArrayOutput() StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupArrayOutput
+	ToStatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupArrayOutputWithContext(context.Context) StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupArrayOutput
+}
+
+type StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupArray []StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupInput
+
+func (StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroup)(nil)).Elem()
+}
+
+func (i StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupArray) ToStatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupArrayOutput() StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupArrayOutput {
+	return i.ToStatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupArrayOutputWithContext(context.Background())
+}
+
+func (i StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupArray) ToStatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupArrayOutputWithContext(ctx context.Context) StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupArrayOutput)
+}
+
+type StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupOutput struct{ *pulumi.OutputState }
+
+func (StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroup)(nil)).Elem()
+}
+
+func (o StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupOutput) ToStatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupOutput() StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupOutput {
+	return o
+}
+
+func (o StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupOutput) ToStatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupOutputWithContext(ctx context.Context) StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupOutput {
+	return o
+}
+
+func (o StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupOutput) CrgName() pulumi.StringOutput {
+	return o.ApplyT(func(v StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroup) string { return v.CrgName }).(pulumi.StringOutput)
+}
+
+func (o StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupOutput) CrgResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroup) string {
+		return v.CrgResourceGroupName
+	}).(pulumi.StringOutput)
+}
+
+func (o StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupOutput) CrgShouldPrioritize() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroup) *bool {
+		return v.CrgShouldPrioritize
+	}).(pulumi.BoolPtrOutput)
+}
+
+type StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroup)(nil)).Elem()
+}
+
+func (o StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupArrayOutput) ToStatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupArrayOutput() StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupArrayOutput {
+	return o
+}
+
+func (o StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupArrayOutput) ToStatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupArrayOutputWithContext(ctx context.Context) StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupArrayOutput {
+	return o
+}
+
+func (o StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupArrayOutput) Index(i pulumi.IntInput) StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroup {
+		return vs[0].([]StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroup)[vs[1].(int)]
+	}).(StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupOutput)
 }
 
 type StatefulNodeAzureStrategyRevertToSpot struct {
@@ -5635,6 +5870,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*StatefulNodeAzureSignalArrayInput)(nil)).Elem(), StatefulNodeAzureSignalArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StatefulNodeAzureStrategyInput)(nil)).Elem(), StatefulNodeAzureStrategyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StatefulNodeAzureStrategyPtrInput)(nil)).Elem(), StatefulNodeAzureStrategyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatefulNodeAzureStrategyCapacityReservationInput)(nil)).Elem(), StatefulNodeAzureStrategyCapacityReservationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatefulNodeAzureStrategyCapacityReservationArrayInput)(nil)).Elem(), StatefulNodeAzureStrategyCapacityReservationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupInput)(nil)).Elem(), StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupArrayInput)(nil)).Elem(), StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StatefulNodeAzureStrategyRevertToSpotInput)(nil)).Elem(), StatefulNodeAzureStrategyRevertToSpotArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StatefulNodeAzureStrategyRevertToSpotPtrInput)(nil)).Elem(), StatefulNodeAzureStrategyRevertToSpotArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StatefulNodeAzureTagInput)(nil)).Elem(), StatefulNodeAzureTagArgs{})
@@ -5723,6 +5962,10 @@ func init() {
 	pulumi.RegisterOutputType(StatefulNodeAzureSignalArrayOutput{})
 	pulumi.RegisterOutputType(StatefulNodeAzureStrategyOutput{})
 	pulumi.RegisterOutputType(StatefulNodeAzureStrategyPtrOutput{})
+	pulumi.RegisterOutputType(StatefulNodeAzureStrategyCapacityReservationOutput{})
+	pulumi.RegisterOutputType(StatefulNodeAzureStrategyCapacityReservationArrayOutput{})
+	pulumi.RegisterOutputType(StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupOutput{})
+	pulumi.RegisterOutputType(StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupArrayOutput{})
 	pulumi.RegisterOutputType(StatefulNodeAzureStrategyRevertToSpotOutput{})
 	pulumi.RegisterOutputType(StatefulNodeAzureStrategyRevertToSpotPtrOutput{})
 	pulumi.RegisterOutputType(StatefulNodeAzureTagOutput{})

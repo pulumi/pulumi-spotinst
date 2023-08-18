@@ -4,6 +4,7 @@
 package com.pulumi.spotinst.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.spotinst.outputs.StatefulNodeAzureStrategyCapacityReservation;
 import com.pulumi.spotinst.outputs.StatefulNodeAzureStrategyRevertToSpot;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -15,6 +16,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class StatefulNodeAzureStrategy {
+    private @Nullable List<StatefulNodeAzureStrategyCapacityReservation> capacityReservations;
     private @Nullable Integer drainingTimeout;
     private Boolean fallbackToOnDemand;
     private @Nullable List<String> optimizationWindows;
@@ -22,6 +24,9 @@ public final class StatefulNodeAzureStrategy {
     private @Nullable StatefulNodeAzureStrategyRevertToSpot revertToSpot;
 
     private StatefulNodeAzureStrategy() {}
+    public List<StatefulNodeAzureStrategyCapacityReservation> capacityReservations() {
+        return this.capacityReservations == null ? List.of() : this.capacityReservations;
+    }
     public Optional<Integer> drainingTimeout() {
         return Optional.ofNullable(this.drainingTimeout);
     }
@@ -47,6 +52,7 @@ public final class StatefulNodeAzureStrategy {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable List<StatefulNodeAzureStrategyCapacityReservation> capacityReservations;
         private @Nullable Integer drainingTimeout;
         private Boolean fallbackToOnDemand;
         private @Nullable List<String> optimizationWindows;
@@ -55,6 +61,7 @@ public final class StatefulNodeAzureStrategy {
         public Builder() {}
         public Builder(StatefulNodeAzureStrategy defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.capacityReservations = defaults.capacityReservations;
     	      this.drainingTimeout = defaults.drainingTimeout;
     	      this.fallbackToOnDemand = defaults.fallbackToOnDemand;
     	      this.optimizationWindows = defaults.optimizationWindows;
@@ -62,6 +69,14 @@ public final class StatefulNodeAzureStrategy {
     	      this.revertToSpot = defaults.revertToSpot;
         }
 
+        @CustomType.Setter
+        public Builder capacityReservations(@Nullable List<StatefulNodeAzureStrategyCapacityReservation> capacityReservations) {
+            this.capacityReservations = capacityReservations;
+            return this;
+        }
+        public Builder capacityReservations(StatefulNodeAzureStrategyCapacityReservation... capacityReservations) {
+            return capacityReservations(List.of(capacityReservations));
+        }
         @CustomType.Setter
         public Builder drainingTimeout(@Nullable Integer drainingTimeout) {
             this.drainingTimeout = drainingTimeout;
@@ -92,6 +107,7 @@ public final class StatefulNodeAzureStrategy {
         }
         public StatefulNodeAzureStrategy build() {
             final var o = new StatefulNodeAzureStrategy();
+            o.capacityReservations = capacityReservations;
             o.drainingTimeout = drainingTimeout;
             o.fallbackToOnDemand = fallbackToOnDemand;
             o.optimizationWindows = optimizationWindows;
