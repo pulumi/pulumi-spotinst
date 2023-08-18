@@ -4672,6 +4672,16 @@
                         "maxItemsOne": true,
                         "elem": {
                             "fields": {
+                                "capacity_reservation": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "capacity_reservation_groups": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
                                 "draining_timeout": {},
                                 "fallback_to_on_demand": {},
                                 "optimization_windows": {
@@ -6645,11 +6655,22 @@
                 "vtpmEnabled": "vtpm_enabled"
             },
             "spotinst:index/StatefulNodeAzureStrategy:StatefulNodeAzureStrategy": {
+                "capacityReservations": "capacity_reservation",
                 "drainingTimeout": "draining_timeout",
                 "fallbackToOnDemand": "fallback_to_on_demand",
                 "optimizationWindows": "optimization_windows",
                 "preferredLifeCycle": "preferred_life_cycle",
                 "revertToSpot": "revert_to_spot"
+            },
+            "spotinst:index/StatefulNodeAzureStrategyCapacityReservation:StatefulNodeAzureStrategyCapacityReservation": {
+                "capacityReservationGroups": "capacity_reservation_groups",
+                "shouldUtilize": "should_utilize",
+                "utilizationStrategy": "utilization_strategy"
+            },
+            "spotinst:index/StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroup:StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroup": {
+                "crgName": "crg_name",
+                "crgResourceGroupName": "crg_resource_group_name",
+                "crgShouldPrioritize": "crg_should_prioritize"
             },
             "spotinst:index/StatefulNodeAzureStrategyRevertToSpot:StatefulNodeAzureStrategyRevertToSpot": {
                 "performAt": "perform_at"
