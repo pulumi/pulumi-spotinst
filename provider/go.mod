@@ -1,6 +1,6 @@
 module github.com/pulumi/pulumi-spotinst/provider/v3
 
-go 1.20
+go 1.21
 
 require (
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.57.0
