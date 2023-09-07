@@ -4,6 +4,7 @@
 package com.pulumi.spotinst.aws.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Double;
 import java.lang.Integer;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,6 +17,34 @@ public final class ElastigroupIntegrationKubernetesAutoscaleDown {
      * 
      */
     private @Nullable Integer evaluationPeriods;
+    /**
+     * @return Represents the maximum percent to scale-down. Number between 1-100.
+     * Usage:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *     }
+     * }
+     * ```
+     * 
+     */
+    private @Nullable Double maxScaleDownPercentage;
 
     private ElastigroupIntegrationKubernetesAutoscaleDown() {}
     /**
@@ -24,6 +53,36 @@ public final class ElastigroupIntegrationKubernetesAutoscaleDown {
      */
     public Optional<Integer> evaluationPeriods() {
         return Optional.ofNullable(this.evaluationPeriods);
+    }
+    /**
+     * @return Represents the maximum percent to scale-down. Number between 1-100.
+     * Usage:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public Optional<Double> maxScaleDownPercentage() {
+        return Optional.ofNullable(this.maxScaleDownPercentage);
     }
 
     public static Builder builder() {
@@ -36,10 +95,12 @@ public final class ElastigroupIntegrationKubernetesAutoscaleDown {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer evaluationPeriods;
+        private @Nullable Double maxScaleDownPercentage;
         public Builder() {}
         public Builder(ElastigroupIntegrationKubernetesAutoscaleDown defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.evaluationPeriods = defaults.evaluationPeriods;
+    	      this.maxScaleDownPercentage = defaults.maxScaleDownPercentage;
         }
 
         @CustomType.Setter
@@ -47,9 +108,15 @@ public final class ElastigroupIntegrationKubernetesAutoscaleDown {
             this.evaluationPeriods = evaluationPeriods;
             return this;
         }
+        @CustomType.Setter
+        public Builder maxScaleDownPercentage(@Nullable Double maxScaleDownPercentage) {
+            this.maxScaleDownPercentage = maxScaleDownPercentage;
+            return this;
+        }
         public ElastigroupIntegrationKubernetesAutoscaleDown build() {
             final var o = new ElastigroupIntegrationKubernetesAutoscaleDown();
             o.evaluationPeriods = evaluationPeriods;
+            o.maxScaleDownPercentage = maxScaleDownPercentage;
             return o;
         }
     }

@@ -4909,7 +4909,8 @@
                 "integrationMode": "integration_mode"
             },
             "spotinst:aws/ElastigroupIntegrationKubernetesAutoscaleDown:ElastigroupIntegrationKubernetesAutoscaleDown": {
-                "evaluationPeriods": "evaluation_periods"
+                "evaluationPeriods": "evaluation_periods",
+                "maxScaleDownPercentage": "max_scale_down_percentage"
             },
             "spotinst:aws/ElastigroupIntegrationKubernetesAutoscaleHeadroom:ElastigroupIntegrationKubernetesAutoscaleHeadroom": {
                 "cpuPerUnit": "cpu_per_unit",
