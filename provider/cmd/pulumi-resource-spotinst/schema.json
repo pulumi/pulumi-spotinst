@@ -690,6 +690,10 @@
                 "evaluationPeriods": {
                     "type": "integer",
                     "description": "The number of periods over which data is compared to the specified threshold.\n"
+                },
+                "maxScaleDownPercentage": {
+                    "type": "number",
+                    "description": "Represents the maximum percent to scale-down. Number between 1-100.\nUsage:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\n```\n```python\nimport pulumi\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n    }\n}\n```\n```yaml\n{}\n```\n"
                 }
             },
             "type": "object"
