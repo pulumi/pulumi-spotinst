@@ -5433,6 +5433,23 @@ func (o ElastigroupIntegrationKubernetesPtrOutput) Token() pulumi.StringPtrOutpu
 type ElastigroupIntegrationKubernetesAutoscaleDown struct {
 	// The number of periods over which data is compared to the specified threshold.
 	EvaluationPeriods *int `pulumi:"evaluationPeriods"`
+	// Represents the maximum percent to scale-down. Number between 1-100.
+	// Usage:
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
+	// }
+	// ```
+	MaxScaleDownPercentage *float64 `pulumi:"maxScaleDownPercentage"`
 }
 
 // ElastigroupIntegrationKubernetesAutoscaleDownInput is an input type that accepts ElastigroupIntegrationKubernetesAutoscaleDownArgs and ElastigroupIntegrationKubernetesAutoscaleDownOutput values.
@@ -5449,6 +5466,23 @@ type ElastigroupIntegrationKubernetesAutoscaleDownInput interface {
 type ElastigroupIntegrationKubernetesAutoscaleDownArgs struct {
 	// The number of periods over which data is compared to the specified threshold.
 	EvaluationPeriods pulumi.IntPtrInput `pulumi:"evaluationPeriods"`
+	// Represents the maximum percent to scale-down. Number between 1-100.
+	// Usage:
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
+	// }
+	// ```
+	MaxScaleDownPercentage pulumi.Float64PtrInput `pulumi:"maxScaleDownPercentage"`
 }
 
 func (ElastigroupIntegrationKubernetesAutoscaleDownArgs) ElementType() reflect.Type {
@@ -5533,6 +5567,29 @@ func (o ElastigroupIntegrationKubernetesAutoscaleDownOutput) EvaluationPeriods()
 	return o.ApplyT(func(v ElastigroupIntegrationKubernetesAutoscaleDown) *int { return v.EvaluationPeriods }).(pulumi.IntPtrOutput)
 }
 
+// Represents the maximum percent to scale-down. Number between 1-100.
+// Usage:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
+// ```
+func (o ElastigroupIntegrationKubernetesAutoscaleDownOutput) MaxScaleDownPercentage() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v ElastigroupIntegrationKubernetesAutoscaleDown) *float64 { return v.MaxScaleDownPercentage }).(pulumi.Float64PtrOutput)
+}
+
 type ElastigroupIntegrationKubernetesAutoscaleDownPtrOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupIntegrationKubernetesAutoscaleDownPtrOutput) ElementType() reflect.Type {
@@ -5565,6 +5622,34 @@ func (o ElastigroupIntegrationKubernetesAutoscaleDownPtrOutput) EvaluationPeriod
 		}
 		return v.EvaluationPeriods
 	}).(pulumi.IntPtrOutput)
+}
+
+// Represents the maximum percent to scale-down. Number between 1-100.
+// Usage:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
+// ```
+func (o ElastigroupIntegrationKubernetesAutoscaleDownPtrOutput) MaxScaleDownPercentage() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *ElastigroupIntegrationKubernetesAutoscaleDown) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.MaxScaleDownPercentage
+	}).(pulumi.Float64PtrOutput)
 }
 
 type ElastigroupIntegrationKubernetesAutoscaleHeadroom struct {

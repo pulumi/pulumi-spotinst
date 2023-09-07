@@ -2204,6 +2204,8 @@ class ElastigroupIntegrationKubernetesAutoscaleDown(dict):
         suggest = None
         if key == "evaluationPeriods":
             suggest = "evaluation_periods"
+        elif key == "maxScaleDownPercentage":
+            suggest = "max_scale_down_percentage"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ElastigroupIntegrationKubernetesAutoscaleDown. Access the value via the '{suggest}' property getter instead.")
@@ -2217,12 +2219,21 @@ class ElastigroupIntegrationKubernetesAutoscaleDown(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 evaluation_periods: Optional[int] = None):
+                 evaluation_periods: Optional[int] = None,
+                 max_scale_down_percentage: Optional[float] = None):
         """
         :param int evaluation_periods: The number of periods over which data is compared to the specified threshold.
+        :param float max_scale_down_percentage: Represents the maximum percent to scale-down. Number between 1-100.
+               Usage:
+               
+               ```python
+               import pulumi
+               ```
         """
         if evaluation_periods is not None:
             pulumi.set(__self__, "evaluation_periods", evaluation_periods)
+        if max_scale_down_percentage is not None:
+            pulumi.set(__self__, "max_scale_down_percentage", max_scale_down_percentage)
 
     @property
     @pulumi.getter(name="evaluationPeriods")
@@ -2231,6 +2242,19 @@ class ElastigroupIntegrationKubernetesAutoscaleDown(dict):
         The number of periods over which data is compared to the specified threshold.
         """
         return pulumi.get(self, "evaluation_periods")
+
+    @property
+    @pulumi.getter(name="maxScaleDownPercentage")
+    def max_scale_down_percentage(self) -> Optional[float]:
+        """
+        Represents the maximum percent to scale-down. Number between 1-100.
+        Usage:
+
+        ```python
+        import pulumi
+        ```
+        """
+        return pulumi.get(self, "max_scale_down_percentage")
 
 
 @pulumi.output_type

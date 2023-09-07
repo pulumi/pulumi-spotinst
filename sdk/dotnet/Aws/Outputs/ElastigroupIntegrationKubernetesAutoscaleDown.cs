@@ -17,11 +17,30 @@ namespace Pulumi.SpotInst.Aws.Outputs
         /// The number of periods over which data is compared to the specified threshold.
         /// </summary>
         public readonly int? EvaluationPeriods;
+        /// <summary>
+        /// Represents the maximum percent to scale-down. Number between 1-100.
+        /// Usage:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        /// });
+        /// ```
+        /// </summary>
+        public readonly double? MaxScaleDownPercentage;
 
         [OutputConstructor]
-        private ElastigroupIntegrationKubernetesAutoscaleDown(int? evaluationPeriods)
+        private ElastigroupIntegrationKubernetesAutoscaleDown(
+            int? evaluationPeriods,
+
+            double? maxScaleDownPercentage)
         {
             EvaluationPeriods = evaluationPeriods;
+            MaxScaleDownPercentage = maxScaleDownPercentage;
         }
     }
 }

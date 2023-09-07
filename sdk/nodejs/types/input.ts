@@ -866,6 +866,15 @@ export namespace aws {
          * The number of periods over which data is compared to the specified threshold.
          */
         evaluationPeriods?: pulumi.Input<number>;
+        /**
+         * Represents the maximum percent to scale-down. Number between 1-100.
+         * Usage:
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
+         */
+        maxScaleDownPercentage?: pulumi.Input<number>;
     }
 
     export interface ElastigroupIntegrationKubernetesAutoscaleHeadroom {

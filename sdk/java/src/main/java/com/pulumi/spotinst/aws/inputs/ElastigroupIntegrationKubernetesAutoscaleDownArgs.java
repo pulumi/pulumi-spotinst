@@ -5,6 +5,7 @@ package com.pulumi.spotinst.aws.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Double;
 import java.lang.Integer;
 import java.util.Objects;
 import java.util.Optional;
@@ -30,10 +31,72 @@ public final class ElastigroupIntegrationKubernetesAutoscaleDownArgs extends com
         return Optional.ofNullable(this.evaluationPeriods);
     }
 
+    /**
+     * Represents the maximum percent to scale-down. Number between 1-100.
+     * Usage:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *     }
+     * }
+     * ```
+     * 
+     */
+    @Import(name="maxScaleDownPercentage")
+    private @Nullable Output<Double> maxScaleDownPercentage;
+
+    /**
+     * @return Represents the maximum percent to scale-down. Number between 1-100.
+     * Usage:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public Optional<Output<Double>> maxScaleDownPercentage() {
+        return Optional.ofNullable(this.maxScaleDownPercentage);
+    }
+
     private ElastigroupIntegrationKubernetesAutoscaleDownArgs() {}
 
     private ElastigroupIntegrationKubernetesAutoscaleDownArgs(ElastigroupIntegrationKubernetesAutoscaleDownArgs $) {
         this.evaluationPeriods = $.evaluationPeriods;
+        this.maxScaleDownPercentage = $.maxScaleDownPercentage;
     }
 
     public static Builder builder() {
@@ -73,6 +136,73 @@ public final class ElastigroupIntegrationKubernetesAutoscaleDownArgs extends com
          */
         public Builder evaluationPeriods(Integer evaluationPeriods) {
             return evaluationPeriods(Output.of(evaluationPeriods));
+        }
+
+        /**
+         * @param maxScaleDownPercentage Represents the maximum percent to scale-down. Number between 1-100.
+         * Usage:
+         * ```java
+         * package generated_program;
+         * 
+         * import com.pulumi.Context;
+         * import com.pulumi.Pulumi;
+         * import com.pulumi.core.Output;
+         * import java.util.List;
+         * import java.util.ArrayList;
+         * import java.util.Map;
+         * import java.io.File;
+         * import java.nio.file.Files;
+         * import java.nio.file.Paths;
+         * 
+         * public class App {
+         *     public static void main(String[] args) {
+         *         Pulumi.run(App::stack);
+         *     }
+         * 
+         *     public static void stack(Context ctx) {
+         *     }
+         * }
+         * ```
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxScaleDownPercentage(@Nullable Output<Double> maxScaleDownPercentage) {
+            $.maxScaleDownPercentage = maxScaleDownPercentage;
+            return this;
+        }
+
+        /**
+         * @param maxScaleDownPercentage Represents the maximum percent to scale-down. Number between 1-100.
+         * Usage:
+         * ```java
+         * package generated_program;
+         * 
+         * import com.pulumi.Context;
+         * import com.pulumi.Pulumi;
+         * import com.pulumi.core.Output;
+         * import java.util.List;
+         * import java.util.ArrayList;
+         * import java.util.Map;
+         * import java.io.File;
+         * import java.nio.file.Files;
+         * import java.nio.file.Paths;
+         * 
+         * public class App {
+         *     public static void main(String[] args) {
+         *         Pulumi.run(App::stack);
+         *     }
+         * 
+         *     public static void stack(Context ctx) {
+         *     }
+         * }
+         * ```
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxScaleDownPercentage(Double maxScaleDownPercentage) {
+            return maxScaleDownPercentage(Output.of(maxScaleDownPercentage));
         }
 
         public ElastigroupIntegrationKubernetesAutoscaleDownArgs build() {

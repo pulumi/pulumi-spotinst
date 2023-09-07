@@ -2056,12 +2056,21 @@ class ElastigroupIntegrationKubernetesArgs:
 @pulumi.input_type
 class ElastigroupIntegrationKubernetesAutoscaleDownArgs:
     def __init__(__self__, *,
-                 evaluation_periods: Optional[pulumi.Input[int]] = None):
+                 evaluation_periods: Optional[pulumi.Input[int]] = None,
+                 max_scale_down_percentage: Optional[pulumi.Input[float]] = None):
         """
         :param pulumi.Input[int] evaluation_periods: The number of periods over which data is compared to the specified threshold.
+        :param pulumi.Input[float] max_scale_down_percentage: Represents the maximum percent to scale-down. Number between 1-100.
+               Usage:
+               
+               ```python
+               import pulumi
+               ```
         """
         if evaluation_periods is not None:
             pulumi.set(__self__, "evaluation_periods", evaluation_periods)
+        if max_scale_down_percentage is not None:
+            pulumi.set(__self__, "max_scale_down_percentage", max_scale_down_percentage)
 
     @property
     @pulumi.getter(name="evaluationPeriods")
@@ -2074,6 +2083,23 @@ class ElastigroupIntegrationKubernetesAutoscaleDownArgs:
     @evaluation_periods.setter
     def evaluation_periods(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "evaluation_periods", value)
+
+    @property
+    @pulumi.getter(name="maxScaleDownPercentage")
+    def max_scale_down_percentage(self) -> Optional[pulumi.Input[float]]:
+        """
+        Represents the maximum percent to scale-down. Number between 1-100.
+        Usage:
+
+        ```python
+        import pulumi
+        ```
+        """
+        return pulumi.get(self, "max_scale_down_percentage")
+
+    @max_scale_down_percentage.setter
+    def max_scale_down_percentage(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "max_scale_down_percentage", value)
 
 
 @pulumi.input_type
