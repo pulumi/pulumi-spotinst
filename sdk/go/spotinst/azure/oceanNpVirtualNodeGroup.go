@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type OceanNpVirtualNodeGroup struct {
@@ -179,6 +180,12 @@ func (i *OceanNpVirtualNodeGroup) ToOceanNpVirtualNodeGroupOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(OceanNpVirtualNodeGroupOutput)
 }
 
+func (i *OceanNpVirtualNodeGroup) ToOutput(ctx context.Context) pulumix.Output[*OceanNpVirtualNodeGroup] {
+	return pulumix.Output[*OceanNpVirtualNodeGroup]{
+		OutputState: i.ToOceanNpVirtualNodeGroupOutputWithContext(ctx).OutputState,
+	}
+}
+
 // OceanNpVirtualNodeGroupArrayInput is an input type that accepts OceanNpVirtualNodeGroupArray and OceanNpVirtualNodeGroupArrayOutput values.
 // You can construct a concrete instance of `OceanNpVirtualNodeGroupArrayInput` via:
 //
@@ -202,6 +209,12 @@ func (i OceanNpVirtualNodeGroupArray) ToOceanNpVirtualNodeGroupArrayOutput() Oce
 
 func (i OceanNpVirtualNodeGroupArray) ToOceanNpVirtualNodeGroupArrayOutputWithContext(ctx context.Context) OceanNpVirtualNodeGroupArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(OceanNpVirtualNodeGroupArrayOutput)
+}
+
+func (i OceanNpVirtualNodeGroupArray) ToOutput(ctx context.Context) pulumix.Output[[]*OceanNpVirtualNodeGroup] {
+	return pulumix.Output[[]*OceanNpVirtualNodeGroup]{
+		OutputState: i.ToOceanNpVirtualNodeGroupArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // OceanNpVirtualNodeGroupMapInput is an input type that accepts OceanNpVirtualNodeGroupMap and OceanNpVirtualNodeGroupMapOutput values.
@@ -229,6 +242,12 @@ func (i OceanNpVirtualNodeGroupMap) ToOceanNpVirtualNodeGroupMapOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(OceanNpVirtualNodeGroupMapOutput)
 }
 
+func (i OceanNpVirtualNodeGroupMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*OceanNpVirtualNodeGroup] {
+	return pulumix.Output[map[string]*OceanNpVirtualNodeGroup]{
+		OutputState: i.ToOceanNpVirtualNodeGroupMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type OceanNpVirtualNodeGroupOutput struct{ *pulumi.OutputState }
 
 func (OceanNpVirtualNodeGroupOutput) ElementType() reflect.Type {
@@ -241,6 +260,12 @@ func (o OceanNpVirtualNodeGroupOutput) ToOceanNpVirtualNodeGroupOutput() OceanNp
 
 func (o OceanNpVirtualNodeGroupOutput) ToOceanNpVirtualNodeGroupOutputWithContext(ctx context.Context) OceanNpVirtualNodeGroupOutput {
 	return o
+}
+
+func (o OceanNpVirtualNodeGroupOutput) ToOutput(ctx context.Context) pulumix.Output[*OceanNpVirtualNodeGroup] {
+	return pulumix.Output[*OceanNpVirtualNodeGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OceanNpVirtualNodeGroupOutput) AvailabilityZones() pulumi.StringArrayOutput {
@@ -329,6 +354,12 @@ func (o OceanNpVirtualNodeGroupArrayOutput) ToOceanNpVirtualNodeGroupArrayOutput
 	return o
 }
 
+func (o OceanNpVirtualNodeGroupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*OceanNpVirtualNodeGroup] {
+	return pulumix.Output[[]*OceanNpVirtualNodeGroup]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o OceanNpVirtualNodeGroupArrayOutput) Index(i pulumi.IntInput) OceanNpVirtualNodeGroupOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *OceanNpVirtualNodeGroup {
 		return vs[0].([]*OceanNpVirtualNodeGroup)[vs[1].(int)]
@@ -347,6 +378,12 @@ func (o OceanNpVirtualNodeGroupMapOutput) ToOceanNpVirtualNodeGroupMapOutput() O
 
 func (o OceanNpVirtualNodeGroupMapOutput) ToOceanNpVirtualNodeGroupMapOutputWithContext(ctx context.Context) OceanNpVirtualNodeGroupMapOutput {
 	return o
+}
+
+func (o OceanNpVirtualNodeGroupMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*OceanNpVirtualNodeGroup] {
+	return pulumix.Output[map[string]*OceanNpVirtualNodeGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OceanNpVirtualNodeGroupMapOutput) MapIndex(k pulumi.StringInput) OceanNpVirtualNodeGroupOutput {

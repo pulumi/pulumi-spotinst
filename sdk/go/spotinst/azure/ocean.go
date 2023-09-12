@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Manages a Spotinst Ocean AKS resource.
@@ -344,6 +345,12 @@ func (i *Ocean) ToOceanOutputWithContext(ctx context.Context) OceanOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(OceanOutput)
 }
 
+func (i *Ocean) ToOutput(ctx context.Context) pulumix.Output[*Ocean] {
+	return pulumix.Output[*Ocean]{
+		OutputState: i.ToOceanOutputWithContext(ctx).OutputState,
+	}
+}
+
 // OceanArrayInput is an input type that accepts OceanArray and OceanArrayOutput values.
 // You can construct a concrete instance of `OceanArrayInput` via:
 //
@@ -367,6 +374,12 @@ func (i OceanArray) ToOceanArrayOutput() OceanArrayOutput {
 
 func (i OceanArray) ToOceanArrayOutputWithContext(ctx context.Context) OceanArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(OceanArrayOutput)
+}
+
+func (i OceanArray) ToOutput(ctx context.Context) pulumix.Output[[]*Ocean] {
+	return pulumix.Output[[]*Ocean]{
+		OutputState: i.ToOceanArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // OceanMapInput is an input type that accepts OceanMap and OceanMapOutput values.
@@ -394,6 +407,12 @@ func (i OceanMap) ToOceanMapOutputWithContext(ctx context.Context) OceanMapOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(OceanMapOutput)
 }
 
+func (i OceanMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Ocean] {
+	return pulumix.Output[map[string]*Ocean]{
+		OutputState: i.ToOceanMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type OceanOutput struct{ *pulumi.OutputState }
 
 func (OceanOutput) ElementType() reflect.Type {
@@ -406,6 +425,12 @@ func (o OceanOutput) ToOceanOutput() OceanOutput {
 
 func (o OceanOutput) ToOceanOutputWithContext(ctx context.Context) OceanOutput {
 	return o
+}
+
+func (o OceanOutput) ToOutput(ctx context.Context) pulumix.Output[*Ocean] {
+	return pulumix.Output[*Ocean]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The AKS identifier. A valid identifier should be formatted as `acd-nnnnnnnn` and previously used identifiers cannot be reused.
@@ -532,6 +557,12 @@ func (o OceanArrayOutput) ToOceanArrayOutputWithContext(ctx context.Context) Oce
 	return o
 }
 
+func (o OceanArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Ocean] {
+	return pulumix.Output[[]*Ocean]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o OceanArrayOutput) Index(i pulumi.IntInput) OceanOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Ocean {
 		return vs[0].([]*Ocean)[vs[1].(int)]
@@ -550,6 +581,12 @@ func (o OceanMapOutput) ToOceanMapOutput() OceanMapOutput {
 
 func (o OceanMapOutput) ToOceanMapOutputWithContext(ctx context.Context) OceanMapOutput {
 	return o
+}
+
+func (o OceanMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Ocean] {
+	return pulumix.Output[map[string]*Ocean]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OceanMapOutput) MapIndex(k pulumi.StringInput) OceanOutput {
