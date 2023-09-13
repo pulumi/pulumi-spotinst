@@ -28,6 +28,7 @@ class OceanNpArgs:
                  filters: Optional[pulumi.Input['OceanNpFiltersArgs']] = None,
                  headrooms: Optional[pulumi.Input[Sequence[pulumi.Input['OceanNpHeadroomArgs']]]] = None,
                  health: Optional[pulumi.Input['OceanNpHealthArgs']] = None,
+                 kubernetes_version: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  max_count: Optional[pulumi.Input[int]] = None,
                  max_pods_per_node: Optional[pulumi.Input[int]] = None,
@@ -64,6 +65,8 @@ class OceanNpArgs:
             pulumi.set(__self__, "headrooms", headrooms)
         if health is not None:
             pulumi.set(__self__, "health", health)
+        if kubernetes_version is not None:
+            pulumi.set(__self__, "kubernetes_version", kubernetes_version)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if max_count is not None:
@@ -200,6 +203,15 @@ class OceanNpArgs:
         pulumi.set(self, "health", value)
 
     @property
+    @pulumi.getter(name="kubernetesVersion")
+    def kubernetes_version(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "kubernetes_version")
+
+    @kubernetes_version.setter
+    def kubernetes_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kubernetes_version", value)
+
+    @property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         return pulumi.get(self, "labels")
@@ -332,6 +344,7 @@ class _OceanNpState:
                  filters: Optional[pulumi.Input['OceanNpFiltersArgs']] = None,
                  headrooms: Optional[pulumi.Input[Sequence[pulumi.Input['OceanNpHeadroomArgs']]]] = None,
                  health: Optional[pulumi.Input['OceanNpHealthArgs']] = None,
+                 kubernetes_version: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  max_count: Optional[pulumi.Input[int]] = None,
                  max_pods_per_node: Optional[pulumi.Input[int]] = None,
@@ -372,6 +385,8 @@ class _OceanNpState:
             pulumi.set(__self__, "headrooms", headrooms)
         if health is not None:
             pulumi.set(__self__, "health", health)
+        if kubernetes_version is not None:
+            pulumi.set(__self__, "kubernetes_version", kubernetes_version)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if max_count is not None:
@@ -508,6 +523,15 @@ class _OceanNpState:
         pulumi.set(self, "health", value)
 
     @property
+    @pulumi.getter(name="kubernetesVersion")
+    def kubernetes_version(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "kubernetes_version")
+
+    @kubernetes_version.setter
+    def kubernetes_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kubernetes_version", value)
+
+    @property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         return pulumi.get(self, "labels")
@@ -642,6 +666,7 @@ class OceanNp(pulumi.CustomResource):
                  filters: Optional[pulumi.Input[pulumi.InputType['OceanNpFiltersArgs']]] = None,
                  headrooms: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanNpHeadroomArgs']]]]] = None,
                  health: Optional[pulumi.Input[pulumi.InputType['OceanNpHealthArgs']]] = None,
+                 kubernetes_version: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  max_count: Optional[pulumi.Input[int]] = None,
                  max_pods_per_node: Optional[pulumi.Input[int]] = None,
@@ -696,6 +721,7 @@ class OceanNp(pulumi.CustomResource):
                  filters: Optional[pulumi.Input[pulumi.InputType['OceanNpFiltersArgs']]] = None,
                  headrooms: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanNpHeadroomArgs']]]]] = None,
                  health: Optional[pulumi.Input[pulumi.InputType['OceanNpHealthArgs']]] = None,
+                 kubernetes_version: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  max_count: Optional[pulumi.Input[int]] = None,
                  max_pods_per_node: Optional[pulumi.Input[int]] = None,
@@ -738,6 +764,7 @@ class OceanNp(pulumi.CustomResource):
             __props__.__dict__["filters"] = filters
             __props__.__dict__["headrooms"] = headrooms
             __props__.__dict__["health"] = health
+            __props__.__dict__["kubernetes_version"] = kubernetes_version
             __props__.__dict__["labels"] = labels
             __props__.__dict__["max_count"] = max_count
             __props__.__dict__["max_pods_per_node"] = max_pods_per_node
@@ -773,6 +800,7 @@ class OceanNp(pulumi.CustomResource):
             filters: Optional[pulumi.Input[pulumi.InputType['OceanNpFiltersArgs']]] = None,
             headrooms: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanNpHeadroomArgs']]]]] = None,
             health: Optional[pulumi.Input[pulumi.InputType['OceanNpHealthArgs']]] = None,
+            kubernetes_version: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             max_count: Optional[pulumi.Input[int]] = None,
             max_pods_per_node: Optional[pulumi.Input[int]] = None,
@@ -810,6 +838,7 @@ class OceanNp(pulumi.CustomResource):
         __props__.__dict__["filters"] = filters
         __props__.__dict__["headrooms"] = headrooms
         __props__.__dict__["health"] = health
+        __props__.__dict__["kubernetes_version"] = kubernetes_version
         __props__.__dict__["labels"] = labels
         __props__.__dict__["max_count"] = max_count
         __props__.__dict__["max_pods_per_node"] = max_pods_per_node
@@ -884,6 +913,11 @@ class OceanNp(pulumi.CustomResource):
     @pulumi.getter
     def health(self) -> pulumi.Output['outputs.OceanNpHealth']:
         return pulumi.get(self, "health")
+
+    @property
+    @pulumi.getter(name="kubernetesVersion")
+    def kubernetes_version(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "kubernetes_version")
 
     @property
     @pulumi.getter

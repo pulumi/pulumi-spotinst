@@ -54,6 +54,12 @@ public class OceanNpVirtualNodeGroup extends com.pulumi.resources.CustomResource
     public Output<Optional<List<OceanNpVirtualNodeGroupHeadroom>>> headrooms() {
         return Codegen.optional(this.headrooms);
     }
+    @Export(name="kubernetesVersion", type=String.class, parameters={})
+    private Output</* @Nullable */ String> kubernetesVersion;
+
+    public Output<Optional<String>> kubernetesVersion() {
+        return Codegen.optional(this.kubernetesVersion);
+    }
     @Export(name="labels", type=Map.class, parameters={String.class, Object.class})
     private Output</* @Nullable */ Map<String,Object>> labels;
 

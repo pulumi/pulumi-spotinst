@@ -22,6 +22,7 @@ class OceanNpVirtualNodeGroupArgs:
                  fallback_to_ondemand: Optional[pulumi.Input[bool]] = None,
                  filters: Optional[pulumi.Input['OceanNpVirtualNodeGroupFiltersArgs']] = None,
                  headrooms: Optional[pulumi.Input[Sequence[pulumi.Input['OceanNpVirtualNodeGroupHeadroomArgs']]]] = None,
+                 kubernetes_version: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  max_count: Optional[pulumi.Input[int]] = None,
                  max_pods_per_node: Optional[pulumi.Input[int]] = None,
@@ -48,6 +49,8 @@ class OceanNpVirtualNodeGroupArgs:
             pulumi.set(__self__, "filters", filters)
         if headrooms is not None:
             pulumi.set(__self__, "headrooms", headrooms)
+        if kubernetes_version is not None:
+            pulumi.set(__self__, "kubernetes_version", kubernetes_version)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if max_count is not None:
@@ -126,6 +129,15 @@ class OceanNpVirtualNodeGroupArgs:
     @headrooms.setter
     def headrooms(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanNpVirtualNodeGroupHeadroomArgs']]]]):
         pulumi.set(self, "headrooms", value)
+
+    @property
+    @pulumi.getter(name="kubernetesVersion")
+    def kubernetes_version(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "kubernetes_version")
+
+    @kubernetes_version.setter
+    def kubernetes_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kubernetes_version", value)
 
     @property
     @pulumi.getter
@@ -244,6 +256,7 @@ class _OceanNpVirtualNodeGroupState:
                  fallback_to_ondemand: Optional[pulumi.Input[bool]] = None,
                  filters: Optional[pulumi.Input['OceanNpVirtualNodeGroupFiltersArgs']] = None,
                  headrooms: Optional[pulumi.Input[Sequence[pulumi.Input['OceanNpVirtualNodeGroupHeadroomArgs']]]] = None,
+                 kubernetes_version: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  max_count: Optional[pulumi.Input[int]] = None,
                  max_pods_per_node: Optional[pulumi.Input[int]] = None,
@@ -270,6 +283,8 @@ class _OceanNpVirtualNodeGroupState:
             pulumi.set(__self__, "filters", filters)
         if headrooms is not None:
             pulumi.set(__self__, "headrooms", headrooms)
+        if kubernetes_version is not None:
+            pulumi.set(__self__, "kubernetes_version", kubernetes_version)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if max_count is not None:
@@ -341,6 +356,15 @@ class _OceanNpVirtualNodeGroupState:
     @headrooms.setter
     def headrooms(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanNpVirtualNodeGroupHeadroomArgs']]]]):
         pulumi.set(self, "headrooms", value)
+
+    @property
+    @pulumi.getter(name="kubernetesVersion")
+    def kubernetes_version(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "kubernetes_version")
+
+    @kubernetes_version.setter
+    def kubernetes_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kubernetes_version", value)
 
     @property
     @pulumi.getter
@@ -470,6 +494,7 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
                  fallback_to_ondemand: Optional[pulumi.Input[bool]] = None,
                  filters: Optional[pulumi.Input[pulumi.InputType['OceanNpVirtualNodeGroupFiltersArgs']]] = None,
                  headrooms: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanNpVirtualNodeGroupHeadroomArgs']]]]] = None,
+                 kubernetes_version: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  max_count: Optional[pulumi.Input[int]] = None,
                  max_pods_per_node: Optional[pulumi.Input[int]] = None,
@@ -517,6 +542,7 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
                  fallback_to_ondemand: Optional[pulumi.Input[bool]] = None,
                  filters: Optional[pulumi.Input[pulumi.InputType['OceanNpVirtualNodeGroupFiltersArgs']]] = None,
                  headrooms: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanNpVirtualNodeGroupHeadroomArgs']]]]] = None,
+                 kubernetes_version: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  max_count: Optional[pulumi.Input[int]] = None,
                  max_pods_per_node: Optional[pulumi.Input[int]] = None,
@@ -544,6 +570,7 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
             __props__.__dict__["fallback_to_ondemand"] = fallback_to_ondemand
             __props__.__dict__["filters"] = filters
             __props__.__dict__["headrooms"] = headrooms
+            __props__.__dict__["kubernetes_version"] = kubernetes_version
             __props__.__dict__["labels"] = labels
             __props__.__dict__["max_count"] = max_count
             __props__.__dict__["max_pods_per_node"] = max_pods_per_node
@@ -574,6 +601,7 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
             fallback_to_ondemand: Optional[pulumi.Input[bool]] = None,
             filters: Optional[pulumi.Input[pulumi.InputType['OceanNpVirtualNodeGroupFiltersArgs']]] = None,
             headrooms: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanNpVirtualNodeGroupHeadroomArgs']]]]] = None,
+            kubernetes_version: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             max_count: Optional[pulumi.Input[int]] = None,
             max_pods_per_node: Optional[pulumi.Input[int]] = None,
@@ -604,6 +632,7 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
         __props__.__dict__["fallback_to_ondemand"] = fallback_to_ondemand
         __props__.__dict__["filters"] = filters
         __props__.__dict__["headrooms"] = headrooms
+        __props__.__dict__["kubernetes_version"] = kubernetes_version
         __props__.__dict__["labels"] = labels
         __props__.__dict__["max_count"] = max_count
         __props__.__dict__["max_pods_per_node"] = max_pods_per_node
@@ -643,6 +672,11 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
     @pulumi.getter
     def headrooms(self) -> pulumi.Output[Optional[Sequence['outputs.OceanNpVirtualNodeGroupHeadroom']]]:
         return pulumi.get(self, "headrooms")
+
+    @property
+    @pulumi.getter(name="kubernetesVersion")
+    def kubernetes_version(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "kubernetes_version")
 
     @property
     @pulumi.getter

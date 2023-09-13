@@ -46,6 +46,7 @@ export class OceanNp extends pulumi.CustomResource {
     public readonly filters!: pulumi.Output<outputs.azure.OceanNpFilters | undefined>;
     public readonly headrooms!: pulumi.Output<outputs.azure.OceanNpHeadroom[] | undefined>;
     public readonly health!: pulumi.Output<outputs.azure.OceanNpHealth>;
+    public readonly kubernetesVersion!: pulumi.Output<string | undefined>;
     public readonly labels!: pulumi.Output<{[key: string]: any} | undefined>;
     public readonly maxCount!: pulumi.Output<number | undefined>;
     public readonly maxPodsPerNode!: pulumi.Output<number | undefined>;
@@ -85,6 +86,7 @@ export class OceanNp extends pulumi.CustomResource {
             resourceInputs["filters"] = state ? state.filters : undefined;
             resourceInputs["headrooms"] = state ? state.headrooms : undefined;
             resourceInputs["health"] = state ? state.health : undefined;
+            resourceInputs["kubernetesVersion"] = state ? state.kubernetesVersion : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["maxCount"] = state ? state.maxCount : undefined;
             resourceInputs["maxPodsPerNode"] = state ? state.maxPodsPerNode : undefined;
@@ -124,6 +126,7 @@ export class OceanNp extends pulumi.CustomResource {
             resourceInputs["filters"] = args ? args.filters : undefined;
             resourceInputs["headrooms"] = args ? args.headrooms : undefined;
             resourceInputs["health"] = args ? args.health : undefined;
+            resourceInputs["kubernetesVersion"] = args ? args.kubernetesVersion : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["maxCount"] = args ? args.maxCount : undefined;
             resourceInputs["maxPodsPerNode"] = args ? args.maxPodsPerNode : undefined;
@@ -159,6 +162,7 @@ export interface OceanNpState {
     filters?: pulumi.Input<inputs.azure.OceanNpFilters>;
     headrooms?: pulumi.Input<pulumi.Input<inputs.azure.OceanNpHeadroom>[]>;
     health?: pulumi.Input<inputs.azure.OceanNpHealth>;
+    kubernetesVersion?: pulumi.Input<string>;
     labels?: pulumi.Input<{[key: string]: any}>;
     maxCount?: pulumi.Input<number>;
     maxPodsPerNode?: pulumi.Input<number>;
@@ -190,6 +194,7 @@ export interface OceanNpArgs {
     filters?: pulumi.Input<inputs.azure.OceanNpFilters>;
     headrooms?: pulumi.Input<pulumi.Input<inputs.azure.OceanNpHeadroom>[]>;
     health?: pulumi.Input<inputs.azure.OceanNpHealth>;
+    kubernetesVersion?: pulumi.Input<string>;
     labels?: pulumi.Input<{[key: string]: any}>;
     maxCount?: pulumi.Input<number>;
     maxPodsPerNode?: pulumi.Input<number>;

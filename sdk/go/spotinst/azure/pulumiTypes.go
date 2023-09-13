@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -46,6 +47,12 @@ func (i ElastigroupHealthCheckArgs) ToElastigroupHealthCheckOutput() Elastigroup
 
 func (i ElastigroupHealthCheckArgs) ToElastigroupHealthCheckOutputWithContext(ctx context.Context) ElastigroupHealthCheckOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupHealthCheckOutput)
+}
+
+func (i ElastigroupHealthCheckArgs) ToOutput(ctx context.Context) pulumix.Output[ElastigroupHealthCheck] {
+	return pulumix.Output[ElastigroupHealthCheck]{
+		OutputState: i.ToElastigroupHealthCheckOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i ElastigroupHealthCheckArgs) ToElastigroupHealthCheckPtrOutput() ElastigroupHealthCheckPtrOutput {
@@ -89,6 +96,12 @@ func (i *elastigroupHealthCheckPtrType) ToElastigroupHealthCheckPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupHealthCheckPtrOutput)
 }
 
+func (i *elastigroupHealthCheckPtrType) ToOutput(ctx context.Context) pulumix.Output[*ElastigroupHealthCheck] {
+	return pulumix.Output[*ElastigroupHealthCheck]{
+		OutputState: i.ToElastigroupHealthCheckPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ElastigroupHealthCheckOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupHealthCheckOutput) ElementType() reflect.Type {
@@ -111,6 +124,12 @@ func (o ElastigroupHealthCheckOutput) ToElastigroupHealthCheckPtrOutputWithConte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElastigroupHealthCheck) *ElastigroupHealthCheck {
 		return &v
 	}).(ElastigroupHealthCheckPtrOutput)
+}
+
+func (o ElastigroupHealthCheckOutput) ToOutput(ctx context.Context) pulumix.Output[ElastigroupHealthCheck] {
+	return pulumix.Output[ElastigroupHealthCheck]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ElastigroupHealthCheckOutput) AutoHealing() pulumi.BoolPtrOutput {
@@ -137,6 +156,12 @@ func (o ElastigroupHealthCheckPtrOutput) ToElastigroupHealthCheckPtrOutput() Ela
 
 func (o ElastigroupHealthCheckPtrOutput) ToElastigroupHealthCheckPtrOutputWithContext(ctx context.Context) ElastigroupHealthCheckPtrOutput {
 	return o
+}
+
+func (o ElastigroupHealthCheckPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ElastigroupHealthCheck] {
+	return pulumix.Output[*ElastigroupHealthCheck]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ElastigroupHealthCheckPtrOutput) Elem() ElastigroupHealthCheckOutput {
@@ -209,6 +234,12 @@ func (i ElastigroupImageArgs) ToElastigroupImageOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupImageOutput)
 }
 
+func (i ElastigroupImageArgs) ToOutput(ctx context.Context) pulumix.Output[ElastigroupImage] {
+	return pulumix.Output[ElastigroupImage]{
+		OutputState: i.ToElastigroupImageOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ElastigroupImageArrayInput is an input type that accepts ElastigroupImageArray and ElastigroupImageArrayOutput values.
 // You can construct a concrete instance of `ElastigroupImageArrayInput` via:
 //
@@ -234,6 +265,12 @@ func (i ElastigroupImageArray) ToElastigroupImageArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupImageArrayOutput)
 }
 
+func (i ElastigroupImageArray) ToOutput(ctx context.Context) pulumix.Output[[]ElastigroupImage] {
+	return pulumix.Output[[]ElastigroupImage]{
+		OutputState: i.ToElastigroupImageArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ElastigroupImageOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupImageOutput) ElementType() reflect.Type {
@@ -246,6 +283,12 @@ func (o ElastigroupImageOutput) ToElastigroupImageOutput() ElastigroupImageOutpu
 
 func (o ElastigroupImageOutput) ToElastigroupImageOutputWithContext(ctx context.Context) ElastigroupImageOutput {
 	return o
+}
+
+func (o ElastigroupImageOutput) ToOutput(ctx context.Context) pulumix.Output[ElastigroupImage] {
+	return pulumix.Output[ElastigroupImage]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ElastigroupImageOutput) Customs() ElastigroupImageCustomArrayOutput {
@@ -268,6 +311,12 @@ func (o ElastigroupImageArrayOutput) ToElastigroupImageArrayOutput() Elastigroup
 
 func (o ElastigroupImageArrayOutput) ToElastigroupImageArrayOutputWithContext(ctx context.Context) ElastigroupImageArrayOutput {
 	return o
+}
+
+func (o ElastigroupImageArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ElastigroupImage] {
+	return pulumix.Output[[]ElastigroupImage]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ElastigroupImageArrayOutput) Index(i pulumi.IntInput) ElastigroupImageOutput {
@@ -311,6 +360,12 @@ func (i ElastigroupImageCustomArgs) ToElastigroupImageCustomOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupImageCustomOutput)
 }
 
+func (i ElastigroupImageCustomArgs) ToOutput(ctx context.Context) pulumix.Output[ElastigroupImageCustom] {
+	return pulumix.Output[ElastigroupImageCustom]{
+		OutputState: i.ToElastigroupImageCustomOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ElastigroupImageCustomArrayInput is an input type that accepts ElastigroupImageCustomArray and ElastigroupImageCustomArrayOutput values.
 // You can construct a concrete instance of `ElastigroupImageCustomArrayInput` via:
 //
@@ -336,6 +391,12 @@ func (i ElastigroupImageCustomArray) ToElastigroupImageCustomArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupImageCustomArrayOutput)
 }
 
+func (i ElastigroupImageCustomArray) ToOutput(ctx context.Context) pulumix.Output[[]ElastigroupImageCustom] {
+	return pulumix.Output[[]ElastigroupImageCustom]{
+		OutputState: i.ToElastigroupImageCustomArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ElastigroupImageCustomOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupImageCustomOutput) ElementType() reflect.Type {
@@ -348,6 +409,12 @@ func (o ElastigroupImageCustomOutput) ToElastigroupImageCustomOutput() Elastigro
 
 func (o ElastigroupImageCustomOutput) ToElastigroupImageCustomOutputWithContext(ctx context.Context) ElastigroupImageCustomOutput {
 	return o
+}
+
+func (o ElastigroupImageCustomOutput) ToOutput(ctx context.Context) pulumix.Output[ElastigroupImageCustom] {
+	return pulumix.Output[ElastigroupImageCustom]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ElastigroupImageCustomOutput) ImageName() pulumi.StringOutput {
@@ -371,6 +438,12 @@ func (o ElastigroupImageCustomArrayOutput) ToElastigroupImageCustomArrayOutput()
 
 func (o ElastigroupImageCustomArrayOutput) ToElastigroupImageCustomArrayOutputWithContext(ctx context.Context) ElastigroupImageCustomArrayOutput {
 	return o
+}
+
+func (o ElastigroupImageCustomArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ElastigroupImageCustom] {
+	return pulumix.Output[[]ElastigroupImageCustom]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ElastigroupImageCustomArrayOutput) Index(i pulumi.IntInput) ElastigroupImageCustomOutput {
@@ -414,6 +487,12 @@ func (i ElastigroupImageMarketplaceArgs) ToElastigroupImageMarketplaceOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupImageMarketplaceOutput)
 }
 
+func (i ElastigroupImageMarketplaceArgs) ToOutput(ctx context.Context) pulumix.Output[ElastigroupImageMarketplace] {
+	return pulumix.Output[ElastigroupImageMarketplace]{
+		OutputState: i.ToElastigroupImageMarketplaceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ElastigroupImageMarketplaceArrayInput is an input type that accepts ElastigroupImageMarketplaceArray and ElastigroupImageMarketplaceArrayOutput values.
 // You can construct a concrete instance of `ElastigroupImageMarketplaceArrayInput` via:
 //
@@ -439,6 +518,12 @@ func (i ElastigroupImageMarketplaceArray) ToElastigroupImageMarketplaceArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupImageMarketplaceArrayOutput)
 }
 
+func (i ElastigroupImageMarketplaceArray) ToOutput(ctx context.Context) pulumix.Output[[]ElastigroupImageMarketplace] {
+	return pulumix.Output[[]ElastigroupImageMarketplace]{
+		OutputState: i.ToElastigroupImageMarketplaceArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ElastigroupImageMarketplaceOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupImageMarketplaceOutput) ElementType() reflect.Type {
@@ -451,6 +536,12 @@ func (o ElastigroupImageMarketplaceOutput) ToElastigroupImageMarketplaceOutput()
 
 func (o ElastigroupImageMarketplaceOutput) ToElastigroupImageMarketplaceOutputWithContext(ctx context.Context) ElastigroupImageMarketplaceOutput {
 	return o
+}
+
+func (o ElastigroupImageMarketplaceOutput) ToOutput(ctx context.Context) pulumix.Output[ElastigroupImageMarketplace] {
+	return pulumix.Output[ElastigroupImageMarketplace]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ElastigroupImageMarketplaceOutput) Offer() pulumi.StringOutput {
@@ -477,6 +568,12 @@ func (o ElastigroupImageMarketplaceArrayOutput) ToElastigroupImageMarketplaceArr
 
 func (o ElastigroupImageMarketplaceArrayOutput) ToElastigroupImageMarketplaceArrayOutputWithContext(ctx context.Context) ElastigroupImageMarketplaceArrayOutput {
 	return o
+}
+
+func (o ElastigroupImageMarketplaceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ElastigroupImageMarketplace] {
+	return pulumix.Output[[]ElastigroupImageMarketplace]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ElastigroupImageMarketplaceArrayOutput) Index(i pulumi.IntInput) ElastigroupImageMarketplaceOutput {
@@ -514,6 +611,12 @@ func (i ElastigroupIntegrationKubernetesArgs) ToElastigroupIntegrationKubernetes
 
 func (i ElastigroupIntegrationKubernetesArgs) ToElastigroupIntegrationKubernetesOutputWithContext(ctx context.Context) ElastigroupIntegrationKubernetesOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupIntegrationKubernetesOutput)
+}
+
+func (i ElastigroupIntegrationKubernetesArgs) ToOutput(ctx context.Context) pulumix.Output[ElastigroupIntegrationKubernetes] {
+	return pulumix.Output[ElastigroupIntegrationKubernetes]{
+		OutputState: i.ToElastigroupIntegrationKubernetesOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i ElastigroupIntegrationKubernetesArgs) ToElastigroupIntegrationKubernetesPtrOutput() ElastigroupIntegrationKubernetesPtrOutput {
@@ -557,6 +660,12 @@ func (i *elastigroupIntegrationKubernetesPtrType) ToElastigroupIntegrationKubern
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupIntegrationKubernetesPtrOutput)
 }
 
+func (i *elastigroupIntegrationKubernetesPtrType) ToOutput(ctx context.Context) pulumix.Output[*ElastigroupIntegrationKubernetes] {
+	return pulumix.Output[*ElastigroupIntegrationKubernetes]{
+		OutputState: i.ToElastigroupIntegrationKubernetesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ElastigroupIntegrationKubernetesOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupIntegrationKubernetesOutput) ElementType() reflect.Type {
@@ -581,6 +690,12 @@ func (o ElastigroupIntegrationKubernetesOutput) ToElastigroupIntegrationKubernet
 	}).(ElastigroupIntegrationKubernetesPtrOutput)
 }
 
+func (o ElastigroupIntegrationKubernetesOutput) ToOutput(ctx context.Context) pulumix.Output[ElastigroupIntegrationKubernetes] {
+	return pulumix.Output[ElastigroupIntegrationKubernetes]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ElastigroupIntegrationKubernetesOutput) ClusterIdentifier() pulumi.StringOutput {
 	return o.ApplyT(func(v ElastigroupIntegrationKubernetes) string { return v.ClusterIdentifier }).(pulumi.StringOutput)
 }
@@ -597,6 +712,12 @@ func (o ElastigroupIntegrationKubernetesPtrOutput) ToElastigroupIntegrationKuber
 
 func (o ElastigroupIntegrationKubernetesPtrOutput) ToElastigroupIntegrationKubernetesPtrOutputWithContext(ctx context.Context) ElastigroupIntegrationKubernetesPtrOutput {
 	return o
+}
+
+func (o ElastigroupIntegrationKubernetesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ElastigroupIntegrationKubernetes] {
+	return pulumix.Output[*ElastigroupIntegrationKubernetes]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ElastigroupIntegrationKubernetesPtrOutput) Elem() ElastigroupIntegrationKubernetesOutput {
@@ -649,6 +770,12 @@ func (i ElastigroupIntegrationMultaiRuntimeArgs) ToElastigroupIntegrationMultaiR
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupIntegrationMultaiRuntimeOutput)
 }
 
+func (i ElastigroupIntegrationMultaiRuntimeArgs) ToOutput(ctx context.Context) pulumix.Output[ElastigroupIntegrationMultaiRuntime] {
+	return pulumix.Output[ElastigroupIntegrationMultaiRuntime]{
+		OutputState: i.ToElastigroupIntegrationMultaiRuntimeOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ElastigroupIntegrationMultaiRuntimeArgs) ToElastigroupIntegrationMultaiRuntimePtrOutput() ElastigroupIntegrationMultaiRuntimePtrOutput {
 	return i.ToElastigroupIntegrationMultaiRuntimePtrOutputWithContext(context.Background())
 }
@@ -690,6 +817,12 @@ func (i *elastigroupIntegrationMultaiRuntimePtrType) ToElastigroupIntegrationMul
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupIntegrationMultaiRuntimePtrOutput)
 }
 
+func (i *elastigroupIntegrationMultaiRuntimePtrType) ToOutput(ctx context.Context) pulumix.Output[*ElastigroupIntegrationMultaiRuntime] {
+	return pulumix.Output[*ElastigroupIntegrationMultaiRuntime]{
+		OutputState: i.ToElastigroupIntegrationMultaiRuntimePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ElastigroupIntegrationMultaiRuntimeOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupIntegrationMultaiRuntimeOutput) ElementType() reflect.Type {
@@ -714,6 +847,12 @@ func (o ElastigroupIntegrationMultaiRuntimeOutput) ToElastigroupIntegrationMulta
 	}).(ElastigroupIntegrationMultaiRuntimePtrOutput)
 }
 
+func (o ElastigroupIntegrationMultaiRuntimeOutput) ToOutput(ctx context.Context) pulumix.Output[ElastigroupIntegrationMultaiRuntime] {
+	return pulumix.Output[ElastigroupIntegrationMultaiRuntime]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ElastigroupIntegrationMultaiRuntimeOutput) DeploymentId() pulumi.StringOutput {
 	return o.ApplyT(func(v ElastigroupIntegrationMultaiRuntime) string { return v.DeploymentId }).(pulumi.StringOutput)
 }
@@ -730,6 +869,12 @@ func (o ElastigroupIntegrationMultaiRuntimePtrOutput) ToElastigroupIntegrationMu
 
 func (o ElastigroupIntegrationMultaiRuntimePtrOutput) ToElastigroupIntegrationMultaiRuntimePtrOutputWithContext(ctx context.Context) ElastigroupIntegrationMultaiRuntimePtrOutput {
 	return o
+}
+
+func (o ElastigroupIntegrationMultaiRuntimePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ElastigroupIntegrationMultaiRuntime] {
+	return pulumix.Output[*ElastigroupIntegrationMultaiRuntime]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ElastigroupIntegrationMultaiRuntimePtrOutput) Elem() ElastigroupIntegrationMultaiRuntimeOutput {
@@ -788,6 +933,12 @@ func (i ElastigroupLoadBalancerArgs) ToElastigroupLoadBalancerOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupLoadBalancerOutput)
 }
 
+func (i ElastigroupLoadBalancerArgs) ToOutput(ctx context.Context) pulumix.Output[ElastigroupLoadBalancer] {
+	return pulumix.Output[ElastigroupLoadBalancer]{
+		OutputState: i.ToElastigroupLoadBalancerOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ElastigroupLoadBalancerArrayInput is an input type that accepts ElastigroupLoadBalancerArray and ElastigroupLoadBalancerArrayOutput values.
 // You can construct a concrete instance of `ElastigroupLoadBalancerArrayInput` via:
 //
@@ -813,6 +964,12 @@ func (i ElastigroupLoadBalancerArray) ToElastigroupLoadBalancerArrayOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupLoadBalancerArrayOutput)
 }
 
+func (i ElastigroupLoadBalancerArray) ToOutput(ctx context.Context) pulumix.Output[[]ElastigroupLoadBalancer] {
+	return pulumix.Output[[]ElastigroupLoadBalancer]{
+		OutputState: i.ToElastigroupLoadBalancerArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ElastigroupLoadBalancerOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupLoadBalancerOutput) ElementType() reflect.Type {
@@ -825,6 +982,12 @@ func (o ElastigroupLoadBalancerOutput) ToElastigroupLoadBalancerOutput() Elastig
 
 func (o ElastigroupLoadBalancerOutput) ToElastigroupLoadBalancerOutputWithContext(ctx context.Context) ElastigroupLoadBalancerOutput {
 	return o
+}
+
+func (o ElastigroupLoadBalancerOutput) ToOutput(ctx context.Context) pulumix.Output[ElastigroupLoadBalancer] {
+	return pulumix.Output[ElastigroupLoadBalancer]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ElastigroupLoadBalancerOutput) AutoWeight() pulumi.BoolPtrOutput {
@@ -855,6 +1018,12 @@ func (o ElastigroupLoadBalancerArrayOutput) ToElastigroupLoadBalancerArrayOutput
 
 func (o ElastigroupLoadBalancerArrayOutput) ToElastigroupLoadBalancerArrayOutputWithContext(ctx context.Context) ElastigroupLoadBalancerArrayOutput {
 	return o
+}
+
+func (o ElastigroupLoadBalancerArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ElastigroupLoadBalancer] {
+	return pulumix.Output[[]ElastigroupLoadBalancer]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ElastigroupLoadBalancerArrayOutput) Index(i pulumi.IntInput) ElastigroupLoadBalancerOutput {
@@ -898,6 +1067,12 @@ func (i ElastigroupLoginArgs) ToElastigroupLoginOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupLoginOutput)
 }
 
+func (i ElastigroupLoginArgs) ToOutput(ctx context.Context) pulumix.Output[ElastigroupLogin] {
+	return pulumix.Output[ElastigroupLogin]{
+		OutputState: i.ToElastigroupLoginOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ElastigroupLoginArgs) ToElastigroupLoginPtrOutput() ElastigroupLoginPtrOutput {
 	return i.ToElastigroupLoginPtrOutputWithContext(context.Background())
 }
@@ -939,6 +1114,12 @@ func (i *elastigroupLoginPtrType) ToElastigroupLoginPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupLoginPtrOutput)
 }
 
+func (i *elastigroupLoginPtrType) ToOutput(ctx context.Context) pulumix.Output[*ElastigroupLogin] {
+	return pulumix.Output[*ElastigroupLogin]{
+		OutputState: i.ToElastigroupLoginPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ElastigroupLoginOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupLoginOutput) ElementType() reflect.Type {
@@ -961,6 +1142,12 @@ func (o ElastigroupLoginOutput) ToElastigroupLoginPtrOutputWithContext(ctx conte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElastigroupLogin) *ElastigroupLogin {
 		return &v
 	}).(ElastigroupLoginPtrOutput)
+}
+
+func (o ElastigroupLoginOutput) ToOutput(ctx context.Context) pulumix.Output[ElastigroupLogin] {
+	return pulumix.Output[ElastigroupLogin]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ElastigroupLoginOutput) Password() pulumi.StringPtrOutput {
@@ -987,6 +1174,12 @@ func (o ElastigroupLoginPtrOutput) ToElastigroupLoginPtrOutput() ElastigroupLogi
 
 func (o ElastigroupLoginPtrOutput) ToElastigroupLoginPtrOutputWithContext(ctx context.Context) ElastigroupLoginPtrOutput {
 	return o
+}
+
+func (o ElastigroupLoginPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ElastigroupLogin] {
+	return pulumix.Output[*ElastigroupLogin]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ElastigroupLoginPtrOutput) Elem() ElastigroupLoginOutput {
@@ -1063,6 +1256,12 @@ func (i ElastigroupManagedServiceIdentityArgs) ToElastigroupManagedServiceIdenti
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupManagedServiceIdentityOutput)
 }
 
+func (i ElastigroupManagedServiceIdentityArgs) ToOutput(ctx context.Context) pulumix.Output[ElastigroupManagedServiceIdentity] {
+	return pulumix.Output[ElastigroupManagedServiceIdentity]{
+		OutputState: i.ToElastigroupManagedServiceIdentityOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ElastigroupManagedServiceIdentityArrayInput is an input type that accepts ElastigroupManagedServiceIdentityArray and ElastigroupManagedServiceIdentityArrayOutput values.
 // You can construct a concrete instance of `ElastigroupManagedServiceIdentityArrayInput` via:
 //
@@ -1088,6 +1287,12 @@ func (i ElastigroupManagedServiceIdentityArray) ToElastigroupManagedServiceIdent
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupManagedServiceIdentityArrayOutput)
 }
 
+func (i ElastigroupManagedServiceIdentityArray) ToOutput(ctx context.Context) pulumix.Output[[]ElastigroupManagedServiceIdentity] {
+	return pulumix.Output[[]ElastigroupManagedServiceIdentity]{
+		OutputState: i.ToElastigroupManagedServiceIdentityArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ElastigroupManagedServiceIdentityOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupManagedServiceIdentityOutput) ElementType() reflect.Type {
@@ -1100,6 +1305,12 @@ func (o ElastigroupManagedServiceIdentityOutput) ToElastigroupManagedServiceIden
 
 func (o ElastigroupManagedServiceIdentityOutput) ToElastigroupManagedServiceIdentityOutputWithContext(ctx context.Context) ElastigroupManagedServiceIdentityOutput {
 	return o
+}
+
+func (o ElastigroupManagedServiceIdentityOutput) ToOutput(ctx context.Context) pulumix.Output[ElastigroupManagedServiceIdentity] {
+	return pulumix.Output[ElastigroupManagedServiceIdentity]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Name of the Managed Service Identity.
@@ -1124,6 +1335,12 @@ func (o ElastigroupManagedServiceIdentityArrayOutput) ToElastigroupManagedServic
 
 func (o ElastigroupManagedServiceIdentityArrayOutput) ToElastigroupManagedServiceIdentityArrayOutputWithContext(ctx context.Context) ElastigroupManagedServiceIdentityArrayOutput {
 	return o
+}
+
+func (o ElastigroupManagedServiceIdentityArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ElastigroupManagedServiceIdentity] {
+	return pulumix.Output[[]ElastigroupManagedServiceIdentity]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ElastigroupManagedServiceIdentityArrayOutput) Index(i pulumi.IntInput) ElastigroupManagedServiceIdentityOutput {
@@ -1173,6 +1390,12 @@ func (i ElastigroupNetworkArgs) ToElastigroupNetworkOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupNetworkOutput)
 }
 
+func (i ElastigroupNetworkArgs) ToOutput(ctx context.Context) pulumix.Output[ElastigroupNetwork] {
+	return pulumix.Output[ElastigroupNetwork]{
+		OutputState: i.ToElastigroupNetworkOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ElastigroupNetworkArgs) ToElastigroupNetworkPtrOutput() ElastigroupNetworkPtrOutput {
 	return i.ToElastigroupNetworkPtrOutputWithContext(context.Background())
 }
@@ -1214,6 +1437,12 @@ func (i *elastigroupNetworkPtrType) ToElastigroupNetworkPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupNetworkPtrOutput)
 }
 
+func (i *elastigroupNetworkPtrType) ToOutput(ctx context.Context) pulumix.Output[*ElastigroupNetwork] {
+	return pulumix.Output[*ElastigroupNetwork]{
+		OutputState: i.ToElastigroupNetworkPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ElastigroupNetworkOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupNetworkOutput) ElementType() reflect.Type {
@@ -1236,6 +1465,12 @@ func (o ElastigroupNetworkOutput) ToElastigroupNetworkPtrOutputWithContext(ctx c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElastigroupNetwork) *ElastigroupNetwork {
 		return &v
 	}).(ElastigroupNetworkPtrOutput)
+}
+
+func (o ElastigroupNetworkOutput) ToOutput(ctx context.Context) pulumix.Output[ElastigroupNetwork] {
+	return pulumix.Output[ElastigroupNetwork]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ElastigroupNetworkOutput) AdditionalIpConfigs() ElastigroupNetworkAdditionalIpConfigArrayOutput {
@@ -1271,6 +1506,12 @@ func (o ElastigroupNetworkPtrOutput) ToElastigroupNetworkPtrOutput() Elastigroup
 
 func (o ElastigroupNetworkPtrOutput) ToElastigroupNetworkPtrOutputWithContext(ctx context.Context) ElastigroupNetworkPtrOutput {
 	return o
+}
+
+func (o ElastigroupNetworkPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ElastigroupNetwork] {
+	return pulumix.Output[*ElastigroupNetwork]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ElastigroupNetworkPtrOutput) Elem() ElastigroupNetworkOutput {
@@ -1364,6 +1605,12 @@ func (i ElastigroupNetworkAdditionalIpConfigArgs) ToElastigroupNetworkAdditional
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupNetworkAdditionalIpConfigOutput)
 }
 
+func (i ElastigroupNetworkAdditionalIpConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ElastigroupNetworkAdditionalIpConfig] {
+	return pulumix.Output[ElastigroupNetworkAdditionalIpConfig]{
+		OutputState: i.ToElastigroupNetworkAdditionalIpConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ElastigroupNetworkAdditionalIpConfigArrayInput is an input type that accepts ElastigroupNetworkAdditionalIpConfigArray and ElastigroupNetworkAdditionalIpConfigArrayOutput values.
 // You can construct a concrete instance of `ElastigroupNetworkAdditionalIpConfigArrayInput` via:
 //
@@ -1389,6 +1636,12 @@ func (i ElastigroupNetworkAdditionalIpConfigArray) ToElastigroupNetworkAdditiona
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupNetworkAdditionalIpConfigArrayOutput)
 }
 
+func (i ElastigroupNetworkAdditionalIpConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]ElastigroupNetworkAdditionalIpConfig] {
+	return pulumix.Output[[]ElastigroupNetworkAdditionalIpConfig]{
+		OutputState: i.ToElastigroupNetworkAdditionalIpConfigArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ElastigroupNetworkAdditionalIpConfigOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupNetworkAdditionalIpConfigOutput) ElementType() reflect.Type {
@@ -1401,6 +1654,12 @@ func (o ElastigroupNetworkAdditionalIpConfigOutput) ToElastigroupNetworkAddition
 
 func (o ElastigroupNetworkAdditionalIpConfigOutput) ToElastigroupNetworkAdditionalIpConfigOutputWithContext(ctx context.Context) ElastigroupNetworkAdditionalIpConfigOutput {
 	return o
+}
+
+func (o ElastigroupNetworkAdditionalIpConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ElastigroupNetworkAdditionalIpConfig] {
+	return pulumix.Output[ElastigroupNetworkAdditionalIpConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Name of the Managed Service Identity.
@@ -1424,6 +1683,12 @@ func (o ElastigroupNetworkAdditionalIpConfigArrayOutput) ToElastigroupNetworkAdd
 
 func (o ElastigroupNetworkAdditionalIpConfigArrayOutput) ToElastigroupNetworkAdditionalIpConfigArrayOutputWithContext(ctx context.Context) ElastigroupNetworkAdditionalIpConfigArrayOutput {
 	return o
+}
+
+func (o ElastigroupNetworkAdditionalIpConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ElastigroupNetworkAdditionalIpConfig] {
+	return pulumix.Output[[]ElastigroupNetworkAdditionalIpConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ElastigroupNetworkAdditionalIpConfigArrayOutput) Index(i pulumi.IntInput) ElastigroupNetworkAdditionalIpConfigOutput {
@@ -1497,6 +1762,12 @@ func (i ElastigroupScalingDownPolicyArgs) ToElastigroupScalingDownPolicyOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupScalingDownPolicyOutput)
 }
 
+func (i ElastigroupScalingDownPolicyArgs) ToOutput(ctx context.Context) pulumix.Output[ElastigroupScalingDownPolicy] {
+	return pulumix.Output[ElastigroupScalingDownPolicy]{
+		OutputState: i.ToElastigroupScalingDownPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ElastigroupScalingDownPolicyArrayInput is an input type that accepts ElastigroupScalingDownPolicyArray and ElastigroupScalingDownPolicyArrayOutput values.
 // You can construct a concrete instance of `ElastigroupScalingDownPolicyArrayInput` via:
 //
@@ -1522,6 +1793,12 @@ func (i ElastigroupScalingDownPolicyArray) ToElastigroupScalingDownPolicyArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupScalingDownPolicyArrayOutput)
 }
 
+func (i ElastigroupScalingDownPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]ElastigroupScalingDownPolicy] {
+	return pulumix.Output[[]ElastigroupScalingDownPolicy]{
+		OutputState: i.ToElastigroupScalingDownPolicyArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ElastigroupScalingDownPolicyOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupScalingDownPolicyOutput) ElementType() reflect.Type {
@@ -1534,6 +1811,12 @@ func (o ElastigroupScalingDownPolicyOutput) ToElastigroupScalingDownPolicyOutput
 
 func (o ElastigroupScalingDownPolicyOutput) ToElastigroupScalingDownPolicyOutputWithContext(ctx context.Context) ElastigroupScalingDownPolicyOutput {
 	return o
+}
+
+func (o ElastigroupScalingDownPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[ElastigroupScalingDownPolicy] {
+	return pulumix.Output[ElastigroupScalingDownPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ElastigroupScalingDownPolicyOutput) ActionType() pulumi.StringPtrOutput {
@@ -1622,6 +1905,12 @@ func (o ElastigroupScalingDownPolicyArrayOutput) ToElastigroupScalingDownPolicyA
 	return o
 }
 
+func (o ElastigroupScalingDownPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ElastigroupScalingDownPolicy] {
+	return pulumix.Output[[]ElastigroupScalingDownPolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ElastigroupScalingDownPolicyArrayOutput) Index(i pulumi.IntInput) ElastigroupScalingDownPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ElastigroupScalingDownPolicy {
 		return vs[0].([]ElastigroupScalingDownPolicy)[vs[1].(int)]
@@ -1665,6 +1954,12 @@ func (i ElastigroupScalingDownPolicyDimensionArgs) ToElastigroupScalingDownPolic
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupScalingDownPolicyDimensionOutput)
 }
 
+func (i ElastigroupScalingDownPolicyDimensionArgs) ToOutput(ctx context.Context) pulumix.Output[ElastigroupScalingDownPolicyDimension] {
+	return pulumix.Output[ElastigroupScalingDownPolicyDimension]{
+		OutputState: i.ToElastigroupScalingDownPolicyDimensionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ElastigroupScalingDownPolicyDimensionArrayInput is an input type that accepts ElastigroupScalingDownPolicyDimensionArray and ElastigroupScalingDownPolicyDimensionArrayOutput values.
 // You can construct a concrete instance of `ElastigroupScalingDownPolicyDimensionArrayInput` via:
 //
@@ -1690,6 +1985,12 @@ func (i ElastigroupScalingDownPolicyDimensionArray) ToElastigroupScalingDownPoli
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupScalingDownPolicyDimensionArrayOutput)
 }
 
+func (i ElastigroupScalingDownPolicyDimensionArray) ToOutput(ctx context.Context) pulumix.Output[[]ElastigroupScalingDownPolicyDimension] {
+	return pulumix.Output[[]ElastigroupScalingDownPolicyDimension]{
+		OutputState: i.ToElastigroupScalingDownPolicyDimensionArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ElastigroupScalingDownPolicyDimensionOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupScalingDownPolicyDimensionOutput) ElementType() reflect.Type {
@@ -1702,6 +2003,12 @@ func (o ElastigroupScalingDownPolicyDimensionOutput) ToElastigroupScalingDownPol
 
 func (o ElastigroupScalingDownPolicyDimensionOutput) ToElastigroupScalingDownPolicyDimensionOutputWithContext(ctx context.Context) ElastigroupScalingDownPolicyDimensionOutput {
 	return o
+}
+
+func (o ElastigroupScalingDownPolicyDimensionOutput) ToOutput(ctx context.Context) pulumix.Output[ElastigroupScalingDownPolicyDimension] {
+	return pulumix.Output[ElastigroupScalingDownPolicyDimension]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Name of the Managed Service Identity.
@@ -1726,6 +2033,12 @@ func (o ElastigroupScalingDownPolicyDimensionArrayOutput) ToElastigroupScalingDo
 
 func (o ElastigroupScalingDownPolicyDimensionArrayOutput) ToElastigroupScalingDownPolicyDimensionArrayOutputWithContext(ctx context.Context) ElastigroupScalingDownPolicyDimensionArrayOutput {
 	return o
+}
+
+func (o ElastigroupScalingDownPolicyDimensionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ElastigroupScalingDownPolicyDimension] {
+	return pulumix.Output[[]ElastigroupScalingDownPolicyDimension]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ElastigroupScalingDownPolicyDimensionArrayOutput) Index(i pulumi.IntInput) ElastigroupScalingDownPolicyDimensionOutput {
@@ -1799,6 +2112,12 @@ func (i ElastigroupScalingUpPolicyArgs) ToElastigroupScalingUpPolicyOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupScalingUpPolicyOutput)
 }
 
+func (i ElastigroupScalingUpPolicyArgs) ToOutput(ctx context.Context) pulumix.Output[ElastigroupScalingUpPolicy] {
+	return pulumix.Output[ElastigroupScalingUpPolicy]{
+		OutputState: i.ToElastigroupScalingUpPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ElastigroupScalingUpPolicyArrayInput is an input type that accepts ElastigroupScalingUpPolicyArray and ElastigroupScalingUpPolicyArrayOutput values.
 // You can construct a concrete instance of `ElastigroupScalingUpPolicyArrayInput` via:
 //
@@ -1824,6 +2143,12 @@ func (i ElastigroupScalingUpPolicyArray) ToElastigroupScalingUpPolicyArrayOutput
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupScalingUpPolicyArrayOutput)
 }
 
+func (i ElastigroupScalingUpPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]ElastigroupScalingUpPolicy] {
+	return pulumix.Output[[]ElastigroupScalingUpPolicy]{
+		OutputState: i.ToElastigroupScalingUpPolicyArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ElastigroupScalingUpPolicyOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupScalingUpPolicyOutput) ElementType() reflect.Type {
@@ -1836,6 +2161,12 @@ func (o ElastigroupScalingUpPolicyOutput) ToElastigroupScalingUpPolicyOutput() E
 
 func (o ElastigroupScalingUpPolicyOutput) ToElastigroupScalingUpPolicyOutputWithContext(ctx context.Context) ElastigroupScalingUpPolicyOutput {
 	return o
+}
+
+func (o ElastigroupScalingUpPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[ElastigroupScalingUpPolicy] {
+	return pulumix.Output[ElastigroupScalingUpPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ElastigroupScalingUpPolicyOutput) ActionType() pulumi.StringPtrOutput {
@@ -1924,6 +2255,12 @@ func (o ElastigroupScalingUpPolicyArrayOutput) ToElastigroupScalingUpPolicyArray
 	return o
 }
 
+func (o ElastigroupScalingUpPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ElastigroupScalingUpPolicy] {
+	return pulumix.Output[[]ElastigroupScalingUpPolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ElastigroupScalingUpPolicyArrayOutput) Index(i pulumi.IntInput) ElastigroupScalingUpPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ElastigroupScalingUpPolicy {
 		return vs[0].([]ElastigroupScalingUpPolicy)[vs[1].(int)]
@@ -1967,6 +2304,12 @@ func (i ElastigroupScalingUpPolicyDimensionArgs) ToElastigroupScalingUpPolicyDim
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupScalingUpPolicyDimensionOutput)
 }
 
+func (i ElastigroupScalingUpPolicyDimensionArgs) ToOutput(ctx context.Context) pulumix.Output[ElastigroupScalingUpPolicyDimension] {
+	return pulumix.Output[ElastigroupScalingUpPolicyDimension]{
+		OutputState: i.ToElastigroupScalingUpPolicyDimensionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ElastigroupScalingUpPolicyDimensionArrayInput is an input type that accepts ElastigroupScalingUpPolicyDimensionArray and ElastigroupScalingUpPolicyDimensionArrayOutput values.
 // You can construct a concrete instance of `ElastigroupScalingUpPolicyDimensionArrayInput` via:
 //
@@ -1992,6 +2335,12 @@ func (i ElastigroupScalingUpPolicyDimensionArray) ToElastigroupScalingUpPolicyDi
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupScalingUpPolicyDimensionArrayOutput)
 }
 
+func (i ElastigroupScalingUpPolicyDimensionArray) ToOutput(ctx context.Context) pulumix.Output[[]ElastigroupScalingUpPolicyDimension] {
+	return pulumix.Output[[]ElastigroupScalingUpPolicyDimension]{
+		OutputState: i.ToElastigroupScalingUpPolicyDimensionArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ElastigroupScalingUpPolicyDimensionOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupScalingUpPolicyDimensionOutput) ElementType() reflect.Type {
@@ -2004,6 +2353,12 @@ func (o ElastigroupScalingUpPolicyDimensionOutput) ToElastigroupScalingUpPolicyD
 
 func (o ElastigroupScalingUpPolicyDimensionOutput) ToElastigroupScalingUpPolicyDimensionOutputWithContext(ctx context.Context) ElastigroupScalingUpPolicyDimensionOutput {
 	return o
+}
+
+func (o ElastigroupScalingUpPolicyDimensionOutput) ToOutput(ctx context.Context) pulumix.Output[ElastigroupScalingUpPolicyDimension] {
+	return pulumix.Output[ElastigroupScalingUpPolicyDimension]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Name of the Managed Service Identity.
@@ -2028,6 +2383,12 @@ func (o ElastigroupScalingUpPolicyDimensionArrayOutput) ToElastigroupScalingUpPo
 
 func (o ElastigroupScalingUpPolicyDimensionArrayOutput) ToElastigroupScalingUpPolicyDimensionArrayOutputWithContext(ctx context.Context) ElastigroupScalingUpPolicyDimensionArrayOutput {
 	return o
+}
+
+func (o ElastigroupScalingUpPolicyDimensionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ElastigroupScalingUpPolicyDimension] {
+	return pulumix.Output[[]ElastigroupScalingUpPolicyDimension]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ElastigroupScalingUpPolicyDimensionArrayOutput) Index(i pulumi.IntInput) ElastigroupScalingUpPolicyDimensionOutput {
@@ -2085,6 +2446,12 @@ func (i ElastigroupScheduledTaskArgs) ToElastigroupScheduledTaskOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupScheduledTaskOutput)
 }
 
+func (i ElastigroupScheduledTaskArgs) ToOutput(ctx context.Context) pulumix.Output[ElastigroupScheduledTask] {
+	return pulumix.Output[ElastigroupScheduledTask]{
+		OutputState: i.ToElastigroupScheduledTaskOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ElastigroupScheduledTaskArrayInput is an input type that accepts ElastigroupScheduledTaskArray and ElastigroupScheduledTaskArrayOutput values.
 // You can construct a concrete instance of `ElastigroupScheduledTaskArrayInput` via:
 //
@@ -2110,6 +2477,12 @@ func (i ElastigroupScheduledTaskArray) ToElastigroupScheduledTaskArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupScheduledTaskArrayOutput)
 }
 
+func (i ElastigroupScheduledTaskArray) ToOutput(ctx context.Context) pulumix.Output[[]ElastigroupScheduledTask] {
+	return pulumix.Output[[]ElastigroupScheduledTask]{
+		OutputState: i.ToElastigroupScheduledTaskArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ElastigroupScheduledTaskOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupScheduledTaskOutput) ElementType() reflect.Type {
@@ -2122,6 +2495,12 @@ func (o ElastigroupScheduledTaskOutput) ToElastigroupScheduledTaskOutput() Elast
 
 func (o ElastigroupScheduledTaskOutput) ToElastigroupScheduledTaskOutputWithContext(ctx context.Context) ElastigroupScheduledTaskOutput {
 	return o
+}
+
+func (o ElastigroupScheduledTaskOutput) ToOutput(ctx context.Context) pulumix.Output[ElastigroupScheduledTask] {
+	return pulumix.Output[ElastigroupScheduledTask]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ElastigroupScheduledTaskOutput) Adjustment() pulumi.StringPtrOutput {
@@ -2178,6 +2557,12 @@ func (o ElastigroupScheduledTaskArrayOutput) ToElastigroupScheduledTaskArrayOutp
 	return o
 }
 
+func (o ElastigroupScheduledTaskArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ElastigroupScheduledTask] {
+	return pulumix.Output[[]ElastigroupScheduledTask]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ElastigroupScheduledTaskArrayOutput) Index(i pulumi.IntInput) ElastigroupScheduledTaskOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ElastigroupScheduledTask {
 		return vs[0].([]ElastigroupScheduledTask)[vs[1].(int)]
@@ -2217,6 +2602,12 @@ func (i ElastigroupStrategyArgs) ToElastigroupStrategyOutput() ElastigroupStrate
 
 func (i ElastigroupStrategyArgs) ToElastigroupStrategyOutputWithContext(ctx context.Context) ElastigroupStrategyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupStrategyOutput)
+}
+
+func (i ElastigroupStrategyArgs) ToOutput(ctx context.Context) pulumix.Output[ElastigroupStrategy] {
+	return pulumix.Output[ElastigroupStrategy]{
+		OutputState: i.ToElastigroupStrategyOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i ElastigroupStrategyArgs) ToElastigroupStrategyPtrOutput() ElastigroupStrategyPtrOutput {
@@ -2260,6 +2651,12 @@ func (i *elastigroupStrategyPtrType) ToElastigroupStrategyPtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupStrategyPtrOutput)
 }
 
+func (i *elastigroupStrategyPtrType) ToOutput(ctx context.Context) pulumix.Output[*ElastigroupStrategy] {
+	return pulumix.Output[*ElastigroupStrategy]{
+		OutputState: i.ToElastigroupStrategyPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ElastigroupStrategyOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupStrategyOutput) ElementType() reflect.Type {
@@ -2282,6 +2679,12 @@ func (o ElastigroupStrategyOutput) ToElastigroupStrategyPtrOutputWithContext(ctx
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElastigroupStrategy) *ElastigroupStrategy {
 		return &v
 	}).(ElastigroupStrategyPtrOutput)
+}
+
+func (o ElastigroupStrategyOutput) ToOutput(ctx context.Context) pulumix.Output[ElastigroupStrategy] {
+	return pulumix.Output[ElastigroupStrategy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ElastigroupStrategyOutput) DrainingTimeout() pulumi.IntPtrOutput {
@@ -2308,6 +2711,12 @@ func (o ElastigroupStrategyPtrOutput) ToElastigroupStrategyPtrOutput() Elastigro
 
 func (o ElastigroupStrategyPtrOutput) ToElastigroupStrategyPtrOutputWithContext(ctx context.Context) ElastigroupStrategyPtrOutput {
 	return o
+}
+
+func (o ElastigroupStrategyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ElastigroupStrategy] {
+	return pulumix.Output[*ElastigroupStrategy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ElastigroupStrategyPtrOutput) Elem() ElastigroupStrategyOutput {
@@ -2380,6 +2789,12 @@ func (i ElastigroupUpdatePolicyArgs) ToElastigroupUpdatePolicyOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupUpdatePolicyOutput)
 }
 
+func (i ElastigroupUpdatePolicyArgs) ToOutput(ctx context.Context) pulumix.Output[ElastigroupUpdatePolicy] {
+	return pulumix.Output[ElastigroupUpdatePolicy]{
+		OutputState: i.ToElastigroupUpdatePolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ElastigroupUpdatePolicyArgs) ToElastigroupUpdatePolicyPtrOutput() ElastigroupUpdatePolicyPtrOutput {
 	return i.ToElastigroupUpdatePolicyPtrOutputWithContext(context.Background())
 }
@@ -2421,6 +2836,12 @@ func (i *elastigroupUpdatePolicyPtrType) ToElastigroupUpdatePolicyPtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupUpdatePolicyPtrOutput)
 }
 
+func (i *elastigroupUpdatePolicyPtrType) ToOutput(ctx context.Context) pulumix.Output[*ElastigroupUpdatePolicy] {
+	return pulumix.Output[*ElastigroupUpdatePolicy]{
+		OutputState: i.ToElastigroupUpdatePolicyPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ElastigroupUpdatePolicyOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupUpdatePolicyOutput) ElementType() reflect.Type {
@@ -2445,6 +2866,12 @@ func (o ElastigroupUpdatePolicyOutput) ToElastigroupUpdatePolicyPtrOutputWithCon
 	}).(ElastigroupUpdatePolicyPtrOutput)
 }
 
+func (o ElastigroupUpdatePolicyOutput) ToOutput(ctx context.Context) pulumix.Output[ElastigroupUpdatePolicy] {
+	return pulumix.Output[ElastigroupUpdatePolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ElastigroupUpdatePolicyOutput) RollConfig() ElastigroupUpdatePolicyRollConfigPtrOutput {
 	return o.ApplyT(func(v ElastigroupUpdatePolicy) *ElastigroupUpdatePolicyRollConfig { return v.RollConfig }).(ElastigroupUpdatePolicyRollConfigPtrOutput)
 }
@@ -2465,6 +2892,12 @@ func (o ElastigroupUpdatePolicyPtrOutput) ToElastigroupUpdatePolicyPtrOutput() E
 
 func (o ElastigroupUpdatePolicyPtrOutput) ToElastigroupUpdatePolicyPtrOutputWithContext(ctx context.Context) ElastigroupUpdatePolicyPtrOutput {
 	return o
+}
+
+func (o ElastigroupUpdatePolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ElastigroupUpdatePolicy] {
+	return pulumix.Output[*ElastigroupUpdatePolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ElastigroupUpdatePolicyPtrOutput) Elem() ElastigroupUpdatePolicyOutput {
@@ -2530,6 +2963,12 @@ func (i ElastigroupUpdatePolicyRollConfigArgs) ToElastigroupUpdatePolicyRollConf
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupUpdatePolicyRollConfigOutput)
 }
 
+func (i ElastigroupUpdatePolicyRollConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ElastigroupUpdatePolicyRollConfig] {
+	return pulumix.Output[ElastigroupUpdatePolicyRollConfig]{
+		OutputState: i.ToElastigroupUpdatePolicyRollConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ElastigroupUpdatePolicyRollConfigArgs) ToElastigroupUpdatePolicyRollConfigPtrOutput() ElastigroupUpdatePolicyRollConfigPtrOutput {
 	return i.ToElastigroupUpdatePolicyRollConfigPtrOutputWithContext(context.Background())
 }
@@ -2571,6 +3010,12 @@ func (i *elastigroupUpdatePolicyRollConfigPtrType) ToElastigroupUpdatePolicyRoll
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupUpdatePolicyRollConfigPtrOutput)
 }
 
+func (i *elastigroupUpdatePolicyRollConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*ElastigroupUpdatePolicyRollConfig] {
+	return pulumix.Output[*ElastigroupUpdatePolicyRollConfig]{
+		OutputState: i.ToElastigroupUpdatePolicyRollConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ElastigroupUpdatePolicyRollConfigOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupUpdatePolicyRollConfigOutput) ElementType() reflect.Type {
@@ -2593,6 +3038,12 @@ func (o ElastigroupUpdatePolicyRollConfigOutput) ToElastigroupUpdatePolicyRollCo
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElastigroupUpdatePolicyRollConfig) *ElastigroupUpdatePolicyRollConfig {
 		return &v
 	}).(ElastigroupUpdatePolicyRollConfigPtrOutput)
+}
+
+func (o ElastigroupUpdatePolicyRollConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ElastigroupUpdatePolicyRollConfig] {
+	return pulumix.Output[ElastigroupUpdatePolicyRollConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ElastigroupUpdatePolicyRollConfigOutput) BatchSizePercentage() pulumi.IntOutput {
@@ -2619,6 +3070,12 @@ func (o ElastigroupUpdatePolicyRollConfigPtrOutput) ToElastigroupUpdatePolicyRol
 
 func (o ElastigroupUpdatePolicyRollConfigPtrOutput) ToElastigroupUpdatePolicyRollConfigPtrOutputWithContext(ctx context.Context) ElastigroupUpdatePolicyRollConfigPtrOutput {
 	return o
+}
+
+func (o ElastigroupUpdatePolicyRollConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ElastigroupUpdatePolicyRollConfig] {
+	return pulumix.Output[*ElastigroupUpdatePolicyRollConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ElastigroupUpdatePolicyRollConfigPtrOutput) Elem() ElastigroupUpdatePolicyRollConfigOutput {
@@ -2703,6 +3160,12 @@ func (i OceanAutoscalerArgs) ToOceanAutoscalerOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(OceanAutoscalerOutput)
 }
 
+func (i OceanAutoscalerArgs) ToOutput(ctx context.Context) pulumix.Output[OceanAutoscaler] {
+	return pulumix.Output[OceanAutoscaler]{
+		OutputState: i.ToOceanAutoscalerOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i OceanAutoscalerArgs) ToOceanAutoscalerPtrOutput() OceanAutoscalerPtrOutput {
 	return i.ToOceanAutoscalerPtrOutputWithContext(context.Background())
 }
@@ -2744,6 +3207,12 @@ func (i *oceanAutoscalerPtrType) ToOceanAutoscalerPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(OceanAutoscalerPtrOutput)
 }
 
+func (i *oceanAutoscalerPtrType) ToOutput(ctx context.Context) pulumix.Output[*OceanAutoscaler] {
+	return pulumix.Output[*OceanAutoscaler]{
+		OutputState: i.ToOceanAutoscalerPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type OceanAutoscalerOutput struct{ *pulumi.OutputState }
 
 func (OceanAutoscalerOutput) ElementType() reflect.Type {
@@ -2766,6 +3235,12 @@ func (o OceanAutoscalerOutput) ToOceanAutoscalerPtrOutputWithContext(ctx context
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v OceanAutoscaler) *OceanAutoscaler {
 		return &v
 	}).(OceanAutoscalerPtrOutput)
+}
+
+func (o OceanAutoscalerOutput) ToOutput(ctx context.Context) pulumix.Output[OceanAutoscaler] {
+	return pulumix.Output[OceanAutoscaler]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Auto Scaling scale down operations.
@@ -2800,6 +3275,12 @@ func (o OceanAutoscalerPtrOutput) ToOceanAutoscalerPtrOutput() OceanAutoscalerPt
 
 func (o OceanAutoscalerPtrOutput) ToOceanAutoscalerPtrOutputWithContext(ctx context.Context) OceanAutoscalerPtrOutput {
 	return o
+}
+
+func (o OceanAutoscalerPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OceanAutoscaler] {
+	return pulumix.Output[*OceanAutoscaler]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OceanAutoscalerPtrOutput) Elem() OceanAutoscalerOutput {
@@ -2885,6 +3366,12 @@ func (i OceanAutoscalerAutoscaleDownArgs) ToOceanAutoscalerAutoscaleDownOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(OceanAutoscalerAutoscaleDownOutput)
 }
 
+func (i OceanAutoscalerAutoscaleDownArgs) ToOutput(ctx context.Context) pulumix.Output[OceanAutoscalerAutoscaleDown] {
+	return pulumix.Output[OceanAutoscalerAutoscaleDown]{
+		OutputState: i.ToOceanAutoscalerAutoscaleDownOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i OceanAutoscalerAutoscaleDownArgs) ToOceanAutoscalerAutoscaleDownPtrOutput() OceanAutoscalerAutoscaleDownPtrOutput {
 	return i.ToOceanAutoscalerAutoscaleDownPtrOutputWithContext(context.Background())
 }
@@ -2926,6 +3413,12 @@ func (i *oceanAutoscalerAutoscaleDownPtrType) ToOceanAutoscalerAutoscaleDownPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(OceanAutoscalerAutoscaleDownPtrOutput)
 }
 
+func (i *oceanAutoscalerAutoscaleDownPtrType) ToOutput(ctx context.Context) pulumix.Output[*OceanAutoscalerAutoscaleDown] {
+	return pulumix.Output[*OceanAutoscalerAutoscaleDown]{
+		OutputState: i.ToOceanAutoscalerAutoscaleDownPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type OceanAutoscalerAutoscaleDownOutput struct{ *pulumi.OutputState }
 
 func (OceanAutoscalerAutoscaleDownOutput) ElementType() reflect.Type {
@@ -2950,6 +3443,12 @@ func (o OceanAutoscalerAutoscaleDownOutput) ToOceanAutoscalerAutoscaleDownPtrOut
 	}).(OceanAutoscalerAutoscaleDownPtrOutput)
 }
 
+func (o OceanAutoscalerAutoscaleDownOutput) ToOutput(ctx context.Context) pulumix.Output[OceanAutoscalerAutoscaleDown] {
+	return pulumix.Output[OceanAutoscalerAutoscaleDown]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Would represent the maximum % to scale-down.
 func (o OceanAutoscalerAutoscaleDownOutput) MaxScaleDownPercentage() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v OceanAutoscalerAutoscaleDown) *float64 { return v.MaxScaleDownPercentage }).(pulumi.Float64PtrOutput)
@@ -2967,6 +3466,12 @@ func (o OceanAutoscalerAutoscaleDownPtrOutput) ToOceanAutoscalerAutoscaleDownPtr
 
 func (o OceanAutoscalerAutoscaleDownPtrOutput) ToOceanAutoscalerAutoscaleDownPtrOutputWithContext(ctx context.Context) OceanAutoscalerAutoscaleDownPtrOutput {
 	return o
+}
+
+func (o OceanAutoscalerAutoscaleDownPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OceanAutoscalerAutoscaleDown] {
+	return pulumix.Output[*OceanAutoscalerAutoscaleDown]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OceanAutoscalerAutoscaleDownPtrOutput) Elem() OceanAutoscalerAutoscaleDownOutput {
@@ -3022,6 +3527,12 @@ func (i OceanAutoscalerAutoscaleHeadroomArgs) ToOceanAutoscalerAutoscaleHeadroom
 	return pulumi.ToOutputWithContext(ctx, i).(OceanAutoscalerAutoscaleHeadroomOutput)
 }
 
+func (i OceanAutoscalerAutoscaleHeadroomArgs) ToOutput(ctx context.Context) pulumix.Output[OceanAutoscalerAutoscaleHeadroom] {
+	return pulumix.Output[OceanAutoscalerAutoscaleHeadroom]{
+		OutputState: i.ToOceanAutoscalerAutoscaleHeadroomOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i OceanAutoscalerAutoscaleHeadroomArgs) ToOceanAutoscalerAutoscaleHeadroomPtrOutput() OceanAutoscalerAutoscaleHeadroomPtrOutput {
 	return i.ToOceanAutoscalerAutoscaleHeadroomPtrOutputWithContext(context.Background())
 }
@@ -3063,6 +3574,12 @@ func (i *oceanAutoscalerAutoscaleHeadroomPtrType) ToOceanAutoscalerAutoscaleHead
 	return pulumi.ToOutputWithContext(ctx, i).(OceanAutoscalerAutoscaleHeadroomPtrOutput)
 }
 
+func (i *oceanAutoscalerAutoscaleHeadroomPtrType) ToOutput(ctx context.Context) pulumix.Output[*OceanAutoscalerAutoscaleHeadroom] {
+	return pulumix.Output[*OceanAutoscalerAutoscaleHeadroom]{
+		OutputState: i.ToOceanAutoscalerAutoscaleHeadroomPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type OceanAutoscalerAutoscaleHeadroomOutput struct{ *pulumi.OutputState }
 
 func (OceanAutoscalerAutoscaleHeadroomOutput) ElementType() reflect.Type {
@@ -3087,6 +3604,12 @@ func (o OceanAutoscalerAutoscaleHeadroomOutput) ToOceanAutoscalerAutoscaleHeadro
 	}).(OceanAutoscalerAutoscaleHeadroomPtrOutput)
 }
 
+func (o OceanAutoscalerAutoscaleHeadroomOutput) ToOutput(ctx context.Context) pulumix.Output[OceanAutoscalerAutoscaleHeadroom] {
+	return pulumix.Output[OceanAutoscalerAutoscaleHeadroom]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Automatic headroom configuration.
 func (o OceanAutoscalerAutoscaleHeadroomOutput) Automatic() OceanAutoscalerAutoscaleHeadroomAutomaticPtrOutput {
 	return o.ApplyT(func(v OceanAutoscalerAutoscaleHeadroom) *OceanAutoscalerAutoscaleHeadroomAutomatic {
@@ -3106,6 +3629,12 @@ func (o OceanAutoscalerAutoscaleHeadroomPtrOutput) ToOceanAutoscalerAutoscaleHea
 
 func (o OceanAutoscalerAutoscaleHeadroomPtrOutput) ToOceanAutoscalerAutoscaleHeadroomPtrOutputWithContext(ctx context.Context) OceanAutoscalerAutoscaleHeadroomPtrOutput {
 	return o
+}
+
+func (o OceanAutoscalerAutoscaleHeadroomPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OceanAutoscalerAutoscaleHeadroom] {
+	return pulumix.Output[*OceanAutoscalerAutoscaleHeadroom]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OceanAutoscalerAutoscaleHeadroomPtrOutput) Elem() OceanAutoscalerAutoscaleHeadroomOutput {
@@ -3165,6 +3694,12 @@ func (i OceanAutoscalerAutoscaleHeadroomAutomaticArgs) ToOceanAutoscalerAutoscal
 	return pulumi.ToOutputWithContext(ctx, i).(OceanAutoscalerAutoscaleHeadroomAutomaticOutput)
 }
 
+func (i OceanAutoscalerAutoscaleHeadroomAutomaticArgs) ToOutput(ctx context.Context) pulumix.Output[OceanAutoscalerAutoscaleHeadroomAutomatic] {
+	return pulumix.Output[OceanAutoscalerAutoscaleHeadroomAutomatic]{
+		OutputState: i.ToOceanAutoscalerAutoscaleHeadroomAutomaticOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i OceanAutoscalerAutoscaleHeadroomAutomaticArgs) ToOceanAutoscalerAutoscaleHeadroomAutomaticPtrOutput() OceanAutoscalerAutoscaleHeadroomAutomaticPtrOutput {
 	return i.ToOceanAutoscalerAutoscaleHeadroomAutomaticPtrOutputWithContext(context.Background())
 }
@@ -3206,6 +3741,12 @@ func (i *oceanAutoscalerAutoscaleHeadroomAutomaticPtrType) ToOceanAutoscalerAuto
 	return pulumi.ToOutputWithContext(ctx, i).(OceanAutoscalerAutoscaleHeadroomAutomaticPtrOutput)
 }
 
+func (i *oceanAutoscalerAutoscaleHeadroomAutomaticPtrType) ToOutput(ctx context.Context) pulumix.Output[*OceanAutoscalerAutoscaleHeadroomAutomatic] {
+	return pulumix.Output[*OceanAutoscalerAutoscaleHeadroomAutomatic]{
+		OutputState: i.ToOceanAutoscalerAutoscaleHeadroomAutomaticPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type OceanAutoscalerAutoscaleHeadroomAutomaticOutput struct{ *pulumi.OutputState }
 
 func (OceanAutoscalerAutoscaleHeadroomAutomaticOutput) ElementType() reflect.Type {
@@ -3230,6 +3771,12 @@ func (o OceanAutoscalerAutoscaleHeadroomAutomaticOutput) ToOceanAutoscalerAutosc
 	}).(OceanAutoscalerAutoscaleHeadroomAutomaticPtrOutput)
 }
 
+func (o OceanAutoscalerAutoscaleHeadroomAutomaticOutput) ToOutput(ctx context.Context) pulumix.Output[OceanAutoscalerAutoscaleHeadroomAutomatic] {
+	return pulumix.Output[OceanAutoscalerAutoscaleHeadroomAutomatic]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Enable automatic headroom. When set to `true`, Ocean configures and optimizes headroom automatically.
 func (o OceanAutoscalerAutoscaleHeadroomAutomaticOutput) IsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OceanAutoscalerAutoscaleHeadroomAutomatic) *bool { return v.IsEnabled }).(pulumi.BoolPtrOutput)
@@ -3252,6 +3799,12 @@ func (o OceanAutoscalerAutoscaleHeadroomAutomaticPtrOutput) ToOceanAutoscalerAut
 
 func (o OceanAutoscalerAutoscaleHeadroomAutomaticPtrOutput) ToOceanAutoscalerAutoscaleHeadroomAutomaticPtrOutputWithContext(ctx context.Context) OceanAutoscalerAutoscaleHeadroomAutomaticPtrOutput {
 	return o
+}
+
+func (o OceanAutoscalerAutoscaleHeadroomAutomaticPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OceanAutoscalerAutoscaleHeadroomAutomatic] {
+	return pulumix.Output[*OceanAutoscalerAutoscaleHeadroomAutomatic]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OceanAutoscalerAutoscaleHeadroomAutomaticPtrOutput) Elem() OceanAutoscalerAutoscaleHeadroomAutomaticOutput {
@@ -3321,6 +3874,12 @@ func (i OceanAutoscalerResourceLimitsArgs) ToOceanAutoscalerResourceLimitsOutput
 	return pulumi.ToOutputWithContext(ctx, i).(OceanAutoscalerResourceLimitsOutput)
 }
 
+func (i OceanAutoscalerResourceLimitsArgs) ToOutput(ctx context.Context) pulumix.Output[OceanAutoscalerResourceLimits] {
+	return pulumix.Output[OceanAutoscalerResourceLimits]{
+		OutputState: i.ToOceanAutoscalerResourceLimitsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i OceanAutoscalerResourceLimitsArgs) ToOceanAutoscalerResourceLimitsPtrOutput() OceanAutoscalerResourceLimitsPtrOutput {
 	return i.ToOceanAutoscalerResourceLimitsPtrOutputWithContext(context.Background())
 }
@@ -3362,6 +3921,12 @@ func (i *oceanAutoscalerResourceLimitsPtrType) ToOceanAutoscalerResourceLimitsPt
 	return pulumi.ToOutputWithContext(ctx, i).(OceanAutoscalerResourceLimitsPtrOutput)
 }
 
+func (i *oceanAutoscalerResourceLimitsPtrType) ToOutput(ctx context.Context) pulumix.Output[*OceanAutoscalerResourceLimits] {
+	return pulumix.Output[*OceanAutoscalerResourceLimits]{
+		OutputState: i.ToOceanAutoscalerResourceLimitsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type OceanAutoscalerResourceLimitsOutput struct{ *pulumi.OutputState }
 
 func (OceanAutoscalerResourceLimitsOutput) ElementType() reflect.Type {
@@ -3386,6 +3951,12 @@ func (o OceanAutoscalerResourceLimitsOutput) ToOceanAutoscalerResourceLimitsPtrO
 	}).(OceanAutoscalerResourceLimitsPtrOutput)
 }
 
+func (o OceanAutoscalerResourceLimitsOutput) ToOutput(ctx context.Context) pulumix.Output[OceanAutoscalerResourceLimits] {
+	return pulumix.Output[OceanAutoscalerResourceLimits]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The maximum memory in GiB units that can be allocated to the cluster.
 func (o OceanAutoscalerResourceLimitsOutput) MaxMemoryGib() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanAutoscalerResourceLimits) *int { return v.MaxMemoryGib }).(pulumi.IntPtrOutput)
@@ -3408,6 +3979,12 @@ func (o OceanAutoscalerResourceLimitsPtrOutput) ToOceanAutoscalerResourceLimitsP
 
 func (o OceanAutoscalerResourceLimitsPtrOutput) ToOceanAutoscalerResourceLimitsPtrOutputWithContext(ctx context.Context) OceanAutoscalerResourceLimitsPtrOutput {
 	return o
+}
+
+func (o OceanAutoscalerResourceLimitsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OceanAutoscalerResourceLimits] {
+	return pulumix.Output[*OceanAutoscalerResourceLimits]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OceanAutoscalerResourceLimitsPtrOutput) Elem() OceanAutoscalerResourceLimitsOutput {
@@ -3489,6 +4066,12 @@ func (i OceanExtensionArgs) ToOceanExtensionOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(OceanExtensionOutput)
 }
 
+func (i OceanExtensionArgs) ToOutput(ctx context.Context) pulumix.Output[OceanExtension] {
+	return pulumix.Output[OceanExtension]{
+		OutputState: i.ToOceanExtensionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // OceanExtensionArrayInput is an input type that accepts OceanExtensionArray and OceanExtensionArrayOutput values.
 // You can construct a concrete instance of `OceanExtensionArrayInput` via:
 //
@@ -3514,6 +4097,12 @@ func (i OceanExtensionArray) ToOceanExtensionArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(OceanExtensionArrayOutput)
 }
 
+func (i OceanExtensionArray) ToOutput(ctx context.Context) pulumix.Output[[]OceanExtension] {
+	return pulumix.Output[[]OceanExtension]{
+		OutputState: i.ToOceanExtensionArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type OceanExtensionOutput struct{ *pulumi.OutputState }
 
 func (OceanExtensionOutput) ElementType() reflect.Type {
@@ -3526,6 +4115,12 @@ func (o OceanExtensionOutput) ToOceanExtensionOutput() OceanExtensionOutput {
 
 func (o OceanExtensionOutput) ToOceanExtensionOutputWithContext(ctx context.Context) OceanExtensionOutput {
 	return o
+}
+
+func (o OceanExtensionOutput) ToOutput(ctx context.Context) pulumix.Output[OceanExtension] {
+	return pulumix.Output[OceanExtension]{
+		OutputState: o.OutputState,
+	}
 }
 
 // API version of the extension.
@@ -3567,6 +4162,12 @@ func (o OceanExtensionArrayOutput) ToOceanExtensionArrayOutputWithContext(ctx co
 	return o
 }
 
+func (o OceanExtensionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]OceanExtension] {
+	return pulumix.Output[[]OceanExtension]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o OceanExtensionArrayOutput) Index(i pulumi.IntInput) OceanExtensionOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OceanExtension {
 		return vs[0].([]OceanExtension)[vs[1].(int)]
@@ -3604,6 +4205,12 @@ func (i OceanHealthArgs) ToOceanHealthOutput() OceanHealthOutput {
 
 func (i OceanHealthArgs) ToOceanHealthOutputWithContext(ctx context.Context) OceanHealthOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(OceanHealthOutput)
+}
+
+func (i OceanHealthArgs) ToOutput(ctx context.Context) pulumix.Output[OceanHealth] {
+	return pulumix.Output[OceanHealth]{
+		OutputState: i.ToOceanHealthOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i OceanHealthArgs) ToOceanHealthPtrOutput() OceanHealthPtrOutput {
@@ -3647,6 +4254,12 @@ func (i *oceanHealthPtrType) ToOceanHealthPtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(OceanHealthPtrOutput)
 }
 
+func (i *oceanHealthPtrType) ToOutput(ctx context.Context) pulumix.Output[*OceanHealth] {
+	return pulumix.Output[*OceanHealth]{
+		OutputState: i.ToOceanHealthPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type OceanHealthOutput struct{ *pulumi.OutputState }
 
 func (OceanHealthOutput) ElementType() reflect.Type {
@@ -3671,6 +4284,12 @@ func (o OceanHealthOutput) ToOceanHealthPtrOutputWithContext(ctx context.Context
 	}).(OceanHealthPtrOutput)
 }
 
+func (o OceanHealthOutput) ToOutput(ctx context.Context) pulumix.Output[OceanHealth] {
+	return pulumix.Output[OceanHealth]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The amount of time to wait, in seconds, from the moment the instance has launched before monitoring its health checks.
 func (o OceanHealthOutput) GracePeriod() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanHealth) *int { return v.GracePeriod }).(pulumi.IntPtrOutput)
@@ -3688,6 +4307,12 @@ func (o OceanHealthPtrOutput) ToOceanHealthPtrOutput() OceanHealthPtrOutput {
 
 func (o OceanHealthPtrOutput) ToOceanHealthPtrOutputWithContext(ctx context.Context) OceanHealthPtrOutput {
 	return o
+}
+
+func (o OceanHealthPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OceanHealth] {
+	return pulumix.Output[*OceanHealth]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OceanHealthPtrOutput) Elem() OceanHealthOutput {
@@ -3743,6 +4368,12 @@ func (i OceanImageArgs) ToOceanImageOutputWithContext(ctx context.Context) Ocean
 	return pulumi.ToOutputWithContext(ctx, i).(OceanImageOutput)
 }
 
+func (i OceanImageArgs) ToOutput(ctx context.Context) pulumix.Output[OceanImage] {
+	return pulumix.Output[OceanImage]{
+		OutputState: i.ToOceanImageOutputWithContext(ctx).OutputState,
+	}
+}
+
 // OceanImageArrayInput is an input type that accepts OceanImageArray and OceanImageArrayOutput values.
 // You can construct a concrete instance of `OceanImageArrayInput` via:
 //
@@ -3768,6 +4399,12 @@ func (i OceanImageArray) ToOceanImageArrayOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(OceanImageArrayOutput)
 }
 
+func (i OceanImageArray) ToOutput(ctx context.Context) pulumix.Output[[]OceanImage] {
+	return pulumix.Output[[]OceanImage]{
+		OutputState: i.ToOceanImageArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type OceanImageOutput struct{ *pulumi.OutputState }
 
 func (OceanImageOutput) ElementType() reflect.Type {
@@ -3780,6 +4417,12 @@ func (o OceanImageOutput) ToOceanImageOutput() OceanImageOutput {
 
 func (o OceanImageOutput) ToOceanImageOutputWithContext(ctx context.Context) OceanImageOutput {
 	return o
+}
+
+func (o OceanImageOutput) ToOutput(ctx context.Context) pulumix.Output[OceanImage] {
+	return pulumix.Output[OceanImage]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Select an image from Azure's Marketplace image catalogue.
@@ -3799,6 +4442,12 @@ func (o OceanImageArrayOutput) ToOceanImageArrayOutput() OceanImageArrayOutput {
 
 func (o OceanImageArrayOutput) ToOceanImageArrayOutputWithContext(ctx context.Context) OceanImageArrayOutput {
 	return o
+}
+
+func (o OceanImageArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]OceanImage] {
+	return pulumix.Output[[]OceanImage]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OceanImageArrayOutput) Index(i pulumi.IntInput) OceanImageOutput {
@@ -3852,6 +4501,12 @@ func (i OceanImageMarketplaceArgs) ToOceanImageMarketplaceOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(OceanImageMarketplaceOutput)
 }
 
+func (i OceanImageMarketplaceArgs) ToOutput(ctx context.Context) pulumix.Output[OceanImageMarketplace] {
+	return pulumix.Output[OceanImageMarketplace]{
+		OutputState: i.ToOceanImageMarketplaceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // OceanImageMarketplaceArrayInput is an input type that accepts OceanImageMarketplaceArray and OceanImageMarketplaceArrayOutput values.
 // You can construct a concrete instance of `OceanImageMarketplaceArrayInput` via:
 //
@@ -3877,6 +4532,12 @@ func (i OceanImageMarketplaceArray) ToOceanImageMarketplaceArrayOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(OceanImageMarketplaceArrayOutput)
 }
 
+func (i OceanImageMarketplaceArray) ToOutput(ctx context.Context) pulumix.Output[[]OceanImageMarketplace] {
+	return pulumix.Output[[]OceanImageMarketplace]{
+		OutputState: i.ToOceanImageMarketplaceArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type OceanImageMarketplaceOutput struct{ *pulumi.OutputState }
 
 func (OceanImageMarketplaceOutput) ElementType() reflect.Type {
@@ -3889,6 +4550,12 @@ func (o OceanImageMarketplaceOutput) ToOceanImageMarketplaceOutput() OceanImageM
 
 func (o OceanImageMarketplaceOutput) ToOceanImageMarketplaceOutputWithContext(ctx context.Context) OceanImageMarketplaceOutput {
 	return o
+}
+
+func (o OceanImageMarketplaceOutput) ToOutput(ctx context.Context) pulumix.Output[OceanImageMarketplace] {
+	return pulumix.Output[OceanImageMarketplace]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Image name.
@@ -3923,6 +4590,12 @@ func (o OceanImageMarketplaceArrayOutput) ToOceanImageMarketplaceArrayOutput() O
 
 func (o OceanImageMarketplaceArrayOutput) ToOceanImageMarketplaceArrayOutputWithContext(ctx context.Context) OceanImageMarketplaceArrayOutput {
 	return o
+}
+
+func (o OceanImageMarketplaceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]OceanImageMarketplace] {
+	return pulumix.Output[[]OceanImageMarketplace]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OceanImageMarketplaceArrayOutput) Index(i pulumi.IntInput) OceanImageMarketplaceOutput {
@@ -3980,6 +4653,12 @@ func (i OceanLoadBalancerArgs) ToOceanLoadBalancerOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(OceanLoadBalancerOutput)
 }
 
+func (i OceanLoadBalancerArgs) ToOutput(ctx context.Context) pulumix.Output[OceanLoadBalancer] {
+	return pulumix.Output[OceanLoadBalancer]{
+		OutputState: i.ToOceanLoadBalancerOutputWithContext(ctx).OutputState,
+	}
+}
+
 // OceanLoadBalancerArrayInput is an input type that accepts OceanLoadBalancerArray and OceanLoadBalancerArrayOutput values.
 // You can construct a concrete instance of `OceanLoadBalancerArrayInput` via:
 //
@@ -4005,6 +4684,12 @@ func (i OceanLoadBalancerArray) ToOceanLoadBalancerArrayOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(OceanLoadBalancerArrayOutput)
 }
 
+func (i OceanLoadBalancerArray) ToOutput(ctx context.Context) pulumix.Output[[]OceanLoadBalancer] {
+	return pulumix.Output[[]OceanLoadBalancer]{
+		OutputState: i.ToOceanLoadBalancerArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type OceanLoadBalancerOutput struct{ *pulumi.OutputState }
 
 func (OceanLoadBalancerOutput) ElementType() reflect.Type {
@@ -4017,6 +4702,12 @@ func (o OceanLoadBalancerOutput) ToOceanLoadBalancerOutput() OceanLoadBalancerOu
 
 func (o OceanLoadBalancerOutput) ToOceanLoadBalancerOutputWithContext(ctx context.Context) OceanLoadBalancerOutput {
 	return o
+}
+
+func (o OceanLoadBalancerOutput) ToOutput(ctx context.Context) pulumix.Output[OceanLoadBalancer] {
+	return pulumix.Output[OceanLoadBalancer]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Names of the Backend Pools to register the Cluster VMs to. Each Backend Pool is a separate load balancer.
@@ -4056,6 +4747,12 @@ func (o OceanLoadBalancerArrayOutput) ToOceanLoadBalancerArrayOutput() OceanLoad
 
 func (o OceanLoadBalancerArrayOutput) ToOceanLoadBalancerArrayOutputWithContext(ctx context.Context) OceanLoadBalancerArrayOutput {
 	return o
+}
+
+func (o OceanLoadBalancerArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]OceanLoadBalancer] {
+	return pulumix.Output[[]OceanLoadBalancer]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OceanLoadBalancerArrayOutput) Index(i pulumi.IntInput) OceanLoadBalancerOutput {
@@ -4101,6 +4798,12 @@ func (i OceanManagedServiceIdentityArgs) ToOceanManagedServiceIdentityOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(OceanManagedServiceIdentityOutput)
 }
 
+func (i OceanManagedServiceIdentityArgs) ToOutput(ctx context.Context) pulumix.Output[OceanManagedServiceIdentity] {
+	return pulumix.Output[OceanManagedServiceIdentity]{
+		OutputState: i.ToOceanManagedServiceIdentityOutputWithContext(ctx).OutputState,
+	}
+}
+
 // OceanManagedServiceIdentityArrayInput is an input type that accepts OceanManagedServiceIdentityArray and OceanManagedServiceIdentityArrayOutput values.
 // You can construct a concrete instance of `OceanManagedServiceIdentityArrayInput` via:
 //
@@ -4126,6 +4829,12 @@ func (i OceanManagedServiceIdentityArray) ToOceanManagedServiceIdentityArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(OceanManagedServiceIdentityArrayOutput)
 }
 
+func (i OceanManagedServiceIdentityArray) ToOutput(ctx context.Context) pulumix.Output[[]OceanManagedServiceIdentity] {
+	return pulumix.Output[[]OceanManagedServiceIdentity]{
+		OutputState: i.ToOceanManagedServiceIdentityArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type OceanManagedServiceIdentityOutput struct{ *pulumi.OutputState }
 
 func (OceanManagedServiceIdentityOutput) ElementType() reflect.Type {
@@ -4138,6 +4847,12 @@ func (o OceanManagedServiceIdentityOutput) ToOceanManagedServiceIdentityOutput()
 
 func (o OceanManagedServiceIdentityOutput) ToOceanManagedServiceIdentityOutputWithContext(ctx context.Context) OceanManagedServiceIdentityOutput {
 	return o
+}
+
+func (o OceanManagedServiceIdentityOutput) ToOutput(ctx context.Context) pulumix.Output[OceanManagedServiceIdentity] {
+	return pulumix.Output[OceanManagedServiceIdentity]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Name of the Load Balancer.
@@ -4162,6 +4877,12 @@ func (o OceanManagedServiceIdentityArrayOutput) ToOceanManagedServiceIdentityArr
 
 func (o OceanManagedServiceIdentityArrayOutput) ToOceanManagedServiceIdentityArrayOutputWithContext(ctx context.Context) OceanManagedServiceIdentityArrayOutput {
 	return o
+}
+
+func (o OceanManagedServiceIdentityArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]OceanManagedServiceIdentity] {
+	return pulumix.Output[[]OceanManagedServiceIdentity]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OceanManagedServiceIdentityArrayOutput) Index(i pulumi.IntInput) OceanManagedServiceIdentityOutput {
@@ -4211,6 +4932,12 @@ func (i OceanNetworkArgs) ToOceanNetworkOutputWithContext(ctx context.Context) O
 	return pulumi.ToOutputWithContext(ctx, i).(OceanNetworkOutput)
 }
 
+func (i OceanNetworkArgs) ToOutput(ctx context.Context) pulumix.Output[OceanNetwork] {
+	return pulumix.Output[OceanNetwork]{
+		OutputState: i.ToOceanNetworkOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i OceanNetworkArgs) ToOceanNetworkPtrOutput() OceanNetworkPtrOutput {
 	return i.ToOceanNetworkPtrOutputWithContext(context.Background())
 }
@@ -4252,6 +4979,12 @@ func (i *oceanNetworkPtrType) ToOceanNetworkPtrOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(OceanNetworkPtrOutput)
 }
 
+func (i *oceanNetworkPtrType) ToOutput(ctx context.Context) pulumix.Output[*OceanNetwork] {
+	return pulumix.Output[*OceanNetwork]{
+		OutputState: i.ToOceanNetworkPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type OceanNetworkOutput struct{ *pulumi.OutputState }
 
 func (OceanNetworkOutput) ElementType() reflect.Type {
@@ -4274,6 +5007,12 @@ func (o OceanNetworkOutput) ToOceanNetworkPtrOutputWithContext(ctx context.Conte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v OceanNetwork) *OceanNetwork {
 		return &v
 	}).(OceanNetworkPtrOutput)
+}
+
+func (o OceanNetworkOutput) ToOutput(ctx context.Context) pulumix.Output[OceanNetwork] {
+	return pulumix.Output[OceanNetwork]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A list of virtual network interfaces. The publicIpSku must be identical between all the network interfaces. One network interface must be set as the primary.
@@ -4303,6 +5042,12 @@ func (o OceanNetworkPtrOutput) ToOceanNetworkPtrOutput() OceanNetworkPtrOutput {
 
 func (o OceanNetworkPtrOutput) ToOceanNetworkPtrOutputWithContext(ctx context.Context) OceanNetworkPtrOutput {
 	return o
+}
+
+func (o OceanNetworkPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OceanNetwork] {
+	return pulumix.Output[*OceanNetwork]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OceanNetworkPtrOutput) Elem() OceanNetworkOutput {
@@ -4392,6 +5137,12 @@ func (i OceanNetworkNetworkInterfaceArgs) ToOceanNetworkNetworkInterfaceOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(OceanNetworkNetworkInterfaceOutput)
 }
 
+func (i OceanNetworkNetworkInterfaceArgs) ToOutput(ctx context.Context) pulumix.Output[OceanNetworkNetworkInterface] {
+	return pulumix.Output[OceanNetworkNetworkInterface]{
+		OutputState: i.ToOceanNetworkNetworkInterfaceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // OceanNetworkNetworkInterfaceArrayInput is an input type that accepts OceanNetworkNetworkInterfaceArray and OceanNetworkNetworkInterfaceArrayOutput values.
 // You can construct a concrete instance of `OceanNetworkNetworkInterfaceArrayInput` via:
 //
@@ -4417,6 +5168,12 @@ func (i OceanNetworkNetworkInterfaceArray) ToOceanNetworkNetworkInterfaceArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(OceanNetworkNetworkInterfaceArrayOutput)
 }
 
+func (i OceanNetworkNetworkInterfaceArray) ToOutput(ctx context.Context) pulumix.Output[[]OceanNetworkNetworkInterface] {
+	return pulumix.Output[[]OceanNetworkNetworkInterface]{
+		OutputState: i.ToOceanNetworkNetworkInterfaceArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type OceanNetworkNetworkInterfaceOutput struct{ *pulumi.OutputState }
 
 func (OceanNetworkNetworkInterfaceOutput) ElementType() reflect.Type {
@@ -4429,6 +5186,12 @@ func (o OceanNetworkNetworkInterfaceOutput) ToOceanNetworkNetworkInterfaceOutput
 
 func (o OceanNetworkNetworkInterfaceOutput) ToOceanNetworkNetworkInterfaceOutputWithContext(ctx context.Context) OceanNetworkNetworkInterfaceOutput {
 	return o
+}
+
+func (o OceanNetworkNetworkInterfaceOutput) ToOutput(ctx context.Context) pulumix.Output[OceanNetworkNetworkInterface] {
+	return pulumix.Output[OceanNetworkNetworkInterface]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Additional configuration of network interface. The name fields between all the `additionalIpConfig` must be unique.
@@ -4471,6 +5234,12 @@ func (o OceanNetworkNetworkInterfaceArrayOutput) ToOceanNetworkNetworkInterfaceA
 
 func (o OceanNetworkNetworkInterfaceArrayOutput) ToOceanNetworkNetworkInterfaceArrayOutputWithContext(ctx context.Context) OceanNetworkNetworkInterfaceArrayOutput {
 	return o
+}
+
+func (o OceanNetworkNetworkInterfaceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]OceanNetworkNetworkInterface] {
+	return pulumix.Output[[]OceanNetworkNetworkInterface]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OceanNetworkNetworkInterfaceArrayOutput) Index(i pulumi.IntInput) OceanNetworkNetworkInterfaceOutput {
@@ -4516,6 +5285,12 @@ func (i OceanNetworkNetworkInterfaceAdditionalIpConfigArgs) ToOceanNetworkNetwor
 	return pulumi.ToOutputWithContext(ctx, i).(OceanNetworkNetworkInterfaceAdditionalIpConfigOutput)
 }
 
+func (i OceanNetworkNetworkInterfaceAdditionalIpConfigArgs) ToOutput(ctx context.Context) pulumix.Output[OceanNetworkNetworkInterfaceAdditionalIpConfig] {
+	return pulumix.Output[OceanNetworkNetworkInterfaceAdditionalIpConfig]{
+		OutputState: i.ToOceanNetworkNetworkInterfaceAdditionalIpConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 // OceanNetworkNetworkInterfaceAdditionalIpConfigArrayInput is an input type that accepts OceanNetworkNetworkInterfaceAdditionalIpConfigArray and OceanNetworkNetworkInterfaceAdditionalIpConfigArrayOutput values.
 // You can construct a concrete instance of `OceanNetworkNetworkInterfaceAdditionalIpConfigArrayInput` via:
 //
@@ -4541,6 +5316,12 @@ func (i OceanNetworkNetworkInterfaceAdditionalIpConfigArray) ToOceanNetworkNetwo
 	return pulumi.ToOutputWithContext(ctx, i).(OceanNetworkNetworkInterfaceAdditionalIpConfigArrayOutput)
 }
 
+func (i OceanNetworkNetworkInterfaceAdditionalIpConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]OceanNetworkNetworkInterfaceAdditionalIpConfig] {
+	return pulumix.Output[[]OceanNetworkNetworkInterfaceAdditionalIpConfig]{
+		OutputState: i.ToOceanNetworkNetworkInterfaceAdditionalIpConfigArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type OceanNetworkNetworkInterfaceAdditionalIpConfigOutput struct{ *pulumi.OutputState }
 
 func (OceanNetworkNetworkInterfaceAdditionalIpConfigOutput) ElementType() reflect.Type {
@@ -4553,6 +5334,12 @@ func (o OceanNetworkNetworkInterfaceAdditionalIpConfigOutput) ToOceanNetworkNetw
 
 func (o OceanNetworkNetworkInterfaceAdditionalIpConfigOutput) ToOceanNetworkNetworkInterfaceAdditionalIpConfigOutputWithContext(ctx context.Context) OceanNetworkNetworkInterfaceAdditionalIpConfigOutput {
 	return o
+}
+
+func (o OceanNetworkNetworkInterfaceAdditionalIpConfigOutput) ToOutput(ctx context.Context) pulumix.Output[OceanNetworkNetworkInterfaceAdditionalIpConfig] {
+	return pulumix.Output[OceanNetworkNetworkInterfaceAdditionalIpConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Name of the Load Balancer.
@@ -4577,6 +5364,12 @@ func (o OceanNetworkNetworkInterfaceAdditionalIpConfigArrayOutput) ToOceanNetwor
 
 func (o OceanNetworkNetworkInterfaceAdditionalIpConfigArrayOutput) ToOceanNetworkNetworkInterfaceAdditionalIpConfigArrayOutputWithContext(ctx context.Context) OceanNetworkNetworkInterfaceAdditionalIpConfigArrayOutput {
 	return o
+}
+
+func (o OceanNetworkNetworkInterfaceAdditionalIpConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]OceanNetworkNetworkInterfaceAdditionalIpConfig] {
+	return pulumix.Output[[]OceanNetworkNetworkInterfaceAdditionalIpConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OceanNetworkNetworkInterfaceAdditionalIpConfigArrayOutput) Index(i pulumi.IntInput) OceanNetworkNetworkInterfaceAdditionalIpConfigOutput {
@@ -4622,6 +5415,12 @@ func (i OceanNetworkNetworkInterfaceSecurityGroupArgs) ToOceanNetworkNetworkInte
 	return pulumi.ToOutputWithContext(ctx, i).(OceanNetworkNetworkInterfaceSecurityGroupOutput)
 }
 
+func (i OceanNetworkNetworkInterfaceSecurityGroupArgs) ToOutput(ctx context.Context) pulumix.Output[OceanNetworkNetworkInterfaceSecurityGroup] {
+	return pulumix.Output[OceanNetworkNetworkInterfaceSecurityGroup]{
+		OutputState: i.ToOceanNetworkNetworkInterfaceSecurityGroupOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i OceanNetworkNetworkInterfaceSecurityGroupArgs) ToOceanNetworkNetworkInterfaceSecurityGroupPtrOutput() OceanNetworkNetworkInterfaceSecurityGroupPtrOutput {
 	return i.ToOceanNetworkNetworkInterfaceSecurityGroupPtrOutputWithContext(context.Background())
 }
@@ -4663,6 +5462,12 @@ func (i *oceanNetworkNetworkInterfaceSecurityGroupPtrType) ToOceanNetworkNetwork
 	return pulumi.ToOutputWithContext(ctx, i).(OceanNetworkNetworkInterfaceSecurityGroupPtrOutput)
 }
 
+func (i *oceanNetworkNetworkInterfaceSecurityGroupPtrType) ToOutput(ctx context.Context) pulumix.Output[*OceanNetworkNetworkInterfaceSecurityGroup] {
+	return pulumix.Output[*OceanNetworkNetworkInterfaceSecurityGroup]{
+		OutputState: i.ToOceanNetworkNetworkInterfaceSecurityGroupPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type OceanNetworkNetworkInterfaceSecurityGroupOutput struct{ *pulumi.OutputState }
 
 func (OceanNetworkNetworkInterfaceSecurityGroupOutput) ElementType() reflect.Type {
@@ -4687,6 +5492,12 @@ func (o OceanNetworkNetworkInterfaceSecurityGroupOutput) ToOceanNetworkNetworkIn
 	}).(OceanNetworkNetworkInterfaceSecurityGroupPtrOutput)
 }
 
+func (o OceanNetworkNetworkInterfaceSecurityGroupOutput) ToOutput(ctx context.Context) pulumix.Output[OceanNetworkNetworkInterfaceSecurityGroup] {
+	return pulumix.Output[OceanNetworkNetworkInterfaceSecurityGroup]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Name of the Load Balancer.
 func (o OceanNetworkNetworkInterfaceSecurityGroupOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OceanNetworkNetworkInterfaceSecurityGroup) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -4709,6 +5520,12 @@ func (o OceanNetworkNetworkInterfaceSecurityGroupPtrOutput) ToOceanNetworkNetwor
 
 func (o OceanNetworkNetworkInterfaceSecurityGroupPtrOutput) ToOceanNetworkNetworkInterfaceSecurityGroupPtrOutputWithContext(ctx context.Context) OceanNetworkNetworkInterfaceSecurityGroupPtrOutput {
 	return o
+}
+
+func (o OceanNetworkNetworkInterfaceSecurityGroupPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OceanNetworkNetworkInterfaceSecurityGroup] {
+	return pulumix.Output[*OceanNetworkNetworkInterfaceSecurityGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OceanNetworkNetworkInterfaceSecurityGroupPtrOutput) Elem() OceanNetworkNetworkInterfaceSecurityGroupOutput {
@@ -4778,6 +5595,12 @@ func (i OceanNpAutoscalerArgs) ToOceanNpAutoscalerOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(OceanNpAutoscalerOutput)
 }
 
+func (i OceanNpAutoscalerArgs) ToOutput(ctx context.Context) pulumix.Output[OceanNpAutoscaler] {
+	return pulumix.Output[OceanNpAutoscaler]{
+		OutputState: i.ToOceanNpAutoscalerOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i OceanNpAutoscalerArgs) ToOceanNpAutoscalerPtrOutput() OceanNpAutoscalerPtrOutput {
 	return i.ToOceanNpAutoscalerPtrOutputWithContext(context.Background())
 }
@@ -4819,6 +5642,12 @@ func (i *oceanNpAutoscalerPtrType) ToOceanNpAutoscalerPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(OceanNpAutoscalerPtrOutput)
 }
 
+func (i *oceanNpAutoscalerPtrType) ToOutput(ctx context.Context) pulumix.Output[*OceanNpAutoscaler] {
+	return pulumix.Output[*OceanNpAutoscaler]{
+		OutputState: i.ToOceanNpAutoscalerPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type OceanNpAutoscalerOutput struct{ *pulumi.OutputState }
 
 func (OceanNpAutoscalerOutput) ElementType() reflect.Type {
@@ -4841,6 +5670,12 @@ func (o OceanNpAutoscalerOutput) ToOceanNpAutoscalerPtrOutputWithContext(ctx con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v OceanNpAutoscaler) *OceanNpAutoscaler {
 		return &v
 	}).(OceanNpAutoscalerPtrOutput)
+}
+
+func (o OceanNpAutoscalerOutput) ToOutput(ctx context.Context) pulumix.Output[OceanNpAutoscaler] {
+	return pulumix.Output[OceanNpAutoscaler]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OceanNpAutoscalerOutput) AutoscaleDown() OceanNpAutoscalerAutoscaleDownPtrOutput {
@@ -4871,6 +5706,12 @@ func (o OceanNpAutoscalerPtrOutput) ToOceanNpAutoscalerPtrOutput() OceanNpAutosc
 
 func (o OceanNpAutoscalerPtrOutput) ToOceanNpAutoscalerPtrOutputWithContext(ctx context.Context) OceanNpAutoscalerPtrOutput {
 	return o
+}
+
+func (o OceanNpAutoscalerPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OceanNpAutoscaler] {
+	return pulumix.Output[*OceanNpAutoscaler]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OceanNpAutoscalerPtrOutput) Elem() OceanNpAutoscalerOutput {
@@ -4950,6 +5791,12 @@ func (i OceanNpAutoscalerAutoscaleDownArgs) ToOceanNpAutoscalerAutoscaleDownOutp
 	return pulumi.ToOutputWithContext(ctx, i).(OceanNpAutoscalerAutoscaleDownOutput)
 }
 
+func (i OceanNpAutoscalerAutoscaleDownArgs) ToOutput(ctx context.Context) pulumix.Output[OceanNpAutoscalerAutoscaleDown] {
+	return pulumix.Output[OceanNpAutoscalerAutoscaleDown]{
+		OutputState: i.ToOceanNpAutoscalerAutoscaleDownOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i OceanNpAutoscalerAutoscaleDownArgs) ToOceanNpAutoscalerAutoscaleDownPtrOutput() OceanNpAutoscalerAutoscaleDownPtrOutput {
 	return i.ToOceanNpAutoscalerAutoscaleDownPtrOutputWithContext(context.Background())
 }
@@ -4991,6 +5838,12 @@ func (i *oceanNpAutoscalerAutoscaleDownPtrType) ToOceanNpAutoscalerAutoscaleDown
 	return pulumi.ToOutputWithContext(ctx, i).(OceanNpAutoscalerAutoscaleDownPtrOutput)
 }
 
+func (i *oceanNpAutoscalerAutoscaleDownPtrType) ToOutput(ctx context.Context) pulumix.Output[*OceanNpAutoscalerAutoscaleDown] {
+	return pulumix.Output[*OceanNpAutoscalerAutoscaleDown]{
+		OutputState: i.ToOceanNpAutoscalerAutoscaleDownPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type OceanNpAutoscalerAutoscaleDownOutput struct{ *pulumi.OutputState }
 
 func (OceanNpAutoscalerAutoscaleDownOutput) ElementType() reflect.Type {
@@ -5015,6 +5868,12 @@ func (o OceanNpAutoscalerAutoscaleDownOutput) ToOceanNpAutoscalerAutoscaleDownPt
 	}).(OceanNpAutoscalerAutoscaleDownPtrOutput)
 }
 
+func (o OceanNpAutoscalerAutoscaleDownOutput) ToOutput(ctx context.Context) pulumix.Output[OceanNpAutoscalerAutoscaleDown] {
+	return pulumix.Output[OceanNpAutoscalerAutoscaleDown]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o OceanNpAutoscalerAutoscaleDownOutput) MaxScaleDownPercentage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanNpAutoscalerAutoscaleDown) *int { return v.MaxScaleDownPercentage }).(pulumi.IntPtrOutput)
 }
@@ -5031,6 +5890,12 @@ func (o OceanNpAutoscalerAutoscaleDownPtrOutput) ToOceanNpAutoscalerAutoscaleDow
 
 func (o OceanNpAutoscalerAutoscaleDownPtrOutput) ToOceanNpAutoscalerAutoscaleDownPtrOutputWithContext(ctx context.Context) OceanNpAutoscalerAutoscaleDownPtrOutput {
 	return o
+}
+
+func (o OceanNpAutoscalerAutoscaleDownPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OceanNpAutoscalerAutoscaleDown] {
+	return pulumix.Output[*OceanNpAutoscalerAutoscaleDown]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OceanNpAutoscalerAutoscaleDownPtrOutput) Elem() OceanNpAutoscalerAutoscaleDownOutput {
@@ -5083,6 +5948,12 @@ func (i OceanNpAutoscalerAutoscaleHeadroomArgs) ToOceanNpAutoscalerAutoscaleHead
 	return pulumi.ToOutputWithContext(ctx, i).(OceanNpAutoscalerAutoscaleHeadroomOutput)
 }
 
+func (i OceanNpAutoscalerAutoscaleHeadroomArgs) ToOutput(ctx context.Context) pulumix.Output[OceanNpAutoscalerAutoscaleHeadroom] {
+	return pulumix.Output[OceanNpAutoscalerAutoscaleHeadroom]{
+		OutputState: i.ToOceanNpAutoscalerAutoscaleHeadroomOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i OceanNpAutoscalerAutoscaleHeadroomArgs) ToOceanNpAutoscalerAutoscaleHeadroomPtrOutput() OceanNpAutoscalerAutoscaleHeadroomPtrOutput {
 	return i.ToOceanNpAutoscalerAutoscaleHeadroomPtrOutputWithContext(context.Background())
 }
@@ -5124,6 +5995,12 @@ func (i *oceanNpAutoscalerAutoscaleHeadroomPtrType) ToOceanNpAutoscalerAutoscale
 	return pulumi.ToOutputWithContext(ctx, i).(OceanNpAutoscalerAutoscaleHeadroomPtrOutput)
 }
 
+func (i *oceanNpAutoscalerAutoscaleHeadroomPtrType) ToOutput(ctx context.Context) pulumix.Output[*OceanNpAutoscalerAutoscaleHeadroom] {
+	return pulumix.Output[*OceanNpAutoscalerAutoscaleHeadroom]{
+		OutputState: i.ToOceanNpAutoscalerAutoscaleHeadroomPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type OceanNpAutoscalerAutoscaleHeadroomOutput struct{ *pulumi.OutputState }
 
 func (OceanNpAutoscalerAutoscaleHeadroomOutput) ElementType() reflect.Type {
@@ -5148,6 +6025,12 @@ func (o OceanNpAutoscalerAutoscaleHeadroomOutput) ToOceanNpAutoscalerAutoscaleHe
 	}).(OceanNpAutoscalerAutoscaleHeadroomPtrOutput)
 }
 
+func (o OceanNpAutoscalerAutoscaleHeadroomOutput) ToOutput(ctx context.Context) pulumix.Output[OceanNpAutoscalerAutoscaleHeadroom] {
+	return pulumix.Output[OceanNpAutoscalerAutoscaleHeadroom]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o OceanNpAutoscalerAutoscaleHeadroomOutput) Automatic() OceanNpAutoscalerAutoscaleHeadroomAutomaticPtrOutput {
 	return o.ApplyT(func(v OceanNpAutoscalerAutoscaleHeadroom) *OceanNpAutoscalerAutoscaleHeadroomAutomatic {
 		return v.Automatic
@@ -5166,6 +6049,12 @@ func (o OceanNpAutoscalerAutoscaleHeadroomPtrOutput) ToOceanNpAutoscalerAutoscal
 
 func (o OceanNpAutoscalerAutoscaleHeadroomPtrOutput) ToOceanNpAutoscalerAutoscaleHeadroomPtrOutputWithContext(ctx context.Context) OceanNpAutoscalerAutoscaleHeadroomPtrOutput {
 	return o
+}
+
+func (o OceanNpAutoscalerAutoscaleHeadroomPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OceanNpAutoscalerAutoscaleHeadroom] {
+	return pulumix.Output[*OceanNpAutoscalerAutoscaleHeadroom]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OceanNpAutoscalerAutoscaleHeadroomPtrOutput) Elem() OceanNpAutoscalerAutoscaleHeadroomOutput {
@@ -5218,6 +6107,12 @@ func (i OceanNpAutoscalerAutoscaleHeadroomAutomaticArgs) ToOceanNpAutoscalerAuto
 	return pulumi.ToOutputWithContext(ctx, i).(OceanNpAutoscalerAutoscaleHeadroomAutomaticOutput)
 }
 
+func (i OceanNpAutoscalerAutoscaleHeadroomAutomaticArgs) ToOutput(ctx context.Context) pulumix.Output[OceanNpAutoscalerAutoscaleHeadroomAutomatic] {
+	return pulumix.Output[OceanNpAutoscalerAutoscaleHeadroomAutomatic]{
+		OutputState: i.ToOceanNpAutoscalerAutoscaleHeadroomAutomaticOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i OceanNpAutoscalerAutoscaleHeadroomAutomaticArgs) ToOceanNpAutoscalerAutoscaleHeadroomAutomaticPtrOutput() OceanNpAutoscalerAutoscaleHeadroomAutomaticPtrOutput {
 	return i.ToOceanNpAutoscalerAutoscaleHeadroomAutomaticPtrOutputWithContext(context.Background())
 }
@@ -5259,6 +6154,12 @@ func (i *oceanNpAutoscalerAutoscaleHeadroomAutomaticPtrType) ToOceanNpAutoscaler
 	return pulumi.ToOutputWithContext(ctx, i).(OceanNpAutoscalerAutoscaleHeadroomAutomaticPtrOutput)
 }
 
+func (i *oceanNpAutoscalerAutoscaleHeadroomAutomaticPtrType) ToOutput(ctx context.Context) pulumix.Output[*OceanNpAutoscalerAutoscaleHeadroomAutomatic] {
+	return pulumix.Output[*OceanNpAutoscalerAutoscaleHeadroomAutomatic]{
+		OutputState: i.ToOceanNpAutoscalerAutoscaleHeadroomAutomaticPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type OceanNpAutoscalerAutoscaleHeadroomAutomaticOutput struct{ *pulumi.OutputState }
 
 func (OceanNpAutoscalerAutoscaleHeadroomAutomaticOutput) ElementType() reflect.Type {
@@ -5283,6 +6184,12 @@ func (o OceanNpAutoscalerAutoscaleHeadroomAutomaticOutput) ToOceanNpAutoscalerAu
 	}).(OceanNpAutoscalerAutoscaleHeadroomAutomaticPtrOutput)
 }
 
+func (o OceanNpAutoscalerAutoscaleHeadroomAutomaticOutput) ToOutput(ctx context.Context) pulumix.Output[OceanNpAutoscalerAutoscaleHeadroomAutomatic] {
+	return pulumix.Output[OceanNpAutoscalerAutoscaleHeadroomAutomatic]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o OceanNpAutoscalerAutoscaleHeadroomAutomaticOutput) Percentage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanNpAutoscalerAutoscaleHeadroomAutomatic) *int { return v.Percentage }).(pulumi.IntPtrOutput)
 }
@@ -5299,6 +6206,12 @@ func (o OceanNpAutoscalerAutoscaleHeadroomAutomaticPtrOutput) ToOceanNpAutoscale
 
 func (o OceanNpAutoscalerAutoscaleHeadroomAutomaticPtrOutput) ToOceanNpAutoscalerAutoscaleHeadroomAutomaticPtrOutputWithContext(ctx context.Context) OceanNpAutoscalerAutoscaleHeadroomAutomaticPtrOutput {
 	return o
+}
+
+func (o OceanNpAutoscalerAutoscaleHeadroomAutomaticPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OceanNpAutoscalerAutoscaleHeadroomAutomatic] {
+	return pulumix.Output[*OceanNpAutoscalerAutoscaleHeadroomAutomatic]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OceanNpAutoscalerAutoscaleHeadroomAutomaticPtrOutput) Elem() OceanNpAutoscalerAutoscaleHeadroomAutomaticOutput {
@@ -5353,6 +6266,12 @@ func (i OceanNpAutoscalerResourceLimitsArgs) ToOceanNpAutoscalerResourceLimitsOu
 	return pulumi.ToOutputWithContext(ctx, i).(OceanNpAutoscalerResourceLimitsOutput)
 }
 
+func (i OceanNpAutoscalerResourceLimitsArgs) ToOutput(ctx context.Context) pulumix.Output[OceanNpAutoscalerResourceLimits] {
+	return pulumix.Output[OceanNpAutoscalerResourceLimits]{
+		OutputState: i.ToOceanNpAutoscalerResourceLimitsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i OceanNpAutoscalerResourceLimitsArgs) ToOceanNpAutoscalerResourceLimitsPtrOutput() OceanNpAutoscalerResourceLimitsPtrOutput {
 	return i.ToOceanNpAutoscalerResourceLimitsPtrOutputWithContext(context.Background())
 }
@@ -5394,6 +6313,12 @@ func (i *oceanNpAutoscalerResourceLimitsPtrType) ToOceanNpAutoscalerResourceLimi
 	return pulumi.ToOutputWithContext(ctx, i).(OceanNpAutoscalerResourceLimitsPtrOutput)
 }
 
+func (i *oceanNpAutoscalerResourceLimitsPtrType) ToOutput(ctx context.Context) pulumix.Output[*OceanNpAutoscalerResourceLimits] {
+	return pulumix.Output[*OceanNpAutoscalerResourceLimits]{
+		OutputState: i.ToOceanNpAutoscalerResourceLimitsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type OceanNpAutoscalerResourceLimitsOutput struct{ *pulumi.OutputState }
 
 func (OceanNpAutoscalerResourceLimitsOutput) ElementType() reflect.Type {
@@ -5418,6 +6343,12 @@ func (o OceanNpAutoscalerResourceLimitsOutput) ToOceanNpAutoscalerResourceLimits
 	}).(OceanNpAutoscalerResourceLimitsPtrOutput)
 }
 
+func (o OceanNpAutoscalerResourceLimitsOutput) ToOutput(ctx context.Context) pulumix.Output[OceanNpAutoscalerResourceLimits] {
+	return pulumix.Output[OceanNpAutoscalerResourceLimits]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o OceanNpAutoscalerResourceLimitsOutput) MaxMemoryGib() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanNpAutoscalerResourceLimits) *int { return v.MaxMemoryGib }).(pulumi.IntPtrOutput)
 }
@@ -5438,6 +6369,12 @@ func (o OceanNpAutoscalerResourceLimitsPtrOutput) ToOceanNpAutoscalerResourceLim
 
 func (o OceanNpAutoscalerResourceLimitsPtrOutput) ToOceanNpAutoscalerResourceLimitsPtrOutputWithContext(ctx context.Context) OceanNpAutoscalerResourceLimitsPtrOutput {
 	return o
+}
+
+func (o OceanNpAutoscalerResourceLimitsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OceanNpAutoscalerResourceLimits] {
+	return pulumix.Output[*OceanNpAutoscalerResourceLimits]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OceanNpAutoscalerResourceLimitsPtrOutput) Elem() OceanNpAutoscalerResourceLimitsOutput {
@@ -5511,6 +6448,12 @@ func (i OceanNpFiltersArgs) ToOceanNpFiltersOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(OceanNpFiltersOutput)
 }
 
+func (i OceanNpFiltersArgs) ToOutput(ctx context.Context) pulumix.Output[OceanNpFilters] {
+	return pulumix.Output[OceanNpFilters]{
+		OutputState: i.ToOceanNpFiltersOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i OceanNpFiltersArgs) ToOceanNpFiltersPtrOutput() OceanNpFiltersPtrOutput {
 	return i.ToOceanNpFiltersPtrOutputWithContext(context.Background())
 }
@@ -5552,6 +6495,12 @@ func (i *oceanNpFiltersPtrType) ToOceanNpFiltersPtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(OceanNpFiltersPtrOutput)
 }
 
+func (i *oceanNpFiltersPtrType) ToOutput(ctx context.Context) pulumix.Output[*OceanNpFilters] {
+	return pulumix.Output[*OceanNpFilters]{
+		OutputState: i.ToOceanNpFiltersPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type OceanNpFiltersOutput struct{ *pulumi.OutputState }
 
 func (OceanNpFiltersOutput) ElementType() reflect.Type {
@@ -5574,6 +6523,12 @@ func (o OceanNpFiltersOutput) ToOceanNpFiltersPtrOutputWithContext(ctx context.C
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v OceanNpFilters) *OceanNpFilters {
 		return &v
 	}).(OceanNpFiltersPtrOutput)
+}
+
+func (o OceanNpFiltersOutput) ToOutput(ctx context.Context) pulumix.Output[OceanNpFilters] {
+	return pulumix.Output[OceanNpFilters]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OceanNpFiltersOutput) Architectures() pulumi.StringArrayOutput {
@@ -5616,6 +6571,12 @@ func (o OceanNpFiltersPtrOutput) ToOceanNpFiltersPtrOutput() OceanNpFiltersPtrOu
 
 func (o OceanNpFiltersPtrOutput) ToOceanNpFiltersPtrOutputWithContext(ctx context.Context) OceanNpFiltersPtrOutput {
 	return o
+}
+
+func (o OceanNpFiltersPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OceanNpFilters] {
+	return pulumix.Output[*OceanNpFilters]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OceanNpFiltersPtrOutput) Elem() OceanNpFiltersOutput {
@@ -5728,6 +6689,12 @@ func (i OceanNpHeadroomArgs) ToOceanNpHeadroomOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(OceanNpHeadroomOutput)
 }
 
+func (i OceanNpHeadroomArgs) ToOutput(ctx context.Context) pulumix.Output[OceanNpHeadroom] {
+	return pulumix.Output[OceanNpHeadroom]{
+		OutputState: i.ToOceanNpHeadroomOutputWithContext(ctx).OutputState,
+	}
+}
+
 // OceanNpHeadroomArrayInput is an input type that accepts OceanNpHeadroomArray and OceanNpHeadroomArrayOutput values.
 // You can construct a concrete instance of `OceanNpHeadroomArrayInput` via:
 //
@@ -5753,6 +6720,12 @@ func (i OceanNpHeadroomArray) ToOceanNpHeadroomArrayOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(OceanNpHeadroomArrayOutput)
 }
 
+func (i OceanNpHeadroomArray) ToOutput(ctx context.Context) pulumix.Output[[]OceanNpHeadroom] {
+	return pulumix.Output[[]OceanNpHeadroom]{
+		OutputState: i.ToOceanNpHeadroomArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type OceanNpHeadroomOutput struct{ *pulumi.OutputState }
 
 func (OceanNpHeadroomOutput) ElementType() reflect.Type {
@@ -5765,6 +6738,12 @@ func (o OceanNpHeadroomOutput) ToOceanNpHeadroomOutput() OceanNpHeadroomOutput {
 
 func (o OceanNpHeadroomOutput) ToOceanNpHeadroomOutputWithContext(ctx context.Context) OceanNpHeadroomOutput {
 	return o
+}
+
+func (o OceanNpHeadroomOutput) ToOutput(ctx context.Context) pulumix.Output[OceanNpHeadroom] {
+	return pulumix.Output[OceanNpHeadroom]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OceanNpHeadroomOutput) CpuPerUnit() pulumi.IntPtrOutput {
@@ -5795,6 +6774,12 @@ func (o OceanNpHeadroomArrayOutput) ToOceanNpHeadroomArrayOutput() OceanNpHeadro
 
 func (o OceanNpHeadroomArrayOutput) ToOceanNpHeadroomArrayOutputWithContext(ctx context.Context) OceanNpHeadroomArrayOutput {
 	return o
+}
+
+func (o OceanNpHeadroomArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]OceanNpHeadroom] {
+	return pulumix.Output[[]OceanNpHeadroom]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OceanNpHeadroomArrayOutput) Index(i pulumi.IntInput) OceanNpHeadroomOutput {
@@ -5832,6 +6817,12 @@ func (i OceanNpHealthArgs) ToOceanNpHealthOutput() OceanNpHealthOutput {
 
 func (i OceanNpHealthArgs) ToOceanNpHealthOutputWithContext(ctx context.Context) OceanNpHealthOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(OceanNpHealthOutput)
+}
+
+func (i OceanNpHealthArgs) ToOutput(ctx context.Context) pulumix.Output[OceanNpHealth] {
+	return pulumix.Output[OceanNpHealth]{
+		OutputState: i.ToOceanNpHealthOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i OceanNpHealthArgs) ToOceanNpHealthPtrOutput() OceanNpHealthPtrOutput {
@@ -5875,6 +6866,12 @@ func (i *oceanNpHealthPtrType) ToOceanNpHealthPtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(OceanNpHealthPtrOutput)
 }
 
+func (i *oceanNpHealthPtrType) ToOutput(ctx context.Context) pulumix.Output[*OceanNpHealth] {
+	return pulumix.Output[*OceanNpHealth]{
+		OutputState: i.ToOceanNpHealthPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type OceanNpHealthOutput struct{ *pulumi.OutputState }
 
 func (OceanNpHealthOutput) ElementType() reflect.Type {
@@ -5899,6 +6896,12 @@ func (o OceanNpHealthOutput) ToOceanNpHealthPtrOutputWithContext(ctx context.Con
 	}).(OceanNpHealthPtrOutput)
 }
 
+func (o OceanNpHealthOutput) ToOutput(ctx context.Context) pulumix.Output[OceanNpHealth] {
+	return pulumix.Output[OceanNpHealth]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o OceanNpHealthOutput) GracePeriod() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanNpHealth) *int { return v.GracePeriod }).(pulumi.IntPtrOutput)
 }
@@ -5915,6 +6918,12 @@ func (o OceanNpHealthPtrOutput) ToOceanNpHealthPtrOutput() OceanNpHealthPtrOutpu
 
 func (o OceanNpHealthPtrOutput) ToOceanNpHealthPtrOutputWithContext(ctx context.Context) OceanNpHealthPtrOutput {
 	return o
+}
+
+func (o OceanNpHealthPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OceanNpHealth] {
+	return pulumix.Output[*OceanNpHealth]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OceanNpHealthPtrOutput) Elem() OceanNpHealthOutput {
@@ -5967,6 +6976,12 @@ func (i OceanNpSchedulingArgs) ToOceanNpSchedulingOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(OceanNpSchedulingOutput)
 }
 
+func (i OceanNpSchedulingArgs) ToOutput(ctx context.Context) pulumix.Output[OceanNpScheduling] {
+	return pulumix.Output[OceanNpScheduling]{
+		OutputState: i.ToOceanNpSchedulingOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i OceanNpSchedulingArgs) ToOceanNpSchedulingPtrOutput() OceanNpSchedulingPtrOutput {
 	return i.ToOceanNpSchedulingPtrOutputWithContext(context.Background())
 }
@@ -6008,6 +7023,12 @@ func (i *oceanNpSchedulingPtrType) ToOceanNpSchedulingPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(OceanNpSchedulingPtrOutput)
 }
 
+func (i *oceanNpSchedulingPtrType) ToOutput(ctx context.Context) pulumix.Output[*OceanNpScheduling] {
+	return pulumix.Output[*OceanNpScheduling]{
+		OutputState: i.ToOceanNpSchedulingPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type OceanNpSchedulingOutput struct{ *pulumi.OutputState }
 
 func (OceanNpSchedulingOutput) ElementType() reflect.Type {
@@ -6032,6 +7053,12 @@ func (o OceanNpSchedulingOutput) ToOceanNpSchedulingPtrOutputWithContext(ctx con
 	}).(OceanNpSchedulingPtrOutput)
 }
 
+func (o OceanNpSchedulingOutput) ToOutput(ctx context.Context) pulumix.Output[OceanNpScheduling] {
+	return pulumix.Output[OceanNpScheduling]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o OceanNpSchedulingOutput) ShutdownHours() OceanNpSchedulingShutdownHoursPtrOutput {
 	return o.ApplyT(func(v OceanNpScheduling) *OceanNpSchedulingShutdownHours { return v.ShutdownHours }).(OceanNpSchedulingShutdownHoursPtrOutput)
 }
@@ -6048,6 +7075,12 @@ func (o OceanNpSchedulingPtrOutput) ToOceanNpSchedulingPtrOutput() OceanNpSchedu
 
 func (o OceanNpSchedulingPtrOutput) ToOceanNpSchedulingPtrOutputWithContext(ctx context.Context) OceanNpSchedulingPtrOutput {
 	return o
+}
+
+func (o OceanNpSchedulingPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OceanNpScheduling] {
+	return pulumix.Output[*OceanNpScheduling]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OceanNpSchedulingPtrOutput) Elem() OceanNpSchedulingOutput {
@@ -6102,6 +7135,12 @@ func (i OceanNpSchedulingShutdownHoursArgs) ToOceanNpSchedulingShutdownHoursOutp
 	return pulumi.ToOutputWithContext(ctx, i).(OceanNpSchedulingShutdownHoursOutput)
 }
 
+func (i OceanNpSchedulingShutdownHoursArgs) ToOutput(ctx context.Context) pulumix.Output[OceanNpSchedulingShutdownHours] {
+	return pulumix.Output[OceanNpSchedulingShutdownHours]{
+		OutputState: i.ToOceanNpSchedulingShutdownHoursOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i OceanNpSchedulingShutdownHoursArgs) ToOceanNpSchedulingShutdownHoursPtrOutput() OceanNpSchedulingShutdownHoursPtrOutput {
 	return i.ToOceanNpSchedulingShutdownHoursPtrOutputWithContext(context.Background())
 }
@@ -6143,6 +7182,12 @@ func (i *oceanNpSchedulingShutdownHoursPtrType) ToOceanNpSchedulingShutdownHours
 	return pulumi.ToOutputWithContext(ctx, i).(OceanNpSchedulingShutdownHoursPtrOutput)
 }
 
+func (i *oceanNpSchedulingShutdownHoursPtrType) ToOutput(ctx context.Context) pulumix.Output[*OceanNpSchedulingShutdownHours] {
+	return pulumix.Output[*OceanNpSchedulingShutdownHours]{
+		OutputState: i.ToOceanNpSchedulingShutdownHoursPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type OceanNpSchedulingShutdownHoursOutput struct{ *pulumi.OutputState }
 
 func (OceanNpSchedulingShutdownHoursOutput) ElementType() reflect.Type {
@@ -6167,6 +7212,12 @@ func (o OceanNpSchedulingShutdownHoursOutput) ToOceanNpSchedulingShutdownHoursPt
 	}).(OceanNpSchedulingShutdownHoursPtrOutput)
 }
 
+func (o OceanNpSchedulingShutdownHoursOutput) ToOutput(ctx context.Context) pulumix.Output[OceanNpSchedulingShutdownHours] {
+	return pulumix.Output[OceanNpSchedulingShutdownHours]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o OceanNpSchedulingShutdownHoursOutput) IsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OceanNpSchedulingShutdownHours) *bool { return v.IsEnabled }).(pulumi.BoolPtrOutput)
 }
@@ -6187,6 +7238,12 @@ func (o OceanNpSchedulingShutdownHoursPtrOutput) ToOceanNpSchedulingShutdownHour
 
 func (o OceanNpSchedulingShutdownHoursPtrOutput) ToOceanNpSchedulingShutdownHoursPtrOutputWithContext(ctx context.Context) OceanNpSchedulingShutdownHoursPtrOutput {
 	return o
+}
+
+func (o OceanNpSchedulingShutdownHoursPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OceanNpSchedulingShutdownHours] {
+	return pulumix.Output[*OceanNpSchedulingShutdownHours]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OceanNpSchedulingShutdownHoursPtrOutput) Elem() OceanNpSchedulingShutdownHoursOutput {
@@ -6252,6 +7309,12 @@ func (i OceanNpTaintArgs) ToOceanNpTaintOutputWithContext(ctx context.Context) O
 	return pulumi.ToOutputWithContext(ctx, i).(OceanNpTaintOutput)
 }
 
+func (i OceanNpTaintArgs) ToOutput(ctx context.Context) pulumix.Output[OceanNpTaint] {
+	return pulumix.Output[OceanNpTaint]{
+		OutputState: i.ToOceanNpTaintOutputWithContext(ctx).OutputState,
+	}
+}
+
 // OceanNpTaintArrayInput is an input type that accepts OceanNpTaintArray and OceanNpTaintArrayOutput values.
 // You can construct a concrete instance of `OceanNpTaintArrayInput` via:
 //
@@ -6277,6 +7340,12 @@ func (i OceanNpTaintArray) ToOceanNpTaintArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(OceanNpTaintArrayOutput)
 }
 
+func (i OceanNpTaintArray) ToOutput(ctx context.Context) pulumix.Output[[]OceanNpTaint] {
+	return pulumix.Output[[]OceanNpTaint]{
+		OutputState: i.ToOceanNpTaintArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type OceanNpTaintOutput struct{ *pulumi.OutputState }
 
 func (OceanNpTaintOutput) ElementType() reflect.Type {
@@ -6289,6 +7358,12 @@ func (o OceanNpTaintOutput) ToOceanNpTaintOutput() OceanNpTaintOutput {
 
 func (o OceanNpTaintOutput) ToOceanNpTaintOutputWithContext(ctx context.Context) OceanNpTaintOutput {
 	return o
+}
+
+func (o OceanNpTaintOutput) ToOutput(ctx context.Context) pulumix.Output[OceanNpTaint] {
+	return pulumix.Output[OceanNpTaint]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OceanNpTaintOutput) Effect() pulumi.StringOutput {
@@ -6315,6 +7390,12 @@ func (o OceanNpTaintArrayOutput) ToOceanNpTaintArrayOutput() OceanNpTaintArrayOu
 
 func (o OceanNpTaintArrayOutput) ToOceanNpTaintArrayOutputWithContext(ctx context.Context) OceanNpTaintArrayOutput {
 	return o
+}
+
+func (o OceanNpTaintArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]OceanNpTaint] {
+	return pulumix.Output[[]OceanNpTaint]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OceanNpTaintArrayOutput) Index(i pulumi.IntInput) OceanNpTaintOutput {
@@ -6366,6 +7447,12 @@ func (i OceanNpVirtualNodeGroupFiltersArgs) ToOceanNpVirtualNodeGroupFiltersOutp
 	return pulumi.ToOutputWithContext(ctx, i).(OceanNpVirtualNodeGroupFiltersOutput)
 }
 
+func (i OceanNpVirtualNodeGroupFiltersArgs) ToOutput(ctx context.Context) pulumix.Output[OceanNpVirtualNodeGroupFilters] {
+	return pulumix.Output[OceanNpVirtualNodeGroupFilters]{
+		OutputState: i.ToOceanNpVirtualNodeGroupFiltersOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i OceanNpVirtualNodeGroupFiltersArgs) ToOceanNpVirtualNodeGroupFiltersPtrOutput() OceanNpVirtualNodeGroupFiltersPtrOutput {
 	return i.ToOceanNpVirtualNodeGroupFiltersPtrOutputWithContext(context.Background())
 }
@@ -6407,6 +7494,12 @@ func (i *oceanNpVirtualNodeGroupFiltersPtrType) ToOceanNpVirtualNodeGroupFilters
 	return pulumi.ToOutputWithContext(ctx, i).(OceanNpVirtualNodeGroupFiltersPtrOutput)
 }
 
+func (i *oceanNpVirtualNodeGroupFiltersPtrType) ToOutput(ctx context.Context) pulumix.Output[*OceanNpVirtualNodeGroupFilters] {
+	return pulumix.Output[*OceanNpVirtualNodeGroupFilters]{
+		OutputState: i.ToOceanNpVirtualNodeGroupFiltersPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type OceanNpVirtualNodeGroupFiltersOutput struct{ *pulumi.OutputState }
 
 func (OceanNpVirtualNodeGroupFiltersOutput) ElementType() reflect.Type {
@@ -6429,6 +7522,12 @@ func (o OceanNpVirtualNodeGroupFiltersOutput) ToOceanNpVirtualNodeGroupFiltersPt
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v OceanNpVirtualNodeGroupFilters) *OceanNpVirtualNodeGroupFilters {
 		return &v
 	}).(OceanNpVirtualNodeGroupFiltersPtrOutput)
+}
+
+func (o OceanNpVirtualNodeGroupFiltersOutput) ToOutput(ctx context.Context) pulumix.Output[OceanNpVirtualNodeGroupFilters] {
+	return pulumix.Output[OceanNpVirtualNodeGroupFilters]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OceanNpVirtualNodeGroupFiltersOutput) Architectures() pulumi.StringArrayOutput {
@@ -6471,6 +7570,12 @@ func (o OceanNpVirtualNodeGroupFiltersPtrOutput) ToOceanNpVirtualNodeGroupFilter
 
 func (o OceanNpVirtualNodeGroupFiltersPtrOutput) ToOceanNpVirtualNodeGroupFiltersPtrOutputWithContext(ctx context.Context) OceanNpVirtualNodeGroupFiltersPtrOutput {
 	return o
+}
+
+func (o OceanNpVirtualNodeGroupFiltersPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OceanNpVirtualNodeGroupFilters] {
+	return pulumix.Output[*OceanNpVirtualNodeGroupFilters]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OceanNpVirtualNodeGroupFiltersPtrOutput) Elem() OceanNpVirtualNodeGroupFiltersOutput {
@@ -6583,6 +7688,12 @@ func (i OceanNpVirtualNodeGroupHeadroomArgs) ToOceanNpVirtualNodeGroupHeadroomOu
 	return pulumi.ToOutputWithContext(ctx, i).(OceanNpVirtualNodeGroupHeadroomOutput)
 }
 
+func (i OceanNpVirtualNodeGroupHeadroomArgs) ToOutput(ctx context.Context) pulumix.Output[OceanNpVirtualNodeGroupHeadroom] {
+	return pulumix.Output[OceanNpVirtualNodeGroupHeadroom]{
+		OutputState: i.ToOceanNpVirtualNodeGroupHeadroomOutputWithContext(ctx).OutputState,
+	}
+}
+
 // OceanNpVirtualNodeGroupHeadroomArrayInput is an input type that accepts OceanNpVirtualNodeGroupHeadroomArray and OceanNpVirtualNodeGroupHeadroomArrayOutput values.
 // You can construct a concrete instance of `OceanNpVirtualNodeGroupHeadroomArrayInput` via:
 //
@@ -6608,6 +7719,12 @@ func (i OceanNpVirtualNodeGroupHeadroomArray) ToOceanNpVirtualNodeGroupHeadroomA
 	return pulumi.ToOutputWithContext(ctx, i).(OceanNpVirtualNodeGroupHeadroomArrayOutput)
 }
 
+func (i OceanNpVirtualNodeGroupHeadroomArray) ToOutput(ctx context.Context) pulumix.Output[[]OceanNpVirtualNodeGroupHeadroom] {
+	return pulumix.Output[[]OceanNpVirtualNodeGroupHeadroom]{
+		OutputState: i.ToOceanNpVirtualNodeGroupHeadroomArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type OceanNpVirtualNodeGroupHeadroomOutput struct{ *pulumi.OutputState }
 
 func (OceanNpVirtualNodeGroupHeadroomOutput) ElementType() reflect.Type {
@@ -6620,6 +7737,12 @@ func (o OceanNpVirtualNodeGroupHeadroomOutput) ToOceanNpVirtualNodeGroupHeadroom
 
 func (o OceanNpVirtualNodeGroupHeadroomOutput) ToOceanNpVirtualNodeGroupHeadroomOutputWithContext(ctx context.Context) OceanNpVirtualNodeGroupHeadroomOutput {
 	return o
+}
+
+func (o OceanNpVirtualNodeGroupHeadroomOutput) ToOutput(ctx context.Context) pulumix.Output[OceanNpVirtualNodeGroupHeadroom] {
+	return pulumix.Output[OceanNpVirtualNodeGroupHeadroom]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OceanNpVirtualNodeGroupHeadroomOutput) CpuPerUnit() pulumi.IntPtrOutput {
@@ -6650,6 +7773,12 @@ func (o OceanNpVirtualNodeGroupHeadroomArrayOutput) ToOceanNpVirtualNodeGroupHea
 
 func (o OceanNpVirtualNodeGroupHeadroomArrayOutput) ToOceanNpVirtualNodeGroupHeadroomArrayOutputWithContext(ctx context.Context) OceanNpVirtualNodeGroupHeadroomArrayOutput {
 	return o
+}
+
+func (o OceanNpVirtualNodeGroupHeadroomArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]OceanNpVirtualNodeGroupHeadroom] {
+	return pulumix.Output[[]OceanNpVirtualNodeGroupHeadroom]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OceanNpVirtualNodeGroupHeadroomArrayOutput) Index(i pulumi.IntInput) OceanNpVirtualNodeGroupHeadroomOutput {
@@ -6693,6 +7822,12 @@ func (i OceanNpVirtualNodeGroupTaintArgs) ToOceanNpVirtualNodeGroupTaintOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(OceanNpVirtualNodeGroupTaintOutput)
 }
 
+func (i OceanNpVirtualNodeGroupTaintArgs) ToOutput(ctx context.Context) pulumix.Output[OceanNpVirtualNodeGroupTaint] {
+	return pulumix.Output[OceanNpVirtualNodeGroupTaint]{
+		OutputState: i.ToOceanNpVirtualNodeGroupTaintOutputWithContext(ctx).OutputState,
+	}
+}
+
 // OceanNpVirtualNodeGroupTaintArrayInput is an input type that accepts OceanNpVirtualNodeGroupTaintArray and OceanNpVirtualNodeGroupTaintArrayOutput values.
 // You can construct a concrete instance of `OceanNpVirtualNodeGroupTaintArrayInput` via:
 //
@@ -6718,6 +7853,12 @@ func (i OceanNpVirtualNodeGroupTaintArray) ToOceanNpVirtualNodeGroupTaintArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(OceanNpVirtualNodeGroupTaintArrayOutput)
 }
 
+func (i OceanNpVirtualNodeGroupTaintArray) ToOutput(ctx context.Context) pulumix.Output[[]OceanNpVirtualNodeGroupTaint] {
+	return pulumix.Output[[]OceanNpVirtualNodeGroupTaint]{
+		OutputState: i.ToOceanNpVirtualNodeGroupTaintArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type OceanNpVirtualNodeGroupTaintOutput struct{ *pulumi.OutputState }
 
 func (OceanNpVirtualNodeGroupTaintOutput) ElementType() reflect.Type {
@@ -6730,6 +7871,12 @@ func (o OceanNpVirtualNodeGroupTaintOutput) ToOceanNpVirtualNodeGroupTaintOutput
 
 func (o OceanNpVirtualNodeGroupTaintOutput) ToOceanNpVirtualNodeGroupTaintOutputWithContext(ctx context.Context) OceanNpVirtualNodeGroupTaintOutput {
 	return o
+}
+
+func (o OceanNpVirtualNodeGroupTaintOutput) ToOutput(ctx context.Context) pulumix.Output[OceanNpVirtualNodeGroupTaint] {
+	return pulumix.Output[OceanNpVirtualNodeGroupTaint]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OceanNpVirtualNodeGroupTaintOutput) Effect() pulumi.StringOutput {
@@ -6756,6 +7903,12 @@ func (o OceanNpVirtualNodeGroupTaintArrayOutput) ToOceanNpVirtualNodeGroupTaintA
 
 func (o OceanNpVirtualNodeGroupTaintArrayOutput) ToOceanNpVirtualNodeGroupTaintArrayOutputWithContext(ctx context.Context) OceanNpVirtualNodeGroupTaintArrayOutput {
 	return o
+}
+
+func (o OceanNpVirtualNodeGroupTaintArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]OceanNpVirtualNodeGroupTaint] {
+	return pulumix.Output[[]OceanNpVirtualNodeGroupTaint]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OceanNpVirtualNodeGroupTaintArrayOutput) Index(i pulumi.IntInput) OceanNpVirtualNodeGroupTaintOutput {
@@ -6801,6 +7954,12 @@ func (i OceanOsDiskArgs) ToOceanOsDiskOutputWithContext(ctx context.Context) Oce
 	return pulumi.ToOutputWithContext(ctx, i).(OceanOsDiskOutput)
 }
 
+func (i OceanOsDiskArgs) ToOutput(ctx context.Context) pulumix.Output[OceanOsDisk] {
+	return pulumix.Output[OceanOsDisk]{
+		OutputState: i.ToOceanOsDiskOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i OceanOsDiskArgs) ToOceanOsDiskPtrOutput() OceanOsDiskPtrOutput {
 	return i.ToOceanOsDiskPtrOutputWithContext(context.Background())
 }
@@ -6842,6 +8001,12 @@ func (i *oceanOsDiskPtrType) ToOceanOsDiskPtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(OceanOsDiskPtrOutput)
 }
 
+func (i *oceanOsDiskPtrType) ToOutput(ctx context.Context) pulumix.Output[*OceanOsDisk] {
+	return pulumix.Output[*OceanOsDisk]{
+		OutputState: i.ToOceanOsDiskPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type OceanOsDiskOutput struct{ *pulumi.OutputState }
 
 func (OceanOsDiskOutput) ElementType() reflect.Type {
@@ -6866,6 +8031,12 @@ func (o OceanOsDiskOutput) ToOceanOsDiskPtrOutputWithContext(ctx context.Context
 	}).(OceanOsDiskPtrOutput)
 }
 
+func (o OceanOsDiskOutput) ToOutput(ctx context.Context) pulumix.Output[OceanOsDisk] {
+	return pulumix.Output[OceanOsDisk]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The size of the OS disk in GB.
 func (o OceanOsDiskOutput) SizeGb() pulumi.IntOutput {
 	return o.ApplyT(func(v OceanOsDisk) int { return v.SizeGb }).(pulumi.IntOutput)
@@ -6888,6 +8059,12 @@ func (o OceanOsDiskPtrOutput) ToOceanOsDiskPtrOutput() OceanOsDiskPtrOutput {
 
 func (o OceanOsDiskPtrOutput) ToOceanOsDiskPtrOutputWithContext(ctx context.Context) OceanOsDiskPtrOutput {
 	return o
+}
+
+func (o OceanOsDiskPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OceanOsDisk] {
+	return pulumix.Output[*OceanOsDisk]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OceanOsDiskPtrOutput) Elem() OceanOsDiskOutput {
@@ -6957,6 +8134,12 @@ func (i OceanStrategyArgs) ToOceanStrategyOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(OceanStrategyOutput)
 }
 
+func (i OceanStrategyArgs) ToOutput(ctx context.Context) pulumix.Output[OceanStrategy] {
+	return pulumix.Output[OceanStrategy]{
+		OutputState: i.ToOceanStrategyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // OceanStrategyArrayInput is an input type that accepts OceanStrategyArray and OceanStrategyArrayOutput values.
 // You can construct a concrete instance of `OceanStrategyArrayInput` via:
 //
@@ -6982,6 +8165,12 @@ func (i OceanStrategyArray) ToOceanStrategyArrayOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(OceanStrategyArrayOutput)
 }
 
+func (i OceanStrategyArray) ToOutput(ctx context.Context) pulumix.Output[[]OceanStrategy] {
+	return pulumix.Output[[]OceanStrategy]{
+		OutputState: i.ToOceanStrategyArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type OceanStrategyOutput struct{ *pulumi.OutputState }
 
 func (OceanStrategyOutput) ElementType() reflect.Type {
@@ -6994,6 +8183,12 @@ func (o OceanStrategyOutput) ToOceanStrategyOutput() OceanStrategyOutput {
 
 func (o OceanStrategyOutput) ToOceanStrategyOutputWithContext(ctx context.Context) OceanStrategyOutput {
 	return o
+}
+
+func (o OceanStrategyOutput) ToOutput(ctx context.Context) pulumix.Output[OceanStrategy] {
+	return pulumix.Output[OceanStrategy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // If no spot instance markets are available, enable Ocean to launch on-demand instances instead.
@@ -7018,6 +8213,12 @@ func (o OceanStrategyArrayOutput) ToOceanStrategyArrayOutput() OceanStrategyArra
 
 func (o OceanStrategyArrayOutput) ToOceanStrategyArrayOutputWithContext(ctx context.Context) OceanStrategyArrayOutput {
 	return o
+}
+
+func (o OceanStrategyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]OceanStrategy] {
+	return pulumix.Output[[]OceanStrategy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OceanStrategyArrayOutput) Index(i pulumi.IntInput) OceanStrategyOutput {
@@ -7063,6 +8264,12 @@ func (i OceanTagArgs) ToOceanTagOutputWithContext(ctx context.Context) OceanTagO
 	return pulumi.ToOutputWithContext(ctx, i).(OceanTagOutput)
 }
 
+func (i OceanTagArgs) ToOutput(ctx context.Context) pulumix.Output[OceanTag] {
+	return pulumix.Output[OceanTag]{
+		OutputState: i.ToOceanTagOutputWithContext(ctx).OutputState,
+	}
+}
+
 // OceanTagArrayInput is an input type that accepts OceanTagArray and OceanTagArrayOutput values.
 // You can construct a concrete instance of `OceanTagArrayInput` via:
 //
@@ -7088,6 +8295,12 @@ func (i OceanTagArray) ToOceanTagArrayOutputWithContext(ctx context.Context) Oce
 	return pulumi.ToOutputWithContext(ctx, i).(OceanTagArrayOutput)
 }
 
+func (i OceanTagArray) ToOutput(ctx context.Context) pulumix.Output[[]OceanTag] {
+	return pulumix.Output[[]OceanTag]{
+		OutputState: i.ToOceanTagArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type OceanTagOutput struct{ *pulumi.OutputState }
 
 func (OceanTagOutput) ElementType() reflect.Type {
@@ -7100,6 +8313,12 @@ func (o OceanTagOutput) ToOceanTagOutput() OceanTagOutput {
 
 func (o OceanTagOutput) ToOceanTagOutputWithContext(ctx context.Context) OceanTagOutput {
 	return o
+}
+
+func (o OceanTagOutput) ToOutput(ctx context.Context) pulumix.Output[OceanTag] {
+	return pulumix.Output[OceanTag]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Tag key.
@@ -7124,6 +8343,12 @@ func (o OceanTagArrayOutput) ToOceanTagArrayOutput() OceanTagArrayOutput {
 
 func (o OceanTagArrayOutput) ToOceanTagArrayOutputWithContext(ctx context.Context) OceanTagArrayOutput {
 	return o
+}
+
+func (o OceanTagArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]OceanTag] {
+	return pulumix.Output[[]OceanTag]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OceanTagArrayOutput) Index(i pulumi.IntInput) OceanTagOutput {
@@ -7167,6 +8392,12 @@ func (i OceanVirtualNodeGroupAutoscaleArgs) ToOceanVirtualNodeGroupAutoscaleOutp
 	return pulumi.ToOutputWithContext(ctx, i).(OceanVirtualNodeGroupAutoscaleOutput)
 }
 
+func (i OceanVirtualNodeGroupAutoscaleArgs) ToOutput(ctx context.Context) pulumix.Output[OceanVirtualNodeGroupAutoscale] {
+	return pulumix.Output[OceanVirtualNodeGroupAutoscale]{
+		OutputState: i.ToOceanVirtualNodeGroupAutoscaleOutputWithContext(ctx).OutputState,
+	}
+}
+
 // OceanVirtualNodeGroupAutoscaleArrayInput is an input type that accepts OceanVirtualNodeGroupAutoscaleArray and OceanVirtualNodeGroupAutoscaleArrayOutput values.
 // You can construct a concrete instance of `OceanVirtualNodeGroupAutoscaleArrayInput` via:
 //
@@ -7192,6 +8423,12 @@ func (i OceanVirtualNodeGroupAutoscaleArray) ToOceanVirtualNodeGroupAutoscaleArr
 	return pulumi.ToOutputWithContext(ctx, i).(OceanVirtualNodeGroupAutoscaleArrayOutput)
 }
 
+func (i OceanVirtualNodeGroupAutoscaleArray) ToOutput(ctx context.Context) pulumix.Output[[]OceanVirtualNodeGroupAutoscale] {
+	return pulumix.Output[[]OceanVirtualNodeGroupAutoscale]{
+		OutputState: i.ToOceanVirtualNodeGroupAutoscaleArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type OceanVirtualNodeGroupAutoscaleOutput struct{ *pulumi.OutputState }
 
 func (OceanVirtualNodeGroupAutoscaleOutput) ElementType() reflect.Type {
@@ -7204,6 +8441,12 @@ func (o OceanVirtualNodeGroupAutoscaleOutput) ToOceanVirtualNodeGroupAutoscaleOu
 
 func (o OceanVirtualNodeGroupAutoscaleOutput) ToOceanVirtualNodeGroupAutoscaleOutputWithContext(ctx context.Context) OceanVirtualNodeGroupAutoscaleOutput {
 	return o
+}
+
+func (o OceanVirtualNodeGroupAutoscaleOutput) ToOutput(ctx context.Context) pulumix.Output[OceanVirtualNodeGroupAutoscale] {
+	return pulumix.Output[OceanVirtualNodeGroupAutoscale]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Number between 0-200 to control the headroom % of the specific Virtual Node Group. Effective when `cluster.autoScaler.headroom.automatic.is_enabled` = true is set on the Ocean cluster.
@@ -7229,6 +8472,12 @@ func (o OceanVirtualNodeGroupAutoscaleArrayOutput) ToOceanVirtualNodeGroupAutosc
 
 func (o OceanVirtualNodeGroupAutoscaleArrayOutput) ToOceanVirtualNodeGroupAutoscaleArrayOutputWithContext(ctx context.Context) OceanVirtualNodeGroupAutoscaleArrayOutput {
 	return o
+}
+
+func (o OceanVirtualNodeGroupAutoscaleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]OceanVirtualNodeGroupAutoscale] {
+	return pulumix.Output[[]OceanVirtualNodeGroupAutoscale]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OceanVirtualNodeGroupAutoscaleArrayOutput) Index(i pulumi.IntInput) OceanVirtualNodeGroupAutoscaleOutput {
@@ -7282,6 +8531,12 @@ func (i OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArgs) ToOceanVirtualNodeG
 	return pulumi.ToOutputWithContext(ctx, i).(OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomOutput)
 }
 
+func (i OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArgs) ToOutput(ctx context.Context) pulumix.Output[OceanVirtualNodeGroupAutoscaleAutoscaleHeadroom] {
+	return pulumix.Output[OceanVirtualNodeGroupAutoscaleAutoscaleHeadroom]{
+		OutputState: i.ToOceanVirtualNodeGroupAutoscaleAutoscaleHeadroomOutputWithContext(ctx).OutputState,
+	}
+}
+
 // OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArrayInput is an input type that accepts OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArray and OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArrayOutput values.
 // You can construct a concrete instance of `OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArrayInput` via:
 //
@@ -7307,6 +8562,12 @@ func (i OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArray) ToOceanVirtualNode
 	return pulumi.ToOutputWithContext(ctx, i).(OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArrayOutput)
 }
 
+func (i OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArray) ToOutput(ctx context.Context) pulumix.Output[[]OceanVirtualNodeGroupAutoscaleAutoscaleHeadroom] {
+	return pulumix.Output[[]OceanVirtualNodeGroupAutoscaleAutoscaleHeadroom]{
+		OutputState: i.ToOceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomOutput struct{ *pulumi.OutputState }
 
 func (OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomOutput) ElementType() reflect.Type {
@@ -7319,6 +8580,12 @@ func (o OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomOutput) ToOceanVirtualNod
 
 func (o OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomOutput) ToOceanVirtualNodeGroupAutoscaleAutoscaleHeadroomOutputWithContext(ctx context.Context) OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomOutput {
 	return o
+}
+
+func (o OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomOutput) ToOutput(ctx context.Context) pulumix.Output[OceanVirtualNodeGroupAutoscaleAutoscaleHeadroom] {
+	return pulumix.Output[OceanVirtualNodeGroupAutoscaleAutoscaleHeadroom]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Configure the number of CPUs to allocate for the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
@@ -7353,6 +8620,12 @@ func (o OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArrayOutput) ToOceanVirtu
 
 func (o OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArrayOutput) ToOceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArrayOutputWithContext(ctx context.Context) OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArrayOutput {
 	return o
+}
+
+func (o OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]OceanVirtualNodeGroupAutoscaleAutoscaleHeadroom] {
+	return pulumix.Output[[]OceanVirtualNodeGroupAutoscaleAutoscaleHeadroom]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArrayOutput) Index(i pulumi.IntInput) OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomOutput {
@@ -7398,6 +8671,12 @@ func (i OceanVirtualNodeGroupLabelArgs) ToOceanVirtualNodeGroupLabelOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(OceanVirtualNodeGroupLabelOutput)
 }
 
+func (i OceanVirtualNodeGroupLabelArgs) ToOutput(ctx context.Context) pulumix.Output[OceanVirtualNodeGroupLabel] {
+	return pulumix.Output[OceanVirtualNodeGroupLabel]{
+		OutputState: i.ToOceanVirtualNodeGroupLabelOutputWithContext(ctx).OutputState,
+	}
+}
+
 // OceanVirtualNodeGroupLabelArrayInput is an input type that accepts OceanVirtualNodeGroupLabelArray and OceanVirtualNodeGroupLabelArrayOutput values.
 // You can construct a concrete instance of `OceanVirtualNodeGroupLabelArrayInput` via:
 //
@@ -7423,6 +8702,12 @@ func (i OceanVirtualNodeGroupLabelArray) ToOceanVirtualNodeGroupLabelArrayOutput
 	return pulumi.ToOutputWithContext(ctx, i).(OceanVirtualNodeGroupLabelArrayOutput)
 }
 
+func (i OceanVirtualNodeGroupLabelArray) ToOutput(ctx context.Context) pulumix.Output[[]OceanVirtualNodeGroupLabel] {
+	return pulumix.Output[[]OceanVirtualNodeGroupLabel]{
+		OutputState: i.ToOceanVirtualNodeGroupLabelArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type OceanVirtualNodeGroupLabelOutput struct{ *pulumi.OutputState }
 
 func (OceanVirtualNodeGroupLabelOutput) ElementType() reflect.Type {
@@ -7435,6 +8720,12 @@ func (o OceanVirtualNodeGroupLabelOutput) ToOceanVirtualNodeGroupLabelOutput() O
 
 func (o OceanVirtualNodeGroupLabelOutput) ToOceanVirtualNodeGroupLabelOutputWithContext(ctx context.Context) OceanVirtualNodeGroupLabelOutput {
 	return o
+}
+
+func (o OceanVirtualNodeGroupLabelOutput) ToOutput(ctx context.Context) pulumix.Output[OceanVirtualNodeGroupLabel] {
+	return pulumix.Output[OceanVirtualNodeGroupLabel]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Tag Key for Vms in the cluster.
@@ -7459,6 +8750,12 @@ func (o OceanVirtualNodeGroupLabelArrayOutput) ToOceanVirtualNodeGroupLabelArray
 
 func (o OceanVirtualNodeGroupLabelArrayOutput) ToOceanVirtualNodeGroupLabelArrayOutputWithContext(ctx context.Context) OceanVirtualNodeGroupLabelArrayOutput {
 	return o
+}
+
+func (o OceanVirtualNodeGroupLabelArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]OceanVirtualNodeGroupLabel] {
+	return pulumix.Output[[]OceanVirtualNodeGroupLabel]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OceanVirtualNodeGroupLabelArrayOutput) Index(i pulumi.IntInput) OceanVirtualNodeGroupLabelOutput {
@@ -7508,6 +8805,12 @@ func (i OceanVirtualNodeGroupLaunchSpecificationArgs) ToOceanVirtualNodeGroupLau
 	return pulumi.ToOutputWithContext(ctx, i).(OceanVirtualNodeGroupLaunchSpecificationOutput)
 }
 
+func (i OceanVirtualNodeGroupLaunchSpecificationArgs) ToOutput(ctx context.Context) pulumix.Output[OceanVirtualNodeGroupLaunchSpecification] {
+	return pulumix.Output[OceanVirtualNodeGroupLaunchSpecification]{
+		OutputState: i.ToOceanVirtualNodeGroupLaunchSpecificationOutputWithContext(ctx).OutputState,
+	}
+}
+
 // OceanVirtualNodeGroupLaunchSpecificationArrayInput is an input type that accepts OceanVirtualNodeGroupLaunchSpecificationArray and OceanVirtualNodeGroupLaunchSpecificationArrayOutput values.
 // You can construct a concrete instance of `OceanVirtualNodeGroupLaunchSpecificationArrayInput` via:
 //
@@ -7533,6 +8836,12 @@ func (i OceanVirtualNodeGroupLaunchSpecificationArray) ToOceanVirtualNodeGroupLa
 	return pulumi.ToOutputWithContext(ctx, i).(OceanVirtualNodeGroupLaunchSpecificationArrayOutput)
 }
 
+func (i OceanVirtualNodeGroupLaunchSpecificationArray) ToOutput(ctx context.Context) pulumix.Output[[]OceanVirtualNodeGroupLaunchSpecification] {
+	return pulumix.Output[[]OceanVirtualNodeGroupLaunchSpecification]{
+		OutputState: i.ToOceanVirtualNodeGroupLaunchSpecificationArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type OceanVirtualNodeGroupLaunchSpecificationOutput struct{ *pulumi.OutputState }
 
 func (OceanVirtualNodeGroupLaunchSpecificationOutput) ElementType() reflect.Type {
@@ -7545,6 +8854,12 @@ func (o OceanVirtualNodeGroupLaunchSpecificationOutput) ToOceanVirtualNodeGroupL
 
 func (o OceanVirtualNodeGroupLaunchSpecificationOutput) ToOceanVirtualNodeGroupLaunchSpecificationOutputWithContext(ctx context.Context) OceanVirtualNodeGroupLaunchSpecificationOutput {
 	return o
+}
+
+func (o OceanVirtualNodeGroupLaunchSpecificationOutput) ToOutput(ctx context.Context) pulumix.Output[OceanVirtualNodeGroupLaunchSpecification] {
+	return pulumix.Output[OceanVirtualNodeGroupLaunchSpecification]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The maximum number of pods per node in an AKS cluster.
@@ -7578,6 +8893,12 @@ func (o OceanVirtualNodeGroupLaunchSpecificationArrayOutput) ToOceanVirtualNodeG
 
 func (o OceanVirtualNodeGroupLaunchSpecificationArrayOutput) ToOceanVirtualNodeGroupLaunchSpecificationArrayOutputWithContext(ctx context.Context) OceanVirtualNodeGroupLaunchSpecificationArrayOutput {
 	return o
+}
+
+func (o OceanVirtualNodeGroupLaunchSpecificationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]OceanVirtualNodeGroupLaunchSpecification] {
+	return pulumix.Output[[]OceanVirtualNodeGroupLaunchSpecification]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OceanVirtualNodeGroupLaunchSpecificationArrayOutput) Index(i pulumi.IntInput) OceanVirtualNodeGroupLaunchSpecificationOutput {
@@ -7627,6 +8948,12 @@ func (i OceanVirtualNodeGroupLaunchSpecificationOsDiskArgs) ToOceanVirtualNodeGr
 	return pulumi.ToOutputWithContext(ctx, i).(OceanVirtualNodeGroupLaunchSpecificationOsDiskOutput)
 }
 
+func (i OceanVirtualNodeGroupLaunchSpecificationOsDiskArgs) ToOutput(ctx context.Context) pulumix.Output[OceanVirtualNodeGroupLaunchSpecificationOsDisk] {
+	return pulumix.Output[OceanVirtualNodeGroupLaunchSpecificationOsDisk]{
+		OutputState: i.ToOceanVirtualNodeGroupLaunchSpecificationOsDiskOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i OceanVirtualNodeGroupLaunchSpecificationOsDiskArgs) ToOceanVirtualNodeGroupLaunchSpecificationOsDiskPtrOutput() OceanVirtualNodeGroupLaunchSpecificationOsDiskPtrOutput {
 	return i.ToOceanVirtualNodeGroupLaunchSpecificationOsDiskPtrOutputWithContext(context.Background())
 }
@@ -7668,6 +8995,12 @@ func (i *oceanVirtualNodeGroupLaunchSpecificationOsDiskPtrType) ToOceanVirtualNo
 	return pulumi.ToOutputWithContext(ctx, i).(OceanVirtualNodeGroupLaunchSpecificationOsDiskPtrOutput)
 }
 
+func (i *oceanVirtualNodeGroupLaunchSpecificationOsDiskPtrType) ToOutput(ctx context.Context) pulumix.Output[*OceanVirtualNodeGroupLaunchSpecificationOsDisk] {
+	return pulumix.Output[*OceanVirtualNodeGroupLaunchSpecificationOsDisk]{
+		OutputState: i.ToOceanVirtualNodeGroupLaunchSpecificationOsDiskPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type OceanVirtualNodeGroupLaunchSpecificationOsDiskOutput struct{ *pulumi.OutputState }
 
 func (OceanVirtualNodeGroupLaunchSpecificationOsDiskOutput) ElementType() reflect.Type {
@@ -7690,6 +9023,12 @@ func (o OceanVirtualNodeGroupLaunchSpecificationOsDiskOutput) ToOceanVirtualNode
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v OceanVirtualNodeGroupLaunchSpecificationOsDisk) *OceanVirtualNodeGroupLaunchSpecificationOsDisk {
 		return &v
 	}).(OceanVirtualNodeGroupLaunchSpecificationOsDiskPtrOutput)
+}
+
+func (o OceanVirtualNodeGroupLaunchSpecificationOsDiskOutput) ToOutput(ctx context.Context) pulumix.Output[OceanVirtualNodeGroupLaunchSpecificationOsDisk] {
+	return pulumix.Output[OceanVirtualNodeGroupLaunchSpecificationOsDisk]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The size of the OS disk in GB, Required if dataDisks is specified.
@@ -7719,6 +9058,12 @@ func (o OceanVirtualNodeGroupLaunchSpecificationOsDiskPtrOutput) ToOceanVirtualN
 
 func (o OceanVirtualNodeGroupLaunchSpecificationOsDiskPtrOutput) ToOceanVirtualNodeGroupLaunchSpecificationOsDiskPtrOutputWithContext(ctx context.Context) OceanVirtualNodeGroupLaunchSpecificationOsDiskPtrOutput {
 	return o
+}
+
+func (o OceanVirtualNodeGroupLaunchSpecificationOsDiskPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OceanVirtualNodeGroupLaunchSpecificationOsDisk] {
+	return pulumix.Output[*OceanVirtualNodeGroupLaunchSpecificationOsDisk]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OceanVirtualNodeGroupLaunchSpecificationOsDiskPtrOutput) Elem() OceanVirtualNodeGroupLaunchSpecificationOsDiskOutput {
@@ -7798,6 +9143,12 @@ func (i OceanVirtualNodeGroupLaunchSpecificationTagArgs) ToOceanVirtualNodeGroup
 	return pulumi.ToOutputWithContext(ctx, i).(OceanVirtualNodeGroupLaunchSpecificationTagOutput)
 }
 
+func (i OceanVirtualNodeGroupLaunchSpecificationTagArgs) ToOutput(ctx context.Context) pulumix.Output[OceanVirtualNodeGroupLaunchSpecificationTag] {
+	return pulumix.Output[OceanVirtualNodeGroupLaunchSpecificationTag]{
+		OutputState: i.ToOceanVirtualNodeGroupLaunchSpecificationTagOutputWithContext(ctx).OutputState,
+	}
+}
+
 // OceanVirtualNodeGroupLaunchSpecificationTagArrayInput is an input type that accepts OceanVirtualNodeGroupLaunchSpecificationTagArray and OceanVirtualNodeGroupLaunchSpecificationTagArrayOutput values.
 // You can construct a concrete instance of `OceanVirtualNodeGroupLaunchSpecificationTagArrayInput` via:
 //
@@ -7823,6 +9174,12 @@ func (i OceanVirtualNodeGroupLaunchSpecificationTagArray) ToOceanVirtualNodeGrou
 	return pulumi.ToOutputWithContext(ctx, i).(OceanVirtualNodeGroupLaunchSpecificationTagArrayOutput)
 }
 
+func (i OceanVirtualNodeGroupLaunchSpecificationTagArray) ToOutput(ctx context.Context) pulumix.Output[[]OceanVirtualNodeGroupLaunchSpecificationTag] {
+	return pulumix.Output[[]OceanVirtualNodeGroupLaunchSpecificationTag]{
+		OutputState: i.ToOceanVirtualNodeGroupLaunchSpecificationTagArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type OceanVirtualNodeGroupLaunchSpecificationTagOutput struct{ *pulumi.OutputState }
 
 func (OceanVirtualNodeGroupLaunchSpecificationTagOutput) ElementType() reflect.Type {
@@ -7835,6 +9192,12 @@ func (o OceanVirtualNodeGroupLaunchSpecificationTagOutput) ToOceanVirtualNodeGro
 
 func (o OceanVirtualNodeGroupLaunchSpecificationTagOutput) ToOceanVirtualNodeGroupLaunchSpecificationTagOutputWithContext(ctx context.Context) OceanVirtualNodeGroupLaunchSpecificationTagOutput {
 	return o
+}
+
+func (o OceanVirtualNodeGroupLaunchSpecificationTagOutput) ToOutput(ctx context.Context) pulumix.Output[OceanVirtualNodeGroupLaunchSpecificationTag] {
+	return pulumix.Output[OceanVirtualNodeGroupLaunchSpecificationTag]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Tag Key for Vms in the cluster.
@@ -7859,6 +9222,12 @@ func (o OceanVirtualNodeGroupLaunchSpecificationTagArrayOutput) ToOceanVirtualNo
 
 func (o OceanVirtualNodeGroupLaunchSpecificationTagArrayOutput) ToOceanVirtualNodeGroupLaunchSpecificationTagArrayOutputWithContext(ctx context.Context) OceanVirtualNodeGroupLaunchSpecificationTagArrayOutput {
 	return o
+}
+
+func (o OceanVirtualNodeGroupLaunchSpecificationTagArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]OceanVirtualNodeGroupLaunchSpecificationTag] {
+	return pulumix.Output[[]OceanVirtualNodeGroupLaunchSpecificationTag]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OceanVirtualNodeGroupLaunchSpecificationTagArrayOutput) Index(i pulumi.IntInput) OceanVirtualNodeGroupLaunchSpecificationTagOutput {
@@ -7900,6 +9269,12 @@ func (i OceanVirtualNodeGroupResourceLimitArgs) ToOceanVirtualNodeGroupResourceL
 	return pulumi.ToOutputWithContext(ctx, i).(OceanVirtualNodeGroupResourceLimitOutput)
 }
 
+func (i OceanVirtualNodeGroupResourceLimitArgs) ToOutput(ctx context.Context) pulumix.Output[OceanVirtualNodeGroupResourceLimit] {
+	return pulumix.Output[OceanVirtualNodeGroupResourceLimit]{
+		OutputState: i.ToOceanVirtualNodeGroupResourceLimitOutputWithContext(ctx).OutputState,
+	}
+}
+
 // OceanVirtualNodeGroupResourceLimitArrayInput is an input type that accepts OceanVirtualNodeGroupResourceLimitArray and OceanVirtualNodeGroupResourceLimitArrayOutput values.
 // You can construct a concrete instance of `OceanVirtualNodeGroupResourceLimitArrayInput` via:
 //
@@ -7925,6 +9300,12 @@ func (i OceanVirtualNodeGroupResourceLimitArray) ToOceanVirtualNodeGroupResource
 	return pulumi.ToOutputWithContext(ctx, i).(OceanVirtualNodeGroupResourceLimitArrayOutput)
 }
 
+func (i OceanVirtualNodeGroupResourceLimitArray) ToOutput(ctx context.Context) pulumix.Output[[]OceanVirtualNodeGroupResourceLimit] {
+	return pulumix.Output[[]OceanVirtualNodeGroupResourceLimit]{
+		OutputState: i.ToOceanVirtualNodeGroupResourceLimitArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type OceanVirtualNodeGroupResourceLimitOutput struct{ *pulumi.OutputState }
 
 func (OceanVirtualNodeGroupResourceLimitOutput) ElementType() reflect.Type {
@@ -7937,6 +9318,12 @@ func (o OceanVirtualNodeGroupResourceLimitOutput) ToOceanVirtualNodeGroupResourc
 
 func (o OceanVirtualNodeGroupResourceLimitOutput) ToOceanVirtualNodeGroupResourceLimitOutputWithContext(ctx context.Context) OceanVirtualNodeGroupResourceLimitOutput {
 	return o
+}
+
+func (o OceanVirtualNodeGroupResourceLimitOutput) ToOutput(ctx context.Context) pulumix.Output[OceanVirtualNodeGroupResourceLimit] {
+	return pulumix.Output[OceanVirtualNodeGroupResourceLimit]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Option to set a maximum number of instances per virtual node group. If set, value must be greater than or equal to 0.
@@ -7956,6 +9343,12 @@ func (o OceanVirtualNodeGroupResourceLimitArrayOutput) ToOceanVirtualNodeGroupRe
 
 func (o OceanVirtualNodeGroupResourceLimitArrayOutput) ToOceanVirtualNodeGroupResourceLimitArrayOutputWithContext(ctx context.Context) OceanVirtualNodeGroupResourceLimitArrayOutput {
 	return o
+}
+
+func (o OceanVirtualNodeGroupResourceLimitArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]OceanVirtualNodeGroupResourceLimit] {
+	return pulumix.Output[[]OceanVirtualNodeGroupResourceLimit]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OceanVirtualNodeGroupResourceLimitArrayOutput) Index(i pulumi.IntInput) OceanVirtualNodeGroupResourceLimitOutput {
@@ -8005,6 +9398,12 @@ func (i OceanVirtualNodeGroupTaintArgs) ToOceanVirtualNodeGroupTaintOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(OceanVirtualNodeGroupTaintOutput)
 }
 
+func (i OceanVirtualNodeGroupTaintArgs) ToOutput(ctx context.Context) pulumix.Output[OceanVirtualNodeGroupTaint] {
+	return pulumix.Output[OceanVirtualNodeGroupTaint]{
+		OutputState: i.ToOceanVirtualNodeGroupTaintOutputWithContext(ctx).OutputState,
+	}
+}
+
 // OceanVirtualNodeGroupTaintArrayInput is an input type that accepts OceanVirtualNodeGroupTaintArray and OceanVirtualNodeGroupTaintArrayOutput values.
 // You can construct a concrete instance of `OceanVirtualNodeGroupTaintArrayInput` via:
 //
@@ -8030,6 +9429,12 @@ func (i OceanVirtualNodeGroupTaintArray) ToOceanVirtualNodeGroupTaintArrayOutput
 	return pulumi.ToOutputWithContext(ctx, i).(OceanVirtualNodeGroupTaintArrayOutput)
 }
 
+func (i OceanVirtualNodeGroupTaintArray) ToOutput(ctx context.Context) pulumix.Output[[]OceanVirtualNodeGroupTaint] {
+	return pulumix.Output[[]OceanVirtualNodeGroupTaint]{
+		OutputState: i.ToOceanVirtualNodeGroupTaintArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type OceanVirtualNodeGroupTaintOutput struct{ *pulumi.OutputState }
 
 func (OceanVirtualNodeGroupTaintOutput) ElementType() reflect.Type {
@@ -8042,6 +9447,12 @@ func (o OceanVirtualNodeGroupTaintOutput) ToOceanVirtualNodeGroupTaintOutput() O
 
 func (o OceanVirtualNodeGroupTaintOutput) ToOceanVirtualNodeGroupTaintOutputWithContext(ctx context.Context) OceanVirtualNodeGroupTaintOutput {
 	return o
+}
+
+func (o OceanVirtualNodeGroupTaintOutput) ToOutput(ctx context.Context) pulumix.Output[OceanVirtualNodeGroupTaint] {
+	return pulumix.Output[OceanVirtualNodeGroupTaint]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The effect of the taint. Valid values: `"NoSchedule"`, `"PreferNoSchedule"`, `"NoExecute"`, `"PreferNoExecute"`.
@@ -8071,6 +9482,12 @@ func (o OceanVirtualNodeGroupTaintArrayOutput) ToOceanVirtualNodeGroupTaintArray
 
 func (o OceanVirtualNodeGroupTaintArrayOutput) ToOceanVirtualNodeGroupTaintArrayOutputWithContext(ctx context.Context) OceanVirtualNodeGroupTaintArrayOutput {
 	return o
+}
+
+func (o OceanVirtualNodeGroupTaintArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]OceanVirtualNodeGroupTaint] {
+	return pulumix.Output[[]OceanVirtualNodeGroupTaint]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OceanVirtualNodeGroupTaintArrayOutput) Index(i pulumi.IntInput) OceanVirtualNodeGroupTaintOutput {
@@ -8112,6 +9529,12 @@ func (i OceanVmSizeArgs) ToOceanVmSizeOutputWithContext(ctx context.Context) Oce
 	return pulumi.ToOutputWithContext(ctx, i).(OceanVmSizeOutput)
 }
 
+func (i OceanVmSizeArgs) ToOutput(ctx context.Context) pulumix.Output[OceanVmSize] {
+	return pulumix.Output[OceanVmSize]{
+		OutputState: i.ToOceanVmSizeOutputWithContext(ctx).OutputState,
+	}
+}
+
 // OceanVmSizeArrayInput is an input type that accepts OceanVmSizeArray and OceanVmSizeArrayOutput values.
 // You can construct a concrete instance of `OceanVmSizeArrayInput` via:
 //
@@ -8137,6 +9560,12 @@ func (i OceanVmSizeArray) ToOceanVmSizeArrayOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(OceanVmSizeArrayOutput)
 }
 
+func (i OceanVmSizeArray) ToOutput(ctx context.Context) pulumix.Output[[]OceanVmSize] {
+	return pulumix.Output[[]OceanVmSize]{
+		OutputState: i.ToOceanVmSizeArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type OceanVmSizeOutput struct{ *pulumi.OutputState }
 
 func (OceanVmSizeOutput) ElementType() reflect.Type {
@@ -8149,6 +9578,12 @@ func (o OceanVmSizeOutput) ToOceanVmSizeOutput() OceanVmSizeOutput {
 
 func (o OceanVmSizeOutput) ToOceanVmSizeOutputWithContext(ctx context.Context) OceanVmSizeOutput {
 	return o
+}
+
+func (o OceanVmSizeOutput) ToOutput(ctx context.Context) pulumix.Output[OceanVmSize] {
+	return pulumix.Output[OceanVmSize]{
+		OutputState: o.OutputState,
+	}
 }
 
 // VM types allowed in the Ocean cluster.
@@ -8168,6 +9603,12 @@ func (o OceanVmSizeArrayOutput) ToOceanVmSizeArrayOutput() OceanVmSizeArrayOutpu
 
 func (o OceanVmSizeArrayOutput) ToOceanVmSizeArrayOutputWithContext(ctx context.Context) OceanVmSizeArrayOutput {
 	return o
+}
+
+func (o OceanVmSizeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]OceanVmSize] {
+	return pulumix.Output[[]OceanVmSize]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OceanVmSizeArrayOutput) Index(i pulumi.IntInput) OceanVmSizeOutput {
