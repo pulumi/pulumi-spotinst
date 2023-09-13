@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type OceanNp struct {
@@ -27,6 +28,7 @@ type OceanNp struct {
 	Filters                            OceanNpFiltersPtrOutput    `pulumi:"filters"`
 	Headrooms                          OceanNpHeadroomArrayOutput `pulumi:"headrooms"`
 	Health                             OceanNpHealthOutput        `pulumi:"health"`
+	KubernetesVersion                  pulumi.StringPtrOutput     `pulumi:"kubernetesVersion"`
 	Labels                             pulumi.MapOutput           `pulumi:"labels"`
 	MaxCount                           pulumi.IntPtrOutput        `pulumi:"maxCount"`
 	MaxPodsPerNode                     pulumi.IntPtrOutput        `pulumi:"maxPodsPerNode"`
@@ -96,6 +98,7 @@ type oceanNpState struct {
 	Filters                            *OceanNpFilters        `pulumi:"filters"`
 	Headrooms                          []OceanNpHeadroom      `pulumi:"headrooms"`
 	Health                             *OceanNpHealth         `pulumi:"health"`
+	KubernetesVersion                  *string                `pulumi:"kubernetesVersion"`
 	Labels                             map[string]interface{} `pulumi:"labels"`
 	MaxCount                           *int                   `pulumi:"maxCount"`
 	MaxPodsPerNode                     *int                   `pulumi:"maxPodsPerNode"`
@@ -124,6 +127,7 @@ type OceanNpState struct {
 	Filters                            OceanNpFiltersPtrInput
 	Headrooms                          OceanNpHeadroomArrayInput
 	Health                             OceanNpHealthPtrInput
+	KubernetesVersion                  pulumi.StringPtrInput
 	Labels                             pulumi.MapInput
 	MaxCount                           pulumi.IntPtrInput
 	MaxPodsPerNode                     pulumi.IntPtrInput
@@ -156,6 +160,7 @@ type oceanNpArgs struct {
 	Filters                            *OceanNpFilters        `pulumi:"filters"`
 	Headrooms                          []OceanNpHeadroom      `pulumi:"headrooms"`
 	Health                             *OceanNpHealth         `pulumi:"health"`
+	KubernetesVersion                  *string                `pulumi:"kubernetesVersion"`
 	Labels                             map[string]interface{} `pulumi:"labels"`
 	MaxCount                           *int                   `pulumi:"maxCount"`
 	MaxPodsPerNode                     *int                   `pulumi:"maxPodsPerNode"`
@@ -185,6 +190,7 @@ type OceanNpArgs struct {
 	Filters                            OceanNpFiltersPtrInput
 	Headrooms                          OceanNpHeadroomArrayInput
 	Health                             OceanNpHealthPtrInput
+	KubernetesVersion                  pulumi.StringPtrInput
 	Labels                             pulumi.MapInput
 	MaxCount                           pulumi.IntPtrInput
 	MaxPodsPerNode                     pulumi.IntPtrInput
@@ -223,6 +229,12 @@ func (i *OceanNp) ToOceanNpOutputWithContext(ctx context.Context) OceanNpOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(OceanNpOutput)
 }
 
+func (i *OceanNp) ToOutput(ctx context.Context) pulumix.Output[*OceanNp] {
+	return pulumix.Output[*OceanNp]{
+		OutputState: i.ToOceanNpOutputWithContext(ctx).OutputState,
+	}
+}
+
 // OceanNpArrayInput is an input type that accepts OceanNpArray and OceanNpArrayOutput values.
 // You can construct a concrete instance of `OceanNpArrayInput` via:
 //
@@ -246,6 +258,12 @@ func (i OceanNpArray) ToOceanNpArrayOutput() OceanNpArrayOutput {
 
 func (i OceanNpArray) ToOceanNpArrayOutputWithContext(ctx context.Context) OceanNpArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(OceanNpArrayOutput)
+}
+
+func (i OceanNpArray) ToOutput(ctx context.Context) pulumix.Output[[]*OceanNp] {
+	return pulumix.Output[[]*OceanNp]{
+		OutputState: i.ToOceanNpArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // OceanNpMapInput is an input type that accepts OceanNpMap and OceanNpMapOutput values.
@@ -273,6 +291,12 @@ func (i OceanNpMap) ToOceanNpMapOutputWithContext(ctx context.Context) OceanNpMa
 	return pulumi.ToOutputWithContext(ctx, i).(OceanNpMapOutput)
 }
 
+func (i OceanNpMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*OceanNp] {
+	return pulumix.Output[map[string]*OceanNp]{
+		OutputState: i.ToOceanNpMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type OceanNpOutput struct{ *pulumi.OutputState }
 
 func (OceanNpOutput) ElementType() reflect.Type {
@@ -285,6 +309,12 @@ func (o OceanNpOutput) ToOceanNpOutput() OceanNpOutput {
 
 func (o OceanNpOutput) ToOceanNpOutputWithContext(ctx context.Context) OceanNpOutput {
 	return o
+}
+
+func (o OceanNpOutput) ToOutput(ctx context.Context) pulumix.Output[*OceanNp] {
+	return pulumix.Output[*OceanNp]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OceanNpOutput) AksClusterName() pulumi.StringOutput {
@@ -333,6 +363,10 @@ func (o OceanNpOutput) Headrooms() OceanNpHeadroomArrayOutput {
 
 func (o OceanNpOutput) Health() OceanNpHealthOutput {
 	return o.ApplyT(func(v *OceanNp) OceanNpHealthOutput { return v.Health }).(OceanNpHealthOutput)
+}
+
+func (o OceanNpOutput) KubernetesVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OceanNp) pulumi.StringPtrOutput { return v.KubernetesVersion }).(pulumi.StringPtrOutput)
 }
 
 func (o OceanNpOutput) Labels() pulumi.MapOutput {
@@ -401,6 +435,12 @@ func (o OceanNpArrayOutput) ToOceanNpArrayOutputWithContext(ctx context.Context)
 	return o
 }
 
+func (o OceanNpArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*OceanNp] {
+	return pulumix.Output[[]*OceanNp]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o OceanNpArrayOutput) Index(i pulumi.IntInput) OceanNpOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *OceanNp {
 		return vs[0].([]*OceanNp)[vs[1].(int)]
@@ -419,6 +459,12 @@ func (o OceanNpMapOutput) ToOceanNpMapOutput() OceanNpMapOutput {
 
 func (o OceanNpMapOutput) ToOceanNpMapOutputWithContext(ctx context.Context) OceanNpMapOutput {
 	return o
+}
+
+func (o OceanNpMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*OceanNp] {
+	return pulumix.Output[map[string]*OceanNp]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OceanNpMapOutput) MapIndex(k pulumi.StringInput) OceanNpOutput {

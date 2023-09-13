@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type TargetSet struct {
@@ -141,6 +142,12 @@ func (i *TargetSet) ToTargetSetOutputWithContext(ctx context.Context) TargetSetO
 	return pulumi.ToOutputWithContext(ctx, i).(TargetSetOutput)
 }
 
+func (i *TargetSet) ToOutput(ctx context.Context) pulumix.Output[*TargetSet] {
+	return pulumix.Output[*TargetSet]{
+		OutputState: i.ToTargetSetOutputWithContext(ctx).OutputState,
+	}
+}
+
 // TargetSetArrayInput is an input type that accepts TargetSetArray and TargetSetArrayOutput values.
 // You can construct a concrete instance of `TargetSetArrayInput` via:
 //
@@ -164,6 +171,12 @@ func (i TargetSetArray) ToTargetSetArrayOutput() TargetSetArrayOutput {
 
 func (i TargetSetArray) ToTargetSetArrayOutputWithContext(ctx context.Context) TargetSetArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TargetSetArrayOutput)
+}
+
+func (i TargetSetArray) ToOutput(ctx context.Context) pulumix.Output[[]*TargetSet] {
+	return pulumix.Output[[]*TargetSet]{
+		OutputState: i.ToTargetSetArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // TargetSetMapInput is an input type that accepts TargetSetMap and TargetSetMapOutput values.
@@ -191,6 +204,12 @@ func (i TargetSetMap) ToTargetSetMapOutputWithContext(ctx context.Context) Targe
 	return pulumi.ToOutputWithContext(ctx, i).(TargetSetMapOutput)
 }
 
+func (i TargetSetMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*TargetSet] {
+	return pulumix.Output[map[string]*TargetSet]{
+		OutputState: i.ToTargetSetMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TargetSetOutput struct{ *pulumi.OutputState }
 
 func (TargetSetOutput) ElementType() reflect.Type {
@@ -203,6 +222,12 @@ func (o TargetSetOutput) ToTargetSetOutput() TargetSetOutput {
 
 func (o TargetSetOutput) ToTargetSetOutputWithContext(ctx context.Context) TargetSetOutput {
 	return o
+}
+
+func (o TargetSetOutput) ToOutput(ctx context.Context) pulumix.Output[*TargetSet] {
+	return pulumix.Output[*TargetSet]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TargetSetOutput) BalancerId() pulumi.StringOutput {
@@ -251,6 +276,12 @@ func (o TargetSetArrayOutput) ToTargetSetArrayOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o TargetSetArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*TargetSet] {
+	return pulumix.Output[[]*TargetSet]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o TargetSetArrayOutput) Index(i pulumi.IntInput) TargetSetOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TargetSet {
 		return vs[0].([]*TargetSet)[vs[1].(int)]
@@ -269,6 +300,12 @@ func (o TargetSetMapOutput) ToTargetSetMapOutput() TargetSetMapOutput {
 
 func (o TargetSetMapOutput) ToTargetSetMapOutputWithContext(ctx context.Context) TargetSetMapOutput {
 	return o
+}
+
+func (o TargetSetMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*TargetSet] {
+	return pulumix.Output[map[string]*TargetSet]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TargetSetMapOutput) MapIndex(k pulumi.StringInput) TargetSetOutput {

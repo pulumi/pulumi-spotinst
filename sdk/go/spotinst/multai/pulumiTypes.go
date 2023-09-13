@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -44,6 +45,12 @@ func (i BalancerConnectionTimeoutsArgs) ToBalancerConnectionTimeoutsOutput() Bal
 
 func (i BalancerConnectionTimeoutsArgs) ToBalancerConnectionTimeoutsOutputWithContext(ctx context.Context) BalancerConnectionTimeoutsOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BalancerConnectionTimeoutsOutput)
+}
+
+func (i BalancerConnectionTimeoutsArgs) ToOutput(ctx context.Context) pulumix.Output[BalancerConnectionTimeouts] {
+	return pulumix.Output[BalancerConnectionTimeouts]{
+		OutputState: i.ToBalancerConnectionTimeoutsOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i BalancerConnectionTimeoutsArgs) ToBalancerConnectionTimeoutsPtrOutput() BalancerConnectionTimeoutsPtrOutput {
@@ -87,6 +94,12 @@ func (i *balancerConnectionTimeoutsPtrType) ToBalancerConnectionTimeoutsPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(BalancerConnectionTimeoutsPtrOutput)
 }
 
+func (i *balancerConnectionTimeoutsPtrType) ToOutput(ctx context.Context) pulumix.Output[*BalancerConnectionTimeouts] {
+	return pulumix.Output[*BalancerConnectionTimeouts]{
+		OutputState: i.ToBalancerConnectionTimeoutsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type BalancerConnectionTimeoutsOutput struct{ *pulumi.OutputState }
 
 func (BalancerConnectionTimeoutsOutput) ElementType() reflect.Type {
@@ -111,6 +124,12 @@ func (o BalancerConnectionTimeoutsOutput) ToBalancerConnectionTimeoutsPtrOutputW
 	}).(BalancerConnectionTimeoutsPtrOutput)
 }
 
+func (o BalancerConnectionTimeoutsOutput) ToOutput(ctx context.Context) pulumix.Output[BalancerConnectionTimeouts] {
+	return pulumix.Output[BalancerConnectionTimeouts]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o BalancerConnectionTimeoutsOutput) Draining() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v BalancerConnectionTimeouts) *int { return v.Draining }).(pulumi.IntPtrOutput)
 }
@@ -131,6 +150,12 @@ func (o BalancerConnectionTimeoutsPtrOutput) ToBalancerConnectionTimeoutsPtrOutp
 
 func (o BalancerConnectionTimeoutsPtrOutput) ToBalancerConnectionTimeoutsPtrOutputWithContext(ctx context.Context) BalancerConnectionTimeoutsPtrOutput {
 	return o
+}
+
+func (o BalancerConnectionTimeoutsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BalancerConnectionTimeouts] {
+	return pulumix.Output[*BalancerConnectionTimeouts]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BalancerConnectionTimeoutsPtrOutput) Elem() BalancerConnectionTimeoutsOutput {
@@ -194,6 +219,12 @@ func (i BalancerTagArgs) ToBalancerTagOutputWithContext(ctx context.Context) Bal
 	return pulumi.ToOutputWithContext(ctx, i).(BalancerTagOutput)
 }
 
+func (i BalancerTagArgs) ToOutput(ctx context.Context) pulumix.Output[BalancerTag] {
+	return pulumix.Output[BalancerTag]{
+		OutputState: i.ToBalancerTagOutputWithContext(ctx).OutputState,
+	}
+}
+
 // BalancerTagArrayInput is an input type that accepts BalancerTagArray and BalancerTagArrayOutput values.
 // You can construct a concrete instance of `BalancerTagArrayInput` via:
 //
@@ -219,6 +250,12 @@ func (i BalancerTagArray) ToBalancerTagArrayOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(BalancerTagArrayOutput)
 }
 
+func (i BalancerTagArray) ToOutput(ctx context.Context) pulumix.Output[[]BalancerTag] {
+	return pulumix.Output[[]BalancerTag]{
+		OutputState: i.ToBalancerTagArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type BalancerTagOutput struct{ *pulumi.OutputState }
 
 func (BalancerTagOutput) ElementType() reflect.Type {
@@ -231,6 +268,12 @@ func (o BalancerTagOutput) ToBalancerTagOutput() BalancerTagOutput {
 
 func (o BalancerTagOutput) ToBalancerTagOutputWithContext(ctx context.Context) BalancerTagOutput {
 	return o
+}
+
+func (o BalancerTagOutput) ToOutput(ctx context.Context) pulumix.Output[BalancerTag] {
+	return pulumix.Output[BalancerTag]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BalancerTagOutput) Key() pulumi.StringOutput {
@@ -253,6 +296,12 @@ func (o BalancerTagArrayOutput) ToBalancerTagArrayOutput() BalancerTagArrayOutpu
 
 func (o BalancerTagArrayOutput) ToBalancerTagArrayOutputWithContext(ctx context.Context) BalancerTagArrayOutput {
 	return o
+}
+
+func (o BalancerTagArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BalancerTag] {
+	return pulumix.Output[[]BalancerTag]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BalancerTagArrayOutput) Index(i pulumi.IntInput) BalancerTagOutput {
@@ -294,6 +343,12 @@ func (i ListenerTagArgs) ToListenerTagOutputWithContext(ctx context.Context) Lis
 	return pulumi.ToOutputWithContext(ctx, i).(ListenerTagOutput)
 }
 
+func (i ListenerTagArgs) ToOutput(ctx context.Context) pulumix.Output[ListenerTag] {
+	return pulumix.Output[ListenerTag]{
+		OutputState: i.ToListenerTagOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ListenerTagArrayInput is an input type that accepts ListenerTagArray and ListenerTagArrayOutput values.
 // You can construct a concrete instance of `ListenerTagArrayInput` via:
 //
@@ -319,6 +374,12 @@ func (i ListenerTagArray) ToListenerTagArrayOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(ListenerTagArrayOutput)
 }
 
+func (i ListenerTagArray) ToOutput(ctx context.Context) pulumix.Output[[]ListenerTag] {
+	return pulumix.Output[[]ListenerTag]{
+		OutputState: i.ToListenerTagArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ListenerTagOutput struct{ *pulumi.OutputState }
 
 func (ListenerTagOutput) ElementType() reflect.Type {
@@ -331,6 +392,12 @@ func (o ListenerTagOutput) ToListenerTagOutput() ListenerTagOutput {
 
 func (o ListenerTagOutput) ToListenerTagOutputWithContext(ctx context.Context) ListenerTagOutput {
 	return o
+}
+
+func (o ListenerTagOutput) ToOutput(ctx context.Context) pulumix.Output[ListenerTag] {
+	return pulumix.Output[ListenerTag]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ListenerTagOutput) Key() pulumi.StringOutput {
@@ -353,6 +420,12 @@ func (o ListenerTagArrayOutput) ToListenerTagArrayOutput() ListenerTagArrayOutpu
 
 func (o ListenerTagArrayOutput) ToListenerTagArrayOutputWithContext(ctx context.Context) ListenerTagArrayOutput {
 	return o
+}
+
+func (o ListenerTagArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ListenerTag] {
+	return pulumix.Output[[]ListenerTag]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ListenerTagArrayOutput) Index(i pulumi.IntInput) ListenerTagOutput {
@@ -402,6 +475,12 @@ func (i ListenerTlsConfigArgs) ToListenerTlsConfigOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(ListenerTlsConfigOutput)
 }
 
+func (i ListenerTlsConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ListenerTlsConfig] {
+	return pulumix.Output[ListenerTlsConfig]{
+		OutputState: i.ToListenerTlsConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ListenerTlsConfigArgs) ToListenerTlsConfigPtrOutput() ListenerTlsConfigPtrOutput {
 	return i.ToListenerTlsConfigPtrOutputWithContext(context.Background())
 }
@@ -443,6 +522,12 @@ func (i *listenerTlsConfigPtrType) ToListenerTlsConfigPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(ListenerTlsConfigPtrOutput)
 }
 
+func (i *listenerTlsConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*ListenerTlsConfig] {
+	return pulumix.Output[*ListenerTlsConfig]{
+		OutputState: i.ToListenerTlsConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ListenerTlsConfigOutput struct{ *pulumi.OutputState }
 
 func (ListenerTlsConfigOutput) ElementType() reflect.Type {
@@ -465,6 +550,12 @@ func (o ListenerTlsConfigOutput) ToListenerTlsConfigPtrOutputWithContext(ctx con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ListenerTlsConfig) *ListenerTlsConfig {
 		return &v
 	}).(ListenerTlsConfigPtrOutput)
+}
+
+func (o ListenerTlsConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ListenerTlsConfig] {
+	return pulumix.Output[ListenerTlsConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ListenerTlsConfigOutput) CertificateIds() pulumi.StringArrayOutput {
@@ -503,6 +594,12 @@ func (o ListenerTlsConfigPtrOutput) ToListenerTlsConfigPtrOutput() ListenerTlsCo
 
 func (o ListenerTlsConfigPtrOutput) ToListenerTlsConfigPtrOutputWithContext(ctx context.Context) ListenerTlsConfigPtrOutput {
 	return o
+}
+
+func (o ListenerTlsConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ListenerTlsConfig] {
+	return pulumix.Output[*ListenerTlsConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ListenerTlsConfigPtrOutput) Elem() ListenerTlsConfigOutput {
@@ -602,6 +699,12 @@ func (i RoutingRuleTagArgs) ToRoutingRuleTagOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(RoutingRuleTagOutput)
 }
 
+func (i RoutingRuleTagArgs) ToOutput(ctx context.Context) pulumix.Output[RoutingRuleTag] {
+	return pulumix.Output[RoutingRuleTag]{
+		OutputState: i.ToRoutingRuleTagOutputWithContext(ctx).OutputState,
+	}
+}
+
 // RoutingRuleTagArrayInput is an input type that accepts RoutingRuleTagArray and RoutingRuleTagArrayOutput values.
 // You can construct a concrete instance of `RoutingRuleTagArrayInput` via:
 //
@@ -627,6 +730,12 @@ func (i RoutingRuleTagArray) ToRoutingRuleTagArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(RoutingRuleTagArrayOutput)
 }
 
+func (i RoutingRuleTagArray) ToOutput(ctx context.Context) pulumix.Output[[]RoutingRuleTag] {
+	return pulumix.Output[[]RoutingRuleTag]{
+		OutputState: i.ToRoutingRuleTagArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RoutingRuleTagOutput struct{ *pulumi.OutputState }
 
 func (RoutingRuleTagOutput) ElementType() reflect.Type {
@@ -639,6 +748,12 @@ func (o RoutingRuleTagOutput) ToRoutingRuleTagOutput() RoutingRuleTagOutput {
 
 func (o RoutingRuleTagOutput) ToRoutingRuleTagOutputWithContext(ctx context.Context) RoutingRuleTagOutput {
 	return o
+}
+
+func (o RoutingRuleTagOutput) ToOutput(ctx context.Context) pulumix.Output[RoutingRuleTag] {
+	return pulumix.Output[RoutingRuleTag]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RoutingRuleTagOutput) Key() pulumi.StringOutput {
@@ -661,6 +776,12 @@ func (o RoutingRuleTagArrayOutput) ToRoutingRuleTagArrayOutput() RoutingRuleTagA
 
 func (o RoutingRuleTagArrayOutput) ToRoutingRuleTagArrayOutputWithContext(ctx context.Context) RoutingRuleTagArrayOutput {
 	return o
+}
+
+func (o RoutingRuleTagArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RoutingRuleTag] {
+	return pulumix.Output[[]RoutingRuleTag]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RoutingRuleTagArrayOutput) Index(i pulumi.IntInput) RoutingRuleTagOutput {
@@ -712,6 +833,12 @@ func (i TargetSetHealthCheckArgs) ToTargetSetHealthCheckOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(TargetSetHealthCheckOutput)
 }
 
+func (i TargetSetHealthCheckArgs) ToOutput(ctx context.Context) pulumix.Output[TargetSetHealthCheck] {
+	return pulumix.Output[TargetSetHealthCheck]{
+		OutputState: i.ToTargetSetHealthCheckOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i TargetSetHealthCheckArgs) ToTargetSetHealthCheckPtrOutput() TargetSetHealthCheckPtrOutput {
 	return i.ToTargetSetHealthCheckPtrOutputWithContext(context.Background())
 }
@@ -753,6 +880,12 @@ func (i *targetSetHealthCheckPtrType) ToTargetSetHealthCheckPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(TargetSetHealthCheckPtrOutput)
 }
 
+func (i *targetSetHealthCheckPtrType) ToOutput(ctx context.Context) pulumix.Output[*TargetSetHealthCheck] {
+	return pulumix.Output[*TargetSetHealthCheck]{
+		OutputState: i.ToTargetSetHealthCheckPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TargetSetHealthCheckOutput struct{ *pulumi.OutputState }
 
 func (TargetSetHealthCheckOutput) ElementType() reflect.Type {
@@ -775,6 +908,12 @@ func (o TargetSetHealthCheckOutput) ToTargetSetHealthCheckPtrOutputWithContext(c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v TargetSetHealthCheck) *TargetSetHealthCheck {
 		return &v
 	}).(TargetSetHealthCheckPtrOutput)
+}
+
+func (o TargetSetHealthCheckOutput) ToOutput(ctx context.Context) pulumix.Output[TargetSetHealthCheck] {
+	return pulumix.Output[TargetSetHealthCheck]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TargetSetHealthCheckOutput) HealthyThreshold() pulumi.IntOutput {
@@ -817,6 +956,12 @@ func (o TargetSetHealthCheckPtrOutput) ToTargetSetHealthCheckPtrOutput() TargetS
 
 func (o TargetSetHealthCheckPtrOutput) ToTargetSetHealthCheckPtrOutputWithContext(ctx context.Context) TargetSetHealthCheckPtrOutput {
 	return o
+}
+
+func (o TargetSetHealthCheckPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TargetSetHealthCheck] {
+	return pulumix.Output[*TargetSetHealthCheck]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TargetSetHealthCheckPtrOutput) Elem() TargetSetHealthCheckOutput {
@@ -925,6 +1070,12 @@ func (i TargetSetTagArgs) ToTargetSetTagOutputWithContext(ctx context.Context) T
 	return pulumi.ToOutputWithContext(ctx, i).(TargetSetTagOutput)
 }
 
+func (i TargetSetTagArgs) ToOutput(ctx context.Context) pulumix.Output[TargetSetTag] {
+	return pulumix.Output[TargetSetTag]{
+		OutputState: i.ToTargetSetTagOutputWithContext(ctx).OutputState,
+	}
+}
+
 // TargetSetTagArrayInput is an input type that accepts TargetSetTagArray and TargetSetTagArrayOutput values.
 // You can construct a concrete instance of `TargetSetTagArrayInput` via:
 //
@@ -950,6 +1101,12 @@ func (i TargetSetTagArray) ToTargetSetTagArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(TargetSetTagArrayOutput)
 }
 
+func (i TargetSetTagArray) ToOutput(ctx context.Context) pulumix.Output[[]TargetSetTag] {
+	return pulumix.Output[[]TargetSetTag]{
+		OutputState: i.ToTargetSetTagArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TargetSetTagOutput struct{ *pulumi.OutputState }
 
 func (TargetSetTagOutput) ElementType() reflect.Type {
@@ -962,6 +1119,12 @@ func (o TargetSetTagOutput) ToTargetSetTagOutput() TargetSetTagOutput {
 
 func (o TargetSetTagOutput) ToTargetSetTagOutputWithContext(ctx context.Context) TargetSetTagOutput {
 	return o
+}
+
+func (o TargetSetTagOutput) ToOutput(ctx context.Context) pulumix.Output[TargetSetTag] {
+	return pulumix.Output[TargetSetTag]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TargetSetTagOutput) Key() pulumi.StringOutput {
@@ -984,6 +1147,12 @@ func (o TargetSetTagArrayOutput) ToTargetSetTagArrayOutput() TargetSetTagArrayOu
 
 func (o TargetSetTagArrayOutput) ToTargetSetTagArrayOutputWithContext(ctx context.Context) TargetSetTagArrayOutput {
 	return o
+}
+
+func (o TargetSetTagArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TargetSetTag] {
+	return pulumix.Output[[]TargetSetTag]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TargetSetTagArrayOutput) Index(i pulumi.IntInput) TargetSetTagOutput {
@@ -1025,6 +1194,12 @@ func (i TargetTagArgs) ToTargetTagOutputWithContext(ctx context.Context) TargetT
 	return pulumi.ToOutputWithContext(ctx, i).(TargetTagOutput)
 }
 
+func (i TargetTagArgs) ToOutput(ctx context.Context) pulumix.Output[TargetTag] {
+	return pulumix.Output[TargetTag]{
+		OutputState: i.ToTargetTagOutputWithContext(ctx).OutputState,
+	}
+}
+
 // TargetTagArrayInput is an input type that accepts TargetTagArray and TargetTagArrayOutput values.
 // You can construct a concrete instance of `TargetTagArrayInput` via:
 //
@@ -1050,6 +1225,12 @@ func (i TargetTagArray) ToTargetTagArrayOutputWithContext(ctx context.Context) T
 	return pulumi.ToOutputWithContext(ctx, i).(TargetTagArrayOutput)
 }
 
+func (i TargetTagArray) ToOutput(ctx context.Context) pulumix.Output[[]TargetTag] {
+	return pulumix.Output[[]TargetTag]{
+		OutputState: i.ToTargetTagArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TargetTagOutput struct{ *pulumi.OutputState }
 
 func (TargetTagOutput) ElementType() reflect.Type {
@@ -1062,6 +1243,12 @@ func (o TargetTagOutput) ToTargetTagOutput() TargetTagOutput {
 
 func (o TargetTagOutput) ToTargetTagOutputWithContext(ctx context.Context) TargetTagOutput {
 	return o
+}
+
+func (o TargetTagOutput) ToOutput(ctx context.Context) pulumix.Output[TargetTag] {
+	return pulumix.Output[TargetTag]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TargetTagOutput) Key() pulumi.StringOutput {
@@ -1084,6 +1271,12 @@ func (o TargetTagArrayOutput) ToTargetTagArrayOutput() TargetTagArrayOutput {
 
 func (o TargetTagArrayOutput) ToTargetTagArrayOutputWithContext(ctx context.Context) TargetTagArrayOutput {
 	return o
+}
+
+func (o TargetTagArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TargetTag] {
+	return pulumix.Output[[]TargetTag]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TargetTagArrayOutput) Index(i pulumi.IntInput) TargetTagOutput {
