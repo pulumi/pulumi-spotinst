@@ -13669,6 +13669,9 @@
                 "health": {
                     "$ref": "#/types/spotinst:azure/OceanNpHealth:OceanNpHealth"
                 },
+                "kubernetesVersion": {
+                    "type": "string"
+                },
                 "labels": {
                     "type": "object",
                     "additionalProperties": {
@@ -13770,6 +13773,9 @@
                 "health": {
                     "$ref": "#/types/spotinst:azure/OceanNpHealth:OceanNpHealth"
                 },
+                "kubernetesVersion": {
+                    "type": "string"
+                },
                 "labels": {
                     "type": "object",
                     "additionalProperties": {
@@ -13870,6 +13876,9 @@
                     "health": {
                         "$ref": "#/types/spotinst:azure/OceanNpHealth:OceanNpHealth"
                     },
+                    "kubernetesVersion": {
+                        "type": "string"
+                    },
                     "labels": {
                         "type": "object",
                         "additionalProperties": {
@@ -13944,6 +13953,9 @@
                     "items": {
                         "$ref": "#/types/spotinst:azure/OceanNpVirtualNodeGroupHeadroom:OceanNpVirtualNodeGroupHeadroom"
                     }
+                },
+                "kubernetesVersion": {
+                    "type": "string"
                 },
                 "labels": {
                     "type": "object",
@@ -14020,6 +14032,9 @@
                         "$ref": "#/types/spotinst:azure/OceanNpVirtualNodeGroupHeadroom:OceanNpVirtualNodeGroupHeadroom"
                     }
                 },
+                "kubernetesVersion": {
+                    "type": "string"
+                },
                 "labels": {
                     "type": "object",
                     "additionalProperties": {
@@ -14095,6 +14110,9 @@
                         "items": {
                             "$ref": "#/types/spotinst:azure/OceanNpVirtualNodeGroupHeadroom:OceanNpVirtualNodeGroupHeadroom"
                         }
+                    },
+                    "kubernetesVersion": {
+                        "type": "string"
                     },
                     "labels": {
                         "type": "object",
