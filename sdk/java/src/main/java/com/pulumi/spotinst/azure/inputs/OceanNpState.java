@@ -110,6 +110,13 @@ public final class OceanNpState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.health);
     }
 
+    @Import(name="kubernetesVersion")
+    private @Nullable Output<String> kubernetesVersion;
+
+    public Optional<Output<String>> kubernetesVersion() {
+        return Optional.ofNullable(this.kubernetesVersion);
+    }
+
     @Import(name="labels")
     private @Nullable Output<Map<String,Object>> labels;
 
@@ -216,6 +223,7 @@ public final class OceanNpState extends com.pulumi.resources.ResourceArgs {
         this.filters = $.filters;
         this.headrooms = $.headrooms;
         this.health = $.health;
+        this.kubernetesVersion = $.kubernetesVersion;
         this.labels = $.labels;
         this.maxCount = $.maxCount;
         this.maxPodsPerNode = $.maxPodsPerNode;
@@ -363,6 +371,15 @@ public final class OceanNpState extends com.pulumi.resources.ResourceArgs {
 
         public Builder health(OceanNpHealthArgs health) {
             return health(Output.of(health));
+        }
+
+        public Builder kubernetesVersion(@Nullable Output<String> kubernetesVersion) {
+            $.kubernetesVersion = kubernetesVersion;
+            return this;
+        }
+
+        public Builder kubernetesVersion(String kubernetesVersion) {
+            return kubernetesVersion(Output.of(kubernetesVersion));
         }
 
         public Builder labels(@Nullable Output<Map<String,Object>> labels) {

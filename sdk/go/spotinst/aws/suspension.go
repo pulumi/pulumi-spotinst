@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -148,6 +149,12 @@ func (i *Suspension) ToSuspensionOutputWithContext(ctx context.Context) Suspensi
 	return pulumi.ToOutputWithContext(ctx, i).(SuspensionOutput)
 }
 
+func (i *Suspension) ToOutput(ctx context.Context) pulumix.Output[*Suspension] {
+	return pulumix.Output[*Suspension]{
+		OutputState: i.ToSuspensionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // SuspensionArrayInput is an input type that accepts SuspensionArray and SuspensionArrayOutput values.
 // You can construct a concrete instance of `SuspensionArrayInput` via:
 //
@@ -171,6 +178,12 @@ func (i SuspensionArray) ToSuspensionArrayOutput() SuspensionArrayOutput {
 
 func (i SuspensionArray) ToSuspensionArrayOutputWithContext(ctx context.Context) SuspensionArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SuspensionArrayOutput)
+}
+
+func (i SuspensionArray) ToOutput(ctx context.Context) pulumix.Output[[]*Suspension] {
+	return pulumix.Output[[]*Suspension]{
+		OutputState: i.ToSuspensionArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // SuspensionMapInput is an input type that accepts SuspensionMap and SuspensionMapOutput values.
@@ -198,6 +211,12 @@ func (i SuspensionMap) ToSuspensionMapOutputWithContext(ctx context.Context) Sus
 	return pulumi.ToOutputWithContext(ctx, i).(SuspensionMapOutput)
 }
 
+func (i SuspensionMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Suspension] {
+	return pulumix.Output[map[string]*Suspension]{
+		OutputState: i.ToSuspensionMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SuspensionOutput struct{ *pulumi.OutputState }
 
 func (SuspensionOutput) ElementType() reflect.Type {
@@ -210,6 +229,12 @@ func (o SuspensionOutput) ToSuspensionOutput() SuspensionOutput {
 
 func (o SuspensionOutput) ToSuspensionOutputWithContext(ctx context.Context) SuspensionOutput {
 	return o
+}
+
+func (o SuspensionOutput) ToOutput(ctx context.Context) pulumix.Output[*Suspension] {
+	return pulumix.Output[*Suspension]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Elastigroup ID to apply the suspensions on.
@@ -236,6 +261,12 @@ func (o SuspensionArrayOutput) ToSuspensionArrayOutputWithContext(ctx context.Co
 	return o
 }
 
+func (o SuspensionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Suspension] {
+	return pulumix.Output[[]*Suspension]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SuspensionArrayOutput) Index(i pulumi.IntInput) SuspensionOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Suspension {
 		return vs[0].([]*Suspension)[vs[1].(int)]
@@ -254,6 +285,12 @@ func (o SuspensionMapOutput) ToSuspensionMapOutput() SuspensionMapOutput {
 
 func (o SuspensionMapOutput) ToSuspensionMapOutputWithContext(ctx context.Context) SuspensionMapOutput {
 	return o
+}
+
+func (o SuspensionMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Suspension] {
+	return pulumix.Output[map[string]*Suspension]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SuspensionMapOutput) MapIndex(k pulumi.StringInput) SuspensionOutput {

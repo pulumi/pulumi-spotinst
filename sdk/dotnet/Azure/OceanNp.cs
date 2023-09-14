@@ -48,6 +48,9 @@ namespace Pulumi.SpotInst.Azure
         [Output("health")]
         public Output<Outputs.OceanNpHealth> Health { get; private set; } = null!;
 
+        [Output("kubernetesVersion")]
+        public Output<string?> KubernetesVersion { get; private set; } = null!;
+
         [Output("labels")]
         public Output<ImmutableDictionary<string, object>?> Labels { get; private set; } = null!;
 
@@ -179,6 +182,9 @@ namespace Pulumi.SpotInst.Azure
         [Input("health")]
         public Input<Inputs.OceanNpHealthArgs>? Health { get; set; }
 
+        [Input("kubernetesVersion")]
+        public Input<string>? KubernetesVersion { get; set; }
+
         [Input("labels")]
         private InputMap<object>? _labels;
         public InputMap<object> Labels
@@ -286,6 +292,9 @@ namespace Pulumi.SpotInst.Azure
 
         [Input("health")]
         public Input<Inputs.OceanNpHealthGetArgs>? Health { get; set; }
+
+        [Input("kubernetesVersion")]
+        public Input<string>? KubernetesVersion { get; set; }
 
         [Input("labels")]
         private InputMap<object>? _labels;

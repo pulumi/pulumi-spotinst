@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Spotinst Ocean AWS Extended Resource Definition resource.
@@ -144,6 +145,12 @@ func (i *OceanExtendedResourceDefinition) ToOceanExtendedResourceDefinitionOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(OceanExtendedResourceDefinitionOutput)
 }
 
+func (i *OceanExtendedResourceDefinition) ToOutput(ctx context.Context) pulumix.Output[*OceanExtendedResourceDefinition] {
+	return pulumix.Output[*OceanExtendedResourceDefinition]{
+		OutputState: i.ToOceanExtendedResourceDefinitionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // OceanExtendedResourceDefinitionArrayInput is an input type that accepts OceanExtendedResourceDefinitionArray and OceanExtendedResourceDefinitionArrayOutput values.
 // You can construct a concrete instance of `OceanExtendedResourceDefinitionArrayInput` via:
 //
@@ -167,6 +174,12 @@ func (i OceanExtendedResourceDefinitionArray) ToOceanExtendedResourceDefinitionA
 
 func (i OceanExtendedResourceDefinitionArray) ToOceanExtendedResourceDefinitionArrayOutputWithContext(ctx context.Context) OceanExtendedResourceDefinitionArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(OceanExtendedResourceDefinitionArrayOutput)
+}
+
+func (i OceanExtendedResourceDefinitionArray) ToOutput(ctx context.Context) pulumix.Output[[]*OceanExtendedResourceDefinition] {
+	return pulumix.Output[[]*OceanExtendedResourceDefinition]{
+		OutputState: i.ToOceanExtendedResourceDefinitionArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // OceanExtendedResourceDefinitionMapInput is an input type that accepts OceanExtendedResourceDefinitionMap and OceanExtendedResourceDefinitionMapOutput values.
@@ -194,6 +207,12 @@ func (i OceanExtendedResourceDefinitionMap) ToOceanExtendedResourceDefinitionMap
 	return pulumi.ToOutputWithContext(ctx, i).(OceanExtendedResourceDefinitionMapOutput)
 }
 
+func (i OceanExtendedResourceDefinitionMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*OceanExtendedResourceDefinition] {
+	return pulumix.Output[map[string]*OceanExtendedResourceDefinition]{
+		OutputState: i.ToOceanExtendedResourceDefinitionMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type OceanExtendedResourceDefinitionOutput struct{ *pulumi.OutputState }
 
 func (OceanExtendedResourceDefinitionOutput) ElementType() reflect.Type {
@@ -206,6 +225,12 @@ func (o OceanExtendedResourceDefinitionOutput) ToOceanExtendedResourceDefinition
 
 func (o OceanExtendedResourceDefinitionOutput) ToOceanExtendedResourceDefinitionOutputWithContext(ctx context.Context) OceanExtendedResourceDefinitionOutput {
 	return o
+}
+
+func (o OceanExtendedResourceDefinitionOutput) ToOutput(ctx context.Context) pulumix.Output[*OceanExtendedResourceDefinition] {
+	return pulumix.Output[*OceanExtendedResourceDefinition]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The extended resource name as should be requested by your pods and registered to the nodes. Cannot be updated.
@@ -233,6 +258,12 @@ func (o OceanExtendedResourceDefinitionArrayOutput) ToOceanExtendedResourceDefin
 	return o
 }
 
+func (o OceanExtendedResourceDefinitionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*OceanExtendedResourceDefinition] {
+	return pulumix.Output[[]*OceanExtendedResourceDefinition]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o OceanExtendedResourceDefinitionArrayOutput) Index(i pulumi.IntInput) OceanExtendedResourceDefinitionOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *OceanExtendedResourceDefinition {
 		return vs[0].([]*OceanExtendedResourceDefinition)[vs[1].(int)]
@@ -251,6 +282,12 @@ func (o OceanExtendedResourceDefinitionMapOutput) ToOceanExtendedResourceDefinit
 
 func (o OceanExtendedResourceDefinitionMapOutput) ToOceanExtendedResourceDefinitionMapOutputWithContext(ctx context.Context) OceanExtendedResourceDefinitionMapOutput {
 	return o
+}
+
+func (o OceanExtendedResourceDefinitionMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*OceanExtendedResourceDefinition] {
+	return pulumix.Output[map[string]*OceanExtendedResourceDefinition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OceanExtendedResourceDefinitionMapOutput) MapIndex(k pulumi.StringInput) OceanExtendedResourceDefinitionOutput {

@@ -27,6 +27,9 @@ namespace Pulumi.SpotInst.Azure
         [Output("headrooms")]
         public Output<ImmutableArray<Outputs.OceanNpVirtualNodeGroupHeadroom>> Headrooms { get; private set; } = null!;
 
+        [Output("kubernetesVersion")]
+        public Output<string?> KubernetesVersion { get; private set; } = null!;
+
         [Output("labels")]
         public Output<ImmutableDictionary<string, object>?> Labels { get; private set; } = null!;
 
@@ -137,6 +140,9 @@ namespace Pulumi.SpotInst.Azure
             set => _headrooms = value;
         }
 
+        [Input("kubernetesVersion")]
+        public Input<string>? KubernetesVersion { get; set; }
+
         [Input("labels")]
         private InputMap<object>? _labels;
         public InputMap<object> Labels
@@ -223,6 +229,9 @@ namespace Pulumi.SpotInst.Azure
             get => _headrooms ?? (_headrooms = new InputList<Inputs.OceanNpVirtualNodeGroupHeadroomGetArgs>());
             set => _headrooms = value;
         }
+
+        [Input("kubernetesVersion")]
+        public Input<string>? KubernetesVersion { get; set; }
 
         [Input("labels")]
         private InputMap<object>? _labels;

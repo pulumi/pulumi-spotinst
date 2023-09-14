@@ -39,6 +39,7 @@ export class OceanNpVirtualNodeGroup extends pulumi.CustomResource {
     public readonly fallbackToOndemand!: pulumi.Output<boolean | undefined>;
     public readonly filters!: pulumi.Output<outputs.azure.OceanNpVirtualNodeGroupFilters | undefined>;
     public readonly headrooms!: pulumi.Output<outputs.azure.OceanNpVirtualNodeGroupHeadroom[] | undefined>;
+    public readonly kubernetesVersion!: pulumi.Output<string | undefined>;
     public readonly labels!: pulumi.Output<{[key: string]: any} | undefined>;
     public readonly maxCount!: pulumi.Output<number | undefined>;
     public readonly maxPodsPerNode!: pulumi.Output<number | undefined>;
@@ -71,6 +72,7 @@ export class OceanNpVirtualNodeGroup extends pulumi.CustomResource {
             resourceInputs["fallbackToOndemand"] = state ? state.fallbackToOndemand : undefined;
             resourceInputs["filters"] = state ? state.filters : undefined;
             resourceInputs["headrooms"] = state ? state.headrooms : undefined;
+            resourceInputs["kubernetesVersion"] = state ? state.kubernetesVersion : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["maxCount"] = state ? state.maxCount : undefined;
             resourceInputs["maxPodsPerNode"] = state ? state.maxPodsPerNode : undefined;
@@ -94,6 +96,7 @@ export class OceanNpVirtualNodeGroup extends pulumi.CustomResource {
             resourceInputs["fallbackToOndemand"] = args ? args.fallbackToOndemand : undefined;
             resourceInputs["filters"] = args ? args.filters : undefined;
             resourceInputs["headrooms"] = args ? args.headrooms : undefined;
+            resourceInputs["kubernetesVersion"] = args ? args.kubernetesVersion : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["maxCount"] = args ? args.maxCount : undefined;
             resourceInputs["maxPodsPerNode"] = args ? args.maxPodsPerNode : undefined;
@@ -122,6 +125,7 @@ export interface OceanNpVirtualNodeGroupState {
     fallbackToOndemand?: pulumi.Input<boolean>;
     filters?: pulumi.Input<inputs.azure.OceanNpVirtualNodeGroupFilters>;
     headrooms?: pulumi.Input<pulumi.Input<inputs.azure.OceanNpVirtualNodeGroupHeadroom>[]>;
+    kubernetesVersion?: pulumi.Input<string>;
     labels?: pulumi.Input<{[key: string]: any}>;
     maxCount?: pulumi.Input<number>;
     maxPodsPerNode?: pulumi.Input<number>;
@@ -146,6 +150,7 @@ export interface OceanNpVirtualNodeGroupArgs {
     fallbackToOndemand?: pulumi.Input<boolean>;
     filters?: pulumi.Input<inputs.azure.OceanNpVirtualNodeGroupFilters>;
     headrooms?: pulumi.Input<pulumi.Input<inputs.azure.OceanNpVirtualNodeGroupHeadroom>[]>;
+    kubernetesVersion?: pulumi.Input<string>;
     labels?: pulumi.Input<{[key: string]: any}>;
     maxCount?: pulumi.Input<number>;
     maxPodsPerNode?: pulumi.Input<number>;

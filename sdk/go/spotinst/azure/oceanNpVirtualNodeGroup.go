@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type OceanNpVirtualNodeGroup struct {
@@ -20,6 +21,7 @@ type OceanNpVirtualNodeGroup struct {
 	FallbackToOndemand pulumi.BoolPtrOutput                       `pulumi:"fallbackToOndemand"`
 	Filters            OceanNpVirtualNodeGroupFiltersPtrOutput    `pulumi:"filters"`
 	Headrooms          OceanNpVirtualNodeGroupHeadroomArrayOutput `pulumi:"headrooms"`
+	KubernetesVersion  pulumi.StringPtrOutput                     `pulumi:"kubernetesVersion"`
 	Labels             pulumi.MapOutput                           `pulumi:"labels"`
 	MaxCount           pulumi.IntPtrOutput                        `pulumi:"maxCount"`
 	MaxPodsPerNode     pulumi.IntPtrOutput                        `pulumi:"maxPodsPerNode"`
@@ -73,6 +75,7 @@ type oceanNpVirtualNodeGroupState struct {
 	FallbackToOndemand *bool                             `pulumi:"fallbackToOndemand"`
 	Filters            *OceanNpVirtualNodeGroupFilters   `pulumi:"filters"`
 	Headrooms          []OceanNpVirtualNodeGroupHeadroom `pulumi:"headrooms"`
+	KubernetesVersion  *string                           `pulumi:"kubernetesVersion"`
 	Labels             map[string]interface{}            `pulumi:"labels"`
 	MaxCount           *int                              `pulumi:"maxCount"`
 	MaxPodsPerNode     *int                              `pulumi:"maxPodsPerNode"`
@@ -94,6 +97,7 @@ type OceanNpVirtualNodeGroupState struct {
 	FallbackToOndemand pulumi.BoolPtrInput
 	Filters            OceanNpVirtualNodeGroupFiltersPtrInput
 	Headrooms          OceanNpVirtualNodeGroupHeadroomArrayInput
+	KubernetesVersion  pulumi.StringPtrInput
 	Labels             pulumi.MapInput
 	MaxCount           pulumi.IntPtrInput
 	MaxPodsPerNode     pulumi.IntPtrInput
@@ -119,6 +123,7 @@ type oceanNpVirtualNodeGroupArgs struct {
 	FallbackToOndemand *bool                             `pulumi:"fallbackToOndemand"`
 	Filters            *OceanNpVirtualNodeGroupFilters   `pulumi:"filters"`
 	Headrooms          []OceanNpVirtualNodeGroupHeadroom `pulumi:"headrooms"`
+	KubernetesVersion  *string                           `pulumi:"kubernetesVersion"`
 	Labels             map[string]interface{}            `pulumi:"labels"`
 	MaxCount           *int                              `pulumi:"maxCount"`
 	MaxPodsPerNode     *int                              `pulumi:"maxPodsPerNode"`
@@ -141,6 +146,7 @@ type OceanNpVirtualNodeGroupArgs struct {
 	FallbackToOndemand pulumi.BoolPtrInput
 	Filters            OceanNpVirtualNodeGroupFiltersPtrInput
 	Headrooms          OceanNpVirtualNodeGroupHeadroomArrayInput
+	KubernetesVersion  pulumi.StringPtrInput
 	Labels             pulumi.MapInput
 	MaxCount           pulumi.IntPtrInput
 	MaxPodsPerNode     pulumi.IntPtrInput
@@ -179,6 +185,12 @@ func (i *OceanNpVirtualNodeGroup) ToOceanNpVirtualNodeGroupOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(OceanNpVirtualNodeGroupOutput)
 }
 
+func (i *OceanNpVirtualNodeGroup) ToOutput(ctx context.Context) pulumix.Output[*OceanNpVirtualNodeGroup] {
+	return pulumix.Output[*OceanNpVirtualNodeGroup]{
+		OutputState: i.ToOceanNpVirtualNodeGroupOutputWithContext(ctx).OutputState,
+	}
+}
+
 // OceanNpVirtualNodeGroupArrayInput is an input type that accepts OceanNpVirtualNodeGroupArray and OceanNpVirtualNodeGroupArrayOutput values.
 // You can construct a concrete instance of `OceanNpVirtualNodeGroupArrayInput` via:
 //
@@ -202,6 +214,12 @@ func (i OceanNpVirtualNodeGroupArray) ToOceanNpVirtualNodeGroupArrayOutput() Oce
 
 func (i OceanNpVirtualNodeGroupArray) ToOceanNpVirtualNodeGroupArrayOutputWithContext(ctx context.Context) OceanNpVirtualNodeGroupArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(OceanNpVirtualNodeGroupArrayOutput)
+}
+
+func (i OceanNpVirtualNodeGroupArray) ToOutput(ctx context.Context) pulumix.Output[[]*OceanNpVirtualNodeGroup] {
+	return pulumix.Output[[]*OceanNpVirtualNodeGroup]{
+		OutputState: i.ToOceanNpVirtualNodeGroupArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // OceanNpVirtualNodeGroupMapInput is an input type that accepts OceanNpVirtualNodeGroupMap and OceanNpVirtualNodeGroupMapOutput values.
@@ -229,6 +247,12 @@ func (i OceanNpVirtualNodeGroupMap) ToOceanNpVirtualNodeGroupMapOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(OceanNpVirtualNodeGroupMapOutput)
 }
 
+func (i OceanNpVirtualNodeGroupMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*OceanNpVirtualNodeGroup] {
+	return pulumix.Output[map[string]*OceanNpVirtualNodeGroup]{
+		OutputState: i.ToOceanNpVirtualNodeGroupMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type OceanNpVirtualNodeGroupOutput struct{ *pulumi.OutputState }
 
 func (OceanNpVirtualNodeGroupOutput) ElementType() reflect.Type {
@@ -241,6 +265,12 @@ func (o OceanNpVirtualNodeGroupOutput) ToOceanNpVirtualNodeGroupOutput() OceanNp
 
 func (o OceanNpVirtualNodeGroupOutput) ToOceanNpVirtualNodeGroupOutputWithContext(ctx context.Context) OceanNpVirtualNodeGroupOutput {
 	return o
+}
+
+func (o OceanNpVirtualNodeGroupOutput) ToOutput(ctx context.Context) pulumix.Output[*OceanNpVirtualNodeGroup] {
+	return pulumix.Output[*OceanNpVirtualNodeGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OceanNpVirtualNodeGroupOutput) AvailabilityZones() pulumi.StringArrayOutput {
@@ -261,6 +291,10 @@ func (o OceanNpVirtualNodeGroupOutput) Filters() OceanNpVirtualNodeGroupFiltersP
 
 func (o OceanNpVirtualNodeGroupOutput) Headrooms() OceanNpVirtualNodeGroupHeadroomArrayOutput {
 	return o.ApplyT(func(v *OceanNpVirtualNodeGroup) OceanNpVirtualNodeGroupHeadroomArrayOutput { return v.Headrooms }).(OceanNpVirtualNodeGroupHeadroomArrayOutput)
+}
+
+func (o OceanNpVirtualNodeGroupOutput) KubernetesVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OceanNpVirtualNodeGroup) pulumi.StringPtrOutput { return v.KubernetesVersion }).(pulumi.StringPtrOutput)
 }
 
 func (o OceanNpVirtualNodeGroupOutput) Labels() pulumi.MapOutput {
@@ -329,6 +363,12 @@ func (o OceanNpVirtualNodeGroupArrayOutput) ToOceanNpVirtualNodeGroupArrayOutput
 	return o
 }
 
+func (o OceanNpVirtualNodeGroupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*OceanNpVirtualNodeGroup] {
+	return pulumix.Output[[]*OceanNpVirtualNodeGroup]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o OceanNpVirtualNodeGroupArrayOutput) Index(i pulumi.IntInput) OceanNpVirtualNodeGroupOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *OceanNpVirtualNodeGroup {
 		return vs[0].([]*OceanNpVirtualNodeGroup)[vs[1].(int)]
@@ -347,6 +387,12 @@ func (o OceanNpVirtualNodeGroupMapOutput) ToOceanNpVirtualNodeGroupMapOutput() O
 
 func (o OceanNpVirtualNodeGroupMapOutput) ToOceanNpVirtualNodeGroupMapOutputWithContext(ctx context.Context) OceanNpVirtualNodeGroupMapOutput {
 	return o
+}
+
+func (o OceanNpVirtualNodeGroupMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*OceanNpVirtualNodeGroup] {
+	return pulumix.Output[map[string]*OceanNpVirtualNodeGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OceanNpVirtualNodeGroupMapOutput) MapIndex(k pulumi.StringInput) OceanNpVirtualNodeGroupOutput {

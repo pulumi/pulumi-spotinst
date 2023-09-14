@@ -58,6 +58,13 @@ public final class OceanNpVirtualNodeGroupArgs extends com.pulumi.resources.Reso
         return Optional.ofNullable(this.headrooms);
     }
 
+    @Import(name="kubernetesVersion")
+    private @Nullable Output<String> kubernetesVersion;
+
+    public Optional<Output<String>> kubernetesVersion() {
+        return Optional.ofNullable(this.kubernetesVersion);
+    }
+
     @Import(name="labels")
     private @Nullable Output<Map<String,Object>> labels;
 
@@ -157,6 +164,7 @@ public final class OceanNpVirtualNodeGroupArgs extends com.pulumi.resources.Reso
         this.fallbackToOndemand = $.fallbackToOndemand;
         this.filters = $.filters;
         this.headrooms = $.headrooms;
+        this.kubernetesVersion = $.kubernetesVersion;
         this.labels = $.labels;
         this.maxCount = $.maxCount;
         this.maxPodsPerNode = $.maxPodsPerNode;
@@ -241,6 +249,15 @@ public final class OceanNpVirtualNodeGroupArgs extends com.pulumi.resources.Reso
 
         public Builder headrooms(OceanNpVirtualNodeGroupHeadroomArgs... headrooms) {
             return headrooms(List.of(headrooms));
+        }
+
+        public Builder kubernetesVersion(@Nullable Output<String> kubernetesVersion) {
+            $.kubernetesVersion = kubernetesVersion;
+            return this;
+        }
+
+        public Builder kubernetesVersion(String kubernetesVersion) {
+            return kubernetesVersion(Output.of(kubernetesVersion));
         }
 
         public Builder labels(@Nullable Output<Map<String,Object>> labels) {
