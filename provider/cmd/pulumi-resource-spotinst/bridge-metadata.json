@@ -3038,6 +3038,9 @@
                                     "elem": {
                                         "fields": {
                                             "delete_on_termination": {},
+                                            "dynamic_iops": {
+                                                "maxItemsOne": true
+                                            },
                                             "dynamic_volume_size": {
                                                 "maxItemsOne": true,
                                                 "elem": {
@@ -5271,11 +5274,16 @@
             },
             "spotinst:aws/OceanBlockDeviceMappingEbs:OceanBlockDeviceMappingEbs": {
                 "deleteOnTermination": "delete_on_termination",
+                "dynamicIops": "dynamic_iops",
                 "dynamicVolumeSize": "dynamic_volume_size",
                 "kmsKeyId": "kms_key_id",
                 "snapshotId": "snapshot_id",
                 "volumeSize": "volume_size",
                 "volumeType": "volume_type"
+            },
+            "spotinst:aws/OceanBlockDeviceMappingEbsDynamicIops:OceanBlockDeviceMappingEbsDynamicIops": {
+                "baseSize": "base_size",
+                "sizePerResourceUnit": "size_per_resource_unit"
             },
             "spotinst:aws/OceanBlockDeviceMappingEbsDynamicVolumeSize:OceanBlockDeviceMappingEbsDynamicVolumeSize": {
                 "baseSize": "base_size",
