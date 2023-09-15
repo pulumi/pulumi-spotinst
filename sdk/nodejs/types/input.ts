@@ -2648,6 +2648,10 @@ export namespace aws {
          */
         deleteOnTermination?: pulumi.Input<boolean>;
         /**
+         * Set dynamic IOPS properties. When using this object, you cannot use the `iops` attribute. You must use one or the other.
+         */
+        dynamicIops?: pulumi.Input<inputs.aws.OceanBlockDeviceMappingEbsDynamicIops>;
+        /**
          * Object. Set dynamic volume size properties. When using this object, you cannot use volumeSize. You must use one or the other.
          */
         dynamicVolumeSize?: pulumi.Input<inputs.aws.OceanBlockDeviceMappingEbsDynamicVolumeSize>;
@@ -2656,7 +2660,7 @@ export namespace aws {
          */
         encrypted?: pulumi.Input<boolean>;
         /**
-         * Int. The number of I/O operations per second (IOPS) that the volume supports.
+         * Must be greater than or equal to 0.
          */
         iops?: pulumi.Input<number>;
         /**
@@ -2681,17 +2685,26 @@ export namespace aws {
         volumeType?: pulumi.Input<string>;
     }
 
-    export interface OceanBlockDeviceMappingEbsDynamicVolumeSize {
+    export interface OceanBlockDeviceMappingEbsDynamicIops {
         /**
-         * Int. Initial size for volume. (Example: 50)
+         * Initial size for IOPS.
          */
         baseSize: pulumi.Input<number>;
-        /**
-         * String. Resource type to increase volume size dynamically by. (Valid values: `CPU`)
-         */
         resource: pulumi.Input<string>;
         /**
-         * Int. Additional size (in GB) per resource unit. (Example: `baseSize=50`, `sizePerResourceUnit=20`, and instance with 2 CPU is launched; its total disk size will be: 90GB).
+         * Additional size per resource unit (in IOPS). (Example: `baseSize=50`, `sizePerResourceUnit=20`, and an instance with 2 CPU is launched; its IOPS size will be: 90).
+         */
+        sizePerResourceUnit: pulumi.Input<number>;
+    }
+
+    export interface OceanBlockDeviceMappingEbsDynamicVolumeSize {
+        /**
+         * Initial size for IOPS.
+         */
+        baseSize: pulumi.Input<number>;
+        resource: pulumi.Input<string>;
+        /**
+         * Additional size per resource unit (in IOPS). (Example: `baseSize=50`, `sizePerResourceUnit=20`, and an instance with 2 CPU is launched; its IOPS size will be: 90).
          */
         sizePerResourceUnit: pulumi.Input<number>;
     }

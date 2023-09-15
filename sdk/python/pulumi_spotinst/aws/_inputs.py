@@ -126,6 +126,7 @@ __all__ = [
     'OceanAutoscalerResourceLimitsArgs',
     'OceanBlockDeviceMappingArgs',
     'OceanBlockDeviceMappingEbsArgs',
+    'OceanBlockDeviceMappingEbsDynamicIopsArgs',
     'OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs',
     'OceanClusterOrientationArgs',
     'OceanFiltersArgs',
@@ -8999,6 +9000,7 @@ class OceanBlockDeviceMappingArgs:
 class OceanBlockDeviceMappingEbsArgs:
     def __init__(__self__, *,
                  delete_on_termination: Optional[pulumi.Input[bool]] = None,
+                 dynamic_iops: Optional[pulumi.Input['OceanBlockDeviceMappingEbsDynamicIopsArgs']] = None,
                  dynamic_volume_size: Optional[pulumi.Input['OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs']] = None,
                  encrypted: Optional[pulumi.Input[bool]] = None,
                  iops: Optional[pulumi.Input[int]] = None,
@@ -9009,9 +9011,10 @@ class OceanBlockDeviceMappingEbsArgs:
                  volume_type: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[bool] delete_on_termination: Boolean. Flag to delete the EBS on instance termination.
+        :param pulumi.Input['OceanBlockDeviceMappingEbsDynamicIopsArgs'] dynamic_iops: Set dynamic IOPS properties. When using this object, you cannot use the `iops` attribute. You must use one or the other.
         :param pulumi.Input['OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs'] dynamic_volume_size: Object. Set dynamic volume size properties. When using this object, you cannot use volumeSize. You must use one or the other.
         :param pulumi.Input[bool] encrypted: Boolean. Enables [EBS encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) on the volume.
-        :param pulumi.Input[int] iops: Int. The number of I/O operations per second (IOPS) that the volume supports.
+        :param pulumi.Input[int] iops: Must be greater than or equal to 0.
         :param pulumi.Input[str] kms_key_id: String. Identifier (key ID, key alias, ID ARN, or alias ARN) for a customer managed CMK under which the EBS volume is encrypted.
         :param pulumi.Input[str] snapshot_id: (Optional) String. The Snapshot ID to mount by.
         :param pulumi.Input[int] throughput: The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volume_type` = `gp3`.
@@ -9020,6 +9023,8 @@ class OceanBlockDeviceMappingEbsArgs:
         """
         if delete_on_termination is not None:
             pulumi.set(__self__, "delete_on_termination", delete_on_termination)
+        if dynamic_iops is not None:
+            pulumi.set(__self__, "dynamic_iops", dynamic_iops)
         if dynamic_volume_size is not None:
             pulumi.set(__self__, "dynamic_volume_size", dynamic_volume_size)
         if encrypted is not None:
@@ -9050,6 +9055,18 @@ class OceanBlockDeviceMappingEbsArgs:
         pulumi.set(self, "delete_on_termination", value)
 
     @property
+    @pulumi.getter(name="dynamicIops")
+    def dynamic_iops(self) -> Optional[pulumi.Input['OceanBlockDeviceMappingEbsDynamicIopsArgs']]:
+        """
+        Set dynamic IOPS properties. When using this object, you cannot use the `iops` attribute. You must use one or the other.
+        """
+        return pulumi.get(self, "dynamic_iops")
+
+    @dynamic_iops.setter
+    def dynamic_iops(self, value: Optional[pulumi.Input['OceanBlockDeviceMappingEbsDynamicIopsArgs']]):
+        pulumi.set(self, "dynamic_iops", value)
+
+    @property
     @pulumi.getter(name="dynamicVolumeSize")
     def dynamic_volume_size(self) -> Optional[pulumi.Input['OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs']]:
         """
@@ -9077,7 +9094,7 @@ class OceanBlockDeviceMappingEbsArgs:
     @pulumi.getter
     def iops(self) -> Optional[pulumi.Input[int]]:
         """
-        Int. The number of I/O operations per second (IOPS) that the volume supports.
+        Must be greater than or equal to 0.
         """
         return pulumi.get(self, "iops")
 
@@ -9147,15 +9164,14 @@ class OceanBlockDeviceMappingEbsArgs:
 
 
 @pulumi.input_type
-class OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs:
+class OceanBlockDeviceMappingEbsDynamicIopsArgs:
     def __init__(__self__, *,
                  base_size: pulumi.Input[int],
                  resource: pulumi.Input[str],
                  size_per_resource_unit: pulumi.Input[int]):
         """
-        :param pulumi.Input[int] base_size: Int. Initial size for volume. (Example: 50)
-        :param pulumi.Input[str] resource: String. Resource type to increase volume size dynamically by. (Valid values: `CPU`)
-        :param pulumi.Input[int] size_per_resource_unit: Int. Additional size (in GB) per resource unit. (Example: `baseSize=50`, `sizePerResourceUnit=20`, and instance with 2 CPU is launched; its total disk size will be: 90GB).
+        :param pulumi.Input[int] base_size: Initial size for IOPS.
+        :param pulumi.Input[int] size_per_resource_unit: Additional size per resource unit (in IOPS). (Example: `baseSize=50`, `sizePerResourceUnit=20`, and an instance with 2 CPU is launched; its IOPS size will be: 90).
         """
         pulumi.set(__self__, "base_size", base_size)
         pulumi.set(__self__, "resource", resource)
@@ -9165,7 +9181,7 @@ class OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs:
     @pulumi.getter(name="baseSize")
     def base_size(self) -> pulumi.Input[int]:
         """
-        Int. Initial size for volume. (Example: 50)
+        Initial size for IOPS.
         """
         return pulumi.get(self, "base_size")
 
@@ -9176,9 +9192,6 @@ class OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs:
     @property
     @pulumi.getter
     def resource(self) -> pulumi.Input[str]:
-        """
-        String. Resource type to increase volume size dynamically by. (Valid values: `CPU`)
-        """
         return pulumi.get(self, "resource")
 
     @resource.setter
@@ -9189,7 +9202,55 @@ class OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs:
     @pulumi.getter(name="sizePerResourceUnit")
     def size_per_resource_unit(self) -> pulumi.Input[int]:
         """
-        Int. Additional size (in GB) per resource unit. (Example: `baseSize=50`, `sizePerResourceUnit=20`, and instance with 2 CPU is launched; its total disk size will be: 90GB).
+        Additional size per resource unit (in IOPS). (Example: `baseSize=50`, `sizePerResourceUnit=20`, and an instance with 2 CPU is launched; its IOPS size will be: 90).
+        """
+        return pulumi.get(self, "size_per_resource_unit")
+
+    @size_per_resource_unit.setter
+    def size_per_resource_unit(self, value: pulumi.Input[int]):
+        pulumi.set(self, "size_per_resource_unit", value)
+
+
+@pulumi.input_type
+class OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs:
+    def __init__(__self__, *,
+                 base_size: pulumi.Input[int],
+                 resource: pulumi.Input[str],
+                 size_per_resource_unit: pulumi.Input[int]):
+        """
+        :param pulumi.Input[int] base_size: Initial size for IOPS.
+        :param pulumi.Input[int] size_per_resource_unit: Additional size per resource unit (in IOPS). (Example: `baseSize=50`, `sizePerResourceUnit=20`, and an instance with 2 CPU is launched; its IOPS size will be: 90).
+        """
+        pulumi.set(__self__, "base_size", base_size)
+        pulumi.set(__self__, "resource", resource)
+        pulumi.set(__self__, "size_per_resource_unit", size_per_resource_unit)
+
+    @property
+    @pulumi.getter(name="baseSize")
+    def base_size(self) -> pulumi.Input[int]:
+        """
+        Initial size for IOPS.
+        """
+        return pulumi.get(self, "base_size")
+
+    @base_size.setter
+    def base_size(self, value: pulumi.Input[int]):
+        pulumi.set(self, "base_size", value)
+
+    @property
+    @pulumi.getter
+    def resource(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "resource")
+
+    @resource.setter
+    def resource(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource", value)
+
+    @property
+    @pulumi.getter(name="sizePerResourceUnit")
+    def size_per_resource_unit(self) -> pulumi.Input[int]:
+        """
+        Additional size per resource unit (in IOPS). (Example: `baseSize=50`, `sizePerResourceUnit=20`, and an instance with 2 CPU is launched; its IOPS size will be: 90).
         """
         return pulumi.get(self, "size_per_resource_unit")
 

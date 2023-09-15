@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Aws.Inputs
 {
 
-    public sealed class OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs : global::Pulumi.ResourceArgs
+    public sealed class OceanBlockDeviceMappingEbsDynamicIopsGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Initial size for IOPS.
@@ -27,9 +27,9 @@ namespace Pulumi.SpotInst.Aws.Inputs
         [Input("sizePerResourceUnit", required: true)]
         public Input<int> SizePerResourceUnit { get; set; } = null!;
 
-        public OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs()
+        public OceanBlockDeviceMappingEbsDynamicIopsGetArgs()
         {
         }
-        public static new OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs Empty => new OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs();
+        public static new OceanBlockDeviceMappingEbsDynamicIopsGetArgs Empty => new OceanBlockDeviceMappingEbsDynamicIopsGetArgs();
     }
 }
