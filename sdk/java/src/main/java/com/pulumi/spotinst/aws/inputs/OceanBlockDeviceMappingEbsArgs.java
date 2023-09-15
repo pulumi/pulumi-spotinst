@@ -5,6 +5,7 @@ package com.pulumi.spotinst.aws.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.spotinst.aws.inputs.OceanBlockDeviceMappingEbsDynamicIopsArgs;
 import com.pulumi.spotinst.aws.inputs.OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -31,6 +32,21 @@ public final class OceanBlockDeviceMappingEbsArgs extends com.pulumi.resources.R
      */
     public Optional<Output<Boolean>> deleteOnTermination() {
         return Optional.ofNullable(this.deleteOnTermination);
+    }
+
+    /**
+     * Set dynamic IOPS properties. When using this object, you cannot use the `iops` attribute. You must use one or the other.
+     * 
+     */
+    @Import(name="dynamicIops")
+    private @Nullable Output<OceanBlockDeviceMappingEbsDynamicIopsArgs> dynamicIops;
+
+    /**
+     * @return Set dynamic IOPS properties. When using this object, you cannot use the `iops` attribute. You must use one or the other.
+     * 
+     */
+    public Optional<Output<OceanBlockDeviceMappingEbsDynamicIopsArgs>> dynamicIops() {
+        return Optional.ofNullable(this.dynamicIops);
     }
 
     /**
@@ -64,14 +80,14 @@ public final class OceanBlockDeviceMappingEbsArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Int. The number of I/O operations per second (IOPS) that the volume supports.
+     * Must be greater than or equal to 0.
      * 
      */
     @Import(name="iops")
     private @Nullable Output<Integer> iops;
 
     /**
-     * @return Int. The number of I/O operations per second (IOPS) that the volume supports.
+     * @return Must be greater than or equal to 0.
      * 
      */
     public Optional<Output<Integer>> iops() {
@@ -157,6 +173,7 @@ public final class OceanBlockDeviceMappingEbsArgs extends com.pulumi.resources.R
 
     private OceanBlockDeviceMappingEbsArgs(OceanBlockDeviceMappingEbsArgs $) {
         this.deleteOnTermination = $.deleteOnTermination;
+        this.dynamicIops = $.dynamicIops;
         this.dynamicVolumeSize = $.dynamicVolumeSize;
         this.encrypted = $.encrypted;
         this.iops = $.iops;
@@ -207,6 +224,27 @@ public final class OceanBlockDeviceMappingEbsArgs extends com.pulumi.resources.R
         }
 
         /**
+         * @param dynamicIops Set dynamic IOPS properties. When using this object, you cannot use the `iops` attribute. You must use one or the other.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dynamicIops(@Nullable Output<OceanBlockDeviceMappingEbsDynamicIopsArgs> dynamicIops) {
+            $.dynamicIops = dynamicIops;
+            return this;
+        }
+
+        /**
+         * @param dynamicIops Set dynamic IOPS properties. When using this object, you cannot use the `iops` attribute. You must use one or the other.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dynamicIops(OceanBlockDeviceMappingEbsDynamicIopsArgs dynamicIops) {
+            return dynamicIops(Output.of(dynamicIops));
+        }
+
+        /**
          * @param dynamicVolumeSize Object. Set dynamic volume size properties. When using this object, you cannot use volumeSize. You must use one or the other.
          * 
          * @return builder
@@ -249,7 +287,7 @@ public final class OceanBlockDeviceMappingEbsArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param iops Int. The number of I/O operations per second (IOPS) that the volume supports.
+         * @param iops Must be greater than or equal to 0.
          * 
          * @return builder
          * 
@@ -260,7 +298,7 @@ public final class OceanBlockDeviceMappingEbsArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param iops Int. The number of I/O operations per second (IOPS) that the volume supports.
+         * @param iops Must be greater than or equal to 0.
          * 
          * @return builder
          * 

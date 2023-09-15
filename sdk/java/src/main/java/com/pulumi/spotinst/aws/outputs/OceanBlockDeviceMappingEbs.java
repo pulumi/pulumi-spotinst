@@ -4,6 +4,7 @@
 package com.pulumi.spotinst.aws.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.spotinst.aws.outputs.OceanBlockDeviceMappingEbsDynamicIops;
 import com.pulumi.spotinst.aws.outputs.OceanBlockDeviceMappingEbsDynamicVolumeSize;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -20,6 +21,11 @@ public final class OceanBlockDeviceMappingEbs {
      */
     private @Nullable Boolean deleteOnTermination;
     /**
+     * @return Set dynamic IOPS properties. When using this object, you cannot use the `iops` attribute. You must use one or the other.
+     * 
+     */
+    private @Nullable OceanBlockDeviceMappingEbsDynamicIops dynamicIops;
+    /**
      * @return Object. Set dynamic volume size properties. When using this object, you cannot use volumeSize. You must use one or the other.
      * 
      */
@@ -30,7 +36,7 @@ public final class OceanBlockDeviceMappingEbs {
      */
     private @Nullable Boolean encrypted;
     /**
-     * @return Int. The number of I/O operations per second (IOPS) that the volume supports.
+     * @return Must be greater than or equal to 0.
      * 
      */
     private @Nullable Integer iops;
@@ -69,6 +75,13 @@ public final class OceanBlockDeviceMappingEbs {
         return Optional.ofNullable(this.deleteOnTermination);
     }
     /**
+     * @return Set dynamic IOPS properties. When using this object, you cannot use the `iops` attribute. You must use one or the other.
+     * 
+     */
+    public Optional<OceanBlockDeviceMappingEbsDynamicIops> dynamicIops() {
+        return Optional.ofNullable(this.dynamicIops);
+    }
+    /**
      * @return Object. Set dynamic volume size properties. When using this object, you cannot use volumeSize. You must use one or the other.
      * 
      */
@@ -83,7 +96,7 @@ public final class OceanBlockDeviceMappingEbs {
         return Optional.ofNullable(this.encrypted);
     }
     /**
-     * @return Int. The number of I/O operations per second (IOPS) that the volume supports.
+     * @return Must be greater than or equal to 0.
      * 
      */
     public Optional<Integer> iops() {
@@ -135,6 +148,7 @@ public final class OceanBlockDeviceMappingEbs {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean deleteOnTermination;
+        private @Nullable OceanBlockDeviceMappingEbsDynamicIops dynamicIops;
         private @Nullable OceanBlockDeviceMappingEbsDynamicVolumeSize dynamicVolumeSize;
         private @Nullable Boolean encrypted;
         private @Nullable Integer iops;
@@ -147,6 +161,7 @@ public final class OceanBlockDeviceMappingEbs {
         public Builder(OceanBlockDeviceMappingEbs defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.deleteOnTermination = defaults.deleteOnTermination;
+    	      this.dynamicIops = defaults.dynamicIops;
     	      this.dynamicVolumeSize = defaults.dynamicVolumeSize;
     	      this.encrypted = defaults.encrypted;
     	      this.iops = defaults.iops;
@@ -160,6 +175,11 @@ public final class OceanBlockDeviceMappingEbs {
         @CustomType.Setter
         public Builder deleteOnTermination(@Nullable Boolean deleteOnTermination) {
             this.deleteOnTermination = deleteOnTermination;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder dynamicIops(@Nullable OceanBlockDeviceMappingEbsDynamicIops dynamicIops) {
+            this.dynamicIops = dynamicIops;
             return this;
         }
         @CustomType.Setter
@@ -205,6 +225,7 @@ public final class OceanBlockDeviceMappingEbs {
         public OceanBlockDeviceMappingEbs build() {
             final var o = new OceanBlockDeviceMappingEbs();
             o.deleteOnTermination = deleteOnTermination;
+            o.dynamicIops = dynamicIops;
             o.dynamicVolumeSize = dynamicVolumeSize;
             o.encrypted = encrypted;
             o.iops = iops;

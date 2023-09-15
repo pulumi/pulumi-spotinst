@@ -9,7 +9,7 @@ import java.lang.String;
 import java.util.Objects;
 
 @CustomType
-public final class OceanBlockDeviceMappingEbsDynamicVolumeSize {
+public final class OceanBlockDeviceMappingEbsDynamicIops {
     /**
      * @return Initial size for IOPS.
      * 
@@ -22,7 +22,7 @@ public final class OceanBlockDeviceMappingEbsDynamicVolumeSize {
      */
     private Integer sizePerResourceUnit;
 
-    private OceanBlockDeviceMappingEbsDynamicVolumeSize() {}
+    private OceanBlockDeviceMappingEbsDynamicIops() {}
     /**
      * @return Initial size for IOPS.
      * 
@@ -45,7 +45,7 @@ public final class OceanBlockDeviceMappingEbsDynamicVolumeSize {
         return new Builder();
     }
 
-    public static Builder builder(OceanBlockDeviceMappingEbsDynamicVolumeSize defaults) {
+    public static Builder builder(OceanBlockDeviceMappingEbsDynamicIops defaults) {
         return new Builder(defaults);
     }
     @CustomType.Builder
@@ -54,7 +54,7 @@ public final class OceanBlockDeviceMappingEbsDynamicVolumeSize {
         private String resource;
         private Integer sizePerResourceUnit;
         public Builder() {}
-        public Builder(OceanBlockDeviceMappingEbsDynamicVolumeSize defaults) {
+        public Builder(OceanBlockDeviceMappingEbsDynamicIops defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.baseSize = defaults.baseSize;
     	      this.resource = defaults.resource;
@@ -76,8 +76,8 @@ public final class OceanBlockDeviceMappingEbsDynamicVolumeSize {
             this.sizePerResourceUnit = Objects.requireNonNull(sizePerResourceUnit);
             return this;
         }
-        public OceanBlockDeviceMappingEbsDynamicVolumeSize build() {
-            final var o = new OceanBlockDeviceMappingEbsDynamicVolumeSize();
+        public OceanBlockDeviceMappingEbsDynamicIops build() {
+            final var o = new OceanBlockDeviceMappingEbsDynamicIops();
             o.baseSize = baseSize;
             o.resource = resource;
             o.sizePerResourceUnit = sizePerResourceUnit;

@@ -10,9 +10,9 @@ import java.lang.String;
 import java.util.Objects;
 
 
-public final class OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs extends com.pulumi.resources.ResourceArgs {
+public final class OceanBlockDeviceMappingEbsDynamicIopsArgs extends com.pulumi.resources.ResourceArgs {
 
-    public static final OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs Empty = new OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs();
+    public static final OceanBlockDeviceMappingEbsDynamicIopsArgs Empty = new OceanBlockDeviceMappingEbsDynamicIopsArgs();
 
     /**
      * Initial size for IOPS.
@@ -51,9 +51,9 @@ public final class OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs extends com.p
         return this.sizePerResourceUnit;
     }
 
-    private OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs() {}
+    private OceanBlockDeviceMappingEbsDynamicIopsArgs() {}
 
-    private OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs(OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs $) {
+    private OceanBlockDeviceMappingEbsDynamicIopsArgs(OceanBlockDeviceMappingEbsDynamicIopsArgs $) {
         this.baseSize = $.baseSize;
         this.resource = $.resource;
         this.sizePerResourceUnit = $.sizePerResourceUnit;
@@ -62,19 +62,19 @@ public final class OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs extends com.p
     public static Builder builder() {
         return new Builder();
     }
-    public static Builder builder(OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs defaults) {
+    public static Builder builder(OceanBlockDeviceMappingEbsDynamicIopsArgs defaults) {
         return new Builder(defaults);
     }
 
     public static final class Builder {
-        private OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs $;
+        private OceanBlockDeviceMappingEbsDynamicIopsArgs $;
 
         public Builder() {
-            $ = new OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs();
+            $ = new OceanBlockDeviceMappingEbsDynamicIopsArgs();
         }
 
-        public Builder(OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs defaults) {
-            $ = new OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs(Objects.requireNonNull(defaults));
+        public Builder(OceanBlockDeviceMappingEbsDynamicIopsArgs defaults) {
+            $ = new OceanBlockDeviceMappingEbsDynamicIopsArgs(Objects.requireNonNull(defaults));
         }
 
         /**
@@ -128,7 +128,7 @@ public final class OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs extends com.p
             return sizePerResourceUnit(Output.of(sizePerResourceUnit));
         }
 
-        public OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs build() {
+        public OceanBlockDeviceMappingEbsDynamicIopsArgs build() {
             $.baseSize = Objects.requireNonNull($.baseSize, "expected parameter 'baseSize' to be non-null");
             $.resource = Objects.requireNonNull($.resource, "expected parameter 'resource' to be non-null");
             $.sizePerResourceUnit = Objects.requireNonNull($.sizePerResourceUnit, "expected parameter 'sizePerResourceUnit' to be non-null");
