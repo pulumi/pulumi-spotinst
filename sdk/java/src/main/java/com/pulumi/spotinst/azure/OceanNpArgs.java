@@ -61,11 +61,11 @@ public final class OceanNpArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.autoscaler);
     }
 
-    @Import(name="availabilityZones")
-    private @Nullable Output<List<String>> availabilityZones;
+    @Import(name="availabilityZones", required=true)
+    private Output<List<String>> availabilityZones;
 
-    public Optional<Output<List<String>>> availabilityZones() {
-        return Optional.ofNullable(this.availabilityZones);
+    public Output<List<String>> availabilityZones() {
+        return this.availabilityZones;
     }
 
     @Import(name="controllerClusterId")
@@ -302,7 +302,7 @@ public final class OceanNpArgs extends com.pulumi.resources.ResourceArgs {
             return autoscaler(Output.of(autoscaler));
         }
 
-        public Builder availabilityZones(@Nullable Output<List<String>> availabilityZones) {
+        public Builder availabilityZones(Output<List<String>> availabilityZones) {
             $.availabilityZones = availabilityZones;
             return this;
         }
@@ -508,6 +508,7 @@ public final class OceanNpArgs extends com.pulumi.resources.ResourceArgs {
             $.aksInfrastructureResourceGroupName = Objects.requireNonNull($.aksInfrastructureResourceGroupName, "expected parameter 'aksInfrastructureResourceGroupName' to be non-null");
             $.aksRegion = Objects.requireNonNull($.aksRegion, "expected parameter 'aksRegion' to be non-null");
             $.aksResourceGroupName = Objects.requireNonNull($.aksResourceGroupName, "expected parameter 'aksResourceGroupName' to be non-null");
+            $.availabilityZones = Objects.requireNonNull($.availabilityZones, "expected parameter 'availabilityZones' to be non-null");
             return $;
         }
     }

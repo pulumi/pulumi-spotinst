@@ -58,10 +58,10 @@ public class OceanNp extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.autoscaler);
     }
     @Export(name="availabilityZones", type=List.class, parameters={String.class})
-    private Output</* @Nullable */ List<String>> availabilityZones;
+    private Output<List<String>> availabilityZones;
 
-    public Output<Optional<List<String>>> availabilityZones() {
-        return Codegen.optional(this.availabilityZones);
+    public Output<List<String>> availabilityZones() {
+        return this.availabilityZones;
     }
     @Export(name="controllerClusterId", type=String.class, parameters={})
     private Output<String> controllerClusterId;
