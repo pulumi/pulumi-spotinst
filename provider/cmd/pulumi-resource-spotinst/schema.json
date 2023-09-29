@@ -13752,6 +13752,7 @@
                 "aksInfrastructureResourceGroupName",
                 "aksRegion",
                 "aksResourceGroupName",
+                "availabilityZones",
                 "controllerClusterId",
                 "health",
                 "name"
@@ -13855,7 +13856,8 @@
                 "aksClusterName",
                 "aksInfrastructureResourceGroupName",
                 "aksRegion",
-                "aksResourceGroupName"
+                "aksResourceGroupName",
+                "availabilityZones"
             ],
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering OceanNp resources.\n",

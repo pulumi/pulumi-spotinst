@@ -151,7 +151,7 @@ namespace Pulumi.SpotInst.Azure
         [Input("autoscaler")]
         public Input<Inputs.OceanNpAutoscalerArgs>? Autoscaler { get; set; }
 
-        [Input("availabilityZones")]
+        [Input("availabilityZones", required: true)]
         private InputList<string>? _availabilityZones;
         public InputList<string> AvailabilityZones
         {

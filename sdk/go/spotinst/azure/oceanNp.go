@@ -63,6 +63,9 @@ func NewOceanNp(ctx *pulumi.Context,
 	if args.AksResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'AksResourceGroupName'")
 	}
+	if args.AvailabilityZones == nil {
+		return nil, errors.New("invalid value for required argument 'AvailabilityZones'")
+	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource OceanNp
 	err := ctx.RegisterResource("spotinst:azure/oceanNp:OceanNp", name, args, &resource, opts...)

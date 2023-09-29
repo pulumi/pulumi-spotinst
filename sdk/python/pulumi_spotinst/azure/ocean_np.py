@@ -20,8 +20,8 @@ class OceanNpArgs:
                  aks_infrastructure_resource_group_name: pulumi.Input[str],
                  aks_region: pulumi.Input[str],
                  aks_resource_group_name: pulumi.Input[str],
+                 availability_zones: pulumi.Input[Sequence[pulumi.Input[str]]],
                  autoscaler: Optional[pulumi.Input['OceanNpAutoscalerArgs']] = None,
-                 availability_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  controller_cluster_id: Optional[pulumi.Input[str]] = None,
                  enable_node_public_ip: Optional[pulumi.Input[bool]] = None,
                  fallback_to_ondemand: Optional[pulumi.Input[bool]] = None,
@@ -49,10 +49,9 @@ class OceanNpArgs:
         pulumi.set(__self__, "aks_infrastructure_resource_group_name", aks_infrastructure_resource_group_name)
         pulumi.set(__self__, "aks_region", aks_region)
         pulumi.set(__self__, "aks_resource_group_name", aks_resource_group_name)
+        pulumi.set(__self__, "availability_zones", availability_zones)
         if autoscaler is not None:
             pulumi.set(__self__, "autoscaler", autoscaler)
-        if availability_zones is not None:
-            pulumi.set(__self__, "availability_zones", availability_zones)
         if controller_cluster_id is not None:
             pulumi.set(__self__, "controller_cluster_id", controller_cluster_id)
         if enable_node_public_ip is not None:
@@ -131,6 +130,15 @@ class OceanNpArgs:
         pulumi.set(self, "aks_resource_group_name", value)
 
     @property
+    @pulumi.getter(name="availabilityZones")
+    def availability_zones(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        return pulumi.get(self, "availability_zones")
+
+    @availability_zones.setter
+    def availability_zones(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "availability_zones", value)
+
+    @property
     @pulumi.getter
     def autoscaler(self) -> Optional[pulumi.Input['OceanNpAutoscalerArgs']]:
         return pulumi.get(self, "autoscaler")
@@ -138,15 +146,6 @@ class OceanNpArgs:
     @autoscaler.setter
     def autoscaler(self, value: Optional[pulumi.Input['OceanNpAutoscalerArgs']]):
         pulumi.set(self, "autoscaler", value)
-
-    @property
-    @pulumi.getter(name="availabilityZones")
-    def availability_zones(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        return pulumi.get(self, "availability_zones")
-
-    @availability_zones.setter
-    def availability_zones(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "availability_zones", value)
 
     @property
     @pulumi.getter(name="controllerClusterId")
@@ -757,6 +756,8 @@ class OceanNp(pulumi.CustomResource):
                 raise TypeError("Missing required property 'aks_resource_group_name'")
             __props__.__dict__["aks_resource_group_name"] = aks_resource_group_name
             __props__.__dict__["autoscaler"] = autoscaler
+            if availability_zones is None and not opts.urn:
+                raise TypeError("Missing required property 'availability_zones'")
             __props__.__dict__["availability_zones"] = availability_zones
             __props__.__dict__["controller_cluster_id"] = controller_cluster_id
             __props__.__dict__["enable_node_public_ip"] = enable_node_public_ip
@@ -881,7 +882,7 @@ class OceanNp(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="availabilityZones")
-    def availability_zones(self) -> pulumi.Output[Optional[Sequence[str]]]:
+    def availability_zones(self) -> pulumi.Output[Sequence[str]]:
         return pulumi.get(self, "availability_zones")
 
     @property
