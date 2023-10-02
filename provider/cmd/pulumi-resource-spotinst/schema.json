@@ -8874,6 +8874,36 @@
         }
     },
     "resources": {
+        "spotinst:aws/account:Account": {
+            "description": "Provides a Spotinst account resource.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as spotinst from \"@pulumi/spotinst\";\n\n// Create a Account\nconst myAwsAcct = new spotinst.aws.Account(\"myAwsAcct\", {});\n```\n```python\nimport pulumi\nimport pulumi_spotinst as spotinst\n\n# Create a Account\nmy_aws_acct = spotinst.aws.Account(\"myAwsAcct\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing SpotInst = Pulumi.SpotInst;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // Create a Account\n    var myAwsAcct = new SpotInst.Aws.Account(\"myAwsAcct\");\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst/aws\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aws.NewAccount(ctx, \"myAwsAcct\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.spotinst.aws.Account;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myAwsAcct = new Account(\"myAwsAcct\");\n\n    }\n}\n```\n```yaml\nresources:\n  # Create a Account\n  myAwsAcct:\n    type: spotinst:aws:Account\n```\n{{% /example %}}\n{{% /examples %}}",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "Provide a name for your account. The account name must contain at least one character that is a-z or A-Z.\n"
+                }
+            },
+            "required": [
+                "name"
+            ],
+            "inputProperties": {
+                "name": {
+                    "type": "string",
+                    "description": "Provide a name for your account. The account name must contain at least one character that is a-z or A-Z.\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Account resources.\n",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "description": "Provide a name for your account. The account name must contain at least one character that is a-z or A-Z.\n",
+                        "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        },
         "spotinst:aws/beanstalk:Beanstalk": {
             "description": "Provides a Spotinst AWS group resource using Elastic Beanstalk.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as spotinst from \"@pulumi/spotinst\";\n\nconst elastigoup_aws_beanstalk = new spotinst.aws.Beanstalk(\"elastigoup-aws-beanstalk\", {\n    beanstalkEnvironmentId: \"e-example\",\n    beanstalkEnvironmentName: \"example-env\",\n    deploymentPreferences: {\n        automaticRoll: true,\n        batchSizePercentage: 100,\n        gracePeriod: 90,\n        strategies: [{\n            action: \"REPLACE_SERVER\",\n            shouldDrainInstances: true,\n        }],\n    },\n    desiredCapacity: 0,\n    instanceTypesSpots: [\n        \"t2.micro\",\n        \"t2.medium\",\n        \"t2.large\",\n    ],\n    managedActions: {\n        platformUpdate: {\n            performAt: \"timeWindow\",\n            timeWindow: \"Mon:23:50-Tue:00:20\",\n            updateLevel: \"minorAndPatch\",\n        },\n    },\n    maxSize: 1,\n    minSize: 0,\n    product: \"Linux/UNIX\",\n    region: \"us-west-2\",\n});\n```\n```python\nimport pulumi\nimport pulumi_spotinst as spotinst\n\nelastigoup_aws_beanstalk = spotinst.aws.Beanstalk(\"elastigoup-aws-beanstalk\",\n    beanstalk_environment_id=\"e-example\",\n    beanstalk_environment_name=\"example-env\",\n    deployment_preferences=spotinst.aws.BeanstalkDeploymentPreferencesArgs(\n        automatic_roll=True,\n        batch_size_percentage=100,\n        grace_period=90,\n        strategies=[spotinst.aws.BeanstalkDeploymentPreferencesStrategyArgs(\n            action=\"REPLACE_SERVER\",\n            should_drain_instances=True,\n        )],\n    ),\n    desired_capacity=0,\n    instance_types_spots=[\n        \"t2.micro\",\n        \"t2.medium\",\n        \"t2.large\",\n    ],\n    managed_actions=spotinst.aws.BeanstalkManagedActionsArgs(\n        platform_update=spotinst.aws.BeanstalkManagedActionsPlatformUpdateArgs(\n            perform_at=\"timeWindow\",\n            time_window=\"Mon:23:50-Tue:00:20\",\n            update_level=\"minorAndPatch\",\n        ),\n    ),\n    max_size=1,\n    min_size=0,\n    product=\"Linux/UNIX\",\n    region=\"us-west-2\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing SpotInst = Pulumi.SpotInst;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var elastigoup_aws_beanstalk = new SpotInst.Aws.Beanstalk(\"elastigoup-aws-beanstalk\", new()\n    {\n        BeanstalkEnvironmentId = \"e-example\",\n        BeanstalkEnvironmentName = \"example-env\",\n        DeploymentPreferences = new SpotInst.Aws.Inputs.BeanstalkDeploymentPreferencesArgs\n        {\n            AutomaticRoll = true,\n            BatchSizePercentage = 100,\n            GracePeriod = 90,\n            Strategies = new[]\n            {\n                new SpotInst.Aws.Inputs.BeanstalkDeploymentPreferencesStrategyArgs\n                {\n                    Action = \"REPLACE_SERVER\",\n                    ShouldDrainInstances = true,\n                },\n            },\n        },\n        DesiredCapacity = 0,\n        InstanceTypesSpots = new[]\n        {\n            \"t2.micro\",\n            \"t2.medium\",\n            \"t2.large\",\n        },\n        ManagedActions = new SpotInst.Aws.Inputs.BeanstalkManagedActionsArgs\n        {\n            PlatformUpdate = new SpotInst.Aws.Inputs.BeanstalkManagedActionsPlatformUpdateArgs\n            {\n                PerformAt = \"timeWindow\",\n                TimeWindow = \"Mon:23:50-Tue:00:20\",\n                UpdateLevel = \"minorAndPatch\",\n            },\n        },\n        MaxSize = 1,\n        MinSize = 0,\n        Product = \"Linux/UNIX\",\n        Region = \"us-west-2\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst/aws\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aws.NewBeanstalk(ctx, \"elastigoup-aws-beanstalk\", \u0026aws.BeanstalkArgs{\n\t\t\tBeanstalkEnvironmentId:   pulumi.String(\"e-example\"),\n\t\t\tBeanstalkEnvironmentName: pulumi.String(\"example-env\"),\n\t\t\tDeploymentPreferences: \u0026aws.BeanstalkDeploymentPreferencesArgs{\n\t\t\t\tAutomaticRoll:       pulumi.Bool(true),\n\t\t\t\tBatchSizePercentage: pulumi.Int(100),\n\t\t\t\tGracePeriod:         pulumi.Int(90),\n\t\t\t\tStrategies: aws.BeanstalkDeploymentPreferencesStrategyArray{\n\t\t\t\t\t\u0026aws.BeanstalkDeploymentPreferencesStrategyArgs{\n\t\t\t\t\t\tAction:               pulumi.String(\"REPLACE_SERVER\"),\n\t\t\t\t\t\tShouldDrainInstances: pulumi.Bool(true),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tDesiredCapacity: pulumi.Int(0),\n\t\t\tInstanceTypesSpots: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"t2.micro\"),\n\t\t\t\tpulumi.String(\"t2.medium\"),\n\t\t\t\tpulumi.String(\"t2.large\"),\n\t\t\t},\n\t\t\tManagedActions: \u0026aws.BeanstalkManagedActionsArgs{\n\t\t\t\tPlatformUpdate: \u0026aws.BeanstalkManagedActionsPlatformUpdateArgs{\n\t\t\t\t\tPerformAt:   pulumi.String(\"timeWindow\"),\n\t\t\t\t\tTimeWindow:  pulumi.String(\"Mon:23:50-Tue:00:20\"),\n\t\t\t\t\tUpdateLevel: pulumi.String(\"minorAndPatch\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tMaxSize: pulumi.Int(1),\n\t\t\tMinSize: pulumi.Int(0),\n\t\t\tProduct: pulumi.String(\"Linux/UNIX\"),\n\t\t\tRegion:  pulumi.String(\"us-west-2\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.spotinst.aws.Beanstalk;\nimport com.pulumi.spotinst.aws.BeanstalkArgs;\nimport com.pulumi.spotinst.aws.inputs.BeanstalkDeploymentPreferencesArgs;\nimport com.pulumi.spotinst.aws.inputs.BeanstalkManagedActionsArgs;\nimport com.pulumi.spotinst.aws.inputs.BeanstalkManagedActionsPlatformUpdateArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var elastigoup_aws_beanstalk = new Beanstalk(\"elastigoup-aws-beanstalk\", BeanstalkArgs.builder()        \n            .beanstalkEnvironmentId(\"e-example\")\n            .beanstalkEnvironmentName(\"example-env\")\n            .deploymentPreferences(BeanstalkDeploymentPreferencesArgs.builder()\n                .automaticRoll(true)\n                .batchSizePercentage(100)\n                .gracePeriod(90)\n                .strategies(BeanstalkDeploymentPreferencesStrategyArgs.builder()\n                    .action(\"REPLACE_SERVER\")\n                    .shouldDrainInstances(true)\n                    .build())\n                .build())\n            .desiredCapacity(0)\n            .instanceTypesSpots(            \n                \"t2.micro\",\n                \"t2.medium\",\n                \"t2.large\")\n            .managedActions(BeanstalkManagedActionsArgs.builder()\n                .platformUpdate(BeanstalkManagedActionsPlatformUpdateArgs.builder()\n                    .performAt(\"timeWindow\")\n                    .timeWindow(\"Mon:23:50-Tue:00:20\")\n                    .updateLevel(\"minorAndPatch\")\n                    .build())\n                .build())\n            .maxSize(1)\n            .minSize(0)\n            .product(\"Linux/UNIX\")\n            .region(\"us-west-2\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  elastigoup-aws-beanstalk:\n    type: spotinst:aws:Beanstalk\n    properties:\n      beanstalkEnvironmentId: e-example\n      beanstalkEnvironmentName: example-env\n      deploymentPreferences:\n        automaticRoll: true\n        batchSizePercentage: 100\n        gracePeriod: 90\n        strategies:\n          - action: REPLACE_SERVER\n            shouldDrainInstances: true\n      desiredCapacity: 0\n      instanceTypesSpots:\n        - t2.micro\n        - t2.medium\n        - t2.large\n      managedActions:\n        platformUpdate:\n          performAt: timeWindow\n          timeWindow: Mon:23:50-Tue:00:20\n          updateLevel: minorAndPatch\n      maxSize: 1\n      minSize: 0\n      product: Linux/UNIX\n      region: us-west-2\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
@@ -9067,6 +9097,52 @@
                         "items": {
                             "$ref": "#/types/spotinst:aws/BeanstalkScheduledTask:BeanstalkScheduledTask"
                         }
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "spotinst:aws/credentials:Credentials": {
+            "description": "Provides a Spotinst credential AWS resource.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as spotinst from \"@pulumi/spotinst\";\n\n// set credential AWS\nconst credential = new spotinst.aws.Credentials(\"credential\", {\n    accountid: \"act-123456\",\n    iamrole: \"arn:aws:iam::1234567890:role/Spot_Iam_Role\",\n});\n```\n```python\nimport pulumi\nimport pulumi_spotinst as spotinst\n\n# set credential AWS\ncredential = spotinst.aws.Credentials(\"credential\",\n    accountid=\"act-123456\",\n    iamrole=\"arn:aws:iam::1234567890:role/Spot_Iam_Role\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing SpotInst = Pulumi.SpotInst;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // set credential AWS\n    var credential = new SpotInst.Aws.Credentials(\"credential\", new()\n    {\n        Accountid = \"act-123456\",\n        Iamrole = \"arn:aws:iam::1234567890:role/Spot_Iam_Role\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst/aws\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aws.NewCredentials(ctx, \"credential\", \u0026aws.CredentialsArgs{\n\t\t\tAccountid: pulumi.String(\"act-123456\"),\n\t\t\tIamrole:   pulumi.String(\"arn:aws:iam::1234567890:role/Spot_Iam_Role\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.spotinst.aws.Credentials;\nimport com.pulumi.spotinst.aws.CredentialsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var credential = new Credentials(\"credential\", CredentialsArgs.builder()        \n            .accountid(\"act-123456\")\n            .iamrole(\"arn:aws:iam::1234567890:role/Spot_Iam_Role\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # set credential AWS\n  credential:\n    type: spotinst:aws:Credentials\n    properties:\n      accountid: act-123456\n      iamrole: arn:aws:iam::1234567890:role/Spot_Iam_Role\n```\n{{% /example %}}\n{{% /examples %}}",
+            "properties": {
+                "accountId": {
+                    "type": "string"
+                },
+                "iamrole": {
+                    "type": "string",
+                    "description": "Provide the IAM Role ARN connected to another AWS account 922761411349 and with the latest Spot Policy - https://docs.spot.io/administration/api/spot-policy-in-aws\n"
+                }
+            },
+            "required": [
+                "accountId",
+                "iamrole"
+            ],
+            "inputProperties": {
+                "accountId": {
+                    "type": "string",
+                    "willReplaceOnChanges": true
+                },
+                "iamrole": {
+                    "type": "string",
+                    "description": "Provide the IAM Role ARN connected to another AWS account 922761411349 and with the latest Spot Policy - https://docs.spot.io/administration/api/spot-policy-in-aws\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "accountId",
+                "iamrole"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Credentials resources.\n",
+                "properties": {
+                    "accountId": {
+                        "type": "string",
+                        "willReplaceOnChanges": true
+                    },
+                    "iamrole": {
+                        "type": "string",
+                        "description": "Provide the IAM Role ARN connected to another AWS account 922761411349 and with the latest Spot Policy - https://docs.spot.io/administration/api/spot-policy-in-aws\n",
+                        "willReplaceOnChanges": true
                     }
                 },
                 "type": "object"
