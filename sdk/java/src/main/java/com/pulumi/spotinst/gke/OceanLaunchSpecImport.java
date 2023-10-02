@@ -77,7 +77,7 @@ public class OceanLaunchSpecImport extends com.pulumi.resources.CustomResource {
      * The node pool you wish to use in your launchSpec.
      * 
      */
-    @Export(name="nodePoolName", type=String.class, parameters={})
+    @Export(name="nodePoolName", refs={String.class}, tree="[0]")
     private Output<String> nodePoolName;
 
     /**
@@ -91,7 +91,7 @@ public class OceanLaunchSpecImport extends com.pulumi.resources.CustomResource {
      * The Ocean cluster ID required for launchSpec create.
      * 
      */
-    @Export(name="oceanId", type=String.class, parameters={})
+    @Export(name="oceanId", refs={String.class}, tree="[0]")
     private Output<String> oceanId;
 
     /**

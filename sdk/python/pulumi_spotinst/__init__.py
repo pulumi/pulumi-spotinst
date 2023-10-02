@@ -47,10 +47,26 @@ _utilities.register(
 [
  {
   "pkg": "spotinst",
+  "mod": "aws/account",
+  "fqn": "pulumi_spotinst.aws",
+  "classes": {
+   "spotinst:aws/account:Account": "Account"
+  }
+ },
+ {
+  "pkg": "spotinst",
   "mod": "aws/beanstalk",
   "fqn": "pulumi_spotinst.aws",
   "classes": {
    "spotinst:aws/beanstalk:Beanstalk": "Beanstalk"
+  }
+ },
+ {
+  "pkg": "spotinst",
+  "mod": "aws/credentials",
+  "fqn": "pulumi_spotinst.aws",
+  "classes": {
+   "spotinst:aws/credentials:Credentials": "Credentials"
   }
  },
  {

@@ -237,7 +237,7 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
      * Custom init script file or text in Base64 encoded format.
      * 
      */
-    @Export(name="customData", type=String.class, parameters={})
+    @Export(name="customData", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> customData;
 
     /**
@@ -251,7 +251,7 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
      * The desired number of instances the group should have at any time.
      * 
      */
-    @Export(name="desiredCapacity", type=Integer.class, parameters={})
+    @Export(name="desiredCapacity", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> desiredCapacity;
 
     /**
@@ -261,49 +261,49 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
     public Output<Optional<Integer>> desiredCapacity() {
         return Codegen.optional(this.desiredCapacity);
     }
-    @Export(name="healthCheck", type=ElastigroupHealthCheck.class, parameters={})
+    @Export(name="healthCheck", refs={ElastigroupHealthCheck.class}, tree="[0]")
     private Output</* @Nullable */ ElastigroupHealthCheck> healthCheck;
 
     public Output<Optional<ElastigroupHealthCheck>> healthCheck() {
         return Codegen.optional(this.healthCheck);
     }
-    @Export(name="images", type=List.class, parameters={ElastigroupImage.class})
+    @Export(name="images", refs={List.class,ElastigroupImage.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ElastigroupImage>> images;
 
     public Output<Optional<List<ElastigroupImage>>> images() {
         return Codegen.optional(this.images);
     }
-    @Export(name="integrationKubernetes", type=ElastigroupIntegrationKubernetes.class, parameters={})
+    @Export(name="integrationKubernetes", refs={ElastigroupIntegrationKubernetes.class}, tree="[0]")
     private Output</* @Nullable */ ElastigroupIntegrationKubernetes> integrationKubernetes;
 
     public Output<Optional<ElastigroupIntegrationKubernetes>> integrationKubernetes() {
         return Codegen.optional(this.integrationKubernetes);
     }
-    @Export(name="integrationMultaiRuntime", type=ElastigroupIntegrationMultaiRuntime.class, parameters={})
+    @Export(name="integrationMultaiRuntime", refs={ElastigroupIntegrationMultaiRuntime.class}, tree="[0]")
     private Output</* @Nullable */ ElastigroupIntegrationMultaiRuntime> integrationMultaiRuntime;
 
     public Output<Optional<ElastigroupIntegrationMultaiRuntime>> integrationMultaiRuntime() {
         return Codegen.optional(this.integrationMultaiRuntime);
     }
-    @Export(name="loadBalancers", type=List.class, parameters={ElastigroupLoadBalancer.class})
+    @Export(name="loadBalancers", refs={List.class,ElastigroupLoadBalancer.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ElastigroupLoadBalancer>> loadBalancers;
 
     public Output<Optional<List<ElastigroupLoadBalancer>>> loadBalancers() {
         return Codegen.optional(this.loadBalancers);
     }
-    @Export(name="login", type=ElastigroupLogin.class, parameters={})
+    @Export(name="login", refs={ElastigroupLogin.class}, tree="[0]")
     private Output</* @Nullable */ ElastigroupLogin> login;
 
     public Output<Optional<ElastigroupLogin>> login() {
         return Codegen.optional(this.login);
     }
-    @Export(name="lowPrioritySizes", type=List.class, parameters={String.class})
+    @Export(name="lowPrioritySizes", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> lowPrioritySizes;
 
     public Output<List<String>> lowPrioritySizes() {
         return this.lowPrioritySizes;
     }
-    @Export(name="managedServiceIdentities", type=List.class, parameters={ElastigroupManagedServiceIdentity.class})
+    @Export(name="managedServiceIdentities", refs={List.class,ElastigroupManagedServiceIdentity.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ElastigroupManagedServiceIdentity>> managedServiceIdentities;
 
     public Output<Optional<List<ElastigroupManagedServiceIdentity>>> managedServiceIdentities() {
@@ -313,7 +313,7 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
      * The maximum number of instances the group should have at any time.
      * 
      */
-    @Export(name="maxSize", type=Integer.class, parameters={})
+    @Export(name="maxSize", refs={Integer.class}, tree="[0]")
     private Output<Integer> maxSize;
 
     /**
@@ -327,7 +327,7 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
      * The minimum number of instances the group should have at any time.
      * 
      */
-    @Export(name="minSize", type=Integer.class, parameters={})
+    @Export(name="minSize", refs={Integer.class}, tree="[0]")
     private Output<Integer> minSize;
 
     /**
@@ -341,7 +341,7 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
      * Name of the Managed Service Identity.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -351,7 +351,7 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
     public Output<String> name() {
         return this.name;
     }
-    @Export(name="network", type=ElastigroupNetwork.class, parameters={})
+    @Export(name="network", refs={ElastigroupNetwork.class}, tree="[0]")
     private Output<ElastigroupNetwork> network;
 
     public Output<ElastigroupNetwork> network() {
@@ -361,7 +361,7 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
      * Available On-Demand sizes
      * 
      */
-    @Export(name="odSizes", type=List.class, parameters={String.class})
+    @Export(name="odSizes", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> odSizes;
 
     /**
@@ -371,7 +371,7 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
     public Output<List<String>> odSizes() {
         return this.odSizes;
     }
-    @Export(name="product", type=String.class, parameters={})
+    @Export(name="product", refs={String.class}, tree="[0]")
     private Output<String> product;
 
     public Output<String> product() {
@@ -381,7 +381,7 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
      * The region your Azure group will be created in.
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
@@ -395,7 +395,7 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
      * Name of the Azure Resource Group where the Managed Service Identity is located.
      * 
      */
-    @Export(name="resourceGroupName", type=String.class, parameters={})
+    @Export(name="resourceGroupName", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupName;
 
     /**
@@ -405,43 +405,43 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
     public Output<String> resourceGroupName() {
         return this.resourceGroupName;
     }
-    @Export(name="scalingDownPolicies", type=List.class, parameters={ElastigroupScalingDownPolicy.class})
+    @Export(name="scalingDownPolicies", refs={List.class,ElastigroupScalingDownPolicy.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ElastigroupScalingDownPolicy>> scalingDownPolicies;
 
     public Output<Optional<List<ElastigroupScalingDownPolicy>>> scalingDownPolicies() {
         return Codegen.optional(this.scalingDownPolicies);
     }
-    @Export(name="scalingUpPolicies", type=List.class, parameters={ElastigroupScalingUpPolicy.class})
+    @Export(name="scalingUpPolicies", refs={List.class,ElastigroupScalingUpPolicy.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ElastigroupScalingUpPolicy>> scalingUpPolicies;
 
     public Output<Optional<List<ElastigroupScalingUpPolicy>>> scalingUpPolicies() {
         return Codegen.optional(this.scalingUpPolicies);
     }
-    @Export(name="scheduledTasks", type=List.class, parameters={ElastigroupScheduledTask.class})
+    @Export(name="scheduledTasks", refs={List.class,ElastigroupScheduledTask.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ElastigroupScheduledTask>> scheduledTasks;
 
     public Output<Optional<List<ElastigroupScheduledTask>>> scheduledTasks() {
         return Codegen.optional(this.scheduledTasks);
     }
-    @Export(name="shutdownScript", type=String.class, parameters={})
+    @Export(name="shutdownScript", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> shutdownScript;
 
     public Output<Optional<String>> shutdownScript() {
         return Codegen.optional(this.shutdownScript);
     }
-    @Export(name="strategy", type=ElastigroupStrategy.class, parameters={})
+    @Export(name="strategy", refs={ElastigroupStrategy.class}, tree="[0]")
     private Output<ElastigroupStrategy> strategy;
 
     public Output<ElastigroupStrategy> strategy() {
         return this.strategy;
     }
-    @Export(name="updatePolicy", type=ElastigroupUpdatePolicy.class, parameters={})
+    @Export(name="updatePolicy", refs={ElastigroupUpdatePolicy.class}, tree="[0]")
     private Output</* @Nullable */ ElastigroupUpdatePolicy> updatePolicy;
 
     public Output<Optional<ElastigroupUpdatePolicy>> updatePolicy() {
         return Codegen.optional(this.updatePolicy);
     }
-    @Export(name="userData", type=String.class, parameters={})
+    @Export(name="userData", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> userData;
 
     public Output<Optional<String>> userData() {

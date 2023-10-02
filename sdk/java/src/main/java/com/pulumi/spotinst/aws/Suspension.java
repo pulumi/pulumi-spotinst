@@ -64,7 +64,7 @@ public class Suspension extends com.pulumi.resources.CustomResource {
      * Elastigroup ID to apply the suspensions on.
      * 
      */
-    @Export(name="groupId", type=String.class, parameters={})
+    @Export(name="groupId", refs={String.class}, tree="[0]")
     private Output<String> groupId;
 
     /**
@@ -78,7 +78,7 @@ public class Suspension extends com.pulumi.resources.CustomResource {
      * block of single process to suspend.
      * 
      */
-    @Export(name="suspensions", type=List.class, parameters={SuspensionSuspension.class})
+    @Export(name="suspensions", refs={List.class,SuspensionSuspension.class}, tree="[0,1]")
     private Output<List<SuspensionSuspension>> suspensions;
 
     /**

@@ -88,7 +88,7 @@ public class Beanstalk extends com.pulumi.resources.CustomResource {
      * The id of an existing Beanstalk environment.
      * 
      */
-    @Export(name="beanstalkEnvironmentId", type=String.class, parameters={})
+    @Export(name="beanstalkEnvironmentId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> beanstalkEnvironmentId;
 
     /**
@@ -102,7 +102,7 @@ public class Beanstalk extends com.pulumi.resources.CustomResource {
      * The name of an existing Beanstalk environment.
      * 
      */
-    @Export(name="beanstalkEnvironmentName", type=String.class, parameters={})
+    @Export(name="beanstalkEnvironmentName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> beanstalkEnvironmentName;
 
     /**
@@ -116,7 +116,7 @@ public class Beanstalk extends com.pulumi.resources.CustomResource {
      * Preferences when performing a roll
      * 
      */
-    @Export(name="deploymentPreferences", type=BeanstalkDeploymentPreferences.class, parameters={})
+    @Export(name="deploymentPreferences", refs={BeanstalkDeploymentPreferences.class}, tree="[0]")
     private Output</* @Nullable */ BeanstalkDeploymentPreferences> deploymentPreferences;
 
     /**
@@ -130,7 +130,7 @@ public class Beanstalk extends com.pulumi.resources.CustomResource {
      * The desired number of instances the group should have at any time.
      * 
      */
-    @Export(name="desiredCapacity", type=Integer.class, parameters={})
+    @Export(name="desiredCapacity", refs={Integer.class}, tree="[0]")
     private Output<Integer> desiredCapacity;
 
     /**
@@ -144,7 +144,7 @@ public class Beanstalk extends com.pulumi.resources.CustomResource {
      * One or more instance types. To maximize the availability of Spot instances, select as many instance types as possible.
      * 
      */
-    @Export(name="instanceTypesSpots", type=List.class, parameters={String.class})
+    @Export(name="instanceTypesSpots", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> instanceTypesSpots;
 
     /**
@@ -154,7 +154,7 @@ public class Beanstalk extends com.pulumi.resources.CustomResource {
     public Output<List<String>> instanceTypesSpots() {
         return this.instanceTypesSpots;
     }
-    @Export(name="maintenance", type=String.class, parameters={})
+    @Export(name="maintenance", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> maintenance;
 
     public Output<Optional<String>> maintenance() {
@@ -164,7 +164,7 @@ public class Beanstalk extends com.pulumi.resources.CustomResource {
      * Managed Actions parameters
      * 
      */
-    @Export(name="managedActions", type=BeanstalkManagedActions.class, parameters={})
+    @Export(name="managedActions", refs={BeanstalkManagedActions.class}, tree="[0]")
     private Output</* @Nullable */ BeanstalkManagedActions> managedActions;
 
     /**
@@ -178,7 +178,7 @@ public class Beanstalk extends com.pulumi.resources.CustomResource {
      * The maximum number of instances the group should have at any time.
      * 
      */
-    @Export(name="maxSize", type=Integer.class, parameters={})
+    @Export(name="maxSize", refs={Integer.class}, tree="[0]")
     private Output<Integer> maxSize;
 
     /**
@@ -192,7 +192,7 @@ public class Beanstalk extends com.pulumi.resources.CustomResource {
      * The minimum number of instances the group should have at any time.
      * 
      */
-    @Export(name="minSize", type=Integer.class, parameters={})
+    @Export(name="minSize", refs={Integer.class}, tree="[0]")
     private Output<Integer> minSize;
 
     /**
@@ -206,7 +206,7 @@ public class Beanstalk extends com.pulumi.resources.CustomResource {
      * The group name.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -221,7 +221,7 @@ public class Beanstalk extends com.pulumi.resources.CustomResource {
      * For EC2 Classic instances:  `&#34;Linux/UNIX (Amazon VPC)&#34;`, `&#34;SUSE Linux (Amazon VPC)&#34;`, `&#34;Windows (Amazon VPC)&#34;`.
      * 
      */
-    @Export(name="product", type=String.class, parameters={})
+    @Export(name="product", refs={String.class}, tree="[0]")
     private Output<String> product;
 
     /**
@@ -236,7 +236,7 @@ public class Beanstalk extends com.pulumi.resources.CustomResource {
      * The AWS region your group will be created in. Cannot be changed after the group has been created.
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
@@ -246,7 +246,7 @@ public class Beanstalk extends com.pulumi.resources.CustomResource {
     public Output<String> region() {
         return this.region;
     }
-    @Export(name="scheduledTasks", type=List.class, parameters={BeanstalkScheduledTask.class})
+    @Export(name="scheduledTasks", refs={List.class,BeanstalkScheduledTask.class}, tree="[0,1]")
     private Output</* @Nullable */ List<BeanstalkScheduledTask>> scheduledTasks;
 
     public Output<Optional<List<BeanstalkScheduledTask>>> scheduledTasks() {

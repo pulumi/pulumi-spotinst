@@ -156,7 +156,7 @@ public class Ocean extends com.pulumi.resources.CustomResource {
      * Configure IPv6 address allocation.
      * 
      */
-    @Export(name="associateIpv6Address", type=Boolean.class, parameters={})
+    @Export(name="associateIpv6Address", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> associateIpv6Address;
 
     /**
@@ -170,7 +170,7 @@ public class Ocean extends com.pulumi.resources.CustomResource {
      * Configure public IP address allocation.
      * 
      */
-    @Export(name="associatePublicIpAddress", type=Boolean.class, parameters={})
+    @Export(name="associatePublicIpAddress", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> associatePublicIpAddress;
 
     /**
@@ -180,7 +180,7 @@ public class Ocean extends com.pulumi.resources.CustomResource {
     public Output<Optional<Boolean>> associatePublicIpAddress() {
         return Codegen.optional(this.associatePublicIpAddress);
     }
-    @Export(name="autoscaler", type=OceanAutoscaler.class, parameters={})
+    @Export(name="autoscaler", refs={OceanAutoscaler.class}, tree="[0]")
     private Output</* @Nullable */ OceanAutoscaler> autoscaler;
 
     public Output<Optional<OceanAutoscaler>> autoscaler() {
@@ -190,7 +190,7 @@ public class Ocean extends com.pulumi.resources.CustomResource {
      * Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist` is configured.
      * 
      */
-    @Export(name="blacklists", type=List.class, parameters={String.class})
+    @Export(name="blacklists", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> blacklists;
 
     /**
@@ -204,7 +204,7 @@ public class Ocean extends com.pulumi.resources.CustomResource {
      * Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
      * 
      */
-    @Export(name="blockDeviceMappings", type=List.class, parameters={OceanBlockDeviceMapping.class})
+    @Export(name="blockDeviceMappings", refs={List.class,OceanBlockDeviceMapping.class}, tree="[0,1]")
     private Output</* @Nullable */ List<OceanBlockDeviceMapping>> blockDeviceMappings;
 
     /**
@@ -214,7 +214,7 @@ public class Ocean extends com.pulumi.resources.CustomResource {
     public Output<Optional<List<OceanBlockDeviceMapping>>> blockDeviceMappings() {
         return Codegen.optional(this.blockDeviceMappings);
     }
-    @Export(name="clusterOrientations", type=List.class, parameters={OceanClusterOrientation.class})
+    @Export(name="clusterOrientations", refs={List.class,OceanClusterOrientation.class}, tree="[0,1]")
     private Output</* @Nullable */ List<OceanClusterOrientation>> clusterOrientations;
 
     public Output<Optional<List<OceanClusterOrientation>>> clusterOrientations() {
@@ -224,7 +224,7 @@ public class Ocean extends com.pulumi.resources.CustomResource {
      * A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
      * 
      */
-    @Export(name="controllerId", type=String.class, parameters={})
+    @Export(name="controllerId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> controllerId;
 
     /**
@@ -238,7 +238,7 @@ public class Ocean extends com.pulumi.resources.CustomResource {
      * The number of instances to launch and maintain in the cluster.
      * 
      */
-    @Export(name="desiredCapacity", type=Integer.class, parameters={})
+    @Export(name="desiredCapacity", refs={Integer.class}, tree="[0]")
     private Output<Integer> desiredCapacity;
 
     /**
@@ -252,7 +252,7 @@ public class Ocean extends com.pulumi.resources.CustomResource {
      * The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
      * 
      */
-    @Export(name="drainingTimeout", type=Integer.class, parameters={})
+    @Export(name="drainingTimeout", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> drainingTimeout;
 
     /**
@@ -266,7 +266,7 @@ public class Ocean extends com.pulumi.resources.CustomResource {
      * Enable EBS optimized for cluster. Flag will enable optimized capacity for high bandwidth connectivity to the EB service for non EBS optimized instance types. For instances that are EBS optimized this flag will be ignored.
      * 
      */
-    @Export(name="ebsOptimized", type=Boolean.class, parameters={})
+    @Export(name="ebsOptimized", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> ebsOptimized;
 
     /**
@@ -280,7 +280,7 @@ public class Ocean extends com.pulumi.resources.CustomResource {
      * If not Spot instance markets are available, enable Ocean to launch On-Demand instances instead.
      * 
      */
-    @Export(name="fallbackToOndemand", type=Boolean.class, parameters={})
+    @Export(name="fallbackToOndemand", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> fallbackToOndemand;
 
     /**
@@ -294,7 +294,7 @@ public class Ocean extends com.pulumi.resources.CustomResource {
      * List of filters. The Instance types that match with all filters compose the Ocean&#39;s whitelist parameter. Cannot be configured together with whitelist/blacklist.
      * 
      */
-    @Export(name="filters", type=OceanFilters.class, parameters={})
+    @Export(name="filters", refs={OceanFilters.class}, tree="[0]")
     private Output</* @Nullable */ OceanFilters> filters;
 
     /**
@@ -308,7 +308,7 @@ public class Ocean extends com.pulumi.resources.CustomResource {
      * The amount of time, in seconds, after the instance has launched to start checking its health.
      * 
      */
-    @Export(name="gracePeriod", type=Integer.class, parameters={})
+    @Export(name="gracePeriod", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> gracePeriod;
 
     /**
@@ -322,7 +322,7 @@ public class Ocean extends com.pulumi.resources.CustomResource {
      * The instance profile iam role.
      * 
      */
-    @Export(name="iamInstanceProfile", type=String.class, parameters={})
+    @Export(name="iamInstanceProfile", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> iamInstanceProfile;
 
     /**
@@ -336,7 +336,7 @@ public class Ocean extends com.pulumi.resources.CustomResource {
      * ID of the image used to launch the instances.
      * 
      */
-    @Export(name="imageId", type=String.class, parameters={})
+    @Export(name="imageId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> imageId;
 
     /**
@@ -350,7 +350,7 @@ public class Ocean extends com.pulumi.resources.CustomResource {
      * Ocean instance metadata options object for IMDSv2.
      * 
      */
-    @Export(name="instanceMetadataOptions", type=OceanInstanceMetadataOptions.class, parameters={})
+    @Export(name="instanceMetadataOptions", refs={OceanInstanceMetadataOptions.class}, tree="[0]")
     private Output</* @Nullable */ OceanInstanceMetadataOptions> instanceMetadataOptions;
 
     /**
@@ -364,7 +364,7 @@ public class Ocean extends com.pulumi.resources.CustomResource {
      * The key pair to attach the instances.
      * 
      */
-    @Export(name="keyName", type=String.class, parameters={})
+    @Export(name="keyName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> keyName;
 
     /**
@@ -378,7 +378,7 @@ public class Ocean extends com.pulumi.resources.CustomResource {
      * Array of load balancer objects to add to ocean cluster
      * 
      */
-    @Export(name="loadBalancers", type=List.class, parameters={OceanLoadBalancer.class})
+    @Export(name="loadBalancers", refs={List.class,OceanLoadBalancer.class}, tree="[0,1]")
     private Output</* @Nullable */ List<OceanLoadBalancer>> loadBalancers;
 
     /**
@@ -392,7 +392,7 @@ public class Ocean extends com.pulumi.resources.CustomResource {
      * Logging configuration.
      * 
      */
-    @Export(name="logging", type=OceanLogging.class, parameters={})
+    @Export(name="logging", refs={OceanLogging.class}, tree="[0]")
     private Output</* @Nullable */ OceanLogging> logging;
 
     /**
@@ -406,7 +406,7 @@ public class Ocean extends com.pulumi.resources.CustomResource {
      * The upper limit of instances the cluster can scale up to.
      * 
      */
-    @Export(name="maxSize", type=Integer.class, parameters={})
+    @Export(name="maxSize", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> maxSize;
 
     /**
@@ -420,7 +420,7 @@ public class Ocean extends com.pulumi.resources.CustomResource {
      * The lower limit of instances the cluster can scale down to.
      * 
      */
-    @Export(name="minSize", type=Integer.class, parameters={})
+    @Export(name="minSize", refs={Integer.class}, tree="[0]")
     private Output<Integer> minSize;
 
     /**
@@ -434,7 +434,7 @@ public class Ocean extends com.pulumi.resources.CustomResource {
      * Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
      * 
      */
-    @Export(name="monitoring", type=Boolean.class, parameters={})
+    @Export(name="monitoring", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> monitoring;
 
     /**
@@ -448,7 +448,7 @@ public class Ocean extends com.pulumi.resources.CustomResource {
      * Required if type is set to `CLASSIC`
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -462,7 +462,7 @@ public class Ocean extends com.pulumi.resources.CustomResource {
      * The region the cluster will run in.
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> region;
 
     /**
@@ -476,7 +476,7 @@ public class Ocean extends com.pulumi.resources.CustomResource {
      * Specify which resources should be tagged with Virtual Node Group tags or Ocean tags. If tags are set on the VNG, the resources will be tagged with the VNG tags; otherwise, they will be tagged with the Ocean tags.
      * 
      */
-    @Export(name="resourceTagSpecifications", type=List.class, parameters={OceanResourceTagSpecification.class})
+    @Export(name="resourceTagSpecifications", refs={List.class,OceanResourceTagSpecification.class}, tree="[0,1]")
     private Output</* @Nullable */ List<OceanResourceTagSpecification>> resourceTagSpecifications;
 
     /**
@@ -490,7 +490,7 @@ public class Ocean extends com.pulumi.resources.CustomResource {
      * The size (in Gb) to allocate for the root volume. Minimum `20`.
      * 
      */
-    @Export(name="rootVolumeSize", type=Integer.class, parameters={})
+    @Export(name="rootVolumeSize", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> rootVolumeSize;
 
     /**
@@ -500,7 +500,7 @@ public class Ocean extends com.pulumi.resources.CustomResource {
     public Output<Optional<Integer>> rootVolumeSize() {
         return Codegen.optional(this.rootVolumeSize);
     }
-    @Export(name="scheduledTasks", type=List.class, parameters={OceanScheduledTask.class})
+    @Export(name="scheduledTasks", refs={List.class,OceanScheduledTask.class}, tree="[0,1]")
     private Output</* @Nullable */ List<OceanScheduledTask>> scheduledTasks;
 
     public Output<Optional<List<OceanScheduledTask>>> scheduledTasks() {
@@ -510,7 +510,7 @@ public class Ocean extends com.pulumi.resources.CustomResource {
      * One or more security group ids.
      * 
      */
-    @Export(name="securityGroups", type=List.class, parameters={String.class})
+    @Export(name="securityGroups", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> securityGroups;
 
     /**
@@ -524,7 +524,7 @@ public class Ocean extends com.pulumi.resources.CustomResource {
      * The desired percentage of Spot instances out of all running instances. Only available when the field is not set in any VNG directly (launchSpec.strategy.spotPercentage).
      * 
      */
-    @Export(name="spotPercentage", type=Integer.class, parameters={})
+    @Export(name="spotPercentage", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> spotPercentage;
 
     /**
@@ -538,7 +538,7 @@ public class Ocean extends com.pulumi.resources.CustomResource {
      * Ocean will spread the nodes across markets by this value. Possible values: `vcpu` or `count`.
      * 
      */
-    @Export(name="spreadNodesBy", type=String.class, parameters={})
+    @Export(name="spreadNodesBy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> spreadNodesBy;
 
     /**
@@ -552,7 +552,7 @@ public class Ocean extends com.pulumi.resources.CustomResource {
      * A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public IP.
      * 
      */
-    @Export(name="subnetIds", type=List.class, parameters={String.class})
+    @Export(name="subnetIds", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> subnetIds;
 
     /**
@@ -566,7 +566,7 @@ public class Ocean extends com.pulumi.resources.CustomResource {
      * Optionally adds tags to instances launched in an Ocean cluster.
      * 
      */
-    @Export(name="tags", type=List.class, parameters={OceanTag.class})
+    @Export(name="tags", refs={List.class,OceanTag.class}, tree="[0,1]")
     private Output</* @Nullable */ List<OceanTag>> tags;
 
     /**
@@ -576,7 +576,7 @@ public class Ocean extends com.pulumi.resources.CustomResource {
     public Output<Optional<List<OceanTag>>> tags() {
         return Codegen.optional(this.tags);
     }
-    @Export(name="updatePolicy", type=OceanUpdatePolicy.class, parameters={})
+    @Export(name="updatePolicy", refs={OceanUpdatePolicy.class}, tree="[0]")
     private Output</* @Nullable */ OceanUpdatePolicy> updatePolicy;
 
     public Output<Optional<OceanUpdatePolicy>> updatePolicy() {
@@ -587,7 +587,7 @@ public class Ocean extends com.pulumi.resources.CustomResource {
      * When set to true, on Ocean resource creation please make sure your custom VNG has an initial_nodes parameter to create nodes for your VNG.
      * 
      */
-    @Export(name="useAsTemplateOnly", type=Boolean.class, parameters={})
+    @Export(name="useAsTemplateOnly", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> useAsTemplateOnly;
 
     /**
@@ -602,7 +602,7 @@ public class Ocean extends com.pulumi.resources.CustomResource {
      * Base64-encoded MIME user data to make available to the instances.
      * 
      */
-    @Export(name="userData", type=String.class, parameters={})
+    @Export(name="userData", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> userData;
 
     /**
@@ -616,7 +616,7 @@ public class Ocean extends com.pulumi.resources.CustomResource {
      * If savings plans exist, Ocean will utilize them before launching Spot instances.
      * 
      */
-    @Export(name="utilizeCommitments", type=Boolean.class, parameters={})
+    @Export(name="utilizeCommitments", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> utilizeCommitments;
 
     /**
@@ -630,7 +630,7 @@ public class Ocean extends com.pulumi.resources.CustomResource {
      * If Reserved instances exist, Ocean will utilize them before launching Spot instances.
      * 
      */
-    @Export(name="utilizeReservedInstances", type=Boolean.class, parameters={})
+    @Export(name="utilizeReservedInstances", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> utilizeReservedInstances;
 
     /**
@@ -644,7 +644,7 @@ public class Ocean extends com.pulumi.resources.CustomResource {
      * Instance types allowed in the Ocean cluster. Cannot be configured if `blacklist` is configured.
      * 
      */
-    @Export(name="whitelists", type=List.class, parameters={String.class})
+    @Export(name="whitelists", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> whitelists;
 
     /**

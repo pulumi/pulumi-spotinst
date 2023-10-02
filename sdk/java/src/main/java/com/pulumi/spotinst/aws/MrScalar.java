@@ -334,7 +334,7 @@ public class MrScalar extends com.pulumi.resources.CustomResource {
      * This is meta information about third-party applications that third-party vendors use for testing purposes.
      * 
      */
-    @Export(name="additionalInfo", type=String.class, parameters={})
+    @Export(name="additionalInfo", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> additionalInfo;
 
     /**
@@ -348,7 +348,7 @@ public class MrScalar extends com.pulumi.resources.CustomResource {
      * A list of additional Amazon EC2 security group IDs for the master node.
      * 
      */
-    @Export(name="additionalPrimarySecurityGroups", type=List.class, parameters={String.class})
+    @Export(name="additionalPrimarySecurityGroups", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> additionalPrimarySecurityGroups;
 
     /**
@@ -362,7 +362,7 @@ public class MrScalar extends com.pulumi.resources.CustomResource {
      * A list of additional Amazon EC2 security group IDs for the core and task nodes.
      * 
      */
-    @Export(name="additionalReplicaSecurityGroups", type=List.class, parameters={String.class})
+    @Export(name="additionalReplicaSecurityGroups", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> additionalReplicaSecurityGroups;
 
     /**
@@ -376,7 +376,7 @@ public class MrScalar extends com.pulumi.resources.CustomResource {
      * A case-insensitive list of applications for Amazon EMR to install and configure when launching the cluster
      * 
      */
-    @Export(name="applications", type=List.class, parameters={MrScalarApplication.class})
+    @Export(name="applications", refs={List.class,MrScalarApplication.class}, tree="[0,1]")
     private Output</* @Nullable */ List<MrScalarApplication>> applications;
 
     /**
@@ -390,7 +390,7 @@ public class MrScalar extends com.pulumi.resources.CustomResource {
      * List of AZs and their subnet Ids. See example above for usage.
      * 
      */
-    @Export(name="availabilityZones", type=List.class, parameters={String.class})
+    @Export(name="availabilityZones", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> availabilityZones;
 
     /**
@@ -404,7 +404,7 @@ public class MrScalar extends com.pulumi.resources.CustomResource {
      * Describes path to S3 file containing description of bootstrap actions. [More Information](https://api.spotinst.com/elastigroup-for-aws/services-integrations/elastic-mapreduce/import-an-emr-cluster/advanced/)
      * 
      */
-    @Export(name="bootstrapActionsFiles", type=List.class, parameters={MrScalarBootstrapActionsFile.class})
+    @Export(name="bootstrapActionsFiles", refs={List.class,MrScalarBootstrapActionsFile.class}, tree="[0,1]")
     private Output</* @Nullable */ List<MrScalarBootstrapActionsFile>> bootstrapActionsFiles;
 
     /**
@@ -418,7 +418,7 @@ public class MrScalar extends com.pulumi.resources.CustomResource {
      * The MrScaler cluster id.
      * 
      */
-    @Export(name="clusterId", type=String.class, parameters={})
+    @Export(name="clusterId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> clusterId;
 
     /**
@@ -432,7 +432,7 @@ public class MrScalar extends com.pulumi.resources.CustomResource {
      * Describes path to S3 file containing description of configurations. [More Information](https://api.spotinst.com/elastigroup-for-aws/services-integrations/elastic-mapreduce/import-an-emr-cluster/advanced/)
      * 
      */
-    @Export(name="configurationsFiles", type=List.class, parameters={MrScalarConfigurationsFile.class})
+    @Export(name="configurationsFiles", refs={List.class,MrScalarConfigurationsFile.class}, tree="[0,1]")
     private Output</* @Nullable */ List<MrScalarConfigurationsFile>> configurationsFiles;
 
     /**
@@ -446,7 +446,7 @@ public class MrScalar extends com.pulumi.resources.CustomResource {
      * amount of instances in core group.
      * 
      */
-    @Export(name="coreDesiredCapacity", type=Integer.class, parameters={})
+    @Export(name="coreDesiredCapacity", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> coreDesiredCapacity;
 
     /**
@@ -460,7 +460,7 @@ public class MrScalar extends com.pulumi.resources.CustomResource {
      * This determines the ebs configuration for your core group instances. Only a single block is allowed.
      * 
      */
-    @Export(name="coreEbsBlockDevices", type=List.class, parameters={MrScalarCoreEbsBlockDevice.class})
+    @Export(name="coreEbsBlockDevices", refs={List.class,MrScalarCoreEbsBlockDevice.class}, tree="[0,1]")
     private Output</* @Nullable */ List<MrScalarCoreEbsBlockDevice>> coreEbsBlockDevices;
 
     /**
@@ -474,7 +474,7 @@ public class MrScalar extends com.pulumi.resources.CustomResource {
      * EBS Optimization setting for instances in group.
      * 
      */
-    @Export(name="coreEbsOptimized", type=Boolean.class, parameters={})
+    @Export(name="coreEbsOptimized", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> coreEbsOptimized;
 
     /**
@@ -488,7 +488,7 @@ public class MrScalar extends com.pulumi.resources.CustomResource {
      * The MrScaler instance types for the core nodes.
      * 
      */
-    @Export(name="coreInstanceTypes", type=List.class, parameters={String.class})
+    @Export(name="coreInstanceTypes", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> coreInstanceTypes;
 
     /**
@@ -502,7 +502,7 @@ public class MrScalar extends com.pulumi.resources.CustomResource {
      * The MrScaler lifecycle for instances in core group. Allowed values are &#39;SPOT&#39; and &#39;ON_DEMAND&#39;.
      * 
      */
-    @Export(name="coreLifecycle", type=String.class, parameters={})
+    @Export(name="coreLifecycle", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> coreLifecycle;
 
     /**
@@ -516,7 +516,7 @@ public class MrScalar extends com.pulumi.resources.CustomResource {
      * maximal amount of instances in core group.
      * 
      */
-    @Export(name="coreMaxSize", type=Integer.class, parameters={})
+    @Export(name="coreMaxSize", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> coreMaxSize;
 
     /**
@@ -530,7 +530,7 @@ public class MrScalar extends com.pulumi.resources.CustomResource {
      * The minimal amount of instances in core group.
      * 
      */
-    @Export(name="coreMinSize", type=Integer.class, parameters={})
+    @Export(name="coreMinSize", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> coreMinSize;
 
     /**
@@ -544,7 +544,7 @@ public class MrScalar extends com.pulumi.resources.CustomResource {
      * Each `*_scaling_*_policy` supports the following:
      * 
      */
-    @Export(name="coreScalingDownPolicies", type=List.class, parameters={MrScalarCoreScalingDownPolicy.class})
+    @Export(name="coreScalingDownPolicies", refs={List.class,MrScalarCoreScalingDownPolicy.class}, tree="[0,1]")
     private Output</* @Nullable */ List<MrScalarCoreScalingDownPolicy>> coreScalingDownPolicies;
 
     /**
@@ -554,7 +554,7 @@ public class MrScalar extends com.pulumi.resources.CustomResource {
     public Output<Optional<List<MrScalarCoreScalingDownPolicy>>> coreScalingDownPolicies() {
         return Codegen.optional(this.coreScalingDownPolicies);
     }
-    @Export(name="coreScalingUpPolicies", type=List.class, parameters={MrScalarCoreScalingUpPolicy.class})
+    @Export(name="coreScalingUpPolicies", refs={List.class,MrScalarCoreScalingUpPolicy.class}, tree="[0,1]")
     private Output</* @Nullable */ List<MrScalarCoreScalingUpPolicy>> coreScalingUpPolicies;
 
     public Output<Optional<List<MrScalarCoreScalingUpPolicy>>> coreScalingUpPolicies() {
@@ -564,7 +564,7 @@ public class MrScalar extends com.pulumi.resources.CustomResource {
      * Unit of task group for target, min and max. The unit could be `instance` or `weight`. instance - amount of instances. weight - amount of vCPU.
      * 
      */
-    @Export(name="coreUnit", type=String.class, parameters={})
+    @Export(name="coreUnit", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> coreUnit;
 
     /**
@@ -578,7 +578,7 @@ public class MrScalar extends com.pulumi.resources.CustomResource {
      * The ID of a custom Amazon EBS-backed Linux AMI if the cluster uses a custom AMI.
      * 
      */
-    @Export(name="customAmiId", type=String.class, parameters={})
+    @Export(name="customAmiId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> customAmiId;
 
     /**
@@ -592,7 +592,7 @@ public class MrScalar extends com.pulumi.resources.CustomResource {
      * The MrScaler description.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -602,7 +602,7 @@ public class MrScalar extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
-    @Export(name="ebsRootVolumeSize", type=Integer.class, parameters={})
+    @Export(name="ebsRootVolumeSize", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> ebsRootVolumeSize;
 
     public Output<Optional<Integer>> ebsRootVolumeSize() {
@@ -612,7 +612,7 @@ public class MrScalar extends com.pulumi.resources.CustomResource {
      * The name of an Amazon EC2 key pair that can be used to ssh to the master node.
      * 
      */
-    @Export(name="ec2KeyName", type=String.class, parameters={})
+    @Export(name="ec2KeyName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ec2KeyName;
 
     /**
@@ -626,7 +626,7 @@ public class MrScalar extends com.pulumi.resources.CustomResource {
      * Allow the `cluster_id` to set a provider output variable.
      * 
      */
-    @Export(name="exposeClusterId", type=Boolean.class, parameters={})
+    @Export(name="exposeClusterId", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> exposeClusterId;
 
     /**
@@ -640,7 +640,7 @@ public class MrScalar extends com.pulumi.resources.CustomResource {
      * Describes the instance and weights. Check out [Elastigroup Weighted Instances](https://api.spotinst.com/elastigroup-for-aws/concepts/general-concepts/elastigroup-capacity-instances-or-weighted) for more info.
      * 
      */
-    @Export(name="instanceWeights", type=List.class, parameters={MrScalarInstanceWeight.class})
+    @Export(name="instanceWeights", refs={List.class,MrScalarInstanceWeight.class}, tree="[0,1]")
     private Output</* @Nullable */ List<MrScalarInstanceWeight>> instanceWeights;
 
     /**
@@ -654,7 +654,7 @@ public class MrScalar extends com.pulumi.resources.CustomResource {
      * The IAM role that was specified when the job flow was launched. The EC2 instances of the job flow assume this role.
      * 
      */
-    @Export(name="jobFlowRole", type=String.class, parameters={})
+    @Export(name="jobFlowRole", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> jobFlowRole;
 
     /**
@@ -668,7 +668,7 @@ public class MrScalar extends com.pulumi.resources.CustomResource {
      * Specifies whether the cluster should remain available after completing all steps.
      * 
      */
-    @Export(name="keepJobFlowAlive", type=Boolean.class, parameters={})
+    @Export(name="keepJobFlowAlive", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> keepJobFlowAlive;
 
     /**
@@ -682,7 +682,7 @@ public class MrScalar extends com.pulumi.resources.CustomResource {
      * The path to the Amazon S3 location where logs for this cluster are stored.
      * 
      */
-    @Export(name="logUri", type=String.class, parameters={})
+    @Export(name="logUri", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> logUri;
 
     /**
@@ -696,7 +696,7 @@ public class MrScalar extends com.pulumi.resources.CustomResource {
      * EMR Managed Security group that will be set to the primary instance group.
      * 
      */
-    @Export(name="managedPrimarySecurityGroup", type=String.class, parameters={})
+    @Export(name="managedPrimarySecurityGroup", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> managedPrimarySecurityGroup;
 
     /**
@@ -710,7 +710,7 @@ public class MrScalar extends com.pulumi.resources.CustomResource {
      * EMR Managed Security group that will be set to the replica instance group.
      * 
      */
-    @Export(name="managedReplicaSecurityGroup", type=String.class, parameters={})
+    @Export(name="managedReplicaSecurityGroup", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> managedReplicaSecurityGroup;
 
     /**
@@ -724,7 +724,7 @@ public class MrScalar extends com.pulumi.resources.CustomResource {
      * This determines the ebs configuration for your master group instances. Only a single block is allowed.
      * 
      */
-    @Export(name="masterEbsBlockDevices", type=List.class, parameters={MrScalarMasterEbsBlockDevice.class})
+    @Export(name="masterEbsBlockDevices", refs={List.class,MrScalarMasterEbsBlockDevice.class}, tree="[0,1]")
     private Output</* @Nullable */ List<MrScalarMasterEbsBlockDevice>> masterEbsBlockDevices;
 
     /**
@@ -738,7 +738,7 @@ public class MrScalar extends com.pulumi.resources.CustomResource {
      * EBS Optimization setting for instances in group.
      * 
      */
-    @Export(name="masterEbsOptimized", type=Boolean.class, parameters={})
+    @Export(name="masterEbsOptimized", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> masterEbsOptimized;
 
     /**
@@ -752,7 +752,7 @@ public class MrScalar extends com.pulumi.resources.CustomResource {
      * The MrScaler instance types for the master nodes.
      * 
      */
-    @Export(name="masterInstanceTypes", type=List.class, parameters={String.class})
+    @Export(name="masterInstanceTypes", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> masterInstanceTypes;
 
     /**
@@ -766,7 +766,7 @@ public class MrScalar extends com.pulumi.resources.CustomResource {
      * The MrScaler lifecycle for instances in master group. Allowed values are &#39;SPOT&#39; and &#39;ON_DEMAND&#39;.
      * 
      */
-    @Export(name="masterLifecycle", type=String.class, parameters={})
+    @Export(name="masterLifecycle", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> masterLifecycle;
 
     /**
@@ -780,7 +780,7 @@ public class MrScalar extends com.pulumi.resources.CustomResource {
      * Number of instances in the master group.
      * 
      */
-    @Export(name="masterTarget", type=Integer.class, parameters={})
+    @Export(name="masterTarget", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> masterTarget;
 
     /**
@@ -794,7 +794,7 @@ public class MrScalar extends com.pulumi.resources.CustomResource {
      * The MrScaler name.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -804,13 +804,13 @@ public class MrScalar extends com.pulumi.resources.CustomResource {
     public Output<String> name() {
         return this.name;
     }
-    @Export(name="outputClusterId", type=String.class, parameters={})
+    @Export(name="outputClusterId", refs={String.class}, tree="[0]")
     private Output<String> outputClusterId;
 
     public Output<String> outputClusterId() {
         return this.outputClusterId;
     }
-    @Export(name="provisioningTimeout", type=MrScalarProvisioningTimeout.class, parameters={})
+    @Export(name="provisioningTimeout", refs={MrScalarProvisioningTimeout.class}, tree="[0]")
     private Output</* @Nullable */ MrScalarProvisioningTimeout> provisioningTimeout;
 
     public Output<Optional<MrScalarProvisioningTimeout>> provisioningTimeout() {
@@ -820,7 +820,7 @@ public class MrScalar extends com.pulumi.resources.CustomResource {
      * The MrScaler region.
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> region;
 
     /**
@@ -830,7 +830,7 @@ public class MrScalar extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> region() {
         return Codegen.optional(this.region);
     }
-    @Export(name="releaseLabel", type=String.class, parameters={})
+    @Export(name="releaseLabel", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> releaseLabel;
 
     public Output<Optional<String>> releaseLabel() {
@@ -840,7 +840,7 @@ public class MrScalar extends com.pulumi.resources.CustomResource {
      * Applies only when `custom_ami_id` is used. Specifies the type of updates that are applied from the Amazon Linux AMI package repositories when an instance boots using the AMI. Possible values include: `SECURITY`, `NONE`.
      * 
      */
-    @Export(name="repoUpgradeOnBoot", type=String.class, parameters={})
+    @Export(name="repoUpgradeOnBoot", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> repoUpgradeOnBoot;
 
     /**
@@ -854,7 +854,7 @@ public class MrScalar extends com.pulumi.resources.CustomResource {
      * Specifies the maximum number of times a capacity provisioning should be retried if the provisioning timeout is exceeded. Valid values: `1-5`.
      * 
      */
-    @Export(name="retries", type=Integer.class, parameters={})
+    @Export(name="retries", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> retries;
 
     /**
@@ -868,7 +868,7 @@ public class MrScalar extends com.pulumi.resources.CustomResource {
      * An array of scheduled tasks.
      * 
      */
-    @Export(name="scheduledTasks", type=List.class, parameters={MrScalarScheduledTask.class})
+    @Export(name="scheduledTasks", refs={List.class,MrScalarScheduledTask.class}, tree="[0,1]")
     private Output</* @Nullable */ List<MrScalarScheduledTask>> scheduledTasks;
 
     /**
@@ -882,7 +882,7 @@ public class MrScalar extends com.pulumi.resources.CustomResource {
      * The name of the security configuration applied to the cluster.
      * 
      */
-    @Export(name="securityConfig", type=String.class, parameters={})
+    @Export(name="securityConfig", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> securityConfig;
 
     /**
@@ -896,7 +896,7 @@ public class MrScalar extends com.pulumi.resources.CustomResource {
      * The identifier of the Amazon EC2 security group for the Amazon EMR service to access clusters in VPC private subnets.
      * 
      */
-    @Export(name="serviceAccessSecurityGroup", type=String.class, parameters={})
+    @Export(name="serviceAccessSecurityGroup", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> serviceAccessSecurityGroup;
 
     /**
@@ -910,7 +910,7 @@ public class MrScalar extends com.pulumi.resources.CustomResource {
      * The IAM role that will be assumed by the Amazon EMR service to access AWS resources on your behalf.
      * 
      */
-    @Export(name="serviceRole", type=String.class, parameters={})
+    @Export(name="serviceRole", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> serviceRole;
 
     /**
@@ -924,7 +924,7 @@ public class MrScalar extends com.pulumi.resources.CustomResource {
      * Steps from S3.
      * 
      */
-    @Export(name="stepsFiles", type=List.class, parameters={MrScalarStepsFile.class})
+    @Export(name="stepsFiles", refs={List.class,MrScalarStepsFile.class}, tree="[0,1]")
     private Output</* @Nullable */ List<MrScalarStepsFile>> stepsFiles;
 
     /**
@@ -938,7 +938,7 @@ public class MrScalar extends com.pulumi.resources.CustomResource {
      * The MrScaler strategy. Allowed values are `new` `clone` and `wrap`.
      * 
      */
-    @Export(name="strategy", type=String.class, parameters={})
+    @Export(name="strategy", refs={String.class}, tree="[0]")
     private Output<String> strategy;
 
     /**
@@ -952,7 +952,7 @@ public class MrScalar extends com.pulumi.resources.CustomResource {
      * A list of tags to assign to the resource. You may define multiple tags.
      * 
      */
-    @Export(name="tags", type=List.class, parameters={MrScalarTag.class})
+    @Export(name="tags", refs={List.class,MrScalarTag.class}, tree="[0,1]")
     private Output</* @Nullable */ List<MrScalarTag>> tags;
 
     /**
@@ -966,7 +966,7 @@ public class MrScalar extends com.pulumi.resources.CustomResource {
      * amount of instances in task group.
      * 
      */
-    @Export(name="taskDesiredCapacity", type=Integer.class, parameters={})
+    @Export(name="taskDesiredCapacity", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> taskDesiredCapacity;
 
     /**
@@ -980,7 +980,7 @@ public class MrScalar extends com.pulumi.resources.CustomResource {
      * This determines the ebs configuration for your task group instances. Only a single block is allowed.
      * 
      */
-    @Export(name="taskEbsBlockDevices", type=List.class, parameters={MrScalarTaskEbsBlockDevice.class})
+    @Export(name="taskEbsBlockDevices", refs={List.class,MrScalarTaskEbsBlockDevice.class}, tree="[0,1]")
     private Output</* @Nullable */ List<MrScalarTaskEbsBlockDevice>> taskEbsBlockDevices;
 
     /**
@@ -994,7 +994,7 @@ public class MrScalar extends com.pulumi.resources.CustomResource {
      * EBS Optimization setting for instances in group.
      * 
      */
-    @Export(name="taskEbsOptimized", type=Boolean.class, parameters={})
+    @Export(name="taskEbsOptimized", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> taskEbsOptimized;
 
     /**
@@ -1008,7 +1008,7 @@ public class MrScalar extends com.pulumi.resources.CustomResource {
      * The MrScaler instance types for the task nodes.
      * 
      */
-    @Export(name="taskInstanceTypes", type=List.class, parameters={String.class})
+    @Export(name="taskInstanceTypes", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> taskInstanceTypes;
 
     /**
@@ -1022,7 +1022,7 @@ public class MrScalar extends com.pulumi.resources.CustomResource {
      * The MrScaler lifecycle for instances in task group. Allowed values are &#39;SPOT&#39; and &#39;ON_DEMAND&#39;.
      * 
      */
-    @Export(name="taskLifecycle", type=String.class, parameters={})
+    @Export(name="taskLifecycle", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> taskLifecycle;
 
     /**
@@ -1036,7 +1036,7 @@ public class MrScalar extends com.pulumi.resources.CustomResource {
      * maximal amount of instances in task group.
      * 
      */
-    @Export(name="taskMaxSize", type=Integer.class, parameters={})
+    @Export(name="taskMaxSize", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> taskMaxSize;
 
     /**
@@ -1050,7 +1050,7 @@ public class MrScalar extends com.pulumi.resources.CustomResource {
      * The minimal amount of instances in task group.
      * 
      */
-    @Export(name="taskMinSize", type=Integer.class, parameters={})
+    @Export(name="taskMinSize", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> taskMinSize;
 
     /**
@@ -1064,7 +1064,7 @@ public class MrScalar extends com.pulumi.resources.CustomResource {
      * Possible core group scaling policies (Clone, New strategies):
      * 
      */
-    @Export(name="taskScalingDownPolicies", type=List.class, parameters={MrScalarTaskScalingDownPolicy.class})
+    @Export(name="taskScalingDownPolicies", refs={List.class,MrScalarTaskScalingDownPolicy.class}, tree="[0,1]")
     private Output</* @Nullable */ List<MrScalarTaskScalingDownPolicy>> taskScalingDownPolicies;
 
     /**
@@ -1074,7 +1074,7 @@ public class MrScalar extends com.pulumi.resources.CustomResource {
     public Output<Optional<List<MrScalarTaskScalingDownPolicy>>> taskScalingDownPolicies() {
         return Codegen.optional(this.taskScalingDownPolicies);
     }
-    @Export(name="taskScalingUpPolicies", type=List.class, parameters={MrScalarTaskScalingUpPolicy.class})
+    @Export(name="taskScalingUpPolicies", refs={List.class,MrScalarTaskScalingUpPolicy.class}, tree="[0,1]")
     private Output</* @Nullable */ List<MrScalarTaskScalingUpPolicy>> taskScalingUpPolicies;
 
     public Output<Optional<List<MrScalarTaskScalingUpPolicy>>> taskScalingUpPolicies() {
@@ -1084,7 +1084,7 @@ public class MrScalar extends com.pulumi.resources.CustomResource {
      * Unit of task group for target, min and max. The unit could be `instance` or `weight`. instance - amount of instances. weight - amount of vCPU.
      * 
      */
-    @Export(name="taskUnit", type=String.class, parameters={})
+    @Export(name="taskUnit", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> taskUnit;
 
     /**
@@ -1098,7 +1098,7 @@ public class MrScalar extends com.pulumi.resources.CustomResource {
      * Allows defining termination policies for EMR clusters based on CloudWatch Metrics.
      * 
      */
-    @Export(name="terminationPolicies", type=List.class, parameters={MrScalarTerminationPolicy.class})
+    @Export(name="terminationPolicies", refs={List.class,MrScalarTerminationPolicy.class}, tree="[0,1]")
     private Output</* @Nullable */ List<MrScalarTerminationPolicy>> terminationPolicies;
 
     /**
@@ -1112,7 +1112,7 @@ public class MrScalar extends com.pulumi.resources.CustomResource {
      * Specifies whether the Amazon EC2 instances in the cluster are protected from termination by API calls, user intervention, or in the event of a job-flow error.
      * 
      */
-    @Export(name="terminationProtected", type=Boolean.class, parameters={})
+    @Export(name="terminationProtected", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> terminationProtected;
 
     /**
@@ -1128,7 +1128,7 @@ public class MrScalar extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* This field has been removed from our API and is no longer functional. */
-    @Export(name="visibleToAllUsers", type=Boolean.class, parameters={})
+    @Export(name="visibleToAllUsers", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> visibleToAllUsers;
 
     public Output<Optional<Boolean>> visibleToAllUsers() {

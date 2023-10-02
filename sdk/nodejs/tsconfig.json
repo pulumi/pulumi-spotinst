@@ -13,7 +13,9 @@
         "strict": true
     },
     "files": [
+        "aws/account.ts",
         "aws/beanstalk.ts",
+        "aws/credentials.ts",
         "aws/elastigroup.ts",
         "aws/index.ts",
         "aws/managedInstance.ts",

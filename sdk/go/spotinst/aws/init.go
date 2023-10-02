@@ -21,8 +21,12 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "spotinst:aws/account:Account":
+		r = &Account{}
 	case "spotinst:aws/beanstalk:Beanstalk":
 		r = &Beanstalk{}
+	case "spotinst:aws/credentials:Credentials":
+		r = &Credentials{}
 	case "spotinst:aws/elastigroup:Elastigroup":
 		r = &Elastigroup{}
 	case "spotinst:aws/managedInstance:ManagedInstance":
@@ -52,7 +56,17 @@ func init() {
 	}
 	pulumi.RegisterResourceModule(
 		"spotinst",
+		"aws/account",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"spotinst",
 		"aws/beanstalk",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"spotinst",
+		"aws/credentials",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

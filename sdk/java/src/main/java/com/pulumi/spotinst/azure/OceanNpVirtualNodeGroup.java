@@ -24,115 +24,115 @@ import javax.annotation.Nullable;
 
 @ResourceType(type="spotinst:azure/oceanNpVirtualNodeGroup:OceanNpVirtualNodeGroup")
 public class OceanNpVirtualNodeGroup extends com.pulumi.resources.CustomResource {
-    @Export(name="availabilityZones", type=List.class, parameters={String.class})
+    @Export(name="availabilityZones", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> availabilityZones;
 
     public Output<Optional<List<String>>> availabilityZones() {
         return Codegen.optional(this.availabilityZones);
     }
-    @Export(name="enableNodePublicIp", type=Boolean.class, parameters={})
+    @Export(name="enableNodePublicIp", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enableNodePublicIp;
 
     public Output<Optional<Boolean>> enableNodePublicIp() {
         return Codegen.optional(this.enableNodePublicIp);
     }
-    @Export(name="fallbackToOndemand", type=Boolean.class, parameters={})
+    @Export(name="fallbackToOndemand", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> fallbackToOndemand;
 
     public Output<Optional<Boolean>> fallbackToOndemand() {
         return Codegen.optional(this.fallbackToOndemand);
     }
-    @Export(name="filters", type=OceanNpVirtualNodeGroupFilters.class, parameters={})
+    @Export(name="filters", refs={OceanNpVirtualNodeGroupFilters.class}, tree="[0]")
     private Output</* @Nullable */ OceanNpVirtualNodeGroupFilters> filters;
 
     public Output<Optional<OceanNpVirtualNodeGroupFilters>> filters() {
         return Codegen.optional(this.filters);
     }
-    @Export(name="headrooms", type=List.class, parameters={OceanNpVirtualNodeGroupHeadroom.class})
+    @Export(name="headrooms", refs={List.class,OceanNpVirtualNodeGroupHeadroom.class}, tree="[0,1]")
     private Output</* @Nullable */ List<OceanNpVirtualNodeGroupHeadroom>> headrooms;
 
     public Output<Optional<List<OceanNpVirtualNodeGroupHeadroom>>> headrooms() {
         return Codegen.optional(this.headrooms);
     }
-    @Export(name="kubernetesVersion", type=String.class, parameters={})
+    @Export(name="kubernetesVersion", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> kubernetesVersion;
 
     public Output<Optional<String>> kubernetesVersion() {
         return Codegen.optional(this.kubernetesVersion);
     }
-    @Export(name="labels", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="labels", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> labels;
 
     public Output<Optional<Map<String,Object>>> labels() {
         return Codegen.optional(this.labels);
     }
-    @Export(name="maxCount", type=Integer.class, parameters={})
+    @Export(name="maxCount", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> maxCount;
 
     public Output<Optional<Integer>> maxCount() {
         return Codegen.optional(this.maxCount);
     }
-    @Export(name="maxPodsPerNode", type=Integer.class, parameters={})
+    @Export(name="maxPodsPerNode", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> maxPodsPerNode;
 
     public Output<Optional<Integer>> maxPodsPerNode() {
         return Codegen.optional(this.maxPodsPerNode);
     }
-    @Export(name="minCount", type=Integer.class, parameters={})
+    @Export(name="minCount", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> minCount;
 
     public Output<Optional<Integer>> minCount() {
         return Codegen.optional(this.minCount);
     }
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     public Output<String> name() {
         return this.name;
     }
-    @Export(name="oceanId", type=String.class, parameters={})
+    @Export(name="oceanId", refs={String.class}, tree="[0]")
     private Output<String> oceanId;
 
     public Output<String> oceanId() {
         return this.oceanId;
     }
-    @Export(name="osDiskSizeGb", type=Integer.class, parameters={})
+    @Export(name="osDiskSizeGb", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> osDiskSizeGb;
 
     public Output<Optional<Integer>> osDiskSizeGb() {
         return Codegen.optional(this.osDiskSizeGb);
     }
-    @Export(name="osDiskType", type=String.class, parameters={})
+    @Export(name="osDiskType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> osDiskType;
 
     public Output<Optional<String>> osDiskType() {
         return Codegen.optional(this.osDiskType);
     }
-    @Export(name="osSku", type=String.class, parameters={})
+    @Export(name="osSku", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> osSku;
 
     public Output<Optional<String>> osSku() {
         return Codegen.optional(this.osSku);
     }
-    @Export(name="osType", type=String.class, parameters={})
+    @Export(name="osType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> osType;
 
     public Output<Optional<String>> osType() {
         return Codegen.optional(this.osType);
     }
-    @Export(name="spotPercentage", type=Integer.class, parameters={})
+    @Export(name="spotPercentage", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> spotPercentage;
 
     public Output<Optional<Integer>> spotPercentage() {
         return Codegen.optional(this.spotPercentage);
     }
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     public Output<Optional<Map<String,Object>>> tags() {
         return Codegen.optional(this.tags);
     }
-    @Export(name="taints", type=List.class, parameters={OceanNpVirtualNodeGroupTaint.class})
+    @Export(name="taints", refs={List.class,OceanNpVirtualNodeGroupTaint.class}, tree="[0,1]")
     private Output</* @Nullable */ List<OceanNpVirtualNodeGroupTaint>> taints;
 
     public Output<Optional<List<OceanNpVirtualNodeGroupTaint>>> taints() {

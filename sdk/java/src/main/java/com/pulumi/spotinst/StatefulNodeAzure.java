@@ -523,247 +523,247 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="spotinst:index/statefulNodeAzure:StatefulNodeAzure")
 public class StatefulNodeAzure extends com.pulumi.resources.CustomResource {
-    @Export(name="attachDataDisks", type=List.class, parameters={StatefulNodeAzureAttachDataDisk.class})
+    @Export(name="attachDataDisks", refs={List.class,StatefulNodeAzureAttachDataDisk.class}, tree="[0,1]")
     private Output</* @Nullable */ List<StatefulNodeAzureAttachDataDisk>> attachDataDisks;
 
     public Output<Optional<List<StatefulNodeAzureAttachDataDisk>>> attachDataDisks() {
         return Codegen.optional(this.attachDataDisks);
     }
-    @Export(name="bootDiagnostics", type=List.class, parameters={StatefulNodeAzureBootDiagnostic.class})
+    @Export(name="bootDiagnostics", refs={List.class,StatefulNodeAzureBootDiagnostic.class}, tree="[0,1]")
     private Output<List<StatefulNodeAzureBootDiagnostic>> bootDiagnostics;
 
     public Output<List<StatefulNodeAzureBootDiagnostic>> bootDiagnostics() {
         return this.bootDiagnostics;
     }
-    @Export(name="customData", type=String.class, parameters={})
+    @Export(name="customData", refs={String.class}, tree="[0]")
     private Output<String> customData;
 
     public Output<String> customData() {
         return this.customData;
     }
-    @Export(name="dataDisks", type=List.class, parameters={StatefulNodeAzureDataDisk.class})
+    @Export(name="dataDisks", refs={List.class,StatefulNodeAzureDataDisk.class}, tree="[0,1]")
     private Output</* @Nullable */ List<StatefulNodeAzureDataDisk>> dataDisks;
 
     public Output<Optional<List<StatefulNodeAzureDataDisk>>> dataDisks() {
         return Codegen.optional(this.dataDisks);
     }
-    @Export(name="dataDisksPersistenceMode", type=String.class, parameters={})
+    @Export(name="dataDisksPersistenceMode", refs={String.class}, tree="[0]")
     private Output<String> dataDisksPersistenceMode;
 
     public Output<String> dataDisksPersistenceMode() {
         return this.dataDisksPersistenceMode;
     }
-    @Export(name="deletes", type=List.class, parameters={StatefulNodeAzureDelete.class})
+    @Export(name="deletes", refs={List.class,StatefulNodeAzureDelete.class}, tree="[0,1]")
     private Output</* @Nullable */ List<StatefulNodeAzureDelete>> deletes;
 
     public Output<Optional<List<StatefulNodeAzureDelete>>> deletes() {
         return Codegen.optional(this.deletes);
     }
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output<String> description;
 
     public Output<String> description() {
         return this.description;
     }
-    @Export(name="detachDataDisks", type=List.class, parameters={StatefulNodeAzureDetachDataDisk.class})
+    @Export(name="detachDataDisks", refs={List.class,StatefulNodeAzureDetachDataDisk.class}, tree="[0,1]")
     private Output</* @Nullable */ List<StatefulNodeAzureDetachDataDisk>> detachDataDisks;
 
     public Output<Optional<List<StatefulNodeAzureDetachDataDisk>>> detachDataDisks() {
         return Codegen.optional(this.detachDataDisks);
     }
-    @Export(name="extensions", type=List.class, parameters={StatefulNodeAzureExtension.class})
+    @Export(name="extensions", refs={List.class,StatefulNodeAzureExtension.class}, tree="[0,1]")
     private Output<List<StatefulNodeAzureExtension>> extensions;
 
     public Output<List<StatefulNodeAzureExtension>> extensions() {
         return this.extensions;
     }
-    @Export(name="health", type=StatefulNodeAzureHealth.class, parameters={})
+    @Export(name="health", refs={StatefulNodeAzureHealth.class}, tree="[0]")
     private Output<StatefulNodeAzureHealth> health;
 
     public Output<StatefulNodeAzureHealth> health() {
         return this.health;
     }
-    @Export(name="image", type=StatefulNodeAzureImage.class, parameters={})
+    @Export(name="image", refs={StatefulNodeAzureImage.class}, tree="[0]")
     private Output</* @Nullable */ StatefulNodeAzureImage> image;
 
     public Output<Optional<StatefulNodeAzureImage>> image() {
         return Codegen.optional(this.image);
     }
-    @Export(name="importVms", type=List.class, parameters={StatefulNodeAzureImportVm.class})
+    @Export(name="importVms", refs={List.class,StatefulNodeAzureImportVm.class}, tree="[0,1]")
     private Output</* @Nullable */ List<StatefulNodeAzureImportVm>> importVms;
 
     public Output<Optional<List<StatefulNodeAzureImportVm>>> importVms() {
         return Codegen.optional(this.importVms);
     }
-    @Export(name="loadBalancers", type=List.class, parameters={StatefulNodeAzureLoadBalancer.class})
+    @Export(name="loadBalancers", refs={List.class,StatefulNodeAzureLoadBalancer.class}, tree="[0,1]")
     private Output<List<StatefulNodeAzureLoadBalancer>> loadBalancers;
 
     public Output<List<StatefulNodeAzureLoadBalancer>> loadBalancers() {
         return this.loadBalancers;
     }
-    @Export(name="login", type=StatefulNodeAzureLogin.class, parameters={})
+    @Export(name="login", refs={StatefulNodeAzureLogin.class}, tree="[0]")
     private Output</* @Nullable */ StatefulNodeAzureLogin> login;
 
     public Output<Optional<StatefulNodeAzureLogin>> login() {
         return Codegen.optional(this.login);
     }
-    @Export(name="managedServiceIdentities", type=List.class, parameters={StatefulNodeAzureManagedServiceIdentity.class})
+    @Export(name="managedServiceIdentities", refs={List.class,StatefulNodeAzureManagedServiceIdentity.class}, tree="[0,1]")
     private Output<List<StatefulNodeAzureManagedServiceIdentity>> managedServiceIdentities;
 
     public Output<List<StatefulNodeAzureManagedServiceIdentity>> managedServiceIdentities() {
         return this.managedServiceIdentities;
     }
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     public Output<String> name() {
         return this.name;
     }
-    @Export(name="network", type=StatefulNodeAzureNetwork.class, parameters={})
+    @Export(name="network", refs={StatefulNodeAzureNetwork.class}, tree="[0]")
     private Output</* @Nullable */ StatefulNodeAzureNetwork> network;
 
     public Output<Optional<StatefulNodeAzureNetwork>> network() {
         return Codegen.optional(this.network);
     }
-    @Export(name="odSizes", type=List.class, parameters={String.class})
+    @Export(name="odSizes", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> odSizes;
 
     public Output<List<String>> odSizes() {
         return this.odSizes;
     }
-    @Export(name="os", type=String.class, parameters={})
+    @Export(name="os", refs={String.class}, tree="[0]")
     private Output<String> os;
 
     public Output<String> os() {
         return this.os;
     }
-    @Export(name="osDisk", type=StatefulNodeAzureOsDisk.class, parameters={})
+    @Export(name="osDisk", refs={StatefulNodeAzureOsDisk.class}, tree="[0]")
     private Output</* @Nullable */ StatefulNodeAzureOsDisk> osDisk;
 
     public Output<Optional<StatefulNodeAzureOsDisk>> osDisk() {
         return Codegen.optional(this.osDisk);
     }
-    @Export(name="osDiskPersistenceMode", type=String.class, parameters={})
+    @Export(name="osDiskPersistenceMode", refs={String.class}, tree="[0]")
     private Output<String> osDiskPersistenceMode;
 
     public Output<String> osDiskPersistenceMode() {
         return this.osDiskPersistenceMode;
     }
-    @Export(name="preferredSpotSizes", type=List.class, parameters={String.class})
+    @Export(name="preferredSpotSizes", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> preferredSpotSizes;
 
     public Output<List<String>> preferredSpotSizes() {
         return this.preferredSpotSizes;
     }
-    @Export(name="preferredZone", type=String.class, parameters={})
+    @Export(name="preferredZone", refs={String.class}, tree="[0]")
     private Output<String> preferredZone;
 
     public Output<String> preferredZone() {
         return this.preferredZone;
     }
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     public Output<String> region() {
         return this.region;
     }
-    @Export(name="resourceGroupName", type=String.class, parameters={})
+    @Export(name="resourceGroupName", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupName;
 
     public Output<String> resourceGroupName() {
         return this.resourceGroupName;
     }
-    @Export(name="schedulingTasks", type=List.class, parameters={StatefulNodeAzureSchedulingTask.class})
+    @Export(name="schedulingTasks", refs={List.class,StatefulNodeAzureSchedulingTask.class}, tree="[0,1]")
     private Output<List<StatefulNodeAzureSchedulingTask>> schedulingTasks;
 
     public Output<List<StatefulNodeAzureSchedulingTask>> schedulingTasks() {
         return this.schedulingTasks;
     }
-    @Export(name="secrets", type=List.class, parameters={StatefulNodeAzureSecret.class})
+    @Export(name="secrets", refs={List.class,StatefulNodeAzureSecret.class}, tree="[0,1]")
     private Output</* @Nullable */ List<StatefulNodeAzureSecret>> secrets;
 
     public Output<Optional<List<StatefulNodeAzureSecret>>> secrets() {
         return Codegen.optional(this.secrets);
     }
-    @Export(name="security", type=StatefulNodeAzureSecurity.class, parameters={})
+    @Export(name="security", refs={StatefulNodeAzureSecurity.class}, tree="[0]")
     private Output</* @Nullable */ StatefulNodeAzureSecurity> security;
 
     public Output<Optional<StatefulNodeAzureSecurity>> security() {
         return Codegen.optional(this.security);
     }
-    @Export(name="shouldPersistDataDisks", type=Boolean.class, parameters={})
+    @Export(name="shouldPersistDataDisks", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> shouldPersistDataDisks;
 
     public Output<Boolean> shouldPersistDataDisks() {
         return this.shouldPersistDataDisks;
     }
-    @Export(name="shouldPersistNetwork", type=Boolean.class, parameters={})
+    @Export(name="shouldPersistNetwork", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> shouldPersistNetwork;
 
     public Output<Boolean> shouldPersistNetwork() {
         return this.shouldPersistNetwork;
     }
-    @Export(name="shouldPersistOsDisk", type=Boolean.class, parameters={})
+    @Export(name="shouldPersistOsDisk", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> shouldPersistOsDisk;
 
     public Output<Boolean> shouldPersistOsDisk() {
         return this.shouldPersistOsDisk;
     }
-    @Export(name="shouldPersistVm", type=Boolean.class, parameters={})
+    @Export(name="shouldPersistVm", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> shouldPersistVm;
 
     public Output<Boolean> shouldPersistVm() {
         return this.shouldPersistVm;
     }
-    @Export(name="shutdownScript", type=String.class, parameters={})
+    @Export(name="shutdownScript", refs={String.class}, tree="[0]")
     private Output<String> shutdownScript;
 
     public Output<String> shutdownScript() {
         return this.shutdownScript;
     }
-    @Export(name="signals", type=List.class, parameters={StatefulNodeAzureSignal.class})
+    @Export(name="signals", refs={List.class,StatefulNodeAzureSignal.class}, tree="[0,1]")
     private Output<List<StatefulNodeAzureSignal>> signals;
 
     public Output<List<StatefulNodeAzureSignal>> signals() {
         return this.signals;
     }
-    @Export(name="spotSizes", type=List.class, parameters={String.class})
+    @Export(name="spotSizes", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> spotSizes;
 
     public Output<List<String>> spotSizes() {
         return this.spotSizes;
     }
-    @Export(name="strategy", type=StatefulNodeAzureStrategy.class, parameters={})
+    @Export(name="strategy", refs={StatefulNodeAzureStrategy.class}, tree="[0]")
     private Output<StatefulNodeAzureStrategy> strategy;
 
     public Output<StatefulNodeAzureStrategy> strategy() {
         return this.strategy;
     }
-    @Export(name="tags", type=List.class, parameters={StatefulNodeAzureTag.class})
+    @Export(name="tags", refs={List.class,StatefulNodeAzureTag.class}, tree="[0,1]")
     private Output<List<StatefulNodeAzureTag>> tags;
 
     public Output<List<StatefulNodeAzureTag>> tags() {
         return this.tags;
     }
-    @Export(name="updateStates", type=List.class, parameters={StatefulNodeAzureUpdateState.class})
+    @Export(name="updateStates", refs={List.class,StatefulNodeAzureUpdateState.class}, tree="[0,1]")
     private Output</* @Nullable */ List<StatefulNodeAzureUpdateState>> updateStates;
 
     public Output<Optional<List<StatefulNodeAzureUpdateState>>> updateStates() {
         return Codegen.optional(this.updateStates);
     }
-    @Export(name="userData", type=String.class, parameters={})
+    @Export(name="userData", refs={String.class}, tree="[0]")
     private Output<String> userData;
 
     public Output<String> userData() {
         return this.userData;
     }
-    @Export(name="vmName", type=String.class, parameters={})
+    @Export(name="vmName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> vmName;
 
     public Output<Optional<String>> vmName() {
         return Codegen.optional(this.vmName);
     }
-    @Export(name="zones", type=List.class, parameters={String.class})
+    @Export(name="zones", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> zones;
 
     public Output<Optional<List<String>>> zones() {

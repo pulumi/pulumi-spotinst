@@ -29,271 +29,271 @@ import javax.annotation.Nullable;
 
 @ResourceType(type="spotinst:aws/managedInstance:ManagedInstance")
 public class ManagedInstance extends com.pulumi.resources.CustomResource {
-    @Export(name="autoHealing", type=Boolean.class, parameters={})
+    @Export(name="autoHealing", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> autoHealing;
 
     public Output<Optional<Boolean>> autoHealing() {
         return Codegen.optional(this.autoHealing);
     }
-    @Export(name="blockDeviceMappings", type=List.class, parameters={ManagedInstanceBlockDeviceMapping.class})
+    @Export(name="blockDeviceMappings", refs={List.class,ManagedInstanceBlockDeviceMapping.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ManagedInstanceBlockDeviceMapping>> blockDeviceMappings;
 
     public Output<Optional<List<ManagedInstanceBlockDeviceMapping>>> blockDeviceMappings() {
         return Codegen.optional(this.blockDeviceMappings);
     }
-    @Export(name="blockDevicesMode", type=String.class, parameters={})
+    @Export(name="blockDevicesMode", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> blockDevicesMode;
 
     public Output<Optional<String>> blockDevicesMode() {
         return Codegen.optional(this.blockDevicesMode);
     }
-    @Export(name="cpuCredits", type=String.class, parameters={})
+    @Export(name="cpuCredits", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> cpuCredits;
 
     public Output<Optional<String>> cpuCredits() {
         return Codegen.optional(this.cpuCredits);
     }
-    @Export(name="deletes", type=List.class, parameters={ManagedInstanceDelete.class})
+    @Export(name="deletes", refs={List.class,ManagedInstanceDelete.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ManagedInstanceDelete>> deletes;
 
     public Output<Optional<List<ManagedInstanceDelete>>> deletes() {
         return Codegen.optional(this.deletes);
     }
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
-    @Export(name="drainingTimeout", type=Integer.class, parameters={})
+    @Export(name="drainingTimeout", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> drainingTimeout;
 
     public Output<Optional<Integer>> drainingTimeout() {
         return Codegen.optional(this.drainingTimeout);
     }
-    @Export(name="ebsOptimized", type=Boolean.class, parameters={})
+    @Export(name="ebsOptimized", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> ebsOptimized;
 
     public Output<Boolean> ebsOptimized() {
         return this.ebsOptimized;
     }
-    @Export(name="elasticIp", type=String.class, parameters={})
+    @Export(name="elasticIp", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> elasticIp;
 
     public Output<Optional<String>> elasticIp() {
         return Codegen.optional(this.elasticIp);
     }
-    @Export(name="enableMonitoring", type=Boolean.class, parameters={})
+    @Export(name="enableMonitoring", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enableMonitoring;
 
     public Output<Optional<Boolean>> enableMonitoring() {
         return Codegen.optional(this.enableMonitoring);
     }
-    @Export(name="fallBackToOd", type=Boolean.class, parameters={})
+    @Export(name="fallBackToOd", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> fallBackToOd;
 
     public Output<Optional<Boolean>> fallBackToOd() {
         return Codegen.optional(this.fallBackToOd);
     }
-    @Export(name="gracePeriod", type=Integer.class, parameters={})
+    @Export(name="gracePeriod", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> gracePeriod;
 
     public Output<Optional<Integer>> gracePeriod() {
         return Codegen.optional(this.gracePeriod);
     }
-    @Export(name="healthCheckType", type=String.class, parameters={})
+    @Export(name="healthCheckType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> healthCheckType;
 
     public Output<Optional<String>> healthCheckType() {
         return Codegen.optional(this.healthCheckType);
     }
-    @Export(name="iamInstanceProfile", type=String.class, parameters={})
+    @Export(name="iamInstanceProfile", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> iamInstanceProfile;
 
     public Output<Optional<String>> iamInstanceProfile() {
         return Codegen.optional(this.iamInstanceProfile);
     }
-    @Export(name="imageId", type=String.class, parameters={})
+    @Export(name="imageId", refs={String.class}, tree="[0]")
     private Output<String> imageId;
 
     public Output<String> imageId() {
         return this.imageId;
     }
-    @Export(name="instanceTypes", type=List.class, parameters={String.class})
+    @Export(name="instanceTypes", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> instanceTypes;
 
     public Output<List<String>> instanceTypes() {
         return this.instanceTypes;
     }
-    @Export(name="integrationRoute53", type=ManagedInstanceIntegrationRoute53.class, parameters={})
+    @Export(name="integrationRoute53", refs={ManagedInstanceIntegrationRoute53.class}, tree="[0]")
     private Output</* @Nullable */ ManagedInstanceIntegrationRoute53> integrationRoute53;
 
     public Output<Optional<ManagedInstanceIntegrationRoute53>> integrationRoute53() {
         return Codegen.optional(this.integrationRoute53);
     }
-    @Export(name="keyPair", type=String.class, parameters={})
+    @Export(name="keyPair", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> keyPair;
 
     public Output<Optional<String>> keyPair() {
         return Codegen.optional(this.keyPair);
     }
-    @Export(name="lifeCycle", type=String.class, parameters={})
+    @Export(name="lifeCycle", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> lifeCycle;
 
     public Output<Optional<String>> lifeCycle() {
         return Codegen.optional(this.lifeCycle);
     }
-    @Export(name="loadBalancers", type=List.class, parameters={ManagedInstanceLoadBalancer.class})
+    @Export(name="loadBalancers", refs={List.class,ManagedInstanceLoadBalancer.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ManagedInstanceLoadBalancer>> loadBalancers;
 
     public Output<Optional<List<ManagedInstanceLoadBalancer>>> loadBalancers() {
         return Codegen.optional(this.loadBalancers);
     }
-    @Export(name="managedInstanceAction", type=ManagedInstanceManagedInstanceAction.class, parameters={})
+    @Export(name="managedInstanceAction", refs={ManagedInstanceManagedInstanceAction.class}, tree="[0]")
     private Output</* @Nullable */ ManagedInstanceManagedInstanceAction> managedInstanceAction;
 
     public Output<Optional<ManagedInstanceManagedInstanceAction>> managedInstanceAction() {
         return Codegen.optional(this.managedInstanceAction);
     }
-    @Export(name="minimumInstanceLifetime", type=Integer.class, parameters={})
+    @Export(name="minimumInstanceLifetime", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> minimumInstanceLifetime;
 
     public Output<Optional<Integer>> minimumInstanceLifetime() {
         return Codegen.optional(this.minimumInstanceLifetime);
     }
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     public Output<String> name() {
         return this.name;
     }
-    @Export(name="networkInterfaces", type=List.class, parameters={ManagedInstanceNetworkInterface.class})
+    @Export(name="networkInterfaces", refs={List.class,ManagedInstanceNetworkInterface.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ManagedInstanceNetworkInterface>> networkInterfaces;
 
     public Output<Optional<List<ManagedInstanceNetworkInterface>>> networkInterfaces() {
         return Codegen.optional(this.networkInterfaces);
     }
-    @Export(name="optimizationWindows", type=List.class, parameters={String.class})
+    @Export(name="optimizationWindows", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> optimizationWindows;
 
     public Output<Optional<List<String>>> optimizationWindows() {
         return Codegen.optional(this.optimizationWindows);
     }
-    @Export(name="orientation", type=String.class, parameters={})
+    @Export(name="orientation", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> orientation;
 
     public Output<Optional<String>> orientation() {
         return Codegen.optional(this.orientation);
     }
-    @Export(name="persistBlockDevices", type=Boolean.class, parameters={})
+    @Export(name="persistBlockDevices", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> persistBlockDevices;
 
     public Output<Boolean> persistBlockDevices() {
         return this.persistBlockDevices;
     }
-    @Export(name="persistPrivateIp", type=Boolean.class, parameters={})
+    @Export(name="persistPrivateIp", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> persistPrivateIp;
 
     public Output<Optional<Boolean>> persistPrivateIp() {
         return Codegen.optional(this.persistPrivateIp);
     }
-    @Export(name="persistRootDevice", type=Boolean.class, parameters={})
+    @Export(name="persistRootDevice", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> persistRootDevice;
 
     public Output<Optional<Boolean>> persistRootDevice() {
         return Codegen.optional(this.persistRootDevice);
     }
-    @Export(name="placementTenancy", type=String.class, parameters={})
+    @Export(name="placementTenancy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> placementTenancy;
 
     public Output<Optional<String>> placementTenancy() {
         return Codegen.optional(this.placementTenancy);
     }
-    @Export(name="preferredType", type=String.class, parameters={})
+    @Export(name="preferredType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> preferredType;
 
     public Output<Optional<String>> preferredType() {
         return Codegen.optional(this.preferredType);
     }
-    @Export(name="privateIp", type=String.class, parameters={})
+    @Export(name="privateIp", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> privateIp;
 
     public Output<Optional<String>> privateIp() {
         return Codegen.optional(this.privateIp);
     }
-    @Export(name="product", type=String.class, parameters={})
+    @Export(name="product", refs={String.class}, tree="[0]")
     private Output<String> product;
 
     public Output<String> product() {
         return this.product;
     }
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> region;
 
     public Output<Optional<String>> region() {
         return Codegen.optional(this.region);
     }
-    @Export(name="resourceTagSpecifications", type=List.class, parameters={ManagedInstanceResourceTagSpecification.class})
+    @Export(name="resourceTagSpecifications", refs={List.class,ManagedInstanceResourceTagSpecification.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ManagedInstanceResourceTagSpecification>> resourceTagSpecifications;
 
     public Output<Optional<List<ManagedInstanceResourceTagSpecification>>> resourceTagSpecifications() {
         return Codegen.optional(this.resourceTagSpecifications);
     }
-    @Export(name="revertToSpot", type=ManagedInstanceRevertToSpot.class, parameters={})
+    @Export(name="revertToSpot", refs={ManagedInstanceRevertToSpot.class}, tree="[0]")
     private Output</* @Nullable */ ManagedInstanceRevertToSpot> revertToSpot;
 
     public Output<Optional<ManagedInstanceRevertToSpot>> revertToSpot() {
         return Codegen.optional(this.revertToSpot);
     }
-    @Export(name="scheduledTasks", type=List.class, parameters={ManagedInstanceScheduledTask.class})
+    @Export(name="scheduledTasks", refs={List.class,ManagedInstanceScheduledTask.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ManagedInstanceScheduledTask>> scheduledTasks;
 
     public Output<Optional<List<ManagedInstanceScheduledTask>>> scheduledTasks() {
         return Codegen.optional(this.scheduledTasks);
     }
-    @Export(name="securityGroupIds", type=List.class, parameters={String.class})
+    @Export(name="securityGroupIds", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> securityGroupIds;
 
     public Output<Optional<List<String>>> securityGroupIds() {
         return Codegen.optional(this.securityGroupIds);
     }
-    @Export(name="shutdownScript", type=String.class, parameters={})
+    @Export(name="shutdownScript", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> shutdownScript;
 
     public Output<Optional<String>> shutdownScript() {
         return Codegen.optional(this.shutdownScript);
     }
-    @Export(name="subnetIds", type=List.class, parameters={String.class})
+    @Export(name="subnetIds", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> subnetIds;
 
     public Output<List<String>> subnetIds() {
         return this.subnetIds;
     }
-    @Export(name="tags", type=List.class, parameters={ManagedInstanceTag.class})
+    @Export(name="tags", refs={List.class,ManagedInstanceTag.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ManagedInstanceTag>> tags;
 
     public Output<Optional<List<ManagedInstanceTag>>> tags() {
         return Codegen.optional(this.tags);
     }
-    @Export(name="unhealthyDuration", type=Integer.class, parameters={})
+    @Export(name="unhealthyDuration", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> unhealthyDuration;
 
     public Output<Optional<Integer>> unhealthyDuration() {
         return Codegen.optional(this.unhealthyDuration);
     }
-    @Export(name="userData", type=String.class, parameters={})
+    @Export(name="userData", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> userData;
 
     public Output<Optional<String>> userData() {
         return Codegen.optional(this.userData);
     }
-    @Export(name="utilizeReservedInstances", type=Boolean.class, parameters={})
+    @Export(name="utilizeReservedInstances", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> utilizeReservedInstances;
 
     public Output<Optional<Boolean>> utilizeReservedInstances() {
         return Codegen.optional(this.utilizeReservedInstances);
     }
-    @Export(name="vpcId", type=String.class, parameters={})
+    @Export(name="vpcId", refs={String.class}, tree="[0]")
     private Output<String> vpcId;
 
     public Output<String> vpcId() {

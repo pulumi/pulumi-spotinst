@@ -68,7 +68,7 @@ public class HealthCheck extends com.pulumi.resources.CustomResource {
      * Describes the check to execute.
      * 
      */
-    @Export(name="check", type=HealthCheckCheck.class, parameters={})
+    @Export(name="check", refs={HealthCheckCheck.class}, tree="[0]")
     private Output</* @Nullable */ HealthCheckCheck> check;
 
     /**
@@ -82,7 +82,7 @@ public class HealthCheck extends com.pulumi.resources.CustomResource {
      * The name of the health check.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -92,13 +92,13 @@ public class HealthCheck extends com.pulumi.resources.CustomResource {
     public Output<String> name() {
         return this.name;
     }
-    @Export(name="proxyAddress", type=String.class, parameters={})
+    @Export(name="proxyAddress", refs={String.class}, tree="[0]")
     private Output<String> proxyAddress;
 
     public Output<String> proxyAddress() {
         return this.proxyAddress;
     }
-    @Export(name="proxyPort", type=Integer.class, parameters={})
+    @Export(name="proxyPort", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> proxyPort;
 
     public Output<Optional<Integer>> proxyPort() {
@@ -108,7 +108,7 @@ public class HealthCheck extends com.pulumi.resources.CustomResource {
      * The ID of the resource to check.
      * 
      */
-    @Export(name="resourceId", type=String.class, parameters={})
+    @Export(name="resourceId", refs={String.class}, tree="[0]")
     private Output<String> resourceId;
 
     /**

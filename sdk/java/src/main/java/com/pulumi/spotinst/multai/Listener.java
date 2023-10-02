@@ -20,31 +20,31 @@ import javax.annotation.Nullable;
 
 @ResourceType(type="spotinst:multai/listener:Listener")
 public class Listener extends com.pulumi.resources.CustomResource {
-    @Export(name="balancerId", type=String.class, parameters={})
+    @Export(name="balancerId", refs={String.class}, tree="[0]")
     private Output<String> balancerId;
 
     public Output<String> balancerId() {
         return this.balancerId;
     }
-    @Export(name="port", type=Integer.class, parameters={})
+    @Export(name="port", refs={Integer.class}, tree="[0]")
     private Output<Integer> port;
 
     public Output<Integer> port() {
         return this.port;
     }
-    @Export(name="protocol", type=String.class, parameters={})
+    @Export(name="protocol", refs={String.class}, tree="[0]")
     private Output<String> protocol;
 
     public Output<String> protocol() {
         return this.protocol;
     }
-    @Export(name="tags", type=List.class, parameters={ListenerTag.class})
+    @Export(name="tags", refs={List.class,ListenerTag.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ListenerTag>> tags;
 
     public Output<Optional<List<ListenerTag>>> tags() {
         return Codegen.optional(this.tags);
     }
-    @Export(name="tlsConfig", type=ListenerTlsConfig.class, parameters={})
+    @Export(name="tlsConfig", refs={ListenerTlsConfig.class}, tree="[0]")
     private Output</* @Nullable */ ListenerTlsConfig> tlsConfig;
 
     public Output<Optional<ListenerTlsConfig>> tlsConfig() {

@@ -155,7 +155,7 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
      * Enable auto-replacement of unhealthy instances.
      * 
      */
-    @Export(name="autoHealing", type=Boolean.class, parameters={})
+    @Export(name="autoHealing", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> autoHealing;
 
     /**
@@ -173,7 +173,7 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* This field will soon be handled by Region in Subnets */
-    @Export(name="availabilityZones", type=List.class, parameters={String.class})
+    @Export(name="availabilityZones", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> availabilityZones;
 
     /**
@@ -183,7 +183,7 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
     public Output<Optional<List<String>>> availabilityZones() {
         return Codegen.optional(this.availabilityZones);
     }
-    @Export(name="backendServices", type=List.class, parameters={ElastigroupBackendService.class})
+    @Export(name="backendServices", refs={List.class,ElastigroupBackendService.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ElastigroupBackendService>> backendServices;
 
     public Output<Optional<List<ElastigroupBackendService>>> backendServices() {
@@ -193,7 +193,7 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
      * The region your GCP group will be created in.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -207,7 +207,7 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
      * The desired number of instances the group should have at any time.
      * 
      */
-    @Export(name="desiredCapacity", type=Integer.class, parameters={})
+    @Export(name="desiredCapacity", refs={Integer.class}, tree="[0]")
     private Output<Integer> desiredCapacity;
 
     /**
@@ -217,7 +217,7 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
     public Output<Integer> desiredCapacity() {
         return this.desiredCapacity;
     }
-    @Export(name="disks", type=List.class, parameters={ElastigroupDisk.class})
+    @Export(name="disks", refs={List.class,ElastigroupDisk.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ElastigroupDisk>> disks;
 
     public Output<Optional<List<ElastigroupDisk>>> disks() {
@@ -227,7 +227,7 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
      * Time (seconds) the instance is allowed to run after it is detached from the group. This is to allow the instance time to drain all the current TCP connections before terminating it.
      * 
      */
-    @Export(name="drainingTimeout", type=Integer.class, parameters={})
+    @Export(name="drainingTimeout", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> drainingTimeout;
 
     /**
@@ -241,7 +241,7 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
      * Activate fallback-to-on-demand. When provisioning an instance, if no Preemptible market is available, fallback-to-on-demand will provision an On-Demand instance to maintain the group capacity.
      * 
      */
-    @Export(name="fallbackToOndemand", type=Boolean.class, parameters={})
+    @Export(name="fallbackToOndemand", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> fallbackToOndemand;
 
     /**
@@ -251,7 +251,7 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
     public Output<Optional<Boolean>> fallbackToOndemand() {
         return Codegen.optional(this.fallbackToOndemand);
     }
-    @Export(name="gpu", type=List.class, parameters={ElastigroupGpu.class})
+    @Export(name="gpu", refs={List.class,ElastigroupGpu.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ElastigroupGpu>> gpu;
 
     public Output<Optional<List<ElastigroupGpu>>> gpu() {
@@ -261,7 +261,7 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
      * Period of time (seconds) to wait for VM to reach healthiness before monitoring for unhealthiness.
      * 
      */
-    @Export(name="healthCheckGracePeriod", type=Integer.class, parameters={})
+    @Export(name="healthCheckGracePeriod", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> healthCheckGracePeriod;
 
     /**
@@ -275,7 +275,7 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
      * The kind of health check to perform when monitoring for unhealthiness.
      * 
      */
-    @Export(name="healthCheckType", type=String.class, parameters={})
+    @Export(name="healthCheckType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> healthCheckType;
 
     /**
@@ -291,7 +291,7 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
      * * The first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
      * 
      */
-    @Export(name="instanceNamePrefix", type=String.class, parameters={})
+    @Export(name="instanceNamePrefix", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> instanceNamePrefix;
 
     /**
@@ -307,7 +307,7 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
      * Defines a set of custom instance types. Required if instance_types_preemptible and instance_types_ondemand are not set.
      * 
      */
-    @Export(name="instanceTypesCustoms", type=List.class, parameters={ElastigroupInstanceTypesCustom.class})
+    @Export(name="instanceTypesCustoms", refs={List.class,ElastigroupInstanceTypesCustom.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ElastigroupInstanceTypesCustom>> instanceTypesCustoms;
 
     /**
@@ -321,7 +321,7 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
      * The regular VM instance type to use for mixed-type groups and when falling back to on-demand. Required if instance_types_preemptible is not set.
      * 
      */
-    @Export(name="instanceTypesOndemand", type=String.class, parameters={})
+    @Export(name="instanceTypesOndemand", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> instanceTypesOndemand;
 
     /**
@@ -335,7 +335,7 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
      * The preemptible VMs instance type. To maximize cost savings and market availability, select as many types as possible. Required if instance_types_ondemand is not set.
      * 
      */
-    @Export(name="instanceTypesPreemptibles", type=List.class, parameters={String.class})
+    @Export(name="instanceTypesPreemptibles", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> instanceTypesPreemptibles;
 
     /**
@@ -349,7 +349,7 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
      * Describes the [Docker Swarm](https://api.spotinst.com/integration-docs/elastigroup/container-management/docker-swarm/docker-swarm-integration/) integration.
      * 
      */
-    @Export(name="integrationDockerSwarm", type=ElastigroupIntegrationDockerSwarm.class, parameters={})
+    @Export(name="integrationDockerSwarm", refs={ElastigroupIntegrationDockerSwarm.class}, tree="[0]")
     private Output</* @Nullable */ ElastigroupIntegrationDockerSwarm> integrationDockerSwarm;
 
     /**
@@ -359,13 +359,13 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
     public Output<Optional<ElastigroupIntegrationDockerSwarm>> integrationDockerSwarm() {
         return Codegen.optional(this.integrationDockerSwarm);
     }
-    @Export(name="integrationGke", type=ElastigroupIntegrationGke.class, parameters={})
+    @Export(name="integrationGke", refs={ElastigroupIntegrationGke.class}, tree="[0]")
     private Output</* @Nullable */ ElastigroupIntegrationGke> integrationGke;
 
     public Output<Optional<ElastigroupIntegrationGke>> integrationGke() {
         return Codegen.optional(this.integrationGke);
     }
-    @Export(name="ipForwarding", type=Boolean.class, parameters={})
+    @Export(name="ipForwarding", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> ipForwarding;
 
     public Output<Optional<Boolean>> ipForwarding() {
@@ -375,7 +375,7 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
      * Array of objects with key-value pairs.
      * 
      */
-    @Export(name="labels", type=List.class, parameters={ElastigroupLabel.class})
+    @Export(name="labels", refs={List.class,ElastigroupLabel.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ElastigroupLabel>> labels;
 
     /**
@@ -389,7 +389,7 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
      * The maximum number of instances the group should have at any time.
      * 
      */
-    @Export(name="maxSize", type=Integer.class, parameters={})
+    @Export(name="maxSize", refs={Integer.class}, tree="[0]")
     private Output<Integer> maxSize;
 
     /**
@@ -403,7 +403,7 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
      * Array of objects with key-value pairs.
      * 
      */
-    @Export(name="metadatas", type=List.class, parameters={ElastigroupMetadata.class})
+    @Export(name="metadatas", refs={List.class,ElastigroupMetadata.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ElastigroupMetadata>> metadatas;
 
     /**
@@ -417,7 +417,7 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
      * The minimum number of instances the group should have at any time.
      * 
      */
-    @Export(name="minSize", type=Integer.class, parameters={})
+    @Export(name="minSize", refs={Integer.class}, tree="[0]")
     private Output<Integer> minSize;
 
     /**
@@ -431,7 +431,7 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
      * The group name.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -445,7 +445,7 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
      * Array of objects representing the network configuration for the elastigroup.
      * 
      */
-    @Export(name="networkInterfaces", type=List.class, parameters={ElastigroupNetworkInterface.class})
+    @Export(name="networkInterfaces", refs={List.class,ElastigroupNetworkInterface.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ElastigroupNetworkInterface>> networkInterfaces;
 
     /**
@@ -455,7 +455,7 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
     public Output<Optional<List<ElastigroupNetworkInterface>>> networkInterfaces() {
         return Codegen.optional(this.networkInterfaces);
     }
-    @Export(name="ondemandCount", type=Integer.class, parameters={})
+    @Export(name="ondemandCount", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> ondemandCount;
 
     public Output<Optional<Integer>> ondemandCount() {
@@ -465,7 +465,7 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
      * Percentage of Preemptible VMs to spin up from the &#34;desired_capacity&#34;.
      * 
      */
-    @Export(name="preemptiblePercentage", type=Integer.class, parameters={})
+    @Export(name="preemptiblePercentage", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> preemptiblePercentage;
 
     /**
@@ -479,7 +479,7 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
      * Valid values: &#34;SPOT&#34;, &#34;PREEMPTIBLE&#34;. Define the provisioning model of the launched instances. Default value is &#34;PREEMPTIBLE&#34;.
      * 
      */
-    @Export(name="provisioningModel", type=String.class, parameters={})
+    @Export(name="provisioningModel", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> provisioningModel;
 
     /**
@@ -495,7 +495,7 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
      * Each `scaling_*_policy` supports the following:
      * 
      */
-    @Export(name="scalingDownPolicies", type=List.class, parameters={ElastigroupScalingDownPolicy.class})
+    @Export(name="scalingDownPolicies", refs={List.class,ElastigroupScalingDownPolicy.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ElastigroupScalingDownPolicy>> scalingDownPolicies;
 
     /**
@@ -511,7 +511,7 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
      * Contains scaling policies for scaling the Elastigroup up.
      * 
      */
-    @Export(name="scalingUpPolicies", type=List.class, parameters={ElastigroupScalingUpPolicy.class})
+    @Export(name="scalingUpPolicies", refs={List.class,ElastigroupScalingUpPolicy.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ElastigroupScalingUpPolicy>> scalingUpPolicies;
 
     /**
@@ -521,7 +521,7 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
     public Output<Optional<List<ElastigroupScalingUpPolicy>>> scalingUpPolicies() {
         return Codegen.optional(this.scalingUpPolicies);
     }
-    @Export(name="scheduledTasks", type=List.class, parameters={ElastigroupScheduledTask.class})
+    @Export(name="scheduledTasks", refs={List.class,ElastigroupScheduledTask.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ElastigroupScheduledTask>> scheduledTasks;
 
     public Output<Optional<List<ElastigroupScheduledTask>>> scheduledTasks() {
@@ -531,7 +531,7 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
      * The email of the service account in which the group instances will be launched.
      * 
      */
-    @Export(name="serviceAccount", type=String.class, parameters={})
+    @Export(name="serviceAccount", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> serviceAccount;
 
     /**
@@ -545,7 +545,7 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
      * The Base64-encoded shutdown script that executes prior to instance termination, for more information please see: [Shutdown Script](https://api.spotinst.com/integration-docs/elastigroup/concepts/compute-concepts/shutdown-scripts/)
      * 
      */
-    @Export(name="shutdownScript", type=String.class, parameters={})
+    @Export(name="shutdownScript", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> shutdownScript;
 
     /**
@@ -559,7 +559,7 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
      * Create and run your own startup scripts on your virtual machines to perform automated tasks every time your instance boots up.
      * 
      */
-    @Export(name="startupScript", type=String.class, parameters={})
+    @Export(name="startupScript", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> startupScript;
 
     /**
@@ -573,7 +573,7 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
      * A list of regions and subnets.
      * 
      */
-    @Export(name="subnets", type=List.class, parameters={ElastigroupSubnet.class})
+    @Export(name="subnets", refs={List.class,ElastigroupSubnet.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ElastigroupSubnet>> subnets;
 
     /**
@@ -587,7 +587,7 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
      * Tags to mark created instances.
      * 
      */
-    @Export(name="tags", type=List.class, parameters={String.class})
+    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> tags;
 
     /**
@@ -623,7 +623,7 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
      * ```
      * 
      */
-    @Export(name="unhealthyDuration", type=Integer.class, parameters={})
+    @Export(name="unhealthyDuration", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> unhealthyDuration;
 
     /**

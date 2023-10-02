@@ -5,10 +5,20 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { AccountArgs, AccountState } from "./account";
+export type Account = import("./account").Account;
+export const Account: typeof import("./account").Account = null as any;
+utilities.lazyLoad(exports, ["Account"], () => require("./account"));
+
 export { BeanstalkArgs, BeanstalkState } from "./beanstalk";
 export type Beanstalk = import("./beanstalk").Beanstalk;
 export const Beanstalk: typeof import("./beanstalk").Beanstalk = null as any;
 utilities.lazyLoad(exports, ["Beanstalk"], () => require("./beanstalk"));
+
+export { CredentialsArgs, CredentialsState } from "./credentials";
+export type Credentials = import("./credentials").Credentials;
+export const Credentials: typeof import("./credentials").Credentials = null as any;
+utilities.lazyLoad(exports, ["Credentials"], () => require("./credentials"));
 
 export { ElastigroupArgs, ElastigroupState } from "./elastigroup";
 export type Elastigroup = import("./elastigroup").Elastigroup;
@@ -50,8 +60,12 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "spotinst:aws/account:Account":
+                return new Account(name, <any>undefined, { urn })
             case "spotinst:aws/beanstalk:Beanstalk":
                 return new Beanstalk(name, <any>undefined, { urn })
+            case "spotinst:aws/credentials:Credentials":
+                return new Credentials(name, <any>undefined, { urn })
             case "spotinst:aws/elastigroup:Elastigroup":
                 return new Elastigroup(name, <any>undefined, { urn })
             case "spotinst:aws/managedInstance:ManagedInstance":
@@ -71,7 +85,9 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("spotinst", "aws/account", _module)
 pulumi.runtime.registerResourceModule("spotinst", "aws/beanstalk", _module)
+pulumi.runtime.registerResourceModule("spotinst", "aws/credentials", _module)
 pulumi.runtime.registerResourceModule("spotinst", "aws/elastigroup", _module)
 pulumi.runtime.registerResourceModule("spotinst", "aws/managedInstance", _module)
 pulumi.runtime.registerResourceModule("spotinst", "aws/mrScalar", _module)
