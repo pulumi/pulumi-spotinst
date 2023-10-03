@@ -10,7 +10,9 @@ import java.util.Objects;
 @CustomType
 public final class ElastigroupIntegrationMesosphere {
     /**
-     * @return Usage:
+     * @return The public IP of the DC/OS Master.
+     * 
+     * Usage:
      * ```java
      * package generated_program;
      * 
@@ -39,7 +41,9 @@ public final class ElastigroupIntegrationMesosphere {
 
     private ElastigroupIntegrationMesosphere() {}
     /**
-     * @return Usage:
+     * @return The public IP of the DC/OS Master.
+     * 
+     * Usage:
      * ```java
      * package generated_program;
      * 

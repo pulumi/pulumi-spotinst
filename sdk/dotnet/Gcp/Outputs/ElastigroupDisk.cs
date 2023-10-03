@@ -42,17 +42,7 @@ namespace Pulumi.SpotInst.Gcp.Outputs
         /// </summary>
         public readonly string? Source;
         /// <summary>
-        /// The type of GPU instance. Valid values: `nvidia-tesla-v100`, `nvidia-tesla-p100`, `nvidia-tesla-k80`.
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        /// });
-        /// ```
+        /// Specifies the type of disk, either SCRATCH or PERSISTENT.
         /// </summary>
         public readonly string? Type;
 

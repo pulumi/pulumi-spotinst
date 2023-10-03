@@ -12,9 +12,15 @@ namespace Pulumi.SpotInst.Spark.Inputs
 
     public sealed class OceanIngressCustomEndpointGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// - The address the Ocean for Apache Spark control plane will use when addressing the cluster.
+        /// </summary>
         [Input("address")]
         public Input<string>? Address { get; set; }
 
+        /// <summary>
+        /// - Should the Ocean for Apache Spark control plane address the cluster using a custom endpoint. Use this to specify the DNS address of an externally provisioned (unmanaged) load balancer.
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 

@@ -49,13 +49,13 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public Input<int>? AutoscaleCooldown { get; set; }
 
         /// <summary>
-        /// Enabling scale down.
+        /// Settings for scale down actions.
         /// </summary>
         [Input("autoscaleDown")]
         public Input<Inputs.ElastigroupIntegrationNomadAutoscaleDownArgs>? AutoscaleDown { get; set; }
 
         /// <summary>
-        /// Headroom for the cluster.
+        /// An option to set compute reserve for the cluster.
         /// </summary>
         [Input("autoscaleHeadroom")]
         public Input<Inputs.ElastigroupIntegrationNomadAutoscaleHeadroomArgs>? AutoscaleHeadroom { get; set; }
@@ -67,13 +67,13 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public Input<bool>? AutoscaleIsEnabled { get; set; }
 
         /// <summary>
-        /// The URL of the Rancher Master host.
+        /// The URL for the Nomad master host.
         /// </summary>
         [Input("masterHost", required: true)]
         public Input<string> MasterHost { get; set; } = null!;
 
         /// <summary>
-        /// Network port used by your swarm.
+        /// The network port for the master host.
         /// </summary>
         [Input("masterPort", required: true)]
         public Input<int> MasterPort { get; set; } = null!;

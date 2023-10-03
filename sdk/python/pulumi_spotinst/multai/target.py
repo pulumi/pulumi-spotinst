@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -26,16 +26,37 @@ class TargetArgs:
         """
         The set of arguments for constructing a Target resource.
         """
-        pulumi.set(__self__, "balancer_id", balancer_id)
-        pulumi.set(__self__, "host", host)
-        pulumi.set(__self__, "target_set_id", target_set_id)
-        pulumi.set(__self__, "weight", weight)
+        TargetArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            balancer_id=balancer_id,
+            host=host,
+            target_set_id=target_set_id,
+            weight=weight,
+            name=name,
+            port=port,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             balancer_id: pulumi.Input[str],
+             host: pulumi.Input[str],
+             target_set_id: pulumi.Input[str],
+             weight: pulumi.Input[int],
+             name: Optional[pulumi.Input[str]] = None,
+             port: Optional[pulumi.Input[int]] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input['TargetTagArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("balancer_id", balancer_id)
+        _setter("host", host)
+        _setter("target_set_id", target_set_id)
+        _setter("weight", weight)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if port is not None:
-            pulumi.set(__self__, "port", port)
+            _setter("port", port)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
 
     @property
     @pulumi.getter(name="balancerId")
@@ -114,20 +135,41 @@ class _TargetState:
         """
         Input properties used for looking up and filtering Target resources.
         """
+        _TargetState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            balancer_id=balancer_id,
+            host=host,
+            name=name,
+            port=port,
+            tags=tags,
+            target_set_id=target_set_id,
+            weight=weight,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             balancer_id: Optional[pulumi.Input[str]] = None,
+             host: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             port: Optional[pulumi.Input[int]] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input['TargetTagArgs']]]] = None,
+             target_set_id: Optional[pulumi.Input[str]] = None,
+             weight: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if balancer_id is not None:
-            pulumi.set(__self__, "balancer_id", balancer_id)
+            _setter("balancer_id", balancer_id)
         if host is not None:
-            pulumi.set(__self__, "host", host)
+            _setter("host", host)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if port is not None:
-            pulumi.set(__self__, "port", port)
+            _setter("port", port)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if target_set_id is not None:
-            pulumi.set(__self__, "target_set_id", target_set_id)
+            _setter("target_set_id", target_set_id)
         if weight is not None:
-            pulumi.set(__self__, "weight", weight)
+            _setter("weight", weight)
 
     @property
     @pulumi.getter(name="balancerId")
@@ -229,6 +271,10 @@ class Target(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            TargetArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

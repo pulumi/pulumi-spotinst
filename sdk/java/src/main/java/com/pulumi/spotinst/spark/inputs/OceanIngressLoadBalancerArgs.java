@@ -17,23 +17,47 @@ public final class OceanIngressLoadBalancerArgs extends com.pulumi.resources.Res
 
     public static final OceanIngressLoadBalancerArgs Empty = new OceanIngressLoadBalancerArgs();
 
+    /**
+     * - Should an ingress controller managed by Ocean for Apache Spark be installed on the cluster.
+     * 
+     */
     @Import(name="managed")
     private @Nullable Output<Boolean> managed;
 
+    /**
+     * @return - Should an ingress controller managed by Ocean for Apache Spark be installed on the cluster.
+     * 
+     */
     public Optional<Output<Boolean>> managed() {
         return Optional.ofNullable(this.managed);
     }
 
+    /**
+     * - Annotations to add to the ingress controller load balancer service. This is useful to configure properties of the managed load balancer, like the nature of the load balancer (e.g. ELB, NLB, ALB on AWS), the security groups, or various timeouts.
+     * 
+     */
     @Import(name="serviceAnnotations")
     private @Nullable Output<Map<String,String>> serviceAnnotations;
 
+    /**
+     * @return - Annotations to add to the ingress controller load balancer service. This is useful to configure properties of the managed load balancer, like the nature of the load balancer (e.g. ELB, NLB, ALB on AWS), the security groups, or various timeouts.
+     * 
+     */
     public Optional<Output<Map<String,String>>> serviceAnnotations() {
         return Optional.ofNullable(this.serviceAnnotations);
     }
 
+    /**
+     * - The ARN of a target group that the Ocean for Apache Spark ingress controller will be bound to. Set this to use an existing load balancer with Ocean for Apache Spark. Has no effect if using a managed load balancer. Only available on AWS.
+     * 
+     */
     @Import(name="targetGroupArn")
     private @Nullable Output<String> targetGroupArn;
 
+    /**
+     * @return - The ARN of a target group that the Ocean for Apache Spark ingress controller will be bound to. Set this to use an existing load balancer with Ocean for Apache Spark. Has no effect if using a managed load balancer. Only available on AWS.
+     * 
+     */
     public Optional<Output<String>> targetGroupArn() {
         return Optional.ofNullable(this.targetGroupArn);
     }
@@ -64,29 +88,65 @@ public final class OceanIngressLoadBalancerArgs extends com.pulumi.resources.Res
             $ = new OceanIngressLoadBalancerArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param managed - Should an ingress controller managed by Ocean for Apache Spark be installed on the cluster.
+         * 
+         * @return builder
+         * 
+         */
         public Builder managed(@Nullable Output<Boolean> managed) {
             $.managed = managed;
             return this;
         }
 
+        /**
+         * @param managed - Should an ingress controller managed by Ocean for Apache Spark be installed on the cluster.
+         * 
+         * @return builder
+         * 
+         */
         public Builder managed(Boolean managed) {
             return managed(Output.of(managed));
         }
 
+        /**
+         * @param serviceAnnotations - Annotations to add to the ingress controller load balancer service. This is useful to configure properties of the managed load balancer, like the nature of the load balancer (e.g. ELB, NLB, ALB on AWS), the security groups, or various timeouts.
+         * 
+         * @return builder
+         * 
+         */
         public Builder serviceAnnotations(@Nullable Output<Map<String,String>> serviceAnnotations) {
             $.serviceAnnotations = serviceAnnotations;
             return this;
         }
 
+        /**
+         * @param serviceAnnotations - Annotations to add to the ingress controller load balancer service. This is useful to configure properties of the managed load balancer, like the nature of the load balancer (e.g. ELB, NLB, ALB on AWS), the security groups, or various timeouts.
+         * 
+         * @return builder
+         * 
+         */
         public Builder serviceAnnotations(Map<String,String> serviceAnnotations) {
             return serviceAnnotations(Output.of(serviceAnnotations));
         }
 
+        /**
+         * @param targetGroupArn - The ARN of a target group that the Ocean for Apache Spark ingress controller will be bound to. Set this to use an existing load balancer with Ocean for Apache Spark. Has no effect if using a managed load balancer. Only available on AWS.
+         * 
+         * @return builder
+         * 
+         */
         public Builder targetGroupArn(@Nullable Output<String> targetGroupArn) {
             $.targetGroupArn = targetGroupArn;
             return this;
         }
 
+        /**
+         * @param targetGroupArn - The ARN of a target group that the Ocean for Apache Spark ingress controller will be bound to. Set this to use an existing load balancer with Ocean for Apache Spark. Has no effect if using a managed load balancer. Only available on AWS.
+         * 
+         * @return builder
+         * 
+         */
         public Builder targetGroupArn(String targetGroupArn) {
             return targetGroupArn(Output.of(targetGroupArn));
         }

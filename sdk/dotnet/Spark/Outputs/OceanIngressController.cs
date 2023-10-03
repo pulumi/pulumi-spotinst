@@ -13,6 +13,9 @@ namespace Pulumi.SpotInst.Spark.Outputs
     [OutputType]
     public sealed class OceanIngressController
     {
+        /// <summary>
+        /// - Should an ingress controller managed by Ocean for Apache Spark be installed on the cluster.
+        /// </summary>
         public readonly bool? Managed;
 
         [OutputConstructor]

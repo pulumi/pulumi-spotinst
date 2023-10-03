@@ -13,17 +13,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class OceanIngressLoadBalancer {
+    /**
+     * @return - Should an ingress controller managed by Ocean for Apache Spark be installed on the cluster.
+     * 
+     */
     private @Nullable Boolean managed;
+    /**
+     * @return - Annotations to add to the ingress controller load balancer service. This is useful to configure properties of the managed load balancer, like the nature of the load balancer (e.g. ELB, NLB, ALB on AWS), the security groups, or various timeouts.
+     * 
+     */
     private @Nullable Map<String,String> serviceAnnotations;
+    /**
+     * @return - The ARN of a target group that the Ocean for Apache Spark ingress controller will be bound to. Set this to use an existing load balancer with Ocean for Apache Spark. Has no effect if using a managed load balancer. Only available on AWS.
+     * 
+     */
     private @Nullable String targetGroupArn;
 
     private OceanIngressLoadBalancer() {}
+    /**
+     * @return - Should an ingress controller managed by Ocean for Apache Spark be installed on the cluster.
+     * 
+     */
     public Optional<Boolean> managed() {
         return Optional.ofNullable(this.managed);
     }
+    /**
+     * @return - Annotations to add to the ingress controller load balancer service. This is useful to configure properties of the managed load balancer, like the nature of the load balancer (e.g. ELB, NLB, ALB on AWS), the security groups, or various timeouts.
+     * 
+     */
     public Map<String,String> serviceAnnotations() {
         return this.serviceAnnotations == null ? Map.of() : this.serviceAnnotations;
     }
+    /**
+     * @return - The ARN of a target group that the Ocean for Apache Spark ingress controller will be bound to. Set this to use an existing load balancer with Ocean for Apache Spark. Has no effect if using a managed load balancer. Only available on AWS.
+     * 
+     */
     public Optional<String> targetGroupArn() {
         return Optional.ofNullable(this.targetGroupArn);
     }

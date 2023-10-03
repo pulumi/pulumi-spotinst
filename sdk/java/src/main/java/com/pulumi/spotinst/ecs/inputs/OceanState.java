@@ -410,9 +410,17 @@ public final class OceanState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.tags);
     }
 
+    /**
+     * While used, you can control whether the group should perform a deployment after an update to the configuration.
+     * 
+     */
     @Import(name="updatePolicy")
     private @Nullable Output<OceanUpdatePolicyArgs> updatePolicy;
 
+    /**
+     * @return While used, you can control whether the group should perform a deployment after an update to the configuration.
+     * 
+     */
     public Optional<Output<OceanUpdatePolicyArgs>> updatePolicy() {
         return Optional.ofNullable(this.updatePolicy);
     }
@@ -1145,11 +1153,23 @@ public final class OceanState extends com.pulumi.resources.ResourceArgs {
             return tags(List.of(tags));
         }
 
+        /**
+         * @param updatePolicy While used, you can control whether the group should perform a deployment after an update to the configuration.
+         * 
+         * @return builder
+         * 
+         */
         public Builder updatePolicy(@Nullable Output<OceanUpdatePolicyArgs> updatePolicy) {
             $.updatePolicy = updatePolicy;
             return this;
         }
 
+        /**
+         * @param updatePolicy While used, you can control whether the group should perform a deployment after an update to the configuration.
+         * 
+         * @return builder
+         * 
+         */
         public Builder updatePolicy(OceanUpdatePolicyArgs updatePolicy) {
             return updatePolicy(Output.of(updatePolicy));
         }

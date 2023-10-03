@@ -47,7 +47,7 @@ public final class ElastigroupNetworkInterface {
      */
     private @Nullable Boolean associatePublicIpAddress;
     /**
-     * @return If set to true, the interface is deleted when the instance is terminated.
+     * @return Whether the volume should be destroyed on instance termination.
      * 
      */
     private @Nullable Boolean deleteOnTermination;
@@ -117,7 +117,7 @@ public final class ElastigroupNetworkInterface {
         return Optional.ofNullable(this.associatePublicIpAddress);
     }
     /**
-     * @return If set to true, the interface is deleted when the instance is terminated.
+     * @return Whether the volume should be destroyed on instance termination.
      * 
      */
     public Optional<Boolean> deleteOnTermination() {

@@ -34,7 +34,7 @@ namespace Pulumi.SpotInst.Aws.Outputs
         /// </summary>
         public readonly bool? AssociatePublicIpAddress;
         /// <summary>
-        /// If set to true, the interface is deleted when the instance is terminated.
+        /// Whether the volume should be destroyed on instance termination.
         /// </summary>
         public readonly bool? DeleteOnTermination;
         /// <summary>

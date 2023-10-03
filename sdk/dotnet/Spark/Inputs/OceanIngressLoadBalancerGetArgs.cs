@@ -12,17 +12,27 @@ namespace Pulumi.SpotInst.Spark.Inputs
 
     public sealed class OceanIngressLoadBalancerGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// - Should an ingress controller managed by Ocean for Apache Spark be installed on the cluster.
+        /// </summary>
         [Input("managed")]
         public Input<bool>? Managed { get; set; }
 
         [Input("serviceAnnotations")]
         private InputMap<string>? _serviceAnnotations;
+
+        /// <summary>
+        /// - Annotations to add to the ingress controller load balancer service. This is useful to configure properties of the managed load balancer, like the nature of the load balancer (e.g. ELB, NLB, ALB on AWS), the security groups, or various timeouts.
+        /// </summary>
         public InputMap<string> ServiceAnnotations
         {
             get => _serviceAnnotations ?? (_serviceAnnotations = new InputMap<string>());
             set => _serviceAnnotations = value;
         }
 
+        /// <summary>
+        /// - The ARN of a target group that the Ocean for Apache Spark ingress controller will be bound to. Set this to use an existing load balancer with Ocean for Apache Spark. Has no effect if using a managed load balancer. Only available on AWS.
+        /// </summary>
         [Input("targetGroupArn")]
         public Input<string>? TargetGroupArn { get; set; }
 

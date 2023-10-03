@@ -13,8 +13,7 @@ namespace Pulumi.SpotInst.Gke.Inputs
     public sealed class OceanImportScheduledTaskShutdownHoursArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Flag to enable / disable the shutdown hours.
-        /// Example: True
+        /// Enable the Ocean Kubernetes Autoscaler.
         /// </summary>
         [Input("isEnabled")]
         public Input<bool>? IsEnabled { get; set; }

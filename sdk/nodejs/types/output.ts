@@ -645,11 +645,11 @@ export namespace aws {
          */
         autoscaleCooldown?: number;
         /**
-         * Enabling scale down.
+         * Settings for scale down actions.
          */
         autoscaleDown?: outputs.aws.ElastigroupIntegrationDockerSwarmAutoscaleDown;
         /**
-         * Headroom for the cluster.
+         * An option to set compute reserve for the cluster.
          */
         autoscaleHeadroom?: outputs.aws.ElastigroupIntegrationDockerSwarmAutoscaleHeadroom;
         /**
@@ -657,11 +657,11 @@ export namespace aws {
          */
         autoscaleIsEnabled?: boolean;
         /**
-         * The URL of the Rancher Master host.
+         * The URL for the Nomad master host.
          */
         masterHost: string;
         /**
-         * Network port used by your swarm.
+         * The network port for the master host.
          */
         masterPort: number;
     }
@@ -673,26 +673,21 @@ export namespace aws {
         evaluationPeriods?: number;
         /**
          * Represents the maximum percent to scale-down. Number between 1-100.
-         * Usage:
-         *
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
          */
         maxScaleDownPercentage?: number;
     }
 
     export interface ElastigroupIntegrationDockerSwarmAutoscaleHeadroom {
         /**
-         * Cpu units for compute.
+         * How much CPU (MHz) to allocate for headroom unit.
          */
         cpuPerUnit?: number;
         /**
-         * RAM units for compute.
+         * How much Memory allocate for headroom unit.
          */
         memoryPerUnit?: number;
         /**
-         * Amount of units for compute.
+         * How many units of headroom to allocate.
          */
         numOfUnits?: number;
     }
@@ -707,15 +702,15 @@ export namespace aws {
          */
         autoscaleCooldown?: number;
         /**
-         * Enabling scale down.
+         * Settings for scale down actions.
          */
         autoscaleDown?: outputs.aws.ElastigroupIntegrationEcsAutoscaleDown;
         /**
-         * Headroom for the cluster.
+         * An option to set compute reserve for the cluster.
          */
         autoscaleHeadroom?: outputs.aws.ElastigroupIntegrationEcsAutoscaleHeadroom;
         /**
-         * Enabling the automatic auto-scaler functionality. For more information please see: [ECS auto scaler](https://api.spotinst.com/container-management/amazon-ecs/elastigroup-for-ecs-concepts/autoscaling/).
+         * Enabling the automatic k8s auto-scaler functionality. For more information please see: [Kubernetes auto scaler](https://api.spotinst.com/integration-docs/elastigroup/container-management/kubernetes/autoscaler/).
          */
         autoscaleIsAutoConfig?: boolean;
         /**
@@ -740,10 +735,6 @@ export namespace aws {
         key: string;
         /**
          * The dimension value.
-         *
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
          */
         value: string;
     }
@@ -755,26 +746,21 @@ export namespace aws {
         evaluationPeriods?: number;
         /**
          * Represents the maximum percent to scale-down. Number between 1-100.
-         * Usage:
-         *
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
          */
         maxScaleDownPercentage?: number;
     }
 
     export interface ElastigroupIntegrationEcsAutoscaleHeadroom {
         /**
-         * Cpu units for compute.
+         * How much CPU (MHz) to allocate for headroom unit.
          */
         cpuPerUnit?: number;
         /**
-         * RAM units for compute.
+         * How much Memory allocate for headroom unit.
          */
         memoryPerUnit?: number;
         /**
-         * Amount of units for compute.
+         * How many units of headroom to allocate.
          */
         numOfUnits?: number;
     }
@@ -801,19 +787,15 @@ export namespace aws {
 
     export interface ElastigroupIntegrationGitlabRunner {
         /**
-         * Setting the task to being enabled or disabled.
-         *
-         * Usage:
-         *
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
+         * Specifies whether the scaling policy described in this block is enabled.
          */
         isEnabled?: boolean;
     }
 
     export interface ElastigroupIntegrationKubernetes {
         /**
+         * The public IP of the DC/OS Master.
+         *
          * Usage:
          *
          * ```typescript
@@ -826,15 +808,15 @@ export namespace aws {
          */
         autoscaleCooldown?: number;
         /**
-         * Enabling scale down.
+         * Settings for scale down actions.
          */
         autoscaleDown?: outputs.aws.ElastigroupIntegrationKubernetesAutoscaleDown;
         /**
-         * Headroom for the cluster.
+         * An option to set compute reserve for the cluster.
          */
         autoscaleHeadroom?: outputs.aws.ElastigroupIntegrationKubernetesAutoscaleHeadroom;
         /**
-         * Enabling the automatic auto-scaler functionality. For more information please see: [ECS auto scaler](https://api.spotinst.com/container-management/amazon-ecs/elastigroup-for-ecs-concepts/autoscaling/).
+         * Enabling the automatic k8s auto-scaler functionality. For more information please see: [Kubernetes auto scaler](https://api.spotinst.com/integration-docs/elastigroup/container-management/kubernetes/autoscaler/).
          */
         autoscaleIsAutoConfig?: boolean;
         /**
@@ -869,26 +851,21 @@ export namespace aws {
         evaluationPeriods?: number;
         /**
          * Represents the maximum percent to scale-down. Number between 1-100.
-         * Usage:
-         *
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
          */
         maxScaleDownPercentage?: number;
     }
 
     export interface ElastigroupIntegrationKubernetesAutoscaleHeadroom {
         /**
-         * Cpu units for compute.
+         * How much CPU (MHz) to allocate for headroom unit.
          */
         cpuPerUnit?: number;
         /**
-         * RAM units for compute.
+         * How much Memory allocate for headroom unit.
          */
         memoryPerUnit?: number;
         /**
-         * Amount of units for compute.
+         * How many units of headroom to allocate.
          */
         numOfUnits?: number;
     }
@@ -897,16 +874,14 @@ export namespace aws {
         key: string;
         /**
          * The dimension value.
-         *
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
          */
         value: string;
     }
 
     export interface ElastigroupIntegrationMesosphere {
         /**
+         * The public IP of the DC/OS Master.
+         *
          * Usage:
          *
          * ```typescript
@@ -949,11 +924,11 @@ export namespace aws {
          */
         autoscaleCooldown?: number;
         /**
-         * Enabling scale down.
+         * Settings for scale down actions.
          */
         autoscaleDown?: outputs.aws.ElastigroupIntegrationNomadAutoscaleDown;
         /**
-         * Headroom for the cluster.
+         * An option to set compute reserve for the cluster.
          */
         autoscaleHeadroom?: outputs.aws.ElastigroupIntegrationNomadAutoscaleHeadroom;
         /**
@@ -961,11 +936,11 @@ export namespace aws {
          */
         autoscaleIsEnabled?: boolean;
         /**
-         * The URL of the Rancher Master host.
+         * The URL for the Nomad master host.
          */
         masterHost: string;
         /**
-         * Network port used by your swarm.
+         * The network port for the master host.
          */
         masterPort: number;
     }
@@ -974,10 +949,6 @@ export namespace aws {
         key: string;
         /**
          * The dimension value.
-         *
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
          */
         value: string;
     }
@@ -991,15 +962,15 @@ export namespace aws {
 
     export interface ElastigroupIntegrationNomadAutoscaleHeadroom {
         /**
-         * Cpu units for compute.
+         * How much CPU (MHz) to allocate for headroom unit.
          */
         cpuPerUnit?: number;
         /**
-         * RAM units for compute.
+         * How much Memory allocate for headroom unit.
          */
         memoryPerUnit?: number;
         /**
-         * Amount of units for compute.
+         * How many units of headroom to allocate.
          */
         numOfUnits?: number;
     }
@@ -1010,7 +981,7 @@ export namespace aws {
          */
         accessKey: string;
         /**
-         * The URL of the Rancher Master host.
+         * The URL for the Nomad master host.
          */
         masterHost: string;
         /**
@@ -1225,10 +1196,6 @@ export namespace aws {
         name: string;
         /**
          * The dimension value.
-         *
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
          */
         value?: string;
     }
@@ -1249,7 +1216,7 @@ export namespace aws {
          */
         associatePublicIpAddress?: boolean;
         /**
-         * If set to true, the interface is deleted when the instance is terminated.
+         * Whether the volume should be destroyed on instance termination.
          */
         deleteOnTermination: boolean;
         /**
@@ -1381,7 +1348,7 @@ export namespace aws {
          */
         metricName: string;
         /**
-         * The desired target capacity of a group. Required if using `"setMinTarget"` as action type
+         * . The number of the desired target (and minimum) capacity
          */
         minTargetCapacity?: string;
         /**
@@ -1441,10 +1408,6 @@ export namespace aws {
         name: string;
         /**
          * The dimension value.
-         *
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
          */
         value?: string;
     }
@@ -1455,16 +1418,7 @@ export namespace aws {
          */
         action: outputs.aws.ElastigroupScalingDownPolicyStepAdjustmentAction;
         /**
-         * The value against which the specified statistic is compared. If a `stepAdjustment` object is defined, then it cannot be specified.
-         *
-         *
-         * If you do not specify an action type, you can only use – `adjustment`, `minTargetCapacity`, `maxTargetCapacity`.
-         * While using action_type, please also set the following:
-         *
-         * When using `adjustment`           – set the field `adjustment`
-         * When using `setMinTarget`         – set the field `minTargetCapacity`
-         * When using `updateCapacity`       – set the fields `minimum`, `maximum`, and `target`
-         *
+         * The value against which the specified statistic is compared in order to determine if a step should be applied.
          *
          *
          * If you do not specify an action type, you can only use – `adjustment`, `minTargetCapacity`, `maxTargetCapacity`.
@@ -1478,37 +1432,31 @@ export namespace aws {
 
     export interface ElastigroupScalingDownPolicyStepAdjustmentAction {
         /**
-         * The number of instances to add or remove.
+         * The number of instances to add/remove to/from the target capacity when scale is needed. Can be used as advanced expression for scaling of instances to add/remove to/from the target capacity when scale is needed. You can see more information here: Advanced expression. Example value: `"MAX(currCapacity / 5, value * 10)"`
          */
         adjustment?: string;
         /**
-         * The desired target capacity of a group. Required if using `"setMaxTarget"` as action type
+         * . The number of the desired target (and maximum) capacity
          */
         maxTargetCapacity?: string;
         /**
-         * The upper limit number of instances that you can scale up to. Required if using `"updateCapacity"` as action type and neither `"target"` nor `"minimum"` are not defined.
+         * The maximal number of instances to have in the group.
          */
         maximum?: string;
         /**
-         * The desired target capacity of a group. Required if using `"setMinTarget"` as action type
+         * . The number of the desired target (and minimum) capacity
          */
         minTargetCapacity?: string;
         /**
-         * The lower limit number of instances that you can scale down to. Required if using `"updateCapacity"` as action type and neither `"target"` nor `"maximum"` are not defined.
+         * The minimal number of instances to have in the group.
          */
         minimum?: string;
         /**
-         * The desired number of instances. Required if using `"updateCapacity"` as action type and neither `"minimum"` nor `"maximum"` are not defined.
+         * The target number of instances to have in the group.
          */
         target?: string;
         /**
-         * The type of the action to take when scale up is needed. Valid types: `"adjustment"`, `"updateCapacity"`, `"setMinTarget"`, `"percentageAdjustment"`.
-         *
-         * Usage:
-         *
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
+         * The type of the action to take when scale up is needed. Valid types: `"adjustment"`, `"updateCapacity"`, `"setMaxTarget"`, `"percentageAdjustment"`.
          */
         type: string;
     }
@@ -1598,10 +1546,6 @@ export namespace aws {
         name: string;
         /**
          * The dimension value.
-         *
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
          */
         value?: string;
     }
@@ -1632,7 +1576,7 @@ export namespace aws {
          */
         isEnabled?: boolean;
         /**
-         * The desired target capacity of a group. Required if using `"setMaxTarget"` as action type
+         * . The number of the desired target (and maximum) capacity
          */
         maxTargetCapacity?: string;
         /**
@@ -1705,10 +1649,6 @@ export namespace aws {
         name: string;
         /**
          * The dimension value.
-         *
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
          */
         value?: string;
     }
@@ -1719,16 +1659,7 @@ export namespace aws {
          */
         action: outputs.aws.ElastigroupScalingUpPolicyStepAdjustmentAction;
         /**
-         * The value against which the specified statistic is compared. If a `stepAdjustment` object is defined, then it cannot be specified.
-         *
-         *
-         * If you do not specify an action type, you can only use – `adjustment`, `minTargetCapacity`, `maxTargetCapacity`.
-         * While using action_type, please also set the following:
-         *
-         * When using `adjustment`           – set the field `adjustment`
-         * When using `setMinTarget`         – set the field `minTargetCapacity`
-         * When using `updateCapacity`       – set the fields `minimum`, `maximum`, and `target`
-         *
+         * The value against which the specified statistic is compared in order to determine if a step should be applied.
          *
          *
          * If you do not specify an action type, you can only use – `adjustment`, `minTargetCapacity`, `maxTargetCapacity`.
@@ -1742,37 +1673,31 @@ export namespace aws {
 
     export interface ElastigroupScalingUpPolicyStepAdjustmentAction {
         /**
-         * The number of instances to add or remove.
+         * The number of instances to add/remove to/from the target capacity when scale is needed. Can be used as advanced expression for scaling of instances to add/remove to/from the target capacity when scale is needed. You can see more information here: Advanced expression. Example value: `"MAX(currCapacity / 5, value * 10)"`
          */
         adjustment?: string;
         /**
-         * The desired target capacity of a group. Required if using `"setMaxTarget"` as action type
+         * . The number of the desired target (and maximum) capacity
          */
         maxTargetCapacity?: string;
         /**
-         * The upper limit number of instances that you can scale up to. Required if using `"updateCapacity"` as action type and neither `"target"` nor `"minimum"` are not defined.
+         * The maximal number of instances to have in the group.
          */
         maximum?: string;
         /**
-         * The desired target capacity of a group. Required if using `"setMinTarget"` as action type
+         * . The number of the desired target (and minimum) capacity
          */
         minTargetCapacity?: string;
         /**
-         * The lower limit number of instances that you can scale down to. Required if using `"updateCapacity"` as action type and neither `"target"` nor `"maximum"` are not defined.
+         * The minimal number of instances to have in the group.
          */
         minimum?: string;
         /**
-         * The desired number of instances. Required if using `"updateCapacity"` as action type and neither `"minimum"` nor `"maximum"` are not defined.
+         * The target number of instances to have in the group.
          */
         target?: string;
         /**
-         * The type of the action to take when scale up is needed. Valid types: `"adjustment"`, `"updateCapacity"`, `"setMinTarget"`, `"percentageAdjustment"`.
-         *
-         * Usage:
-         *
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
+         * The type of the action to take when scale up is needed. Valid types: `"adjustment"`, `"updateCapacity"`, `"setMaxTarget"`, `"percentageAdjustment"`.
          */
         type: string;
     }
@@ -1909,10 +1834,6 @@ export namespace aws {
         key?: string;
         /**
          * The dimension value.
-         *
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
          */
         value?: string;
     }
@@ -2106,22 +2027,22 @@ export namespace aws {
 
     export interface MrScalarBootstrapActionsFile {
         /**
-         * S3 Bucket name for configurations.
+         * S3 Bucket name for bootstrap actions.
          */
         bucket: string;
         /**
-         * Tag key.
+         * S3 key for bootstrap actions.
          */
         key: string;
     }
 
     export interface MrScalarConfigurationsFile {
         /**
-         * S3 Bucket name for configurations.
+         * S3 Bucket name for bootstrap actions.
          */
         bucket: string;
         /**
-         * Tag key.
+         * S3 key for bootstrap actions.
          */
         key: string;
     }
@@ -2140,7 +2061,7 @@ export namespace aws {
          */
         volumeType: string;
         /**
-         * Amount of volumes per instance in the task group.
+         * Amount of volumes per instance in the core group.
          */
         volumesPerInstance?: number;
     }
@@ -2320,7 +2241,7 @@ export namespace aws {
          */
         volumeType: string;
         /**
-         * Amount of volumes per instance in the task group.
+         * Amount of volumes per instance in the core group.
          */
         volumesPerInstance?: number;
     }
@@ -2369,18 +2290,18 @@ export namespace aws {
 
     export interface MrScalarStepsFile {
         /**
-         * S3 Bucket name for configurations.
+         * S3 Bucket name for bootstrap actions.
          */
         bucket: string;
         /**
-         * Tag key.
+         * S3 key for bootstrap actions.
          */
         key: string;
     }
 
     export interface MrScalarTag {
         /**
-         * Tag key.
+         * S3 key for bootstrap actions.
          */
         key: string;
         /**
@@ -2403,7 +2324,7 @@ export namespace aws {
          */
         volumeType: string;
         /**
-         * Amount of volumes per instance in the task group.
+         * Amount of volumes per instance in the core group.
          */
         volumesPerInstance?: number;
     }
@@ -4322,11 +4243,7 @@ export namespace gcp {
          */
         source?: string;
         /**
-         * The type of GPU instance. Valid values: `nvidia-tesla-v100`, `nvidia-tesla-p100`, `nvidia-tesla-k80`.
-         *
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
+         * Specifies the type of disk, either SCRATCH or PERSISTENT.
          */
         type?: string;
     }
@@ -4470,11 +4387,7 @@ export namespace gcp {
          */
         name?: string;
         /**
-         * The type of GPU instance. Valid values: `nvidia-tesla-v100`, `nvidia-tesla-p100`, `nvidia-tesla-k80`.
-         *
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
+         * Specifies the type of disk, either SCRATCH or PERSISTENT.
          */
         type?: string;
     }
@@ -4759,56 +4672,17 @@ export namespace gke {
     }
 
     export interface ElastigroupIntegrationGkeAutoscaleLabel {
-        /**
-         * The label name.
-         */
         key: string;
-        /**
-         * The label value.
-         *
-         *
-         * Usage:
-         *
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
-         */
         value: string;
     }
 
     export interface ElastigroupLabel {
-        /**
-         * The label name.
-         */
         key: string;
-        /**
-         * The label value.
-         *
-         *
-         * Usage:
-         *
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
-         */
         value: string;
     }
 
     export interface ElastigroupMetadata {
-        /**
-         * The label name.
-         */
         key: string;
-        /**
-         * The label value.
-         *
-         *
-         * Usage:
-         *
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
-         */
         value: string;
     }
 
@@ -4850,16 +4724,6 @@ export namespace gke {
 
     export interface ElastigroupScalingDownPolicyDimension {
         name: string;
-        /**
-         * The label value.
-         *
-         *
-         * Usage:
-         *
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
-         */
         value?: string;
     }
 
@@ -4885,16 +4749,6 @@ export namespace gke {
 
     export interface ElastigroupScalingUpPolicyDimension {
         name: string;
-        /**
-         * The label value.
-         *
-         *
-         * Usage:
-         *
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
-         */
         value?: string;
     }
 
@@ -5017,8 +4871,7 @@ export namespace gke {
 
     export interface OceanImportScheduledTaskShutdownHours {
         /**
-         * Flag to enable / disable the shutdown hours.
-         * Example: True
+         * Enable the Ocean Kubernetes Autoscaler.
          */
         isEnabled?: boolean;
         /**
@@ -5035,8 +4888,7 @@ export namespace gke {
          */
         cronExpression: string;
         /**
-         * Flag to enable / disable the shutdown hours.
-         * Example: True
+         * Enable the Ocean Kubernetes Autoscaler.
          */
         isEnabled: boolean;
         taskParameters?: outputs.gke.OceanImportScheduledTaskTaskTaskParameters;
@@ -5373,22 +5225,46 @@ export namespace spark {
     }
 
     export interface OceanIngressController {
+        /**
+         * - Should an ingress controller managed by Ocean for Apache Spark be installed on the cluster.
+         */
         managed?: boolean;
     }
 
     export interface OceanIngressCustomEndpoint {
+        /**
+         * - The address the Ocean for Apache Spark control plane will use when addressing the cluster.
+         */
         address?: string;
+        /**
+         * - Should the Ocean for Apache Spark control plane address the cluster using a custom endpoint. Use this to specify the DNS address of an externally provisioned (unmanaged) load balancer.
+         */
         enabled?: boolean;
     }
 
     export interface OceanIngressLoadBalancer {
+        /**
+         * - Should an ingress controller managed by Ocean for Apache Spark be installed on the cluster.
+         */
         managed?: boolean;
+        /**
+         * - Annotations to add to the ingress controller load balancer service. This is useful to configure properties of the managed load balancer, like the nature of the load balancer (e.g. ELB, NLB, ALB on AWS), the security groups, or various timeouts.
+         */
         serviceAnnotations?: {[key: string]: string};
+        /**
+         * - The ARN of a target group that the Ocean for Apache Spark ingress controller will be bound to. Set this to use an existing load balancer with Ocean for Apache Spark. Has no effect if using a managed load balancer. Only available on AWS.
+         */
         targetGroupArn?: string;
     }
 
     export interface OceanIngressPrivateLink {
+        /**
+         * - Should the Ocean for Apache Spark control plane address the cluster using a custom endpoint. Use this to specify the DNS address of an externally provisioned (unmanaged) load balancer.
+         */
         enabled?: boolean;
+        /**
+         * - The name of the VPC Endpoint Service the Ocean for Apache Spark control plane should bind to.
+         */
         vpcEndpointService?: string;
     }
 

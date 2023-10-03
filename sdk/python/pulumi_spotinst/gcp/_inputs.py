@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -47,13 +47,28 @@ class ElastigroupBackendServiceArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ElastigroupBackendServiceNamedPortArgs']]] named_ports: Describes a named port and a list of ports.
         :param pulumi.Input[str] scheme: Use when `location_type` is "regional". Set the traffic for the backend service to either between the instances in the vpc or to traffic from the internet. Valid values: `INTERNAL`, `EXTERNAL`.
         """
-        pulumi.set(__self__, "service_name", service_name)
+        ElastigroupBackendServiceArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            service_name=service_name,
+            location_type=location_type,
+            named_ports=named_ports,
+            scheme=scheme,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             service_name: pulumi.Input[str],
+             location_type: Optional[pulumi.Input[str]] = None,
+             named_ports: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupBackendServiceNamedPortArgs']]]] = None,
+             scheme: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("service_name", service_name)
         if location_type is not None:
-            pulumi.set(__self__, "location_type", location_type)
+            _setter("location_type", location_type)
         if named_ports is not None:
-            pulumi.set(__self__, "named_ports", named_ports)
+            _setter("named_ports", named_ports)
         if scheme is not None:
-            pulumi.set(__self__, "scheme", scheme)
+            _setter("scheme", scheme)
 
     @property
     @pulumi.getter(name="serviceName")
@@ -119,8 +134,19 @@ class ElastigroupBackendServiceNamedPortArgs:
                import pulumi
                ```
         """
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "ports", ports)
+        ElastigroupBackendServiceNamedPortArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            ports=ports,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: pulumi.Input[str],
+             ports: pulumi.Input[Sequence[pulumi.Input[str]]],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
+        _setter("ports", ports)
 
     @property
     @pulumi.getter
@@ -172,28 +198,47 @@ class ElastigroupDiskArgs:
         :param pulumi.Input[str] interface: Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME.
         :param pulumi.Input[str] mode: The mode in which to attach this disk, either READ_WRITE or READ_ONLY.
         :param pulumi.Input[str] source: Specifies a valid partial or full URL to an existing Persistent Disk resource. This field is only applicable for persistent disks.
-        :param pulumi.Input[str] type: The type of GPU instance. Valid values: `nvidia-tesla-v100`, `nvidia-tesla-p100`, `nvidia-tesla-k80`.
-               
-               ```python
-               import pulumi
-               ```
+        :param pulumi.Input[str] type: Specifies the type of disk, either SCRATCH or PERSISTENT.
         """
+        ElastigroupDiskArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            auto_delete=auto_delete,
+            boot=boot,
+            device_name=device_name,
+            initialize_params=initialize_params,
+            interface=interface,
+            mode=mode,
+            source=source,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             auto_delete: Optional[pulumi.Input[bool]] = None,
+             boot: Optional[pulumi.Input[bool]] = None,
+             device_name: Optional[pulumi.Input[str]] = None,
+             initialize_params: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupDiskInitializeParamArgs']]]] = None,
+             interface: Optional[pulumi.Input[str]] = None,
+             mode: Optional[pulumi.Input[str]] = None,
+             source: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if auto_delete is not None:
-            pulumi.set(__self__, "auto_delete", auto_delete)
+            _setter("auto_delete", auto_delete)
         if boot is not None:
-            pulumi.set(__self__, "boot", boot)
+            _setter("boot", boot)
         if device_name is not None:
-            pulumi.set(__self__, "device_name", device_name)
+            _setter("device_name", device_name)
         if initialize_params is not None:
-            pulumi.set(__self__, "initialize_params", initialize_params)
+            _setter("initialize_params", initialize_params)
         if interface is not None:
-            pulumi.set(__self__, "interface", interface)
+            _setter("interface", interface)
         if mode is not None:
-            pulumi.set(__self__, "mode", mode)
+            _setter("mode", mode)
         if source is not None:
-            pulumi.set(__self__, "source", source)
+            _setter("source", source)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
 
     @property
     @pulumi.getter(name="autoDelete")
@@ -283,11 +328,7 @@ class ElastigroupDiskArgs:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of GPU instance. Valid values: `nvidia-tesla-v100`, `nvidia-tesla-p100`, `nvidia-tesla-k80`.
-
-        ```python
-        import pulumi
-        ```
+        Specifies the type of disk, either SCRATCH or PERSISTENT.
         """
         return pulumi.get(self, "type")
 
@@ -313,11 +354,24 @@ class ElastigroupDiskInitializeParamArgs:
         :param pulumi.Input[str] disk_size_gb: Specifies disk size in gigabytes. Must be in increments of 2.
         :param pulumi.Input[str] disk_type: Specifies the disk type to use to create the instance. Valid values: pd-ssd, local-ssd.
         """
-        pulumi.set(__self__, "source_image", source_image)
+        ElastigroupDiskInitializeParamArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            source_image=source_image,
+            disk_size_gb=disk_size_gb,
+            disk_type=disk_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             source_image: pulumi.Input[str],
+             disk_size_gb: Optional[pulumi.Input[str]] = None,
+             disk_type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("source_image", source_image)
         if disk_size_gb is not None:
-            pulumi.set(__self__, "disk_size_gb", disk_size_gb)
+            _setter("disk_size_gb", disk_size_gb)
         if disk_type is not None:
-            pulumi.set(__self__, "disk_type", disk_type)
+            _setter("disk_type", disk_type)
 
     @property
     @pulumi.getter(name="sourceImage")
@@ -377,8 +431,19 @@ class ElastigroupGpuArgs:
                ```
         :param pulumi.Input[str] type: The type of GPU instance. Valid values: `nvidia-tesla-v100`, `nvidia-tesla-p100`, `nvidia-tesla-k80`.
         """
-        pulumi.set(__self__, "count", count)
-        pulumi.set(__self__, "type", type)
+        ElastigroupGpuArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            count=count,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             count: pulumi.Input[int],
+             type: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("count", count)
+        _setter("type", type)
 
     @property
     @pulumi.getter
@@ -419,8 +484,19 @@ class ElastigroupInstanceTypesCustomArgs:
         """
         :param pulumi.Input[int] memory_gib: The memory (in GiB) in the custom instance types. GCP has a number of limitations on accepted memory values.For more information, see the GCP documentation (here.)[https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#specifications]
         """
-        pulumi.set(__self__, "memory_gib", memory_gib)
-        pulumi.set(__self__, "vcpu", vcpu)
+        ElastigroupInstanceTypesCustomArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            memory_gib=memory_gib,
+            vcpu=vcpu,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             memory_gib: pulumi.Input[int],
+             vcpu: pulumi.Input[int],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("memory_gib", memory_gib)
+        _setter("vcpu", vcpu)
 
     @property
     @pulumi.getter(name="memoryGib")
@@ -459,8 +535,19 @@ class ElastigroupIntegrationDockerSwarmArgs:
                import pulumi
                ```
         """
-        pulumi.set(__self__, "master_host", master_host)
-        pulumi.set(__self__, "master_port", master_port)
+        ElastigroupIntegrationDockerSwarmArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            master_host=master_host,
+            master_port=master_port,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             master_host: pulumi.Input[str],
+             master_port: pulumi.Input[int],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("master_host", master_host)
+        _setter("master_port", master_port)
 
     @property
     @pulumi.getter(name="masterHost")
@@ -505,24 +592,49 @@ class ElastigroupIntegrationGkeArgs:
                  autoscale_labels: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupIntegrationGkeAutoscaleLabelArgs']]]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None):
+        ElastigroupIntegrationGkeArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            auto_update=auto_update,
+            autoscale_cooldown=autoscale_cooldown,
+            autoscale_down=autoscale_down,
+            autoscale_headroom=autoscale_headroom,
+            autoscale_is_auto_config=autoscale_is_auto_config,
+            autoscale_is_enabled=autoscale_is_enabled,
+            autoscale_labels=autoscale_labels,
+            cluster_id=cluster_id,
+            location=location,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             auto_update: Optional[pulumi.Input[bool]] = None,
+             autoscale_cooldown: Optional[pulumi.Input[int]] = None,
+             autoscale_down: Optional[pulumi.Input['ElastigroupIntegrationGkeAutoscaleDownArgs']] = None,
+             autoscale_headroom: Optional[pulumi.Input['ElastigroupIntegrationGkeAutoscaleHeadroomArgs']] = None,
+             autoscale_is_auto_config: Optional[pulumi.Input[bool]] = None,
+             autoscale_is_enabled: Optional[pulumi.Input[bool]] = None,
+             autoscale_labels: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupIntegrationGkeAutoscaleLabelArgs']]]] = None,
+             cluster_id: Optional[pulumi.Input[str]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if auto_update is not None:
-            pulumi.set(__self__, "auto_update", auto_update)
+            _setter("auto_update", auto_update)
         if autoscale_cooldown is not None:
-            pulumi.set(__self__, "autoscale_cooldown", autoscale_cooldown)
+            _setter("autoscale_cooldown", autoscale_cooldown)
         if autoscale_down is not None:
-            pulumi.set(__self__, "autoscale_down", autoscale_down)
+            _setter("autoscale_down", autoscale_down)
         if autoscale_headroom is not None:
-            pulumi.set(__self__, "autoscale_headroom", autoscale_headroom)
+            _setter("autoscale_headroom", autoscale_headroom)
         if autoscale_is_auto_config is not None:
-            pulumi.set(__self__, "autoscale_is_auto_config", autoscale_is_auto_config)
+            _setter("autoscale_is_auto_config", autoscale_is_auto_config)
         if autoscale_is_enabled is not None:
-            pulumi.set(__self__, "autoscale_is_enabled", autoscale_is_enabled)
+            _setter("autoscale_is_enabled", autoscale_is_enabled)
         if autoscale_labels is not None:
-            pulumi.set(__self__, "autoscale_labels", autoscale_labels)
+            _setter("autoscale_labels", autoscale_labels)
         if cluster_id is not None:
-            pulumi.set(__self__, "cluster_id", cluster_id)
+            _setter("cluster_id", cluster_id)
         if location is not None:
-            pulumi.set(__self__, "location", location)
+            _setter("location", location)
 
     @property
     @pulumi.getter(name="autoUpdate")
@@ -613,8 +725,17 @@ class ElastigroupIntegrationGkeAutoscaleDownArgs:
         """
         :param pulumi.Input[int] evaluation_periods: Number of consecutive periods in which the threshold must be met in order to trigger a scaling action.
         """
+        ElastigroupIntegrationGkeAutoscaleDownArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            evaluation_periods=evaluation_periods,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             evaluation_periods: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if evaluation_periods is not None:
-            pulumi.set(__self__, "evaluation_periods", evaluation_periods)
+            _setter("evaluation_periods", evaluation_periods)
 
     @property
     @pulumi.getter(name="evaluationPeriods")
@@ -635,12 +756,25 @@ class ElastigroupIntegrationGkeAutoscaleHeadroomArgs:
                  cpu_per_unit: Optional[pulumi.Input[int]] = None,
                  memory_per_unit: Optional[pulumi.Input[int]] = None,
                  num_of_units: Optional[pulumi.Input[int]] = None):
+        ElastigroupIntegrationGkeAutoscaleHeadroomArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cpu_per_unit=cpu_per_unit,
+            memory_per_unit=memory_per_unit,
+            num_of_units=num_of_units,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cpu_per_unit: Optional[pulumi.Input[int]] = None,
+             memory_per_unit: Optional[pulumi.Input[int]] = None,
+             num_of_units: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if cpu_per_unit is not None:
-            pulumi.set(__self__, "cpu_per_unit", cpu_per_unit)
+            _setter("cpu_per_unit", cpu_per_unit)
         if memory_per_unit is not None:
-            pulumi.set(__self__, "memory_per_unit", memory_per_unit)
+            _setter("memory_per_unit", memory_per_unit)
         if num_of_units is not None:
-            pulumi.set(__self__, "num_of_units", num_of_units)
+            _setter("num_of_units", num_of_units)
 
     @property
     @pulumi.getter(name="cpuPerUnit")
@@ -679,8 +813,19 @@ class ElastigroupIntegrationGkeAutoscaleLabelArgs:
         :param pulumi.Input[str] key: Labels key.
         :param pulumi.Input[str] value: Labels value.
         """
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "value", value)
+        ElastigroupIntegrationGkeAutoscaleLabelArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: pulumi.Input[str],
+             value: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("key", key)
+        _setter("value", value)
 
     @property
     @pulumi.getter
@@ -716,8 +861,19 @@ class ElastigroupLabelArgs:
         :param pulumi.Input[str] key: Labels key.
         :param pulumi.Input[str] value: Labels value.
         """
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "value", value)
+        ElastigroupLabelArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: pulumi.Input[str],
+             value: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("key", key)
+        _setter("value", value)
 
     @property
     @pulumi.getter
@@ -753,8 +909,19 @@ class ElastigroupMetadataArgs:
         :param pulumi.Input[str] key: Labels key.
         :param pulumi.Input[str] value: Labels value.
         """
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "value", value)
+        ElastigroupMetadataArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: pulumi.Input[str],
+             value: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("key", key)
+        _setter("value", value)
 
     @property
     @pulumi.getter
@@ -791,11 +958,24 @@ class ElastigroupNetworkInterfaceArgs:
         :param pulumi.Input[str] network: Network resource for this group.
         :param pulumi.Input[Sequence[pulumi.Input['ElastigroupNetworkInterfaceAccessConfigArgs']]] access_configs: Array of configurations.
         """
-        pulumi.set(__self__, "network", network)
+        ElastigroupNetworkInterfaceArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            network=network,
+            access_configs=access_configs,
+            alias_ip_ranges=alias_ip_ranges,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             network: pulumi.Input[str],
+             access_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupNetworkInterfaceAccessConfigArgs']]]] = None,
+             alias_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupNetworkInterfaceAliasIpRangeArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("network", network)
         if access_configs is not None:
-            pulumi.set(__self__, "access_configs", access_configs)
+            _setter("access_configs", access_configs)
         if alias_ip_ranges is not None:
-            pulumi.set(__self__, "alias_ip_ranges", alias_ip_ranges)
+            _setter("alias_ip_ranges", alias_ip_ranges)
 
     @property
     @pulumi.getter
@@ -838,16 +1018,23 @@ class ElastigroupNetworkInterfaceAccessConfigArgs:
                  type: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] name: The group name.
-        :param pulumi.Input[str] type: The type of GPU instance. Valid values: `nvidia-tesla-v100`, `nvidia-tesla-p100`, `nvidia-tesla-k80`.
-               
-               ```python
-               import pulumi
-               ```
+        :param pulumi.Input[str] type: Specifies the type of disk, either SCRATCH or PERSISTENT.
         """
+        ElastigroupNetworkInterfaceAccessConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
 
     @property
     @pulumi.getter
@@ -865,11 +1052,7 @@ class ElastigroupNetworkInterfaceAccessConfigArgs:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of GPU instance. Valid values: `nvidia-tesla-v100`, `nvidia-tesla-p100`, `nvidia-tesla-k80`.
-
-        ```python
-        import pulumi
-        ```
+        Specifies the type of disk, either SCRATCH or PERSISTENT.
         """
         return pulumi.get(self, "type")
 
@@ -883,8 +1066,19 @@ class ElastigroupNetworkInterfaceAliasIpRangeArgs:
     def __init__(__self__, *,
                  ip_cidr_range: pulumi.Input[str],
                  subnetwork_range_name: pulumi.Input[str]):
-        pulumi.set(__self__, "ip_cidr_range", ip_cidr_range)
-        pulumi.set(__self__, "subnetwork_range_name", subnetwork_range_name)
+        ElastigroupNetworkInterfaceAliasIpRangeArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ip_cidr_range=ip_cidr_range,
+            subnetwork_range_name=subnetwork_range_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ip_cidr_range: pulumi.Input[str],
+             subnetwork_range_name: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("ip_cidr_range", ip_cidr_range)
+        _setter("subnetwork_range_name", subnetwork_range_name)
 
     @property
     @pulumi.getter(name="ipCidrRange")
@@ -936,29 +1130,64 @@ class ElastigroupScalingDownPolicyArgs:
         :param pulumi.Input[str] source: Specifies a valid partial or full URL to an existing Persistent Disk resource. This field is only applicable for persistent disks.
         :param pulumi.Input[str] statistic: Statistic by which to evaluate the selected metric. Valid values: "AVERAGE", "SAMPLE_COUNT", "SUM", "MINIMUM", "MAXIMUM", "PERCENTILE", "COUNT".
         """
-        pulumi.set(__self__, "metric_name", metric_name)
-        pulumi.set(__self__, "namespace", namespace)
-        pulumi.set(__self__, "policy_name", policy_name)
-        pulumi.set(__self__, "threshold", threshold)
-        pulumi.set(__self__, "unit", unit)
+        ElastigroupScalingDownPolicyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            metric_name=metric_name,
+            namespace=namespace,
+            policy_name=policy_name,
+            threshold=threshold,
+            unit=unit,
+            action_type=action_type,
+            adjustment=adjustment,
+            cooldown=cooldown,
+            dimensions=dimensions,
+            evaluation_periods=evaluation_periods,
+            operator=operator,
+            period=period,
+            source=source,
+            statistic=statistic,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             metric_name: pulumi.Input[str],
+             namespace: pulumi.Input[str],
+             policy_name: pulumi.Input[str],
+             threshold: pulumi.Input[float],
+             unit: pulumi.Input[str],
+             action_type: Optional[pulumi.Input[str]] = None,
+             adjustment: Optional[pulumi.Input[int]] = None,
+             cooldown: Optional[pulumi.Input[int]] = None,
+             dimensions: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingDownPolicyDimensionArgs']]]] = None,
+             evaluation_periods: Optional[pulumi.Input[int]] = None,
+             operator: Optional[pulumi.Input[str]] = None,
+             period: Optional[pulumi.Input[int]] = None,
+             source: Optional[pulumi.Input[str]] = None,
+             statistic: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("metric_name", metric_name)
+        _setter("namespace", namespace)
+        _setter("policy_name", policy_name)
+        _setter("threshold", threshold)
+        _setter("unit", unit)
         if action_type is not None:
-            pulumi.set(__self__, "action_type", action_type)
+            _setter("action_type", action_type)
         if adjustment is not None:
-            pulumi.set(__self__, "adjustment", adjustment)
+            _setter("adjustment", adjustment)
         if cooldown is not None:
-            pulumi.set(__self__, "cooldown", cooldown)
+            _setter("cooldown", cooldown)
         if dimensions is not None:
-            pulumi.set(__self__, "dimensions", dimensions)
+            _setter("dimensions", dimensions)
         if evaluation_periods is not None:
-            pulumi.set(__self__, "evaluation_periods", evaluation_periods)
+            _setter("evaluation_periods", evaluation_periods)
         if operator is not None:
-            pulumi.set(__self__, "operator", operator)
+            _setter("operator", operator)
         if period is not None:
-            pulumi.set(__self__, "period", period)
+            _setter("period", period)
         if source is not None:
-            pulumi.set(__self__, "source", source)
+            _setter("source", source)
         if statistic is not None:
-            pulumi.set(__self__, "statistic", statistic)
+            _setter("statistic", statistic)
 
     @property
     @pulumi.getter(name="metricName")
@@ -1132,9 +1361,20 @@ class ElastigroupScalingDownPolicyDimensionArgs:
         :param pulumi.Input[str] name: The group name.
         :param pulumi.Input[str] value: Labels value.
         """
-        pulumi.set(__self__, "name", name)
+        ElastigroupScalingDownPolicyDimensionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: pulumi.Input[str],
+             value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
         if value is not None:
-            pulumi.set(__self__, "value", value)
+            _setter("value", value)
 
     @property
     @pulumi.getter
@@ -1192,29 +1432,64 @@ class ElastigroupScalingUpPolicyArgs:
         :param pulumi.Input[str] source: Specifies a valid partial or full URL to an existing Persistent Disk resource. This field is only applicable for persistent disks.
         :param pulumi.Input[str] statistic: Statistic by which to evaluate the selected metric. Valid values: "AVERAGE", "SAMPLE_COUNT", "SUM", "MINIMUM", "MAXIMUM", "PERCENTILE", "COUNT".
         """
-        pulumi.set(__self__, "metric_name", metric_name)
-        pulumi.set(__self__, "namespace", namespace)
-        pulumi.set(__self__, "policy_name", policy_name)
-        pulumi.set(__self__, "threshold", threshold)
-        pulumi.set(__self__, "unit", unit)
+        ElastigroupScalingUpPolicyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            metric_name=metric_name,
+            namespace=namespace,
+            policy_name=policy_name,
+            threshold=threshold,
+            unit=unit,
+            action_type=action_type,
+            adjustment=adjustment,
+            cooldown=cooldown,
+            dimensions=dimensions,
+            evaluation_periods=evaluation_periods,
+            operator=operator,
+            period=period,
+            source=source,
+            statistic=statistic,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             metric_name: pulumi.Input[str],
+             namespace: pulumi.Input[str],
+             policy_name: pulumi.Input[str],
+             threshold: pulumi.Input[float],
+             unit: pulumi.Input[str],
+             action_type: Optional[pulumi.Input[str]] = None,
+             adjustment: Optional[pulumi.Input[int]] = None,
+             cooldown: Optional[pulumi.Input[int]] = None,
+             dimensions: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingUpPolicyDimensionArgs']]]] = None,
+             evaluation_periods: Optional[pulumi.Input[int]] = None,
+             operator: Optional[pulumi.Input[str]] = None,
+             period: Optional[pulumi.Input[int]] = None,
+             source: Optional[pulumi.Input[str]] = None,
+             statistic: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("metric_name", metric_name)
+        _setter("namespace", namespace)
+        _setter("policy_name", policy_name)
+        _setter("threshold", threshold)
+        _setter("unit", unit)
         if action_type is not None:
-            pulumi.set(__self__, "action_type", action_type)
+            _setter("action_type", action_type)
         if adjustment is not None:
-            pulumi.set(__self__, "adjustment", adjustment)
+            _setter("adjustment", adjustment)
         if cooldown is not None:
-            pulumi.set(__self__, "cooldown", cooldown)
+            _setter("cooldown", cooldown)
         if dimensions is not None:
-            pulumi.set(__self__, "dimensions", dimensions)
+            _setter("dimensions", dimensions)
         if evaluation_periods is not None:
-            pulumi.set(__self__, "evaluation_periods", evaluation_periods)
+            _setter("evaluation_periods", evaluation_periods)
         if operator is not None:
-            pulumi.set(__self__, "operator", operator)
+            _setter("operator", operator)
         if period is not None:
-            pulumi.set(__self__, "period", period)
+            _setter("period", period)
         if source is not None:
-            pulumi.set(__self__, "source", source)
+            _setter("source", source)
         if statistic is not None:
-            pulumi.set(__self__, "statistic", statistic)
+            _setter("statistic", statistic)
 
     @property
     @pulumi.getter(name="metricName")
@@ -1388,9 +1663,20 @@ class ElastigroupScalingUpPolicyDimensionArgs:
         :param pulumi.Input[str] name: The group name.
         :param pulumi.Input[str] value: Labels value.
         """
-        pulumi.set(__self__, "name", name)
+        ElastigroupScalingUpPolicyDimensionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: pulumi.Input[str],
+             value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
         if value is not None:
-            pulumi.set(__self__, "value", value)
+            _setter("value", value)
 
     @property
     @pulumi.getter
@@ -1440,17 +1726,36 @@ class ElastigroupScheduledTaskArgs:
         :param pulumi.Input[str] min_capacity: The minimum number of instances the group should have.
         :param pulumi.Input[str] target_capacity: The desired number of instances the group should have.
         """
-        pulumi.set(__self__, "task_type", task_type)
+        ElastigroupScheduledTaskArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            task_type=task_type,
+            cron_expression=cron_expression,
+            is_enabled=is_enabled,
+            max_capacity=max_capacity,
+            min_capacity=min_capacity,
+            target_capacity=target_capacity,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             task_type: pulumi.Input[str],
+             cron_expression: Optional[pulumi.Input[str]] = None,
+             is_enabled: Optional[pulumi.Input[bool]] = None,
+             max_capacity: Optional[pulumi.Input[str]] = None,
+             min_capacity: Optional[pulumi.Input[str]] = None,
+             target_capacity: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("task_type", task_type)
         if cron_expression is not None:
-            pulumi.set(__self__, "cron_expression", cron_expression)
+            _setter("cron_expression", cron_expression)
         if is_enabled is not None:
-            pulumi.set(__self__, "is_enabled", is_enabled)
+            _setter("is_enabled", is_enabled)
         if max_capacity is not None:
-            pulumi.set(__self__, "max_capacity", max_capacity)
+            _setter("max_capacity", max_capacity)
         if min_capacity is not None:
-            pulumi.set(__self__, "min_capacity", min_capacity)
+            _setter("min_capacity", min_capacity)
         if target_capacity is not None:
-            pulumi.set(__self__, "target_capacity", target_capacity)
+            _setter("target_capacity", target_capacity)
 
     @property
     @pulumi.getter(name="taskType")
@@ -1540,8 +1845,19 @@ class ElastigroupSubnetArgs:
         :param pulumi.Input[str] region: The region for the group of subnets.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_names: The names of the subnets in the region.
         """
-        pulumi.set(__self__, "region", region)
-        pulumi.set(__self__, "subnet_names", subnet_names)
+        ElastigroupSubnetArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            region=region,
+            subnet_names=subnet_names,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             region: pulumi.Input[str],
+             subnet_names: pulumi.Input[Sequence[pulumi.Input[str]]],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("region", region)
+        _setter("subnet_names", subnet_names)
 
     @property
     @pulumi.getter

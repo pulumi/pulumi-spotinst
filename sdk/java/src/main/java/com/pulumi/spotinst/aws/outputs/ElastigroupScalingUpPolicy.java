@@ -48,7 +48,7 @@ public final class ElastigroupScalingUpPolicy {
      */
     private @Nullable Boolean isEnabled;
     /**
-     * @return The desired target capacity of a group. Required if using `&#34;setMaxTarget&#34;` as action type
+     * @return . The number of the desired target (and maximum) capacity
      * 
      */
     private @Nullable String maxTargetCapacity;
@@ -170,7 +170,7 @@ public final class ElastigroupScalingUpPolicy {
         return Optional.ofNullable(this.isEnabled);
     }
     /**
-     * @return The desired target capacity of a group. Required if using `&#34;setMaxTarget&#34;` as action type
+     * @return . The number of the desired target (and maximum) capacity
      * 
      */
     public Optional<String> maxTargetCapacity() {

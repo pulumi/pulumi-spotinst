@@ -14,8 +14,7 @@ namespace Pulumi.SpotInst.Gke.Outputs
     public sealed class OceanImportScheduledTaskShutdownHours
     {
         /// <summary>
-        /// Flag to enable / disable the shutdown hours.
-        /// Example: True
+        /// Enable the Ocean Kubernetes Autoscaler.
         /// </summary>
         public readonly bool? IsEnabled;
         /// <summary>

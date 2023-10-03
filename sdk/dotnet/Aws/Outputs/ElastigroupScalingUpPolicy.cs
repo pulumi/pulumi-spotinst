@@ -38,7 +38,7 @@ namespace Pulumi.SpotInst.Aws.Outputs
         /// </summary>
         public readonly bool? IsEnabled;
         /// <summary>
-        /// The desired target capacity of a group. Required if using `"setMaxTarget"` as action type
+        /// . The number of the desired target (and maximum) capacity
         /// </summary>
         public readonly string? MaxTargetCapacity;
         /// <summary>

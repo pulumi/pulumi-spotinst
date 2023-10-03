@@ -63,7 +63,7 @@ public final class ElastigroupScalingDownPolicy {
      */
     private String metricName;
     /**
-     * @return The desired target capacity of a group. Required if using `&#34;setMinTarget&#34;` as action type
+     * @return . The number of the desired target (and minimum) capacity
      * 
      */
     private @Nullable String minTargetCapacity;
@@ -190,7 +190,7 @@ public final class ElastigroupScalingDownPolicy {
         return this.metricName;
     }
     /**
-     * @return The desired target capacity of a group. Required if using `&#34;setMinTarget&#34;` as action type
+     * @return . The number of the desired target (and minimum) capacity
      * 
      */
     public Optional<String> minTargetCapacity() {

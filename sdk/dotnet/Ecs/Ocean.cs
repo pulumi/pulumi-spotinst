@@ -176,6 +176,9 @@ namespace Pulumi.SpotInst.Ecs
         [Output("tags")]
         public Output<ImmutableArray<Outputs.OceanTag>> Tags { get; private set; } = null!;
 
+        /// <summary>
+        /// While used, you can control whether the group should perform a deployment after an update to the configuration.
+        /// </summary>
         [Output("updatePolicy")]
         public Output<Outputs.OceanUpdatePolicy?> UpdatePolicy { get; private set; } = null!;
 
@@ -449,6 +452,9 @@ namespace Pulumi.SpotInst.Ecs
             set => _tags = value;
         }
 
+        /// <summary>
+        /// While used, you can control whether the group should perform a deployment after an update to the configuration.
+        /// </summary>
         [Input("updatePolicy")]
         public Input<Inputs.OceanUpdatePolicyArgs>? UpdatePolicy { get; set; }
 
@@ -690,6 +696,9 @@ namespace Pulumi.SpotInst.Ecs
             set => _tags = value;
         }
 
+        /// <summary>
+        /// While used, you can control whether the group should perform a deployment after an update to the configuration.
+        /// </summary>
         [Input("updatePolicy")]
         public Input<Inputs.OceanUpdatePolicyGetArgs>? UpdatePolicy { get; set; }
 

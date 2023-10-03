@@ -146,6 +146,9 @@ export class Ocean extends pulumi.CustomResource {
      * Optionally adds tags to instances launched in an Ocean cluster.
      */
     public readonly tags!: pulumi.Output<outputs.ecs.OceanTag[] | undefined>;
+    /**
+     * While used, you can control whether the group should perform a deployment after an update to the configuration.
+     */
     public readonly updatePolicy!: pulumi.Output<outputs.ecs.OceanUpdatePolicy | undefined>;
     /**
      * launch specification defined on the Ocean object will function only as a template for virtual node groups.
@@ -370,6 +373,9 @@ export interface OceanState {
      * Optionally adds tags to instances launched in an Ocean cluster.
      */
     tags?: pulumi.Input<pulumi.Input<inputs.ecs.OceanTag>[]>;
+    /**
+     * While used, you can control whether the group should perform a deployment after an update to the configuration.
+     */
     updatePolicy?: pulumi.Input<inputs.ecs.OceanUpdatePolicy>;
     /**
      * launch specification defined on the Ocean object will function only as a template for virtual node groups.
@@ -498,6 +504,9 @@ export interface OceanArgs {
      * Optionally adds tags to instances launched in an Ocean cluster.
      */
     tags?: pulumi.Input<pulumi.Input<inputs.ecs.OceanTag>[]>;
+    /**
+     * While used, you can control whether the group should perform a deployment after an update to the configuration.
+     */
     updatePolicy?: pulumi.Input<inputs.ecs.OceanUpdatePolicy>;
     /**
      * launch specification defined on the Ocean object will function only as a template for virtual node groups.

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = [
@@ -66,9 +66,20 @@ class DataIntegrationS3Args:
         """
         :param pulumi.Input[str] subdir: The subdirectory in which your files will be stored within the bucket. Adds the prefix subdir/ to new objects' keys. Can't be null or contain '/'.
         """
-        pulumi.set(__self__, "bucket_name", bucket_name)
+        DataIntegrationS3Args._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            bucket_name=bucket_name,
+            subdir=subdir,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             bucket_name: pulumi.Input[str],
+             subdir: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("bucket_name", bucket_name)
         if subdir is not None:
-            pulumi.set(__self__, "subdir", subdir)
+            _setter("subdir", subdir)
 
     @property
     @pulumi.getter(name="bucketName")
@@ -97,10 +108,21 @@ class ElastigroupAzureV3ImageArgs:
     def __init__(__self__, *,
                  customs: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ImageCustomArgs']]]] = None,
                  marketplaces: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ImageMarketplaceArgs']]]] = None):
+        ElastigroupAzureV3ImageArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            customs=customs,
+            marketplaces=marketplaces,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             customs: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ImageCustomArgs']]]] = None,
+             marketplaces: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ImageMarketplaceArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if customs is not None:
-            pulumi.set(__self__, "customs", customs)
+            _setter("customs", customs)
         if marketplaces is not None:
-            pulumi.set(__self__, "marketplaces", marketplaces)
+            _setter("marketplaces", marketplaces)
 
     @property
     @pulumi.getter
@@ -126,8 +148,19 @@ class ElastigroupAzureV3ImageCustomArgs:
     def __init__(__self__, *,
                  image_name: pulumi.Input[str],
                  resource_group_name: pulumi.Input[str]):
-        pulumi.set(__self__, "image_name", image_name)
-        pulumi.set(__self__, "resource_group_name", resource_group_name)
+        ElastigroupAzureV3ImageCustomArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            image_name=image_name,
+            resource_group_name=resource_group_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             image_name: pulumi.Input[str],
+             resource_group_name: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("image_name", image_name)
+        _setter("resource_group_name", resource_group_name)
 
     @property
     @pulumi.getter(name="imageName")
@@ -155,10 +188,25 @@ class ElastigroupAzureV3ImageMarketplaceArgs:
                  publisher: pulumi.Input[str],
                  sku: pulumi.Input[str],
                  version: pulumi.Input[str]):
-        pulumi.set(__self__, "offer", offer)
-        pulumi.set(__self__, "publisher", publisher)
-        pulumi.set(__self__, "sku", sku)
-        pulumi.set(__self__, "version", version)
+        ElastigroupAzureV3ImageMarketplaceArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            offer=offer,
+            publisher=publisher,
+            sku=sku,
+            version=version,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             offer: pulumi.Input[str],
+             publisher: pulumi.Input[str],
+             sku: pulumi.Input[str],
+             version: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("offer", offer)
+        _setter("publisher", publisher)
+        _setter("sku", sku)
+        _setter("version", version)
 
     @property
     @pulumi.getter
@@ -203,11 +251,24 @@ class ElastigroupAzureV3LoginArgs:
                  user_name: pulumi.Input[str],
                  password: Optional[pulumi.Input[str]] = None,
                  ssh_public_key: Optional[pulumi.Input[str]] = None):
-        pulumi.set(__self__, "user_name", user_name)
+        ElastigroupAzureV3LoginArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            user_name=user_name,
+            password=password,
+            ssh_public_key=ssh_public_key,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             user_name: pulumi.Input[str],
+             password: Optional[pulumi.Input[str]] = None,
+             ssh_public_key: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("user_name", user_name)
         if password is not None:
-            pulumi.set(__self__, "password", password)
+            _setter("password", password)
         if ssh_public_key is not None:
-            pulumi.set(__self__, "ssh_public_key", ssh_public_key)
+            _setter("ssh_public_key", ssh_public_key)
 
     @property
     @pulumi.getter(name="userName")
@@ -242,8 +303,19 @@ class ElastigroupAzureV3ManagedServiceIdentityArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
                  resource_group_name: pulumi.Input[str]):
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "resource_group_name", resource_group_name)
+        ElastigroupAzureV3ManagedServiceIdentityArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            resource_group_name=resource_group_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: pulumi.Input[str],
+             resource_group_name: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
+        _setter("resource_group_name", resource_group_name)
 
     @property
     @pulumi.getter
@@ -270,9 +342,22 @@ class ElastigroupAzureV3NetworkArgs:
                  network_interfaces: pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3NetworkNetworkInterfaceArgs']]],
                  resource_group_name: pulumi.Input[str],
                  virtual_network_name: pulumi.Input[str]):
-        pulumi.set(__self__, "network_interfaces", network_interfaces)
-        pulumi.set(__self__, "resource_group_name", resource_group_name)
-        pulumi.set(__self__, "virtual_network_name", virtual_network_name)
+        ElastigroupAzureV3NetworkArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            network_interfaces=network_interfaces,
+            resource_group_name=resource_group_name,
+            virtual_network_name=virtual_network_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             network_interfaces: pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3NetworkNetworkInterfaceArgs']]],
+             resource_group_name: pulumi.Input[str],
+             virtual_network_name: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("network_interfaces", network_interfaces)
+        _setter("resource_group_name", resource_group_name)
+        _setter("virtual_network_name", virtual_network_name)
 
     @property
     @pulumi.getter(name="networkInterfaces")
@@ -310,13 +395,30 @@ class ElastigroupAzureV3NetworkNetworkInterfaceArgs:
                  subnet_name: pulumi.Input[str],
                  additional_ip_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArgs']]]] = None,
                  application_security_groups: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArgs']]]] = None):
-        pulumi.set(__self__, "assign_public_ip", assign_public_ip)
-        pulumi.set(__self__, "is_primary", is_primary)
-        pulumi.set(__self__, "subnet_name", subnet_name)
+        ElastigroupAzureV3NetworkNetworkInterfaceArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            assign_public_ip=assign_public_ip,
+            is_primary=is_primary,
+            subnet_name=subnet_name,
+            additional_ip_configs=additional_ip_configs,
+            application_security_groups=application_security_groups,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             assign_public_ip: pulumi.Input[bool],
+             is_primary: pulumi.Input[bool],
+             subnet_name: pulumi.Input[str],
+             additional_ip_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArgs']]]] = None,
+             application_security_groups: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("assign_public_ip", assign_public_ip)
+        _setter("is_primary", is_primary)
+        _setter("subnet_name", subnet_name)
         if additional_ip_configs is not None:
-            pulumi.set(__self__, "additional_ip_configs", additional_ip_configs)
+            _setter("additional_ip_configs", additional_ip_configs)
         if application_security_groups is not None:
-            pulumi.set(__self__, "application_security_groups", application_security_groups)
+            _setter("application_security_groups", application_security_groups)
 
     @property
     @pulumi.getter(name="assignPublicIp")
@@ -369,9 +471,20 @@ class ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
                  private_ip_version: Optional[pulumi.Input[str]] = None):
-        pulumi.set(__self__, "name", name)
+        ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            private_ip_version=private_ip_version,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: pulumi.Input[str],
+             private_ip_version: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
         if private_ip_version is not None:
-            pulumi.set(__self__, "private_ip_version", private_ip_version)
+            _setter("private_ip_version", private_ip_version)
 
     @property
     @pulumi.getter
@@ -397,8 +510,19 @@ class ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
                  resource_group_name: pulumi.Input[str]):
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "resource_group_name", resource_group_name)
+        ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            resource_group_name=resource_group_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: pulumi.Input[str],
+             resource_group_name: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
+        _setter("resource_group_name", resource_group_name)
 
     @property
     @pulumi.getter
@@ -424,8 +548,19 @@ class ElastigroupAzureV3TagArgs:
     def __init__(__self__, *,
                  key: pulumi.Input[str],
                  value: pulumi.Input[str]):
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "value", value)
+        ElastigroupAzureV3TagArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: pulumi.Input[str],
+             value: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("key", key)
+        _setter("value", value)
 
     @property
     @pulumi.getter
@@ -467,19 +602,44 @@ class HealthCheckCheckArgs:
         :param pulumi.Input[str] endpoint: The destination for the request.
         :param pulumi.Input[int] timeout: the amount of time (in seconds) to wait when receiving a response from the health check.
         """
-        pulumi.set(__self__, "healthy", healthy)
-        pulumi.set(__self__, "interval", interval)
-        pulumi.set(__self__, "port", port)
-        pulumi.set(__self__, "protocol", protocol)
-        pulumi.set(__self__, "unhealthy", unhealthy)
+        HealthCheckCheckArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            healthy=healthy,
+            interval=interval,
+            port=port,
+            protocol=protocol,
+            unhealthy=unhealthy,
+            end_point=end_point,
+            endpoint=endpoint,
+            time_out=time_out,
+            timeout=timeout,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             healthy: pulumi.Input[int],
+             interval: pulumi.Input[int],
+             port: pulumi.Input[int],
+             protocol: pulumi.Input[str],
+             unhealthy: pulumi.Input[int],
+             end_point: Optional[pulumi.Input[str]] = None,
+             endpoint: Optional[pulumi.Input[str]] = None,
+             time_out: Optional[pulumi.Input[int]] = None,
+             timeout: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("healthy", healthy)
+        _setter("interval", interval)
+        _setter("port", port)
+        _setter("protocol", protocol)
+        _setter("unhealthy", unhealthy)
         if end_point is not None:
-            pulumi.set(__self__, "end_point", end_point)
+            _setter("end_point", end_point)
         if endpoint is not None:
-            pulumi.set(__self__, "endpoint", endpoint)
+            _setter("endpoint", endpoint)
         if time_out is not None:
-            pulumi.set(__self__, "time_out", time_out)
+            _setter("time_out", time_out)
         if timeout is not None:
-            pulumi.set(__self__, "timeout", timeout)
+            _setter("timeout", timeout)
 
     @property
     @pulumi.getter
@@ -593,14 +753,33 @@ class StatefulNodeAzureAttachDataDiskArgs:
                  storage_account_type: pulumi.Input[str],
                  lun: Optional[pulumi.Input[int]] = None,
                  zone: Optional[pulumi.Input[str]] = None):
-        pulumi.set(__self__, "data_disk_name", data_disk_name)
-        pulumi.set(__self__, "data_disk_resource_group_name", data_disk_resource_group_name)
-        pulumi.set(__self__, "size_gb", size_gb)
-        pulumi.set(__self__, "storage_account_type", storage_account_type)
+        StatefulNodeAzureAttachDataDiskArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            data_disk_name=data_disk_name,
+            data_disk_resource_group_name=data_disk_resource_group_name,
+            size_gb=size_gb,
+            storage_account_type=storage_account_type,
+            lun=lun,
+            zone=zone,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             data_disk_name: pulumi.Input[str],
+             data_disk_resource_group_name: pulumi.Input[str],
+             size_gb: pulumi.Input[int],
+             storage_account_type: pulumi.Input[str],
+             lun: Optional[pulumi.Input[int]] = None,
+             zone: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("data_disk_name", data_disk_name)
+        _setter("data_disk_resource_group_name", data_disk_resource_group_name)
+        _setter("size_gb", size_gb)
+        _setter("storage_account_type", storage_account_type)
         if lun is not None:
-            pulumi.set(__self__, "lun", lun)
+            _setter("lun", lun)
         if zone is not None:
-            pulumi.set(__self__, "zone", zone)
+            _setter("zone", zone)
 
     @property
     @pulumi.getter(name="dataDiskName")
@@ -663,12 +842,25 @@ class StatefulNodeAzureBootDiagnosticArgs:
                  is_enabled: Optional[pulumi.Input[bool]] = None,
                  storage_url: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None):
+        StatefulNodeAzureBootDiagnosticArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            is_enabled=is_enabled,
+            storage_url=storage_url,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             is_enabled: Optional[pulumi.Input[bool]] = None,
+             storage_url: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if is_enabled is not None:
-            pulumi.set(__self__, "is_enabled", is_enabled)
+            _setter("is_enabled", is_enabled)
         if storage_url is not None:
-            pulumi.set(__self__, "storage_url", storage_url)
+            _setter("storage_url", storage_url)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
 
     @property
     @pulumi.getter(name="isEnabled")
@@ -704,9 +896,22 @@ class StatefulNodeAzureDataDiskArgs:
                  lun: pulumi.Input[int],
                  size_gb: pulumi.Input[int],
                  type: pulumi.Input[str]):
-        pulumi.set(__self__, "lun", lun)
-        pulumi.set(__self__, "size_gb", size_gb)
-        pulumi.set(__self__, "type", type)
+        StatefulNodeAzureDataDiskArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            lun=lun,
+            size_gb=size_gb,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             lun: pulumi.Input[int],
+             size_gb: pulumi.Input[int],
+             type: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("lun", lun)
+        _setter("size_gb", size_gb)
+        _setter("type", type)
 
     @property
     @pulumi.getter
@@ -748,19 +953,44 @@ class StatefulNodeAzureDeleteArgs:
                  network_ttl_in_hours: Optional[pulumi.Input[int]] = None,
                  public_ip_ttl_in_hours: Optional[pulumi.Input[int]] = None,
                  snapshot_ttl_in_hours: Optional[pulumi.Input[int]] = None):
-        pulumi.set(__self__, "disk_should_deallocate", disk_should_deallocate)
-        pulumi.set(__self__, "network_should_deallocate", network_should_deallocate)
-        pulumi.set(__self__, "public_ip_should_deallocate", public_ip_should_deallocate)
-        pulumi.set(__self__, "should_terminate_vm", should_terminate_vm)
-        pulumi.set(__self__, "snapshot_should_deallocate", snapshot_should_deallocate)
+        StatefulNodeAzureDeleteArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            disk_should_deallocate=disk_should_deallocate,
+            network_should_deallocate=network_should_deallocate,
+            public_ip_should_deallocate=public_ip_should_deallocate,
+            should_terminate_vm=should_terminate_vm,
+            snapshot_should_deallocate=snapshot_should_deallocate,
+            disk_ttl_in_hours=disk_ttl_in_hours,
+            network_ttl_in_hours=network_ttl_in_hours,
+            public_ip_ttl_in_hours=public_ip_ttl_in_hours,
+            snapshot_ttl_in_hours=snapshot_ttl_in_hours,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             disk_should_deallocate: pulumi.Input[bool],
+             network_should_deallocate: pulumi.Input[bool],
+             public_ip_should_deallocate: pulumi.Input[bool],
+             should_terminate_vm: pulumi.Input[bool],
+             snapshot_should_deallocate: pulumi.Input[bool],
+             disk_ttl_in_hours: Optional[pulumi.Input[int]] = None,
+             network_ttl_in_hours: Optional[pulumi.Input[int]] = None,
+             public_ip_ttl_in_hours: Optional[pulumi.Input[int]] = None,
+             snapshot_ttl_in_hours: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("disk_should_deallocate", disk_should_deallocate)
+        _setter("network_should_deallocate", network_should_deallocate)
+        _setter("public_ip_should_deallocate", public_ip_should_deallocate)
+        _setter("should_terminate_vm", should_terminate_vm)
+        _setter("snapshot_should_deallocate", snapshot_should_deallocate)
         if disk_ttl_in_hours is not None:
-            pulumi.set(__self__, "disk_ttl_in_hours", disk_ttl_in_hours)
+            _setter("disk_ttl_in_hours", disk_ttl_in_hours)
         if network_ttl_in_hours is not None:
-            pulumi.set(__self__, "network_ttl_in_hours", network_ttl_in_hours)
+            _setter("network_ttl_in_hours", network_ttl_in_hours)
         if public_ip_ttl_in_hours is not None:
-            pulumi.set(__self__, "public_ip_ttl_in_hours", public_ip_ttl_in_hours)
+            _setter("public_ip_ttl_in_hours", public_ip_ttl_in_hours)
         if snapshot_ttl_in_hours is not None:
-            pulumi.set(__self__, "snapshot_ttl_in_hours", snapshot_ttl_in_hours)
+            _setter("snapshot_ttl_in_hours", snapshot_ttl_in_hours)
 
     @property
     @pulumi.getter(name="diskShouldDeallocate")
@@ -851,11 +1081,26 @@ class StatefulNodeAzureDetachDataDiskArgs:
                  data_disk_resource_group_name: pulumi.Input[str],
                  should_deallocate: pulumi.Input[bool],
                  ttl_in_hours: Optional[pulumi.Input[int]] = None):
-        pulumi.set(__self__, "data_disk_name", data_disk_name)
-        pulumi.set(__self__, "data_disk_resource_group_name", data_disk_resource_group_name)
-        pulumi.set(__self__, "should_deallocate", should_deallocate)
+        StatefulNodeAzureDetachDataDiskArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            data_disk_name=data_disk_name,
+            data_disk_resource_group_name=data_disk_resource_group_name,
+            should_deallocate=should_deallocate,
+            ttl_in_hours=ttl_in_hours,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             data_disk_name: pulumi.Input[str],
+             data_disk_resource_group_name: pulumi.Input[str],
+             should_deallocate: pulumi.Input[bool],
+             ttl_in_hours: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("data_disk_name", data_disk_name)
+        _setter("data_disk_resource_group_name", data_disk_resource_group_name)
+        _setter("should_deallocate", should_deallocate)
         if ttl_in_hours is not None:
-            pulumi.set(__self__, "ttl_in_hours", ttl_in_hours)
+            _setter("ttl_in_hours", ttl_in_hours)
 
     @property
     @pulumi.getter(name="dataDiskName")
@@ -904,15 +1149,36 @@ class StatefulNodeAzureExtensionArgs:
                  type: pulumi.Input[str],
                  protected_settings: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  public_settings: Optional[pulumi.Input[Mapping[str, Any]]] = None):
-        pulumi.set(__self__, "api_version", api_version)
-        pulumi.set(__self__, "minor_version_auto_upgrade", minor_version_auto_upgrade)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "publisher", publisher)
-        pulumi.set(__self__, "type", type)
+        StatefulNodeAzureExtensionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            api_version=api_version,
+            minor_version_auto_upgrade=minor_version_auto_upgrade,
+            name=name,
+            publisher=publisher,
+            type=type,
+            protected_settings=protected_settings,
+            public_settings=public_settings,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             api_version: pulumi.Input[str],
+             minor_version_auto_upgrade: pulumi.Input[bool],
+             name: pulumi.Input[str],
+             publisher: pulumi.Input[str],
+             type: pulumi.Input[str],
+             protected_settings: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             public_settings: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("api_version", api_version)
+        _setter("minor_version_auto_upgrade", minor_version_auto_upgrade)
+        _setter("name", name)
+        _setter("publisher", publisher)
+        _setter("type", type)
         if protected_settings is not None:
-            pulumi.set(__self__, "protected_settings", protected_settings)
+            _setter("protected_settings", protected_settings)
         if public_settings is not None:
-            pulumi.set(__self__, "public_settings", public_settings)
+            _setter("public_settings", public_settings)
 
     @property
     @pulumi.getter(name="apiVersion")
@@ -985,12 +1251,27 @@ class StatefulNodeAzureHealthArgs:
                  health_check_types: pulumi.Input[Sequence[pulumi.Input[str]]],
                  grace_period: Optional[pulumi.Input[int]] = None,
                  unhealthy_duration: Optional[pulumi.Input[int]] = None):
-        pulumi.set(__self__, "auto_healing", auto_healing)
-        pulumi.set(__self__, "health_check_types", health_check_types)
+        StatefulNodeAzureHealthArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            auto_healing=auto_healing,
+            health_check_types=health_check_types,
+            grace_period=grace_period,
+            unhealthy_duration=unhealthy_duration,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             auto_healing: pulumi.Input[bool],
+             health_check_types: pulumi.Input[Sequence[pulumi.Input[str]]],
+             grace_period: Optional[pulumi.Input[int]] = None,
+             unhealthy_duration: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("auto_healing", auto_healing)
+        _setter("health_check_types", health_check_types)
         if grace_period is not None:
-            pulumi.set(__self__, "grace_period", grace_period)
+            _setter("grace_period", grace_period)
         if unhealthy_duration is not None:
-            pulumi.set(__self__, "unhealthy_duration", unhealthy_duration)
+            _setter("unhealthy_duration", unhealthy_duration)
 
     @property
     @pulumi.getter(name="autoHealing")
@@ -1035,12 +1316,25 @@ class StatefulNodeAzureImageArgs:
                  custom_images: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureImageCustomImageArgs']]]] = None,
                  galleries: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureImageGalleryArgs']]]] = None,
                  marketplace_images: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureImageMarketplaceImageArgs']]]] = None):
+        StatefulNodeAzureImageArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            custom_images=custom_images,
+            galleries=galleries,
+            marketplace_images=marketplace_images,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             custom_images: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureImageCustomImageArgs']]]] = None,
+             galleries: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureImageGalleryArgs']]]] = None,
+             marketplace_images: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureImageMarketplaceImageArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if custom_images is not None:
-            pulumi.set(__self__, "custom_images", custom_images)
+            _setter("custom_images", custom_images)
         if galleries is not None:
-            pulumi.set(__self__, "galleries", galleries)
+            _setter("galleries", galleries)
         if marketplace_images is not None:
-            pulumi.set(__self__, "marketplace_images", marketplace_images)
+            _setter("marketplace_images", marketplace_images)
 
     @property
     @pulumi.getter(name="customImages")
@@ -1075,8 +1369,19 @@ class StatefulNodeAzureImageCustomImageArgs:
     def __init__(__self__, *,
                  custom_image_resource_group_name: pulumi.Input[str],
                  name: pulumi.Input[str]):
-        pulumi.set(__self__, "custom_image_resource_group_name", custom_image_resource_group_name)
-        pulumi.set(__self__, "name", name)
+        StatefulNodeAzureImageCustomImageArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            custom_image_resource_group_name=custom_image_resource_group_name,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             custom_image_resource_group_name: pulumi.Input[str],
+             name: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("custom_image_resource_group_name", custom_image_resource_group_name)
+        _setter("name", name)
 
     @property
     @pulumi.getter(name="customImageResourceGroupName")
@@ -1104,10 +1409,25 @@ class StatefulNodeAzureImageGalleryArgs:
                  gallery_resource_group_name: pulumi.Input[str],
                  image_name: pulumi.Input[str],
                  version_name: pulumi.Input[str]):
-        pulumi.set(__self__, "gallery_name", gallery_name)
-        pulumi.set(__self__, "gallery_resource_group_name", gallery_resource_group_name)
-        pulumi.set(__self__, "image_name", image_name)
-        pulumi.set(__self__, "version_name", version_name)
+        StatefulNodeAzureImageGalleryArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            gallery_name=gallery_name,
+            gallery_resource_group_name=gallery_resource_group_name,
+            image_name=image_name,
+            version_name=version_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             gallery_name: pulumi.Input[str],
+             gallery_resource_group_name: pulumi.Input[str],
+             image_name: pulumi.Input[str],
+             version_name: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("gallery_name", gallery_name)
+        _setter("gallery_resource_group_name", gallery_resource_group_name)
+        _setter("image_name", image_name)
+        _setter("version_name", version_name)
 
     @property
     @pulumi.getter(name="galleryName")
@@ -1153,10 +1473,25 @@ class StatefulNodeAzureImageMarketplaceImageArgs:
                  publisher: pulumi.Input[str],
                  sku: pulumi.Input[str],
                  version: pulumi.Input[str]):
-        pulumi.set(__self__, "offer", offer)
-        pulumi.set(__self__, "publisher", publisher)
-        pulumi.set(__self__, "sku", sku)
-        pulumi.set(__self__, "version", version)
+        StatefulNodeAzureImageMarketplaceImageArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            offer=offer,
+            publisher=publisher,
+            sku=sku,
+            version=version,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             offer: pulumi.Input[str],
+             publisher: pulumi.Input[str],
+             sku: pulumi.Input[str],
+             version: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("offer", offer)
+        _setter("publisher", publisher)
+        _setter("sku", sku)
+        _setter("version", version)
 
     @property
     @pulumi.getter
@@ -1202,12 +1537,27 @@ class StatefulNodeAzureImportVmArgs:
                  resource_group_name: pulumi.Input[str],
                  draining_timeout: Optional[pulumi.Input[int]] = None,
                  resources_retention_time: Optional[pulumi.Input[int]] = None):
-        pulumi.set(__self__, "original_vm_name", original_vm_name)
-        pulumi.set(__self__, "resource_group_name", resource_group_name)
+        StatefulNodeAzureImportVmArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            original_vm_name=original_vm_name,
+            resource_group_name=resource_group_name,
+            draining_timeout=draining_timeout,
+            resources_retention_time=resources_retention_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             original_vm_name: pulumi.Input[str],
+             resource_group_name: pulumi.Input[str],
+             draining_timeout: Optional[pulumi.Input[int]] = None,
+             resources_retention_time: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("original_vm_name", original_vm_name)
+        _setter("resource_group_name", resource_group_name)
         if draining_timeout is not None:
-            pulumi.set(__self__, "draining_timeout", draining_timeout)
+            _setter("draining_timeout", draining_timeout)
         if resources_retention_time is not None:
-            pulumi.set(__self__, "resources_retention_time", resources_retention_time)
+            _setter("resources_retention_time", resources_retention_time)
 
     @property
     @pulumi.getter(name="originalVmName")
@@ -1254,12 +1604,29 @@ class StatefulNodeAzureLoadBalancerArgs:
                  resource_group_name: pulumi.Input[str],
                  type: pulumi.Input[str],
                  sku: Optional[pulumi.Input[str]] = None):
-        pulumi.set(__self__, "backend_pool_names", backend_pool_names)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "resource_group_name", resource_group_name)
-        pulumi.set(__self__, "type", type)
+        StatefulNodeAzureLoadBalancerArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            backend_pool_names=backend_pool_names,
+            name=name,
+            resource_group_name=resource_group_name,
+            type=type,
+            sku=sku,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             backend_pool_names: pulumi.Input[Sequence[pulumi.Input[str]]],
+             name: pulumi.Input[str],
+             resource_group_name: pulumi.Input[str],
+             type: pulumi.Input[str],
+             sku: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("backend_pool_names", backend_pool_names)
+        _setter("name", name)
+        _setter("resource_group_name", resource_group_name)
+        _setter("type", type)
         if sku is not None:
-            pulumi.set(__self__, "sku", sku)
+            _setter("sku", sku)
 
     @property
     @pulumi.getter(name="backendPoolNames")
@@ -1313,11 +1680,24 @@ class StatefulNodeAzureLoginArgs:
                  user_name: pulumi.Input[str],
                  password: Optional[pulumi.Input[str]] = None,
                  ssh_public_key: Optional[pulumi.Input[str]] = None):
-        pulumi.set(__self__, "user_name", user_name)
+        StatefulNodeAzureLoginArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            user_name=user_name,
+            password=password,
+            ssh_public_key=ssh_public_key,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             user_name: pulumi.Input[str],
+             password: Optional[pulumi.Input[str]] = None,
+             ssh_public_key: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("user_name", user_name)
         if password is not None:
-            pulumi.set(__self__, "password", password)
+            _setter("password", password)
         if ssh_public_key is not None:
-            pulumi.set(__self__, "ssh_public_key", ssh_public_key)
+            _setter("ssh_public_key", ssh_public_key)
 
     @property
     @pulumi.getter(name="userName")
@@ -1352,8 +1732,19 @@ class StatefulNodeAzureManagedServiceIdentityArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
                  resource_group_name: pulumi.Input[str]):
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "resource_group_name", resource_group_name)
+        StatefulNodeAzureManagedServiceIdentityArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            resource_group_name=resource_group_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: pulumi.Input[str],
+             resource_group_name: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
+        _setter("resource_group_name", resource_group_name)
 
     @property
     @pulumi.getter
@@ -1380,9 +1771,22 @@ class StatefulNodeAzureNetworkArgs:
                  network_interfaces: pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureNetworkNetworkInterfaceArgs']]],
                  network_resource_group_name: pulumi.Input[str],
                  virtual_network_name: pulumi.Input[str]):
-        pulumi.set(__self__, "network_interfaces", network_interfaces)
-        pulumi.set(__self__, "network_resource_group_name", network_resource_group_name)
-        pulumi.set(__self__, "virtual_network_name", virtual_network_name)
+        StatefulNodeAzureNetworkArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            network_interfaces=network_interfaces,
+            network_resource_group_name=network_resource_group_name,
+            virtual_network_name=virtual_network_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             network_interfaces: pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureNetworkNetworkInterfaceArgs']]],
+             network_resource_group_name: pulumi.Input[str],
+             virtual_network_name: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("network_interfaces", network_interfaces)
+        _setter("network_resource_group_name", network_resource_group_name)
+        _setter("virtual_network_name", virtual_network_name)
 
     @property
     @pulumi.getter(name="networkInterfaces")
@@ -1425,24 +1829,51 @@ class StatefulNodeAzureNetworkNetworkInterfaceArgs:
                  private_ip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  public_ip_sku: Optional[pulumi.Input[str]] = None,
                  public_ips: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureNetworkNetworkInterfacePublicIpArgs']]]] = None):
-        pulumi.set(__self__, "is_primary", is_primary)
-        pulumi.set(__self__, "subnet_name", subnet_name)
+        StatefulNodeAzureNetworkNetworkInterfaceArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            is_primary=is_primary,
+            subnet_name=subnet_name,
+            additional_ip_configurations=additional_ip_configurations,
+            application_security_groups=application_security_groups,
+            assign_public_ip=assign_public_ip,
+            enable_ip_forwarding=enable_ip_forwarding,
+            network_security_groups=network_security_groups,
+            private_ip_addresses=private_ip_addresses,
+            public_ip_sku=public_ip_sku,
+            public_ips=public_ips,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             is_primary: pulumi.Input[bool],
+             subnet_name: pulumi.Input[str],
+             additional_ip_configurations: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationArgs']]]] = None,
+             application_security_groups: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArgs']]]] = None,
+             assign_public_ip: Optional[pulumi.Input[bool]] = None,
+             enable_ip_forwarding: Optional[pulumi.Input[bool]] = None,
+             network_security_groups: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupArgs']]]] = None,
+             private_ip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             public_ip_sku: Optional[pulumi.Input[str]] = None,
+             public_ips: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureNetworkNetworkInterfacePublicIpArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("is_primary", is_primary)
+        _setter("subnet_name", subnet_name)
         if additional_ip_configurations is not None:
-            pulumi.set(__self__, "additional_ip_configurations", additional_ip_configurations)
+            _setter("additional_ip_configurations", additional_ip_configurations)
         if application_security_groups is not None:
-            pulumi.set(__self__, "application_security_groups", application_security_groups)
+            _setter("application_security_groups", application_security_groups)
         if assign_public_ip is not None:
-            pulumi.set(__self__, "assign_public_ip", assign_public_ip)
+            _setter("assign_public_ip", assign_public_ip)
         if enable_ip_forwarding is not None:
-            pulumi.set(__self__, "enable_ip_forwarding", enable_ip_forwarding)
+            _setter("enable_ip_forwarding", enable_ip_forwarding)
         if network_security_groups is not None:
-            pulumi.set(__self__, "network_security_groups", network_security_groups)
+            _setter("network_security_groups", network_security_groups)
         if private_ip_addresses is not None:
-            pulumi.set(__self__, "private_ip_addresses", private_ip_addresses)
+            _setter("private_ip_addresses", private_ip_addresses)
         if public_ip_sku is not None:
-            pulumi.set(__self__, "public_ip_sku", public_ip_sku)
+            _setter("public_ip_sku", public_ip_sku)
         if public_ips is not None:
-            pulumi.set(__self__, "public_ips", public_ips)
+            _setter("public_ips", public_ips)
 
     @property
     @pulumi.getter(name="isPrimary")
@@ -1540,8 +1971,19 @@ class StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
                  private_ip_address_version: pulumi.Input[str]):
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "private_ip_address_version", private_ip_address_version)
+        StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            private_ip_address_version=private_ip_address_version,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: pulumi.Input[str],
+             private_ip_address_version: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
+        _setter("private_ip_address_version", private_ip_address_version)
 
     @property
     @pulumi.getter
@@ -1567,8 +2009,19 @@ class StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
                  network_resource_group_name: pulumi.Input[str]):
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "network_resource_group_name", network_resource_group_name)
+        StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            network_resource_group_name=network_resource_group_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: pulumi.Input[str],
+             network_resource_group_name: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
+        _setter("network_resource_group_name", network_resource_group_name)
 
     @property
     @pulumi.getter
@@ -1594,10 +2047,21 @@ class StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupArgs:
     def __init__(__self__, *,
                  name: Optional[pulumi.Input[str]] = None,
                  network_resource_group_name: Optional[pulumi.Input[str]] = None):
+        StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            network_resource_group_name=network_resource_group_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: Optional[pulumi.Input[str]] = None,
+             network_resource_group_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if network_resource_group_name is not None:
-            pulumi.set(__self__, "network_resource_group_name", network_resource_group_name)
+            _setter("network_resource_group_name", network_resource_group_name)
 
     @property
     @pulumi.getter
@@ -1623,8 +2087,19 @@ class StatefulNodeAzureNetworkNetworkInterfacePublicIpArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
                  network_resource_group_name: pulumi.Input[str]):
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "network_resource_group_name", network_resource_group_name)
+        StatefulNodeAzureNetworkNetworkInterfacePublicIpArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            network_resource_group_name=network_resource_group_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: pulumi.Input[str],
+             network_resource_group_name: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
+        _setter("network_resource_group_name", network_resource_group_name)
 
     @property
     @pulumi.getter
@@ -1650,9 +2125,20 @@ class StatefulNodeAzureOsDiskArgs:
     def __init__(__self__, *,
                  type: pulumi.Input[str],
                  size_gb: Optional[pulumi.Input[int]] = None):
-        pulumi.set(__self__, "type", type)
+        StatefulNodeAzureOsDiskArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            type=type,
+            size_gb=size_gb,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             type: pulumi.Input[str],
+             size_gb: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("type", type)
         if size_gb is not None:
-            pulumi.set(__self__, "size_gb", size_gb)
+            _setter("size_gb", size_gb)
 
     @property
     @pulumi.getter
@@ -1679,9 +2165,22 @@ class StatefulNodeAzureSchedulingTaskArgs:
                  cron_expression: pulumi.Input[str],
                  is_enabled: pulumi.Input[bool],
                  type: pulumi.Input[str]):
-        pulumi.set(__self__, "cron_expression", cron_expression)
-        pulumi.set(__self__, "is_enabled", is_enabled)
-        pulumi.set(__self__, "type", type)
+        StatefulNodeAzureSchedulingTaskArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cron_expression=cron_expression,
+            is_enabled=is_enabled,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cron_expression: pulumi.Input[str],
+             is_enabled: pulumi.Input[bool],
+             type: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("cron_expression", cron_expression)
+        _setter("is_enabled", is_enabled)
+        _setter("type", type)
 
     @property
     @pulumi.getter(name="cronExpression")
@@ -1716,8 +2215,19 @@ class StatefulNodeAzureSecretArgs:
     def __init__(__self__, *,
                  source_vaults: pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureSecretSourceVaultArgs']]],
                  vault_certificates: pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureSecretVaultCertificateArgs']]]):
-        pulumi.set(__self__, "source_vaults", source_vaults)
-        pulumi.set(__self__, "vault_certificates", vault_certificates)
+        StatefulNodeAzureSecretArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            source_vaults=source_vaults,
+            vault_certificates=vault_certificates,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             source_vaults: pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureSecretSourceVaultArgs']]],
+             vault_certificates: pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureSecretVaultCertificateArgs']]],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("source_vaults", source_vaults)
+        _setter("vault_certificates", vault_certificates)
 
     @property
     @pulumi.getter(name="sourceVaults")
@@ -1743,8 +2253,19 @@ class StatefulNodeAzureSecretSourceVaultArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
                  resource_group_name: pulumi.Input[str]):
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "resource_group_name", resource_group_name)
+        StatefulNodeAzureSecretSourceVaultArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            resource_group_name=resource_group_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: pulumi.Input[str],
+             resource_group_name: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
+        _setter("resource_group_name", resource_group_name)
 
     @property
     @pulumi.getter
@@ -1770,10 +2291,21 @@ class StatefulNodeAzureSecretVaultCertificateArgs:
     def __init__(__self__, *,
                  certificate_store: Optional[pulumi.Input[str]] = None,
                  certificate_url: Optional[pulumi.Input[str]] = None):
+        StatefulNodeAzureSecretVaultCertificateArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            certificate_store=certificate_store,
+            certificate_url=certificate_url,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             certificate_store: Optional[pulumi.Input[str]] = None,
+             certificate_url: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if certificate_store is not None:
-            pulumi.set(__self__, "certificate_store", certificate_store)
+            _setter("certificate_store", certificate_store)
         if certificate_url is not None:
-            pulumi.set(__self__, "certificate_url", certificate_url)
+            _setter("certificate_url", certificate_url)
 
     @property
     @pulumi.getter(name="certificateStore")
@@ -1800,12 +2332,25 @@ class StatefulNodeAzureSecurityArgs:
                  secure_boot_enabled: Optional[pulumi.Input[bool]] = None,
                  security_type: Optional[pulumi.Input[str]] = None,
                  vtpm_enabled: Optional[pulumi.Input[bool]] = None):
+        StatefulNodeAzureSecurityArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            secure_boot_enabled=secure_boot_enabled,
+            security_type=security_type,
+            vtpm_enabled=vtpm_enabled,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             secure_boot_enabled: Optional[pulumi.Input[bool]] = None,
+             security_type: Optional[pulumi.Input[str]] = None,
+             vtpm_enabled: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if secure_boot_enabled is not None:
-            pulumi.set(__self__, "secure_boot_enabled", secure_boot_enabled)
+            _setter("secure_boot_enabled", secure_boot_enabled)
         if security_type is not None:
-            pulumi.set(__self__, "security_type", security_type)
+            _setter("security_type", security_type)
         if vtpm_enabled is not None:
-            pulumi.set(__self__, "vtpm_enabled", vtpm_enabled)
+            _setter("vtpm_enabled", vtpm_enabled)
 
     @property
     @pulumi.getter(name="secureBootEnabled")
@@ -1840,8 +2385,19 @@ class StatefulNodeAzureSignalArgs:
     def __init__(__self__, *,
                  timeout: pulumi.Input[int],
                  type: pulumi.Input[str]):
-        pulumi.set(__self__, "timeout", timeout)
-        pulumi.set(__self__, "type", type)
+        StatefulNodeAzureSignalArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            timeout=timeout,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             timeout: pulumi.Input[int],
+             type: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("timeout", timeout)
+        _setter("type", type)
 
     @property
     @pulumi.getter
@@ -1871,17 +2427,36 @@ class StatefulNodeAzureStrategyArgs:
                  optimization_windows: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  preferred_life_cycle: Optional[pulumi.Input[str]] = None,
                  revert_to_spot: Optional[pulumi.Input['StatefulNodeAzureStrategyRevertToSpotArgs']] = None):
-        pulumi.set(__self__, "fallback_to_on_demand", fallback_to_on_demand)
+        StatefulNodeAzureStrategyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            fallback_to_on_demand=fallback_to_on_demand,
+            capacity_reservations=capacity_reservations,
+            draining_timeout=draining_timeout,
+            optimization_windows=optimization_windows,
+            preferred_life_cycle=preferred_life_cycle,
+            revert_to_spot=revert_to_spot,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             fallback_to_on_demand: pulumi.Input[bool],
+             capacity_reservations: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureStrategyCapacityReservationArgs']]]] = None,
+             draining_timeout: Optional[pulumi.Input[int]] = None,
+             optimization_windows: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             preferred_life_cycle: Optional[pulumi.Input[str]] = None,
+             revert_to_spot: Optional[pulumi.Input['StatefulNodeAzureStrategyRevertToSpotArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("fallback_to_on_demand", fallback_to_on_demand)
         if capacity_reservations is not None:
-            pulumi.set(__self__, "capacity_reservations", capacity_reservations)
+            _setter("capacity_reservations", capacity_reservations)
         if draining_timeout is not None:
-            pulumi.set(__self__, "draining_timeout", draining_timeout)
+            _setter("draining_timeout", draining_timeout)
         if optimization_windows is not None:
-            pulumi.set(__self__, "optimization_windows", optimization_windows)
+            _setter("optimization_windows", optimization_windows)
         if preferred_life_cycle is not None:
-            pulumi.set(__self__, "preferred_life_cycle", preferred_life_cycle)
+            _setter("preferred_life_cycle", preferred_life_cycle)
         if revert_to_spot is not None:
-            pulumi.set(__self__, "revert_to_spot", revert_to_spot)
+            _setter("revert_to_spot", revert_to_spot)
 
     @property
     @pulumi.getter(name="fallbackToOnDemand")
@@ -1944,10 +2519,23 @@ class StatefulNodeAzureStrategyCapacityReservationArgs:
                  should_utilize: pulumi.Input[bool],
                  utilization_strategy: pulumi.Input[str],
                  capacity_reservation_groups: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupArgs']]]] = None):
-        pulumi.set(__self__, "should_utilize", should_utilize)
-        pulumi.set(__self__, "utilization_strategy", utilization_strategy)
+        StatefulNodeAzureStrategyCapacityReservationArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            should_utilize=should_utilize,
+            utilization_strategy=utilization_strategy,
+            capacity_reservation_groups=capacity_reservation_groups,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             should_utilize: pulumi.Input[bool],
+             utilization_strategy: pulumi.Input[str],
+             capacity_reservation_groups: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("should_utilize", should_utilize)
+        _setter("utilization_strategy", utilization_strategy)
         if capacity_reservation_groups is not None:
-            pulumi.set(__self__, "capacity_reservation_groups", capacity_reservation_groups)
+            _setter("capacity_reservation_groups", capacity_reservation_groups)
 
     @property
     @pulumi.getter(name="shouldUtilize")
@@ -1983,10 +2571,23 @@ class StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupArgs:
                  crg_name: pulumi.Input[str],
                  crg_resource_group_name: pulumi.Input[str],
                  crg_should_prioritize: Optional[pulumi.Input[bool]] = None):
-        pulumi.set(__self__, "crg_name", crg_name)
-        pulumi.set(__self__, "crg_resource_group_name", crg_resource_group_name)
+        StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            crg_name=crg_name,
+            crg_resource_group_name=crg_resource_group_name,
+            crg_should_prioritize=crg_should_prioritize,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             crg_name: pulumi.Input[str],
+             crg_resource_group_name: pulumi.Input[str],
+             crg_should_prioritize: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("crg_name", crg_name)
+        _setter("crg_resource_group_name", crg_resource_group_name)
         if crg_should_prioritize is not None:
-            pulumi.set(__self__, "crg_should_prioritize", crg_should_prioritize)
+            _setter("crg_should_prioritize", crg_should_prioritize)
 
     @property
     @pulumi.getter(name="crgName")
@@ -2020,7 +2621,16 @@ class StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupArgs:
 class StatefulNodeAzureStrategyRevertToSpotArgs:
     def __init__(__self__, *,
                  perform_at: pulumi.Input[str]):
-        pulumi.set(__self__, "perform_at", perform_at)
+        StatefulNodeAzureStrategyRevertToSpotArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            perform_at=perform_at,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             perform_at: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("perform_at", perform_at)
 
     @property
     @pulumi.getter(name="performAt")
@@ -2037,9 +2647,20 @@ class StatefulNodeAzureTagArgs:
     def __init__(__self__, *,
                  tag_key: pulumi.Input[str],
                  tag_value: Optional[pulumi.Input[str]] = None):
-        pulumi.set(__self__, "tag_key", tag_key)
+        StatefulNodeAzureTagArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            tag_key=tag_key,
+            tag_value=tag_value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             tag_key: pulumi.Input[str],
+             tag_value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("tag_key", tag_key)
         if tag_value is not None:
-            pulumi.set(__self__, "tag_value", tag_value)
+            _setter("tag_value", tag_value)
 
     @property
     @pulumi.getter(name="tagKey")
@@ -2064,7 +2685,16 @@ class StatefulNodeAzureTagArgs:
 class StatefulNodeAzureUpdateStateArgs:
     def __init__(__self__, *,
                  state: pulumi.Input[str]):
-        pulumi.set(__self__, "state", state)
+        StatefulNodeAzureUpdateStateArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            state=state,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             state: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("state", state)
 
     @property
     @pulumi.getter

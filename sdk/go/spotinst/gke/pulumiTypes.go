@@ -1652,25 +1652,7 @@ func (o ElastigroupIntegrationGkeAutoscaleHeadroomPtrOutput) NumOfUnits() pulumi
 }
 
 type ElastigroupIntegrationGkeAutoscaleLabel struct {
-	// The label name.
-	Key string `pulumi:"key"`
-	// The label value.
-	//
-	// Usage:
-	//
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
+	Key   string `pulumi:"key"`
 	Value string `pulumi:"value"`
 }
 
@@ -1686,25 +1668,7 @@ type ElastigroupIntegrationGkeAutoscaleLabelInput interface {
 }
 
 type ElastigroupIntegrationGkeAutoscaleLabelArgs struct {
-	// The label name.
-	Key pulumi.StringInput `pulumi:"key"`
-	// The label value.
-	//
-	// Usage:
-	//
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
+	Key   pulumi.StringInput `pulumi:"key"`
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -1777,31 +1741,10 @@ func (o ElastigroupIntegrationGkeAutoscaleLabelOutput) ToOutput(ctx context.Cont
 	}
 }
 
-// The label name.
 func (o ElastigroupIntegrationGkeAutoscaleLabelOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v ElastigroupIntegrationGkeAutoscaleLabel) string { return v.Key }).(pulumi.StringOutput)
 }
 
-// The label value.
-//
-// Usage:
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
 func (o ElastigroupIntegrationGkeAutoscaleLabelOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v ElastigroupIntegrationGkeAutoscaleLabel) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -1833,25 +1776,7 @@ func (o ElastigroupIntegrationGkeAutoscaleLabelArrayOutput) Index(i pulumi.IntIn
 }
 
 type ElastigroupLabel struct {
-	// The label name.
-	Key string `pulumi:"key"`
-	// The label value.
-	//
-	// Usage:
-	//
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
+	Key   string `pulumi:"key"`
 	Value string `pulumi:"value"`
 }
 
@@ -1867,25 +1792,7 @@ type ElastigroupLabelInput interface {
 }
 
 type ElastigroupLabelArgs struct {
-	// The label name.
-	Key pulumi.StringInput `pulumi:"key"`
-	// The label value.
-	//
-	// Usage:
-	//
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
+	Key   pulumi.StringInput `pulumi:"key"`
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -1958,31 +1865,10 @@ func (o ElastigroupLabelOutput) ToOutput(ctx context.Context) pulumix.Output[Ela
 	}
 }
 
-// The label name.
 func (o ElastigroupLabelOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v ElastigroupLabel) string { return v.Key }).(pulumi.StringOutput)
 }
 
-// The label value.
-//
-// Usage:
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
 func (o ElastigroupLabelOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v ElastigroupLabel) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -2014,25 +1900,7 @@ func (o ElastigroupLabelArrayOutput) Index(i pulumi.IntInput) ElastigroupLabelOu
 }
 
 type ElastigroupMetadata struct {
-	// The label name.
-	Key string `pulumi:"key"`
-	// The label value.
-	//
-	// Usage:
-	//
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
+	Key   string `pulumi:"key"`
 	Value string `pulumi:"value"`
 }
 
@@ -2048,25 +1916,7 @@ type ElastigroupMetadataInput interface {
 }
 
 type ElastigroupMetadataArgs struct {
-	// The label name.
-	Key pulumi.StringInput `pulumi:"key"`
-	// The label value.
-	//
-	// Usage:
-	//
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
+	Key   pulumi.StringInput `pulumi:"key"`
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -2139,31 +1989,10 @@ func (o ElastigroupMetadataOutput) ToOutput(ctx context.Context) pulumix.Output[
 	}
 }
 
-// The label name.
 func (o ElastigroupMetadataOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v ElastigroupMetadata) string { return v.Key }).(pulumi.StringOutput)
 }
 
-// The label value.
-//
-// Usage:
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
 func (o ElastigroupMetadataOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v ElastigroupMetadata) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -2772,24 +2601,7 @@ func (o ElastigroupScalingDownPolicyArrayOutput) Index(i pulumi.IntInput) Elasti
 }
 
 type ElastigroupScalingDownPolicyDimension struct {
-	Name string `pulumi:"name"`
-	// The label value.
-	//
-	// Usage:
-	//
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
+	Name  string  `pulumi:"name"`
 	Value *string `pulumi:"value"`
 }
 
@@ -2805,24 +2617,7 @@ type ElastigroupScalingDownPolicyDimensionInput interface {
 }
 
 type ElastigroupScalingDownPolicyDimensionArgs struct {
-	Name pulumi.StringInput `pulumi:"name"`
-	// The label value.
-	//
-	// Usage:
-	//
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
+	Name  pulumi.StringInput    `pulumi:"name"`
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -2899,26 +2694,6 @@ func (o ElastigroupScalingDownPolicyDimensionOutput) Name() pulumi.StringOutput 
 	return o.ApplyT(func(v ElastigroupScalingDownPolicyDimension) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The label value.
-//
-// Usage:
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
 func (o ElastigroupScalingDownPolicyDimensionOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElastigroupScalingDownPolicyDimension) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -3149,24 +2924,7 @@ func (o ElastigroupScalingUpPolicyArrayOutput) Index(i pulumi.IntInput) Elastigr
 }
 
 type ElastigroupScalingUpPolicyDimension struct {
-	Name string `pulumi:"name"`
-	// The label value.
-	//
-	// Usage:
-	//
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
+	Name  string  `pulumi:"name"`
 	Value *string `pulumi:"value"`
 }
 
@@ -3182,24 +2940,7 @@ type ElastigroupScalingUpPolicyDimensionInput interface {
 }
 
 type ElastigroupScalingUpPolicyDimensionArgs struct {
-	Name pulumi.StringInput `pulumi:"name"`
-	// The label value.
-	//
-	// Usage:
-	//
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
+	Name  pulumi.StringInput    `pulumi:"name"`
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -3276,26 +3017,6 @@ func (o ElastigroupScalingUpPolicyDimensionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ElastigroupScalingUpPolicyDimension) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The label value.
-//
-// Usage:
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
 func (o ElastigroupScalingUpPolicyDimensionOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElastigroupScalingUpPolicyDimension) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -4671,8 +4392,7 @@ func (o OceanImportScheduledTaskArrayOutput) Index(i pulumi.IntInput) OceanImpor
 }
 
 type OceanImportScheduledTaskShutdownHours struct {
-	// Flag to enable / disable the shutdown hours.
-	// Example: True
+	// Enable the Ocean Kubernetes Autoscaler.
 	IsEnabled *bool `pulumi:"isEnabled"`
 	// Set time windows for shutdown hours. specify a list of 'timeWindows' with at least one time window Each string is in the format of - ddd:hh:mm-ddd:hh:mm ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59. Time windows should not overlap. required on cluster.scheduling.isEnabled = True. API Times are in UTC
 	// Example: Fri:15:30-Wed:14:30
@@ -4691,8 +4411,7 @@ type OceanImportScheduledTaskShutdownHoursInput interface {
 }
 
 type OceanImportScheduledTaskShutdownHoursArgs struct {
-	// Flag to enable / disable the shutdown hours.
-	// Example: True
+	// Enable the Ocean Kubernetes Autoscaler.
 	IsEnabled pulumi.BoolPtrInput `pulumi:"isEnabled"`
 	// Set time windows for shutdown hours. specify a list of 'timeWindows' with at least one time window Each string is in the format of - ddd:hh:mm-ddd:hh:mm ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59. Time windows should not overlap. required on cluster.scheduling.isEnabled = True. API Times are in UTC
 	// Example: Fri:15:30-Wed:14:30
@@ -4794,8 +4513,7 @@ func (o OceanImportScheduledTaskShutdownHoursOutput) ToOutput(ctx context.Contex
 	}
 }
 
-// Flag to enable / disable the shutdown hours.
-// Example: True
+// Enable the Ocean Kubernetes Autoscaler.
 func (o OceanImportScheduledTaskShutdownHoursOutput) IsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OceanImportScheduledTaskShutdownHours) *bool { return v.IsEnabled }).(pulumi.BoolPtrOutput)
 }
@@ -4836,8 +4554,7 @@ func (o OceanImportScheduledTaskShutdownHoursPtrOutput) Elem() OceanImportSchedu
 	}).(OceanImportScheduledTaskShutdownHoursOutput)
 }
 
-// Flag to enable / disable the shutdown hours.
-// Example: True
+// Enable the Ocean Kubernetes Autoscaler.
 func (o OceanImportScheduledTaskShutdownHoursPtrOutput) IsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OceanImportScheduledTaskShutdownHours) *bool {
 		if v == nil {
@@ -4862,8 +4579,7 @@ type OceanImportScheduledTaskTask struct {
 	// A valid cron expression. For example : " * * * * * ".The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of ‘frequency’ or ‘cronExpression’ should be used at a time. Required for cluster.scheduling.tasks object
 	// Example: 0 1 * * *
 	CronExpression string `pulumi:"cronExpression"`
-	// Flag to enable / disable the shutdown hours.
-	// Example: True
+	// Enable the Ocean Kubernetes Autoscaler.
 	IsEnabled      bool                                        `pulumi:"isEnabled"`
 	TaskParameters *OceanImportScheduledTaskTaskTaskParameters `pulumi:"taskParameters"`
 	// Valid values: "clusterRoll". Required for cluster.scheduling.tasks object.
@@ -4885,8 +4601,7 @@ type OceanImportScheduledTaskTaskArgs struct {
 	// A valid cron expression. For example : " * * * * * ".The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of ‘frequency’ or ‘cronExpression’ should be used at a time. Required for cluster.scheduling.tasks object
 	// Example: 0 1 * * *
 	CronExpression pulumi.StringInput `pulumi:"cronExpression"`
-	// Flag to enable / disable the shutdown hours.
-	// Example: True
+	// Enable the Ocean Kubernetes Autoscaler.
 	IsEnabled      pulumi.BoolInput                                   `pulumi:"isEnabled"`
 	TaskParameters OceanImportScheduledTaskTaskTaskParametersPtrInput `pulumi:"taskParameters"`
 	// Valid values: "clusterRoll". Required for cluster.scheduling.tasks object.
@@ -4968,8 +4683,7 @@ func (o OceanImportScheduledTaskTaskOutput) CronExpression() pulumi.StringOutput
 	return o.ApplyT(func(v OceanImportScheduledTaskTask) string { return v.CronExpression }).(pulumi.StringOutput)
 }
 
-// Flag to enable / disable the shutdown hours.
-// Example: True
+// Enable the Ocean Kubernetes Autoscaler.
 func (o OceanImportScheduledTaskTaskOutput) IsEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v OceanImportScheduledTaskTask) bool { return v.IsEnabled }).(pulumi.BoolOutput)
 }

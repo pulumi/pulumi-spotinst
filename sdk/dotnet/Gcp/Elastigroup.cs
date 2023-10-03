@@ -174,6 +174,9 @@ namespace Pulumi.SpotInst.Gcp
         [Output("availabilityZones")]
         public Output<ImmutableArray<string>> AvailabilityZones { get; private set; } = null!;
 
+        /// <summary>
+        /// Describes the backend service configurations.
+        /// </summary>
         [Output("backendServices")]
         public Output<ImmutableArray<Outputs.ElastigroupBackendService>> BackendServices { get; private set; } = null!;
 
@@ -204,6 +207,9 @@ namespace Pulumi.SpotInst.Gcp
         [Output("fallbackToOndemand")]
         public Output<bool?> FallbackToOndemand { get; private set; } = null!;
 
+        /// <summary>
+        /// Defines the GPU configuration.
+        /// </summary>
         [Output("gpu")]
         public Output<ImmutableArray<Outputs.ElastigroupGpu>> Gpu { get; private set; } = null!;
 
@@ -438,6 +444,10 @@ namespace Pulumi.SpotInst.Gcp
 
         [Input("backendServices")]
         private InputList<Inputs.ElastigroupBackendServiceArgs>? _backendServices;
+
+        /// <summary>
+        /// Describes the backend service configurations.
+        /// </summary>
         public InputList<Inputs.ElastigroupBackendServiceArgs> BackendServices
         {
             get => _backendServices ?? (_backendServices = new InputList<Inputs.ElastigroupBackendServiceArgs>());
@@ -478,6 +488,10 @@ namespace Pulumi.SpotInst.Gcp
 
         [Input("gpu")]
         private InputList<Inputs.ElastigroupGpuArgs>? _gpu;
+
+        /// <summary>
+        /// Defines the GPU configuration.
+        /// </summary>
         public InputList<Inputs.ElastigroupGpuArgs> Gpu
         {
             get => _gpu ?? (_gpu = new InputList<Inputs.ElastigroupGpuArgs>());
@@ -736,6 +750,10 @@ namespace Pulumi.SpotInst.Gcp
 
         [Input("backendServices")]
         private InputList<Inputs.ElastigroupBackendServiceGetArgs>? _backendServices;
+
+        /// <summary>
+        /// Describes the backend service configurations.
+        /// </summary>
         public InputList<Inputs.ElastigroupBackendServiceGetArgs> BackendServices
         {
             get => _backendServices ?? (_backendServices = new InputList<Inputs.ElastigroupBackendServiceGetArgs>());
@@ -776,6 +794,10 @@ namespace Pulumi.SpotInst.Gcp
 
         [Input("gpu")]
         private InputList<Inputs.ElastigroupGpuGetArgs>? _gpu;
+
+        /// <summary>
+        /// Defines the GPU configuration.
+        /// </summary>
         public InputList<Inputs.ElastigroupGpuGetArgs> Gpu
         {
             get => _gpu ?? (_gpu = new InputList<Inputs.ElastigroupGpuGetArgs>());

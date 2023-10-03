@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -27,14 +27,31 @@ class HealthCheckArgs:
         :param pulumi.Input['HealthCheckCheckArgs'] check: Describes the check to execute.
         :param pulumi.Input[str] name: The name of the health check.
         """
-        pulumi.set(__self__, "proxy_address", proxy_address)
-        pulumi.set(__self__, "resource_id", resource_id)
+        HealthCheckArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            proxy_address=proxy_address,
+            resource_id=resource_id,
+            check=check,
+            name=name,
+            proxy_port=proxy_port,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             proxy_address: pulumi.Input[str],
+             resource_id: pulumi.Input[str],
+             check: Optional[pulumi.Input['HealthCheckCheckArgs']] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             proxy_port: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("proxy_address", proxy_address)
+        _setter("resource_id", resource_id)
         if check is not None:
-            pulumi.set(__self__, "check", check)
+            _setter("check", check)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if proxy_port is not None:
-            pulumi.set(__self__, "proxy_port", proxy_port)
+            _setter("proxy_port", proxy_port)
 
     @property
     @pulumi.getter(name="proxyAddress")
@@ -105,16 +122,33 @@ class _HealthCheckState:
         :param pulumi.Input[str] name: The name of the health check.
         :param pulumi.Input[str] resource_id: The ID of the resource to check.
         """
+        _HealthCheckState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            check=check,
+            name=name,
+            proxy_address=proxy_address,
+            proxy_port=proxy_port,
+            resource_id=resource_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             check: Optional[pulumi.Input['HealthCheckCheckArgs']] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             proxy_address: Optional[pulumi.Input[str]] = None,
+             proxy_port: Optional[pulumi.Input[int]] = None,
+             resource_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if check is not None:
-            pulumi.set(__self__, "check", check)
+            _setter("check", check)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if proxy_address is not None:
-            pulumi.set(__self__, "proxy_address", proxy_address)
+            _setter("proxy_address", proxy_address)
         if proxy_port is not None:
-            pulumi.set(__self__, "proxy_port", proxy_port)
+            _setter("proxy_port", proxy_port)
         if resource_id is not None:
-            pulumi.set(__self__, "resource_id", resource_id)
+            _setter("resource_id", resource_id)
 
     @property
     @pulumi.getter
@@ -252,6 +286,10 @@ class HealthCheck(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            HealthCheckArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -271,6 +309,11 @@ class HealthCheck(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = HealthCheckArgs.__new__(HealthCheckArgs)
 
+            if check is not None and not isinstance(check, HealthCheckCheckArgs):
+                check = check or {}
+                def _setter(key, value):
+                    check[key] = value
+                HealthCheckCheckArgs._configure(_setter, **check)
             __props__.__dict__["check"] = check
             __props__.__dict__["name"] = name
             if proxy_address is None and not opts.urn:

@@ -16,14 +16,14 @@ public final class ElastigroupScalingDownPolicyStepAdjustmentActionArgs extends 
     public static final ElastigroupScalingDownPolicyStepAdjustmentActionArgs Empty = new ElastigroupScalingDownPolicyStepAdjustmentActionArgs();
 
     /**
-     * The number of instances to add or remove.
+     * The number of instances to add/remove to/from the target capacity when scale is needed. Can be used as advanced expression for scaling of instances to add/remove to/from the target capacity when scale is needed. You can see more information here: Advanced expression. Example value: `&#34;MAX(currCapacity / 5, value * 10)&#34;`
      * 
      */
     @Import(name="adjustment")
     private @Nullable Output<String> adjustment;
 
     /**
-     * @return The number of instances to add or remove.
+     * @return The number of instances to add/remove to/from the target capacity when scale is needed. Can be used as advanced expression for scaling of instances to add/remove to/from the target capacity when scale is needed. You can see more information here: Advanced expression. Example value: `&#34;MAX(currCapacity / 5, value * 10)&#34;`
      * 
      */
     public Optional<Output<String>> adjustment() {
@@ -31,14 +31,14 @@ public final class ElastigroupScalingDownPolicyStepAdjustmentActionArgs extends 
     }
 
     /**
-     * The desired target capacity of a group. Required if using `&#34;setMaxTarget&#34;` as action type
+     * . The number of the desired target (and maximum) capacity
      * 
      */
     @Import(name="maxTargetCapacity")
     private @Nullable Output<String> maxTargetCapacity;
 
     /**
-     * @return The desired target capacity of a group. Required if using `&#34;setMaxTarget&#34;` as action type
+     * @return . The number of the desired target (and maximum) capacity
      * 
      */
     public Optional<Output<String>> maxTargetCapacity() {
@@ -46,14 +46,14 @@ public final class ElastigroupScalingDownPolicyStepAdjustmentActionArgs extends 
     }
 
     /**
-     * The upper limit number of instances that you can scale up to. Required if using `&#34;updateCapacity&#34;` as action type and neither `&#34;target&#34;` nor `&#34;minimum&#34;` are not defined.
+     * The maximal number of instances to have in the group.
      * 
      */
     @Import(name="maximum")
     private @Nullable Output<String> maximum;
 
     /**
-     * @return The upper limit number of instances that you can scale up to. Required if using `&#34;updateCapacity&#34;` as action type and neither `&#34;target&#34;` nor `&#34;minimum&#34;` are not defined.
+     * @return The maximal number of instances to have in the group.
      * 
      */
     public Optional<Output<String>> maximum() {
@@ -61,14 +61,14 @@ public final class ElastigroupScalingDownPolicyStepAdjustmentActionArgs extends 
     }
 
     /**
-     * The desired target capacity of a group. Required if using `&#34;setMinTarget&#34;` as action type
+     * . The number of the desired target (and minimum) capacity
      * 
      */
     @Import(name="minTargetCapacity")
     private @Nullable Output<String> minTargetCapacity;
 
     /**
-     * @return The desired target capacity of a group. Required if using `&#34;setMinTarget&#34;` as action type
+     * @return . The number of the desired target (and minimum) capacity
      * 
      */
     public Optional<Output<String>> minTargetCapacity() {
@@ -76,14 +76,14 @@ public final class ElastigroupScalingDownPolicyStepAdjustmentActionArgs extends 
     }
 
     /**
-     * The lower limit number of instances that you can scale down to. Required if using `&#34;updateCapacity&#34;` as action type and neither `&#34;target&#34;` nor `&#34;maximum&#34;` are not defined.
+     * The minimal number of instances to have in the group.
      * 
      */
     @Import(name="minimum")
     private @Nullable Output<String> minimum;
 
     /**
-     * @return The lower limit number of instances that you can scale down to. Required if using `&#34;updateCapacity&#34;` as action type and neither `&#34;target&#34;` nor `&#34;maximum&#34;` are not defined.
+     * @return The minimal number of instances to have in the group.
      * 
      */
     public Optional<Output<String>> minimum() {
@@ -91,14 +91,14 @@ public final class ElastigroupScalingDownPolicyStepAdjustmentActionArgs extends 
     }
 
     /**
-     * The desired number of instances. Required if using `&#34;updateCapacity&#34;` as action type and neither `&#34;minimum&#34;` nor `&#34;maximum&#34;` are not defined.
+     * The target number of instances to have in the group.
      * 
      */
     @Import(name="target")
     private @Nullable Output<String> target;
 
     /**
-     * @return The desired number of instances. Required if using `&#34;updateCapacity&#34;` as action type and neither `&#34;minimum&#34;` nor `&#34;maximum&#34;` are not defined.
+     * @return The target number of instances to have in the group.
      * 
      */
     public Optional<Output<String>> target() {
@@ -106,62 +106,14 @@ public final class ElastigroupScalingDownPolicyStepAdjustmentActionArgs extends 
     }
 
     /**
-     * The type of the action to take when scale up is needed. Valid types: `&#34;adjustment&#34;`, `&#34;updateCapacity&#34;`, `&#34;setMinTarget&#34;`, `&#34;percentageAdjustment&#34;`.
-     * 
-     * Usage:
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *     }
-     * }
-     * ```
+     * The type of the action to take when scale up is needed. Valid types: `&#34;adjustment&#34;`, `&#34;updateCapacity&#34;`, `&#34;setMaxTarget&#34;`, `&#34;percentageAdjustment&#34;`.
      * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
-     * @return The type of the action to take when scale up is needed. Valid types: `&#34;adjustment&#34;`, `&#34;updateCapacity&#34;`, `&#34;setMinTarget&#34;`, `&#34;percentageAdjustment&#34;`.
-     * 
-     * Usage:
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *     }
-     * }
-     * ```
+     * @return The type of the action to take when scale up is needed. Valid types: `&#34;adjustment&#34;`, `&#34;updateCapacity&#34;`, `&#34;setMaxTarget&#34;`, `&#34;percentageAdjustment&#34;`.
      * 
      */
     public Output<String> type() {
@@ -199,7 +151,7 @@ public final class ElastigroupScalingDownPolicyStepAdjustmentActionArgs extends 
         }
 
         /**
-         * @param adjustment The number of instances to add or remove.
+         * @param adjustment The number of instances to add/remove to/from the target capacity when scale is needed. Can be used as advanced expression for scaling of instances to add/remove to/from the target capacity when scale is needed. You can see more information here: Advanced expression. Example value: `&#34;MAX(currCapacity / 5, value * 10)&#34;`
          * 
          * @return builder
          * 
@@ -210,7 +162,7 @@ public final class ElastigroupScalingDownPolicyStepAdjustmentActionArgs extends 
         }
 
         /**
-         * @param adjustment The number of instances to add or remove.
+         * @param adjustment The number of instances to add/remove to/from the target capacity when scale is needed. Can be used as advanced expression for scaling of instances to add/remove to/from the target capacity when scale is needed. You can see more information here: Advanced expression. Example value: `&#34;MAX(currCapacity / 5, value * 10)&#34;`
          * 
          * @return builder
          * 
@@ -220,7 +172,7 @@ public final class ElastigroupScalingDownPolicyStepAdjustmentActionArgs extends 
         }
 
         /**
-         * @param maxTargetCapacity The desired target capacity of a group. Required if using `&#34;setMaxTarget&#34;` as action type
+         * @param maxTargetCapacity . The number of the desired target (and maximum) capacity
          * 
          * @return builder
          * 
@@ -231,7 +183,7 @@ public final class ElastigroupScalingDownPolicyStepAdjustmentActionArgs extends 
         }
 
         /**
-         * @param maxTargetCapacity The desired target capacity of a group. Required if using `&#34;setMaxTarget&#34;` as action type
+         * @param maxTargetCapacity . The number of the desired target (and maximum) capacity
          * 
          * @return builder
          * 
@@ -241,7 +193,7 @@ public final class ElastigroupScalingDownPolicyStepAdjustmentActionArgs extends 
         }
 
         /**
-         * @param maximum The upper limit number of instances that you can scale up to. Required if using `&#34;updateCapacity&#34;` as action type and neither `&#34;target&#34;` nor `&#34;minimum&#34;` are not defined.
+         * @param maximum The maximal number of instances to have in the group.
          * 
          * @return builder
          * 
@@ -252,7 +204,7 @@ public final class ElastigroupScalingDownPolicyStepAdjustmentActionArgs extends 
         }
 
         /**
-         * @param maximum The upper limit number of instances that you can scale up to. Required if using `&#34;updateCapacity&#34;` as action type and neither `&#34;target&#34;` nor `&#34;minimum&#34;` are not defined.
+         * @param maximum The maximal number of instances to have in the group.
          * 
          * @return builder
          * 
@@ -262,7 +214,7 @@ public final class ElastigroupScalingDownPolicyStepAdjustmentActionArgs extends 
         }
 
         /**
-         * @param minTargetCapacity The desired target capacity of a group. Required if using `&#34;setMinTarget&#34;` as action type
+         * @param minTargetCapacity . The number of the desired target (and minimum) capacity
          * 
          * @return builder
          * 
@@ -273,7 +225,7 @@ public final class ElastigroupScalingDownPolicyStepAdjustmentActionArgs extends 
         }
 
         /**
-         * @param minTargetCapacity The desired target capacity of a group. Required if using `&#34;setMinTarget&#34;` as action type
+         * @param minTargetCapacity . The number of the desired target (and minimum) capacity
          * 
          * @return builder
          * 
@@ -283,7 +235,7 @@ public final class ElastigroupScalingDownPolicyStepAdjustmentActionArgs extends 
         }
 
         /**
-         * @param minimum The lower limit number of instances that you can scale down to. Required if using `&#34;updateCapacity&#34;` as action type and neither `&#34;target&#34;` nor `&#34;maximum&#34;` are not defined.
+         * @param minimum The minimal number of instances to have in the group.
          * 
          * @return builder
          * 
@@ -294,7 +246,7 @@ public final class ElastigroupScalingDownPolicyStepAdjustmentActionArgs extends 
         }
 
         /**
-         * @param minimum The lower limit number of instances that you can scale down to. Required if using `&#34;updateCapacity&#34;` as action type and neither `&#34;target&#34;` nor `&#34;maximum&#34;` are not defined.
+         * @param minimum The minimal number of instances to have in the group.
          * 
          * @return builder
          * 
@@ -304,7 +256,7 @@ public final class ElastigroupScalingDownPolicyStepAdjustmentActionArgs extends 
         }
 
         /**
-         * @param target The desired number of instances. Required if using `&#34;updateCapacity&#34;` as action type and neither `&#34;minimum&#34;` nor `&#34;maximum&#34;` are not defined.
+         * @param target The target number of instances to have in the group.
          * 
          * @return builder
          * 
@@ -315,7 +267,7 @@ public final class ElastigroupScalingDownPolicyStepAdjustmentActionArgs extends 
         }
 
         /**
-         * @param target The desired number of instances. Required if using `&#34;updateCapacity&#34;` as action type and neither `&#34;minimum&#34;` nor `&#34;maximum&#34;` are not defined.
+         * @param target The target number of instances to have in the group.
          * 
          * @return builder
          * 
@@ -325,31 +277,7 @@ public final class ElastigroupScalingDownPolicyStepAdjustmentActionArgs extends 
         }
 
         /**
-         * @param type The type of the action to take when scale up is needed. Valid types: `&#34;adjustment&#34;`, `&#34;updateCapacity&#34;`, `&#34;setMinTarget&#34;`, `&#34;percentageAdjustment&#34;`.
-         * 
-         * Usage:
-         * ```java
-         * package generated_program;
-         * 
-         * import com.pulumi.Context;
-         * import com.pulumi.Pulumi;
-         * import com.pulumi.core.Output;
-         * import java.util.List;
-         * import java.util.ArrayList;
-         * import java.util.Map;
-         * import java.io.File;
-         * import java.nio.file.Files;
-         * import java.nio.file.Paths;
-         * 
-         * public class App {
-         *     public static void main(String[] args) {
-         *         Pulumi.run(App::stack);
-         *     }
-         * 
-         *     public static void stack(Context ctx) {
-         *     }
-         * }
-         * ```
+         * @param type The type of the action to take when scale up is needed. Valid types: `&#34;adjustment&#34;`, `&#34;updateCapacity&#34;`, `&#34;setMaxTarget&#34;`, `&#34;percentageAdjustment&#34;`.
          * 
          * @return builder
          * 
@@ -360,31 +288,7 @@ public final class ElastigroupScalingDownPolicyStepAdjustmentActionArgs extends 
         }
 
         /**
-         * @param type The type of the action to take when scale up is needed. Valid types: `&#34;adjustment&#34;`, `&#34;updateCapacity&#34;`, `&#34;setMinTarget&#34;`, `&#34;percentageAdjustment&#34;`.
-         * 
-         * Usage:
-         * ```java
-         * package generated_program;
-         * 
-         * import com.pulumi.Context;
-         * import com.pulumi.Pulumi;
-         * import com.pulumi.core.Output;
-         * import java.util.List;
-         * import java.util.ArrayList;
-         * import java.util.Map;
-         * import java.io.File;
-         * import java.nio.file.Files;
-         * import java.nio.file.Paths;
-         * 
-         * public class App {
-         *     public static void main(String[] args) {
-         *         Pulumi.run(App::stack);
-         *     }
-         * 
-         *     public static void stack(Context ctx) {
-         *     }
-         * }
-         * ```
+         * @param type The type of the action to take when scale up is needed. Valid types: `&#34;adjustment&#34;`, `&#34;updateCapacity&#34;`, `&#34;setMaxTarget&#34;`, `&#34;percentageAdjustment&#34;`.
          * 
          * @return builder
          * 

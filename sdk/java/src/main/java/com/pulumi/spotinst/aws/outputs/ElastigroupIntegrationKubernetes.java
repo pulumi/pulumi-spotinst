@@ -18,7 +18,9 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ElastigroupIntegrationKubernetes {
     /**
-     * @return Usage:
+     * @return The public IP of the DC/OS Master.
+     * 
+     * Usage:
      * ```java
      * package generated_program;
      * 
@@ -50,17 +52,17 @@ public final class ElastigroupIntegrationKubernetes {
      */
     private @Nullable Integer autoscaleCooldown;
     /**
-     * @return Enabling scale down.
+     * @return Settings for scale down actions.
      * 
      */
     private @Nullable ElastigroupIntegrationKubernetesAutoscaleDown autoscaleDown;
     /**
-     * @return Headroom for the cluster.
+     * @return An option to set compute reserve for the cluster.
      * 
      */
     private @Nullable ElastigroupIntegrationKubernetesAutoscaleHeadroom autoscaleHeadroom;
     /**
-     * @return Enabling the automatic auto-scaler functionality. For more information please see: [ECS auto scaler](https://api.spotinst.com/container-management/amazon-ecs/elastigroup-for-ecs-concepts/autoscaling/).
+     * @return Enabling the automatic k8s auto-scaler functionality. For more information please see: [Kubernetes auto scaler](https://api.spotinst.com/integration-docs/elastigroup/container-management/kubernetes/autoscaler/).
      * 
      */
     private @Nullable Boolean autoscaleIsAutoConfig;
@@ -112,7 +114,9 @@ public final class ElastigroupIntegrationKubernetes {
 
     private ElastigroupIntegrationKubernetes() {}
     /**
-     * @return Usage:
+     * @return The public IP of the DC/OS Master.
+     * 
+     * Usage:
      * ```java
      * package generated_program;
      * 
@@ -148,21 +152,21 @@ public final class ElastigroupIntegrationKubernetes {
         return Optional.ofNullable(this.autoscaleCooldown);
     }
     /**
-     * @return Enabling scale down.
+     * @return Settings for scale down actions.
      * 
      */
     public Optional<ElastigroupIntegrationKubernetesAutoscaleDown> autoscaleDown() {
         return Optional.ofNullable(this.autoscaleDown);
     }
     /**
-     * @return Headroom for the cluster.
+     * @return An option to set compute reserve for the cluster.
      * 
      */
     public Optional<ElastigroupIntegrationKubernetesAutoscaleHeadroom> autoscaleHeadroom() {
         return Optional.ofNullable(this.autoscaleHeadroom);
     }
     /**
-     * @return Enabling the automatic auto-scaler functionality. For more information please see: [ECS auto scaler](https://api.spotinst.com/container-management/amazon-ecs/elastigroup-for-ecs-concepts/autoscaling/).
+     * @return Enabling the automatic k8s auto-scaler functionality. For more information please see: [Kubernetes auto scaler](https://api.spotinst.com/integration-docs/elastigroup/container-management/kubernetes/autoscaler/).
      * 
      */
     public Optional<Boolean> autoscaleIsAutoConfig() {

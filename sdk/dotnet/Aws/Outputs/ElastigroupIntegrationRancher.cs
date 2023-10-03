@@ -18,7 +18,7 @@ namespace Pulumi.SpotInst.Aws.Outputs
         /// </summary>
         public readonly string AccessKey;
         /// <summary>
-        /// The URL of the Rancher Master host.
+        /// The URL for the Nomad master host.
         /// </summary>
         public readonly string MasterHost;
         /// <summary>

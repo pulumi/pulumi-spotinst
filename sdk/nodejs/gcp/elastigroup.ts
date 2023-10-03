@@ -140,6 +140,9 @@ export class Elastigroup extends pulumi.CustomResource {
      * @deprecated This field will soon be handled by Region in Subnets
      */
     public readonly availabilityZones!: pulumi.Output<string[] | undefined>;
+    /**
+     * Describes the backend service configurations.
+     */
     public readonly backendServices!: pulumi.Output<outputs.gcp.ElastigroupBackendService[] | undefined>;
     /**
      * The region your GCP group will be created in.
@@ -158,6 +161,9 @@ export class Elastigroup extends pulumi.CustomResource {
      * Activate fallback-to-on-demand. When provisioning an instance, if no Preemptible market is available, fallback-to-on-demand will provision an On-Demand instance to maintain the group capacity.
      */
     public readonly fallbackToOndemand!: pulumi.Output<boolean | undefined>;
+    /**
+     * Defines the GPU configuration.
+     */
     public readonly gpu!: pulumi.Output<outputs.gcp.ElastigroupGpu[] | undefined>;
     /**
      * Period of time (seconds) to wait for VM to reach healthiness before monitoring for unhealthiness.
@@ -374,6 +380,9 @@ export interface ElastigroupState {
      * @deprecated This field will soon be handled by Region in Subnets
      */
     availabilityZones?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Describes the backend service configurations.
+     */
     backendServices?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupBackendService>[]>;
     /**
      * The region your GCP group will be created in.
@@ -392,6 +401,9 @@ export interface ElastigroupState {
      * Activate fallback-to-on-demand. When provisioning an instance, if no Preemptible market is available, fallback-to-on-demand will provision an On-Demand instance to maintain the group capacity.
      */
     fallbackToOndemand?: pulumi.Input<boolean>;
+    /**
+     * Defines the GPU configuration.
+     */
     gpu?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupGpu>[]>;
     /**
      * Period of time (seconds) to wait for VM to reach healthiness before monitoring for unhealthiness.
@@ -513,6 +525,9 @@ export interface ElastigroupArgs {
      * @deprecated This field will soon be handled by Region in Subnets
      */
     availabilityZones?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Describes the backend service configurations.
+     */
     backendServices?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupBackendService>[]>;
     /**
      * The region your GCP group will be created in.
@@ -531,6 +546,9 @@ export interface ElastigroupArgs {
      * Activate fallback-to-on-demand. When provisioning an instance, if no Preemptible market is available, fallback-to-on-demand will provision an On-Demand instance to maintain the group capacity.
      */
     fallbackToOndemand?: pulumi.Input<boolean>;
+    /**
+     * Defines the GPU configuration.
+     */
     gpu?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupGpu>[]>;
     /**
      * Period of time (seconds) to wait for VM to reach healthiness before monitoring for unhealthiness.

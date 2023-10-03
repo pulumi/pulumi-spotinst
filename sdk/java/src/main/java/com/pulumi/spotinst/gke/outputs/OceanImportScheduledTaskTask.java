@@ -20,8 +20,7 @@ public final class OceanImportScheduledTaskTask {
      */
     private String cronExpression;
     /**
-     * @return Flag to enable / disable the shutdown hours.
-     * Example: True
+     * @return Enable the Ocean Kubernetes Autoscaler.
      * 
      */
     private Boolean isEnabled;
@@ -42,8 +41,7 @@ public final class OceanImportScheduledTaskTask {
         return this.cronExpression;
     }
     /**
-     * @return Flag to enable / disable the shutdown hours.
-     * Example: True
+     * @return Enable the Ocean Kubernetes Autoscaler.
      * 
      */
     public Boolean isEnabled() {

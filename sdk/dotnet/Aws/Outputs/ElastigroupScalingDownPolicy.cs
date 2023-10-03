@@ -50,7 +50,7 @@ namespace Pulumi.SpotInst.Aws.Outputs
         /// </summary>
         public readonly string MetricName;
         /// <summary>
-        /// The desired target capacity of a group. Required if using `"setMinTarget"` as action type
+        /// . The number of the desired target (and minimum) capacity
         /// </summary>
         public readonly string? MinTargetCapacity;
         /// <summary>

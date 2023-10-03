@@ -14,6 +14,8 @@ public final class ElastigroupIntegrationMesosphereArgs extends com.pulumi.resou
     public static final ElastigroupIntegrationMesosphereArgs Empty = new ElastigroupIntegrationMesosphereArgs();
 
     /**
+     * The public IP of the DC/OS Master.
+     * 
      * Usage:
      * ```java
      * package generated_program;
@@ -43,7 +45,9 @@ public final class ElastigroupIntegrationMesosphereArgs extends com.pulumi.resou
     private Output<String> apiServer;
 
     /**
-     * @return Usage:
+     * @return The public IP of the DC/OS Master.
+     * 
+     * Usage:
      * ```java
      * package generated_program;
      * 
@@ -97,7 +101,9 @@ public final class ElastigroupIntegrationMesosphereArgs extends com.pulumi.resou
         }
 
         /**
-         * @param apiServer Usage:
+         * @param apiServer The public IP of the DC/OS Master.
+         * 
+         * Usage:
          * ```java
          * package generated_program;
          * 
@@ -130,7 +136,9 @@ public final class ElastigroupIntegrationMesosphereArgs extends com.pulumi.resou
         }
 
         /**
-         * @param apiServer Usage:
+         * @param apiServer The public IP of the DC/OS Master.
+         * 
+         * Usage:
          * ```java
          * package generated_program;
          * 

@@ -16,62 +16,14 @@ public final class ElastigroupIntegrationGitlabRunnerArgs extends com.pulumi.res
     public static final ElastigroupIntegrationGitlabRunnerArgs Empty = new ElastigroupIntegrationGitlabRunnerArgs();
 
     /**
-     * Setting the task to being enabled or disabled.
-     * 
-     * Usage:
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *     }
-     * }
-     * ```
+     * Specifies whether the scaling policy described in this block is enabled.
      * 
      */
     @Import(name="isEnabled")
     private @Nullable Output<Boolean> isEnabled;
 
     /**
-     * @return Setting the task to being enabled or disabled.
-     * 
-     * Usage:
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *     }
-     * }
-     * ```
+     * @return Specifies whether the scaling policy described in this block is enabled.
      * 
      */
     public Optional<Output<Boolean>> isEnabled() {
@@ -103,31 +55,7 @@ public final class ElastigroupIntegrationGitlabRunnerArgs extends com.pulumi.res
         }
 
         /**
-         * @param isEnabled Setting the task to being enabled or disabled.
-         * 
-         * Usage:
-         * ```java
-         * package generated_program;
-         * 
-         * import com.pulumi.Context;
-         * import com.pulumi.Pulumi;
-         * import com.pulumi.core.Output;
-         * import java.util.List;
-         * import java.util.ArrayList;
-         * import java.util.Map;
-         * import java.io.File;
-         * import java.nio.file.Files;
-         * import java.nio.file.Paths;
-         * 
-         * public class App {
-         *     public static void main(String[] args) {
-         *         Pulumi.run(App::stack);
-         *     }
-         * 
-         *     public static void stack(Context ctx) {
-         *     }
-         * }
-         * ```
+         * @param isEnabled Specifies whether the scaling policy described in this block is enabled.
          * 
          * @return builder
          * 
@@ -138,31 +66,7 @@ public final class ElastigroupIntegrationGitlabRunnerArgs extends com.pulumi.res
         }
 
         /**
-         * @param isEnabled Setting the task to being enabled or disabled.
-         * 
-         * Usage:
-         * ```java
-         * package generated_program;
-         * 
-         * import com.pulumi.Context;
-         * import com.pulumi.Pulumi;
-         * import com.pulumi.core.Output;
-         * import java.util.List;
-         * import java.util.ArrayList;
-         * import java.util.Map;
-         * import java.io.File;
-         * import java.nio.file.Files;
-         * import java.nio.file.Paths;
-         * 
-         * public class App {
-         *     public static void main(String[] args) {
-         *         Pulumi.run(App::stack);
-         *     }
-         * 
-         *     public static void stack(Context ctx) {
-         *     }
-         * }
-         * ```
+         * @param isEnabled Specifies whether the scaling policy described in this block is enabled.
          * 
          * @return builder
          * 

@@ -14,43 +14,31 @@ namespace Pulumi.SpotInst.Aws.Outputs
     public sealed class ElastigroupScalingDownPolicyStepAdjustmentAction
     {
         /// <summary>
-        /// The number of instances to add or remove.
+        /// The number of instances to add/remove to/from the target capacity when scale is needed. Can be used as advanced expression for scaling of instances to add/remove to/from the target capacity when scale is needed. You can see more information here: Advanced expression. Example value: `"MAX(currCapacity / 5, value * 10)"`
         /// </summary>
         public readonly string? Adjustment;
         /// <summary>
-        /// The desired target capacity of a group. Required if using `"setMaxTarget"` as action type
+        /// . The number of the desired target (and maximum) capacity
         /// </summary>
         public readonly string? MaxTargetCapacity;
         /// <summary>
-        /// The upper limit number of instances that you can scale up to. Required if using `"updateCapacity"` as action type and neither `"target"` nor `"minimum"` are not defined.
+        /// The maximal number of instances to have in the group.
         /// </summary>
         public readonly string? Maximum;
         /// <summary>
-        /// The desired target capacity of a group. Required if using `"setMinTarget"` as action type
+        /// . The number of the desired target (and minimum) capacity
         /// </summary>
         public readonly string? MinTargetCapacity;
         /// <summary>
-        /// The lower limit number of instances that you can scale down to. Required if using `"updateCapacity"` as action type and neither `"target"` nor `"maximum"` are not defined.
+        /// The minimal number of instances to have in the group.
         /// </summary>
         public readonly string? Minimum;
         /// <summary>
-        /// The desired number of instances. Required if using `"updateCapacity"` as action type and neither `"minimum"` nor `"maximum"` are not defined.
+        /// The target number of instances to have in the group.
         /// </summary>
         public readonly string? Target;
         /// <summary>
-        /// The type of the action to take when scale up is needed. Valid types: `"adjustment"`, `"updateCapacity"`, `"setMinTarget"`, `"percentageAdjustment"`.
-        /// 
-        /// Usage:
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        /// });
-        /// ```
+        /// The type of the action to take when scale up is needed. Valid types: `"adjustment"`, `"updateCapacity"`, `"setMaxTarget"`, `"percentageAdjustment"`.
         /// </summary>
         public readonly string Type;
 

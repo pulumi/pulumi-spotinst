@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -38,43 +38,88 @@ class OceanNpVirtualNodeGroupArgs:
         """
         The set of arguments for constructing a OceanNpVirtualNodeGroup resource.
         """
-        pulumi.set(__self__, "ocean_id", ocean_id)
+        OceanNpVirtualNodeGroupArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ocean_id=ocean_id,
+            availability_zones=availability_zones,
+            enable_node_public_ip=enable_node_public_ip,
+            fallback_to_ondemand=fallback_to_ondemand,
+            filters=filters,
+            headrooms=headrooms,
+            kubernetes_version=kubernetes_version,
+            labels=labels,
+            max_count=max_count,
+            max_pods_per_node=max_pods_per_node,
+            min_count=min_count,
+            name=name,
+            os_disk_size_gb=os_disk_size_gb,
+            os_disk_type=os_disk_type,
+            os_sku=os_sku,
+            os_type=os_type,
+            spot_percentage=spot_percentage,
+            tags=tags,
+            taints=taints,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ocean_id: pulumi.Input[str],
+             availability_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             enable_node_public_ip: Optional[pulumi.Input[bool]] = None,
+             fallback_to_ondemand: Optional[pulumi.Input[bool]] = None,
+             filters: Optional[pulumi.Input['OceanNpVirtualNodeGroupFiltersArgs']] = None,
+             headrooms: Optional[pulumi.Input[Sequence[pulumi.Input['OceanNpVirtualNodeGroupHeadroomArgs']]]] = None,
+             kubernetes_version: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             max_count: Optional[pulumi.Input[int]] = None,
+             max_pods_per_node: Optional[pulumi.Input[int]] = None,
+             min_count: Optional[pulumi.Input[int]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             os_disk_size_gb: Optional[pulumi.Input[int]] = None,
+             os_disk_type: Optional[pulumi.Input[str]] = None,
+             os_sku: Optional[pulumi.Input[str]] = None,
+             os_type: Optional[pulumi.Input[str]] = None,
+             spot_percentage: Optional[pulumi.Input[int]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             taints: Optional[pulumi.Input[Sequence[pulumi.Input['OceanNpVirtualNodeGroupTaintArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("ocean_id", ocean_id)
         if availability_zones is not None:
-            pulumi.set(__self__, "availability_zones", availability_zones)
+            _setter("availability_zones", availability_zones)
         if enable_node_public_ip is not None:
-            pulumi.set(__self__, "enable_node_public_ip", enable_node_public_ip)
+            _setter("enable_node_public_ip", enable_node_public_ip)
         if fallback_to_ondemand is not None:
-            pulumi.set(__self__, "fallback_to_ondemand", fallback_to_ondemand)
+            _setter("fallback_to_ondemand", fallback_to_ondemand)
         if filters is not None:
-            pulumi.set(__self__, "filters", filters)
+            _setter("filters", filters)
         if headrooms is not None:
-            pulumi.set(__self__, "headrooms", headrooms)
+            _setter("headrooms", headrooms)
         if kubernetes_version is not None:
-            pulumi.set(__self__, "kubernetes_version", kubernetes_version)
+            _setter("kubernetes_version", kubernetes_version)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if max_count is not None:
-            pulumi.set(__self__, "max_count", max_count)
+            _setter("max_count", max_count)
         if max_pods_per_node is not None:
-            pulumi.set(__self__, "max_pods_per_node", max_pods_per_node)
+            _setter("max_pods_per_node", max_pods_per_node)
         if min_count is not None:
-            pulumi.set(__self__, "min_count", min_count)
+            _setter("min_count", min_count)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if os_disk_size_gb is not None:
-            pulumi.set(__self__, "os_disk_size_gb", os_disk_size_gb)
+            _setter("os_disk_size_gb", os_disk_size_gb)
         if os_disk_type is not None:
-            pulumi.set(__self__, "os_disk_type", os_disk_type)
+            _setter("os_disk_type", os_disk_type)
         if os_sku is not None:
-            pulumi.set(__self__, "os_sku", os_sku)
+            _setter("os_sku", os_sku)
         if os_type is not None:
-            pulumi.set(__self__, "os_type", os_type)
+            _setter("os_type", os_type)
         if spot_percentage is not None:
-            pulumi.set(__self__, "spot_percentage", spot_percentage)
+            _setter("spot_percentage", spot_percentage)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if taints is not None:
-            pulumi.set(__self__, "taints", taints)
+            _setter("taints", taints)
 
     @property
     @pulumi.getter(name="oceanId")
@@ -273,44 +318,89 @@ class _OceanNpVirtualNodeGroupState:
         """
         Input properties used for looking up and filtering OceanNpVirtualNodeGroup resources.
         """
+        _OceanNpVirtualNodeGroupState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            availability_zones=availability_zones,
+            enable_node_public_ip=enable_node_public_ip,
+            fallback_to_ondemand=fallback_to_ondemand,
+            filters=filters,
+            headrooms=headrooms,
+            kubernetes_version=kubernetes_version,
+            labels=labels,
+            max_count=max_count,
+            max_pods_per_node=max_pods_per_node,
+            min_count=min_count,
+            name=name,
+            ocean_id=ocean_id,
+            os_disk_size_gb=os_disk_size_gb,
+            os_disk_type=os_disk_type,
+            os_sku=os_sku,
+            os_type=os_type,
+            spot_percentage=spot_percentage,
+            tags=tags,
+            taints=taints,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             availability_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             enable_node_public_ip: Optional[pulumi.Input[bool]] = None,
+             fallback_to_ondemand: Optional[pulumi.Input[bool]] = None,
+             filters: Optional[pulumi.Input['OceanNpVirtualNodeGroupFiltersArgs']] = None,
+             headrooms: Optional[pulumi.Input[Sequence[pulumi.Input['OceanNpVirtualNodeGroupHeadroomArgs']]]] = None,
+             kubernetes_version: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             max_count: Optional[pulumi.Input[int]] = None,
+             max_pods_per_node: Optional[pulumi.Input[int]] = None,
+             min_count: Optional[pulumi.Input[int]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             ocean_id: Optional[pulumi.Input[str]] = None,
+             os_disk_size_gb: Optional[pulumi.Input[int]] = None,
+             os_disk_type: Optional[pulumi.Input[str]] = None,
+             os_sku: Optional[pulumi.Input[str]] = None,
+             os_type: Optional[pulumi.Input[str]] = None,
+             spot_percentage: Optional[pulumi.Input[int]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             taints: Optional[pulumi.Input[Sequence[pulumi.Input['OceanNpVirtualNodeGroupTaintArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if availability_zones is not None:
-            pulumi.set(__self__, "availability_zones", availability_zones)
+            _setter("availability_zones", availability_zones)
         if enable_node_public_ip is not None:
-            pulumi.set(__self__, "enable_node_public_ip", enable_node_public_ip)
+            _setter("enable_node_public_ip", enable_node_public_ip)
         if fallback_to_ondemand is not None:
-            pulumi.set(__self__, "fallback_to_ondemand", fallback_to_ondemand)
+            _setter("fallback_to_ondemand", fallback_to_ondemand)
         if filters is not None:
-            pulumi.set(__self__, "filters", filters)
+            _setter("filters", filters)
         if headrooms is not None:
-            pulumi.set(__self__, "headrooms", headrooms)
+            _setter("headrooms", headrooms)
         if kubernetes_version is not None:
-            pulumi.set(__self__, "kubernetes_version", kubernetes_version)
+            _setter("kubernetes_version", kubernetes_version)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if max_count is not None:
-            pulumi.set(__self__, "max_count", max_count)
+            _setter("max_count", max_count)
         if max_pods_per_node is not None:
-            pulumi.set(__self__, "max_pods_per_node", max_pods_per_node)
+            _setter("max_pods_per_node", max_pods_per_node)
         if min_count is not None:
-            pulumi.set(__self__, "min_count", min_count)
+            _setter("min_count", min_count)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if ocean_id is not None:
-            pulumi.set(__self__, "ocean_id", ocean_id)
+            _setter("ocean_id", ocean_id)
         if os_disk_size_gb is not None:
-            pulumi.set(__self__, "os_disk_size_gb", os_disk_size_gb)
+            _setter("os_disk_size_gb", os_disk_size_gb)
         if os_disk_type is not None:
-            pulumi.set(__self__, "os_disk_type", os_disk_type)
+            _setter("os_disk_type", os_disk_type)
         if os_sku is not None:
-            pulumi.set(__self__, "os_sku", os_sku)
+            _setter("os_sku", os_sku)
         if os_type is not None:
-            pulumi.set(__self__, "os_type", os_type)
+            _setter("os_type", os_type)
         if spot_percentage is not None:
-            pulumi.set(__self__, "spot_percentage", spot_percentage)
+            _setter("spot_percentage", spot_percentage)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if taints is not None:
-            pulumi.set(__self__, "taints", taints)
+            _setter("taints", taints)
 
     @property
     @pulumi.getter(name="availabilityZones")
@@ -532,6 +622,10 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            OceanNpVirtualNodeGroupArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -568,6 +662,11 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
             __props__.__dict__["availability_zones"] = availability_zones
             __props__.__dict__["enable_node_public_ip"] = enable_node_public_ip
             __props__.__dict__["fallback_to_ondemand"] = fallback_to_ondemand
+            if filters is not None and not isinstance(filters, OceanNpVirtualNodeGroupFiltersArgs):
+                filters = filters or {}
+                def _setter(key, value):
+                    filters[key] = value
+                OceanNpVirtualNodeGroupFiltersArgs._configure(_setter, **filters)
             __props__.__dict__["filters"] = filters
             __props__.__dict__["headrooms"] = headrooms
             __props__.__dict__["kubernetes_version"] = kubernetes_version

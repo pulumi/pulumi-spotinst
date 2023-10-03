@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -25,12 +25,25 @@ class DataIntegrationArgs:
         :param pulumi.Input['DataIntegrationS3Args'] s3: When vendor value is s3, the following fields are included:
         :param pulumi.Input[str] status: Determines if this data integration is on or off. Valid values: `"enabled"`, `"disabled"`
         """
+        DataIntegrationArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            s3=s3,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: Optional[pulumi.Input[str]] = None,
+             s3: Optional[pulumi.Input['DataIntegrationS3Args']] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if s3 is not None:
-            pulumi.set(__self__, "s3", s3)
+            _setter("s3", s3)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter
@@ -81,12 +94,25 @@ class _DataIntegrationState:
         :param pulumi.Input['DataIntegrationS3Args'] s3: When vendor value is s3, the following fields are included:
         :param pulumi.Input[str] status: Determines if this data integration is on or off. Valid values: `"enabled"`, `"disabled"`
         """
+        _DataIntegrationState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            s3=s3,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: Optional[pulumi.Input[str]] = None,
+             s3: Optional[pulumi.Input['DataIntegrationS3Args']] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if s3 is not None:
-            pulumi.set(__self__, "s3", s3)
+            _setter("s3", s3)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter
@@ -190,6 +216,10 @@ class DataIntegration(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            DataIntegrationArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -208,6 +238,11 @@ class DataIntegration(pulumi.CustomResource):
             __props__ = DataIntegrationArgs.__new__(DataIntegrationArgs)
 
             __props__.__dict__["name"] = name
+            if s3 is not None and not isinstance(s3, DataIntegrationS3Args):
+                s3 = s3 or {}
+                def _setter(key, value):
+                    s3[key] = value
+                DataIntegrationS3Args._configure(_setter, **s3)
             __props__.__dict__["s3"] = s3
             __props__.__dict__["status"] = status
         super(DataIntegration, __self__).__init__(

@@ -13,7 +13,13 @@ namespace Pulumi.SpotInst.Spark.Outputs
     [OutputType]
     public sealed class OceanIngressCustomEndpoint
     {
+        /// <summary>
+        /// - The address the Ocean for Apache Spark control plane will use when addressing the cluster.
+        /// </summary>
         public readonly string? Address;
+        /// <summary>
+        /// - Should the Ocean for Apache Spark control plane address the cluster using a custom endpoint. Use this to specify the DNS address of an externally provisioned (unmanaged) load balancer.
+        /// </summary>
         public readonly bool? Enabled;
 
         [OutputConstructor]

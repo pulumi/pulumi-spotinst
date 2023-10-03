@@ -118,6 +118,9 @@ export class OceanImport extends pulumi.CustomResource {
         return obj['__pulumiType'] === OceanImport.__pulumiType;
     }
 
+    /**
+     * The Ocean Kubernetes Autoscaler object.
+     */
     public readonly autoscaler!: pulumi.Output<outputs.gke.OceanImportAutoscaler>;
     /**
      * Describes the backend service configurations.
@@ -156,6 +159,9 @@ export class OceanImport extends pulumi.CustomResource {
      * The root volume disk type.
      */
     public readonly rootVolumeType!: pulumi.Output<string | undefined>;
+    /**
+     * Set scheduling object.
+     */
     public readonly scheduledTasks!: pulumi.Output<outputs.gke.OceanImportScheduledTask[] | undefined>;
     /**
      * The Ocean shielded instance configuration object.
@@ -237,6 +243,9 @@ export class OceanImport extends pulumi.CustomResource {
  * Input properties used for looking up and filtering OceanImport resources.
  */
 export interface OceanImportState {
+    /**
+     * The Ocean Kubernetes Autoscaler object.
+     */
     autoscaler?: pulumi.Input<inputs.gke.OceanImportAutoscaler>;
     /**
      * Describes the backend service configurations.
@@ -275,6 +284,9 @@ export interface OceanImportState {
      * The root volume disk type.
      */
     rootVolumeType?: pulumi.Input<string>;
+    /**
+     * Set scheduling object.
+     */
     scheduledTasks?: pulumi.Input<pulumi.Input<inputs.gke.OceanImportScheduledTask>[]>;
     /**
      * The Ocean shielded instance configuration object.
@@ -296,6 +308,9 @@ export interface OceanImportState {
  * The set of arguments for constructing a OceanImport resource.
  */
 export interface OceanImportArgs {
+    /**
+     * The Ocean Kubernetes Autoscaler object.
+     */
     autoscaler?: pulumi.Input<inputs.gke.OceanImportAutoscaler>;
     /**
      * Describes the backend service configurations.
@@ -333,6 +348,9 @@ export interface OceanImportArgs {
      * The root volume disk type.
      */
     rootVolumeType?: pulumi.Input<string>;
+    /**
+     * Set scheduling object.
+     */
     scheduledTasks?: pulumi.Input<pulumi.Input<inputs.gke.OceanImportScheduledTask>[]>;
     /**
      * The Ocean shielded instance configuration object.

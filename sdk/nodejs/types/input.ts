@@ -644,11 +644,11 @@ export namespace aws {
          */
         autoscaleCooldown?: pulumi.Input<number>;
         /**
-         * Enabling scale down.
+         * Settings for scale down actions.
          */
         autoscaleDown?: pulumi.Input<inputs.aws.ElastigroupIntegrationDockerSwarmAutoscaleDown>;
         /**
-         * Headroom for the cluster.
+         * An option to set compute reserve for the cluster.
          */
         autoscaleHeadroom?: pulumi.Input<inputs.aws.ElastigroupIntegrationDockerSwarmAutoscaleHeadroom>;
         /**
@@ -656,11 +656,11 @@ export namespace aws {
          */
         autoscaleIsEnabled?: pulumi.Input<boolean>;
         /**
-         * The URL of the Rancher Master host.
+         * The URL for the Nomad master host.
          */
         masterHost: pulumi.Input<string>;
         /**
-         * Network port used by your swarm.
+         * The network port for the master host.
          */
         masterPort: pulumi.Input<number>;
     }
@@ -672,26 +672,21 @@ export namespace aws {
         evaluationPeriods?: pulumi.Input<number>;
         /**
          * Represents the maximum percent to scale-down. Number between 1-100.
-         * Usage:
-         *
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
          */
         maxScaleDownPercentage?: pulumi.Input<number>;
     }
 
     export interface ElastigroupIntegrationDockerSwarmAutoscaleHeadroom {
         /**
-         * Cpu units for compute.
+         * How much CPU (MHz) to allocate for headroom unit.
          */
         cpuPerUnit?: pulumi.Input<number>;
         /**
-         * RAM units for compute.
+         * How much Memory allocate for headroom unit.
          */
         memoryPerUnit?: pulumi.Input<number>;
         /**
-         * Amount of units for compute.
+         * How many units of headroom to allocate.
          */
         numOfUnits?: pulumi.Input<number>;
     }
@@ -706,15 +701,15 @@ export namespace aws {
          */
         autoscaleCooldown?: pulumi.Input<number>;
         /**
-         * Enabling scale down.
+         * Settings for scale down actions.
          */
         autoscaleDown?: pulumi.Input<inputs.aws.ElastigroupIntegrationEcsAutoscaleDown>;
         /**
-         * Headroom for the cluster.
+         * An option to set compute reserve for the cluster.
          */
         autoscaleHeadroom?: pulumi.Input<inputs.aws.ElastigroupIntegrationEcsAutoscaleHeadroom>;
         /**
-         * Enabling the automatic auto-scaler functionality. For more information please see: [ECS auto scaler](https://api.spotinst.com/container-management/amazon-ecs/elastigroup-for-ecs-concepts/autoscaling/).
+         * Enabling the automatic k8s auto-scaler functionality. For more information please see: [Kubernetes auto scaler](https://api.spotinst.com/integration-docs/elastigroup/container-management/kubernetes/autoscaler/).
          */
         autoscaleIsAutoConfig?: pulumi.Input<boolean>;
         /**
@@ -739,10 +734,6 @@ export namespace aws {
         key: pulumi.Input<string>;
         /**
          * The dimension value.
-         *
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
          */
         value: pulumi.Input<string>;
     }
@@ -754,26 +745,21 @@ export namespace aws {
         evaluationPeriods?: pulumi.Input<number>;
         /**
          * Represents the maximum percent to scale-down. Number between 1-100.
-         * Usage:
-         *
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
          */
         maxScaleDownPercentage?: pulumi.Input<number>;
     }
 
     export interface ElastigroupIntegrationEcsAutoscaleHeadroom {
         /**
-         * Cpu units for compute.
+         * How much CPU (MHz) to allocate for headroom unit.
          */
         cpuPerUnit?: pulumi.Input<number>;
         /**
-         * RAM units for compute.
+         * How much Memory allocate for headroom unit.
          */
         memoryPerUnit?: pulumi.Input<number>;
         /**
-         * Amount of units for compute.
+         * How many units of headroom to allocate.
          */
         numOfUnits?: pulumi.Input<number>;
     }
@@ -800,19 +786,15 @@ export namespace aws {
 
     export interface ElastigroupIntegrationGitlabRunner {
         /**
-         * Setting the task to being enabled or disabled.
-         *
-         * Usage:
-         *
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
+         * Specifies whether the scaling policy described in this block is enabled.
          */
         isEnabled?: pulumi.Input<boolean>;
     }
 
     export interface ElastigroupIntegrationKubernetes {
         /**
+         * The public IP of the DC/OS Master.
+         *
          * Usage:
          *
          * ```typescript
@@ -825,15 +807,15 @@ export namespace aws {
          */
         autoscaleCooldown?: pulumi.Input<number>;
         /**
-         * Enabling scale down.
+         * Settings for scale down actions.
          */
         autoscaleDown?: pulumi.Input<inputs.aws.ElastigroupIntegrationKubernetesAutoscaleDown>;
         /**
-         * Headroom for the cluster.
+         * An option to set compute reserve for the cluster.
          */
         autoscaleHeadroom?: pulumi.Input<inputs.aws.ElastigroupIntegrationKubernetesAutoscaleHeadroom>;
         /**
-         * Enabling the automatic auto-scaler functionality. For more information please see: [ECS auto scaler](https://api.spotinst.com/container-management/amazon-ecs/elastigroup-for-ecs-concepts/autoscaling/).
+         * Enabling the automatic k8s auto-scaler functionality. For more information please see: [Kubernetes auto scaler](https://api.spotinst.com/integration-docs/elastigroup/container-management/kubernetes/autoscaler/).
          */
         autoscaleIsAutoConfig?: pulumi.Input<boolean>;
         /**
@@ -868,26 +850,21 @@ export namespace aws {
         evaluationPeriods?: pulumi.Input<number>;
         /**
          * Represents the maximum percent to scale-down. Number between 1-100.
-         * Usage:
-         *
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
          */
         maxScaleDownPercentage?: pulumi.Input<number>;
     }
 
     export interface ElastigroupIntegrationKubernetesAutoscaleHeadroom {
         /**
-         * Cpu units for compute.
+         * How much CPU (MHz) to allocate for headroom unit.
          */
         cpuPerUnit?: pulumi.Input<number>;
         /**
-         * RAM units for compute.
+         * How much Memory allocate for headroom unit.
          */
         memoryPerUnit?: pulumi.Input<number>;
         /**
-         * Amount of units for compute.
+         * How many units of headroom to allocate.
          */
         numOfUnits?: pulumi.Input<number>;
     }
@@ -896,16 +873,14 @@ export namespace aws {
         key: pulumi.Input<string>;
         /**
          * The dimension value.
-         *
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
          */
         value: pulumi.Input<string>;
     }
 
     export interface ElastigroupIntegrationMesosphere {
         /**
+         * The public IP of the DC/OS Master.
+         *
          * Usage:
          *
          * ```typescript
@@ -948,11 +923,11 @@ export namespace aws {
          */
         autoscaleCooldown?: pulumi.Input<number>;
         /**
-         * Enabling scale down.
+         * Settings for scale down actions.
          */
         autoscaleDown?: pulumi.Input<inputs.aws.ElastigroupIntegrationNomadAutoscaleDown>;
         /**
-         * Headroom for the cluster.
+         * An option to set compute reserve for the cluster.
          */
         autoscaleHeadroom?: pulumi.Input<inputs.aws.ElastigroupIntegrationNomadAutoscaleHeadroom>;
         /**
@@ -960,11 +935,11 @@ export namespace aws {
          */
         autoscaleIsEnabled?: pulumi.Input<boolean>;
         /**
-         * The URL of the Rancher Master host.
+         * The URL for the Nomad master host.
          */
         masterHost: pulumi.Input<string>;
         /**
-         * Network port used by your swarm.
+         * The network port for the master host.
          */
         masterPort: pulumi.Input<number>;
     }
@@ -973,10 +948,6 @@ export namespace aws {
         key: pulumi.Input<string>;
         /**
          * The dimension value.
-         *
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
          */
         value: pulumi.Input<string>;
     }
@@ -990,15 +961,15 @@ export namespace aws {
 
     export interface ElastigroupIntegrationNomadAutoscaleHeadroom {
         /**
-         * Cpu units for compute.
+         * How much CPU (MHz) to allocate for headroom unit.
          */
         cpuPerUnit?: pulumi.Input<number>;
         /**
-         * RAM units for compute.
+         * How much Memory allocate for headroom unit.
          */
         memoryPerUnit?: pulumi.Input<number>;
         /**
-         * Amount of units for compute.
+         * How many units of headroom to allocate.
          */
         numOfUnits?: pulumi.Input<number>;
     }
@@ -1009,7 +980,7 @@ export namespace aws {
          */
         accessKey: pulumi.Input<string>;
         /**
-         * The URL of the Rancher Master host.
+         * The URL for the Nomad master host.
          */
         masterHost: pulumi.Input<string>;
         /**
@@ -1224,10 +1195,6 @@ export namespace aws {
         name: pulumi.Input<string>;
         /**
          * The dimension value.
-         *
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
          */
         value?: pulumi.Input<string>;
     }
@@ -1248,7 +1215,7 @@ export namespace aws {
          */
         associatePublicIpAddress?: pulumi.Input<boolean>;
         /**
-         * If set to true, the interface is deleted when the instance is terminated.
+         * Whether the volume should be destroyed on instance termination.
          */
         deleteOnTermination?: pulumi.Input<boolean>;
         /**
@@ -1380,7 +1347,7 @@ export namespace aws {
          */
         metricName: pulumi.Input<string>;
         /**
-         * The desired target capacity of a group. Required if using `"setMinTarget"` as action type
+         * . The number of the desired target (and minimum) capacity
          */
         minTargetCapacity?: pulumi.Input<string>;
         /**
@@ -1440,10 +1407,6 @@ export namespace aws {
         name: pulumi.Input<string>;
         /**
          * The dimension value.
-         *
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
          */
         value?: pulumi.Input<string>;
     }
@@ -1454,16 +1417,7 @@ export namespace aws {
          */
         action: pulumi.Input<inputs.aws.ElastigroupScalingDownPolicyStepAdjustmentAction>;
         /**
-         * The value against which the specified statistic is compared. If a `stepAdjustment` object is defined, then it cannot be specified.
-         *
-         *
-         * If you do not specify an action type, you can only use – `adjustment`, `minTargetCapacity`, `maxTargetCapacity`.
-         * While using action_type, please also set the following:
-         *
-         * When using `adjustment`           – set the field `adjustment`
-         * When using `setMinTarget`         – set the field `minTargetCapacity`
-         * When using `updateCapacity`       – set the fields `minimum`, `maximum`, and `target`
-         *
+         * The value against which the specified statistic is compared in order to determine if a step should be applied.
          *
          *
          * If you do not specify an action type, you can only use – `adjustment`, `minTargetCapacity`, `maxTargetCapacity`.
@@ -1477,37 +1431,31 @@ export namespace aws {
 
     export interface ElastigroupScalingDownPolicyStepAdjustmentAction {
         /**
-         * The number of instances to add or remove.
+         * The number of instances to add/remove to/from the target capacity when scale is needed. Can be used as advanced expression for scaling of instances to add/remove to/from the target capacity when scale is needed. You can see more information here: Advanced expression. Example value: `"MAX(currCapacity / 5, value * 10)"`
          */
         adjustment?: pulumi.Input<string>;
         /**
-         * The desired target capacity of a group. Required if using `"setMaxTarget"` as action type
+         * . The number of the desired target (and maximum) capacity
          */
         maxTargetCapacity?: pulumi.Input<string>;
         /**
-         * The upper limit number of instances that you can scale up to. Required if using `"updateCapacity"` as action type and neither `"target"` nor `"minimum"` are not defined.
+         * The maximal number of instances to have in the group.
          */
         maximum?: pulumi.Input<string>;
         /**
-         * The desired target capacity of a group. Required if using `"setMinTarget"` as action type
+         * . The number of the desired target (and minimum) capacity
          */
         minTargetCapacity?: pulumi.Input<string>;
         /**
-         * The lower limit number of instances that you can scale down to. Required if using `"updateCapacity"` as action type and neither `"target"` nor `"maximum"` are not defined.
+         * The minimal number of instances to have in the group.
          */
         minimum?: pulumi.Input<string>;
         /**
-         * The desired number of instances. Required if using `"updateCapacity"` as action type and neither `"minimum"` nor `"maximum"` are not defined.
+         * The target number of instances to have in the group.
          */
         target?: pulumi.Input<string>;
         /**
-         * The type of the action to take when scale up is needed. Valid types: `"adjustment"`, `"updateCapacity"`, `"setMinTarget"`, `"percentageAdjustment"`.
-         *
-         * Usage:
-         *
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
+         * The type of the action to take when scale up is needed. Valid types: `"adjustment"`, `"updateCapacity"`, `"setMaxTarget"`, `"percentageAdjustment"`.
          */
         type: pulumi.Input<string>;
     }
@@ -1597,10 +1545,6 @@ export namespace aws {
         name: pulumi.Input<string>;
         /**
          * The dimension value.
-         *
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
          */
         value?: pulumi.Input<string>;
     }
@@ -1631,7 +1575,7 @@ export namespace aws {
          */
         isEnabled?: pulumi.Input<boolean>;
         /**
-         * The desired target capacity of a group. Required if using `"setMaxTarget"` as action type
+         * . The number of the desired target (and maximum) capacity
          */
         maxTargetCapacity?: pulumi.Input<string>;
         /**
@@ -1704,10 +1648,6 @@ export namespace aws {
         name: pulumi.Input<string>;
         /**
          * The dimension value.
-         *
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
          */
         value?: pulumi.Input<string>;
     }
@@ -1718,16 +1658,7 @@ export namespace aws {
          */
         action: pulumi.Input<inputs.aws.ElastigroupScalingUpPolicyStepAdjustmentAction>;
         /**
-         * The value against which the specified statistic is compared. If a `stepAdjustment` object is defined, then it cannot be specified.
-         *
-         *
-         * If you do not specify an action type, you can only use – `adjustment`, `minTargetCapacity`, `maxTargetCapacity`.
-         * While using action_type, please also set the following:
-         *
-         * When using `adjustment`           – set the field `adjustment`
-         * When using `setMinTarget`         – set the field `minTargetCapacity`
-         * When using `updateCapacity`       – set the fields `minimum`, `maximum`, and `target`
-         *
+         * The value against which the specified statistic is compared in order to determine if a step should be applied.
          *
          *
          * If you do not specify an action type, you can only use – `adjustment`, `minTargetCapacity`, `maxTargetCapacity`.
@@ -1741,37 +1672,31 @@ export namespace aws {
 
     export interface ElastigroupScalingUpPolicyStepAdjustmentAction {
         /**
-         * The number of instances to add or remove.
+         * The number of instances to add/remove to/from the target capacity when scale is needed. Can be used as advanced expression for scaling of instances to add/remove to/from the target capacity when scale is needed. You can see more information here: Advanced expression. Example value: `"MAX(currCapacity / 5, value * 10)"`
          */
         adjustment?: pulumi.Input<string>;
         /**
-         * The desired target capacity of a group. Required if using `"setMaxTarget"` as action type
+         * . The number of the desired target (and maximum) capacity
          */
         maxTargetCapacity?: pulumi.Input<string>;
         /**
-         * The upper limit number of instances that you can scale up to. Required if using `"updateCapacity"` as action type and neither `"target"` nor `"minimum"` are not defined.
+         * The maximal number of instances to have in the group.
          */
         maximum?: pulumi.Input<string>;
         /**
-         * The desired target capacity of a group. Required if using `"setMinTarget"` as action type
+         * . The number of the desired target (and minimum) capacity
          */
         minTargetCapacity?: pulumi.Input<string>;
         /**
-         * The lower limit number of instances that you can scale down to. Required if using `"updateCapacity"` as action type and neither `"target"` nor `"maximum"` are not defined.
+         * The minimal number of instances to have in the group.
          */
         minimum?: pulumi.Input<string>;
         /**
-         * The desired number of instances. Required if using `"updateCapacity"` as action type and neither `"minimum"` nor `"maximum"` are not defined.
+         * The target number of instances to have in the group.
          */
         target?: pulumi.Input<string>;
         /**
-         * The type of the action to take when scale up is needed. Valid types: `"adjustment"`, `"updateCapacity"`, `"setMinTarget"`, `"percentageAdjustment"`.
-         *
-         * Usage:
-         *
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
+         * The type of the action to take when scale up is needed. Valid types: `"adjustment"`, `"updateCapacity"`, `"setMaxTarget"`, `"percentageAdjustment"`.
          */
         type: pulumi.Input<string>;
     }
@@ -1908,10 +1833,6 @@ export namespace aws {
         key?: pulumi.Input<string>;
         /**
          * The dimension value.
-         *
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
          */
         value?: pulumi.Input<string>;
     }
@@ -2105,22 +2026,22 @@ export namespace aws {
 
     export interface MrScalarBootstrapActionsFile {
         /**
-         * S3 Bucket name for configurations.
+         * S3 Bucket name for bootstrap actions.
          */
         bucket: pulumi.Input<string>;
         /**
-         * Tag key.
+         * S3 key for bootstrap actions.
          */
         key: pulumi.Input<string>;
     }
 
     export interface MrScalarConfigurationsFile {
         /**
-         * S3 Bucket name for configurations.
+         * S3 Bucket name for bootstrap actions.
          */
         bucket: pulumi.Input<string>;
         /**
-         * Tag key.
+         * S3 key for bootstrap actions.
          */
         key: pulumi.Input<string>;
     }
@@ -2139,7 +2060,7 @@ export namespace aws {
          */
         volumeType: pulumi.Input<string>;
         /**
-         * Amount of volumes per instance in the task group.
+         * Amount of volumes per instance in the core group.
          */
         volumesPerInstance?: pulumi.Input<number>;
     }
@@ -2319,7 +2240,7 @@ export namespace aws {
          */
         volumeType: pulumi.Input<string>;
         /**
-         * Amount of volumes per instance in the task group.
+         * Amount of volumes per instance in the core group.
          */
         volumesPerInstance?: pulumi.Input<number>;
     }
@@ -2368,18 +2289,18 @@ export namespace aws {
 
     export interface MrScalarStepsFile {
         /**
-         * S3 Bucket name for configurations.
+         * S3 Bucket name for bootstrap actions.
          */
         bucket: pulumi.Input<string>;
         /**
-         * Tag key.
+         * S3 key for bootstrap actions.
          */
         key: pulumi.Input<string>;
     }
 
     export interface MrScalarTag {
         /**
-         * Tag key.
+         * S3 key for bootstrap actions.
          */
         key: pulumi.Input<string>;
         /**
@@ -2402,7 +2323,7 @@ export namespace aws {
          */
         volumeType: pulumi.Input<string>;
         /**
-         * Amount of volumes per instance in the task group.
+         * Amount of volumes per instance in the core group.
          */
         volumesPerInstance?: pulumi.Input<number>;
     }
@@ -4318,11 +4239,7 @@ export namespace gcp {
          */
         source?: pulumi.Input<string>;
         /**
-         * The type of GPU instance. Valid values: `nvidia-tesla-v100`, `nvidia-tesla-p100`, `nvidia-tesla-k80`.
-         *
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
+         * Specifies the type of disk, either SCRATCH or PERSISTENT.
          */
         type?: pulumi.Input<string>;
     }
@@ -4466,11 +4383,7 @@ export namespace gcp {
          */
         name?: pulumi.Input<string>;
         /**
-         * The type of GPU instance. Valid values: `nvidia-tesla-v100`, `nvidia-tesla-p100`, `nvidia-tesla-k80`.
-         *
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
+         * Specifies the type of disk, either SCRATCH or PERSISTENT.
          */
         type?: pulumi.Input<string>;
     }
@@ -4754,56 +4667,17 @@ export namespace gke {
     }
 
     export interface ElastigroupIntegrationGkeAutoscaleLabel {
-        /**
-         * The label name.
-         */
         key: pulumi.Input<string>;
-        /**
-         * The label value.
-         *
-         *
-         * Usage:
-         *
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
-         */
         value: pulumi.Input<string>;
     }
 
     export interface ElastigroupLabel {
-        /**
-         * The label name.
-         */
         key: pulumi.Input<string>;
-        /**
-         * The label value.
-         *
-         *
-         * Usage:
-         *
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
-         */
         value: pulumi.Input<string>;
     }
 
     export interface ElastigroupMetadata {
-        /**
-         * The label name.
-         */
         key: pulumi.Input<string>;
-        /**
-         * The label value.
-         *
-         *
-         * Usage:
-         *
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
-         */
         value: pulumi.Input<string>;
     }
 
@@ -4845,16 +4719,6 @@ export namespace gke {
 
     export interface ElastigroupScalingDownPolicyDimension {
         name: pulumi.Input<string>;
-        /**
-         * The label value.
-         *
-         *
-         * Usage:
-         *
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
-         */
         value?: pulumi.Input<string>;
     }
 
@@ -4880,16 +4744,6 @@ export namespace gke {
 
     export interface ElastigroupScalingUpPolicyDimension {
         name: pulumi.Input<string>;
-        /**
-         * The label value.
-         *
-         *
-         * Usage:
-         *
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
-         */
         value?: pulumi.Input<string>;
     }
 
@@ -5012,8 +4866,7 @@ export namespace gke {
 
     export interface OceanImportScheduledTaskShutdownHours {
         /**
-         * Flag to enable / disable the shutdown hours.
-         * Example: True
+         * Enable the Ocean Kubernetes Autoscaler.
          */
         isEnabled?: pulumi.Input<boolean>;
         /**
@@ -5030,8 +4883,7 @@ export namespace gke {
          */
         cronExpression: pulumi.Input<string>;
         /**
-         * Flag to enable / disable the shutdown hours.
-         * Example: True
+         * Enable the Ocean Kubernetes Autoscaler.
          */
         isEnabled: pulumi.Input<boolean>;
         taskParameters?: pulumi.Input<inputs.gke.OceanImportScheduledTaskTaskTaskParameters>;
@@ -5366,22 +5218,46 @@ export namespace spark {
     }
 
     export interface OceanIngressController {
+        /**
+         * - Should an ingress controller managed by Ocean for Apache Spark be installed on the cluster.
+         */
         managed?: pulumi.Input<boolean>;
     }
 
     export interface OceanIngressCustomEndpoint {
+        /**
+         * - The address the Ocean for Apache Spark control plane will use when addressing the cluster.
+         */
         address?: pulumi.Input<string>;
+        /**
+         * - Should the Ocean for Apache Spark control plane address the cluster using a custom endpoint. Use this to specify the DNS address of an externally provisioned (unmanaged) load balancer.
+         */
         enabled?: pulumi.Input<boolean>;
     }
 
     export interface OceanIngressLoadBalancer {
+        /**
+         * - Should an ingress controller managed by Ocean for Apache Spark be installed on the cluster.
+         */
         managed?: pulumi.Input<boolean>;
+        /**
+         * - Annotations to add to the ingress controller load balancer service. This is useful to configure properties of the managed load balancer, like the nature of the load balancer (e.g. ELB, NLB, ALB on AWS), the security groups, or various timeouts.
+         */
         serviceAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * - The ARN of a target group that the Ocean for Apache Spark ingress controller will be bound to. Set this to use an existing load balancer with Ocean for Apache Spark. Has no effect if using a managed load balancer. Only available on AWS.
+         */
         targetGroupArn?: pulumi.Input<string>;
     }
 
     export interface OceanIngressPrivateLink {
+        /**
+         * - Should the Ocean for Apache Spark control plane address the cluster using a custom endpoint. Use this to specify the DNS address of an externally provisioned (unmanaged) load balancer.
+         */
         enabled?: pulumi.Input<boolean>;
+        /**
+         * - The name of the VPC Endpoint Service the Ocean for Apache Spark control plane should bind to.
+         */
         vpcEndpointService?: pulumi.Input<string>;
     }
 

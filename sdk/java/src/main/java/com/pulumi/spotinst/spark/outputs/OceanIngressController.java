@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class OceanIngressController {
+    /**
+     * @return - Should an ingress controller managed by Ocean for Apache Spark be installed on the cluster.
+     * 
+     */
     private @Nullable Boolean managed;
 
     private OceanIngressController() {}
+    /**
+     * @return - Should an ingress controller managed by Ocean for Apache Spark be installed on the cluster.
+     * 
+     */
     public Optional<Boolean> managed() {
         return Optional.ofNullable(this.managed);
     }

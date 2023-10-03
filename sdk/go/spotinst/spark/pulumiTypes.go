@@ -416,6 +416,7 @@ func (o OceanIngressPtrOutput) ServiceAnnotations() pulumi.StringMapOutput {
 }
 
 type OceanIngressController struct {
+	// - Should an ingress controller managed by Ocean for Apache Spark be installed on the cluster.
 	Managed *bool `pulumi:"managed"`
 }
 
@@ -431,6 +432,7 @@ type OceanIngressControllerInput interface {
 }
 
 type OceanIngressControllerArgs struct {
+	// - Should an ingress controller managed by Ocean for Apache Spark be installed on the cluster.
 	Managed pulumi.BoolPtrInput `pulumi:"managed"`
 }
 
@@ -529,6 +531,7 @@ func (o OceanIngressControllerOutput) ToOutput(ctx context.Context) pulumix.Outp
 	}
 }
 
+// - Should an ingress controller managed by Ocean for Apache Spark be installed on the cluster.
 func (o OceanIngressControllerOutput) Managed() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OceanIngressController) *bool { return v.Managed }).(pulumi.BoolPtrOutput)
 }
@@ -563,6 +566,7 @@ func (o OceanIngressControllerPtrOutput) Elem() OceanIngressControllerOutput {
 	}).(OceanIngressControllerOutput)
 }
 
+// - Should an ingress controller managed by Ocean for Apache Spark be installed on the cluster.
 func (o OceanIngressControllerPtrOutput) Managed() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OceanIngressController) *bool {
 		if v == nil {
@@ -573,8 +577,10 @@ func (o OceanIngressControllerPtrOutput) Managed() pulumi.BoolPtrOutput {
 }
 
 type OceanIngressCustomEndpoint struct {
+	// - The address the Ocean for Apache Spark control plane will use when addressing the cluster.
 	Address *string `pulumi:"address"`
-	Enabled *bool   `pulumi:"enabled"`
+	// - Should the Ocean for Apache Spark control plane address the cluster using a custom endpoint. Use this to specify the DNS address of an externally provisioned (unmanaged) load balancer.
+	Enabled *bool `pulumi:"enabled"`
 }
 
 // OceanIngressCustomEndpointInput is an input type that accepts OceanIngressCustomEndpointArgs and OceanIngressCustomEndpointOutput values.
@@ -589,8 +595,10 @@ type OceanIngressCustomEndpointInput interface {
 }
 
 type OceanIngressCustomEndpointArgs struct {
+	// - The address the Ocean for Apache Spark control plane will use when addressing the cluster.
 	Address pulumi.StringPtrInput `pulumi:"address"`
-	Enabled pulumi.BoolPtrInput   `pulumi:"enabled"`
+	// - Should the Ocean for Apache Spark control plane address the cluster using a custom endpoint. Use this to specify the DNS address of an externally provisioned (unmanaged) load balancer.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 }
 
 func (OceanIngressCustomEndpointArgs) ElementType() reflect.Type {
@@ -688,10 +696,12 @@ func (o OceanIngressCustomEndpointOutput) ToOutput(ctx context.Context) pulumix.
 	}
 }
 
+// - The address the Ocean for Apache Spark control plane will use when addressing the cluster.
 func (o OceanIngressCustomEndpointOutput) Address() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OceanIngressCustomEndpoint) *string { return v.Address }).(pulumi.StringPtrOutput)
 }
 
+// - Should the Ocean for Apache Spark control plane address the cluster using a custom endpoint. Use this to specify the DNS address of an externally provisioned (unmanaged) load balancer.
 func (o OceanIngressCustomEndpointOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OceanIngressCustomEndpoint) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
@@ -726,6 +736,7 @@ func (o OceanIngressCustomEndpointPtrOutput) Elem() OceanIngressCustomEndpointOu
 	}).(OceanIngressCustomEndpointOutput)
 }
 
+// - The address the Ocean for Apache Spark control plane will use when addressing the cluster.
 func (o OceanIngressCustomEndpointPtrOutput) Address() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OceanIngressCustomEndpoint) *string {
 		if v == nil {
@@ -735,6 +746,7 @@ func (o OceanIngressCustomEndpointPtrOutput) Address() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// - Should the Ocean for Apache Spark control plane address the cluster using a custom endpoint. Use this to specify the DNS address of an externally provisioned (unmanaged) load balancer.
 func (o OceanIngressCustomEndpointPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OceanIngressCustomEndpoint) *bool {
 		if v == nil {
@@ -745,9 +757,12 @@ func (o OceanIngressCustomEndpointPtrOutput) Enabled() pulumi.BoolPtrOutput {
 }
 
 type OceanIngressLoadBalancer struct {
-	Managed            *bool             `pulumi:"managed"`
+	// - Should an ingress controller managed by Ocean for Apache Spark be installed on the cluster.
+	Managed *bool `pulumi:"managed"`
+	// - Annotations to add to the ingress controller load balancer service. This is useful to configure properties of the managed load balancer, like the nature of the load balancer (e.g. ELB, NLB, ALB on AWS), the security groups, or various timeouts.
 	ServiceAnnotations map[string]string `pulumi:"serviceAnnotations"`
-	TargetGroupArn     *string           `pulumi:"targetGroupArn"`
+	// - The ARN of a target group that the Ocean for Apache Spark ingress controller will be bound to. Set this to use an existing load balancer with Ocean for Apache Spark. Has no effect if using a managed load balancer. Only available on AWS.
+	TargetGroupArn *string `pulumi:"targetGroupArn"`
 }
 
 // OceanIngressLoadBalancerInput is an input type that accepts OceanIngressLoadBalancerArgs and OceanIngressLoadBalancerOutput values.
@@ -762,9 +777,12 @@ type OceanIngressLoadBalancerInput interface {
 }
 
 type OceanIngressLoadBalancerArgs struct {
-	Managed            pulumi.BoolPtrInput   `pulumi:"managed"`
+	// - Should an ingress controller managed by Ocean for Apache Spark be installed on the cluster.
+	Managed pulumi.BoolPtrInput `pulumi:"managed"`
+	// - Annotations to add to the ingress controller load balancer service. This is useful to configure properties of the managed load balancer, like the nature of the load balancer (e.g. ELB, NLB, ALB on AWS), the security groups, or various timeouts.
 	ServiceAnnotations pulumi.StringMapInput `pulumi:"serviceAnnotations"`
-	TargetGroupArn     pulumi.StringPtrInput `pulumi:"targetGroupArn"`
+	// - The ARN of a target group that the Ocean for Apache Spark ingress controller will be bound to. Set this to use an existing load balancer with Ocean for Apache Spark. Has no effect if using a managed load balancer. Only available on AWS.
+	TargetGroupArn pulumi.StringPtrInput `pulumi:"targetGroupArn"`
 }
 
 func (OceanIngressLoadBalancerArgs) ElementType() reflect.Type {
@@ -862,14 +880,17 @@ func (o OceanIngressLoadBalancerOutput) ToOutput(ctx context.Context) pulumix.Ou
 	}
 }
 
+// - Should an ingress controller managed by Ocean for Apache Spark be installed on the cluster.
 func (o OceanIngressLoadBalancerOutput) Managed() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OceanIngressLoadBalancer) *bool { return v.Managed }).(pulumi.BoolPtrOutput)
 }
 
+// - Annotations to add to the ingress controller load balancer service. This is useful to configure properties of the managed load balancer, like the nature of the load balancer (e.g. ELB, NLB, ALB on AWS), the security groups, or various timeouts.
 func (o OceanIngressLoadBalancerOutput) ServiceAnnotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v OceanIngressLoadBalancer) map[string]string { return v.ServiceAnnotations }).(pulumi.StringMapOutput)
 }
 
+// - The ARN of a target group that the Ocean for Apache Spark ingress controller will be bound to. Set this to use an existing load balancer with Ocean for Apache Spark. Has no effect if using a managed load balancer. Only available on AWS.
 func (o OceanIngressLoadBalancerOutput) TargetGroupArn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OceanIngressLoadBalancer) *string { return v.TargetGroupArn }).(pulumi.StringPtrOutput)
 }
@@ -904,6 +925,7 @@ func (o OceanIngressLoadBalancerPtrOutput) Elem() OceanIngressLoadBalancerOutput
 	}).(OceanIngressLoadBalancerOutput)
 }
 
+// - Should an ingress controller managed by Ocean for Apache Spark be installed on the cluster.
 func (o OceanIngressLoadBalancerPtrOutput) Managed() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OceanIngressLoadBalancer) *bool {
 		if v == nil {
@@ -913,6 +935,7 @@ func (o OceanIngressLoadBalancerPtrOutput) Managed() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// - Annotations to add to the ingress controller load balancer service. This is useful to configure properties of the managed load balancer, like the nature of the load balancer (e.g. ELB, NLB, ALB on AWS), the security groups, or various timeouts.
 func (o OceanIngressLoadBalancerPtrOutput) ServiceAnnotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *OceanIngressLoadBalancer) map[string]string {
 		if v == nil {
@@ -922,6 +945,7 @@ func (o OceanIngressLoadBalancerPtrOutput) ServiceAnnotations() pulumi.StringMap
 	}).(pulumi.StringMapOutput)
 }
 
+// - The ARN of a target group that the Ocean for Apache Spark ingress controller will be bound to. Set this to use an existing load balancer with Ocean for Apache Spark. Has no effect if using a managed load balancer. Only available on AWS.
 func (o OceanIngressLoadBalancerPtrOutput) TargetGroupArn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OceanIngressLoadBalancer) *string {
 		if v == nil {
@@ -932,7 +956,9 @@ func (o OceanIngressLoadBalancerPtrOutput) TargetGroupArn() pulumi.StringPtrOutp
 }
 
 type OceanIngressPrivateLink struct {
-	Enabled            *bool   `pulumi:"enabled"`
+	// - Should the Ocean for Apache Spark control plane address the cluster using a custom endpoint. Use this to specify the DNS address of an externally provisioned (unmanaged) load balancer.
+	Enabled *bool `pulumi:"enabled"`
+	// - The name of the VPC Endpoint Service the Ocean for Apache Spark control plane should bind to.
 	VpcEndpointService *string `pulumi:"vpcEndpointService"`
 }
 
@@ -948,7 +974,9 @@ type OceanIngressPrivateLinkInput interface {
 }
 
 type OceanIngressPrivateLinkArgs struct {
-	Enabled            pulumi.BoolPtrInput   `pulumi:"enabled"`
+	// - Should the Ocean for Apache Spark control plane address the cluster using a custom endpoint. Use this to specify the DNS address of an externally provisioned (unmanaged) load balancer.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// - The name of the VPC Endpoint Service the Ocean for Apache Spark control plane should bind to.
 	VpcEndpointService pulumi.StringPtrInput `pulumi:"vpcEndpointService"`
 }
 
@@ -1047,10 +1075,12 @@ func (o OceanIngressPrivateLinkOutput) ToOutput(ctx context.Context) pulumix.Out
 	}
 }
 
+// - Should the Ocean for Apache Spark control plane address the cluster using a custom endpoint. Use this to specify the DNS address of an externally provisioned (unmanaged) load balancer.
 func (o OceanIngressPrivateLinkOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OceanIngressPrivateLink) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
+// - The name of the VPC Endpoint Service the Ocean for Apache Spark control plane should bind to.
 func (o OceanIngressPrivateLinkOutput) VpcEndpointService() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OceanIngressPrivateLink) *string { return v.VpcEndpointService }).(pulumi.StringPtrOutput)
 }
@@ -1085,6 +1115,7 @@ func (o OceanIngressPrivateLinkPtrOutput) Elem() OceanIngressPrivateLinkOutput {
 	}).(OceanIngressPrivateLinkOutput)
 }
 
+// - Should the Ocean for Apache Spark control plane address the cluster using a custom endpoint. Use this to specify the DNS address of an externally provisioned (unmanaged) load balancer.
 func (o OceanIngressPrivateLinkPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OceanIngressPrivateLink) *bool {
 		if v == nil {
@@ -1094,6 +1125,7 @@ func (o OceanIngressPrivateLinkPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// - The name of the VPC Endpoint Service the Ocean for Apache Spark control plane should bind to.
 func (o OceanIngressPrivateLinkPtrOutput) VpcEndpointService() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OceanIngressPrivateLink) *string {
 		if v == nil {

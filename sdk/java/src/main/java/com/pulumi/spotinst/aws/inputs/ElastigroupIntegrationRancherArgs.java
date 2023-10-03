@@ -31,14 +31,14 @@ public final class ElastigroupIntegrationRancherArgs extends com.pulumi.resource
     }
 
     /**
-     * The URL of the Rancher Master host.
+     * The URL for the Nomad master host.
      * 
      */
     @Import(name="masterHost", required=true)
     private Output<String> masterHost;
 
     /**
-     * @return The URL of the Rancher Master host.
+     * @return The URL for the Nomad master host.
      * 
      */
     public Output<String> masterHost() {
@@ -170,7 +170,7 @@ public final class ElastigroupIntegrationRancherArgs extends com.pulumi.resource
         }
 
         /**
-         * @param masterHost The URL of the Rancher Master host.
+         * @param masterHost The URL for the Nomad master host.
          * 
          * @return builder
          * 
@@ -181,7 +181,7 @@ public final class ElastigroupIntegrationRancherArgs extends com.pulumi.resource
         }
 
         /**
-         * @param masterHost The URL of the Rancher Master host.
+         * @param masterHost The URL for the Nomad master host.
          * 
          * @return builder
          * 

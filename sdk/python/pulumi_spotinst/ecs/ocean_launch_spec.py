@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -52,39 +52,80 @@ class OceanLaunchSpecArgs:
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecTagArgs']]] tags: A key/value mapping of tags to assign to the resource.
         :param pulumi.Input[str] user_data: Base64-encoded MIME user data to make available to the instances.
         """
-        pulumi.set(__self__, "ocean_id", ocean_id)
+        OceanLaunchSpecArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ocean_id=ocean_id,
+            attributes=attributes,
+            autoscale_headrooms=autoscale_headrooms,
+            block_device_mappings=block_device_mappings,
+            iam_instance_profile=iam_instance_profile,
+            image_id=image_id,
+            instance_metadata_options=instance_metadata_options,
+            instance_types=instance_types,
+            name=name,
+            preferred_spot_types=preferred_spot_types,
+            restrict_scale_down=restrict_scale_down,
+            scheduling_tasks=scheduling_tasks,
+            security_group_ids=security_group_ids,
+            strategies=strategies,
+            subnet_ids=subnet_ids,
+            tags=tags,
+            user_data=user_data,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ocean_id: pulumi.Input[str],
+             attributes: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecAttributeArgs']]]] = None,
+             autoscale_headrooms: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecAutoscaleHeadroomArgs']]]] = None,
+             block_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecBlockDeviceMappingArgs']]]] = None,
+             iam_instance_profile: Optional[pulumi.Input[str]] = None,
+             image_id: Optional[pulumi.Input[str]] = None,
+             instance_metadata_options: Optional[pulumi.Input['OceanLaunchSpecInstanceMetadataOptionsArgs']] = None,
+             instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             preferred_spot_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             restrict_scale_down: Optional[pulumi.Input[bool]] = None,
+             scheduling_tasks: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecSchedulingTaskArgs']]]] = None,
+             security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             strategies: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecStrategyArgs']]]] = None,
+             subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecTagArgs']]]] = None,
+             user_data: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("ocean_id", ocean_id)
         if attributes is not None:
-            pulumi.set(__self__, "attributes", attributes)
+            _setter("attributes", attributes)
         if autoscale_headrooms is not None:
-            pulumi.set(__self__, "autoscale_headrooms", autoscale_headrooms)
+            _setter("autoscale_headrooms", autoscale_headrooms)
         if block_device_mappings is not None:
-            pulumi.set(__self__, "block_device_mappings", block_device_mappings)
+            _setter("block_device_mappings", block_device_mappings)
         if iam_instance_profile is not None:
-            pulumi.set(__self__, "iam_instance_profile", iam_instance_profile)
+            _setter("iam_instance_profile", iam_instance_profile)
         if image_id is not None:
-            pulumi.set(__self__, "image_id", image_id)
+            _setter("image_id", image_id)
         if instance_metadata_options is not None:
-            pulumi.set(__self__, "instance_metadata_options", instance_metadata_options)
+            _setter("instance_metadata_options", instance_metadata_options)
         if instance_types is not None:
-            pulumi.set(__self__, "instance_types", instance_types)
+            _setter("instance_types", instance_types)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if preferred_spot_types is not None:
-            pulumi.set(__self__, "preferred_spot_types", preferred_spot_types)
+            _setter("preferred_spot_types", preferred_spot_types)
         if restrict_scale_down is not None:
-            pulumi.set(__self__, "restrict_scale_down", restrict_scale_down)
+            _setter("restrict_scale_down", restrict_scale_down)
         if scheduling_tasks is not None:
-            pulumi.set(__self__, "scheduling_tasks", scheduling_tasks)
+            _setter("scheduling_tasks", scheduling_tasks)
         if security_group_ids is not None:
-            pulumi.set(__self__, "security_group_ids", security_group_ids)
+            _setter("security_group_ids", security_group_ids)
         if strategies is not None:
-            pulumi.set(__self__, "strategies", strategies)
+            _setter("strategies", strategies)
         if subnet_ids is not None:
-            pulumi.set(__self__, "subnet_ids", subnet_ids)
+            _setter("subnet_ids", subnet_ids)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if user_data is not None:
-            pulumi.set(__self__, "user_data", user_data)
+            _setter("user_data", user_data)
 
     @property
     @pulumi.getter(name="oceanId")
@@ -327,40 +368,81 @@ class _OceanLaunchSpecState:
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecTagArgs']]] tags: A key/value mapping of tags to assign to the resource.
         :param pulumi.Input[str] user_data: Base64-encoded MIME user data to make available to the instances.
         """
+        _OceanLaunchSpecState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            attributes=attributes,
+            autoscale_headrooms=autoscale_headrooms,
+            block_device_mappings=block_device_mappings,
+            iam_instance_profile=iam_instance_profile,
+            image_id=image_id,
+            instance_metadata_options=instance_metadata_options,
+            instance_types=instance_types,
+            name=name,
+            ocean_id=ocean_id,
+            preferred_spot_types=preferred_spot_types,
+            restrict_scale_down=restrict_scale_down,
+            scheduling_tasks=scheduling_tasks,
+            security_group_ids=security_group_ids,
+            strategies=strategies,
+            subnet_ids=subnet_ids,
+            tags=tags,
+            user_data=user_data,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             attributes: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecAttributeArgs']]]] = None,
+             autoscale_headrooms: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecAutoscaleHeadroomArgs']]]] = None,
+             block_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecBlockDeviceMappingArgs']]]] = None,
+             iam_instance_profile: Optional[pulumi.Input[str]] = None,
+             image_id: Optional[pulumi.Input[str]] = None,
+             instance_metadata_options: Optional[pulumi.Input['OceanLaunchSpecInstanceMetadataOptionsArgs']] = None,
+             instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             ocean_id: Optional[pulumi.Input[str]] = None,
+             preferred_spot_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             restrict_scale_down: Optional[pulumi.Input[bool]] = None,
+             scheduling_tasks: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecSchedulingTaskArgs']]]] = None,
+             security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             strategies: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecStrategyArgs']]]] = None,
+             subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecTagArgs']]]] = None,
+             user_data: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if attributes is not None:
-            pulumi.set(__self__, "attributes", attributes)
+            _setter("attributes", attributes)
         if autoscale_headrooms is not None:
-            pulumi.set(__self__, "autoscale_headrooms", autoscale_headrooms)
+            _setter("autoscale_headrooms", autoscale_headrooms)
         if block_device_mappings is not None:
-            pulumi.set(__self__, "block_device_mappings", block_device_mappings)
+            _setter("block_device_mappings", block_device_mappings)
         if iam_instance_profile is not None:
-            pulumi.set(__self__, "iam_instance_profile", iam_instance_profile)
+            _setter("iam_instance_profile", iam_instance_profile)
         if image_id is not None:
-            pulumi.set(__self__, "image_id", image_id)
+            _setter("image_id", image_id)
         if instance_metadata_options is not None:
-            pulumi.set(__self__, "instance_metadata_options", instance_metadata_options)
+            _setter("instance_metadata_options", instance_metadata_options)
         if instance_types is not None:
-            pulumi.set(__self__, "instance_types", instance_types)
+            _setter("instance_types", instance_types)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if ocean_id is not None:
-            pulumi.set(__self__, "ocean_id", ocean_id)
+            _setter("ocean_id", ocean_id)
         if preferred_spot_types is not None:
-            pulumi.set(__self__, "preferred_spot_types", preferred_spot_types)
+            _setter("preferred_spot_types", preferred_spot_types)
         if restrict_scale_down is not None:
-            pulumi.set(__self__, "restrict_scale_down", restrict_scale_down)
+            _setter("restrict_scale_down", restrict_scale_down)
         if scheduling_tasks is not None:
-            pulumi.set(__self__, "scheduling_tasks", scheduling_tasks)
+            _setter("scheduling_tasks", scheduling_tasks)
         if security_group_ids is not None:
-            pulumi.set(__self__, "security_group_ids", security_group_ids)
+            _setter("security_group_ids", security_group_ids)
         if strategies is not None:
-            pulumi.set(__self__, "strategies", strategies)
+            _setter("strategies", strategies)
         if subnet_ids is not None:
-            pulumi.set(__self__, "subnet_ids", subnet_ids)
+            _setter("subnet_ids", subnet_ids)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if user_data is not None:
-            pulumi.set(__self__, "user_data", user_data)
+            _setter("user_data", user_data)
 
     @property
     @pulumi.getter
@@ -844,6 +926,10 @@ class OceanLaunchSpec(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            OceanLaunchSpecArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -880,6 +966,11 @@ class OceanLaunchSpec(pulumi.CustomResource):
             __props__.__dict__["block_device_mappings"] = block_device_mappings
             __props__.__dict__["iam_instance_profile"] = iam_instance_profile
             __props__.__dict__["image_id"] = image_id
+            if instance_metadata_options is not None and not isinstance(instance_metadata_options, OceanLaunchSpecInstanceMetadataOptionsArgs):
+                instance_metadata_options = instance_metadata_options or {}
+                def _setter(key, value):
+                    instance_metadata_options[key] = value
+                OceanLaunchSpecInstanceMetadataOptionsArgs._configure(_setter, **instance_metadata_options)
             __props__.__dict__["instance_metadata_options"] = instance_metadata_options
             __props__.__dict__["instance_types"] = instance_types
             __props__.__dict__["name"] = name

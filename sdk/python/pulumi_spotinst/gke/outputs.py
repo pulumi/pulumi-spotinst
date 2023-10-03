@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -92,13 +92,28 @@ class ElastigroupBackendService(dict):
                  location_type: Optional[str] = None,
                  named_ports: Optional[Sequence['outputs.ElastigroupBackendServiceNamedPort']] = None,
                  scheme: Optional[str] = None):
-        pulumi.set(__self__, "service_name", service_name)
+        ElastigroupBackendService._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            service_name=service_name,
+            location_type=location_type,
+            named_ports=named_ports,
+            scheme=scheme,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             service_name: str,
+             location_type: Optional[str] = None,
+             named_ports: Optional[Sequence['outputs.ElastigroupBackendServiceNamedPort']] = None,
+             scheme: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("service_name", service_name)
         if location_type is not None:
-            pulumi.set(__self__, "location_type", location_type)
+            _setter("location_type", location_type)
         if named_ports is not None:
-            pulumi.set(__self__, "named_ports", named_ports)
+            _setter("named_ports", named_ports)
         if scheme is not None:
-            pulumi.set(__self__, "scheme", scheme)
+            _setter("scheme", scheme)
 
     @property
     @pulumi.getter(name="serviceName")
@@ -126,8 +141,19 @@ class ElastigroupBackendServiceNamedPort(dict):
     def __init__(__self__, *,
                  name: str,
                  ports: Sequence[str]):
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "ports", ports)
+        ElastigroupBackendServiceNamedPort._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            ports=ports,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: str,
+             ports: Sequence[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
+        _setter("ports", ports)
 
     @property
     @pulumi.getter
@@ -172,22 +198,45 @@ class ElastigroupDisk(dict):
                  mode: Optional[str] = None,
                  source: Optional[str] = None,
                  type: Optional[str] = None):
+        ElastigroupDisk._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            auto_delete=auto_delete,
+            boot=boot,
+            device_name=device_name,
+            initialize_params=initialize_params,
+            interface=interface,
+            mode=mode,
+            source=source,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             auto_delete: Optional[bool] = None,
+             boot: Optional[bool] = None,
+             device_name: Optional[str] = None,
+             initialize_params: Optional[Sequence['outputs.ElastigroupDiskInitializeParam']] = None,
+             interface: Optional[str] = None,
+             mode: Optional[str] = None,
+             source: Optional[str] = None,
+             type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if auto_delete is not None:
-            pulumi.set(__self__, "auto_delete", auto_delete)
+            _setter("auto_delete", auto_delete)
         if boot is not None:
-            pulumi.set(__self__, "boot", boot)
+            _setter("boot", boot)
         if device_name is not None:
-            pulumi.set(__self__, "device_name", device_name)
+            _setter("device_name", device_name)
         if initialize_params is not None:
-            pulumi.set(__self__, "initialize_params", initialize_params)
+            _setter("initialize_params", initialize_params)
         if interface is not None:
-            pulumi.set(__self__, "interface", interface)
+            _setter("interface", interface)
         if mode is not None:
-            pulumi.set(__self__, "mode", mode)
+            _setter("mode", mode)
         if source is not None:
-            pulumi.set(__self__, "source", source)
+            _setter("source", source)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
 
     @property
     @pulumi.getter(name="autoDelete")
@@ -257,11 +306,24 @@ class ElastigroupDiskInitializeParam(dict):
                  source_image: str,
                  disk_size_gb: Optional[str] = None,
                  disk_type: Optional[str] = None):
-        pulumi.set(__self__, "source_image", source_image)
+        ElastigroupDiskInitializeParam._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            source_image=source_image,
+            disk_size_gb=disk_size_gb,
+            disk_type=disk_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             source_image: str,
+             disk_size_gb: Optional[str] = None,
+             disk_type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("source_image", source_image)
         if disk_size_gb is not None:
-            pulumi.set(__self__, "disk_size_gb", disk_size_gb)
+            _setter("disk_size_gb", disk_size_gb)
         if disk_type is not None:
-            pulumi.set(__self__, "disk_type", disk_type)
+            _setter("disk_type", disk_type)
 
     @property
     @pulumi.getter(name="sourceImage")
@@ -284,8 +346,19 @@ class ElastigroupGpu(dict):
     def __init__(__self__, *,
                  count: int,
                  type: str):
-        pulumi.set(__self__, "count", count)
-        pulumi.set(__self__, "type", type)
+        ElastigroupGpu._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            count=count,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             count: int,
+             type: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("count", count)
+        _setter("type", type)
 
     @property
     @pulumi.getter
@@ -320,8 +393,19 @@ class ElastigroupInstanceTypesCustom(dict):
     def __init__(__self__, *,
                  memory_gib: int,
                  vcpu: int):
-        pulumi.set(__self__, "memory_gib", memory_gib)
-        pulumi.set(__self__, "vcpu", vcpu)
+        ElastigroupInstanceTypesCustom._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            memory_gib=memory_gib,
+            vcpu=vcpu,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             memory_gib: int,
+             vcpu: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("memory_gib", memory_gib)
+        _setter("vcpu", vcpu)
 
     @property
     @pulumi.getter(name="memoryGib")
@@ -358,8 +442,19 @@ class ElastigroupIntegrationDockerSwarm(dict):
     def __init__(__self__, *,
                  master_host: str,
                  master_port: int):
-        pulumi.set(__self__, "master_host", master_host)
-        pulumi.set(__self__, "master_port", master_port)
+        ElastigroupIntegrationDockerSwarm._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            master_host=master_host,
+            master_port=master_port,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             master_host: str,
+             master_port: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("master_host", master_host)
+        _setter("master_port", master_port)
 
     @property
     @pulumi.getter(name="masterHost")
@@ -424,24 +519,49 @@ class ElastigroupIntegrationGke(dict):
         :param str cluster_id: The name of the GKE cluster you wish to import.
         :param str location: The location of your GKE cluster.
         """
+        ElastigroupIntegrationGke._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            auto_update=auto_update,
+            autoscale_cooldown=autoscale_cooldown,
+            autoscale_down=autoscale_down,
+            autoscale_headroom=autoscale_headroom,
+            autoscale_is_auto_config=autoscale_is_auto_config,
+            autoscale_is_enabled=autoscale_is_enabled,
+            autoscale_labels=autoscale_labels,
+            cluster_id=cluster_id,
+            location=location,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             auto_update: Optional[bool] = None,
+             autoscale_cooldown: Optional[int] = None,
+             autoscale_down: Optional['outputs.ElastigroupIntegrationGkeAutoscaleDown'] = None,
+             autoscale_headroom: Optional['outputs.ElastigroupIntegrationGkeAutoscaleHeadroom'] = None,
+             autoscale_is_auto_config: Optional[bool] = None,
+             autoscale_is_enabled: Optional[bool] = None,
+             autoscale_labels: Optional[Sequence['outputs.ElastigroupIntegrationGkeAutoscaleLabel']] = None,
+             cluster_id: Optional[str] = None,
+             location: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if auto_update is not None:
-            pulumi.set(__self__, "auto_update", auto_update)
+            _setter("auto_update", auto_update)
         if autoscale_cooldown is not None:
-            pulumi.set(__self__, "autoscale_cooldown", autoscale_cooldown)
+            _setter("autoscale_cooldown", autoscale_cooldown)
         if autoscale_down is not None:
-            pulumi.set(__self__, "autoscale_down", autoscale_down)
+            _setter("autoscale_down", autoscale_down)
         if autoscale_headroom is not None:
-            pulumi.set(__self__, "autoscale_headroom", autoscale_headroom)
+            _setter("autoscale_headroom", autoscale_headroom)
         if autoscale_is_auto_config is not None:
-            pulumi.set(__self__, "autoscale_is_auto_config", autoscale_is_auto_config)
+            _setter("autoscale_is_auto_config", autoscale_is_auto_config)
         if autoscale_is_enabled is not None:
-            pulumi.set(__self__, "autoscale_is_enabled", autoscale_is_enabled)
+            _setter("autoscale_is_enabled", autoscale_is_enabled)
         if autoscale_labels is not None:
-            pulumi.set(__self__, "autoscale_labels", autoscale_labels)
+            _setter("autoscale_labels", autoscale_labels)
         if cluster_id is not None:
-            pulumi.set(__self__, "cluster_id", cluster_id)
+            _setter("cluster_id", cluster_id)
         if location is not None:
-            pulumi.set(__self__, "location", location)
+            _setter("location", location)
 
     @property
     @pulumi.getter(name="autoUpdate")
@@ -534,8 +654,17 @@ class ElastigroupIntegrationGkeAutoscaleDown(dict):
         """
         :param int evaluation_periods: Amount of cooldown evaluation periods for scale down.
         """
+        ElastigroupIntegrationGkeAutoscaleDown._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            evaluation_periods=evaluation_periods,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             evaluation_periods: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if evaluation_periods is not None:
-            pulumi.set(__self__, "evaluation_periods", evaluation_periods)
+            _setter("evaluation_periods", evaluation_periods)
 
     @property
     @pulumi.getter(name="evaluationPeriods")
@@ -578,12 +707,25 @@ class ElastigroupIntegrationGkeAutoscaleHeadroom(dict):
         :param int memory_per_unit: RAM units for compute.
         :param int num_of_units: Amount of units for compute.
         """
+        ElastigroupIntegrationGkeAutoscaleHeadroom._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cpu_per_unit=cpu_per_unit,
+            memory_per_unit=memory_per_unit,
+            num_of_units=num_of_units,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cpu_per_unit: Optional[int] = None,
+             memory_per_unit: Optional[int] = None,
+             num_of_units: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if cpu_per_unit is not None:
-            pulumi.set(__self__, "cpu_per_unit", cpu_per_unit)
+            _setter("cpu_per_unit", cpu_per_unit)
         if memory_per_unit is not None:
-            pulumi.set(__self__, "memory_per_unit", memory_per_unit)
+            _setter("memory_per_unit", memory_per_unit)
         if num_of_units is not None:
-            pulumi.set(__self__, "num_of_units", num_of_units)
+            _setter("num_of_units", num_of_units)
 
     @property
     @pulumi.getter(name="cpuPerUnit")
@@ -615,41 +757,28 @@ class ElastigroupIntegrationGkeAutoscaleLabel(dict):
     def __init__(__self__, *,
                  key: str,
                  value: str):
-        """
-        :param str key: The label name.
-        :param str value: The label value.
-               
-               
-               Usage:
-               
-               ```python
-               import pulumi
-               ```
-        """
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "value", value)
+        ElastigroupIntegrationGkeAutoscaleLabel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: str,
+             value: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("key", key)
+        _setter("value", value)
 
     @property
     @pulumi.getter
     def key(self) -> str:
-        """
-        The label name.
-        """
         return pulumi.get(self, "key")
 
     @property
     @pulumi.getter
     def value(self) -> str:
-        """
-        The label value.
-
-
-        Usage:
-
-        ```python
-        import pulumi
-        ```
-        """
         return pulumi.get(self, "value")
 
 
@@ -658,41 +787,28 @@ class ElastigroupLabel(dict):
     def __init__(__self__, *,
                  key: str,
                  value: str):
-        """
-        :param str key: The label name.
-        :param str value: The label value.
-               
-               
-               Usage:
-               
-               ```python
-               import pulumi
-               ```
-        """
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "value", value)
+        ElastigroupLabel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: str,
+             value: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("key", key)
+        _setter("value", value)
 
     @property
     @pulumi.getter
     def key(self) -> str:
-        """
-        The label name.
-        """
         return pulumi.get(self, "key")
 
     @property
     @pulumi.getter
     def value(self) -> str:
-        """
-        The label value.
-
-
-        Usage:
-
-        ```python
-        import pulumi
-        ```
-        """
         return pulumi.get(self, "value")
 
 
@@ -701,41 +817,28 @@ class ElastigroupMetadata(dict):
     def __init__(__self__, *,
                  key: str,
                  value: str):
-        """
-        :param str key: The label name.
-        :param str value: The label value.
-               
-               
-               Usage:
-               
-               ```python
-               import pulumi
-               ```
-        """
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "value", value)
+        ElastigroupMetadata._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: str,
+             value: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("key", key)
+        _setter("value", value)
 
     @property
     @pulumi.getter
     def key(self) -> str:
-        """
-        The label name.
-        """
         return pulumi.get(self, "key")
 
     @property
     @pulumi.getter
     def value(self) -> str:
-        """
-        The label value.
-
-
-        Usage:
-
-        ```python
-        import pulumi
-        ```
-        """
         return pulumi.get(self, "value")
 
 
@@ -764,11 +867,24 @@ class ElastigroupNetworkInterface(dict):
                  network: str,
                  access_configs: Optional[Sequence['outputs.ElastigroupNetworkInterfaceAccessConfig']] = None,
                  alias_ip_ranges: Optional[Sequence['outputs.ElastigroupNetworkInterfaceAliasIpRange']] = None):
-        pulumi.set(__self__, "network", network)
+        ElastigroupNetworkInterface._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            network=network,
+            access_configs=access_configs,
+            alias_ip_ranges=alias_ip_ranges,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             network: str,
+             access_configs: Optional[Sequence['outputs.ElastigroupNetworkInterfaceAccessConfig']] = None,
+             alias_ip_ranges: Optional[Sequence['outputs.ElastigroupNetworkInterfaceAliasIpRange']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("network", network)
         if access_configs is not None:
-            pulumi.set(__self__, "access_configs", access_configs)
+            _setter("access_configs", access_configs)
         if alias_ip_ranges is not None:
-            pulumi.set(__self__, "alias_ip_ranges", alias_ip_ranges)
+            _setter("alias_ip_ranges", alias_ip_ranges)
 
     @property
     @pulumi.getter
@@ -791,10 +907,21 @@ class ElastigroupNetworkInterfaceAccessConfig(dict):
     def __init__(__self__, *,
                  name: Optional[str] = None,
                  type: Optional[str] = None):
+        ElastigroupNetworkInterfaceAccessConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: Optional[str] = None,
+             type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
 
     @property
     @pulumi.getter
@@ -831,8 +958,19 @@ class ElastigroupNetworkInterfaceAliasIpRange(dict):
     def __init__(__self__, *,
                  ip_cidr_range: str,
                  subnetwork_range_name: str):
-        pulumi.set(__self__, "ip_cidr_range", ip_cidr_range)
-        pulumi.set(__self__, "subnetwork_range_name", subnetwork_range_name)
+        ElastigroupNetworkInterfaceAliasIpRange._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ip_cidr_range=ip_cidr_range,
+            subnetwork_range_name=subnetwork_range_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ip_cidr_range: str,
+             subnetwork_range_name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("ip_cidr_range", ip_cidr_range)
+        _setter("subnetwork_range_name", subnetwork_range_name)
 
     @property
     @pulumi.getter(name="ipCidrRange")
@@ -888,29 +1026,64 @@ class ElastigroupScalingDownPolicy(dict):
         """
         :param int evaluation_periods: Amount of cooldown evaluation periods for scale down.
         """
-        pulumi.set(__self__, "metric_name", metric_name)
-        pulumi.set(__self__, "namespace", namespace)
-        pulumi.set(__self__, "policy_name", policy_name)
-        pulumi.set(__self__, "threshold", threshold)
-        pulumi.set(__self__, "unit", unit)
+        ElastigroupScalingDownPolicy._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            metric_name=metric_name,
+            namespace=namespace,
+            policy_name=policy_name,
+            threshold=threshold,
+            unit=unit,
+            action_type=action_type,
+            adjustment=adjustment,
+            cooldown=cooldown,
+            dimensions=dimensions,
+            evaluation_periods=evaluation_periods,
+            operator=operator,
+            period=period,
+            source=source,
+            statistic=statistic,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             metric_name: str,
+             namespace: str,
+             policy_name: str,
+             threshold: float,
+             unit: str,
+             action_type: Optional[str] = None,
+             adjustment: Optional[int] = None,
+             cooldown: Optional[int] = None,
+             dimensions: Optional[Sequence['outputs.ElastigroupScalingDownPolicyDimension']] = None,
+             evaluation_periods: Optional[int] = None,
+             operator: Optional[str] = None,
+             period: Optional[int] = None,
+             source: Optional[str] = None,
+             statistic: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("metric_name", metric_name)
+        _setter("namespace", namespace)
+        _setter("policy_name", policy_name)
+        _setter("threshold", threshold)
+        _setter("unit", unit)
         if action_type is not None:
-            pulumi.set(__self__, "action_type", action_type)
+            _setter("action_type", action_type)
         if adjustment is not None:
-            pulumi.set(__self__, "adjustment", adjustment)
+            _setter("adjustment", adjustment)
         if cooldown is not None:
-            pulumi.set(__self__, "cooldown", cooldown)
+            _setter("cooldown", cooldown)
         if dimensions is not None:
-            pulumi.set(__self__, "dimensions", dimensions)
+            _setter("dimensions", dimensions)
         if evaluation_periods is not None:
-            pulumi.set(__self__, "evaluation_periods", evaluation_periods)
+            _setter("evaluation_periods", evaluation_periods)
         if operator is not None:
-            pulumi.set(__self__, "operator", operator)
+            _setter("operator", operator)
         if period is not None:
-            pulumi.set(__self__, "period", period)
+            _setter("period", period)
         if source is not None:
-            pulumi.set(__self__, "source", source)
+            _setter("source", source)
         if statistic is not None:
-            pulumi.set(__self__, "statistic", statistic)
+            _setter("statistic", statistic)
 
     @property
     @pulumi.getter(name="metricName")
@@ -991,19 +1164,20 @@ class ElastigroupScalingDownPolicyDimension(dict):
     def __init__(__self__, *,
                  name: str,
                  value: Optional[str] = None):
-        """
-        :param str value: The label value.
-               
-               
-               Usage:
-               
-               ```python
-               import pulumi
-               ```
-        """
-        pulumi.set(__self__, "name", name)
+        ElastigroupScalingDownPolicyDimension._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: str,
+             value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
         if value is not None:
-            pulumi.set(__self__, "value", value)
+            _setter("value", value)
 
     @property
     @pulumi.getter
@@ -1013,16 +1187,6 @@ class ElastigroupScalingDownPolicyDimension(dict):
     @property
     @pulumi.getter
     def value(self) -> Optional[str]:
-        """
-        The label value.
-
-
-        Usage:
-
-        ```python
-        import pulumi
-        ```
-        """
         return pulumi.get(self, "value")
 
 
@@ -1069,29 +1233,64 @@ class ElastigroupScalingUpPolicy(dict):
         """
         :param int evaluation_periods: Amount of cooldown evaluation periods for scale down.
         """
-        pulumi.set(__self__, "metric_name", metric_name)
-        pulumi.set(__self__, "namespace", namespace)
-        pulumi.set(__self__, "policy_name", policy_name)
-        pulumi.set(__self__, "threshold", threshold)
-        pulumi.set(__self__, "unit", unit)
+        ElastigroupScalingUpPolicy._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            metric_name=metric_name,
+            namespace=namespace,
+            policy_name=policy_name,
+            threshold=threshold,
+            unit=unit,
+            action_type=action_type,
+            adjustment=adjustment,
+            cooldown=cooldown,
+            dimensions=dimensions,
+            evaluation_periods=evaluation_periods,
+            operator=operator,
+            period=period,
+            source=source,
+            statistic=statistic,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             metric_name: str,
+             namespace: str,
+             policy_name: str,
+             threshold: float,
+             unit: str,
+             action_type: Optional[str] = None,
+             adjustment: Optional[int] = None,
+             cooldown: Optional[int] = None,
+             dimensions: Optional[Sequence['outputs.ElastigroupScalingUpPolicyDimension']] = None,
+             evaluation_periods: Optional[int] = None,
+             operator: Optional[str] = None,
+             period: Optional[int] = None,
+             source: Optional[str] = None,
+             statistic: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("metric_name", metric_name)
+        _setter("namespace", namespace)
+        _setter("policy_name", policy_name)
+        _setter("threshold", threshold)
+        _setter("unit", unit)
         if action_type is not None:
-            pulumi.set(__self__, "action_type", action_type)
+            _setter("action_type", action_type)
         if adjustment is not None:
-            pulumi.set(__self__, "adjustment", adjustment)
+            _setter("adjustment", adjustment)
         if cooldown is not None:
-            pulumi.set(__self__, "cooldown", cooldown)
+            _setter("cooldown", cooldown)
         if dimensions is not None:
-            pulumi.set(__self__, "dimensions", dimensions)
+            _setter("dimensions", dimensions)
         if evaluation_periods is not None:
-            pulumi.set(__self__, "evaluation_periods", evaluation_periods)
+            _setter("evaluation_periods", evaluation_periods)
         if operator is not None:
-            pulumi.set(__self__, "operator", operator)
+            _setter("operator", operator)
         if period is not None:
-            pulumi.set(__self__, "period", period)
+            _setter("period", period)
         if source is not None:
-            pulumi.set(__self__, "source", source)
+            _setter("source", source)
         if statistic is not None:
-            pulumi.set(__self__, "statistic", statistic)
+            _setter("statistic", statistic)
 
     @property
     @pulumi.getter(name="metricName")
@@ -1172,19 +1371,20 @@ class ElastigroupScalingUpPolicyDimension(dict):
     def __init__(__self__, *,
                  name: str,
                  value: Optional[str] = None):
-        """
-        :param str value: The label value.
-               
-               
-               Usage:
-               
-               ```python
-               import pulumi
-               ```
-        """
-        pulumi.set(__self__, "name", name)
+        ElastigroupScalingUpPolicyDimension._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: str,
+             value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
         if value is not None:
-            pulumi.set(__self__, "value", value)
+            _setter("value", value)
 
     @property
     @pulumi.getter
@@ -1194,16 +1394,6 @@ class ElastigroupScalingUpPolicyDimension(dict):
     @property
     @pulumi.getter
     def value(self) -> Optional[str]:
-        """
-        The label value.
-
-
-        Usage:
-
-        ```python
-        import pulumi
-        ```
-        """
         return pulumi.get(self, "value")
 
 
@@ -1253,22 +1443,45 @@ class OceanImportAutoscaler(dict):
         :param bool is_enabled: Enable the Ocean Kubernetes Autoscaler.
         :param 'OceanImportAutoscalerResourceLimitsArgs' resource_limits: Optionally set upper and lower bounds on the resource usage of the cluster.
         """
+        OceanImportAutoscaler._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            auto_headroom_percentage=auto_headroom_percentage,
+            cooldown=cooldown,
+            down=down,
+            enable_automatic_and_manual_headroom=enable_automatic_and_manual_headroom,
+            headroom=headroom,
+            is_auto_config=is_auto_config,
+            is_enabled=is_enabled,
+            resource_limits=resource_limits,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             auto_headroom_percentage: Optional[int] = None,
+             cooldown: Optional[int] = None,
+             down: Optional['outputs.OceanImportAutoscalerDown'] = None,
+             enable_automatic_and_manual_headroom: Optional[bool] = None,
+             headroom: Optional['outputs.OceanImportAutoscalerHeadroom'] = None,
+             is_auto_config: Optional[bool] = None,
+             is_enabled: Optional[bool] = None,
+             resource_limits: Optional['outputs.OceanImportAutoscalerResourceLimits'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if auto_headroom_percentage is not None:
-            pulumi.set(__self__, "auto_headroom_percentage", auto_headroom_percentage)
+            _setter("auto_headroom_percentage", auto_headroom_percentage)
         if cooldown is not None:
-            pulumi.set(__self__, "cooldown", cooldown)
+            _setter("cooldown", cooldown)
         if down is not None:
-            pulumi.set(__self__, "down", down)
+            _setter("down", down)
         if enable_automatic_and_manual_headroom is not None:
-            pulumi.set(__self__, "enable_automatic_and_manual_headroom", enable_automatic_and_manual_headroom)
+            _setter("enable_automatic_and_manual_headroom", enable_automatic_and_manual_headroom)
         if headroom is not None:
-            pulumi.set(__self__, "headroom", headroom)
+            _setter("headroom", headroom)
         if is_auto_config is not None:
-            pulumi.set(__self__, "is_auto_config", is_auto_config)
+            _setter("is_auto_config", is_auto_config)
         if is_enabled is not None:
-            pulumi.set(__self__, "is_enabled", is_enabled)
+            _setter("is_enabled", is_enabled)
         if resource_limits is not None:
-            pulumi.set(__self__, "resource_limits", resource_limits)
+            _setter("resource_limits", resource_limits)
 
     @property
     @pulumi.getter(name="autoHeadroomPercentage")
@@ -1363,10 +1576,21 @@ class OceanImportAutoscalerDown(dict):
         :param int evaluation_periods: The number of evaluation periods that should accumulate before a scale down action takes place.
         :param float max_scale_down_percentage: Would represent the maximum % to scale-down. Number between 1-100.
         """
+        OceanImportAutoscalerDown._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            evaluation_periods=evaluation_periods,
+            max_scale_down_percentage=max_scale_down_percentage,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             evaluation_periods: Optional[int] = None,
+             max_scale_down_percentage: Optional[float] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if evaluation_periods is not None:
-            pulumi.set(__self__, "evaluation_periods", evaluation_periods)
+            _setter("evaluation_periods", evaluation_periods)
         if max_scale_down_percentage is not None:
-            pulumi.set(__self__, "max_scale_down_percentage", max_scale_down_percentage)
+            _setter("max_scale_down_percentage", max_scale_down_percentage)
 
     @property
     @pulumi.getter(name="evaluationPeriods")
@@ -1421,14 +1645,29 @@ class OceanImportAutoscalerHeadroom(dict):
         :param int memory_per_unit: Optionally configure the amount of memory (MiB) to allocate the headroom.
         :param int num_of_units: The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
         """
+        OceanImportAutoscalerHeadroom._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cpu_per_unit=cpu_per_unit,
+            gpu_per_unit=gpu_per_unit,
+            memory_per_unit=memory_per_unit,
+            num_of_units=num_of_units,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cpu_per_unit: Optional[int] = None,
+             gpu_per_unit: Optional[int] = None,
+             memory_per_unit: Optional[int] = None,
+             num_of_units: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if cpu_per_unit is not None:
-            pulumi.set(__self__, "cpu_per_unit", cpu_per_unit)
+            _setter("cpu_per_unit", cpu_per_unit)
         if gpu_per_unit is not None:
-            pulumi.set(__self__, "gpu_per_unit", gpu_per_unit)
+            _setter("gpu_per_unit", gpu_per_unit)
         if memory_per_unit is not None:
-            pulumi.set(__self__, "memory_per_unit", memory_per_unit)
+            _setter("memory_per_unit", memory_per_unit)
         if num_of_units is not None:
-            pulumi.set(__self__, "num_of_units", num_of_units)
+            _setter("num_of_units", num_of_units)
 
     @property
     @pulumi.getter(name="cpuPerUnit")
@@ -1497,10 +1736,21 @@ class OceanImportAutoscalerResourceLimits(dict):
                <a id="strategy"></a>
         :param int max_vcpu: The maximum cpu in vCpu units that can be allocated to the cluster.
         """
+        OceanImportAutoscalerResourceLimits._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            max_memory_gib=max_memory_gib,
+            max_vcpu=max_vcpu,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             max_memory_gib: Optional[int] = None,
+             max_vcpu: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if max_memory_gib is not None:
-            pulumi.set(__self__, "max_memory_gib", max_memory_gib)
+            _setter("max_memory_gib", max_memory_gib)
         if max_vcpu is not None:
-            pulumi.set(__self__, "max_vcpu", max_vcpu)
+            _setter("max_vcpu", max_vcpu)
 
     @property
     @pulumi.getter(name="maxMemoryGib")
@@ -1558,13 +1808,28 @@ class OceanImportBackendService(dict):
         :param str location_type: Sets which location the backend services will be active. Valid values: `regional`, `global`.
         :param str scheme: Use when `location_type` is `regional`. Set the traffic for the backend service to either between the instances in the vpc or to traffic from the internet. Valid values: `INTERNAL`, `EXTERNAL`.
         """
-        pulumi.set(__self__, "service_name", service_name)
+        OceanImportBackendService._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            service_name=service_name,
+            location_type=location_type,
+            named_ports=named_ports,
+            scheme=scheme,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             service_name: str,
+             location_type: Optional[str] = None,
+             named_ports: Optional[Sequence['outputs.OceanImportBackendServiceNamedPort']] = None,
+             scheme: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("service_name", service_name)
         if location_type is not None:
-            pulumi.set(__self__, "location_type", location_type)
+            _setter("location_type", location_type)
         if named_ports is not None:
-            pulumi.set(__self__, "named_ports", named_ports)
+            _setter("named_ports", named_ports)
         if scheme is not None:
-            pulumi.set(__self__, "scheme", scheme)
+            _setter("scheme", scheme)
 
     @property
     @pulumi.getter(name="serviceName")
@@ -1604,8 +1869,19 @@ class OceanImportBackendServiceNamedPort(dict):
         """
         :param Sequence[str] ports: A list of ports.
         """
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "ports", ports)
+        OceanImportBackendServiceNamedPort._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            ports=ports,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: str,
+             ports: Sequence[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
+        _setter("ports", ports)
 
     @property
     @pulumi.getter
@@ -1647,10 +1923,21 @@ class OceanImportScheduledTask(dict):
         :param 'OceanImportScheduledTaskShutdownHoursArgs' shutdown_hours: Set shutdown hours for cluster object.
         :param Sequence['OceanImportScheduledTaskTaskArgs'] tasks: The scheduling tasks for the cluster.
         """
+        OceanImportScheduledTask._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            shutdown_hours=shutdown_hours,
+            tasks=tasks,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             shutdown_hours: Optional['outputs.OceanImportScheduledTaskShutdownHours'] = None,
+             tasks: Optional[Sequence['outputs.OceanImportScheduledTaskTask']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if shutdown_hours is not None:
-            pulumi.set(__self__, "shutdown_hours", shutdown_hours)
+            _setter("shutdown_hours", shutdown_hours)
         if tasks is not None:
-            pulumi.set(__self__, "tasks", tasks)
+            _setter("tasks", tasks)
 
     @property
     @pulumi.getter(name="shutdownHours")
@@ -1696,12 +1983,22 @@ class OceanImportScheduledTaskShutdownHours(dict):
         """
         :param Sequence[str] time_windows: Set time windows for shutdown hours. specify a list of 'timeWindows' with at least one time window Each string is in the format of - ddd:hh:mm-ddd:hh:mm ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59. Time windows should not overlap. required on cluster.scheduling.isEnabled = True. API Times are in UTC
                Example: Fri:15:30-Wed:14:30
-        :param bool is_enabled: Flag to enable / disable the shutdown hours.
-               Example: True
+        :param bool is_enabled: Enable the Ocean Kubernetes Autoscaler.
         """
-        pulumi.set(__self__, "time_windows", time_windows)
+        OceanImportScheduledTaskShutdownHours._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            time_windows=time_windows,
+            is_enabled=is_enabled,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             time_windows: Sequence[str],
+             is_enabled: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("time_windows", time_windows)
         if is_enabled is not None:
-            pulumi.set(__self__, "is_enabled", is_enabled)
+            _setter("is_enabled", is_enabled)
 
     @property
     @pulumi.getter(name="timeWindows")
@@ -1716,8 +2013,7 @@ class OceanImportScheduledTaskShutdownHours(dict):
     @pulumi.getter(name="isEnabled")
     def is_enabled(self) -> Optional[bool]:
         """
-        Flag to enable / disable the shutdown hours.
-        Example: True
+        Enable the Ocean Kubernetes Autoscaler.
         """
         return pulumi.get(self, "is_enabled")
 
@@ -1755,15 +2051,29 @@ class OceanImportScheduledTaskTask(dict):
         """
         :param str cron_expression: A valid cron expression. For example : " * * * * * ".The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of ‘frequency’ or ‘cronExpression’ should be used at a time. Required for cluster.scheduling.tasks object
                Example: 0 1 * * *
-        :param bool is_enabled: Flag to enable / disable the shutdown hours.
-               Example: True
+        :param bool is_enabled: Enable the Ocean Kubernetes Autoscaler.
         :param str task_type: Valid values: "clusterRoll". Required for cluster.scheduling.tasks object.
         """
-        pulumi.set(__self__, "cron_expression", cron_expression)
-        pulumi.set(__self__, "is_enabled", is_enabled)
-        pulumi.set(__self__, "task_type", task_type)
+        OceanImportScheduledTaskTask._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cron_expression=cron_expression,
+            is_enabled=is_enabled,
+            task_type=task_type,
+            task_parameters=task_parameters,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cron_expression: str,
+             is_enabled: bool,
+             task_type: str,
+             task_parameters: Optional['outputs.OceanImportScheduledTaskTaskTaskParameters'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("cron_expression", cron_expression)
+        _setter("is_enabled", is_enabled)
+        _setter("task_type", task_type)
         if task_parameters is not None:
-            pulumi.set(__self__, "task_parameters", task_parameters)
+            _setter("task_parameters", task_parameters)
 
     @property
     @pulumi.getter(name="cronExpression")
@@ -1778,8 +2088,7 @@ class OceanImportScheduledTaskTask(dict):
     @pulumi.getter(name="isEnabled")
     def is_enabled(self) -> bool:
         """
-        Flag to enable / disable the shutdown hours.
-        Example: True
+        Enable the Ocean Kubernetes Autoscaler.
         """
         return pulumi.get(self, "is_enabled")
 
@@ -1818,8 +2127,17 @@ class OceanImportScheduledTaskTaskTaskParameters(dict):
 
     def __init__(__self__, *,
                  cluster_roll: Optional['outputs.OceanImportScheduledTaskTaskTaskParametersClusterRoll'] = None):
+        OceanImportScheduledTaskTaskTaskParameters._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cluster_roll=cluster_roll,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cluster_roll: Optional['outputs.OceanImportScheduledTaskTaskTaskParametersClusterRoll'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if cluster_roll is not None:
-            pulumi.set(__self__, "cluster_roll", cluster_roll)
+            _setter("cluster_roll", cluster_roll)
 
     @property
     @pulumi.getter(name="clusterRoll")
@@ -1863,14 +2181,29 @@ class OceanImportScheduledTaskTaskTaskParametersClusterRoll(dict):
                import pulumi
                ```
         """
+        OceanImportScheduledTaskTaskTaskParametersClusterRoll._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            batch_min_healthy_percentage=batch_min_healthy_percentage,
+            batch_size_percentage=batch_size_percentage,
+            comment=comment,
+            respect_pdb=respect_pdb,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             batch_min_healthy_percentage: Optional[int] = None,
+             batch_size_percentage: Optional[int] = None,
+             comment: Optional[str] = None,
+             respect_pdb: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if batch_min_healthy_percentage is not None:
-            pulumi.set(__self__, "batch_min_healthy_percentage", batch_min_healthy_percentage)
+            _setter("batch_min_healthy_percentage", batch_min_healthy_percentage)
         if batch_size_percentage is not None:
-            pulumi.set(__self__, "batch_size_percentage", batch_size_percentage)
+            _setter("batch_size_percentage", batch_size_percentage)
         if comment is not None:
-            pulumi.set(__self__, "comment", comment)
+            _setter("comment", comment)
         if respect_pdb is not None:
-            pulumi.set(__self__, "respect_pdb", respect_pdb)
+            _setter("respect_pdb", respect_pdb)
 
     @property
     @pulumi.getter(name="batchMinHealthyPercentage")
@@ -1929,10 +2262,21 @@ class OceanImportShieldedInstanceConfig(dict):
         :param bool enable_integrity_monitoring: Boolean. Enable the integrity monitoring parameter on the GCP instances.
         :param bool enable_secure_boot: Boolean. Enable the secure boot parameter on the GCP instances.
         """
+        OceanImportShieldedInstanceConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            enable_integrity_monitoring=enable_integrity_monitoring,
+            enable_secure_boot=enable_secure_boot,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             enable_integrity_monitoring: Optional[bool] = None,
+             enable_secure_boot: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if enable_integrity_monitoring is not None:
-            pulumi.set(__self__, "enable_integrity_monitoring", enable_integrity_monitoring)
+            _setter("enable_integrity_monitoring", enable_integrity_monitoring)
         if enable_secure_boot is not None:
-            pulumi.set(__self__, "enable_secure_boot", enable_secure_boot)
+            _setter("enable_secure_boot", enable_secure_boot)
 
     @property
     @pulumi.getter(name="enableIntegrityMonitoring")
@@ -1981,12 +2325,25 @@ class OceanImportStrategy(dict):
         """
         :param int draining_timeout: The draining timeout (in seconds) before terminating the instance.
         """
+        OceanImportStrategy._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            draining_timeout=draining_timeout,
+            preemptible_percentage=preemptible_percentage,
+            provisioning_model=provisioning_model,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             draining_timeout: Optional[int] = None,
+             preemptible_percentage: Optional[int] = None,
+             provisioning_model: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if draining_timeout is not None:
-            pulumi.set(__self__, "draining_timeout", draining_timeout)
+            _setter("draining_timeout", draining_timeout)
         if preemptible_percentage is not None:
-            pulumi.set(__self__, "preemptible_percentage", preemptible_percentage)
+            _setter("preemptible_percentage", preemptible_percentage)
         if provisioning_model is not None:
-            pulumi.set(__self__, "provisioning_model", provisioning_model)
+            _setter("provisioning_model", provisioning_model)
 
     @property
     @pulumi.getter(name="drainingTimeout")
@@ -2034,11 +2391,24 @@ class OceanImportUpdatePolicy(dict):
                  should_roll: bool,
                  conditioned_roll: Optional[bool] = None,
                  roll_config: Optional['outputs.OceanImportUpdatePolicyRollConfig'] = None):
-        pulumi.set(__self__, "should_roll", should_roll)
+        OceanImportUpdatePolicy._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            should_roll=should_roll,
+            conditioned_roll=conditioned_roll,
+            roll_config=roll_config,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             should_roll: bool,
+             conditioned_roll: Optional[bool] = None,
+             roll_config: Optional['outputs.OceanImportUpdatePolicyRollConfig'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("should_roll", should_roll)
         if conditioned_roll is not None:
-            pulumi.set(__self__, "conditioned_roll", conditioned_roll)
+            _setter("conditioned_roll", conditioned_roll)
         if roll_config is not None:
-            pulumi.set(__self__, "roll_config", roll_config)
+            _setter("roll_config", roll_config)
 
     @property
     @pulumi.getter(name="shouldRoll")
@@ -2094,13 +2464,28 @@ class OceanImportUpdatePolicyRollConfig(dict):
                import pulumi
                ```
         """
-        pulumi.set(__self__, "batch_size_percentage", batch_size_percentage)
+        OceanImportUpdatePolicyRollConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            batch_size_percentage=batch_size_percentage,
+            batch_min_healthy_percentage=batch_min_healthy_percentage,
+            launch_spec_ids=launch_spec_ids,
+            respect_pdb=respect_pdb,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             batch_size_percentage: int,
+             batch_min_healthy_percentage: Optional[int] = None,
+             launch_spec_ids: Optional[Sequence[str]] = None,
+             respect_pdb: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("batch_size_percentage", batch_size_percentage)
         if batch_min_healthy_percentage is not None:
-            pulumi.set(__self__, "batch_min_healthy_percentage", batch_min_healthy_percentage)
+            _setter("batch_min_healthy_percentage", batch_min_healthy_percentage)
         if launch_spec_ids is not None:
-            pulumi.set(__self__, "launch_spec_ids", launch_spec_ids)
+            _setter("launch_spec_ids", launch_spec_ids)
         if respect_pdb is not None:
-            pulumi.set(__self__, "respect_pdb", respect_pdb)
+            _setter("respect_pdb", respect_pdb)
 
     @property
     @pulumi.getter(name="batchSizePercentage")
@@ -2167,13 +2552,28 @@ class OceanLaunchSpecAutoscaleHeadroom(dict):
         :param int gpu_per_unit: Optionally configure the number of GPUS to allocate for each headroom unit.
         :param int memory_per_unit: Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
         """
-        pulumi.set(__self__, "num_of_units", num_of_units)
+        OceanLaunchSpecAutoscaleHeadroom._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            num_of_units=num_of_units,
+            cpu_per_unit=cpu_per_unit,
+            gpu_per_unit=gpu_per_unit,
+            memory_per_unit=memory_per_unit,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             num_of_units: int,
+             cpu_per_unit: Optional[int] = None,
+             gpu_per_unit: Optional[int] = None,
+             memory_per_unit: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("num_of_units", num_of_units)
         if cpu_per_unit is not None:
-            pulumi.set(__self__, "cpu_per_unit", cpu_per_unit)
+            _setter("cpu_per_unit", cpu_per_unit)
         if gpu_per_unit is not None:
-            pulumi.set(__self__, "gpu_per_unit", gpu_per_unit)
+            _setter("gpu_per_unit", gpu_per_unit)
         if memory_per_unit is not None:
-            pulumi.set(__self__, "memory_per_unit", memory_per_unit)
+            _setter("memory_per_unit", memory_per_unit)
 
     @property
     @pulumi.getter(name="numOfUnits")
@@ -2232,8 +2632,17 @@ class OceanLaunchSpecAutoscaleHeadroomsAutomatic(dict):
         """
         :param int auto_headroom_percentage: Number between 0-200 to control the headroom % of the specific Virtual Node Group. Effective when cluster.autoScaler.headroom.automatic.`is_enabled` = true is set on the Ocean cluster.
         """
+        OceanLaunchSpecAutoscaleHeadroomsAutomatic._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            auto_headroom_percentage=auto_headroom_percentage,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             auto_headroom_percentage: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if auto_headroom_percentage is not None:
-            pulumi.set(__self__, "auto_headroom_percentage", auto_headroom_percentage)
+            _setter("auto_headroom_percentage", auto_headroom_percentage)
 
     @property
     @pulumi.getter(name="autoHeadroomPercentage")
@@ -2253,10 +2662,21 @@ class OceanLaunchSpecLabel(dict):
         :param str key: The label key.
         :param str value: The label value.
         """
+        OceanLaunchSpecLabel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: Optional[str] = None,
+             value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if key is not None:
-            pulumi.set(__self__, "key", key)
+            _setter("key", key)
         if value is not None:
-            pulumi.set(__self__, "value", value)
+            _setter("value", value)
 
     @property
     @pulumi.getter
@@ -2284,10 +2704,21 @@ class OceanLaunchSpecMetadata(dict):
         :param str key: The label key.
         :param str value: The label value.
         """
+        OceanLaunchSpecMetadata._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: Optional[str] = None,
+             value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if key is not None:
-            pulumi.set(__self__, "key", key)
+            _setter("key", key)
         if value is not None:
-            pulumi.set(__self__, "value", value)
+            _setter("value", value)
 
     @property
     @pulumi.getter
@@ -2340,13 +2771,28 @@ class OceanLaunchSpecNetworkInterface(dict):
         :param Sequence['OceanLaunchSpecNetworkInterfaceAliasIpRangeArgs'] alias_ip_ranges: use the imported node pool’s associated aliasIpRange to assign secondary IP addresses to the nodes. Cannot be changed after VNG creation.
         :param str project_id: Use a network resource from a different project. Set the project identifier to use its network resource. This parameter is relevant only if the network resource is in a different project.
         """
-        pulumi.set(__self__, "network", network)
+        OceanLaunchSpecNetworkInterface._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            network=network,
+            access_configs=access_configs,
+            alias_ip_ranges=alias_ip_ranges,
+            project_id=project_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             network: str,
+             access_configs: Optional[Sequence['outputs.OceanLaunchSpecNetworkInterfaceAccessConfig']] = None,
+             alias_ip_ranges: Optional[Sequence['outputs.OceanLaunchSpecNetworkInterfaceAliasIpRange']] = None,
+             project_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("network", network)
         if access_configs is not None:
-            pulumi.set(__self__, "access_configs", access_configs)
+            _setter("access_configs", access_configs)
         if alias_ip_ranges is not None:
-            pulumi.set(__self__, "alias_ip_ranges", alias_ip_ranges)
+            _setter("alias_ip_ranges", alias_ip_ranges)
         if project_id is not None:
-            pulumi.set(__self__, "project_id", project_id)
+            _setter("project_id", project_id)
 
     @property
     @pulumi.getter
@@ -2390,10 +2836,21 @@ class OceanLaunchSpecNetworkInterfaceAccessConfig(dict):
         :param str name: The name of the access configuration.
         :param str type: The type of the access configuration.
         """
+        OceanLaunchSpecNetworkInterfaceAccessConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: Optional[str] = None,
+             type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
 
     @property
     @pulumi.getter
@@ -2442,8 +2899,19 @@ class OceanLaunchSpecNetworkInterfaceAliasIpRange(dict):
                
                <a id="update-policy"></a>
         """
-        pulumi.set(__self__, "ip_cidr_range", ip_cidr_range)
-        pulumi.set(__self__, "subnetwork_range_name", subnetwork_range_name)
+        OceanLaunchSpecNetworkInterfaceAliasIpRange._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ip_cidr_range=ip_cidr_range,
+            subnetwork_range_name=subnetwork_range_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ip_cidr_range: str,
+             subnetwork_range_name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("ip_cidr_range", ip_cidr_range)
+        _setter("subnetwork_range_name", subnetwork_range_name)
 
     @property
     @pulumi.getter(name="ipCidrRange")
@@ -2492,10 +2960,21 @@ class OceanLaunchSpecResourceLimits(dict):
         :param int max_instance_count: Option to set a maximum number of instances per virtual node group. Can be null. If set, the value must be greater than or equal to 0.
         :param int min_instance_count: Option to set a minimum number of instances per virtual node group. Can be null. If set, the value must be greater than or equal to 0.
         """
+        OceanLaunchSpecResourceLimits._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            max_instance_count=max_instance_count,
+            min_instance_count=min_instance_count,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             max_instance_count: Optional[int] = None,
+             min_instance_count: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if max_instance_count is not None:
-            pulumi.set(__self__, "max_instance_count", max_instance_count)
+            _setter("max_instance_count", max_instance_count)
         if min_instance_count is not None:
-            pulumi.set(__self__, "min_instance_count", min_instance_count)
+            _setter("min_instance_count", min_instance_count)
 
     @property
     @pulumi.getter(name="maxInstanceCount")
@@ -2550,11 +3029,26 @@ class OceanLaunchSpecSchedulingTask(dict):
         :param str task_type: The activity that you are scheduling. Valid values: "manualHeadroomUpdate".
         :param Sequence['OceanLaunchSpecSchedulingTaskTaskHeadroomArgs'] task_headrooms: The config of this scheduled task. Depends on the value of taskType.
         """
-        pulumi.set(__self__, "cron_expression", cron_expression)
-        pulumi.set(__self__, "is_enabled", is_enabled)
-        pulumi.set(__self__, "task_type", task_type)
+        OceanLaunchSpecSchedulingTask._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cron_expression=cron_expression,
+            is_enabled=is_enabled,
+            task_type=task_type,
+            task_headrooms=task_headrooms,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cron_expression: str,
+             is_enabled: bool,
+             task_type: str,
+             task_headrooms: Optional[Sequence['outputs.OceanLaunchSpecSchedulingTaskTaskHeadroom']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("cron_expression", cron_expression)
+        _setter("is_enabled", is_enabled)
+        _setter("task_type", task_type)
         if task_headrooms is not None:
-            pulumi.set(__self__, "task_headrooms", task_headrooms)
+            _setter("task_headrooms", task_headrooms)
 
     @property
     @pulumi.getter(name="cronExpression")
@@ -2625,13 +3119,28 @@ class OceanLaunchSpecSchedulingTaskTaskHeadroom(dict):
         :param int gpu_per_unit: Optionally configure the number of GPUS to allocate for each headroom unit.
         :param int memory_per_unit: Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
         """
-        pulumi.set(__self__, "num_of_units", num_of_units)
+        OceanLaunchSpecSchedulingTaskTaskHeadroom._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            num_of_units=num_of_units,
+            cpu_per_unit=cpu_per_unit,
+            gpu_per_unit=gpu_per_unit,
+            memory_per_unit=memory_per_unit,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             num_of_units: int,
+             cpu_per_unit: Optional[int] = None,
+             gpu_per_unit: Optional[int] = None,
+             memory_per_unit: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("num_of_units", num_of_units)
         if cpu_per_unit is not None:
-            pulumi.set(__self__, "cpu_per_unit", cpu_per_unit)
+            _setter("cpu_per_unit", cpu_per_unit)
         if gpu_per_unit is not None:
-            pulumi.set(__self__, "gpu_per_unit", gpu_per_unit)
+            _setter("gpu_per_unit", gpu_per_unit)
         if memory_per_unit is not None:
-            pulumi.set(__self__, "memory_per_unit", memory_per_unit)
+            _setter("memory_per_unit", memory_per_unit)
 
     @property
     @pulumi.getter(name="numOfUnits")
@@ -2694,10 +3203,21 @@ class OceanLaunchSpecShieldedInstanceConfig(dict):
         :param bool enable_integrity_monitoring: Boolean. Enable the integrity monitoring parameter on the GCP instances.
         :param bool enable_secure_boot: Boolean. Enable the secure boot parameter on the GCP instances.
         """
+        OceanLaunchSpecShieldedInstanceConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            enable_integrity_monitoring=enable_integrity_monitoring,
+            enable_secure_boot=enable_secure_boot,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             enable_integrity_monitoring: Optional[bool] = None,
+             enable_secure_boot: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if enable_integrity_monitoring is not None:
-            pulumi.set(__self__, "enable_integrity_monitoring", enable_integrity_monitoring)
+            _setter("enable_integrity_monitoring", enable_integrity_monitoring)
         if enable_secure_boot is not None:
-            pulumi.set(__self__, "enable_secure_boot", enable_secure_boot)
+            _setter("enable_secure_boot", enable_secure_boot)
 
     @property
     @pulumi.getter(name="enableIntegrityMonitoring")
@@ -2740,8 +3260,17 @@ class OceanLaunchSpecStorage(dict):
         """
         :param int local_ssd_count: Defines the number of local SSDs to be attached per node for this VNG.
         """
+        OceanLaunchSpecStorage._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            local_ssd_count=local_ssd_count,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             local_ssd_count: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if local_ssd_count is not None:
-            pulumi.set(__self__, "local_ssd_count", local_ssd_count)
+            _setter("local_ssd_count", local_ssd_count)
 
     @property
     @pulumi.getter(name="localSsdCount")
@@ -2776,8 +3305,17 @@ class OceanLaunchSpecStrategy(dict):
         """
         :param int preemptible_percentage: Defines the desired preemptible percentage for this launch specification.
         """
+        OceanLaunchSpecStrategy._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            preemptible_percentage=preemptible_percentage,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             preemptible_percentage: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if preemptible_percentage is not None:
-            pulumi.set(__self__, "preemptible_percentage", preemptible_percentage)
+            _setter("preemptible_percentage", preemptible_percentage)
 
     @property
     @pulumi.getter(name="preemptiblePercentage")
@@ -2799,12 +3337,25 @@ class OceanLaunchSpecTaint(dict):
         :param str key: The label key.
         :param str value: The label value.
         """
+        OceanLaunchSpecTaint._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            effect=effect,
+            key=key,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             effect: Optional[str] = None,
+             key: Optional[str] = None,
+             value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if effect is not None:
-            pulumi.set(__self__, "effect", effect)
+            _setter("effect", effect)
         if key is not None:
-            pulumi.set(__self__, "key", key)
+            _setter("key", key)
         if value is not None:
-            pulumi.set(__self__, "value", value)
+            _setter("value", value)
 
     @property
     @pulumi.getter
@@ -2855,9 +3406,20 @@ class OceanLaunchSpecUpdatePolicy(dict):
     def __init__(__self__, *,
                  should_roll: bool,
                  roll_config: Optional['outputs.OceanLaunchSpecUpdatePolicyRollConfig'] = None):
-        pulumi.set(__self__, "should_roll", should_roll)
+        OceanLaunchSpecUpdatePolicy._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            should_roll=should_roll,
+            roll_config=roll_config,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             should_roll: bool,
+             roll_config: Optional['outputs.OceanLaunchSpecUpdatePolicyRollConfig'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("should_roll", should_roll)
         if roll_config is not None:
-            pulumi.set(__self__, "roll_config", roll_config)
+            _setter("roll_config", roll_config)
 
     @property
     @pulumi.getter(name="shouldRoll")
@@ -2891,7 +3453,16 @@ class OceanLaunchSpecUpdatePolicyRollConfig(dict):
 
     def __init__(__self__, *,
                  batch_size_percentage: int):
-        pulumi.set(__self__, "batch_size_percentage", batch_size_percentage)
+        OceanLaunchSpecUpdatePolicyRollConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            batch_size_percentage=batch_size_percentage,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             batch_size_percentage: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("batch_size_percentage", batch_size_percentage)
 
     @property
     @pulumi.getter(name="batchSizePercentage")

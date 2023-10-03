@@ -15,9 +15,17 @@ public final class OceanIngressControllerArgs extends com.pulumi.resources.Resou
 
     public static final OceanIngressControllerArgs Empty = new OceanIngressControllerArgs();
 
+    /**
+     * - Should an ingress controller managed by Ocean for Apache Spark be installed on the cluster.
+     * 
+     */
     @Import(name="managed")
     private @Nullable Output<Boolean> managed;
 
+    /**
+     * @return - Should an ingress controller managed by Ocean for Apache Spark be installed on the cluster.
+     * 
+     */
     public Optional<Output<Boolean>> managed() {
         return Optional.ofNullable(this.managed);
     }
@@ -46,11 +54,23 @@ public final class OceanIngressControllerArgs extends com.pulumi.resources.Resou
             $ = new OceanIngressControllerArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param managed - Should an ingress controller managed by Ocean for Apache Spark be installed on the cluster.
+         * 
+         * @return builder
+         * 
+         */
         public Builder managed(@Nullable Output<Boolean> managed) {
             $.managed = managed;
             return this;
         }
 
+        /**
+         * @param managed - Should an ingress controller managed by Ocean for Apache Spark be installed on the cluster.
+         * 
+         * @return builder
+         * 
+         */
         public Builder managed(Boolean managed) {
             return managed(Output.of(managed));
         }

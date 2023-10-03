@@ -73,7 +73,7 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public Input<string> MetricName { get; set; } = null!;
 
         /// <summary>
-        /// The desired target capacity of a group. Required if using `"setMinTarget"` as action type
+        /// . The number of the desired target (and minimum) capacity
         /// </summary>
         [Input("minTargetCapacity")]
         public Input<string>? MinTargetCapacity { get; set; }
