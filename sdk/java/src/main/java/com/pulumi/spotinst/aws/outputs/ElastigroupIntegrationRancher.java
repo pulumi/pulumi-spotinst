@@ -17,7 +17,7 @@ public final class ElastigroupIntegrationRancher {
      */
     private String accessKey;
     /**
-     * @return The URL of the Rancher Master host.
+     * @return The URL for the Nomad master host.
      * 
      */
     private String masterHost;
@@ -64,7 +64,7 @@ public final class ElastigroupIntegrationRancher {
         return this.accessKey;
     }
     /**
-     * @return The URL of the Rancher Master host.
+     * @return The URL for the Nomad master host.
      * 
      */
     public String masterHost() {

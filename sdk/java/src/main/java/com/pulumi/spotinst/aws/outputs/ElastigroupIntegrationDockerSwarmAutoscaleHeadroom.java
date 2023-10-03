@@ -12,38 +12,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ElastigroupIntegrationDockerSwarmAutoscaleHeadroom {
     /**
-     * @return Cpu units for compute.
+     * @return How much CPU (MHz) to allocate for headroom unit.
      * 
      */
     private @Nullable Integer cpuPerUnit;
     /**
-     * @return RAM units for compute.
+     * @return How much Memory allocate for headroom unit.
      * 
      */
     private @Nullable Integer memoryPerUnit;
     /**
-     * @return Amount of units for compute.
+     * @return How many units of headroom to allocate.
      * 
      */
     private @Nullable Integer numOfUnits;
 
     private ElastigroupIntegrationDockerSwarmAutoscaleHeadroom() {}
     /**
-     * @return Cpu units for compute.
+     * @return How much CPU (MHz) to allocate for headroom unit.
      * 
      */
     public Optional<Integer> cpuPerUnit() {
         return Optional.ofNullable(this.cpuPerUnit);
     }
     /**
-     * @return RAM units for compute.
+     * @return How much Memory allocate for headroom unit.
      * 
      */
     public Optional<Integer> memoryPerUnit() {
         return Optional.ofNullable(this.memoryPerUnit);
     }
     /**
-     * @return Amount of units for compute.
+     * @return How many units of headroom to allocate.
      * 
      */
     public Optional<Integer> numOfUnits() {

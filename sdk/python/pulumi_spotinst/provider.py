@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ProviderArgs', 'Provider']
@@ -23,12 +23,25 @@ class ProviderArgs:
         :param pulumi.Input[str] feature_flags: Spotinst SDK Feature Flags
         :param pulumi.Input[str] token: Spotinst Personal API Access Token
         """
+        ProviderArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account=account,
+            feature_flags=feature_flags,
+            token=token,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account: Optional[pulumi.Input[str]] = None,
+             feature_flags: Optional[pulumi.Input[str]] = None,
+             token: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if account is not None:
-            pulumi.set(__self__, "account", account)
+            _setter("account", account)
         if feature_flags is not None:
-            pulumi.set(__self__, "feature_flags", feature_flags)
+            _setter("feature_flags", feature_flags)
         if token is not None:
-            pulumi.set(__self__, "token", token)
+            _setter("token", token)
 
     @property
     @pulumi.getter
@@ -110,6 +123,10 @@ class Provider(pulumi.ProviderResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ProviderArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

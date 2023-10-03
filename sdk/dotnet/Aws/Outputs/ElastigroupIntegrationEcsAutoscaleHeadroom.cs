@@ -14,15 +14,15 @@ namespace Pulumi.SpotInst.Aws.Outputs
     public sealed class ElastigroupIntegrationEcsAutoscaleHeadroom
     {
         /// <summary>
-        /// Cpu units for compute.
+        /// How much CPU (MHz) to allocate for headroom unit.
         /// </summary>
         public readonly int? CpuPerUnit;
         /// <summary>
-        /// RAM units for compute.
+        /// How much Memory allocate for headroom unit.
         /// </summary>
         public readonly int? MemoryPerUnit;
         /// <summary>
-        /// Amount of units for compute.
+        /// How many units of headroom to allocate.
         /// </summary>
         public readonly int? NumOfUnits;
 

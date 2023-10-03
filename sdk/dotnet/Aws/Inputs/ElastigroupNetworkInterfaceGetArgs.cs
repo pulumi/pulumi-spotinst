@@ -37,7 +37,7 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public Input<bool>? AssociatePublicIpAddress { get; set; }
 
         /// <summary>
-        /// If set to true, the interface is deleted when the instance is terminated.
+        /// Whether the volume should be destroyed on instance termination.
         /// </summary>
         [Input("deleteOnTermination")]
         public Input<bool>? DeleteOnTermination { get; set; }

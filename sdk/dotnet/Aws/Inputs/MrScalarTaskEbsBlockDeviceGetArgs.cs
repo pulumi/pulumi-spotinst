@@ -31,7 +31,7 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public Input<string> VolumeType { get; set; } = null!;
 
         /// <summary>
-        /// Amount of volumes per instance in the task group.
+        /// Amount of volumes per instance in the core group.
         /// </summary>
         [Input("volumesPerInstance")]
         public Input<int>? VolumesPerInstance { get; set; }

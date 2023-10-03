@@ -157,14 +157,14 @@ public final class ElastigroupScalingDownPolicyArgs extends com.pulumi.resources
     }
 
     /**
-     * The desired target capacity of a group. Required if using `&#34;setMinTarget&#34;` as action type
+     * . The number of the desired target (and minimum) capacity
      * 
      */
     @Import(name="minTargetCapacity")
     private @Nullable Output<String> minTargetCapacity;
 
     /**
-     * @return The desired target capacity of a group. Required if using `&#34;setMinTarget&#34;` as action type
+     * @return . The number of the desired target (and minimum) capacity
      * 
      */
     public Optional<Output<String>> minTargetCapacity() {
@@ -584,7 +584,7 @@ public final class ElastigroupScalingDownPolicyArgs extends com.pulumi.resources
         }
 
         /**
-         * @param minTargetCapacity The desired target capacity of a group. Required if using `&#34;setMinTarget&#34;` as action type
+         * @param minTargetCapacity . The number of the desired target (and minimum) capacity
          * 
          * @return builder
          * 
@@ -595,7 +595,7 @@ public final class ElastigroupScalingDownPolicyArgs extends com.pulumi.resources
         }
 
         /**
-         * @param minTargetCapacity The desired target capacity of a group. Required if using `&#34;setMinTarget&#34;` as action type
+         * @param minTargetCapacity . The number of the desired target (and minimum) capacity
          * 
          * @return builder
          * 

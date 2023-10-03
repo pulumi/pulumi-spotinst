@@ -69,9 +69,17 @@ public final class ElastigroupState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.availabilityZones);
     }
 
+    /**
+     * Describes the backend service configurations.
+     * 
+     */
     @Import(name="backendServices")
     private @Nullable Output<List<ElastigroupBackendServiceArgs>> backendServices;
 
+    /**
+     * @return Describes the backend service configurations.
+     * 
+     */
     public Optional<Output<List<ElastigroupBackendServiceArgs>>> backendServices() {
         return Optional.ofNullable(this.backendServices);
     }
@@ -143,9 +151,17 @@ public final class ElastigroupState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.fallbackToOndemand);
     }
 
+    /**
+     * Defines the GPU configuration.
+     * 
+     */
     @Import(name="gpu")
     private @Nullable Output<List<ElastigroupGpuArgs>> gpu;
 
+    /**
+     * @return Defines the GPU configuration.
+     * 
+     */
     public Optional<Output<List<ElastigroupGpuArgs>>> gpu() {
         return Optional.ofNullable(this.gpu);
     }
@@ -698,15 +714,33 @@ public final class ElastigroupState extends com.pulumi.resources.ResourceArgs {
             return availabilityZones(List.of(availabilityZones));
         }
 
+        /**
+         * @param backendServices Describes the backend service configurations.
+         * 
+         * @return builder
+         * 
+         */
         public Builder backendServices(@Nullable Output<List<ElastigroupBackendServiceArgs>> backendServices) {
             $.backendServices = backendServices;
             return this;
         }
 
+        /**
+         * @param backendServices Describes the backend service configurations.
+         * 
+         * @return builder
+         * 
+         */
         public Builder backendServices(List<ElastigroupBackendServiceArgs> backendServices) {
             return backendServices(Output.of(backendServices));
         }
 
+        /**
+         * @param backendServices Describes the backend service configurations.
+         * 
+         * @return builder
+         * 
+         */
         public Builder backendServices(ElastigroupBackendServiceArgs... backendServices) {
             return backendServices(List.of(backendServices));
         }
@@ -808,15 +842,33 @@ public final class ElastigroupState extends com.pulumi.resources.ResourceArgs {
             return fallbackToOndemand(Output.of(fallbackToOndemand));
         }
 
+        /**
+         * @param gpu Defines the GPU configuration.
+         * 
+         * @return builder
+         * 
+         */
         public Builder gpu(@Nullable Output<List<ElastigroupGpuArgs>> gpu) {
             $.gpu = gpu;
             return this;
         }
 
+        /**
+         * @param gpu Defines the GPU configuration.
+         * 
+         * @return builder
+         * 
+         */
         public Builder gpu(List<ElastigroupGpuArgs> gpu) {
             return gpu(Output.of(gpu));
         }
 
+        /**
+         * @param gpu Defines the GPU configuration.
+         * 
+         * @return builder
+         * 
+         */
         public Builder gpu(ElastigroupGpuArgs... gpu) {
             return gpu(List.of(gpu));
         }

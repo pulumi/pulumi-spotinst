@@ -12,13 +12,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class OceanIngressCustomEndpoint {
+    /**
+     * @return - The address the Ocean for Apache Spark control plane will use when addressing the cluster.
+     * 
+     */
     private @Nullable String address;
+    /**
+     * @return - Should the Ocean for Apache Spark control plane address the cluster using a custom endpoint. Use this to specify the DNS address of an externally provisioned (unmanaged) load balancer.
+     * 
+     */
     private @Nullable Boolean enabled;
 
     private OceanIngressCustomEndpoint() {}
+    /**
+     * @return - The address the Ocean for Apache Spark control plane will use when addressing the cluster.
+     * 
+     */
     public Optional<String> address() {
         return Optional.ofNullable(this.address);
     }
+    /**
+     * @return - Should the Ocean for Apache Spark control plane address the cluster using a custom endpoint. Use this to specify the DNS address of an externally provisioned (unmanaged) load balancer.
+     * 
+     */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }

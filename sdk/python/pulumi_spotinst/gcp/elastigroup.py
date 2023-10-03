@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -57,9 +57,11 @@ class ElastigroupArgs:
         :param pulumi.Input[int] desired_capacity: The desired number of instances the group should have at any time.
         :param pulumi.Input[bool] auto_healing: Enable auto-replacement of unhealthy instances.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] availability_zones: List of availability zones for the group.
+        :param pulumi.Input[Sequence[pulumi.Input['ElastigroupBackendServiceArgs']]] backend_services: Describes the backend service configurations.
         :param pulumi.Input[str] description: The region your GCP group will be created in.
         :param pulumi.Input[int] draining_timeout: Time (seconds) the instance is allowed to run after it is detached from the group. This is to allow the instance time to drain all the current TCP connections before terminating it.
         :param pulumi.Input[bool] fallback_to_ondemand: Activate fallback-to-on-demand. When provisioning an instance, if no Preemptible market is available, fallback-to-on-demand will provision an On-Demand instance to maintain the group capacity.
+        :param pulumi.Input[Sequence[pulumi.Input['ElastigroupGpuArgs']]] gpu: Defines the GPU configuration.
         :param pulumi.Input[int] health_check_grace_period: Period of time (seconds) to wait for VM to reach healthiness before monitoring for unhealthiness.
         :param pulumi.Input[str] health_check_type: The kind of health check to perform when monitoring for unhealthiness.
         :param pulumi.Input[str] instance_name_prefix: Set an instance name prefix to be used for all launched instances and their boot disk. The prefix value should comply with the following limitations: 
@@ -92,80 +94,159 @@ class ElastigroupArgs:
                import pulumi
                ```
         """
-        pulumi.set(__self__, "desired_capacity", desired_capacity)
+        ElastigroupArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            desired_capacity=desired_capacity,
+            auto_healing=auto_healing,
+            availability_zones=availability_zones,
+            backend_services=backend_services,
+            description=description,
+            disks=disks,
+            draining_timeout=draining_timeout,
+            fallback_to_ondemand=fallback_to_ondemand,
+            gpu=gpu,
+            health_check_grace_period=health_check_grace_period,
+            health_check_type=health_check_type,
+            instance_name_prefix=instance_name_prefix,
+            instance_types_customs=instance_types_customs,
+            instance_types_ondemand=instance_types_ondemand,
+            instance_types_preemptibles=instance_types_preemptibles,
+            integration_docker_swarm=integration_docker_swarm,
+            integration_gke=integration_gke,
+            ip_forwarding=ip_forwarding,
+            labels=labels,
+            max_size=max_size,
+            metadatas=metadatas,
+            min_size=min_size,
+            name=name,
+            network_interfaces=network_interfaces,
+            ondemand_count=ondemand_count,
+            preemptible_percentage=preemptible_percentage,
+            provisioning_model=provisioning_model,
+            scaling_down_policies=scaling_down_policies,
+            scaling_up_policies=scaling_up_policies,
+            scheduled_tasks=scheduled_tasks,
+            service_account=service_account,
+            shutdown_script=shutdown_script,
+            startup_script=startup_script,
+            subnets=subnets,
+            tags=tags,
+            unhealthy_duration=unhealthy_duration,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             desired_capacity: pulumi.Input[int],
+             auto_healing: Optional[pulumi.Input[bool]] = None,
+             availability_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             backend_services: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupBackendServiceArgs']]]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             disks: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupDiskArgs']]]] = None,
+             draining_timeout: Optional[pulumi.Input[int]] = None,
+             fallback_to_ondemand: Optional[pulumi.Input[bool]] = None,
+             gpu: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupGpuArgs']]]] = None,
+             health_check_grace_period: Optional[pulumi.Input[int]] = None,
+             health_check_type: Optional[pulumi.Input[str]] = None,
+             instance_name_prefix: Optional[pulumi.Input[str]] = None,
+             instance_types_customs: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupInstanceTypesCustomArgs']]]] = None,
+             instance_types_ondemand: Optional[pulumi.Input[str]] = None,
+             instance_types_preemptibles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             integration_docker_swarm: Optional[pulumi.Input['ElastigroupIntegrationDockerSwarmArgs']] = None,
+             integration_gke: Optional[pulumi.Input['ElastigroupIntegrationGkeArgs']] = None,
+             ip_forwarding: Optional[pulumi.Input[bool]] = None,
+             labels: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupLabelArgs']]]] = None,
+             max_size: Optional[pulumi.Input[int]] = None,
+             metadatas: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupMetadataArgs']]]] = None,
+             min_size: Optional[pulumi.Input[int]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupNetworkInterfaceArgs']]]] = None,
+             ondemand_count: Optional[pulumi.Input[int]] = None,
+             preemptible_percentage: Optional[pulumi.Input[int]] = None,
+             provisioning_model: Optional[pulumi.Input[str]] = None,
+             scaling_down_policies: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingDownPolicyArgs']]]] = None,
+             scaling_up_policies: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingUpPolicyArgs']]]] = None,
+             scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScheduledTaskArgs']]]] = None,
+             service_account: Optional[pulumi.Input[str]] = None,
+             shutdown_script: Optional[pulumi.Input[str]] = None,
+             startup_script: Optional[pulumi.Input[str]] = None,
+             subnets: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupSubnetArgs']]]] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             unhealthy_duration: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("desired_capacity", desired_capacity)
         if auto_healing is not None:
-            pulumi.set(__self__, "auto_healing", auto_healing)
+            _setter("auto_healing", auto_healing)
         if availability_zones is not None:
             warnings.warn("""This field will soon be handled by Region in Subnets""", DeprecationWarning)
             pulumi.log.warn("""availability_zones is deprecated: This field will soon be handled by Region in Subnets""")
         if availability_zones is not None:
-            pulumi.set(__self__, "availability_zones", availability_zones)
+            _setter("availability_zones", availability_zones)
         if backend_services is not None:
-            pulumi.set(__self__, "backend_services", backend_services)
+            _setter("backend_services", backend_services)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if disks is not None:
-            pulumi.set(__self__, "disks", disks)
+            _setter("disks", disks)
         if draining_timeout is not None:
-            pulumi.set(__self__, "draining_timeout", draining_timeout)
+            _setter("draining_timeout", draining_timeout)
         if fallback_to_ondemand is not None:
-            pulumi.set(__self__, "fallback_to_ondemand", fallback_to_ondemand)
+            _setter("fallback_to_ondemand", fallback_to_ondemand)
         if gpu is not None:
-            pulumi.set(__self__, "gpu", gpu)
+            _setter("gpu", gpu)
         if health_check_grace_period is not None:
-            pulumi.set(__self__, "health_check_grace_period", health_check_grace_period)
+            _setter("health_check_grace_period", health_check_grace_period)
         if health_check_type is not None:
-            pulumi.set(__self__, "health_check_type", health_check_type)
+            _setter("health_check_type", health_check_type)
         if instance_name_prefix is not None:
-            pulumi.set(__self__, "instance_name_prefix", instance_name_prefix)
+            _setter("instance_name_prefix", instance_name_prefix)
         if instance_types_customs is not None:
-            pulumi.set(__self__, "instance_types_customs", instance_types_customs)
+            _setter("instance_types_customs", instance_types_customs)
         if instance_types_ondemand is not None:
-            pulumi.set(__self__, "instance_types_ondemand", instance_types_ondemand)
+            _setter("instance_types_ondemand", instance_types_ondemand)
         if instance_types_preemptibles is not None:
-            pulumi.set(__self__, "instance_types_preemptibles", instance_types_preemptibles)
+            _setter("instance_types_preemptibles", instance_types_preemptibles)
         if integration_docker_swarm is not None:
-            pulumi.set(__self__, "integration_docker_swarm", integration_docker_swarm)
+            _setter("integration_docker_swarm", integration_docker_swarm)
         if integration_gke is not None:
-            pulumi.set(__self__, "integration_gke", integration_gke)
+            _setter("integration_gke", integration_gke)
         if ip_forwarding is not None:
-            pulumi.set(__self__, "ip_forwarding", ip_forwarding)
+            _setter("ip_forwarding", ip_forwarding)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if max_size is not None:
-            pulumi.set(__self__, "max_size", max_size)
+            _setter("max_size", max_size)
         if metadatas is not None:
-            pulumi.set(__self__, "metadatas", metadatas)
+            _setter("metadatas", metadatas)
         if min_size is not None:
-            pulumi.set(__self__, "min_size", min_size)
+            _setter("min_size", min_size)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if network_interfaces is not None:
-            pulumi.set(__self__, "network_interfaces", network_interfaces)
+            _setter("network_interfaces", network_interfaces)
         if ondemand_count is not None:
-            pulumi.set(__self__, "ondemand_count", ondemand_count)
+            _setter("ondemand_count", ondemand_count)
         if preemptible_percentage is not None:
-            pulumi.set(__self__, "preemptible_percentage", preemptible_percentage)
+            _setter("preemptible_percentage", preemptible_percentage)
         if provisioning_model is not None:
-            pulumi.set(__self__, "provisioning_model", provisioning_model)
+            _setter("provisioning_model", provisioning_model)
         if scaling_down_policies is not None:
-            pulumi.set(__self__, "scaling_down_policies", scaling_down_policies)
+            _setter("scaling_down_policies", scaling_down_policies)
         if scaling_up_policies is not None:
-            pulumi.set(__self__, "scaling_up_policies", scaling_up_policies)
+            _setter("scaling_up_policies", scaling_up_policies)
         if scheduled_tasks is not None:
-            pulumi.set(__self__, "scheduled_tasks", scheduled_tasks)
+            _setter("scheduled_tasks", scheduled_tasks)
         if service_account is not None:
-            pulumi.set(__self__, "service_account", service_account)
+            _setter("service_account", service_account)
         if shutdown_script is not None:
-            pulumi.set(__self__, "shutdown_script", shutdown_script)
+            _setter("shutdown_script", shutdown_script)
         if startup_script is not None:
-            pulumi.set(__self__, "startup_script", startup_script)
+            _setter("startup_script", startup_script)
         if subnets is not None:
-            pulumi.set(__self__, "subnets", subnets)
+            _setter("subnets", subnets)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if unhealthy_duration is not None:
-            pulumi.set(__self__, "unhealthy_duration", unhealthy_duration)
+            _setter("unhealthy_duration", unhealthy_duration)
 
     @property
     @pulumi.getter(name="desiredCapacity")
@@ -209,6 +290,9 @@ class ElastigroupArgs:
     @property
     @pulumi.getter(name="backendServices")
     def backend_services(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupBackendServiceArgs']]]]:
+        """
+        Describes the backend service configurations.
+        """
         return pulumi.get(self, "backend_services")
 
     @backend_services.setter
@@ -263,6 +347,9 @@ class ElastigroupArgs:
     @property
     @pulumi.getter
     def gpu(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupGpuArgs']]]]:
+        """
+        Defines the GPU configuration.
+        """
         return pulumi.get(self, "gpu")
 
     @gpu.setter
@@ -633,10 +720,12 @@ class _ElastigroupState:
         Input properties used for looking up and filtering Elastigroup resources.
         :param pulumi.Input[bool] auto_healing: Enable auto-replacement of unhealthy instances.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] availability_zones: List of availability zones for the group.
+        :param pulumi.Input[Sequence[pulumi.Input['ElastigroupBackendServiceArgs']]] backend_services: Describes the backend service configurations.
         :param pulumi.Input[str] description: The region your GCP group will be created in.
         :param pulumi.Input[int] desired_capacity: The desired number of instances the group should have at any time.
         :param pulumi.Input[int] draining_timeout: Time (seconds) the instance is allowed to run after it is detached from the group. This is to allow the instance time to drain all the current TCP connections before terminating it.
         :param pulumi.Input[bool] fallback_to_ondemand: Activate fallback-to-on-demand. When provisioning an instance, if no Preemptible market is available, fallback-to-on-demand will provision an On-Demand instance to maintain the group capacity.
+        :param pulumi.Input[Sequence[pulumi.Input['ElastigroupGpuArgs']]] gpu: Defines the GPU configuration.
         :param pulumi.Input[int] health_check_grace_period: Period of time (seconds) to wait for VM to reach healthiness before monitoring for unhealthiness.
         :param pulumi.Input[str] health_check_type: The kind of health check to perform when monitoring for unhealthiness.
         :param pulumi.Input[str] instance_name_prefix: Set an instance name prefix to be used for all launched instances and their boot disk. The prefix value should comply with the following limitations: 
@@ -669,81 +758,160 @@ class _ElastigroupState:
                import pulumi
                ```
         """
+        _ElastigroupState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            auto_healing=auto_healing,
+            availability_zones=availability_zones,
+            backend_services=backend_services,
+            description=description,
+            desired_capacity=desired_capacity,
+            disks=disks,
+            draining_timeout=draining_timeout,
+            fallback_to_ondemand=fallback_to_ondemand,
+            gpu=gpu,
+            health_check_grace_period=health_check_grace_period,
+            health_check_type=health_check_type,
+            instance_name_prefix=instance_name_prefix,
+            instance_types_customs=instance_types_customs,
+            instance_types_ondemand=instance_types_ondemand,
+            instance_types_preemptibles=instance_types_preemptibles,
+            integration_docker_swarm=integration_docker_swarm,
+            integration_gke=integration_gke,
+            ip_forwarding=ip_forwarding,
+            labels=labels,
+            max_size=max_size,
+            metadatas=metadatas,
+            min_size=min_size,
+            name=name,
+            network_interfaces=network_interfaces,
+            ondemand_count=ondemand_count,
+            preemptible_percentage=preemptible_percentage,
+            provisioning_model=provisioning_model,
+            scaling_down_policies=scaling_down_policies,
+            scaling_up_policies=scaling_up_policies,
+            scheduled_tasks=scheduled_tasks,
+            service_account=service_account,
+            shutdown_script=shutdown_script,
+            startup_script=startup_script,
+            subnets=subnets,
+            tags=tags,
+            unhealthy_duration=unhealthy_duration,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             auto_healing: Optional[pulumi.Input[bool]] = None,
+             availability_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             backend_services: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupBackendServiceArgs']]]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             desired_capacity: Optional[pulumi.Input[int]] = None,
+             disks: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupDiskArgs']]]] = None,
+             draining_timeout: Optional[pulumi.Input[int]] = None,
+             fallback_to_ondemand: Optional[pulumi.Input[bool]] = None,
+             gpu: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupGpuArgs']]]] = None,
+             health_check_grace_period: Optional[pulumi.Input[int]] = None,
+             health_check_type: Optional[pulumi.Input[str]] = None,
+             instance_name_prefix: Optional[pulumi.Input[str]] = None,
+             instance_types_customs: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupInstanceTypesCustomArgs']]]] = None,
+             instance_types_ondemand: Optional[pulumi.Input[str]] = None,
+             instance_types_preemptibles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             integration_docker_swarm: Optional[pulumi.Input['ElastigroupIntegrationDockerSwarmArgs']] = None,
+             integration_gke: Optional[pulumi.Input['ElastigroupIntegrationGkeArgs']] = None,
+             ip_forwarding: Optional[pulumi.Input[bool]] = None,
+             labels: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupLabelArgs']]]] = None,
+             max_size: Optional[pulumi.Input[int]] = None,
+             metadatas: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupMetadataArgs']]]] = None,
+             min_size: Optional[pulumi.Input[int]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupNetworkInterfaceArgs']]]] = None,
+             ondemand_count: Optional[pulumi.Input[int]] = None,
+             preemptible_percentage: Optional[pulumi.Input[int]] = None,
+             provisioning_model: Optional[pulumi.Input[str]] = None,
+             scaling_down_policies: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingDownPolicyArgs']]]] = None,
+             scaling_up_policies: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingUpPolicyArgs']]]] = None,
+             scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScheduledTaskArgs']]]] = None,
+             service_account: Optional[pulumi.Input[str]] = None,
+             shutdown_script: Optional[pulumi.Input[str]] = None,
+             startup_script: Optional[pulumi.Input[str]] = None,
+             subnets: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupSubnetArgs']]]] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             unhealthy_duration: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if auto_healing is not None:
-            pulumi.set(__self__, "auto_healing", auto_healing)
+            _setter("auto_healing", auto_healing)
         if availability_zones is not None:
             warnings.warn("""This field will soon be handled by Region in Subnets""", DeprecationWarning)
             pulumi.log.warn("""availability_zones is deprecated: This field will soon be handled by Region in Subnets""")
         if availability_zones is not None:
-            pulumi.set(__self__, "availability_zones", availability_zones)
+            _setter("availability_zones", availability_zones)
         if backend_services is not None:
-            pulumi.set(__self__, "backend_services", backend_services)
+            _setter("backend_services", backend_services)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if desired_capacity is not None:
-            pulumi.set(__self__, "desired_capacity", desired_capacity)
+            _setter("desired_capacity", desired_capacity)
         if disks is not None:
-            pulumi.set(__self__, "disks", disks)
+            _setter("disks", disks)
         if draining_timeout is not None:
-            pulumi.set(__self__, "draining_timeout", draining_timeout)
+            _setter("draining_timeout", draining_timeout)
         if fallback_to_ondemand is not None:
-            pulumi.set(__self__, "fallback_to_ondemand", fallback_to_ondemand)
+            _setter("fallback_to_ondemand", fallback_to_ondemand)
         if gpu is not None:
-            pulumi.set(__self__, "gpu", gpu)
+            _setter("gpu", gpu)
         if health_check_grace_period is not None:
-            pulumi.set(__self__, "health_check_grace_period", health_check_grace_period)
+            _setter("health_check_grace_period", health_check_grace_period)
         if health_check_type is not None:
-            pulumi.set(__self__, "health_check_type", health_check_type)
+            _setter("health_check_type", health_check_type)
         if instance_name_prefix is not None:
-            pulumi.set(__self__, "instance_name_prefix", instance_name_prefix)
+            _setter("instance_name_prefix", instance_name_prefix)
         if instance_types_customs is not None:
-            pulumi.set(__self__, "instance_types_customs", instance_types_customs)
+            _setter("instance_types_customs", instance_types_customs)
         if instance_types_ondemand is not None:
-            pulumi.set(__self__, "instance_types_ondemand", instance_types_ondemand)
+            _setter("instance_types_ondemand", instance_types_ondemand)
         if instance_types_preemptibles is not None:
-            pulumi.set(__self__, "instance_types_preemptibles", instance_types_preemptibles)
+            _setter("instance_types_preemptibles", instance_types_preemptibles)
         if integration_docker_swarm is not None:
-            pulumi.set(__self__, "integration_docker_swarm", integration_docker_swarm)
+            _setter("integration_docker_swarm", integration_docker_swarm)
         if integration_gke is not None:
-            pulumi.set(__self__, "integration_gke", integration_gke)
+            _setter("integration_gke", integration_gke)
         if ip_forwarding is not None:
-            pulumi.set(__self__, "ip_forwarding", ip_forwarding)
+            _setter("ip_forwarding", ip_forwarding)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if max_size is not None:
-            pulumi.set(__self__, "max_size", max_size)
+            _setter("max_size", max_size)
         if metadatas is not None:
-            pulumi.set(__self__, "metadatas", metadatas)
+            _setter("metadatas", metadatas)
         if min_size is not None:
-            pulumi.set(__self__, "min_size", min_size)
+            _setter("min_size", min_size)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if network_interfaces is not None:
-            pulumi.set(__self__, "network_interfaces", network_interfaces)
+            _setter("network_interfaces", network_interfaces)
         if ondemand_count is not None:
-            pulumi.set(__self__, "ondemand_count", ondemand_count)
+            _setter("ondemand_count", ondemand_count)
         if preemptible_percentage is not None:
-            pulumi.set(__self__, "preemptible_percentage", preemptible_percentage)
+            _setter("preemptible_percentage", preemptible_percentage)
         if provisioning_model is not None:
-            pulumi.set(__self__, "provisioning_model", provisioning_model)
+            _setter("provisioning_model", provisioning_model)
         if scaling_down_policies is not None:
-            pulumi.set(__self__, "scaling_down_policies", scaling_down_policies)
+            _setter("scaling_down_policies", scaling_down_policies)
         if scaling_up_policies is not None:
-            pulumi.set(__self__, "scaling_up_policies", scaling_up_policies)
+            _setter("scaling_up_policies", scaling_up_policies)
         if scheduled_tasks is not None:
-            pulumi.set(__self__, "scheduled_tasks", scheduled_tasks)
+            _setter("scheduled_tasks", scheduled_tasks)
         if service_account is not None:
-            pulumi.set(__self__, "service_account", service_account)
+            _setter("service_account", service_account)
         if shutdown_script is not None:
-            pulumi.set(__self__, "shutdown_script", shutdown_script)
+            _setter("shutdown_script", shutdown_script)
         if startup_script is not None:
-            pulumi.set(__self__, "startup_script", startup_script)
+            _setter("startup_script", startup_script)
         if subnets is not None:
-            pulumi.set(__self__, "subnets", subnets)
+            _setter("subnets", subnets)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if unhealthy_duration is not None:
-            pulumi.set(__self__, "unhealthy_duration", unhealthy_duration)
+            _setter("unhealthy_duration", unhealthy_duration)
 
     @property
     @pulumi.getter(name="autoHealing")
@@ -775,6 +943,9 @@ class _ElastigroupState:
     @property
     @pulumi.getter(name="backendServices")
     def backend_services(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupBackendServiceArgs']]]]:
+        """
+        Describes the backend service configurations.
+        """
         return pulumi.get(self, "backend_services")
 
     @backend_services.setter
@@ -841,6 +1012,9 @@ class _ElastigroupState:
     @property
     @pulumi.getter
     def gpu(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupGpuArgs']]]]:
+        """
+        Defines the GPU configuration.
+        """
         return pulumi.get(self, "gpu")
 
     @gpu.setter
@@ -1309,10 +1483,12 @@ class Elastigroup(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] auto_healing: Enable auto-replacement of unhealthy instances.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] availability_zones: List of availability zones for the group.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupBackendServiceArgs']]]] backend_services: Describes the backend service configurations.
         :param pulumi.Input[str] description: The region your GCP group will be created in.
         :param pulumi.Input[int] desired_capacity: The desired number of instances the group should have at any time.
         :param pulumi.Input[int] draining_timeout: Time (seconds) the instance is allowed to run after it is detached from the group. This is to allow the instance time to drain all the current TCP connections before terminating it.
         :param pulumi.Input[bool] fallback_to_ondemand: Activate fallback-to-on-demand. When provisioning an instance, if no Preemptible market is available, fallback-to-on-demand will provision an On-Demand instance to maintain the group capacity.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupGpuArgs']]]] gpu: Defines the GPU configuration.
         :param pulumi.Input[int] health_check_grace_period: Period of time (seconds) to wait for VM to reach healthiness before monitoring for unhealthiness.
         :param pulumi.Input[str] health_check_type: The kind of health check to perform when monitoring for unhealthiness.
         :param pulumi.Input[str] instance_name_prefix: Set an instance name prefix to be used for all launched instances and their boot disk. The prefix value should comply with the following limitations: 
@@ -1456,6 +1632,10 @@ class Elastigroup(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ElastigroupArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -1507,9 +1687,6 @@ class Elastigroup(pulumi.CustomResource):
             __props__ = ElastigroupArgs.__new__(ElastigroupArgs)
 
             __props__.__dict__["auto_healing"] = auto_healing
-            if availability_zones is not None and not opts.urn:
-                warnings.warn("""This field will soon be handled by Region in Subnets""", DeprecationWarning)
-                pulumi.log.warn("""availability_zones is deprecated: This field will soon be handled by Region in Subnets""")
             __props__.__dict__["availability_zones"] = availability_zones
             __props__.__dict__["backend_services"] = backend_services
             __props__.__dict__["description"] = description
@@ -1526,7 +1703,17 @@ class Elastigroup(pulumi.CustomResource):
             __props__.__dict__["instance_types_customs"] = instance_types_customs
             __props__.__dict__["instance_types_ondemand"] = instance_types_ondemand
             __props__.__dict__["instance_types_preemptibles"] = instance_types_preemptibles
+            if integration_docker_swarm is not None and not isinstance(integration_docker_swarm, ElastigroupIntegrationDockerSwarmArgs):
+                integration_docker_swarm = integration_docker_swarm or {}
+                def _setter(key, value):
+                    integration_docker_swarm[key] = value
+                ElastigroupIntegrationDockerSwarmArgs._configure(_setter, **integration_docker_swarm)
             __props__.__dict__["integration_docker_swarm"] = integration_docker_swarm
+            if integration_gke is not None and not isinstance(integration_gke, ElastigroupIntegrationGkeArgs):
+                integration_gke = integration_gke or {}
+                def _setter(key, value):
+                    integration_gke[key] = value
+                ElastigroupIntegrationGkeArgs._configure(_setter, **integration_gke)
             __props__.__dict__["integration_gke"] = integration_gke
             __props__.__dict__["ip_forwarding"] = ip_forwarding
             __props__.__dict__["labels"] = labels
@@ -1602,10 +1789,12 @@ class Elastigroup(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] auto_healing: Enable auto-replacement of unhealthy instances.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] availability_zones: List of availability zones for the group.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupBackendServiceArgs']]]] backend_services: Describes the backend service configurations.
         :param pulumi.Input[str] description: The region your GCP group will be created in.
         :param pulumi.Input[int] desired_capacity: The desired number of instances the group should have at any time.
         :param pulumi.Input[int] draining_timeout: Time (seconds) the instance is allowed to run after it is detached from the group. This is to allow the instance time to drain all the current TCP connections before terminating it.
         :param pulumi.Input[bool] fallback_to_ondemand: Activate fallback-to-on-demand. When provisioning an instance, if no Preemptible market is available, fallback-to-on-demand will provision an On-Demand instance to maintain the group capacity.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupGpuArgs']]]] gpu: Defines the GPU configuration.
         :param pulumi.Input[int] health_check_grace_period: Period of time (seconds) to wait for VM to reach healthiness before monitoring for unhealthiness.
         :param pulumi.Input[str] health_check_type: The kind of health check to perform when monitoring for unhealthiness.
         :param pulumi.Input[str] instance_name_prefix: Set an instance name prefix to be used for all launched instances and their boot disk. The prefix value should comply with the following limitations: 
@@ -1702,6 +1891,9 @@ class Elastigroup(pulumi.CustomResource):
     @property
     @pulumi.getter(name="backendServices")
     def backend_services(self) -> pulumi.Output[Optional[Sequence['outputs.ElastigroupBackendService']]]:
+        """
+        Describes the backend service configurations.
+        """
         return pulumi.get(self, "backend_services")
 
     @property
@@ -1744,6 +1936,9 @@ class Elastigroup(pulumi.CustomResource):
     @property
     @pulumi.getter
     def gpu(self) -> pulumi.Output[Optional[Sequence['outputs.ElastigroupGpu']]]:
+        """
+        Defines the GPU configuration.
+        """
         return pulumi.get(self, "gpu")
 
     @property

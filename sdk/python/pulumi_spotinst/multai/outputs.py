@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -25,10 +25,21 @@ class BalancerConnectionTimeouts(dict):
     def __init__(__self__, *,
                  draining: Optional[int] = None,
                  idle: Optional[int] = None):
+        BalancerConnectionTimeouts._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            draining=draining,
+            idle=idle,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             draining: Optional[int] = None,
+             idle: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if draining is not None:
-            pulumi.set(__self__, "draining", draining)
+            _setter("draining", draining)
         if idle is not None:
-            pulumi.set(__self__, "idle", idle)
+            _setter("idle", idle)
 
     @property
     @pulumi.getter
@@ -46,8 +57,19 @@ class BalancerTag(dict):
     def __init__(__self__, *,
                  key: str,
                  value: str):
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "value", value)
+        BalancerTag._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: str,
+             value: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("key", key)
+        _setter("value", value)
 
     @property
     @pulumi.getter
@@ -65,8 +87,19 @@ class ListenerTag(dict):
     def __init__(__self__, *,
                  key: str,
                  value: str):
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "value", value)
+        ListenerTag._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: str,
+             value: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("key", key)
+        _setter("value", value)
 
     @property
     @pulumi.getter
@@ -115,12 +148,31 @@ class ListenerTlsConfig(dict):
                  min_version: str,
                  prefer_server_cipher_suites: bool,
                  session_tickets_disabled: bool):
-        pulumi.set(__self__, "certificate_ids", certificate_ids)
-        pulumi.set(__self__, "cipher_suites", cipher_suites)
-        pulumi.set(__self__, "max_version", max_version)
-        pulumi.set(__self__, "min_version", min_version)
-        pulumi.set(__self__, "prefer_server_cipher_suites", prefer_server_cipher_suites)
-        pulumi.set(__self__, "session_tickets_disabled", session_tickets_disabled)
+        ListenerTlsConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            certificate_ids=certificate_ids,
+            cipher_suites=cipher_suites,
+            max_version=max_version,
+            min_version=min_version,
+            prefer_server_cipher_suites=prefer_server_cipher_suites,
+            session_tickets_disabled=session_tickets_disabled,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             certificate_ids: Sequence[str],
+             cipher_suites: Sequence[str],
+             max_version: str,
+             min_version: str,
+             prefer_server_cipher_suites: bool,
+             session_tickets_disabled: bool,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("certificate_ids", certificate_ids)
+        _setter("cipher_suites", cipher_suites)
+        _setter("max_version", max_version)
+        _setter("min_version", min_version)
+        _setter("prefer_server_cipher_suites", prefer_server_cipher_suites)
+        _setter("session_tickets_disabled", session_tickets_disabled)
 
     @property
     @pulumi.getter(name="certificateIds")
@@ -158,8 +210,19 @@ class RoutingRuleTag(dict):
     def __init__(__self__, *,
                  key: str,
                  value: str):
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "value", value)
+        RoutingRuleTag._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: str,
+             value: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("key", key)
+        _setter("value", value)
 
     @property
     @pulumi.getter
@@ -201,14 +264,35 @@ class TargetSetHealthCheck(dict):
                  timeout: int,
                  unhealthy_threshold: int,
                  port: Optional[int] = None):
-        pulumi.set(__self__, "healthy_threshold", healthy_threshold)
-        pulumi.set(__self__, "interval", interval)
-        pulumi.set(__self__, "path", path)
-        pulumi.set(__self__, "protocol", protocol)
-        pulumi.set(__self__, "timeout", timeout)
-        pulumi.set(__self__, "unhealthy_threshold", unhealthy_threshold)
+        TargetSetHealthCheck._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            healthy_threshold=healthy_threshold,
+            interval=interval,
+            path=path,
+            protocol=protocol,
+            timeout=timeout,
+            unhealthy_threshold=unhealthy_threshold,
+            port=port,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             healthy_threshold: int,
+             interval: int,
+             path: str,
+             protocol: str,
+             timeout: int,
+             unhealthy_threshold: int,
+             port: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("healthy_threshold", healthy_threshold)
+        _setter("interval", interval)
+        _setter("path", path)
+        _setter("protocol", protocol)
+        _setter("timeout", timeout)
+        _setter("unhealthy_threshold", unhealthy_threshold)
         if port is not None:
-            pulumi.set(__self__, "port", port)
+            _setter("port", port)
 
     @property
     @pulumi.getter(name="healthyThreshold")
@@ -251,8 +335,19 @@ class TargetSetTag(dict):
     def __init__(__self__, *,
                  key: str,
                  value: str):
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "value", value)
+        TargetSetTag._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: str,
+             value: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("key", key)
+        _setter("value", value)
 
     @property
     @pulumi.getter
@@ -270,8 +365,19 @@ class TargetTag(dict):
     def __init__(__self__, *,
                  key: str,
                  value: str):
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "value", value)
+        TargetTag._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: str,
+             value: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("key", key)
+        _setter("value", value)
 
     @property
     @pulumi.getter

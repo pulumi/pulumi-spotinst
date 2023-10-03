@@ -112,14 +112,14 @@ public final class ElastigroupScalingUpPolicyArgs extends com.pulumi.resources.R
     }
 
     /**
-     * The desired target capacity of a group. Required if using `&#34;setMaxTarget&#34;` as action type
+     * . The number of the desired target (and maximum) capacity
      * 
      */
     @Import(name="maxTargetCapacity")
     private @Nullable Output<String> maxTargetCapacity;
 
     /**
-     * @return The desired target capacity of a group. Required if using `&#34;setMaxTarget&#34;` as action type
+     * @return . The number of the desired target (and maximum) capacity
      * 
      */
     public Optional<Output<String>> maxTargetCapacity() {
@@ -523,7 +523,7 @@ public final class ElastigroupScalingUpPolicyArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param maxTargetCapacity The desired target capacity of a group. Required if using `&#34;setMaxTarget&#34;` as action type
+         * @param maxTargetCapacity . The number of the desired target (and maximum) capacity
          * 
          * @return builder
          * 
@@ -534,7 +534,7 @@ public final class ElastigroupScalingUpPolicyArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param maxTargetCapacity The desired target capacity of a group. Required if using `&#34;setMaxTarget&#34;` as action type
+         * @param maxTargetCapacity . The number of the desired target (and maximum) capacity
          * 
          * @return builder
          * 

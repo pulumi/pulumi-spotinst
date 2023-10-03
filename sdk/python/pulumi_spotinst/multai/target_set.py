@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -27,17 +27,40 @@ class TargetSetArgs:
         """
         The set of arguments for constructing a TargetSet resource.
         """
-        pulumi.set(__self__, "balancer_id", balancer_id)
-        pulumi.set(__self__, "deployment_id", deployment_id)
-        pulumi.set(__self__, "health_check", health_check)
-        pulumi.set(__self__, "protocol", protocol)
-        pulumi.set(__self__, "weight", weight)
+        TargetSetArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            balancer_id=balancer_id,
+            deployment_id=deployment_id,
+            health_check=health_check,
+            protocol=protocol,
+            weight=weight,
+            name=name,
+            port=port,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             balancer_id: pulumi.Input[str],
+             deployment_id: pulumi.Input[str],
+             health_check: pulumi.Input['TargetSetHealthCheckArgs'],
+             protocol: pulumi.Input[str],
+             weight: pulumi.Input[int],
+             name: Optional[pulumi.Input[str]] = None,
+             port: Optional[pulumi.Input[int]] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input['TargetSetTagArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("balancer_id", balancer_id)
+        _setter("deployment_id", deployment_id)
+        _setter("health_check", health_check)
+        _setter("protocol", protocol)
+        _setter("weight", weight)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if port is not None:
-            pulumi.set(__self__, "port", port)
+            _setter("port", port)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
 
     @property
     @pulumi.getter(name="balancerId")
@@ -126,22 +149,45 @@ class _TargetSetState:
         """
         Input properties used for looking up and filtering TargetSet resources.
         """
+        _TargetSetState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            balancer_id=balancer_id,
+            deployment_id=deployment_id,
+            health_check=health_check,
+            name=name,
+            port=port,
+            protocol=protocol,
+            tags=tags,
+            weight=weight,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             balancer_id: Optional[pulumi.Input[str]] = None,
+             deployment_id: Optional[pulumi.Input[str]] = None,
+             health_check: Optional[pulumi.Input['TargetSetHealthCheckArgs']] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             port: Optional[pulumi.Input[int]] = None,
+             protocol: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input['TargetSetTagArgs']]]] = None,
+             weight: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if balancer_id is not None:
-            pulumi.set(__self__, "balancer_id", balancer_id)
+            _setter("balancer_id", balancer_id)
         if deployment_id is not None:
-            pulumi.set(__self__, "deployment_id", deployment_id)
+            _setter("deployment_id", deployment_id)
         if health_check is not None:
-            pulumi.set(__self__, "health_check", health_check)
+            _setter("health_check", health_check)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if port is not None:
-            pulumi.set(__self__, "port", port)
+            _setter("port", port)
         if protocol is not None:
-            pulumi.set(__self__, "protocol", protocol)
+            _setter("protocol", protocol)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if weight is not None:
-            pulumi.set(__self__, "weight", weight)
+            _setter("weight", weight)
 
     @property
     @pulumi.getter(name="balancerId")
@@ -253,6 +299,10 @@ class TargetSet(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            TargetSetArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -281,6 +331,11 @@ class TargetSet(pulumi.CustomResource):
             if deployment_id is None and not opts.urn:
                 raise TypeError("Missing required property 'deployment_id'")
             __props__.__dict__["deployment_id"] = deployment_id
+            if health_check is not None and not isinstance(health_check, TargetSetHealthCheckArgs):
+                health_check = health_check or {}
+                def _setter(key, value):
+                    health_check[key] = value
+                TargetSetHealthCheckArgs._configure(_setter, **health_check)
             if health_check is None and not opts.urn:
                 raise TypeError("Missing required property 'health_check'")
             __props__.__dict__["health_check"] = health_check

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -23,8 +23,19 @@ class SuspensionArgs:
         :param pulumi.Input[str] group_id: Elastigroup ID to apply the suspensions on.
         :param pulumi.Input[Sequence[pulumi.Input['SuspensionSuspensionArgs']]] suspensions: block of single process to suspend.
         """
-        pulumi.set(__self__, "group_id", group_id)
-        pulumi.set(__self__, "suspensions", suspensions)
+        SuspensionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            group_id=group_id,
+            suspensions=suspensions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             group_id: pulumi.Input[str],
+             suspensions: pulumi.Input[Sequence[pulumi.Input['SuspensionSuspensionArgs']]],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("group_id", group_id)
+        _setter("suspensions", suspensions)
 
     @property
     @pulumi.getter(name="groupId")
@@ -61,10 +72,21 @@ class _SuspensionState:
         :param pulumi.Input[str] group_id: Elastigroup ID to apply the suspensions on.
         :param pulumi.Input[Sequence[pulumi.Input['SuspensionSuspensionArgs']]] suspensions: block of single process to suspend.
         """
+        _SuspensionState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            group_id=group_id,
+            suspensions=suspensions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             group_id: Optional[pulumi.Input[str]] = None,
+             suspensions: Optional[pulumi.Input[Sequence[pulumi.Input['SuspensionSuspensionArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if group_id is not None:
-            pulumi.set(__self__, "group_id", group_id)
+            _setter("group_id", group_id)
         if suspensions is not None:
-            pulumi.set(__self__, "suspensions", suspensions)
+            _setter("suspensions", suspensions)
 
     @property
     @pulumi.getter(name="groupId")
@@ -166,6 +188,10 @@ class Suspension(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            SuspensionArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

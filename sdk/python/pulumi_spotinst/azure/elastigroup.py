@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -52,49 +52,106 @@ class ElastigroupArgs:
         :param pulumi.Input[int] min_size: The minimum number of instances the group should have at any time.
         :param pulumi.Input[str] name: Name of the Managed Service Identity.
         """
-        pulumi.set(__self__, "low_priority_sizes", low_priority_sizes)
-        pulumi.set(__self__, "network", network)
-        pulumi.set(__self__, "od_sizes", od_sizes)
-        pulumi.set(__self__, "product", product)
-        pulumi.set(__self__, "region", region)
-        pulumi.set(__self__, "resource_group_name", resource_group_name)
-        pulumi.set(__self__, "strategy", strategy)
+        ElastigroupArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            low_priority_sizes=low_priority_sizes,
+            network=network,
+            od_sizes=od_sizes,
+            product=product,
+            region=region,
+            resource_group_name=resource_group_name,
+            strategy=strategy,
+            custom_data=custom_data,
+            desired_capacity=desired_capacity,
+            health_check=health_check,
+            images=images,
+            integration_kubernetes=integration_kubernetes,
+            integration_multai_runtime=integration_multai_runtime,
+            load_balancers=load_balancers,
+            login=login,
+            managed_service_identities=managed_service_identities,
+            max_size=max_size,
+            min_size=min_size,
+            name=name,
+            scaling_down_policies=scaling_down_policies,
+            scaling_up_policies=scaling_up_policies,
+            scheduled_tasks=scheduled_tasks,
+            shutdown_script=shutdown_script,
+            update_policy=update_policy,
+            user_data=user_data,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             low_priority_sizes: pulumi.Input[Sequence[pulumi.Input[str]]],
+             network: pulumi.Input['ElastigroupNetworkArgs'],
+             od_sizes: pulumi.Input[Sequence[pulumi.Input[str]]],
+             product: pulumi.Input[str],
+             region: pulumi.Input[str],
+             resource_group_name: pulumi.Input[str],
+             strategy: pulumi.Input['ElastigroupStrategyArgs'],
+             custom_data: Optional[pulumi.Input[str]] = None,
+             desired_capacity: Optional[pulumi.Input[int]] = None,
+             health_check: Optional[pulumi.Input['ElastigroupHealthCheckArgs']] = None,
+             images: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupImageArgs']]]] = None,
+             integration_kubernetes: Optional[pulumi.Input['ElastigroupIntegrationKubernetesArgs']] = None,
+             integration_multai_runtime: Optional[pulumi.Input['ElastigroupIntegrationMultaiRuntimeArgs']] = None,
+             load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupLoadBalancerArgs']]]] = None,
+             login: Optional[pulumi.Input['ElastigroupLoginArgs']] = None,
+             managed_service_identities: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupManagedServiceIdentityArgs']]]] = None,
+             max_size: Optional[pulumi.Input[int]] = None,
+             min_size: Optional[pulumi.Input[int]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             scaling_down_policies: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingDownPolicyArgs']]]] = None,
+             scaling_up_policies: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingUpPolicyArgs']]]] = None,
+             scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScheduledTaskArgs']]]] = None,
+             shutdown_script: Optional[pulumi.Input[str]] = None,
+             update_policy: Optional[pulumi.Input['ElastigroupUpdatePolicyArgs']] = None,
+             user_data: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("low_priority_sizes", low_priority_sizes)
+        _setter("network", network)
+        _setter("od_sizes", od_sizes)
+        _setter("product", product)
+        _setter("region", region)
+        _setter("resource_group_name", resource_group_name)
+        _setter("strategy", strategy)
         if custom_data is not None:
-            pulumi.set(__self__, "custom_data", custom_data)
+            _setter("custom_data", custom_data)
         if desired_capacity is not None:
-            pulumi.set(__self__, "desired_capacity", desired_capacity)
+            _setter("desired_capacity", desired_capacity)
         if health_check is not None:
-            pulumi.set(__self__, "health_check", health_check)
+            _setter("health_check", health_check)
         if images is not None:
-            pulumi.set(__self__, "images", images)
+            _setter("images", images)
         if integration_kubernetes is not None:
-            pulumi.set(__self__, "integration_kubernetes", integration_kubernetes)
+            _setter("integration_kubernetes", integration_kubernetes)
         if integration_multai_runtime is not None:
-            pulumi.set(__self__, "integration_multai_runtime", integration_multai_runtime)
+            _setter("integration_multai_runtime", integration_multai_runtime)
         if load_balancers is not None:
-            pulumi.set(__self__, "load_balancers", load_balancers)
+            _setter("load_balancers", load_balancers)
         if login is not None:
-            pulumi.set(__self__, "login", login)
+            _setter("login", login)
         if managed_service_identities is not None:
-            pulumi.set(__self__, "managed_service_identities", managed_service_identities)
+            _setter("managed_service_identities", managed_service_identities)
         if max_size is not None:
-            pulumi.set(__self__, "max_size", max_size)
+            _setter("max_size", max_size)
         if min_size is not None:
-            pulumi.set(__self__, "min_size", min_size)
+            _setter("min_size", min_size)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if scaling_down_policies is not None:
-            pulumi.set(__self__, "scaling_down_policies", scaling_down_policies)
+            _setter("scaling_down_policies", scaling_down_policies)
         if scaling_up_policies is not None:
-            pulumi.set(__self__, "scaling_up_policies", scaling_up_policies)
+            _setter("scaling_up_policies", scaling_up_policies)
         if scheduled_tasks is not None:
-            pulumi.set(__self__, "scheduled_tasks", scheduled_tasks)
+            _setter("scheduled_tasks", scheduled_tasks)
         if shutdown_script is not None:
-            pulumi.set(__self__, "shutdown_script", shutdown_script)
+            _setter("shutdown_script", shutdown_script)
         if update_policy is not None:
-            pulumi.set(__self__, "update_policy", update_policy)
+            _setter("update_policy", update_policy)
         if user_data is not None:
-            pulumi.set(__self__, "user_data", user_data)
+            _setter("user_data", user_data)
 
     @property
     @pulumi.getter(name="lowPrioritySizes")
@@ -385,56 +442,113 @@ class _ElastigroupState:
         :param pulumi.Input[str] region: The region your Azure group will be created in.
         :param pulumi.Input[str] resource_group_name: Name of the Azure Resource Group where the Managed Service Identity is located.
         """
+        _ElastigroupState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            custom_data=custom_data,
+            desired_capacity=desired_capacity,
+            health_check=health_check,
+            images=images,
+            integration_kubernetes=integration_kubernetes,
+            integration_multai_runtime=integration_multai_runtime,
+            load_balancers=load_balancers,
+            login=login,
+            low_priority_sizes=low_priority_sizes,
+            managed_service_identities=managed_service_identities,
+            max_size=max_size,
+            min_size=min_size,
+            name=name,
+            network=network,
+            od_sizes=od_sizes,
+            product=product,
+            region=region,
+            resource_group_name=resource_group_name,
+            scaling_down_policies=scaling_down_policies,
+            scaling_up_policies=scaling_up_policies,
+            scheduled_tasks=scheduled_tasks,
+            shutdown_script=shutdown_script,
+            strategy=strategy,
+            update_policy=update_policy,
+            user_data=user_data,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             custom_data: Optional[pulumi.Input[str]] = None,
+             desired_capacity: Optional[pulumi.Input[int]] = None,
+             health_check: Optional[pulumi.Input['ElastigroupHealthCheckArgs']] = None,
+             images: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupImageArgs']]]] = None,
+             integration_kubernetes: Optional[pulumi.Input['ElastigroupIntegrationKubernetesArgs']] = None,
+             integration_multai_runtime: Optional[pulumi.Input['ElastigroupIntegrationMultaiRuntimeArgs']] = None,
+             load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupLoadBalancerArgs']]]] = None,
+             login: Optional[pulumi.Input['ElastigroupLoginArgs']] = None,
+             low_priority_sizes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             managed_service_identities: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupManagedServiceIdentityArgs']]]] = None,
+             max_size: Optional[pulumi.Input[int]] = None,
+             min_size: Optional[pulumi.Input[int]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             network: Optional[pulumi.Input['ElastigroupNetworkArgs']] = None,
+             od_sizes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             product: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             resource_group_name: Optional[pulumi.Input[str]] = None,
+             scaling_down_policies: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingDownPolicyArgs']]]] = None,
+             scaling_up_policies: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingUpPolicyArgs']]]] = None,
+             scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScheduledTaskArgs']]]] = None,
+             shutdown_script: Optional[pulumi.Input[str]] = None,
+             strategy: Optional[pulumi.Input['ElastigroupStrategyArgs']] = None,
+             update_policy: Optional[pulumi.Input['ElastigroupUpdatePolicyArgs']] = None,
+             user_data: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if custom_data is not None:
-            pulumi.set(__self__, "custom_data", custom_data)
+            _setter("custom_data", custom_data)
         if desired_capacity is not None:
-            pulumi.set(__self__, "desired_capacity", desired_capacity)
+            _setter("desired_capacity", desired_capacity)
         if health_check is not None:
-            pulumi.set(__self__, "health_check", health_check)
+            _setter("health_check", health_check)
         if images is not None:
-            pulumi.set(__self__, "images", images)
+            _setter("images", images)
         if integration_kubernetes is not None:
-            pulumi.set(__self__, "integration_kubernetes", integration_kubernetes)
+            _setter("integration_kubernetes", integration_kubernetes)
         if integration_multai_runtime is not None:
-            pulumi.set(__self__, "integration_multai_runtime", integration_multai_runtime)
+            _setter("integration_multai_runtime", integration_multai_runtime)
         if load_balancers is not None:
-            pulumi.set(__self__, "load_balancers", load_balancers)
+            _setter("load_balancers", load_balancers)
         if login is not None:
-            pulumi.set(__self__, "login", login)
+            _setter("login", login)
         if low_priority_sizes is not None:
-            pulumi.set(__self__, "low_priority_sizes", low_priority_sizes)
+            _setter("low_priority_sizes", low_priority_sizes)
         if managed_service_identities is not None:
-            pulumi.set(__self__, "managed_service_identities", managed_service_identities)
+            _setter("managed_service_identities", managed_service_identities)
         if max_size is not None:
-            pulumi.set(__self__, "max_size", max_size)
+            _setter("max_size", max_size)
         if min_size is not None:
-            pulumi.set(__self__, "min_size", min_size)
+            _setter("min_size", min_size)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if network is not None:
-            pulumi.set(__self__, "network", network)
+            _setter("network", network)
         if od_sizes is not None:
-            pulumi.set(__self__, "od_sizes", od_sizes)
+            _setter("od_sizes", od_sizes)
         if product is not None:
-            pulumi.set(__self__, "product", product)
+            _setter("product", product)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if resource_group_name is not None:
-            pulumi.set(__self__, "resource_group_name", resource_group_name)
+            _setter("resource_group_name", resource_group_name)
         if scaling_down_policies is not None:
-            pulumi.set(__self__, "scaling_down_policies", scaling_down_policies)
+            _setter("scaling_down_policies", scaling_down_policies)
         if scaling_up_policies is not None:
-            pulumi.set(__self__, "scaling_up_policies", scaling_up_policies)
+            _setter("scaling_up_policies", scaling_up_policies)
         if scheduled_tasks is not None:
-            pulumi.set(__self__, "scheduled_tasks", scheduled_tasks)
+            _setter("scheduled_tasks", scheduled_tasks)
         if shutdown_script is not None:
-            pulumi.set(__self__, "shutdown_script", shutdown_script)
+            _setter("shutdown_script", shutdown_script)
         if strategy is not None:
-            pulumi.set(__self__, "strategy", strategy)
+            _setter("strategy", strategy)
         if update_policy is not None:
-            pulumi.set(__self__, "update_policy", update_policy)
+            _setter("update_policy", update_policy)
         if user_data is not None:
-            pulumi.set(__self__, "user_data", user_data)
+            _setter("user_data", user_data)
 
     @property
     @pulumi.getter(name="customData")
@@ -858,6 +972,10 @@ class Elastigroup(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ElastigroupArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -899,11 +1017,31 @@ class Elastigroup(pulumi.CustomResource):
 
             __props__.__dict__["custom_data"] = custom_data
             __props__.__dict__["desired_capacity"] = desired_capacity
+            if health_check is not None and not isinstance(health_check, ElastigroupHealthCheckArgs):
+                health_check = health_check or {}
+                def _setter(key, value):
+                    health_check[key] = value
+                ElastigroupHealthCheckArgs._configure(_setter, **health_check)
             __props__.__dict__["health_check"] = health_check
             __props__.__dict__["images"] = images
+            if integration_kubernetes is not None and not isinstance(integration_kubernetes, ElastigroupIntegrationKubernetesArgs):
+                integration_kubernetes = integration_kubernetes or {}
+                def _setter(key, value):
+                    integration_kubernetes[key] = value
+                ElastigroupIntegrationKubernetesArgs._configure(_setter, **integration_kubernetes)
             __props__.__dict__["integration_kubernetes"] = integration_kubernetes
+            if integration_multai_runtime is not None and not isinstance(integration_multai_runtime, ElastigroupIntegrationMultaiRuntimeArgs):
+                integration_multai_runtime = integration_multai_runtime or {}
+                def _setter(key, value):
+                    integration_multai_runtime[key] = value
+                ElastigroupIntegrationMultaiRuntimeArgs._configure(_setter, **integration_multai_runtime)
             __props__.__dict__["integration_multai_runtime"] = integration_multai_runtime
             __props__.__dict__["load_balancers"] = load_balancers
+            if login is not None and not isinstance(login, ElastigroupLoginArgs):
+                login = login or {}
+                def _setter(key, value):
+                    login[key] = value
+                ElastigroupLoginArgs._configure(_setter, **login)
             __props__.__dict__["login"] = login
             if low_priority_sizes is None and not opts.urn:
                 raise TypeError("Missing required property 'low_priority_sizes'")
@@ -912,6 +1050,11 @@ class Elastigroup(pulumi.CustomResource):
             __props__.__dict__["max_size"] = max_size
             __props__.__dict__["min_size"] = min_size
             __props__.__dict__["name"] = name
+            if network is not None and not isinstance(network, ElastigroupNetworkArgs):
+                network = network or {}
+                def _setter(key, value):
+                    network[key] = value
+                ElastigroupNetworkArgs._configure(_setter, **network)
             if network is None and not opts.urn:
                 raise TypeError("Missing required property 'network'")
             __props__.__dict__["network"] = network
@@ -931,9 +1074,19 @@ class Elastigroup(pulumi.CustomResource):
             __props__.__dict__["scaling_up_policies"] = scaling_up_policies
             __props__.__dict__["scheduled_tasks"] = scheduled_tasks
             __props__.__dict__["shutdown_script"] = shutdown_script
+            if strategy is not None and not isinstance(strategy, ElastigroupStrategyArgs):
+                strategy = strategy or {}
+                def _setter(key, value):
+                    strategy[key] = value
+                ElastigroupStrategyArgs._configure(_setter, **strategy)
             if strategy is None and not opts.urn:
                 raise TypeError("Missing required property 'strategy'")
             __props__.__dict__["strategy"] = strategy
+            if update_policy is not None and not isinstance(update_policy, ElastigroupUpdatePolicyArgs):
+                update_policy = update_policy or {}
+                def _setter(key, value):
+                    update_policy[key] = value
+                ElastigroupUpdatePolicyArgs._configure(_setter, **update_policy)
             __props__.__dict__["update_policy"] = update_policy
             __props__.__dict__["user_data"] = user_data
         super(Elastigroup, __self__).__init__(

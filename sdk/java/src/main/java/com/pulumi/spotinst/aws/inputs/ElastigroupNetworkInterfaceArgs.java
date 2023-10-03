@@ -95,14 +95,14 @@ public final class ElastigroupNetworkInterfaceArgs extends com.pulumi.resources.
     }
 
     /**
-     * If set to true, the interface is deleted when the instance is terminated.
+     * Whether the volume should be destroyed on instance termination.
      * 
      */
     @Import(name="deleteOnTermination")
     private @Nullable Output<Boolean> deleteOnTermination;
 
     /**
-     * @return If set to true, the interface is deleted when the instance is terminated.
+     * @return Whether the volume should be destroyed on instance termination.
      * 
      */
     public Optional<Output<Boolean>> deleteOnTermination() {
@@ -306,7 +306,7 @@ public final class ElastigroupNetworkInterfaceArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param deleteOnTermination If set to true, the interface is deleted when the instance is terminated.
+         * @param deleteOnTermination Whether the volume should be destroyed on instance termination.
          * 
          * @return builder
          * 
@@ -317,7 +317,7 @@ public final class ElastigroupNetworkInterfaceArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param deleteOnTermination If set to true, the interface is deleted when the instance is terminated.
+         * @param deleteOnTermination Whether the volume should be destroyed on instance termination.
          * 
          * @return builder
          * 

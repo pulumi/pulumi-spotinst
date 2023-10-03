@@ -20,16 +20,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
 
         /// <summary>
         /// The dimension value.
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        /// });
-        /// ```
         /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }

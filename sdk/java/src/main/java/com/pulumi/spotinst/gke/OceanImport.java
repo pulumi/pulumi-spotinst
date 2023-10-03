@@ -200,9 +200,17 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="spotinst:gke/oceanImport:OceanImport")
 public class OceanImport extends com.pulumi.resources.CustomResource {
+    /**
+     * The Ocean Kubernetes Autoscaler object.
+     * 
+     */
     @Export(name="autoscaler", type=OceanImportAutoscaler.class, parameters={})
     private Output<OceanImportAutoscaler> autoscaler;
 
+    /**
+     * @return The Ocean Kubernetes Autoscaler object.
+     * 
+     */
     public Output<OceanImportAutoscaler> autoscaler() {
         return this.autoscaler;
     }
@@ -338,9 +346,17 @@ public class OceanImport extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> rootVolumeType() {
         return Codegen.optional(this.rootVolumeType);
     }
+    /**
+     * Set scheduling object.
+     * 
+     */
     @Export(name="scheduledTasks", type=List.class, parameters={OceanImportScheduledTask.class})
     private Output</* @Nullable */ List<OceanImportScheduledTask>> scheduledTasks;
 
+    /**
+     * @return Set scheduling object.
+     * 
+     */
     public Output<Optional<List<OceanImportScheduledTask>>> scheduledTasks() {
         return Codegen.optional(this.scheduledTasks);
     }

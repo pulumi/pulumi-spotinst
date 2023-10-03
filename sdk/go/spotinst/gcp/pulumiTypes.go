@@ -358,21 +358,7 @@ type ElastigroupDisk struct {
 	Mode *string `pulumi:"mode"`
 	// Specifies a valid partial or full URL to an existing Persistent Disk resource. This field is only applicable for persistent disks.
 	Source *string `pulumi:"source"`
-	// The type of GPU instance. Valid values: `nvidia-tesla-v100`, `nvidia-tesla-p100`, `nvidia-tesla-k80`.
-	//
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
+	// Specifies the type of disk, either SCRATCH or PERSISTENT.
 	Type *string `pulumi:"type"`
 }
 
@@ -402,21 +388,7 @@ type ElastigroupDiskArgs struct {
 	Mode pulumi.StringPtrInput `pulumi:"mode"`
 	// Specifies a valid partial or full URL to an existing Persistent Disk resource. This field is only applicable for persistent disks.
 	Source pulumi.StringPtrInput `pulumi:"source"`
-	// The type of GPU instance. Valid values: `nvidia-tesla-v100`, `nvidia-tesla-p100`, `nvidia-tesla-k80`.
-	//
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
+	// Specifies the type of disk, either SCRATCH or PERSISTENT.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
@@ -524,24 +496,7 @@ func (o ElastigroupDiskOutput) Source() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElastigroupDisk) *string { return v.Source }).(pulumi.StringPtrOutput)
 }
 
-// The type of GPU instance. Valid values: `nvidia-tesla-v100`, `nvidia-tesla-p100`, `nvidia-tesla-k80`.
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
+// Specifies the type of disk, either SCRATCH or PERSISTENT.
 func (o ElastigroupDiskOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElastigroupDisk) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -2476,21 +2431,7 @@ func (o ElastigroupNetworkInterfaceArrayOutput) Index(i pulumi.IntInput) Elastig
 type ElastigroupNetworkInterfaceAccessConfig struct {
 	// The group name.
 	Name *string `pulumi:"name"`
-	// The type of GPU instance. Valid values: `nvidia-tesla-v100`, `nvidia-tesla-p100`, `nvidia-tesla-k80`.
-	//
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
+	// Specifies the type of disk, either SCRATCH or PERSISTENT.
 	Type *string `pulumi:"type"`
 }
 
@@ -2508,21 +2449,7 @@ type ElastigroupNetworkInterfaceAccessConfigInput interface {
 type ElastigroupNetworkInterfaceAccessConfigArgs struct {
 	// The group name.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// The type of GPU instance. Valid values: `nvidia-tesla-v100`, `nvidia-tesla-p100`, `nvidia-tesla-k80`.
-	//
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
+	// Specifies the type of disk, either SCRATCH or PERSISTENT.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
@@ -2600,24 +2527,7 @@ func (o ElastigroupNetworkInterfaceAccessConfigOutput) Name() pulumi.StringPtrOu
 	return o.ApplyT(func(v ElastigroupNetworkInterfaceAccessConfig) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// The type of GPU instance. Valid values: `nvidia-tesla-v100`, `nvidia-tesla-p100`, `nvidia-tesla-k80`.
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
+// Specifies the type of disk, either SCRATCH or PERSISTENT.
 func (o ElastigroupNetworkInterfaceAccessConfigOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElastigroupNetworkInterfaceAccessConfig) *string { return v.Type }).(pulumi.StringPtrOutput)
 }

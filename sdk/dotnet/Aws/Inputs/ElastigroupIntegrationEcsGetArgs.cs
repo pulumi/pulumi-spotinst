@@ -31,19 +31,19 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public Input<int>? AutoscaleCooldown { get; set; }
 
         /// <summary>
-        /// Enabling scale down.
+        /// Settings for scale down actions.
         /// </summary>
         [Input("autoscaleDown")]
         public Input<Inputs.ElastigroupIntegrationEcsAutoscaleDownGetArgs>? AutoscaleDown { get; set; }
 
         /// <summary>
-        /// Headroom for the cluster.
+        /// An option to set compute reserve for the cluster.
         /// </summary>
         [Input("autoscaleHeadroom")]
         public Input<Inputs.ElastigroupIntegrationEcsAutoscaleHeadroomGetArgs>? AutoscaleHeadroom { get; set; }
 
         /// <summary>
-        /// Enabling the automatic auto-scaler functionality. For more information please see: [ECS auto scaler](https://api.spotinst.com/container-management/amazon-ecs/elastigroup-for-ecs-concepts/autoscaling/).
+        /// Enabling the automatic k8s auto-scaler functionality. For more information please see: [Kubernetes auto scaler](https://api.spotinst.com/integration-docs/elastigroup/container-management/kubernetes/autoscaler/).
         /// </summary>
         [Input("autoscaleIsAutoConfig")]
         public Input<bool>? AutoscaleIsAutoConfig { get; set; }

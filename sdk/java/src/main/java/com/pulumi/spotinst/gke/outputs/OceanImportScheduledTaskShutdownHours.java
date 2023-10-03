@@ -14,8 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class OceanImportScheduledTaskShutdownHours {
     /**
-     * @return Flag to enable / disable the shutdown hours.
-     * Example: True
+     * @return Enable the Ocean Kubernetes Autoscaler.
      * 
      */
     private @Nullable Boolean isEnabled;
@@ -28,8 +27,7 @@ public final class OceanImportScheduledTaskShutdownHours {
 
     private OceanImportScheduledTaskShutdownHours() {}
     /**
-     * @return Flag to enable / disable the shutdown hours.
-     * Example: True
+     * @return Enable the Ocean Kubernetes Autoscaler.
      * 
      */
     public Optional<Boolean> isEnabled() {

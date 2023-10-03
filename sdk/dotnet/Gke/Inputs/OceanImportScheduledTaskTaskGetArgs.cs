@@ -20,8 +20,7 @@ namespace Pulumi.SpotInst.Gke.Inputs
         public Input<string> CronExpression { get; set; } = null!;
 
         /// <summary>
-        /// Flag to enable / disable the shutdown hours.
-        /// Example: True
+        /// Enable the Ocean Kubernetes Autoscaler.
         /// </summary>
         [Input("isEnabled", required: true)]
         public Input<bool> IsEnabled { get; set; } = null!;

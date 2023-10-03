@@ -174,6 +174,7 @@ import (
 type OceanImport struct {
 	pulumi.CustomResourceState
 
+	// The Ocean Kubernetes Autoscaler object.
 	Autoscaler OceanImportAutoscalerOutput `pulumi:"autoscaler"`
 	// Describes the backend service configurations.
 	BackendServices OceanImportBackendServiceArrayOutput `pulumi:"backendServices"`
@@ -193,7 +194,8 @@ type OceanImport struct {
 	// The lower limit of instances the cluster can scale down to.
 	MinSize pulumi.IntOutput `pulumi:"minSize"`
 	// The root volume disk type.
-	RootVolumeType pulumi.StringPtrOutput              `pulumi:"rootVolumeType"`
+	RootVolumeType pulumi.StringPtrOutput `pulumi:"rootVolumeType"`
+	// Set scheduling object.
 	ScheduledTasks OceanImportScheduledTaskArrayOutput `pulumi:"scheduledTasks"`
 	// The Ocean shielded instance configuration object.
 	ShieldedInstanceConfig OceanImportShieldedInstanceConfigOutput `pulumi:"shieldedInstanceConfig"`
@@ -241,6 +243,7 @@ func GetOceanImport(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering OceanImport resources.
 type oceanImportState struct {
+	// The Ocean Kubernetes Autoscaler object.
 	Autoscaler *OceanImportAutoscaler `pulumi:"autoscaler"`
 	// Describes the backend service configurations.
 	BackendServices []OceanImportBackendService `pulumi:"backendServices"`
@@ -260,7 +263,8 @@ type oceanImportState struct {
 	// The lower limit of instances the cluster can scale down to.
 	MinSize *int `pulumi:"minSize"`
 	// The root volume disk type.
-	RootVolumeType *string                    `pulumi:"rootVolumeType"`
+	RootVolumeType *string `pulumi:"rootVolumeType"`
+	// Set scheduling object.
 	ScheduledTasks []OceanImportScheduledTask `pulumi:"scheduledTasks"`
 	// The Ocean shielded instance configuration object.
 	ShieldedInstanceConfig *OceanImportShieldedInstanceConfig `pulumi:"shieldedInstanceConfig"`
@@ -273,6 +277,7 @@ type oceanImportState struct {
 }
 
 type OceanImportState struct {
+	// The Ocean Kubernetes Autoscaler object.
 	Autoscaler OceanImportAutoscalerPtrInput
 	// Describes the backend service configurations.
 	BackendServices OceanImportBackendServiceArrayInput
@@ -293,6 +298,7 @@ type OceanImportState struct {
 	MinSize pulumi.IntPtrInput
 	// The root volume disk type.
 	RootVolumeType pulumi.StringPtrInput
+	// Set scheduling object.
 	ScheduledTasks OceanImportScheduledTaskArrayInput
 	// The Ocean shielded instance configuration object.
 	ShieldedInstanceConfig OceanImportShieldedInstanceConfigPtrInput
@@ -309,6 +315,7 @@ func (OceanImportState) ElementType() reflect.Type {
 }
 
 type oceanImportArgs struct {
+	// The Ocean Kubernetes Autoscaler object.
 	Autoscaler *OceanImportAutoscaler `pulumi:"autoscaler"`
 	// Describes the backend service configurations.
 	BackendServices []OceanImportBackendService `pulumi:"backendServices"`
@@ -327,7 +334,8 @@ type oceanImportArgs struct {
 	// The lower limit of instances the cluster can scale down to.
 	MinSize *int `pulumi:"minSize"`
 	// The root volume disk type.
-	RootVolumeType *string                    `pulumi:"rootVolumeType"`
+	RootVolumeType *string `pulumi:"rootVolumeType"`
+	// Set scheduling object.
 	ScheduledTasks []OceanImportScheduledTask `pulumi:"scheduledTasks"`
 	// The Ocean shielded instance configuration object.
 	ShieldedInstanceConfig *OceanImportShieldedInstanceConfig `pulumi:"shieldedInstanceConfig"`
@@ -341,6 +349,7 @@ type oceanImportArgs struct {
 
 // The set of arguments for constructing a OceanImport resource.
 type OceanImportArgs struct {
+	// The Ocean Kubernetes Autoscaler object.
 	Autoscaler OceanImportAutoscalerPtrInput
 	// Describes the backend service configurations.
 	BackendServices OceanImportBackendServiceArrayInput
@@ -360,6 +369,7 @@ type OceanImportArgs struct {
 	MinSize pulumi.IntPtrInput
 	// The root volume disk type.
 	RootVolumeType pulumi.StringPtrInput
+	// Set scheduling object.
 	ScheduledTasks OceanImportScheduledTaskArrayInput
 	// The Ocean shielded instance configuration object.
 	ShieldedInstanceConfig OceanImportShieldedInstanceConfigPtrInput
@@ -482,6 +492,7 @@ func (o OceanImportOutput) ToOutput(ctx context.Context) pulumix.Output[*OceanIm
 	}
 }
 
+// The Ocean Kubernetes Autoscaler object.
 func (o OceanImportOutput) Autoscaler() OceanImportAutoscalerOutput {
 	return o.ApplyT(func(v *OceanImport) OceanImportAutoscalerOutput { return v.Autoscaler }).(OceanImportAutoscalerOutput)
 }
@@ -535,6 +546,7 @@ func (o OceanImportOutput) RootVolumeType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OceanImport) pulumi.StringPtrOutput { return v.RootVolumeType }).(pulumi.StringPtrOutput)
 }
 
+// Set scheduling object.
 func (o OceanImportOutput) ScheduledTasks() OceanImportScheduledTaskArrayOutput {
 	return o.ApplyT(func(v *OceanImport) OceanImportScheduledTaskArrayOutput { return v.ScheduledTasks }).(OceanImportScheduledTaskArrayOutput)
 }

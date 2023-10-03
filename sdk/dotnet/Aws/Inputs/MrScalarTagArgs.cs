@@ -13,7 +13,7 @@ namespace Pulumi.SpotInst.Aws.Inputs
     public sealed class MrScalarTagArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Tag key.
+        /// S3 key for bootstrap actions.
         /// </summary>
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;

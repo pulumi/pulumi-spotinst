@@ -16,16 +16,32 @@ public final class OceanIngressCustomEndpointArgs extends com.pulumi.resources.R
 
     public static final OceanIngressCustomEndpointArgs Empty = new OceanIngressCustomEndpointArgs();
 
+    /**
+     * - The address the Ocean for Apache Spark control plane will use when addressing the cluster.
+     * 
+     */
     @Import(name="address")
     private @Nullable Output<String> address;
 
+    /**
+     * @return - The address the Ocean for Apache Spark control plane will use when addressing the cluster.
+     * 
+     */
     public Optional<Output<String>> address() {
         return Optional.ofNullable(this.address);
     }
 
+    /**
+     * - Should the Ocean for Apache Spark control plane address the cluster using a custom endpoint. Use this to specify the DNS address of an externally provisioned (unmanaged) load balancer.
+     * 
+     */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
+    /**
+     * @return - Should the Ocean for Apache Spark control plane address the cluster using a custom endpoint. Use this to specify the DNS address of an externally provisioned (unmanaged) load balancer.
+     * 
+     */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
@@ -55,20 +71,44 @@ public final class OceanIngressCustomEndpointArgs extends com.pulumi.resources.R
             $ = new OceanIngressCustomEndpointArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param address - The address the Ocean for Apache Spark control plane will use when addressing the cluster.
+         * 
+         * @return builder
+         * 
+         */
         public Builder address(@Nullable Output<String> address) {
             $.address = address;
             return this;
         }
 
+        /**
+         * @param address - The address the Ocean for Apache Spark control plane will use when addressing the cluster.
+         * 
+         * @return builder
+         * 
+         */
         public Builder address(String address) {
             return address(Output.of(address));
         }
 
+        /**
+         * @param enabled - Should the Ocean for Apache Spark control plane address the cluster using a custom endpoint. Use this to specify the DNS address of an externally provisioned (unmanaged) load balancer.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
+        /**
+         * @param enabled - Should the Ocean for Apache Spark control plane address the cluster using a custom endpoint. Use this to specify the DNS address of an externally provisioned (unmanaged) load balancer.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }

@@ -517,9 +517,17 @@ public class Ocean extends com.pulumi.resources.CustomResource {
     public Output<Optional<List<OceanTag>>> tags() {
         return Codegen.optional(this.tags);
     }
+    /**
+     * While used, you can control whether the group should perform a deployment after an update to the configuration.
+     * 
+     */
     @Export(name="updatePolicy", type=OceanUpdatePolicy.class, parameters={})
     private Output</* @Nullable */ OceanUpdatePolicy> updatePolicy;
 
+    /**
+     * @return While used, you can control whether the group should perform a deployment after an update to the configuration.
+     * 
+     */
     public Output<Optional<OceanUpdatePolicy>> updatePolicy() {
         return Codegen.optional(this.updatePolicy);
     }

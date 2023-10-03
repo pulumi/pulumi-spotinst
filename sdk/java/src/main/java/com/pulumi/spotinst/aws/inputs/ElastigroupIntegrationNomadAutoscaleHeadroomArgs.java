@@ -16,14 +16,14 @@ public final class ElastigroupIntegrationNomadAutoscaleHeadroomArgs extends com.
     public static final ElastigroupIntegrationNomadAutoscaleHeadroomArgs Empty = new ElastigroupIntegrationNomadAutoscaleHeadroomArgs();
 
     /**
-     * Cpu units for compute.
+     * How much CPU (MHz) to allocate for headroom unit.
      * 
      */
     @Import(name="cpuPerUnit")
     private @Nullable Output<Integer> cpuPerUnit;
 
     /**
-     * @return Cpu units for compute.
+     * @return How much CPU (MHz) to allocate for headroom unit.
      * 
      */
     public Optional<Output<Integer>> cpuPerUnit() {
@@ -31,14 +31,14 @@ public final class ElastigroupIntegrationNomadAutoscaleHeadroomArgs extends com.
     }
 
     /**
-     * RAM units for compute.
+     * How much Memory allocate for headroom unit.
      * 
      */
     @Import(name="memoryPerUnit")
     private @Nullable Output<Integer> memoryPerUnit;
 
     /**
-     * @return RAM units for compute.
+     * @return How much Memory allocate for headroom unit.
      * 
      */
     public Optional<Output<Integer>> memoryPerUnit() {
@@ -46,14 +46,14 @@ public final class ElastigroupIntegrationNomadAutoscaleHeadroomArgs extends com.
     }
 
     /**
-     * Amount of units for compute.
+     * How many units of headroom to allocate.
      * 
      */
     @Import(name="numOfUnits")
     private @Nullable Output<Integer> numOfUnits;
 
     /**
-     * @return Amount of units for compute.
+     * @return How many units of headroom to allocate.
      * 
      */
     public Optional<Output<Integer>> numOfUnits() {
@@ -87,7 +87,7 @@ public final class ElastigroupIntegrationNomadAutoscaleHeadroomArgs extends com.
         }
 
         /**
-         * @param cpuPerUnit Cpu units for compute.
+         * @param cpuPerUnit How much CPU (MHz) to allocate for headroom unit.
          * 
          * @return builder
          * 
@@ -98,7 +98,7 @@ public final class ElastigroupIntegrationNomadAutoscaleHeadroomArgs extends com.
         }
 
         /**
-         * @param cpuPerUnit Cpu units for compute.
+         * @param cpuPerUnit How much CPU (MHz) to allocate for headroom unit.
          * 
          * @return builder
          * 
@@ -108,7 +108,7 @@ public final class ElastigroupIntegrationNomadAutoscaleHeadroomArgs extends com.
         }
 
         /**
-         * @param memoryPerUnit RAM units for compute.
+         * @param memoryPerUnit How much Memory allocate for headroom unit.
          * 
          * @return builder
          * 
@@ -119,7 +119,7 @@ public final class ElastigroupIntegrationNomadAutoscaleHeadroomArgs extends com.
         }
 
         /**
-         * @param memoryPerUnit RAM units for compute.
+         * @param memoryPerUnit How much Memory allocate for headroom unit.
          * 
          * @return builder
          * 
@@ -129,7 +129,7 @@ public final class ElastigroupIntegrationNomadAutoscaleHeadroomArgs extends com.
         }
 
         /**
-         * @param numOfUnits Amount of units for compute.
+         * @param numOfUnits How many units of headroom to allocate.
          * 
          * @return builder
          * 
@@ -140,7 +140,7 @@ public final class ElastigroupIntegrationNomadAutoscaleHeadroomArgs extends com.
         }
 
         /**
-         * @param numOfUnits Amount of units for compute.
+         * @param numOfUnits How many units of headroom to allocate.
          * 
          * @return builder
          * 

@@ -12,134 +12,86 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ElastigroupScalingDownPolicyStepAdjustmentAction {
     /**
-     * @return The number of instances to add or remove.
+     * @return The number of instances to add/remove to/from the target capacity when scale is needed. Can be used as advanced expression for scaling of instances to add/remove to/from the target capacity when scale is needed. You can see more information here: Advanced expression. Example value: `&#34;MAX(currCapacity / 5, value * 10)&#34;`
      * 
      */
     private @Nullable String adjustment;
     /**
-     * @return The desired target capacity of a group. Required if using `&#34;setMaxTarget&#34;` as action type
+     * @return . The number of the desired target (and maximum) capacity
      * 
      */
     private @Nullable String maxTargetCapacity;
     /**
-     * @return The upper limit number of instances that you can scale up to. Required if using `&#34;updateCapacity&#34;` as action type and neither `&#34;target&#34;` nor `&#34;minimum&#34;` are not defined.
+     * @return The maximal number of instances to have in the group.
      * 
      */
     private @Nullable String maximum;
     /**
-     * @return The desired target capacity of a group. Required if using `&#34;setMinTarget&#34;` as action type
+     * @return . The number of the desired target (and minimum) capacity
      * 
      */
     private @Nullable String minTargetCapacity;
     /**
-     * @return The lower limit number of instances that you can scale down to. Required if using `&#34;updateCapacity&#34;` as action type and neither `&#34;target&#34;` nor `&#34;maximum&#34;` are not defined.
+     * @return The minimal number of instances to have in the group.
      * 
      */
     private @Nullable String minimum;
     /**
-     * @return The desired number of instances. Required if using `&#34;updateCapacity&#34;` as action type and neither `&#34;minimum&#34;` nor `&#34;maximum&#34;` are not defined.
+     * @return The target number of instances to have in the group.
      * 
      */
     private @Nullable String target;
     /**
-     * @return The type of the action to take when scale up is needed. Valid types: `&#34;adjustment&#34;`, `&#34;updateCapacity&#34;`, `&#34;setMinTarget&#34;`, `&#34;percentageAdjustment&#34;`.
-     * 
-     * Usage:
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *     }
-     * }
-     * ```
+     * @return The type of the action to take when scale up is needed. Valid types: `&#34;adjustment&#34;`, `&#34;updateCapacity&#34;`, `&#34;setMaxTarget&#34;`, `&#34;percentageAdjustment&#34;`.
      * 
      */
     private String type;
 
     private ElastigroupScalingDownPolicyStepAdjustmentAction() {}
     /**
-     * @return The number of instances to add or remove.
+     * @return The number of instances to add/remove to/from the target capacity when scale is needed. Can be used as advanced expression for scaling of instances to add/remove to/from the target capacity when scale is needed. You can see more information here: Advanced expression. Example value: `&#34;MAX(currCapacity / 5, value * 10)&#34;`
      * 
      */
     public Optional<String> adjustment() {
         return Optional.ofNullable(this.adjustment);
     }
     /**
-     * @return The desired target capacity of a group. Required if using `&#34;setMaxTarget&#34;` as action type
+     * @return . The number of the desired target (and maximum) capacity
      * 
      */
     public Optional<String> maxTargetCapacity() {
         return Optional.ofNullable(this.maxTargetCapacity);
     }
     /**
-     * @return The upper limit number of instances that you can scale up to. Required if using `&#34;updateCapacity&#34;` as action type and neither `&#34;target&#34;` nor `&#34;minimum&#34;` are not defined.
+     * @return The maximal number of instances to have in the group.
      * 
      */
     public Optional<String> maximum() {
         return Optional.ofNullable(this.maximum);
     }
     /**
-     * @return The desired target capacity of a group. Required if using `&#34;setMinTarget&#34;` as action type
+     * @return . The number of the desired target (and minimum) capacity
      * 
      */
     public Optional<String> minTargetCapacity() {
         return Optional.ofNullable(this.minTargetCapacity);
     }
     /**
-     * @return The lower limit number of instances that you can scale down to. Required if using `&#34;updateCapacity&#34;` as action type and neither `&#34;target&#34;` nor `&#34;maximum&#34;` are not defined.
+     * @return The minimal number of instances to have in the group.
      * 
      */
     public Optional<String> minimum() {
         return Optional.ofNullable(this.minimum);
     }
     /**
-     * @return The desired number of instances. Required if using `&#34;updateCapacity&#34;` as action type and neither `&#34;minimum&#34;` nor `&#34;maximum&#34;` are not defined.
+     * @return The target number of instances to have in the group.
      * 
      */
     public Optional<String> target() {
         return Optional.ofNullable(this.target);
     }
     /**
-     * @return The type of the action to take when scale up is needed. Valid types: `&#34;adjustment&#34;`, `&#34;updateCapacity&#34;`, `&#34;setMinTarget&#34;`, `&#34;percentageAdjustment&#34;`.
-     * 
-     * Usage:
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *     }
-     * }
-     * ```
+     * @return The type of the action to take when scale up is needed. Valid types: `&#34;adjustment&#34;`, `&#34;updateCapacity&#34;`, `&#34;setMaxTarget&#34;`, `&#34;percentageAdjustment&#34;`.
      * 
      */
     public String type() {

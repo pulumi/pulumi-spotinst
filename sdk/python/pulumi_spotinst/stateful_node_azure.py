@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -60,79 +60,168 @@ class StatefulNodeAzureArgs:
         """
         The set of arguments for constructing a StatefulNodeAzure resource.
         """
-        pulumi.set(__self__, "od_sizes", od_sizes)
-        pulumi.set(__self__, "os", os)
-        pulumi.set(__self__, "region", region)
-        pulumi.set(__self__, "resource_group_name", resource_group_name)
-        pulumi.set(__self__, "should_persist_data_disks", should_persist_data_disks)
-        pulumi.set(__self__, "should_persist_network", should_persist_network)
-        pulumi.set(__self__, "should_persist_os_disk", should_persist_os_disk)
-        pulumi.set(__self__, "spot_sizes", spot_sizes)
-        pulumi.set(__self__, "strategy", strategy)
+        StatefulNodeAzureArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            od_sizes=od_sizes,
+            os=os,
+            region=region,
+            resource_group_name=resource_group_name,
+            should_persist_data_disks=should_persist_data_disks,
+            should_persist_network=should_persist_network,
+            should_persist_os_disk=should_persist_os_disk,
+            spot_sizes=spot_sizes,
+            strategy=strategy,
+            attach_data_disks=attach_data_disks,
+            boot_diagnostics=boot_diagnostics,
+            custom_data=custom_data,
+            data_disks=data_disks,
+            data_disks_persistence_mode=data_disks_persistence_mode,
+            deletes=deletes,
+            description=description,
+            detach_data_disks=detach_data_disks,
+            extensions=extensions,
+            health=health,
+            image=image,
+            import_vms=import_vms,
+            load_balancers=load_balancers,
+            login=login,
+            managed_service_identities=managed_service_identities,
+            name=name,
+            network=network,
+            os_disk=os_disk,
+            os_disk_persistence_mode=os_disk_persistence_mode,
+            preferred_spot_sizes=preferred_spot_sizes,
+            preferred_zone=preferred_zone,
+            scheduling_tasks=scheduling_tasks,
+            secrets=secrets,
+            security=security,
+            should_persist_vm=should_persist_vm,
+            shutdown_script=shutdown_script,
+            signals=signals,
+            tags=tags,
+            update_states=update_states,
+            user_data=user_data,
+            vm_name=vm_name,
+            zones=zones,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             od_sizes: pulumi.Input[Sequence[pulumi.Input[str]]],
+             os: pulumi.Input[str],
+             region: pulumi.Input[str],
+             resource_group_name: pulumi.Input[str],
+             should_persist_data_disks: pulumi.Input[bool],
+             should_persist_network: pulumi.Input[bool],
+             should_persist_os_disk: pulumi.Input[bool],
+             spot_sizes: pulumi.Input[Sequence[pulumi.Input[str]]],
+             strategy: pulumi.Input['StatefulNodeAzureStrategyArgs'],
+             attach_data_disks: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureAttachDataDiskArgs']]]] = None,
+             boot_diagnostics: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureBootDiagnosticArgs']]]] = None,
+             custom_data: Optional[pulumi.Input[str]] = None,
+             data_disks: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureDataDiskArgs']]]] = None,
+             data_disks_persistence_mode: Optional[pulumi.Input[str]] = None,
+             deletes: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureDeleteArgs']]]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             detach_data_disks: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureDetachDataDiskArgs']]]] = None,
+             extensions: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureExtensionArgs']]]] = None,
+             health: Optional[pulumi.Input['StatefulNodeAzureHealthArgs']] = None,
+             image: Optional[pulumi.Input['StatefulNodeAzureImageArgs']] = None,
+             import_vms: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureImportVmArgs']]]] = None,
+             load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureLoadBalancerArgs']]]] = None,
+             login: Optional[pulumi.Input['StatefulNodeAzureLoginArgs']] = None,
+             managed_service_identities: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureManagedServiceIdentityArgs']]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             network: Optional[pulumi.Input['StatefulNodeAzureNetworkArgs']] = None,
+             os_disk: Optional[pulumi.Input['StatefulNodeAzureOsDiskArgs']] = None,
+             os_disk_persistence_mode: Optional[pulumi.Input[str]] = None,
+             preferred_spot_sizes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             preferred_zone: Optional[pulumi.Input[str]] = None,
+             scheduling_tasks: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureSchedulingTaskArgs']]]] = None,
+             secrets: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureSecretArgs']]]] = None,
+             security: Optional[pulumi.Input['StatefulNodeAzureSecurityArgs']] = None,
+             should_persist_vm: Optional[pulumi.Input[bool]] = None,
+             shutdown_script: Optional[pulumi.Input[str]] = None,
+             signals: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureSignalArgs']]]] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureTagArgs']]]] = None,
+             update_states: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureUpdateStateArgs']]]] = None,
+             user_data: Optional[pulumi.Input[str]] = None,
+             vm_name: Optional[pulumi.Input[str]] = None,
+             zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("od_sizes", od_sizes)
+        _setter("os", os)
+        _setter("region", region)
+        _setter("resource_group_name", resource_group_name)
+        _setter("should_persist_data_disks", should_persist_data_disks)
+        _setter("should_persist_network", should_persist_network)
+        _setter("should_persist_os_disk", should_persist_os_disk)
+        _setter("spot_sizes", spot_sizes)
+        _setter("strategy", strategy)
         if attach_data_disks is not None:
-            pulumi.set(__self__, "attach_data_disks", attach_data_disks)
+            _setter("attach_data_disks", attach_data_disks)
         if boot_diagnostics is not None:
-            pulumi.set(__self__, "boot_diagnostics", boot_diagnostics)
+            _setter("boot_diagnostics", boot_diagnostics)
         if custom_data is not None:
-            pulumi.set(__self__, "custom_data", custom_data)
+            _setter("custom_data", custom_data)
         if data_disks is not None:
-            pulumi.set(__self__, "data_disks", data_disks)
+            _setter("data_disks", data_disks)
         if data_disks_persistence_mode is not None:
-            pulumi.set(__self__, "data_disks_persistence_mode", data_disks_persistence_mode)
+            _setter("data_disks_persistence_mode", data_disks_persistence_mode)
         if deletes is not None:
-            pulumi.set(__self__, "deletes", deletes)
+            _setter("deletes", deletes)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if detach_data_disks is not None:
-            pulumi.set(__self__, "detach_data_disks", detach_data_disks)
+            _setter("detach_data_disks", detach_data_disks)
         if extensions is not None:
-            pulumi.set(__self__, "extensions", extensions)
+            _setter("extensions", extensions)
         if health is not None:
-            pulumi.set(__self__, "health", health)
+            _setter("health", health)
         if image is not None:
-            pulumi.set(__self__, "image", image)
+            _setter("image", image)
         if import_vms is not None:
-            pulumi.set(__self__, "import_vms", import_vms)
+            _setter("import_vms", import_vms)
         if load_balancers is not None:
-            pulumi.set(__self__, "load_balancers", load_balancers)
+            _setter("load_balancers", load_balancers)
         if login is not None:
-            pulumi.set(__self__, "login", login)
+            _setter("login", login)
         if managed_service_identities is not None:
-            pulumi.set(__self__, "managed_service_identities", managed_service_identities)
+            _setter("managed_service_identities", managed_service_identities)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if network is not None:
-            pulumi.set(__self__, "network", network)
+            _setter("network", network)
         if os_disk is not None:
-            pulumi.set(__self__, "os_disk", os_disk)
+            _setter("os_disk", os_disk)
         if os_disk_persistence_mode is not None:
-            pulumi.set(__self__, "os_disk_persistence_mode", os_disk_persistence_mode)
+            _setter("os_disk_persistence_mode", os_disk_persistence_mode)
         if preferred_spot_sizes is not None:
-            pulumi.set(__self__, "preferred_spot_sizes", preferred_spot_sizes)
+            _setter("preferred_spot_sizes", preferred_spot_sizes)
         if preferred_zone is not None:
-            pulumi.set(__self__, "preferred_zone", preferred_zone)
+            _setter("preferred_zone", preferred_zone)
         if scheduling_tasks is not None:
-            pulumi.set(__self__, "scheduling_tasks", scheduling_tasks)
+            _setter("scheduling_tasks", scheduling_tasks)
         if secrets is not None:
-            pulumi.set(__self__, "secrets", secrets)
+            _setter("secrets", secrets)
         if security is not None:
-            pulumi.set(__self__, "security", security)
+            _setter("security", security)
         if should_persist_vm is not None:
-            pulumi.set(__self__, "should_persist_vm", should_persist_vm)
+            _setter("should_persist_vm", should_persist_vm)
         if shutdown_script is not None:
-            pulumi.set(__self__, "shutdown_script", shutdown_script)
+            _setter("shutdown_script", shutdown_script)
         if signals is not None:
-            pulumi.set(__self__, "signals", signals)
+            _setter("signals", signals)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if update_states is not None:
-            pulumi.set(__self__, "update_states", update_states)
+            _setter("update_states", update_states)
         if user_data is not None:
-            pulumi.set(__self__, "user_data", user_data)
+            _setter("user_data", user_data)
         if vm_name is not None:
-            pulumi.set(__self__, "vm_name", vm_name)
+            _setter("vm_name", vm_name)
         if zones is not None:
-            pulumi.set(__self__, "zones", zones)
+            _setter("zones", zones)
 
     @property
     @pulumi.getter(name="odSizes")
@@ -551,88 +640,177 @@ class _StatefulNodeAzureState:
         """
         Input properties used for looking up and filtering StatefulNodeAzure resources.
         """
+        _StatefulNodeAzureState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            attach_data_disks=attach_data_disks,
+            boot_diagnostics=boot_diagnostics,
+            custom_data=custom_data,
+            data_disks=data_disks,
+            data_disks_persistence_mode=data_disks_persistence_mode,
+            deletes=deletes,
+            description=description,
+            detach_data_disks=detach_data_disks,
+            extensions=extensions,
+            health=health,
+            image=image,
+            import_vms=import_vms,
+            load_balancers=load_balancers,
+            login=login,
+            managed_service_identities=managed_service_identities,
+            name=name,
+            network=network,
+            od_sizes=od_sizes,
+            os=os,
+            os_disk=os_disk,
+            os_disk_persistence_mode=os_disk_persistence_mode,
+            preferred_spot_sizes=preferred_spot_sizes,
+            preferred_zone=preferred_zone,
+            region=region,
+            resource_group_name=resource_group_name,
+            scheduling_tasks=scheduling_tasks,
+            secrets=secrets,
+            security=security,
+            should_persist_data_disks=should_persist_data_disks,
+            should_persist_network=should_persist_network,
+            should_persist_os_disk=should_persist_os_disk,
+            should_persist_vm=should_persist_vm,
+            shutdown_script=shutdown_script,
+            signals=signals,
+            spot_sizes=spot_sizes,
+            strategy=strategy,
+            tags=tags,
+            update_states=update_states,
+            user_data=user_data,
+            vm_name=vm_name,
+            zones=zones,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             attach_data_disks: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureAttachDataDiskArgs']]]] = None,
+             boot_diagnostics: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureBootDiagnosticArgs']]]] = None,
+             custom_data: Optional[pulumi.Input[str]] = None,
+             data_disks: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureDataDiskArgs']]]] = None,
+             data_disks_persistence_mode: Optional[pulumi.Input[str]] = None,
+             deletes: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureDeleteArgs']]]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             detach_data_disks: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureDetachDataDiskArgs']]]] = None,
+             extensions: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureExtensionArgs']]]] = None,
+             health: Optional[pulumi.Input['StatefulNodeAzureHealthArgs']] = None,
+             image: Optional[pulumi.Input['StatefulNodeAzureImageArgs']] = None,
+             import_vms: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureImportVmArgs']]]] = None,
+             load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureLoadBalancerArgs']]]] = None,
+             login: Optional[pulumi.Input['StatefulNodeAzureLoginArgs']] = None,
+             managed_service_identities: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureManagedServiceIdentityArgs']]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             network: Optional[pulumi.Input['StatefulNodeAzureNetworkArgs']] = None,
+             od_sizes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             os: Optional[pulumi.Input[str]] = None,
+             os_disk: Optional[pulumi.Input['StatefulNodeAzureOsDiskArgs']] = None,
+             os_disk_persistence_mode: Optional[pulumi.Input[str]] = None,
+             preferred_spot_sizes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             preferred_zone: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             resource_group_name: Optional[pulumi.Input[str]] = None,
+             scheduling_tasks: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureSchedulingTaskArgs']]]] = None,
+             secrets: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureSecretArgs']]]] = None,
+             security: Optional[pulumi.Input['StatefulNodeAzureSecurityArgs']] = None,
+             should_persist_data_disks: Optional[pulumi.Input[bool]] = None,
+             should_persist_network: Optional[pulumi.Input[bool]] = None,
+             should_persist_os_disk: Optional[pulumi.Input[bool]] = None,
+             should_persist_vm: Optional[pulumi.Input[bool]] = None,
+             shutdown_script: Optional[pulumi.Input[str]] = None,
+             signals: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureSignalArgs']]]] = None,
+             spot_sizes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             strategy: Optional[pulumi.Input['StatefulNodeAzureStrategyArgs']] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureTagArgs']]]] = None,
+             update_states: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureUpdateStateArgs']]]] = None,
+             user_data: Optional[pulumi.Input[str]] = None,
+             vm_name: Optional[pulumi.Input[str]] = None,
+             zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if attach_data_disks is not None:
-            pulumi.set(__self__, "attach_data_disks", attach_data_disks)
+            _setter("attach_data_disks", attach_data_disks)
         if boot_diagnostics is not None:
-            pulumi.set(__self__, "boot_diagnostics", boot_diagnostics)
+            _setter("boot_diagnostics", boot_diagnostics)
         if custom_data is not None:
-            pulumi.set(__self__, "custom_data", custom_data)
+            _setter("custom_data", custom_data)
         if data_disks is not None:
-            pulumi.set(__self__, "data_disks", data_disks)
+            _setter("data_disks", data_disks)
         if data_disks_persistence_mode is not None:
-            pulumi.set(__self__, "data_disks_persistence_mode", data_disks_persistence_mode)
+            _setter("data_disks_persistence_mode", data_disks_persistence_mode)
         if deletes is not None:
-            pulumi.set(__self__, "deletes", deletes)
+            _setter("deletes", deletes)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if detach_data_disks is not None:
-            pulumi.set(__self__, "detach_data_disks", detach_data_disks)
+            _setter("detach_data_disks", detach_data_disks)
         if extensions is not None:
-            pulumi.set(__self__, "extensions", extensions)
+            _setter("extensions", extensions)
         if health is not None:
-            pulumi.set(__self__, "health", health)
+            _setter("health", health)
         if image is not None:
-            pulumi.set(__self__, "image", image)
+            _setter("image", image)
         if import_vms is not None:
-            pulumi.set(__self__, "import_vms", import_vms)
+            _setter("import_vms", import_vms)
         if load_balancers is not None:
-            pulumi.set(__self__, "load_balancers", load_balancers)
+            _setter("load_balancers", load_balancers)
         if login is not None:
-            pulumi.set(__self__, "login", login)
+            _setter("login", login)
         if managed_service_identities is not None:
-            pulumi.set(__self__, "managed_service_identities", managed_service_identities)
+            _setter("managed_service_identities", managed_service_identities)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if network is not None:
-            pulumi.set(__self__, "network", network)
+            _setter("network", network)
         if od_sizes is not None:
-            pulumi.set(__self__, "od_sizes", od_sizes)
+            _setter("od_sizes", od_sizes)
         if os is not None:
-            pulumi.set(__self__, "os", os)
+            _setter("os", os)
         if os_disk is not None:
-            pulumi.set(__self__, "os_disk", os_disk)
+            _setter("os_disk", os_disk)
         if os_disk_persistence_mode is not None:
-            pulumi.set(__self__, "os_disk_persistence_mode", os_disk_persistence_mode)
+            _setter("os_disk_persistence_mode", os_disk_persistence_mode)
         if preferred_spot_sizes is not None:
-            pulumi.set(__self__, "preferred_spot_sizes", preferred_spot_sizes)
+            _setter("preferred_spot_sizes", preferred_spot_sizes)
         if preferred_zone is not None:
-            pulumi.set(__self__, "preferred_zone", preferred_zone)
+            _setter("preferred_zone", preferred_zone)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if resource_group_name is not None:
-            pulumi.set(__self__, "resource_group_name", resource_group_name)
+            _setter("resource_group_name", resource_group_name)
         if scheduling_tasks is not None:
-            pulumi.set(__self__, "scheduling_tasks", scheduling_tasks)
+            _setter("scheduling_tasks", scheduling_tasks)
         if secrets is not None:
-            pulumi.set(__self__, "secrets", secrets)
+            _setter("secrets", secrets)
         if security is not None:
-            pulumi.set(__self__, "security", security)
+            _setter("security", security)
         if should_persist_data_disks is not None:
-            pulumi.set(__self__, "should_persist_data_disks", should_persist_data_disks)
+            _setter("should_persist_data_disks", should_persist_data_disks)
         if should_persist_network is not None:
-            pulumi.set(__self__, "should_persist_network", should_persist_network)
+            _setter("should_persist_network", should_persist_network)
         if should_persist_os_disk is not None:
-            pulumi.set(__self__, "should_persist_os_disk", should_persist_os_disk)
+            _setter("should_persist_os_disk", should_persist_os_disk)
         if should_persist_vm is not None:
-            pulumi.set(__self__, "should_persist_vm", should_persist_vm)
+            _setter("should_persist_vm", should_persist_vm)
         if shutdown_script is not None:
-            pulumi.set(__self__, "shutdown_script", shutdown_script)
+            _setter("shutdown_script", shutdown_script)
         if signals is not None:
-            pulumi.set(__self__, "signals", signals)
+            _setter("signals", signals)
         if spot_sizes is not None:
-            pulumi.set(__self__, "spot_sizes", spot_sizes)
+            _setter("spot_sizes", spot_sizes)
         if strategy is not None:
-            pulumi.set(__self__, "strategy", strategy)
+            _setter("strategy", strategy)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if update_states is not None:
-            pulumi.set(__self__, "update_states", update_states)
+            _setter("update_states", update_states)
         if user_data is not None:
-            pulumi.set(__self__, "user_data", user_data)
+            _setter("user_data", user_data)
         if vm_name is not None:
-            pulumi.set(__self__, "vm_name", vm_name)
+            _setter("vm_name", vm_name)
         if zones is not None:
-            pulumi.set(__self__, "zones", zones)
+            _setter("zones", zones)
 
     @property
     @pulumi.getter(name="attachDataDisks")
@@ -1576,6 +1754,10 @@ class StatefulNodeAzure(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            StatefulNodeAzureArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -1640,13 +1822,33 @@ class StatefulNodeAzure(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["detach_data_disks"] = detach_data_disks
             __props__.__dict__["extensions"] = extensions
+            if health is not None and not isinstance(health, StatefulNodeAzureHealthArgs):
+                health = health or {}
+                def _setter(key, value):
+                    health[key] = value
+                StatefulNodeAzureHealthArgs._configure(_setter, **health)
             __props__.__dict__["health"] = health
+            if image is not None and not isinstance(image, StatefulNodeAzureImageArgs):
+                image = image or {}
+                def _setter(key, value):
+                    image[key] = value
+                StatefulNodeAzureImageArgs._configure(_setter, **image)
             __props__.__dict__["image"] = image
             __props__.__dict__["import_vms"] = import_vms
             __props__.__dict__["load_balancers"] = load_balancers
+            if login is not None and not isinstance(login, StatefulNodeAzureLoginArgs):
+                login = login or {}
+                def _setter(key, value):
+                    login[key] = value
+                StatefulNodeAzureLoginArgs._configure(_setter, **login)
             __props__.__dict__["login"] = login
             __props__.__dict__["managed_service_identities"] = managed_service_identities
             __props__.__dict__["name"] = name
+            if network is not None and not isinstance(network, StatefulNodeAzureNetworkArgs):
+                network = network or {}
+                def _setter(key, value):
+                    network[key] = value
+                StatefulNodeAzureNetworkArgs._configure(_setter, **network)
             __props__.__dict__["network"] = network
             if od_sizes is None and not opts.urn:
                 raise TypeError("Missing required property 'od_sizes'")
@@ -1654,6 +1856,11 @@ class StatefulNodeAzure(pulumi.CustomResource):
             if os is None and not opts.urn:
                 raise TypeError("Missing required property 'os'")
             __props__.__dict__["os"] = os
+            if os_disk is not None and not isinstance(os_disk, StatefulNodeAzureOsDiskArgs):
+                os_disk = os_disk or {}
+                def _setter(key, value):
+                    os_disk[key] = value
+                StatefulNodeAzureOsDiskArgs._configure(_setter, **os_disk)
             __props__.__dict__["os_disk"] = os_disk
             __props__.__dict__["os_disk_persistence_mode"] = os_disk_persistence_mode
             __props__.__dict__["preferred_spot_sizes"] = preferred_spot_sizes
@@ -1666,6 +1873,11 @@ class StatefulNodeAzure(pulumi.CustomResource):
             __props__.__dict__["resource_group_name"] = resource_group_name
             __props__.__dict__["scheduling_tasks"] = scheduling_tasks
             __props__.__dict__["secrets"] = secrets
+            if security is not None and not isinstance(security, StatefulNodeAzureSecurityArgs):
+                security = security or {}
+                def _setter(key, value):
+                    security[key] = value
+                StatefulNodeAzureSecurityArgs._configure(_setter, **security)
             __props__.__dict__["security"] = security
             if should_persist_data_disks is None and not opts.urn:
                 raise TypeError("Missing required property 'should_persist_data_disks'")
@@ -1682,6 +1894,11 @@ class StatefulNodeAzure(pulumi.CustomResource):
             if spot_sizes is None and not opts.urn:
                 raise TypeError("Missing required property 'spot_sizes'")
             __props__.__dict__["spot_sizes"] = spot_sizes
+            if strategy is not None and not isinstance(strategy, StatefulNodeAzureStrategyArgs):
+                strategy = strategy or {}
+                def _setter(key, value):
+                    strategy[key] = value
+                StatefulNodeAzureStrategyArgs._configure(_setter, **strategy)
             if strategy is None and not opts.urn:
                 raise TypeError("Missing required property 'strategy'")
             __props__.__dict__["strategy"] = strategy

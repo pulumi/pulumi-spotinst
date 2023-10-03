@@ -14,14 +14,14 @@ public final class MrScalarTagArgs extends com.pulumi.resources.ResourceArgs {
     public static final MrScalarTagArgs Empty = new MrScalarTagArgs();
 
     /**
-     * Tag key.
+     * S3 key for bootstrap actions.
      * 
      */
     @Import(name="key", required=true)
     private Output<String> key;
 
     /**
-     * @return Tag key.
+     * @return S3 key for bootstrap actions.
      * 
      */
     public Output<String> key() {
@@ -69,7 +69,7 @@ public final class MrScalarTagArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param key Tag key.
+         * @param key S3 key for bootstrap actions.
          * 
          * @return builder
          * 
@@ -80,7 +80,7 @@ public final class MrScalarTagArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param key Tag key.
+         * @param key S3 key for bootstrap actions.
          * 
          * @return builder
          * 

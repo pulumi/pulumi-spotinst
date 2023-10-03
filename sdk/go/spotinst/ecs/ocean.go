@@ -77,7 +77,8 @@ type Ocean struct {
 	// A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public ip.
 	SubnetIds pulumi.StringArrayOutput `pulumi:"subnetIds"`
 	// Optionally adds tags to instances launched in an Ocean cluster.
-	Tags         OceanTagArrayOutput        `pulumi:"tags"`
+	Tags OceanTagArrayOutput `pulumi:"tags"`
+	// While used, you can control whether the group should perform a deployment after an update to the configuration.
 	UpdatePolicy OceanUpdatePolicyPtrOutput `pulumi:"updatePolicy"`
 	// launch specification defined on the Ocean object will function only as a template for virtual node groups.
 	UseAsTemplateOnly pulumi.BoolPtrOutput `pulumi:"useAsTemplateOnly"`
@@ -183,7 +184,8 @@ type oceanState struct {
 	// A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public ip.
 	SubnetIds []string `pulumi:"subnetIds"`
 	// Optionally adds tags to instances launched in an Ocean cluster.
-	Tags         []OceanTag         `pulumi:"tags"`
+	Tags []OceanTag `pulumi:"tags"`
+	// While used, you can control whether the group should perform a deployment after an update to the configuration.
 	UpdatePolicy *OceanUpdatePolicy `pulumi:"updatePolicy"`
 	// launch specification defined on the Ocean object will function only as a template for virtual node groups.
 	UseAsTemplateOnly *bool `pulumi:"useAsTemplateOnly"`
@@ -248,7 +250,8 @@ type OceanState struct {
 	// A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public ip.
 	SubnetIds pulumi.StringArrayInput
 	// Optionally adds tags to instances launched in an Ocean cluster.
-	Tags         OceanTagArrayInput
+	Tags OceanTagArrayInput
+	// While used, you can control whether the group should perform a deployment after an update to the configuration.
 	UpdatePolicy OceanUpdatePolicyPtrInput
 	// launch specification defined on the Ocean object will function only as a template for virtual node groups.
 	UseAsTemplateOnly pulumi.BoolPtrInput
@@ -317,7 +320,8 @@ type oceanArgs struct {
 	// A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public ip.
 	SubnetIds []string `pulumi:"subnetIds"`
 	// Optionally adds tags to instances launched in an Ocean cluster.
-	Tags         []OceanTag         `pulumi:"tags"`
+	Tags []OceanTag `pulumi:"tags"`
+	// While used, you can control whether the group should perform a deployment after an update to the configuration.
 	UpdatePolicy *OceanUpdatePolicy `pulumi:"updatePolicy"`
 	// launch specification defined on the Ocean object will function only as a template for virtual node groups.
 	UseAsTemplateOnly *bool `pulumi:"useAsTemplateOnly"`
@@ -383,7 +387,8 @@ type OceanArgs struct {
 	// A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public ip.
 	SubnetIds pulumi.StringArrayInput
 	// Optionally adds tags to instances launched in an Ocean cluster.
-	Tags         OceanTagArrayInput
+	Tags OceanTagArrayInput
+	// While used, you can control whether the group should perform a deployment after an update to the configuration.
 	UpdatePolicy OceanUpdatePolicyPtrInput
 	// launch specification defined on the Ocean object will function only as a template for virtual node groups.
 	UseAsTemplateOnly pulumi.BoolPtrInput
@@ -637,6 +642,7 @@ func (o OceanOutput) Tags() OceanTagArrayOutput {
 	return o.ApplyT(func(v *Ocean) OceanTagArrayOutput { return v.Tags }).(OceanTagArrayOutput)
 }
 
+// While used, you can control whether the group should perform a deployment after an update to the configuration.
 func (o OceanOutput) UpdatePolicy() OceanUpdatePolicyPtrOutput {
 	return o.ApplyT(func(v *Ocean) OceanUpdatePolicyPtrOutput { return v.UpdatePolicy }).(OceanUpdatePolicyPtrOutput)
 }

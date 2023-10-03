@@ -9,77 +9,13 @@ import java.util.Objects;
 
 @CustomType
 public final class ElastigroupIntegrationGkeAutoscaleLabel {
-    /**
-     * @return The label name.
-     * 
-     */
     private String key;
-    /**
-     * @return The label value.
-     * 
-     * Usage:
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *     }
-     * }
-     * ```
-     * 
-     */
     private String value;
 
     private ElastigroupIntegrationGkeAutoscaleLabel() {}
-    /**
-     * @return The label name.
-     * 
-     */
     public String key() {
         return this.key;
     }
-    /**
-     * @return The label value.
-     * 
-     * Usage:
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *     }
-     * }
-     * ```
-     * 
-     */
     public String value() {
         return this.value;
     }

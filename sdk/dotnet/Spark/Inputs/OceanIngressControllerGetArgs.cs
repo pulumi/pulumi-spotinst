@@ -12,6 +12,9 @@ namespace Pulumi.SpotInst.Spark.Inputs
 
     public sealed class OceanIngressControllerGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// - Should an ingress controller managed by Ocean for Apache Spark be installed on the cluster.
+        /// </summary>
         [Input("managed")]
         public Input<bool>? Managed { get; set; }
 

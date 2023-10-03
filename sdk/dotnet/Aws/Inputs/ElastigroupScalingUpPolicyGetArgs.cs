@@ -55,7 +55,7 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public Input<bool>? IsEnabled { get; set; }
 
         /// <summary>
-        /// The desired target capacity of a group. Required if using `"setMaxTarget"` as action type
+        /// . The number of the desired target (and maximum) capacity
         /// </summary>
         [Input("maxTargetCapacity")]
         public Input<string>? MaxTargetCapacity { get; set; }

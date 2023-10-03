@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['OceanExtendedResourceDefinitionArgs', 'OceanExtendedResourceDefinition']
@@ -22,9 +22,20 @@ class OceanExtendedResourceDefinitionArgs:
         :param pulumi.Input[str] name: The extended resource name as should be requested by your pods and registered to the nodes. Cannot be updated.
                The name should be a valid Kubernetes extended resource name.
         """
-        pulumi.set(__self__, "resource_mapping", resource_mapping)
+        OceanExtendedResourceDefinitionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            resource_mapping=resource_mapping,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             resource_mapping: pulumi.Input[Mapping[str, Any]],
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("resource_mapping", resource_mapping)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
 
     @property
     @pulumi.getter(name="resourceMapping")
@@ -63,10 +74,21 @@ class _OceanExtendedResourceDefinitionState:
                The name should be a valid Kubernetes extended resource name.
         :param pulumi.Input[Mapping[str, Any]] resource_mapping: A mapping between AWS instanceType or * as default and its value for the given extended resource.
         """
+        _OceanExtendedResourceDefinitionState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            resource_mapping=resource_mapping,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: Optional[pulumi.Input[str]] = None,
+             resource_mapping: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if resource_mapping is not None:
-            pulumi.set(__self__, "resource_mapping", resource_mapping)
+            _setter("resource_mapping", resource_mapping)
 
     @property
     @pulumi.getter
@@ -154,6 +176,10 @@ class OceanExtendedResourceDefinition(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            OceanExtendedResourceDefinitionArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

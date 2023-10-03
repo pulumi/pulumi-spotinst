@@ -10,7 +10,7 @@ import java.util.Objects;
 @CustomType
 public final class MrScalarTag {
     /**
-     * @return Tag key.
+     * @return S3 key for bootstrap actions.
      * 
      */
     private String key;
@@ -22,7 +22,7 @@ public final class MrScalarTag {
 
     private MrScalarTag() {}
     /**
-     * @return Tag key.
+     * @return S3 key for bootstrap actions.
      * 
      */
     public String key() {

@@ -28,7 +28,7 @@ public final class MrScalarMasterEbsBlockDevice {
      */
     private String volumeType;
     /**
-     * @return Amount of volumes per instance in the task group.
+     * @return Amount of volumes per instance in the core group.
      * 
      */
     private @Nullable Integer volumesPerInstance;
@@ -56,7 +56,7 @@ public final class MrScalarMasterEbsBlockDevice {
         return this.volumeType;
     }
     /**
-     * @return Amount of volumes per instance in the task group.
+     * @return Amount of volumes per instance in the core group.
      * 
      */
     public Optional<Integer> volumesPerInstance() {

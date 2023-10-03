@@ -35,16 +35,14 @@ public final class OceanImportScheduledTaskTaskArgs extends com.pulumi.resources
     }
 
     /**
-     * Flag to enable / disable the shutdown hours.
-     * Example: True
+     * Enable the Ocean Kubernetes Autoscaler.
      * 
      */
     @Import(name="isEnabled", required=true)
     private Output<Boolean> isEnabled;
 
     /**
-     * @return Flag to enable / disable the shutdown hours.
-     * Example: True
+     * @return Enable the Ocean Kubernetes Autoscaler.
      * 
      */
     public Output<Boolean> isEnabled() {
@@ -124,8 +122,7 @@ public final class OceanImportScheduledTaskTaskArgs extends com.pulumi.resources
         }
 
         /**
-         * @param isEnabled Flag to enable / disable the shutdown hours.
-         * Example: True
+         * @param isEnabled Enable the Ocean Kubernetes Autoscaler.
          * 
          * @return builder
          * 
@@ -136,8 +133,7 @@ public final class OceanImportScheduledTaskTaskArgs extends com.pulumi.resources
         }
 
         /**
-         * @param isEnabled Flag to enable / disable the shutdown hours.
-         * Example: True
+         * @param isEnabled Enable the Ocean Kubernetes Autoscaler.
          * 
          * @return builder
          * 

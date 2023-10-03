@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -36,6 +36,7 @@ class OceanImportArgs:
         The set of arguments for constructing a OceanImport resource.
         :param pulumi.Input[str] cluster_name: The GKE cluster name.
         :param pulumi.Input[str] location: The zone the master cluster is located in.
+        :param pulumi.Input['OceanImportAutoscalerArgs'] autoscaler: The Ocean Kubernetes Autoscaler object.
         :param pulumi.Input[Sequence[pulumi.Input['OceanImportBackendServiceArgs']]] backend_services: Describes the backend service configurations.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] blacklists: Instance types to avoid launching in the Ocean cluster. Cannot be configured if whitelist list is configured.
         :param pulumi.Input[str] controller_cluster_id: A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
@@ -43,40 +44,80 @@ class OceanImportArgs:
         :param pulumi.Input[int] max_size: The upper limit of instances the cluster can scale up to.
         :param pulumi.Input[int] min_size: The lower limit of instances the cluster can scale down to.
         :param pulumi.Input[str] root_volume_type: The root volume disk type.
+        :param pulumi.Input[Sequence[pulumi.Input['OceanImportScheduledTaskArgs']]] scheduled_tasks: Set scheduling object.
         :param pulumi.Input['OceanImportShieldedInstanceConfigArgs'] shielded_instance_config: The Ocean shielded instance configuration object.
         :param pulumi.Input[bool] use_as_template_only: launch specification defined on the Ocean object will function only as a template for virtual node groups.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] whitelists: Instance types allowed in the Ocean cluster. Cannot be configured if blacklist list is configured.
         """
-        pulumi.set(__self__, "cluster_name", cluster_name)
-        pulumi.set(__self__, "location", location)
+        OceanImportArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cluster_name=cluster_name,
+            location=location,
+            autoscaler=autoscaler,
+            backend_services=backend_services,
+            blacklists=blacklists,
+            controller_cluster_id=controller_cluster_id,
+            desired_capacity=desired_capacity,
+            max_size=max_size,
+            min_size=min_size,
+            root_volume_type=root_volume_type,
+            scheduled_tasks=scheduled_tasks,
+            shielded_instance_config=shielded_instance_config,
+            strategies=strategies,
+            update_policy=update_policy,
+            use_as_template_only=use_as_template_only,
+            whitelists=whitelists,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cluster_name: pulumi.Input[str],
+             location: pulumi.Input[str],
+             autoscaler: Optional[pulumi.Input['OceanImportAutoscalerArgs']] = None,
+             backend_services: Optional[pulumi.Input[Sequence[pulumi.Input['OceanImportBackendServiceArgs']]]] = None,
+             blacklists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             controller_cluster_id: Optional[pulumi.Input[str]] = None,
+             desired_capacity: Optional[pulumi.Input[int]] = None,
+             max_size: Optional[pulumi.Input[int]] = None,
+             min_size: Optional[pulumi.Input[int]] = None,
+             root_volume_type: Optional[pulumi.Input[str]] = None,
+             scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input['OceanImportScheduledTaskArgs']]]] = None,
+             shielded_instance_config: Optional[pulumi.Input['OceanImportShieldedInstanceConfigArgs']] = None,
+             strategies: Optional[pulumi.Input[Sequence[pulumi.Input['OceanImportStrategyArgs']]]] = None,
+             update_policy: Optional[pulumi.Input['OceanImportUpdatePolicyArgs']] = None,
+             use_as_template_only: Optional[pulumi.Input[bool]] = None,
+             whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("cluster_name", cluster_name)
+        _setter("location", location)
         if autoscaler is not None:
-            pulumi.set(__self__, "autoscaler", autoscaler)
+            _setter("autoscaler", autoscaler)
         if backend_services is not None:
-            pulumi.set(__self__, "backend_services", backend_services)
+            _setter("backend_services", backend_services)
         if blacklists is not None:
-            pulumi.set(__self__, "blacklists", blacklists)
+            _setter("blacklists", blacklists)
         if controller_cluster_id is not None:
-            pulumi.set(__self__, "controller_cluster_id", controller_cluster_id)
+            _setter("controller_cluster_id", controller_cluster_id)
         if desired_capacity is not None:
-            pulumi.set(__self__, "desired_capacity", desired_capacity)
+            _setter("desired_capacity", desired_capacity)
         if max_size is not None:
-            pulumi.set(__self__, "max_size", max_size)
+            _setter("max_size", max_size)
         if min_size is not None:
-            pulumi.set(__self__, "min_size", min_size)
+            _setter("min_size", min_size)
         if root_volume_type is not None:
-            pulumi.set(__self__, "root_volume_type", root_volume_type)
+            _setter("root_volume_type", root_volume_type)
         if scheduled_tasks is not None:
-            pulumi.set(__self__, "scheduled_tasks", scheduled_tasks)
+            _setter("scheduled_tasks", scheduled_tasks)
         if shielded_instance_config is not None:
-            pulumi.set(__self__, "shielded_instance_config", shielded_instance_config)
+            _setter("shielded_instance_config", shielded_instance_config)
         if strategies is not None:
-            pulumi.set(__self__, "strategies", strategies)
+            _setter("strategies", strategies)
         if update_policy is not None:
-            pulumi.set(__self__, "update_policy", update_policy)
+            _setter("update_policy", update_policy)
         if use_as_template_only is not None:
-            pulumi.set(__self__, "use_as_template_only", use_as_template_only)
+            _setter("use_as_template_only", use_as_template_only)
         if whitelists is not None:
-            pulumi.set(__self__, "whitelists", whitelists)
+            _setter("whitelists", whitelists)
 
     @property
     @pulumi.getter(name="clusterName")
@@ -105,6 +146,9 @@ class OceanImportArgs:
     @property
     @pulumi.getter
     def autoscaler(self) -> Optional[pulumi.Input['OceanImportAutoscalerArgs']]:
+        """
+        The Ocean Kubernetes Autoscaler object.
+        """
         return pulumi.get(self, "autoscaler")
 
     @autoscaler.setter
@@ -198,6 +242,9 @@ class OceanImportArgs:
     @property
     @pulumi.getter(name="scheduledTasks")
     def scheduled_tasks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanImportScheduledTaskArgs']]]]:
+        """
+        Set scheduling object.
+        """
         return pulumi.get(self, "scheduled_tasks")
 
     @scheduled_tasks.setter
@@ -281,6 +328,7 @@ class _OceanImportState:
                  whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering OceanImport resources.
+        :param pulumi.Input['OceanImportAutoscalerArgs'] autoscaler: The Ocean Kubernetes Autoscaler object.
         :param pulumi.Input[Sequence[pulumi.Input['OceanImportBackendServiceArgs']]] backend_services: Describes the backend service configurations.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] blacklists: Instance types to avoid launching in the Ocean cluster. Cannot be configured if whitelist list is configured.
         :param pulumi.Input[str] cluster_name: The GKE cluster name.
@@ -290,48 +338,93 @@ class _OceanImportState:
         :param pulumi.Input[int] max_size: The upper limit of instances the cluster can scale up to.
         :param pulumi.Input[int] min_size: The lower limit of instances the cluster can scale down to.
         :param pulumi.Input[str] root_volume_type: The root volume disk type.
+        :param pulumi.Input[Sequence[pulumi.Input['OceanImportScheduledTaskArgs']]] scheduled_tasks: Set scheduling object.
         :param pulumi.Input['OceanImportShieldedInstanceConfigArgs'] shielded_instance_config: The Ocean shielded instance configuration object.
         :param pulumi.Input[bool] use_as_template_only: launch specification defined on the Ocean object will function only as a template for virtual node groups.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] whitelists: Instance types allowed in the Ocean cluster. Cannot be configured if blacklist list is configured.
         """
+        _OceanImportState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            autoscaler=autoscaler,
+            backend_services=backend_services,
+            blacklists=blacklists,
+            cluster_controller_id=cluster_controller_id,
+            cluster_name=cluster_name,
+            controller_cluster_id=controller_cluster_id,
+            desired_capacity=desired_capacity,
+            location=location,
+            max_size=max_size,
+            min_size=min_size,
+            root_volume_type=root_volume_type,
+            scheduled_tasks=scheduled_tasks,
+            shielded_instance_config=shielded_instance_config,
+            strategies=strategies,
+            update_policy=update_policy,
+            use_as_template_only=use_as_template_only,
+            whitelists=whitelists,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             autoscaler: Optional[pulumi.Input['OceanImportAutoscalerArgs']] = None,
+             backend_services: Optional[pulumi.Input[Sequence[pulumi.Input['OceanImportBackendServiceArgs']]]] = None,
+             blacklists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             cluster_controller_id: Optional[pulumi.Input[str]] = None,
+             cluster_name: Optional[pulumi.Input[str]] = None,
+             controller_cluster_id: Optional[pulumi.Input[str]] = None,
+             desired_capacity: Optional[pulumi.Input[int]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             max_size: Optional[pulumi.Input[int]] = None,
+             min_size: Optional[pulumi.Input[int]] = None,
+             root_volume_type: Optional[pulumi.Input[str]] = None,
+             scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input['OceanImportScheduledTaskArgs']]]] = None,
+             shielded_instance_config: Optional[pulumi.Input['OceanImportShieldedInstanceConfigArgs']] = None,
+             strategies: Optional[pulumi.Input[Sequence[pulumi.Input['OceanImportStrategyArgs']]]] = None,
+             update_policy: Optional[pulumi.Input['OceanImportUpdatePolicyArgs']] = None,
+             use_as_template_only: Optional[pulumi.Input[bool]] = None,
+             whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if autoscaler is not None:
-            pulumi.set(__self__, "autoscaler", autoscaler)
+            _setter("autoscaler", autoscaler)
         if backend_services is not None:
-            pulumi.set(__self__, "backend_services", backend_services)
+            _setter("backend_services", backend_services)
         if blacklists is not None:
-            pulumi.set(__self__, "blacklists", blacklists)
+            _setter("blacklists", blacklists)
         if cluster_controller_id is not None:
-            pulumi.set(__self__, "cluster_controller_id", cluster_controller_id)
+            _setter("cluster_controller_id", cluster_controller_id)
         if cluster_name is not None:
-            pulumi.set(__self__, "cluster_name", cluster_name)
+            _setter("cluster_name", cluster_name)
         if controller_cluster_id is not None:
-            pulumi.set(__self__, "controller_cluster_id", controller_cluster_id)
+            _setter("controller_cluster_id", controller_cluster_id)
         if desired_capacity is not None:
-            pulumi.set(__self__, "desired_capacity", desired_capacity)
+            _setter("desired_capacity", desired_capacity)
         if location is not None:
-            pulumi.set(__self__, "location", location)
+            _setter("location", location)
         if max_size is not None:
-            pulumi.set(__self__, "max_size", max_size)
+            _setter("max_size", max_size)
         if min_size is not None:
-            pulumi.set(__self__, "min_size", min_size)
+            _setter("min_size", min_size)
         if root_volume_type is not None:
-            pulumi.set(__self__, "root_volume_type", root_volume_type)
+            _setter("root_volume_type", root_volume_type)
         if scheduled_tasks is not None:
-            pulumi.set(__self__, "scheduled_tasks", scheduled_tasks)
+            _setter("scheduled_tasks", scheduled_tasks)
         if shielded_instance_config is not None:
-            pulumi.set(__self__, "shielded_instance_config", shielded_instance_config)
+            _setter("shielded_instance_config", shielded_instance_config)
         if strategies is not None:
-            pulumi.set(__self__, "strategies", strategies)
+            _setter("strategies", strategies)
         if update_policy is not None:
-            pulumi.set(__self__, "update_policy", update_policy)
+            _setter("update_policy", update_policy)
         if use_as_template_only is not None:
-            pulumi.set(__self__, "use_as_template_only", use_as_template_only)
+            _setter("use_as_template_only", use_as_template_only)
         if whitelists is not None:
-            pulumi.set(__self__, "whitelists", whitelists)
+            _setter("whitelists", whitelists)
 
     @property
     @pulumi.getter
     def autoscaler(self) -> Optional[pulumi.Input['OceanImportAutoscalerArgs']]:
+        """
+        The Ocean Kubernetes Autoscaler object.
+        """
         return pulumi.get(self, "autoscaler")
 
     @autoscaler.setter
@@ -458,6 +551,9 @@ class _OceanImportState:
     @property
     @pulumi.getter(name="scheduledTasks")
     def scheduled_tasks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanImportScheduledTaskArgs']]]]:
+        """
+        Set scheduling object.
+        """
         return pulumi.get(self, "scheduled_tasks")
 
     @scheduled_tasks.setter
@@ -626,6 +722,7 @@ class OceanImport(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['OceanImportAutoscalerArgs']] autoscaler: The Ocean Kubernetes Autoscaler object.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanImportBackendServiceArgs']]]] backend_services: Describes the backend service configurations.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] blacklists: Instance types to avoid launching in the Ocean cluster. Cannot be configured if whitelist list is configured.
         :param pulumi.Input[str] cluster_name: The GKE cluster name.
@@ -635,6 +732,7 @@ class OceanImport(pulumi.CustomResource):
         :param pulumi.Input[int] max_size: The upper limit of instances the cluster can scale up to.
         :param pulumi.Input[int] min_size: The lower limit of instances the cluster can scale down to.
         :param pulumi.Input[str] root_volume_type: The root volume disk type.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanImportScheduledTaskArgs']]]] scheduled_tasks: Set scheduling object.
         :param pulumi.Input[pulumi.InputType['OceanImportShieldedInstanceConfigArgs']] shielded_instance_config: The Ocean shielded instance configuration object.
         :param pulumi.Input[bool] use_as_template_only: launch specification defined on the Ocean object will function only as a template for virtual node groups.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] whitelists: Instance types allowed in the Ocean cluster. Cannot be configured if blacklist list is configured.
@@ -738,6 +836,10 @@ class OceanImport(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            OceanImportArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -768,6 +870,11 @@ class OceanImport(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = OceanImportArgs.__new__(OceanImportArgs)
 
+            if autoscaler is not None and not isinstance(autoscaler, OceanImportAutoscalerArgs):
+                autoscaler = autoscaler or {}
+                def _setter(key, value):
+                    autoscaler[key] = value
+                OceanImportAutoscalerArgs._configure(_setter, **autoscaler)
             __props__.__dict__["autoscaler"] = autoscaler
             __props__.__dict__["backend_services"] = backend_services
             __props__.__dict__["blacklists"] = blacklists
@@ -783,8 +890,18 @@ class OceanImport(pulumi.CustomResource):
             __props__.__dict__["min_size"] = min_size
             __props__.__dict__["root_volume_type"] = root_volume_type
             __props__.__dict__["scheduled_tasks"] = scheduled_tasks
+            if shielded_instance_config is not None and not isinstance(shielded_instance_config, OceanImportShieldedInstanceConfigArgs):
+                shielded_instance_config = shielded_instance_config or {}
+                def _setter(key, value):
+                    shielded_instance_config[key] = value
+                OceanImportShieldedInstanceConfigArgs._configure(_setter, **shielded_instance_config)
             __props__.__dict__["shielded_instance_config"] = shielded_instance_config
             __props__.__dict__["strategies"] = strategies
+            if update_policy is not None and not isinstance(update_policy, OceanImportUpdatePolicyArgs):
+                update_policy = update_policy or {}
+                def _setter(key, value):
+                    update_policy[key] = value
+                OceanImportUpdatePolicyArgs._configure(_setter, **update_policy)
             __props__.__dict__["update_policy"] = update_policy
             __props__.__dict__["use_as_template_only"] = use_as_template_only
             __props__.__dict__["whitelists"] = whitelists
@@ -823,6 +940,7 @@ class OceanImport(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['OceanImportAutoscalerArgs']] autoscaler: The Ocean Kubernetes Autoscaler object.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanImportBackendServiceArgs']]]] backend_services: Describes the backend service configurations.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] blacklists: Instance types to avoid launching in the Ocean cluster. Cannot be configured if whitelist list is configured.
         :param pulumi.Input[str] cluster_name: The GKE cluster name.
@@ -832,6 +950,7 @@ class OceanImport(pulumi.CustomResource):
         :param pulumi.Input[int] max_size: The upper limit of instances the cluster can scale up to.
         :param pulumi.Input[int] min_size: The lower limit of instances the cluster can scale down to.
         :param pulumi.Input[str] root_volume_type: The root volume disk type.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanImportScheduledTaskArgs']]]] scheduled_tasks: Set scheduling object.
         :param pulumi.Input[pulumi.InputType['OceanImportShieldedInstanceConfigArgs']] shielded_instance_config: The Ocean shielded instance configuration object.
         :param pulumi.Input[bool] use_as_template_only: launch specification defined on the Ocean object will function only as a template for virtual node groups.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] whitelists: Instance types allowed in the Ocean cluster. Cannot be configured if blacklist list is configured.
@@ -862,6 +981,9 @@ class OceanImport(pulumi.CustomResource):
     @property
     @pulumi.getter
     def autoscaler(self) -> pulumi.Output['outputs.OceanImportAutoscaler']:
+        """
+        The Ocean Kubernetes Autoscaler object.
+        """
         return pulumi.get(self, "autoscaler")
 
     @property
@@ -944,6 +1066,9 @@ class OceanImport(pulumi.CustomResource):
     @property
     @pulumi.getter(name="scheduledTasks")
     def scheduled_tasks(self) -> pulumi.Output[Optional[Sequence['outputs.OceanImportScheduledTask']]]:
+        """
+        Set scheduling object.
+        """
         return pulumi.get(self, "scheduled_tasks")
 
     @property

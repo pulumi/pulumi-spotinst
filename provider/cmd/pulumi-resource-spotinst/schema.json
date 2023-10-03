@@ -459,11 +459,11 @@
                 },
                 "autoscaleDown": {
                     "$ref": "#/types/spotinst:aws/ElastigroupIntegrationDockerSwarmAutoscaleDown:ElastigroupIntegrationDockerSwarmAutoscaleDown",
-                    "description": "Enabling scale down.\n"
+                    "description": "Settings for scale down actions.\n"
                 },
                 "autoscaleHeadroom": {
                     "$ref": "#/types/spotinst:aws/ElastigroupIntegrationDockerSwarmAutoscaleHeadroom:ElastigroupIntegrationDockerSwarmAutoscaleHeadroom",
-                    "description": "Headroom for the cluster.\n"
+                    "description": "An option to set compute reserve for the cluster.\n"
                 },
                 "autoscaleIsEnabled": {
                     "type": "boolean",
@@ -471,11 +471,11 @@
                 },
                 "masterHost": {
                     "type": "string",
-                    "description": "The URL of the Rancher Master host.\n"
+                    "description": "The URL for the Nomad master host.\n"
                 },
                 "masterPort": {
                     "type": "integer",
-                    "description": "Network port used by your swarm.\n"
+                    "description": "The network port for the master host.\n"
                 }
             },
             "type": "object",
@@ -492,7 +492,7 @@
                 },
                 "maxScaleDownPercentage": {
                     "type": "number",
-                    "description": "Represents the maximum percent to scale-down. Number between 1-100.\nUsage:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\n```\n```python\nimport pulumi\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n    }\n}\n```\n```yaml\n{}\n```\n"
+                    "description": "Represents the maximum percent to scale-down. Number between 1-100.\n"
                 }
             },
             "type": "object"
@@ -501,15 +501,15 @@
             "properties": {
                 "cpuPerUnit": {
                     "type": "integer",
-                    "description": "Cpu units for compute.\n"
+                    "description": "How much CPU (MHz) to allocate for headroom unit.\n"
                 },
                 "memoryPerUnit": {
                     "type": "integer",
-                    "description": "RAM units for compute.\n"
+                    "description": "How much Memory allocate for headroom unit.\n"
                 },
                 "numOfUnits": {
                     "type": "integer",
-                    "description": "Amount of units for compute.\n"
+                    "description": "How many units of headroom to allocate.\n"
                 }
             },
             "type": "object"
@@ -529,15 +529,15 @@
                 },
                 "autoscaleDown": {
                     "$ref": "#/types/spotinst:aws/ElastigroupIntegrationEcsAutoscaleDown:ElastigroupIntegrationEcsAutoscaleDown",
-                    "description": "Enabling scale down.\n"
+                    "description": "Settings for scale down actions.\n"
                 },
                 "autoscaleHeadroom": {
                     "$ref": "#/types/spotinst:aws/ElastigroupIntegrationEcsAutoscaleHeadroom:ElastigroupIntegrationEcsAutoscaleHeadroom",
-                    "description": "Headroom for the cluster.\n"
+                    "description": "An option to set compute reserve for the cluster.\n"
                 },
                 "autoscaleIsAutoConfig": {
                     "type": "boolean",
-                    "description": "Enabling the automatic auto-scaler functionality. For more information please see: [ECS auto scaler](https://api.spotinst.com/container-management/amazon-ecs/elastigroup-for-ecs-concepts/autoscaling/).\n"
+                    "description": "Enabling the automatic k8s auto-scaler functionality. For more information please see: [Kubernetes auto scaler](https://api.spotinst.com/integration-docs/elastigroup/container-management/kubernetes/autoscaler/).\n"
                 },
                 "autoscaleIsEnabled": {
                     "type": "boolean",
@@ -568,7 +568,7 @@
                 },
                 "value": {
                     "type": "string",
-                    "description": "The dimension value.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\n```\n```python\nimport pulumi\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n    }\n}\n```\n```yaml\n{}\n```\n"
+                    "description": "The dimension value.\n"
                 }
             },
             "type": "object",
@@ -585,7 +585,7 @@
                 },
                 "maxScaleDownPercentage": {
                     "type": "number",
-                    "description": "Represents the maximum percent to scale-down. Number between 1-100.\nUsage:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\n```\n```python\nimport pulumi\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n    }\n}\n```\n```yaml\n{}\n```\n"
+                    "description": "Represents the maximum percent to scale-down. Number between 1-100.\n"
                 }
             },
             "type": "object"
@@ -594,15 +594,15 @@
             "properties": {
                 "cpuPerUnit": {
                     "type": "integer",
-                    "description": "Cpu units for compute.\n"
+                    "description": "How much CPU (MHz) to allocate for headroom unit.\n"
                 },
                 "memoryPerUnit": {
                     "type": "integer",
-                    "description": "RAM units for compute.\n"
+                    "description": "How much Memory allocate for headroom unit.\n"
                 },
                 "numOfUnits": {
                     "type": "integer",
-                    "description": "Amount of units for compute.\n"
+                    "description": "How many units of headroom to allocate.\n"
                 }
             },
             "type": "object"
@@ -635,7 +635,7 @@
             "properties": {
                 "isEnabled": {
                     "type": "boolean",
-                    "description": "Setting the task to being enabled or disabled.\n\nUsage:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\n```\n```python\nimport pulumi\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n    }\n}\n```\n```yaml\n{}\n```\n"
+                    "description": "Specifies whether the scaling policy described in this block is enabled.\n"
                 }
             },
             "type": "object"
@@ -644,7 +644,7 @@
             "properties": {
                 "apiServer": {
                     "type": "string",
-                    "description": "Usage:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\n```\n```python\nimport pulumi\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n    }\n}\n```\n```yaml\n{}\n```\n"
+                    "description": "The public IP of the DC/OS Master.\n\nUsage:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\n```\n```python\nimport pulumi\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n    }\n}\n```\n```yaml\n{}\n```\n"
                 },
                 "autoscaleCooldown": {
                     "type": "integer",
@@ -652,15 +652,15 @@
                 },
                 "autoscaleDown": {
                     "$ref": "#/types/spotinst:aws/ElastigroupIntegrationKubernetesAutoscaleDown:ElastigroupIntegrationKubernetesAutoscaleDown",
-                    "description": "Enabling scale down.\n"
+                    "description": "Settings for scale down actions.\n"
                 },
                 "autoscaleHeadroom": {
                     "$ref": "#/types/spotinst:aws/ElastigroupIntegrationKubernetesAutoscaleHeadroom:ElastigroupIntegrationKubernetesAutoscaleHeadroom",
-                    "description": "Headroom for the cluster.\n"
+                    "description": "An option to set compute reserve for the cluster.\n"
                 },
                 "autoscaleIsAutoConfig": {
                     "type": "boolean",
-                    "description": "Enabling the automatic auto-scaler functionality. For more information please see: [ECS auto scaler](https://api.spotinst.com/container-management/amazon-ecs/elastigroup-for-ecs-concepts/autoscaling/).\n"
+                    "description": "Enabling the automatic k8s auto-scaler functionality. For more information please see: [Kubernetes auto scaler](https://api.spotinst.com/integration-docs/elastigroup/container-management/kubernetes/autoscaler/).\n"
                 },
                 "autoscaleIsEnabled": {
                     "type": "boolean",
@@ -695,7 +695,7 @@
                 },
                 "maxScaleDownPercentage": {
                     "type": "number",
-                    "description": "Represents the maximum percent to scale-down. Number between 1-100.\nUsage:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\n```\n```python\nimport pulumi\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n    }\n}\n```\n```yaml\n{}\n```\n"
+                    "description": "Represents the maximum percent to scale-down. Number between 1-100.\n"
                 }
             },
             "type": "object"
@@ -704,15 +704,15 @@
             "properties": {
                 "cpuPerUnit": {
                     "type": "integer",
-                    "description": "Cpu units for compute.\n"
+                    "description": "How much CPU (MHz) to allocate for headroom unit.\n"
                 },
                 "memoryPerUnit": {
                     "type": "integer",
-                    "description": "RAM units for compute.\n"
+                    "description": "How much Memory allocate for headroom unit.\n"
                 },
                 "numOfUnits": {
                     "type": "integer",
-                    "description": "Amount of units for compute.\n"
+                    "description": "How many units of headroom to allocate.\n"
                 }
             },
             "type": "object"
@@ -724,7 +724,7 @@
                 },
                 "value": {
                     "type": "string",
-                    "description": "The dimension value.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\n```\n```python\nimport pulumi\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n    }\n}\n```\n```yaml\n{}\n```\n"
+                    "description": "The dimension value.\n"
                 }
             },
             "type": "object",
@@ -737,7 +737,7 @@
             "properties": {
                 "apiServer": {
                     "type": "string",
-                    "description": "Usage:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\n```\n```python\nimport pulumi\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n    }\n}\n```\n```yaml\n{}\n```\n"
+                    "description": "The public IP of the DC/OS Master.\n\nUsage:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\n```\n```python\nimport pulumi\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n    }\n}\n```\n```yaml\n{}\n```\n"
                 }
             },
             "type": "object",
@@ -776,11 +776,11 @@
                 },
                 "autoscaleDown": {
                     "$ref": "#/types/spotinst:aws/ElastigroupIntegrationNomadAutoscaleDown:ElastigroupIntegrationNomadAutoscaleDown",
-                    "description": "Enabling scale down.\n"
+                    "description": "Settings for scale down actions.\n"
                 },
                 "autoscaleHeadroom": {
                     "$ref": "#/types/spotinst:aws/ElastigroupIntegrationNomadAutoscaleHeadroom:ElastigroupIntegrationNomadAutoscaleHeadroom",
-                    "description": "Headroom for the cluster.\n"
+                    "description": "An option to set compute reserve for the cluster.\n"
                 },
                 "autoscaleIsEnabled": {
                     "type": "boolean",
@@ -788,11 +788,11 @@
                 },
                 "masterHost": {
                     "type": "string",
-                    "description": "The URL of the Rancher Master host.\n"
+                    "description": "The URL for the Nomad master host.\n"
                 },
                 "masterPort": {
                     "type": "integer",
-                    "description": "Network port used by your swarm.\n"
+                    "description": "The network port for the master host.\n"
                 }
             },
             "type": "object",
@@ -808,7 +808,7 @@
                 },
                 "value": {
                     "type": "string",
-                    "description": "The dimension value.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\n```\n```python\nimport pulumi\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n    }\n}\n```\n```yaml\n{}\n```\n"
+                    "description": "The dimension value.\n"
                 }
             },
             "type": "object",
@@ -830,15 +830,15 @@
             "properties": {
                 "cpuPerUnit": {
                     "type": "integer",
-                    "description": "Cpu units for compute.\n"
+                    "description": "How much CPU (MHz) to allocate for headroom unit.\n"
                 },
                 "memoryPerUnit": {
                     "type": "integer",
-                    "description": "RAM units for compute.\n"
+                    "description": "How much Memory allocate for headroom unit.\n"
                 },
                 "numOfUnits": {
                     "type": "integer",
-                    "description": "Amount of units for compute.\n"
+                    "description": "How many units of headroom to allocate.\n"
                 }
             },
             "type": "object"
@@ -851,7 +851,7 @@
                 },
                 "masterHost": {
                     "type": "string",
-                    "description": "The URL of the Rancher Master host.\n"
+                    "description": "The URL for the Nomad master host.\n"
                 },
                 "secretKey": {
                     "type": "string",
@@ -1233,7 +1233,7 @@
                 },
                 "value": {
                     "type": "string",
-                    "description": "The dimension value.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\n```\n```python\nimport pulumi\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n    }\n}\n```\n```yaml\n{}\n```\n"
+                    "description": "The dimension value.\n"
                 }
             },
             "type": "object",
@@ -1253,7 +1253,7 @@
                 },
                 "deleteOnTermination": {
                     "type": "boolean",
-                    "description": "If set to true, the interface is deleted when the instance is terminated.\n"
+                    "description": "Whether the volume should be destroyed on instance termination.\n"
                 },
                 "description": {
                     "type": "string",
@@ -1428,7 +1428,7 @@
                 },
                 "minTargetCapacity": {
                     "type": "string",
-                    "description": "The desired target capacity of a group. Required if using `\"setMinTarget\"` as action type\n"
+                    "description": ". The number of the desired target (and minimum) capacity\n"
                 },
                 "minimum": {
                     "type": "string",
@@ -1505,7 +1505,7 @@
                 },
                 "value": {
                     "type": "string",
-                    "description": "The dimension value.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\n```\n```python\nimport pulumi\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n    }\n}\n```\n```yaml\n{}\n```\n"
+                    "description": "The dimension value.\n"
                 }
             },
             "type": "object",
@@ -1521,7 +1521,7 @@
                 },
                 "threshold": {
                     "type": "integer",
-                    "description": "The value against which the specified statistic is compared. If a `step_adjustment` object is defined, then it cannot be specified.\n\n\nIf you do not specify an action type, you can only use – `adjustment`, `minTargetCapacity`, `maxTargetCapacity`.\nWhile using action_type, please also set the following:\n\nWhen using `adjustment`           – set the field `adjustment`\nWhen using `setMinTarget`         – set the field `min_target_capacity`\nWhen using `updateCapacity`       – set the fields `minimum`, `maximum`, and `target`\n\n\n\nIf you do not specify an action type, you can only use – `adjustment`, `minTargetCapacity`, `maxTargetCapacity`.\nWhile using action_type, please also set the following:\n\nWhen using `adjustment`           – set the field `adjustment`\nWhen using `updateCapacity`       – set the fields `minimum`, `maximum`, and `target`\n"
+                    "description": "The value against which the specified statistic is compared in order to determine if a step should be applied.\n\n\nIf you do not specify an action type, you can only use – `adjustment`, `minTargetCapacity`, `maxTargetCapacity`.\nWhile using action_type, please also set the following:\n\nWhen using `adjustment`           – set the field `adjustment`\nWhen using `updateCapacity`       – set the fields `minimum`, `maximum`, and `target`\n"
                 }
             },
             "type": "object",
@@ -1534,31 +1534,31 @@
             "properties": {
                 "adjustment": {
                     "type": "string",
-                    "description": "The number of instances to add or remove.\n"
+                    "description": "The number of instances to add/remove to/from the target capacity when scale is needed. Can be used as advanced expression for scaling of instances to add/remove to/from the target capacity when scale is needed. You can see more information here: Advanced expression. Example value: `\"MAX(currCapacity / 5, value * 10)\"`\n"
                 },
                 "maxTargetCapacity": {
                     "type": "string",
-                    "description": "The desired target capacity of a group. Required if using `\"setMaxTarget\"` as action type\n"
+                    "description": ". The number of the desired target (and maximum) capacity\n"
                 },
                 "maximum": {
                     "type": "string",
-                    "description": "The upper limit number of instances that you can scale up to. Required if using `\"updateCapacity\"` as action type and neither `\"target\"` nor `\"minimum\"` are not defined.\n"
+                    "description": "The maximal number of instances to have in the group.\n"
                 },
                 "minTargetCapacity": {
                     "type": "string",
-                    "description": "The desired target capacity of a group. Required if using `\"setMinTarget\"` as action type\n"
+                    "description": ". The number of the desired target (and minimum) capacity\n"
                 },
                 "minimum": {
                     "type": "string",
-                    "description": "The lower limit number of instances that you can scale down to. Required if using `\"updateCapacity\"` as action type and neither `\"target\"` nor `\"maximum\"` are not defined.\n"
+                    "description": "The minimal number of instances to have in the group.\n"
                 },
                 "target": {
                     "type": "string",
-                    "description": "The desired number of instances. Required if using `\"updateCapacity\"` as action type and neither `\"minimum\"` nor `\"maximum\"` are not defined.\n"
+                    "description": "The target number of instances to have in the group.\n"
                 },
                 "type": {
                     "type": "string",
-                    "description": "The type of the action to take when scale up is needed. Valid types: `\"adjustment\"`, `\"updateCapacity\"`, `\"setMinTarget\"`, `\"percentageAdjustment\"`.\n\nUsage:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\n```\n```python\nimport pulumi\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n    }\n}\n```\n```yaml\n{}\n```\n"
+                    "description": "The type of the action to take when scale up is needed. Valid types: `\"adjustment\"`, `\"updateCapacity\"`, `\"setMaxTarget\"`, `\"percentageAdjustment\"`.\n"
                 }
             },
             "type": "object",
@@ -1664,7 +1664,7 @@
                 },
                 "value": {
                     "type": "string",
-                    "description": "The dimension value.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\n```\n```python\nimport pulumi\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n    }\n}\n```\n```yaml\n{}\n```\n"
+                    "description": "The dimension value.\n"
                 }
             },
             "type": "object",
@@ -1703,7 +1703,7 @@
                 },
                 "maxTargetCapacity": {
                     "type": "string",
-                    "description": "The desired target capacity of a group. Required if using `\"setMaxTarget\"` as action type\n"
+                    "description": ". The number of the desired target (and maximum) capacity\n"
                 },
                 "maximum": {
                     "type": "string",
@@ -1792,7 +1792,7 @@
                 },
                 "value": {
                     "type": "string",
-                    "description": "The dimension value.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\n```\n```python\nimport pulumi\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n    }\n}\n```\n```yaml\n{}\n```\n"
+                    "description": "The dimension value.\n"
                 }
             },
             "type": "object",
@@ -1808,7 +1808,7 @@
                 },
                 "threshold": {
                     "type": "integer",
-                    "description": "The value against which the specified statistic is compared. If a `step_adjustment` object is defined, then it cannot be specified.\n\n\nIf you do not specify an action type, you can only use – `adjustment`, `minTargetCapacity`, `maxTargetCapacity`.\nWhile using action_type, please also set the following:\n\nWhen using `adjustment`           – set the field `adjustment`\nWhen using `setMinTarget`         – set the field `min_target_capacity`\nWhen using `updateCapacity`       – set the fields `minimum`, `maximum`, and `target`\n\n\n\nIf you do not specify an action type, you can only use – `adjustment`, `minTargetCapacity`, `maxTargetCapacity`.\nWhile using action_type, please also set the following:\n\nWhen using `adjustment`           – set the field `adjustment`\nWhen using `updateCapacity`       – set the fields `minimum`, `maximum`, and `target`\n"
+                    "description": "The value against which the specified statistic is compared in order to determine if a step should be applied.\n\n\nIf you do not specify an action type, you can only use – `adjustment`, `minTargetCapacity`, `maxTargetCapacity`.\nWhile using action_type, please also set the following:\n\nWhen using `adjustment`           – set the field `adjustment`\nWhen using `updateCapacity`       – set the fields `minimum`, `maximum`, and `target`\n"
                 }
             },
             "type": "object",
@@ -1821,31 +1821,31 @@
             "properties": {
                 "adjustment": {
                     "type": "string",
-                    "description": "The number of instances to add or remove.\n"
+                    "description": "The number of instances to add/remove to/from the target capacity when scale is needed. Can be used as advanced expression for scaling of instances to add/remove to/from the target capacity when scale is needed. You can see more information here: Advanced expression. Example value: `\"MAX(currCapacity / 5, value * 10)\"`\n"
                 },
                 "maxTargetCapacity": {
                     "type": "string",
-                    "description": "The desired target capacity of a group. Required if using `\"setMaxTarget\"` as action type\n"
+                    "description": ". The number of the desired target (and maximum) capacity\n"
                 },
                 "maximum": {
                     "type": "string",
-                    "description": "The upper limit number of instances that you can scale up to. Required if using `\"updateCapacity\"` as action type and neither `\"target\"` nor `\"minimum\"` are not defined.\n"
+                    "description": "The maximal number of instances to have in the group.\n"
                 },
                 "minTargetCapacity": {
                     "type": "string",
-                    "description": "The desired target capacity of a group. Required if using `\"setMinTarget\"` as action type\n"
+                    "description": ". The number of the desired target (and minimum) capacity\n"
                 },
                 "minimum": {
                     "type": "string",
-                    "description": "The lower limit number of instances that you can scale down to. Required if using `\"updateCapacity\"` as action type and neither `\"target\"` nor `\"maximum\"` are not defined.\n"
+                    "description": "The minimal number of instances to have in the group.\n"
                 },
                 "target": {
                     "type": "string",
-                    "description": "The desired number of instances. Required if using `\"updateCapacity\"` as action type and neither `\"minimum\"` nor `\"maximum\"` are not defined.\n"
+                    "description": "The target number of instances to have in the group.\n"
                 },
                 "type": {
                     "type": "string",
-                    "description": "The type of the action to take when scale up is needed. Valid types: `\"adjustment\"`, `\"updateCapacity\"`, `\"setMinTarget\"`, `\"percentageAdjustment\"`.\n\nUsage:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\n```\n```python\nimport pulumi\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n    }\n}\n```\n```yaml\n{}\n```\n"
+                    "description": "The type of the action to take when scale up is needed. Valid types: `\"adjustment\"`, `\"updateCapacity\"`, `\"setMaxTarget\"`, `\"percentageAdjustment\"`.\n"
                 }
             },
             "type": "object",
@@ -1982,7 +1982,7 @@
                 },
                 "value": {
                     "type": "string",
-                    "description": "The dimension value.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\n```\n```python\nimport pulumi\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n    }\n}\n```\n```yaml\n{}\n```\n"
+                    "description": "The dimension value.\n"
                 }
             },
             "type": "object"
@@ -2361,11 +2361,11 @@
             "properties": {
                 "bucket": {
                     "type": "string",
-                    "description": "S3 Bucket name for configurations.\n"
+                    "description": "S3 Bucket name for bootstrap actions.\n"
                 },
                 "key": {
                     "type": "string",
-                    "description": "Tag key.\n"
+                    "description": "S3 key for bootstrap actions.\n"
                 }
             },
             "type": "object",
@@ -2378,11 +2378,11 @@
             "properties": {
                 "bucket": {
                     "type": "string",
-                    "description": "S3 Bucket name for configurations.\n"
+                    "description": "S3 Bucket name for bootstrap actions.\n"
                 },
                 "key": {
                     "type": "string",
-                    "description": "Tag key.\n"
+                    "description": "S3 key for bootstrap actions.\n"
                 }
             },
             "type": "object",
@@ -2407,7 +2407,7 @@
                 },
                 "volumesPerInstance": {
                     "type": "integer",
-                    "description": "Amount of volumes per instance in the task group.\n"
+                    "description": "Amount of volumes per instance in the core group.\n"
                 }
             },
             "type": "object",
@@ -2655,7 +2655,7 @@
                 },
                 "volumesPerInstance": {
                     "type": "integer",
-                    "description": "Amount of volumes per instance in the task group.\n"
+                    "description": "Amount of volumes per instance in the core group.\n"
                 }
             },
             "type": "object",
@@ -2723,11 +2723,11 @@
             "properties": {
                 "bucket": {
                     "type": "string",
-                    "description": "S3 Bucket name for configurations.\n"
+                    "description": "S3 Bucket name for bootstrap actions.\n"
                 },
                 "key": {
                     "type": "string",
-                    "description": "Tag key.\n"
+                    "description": "S3 key for bootstrap actions.\n"
                 }
             },
             "type": "object",
@@ -2740,7 +2740,7 @@
             "properties": {
                 "key": {
                     "type": "string",
-                    "description": "Tag key.\n"
+                    "description": "S3 key for bootstrap actions.\n"
                 },
                 "value": {
                     "type": "string",
@@ -2769,7 +2769,7 @@
                 },
                 "volumesPerInstance": {
                     "type": "integer",
-                    "description": "Amount of volumes per instance in the task group.\n"
+                    "description": "Amount of volumes per instance in the core group.\n"
                 }
             },
             "type": "object",
@@ -5940,7 +5940,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "The type of GPU instance. Valid values: `nvidia-tesla-v100`, `nvidia-tesla-p100`, `nvidia-tesla-k80`.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\n```\n```python\nimport pulumi\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n    }\n}\n```\n```yaml\n{}\n```\n"
+                    "description": "Specifies the type of disk, either SCRATCH or PERSISTENT.\n"
                 }
             },
             "type": "object"
@@ -6157,7 +6157,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "The type of GPU instance. Valid values: `nvidia-tesla-v100`, `nvidia-tesla-p100`, `nvidia-tesla-k80`.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\n```\n```python\nimport pulumi\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n    }\n}\n```\n```yaml\n{}\n```\n"
+                    "description": "Specifies the type of disk, either SCRATCH or PERSISTENT.\n"
                 }
             },
             "type": "object"
@@ -6639,12 +6639,10 @@
         "spotinst:gke/ElastigroupIntegrationGkeAutoscaleLabel:ElastigroupIntegrationGkeAutoscaleLabel": {
             "properties": {
                 "key": {
-                    "type": "string",
-                    "description": "The label name.\n"
+                    "type": "string"
                 },
                 "value": {
-                    "type": "string",
-                    "description": "The label value.\n\n\nUsage:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\n```\n```python\nimport pulumi\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n    }\n}\n```\n```yaml\n{}\n```\n"
+                    "type": "string"
                 }
             },
             "type": "object",
@@ -6656,12 +6654,10 @@
         "spotinst:gke/ElastigroupLabel:ElastigroupLabel": {
             "properties": {
                 "key": {
-                    "type": "string",
-                    "description": "The label name.\n"
+                    "type": "string"
                 },
                 "value": {
-                    "type": "string",
-                    "description": "The label value.\n\n\nUsage:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\n```\n```python\nimport pulumi\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n    }\n}\n```\n```yaml\n{}\n```\n"
+                    "type": "string"
                 }
             },
             "type": "object",
@@ -6673,12 +6669,10 @@
         "spotinst:gke/ElastigroupMetadata:ElastigroupMetadata": {
             "properties": {
                 "key": {
-                    "type": "string",
-                    "description": "The label name.\n"
+                    "type": "string"
                 },
                 "value": {
-                    "type": "string",
-                    "description": "The label value.\n\n\nUsage:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\n```\n```python\nimport pulumi\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n    }\n}\n```\n```yaml\n{}\n```\n"
+                    "type": "string"
                 }
             },
             "type": "object",
@@ -6817,8 +6811,7 @@
                     "type": "string"
                 },
                 "value": {
-                    "type": "string",
-                    "description": "The label value.\n\n\nUsage:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\n```\n```python\nimport pulumi\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n    }\n}\n```\n```yaml\n{}\n```\n"
+                    "type": "string"
                 }
             },
             "type": "object",
@@ -6907,8 +6900,7 @@
                     "type": "string"
                 },
                 "value": {
-                    "type": "string",
-                    "description": "The label value.\n\n\nUsage:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\n```\n```python\nimport pulumi\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n    }\n}\n```\n```yaml\n{}\n```\n"
+                    "type": "string"
                 }
             },
             "type": "object",
@@ -7065,7 +7057,7 @@
             "properties": {
                 "isEnabled": {
                     "type": "boolean",
-                    "description": "Flag to enable / disable the shutdown hours.\nExample: True\n"
+                    "description": "Enable the Ocean Kubernetes Autoscaler.\n"
                 },
                 "timeWindows": {
                     "type": "array",
@@ -7088,7 +7080,7 @@
                 },
                 "isEnabled": {
                     "type": "boolean",
-                    "description": "Flag to enable / disable the shutdown hours.\nExample: True\n"
+                    "description": "Enable the Ocean Kubernetes Autoscaler.\n"
                 },
                 "taskParameters": {
                     "$ref": "#/types/spotinst:gke/OceanImportScheduledTaskTaskTaskParameters:OceanImportScheduledTaskTaskTaskParameters"
@@ -8738,7 +8730,8 @@
         "spotinst:spark/OceanIngressController:OceanIngressController": {
             "properties": {
                 "managed": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "- Should an ingress controller managed by Ocean for Apache Spark be installed on the cluster.\n"
                 }
             },
             "type": "object"
@@ -8746,10 +8739,12 @@
         "spotinst:spark/OceanIngressCustomEndpoint:OceanIngressCustomEndpoint": {
             "properties": {
                 "address": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "- The address the Ocean for Apache Spark control plane will use when addressing the cluster.\n"
                 },
                 "enabled": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "- Should the Ocean for Apache Spark control plane address the cluster using a custom endpoint. Use this to specify the DNS address of an externally provisioned (unmanaged) load balancer.\n"
                 }
             },
             "type": "object"
@@ -8757,16 +8752,19 @@
         "spotinst:spark/OceanIngressLoadBalancer:OceanIngressLoadBalancer": {
             "properties": {
                 "managed": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "- Should an ingress controller managed by Ocean for Apache Spark be installed on the cluster.\n"
                 },
                 "serviceAnnotations": {
                     "type": "object",
                     "additionalProperties": {
                         "type": "string"
-                    }
+                    },
+                    "description": "- Annotations to add to the ingress controller load balancer service. This is useful to configure properties of the managed load balancer, like the nature of the load balancer (e.g. ELB, NLB, ALB on AWS), the security groups, or various timeouts.\n"
                 },
                 "targetGroupArn": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "- The ARN of a target group that the Ocean for Apache Spark ingress controller will be bound to. Set this to use an existing load balancer with Ocean for Apache Spark. Has no effect if using a managed load balancer. Only available on AWS.\n"
                 }
             },
             "type": "object"
@@ -8774,10 +8772,12 @@
         "spotinst:spark/OceanIngressPrivateLink:OceanIngressPrivateLink": {
             "properties": {
                 "enabled": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "- Should the Ocean for Apache Spark control plane address the cluster using a custom endpoint. Use this to specify the DNS address of an externally provisioned (unmanaged) load balancer.\n"
                 },
                 "vpcEndpointService": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "- The name of the VPC Endpoint Service the Ocean for Apache Spark control plane should bind to.\n"
                 }
             },
             "type": "object"
@@ -14492,7 +14492,8 @@
                     "description": "Optionally adds tags to instances launched in an Ocean cluster.\n"
                 },
                 "updatePolicy": {
-                    "$ref": "#/types/spotinst:ecs/OceanUpdatePolicy:OceanUpdatePolicy"
+                    "$ref": "#/types/spotinst:ecs/OceanUpdatePolicy:OceanUpdatePolicy",
+                    "description": "While used, you can control whether the group should perform a deployment after an update to the configuration.\n"
                 },
                 "useAsTemplateOnly": {
                     "type": "boolean",
@@ -14654,7 +14655,8 @@
                     "description": "Optionally adds tags to instances launched in an Ocean cluster.\n"
                 },
                 "updatePolicy": {
-                    "$ref": "#/types/spotinst:ecs/OceanUpdatePolicy:OceanUpdatePolicy"
+                    "$ref": "#/types/spotinst:ecs/OceanUpdatePolicy:OceanUpdatePolicy",
+                    "description": "While used, you can control whether the group should perform a deployment after an update to the configuration.\n"
                 },
                 "useAsTemplateOnly": {
                     "type": "boolean",
@@ -14814,7 +14816,8 @@
                         "description": "Optionally adds tags to instances launched in an Ocean cluster.\n"
                     },
                     "updatePolicy": {
-                        "$ref": "#/types/spotinst:ecs/OceanUpdatePolicy:OceanUpdatePolicy"
+                        "$ref": "#/types/spotinst:ecs/OceanUpdatePolicy:OceanUpdatePolicy",
+                        "description": "While used, you can control whether the group should perform a deployment after an update to the configuration.\n"
                     },
                     "useAsTemplateOnly": {
                         "type": "boolean",
@@ -15173,7 +15176,8 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/spotinst:gcp/ElastigroupBackendService:ElastigroupBackendService"
-                    }
+                    },
+                    "description": "Describes the backend service configurations.\n"
                 },
                 "description": {
                     "type": "string",
@@ -15201,7 +15205,8 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/spotinst:gcp/ElastigroupGpu:ElastigroupGpu"
-                    }
+                    },
+                    "description": "Defines the GPU configuration.\n"
                 },
                 "healthCheckGracePeriod": {
                     "type": "integer",
@@ -15361,7 +15366,8 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/spotinst:gcp/ElastigroupBackendService:ElastigroupBackendService"
-                    }
+                    },
+                    "description": "Describes the backend service configurations.\n"
                 },
                 "description": {
                     "type": "string",
@@ -15389,7 +15395,8 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/spotinst:gcp/ElastigroupGpu:ElastigroupGpu"
-                    }
+                    },
+                    "description": "Defines the GPU configuration.\n"
                 },
                 "healthCheckGracePeriod": {
                     "type": "integer",
@@ -15548,7 +15555,8 @@
                         "type": "array",
                         "items": {
                             "$ref": "#/types/spotinst:gcp/ElastigroupBackendService:ElastigroupBackendService"
-                        }
+                        },
+                        "description": "Describes the backend service configurations.\n"
                     },
                     "description": {
                         "type": "string",
@@ -15576,7 +15584,8 @@
                         "type": "array",
                         "items": {
                             "$ref": "#/types/spotinst:gcp/ElastigroupGpu:ElastigroupGpu"
-                        }
+                        },
+                        "description": "Defines the GPU configuration.\n"
                     },
                     "healthCheckGracePeriod": {
                         "type": "integer",
@@ -16137,7 +16146,8 @@
             "description": "Manages a Spotinst Ocean GKE resource.\n\n## Prerequisites\n\nInstallation of the Ocean controller is required by this resource. You can accomplish this by using the spotinst/ocean-controller module as follows:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\n```\n```python\nimport pulumi\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n    }\n}\n```\n```yaml\n{}\n```\n\n\u003e You must configure the same `cluster_identifier` both for the Ocean controller and for the `spotinst.gke.OceanImport` resource.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as spotinst from \"@pulumi/spotinst\";\n\nconst example = new spotinst.gke.OceanImport(\"example\", {\n    backendServices: [{\n        locationType: \"regional\",\n        namedPorts: [{\n            name: \"http\",\n            ports: [\n                \"80\",\n                \"8080\",\n            ],\n        }],\n        scheme: \"INTERNAL\",\n        serviceName: \"example-backend-service\",\n    }],\n    clusterName: \"example-cluster-name\",\n    controllerClusterId: \"example-controller-123124\",\n    desiredCapacity: 0,\n    location: \"us-central1-a\",\n    maxSize: 2,\n    minSize: 0,\n    rootVolumeType: \"pd-ssd\",\n    shieldedInstanceConfig: {\n        enableIntegrityMonitoring: true,\n        enableSecureBoot: true,\n    },\n    useAsTemplateOnly: false,\n    whitelists: [\n        \"n1-standard-1\",\n        \"n1-standard-2\",\n    ],\n});\n```\n```python\nimport pulumi\nimport pulumi_spotinst as spotinst\n\nexample = spotinst.gke.OceanImport(\"example\",\n    backend_services=[spotinst.gke.OceanImportBackendServiceArgs(\n        location_type=\"regional\",\n        named_ports=[spotinst.gke.OceanImportBackendServiceNamedPortArgs(\n            name=\"http\",\n            ports=[\n                \"80\",\n                \"8080\",\n            ],\n        )],\n        scheme=\"INTERNAL\",\n        service_name=\"example-backend-service\",\n    )],\n    cluster_name=\"example-cluster-name\",\n    controller_cluster_id=\"example-controller-123124\",\n    desired_capacity=0,\n    location=\"us-central1-a\",\n    max_size=2,\n    min_size=0,\n    root_volume_type=\"pd-ssd\",\n    shielded_instance_config=spotinst.gke.OceanImportShieldedInstanceConfigArgs(\n        enable_integrity_monitoring=True,\n        enable_secure_boot=True,\n    ),\n    use_as_template_only=False,\n    whitelists=[\n        \"n1-standard-1\",\n        \"n1-standard-2\",\n    ])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing SpotInst = Pulumi.SpotInst;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new SpotInst.Gke.OceanImport(\"example\", new()\n    {\n        BackendServices = new[]\n        {\n            new SpotInst.Gke.Inputs.OceanImportBackendServiceArgs\n            {\n                LocationType = \"regional\",\n                NamedPorts = new[]\n                {\n                    new SpotInst.Gke.Inputs.OceanImportBackendServiceNamedPortArgs\n                    {\n                        Name = \"http\",\n                        Ports = new[]\n                        {\n                            \"80\",\n                            \"8080\",\n                        },\n                    },\n                },\n                Scheme = \"INTERNAL\",\n                ServiceName = \"example-backend-service\",\n            },\n        },\n        ClusterName = \"example-cluster-name\",\n        ControllerClusterId = \"example-controller-123124\",\n        DesiredCapacity = 0,\n        Location = \"us-central1-a\",\n        MaxSize = 2,\n        MinSize = 0,\n        RootVolumeType = \"pd-ssd\",\n        ShieldedInstanceConfig = new SpotInst.Gke.Inputs.OceanImportShieldedInstanceConfigArgs\n        {\n            EnableIntegrityMonitoring = true,\n            EnableSecureBoot = true,\n        },\n        UseAsTemplateOnly = false,\n        Whitelists = new[]\n        {\n            \"n1-standard-1\",\n            \"n1-standard-2\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst/gke\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := gke.NewOceanImport(ctx, \"example\", \u0026gke.OceanImportArgs{\n\t\t\tBackendServices: gke.OceanImportBackendServiceArray{\n\t\t\t\t\u0026gke.OceanImportBackendServiceArgs{\n\t\t\t\t\tLocationType: pulumi.String(\"regional\"),\n\t\t\t\t\tNamedPorts: gke.OceanImportBackendServiceNamedPortArray{\n\t\t\t\t\t\t\u0026gke.OceanImportBackendServiceNamedPortArgs{\n\t\t\t\t\t\t\tName: pulumi.String(\"http\"),\n\t\t\t\t\t\t\tPorts: pulumi.StringArray{\n\t\t\t\t\t\t\t\tpulumi.String(\"80\"),\n\t\t\t\t\t\t\t\tpulumi.String(\"8080\"),\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t\tScheme:      pulumi.String(\"INTERNAL\"),\n\t\t\t\t\tServiceName: pulumi.String(\"example-backend-service\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tClusterName:         pulumi.String(\"example-cluster-name\"),\n\t\t\tControllerClusterId: pulumi.String(\"example-controller-123124\"),\n\t\t\tDesiredCapacity:     pulumi.Int(0),\n\t\t\tLocation:            pulumi.String(\"us-central1-a\"),\n\t\t\tMaxSize:             pulumi.Int(2),\n\t\t\tMinSize:             pulumi.Int(0),\n\t\t\tRootVolumeType:      pulumi.String(\"pd-ssd\"),\n\t\t\tShieldedInstanceConfig: \u0026gke.OceanImportShieldedInstanceConfigArgs{\n\t\t\t\tEnableIntegrityMonitoring: pulumi.Bool(true),\n\t\t\t\tEnableSecureBoot:          pulumi.Bool(true),\n\t\t\t},\n\t\t\tUseAsTemplateOnly: pulumi.Bool(false),\n\t\t\tWhitelists: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"n1-standard-1\"),\n\t\t\t\tpulumi.String(\"n1-standard-2\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.spotinst.gke.OceanImport;\nimport com.pulumi.spotinst.gke.OceanImportArgs;\nimport com.pulumi.spotinst.gke.inputs.OceanImportBackendServiceArgs;\nimport com.pulumi.spotinst.gke.inputs.OceanImportShieldedInstanceConfigArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new OceanImport(\"example\", OceanImportArgs.builder()        \n            .backendServices(OceanImportBackendServiceArgs.builder()\n                .locationType(\"regional\")\n                .namedPorts(OceanImportBackendServiceNamedPortArgs.builder()\n                    .name(\"http\")\n                    .ports(                    \n                        80,\n                        8080)\n                    .build())\n                .scheme(\"INTERNAL\")\n                .serviceName(\"example-backend-service\")\n                .build())\n            .clusterName(\"example-cluster-name\")\n            .controllerClusterId(\"example-controller-123124\")\n            .desiredCapacity(0)\n            .location(\"us-central1-a\")\n            .maxSize(2)\n            .minSize(0)\n            .rootVolumeType(\"pd-ssd\")\n            .shieldedInstanceConfig(OceanImportShieldedInstanceConfigArgs.builder()\n                .enableIntegrityMonitoring(true)\n                .enableSecureBoot(true)\n                .build())\n            .useAsTemplateOnly(false)\n            .whitelists(            \n                \"n1-standard-1\",\n                \"n1-standard-2\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: spotinst:gke:OceanImport\n    properties:\n      backendServices:\n        - locationType: regional\n          namedPorts:\n            - name: http\n              ports:\n                - 80\n                - 8080\n          scheme: INTERNAL\n          serviceName: example-backend-service\n      clusterName: example-cluster-name\n      controllerClusterId: example-controller-123124\n      desiredCapacity: 0\n      location: us-central1-a\n      maxSize: 2\n      minSize: 0\n      rootVolumeType: pd-ssd\n      shieldedInstanceConfig:\n        enableIntegrityMonitoring: true\n        enableSecureBoot: true\n      useAsTemplateOnly: false\n      whitelists:\n        - n1-standard-1\n        - n1-standard-2\n```\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\n\nexport const oceanId = spotinst_ocean_gke_import.example.id;\n```\n```python\nimport pulumi\n\npulumi.export(\"oceanId\", spotinst_ocean_gke_import[\"example\"][\"id\"])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"oceanId\"] = spotinst_ocean_gke_import.Example.Id,\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tctx.Export(\"oceanId\", spotinst_ocean_gke_import.Example.Id)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        ctx.export(\"oceanId\", spotinst_ocean_gke_import.example().id());\n    }\n}\n```\n```yaml\noutputs:\n  oceanId: ${spotinst_ocean_gke_import.example.id}\n```\n{{% /example %}}\n{{% /examples %}}\n## Strategy\n\n* `strategy` - (Optional) Strategy object.\n    * `draining_timeout` - (Optional) The draining timeout (in seconds) before terminating the instance. If no draining timeout is defined, the default draining timeout will be used.\n    * `provisioning_model` - (Optional) Define the provisioning model of the launched instances. Valid values: `SPOT`, `PREEMPTIBLE`.\n    * `preemptible_percentage`- (Optional) Defines the desired preemptible percentage for the cluster.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\n```\n```python\nimport pulumi\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n    }\n}\n```\n```yaml\n{}\n```\n\n\u003ca id=\"update-policy\"\u003e\u003c/a\u003e\n## Update Policy\n\n* `update_policy` - (Optional)\n    * `should_roll` - (Required) Enables the roll.\n    * `conditioned_roll` - (Optional, Default: false) Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as AMI, Key Pair, user data, instance types, load balancers, etc).\n\n    * `roll_config` - (Required) Holds the roll configuration.\n        * `batch_size_percentage` - (Required) Sets the percentage of the instances to deploy in each batch.\n        * `launch_spec_ids` - (Optional) List of Virtual Node Group identifiers to be rolled.\n        * `batch_min_healthy_percentage` - (Optional) Default: 50. Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.\n        * `respect_pdb` - (Optional) Default: False. During the roll, if the parameter is set to True we honor PDB during the instance replacement.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\n```\n```python\nimport pulumi\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n    }\n}\n```\n```yaml\n{}\n```\n",
             "properties": {
                 "autoscaler": {
-                    "$ref": "#/types/spotinst:gke/OceanImportAutoscaler:OceanImportAutoscaler"
+                    "$ref": "#/types/spotinst:gke/OceanImportAutoscaler:OceanImportAutoscaler",
+                    "description": "The Ocean Kubernetes Autoscaler object.\n"
                 },
                 "backendServices": {
                     "type": "array",
@@ -16188,7 +16198,8 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/spotinst:gke/OceanImportScheduledTask:OceanImportScheduledTask"
-                    }
+                    },
+                    "description": "Set scheduling object.\n"
                 },
                 "shieldedInstanceConfig": {
                     "$ref": "#/types/spotinst:gke/OceanImportShieldedInstanceConfig:OceanImportShieldedInstanceConfig",
@@ -16228,7 +16239,8 @@
             ],
             "inputProperties": {
                 "autoscaler": {
-                    "$ref": "#/types/spotinst:gke/OceanImportAutoscaler:OceanImportAutoscaler"
+                    "$ref": "#/types/spotinst:gke/OceanImportAutoscaler:OceanImportAutoscaler",
+                    "description": "The Ocean Kubernetes Autoscaler object.\n"
                 },
                 "backendServices": {
                     "type": "array",
@@ -16276,7 +16288,8 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/spotinst:gke/OceanImportScheduledTask:OceanImportScheduledTask"
-                    }
+                    },
+                    "description": "Set scheduling object.\n"
                 },
                 "shieldedInstanceConfig": {
                     "$ref": "#/types/spotinst:gke/OceanImportShieldedInstanceConfig:OceanImportShieldedInstanceConfig",
@@ -16311,7 +16324,8 @@
                 "description": "Input properties used for looking up and filtering OceanImport resources.\n",
                 "properties": {
                     "autoscaler": {
-                        "$ref": "#/types/spotinst:gke/OceanImportAutoscaler:OceanImportAutoscaler"
+                        "$ref": "#/types/spotinst:gke/OceanImportAutoscaler:OceanImportAutoscaler",
+                        "description": "The Ocean Kubernetes Autoscaler object.\n"
                     },
                     "backendServices": {
                         "type": "array",
@@ -16362,7 +16376,8 @@
                         "type": "array",
                         "items": {
                             "$ref": "#/types/spotinst:gke/OceanImportScheduledTask:OceanImportScheduledTask"
-                        }
+                        },
+                        "description": "Set scheduling object.\n"
                     },
                     "shieldedInstanceConfig": {
                         "$ref": "#/types/spotinst:gke/OceanImportShieldedInstanceConfig:OceanImportShieldedInstanceConfig",

@@ -183,9 +183,17 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
     public Output<Optional<List<String>>> availabilityZones() {
         return Codegen.optional(this.availabilityZones);
     }
+    /**
+     * Describes the backend service configurations.
+     * 
+     */
     @Export(name="backendServices", type=List.class, parameters={ElastigroupBackendService.class})
     private Output</* @Nullable */ List<ElastigroupBackendService>> backendServices;
 
+    /**
+     * @return Describes the backend service configurations.
+     * 
+     */
     public Output<Optional<List<ElastigroupBackendService>>> backendServices() {
         return Codegen.optional(this.backendServices);
     }
@@ -251,9 +259,17 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
     public Output<Optional<Boolean>> fallbackToOndemand() {
         return Codegen.optional(this.fallbackToOndemand);
     }
+    /**
+     * Defines the GPU configuration.
+     * 
+     */
     @Export(name="gpu", type=List.class, parameters={ElastigroupGpu.class})
     private Output</* @Nullable */ List<ElastigroupGpu>> gpu;
 
+    /**
+     * @return Defines the GPU configuration.
+     * 
+     */
     public Output<Optional<List<ElastigroupGpu>>> gpu() {
         return Codegen.optional(this.gpu);
     }

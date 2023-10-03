@@ -16,16 +16,32 @@ public final class OceanIngressPrivateLinkArgs extends com.pulumi.resources.Reso
 
     public static final OceanIngressPrivateLinkArgs Empty = new OceanIngressPrivateLinkArgs();
 
+    /**
+     * - Should the Ocean for Apache Spark control plane address the cluster using a custom endpoint. Use this to specify the DNS address of an externally provisioned (unmanaged) load balancer.
+     * 
+     */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
+    /**
+     * @return - Should the Ocean for Apache Spark control plane address the cluster using a custom endpoint. Use this to specify the DNS address of an externally provisioned (unmanaged) load balancer.
+     * 
+     */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
 
+    /**
+     * - The name of the VPC Endpoint Service the Ocean for Apache Spark control plane should bind to.
+     * 
+     */
     @Import(name="vpcEndpointService")
     private @Nullable Output<String> vpcEndpointService;
 
+    /**
+     * @return - The name of the VPC Endpoint Service the Ocean for Apache Spark control plane should bind to.
+     * 
+     */
     public Optional<Output<String>> vpcEndpointService() {
         return Optional.ofNullable(this.vpcEndpointService);
     }
@@ -55,20 +71,44 @@ public final class OceanIngressPrivateLinkArgs extends com.pulumi.resources.Reso
             $ = new OceanIngressPrivateLinkArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param enabled - Should the Ocean for Apache Spark control plane address the cluster using a custom endpoint. Use this to specify the DNS address of an externally provisioned (unmanaged) load balancer.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
+        /**
+         * @param enabled - Should the Ocean for Apache Spark control plane address the cluster using a custom endpoint. Use this to specify the DNS address of an externally provisioned (unmanaged) load balancer.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }
 
+        /**
+         * @param vpcEndpointService - The name of the VPC Endpoint Service the Ocean for Apache Spark control plane should bind to.
+         * 
+         * @return builder
+         * 
+         */
         public Builder vpcEndpointService(@Nullable Output<String> vpcEndpointService) {
             $.vpcEndpointService = vpcEndpointService;
             return this;
         }
 
+        /**
+         * @param vpcEndpointService - The name of the VPC Endpoint Service the Ocean for Apache Spark control plane should bind to.
+         * 
+         * @return builder
+         * 
+         */
         public Builder vpcEndpointService(String vpcEndpointService) {
             return vpcEndpointService(Output.of(vpcEndpointService));
         }
