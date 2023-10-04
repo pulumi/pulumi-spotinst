@@ -86,6 +86,8 @@ func Provider() tfbridge.ProviderInfo {
 		Config:           map[string]*tfbridge.SchemaInfo{},
 		UpstreamRepoPath: "./upstream",
 		Resources: map[string]*tfbridge.ResourceInfo{
+			"spotinst_account_aws":                {Tok: makeResource(awsMod, "Account")},
+			"spotinst_credentials_aws":            {Tok: makeResource(awsMod, "Credentials")},
 			"spotinst_elastigroup_aws":            {Tok: makeResource(awsMod, "Elastigroup")},
 			"spotinst_elastigroup_aws_beanstalk":  {Tok: makeResource(awsMod, "Beanstalk")},
 			"spotinst_elastigroup_aws_suspension": {Tok: makeResource(awsMod, "Suspension")},
@@ -197,7 +199,8 @@ func Provider() tfbridge.ProviderInfo {
 				"Pulumi": "3.*",
 			},
 			Namespaces: namespaceMap,
-		}, MetadataInfo: tfbridge.NewProviderMetadata(metadata),
+		},
+		MetadataInfo: tfbridge.NewProviderMetadata(metadata),
 	}
 	prov.MustApplyAutoAliases()
 
