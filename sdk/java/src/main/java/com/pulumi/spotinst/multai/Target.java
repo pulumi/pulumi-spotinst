@@ -19,43 +19,43 @@ import javax.annotation.Nullable;
 
 @ResourceType(type="spotinst:multai/target:Target")
 public class Target extends com.pulumi.resources.CustomResource {
-    @Export(name="balancerId", type=String.class, parameters={})
+    @Export(name="balancerId", refs={String.class}, tree="[0]")
     private Output<String> balancerId;
 
     public Output<String> balancerId() {
         return this.balancerId;
     }
-    @Export(name="host", type=String.class, parameters={})
+    @Export(name="host", refs={String.class}, tree="[0]")
     private Output<String> host;
 
     public Output<String> host() {
         return this.host;
     }
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     public Output<String> name() {
         return this.name;
     }
-    @Export(name="port", type=Integer.class, parameters={})
+    @Export(name="port", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> port;
 
     public Output<Optional<Integer>> port() {
         return Codegen.optional(this.port);
     }
-    @Export(name="tags", type=List.class, parameters={TargetTag.class})
+    @Export(name="tags", refs={List.class,TargetTag.class}, tree="[0,1]")
     private Output</* @Nullable */ List<TargetTag>> tags;
 
     public Output<Optional<List<TargetTag>>> tags() {
         return Codegen.optional(this.tags);
     }
-    @Export(name="targetSetId", type=String.class, parameters={})
+    @Export(name="targetSetId", refs={String.class}, tree="[0]")
     private Output<String> targetSetId;
 
     public Output<String> targetSetId() {
         return this.targetSetId;
     }
-    @Export(name="weight", type=Integer.class, parameters={})
+    @Export(name="weight", refs={Integer.class}, tree="[0]")
     private Output<Integer> weight;
 
     public Output<Integer> weight() {

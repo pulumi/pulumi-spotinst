@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 
 @ResourceType(type="spotinst:multai/deployment:Deployment")
 public class Deployment extends com.pulumi.resources.CustomResource {
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     public Output<String> name() {

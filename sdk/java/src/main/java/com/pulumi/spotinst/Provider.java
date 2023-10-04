@@ -26,7 +26,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * Spotinst Account ID
      * 
      */
-    @Export(name="account", type=String.class, parameters={})
+    @Export(name="account", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> account;
 
     /**
@@ -40,7 +40,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * Spotinst SDK Feature Flags
      * 
      */
-    @Export(name="featureFlags", type=String.class, parameters={})
+    @Export(name="featureFlags", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> featureFlags;
 
     /**
@@ -54,7 +54,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * Spotinst Personal API Access Token
      * 
      */
-    @Export(name="token", type=String.class, parameters={})
+    @Export(name="token", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> token;
 
     /**

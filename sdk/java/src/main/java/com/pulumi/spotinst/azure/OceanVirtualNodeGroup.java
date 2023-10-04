@@ -126,7 +126,7 @@ public class OceanVirtualNodeGroup extends com.pulumi.resources.CustomResource {
      * .
      * 
      */
-    @Export(name="autoscales", type=List.class, parameters={OceanVirtualNodeGroupAutoscale.class})
+    @Export(name="autoscales", refs={List.class,OceanVirtualNodeGroupAutoscale.class}, tree="[0,1]")
     private Output</* @Nullable */ List<OceanVirtualNodeGroupAutoscale>> autoscales;
 
     /**
@@ -140,7 +140,7 @@ public class OceanVirtualNodeGroup extends com.pulumi.resources.CustomResource {
      * Additional labels for the virtual node group. Only custom user labels are allowed. Kubernetes built-in labels and Spot internal labels are not allowed.
      * 
      */
-    @Export(name="labels", type=List.class, parameters={OceanVirtualNodeGroupLabel.class})
+    @Export(name="labels", refs={List.class,OceanVirtualNodeGroupLabel.class}, tree="[0,1]")
     private Output</* @Nullable */ List<OceanVirtualNodeGroupLabel>> labels;
 
     /**
@@ -154,7 +154,7 @@ public class OceanVirtualNodeGroup extends com.pulumi.resources.CustomResource {
      * .
      * 
      */
-    @Export(name="launchSpecifications", type=List.class, parameters={OceanVirtualNodeGroupLaunchSpecification.class})
+    @Export(name="launchSpecifications", refs={List.class,OceanVirtualNodeGroupLaunchSpecification.class}, tree="[0,1]")
     private Output</* @Nullable */ List<OceanVirtualNodeGroupLaunchSpecification>> launchSpecifications;
 
     /**
@@ -168,7 +168,7 @@ public class OceanVirtualNodeGroup extends com.pulumi.resources.CustomResource {
      * Set name for the virtual node group.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -182,7 +182,7 @@ public class OceanVirtualNodeGroup extends com.pulumi.resources.CustomResource {
      * The Ocean cluster ID.
      * 
      */
-    @Export(name="oceanId", type=String.class, parameters={})
+    @Export(name="oceanId", refs={String.class}, tree="[0]")
     private Output<String> oceanId;
 
     /**
@@ -196,7 +196,7 @@ public class OceanVirtualNodeGroup extends com.pulumi.resources.CustomResource {
      * .
      * 
      */
-    @Export(name="resourceLimits", type=List.class, parameters={OceanVirtualNodeGroupResourceLimit.class})
+    @Export(name="resourceLimits", refs={List.class,OceanVirtualNodeGroupResourceLimit.class}, tree="[0,1]")
     private Output</* @Nullable */ List<OceanVirtualNodeGroupResourceLimit>> resourceLimits;
 
     /**
@@ -210,7 +210,7 @@ public class OceanVirtualNodeGroup extends com.pulumi.resources.CustomResource {
      * Additional taints for the virtual node group. Only custom user labels are allowed. Kubernetes built-in labels and Spot internal labels are not allowed.
      * 
      */
-    @Export(name="taints", type=List.class, parameters={OceanVirtualNodeGroupTaint.class})
+    @Export(name="taints", refs={List.class,OceanVirtualNodeGroupTaint.class}, tree="[0,1]")
     private Output</* @Nullable */ List<OceanVirtualNodeGroupTaint>> taints;
 
     /**
@@ -224,7 +224,7 @@ public class OceanVirtualNodeGroup extends com.pulumi.resources.CustomResource {
      * An Array holding Availability Zones, this configures the availability zones the Ocean may launch instances in per VNG.
      * 
      */
-    @Export(name="zones", type=List.class, parameters={String.class})
+    @Export(name="zones", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> zones;
 
     /**

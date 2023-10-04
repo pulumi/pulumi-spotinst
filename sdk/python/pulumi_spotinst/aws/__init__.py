@@ -5,7 +5,9 @@
 from .. import _utilities
 import typing
 # Export this package's modules as members:
+from .account import *
 from .beanstalk import *
+from .credentials import *
 from .elastigroup import *
 from .managed_instance import *
 from .mr_scalar import *

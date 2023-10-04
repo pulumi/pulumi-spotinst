@@ -202,7 +202,7 @@ public class OceanLaunchSpec extends com.pulumi.resources.CustomResource {
      * Set custom headroom per launch spec. provide list of headrooms object.
      * 
      */
-    @Export(name="autoscaleHeadrooms", type=List.class, parameters={OceanLaunchSpecAutoscaleHeadroom.class})
+    @Export(name="autoscaleHeadrooms", refs={List.class,OceanLaunchSpecAutoscaleHeadroom.class}, tree="[0,1]")
     private Output</* @Nullable */ List<OceanLaunchSpecAutoscaleHeadroom>> autoscaleHeadrooms;
 
     /**
@@ -216,7 +216,7 @@ public class OceanLaunchSpec extends com.pulumi.resources.CustomResource {
      * Set automatic headroom per launch spec.
      * 
      */
-    @Export(name="autoscaleHeadroomsAutomatics", type=List.class, parameters={OceanLaunchSpecAutoscaleHeadroomsAutomatic.class})
+    @Export(name="autoscaleHeadroomsAutomatics", refs={List.class,OceanLaunchSpecAutoscaleHeadroomsAutomatic.class}, tree="[0,1]")
     private Output</* @Nullable */ List<OceanLaunchSpecAutoscaleHeadroomsAutomatic>> autoscaleHeadroomsAutomatics;
 
     /**
@@ -230,7 +230,7 @@ public class OceanLaunchSpec extends com.pulumi.resources.CustomResource {
      * List of supported machine types for the Launch Spec.
      * 
      */
-    @Export(name="instanceTypes", type=List.class, parameters={String.class})
+    @Export(name="instanceTypes", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> instanceTypes;
 
     /**
@@ -244,7 +244,7 @@ public class OceanLaunchSpec extends com.pulumi.resources.CustomResource {
      * Optionally adds labels to instances launched in an Ocean cluster.
      * 
      */
-    @Export(name="labels", type=List.class, parameters={OceanLaunchSpecLabel.class})
+    @Export(name="labels", refs={List.class,OceanLaunchSpecLabel.class}, tree="[0,1]")
     private Output<List<OceanLaunchSpecLabel>> labels;
 
     /**
@@ -258,7 +258,7 @@ public class OceanLaunchSpec extends com.pulumi.resources.CustomResource {
      * Cluster&#39;s metadata.
      * 
      */
-    @Export(name="metadatas", type=List.class, parameters={OceanLaunchSpecMetadata.class})
+    @Export(name="metadatas", refs={List.class,OceanLaunchSpecMetadata.class}, tree="[0,1]")
     private Output<List<OceanLaunchSpecMetadata>> metadatas;
 
     /**
@@ -272,7 +272,7 @@ public class OceanLaunchSpec extends com.pulumi.resources.CustomResource {
      * The name of the access configuration.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -286,7 +286,7 @@ public class OceanLaunchSpec extends com.pulumi.resources.CustomResource {
      * Settings for network interfaces.
      * 
      */
-    @Export(name="networkInterfaces", type=List.class, parameters={OceanLaunchSpecNetworkInterface.class})
+    @Export(name="networkInterfaces", refs={List.class,OceanLaunchSpecNetworkInterface.class}, tree="[0,1]")
     private Output</* @Nullable */ List<OceanLaunchSpecNetworkInterface>> networkInterfaces;
 
     /**
@@ -300,7 +300,7 @@ public class OceanLaunchSpec extends com.pulumi.resources.CustomResource {
      * The node pool you wish to use in your Launch Spec.
      * 
      */
-    @Export(name="nodePoolName", type=String.class, parameters={})
+    @Export(name="nodePoolName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> nodePoolName;
 
     /**
@@ -314,7 +314,7 @@ public class OceanLaunchSpec extends com.pulumi.resources.CustomResource {
      * The Ocean cluster ID.
      * 
      */
-    @Export(name="oceanId", type=String.class, parameters={})
+    @Export(name="oceanId", refs={String.class}, tree="[0]")
     private Output<String> oceanId;
 
     /**
@@ -328,7 +328,7 @@ public class OceanLaunchSpec extends com.pulumi.resources.CustomResource {
      * The Ocean virtual node group resource limits object.
      * 
      */
-    @Export(name="resourceLimits", type=OceanLaunchSpecResourceLimits.class, parameters={})
+    @Export(name="resourceLimits", refs={OceanLaunchSpecResourceLimits.class}, tree="[0]")
     private Output</* @Nullable */ OceanLaunchSpecResourceLimits> resourceLimits;
 
     /**
@@ -342,7 +342,7 @@ public class OceanLaunchSpec extends com.pulumi.resources.CustomResource {
      * Boolean. When set to `true`, VNG nodes will be treated as if all pods running have the restrict-scale-down label. Therefore, Ocean will not scale nodes down unless empty.
      * 
      */
-    @Export(name="restrictScaleDown", type=Boolean.class, parameters={})
+    @Export(name="restrictScaleDown", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> restrictScaleDown;
 
     /**
@@ -356,7 +356,7 @@ public class OceanLaunchSpec extends com.pulumi.resources.CustomResource {
      * Root volume size (in GB).
      * 
      */
-    @Export(name="rootVolumeSize", type=Integer.class, parameters={})
+    @Export(name="rootVolumeSize", refs={Integer.class}, tree="[0]")
     private Output<Integer> rootVolumeSize;
 
     /**
@@ -370,7 +370,7 @@ public class OceanLaunchSpec extends com.pulumi.resources.CustomResource {
      * Root volume disk type. Valid values: `&#34;pd-standard&#34;`, `&#34;pd-ssd&#34;`.
      * 
      */
-    @Export(name="rootVolumeType", type=String.class, parameters={})
+    @Export(name="rootVolumeType", refs={String.class}, tree="[0]")
     private Output<String> rootVolumeType;
 
     /**
@@ -384,7 +384,7 @@ public class OceanLaunchSpec extends com.pulumi.resources.CustomResource {
      * Used to define scheduled tasks such as a manual headroom update.
      * 
      */
-    @Export(name="schedulingTasks", type=List.class, parameters={OceanLaunchSpecSchedulingTask.class})
+    @Export(name="schedulingTasks", refs={List.class,OceanLaunchSpecSchedulingTask.class}, tree="[0,1]")
     private Output</* @Nullable */ List<OceanLaunchSpecSchedulingTask>> schedulingTasks;
 
     /**
@@ -398,7 +398,7 @@ public class OceanLaunchSpec extends com.pulumi.resources.CustomResource {
      * The account used by applications running on the VM to call GCP APIs.
      * 
      */
-    @Export(name="serviceAccount", type=String.class, parameters={})
+    @Export(name="serviceAccount", refs={String.class}, tree="[0]")
     private Output<String> serviceAccount;
 
     /**
@@ -412,7 +412,7 @@ public class OceanLaunchSpec extends com.pulumi.resources.CustomResource {
      * The Ocean shielded instance configuration object.
      * 
      */
-    @Export(name="shieldedInstanceConfig", type=OceanLaunchSpecShieldedInstanceConfig.class, parameters={})
+    @Export(name="shieldedInstanceConfig", refs={OceanLaunchSpecShieldedInstanceConfig.class}, tree="[0]")
     private Output<OceanLaunchSpecShieldedInstanceConfig> shieldedInstanceConfig;
 
     /**
@@ -426,7 +426,7 @@ public class OceanLaunchSpec extends com.pulumi.resources.CustomResource {
      * Image URL.
      * 
      */
-    @Export(name="sourceImage", type=String.class, parameters={})
+    @Export(name="sourceImage", refs={String.class}, tree="[0]")
     private Output<String> sourceImage;
 
     /**
@@ -440,7 +440,7 @@ public class OceanLaunchSpec extends com.pulumi.resources.CustomResource {
      * The Ocean virtual node group storage object.
      * 
      */
-    @Export(name="storage", type=OceanLaunchSpecStorage.class, parameters={})
+    @Export(name="storage", refs={OceanLaunchSpecStorage.class}, tree="[0]")
     private Output<OceanLaunchSpecStorage> storage;
 
     /**
@@ -454,7 +454,7 @@ public class OceanLaunchSpec extends com.pulumi.resources.CustomResource {
      * The Ocean Launch Spec Strategy object.
      * 
      */
-    @Export(name="strategies", type=List.class, parameters={OceanLaunchSpecStrategy.class})
+    @Export(name="strategies", refs={List.class,OceanLaunchSpecStrategy.class}, tree="[0,1]")
     private Output</* @Nullable */ List<OceanLaunchSpecStrategy>> strategies;
 
     /**
@@ -468,7 +468,7 @@ public class OceanLaunchSpec extends com.pulumi.resources.CustomResource {
      * Every node launched from this configuration will be tagged with those tags. Note: during creation some tags are automatically imported to the state file, it is required to manually add it to the template configuration
      * 
      */
-    @Export(name="tags", type=List.class, parameters={String.class})
+    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> tags;
 
     /**
@@ -482,7 +482,7 @@ public class OceanLaunchSpec extends com.pulumi.resources.CustomResource {
      * Optionally adds labels to instances launched in an Ocean cluster.
      * 
      */
-    @Export(name="taints", type=List.class, parameters={OceanLaunchSpecTaint.class})
+    @Export(name="taints", refs={List.class,OceanLaunchSpecTaint.class}, tree="[0,1]")
     private Output<List<OceanLaunchSpecTaint>> taints;
 
     /**
@@ -492,7 +492,7 @@ public class OceanLaunchSpec extends com.pulumi.resources.CustomResource {
     public Output<List<OceanLaunchSpecTaint>> taints() {
         return this.taints;
     }
-    @Export(name="updatePolicy", type=OceanLaunchSpecUpdatePolicy.class, parameters={})
+    @Export(name="updatePolicy", refs={OceanLaunchSpecUpdatePolicy.class}, tree="[0]")
     private Output</* @Nullable */ OceanLaunchSpecUpdatePolicy> updatePolicy;
 
     public Output<Optional<OceanLaunchSpecUpdatePolicy>> updatePolicy() {

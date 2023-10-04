@@ -66,7 +66,7 @@ public class Subscription extends com.pulumi.resources.CustomResource {
      * The endpoint the notification will be sent to. url in case of `&#34;http&#34;`/`&#34;https&#34;`/`&#34;web&#34;`, email address in case of `&#34;email&#34;`/`&#34;email-json&#34;` and sns-topic-arn in case of `&#34;aws-sns&#34;`.
      * 
      */
-    @Export(name="endpoint", type=String.class, parameters={})
+    @Export(name="endpoint", refs={String.class}, tree="[0]")
     private Output<String> endpoint;
 
     /**
@@ -90,7 +90,7 @@ public class Subscription extends com.pulumi.resources.CustomResource {
      * Ocean Events:`&#34;CLUSTER_ROLL_FINISHED&#34;`,`&#34;GROUP_ROLL_FAILED&#34;`.
      * 
      */
-    @Export(name="eventType", type=String.class, parameters={})
+    @Export(name="eventType", refs={String.class}, tree="[0]")
     private Output<String> eventType;
 
     /**
@@ -116,7 +116,7 @@ public class Subscription extends com.pulumi.resources.CustomResource {
      * Default: {`&#34;event&#34;`: `&#34;&lt;event&gt;&#34;`, `&#34;instanceId&#34;`: `&#34;&lt;instance-id&gt;&#34;`, `&#34;resourceId&#34;`: `&#34;&lt;resource-id&gt;&#34;`, `&#34;resourceName&#34;`: `&#34;&lt;resource-name&gt;&#34;` }.
      * 
      */
-    @Export(name="format", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="format", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> format;
 
     /**
@@ -135,7 +135,7 @@ public class Subscription extends com.pulumi.resources.CustomResource {
      * `&#34;aws-sns&#34;` is only supported with AWS provider
      * 
      */
-    @Export(name="protocol", type=String.class, parameters={})
+    @Export(name="protocol", refs={String.class}, tree="[0]")
     private Output<String> protocol;
 
     /**
@@ -152,7 +152,7 @@ public class Subscription extends com.pulumi.resources.CustomResource {
      * Spotinst Resource id (Elastigroup or Ocean ID).
      * 
      */
-    @Export(name="resourceId", type=String.class, parameters={})
+    @Export(name="resourceId", refs={String.class}, tree="[0]")
     private Output<String> resourceId;
 
     /**
