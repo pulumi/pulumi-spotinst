@@ -60,7 +60,7 @@ public class DataIntegration extends com.pulumi.resources.CustomResource {
      * The name of the data integration.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -74,7 +74,7 @@ public class DataIntegration extends com.pulumi.resources.CustomResource {
      * When vendor value is s3, the following fields are included:
      * 
      */
-    @Export(name="s3", type=DataIntegrationS3.class, parameters={})
+    @Export(name="s3", refs={DataIntegrationS3.class}, tree="[0]")
     private Output</* @Nullable */ DataIntegrationS3> s3;
 
     /**
@@ -88,7 +88,7 @@ public class DataIntegration extends com.pulumi.resources.CustomResource {
      * Determines if this data integration is on or off. Valid values: `&#34;enabled&#34;`, `&#34;disabled&#34;`
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> status;
 
     /**

@@ -59,7 +59,7 @@ public class OceanExtendedResourceDefinition extends com.pulumi.resources.Custom
      * The name should be a valid Kubernetes extended resource name.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -74,7 +74,7 @@ public class OceanExtendedResourceDefinition extends com.pulumi.resources.Custom
      * A mapping between AWS instanceType or * as default and its value for the given extended resource.
      * 
      */
-    @Export(name="resourceMapping", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="resourceMapping", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> resourceMapping;
 
     /**

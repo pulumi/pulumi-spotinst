@@ -218,7 +218,7 @@ public class Ocean extends com.pulumi.resources.CustomResource {
      * The AKS identifier. A valid identifier should be formatted as `acd-nnnnnnnn` and previously used identifiers cannot be reused.
      * 
      */
-    @Export(name="acdIdentifier", type=String.class, parameters={})
+    @Export(name="acdIdentifier", refs={String.class}, tree="[0]")
     private Output<String> acdIdentifier;
 
     /**
@@ -232,7 +232,7 @@ public class Ocean extends com.pulumi.resources.CustomResource {
      * The AKS cluster name.
      * 
      */
-    @Export(name="aksName", type=String.class, parameters={})
+    @Export(name="aksName", refs={String.class}, tree="[0]")
     private Output<String> aksName;
 
     /**
@@ -246,7 +246,7 @@ public class Ocean extends com.pulumi.resources.CustomResource {
      * Name of the Azure Resource Group where the AKS cluster is located.
      * 
      */
-    @Export(name="aksResourceGroupName", type=String.class, parameters={})
+    @Export(name="aksResourceGroupName", refs={String.class}, tree="[0]")
     private Output<String> aksResourceGroupName;
 
     /**
@@ -260,7 +260,7 @@ public class Ocean extends com.pulumi.resources.CustomResource {
      * The Ocean Kubernetes Autoscaler object.
      * 
      */
-    @Export(name="autoscaler", type=OceanAutoscaler.class, parameters={})
+    @Export(name="autoscaler", refs={OceanAutoscaler.class}, tree="[0]")
     private Output</* @Nullable */ OceanAutoscaler> autoscaler;
 
     /**
@@ -274,7 +274,7 @@ public class Ocean extends com.pulumi.resources.CustomResource {
      * A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
      * 
      */
-    @Export(name="controllerClusterId", type=String.class, parameters={})
+    @Export(name="controllerClusterId", refs={String.class}, tree="[0]")
     private Output<String> controllerClusterId;
 
     /**
@@ -288,7 +288,7 @@ public class Ocean extends com.pulumi.resources.CustomResource {
      * Must contain a valid Base64 encoded string.
      * 
      */
-    @Export(name="customData", type=String.class, parameters={})
+    @Export(name="customData", refs={String.class}, tree="[0]")
     private Output<String> customData;
 
     /**
@@ -302,7 +302,7 @@ public class Ocean extends com.pulumi.resources.CustomResource {
      * List of Azure extension objects.
      * 
      */
-    @Export(name="extensions", type=List.class, parameters={OceanExtension.class})
+    @Export(name="extensions", refs={List.class,OceanExtension.class}, tree="[0,1]")
     private Output<List<OceanExtension>> extensions;
 
     /**
@@ -316,7 +316,7 @@ public class Ocean extends com.pulumi.resources.CustomResource {
      * The Ocean AKS Health object.
      * 
      */
-    @Export(name="health", type=OceanHealth.class, parameters={})
+    @Export(name="health", refs={OceanHealth.class}, tree="[0]")
     private Output<OceanHealth> health;
 
     /**
@@ -330,7 +330,7 @@ public class Ocean extends com.pulumi.resources.CustomResource {
      * Image of VM. An image is a template for creating new VMs. Choose from Azure image catalogue (marketplace).
      * 
      */
-    @Export(name="images", type=List.class, parameters={OceanImage.class})
+    @Export(name="images", refs={List.class,OceanImage.class}, tree="[0,1]")
     private Output<List<OceanImage>> images;
 
     /**
@@ -344,7 +344,7 @@ public class Ocean extends com.pulumi.resources.CustomResource {
      * Configure Load Balancer.
      * 
      */
-    @Export(name="loadBalancers", type=List.class, parameters={OceanLoadBalancer.class})
+    @Export(name="loadBalancers", refs={List.class,OceanLoadBalancer.class}, tree="[0,1]")
     private Output<List<OceanLoadBalancer>> loadBalancers;
 
     /**
@@ -358,7 +358,7 @@ public class Ocean extends com.pulumi.resources.CustomResource {
      * List of Managed Service Identity objects.
      * 
      */
-    @Export(name="managedServiceIdentities", type=List.class, parameters={OceanManagedServiceIdentity.class})
+    @Export(name="managedServiceIdentities", refs={List.class,OceanManagedServiceIdentity.class}, tree="[0,1]")
     private Output</* @Nullable */ List<OceanManagedServiceIdentity>> managedServiceIdentities;
 
     /**
@@ -372,7 +372,7 @@ public class Ocean extends com.pulumi.resources.CustomResource {
      * The maximum number of pods per node in an AKS cluster.
      * 
      */
-    @Export(name="maxPods", type=Integer.class, parameters={})
+    @Export(name="maxPods", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> maxPods;
 
     /**
@@ -386,7 +386,7 @@ public class Ocean extends com.pulumi.resources.CustomResource {
      * Name of the Load Balancer.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -400,7 +400,7 @@ public class Ocean extends com.pulumi.resources.CustomResource {
      * Define the Virtual Network and Subnet.
      * 
      */
-    @Export(name="network", type=OceanNetwork.class, parameters={})
+    @Export(name="network", refs={OceanNetwork.class}, tree="[0]")
     private Output<OceanNetwork> network;
 
     /**
@@ -414,7 +414,7 @@ public class Ocean extends com.pulumi.resources.CustomResource {
      * OS disk specifications.
      * 
      */
-    @Export(name="osDisk", type=OceanOsDisk.class, parameters={})
+    @Export(name="osDisk", refs={OceanOsDisk.class}, tree="[0]")
     private Output</* @Nullable */ OceanOsDisk> osDisk;
 
     /**
@@ -428,7 +428,7 @@ public class Ocean extends com.pulumi.resources.CustomResource {
      * The Resource Group name of the Load Balancer.
      * 
      */
-    @Export(name="resourceGroupName", type=String.class, parameters={})
+    @Export(name="resourceGroupName", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupName;
 
     /**
@@ -442,7 +442,7 @@ public class Ocean extends com.pulumi.resources.CustomResource {
      * SSH public key for admin access to Linux VMs.
      * 
      */
-    @Export(name="sshPublicKey", type=String.class, parameters={})
+    @Export(name="sshPublicKey", refs={String.class}, tree="[0]")
     private Output<String> sshPublicKey;
 
     /**
@@ -456,7 +456,7 @@ public class Ocean extends com.pulumi.resources.CustomResource {
      * The Ocean AKS strategy object.
      * 
      */
-    @Export(name="strategies", type=List.class, parameters={OceanStrategy.class})
+    @Export(name="strategies", refs={List.class,OceanStrategy.class}, tree="[0,1]")
     private Output</* @Nullable */ List<OceanStrategy>> strategies;
 
     /**
@@ -470,7 +470,7 @@ public class Ocean extends com.pulumi.resources.CustomResource {
      * Unique key-value pairs that will be used to tag VMs that are launched in the cluster.
      * 
      */
-    @Export(name="tags", type=List.class, parameters={OceanTag.class})
+    @Export(name="tags", refs={List.class,OceanTag.class}, tree="[0,1]")
     private Output</* @Nullable */ List<OceanTag>> tags;
 
     /**
@@ -484,7 +484,7 @@ public class Ocean extends com.pulumi.resources.CustomResource {
      * Username for admin access to VMs.
      * 
      */
-    @Export(name="userName", type=String.class, parameters={})
+    @Export(name="userName", refs={String.class}, tree="[0]")
     private Output<String> userName;
 
     /**
@@ -498,7 +498,7 @@ public class Ocean extends com.pulumi.resources.CustomResource {
      * The types of virtual machines that may or may not be a part of the Ocean cluster.
      * 
      */
-    @Export(name="vmSizes", type=List.class, parameters={OceanVmSize.class})
+    @Export(name="vmSizes", refs={List.class,OceanVmSize.class}, tree="[0,1]")
     private Output</* @Nullable */ List<OceanVmSize>> vmSizes;
 
     /**
@@ -512,7 +512,7 @@ public class Ocean extends com.pulumi.resources.CustomResource {
      * An Array holding default Availability Zones, this configures the availability zones the Ocean may launch instances in.
      * 
      */
-    @Export(name="zones", type=List.class, parameters={String.class})
+    @Export(name="zones", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> zones;
 
     /**

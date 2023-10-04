@@ -19,49 +19,49 @@ import javax.annotation.Nullable;
 
 @ResourceType(type="spotinst:multai/routingRule:RoutingRule")
 public class RoutingRule extends com.pulumi.resources.CustomResource {
-    @Export(name="balancerId", type=String.class, parameters={})
+    @Export(name="balancerId", refs={String.class}, tree="[0]")
     private Output<String> balancerId;
 
     public Output<String> balancerId() {
         return this.balancerId;
     }
-    @Export(name="listenerId", type=String.class, parameters={})
+    @Export(name="listenerId", refs={String.class}, tree="[0]")
     private Output<String> listenerId;
 
     public Output<String> listenerId() {
         return this.listenerId;
     }
-    @Export(name="middlewareIds", type=List.class, parameters={String.class})
+    @Export(name="middlewareIds", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> middlewareIds;
 
     public Output<Optional<List<String>>> middlewareIds() {
         return Codegen.optional(this.middlewareIds);
     }
-    @Export(name="priority", type=Integer.class, parameters={})
+    @Export(name="priority", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> priority;
 
     public Output<Optional<Integer>> priority() {
         return Codegen.optional(this.priority);
     }
-    @Export(name="route", type=String.class, parameters={})
+    @Export(name="route", refs={String.class}, tree="[0]")
     private Output<String> route;
 
     public Output<String> route() {
         return this.route;
     }
-    @Export(name="strategy", type=String.class, parameters={})
+    @Export(name="strategy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> strategy;
 
     public Output<Optional<String>> strategy() {
         return Codegen.optional(this.strategy);
     }
-    @Export(name="tags", type=List.class, parameters={RoutingRuleTag.class})
+    @Export(name="tags", refs={List.class,RoutingRuleTag.class}, tree="[0,1]")
     private Output</* @Nullable */ List<RoutingRuleTag>> tags;
 
     public Output<Optional<List<RoutingRuleTag>>> tags() {
         return Codegen.optional(this.tags);
     }
-    @Export(name="targetSetIds", type=List.class, parameters={String.class})
+    @Export(name="targetSetIds", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> targetSetIds;
 
     public Output<List<String>> targetSetIds() {

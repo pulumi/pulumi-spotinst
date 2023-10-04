@@ -204,7 +204,7 @@ public class OceanImport extends com.pulumi.resources.CustomResource {
      * The Ocean Kubernetes Autoscaler object.
      * 
      */
-    @Export(name="autoscaler", type=OceanImportAutoscaler.class, parameters={})
+    @Export(name="autoscaler", refs={OceanImportAutoscaler.class}, tree="[0]")
     private Output<OceanImportAutoscaler> autoscaler;
 
     /**
@@ -218,7 +218,7 @@ public class OceanImport extends com.pulumi.resources.CustomResource {
      * Describes the backend service configurations.
      * 
      */
-    @Export(name="backendServices", type=List.class, parameters={OceanImportBackendService.class})
+    @Export(name="backendServices", refs={List.class,OceanImportBackendService.class}, tree="[0,1]")
     private Output</* @Nullable */ List<OceanImportBackendService>> backendServices;
 
     /**
@@ -232,7 +232,7 @@ public class OceanImport extends com.pulumi.resources.CustomResource {
      * Instance types to avoid launching in the Ocean cluster. Cannot be configured if whitelist list is configured.
      * 
      */
-    @Export(name="blacklists", type=List.class, parameters={String.class})
+    @Export(name="blacklists", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> blacklists;
 
     /**
@@ -242,7 +242,7 @@ public class OceanImport extends com.pulumi.resources.CustomResource {
     public Output<Optional<List<String>>> blacklists() {
         return Codegen.optional(this.blacklists);
     }
-    @Export(name="clusterControllerId", type=String.class, parameters={})
+    @Export(name="clusterControllerId", refs={String.class}, tree="[0]")
     private Output<String> clusterControllerId;
 
     public Output<String> clusterControllerId() {
@@ -252,7 +252,7 @@ public class OceanImport extends com.pulumi.resources.CustomResource {
      * The GKE cluster name.
      * 
      */
-    @Export(name="clusterName", type=String.class, parameters={})
+    @Export(name="clusterName", refs={String.class}, tree="[0]")
     private Output<String> clusterName;
 
     /**
@@ -266,7 +266,7 @@ public class OceanImport extends com.pulumi.resources.CustomResource {
      * A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
      * 
      */
-    @Export(name="controllerClusterId", type=String.class, parameters={})
+    @Export(name="controllerClusterId", refs={String.class}, tree="[0]")
     private Output<String> controllerClusterId;
 
     /**
@@ -280,7 +280,7 @@ public class OceanImport extends com.pulumi.resources.CustomResource {
      * The number of instances to launch and maintain in the cluster.
      * 
      */
-    @Export(name="desiredCapacity", type=Integer.class, parameters={})
+    @Export(name="desiredCapacity", refs={Integer.class}, tree="[0]")
     private Output<Integer> desiredCapacity;
 
     /**
@@ -294,7 +294,7 @@ public class OceanImport extends com.pulumi.resources.CustomResource {
      * The zone the master cluster is located in.
      * 
      */
-    @Export(name="location", type=String.class, parameters={})
+    @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
@@ -308,7 +308,7 @@ public class OceanImport extends com.pulumi.resources.CustomResource {
      * The upper limit of instances the cluster can scale up to.
      * 
      */
-    @Export(name="maxSize", type=Integer.class, parameters={})
+    @Export(name="maxSize", refs={Integer.class}, tree="[0]")
     private Output<Integer> maxSize;
 
     /**
@@ -322,7 +322,7 @@ public class OceanImport extends com.pulumi.resources.CustomResource {
      * The lower limit of instances the cluster can scale down to.
      * 
      */
-    @Export(name="minSize", type=Integer.class, parameters={})
+    @Export(name="minSize", refs={Integer.class}, tree="[0]")
     private Output<Integer> minSize;
 
     /**
@@ -336,7 +336,7 @@ public class OceanImport extends com.pulumi.resources.CustomResource {
      * The root volume disk type.
      * 
      */
-    @Export(name="rootVolumeType", type=String.class, parameters={})
+    @Export(name="rootVolumeType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> rootVolumeType;
 
     /**
@@ -350,7 +350,7 @@ public class OceanImport extends com.pulumi.resources.CustomResource {
      * Set scheduling object.
      * 
      */
-    @Export(name="scheduledTasks", type=List.class, parameters={OceanImportScheduledTask.class})
+    @Export(name="scheduledTasks", refs={List.class,OceanImportScheduledTask.class}, tree="[0,1]")
     private Output</* @Nullable */ List<OceanImportScheduledTask>> scheduledTasks;
 
     /**
@@ -364,7 +364,7 @@ public class OceanImport extends com.pulumi.resources.CustomResource {
      * The Ocean shielded instance configuration object.
      * 
      */
-    @Export(name="shieldedInstanceConfig", type=OceanImportShieldedInstanceConfig.class, parameters={})
+    @Export(name="shieldedInstanceConfig", refs={OceanImportShieldedInstanceConfig.class}, tree="[0]")
     private Output<OceanImportShieldedInstanceConfig> shieldedInstanceConfig;
 
     /**
@@ -374,13 +374,13 @@ public class OceanImport extends com.pulumi.resources.CustomResource {
     public Output<OceanImportShieldedInstanceConfig> shieldedInstanceConfig() {
         return this.shieldedInstanceConfig;
     }
-    @Export(name="strategies", type=List.class, parameters={OceanImportStrategy.class})
+    @Export(name="strategies", refs={List.class,OceanImportStrategy.class}, tree="[0,1]")
     private Output</* @Nullable */ List<OceanImportStrategy>> strategies;
 
     public Output<Optional<List<OceanImportStrategy>>> strategies() {
         return Codegen.optional(this.strategies);
     }
-    @Export(name="updatePolicy", type=OceanImportUpdatePolicy.class, parameters={})
+    @Export(name="updatePolicy", refs={OceanImportUpdatePolicy.class}, tree="[0]")
     private Output</* @Nullable */ OceanImportUpdatePolicy> updatePolicy;
 
     public Output<Optional<OceanImportUpdatePolicy>> updatePolicy() {
@@ -390,7 +390,7 @@ public class OceanImport extends com.pulumi.resources.CustomResource {
      * launch specification defined on the Ocean object will function only as a template for virtual node groups.
      * 
      */
-    @Export(name="useAsTemplateOnly", type=Boolean.class, parameters={})
+    @Export(name="useAsTemplateOnly", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> useAsTemplateOnly;
 
     /**
@@ -404,7 +404,7 @@ public class OceanImport extends com.pulumi.resources.CustomResource {
      * Instance types allowed in the Ocean cluster. Cannot be configured if blacklist list is configured.
      * 
      */
-    @Export(name="whitelists", type=List.class, parameters={String.class})
+    @Export(name="whitelists", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> whitelists;
 
     /**

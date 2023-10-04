@@ -19,31 +19,31 @@ import javax.annotation.Nullable;
 
 @ResourceType(type="spotinst:multai/balancer:Balancer")
 public class Balancer extends com.pulumi.resources.CustomResource {
-    @Export(name="connectionTimeouts", type=BalancerConnectionTimeouts.class, parameters={})
+    @Export(name="connectionTimeouts", refs={BalancerConnectionTimeouts.class}, tree="[0]")
     private Output</* @Nullable */ BalancerConnectionTimeouts> connectionTimeouts;
 
     public Output<Optional<BalancerConnectionTimeouts>> connectionTimeouts() {
         return Codegen.optional(this.connectionTimeouts);
     }
-    @Export(name="dnsCnameAliases", type=List.class, parameters={String.class})
+    @Export(name="dnsCnameAliases", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> dnsCnameAliases;
 
     public Output<Optional<List<String>>> dnsCnameAliases() {
         return Codegen.optional(this.dnsCnameAliases);
     }
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     public Output<String> name() {
         return this.name;
     }
-    @Export(name="scheme", type=String.class, parameters={})
+    @Export(name="scheme", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> scheme;
 
     public Output<Optional<String>> scheme() {
         return Codegen.optional(this.scheme);
     }
-    @Export(name="tags", type=List.class, parameters={BalancerTag.class})
+    @Export(name="tags", refs={List.class,BalancerTag.class}, tree="[0,1]")
     private Output</* @Nullable */ List<BalancerTag>> tags;
 
     public Output<Optional<List<BalancerTag>>> tags() {

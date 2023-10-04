@@ -20,49 +20,49 @@ import javax.annotation.Nullable;
 
 @ResourceType(type="spotinst:multai/targetSet:TargetSet")
 public class TargetSet extends com.pulumi.resources.CustomResource {
-    @Export(name="balancerId", type=String.class, parameters={})
+    @Export(name="balancerId", refs={String.class}, tree="[0]")
     private Output<String> balancerId;
 
     public Output<String> balancerId() {
         return this.balancerId;
     }
-    @Export(name="deploymentId", type=String.class, parameters={})
+    @Export(name="deploymentId", refs={String.class}, tree="[0]")
     private Output<String> deploymentId;
 
     public Output<String> deploymentId() {
         return this.deploymentId;
     }
-    @Export(name="healthCheck", type=TargetSetHealthCheck.class, parameters={})
+    @Export(name="healthCheck", refs={TargetSetHealthCheck.class}, tree="[0]")
     private Output<TargetSetHealthCheck> healthCheck;
 
     public Output<TargetSetHealthCheck> healthCheck() {
         return this.healthCheck;
     }
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     public Output<String> name() {
         return this.name;
     }
-    @Export(name="port", type=Integer.class, parameters={})
+    @Export(name="port", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> port;
 
     public Output<Optional<Integer>> port() {
         return Codegen.optional(this.port);
     }
-    @Export(name="protocol", type=String.class, parameters={})
+    @Export(name="protocol", refs={String.class}, tree="[0]")
     private Output<String> protocol;
 
     public Output<String> protocol() {
         return this.protocol;
     }
-    @Export(name="tags", type=List.class, parameters={TargetSetTag.class})
+    @Export(name="tags", refs={List.class,TargetSetTag.class}, tree="[0,1]")
     private Output</* @Nullable */ List<TargetSetTag>> tags;
 
     public Output<Optional<List<TargetSetTag>>> tags() {
         return Codegen.optional(this.tags);
     }
-    @Export(name="weight", type=Integer.class, parameters={})
+    @Export(name="weight", refs={Integer.class}, tree="[0]")
     private Output<Integer> weight;
 
     public Output<Integer> weight() {

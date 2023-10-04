@@ -127,19 +127,19 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="spotinst:spark/ocean:Ocean")
 public class Ocean extends com.pulumi.resources.CustomResource {
-    @Export(name="compute", type=OceanCompute.class, parameters={})
+    @Export(name="compute", refs={OceanCompute.class}, tree="[0]")
     private Output<OceanCompute> compute;
 
     public Output<OceanCompute> compute() {
         return this.compute;
     }
-    @Export(name="ingress", type=OceanIngress.class, parameters={})
+    @Export(name="ingress", refs={OceanIngress.class}, tree="[0]")
     private Output<OceanIngress> ingress;
 
     public Output<OceanIngress> ingress() {
         return this.ingress;
     }
-    @Export(name="logCollection", type=OceanLogCollection.class, parameters={})
+    @Export(name="logCollection", refs={OceanLogCollection.class}, tree="[0]")
     private Output<OceanLogCollection> logCollection;
 
     public Output<OceanLogCollection> logCollection() {
@@ -149,7 +149,7 @@ public class Ocean extends com.pulumi.resources.CustomResource {
      * - The ID of the Ocean cluster that Ocean for Apache Spark should be installed on.
      * 
      */
-    @Export(name="oceanClusterId", type=String.class, parameters={})
+    @Export(name="oceanClusterId", refs={String.class}, tree="[0]")
     private Output<String> oceanClusterId;
 
     /**
@@ -159,13 +159,13 @@ public class Ocean extends com.pulumi.resources.CustomResource {
     public Output<String> oceanClusterId() {
         return this.oceanClusterId;
     }
-    @Export(name="spark", type=OceanSpark.class, parameters={})
+    @Export(name="spark", refs={OceanSpark.class}, tree="[0]")
     private Output<OceanSpark> spark;
 
     public Output<OceanSpark> spark() {
         return this.spark;
     }
-    @Export(name="webhook", type=OceanWebhook.class, parameters={})
+    @Export(name="webhook", refs={OceanWebhook.class}, tree="[0]")
     private Output<OceanWebhook> webhook;
 
     public Output<OceanWebhook> webhook() {
