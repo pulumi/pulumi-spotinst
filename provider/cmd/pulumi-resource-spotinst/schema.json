@@ -24,7 +24,6 @@
                 "gcp": "Gcp",
                 "gke": "Gke",
                 "index": "Index",
-                "multai": "Multai",
                 "spark": "Spark",
                 "spotinst": "SpotInst"
             },

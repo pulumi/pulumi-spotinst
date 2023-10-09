@@ -123,30 +123,12 @@ func Provider() tfbridge.ProviderInfo {
 			"spotinst_mrscaler_aws": {Tok: makeResource(awsMod, "MrScalar")},
 
 			// Lack of docs is tracked in: https://github.com/pulumi/pulumi-spotinst/issues/193
-			"spotinst_multai_balancer": {
-				Tok:  makeResource(multaiMod, "Balancer"),
-				Docs: noUpstreamDocs,
-			},
-			"spotinst_multai_deployment": {
-				Tok:  makeResource(multaiMod, "Deployment"),
-				Docs: noUpstreamDocs,
-			},
-			"spotinst_multai_listener": {
-				Tok:  makeResource(multaiMod, "Listener"),
-				Docs: noUpstreamDocs,
-			},
-			"spotinst_multai_routing_rule": {
-				Tok:  makeResource(multaiMod, "RoutingRule"),
-				Docs: noUpstreamDocs,
-			},
-			"spotinst_multai_target": {
-				Tok:  makeResource(multaiMod, "Target"),
-				Docs: noUpstreamDocs,
-			},
-			"spotinst_multai_target_set": {
-				Tok:  makeResource(multaiMod, "TargetSet"),
-				Docs: noUpstreamDocs,
-			},
+			"spotinst_multai_balancer":     {Docs: noUpstreamDocs},
+			"spotinst_multai_deployment":   {Docs: noUpstreamDocs},
+			"spotinst_multai_listener":     {Docs: noUpstreamDocs},
+			"spotinst_multai_routing_rule": {Docs: noUpstreamDocs},
+			"spotinst_multai_target":       {Docs: noUpstreamDocs},
+			"spotinst_multai_target_set":   {Docs: noUpstreamDocs},
 
 			"spotinst_ocean_aws":                              {Tok: makeResource(awsMod, "Ocean")},
 			"spotinst_ocean_aws_launch_spec":                  {Tok: makeResource(awsMod, "OceanLaunchSpec")},
@@ -207,6 +189,7 @@ func Provider() tfbridge.ProviderInfo {
 
 	prov.MustComputeTokens(tks.KnownModules("spotinst_", "", []string{
 		"organization",
+		"multai",
 	}, tks.MakeStandard(mainPkg)))
 	prov.MustApplyAutoAliases()
 
