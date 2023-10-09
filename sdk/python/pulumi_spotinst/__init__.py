@@ -30,6 +30,8 @@ if typing.TYPE_CHECKING:
     gke = __gke
     import pulumi_spotinst.multai as __multai
     multai = __multai
+    import pulumi_spotinst.organization as __organization
+    organization = __organization
     import pulumi_spotinst.spark as __spark
     spark = __spark
 else:
@@ -40,6 +42,7 @@ else:
     gcp = _utilities.lazy_import('pulumi_spotinst.gcp')
     gke = _utilities.lazy_import('pulumi_spotinst.gke')
     multai = _utilities.lazy_import('pulumi_spotinst.multai')
+    organization = _utilities.lazy_import('pulumi_spotinst.organization')
     spark = _utilities.lazy_import('pulumi_spotinst.spark')
 
 _utilities.register(
@@ -307,6 +310,38 @@ _utilities.register(
   "fqn": "pulumi_spotinst.multai",
   "classes": {
    "spotinst:multai/targetSet:TargetSet": "TargetSet"
+  }
+ },
+ {
+  "pkg": "spotinst",
+  "mod": "organization/policy",
+  "fqn": "pulumi_spotinst.organization",
+  "classes": {
+   "spotinst:organization/policy:Policy": "Policy"
+  }
+ },
+ {
+  "pkg": "spotinst",
+  "mod": "organization/programmaticUser",
+  "fqn": "pulumi_spotinst.organization",
+  "classes": {
+   "spotinst:organization/programmaticUser:ProgrammaticUser": "ProgrammaticUser"
+  }
+ },
+ {
+  "pkg": "spotinst",
+  "mod": "organization/user",
+  "fqn": "pulumi_spotinst.organization",
+  "classes": {
+   "spotinst:organization/user:User": "User"
+  }
+ },
+ {
+  "pkg": "spotinst",
+  "mod": "organization/userGroup",
+  "fqn": "pulumi_spotinst.organization",
+  "classes": {
+   "spotinst:organization/userGroup:UserGroup": "UserGroup"
   }
  },
  {

@@ -14,6 +14,7 @@ import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecDeleteOptionsArgs;
 import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecElasticIpPoolArgs;
 import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecImageArgs;
 import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecInstanceMetadataOptionsArgs;
+import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecInstanceTypesFiltersArgs;
 import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecLabelArgs;
 import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecResourceLimitArgs;
 import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecSchedulingShutdownHoursArgs;
@@ -214,6 +215,23 @@ public final class OceanLaunchSpecArgs extends com.pulumi.resources.ResourceArgs
      */
     public Optional<Output<List<String>>> instanceTypes() {
         return Optional.ofNullable(this.instanceTypes);
+    }
+
+    /**
+     * The instance types that match with all filters compose the Virtual Node Group&#39;s instanceTypes parameter.
+     * The architectures that come from the Virtual Node Group&#39;s images will be taken into account when using this parameter. Cannot be configured together with Virtual Node Group&#39;s instanceTypes and with the Cluster&#39;s whitelist/blacklist/filters.
+     * 
+     */
+    @Import(name="instanceTypesFilters")
+    private @Nullable Output<OceanLaunchSpecInstanceTypesFiltersArgs> instanceTypesFilters;
+
+    /**
+     * @return The instance types that match with all filters compose the Virtual Node Group&#39;s instanceTypes parameter.
+     * The architectures that come from the Virtual Node Group&#39;s images will be taken into account when using this parameter. Cannot be configured together with Virtual Node Group&#39;s instanceTypes and with the Cluster&#39;s whitelist/blacklist/filters.
+     * 
+     */
+    public Optional<Output<OceanLaunchSpecInstanceTypesFiltersArgs>> instanceTypesFilters() {
+        return Optional.ofNullable(this.instanceTypesFilters);
     }
 
     /**
@@ -448,6 +466,7 @@ public final class OceanLaunchSpecArgs extends com.pulumi.resources.ResourceArgs
         this.images = $.images;
         this.instanceMetadataOptions = $.instanceMetadataOptions;
         this.instanceTypes = $.instanceTypes;
+        this.instanceTypesFilters = $.instanceTypesFilters;
         this.labels = $.labels;
         this.name = $.name;
         this.oceanId = $.oceanId;
@@ -804,6 +823,29 @@ public final class OceanLaunchSpecArgs extends com.pulumi.resources.ResourceArgs
          */
         public Builder instanceTypes(String... instanceTypes) {
             return instanceTypes(List.of(instanceTypes));
+        }
+
+        /**
+         * @param instanceTypesFilters The instance types that match with all filters compose the Virtual Node Group&#39;s instanceTypes parameter.
+         * The architectures that come from the Virtual Node Group&#39;s images will be taken into account when using this parameter. Cannot be configured together with Virtual Node Group&#39;s instanceTypes and with the Cluster&#39;s whitelist/blacklist/filters.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceTypesFilters(@Nullable Output<OceanLaunchSpecInstanceTypesFiltersArgs> instanceTypesFilters) {
+            $.instanceTypesFilters = instanceTypesFilters;
+            return this;
+        }
+
+        /**
+         * @param instanceTypesFilters The instance types that match with all filters compose the Virtual Node Group&#39;s instanceTypes parameter.
+         * The architectures that come from the Virtual Node Group&#39;s images will be taken into account when using this parameter. Cannot be configured together with Virtual Node Group&#39;s instanceTypes and with the Cluster&#39;s whitelist/blacklist/filters.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceTypesFilters(OceanLaunchSpecInstanceTypesFiltersArgs instanceTypesFilters) {
+            return instanceTypesFilters(Output.of(instanceTypesFilters));
         }
 
         /**

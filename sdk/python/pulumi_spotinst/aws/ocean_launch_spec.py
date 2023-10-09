@@ -30,6 +30,7 @@ class OceanLaunchSpecArgs:
                  images: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecImageArgs']]]] = None,
                  instance_metadata_options: Optional[pulumi.Input['OceanLaunchSpecInstanceMetadataOptionsArgs']] = None,
                  instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 instance_types_filters: Optional[pulumi.Input['OceanLaunchSpecInstanceTypesFiltersArgs']] = None,
                  labels: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecLabelArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  preferred_spot_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -60,6 +61,8 @@ class OceanLaunchSpecArgs:
                For each architecture type (amd64, arm64) only one AMI is allowed. Valid values: null, or an array with at least one element.
         :param pulumi.Input['OceanLaunchSpecInstanceMetadataOptionsArgs'] instance_metadata_options: Ocean instance metadata options object for IMDSv2.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the cluster.
+        :param pulumi.Input['OceanLaunchSpecInstanceTypesFiltersArgs'] instance_types_filters: The instance types that match with all filters compose the Virtual Node Group's instanceTypes parameter.
+               The architectures that come from the Virtual Node Group's images will be taken into account when using this parameter. Cannot be configured together with Virtual Node Group's instanceTypes and with the Cluster's whitelist/blacklist/filters.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecLabelArgs']]] labels: Optionally adds labels to instances launched in the cluster.
         :param pulumi.Input[str] name: The name of the Virtual Node Group.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] preferred_spot_types: A list of instance types. Takes the preferred types into consideration while maintaining a variety of machine types running for optimized distribution.
@@ -89,6 +92,7 @@ class OceanLaunchSpecArgs:
             images=images,
             instance_metadata_options=instance_metadata_options,
             instance_types=instance_types,
+            instance_types_filters=instance_types_filters,
             labels=labels,
             name=name,
             preferred_spot_types=preferred_spot_types,
@@ -122,6 +126,7 @@ class OceanLaunchSpecArgs:
              images: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecImageArgs']]]] = None,
              instance_metadata_options: Optional[pulumi.Input['OceanLaunchSpecInstanceMetadataOptionsArgs']] = None,
              instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             instance_types_filters: Optional[pulumi.Input['OceanLaunchSpecInstanceTypesFiltersArgs']] = None,
              labels: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecLabelArgs']]]] = None,
              name: Optional[pulumi.Input[str]] = None,
              preferred_spot_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -165,6 +170,8 @@ class OceanLaunchSpecArgs:
             _setter("instance_metadata_options", instance_metadata_options)
         if instance_types is not None:
             _setter("instance_types", instance_types)
+        if instance_types_filters is not None:
+            _setter("instance_types_filters", instance_types_filters)
         if labels is not None:
             _setter("labels", labels)
         if name is not None:
@@ -360,6 +367,19 @@ class OceanLaunchSpecArgs:
         pulumi.set(self, "instance_types", value)
 
     @property
+    @pulumi.getter(name="instanceTypesFilters")
+    def instance_types_filters(self) -> Optional[pulumi.Input['OceanLaunchSpecInstanceTypesFiltersArgs']]:
+        """
+        The instance types that match with all filters compose the Virtual Node Group's instanceTypes parameter.
+        The architectures that come from the Virtual Node Group's images will be taken into account when using this parameter. Cannot be configured together with Virtual Node Group's instanceTypes and with the Cluster's whitelist/blacklist/filters.
+        """
+        return pulumi.get(self, "instance_types_filters")
+
+    @instance_types_filters.setter
+    def instance_types_filters(self, value: Optional[pulumi.Input['OceanLaunchSpecInstanceTypesFiltersArgs']]):
+        pulumi.set(self, "instance_types_filters", value)
+
+    @property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecLabelArgs']]]]:
         """
@@ -547,6 +567,7 @@ class _OceanLaunchSpecState:
                  images: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecImageArgs']]]] = None,
                  instance_metadata_options: Optional[pulumi.Input['OceanLaunchSpecInstanceMetadataOptionsArgs']] = None,
                  instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 instance_types_filters: Optional[pulumi.Input['OceanLaunchSpecInstanceTypesFiltersArgs']] = None,
                  labels: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecLabelArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  ocean_id: Optional[pulumi.Input[str]] = None,
@@ -577,6 +598,8 @@ class _OceanLaunchSpecState:
                For each architecture type (amd64, arm64) only one AMI is allowed. Valid values: null, or an array with at least one element.
         :param pulumi.Input['OceanLaunchSpecInstanceMetadataOptionsArgs'] instance_metadata_options: Ocean instance metadata options object for IMDSv2.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the cluster.
+        :param pulumi.Input['OceanLaunchSpecInstanceTypesFiltersArgs'] instance_types_filters: The instance types that match with all filters compose the Virtual Node Group's instanceTypes parameter.
+               The architectures that come from the Virtual Node Group's images will be taken into account when using this parameter. Cannot be configured together with Virtual Node Group's instanceTypes and with the Cluster's whitelist/blacklist/filters.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecLabelArgs']]] labels: Optionally adds labels to instances launched in the cluster.
         :param pulumi.Input[str] name: The name of the Virtual Node Group.
         :param pulumi.Input[str] ocean_id: The ID of the Ocean cluster.
@@ -606,6 +629,7 @@ class _OceanLaunchSpecState:
             images=images,
             instance_metadata_options=instance_metadata_options,
             instance_types=instance_types,
+            instance_types_filters=instance_types_filters,
             labels=labels,
             name=name,
             ocean_id=ocean_id,
@@ -639,6 +663,7 @@ class _OceanLaunchSpecState:
              images: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecImageArgs']]]] = None,
              instance_metadata_options: Optional[pulumi.Input['OceanLaunchSpecInstanceMetadataOptionsArgs']] = None,
              instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             instance_types_filters: Optional[pulumi.Input['OceanLaunchSpecInstanceTypesFiltersArgs']] = None,
              labels: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecLabelArgs']]]] = None,
              name: Optional[pulumi.Input[str]] = None,
              ocean_id: Optional[pulumi.Input[str]] = None,
@@ -682,6 +707,8 @@ class _OceanLaunchSpecState:
             _setter("instance_metadata_options", instance_metadata_options)
         if instance_types is not None:
             _setter("instance_types", instance_types)
+        if instance_types_filters is not None:
+            _setter("instance_types_filters", instance_types_filters)
         if labels is not None:
             _setter("labels", labels)
         if name is not None:
@@ -865,6 +892,19 @@ class _OceanLaunchSpecState:
     @instance_types.setter
     def instance_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "instance_types", value)
+
+    @property
+    @pulumi.getter(name="instanceTypesFilters")
+    def instance_types_filters(self) -> Optional[pulumi.Input['OceanLaunchSpecInstanceTypesFiltersArgs']]:
+        """
+        The instance types that match with all filters compose the Virtual Node Group's instanceTypes parameter.
+        The architectures that come from the Virtual Node Group's images will be taken into account when using this parameter. Cannot be configured together with Virtual Node Group's instanceTypes and with the Cluster's whitelist/blacklist/filters.
+        """
+        return pulumi.get(self, "instance_types_filters")
+
+    @instance_types_filters.setter
+    def instance_types_filters(self, value: Optional[pulumi.Input['OceanLaunchSpecInstanceTypesFiltersArgs']]):
+        pulumi.set(self, "instance_types_filters", value)
 
     @property
     @pulumi.getter
@@ -1068,6 +1108,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
                  images: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecImageArgs']]]]] = None,
                  instance_metadata_options: Optional[pulumi.Input[pulumi.InputType['OceanLaunchSpecInstanceMetadataOptionsArgs']]] = None,
                  instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 instance_types_filters: Optional[pulumi.Input[pulumi.InputType['OceanLaunchSpecInstanceTypesFiltersArgs']]] = None,
                  labels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecLabelArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  ocean_id: Optional[pulumi.Input[str]] = None,
@@ -1235,6 +1276,8 @@ class OceanLaunchSpec(pulumi.CustomResource):
                For each architecture type (amd64, arm64) only one AMI is allowed. Valid values: null, or an array with at least one element.
         :param pulumi.Input[pulumi.InputType['OceanLaunchSpecInstanceMetadataOptionsArgs']] instance_metadata_options: Ocean instance metadata options object for IMDSv2.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the cluster.
+        :param pulumi.Input[pulumi.InputType['OceanLaunchSpecInstanceTypesFiltersArgs']] instance_types_filters: The instance types that match with all filters compose the Virtual Node Group's instanceTypes parameter.
+               The architectures that come from the Virtual Node Group's images will be taken into account when using this parameter. Cannot be configured together with Virtual Node Group's instanceTypes and with the Cluster's whitelist/blacklist/filters.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecLabelArgs']]]] labels: Optionally adds labels to instances launched in the cluster.
         :param pulumi.Input[str] name: The name of the Virtual Node Group.
         :param pulumi.Input[str] ocean_id: The ID of the Ocean cluster.
@@ -1423,6 +1466,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
                  images: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecImageArgs']]]]] = None,
                  instance_metadata_options: Optional[pulumi.Input[pulumi.InputType['OceanLaunchSpecInstanceMetadataOptionsArgs']]] = None,
                  instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 instance_types_filters: Optional[pulumi.Input[pulumi.InputType['OceanLaunchSpecInstanceTypesFiltersArgs']]] = None,
                  labels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecLabelArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  ocean_id: Optional[pulumi.Input[str]] = None,
@@ -1476,6 +1520,12 @@ class OceanLaunchSpec(pulumi.CustomResource):
                 OceanLaunchSpecInstanceMetadataOptionsArgs._configure(_setter, **instance_metadata_options)
             __props__.__dict__["instance_metadata_options"] = instance_metadata_options
             __props__.__dict__["instance_types"] = instance_types
+            if instance_types_filters is not None and not isinstance(instance_types_filters, OceanLaunchSpecInstanceTypesFiltersArgs):
+                instance_types_filters = instance_types_filters or {}
+                def _setter(key, value):
+                    instance_types_filters[key] = value
+                OceanLaunchSpecInstanceTypesFiltersArgs._configure(_setter, **instance_types_filters)
+            __props__.__dict__["instance_types_filters"] = instance_types_filters
             __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
             if ocean_id is None and not opts.urn:
@@ -1527,6 +1577,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
             images: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecImageArgs']]]]] = None,
             instance_metadata_options: Optional[pulumi.Input[pulumi.InputType['OceanLaunchSpecInstanceMetadataOptionsArgs']]] = None,
             instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            instance_types_filters: Optional[pulumi.Input[pulumi.InputType['OceanLaunchSpecInstanceTypesFiltersArgs']]] = None,
             labels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecLabelArgs']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             ocean_id: Optional[pulumi.Input[str]] = None,
@@ -1562,6 +1613,8 @@ class OceanLaunchSpec(pulumi.CustomResource):
                For each architecture type (amd64, arm64) only one AMI is allowed. Valid values: null, or an array with at least one element.
         :param pulumi.Input[pulumi.InputType['OceanLaunchSpecInstanceMetadataOptionsArgs']] instance_metadata_options: Ocean instance metadata options object for IMDSv2.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the cluster.
+        :param pulumi.Input[pulumi.InputType['OceanLaunchSpecInstanceTypesFiltersArgs']] instance_types_filters: The instance types that match with all filters compose the Virtual Node Group's instanceTypes parameter.
+               The architectures that come from the Virtual Node Group's images will be taken into account when using this parameter. Cannot be configured together with Virtual Node Group's instanceTypes and with the Cluster's whitelist/blacklist/filters.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecLabelArgs']]]] labels: Optionally adds labels to instances launched in the cluster.
         :param pulumi.Input[str] name: The name of the Virtual Node Group.
         :param pulumi.Input[str] ocean_id: The ID of the Ocean cluster.
@@ -1593,6 +1646,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
         __props__.__dict__["images"] = images
         __props__.__dict__["instance_metadata_options"] = instance_metadata_options
         __props__.__dict__["instance_types"] = instance_types
+        __props__.__dict__["instance_types_filters"] = instance_types_filters
         __props__.__dict__["labels"] = labels
         __props__.__dict__["name"] = name
         __props__.__dict__["ocean_id"] = ocean_id
@@ -1709,6 +1763,15 @@ class OceanLaunchSpec(pulumi.CustomResource):
         A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the cluster.
         """
         return pulumi.get(self, "instance_types")
+
+    @property
+    @pulumi.getter(name="instanceTypesFilters")
+    def instance_types_filters(self) -> pulumi.Output[Optional['outputs.OceanLaunchSpecInstanceTypesFilters']]:
+        """
+        The instance types that match with all filters compose the Virtual Node Group's instanceTypes parameter.
+        The architectures that come from the Virtual Node Group's images will be taken into account when using this parameter. Cannot be configured together with Virtual Node Group's instanceTypes and with the Cluster's whitelist/blacklist/filters.
+        """
+        return pulumi.get(self, "instance_types_filters")
 
     @property
     @pulumi.getter

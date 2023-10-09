@@ -24729,8 +24729,6 @@ func (o OceanLaunchSpecImageArrayOutput) Index(i pulumi.IntInput) OceanLaunchSpe
 
 type OceanLaunchSpecInstanceMetadataOptions struct {
 	// An integer from 1 through 64. The desired HTTP PUT response hop limit for instance metadata requests. The larger the number, the further the instance metadata requests can travel.
-	//
-	// <a id="update-policy"></a>
 	HttpPutResponseHopLimit *int `pulumi:"httpPutResponseHopLimit"`
 	// Determines if a signed token is required or not. Valid values: `optional` or `required`.
 	HttpTokens string `pulumi:"httpTokens"`
@@ -24749,8 +24747,6 @@ type OceanLaunchSpecInstanceMetadataOptionsInput interface {
 
 type OceanLaunchSpecInstanceMetadataOptionsArgs struct {
 	// An integer from 1 through 64. The desired HTTP PUT response hop limit for instance metadata requests. The larger the number, the further the instance metadata requests can travel.
-	//
-	// <a id="update-policy"></a>
 	HttpPutResponseHopLimit pulumi.IntPtrInput `pulumi:"httpPutResponseHopLimit"`
 	// Determines if a signed token is required or not. Valid values: `optional` or `required`.
 	HttpTokens pulumi.StringInput `pulumi:"httpTokens"`
@@ -24852,8 +24848,6 @@ func (o OceanLaunchSpecInstanceMetadataOptionsOutput) ToOutput(ctx context.Conte
 }
 
 // An integer from 1 through 64. The desired HTTP PUT response hop limit for instance metadata requests. The larger the number, the further the instance metadata requests can travel.
-//
-// <a id="update-policy"></a>
 func (o OceanLaunchSpecInstanceMetadataOptionsOutput) HttpPutResponseHopLimit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanLaunchSpecInstanceMetadataOptions) *int { return v.HttpPutResponseHopLimit }).(pulumi.IntPtrOutput)
 }
@@ -24894,8 +24888,6 @@ func (o OceanLaunchSpecInstanceMetadataOptionsPtrOutput) Elem() OceanLaunchSpecI
 }
 
 // An integer from 1 through 64. The desired HTTP PUT response hop limit for instance metadata requests. The larger the number, the further the instance metadata requests can travel.
-//
-// <a id="update-policy"></a>
 func (o OceanLaunchSpecInstanceMetadataOptionsPtrOutput) HttpPutResponseHopLimit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanLaunchSpecInstanceMetadataOptions) *int {
 		if v == nil {
@@ -24913,6 +24905,498 @@ func (o OceanLaunchSpecInstanceMetadataOptionsPtrOutput) HttpTokens() pulumi.Str
 		}
 		return &v.HttpTokens
 	}).(pulumi.StringPtrOutput)
+}
+
+type OceanLaunchSpecInstanceTypesFilters struct {
+	// The filtered instance types will belong to one of the categories types from this list. Valid values: `Accelerated_computing`, `Compute_optimized`, `General_purpose`, `Memory_optimized`, `Storage_optimized`.
+	Categories []string `pulumi:"categories"`
+	// The filtered instance types will have one of the disk type from this list. Valid values: `NVMe`, `EBS`, `SSD`, `HDD`.
+	DiskTypes []string `pulumi:"diskTypes"`
+	// Types belonging to a family from the ExcludeFamilies will not be available for scaling (asterisk wildcard is also supported). For example, C* will exclude instance types from these families: c5, c4, c4a, etc.
+	ExcludeFamilies []string `pulumi:"excludeFamilies"`
+	// In case excludeMetal is set to true, metal types will not be available for scaling.
+	ExcludeMetal *bool `pulumi:"excludeMetal"`
+	// The filtered instance types will have a hypervisor type from this list. Valid values: `nitro`, `xen`.
+	Hypervisors []string `pulumi:"hypervisors"`
+	// Types belonging to a family from the IncludeFamilies will be available for scaling (asterisk wildcard is also supported). For example, C* will include instance types from these families: c5, c4, c4a, etc.
+	IncludeFamilies []string `pulumi:"includeFamilies"`
+	// Ena is supported or not.
+	IsEnaSupported *string `pulumi:"isEnaSupported"`
+	// Maximum total number of GPUs.
+	MaxGpu *int `pulumi:"maxGpu"`
+	// Maximum amount of Memory (GiB).
+	MaxMemoryGib *float64 `pulumi:"maxMemoryGib"`
+	// Maximum Bandwidth in Gib/s of network performance.
+	MaxNetworkPerformance *int `pulumi:"maxNetworkPerformance"`
+	// Maximum number of vcpus available.
+	MaxVcpu *int `pulumi:"maxVcpu"`
+	// Minimum number of network interfaces (ENIs).
+	MinEnis *int `pulumi:"minEnis"`
+	// Minimum total number of GPUs.
+	MinGpu *int `pulumi:"minGpu"`
+	// Minimum amount of Memory (GiB).
+	MinMemoryGib *float64 `pulumi:"minMemoryGib"`
+	// Minimum Bandwidth in Gib/s of network performance.
+	MinNetworkPerformance *int `pulumi:"minNetworkPerformance"`
+	// Minimum number of vcpus available.
+	MinVcpu *int `pulumi:"minVcpu"`
+	// The filtered instance types will have a root device types from this list. Valid values: `ebs`, or `instance-store`.
+	RootDeviceTypes []string `pulumi:"rootDeviceTypes"`
+	// The filtered instance types will support at least one of the virtualization types from this list. Valid values: `hvm`, `paravirtual`.
+	//
+	// <a id="update-policy"></a>
+	VirtualizationTypes []string `pulumi:"virtualizationTypes"`
+}
+
+// OceanLaunchSpecInstanceTypesFiltersInput is an input type that accepts OceanLaunchSpecInstanceTypesFiltersArgs and OceanLaunchSpecInstanceTypesFiltersOutput values.
+// You can construct a concrete instance of `OceanLaunchSpecInstanceTypesFiltersInput` via:
+//
+//	OceanLaunchSpecInstanceTypesFiltersArgs{...}
+type OceanLaunchSpecInstanceTypesFiltersInput interface {
+	pulumi.Input
+
+	ToOceanLaunchSpecInstanceTypesFiltersOutput() OceanLaunchSpecInstanceTypesFiltersOutput
+	ToOceanLaunchSpecInstanceTypesFiltersOutputWithContext(context.Context) OceanLaunchSpecInstanceTypesFiltersOutput
+}
+
+type OceanLaunchSpecInstanceTypesFiltersArgs struct {
+	// The filtered instance types will belong to one of the categories types from this list. Valid values: `Accelerated_computing`, `Compute_optimized`, `General_purpose`, `Memory_optimized`, `Storage_optimized`.
+	Categories pulumi.StringArrayInput `pulumi:"categories"`
+	// The filtered instance types will have one of the disk type from this list. Valid values: `NVMe`, `EBS`, `SSD`, `HDD`.
+	DiskTypes pulumi.StringArrayInput `pulumi:"diskTypes"`
+	// Types belonging to a family from the ExcludeFamilies will not be available for scaling (asterisk wildcard is also supported). For example, C* will exclude instance types from these families: c5, c4, c4a, etc.
+	ExcludeFamilies pulumi.StringArrayInput `pulumi:"excludeFamilies"`
+	// In case excludeMetal is set to true, metal types will not be available for scaling.
+	ExcludeMetal pulumi.BoolPtrInput `pulumi:"excludeMetal"`
+	// The filtered instance types will have a hypervisor type from this list. Valid values: `nitro`, `xen`.
+	Hypervisors pulumi.StringArrayInput `pulumi:"hypervisors"`
+	// Types belonging to a family from the IncludeFamilies will be available for scaling (asterisk wildcard is also supported). For example, C* will include instance types from these families: c5, c4, c4a, etc.
+	IncludeFamilies pulumi.StringArrayInput `pulumi:"includeFamilies"`
+	// Ena is supported or not.
+	IsEnaSupported pulumi.StringPtrInput `pulumi:"isEnaSupported"`
+	// Maximum total number of GPUs.
+	MaxGpu pulumi.IntPtrInput `pulumi:"maxGpu"`
+	// Maximum amount of Memory (GiB).
+	MaxMemoryGib pulumi.Float64PtrInput `pulumi:"maxMemoryGib"`
+	// Maximum Bandwidth in Gib/s of network performance.
+	MaxNetworkPerformance pulumi.IntPtrInput `pulumi:"maxNetworkPerformance"`
+	// Maximum number of vcpus available.
+	MaxVcpu pulumi.IntPtrInput `pulumi:"maxVcpu"`
+	// Minimum number of network interfaces (ENIs).
+	MinEnis pulumi.IntPtrInput `pulumi:"minEnis"`
+	// Minimum total number of GPUs.
+	MinGpu pulumi.IntPtrInput `pulumi:"minGpu"`
+	// Minimum amount of Memory (GiB).
+	MinMemoryGib pulumi.Float64PtrInput `pulumi:"minMemoryGib"`
+	// Minimum Bandwidth in Gib/s of network performance.
+	MinNetworkPerformance pulumi.IntPtrInput `pulumi:"minNetworkPerformance"`
+	// Minimum number of vcpus available.
+	MinVcpu pulumi.IntPtrInput `pulumi:"minVcpu"`
+	// The filtered instance types will have a root device types from this list. Valid values: `ebs`, or `instance-store`.
+	RootDeviceTypes pulumi.StringArrayInput `pulumi:"rootDeviceTypes"`
+	// The filtered instance types will support at least one of the virtualization types from this list. Valid values: `hvm`, `paravirtual`.
+	//
+	// <a id="update-policy"></a>
+	VirtualizationTypes pulumi.StringArrayInput `pulumi:"virtualizationTypes"`
+}
+
+func (OceanLaunchSpecInstanceTypesFiltersArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanLaunchSpecInstanceTypesFilters)(nil)).Elem()
+}
+
+func (i OceanLaunchSpecInstanceTypesFiltersArgs) ToOceanLaunchSpecInstanceTypesFiltersOutput() OceanLaunchSpecInstanceTypesFiltersOutput {
+	return i.ToOceanLaunchSpecInstanceTypesFiltersOutputWithContext(context.Background())
+}
+
+func (i OceanLaunchSpecInstanceTypesFiltersArgs) ToOceanLaunchSpecInstanceTypesFiltersOutputWithContext(ctx context.Context) OceanLaunchSpecInstanceTypesFiltersOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLaunchSpecInstanceTypesFiltersOutput)
+}
+
+func (i OceanLaunchSpecInstanceTypesFiltersArgs) ToOutput(ctx context.Context) pulumix.Output[OceanLaunchSpecInstanceTypesFilters] {
+	return pulumix.Output[OceanLaunchSpecInstanceTypesFilters]{
+		OutputState: i.ToOceanLaunchSpecInstanceTypesFiltersOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i OceanLaunchSpecInstanceTypesFiltersArgs) ToOceanLaunchSpecInstanceTypesFiltersPtrOutput() OceanLaunchSpecInstanceTypesFiltersPtrOutput {
+	return i.ToOceanLaunchSpecInstanceTypesFiltersPtrOutputWithContext(context.Background())
+}
+
+func (i OceanLaunchSpecInstanceTypesFiltersArgs) ToOceanLaunchSpecInstanceTypesFiltersPtrOutputWithContext(ctx context.Context) OceanLaunchSpecInstanceTypesFiltersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLaunchSpecInstanceTypesFiltersOutput).ToOceanLaunchSpecInstanceTypesFiltersPtrOutputWithContext(ctx)
+}
+
+// OceanLaunchSpecInstanceTypesFiltersPtrInput is an input type that accepts OceanLaunchSpecInstanceTypesFiltersArgs, OceanLaunchSpecInstanceTypesFiltersPtr and OceanLaunchSpecInstanceTypesFiltersPtrOutput values.
+// You can construct a concrete instance of `OceanLaunchSpecInstanceTypesFiltersPtrInput` via:
+//
+//	        OceanLaunchSpecInstanceTypesFiltersArgs{...}
+//
+//	or:
+//
+//	        nil
+type OceanLaunchSpecInstanceTypesFiltersPtrInput interface {
+	pulumi.Input
+
+	ToOceanLaunchSpecInstanceTypesFiltersPtrOutput() OceanLaunchSpecInstanceTypesFiltersPtrOutput
+	ToOceanLaunchSpecInstanceTypesFiltersPtrOutputWithContext(context.Context) OceanLaunchSpecInstanceTypesFiltersPtrOutput
+}
+
+type oceanLaunchSpecInstanceTypesFiltersPtrType OceanLaunchSpecInstanceTypesFiltersArgs
+
+func OceanLaunchSpecInstanceTypesFiltersPtr(v *OceanLaunchSpecInstanceTypesFiltersArgs) OceanLaunchSpecInstanceTypesFiltersPtrInput {
+	return (*oceanLaunchSpecInstanceTypesFiltersPtrType)(v)
+}
+
+func (*oceanLaunchSpecInstanceTypesFiltersPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanLaunchSpecInstanceTypesFilters)(nil)).Elem()
+}
+
+func (i *oceanLaunchSpecInstanceTypesFiltersPtrType) ToOceanLaunchSpecInstanceTypesFiltersPtrOutput() OceanLaunchSpecInstanceTypesFiltersPtrOutput {
+	return i.ToOceanLaunchSpecInstanceTypesFiltersPtrOutputWithContext(context.Background())
+}
+
+func (i *oceanLaunchSpecInstanceTypesFiltersPtrType) ToOceanLaunchSpecInstanceTypesFiltersPtrOutputWithContext(ctx context.Context) OceanLaunchSpecInstanceTypesFiltersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLaunchSpecInstanceTypesFiltersPtrOutput)
+}
+
+func (i *oceanLaunchSpecInstanceTypesFiltersPtrType) ToOutput(ctx context.Context) pulumix.Output[*OceanLaunchSpecInstanceTypesFilters] {
+	return pulumix.Output[*OceanLaunchSpecInstanceTypesFilters]{
+		OutputState: i.ToOceanLaunchSpecInstanceTypesFiltersPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type OceanLaunchSpecInstanceTypesFiltersOutput struct{ *pulumi.OutputState }
+
+func (OceanLaunchSpecInstanceTypesFiltersOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanLaunchSpecInstanceTypesFilters)(nil)).Elem()
+}
+
+func (o OceanLaunchSpecInstanceTypesFiltersOutput) ToOceanLaunchSpecInstanceTypesFiltersOutput() OceanLaunchSpecInstanceTypesFiltersOutput {
+	return o
+}
+
+func (o OceanLaunchSpecInstanceTypesFiltersOutput) ToOceanLaunchSpecInstanceTypesFiltersOutputWithContext(ctx context.Context) OceanLaunchSpecInstanceTypesFiltersOutput {
+	return o
+}
+
+func (o OceanLaunchSpecInstanceTypesFiltersOutput) ToOceanLaunchSpecInstanceTypesFiltersPtrOutput() OceanLaunchSpecInstanceTypesFiltersPtrOutput {
+	return o.ToOceanLaunchSpecInstanceTypesFiltersPtrOutputWithContext(context.Background())
+}
+
+func (o OceanLaunchSpecInstanceTypesFiltersOutput) ToOceanLaunchSpecInstanceTypesFiltersPtrOutputWithContext(ctx context.Context) OceanLaunchSpecInstanceTypesFiltersPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OceanLaunchSpecInstanceTypesFilters) *OceanLaunchSpecInstanceTypesFilters {
+		return &v
+	}).(OceanLaunchSpecInstanceTypesFiltersPtrOutput)
+}
+
+func (o OceanLaunchSpecInstanceTypesFiltersOutput) ToOutput(ctx context.Context) pulumix.Output[OceanLaunchSpecInstanceTypesFilters] {
+	return pulumix.Output[OceanLaunchSpecInstanceTypesFilters]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The filtered instance types will belong to one of the categories types from this list. Valid values: `Accelerated_computing`, `Compute_optimized`, `General_purpose`, `Memory_optimized`, `Storage_optimized`.
+func (o OceanLaunchSpecInstanceTypesFiltersOutput) Categories() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OceanLaunchSpecInstanceTypesFilters) []string { return v.Categories }).(pulumi.StringArrayOutput)
+}
+
+// The filtered instance types will have one of the disk type from this list. Valid values: `NVMe`, `EBS`, `SSD`, `HDD`.
+func (o OceanLaunchSpecInstanceTypesFiltersOutput) DiskTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OceanLaunchSpecInstanceTypesFilters) []string { return v.DiskTypes }).(pulumi.StringArrayOutput)
+}
+
+// Types belonging to a family from the ExcludeFamilies will not be available for scaling (asterisk wildcard is also supported). For example, C* will exclude instance types from these families: c5, c4, c4a, etc.
+func (o OceanLaunchSpecInstanceTypesFiltersOutput) ExcludeFamilies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OceanLaunchSpecInstanceTypesFilters) []string { return v.ExcludeFamilies }).(pulumi.StringArrayOutput)
+}
+
+// In case excludeMetal is set to true, metal types will not be available for scaling.
+func (o OceanLaunchSpecInstanceTypesFiltersOutput) ExcludeMetal() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OceanLaunchSpecInstanceTypesFilters) *bool { return v.ExcludeMetal }).(pulumi.BoolPtrOutput)
+}
+
+// The filtered instance types will have a hypervisor type from this list. Valid values: `nitro`, `xen`.
+func (o OceanLaunchSpecInstanceTypesFiltersOutput) Hypervisors() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OceanLaunchSpecInstanceTypesFilters) []string { return v.Hypervisors }).(pulumi.StringArrayOutput)
+}
+
+// Types belonging to a family from the IncludeFamilies will be available for scaling (asterisk wildcard is also supported). For example, C* will include instance types from these families: c5, c4, c4a, etc.
+func (o OceanLaunchSpecInstanceTypesFiltersOutput) IncludeFamilies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OceanLaunchSpecInstanceTypesFilters) []string { return v.IncludeFamilies }).(pulumi.StringArrayOutput)
+}
+
+// Ena is supported or not.
+func (o OceanLaunchSpecInstanceTypesFiltersOutput) IsEnaSupported() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OceanLaunchSpecInstanceTypesFilters) *string { return v.IsEnaSupported }).(pulumi.StringPtrOutput)
+}
+
+// Maximum total number of GPUs.
+func (o OceanLaunchSpecInstanceTypesFiltersOutput) MaxGpu() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OceanLaunchSpecInstanceTypesFilters) *int { return v.MaxGpu }).(pulumi.IntPtrOutput)
+}
+
+// Maximum amount of Memory (GiB).
+func (o OceanLaunchSpecInstanceTypesFiltersOutput) MaxMemoryGib() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v OceanLaunchSpecInstanceTypesFilters) *float64 { return v.MaxMemoryGib }).(pulumi.Float64PtrOutput)
+}
+
+// Maximum Bandwidth in Gib/s of network performance.
+func (o OceanLaunchSpecInstanceTypesFiltersOutput) MaxNetworkPerformance() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OceanLaunchSpecInstanceTypesFilters) *int { return v.MaxNetworkPerformance }).(pulumi.IntPtrOutput)
+}
+
+// Maximum number of vcpus available.
+func (o OceanLaunchSpecInstanceTypesFiltersOutput) MaxVcpu() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OceanLaunchSpecInstanceTypesFilters) *int { return v.MaxVcpu }).(pulumi.IntPtrOutput)
+}
+
+// Minimum number of network interfaces (ENIs).
+func (o OceanLaunchSpecInstanceTypesFiltersOutput) MinEnis() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OceanLaunchSpecInstanceTypesFilters) *int { return v.MinEnis }).(pulumi.IntPtrOutput)
+}
+
+// Minimum total number of GPUs.
+func (o OceanLaunchSpecInstanceTypesFiltersOutput) MinGpu() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OceanLaunchSpecInstanceTypesFilters) *int { return v.MinGpu }).(pulumi.IntPtrOutput)
+}
+
+// Minimum amount of Memory (GiB).
+func (o OceanLaunchSpecInstanceTypesFiltersOutput) MinMemoryGib() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v OceanLaunchSpecInstanceTypesFilters) *float64 { return v.MinMemoryGib }).(pulumi.Float64PtrOutput)
+}
+
+// Minimum Bandwidth in Gib/s of network performance.
+func (o OceanLaunchSpecInstanceTypesFiltersOutput) MinNetworkPerformance() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OceanLaunchSpecInstanceTypesFilters) *int { return v.MinNetworkPerformance }).(pulumi.IntPtrOutput)
+}
+
+// Minimum number of vcpus available.
+func (o OceanLaunchSpecInstanceTypesFiltersOutput) MinVcpu() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OceanLaunchSpecInstanceTypesFilters) *int { return v.MinVcpu }).(pulumi.IntPtrOutput)
+}
+
+// The filtered instance types will have a root device types from this list. Valid values: `ebs`, or `instance-store`.
+func (o OceanLaunchSpecInstanceTypesFiltersOutput) RootDeviceTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OceanLaunchSpecInstanceTypesFilters) []string { return v.RootDeviceTypes }).(pulumi.StringArrayOutput)
+}
+
+// The filtered instance types will support at least one of the virtualization types from this list. Valid values: `hvm`, `paravirtual`.
+//
+// <a id="update-policy"></a>
+func (o OceanLaunchSpecInstanceTypesFiltersOutput) VirtualizationTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OceanLaunchSpecInstanceTypesFilters) []string { return v.VirtualizationTypes }).(pulumi.StringArrayOutput)
+}
+
+type OceanLaunchSpecInstanceTypesFiltersPtrOutput struct{ *pulumi.OutputState }
+
+func (OceanLaunchSpecInstanceTypesFiltersPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanLaunchSpecInstanceTypesFilters)(nil)).Elem()
+}
+
+func (o OceanLaunchSpecInstanceTypesFiltersPtrOutput) ToOceanLaunchSpecInstanceTypesFiltersPtrOutput() OceanLaunchSpecInstanceTypesFiltersPtrOutput {
+	return o
+}
+
+func (o OceanLaunchSpecInstanceTypesFiltersPtrOutput) ToOceanLaunchSpecInstanceTypesFiltersPtrOutputWithContext(ctx context.Context) OceanLaunchSpecInstanceTypesFiltersPtrOutput {
+	return o
+}
+
+func (o OceanLaunchSpecInstanceTypesFiltersPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OceanLaunchSpecInstanceTypesFilters] {
+	return pulumix.Output[*OceanLaunchSpecInstanceTypesFilters]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o OceanLaunchSpecInstanceTypesFiltersPtrOutput) Elem() OceanLaunchSpecInstanceTypesFiltersOutput {
+	return o.ApplyT(func(v *OceanLaunchSpecInstanceTypesFilters) OceanLaunchSpecInstanceTypesFilters {
+		if v != nil {
+			return *v
+		}
+		var ret OceanLaunchSpecInstanceTypesFilters
+		return ret
+	}).(OceanLaunchSpecInstanceTypesFiltersOutput)
+}
+
+// The filtered instance types will belong to one of the categories types from this list. Valid values: `Accelerated_computing`, `Compute_optimized`, `General_purpose`, `Memory_optimized`, `Storage_optimized`.
+func (o OceanLaunchSpecInstanceTypesFiltersPtrOutput) Categories() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OceanLaunchSpecInstanceTypesFilters) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Categories
+	}).(pulumi.StringArrayOutput)
+}
+
+// The filtered instance types will have one of the disk type from this list. Valid values: `NVMe`, `EBS`, `SSD`, `HDD`.
+func (o OceanLaunchSpecInstanceTypesFiltersPtrOutput) DiskTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OceanLaunchSpecInstanceTypesFilters) []string {
+		if v == nil {
+			return nil
+		}
+		return v.DiskTypes
+	}).(pulumi.StringArrayOutput)
+}
+
+// Types belonging to a family from the ExcludeFamilies will not be available for scaling (asterisk wildcard is also supported). For example, C* will exclude instance types from these families: c5, c4, c4a, etc.
+func (o OceanLaunchSpecInstanceTypesFiltersPtrOutput) ExcludeFamilies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OceanLaunchSpecInstanceTypesFilters) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludeFamilies
+	}).(pulumi.StringArrayOutput)
+}
+
+// In case excludeMetal is set to true, metal types will not be available for scaling.
+func (o OceanLaunchSpecInstanceTypesFiltersPtrOutput) ExcludeMetal() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OceanLaunchSpecInstanceTypesFilters) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludeMetal
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The filtered instance types will have a hypervisor type from this list. Valid values: `nitro`, `xen`.
+func (o OceanLaunchSpecInstanceTypesFiltersPtrOutput) Hypervisors() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OceanLaunchSpecInstanceTypesFilters) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Hypervisors
+	}).(pulumi.StringArrayOutput)
+}
+
+// Types belonging to a family from the IncludeFamilies will be available for scaling (asterisk wildcard is also supported). For example, C* will include instance types from these families: c5, c4, c4a, etc.
+func (o OceanLaunchSpecInstanceTypesFiltersPtrOutput) IncludeFamilies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OceanLaunchSpecInstanceTypesFilters) []string {
+		if v == nil {
+			return nil
+		}
+		return v.IncludeFamilies
+	}).(pulumi.StringArrayOutput)
+}
+
+// Ena is supported or not.
+func (o OceanLaunchSpecInstanceTypesFiltersPtrOutput) IsEnaSupported() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OceanLaunchSpecInstanceTypesFilters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IsEnaSupported
+	}).(pulumi.StringPtrOutput)
+}
+
+// Maximum total number of GPUs.
+func (o OceanLaunchSpecInstanceTypesFiltersPtrOutput) MaxGpu() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OceanLaunchSpecInstanceTypesFilters) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxGpu
+	}).(pulumi.IntPtrOutput)
+}
+
+// Maximum amount of Memory (GiB).
+func (o OceanLaunchSpecInstanceTypesFiltersPtrOutput) MaxMemoryGib() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *OceanLaunchSpecInstanceTypesFilters) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.MaxMemoryGib
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Maximum Bandwidth in Gib/s of network performance.
+func (o OceanLaunchSpecInstanceTypesFiltersPtrOutput) MaxNetworkPerformance() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OceanLaunchSpecInstanceTypesFilters) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxNetworkPerformance
+	}).(pulumi.IntPtrOutput)
+}
+
+// Maximum number of vcpus available.
+func (o OceanLaunchSpecInstanceTypesFiltersPtrOutput) MaxVcpu() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OceanLaunchSpecInstanceTypesFilters) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxVcpu
+	}).(pulumi.IntPtrOutput)
+}
+
+// Minimum number of network interfaces (ENIs).
+func (o OceanLaunchSpecInstanceTypesFiltersPtrOutput) MinEnis() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OceanLaunchSpecInstanceTypesFilters) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinEnis
+	}).(pulumi.IntPtrOutput)
+}
+
+// Minimum total number of GPUs.
+func (o OceanLaunchSpecInstanceTypesFiltersPtrOutput) MinGpu() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OceanLaunchSpecInstanceTypesFilters) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinGpu
+	}).(pulumi.IntPtrOutput)
+}
+
+// Minimum amount of Memory (GiB).
+func (o OceanLaunchSpecInstanceTypesFiltersPtrOutput) MinMemoryGib() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *OceanLaunchSpecInstanceTypesFilters) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.MinMemoryGib
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Minimum Bandwidth in Gib/s of network performance.
+func (o OceanLaunchSpecInstanceTypesFiltersPtrOutput) MinNetworkPerformance() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OceanLaunchSpecInstanceTypesFilters) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinNetworkPerformance
+	}).(pulumi.IntPtrOutput)
+}
+
+// Minimum number of vcpus available.
+func (o OceanLaunchSpecInstanceTypesFiltersPtrOutput) MinVcpu() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OceanLaunchSpecInstanceTypesFilters) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinVcpu
+	}).(pulumi.IntPtrOutput)
+}
+
+// The filtered instance types will have a root device types from this list. Valid values: `ebs`, or `instance-store`.
+func (o OceanLaunchSpecInstanceTypesFiltersPtrOutput) RootDeviceTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OceanLaunchSpecInstanceTypesFilters) []string {
+		if v == nil {
+			return nil
+		}
+		return v.RootDeviceTypes
+	}).(pulumi.StringArrayOutput)
+}
+
+// The filtered instance types will support at least one of the virtualization types from this list. Valid values: `hvm`, `paravirtual`.
+//
+// <a id="update-policy"></a>
+func (o OceanLaunchSpecInstanceTypesFiltersPtrOutput) VirtualizationTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OceanLaunchSpecInstanceTypesFilters) []string {
+		if v == nil {
+			return nil
+		}
+		return v.VirtualizationTypes
+	}).(pulumi.StringArrayOutput)
 }
 
 type OceanLaunchSpecLabel struct {
@@ -28421,6 +28905,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecImageArrayInput)(nil)).Elem(), OceanLaunchSpecImageArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecInstanceMetadataOptionsInput)(nil)).Elem(), OceanLaunchSpecInstanceMetadataOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecInstanceMetadataOptionsPtrInput)(nil)).Elem(), OceanLaunchSpecInstanceMetadataOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecInstanceTypesFiltersInput)(nil)).Elem(), OceanLaunchSpecInstanceTypesFiltersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecInstanceTypesFiltersPtrInput)(nil)).Elem(), OceanLaunchSpecInstanceTypesFiltersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecLabelInput)(nil)).Elem(), OceanLaunchSpecLabelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecLabelArrayInput)(nil)).Elem(), OceanLaunchSpecLabelArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecResourceLimitInput)(nil)).Elem(), OceanLaunchSpecResourceLimitArgs{})
@@ -28729,6 +29215,8 @@ func init() {
 	pulumi.RegisterOutputType(OceanLaunchSpecImageArrayOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecInstanceMetadataOptionsOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecInstanceMetadataOptionsPtrOutput{})
+	pulumi.RegisterOutputType(OceanLaunchSpecInstanceTypesFiltersOutput{})
+	pulumi.RegisterOutputType(OceanLaunchSpecInstanceTypesFiltersPtrOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecLabelOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecLabelArrayOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecResourceLimitOutput{})
