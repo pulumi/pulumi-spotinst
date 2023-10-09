@@ -22,10 +22,12 @@ import (
 	"strings"
 	"unicode"
 
-	"github.com/pulumi/pulumi-spotinst/provider/v3/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
+	tks "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
+
+	"github.com/pulumi/pulumi-spotinst/provider/v3/pkg/version"
 	"github.com/spotinst/terraform-provider-spotinst/spotinst"
 )
 
@@ -202,6 +204,10 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		MetadataInfo: tfbridge.NewProviderMetadata(metadata),
 	}
+
+	prov.MustComputeTokens(tks.KnownModules("spotinst_", "", []string{
+		"organization",
+	}, tks.MakeStandard(mainPkg)))
 	prov.MustApplyAutoAliases()
 
 	prov.SetAutonaming(255, "-")

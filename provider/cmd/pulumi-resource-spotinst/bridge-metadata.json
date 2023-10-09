@@ -3398,6 +3398,34 @@
                         "maxItemsOne": false,
                         "elem": {}
                     },
+                    "instance_types_filters": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "categories": {
+                                    "maxItemsOne": false
+                                },
+                                "disk_types": {
+                                    "maxItemsOne": false
+                                },
+                                "exclude_families": {
+                                    "maxItemsOne": false
+                                },
+                                "hypervisor": {
+                                    "maxItemsOne": false
+                                },
+                                "include_families": {
+                                    "maxItemsOne": false
+                                },
+                                "root_device_types": {
+                                    "maxItemsOne": false
+                                },
+                                "virtualization_types": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
                     "labels": {
                         "maxItemsOne": false,
                         "elem": {
@@ -4360,6 +4388,88 @@
                     "virtual_node_group_id": {}
                 }
             },
+            "spotinst_organization_policy": {
+                "current": "spotinst:organization/policy:Policy",
+                "fields": {
+                    "policy_content": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "statements": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "actions": {
+                                                "maxItemsOne": false
+                                            },
+                                            "resources": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "spotinst_organization_programmatic_user": {
+                "current": "spotinst:organization/programmaticUser:ProgrammaticUser",
+                "fields": {
+                    "accounts": {
+                        "maxItemsOne": false
+                    },
+                    "policies": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "policy_account_ids": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "user_group_ids": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "spotinst_organization_user": {
+                "current": "spotinst:organization/user:User",
+                "fields": {
+                    "policies": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "policy_account_ids": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "user_group_ids": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "spotinst_organization_user_group": {
+                "current": "spotinst:organization/userGroup:UserGroup",
+                "fields": {
+                    "policies": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "account_ids": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "user_ids": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "spotinst_stateful_node_azure": {
                 "current": "spotinst:index/statefulNodeAzure:StatefulNodeAzure",
                 "fields": {
@@ -4779,6 +4889,10 @@
             "spotinst:multai/routingRule:RoutingRule": "spotinst_multai_routing_rule",
             "spotinst:multai/target:Target": "spotinst_multai_target",
             "spotinst:multai/targetSet:TargetSet": "spotinst_multai_target_set",
+            "spotinst:organization/policy:Policy": "spotinst_organization_policy",
+            "spotinst:organization/programmaticUser:ProgrammaticUser": "spotinst_organization_programmatic_user",
+            "spotinst:organization/user:User": "spotinst_organization_user",
+            "spotinst:organization/userGroup:UserGroup": "spotinst_organization_user_group",
             "spotinst:spark/ocean:Ocean": "spotinst_ocean_spark",
             "spotinst:spark/oceanVirtualNodeGroup:OceanVirtualNodeGroup": "spotinst_ocean_spark_virtual_node_group"
         },
@@ -5373,6 +5487,25 @@
                 "httpPutResponseHopLimit": "http_put_response_hop_limit",
                 "httpTokens": "http_tokens"
             },
+            "spotinst:aws/OceanLaunchSpecInstanceTypesFilters:OceanLaunchSpecInstanceTypesFilters": {
+                "diskTypes": "disk_types",
+                "excludeFamilies": "exclude_families",
+                "excludeMetal": "exclude_metal",
+                "hypervisors": "hypervisor",
+                "includeFamilies": "include_families",
+                "isEnaSupported": "is_ena_supported",
+                "maxGpu": "max_gpu",
+                "maxMemoryGib": "max_memory_gib",
+                "maxNetworkPerformance": "max_network_performance",
+                "maxVcpu": "max_vcpu",
+                "minEnis": "min_enis",
+                "minGpu": "min_gpu",
+                "minMemoryGib": "min_memory_gib",
+                "minNetworkPerformance": "min_network_performance",
+                "minVcpu": "min_vcpu",
+                "rootDeviceTypes": "root_device_types",
+                "virtualizationTypes": "virtualization_types"
+            },
             "spotinst:aws/OceanLaunchSpecResourceLimit:OceanLaunchSpecResourceLimit": {
                 "maxInstanceCount": "max_instance_count",
                 "minInstanceCount": "min_instance_count"
@@ -5671,6 +5804,7 @@
                 "imageId": "image_id",
                 "instanceMetadataOptions": "instance_metadata_options",
                 "instanceTypes": "instance_types",
+                "instanceTypesFilters": "instance_types_filters",
                 "oceanId": "ocean_id",
                 "preferredSpotTypes": "preferred_spot_types",
                 "resourceLimits": "resource_limits",
@@ -6794,6 +6928,36 @@
                 "balancerId": "balancer_id",
                 "deploymentId": "deployment_id",
                 "healthCheck": "health_check"
+            },
+            "spotinst:organization/ProgrammaticUserAccount:ProgrammaticUserAccount": {
+                "accountId": "account_id",
+                "accountRole": "account_role"
+            },
+            "spotinst:organization/ProgrammaticUserPolicy:ProgrammaticUserPolicy": {
+                "policyAccountIds": "policy_account_ids",
+                "policyId": "policy_id"
+            },
+            "spotinst:organization/UserGroupPolicy:UserGroupPolicy": {
+                "accountIds": "account_ids",
+                "policyId": "policy_id"
+            },
+            "spotinst:organization/UserPolicy:UserPolicy": {
+                "policyAccountIds": "policy_account_ids",
+                "policyId": "policy_id"
+            },
+            "spotinst:organization/policy:Policy": {
+                "policyContents": "policy_content"
+            },
+            "spotinst:organization/programmaticUser:ProgrammaticUser": {
+                "userGroupIds": "user_group_ids"
+            },
+            "spotinst:organization/user:User": {
+                "firstName": "first_name",
+                "lastName": "last_name",
+                "userGroupIds": "user_group_ids"
+            },
+            "spotinst:organization/userGroup:UserGroup": {
+                "userIds": "user_ids"
             },
             "spotinst:spark/OceanCompute:OceanCompute": {
                 "createVngs": "create_vngs",
