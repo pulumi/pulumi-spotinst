@@ -36,14 +36,13 @@ const (
 	// packages:
 	mainPkg = "spotinst"
 	// modules:
-	awsMod    = "Aws"
-	ecsMod    = "Ecs"
-	gcpMod    = "Gcp"
-	gkeMod    = "Gke"
-	azureMod  = "Azure"
-	multaiMod = "Multai"
-	mainMod   = "Index"
-	sparkMod  = "Spark"
+	awsMod   = "Aws"
+	ecsMod   = "Ecs"
+	gcpMod   = "Gcp"
+	gkeMod   = "Gke"
+	azureMod = "Azure"
+	mainMod  = "Index"
+	sparkMod = "Spark"
 )
 
 var namespaceMap = map[string]string{
