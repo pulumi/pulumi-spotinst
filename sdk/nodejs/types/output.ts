@@ -2877,14 +2877,90 @@ export namespace aws {
     export interface OceanLaunchSpecInstanceMetadataOptions {
         /**
          * An integer from 1 through 64. The desired HTTP PUT response hop limit for instance metadata requests. The larger the number, the further the instance metadata requests can travel.
-         *
-         * <a id="update-policy"></a>
          */
         httpPutResponseHopLimit?: number;
         /**
          * Determines if a signed token is required or not. Valid values: `optional` or `required`.
          */
         httpTokens: string;
+    }
+
+    export interface OceanLaunchSpecInstanceTypesFilters {
+        /**
+         * The filtered instance types will belong to one of the categories types from this list. Valid values: `Accelerated_computing`, `Compute_optimized`, `General_purpose`, `Memory_optimized`, `Storage_optimized`.
+         */
+        categories?: string[];
+        /**
+         * The filtered instance types will have one of the disk type from this list. Valid values: `NVMe`, `EBS`, `SSD`, `HDD`.
+         */
+        diskTypes?: string[];
+        /**
+         * Types belonging to a family from the ExcludeFamilies will not be available for scaling (asterisk wildcard is also supported). For example, C* will exclude instance types from these families: c5, c4, c4a, etc.
+         */
+        excludeFamilies?: string[];
+        /**
+         * In case excludeMetal is set to true, metal types will not be available for scaling.
+         */
+        excludeMetal?: boolean;
+        /**
+         * The filtered instance types will have a hypervisor type from this list. Valid values: `nitro`, `xen`.
+         */
+        hypervisors?: string[];
+        /**
+         * Types belonging to a family from the IncludeFamilies will be available for scaling (asterisk wildcard is also supported). For example, C* will include instance types from these families: c5, c4, c4a, etc.
+         */
+        includeFamilies?: string[];
+        /**
+         * Ena is supported or not.
+         */
+        isEnaSupported?: string;
+        /**
+         * Maximum total number of GPUs.
+         */
+        maxGpu?: number;
+        /**
+         * Maximum amount of Memory (GiB).
+         */
+        maxMemoryGib?: number;
+        /**
+         * Maximum Bandwidth in Gib/s of network performance.
+         */
+        maxNetworkPerformance?: number;
+        /**
+         * Maximum number of vcpus available.
+         */
+        maxVcpu?: number;
+        /**
+         * Minimum number of network interfaces (ENIs).
+         */
+        minEnis?: number;
+        /**
+         * Minimum total number of GPUs.
+         */
+        minGpu?: number;
+        /**
+         * Minimum amount of Memory (GiB).
+         */
+        minMemoryGib?: number;
+        /**
+         * Minimum Bandwidth in Gib/s of network performance.
+         */
+        minNetworkPerformance?: number;
+        /**
+         * Minimum number of vcpus available.
+         */
+        minVcpu?: number;
+        /**
+         * The filtered instance types will have a root device types from this list. Valid values: `ebs`, or `instance-store`.
+         */
+        rootDeviceTypes?: string[];
+        /**
+         * The filtered instance types will support at least one of the virtualization types from this list. Valid values: `hvm`, `paravirtual`.
+         *
+         *
+         * <a id="update-policy"></a>
+         */
+        virtualizationTypes?: string[];
     }
 
     export interface OceanLaunchSpecLabel {
@@ -5197,6 +5273,78 @@ export namespace multai {
     export interface TargetTag {
         key: string;
         value: string;
+    }
+
+}
+
+export namespace organization {
+    export interface PolicyPolicyContent {
+        /**
+         * List of permissions statements.
+         */
+        statements: outputs.organization.PolicyPolicyContentStatement[];
+    }
+
+    export interface PolicyPolicyContentStatement {
+        /**
+         * Set a list of required actions for this permissions statement.
+         * Full list of actions can be found in [https://docs.spot.io/account-user-management/user-management/access-policies-actions/](https://docs.spot.io/account-user-management/user-management/access-policies-actions/).
+         */
+        actions: string[];
+        /**
+         * Valid values "ALLOW", "DENY".
+         */
+        effect: string;
+        /**
+         * Set a list of resources IDs. In order to include all resources in this statement - use "*".
+         */
+        resources: string[];
+    }
+
+    export interface ProgrammaticUserAccount {
+        /**
+         * Account ID the programmatic user will have access to.
+         */
+        accountId: string;
+        /**
+         * (Enum: `"viewer", "editor") Role to be associated with the
+         * programmatic user for this account.
+         */
+        accountRole: string;
+    }
+
+    export interface ProgrammaticUserPolicy {
+        /**
+         * A list of the accounts that the policy should be
+         * enforced for the user.
+         */
+        policyAccountIds: string[];
+        /**
+         * Policy ID the programmatic user will have access to.
+         */
+        policyId: string;
+    }
+
+    export interface UserGroupPolicy {
+        /**
+         * A list of accounts to register with the assigned under the
+         * given group (should be existing accounts only).
+         */
+        accountIds: string[];
+        /**
+         * A policy to register under the given group
+         * (should be existing policy only).
+         */
+        policyId: string;
+    }
+
+    export interface UserPolicy {
+        policyAccountIds: string[];
+        /**
+         * A policy to register under the given group
+         * (should be existing policy only).
+         */
+        policyId: string;
     }
 
 }

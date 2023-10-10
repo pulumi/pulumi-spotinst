@@ -219,6 +219,11 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
      */
     public readonly instanceTypes!: pulumi.Output<string[] | undefined>;
     /**
+     * The instance types that match with all filters compose the Virtual Node Group's instanceTypes parameter.
+     * The architectures that come from the Virtual Node Group's images will be taken into account when using this parameter. Cannot be configured together with Virtual Node Group's instanceTypes and with the Cluster's whitelist/blacklist/filters.
+     */
+    public readonly instanceTypesFilters!: pulumi.Output<outputs.aws.OceanLaunchSpecInstanceTypesFilters | undefined>;
+    /**
      * Optionally adds labels to instances launched in the cluster.
      */
     public readonly labels!: pulumi.Output<outputs.aws.OceanLaunchSpecLabel[] | undefined>;
@@ -300,6 +305,7 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
             resourceInputs["images"] = state ? state.images : undefined;
             resourceInputs["instanceMetadataOptions"] = state ? state.instanceMetadataOptions : undefined;
             resourceInputs["instanceTypes"] = state ? state.instanceTypes : undefined;
+            resourceInputs["instanceTypesFilters"] = state ? state.instanceTypesFilters : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["oceanId"] = state ? state.oceanId : undefined;
@@ -334,6 +340,7 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
             resourceInputs["images"] = args ? args.images : undefined;
             resourceInputs["instanceMetadataOptions"] = args ? args.instanceMetadataOptions : undefined;
             resourceInputs["instanceTypes"] = args ? args.instanceTypes : undefined;
+            resourceInputs["instanceTypesFilters"] = args ? args.instanceTypesFilters : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["oceanId"] = args ? args.oceanId : undefined;
@@ -407,6 +414,11 @@ export interface OceanLaunchSpecState {
      * A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the cluster.
      */
     instanceTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The instance types that match with all filters compose the Virtual Node Group's instanceTypes parameter.
+     * The architectures that come from the Virtual Node Group's images will be taken into account when using this parameter. Cannot be configured together with Virtual Node Group's instanceTypes and with the Cluster's whitelist/blacklist/filters.
+     */
+    instanceTypesFilters?: pulumi.Input<inputs.aws.OceanLaunchSpecInstanceTypesFilters>;
     /**
      * Optionally adds labels to instances launched in the cluster.
      */
@@ -515,6 +527,11 @@ export interface OceanLaunchSpecArgs {
      * A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the cluster.
      */
     instanceTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The instance types that match with all filters compose the Virtual Node Group's instanceTypes parameter.
+     * The architectures that come from the Virtual Node Group's images will be taken into account when using this parameter. Cannot be configured together with Virtual Node Group's instanceTypes and with the Cluster's whitelist/blacklist/filters.
+     */
+    instanceTypesFilters?: pulumi.Input<inputs.aws.OceanLaunchSpecInstanceTypesFilters>;
     /**
      * Optionally adds labels to instances launched in the cluster.
      */

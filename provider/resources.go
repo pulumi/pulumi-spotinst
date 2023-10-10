@@ -22,10 +22,12 @@ import (
 	"strings"
 	"unicode"
 
-	"github.com/pulumi/pulumi-spotinst/provider/v3/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
+	tks "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
+
+	"github.com/pulumi/pulumi-spotinst/provider/v3/pkg/version"
 	"github.com/spotinst/terraform-provider-spotinst/spotinst"
 )
 
@@ -34,14 +36,13 @@ const (
 	// packages:
 	mainPkg = "spotinst"
 	// modules:
-	awsMod    = "Aws"
-	ecsMod    = "Ecs"
-	gcpMod    = "Gcp"
-	gkeMod    = "Gke"
-	azureMod  = "Azure"
-	multaiMod = "Multai"
-	mainMod   = "Index"
-	sparkMod  = "Spark"
+	awsMod   = "Aws"
+	ecsMod   = "Ecs"
+	gcpMod   = "Gcp"
+	gkeMod   = "Gke"
+	azureMod = "Azure"
+	mainMod  = "Index"
+	sparkMod = "Spark"
 )
 
 var namespaceMap = map[string]string{
@@ -121,30 +122,12 @@ func Provider() tfbridge.ProviderInfo {
 			"spotinst_mrscaler_aws": {Tok: makeResource(awsMod, "MrScalar")},
 
 			// Lack of docs is tracked in: https://github.com/pulumi/pulumi-spotinst/issues/193
-			"spotinst_multai_balancer": {
-				Tok:  makeResource(multaiMod, "Balancer"),
-				Docs: noUpstreamDocs,
-			},
-			"spotinst_multai_deployment": {
-				Tok:  makeResource(multaiMod, "Deployment"),
-				Docs: noUpstreamDocs,
-			},
-			"spotinst_multai_listener": {
-				Tok:  makeResource(multaiMod, "Listener"),
-				Docs: noUpstreamDocs,
-			},
-			"spotinst_multai_routing_rule": {
-				Tok:  makeResource(multaiMod, "RoutingRule"),
-				Docs: noUpstreamDocs,
-			},
-			"spotinst_multai_target": {
-				Tok:  makeResource(multaiMod, "Target"),
-				Docs: noUpstreamDocs,
-			},
-			"spotinst_multai_target_set": {
-				Tok:  makeResource(multaiMod, "TargetSet"),
-				Docs: noUpstreamDocs,
-			},
+			"spotinst_multai_balancer":     {Docs: noUpstreamDocs},
+			"spotinst_multai_deployment":   {Docs: noUpstreamDocs},
+			"spotinst_multai_listener":     {Docs: noUpstreamDocs},
+			"spotinst_multai_routing_rule": {Docs: noUpstreamDocs},
+			"spotinst_multai_target":       {Docs: noUpstreamDocs},
+			"spotinst_multai_target_set":   {Docs: noUpstreamDocs},
 
 			"spotinst_ocean_aws":                              {Tok: makeResource(awsMod, "Ocean")},
 			"spotinst_ocean_aws_launch_spec":                  {Tok: makeResource(awsMod, "OceanLaunchSpec")},
@@ -202,6 +185,11 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		MetadataInfo: tfbridge.NewProviderMetadata(metadata),
 	}
+
+	prov.MustComputeTokens(tks.KnownModules("spotinst_", "", []string{
+		"organization",
+		"multai",
+	}, tks.MakeStandard(mainPkg)))
 	prov.MustApplyAutoAliases()
 
 	prov.SetAutonaming(255, "-")

@@ -143,6 +143,7 @@ __all__ = [
     'OceanLaunchSpecElasticIpPoolTagSelectorArgs',
     'OceanLaunchSpecImageArgs',
     'OceanLaunchSpecInstanceMetadataOptionsArgs',
+    'OceanLaunchSpecInstanceTypesFiltersArgs',
     'OceanLaunchSpecLabelArgs',
     'OceanLaunchSpecResourceLimitArgs',
     'OceanLaunchSpecSchedulingShutdownHoursArgs',
@@ -12088,8 +12089,6 @@ class OceanLaunchSpecInstanceMetadataOptionsArgs:
         """
         :param pulumi.Input[str] http_tokens: Determines if a signed token is required or not. Valid values: `optional` or `required`.
         :param pulumi.Input[int] http_put_response_hop_limit: An integer from 1 through 64. The desired HTTP PUT response hop limit for instance metadata requests. The larger the number, the further the instance metadata requests can travel.
-               
-               <a id="update-policy"></a>
         """
         OceanLaunchSpecInstanceMetadataOptionsArgs._configure(
             lambda key, value: pulumi.set(__self__, key, value),
@@ -12123,14 +12122,356 @@ class OceanLaunchSpecInstanceMetadataOptionsArgs:
     def http_put_response_hop_limit(self) -> Optional[pulumi.Input[int]]:
         """
         An integer from 1 through 64. The desired HTTP PUT response hop limit for instance metadata requests. The larger the number, the further the instance metadata requests can travel.
-
-        <a id="update-policy"></a>
         """
         return pulumi.get(self, "http_put_response_hop_limit")
 
     @http_put_response_hop_limit.setter
     def http_put_response_hop_limit(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "http_put_response_hop_limit", value)
+
+
+@pulumi.input_type
+class OceanLaunchSpecInstanceTypesFiltersArgs:
+    def __init__(__self__, *,
+                 categories: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 disk_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 exclude_families: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 exclude_metal: Optional[pulumi.Input[bool]] = None,
+                 hypervisors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 include_families: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 is_ena_supported: Optional[pulumi.Input[str]] = None,
+                 max_gpu: Optional[pulumi.Input[int]] = None,
+                 max_memory_gib: Optional[pulumi.Input[float]] = None,
+                 max_network_performance: Optional[pulumi.Input[int]] = None,
+                 max_vcpu: Optional[pulumi.Input[int]] = None,
+                 min_enis: Optional[pulumi.Input[int]] = None,
+                 min_gpu: Optional[pulumi.Input[int]] = None,
+                 min_memory_gib: Optional[pulumi.Input[float]] = None,
+                 min_network_performance: Optional[pulumi.Input[int]] = None,
+                 min_vcpu: Optional[pulumi.Input[int]] = None,
+                 root_device_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 virtualization_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] categories: The filtered instance types will belong to one of the categories types from this list. Valid values: `Accelerated_computing`, `Compute_optimized`, `General_purpose`, `Memory_optimized`, `Storage_optimized`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] disk_types: The filtered instance types will have one of the disk type from this list. Valid values: `NVMe`, `EBS`, `SSD`, `HDD`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] exclude_families: Types belonging to a family from the ExcludeFamilies will not be available for scaling (asterisk wildcard is also supported). For example, C* will exclude instance types from these families: c5, c4, c4a, etc.
+        :param pulumi.Input[bool] exclude_metal: In case excludeMetal is set to true, metal types will not be available for scaling.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] hypervisors: The filtered instance types will have a hypervisor type from this list. Valid values: `nitro`, `xen`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] include_families: Types belonging to a family from the IncludeFamilies will be available for scaling (asterisk wildcard is also supported). For example, C* will include instance types from these families: c5, c4, c4a, etc.
+        :param pulumi.Input[str] is_ena_supported: Ena is supported or not.
+        :param pulumi.Input[int] max_gpu: Maximum total number of GPUs.
+        :param pulumi.Input[float] max_memory_gib: Maximum amount of Memory (GiB).
+        :param pulumi.Input[int] max_network_performance: Maximum Bandwidth in Gib/s of network performance.
+        :param pulumi.Input[int] max_vcpu: Maximum number of vcpus available.
+        :param pulumi.Input[int] min_enis: Minimum number of network interfaces (ENIs).
+        :param pulumi.Input[int] min_gpu: Minimum total number of GPUs.
+        :param pulumi.Input[float] min_memory_gib: Minimum amount of Memory (GiB).
+        :param pulumi.Input[int] min_network_performance: Minimum Bandwidth in Gib/s of network performance.
+        :param pulumi.Input[int] min_vcpu: Minimum number of vcpus available.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] root_device_types: The filtered instance types will have a root device types from this list. Valid values: `ebs`, or `instance-store`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] virtualization_types: The filtered instance types will support at least one of the virtualization types from this list. Valid values: `hvm`, `paravirtual`.
+               
+               
+               <a id="update-policy"></a>
+        """
+        OceanLaunchSpecInstanceTypesFiltersArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            categories=categories,
+            disk_types=disk_types,
+            exclude_families=exclude_families,
+            exclude_metal=exclude_metal,
+            hypervisors=hypervisors,
+            include_families=include_families,
+            is_ena_supported=is_ena_supported,
+            max_gpu=max_gpu,
+            max_memory_gib=max_memory_gib,
+            max_network_performance=max_network_performance,
+            max_vcpu=max_vcpu,
+            min_enis=min_enis,
+            min_gpu=min_gpu,
+            min_memory_gib=min_memory_gib,
+            min_network_performance=min_network_performance,
+            min_vcpu=min_vcpu,
+            root_device_types=root_device_types,
+            virtualization_types=virtualization_types,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             categories: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             disk_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             exclude_families: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             exclude_metal: Optional[pulumi.Input[bool]] = None,
+             hypervisors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             include_families: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             is_ena_supported: Optional[pulumi.Input[str]] = None,
+             max_gpu: Optional[pulumi.Input[int]] = None,
+             max_memory_gib: Optional[pulumi.Input[float]] = None,
+             max_network_performance: Optional[pulumi.Input[int]] = None,
+             max_vcpu: Optional[pulumi.Input[int]] = None,
+             min_enis: Optional[pulumi.Input[int]] = None,
+             min_gpu: Optional[pulumi.Input[int]] = None,
+             min_memory_gib: Optional[pulumi.Input[float]] = None,
+             min_network_performance: Optional[pulumi.Input[int]] = None,
+             min_vcpu: Optional[pulumi.Input[int]] = None,
+             root_device_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             virtualization_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        if categories is not None:
+            _setter("categories", categories)
+        if disk_types is not None:
+            _setter("disk_types", disk_types)
+        if exclude_families is not None:
+            _setter("exclude_families", exclude_families)
+        if exclude_metal is not None:
+            _setter("exclude_metal", exclude_metal)
+        if hypervisors is not None:
+            _setter("hypervisors", hypervisors)
+        if include_families is not None:
+            _setter("include_families", include_families)
+        if is_ena_supported is not None:
+            _setter("is_ena_supported", is_ena_supported)
+        if max_gpu is not None:
+            _setter("max_gpu", max_gpu)
+        if max_memory_gib is not None:
+            _setter("max_memory_gib", max_memory_gib)
+        if max_network_performance is not None:
+            _setter("max_network_performance", max_network_performance)
+        if max_vcpu is not None:
+            _setter("max_vcpu", max_vcpu)
+        if min_enis is not None:
+            _setter("min_enis", min_enis)
+        if min_gpu is not None:
+            _setter("min_gpu", min_gpu)
+        if min_memory_gib is not None:
+            _setter("min_memory_gib", min_memory_gib)
+        if min_network_performance is not None:
+            _setter("min_network_performance", min_network_performance)
+        if min_vcpu is not None:
+            _setter("min_vcpu", min_vcpu)
+        if root_device_types is not None:
+            _setter("root_device_types", root_device_types)
+        if virtualization_types is not None:
+            _setter("virtualization_types", virtualization_types)
+
+    @property
+    @pulumi.getter
+    def categories(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The filtered instance types will belong to one of the categories types from this list. Valid values: `Accelerated_computing`, `Compute_optimized`, `General_purpose`, `Memory_optimized`, `Storage_optimized`.
+        """
+        return pulumi.get(self, "categories")
+
+    @categories.setter
+    def categories(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "categories", value)
+
+    @property
+    @pulumi.getter(name="diskTypes")
+    def disk_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The filtered instance types will have one of the disk type from this list. Valid values: `NVMe`, `EBS`, `SSD`, `HDD`.
+        """
+        return pulumi.get(self, "disk_types")
+
+    @disk_types.setter
+    def disk_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "disk_types", value)
+
+    @property
+    @pulumi.getter(name="excludeFamilies")
+    def exclude_families(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Types belonging to a family from the ExcludeFamilies will not be available for scaling (asterisk wildcard is also supported). For example, C* will exclude instance types from these families: c5, c4, c4a, etc.
+        """
+        return pulumi.get(self, "exclude_families")
+
+    @exclude_families.setter
+    def exclude_families(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "exclude_families", value)
+
+    @property
+    @pulumi.getter(name="excludeMetal")
+    def exclude_metal(self) -> Optional[pulumi.Input[bool]]:
+        """
+        In case excludeMetal is set to true, metal types will not be available for scaling.
+        """
+        return pulumi.get(self, "exclude_metal")
+
+    @exclude_metal.setter
+    def exclude_metal(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "exclude_metal", value)
+
+    @property
+    @pulumi.getter
+    def hypervisors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The filtered instance types will have a hypervisor type from this list. Valid values: `nitro`, `xen`.
+        """
+        return pulumi.get(self, "hypervisors")
+
+    @hypervisors.setter
+    def hypervisors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "hypervisors", value)
+
+    @property
+    @pulumi.getter(name="includeFamilies")
+    def include_families(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Types belonging to a family from the IncludeFamilies will be available for scaling (asterisk wildcard is also supported). For example, C* will include instance types from these families: c5, c4, c4a, etc.
+        """
+        return pulumi.get(self, "include_families")
+
+    @include_families.setter
+    def include_families(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "include_families", value)
+
+    @property
+    @pulumi.getter(name="isEnaSupported")
+    def is_ena_supported(self) -> Optional[pulumi.Input[str]]:
+        """
+        Ena is supported or not.
+        """
+        return pulumi.get(self, "is_ena_supported")
+
+    @is_ena_supported.setter
+    def is_ena_supported(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "is_ena_supported", value)
+
+    @property
+    @pulumi.getter(name="maxGpu")
+    def max_gpu(self) -> Optional[pulumi.Input[int]]:
+        """
+        Maximum total number of GPUs.
+        """
+        return pulumi.get(self, "max_gpu")
+
+    @max_gpu.setter
+    def max_gpu(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_gpu", value)
+
+    @property
+    @pulumi.getter(name="maxMemoryGib")
+    def max_memory_gib(self) -> Optional[pulumi.Input[float]]:
+        """
+        Maximum amount of Memory (GiB).
+        """
+        return pulumi.get(self, "max_memory_gib")
+
+    @max_memory_gib.setter
+    def max_memory_gib(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "max_memory_gib", value)
+
+    @property
+    @pulumi.getter(name="maxNetworkPerformance")
+    def max_network_performance(self) -> Optional[pulumi.Input[int]]:
+        """
+        Maximum Bandwidth in Gib/s of network performance.
+        """
+        return pulumi.get(self, "max_network_performance")
+
+    @max_network_performance.setter
+    def max_network_performance(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_network_performance", value)
+
+    @property
+    @pulumi.getter(name="maxVcpu")
+    def max_vcpu(self) -> Optional[pulumi.Input[int]]:
+        """
+        Maximum number of vcpus available.
+        """
+        return pulumi.get(self, "max_vcpu")
+
+    @max_vcpu.setter
+    def max_vcpu(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_vcpu", value)
+
+    @property
+    @pulumi.getter(name="minEnis")
+    def min_enis(self) -> Optional[pulumi.Input[int]]:
+        """
+        Minimum number of network interfaces (ENIs).
+        """
+        return pulumi.get(self, "min_enis")
+
+    @min_enis.setter
+    def min_enis(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "min_enis", value)
+
+    @property
+    @pulumi.getter(name="minGpu")
+    def min_gpu(self) -> Optional[pulumi.Input[int]]:
+        """
+        Minimum total number of GPUs.
+        """
+        return pulumi.get(self, "min_gpu")
+
+    @min_gpu.setter
+    def min_gpu(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "min_gpu", value)
+
+    @property
+    @pulumi.getter(name="minMemoryGib")
+    def min_memory_gib(self) -> Optional[pulumi.Input[float]]:
+        """
+        Minimum amount of Memory (GiB).
+        """
+        return pulumi.get(self, "min_memory_gib")
+
+    @min_memory_gib.setter
+    def min_memory_gib(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "min_memory_gib", value)
+
+    @property
+    @pulumi.getter(name="minNetworkPerformance")
+    def min_network_performance(self) -> Optional[pulumi.Input[int]]:
+        """
+        Minimum Bandwidth in Gib/s of network performance.
+        """
+        return pulumi.get(self, "min_network_performance")
+
+    @min_network_performance.setter
+    def min_network_performance(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "min_network_performance", value)
+
+    @property
+    @pulumi.getter(name="minVcpu")
+    def min_vcpu(self) -> Optional[pulumi.Input[int]]:
+        """
+        Minimum number of vcpus available.
+        """
+        return pulumi.get(self, "min_vcpu")
+
+    @min_vcpu.setter
+    def min_vcpu(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "min_vcpu", value)
+
+    @property
+    @pulumi.getter(name="rootDeviceTypes")
+    def root_device_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The filtered instance types will have a root device types from this list. Valid values: `ebs`, or `instance-store`.
+        """
+        return pulumi.get(self, "root_device_types")
+
+    @root_device_types.setter
+    def root_device_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "root_device_types", value)
+
+    @property
+    @pulumi.getter(name="virtualizationTypes")
+    def virtualization_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The filtered instance types will support at least one of the virtualization types from this list. Valid values: `hvm`, `paravirtual`.
+
+
+        <a id="update-policy"></a>
+        """
+        return pulumi.get(self, "virtualization_types")
+
+    @virtualization_types.setter
+    def virtualization_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "virtualization_types", value)
 
 
 @pulumi.input_type

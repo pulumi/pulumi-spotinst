@@ -244,6 +244,9 @@ type OceanLaunchSpec struct {
 	InstanceMetadataOptions OceanLaunchSpecInstanceMetadataOptionsPtrOutput `pulumi:"instanceMetadataOptions"`
 	// A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the cluster.
 	InstanceTypes pulumi.StringArrayOutput `pulumi:"instanceTypes"`
+	// The instance types that match with all filters compose the Virtual Node Group's instanceTypes parameter.
+	// The architectures that come from the Virtual Node Group's images will be taken into account when using this parameter. Cannot be configured together with Virtual Node Group's instanceTypes and with the Cluster's whitelist/blacklist/filters.
+	InstanceTypesFilters OceanLaunchSpecInstanceTypesFiltersPtrOutput `pulumi:"instanceTypesFilters"`
 	// Optionally adds labels to instances launched in the cluster.
 	Labels OceanLaunchSpecLabelArrayOutput `pulumi:"labels"`
 	// The name of the Virtual Node Group.
@@ -333,6 +336,9 @@ type oceanLaunchSpecState struct {
 	InstanceMetadataOptions *OceanLaunchSpecInstanceMetadataOptions `pulumi:"instanceMetadataOptions"`
 	// A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the cluster.
 	InstanceTypes []string `pulumi:"instanceTypes"`
+	// The instance types that match with all filters compose the Virtual Node Group's instanceTypes parameter.
+	// The architectures that come from the Virtual Node Group's images will be taken into account when using this parameter. Cannot be configured together with Virtual Node Group's instanceTypes and with the Cluster's whitelist/blacklist/filters.
+	InstanceTypesFilters *OceanLaunchSpecInstanceTypesFilters `pulumi:"instanceTypesFilters"`
 	// Optionally adds labels to instances launched in the cluster.
 	Labels []OceanLaunchSpecLabel `pulumi:"labels"`
 	// The name of the Virtual Node Group.
@@ -390,6 +396,9 @@ type OceanLaunchSpecState struct {
 	InstanceMetadataOptions OceanLaunchSpecInstanceMetadataOptionsPtrInput
 	// A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the cluster.
 	InstanceTypes pulumi.StringArrayInput
+	// The instance types that match with all filters compose the Virtual Node Group's instanceTypes parameter.
+	// The architectures that come from the Virtual Node Group's images will be taken into account when using this parameter. Cannot be configured together with Virtual Node Group's instanceTypes and with the Cluster's whitelist/blacklist/filters.
+	InstanceTypesFilters OceanLaunchSpecInstanceTypesFiltersPtrInput
 	// Optionally adds labels to instances launched in the cluster.
 	Labels OceanLaunchSpecLabelArrayInput
 	// The name of the Virtual Node Group.
@@ -451,6 +460,9 @@ type oceanLaunchSpecArgs struct {
 	InstanceMetadataOptions *OceanLaunchSpecInstanceMetadataOptions `pulumi:"instanceMetadataOptions"`
 	// A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the cluster.
 	InstanceTypes []string `pulumi:"instanceTypes"`
+	// The instance types that match with all filters compose the Virtual Node Group's instanceTypes parameter.
+	// The architectures that come from the Virtual Node Group's images will be taken into account when using this parameter. Cannot be configured together with Virtual Node Group's instanceTypes and with the Cluster's whitelist/blacklist/filters.
+	InstanceTypesFilters *OceanLaunchSpecInstanceTypesFilters `pulumi:"instanceTypesFilters"`
 	// Optionally adds labels to instances launched in the cluster.
 	Labels []OceanLaunchSpecLabel `pulumi:"labels"`
 	// The name of the Virtual Node Group.
@@ -509,6 +521,9 @@ type OceanLaunchSpecArgs struct {
 	InstanceMetadataOptions OceanLaunchSpecInstanceMetadataOptionsPtrInput
 	// A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the cluster.
 	InstanceTypes pulumi.StringArrayInput
+	// The instance types that match with all filters compose the Virtual Node Group's instanceTypes parameter.
+	// The architectures that come from the Virtual Node Group's images will be taken into account when using this parameter. Cannot be configured together with Virtual Node Group's instanceTypes and with the Cluster's whitelist/blacklist/filters.
+	InstanceTypesFilters OceanLaunchSpecInstanceTypesFiltersPtrInput
 	// Optionally adds labels to instances launched in the cluster.
 	Labels OceanLaunchSpecLabelArrayInput
 	// The name of the Virtual Node Group.
@@ -717,6 +732,12 @@ func (o OceanLaunchSpecOutput) InstanceMetadataOptions() OceanLaunchSpecInstance
 // A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the cluster.
 func (o OceanLaunchSpecOutput) InstanceTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *OceanLaunchSpec) pulumi.StringArrayOutput { return v.InstanceTypes }).(pulumi.StringArrayOutput)
+}
+
+// The instance types that match with all filters compose the Virtual Node Group's instanceTypes parameter.
+// The architectures that come from the Virtual Node Group's images will be taken into account when using this parameter. Cannot be configured together with Virtual Node Group's instanceTypes and with the Cluster's whitelist/blacklist/filters.
+func (o OceanLaunchSpecOutput) InstanceTypesFilters() OceanLaunchSpecInstanceTypesFiltersPtrOutput {
+	return o.ApplyT(func(v *OceanLaunchSpec) OceanLaunchSpecInstanceTypesFiltersPtrOutput { return v.InstanceTypesFilters }).(OceanLaunchSpecInstanceTypesFiltersPtrOutput)
 }
 
 // Optionally adds labels to instances launched in the cluster.

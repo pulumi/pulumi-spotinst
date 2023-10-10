@@ -19,6 +19,7 @@ import com.pulumi.spotinst.aws.outputs.OceanLaunchSpecDeleteOptions;
 import com.pulumi.spotinst.aws.outputs.OceanLaunchSpecElasticIpPool;
 import com.pulumi.spotinst.aws.outputs.OceanLaunchSpecImage;
 import com.pulumi.spotinst.aws.outputs.OceanLaunchSpecInstanceMetadataOptions;
+import com.pulumi.spotinst.aws.outputs.OceanLaunchSpecInstanceTypesFilters;
 import com.pulumi.spotinst.aws.outputs.OceanLaunchSpecLabel;
 import com.pulumi.spotinst.aws.outputs.OceanLaunchSpecResourceLimit;
 import com.pulumi.spotinst.aws.outputs.OceanLaunchSpecSchedulingShutdownHours;
@@ -411,6 +412,22 @@ public class OceanLaunchSpec extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<List<String>>> instanceTypes() {
         return Codegen.optional(this.instanceTypes);
+    }
+    /**
+     * The instance types that match with all filters compose the Virtual Node Group&#39;s instanceTypes parameter.
+     * The architectures that come from the Virtual Node Group&#39;s images will be taken into account when using this parameter. Cannot be configured together with Virtual Node Group&#39;s instanceTypes and with the Cluster&#39;s whitelist/blacklist/filters.
+     * 
+     */
+    @Export(name="instanceTypesFilters", refs={OceanLaunchSpecInstanceTypesFilters.class}, tree="[0]")
+    private Output</* @Nullable */ OceanLaunchSpecInstanceTypesFilters> instanceTypesFilters;
+
+    /**
+     * @return The instance types that match with all filters compose the Virtual Node Group&#39;s instanceTypes parameter.
+     * The architectures that come from the Virtual Node Group&#39;s images will be taken into account when using this parameter. Cannot be configured together with Virtual Node Group&#39;s instanceTypes and with the Cluster&#39;s whitelist/blacklist/filters.
+     * 
+     */
+    public Output<Optional<OceanLaunchSpecInstanceTypesFilters>> instanceTypesFilters() {
+        return Codegen.optional(this.instanceTypesFilters);
     }
     /**
      * Optionally adds labels to instances launched in the cluster.

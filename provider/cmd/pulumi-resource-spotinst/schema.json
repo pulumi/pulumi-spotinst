@@ -24,7 +24,6 @@
                 "gcp": "Gcp",
                 "gke": "Gke",
                 "index": "Index",
-                "multai": "Multai",
                 "spark": "Spark",
                 "spotinst": "SpotInst"
             },
@@ -3552,7 +3551,7 @@
             "properties": {
                 "httpPutResponseHopLimit": {
                     "type": "integer",
-                    "description": "An integer from 1 through 64. The desired HTTP PUT response hop limit for instance metadata requests. The larger the number, the further the instance metadata requests can travel.\n\n\u003ca id=\"update-policy\"\u003e\u003c/a\u003e\n"
+                    "description": "An integer from 1 through 64. The desired HTTP PUT response hop limit for instance metadata requests. The larger the number, the further the instance metadata requests can travel.\n"
                 },
                 "httpTokens": {
                     "type": "string",
@@ -3563,6 +3562,104 @@
             "required": [
                 "httpTokens"
             ]
+        },
+        "spotinst:aws/OceanLaunchSpecInstanceTypesFilters:OceanLaunchSpecInstanceTypesFilters": {
+            "properties": {
+                "categories": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The filtered instance types will belong to one of the categories types from this list. Valid values: `Accelerated_computing`, `Compute_optimized`, `General_purpose`, `Memory_optimized`, `Storage_optimized`.\n"
+                },
+                "diskTypes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The filtered instance types will have one of the disk type from this list. Valid values: `NVMe`, `EBS`, `SSD`, `HDD`.\n"
+                },
+                "excludeFamilies": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Types belonging to a family from the ExcludeFamilies will not be available for scaling (asterisk wildcard is also supported). For example, C* will exclude instance types from these families: c5, c4, c4a, etc.\n"
+                },
+                "excludeMetal": {
+                    "type": "boolean",
+                    "description": "In case excludeMetal is set to true, metal types will not be available for scaling.\n"
+                },
+                "hypervisors": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The filtered instance types will have a hypervisor type from this list. Valid values: `nitro`, `xen`.\n"
+                },
+                "includeFamilies": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Types belonging to a family from the IncludeFamilies will be available for scaling (asterisk wildcard is also supported). For example, C* will include instance types from these families: c5, c4, c4a, etc.\n"
+                },
+                "isEnaSupported": {
+                    "type": "string",
+                    "description": "Ena is supported or not.\n"
+                },
+                "maxGpu": {
+                    "type": "integer",
+                    "description": "Maximum total number of GPUs.\n"
+                },
+                "maxMemoryGib": {
+                    "type": "number",
+                    "description": "Maximum amount of Memory (GiB).\n"
+                },
+                "maxNetworkPerformance": {
+                    "type": "integer",
+                    "description": "Maximum Bandwidth in Gib/s of network performance.\n"
+                },
+                "maxVcpu": {
+                    "type": "integer",
+                    "description": "Maximum number of vcpus available.\n"
+                },
+                "minEnis": {
+                    "type": "integer",
+                    "description": "Minimum number of network interfaces (ENIs).\n"
+                },
+                "minGpu": {
+                    "type": "integer",
+                    "description": "Minimum total number of GPUs.\n"
+                },
+                "minMemoryGib": {
+                    "type": "number",
+                    "description": "Minimum amount of Memory (GiB).\n"
+                },
+                "minNetworkPerformance": {
+                    "type": "integer",
+                    "description": "Minimum Bandwidth in Gib/s of network performance.\n"
+                },
+                "minVcpu": {
+                    "type": "integer",
+                    "description": "Minimum number of vcpus available.\n"
+                },
+                "rootDeviceTypes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The filtered instance types will have a root device types from this list. Valid values: `ebs`, or `instance-store`.\n"
+                },
+                "virtualizationTypes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The filtered instance types will support at least one of the virtualization types from this list. Valid values: `hvm`, `paravirtual`.\n\n\n\u003ca id=\"update-policy\"\u003e\u003c/a\u003e\n"
+                }
+            },
+            "type": "object"
         },
         "spotinst:aws/OceanLaunchSpecLabel:OceanLaunchSpecLabel": {
             "properties": {
@@ -8675,6 +8772,125 @@
                 "value"
             ]
         },
+        "spotinst:organization/PolicyPolicyContent:PolicyPolicyContent": {
+            "properties": {
+                "statements": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/spotinst:organization/PolicyPolicyContentStatement:PolicyPolicyContentStatement"
+                    },
+                    "description": "List of permissions statements.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "statements"
+            ]
+        },
+        "spotinst:organization/PolicyPolicyContentStatement:PolicyPolicyContentStatement": {
+            "properties": {
+                "actions": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Set a list of required actions for this permissions statement.\nFull list of actions can be found in [https://docs.spot.io/account-user-management/user-management/access-policies-actions/](https://docs.spot.io/account-user-management/user-management/access-policies-actions/).\n"
+                },
+                "effect": {
+                    "type": "string",
+                    "description": "Valid values \"ALLOW\", \"DENY\".\n"
+                },
+                "resources": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Set a list of resources IDs. In order to include all resources in this statement - use \"*\".\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "actions",
+                "effect",
+                "resources"
+            ]
+        },
+        "spotinst:organization/ProgrammaticUserAccount:ProgrammaticUserAccount": {
+            "properties": {
+                "accountId": {
+                    "type": "string",
+                    "description": "Account ID the programmatic user will have access to.\n"
+                },
+                "accountRole": {
+                    "type": "string",
+                    "description": "(Enum: `\"viewer\", \"editor\") Role to be associated with the\nprogrammatic user for this account.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "accountId",
+                "accountRole"
+            ]
+        },
+        "spotinst:organization/ProgrammaticUserPolicy:ProgrammaticUserPolicy": {
+            "properties": {
+                "policyAccountIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of the accounts that the policy should be\nenforced for the user.\n"
+                },
+                "policyId": {
+                    "type": "string",
+                    "description": "Policy ID the programmatic user will have access to.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "policyAccountIds",
+                "policyId"
+            ]
+        },
+        "spotinst:organization/UserGroupPolicy:UserGroupPolicy": {
+            "properties": {
+                "accountIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of accounts to register with the assigned under the\ngiven group (should be existing accounts only).\n"
+                },
+                "policyId": {
+                    "type": "string",
+                    "description": "A policy to register under the given group\n(should be existing policy only).\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "accountIds",
+                "policyId"
+            ]
+        },
+        "spotinst:organization/UserPolicy:UserPolicy": {
+            "properties": {
+                "policyAccountIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "policyId": {
+                    "type": "string",
+                    "description": "A policy to register under the given group\n(should be existing policy only).\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "policyAccountIds",
+                "policyId"
+            ]
+        },
         "spotinst:spark/OceanCompute:OceanCompute": {
             "properties": {
                 "createVngs": {
@@ -12519,6 +12735,10 @@
                     },
                     "description": "A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the cluster.\n"
                 },
+                "instanceTypesFilters": {
+                    "$ref": "#/types/spotinst:aws/OceanLaunchSpecInstanceTypesFilters:OceanLaunchSpecInstanceTypesFilters",
+                    "description": "The instance types that match with all filters compose the Virtual Node Group's instanceTypes parameter.\nThe architectures that come from the Virtual Node Group's images will be taken into account when using this parameter. Cannot be configured together with Virtual Node Group's instanceTypes and with the Cluster's whitelist/blacklist/filters.\n"
+                },
                 "labels": {
                     "type": "array",
                     "items": {
@@ -12683,6 +12903,10 @@
                         "type": "string"
                     },
                     "description": "A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the cluster.\n"
+                },
+                "instanceTypesFilters": {
+                    "$ref": "#/types/spotinst:aws/OceanLaunchSpecInstanceTypesFilters:OceanLaunchSpecInstanceTypesFilters",
+                    "description": "The instance types that match with all filters compose the Virtual Node Group's instanceTypes parameter.\nThe architectures that come from the Virtual Node Group's images will be taken into account when using this parameter. Cannot be configured together with Virtual Node Group's instanceTypes and with the Cluster's whitelist/blacklist/filters.\n"
                 },
                 "labels": {
                     "type": "array",
@@ -12850,6 +13074,10 @@
                             "type": "string"
                         },
                         "description": "A list of instance types allowed to be provisioned for pods pending under the specified launch specification. The list overrides the list defined for the cluster.\n"
+                    },
+                    "instanceTypesFilters": {
+                        "$ref": "#/types/spotinst:aws/OceanLaunchSpecInstanceTypesFilters:OceanLaunchSpecInstanceTypesFilters",
+                        "description": "The instance types that match with all filters compose the Virtual Node Group's instanceTypes parameter.\nThe architectures that come from the Virtual Node Group's images will be taken into account when using this parameter. Cannot be configured together with Virtual Node Group's instanceTypes and with the Cluster's whitelist/blacklist/filters.\n"
                     },
                     "labels": {
                         "type": "array",
@@ -18474,6 +18702,382 @@
                     },
                     "weight": {
                         "type": "integer"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "spotinst:organization/policy:Policy": {
+            "description": "Provides a Spotinst access policy.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as spotinst from \"@pulumi/spotinst\";\n\nconst terraformPolicy = new spotinst.organization.Policy(\"terraformPolicy\", {\n    description: \"policy by terraform\",\n    policyContents: [{\n        statements: [\n            {\n                actions: [\"ocean:deleteCluster\"],\n                effect: \"DENY\",\n                resources: [\n                    \"o-abcd1234\",\n                    \"o-defg6789\",\n                ],\n            },\n            {\n                actions: [\"ocean:createCluster\"],\n                effect: \"DENY\",\n                resources: [\n                    \"o-fhau4752\",\n                    \"o-761owf4r3\",\n                ],\n            },\n        ],\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_spotinst as spotinst\n\nterraform_policy = spotinst.organization.Policy(\"terraformPolicy\",\n    description=\"policy by terraform\",\n    policy_contents=[spotinst.organization.PolicyPolicyContentArgs(\n        statements=[\n            spotinst.organization.PolicyPolicyContentStatementArgs(\n                actions=[\"ocean:deleteCluster\"],\n                effect=\"DENY\",\n                resources=[\n                    \"o-abcd1234\",\n                    \"o-defg6789\",\n                ],\n            ),\n            spotinst.organization.PolicyPolicyContentStatementArgs(\n                actions=[\"ocean:createCluster\"],\n                effect=\"DENY\",\n                resources=[\n                    \"o-fhau4752\",\n                    \"o-761owf4r3\",\n                ],\n            ),\n        ],\n    )])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing SpotInst = Pulumi.SpotInst;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var terraformPolicy = new SpotInst.Organization.Policy(\"terraformPolicy\", new()\n    {\n        Description = \"policy by terraform\",\n        PolicyContents = new[]\n        {\n            new SpotInst.Organization.Inputs.PolicyPolicyContentArgs\n            {\n                Statements = new[]\n                {\n                    new SpotInst.Organization.Inputs.PolicyPolicyContentStatementArgs\n                    {\n                        Actions = new[]\n                        {\n                            \"ocean:deleteCluster\",\n                        },\n                        Effect = \"DENY\",\n                        Resources = new[]\n                        {\n                            \"o-abcd1234\",\n                            \"o-defg6789\",\n                        },\n                    },\n                    new SpotInst.Organization.Inputs.PolicyPolicyContentStatementArgs\n                    {\n                        Actions = new[]\n                        {\n                            \"ocean:createCluster\",\n                        },\n                        Effect = \"DENY\",\n                        Resources = new[]\n                        {\n                            \"o-fhau4752\",\n                            \"o-761owf4r3\",\n                        },\n                    },\n                },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst/organization\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := organization.NewPolicy(ctx, \"terraformPolicy\", \u0026organization.PolicyArgs{\n\t\t\tDescription: pulumi.String(\"policy by terraform\"),\n\t\t\tPolicyContents: organization.PolicyPolicyContentArray{\n\t\t\t\t\u0026organization.PolicyPolicyContentArgs{\n\t\t\t\t\tStatements: organization.PolicyPolicyContentStatementArray{\n\t\t\t\t\t\t\u0026organization.PolicyPolicyContentStatementArgs{\n\t\t\t\t\t\t\tActions: pulumi.StringArray{\n\t\t\t\t\t\t\t\tpulumi.String(\"ocean:deleteCluster\"),\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\tEffect: pulumi.String(\"DENY\"),\n\t\t\t\t\t\t\tResources: pulumi.StringArray{\n\t\t\t\t\t\t\t\tpulumi.String(\"o-abcd1234\"),\n\t\t\t\t\t\t\t\tpulumi.String(\"o-defg6789\"),\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\u0026organization.PolicyPolicyContentStatementArgs{\n\t\t\t\t\t\t\tActions: pulumi.StringArray{\n\t\t\t\t\t\t\t\tpulumi.String(\"ocean:createCluster\"),\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\tEffect: pulumi.String(\"DENY\"),\n\t\t\t\t\t\t\tResources: pulumi.StringArray{\n\t\t\t\t\t\t\t\tpulumi.String(\"o-fhau4752\"),\n\t\t\t\t\t\t\t\tpulumi.String(\"o-761owf4r3\"),\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.spotinst.organization.Policy;\nimport com.pulumi.spotinst.organization.PolicyArgs;\nimport com.pulumi.spotinst.organization.inputs.PolicyPolicyContentArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var terraformPolicy = new Policy(\"terraformPolicy\", PolicyArgs.builder()        \n            .description(\"policy by terraform\")\n            .policyContents(PolicyPolicyContentArgs.builder()\n                .statements(                \n                    PolicyPolicyContentStatementArgs.builder()\n                        .actions(\"ocean:deleteCluster\")\n                        .effect(\"DENY\")\n                        .resources(                        \n                            \"o-abcd1234\",\n                            \"o-defg6789\")\n                        .build(),\n                    PolicyPolicyContentStatementArgs.builder()\n                        .actions(\"ocean:createCluster\")\n                        .effect(\"DENY\")\n                        .resources(                        \n                            \"o-fhau4752\",\n                            \"o-761owf4r3\")\n                        .build())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  terraformPolicy:\n    type: spotinst:organization:Policy\n    properties:\n      description: policy by terraform\n      policyContents:\n        - statements:\n            - actions:\n                - ocean:deleteCluster\n              effect: DENY\n              resources:\n                - o-abcd1234\n                - o-defg6789\n            - actions:\n                - ocean:createCluster\n              effect: DENY\n              resources:\n                - o-fhau4752\n                - o-761owf4r3\n```\n{{% /example %}}\n{{% /examples %}}",
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "description": "Short description of policy.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the Policy.\n"
+                },
+                "policyContents": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/spotinst:organization/PolicyPolicyContent:PolicyPolicyContent"
+                    },
+                    "description": "Set permissions objects list.\n"
+                }
+            },
+            "required": [
+                "name",
+                "policyContents"
+            ],
+            "inputProperties": {
+                "description": {
+                    "type": "string",
+                    "description": "Short description of policy.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the Policy.\n"
+                },
+                "policyContents": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/spotinst:organization/PolicyPolicyContent:PolicyPolicyContent"
+                    },
+                    "description": "Set permissions objects list.\n"
+                }
+            },
+            "requiredInputs": [
+                "policyContents"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Policy resources.\n",
+                "properties": {
+                    "description": {
+                        "type": "string",
+                        "description": "Short description of policy.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the Policy.\n"
+                    },
+                    "policyContents": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/spotinst:organization/PolicyPolicyContent:PolicyPolicyContent"
+                        },
+                        "description": "Set permissions objects list.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "spotinst:organization/programmaticUser:ProgrammaticUser": {
+            "description": "Provides a Spotinst programmatic user in the creator's organization.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as spotinst from \"@pulumi/spotinst\";\n\nconst terraformProgUser = new spotinst.organization.ProgrammaticUser(\"terraformProgUser\", {\n    description: \"creating programmatic user\",\n    policies: [{\n        policyAccountIds: [\"act-a1b2c3d4\"],\n        policyId: \"pol-g75d8c06\",\n    }],\n    userGroupIds: [\n        \"ugr-abcd1234\",\n        \"ugr-defg8763\",\n    ],\n});\n```\n```python\nimport pulumi\nimport pulumi_spotinst as spotinst\n\nterraform_prog_user = spotinst.organization.ProgrammaticUser(\"terraformProgUser\",\n    description=\"creating programmatic user\",\n    policies=[spotinst.organization.ProgrammaticUserPolicyArgs(\n        policy_account_ids=[\"act-a1b2c3d4\"],\n        policy_id=\"pol-g75d8c06\",\n    )],\n    user_group_ids=[\n        \"ugr-abcd1234\",\n        \"ugr-defg8763\",\n    ])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing SpotInst = Pulumi.SpotInst;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var terraformProgUser = new SpotInst.Organization.ProgrammaticUser(\"terraformProgUser\", new()\n    {\n        Description = \"creating programmatic user\",\n        Policies = new[]\n        {\n            new SpotInst.Organization.Inputs.ProgrammaticUserPolicyArgs\n            {\n                PolicyAccountIds = new[]\n                {\n                    \"act-a1b2c3d4\",\n                },\n                PolicyId = \"pol-g75d8c06\",\n            },\n        },\n        UserGroupIds = new[]\n        {\n            \"ugr-abcd1234\",\n            \"ugr-defg8763\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst/organization\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := organization.NewProgrammaticUser(ctx, \"terraformProgUser\", \u0026organization.ProgrammaticUserArgs{\n\t\t\tDescription: pulumi.String(\"creating programmatic user\"),\n\t\t\tPolicies: organization.ProgrammaticUserPolicyArray{\n\t\t\t\t\u0026organization.ProgrammaticUserPolicyArgs{\n\t\t\t\t\tPolicyAccountIds: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"act-a1b2c3d4\"),\n\t\t\t\t\t},\n\t\t\t\t\tPolicyId: pulumi.String(\"pol-g75d8c06\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tUserGroupIds: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"ugr-abcd1234\"),\n\t\t\t\tpulumi.String(\"ugr-defg8763\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.spotinst.organization.ProgrammaticUser;\nimport com.pulumi.spotinst.organization.ProgrammaticUserArgs;\nimport com.pulumi.spotinst.organization.inputs.ProgrammaticUserPolicyArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var terraformProgUser = new ProgrammaticUser(\"terraformProgUser\", ProgrammaticUserArgs.builder()        \n            .description(\"creating programmatic user\")\n            .policies(ProgrammaticUserPolicyArgs.builder()\n                .policyAccountIds(\"act-a1b2c3d4\")\n                .policyId(\"pol-g75d8c06\")\n                .build())\n            .userGroupIds(            \n                \"ugr-abcd1234\",\n                \"ugr-defg8763\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  terraformProgUser:\n    type: spotinst:organization:ProgrammaticUser\n    properties:\n      description: creating programmatic user\n      policies:\n        - policyAccountIds:\n            - act-a1b2c3d4\n          policyId: pol-g75d8c06\n      # accounts {\n      #     //    account_id = \"act-a1b2c3d4\"\n      #     //    account_role = \"viewer\"\n      #     //  }\n      userGroupIds:\n        - ugr-abcd1234\n        - ugr-defg8763\n```\n{{% /example %}}\n{{% /examples %}}",
+            "properties": {
+                "accounts": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/spotinst:organization/ProgrammaticUserAccount:ProgrammaticUserAccount"
+                    },
+                    "description": "All the accounts the programmatic user will have access to.\nIf used - Cannot be empty.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Brief description of the user.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the programmatic user.\n"
+                },
+                "policies": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/spotinst:organization/ProgrammaticUserPolicy:ProgrammaticUserPolicy"
+                    },
+                    "description": "All the policies the programmatic user will have access to.\nIf used - Cannot be empty.\n"
+                },
+                "userGroupIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of the user groups to register the given user to (should be existing user groups only)\n"
+                }
+            },
+            "required": [
+                "name"
+            ],
+            "inputProperties": {
+                "accounts": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/spotinst:organization/ProgrammaticUserAccount:ProgrammaticUserAccount"
+                    },
+                    "description": "All the accounts the programmatic user will have access to.\nIf used - Cannot be empty.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Brief description of the user.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the programmatic user.\n"
+                },
+                "policies": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/spotinst:organization/ProgrammaticUserPolicy:ProgrammaticUserPolicy"
+                    },
+                    "description": "All the policies the programmatic user will have access to.\nIf used - Cannot be empty.\n"
+                },
+                "userGroupIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of the user groups to register the given user to (should be existing user groups only)\n"
+                }
+            },
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ProgrammaticUser resources.\n",
+                "properties": {
+                    "accounts": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/spotinst:organization/ProgrammaticUserAccount:ProgrammaticUserAccount"
+                        },
+                        "description": "All the accounts the programmatic user will have access to.\nIf used - Cannot be empty.\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Brief description of the user.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the programmatic user.\n"
+                    },
+                    "policies": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/spotinst:organization/ProgrammaticUserPolicy:ProgrammaticUserPolicy"
+                        },
+                        "description": "All the policies the programmatic user will have access to.\nIf used - Cannot be empty.\n"
+                    },
+                    "userGroupIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of the user groups to register the given user to (should be existing user groups only)\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "spotinst:organization/user:User": {
+            "description": "Provides a Spotinst User in the creator's organization.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as spotinst from \"@pulumi/spotinst\";\n\nconst terraformUser = new spotinst.organization.User(\"terraformUser\", {\n    email: \"abc@xyz.com\",\n    firstName: \"test\",\n    lastName: \"user\",\n    password: \"testUser@123\",\n    policies: [{\n        policyAccountIds: [\"act-abcf4245\"],\n        policyId: \"pol-abcd1236\",\n    }],\n    role: \"viewer\",\n    userGroupIds: [\n        \"ugr-abcd1234\",\n        \"ugr-defg8763\",\n    ],\n});\n```\n```python\nimport pulumi\nimport pulumi_spotinst as spotinst\n\nterraform_user = spotinst.organization.User(\"terraformUser\",\n    email=\"abc@xyz.com\",\n    first_name=\"test\",\n    last_name=\"user\",\n    password=\"testUser@123\",\n    policies=[spotinst.organization.UserPolicyArgs(\n        policy_account_ids=[\"act-abcf4245\"],\n        policy_id=\"pol-abcd1236\",\n    )],\n    role=\"viewer\",\n    user_group_ids=[\n        \"ugr-abcd1234\",\n        \"ugr-defg8763\",\n    ])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing SpotInst = Pulumi.SpotInst;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var terraformUser = new SpotInst.Organization.User(\"terraformUser\", new()\n    {\n        Email = \"abc@xyz.com\",\n        FirstName = \"test\",\n        LastName = \"user\",\n        Password = \"testUser@123\",\n        Policies = new[]\n        {\n            new SpotInst.Organization.Inputs.UserPolicyArgs\n            {\n                PolicyAccountIds = new[]\n                {\n                    \"act-abcf4245\",\n                },\n                PolicyId = \"pol-abcd1236\",\n            },\n        },\n        Role = \"viewer\",\n        UserGroupIds = new[]\n        {\n            \"ugr-abcd1234\",\n            \"ugr-defg8763\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst/organization\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := organization.NewUser(ctx, \"terraformUser\", \u0026organization.UserArgs{\n\t\t\tEmail:     pulumi.String(\"abc@xyz.com\"),\n\t\t\tFirstName: pulumi.String(\"test\"),\n\t\t\tLastName:  pulumi.String(\"user\"),\n\t\t\tPassword:  pulumi.String(\"testUser@123\"),\n\t\t\tPolicies: organization.UserPolicyArray{\n\t\t\t\t\u0026organization.UserPolicyArgs{\n\t\t\t\t\tPolicyAccountIds: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"act-abcf4245\"),\n\t\t\t\t\t},\n\t\t\t\t\tPolicyId: pulumi.String(\"pol-abcd1236\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tRole: pulumi.String(\"viewer\"),\n\t\t\tUserGroupIds: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"ugr-abcd1234\"),\n\t\t\t\tpulumi.String(\"ugr-defg8763\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.spotinst.organization.User;\nimport com.pulumi.spotinst.organization.UserArgs;\nimport com.pulumi.spotinst.organization.inputs.UserPolicyArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var terraformUser = new User(\"terraformUser\", UserArgs.builder()        \n            .email(\"abc@xyz.com\")\n            .firstName(\"test\")\n            .lastName(\"user\")\n            .password(\"testUser@123\")\n            .policies(UserPolicyArgs.builder()\n                .policyAccountIds(\"act-abcf4245\")\n                .policyId(\"pol-abcd1236\")\n                .build())\n            .role(\"viewer\")\n            .userGroupIds(            \n                \"ugr-abcd1234\",\n                \"ugr-defg8763\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  terraformUser:\n    type: spotinst:organization:User\n    properties:\n      email: abc@xyz.com\n      firstName: test\n      lastName: user\n      password: testUser@123\n      policies:\n        - policyAccountIds:\n            - act-abcf4245\n          policyId: pol-abcd1236\n      role: viewer\n      userGroupIds:\n        - ugr-abcd1234\n        - ugr-defg8763\n```\n{{% /example %}}\n{{% /examples %}}",
+            "properties": {
+                "email": {
+                    "type": "string",
+                    "description": "Email.\n"
+                },
+                "firstName": {
+                    "type": "string",
+                    "description": "The first name of the user.\n"
+                },
+                "lastName": {
+                    "type": "string",
+                    "description": "The last name of the user.\n"
+                },
+                "password": {
+                    "type": "string",
+                    "description": "Password.\n"
+                },
+                "policies": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/spotinst:organization/UserPolicy:UserPolicy"
+                    },
+                    "description": "The policies to register under the given group\n(should be existing policies only).\n"
+                },
+                "role": {
+                    "type": "string",
+                    "description": "User's role.\n"
+                },
+                "userGroupIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of the user groups to register the given user to (should be existing user groups only)\n"
+                }
+            },
+            "required": [
+                "email",
+                "firstName",
+                "lastName",
+                "password"
+            ],
+            "inputProperties": {
+                "email": {
+                    "type": "string",
+                    "description": "Email.\n"
+                },
+                "firstName": {
+                    "type": "string",
+                    "description": "The first name of the user.\n"
+                },
+                "lastName": {
+                    "type": "string",
+                    "description": "The last name of the user.\n"
+                },
+                "password": {
+                    "type": "string",
+                    "description": "Password.\n"
+                },
+                "policies": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/spotinst:organization/UserPolicy:UserPolicy"
+                    },
+                    "description": "The policies to register under the given group\n(should be existing policies only).\n"
+                },
+                "role": {
+                    "type": "string",
+                    "description": "User's role.\n"
+                },
+                "userGroupIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of the user groups to register the given user to (should be existing user groups only)\n"
+                }
+            },
+            "requiredInputs": [
+                "email",
+                "firstName",
+                "lastName"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering User resources.\n",
+                "properties": {
+                    "email": {
+                        "type": "string",
+                        "description": "Email.\n"
+                    },
+                    "firstName": {
+                        "type": "string",
+                        "description": "The first name of the user.\n"
+                    },
+                    "lastName": {
+                        "type": "string",
+                        "description": "The last name of the user.\n"
+                    },
+                    "password": {
+                        "type": "string",
+                        "description": "Password.\n"
+                    },
+                    "policies": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/spotinst:organization/UserPolicy:UserPolicy"
+                        },
+                        "description": "The policies to register under the given group\n(should be existing policies only).\n"
+                    },
+                    "role": {
+                        "type": "string",
+                        "description": "User's role.\n"
+                    },
+                    "userGroupIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of the user groups to register the given user to (should be existing user groups only)\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "spotinst:organization/userGroup:UserGroup": {
+            "description": "Provides a Spotinst user-group of your Spot organization.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as spotinst from \"@pulumi/spotinst\";\n\nconst terraformUserGroup = new spotinst.organization.UserGroup(\"terraformUserGroup\", {\n    description: \"user group by terraform\",\n    policies: [{\n        accountIds: [\"act-a1b2c3d4\"],\n        policyId: \"pol-vv7d8c06\",\n    }],\n    userIds: [\"u-372gf6ae\"],\n});\n```\n```python\nimport pulumi\nimport pulumi_spotinst as spotinst\n\nterraform_user_group = spotinst.organization.UserGroup(\"terraformUserGroup\",\n    description=\"user group by terraform\",\n    policies=[spotinst.organization.UserGroupPolicyArgs(\n        account_ids=[\"act-a1b2c3d4\"],\n        policy_id=\"pol-vv7d8c06\",\n    )],\n    user_ids=[\"u-372gf6ae\"])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing SpotInst = Pulumi.SpotInst;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var terraformUserGroup = new SpotInst.Organization.UserGroup(\"terraformUserGroup\", new()\n    {\n        Description = \"user group by terraform\",\n        Policies = new[]\n        {\n            new SpotInst.Organization.Inputs.UserGroupPolicyArgs\n            {\n                AccountIds = new[]\n                {\n                    \"act-a1b2c3d4\",\n                },\n                PolicyId = \"pol-vv7d8c06\",\n            },\n        },\n        UserIds = new[]\n        {\n            \"u-372gf6ae\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst/organization\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := organization.NewUserGroup(ctx, \"terraformUserGroup\", \u0026organization.UserGroupArgs{\n\t\t\tDescription: pulumi.String(\"user group by terraform\"),\n\t\t\tPolicies: organization.UserGroupPolicyArray{\n\t\t\t\t\u0026organization.UserGroupPolicyArgs{\n\t\t\t\t\tAccountIds: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"act-a1b2c3d4\"),\n\t\t\t\t\t},\n\t\t\t\t\tPolicyId: pulumi.String(\"pol-vv7d8c06\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tUserIds: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"u-372gf6ae\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.spotinst.organization.UserGroup;\nimport com.pulumi.spotinst.organization.UserGroupArgs;\nimport com.pulumi.spotinst.organization.inputs.UserGroupPolicyArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var terraformUserGroup = new UserGroup(\"terraformUserGroup\", UserGroupArgs.builder()        \n            .description(\"user group by terraform\")\n            .policies(UserGroupPolicyArgs.builder()\n                .accountIds(\"act-a1b2c3d4\")\n                .policyId(\"pol-vv7d8c06\")\n                .build())\n            .userIds(\"u-372gf6ae\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  terraformUserGroup:\n    type: spotinst:organization:UserGroup\n    properties:\n      description: user group by terraform\n      policies:\n        - accountIds:\n            - act-a1b2c3d4\n          policyId: pol-vv7d8c06\n      userIds:\n        - u-372gf6ae\n```\n{{% /example %}}\n{{% /examples %}}",
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "description": "User group description.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "User group name.\n"
+                },
+                "policies": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/spotinst:organization/UserGroupPolicy:UserGroupPolicy"
+                    },
+                    "description": "The policies to register under the given group\n(should be existing policies only).\n"
+                },
+                "userIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The users to register under the created group\n(should be existing users only).\n"
+                }
+            },
+            "required": [
+                "name"
+            ],
+            "inputProperties": {
+                "description": {
+                    "type": "string",
+                    "description": "User group description.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "User group name.\n"
+                },
+                "policies": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/spotinst:organization/UserGroupPolicy:UserGroupPolicy"
+                    },
+                    "description": "The policies to register under the given group\n(should be existing policies only).\n"
+                },
+                "userIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The users to register under the created group\n(should be existing users only).\n"
+                }
+            },
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering UserGroup resources.\n",
+                "properties": {
+                    "description": {
+                        "type": "string",
+                        "description": "User group description.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "User group name.\n"
+                    },
+                    "policies": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/spotinst:organization/UserGroupPolicy:UserGroupPolicy"
+                        },
+                        "description": "The policies to register under the given group\n(should be existing policies only).\n"
+                    },
+                    "userIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The users to register under the created group\n(should be existing users only).\n"
                     }
                 },
                 "type": "object"

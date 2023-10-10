@@ -311,6 +311,13 @@ namespace Pulumi.SpotInst.Aws
         public Output<ImmutableArray<string>> InstanceTypes { get; private set; } = null!;
 
         /// <summary>
+        /// The instance types that match with all filters compose the Virtual Node Group's instanceTypes parameter.
+        /// The architectures that come from the Virtual Node Group's images will be taken into account when using this parameter. Cannot be configured together with Virtual Node Group's instanceTypes and with the Cluster's whitelist/blacklist/filters.
+        /// </summary>
+        [Output("instanceTypesFilters")]
+        public Output<Outputs.OceanLaunchSpecInstanceTypesFilters?> InstanceTypesFilters { get; private set; } = null!;
+
+        /// <summary>
         /// Optionally adds labels to instances launched in the cluster.
         /// </summary>
         [Output("labels")]
@@ -557,6 +564,13 @@ namespace Pulumi.SpotInst.Aws
             get => _instanceTypes ?? (_instanceTypes = new InputList<string>());
             set => _instanceTypes = value;
         }
+
+        /// <summary>
+        /// The instance types that match with all filters compose the Virtual Node Group's instanceTypes parameter.
+        /// The architectures that come from the Virtual Node Group's images will be taken into account when using this parameter. Cannot be configured together with Virtual Node Group's instanceTypes and with the Cluster's whitelist/blacklist/filters.
+        /// </summary>
+        [Input("instanceTypesFilters")]
+        public Input<Inputs.OceanLaunchSpecInstanceTypesFiltersArgs>? InstanceTypesFilters { get; set; }
 
         [Input("labels")]
         private InputList<Inputs.OceanLaunchSpecLabelArgs>? _labels;
@@ -819,6 +833,13 @@ namespace Pulumi.SpotInst.Aws
             get => _instanceTypes ?? (_instanceTypes = new InputList<string>());
             set => _instanceTypes = value;
         }
+
+        /// <summary>
+        /// The instance types that match with all filters compose the Virtual Node Group's instanceTypes parameter.
+        /// The architectures that come from the Virtual Node Group's images will be taken into account when using this parameter. Cannot be configured together with Virtual Node Group's instanceTypes and with the Cluster's whitelist/blacklist/filters.
+        /// </summary>
+        [Input("instanceTypesFilters")]
+        public Input<Inputs.OceanLaunchSpecInstanceTypesFiltersGetArgs>? InstanceTypesFilters { get; set; }
 
         [Input("labels")]
         private InputList<Inputs.OceanLaunchSpecLabelGetArgs>? _labels;
