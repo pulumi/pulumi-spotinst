@@ -112,7 +112,39 @@ class OceanLaunchSpecArgs:
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              taints: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecTaintArgs']]]] = None,
              update_policy: Optional[pulumi.Input['OceanLaunchSpecUpdatePolicyArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'oceanId' in kwargs:
+            ocean_id = kwargs['oceanId']
+        if 'autoscaleHeadrooms' in kwargs:
+            autoscale_headrooms = kwargs['autoscaleHeadrooms']
+        if 'autoscaleHeadroomsAutomatics' in kwargs:
+            autoscale_headrooms_automatics = kwargs['autoscaleHeadroomsAutomatics']
+        if 'instanceTypes' in kwargs:
+            instance_types = kwargs['instanceTypes']
+        if 'networkInterfaces' in kwargs:
+            network_interfaces = kwargs['networkInterfaces']
+        if 'nodePoolName' in kwargs:
+            node_pool_name = kwargs['nodePoolName']
+        if 'resourceLimits' in kwargs:
+            resource_limits = kwargs['resourceLimits']
+        if 'restrictScaleDown' in kwargs:
+            restrict_scale_down = kwargs['restrictScaleDown']
+        if 'rootVolumeSize' in kwargs:
+            root_volume_size = kwargs['rootVolumeSize']
+        if 'rootVolumeType' in kwargs:
+            root_volume_type = kwargs['rootVolumeType']
+        if 'schedulingTasks' in kwargs:
+            scheduling_tasks = kwargs['schedulingTasks']
+        if 'serviceAccount' in kwargs:
+            service_account = kwargs['serviceAccount']
+        if 'shieldedInstanceConfig' in kwargs:
+            shielded_instance_config = kwargs['shieldedInstanceConfig']
+        if 'sourceImage' in kwargs:
+            source_image = kwargs['sourceImage']
+        if 'updatePolicy' in kwargs:
+            update_policy = kwargs['updatePolicy']
+
         _setter("ocean_id", ocean_id)
         if autoscale_headrooms is not None:
             _setter("autoscale_headrooms", autoscale_headrooms)
@@ -518,7 +550,39 @@ class _OceanLaunchSpecState:
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              taints: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecTaintArgs']]]] = None,
              update_policy: Optional[pulumi.Input['OceanLaunchSpecUpdatePolicyArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'autoscaleHeadrooms' in kwargs:
+            autoscale_headrooms = kwargs['autoscaleHeadrooms']
+        if 'autoscaleHeadroomsAutomatics' in kwargs:
+            autoscale_headrooms_automatics = kwargs['autoscaleHeadroomsAutomatics']
+        if 'instanceTypes' in kwargs:
+            instance_types = kwargs['instanceTypes']
+        if 'networkInterfaces' in kwargs:
+            network_interfaces = kwargs['networkInterfaces']
+        if 'nodePoolName' in kwargs:
+            node_pool_name = kwargs['nodePoolName']
+        if 'oceanId' in kwargs:
+            ocean_id = kwargs['oceanId']
+        if 'resourceLimits' in kwargs:
+            resource_limits = kwargs['resourceLimits']
+        if 'restrictScaleDown' in kwargs:
+            restrict_scale_down = kwargs['restrictScaleDown']
+        if 'rootVolumeSize' in kwargs:
+            root_volume_size = kwargs['rootVolumeSize']
+        if 'rootVolumeType' in kwargs:
+            root_volume_type = kwargs['rootVolumeType']
+        if 'schedulingTasks' in kwargs:
+            scheduling_tasks = kwargs['schedulingTasks']
+        if 'serviceAccount' in kwargs:
+            service_account = kwargs['serviceAccount']
+        if 'shieldedInstanceConfig' in kwargs:
+            shielded_instance_config = kwargs['shieldedInstanceConfig']
+        if 'sourceImage' in kwargs:
+            source_image = kwargs['sourceImage']
+        if 'updatePolicy' in kwargs:
+            update_policy = kwargs['updatePolicy']
+
         if autoscale_headrooms is not None:
             _setter("autoscale_headrooms", autoscale_headrooms)
         if autoscale_headrooms_automatics is not None:

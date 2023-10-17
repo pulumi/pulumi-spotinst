@@ -37,7 +37,9 @@ class DataIntegrationArgs:
              name: Optional[pulumi.Input[str]] = None,
              s3: Optional[pulumi.Input['DataIntegrationS3Args']] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if name is not None:
             _setter("name", name)
         if s3 is not None:
@@ -106,7 +108,9 @@ class _DataIntegrationState:
              name: Optional[pulumi.Input[str]] = None,
              s3: Optional[pulumi.Input['DataIntegrationS3Args']] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if name is not None:
             _setter("name", name)
         if s3 is not None:

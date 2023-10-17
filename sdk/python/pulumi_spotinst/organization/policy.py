@@ -37,7 +37,11 @@ class PolicyArgs:
              policy_contents: pulumi.Input[Sequence[pulumi.Input['PolicyPolicyContentArgs']]],
              description: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'policyContents' in kwargs:
+            policy_contents = kwargs['policyContents']
+
         _setter("policy_contents", policy_contents)
         if description is not None:
             _setter("description", description)
@@ -105,7 +109,11 @@ class _PolicyState:
              description: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              policy_contents: Optional[pulumi.Input[Sequence[pulumi.Input['PolicyPolicyContentArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'policyContents' in kwargs:
+            policy_contents = kwargs['policyContents']
+
         if description is not None:
             _setter("description", description)
         if name is not None:

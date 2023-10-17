@@ -33,7 +33,11 @@ class SuspensionArgs:
              _setter: Callable[[Any, Any], None],
              group_id: pulumi.Input[str],
              suspensions: pulumi.Input[Sequence[pulumi.Input['SuspensionSuspensionArgs']]],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+
         _setter("group_id", group_id)
         _setter("suspensions", suspensions)
 
@@ -82,7 +86,11 @@ class _SuspensionState:
              _setter: Callable[[Any, Any], None],
              group_id: Optional[pulumi.Input[str]] = None,
              suspensions: Optional[pulumi.Input[Sequence[pulumi.Input['SuspensionSuspensionArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+
         if group_id is not None:
             _setter("group_id", group_id)
         if suspensions is not None:

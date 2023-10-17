@@ -61,7 +61,15 @@ class ElastigroupBackendServiceArgs:
              location_type: Optional[pulumi.Input[str]] = None,
              named_ports: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupBackendServiceNamedPortArgs']]]] = None,
              scheme: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+        if 'locationType' in kwargs:
+            location_type = kwargs['locationType']
+        if 'namedPorts' in kwargs:
+            named_ports = kwargs['namedPorts']
+
         _setter("service_name", service_name)
         if location_type is not None:
             _setter("location_type", location_type)
@@ -144,7 +152,9 @@ class ElastigroupBackendServiceNamedPortArgs:
              _setter: Callable[[Any, Any], None],
              name: pulumi.Input[str],
              ports: pulumi.Input[Sequence[pulumi.Input[str]]],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("name", name)
         _setter("ports", ports)
 
@@ -222,7 +232,15 @@ class ElastigroupDiskArgs:
              mode: Optional[pulumi.Input[str]] = None,
              source: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'autoDelete' in kwargs:
+            auto_delete = kwargs['autoDelete']
+        if 'deviceName' in kwargs:
+            device_name = kwargs['deviceName']
+        if 'initializeParams' in kwargs:
+            initialize_params = kwargs['initializeParams']
+
         if auto_delete is not None:
             _setter("auto_delete", auto_delete)
         if boot is not None:
@@ -366,7 +384,15 @@ class ElastigroupDiskInitializeParamArgs:
              source_image: pulumi.Input[str],
              disk_size_gb: Optional[pulumi.Input[str]] = None,
              disk_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'sourceImage' in kwargs:
+            source_image = kwargs['sourceImage']
+        if 'diskSizeGb' in kwargs:
+            disk_size_gb = kwargs['diskSizeGb']
+        if 'diskType' in kwargs:
+            disk_type = kwargs['diskType']
+
         _setter("source_image", source_image)
         if disk_size_gb is not None:
             _setter("disk_size_gb", disk_size_gb)
@@ -441,7 +467,9 @@ class ElastigroupGpuArgs:
              _setter: Callable[[Any, Any], None],
              count: pulumi.Input[int],
              type: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("count", count)
         _setter("type", type)
 
@@ -494,7 +522,11 @@ class ElastigroupInstanceTypesCustomArgs:
              _setter: Callable[[Any, Any], None],
              memory_gib: pulumi.Input[int],
              vcpu: pulumi.Input[int],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'memoryGib' in kwargs:
+            memory_gib = kwargs['memoryGib']
+
         _setter("memory_gib", memory_gib)
         _setter("vcpu", vcpu)
 
@@ -545,7 +577,13 @@ class ElastigroupIntegrationDockerSwarmArgs:
              _setter: Callable[[Any, Any], None],
              master_host: pulumi.Input[str],
              master_port: pulumi.Input[int],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'masterHost' in kwargs:
+            master_host = kwargs['masterHost']
+        if 'masterPort' in kwargs:
+            master_port = kwargs['masterPort']
+
         _setter("master_host", master_host)
         _setter("master_port", master_port)
 
@@ -616,7 +654,25 @@ class ElastigroupIntegrationGkeArgs:
              autoscale_labels: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupIntegrationGkeAutoscaleLabelArgs']]]] = None,
              cluster_id: Optional[pulumi.Input[str]] = None,
              location: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'autoUpdate' in kwargs:
+            auto_update = kwargs['autoUpdate']
+        if 'autoscaleCooldown' in kwargs:
+            autoscale_cooldown = kwargs['autoscaleCooldown']
+        if 'autoscaleDown' in kwargs:
+            autoscale_down = kwargs['autoscaleDown']
+        if 'autoscaleHeadroom' in kwargs:
+            autoscale_headroom = kwargs['autoscaleHeadroom']
+        if 'autoscaleIsAutoConfig' in kwargs:
+            autoscale_is_auto_config = kwargs['autoscaleIsAutoConfig']
+        if 'autoscaleIsEnabled' in kwargs:
+            autoscale_is_enabled = kwargs['autoscaleIsEnabled']
+        if 'autoscaleLabels' in kwargs:
+            autoscale_labels = kwargs['autoscaleLabels']
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+
         if auto_update is not None:
             _setter("auto_update", auto_update)
         if autoscale_cooldown is not None:
@@ -733,7 +789,11 @@ class ElastigroupIntegrationGkeAutoscaleDownArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              evaluation_periods: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'evaluationPeriods' in kwargs:
+            evaluation_periods = kwargs['evaluationPeriods']
+
         if evaluation_periods is not None:
             _setter("evaluation_periods", evaluation_periods)
 
@@ -768,7 +828,15 @@ class ElastigroupIntegrationGkeAutoscaleHeadroomArgs:
              cpu_per_unit: Optional[pulumi.Input[int]] = None,
              memory_per_unit: Optional[pulumi.Input[int]] = None,
              num_of_units: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cpuPerUnit' in kwargs:
+            cpu_per_unit = kwargs['cpuPerUnit']
+        if 'memoryPerUnit' in kwargs:
+            memory_per_unit = kwargs['memoryPerUnit']
+        if 'numOfUnits' in kwargs:
+            num_of_units = kwargs['numOfUnits']
+
         if cpu_per_unit is not None:
             _setter("cpu_per_unit", cpu_per_unit)
         if memory_per_unit is not None:
@@ -823,7 +891,9 @@ class ElastigroupIntegrationGkeAutoscaleLabelArgs:
              _setter: Callable[[Any, Any], None],
              key: pulumi.Input[str],
              value: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("key", key)
         _setter("value", value)
 
@@ -871,7 +941,9 @@ class ElastigroupLabelArgs:
              _setter: Callable[[Any, Any], None],
              key: pulumi.Input[str],
              value: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("key", key)
         _setter("value", value)
 
@@ -919,7 +991,9 @@ class ElastigroupMetadataArgs:
              _setter: Callable[[Any, Any], None],
              key: pulumi.Input[str],
              value: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("key", key)
         _setter("value", value)
 
@@ -970,7 +1044,13 @@ class ElastigroupNetworkInterfaceArgs:
              network: pulumi.Input[str],
              access_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupNetworkInterfaceAccessConfigArgs']]]] = None,
              alias_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupNetworkInterfaceAliasIpRangeArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accessConfigs' in kwargs:
+            access_configs = kwargs['accessConfigs']
+        if 'aliasIpRanges' in kwargs:
+            alias_ip_ranges = kwargs['aliasIpRanges']
+
         _setter("network", network)
         if access_configs is not None:
             _setter("access_configs", access_configs)
@@ -1030,7 +1110,9 @@ class ElastigroupNetworkInterfaceAccessConfigArgs:
              _setter: Callable[[Any, Any], None],
              name: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if name is not None:
             _setter("name", name)
         if type is not None:
@@ -1076,7 +1158,13 @@ class ElastigroupNetworkInterfaceAliasIpRangeArgs:
              _setter: Callable[[Any, Any], None],
              ip_cidr_range: pulumi.Input[str],
              subnetwork_range_name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'ipCidrRange' in kwargs:
+            ip_cidr_range = kwargs['ipCidrRange']
+        if 'subnetworkRangeName' in kwargs:
+            subnetwork_range_name = kwargs['subnetworkRangeName']
+
         _setter("ip_cidr_range", ip_cidr_range)
         _setter("subnetwork_range_name", subnetwork_range_name)
 
@@ -1164,7 +1252,17 @@ class ElastigroupScalingDownPolicyArgs:
              period: Optional[pulumi.Input[int]] = None,
              source: Optional[pulumi.Input[str]] = None,
              statistic: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'metricName' in kwargs:
+            metric_name = kwargs['metricName']
+        if 'policyName' in kwargs:
+            policy_name = kwargs['policyName']
+        if 'actionType' in kwargs:
+            action_type = kwargs['actionType']
+        if 'evaluationPeriods' in kwargs:
+            evaluation_periods = kwargs['evaluationPeriods']
+
         _setter("metric_name", metric_name)
         _setter("namespace", namespace)
         _setter("policy_name", policy_name)
@@ -1371,7 +1469,9 @@ class ElastigroupScalingDownPolicyDimensionArgs:
              _setter: Callable[[Any, Any], None],
              name: pulumi.Input[str],
              value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("name", name)
         if value is not None:
             _setter("value", value)
@@ -1466,7 +1566,17 @@ class ElastigroupScalingUpPolicyArgs:
              period: Optional[pulumi.Input[int]] = None,
              source: Optional[pulumi.Input[str]] = None,
              statistic: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'metricName' in kwargs:
+            metric_name = kwargs['metricName']
+        if 'policyName' in kwargs:
+            policy_name = kwargs['policyName']
+        if 'actionType' in kwargs:
+            action_type = kwargs['actionType']
+        if 'evaluationPeriods' in kwargs:
+            evaluation_periods = kwargs['evaluationPeriods']
+
         _setter("metric_name", metric_name)
         _setter("namespace", namespace)
         _setter("policy_name", policy_name)
@@ -1673,7 +1783,9 @@ class ElastigroupScalingUpPolicyDimensionArgs:
              _setter: Callable[[Any, Any], None],
              name: pulumi.Input[str],
              value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("name", name)
         if value is not None:
             _setter("value", value)
@@ -1744,7 +1856,21 @@ class ElastigroupScheduledTaskArgs:
              max_capacity: Optional[pulumi.Input[str]] = None,
              min_capacity: Optional[pulumi.Input[str]] = None,
              target_capacity: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'taskType' in kwargs:
+            task_type = kwargs['taskType']
+        if 'cronExpression' in kwargs:
+            cron_expression = kwargs['cronExpression']
+        if 'isEnabled' in kwargs:
+            is_enabled = kwargs['isEnabled']
+        if 'maxCapacity' in kwargs:
+            max_capacity = kwargs['maxCapacity']
+        if 'minCapacity' in kwargs:
+            min_capacity = kwargs['minCapacity']
+        if 'targetCapacity' in kwargs:
+            target_capacity = kwargs['targetCapacity']
+
         _setter("task_type", task_type)
         if cron_expression is not None:
             _setter("cron_expression", cron_expression)
@@ -1855,7 +1981,11 @@ class ElastigroupSubnetArgs:
              _setter: Callable[[Any, Any], None],
              region: pulumi.Input[str],
              subnet_names: pulumi.Input[Sequence[pulumi.Input[str]]],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'subnetNames' in kwargs:
+            subnet_names = kwargs['subnetNames']
+
         _setter("region", region)
         _setter("subnet_names", subnet_names)
 

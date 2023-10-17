@@ -49,7 +49,17 @@ class RoutingRuleArgs:
              priority: Optional[pulumi.Input[int]] = None,
              strategy: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input['RoutingRuleTagArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'balancerId' in kwargs:
+            balancer_id = kwargs['balancerId']
+        if 'listenerId' in kwargs:
+            listener_id = kwargs['listenerId']
+        if 'targetSetIds' in kwargs:
+            target_set_ids = kwargs['targetSetIds']
+        if 'middlewareIds' in kwargs:
+            middleware_ids = kwargs['middlewareIds']
+
         _setter("balancer_id", balancer_id)
         _setter("listener_id", listener_id)
         _setter("route", route)
@@ -172,7 +182,17 @@ class _RoutingRuleState:
              strategy: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input['RoutingRuleTagArgs']]]] = None,
              target_set_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'balancerId' in kwargs:
+            balancer_id = kwargs['balancerId']
+        if 'listenerId' in kwargs:
+            listener_id = kwargs['listenerId']
+        if 'middlewareIds' in kwargs:
+            middleware_ids = kwargs['middlewareIds']
+        if 'targetSetIds' in kwargs:
+            target_set_ids = kwargs['targetSetIds']
+
         if balancer_id is not None:
             _setter("balancer_id", balancer_id)
         if listener_id is not None:

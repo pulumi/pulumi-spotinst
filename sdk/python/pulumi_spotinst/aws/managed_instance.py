@@ -160,7 +160,85 @@ class ManagedInstanceArgs:
              unhealthy_duration: Optional[pulumi.Input[int]] = None,
              user_data: Optional[pulumi.Input[str]] = None,
              utilize_reserved_instances: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'imageId' in kwargs:
+            image_id = kwargs['imageId']
+        if 'instanceTypes' in kwargs:
+            instance_types = kwargs['instanceTypes']
+        if 'persistBlockDevices' in kwargs:
+            persist_block_devices = kwargs['persistBlockDevices']
+        if 'subnetIds' in kwargs:
+            subnet_ids = kwargs['subnetIds']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'autoHealing' in kwargs:
+            auto_healing = kwargs['autoHealing']
+        if 'blockDeviceMappings' in kwargs:
+            block_device_mappings = kwargs['blockDeviceMappings']
+        if 'blockDevicesMode' in kwargs:
+            block_devices_mode = kwargs['blockDevicesMode']
+        if 'cpuCredits' in kwargs:
+            cpu_credits = kwargs['cpuCredits']
+        if 'drainingTimeout' in kwargs:
+            draining_timeout = kwargs['drainingTimeout']
+        if 'ebsOptimized' in kwargs:
+            ebs_optimized = kwargs['ebsOptimized']
+        if 'elasticIp' in kwargs:
+            elastic_ip = kwargs['elasticIp']
+        if 'enableMonitoring' in kwargs:
+            enable_monitoring = kwargs['enableMonitoring']
+        if 'fallBackToOd' in kwargs:
+            fall_back_to_od = kwargs['fallBackToOd']
+        if 'gracePeriod' in kwargs:
+            grace_period = kwargs['gracePeriod']
+        if 'healthCheckType' in kwargs:
+            health_check_type = kwargs['healthCheckType']
+        if 'iamInstanceProfile' in kwargs:
+            iam_instance_profile = kwargs['iamInstanceProfile']
+        if 'integrationRoute53' in kwargs:
+            integration_route53 = kwargs['integrationRoute53']
+        if 'keyPair' in kwargs:
+            key_pair = kwargs['keyPair']
+        if 'lifeCycle' in kwargs:
+            life_cycle = kwargs['lifeCycle']
+        if 'loadBalancers' in kwargs:
+            load_balancers = kwargs['loadBalancers']
+        if 'managedInstanceAction' in kwargs:
+            managed_instance_action = kwargs['managedInstanceAction']
+        if 'minimumInstanceLifetime' in kwargs:
+            minimum_instance_lifetime = kwargs['minimumInstanceLifetime']
+        if 'networkInterfaces' in kwargs:
+            network_interfaces = kwargs['networkInterfaces']
+        if 'optimizationWindows' in kwargs:
+            optimization_windows = kwargs['optimizationWindows']
+        if 'persistPrivateIp' in kwargs:
+            persist_private_ip = kwargs['persistPrivateIp']
+        if 'persistRootDevice' in kwargs:
+            persist_root_device = kwargs['persistRootDevice']
+        if 'placementTenancy' in kwargs:
+            placement_tenancy = kwargs['placementTenancy']
+        if 'preferredType' in kwargs:
+            preferred_type = kwargs['preferredType']
+        if 'privateIp' in kwargs:
+            private_ip = kwargs['privateIp']
+        if 'resourceTagSpecifications' in kwargs:
+            resource_tag_specifications = kwargs['resourceTagSpecifications']
+        if 'revertToSpot' in kwargs:
+            revert_to_spot = kwargs['revertToSpot']
+        if 'scheduledTasks' in kwargs:
+            scheduled_tasks = kwargs['scheduledTasks']
+        if 'securityGroupIds' in kwargs:
+            security_group_ids = kwargs['securityGroupIds']
+        if 'shutdownScript' in kwargs:
+            shutdown_script = kwargs['shutdownScript']
+        if 'unhealthyDuration' in kwargs:
+            unhealthy_duration = kwargs['unhealthyDuration']
+        if 'userData' in kwargs:
+            user_data = kwargs['userData']
+        if 'utilizeReservedInstances' in kwargs:
+            utilize_reserved_instances = kwargs['utilizeReservedInstances']
+
         _setter("image_id", image_id)
         _setter("instance_types", instance_types)
         _setter("persist_block_devices", persist_block_devices)
@@ -799,7 +877,85 @@ class _ManagedInstanceState:
              user_data: Optional[pulumi.Input[str]] = None,
              utilize_reserved_instances: Optional[pulumi.Input[bool]] = None,
              vpc_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'autoHealing' in kwargs:
+            auto_healing = kwargs['autoHealing']
+        if 'blockDeviceMappings' in kwargs:
+            block_device_mappings = kwargs['blockDeviceMappings']
+        if 'blockDevicesMode' in kwargs:
+            block_devices_mode = kwargs['blockDevicesMode']
+        if 'cpuCredits' in kwargs:
+            cpu_credits = kwargs['cpuCredits']
+        if 'drainingTimeout' in kwargs:
+            draining_timeout = kwargs['drainingTimeout']
+        if 'ebsOptimized' in kwargs:
+            ebs_optimized = kwargs['ebsOptimized']
+        if 'elasticIp' in kwargs:
+            elastic_ip = kwargs['elasticIp']
+        if 'enableMonitoring' in kwargs:
+            enable_monitoring = kwargs['enableMonitoring']
+        if 'fallBackToOd' in kwargs:
+            fall_back_to_od = kwargs['fallBackToOd']
+        if 'gracePeriod' in kwargs:
+            grace_period = kwargs['gracePeriod']
+        if 'healthCheckType' in kwargs:
+            health_check_type = kwargs['healthCheckType']
+        if 'iamInstanceProfile' in kwargs:
+            iam_instance_profile = kwargs['iamInstanceProfile']
+        if 'imageId' in kwargs:
+            image_id = kwargs['imageId']
+        if 'instanceTypes' in kwargs:
+            instance_types = kwargs['instanceTypes']
+        if 'integrationRoute53' in kwargs:
+            integration_route53 = kwargs['integrationRoute53']
+        if 'keyPair' in kwargs:
+            key_pair = kwargs['keyPair']
+        if 'lifeCycle' in kwargs:
+            life_cycle = kwargs['lifeCycle']
+        if 'loadBalancers' in kwargs:
+            load_balancers = kwargs['loadBalancers']
+        if 'managedInstanceAction' in kwargs:
+            managed_instance_action = kwargs['managedInstanceAction']
+        if 'minimumInstanceLifetime' in kwargs:
+            minimum_instance_lifetime = kwargs['minimumInstanceLifetime']
+        if 'networkInterfaces' in kwargs:
+            network_interfaces = kwargs['networkInterfaces']
+        if 'optimizationWindows' in kwargs:
+            optimization_windows = kwargs['optimizationWindows']
+        if 'persistBlockDevices' in kwargs:
+            persist_block_devices = kwargs['persistBlockDevices']
+        if 'persistPrivateIp' in kwargs:
+            persist_private_ip = kwargs['persistPrivateIp']
+        if 'persistRootDevice' in kwargs:
+            persist_root_device = kwargs['persistRootDevice']
+        if 'placementTenancy' in kwargs:
+            placement_tenancy = kwargs['placementTenancy']
+        if 'preferredType' in kwargs:
+            preferred_type = kwargs['preferredType']
+        if 'privateIp' in kwargs:
+            private_ip = kwargs['privateIp']
+        if 'resourceTagSpecifications' in kwargs:
+            resource_tag_specifications = kwargs['resourceTagSpecifications']
+        if 'revertToSpot' in kwargs:
+            revert_to_spot = kwargs['revertToSpot']
+        if 'scheduledTasks' in kwargs:
+            scheduled_tasks = kwargs['scheduledTasks']
+        if 'securityGroupIds' in kwargs:
+            security_group_ids = kwargs['securityGroupIds']
+        if 'shutdownScript' in kwargs:
+            shutdown_script = kwargs['shutdownScript']
+        if 'subnetIds' in kwargs:
+            subnet_ids = kwargs['subnetIds']
+        if 'unhealthyDuration' in kwargs:
+            unhealthy_duration = kwargs['unhealthyDuration']
+        if 'userData' in kwargs:
+            user_data = kwargs['userData']
+        if 'utilizeReservedInstances' in kwargs:
+            utilize_reserved_instances = kwargs['utilizeReservedInstances']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+
         if auto_healing is not None:
             _setter("auto_healing", auto_healing)
         if block_device_mappings is not None:

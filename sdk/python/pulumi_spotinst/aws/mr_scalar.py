@@ -259,7 +259,115 @@ class MrScalarArgs:
              termination_policies: Optional[pulumi.Input[Sequence[pulumi.Input['MrScalarTerminationPolicyArgs']]]] = None,
              termination_protected: Optional[pulumi.Input[bool]] = None,
              visible_to_all_users: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'additionalInfo' in kwargs:
+            additional_info = kwargs['additionalInfo']
+        if 'additionalPrimarySecurityGroups' in kwargs:
+            additional_primary_security_groups = kwargs['additionalPrimarySecurityGroups']
+        if 'additionalReplicaSecurityGroups' in kwargs:
+            additional_replica_security_groups = kwargs['additionalReplicaSecurityGroups']
+        if 'availabilityZones' in kwargs:
+            availability_zones = kwargs['availabilityZones']
+        if 'bootstrapActionsFiles' in kwargs:
+            bootstrap_actions_files = kwargs['bootstrapActionsFiles']
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if 'configurationsFiles' in kwargs:
+            configurations_files = kwargs['configurationsFiles']
+        if 'coreDesiredCapacity' in kwargs:
+            core_desired_capacity = kwargs['coreDesiredCapacity']
+        if 'coreEbsBlockDevices' in kwargs:
+            core_ebs_block_devices = kwargs['coreEbsBlockDevices']
+        if 'coreEbsOptimized' in kwargs:
+            core_ebs_optimized = kwargs['coreEbsOptimized']
+        if 'coreInstanceTypes' in kwargs:
+            core_instance_types = kwargs['coreInstanceTypes']
+        if 'coreLifecycle' in kwargs:
+            core_lifecycle = kwargs['coreLifecycle']
+        if 'coreMaxSize' in kwargs:
+            core_max_size = kwargs['coreMaxSize']
+        if 'coreMinSize' in kwargs:
+            core_min_size = kwargs['coreMinSize']
+        if 'coreScalingDownPolicies' in kwargs:
+            core_scaling_down_policies = kwargs['coreScalingDownPolicies']
+        if 'coreScalingUpPolicies' in kwargs:
+            core_scaling_up_policies = kwargs['coreScalingUpPolicies']
+        if 'coreUnit' in kwargs:
+            core_unit = kwargs['coreUnit']
+        if 'customAmiId' in kwargs:
+            custom_ami_id = kwargs['customAmiId']
+        if 'ebsRootVolumeSize' in kwargs:
+            ebs_root_volume_size = kwargs['ebsRootVolumeSize']
+        if 'ec2KeyName' in kwargs:
+            ec2_key_name = kwargs['ec2KeyName']
+        if 'exposeClusterId' in kwargs:
+            expose_cluster_id = kwargs['exposeClusterId']
+        if 'instanceWeights' in kwargs:
+            instance_weights = kwargs['instanceWeights']
+        if 'jobFlowRole' in kwargs:
+            job_flow_role = kwargs['jobFlowRole']
+        if 'keepJobFlowAlive' in kwargs:
+            keep_job_flow_alive = kwargs['keepJobFlowAlive']
+        if 'logUri' in kwargs:
+            log_uri = kwargs['logUri']
+        if 'managedPrimarySecurityGroup' in kwargs:
+            managed_primary_security_group = kwargs['managedPrimarySecurityGroup']
+        if 'managedReplicaSecurityGroup' in kwargs:
+            managed_replica_security_group = kwargs['managedReplicaSecurityGroup']
+        if 'masterEbsBlockDevices' in kwargs:
+            master_ebs_block_devices = kwargs['masterEbsBlockDevices']
+        if 'masterEbsOptimized' in kwargs:
+            master_ebs_optimized = kwargs['masterEbsOptimized']
+        if 'masterInstanceTypes' in kwargs:
+            master_instance_types = kwargs['masterInstanceTypes']
+        if 'masterLifecycle' in kwargs:
+            master_lifecycle = kwargs['masterLifecycle']
+        if 'masterTarget' in kwargs:
+            master_target = kwargs['masterTarget']
+        if 'provisioningTimeout' in kwargs:
+            provisioning_timeout = kwargs['provisioningTimeout']
+        if 'releaseLabel' in kwargs:
+            release_label = kwargs['releaseLabel']
+        if 'repoUpgradeOnBoot' in kwargs:
+            repo_upgrade_on_boot = kwargs['repoUpgradeOnBoot']
+        if 'scheduledTasks' in kwargs:
+            scheduled_tasks = kwargs['scheduledTasks']
+        if 'securityConfig' in kwargs:
+            security_config = kwargs['securityConfig']
+        if 'serviceAccessSecurityGroup' in kwargs:
+            service_access_security_group = kwargs['serviceAccessSecurityGroup']
+        if 'serviceRole' in kwargs:
+            service_role = kwargs['serviceRole']
+        if 'stepsFiles' in kwargs:
+            steps_files = kwargs['stepsFiles']
+        if 'taskDesiredCapacity' in kwargs:
+            task_desired_capacity = kwargs['taskDesiredCapacity']
+        if 'taskEbsBlockDevices' in kwargs:
+            task_ebs_block_devices = kwargs['taskEbsBlockDevices']
+        if 'taskEbsOptimized' in kwargs:
+            task_ebs_optimized = kwargs['taskEbsOptimized']
+        if 'taskInstanceTypes' in kwargs:
+            task_instance_types = kwargs['taskInstanceTypes']
+        if 'taskLifecycle' in kwargs:
+            task_lifecycle = kwargs['taskLifecycle']
+        if 'taskMaxSize' in kwargs:
+            task_max_size = kwargs['taskMaxSize']
+        if 'taskMinSize' in kwargs:
+            task_min_size = kwargs['taskMinSize']
+        if 'taskScalingDownPolicies' in kwargs:
+            task_scaling_down_policies = kwargs['taskScalingDownPolicies']
+        if 'taskScalingUpPolicies' in kwargs:
+            task_scaling_up_policies = kwargs['taskScalingUpPolicies']
+        if 'taskUnit' in kwargs:
+            task_unit = kwargs['taskUnit']
+        if 'terminationPolicies' in kwargs:
+            termination_policies = kwargs['terminationPolicies']
+        if 'terminationProtected' in kwargs:
+            termination_protected = kwargs['terminationProtected']
+        if 'visibleToAllUsers' in kwargs:
+            visible_to_all_users = kwargs['visibleToAllUsers']
+
         _setter("strategy", strategy)
         if additional_info is not None:
             _setter("additional_info", additional_info)
@@ -1338,7 +1446,117 @@ class _MrScalarState:
              termination_policies: Optional[pulumi.Input[Sequence[pulumi.Input['MrScalarTerminationPolicyArgs']]]] = None,
              termination_protected: Optional[pulumi.Input[bool]] = None,
              visible_to_all_users: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'additionalInfo' in kwargs:
+            additional_info = kwargs['additionalInfo']
+        if 'additionalPrimarySecurityGroups' in kwargs:
+            additional_primary_security_groups = kwargs['additionalPrimarySecurityGroups']
+        if 'additionalReplicaSecurityGroups' in kwargs:
+            additional_replica_security_groups = kwargs['additionalReplicaSecurityGroups']
+        if 'availabilityZones' in kwargs:
+            availability_zones = kwargs['availabilityZones']
+        if 'bootstrapActionsFiles' in kwargs:
+            bootstrap_actions_files = kwargs['bootstrapActionsFiles']
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if 'configurationsFiles' in kwargs:
+            configurations_files = kwargs['configurationsFiles']
+        if 'coreDesiredCapacity' in kwargs:
+            core_desired_capacity = kwargs['coreDesiredCapacity']
+        if 'coreEbsBlockDevices' in kwargs:
+            core_ebs_block_devices = kwargs['coreEbsBlockDevices']
+        if 'coreEbsOptimized' in kwargs:
+            core_ebs_optimized = kwargs['coreEbsOptimized']
+        if 'coreInstanceTypes' in kwargs:
+            core_instance_types = kwargs['coreInstanceTypes']
+        if 'coreLifecycle' in kwargs:
+            core_lifecycle = kwargs['coreLifecycle']
+        if 'coreMaxSize' in kwargs:
+            core_max_size = kwargs['coreMaxSize']
+        if 'coreMinSize' in kwargs:
+            core_min_size = kwargs['coreMinSize']
+        if 'coreScalingDownPolicies' in kwargs:
+            core_scaling_down_policies = kwargs['coreScalingDownPolicies']
+        if 'coreScalingUpPolicies' in kwargs:
+            core_scaling_up_policies = kwargs['coreScalingUpPolicies']
+        if 'coreUnit' in kwargs:
+            core_unit = kwargs['coreUnit']
+        if 'customAmiId' in kwargs:
+            custom_ami_id = kwargs['customAmiId']
+        if 'ebsRootVolumeSize' in kwargs:
+            ebs_root_volume_size = kwargs['ebsRootVolumeSize']
+        if 'ec2KeyName' in kwargs:
+            ec2_key_name = kwargs['ec2KeyName']
+        if 'exposeClusterId' in kwargs:
+            expose_cluster_id = kwargs['exposeClusterId']
+        if 'instanceWeights' in kwargs:
+            instance_weights = kwargs['instanceWeights']
+        if 'jobFlowRole' in kwargs:
+            job_flow_role = kwargs['jobFlowRole']
+        if 'keepJobFlowAlive' in kwargs:
+            keep_job_flow_alive = kwargs['keepJobFlowAlive']
+        if 'logUri' in kwargs:
+            log_uri = kwargs['logUri']
+        if 'managedPrimarySecurityGroup' in kwargs:
+            managed_primary_security_group = kwargs['managedPrimarySecurityGroup']
+        if 'managedReplicaSecurityGroup' in kwargs:
+            managed_replica_security_group = kwargs['managedReplicaSecurityGroup']
+        if 'masterEbsBlockDevices' in kwargs:
+            master_ebs_block_devices = kwargs['masterEbsBlockDevices']
+        if 'masterEbsOptimized' in kwargs:
+            master_ebs_optimized = kwargs['masterEbsOptimized']
+        if 'masterInstanceTypes' in kwargs:
+            master_instance_types = kwargs['masterInstanceTypes']
+        if 'masterLifecycle' in kwargs:
+            master_lifecycle = kwargs['masterLifecycle']
+        if 'masterTarget' in kwargs:
+            master_target = kwargs['masterTarget']
+        if 'outputClusterId' in kwargs:
+            output_cluster_id = kwargs['outputClusterId']
+        if 'provisioningTimeout' in kwargs:
+            provisioning_timeout = kwargs['provisioningTimeout']
+        if 'releaseLabel' in kwargs:
+            release_label = kwargs['releaseLabel']
+        if 'repoUpgradeOnBoot' in kwargs:
+            repo_upgrade_on_boot = kwargs['repoUpgradeOnBoot']
+        if 'scheduledTasks' in kwargs:
+            scheduled_tasks = kwargs['scheduledTasks']
+        if 'securityConfig' in kwargs:
+            security_config = kwargs['securityConfig']
+        if 'serviceAccessSecurityGroup' in kwargs:
+            service_access_security_group = kwargs['serviceAccessSecurityGroup']
+        if 'serviceRole' in kwargs:
+            service_role = kwargs['serviceRole']
+        if 'stepsFiles' in kwargs:
+            steps_files = kwargs['stepsFiles']
+        if 'taskDesiredCapacity' in kwargs:
+            task_desired_capacity = kwargs['taskDesiredCapacity']
+        if 'taskEbsBlockDevices' in kwargs:
+            task_ebs_block_devices = kwargs['taskEbsBlockDevices']
+        if 'taskEbsOptimized' in kwargs:
+            task_ebs_optimized = kwargs['taskEbsOptimized']
+        if 'taskInstanceTypes' in kwargs:
+            task_instance_types = kwargs['taskInstanceTypes']
+        if 'taskLifecycle' in kwargs:
+            task_lifecycle = kwargs['taskLifecycle']
+        if 'taskMaxSize' in kwargs:
+            task_max_size = kwargs['taskMaxSize']
+        if 'taskMinSize' in kwargs:
+            task_min_size = kwargs['taskMinSize']
+        if 'taskScalingDownPolicies' in kwargs:
+            task_scaling_down_policies = kwargs['taskScalingDownPolicies']
+        if 'taskScalingUpPolicies' in kwargs:
+            task_scaling_up_policies = kwargs['taskScalingUpPolicies']
+        if 'taskUnit' in kwargs:
+            task_unit = kwargs['taskUnit']
+        if 'terminationPolicies' in kwargs:
+            termination_policies = kwargs['terminationPolicies']
+        if 'terminationProtected' in kwargs:
+            termination_protected = kwargs['terminationProtected']
+        if 'visibleToAllUsers' in kwargs:
+            visible_to_all_users = kwargs['visibleToAllUsers']
+
         if additional_info is not None:
             _setter("additional_info", additional_info)
         if additional_primary_security_groups is not None:

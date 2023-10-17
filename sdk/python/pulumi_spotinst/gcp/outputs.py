@@ -83,7 +83,15 @@ class ElastigroupBackendService(dict):
              location_type: Optional[str] = None,
              named_ports: Optional[Sequence['outputs.ElastigroupBackendServiceNamedPort']] = None,
              scheme: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+        if 'locationType' in kwargs:
+            location_type = kwargs['locationType']
+        if 'namedPorts' in kwargs:
+            named_ports = kwargs['namedPorts']
+
         _setter("service_name", service_name)
         if location_type is not None:
             _setter("location_type", location_type)
@@ -150,7 +158,9 @@ class ElastigroupBackendServiceNamedPort(dict):
              _setter: Callable[[Any, Any], None],
              name: str,
              ports: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("name", name)
         _setter("ports", ports)
 
@@ -241,7 +251,15 @@ class ElastigroupDisk(dict):
              mode: Optional[str] = None,
              source: Optional[str] = None,
              type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'autoDelete' in kwargs:
+            auto_delete = kwargs['autoDelete']
+        if 'deviceName' in kwargs:
+            device_name = kwargs['deviceName']
+        if 'initializeParams' in kwargs:
+            initialize_params = kwargs['initializeParams']
+
         if auto_delete is not None:
             _setter("auto_delete", auto_delete)
         if boot is not None:
@@ -374,7 +392,15 @@ class ElastigroupDiskInitializeParam(dict):
              source_image: str,
              disk_size_gb: Optional[str] = None,
              disk_type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'sourceImage' in kwargs:
+            source_image = kwargs['sourceImage']
+        if 'diskSizeGb' in kwargs:
+            disk_size_gb = kwargs['diskSizeGb']
+        if 'diskType' in kwargs:
+            disk_type = kwargs['diskType']
+
         _setter("source_image", source_image)
         if disk_size_gb is not None:
             _setter("disk_size_gb", disk_size_gb)
@@ -437,7 +463,9 @@ class ElastigroupGpu(dict):
              _setter: Callable[[Any, Any], None],
              count: int,
              type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("count", count)
         _setter("type", type)
 
@@ -499,7 +527,11 @@ class ElastigroupInstanceTypesCustom(dict):
              _setter: Callable[[Any, Any], None],
              memory_gib: int,
              vcpu: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'memoryGib' in kwargs:
+            memory_gib = kwargs['memoryGib']
+
         _setter("memory_gib", memory_gib)
         _setter("vcpu", vcpu)
 
@@ -561,7 +593,13 @@ class ElastigroupIntegrationDockerSwarm(dict):
              _setter: Callable[[Any, Any], None],
              master_host: str,
              master_port: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'masterHost' in kwargs:
+            master_host = kwargs['masterHost']
+        if 'masterPort' in kwargs:
+            master_port = kwargs['masterPort']
+
         _setter("master_host", master_host)
         _setter("master_port", master_port)
 
@@ -655,7 +693,25 @@ class ElastigroupIntegrationGke(dict):
              autoscale_labels: Optional[Sequence['outputs.ElastigroupIntegrationGkeAutoscaleLabel']] = None,
              cluster_id: Optional[str] = None,
              location: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'autoUpdate' in kwargs:
+            auto_update = kwargs['autoUpdate']
+        if 'autoscaleCooldown' in kwargs:
+            autoscale_cooldown = kwargs['autoscaleCooldown']
+        if 'autoscaleDown' in kwargs:
+            autoscale_down = kwargs['autoscaleDown']
+        if 'autoscaleHeadroom' in kwargs:
+            autoscale_headroom = kwargs['autoscaleHeadroom']
+        if 'autoscaleIsAutoConfig' in kwargs:
+            autoscale_is_auto_config = kwargs['autoscaleIsAutoConfig']
+        if 'autoscaleIsEnabled' in kwargs:
+            autoscale_is_enabled = kwargs['autoscaleIsEnabled']
+        if 'autoscaleLabels' in kwargs:
+            autoscale_labels = kwargs['autoscaleLabels']
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+
         if auto_update is not None:
             _setter("auto_update", auto_update)
         if autoscale_cooldown is not None:
@@ -753,7 +809,11 @@ class ElastigroupIntegrationGkeAutoscaleDown(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              evaluation_periods: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'evaluationPeriods' in kwargs:
+            evaluation_periods = kwargs['evaluationPeriods']
+
         if evaluation_periods is not None:
             _setter("evaluation_periods", evaluation_periods)
 
@@ -805,7 +865,15 @@ class ElastigroupIntegrationGkeAutoscaleHeadroom(dict):
              cpu_per_unit: Optional[int] = None,
              memory_per_unit: Optional[int] = None,
              num_of_units: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cpuPerUnit' in kwargs:
+            cpu_per_unit = kwargs['cpuPerUnit']
+        if 'memoryPerUnit' in kwargs:
+            memory_per_unit = kwargs['memoryPerUnit']
+        if 'numOfUnits' in kwargs:
+            num_of_units = kwargs['numOfUnits']
+
         if cpu_per_unit is not None:
             _setter("cpu_per_unit", cpu_per_unit)
         if memory_per_unit is not None:
@@ -848,7 +916,9 @@ class ElastigroupIntegrationGkeAutoscaleLabel(dict):
              _setter: Callable[[Any, Any], None],
              key: str,
              value: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("key", key)
         _setter("value", value)
 
@@ -888,7 +958,9 @@ class ElastigroupLabel(dict):
              _setter: Callable[[Any, Any], None],
              key: str,
              value: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("key", key)
         _setter("value", value)
 
@@ -928,7 +1000,9 @@ class ElastigroupMetadata(dict):
              _setter: Callable[[Any, Any], None],
              key: str,
              value: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("key", key)
         _setter("value", value)
 
@@ -990,7 +1064,13 @@ class ElastigroupNetworkInterface(dict):
              network: str,
              access_configs: Optional[Sequence['outputs.ElastigroupNetworkInterfaceAccessConfig']] = None,
              alias_ip_ranges: Optional[Sequence['outputs.ElastigroupNetworkInterfaceAliasIpRange']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accessConfigs' in kwargs:
+            access_configs = kwargs['accessConfigs']
+        if 'aliasIpRanges' in kwargs:
+            alias_ip_ranges = kwargs['aliasIpRanges']
+
         _setter("network", network)
         if access_configs is not None:
             _setter("access_configs", access_configs)
@@ -1038,7 +1118,9 @@ class ElastigroupNetworkInterfaceAccessConfig(dict):
              _setter: Callable[[Any, Any], None],
              name: Optional[str] = None,
              type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if name is not None:
             _setter("name", name)
         if type is not None:
@@ -1095,7 +1177,13 @@ class ElastigroupNetworkInterfaceAliasIpRange(dict):
              _setter: Callable[[Any, Any], None],
              ip_cidr_range: str,
              subnetwork_range_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'ipCidrRange' in kwargs:
+            ip_cidr_range = kwargs['ipCidrRange']
+        if 'subnetworkRangeName' in kwargs:
+            subnetwork_range_name = kwargs['subnetworkRangeName']
+
         _setter("ip_cidr_range", ip_cidr_range)
         _setter("subnetwork_range_name", subnetwork_range_name)
 
@@ -1198,7 +1286,17 @@ class ElastigroupScalingDownPolicy(dict):
              period: Optional[int] = None,
              source: Optional[str] = None,
              statistic: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'metricName' in kwargs:
+            metric_name = kwargs['metricName']
+        if 'policyName' in kwargs:
+            policy_name = kwargs['policyName']
+        if 'actionType' in kwargs:
+            action_type = kwargs['actionType']
+        if 'evaluationPeriods' in kwargs:
+            evaluation_periods = kwargs['evaluationPeriods']
+
         _setter("metric_name", metric_name)
         _setter("namespace", namespace)
         _setter("policy_name", policy_name)
@@ -1349,7 +1447,9 @@ class ElastigroupScalingDownPolicyDimension(dict):
              _setter: Callable[[Any, Any], None],
              name: str,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("name", name)
         if value is not None:
             _setter("value", value)
@@ -1459,7 +1559,17 @@ class ElastigroupScalingUpPolicy(dict):
              period: Optional[int] = None,
              source: Optional[str] = None,
              statistic: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'metricName' in kwargs:
+            metric_name = kwargs['metricName']
+        if 'policyName' in kwargs:
+            policy_name = kwargs['policyName']
+        if 'actionType' in kwargs:
+            action_type = kwargs['actionType']
+        if 'evaluationPeriods' in kwargs:
+            evaluation_periods = kwargs['evaluationPeriods']
+
         _setter("metric_name", metric_name)
         _setter("namespace", namespace)
         _setter("policy_name", policy_name)
@@ -1610,7 +1720,9 @@ class ElastigroupScalingUpPolicyDimension(dict):
              _setter: Callable[[Any, Any], None],
              name: str,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("name", name)
         if value is not None:
             _setter("value", value)
@@ -1700,7 +1812,21 @@ class ElastigroupScheduledTask(dict):
              max_capacity: Optional[str] = None,
              min_capacity: Optional[str] = None,
              target_capacity: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'taskType' in kwargs:
+            task_type = kwargs['taskType']
+        if 'cronExpression' in kwargs:
+            cron_expression = kwargs['cronExpression']
+        if 'isEnabled' in kwargs:
+            is_enabled = kwargs['isEnabled']
+        if 'maxCapacity' in kwargs:
+            max_capacity = kwargs['maxCapacity']
+        if 'minCapacity' in kwargs:
+            min_capacity = kwargs['minCapacity']
+        if 'targetCapacity' in kwargs:
+            target_capacity = kwargs['targetCapacity']
+
         _setter("task_type", task_type)
         if cron_expression is not None:
             _setter("cron_expression", cron_expression)
@@ -1804,7 +1930,11 @@ class ElastigroupSubnet(dict):
              _setter: Callable[[Any, Any], None],
              region: str,
              subnet_names: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'subnetNames' in kwargs:
+            subnet_names = kwargs['subnetNames']
+
         _setter("region", region)
         _setter("subnet_names", subnet_names)
 

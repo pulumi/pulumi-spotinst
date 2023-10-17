@@ -172,7 +172,65 @@ class ElastigroupArgs:
              subnets: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupSubnetArgs']]]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              unhealthy_duration: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'desiredCapacity' in kwargs:
+            desired_capacity = kwargs['desiredCapacity']
+        if 'autoHealing' in kwargs:
+            auto_healing = kwargs['autoHealing']
+        if 'availabilityZones' in kwargs:
+            availability_zones = kwargs['availabilityZones']
+        if 'backendServices' in kwargs:
+            backend_services = kwargs['backendServices']
+        if 'drainingTimeout' in kwargs:
+            draining_timeout = kwargs['drainingTimeout']
+        if 'fallbackToOndemand' in kwargs:
+            fallback_to_ondemand = kwargs['fallbackToOndemand']
+        if 'healthCheckGracePeriod' in kwargs:
+            health_check_grace_period = kwargs['healthCheckGracePeriod']
+        if 'healthCheckType' in kwargs:
+            health_check_type = kwargs['healthCheckType']
+        if 'instanceNamePrefix' in kwargs:
+            instance_name_prefix = kwargs['instanceNamePrefix']
+        if 'instanceTypesCustoms' in kwargs:
+            instance_types_customs = kwargs['instanceTypesCustoms']
+        if 'instanceTypesOndemand' in kwargs:
+            instance_types_ondemand = kwargs['instanceTypesOndemand']
+        if 'instanceTypesPreemptibles' in kwargs:
+            instance_types_preemptibles = kwargs['instanceTypesPreemptibles']
+        if 'integrationDockerSwarm' in kwargs:
+            integration_docker_swarm = kwargs['integrationDockerSwarm']
+        if 'integrationGke' in kwargs:
+            integration_gke = kwargs['integrationGke']
+        if 'ipForwarding' in kwargs:
+            ip_forwarding = kwargs['ipForwarding']
+        if 'maxSize' in kwargs:
+            max_size = kwargs['maxSize']
+        if 'minSize' in kwargs:
+            min_size = kwargs['minSize']
+        if 'networkInterfaces' in kwargs:
+            network_interfaces = kwargs['networkInterfaces']
+        if 'ondemandCount' in kwargs:
+            ondemand_count = kwargs['ondemandCount']
+        if 'preemptiblePercentage' in kwargs:
+            preemptible_percentage = kwargs['preemptiblePercentage']
+        if 'provisioningModel' in kwargs:
+            provisioning_model = kwargs['provisioningModel']
+        if 'scalingDownPolicies' in kwargs:
+            scaling_down_policies = kwargs['scalingDownPolicies']
+        if 'scalingUpPolicies' in kwargs:
+            scaling_up_policies = kwargs['scalingUpPolicies']
+        if 'scheduledTasks' in kwargs:
+            scheduled_tasks = kwargs['scheduledTasks']
+        if 'serviceAccount' in kwargs:
+            service_account = kwargs['serviceAccount']
+        if 'shutdownScript' in kwargs:
+            shutdown_script = kwargs['shutdownScript']
+        if 'startupScript' in kwargs:
+            startup_script = kwargs['startupScript']
+        if 'unhealthyDuration' in kwargs:
+            unhealthy_duration = kwargs['unhealthyDuration']
+
         _setter("desired_capacity", desired_capacity)
         if auto_healing is not None:
             _setter("auto_healing", auto_healing)
@@ -836,7 +894,65 @@ class _ElastigroupState:
              subnets: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupSubnetArgs']]]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              unhealthy_duration: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'autoHealing' in kwargs:
+            auto_healing = kwargs['autoHealing']
+        if 'availabilityZones' in kwargs:
+            availability_zones = kwargs['availabilityZones']
+        if 'backendServices' in kwargs:
+            backend_services = kwargs['backendServices']
+        if 'desiredCapacity' in kwargs:
+            desired_capacity = kwargs['desiredCapacity']
+        if 'drainingTimeout' in kwargs:
+            draining_timeout = kwargs['drainingTimeout']
+        if 'fallbackToOndemand' in kwargs:
+            fallback_to_ondemand = kwargs['fallbackToOndemand']
+        if 'healthCheckGracePeriod' in kwargs:
+            health_check_grace_period = kwargs['healthCheckGracePeriod']
+        if 'healthCheckType' in kwargs:
+            health_check_type = kwargs['healthCheckType']
+        if 'instanceNamePrefix' in kwargs:
+            instance_name_prefix = kwargs['instanceNamePrefix']
+        if 'instanceTypesCustoms' in kwargs:
+            instance_types_customs = kwargs['instanceTypesCustoms']
+        if 'instanceTypesOndemand' in kwargs:
+            instance_types_ondemand = kwargs['instanceTypesOndemand']
+        if 'instanceTypesPreemptibles' in kwargs:
+            instance_types_preemptibles = kwargs['instanceTypesPreemptibles']
+        if 'integrationDockerSwarm' in kwargs:
+            integration_docker_swarm = kwargs['integrationDockerSwarm']
+        if 'integrationGke' in kwargs:
+            integration_gke = kwargs['integrationGke']
+        if 'ipForwarding' in kwargs:
+            ip_forwarding = kwargs['ipForwarding']
+        if 'maxSize' in kwargs:
+            max_size = kwargs['maxSize']
+        if 'minSize' in kwargs:
+            min_size = kwargs['minSize']
+        if 'networkInterfaces' in kwargs:
+            network_interfaces = kwargs['networkInterfaces']
+        if 'ondemandCount' in kwargs:
+            ondemand_count = kwargs['ondemandCount']
+        if 'preemptiblePercentage' in kwargs:
+            preemptible_percentage = kwargs['preemptiblePercentage']
+        if 'provisioningModel' in kwargs:
+            provisioning_model = kwargs['provisioningModel']
+        if 'scalingDownPolicies' in kwargs:
+            scaling_down_policies = kwargs['scalingDownPolicies']
+        if 'scalingUpPolicies' in kwargs:
+            scaling_up_policies = kwargs['scalingUpPolicies']
+        if 'scheduledTasks' in kwargs:
+            scheduled_tasks = kwargs['scheduledTasks']
+        if 'serviceAccount' in kwargs:
+            service_account = kwargs['serviceAccount']
+        if 'shutdownScript' in kwargs:
+            shutdown_script = kwargs['shutdownScript']
+        if 'startupScript' in kwargs:
+            startup_script = kwargs['startupScript']
+        if 'unhealthyDuration' in kwargs:
+            unhealthy_duration = kwargs['unhealthyDuration']
+
         if auto_healing is not None:
             _setter("auto_healing", auto_healing)
         if availability_zones is not None:

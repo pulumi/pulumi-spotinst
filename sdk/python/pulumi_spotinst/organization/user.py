@@ -54,7 +54,15 @@ class UserArgs:
              policies: Optional[pulumi.Input[Sequence[pulumi.Input['UserPolicyArgs']]]] = None,
              role: Optional[pulumi.Input[str]] = None,
              user_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'firstName' in kwargs:
+            first_name = kwargs['firstName']
+        if 'lastName' in kwargs:
+            last_name = kwargs['lastName']
+        if 'userGroupIds' in kwargs:
+            user_group_ids = kwargs['userGroupIds']
+
         _setter("email", email)
         _setter("first_name", first_name)
         _setter("last_name", last_name)
@@ -194,7 +202,15 @@ class _UserState:
              policies: Optional[pulumi.Input[Sequence[pulumi.Input['UserPolicyArgs']]]] = None,
              role: Optional[pulumi.Input[str]] = None,
              user_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'firstName' in kwargs:
+            first_name = kwargs['firstName']
+        if 'lastName' in kwargs:
+            last_name = kwargs['lastName']
+        if 'userGroupIds' in kwargs:
+            user_group_ids = kwargs['userGroupIds']
+
         if email is not None:
             _setter("email", email)
         if first_name is not None:

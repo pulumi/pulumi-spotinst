@@ -92,7 +92,35 @@ class OceanLaunchSpecArgs:
              subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecTagArgs']]]] = None,
              user_data: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'oceanId' in kwargs:
+            ocean_id = kwargs['oceanId']
+        if 'autoscaleHeadrooms' in kwargs:
+            autoscale_headrooms = kwargs['autoscaleHeadrooms']
+        if 'blockDeviceMappings' in kwargs:
+            block_device_mappings = kwargs['blockDeviceMappings']
+        if 'iamInstanceProfile' in kwargs:
+            iam_instance_profile = kwargs['iamInstanceProfile']
+        if 'imageId' in kwargs:
+            image_id = kwargs['imageId']
+        if 'instanceMetadataOptions' in kwargs:
+            instance_metadata_options = kwargs['instanceMetadataOptions']
+        if 'instanceTypes' in kwargs:
+            instance_types = kwargs['instanceTypes']
+        if 'preferredSpotTypes' in kwargs:
+            preferred_spot_types = kwargs['preferredSpotTypes']
+        if 'restrictScaleDown' in kwargs:
+            restrict_scale_down = kwargs['restrictScaleDown']
+        if 'schedulingTasks' in kwargs:
+            scheduling_tasks = kwargs['schedulingTasks']
+        if 'securityGroupIds' in kwargs:
+            security_group_ids = kwargs['securityGroupIds']
+        if 'subnetIds' in kwargs:
+            subnet_ids = kwargs['subnetIds']
+        if 'userData' in kwargs:
+            user_data = kwargs['userData']
+
         _setter("ocean_id", ocean_id)
         if attributes is not None:
             _setter("attributes", attributes)
@@ -408,7 +436,35 @@ class _OceanLaunchSpecState:
              subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecTagArgs']]]] = None,
              user_data: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'autoscaleHeadrooms' in kwargs:
+            autoscale_headrooms = kwargs['autoscaleHeadrooms']
+        if 'blockDeviceMappings' in kwargs:
+            block_device_mappings = kwargs['blockDeviceMappings']
+        if 'iamInstanceProfile' in kwargs:
+            iam_instance_profile = kwargs['iamInstanceProfile']
+        if 'imageId' in kwargs:
+            image_id = kwargs['imageId']
+        if 'instanceMetadataOptions' in kwargs:
+            instance_metadata_options = kwargs['instanceMetadataOptions']
+        if 'instanceTypes' in kwargs:
+            instance_types = kwargs['instanceTypes']
+        if 'oceanId' in kwargs:
+            ocean_id = kwargs['oceanId']
+        if 'preferredSpotTypes' in kwargs:
+            preferred_spot_types = kwargs['preferredSpotTypes']
+        if 'restrictScaleDown' in kwargs:
+            restrict_scale_down = kwargs['restrictScaleDown']
+        if 'schedulingTasks' in kwargs:
+            scheduling_tasks = kwargs['schedulingTasks']
+        if 'securityGroupIds' in kwargs:
+            security_group_ids = kwargs['securityGroupIds']
+        if 'subnetIds' in kwargs:
+            subnet_ids = kwargs['subnetIds']
+        if 'userData' in kwargs:
+            user_data = kwargs['userData']
+
         if attributes is not None:
             _setter("attributes", attributes)
         if autoscale_headrooms is not None:

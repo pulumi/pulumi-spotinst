@@ -3567,13 +3567,20 @@ export namespace azure {
     }
 
     export interface OceanNpFilters {
+        acceleratedNetworking?: string;
         architectures?: string[];
+        diskPerformance?: string;
         excludeSeries?: string[];
+        maxGpu?: number;
         maxMemoryGib?: number;
         maxVcpu?: number;
+        minData?: number;
+        minGpu?: number;
         minMemoryGib?: number;
+        minNics?: number;
         minVcpu?: number;
         series?: string[];
+        vmTypes?: string[];
     }
 
     export interface OceanNpHeadroom {
@@ -3603,13 +3610,20 @@ export namespace azure {
     }
 
     export interface OceanNpVirtualNodeGroupFilters {
+        acceleratedNetworking?: string;
         architectures?: string[];
+        diskPerformance?: string;
         excludeSeries?: string[];
+        maxGpu?: number;
         maxMemoryGib?: number;
         maxVcpu?: number;
+        minData?: number;
+        minGpu?: number;
         minMemoryGib?: number;
+        minNics?: number;
         minVcpu?: number;
         series?: string[];
+        vmTypes?: string[];
     }
 
     export interface OceanNpVirtualNodeGroupHeadroom {

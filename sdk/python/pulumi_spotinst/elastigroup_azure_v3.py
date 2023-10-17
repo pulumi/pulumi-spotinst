@@ -82,7 +82,33 @@ class ElastigroupAzureV3Args:
              on_demand_count: Optional[pulumi.Input[int]] = None,
              spot_percentage: Optional[pulumi.Input[int]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3TagArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'fallbackToOnDemand' in kwargs:
+            fallback_to_on_demand = kwargs['fallbackToOnDemand']
+        if 'odSizes' in kwargs:
+            od_sizes = kwargs['odSizes']
+        if 'resourceGroupName' in kwargs:
+            resource_group_name = kwargs['resourceGroupName']
+        if 'spotSizes' in kwargs:
+            spot_sizes = kwargs['spotSizes']
+        if 'customData' in kwargs:
+            custom_data = kwargs['customData']
+        if 'desiredCapacity' in kwargs:
+            desired_capacity = kwargs['desiredCapacity']
+        if 'drainingTimeout' in kwargs:
+            draining_timeout = kwargs['drainingTimeout']
+        if 'managedServiceIdentities' in kwargs:
+            managed_service_identities = kwargs['managedServiceIdentities']
+        if 'maxSize' in kwargs:
+            max_size = kwargs['maxSize']
+        if 'minSize' in kwargs:
+            min_size = kwargs['minSize']
+        if 'onDemandCount' in kwargs:
+            on_demand_count = kwargs['onDemandCount']
+        if 'spotPercentage' in kwargs:
+            spot_percentage = kwargs['spotPercentage']
+
         _setter("fallback_to_on_demand", fallback_to_on_demand)
         _setter("network", network)
         _setter("od_sizes", od_sizes)
@@ -356,7 +382,33 @@ class _ElastigroupAzureV3State:
              spot_percentage: Optional[pulumi.Input[int]] = None,
              spot_sizes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3TagArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'customData' in kwargs:
+            custom_data = kwargs['customData']
+        if 'desiredCapacity' in kwargs:
+            desired_capacity = kwargs['desiredCapacity']
+        if 'drainingTimeout' in kwargs:
+            draining_timeout = kwargs['drainingTimeout']
+        if 'fallbackToOnDemand' in kwargs:
+            fallback_to_on_demand = kwargs['fallbackToOnDemand']
+        if 'managedServiceIdentities' in kwargs:
+            managed_service_identities = kwargs['managedServiceIdentities']
+        if 'maxSize' in kwargs:
+            max_size = kwargs['maxSize']
+        if 'minSize' in kwargs:
+            min_size = kwargs['minSize']
+        if 'odSizes' in kwargs:
+            od_sizes = kwargs['odSizes']
+        if 'onDemandCount' in kwargs:
+            on_demand_count = kwargs['onDemandCount']
+        if 'resourceGroupName' in kwargs:
+            resource_group_name = kwargs['resourceGroupName']
+        if 'spotPercentage' in kwargs:
+            spot_percentage = kwargs['spotPercentage']
+        if 'spotSizes' in kwargs:
+            spot_sizes = kwargs['spotSizes']
+
         if custom_data is not None:
             _setter("custom_data", custom_data)
         if desired_capacity is not None:

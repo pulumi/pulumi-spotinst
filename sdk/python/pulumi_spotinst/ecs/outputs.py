@@ -121,7 +121,21 @@ class OceanAutoscaler(dict):
              is_enabled: Optional[bool] = None,
              resource_limits: Optional['outputs.OceanAutoscalerResourceLimits'] = None,
              should_scale_down_non_service_tasks: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'autoHeadroomPercentage' in kwargs:
+            auto_headroom_percentage = kwargs['autoHeadroomPercentage']
+        if 'enableAutomaticAndManualHeadroom' in kwargs:
+            enable_automatic_and_manual_headroom = kwargs['enableAutomaticAndManualHeadroom']
+        if 'isAutoConfig' in kwargs:
+            is_auto_config = kwargs['isAutoConfig']
+        if 'isEnabled' in kwargs:
+            is_enabled = kwargs['isEnabled']
+        if 'resourceLimits' in kwargs:
+            resource_limits = kwargs['resourceLimits']
+        if 'shouldScaleDownNonServiceTasks' in kwargs:
+            should_scale_down_non_service_tasks = kwargs['shouldScaleDownNonServiceTasks']
+
         if auto_headroom_percentage is not None:
             _setter("auto_headroom_percentage", auto_headroom_percentage)
         if cooldown is not None:
@@ -250,7 +264,11 @@ class OceanAutoscalerDown(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              max_scale_down_percentage: Optional[float] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'maxScaleDownPercentage' in kwargs:
+            max_scale_down_percentage = kwargs['maxScaleDownPercentage']
+
         if max_scale_down_percentage is not None:
             _setter("max_scale_down_percentage", max_scale_down_percentage)
 
@@ -307,7 +325,15 @@ class OceanAutoscalerHeadroom(dict):
              cpu_per_unit: Optional[int] = None,
              memory_per_unit: Optional[int] = None,
              num_of_units: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cpuPerUnit' in kwargs:
+            cpu_per_unit = kwargs['cpuPerUnit']
+        if 'memoryPerUnit' in kwargs:
+            memory_per_unit = kwargs['memoryPerUnit']
+        if 'numOfUnits' in kwargs:
+            num_of_units = kwargs['numOfUnits']
+
         if cpu_per_unit is not None:
             _setter("cpu_per_unit", cpu_per_unit)
         if memory_per_unit is not None:
@@ -378,7 +404,13 @@ class OceanAutoscalerResourceLimits(dict):
              _setter: Callable[[Any, Any], None],
              max_memory_gib: Optional[int] = None,
              max_vcpu: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'maxMemoryGib' in kwargs:
+            max_memory_gib = kwargs['maxMemoryGib']
+        if 'maxVcpu' in kwargs:
+            max_vcpu = kwargs['maxVcpu']
+
         if max_memory_gib is not None:
             _setter("max_memory_gib", max_memory_gib)
         if max_vcpu is not None:
@@ -448,7 +480,15 @@ class OceanBlockDeviceMapping(dict):
              ebs: Optional['outputs.OceanBlockDeviceMappingEbs'] = None,
              no_device: Optional[str] = None,
              virtual_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'deviceName' in kwargs:
+            device_name = kwargs['deviceName']
+        if 'noDevice' in kwargs:
+            no_device = kwargs['noDevice']
+        if 'virtualName' in kwargs:
+            virtual_name = kwargs['virtualName']
+
         _setter("device_name", device_name)
         if ebs is not None:
             _setter("ebs", ebs)
@@ -561,7 +601,21 @@ class OceanBlockDeviceMappingEbs(dict):
              throughput: Optional[int] = None,
              volume_size: Optional[int] = None,
              volume_type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'deleteOnTermination' in kwargs:
+            delete_on_termination = kwargs['deleteOnTermination']
+        if 'dynamicVolumeSize' in kwargs:
+            dynamic_volume_size = kwargs['dynamicVolumeSize']
+        if 'kmsKeyId' in kwargs:
+            kms_key_id = kwargs['kmsKeyId']
+        if 'snapshotId' in kwargs:
+            snapshot_id = kwargs['snapshotId']
+        if 'volumeSize' in kwargs:
+            volume_size = kwargs['volumeSize']
+        if 'volumeType' in kwargs:
+            volume_type = kwargs['volumeType']
+
         if delete_on_termination is not None:
             _setter("delete_on_termination", delete_on_termination)
         if dynamic_volume_size is not None:
@@ -696,7 +750,13 @@ class OceanBlockDeviceMappingEbsDynamicVolumeSize(dict):
              base_size: int,
              resource: str,
              size_per_resource_unit: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'baseSize' in kwargs:
+            base_size = kwargs['baseSize']
+        if 'sizePerResourceUnit' in kwargs:
+            size_per_resource_unit = kwargs['sizePerResourceUnit']
+
         _setter("base_size", base_size)
         _setter("resource", resource)
         _setter("size_per_resource_unit", size_per_resource_unit)
@@ -758,7 +818,11 @@ class OceanClusterOrientation(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              availability_vs_cost: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'availabilityVsCost' in kwargs:
+            availability_vs_cost = kwargs['availabilityVsCost']
+
         if availability_vs_cost is not None:
             _setter("availability_vs_cost", availability_vs_cost)
 
@@ -905,7 +969,41 @@ class OceanFilters(dict):
              min_vcpu: Optional[int] = None,
              root_device_types: Optional[Sequence[str]] = None,
              virtualization_types: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'diskTypes' in kwargs:
+            disk_types = kwargs['diskTypes']
+        if 'excludeFamilies' in kwargs:
+            exclude_families = kwargs['excludeFamilies']
+        if 'excludeMetal' in kwargs:
+            exclude_metal = kwargs['excludeMetal']
+        if 'includeFamilies' in kwargs:
+            include_families = kwargs['includeFamilies']
+        if 'isEnaSupported' in kwargs:
+            is_ena_supported = kwargs['isEnaSupported']
+        if 'maxGpu' in kwargs:
+            max_gpu = kwargs['maxGpu']
+        if 'maxMemoryGib' in kwargs:
+            max_memory_gib = kwargs['maxMemoryGib']
+        if 'maxNetworkPerformance' in kwargs:
+            max_network_performance = kwargs['maxNetworkPerformance']
+        if 'maxVcpu' in kwargs:
+            max_vcpu = kwargs['maxVcpu']
+        if 'minEnis' in kwargs:
+            min_enis = kwargs['minEnis']
+        if 'minGpu' in kwargs:
+            min_gpu = kwargs['minGpu']
+        if 'minMemoryGib' in kwargs:
+            min_memory_gib = kwargs['minMemoryGib']
+        if 'minNetworkPerformance' in kwargs:
+            min_network_performance = kwargs['minNetworkPerformance']
+        if 'minVcpu' in kwargs:
+            min_vcpu = kwargs['minVcpu']
+        if 'rootDeviceTypes' in kwargs:
+            root_device_types = kwargs['rootDeviceTypes']
+        if 'virtualizationTypes' in kwargs:
+            virtualization_types = kwargs['virtualizationTypes']
+
         if architectures is not None:
             _setter("architectures", architectures)
         if categories is not None:
@@ -1136,7 +1234,13 @@ class OceanInstanceMetadataOptions(dict):
              _setter: Callable[[Any, Any], None],
              http_tokens: str,
              http_put_response_hop_limit: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'httpTokens' in kwargs:
+            http_tokens = kwargs['httpTokens']
+        if 'httpPutResponseHopLimit' in kwargs:
+            http_put_response_hop_limit = kwargs['httpPutResponseHopLimit']
+
         _setter("http_tokens", http_tokens)
         if http_put_response_hop_limit is not None:
             _setter("http_put_response_hop_limit", http_put_response_hop_limit)
@@ -1177,7 +1281,9 @@ class OceanLaunchSpecAttribute(dict):
              _setter: Callable[[Any, Any], None],
              key: str,
              value: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("key", key)
         _setter("value", value)
 
@@ -1242,7 +1348,15 @@ class OceanLaunchSpecAutoscaleHeadroom(dict):
              num_of_units: int,
              cpu_per_unit: Optional[int] = None,
              memory_per_unit: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'numOfUnits' in kwargs:
+            num_of_units = kwargs['numOfUnits']
+        if 'cpuPerUnit' in kwargs:
+            cpu_per_unit = kwargs['cpuPerUnit']
+        if 'memoryPerUnit' in kwargs:
+            memory_per_unit = kwargs['memoryPerUnit']
+
         _setter("num_of_units", num_of_units)
         if cpu_per_unit is not None:
             _setter("cpu_per_unit", cpu_per_unit)
@@ -1316,7 +1430,15 @@ class OceanLaunchSpecBlockDeviceMapping(dict):
              ebs: Optional['outputs.OceanLaunchSpecBlockDeviceMappingEbs'] = None,
              no_device: Optional[str] = None,
              virtual_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'deviceName' in kwargs:
+            device_name = kwargs['deviceName']
+        if 'noDevice' in kwargs:
+            no_device = kwargs['noDevice']
+        if 'virtualName' in kwargs:
+            virtual_name = kwargs['virtualName']
+
         _setter("device_name", device_name)
         if ebs is not None:
             _setter("ebs", ebs)
@@ -1409,7 +1531,21 @@ class OceanLaunchSpecBlockDeviceMappingEbs(dict):
              throughput: Optional[int] = None,
              volume_size: Optional[int] = None,
              volume_type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'deleteOnTermination' in kwargs:
+            delete_on_termination = kwargs['deleteOnTermination']
+        if 'dynamicVolumeSize' in kwargs:
+            dynamic_volume_size = kwargs['dynamicVolumeSize']
+        if 'kmsKeyId' in kwargs:
+            kms_key_id = kwargs['kmsKeyId']
+        if 'snapshotId' in kwargs:
+            snapshot_id = kwargs['snapshotId']
+        if 'volumeSize' in kwargs:
+            volume_size = kwargs['volumeSize']
+        if 'volumeType' in kwargs:
+            volume_type = kwargs['volumeType']
+
         if delete_on_termination is not None:
             _setter("delete_on_termination", delete_on_termination)
         if dynamic_volume_size is not None:
@@ -1512,7 +1648,13 @@ class OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize(dict):
              base_size: int,
              resource: str,
              size_per_resource_unit: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'baseSize' in kwargs:
+            base_size = kwargs['baseSize']
+        if 'sizePerResourceUnit' in kwargs:
+            size_per_resource_unit = kwargs['sizePerResourceUnit']
+
         _setter("base_size", base_size)
         _setter("resource", resource)
         _setter("size_per_resource_unit", size_per_resource_unit)
@@ -1571,7 +1713,13 @@ class OceanLaunchSpecInstanceMetadataOptions(dict):
              _setter: Callable[[Any, Any], None],
              http_tokens: str,
              http_put_response_hop_limit: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'httpTokens' in kwargs:
+            http_tokens = kwargs['httpTokens']
+        if 'httpPutResponseHopLimit' in kwargs:
+            http_put_response_hop_limit = kwargs['httpPutResponseHopLimit']
+
         _setter("http_tokens", http_tokens)
         if http_put_response_hop_limit is not None:
             _setter("http_put_response_hop_limit", http_put_response_hop_limit)
@@ -1643,7 +1791,17 @@ class OceanLaunchSpecSchedulingTask(dict):
              is_enabled: bool,
              task_type: str,
              task_headrooms: Optional[Sequence['outputs.OceanLaunchSpecSchedulingTaskTaskHeadroom']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cronExpression' in kwargs:
+            cron_expression = kwargs['cronExpression']
+        if 'isEnabled' in kwargs:
+            is_enabled = kwargs['isEnabled']
+        if 'taskType' in kwargs:
+            task_type = kwargs['taskType']
+        if 'taskHeadrooms' in kwargs:
+            task_headrooms = kwargs['taskHeadrooms']
+
         _setter("cron_expression", cron_expression)
         _setter("is_enabled", is_enabled)
         _setter("task_type", task_type)
@@ -1727,7 +1885,15 @@ class OceanLaunchSpecSchedulingTaskTaskHeadroom(dict):
              num_of_units: int,
              cpu_per_unit: Optional[int] = None,
              memory_per_unit: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'numOfUnits' in kwargs:
+            num_of_units = kwargs['numOfUnits']
+        if 'cpuPerUnit' in kwargs:
+            cpu_per_unit = kwargs['cpuPerUnit']
+        if 'memoryPerUnit' in kwargs:
+            memory_per_unit = kwargs['memoryPerUnit']
+
         _setter("num_of_units", num_of_units)
         if cpu_per_unit is not None:
             _setter("cpu_per_unit", cpu_per_unit)
@@ -1793,7 +1959,11 @@ class OceanLaunchSpecStrategy(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              spot_percentage: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'spotPercentage' in kwargs:
+            spot_percentage = kwargs['spotPercentage']
+
         if spot_percentage is not None:
             _setter("spot_percentage", spot_percentage)
 
@@ -1827,7 +1997,9 @@ class OceanLaunchSpecTag(dict):
              _setter: Callable[[Any, Any], None],
              key: str,
              value: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("key", key)
         _setter("value", value)
 
@@ -1863,7 +2035,9 @@ class OceanLogging(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              export: Optional['outputs.OceanLoggingExport'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if export is not None:
             _setter("export", export)
 
@@ -1891,7 +2065,9 @@ class OceanLoggingExport(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              s3s: Optional[Sequence['outputs.OceanLoggingExportS3']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if s3s is not None:
             _setter("s3s", s3s)
 
@@ -1919,7 +2095,9 @@ class OceanLoggingExportS3(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("id", id)
 
     @property
@@ -1975,7 +2153,15 @@ class OceanOptimizeImages(dict):
              perform_at: str,
              should_optimize_ecs_ami: bool,
              time_windows: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'performAt' in kwargs:
+            perform_at = kwargs['performAt']
+        if 'shouldOptimizeEcsAmi' in kwargs:
+            should_optimize_ecs_ami = kwargs['shouldOptimizeEcsAmi']
+        if 'timeWindows' in kwargs:
+            time_windows = kwargs['timeWindows']
+
         _setter("perform_at", perform_at)
         _setter("should_optimize_ecs_ami", should_optimize_ecs_ami)
         if time_windows is not None:
@@ -2042,7 +2228,11 @@ class OceanScheduledTask(dict):
              _setter: Callable[[Any, Any], None],
              shutdown_hours: Optional['outputs.OceanScheduledTaskShutdownHours'] = None,
              tasks: Optional[Sequence['outputs.OceanScheduledTaskTask']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'shutdownHours' in kwargs:
+            shutdown_hours = kwargs['shutdownHours']
+
         if shutdown_hours is not None:
             _setter("shutdown_hours", shutdown_hours)
         if tasks is not None:
@@ -2103,7 +2293,13 @@ class OceanScheduledTaskShutdownHours(dict):
              _setter: Callable[[Any, Any], None],
              time_windows: Sequence[str],
              is_enabled: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'timeWindows' in kwargs:
+            time_windows = kwargs['timeWindows']
+        if 'isEnabled' in kwargs:
+            is_enabled = kwargs['isEnabled']
+
         _setter("time_windows", time_windows)
         if is_enabled is not None:
             _setter("is_enabled", is_enabled)
@@ -2176,7 +2372,15 @@ class OceanScheduledTaskTask(dict):
              cron_expression: str,
              is_enabled: bool,
              task_type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cronExpression' in kwargs:
+            cron_expression = kwargs['cronExpression']
+        if 'isEnabled' in kwargs:
+            is_enabled = kwargs['isEnabled']
+        if 'taskType' in kwargs:
+            task_type = kwargs['taskType']
+
         _setter("cron_expression", cron_expression)
         _setter("is_enabled", is_enabled)
         _setter("task_type", task_type)
@@ -2232,7 +2436,9 @@ class OceanTag(dict):
              _setter: Callable[[Any, Any], None],
              key: str,
              value: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("key", key)
         _setter("value", value)
 
@@ -2302,7 +2508,17 @@ class OceanUpdatePolicy(dict):
              auto_apply_tags: Optional[bool] = None,
              conditioned_roll: Optional[bool] = None,
              roll_config: Optional['outputs.OceanUpdatePolicyRollConfig'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'shouldRoll' in kwargs:
+            should_roll = kwargs['shouldRoll']
+        if 'autoApplyTags' in kwargs:
+            auto_apply_tags = kwargs['autoApplyTags']
+        if 'conditionedRoll' in kwargs:
+            conditioned_roll = kwargs['conditionedRoll']
+        if 'rollConfig' in kwargs:
+            roll_config = kwargs['rollConfig']
+
         _setter("should_roll", should_roll)
         if auto_apply_tags is not None:
             _setter("auto_apply_tags", auto_apply_tags)
@@ -2383,7 +2599,13 @@ class OceanUpdatePolicyRollConfig(dict):
              _setter: Callable[[Any, Any], None],
              batch_size_percentage: int,
              batch_min_healthy_percentage: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'batchSizePercentage' in kwargs:
+            batch_size_percentage = kwargs['batchSizePercentage']
+        if 'batchMinHealthyPercentage' in kwargs:
+            batch_min_healthy_percentage = kwargs['batchMinHealthyPercentage']
+
         _setter("batch_size_percentage", batch_size_percentage)
         if batch_min_healthy_percentage is not None:
             _setter("batch_min_healthy_percentage", batch_min_healthy_percentage)

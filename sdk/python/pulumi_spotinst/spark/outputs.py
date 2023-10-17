@@ -60,7 +60,13 @@ class OceanCompute(dict):
              _setter: Callable[[Any, Any], None],
              create_vngs: Optional[bool] = None,
              use_taints: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createVngs' in kwargs:
+            create_vngs = kwargs['createVngs']
+        if 'useTaints' in kwargs:
+            use_taints = kwargs['useTaints']
+
         if create_vngs is not None:
             _setter("create_vngs", create_vngs)
         if use_taints is not None:
@@ -133,7 +139,17 @@ class OceanIngress(dict):
              load_balancer: Optional['outputs.OceanIngressLoadBalancer'] = None,
              private_link: Optional['outputs.OceanIngressPrivateLink'] = None,
              service_annotations: Optional[Mapping[str, str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'customEndpoint' in kwargs:
+            custom_endpoint = kwargs['customEndpoint']
+        if 'loadBalancer' in kwargs:
+            load_balancer = kwargs['loadBalancer']
+        if 'privateLink' in kwargs:
+            private_link = kwargs['privateLink']
+        if 'serviceAnnotations' in kwargs:
+            service_annotations = kwargs['serviceAnnotations']
+
         if controller is not None:
             _setter("controller", controller)
         if custom_endpoint is not None:
@@ -189,7 +205,9 @@ class OceanIngressController(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              managed: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if managed is not None:
             _setter("managed", managed)
 
@@ -221,7 +239,9 @@ class OceanIngressCustomEndpoint(dict):
              _setter: Callable[[Any, Any], None],
              address: Optional[str] = None,
              enabled: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if address is not None:
             _setter("address", address)
         if enabled is not None:
@@ -286,7 +306,13 @@ class OceanIngressLoadBalancer(dict):
              managed: Optional[bool] = None,
              service_annotations: Optional[Mapping[str, str]] = None,
              target_group_arn: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'serviceAnnotations' in kwargs:
+            service_annotations = kwargs['serviceAnnotations']
+        if 'targetGroupArn' in kwargs:
+            target_group_arn = kwargs['targetGroupArn']
+
         if managed is not None:
             _setter("managed", managed)
         if service_annotations is not None:
@@ -355,7 +381,11 @@ class OceanIngressPrivateLink(dict):
              _setter: Callable[[Any, Any], None],
              enabled: Optional[bool] = None,
              vpc_endpoint_service: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'vpcEndpointService' in kwargs:
+            vpc_endpoint_service = kwargs['vpcEndpointService']
+
         if enabled is not None:
             _setter("enabled", enabled)
         if vpc_endpoint_service is not None:
@@ -410,7 +440,11 @@ class OceanLogCollection(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              collect_app_logs: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'collectAppLogs' in kwargs:
+            collect_app_logs = kwargs['collectAppLogs']
+
         if collect_app_logs is not None:
             _setter("collect_app_logs", collect_app_logs)
 
@@ -455,7 +489,11 @@ class OceanSpark(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              additional_app_namespaces: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'additionalAppNamespaces' in kwargs:
+            additional_app_namespaces = kwargs['additionalAppNamespaces']
+
         if additional_app_namespaces is not None:
             _setter("additional_app_namespaces", additional_app_namespaces)
 
@@ -506,7 +544,13 @@ class OceanWebhook(dict):
              _setter: Callable[[Any, Any], None],
              host_network_ports: Optional[Sequence[int]] = None,
              use_host_network: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'hostNetworkPorts' in kwargs:
+            host_network_ports = kwargs['hostNetworkPorts']
+        if 'useHostNetwork' in kwargs:
+            use_host_network = kwargs['useHostNetwork']
+
         if host_network_ports is not None:
             _setter("host_network_ports", host_network_ports)
         if use_host_network is not None:

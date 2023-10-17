@@ -112,7 +112,15 @@ class ElastigroupHealthCheck(dict):
              health_check_type: str,
              auto_healing: Optional[bool] = None,
              grace_period: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'healthCheckType' in kwargs:
+            health_check_type = kwargs['healthCheckType']
+        if 'autoHealing' in kwargs:
+            auto_healing = kwargs['autoHealing']
+        if 'gracePeriod' in kwargs:
+            grace_period = kwargs['gracePeriod']
+
         _setter("health_check_type", health_check_type)
         if auto_healing is not None:
             _setter("auto_healing", auto_healing)
@@ -150,7 +158,9 @@ class ElastigroupImage(dict):
              _setter: Callable[[Any, Any], None],
              customs: Optional[Sequence['outputs.ElastigroupImageCustom']] = None,
              marketplaces: Optional[Sequence['outputs.ElastigroupImageMarketplace']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if customs is not None:
             _setter("customs", customs)
         if marketplaces is not None:
@@ -204,7 +214,13 @@ class ElastigroupImageCustom(dict):
              _setter: Callable[[Any, Any], None],
              image_name: str,
              resource_group_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'imageName' in kwargs:
+            image_name = kwargs['imageName']
+        if 'resourceGroupName' in kwargs:
+            resource_group_name = kwargs['resourceGroupName']
+
         _setter("image_name", image_name)
         _setter("resource_group_name", resource_group_name)
 
@@ -240,7 +256,9 @@ class ElastigroupImageMarketplace(dict):
              offer: str,
              publisher: str,
              sku: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("offer", offer)
         _setter("publisher", publisher)
         _setter("sku", sku)
@@ -290,7 +308,11 @@ class ElastigroupIntegrationKubernetes(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              cluster_identifier: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'clusterIdentifier' in kwargs:
+            cluster_identifier = kwargs['clusterIdentifier']
+
         _setter("cluster_identifier", cluster_identifier)
 
     @property
@@ -328,7 +350,11 @@ class ElastigroupIntegrationMultaiRuntime(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              deployment_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'deploymentId' in kwargs:
+            deployment_id = kwargs['deploymentId']
+
         _setter("deployment_id", deployment_id)
 
     @property
@@ -379,7 +405,15 @@ class ElastigroupLoadBalancer(dict):
              auto_weight: Optional[bool] = None,
              balancer_id: Optional[str] = None,
              target_set_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'autoWeight' in kwargs:
+            auto_weight = kwargs['autoWeight']
+        if 'balancerId' in kwargs:
+            balancer_id = kwargs['balancerId']
+        if 'targetSetId' in kwargs:
+            target_set_id = kwargs['targetSetId']
+
         _setter("type", type)
         if auto_weight is not None:
             _setter("auto_weight", auto_weight)
@@ -446,7 +480,13 @@ class ElastigroupLogin(dict):
              user_name: str,
              password: Optional[str] = None,
              ssh_public_key: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'userName' in kwargs:
+            user_name = kwargs['userName']
+        if 'sshPublicKey' in kwargs:
+            ssh_public_key = kwargs['sshPublicKey']
+
         _setter("user_name", user_name)
         if password is not None:
             _setter("password", password)
@@ -505,7 +545,11 @@ class ElastigroupManagedServiceIdentity(dict):
              _setter: Callable[[Any, Any], None],
              name: str,
              resource_group_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'resourceGroupName' in kwargs:
+            resource_group_name = kwargs['resourceGroupName']
+
         _setter("name", name)
         _setter("resource_group_name", resource_group_name)
 
@@ -578,7 +622,19 @@ class ElastigroupNetwork(dict):
              virtual_network_name: str,
              additional_ip_configs: Optional[Sequence['outputs.ElastigroupNetworkAdditionalIpConfig']] = None,
              assign_public_ip: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'resourceGroupName' in kwargs:
+            resource_group_name = kwargs['resourceGroupName']
+        if 'subnetName' in kwargs:
+            subnet_name = kwargs['subnetName']
+        if 'virtualNetworkName' in kwargs:
+            virtual_network_name = kwargs['virtualNetworkName']
+        if 'additionalIpConfigs' in kwargs:
+            additional_ip_configs = kwargs['additionalIpConfigs']
+        if 'assignPublicIp' in kwargs:
+            assign_public_ip = kwargs['assignPublicIp']
+
         _setter("resource_group_name", resource_group_name)
         _setter("subnet_name", subnet_name)
         _setter("virtual_network_name", virtual_network_name)
@@ -651,7 +707,11 @@ class ElastigroupNetworkAdditionalIpConfig(dict):
              _setter: Callable[[Any, Any], None],
              name: str,
              private_ip_version: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'privateIpVersion' in kwargs:
+            private_ip_version = kwargs['privateIpVersion']
+
         _setter("name", name)
         if private_ip_version is not None:
             _setter("private_ip_version", private_ip_version)
@@ -760,7 +820,21 @@ class ElastigroupScalingDownPolicy(dict):
              statistic: Optional[str] = None,
              target: Optional[str] = None,
              unit: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'metricName' in kwargs:
+            metric_name = kwargs['metricName']
+        if 'policyName' in kwargs:
+            policy_name = kwargs['policyName']
+        if 'actionType' in kwargs:
+            action_type = kwargs['actionType']
+        if 'evaluationPeriods' in kwargs:
+            evaluation_periods = kwargs['evaluationPeriods']
+        if 'maxTargetCapacity' in kwargs:
+            max_target_capacity = kwargs['maxTargetCapacity']
+        if 'minTargetCapacity' in kwargs:
+            min_target_capacity = kwargs['minTargetCapacity']
+
         _setter("metric_name", metric_name)
         _setter("namespace", namespace)
         _setter("policy_name", policy_name)
@@ -904,7 +978,9 @@ class ElastigroupScalingDownPolicyDimension(dict):
              _setter: Callable[[Any, Any], None],
              name: str,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("name", name)
         if value is not None:
             _setter("value", value)
@@ -1016,7 +1092,21 @@ class ElastigroupScalingUpPolicy(dict):
              statistic: Optional[str] = None,
              target: Optional[str] = None,
              unit: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'metricName' in kwargs:
+            metric_name = kwargs['metricName']
+        if 'policyName' in kwargs:
+            policy_name = kwargs['policyName']
+        if 'actionType' in kwargs:
+            action_type = kwargs['actionType']
+        if 'evaluationPeriods' in kwargs:
+            evaluation_periods = kwargs['evaluationPeriods']
+        if 'maxTargetCapacity' in kwargs:
+            max_target_capacity = kwargs['maxTargetCapacity']
+        if 'minTargetCapacity' in kwargs:
+            min_target_capacity = kwargs['minTargetCapacity']
+
         _setter("metric_name", metric_name)
         _setter("namespace", namespace)
         _setter("policy_name", policy_name)
@@ -1160,7 +1250,9 @@ class ElastigroupScalingUpPolicyDimension(dict):
              _setter: Callable[[Any, Any], None],
              name: str,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("name", name)
         if value is not None:
             _setter("value", value)
@@ -1254,7 +1346,27 @@ class ElastigroupScheduledTask(dict):
              scale_max_capacity: Optional[str] = None,
              scale_min_capacity: Optional[str] = None,
              scale_target_capacity: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cronExpression' in kwargs:
+            cron_expression = kwargs['cronExpression']
+        if 'taskType' in kwargs:
+            task_type = kwargs['taskType']
+        if 'adjustmentPercentage' in kwargs:
+            adjustment_percentage = kwargs['adjustmentPercentage']
+        if 'batchSizePercentage' in kwargs:
+            batch_size_percentage = kwargs['batchSizePercentage']
+        if 'gracePeriod' in kwargs:
+            grace_period = kwargs['gracePeriod']
+        if 'isEnabled' in kwargs:
+            is_enabled = kwargs['isEnabled']
+        if 'scaleMaxCapacity' in kwargs:
+            scale_max_capacity = kwargs['scaleMaxCapacity']
+        if 'scaleMinCapacity' in kwargs:
+            scale_min_capacity = kwargs['scaleMinCapacity']
+        if 'scaleTargetCapacity' in kwargs:
+            scale_target_capacity = kwargs['scaleTargetCapacity']
+
         _setter("cron_expression", cron_expression)
         _setter("task_type", task_type)
         if adjustment is not None:
@@ -1364,7 +1476,15 @@ class ElastigroupStrategy(dict):
              draining_timeout: Optional[int] = None,
              low_priority_percentage: Optional[int] = None,
              od_count: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'drainingTimeout' in kwargs:
+            draining_timeout = kwargs['drainingTimeout']
+        if 'lowPriorityPercentage' in kwargs:
+            low_priority_percentage = kwargs['lowPriorityPercentage']
+        if 'odCount' in kwargs:
+            od_count = kwargs['odCount']
+
         if draining_timeout is not None:
             _setter("draining_timeout", draining_timeout)
         if low_priority_percentage is not None:
@@ -1422,7 +1542,13 @@ class ElastigroupUpdatePolicy(dict):
              _setter: Callable[[Any, Any], None],
              should_roll: bool,
              roll_config: Optional['outputs.ElastigroupUpdatePolicyRollConfig'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'shouldRoll' in kwargs:
+            should_roll = kwargs['shouldRoll']
+        if 'rollConfig' in kwargs:
+            roll_config = kwargs['rollConfig']
+
         _setter("should_roll", should_roll)
         if roll_config is not None:
             _setter("roll_config", roll_config)
@@ -1477,7 +1603,15 @@ class ElastigroupUpdatePolicyRollConfig(dict):
              batch_size_percentage: int,
              grace_period: Optional[int] = None,
              health_check_type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'batchSizePercentage' in kwargs:
+            batch_size_percentage = kwargs['batchSizePercentage']
+        if 'gracePeriod' in kwargs:
+            grace_period = kwargs['gracePeriod']
+        if 'healthCheckType' in kwargs:
+            health_check_type = kwargs['healthCheckType']
+
         _setter("batch_size_percentage", batch_size_percentage)
         if grace_period is not None:
             _setter("grace_period", grace_period)
@@ -1550,7 +1684,17 @@ class OceanAutoscaler(dict):
              autoscale_headroom: Optional['outputs.OceanAutoscalerAutoscaleHeadroom'] = None,
              autoscale_is_enabled: Optional[bool] = None,
              resource_limits: Optional['outputs.OceanAutoscalerResourceLimits'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'autoscaleDown' in kwargs:
+            autoscale_down = kwargs['autoscaleDown']
+        if 'autoscaleHeadroom' in kwargs:
+            autoscale_headroom = kwargs['autoscaleHeadroom']
+        if 'autoscaleIsEnabled' in kwargs:
+            autoscale_is_enabled = kwargs['autoscaleIsEnabled']
+        if 'resourceLimits' in kwargs:
+            resource_limits = kwargs['resourceLimits']
+
         if autoscale_down is not None:
             _setter("autoscale_down", autoscale_down)
         if autoscale_headroom is not None:
@@ -1625,7 +1769,11 @@ class OceanAutoscalerAutoscaleDown(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              max_scale_down_percentage: Optional[float] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'maxScaleDownPercentage' in kwargs:
+            max_scale_down_percentage = kwargs['maxScaleDownPercentage']
+
         if max_scale_down_percentage is not None:
             _setter("max_scale_down_percentage", max_scale_down_percentage)
 
@@ -1653,7 +1801,9 @@ class OceanAutoscalerAutoscaleHeadroom(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              automatic: Optional['outputs.OceanAutoscalerAutoscaleHeadroomAutomatic'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if automatic is not None:
             _setter("automatic", automatic)
 
@@ -1702,7 +1852,11 @@ class OceanAutoscalerAutoscaleHeadroomAutomatic(dict):
              _setter: Callable[[Any, Any], None],
              is_enabled: Optional[bool] = None,
              percentage: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'isEnabled' in kwargs:
+            is_enabled = kwargs['isEnabled']
+
         if is_enabled is not None:
             _setter("is_enabled", is_enabled)
         if percentage is not None:
@@ -1763,7 +1917,13 @@ class OceanAutoscalerResourceLimits(dict):
              _setter: Callable[[Any, Any], None],
              max_memory_gib: Optional[int] = None,
              max_vcpu: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'maxMemoryGib' in kwargs:
+            max_memory_gib = kwargs['maxMemoryGib']
+        if 'maxVcpu' in kwargs:
+            max_vcpu = kwargs['maxVcpu']
+
         if max_memory_gib is not None:
             _setter("max_memory_gib", max_memory_gib)
         if max_vcpu is not None:
@@ -1836,7 +1996,13 @@ class OceanExtension(dict):
              name: Optional[str] = None,
              publisher: Optional[str] = None,
              type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'apiVersion' in kwargs:
+            api_version = kwargs['apiVersion']
+        if 'minorVersionAutoUpgrade' in kwargs:
+            minor_version_auto_upgrade = kwargs['minorVersionAutoUpgrade']
+
         if api_version is not None:
             _setter("api_version", api_version)
         if minor_version_auto_upgrade is not None:
@@ -1921,7 +2087,11 @@ class OceanHealth(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              grace_period: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'gracePeriod' in kwargs:
+            grace_period = kwargs['gracePeriod']
+
         if grace_period is not None:
             _setter("grace_period", grace_period)
 
@@ -1949,7 +2119,9 @@ class OceanImage(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              marketplaces: Optional[Sequence['outputs.OceanImageMarketplace']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if marketplaces is not None:
             _setter("marketplaces", marketplaces)
 
@@ -1989,7 +2161,9 @@ class OceanImageMarketplace(dict):
              publisher: Optional[str] = None,
              sku: Optional[str] = None,
              version: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if offer is not None:
             _setter("offer", offer)
         if publisher is not None:
@@ -2084,7 +2258,15 @@ class OceanLoadBalancer(dict):
              name: Optional[str] = None,
              resource_group_name: Optional[str] = None,
              type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'backendPoolNames' in kwargs:
+            backend_pool_names = kwargs['backendPoolNames']
+        if 'loadBalancerSku' in kwargs:
+            load_balancer_sku = kwargs['loadBalancerSku']
+        if 'resourceGroupName' in kwargs:
+            resource_group_name = kwargs['resourceGroupName']
+
         if backend_pool_names is not None:
             _setter("backend_pool_names", backend_pool_names)
         if load_balancer_sku is not None:
@@ -2173,7 +2355,11 @@ class OceanManagedServiceIdentity(dict):
              _setter: Callable[[Any, Any], None],
              name: str,
              resource_group_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'resourceGroupName' in kwargs:
+            resource_group_name = kwargs['resourceGroupName']
+
         _setter("name", name)
         _setter("resource_group_name", resource_group_name)
 
@@ -2238,7 +2424,15 @@ class OceanNetwork(dict):
              network_interfaces: Optional[Sequence['outputs.OceanNetworkNetworkInterface']] = None,
              resource_group_name: Optional[str] = None,
              virtual_network_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'networkInterfaces' in kwargs:
+            network_interfaces = kwargs['networkInterfaces']
+        if 'resourceGroupName' in kwargs:
+            resource_group_name = kwargs['resourceGroupName']
+        if 'virtualNetworkName' in kwargs:
+            virtual_network_name = kwargs['virtualNetworkName']
+
         if network_interfaces is not None:
             _setter("network_interfaces", network_interfaces)
         if resource_group_name is not None:
@@ -2326,7 +2520,19 @@ class OceanNetworkNetworkInterface(dict):
              is_primary: Optional[bool] = None,
              security_group: Optional['outputs.OceanNetworkNetworkInterfaceSecurityGroup'] = None,
              subnet_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'additionalIpConfigs' in kwargs:
+            additional_ip_configs = kwargs['additionalIpConfigs']
+        if 'assignPublicIp' in kwargs:
+            assign_public_ip = kwargs['assignPublicIp']
+        if 'isPrimary' in kwargs:
+            is_primary = kwargs['isPrimary']
+        if 'securityGroup' in kwargs:
+            security_group = kwargs['securityGroup']
+        if 'subnetName' in kwargs:
+            subnet_name = kwargs['subnetName']
+
         if additional_ip_configs is not None:
             _setter("additional_ip_configs", additional_ip_configs)
         if assign_public_ip is not None:
@@ -2412,7 +2618,11 @@ class OceanNetworkNetworkInterfaceAdditionalIpConfig(dict):
              _setter: Callable[[Any, Any], None],
              name: Optional[str] = None,
              private_ip_version: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'privateIpVersion' in kwargs:
+            private_ip_version = kwargs['privateIpVersion']
+
         if name is not None:
             _setter("name", name)
         if private_ip_version is not None:
@@ -2471,7 +2681,11 @@ class OceanNetworkNetworkInterfaceSecurityGroup(dict):
              _setter: Callable[[Any, Any], None],
              name: Optional[str] = None,
              resource_group_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'resourceGroupName' in kwargs:
+            resource_group_name = kwargs['resourceGroupName']
+
         if name is not None:
             _setter("name", name)
         if resource_group_name is not None:
@@ -2538,7 +2752,17 @@ class OceanNpAutoscaler(dict):
              autoscale_headroom: Optional['outputs.OceanNpAutoscalerAutoscaleHeadroom'] = None,
              autoscale_is_enabled: Optional[bool] = None,
              resource_limits: Optional['outputs.OceanNpAutoscalerResourceLimits'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'autoscaleDown' in kwargs:
+            autoscale_down = kwargs['autoscaleDown']
+        if 'autoscaleHeadroom' in kwargs:
+            autoscale_headroom = kwargs['autoscaleHeadroom']
+        if 'autoscaleIsEnabled' in kwargs:
+            autoscale_is_enabled = kwargs['autoscaleIsEnabled']
+        if 'resourceLimits' in kwargs:
+            resource_limits = kwargs['resourceLimits']
+
         if autoscale_down is not None:
             _setter("autoscale_down", autoscale_down)
         if autoscale_headroom is not None:
@@ -2598,7 +2822,11 @@ class OceanNpAutoscalerAutoscaleDown(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              max_scale_down_percentage: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'maxScaleDownPercentage' in kwargs:
+            max_scale_down_percentage = kwargs['maxScaleDownPercentage']
+
         if max_scale_down_percentage is not None:
             _setter("max_scale_down_percentage", max_scale_down_percentage)
 
@@ -2620,7 +2848,9 @@ class OceanNpAutoscalerAutoscaleHeadroom(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              automatic: Optional['outputs.OceanNpAutoscalerAutoscaleHeadroomAutomatic'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if automatic is not None:
             _setter("automatic", automatic)
 
@@ -2642,7 +2872,9 @@ class OceanNpAutoscalerAutoscaleHeadroomAutomatic(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              percentage: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if percentage is not None:
             _setter("percentage", percentage)
 
@@ -2686,7 +2918,13 @@ class OceanNpAutoscalerResourceLimits(dict):
              _setter: Callable[[Any, Any], None],
              max_memory_gib: Optional[int] = None,
              max_vcpu: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'maxMemoryGib' in kwargs:
+            max_memory_gib = kwargs['maxMemoryGib']
+        if 'maxVcpu' in kwargs:
+            max_vcpu = kwargs['maxVcpu']
+
         if max_memory_gib is not None:
             _setter("max_memory_gib", max_memory_gib)
         if max_vcpu is not None:
@@ -2708,16 +2946,30 @@ class OceanNpFilters(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "excludeSeries":
+        if key == "acceleratedNetworking":
+            suggest = "accelerated_networking"
+        elif key == "diskPerformance":
+            suggest = "disk_performance"
+        elif key == "excludeSeries":
             suggest = "exclude_series"
+        elif key == "maxGpu":
+            suggest = "max_gpu"
         elif key == "maxMemoryGib":
             suggest = "max_memory_gib"
         elif key == "maxVcpu":
             suggest = "max_vcpu"
+        elif key == "minData":
+            suggest = "min_data"
+        elif key == "minGpu":
+            suggest = "min_gpu"
         elif key == "minMemoryGib":
             suggest = "min_memory_gib"
+        elif key == "minNics":
+            suggest = "min_nics"
         elif key == "minVcpu":
             suggest = "min_vcpu"
+        elif key == "vmTypes":
+            suggest = "vm_types"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in OceanNpFilters. Access the value via the '{suggest}' property getter instead.")
@@ -2731,48 +2983,114 @@ class OceanNpFilters(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 accelerated_networking: Optional[str] = None,
                  architectures: Optional[Sequence[str]] = None,
+                 disk_performance: Optional[str] = None,
                  exclude_series: Optional[Sequence[str]] = None,
+                 max_gpu: Optional[float] = None,
                  max_memory_gib: Optional[float] = None,
                  max_vcpu: Optional[int] = None,
+                 min_data: Optional[int] = None,
+                 min_gpu: Optional[float] = None,
                  min_memory_gib: Optional[float] = None,
+                 min_nics: Optional[int] = None,
                  min_vcpu: Optional[int] = None,
-                 series: Optional[Sequence[str]] = None):
+                 series: Optional[Sequence[str]] = None,
+                 vm_types: Optional[Sequence[str]] = None):
         OceanNpFilters._configure(
             lambda key, value: pulumi.set(__self__, key, value),
+            accelerated_networking=accelerated_networking,
             architectures=architectures,
+            disk_performance=disk_performance,
             exclude_series=exclude_series,
+            max_gpu=max_gpu,
             max_memory_gib=max_memory_gib,
             max_vcpu=max_vcpu,
+            min_data=min_data,
+            min_gpu=min_gpu,
             min_memory_gib=min_memory_gib,
+            min_nics=min_nics,
             min_vcpu=min_vcpu,
             series=series,
+            vm_types=vm_types,
         )
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
+             accelerated_networking: Optional[str] = None,
              architectures: Optional[Sequence[str]] = None,
+             disk_performance: Optional[str] = None,
              exclude_series: Optional[Sequence[str]] = None,
+             max_gpu: Optional[float] = None,
              max_memory_gib: Optional[float] = None,
              max_vcpu: Optional[int] = None,
+             min_data: Optional[int] = None,
+             min_gpu: Optional[float] = None,
              min_memory_gib: Optional[float] = None,
+             min_nics: Optional[int] = None,
              min_vcpu: Optional[int] = None,
              series: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             vm_types: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'acceleratedNetworking' in kwargs:
+            accelerated_networking = kwargs['acceleratedNetworking']
+        if 'diskPerformance' in kwargs:
+            disk_performance = kwargs['diskPerformance']
+        if 'excludeSeries' in kwargs:
+            exclude_series = kwargs['excludeSeries']
+        if 'maxGpu' in kwargs:
+            max_gpu = kwargs['maxGpu']
+        if 'maxMemoryGib' in kwargs:
+            max_memory_gib = kwargs['maxMemoryGib']
+        if 'maxVcpu' in kwargs:
+            max_vcpu = kwargs['maxVcpu']
+        if 'minData' in kwargs:
+            min_data = kwargs['minData']
+        if 'minGpu' in kwargs:
+            min_gpu = kwargs['minGpu']
+        if 'minMemoryGib' in kwargs:
+            min_memory_gib = kwargs['minMemoryGib']
+        if 'minNics' in kwargs:
+            min_nics = kwargs['minNics']
+        if 'minVcpu' in kwargs:
+            min_vcpu = kwargs['minVcpu']
+        if 'vmTypes' in kwargs:
+            vm_types = kwargs['vmTypes']
+
+        if accelerated_networking is not None:
+            _setter("accelerated_networking", accelerated_networking)
         if architectures is not None:
             _setter("architectures", architectures)
+        if disk_performance is not None:
+            _setter("disk_performance", disk_performance)
         if exclude_series is not None:
             _setter("exclude_series", exclude_series)
+        if max_gpu is not None:
+            _setter("max_gpu", max_gpu)
         if max_memory_gib is not None:
             _setter("max_memory_gib", max_memory_gib)
         if max_vcpu is not None:
             _setter("max_vcpu", max_vcpu)
+        if min_data is not None:
+            _setter("min_data", min_data)
+        if min_gpu is not None:
+            _setter("min_gpu", min_gpu)
         if min_memory_gib is not None:
             _setter("min_memory_gib", min_memory_gib)
+        if min_nics is not None:
+            _setter("min_nics", min_nics)
         if min_vcpu is not None:
             _setter("min_vcpu", min_vcpu)
         if series is not None:
             _setter("series", series)
+        if vm_types is not None:
+            _setter("vm_types", vm_types)
+
+    @property
+    @pulumi.getter(name="acceleratedNetworking")
+    def accelerated_networking(self) -> Optional[str]:
+        return pulumi.get(self, "accelerated_networking")
 
     @property
     @pulumi.getter
@@ -2780,9 +3098,19 @@ class OceanNpFilters(dict):
         return pulumi.get(self, "architectures")
 
     @property
+    @pulumi.getter(name="diskPerformance")
+    def disk_performance(self) -> Optional[str]:
+        return pulumi.get(self, "disk_performance")
+
+    @property
     @pulumi.getter(name="excludeSeries")
     def exclude_series(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "exclude_series")
+
+    @property
+    @pulumi.getter(name="maxGpu")
+    def max_gpu(self) -> Optional[float]:
+        return pulumi.get(self, "max_gpu")
 
     @property
     @pulumi.getter(name="maxMemoryGib")
@@ -2795,9 +3123,24 @@ class OceanNpFilters(dict):
         return pulumi.get(self, "max_vcpu")
 
     @property
+    @pulumi.getter(name="minData")
+    def min_data(self) -> Optional[int]:
+        return pulumi.get(self, "min_data")
+
+    @property
+    @pulumi.getter(name="minGpu")
+    def min_gpu(self) -> Optional[float]:
+        return pulumi.get(self, "min_gpu")
+
+    @property
     @pulumi.getter(name="minMemoryGib")
     def min_memory_gib(self) -> Optional[float]:
         return pulumi.get(self, "min_memory_gib")
+
+    @property
+    @pulumi.getter(name="minNics")
+    def min_nics(self) -> Optional[int]:
+        return pulumi.get(self, "min_nics")
 
     @property
     @pulumi.getter(name="minVcpu")
@@ -2808,6 +3151,11 @@ class OceanNpFilters(dict):
     @pulumi.getter
     def series(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "series")
+
+    @property
+    @pulumi.getter(name="vmTypes")
+    def vm_types(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "vm_types")
 
 
 @pulumi.output_type
@@ -2854,7 +3202,17 @@ class OceanNpHeadroom(dict):
              gpu_per_unit: Optional[int] = None,
              memory_per_unit: Optional[int] = None,
              num_of_units: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cpuPerUnit' in kwargs:
+            cpu_per_unit = kwargs['cpuPerUnit']
+        if 'gpuPerUnit' in kwargs:
+            gpu_per_unit = kwargs['gpuPerUnit']
+        if 'memoryPerUnit' in kwargs:
+            memory_per_unit = kwargs['memoryPerUnit']
+        if 'numOfUnits' in kwargs:
+            num_of_units = kwargs['numOfUnits']
+
         if cpu_per_unit is not None:
             _setter("cpu_per_unit", cpu_per_unit)
         if gpu_per_unit is not None:
@@ -2914,7 +3272,11 @@ class OceanNpHealth(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              grace_period: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'gracePeriod' in kwargs:
+            grace_period = kwargs['gracePeriod']
+
         if grace_period is not None:
             _setter("grace_period", grace_period)
 
@@ -2953,7 +3315,11 @@ class OceanNpScheduling(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              shutdown_hours: Optional['outputs.OceanNpSchedulingShutdownHours'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'shutdownHours' in kwargs:
+            shutdown_hours = kwargs['shutdownHours']
+
         if shutdown_hours is not None:
             _setter("shutdown_hours", shutdown_hours)
 
@@ -2997,7 +3363,13 @@ class OceanNpSchedulingShutdownHours(dict):
              _setter: Callable[[Any, Any], None],
              time_windows: Sequence[str],
              is_enabled: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'timeWindows' in kwargs:
+            time_windows = kwargs['timeWindows']
+        if 'isEnabled' in kwargs:
+            is_enabled = kwargs['isEnabled']
+
         _setter("time_windows", time_windows)
         if is_enabled is not None:
             _setter("is_enabled", is_enabled)
@@ -3031,7 +3403,9 @@ class OceanNpTaint(dict):
              effect: str,
              key: str,
              value: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("effect", effect)
         _setter("key", key)
         _setter("value", value)
@@ -3057,16 +3431,30 @@ class OceanNpVirtualNodeGroupFilters(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "excludeSeries":
+        if key == "acceleratedNetworking":
+            suggest = "accelerated_networking"
+        elif key == "diskPerformance":
+            suggest = "disk_performance"
+        elif key == "excludeSeries":
             suggest = "exclude_series"
+        elif key == "maxGpu":
+            suggest = "max_gpu"
         elif key == "maxMemoryGib":
             suggest = "max_memory_gib"
         elif key == "maxVcpu":
             suggest = "max_vcpu"
+        elif key == "minData":
+            suggest = "min_data"
+        elif key == "minGpu":
+            suggest = "min_gpu"
         elif key == "minMemoryGib":
             suggest = "min_memory_gib"
+        elif key == "minNics":
+            suggest = "min_nics"
         elif key == "minVcpu":
             suggest = "min_vcpu"
+        elif key == "vmTypes":
+            suggest = "vm_types"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in OceanNpVirtualNodeGroupFilters. Access the value via the '{suggest}' property getter instead.")
@@ -3080,48 +3468,114 @@ class OceanNpVirtualNodeGroupFilters(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 accelerated_networking: Optional[str] = None,
                  architectures: Optional[Sequence[str]] = None,
+                 disk_performance: Optional[str] = None,
                  exclude_series: Optional[Sequence[str]] = None,
+                 max_gpu: Optional[float] = None,
                  max_memory_gib: Optional[float] = None,
                  max_vcpu: Optional[int] = None,
+                 min_data: Optional[int] = None,
+                 min_gpu: Optional[float] = None,
                  min_memory_gib: Optional[float] = None,
+                 min_nics: Optional[int] = None,
                  min_vcpu: Optional[int] = None,
-                 series: Optional[Sequence[str]] = None):
+                 series: Optional[Sequence[str]] = None,
+                 vm_types: Optional[Sequence[str]] = None):
         OceanNpVirtualNodeGroupFilters._configure(
             lambda key, value: pulumi.set(__self__, key, value),
+            accelerated_networking=accelerated_networking,
             architectures=architectures,
+            disk_performance=disk_performance,
             exclude_series=exclude_series,
+            max_gpu=max_gpu,
             max_memory_gib=max_memory_gib,
             max_vcpu=max_vcpu,
+            min_data=min_data,
+            min_gpu=min_gpu,
             min_memory_gib=min_memory_gib,
+            min_nics=min_nics,
             min_vcpu=min_vcpu,
             series=series,
+            vm_types=vm_types,
         )
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
+             accelerated_networking: Optional[str] = None,
              architectures: Optional[Sequence[str]] = None,
+             disk_performance: Optional[str] = None,
              exclude_series: Optional[Sequence[str]] = None,
+             max_gpu: Optional[float] = None,
              max_memory_gib: Optional[float] = None,
              max_vcpu: Optional[int] = None,
+             min_data: Optional[int] = None,
+             min_gpu: Optional[float] = None,
              min_memory_gib: Optional[float] = None,
+             min_nics: Optional[int] = None,
              min_vcpu: Optional[int] = None,
              series: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             vm_types: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'acceleratedNetworking' in kwargs:
+            accelerated_networking = kwargs['acceleratedNetworking']
+        if 'diskPerformance' in kwargs:
+            disk_performance = kwargs['diskPerformance']
+        if 'excludeSeries' in kwargs:
+            exclude_series = kwargs['excludeSeries']
+        if 'maxGpu' in kwargs:
+            max_gpu = kwargs['maxGpu']
+        if 'maxMemoryGib' in kwargs:
+            max_memory_gib = kwargs['maxMemoryGib']
+        if 'maxVcpu' in kwargs:
+            max_vcpu = kwargs['maxVcpu']
+        if 'minData' in kwargs:
+            min_data = kwargs['minData']
+        if 'minGpu' in kwargs:
+            min_gpu = kwargs['minGpu']
+        if 'minMemoryGib' in kwargs:
+            min_memory_gib = kwargs['minMemoryGib']
+        if 'minNics' in kwargs:
+            min_nics = kwargs['minNics']
+        if 'minVcpu' in kwargs:
+            min_vcpu = kwargs['minVcpu']
+        if 'vmTypes' in kwargs:
+            vm_types = kwargs['vmTypes']
+
+        if accelerated_networking is not None:
+            _setter("accelerated_networking", accelerated_networking)
         if architectures is not None:
             _setter("architectures", architectures)
+        if disk_performance is not None:
+            _setter("disk_performance", disk_performance)
         if exclude_series is not None:
             _setter("exclude_series", exclude_series)
+        if max_gpu is not None:
+            _setter("max_gpu", max_gpu)
         if max_memory_gib is not None:
             _setter("max_memory_gib", max_memory_gib)
         if max_vcpu is not None:
             _setter("max_vcpu", max_vcpu)
+        if min_data is not None:
+            _setter("min_data", min_data)
+        if min_gpu is not None:
+            _setter("min_gpu", min_gpu)
         if min_memory_gib is not None:
             _setter("min_memory_gib", min_memory_gib)
+        if min_nics is not None:
+            _setter("min_nics", min_nics)
         if min_vcpu is not None:
             _setter("min_vcpu", min_vcpu)
         if series is not None:
             _setter("series", series)
+        if vm_types is not None:
+            _setter("vm_types", vm_types)
+
+    @property
+    @pulumi.getter(name="acceleratedNetworking")
+    def accelerated_networking(self) -> Optional[str]:
+        return pulumi.get(self, "accelerated_networking")
 
     @property
     @pulumi.getter
@@ -3129,9 +3583,19 @@ class OceanNpVirtualNodeGroupFilters(dict):
         return pulumi.get(self, "architectures")
 
     @property
+    @pulumi.getter(name="diskPerformance")
+    def disk_performance(self) -> Optional[str]:
+        return pulumi.get(self, "disk_performance")
+
+    @property
     @pulumi.getter(name="excludeSeries")
     def exclude_series(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "exclude_series")
+
+    @property
+    @pulumi.getter(name="maxGpu")
+    def max_gpu(self) -> Optional[float]:
+        return pulumi.get(self, "max_gpu")
 
     @property
     @pulumi.getter(name="maxMemoryGib")
@@ -3144,9 +3608,24 @@ class OceanNpVirtualNodeGroupFilters(dict):
         return pulumi.get(self, "max_vcpu")
 
     @property
+    @pulumi.getter(name="minData")
+    def min_data(self) -> Optional[int]:
+        return pulumi.get(self, "min_data")
+
+    @property
+    @pulumi.getter(name="minGpu")
+    def min_gpu(self) -> Optional[float]:
+        return pulumi.get(self, "min_gpu")
+
+    @property
     @pulumi.getter(name="minMemoryGib")
     def min_memory_gib(self) -> Optional[float]:
         return pulumi.get(self, "min_memory_gib")
+
+    @property
+    @pulumi.getter(name="minNics")
+    def min_nics(self) -> Optional[int]:
+        return pulumi.get(self, "min_nics")
 
     @property
     @pulumi.getter(name="minVcpu")
@@ -3157,6 +3636,11 @@ class OceanNpVirtualNodeGroupFilters(dict):
     @pulumi.getter
     def series(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "series")
+
+    @property
+    @pulumi.getter(name="vmTypes")
+    def vm_types(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "vm_types")
 
 
 @pulumi.output_type
@@ -3203,7 +3687,17 @@ class OceanNpVirtualNodeGroupHeadroom(dict):
              gpu_per_unit: Optional[int] = None,
              memory_per_unit: Optional[int] = None,
              num_of_units: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cpuPerUnit' in kwargs:
+            cpu_per_unit = kwargs['cpuPerUnit']
+        if 'gpuPerUnit' in kwargs:
+            gpu_per_unit = kwargs['gpuPerUnit']
+        if 'memoryPerUnit' in kwargs:
+            memory_per_unit = kwargs['memoryPerUnit']
+        if 'numOfUnits' in kwargs:
+            num_of_units = kwargs['numOfUnits']
+
         if cpu_per_unit is not None:
             _setter("cpu_per_unit", cpu_per_unit)
         if gpu_per_unit is not None:
@@ -3252,7 +3746,9 @@ class OceanNpVirtualNodeGroupTaint(dict):
              effect: str,
              key: str,
              value: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("effect", effect)
         _setter("key", key)
         _setter("value", value)
@@ -3309,7 +3805,11 @@ class OceanOsDisk(dict):
              _setter: Callable[[Any, Any], None],
              size_gb: int,
              type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'sizeGb' in kwargs:
+            size_gb = kwargs['sizeGb']
+
         _setter("size_gb", size_gb)
         if type is not None:
             _setter("type", type)
@@ -3369,7 +3869,13 @@ class OceanStrategy(dict):
              _setter: Callable[[Any, Any], None],
              fallback_to_ondemand: Optional[bool] = None,
              spot_percentage: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'fallbackToOndemand' in kwargs:
+            fallback_to_ondemand = kwargs['fallbackToOndemand']
+        if 'spotPercentage' in kwargs:
+            spot_percentage = kwargs['spotPercentage']
+
         if fallback_to_ondemand is not None:
             _setter("fallback_to_ondemand", fallback_to_ondemand)
         if spot_percentage is not None:
@@ -3411,7 +3917,9 @@ class OceanTag(dict):
              _setter: Callable[[Any, Any], None],
              key: Optional[str] = None,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if key is not None:
             _setter("key", key)
         if value is not None:
@@ -3471,7 +3979,13 @@ class OceanVirtualNodeGroupAutoscale(dict):
              _setter: Callable[[Any, Any], None],
              auto_headroom_percentage: Optional[int] = None,
              autoscale_headrooms: Optional[Sequence['outputs.OceanVirtualNodeGroupAutoscaleAutoscaleHeadroom']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'autoHeadroomPercentage' in kwargs:
+            auto_headroom_percentage = kwargs['autoHeadroomPercentage']
+        if 'autoscaleHeadrooms' in kwargs:
+            autoscale_headrooms = kwargs['autoscaleHeadrooms']
+
         if auto_headroom_percentage is not None:
             _setter("auto_headroom_percentage", auto_headroom_percentage)
         if autoscale_headrooms is not None:
@@ -3541,7 +4055,17 @@ class OceanVirtualNodeGroupAutoscaleAutoscaleHeadroom(dict):
              cpu_per_unit: Optional[int] = None,
              gpu_per_unit: Optional[int] = None,
              memory_per_unit: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'numOfUnits' in kwargs:
+            num_of_units = kwargs['numOfUnits']
+        if 'cpuPerUnit' in kwargs:
+            cpu_per_unit = kwargs['cpuPerUnit']
+        if 'gpuPerUnit' in kwargs:
+            gpu_per_unit = kwargs['gpuPerUnit']
+        if 'memoryPerUnit' in kwargs:
+            memory_per_unit = kwargs['memoryPerUnit']
+
         _setter("num_of_units", num_of_units)
         if cpu_per_unit is not None:
             _setter("cpu_per_unit", cpu_per_unit)
@@ -3602,7 +4126,9 @@ class OceanVirtualNodeGroupLabel(dict):
              _setter: Callable[[Any, Any], None],
              key: str,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("key", key)
         if value is not None:
             _setter("value", value)
@@ -3666,7 +4192,13 @@ class OceanVirtualNodeGroupLaunchSpecification(dict):
              max_pods: Optional[int] = None,
              os_disk: Optional['outputs.OceanVirtualNodeGroupLaunchSpecificationOsDisk'] = None,
              tags: Optional[Sequence['outputs.OceanVirtualNodeGroupLaunchSpecificationTag']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'maxPods' in kwargs:
+            max_pods = kwargs['maxPods']
+        if 'osDisk' in kwargs:
+            os_disk = kwargs['osDisk']
+
         if max_pods is not None:
             _setter("max_pods", max_pods)
         if os_disk is not None:
@@ -3741,7 +4273,13 @@ class OceanVirtualNodeGroupLaunchSpecificationOsDisk(dict):
              size_gb: int,
              type: Optional[str] = None,
              utilize_ephemeral_storage: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'sizeGb' in kwargs:
+            size_gb = kwargs['sizeGb']
+        if 'utilizeEphemeralStorage' in kwargs:
+            utilize_ephemeral_storage = kwargs['utilizeEphemeralStorage']
+
         _setter("size_gb", size_gb)
         if type is not None:
             _setter("type", type)
@@ -3792,7 +4330,9 @@ class OceanVirtualNodeGroupLaunchSpecificationTag(dict):
              _setter: Callable[[Any, Any], None],
              key: Optional[str] = None,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if key is not None:
             _setter("key", key)
         if value is not None:
@@ -3847,7 +4387,11 @@ class OceanVirtualNodeGroupResourceLimit(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              max_instance_count: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'maxInstanceCount' in kwargs:
+            max_instance_count = kwargs['maxInstanceCount']
+
         if max_instance_count is not None:
             _setter("max_instance_count", max_instance_count)
 
@@ -3883,7 +4427,9 @@ class OceanVirtualNodeGroupTaint(dict):
              effect: str,
              key: str,
              value: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("effect", effect)
         _setter("key", key)
         _setter("value", value)
@@ -3928,7 +4474,9 @@ class OceanVmSize(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              whitelists: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if whitelists is not None:
             _setter("whitelists", whitelists)
 

@@ -120,6 +120,12 @@ public class OceanNpVirtualNodeGroup extends com.pulumi.resources.CustomResource
     public Output<Optional<String>> osType() {
         return Codegen.optional(this.osType);
     }
+    @Export(name="podSubnetIds", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> podSubnetIds;
+
+    public Output<Optional<List<String>>> podSubnetIds() {
+        return Codegen.optional(this.podSubnetIds);
+    }
     @Export(name="spotPercentage", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> spotPercentage;
 
@@ -137,6 +143,12 @@ public class OceanNpVirtualNodeGroup extends com.pulumi.resources.CustomResource
 
     public Output<Optional<List<OceanNpVirtualNodeGroupTaint>>> taints() {
         return Codegen.optional(this.taints);
+    }
+    @Export(name="vnetSubnetIds", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> vnetSubnetIds;
+
+    public Output<Optional<List<String>>> vnetSubnetIds() {
+        return Codegen.optional(this.vnetSubnetIds);
     }
 
     /**

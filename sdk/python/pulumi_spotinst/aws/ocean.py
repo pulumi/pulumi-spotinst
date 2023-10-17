@@ -174,7 +174,67 @@ class OceanArgs:
              utilize_commitments: Optional[pulumi.Input[bool]] = None,
              utilize_reserved_instances: Optional[pulumi.Input[bool]] = None,
              whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'securityGroups' in kwargs:
+            security_groups = kwargs['securityGroups']
+        if 'subnetIds' in kwargs:
+            subnet_ids = kwargs['subnetIds']
+        if 'associateIpv6Address' in kwargs:
+            associate_ipv6_address = kwargs['associateIpv6Address']
+        if 'associatePublicIpAddress' in kwargs:
+            associate_public_ip_address = kwargs['associatePublicIpAddress']
+        if 'blockDeviceMappings' in kwargs:
+            block_device_mappings = kwargs['blockDeviceMappings']
+        if 'clusterOrientations' in kwargs:
+            cluster_orientations = kwargs['clusterOrientations']
+        if 'controllerId' in kwargs:
+            controller_id = kwargs['controllerId']
+        if 'desiredCapacity' in kwargs:
+            desired_capacity = kwargs['desiredCapacity']
+        if 'drainingTimeout' in kwargs:
+            draining_timeout = kwargs['drainingTimeout']
+        if 'ebsOptimized' in kwargs:
+            ebs_optimized = kwargs['ebsOptimized']
+        if 'fallbackToOndemand' in kwargs:
+            fallback_to_ondemand = kwargs['fallbackToOndemand']
+        if 'gracePeriod' in kwargs:
+            grace_period = kwargs['gracePeriod']
+        if 'iamInstanceProfile' in kwargs:
+            iam_instance_profile = kwargs['iamInstanceProfile']
+        if 'imageId' in kwargs:
+            image_id = kwargs['imageId']
+        if 'instanceMetadataOptions' in kwargs:
+            instance_metadata_options = kwargs['instanceMetadataOptions']
+        if 'keyName' in kwargs:
+            key_name = kwargs['keyName']
+        if 'loadBalancers' in kwargs:
+            load_balancers = kwargs['loadBalancers']
+        if 'maxSize' in kwargs:
+            max_size = kwargs['maxSize']
+        if 'minSize' in kwargs:
+            min_size = kwargs['minSize']
+        if 'resourceTagSpecifications' in kwargs:
+            resource_tag_specifications = kwargs['resourceTagSpecifications']
+        if 'rootVolumeSize' in kwargs:
+            root_volume_size = kwargs['rootVolumeSize']
+        if 'scheduledTasks' in kwargs:
+            scheduled_tasks = kwargs['scheduledTasks']
+        if 'spotPercentage' in kwargs:
+            spot_percentage = kwargs['spotPercentage']
+        if 'spreadNodesBy' in kwargs:
+            spread_nodes_by = kwargs['spreadNodesBy']
+        if 'updatePolicy' in kwargs:
+            update_policy = kwargs['updatePolicy']
+        if 'useAsTemplateOnly' in kwargs:
+            use_as_template_only = kwargs['useAsTemplateOnly']
+        if 'userData' in kwargs:
+            user_data = kwargs['userData']
+        if 'utilizeCommitments' in kwargs:
+            utilize_commitments = kwargs['utilizeCommitments']
+        if 'utilizeReservedInstances' in kwargs:
+            utilize_reserved_instances = kwargs['utilizeReservedInstances']
+
         _setter("security_groups", security_groups)
         _setter("subnet_ids", subnet_ids)
         if associate_ipv6_address is not None:
@@ -857,7 +917,67 @@ class _OceanState:
              utilize_commitments: Optional[pulumi.Input[bool]] = None,
              utilize_reserved_instances: Optional[pulumi.Input[bool]] = None,
              whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'associateIpv6Address' in kwargs:
+            associate_ipv6_address = kwargs['associateIpv6Address']
+        if 'associatePublicIpAddress' in kwargs:
+            associate_public_ip_address = kwargs['associatePublicIpAddress']
+        if 'blockDeviceMappings' in kwargs:
+            block_device_mappings = kwargs['blockDeviceMappings']
+        if 'clusterOrientations' in kwargs:
+            cluster_orientations = kwargs['clusterOrientations']
+        if 'controllerId' in kwargs:
+            controller_id = kwargs['controllerId']
+        if 'desiredCapacity' in kwargs:
+            desired_capacity = kwargs['desiredCapacity']
+        if 'drainingTimeout' in kwargs:
+            draining_timeout = kwargs['drainingTimeout']
+        if 'ebsOptimized' in kwargs:
+            ebs_optimized = kwargs['ebsOptimized']
+        if 'fallbackToOndemand' in kwargs:
+            fallback_to_ondemand = kwargs['fallbackToOndemand']
+        if 'gracePeriod' in kwargs:
+            grace_period = kwargs['gracePeriod']
+        if 'iamInstanceProfile' in kwargs:
+            iam_instance_profile = kwargs['iamInstanceProfile']
+        if 'imageId' in kwargs:
+            image_id = kwargs['imageId']
+        if 'instanceMetadataOptions' in kwargs:
+            instance_metadata_options = kwargs['instanceMetadataOptions']
+        if 'keyName' in kwargs:
+            key_name = kwargs['keyName']
+        if 'loadBalancers' in kwargs:
+            load_balancers = kwargs['loadBalancers']
+        if 'maxSize' in kwargs:
+            max_size = kwargs['maxSize']
+        if 'minSize' in kwargs:
+            min_size = kwargs['minSize']
+        if 'resourceTagSpecifications' in kwargs:
+            resource_tag_specifications = kwargs['resourceTagSpecifications']
+        if 'rootVolumeSize' in kwargs:
+            root_volume_size = kwargs['rootVolumeSize']
+        if 'scheduledTasks' in kwargs:
+            scheduled_tasks = kwargs['scheduledTasks']
+        if 'securityGroups' in kwargs:
+            security_groups = kwargs['securityGroups']
+        if 'spotPercentage' in kwargs:
+            spot_percentage = kwargs['spotPercentage']
+        if 'spreadNodesBy' in kwargs:
+            spread_nodes_by = kwargs['spreadNodesBy']
+        if 'subnetIds' in kwargs:
+            subnet_ids = kwargs['subnetIds']
+        if 'updatePolicy' in kwargs:
+            update_policy = kwargs['updatePolicy']
+        if 'useAsTemplateOnly' in kwargs:
+            use_as_template_only = kwargs['useAsTemplateOnly']
+        if 'userData' in kwargs:
+            user_data = kwargs['userData']
+        if 'utilizeCommitments' in kwargs:
+            utilize_commitments = kwargs['utilizeCommitments']
+        if 'utilizeReservedInstances' in kwargs:
+            utilize_reserved_instances = kwargs['utilizeReservedInstances']
+
         if associate_ipv6_address is not None:
             _setter("associate_ipv6_address", associate_ipv6_address)
         if associate_public_ip_address is not None:

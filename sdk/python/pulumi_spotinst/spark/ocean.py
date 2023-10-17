@@ -44,7 +44,13 @@ class OceanArgs:
              log_collection: Optional[pulumi.Input['OceanLogCollectionArgs']] = None,
              spark: Optional[pulumi.Input['OceanSparkArgs']] = None,
              webhook: Optional[pulumi.Input['OceanWebhookArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'oceanClusterId' in kwargs:
+            ocean_cluster_id = kwargs['oceanClusterId']
+        if 'logCollection' in kwargs:
+            log_collection = kwargs['logCollection']
+
         _setter("ocean_cluster_id", ocean_cluster_id)
         if compute is not None:
             _setter("compute", compute)
@@ -146,7 +152,13 @@ class _OceanState:
              ocean_cluster_id: Optional[pulumi.Input[str]] = None,
              spark: Optional[pulumi.Input['OceanSparkArgs']] = None,
              webhook: Optional[pulumi.Input['OceanWebhookArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'logCollection' in kwargs:
+            log_collection = kwargs['logCollection']
+        if 'oceanClusterId' in kwargs:
+            ocean_cluster_id = kwargs['oceanClusterId']
+
         if compute is not None:
             _setter("compute", compute)
         if ingress is not None:

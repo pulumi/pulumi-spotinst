@@ -43,7 +43,11 @@ class UserGroupArgs:
              name: Optional[pulumi.Input[str]] = None,
              policies: Optional[pulumi.Input[Sequence[pulumi.Input['UserGroupPolicyArgs']]]] = None,
              user_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'userIds' in kwargs:
+            user_ids = kwargs['userIds']
+
         if description is not None:
             _setter("description", description)
         if name is not None:
@@ -134,7 +138,11 @@ class _UserGroupState:
              name: Optional[pulumi.Input[str]] = None,
              policies: Optional[pulumi.Input[Sequence[pulumi.Input['UserGroupPolicyArgs']]]] = None,
              user_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'userIds' in kwargs:
+            user_ids = kwargs['userIds']
+
         if description is not None:
             _setter("description", description)
         if name is not None:

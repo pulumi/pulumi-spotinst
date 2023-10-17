@@ -43,7 +43,15 @@ class HealthCheckArgs:
              check: Optional[pulumi.Input['HealthCheckCheckArgs']] = None,
              name: Optional[pulumi.Input[str]] = None,
              proxy_port: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'proxyAddress' in kwargs:
+            proxy_address = kwargs['proxyAddress']
+        if 'resourceId' in kwargs:
+            resource_id = kwargs['resourceId']
+        if 'proxyPort' in kwargs:
+            proxy_port = kwargs['proxyPort']
+
         _setter("proxy_address", proxy_address)
         _setter("resource_id", resource_id)
         if check is not None:
@@ -138,7 +146,15 @@ class _HealthCheckState:
              proxy_address: Optional[pulumi.Input[str]] = None,
              proxy_port: Optional[pulumi.Input[int]] = None,
              resource_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'proxyAddress' in kwargs:
+            proxy_address = kwargs['proxyAddress']
+        if 'proxyPort' in kwargs:
+            proxy_port = kwargs['proxyPort']
+        if 'resourceId' in kwargs:
+            resource_id = kwargs['resourceId']
+
         if check is not None:
             _setter("check", check)
         if name is not None:

@@ -352,7 +352,157 @@ class ElastigroupArgs:
              utilize_reserved_instances: Optional[pulumi.Input[bool]] = None,
              wait_for_capacity: Optional[pulumi.Input[int]] = None,
              wait_for_capacity_timeout: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'fallbackToOndemand' in kwargs:
+            fallback_to_ondemand = kwargs['fallbackToOndemand']
+        if 'securityGroups' in kwargs:
+            security_groups = kwargs['securityGroups']
+        if 'availabilityZones' in kwargs:
+            availability_zones = kwargs['availabilityZones']
+        if 'blockDevicesMode' in kwargs:
+            block_devices_mode = kwargs['blockDevicesMode']
+        if 'capacityUnit' in kwargs:
+            capacity_unit = kwargs['capacityUnit']
+        if 'considerOdPricing' in kwargs:
+            consider_od_pricing = kwargs['considerOdPricing']
+        if 'cpuCredits' in kwargs:
+            cpu_credits = kwargs['cpuCredits']
+        if 'cpuOptions' in kwargs:
+            cpu_options = kwargs['cpuOptions']
+        if 'desiredCapacity' in kwargs:
+            desired_capacity = kwargs['desiredCapacity']
+        if 'drainingTimeout' in kwargs:
+            draining_timeout = kwargs['drainingTimeout']
+        if 'ebsBlockDevices' in kwargs:
+            ebs_block_devices = kwargs['ebsBlockDevices']
+        if 'ebsOptimized' in kwargs:
+            ebs_optimized = kwargs['ebsOptimized']
+        if 'elasticIps' in kwargs:
+            elastic_ips = kwargs['elasticIps']
+        if 'elasticLoadBalancers' in kwargs:
+            elastic_load_balancers = kwargs['elasticLoadBalancers']
+        if 'enableMonitoring' in kwargs:
+            enable_monitoring = kwargs['enableMonitoring']
+        if 'ephemeralBlockDevices' in kwargs:
+            ephemeral_block_devices = kwargs['ephemeralBlockDevices']
+        if 'healthCheckGracePeriod' in kwargs:
+            health_check_grace_period = kwargs['healthCheckGracePeriod']
+        if 'healthCheckType' in kwargs:
+            health_check_type = kwargs['healthCheckType']
+        if 'healthCheckUnhealthyDurationBeforeReplacement' in kwargs:
+            health_check_unhealthy_duration_before_replacement = kwargs['healthCheckUnhealthyDurationBeforeReplacement']
+        if 'iamInstanceProfile' in kwargs:
+            iam_instance_profile = kwargs['iamInstanceProfile']
+        if 'imageId' in kwargs:
+            image_id = kwargs['imageId']
+        if 'immediateOdRecoverThreshold' in kwargs:
+            immediate_od_recover_threshold = kwargs['immediateOdRecoverThreshold']
+        if 'instanceTypesOndemand' in kwargs:
+            instance_types_ondemand = kwargs['instanceTypesOndemand']
+        if 'instanceTypesPreferredSpots' in kwargs:
+            instance_types_preferred_spots = kwargs['instanceTypesPreferredSpots']
+        if 'instanceTypesSpots' in kwargs:
+            instance_types_spots = kwargs['instanceTypesSpots']
+        if 'instanceTypesWeights' in kwargs:
+            instance_types_weights = kwargs['instanceTypesWeights']
+        if 'integrationBeanstalk' in kwargs:
+            integration_beanstalk = kwargs['integrationBeanstalk']
+        if 'integrationCodedeploy' in kwargs:
+            integration_codedeploy = kwargs['integrationCodedeploy']
+        if 'integrationDockerSwarm' in kwargs:
+            integration_docker_swarm = kwargs['integrationDockerSwarm']
+        if 'integrationEcs' in kwargs:
+            integration_ecs = kwargs['integrationEcs']
+        if 'integrationGitlab' in kwargs:
+            integration_gitlab = kwargs['integrationGitlab']
+        if 'integrationKubernetes' in kwargs:
+            integration_kubernetes = kwargs['integrationKubernetes']
+        if 'integrationMesosphere' in kwargs:
+            integration_mesosphere = kwargs['integrationMesosphere']
+        if 'integrationMultaiRuntime' in kwargs:
+            integration_multai_runtime = kwargs['integrationMultaiRuntime']
+        if 'integrationNomad' in kwargs:
+            integration_nomad = kwargs['integrationNomad']
+        if 'integrationRancher' in kwargs:
+            integration_rancher = kwargs['integrationRancher']
+        if 'integrationRoute53' in kwargs:
+            integration_route53 = kwargs['integrationRoute53']
+        if 'keyName' in kwargs:
+            key_name = kwargs['keyName']
+        if 'lifetimePeriod' in kwargs:
+            lifetime_period = kwargs['lifetimePeriod']
+        if 'maxSize' in kwargs:
+            max_size = kwargs['maxSize']
+        if 'metadataOptions' in kwargs:
+            metadata_options = kwargs['metadataOptions']
+        if 'minSize' in kwargs:
+            min_size = kwargs['minSize']
+        if 'minimumInstanceLifetime' in kwargs:
+            minimum_instance_lifetime = kwargs['minimumInstanceLifetime']
+        if 'multaiTargetSets' in kwargs:
+            multai_target_sets = kwargs['multaiTargetSets']
+        if 'multipleMetrics' in kwargs:
+            multiple_metrics = kwargs['multipleMetrics']
+        if 'networkInterfaces' in kwargs:
+            network_interfaces = kwargs['networkInterfaces']
+        if 'onDemandTypes' in kwargs:
+            on_demand_types = kwargs['onDemandTypes']
+        if 'ondemandCount' in kwargs:
+            ondemand_count = kwargs['ondemandCount']
+        if 'persistBlockDevices' in kwargs:
+            persist_block_devices = kwargs['persistBlockDevices']
+        if 'persistPrivateIp' in kwargs:
+            persist_private_ip = kwargs['persistPrivateIp']
+        if 'persistRootDevice' in kwargs:
+            persist_root_device = kwargs['persistRootDevice']
+        if 'placementTenancy' in kwargs:
+            placement_tenancy = kwargs['placementTenancy']
+        if 'preferredAvailabilityZones' in kwargs:
+            preferred_availability_zones = kwargs['preferredAvailabilityZones']
+        if 'privateIps' in kwargs:
+            private_ips = kwargs['privateIps']
+        if 'resourceRequirements' in kwargs:
+            resource_requirements = kwargs['resourceRequirements']
+        if 'resourceTagSpecifications' in kwargs:
+            resource_tag_specifications = kwargs['resourceTagSpecifications']
+        if 'revertToSpot' in kwargs:
+            revert_to_spot = kwargs['revertToSpot']
+        if 'scalingDownPolicies' in kwargs:
+            scaling_down_policies = kwargs['scalingDownPolicies']
+        if 'scalingStrategies' in kwargs:
+            scaling_strategies = kwargs['scalingStrategies']
+        if 'scalingTargetPolicies' in kwargs:
+            scaling_target_policies = kwargs['scalingTargetPolicies']
+        if 'scalingUpPolicies' in kwargs:
+            scaling_up_policies = kwargs['scalingUpPolicies']
+        if 'scheduledTasks' in kwargs:
+            scheduled_tasks = kwargs['scheduledTasks']
+        if 'shutdownScript' in kwargs:
+            shutdown_script = kwargs['shutdownScript']
+        if 'spotPercentage' in kwargs:
+            spot_percentage = kwargs['spotPercentage']
+        if 'statefulDeallocation' in kwargs:
+            stateful_deallocation = kwargs['statefulDeallocation']
+        if 'statefulInstanceActions' in kwargs:
+            stateful_instance_actions = kwargs['statefulInstanceActions']
+        if 'subnetIds' in kwargs:
+            subnet_ids = kwargs['subnetIds']
+        if 'targetGroupArns' in kwargs:
+            target_group_arns = kwargs['targetGroupArns']
+        if 'updatePolicy' in kwargs:
+            update_policy = kwargs['updatePolicy']
+        if 'userData' in kwargs:
+            user_data = kwargs['userData']
+        if 'utilizeCommitments' in kwargs:
+            utilize_commitments = kwargs['utilizeCommitments']
+        if 'utilizeReservedInstances' in kwargs:
+            utilize_reserved_instances = kwargs['utilizeReservedInstances']
+        if 'waitForCapacity' in kwargs:
+            wait_for_capacity = kwargs['waitForCapacity']
+        if 'waitForCapacityTimeout' in kwargs:
+            wait_for_capacity_timeout = kwargs['waitForCapacityTimeout']
+
         _setter("fallback_to_ondemand", fallback_to_ondemand)
         _setter("orientation", orientation)
         _setter("product", product)
@@ -1811,7 +1961,157 @@ class _ElastigroupState:
              utilize_reserved_instances: Optional[pulumi.Input[bool]] = None,
              wait_for_capacity: Optional[pulumi.Input[int]] = None,
              wait_for_capacity_timeout: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'availabilityZones' in kwargs:
+            availability_zones = kwargs['availabilityZones']
+        if 'blockDevicesMode' in kwargs:
+            block_devices_mode = kwargs['blockDevicesMode']
+        if 'capacityUnit' in kwargs:
+            capacity_unit = kwargs['capacityUnit']
+        if 'considerOdPricing' in kwargs:
+            consider_od_pricing = kwargs['considerOdPricing']
+        if 'cpuCredits' in kwargs:
+            cpu_credits = kwargs['cpuCredits']
+        if 'cpuOptions' in kwargs:
+            cpu_options = kwargs['cpuOptions']
+        if 'desiredCapacity' in kwargs:
+            desired_capacity = kwargs['desiredCapacity']
+        if 'drainingTimeout' in kwargs:
+            draining_timeout = kwargs['drainingTimeout']
+        if 'ebsBlockDevices' in kwargs:
+            ebs_block_devices = kwargs['ebsBlockDevices']
+        if 'ebsOptimized' in kwargs:
+            ebs_optimized = kwargs['ebsOptimized']
+        if 'elasticIps' in kwargs:
+            elastic_ips = kwargs['elasticIps']
+        if 'elasticLoadBalancers' in kwargs:
+            elastic_load_balancers = kwargs['elasticLoadBalancers']
+        if 'enableMonitoring' in kwargs:
+            enable_monitoring = kwargs['enableMonitoring']
+        if 'ephemeralBlockDevices' in kwargs:
+            ephemeral_block_devices = kwargs['ephemeralBlockDevices']
+        if 'fallbackToOndemand' in kwargs:
+            fallback_to_ondemand = kwargs['fallbackToOndemand']
+        if 'healthCheckGracePeriod' in kwargs:
+            health_check_grace_period = kwargs['healthCheckGracePeriod']
+        if 'healthCheckType' in kwargs:
+            health_check_type = kwargs['healthCheckType']
+        if 'healthCheckUnhealthyDurationBeforeReplacement' in kwargs:
+            health_check_unhealthy_duration_before_replacement = kwargs['healthCheckUnhealthyDurationBeforeReplacement']
+        if 'iamInstanceProfile' in kwargs:
+            iam_instance_profile = kwargs['iamInstanceProfile']
+        if 'imageId' in kwargs:
+            image_id = kwargs['imageId']
+        if 'immediateOdRecoverThreshold' in kwargs:
+            immediate_od_recover_threshold = kwargs['immediateOdRecoverThreshold']
+        if 'instanceTypesOndemand' in kwargs:
+            instance_types_ondemand = kwargs['instanceTypesOndemand']
+        if 'instanceTypesPreferredSpots' in kwargs:
+            instance_types_preferred_spots = kwargs['instanceTypesPreferredSpots']
+        if 'instanceTypesSpots' in kwargs:
+            instance_types_spots = kwargs['instanceTypesSpots']
+        if 'instanceTypesWeights' in kwargs:
+            instance_types_weights = kwargs['instanceTypesWeights']
+        if 'integrationBeanstalk' in kwargs:
+            integration_beanstalk = kwargs['integrationBeanstalk']
+        if 'integrationCodedeploy' in kwargs:
+            integration_codedeploy = kwargs['integrationCodedeploy']
+        if 'integrationDockerSwarm' in kwargs:
+            integration_docker_swarm = kwargs['integrationDockerSwarm']
+        if 'integrationEcs' in kwargs:
+            integration_ecs = kwargs['integrationEcs']
+        if 'integrationGitlab' in kwargs:
+            integration_gitlab = kwargs['integrationGitlab']
+        if 'integrationKubernetes' in kwargs:
+            integration_kubernetes = kwargs['integrationKubernetes']
+        if 'integrationMesosphere' in kwargs:
+            integration_mesosphere = kwargs['integrationMesosphere']
+        if 'integrationMultaiRuntime' in kwargs:
+            integration_multai_runtime = kwargs['integrationMultaiRuntime']
+        if 'integrationNomad' in kwargs:
+            integration_nomad = kwargs['integrationNomad']
+        if 'integrationRancher' in kwargs:
+            integration_rancher = kwargs['integrationRancher']
+        if 'integrationRoute53' in kwargs:
+            integration_route53 = kwargs['integrationRoute53']
+        if 'keyName' in kwargs:
+            key_name = kwargs['keyName']
+        if 'lifetimePeriod' in kwargs:
+            lifetime_period = kwargs['lifetimePeriod']
+        if 'maxSize' in kwargs:
+            max_size = kwargs['maxSize']
+        if 'metadataOptions' in kwargs:
+            metadata_options = kwargs['metadataOptions']
+        if 'minSize' in kwargs:
+            min_size = kwargs['minSize']
+        if 'minimumInstanceLifetime' in kwargs:
+            minimum_instance_lifetime = kwargs['minimumInstanceLifetime']
+        if 'multaiTargetSets' in kwargs:
+            multai_target_sets = kwargs['multaiTargetSets']
+        if 'multipleMetrics' in kwargs:
+            multiple_metrics = kwargs['multipleMetrics']
+        if 'networkInterfaces' in kwargs:
+            network_interfaces = kwargs['networkInterfaces']
+        if 'onDemandTypes' in kwargs:
+            on_demand_types = kwargs['onDemandTypes']
+        if 'ondemandCount' in kwargs:
+            ondemand_count = kwargs['ondemandCount']
+        if 'persistBlockDevices' in kwargs:
+            persist_block_devices = kwargs['persistBlockDevices']
+        if 'persistPrivateIp' in kwargs:
+            persist_private_ip = kwargs['persistPrivateIp']
+        if 'persistRootDevice' in kwargs:
+            persist_root_device = kwargs['persistRootDevice']
+        if 'placementTenancy' in kwargs:
+            placement_tenancy = kwargs['placementTenancy']
+        if 'preferredAvailabilityZones' in kwargs:
+            preferred_availability_zones = kwargs['preferredAvailabilityZones']
+        if 'privateIps' in kwargs:
+            private_ips = kwargs['privateIps']
+        if 'resourceRequirements' in kwargs:
+            resource_requirements = kwargs['resourceRequirements']
+        if 'resourceTagSpecifications' in kwargs:
+            resource_tag_specifications = kwargs['resourceTagSpecifications']
+        if 'revertToSpot' in kwargs:
+            revert_to_spot = kwargs['revertToSpot']
+        if 'scalingDownPolicies' in kwargs:
+            scaling_down_policies = kwargs['scalingDownPolicies']
+        if 'scalingStrategies' in kwargs:
+            scaling_strategies = kwargs['scalingStrategies']
+        if 'scalingTargetPolicies' in kwargs:
+            scaling_target_policies = kwargs['scalingTargetPolicies']
+        if 'scalingUpPolicies' in kwargs:
+            scaling_up_policies = kwargs['scalingUpPolicies']
+        if 'scheduledTasks' in kwargs:
+            scheduled_tasks = kwargs['scheduledTasks']
+        if 'securityGroups' in kwargs:
+            security_groups = kwargs['securityGroups']
+        if 'shutdownScript' in kwargs:
+            shutdown_script = kwargs['shutdownScript']
+        if 'spotPercentage' in kwargs:
+            spot_percentage = kwargs['spotPercentage']
+        if 'statefulDeallocation' in kwargs:
+            stateful_deallocation = kwargs['statefulDeallocation']
+        if 'statefulInstanceActions' in kwargs:
+            stateful_instance_actions = kwargs['statefulInstanceActions']
+        if 'subnetIds' in kwargs:
+            subnet_ids = kwargs['subnetIds']
+        if 'targetGroupArns' in kwargs:
+            target_group_arns = kwargs['targetGroupArns']
+        if 'updatePolicy' in kwargs:
+            update_policy = kwargs['updatePolicy']
+        if 'userData' in kwargs:
+            user_data = kwargs['userData']
+        if 'utilizeCommitments' in kwargs:
+            utilize_commitments = kwargs['utilizeCommitments']
+        if 'utilizeReservedInstances' in kwargs:
+            utilize_reserved_instances = kwargs['utilizeReservedInstances']
+        if 'waitForCapacity' in kwargs:
+            wait_for_capacity = kwargs['waitForCapacity']
+        if 'waitForCapacityTimeout' in kwargs:
+            wait_for_capacity_timeout = kwargs['waitForCapacityTimeout']
+
         if availability_zones is not None:
             _setter("availability_zones", availability_zones)
         if block_devices_mode is not None:
