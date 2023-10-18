@@ -58,7 +58,13 @@ class SubscriptionArgs:
              protocol: pulumi.Input[str],
              resource_id: pulumi.Input[str],
              format: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'eventType' in kwargs:
+            event_type = kwargs['eventType']
+        if 'resourceId' in kwargs:
+            resource_id = kwargs['resourceId']
+
         _setter("endpoint", endpoint)
         _setter("event_type", event_type)
         _setter("protocol", protocol)
@@ -189,7 +195,13 @@ class _SubscriptionState:
              format: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              protocol: Optional[pulumi.Input[str]] = None,
              resource_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'eventType' in kwargs:
+            event_type = kwargs['eventType']
+        if 'resourceId' in kwargs:
+            resource_id = kwargs['resourceId']
+
         if endpoint is not None:
             _setter("endpoint", endpoint)
         if event_type is not None:

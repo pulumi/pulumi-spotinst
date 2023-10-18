@@ -159,6 +159,12 @@ public class OceanNp extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> osType() {
         return Codegen.optional(this.osType);
     }
+    @Export(name="podSubnetIds", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> podSubnetIds;
+
+    public Output<Optional<List<String>>> podSubnetIds() {
+        return Codegen.optional(this.podSubnetIds);
+    }
     @Export(name="scheduling", refs={OceanNpScheduling.class}, tree="[0]")
     private Output</* @Nullable */ OceanNpScheduling> scheduling;
 
@@ -182,6 +188,12 @@ public class OceanNp extends com.pulumi.resources.CustomResource {
 
     public Output<Optional<List<OceanNpTaint>>> taints() {
         return Codegen.optional(this.taints);
+    }
+    @Export(name="vnetSubnetIds", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> vnetSubnetIds;
+
+    public Output<Optional<List<String>>> vnetSubnetIds() {
+        return Codegen.optional(this.vnetSubnetIds);
     }
 
     /**

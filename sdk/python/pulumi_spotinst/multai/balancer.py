@@ -40,7 +40,13 @@ class BalancerArgs:
              name: Optional[pulumi.Input[str]] = None,
              scheme: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input['BalancerTagArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'connectionTimeouts' in kwargs:
+            connection_timeouts = kwargs['connectionTimeouts']
+        if 'dnsCnameAliases' in kwargs:
+            dns_cname_aliases = kwargs['dnsCnameAliases']
+
         if connection_timeouts is not None:
             _setter("connection_timeouts", connection_timeouts)
         if dns_cname_aliases is not None:
@@ -125,7 +131,13 @@ class _BalancerState:
              name: Optional[pulumi.Input[str]] = None,
              scheme: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input['BalancerTagArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'connectionTimeouts' in kwargs:
+            connection_timeouts = kwargs['connectionTimeouts']
+        if 'dnsCnameAliases' in kwargs:
+            dns_cname_aliases = kwargs['dnsCnameAliases']
+
         if connection_timeouts is not None:
             _setter("connection_timeouts", connection_timeouts)
         if dns_cname_aliases is not None:

@@ -60,6 +60,9 @@ namespace Pulumi.SpotInst.Azure
         [Output("osType")]
         public Output<string?> OsType { get; private set; } = null!;
 
+        [Output("podSubnetIds")]
+        public Output<ImmutableArray<string>> PodSubnetIds { get; private set; } = null!;
+
         [Output("spotPercentage")]
         public Output<int?> SpotPercentage { get; private set; } = null!;
 
@@ -68,6 +71,9 @@ namespace Pulumi.SpotInst.Azure
 
         [Output("taints")]
         public Output<ImmutableArray<Outputs.OceanNpVirtualNodeGroupTaint>> Taints { get; private set; } = null!;
+
+        [Output("vnetSubnetIds")]
+        public Output<ImmutableArray<string>> VnetSubnetIds { get; private set; } = null!;
 
 
         /// <summary>
@@ -178,6 +184,14 @@ namespace Pulumi.SpotInst.Azure
         [Input("osType")]
         public Input<string>? OsType { get; set; }
 
+        [Input("podSubnetIds")]
+        private InputList<string>? _podSubnetIds;
+        public InputList<string> PodSubnetIds
+        {
+            get => _podSubnetIds ?? (_podSubnetIds = new InputList<string>());
+            set => _podSubnetIds = value;
+        }
+
         [Input("spotPercentage")]
         public Input<int>? SpotPercentage { get; set; }
 
@@ -195,6 +209,14 @@ namespace Pulumi.SpotInst.Azure
         {
             get => _taints ?? (_taints = new InputList<Inputs.OceanNpVirtualNodeGroupTaintArgs>());
             set => _taints = value;
+        }
+
+        [Input("vnetSubnetIds")]
+        private InputList<string>? _vnetSubnetIds;
+        public InputList<string> VnetSubnetIds
+        {
+            get => _vnetSubnetIds ?? (_vnetSubnetIds = new InputList<string>());
+            set => _vnetSubnetIds = value;
         }
 
         public OceanNpVirtualNodeGroupArgs()
@@ -268,6 +290,14 @@ namespace Pulumi.SpotInst.Azure
         [Input("osType")]
         public Input<string>? OsType { get; set; }
 
+        [Input("podSubnetIds")]
+        private InputList<string>? _podSubnetIds;
+        public InputList<string> PodSubnetIds
+        {
+            get => _podSubnetIds ?? (_podSubnetIds = new InputList<string>());
+            set => _podSubnetIds = value;
+        }
+
         [Input("spotPercentage")]
         public Input<int>? SpotPercentage { get; set; }
 
@@ -285,6 +315,14 @@ namespace Pulumi.SpotInst.Azure
         {
             get => _taints ?? (_taints = new InputList<Inputs.OceanNpVirtualNodeGroupTaintGetArgs>());
             set => _taints = value;
+        }
+
+        [Input("vnetSubnetIds")]
+        private InputList<string>? _vnetSubnetIds;
+        public InputList<string> VnetSubnetIds
+        {
+            get => _vnetSubnetIds ?? (_vnetSubnetIds = new InputList<string>());
+            set => _vnetSubnetIds = value;
         }
 
         public OceanNpVirtualNodeGroupState()

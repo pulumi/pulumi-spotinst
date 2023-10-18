@@ -29,7 +29,13 @@ class OceanVirtualNodeGroupArgs:
              _setter: Callable[[Any, Any], None],
              ocean_spark_cluster_id: pulumi.Input[str],
              virtual_node_group_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'oceanSparkClusterId' in kwargs:
+            ocean_spark_cluster_id = kwargs['oceanSparkClusterId']
+        if 'virtualNodeGroupId' in kwargs:
+            virtual_node_group_id = kwargs['virtualNodeGroupId']
+
         _setter("ocean_spark_cluster_id", ocean_spark_cluster_id)
         _setter("virtual_node_group_id", virtual_node_group_id)
 
@@ -70,7 +76,13 @@ class _OceanVirtualNodeGroupState:
              _setter: Callable[[Any, Any], None],
              ocean_spark_cluster_id: Optional[pulumi.Input[str]] = None,
              virtual_node_group_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'oceanSparkClusterId' in kwargs:
+            ocean_spark_cluster_id = kwargs['oceanSparkClusterId']
+        if 'virtualNodeGroupId' in kwargs:
+            virtual_node_group_id = kwargs['virtualNodeGroupId']
+
         if ocean_spark_cluster_id is not None:
             _setter("ocean_spark_cluster_id", ocean_spark_cluster_id)
         if virtual_node_group_id is not None:

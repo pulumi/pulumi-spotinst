@@ -14,20 +14,36 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class OceanNpVirtualNodeGroupFilters {
+    private @Nullable String acceleratedNetworking;
     private @Nullable List<String> architectures;
+    private @Nullable String diskPerformance;
     private @Nullable List<String> excludeSeries;
+    private @Nullable Double maxGpu;
     private @Nullable Double maxMemoryGib;
     private @Nullable Integer maxVcpu;
+    private @Nullable Integer minData;
+    private @Nullable Double minGpu;
     private @Nullable Double minMemoryGib;
+    private @Nullable Integer minNics;
     private @Nullable Integer minVcpu;
     private @Nullable List<String> series;
+    private @Nullable List<String> vmTypes;
 
     private OceanNpVirtualNodeGroupFilters() {}
+    public Optional<String> acceleratedNetworking() {
+        return Optional.ofNullable(this.acceleratedNetworking);
+    }
     public List<String> architectures() {
         return this.architectures == null ? List.of() : this.architectures;
     }
+    public Optional<String> diskPerformance() {
+        return Optional.ofNullable(this.diskPerformance);
+    }
     public List<String> excludeSeries() {
         return this.excludeSeries == null ? List.of() : this.excludeSeries;
+    }
+    public Optional<Double> maxGpu() {
+        return Optional.ofNullable(this.maxGpu);
     }
     public Optional<Double> maxMemoryGib() {
         return Optional.ofNullable(this.maxMemoryGib);
@@ -35,14 +51,26 @@ public final class OceanNpVirtualNodeGroupFilters {
     public Optional<Integer> maxVcpu() {
         return Optional.ofNullable(this.maxVcpu);
     }
+    public Optional<Integer> minData() {
+        return Optional.ofNullable(this.minData);
+    }
+    public Optional<Double> minGpu() {
+        return Optional.ofNullable(this.minGpu);
+    }
     public Optional<Double> minMemoryGib() {
         return Optional.ofNullable(this.minMemoryGib);
+    }
+    public Optional<Integer> minNics() {
+        return Optional.ofNullable(this.minNics);
     }
     public Optional<Integer> minVcpu() {
         return Optional.ofNullable(this.minVcpu);
     }
     public List<String> series() {
         return this.series == null ? List.of() : this.series;
+    }
+    public List<String> vmTypes() {
+        return this.vmTypes == null ? List.of() : this.vmTypes;
     }
 
     public static Builder builder() {
@@ -54,25 +82,44 @@ public final class OceanNpVirtualNodeGroupFilters {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String acceleratedNetworking;
         private @Nullable List<String> architectures;
+        private @Nullable String diskPerformance;
         private @Nullable List<String> excludeSeries;
+        private @Nullable Double maxGpu;
         private @Nullable Double maxMemoryGib;
         private @Nullable Integer maxVcpu;
+        private @Nullable Integer minData;
+        private @Nullable Double minGpu;
         private @Nullable Double minMemoryGib;
+        private @Nullable Integer minNics;
         private @Nullable Integer minVcpu;
         private @Nullable List<String> series;
+        private @Nullable List<String> vmTypes;
         public Builder() {}
         public Builder(OceanNpVirtualNodeGroupFilters defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.acceleratedNetworking = defaults.acceleratedNetworking;
     	      this.architectures = defaults.architectures;
+    	      this.diskPerformance = defaults.diskPerformance;
     	      this.excludeSeries = defaults.excludeSeries;
+    	      this.maxGpu = defaults.maxGpu;
     	      this.maxMemoryGib = defaults.maxMemoryGib;
     	      this.maxVcpu = defaults.maxVcpu;
+    	      this.minData = defaults.minData;
+    	      this.minGpu = defaults.minGpu;
     	      this.minMemoryGib = defaults.minMemoryGib;
+    	      this.minNics = defaults.minNics;
     	      this.minVcpu = defaults.minVcpu;
     	      this.series = defaults.series;
+    	      this.vmTypes = defaults.vmTypes;
         }
 
+        @CustomType.Setter
+        public Builder acceleratedNetworking(@Nullable String acceleratedNetworking) {
+            this.acceleratedNetworking = acceleratedNetworking;
+            return this;
+        }
         @CustomType.Setter
         public Builder architectures(@Nullable List<String> architectures) {
             this.architectures = architectures;
@@ -82,12 +129,22 @@ public final class OceanNpVirtualNodeGroupFilters {
             return architectures(List.of(architectures));
         }
         @CustomType.Setter
+        public Builder diskPerformance(@Nullable String diskPerformance) {
+            this.diskPerformance = diskPerformance;
+            return this;
+        }
+        @CustomType.Setter
         public Builder excludeSeries(@Nullable List<String> excludeSeries) {
             this.excludeSeries = excludeSeries;
             return this;
         }
         public Builder excludeSeries(String... excludeSeries) {
             return excludeSeries(List.of(excludeSeries));
+        }
+        @CustomType.Setter
+        public Builder maxGpu(@Nullable Double maxGpu) {
+            this.maxGpu = maxGpu;
+            return this;
         }
         @CustomType.Setter
         public Builder maxMemoryGib(@Nullable Double maxMemoryGib) {
@@ -100,8 +157,23 @@ public final class OceanNpVirtualNodeGroupFilters {
             return this;
         }
         @CustomType.Setter
+        public Builder minData(@Nullable Integer minData) {
+            this.minData = minData;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder minGpu(@Nullable Double minGpu) {
+            this.minGpu = minGpu;
+            return this;
+        }
+        @CustomType.Setter
         public Builder minMemoryGib(@Nullable Double minMemoryGib) {
             this.minMemoryGib = minMemoryGib;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder minNics(@Nullable Integer minNics) {
+            this.minNics = minNics;
             return this;
         }
         @CustomType.Setter
@@ -117,15 +189,30 @@ public final class OceanNpVirtualNodeGroupFilters {
         public Builder series(String... series) {
             return series(List.of(series));
         }
+        @CustomType.Setter
+        public Builder vmTypes(@Nullable List<String> vmTypes) {
+            this.vmTypes = vmTypes;
+            return this;
+        }
+        public Builder vmTypes(String... vmTypes) {
+            return vmTypes(List.of(vmTypes));
+        }
         public OceanNpVirtualNodeGroupFilters build() {
             final var o = new OceanNpVirtualNodeGroupFilters();
+            o.acceleratedNetworking = acceleratedNetworking;
             o.architectures = architectures;
+            o.diskPerformance = diskPerformance;
             o.excludeSeries = excludeSeries;
+            o.maxGpu = maxGpu;
             o.maxMemoryGib = maxMemoryGib;
             o.maxVcpu = maxVcpu;
+            o.minData = minData;
+            o.minGpu = minGpu;
             o.minMemoryGib = minMemoryGib;
+            o.minNics = minNics;
             o.minVcpu = minVcpu;
             o.series = series;
+            o.vmTypes = vmTypes;
             return o;
         }
     }

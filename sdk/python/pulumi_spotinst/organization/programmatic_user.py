@@ -47,7 +47,11 @@ class ProgrammaticUserArgs:
              name: Optional[pulumi.Input[str]] = None,
              policies: Optional[pulumi.Input[Sequence[pulumi.Input['ProgrammaticUserPolicyArgs']]]] = None,
              user_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'userGroupIds' in kwargs:
+            user_group_ids = kwargs['userGroupIds']
+
         if accounts is not None:
             _setter("accounts", accounts)
         if description is not None:
@@ -156,7 +160,11 @@ class _ProgrammaticUserState:
              name: Optional[pulumi.Input[str]] = None,
              policies: Optional[pulumi.Input[Sequence[pulumi.Input['ProgrammaticUserPolicyArgs']]]] = None,
              user_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'userGroupIds' in kwargs:
+            user_group_ids = kwargs['userGroupIds']
+
         if accounts is not None:
             _setter("accounts", accounts)
         if description is not None:

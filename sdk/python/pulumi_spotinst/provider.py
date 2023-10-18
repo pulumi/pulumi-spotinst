@@ -35,7 +35,11 @@ class ProviderArgs:
              account: Optional[pulumi.Input[str]] = None,
              feature_flags: Optional[pulumi.Input[str]] = None,
              token: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'featureFlags' in kwargs:
+            feature_flags = kwargs['featureFlags']
+
         if account is not None:
             _setter("account", account)
         if feature_flags is not None:

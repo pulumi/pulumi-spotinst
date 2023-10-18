@@ -31,7 +31,13 @@ class OceanLaunchSpecImportArgs:
              _setter: Callable[[Any, Any], None],
              node_pool_name: pulumi.Input[str],
              ocean_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'nodePoolName' in kwargs:
+            node_pool_name = kwargs['nodePoolName']
+        if 'oceanId' in kwargs:
+            ocean_id = kwargs['oceanId']
+
         _setter("node_pool_name", node_pool_name)
         _setter("ocean_id", ocean_id)
 
@@ -80,7 +86,13 @@ class _OceanLaunchSpecImportState:
              _setter: Callable[[Any, Any], None],
              node_pool_name: Optional[pulumi.Input[str]] = None,
              ocean_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'nodePoolName' in kwargs:
+            node_pool_name = kwargs['nodePoolName']
+        if 'oceanId' in kwargs:
+            ocean_id = kwargs['oceanId']
+
         if node_pool_name is not None:
             _setter("node_pool_name", node_pool_name)
         if ocean_id is not None:

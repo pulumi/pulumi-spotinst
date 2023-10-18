@@ -32,9 +32,11 @@ type OceanNpVirtualNodeGroup struct {
 	OsDiskType         pulumi.StringPtrOutput                     `pulumi:"osDiskType"`
 	OsSku              pulumi.StringPtrOutput                     `pulumi:"osSku"`
 	OsType             pulumi.StringPtrOutput                     `pulumi:"osType"`
+	PodSubnetIds       pulumi.StringArrayOutput                   `pulumi:"podSubnetIds"`
 	SpotPercentage     pulumi.IntPtrOutput                        `pulumi:"spotPercentage"`
 	Tags               pulumi.MapOutput                           `pulumi:"tags"`
 	Taints             OceanNpVirtualNodeGroupTaintArrayOutput    `pulumi:"taints"`
+	VnetSubnetIds      pulumi.StringArrayOutput                   `pulumi:"vnetSubnetIds"`
 }
 
 // NewOceanNpVirtualNodeGroup registers a new resource with the given unique name, arguments, and options.
@@ -86,9 +88,11 @@ type oceanNpVirtualNodeGroupState struct {
 	OsDiskType         *string                           `pulumi:"osDiskType"`
 	OsSku              *string                           `pulumi:"osSku"`
 	OsType             *string                           `pulumi:"osType"`
+	PodSubnetIds       []string                          `pulumi:"podSubnetIds"`
 	SpotPercentage     *int                              `pulumi:"spotPercentage"`
 	Tags               map[string]interface{}            `pulumi:"tags"`
 	Taints             []OceanNpVirtualNodeGroupTaint    `pulumi:"taints"`
+	VnetSubnetIds      []string                          `pulumi:"vnetSubnetIds"`
 }
 
 type OceanNpVirtualNodeGroupState struct {
@@ -108,9 +112,11 @@ type OceanNpVirtualNodeGroupState struct {
 	OsDiskType         pulumi.StringPtrInput
 	OsSku              pulumi.StringPtrInput
 	OsType             pulumi.StringPtrInput
+	PodSubnetIds       pulumi.StringArrayInput
 	SpotPercentage     pulumi.IntPtrInput
 	Tags               pulumi.MapInput
 	Taints             OceanNpVirtualNodeGroupTaintArrayInput
+	VnetSubnetIds      pulumi.StringArrayInput
 }
 
 func (OceanNpVirtualNodeGroupState) ElementType() reflect.Type {
@@ -134,9 +140,11 @@ type oceanNpVirtualNodeGroupArgs struct {
 	OsDiskType         *string                           `pulumi:"osDiskType"`
 	OsSku              *string                           `pulumi:"osSku"`
 	OsType             *string                           `pulumi:"osType"`
+	PodSubnetIds       []string                          `pulumi:"podSubnetIds"`
 	SpotPercentage     *int                              `pulumi:"spotPercentage"`
 	Tags               map[string]interface{}            `pulumi:"tags"`
 	Taints             []OceanNpVirtualNodeGroupTaint    `pulumi:"taints"`
+	VnetSubnetIds      []string                          `pulumi:"vnetSubnetIds"`
 }
 
 // The set of arguments for constructing a OceanNpVirtualNodeGroup resource.
@@ -157,9 +165,11 @@ type OceanNpVirtualNodeGroupArgs struct {
 	OsDiskType         pulumi.StringPtrInput
 	OsSku              pulumi.StringPtrInput
 	OsType             pulumi.StringPtrInput
+	PodSubnetIds       pulumi.StringArrayInput
 	SpotPercentage     pulumi.IntPtrInput
 	Tags               pulumi.MapInput
 	Taints             OceanNpVirtualNodeGroupTaintArrayInput
+	VnetSubnetIds      pulumi.StringArrayInput
 }
 
 func (OceanNpVirtualNodeGroupArgs) ElementType() reflect.Type {
@@ -337,6 +347,10 @@ func (o OceanNpVirtualNodeGroupOutput) OsType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OceanNpVirtualNodeGroup) pulumi.StringPtrOutput { return v.OsType }).(pulumi.StringPtrOutput)
 }
 
+func (o OceanNpVirtualNodeGroupOutput) PodSubnetIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OceanNpVirtualNodeGroup) pulumi.StringArrayOutput { return v.PodSubnetIds }).(pulumi.StringArrayOutput)
+}
+
 func (o OceanNpVirtualNodeGroupOutput) SpotPercentage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanNpVirtualNodeGroup) pulumi.IntPtrOutput { return v.SpotPercentage }).(pulumi.IntPtrOutput)
 }
@@ -347,6 +361,10 @@ func (o OceanNpVirtualNodeGroupOutput) Tags() pulumi.MapOutput {
 
 func (o OceanNpVirtualNodeGroupOutput) Taints() OceanNpVirtualNodeGroupTaintArrayOutput {
 	return o.ApplyT(func(v *OceanNpVirtualNodeGroup) OceanNpVirtualNodeGroupTaintArrayOutput { return v.Taints }).(OceanNpVirtualNodeGroupTaintArrayOutput)
+}
+
+func (o OceanNpVirtualNodeGroupOutput) VnetSubnetIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OceanNpVirtualNodeGroup) pulumi.StringArrayOutput { return v.VnetSubnetIds }).(pulumi.StringArrayOutput)
 }
 
 type OceanNpVirtualNodeGroupArrayOutput struct{ *pulumi.OutputState }

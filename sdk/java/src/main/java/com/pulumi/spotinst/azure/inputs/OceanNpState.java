@@ -180,6 +180,13 @@ public final class OceanNpState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.osType);
     }
 
+    @Import(name="podSubnetIds")
+    private @Nullable Output<List<String>> podSubnetIds;
+
+    public Optional<Output<List<String>>> podSubnetIds() {
+        return Optional.ofNullable(this.podSubnetIds);
+    }
+
     @Import(name="scheduling")
     private @Nullable Output<OceanNpSchedulingArgs> scheduling;
 
@@ -208,6 +215,13 @@ public final class OceanNpState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.taints);
     }
 
+    @Import(name="vnetSubnetIds")
+    private @Nullable Output<List<String>> vnetSubnetIds;
+
+    public Optional<Output<List<String>>> vnetSubnetIds() {
+        return Optional.ofNullable(this.vnetSubnetIds);
+    }
+
     private OceanNpState() {}
 
     private OceanNpState(OceanNpState $) {
@@ -233,10 +247,12 @@ public final class OceanNpState extends com.pulumi.resources.ResourceArgs {
         this.osDiskType = $.osDiskType;
         this.osSku = $.osSku;
         this.osType = $.osType;
+        this.podSubnetIds = $.podSubnetIds;
         this.scheduling = $.scheduling;
         this.spotPercentage = $.spotPercentage;
         this.tags = $.tags;
         this.taints = $.taints;
+        this.vnetSubnetIds = $.vnetSubnetIds;
     }
 
     public static Builder builder() {
@@ -463,6 +479,19 @@ public final class OceanNpState extends com.pulumi.resources.ResourceArgs {
             return osType(Output.of(osType));
         }
 
+        public Builder podSubnetIds(@Nullable Output<List<String>> podSubnetIds) {
+            $.podSubnetIds = podSubnetIds;
+            return this;
+        }
+
+        public Builder podSubnetIds(List<String> podSubnetIds) {
+            return podSubnetIds(Output.of(podSubnetIds));
+        }
+
+        public Builder podSubnetIds(String... podSubnetIds) {
+            return podSubnetIds(List.of(podSubnetIds));
+        }
+
         public Builder scheduling(@Nullable Output<OceanNpSchedulingArgs> scheduling) {
             $.scheduling = scheduling;
             return this;
@@ -501,6 +530,19 @@ public final class OceanNpState extends com.pulumi.resources.ResourceArgs {
 
         public Builder taints(OceanNpTaintArgs... taints) {
             return taints(List.of(taints));
+        }
+
+        public Builder vnetSubnetIds(@Nullable Output<List<String>> vnetSubnetIds) {
+            $.vnetSubnetIds = vnetSubnetIds;
+            return this;
+        }
+
+        public Builder vnetSubnetIds(List<String> vnetSubnetIds) {
+            return vnetSubnetIds(Output.of(vnetSubnetIds));
+        }
+
+        public Builder vnetSubnetIds(String... vnetSubnetIds) {
+            return vnetSubnetIds(List.of(vnetSubnetIds));
         }
 
         public OceanNpState build() {

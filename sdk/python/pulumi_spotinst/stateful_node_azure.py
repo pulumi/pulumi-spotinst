@@ -148,7 +148,59 @@ class StatefulNodeAzureArgs:
              user_data: Optional[pulumi.Input[str]] = None,
              vm_name: Optional[pulumi.Input[str]] = None,
              zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'odSizes' in kwargs:
+            od_sizes = kwargs['odSizes']
+        if 'resourceGroupName' in kwargs:
+            resource_group_name = kwargs['resourceGroupName']
+        if 'shouldPersistDataDisks' in kwargs:
+            should_persist_data_disks = kwargs['shouldPersistDataDisks']
+        if 'shouldPersistNetwork' in kwargs:
+            should_persist_network = kwargs['shouldPersistNetwork']
+        if 'shouldPersistOsDisk' in kwargs:
+            should_persist_os_disk = kwargs['shouldPersistOsDisk']
+        if 'spotSizes' in kwargs:
+            spot_sizes = kwargs['spotSizes']
+        if 'attachDataDisks' in kwargs:
+            attach_data_disks = kwargs['attachDataDisks']
+        if 'bootDiagnostics' in kwargs:
+            boot_diagnostics = kwargs['bootDiagnostics']
+        if 'customData' in kwargs:
+            custom_data = kwargs['customData']
+        if 'dataDisks' in kwargs:
+            data_disks = kwargs['dataDisks']
+        if 'dataDisksPersistenceMode' in kwargs:
+            data_disks_persistence_mode = kwargs['dataDisksPersistenceMode']
+        if 'detachDataDisks' in kwargs:
+            detach_data_disks = kwargs['detachDataDisks']
+        if 'importVms' in kwargs:
+            import_vms = kwargs['importVms']
+        if 'loadBalancers' in kwargs:
+            load_balancers = kwargs['loadBalancers']
+        if 'managedServiceIdentities' in kwargs:
+            managed_service_identities = kwargs['managedServiceIdentities']
+        if 'osDisk' in kwargs:
+            os_disk = kwargs['osDisk']
+        if 'osDiskPersistenceMode' in kwargs:
+            os_disk_persistence_mode = kwargs['osDiskPersistenceMode']
+        if 'preferredSpotSizes' in kwargs:
+            preferred_spot_sizes = kwargs['preferredSpotSizes']
+        if 'preferredZone' in kwargs:
+            preferred_zone = kwargs['preferredZone']
+        if 'schedulingTasks' in kwargs:
+            scheduling_tasks = kwargs['schedulingTasks']
+        if 'shouldPersistVm' in kwargs:
+            should_persist_vm = kwargs['shouldPersistVm']
+        if 'shutdownScript' in kwargs:
+            shutdown_script = kwargs['shutdownScript']
+        if 'updateStates' in kwargs:
+            update_states = kwargs['updateStates']
+        if 'userData' in kwargs:
+            user_data = kwargs['userData']
+        if 'vmName' in kwargs:
+            vm_name = kwargs['vmName']
+
         _setter("od_sizes", od_sizes)
         _setter("os", os)
         _setter("region", region)
@@ -728,7 +780,59 @@ class _StatefulNodeAzureState:
              user_data: Optional[pulumi.Input[str]] = None,
              vm_name: Optional[pulumi.Input[str]] = None,
              zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'attachDataDisks' in kwargs:
+            attach_data_disks = kwargs['attachDataDisks']
+        if 'bootDiagnostics' in kwargs:
+            boot_diagnostics = kwargs['bootDiagnostics']
+        if 'customData' in kwargs:
+            custom_data = kwargs['customData']
+        if 'dataDisks' in kwargs:
+            data_disks = kwargs['dataDisks']
+        if 'dataDisksPersistenceMode' in kwargs:
+            data_disks_persistence_mode = kwargs['dataDisksPersistenceMode']
+        if 'detachDataDisks' in kwargs:
+            detach_data_disks = kwargs['detachDataDisks']
+        if 'importVms' in kwargs:
+            import_vms = kwargs['importVms']
+        if 'loadBalancers' in kwargs:
+            load_balancers = kwargs['loadBalancers']
+        if 'managedServiceIdentities' in kwargs:
+            managed_service_identities = kwargs['managedServiceIdentities']
+        if 'odSizes' in kwargs:
+            od_sizes = kwargs['odSizes']
+        if 'osDisk' in kwargs:
+            os_disk = kwargs['osDisk']
+        if 'osDiskPersistenceMode' in kwargs:
+            os_disk_persistence_mode = kwargs['osDiskPersistenceMode']
+        if 'preferredSpotSizes' in kwargs:
+            preferred_spot_sizes = kwargs['preferredSpotSizes']
+        if 'preferredZone' in kwargs:
+            preferred_zone = kwargs['preferredZone']
+        if 'resourceGroupName' in kwargs:
+            resource_group_name = kwargs['resourceGroupName']
+        if 'schedulingTasks' in kwargs:
+            scheduling_tasks = kwargs['schedulingTasks']
+        if 'shouldPersistDataDisks' in kwargs:
+            should_persist_data_disks = kwargs['shouldPersistDataDisks']
+        if 'shouldPersistNetwork' in kwargs:
+            should_persist_network = kwargs['shouldPersistNetwork']
+        if 'shouldPersistOsDisk' in kwargs:
+            should_persist_os_disk = kwargs['shouldPersistOsDisk']
+        if 'shouldPersistVm' in kwargs:
+            should_persist_vm = kwargs['shouldPersistVm']
+        if 'shutdownScript' in kwargs:
+            shutdown_script = kwargs['shutdownScript']
+        if 'spotSizes' in kwargs:
+            spot_sizes = kwargs['spotSizes']
+        if 'updateStates' in kwargs:
+            update_states = kwargs['updateStates']
+        if 'userData' in kwargs:
+            user_data = kwargs['userData']
+        if 'vmName' in kwargs:
+            vm_name = kwargs['vmName']
+
         if attach_data_disks is not None:
             _setter("attach_data_disks", attach_data_disks)
         if boot_diagnostics is not None:

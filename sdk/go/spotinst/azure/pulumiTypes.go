@@ -6406,13 +6406,20 @@ func (o OceanNpAutoscalerResourceLimitsPtrOutput) MaxVcpu() pulumi.IntPtrOutput 
 }
 
 type OceanNpFilters struct {
-	Architectures []string `pulumi:"architectures"`
-	ExcludeSeries []string `pulumi:"excludeSeries"`
-	MaxMemoryGib  *float64 `pulumi:"maxMemoryGib"`
-	MaxVcpu       *int     `pulumi:"maxVcpu"`
-	MinMemoryGib  *float64 `pulumi:"minMemoryGib"`
-	MinVcpu       *int     `pulumi:"minVcpu"`
-	Series        []string `pulumi:"series"`
+	AcceleratedNetworking *string  `pulumi:"acceleratedNetworking"`
+	Architectures         []string `pulumi:"architectures"`
+	DiskPerformance       *string  `pulumi:"diskPerformance"`
+	ExcludeSeries         []string `pulumi:"excludeSeries"`
+	MaxGpu                *float64 `pulumi:"maxGpu"`
+	MaxMemoryGib          *float64 `pulumi:"maxMemoryGib"`
+	MaxVcpu               *int     `pulumi:"maxVcpu"`
+	MinData               *int     `pulumi:"minData"`
+	MinGpu                *float64 `pulumi:"minGpu"`
+	MinMemoryGib          *float64 `pulumi:"minMemoryGib"`
+	MinNics               *int     `pulumi:"minNics"`
+	MinVcpu               *int     `pulumi:"minVcpu"`
+	Series                []string `pulumi:"series"`
+	VmTypes               []string `pulumi:"vmTypes"`
 }
 
 // OceanNpFiltersInput is an input type that accepts OceanNpFiltersArgs and OceanNpFiltersOutput values.
@@ -6427,13 +6434,20 @@ type OceanNpFiltersInput interface {
 }
 
 type OceanNpFiltersArgs struct {
-	Architectures pulumi.StringArrayInput `pulumi:"architectures"`
-	ExcludeSeries pulumi.StringArrayInput `pulumi:"excludeSeries"`
-	MaxMemoryGib  pulumi.Float64PtrInput  `pulumi:"maxMemoryGib"`
-	MaxVcpu       pulumi.IntPtrInput      `pulumi:"maxVcpu"`
-	MinMemoryGib  pulumi.Float64PtrInput  `pulumi:"minMemoryGib"`
-	MinVcpu       pulumi.IntPtrInput      `pulumi:"minVcpu"`
-	Series        pulumi.StringArrayInput `pulumi:"series"`
+	AcceleratedNetworking pulumi.StringPtrInput   `pulumi:"acceleratedNetworking"`
+	Architectures         pulumi.StringArrayInput `pulumi:"architectures"`
+	DiskPerformance       pulumi.StringPtrInput   `pulumi:"diskPerformance"`
+	ExcludeSeries         pulumi.StringArrayInput `pulumi:"excludeSeries"`
+	MaxGpu                pulumi.Float64PtrInput  `pulumi:"maxGpu"`
+	MaxMemoryGib          pulumi.Float64PtrInput  `pulumi:"maxMemoryGib"`
+	MaxVcpu               pulumi.IntPtrInput      `pulumi:"maxVcpu"`
+	MinData               pulumi.IntPtrInput      `pulumi:"minData"`
+	MinGpu                pulumi.Float64PtrInput  `pulumi:"minGpu"`
+	MinMemoryGib          pulumi.Float64PtrInput  `pulumi:"minMemoryGib"`
+	MinNics               pulumi.IntPtrInput      `pulumi:"minNics"`
+	MinVcpu               pulumi.IntPtrInput      `pulumi:"minVcpu"`
+	Series                pulumi.StringArrayInput `pulumi:"series"`
+	VmTypes               pulumi.StringArrayInput `pulumi:"vmTypes"`
 }
 
 func (OceanNpFiltersArgs) ElementType() reflect.Type {
@@ -6531,12 +6545,24 @@ func (o OceanNpFiltersOutput) ToOutput(ctx context.Context) pulumix.Output[Ocean
 	}
 }
 
+func (o OceanNpFiltersOutput) AcceleratedNetworking() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OceanNpFilters) *string { return v.AcceleratedNetworking }).(pulumi.StringPtrOutput)
+}
+
 func (o OceanNpFiltersOutput) Architectures() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v OceanNpFilters) []string { return v.Architectures }).(pulumi.StringArrayOutput)
 }
 
+func (o OceanNpFiltersOutput) DiskPerformance() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OceanNpFilters) *string { return v.DiskPerformance }).(pulumi.StringPtrOutput)
+}
+
 func (o OceanNpFiltersOutput) ExcludeSeries() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v OceanNpFilters) []string { return v.ExcludeSeries }).(pulumi.StringArrayOutput)
+}
+
+func (o OceanNpFiltersOutput) MaxGpu() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v OceanNpFilters) *float64 { return v.MaxGpu }).(pulumi.Float64PtrOutput)
 }
 
 func (o OceanNpFiltersOutput) MaxMemoryGib() pulumi.Float64PtrOutput {
@@ -6547,8 +6573,20 @@ func (o OceanNpFiltersOutput) MaxVcpu() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanNpFilters) *int { return v.MaxVcpu }).(pulumi.IntPtrOutput)
 }
 
+func (o OceanNpFiltersOutput) MinData() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OceanNpFilters) *int { return v.MinData }).(pulumi.IntPtrOutput)
+}
+
+func (o OceanNpFiltersOutput) MinGpu() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v OceanNpFilters) *float64 { return v.MinGpu }).(pulumi.Float64PtrOutput)
+}
+
 func (o OceanNpFiltersOutput) MinMemoryGib() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v OceanNpFilters) *float64 { return v.MinMemoryGib }).(pulumi.Float64PtrOutput)
+}
+
+func (o OceanNpFiltersOutput) MinNics() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OceanNpFilters) *int { return v.MinNics }).(pulumi.IntPtrOutput)
 }
 
 func (o OceanNpFiltersOutput) MinVcpu() pulumi.IntPtrOutput {
@@ -6557,6 +6595,10 @@ func (o OceanNpFiltersOutput) MinVcpu() pulumi.IntPtrOutput {
 
 func (o OceanNpFiltersOutput) Series() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v OceanNpFilters) []string { return v.Series }).(pulumi.StringArrayOutput)
+}
+
+func (o OceanNpFiltersOutput) VmTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OceanNpFilters) []string { return v.VmTypes }).(pulumi.StringArrayOutput)
 }
 
 type OceanNpFiltersPtrOutput struct{ *pulumi.OutputState }
@@ -6589,6 +6631,15 @@ func (o OceanNpFiltersPtrOutput) Elem() OceanNpFiltersOutput {
 	}).(OceanNpFiltersOutput)
 }
 
+func (o OceanNpFiltersPtrOutput) AcceleratedNetworking() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OceanNpFilters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AcceleratedNetworking
+	}).(pulumi.StringPtrOutput)
+}
+
 func (o OceanNpFiltersPtrOutput) Architectures() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *OceanNpFilters) []string {
 		if v == nil {
@@ -6598,6 +6649,15 @@ func (o OceanNpFiltersPtrOutput) Architectures() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
+func (o OceanNpFiltersPtrOutput) DiskPerformance() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OceanNpFilters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DiskPerformance
+	}).(pulumi.StringPtrOutput)
+}
+
 func (o OceanNpFiltersPtrOutput) ExcludeSeries() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *OceanNpFilters) []string {
 		if v == nil {
@@ -6605,6 +6665,15 @@ func (o OceanNpFiltersPtrOutput) ExcludeSeries() pulumi.StringArrayOutput {
 		}
 		return v.ExcludeSeries
 	}).(pulumi.StringArrayOutput)
+}
+
+func (o OceanNpFiltersPtrOutput) MaxGpu() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *OceanNpFilters) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.MaxGpu
+	}).(pulumi.Float64PtrOutput)
 }
 
 func (o OceanNpFiltersPtrOutput) MaxMemoryGib() pulumi.Float64PtrOutput {
@@ -6625,6 +6694,24 @@ func (o OceanNpFiltersPtrOutput) MaxVcpu() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+func (o OceanNpFiltersPtrOutput) MinData() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OceanNpFilters) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinData
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o OceanNpFiltersPtrOutput) MinGpu() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *OceanNpFilters) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.MinGpu
+	}).(pulumi.Float64PtrOutput)
+}
+
 func (o OceanNpFiltersPtrOutput) MinMemoryGib() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *OceanNpFilters) *float64 {
 		if v == nil {
@@ -6632,6 +6719,15 @@ func (o OceanNpFiltersPtrOutput) MinMemoryGib() pulumi.Float64PtrOutput {
 		}
 		return v.MinMemoryGib
 	}).(pulumi.Float64PtrOutput)
+}
+
+func (o OceanNpFiltersPtrOutput) MinNics() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OceanNpFilters) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinNics
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o OceanNpFiltersPtrOutput) MinVcpu() pulumi.IntPtrOutput {
@@ -6649,6 +6745,15 @@ func (o OceanNpFiltersPtrOutput) Series() pulumi.StringArrayOutput {
 			return nil
 		}
 		return v.Series
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o OceanNpFiltersPtrOutput) VmTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OceanNpFilters) []string {
+		if v == nil {
+			return nil
+		}
+		return v.VmTypes
 	}).(pulumi.StringArrayOutput)
 }
 
@@ -7405,13 +7510,20 @@ func (o OceanNpTaintArrayOutput) Index(i pulumi.IntInput) OceanNpTaintOutput {
 }
 
 type OceanNpVirtualNodeGroupFilters struct {
-	Architectures []string `pulumi:"architectures"`
-	ExcludeSeries []string `pulumi:"excludeSeries"`
-	MaxMemoryGib  *float64 `pulumi:"maxMemoryGib"`
-	MaxVcpu       *int     `pulumi:"maxVcpu"`
-	MinMemoryGib  *float64 `pulumi:"minMemoryGib"`
-	MinVcpu       *int     `pulumi:"minVcpu"`
-	Series        []string `pulumi:"series"`
+	AcceleratedNetworking *string  `pulumi:"acceleratedNetworking"`
+	Architectures         []string `pulumi:"architectures"`
+	DiskPerformance       *string  `pulumi:"diskPerformance"`
+	ExcludeSeries         []string `pulumi:"excludeSeries"`
+	MaxGpu                *float64 `pulumi:"maxGpu"`
+	MaxMemoryGib          *float64 `pulumi:"maxMemoryGib"`
+	MaxVcpu               *int     `pulumi:"maxVcpu"`
+	MinData               *int     `pulumi:"minData"`
+	MinGpu                *float64 `pulumi:"minGpu"`
+	MinMemoryGib          *float64 `pulumi:"minMemoryGib"`
+	MinNics               *int     `pulumi:"minNics"`
+	MinVcpu               *int     `pulumi:"minVcpu"`
+	Series                []string `pulumi:"series"`
+	VmTypes               []string `pulumi:"vmTypes"`
 }
 
 // OceanNpVirtualNodeGroupFiltersInput is an input type that accepts OceanNpVirtualNodeGroupFiltersArgs and OceanNpVirtualNodeGroupFiltersOutput values.
@@ -7426,13 +7538,20 @@ type OceanNpVirtualNodeGroupFiltersInput interface {
 }
 
 type OceanNpVirtualNodeGroupFiltersArgs struct {
-	Architectures pulumi.StringArrayInput `pulumi:"architectures"`
-	ExcludeSeries pulumi.StringArrayInput `pulumi:"excludeSeries"`
-	MaxMemoryGib  pulumi.Float64PtrInput  `pulumi:"maxMemoryGib"`
-	MaxVcpu       pulumi.IntPtrInput      `pulumi:"maxVcpu"`
-	MinMemoryGib  pulumi.Float64PtrInput  `pulumi:"minMemoryGib"`
-	MinVcpu       pulumi.IntPtrInput      `pulumi:"minVcpu"`
-	Series        pulumi.StringArrayInput `pulumi:"series"`
+	AcceleratedNetworking pulumi.StringPtrInput   `pulumi:"acceleratedNetworking"`
+	Architectures         pulumi.StringArrayInput `pulumi:"architectures"`
+	DiskPerformance       pulumi.StringPtrInput   `pulumi:"diskPerformance"`
+	ExcludeSeries         pulumi.StringArrayInput `pulumi:"excludeSeries"`
+	MaxGpu                pulumi.Float64PtrInput  `pulumi:"maxGpu"`
+	MaxMemoryGib          pulumi.Float64PtrInput  `pulumi:"maxMemoryGib"`
+	MaxVcpu               pulumi.IntPtrInput      `pulumi:"maxVcpu"`
+	MinData               pulumi.IntPtrInput      `pulumi:"minData"`
+	MinGpu                pulumi.Float64PtrInput  `pulumi:"minGpu"`
+	MinMemoryGib          pulumi.Float64PtrInput  `pulumi:"minMemoryGib"`
+	MinNics               pulumi.IntPtrInput      `pulumi:"minNics"`
+	MinVcpu               pulumi.IntPtrInput      `pulumi:"minVcpu"`
+	Series                pulumi.StringArrayInput `pulumi:"series"`
+	VmTypes               pulumi.StringArrayInput `pulumi:"vmTypes"`
 }
 
 func (OceanNpVirtualNodeGroupFiltersArgs) ElementType() reflect.Type {
@@ -7530,12 +7649,24 @@ func (o OceanNpVirtualNodeGroupFiltersOutput) ToOutput(ctx context.Context) pulu
 	}
 }
 
+func (o OceanNpVirtualNodeGroupFiltersOutput) AcceleratedNetworking() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OceanNpVirtualNodeGroupFilters) *string { return v.AcceleratedNetworking }).(pulumi.StringPtrOutput)
+}
+
 func (o OceanNpVirtualNodeGroupFiltersOutput) Architectures() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v OceanNpVirtualNodeGroupFilters) []string { return v.Architectures }).(pulumi.StringArrayOutput)
 }
 
+func (o OceanNpVirtualNodeGroupFiltersOutput) DiskPerformance() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OceanNpVirtualNodeGroupFilters) *string { return v.DiskPerformance }).(pulumi.StringPtrOutput)
+}
+
 func (o OceanNpVirtualNodeGroupFiltersOutput) ExcludeSeries() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v OceanNpVirtualNodeGroupFilters) []string { return v.ExcludeSeries }).(pulumi.StringArrayOutput)
+}
+
+func (o OceanNpVirtualNodeGroupFiltersOutput) MaxGpu() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v OceanNpVirtualNodeGroupFilters) *float64 { return v.MaxGpu }).(pulumi.Float64PtrOutput)
 }
 
 func (o OceanNpVirtualNodeGroupFiltersOutput) MaxMemoryGib() pulumi.Float64PtrOutput {
@@ -7546,8 +7677,20 @@ func (o OceanNpVirtualNodeGroupFiltersOutput) MaxVcpu() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanNpVirtualNodeGroupFilters) *int { return v.MaxVcpu }).(pulumi.IntPtrOutput)
 }
 
+func (o OceanNpVirtualNodeGroupFiltersOutput) MinData() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OceanNpVirtualNodeGroupFilters) *int { return v.MinData }).(pulumi.IntPtrOutput)
+}
+
+func (o OceanNpVirtualNodeGroupFiltersOutput) MinGpu() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v OceanNpVirtualNodeGroupFilters) *float64 { return v.MinGpu }).(pulumi.Float64PtrOutput)
+}
+
 func (o OceanNpVirtualNodeGroupFiltersOutput) MinMemoryGib() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v OceanNpVirtualNodeGroupFilters) *float64 { return v.MinMemoryGib }).(pulumi.Float64PtrOutput)
+}
+
+func (o OceanNpVirtualNodeGroupFiltersOutput) MinNics() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OceanNpVirtualNodeGroupFilters) *int { return v.MinNics }).(pulumi.IntPtrOutput)
 }
 
 func (o OceanNpVirtualNodeGroupFiltersOutput) MinVcpu() pulumi.IntPtrOutput {
@@ -7556,6 +7699,10 @@ func (o OceanNpVirtualNodeGroupFiltersOutput) MinVcpu() pulumi.IntPtrOutput {
 
 func (o OceanNpVirtualNodeGroupFiltersOutput) Series() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v OceanNpVirtualNodeGroupFilters) []string { return v.Series }).(pulumi.StringArrayOutput)
+}
+
+func (o OceanNpVirtualNodeGroupFiltersOutput) VmTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OceanNpVirtualNodeGroupFilters) []string { return v.VmTypes }).(pulumi.StringArrayOutput)
 }
 
 type OceanNpVirtualNodeGroupFiltersPtrOutput struct{ *pulumi.OutputState }
@@ -7588,6 +7735,15 @@ func (o OceanNpVirtualNodeGroupFiltersPtrOutput) Elem() OceanNpVirtualNodeGroupF
 	}).(OceanNpVirtualNodeGroupFiltersOutput)
 }
 
+func (o OceanNpVirtualNodeGroupFiltersPtrOutput) AcceleratedNetworking() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OceanNpVirtualNodeGroupFilters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AcceleratedNetworking
+	}).(pulumi.StringPtrOutput)
+}
+
 func (o OceanNpVirtualNodeGroupFiltersPtrOutput) Architectures() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *OceanNpVirtualNodeGroupFilters) []string {
 		if v == nil {
@@ -7597,6 +7753,15 @@ func (o OceanNpVirtualNodeGroupFiltersPtrOutput) Architectures() pulumi.StringAr
 	}).(pulumi.StringArrayOutput)
 }
 
+func (o OceanNpVirtualNodeGroupFiltersPtrOutput) DiskPerformance() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OceanNpVirtualNodeGroupFilters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DiskPerformance
+	}).(pulumi.StringPtrOutput)
+}
+
 func (o OceanNpVirtualNodeGroupFiltersPtrOutput) ExcludeSeries() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *OceanNpVirtualNodeGroupFilters) []string {
 		if v == nil {
@@ -7604,6 +7769,15 @@ func (o OceanNpVirtualNodeGroupFiltersPtrOutput) ExcludeSeries() pulumi.StringAr
 		}
 		return v.ExcludeSeries
 	}).(pulumi.StringArrayOutput)
+}
+
+func (o OceanNpVirtualNodeGroupFiltersPtrOutput) MaxGpu() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *OceanNpVirtualNodeGroupFilters) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.MaxGpu
+	}).(pulumi.Float64PtrOutput)
 }
 
 func (o OceanNpVirtualNodeGroupFiltersPtrOutput) MaxMemoryGib() pulumi.Float64PtrOutput {
@@ -7624,6 +7798,24 @@ func (o OceanNpVirtualNodeGroupFiltersPtrOutput) MaxVcpu() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+func (o OceanNpVirtualNodeGroupFiltersPtrOutput) MinData() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OceanNpVirtualNodeGroupFilters) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinData
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o OceanNpVirtualNodeGroupFiltersPtrOutput) MinGpu() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *OceanNpVirtualNodeGroupFilters) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.MinGpu
+	}).(pulumi.Float64PtrOutput)
+}
+
 func (o OceanNpVirtualNodeGroupFiltersPtrOutput) MinMemoryGib() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *OceanNpVirtualNodeGroupFilters) *float64 {
 		if v == nil {
@@ -7631,6 +7823,15 @@ func (o OceanNpVirtualNodeGroupFiltersPtrOutput) MinMemoryGib() pulumi.Float64Pt
 		}
 		return v.MinMemoryGib
 	}).(pulumi.Float64PtrOutput)
+}
+
+func (o OceanNpVirtualNodeGroupFiltersPtrOutput) MinNics() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OceanNpVirtualNodeGroupFilters) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinNics
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o OceanNpVirtualNodeGroupFiltersPtrOutput) MinVcpu() pulumi.IntPtrOutput {
@@ -7648,6 +7849,15 @@ func (o OceanNpVirtualNodeGroupFiltersPtrOutput) Series() pulumi.StringArrayOutp
 			return nil
 		}
 		return v.Series
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o OceanNpVirtualNodeGroupFiltersPtrOutput) VmTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OceanNpVirtualNodeGroupFilters) []string {
+		if v == nil {
+			return nil
+		}
+		return v.VmTypes
 	}).(pulumi.StringArrayOutput)
 }
 

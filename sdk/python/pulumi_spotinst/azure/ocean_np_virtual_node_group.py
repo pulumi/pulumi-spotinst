@@ -32,9 +32,11 @@ class OceanNpVirtualNodeGroupArgs:
                  os_disk_type: Optional[pulumi.Input[str]] = None,
                  os_sku: Optional[pulumi.Input[str]] = None,
                  os_type: Optional[pulumi.Input[str]] = None,
+                 pod_subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  spot_percentage: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 taints: Optional[pulumi.Input[Sequence[pulumi.Input['OceanNpVirtualNodeGroupTaintArgs']]]] = None):
+                 taints: Optional[pulumi.Input[Sequence[pulumi.Input['OceanNpVirtualNodeGroupTaintArgs']]]] = None,
+                 vnet_subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a OceanNpVirtualNodeGroup resource.
         """
@@ -56,9 +58,11 @@ class OceanNpVirtualNodeGroupArgs:
             os_disk_type=os_disk_type,
             os_sku=os_sku,
             os_type=os_type,
+            pod_subnet_ids=pod_subnet_ids,
             spot_percentage=spot_percentage,
             tags=tags,
             taints=taints,
+            vnet_subnet_ids=vnet_subnet_ids,
         )
     @staticmethod
     def _configure(
@@ -79,10 +83,44 @@ class OceanNpVirtualNodeGroupArgs:
              os_disk_type: Optional[pulumi.Input[str]] = None,
              os_sku: Optional[pulumi.Input[str]] = None,
              os_type: Optional[pulumi.Input[str]] = None,
+             pod_subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              spot_percentage: Optional[pulumi.Input[int]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              taints: Optional[pulumi.Input[Sequence[pulumi.Input['OceanNpVirtualNodeGroupTaintArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             vnet_subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'oceanId' in kwargs:
+            ocean_id = kwargs['oceanId']
+        if 'availabilityZones' in kwargs:
+            availability_zones = kwargs['availabilityZones']
+        if 'enableNodePublicIp' in kwargs:
+            enable_node_public_ip = kwargs['enableNodePublicIp']
+        if 'fallbackToOndemand' in kwargs:
+            fallback_to_ondemand = kwargs['fallbackToOndemand']
+        if 'kubernetesVersion' in kwargs:
+            kubernetes_version = kwargs['kubernetesVersion']
+        if 'maxCount' in kwargs:
+            max_count = kwargs['maxCount']
+        if 'maxPodsPerNode' in kwargs:
+            max_pods_per_node = kwargs['maxPodsPerNode']
+        if 'minCount' in kwargs:
+            min_count = kwargs['minCount']
+        if 'osDiskSizeGb' in kwargs:
+            os_disk_size_gb = kwargs['osDiskSizeGb']
+        if 'osDiskType' in kwargs:
+            os_disk_type = kwargs['osDiskType']
+        if 'osSku' in kwargs:
+            os_sku = kwargs['osSku']
+        if 'osType' in kwargs:
+            os_type = kwargs['osType']
+        if 'podSubnetIds' in kwargs:
+            pod_subnet_ids = kwargs['podSubnetIds']
+        if 'spotPercentage' in kwargs:
+            spot_percentage = kwargs['spotPercentage']
+        if 'vnetSubnetIds' in kwargs:
+            vnet_subnet_ids = kwargs['vnetSubnetIds']
+
         _setter("ocean_id", ocean_id)
         if availability_zones is not None:
             _setter("availability_zones", availability_zones)
@@ -114,12 +152,16 @@ class OceanNpVirtualNodeGroupArgs:
             _setter("os_sku", os_sku)
         if os_type is not None:
             _setter("os_type", os_type)
+        if pod_subnet_ids is not None:
+            _setter("pod_subnet_ids", pod_subnet_ids)
         if spot_percentage is not None:
             _setter("spot_percentage", spot_percentage)
         if tags is not None:
             _setter("tags", tags)
         if taints is not None:
             _setter("taints", taints)
+        if vnet_subnet_ids is not None:
+            _setter("vnet_subnet_ids", vnet_subnet_ids)
 
     @property
     @pulumi.getter(name="oceanId")
@@ -266,6 +308,15 @@ class OceanNpVirtualNodeGroupArgs:
         pulumi.set(self, "os_type", value)
 
     @property
+    @pulumi.getter(name="podSubnetIds")
+    def pod_subnet_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "pod_subnet_ids")
+
+    @pod_subnet_ids.setter
+    def pod_subnet_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "pod_subnet_ids", value)
+
+    @property
     @pulumi.getter(name="spotPercentage")
     def spot_percentage(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "spot_percentage")
@@ -292,6 +343,15 @@ class OceanNpVirtualNodeGroupArgs:
     def taints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanNpVirtualNodeGroupTaintArgs']]]]):
         pulumi.set(self, "taints", value)
 
+    @property
+    @pulumi.getter(name="vnetSubnetIds")
+    def vnet_subnet_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "vnet_subnet_ids")
+
+    @vnet_subnet_ids.setter
+    def vnet_subnet_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "vnet_subnet_ids", value)
+
 
 @pulumi.input_type
 class _OceanNpVirtualNodeGroupState:
@@ -312,9 +372,11 @@ class _OceanNpVirtualNodeGroupState:
                  os_disk_type: Optional[pulumi.Input[str]] = None,
                  os_sku: Optional[pulumi.Input[str]] = None,
                  os_type: Optional[pulumi.Input[str]] = None,
+                 pod_subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  spot_percentage: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 taints: Optional[pulumi.Input[Sequence[pulumi.Input['OceanNpVirtualNodeGroupTaintArgs']]]] = None):
+                 taints: Optional[pulumi.Input[Sequence[pulumi.Input['OceanNpVirtualNodeGroupTaintArgs']]]] = None,
+                 vnet_subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering OceanNpVirtualNodeGroup resources.
         """
@@ -336,9 +398,11 @@ class _OceanNpVirtualNodeGroupState:
             os_disk_type=os_disk_type,
             os_sku=os_sku,
             os_type=os_type,
+            pod_subnet_ids=pod_subnet_ids,
             spot_percentage=spot_percentage,
             tags=tags,
             taints=taints,
+            vnet_subnet_ids=vnet_subnet_ids,
         )
     @staticmethod
     def _configure(
@@ -359,10 +423,44 @@ class _OceanNpVirtualNodeGroupState:
              os_disk_type: Optional[pulumi.Input[str]] = None,
              os_sku: Optional[pulumi.Input[str]] = None,
              os_type: Optional[pulumi.Input[str]] = None,
+             pod_subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              spot_percentage: Optional[pulumi.Input[int]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              taints: Optional[pulumi.Input[Sequence[pulumi.Input['OceanNpVirtualNodeGroupTaintArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             vnet_subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'availabilityZones' in kwargs:
+            availability_zones = kwargs['availabilityZones']
+        if 'enableNodePublicIp' in kwargs:
+            enable_node_public_ip = kwargs['enableNodePublicIp']
+        if 'fallbackToOndemand' in kwargs:
+            fallback_to_ondemand = kwargs['fallbackToOndemand']
+        if 'kubernetesVersion' in kwargs:
+            kubernetes_version = kwargs['kubernetesVersion']
+        if 'maxCount' in kwargs:
+            max_count = kwargs['maxCount']
+        if 'maxPodsPerNode' in kwargs:
+            max_pods_per_node = kwargs['maxPodsPerNode']
+        if 'minCount' in kwargs:
+            min_count = kwargs['minCount']
+        if 'oceanId' in kwargs:
+            ocean_id = kwargs['oceanId']
+        if 'osDiskSizeGb' in kwargs:
+            os_disk_size_gb = kwargs['osDiskSizeGb']
+        if 'osDiskType' in kwargs:
+            os_disk_type = kwargs['osDiskType']
+        if 'osSku' in kwargs:
+            os_sku = kwargs['osSku']
+        if 'osType' in kwargs:
+            os_type = kwargs['osType']
+        if 'podSubnetIds' in kwargs:
+            pod_subnet_ids = kwargs['podSubnetIds']
+        if 'spotPercentage' in kwargs:
+            spot_percentage = kwargs['spotPercentage']
+        if 'vnetSubnetIds' in kwargs:
+            vnet_subnet_ids = kwargs['vnetSubnetIds']
+
         if availability_zones is not None:
             _setter("availability_zones", availability_zones)
         if enable_node_public_ip is not None:
@@ -395,12 +493,16 @@ class _OceanNpVirtualNodeGroupState:
             _setter("os_sku", os_sku)
         if os_type is not None:
             _setter("os_type", os_type)
+        if pod_subnet_ids is not None:
+            _setter("pod_subnet_ids", pod_subnet_ids)
         if spot_percentage is not None:
             _setter("spot_percentage", spot_percentage)
         if tags is not None:
             _setter("tags", tags)
         if taints is not None:
             _setter("taints", taints)
+        if vnet_subnet_ids is not None:
+            _setter("vnet_subnet_ids", vnet_subnet_ids)
 
     @property
     @pulumi.getter(name="availabilityZones")
@@ -547,6 +649,15 @@ class _OceanNpVirtualNodeGroupState:
         pulumi.set(self, "os_type", value)
 
     @property
+    @pulumi.getter(name="podSubnetIds")
+    def pod_subnet_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "pod_subnet_ids")
+
+    @pod_subnet_ids.setter
+    def pod_subnet_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "pod_subnet_ids", value)
+
+    @property
     @pulumi.getter(name="spotPercentage")
     def spot_percentage(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "spot_percentage")
@@ -573,6 +684,15 @@ class _OceanNpVirtualNodeGroupState:
     def taints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanNpVirtualNodeGroupTaintArgs']]]]):
         pulumi.set(self, "taints", value)
 
+    @property
+    @pulumi.getter(name="vnetSubnetIds")
+    def vnet_subnet_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "vnet_subnet_ids")
+
+    @vnet_subnet_ids.setter
+    def vnet_subnet_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "vnet_subnet_ids", value)
+
 
 class OceanNpVirtualNodeGroup(pulumi.CustomResource):
     @overload
@@ -595,9 +715,11 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
                  os_disk_type: Optional[pulumi.Input[str]] = None,
                  os_sku: Optional[pulumi.Input[str]] = None,
                  os_type: Optional[pulumi.Input[str]] = None,
+                 pod_subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  spot_percentage: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  taints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanNpVirtualNodeGroupTaintArgs']]]]] = None,
+                 vnet_subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
         Create a OceanNpVirtualNodeGroup resource with the given unique name, props, and options.
@@ -647,9 +769,11 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
                  os_disk_type: Optional[pulumi.Input[str]] = None,
                  os_sku: Optional[pulumi.Input[str]] = None,
                  os_type: Optional[pulumi.Input[str]] = None,
+                 pod_subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  spot_percentage: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  taints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanNpVirtualNodeGroupTaintArgs']]]]] = None,
+                 vnet_subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -682,9 +806,11 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
             __props__.__dict__["os_disk_type"] = os_disk_type
             __props__.__dict__["os_sku"] = os_sku
             __props__.__dict__["os_type"] = os_type
+            __props__.__dict__["pod_subnet_ids"] = pod_subnet_ids
             __props__.__dict__["spot_percentage"] = spot_percentage
             __props__.__dict__["tags"] = tags
             __props__.__dict__["taints"] = taints
+            __props__.__dict__["vnet_subnet_ids"] = vnet_subnet_ids
         super(OceanNpVirtualNodeGroup, __self__).__init__(
             'spotinst:azure/oceanNpVirtualNodeGroup:OceanNpVirtualNodeGroup',
             resource_name,
@@ -711,9 +837,11 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
             os_disk_type: Optional[pulumi.Input[str]] = None,
             os_sku: Optional[pulumi.Input[str]] = None,
             os_type: Optional[pulumi.Input[str]] = None,
+            pod_subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             spot_percentage: Optional[pulumi.Input[int]] = None,
             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-            taints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanNpVirtualNodeGroupTaintArgs']]]]] = None) -> 'OceanNpVirtualNodeGroup':
+            taints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanNpVirtualNodeGroupTaintArgs']]]]] = None,
+            vnet_subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'OceanNpVirtualNodeGroup':
         """
         Get an existing OceanNpVirtualNodeGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -742,9 +870,11 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
         __props__.__dict__["os_disk_type"] = os_disk_type
         __props__.__dict__["os_sku"] = os_sku
         __props__.__dict__["os_type"] = os_type
+        __props__.__dict__["pod_subnet_ids"] = pod_subnet_ids
         __props__.__dict__["spot_percentage"] = spot_percentage
         __props__.__dict__["tags"] = tags
         __props__.__dict__["taints"] = taints
+        __props__.__dict__["vnet_subnet_ids"] = vnet_subnet_ids
         return OceanNpVirtualNodeGroup(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -828,6 +958,11 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
         return pulumi.get(self, "os_type")
 
     @property
+    @pulumi.getter(name="podSubnetIds")
+    def pod_subnet_ids(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        return pulumi.get(self, "pod_subnet_ids")
+
+    @property
     @pulumi.getter(name="spotPercentage")
     def spot_percentage(self) -> pulumi.Output[Optional[int]]:
         return pulumi.get(self, "spot_percentage")
@@ -841,4 +976,9 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
     @pulumi.getter
     def taints(self) -> pulumi.Output[Optional[Sequence['outputs.OceanNpVirtualNodeGroupTaint']]]:
         return pulumi.get(self, "taints")
+
+    @property
+    @pulumi.getter(name="vnetSubnetIds")
+    def vnet_subnet_ids(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        return pulumi.get(self, "vnet_subnet_ids")
 

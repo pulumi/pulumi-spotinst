@@ -142,7 +142,57 @@ class OceanLaunchSpecArgs:
              taints: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecTaintArgs']]]] = None,
              update_policy: Optional[pulumi.Input['OceanLaunchSpecUpdatePolicyArgs']] = None,
              user_data: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'oceanId' in kwargs:
+            ocean_id = kwargs['oceanId']
+        if 'associatePublicIpAddress' in kwargs:
+            associate_public_ip_address = kwargs['associatePublicIpAddress']
+        if 'autoscaleDowns' in kwargs:
+            autoscale_downs = kwargs['autoscaleDowns']
+        if 'autoscaleHeadrooms' in kwargs:
+            autoscale_headrooms = kwargs['autoscaleHeadrooms']
+        if 'autoscaleHeadroomsAutomatics' in kwargs:
+            autoscale_headrooms_automatics = kwargs['autoscaleHeadroomsAutomatics']
+        if 'blockDeviceMappings' in kwargs:
+            block_device_mappings = kwargs['blockDeviceMappings']
+        if 'createOptions' in kwargs:
+            create_options = kwargs['createOptions']
+        if 'deleteOptions' in kwargs:
+            delete_options = kwargs['deleteOptions']
+        if 'elasticIpPools' in kwargs:
+            elastic_ip_pools = kwargs['elasticIpPools']
+        if 'iamInstanceProfile' in kwargs:
+            iam_instance_profile = kwargs['iamInstanceProfile']
+        if 'imageId' in kwargs:
+            image_id = kwargs['imageId']
+        if 'instanceMetadataOptions' in kwargs:
+            instance_metadata_options = kwargs['instanceMetadataOptions']
+        if 'instanceTypes' in kwargs:
+            instance_types = kwargs['instanceTypes']
+        if 'instanceTypesFilters' in kwargs:
+            instance_types_filters = kwargs['instanceTypesFilters']
+        if 'preferredSpotTypes' in kwargs:
+            preferred_spot_types = kwargs['preferredSpotTypes']
+        if 'resourceLimits' in kwargs:
+            resource_limits = kwargs['resourceLimits']
+        if 'restrictScaleDown' in kwargs:
+            restrict_scale_down = kwargs['restrictScaleDown']
+        if 'rootVolumeSize' in kwargs:
+            root_volume_size = kwargs['rootVolumeSize']
+        if 'schedulingShutdownHours' in kwargs:
+            scheduling_shutdown_hours = kwargs['schedulingShutdownHours']
+        if 'schedulingTasks' in kwargs:
+            scheduling_tasks = kwargs['schedulingTasks']
+        if 'securityGroups' in kwargs:
+            security_groups = kwargs['securityGroups']
+        if 'subnetIds' in kwargs:
+            subnet_ids = kwargs['subnetIds']
+        if 'updatePolicy' in kwargs:
+            update_policy = kwargs['updatePolicy']
+        if 'userData' in kwargs:
+            user_data = kwargs['userData']
+
         _setter("ocean_id", ocean_id)
         if associate_public_ip_address is not None:
             _setter("associate_public_ip_address", associate_public_ip_address)
@@ -680,7 +730,57 @@ class _OceanLaunchSpecState:
              taints: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecTaintArgs']]]] = None,
              update_policy: Optional[pulumi.Input['OceanLaunchSpecUpdatePolicyArgs']] = None,
              user_data: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'associatePublicIpAddress' in kwargs:
+            associate_public_ip_address = kwargs['associatePublicIpAddress']
+        if 'autoscaleDowns' in kwargs:
+            autoscale_downs = kwargs['autoscaleDowns']
+        if 'autoscaleHeadrooms' in kwargs:
+            autoscale_headrooms = kwargs['autoscaleHeadrooms']
+        if 'autoscaleHeadroomsAutomatics' in kwargs:
+            autoscale_headrooms_automatics = kwargs['autoscaleHeadroomsAutomatics']
+        if 'blockDeviceMappings' in kwargs:
+            block_device_mappings = kwargs['blockDeviceMappings']
+        if 'createOptions' in kwargs:
+            create_options = kwargs['createOptions']
+        if 'deleteOptions' in kwargs:
+            delete_options = kwargs['deleteOptions']
+        if 'elasticIpPools' in kwargs:
+            elastic_ip_pools = kwargs['elasticIpPools']
+        if 'iamInstanceProfile' in kwargs:
+            iam_instance_profile = kwargs['iamInstanceProfile']
+        if 'imageId' in kwargs:
+            image_id = kwargs['imageId']
+        if 'instanceMetadataOptions' in kwargs:
+            instance_metadata_options = kwargs['instanceMetadataOptions']
+        if 'instanceTypes' in kwargs:
+            instance_types = kwargs['instanceTypes']
+        if 'instanceTypesFilters' in kwargs:
+            instance_types_filters = kwargs['instanceTypesFilters']
+        if 'oceanId' in kwargs:
+            ocean_id = kwargs['oceanId']
+        if 'preferredSpotTypes' in kwargs:
+            preferred_spot_types = kwargs['preferredSpotTypes']
+        if 'resourceLimits' in kwargs:
+            resource_limits = kwargs['resourceLimits']
+        if 'restrictScaleDown' in kwargs:
+            restrict_scale_down = kwargs['restrictScaleDown']
+        if 'rootVolumeSize' in kwargs:
+            root_volume_size = kwargs['rootVolumeSize']
+        if 'schedulingShutdownHours' in kwargs:
+            scheduling_shutdown_hours = kwargs['schedulingShutdownHours']
+        if 'schedulingTasks' in kwargs:
+            scheduling_tasks = kwargs['schedulingTasks']
+        if 'securityGroups' in kwargs:
+            security_groups = kwargs['securityGroups']
+        if 'subnetIds' in kwargs:
+            subnet_ids = kwargs['subnetIds']
+        if 'updatePolicy' in kwargs:
+            update_policy = kwargs['updatePolicy']
+        if 'userData' in kwargs:
+            user_data = kwargs['userData']
+
         if associate_public_ip_address is not None:
             _setter("associate_public_ip_address", associate_public_ip_address)
         if autoscale_downs is not None:

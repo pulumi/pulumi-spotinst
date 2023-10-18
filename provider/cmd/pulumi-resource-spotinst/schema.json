@@ -4906,11 +4906,17 @@
         },
         "spotinst:azure/OceanNpFilters:OceanNpFilters": {
             "properties": {
+                "acceleratedNetworking": {
+                    "type": "string"
+                },
                 "architectures": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     }
+                },
+                "diskPerformance": {
+                    "type": "string"
                 },
                 "excludeSeries": {
                     "type": "array",
@@ -4918,19 +4924,37 @@
                         "type": "string"
                     }
                 },
+                "maxGpu": {
+                    "type": "number"
+                },
                 "maxMemoryGib": {
                     "type": "number"
                 },
                 "maxVcpu": {
                     "type": "integer"
                 },
+                "minData": {
+                    "type": "integer"
+                },
+                "minGpu": {
+                    "type": "number"
+                },
                 "minMemoryGib": {
                     "type": "number"
+                },
+                "minNics": {
+                    "type": "integer"
                 },
                 "minVcpu": {
                     "type": "integer"
                 },
                 "series": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "vmTypes": {
                     "type": "array",
                     "items": {
                         "type": "string"
@@ -5010,11 +5034,17 @@
         },
         "spotinst:azure/OceanNpVirtualNodeGroupFilters:OceanNpVirtualNodeGroupFilters": {
             "properties": {
+                "acceleratedNetworking": {
+                    "type": "string"
+                },
                 "architectures": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     }
+                },
+                "diskPerformance": {
+                    "type": "string"
                 },
                 "excludeSeries": {
                     "type": "array",
@@ -5022,19 +5052,37 @@
                         "type": "string"
                     }
                 },
+                "maxGpu": {
+                    "type": "number"
+                },
                 "maxMemoryGib": {
                     "type": "number"
                 },
                 "maxVcpu": {
                     "type": "integer"
                 },
+                "minData": {
+                    "type": "integer"
+                },
+                "minGpu": {
+                    "type": "number"
+                },
                 "minMemoryGib": {
                     "type": "number"
+                },
+                "minNics": {
+                    "type": "integer"
                 },
                 "minVcpu": {
                     "type": "integer"
                 },
                 "series": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "vmTypes": {
                     "type": "array",
                     "items": {
                         "type": "string"
@@ -14032,6 +14080,12 @@
                 "osType": {
                     "type": "string"
                 },
+                "podSubnetIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
                 "scheduling": {
                     "$ref": "#/types/spotinst:azure/OceanNpScheduling:OceanNpScheduling"
                 },
@@ -14048,6 +14102,12 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/spotinst:azure/OceanNpTaint:OceanNpTaint"
+                    }
+                },
+                "vnetSubnetIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
                     }
                 }
             },
@@ -14137,6 +14197,12 @@
                 "osType": {
                     "type": "string"
                 },
+                "podSubnetIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
                 "scheduling": {
                     "$ref": "#/types/spotinst:azure/OceanNpScheduling:OceanNpScheduling"
                 },
@@ -14153,6 +14219,12 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/spotinst:azure/OceanNpTaint:OceanNpTaint"
+                    }
+                },
+                "vnetSubnetIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
                     }
                 }
             },
@@ -14241,6 +14313,12 @@
                     "osType": {
                         "type": "string"
                     },
+                    "podSubnetIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
                     "scheduling": {
                         "$ref": "#/types/spotinst:azure/OceanNpScheduling:OceanNpScheduling"
                     },
@@ -14257,6 +14335,12 @@
                         "type": "array",
                         "items": {
                             "$ref": "#/types/spotinst:azure/OceanNpTaint:OceanNpTaint"
+                        }
+                    },
+                    "vnetSubnetIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
                         }
                     }
                 },
@@ -14322,6 +14406,12 @@
                 "osType": {
                     "type": "string"
                 },
+                "podSubnetIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
                 "spotPercentage": {
                     "type": "integer"
                 },
@@ -14335,6 +14425,12 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/spotinst:azure/OceanNpVirtualNodeGroupTaint:OceanNpVirtualNodeGroupTaint"
+                    }
+                },
+                "vnetSubnetIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
                     }
                 }
             },
@@ -14400,6 +14496,12 @@
                 "osType": {
                     "type": "string"
                 },
+                "podSubnetIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
                 "spotPercentage": {
                     "type": "integer"
                 },
@@ -14413,6 +14515,12 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/spotinst:azure/OceanNpVirtualNodeGroupTaint:OceanNpVirtualNodeGroupTaint"
+                    }
+                },
+                "vnetSubnetIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
                     }
                 }
             },
@@ -14479,6 +14587,12 @@
                     "osType": {
                         "type": "string"
                     },
+                    "podSubnetIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
                     "spotPercentage": {
                         "type": "integer"
                     },
@@ -14492,6 +14606,12 @@
                         "type": "array",
                         "items": {
                             "$ref": "#/types/spotinst:azure/OceanNpVirtualNodeGroupTaint:OceanNpVirtualNodeGroupTaint"
+                        }
+                    },
+                    "vnetSubnetIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
                         }
                     }
                 },

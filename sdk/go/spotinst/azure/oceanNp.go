@@ -38,10 +38,12 @@ type OceanNp struct {
 	OsDiskType                         pulumi.StringPtrOutput     `pulumi:"osDiskType"`
 	OsSku                              pulumi.StringPtrOutput     `pulumi:"osSku"`
 	OsType                             pulumi.StringPtrOutput     `pulumi:"osType"`
+	PodSubnetIds                       pulumi.StringArrayOutput   `pulumi:"podSubnetIds"`
 	Scheduling                         OceanNpSchedulingPtrOutput `pulumi:"scheduling"`
 	SpotPercentage                     pulumi.IntPtrOutput        `pulumi:"spotPercentage"`
 	Tags                               pulumi.MapOutput           `pulumi:"tags"`
 	Taints                             OceanNpTaintArrayOutput    `pulumi:"taints"`
+	VnetSubnetIds                      pulumi.StringArrayOutput   `pulumi:"vnetSubnetIds"`
 }
 
 // NewOceanNp registers a new resource with the given unique name, arguments, and options.
@@ -111,10 +113,12 @@ type oceanNpState struct {
 	OsDiskType                         *string                `pulumi:"osDiskType"`
 	OsSku                              *string                `pulumi:"osSku"`
 	OsType                             *string                `pulumi:"osType"`
+	PodSubnetIds                       []string               `pulumi:"podSubnetIds"`
 	Scheduling                         *OceanNpScheduling     `pulumi:"scheduling"`
 	SpotPercentage                     *int                   `pulumi:"spotPercentage"`
 	Tags                               map[string]interface{} `pulumi:"tags"`
 	Taints                             []OceanNpTaint         `pulumi:"taints"`
+	VnetSubnetIds                      []string               `pulumi:"vnetSubnetIds"`
 }
 
 type OceanNpState struct {
@@ -140,10 +144,12 @@ type OceanNpState struct {
 	OsDiskType                         pulumi.StringPtrInput
 	OsSku                              pulumi.StringPtrInput
 	OsType                             pulumi.StringPtrInput
+	PodSubnetIds                       pulumi.StringArrayInput
 	Scheduling                         OceanNpSchedulingPtrInput
 	SpotPercentage                     pulumi.IntPtrInput
 	Tags                               pulumi.MapInput
 	Taints                             OceanNpTaintArrayInput
+	VnetSubnetIds                      pulumi.StringArrayInput
 }
 
 func (OceanNpState) ElementType() reflect.Type {
@@ -173,10 +179,12 @@ type oceanNpArgs struct {
 	OsDiskType                         *string                `pulumi:"osDiskType"`
 	OsSku                              *string                `pulumi:"osSku"`
 	OsType                             *string                `pulumi:"osType"`
+	PodSubnetIds                       []string               `pulumi:"podSubnetIds"`
 	Scheduling                         *OceanNpScheduling     `pulumi:"scheduling"`
 	SpotPercentage                     *int                   `pulumi:"spotPercentage"`
 	Tags                               map[string]interface{} `pulumi:"tags"`
 	Taints                             []OceanNpTaint         `pulumi:"taints"`
+	VnetSubnetIds                      []string               `pulumi:"vnetSubnetIds"`
 }
 
 // The set of arguments for constructing a OceanNp resource.
@@ -203,10 +211,12 @@ type OceanNpArgs struct {
 	OsDiskType                         pulumi.StringPtrInput
 	OsSku                              pulumi.StringPtrInput
 	OsType                             pulumi.StringPtrInput
+	PodSubnetIds                       pulumi.StringArrayInput
 	Scheduling                         OceanNpSchedulingPtrInput
 	SpotPercentage                     pulumi.IntPtrInput
 	Tags                               pulumi.MapInput
 	Taints                             OceanNpTaintArrayInput
+	VnetSubnetIds                      pulumi.StringArrayInput
 }
 
 func (OceanNpArgs) ElementType() reflect.Type {
@@ -408,6 +418,10 @@ func (o OceanNpOutput) OsType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OceanNp) pulumi.StringPtrOutput { return v.OsType }).(pulumi.StringPtrOutput)
 }
 
+func (o OceanNpOutput) PodSubnetIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OceanNp) pulumi.StringArrayOutput { return v.PodSubnetIds }).(pulumi.StringArrayOutput)
+}
+
 func (o OceanNpOutput) Scheduling() OceanNpSchedulingPtrOutput {
 	return o.ApplyT(func(v *OceanNp) OceanNpSchedulingPtrOutput { return v.Scheduling }).(OceanNpSchedulingPtrOutput)
 }
@@ -422,6 +436,10 @@ func (o OceanNpOutput) Tags() pulumi.MapOutput {
 
 func (o OceanNpOutput) Taints() OceanNpTaintArrayOutput {
 	return o.ApplyT(func(v *OceanNp) OceanNpTaintArrayOutput { return v.Taints }).(OceanNpTaintArrayOutput)
+}
+
+func (o OceanNpOutput) VnetSubnetIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OceanNp) pulumi.StringArrayOutput { return v.VnetSubnetIds }).(pulumi.StringArrayOutput)
 }
 
 type OceanNpArrayOutput struct{ *pulumi.OutputState }

@@ -87,7 +87,31 @@ class OceanImportArgs:
              update_policy: Optional[pulumi.Input['OceanImportUpdatePolicyArgs']] = None,
              use_as_template_only: Optional[pulumi.Input[bool]] = None,
              whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'clusterName' in kwargs:
+            cluster_name = kwargs['clusterName']
+        if 'backendServices' in kwargs:
+            backend_services = kwargs['backendServices']
+        if 'controllerClusterId' in kwargs:
+            controller_cluster_id = kwargs['controllerClusterId']
+        if 'desiredCapacity' in kwargs:
+            desired_capacity = kwargs['desiredCapacity']
+        if 'maxSize' in kwargs:
+            max_size = kwargs['maxSize']
+        if 'minSize' in kwargs:
+            min_size = kwargs['minSize']
+        if 'rootVolumeType' in kwargs:
+            root_volume_type = kwargs['rootVolumeType']
+        if 'scheduledTasks' in kwargs:
+            scheduled_tasks = kwargs['scheduledTasks']
+        if 'shieldedInstanceConfig' in kwargs:
+            shielded_instance_config = kwargs['shieldedInstanceConfig']
+        if 'updatePolicy' in kwargs:
+            update_policy = kwargs['updatePolicy']
+        if 'useAsTemplateOnly' in kwargs:
+            use_as_template_only = kwargs['useAsTemplateOnly']
+
         _setter("cluster_name", cluster_name)
         _setter("location", location)
         if autoscaler is not None:
@@ -383,7 +407,33 @@ class _OceanImportState:
              update_policy: Optional[pulumi.Input['OceanImportUpdatePolicyArgs']] = None,
              use_as_template_only: Optional[pulumi.Input[bool]] = None,
              whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'backendServices' in kwargs:
+            backend_services = kwargs['backendServices']
+        if 'clusterControllerId' in kwargs:
+            cluster_controller_id = kwargs['clusterControllerId']
+        if 'clusterName' in kwargs:
+            cluster_name = kwargs['clusterName']
+        if 'controllerClusterId' in kwargs:
+            controller_cluster_id = kwargs['controllerClusterId']
+        if 'desiredCapacity' in kwargs:
+            desired_capacity = kwargs['desiredCapacity']
+        if 'maxSize' in kwargs:
+            max_size = kwargs['maxSize']
+        if 'minSize' in kwargs:
+            min_size = kwargs['minSize']
+        if 'rootVolumeType' in kwargs:
+            root_volume_type = kwargs['rootVolumeType']
+        if 'scheduledTasks' in kwargs:
+            scheduled_tasks = kwargs['scheduledTasks']
+        if 'shieldedInstanceConfig' in kwargs:
+            shielded_instance_config = kwargs['shieldedInstanceConfig']
+        if 'updatePolicy' in kwargs:
+            update_policy = kwargs['updatePolicy']
+        if 'useAsTemplateOnly' in kwargs:
+            use_as_template_only = kwargs['useAsTemplateOnly']
+
         if autoscaler is not None:
             _setter("autoscaler", autoscaler)
         if backend_services is not None:
