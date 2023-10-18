@@ -50,9 +50,11 @@ export class OceanNpVirtualNodeGroup extends pulumi.CustomResource {
     public readonly osDiskType!: pulumi.Output<string | undefined>;
     public readonly osSku!: pulumi.Output<string | undefined>;
     public readonly osType!: pulumi.Output<string | undefined>;
+    public readonly podSubnetIds!: pulumi.Output<string[] | undefined>;
     public readonly spotPercentage!: pulumi.Output<number | undefined>;
     public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
     public readonly taints!: pulumi.Output<outputs.azure.OceanNpVirtualNodeGroupTaint[] | undefined>;
+    public readonly vnetSubnetIds!: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a OceanNpVirtualNodeGroup resource with the given unique name, arguments, and options.
@@ -83,9 +85,11 @@ export class OceanNpVirtualNodeGroup extends pulumi.CustomResource {
             resourceInputs["osDiskType"] = state ? state.osDiskType : undefined;
             resourceInputs["osSku"] = state ? state.osSku : undefined;
             resourceInputs["osType"] = state ? state.osType : undefined;
+            resourceInputs["podSubnetIds"] = state ? state.podSubnetIds : undefined;
             resourceInputs["spotPercentage"] = state ? state.spotPercentage : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["taints"] = state ? state.taints : undefined;
+            resourceInputs["vnetSubnetIds"] = state ? state.vnetSubnetIds : undefined;
         } else {
             const args = argsOrState as OceanNpVirtualNodeGroupArgs | undefined;
             if ((!args || args.oceanId === undefined) && !opts.urn) {
@@ -107,9 +111,11 @@ export class OceanNpVirtualNodeGroup extends pulumi.CustomResource {
             resourceInputs["osDiskType"] = args ? args.osDiskType : undefined;
             resourceInputs["osSku"] = args ? args.osSku : undefined;
             resourceInputs["osType"] = args ? args.osType : undefined;
+            resourceInputs["podSubnetIds"] = args ? args.podSubnetIds : undefined;
             resourceInputs["spotPercentage"] = args ? args.spotPercentage : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["taints"] = args ? args.taints : undefined;
+            resourceInputs["vnetSubnetIds"] = args ? args.vnetSubnetIds : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(OceanNpVirtualNodeGroup.__pulumiType, name, resourceInputs, opts);
@@ -136,9 +142,11 @@ export interface OceanNpVirtualNodeGroupState {
     osDiskType?: pulumi.Input<string>;
     osSku?: pulumi.Input<string>;
     osType?: pulumi.Input<string>;
+    podSubnetIds?: pulumi.Input<pulumi.Input<string>[]>;
     spotPercentage?: pulumi.Input<number>;
     tags?: pulumi.Input<{[key: string]: any}>;
     taints?: pulumi.Input<pulumi.Input<inputs.azure.OceanNpVirtualNodeGroupTaint>[]>;
+    vnetSubnetIds?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 /**
@@ -161,7 +169,9 @@ export interface OceanNpVirtualNodeGroupArgs {
     osDiskType?: pulumi.Input<string>;
     osSku?: pulumi.Input<string>;
     osType?: pulumi.Input<string>;
+    podSubnetIds?: pulumi.Input<pulumi.Input<string>[]>;
     spotPercentage?: pulumi.Input<number>;
     tags?: pulumi.Input<{[key: string]: any}>;
     taints?: pulumi.Input<pulumi.Input<inputs.azure.OceanNpVirtualNodeGroupTaint>[]>;
+    vnetSubnetIds?: pulumi.Input<pulumi.Input<string>[]>;
 }

@@ -56,10 +56,12 @@ export class OceanNp extends pulumi.CustomResource {
     public readonly osDiskType!: pulumi.Output<string | undefined>;
     public readonly osSku!: pulumi.Output<string | undefined>;
     public readonly osType!: pulumi.Output<string | undefined>;
+    public readonly podSubnetIds!: pulumi.Output<string[] | undefined>;
     public readonly scheduling!: pulumi.Output<outputs.azure.OceanNpScheduling | undefined>;
     public readonly spotPercentage!: pulumi.Output<number | undefined>;
     public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
     public readonly taints!: pulumi.Output<outputs.azure.OceanNpTaint[] | undefined>;
+    public readonly vnetSubnetIds!: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a OceanNp resource with the given unique name, arguments, and options.
@@ -96,10 +98,12 @@ export class OceanNp extends pulumi.CustomResource {
             resourceInputs["osDiskType"] = state ? state.osDiskType : undefined;
             resourceInputs["osSku"] = state ? state.osSku : undefined;
             resourceInputs["osType"] = state ? state.osType : undefined;
+            resourceInputs["podSubnetIds"] = state ? state.podSubnetIds : undefined;
             resourceInputs["scheduling"] = state ? state.scheduling : undefined;
             resourceInputs["spotPercentage"] = state ? state.spotPercentage : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["taints"] = state ? state.taints : undefined;
+            resourceInputs["vnetSubnetIds"] = state ? state.vnetSubnetIds : undefined;
         } else {
             const args = argsOrState as OceanNpArgs | undefined;
             if ((!args || args.aksClusterName === undefined) && !opts.urn) {
@@ -139,10 +143,12 @@ export class OceanNp extends pulumi.CustomResource {
             resourceInputs["osDiskType"] = args ? args.osDiskType : undefined;
             resourceInputs["osSku"] = args ? args.osSku : undefined;
             resourceInputs["osType"] = args ? args.osType : undefined;
+            resourceInputs["podSubnetIds"] = args ? args.podSubnetIds : undefined;
             resourceInputs["scheduling"] = args ? args.scheduling : undefined;
             resourceInputs["spotPercentage"] = args ? args.spotPercentage : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["taints"] = args ? args.taints : undefined;
+            resourceInputs["vnetSubnetIds"] = args ? args.vnetSubnetIds : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(OceanNp.__pulumiType, name, resourceInputs, opts);
@@ -175,10 +181,12 @@ export interface OceanNpState {
     osDiskType?: pulumi.Input<string>;
     osSku?: pulumi.Input<string>;
     osType?: pulumi.Input<string>;
+    podSubnetIds?: pulumi.Input<pulumi.Input<string>[]>;
     scheduling?: pulumi.Input<inputs.azure.OceanNpScheduling>;
     spotPercentage?: pulumi.Input<number>;
     tags?: pulumi.Input<{[key: string]: any}>;
     taints?: pulumi.Input<pulumi.Input<inputs.azure.OceanNpTaint>[]>;
+    vnetSubnetIds?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 /**
@@ -207,8 +215,10 @@ export interface OceanNpArgs {
     osDiskType?: pulumi.Input<string>;
     osSku?: pulumi.Input<string>;
     osType?: pulumi.Input<string>;
+    podSubnetIds?: pulumi.Input<pulumi.Input<string>[]>;
     scheduling?: pulumi.Input<inputs.azure.OceanNpScheduling>;
     spotPercentage?: pulumi.Input<number>;
     tags?: pulumi.Input<{[key: string]: any}>;
     taints?: pulumi.Input<pulumi.Input<inputs.azure.OceanNpTaint>[]>;
+    vnetSubnetIds?: pulumi.Input<pulumi.Input<string>[]>;
 }

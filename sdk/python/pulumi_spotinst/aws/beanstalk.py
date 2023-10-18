@@ -76,7 +76,27 @@ class BeanstalkArgs:
              managed_actions: Optional[pulumi.Input['BeanstalkManagedActionsArgs']] = None,
              name: Optional[pulumi.Input[str]] = None,
              scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input['BeanstalkScheduledTaskArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'desiredCapacity' in kwargs:
+            desired_capacity = kwargs['desiredCapacity']
+        if 'instanceTypesSpots' in kwargs:
+            instance_types_spots = kwargs['instanceTypesSpots']
+        if 'maxSize' in kwargs:
+            max_size = kwargs['maxSize']
+        if 'minSize' in kwargs:
+            min_size = kwargs['minSize']
+        if 'beanstalkEnvironmentId' in kwargs:
+            beanstalk_environment_id = kwargs['beanstalkEnvironmentId']
+        if 'beanstalkEnvironmentName' in kwargs:
+            beanstalk_environment_name = kwargs['beanstalkEnvironmentName']
+        if 'deploymentPreferences' in kwargs:
+            deployment_preferences = kwargs['deploymentPreferences']
+        if 'managedActions' in kwargs:
+            managed_actions = kwargs['managedActions']
+        if 'scheduledTasks' in kwargs:
+            scheduled_tasks = kwargs['scheduledTasks']
+
         _setter("desired_capacity", desired_capacity)
         _setter("instance_types_spots", instance_types_spots)
         _setter("max_size", max_size)
@@ -313,7 +333,27 @@ class _BeanstalkState:
              product: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
              scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input['BeanstalkScheduledTaskArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'beanstalkEnvironmentId' in kwargs:
+            beanstalk_environment_id = kwargs['beanstalkEnvironmentId']
+        if 'beanstalkEnvironmentName' in kwargs:
+            beanstalk_environment_name = kwargs['beanstalkEnvironmentName']
+        if 'deploymentPreferences' in kwargs:
+            deployment_preferences = kwargs['deploymentPreferences']
+        if 'desiredCapacity' in kwargs:
+            desired_capacity = kwargs['desiredCapacity']
+        if 'instanceTypesSpots' in kwargs:
+            instance_types_spots = kwargs['instanceTypesSpots']
+        if 'managedActions' in kwargs:
+            managed_actions = kwargs['managedActions']
+        if 'maxSize' in kwargs:
+            max_size = kwargs['maxSize']
+        if 'minSize' in kwargs:
+            min_size = kwargs['minSize']
+        if 'scheduledTasks' in kwargs:
+            scheduled_tasks = kwargs['scheduledTasks']
+
         if beanstalk_environment_id is not None:
             _setter("beanstalk_environment_id", beanstalk_environment_id)
         if beanstalk_environment_name is not None:

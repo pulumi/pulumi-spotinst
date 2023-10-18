@@ -35,7 +35,9 @@ class BalancerConnectionTimeouts(dict):
              _setter: Callable[[Any, Any], None],
              draining: Optional[int] = None,
              idle: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if draining is not None:
             _setter("draining", draining)
         if idle is not None:
@@ -67,7 +69,9 @@ class BalancerTag(dict):
              _setter: Callable[[Any, Any], None],
              key: str,
              value: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("key", key)
         _setter("value", value)
 
@@ -97,7 +101,9 @@ class ListenerTag(dict):
              _setter: Callable[[Any, Any], None],
              key: str,
              value: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("key", key)
         _setter("value", value)
 
@@ -166,7 +172,21 @@ class ListenerTlsConfig(dict):
              min_version: str,
              prefer_server_cipher_suites: bool,
              session_tickets_disabled: bool,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'certificateIds' in kwargs:
+            certificate_ids = kwargs['certificateIds']
+        if 'cipherSuites' in kwargs:
+            cipher_suites = kwargs['cipherSuites']
+        if 'maxVersion' in kwargs:
+            max_version = kwargs['maxVersion']
+        if 'minVersion' in kwargs:
+            min_version = kwargs['minVersion']
+        if 'preferServerCipherSuites' in kwargs:
+            prefer_server_cipher_suites = kwargs['preferServerCipherSuites']
+        if 'sessionTicketsDisabled' in kwargs:
+            session_tickets_disabled = kwargs['sessionTicketsDisabled']
+
         _setter("certificate_ids", certificate_ids)
         _setter("cipher_suites", cipher_suites)
         _setter("max_version", max_version)
@@ -220,7 +240,9 @@ class RoutingRuleTag(dict):
              _setter: Callable[[Any, Any], None],
              key: str,
              value: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("key", key)
         _setter("value", value)
 
@@ -284,7 +306,13 @@ class TargetSetHealthCheck(dict):
              timeout: int,
              unhealthy_threshold: int,
              port: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'healthyThreshold' in kwargs:
+            healthy_threshold = kwargs['healthyThreshold']
+        if 'unhealthyThreshold' in kwargs:
+            unhealthy_threshold = kwargs['unhealthyThreshold']
+
         _setter("healthy_threshold", healthy_threshold)
         _setter("interval", interval)
         _setter("path", path)
@@ -345,7 +373,9 @@ class TargetSetTag(dict):
              _setter: Callable[[Any, Any], None],
              key: str,
              value: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("key", key)
         _setter("value", value)
 
@@ -375,7 +405,9 @@ class TargetTag(dict):
              _setter: Callable[[Any, Any], None],
              key: str,
              value: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("key", key)
         _setter("value", value)
 

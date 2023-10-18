@@ -3565,13 +3565,20 @@ export namespace azure {
     }
 
     export interface OceanNpFilters {
+        acceleratedNetworking?: pulumi.Input<string>;
         architectures?: pulumi.Input<pulumi.Input<string>[]>;
+        diskPerformance?: pulumi.Input<string>;
         excludeSeries?: pulumi.Input<pulumi.Input<string>[]>;
+        maxGpu?: pulumi.Input<number>;
         maxMemoryGib?: pulumi.Input<number>;
         maxVcpu?: pulumi.Input<number>;
+        minData?: pulumi.Input<number>;
+        minGpu?: pulumi.Input<number>;
         minMemoryGib?: pulumi.Input<number>;
+        minNics?: pulumi.Input<number>;
         minVcpu?: pulumi.Input<number>;
         series?: pulumi.Input<pulumi.Input<string>[]>;
+        vmTypes?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface OceanNpHeadroom {
@@ -3601,13 +3608,20 @@ export namespace azure {
     }
 
     export interface OceanNpVirtualNodeGroupFilters {
+        acceleratedNetworking?: pulumi.Input<string>;
         architectures?: pulumi.Input<pulumi.Input<string>[]>;
+        diskPerformance?: pulumi.Input<string>;
         excludeSeries?: pulumi.Input<pulumi.Input<string>[]>;
+        maxGpu?: pulumi.Input<number>;
         maxMemoryGib?: pulumi.Input<number>;
         maxVcpu?: pulumi.Input<number>;
+        minData?: pulumi.Input<number>;
+        minGpu?: pulumi.Input<number>;
         minMemoryGib?: pulumi.Input<number>;
+        minNics?: pulumi.Input<number>;
         minVcpu?: pulumi.Input<number>;
         series?: pulumi.Input<pulumi.Input<string>[]>;
+        vmTypes?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface OceanNpVirtualNodeGroupHeadroom {

@@ -122,7 +122,59 @@ class ElastigroupArgs:
              shutdown_script: Optional[pulumi.Input[str]] = None,
              startup_script: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'clusterZoneName' in kwargs:
+            cluster_zone_name = kwargs['clusterZoneName']
+        if 'desiredCapacity' in kwargs:
+            desired_capacity = kwargs['desiredCapacity']
+        if 'backendServices' in kwargs:
+            backend_services = kwargs['backendServices']
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if 'drainingTimeout' in kwargs:
+            draining_timeout = kwargs['drainingTimeout']
+        if 'fallbackToOndemand' in kwargs:
+            fallback_to_ondemand = kwargs['fallbackToOndemand']
+        if 'instanceNamePrefix' in kwargs:
+            instance_name_prefix = kwargs['instanceNamePrefix']
+        if 'instanceTypesCustoms' in kwargs:
+            instance_types_customs = kwargs['instanceTypesCustoms']
+        if 'instanceTypesOndemand' in kwargs:
+            instance_types_ondemand = kwargs['instanceTypesOndemand']
+        if 'instanceTypesPreemptibles' in kwargs:
+            instance_types_preemptibles = kwargs['instanceTypesPreemptibles']
+        if 'integrationDockerSwarm' in kwargs:
+            integration_docker_swarm = kwargs['integrationDockerSwarm']
+        if 'integrationGke' in kwargs:
+            integration_gke = kwargs['integrationGke']
+        if 'ipForwarding' in kwargs:
+            ip_forwarding = kwargs['ipForwarding']
+        if 'maxSize' in kwargs:
+            max_size = kwargs['maxSize']
+        if 'minSize' in kwargs:
+            min_size = kwargs['minSize']
+        if 'networkInterfaces' in kwargs:
+            network_interfaces = kwargs['networkInterfaces']
+        if 'nodeImage' in kwargs:
+            node_image = kwargs['nodeImage']
+        if 'ondemandCount' in kwargs:
+            ondemand_count = kwargs['ondemandCount']
+        if 'preemptiblePercentage' in kwargs:
+            preemptible_percentage = kwargs['preemptiblePercentage']
+        if 'provisioningModel' in kwargs:
+            provisioning_model = kwargs['provisioningModel']
+        if 'scalingDownPolicies' in kwargs:
+            scaling_down_policies = kwargs['scalingDownPolicies']
+        if 'scalingUpPolicies' in kwargs:
+            scaling_up_policies = kwargs['scalingUpPolicies']
+        if 'serviceAccount' in kwargs:
+            service_account = kwargs['serviceAccount']
+        if 'shutdownScript' in kwargs:
+            shutdown_script = kwargs['shutdownScript']
+        if 'startupScript' in kwargs:
+            startup_script = kwargs['startupScript']
+
         _setter("cluster_zone_name", cluster_zone_name)
         _setter("desired_capacity", desired_capacity)
         if backend_services is not None:
@@ -591,7 +643,59 @@ class _ElastigroupState:
              shutdown_script: Optional[pulumi.Input[str]] = None,
              startup_script: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'backendServices' in kwargs:
+            backend_services = kwargs['backendServices']
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if 'clusterZoneName' in kwargs:
+            cluster_zone_name = kwargs['clusterZoneName']
+        if 'desiredCapacity' in kwargs:
+            desired_capacity = kwargs['desiredCapacity']
+        if 'drainingTimeout' in kwargs:
+            draining_timeout = kwargs['drainingTimeout']
+        if 'fallbackToOndemand' in kwargs:
+            fallback_to_ondemand = kwargs['fallbackToOndemand']
+        if 'instanceNamePrefix' in kwargs:
+            instance_name_prefix = kwargs['instanceNamePrefix']
+        if 'instanceTypesCustoms' in kwargs:
+            instance_types_customs = kwargs['instanceTypesCustoms']
+        if 'instanceTypesOndemand' in kwargs:
+            instance_types_ondemand = kwargs['instanceTypesOndemand']
+        if 'instanceTypesPreemptibles' in kwargs:
+            instance_types_preemptibles = kwargs['instanceTypesPreemptibles']
+        if 'integrationDockerSwarm' in kwargs:
+            integration_docker_swarm = kwargs['integrationDockerSwarm']
+        if 'integrationGke' in kwargs:
+            integration_gke = kwargs['integrationGke']
+        if 'ipForwarding' in kwargs:
+            ip_forwarding = kwargs['ipForwarding']
+        if 'maxSize' in kwargs:
+            max_size = kwargs['maxSize']
+        if 'minSize' in kwargs:
+            min_size = kwargs['minSize']
+        if 'networkInterfaces' in kwargs:
+            network_interfaces = kwargs['networkInterfaces']
+        if 'nodeImage' in kwargs:
+            node_image = kwargs['nodeImage']
+        if 'ondemandCount' in kwargs:
+            ondemand_count = kwargs['ondemandCount']
+        if 'preemptiblePercentage' in kwargs:
+            preemptible_percentage = kwargs['preemptiblePercentage']
+        if 'provisioningModel' in kwargs:
+            provisioning_model = kwargs['provisioningModel']
+        if 'scalingDownPolicies' in kwargs:
+            scaling_down_policies = kwargs['scalingDownPolicies']
+        if 'scalingUpPolicies' in kwargs:
+            scaling_up_policies = kwargs['scalingUpPolicies']
+        if 'serviceAccount' in kwargs:
+            service_account = kwargs['serviceAccount']
+        if 'shutdownScript' in kwargs:
+            shutdown_script = kwargs['shutdownScript']
+        if 'startupScript' in kwargs:
+            startup_script = kwargs['startupScript']
+
         if backend_services is not None:
             _setter("backend_services", backend_services)
         if cluster_id is not None:

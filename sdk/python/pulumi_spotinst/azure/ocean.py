@@ -113,7 +113,35 @@ class OceanArgs:
              user_name: Optional[pulumi.Input[str]] = None,
              vm_sizes: Optional[pulumi.Input[Sequence[pulumi.Input['OceanVmSizeArgs']]]] = None,
              zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'acdIdentifier' in kwargs:
+            acd_identifier = kwargs['acdIdentifier']
+        if 'aksName' in kwargs:
+            aks_name = kwargs['aksName']
+        if 'aksResourceGroupName' in kwargs:
+            aks_resource_group_name = kwargs['aksResourceGroupName']
+        if 'sshPublicKey' in kwargs:
+            ssh_public_key = kwargs['sshPublicKey']
+        if 'controllerClusterId' in kwargs:
+            controller_cluster_id = kwargs['controllerClusterId']
+        if 'customData' in kwargs:
+            custom_data = kwargs['customData']
+        if 'loadBalancers' in kwargs:
+            load_balancers = kwargs['loadBalancers']
+        if 'managedServiceIdentities' in kwargs:
+            managed_service_identities = kwargs['managedServiceIdentities']
+        if 'maxPods' in kwargs:
+            max_pods = kwargs['maxPods']
+        if 'osDisk' in kwargs:
+            os_disk = kwargs['osDisk']
+        if 'resourceGroupName' in kwargs:
+            resource_group_name = kwargs['resourceGroupName']
+        if 'userName' in kwargs:
+            user_name = kwargs['userName']
+        if 'vmSizes' in kwargs:
+            vm_sizes = kwargs['vmSizes']
+
         _setter("acd_identifier", acd_identifier)
         _setter("aks_name", aks_name)
         _setter("aks_resource_group_name", aks_resource_group_name)
@@ -520,7 +548,35 @@ class _OceanState:
              user_name: Optional[pulumi.Input[str]] = None,
              vm_sizes: Optional[pulumi.Input[Sequence[pulumi.Input['OceanVmSizeArgs']]]] = None,
              zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'acdIdentifier' in kwargs:
+            acd_identifier = kwargs['acdIdentifier']
+        if 'aksName' in kwargs:
+            aks_name = kwargs['aksName']
+        if 'aksResourceGroupName' in kwargs:
+            aks_resource_group_name = kwargs['aksResourceGroupName']
+        if 'controllerClusterId' in kwargs:
+            controller_cluster_id = kwargs['controllerClusterId']
+        if 'customData' in kwargs:
+            custom_data = kwargs['customData']
+        if 'loadBalancers' in kwargs:
+            load_balancers = kwargs['loadBalancers']
+        if 'managedServiceIdentities' in kwargs:
+            managed_service_identities = kwargs['managedServiceIdentities']
+        if 'maxPods' in kwargs:
+            max_pods = kwargs['maxPods']
+        if 'osDisk' in kwargs:
+            os_disk = kwargs['osDisk']
+        if 'resourceGroupName' in kwargs:
+            resource_group_name = kwargs['resourceGroupName']
+        if 'sshPublicKey' in kwargs:
+            ssh_public_key = kwargs['sshPublicKey']
+        if 'userName' in kwargs:
+            user_name = kwargs['userName']
+        if 'vmSizes' in kwargs:
+            vm_sizes = kwargs['vmSizes']
+
         if acd_identifier is not None:
             _setter("acd_identifier", acd_identifier)
         if aks_name is not None:

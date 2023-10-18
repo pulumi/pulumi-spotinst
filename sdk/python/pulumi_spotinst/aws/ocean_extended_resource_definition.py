@@ -32,7 +32,11 @@ class OceanExtendedResourceDefinitionArgs:
              _setter: Callable[[Any, Any], None],
              resource_mapping: pulumi.Input[Mapping[str, Any]],
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'resourceMapping' in kwargs:
+            resource_mapping = kwargs['resourceMapping']
+
         _setter("resource_mapping", resource_mapping)
         if name is not None:
             _setter("name", name)
@@ -84,7 +88,11 @@ class _OceanExtendedResourceDefinitionState:
              _setter: Callable[[Any, Any], None],
              name: Optional[pulumi.Input[str]] = None,
              resource_mapping: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'resourceMapping' in kwargs:
+            resource_mapping = kwargs['resourceMapping']
+
         if name is not None:
             _setter("name", name)
         if resource_mapping is not None:

@@ -12,6 +12,9 @@ namespace Pulumi.SpotInst.Azure.Inputs
 
     public sealed class OceanNpVirtualNodeGroupFiltersGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("acceleratedNetworking")]
+        public Input<string>? AcceleratedNetworking { get; set; }
+
         [Input("architectures")]
         private InputList<string>? _architectures;
         public InputList<string> Architectures
@@ -19,6 +22,9 @@ namespace Pulumi.SpotInst.Azure.Inputs
             get => _architectures ?? (_architectures = new InputList<string>());
             set => _architectures = value;
         }
+
+        [Input("diskPerformance")]
+        public Input<string>? DiskPerformance { get; set; }
 
         [Input("excludeSeries")]
         private InputList<string>? _excludeSeries;
@@ -28,14 +34,26 @@ namespace Pulumi.SpotInst.Azure.Inputs
             set => _excludeSeries = value;
         }
 
+        [Input("maxGpu")]
+        public Input<double>? MaxGpu { get; set; }
+
         [Input("maxMemoryGib")]
         public Input<double>? MaxMemoryGib { get; set; }
 
         [Input("maxVcpu")]
         public Input<int>? MaxVcpu { get; set; }
 
+        [Input("minData")]
+        public Input<int>? MinData { get; set; }
+
+        [Input("minGpu")]
+        public Input<double>? MinGpu { get; set; }
+
         [Input("minMemoryGib")]
         public Input<double>? MinMemoryGib { get; set; }
+
+        [Input("minNics")]
+        public Input<int>? MinNics { get; set; }
 
         [Input("minVcpu")]
         public Input<int>? MinVcpu { get; set; }
@@ -46,6 +64,14 @@ namespace Pulumi.SpotInst.Azure.Inputs
         {
             get => _series ?? (_series = new InputList<string>());
             set => _series = value;
+        }
+
+        [Input("vmTypes")]
+        private InputList<string>? _vmTypes;
+        public InputList<string> VmTypes
+        {
+            get => _vmTypes ?? (_vmTypes = new InputList<string>());
+            set => _vmTypes = value;
         }
 
         public OceanNpVirtualNodeGroupFiltersGetArgs()

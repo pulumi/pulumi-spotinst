@@ -49,7 +49,15 @@ class TargetSetArgs:
              name: Optional[pulumi.Input[str]] = None,
              port: Optional[pulumi.Input[int]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input['TargetSetTagArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'balancerId' in kwargs:
+            balancer_id = kwargs['balancerId']
+        if 'deploymentId' in kwargs:
+            deployment_id = kwargs['deploymentId']
+        if 'healthCheck' in kwargs:
+            health_check = kwargs['healthCheck']
+
         _setter("balancer_id", balancer_id)
         _setter("deployment_id", deployment_id)
         _setter("health_check", health_check)
@@ -171,7 +179,15 @@ class _TargetSetState:
              protocol: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input['TargetSetTagArgs']]]] = None,
              weight: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'balancerId' in kwargs:
+            balancer_id = kwargs['balancerId']
+        if 'deploymentId' in kwargs:
+            deployment_id = kwargs['deploymentId']
+        if 'healthCheck' in kwargs:
+            health_check = kwargs['healthCheck']
+
         if balancer_id is not None:
             _setter("balancer_id", balancer_id)
         if deployment_id is not None:

@@ -108,7 +108,45 @@ class ElastigroupArgs:
              shutdown_script: Optional[pulumi.Input[str]] = None,
              update_policy: Optional[pulumi.Input['ElastigroupUpdatePolicyArgs']] = None,
              user_data: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'lowPrioritySizes' in kwargs:
+            low_priority_sizes = kwargs['lowPrioritySizes']
+        if 'odSizes' in kwargs:
+            od_sizes = kwargs['odSizes']
+        if 'resourceGroupName' in kwargs:
+            resource_group_name = kwargs['resourceGroupName']
+        if 'customData' in kwargs:
+            custom_data = kwargs['customData']
+        if 'desiredCapacity' in kwargs:
+            desired_capacity = kwargs['desiredCapacity']
+        if 'healthCheck' in kwargs:
+            health_check = kwargs['healthCheck']
+        if 'integrationKubernetes' in kwargs:
+            integration_kubernetes = kwargs['integrationKubernetes']
+        if 'integrationMultaiRuntime' in kwargs:
+            integration_multai_runtime = kwargs['integrationMultaiRuntime']
+        if 'loadBalancers' in kwargs:
+            load_balancers = kwargs['loadBalancers']
+        if 'managedServiceIdentities' in kwargs:
+            managed_service_identities = kwargs['managedServiceIdentities']
+        if 'maxSize' in kwargs:
+            max_size = kwargs['maxSize']
+        if 'minSize' in kwargs:
+            min_size = kwargs['minSize']
+        if 'scalingDownPolicies' in kwargs:
+            scaling_down_policies = kwargs['scalingDownPolicies']
+        if 'scalingUpPolicies' in kwargs:
+            scaling_up_policies = kwargs['scalingUpPolicies']
+        if 'scheduledTasks' in kwargs:
+            scheduled_tasks = kwargs['scheduledTasks']
+        if 'shutdownScript' in kwargs:
+            shutdown_script = kwargs['shutdownScript']
+        if 'updatePolicy' in kwargs:
+            update_policy = kwargs['updatePolicy']
+        if 'userData' in kwargs:
+            user_data = kwargs['userData']
+
         _setter("low_priority_sizes", low_priority_sizes)
         _setter("network", network)
         _setter("od_sizes", od_sizes)
@@ -498,7 +536,45 @@ class _ElastigroupState:
              strategy: Optional[pulumi.Input['ElastigroupStrategyArgs']] = None,
              update_policy: Optional[pulumi.Input['ElastigroupUpdatePolicyArgs']] = None,
              user_data: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'customData' in kwargs:
+            custom_data = kwargs['customData']
+        if 'desiredCapacity' in kwargs:
+            desired_capacity = kwargs['desiredCapacity']
+        if 'healthCheck' in kwargs:
+            health_check = kwargs['healthCheck']
+        if 'integrationKubernetes' in kwargs:
+            integration_kubernetes = kwargs['integrationKubernetes']
+        if 'integrationMultaiRuntime' in kwargs:
+            integration_multai_runtime = kwargs['integrationMultaiRuntime']
+        if 'loadBalancers' in kwargs:
+            load_balancers = kwargs['loadBalancers']
+        if 'lowPrioritySizes' in kwargs:
+            low_priority_sizes = kwargs['lowPrioritySizes']
+        if 'managedServiceIdentities' in kwargs:
+            managed_service_identities = kwargs['managedServiceIdentities']
+        if 'maxSize' in kwargs:
+            max_size = kwargs['maxSize']
+        if 'minSize' in kwargs:
+            min_size = kwargs['minSize']
+        if 'odSizes' in kwargs:
+            od_sizes = kwargs['odSizes']
+        if 'resourceGroupName' in kwargs:
+            resource_group_name = kwargs['resourceGroupName']
+        if 'scalingDownPolicies' in kwargs:
+            scaling_down_policies = kwargs['scalingDownPolicies']
+        if 'scalingUpPolicies' in kwargs:
+            scaling_up_policies = kwargs['scalingUpPolicies']
+        if 'scheduledTasks' in kwargs:
+            scheduled_tasks = kwargs['scheduledTasks']
+        if 'shutdownScript' in kwargs:
+            shutdown_script = kwargs['shutdownScript']
+        if 'updatePolicy' in kwargs:
+            update_policy = kwargs['updatePolicy']
+        if 'userData' in kwargs:
+            user_data = kwargs['userData']
+
         if custom_data is not None:
             _setter("custom_data", custom_data)
         if desired_capacity is not None:

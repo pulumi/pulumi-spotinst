@@ -18,6 +18,13 @@ public final class OceanNpVirtualNodeGroupFiltersArgs extends com.pulumi.resourc
 
     public static final OceanNpVirtualNodeGroupFiltersArgs Empty = new OceanNpVirtualNodeGroupFiltersArgs();
 
+    @Import(name="acceleratedNetworking")
+    private @Nullable Output<String> acceleratedNetworking;
+
+    public Optional<Output<String>> acceleratedNetworking() {
+        return Optional.ofNullable(this.acceleratedNetworking);
+    }
+
     @Import(name="architectures")
     private @Nullable Output<List<String>> architectures;
 
@@ -25,11 +32,25 @@ public final class OceanNpVirtualNodeGroupFiltersArgs extends com.pulumi.resourc
         return Optional.ofNullable(this.architectures);
     }
 
+    @Import(name="diskPerformance")
+    private @Nullable Output<String> diskPerformance;
+
+    public Optional<Output<String>> diskPerformance() {
+        return Optional.ofNullable(this.diskPerformance);
+    }
+
     @Import(name="excludeSeries")
     private @Nullable Output<List<String>> excludeSeries;
 
     public Optional<Output<List<String>>> excludeSeries() {
         return Optional.ofNullable(this.excludeSeries);
+    }
+
+    @Import(name="maxGpu")
+    private @Nullable Output<Double> maxGpu;
+
+    public Optional<Output<Double>> maxGpu() {
+        return Optional.ofNullable(this.maxGpu);
     }
 
     @Import(name="maxMemoryGib")
@@ -46,11 +67,32 @@ public final class OceanNpVirtualNodeGroupFiltersArgs extends com.pulumi.resourc
         return Optional.ofNullable(this.maxVcpu);
     }
 
+    @Import(name="minData")
+    private @Nullable Output<Integer> minData;
+
+    public Optional<Output<Integer>> minData() {
+        return Optional.ofNullable(this.minData);
+    }
+
+    @Import(name="minGpu")
+    private @Nullable Output<Double> minGpu;
+
+    public Optional<Output<Double>> minGpu() {
+        return Optional.ofNullable(this.minGpu);
+    }
+
     @Import(name="minMemoryGib")
     private @Nullable Output<Double> minMemoryGib;
 
     public Optional<Output<Double>> minMemoryGib() {
         return Optional.ofNullable(this.minMemoryGib);
+    }
+
+    @Import(name="minNics")
+    private @Nullable Output<Integer> minNics;
+
+    public Optional<Output<Integer>> minNics() {
+        return Optional.ofNullable(this.minNics);
     }
 
     @Import(name="minVcpu")
@@ -67,16 +109,30 @@ public final class OceanNpVirtualNodeGroupFiltersArgs extends com.pulumi.resourc
         return Optional.ofNullable(this.series);
     }
 
+    @Import(name="vmTypes")
+    private @Nullable Output<List<String>> vmTypes;
+
+    public Optional<Output<List<String>>> vmTypes() {
+        return Optional.ofNullable(this.vmTypes);
+    }
+
     private OceanNpVirtualNodeGroupFiltersArgs() {}
 
     private OceanNpVirtualNodeGroupFiltersArgs(OceanNpVirtualNodeGroupFiltersArgs $) {
+        this.acceleratedNetworking = $.acceleratedNetworking;
         this.architectures = $.architectures;
+        this.diskPerformance = $.diskPerformance;
         this.excludeSeries = $.excludeSeries;
+        this.maxGpu = $.maxGpu;
         this.maxMemoryGib = $.maxMemoryGib;
         this.maxVcpu = $.maxVcpu;
+        this.minData = $.minData;
+        this.minGpu = $.minGpu;
         this.minMemoryGib = $.minMemoryGib;
+        this.minNics = $.minNics;
         this.minVcpu = $.minVcpu;
         this.series = $.series;
+        this.vmTypes = $.vmTypes;
     }
 
     public static Builder builder() {
@@ -97,6 +153,15 @@ public final class OceanNpVirtualNodeGroupFiltersArgs extends com.pulumi.resourc
             $ = new OceanNpVirtualNodeGroupFiltersArgs(Objects.requireNonNull(defaults));
         }
 
+        public Builder acceleratedNetworking(@Nullable Output<String> acceleratedNetworking) {
+            $.acceleratedNetworking = acceleratedNetworking;
+            return this;
+        }
+
+        public Builder acceleratedNetworking(String acceleratedNetworking) {
+            return acceleratedNetworking(Output.of(acceleratedNetworking));
+        }
+
         public Builder architectures(@Nullable Output<List<String>> architectures) {
             $.architectures = architectures;
             return this;
@@ -110,6 +175,15 @@ public final class OceanNpVirtualNodeGroupFiltersArgs extends com.pulumi.resourc
             return architectures(List.of(architectures));
         }
 
+        public Builder diskPerformance(@Nullable Output<String> diskPerformance) {
+            $.diskPerformance = diskPerformance;
+            return this;
+        }
+
+        public Builder diskPerformance(String diskPerformance) {
+            return diskPerformance(Output.of(diskPerformance));
+        }
+
         public Builder excludeSeries(@Nullable Output<List<String>> excludeSeries) {
             $.excludeSeries = excludeSeries;
             return this;
@@ -121,6 +195,15 @@ public final class OceanNpVirtualNodeGroupFiltersArgs extends com.pulumi.resourc
 
         public Builder excludeSeries(String... excludeSeries) {
             return excludeSeries(List.of(excludeSeries));
+        }
+
+        public Builder maxGpu(@Nullable Output<Double> maxGpu) {
+            $.maxGpu = maxGpu;
+            return this;
+        }
+
+        public Builder maxGpu(Double maxGpu) {
+            return maxGpu(Output.of(maxGpu));
         }
 
         public Builder maxMemoryGib(@Nullable Output<Double> maxMemoryGib) {
@@ -141,6 +224,24 @@ public final class OceanNpVirtualNodeGroupFiltersArgs extends com.pulumi.resourc
             return maxVcpu(Output.of(maxVcpu));
         }
 
+        public Builder minData(@Nullable Output<Integer> minData) {
+            $.minData = minData;
+            return this;
+        }
+
+        public Builder minData(Integer minData) {
+            return minData(Output.of(minData));
+        }
+
+        public Builder minGpu(@Nullable Output<Double> minGpu) {
+            $.minGpu = minGpu;
+            return this;
+        }
+
+        public Builder minGpu(Double minGpu) {
+            return minGpu(Output.of(minGpu));
+        }
+
         public Builder minMemoryGib(@Nullable Output<Double> minMemoryGib) {
             $.minMemoryGib = minMemoryGib;
             return this;
@@ -148,6 +249,15 @@ public final class OceanNpVirtualNodeGroupFiltersArgs extends com.pulumi.resourc
 
         public Builder minMemoryGib(Double minMemoryGib) {
             return minMemoryGib(Output.of(minMemoryGib));
+        }
+
+        public Builder minNics(@Nullable Output<Integer> minNics) {
+            $.minNics = minNics;
+            return this;
+        }
+
+        public Builder minNics(Integer minNics) {
+            return minNics(Output.of(minNics));
         }
 
         public Builder minVcpu(@Nullable Output<Integer> minVcpu) {
@@ -170,6 +280,19 @@ public final class OceanNpVirtualNodeGroupFiltersArgs extends com.pulumi.resourc
 
         public Builder series(String... series) {
             return series(List.of(series));
+        }
+
+        public Builder vmTypes(@Nullable Output<List<String>> vmTypes) {
+            $.vmTypes = vmTypes;
+            return this;
+        }
+
+        public Builder vmTypes(List<String> vmTypes) {
+            return vmTypes(Output.of(vmTypes));
+        }
+
+        public Builder vmTypes(String... vmTypes) {
+            return vmTypes(List.of(vmTypes));
         }
 
         public OceanNpVirtualNodeGroupFiltersArgs build() {

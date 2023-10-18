@@ -35,7 +35,9 @@ class BalancerConnectionTimeoutsArgs:
              _setter: Callable[[Any, Any], None],
              draining: Optional[pulumi.Input[int]] = None,
              idle: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if draining is not None:
             _setter("draining", draining)
         if idle is not None:
@@ -75,7 +77,9 @@ class BalancerTagArgs:
              _setter: Callable[[Any, Any], None],
              key: pulumi.Input[str],
              value: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("key", key)
         _setter("value", value)
 
@@ -113,7 +117,9 @@ class ListenerTagArgs:
              _setter: Callable[[Any, Any], None],
              key: pulumi.Input[str],
              value: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("key", key)
         _setter("value", value)
 
@@ -163,7 +169,21 @@ class ListenerTlsConfigArgs:
              min_version: pulumi.Input[str],
              prefer_server_cipher_suites: pulumi.Input[bool],
              session_tickets_disabled: pulumi.Input[bool],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'certificateIds' in kwargs:
+            certificate_ids = kwargs['certificateIds']
+        if 'cipherSuites' in kwargs:
+            cipher_suites = kwargs['cipherSuites']
+        if 'maxVersion' in kwargs:
+            max_version = kwargs['maxVersion']
+        if 'minVersion' in kwargs:
+            min_version = kwargs['minVersion']
+        if 'preferServerCipherSuites' in kwargs:
+            prefer_server_cipher_suites = kwargs['preferServerCipherSuites']
+        if 'sessionTicketsDisabled' in kwargs:
+            session_tickets_disabled = kwargs['sessionTicketsDisabled']
+
         _setter("certificate_ids", certificate_ids)
         _setter("cipher_suites", cipher_suites)
         _setter("max_version", max_version)
@@ -241,7 +261,9 @@ class RoutingRuleTagArgs:
              _setter: Callable[[Any, Any], None],
              key: pulumi.Input[str],
              value: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("key", key)
         _setter("value", value)
 
@@ -294,7 +316,13 @@ class TargetSetHealthCheckArgs:
              timeout: pulumi.Input[int],
              unhealthy_threshold: pulumi.Input[int],
              port: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'healthyThreshold' in kwargs:
+            healthy_threshold = kwargs['healthyThreshold']
+        if 'unhealthyThreshold' in kwargs:
+            unhealthy_threshold = kwargs['unhealthyThreshold']
+
         _setter("healthy_threshold", healthy_threshold)
         _setter("interval", interval)
         _setter("path", path)
@@ -383,7 +411,9 @@ class TargetSetTagArgs:
              _setter: Callable[[Any, Any], None],
              key: pulumi.Input[str],
              value: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("key", key)
         _setter("value", value)
 
@@ -421,7 +451,9 @@ class TargetTagArgs:
              _setter: Callable[[Any, Any], None],
              key: pulumi.Input[str],
              value: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("key", key)
         _setter("value", value)
 

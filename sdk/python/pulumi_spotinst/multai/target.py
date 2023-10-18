@@ -46,7 +46,13 @@ class TargetArgs:
              name: Optional[pulumi.Input[str]] = None,
              port: Optional[pulumi.Input[int]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input['TargetTagArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'balancerId' in kwargs:
+            balancer_id = kwargs['balancerId']
+        if 'targetSetId' in kwargs:
+            target_set_id = kwargs['targetSetId']
+
         _setter("balancer_id", balancer_id)
         _setter("host", host)
         _setter("target_set_id", target_set_id)
@@ -155,7 +161,13 @@ class _TargetState:
              tags: Optional[pulumi.Input[Sequence[pulumi.Input['TargetTagArgs']]]] = None,
              target_set_id: Optional[pulumi.Input[str]] = None,
              weight: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'balancerId' in kwargs:
+            balancer_id = kwargs['balancerId']
+        if 'targetSetId' in kwargs:
+            target_set_id = kwargs['targetSetId']
+
         if balancer_id is not None:
             _setter("balancer_id", balancer_id)
         if host is not None:

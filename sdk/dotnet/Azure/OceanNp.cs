@@ -78,6 +78,9 @@ namespace Pulumi.SpotInst.Azure
         [Output("osType")]
         public Output<string?> OsType { get; private set; } = null!;
 
+        [Output("podSubnetIds")]
+        public Output<ImmutableArray<string>> PodSubnetIds { get; private set; } = null!;
+
         [Output("scheduling")]
         public Output<Outputs.OceanNpScheduling?> Scheduling { get; private set; } = null!;
 
@@ -89,6 +92,9 @@ namespace Pulumi.SpotInst.Azure
 
         [Output("taints")]
         public Output<ImmutableArray<Outputs.OceanNpTaint>> Taints { get; private set; } = null!;
+
+        [Output("vnetSubnetIds")]
+        public Output<ImmutableArray<string>> VnetSubnetIds { get; private set; } = null!;
 
 
         /// <summary>
@@ -217,6 +223,14 @@ namespace Pulumi.SpotInst.Azure
         [Input("osType")]
         public Input<string>? OsType { get; set; }
 
+        [Input("podSubnetIds")]
+        private InputList<string>? _podSubnetIds;
+        public InputList<string> PodSubnetIds
+        {
+            get => _podSubnetIds ?? (_podSubnetIds = new InputList<string>());
+            set => _podSubnetIds = value;
+        }
+
         [Input("scheduling")]
         public Input<Inputs.OceanNpSchedulingArgs>? Scheduling { get; set; }
 
@@ -237,6 +251,14 @@ namespace Pulumi.SpotInst.Azure
         {
             get => _taints ?? (_taints = new InputList<Inputs.OceanNpTaintArgs>());
             set => _taints = value;
+        }
+
+        [Input("vnetSubnetIds")]
+        private InputList<string>? _vnetSubnetIds;
+        public InputList<string> VnetSubnetIds
+        {
+            get => _vnetSubnetIds ?? (_vnetSubnetIds = new InputList<string>());
+            set => _vnetSubnetIds = value;
         }
 
         public OceanNpArgs()
@@ -328,6 +350,14 @@ namespace Pulumi.SpotInst.Azure
         [Input("osType")]
         public Input<string>? OsType { get; set; }
 
+        [Input("podSubnetIds")]
+        private InputList<string>? _podSubnetIds;
+        public InputList<string> PodSubnetIds
+        {
+            get => _podSubnetIds ?? (_podSubnetIds = new InputList<string>());
+            set => _podSubnetIds = value;
+        }
+
         [Input("scheduling")]
         public Input<Inputs.OceanNpSchedulingGetArgs>? Scheduling { get; set; }
 
@@ -348,6 +378,14 @@ namespace Pulumi.SpotInst.Azure
         {
             get => _taints ?? (_taints = new InputList<Inputs.OceanNpTaintGetArgs>());
             set => _taints = value;
+        }
+
+        [Input("vnetSubnetIds")]
+        private InputList<string>? _vnetSubnetIds;
+        public InputList<string> VnetSubnetIds
+        {
+            get => _vnetSubnetIds ?? (_vnetSubnetIds = new InputList<string>());
+            set => _vnetSubnetIds = value;
         }
 
         public OceanNpState()

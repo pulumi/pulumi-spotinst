@@ -57,7 +57,15 @@ class OceanVirtualNodeGroupArgs:
              resource_limits: Optional[pulumi.Input[Sequence[pulumi.Input['OceanVirtualNodeGroupResourceLimitArgs']]]] = None,
              taints: Optional[pulumi.Input[Sequence[pulumi.Input['OceanVirtualNodeGroupTaintArgs']]]] = None,
              zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'oceanId' in kwargs:
+            ocean_id = kwargs['oceanId']
+        if 'launchSpecifications' in kwargs:
+            launch_specifications = kwargs['launchSpecifications']
+        if 'resourceLimits' in kwargs:
+            resource_limits = kwargs['resourceLimits']
+
         _setter("ocean_id", ocean_id)
         if autoscales is not None:
             _setter("autoscales", autoscales)
@@ -215,7 +223,15 @@ class _OceanVirtualNodeGroupState:
              resource_limits: Optional[pulumi.Input[Sequence[pulumi.Input['OceanVirtualNodeGroupResourceLimitArgs']]]] = None,
              taints: Optional[pulumi.Input[Sequence[pulumi.Input['OceanVirtualNodeGroupTaintArgs']]]] = None,
              zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'launchSpecifications' in kwargs:
+            launch_specifications = kwargs['launchSpecifications']
+        if 'oceanId' in kwargs:
+            ocean_id = kwargs['oceanId']
+        if 'resourceLimits' in kwargs:
+            resource_limits = kwargs['resourceLimits']
+
         if autoscales is not None:
             _setter("autoscales", autoscales)
         if labels is not None:

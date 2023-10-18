@@ -76,7 +76,11 @@ class DataIntegrationS3Args:
              _setter: Callable[[Any, Any], None],
              bucket_name: pulumi.Input[str],
              subdir: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'bucketName' in kwargs:
+            bucket_name = kwargs['bucketName']
+
         _setter("bucket_name", bucket_name)
         if subdir is not None:
             _setter("subdir", subdir)
@@ -118,7 +122,9 @@ class ElastigroupAzureV3ImageArgs:
              _setter: Callable[[Any, Any], None],
              customs: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ImageCustomArgs']]]] = None,
              marketplaces: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ImageMarketplaceArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if customs is not None:
             _setter("customs", customs)
         if marketplaces is not None:
@@ -158,7 +164,13 @@ class ElastigroupAzureV3ImageCustomArgs:
              _setter: Callable[[Any, Any], None],
              image_name: pulumi.Input[str],
              resource_group_name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'imageName' in kwargs:
+            image_name = kwargs['imageName']
+        if 'resourceGroupName' in kwargs:
+            resource_group_name = kwargs['resourceGroupName']
+
         _setter("image_name", image_name)
         _setter("resource_group_name", resource_group_name)
 
@@ -202,7 +214,9 @@ class ElastigroupAzureV3ImageMarketplaceArgs:
              publisher: pulumi.Input[str],
              sku: pulumi.Input[str],
              version: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("offer", offer)
         _setter("publisher", publisher)
         _setter("sku", sku)
@@ -263,7 +277,13 @@ class ElastigroupAzureV3LoginArgs:
              user_name: pulumi.Input[str],
              password: Optional[pulumi.Input[str]] = None,
              ssh_public_key: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'userName' in kwargs:
+            user_name = kwargs['userName']
+        if 'sshPublicKey' in kwargs:
+            ssh_public_key = kwargs['sshPublicKey']
+
         _setter("user_name", user_name)
         if password is not None:
             _setter("password", password)
@@ -313,7 +333,11 @@ class ElastigroupAzureV3ManagedServiceIdentityArgs:
              _setter: Callable[[Any, Any], None],
              name: pulumi.Input[str],
              resource_group_name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'resourceGroupName' in kwargs:
+            resource_group_name = kwargs['resourceGroupName']
+
         _setter("name", name)
         _setter("resource_group_name", resource_group_name)
 
@@ -354,7 +378,15 @@ class ElastigroupAzureV3NetworkArgs:
              network_interfaces: pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3NetworkNetworkInterfaceArgs']]],
              resource_group_name: pulumi.Input[str],
              virtual_network_name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'networkInterfaces' in kwargs:
+            network_interfaces = kwargs['networkInterfaces']
+        if 'resourceGroupName' in kwargs:
+            resource_group_name = kwargs['resourceGroupName']
+        if 'virtualNetworkName' in kwargs:
+            virtual_network_name = kwargs['virtualNetworkName']
+
         _setter("network_interfaces", network_interfaces)
         _setter("resource_group_name", resource_group_name)
         _setter("virtual_network_name", virtual_network_name)
@@ -411,7 +443,19 @@ class ElastigroupAzureV3NetworkNetworkInterfaceArgs:
              subnet_name: pulumi.Input[str],
              additional_ip_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArgs']]]] = None,
              application_security_groups: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'assignPublicIp' in kwargs:
+            assign_public_ip = kwargs['assignPublicIp']
+        if 'isPrimary' in kwargs:
+            is_primary = kwargs['isPrimary']
+        if 'subnetName' in kwargs:
+            subnet_name = kwargs['subnetName']
+        if 'additionalIpConfigs' in kwargs:
+            additional_ip_configs = kwargs['additionalIpConfigs']
+        if 'applicationSecurityGroups' in kwargs:
+            application_security_groups = kwargs['applicationSecurityGroups']
+
         _setter("assign_public_ip", assign_public_ip)
         _setter("is_primary", is_primary)
         _setter("subnet_name", subnet_name)
@@ -481,7 +525,11 @@ class ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArgs:
              _setter: Callable[[Any, Any], None],
              name: pulumi.Input[str],
              private_ip_version: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'privateIpVersion' in kwargs:
+            private_ip_version = kwargs['privateIpVersion']
+
         _setter("name", name)
         if private_ip_version is not None:
             _setter("private_ip_version", private_ip_version)
@@ -520,7 +568,11 @@ class ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArgs:
              _setter: Callable[[Any, Any], None],
              name: pulumi.Input[str],
              resource_group_name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'resourceGroupName' in kwargs:
+            resource_group_name = kwargs['resourceGroupName']
+
         _setter("name", name)
         _setter("resource_group_name", resource_group_name)
 
@@ -558,7 +610,9 @@ class ElastigroupAzureV3TagArgs:
              _setter: Callable[[Any, Any], None],
              key: pulumi.Input[str],
              value: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("key", key)
         _setter("value", value)
 
@@ -626,7 +680,13 @@ class HealthCheckCheckArgs:
              endpoint: Optional[pulumi.Input[str]] = None,
              time_out: Optional[pulumi.Input[int]] = None,
              timeout: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'endPoint' in kwargs:
+            end_point = kwargs['endPoint']
+        if 'timeOut' in kwargs:
+            time_out = kwargs['timeOut']
+
         _setter("healthy", healthy)
         _setter("interval", interval)
         _setter("port", port)
@@ -771,7 +831,17 @@ class StatefulNodeAzureAttachDataDiskArgs:
              storage_account_type: pulumi.Input[str],
              lun: Optional[pulumi.Input[int]] = None,
              zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'dataDiskName' in kwargs:
+            data_disk_name = kwargs['dataDiskName']
+        if 'dataDiskResourceGroupName' in kwargs:
+            data_disk_resource_group_name = kwargs['dataDiskResourceGroupName']
+        if 'sizeGb' in kwargs:
+            size_gb = kwargs['sizeGb']
+        if 'storageAccountType' in kwargs:
+            storage_account_type = kwargs['storageAccountType']
+
         _setter("data_disk_name", data_disk_name)
         _setter("data_disk_resource_group_name", data_disk_resource_group_name)
         _setter("size_gb", size_gb)
@@ -854,7 +924,13 @@ class StatefulNodeAzureBootDiagnosticArgs:
              is_enabled: Optional[pulumi.Input[bool]] = None,
              storage_url: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'isEnabled' in kwargs:
+            is_enabled = kwargs['isEnabled']
+        if 'storageUrl' in kwargs:
+            storage_url = kwargs['storageUrl']
+
         if is_enabled is not None:
             _setter("is_enabled", is_enabled)
         if storage_url is not None:
@@ -908,7 +984,11 @@ class StatefulNodeAzureDataDiskArgs:
              lun: pulumi.Input[int],
              size_gb: pulumi.Input[int],
              type: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'sizeGb' in kwargs:
+            size_gb = kwargs['sizeGb']
+
         _setter("lun", lun)
         _setter("size_gb", size_gb)
         _setter("type", type)
@@ -977,7 +1057,27 @@ class StatefulNodeAzureDeleteArgs:
              network_ttl_in_hours: Optional[pulumi.Input[int]] = None,
              public_ip_ttl_in_hours: Optional[pulumi.Input[int]] = None,
              snapshot_ttl_in_hours: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'diskShouldDeallocate' in kwargs:
+            disk_should_deallocate = kwargs['diskShouldDeallocate']
+        if 'networkShouldDeallocate' in kwargs:
+            network_should_deallocate = kwargs['networkShouldDeallocate']
+        if 'publicIpShouldDeallocate' in kwargs:
+            public_ip_should_deallocate = kwargs['publicIpShouldDeallocate']
+        if 'shouldTerminateVm' in kwargs:
+            should_terminate_vm = kwargs['shouldTerminateVm']
+        if 'snapshotShouldDeallocate' in kwargs:
+            snapshot_should_deallocate = kwargs['snapshotShouldDeallocate']
+        if 'diskTtlInHours' in kwargs:
+            disk_ttl_in_hours = kwargs['diskTtlInHours']
+        if 'networkTtlInHours' in kwargs:
+            network_ttl_in_hours = kwargs['networkTtlInHours']
+        if 'publicIpTtlInHours' in kwargs:
+            public_ip_ttl_in_hours = kwargs['publicIpTtlInHours']
+        if 'snapshotTtlInHours' in kwargs:
+            snapshot_ttl_in_hours = kwargs['snapshotTtlInHours']
+
         _setter("disk_should_deallocate", disk_should_deallocate)
         _setter("network_should_deallocate", network_should_deallocate)
         _setter("public_ip_should_deallocate", public_ip_should_deallocate)
@@ -1095,7 +1195,17 @@ class StatefulNodeAzureDetachDataDiskArgs:
              data_disk_resource_group_name: pulumi.Input[str],
              should_deallocate: pulumi.Input[bool],
              ttl_in_hours: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'dataDiskName' in kwargs:
+            data_disk_name = kwargs['dataDiskName']
+        if 'dataDiskResourceGroupName' in kwargs:
+            data_disk_resource_group_name = kwargs['dataDiskResourceGroupName']
+        if 'shouldDeallocate' in kwargs:
+            should_deallocate = kwargs['shouldDeallocate']
+        if 'ttlInHours' in kwargs:
+            ttl_in_hours = kwargs['ttlInHours']
+
         _setter("data_disk_name", data_disk_name)
         _setter("data_disk_resource_group_name", data_disk_resource_group_name)
         _setter("should_deallocate", should_deallocate)
@@ -1169,7 +1279,17 @@ class StatefulNodeAzureExtensionArgs:
              type: pulumi.Input[str],
              protected_settings: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              public_settings: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'apiVersion' in kwargs:
+            api_version = kwargs['apiVersion']
+        if 'minorVersionAutoUpgrade' in kwargs:
+            minor_version_auto_upgrade = kwargs['minorVersionAutoUpgrade']
+        if 'protectedSettings' in kwargs:
+            protected_settings = kwargs['protectedSettings']
+        if 'publicSettings' in kwargs:
+            public_settings = kwargs['publicSettings']
+
         _setter("api_version", api_version)
         _setter("minor_version_auto_upgrade", minor_version_auto_upgrade)
         _setter("name", name)
@@ -1265,7 +1385,17 @@ class StatefulNodeAzureHealthArgs:
              health_check_types: pulumi.Input[Sequence[pulumi.Input[str]]],
              grace_period: Optional[pulumi.Input[int]] = None,
              unhealthy_duration: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'autoHealing' in kwargs:
+            auto_healing = kwargs['autoHealing']
+        if 'healthCheckTypes' in kwargs:
+            health_check_types = kwargs['healthCheckTypes']
+        if 'gracePeriod' in kwargs:
+            grace_period = kwargs['gracePeriod']
+        if 'unhealthyDuration' in kwargs:
+            unhealthy_duration = kwargs['unhealthyDuration']
+
         _setter("auto_healing", auto_healing)
         _setter("health_check_types", health_check_types)
         if grace_period is not None:
@@ -1328,7 +1458,13 @@ class StatefulNodeAzureImageArgs:
              custom_images: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureImageCustomImageArgs']]]] = None,
              galleries: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureImageGalleryArgs']]]] = None,
              marketplace_images: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureImageMarketplaceImageArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'customImages' in kwargs:
+            custom_images = kwargs['customImages']
+        if 'marketplaceImages' in kwargs:
+            marketplace_images = kwargs['marketplaceImages']
+
         if custom_images is not None:
             _setter("custom_images", custom_images)
         if galleries is not None:
@@ -1379,7 +1515,11 @@ class StatefulNodeAzureImageCustomImageArgs:
              _setter: Callable[[Any, Any], None],
              custom_image_resource_group_name: pulumi.Input[str],
              name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'customImageResourceGroupName' in kwargs:
+            custom_image_resource_group_name = kwargs['customImageResourceGroupName']
+
         _setter("custom_image_resource_group_name", custom_image_resource_group_name)
         _setter("name", name)
 
@@ -1423,7 +1563,17 @@ class StatefulNodeAzureImageGalleryArgs:
              gallery_resource_group_name: pulumi.Input[str],
              image_name: pulumi.Input[str],
              version_name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'galleryName' in kwargs:
+            gallery_name = kwargs['galleryName']
+        if 'galleryResourceGroupName' in kwargs:
+            gallery_resource_group_name = kwargs['galleryResourceGroupName']
+        if 'imageName' in kwargs:
+            image_name = kwargs['imageName']
+        if 'versionName' in kwargs:
+            version_name = kwargs['versionName']
+
         _setter("gallery_name", gallery_name)
         _setter("gallery_resource_group_name", gallery_resource_group_name)
         _setter("image_name", image_name)
@@ -1487,7 +1637,9 @@ class StatefulNodeAzureImageMarketplaceImageArgs:
              publisher: pulumi.Input[str],
              sku: pulumi.Input[str],
              version: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("offer", offer)
         _setter("publisher", publisher)
         _setter("sku", sku)
@@ -1551,7 +1703,17 @@ class StatefulNodeAzureImportVmArgs:
              resource_group_name: pulumi.Input[str],
              draining_timeout: Optional[pulumi.Input[int]] = None,
              resources_retention_time: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'originalVmName' in kwargs:
+            original_vm_name = kwargs['originalVmName']
+        if 'resourceGroupName' in kwargs:
+            resource_group_name = kwargs['resourceGroupName']
+        if 'drainingTimeout' in kwargs:
+            draining_timeout = kwargs['drainingTimeout']
+        if 'resourcesRetentionTime' in kwargs:
+            resources_retention_time = kwargs['resourcesRetentionTime']
+
         _setter("original_vm_name", original_vm_name)
         _setter("resource_group_name", resource_group_name)
         if draining_timeout is not None:
@@ -1620,7 +1782,13 @@ class StatefulNodeAzureLoadBalancerArgs:
              resource_group_name: pulumi.Input[str],
              type: pulumi.Input[str],
              sku: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'backendPoolNames' in kwargs:
+            backend_pool_names = kwargs['backendPoolNames']
+        if 'resourceGroupName' in kwargs:
+            resource_group_name = kwargs['resourceGroupName']
+
         _setter("backend_pool_names", backend_pool_names)
         _setter("name", name)
         _setter("resource_group_name", resource_group_name)
@@ -1692,7 +1860,13 @@ class StatefulNodeAzureLoginArgs:
              user_name: pulumi.Input[str],
              password: Optional[pulumi.Input[str]] = None,
              ssh_public_key: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'userName' in kwargs:
+            user_name = kwargs['userName']
+        if 'sshPublicKey' in kwargs:
+            ssh_public_key = kwargs['sshPublicKey']
+
         _setter("user_name", user_name)
         if password is not None:
             _setter("password", password)
@@ -1742,7 +1916,11 @@ class StatefulNodeAzureManagedServiceIdentityArgs:
              _setter: Callable[[Any, Any], None],
              name: pulumi.Input[str],
              resource_group_name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'resourceGroupName' in kwargs:
+            resource_group_name = kwargs['resourceGroupName']
+
         _setter("name", name)
         _setter("resource_group_name", resource_group_name)
 
@@ -1783,7 +1961,15 @@ class StatefulNodeAzureNetworkArgs:
              network_interfaces: pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureNetworkNetworkInterfaceArgs']]],
              network_resource_group_name: pulumi.Input[str],
              virtual_network_name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'networkInterfaces' in kwargs:
+            network_interfaces = kwargs['networkInterfaces']
+        if 'networkResourceGroupName' in kwargs:
+            network_resource_group_name = kwargs['networkResourceGroupName']
+        if 'virtualNetworkName' in kwargs:
+            virtual_network_name = kwargs['virtualNetworkName']
+
         _setter("network_interfaces", network_interfaces)
         _setter("network_resource_group_name", network_resource_group_name)
         _setter("virtual_network_name", virtual_network_name)
@@ -1855,7 +2041,29 @@ class StatefulNodeAzureNetworkNetworkInterfaceArgs:
              private_ip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              public_ip_sku: Optional[pulumi.Input[str]] = None,
              public_ips: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureNetworkNetworkInterfacePublicIpArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'isPrimary' in kwargs:
+            is_primary = kwargs['isPrimary']
+        if 'subnetName' in kwargs:
+            subnet_name = kwargs['subnetName']
+        if 'additionalIpConfigurations' in kwargs:
+            additional_ip_configurations = kwargs['additionalIpConfigurations']
+        if 'applicationSecurityGroups' in kwargs:
+            application_security_groups = kwargs['applicationSecurityGroups']
+        if 'assignPublicIp' in kwargs:
+            assign_public_ip = kwargs['assignPublicIp']
+        if 'enableIpForwarding' in kwargs:
+            enable_ip_forwarding = kwargs['enableIpForwarding']
+        if 'networkSecurityGroups' in kwargs:
+            network_security_groups = kwargs['networkSecurityGroups']
+        if 'privateIpAddresses' in kwargs:
+            private_ip_addresses = kwargs['privateIpAddresses']
+        if 'publicIpSku' in kwargs:
+            public_ip_sku = kwargs['publicIpSku']
+        if 'publicIps' in kwargs:
+            public_ips = kwargs['publicIps']
+
         _setter("is_primary", is_primary)
         _setter("subnet_name", subnet_name)
         if additional_ip_configurations is not None:
@@ -1981,7 +2189,11 @@ class StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationArgs:
              _setter: Callable[[Any, Any], None],
              name: pulumi.Input[str],
              private_ip_address_version: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'privateIpAddressVersion' in kwargs:
+            private_ip_address_version = kwargs['privateIpAddressVersion']
+
         _setter("name", name)
         _setter("private_ip_address_version", private_ip_address_version)
 
@@ -2019,7 +2231,11 @@ class StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArgs:
              _setter: Callable[[Any, Any], None],
              name: pulumi.Input[str],
              network_resource_group_name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'networkResourceGroupName' in kwargs:
+            network_resource_group_name = kwargs['networkResourceGroupName']
+
         _setter("name", name)
         _setter("network_resource_group_name", network_resource_group_name)
 
@@ -2057,7 +2273,11 @@ class StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupArgs:
              _setter: Callable[[Any, Any], None],
              name: Optional[pulumi.Input[str]] = None,
              network_resource_group_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'networkResourceGroupName' in kwargs:
+            network_resource_group_name = kwargs['networkResourceGroupName']
+
         if name is not None:
             _setter("name", name)
         if network_resource_group_name is not None:
@@ -2097,7 +2317,11 @@ class StatefulNodeAzureNetworkNetworkInterfacePublicIpArgs:
              _setter: Callable[[Any, Any], None],
              name: pulumi.Input[str],
              network_resource_group_name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'networkResourceGroupName' in kwargs:
+            network_resource_group_name = kwargs['networkResourceGroupName']
+
         _setter("name", name)
         _setter("network_resource_group_name", network_resource_group_name)
 
@@ -2135,7 +2359,11 @@ class StatefulNodeAzureOsDiskArgs:
              _setter: Callable[[Any, Any], None],
              type: pulumi.Input[str],
              size_gb: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'sizeGb' in kwargs:
+            size_gb = kwargs['sizeGb']
+
         _setter("type", type)
         if size_gb is not None:
             _setter("size_gb", size_gb)
@@ -2177,7 +2405,13 @@ class StatefulNodeAzureSchedulingTaskArgs:
              cron_expression: pulumi.Input[str],
              is_enabled: pulumi.Input[bool],
              type: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cronExpression' in kwargs:
+            cron_expression = kwargs['cronExpression']
+        if 'isEnabled' in kwargs:
+            is_enabled = kwargs['isEnabled']
+
         _setter("cron_expression", cron_expression)
         _setter("is_enabled", is_enabled)
         _setter("type", type)
@@ -2225,7 +2459,13 @@ class StatefulNodeAzureSecretArgs:
              _setter: Callable[[Any, Any], None],
              source_vaults: pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureSecretSourceVaultArgs']]],
              vault_certificates: pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureSecretVaultCertificateArgs']]],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'sourceVaults' in kwargs:
+            source_vaults = kwargs['sourceVaults']
+        if 'vaultCertificates' in kwargs:
+            vault_certificates = kwargs['vaultCertificates']
+
         _setter("source_vaults", source_vaults)
         _setter("vault_certificates", vault_certificates)
 
@@ -2263,7 +2503,11 @@ class StatefulNodeAzureSecretSourceVaultArgs:
              _setter: Callable[[Any, Any], None],
              name: pulumi.Input[str],
              resource_group_name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'resourceGroupName' in kwargs:
+            resource_group_name = kwargs['resourceGroupName']
+
         _setter("name", name)
         _setter("resource_group_name", resource_group_name)
 
@@ -2301,7 +2545,13 @@ class StatefulNodeAzureSecretVaultCertificateArgs:
              _setter: Callable[[Any, Any], None],
              certificate_store: Optional[pulumi.Input[str]] = None,
              certificate_url: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'certificateStore' in kwargs:
+            certificate_store = kwargs['certificateStore']
+        if 'certificateUrl' in kwargs:
+            certificate_url = kwargs['certificateUrl']
+
         if certificate_store is not None:
             _setter("certificate_store", certificate_store)
         if certificate_url is not None:
@@ -2344,7 +2594,15 @@ class StatefulNodeAzureSecurityArgs:
              secure_boot_enabled: Optional[pulumi.Input[bool]] = None,
              security_type: Optional[pulumi.Input[str]] = None,
              vtpm_enabled: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'secureBootEnabled' in kwargs:
+            secure_boot_enabled = kwargs['secureBootEnabled']
+        if 'securityType' in kwargs:
+            security_type = kwargs['securityType']
+        if 'vtpmEnabled' in kwargs:
+            vtpm_enabled = kwargs['vtpmEnabled']
+
         if secure_boot_enabled is not None:
             _setter("secure_boot_enabled", secure_boot_enabled)
         if security_type is not None:
@@ -2395,7 +2653,9 @@ class StatefulNodeAzureSignalArgs:
              _setter: Callable[[Any, Any], None],
              timeout: pulumi.Input[int],
              type: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("timeout", timeout)
         _setter("type", type)
 
@@ -2445,7 +2705,21 @@ class StatefulNodeAzureStrategyArgs:
              optimization_windows: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              preferred_life_cycle: Optional[pulumi.Input[str]] = None,
              revert_to_spot: Optional[pulumi.Input['StatefulNodeAzureStrategyRevertToSpotArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'fallbackToOnDemand' in kwargs:
+            fallback_to_on_demand = kwargs['fallbackToOnDemand']
+        if 'capacityReservations' in kwargs:
+            capacity_reservations = kwargs['capacityReservations']
+        if 'drainingTimeout' in kwargs:
+            draining_timeout = kwargs['drainingTimeout']
+        if 'optimizationWindows' in kwargs:
+            optimization_windows = kwargs['optimizationWindows']
+        if 'preferredLifeCycle' in kwargs:
+            preferred_life_cycle = kwargs['preferredLifeCycle']
+        if 'revertToSpot' in kwargs:
+            revert_to_spot = kwargs['revertToSpot']
+
         _setter("fallback_to_on_demand", fallback_to_on_demand)
         if capacity_reservations is not None:
             _setter("capacity_reservations", capacity_reservations)
@@ -2531,7 +2805,15 @@ class StatefulNodeAzureStrategyCapacityReservationArgs:
              should_utilize: pulumi.Input[bool],
              utilization_strategy: pulumi.Input[str],
              capacity_reservation_groups: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'shouldUtilize' in kwargs:
+            should_utilize = kwargs['shouldUtilize']
+        if 'utilizationStrategy' in kwargs:
+            utilization_strategy = kwargs['utilizationStrategy']
+        if 'capacityReservationGroups' in kwargs:
+            capacity_reservation_groups = kwargs['capacityReservationGroups']
+
         _setter("should_utilize", should_utilize)
         _setter("utilization_strategy", utilization_strategy)
         if capacity_reservation_groups is not None:
@@ -2583,7 +2865,15 @@ class StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupArgs:
              crg_name: pulumi.Input[str],
              crg_resource_group_name: pulumi.Input[str],
              crg_should_prioritize: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'crgName' in kwargs:
+            crg_name = kwargs['crgName']
+        if 'crgResourceGroupName' in kwargs:
+            crg_resource_group_name = kwargs['crgResourceGroupName']
+        if 'crgShouldPrioritize' in kwargs:
+            crg_should_prioritize = kwargs['crgShouldPrioritize']
+
         _setter("crg_name", crg_name)
         _setter("crg_resource_group_name", crg_resource_group_name)
         if crg_should_prioritize is not None:
@@ -2629,7 +2919,11 @@ class StatefulNodeAzureStrategyRevertToSpotArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              perform_at: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'performAt' in kwargs:
+            perform_at = kwargs['performAt']
+
         _setter("perform_at", perform_at)
 
     @property
@@ -2657,7 +2951,13 @@ class StatefulNodeAzureTagArgs:
              _setter: Callable[[Any, Any], None],
              tag_key: pulumi.Input[str],
              tag_value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'tagKey' in kwargs:
+            tag_key = kwargs['tagKey']
+        if 'tagValue' in kwargs:
+            tag_value = kwargs['tagValue']
+
         _setter("tag_key", tag_key)
         if tag_value is not None:
             _setter("tag_value", tag_value)
@@ -2693,7 +2993,9 @@ class StatefulNodeAzureUpdateStateArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              state: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("state", state)
 
     @property

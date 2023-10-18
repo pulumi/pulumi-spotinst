@@ -40,7 +40,13 @@ class ListenerArgs:
              protocol: pulumi.Input[str],
              tags: Optional[pulumi.Input[Sequence[pulumi.Input['ListenerTagArgs']]]] = None,
              tls_config: Optional[pulumi.Input['ListenerTlsConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'balancerId' in kwargs:
+            balancer_id = kwargs['balancerId']
+        if 'tlsConfig' in kwargs:
+            tls_config = kwargs['tlsConfig']
+
         _setter("balancer_id", balancer_id)
         _setter("port", port)
         _setter("protocol", protocol)
@@ -122,7 +128,13 @@ class _ListenerState:
              protocol: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input['ListenerTagArgs']]]] = None,
              tls_config: Optional[pulumi.Input['ListenerTlsConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'balancerId' in kwargs:
+            balancer_id = kwargs['balancerId']
+        if 'tlsConfig' in kwargs:
+            tls_config = kwargs['tlsConfig']
+
         if balancer_id is not None:
             _setter("balancer_id", balancer_id)
         if port is not None:

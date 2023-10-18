@@ -34,7 +34,9 @@ class PolicyPolicyContent(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              statements: Sequence['outputs.PolicyPolicyContentStatement'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("statements", statements)
 
     @property
@@ -70,7 +72,9 @@ class PolicyPolicyContentStatement(dict):
              actions: Sequence[str],
              effect: str,
              resources: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("actions", actions)
         _setter("effect", effect)
         _setter("resources", resources)
@@ -140,7 +144,13 @@ class ProgrammaticUserAccount(dict):
              _setter: Callable[[Any, Any], None],
              account_id: str,
              account_role: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'accountRole' in kwargs:
+            account_role = kwargs['accountRole']
+
         _setter("account_id", account_id)
         _setter("account_role", account_role)
 
@@ -201,7 +211,13 @@ class ProgrammaticUserPolicy(dict):
              _setter: Callable[[Any, Any], None],
              policy_account_ids: Sequence[str],
              policy_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'policyAccountIds' in kwargs:
+            policy_account_ids = kwargs['policyAccountIds']
+        if 'policyId' in kwargs:
+            policy_id = kwargs['policyId']
+
         _setter("policy_account_ids", policy_account_ids)
         _setter("policy_id", policy_id)
 
@@ -263,7 +279,13 @@ class UserGroupPolicy(dict):
              _setter: Callable[[Any, Any], None],
              account_ids: Sequence[str],
              policy_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountIds' in kwargs:
+            account_ids = kwargs['accountIds']
+        if 'policyId' in kwargs:
+            policy_id = kwargs['policyId']
+
         _setter("account_ids", account_ids)
         _setter("policy_id", policy_id)
 
@@ -324,7 +346,13 @@ class UserPolicy(dict):
              _setter: Callable[[Any, Any], None],
              policy_account_ids: Sequence[str],
              policy_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'policyAccountIds' in kwargs:
+            policy_account_ids = kwargs['policyAccountIds']
+        if 'policyId' in kwargs:
+            policy_id = kwargs['policyId']
+
         _setter("policy_account_ids", policy_account_ids)
         _setter("policy_id", policy_id)
 

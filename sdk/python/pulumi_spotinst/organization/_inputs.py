@@ -33,7 +33,9 @@ class PolicyPolicyContentArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              statements: pulumi.Input[Sequence[pulumi.Input['PolicyPolicyContentStatementArgs']]],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("statements", statements)
 
     @property
@@ -73,7 +75,9 @@ class PolicyPolicyContentStatementArgs:
              actions: pulumi.Input[Sequence[pulumi.Input[str]]],
              effect: pulumi.Input[str],
              resources: pulumi.Input[Sequence[pulumi.Input[str]]],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("actions", actions)
         _setter("effect", effect)
         _setter("resources", resources)
@@ -136,7 +140,13 @@ class ProgrammaticUserAccountArgs:
              _setter: Callable[[Any, Any], None],
              account_id: pulumi.Input[str],
              account_role: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'accountRole' in kwargs:
+            account_role = kwargs['accountRole']
+
         _setter("account_id", account_id)
         _setter("account_role", account_role)
 
@@ -186,7 +196,13 @@ class ProgrammaticUserPolicyArgs:
              _setter: Callable[[Any, Any], None],
              policy_account_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
              policy_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'policyAccountIds' in kwargs:
+            policy_account_ids = kwargs['policyAccountIds']
+        if 'policyId' in kwargs:
+            policy_id = kwargs['policyId']
+
         _setter("policy_account_ids", policy_account_ids)
         _setter("policy_id", policy_id)
 
@@ -237,7 +253,13 @@ class UserGroupPolicyArgs:
              _setter: Callable[[Any, Any], None],
              account_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
              policy_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountIds' in kwargs:
+            account_ids = kwargs['accountIds']
+        if 'policyId' in kwargs:
+            policy_id = kwargs['policyId']
+
         _setter("account_ids", account_ids)
         _setter("policy_id", policy_id)
 
@@ -287,7 +309,13 @@ class UserPolicyArgs:
              _setter: Callable[[Any, Any], None],
              policy_account_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
              policy_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'policyAccountIds' in kwargs:
+            policy_account_ids = kwargs['policyAccountIds']
+        if 'policyId' in kwargs:
+            policy_id = kwargs['policyId']
+
         _setter("policy_account_ids", policy_account_ids)
         _setter("policy_id", policy_id)
 

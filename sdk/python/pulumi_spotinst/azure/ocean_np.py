@@ -38,10 +38,12 @@ class OceanNpArgs:
                  os_disk_type: Optional[pulumi.Input[str]] = None,
                  os_sku: Optional[pulumi.Input[str]] = None,
                  os_type: Optional[pulumi.Input[str]] = None,
+                 pod_subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  scheduling: Optional[pulumi.Input['OceanNpSchedulingArgs']] = None,
                  spot_percentage: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 taints: Optional[pulumi.Input[Sequence[pulumi.Input['OceanNpTaintArgs']]]] = None):
+                 taints: Optional[pulumi.Input[Sequence[pulumi.Input['OceanNpTaintArgs']]]] = None,
+                 vnet_subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a OceanNp resource.
         """
@@ -69,10 +71,12 @@ class OceanNpArgs:
             os_disk_type=os_disk_type,
             os_sku=os_sku,
             os_type=os_type,
+            pod_subnet_ids=pod_subnet_ids,
             scheduling=scheduling,
             spot_percentage=spot_percentage,
             tags=tags,
             taints=taints,
+            vnet_subnet_ids=vnet_subnet_ids,
         )
     @staticmethod
     def _configure(
@@ -99,11 +103,53 @@ class OceanNpArgs:
              os_disk_type: Optional[pulumi.Input[str]] = None,
              os_sku: Optional[pulumi.Input[str]] = None,
              os_type: Optional[pulumi.Input[str]] = None,
+             pod_subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              scheduling: Optional[pulumi.Input['OceanNpSchedulingArgs']] = None,
              spot_percentage: Optional[pulumi.Input[int]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              taints: Optional[pulumi.Input[Sequence[pulumi.Input['OceanNpTaintArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             vnet_subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'aksClusterName' in kwargs:
+            aks_cluster_name = kwargs['aksClusterName']
+        if 'aksInfrastructureResourceGroupName' in kwargs:
+            aks_infrastructure_resource_group_name = kwargs['aksInfrastructureResourceGroupName']
+        if 'aksRegion' in kwargs:
+            aks_region = kwargs['aksRegion']
+        if 'aksResourceGroupName' in kwargs:
+            aks_resource_group_name = kwargs['aksResourceGroupName']
+        if 'availabilityZones' in kwargs:
+            availability_zones = kwargs['availabilityZones']
+        if 'controllerClusterId' in kwargs:
+            controller_cluster_id = kwargs['controllerClusterId']
+        if 'enableNodePublicIp' in kwargs:
+            enable_node_public_ip = kwargs['enableNodePublicIp']
+        if 'fallbackToOndemand' in kwargs:
+            fallback_to_ondemand = kwargs['fallbackToOndemand']
+        if 'kubernetesVersion' in kwargs:
+            kubernetes_version = kwargs['kubernetesVersion']
+        if 'maxCount' in kwargs:
+            max_count = kwargs['maxCount']
+        if 'maxPodsPerNode' in kwargs:
+            max_pods_per_node = kwargs['maxPodsPerNode']
+        if 'minCount' in kwargs:
+            min_count = kwargs['minCount']
+        if 'osDiskSizeGb' in kwargs:
+            os_disk_size_gb = kwargs['osDiskSizeGb']
+        if 'osDiskType' in kwargs:
+            os_disk_type = kwargs['osDiskType']
+        if 'osSku' in kwargs:
+            os_sku = kwargs['osSku']
+        if 'osType' in kwargs:
+            os_type = kwargs['osType']
+        if 'podSubnetIds' in kwargs:
+            pod_subnet_ids = kwargs['podSubnetIds']
+        if 'spotPercentage' in kwargs:
+            spot_percentage = kwargs['spotPercentage']
+        if 'vnetSubnetIds' in kwargs:
+            vnet_subnet_ids = kwargs['vnetSubnetIds']
+
         _setter("aks_cluster_name", aks_cluster_name)
         _setter("aks_infrastructure_resource_group_name", aks_infrastructure_resource_group_name)
         _setter("aks_region", aks_region)
@@ -143,6 +189,8 @@ class OceanNpArgs:
             _setter("os_sku", os_sku)
         if os_type is not None:
             _setter("os_type", os_type)
+        if pod_subnet_ids is not None:
+            _setter("pod_subnet_ids", pod_subnet_ids)
         if scheduling is not None:
             _setter("scheduling", scheduling)
         if spot_percentage is not None:
@@ -151,6 +199,8 @@ class OceanNpArgs:
             _setter("tags", tags)
         if taints is not None:
             _setter("taints", taints)
+        if vnet_subnet_ids is not None:
+            _setter("vnet_subnet_ids", vnet_subnet_ids)
 
     @property
     @pulumi.getter(name="aksClusterName")
@@ -351,6 +401,15 @@ class OceanNpArgs:
         pulumi.set(self, "os_type", value)
 
     @property
+    @pulumi.getter(name="podSubnetIds")
+    def pod_subnet_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "pod_subnet_ids")
+
+    @pod_subnet_ids.setter
+    def pod_subnet_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "pod_subnet_ids", value)
+
+    @property
     @pulumi.getter
     def scheduling(self) -> Optional[pulumi.Input['OceanNpSchedulingArgs']]:
         return pulumi.get(self, "scheduling")
@@ -386,6 +445,15 @@ class OceanNpArgs:
     def taints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanNpTaintArgs']]]]):
         pulumi.set(self, "taints", value)
 
+    @property
+    @pulumi.getter(name="vnetSubnetIds")
+    def vnet_subnet_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "vnet_subnet_ids")
+
+    @vnet_subnet_ids.setter
+    def vnet_subnet_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "vnet_subnet_ids", value)
+
 
 @pulumi.input_type
 class _OceanNpState:
@@ -412,10 +480,12 @@ class _OceanNpState:
                  os_disk_type: Optional[pulumi.Input[str]] = None,
                  os_sku: Optional[pulumi.Input[str]] = None,
                  os_type: Optional[pulumi.Input[str]] = None,
+                 pod_subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  scheduling: Optional[pulumi.Input['OceanNpSchedulingArgs']] = None,
                  spot_percentage: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 taints: Optional[pulumi.Input[Sequence[pulumi.Input['OceanNpTaintArgs']]]] = None):
+                 taints: Optional[pulumi.Input[Sequence[pulumi.Input['OceanNpTaintArgs']]]] = None,
+                 vnet_subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering OceanNp resources.
         """
@@ -443,10 +513,12 @@ class _OceanNpState:
             os_disk_type=os_disk_type,
             os_sku=os_sku,
             os_type=os_type,
+            pod_subnet_ids=pod_subnet_ids,
             scheduling=scheduling,
             spot_percentage=spot_percentage,
             tags=tags,
             taints=taints,
+            vnet_subnet_ids=vnet_subnet_ids,
         )
     @staticmethod
     def _configure(
@@ -473,11 +545,53 @@ class _OceanNpState:
              os_disk_type: Optional[pulumi.Input[str]] = None,
              os_sku: Optional[pulumi.Input[str]] = None,
              os_type: Optional[pulumi.Input[str]] = None,
+             pod_subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              scheduling: Optional[pulumi.Input['OceanNpSchedulingArgs']] = None,
              spot_percentage: Optional[pulumi.Input[int]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              taints: Optional[pulumi.Input[Sequence[pulumi.Input['OceanNpTaintArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             vnet_subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'aksClusterName' in kwargs:
+            aks_cluster_name = kwargs['aksClusterName']
+        if 'aksInfrastructureResourceGroupName' in kwargs:
+            aks_infrastructure_resource_group_name = kwargs['aksInfrastructureResourceGroupName']
+        if 'aksRegion' in kwargs:
+            aks_region = kwargs['aksRegion']
+        if 'aksResourceGroupName' in kwargs:
+            aks_resource_group_name = kwargs['aksResourceGroupName']
+        if 'availabilityZones' in kwargs:
+            availability_zones = kwargs['availabilityZones']
+        if 'controllerClusterId' in kwargs:
+            controller_cluster_id = kwargs['controllerClusterId']
+        if 'enableNodePublicIp' in kwargs:
+            enable_node_public_ip = kwargs['enableNodePublicIp']
+        if 'fallbackToOndemand' in kwargs:
+            fallback_to_ondemand = kwargs['fallbackToOndemand']
+        if 'kubernetesVersion' in kwargs:
+            kubernetes_version = kwargs['kubernetesVersion']
+        if 'maxCount' in kwargs:
+            max_count = kwargs['maxCount']
+        if 'maxPodsPerNode' in kwargs:
+            max_pods_per_node = kwargs['maxPodsPerNode']
+        if 'minCount' in kwargs:
+            min_count = kwargs['minCount']
+        if 'osDiskSizeGb' in kwargs:
+            os_disk_size_gb = kwargs['osDiskSizeGb']
+        if 'osDiskType' in kwargs:
+            os_disk_type = kwargs['osDiskType']
+        if 'osSku' in kwargs:
+            os_sku = kwargs['osSku']
+        if 'osType' in kwargs:
+            os_type = kwargs['osType']
+        if 'podSubnetIds' in kwargs:
+            pod_subnet_ids = kwargs['podSubnetIds']
+        if 'spotPercentage' in kwargs:
+            spot_percentage = kwargs['spotPercentage']
+        if 'vnetSubnetIds' in kwargs:
+            vnet_subnet_ids = kwargs['vnetSubnetIds']
+
         if aks_cluster_name is not None:
             _setter("aks_cluster_name", aks_cluster_name)
         if aks_infrastructure_resource_group_name is not None:
@@ -522,6 +636,8 @@ class _OceanNpState:
             _setter("os_sku", os_sku)
         if os_type is not None:
             _setter("os_type", os_type)
+        if pod_subnet_ids is not None:
+            _setter("pod_subnet_ids", pod_subnet_ids)
         if scheduling is not None:
             _setter("scheduling", scheduling)
         if spot_percentage is not None:
@@ -530,6 +646,8 @@ class _OceanNpState:
             _setter("tags", tags)
         if taints is not None:
             _setter("taints", taints)
+        if vnet_subnet_ids is not None:
+            _setter("vnet_subnet_ids", vnet_subnet_ids)
 
     @property
     @pulumi.getter(name="aksClusterName")
@@ -730,6 +848,15 @@ class _OceanNpState:
         pulumi.set(self, "os_type", value)
 
     @property
+    @pulumi.getter(name="podSubnetIds")
+    def pod_subnet_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "pod_subnet_ids")
+
+    @pod_subnet_ids.setter
+    def pod_subnet_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "pod_subnet_ids", value)
+
+    @property
     @pulumi.getter
     def scheduling(self) -> Optional[pulumi.Input['OceanNpSchedulingArgs']]:
         return pulumi.get(self, "scheduling")
@@ -765,6 +892,15 @@ class _OceanNpState:
     def taints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanNpTaintArgs']]]]):
         pulumi.set(self, "taints", value)
 
+    @property
+    @pulumi.getter(name="vnetSubnetIds")
+    def vnet_subnet_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "vnet_subnet_ids")
+
+    @vnet_subnet_ids.setter
+    def vnet_subnet_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "vnet_subnet_ids", value)
+
 
 class OceanNp(pulumi.CustomResource):
     @overload
@@ -793,10 +929,12 @@ class OceanNp(pulumi.CustomResource):
                  os_disk_type: Optional[pulumi.Input[str]] = None,
                  os_sku: Optional[pulumi.Input[str]] = None,
                  os_type: Optional[pulumi.Input[str]] = None,
+                 pod_subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  scheduling: Optional[pulumi.Input[pulumi.InputType['OceanNpSchedulingArgs']]] = None,
                  spot_percentage: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  taints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanNpTaintArgs']]]]] = None,
+                 vnet_subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
         Create a OceanNp resource with the given unique name, props, and options.
@@ -852,10 +990,12 @@ class OceanNp(pulumi.CustomResource):
                  os_disk_type: Optional[pulumi.Input[str]] = None,
                  os_sku: Optional[pulumi.Input[str]] = None,
                  os_type: Optional[pulumi.Input[str]] = None,
+                 pod_subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  scheduling: Optional[pulumi.Input[pulumi.InputType['OceanNpSchedulingArgs']]] = None,
                  spot_percentage: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  taints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanNpTaintArgs']]]]] = None,
+                 vnet_subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -912,6 +1052,7 @@ class OceanNp(pulumi.CustomResource):
             __props__.__dict__["os_disk_type"] = os_disk_type
             __props__.__dict__["os_sku"] = os_sku
             __props__.__dict__["os_type"] = os_type
+            __props__.__dict__["pod_subnet_ids"] = pod_subnet_ids
             if scheduling is not None and not isinstance(scheduling, OceanNpSchedulingArgs):
                 scheduling = scheduling or {}
                 def _setter(key, value):
@@ -921,6 +1062,7 @@ class OceanNp(pulumi.CustomResource):
             __props__.__dict__["spot_percentage"] = spot_percentage
             __props__.__dict__["tags"] = tags
             __props__.__dict__["taints"] = taints
+            __props__.__dict__["vnet_subnet_ids"] = vnet_subnet_ids
         super(OceanNp, __self__).__init__(
             'spotinst:azure/oceanNp:OceanNp',
             resource_name,
@@ -953,10 +1095,12 @@ class OceanNp(pulumi.CustomResource):
             os_disk_type: Optional[pulumi.Input[str]] = None,
             os_sku: Optional[pulumi.Input[str]] = None,
             os_type: Optional[pulumi.Input[str]] = None,
+            pod_subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             scheduling: Optional[pulumi.Input[pulumi.InputType['OceanNpSchedulingArgs']]] = None,
             spot_percentage: Optional[pulumi.Input[int]] = None,
             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-            taints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanNpTaintArgs']]]]] = None) -> 'OceanNp':
+            taints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanNpTaintArgs']]]]] = None,
+            vnet_subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'OceanNp':
         """
         Get an existing OceanNp resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -991,10 +1135,12 @@ class OceanNp(pulumi.CustomResource):
         __props__.__dict__["os_disk_type"] = os_disk_type
         __props__.__dict__["os_sku"] = os_sku
         __props__.__dict__["os_type"] = os_type
+        __props__.__dict__["pod_subnet_ids"] = pod_subnet_ids
         __props__.__dict__["scheduling"] = scheduling
         __props__.__dict__["spot_percentage"] = spot_percentage
         __props__.__dict__["tags"] = tags
         __props__.__dict__["taints"] = taints
+        __props__.__dict__["vnet_subnet_ids"] = vnet_subnet_ids
         return OceanNp(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -1108,6 +1254,11 @@ class OceanNp(pulumi.CustomResource):
         return pulumi.get(self, "os_type")
 
     @property
+    @pulumi.getter(name="podSubnetIds")
+    def pod_subnet_ids(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        return pulumi.get(self, "pod_subnet_ids")
+
+    @property
     @pulumi.getter
     def scheduling(self) -> pulumi.Output[Optional['outputs.OceanNpScheduling']]:
         return pulumi.get(self, "scheduling")
@@ -1126,4 +1277,9 @@ class OceanNp(pulumi.CustomResource):
     @pulumi.getter
     def taints(self) -> pulumi.Output[Optional[Sequence['outputs.OceanNpTaint']]]:
         return pulumi.get(self, "taints")
+
+    @property
+    @pulumi.getter(name="vnetSubnetIds")
+    def vnet_subnet_ids(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        return pulumi.get(self, "vnet_subnet_ids")
 

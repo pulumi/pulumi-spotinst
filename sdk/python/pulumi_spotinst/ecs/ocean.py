@@ -152,7 +152,55 @@ class OceanArgs:
              utilize_commitments: Optional[pulumi.Input[bool]] = None,
              utilize_reserved_instances: Optional[pulumi.Input[bool]] = None,
              whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'clusterName' in kwargs:
+            cluster_name = kwargs['clusterName']
+        if 'securityGroupIds' in kwargs:
+            security_group_ids = kwargs['securityGroupIds']
+        if 'subnetIds' in kwargs:
+            subnet_ids = kwargs['subnetIds']
+        if 'associatePublicIpAddress' in kwargs:
+            associate_public_ip_address = kwargs['associatePublicIpAddress']
+        if 'blockDeviceMappings' in kwargs:
+            block_device_mappings = kwargs['blockDeviceMappings']
+        if 'clusterOrientations' in kwargs:
+            cluster_orientations = kwargs['clusterOrientations']
+        if 'desiredCapacity' in kwargs:
+            desired_capacity = kwargs['desiredCapacity']
+        if 'drainingTimeout' in kwargs:
+            draining_timeout = kwargs['drainingTimeout']
+        if 'ebsOptimized' in kwargs:
+            ebs_optimized = kwargs['ebsOptimized']
+        if 'iamInstanceProfile' in kwargs:
+            iam_instance_profile = kwargs['iamInstanceProfile']
+        if 'imageId' in kwargs:
+            image_id = kwargs['imageId']
+        if 'instanceMetadataOptions' in kwargs:
+            instance_metadata_options = kwargs['instanceMetadataOptions']
+        if 'keyPair' in kwargs:
+            key_pair = kwargs['keyPair']
+        if 'maxSize' in kwargs:
+            max_size = kwargs['maxSize']
+        if 'minSize' in kwargs:
+            min_size = kwargs['minSize']
+        if 'optimizeImages' in kwargs:
+            optimize_images = kwargs['optimizeImages']
+        if 'scheduledTasks' in kwargs:
+            scheduled_tasks = kwargs['scheduledTasks']
+        if 'spotPercentage' in kwargs:
+            spot_percentage = kwargs['spotPercentage']
+        if 'updatePolicy' in kwargs:
+            update_policy = kwargs['updatePolicy']
+        if 'useAsTemplateOnly' in kwargs:
+            use_as_template_only = kwargs['useAsTemplateOnly']
+        if 'userData' in kwargs:
+            user_data = kwargs['userData']
+        if 'utilizeCommitments' in kwargs:
+            utilize_commitments = kwargs['utilizeCommitments']
+        if 'utilizeReservedInstances' in kwargs:
+            utilize_reserved_instances = kwargs['utilizeReservedInstances']
+
         _setter("cluster_name", cluster_name)
         _setter("region", region)
         _setter("security_group_ids", security_group_ids)
@@ -735,7 +783,55 @@ class _OceanState:
              utilize_commitments: Optional[pulumi.Input[bool]] = None,
              utilize_reserved_instances: Optional[pulumi.Input[bool]] = None,
              whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'associatePublicIpAddress' in kwargs:
+            associate_public_ip_address = kwargs['associatePublicIpAddress']
+        if 'blockDeviceMappings' in kwargs:
+            block_device_mappings = kwargs['blockDeviceMappings']
+        if 'clusterName' in kwargs:
+            cluster_name = kwargs['clusterName']
+        if 'clusterOrientations' in kwargs:
+            cluster_orientations = kwargs['clusterOrientations']
+        if 'desiredCapacity' in kwargs:
+            desired_capacity = kwargs['desiredCapacity']
+        if 'drainingTimeout' in kwargs:
+            draining_timeout = kwargs['drainingTimeout']
+        if 'ebsOptimized' in kwargs:
+            ebs_optimized = kwargs['ebsOptimized']
+        if 'iamInstanceProfile' in kwargs:
+            iam_instance_profile = kwargs['iamInstanceProfile']
+        if 'imageId' in kwargs:
+            image_id = kwargs['imageId']
+        if 'instanceMetadataOptions' in kwargs:
+            instance_metadata_options = kwargs['instanceMetadataOptions']
+        if 'keyPair' in kwargs:
+            key_pair = kwargs['keyPair']
+        if 'maxSize' in kwargs:
+            max_size = kwargs['maxSize']
+        if 'minSize' in kwargs:
+            min_size = kwargs['minSize']
+        if 'optimizeImages' in kwargs:
+            optimize_images = kwargs['optimizeImages']
+        if 'scheduledTasks' in kwargs:
+            scheduled_tasks = kwargs['scheduledTasks']
+        if 'securityGroupIds' in kwargs:
+            security_group_ids = kwargs['securityGroupIds']
+        if 'spotPercentage' in kwargs:
+            spot_percentage = kwargs['spotPercentage']
+        if 'subnetIds' in kwargs:
+            subnet_ids = kwargs['subnetIds']
+        if 'updatePolicy' in kwargs:
+            update_policy = kwargs['updatePolicy']
+        if 'useAsTemplateOnly' in kwargs:
+            use_as_template_only = kwargs['useAsTemplateOnly']
+        if 'userData' in kwargs:
+            user_data = kwargs['userData']
+        if 'utilizeCommitments' in kwargs:
+            utilize_commitments = kwargs['utilizeCommitments']
+        if 'utilizeReservedInstances' in kwargs:
+            utilize_reserved_instances = kwargs['utilizeReservedInstances']
+
         if associate_public_ip_address is not None:
             _setter("associate_public_ip_address", associate_public_ip_address)
         if autoscaler is not None:
