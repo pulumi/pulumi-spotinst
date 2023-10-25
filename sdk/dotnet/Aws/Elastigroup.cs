@@ -338,16 +338,6 @@ namespace Pulumi.SpotInst.Aws
         /// List of Private IPs to associate to the group instances.(e.g. "172.1.1.0"). Please note: This setting will only apply if persistence.persist_private_ip is set to true.
         /// 
         /// Usage:
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        /// });
-        /// ```
         /// </summary>
         [Output("privateIps")]
         public Output<ImmutableArray<string>> PrivateIps { get; private set; } = null!;
@@ -930,16 +920,6 @@ namespace Pulumi.SpotInst.Aws
         /// List of Private IPs to associate to the group instances.(e.g. "172.1.1.0"). Please note: This setting will only apply if persistence.persist_private_ip is set to true.
         /// 
         /// Usage:
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        /// });
-        /// ```
         /// </summary>
         public InputList<string> PrivateIps
         {
@@ -1559,16 +1539,6 @@ namespace Pulumi.SpotInst.Aws
         /// List of Private IPs to associate to the group instances.(e.g. "172.1.1.0"). Please note: This setting will only apply if persistence.persist_private_ip is set to true.
         /// 
         /// Usage:
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        /// });
-        /// ```
         /// </summary>
         public InputList<string> PrivateIps
         {

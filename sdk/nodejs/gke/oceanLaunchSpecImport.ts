@@ -6,23 +6,6 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a custom Spotinst Ocean GKE Launch Spec Import resource.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as spotinst from "@pulumi/spotinst";
- *
- * const example = new spotinst.gke.OceanLaunchSpecImport("example", {
- *     nodePoolName: "default-pool",
- *     oceanId: "o-123456",
- * });
- * ```
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- *
- * export const oceanLaunchspecId = spotinst_ocean_gke_launch_spec_import.example.id;
- * ```
  */
 export class OceanLaunchSpecImport extends pulumi.CustomResource {
     /**

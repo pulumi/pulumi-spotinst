@@ -41,22 +41,32 @@ class TargetSetArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             balancer_id: pulumi.Input[str],
-             deployment_id: pulumi.Input[str],
-             health_check: pulumi.Input['TargetSetHealthCheckArgs'],
-             protocol: pulumi.Input[str],
-             weight: pulumi.Input[int],
+             balancer_id: Optional[pulumi.Input[str]] = None,
+             deployment_id: Optional[pulumi.Input[str]] = None,
+             health_check: Optional[pulumi.Input['TargetSetHealthCheckArgs']] = None,
+             protocol: Optional[pulumi.Input[str]] = None,
+             weight: Optional[pulumi.Input[int]] = None,
              name: Optional[pulumi.Input[str]] = None,
              port: Optional[pulumi.Input[int]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input['TargetSetTagArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'balancerId' in kwargs:
+        if balancer_id is None and 'balancerId' in kwargs:
             balancer_id = kwargs['balancerId']
-        if 'deploymentId' in kwargs:
+        if balancer_id is None:
+            raise TypeError("Missing 'balancer_id' argument")
+        if deployment_id is None and 'deploymentId' in kwargs:
             deployment_id = kwargs['deploymentId']
-        if 'healthCheck' in kwargs:
+        if deployment_id is None:
+            raise TypeError("Missing 'deployment_id' argument")
+        if health_check is None and 'healthCheck' in kwargs:
             health_check = kwargs['healthCheck']
+        if health_check is None:
+            raise TypeError("Missing 'health_check' argument")
+        if protocol is None:
+            raise TypeError("Missing 'protocol' argument")
+        if weight is None:
+            raise TypeError("Missing 'weight' argument")
 
         _setter("balancer_id", balancer_id)
         _setter("deployment_id", deployment_id)
@@ -179,13 +189,13 @@ class _TargetSetState:
              protocol: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input['TargetSetTagArgs']]]] = None,
              weight: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'balancerId' in kwargs:
+        if balancer_id is None and 'balancerId' in kwargs:
             balancer_id = kwargs['balancerId']
-        if 'deploymentId' in kwargs:
+        if deployment_id is None and 'deploymentId' in kwargs:
             deployment_id = kwargs['deploymentId']
-        if 'healthCheck' in kwargs:
+        if health_check is None and 'healthCheck' in kwargs:
             health_check = kwargs['healthCheck']
 
         if balancer_id is not None:
@@ -347,11 +357,7 @@ class TargetSet(pulumi.CustomResource):
             if deployment_id is None and not opts.urn:
                 raise TypeError("Missing required property 'deployment_id'")
             __props__.__dict__["deployment_id"] = deployment_id
-            if health_check is not None and not isinstance(health_check, TargetSetHealthCheckArgs):
-                health_check = health_check or {}
-                def _setter(key, value):
-                    health_check[key] = value
-                TargetSetHealthCheckArgs._configure(_setter, **health_check)
+            health_check = _utilities.configure(health_check, TargetSetHealthCheckArgs, True)
             if health_check is None and not opts.urn:
                 raise TypeError("Missing required property 'health_check'")
             __props__.__dict__["health_check"] = health_check

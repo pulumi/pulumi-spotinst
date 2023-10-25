@@ -53,17 +53,25 @@ class SubscriptionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             endpoint: pulumi.Input[str],
-             event_type: pulumi.Input[str],
-             protocol: pulumi.Input[str],
-             resource_id: pulumi.Input[str],
+             endpoint: Optional[pulumi.Input[str]] = None,
+             event_type: Optional[pulumi.Input[str]] = None,
+             protocol: Optional[pulumi.Input[str]] = None,
+             resource_id: Optional[pulumi.Input[str]] = None,
              format: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'eventType' in kwargs:
+        if endpoint is None:
+            raise TypeError("Missing 'endpoint' argument")
+        if event_type is None and 'eventType' in kwargs:
             event_type = kwargs['eventType']
-        if 'resourceId' in kwargs:
+        if event_type is None:
+            raise TypeError("Missing 'event_type' argument")
+        if protocol is None:
+            raise TypeError("Missing 'protocol' argument")
+        if resource_id is None and 'resourceId' in kwargs:
             resource_id = kwargs['resourceId']
+        if resource_id is None:
+            raise TypeError("Missing 'resource_id' argument")
 
         _setter("endpoint", endpoint)
         _setter("event_type", event_type)
@@ -195,11 +203,11 @@ class _SubscriptionState:
              format: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              protocol: Optional[pulumi.Input[str]] = None,
              resource_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'eventType' in kwargs:
+        if event_type is None and 'eventType' in kwargs:
             event_type = kwargs['eventType']
-        if 'resourceId' in kwargs:
+        if resource_id is None and 'resourceId' in kwargs:
             resource_id = kwargs['resourceId']
 
         if endpoint is not None:
@@ -303,27 +311,6 @@ class Subscription(pulumi.CustomResource):
         """
         Provides a Spotinst subscription resource.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_spotinst as spotinst
-
-        # Create a Subscription
-        default_subscription = spotinst.Subscription("default-subscription",
-            endpoint="http://endpoint.com",
-            event_type="AWS_EC2_INSTANCE_LAUNCH",
-            format={
-                "event": "%event%",
-                "instance_id": "%instance-id%",
-                "resource_id": "%resource-id%",
-                "resource_name": "%resource-name%",
-                "tags": "foo,baz,baz",
-            },
-            protocol="http",
-            resource_id=spotinst_elastigroup_aws["my-eg"]["id"])
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] endpoint: The endpoint the notification will be sent to. url in case of `"http"`/`"https"`/`"web"`, email address in case of `"email"`/`"email-json"` and sns-topic-arn in case of `"aws-sns"`.
@@ -355,27 +342,6 @@ class Subscription(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a Spotinst subscription resource.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_spotinst as spotinst
-
-        # Create a Subscription
-        default_subscription = spotinst.Subscription("default-subscription",
-            endpoint="http://endpoint.com",
-            event_type="AWS_EC2_INSTANCE_LAUNCH",
-            format={
-                "event": "%event%",
-                "instance_id": "%instance-id%",
-                "resource_id": "%resource-id%",
-                "resource_name": "%resource-name%",
-                "tags": "foo,baz,baz",
-            },
-            protocol="http",
-            resource_id=spotinst_elastigroup_aws["my-eg"]["id"])
-        ```
 
         :param str resource_name: The name of the resource.
         :param SubscriptionArgs args: The arguments to use to populate this resource's properties.

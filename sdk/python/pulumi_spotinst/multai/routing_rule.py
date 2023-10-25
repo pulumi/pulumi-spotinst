@@ -41,23 +41,31 @@ class RoutingRuleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             balancer_id: pulumi.Input[str],
-             listener_id: pulumi.Input[str],
-             route: pulumi.Input[str],
-             target_set_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
+             balancer_id: Optional[pulumi.Input[str]] = None,
+             listener_id: Optional[pulumi.Input[str]] = None,
+             route: Optional[pulumi.Input[str]] = None,
+             target_set_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              middleware_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              priority: Optional[pulumi.Input[int]] = None,
              strategy: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input['RoutingRuleTagArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'balancerId' in kwargs:
+        if balancer_id is None and 'balancerId' in kwargs:
             balancer_id = kwargs['balancerId']
-        if 'listenerId' in kwargs:
+        if balancer_id is None:
+            raise TypeError("Missing 'balancer_id' argument")
+        if listener_id is None and 'listenerId' in kwargs:
             listener_id = kwargs['listenerId']
-        if 'targetSetIds' in kwargs:
+        if listener_id is None:
+            raise TypeError("Missing 'listener_id' argument")
+        if route is None:
+            raise TypeError("Missing 'route' argument")
+        if target_set_ids is None and 'targetSetIds' in kwargs:
             target_set_ids = kwargs['targetSetIds']
-        if 'middlewareIds' in kwargs:
+        if target_set_ids is None:
+            raise TypeError("Missing 'target_set_ids' argument")
+        if middleware_ids is None and 'middlewareIds' in kwargs:
             middleware_ids = kwargs['middlewareIds']
 
         _setter("balancer_id", balancer_id)
@@ -182,15 +190,15 @@ class _RoutingRuleState:
              strategy: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input['RoutingRuleTagArgs']]]] = None,
              target_set_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'balancerId' in kwargs:
+        if balancer_id is None and 'balancerId' in kwargs:
             balancer_id = kwargs['balancerId']
-        if 'listenerId' in kwargs:
+        if listener_id is None and 'listenerId' in kwargs:
             listener_id = kwargs['listenerId']
-        if 'middlewareIds' in kwargs:
+        if middleware_ids is None and 'middlewareIds' in kwargs:
             middleware_ids = kwargs['middlewareIds']
-        if 'targetSetIds' in kwargs:
+        if target_set_ids is None and 'targetSetIds' in kwargs:
             target_set_ids = kwargs['targetSetIds']
 
         if balancer_id is not None:

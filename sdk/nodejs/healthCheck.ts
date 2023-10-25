@@ -8,28 +8,6 @@ import * as utilities from "./utilities";
 
 /**
  * Provides a Spotinst Health Check resource.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as spotinst from "@pulumi/spotinst";
- *
- * const httpCheck = new spotinst.HealthCheck("httpCheck", {
- *     check: {
- *         endpoint: "http://endpoint.com",
- *         healthy: 1,
- *         interval: 10,
- *         port: 1337,
- *         protocol: "http",
- *         timeout: 10,
- *         unhealthy: 1,
- *     },
- *     proxyAddress: "http://proxy.com",
- *     proxyPort: 80,
- *     resourceId: "sig-123",
- * });
- * ```
  */
 export class HealthCheck extends pulumi.CustomResource {
     /**

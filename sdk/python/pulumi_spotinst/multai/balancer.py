@@ -40,11 +40,11 @@ class BalancerArgs:
              name: Optional[pulumi.Input[str]] = None,
              scheme: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input['BalancerTagArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'connectionTimeouts' in kwargs:
+        if connection_timeouts is None and 'connectionTimeouts' in kwargs:
             connection_timeouts = kwargs['connectionTimeouts']
-        if 'dnsCnameAliases' in kwargs:
+        if dns_cname_aliases is None and 'dnsCnameAliases' in kwargs:
             dns_cname_aliases = kwargs['dnsCnameAliases']
 
         if connection_timeouts is not None:
@@ -131,11 +131,11 @@ class _BalancerState:
              name: Optional[pulumi.Input[str]] = None,
              scheme: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input['BalancerTagArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'connectionTimeouts' in kwargs:
+        if connection_timeouts is None and 'connectionTimeouts' in kwargs:
             connection_timeouts = kwargs['connectionTimeouts']
-        if 'dnsCnameAliases' in kwargs:
+        if dns_cname_aliases is None and 'dnsCnameAliases' in kwargs:
             dns_cname_aliases = kwargs['dnsCnameAliases']
 
         if connection_timeouts is not None:
@@ -252,11 +252,7 @@ class Balancer(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = BalancerArgs.__new__(BalancerArgs)
 
-            if connection_timeouts is not None and not isinstance(connection_timeouts, BalancerConnectionTimeoutsArgs):
-                connection_timeouts = connection_timeouts or {}
-                def _setter(key, value):
-                    connection_timeouts[key] = value
-                BalancerConnectionTimeoutsArgs._configure(_setter, **connection_timeouts)
+            connection_timeouts = _utilities.configure(connection_timeouts, BalancerConnectionTimeoutsArgs, True)
             __props__.__dict__["connection_timeouts"] = connection_timeouts
             __props__.__dict__["dns_cname_aliases"] = dns_cname_aliases
             __props__.__dict__["name"] = name

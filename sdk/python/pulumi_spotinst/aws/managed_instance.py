@@ -115,12 +115,12 @@ class ManagedInstanceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             image_id: pulumi.Input[str],
-             instance_types: pulumi.Input[Sequence[pulumi.Input[str]]],
-             persist_block_devices: pulumi.Input[bool],
-             product: pulumi.Input[str],
-             subnet_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
-             vpc_id: pulumi.Input[str],
+             image_id: Optional[pulumi.Input[str]] = None,
+             instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             persist_block_devices: Optional[pulumi.Input[bool]] = None,
+             product: Optional[pulumi.Input[str]] = None,
+             subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             vpc_id: Optional[pulumi.Input[str]] = None,
              auto_healing: Optional[pulumi.Input[bool]] = None,
              block_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedInstanceBlockDeviceMappingArgs']]]] = None,
              block_devices_mode: Optional[pulumi.Input[str]] = None,
@@ -160,83 +160,95 @@ class ManagedInstanceArgs:
              unhealthy_duration: Optional[pulumi.Input[int]] = None,
              user_data: Optional[pulumi.Input[str]] = None,
              utilize_reserved_instances: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'imageId' in kwargs:
+        if image_id is None and 'imageId' in kwargs:
             image_id = kwargs['imageId']
-        if 'instanceTypes' in kwargs:
+        if image_id is None:
+            raise TypeError("Missing 'image_id' argument")
+        if instance_types is None and 'instanceTypes' in kwargs:
             instance_types = kwargs['instanceTypes']
-        if 'persistBlockDevices' in kwargs:
+        if instance_types is None:
+            raise TypeError("Missing 'instance_types' argument")
+        if persist_block_devices is None and 'persistBlockDevices' in kwargs:
             persist_block_devices = kwargs['persistBlockDevices']
-        if 'subnetIds' in kwargs:
+        if persist_block_devices is None:
+            raise TypeError("Missing 'persist_block_devices' argument")
+        if product is None:
+            raise TypeError("Missing 'product' argument")
+        if subnet_ids is None and 'subnetIds' in kwargs:
             subnet_ids = kwargs['subnetIds']
-        if 'vpcId' in kwargs:
+        if subnet_ids is None:
+            raise TypeError("Missing 'subnet_ids' argument")
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
-        if 'autoHealing' in kwargs:
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
+        if auto_healing is None and 'autoHealing' in kwargs:
             auto_healing = kwargs['autoHealing']
-        if 'blockDeviceMappings' in kwargs:
+        if block_device_mappings is None and 'blockDeviceMappings' in kwargs:
             block_device_mappings = kwargs['blockDeviceMappings']
-        if 'blockDevicesMode' in kwargs:
+        if block_devices_mode is None and 'blockDevicesMode' in kwargs:
             block_devices_mode = kwargs['blockDevicesMode']
-        if 'cpuCredits' in kwargs:
+        if cpu_credits is None and 'cpuCredits' in kwargs:
             cpu_credits = kwargs['cpuCredits']
-        if 'drainingTimeout' in kwargs:
+        if draining_timeout is None and 'drainingTimeout' in kwargs:
             draining_timeout = kwargs['drainingTimeout']
-        if 'ebsOptimized' in kwargs:
+        if ebs_optimized is None and 'ebsOptimized' in kwargs:
             ebs_optimized = kwargs['ebsOptimized']
-        if 'elasticIp' in kwargs:
+        if elastic_ip is None and 'elasticIp' in kwargs:
             elastic_ip = kwargs['elasticIp']
-        if 'enableMonitoring' in kwargs:
+        if enable_monitoring is None and 'enableMonitoring' in kwargs:
             enable_monitoring = kwargs['enableMonitoring']
-        if 'fallBackToOd' in kwargs:
+        if fall_back_to_od is None and 'fallBackToOd' in kwargs:
             fall_back_to_od = kwargs['fallBackToOd']
-        if 'gracePeriod' in kwargs:
+        if grace_period is None and 'gracePeriod' in kwargs:
             grace_period = kwargs['gracePeriod']
-        if 'healthCheckType' in kwargs:
+        if health_check_type is None and 'healthCheckType' in kwargs:
             health_check_type = kwargs['healthCheckType']
-        if 'iamInstanceProfile' in kwargs:
+        if iam_instance_profile is None and 'iamInstanceProfile' in kwargs:
             iam_instance_profile = kwargs['iamInstanceProfile']
-        if 'integrationRoute53' in kwargs:
+        if integration_route53 is None and 'integrationRoute53' in kwargs:
             integration_route53 = kwargs['integrationRoute53']
-        if 'keyPair' in kwargs:
+        if key_pair is None and 'keyPair' in kwargs:
             key_pair = kwargs['keyPair']
-        if 'lifeCycle' in kwargs:
+        if life_cycle is None and 'lifeCycle' in kwargs:
             life_cycle = kwargs['lifeCycle']
-        if 'loadBalancers' in kwargs:
+        if load_balancers is None and 'loadBalancers' in kwargs:
             load_balancers = kwargs['loadBalancers']
-        if 'managedInstanceAction' in kwargs:
+        if managed_instance_action is None and 'managedInstanceAction' in kwargs:
             managed_instance_action = kwargs['managedInstanceAction']
-        if 'minimumInstanceLifetime' in kwargs:
+        if minimum_instance_lifetime is None and 'minimumInstanceLifetime' in kwargs:
             minimum_instance_lifetime = kwargs['minimumInstanceLifetime']
-        if 'networkInterfaces' in kwargs:
+        if network_interfaces is None and 'networkInterfaces' in kwargs:
             network_interfaces = kwargs['networkInterfaces']
-        if 'optimizationWindows' in kwargs:
+        if optimization_windows is None and 'optimizationWindows' in kwargs:
             optimization_windows = kwargs['optimizationWindows']
-        if 'persistPrivateIp' in kwargs:
+        if persist_private_ip is None and 'persistPrivateIp' in kwargs:
             persist_private_ip = kwargs['persistPrivateIp']
-        if 'persistRootDevice' in kwargs:
+        if persist_root_device is None and 'persistRootDevice' in kwargs:
             persist_root_device = kwargs['persistRootDevice']
-        if 'placementTenancy' in kwargs:
+        if placement_tenancy is None and 'placementTenancy' in kwargs:
             placement_tenancy = kwargs['placementTenancy']
-        if 'preferredType' in kwargs:
+        if preferred_type is None and 'preferredType' in kwargs:
             preferred_type = kwargs['preferredType']
-        if 'privateIp' in kwargs:
+        if private_ip is None and 'privateIp' in kwargs:
             private_ip = kwargs['privateIp']
-        if 'resourceTagSpecifications' in kwargs:
+        if resource_tag_specifications is None and 'resourceTagSpecifications' in kwargs:
             resource_tag_specifications = kwargs['resourceTagSpecifications']
-        if 'revertToSpot' in kwargs:
+        if revert_to_spot is None and 'revertToSpot' in kwargs:
             revert_to_spot = kwargs['revertToSpot']
-        if 'scheduledTasks' in kwargs:
+        if scheduled_tasks is None and 'scheduledTasks' in kwargs:
             scheduled_tasks = kwargs['scheduledTasks']
-        if 'securityGroupIds' in kwargs:
+        if security_group_ids is None and 'securityGroupIds' in kwargs:
             security_group_ids = kwargs['securityGroupIds']
-        if 'shutdownScript' in kwargs:
+        if shutdown_script is None and 'shutdownScript' in kwargs:
             shutdown_script = kwargs['shutdownScript']
-        if 'unhealthyDuration' in kwargs:
+        if unhealthy_duration is None and 'unhealthyDuration' in kwargs:
             unhealthy_duration = kwargs['unhealthyDuration']
-        if 'userData' in kwargs:
+        if user_data is None and 'userData' in kwargs:
             user_data = kwargs['userData']
-        if 'utilizeReservedInstances' in kwargs:
+        if utilize_reserved_instances is None and 'utilizeReservedInstances' in kwargs:
             utilize_reserved_instances = kwargs['utilizeReservedInstances']
 
         _setter("image_id", image_id)
@@ -877,83 +889,83 @@ class _ManagedInstanceState:
              user_data: Optional[pulumi.Input[str]] = None,
              utilize_reserved_instances: Optional[pulumi.Input[bool]] = None,
              vpc_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'autoHealing' in kwargs:
+        if auto_healing is None and 'autoHealing' in kwargs:
             auto_healing = kwargs['autoHealing']
-        if 'blockDeviceMappings' in kwargs:
+        if block_device_mappings is None and 'blockDeviceMappings' in kwargs:
             block_device_mappings = kwargs['blockDeviceMappings']
-        if 'blockDevicesMode' in kwargs:
+        if block_devices_mode is None and 'blockDevicesMode' in kwargs:
             block_devices_mode = kwargs['blockDevicesMode']
-        if 'cpuCredits' in kwargs:
+        if cpu_credits is None and 'cpuCredits' in kwargs:
             cpu_credits = kwargs['cpuCredits']
-        if 'drainingTimeout' in kwargs:
+        if draining_timeout is None and 'drainingTimeout' in kwargs:
             draining_timeout = kwargs['drainingTimeout']
-        if 'ebsOptimized' in kwargs:
+        if ebs_optimized is None and 'ebsOptimized' in kwargs:
             ebs_optimized = kwargs['ebsOptimized']
-        if 'elasticIp' in kwargs:
+        if elastic_ip is None and 'elasticIp' in kwargs:
             elastic_ip = kwargs['elasticIp']
-        if 'enableMonitoring' in kwargs:
+        if enable_monitoring is None and 'enableMonitoring' in kwargs:
             enable_monitoring = kwargs['enableMonitoring']
-        if 'fallBackToOd' in kwargs:
+        if fall_back_to_od is None and 'fallBackToOd' in kwargs:
             fall_back_to_od = kwargs['fallBackToOd']
-        if 'gracePeriod' in kwargs:
+        if grace_period is None and 'gracePeriod' in kwargs:
             grace_period = kwargs['gracePeriod']
-        if 'healthCheckType' in kwargs:
+        if health_check_type is None and 'healthCheckType' in kwargs:
             health_check_type = kwargs['healthCheckType']
-        if 'iamInstanceProfile' in kwargs:
+        if iam_instance_profile is None and 'iamInstanceProfile' in kwargs:
             iam_instance_profile = kwargs['iamInstanceProfile']
-        if 'imageId' in kwargs:
+        if image_id is None and 'imageId' in kwargs:
             image_id = kwargs['imageId']
-        if 'instanceTypes' in kwargs:
+        if instance_types is None and 'instanceTypes' in kwargs:
             instance_types = kwargs['instanceTypes']
-        if 'integrationRoute53' in kwargs:
+        if integration_route53 is None and 'integrationRoute53' in kwargs:
             integration_route53 = kwargs['integrationRoute53']
-        if 'keyPair' in kwargs:
+        if key_pair is None and 'keyPair' in kwargs:
             key_pair = kwargs['keyPair']
-        if 'lifeCycle' in kwargs:
+        if life_cycle is None and 'lifeCycle' in kwargs:
             life_cycle = kwargs['lifeCycle']
-        if 'loadBalancers' in kwargs:
+        if load_balancers is None and 'loadBalancers' in kwargs:
             load_balancers = kwargs['loadBalancers']
-        if 'managedInstanceAction' in kwargs:
+        if managed_instance_action is None and 'managedInstanceAction' in kwargs:
             managed_instance_action = kwargs['managedInstanceAction']
-        if 'minimumInstanceLifetime' in kwargs:
+        if minimum_instance_lifetime is None and 'minimumInstanceLifetime' in kwargs:
             minimum_instance_lifetime = kwargs['minimumInstanceLifetime']
-        if 'networkInterfaces' in kwargs:
+        if network_interfaces is None and 'networkInterfaces' in kwargs:
             network_interfaces = kwargs['networkInterfaces']
-        if 'optimizationWindows' in kwargs:
+        if optimization_windows is None and 'optimizationWindows' in kwargs:
             optimization_windows = kwargs['optimizationWindows']
-        if 'persistBlockDevices' in kwargs:
+        if persist_block_devices is None and 'persistBlockDevices' in kwargs:
             persist_block_devices = kwargs['persistBlockDevices']
-        if 'persistPrivateIp' in kwargs:
+        if persist_private_ip is None and 'persistPrivateIp' in kwargs:
             persist_private_ip = kwargs['persistPrivateIp']
-        if 'persistRootDevice' in kwargs:
+        if persist_root_device is None and 'persistRootDevice' in kwargs:
             persist_root_device = kwargs['persistRootDevice']
-        if 'placementTenancy' in kwargs:
+        if placement_tenancy is None and 'placementTenancy' in kwargs:
             placement_tenancy = kwargs['placementTenancy']
-        if 'preferredType' in kwargs:
+        if preferred_type is None and 'preferredType' in kwargs:
             preferred_type = kwargs['preferredType']
-        if 'privateIp' in kwargs:
+        if private_ip is None and 'privateIp' in kwargs:
             private_ip = kwargs['privateIp']
-        if 'resourceTagSpecifications' in kwargs:
+        if resource_tag_specifications is None and 'resourceTagSpecifications' in kwargs:
             resource_tag_specifications = kwargs['resourceTagSpecifications']
-        if 'revertToSpot' in kwargs:
+        if revert_to_spot is None and 'revertToSpot' in kwargs:
             revert_to_spot = kwargs['revertToSpot']
-        if 'scheduledTasks' in kwargs:
+        if scheduled_tasks is None and 'scheduledTasks' in kwargs:
             scheduled_tasks = kwargs['scheduledTasks']
-        if 'securityGroupIds' in kwargs:
+        if security_group_ids is None and 'securityGroupIds' in kwargs:
             security_group_ids = kwargs['securityGroupIds']
-        if 'shutdownScript' in kwargs:
+        if shutdown_script is None and 'shutdownScript' in kwargs:
             shutdown_script = kwargs['shutdownScript']
-        if 'subnetIds' in kwargs:
+        if subnet_ids is None and 'subnetIds' in kwargs:
             subnet_ids = kwargs['subnetIds']
-        if 'unhealthyDuration' in kwargs:
+        if unhealthy_duration is None and 'unhealthyDuration' in kwargs:
             unhealthy_duration = kwargs['unhealthyDuration']
-        if 'userData' in kwargs:
+        if user_data is None and 'userData' in kwargs:
             user_data = kwargs['userData']
-        if 'utilizeReservedInstances' in kwargs:
+        if utilize_reserved_instances is None and 'utilizeReservedInstances' in kwargs:
             utilize_reserved_instances = kwargs['utilizeReservedInstances']
-        if 'vpcId' in kwargs:
+        if vpc_id is None and 'vpcId' in kwargs:
             vpc_id = kwargs['vpcId']
 
         if auto_healing is not None:
@@ -1610,20 +1622,12 @@ class ManagedInstance(pulumi.CustomResource):
             if instance_types is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_types'")
             __props__.__dict__["instance_types"] = instance_types
-            if integration_route53 is not None and not isinstance(integration_route53, ManagedInstanceIntegrationRoute53Args):
-                integration_route53 = integration_route53 or {}
-                def _setter(key, value):
-                    integration_route53[key] = value
-                ManagedInstanceIntegrationRoute53Args._configure(_setter, **integration_route53)
+            integration_route53 = _utilities.configure(integration_route53, ManagedInstanceIntegrationRoute53Args, True)
             __props__.__dict__["integration_route53"] = integration_route53
             __props__.__dict__["key_pair"] = key_pair
             __props__.__dict__["life_cycle"] = life_cycle
             __props__.__dict__["load_balancers"] = load_balancers
-            if managed_instance_action is not None and not isinstance(managed_instance_action, ManagedInstanceManagedInstanceActionArgs):
-                managed_instance_action = managed_instance_action or {}
-                def _setter(key, value):
-                    managed_instance_action[key] = value
-                ManagedInstanceManagedInstanceActionArgs._configure(_setter, **managed_instance_action)
+            managed_instance_action = _utilities.configure(managed_instance_action, ManagedInstanceManagedInstanceActionArgs, True)
             __props__.__dict__["managed_instance_action"] = managed_instance_action
             __props__.__dict__["minimum_instance_lifetime"] = minimum_instance_lifetime
             __props__.__dict__["name"] = name
@@ -1643,11 +1647,7 @@ class ManagedInstance(pulumi.CustomResource):
             __props__.__dict__["product"] = product
             __props__.__dict__["region"] = region
             __props__.__dict__["resource_tag_specifications"] = resource_tag_specifications
-            if revert_to_spot is not None and not isinstance(revert_to_spot, ManagedInstanceRevertToSpotArgs):
-                revert_to_spot = revert_to_spot or {}
-                def _setter(key, value):
-                    revert_to_spot[key] = value
-                ManagedInstanceRevertToSpotArgs._configure(_setter, **revert_to_spot)
+            revert_to_spot = _utilities.configure(revert_to_spot, ManagedInstanceRevertToSpotArgs, True)
             __props__.__dict__["revert_to_spot"] = revert_to_spot
             __props__.__dict__["scheduled_tasks"] = scheduled_tasks
             __props__.__dict__["security_group_ids"] = security_group_ids

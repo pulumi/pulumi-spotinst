@@ -6,30 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as spotinst from "@pulumi/spotinst";
- *
- * // Create a suspension for Elastigroup
- * const resourceName = new spotinst.aws.Suspension("resourceName", {
- *     groupId: "sig-12345678",
- *     suspensions: [
- *         {
- *             name: "OUT_OF_STRATEGY",
- *         },
- *         {
- *             name: "REVERT_PREFERRED",
- *         },
- *         {
- *             name: "PREVENTIVE_REPLACEMENT",
- *         },
- *     ],
- * });
- * ```
- */
 export class Suspension extends pulumi.CustomResource {
     /**
      * Get an existing Suspension resource's state with the given name, ID, and optional extra

@@ -47,20 +47,26 @@ class UserArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             email: pulumi.Input[str],
-             first_name: pulumi.Input[str],
-             last_name: pulumi.Input[str],
+             email: Optional[pulumi.Input[str]] = None,
+             first_name: Optional[pulumi.Input[str]] = None,
+             last_name: Optional[pulumi.Input[str]] = None,
              password: Optional[pulumi.Input[str]] = None,
              policies: Optional[pulumi.Input[Sequence[pulumi.Input['UserPolicyArgs']]]] = None,
              role: Optional[pulumi.Input[str]] = None,
              user_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'firstName' in kwargs:
+        if email is None:
+            raise TypeError("Missing 'email' argument")
+        if first_name is None and 'firstName' in kwargs:
             first_name = kwargs['firstName']
-        if 'lastName' in kwargs:
+        if first_name is None:
+            raise TypeError("Missing 'first_name' argument")
+        if last_name is None and 'lastName' in kwargs:
             last_name = kwargs['lastName']
-        if 'userGroupIds' in kwargs:
+        if last_name is None:
+            raise TypeError("Missing 'last_name' argument")
+        if user_group_ids is None and 'userGroupIds' in kwargs:
             user_group_ids = kwargs['userGroupIds']
 
         _setter("email", email)
@@ -202,13 +208,13 @@ class _UserState:
              policies: Optional[pulumi.Input[Sequence[pulumi.Input['UserPolicyArgs']]]] = None,
              role: Optional[pulumi.Input[str]] = None,
              user_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'firstName' in kwargs:
+        if first_name is None and 'firstName' in kwargs:
             first_name = kwargs['firstName']
-        if 'lastName' in kwargs:
+        if last_name is None and 'lastName' in kwargs:
             last_name = kwargs['lastName']
-        if 'userGroupIds' in kwargs:
+        if user_group_ids is None and 'userGroupIds' in kwargs:
             user_group_ids = kwargs['userGroupIds']
 
         if email is not None:
@@ -328,28 +334,6 @@ class User(pulumi.CustomResource):
         """
         Provides a Spotinst User in the creator's organization.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_spotinst as spotinst
-
-        terraform_user = spotinst.organization.User("terraformUser",
-            email="abc@xyz.com",
-            first_name="test",
-            last_name="user",
-            password="testUser@123",
-            policies=[spotinst.organization.UserPolicyArgs(
-                policy_account_ids=["act-abcf4245"],
-                policy_id="pol-abcd1236",
-            )],
-            role="viewer",
-            user_group_ids=[
-                "ugr-abcd1234",
-                "ugr-defg8763",
-            ])
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] email: Email.
@@ -369,28 +353,6 @@ class User(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a Spotinst User in the creator's organization.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_spotinst as spotinst
-
-        terraform_user = spotinst.organization.User("terraformUser",
-            email="abc@xyz.com",
-            first_name="test",
-            last_name="user",
-            password="testUser@123",
-            policies=[spotinst.organization.UserPolicyArgs(
-                policy_account_ids=["act-abcf4245"],
-                policy_id="pol-abcd1236",
-            )],
-            role="viewer",
-            user_group_ids=[
-                "ugr-abcd1234",
-                "ugr-defg8763",
-            ])
-        ```
 
         :param str resource_name: The name of the resource.
         :param UserArgs args: The arguments to use to populate this resource's properties.

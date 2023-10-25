@@ -63,13 +63,13 @@ class ElastigroupAzureV3Args:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             fallback_to_on_demand: pulumi.Input[bool],
-             network: pulumi.Input['ElastigroupAzureV3NetworkArgs'],
-             od_sizes: pulumi.Input[Sequence[pulumi.Input[str]]],
-             os: pulumi.Input[str],
-             region: pulumi.Input[str],
-             resource_group_name: pulumi.Input[str],
-             spot_sizes: pulumi.Input[Sequence[pulumi.Input[str]]],
+             fallback_to_on_demand: Optional[pulumi.Input[bool]] = None,
+             network: Optional[pulumi.Input['ElastigroupAzureV3NetworkArgs']] = None,
+             od_sizes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             os: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             resource_group_name: Optional[pulumi.Input[str]] = None,
+             spot_sizes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              custom_data: Optional[pulumi.Input[str]] = None,
              desired_capacity: Optional[pulumi.Input[int]] = None,
              draining_timeout: Optional[pulumi.Input[int]] = None,
@@ -82,31 +82,45 @@ class ElastigroupAzureV3Args:
              on_demand_count: Optional[pulumi.Input[int]] = None,
              spot_percentage: Optional[pulumi.Input[int]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3TagArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'fallbackToOnDemand' in kwargs:
+        if fallback_to_on_demand is None and 'fallbackToOnDemand' in kwargs:
             fallback_to_on_demand = kwargs['fallbackToOnDemand']
-        if 'odSizes' in kwargs:
+        if fallback_to_on_demand is None:
+            raise TypeError("Missing 'fallback_to_on_demand' argument")
+        if network is None:
+            raise TypeError("Missing 'network' argument")
+        if od_sizes is None and 'odSizes' in kwargs:
             od_sizes = kwargs['odSizes']
-        if 'resourceGroupName' in kwargs:
+        if od_sizes is None:
+            raise TypeError("Missing 'od_sizes' argument")
+        if os is None:
+            raise TypeError("Missing 'os' argument")
+        if region is None:
+            raise TypeError("Missing 'region' argument")
+        if resource_group_name is None and 'resourceGroupName' in kwargs:
             resource_group_name = kwargs['resourceGroupName']
-        if 'spotSizes' in kwargs:
+        if resource_group_name is None:
+            raise TypeError("Missing 'resource_group_name' argument")
+        if spot_sizes is None and 'spotSizes' in kwargs:
             spot_sizes = kwargs['spotSizes']
-        if 'customData' in kwargs:
+        if spot_sizes is None:
+            raise TypeError("Missing 'spot_sizes' argument")
+        if custom_data is None and 'customData' in kwargs:
             custom_data = kwargs['customData']
-        if 'desiredCapacity' in kwargs:
+        if desired_capacity is None and 'desiredCapacity' in kwargs:
             desired_capacity = kwargs['desiredCapacity']
-        if 'drainingTimeout' in kwargs:
+        if draining_timeout is None and 'drainingTimeout' in kwargs:
             draining_timeout = kwargs['drainingTimeout']
-        if 'managedServiceIdentities' in kwargs:
+        if managed_service_identities is None and 'managedServiceIdentities' in kwargs:
             managed_service_identities = kwargs['managedServiceIdentities']
-        if 'maxSize' in kwargs:
+        if max_size is None and 'maxSize' in kwargs:
             max_size = kwargs['maxSize']
-        if 'minSize' in kwargs:
+        if min_size is None and 'minSize' in kwargs:
             min_size = kwargs['minSize']
-        if 'onDemandCount' in kwargs:
+        if on_demand_count is None and 'onDemandCount' in kwargs:
             on_demand_count = kwargs['onDemandCount']
-        if 'spotPercentage' in kwargs:
+        if spot_percentage is None and 'spotPercentage' in kwargs:
             spot_percentage = kwargs['spotPercentage']
 
         _setter("fallback_to_on_demand", fallback_to_on_demand)
@@ -382,31 +396,31 @@ class _ElastigroupAzureV3State:
              spot_percentage: Optional[pulumi.Input[int]] = None,
              spot_sizes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3TagArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'customData' in kwargs:
+        if custom_data is None and 'customData' in kwargs:
             custom_data = kwargs['customData']
-        if 'desiredCapacity' in kwargs:
+        if desired_capacity is None and 'desiredCapacity' in kwargs:
             desired_capacity = kwargs['desiredCapacity']
-        if 'drainingTimeout' in kwargs:
+        if draining_timeout is None and 'drainingTimeout' in kwargs:
             draining_timeout = kwargs['drainingTimeout']
-        if 'fallbackToOnDemand' in kwargs:
+        if fallback_to_on_demand is None and 'fallbackToOnDemand' in kwargs:
             fallback_to_on_demand = kwargs['fallbackToOnDemand']
-        if 'managedServiceIdentities' in kwargs:
+        if managed_service_identities is None and 'managedServiceIdentities' in kwargs:
             managed_service_identities = kwargs['managedServiceIdentities']
-        if 'maxSize' in kwargs:
+        if max_size is None and 'maxSize' in kwargs:
             max_size = kwargs['maxSize']
-        if 'minSize' in kwargs:
+        if min_size is None and 'minSize' in kwargs:
             min_size = kwargs['minSize']
-        if 'odSizes' in kwargs:
+        if od_sizes is None and 'odSizes' in kwargs:
             od_sizes = kwargs['odSizes']
-        if 'onDemandCount' in kwargs:
+        if on_demand_count is None and 'onDemandCount' in kwargs:
             on_demand_count = kwargs['onDemandCount']
-        if 'resourceGroupName' in kwargs:
+        if resource_group_name is None and 'resourceGroupName' in kwargs:
             resource_group_name = kwargs['resourceGroupName']
-        if 'spotPercentage' in kwargs:
+        if spot_percentage is None and 'spotPercentage' in kwargs:
             spot_percentage = kwargs['spotPercentage']
-        if 'spotSizes' in kwargs:
+        if spot_sizes is None and 'spotSizes' in kwargs:
             spot_sizes = kwargs['spotSizes']
 
         if custom_data is not None:
@@ -712,21 +726,13 @@ class ElastigroupAzureV3(pulumi.CustomResource):
                 raise TypeError("Missing required property 'fallback_to_on_demand'")
             __props__.__dict__["fallback_to_on_demand"] = fallback_to_on_demand
             __props__.__dict__["images"] = images
-            if login is not None and not isinstance(login, ElastigroupAzureV3LoginArgs):
-                login = login or {}
-                def _setter(key, value):
-                    login[key] = value
-                ElastigroupAzureV3LoginArgs._configure(_setter, **login)
+            login = _utilities.configure(login, ElastigroupAzureV3LoginArgs, True)
             __props__.__dict__["login"] = login
             __props__.__dict__["managed_service_identities"] = managed_service_identities
             __props__.__dict__["max_size"] = max_size
             __props__.__dict__["min_size"] = min_size
             __props__.__dict__["name"] = name
-            if network is not None and not isinstance(network, ElastigroupAzureV3NetworkArgs):
-                network = network or {}
-                def _setter(key, value):
-                    network[key] = value
-                ElastigroupAzureV3NetworkArgs._configure(_setter, **network)
+            network = _utilities.configure(network, ElastigroupAzureV3NetworkArgs, True)
             if network is None and not opts.urn:
                 raise TypeError("Missing required property 'network'")
             __props__.__dict__["network"] = network

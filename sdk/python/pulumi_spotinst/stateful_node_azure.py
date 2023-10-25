@@ -107,15 +107,15 @@ class StatefulNodeAzureArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             od_sizes: pulumi.Input[Sequence[pulumi.Input[str]]],
-             os: pulumi.Input[str],
-             region: pulumi.Input[str],
-             resource_group_name: pulumi.Input[str],
-             should_persist_data_disks: pulumi.Input[bool],
-             should_persist_network: pulumi.Input[bool],
-             should_persist_os_disk: pulumi.Input[bool],
-             spot_sizes: pulumi.Input[Sequence[pulumi.Input[str]]],
-             strategy: pulumi.Input['StatefulNodeAzureStrategyArgs'],
+             od_sizes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             os: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             resource_group_name: Optional[pulumi.Input[str]] = None,
+             should_persist_data_disks: Optional[pulumi.Input[bool]] = None,
+             should_persist_network: Optional[pulumi.Input[bool]] = None,
+             should_persist_os_disk: Optional[pulumi.Input[bool]] = None,
+             spot_sizes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             strategy: Optional[pulumi.Input['StatefulNodeAzureStrategyArgs']] = None,
              attach_data_disks: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureAttachDataDiskArgs']]]] = None,
              boot_diagnostics: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureBootDiagnosticArgs']]]] = None,
              custom_data: Optional[pulumi.Input[str]] = None,
@@ -148,57 +148,75 @@ class StatefulNodeAzureArgs:
              user_data: Optional[pulumi.Input[str]] = None,
              vm_name: Optional[pulumi.Input[str]] = None,
              zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'odSizes' in kwargs:
+        if od_sizes is None and 'odSizes' in kwargs:
             od_sizes = kwargs['odSizes']
-        if 'resourceGroupName' in kwargs:
+        if od_sizes is None:
+            raise TypeError("Missing 'od_sizes' argument")
+        if os is None:
+            raise TypeError("Missing 'os' argument")
+        if region is None:
+            raise TypeError("Missing 'region' argument")
+        if resource_group_name is None and 'resourceGroupName' in kwargs:
             resource_group_name = kwargs['resourceGroupName']
-        if 'shouldPersistDataDisks' in kwargs:
+        if resource_group_name is None:
+            raise TypeError("Missing 'resource_group_name' argument")
+        if should_persist_data_disks is None and 'shouldPersistDataDisks' in kwargs:
             should_persist_data_disks = kwargs['shouldPersistDataDisks']
-        if 'shouldPersistNetwork' in kwargs:
+        if should_persist_data_disks is None:
+            raise TypeError("Missing 'should_persist_data_disks' argument")
+        if should_persist_network is None and 'shouldPersistNetwork' in kwargs:
             should_persist_network = kwargs['shouldPersistNetwork']
-        if 'shouldPersistOsDisk' in kwargs:
+        if should_persist_network is None:
+            raise TypeError("Missing 'should_persist_network' argument")
+        if should_persist_os_disk is None and 'shouldPersistOsDisk' in kwargs:
             should_persist_os_disk = kwargs['shouldPersistOsDisk']
-        if 'spotSizes' in kwargs:
+        if should_persist_os_disk is None:
+            raise TypeError("Missing 'should_persist_os_disk' argument")
+        if spot_sizes is None and 'spotSizes' in kwargs:
             spot_sizes = kwargs['spotSizes']
-        if 'attachDataDisks' in kwargs:
+        if spot_sizes is None:
+            raise TypeError("Missing 'spot_sizes' argument")
+        if strategy is None:
+            raise TypeError("Missing 'strategy' argument")
+        if attach_data_disks is None and 'attachDataDisks' in kwargs:
             attach_data_disks = kwargs['attachDataDisks']
-        if 'bootDiagnostics' in kwargs:
+        if boot_diagnostics is None and 'bootDiagnostics' in kwargs:
             boot_diagnostics = kwargs['bootDiagnostics']
-        if 'customData' in kwargs:
+        if custom_data is None and 'customData' in kwargs:
             custom_data = kwargs['customData']
-        if 'dataDisks' in kwargs:
+        if data_disks is None and 'dataDisks' in kwargs:
             data_disks = kwargs['dataDisks']
-        if 'dataDisksPersistenceMode' in kwargs:
+        if data_disks_persistence_mode is None and 'dataDisksPersistenceMode' in kwargs:
             data_disks_persistence_mode = kwargs['dataDisksPersistenceMode']
-        if 'detachDataDisks' in kwargs:
+        if detach_data_disks is None and 'detachDataDisks' in kwargs:
             detach_data_disks = kwargs['detachDataDisks']
-        if 'importVms' in kwargs:
+        if import_vms is None and 'importVms' in kwargs:
             import_vms = kwargs['importVms']
-        if 'loadBalancers' in kwargs:
+        if load_balancers is None and 'loadBalancers' in kwargs:
             load_balancers = kwargs['loadBalancers']
-        if 'managedServiceIdentities' in kwargs:
+        if managed_service_identities is None and 'managedServiceIdentities' in kwargs:
             managed_service_identities = kwargs['managedServiceIdentities']
-        if 'osDisk' in kwargs:
+        if os_disk is None and 'osDisk' in kwargs:
             os_disk = kwargs['osDisk']
-        if 'osDiskPersistenceMode' in kwargs:
+        if os_disk_persistence_mode is None and 'osDiskPersistenceMode' in kwargs:
             os_disk_persistence_mode = kwargs['osDiskPersistenceMode']
-        if 'preferredSpotSizes' in kwargs:
+        if preferred_spot_sizes is None and 'preferredSpotSizes' in kwargs:
             preferred_spot_sizes = kwargs['preferredSpotSizes']
-        if 'preferredZone' in kwargs:
+        if preferred_zone is None and 'preferredZone' in kwargs:
             preferred_zone = kwargs['preferredZone']
-        if 'schedulingTasks' in kwargs:
+        if scheduling_tasks is None and 'schedulingTasks' in kwargs:
             scheduling_tasks = kwargs['schedulingTasks']
-        if 'shouldPersistVm' in kwargs:
+        if should_persist_vm is None and 'shouldPersistVm' in kwargs:
             should_persist_vm = kwargs['shouldPersistVm']
-        if 'shutdownScript' in kwargs:
+        if shutdown_script is None and 'shutdownScript' in kwargs:
             shutdown_script = kwargs['shutdownScript']
-        if 'updateStates' in kwargs:
+        if update_states is None and 'updateStates' in kwargs:
             update_states = kwargs['updateStates']
-        if 'userData' in kwargs:
+        if user_data is None and 'userData' in kwargs:
             user_data = kwargs['userData']
-        if 'vmName' in kwargs:
+        if vm_name is None and 'vmName' in kwargs:
             vm_name = kwargs['vmName']
 
         _setter("od_sizes", od_sizes)
@@ -780,57 +798,57 @@ class _StatefulNodeAzureState:
              user_data: Optional[pulumi.Input[str]] = None,
              vm_name: Optional[pulumi.Input[str]] = None,
              zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'attachDataDisks' in kwargs:
+        if attach_data_disks is None and 'attachDataDisks' in kwargs:
             attach_data_disks = kwargs['attachDataDisks']
-        if 'bootDiagnostics' in kwargs:
+        if boot_diagnostics is None and 'bootDiagnostics' in kwargs:
             boot_diagnostics = kwargs['bootDiagnostics']
-        if 'customData' in kwargs:
+        if custom_data is None and 'customData' in kwargs:
             custom_data = kwargs['customData']
-        if 'dataDisks' in kwargs:
+        if data_disks is None and 'dataDisks' in kwargs:
             data_disks = kwargs['dataDisks']
-        if 'dataDisksPersistenceMode' in kwargs:
+        if data_disks_persistence_mode is None and 'dataDisksPersistenceMode' in kwargs:
             data_disks_persistence_mode = kwargs['dataDisksPersistenceMode']
-        if 'detachDataDisks' in kwargs:
+        if detach_data_disks is None and 'detachDataDisks' in kwargs:
             detach_data_disks = kwargs['detachDataDisks']
-        if 'importVms' in kwargs:
+        if import_vms is None and 'importVms' in kwargs:
             import_vms = kwargs['importVms']
-        if 'loadBalancers' in kwargs:
+        if load_balancers is None and 'loadBalancers' in kwargs:
             load_balancers = kwargs['loadBalancers']
-        if 'managedServiceIdentities' in kwargs:
+        if managed_service_identities is None and 'managedServiceIdentities' in kwargs:
             managed_service_identities = kwargs['managedServiceIdentities']
-        if 'odSizes' in kwargs:
+        if od_sizes is None and 'odSizes' in kwargs:
             od_sizes = kwargs['odSizes']
-        if 'osDisk' in kwargs:
+        if os_disk is None and 'osDisk' in kwargs:
             os_disk = kwargs['osDisk']
-        if 'osDiskPersistenceMode' in kwargs:
+        if os_disk_persistence_mode is None and 'osDiskPersistenceMode' in kwargs:
             os_disk_persistence_mode = kwargs['osDiskPersistenceMode']
-        if 'preferredSpotSizes' in kwargs:
+        if preferred_spot_sizes is None and 'preferredSpotSizes' in kwargs:
             preferred_spot_sizes = kwargs['preferredSpotSizes']
-        if 'preferredZone' in kwargs:
+        if preferred_zone is None and 'preferredZone' in kwargs:
             preferred_zone = kwargs['preferredZone']
-        if 'resourceGroupName' in kwargs:
+        if resource_group_name is None and 'resourceGroupName' in kwargs:
             resource_group_name = kwargs['resourceGroupName']
-        if 'schedulingTasks' in kwargs:
+        if scheduling_tasks is None and 'schedulingTasks' in kwargs:
             scheduling_tasks = kwargs['schedulingTasks']
-        if 'shouldPersistDataDisks' in kwargs:
+        if should_persist_data_disks is None and 'shouldPersistDataDisks' in kwargs:
             should_persist_data_disks = kwargs['shouldPersistDataDisks']
-        if 'shouldPersistNetwork' in kwargs:
+        if should_persist_network is None and 'shouldPersistNetwork' in kwargs:
             should_persist_network = kwargs['shouldPersistNetwork']
-        if 'shouldPersistOsDisk' in kwargs:
+        if should_persist_os_disk is None and 'shouldPersistOsDisk' in kwargs:
             should_persist_os_disk = kwargs['shouldPersistOsDisk']
-        if 'shouldPersistVm' in kwargs:
+        if should_persist_vm is None and 'shouldPersistVm' in kwargs:
             should_persist_vm = kwargs['shouldPersistVm']
-        if 'shutdownScript' in kwargs:
+        if shutdown_script is None and 'shutdownScript' in kwargs:
             shutdown_script = kwargs['shutdownScript']
-        if 'spotSizes' in kwargs:
+        if spot_sizes is None and 'spotSizes' in kwargs:
             spot_sizes = kwargs['spotSizes']
-        if 'updateStates' in kwargs:
+        if update_states is None and 'updateStates' in kwargs:
             update_states = kwargs['updateStates']
-        if 'userData' in kwargs:
+        if user_data is None and 'userData' in kwargs:
             user_data = kwargs['userData']
-        if 'vmName' in kwargs:
+        if vm_name is None and 'vmName' in kwargs:
             vm_name = kwargs['vmName']
 
         if attach_data_disks is not None:
@@ -1926,33 +1944,17 @@ class StatefulNodeAzure(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["detach_data_disks"] = detach_data_disks
             __props__.__dict__["extensions"] = extensions
-            if health is not None and not isinstance(health, StatefulNodeAzureHealthArgs):
-                health = health or {}
-                def _setter(key, value):
-                    health[key] = value
-                StatefulNodeAzureHealthArgs._configure(_setter, **health)
+            health = _utilities.configure(health, StatefulNodeAzureHealthArgs, True)
             __props__.__dict__["health"] = health
-            if image is not None and not isinstance(image, StatefulNodeAzureImageArgs):
-                image = image or {}
-                def _setter(key, value):
-                    image[key] = value
-                StatefulNodeAzureImageArgs._configure(_setter, **image)
+            image = _utilities.configure(image, StatefulNodeAzureImageArgs, True)
             __props__.__dict__["image"] = image
             __props__.__dict__["import_vms"] = import_vms
             __props__.__dict__["load_balancers"] = load_balancers
-            if login is not None and not isinstance(login, StatefulNodeAzureLoginArgs):
-                login = login or {}
-                def _setter(key, value):
-                    login[key] = value
-                StatefulNodeAzureLoginArgs._configure(_setter, **login)
+            login = _utilities.configure(login, StatefulNodeAzureLoginArgs, True)
             __props__.__dict__["login"] = login
             __props__.__dict__["managed_service_identities"] = managed_service_identities
             __props__.__dict__["name"] = name
-            if network is not None and not isinstance(network, StatefulNodeAzureNetworkArgs):
-                network = network or {}
-                def _setter(key, value):
-                    network[key] = value
-                StatefulNodeAzureNetworkArgs._configure(_setter, **network)
+            network = _utilities.configure(network, StatefulNodeAzureNetworkArgs, True)
             __props__.__dict__["network"] = network
             if od_sizes is None and not opts.urn:
                 raise TypeError("Missing required property 'od_sizes'")
@@ -1960,11 +1962,7 @@ class StatefulNodeAzure(pulumi.CustomResource):
             if os is None and not opts.urn:
                 raise TypeError("Missing required property 'os'")
             __props__.__dict__["os"] = os
-            if os_disk is not None and not isinstance(os_disk, StatefulNodeAzureOsDiskArgs):
-                os_disk = os_disk or {}
-                def _setter(key, value):
-                    os_disk[key] = value
-                StatefulNodeAzureOsDiskArgs._configure(_setter, **os_disk)
+            os_disk = _utilities.configure(os_disk, StatefulNodeAzureOsDiskArgs, True)
             __props__.__dict__["os_disk"] = os_disk
             __props__.__dict__["os_disk_persistence_mode"] = os_disk_persistence_mode
             __props__.__dict__["preferred_spot_sizes"] = preferred_spot_sizes
@@ -1977,11 +1975,7 @@ class StatefulNodeAzure(pulumi.CustomResource):
             __props__.__dict__["resource_group_name"] = resource_group_name
             __props__.__dict__["scheduling_tasks"] = scheduling_tasks
             __props__.__dict__["secrets"] = secrets
-            if security is not None and not isinstance(security, StatefulNodeAzureSecurityArgs):
-                security = security or {}
-                def _setter(key, value):
-                    security[key] = value
-                StatefulNodeAzureSecurityArgs._configure(_setter, **security)
+            security = _utilities.configure(security, StatefulNodeAzureSecurityArgs, True)
             __props__.__dict__["security"] = security
             if should_persist_data_disks is None and not opts.urn:
                 raise TypeError("Missing required property 'should_persist_data_disks'")
@@ -1998,11 +1992,7 @@ class StatefulNodeAzure(pulumi.CustomResource):
             if spot_sizes is None and not opts.urn:
                 raise TypeError("Missing required property 'spot_sizes'")
             __props__.__dict__["spot_sizes"] = spot_sizes
-            if strategy is not None and not isinstance(strategy, StatefulNodeAzureStrategyArgs):
-                strategy = strategy or {}
-                def _setter(key, value):
-                    strategy[key] = value
-                StatefulNodeAzureStrategyArgs._configure(_setter, **strategy)
+            strategy = _utilities.configure(strategy, StatefulNodeAzureStrategyArgs, True)
             if strategy is None and not opts.urn:
                 raise TypeError("Missing required property 'strategy'")
             __props__.__dict__["strategy"] = strategy

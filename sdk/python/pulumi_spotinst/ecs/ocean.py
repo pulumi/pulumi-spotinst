@@ -120,10 +120,10 @@ class OceanArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cluster_name: pulumi.Input[str],
-             region: pulumi.Input[str],
-             security_group_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
-             subnet_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
+             cluster_name: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              associate_public_ip_address: Optional[pulumi.Input[bool]] = None,
              autoscaler: Optional[pulumi.Input['OceanAutoscalerArgs']] = None,
              blacklists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -152,53 +152,61 @@ class OceanArgs:
              utilize_commitments: Optional[pulumi.Input[bool]] = None,
              utilize_reserved_instances: Optional[pulumi.Input[bool]] = None,
              whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'clusterName' in kwargs:
+        if cluster_name is None and 'clusterName' in kwargs:
             cluster_name = kwargs['clusterName']
-        if 'securityGroupIds' in kwargs:
+        if cluster_name is None:
+            raise TypeError("Missing 'cluster_name' argument")
+        if region is None:
+            raise TypeError("Missing 'region' argument")
+        if security_group_ids is None and 'securityGroupIds' in kwargs:
             security_group_ids = kwargs['securityGroupIds']
-        if 'subnetIds' in kwargs:
+        if security_group_ids is None:
+            raise TypeError("Missing 'security_group_ids' argument")
+        if subnet_ids is None and 'subnetIds' in kwargs:
             subnet_ids = kwargs['subnetIds']
-        if 'associatePublicIpAddress' in kwargs:
+        if subnet_ids is None:
+            raise TypeError("Missing 'subnet_ids' argument")
+        if associate_public_ip_address is None and 'associatePublicIpAddress' in kwargs:
             associate_public_ip_address = kwargs['associatePublicIpAddress']
-        if 'blockDeviceMappings' in kwargs:
+        if block_device_mappings is None and 'blockDeviceMappings' in kwargs:
             block_device_mappings = kwargs['blockDeviceMappings']
-        if 'clusterOrientations' in kwargs:
+        if cluster_orientations is None and 'clusterOrientations' in kwargs:
             cluster_orientations = kwargs['clusterOrientations']
-        if 'desiredCapacity' in kwargs:
+        if desired_capacity is None and 'desiredCapacity' in kwargs:
             desired_capacity = kwargs['desiredCapacity']
-        if 'drainingTimeout' in kwargs:
+        if draining_timeout is None and 'drainingTimeout' in kwargs:
             draining_timeout = kwargs['drainingTimeout']
-        if 'ebsOptimized' in kwargs:
+        if ebs_optimized is None and 'ebsOptimized' in kwargs:
             ebs_optimized = kwargs['ebsOptimized']
-        if 'iamInstanceProfile' in kwargs:
+        if iam_instance_profile is None and 'iamInstanceProfile' in kwargs:
             iam_instance_profile = kwargs['iamInstanceProfile']
-        if 'imageId' in kwargs:
+        if image_id is None and 'imageId' in kwargs:
             image_id = kwargs['imageId']
-        if 'instanceMetadataOptions' in kwargs:
+        if instance_metadata_options is None and 'instanceMetadataOptions' in kwargs:
             instance_metadata_options = kwargs['instanceMetadataOptions']
-        if 'keyPair' in kwargs:
+        if key_pair is None and 'keyPair' in kwargs:
             key_pair = kwargs['keyPair']
-        if 'maxSize' in kwargs:
+        if max_size is None and 'maxSize' in kwargs:
             max_size = kwargs['maxSize']
-        if 'minSize' in kwargs:
+        if min_size is None and 'minSize' in kwargs:
             min_size = kwargs['minSize']
-        if 'optimizeImages' in kwargs:
+        if optimize_images is None and 'optimizeImages' in kwargs:
             optimize_images = kwargs['optimizeImages']
-        if 'scheduledTasks' in kwargs:
+        if scheduled_tasks is None and 'scheduledTasks' in kwargs:
             scheduled_tasks = kwargs['scheduledTasks']
-        if 'spotPercentage' in kwargs:
+        if spot_percentage is None and 'spotPercentage' in kwargs:
             spot_percentage = kwargs['spotPercentage']
-        if 'updatePolicy' in kwargs:
+        if update_policy is None and 'updatePolicy' in kwargs:
             update_policy = kwargs['updatePolicy']
-        if 'useAsTemplateOnly' in kwargs:
+        if use_as_template_only is None and 'useAsTemplateOnly' in kwargs:
             use_as_template_only = kwargs['useAsTemplateOnly']
-        if 'userData' in kwargs:
+        if user_data is None and 'userData' in kwargs:
             user_data = kwargs['userData']
-        if 'utilizeCommitments' in kwargs:
+        if utilize_commitments is None and 'utilizeCommitments' in kwargs:
             utilize_commitments = kwargs['utilizeCommitments']
-        if 'utilizeReservedInstances' in kwargs:
+        if utilize_reserved_instances is None and 'utilizeReservedInstances' in kwargs:
             utilize_reserved_instances = kwargs['utilizeReservedInstances']
 
         _setter("cluster_name", cluster_name)
@@ -783,53 +791,53 @@ class _OceanState:
              utilize_commitments: Optional[pulumi.Input[bool]] = None,
              utilize_reserved_instances: Optional[pulumi.Input[bool]] = None,
              whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'associatePublicIpAddress' in kwargs:
+        if associate_public_ip_address is None and 'associatePublicIpAddress' in kwargs:
             associate_public_ip_address = kwargs['associatePublicIpAddress']
-        if 'blockDeviceMappings' in kwargs:
+        if block_device_mappings is None and 'blockDeviceMappings' in kwargs:
             block_device_mappings = kwargs['blockDeviceMappings']
-        if 'clusterName' in kwargs:
+        if cluster_name is None and 'clusterName' in kwargs:
             cluster_name = kwargs['clusterName']
-        if 'clusterOrientations' in kwargs:
+        if cluster_orientations is None and 'clusterOrientations' in kwargs:
             cluster_orientations = kwargs['clusterOrientations']
-        if 'desiredCapacity' in kwargs:
+        if desired_capacity is None and 'desiredCapacity' in kwargs:
             desired_capacity = kwargs['desiredCapacity']
-        if 'drainingTimeout' in kwargs:
+        if draining_timeout is None and 'drainingTimeout' in kwargs:
             draining_timeout = kwargs['drainingTimeout']
-        if 'ebsOptimized' in kwargs:
+        if ebs_optimized is None and 'ebsOptimized' in kwargs:
             ebs_optimized = kwargs['ebsOptimized']
-        if 'iamInstanceProfile' in kwargs:
+        if iam_instance_profile is None and 'iamInstanceProfile' in kwargs:
             iam_instance_profile = kwargs['iamInstanceProfile']
-        if 'imageId' in kwargs:
+        if image_id is None and 'imageId' in kwargs:
             image_id = kwargs['imageId']
-        if 'instanceMetadataOptions' in kwargs:
+        if instance_metadata_options is None and 'instanceMetadataOptions' in kwargs:
             instance_metadata_options = kwargs['instanceMetadataOptions']
-        if 'keyPair' in kwargs:
+        if key_pair is None and 'keyPair' in kwargs:
             key_pair = kwargs['keyPair']
-        if 'maxSize' in kwargs:
+        if max_size is None and 'maxSize' in kwargs:
             max_size = kwargs['maxSize']
-        if 'minSize' in kwargs:
+        if min_size is None and 'minSize' in kwargs:
             min_size = kwargs['minSize']
-        if 'optimizeImages' in kwargs:
+        if optimize_images is None and 'optimizeImages' in kwargs:
             optimize_images = kwargs['optimizeImages']
-        if 'scheduledTasks' in kwargs:
+        if scheduled_tasks is None and 'scheduledTasks' in kwargs:
             scheduled_tasks = kwargs['scheduledTasks']
-        if 'securityGroupIds' in kwargs:
+        if security_group_ids is None and 'securityGroupIds' in kwargs:
             security_group_ids = kwargs['securityGroupIds']
-        if 'spotPercentage' in kwargs:
+        if spot_percentage is None and 'spotPercentage' in kwargs:
             spot_percentage = kwargs['spotPercentage']
-        if 'subnetIds' in kwargs:
+        if subnet_ids is None and 'subnetIds' in kwargs:
             subnet_ids = kwargs['subnetIds']
-        if 'updatePolicy' in kwargs:
+        if update_policy is None and 'updatePolicy' in kwargs:
             update_policy = kwargs['updatePolicy']
-        if 'useAsTemplateOnly' in kwargs:
+        if use_as_template_only is None and 'useAsTemplateOnly' in kwargs:
             use_as_template_only = kwargs['useAsTemplateOnly']
-        if 'userData' in kwargs:
+        if user_data is None and 'userData' in kwargs:
             user_data = kwargs['userData']
-        if 'utilizeCommitments' in kwargs:
+        if utilize_commitments is None and 'utilizeCommitments' in kwargs:
             utilize_commitments = kwargs['utilizeCommitments']
-        if 'utilizeReservedInstances' in kwargs:
+        if utilize_reserved_instances is None and 'utilizeReservedInstances' in kwargs:
             utilize_reserved_instances = kwargs['utilizeReservedInstances']
 
         if associate_public_ip_address is not None:
@@ -1440,11 +1448,7 @@ class Ocean(pulumi.CustomResource):
             __props__ = OceanArgs.__new__(OceanArgs)
 
             __props__.__dict__["associate_public_ip_address"] = associate_public_ip_address
-            if autoscaler is not None and not isinstance(autoscaler, OceanAutoscalerArgs):
-                autoscaler = autoscaler or {}
-                def _setter(key, value):
-                    autoscaler[key] = value
-                OceanAutoscalerArgs._configure(_setter, **autoscaler)
+            autoscaler = _utilities.configure(autoscaler, OceanAutoscalerArgs, True)
             __props__.__dict__["autoscaler"] = autoscaler
             __props__.__dict__["blacklists"] = blacklists
             __props__.__dict__["block_device_mappings"] = block_device_mappings
@@ -1455,36 +1459,20 @@ class Ocean(pulumi.CustomResource):
             __props__.__dict__["desired_capacity"] = desired_capacity
             __props__.__dict__["draining_timeout"] = draining_timeout
             __props__.__dict__["ebs_optimized"] = ebs_optimized
-            if filters is not None and not isinstance(filters, OceanFiltersArgs):
-                filters = filters or {}
-                def _setter(key, value):
-                    filters[key] = value
-                OceanFiltersArgs._configure(_setter, **filters)
+            filters = _utilities.configure(filters, OceanFiltersArgs, True)
             __props__.__dict__["filters"] = filters
             __props__.__dict__["iam_instance_profile"] = iam_instance_profile
             __props__.__dict__["image_id"] = image_id
-            if instance_metadata_options is not None and not isinstance(instance_metadata_options, OceanInstanceMetadataOptionsArgs):
-                instance_metadata_options = instance_metadata_options or {}
-                def _setter(key, value):
-                    instance_metadata_options[key] = value
-                OceanInstanceMetadataOptionsArgs._configure(_setter, **instance_metadata_options)
+            instance_metadata_options = _utilities.configure(instance_metadata_options, OceanInstanceMetadataOptionsArgs, True)
             __props__.__dict__["instance_metadata_options"] = instance_metadata_options
             __props__.__dict__["key_pair"] = key_pair
-            if logging is not None and not isinstance(logging, OceanLoggingArgs):
-                logging = logging or {}
-                def _setter(key, value):
-                    logging[key] = value
-                OceanLoggingArgs._configure(_setter, **logging)
+            logging = _utilities.configure(logging, OceanLoggingArgs, True)
             __props__.__dict__["logging"] = logging
             __props__.__dict__["max_size"] = max_size
             __props__.__dict__["min_size"] = min_size
             __props__.__dict__["monitoring"] = monitoring
             __props__.__dict__["name"] = name
-            if optimize_images is not None and not isinstance(optimize_images, OceanOptimizeImagesArgs):
-                optimize_images = optimize_images or {}
-                def _setter(key, value):
-                    optimize_images[key] = value
-                OceanOptimizeImagesArgs._configure(_setter, **optimize_images)
+            optimize_images = _utilities.configure(optimize_images, OceanOptimizeImagesArgs, True)
             __props__.__dict__["optimize_images"] = optimize_images
             if region is None and not opts.urn:
                 raise TypeError("Missing required property 'region'")
@@ -1498,11 +1486,7 @@ class Ocean(pulumi.CustomResource):
                 raise TypeError("Missing required property 'subnet_ids'")
             __props__.__dict__["subnet_ids"] = subnet_ids
             __props__.__dict__["tags"] = tags
-            if update_policy is not None and not isinstance(update_policy, OceanUpdatePolicyArgs):
-                update_policy = update_policy or {}
-                def _setter(key, value):
-                    update_policy[key] = value
-                OceanUpdatePolicyArgs._configure(_setter, **update_policy)
+            update_policy = _utilities.configure(update_policy, OceanUpdatePolicyArgs, True)
             __props__.__dict__["update_policy"] = update_policy
             __props__.__dict__["use_as_template_only"] = use_as_template_only
             __props__.__dict__["user_data"] = user_data

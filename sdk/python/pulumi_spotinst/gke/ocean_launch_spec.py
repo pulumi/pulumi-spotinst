@@ -90,7 +90,7 @@ class OceanLaunchSpecArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             ocean_id: pulumi.Input[str],
+             ocean_id: Optional[pulumi.Input[str]] = None,
              autoscale_headrooms: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecAutoscaleHeadroomArgs']]]] = None,
              autoscale_headrooms_automatics: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs']]]] = None,
              instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -112,37 +112,39 @@ class OceanLaunchSpecArgs:
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              taints: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecTaintArgs']]]] = None,
              update_policy: Optional[pulumi.Input['OceanLaunchSpecUpdatePolicyArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'oceanId' in kwargs:
+        if ocean_id is None and 'oceanId' in kwargs:
             ocean_id = kwargs['oceanId']
-        if 'autoscaleHeadrooms' in kwargs:
+        if ocean_id is None:
+            raise TypeError("Missing 'ocean_id' argument")
+        if autoscale_headrooms is None and 'autoscaleHeadrooms' in kwargs:
             autoscale_headrooms = kwargs['autoscaleHeadrooms']
-        if 'autoscaleHeadroomsAutomatics' in kwargs:
+        if autoscale_headrooms_automatics is None and 'autoscaleHeadroomsAutomatics' in kwargs:
             autoscale_headrooms_automatics = kwargs['autoscaleHeadroomsAutomatics']
-        if 'instanceTypes' in kwargs:
+        if instance_types is None and 'instanceTypes' in kwargs:
             instance_types = kwargs['instanceTypes']
-        if 'networkInterfaces' in kwargs:
+        if network_interfaces is None and 'networkInterfaces' in kwargs:
             network_interfaces = kwargs['networkInterfaces']
-        if 'nodePoolName' in kwargs:
+        if node_pool_name is None and 'nodePoolName' in kwargs:
             node_pool_name = kwargs['nodePoolName']
-        if 'resourceLimits' in kwargs:
+        if resource_limits is None and 'resourceLimits' in kwargs:
             resource_limits = kwargs['resourceLimits']
-        if 'restrictScaleDown' in kwargs:
+        if restrict_scale_down is None and 'restrictScaleDown' in kwargs:
             restrict_scale_down = kwargs['restrictScaleDown']
-        if 'rootVolumeSize' in kwargs:
+        if root_volume_size is None and 'rootVolumeSize' in kwargs:
             root_volume_size = kwargs['rootVolumeSize']
-        if 'rootVolumeType' in kwargs:
+        if root_volume_type is None and 'rootVolumeType' in kwargs:
             root_volume_type = kwargs['rootVolumeType']
-        if 'schedulingTasks' in kwargs:
+        if scheduling_tasks is None and 'schedulingTasks' in kwargs:
             scheduling_tasks = kwargs['schedulingTasks']
-        if 'serviceAccount' in kwargs:
+        if service_account is None and 'serviceAccount' in kwargs:
             service_account = kwargs['serviceAccount']
-        if 'shieldedInstanceConfig' in kwargs:
+        if shielded_instance_config is None and 'shieldedInstanceConfig' in kwargs:
             shielded_instance_config = kwargs['shieldedInstanceConfig']
-        if 'sourceImage' in kwargs:
+        if source_image is None and 'sourceImage' in kwargs:
             source_image = kwargs['sourceImage']
-        if 'updatePolicy' in kwargs:
+        if update_policy is None and 'updatePolicy' in kwargs:
             update_policy = kwargs['updatePolicy']
 
         _setter("ocean_id", ocean_id)
@@ -550,37 +552,37 @@ class _OceanLaunchSpecState:
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              taints: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecTaintArgs']]]] = None,
              update_policy: Optional[pulumi.Input['OceanLaunchSpecUpdatePolicyArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'autoscaleHeadrooms' in kwargs:
+        if autoscale_headrooms is None and 'autoscaleHeadrooms' in kwargs:
             autoscale_headrooms = kwargs['autoscaleHeadrooms']
-        if 'autoscaleHeadroomsAutomatics' in kwargs:
+        if autoscale_headrooms_automatics is None and 'autoscaleHeadroomsAutomatics' in kwargs:
             autoscale_headrooms_automatics = kwargs['autoscaleHeadroomsAutomatics']
-        if 'instanceTypes' in kwargs:
+        if instance_types is None and 'instanceTypes' in kwargs:
             instance_types = kwargs['instanceTypes']
-        if 'networkInterfaces' in kwargs:
+        if network_interfaces is None and 'networkInterfaces' in kwargs:
             network_interfaces = kwargs['networkInterfaces']
-        if 'nodePoolName' in kwargs:
+        if node_pool_name is None and 'nodePoolName' in kwargs:
             node_pool_name = kwargs['nodePoolName']
-        if 'oceanId' in kwargs:
+        if ocean_id is None and 'oceanId' in kwargs:
             ocean_id = kwargs['oceanId']
-        if 'resourceLimits' in kwargs:
+        if resource_limits is None and 'resourceLimits' in kwargs:
             resource_limits = kwargs['resourceLimits']
-        if 'restrictScaleDown' in kwargs:
+        if restrict_scale_down is None and 'restrictScaleDown' in kwargs:
             restrict_scale_down = kwargs['restrictScaleDown']
-        if 'rootVolumeSize' in kwargs:
+        if root_volume_size is None and 'rootVolumeSize' in kwargs:
             root_volume_size = kwargs['rootVolumeSize']
-        if 'rootVolumeType' in kwargs:
+        if root_volume_type is None and 'rootVolumeType' in kwargs:
             root_volume_type = kwargs['rootVolumeType']
-        if 'schedulingTasks' in kwargs:
+        if scheduling_tasks is None and 'schedulingTasks' in kwargs:
             scheduling_tasks = kwargs['schedulingTasks']
-        if 'serviceAccount' in kwargs:
+        if service_account is None and 'serviceAccount' in kwargs:
             service_account = kwargs['serviceAccount']
-        if 'shieldedInstanceConfig' in kwargs:
+        if shielded_instance_config is None and 'shieldedInstanceConfig' in kwargs:
             shielded_instance_config = kwargs['shieldedInstanceConfig']
-        if 'sourceImage' in kwargs:
+        if source_image is None and 'sourceImage' in kwargs:
             source_image = kwargs['sourceImage']
-        if 'updatePolicy' in kwargs:
+        if update_policy is None and 'updatePolicy' in kwargs:
             update_policy = kwargs['updatePolicy']
 
         if autoscale_headrooms is not None:
@@ -923,101 +925,6 @@ class OceanLaunchSpec(pulumi.CustomResource):
 
         > This resource can be imported from GKE node pool or not. If you want to import the node pool and create the VNG from it, please provide `node_pool_name`.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_spotinst as spotinst
-
-        example = spotinst.gke.OceanLaunchSpec("example",
-            autoscale_headrooms=[spotinst.gke.OceanLaunchSpecAutoscaleHeadroomArgs(
-                cpu_per_unit=1000,
-                gpu_per_unit=0,
-                memory_per_unit=2048,
-                num_of_units=5,
-            )],
-            autoscale_headrooms_automatics=[spotinst.gke.OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs(
-                auto_headroom_percentage=5,
-            )],
-            instance_types=["n1-standard-1, n1-standard-2"],
-            labels=[spotinst.gke.OceanLaunchSpecLabelArgs(
-                key="labelKey",
-                value="labelVal",
-            )],
-            metadatas=[spotinst.gke.OceanLaunchSpecMetadataArgs(
-                key="gci-update-strategy",
-                value="update_disabled",
-            )],
-            network_interfaces=[spotinst.gke.OceanLaunchSpecNetworkInterfaceArgs(
-                access_configs=[spotinst.gke.OceanLaunchSpecNetworkInterfaceAccessConfigArgs(
-                    name="external-nat-vng",
-                    type="ONE_TO_ONE_NAT",
-                )],
-                alias_ip_ranges=[spotinst.gke.OceanLaunchSpecNetworkInterfaceAliasIpRangeArgs(
-                    ip_cidr_range="/25",
-                    subnetwork_range_name="gke-test-native-vpc-pods-123456-vng",
-                )],
-                network="test-vng-network",
-                project_id="test-vng-network-project",
-            )],
-            node_pool_name="default-pool",
-            ocean_id="o-123456",
-            resource_limits=spotinst.gke.OceanLaunchSpecResourceLimitsArgs(
-                max_instance_count=3,
-                min_instance_count=0,
-            ),
-            restrict_scale_down=True,
-            root_volume_size=10,
-            root_volume_type="pd-standard",
-            scheduling_tasks=[spotinst.gke.OceanLaunchSpecSchedulingTaskArgs(
-                cron_expression="0 1 * * *",
-                is_enabled=True,
-                task_headrooms=[spotinst.gke.OceanLaunchSpecSchedulingTaskTaskHeadroomArgs(
-                    cpu_per_unit=1000,
-                    gpu_per_unit=0,
-                    memory_per_unit=2048,
-                    num_of_units=5,
-                )],
-                task_type="manualHeadroomUpdate",
-            )],
-            service_account="default",
-            shielded_instance_config=spotinst.gke.OceanLaunchSpecShieldedInstanceConfigArgs(
-                enable_integrity_monitoring=True,
-                enable_secure_boot=False,
-            ),
-            source_image="image",
-            storage=spotinst.gke.OceanLaunchSpecStorageArgs(
-                local_ssd_count=5,
-            ),
-            strategies=[spotinst.gke.OceanLaunchSpecStrategyArgs(
-                preemptible_percentage=30,
-            )],
-            tags=[
-                "tag1",
-                "tag2",
-            ],
-            taints=[spotinst.gke.OceanLaunchSpecTaintArgs(
-                effect="taintEffect",
-                key="taintKey",
-                value="taintVal",
-            )])
-        ```
-        ```python
-        import pulumi
-
-        pulumi.export("oceanLaunchspecId", spotinst_ocean_gke_launch_spec["example"]["id"])
-        ```
-        ## Update Policy
-
-        * `update_policy` - (Optional)
-          * `should_roll` - (Required) Enables the roll.
-          * `roll_config` - (Required) Holds the roll configuration.
-            * `batch_size_percentage` - (Required) Sets the percentage of the instances to deploy in each batch.
-
-        ```python
-        import pulumi
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecAutoscaleHeadroomArgs']]]] autoscale_headrooms: Set custom headroom per launch spec. provide list of headrooms object.
@@ -1052,101 +959,6 @@ class OceanLaunchSpec(pulumi.CustomResource):
         Manages a custom Spotinst Ocean GKE Launch Spec resource.
 
         > This resource can be imported from GKE node pool or not. If you want to import the node pool and create the VNG from it, please provide `node_pool_name`.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_spotinst as spotinst
-
-        example = spotinst.gke.OceanLaunchSpec("example",
-            autoscale_headrooms=[spotinst.gke.OceanLaunchSpecAutoscaleHeadroomArgs(
-                cpu_per_unit=1000,
-                gpu_per_unit=0,
-                memory_per_unit=2048,
-                num_of_units=5,
-            )],
-            autoscale_headrooms_automatics=[spotinst.gke.OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs(
-                auto_headroom_percentage=5,
-            )],
-            instance_types=["n1-standard-1, n1-standard-2"],
-            labels=[spotinst.gke.OceanLaunchSpecLabelArgs(
-                key="labelKey",
-                value="labelVal",
-            )],
-            metadatas=[spotinst.gke.OceanLaunchSpecMetadataArgs(
-                key="gci-update-strategy",
-                value="update_disabled",
-            )],
-            network_interfaces=[spotinst.gke.OceanLaunchSpecNetworkInterfaceArgs(
-                access_configs=[spotinst.gke.OceanLaunchSpecNetworkInterfaceAccessConfigArgs(
-                    name="external-nat-vng",
-                    type="ONE_TO_ONE_NAT",
-                )],
-                alias_ip_ranges=[spotinst.gke.OceanLaunchSpecNetworkInterfaceAliasIpRangeArgs(
-                    ip_cidr_range="/25",
-                    subnetwork_range_name="gke-test-native-vpc-pods-123456-vng",
-                )],
-                network="test-vng-network",
-                project_id="test-vng-network-project",
-            )],
-            node_pool_name="default-pool",
-            ocean_id="o-123456",
-            resource_limits=spotinst.gke.OceanLaunchSpecResourceLimitsArgs(
-                max_instance_count=3,
-                min_instance_count=0,
-            ),
-            restrict_scale_down=True,
-            root_volume_size=10,
-            root_volume_type="pd-standard",
-            scheduling_tasks=[spotinst.gke.OceanLaunchSpecSchedulingTaskArgs(
-                cron_expression="0 1 * * *",
-                is_enabled=True,
-                task_headrooms=[spotinst.gke.OceanLaunchSpecSchedulingTaskTaskHeadroomArgs(
-                    cpu_per_unit=1000,
-                    gpu_per_unit=0,
-                    memory_per_unit=2048,
-                    num_of_units=5,
-                )],
-                task_type="manualHeadroomUpdate",
-            )],
-            service_account="default",
-            shielded_instance_config=spotinst.gke.OceanLaunchSpecShieldedInstanceConfigArgs(
-                enable_integrity_monitoring=True,
-                enable_secure_boot=False,
-            ),
-            source_image="image",
-            storage=spotinst.gke.OceanLaunchSpecStorageArgs(
-                local_ssd_count=5,
-            ),
-            strategies=[spotinst.gke.OceanLaunchSpecStrategyArgs(
-                preemptible_percentage=30,
-            )],
-            tags=[
-                "tag1",
-                "tag2",
-            ],
-            taints=[spotinst.gke.OceanLaunchSpecTaintArgs(
-                effect="taintEffect",
-                key="taintKey",
-                value="taintVal",
-            )])
-        ```
-        ```python
-        import pulumi
-
-        pulumi.export("oceanLaunchspecId", spotinst_ocean_gke_launch_spec["example"]["id"])
-        ```
-        ## Update Policy
-
-        * `update_policy` - (Optional)
-          * `should_roll` - (Required) Enables the roll.
-          * `roll_config` - (Required) Holds the roll configuration.
-            * `batch_size_percentage` - (Required) Sets the percentage of the instances to deploy in each batch.
-
-        ```python
-        import pulumi
-        ```
 
         :param str resource_name: The name of the resource.
         :param OceanLaunchSpecArgs args: The arguments to use to populate this resource's properties.
@@ -1209,38 +1021,22 @@ class OceanLaunchSpec(pulumi.CustomResource):
             if ocean_id is None and not opts.urn:
                 raise TypeError("Missing required property 'ocean_id'")
             __props__.__dict__["ocean_id"] = ocean_id
-            if resource_limits is not None and not isinstance(resource_limits, OceanLaunchSpecResourceLimitsArgs):
-                resource_limits = resource_limits or {}
-                def _setter(key, value):
-                    resource_limits[key] = value
-                OceanLaunchSpecResourceLimitsArgs._configure(_setter, **resource_limits)
+            resource_limits = _utilities.configure(resource_limits, OceanLaunchSpecResourceLimitsArgs, True)
             __props__.__dict__["resource_limits"] = resource_limits
             __props__.__dict__["restrict_scale_down"] = restrict_scale_down
             __props__.__dict__["root_volume_size"] = root_volume_size
             __props__.__dict__["root_volume_type"] = root_volume_type
             __props__.__dict__["scheduling_tasks"] = scheduling_tasks
             __props__.__dict__["service_account"] = service_account
-            if shielded_instance_config is not None and not isinstance(shielded_instance_config, OceanLaunchSpecShieldedInstanceConfigArgs):
-                shielded_instance_config = shielded_instance_config or {}
-                def _setter(key, value):
-                    shielded_instance_config[key] = value
-                OceanLaunchSpecShieldedInstanceConfigArgs._configure(_setter, **shielded_instance_config)
+            shielded_instance_config = _utilities.configure(shielded_instance_config, OceanLaunchSpecShieldedInstanceConfigArgs, True)
             __props__.__dict__["shielded_instance_config"] = shielded_instance_config
             __props__.__dict__["source_image"] = source_image
-            if storage is not None and not isinstance(storage, OceanLaunchSpecStorageArgs):
-                storage = storage or {}
-                def _setter(key, value):
-                    storage[key] = value
-                OceanLaunchSpecStorageArgs._configure(_setter, **storage)
+            storage = _utilities.configure(storage, OceanLaunchSpecStorageArgs, True)
             __props__.__dict__["storage"] = storage
             __props__.__dict__["strategies"] = strategies
             __props__.__dict__["tags"] = tags
             __props__.__dict__["taints"] = taints
-            if update_policy is not None and not isinstance(update_policy, OceanLaunchSpecUpdatePolicyArgs):
-                update_policy = update_policy or {}
-                def _setter(key, value):
-                    update_policy[key] = value
-                OceanLaunchSpecUpdatePolicyArgs._configure(_setter, **update_policy)
+            update_policy = _utilities.configure(update_policy, OceanLaunchSpecUpdatePolicyArgs, True)
             __props__.__dict__["update_policy"] = update_policy
         super(OceanLaunchSpec, __self__).__init__(
             'spotinst:gke/oceanLaunchSpec:OceanLaunchSpec',

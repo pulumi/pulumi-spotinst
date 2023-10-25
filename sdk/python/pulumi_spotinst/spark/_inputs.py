@@ -40,11 +40,11 @@ class OceanComputeArgs:
              _setter: Callable[[Any, Any], None],
              create_vngs: Optional[pulumi.Input[bool]] = None,
              use_taints: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'createVngs' in kwargs:
+        if create_vngs is None and 'createVngs' in kwargs:
             create_vngs = kwargs['createVngs']
-        if 'useTaints' in kwargs:
+        if use_taints is None and 'useTaints' in kwargs:
             use_taints = kwargs['useTaints']
 
         if create_vngs is not None:
@@ -104,15 +104,15 @@ class OceanIngressArgs:
              load_balancer: Optional[pulumi.Input['OceanIngressLoadBalancerArgs']] = None,
              private_link: Optional[pulumi.Input['OceanIngressPrivateLinkArgs']] = None,
              service_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'customEndpoint' in kwargs:
+        if custom_endpoint is None and 'customEndpoint' in kwargs:
             custom_endpoint = kwargs['customEndpoint']
-        if 'loadBalancer' in kwargs:
+        if load_balancer is None and 'loadBalancer' in kwargs:
             load_balancer = kwargs['loadBalancer']
-        if 'privateLink' in kwargs:
+        if private_link is None and 'privateLink' in kwargs:
             private_link = kwargs['privateLink']
-        if 'serviceAnnotations' in kwargs:
+        if service_annotations is None and 'serviceAnnotations' in kwargs:
             service_annotations = kwargs['serviceAnnotations']
 
         if controller is not None:
@@ -190,7 +190,7 @@ class OceanIngressControllerArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              managed: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if managed is not None:
@@ -228,7 +228,7 @@ class OceanIngressCustomEndpointArgs:
              _setter: Callable[[Any, Any], None],
              address: Optional[pulumi.Input[str]] = None,
              enabled: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if address is not None:
@@ -284,11 +284,11 @@ class OceanIngressLoadBalancerArgs:
              managed: Optional[pulumi.Input[bool]] = None,
              service_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              target_group_arn: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'serviceAnnotations' in kwargs:
+        if service_annotations is None and 'serviceAnnotations' in kwargs:
             service_annotations = kwargs['serviceAnnotations']
-        if 'targetGroupArn' in kwargs:
+        if target_group_arn is None and 'targetGroupArn' in kwargs:
             target_group_arn = kwargs['targetGroupArn']
 
         if managed is not None:
@@ -354,9 +354,9 @@ class OceanIngressPrivateLinkArgs:
              _setter: Callable[[Any, Any], None],
              enabled: Optional[pulumi.Input[bool]] = None,
              vpc_endpoint_service: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'vpcEndpointService' in kwargs:
+        if vpc_endpoint_service is None and 'vpcEndpointService' in kwargs:
             vpc_endpoint_service = kwargs['vpcEndpointService']
 
         if enabled is not None:
@@ -404,9 +404,9 @@ class OceanLogCollectionArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              collect_app_logs: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'collectAppLogs' in kwargs:
+        if collect_app_logs is None and 'collectAppLogs' in kwargs:
             collect_app_logs = kwargs['collectAppLogs']
 
         if collect_app_logs is not None:
@@ -440,9 +440,9 @@ class OceanSparkArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              additional_app_namespaces: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'additionalAppNamespaces' in kwargs:
+        if additional_app_namespaces is None and 'additionalAppNamespaces' in kwargs:
             additional_app_namespaces = kwargs['additionalAppNamespaces']
 
         if additional_app_namespaces is not None:
@@ -480,11 +480,11 @@ class OceanWebhookArgs:
              _setter: Callable[[Any, Any], None],
              host_network_ports: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
              use_host_network: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'hostNetworkPorts' in kwargs:
+        if host_network_ports is None and 'hostNetworkPorts' in kwargs:
             host_network_ports = kwargs['hostNetworkPorts']
-        if 'useHostNetwork' in kwargs:
+        if use_host_network is None and 'useHostNetwork' in kwargs:
             use_host_network = kwargs['useHostNetwork']
 
         if host_network_ports is not None:

@@ -8,25 +8,6 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a Spotinst programmatic user in the creator's organization.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as spotinst from "@pulumi/spotinst";
- *
- * const terraformProgUser = new spotinst.organization.ProgrammaticUser("terraformProgUser", {
- *     description: "creating programmatic user",
- *     policies: [{
- *         policyAccountIds: ["act-a1b2c3d4"],
- *         policyId: "pol-g75d8c06",
- *     }],
- *     userGroupIds: [
- *         "ugr-abcd1234",
- *         "ugr-defg8763",
- *     ],
- * });
- * ```
  */
 export class ProgrammaticUser extends pulumi.CustomResource {
     /**

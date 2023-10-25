@@ -11,28 +11,6 @@ namespace Pulumi.SpotInst.Aws
 {
     /// <summary>
     /// Provides a Spotinst Ocean AWS Extended Resource Definition resource.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using SpotInst = Pulumi.SpotInst;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new SpotInst.Aws.OceanExtendedResourceDefinition("example", new()
-    ///     {
-    ///         ResourceMapping = 
-    ///         {
-    ///             { "c3.large", "2Ki" },
-    ///             { "c3.xlarge", "4Ki" },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// </summary>
     [SpotInstResourceType("spotinst:aws/oceanExtendedResourceDefinition:OceanExtendedResourceDefinition")]
     public partial class OceanExtendedResourceDefinition : global::Pulumi.CustomResource

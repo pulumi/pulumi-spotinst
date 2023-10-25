@@ -83,13 +83,13 @@ class ElastigroupArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             low_priority_sizes: pulumi.Input[Sequence[pulumi.Input[str]]],
-             network: pulumi.Input['ElastigroupNetworkArgs'],
-             od_sizes: pulumi.Input[Sequence[pulumi.Input[str]]],
-             product: pulumi.Input[str],
-             region: pulumi.Input[str],
-             resource_group_name: pulumi.Input[str],
-             strategy: pulumi.Input['ElastigroupStrategyArgs'],
+             low_priority_sizes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             network: Optional[pulumi.Input['ElastigroupNetworkArgs']] = None,
+             od_sizes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             product: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             resource_group_name: Optional[pulumi.Input[str]] = None,
+             strategy: Optional[pulumi.Input['ElastigroupStrategyArgs']] = None,
              custom_data: Optional[pulumi.Input[str]] = None,
              desired_capacity: Optional[pulumi.Input[int]] = None,
              health_check: Optional[pulumi.Input['ElastigroupHealthCheckArgs']] = None,
@@ -108,43 +108,57 @@ class ElastigroupArgs:
              shutdown_script: Optional[pulumi.Input[str]] = None,
              update_policy: Optional[pulumi.Input['ElastigroupUpdatePolicyArgs']] = None,
              user_data: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'lowPrioritySizes' in kwargs:
+        if low_priority_sizes is None and 'lowPrioritySizes' in kwargs:
             low_priority_sizes = kwargs['lowPrioritySizes']
-        if 'odSizes' in kwargs:
+        if low_priority_sizes is None:
+            raise TypeError("Missing 'low_priority_sizes' argument")
+        if network is None:
+            raise TypeError("Missing 'network' argument")
+        if od_sizes is None and 'odSizes' in kwargs:
             od_sizes = kwargs['odSizes']
-        if 'resourceGroupName' in kwargs:
+        if od_sizes is None:
+            raise TypeError("Missing 'od_sizes' argument")
+        if product is None:
+            raise TypeError("Missing 'product' argument")
+        if region is None:
+            raise TypeError("Missing 'region' argument")
+        if resource_group_name is None and 'resourceGroupName' in kwargs:
             resource_group_name = kwargs['resourceGroupName']
-        if 'customData' in kwargs:
+        if resource_group_name is None:
+            raise TypeError("Missing 'resource_group_name' argument")
+        if strategy is None:
+            raise TypeError("Missing 'strategy' argument")
+        if custom_data is None and 'customData' in kwargs:
             custom_data = kwargs['customData']
-        if 'desiredCapacity' in kwargs:
+        if desired_capacity is None and 'desiredCapacity' in kwargs:
             desired_capacity = kwargs['desiredCapacity']
-        if 'healthCheck' in kwargs:
+        if health_check is None and 'healthCheck' in kwargs:
             health_check = kwargs['healthCheck']
-        if 'integrationKubernetes' in kwargs:
+        if integration_kubernetes is None and 'integrationKubernetes' in kwargs:
             integration_kubernetes = kwargs['integrationKubernetes']
-        if 'integrationMultaiRuntime' in kwargs:
+        if integration_multai_runtime is None and 'integrationMultaiRuntime' in kwargs:
             integration_multai_runtime = kwargs['integrationMultaiRuntime']
-        if 'loadBalancers' in kwargs:
+        if load_balancers is None and 'loadBalancers' in kwargs:
             load_balancers = kwargs['loadBalancers']
-        if 'managedServiceIdentities' in kwargs:
+        if managed_service_identities is None and 'managedServiceIdentities' in kwargs:
             managed_service_identities = kwargs['managedServiceIdentities']
-        if 'maxSize' in kwargs:
+        if max_size is None and 'maxSize' in kwargs:
             max_size = kwargs['maxSize']
-        if 'minSize' in kwargs:
+        if min_size is None and 'minSize' in kwargs:
             min_size = kwargs['minSize']
-        if 'scalingDownPolicies' in kwargs:
+        if scaling_down_policies is None and 'scalingDownPolicies' in kwargs:
             scaling_down_policies = kwargs['scalingDownPolicies']
-        if 'scalingUpPolicies' in kwargs:
+        if scaling_up_policies is None and 'scalingUpPolicies' in kwargs:
             scaling_up_policies = kwargs['scalingUpPolicies']
-        if 'scheduledTasks' in kwargs:
+        if scheduled_tasks is None and 'scheduledTasks' in kwargs:
             scheduled_tasks = kwargs['scheduledTasks']
-        if 'shutdownScript' in kwargs:
+        if shutdown_script is None and 'shutdownScript' in kwargs:
             shutdown_script = kwargs['shutdownScript']
-        if 'updatePolicy' in kwargs:
+        if update_policy is None and 'updatePolicy' in kwargs:
             update_policy = kwargs['updatePolicy']
-        if 'userData' in kwargs:
+        if user_data is None and 'userData' in kwargs:
             user_data = kwargs['userData']
 
         _setter("low_priority_sizes", low_priority_sizes)
@@ -536,43 +550,43 @@ class _ElastigroupState:
              strategy: Optional[pulumi.Input['ElastigroupStrategyArgs']] = None,
              update_policy: Optional[pulumi.Input['ElastigroupUpdatePolicyArgs']] = None,
              user_data: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'customData' in kwargs:
+        if custom_data is None and 'customData' in kwargs:
             custom_data = kwargs['customData']
-        if 'desiredCapacity' in kwargs:
+        if desired_capacity is None and 'desiredCapacity' in kwargs:
             desired_capacity = kwargs['desiredCapacity']
-        if 'healthCheck' in kwargs:
+        if health_check is None and 'healthCheck' in kwargs:
             health_check = kwargs['healthCheck']
-        if 'integrationKubernetes' in kwargs:
+        if integration_kubernetes is None and 'integrationKubernetes' in kwargs:
             integration_kubernetes = kwargs['integrationKubernetes']
-        if 'integrationMultaiRuntime' in kwargs:
+        if integration_multai_runtime is None and 'integrationMultaiRuntime' in kwargs:
             integration_multai_runtime = kwargs['integrationMultaiRuntime']
-        if 'loadBalancers' in kwargs:
+        if load_balancers is None and 'loadBalancers' in kwargs:
             load_balancers = kwargs['loadBalancers']
-        if 'lowPrioritySizes' in kwargs:
+        if low_priority_sizes is None and 'lowPrioritySizes' in kwargs:
             low_priority_sizes = kwargs['lowPrioritySizes']
-        if 'managedServiceIdentities' in kwargs:
+        if managed_service_identities is None and 'managedServiceIdentities' in kwargs:
             managed_service_identities = kwargs['managedServiceIdentities']
-        if 'maxSize' in kwargs:
+        if max_size is None and 'maxSize' in kwargs:
             max_size = kwargs['maxSize']
-        if 'minSize' in kwargs:
+        if min_size is None and 'minSize' in kwargs:
             min_size = kwargs['minSize']
-        if 'odSizes' in kwargs:
+        if od_sizes is None and 'odSizes' in kwargs:
             od_sizes = kwargs['odSizes']
-        if 'resourceGroupName' in kwargs:
+        if resource_group_name is None and 'resourceGroupName' in kwargs:
             resource_group_name = kwargs['resourceGroupName']
-        if 'scalingDownPolicies' in kwargs:
+        if scaling_down_policies is None and 'scalingDownPolicies' in kwargs:
             scaling_down_policies = kwargs['scalingDownPolicies']
-        if 'scalingUpPolicies' in kwargs:
+        if scaling_up_policies is None and 'scalingUpPolicies' in kwargs:
             scaling_up_policies = kwargs['scalingUpPolicies']
-        if 'scheduledTasks' in kwargs:
+        if scheduled_tasks is None and 'scheduledTasks' in kwargs:
             scheduled_tasks = kwargs['scheduledTasks']
-        if 'shutdownScript' in kwargs:
+        if shutdown_script is None and 'shutdownScript' in kwargs:
             shutdown_script = kwargs['shutdownScript']
-        if 'updatePolicy' in kwargs:
+        if update_policy is None and 'updatePolicy' in kwargs:
             update_policy = kwargs['updatePolicy']
-        if 'userData' in kwargs:
+        if user_data is None and 'userData' in kwargs:
             user_data = kwargs['userData']
 
         if custom_data is not None:
@@ -918,51 +932,6 @@ class Elastigroup(pulumi.CustomResource):
         * `draining_timeout` - (Optional, Default `120`) Time (seconds) to allow the instance to be drained from incoming TCP connections and detached from MLB before terminating it during a scale-down operation.
 
         <a id="image"></a>
-        ## Image
-
-        * `image` - (Required) Image of a VM. An image is a template for creating new VMs. Choose from Azure image catalogue (marketplace) or use a custom image.
-            * `publisher` - (Optional) Image publisher. Required if resource_group_name is not specified.
-            * `offer` - (Optional) Name of the image to use. Required if publisher is specified.
-            * `sku` - (Optional) Image's Stock Keeping Unit, which is the specific version of the image. Required if publisher is specified.
-            * `version` -
-            * `resource_group_name` - (Optional) Name of Resource Group for custom image. Required if publisher not specified.
-            * `image_name` - (Optional) Name of the custom image. Required if resource_group_name is specified.
-
-        ```python
-        import pulumi
-        ```
-
-        <a id="network"></a>
-        ## Network
-
-        * `network` - (Required) Defines the Virtual Network and Subnet for your Elastigroup.
-            * `virtual_network_name` - (Required) Name of Vnet.
-            * `resource_group_name` - (Required) Vnet Resource Group Name.
-            * `network_interfaces` -
-                * `subnet_name` - (Required) ID of subnet.
-                * `assign_public_up` - (Optional, Default: `false`) Assign a public IP to each VM in the Elastigroup.
-                * `is_primary` -
-                * `additional_ip_configs` - (Optional) Array of additional IP configuration objects.
-                    * `name` - (Required) The IP configuration name.
-                    * `private_ip_version` - (Optional) Available from Azure Api-Version 2017-03-30 onwards, it represents whether the specific ip configuration is IPv4 or IPv6. Valid values: `IPv4`, `IPv6`.
-                * `application_security_group` - (Optional) - List of Application Security Groups that will be associated to the primary ip configuration of the network interface.
-                    * `name` - (Required) - The name of the Application Security group.
-                    * `resource_group_name` - (Required) - The resource group of the Application Security Group.
-                      }
-        ```python
-        import pulumi
-        ```
-
-        ### Login
-
-        * `login` - (Required) Describes the login configuration.
-            * `user_name` - (Required) Set admin access for accessing your VMs.
-            * `ssh_public_key` - (Optional) SSH for admin access to Linux VMs. Required for Linux OS types.
-            * `password` - (Optional) Password for admin access to Windows VMs. Required for Windows OS types.
-
-        ```python
-        import pulumi
-        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -992,51 +961,6 @@ class Elastigroup(pulumi.CustomResource):
         * `draining_timeout` - (Optional, Default `120`) Time (seconds) to allow the instance to be drained from incoming TCP connections and detached from MLB before terminating it during a scale-down operation.
 
         <a id="image"></a>
-        ## Image
-
-        * `image` - (Required) Image of a VM. An image is a template for creating new VMs. Choose from Azure image catalogue (marketplace) or use a custom image.
-            * `publisher` - (Optional) Image publisher. Required if resource_group_name is not specified.
-            * `offer` - (Optional) Name of the image to use. Required if publisher is specified.
-            * `sku` - (Optional) Image's Stock Keeping Unit, which is the specific version of the image. Required if publisher is specified.
-            * `version` -
-            * `resource_group_name` - (Optional) Name of Resource Group for custom image. Required if publisher not specified.
-            * `image_name` - (Optional) Name of the custom image. Required if resource_group_name is specified.
-
-        ```python
-        import pulumi
-        ```
-
-        <a id="network"></a>
-        ## Network
-
-        * `network` - (Required) Defines the Virtual Network and Subnet for your Elastigroup.
-            * `virtual_network_name` - (Required) Name of Vnet.
-            * `resource_group_name` - (Required) Vnet Resource Group Name.
-            * `network_interfaces` -
-                * `subnet_name` - (Required) ID of subnet.
-                * `assign_public_up` - (Optional, Default: `false`) Assign a public IP to each VM in the Elastigroup.
-                * `is_primary` -
-                * `additional_ip_configs` - (Optional) Array of additional IP configuration objects.
-                    * `name` - (Required) The IP configuration name.
-                    * `private_ip_version` - (Optional) Available from Azure Api-Version 2017-03-30 onwards, it represents whether the specific ip configuration is IPv4 or IPv6. Valid values: `IPv4`, `IPv6`.
-                * `application_security_group` - (Optional) - List of Application Security Groups that will be associated to the primary ip configuration of the network interface.
-                    * `name` - (Required) - The name of the Application Security group.
-                    * `resource_group_name` - (Required) - The resource group of the Application Security Group.
-                      }
-        ```python
-        import pulumi
-        ```
-
-        ### Login
-
-        * `login` - (Required) Describes the login configuration.
-            * `user_name` - (Required) Set admin access for accessing your VMs.
-            * `ssh_public_key` - (Optional) SSH for admin access to Linux VMs. Required for Linux OS types.
-            * `password` - (Optional) Password for admin access to Windows VMs. Required for Windows OS types.
-
-        ```python
-        import pulumi
-        ```
 
         :param str resource_name: The name of the resource.
         :param ElastigroupArgs args: The arguments to use to populate this resource's properties.
@@ -1093,31 +1017,15 @@ class Elastigroup(pulumi.CustomResource):
 
             __props__.__dict__["custom_data"] = custom_data
             __props__.__dict__["desired_capacity"] = desired_capacity
-            if health_check is not None and not isinstance(health_check, ElastigroupHealthCheckArgs):
-                health_check = health_check or {}
-                def _setter(key, value):
-                    health_check[key] = value
-                ElastigroupHealthCheckArgs._configure(_setter, **health_check)
+            health_check = _utilities.configure(health_check, ElastigroupHealthCheckArgs, True)
             __props__.__dict__["health_check"] = health_check
             __props__.__dict__["images"] = images
-            if integration_kubernetes is not None and not isinstance(integration_kubernetes, ElastigroupIntegrationKubernetesArgs):
-                integration_kubernetes = integration_kubernetes or {}
-                def _setter(key, value):
-                    integration_kubernetes[key] = value
-                ElastigroupIntegrationKubernetesArgs._configure(_setter, **integration_kubernetes)
+            integration_kubernetes = _utilities.configure(integration_kubernetes, ElastigroupIntegrationKubernetesArgs, True)
             __props__.__dict__["integration_kubernetes"] = integration_kubernetes
-            if integration_multai_runtime is not None and not isinstance(integration_multai_runtime, ElastigroupIntegrationMultaiRuntimeArgs):
-                integration_multai_runtime = integration_multai_runtime or {}
-                def _setter(key, value):
-                    integration_multai_runtime[key] = value
-                ElastigroupIntegrationMultaiRuntimeArgs._configure(_setter, **integration_multai_runtime)
+            integration_multai_runtime = _utilities.configure(integration_multai_runtime, ElastigroupIntegrationMultaiRuntimeArgs, True)
             __props__.__dict__["integration_multai_runtime"] = integration_multai_runtime
             __props__.__dict__["load_balancers"] = load_balancers
-            if login is not None and not isinstance(login, ElastigroupLoginArgs):
-                login = login or {}
-                def _setter(key, value):
-                    login[key] = value
-                ElastigroupLoginArgs._configure(_setter, **login)
+            login = _utilities.configure(login, ElastigroupLoginArgs, True)
             __props__.__dict__["login"] = login
             if low_priority_sizes is None and not opts.urn:
                 raise TypeError("Missing required property 'low_priority_sizes'")
@@ -1126,11 +1034,7 @@ class Elastigroup(pulumi.CustomResource):
             __props__.__dict__["max_size"] = max_size
             __props__.__dict__["min_size"] = min_size
             __props__.__dict__["name"] = name
-            if network is not None and not isinstance(network, ElastigroupNetworkArgs):
-                network = network or {}
-                def _setter(key, value):
-                    network[key] = value
-                ElastigroupNetworkArgs._configure(_setter, **network)
+            network = _utilities.configure(network, ElastigroupNetworkArgs, True)
             if network is None and not opts.urn:
                 raise TypeError("Missing required property 'network'")
             __props__.__dict__["network"] = network
@@ -1150,19 +1054,11 @@ class Elastigroup(pulumi.CustomResource):
             __props__.__dict__["scaling_up_policies"] = scaling_up_policies
             __props__.__dict__["scheduled_tasks"] = scheduled_tasks
             __props__.__dict__["shutdown_script"] = shutdown_script
-            if strategy is not None and not isinstance(strategy, ElastigroupStrategyArgs):
-                strategy = strategy or {}
-                def _setter(key, value):
-                    strategy[key] = value
-                ElastigroupStrategyArgs._configure(_setter, **strategy)
+            strategy = _utilities.configure(strategy, ElastigroupStrategyArgs, True)
             if strategy is None and not opts.urn:
                 raise TypeError("Missing required property 'strategy'")
             __props__.__dict__["strategy"] = strategy
-            if update_policy is not None and not isinstance(update_policy, ElastigroupUpdatePolicyArgs):
-                update_policy = update_policy or {}
-                def _setter(key, value):
-                    update_policy[key] = value
-                ElastigroupUpdatePolicyArgs._configure(_setter, **update_policy)
+            update_policy = _utilities.configure(update_policy, ElastigroupUpdatePolicyArgs, True)
             __props__.__dict__["update_policy"] = update_policy
             __props__.__dict__["user_data"] = user_data
         super(Elastigroup, __self__).__init__(

@@ -27,16 +27,6 @@ namespace Pulumi.SpotInst.Ecs.Outputs
         public readonly Outputs.OceanAutoscalerDown? Down;
         /// <summary>
         /// When set to true, both automatic and per custom launch specification manual headroom to be saved concurrently and independently in the cluster. prerequisite: isAutoConfig must be true
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        /// });
-        /// ```
         /// </summary>
         public readonly bool? EnableAutomaticAndManualHeadroom;
         /// <summary>

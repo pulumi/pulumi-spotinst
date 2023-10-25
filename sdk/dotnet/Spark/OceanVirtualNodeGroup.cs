@@ -15,25 +15,6 @@ namespace Pulumi.SpotInst.Spark
     /// ## Prerequisites
     /// 
     /// An existing Ocean cluster and Ocean VNG is required by this resource
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using SpotInst = Pulumi.SpotInst;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new SpotInst.Spark.OceanVirtualNodeGroup("example", new()
-    ///     {
-    ///         OceanSparkClusterId = "cluster_id",
-    ///         VirtualNodeGroupId = "vng_id",
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// </summary>
     [SpotInstResourceType("spotinst:spark/oceanVirtualNodeGroup:OceanVirtualNodeGroup")]
     public partial class OceanVirtualNodeGroup : global::Pulumi.CustomResource

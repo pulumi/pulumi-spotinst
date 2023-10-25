@@ -6,16 +6,6 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a Spotinst account resource.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as spotinst from "@pulumi/spotinst";
- *
- * // Create a Account
- * const myAwsAcct = new spotinst.aws.Account("myAwsAcct", {});
- * ```
  */
 export class Account extends pulumi.CustomResource {
     /**

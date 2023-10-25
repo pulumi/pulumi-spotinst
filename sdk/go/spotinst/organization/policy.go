@@ -14,58 +14,6 @@ import (
 )
 
 // Provides a Spotinst access policy.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst/organization"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := organization.NewPolicy(ctx, "terraformPolicy", &organization.PolicyArgs{
-//				Description: pulumi.String("policy by terraform"),
-//				PolicyContents: organization.PolicyPolicyContentArray{
-//					&organization.PolicyPolicyContentArgs{
-//						Statements: organization.PolicyPolicyContentStatementArray{
-//							&organization.PolicyPolicyContentStatementArgs{
-//								Actions: pulumi.StringArray{
-//									pulumi.String("ocean:deleteCluster"),
-//								},
-//								Effect: pulumi.String("DENY"),
-//								Resources: pulumi.StringArray{
-//									pulumi.String("o-abcd1234"),
-//									pulumi.String("o-defg6789"),
-//								},
-//							},
-//							&organization.PolicyPolicyContentStatementArgs{
-//								Actions: pulumi.StringArray{
-//									pulumi.String("ocean:createCluster"),
-//								},
-//								Effect: pulumi.String("DENY"),
-//								Resources: pulumi.StringArray{
-//									pulumi.String("o-fhau4752"),
-//									pulumi.String("o-761owf4r3"),
-//								},
-//							},
-//						},
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 type Policy struct {
 	pulumi.CustomResourceState
 

@@ -10,16 +10,6 @@ import * as utilities from "../utilities";
  * Manages a Spotinst Ocean AKS resource.
  *
  * > This resource contains arguments (such as `image` and `extension`) that are automatically populated from the data reported by the Ocean AKS Connector deployed into your cluster. You can override the upstream configuration by defining the corresponding arguments.
- *
- * ## Prerequisites
- *
- * Installation of the Ocean controller is required by this resource. You can accomplish this by using the spotinst/ocean-controller module as follows:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * ```
- *
- * > You must configure the same `clusterIdentifier` and `acdIdentifier` both for the Ocean controller and for the `spotinst.azure.Ocean` resource.
  */
 export class Ocean extends pulumi.CustomResource {
     /**

@@ -13,36 +13,6 @@ import (
 )
 
 // Provides a Spotinst Data Integration resource.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := spotinst.NewDataIntegration(ctx, "example", &spotinst.DataIntegrationArgs{
-//				S3: &spotinst.DataIntegrationS3Args{
-//					BucketName: pulumi.String("terraform-test-do-not-delete"),
-//					Subdir:     pulumi.String("terraform-test-data-integration"),
-//				},
-//				Status: pulumi.String("enabled"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 type DataIntegration struct {
 	pulumi.CustomResourceState
 

@@ -49,7 +49,7 @@ class OceanVirtualNodeGroupArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             ocean_id: pulumi.Input[str],
+             ocean_id: Optional[pulumi.Input[str]] = None,
              autoscales: Optional[pulumi.Input[Sequence[pulumi.Input['OceanVirtualNodeGroupAutoscaleArgs']]]] = None,
              labels: Optional[pulumi.Input[Sequence[pulumi.Input['OceanVirtualNodeGroupLabelArgs']]]] = None,
              launch_specifications: Optional[pulumi.Input[Sequence[pulumi.Input['OceanVirtualNodeGroupLaunchSpecificationArgs']]]] = None,
@@ -57,13 +57,15 @@ class OceanVirtualNodeGroupArgs:
              resource_limits: Optional[pulumi.Input[Sequence[pulumi.Input['OceanVirtualNodeGroupResourceLimitArgs']]]] = None,
              taints: Optional[pulumi.Input[Sequence[pulumi.Input['OceanVirtualNodeGroupTaintArgs']]]] = None,
              zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'oceanId' in kwargs:
+        if ocean_id is None and 'oceanId' in kwargs:
             ocean_id = kwargs['oceanId']
-        if 'launchSpecifications' in kwargs:
+        if ocean_id is None:
+            raise TypeError("Missing 'ocean_id' argument")
+        if launch_specifications is None and 'launchSpecifications' in kwargs:
             launch_specifications = kwargs['launchSpecifications']
-        if 'resourceLimits' in kwargs:
+        if resource_limits is None and 'resourceLimits' in kwargs:
             resource_limits = kwargs['resourceLimits']
 
         _setter("ocean_id", ocean_id)
@@ -223,13 +225,13 @@ class _OceanVirtualNodeGroupState:
              resource_limits: Optional[pulumi.Input[Sequence[pulumi.Input['OceanVirtualNodeGroupResourceLimitArgs']]]] = None,
              taints: Optional[pulumi.Input[Sequence[pulumi.Input['OceanVirtualNodeGroupTaintArgs']]]] = None,
              zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'launchSpecifications' in kwargs:
+        if launch_specifications is None and 'launchSpecifications' in kwargs:
             launch_specifications = kwargs['launchSpecifications']
-        if 'oceanId' in kwargs:
+        if ocean_id is None and 'oceanId' in kwargs:
             ocean_id = kwargs['oceanId']
-        if 'resourceLimits' in kwargs:
+        if resource_limits is None and 'resourceLimits' in kwargs:
             resource_limits = kwargs['resourceLimits']
 
         if autoscales is not None:
@@ -363,60 +365,6 @@ class OceanVirtualNodeGroup(pulumi.CustomResource):
         """
         Manages a Spotinst Ocean AKS Virtual Node Group resource.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_spotinst as spotinst
-
-        example = spotinst.azure.OceanVirtualNodeGroup("example",
-            autoscales=[spotinst.azure.OceanVirtualNodeGroupAutoscaleArgs(
-                auto_headroom_percentage=5,
-                autoscale_headrooms=[spotinst.azure.OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArgs(
-                    cpu_per_unit=4,
-                    gpu_per_unit=8,
-                    memory_per_unit=100,
-                    num_of_units=16,
-                )],
-            )],
-            labels=[spotinst.azure.OceanVirtualNodeGroupLabelArgs(
-                key="label_key",
-                value="label_value",
-            )],
-            launch_specifications=[spotinst.azure.OceanVirtualNodeGroupLaunchSpecificationArgs(
-                max_pods=30,
-                os_disk=spotinst.azure.OceanVirtualNodeGroupLaunchSpecificationOsDiskArgs(
-                    size_gb=100,
-                    type="Standard_LRS",
-                    utilize_ephemeral_storage=False,
-                ),
-                tags=[spotinst.azure.OceanVirtualNodeGroupLaunchSpecificationTagArgs(
-                    key="label_key",
-                    value="label_value",
-                )],
-            )],
-            ocean_id="o-12345",
-            resource_limits=[spotinst.azure.OceanVirtualNodeGroupResourceLimitArgs(
-                max_instance_count=4,
-            )],
-            taints=[spotinst.azure.OceanVirtualNodeGroupTaintArgs(
-                effect="NoSchedule",
-                key="taint_key",
-                value="taint_value",
-            )],
-            zones=[
-                "1",
-                "2",
-                "3",
-            ])
-        ```
-
-        ```python
-        import pulumi
-
-        pulumi.export("oceanId", spotinst_ocean_aks_["example"]["id"])
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanVirtualNodeGroupAutoscaleArgs']]]] autoscales: .
@@ -436,60 +384,6 @@ class OceanVirtualNodeGroup(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages a Spotinst Ocean AKS Virtual Node Group resource.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_spotinst as spotinst
-
-        example = spotinst.azure.OceanVirtualNodeGroup("example",
-            autoscales=[spotinst.azure.OceanVirtualNodeGroupAutoscaleArgs(
-                auto_headroom_percentage=5,
-                autoscale_headrooms=[spotinst.azure.OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArgs(
-                    cpu_per_unit=4,
-                    gpu_per_unit=8,
-                    memory_per_unit=100,
-                    num_of_units=16,
-                )],
-            )],
-            labels=[spotinst.azure.OceanVirtualNodeGroupLabelArgs(
-                key="label_key",
-                value="label_value",
-            )],
-            launch_specifications=[spotinst.azure.OceanVirtualNodeGroupLaunchSpecificationArgs(
-                max_pods=30,
-                os_disk=spotinst.azure.OceanVirtualNodeGroupLaunchSpecificationOsDiskArgs(
-                    size_gb=100,
-                    type="Standard_LRS",
-                    utilize_ephemeral_storage=False,
-                ),
-                tags=[spotinst.azure.OceanVirtualNodeGroupLaunchSpecificationTagArgs(
-                    key="label_key",
-                    value="label_value",
-                )],
-            )],
-            ocean_id="o-12345",
-            resource_limits=[spotinst.azure.OceanVirtualNodeGroupResourceLimitArgs(
-                max_instance_count=4,
-            )],
-            taints=[spotinst.azure.OceanVirtualNodeGroupTaintArgs(
-                effect="NoSchedule",
-                key="taint_key",
-                value="taint_value",
-            )],
-            zones=[
-                "1",
-                "2",
-                "3",
-            ])
-        ```
-
-        ```python
-        import pulumi
-
-        pulumi.export("oceanId", spotinst_ocean_aks_["example"]["id"])
-        ```
 
         :param str resource_name: The name of the resource.
         :param OceanVirtualNodeGroupArgs args: The arguments to use to populate this resource's properties.

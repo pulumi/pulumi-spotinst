@@ -75,7 +75,7 @@ class OceanLaunchSpecArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             ocean_id: pulumi.Input[str],
+             ocean_id: Optional[pulumi.Input[str]] = None,
              attributes: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecAttributeArgs']]]] = None,
              autoscale_headrooms: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecAutoscaleHeadroomArgs']]]] = None,
              block_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecBlockDeviceMappingArgs']]]] = None,
@@ -92,33 +92,35 @@ class OceanLaunchSpecArgs:
              subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecTagArgs']]]] = None,
              user_data: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'oceanId' in kwargs:
+        if ocean_id is None and 'oceanId' in kwargs:
             ocean_id = kwargs['oceanId']
-        if 'autoscaleHeadrooms' in kwargs:
+        if ocean_id is None:
+            raise TypeError("Missing 'ocean_id' argument")
+        if autoscale_headrooms is None and 'autoscaleHeadrooms' in kwargs:
             autoscale_headrooms = kwargs['autoscaleHeadrooms']
-        if 'blockDeviceMappings' in kwargs:
+        if block_device_mappings is None and 'blockDeviceMappings' in kwargs:
             block_device_mappings = kwargs['blockDeviceMappings']
-        if 'iamInstanceProfile' in kwargs:
+        if iam_instance_profile is None and 'iamInstanceProfile' in kwargs:
             iam_instance_profile = kwargs['iamInstanceProfile']
-        if 'imageId' in kwargs:
+        if image_id is None and 'imageId' in kwargs:
             image_id = kwargs['imageId']
-        if 'instanceMetadataOptions' in kwargs:
+        if instance_metadata_options is None and 'instanceMetadataOptions' in kwargs:
             instance_metadata_options = kwargs['instanceMetadataOptions']
-        if 'instanceTypes' in kwargs:
+        if instance_types is None and 'instanceTypes' in kwargs:
             instance_types = kwargs['instanceTypes']
-        if 'preferredSpotTypes' in kwargs:
+        if preferred_spot_types is None and 'preferredSpotTypes' in kwargs:
             preferred_spot_types = kwargs['preferredSpotTypes']
-        if 'restrictScaleDown' in kwargs:
+        if restrict_scale_down is None and 'restrictScaleDown' in kwargs:
             restrict_scale_down = kwargs['restrictScaleDown']
-        if 'schedulingTasks' in kwargs:
+        if scheduling_tasks is None and 'schedulingTasks' in kwargs:
             scheduling_tasks = kwargs['schedulingTasks']
-        if 'securityGroupIds' in kwargs:
+        if security_group_ids is None and 'securityGroupIds' in kwargs:
             security_group_ids = kwargs['securityGroupIds']
-        if 'subnetIds' in kwargs:
+        if subnet_ids is None and 'subnetIds' in kwargs:
             subnet_ids = kwargs['subnetIds']
-        if 'userData' in kwargs:
+        if user_data is None and 'userData' in kwargs:
             user_data = kwargs['userData']
 
         _setter("ocean_id", ocean_id)
@@ -436,33 +438,33 @@ class _OceanLaunchSpecState:
              subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecTagArgs']]]] = None,
              user_data: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'autoscaleHeadrooms' in kwargs:
+        if autoscale_headrooms is None and 'autoscaleHeadrooms' in kwargs:
             autoscale_headrooms = kwargs['autoscaleHeadrooms']
-        if 'blockDeviceMappings' in kwargs:
+        if block_device_mappings is None and 'blockDeviceMappings' in kwargs:
             block_device_mappings = kwargs['blockDeviceMappings']
-        if 'iamInstanceProfile' in kwargs:
+        if iam_instance_profile is None and 'iamInstanceProfile' in kwargs:
             iam_instance_profile = kwargs['iamInstanceProfile']
-        if 'imageId' in kwargs:
+        if image_id is None and 'imageId' in kwargs:
             image_id = kwargs['imageId']
-        if 'instanceMetadataOptions' in kwargs:
+        if instance_metadata_options is None and 'instanceMetadataOptions' in kwargs:
             instance_metadata_options = kwargs['instanceMetadataOptions']
-        if 'instanceTypes' in kwargs:
+        if instance_types is None and 'instanceTypes' in kwargs:
             instance_types = kwargs['instanceTypes']
-        if 'oceanId' in kwargs:
+        if ocean_id is None and 'oceanId' in kwargs:
             ocean_id = kwargs['oceanId']
-        if 'preferredSpotTypes' in kwargs:
+        if preferred_spot_types is None and 'preferredSpotTypes' in kwargs:
             preferred_spot_types = kwargs['preferredSpotTypes']
-        if 'restrictScaleDown' in kwargs:
+        if restrict_scale_down is None and 'restrictScaleDown' in kwargs:
             restrict_scale_down = kwargs['restrictScaleDown']
-        if 'schedulingTasks' in kwargs:
+        if scheduling_tasks is None and 'schedulingTasks' in kwargs:
             scheduling_tasks = kwargs['schedulingTasks']
-        if 'securityGroupIds' in kwargs:
+        if security_group_ids is None and 'securityGroupIds' in kwargs:
             security_group_ids = kwargs['securityGroupIds']
-        if 'subnetIds' in kwargs:
+        if subnet_ids is None and 'subnetIds' in kwargs:
             subnet_ids = kwargs['subnetIds']
-        if 'userData' in kwargs:
+        if user_data is None and 'userData' in kwargs:
             user_data = kwargs['userData']
 
         if attributes is not None:
@@ -728,95 +730,6 @@ class OceanLaunchSpec(pulumi.CustomResource):
         """
         Manages a custom Spotinst Ocean ECS Launch Spec resource.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_spotinst as spotinst
-
-        example = spotinst.ecs.OceanLaunchSpec("example",
-            attributes=[spotinst.ecs.OceanLaunchSpecAttributeArgs(
-                key="fakeKey",
-                value="fakeValue",
-            )],
-            autoscale_headrooms=[spotinst.ecs.OceanLaunchSpecAutoscaleHeadroomArgs(
-                cpu_per_unit=1000,
-                memory_per_unit=2048,
-                num_of_units=5,
-            )],
-            block_device_mappings=[spotinst.ecs.OceanLaunchSpecBlockDeviceMappingArgs(
-                device_name="/dev/xvda1",
-                ebs=spotinst.ecs.OceanLaunchSpecBlockDeviceMappingEbsArgs(
-                    delete_on_termination=True,
-                    dynamic_volume_size=spotinst.ecs.OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs(
-                        base_size=50,
-                        resource="CPU",
-                        size_per_resource_unit=20,
-                    ),
-                    encrypted=False,
-                    throughput=500,
-                    volume_size=50,
-                    volume_type="gp2",
-                ),
-            )],
-            iam_instance_profile="iam-profile",
-            image_id="ami-123456",
-            instance_metadata_options=spotinst.ecs.OceanLaunchSpecInstanceMetadataOptionsArgs(
-                http_put_response_hop_limit=10,
-                http_tokens="required",
-            ),
-            instance_types=[
-                "m3.large",
-                "m3.xlarge",
-                "m3.2xlarge",
-                "m4.large",
-                "m4.xlarge",
-                "m4.4xlarge",
-                "m4.2xlarge",
-                "m4.10xlarge",
-                "m4.16xlarge",
-                "m5.large",
-                "m5.xlarge",
-                "m5.2xlarge",
-                "m5.4xlarge",
-                "m5.12xlarge",
-                "m5.24xlarge",
-            ],
-            ocean_id="o-123456",
-            preferred_spot_types=[
-                "m3.large",
-                "m3.xlarge",
-                "m3.2xlarge",
-                "m4.large",
-                "m4.xlarge",
-            ],
-            restrict_scale_down=True,
-            scheduling_tasks=[spotinst.ecs.OceanLaunchSpecSchedulingTaskArgs(
-                cron_expression="0 1 * * *",
-                is_enabled=True,
-                task_headrooms=[spotinst.ecs.OceanLaunchSpecSchedulingTaskTaskHeadroomArgs(
-                    cpu_per_unit=1000,
-                    memory_per_unit=2048,
-                    num_of_units=5,
-                )],
-                task_type="manualHeadroomUpdate",
-            )],
-            security_group_ids=["awseb-12345"],
-            strategies=[spotinst.ecs.OceanLaunchSpecStrategyArgs(
-                spot_percentage=50,
-            )],
-            subnet_ids=["subnet-12345"],
-            tags=[spotinst.ecs.OceanLaunchSpecTagArgs(
-                key="Env",
-                value="production",
-            )],
-            user_data="echo hello world")
-        ```
-        ```python
-        import pulumi
-
-        pulumi.export("oceanLaunchspecId", spotinst_ocean_ecs_launch_spec["example"]["id"])
-        ```
         ## Block Devices
 
         * `block_device_mappings`- (Optional) Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
@@ -864,95 +777,6 @@ class OceanLaunchSpec(pulumi.CustomResource):
         """
         Manages a custom Spotinst Ocean ECS Launch Spec resource.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_spotinst as spotinst
-
-        example = spotinst.ecs.OceanLaunchSpec("example",
-            attributes=[spotinst.ecs.OceanLaunchSpecAttributeArgs(
-                key="fakeKey",
-                value="fakeValue",
-            )],
-            autoscale_headrooms=[spotinst.ecs.OceanLaunchSpecAutoscaleHeadroomArgs(
-                cpu_per_unit=1000,
-                memory_per_unit=2048,
-                num_of_units=5,
-            )],
-            block_device_mappings=[spotinst.ecs.OceanLaunchSpecBlockDeviceMappingArgs(
-                device_name="/dev/xvda1",
-                ebs=spotinst.ecs.OceanLaunchSpecBlockDeviceMappingEbsArgs(
-                    delete_on_termination=True,
-                    dynamic_volume_size=spotinst.ecs.OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs(
-                        base_size=50,
-                        resource="CPU",
-                        size_per_resource_unit=20,
-                    ),
-                    encrypted=False,
-                    throughput=500,
-                    volume_size=50,
-                    volume_type="gp2",
-                ),
-            )],
-            iam_instance_profile="iam-profile",
-            image_id="ami-123456",
-            instance_metadata_options=spotinst.ecs.OceanLaunchSpecInstanceMetadataOptionsArgs(
-                http_put_response_hop_limit=10,
-                http_tokens="required",
-            ),
-            instance_types=[
-                "m3.large",
-                "m3.xlarge",
-                "m3.2xlarge",
-                "m4.large",
-                "m4.xlarge",
-                "m4.4xlarge",
-                "m4.2xlarge",
-                "m4.10xlarge",
-                "m4.16xlarge",
-                "m5.large",
-                "m5.xlarge",
-                "m5.2xlarge",
-                "m5.4xlarge",
-                "m5.12xlarge",
-                "m5.24xlarge",
-            ],
-            ocean_id="o-123456",
-            preferred_spot_types=[
-                "m3.large",
-                "m3.xlarge",
-                "m3.2xlarge",
-                "m4.large",
-                "m4.xlarge",
-            ],
-            restrict_scale_down=True,
-            scheduling_tasks=[spotinst.ecs.OceanLaunchSpecSchedulingTaskArgs(
-                cron_expression="0 1 * * *",
-                is_enabled=True,
-                task_headrooms=[spotinst.ecs.OceanLaunchSpecSchedulingTaskTaskHeadroomArgs(
-                    cpu_per_unit=1000,
-                    memory_per_unit=2048,
-                    num_of_units=5,
-                )],
-                task_type="manualHeadroomUpdate",
-            )],
-            security_group_ids=["awseb-12345"],
-            strategies=[spotinst.ecs.OceanLaunchSpecStrategyArgs(
-                spot_percentage=50,
-            )],
-            subnet_ids=["subnet-12345"],
-            tags=[spotinst.ecs.OceanLaunchSpecTagArgs(
-                key="Env",
-                value="production",
-            )],
-            user_data="echo hello world")
-        ```
-        ```python
-        import pulumi
-
-        pulumi.export("oceanLaunchspecId", spotinst_ocean_ecs_launch_spec["example"]["id"])
-        ```
         ## Block Devices
 
         * `block_device_mappings`- (Optional) Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
@@ -1022,11 +846,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
             __props__.__dict__["block_device_mappings"] = block_device_mappings
             __props__.__dict__["iam_instance_profile"] = iam_instance_profile
             __props__.__dict__["image_id"] = image_id
-            if instance_metadata_options is not None and not isinstance(instance_metadata_options, OceanLaunchSpecInstanceMetadataOptionsArgs):
-                instance_metadata_options = instance_metadata_options or {}
-                def _setter(key, value):
-                    instance_metadata_options[key] = value
-                OceanLaunchSpecInstanceMetadataOptionsArgs._configure(_setter, **instance_metadata_options)
+            instance_metadata_options = _utilities.configure(instance_metadata_options, OceanLaunchSpecInstanceMetadataOptionsArgs, True)
             __props__.__dict__["instance_metadata_options"] = instance_metadata_options
             __props__.__dict__["instance_types"] = instance_types
             __props__.__dict__["name"] = name

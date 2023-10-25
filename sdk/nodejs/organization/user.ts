@@ -8,29 +8,6 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a Spotinst User in the creator's organization.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as spotinst from "@pulumi/spotinst";
- *
- * const terraformUser = new spotinst.organization.User("terraformUser", {
- *     email: "abc@xyz.com",
- *     firstName: "test",
- *     lastName: "user",
- *     password: "testUser@123",
- *     policies: [{
- *         policyAccountIds: ["act-abcf4245"],
- *         policyId: "pol-abcd1236",
- *     }],
- *     role: "viewer",
- *     userGroupIds: [
- *         "ugr-abcd1234",
- *         "ugr-defg8763",
- *     ],
- * });
- * ```
  */
 export class User extends pulumi.CustomResource {
     /**

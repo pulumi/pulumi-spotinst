@@ -8,64 +8,6 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a Spotinst Elastigroup GKE resource. Please see [Importing a GKE cluster](https://api.spotinst.com/elastigroup-for-google-cloud/tutorials/import-a-gke-cluster-as-an-elastigroup/) for detailed information.
- *
- * ## Example Usage
- *
- * A spotinst.gke.Elastigroup supports all of the fields defined in spotinst_elastigroup_gcp.
- *
- * There are two main differences:
- *
- * * you must include `clusterZoneName` and `clusterId`
- * * a handful of parameters are created remotely and will not appear in the diff. A complete list can be found below.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as spotinst from "@pulumi/spotinst";
- *
- * const example_gke_elastigroup = new spotinst.gke.Elastigroup("example-gke-elastigroup", {
- *     backendServices: [{
- *         locationType: "global",
- *         namedPorts: [{
- *             name: "http",
- *             ports: [
- *                 "80",
- *                 "8080",
- *             ],
- *         }],
- *         serviceName: "backend-service",
- *     }],
- *     clusterZoneName: "us-central1-a",
- *     desiredCapacity: 3,
- *     instanceTypesOndemand: "n1-standard-1",
- *     instanceTypesPreemptibles: [
- *         "n1-standard-1",
- *         "n1-standard-2",
- *     ],
- *     integrationGke: {
- *         autoscaleCooldown: 300,
- *         autoscaleDown: {
- *             evaluationPeriods: 300,
- *         },
- *         autoscaleHeadroom: {
- *             cpuPerUnit: 1024,
- *             memoryPerUnit: 512,
- *             numOfUnits: 2,
- *         },
- *         autoscaleIsAutoConfig: false,
- *         autoscaleIsEnabled: true,
- *         autoscaleLabels: [{
- *             key: "label_key",
- *             value: "label_value",
- *         }],
- *         clusterId: "example-cluster-id",
- *         location: "us-central1-a",
- *     },
- *     maxSize: 5,
- *     minSize: 1,
- *     nodeImage: "COS",
- *     preemptiblePercentage: 100,
- * });
- * ```
  */
 export class Elastigroup extends pulumi.CustomResource {
     /**
