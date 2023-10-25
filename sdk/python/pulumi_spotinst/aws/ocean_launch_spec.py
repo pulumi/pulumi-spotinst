@@ -112,7 +112,7 @@ class OceanLaunchSpecArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             ocean_id: pulumi.Input[str],
+             ocean_id: Optional[pulumi.Input[str]] = None,
              associate_public_ip_address: Optional[pulumi.Input[bool]] = None,
              autoscale_downs: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecAutoscaleDownArgs']]]] = None,
              autoscale_headrooms: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecAutoscaleHeadroomArgs']]]] = None,
@@ -142,55 +142,57 @@ class OceanLaunchSpecArgs:
              taints: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecTaintArgs']]]] = None,
              update_policy: Optional[pulumi.Input['OceanLaunchSpecUpdatePolicyArgs']] = None,
              user_data: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'oceanId' in kwargs:
+        if ocean_id is None and 'oceanId' in kwargs:
             ocean_id = kwargs['oceanId']
-        if 'associatePublicIpAddress' in kwargs:
+        if ocean_id is None:
+            raise TypeError("Missing 'ocean_id' argument")
+        if associate_public_ip_address is None and 'associatePublicIpAddress' in kwargs:
             associate_public_ip_address = kwargs['associatePublicIpAddress']
-        if 'autoscaleDowns' in kwargs:
+        if autoscale_downs is None and 'autoscaleDowns' in kwargs:
             autoscale_downs = kwargs['autoscaleDowns']
-        if 'autoscaleHeadrooms' in kwargs:
+        if autoscale_headrooms is None and 'autoscaleHeadrooms' in kwargs:
             autoscale_headrooms = kwargs['autoscaleHeadrooms']
-        if 'autoscaleHeadroomsAutomatics' in kwargs:
+        if autoscale_headrooms_automatics is None and 'autoscaleHeadroomsAutomatics' in kwargs:
             autoscale_headrooms_automatics = kwargs['autoscaleHeadroomsAutomatics']
-        if 'blockDeviceMappings' in kwargs:
+        if block_device_mappings is None and 'blockDeviceMappings' in kwargs:
             block_device_mappings = kwargs['blockDeviceMappings']
-        if 'createOptions' in kwargs:
+        if create_options is None and 'createOptions' in kwargs:
             create_options = kwargs['createOptions']
-        if 'deleteOptions' in kwargs:
+        if delete_options is None and 'deleteOptions' in kwargs:
             delete_options = kwargs['deleteOptions']
-        if 'elasticIpPools' in kwargs:
+        if elastic_ip_pools is None and 'elasticIpPools' in kwargs:
             elastic_ip_pools = kwargs['elasticIpPools']
-        if 'iamInstanceProfile' in kwargs:
+        if iam_instance_profile is None and 'iamInstanceProfile' in kwargs:
             iam_instance_profile = kwargs['iamInstanceProfile']
-        if 'imageId' in kwargs:
+        if image_id is None and 'imageId' in kwargs:
             image_id = kwargs['imageId']
-        if 'instanceMetadataOptions' in kwargs:
+        if instance_metadata_options is None and 'instanceMetadataOptions' in kwargs:
             instance_metadata_options = kwargs['instanceMetadataOptions']
-        if 'instanceTypes' in kwargs:
+        if instance_types is None and 'instanceTypes' in kwargs:
             instance_types = kwargs['instanceTypes']
-        if 'instanceTypesFilters' in kwargs:
+        if instance_types_filters is None and 'instanceTypesFilters' in kwargs:
             instance_types_filters = kwargs['instanceTypesFilters']
-        if 'preferredSpotTypes' in kwargs:
+        if preferred_spot_types is None and 'preferredSpotTypes' in kwargs:
             preferred_spot_types = kwargs['preferredSpotTypes']
-        if 'resourceLimits' in kwargs:
+        if resource_limits is None and 'resourceLimits' in kwargs:
             resource_limits = kwargs['resourceLimits']
-        if 'restrictScaleDown' in kwargs:
+        if restrict_scale_down is None and 'restrictScaleDown' in kwargs:
             restrict_scale_down = kwargs['restrictScaleDown']
-        if 'rootVolumeSize' in kwargs:
+        if root_volume_size is None and 'rootVolumeSize' in kwargs:
             root_volume_size = kwargs['rootVolumeSize']
-        if 'schedulingShutdownHours' in kwargs:
+        if scheduling_shutdown_hours is None and 'schedulingShutdownHours' in kwargs:
             scheduling_shutdown_hours = kwargs['schedulingShutdownHours']
-        if 'schedulingTasks' in kwargs:
+        if scheduling_tasks is None and 'schedulingTasks' in kwargs:
             scheduling_tasks = kwargs['schedulingTasks']
-        if 'securityGroups' in kwargs:
+        if security_groups is None and 'securityGroups' in kwargs:
             security_groups = kwargs['securityGroups']
-        if 'subnetIds' in kwargs:
+        if subnet_ids is None and 'subnetIds' in kwargs:
             subnet_ids = kwargs['subnetIds']
-        if 'updatePolicy' in kwargs:
+        if update_policy is None and 'updatePolicy' in kwargs:
             update_policy = kwargs['updatePolicy']
-        if 'userData' in kwargs:
+        if user_data is None and 'userData' in kwargs:
             user_data = kwargs['userData']
 
         _setter("ocean_id", ocean_id)
@@ -730,55 +732,55 @@ class _OceanLaunchSpecState:
              taints: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecTaintArgs']]]] = None,
              update_policy: Optional[pulumi.Input['OceanLaunchSpecUpdatePolicyArgs']] = None,
              user_data: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'associatePublicIpAddress' in kwargs:
+        if associate_public_ip_address is None and 'associatePublicIpAddress' in kwargs:
             associate_public_ip_address = kwargs['associatePublicIpAddress']
-        if 'autoscaleDowns' in kwargs:
+        if autoscale_downs is None and 'autoscaleDowns' in kwargs:
             autoscale_downs = kwargs['autoscaleDowns']
-        if 'autoscaleHeadrooms' in kwargs:
+        if autoscale_headrooms is None and 'autoscaleHeadrooms' in kwargs:
             autoscale_headrooms = kwargs['autoscaleHeadrooms']
-        if 'autoscaleHeadroomsAutomatics' in kwargs:
+        if autoscale_headrooms_automatics is None and 'autoscaleHeadroomsAutomatics' in kwargs:
             autoscale_headrooms_automatics = kwargs['autoscaleHeadroomsAutomatics']
-        if 'blockDeviceMappings' in kwargs:
+        if block_device_mappings is None and 'blockDeviceMappings' in kwargs:
             block_device_mappings = kwargs['blockDeviceMappings']
-        if 'createOptions' in kwargs:
+        if create_options is None and 'createOptions' in kwargs:
             create_options = kwargs['createOptions']
-        if 'deleteOptions' in kwargs:
+        if delete_options is None and 'deleteOptions' in kwargs:
             delete_options = kwargs['deleteOptions']
-        if 'elasticIpPools' in kwargs:
+        if elastic_ip_pools is None and 'elasticIpPools' in kwargs:
             elastic_ip_pools = kwargs['elasticIpPools']
-        if 'iamInstanceProfile' in kwargs:
+        if iam_instance_profile is None and 'iamInstanceProfile' in kwargs:
             iam_instance_profile = kwargs['iamInstanceProfile']
-        if 'imageId' in kwargs:
+        if image_id is None and 'imageId' in kwargs:
             image_id = kwargs['imageId']
-        if 'instanceMetadataOptions' in kwargs:
+        if instance_metadata_options is None and 'instanceMetadataOptions' in kwargs:
             instance_metadata_options = kwargs['instanceMetadataOptions']
-        if 'instanceTypes' in kwargs:
+        if instance_types is None and 'instanceTypes' in kwargs:
             instance_types = kwargs['instanceTypes']
-        if 'instanceTypesFilters' in kwargs:
+        if instance_types_filters is None and 'instanceTypesFilters' in kwargs:
             instance_types_filters = kwargs['instanceTypesFilters']
-        if 'oceanId' in kwargs:
+        if ocean_id is None and 'oceanId' in kwargs:
             ocean_id = kwargs['oceanId']
-        if 'preferredSpotTypes' in kwargs:
+        if preferred_spot_types is None and 'preferredSpotTypes' in kwargs:
             preferred_spot_types = kwargs['preferredSpotTypes']
-        if 'resourceLimits' in kwargs:
+        if resource_limits is None and 'resourceLimits' in kwargs:
             resource_limits = kwargs['resourceLimits']
-        if 'restrictScaleDown' in kwargs:
+        if restrict_scale_down is None and 'restrictScaleDown' in kwargs:
             restrict_scale_down = kwargs['restrictScaleDown']
-        if 'rootVolumeSize' in kwargs:
+        if root_volume_size is None and 'rootVolumeSize' in kwargs:
             root_volume_size = kwargs['rootVolumeSize']
-        if 'schedulingShutdownHours' in kwargs:
+        if scheduling_shutdown_hours is None and 'schedulingShutdownHours' in kwargs:
             scheduling_shutdown_hours = kwargs['schedulingShutdownHours']
-        if 'schedulingTasks' in kwargs:
+        if scheduling_tasks is None and 'schedulingTasks' in kwargs:
             scheduling_tasks = kwargs['schedulingTasks']
-        if 'securityGroups' in kwargs:
+        if security_groups is None and 'securityGroups' in kwargs:
             security_groups = kwargs['securityGroups']
-        if 'subnetIds' in kwargs:
+        if subnet_ids is None and 'subnetIds' in kwargs:
             subnet_ids = kwargs['subnetIds']
-        if 'updatePolicy' in kwargs:
+        if update_policy is None and 'updatePolicy' in kwargs:
             update_policy = kwargs['updatePolicy']
-        if 'userData' in kwargs:
+        if user_data is None and 'userData' in kwargs:
             user_data = kwargs['userData']
 
         if associate_public_ip_address is not None:
@@ -1229,139 +1231,6 @@ class OceanLaunchSpec(pulumi.CustomResource):
         """
         Manages a Spotinst Ocean AWS [Virtual Node Group](https://docs.spot.io/ocean/features/launch-specifications) resource.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_spotinst as spotinst
-
-        example = spotinst.aws.OceanLaunchSpec("example",
-            associate_public_ip_address=True,
-            autoscale_downs=[spotinst.aws.OceanLaunchSpecAutoscaleDownArgs(
-                max_scale_down_percentage=20,
-            )],
-            autoscale_headrooms=[spotinst.aws.OceanLaunchSpecAutoscaleHeadroomArgs(
-                cpu_per_unit=1000,
-                gpu_per_unit=0,
-                memory_per_unit=2048,
-                num_of_units=5,
-            )],
-            autoscale_headrooms_automatics=[spotinst.aws.OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs(
-                auto_headroom_percentage=5,
-            )],
-            block_device_mappings=[spotinst.aws.OceanLaunchSpecBlockDeviceMappingArgs(
-                device_name="/dev/xvda",
-                ebs=spotinst.aws.OceanLaunchSpecBlockDeviceMappingEbsArgs(
-                    delete_on_termination=True,
-                    dynamic_volume_size=spotinst.aws.OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs(
-                        base_size=50,
-                        resource="CPU",
-                        size_per_resource_unit=20,
-                    ),
-                    encrypted=False,
-                    throughput=500,
-                    volume_size=50,
-                    volume_type="gp2",
-                ),
-            )],
-            create_options=spotinst.aws.OceanLaunchSpecCreateOptionsArgs(
-                initial_nodes=1,
-            ),
-            delete_options=spotinst.aws.OceanLaunchSpecDeleteOptionsArgs(
-                delete_nodes=True,
-                force_delete=True,
-            ),
-            elastic_ip_pools=[spotinst.aws.OceanLaunchSpecElasticIpPoolArgs(
-                tag_selector=spotinst.aws.OceanLaunchSpecElasticIpPoolTagSelectorArgs(
-                    tag_key="key",
-                    tag_value="value",
-                ),
-            )],
-            iam_instance_profile="iam-profile",
-            image_id="ami-123456",
-            images=[
-                spotinst.aws.OceanLaunchSpecImageArgs(
-                    image_id="ami-id1",
-                ),
-                spotinst.aws.OceanLaunchSpecImageArgs(
-                    image_id="ami-id2",
-                ),
-            ],
-            instance_metadata_options=spotinst.aws.OceanLaunchSpecInstanceMetadataOptionsArgs(
-                http_put_response_hop_limit=10,
-                http_tokens="required",
-            ),
-            instance_types=[
-                "m4.large",
-                "m4.xlarge",
-                "m4.2xlarge",
-                "m4.4xlarge",
-            ],
-            labels=[spotinst.aws.OceanLaunchSpecLabelArgs(
-                key="key1",
-                value="value1",
-            )],
-            ocean_id="o-123456",
-            preferred_spot_types=[
-                "m4.large",
-                "m4.xlarge",
-            ],
-            resource_limits=[spotinst.aws.OceanLaunchSpecResourceLimitArgs(
-                max_instance_count=4,
-                min_instance_count=0,
-            )],
-            restrict_scale_down=True,
-            root_volume_size=30,
-            scheduling_shutdown_hours=spotinst.aws.OceanLaunchSpecSchedulingShutdownHoursArgs(
-                is_enabled=True,
-                time_windows=[
-                    "Sat:08:00-Sat:08:30",
-                    "Sun:08:00-Sun:08:30",
-                ],
-            ),
-            scheduling_tasks=[spotinst.aws.OceanLaunchSpecSchedulingTaskArgs(
-                cron_expression="0 1 * * *",
-                is_enabled=True,
-                task_headrooms=[spotinst.aws.OceanLaunchSpecSchedulingTaskTaskHeadroomArgs(
-                    cpu_per_unit=1000,
-                    gpu_per_unit=0,
-                    memory_per_unit=2048,
-                    num_of_units=5,
-                )],
-                task_type="manualHeadroomUpdate",
-            )],
-            security_groups=["sg-987654321"],
-            strategies=[spotinst.aws.OceanLaunchSpecStrategyArgs(
-                spot_percentage=70,
-            )],
-            subnet_ids=["subnet-1234"],
-            tags=[spotinst.aws.OceanLaunchSpecTagArgs(
-                key="Env",
-                value="production",
-            )],
-            taints=[spotinst.aws.OceanLaunchSpecTaintArgs(
-                effect="NoExecute",
-                key="key1",
-                value="value1",
-            )],
-            user_data="echo Hello, world!")
-        ```
-        ```python
-        import pulumi
-
-        pulumi.export("oceanLaunchspecId", spotinst_ocean_aws_launch_spec["example"]["id"])
-        ```
-        ## Update Policy
-
-        * `update_policy` - (Optional)
-            * `should_roll` - (Required) Enables the roll.
-            * `roll_config` - (Required) Holds the roll configuration.
-                * `batch_size_percentage` - (Required) Sets the percentage of the instances to deploy in each batch.
-
-        ```python
-        import pulumi
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] associate_public_ip_address: Configure public IP address allocation.
@@ -1400,139 +1269,6 @@ class OceanLaunchSpec(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages a Spotinst Ocean AWS [Virtual Node Group](https://docs.spot.io/ocean/features/launch-specifications) resource.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_spotinst as spotinst
-
-        example = spotinst.aws.OceanLaunchSpec("example",
-            associate_public_ip_address=True,
-            autoscale_downs=[spotinst.aws.OceanLaunchSpecAutoscaleDownArgs(
-                max_scale_down_percentage=20,
-            )],
-            autoscale_headrooms=[spotinst.aws.OceanLaunchSpecAutoscaleHeadroomArgs(
-                cpu_per_unit=1000,
-                gpu_per_unit=0,
-                memory_per_unit=2048,
-                num_of_units=5,
-            )],
-            autoscale_headrooms_automatics=[spotinst.aws.OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs(
-                auto_headroom_percentage=5,
-            )],
-            block_device_mappings=[spotinst.aws.OceanLaunchSpecBlockDeviceMappingArgs(
-                device_name="/dev/xvda",
-                ebs=spotinst.aws.OceanLaunchSpecBlockDeviceMappingEbsArgs(
-                    delete_on_termination=True,
-                    dynamic_volume_size=spotinst.aws.OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs(
-                        base_size=50,
-                        resource="CPU",
-                        size_per_resource_unit=20,
-                    ),
-                    encrypted=False,
-                    throughput=500,
-                    volume_size=50,
-                    volume_type="gp2",
-                ),
-            )],
-            create_options=spotinst.aws.OceanLaunchSpecCreateOptionsArgs(
-                initial_nodes=1,
-            ),
-            delete_options=spotinst.aws.OceanLaunchSpecDeleteOptionsArgs(
-                delete_nodes=True,
-                force_delete=True,
-            ),
-            elastic_ip_pools=[spotinst.aws.OceanLaunchSpecElasticIpPoolArgs(
-                tag_selector=spotinst.aws.OceanLaunchSpecElasticIpPoolTagSelectorArgs(
-                    tag_key="key",
-                    tag_value="value",
-                ),
-            )],
-            iam_instance_profile="iam-profile",
-            image_id="ami-123456",
-            images=[
-                spotinst.aws.OceanLaunchSpecImageArgs(
-                    image_id="ami-id1",
-                ),
-                spotinst.aws.OceanLaunchSpecImageArgs(
-                    image_id="ami-id2",
-                ),
-            ],
-            instance_metadata_options=spotinst.aws.OceanLaunchSpecInstanceMetadataOptionsArgs(
-                http_put_response_hop_limit=10,
-                http_tokens="required",
-            ),
-            instance_types=[
-                "m4.large",
-                "m4.xlarge",
-                "m4.2xlarge",
-                "m4.4xlarge",
-            ],
-            labels=[spotinst.aws.OceanLaunchSpecLabelArgs(
-                key="key1",
-                value="value1",
-            )],
-            ocean_id="o-123456",
-            preferred_spot_types=[
-                "m4.large",
-                "m4.xlarge",
-            ],
-            resource_limits=[spotinst.aws.OceanLaunchSpecResourceLimitArgs(
-                max_instance_count=4,
-                min_instance_count=0,
-            )],
-            restrict_scale_down=True,
-            root_volume_size=30,
-            scheduling_shutdown_hours=spotinst.aws.OceanLaunchSpecSchedulingShutdownHoursArgs(
-                is_enabled=True,
-                time_windows=[
-                    "Sat:08:00-Sat:08:30",
-                    "Sun:08:00-Sun:08:30",
-                ],
-            ),
-            scheduling_tasks=[spotinst.aws.OceanLaunchSpecSchedulingTaskArgs(
-                cron_expression="0 1 * * *",
-                is_enabled=True,
-                task_headrooms=[spotinst.aws.OceanLaunchSpecSchedulingTaskTaskHeadroomArgs(
-                    cpu_per_unit=1000,
-                    gpu_per_unit=0,
-                    memory_per_unit=2048,
-                    num_of_units=5,
-                )],
-                task_type="manualHeadroomUpdate",
-            )],
-            security_groups=["sg-987654321"],
-            strategies=[spotinst.aws.OceanLaunchSpecStrategyArgs(
-                spot_percentage=70,
-            )],
-            subnet_ids=["subnet-1234"],
-            tags=[spotinst.aws.OceanLaunchSpecTagArgs(
-                key="Env",
-                value="production",
-            )],
-            taints=[spotinst.aws.OceanLaunchSpecTaintArgs(
-                effect="NoExecute",
-                key="key1",
-                value="value1",
-            )],
-            user_data="echo Hello, world!")
-        ```
-        ```python
-        import pulumi
-
-        pulumi.export("oceanLaunchspecId", spotinst_ocean_aws_launch_spec["example"]["id"])
-        ```
-        ## Update Policy
-
-        * `update_policy` - (Optional)
-            * `should_roll` - (Required) Enables the roll.
-            * `roll_config` - (Required) Holds the roll configuration.
-                * `batch_size_percentage` - (Required) Sets the percentage of the instances to deploy in each batch.
-
-        ```python
-        import pulumi
-        ```
 
         :param str resource_name: The name of the resource.
         :param OceanLaunchSpecArgs args: The arguments to use to populate this resource's properties.
@@ -1597,34 +1333,18 @@ class OceanLaunchSpec(pulumi.CustomResource):
             __props__.__dict__["autoscale_headrooms"] = autoscale_headrooms
             __props__.__dict__["autoscale_headrooms_automatics"] = autoscale_headrooms_automatics
             __props__.__dict__["block_device_mappings"] = block_device_mappings
-            if create_options is not None and not isinstance(create_options, OceanLaunchSpecCreateOptionsArgs):
-                create_options = create_options or {}
-                def _setter(key, value):
-                    create_options[key] = value
-                OceanLaunchSpecCreateOptionsArgs._configure(_setter, **create_options)
+            create_options = _utilities.configure(create_options, OceanLaunchSpecCreateOptionsArgs, True)
             __props__.__dict__["create_options"] = create_options
-            if delete_options is not None and not isinstance(delete_options, OceanLaunchSpecDeleteOptionsArgs):
-                delete_options = delete_options or {}
-                def _setter(key, value):
-                    delete_options[key] = value
-                OceanLaunchSpecDeleteOptionsArgs._configure(_setter, **delete_options)
+            delete_options = _utilities.configure(delete_options, OceanLaunchSpecDeleteOptionsArgs, True)
             __props__.__dict__["delete_options"] = delete_options
             __props__.__dict__["elastic_ip_pools"] = elastic_ip_pools
             __props__.__dict__["iam_instance_profile"] = iam_instance_profile
             __props__.__dict__["image_id"] = image_id
             __props__.__dict__["images"] = images
-            if instance_metadata_options is not None and not isinstance(instance_metadata_options, OceanLaunchSpecInstanceMetadataOptionsArgs):
-                instance_metadata_options = instance_metadata_options or {}
-                def _setter(key, value):
-                    instance_metadata_options[key] = value
-                OceanLaunchSpecInstanceMetadataOptionsArgs._configure(_setter, **instance_metadata_options)
+            instance_metadata_options = _utilities.configure(instance_metadata_options, OceanLaunchSpecInstanceMetadataOptionsArgs, True)
             __props__.__dict__["instance_metadata_options"] = instance_metadata_options
             __props__.__dict__["instance_types"] = instance_types
-            if instance_types_filters is not None and not isinstance(instance_types_filters, OceanLaunchSpecInstanceTypesFiltersArgs):
-                instance_types_filters = instance_types_filters or {}
-                def _setter(key, value):
-                    instance_types_filters[key] = value
-                OceanLaunchSpecInstanceTypesFiltersArgs._configure(_setter, **instance_types_filters)
+            instance_types_filters = _utilities.configure(instance_types_filters, OceanLaunchSpecInstanceTypesFiltersArgs, True)
             __props__.__dict__["instance_types_filters"] = instance_types_filters
             __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
@@ -1635,11 +1355,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
             __props__.__dict__["resource_limits"] = resource_limits
             __props__.__dict__["restrict_scale_down"] = restrict_scale_down
             __props__.__dict__["root_volume_size"] = root_volume_size
-            if scheduling_shutdown_hours is not None and not isinstance(scheduling_shutdown_hours, OceanLaunchSpecSchedulingShutdownHoursArgs):
-                scheduling_shutdown_hours = scheduling_shutdown_hours or {}
-                def _setter(key, value):
-                    scheduling_shutdown_hours[key] = value
-                OceanLaunchSpecSchedulingShutdownHoursArgs._configure(_setter, **scheduling_shutdown_hours)
+            scheduling_shutdown_hours = _utilities.configure(scheduling_shutdown_hours, OceanLaunchSpecSchedulingShutdownHoursArgs, True)
             __props__.__dict__["scheduling_shutdown_hours"] = scheduling_shutdown_hours
             __props__.__dict__["scheduling_tasks"] = scheduling_tasks
             __props__.__dict__["security_groups"] = security_groups
@@ -1647,11 +1363,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
             __props__.__dict__["subnet_ids"] = subnet_ids
             __props__.__dict__["tags"] = tags
             __props__.__dict__["taints"] = taints
-            if update_policy is not None and not isinstance(update_policy, OceanLaunchSpecUpdatePolicyArgs):
-                update_policy = update_policy or {}
-                def _setter(key, value):
-                    update_policy[key] = value
-                OceanLaunchSpecUpdatePolicyArgs._configure(_setter, **update_policy)
+            update_policy = _utilities.configure(update_policy, OceanLaunchSpecUpdatePolicyArgs, True)
             __props__.__dict__["update_policy"] = update_policy
             __props__.__dict__["user_data"] = user_data
         super(OceanLaunchSpec, __self__).__init__(

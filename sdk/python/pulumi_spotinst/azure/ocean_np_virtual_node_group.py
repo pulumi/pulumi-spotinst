@@ -67,7 +67,7 @@ class OceanNpVirtualNodeGroupArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             ocean_id: pulumi.Input[str],
+             ocean_id: Optional[pulumi.Input[str]] = None,
              availability_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              enable_node_public_ip: Optional[pulumi.Input[bool]] = None,
              fallback_to_ondemand: Optional[pulumi.Input[bool]] = None,
@@ -88,37 +88,39 @@ class OceanNpVirtualNodeGroupArgs:
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              taints: Optional[pulumi.Input[Sequence[pulumi.Input['OceanNpVirtualNodeGroupTaintArgs']]]] = None,
              vnet_subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'oceanId' in kwargs:
+        if ocean_id is None and 'oceanId' in kwargs:
             ocean_id = kwargs['oceanId']
-        if 'availabilityZones' in kwargs:
+        if ocean_id is None:
+            raise TypeError("Missing 'ocean_id' argument")
+        if availability_zones is None and 'availabilityZones' in kwargs:
             availability_zones = kwargs['availabilityZones']
-        if 'enableNodePublicIp' in kwargs:
+        if enable_node_public_ip is None and 'enableNodePublicIp' in kwargs:
             enable_node_public_ip = kwargs['enableNodePublicIp']
-        if 'fallbackToOndemand' in kwargs:
+        if fallback_to_ondemand is None and 'fallbackToOndemand' in kwargs:
             fallback_to_ondemand = kwargs['fallbackToOndemand']
-        if 'kubernetesVersion' in kwargs:
+        if kubernetes_version is None and 'kubernetesVersion' in kwargs:
             kubernetes_version = kwargs['kubernetesVersion']
-        if 'maxCount' in kwargs:
+        if max_count is None and 'maxCount' in kwargs:
             max_count = kwargs['maxCount']
-        if 'maxPodsPerNode' in kwargs:
+        if max_pods_per_node is None and 'maxPodsPerNode' in kwargs:
             max_pods_per_node = kwargs['maxPodsPerNode']
-        if 'minCount' in kwargs:
+        if min_count is None and 'minCount' in kwargs:
             min_count = kwargs['minCount']
-        if 'osDiskSizeGb' in kwargs:
+        if os_disk_size_gb is None and 'osDiskSizeGb' in kwargs:
             os_disk_size_gb = kwargs['osDiskSizeGb']
-        if 'osDiskType' in kwargs:
+        if os_disk_type is None and 'osDiskType' in kwargs:
             os_disk_type = kwargs['osDiskType']
-        if 'osSku' in kwargs:
+        if os_sku is None and 'osSku' in kwargs:
             os_sku = kwargs['osSku']
-        if 'osType' in kwargs:
+        if os_type is None and 'osType' in kwargs:
             os_type = kwargs['osType']
-        if 'podSubnetIds' in kwargs:
+        if pod_subnet_ids is None and 'podSubnetIds' in kwargs:
             pod_subnet_ids = kwargs['podSubnetIds']
-        if 'spotPercentage' in kwargs:
+        if spot_percentage is None and 'spotPercentage' in kwargs:
             spot_percentage = kwargs['spotPercentage']
-        if 'vnetSubnetIds' in kwargs:
+        if vnet_subnet_ids is None and 'vnetSubnetIds' in kwargs:
             vnet_subnet_ids = kwargs['vnetSubnetIds']
 
         _setter("ocean_id", ocean_id)
@@ -428,37 +430,37 @@ class _OceanNpVirtualNodeGroupState:
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              taints: Optional[pulumi.Input[Sequence[pulumi.Input['OceanNpVirtualNodeGroupTaintArgs']]]] = None,
              vnet_subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'availabilityZones' in kwargs:
+        if availability_zones is None and 'availabilityZones' in kwargs:
             availability_zones = kwargs['availabilityZones']
-        if 'enableNodePublicIp' in kwargs:
+        if enable_node_public_ip is None and 'enableNodePublicIp' in kwargs:
             enable_node_public_ip = kwargs['enableNodePublicIp']
-        if 'fallbackToOndemand' in kwargs:
+        if fallback_to_ondemand is None and 'fallbackToOndemand' in kwargs:
             fallback_to_ondemand = kwargs['fallbackToOndemand']
-        if 'kubernetesVersion' in kwargs:
+        if kubernetes_version is None and 'kubernetesVersion' in kwargs:
             kubernetes_version = kwargs['kubernetesVersion']
-        if 'maxCount' in kwargs:
+        if max_count is None and 'maxCount' in kwargs:
             max_count = kwargs['maxCount']
-        if 'maxPodsPerNode' in kwargs:
+        if max_pods_per_node is None and 'maxPodsPerNode' in kwargs:
             max_pods_per_node = kwargs['maxPodsPerNode']
-        if 'minCount' in kwargs:
+        if min_count is None and 'minCount' in kwargs:
             min_count = kwargs['minCount']
-        if 'oceanId' in kwargs:
+        if ocean_id is None and 'oceanId' in kwargs:
             ocean_id = kwargs['oceanId']
-        if 'osDiskSizeGb' in kwargs:
+        if os_disk_size_gb is None and 'osDiskSizeGb' in kwargs:
             os_disk_size_gb = kwargs['osDiskSizeGb']
-        if 'osDiskType' in kwargs:
+        if os_disk_type is None and 'osDiskType' in kwargs:
             os_disk_type = kwargs['osDiskType']
-        if 'osSku' in kwargs:
+        if os_sku is None and 'osSku' in kwargs:
             os_sku = kwargs['osSku']
-        if 'osType' in kwargs:
+        if os_type is None and 'osType' in kwargs:
             os_type = kwargs['osType']
-        if 'podSubnetIds' in kwargs:
+        if pod_subnet_ids is None and 'podSubnetIds' in kwargs:
             pod_subnet_ids = kwargs['podSubnetIds']
-        if 'spotPercentage' in kwargs:
+        if spot_percentage is None and 'spotPercentage' in kwargs:
             spot_percentage = kwargs['spotPercentage']
-        if 'vnetSubnetIds' in kwargs:
+        if vnet_subnet_ids is None and 'vnetSubnetIds' in kwargs:
             vnet_subnet_ids = kwargs['vnetSubnetIds']
 
         if availability_zones is not None:
@@ -786,11 +788,7 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
             __props__.__dict__["availability_zones"] = availability_zones
             __props__.__dict__["enable_node_public_ip"] = enable_node_public_ip
             __props__.__dict__["fallback_to_ondemand"] = fallback_to_ondemand
-            if filters is not None and not isinstance(filters, OceanNpVirtualNodeGroupFiltersArgs):
-                filters = filters or {}
-                def _setter(key, value):
-                    filters[key] = value
-                OceanNpVirtualNodeGroupFiltersArgs._configure(_setter, **filters)
+            filters = _utilities.configure(filters, OceanNpVirtualNodeGroupFiltersArgs, True)
             __props__.__dict__["filters"] = filters
             __props__.__dict__["headrooms"] = headrooms
             __props__.__dict__["kubernetes_version"] = kubernetes_version

@@ -35,16 +35,22 @@ class ListenerArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             balancer_id: pulumi.Input[str],
-             port: pulumi.Input[int],
-             protocol: pulumi.Input[str],
+             balancer_id: Optional[pulumi.Input[str]] = None,
+             port: Optional[pulumi.Input[int]] = None,
+             protocol: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input['ListenerTagArgs']]]] = None,
              tls_config: Optional[pulumi.Input['ListenerTlsConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'balancerId' in kwargs:
+        if balancer_id is None and 'balancerId' in kwargs:
             balancer_id = kwargs['balancerId']
-        if 'tlsConfig' in kwargs:
+        if balancer_id is None:
+            raise TypeError("Missing 'balancer_id' argument")
+        if port is None:
+            raise TypeError("Missing 'port' argument")
+        if protocol is None:
+            raise TypeError("Missing 'protocol' argument")
+        if tls_config is None and 'tlsConfig' in kwargs:
             tls_config = kwargs['tlsConfig']
 
         _setter("balancer_id", balancer_id)
@@ -128,11 +134,11 @@ class _ListenerState:
              protocol: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input['ListenerTagArgs']]]] = None,
              tls_config: Optional[pulumi.Input['ListenerTlsConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'balancerId' in kwargs:
+        if balancer_id is None and 'balancerId' in kwargs:
             balancer_id = kwargs['balancerId']
-        if 'tlsConfig' in kwargs:
+        if tls_config is None and 'tlsConfig' in kwargs:
             tls_config = kwargs['tlsConfig']
 
         if balancer_id is not None:
@@ -259,11 +265,7 @@ class Listener(pulumi.CustomResource):
                 raise TypeError("Missing required property 'protocol'")
             __props__.__dict__["protocol"] = protocol
             __props__.__dict__["tags"] = tags
-            if tls_config is not None and not isinstance(tls_config, ListenerTlsConfigArgs):
-                tls_config = tls_config or {}
-                def _setter(key, value):
-                    tls_config[key] = value
-                ListenerTlsConfigArgs._configure(_setter, **tls_config)
+            tls_config = _utilities.configure(tls_config, ListenerTlsConfigArgs, True)
             __props__.__dict__["tls_config"] = tls_config
         super(Listener, __self__).__init__(
             'spotinst:multai/listener:Listener',

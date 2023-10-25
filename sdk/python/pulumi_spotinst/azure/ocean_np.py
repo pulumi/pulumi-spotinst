@@ -81,11 +81,11 @@ class OceanNpArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             aks_cluster_name: pulumi.Input[str],
-             aks_infrastructure_resource_group_name: pulumi.Input[str],
-             aks_region: pulumi.Input[str],
-             aks_resource_group_name: pulumi.Input[str],
-             availability_zones: pulumi.Input[Sequence[pulumi.Input[str]]],
+             aks_cluster_name: Optional[pulumi.Input[str]] = None,
+             aks_infrastructure_resource_group_name: Optional[pulumi.Input[str]] = None,
+             aks_region: Optional[pulumi.Input[str]] = None,
+             aks_resource_group_name: Optional[pulumi.Input[str]] = None,
+             availability_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              autoscaler: Optional[pulumi.Input['OceanNpAutoscalerArgs']] = None,
              controller_cluster_id: Optional[pulumi.Input[str]] = None,
              enable_node_public_ip: Optional[pulumi.Input[bool]] = None,
@@ -109,45 +109,55 @@ class OceanNpArgs:
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              taints: Optional[pulumi.Input[Sequence[pulumi.Input['OceanNpTaintArgs']]]] = None,
              vnet_subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'aksClusterName' in kwargs:
+        if aks_cluster_name is None and 'aksClusterName' in kwargs:
             aks_cluster_name = kwargs['aksClusterName']
-        if 'aksInfrastructureResourceGroupName' in kwargs:
+        if aks_cluster_name is None:
+            raise TypeError("Missing 'aks_cluster_name' argument")
+        if aks_infrastructure_resource_group_name is None and 'aksInfrastructureResourceGroupName' in kwargs:
             aks_infrastructure_resource_group_name = kwargs['aksInfrastructureResourceGroupName']
-        if 'aksRegion' in kwargs:
+        if aks_infrastructure_resource_group_name is None:
+            raise TypeError("Missing 'aks_infrastructure_resource_group_name' argument")
+        if aks_region is None and 'aksRegion' in kwargs:
             aks_region = kwargs['aksRegion']
-        if 'aksResourceGroupName' in kwargs:
+        if aks_region is None:
+            raise TypeError("Missing 'aks_region' argument")
+        if aks_resource_group_name is None and 'aksResourceGroupName' in kwargs:
             aks_resource_group_name = kwargs['aksResourceGroupName']
-        if 'availabilityZones' in kwargs:
+        if aks_resource_group_name is None:
+            raise TypeError("Missing 'aks_resource_group_name' argument")
+        if availability_zones is None and 'availabilityZones' in kwargs:
             availability_zones = kwargs['availabilityZones']
-        if 'controllerClusterId' in kwargs:
+        if availability_zones is None:
+            raise TypeError("Missing 'availability_zones' argument")
+        if controller_cluster_id is None and 'controllerClusterId' in kwargs:
             controller_cluster_id = kwargs['controllerClusterId']
-        if 'enableNodePublicIp' in kwargs:
+        if enable_node_public_ip is None and 'enableNodePublicIp' in kwargs:
             enable_node_public_ip = kwargs['enableNodePublicIp']
-        if 'fallbackToOndemand' in kwargs:
+        if fallback_to_ondemand is None and 'fallbackToOndemand' in kwargs:
             fallback_to_ondemand = kwargs['fallbackToOndemand']
-        if 'kubernetesVersion' in kwargs:
+        if kubernetes_version is None and 'kubernetesVersion' in kwargs:
             kubernetes_version = kwargs['kubernetesVersion']
-        if 'maxCount' in kwargs:
+        if max_count is None and 'maxCount' in kwargs:
             max_count = kwargs['maxCount']
-        if 'maxPodsPerNode' in kwargs:
+        if max_pods_per_node is None and 'maxPodsPerNode' in kwargs:
             max_pods_per_node = kwargs['maxPodsPerNode']
-        if 'minCount' in kwargs:
+        if min_count is None and 'minCount' in kwargs:
             min_count = kwargs['minCount']
-        if 'osDiskSizeGb' in kwargs:
+        if os_disk_size_gb is None and 'osDiskSizeGb' in kwargs:
             os_disk_size_gb = kwargs['osDiskSizeGb']
-        if 'osDiskType' in kwargs:
+        if os_disk_type is None and 'osDiskType' in kwargs:
             os_disk_type = kwargs['osDiskType']
-        if 'osSku' in kwargs:
+        if os_sku is None and 'osSku' in kwargs:
             os_sku = kwargs['osSku']
-        if 'osType' in kwargs:
+        if os_type is None and 'osType' in kwargs:
             os_type = kwargs['osType']
-        if 'podSubnetIds' in kwargs:
+        if pod_subnet_ids is None and 'podSubnetIds' in kwargs:
             pod_subnet_ids = kwargs['podSubnetIds']
-        if 'spotPercentage' in kwargs:
+        if spot_percentage is None and 'spotPercentage' in kwargs:
             spot_percentage = kwargs['spotPercentage']
-        if 'vnetSubnetIds' in kwargs:
+        if vnet_subnet_ids is None and 'vnetSubnetIds' in kwargs:
             vnet_subnet_ids = kwargs['vnetSubnetIds']
 
         _setter("aks_cluster_name", aks_cluster_name)
@@ -551,45 +561,45 @@ class _OceanNpState:
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              taints: Optional[pulumi.Input[Sequence[pulumi.Input['OceanNpTaintArgs']]]] = None,
              vnet_subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'aksClusterName' in kwargs:
+        if aks_cluster_name is None and 'aksClusterName' in kwargs:
             aks_cluster_name = kwargs['aksClusterName']
-        if 'aksInfrastructureResourceGroupName' in kwargs:
+        if aks_infrastructure_resource_group_name is None and 'aksInfrastructureResourceGroupName' in kwargs:
             aks_infrastructure_resource_group_name = kwargs['aksInfrastructureResourceGroupName']
-        if 'aksRegion' in kwargs:
+        if aks_region is None and 'aksRegion' in kwargs:
             aks_region = kwargs['aksRegion']
-        if 'aksResourceGroupName' in kwargs:
+        if aks_resource_group_name is None and 'aksResourceGroupName' in kwargs:
             aks_resource_group_name = kwargs['aksResourceGroupName']
-        if 'availabilityZones' in kwargs:
+        if availability_zones is None and 'availabilityZones' in kwargs:
             availability_zones = kwargs['availabilityZones']
-        if 'controllerClusterId' in kwargs:
+        if controller_cluster_id is None and 'controllerClusterId' in kwargs:
             controller_cluster_id = kwargs['controllerClusterId']
-        if 'enableNodePublicIp' in kwargs:
+        if enable_node_public_ip is None and 'enableNodePublicIp' in kwargs:
             enable_node_public_ip = kwargs['enableNodePublicIp']
-        if 'fallbackToOndemand' in kwargs:
+        if fallback_to_ondemand is None and 'fallbackToOndemand' in kwargs:
             fallback_to_ondemand = kwargs['fallbackToOndemand']
-        if 'kubernetesVersion' in kwargs:
+        if kubernetes_version is None and 'kubernetesVersion' in kwargs:
             kubernetes_version = kwargs['kubernetesVersion']
-        if 'maxCount' in kwargs:
+        if max_count is None and 'maxCount' in kwargs:
             max_count = kwargs['maxCount']
-        if 'maxPodsPerNode' in kwargs:
+        if max_pods_per_node is None and 'maxPodsPerNode' in kwargs:
             max_pods_per_node = kwargs['maxPodsPerNode']
-        if 'minCount' in kwargs:
+        if min_count is None and 'minCount' in kwargs:
             min_count = kwargs['minCount']
-        if 'osDiskSizeGb' in kwargs:
+        if os_disk_size_gb is None and 'osDiskSizeGb' in kwargs:
             os_disk_size_gb = kwargs['osDiskSizeGb']
-        if 'osDiskType' in kwargs:
+        if os_disk_type is None and 'osDiskType' in kwargs:
             os_disk_type = kwargs['osDiskType']
-        if 'osSku' in kwargs:
+        if os_sku is None and 'osSku' in kwargs:
             os_sku = kwargs['osSku']
-        if 'osType' in kwargs:
+        if os_type is None and 'osType' in kwargs:
             os_type = kwargs['osType']
-        if 'podSubnetIds' in kwargs:
+        if pod_subnet_ids is None and 'podSubnetIds' in kwargs:
             pod_subnet_ids = kwargs['podSubnetIds']
-        if 'spotPercentage' in kwargs:
+        if spot_percentage is None and 'spotPercentage' in kwargs:
             spot_percentage = kwargs['spotPercentage']
-        if 'vnetSubnetIds' in kwargs:
+        if vnet_subnet_ids is None and 'vnetSubnetIds' in kwargs:
             vnet_subnet_ids = kwargs['vnetSubnetIds']
 
         if aks_cluster_name is not None:
@@ -1017,11 +1027,7 @@ class OceanNp(pulumi.CustomResource):
             if aks_resource_group_name is None and not opts.urn:
                 raise TypeError("Missing required property 'aks_resource_group_name'")
             __props__.__dict__["aks_resource_group_name"] = aks_resource_group_name
-            if autoscaler is not None and not isinstance(autoscaler, OceanNpAutoscalerArgs):
-                autoscaler = autoscaler or {}
-                def _setter(key, value):
-                    autoscaler[key] = value
-                OceanNpAutoscalerArgs._configure(_setter, **autoscaler)
+            autoscaler = _utilities.configure(autoscaler, OceanNpAutoscalerArgs, True)
             __props__.__dict__["autoscaler"] = autoscaler
             if availability_zones is None and not opts.urn:
                 raise TypeError("Missing required property 'availability_zones'")
@@ -1029,18 +1035,10 @@ class OceanNp(pulumi.CustomResource):
             __props__.__dict__["controller_cluster_id"] = controller_cluster_id
             __props__.__dict__["enable_node_public_ip"] = enable_node_public_ip
             __props__.__dict__["fallback_to_ondemand"] = fallback_to_ondemand
-            if filters is not None and not isinstance(filters, OceanNpFiltersArgs):
-                filters = filters or {}
-                def _setter(key, value):
-                    filters[key] = value
-                OceanNpFiltersArgs._configure(_setter, **filters)
+            filters = _utilities.configure(filters, OceanNpFiltersArgs, True)
             __props__.__dict__["filters"] = filters
             __props__.__dict__["headrooms"] = headrooms
-            if health is not None and not isinstance(health, OceanNpHealthArgs):
-                health = health or {}
-                def _setter(key, value):
-                    health[key] = value
-                OceanNpHealthArgs._configure(_setter, **health)
+            health = _utilities.configure(health, OceanNpHealthArgs, True)
             __props__.__dict__["health"] = health
             __props__.__dict__["kubernetes_version"] = kubernetes_version
             __props__.__dict__["labels"] = labels
@@ -1053,11 +1051,7 @@ class OceanNp(pulumi.CustomResource):
             __props__.__dict__["os_sku"] = os_sku
             __props__.__dict__["os_type"] = os_type
             __props__.__dict__["pod_subnet_ids"] = pod_subnet_ids
-            if scheduling is not None and not isinstance(scheduling, OceanNpSchedulingArgs):
-                scheduling = scheduling or {}
-                def _setter(key, value):
-                    scheduling[key] = value
-                OceanNpSchedulingArgs._configure(_setter, **scheduling)
+            scheduling = _utilities.configure(scheduling, OceanNpSchedulingArgs, True)
             __props__.__dict__["scheduling"] = scheduling
             __props__.__dict__["spot_percentage"] = spot_percentage
             __props__.__dict__["tags"] = tags

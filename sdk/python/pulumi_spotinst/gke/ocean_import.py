@@ -71,8 +71,8 @@ class OceanImportArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cluster_name: pulumi.Input[str],
-             location: pulumi.Input[str],
+             cluster_name: Optional[pulumi.Input[str]] = None,
+             location: Optional[pulumi.Input[str]] = None,
              autoscaler: Optional[pulumi.Input['OceanImportAutoscalerArgs']] = None,
              backend_services: Optional[pulumi.Input[Sequence[pulumi.Input['OceanImportBackendServiceArgs']]]] = None,
              blacklists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -87,29 +87,33 @@ class OceanImportArgs:
              update_policy: Optional[pulumi.Input['OceanImportUpdatePolicyArgs']] = None,
              use_as_template_only: Optional[pulumi.Input[bool]] = None,
              whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'clusterName' in kwargs:
+        if cluster_name is None and 'clusterName' in kwargs:
             cluster_name = kwargs['clusterName']
-        if 'backendServices' in kwargs:
+        if cluster_name is None:
+            raise TypeError("Missing 'cluster_name' argument")
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if backend_services is None and 'backendServices' in kwargs:
             backend_services = kwargs['backendServices']
-        if 'controllerClusterId' in kwargs:
+        if controller_cluster_id is None and 'controllerClusterId' in kwargs:
             controller_cluster_id = kwargs['controllerClusterId']
-        if 'desiredCapacity' in kwargs:
+        if desired_capacity is None and 'desiredCapacity' in kwargs:
             desired_capacity = kwargs['desiredCapacity']
-        if 'maxSize' in kwargs:
+        if max_size is None and 'maxSize' in kwargs:
             max_size = kwargs['maxSize']
-        if 'minSize' in kwargs:
+        if min_size is None and 'minSize' in kwargs:
             min_size = kwargs['minSize']
-        if 'rootVolumeType' in kwargs:
+        if root_volume_type is None and 'rootVolumeType' in kwargs:
             root_volume_type = kwargs['rootVolumeType']
-        if 'scheduledTasks' in kwargs:
+        if scheduled_tasks is None and 'scheduledTasks' in kwargs:
             scheduled_tasks = kwargs['scheduledTasks']
-        if 'shieldedInstanceConfig' in kwargs:
+        if shielded_instance_config is None and 'shieldedInstanceConfig' in kwargs:
             shielded_instance_config = kwargs['shieldedInstanceConfig']
-        if 'updatePolicy' in kwargs:
+        if update_policy is None and 'updatePolicy' in kwargs:
             update_policy = kwargs['updatePolicy']
-        if 'useAsTemplateOnly' in kwargs:
+        if use_as_template_only is None and 'useAsTemplateOnly' in kwargs:
             use_as_template_only = kwargs['useAsTemplateOnly']
 
         _setter("cluster_name", cluster_name)
@@ -407,31 +411,31 @@ class _OceanImportState:
              update_policy: Optional[pulumi.Input['OceanImportUpdatePolicyArgs']] = None,
              use_as_template_only: Optional[pulumi.Input[bool]] = None,
              whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'backendServices' in kwargs:
+        if backend_services is None and 'backendServices' in kwargs:
             backend_services = kwargs['backendServices']
-        if 'clusterControllerId' in kwargs:
+        if cluster_controller_id is None and 'clusterControllerId' in kwargs:
             cluster_controller_id = kwargs['clusterControllerId']
-        if 'clusterName' in kwargs:
+        if cluster_name is None and 'clusterName' in kwargs:
             cluster_name = kwargs['clusterName']
-        if 'controllerClusterId' in kwargs:
+        if controller_cluster_id is None and 'controllerClusterId' in kwargs:
             controller_cluster_id = kwargs['controllerClusterId']
-        if 'desiredCapacity' in kwargs:
+        if desired_capacity is None and 'desiredCapacity' in kwargs:
             desired_capacity = kwargs['desiredCapacity']
-        if 'maxSize' in kwargs:
+        if max_size is None and 'maxSize' in kwargs:
             max_size = kwargs['maxSize']
-        if 'minSize' in kwargs:
+        if min_size is None and 'minSize' in kwargs:
             min_size = kwargs['minSize']
-        if 'rootVolumeType' in kwargs:
+        if root_volume_type is None and 'rootVolumeType' in kwargs:
             root_volume_type = kwargs['rootVolumeType']
-        if 'scheduledTasks' in kwargs:
+        if scheduled_tasks is None and 'scheduledTasks' in kwargs:
             scheduled_tasks = kwargs['scheduledTasks']
-        if 'shieldedInstanceConfig' in kwargs:
+        if shielded_instance_config is None and 'shieldedInstanceConfig' in kwargs:
             shielded_instance_config = kwargs['shieldedInstanceConfig']
-        if 'updatePolicy' in kwargs:
+        if update_policy is None and 'updatePolicy' in kwargs:
             update_policy = kwargs['updatePolicy']
-        if 'useAsTemplateOnly' in kwargs:
+        if use_as_template_only is None and 'useAsTemplateOnly' in kwargs:
             use_as_template_only = kwargs['useAsTemplateOnly']
 
         if autoscaler is not None:
@@ -690,86 +694,6 @@ class OceanImport(pulumi.CustomResource):
         """
         Manages a Spotinst Ocean GKE resource.
 
-        ## Prerequisites
-
-        Installation of the Ocean controller is required by this resource. You can accomplish this by using the spotinst/ocean-controller module as follows:
-
-        ```python
-        import pulumi
-        ```
-
-        > You must configure the same `cluster_identifier` both for the Ocean controller and for the `gke.OceanImport` resource.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_spotinst as spotinst
-
-        example = spotinst.gke.OceanImport("example",
-            backend_services=[spotinst.gke.OceanImportBackendServiceArgs(
-                location_type="regional",
-                named_ports=[spotinst.gke.OceanImportBackendServiceNamedPortArgs(
-                    name="http",
-                    ports=[
-                        "80",
-                        "8080",
-                    ],
-                )],
-                scheme="INTERNAL",
-                service_name="example-backend-service",
-            )],
-            cluster_name="example-cluster-name",
-            controller_cluster_id="example-controller-123124",
-            desired_capacity=0,
-            location="us-central1-a",
-            max_size=2,
-            min_size=0,
-            root_volume_type="pd-ssd",
-            shielded_instance_config=spotinst.gke.OceanImportShieldedInstanceConfigArgs(
-                enable_integrity_monitoring=True,
-                enable_secure_boot=True,
-            ),
-            use_as_template_only=False,
-            whitelists=[
-                "n1-standard-1",
-                "n1-standard-2",
-            ])
-        ```
-
-        ```python
-        import pulumi
-
-        pulumi.export("oceanId", spotinst_ocean_gke_import["example"]["id"])
-        ```
-        ## Strategy
-
-        * `strategy` - (Optional) Strategy object.
-            * `draining_timeout` - (Optional) The draining timeout (in seconds) before terminating the instance. If no draining timeout is defined, the default draining timeout will be used.
-            * `provisioning_model` - (Optional) Define the provisioning model of the launched instances. Valid values: `SPOT`, `PREEMPTIBLE`.
-            * `preemptible_percentage`- (Optional) Defines the desired preemptible percentage for the cluster.
-
-        ```python
-        import pulumi
-        ```
-
-        <a id="update-policy"></a>
-        ## Update Policy
-
-        * `update_policy` - (Optional)
-            * `should_roll` - (Required) Enables the roll.
-            * `conditioned_roll` - (Optional, Default: false) Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as AMI, Key Pair, user data, instance types, load balancers, etc).
-          
-            * `roll_config` - (Required) Holds the roll configuration.
-                * `batch_size_percentage` - (Required) Sets the percentage of the instances to deploy in each batch.
-                * `launch_spec_ids` - (Optional) List of Virtual Node Group identifiers to be rolled.
-                * `batch_min_healthy_percentage` - (Optional) Default: 50. Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
-                * `respect_pdb` - (Optional) Default: False. During the roll, if the parameter is set to True we honor PDB during the instance replacement.
-
-        ```python
-        import pulumi
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['OceanImportAutoscalerArgs']] autoscaler: The Ocean Kubernetes Autoscaler object.
@@ -795,86 +719,6 @@ class OceanImport(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages a Spotinst Ocean GKE resource.
-
-        ## Prerequisites
-
-        Installation of the Ocean controller is required by this resource. You can accomplish this by using the spotinst/ocean-controller module as follows:
-
-        ```python
-        import pulumi
-        ```
-
-        > You must configure the same `cluster_identifier` both for the Ocean controller and for the `gke.OceanImport` resource.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_spotinst as spotinst
-
-        example = spotinst.gke.OceanImport("example",
-            backend_services=[spotinst.gke.OceanImportBackendServiceArgs(
-                location_type="regional",
-                named_ports=[spotinst.gke.OceanImportBackendServiceNamedPortArgs(
-                    name="http",
-                    ports=[
-                        "80",
-                        "8080",
-                    ],
-                )],
-                scheme="INTERNAL",
-                service_name="example-backend-service",
-            )],
-            cluster_name="example-cluster-name",
-            controller_cluster_id="example-controller-123124",
-            desired_capacity=0,
-            location="us-central1-a",
-            max_size=2,
-            min_size=0,
-            root_volume_type="pd-ssd",
-            shielded_instance_config=spotinst.gke.OceanImportShieldedInstanceConfigArgs(
-                enable_integrity_monitoring=True,
-                enable_secure_boot=True,
-            ),
-            use_as_template_only=False,
-            whitelists=[
-                "n1-standard-1",
-                "n1-standard-2",
-            ])
-        ```
-
-        ```python
-        import pulumi
-
-        pulumi.export("oceanId", spotinst_ocean_gke_import["example"]["id"])
-        ```
-        ## Strategy
-
-        * `strategy` - (Optional) Strategy object.
-            * `draining_timeout` - (Optional) The draining timeout (in seconds) before terminating the instance. If no draining timeout is defined, the default draining timeout will be used.
-            * `provisioning_model` - (Optional) Define the provisioning model of the launched instances. Valid values: `SPOT`, `PREEMPTIBLE`.
-            * `preemptible_percentage`- (Optional) Defines the desired preemptible percentage for the cluster.
-
-        ```python
-        import pulumi
-        ```
-
-        <a id="update-policy"></a>
-        ## Update Policy
-
-        * `update_policy` - (Optional)
-            * `should_roll` - (Required) Enables the roll.
-            * `conditioned_roll` - (Optional, Default: false) Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as AMI, Key Pair, user data, instance types, load balancers, etc).
-          
-            * `roll_config` - (Required) Holds the roll configuration.
-                * `batch_size_percentage` - (Required) Sets the percentage of the instances to deploy in each batch.
-                * `launch_spec_ids` - (Optional) List of Virtual Node Group identifiers to be rolled.
-                * `batch_min_healthy_percentage` - (Optional) Default: 50. Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
-                * `respect_pdb` - (Optional) Default: False. During the roll, if the parameter is set to True we honor PDB during the instance replacement.
-
-        ```python
-        import pulumi
-        ```
 
         :param str resource_name: The name of the resource.
         :param OceanImportArgs args: The arguments to use to populate this resource's properties.
@@ -920,11 +764,7 @@ class OceanImport(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = OceanImportArgs.__new__(OceanImportArgs)
 
-            if autoscaler is not None and not isinstance(autoscaler, OceanImportAutoscalerArgs):
-                autoscaler = autoscaler or {}
-                def _setter(key, value):
-                    autoscaler[key] = value
-                OceanImportAutoscalerArgs._configure(_setter, **autoscaler)
+            autoscaler = _utilities.configure(autoscaler, OceanImportAutoscalerArgs, True)
             __props__.__dict__["autoscaler"] = autoscaler
             __props__.__dict__["backend_services"] = backend_services
             __props__.__dict__["blacklists"] = blacklists
@@ -940,18 +780,10 @@ class OceanImport(pulumi.CustomResource):
             __props__.__dict__["min_size"] = min_size
             __props__.__dict__["root_volume_type"] = root_volume_type
             __props__.__dict__["scheduled_tasks"] = scheduled_tasks
-            if shielded_instance_config is not None and not isinstance(shielded_instance_config, OceanImportShieldedInstanceConfigArgs):
-                shielded_instance_config = shielded_instance_config or {}
-                def _setter(key, value):
-                    shielded_instance_config[key] = value
-                OceanImportShieldedInstanceConfigArgs._configure(_setter, **shielded_instance_config)
+            shielded_instance_config = _utilities.configure(shielded_instance_config, OceanImportShieldedInstanceConfigArgs, True)
             __props__.__dict__["shielded_instance_config"] = shielded_instance_config
             __props__.__dict__["strategies"] = strategies
-            if update_policy is not None and not isinstance(update_policy, OceanImportUpdatePolicyArgs):
-                update_policy = update_policy or {}
-                def _setter(key, value):
-                    update_policy[key] = value
-                OceanImportUpdatePolicyArgs._configure(_setter, **update_policy)
+            update_policy = _utilities.configure(update_policy, OceanImportUpdatePolicyArgs, True)
             __props__.__dict__["update_policy"] = update_policy
             __props__.__dict__["use_as_template_only"] = use_as_template_only
             __props__.__dict__["whitelists"] = whitelists

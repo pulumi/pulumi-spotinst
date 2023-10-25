@@ -6,28 +6,6 @@ import * as utilities from "./utilities";
 
 /**
  * Provides a Spotinst subscription resource.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as spotinst from "@pulumi/spotinst";
- *
- * // Create a Subscription
- * const default_subscription = new spotinst.Subscription("default-subscription", {
- *     endpoint: "http://endpoint.com",
- *     eventType: "AWS_EC2_INSTANCE_LAUNCH",
- *     format: {
- *         event: "%event%",
- *         instance_id: "%instance-id%",
- *         resource_id: "%resource-id%",
- *         resource_name: "%resource-name%",
- *         tags: "foo,baz,baz",
- *     },
- *     protocol: "http",
- *     resourceId: spotinst_elastigroup_aws["my-eg"].id,
- * });
- * ```
  */
 export class Subscription extends pulumi.CustomResource {
     /**

@@ -47,9 +47,9 @@ class ProgrammaticUserArgs:
              name: Optional[pulumi.Input[str]] = None,
              policies: Optional[pulumi.Input[Sequence[pulumi.Input['ProgrammaticUserPolicyArgs']]]] = None,
              user_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'userGroupIds' in kwargs:
+        if user_group_ids is None and 'userGroupIds' in kwargs:
             user_group_ids = kwargs['userGroupIds']
 
         if accounts is not None:
@@ -160,9 +160,9 @@ class _ProgrammaticUserState:
              name: Optional[pulumi.Input[str]] = None,
              policies: Optional[pulumi.Input[Sequence[pulumi.Input['ProgrammaticUserPolicyArgs']]]] = None,
              user_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'userGroupIds' in kwargs:
+        if user_group_ids is None and 'userGroupIds' in kwargs:
             user_group_ids = kwargs['userGroupIds']
 
         if accounts is not None:
@@ -253,24 +253,6 @@ class ProgrammaticUser(pulumi.CustomResource):
         """
         Provides a Spotinst programmatic user in the creator's organization.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_spotinst as spotinst
-
-        terraform_prog_user = spotinst.organization.ProgrammaticUser("terraformProgUser",
-            description="creating programmatic user",
-            policies=[spotinst.organization.ProgrammaticUserPolicyArgs(
-                policy_account_ids=["act-a1b2c3d4"],
-                policy_id="pol-g75d8c06",
-            )],
-            user_group_ids=[
-                "ugr-abcd1234",
-                "ugr-defg8763",
-            ])
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProgrammaticUserAccountArgs']]]] accounts: All the accounts the programmatic user will have access to.
@@ -289,24 +271,6 @@ class ProgrammaticUser(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a Spotinst programmatic user in the creator's organization.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_spotinst as spotinst
-
-        terraform_prog_user = spotinst.organization.ProgrammaticUser("terraformProgUser",
-            description="creating programmatic user",
-            policies=[spotinst.organization.ProgrammaticUserPolicyArgs(
-                policy_account_ids=["act-a1b2c3d4"],
-                policy_id="pol-g75d8c06",
-            )],
-            user_group_ids=[
-                "ugr-abcd1234",
-                "ugr-defg8763",
-            ])
-        ```
 
         :param str resource_name: The name of the resource.
         :param ProgrammaticUserArgs args: The arguments to use to populate this resource's properties.

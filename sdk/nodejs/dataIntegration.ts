@@ -8,21 +8,6 @@ import * as utilities from "./utilities";
 
 /**
  * Provides a Spotinst Data Integration resource.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as spotinst from "@pulumi/spotinst";
- *
- * const example = new spotinst.DataIntegration("example", {
- *     s3: {
- *         bucketName: "terraform-test-do-not-delete",
- *         subdir: "terraform-test-data-integration",
- *     },
- *     status: "enabled",
- * });
- * ```
  */
 export class DataIntegration extends pulumi.CustomResource {
     /**

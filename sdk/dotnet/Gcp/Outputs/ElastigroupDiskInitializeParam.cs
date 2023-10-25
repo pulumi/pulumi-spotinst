@@ -25,16 +25,6 @@ namespace Pulumi.SpotInst.Gcp.Outputs
         /// A source image used to create the disk. You can provide a private (custom) image, and Compute Engine will use the corresponding image from your project.
         /// 
         /// Usage:
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        /// });
-        /// ```
         /// </summary>
         public readonly string SourceImage;
 

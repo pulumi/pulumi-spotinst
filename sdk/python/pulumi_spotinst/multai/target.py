@@ -39,19 +39,27 @@ class TargetArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             balancer_id: pulumi.Input[str],
-             host: pulumi.Input[str],
-             target_set_id: pulumi.Input[str],
-             weight: pulumi.Input[int],
+             balancer_id: Optional[pulumi.Input[str]] = None,
+             host: Optional[pulumi.Input[str]] = None,
+             target_set_id: Optional[pulumi.Input[str]] = None,
+             weight: Optional[pulumi.Input[int]] = None,
              name: Optional[pulumi.Input[str]] = None,
              port: Optional[pulumi.Input[int]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input['TargetTagArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'balancerId' in kwargs:
+        if balancer_id is None and 'balancerId' in kwargs:
             balancer_id = kwargs['balancerId']
-        if 'targetSetId' in kwargs:
+        if balancer_id is None:
+            raise TypeError("Missing 'balancer_id' argument")
+        if host is None:
+            raise TypeError("Missing 'host' argument")
+        if target_set_id is None and 'targetSetId' in kwargs:
             target_set_id = kwargs['targetSetId']
+        if target_set_id is None:
+            raise TypeError("Missing 'target_set_id' argument")
+        if weight is None:
+            raise TypeError("Missing 'weight' argument")
 
         _setter("balancer_id", balancer_id)
         _setter("host", host)
@@ -161,11 +169,11 @@ class _TargetState:
              tags: Optional[pulumi.Input[Sequence[pulumi.Input['TargetTagArgs']]]] = None,
              target_set_id: Optional[pulumi.Input[str]] = None,
              weight: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'balancerId' in kwargs:
+        if balancer_id is None and 'balancerId' in kwargs:
             balancer_id = kwargs['balancerId']
-        if 'targetSetId' in kwargs:
+        if target_set_id is None and 'targetSetId' in kwargs:
             target_set_id = kwargs['targetSetId']
 
         if balancer_id is not None:

@@ -159,10 +159,6 @@ class ElastigroupArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] private_ips: List of Private IPs to associate to the group instances.(e.g. "172.1.1.0"). Please note: This setting will only apply if persistence.persist_private_ip is set to true.
                
                Usage:
-               
-               ```python
-               import pulumi
-               ```
         :param pulumi.Input[str] region: The AWS region your group will be created in.
                Note: This parameter is required if you specify subnets (through subnet_ids). This parameter is optional if you specify Availability Zones (through availability_zones).
         :param pulumi.Input[Sequence[pulumi.Input['ElastigroupResourceRequirementArgs']]] resource_requirements: Required instance attributes. Instance types will be selected based on these requirements.
@@ -269,10 +265,10 @@ class ElastigroupArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             fallback_to_ondemand: pulumi.Input[bool],
-             orientation: pulumi.Input[str],
-             product: pulumi.Input[str],
-             security_groups: pulumi.Input[Sequence[pulumi.Input[str]]],
+             fallback_to_ondemand: Optional[pulumi.Input[bool]] = None,
+             orientation: Optional[pulumi.Input[str]] = None,
+             product: Optional[pulumi.Input[str]] = None,
+             security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              availability_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              block_devices_mode: Optional[pulumi.Input[str]] = None,
              capacity_unit: Optional[pulumi.Input[str]] = None,
@@ -352,155 +348,163 @@ class ElastigroupArgs:
              utilize_reserved_instances: Optional[pulumi.Input[bool]] = None,
              wait_for_capacity: Optional[pulumi.Input[int]] = None,
              wait_for_capacity_timeout: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'fallbackToOndemand' in kwargs:
+        if fallback_to_ondemand is None and 'fallbackToOndemand' in kwargs:
             fallback_to_ondemand = kwargs['fallbackToOndemand']
-        if 'securityGroups' in kwargs:
+        if fallback_to_ondemand is None:
+            raise TypeError("Missing 'fallback_to_ondemand' argument")
+        if orientation is None:
+            raise TypeError("Missing 'orientation' argument")
+        if product is None:
+            raise TypeError("Missing 'product' argument")
+        if security_groups is None and 'securityGroups' in kwargs:
             security_groups = kwargs['securityGroups']
-        if 'availabilityZones' in kwargs:
+        if security_groups is None:
+            raise TypeError("Missing 'security_groups' argument")
+        if availability_zones is None and 'availabilityZones' in kwargs:
             availability_zones = kwargs['availabilityZones']
-        if 'blockDevicesMode' in kwargs:
+        if block_devices_mode is None and 'blockDevicesMode' in kwargs:
             block_devices_mode = kwargs['blockDevicesMode']
-        if 'capacityUnit' in kwargs:
+        if capacity_unit is None and 'capacityUnit' in kwargs:
             capacity_unit = kwargs['capacityUnit']
-        if 'considerOdPricing' in kwargs:
+        if consider_od_pricing is None and 'considerOdPricing' in kwargs:
             consider_od_pricing = kwargs['considerOdPricing']
-        if 'cpuCredits' in kwargs:
+        if cpu_credits is None and 'cpuCredits' in kwargs:
             cpu_credits = kwargs['cpuCredits']
-        if 'cpuOptions' in kwargs:
+        if cpu_options is None and 'cpuOptions' in kwargs:
             cpu_options = kwargs['cpuOptions']
-        if 'desiredCapacity' in kwargs:
+        if desired_capacity is None and 'desiredCapacity' in kwargs:
             desired_capacity = kwargs['desiredCapacity']
-        if 'drainingTimeout' in kwargs:
+        if draining_timeout is None and 'drainingTimeout' in kwargs:
             draining_timeout = kwargs['drainingTimeout']
-        if 'ebsBlockDevices' in kwargs:
+        if ebs_block_devices is None and 'ebsBlockDevices' in kwargs:
             ebs_block_devices = kwargs['ebsBlockDevices']
-        if 'ebsOptimized' in kwargs:
+        if ebs_optimized is None and 'ebsOptimized' in kwargs:
             ebs_optimized = kwargs['ebsOptimized']
-        if 'elasticIps' in kwargs:
+        if elastic_ips is None and 'elasticIps' in kwargs:
             elastic_ips = kwargs['elasticIps']
-        if 'elasticLoadBalancers' in kwargs:
+        if elastic_load_balancers is None and 'elasticLoadBalancers' in kwargs:
             elastic_load_balancers = kwargs['elasticLoadBalancers']
-        if 'enableMonitoring' in kwargs:
+        if enable_monitoring is None and 'enableMonitoring' in kwargs:
             enable_monitoring = kwargs['enableMonitoring']
-        if 'ephemeralBlockDevices' in kwargs:
+        if ephemeral_block_devices is None and 'ephemeralBlockDevices' in kwargs:
             ephemeral_block_devices = kwargs['ephemeralBlockDevices']
-        if 'healthCheckGracePeriod' in kwargs:
+        if health_check_grace_period is None and 'healthCheckGracePeriod' in kwargs:
             health_check_grace_period = kwargs['healthCheckGracePeriod']
-        if 'healthCheckType' in kwargs:
+        if health_check_type is None and 'healthCheckType' in kwargs:
             health_check_type = kwargs['healthCheckType']
-        if 'healthCheckUnhealthyDurationBeforeReplacement' in kwargs:
+        if health_check_unhealthy_duration_before_replacement is None and 'healthCheckUnhealthyDurationBeforeReplacement' in kwargs:
             health_check_unhealthy_duration_before_replacement = kwargs['healthCheckUnhealthyDurationBeforeReplacement']
-        if 'iamInstanceProfile' in kwargs:
+        if iam_instance_profile is None and 'iamInstanceProfile' in kwargs:
             iam_instance_profile = kwargs['iamInstanceProfile']
-        if 'imageId' in kwargs:
+        if image_id is None and 'imageId' in kwargs:
             image_id = kwargs['imageId']
-        if 'immediateOdRecoverThreshold' in kwargs:
+        if immediate_od_recover_threshold is None and 'immediateOdRecoverThreshold' in kwargs:
             immediate_od_recover_threshold = kwargs['immediateOdRecoverThreshold']
-        if 'instanceTypesOndemand' in kwargs:
+        if instance_types_ondemand is None and 'instanceTypesOndemand' in kwargs:
             instance_types_ondemand = kwargs['instanceTypesOndemand']
-        if 'instanceTypesPreferredSpots' in kwargs:
+        if instance_types_preferred_spots is None and 'instanceTypesPreferredSpots' in kwargs:
             instance_types_preferred_spots = kwargs['instanceTypesPreferredSpots']
-        if 'instanceTypesSpots' in kwargs:
+        if instance_types_spots is None and 'instanceTypesSpots' in kwargs:
             instance_types_spots = kwargs['instanceTypesSpots']
-        if 'instanceTypesWeights' in kwargs:
+        if instance_types_weights is None and 'instanceTypesWeights' in kwargs:
             instance_types_weights = kwargs['instanceTypesWeights']
-        if 'integrationBeanstalk' in kwargs:
+        if integration_beanstalk is None and 'integrationBeanstalk' in kwargs:
             integration_beanstalk = kwargs['integrationBeanstalk']
-        if 'integrationCodedeploy' in kwargs:
+        if integration_codedeploy is None and 'integrationCodedeploy' in kwargs:
             integration_codedeploy = kwargs['integrationCodedeploy']
-        if 'integrationDockerSwarm' in kwargs:
+        if integration_docker_swarm is None and 'integrationDockerSwarm' in kwargs:
             integration_docker_swarm = kwargs['integrationDockerSwarm']
-        if 'integrationEcs' in kwargs:
+        if integration_ecs is None and 'integrationEcs' in kwargs:
             integration_ecs = kwargs['integrationEcs']
-        if 'integrationGitlab' in kwargs:
+        if integration_gitlab is None and 'integrationGitlab' in kwargs:
             integration_gitlab = kwargs['integrationGitlab']
-        if 'integrationKubernetes' in kwargs:
+        if integration_kubernetes is None and 'integrationKubernetes' in kwargs:
             integration_kubernetes = kwargs['integrationKubernetes']
-        if 'integrationMesosphere' in kwargs:
+        if integration_mesosphere is None and 'integrationMesosphere' in kwargs:
             integration_mesosphere = kwargs['integrationMesosphere']
-        if 'integrationMultaiRuntime' in kwargs:
+        if integration_multai_runtime is None and 'integrationMultaiRuntime' in kwargs:
             integration_multai_runtime = kwargs['integrationMultaiRuntime']
-        if 'integrationNomad' in kwargs:
+        if integration_nomad is None and 'integrationNomad' in kwargs:
             integration_nomad = kwargs['integrationNomad']
-        if 'integrationRancher' in kwargs:
+        if integration_rancher is None and 'integrationRancher' in kwargs:
             integration_rancher = kwargs['integrationRancher']
-        if 'integrationRoute53' in kwargs:
+        if integration_route53 is None and 'integrationRoute53' in kwargs:
             integration_route53 = kwargs['integrationRoute53']
-        if 'keyName' in kwargs:
+        if key_name is None and 'keyName' in kwargs:
             key_name = kwargs['keyName']
-        if 'lifetimePeriod' in kwargs:
+        if lifetime_period is None and 'lifetimePeriod' in kwargs:
             lifetime_period = kwargs['lifetimePeriod']
-        if 'maxSize' in kwargs:
+        if max_size is None and 'maxSize' in kwargs:
             max_size = kwargs['maxSize']
-        if 'metadataOptions' in kwargs:
+        if metadata_options is None and 'metadataOptions' in kwargs:
             metadata_options = kwargs['metadataOptions']
-        if 'minSize' in kwargs:
+        if min_size is None and 'minSize' in kwargs:
             min_size = kwargs['minSize']
-        if 'minimumInstanceLifetime' in kwargs:
+        if minimum_instance_lifetime is None and 'minimumInstanceLifetime' in kwargs:
             minimum_instance_lifetime = kwargs['minimumInstanceLifetime']
-        if 'multaiTargetSets' in kwargs:
+        if multai_target_sets is None and 'multaiTargetSets' in kwargs:
             multai_target_sets = kwargs['multaiTargetSets']
-        if 'multipleMetrics' in kwargs:
+        if multiple_metrics is None and 'multipleMetrics' in kwargs:
             multiple_metrics = kwargs['multipleMetrics']
-        if 'networkInterfaces' in kwargs:
+        if network_interfaces is None and 'networkInterfaces' in kwargs:
             network_interfaces = kwargs['networkInterfaces']
-        if 'onDemandTypes' in kwargs:
+        if on_demand_types is None and 'onDemandTypes' in kwargs:
             on_demand_types = kwargs['onDemandTypes']
-        if 'ondemandCount' in kwargs:
+        if ondemand_count is None and 'ondemandCount' in kwargs:
             ondemand_count = kwargs['ondemandCount']
-        if 'persistBlockDevices' in kwargs:
+        if persist_block_devices is None and 'persistBlockDevices' in kwargs:
             persist_block_devices = kwargs['persistBlockDevices']
-        if 'persistPrivateIp' in kwargs:
+        if persist_private_ip is None and 'persistPrivateIp' in kwargs:
             persist_private_ip = kwargs['persistPrivateIp']
-        if 'persistRootDevice' in kwargs:
+        if persist_root_device is None and 'persistRootDevice' in kwargs:
             persist_root_device = kwargs['persistRootDevice']
-        if 'placementTenancy' in kwargs:
+        if placement_tenancy is None and 'placementTenancy' in kwargs:
             placement_tenancy = kwargs['placementTenancy']
-        if 'preferredAvailabilityZones' in kwargs:
+        if preferred_availability_zones is None and 'preferredAvailabilityZones' in kwargs:
             preferred_availability_zones = kwargs['preferredAvailabilityZones']
-        if 'privateIps' in kwargs:
+        if private_ips is None and 'privateIps' in kwargs:
             private_ips = kwargs['privateIps']
-        if 'resourceRequirements' in kwargs:
+        if resource_requirements is None and 'resourceRequirements' in kwargs:
             resource_requirements = kwargs['resourceRequirements']
-        if 'resourceTagSpecifications' in kwargs:
+        if resource_tag_specifications is None and 'resourceTagSpecifications' in kwargs:
             resource_tag_specifications = kwargs['resourceTagSpecifications']
-        if 'revertToSpot' in kwargs:
+        if revert_to_spot is None and 'revertToSpot' in kwargs:
             revert_to_spot = kwargs['revertToSpot']
-        if 'scalingDownPolicies' in kwargs:
+        if scaling_down_policies is None and 'scalingDownPolicies' in kwargs:
             scaling_down_policies = kwargs['scalingDownPolicies']
-        if 'scalingStrategies' in kwargs:
+        if scaling_strategies is None and 'scalingStrategies' in kwargs:
             scaling_strategies = kwargs['scalingStrategies']
-        if 'scalingTargetPolicies' in kwargs:
+        if scaling_target_policies is None and 'scalingTargetPolicies' in kwargs:
             scaling_target_policies = kwargs['scalingTargetPolicies']
-        if 'scalingUpPolicies' in kwargs:
+        if scaling_up_policies is None and 'scalingUpPolicies' in kwargs:
             scaling_up_policies = kwargs['scalingUpPolicies']
-        if 'scheduledTasks' in kwargs:
+        if scheduled_tasks is None and 'scheduledTasks' in kwargs:
             scheduled_tasks = kwargs['scheduledTasks']
-        if 'shutdownScript' in kwargs:
+        if shutdown_script is None and 'shutdownScript' in kwargs:
             shutdown_script = kwargs['shutdownScript']
-        if 'spotPercentage' in kwargs:
+        if spot_percentage is None and 'spotPercentage' in kwargs:
             spot_percentage = kwargs['spotPercentage']
-        if 'statefulDeallocation' in kwargs:
+        if stateful_deallocation is None and 'statefulDeallocation' in kwargs:
             stateful_deallocation = kwargs['statefulDeallocation']
-        if 'statefulInstanceActions' in kwargs:
+        if stateful_instance_actions is None and 'statefulInstanceActions' in kwargs:
             stateful_instance_actions = kwargs['statefulInstanceActions']
-        if 'subnetIds' in kwargs:
+        if subnet_ids is None and 'subnetIds' in kwargs:
             subnet_ids = kwargs['subnetIds']
-        if 'targetGroupArns' in kwargs:
+        if target_group_arns is None and 'targetGroupArns' in kwargs:
             target_group_arns = kwargs['targetGroupArns']
-        if 'updatePolicy' in kwargs:
+        if update_policy is None and 'updatePolicy' in kwargs:
             update_policy = kwargs['updatePolicy']
-        if 'userData' in kwargs:
+        if user_data is None and 'userData' in kwargs:
             user_data = kwargs['userData']
-        if 'utilizeCommitments' in kwargs:
+        if utilize_commitments is None and 'utilizeCommitments' in kwargs:
             utilize_commitments = kwargs['utilizeCommitments']
-        if 'utilizeReservedInstances' in kwargs:
+        if utilize_reserved_instances is None and 'utilizeReservedInstances' in kwargs:
             utilize_reserved_instances = kwargs['utilizeReservedInstances']
-        if 'waitForCapacity' in kwargs:
+        if wait_for_capacity is None and 'waitForCapacity' in kwargs:
             wait_for_capacity = kwargs['waitForCapacity']
-        if 'waitForCapacityTimeout' in kwargs:
+        if wait_for_capacity_timeout is None and 'waitForCapacityTimeout' in kwargs:
             wait_for_capacity_timeout = kwargs['waitForCapacityTimeout']
 
         _setter("fallback_to_ondemand", fallback_to_ondemand)
@@ -1359,10 +1363,6 @@ class ElastigroupArgs:
         List of Private IPs to associate to the group instances.(e.g. "172.1.1.0"). Please note: This setting will only apply if persistence.persist_private_ip is set to true.
 
         Usage:
-
-        ```python
-        import pulumi
-        ```
         """
         return pulumi.get(self, "private_ips")
 
@@ -1765,10 +1765,6 @@ class _ElastigroupState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] private_ips: List of Private IPs to associate to the group instances.(e.g. "172.1.1.0"). Please note: This setting will only apply if persistence.persist_private_ip is set to true.
                
                Usage:
-               
-               ```python
-               import pulumi
-               ```
         :param pulumi.Input[str] product: Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`.
                For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
         :param pulumi.Input[str] region: The AWS region your group will be created in.
@@ -1961,155 +1957,155 @@ class _ElastigroupState:
              utilize_reserved_instances: Optional[pulumi.Input[bool]] = None,
              wait_for_capacity: Optional[pulumi.Input[int]] = None,
              wait_for_capacity_timeout: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'availabilityZones' in kwargs:
+        if availability_zones is None and 'availabilityZones' in kwargs:
             availability_zones = kwargs['availabilityZones']
-        if 'blockDevicesMode' in kwargs:
+        if block_devices_mode is None and 'blockDevicesMode' in kwargs:
             block_devices_mode = kwargs['blockDevicesMode']
-        if 'capacityUnit' in kwargs:
+        if capacity_unit is None and 'capacityUnit' in kwargs:
             capacity_unit = kwargs['capacityUnit']
-        if 'considerOdPricing' in kwargs:
+        if consider_od_pricing is None and 'considerOdPricing' in kwargs:
             consider_od_pricing = kwargs['considerOdPricing']
-        if 'cpuCredits' in kwargs:
+        if cpu_credits is None and 'cpuCredits' in kwargs:
             cpu_credits = kwargs['cpuCredits']
-        if 'cpuOptions' in kwargs:
+        if cpu_options is None and 'cpuOptions' in kwargs:
             cpu_options = kwargs['cpuOptions']
-        if 'desiredCapacity' in kwargs:
+        if desired_capacity is None and 'desiredCapacity' in kwargs:
             desired_capacity = kwargs['desiredCapacity']
-        if 'drainingTimeout' in kwargs:
+        if draining_timeout is None and 'drainingTimeout' in kwargs:
             draining_timeout = kwargs['drainingTimeout']
-        if 'ebsBlockDevices' in kwargs:
+        if ebs_block_devices is None and 'ebsBlockDevices' in kwargs:
             ebs_block_devices = kwargs['ebsBlockDevices']
-        if 'ebsOptimized' in kwargs:
+        if ebs_optimized is None and 'ebsOptimized' in kwargs:
             ebs_optimized = kwargs['ebsOptimized']
-        if 'elasticIps' in kwargs:
+        if elastic_ips is None and 'elasticIps' in kwargs:
             elastic_ips = kwargs['elasticIps']
-        if 'elasticLoadBalancers' in kwargs:
+        if elastic_load_balancers is None and 'elasticLoadBalancers' in kwargs:
             elastic_load_balancers = kwargs['elasticLoadBalancers']
-        if 'enableMonitoring' in kwargs:
+        if enable_monitoring is None and 'enableMonitoring' in kwargs:
             enable_monitoring = kwargs['enableMonitoring']
-        if 'ephemeralBlockDevices' in kwargs:
+        if ephemeral_block_devices is None and 'ephemeralBlockDevices' in kwargs:
             ephemeral_block_devices = kwargs['ephemeralBlockDevices']
-        if 'fallbackToOndemand' in kwargs:
+        if fallback_to_ondemand is None and 'fallbackToOndemand' in kwargs:
             fallback_to_ondemand = kwargs['fallbackToOndemand']
-        if 'healthCheckGracePeriod' in kwargs:
+        if health_check_grace_period is None and 'healthCheckGracePeriod' in kwargs:
             health_check_grace_period = kwargs['healthCheckGracePeriod']
-        if 'healthCheckType' in kwargs:
+        if health_check_type is None and 'healthCheckType' in kwargs:
             health_check_type = kwargs['healthCheckType']
-        if 'healthCheckUnhealthyDurationBeforeReplacement' in kwargs:
+        if health_check_unhealthy_duration_before_replacement is None and 'healthCheckUnhealthyDurationBeforeReplacement' in kwargs:
             health_check_unhealthy_duration_before_replacement = kwargs['healthCheckUnhealthyDurationBeforeReplacement']
-        if 'iamInstanceProfile' in kwargs:
+        if iam_instance_profile is None and 'iamInstanceProfile' in kwargs:
             iam_instance_profile = kwargs['iamInstanceProfile']
-        if 'imageId' in kwargs:
+        if image_id is None and 'imageId' in kwargs:
             image_id = kwargs['imageId']
-        if 'immediateOdRecoverThreshold' in kwargs:
+        if immediate_od_recover_threshold is None and 'immediateOdRecoverThreshold' in kwargs:
             immediate_od_recover_threshold = kwargs['immediateOdRecoverThreshold']
-        if 'instanceTypesOndemand' in kwargs:
+        if instance_types_ondemand is None and 'instanceTypesOndemand' in kwargs:
             instance_types_ondemand = kwargs['instanceTypesOndemand']
-        if 'instanceTypesPreferredSpots' in kwargs:
+        if instance_types_preferred_spots is None and 'instanceTypesPreferredSpots' in kwargs:
             instance_types_preferred_spots = kwargs['instanceTypesPreferredSpots']
-        if 'instanceTypesSpots' in kwargs:
+        if instance_types_spots is None and 'instanceTypesSpots' in kwargs:
             instance_types_spots = kwargs['instanceTypesSpots']
-        if 'instanceTypesWeights' in kwargs:
+        if instance_types_weights is None and 'instanceTypesWeights' in kwargs:
             instance_types_weights = kwargs['instanceTypesWeights']
-        if 'integrationBeanstalk' in kwargs:
+        if integration_beanstalk is None and 'integrationBeanstalk' in kwargs:
             integration_beanstalk = kwargs['integrationBeanstalk']
-        if 'integrationCodedeploy' in kwargs:
+        if integration_codedeploy is None and 'integrationCodedeploy' in kwargs:
             integration_codedeploy = kwargs['integrationCodedeploy']
-        if 'integrationDockerSwarm' in kwargs:
+        if integration_docker_swarm is None and 'integrationDockerSwarm' in kwargs:
             integration_docker_swarm = kwargs['integrationDockerSwarm']
-        if 'integrationEcs' in kwargs:
+        if integration_ecs is None and 'integrationEcs' in kwargs:
             integration_ecs = kwargs['integrationEcs']
-        if 'integrationGitlab' in kwargs:
+        if integration_gitlab is None and 'integrationGitlab' in kwargs:
             integration_gitlab = kwargs['integrationGitlab']
-        if 'integrationKubernetes' in kwargs:
+        if integration_kubernetes is None and 'integrationKubernetes' in kwargs:
             integration_kubernetes = kwargs['integrationKubernetes']
-        if 'integrationMesosphere' in kwargs:
+        if integration_mesosphere is None and 'integrationMesosphere' in kwargs:
             integration_mesosphere = kwargs['integrationMesosphere']
-        if 'integrationMultaiRuntime' in kwargs:
+        if integration_multai_runtime is None and 'integrationMultaiRuntime' in kwargs:
             integration_multai_runtime = kwargs['integrationMultaiRuntime']
-        if 'integrationNomad' in kwargs:
+        if integration_nomad is None and 'integrationNomad' in kwargs:
             integration_nomad = kwargs['integrationNomad']
-        if 'integrationRancher' in kwargs:
+        if integration_rancher is None and 'integrationRancher' in kwargs:
             integration_rancher = kwargs['integrationRancher']
-        if 'integrationRoute53' in kwargs:
+        if integration_route53 is None and 'integrationRoute53' in kwargs:
             integration_route53 = kwargs['integrationRoute53']
-        if 'keyName' in kwargs:
+        if key_name is None and 'keyName' in kwargs:
             key_name = kwargs['keyName']
-        if 'lifetimePeriod' in kwargs:
+        if lifetime_period is None and 'lifetimePeriod' in kwargs:
             lifetime_period = kwargs['lifetimePeriod']
-        if 'maxSize' in kwargs:
+        if max_size is None and 'maxSize' in kwargs:
             max_size = kwargs['maxSize']
-        if 'metadataOptions' in kwargs:
+        if metadata_options is None and 'metadataOptions' in kwargs:
             metadata_options = kwargs['metadataOptions']
-        if 'minSize' in kwargs:
+        if min_size is None and 'minSize' in kwargs:
             min_size = kwargs['minSize']
-        if 'minimumInstanceLifetime' in kwargs:
+        if minimum_instance_lifetime is None and 'minimumInstanceLifetime' in kwargs:
             minimum_instance_lifetime = kwargs['minimumInstanceLifetime']
-        if 'multaiTargetSets' in kwargs:
+        if multai_target_sets is None and 'multaiTargetSets' in kwargs:
             multai_target_sets = kwargs['multaiTargetSets']
-        if 'multipleMetrics' in kwargs:
+        if multiple_metrics is None and 'multipleMetrics' in kwargs:
             multiple_metrics = kwargs['multipleMetrics']
-        if 'networkInterfaces' in kwargs:
+        if network_interfaces is None and 'networkInterfaces' in kwargs:
             network_interfaces = kwargs['networkInterfaces']
-        if 'onDemandTypes' in kwargs:
+        if on_demand_types is None and 'onDemandTypes' in kwargs:
             on_demand_types = kwargs['onDemandTypes']
-        if 'ondemandCount' in kwargs:
+        if ondemand_count is None and 'ondemandCount' in kwargs:
             ondemand_count = kwargs['ondemandCount']
-        if 'persistBlockDevices' in kwargs:
+        if persist_block_devices is None and 'persistBlockDevices' in kwargs:
             persist_block_devices = kwargs['persistBlockDevices']
-        if 'persistPrivateIp' in kwargs:
+        if persist_private_ip is None and 'persistPrivateIp' in kwargs:
             persist_private_ip = kwargs['persistPrivateIp']
-        if 'persistRootDevice' in kwargs:
+        if persist_root_device is None and 'persistRootDevice' in kwargs:
             persist_root_device = kwargs['persistRootDevice']
-        if 'placementTenancy' in kwargs:
+        if placement_tenancy is None and 'placementTenancy' in kwargs:
             placement_tenancy = kwargs['placementTenancy']
-        if 'preferredAvailabilityZones' in kwargs:
+        if preferred_availability_zones is None and 'preferredAvailabilityZones' in kwargs:
             preferred_availability_zones = kwargs['preferredAvailabilityZones']
-        if 'privateIps' in kwargs:
+        if private_ips is None and 'privateIps' in kwargs:
             private_ips = kwargs['privateIps']
-        if 'resourceRequirements' in kwargs:
+        if resource_requirements is None and 'resourceRequirements' in kwargs:
             resource_requirements = kwargs['resourceRequirements']
-        if 'resourceTagSpecifications' in kwargs:
+        if resource_tag_specifications is None and 'resourceTagSpecifications' in kwargs:
             resource_tag_specifications = kwargs['resourceTagSpecifications']
-        if 'revertToSpot' in kwargs:
+        if revert_to_spot is None and 'revertToSpot' in kwargs:
             revert_to_spot = kwargs['revertToSpot']
-        if 'scalingDownPolicies' in kwargs:
+        if scaling_down_policies is None and 'scalingDownPolicies' in kwargs:
             scaling_down_policies = kwargs['scalingDownPolicies']
-        if 'scalingStrategies' in kwargs:
+        if scaling_strategies is None and 'scalingStrategies' in kwargs:
             scaling_strategies = kwargs['scalingStrategies']
-        if 'scalingTargetPolicies' in kwargs:
+        if scaling_target_policies is None and 'scalingTargetPolicies' in kwargs:
             scaling_target_policies = kwargs['scalingTargetPolicies']
-        if 'scalingUpPolicies' in kwargs:
+        if scaling_up_policies is None and 'scalingUpPolicies' in kwargs:
             scaling_up_policies = kwargs['scalingUpPolicies']
-        if 'scheduledTasks' in kwargs:
+        if scheduled_tasks is None and 'scheduledTasks' in kwargs:
             scheduled_tasks = kwargs['scheduledTasks']
-        if 'securityGroups' in kwargs:
+        if security_groups is None and 'securityGroups' in kwargs:
             security_groups = kwargs['securityGroups']
-        if 'shutdownScript' in kwargs:
+        if shutdown_script is None and 'shutdownScript' in kwargs:
             shutdown_script = kwargs['shutdownScript']
-        if 'spotPercentage' in kwargs:
+        if spot_percentage is None and 'spotPercentage' in kwargs:
             spot_percentage = kwargs['spotPercentage']
-        if 'statefulDeallocation' in kwargs:
+        if stateful_deallocation is None and 'statefulDeallocation' in kwargs:
             stateful_deallocation = kwargs['statefulDeallocation']
-        if 'statefulInstanceActions' in kwargs:
+        if stateful_instance_actions is None and 'statefulInstanceActions' in kwargs:
             stateful_instance_actions = kwargs['statefulInstanceActions']
-        if 'subnetIds' in kwargs:
+        if subnet_ids is None and 'subnetIds' in kwargs:
             subnet_ids = kwargs['subnetIds']
-        if 'targetGroupArns' in kwargs:
+        if target_group_arns is None and 'targetGroupArns' in kwargs:
             target_group_arns = kwargs['targetGroupArns']
-        if 'updatePolicy' in kwargs:
+        if update_policy is None and 'updatePolicy' in kwargs:
             update_policy = kwargs['updatePolicy']
-        if 'userData' in kwargs:
+        if user_data is None and 'userData' in kwargs:
             user_data = kwargs['userData']
-        if 'utilizeCommitments' in kwargs:
+        if utilize_commitments is None and 'utilizeCommitments' in kwargs:
             utilize_commitments = kwargs['utilizeCommitments']
-        if 'utilizeReservedInstances' in kwargs:
+        if utilize_reserved_instances is None and 'utilizeReservedInstances' in kwargs:
             utilize_reserved_instances = kwargs['utilizeReservedInstances']
-        if 'waitForCapacity' in kwargs:
+        if wait_for_capacity is None and 'waitForCapacity' in kwargs:
             wait_for_capacity = kwargs['waitForCapacity']
-        if 'waitForCapacityTimeout' in kwargs:
+        if wait_for_capacity_timeout is None and 'waitForCapacityTimeout' in kwargs:
             wait_for_capacity_timeout = kwargs['waitForCapacityTimeout']
 
         if availability_zones is not None:
@@ -2947,10 +2943,6 @@ class _ElastigroupState:
         List of Private IPs to associate to the group instances.(e.g. "172.1.1.0"). Please note: This setting will only apply if persistence.persist_private_ip is set to true.
 
         Usage:
-
-        ```python
-        import pulumi
-        ```
         """
         return pulumi.get(self, "private_ips")
 
@@ -3384,10 +3376,6 @@ class Elastigroup(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] private_ips: List of Private IPs to associate to the group instances.(e.g. "172.1.1.0"). Please note: This setting will only apply if persistence.persist_private_ip is set to true.
                
                Usage:
-               
-               ```python
-               import pulumi
-               ```
         :param pulumi.Input[str] product: Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`.
                For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
         :param pulumi.Input[str] region: The AWS region your group will be created in.
@@ -3533,11 +3521,7 @@ class Elastigroup(pulumi.CustomResource):
             __props__.__dict__["capacity_unit"] = capacity_unit
             __props__.__dict__["consider_od_pricing"] = consider_od_pricing
             __props__.__dict__["cpu_credits"] = cpu_credits
-            if cpu_options is not None and not isinstance(cpu_options, ElastigroupCpuOptionsArgs):
-                cpu_options = cpu_options or {}
-                def _setter(key, value):
-                    cpu_options[key] = value
-                ElastigroupCpuOptionsArgs._configure(_setter, **cpu_options)
+            cpu_options = _utilities.configure(cpu_options, ElastigroupCpuOptionsArgs, True)
             __props__.__dict__["cpu_options"] = cpu_options
             __props__.__dict__["description"] = description
             __props__.__dict__["desired_capacity"] = desired_capacity
@@ -3562,90 +3546,38 @@ class Elastigroup(pulumi.CustomResource):
             __props__.__dict__["instance_types_preferred_spots"] = instance_types_preferred_spots
             __props__.__dict__["instance_types_spots"] = instance_types_spots
             __props__.__dict__["instance_types_weights"] = instance_types_weights
-            if integration_beanstalk is not None and not isinstance(integration_beanstalk, ElastigroupIntegrationBeanstalkArgs):
-                integration_beanstalk = integration_beanstalk or {}
-                def _setter(key, value):
-                    integration_beanstalk[key] = value
-                ElastigroupIntegrationBeanstalkArgs._configure(_setter, **integration_beanstalk)
+            integration_beanstalk = _utilities.configure(integration_beanstalk, ElastigroupIntegrationBeanstalkArgs, True)
             __props__.__dict__["integration_beanstalk"] = integration_beanstalk
-            if integration_codedeploy is not None and not isinstance(integration_codedeploy, ElastigroupIntegrationCodedeployArgs):
-                integration_codedeploy = integration_codedeploy or {}
-                def _setter(key, value):
-                    integration_codedeploy[key] = value
-                ElastigroupIntegrationCodedeployArgs._configure(_setter, **integration_codedeploy)
+            integration_codedeploy = _utilities.configure(integration_codedeploy, ElastigroupIntegrationCodedeployArgs, True)
             __props__.__dict__["integration_codedeploy"] = integration_codedeploy
-            if integration_docker_swarm is not None and not isinstance(integration_docker_swarm, ElastigroupIntegrationDockerSwarmArgs):
-                integration_docker_swarm = integration_docker_swarm or {}
-                def _setter(key, value):
-                    integration_docker_swarm[key] = value
-                ElastigroupIntegrationDockerSwarmArgs._configure(_setter, **integration_docker_swarm)
+            integration_docker_swarm = _utilities.configure(integration_docker_swarm, ElastigroupIntegrationDockerSwarmArgs, True)
             __props__.__dict__["integration_docker_swarm"] = integration_docker_swarm
-            if integration_ecs is not None and not isinstance(integration_ecs, ElastigroupIntegrationEcsArgs):
-                integration_ecs = integration_ecs or {}
-                def _setter(key, value):
-                    integration_ecs[key] = value
-                ElastigroupIntegrationEcsArgs._configure(_setter, **integration_ecs)
+            integration_ecs = _utilities.configure(integration_ecs, ElastigroupIntegrationEcsArgs, True)
             __props__.__dict__["integration_ecs"] = integration_ecs
-            if integration_gitlab is not None and not isinstance(integration_gitlab, ElastigroupIntegrationGitlabArgs):
-                integration_gitlab = integration_gitlab or {}
-                def _setter(key, value):
-                    integration_gitlab[key] = value
-                ElastigroupIntegrationGitlabArgs._configure(_setter, **integration_gitlab)
+            integration_gitlab = _utilities.configure(integration_gitlab, ElastigroupIntegrationGitlabArgs, True)
             __props__.__dict__["integration_gitlab"] = integration_gitlab
-            if integration_kubernetes is not None and not isinstance(integration_kubernetes, ElastigroupIntegrationKubernetesArgs):
-                integration_kubernetes = integration_kubernetes or {}
-                def _setter(key, value):
-                    integration_kubernetes[key] = value
-                ElastigroupIntegrationKubernetesArgs._configure(_setter, **integration_kubernetes)
+            integration_kubernetes = _utilities.configure(integration_kubernetes, ElastigroupIntegrationKubernetesArgs, True)
             __props__.__dict__["integration_kubernetes"] = integration_kubernetes
-            if integration_mesosphere is not None and not isinstance(integration_mesosphere, ElastigroupIntegrationMesosphereArgs):
-                integration_mesosphere = integration_mesosphere or {}
-                def _setter(key, value):
-                    integration_mesosphere[key] = value
-                ElastigroupIntegrationMesosphereArgs._configure(_setter, **integration_mesosphere)
+            integration_mesosphere = _utilities.configure(integration_mesosphere, ElastigroupIntegrationMesosphereArgs, True)
             __props__.__dict__["integration_mesosphere"] = integration_mesosphere
-            if integration_multai_runtime is not None and not isinstance(integration_multai_runtime, ElastigroupIntegrationMultaiRuntimeArgs):
-                integration_multai_runtime = integration_multai_runtime or {}
-                def _setter(key, value):
-                    integration_multai_runtime[key] = value
-                ElastigroupIntegrationMultaiRuntimeArgs._configure(_setter, **integration_multai_runtime)
+            integration_multai_runtime = _utilities.configure(integration_multai_runtime, ElastigroupIntegrationMultaiRuntimeArgs, True)
             __props__.__dict__["integration_multai_runtime"] = integration_multai_runtime
-            if integration_nomad is not None and not isinstance(integration_nomad, ElastigroupIntegrationNomadArgs):
-                integration_nomad = integration_nomad or {}
-                def _setter(key, value):
-                    integration_nomad[key] = value
-                ElastigroupIntegrationNomadArgs._configure(_setter, **integration_nomad)
+            integration_nomad = _utilities.configure(integration_nomad, ElastigroupIntegrationNomadArgs, True)
             __props__.__dict__["integration_nomad"] = integration_nomad
-            if integration_rancher is not None and not isinstance(integration_rancher, ElastigroupIntegrationRancherArgs):
-                integration_rancher = integration_rancher or {}
-                def _setter(key, value):
-                    integration_rancher[key] = value
-                ElastigroupIntegrationRancherArgs._configure(_setter, **integration_rancher)
+            integration_rancher = _utilities.configure(integration_rancher, ElastigroupIntegrationRancherArgs, True)
             __props__.__dict__["integration_rancher"] = integration_rancher
-            if integration_route53 is not None and not isinstance(integration_route53, ElastigroupIntegrationRoute53Args):
-                integration_route53 = integration_route53 or {}
-                def _setter(key, value):
-                    integration_route53[key] = value
-                ElastigroupIntegrationRoute53Args._configure(_setter, **integration_route53)
+            integration_route53 = _utilities.configure(integration_route53, ElastigroupIntegrationRoute53Args, True)
             __props__.__dict__["integration_route53"] = integration_route53
             __props__.__dict__["itfs"] = itfs
             __props__.__dict__["key_name"] = key_name
             __props__.__dict__["lifetime_period"] = lifetime_period
             __props__.__dict__["max_size"] = max_size
-            if metadata_options is not None and not isinstance(metadata_options, ElastigroupMetadataOptionsArgs):
-                metadata_options = metadata_options or {}
-                def _setter(key, value):
-                    metadata_options[key] = value
-                ElastigroupMetadataOptionsArgs._configure(_setter, **metadata_options)
+            metadata_options = _utilities.configure(metadata_options, ElastigroupMetadataOptionsArgs, True)
             __props__.__dict__["metadata_options"] = metadata_options
             __props__.__dict__["min_size"] = min_size
             __props__.__dict__["minimum_instance_lifetime"] = minimum_instance_lifetime
             __props__.__dict__["multai_target_sets"] = multai_target_sets
-            if multiple_metrics is not None and not isinstance(multiple_metrics, ElastigroupMultipleMetricsArgs):
-                multiple_metrics = multiple_metrics or {}
-                def _setter(key, value):
-                    multiple_metrics[key] = value
-                ElastigroupMultipleMetricsArgs._configure(_setter, **multiple_metrics)
+            multiple_metrics = _utilities.configure(multiple_metrics, ElastigroupMultipleMetricsArgs, True)
             __props__.__dict__["multiple_metrics"] = multiple_metrics
             __props__.__dict__["name"] = name
             __props__.__dict__["network_interfaces"] = network_interfaces
@@ -3666,11 +3598,7 @@ class Elastigroup(pulumi.CustomResource):
             __props__.__dict__["region"] = region
             __props__.__dict__["resource_requirements"] = resource_requirements
             __props__.__dict__["resource_tag_specifications"] = resource_tag_specifications
-            if revert_to_spot is not None and not isinstance(revert_to_spot, ElastigroupRevertToSpotArgs):
-                revert_to_spot = revert_to_spot or {}
-                def _setter(key, value):
-                    revert_to_spot[key] = value
-                ElastigroupRevertToSpotArgs._configure(_setter, **revert_to_spot)
+            revert_to_spot = _utilities.configure(revert_to_spot, ElastigroupRevertToSpotArgs, True)
             __props__.__dict__["revert_to_spot"] = revert_to_spot
             __props__.__dict__["scaling_down_policies"] = scaling_down_policies
             __props__.__dict__["scaling_strategies"] = scaling_strategies
@@ -3683,21 +3611,13 @@ class Elastigroup(pulumi.CustomResource):
             __props__.__dict__["shutdown_script"] = shutdown_script
             __props__.__dict__["signals"] = signals
             __props__.__dict__["spot_percentage"] = spot_percentage
-            if stateful_deallocation is not None and not isinstance(stateful_deallocation, ElastigroupStatefulDeallocationArgs):
-                stateful_deallocation = stateful_deallocation or {}
-                def _setter(key, value):
-                    stateful_deallocation[key] = value
-                ElastigroupStatefulDeallocationArgs._configure(_setter, **stateful_deallocation)
+            stateful_deallocation = _utilities.configure(stateful_deallocation, ElastigroupStatefulDeallocationArgs, True)
             __props__.__dict__["stateful_deallocation"] = stateful_deallocation
             __props__.__dict__["stateful_instance_actions"] = stateful_instance_actions
             __props__.__dict__["subnet_ids"] = subnet_ids
             __props__.__dict__["tags"] = tags
             __props__.__dict__["target_group_arns"] = target_group_arns
-            if update_policy is not None and not isinstance(update_policy, ElastigroupUpdatePolicyArgs):
-                update_policy = update_policy or {}
-                def _setter(key, value):
-                    update_policy[key] = value
-                ElastigroupUpdatePolicyArgs._configure(_setter, **update_policy)
+            update_policy = _utilities.configure(update_policy, ElastigroupUpdatePolicyArgs, True)
             __props__.__dict__["update_policy"] = update_policy
             __props__.__dict__["user_data"] = user_data
             __props__.__dict__["utilize_commitments"] = utilize_commitments
@@ -3859,10 +3779,6 @@ class Elastigroup(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] private_ips: List of Private IPs to associate to the group instances.(e.g. "172.1.1.0"). Please note: This setting will only apply if persistence.persist_private_ip is set to true.
                
                Usage:
-               
-               ```python
-               import pulumi
-               ```
         :param pulumi.Input[str] product: Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`.
                For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
         :param pulumi.Input[str] region: The AWS region your group will be created in.
@@ -4412,10 +4328,6 @@ class Elastigroup(pulumi.CustomResource):
         List of Private IPs to associate to the group instances.(e.g. "172.1.1.0"). Please note: This setting will only apply if persistence.persist_private_ip is set to true.
 
         Usage:
-
-        ```python
-        import pulumi
-        ```
         """
         return pulumi.get(self, "private_ips")
 

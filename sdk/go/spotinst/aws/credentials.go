@@ -14,33 +14,6 @@ import (
 )
 
 // Provides a Spotinst credential AWS resource.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst/aws"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aws.NewCredentials(ctx, "credential", &aws.CredentialsArgs{
-//				Accountid: pulumi.String("act-123456"),
-//				Iamrole:   pulumi.String("arn:aws:iam::1234567890:role/Spot_Iam_Role"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 type Credentials struct {
 	pulumi.CustomResourceState
 

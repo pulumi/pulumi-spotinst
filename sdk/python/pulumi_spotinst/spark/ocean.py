@@ -38,17 +38,19 @@ class OceanArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             ocean_cluster_id: pulumi.Input[str],
+             ocean_cluster_id: Optional[pulumi.Input[str]] = None,
              compute: Optional[pulumi.Input['OceanComputeArgs']] = None,
              ingress: Optional[pulumi.Input['OceanIngressArgs']] = None,
              log_collection: Optional[pulumi.Input['OceanLogCollectionArgs']] = None,
              spark: Optional[pulumi.Input['OceanSparkArgs']] = None,
              webhook: Optional[pulumi.Input['OceanWebhookArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'oceanClusterId' in kwargs:
+        if ocean_cluster_id is None and 'oceanClusterId' in kwargs:
             ocean_cluster_id = kwargs['oceanClusterId']
-        if 'logCollection' in kwargs:
+        if ocean_cluster_id is None:
+            raise TypeError("Missing 'ocean_cluster_id' argument")
+        if log_collection is None and 'logCollection' in kwargs:
             log_collection = kwargs['logCollection']
 
         _setter("ocean_cluster_id", ocean_cluster_id)
@@ -152,11 +154,11 @@ class _OceanState:
              ocean_cluster_id: Optional[pulumi.Input[str]] = None,
              spark: Optional[pulumi.Input['OceanSparkArgs']] = None,
              webhook: Optional[pulumi.Input['OceanWebhookArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'logCollection' in kwargs:
+        if log_collection is None and 'logCollection' in kwargs:
             log_collection = kwargs['logCollection']
-        if 'oceanClusterId' in kwargs:
+        if ocean_cluster_id is None and 'oceanClusterId' in kwargs:
             ocean_cluster_id = kwargs['oceanClusterId']
 
         if compute is not None:
@@ -249,59 +251,6 @@ class Ocean(pulumi.CustomResource):
 
         An existing Ocean cluster is required by this resource. See e.g. the `aws.Ocean` resource.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_spotinst as spotinst
-
-        example = spotinst.spark.Ocean("example",
-            ocean_cluster_id="ocean-cluster-id",
-            ingress=spotinst.spark.OceanIngressArgs(
-                controller=spotinst.spark.OceanIngressControllerArgs(
-                    managed=True,
-                ),
-                load_balancer=spotinst.spark.OceanIngressLoadBalancerArgs(
-                    managed=True,
-                    target_group_arn="arn:aws:elasticloadbalancing:eu-north-1:XXXXXXXXXXXX:targetgroup/my-spark-cluster-nlb-tg/a38c2b83XXXXXXXX",
-                    service_annotations={
-                        "service.beta.kubernetes.io/aws-load-balancer-security-groups": "sg-XXXXXXXXXXXXXXXXX",
-                        "some-service-annotation-2": "some-service-annotation-value-2",
-                    },
-                ),
-                custom_endpoint=spotinst.spark.OceanIngressCustomEndpointArgs(
-                    enabled=False,
-                    address="my-spark-cluster-nlb-8cbb8da7XXXXXXXX.elb.us-east-1.amazonaws.com",
-                ),
-                private_link=spotinst.spark.OceanIngressPrivateLinkArgs(
-                    enabled=False,
-                    vpc_endpoint_service="com.amazonaws.vpce.eu-north-1.vpce-svc-XXXXXXXXXXXXXXXXX",
-                ),
-            ),
-            compute=spotinst.spark.OceanComputeArgs(
-                create_vngs=True,
-                use_taints=True,
-            ),
-            log_collection=spotinst.spark.OceanLogCollectionArgs(
-                collect_app_logs=True,
-            ),
-            webhook=spotinst.spark.OceanWebhookArgs(
-                use_host_network=False,
-                host_network_ports=[25554],
-            ),
-            spark=spotinst.spark.OceanSparkArgs(
-                additional_app_namespaces=[
-                    "extra-spark-app-ns-1",
-                    "extra-spark-app-ns-2",
-                ],
-            ))
-        ```
-        ```python
-        import pulumi
-
-        pulumi.export("oceanSparkId", spotinst_ocean_spark["example"]["id"])
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] ocean_cluster_id: - The ID of the Ocean cluster that Ocean for Apache Spark should be installed on.
@@ -318,59 +267,6 @@ class Ocean(pulumi.CustomResource):
         ## Prerequisites
 
         An existing Ocean cluster is required by this resource. See e.g. the `aws.Ocean` resource.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_spotinst as spotinst
-
-        example = spotinst.spark.Ocean("example",
-            ocean_cluster_id="ocean-cluster-id",
-            ingress=spotinst.spark.OceanIngressArgs(
-                controller=spotinst.spark.OceanIngressControllerArgs(
-                    managed=True,
-                ),
-                load_balancer=spotinst.spark.OceanIngressLoadBalancerArgs(
-                    managed=True,
-                    target_group_arn="arn:aws:elasticloadbalancing:eu-north-1:XXXXXXXXXXXX:targetgroup/my-spark-cluster-nlb-tg/a38c2b83XXXXXXXX",
-                    service_annotations={
-                        "service.beta.kubernetes.io/aws-load-balancer-security-groups": "sg-XXXXXXXXXXXXXXXXX",
-                        "some-service-annotation-2": "some-service-annotation-value-2",
-                    },
-                ),
-                custom_endpoint=spotinst.spark.OceanIngressCustomEndpointArgs(
-                    enabled=False,
-                    address="my-spark-cluster-nlb-8cbb8da7XXXXXXXX.elb.us-east-1.amazonaws.com",
-                ),
-                private_link=spotinst.spark.OceanIngressPrivateLinkArgs(
-                    enabled=False,
-                    vpc_endpoint_service="com.amazonaws.vpce.eu-north-1.vpce-svc-XXXXXXXXXXXXXXXXX",
-                ),
-            ),
-            compute=spotinst.spark.OceanComputeArgs(
-                create_vngs=True,
-                use_taints=True,
-            ),
-            log_collection=spotinst.spark.OceanLogCollectionArgs(
-                collect_app_logs=True,
-            ),
-            webhook=spotinst.spark.OceanWebhookArgs(
-                use_host_network=False,
-                host_network_ports=[25554],
-            ),
-            spark=spotinst.spark.OceanSparkArgs(
-                additional_app_namespaces=[
-                    "extra-spark-app-ns-1",
-                    "extra-spark-app-ns-2",
-                ],
-            ))
-        ```
-        ```python
-        import pulumi
-
-        pulumi.export("oceanSparkId", spotinst_ocean_spark["example"]["id"])
-        ```
 
         :param str resource_name: The name of the resource.
         :param OceanArgs args: The arguments to use to populate this resource's properties.
@@ -406,38 +302,18 @@ class Ocean(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = OceanArgs.__new__(OceanArgs)
 
-            if compute is not None and not isinstance(compute, OceanComputeArgs):
-                compute = compute or {}
-                def _setter(key, value):
-                    compute[key] = value
-                OceanComputeArgs._configure(_setter, **compute)
+            compute = _utilities.configure(compute, OceanComputeArgs, True)
             __props__.__dict__["compute"] = compute
-            if ingress is not None and not isinstance(ingress, OceanIngressArgs):
-                ingress = ingress or {}
-                def _setter(key, value):
-                    ingress[key] = value
-                OceanIngressArgs._configure(_setter, **ingress)
+            ingress = _utilities.configure(ingress, OceanIngressArgs, True)
             __props__.__dict__["ingress"] = ingress
-            if log_collection is not None and not isinstance(log_collection, OceanLogCollectionArgs):
-                log_collection = log_collection or {}
-                def _setter(key, value):
-                    log_collection[key] = value
-                OceanLogCollectionArgs._configure(_setter, **log_collection)
+            log_collection = _utilities.configure(log_collection, OceanLogCollectionArgs, True)
             __props__.__dict__["log_collection"] = log_collection
             if ocean_cluster_id is None and not opts.urn:
                 raise TypeError("Missing required property 'ocean_cluster_id'")
             __props__.__dict__["ocean_cluster_id"] = ocean_cluster_id
-            if spark is not None and not isinstance(spark, OceanSparkArgs):
-                spark = spark or {}
-                def _setter(key, value):
-                    spark[key] = value
-                OceanSparkArgs._configure(_setter, **spark)
+            spark = _utilities.configure(spark, OceanSparkArgs, True)
             __props__.__dict__["spark"] = spark
-            if webhook is not None and not isinstance(webhook, OceanWebhookArgs):
-                webhook = webhook or {}
-                def _setter(key, value):
-                    webhook[key] = value
-                OceanWebhookArgs._configure(_setter, **webhook)
+            webhook = _utilities.configure(webhook, OceanWebhookArgs, True)
             __props__.__dict__["webhook"] = webhook
         super(Ocean, __self__).__init__(
             'spotinst:spark/ocean:Ocean',

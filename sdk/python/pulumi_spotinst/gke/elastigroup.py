@@ -91,8 +91,8 @@ class ElastigroupArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cluster_zone_name: pulumi.Input[str],
-             desired_capacity: pulumi.Input[int],
+             cluster_zone_name: Optional[pulumi.Input[str]] = None,
+             desired_capacity: Optional[pulumi.Input[int]] = None,
              backend_services: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupBackendServiceArgs']]]] = None,
              cluster_id: Optional[pulumi.Input[str]] = None,
              disks: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupDiskArgs']]]] = None,
@@ -122,57 +122,61 @@ class ElastigroupArgs:
              shutdown_script: Optional[pulumi.Input[str]] = None,
              startup_script: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'clusterZoneName' in kwargs:
+        if cluster_zone_name is None and 'clusterZoneName' in kwargs:
             cluster_zone_name = kwargs['clusterZoneName']
-        if 'desiredCapacity' in kwargs:
+        if cluster_zone_name is None:
+            raise TypeError("Missing 'cluster_zone_name' argument")
+        if desired_capacity is None and 'desiredCapacity' in kwargs:
             desired_capacity = kwargs['desiredCapacity']
-        if 'backendServices' in kwargs:
+        if desired_capacity is None:
+            raise TypeError("Missing 'desired_capacity' argument")
+        if backend_services is None and 'backendServices' in kwargs:
             backend_services = kwargs['backendServices']
-        if 'clusterId' in kwargs:
+        if cluster_id is None and 'clusterId' in kwargs:
             cluster_id = kwargs['clusterId']
-        if 'drainingTimeout' in kwargs:
+        if draining_timeout is None and 'drainingTimeout' in kwargs:
             draining_timeout = kwargs['drainingTimeout']
-        if 'fallbackToOndemand' in kwargs:
+        if fallback_to_ondemand is None and 'fallbackToOndemand' in kwargs:
             fallback_to_ondemand = kwargs['fallbackToOndemand']
-        if 'instanceNamePrefix' in kwargs:
+        if instance_name_prefix is None and 'instanceNamePrefix' in kwargs:
             instance_name_prefix = kwargs['instanceNamePrefix']
-        if 'instanceTypesCustoms' in kwargs:
+        if instance_types_customs is None and 'instanceTypesCustoms' in kwargs:
             instance_types_customs = kwargs['instanceTypesCustoms']
-        if 'instanceTypesOndemand' in kwargs:
+        if instance_types_ondemand is None and 'instanceTypesOndemand' in kwargs:
             instance_types_ondemand = kwargs['instanceTypesOndemand']
-        if 'instanceTypesPreemptibles' in kwargs:
+        if instance_types_preemptibles is None and 'instanceTypesPreemptibles' in kwargs:
             instance_types_preemptibles = kwargs['instanceTypesPreemptibles']
-        if 'integrationDockerSwarm' in kwargs:
+        if integration_docker_swarm is None and 'integrationDockerSwarm' in kwargs:
             integration_docker_swarm = kwargs['integrationDockerSwarm']
-        if 'integrationGke' in kwargs:
+        if integration_gke is None and 'integrationGke' in kwargs:
             integration_gke = kwargs['integrationGke']
-        if 'ipForwarding' in kwargs:
+        if ip_forwarding is None and 'ipForwarding' in kwargs:
             ip_forwarding = kwargs['ipForwarding']
-        if 'maxSize' in kwargs:
+        if max_size is None and 'maxSize' in kwargs:
             max_size = kwargs['maxSize']
-        if 'minSize' in kwargs:
+        if min_size is None and 'minSize' in kwargs:
             min_size = kwargs['minSize']
-        if 'networkInterfaces' in kwargs:
+        if network_interfaces is None and 'networkInterfaces' in kwargs:
             network_interfaces = kwargs['networkInterfaces']
-        if 'nodeImage' in kwargs:
+        if node_image is None and 'nodeImage' in kwargs:
             node_image = kwargs['nodeImage']
-        if 'ondemandCount' in kwargs:
+        if ondemand_count is None and 'ondemandCount' in kwargs:
             ondemand_count = kwargs['ondemandCount']
-        if 'preemptiblePercentage' in kwargs:
+        if preemptible_percentage is None and 'preemptiblePercentage' in kwargs:
             preemptible_percentage = kwargs['preemptiblePercentage']
-        if 'provisioningModel' in kwargs:
+        if provisioning_model is None and 'provisioningModel' in kwargs:
             provisioning_model = kwargs['provisioningModel']
-        if 'scalingDownPolicies' in kwargs:
+        if scaling_down_policies is None and 'scalingDownPolicies' in kwargs:
             scaling_down_policies = kwargs['scalingDownPolicies']
-        if 'scalingUpPolicies' in kwargs:
+        if scaling_up_policies is None and 'scalingUpPolicies' in kwargs:
             scaling_up_policies = kwargs['scalingUpPolicies']
-        if 'serviceAccount' in kwargs:
+        if service_account is None and 'serviceAccount' in kwargs:
             service_account = kwargs['serviceAccount']
-        if 'shutdownScript' in kwargs:
+        if shutdown_script is None and 'shutdownScript' in kwargs:
             shutdown_script = kwargs['shutdownScript']
-        if 'startupScript' in kwargs:
+        if startup_script is None and 'startupScript' in kwargs:
             startup_script = kwargs['startupScript']
 
         _setter("cluster_zone_name", cluster_zone_name)
@@ -643,57 +647,57 @@ class _ElastigroupState:
              shutdown_script: Optional[pulumi.Input[str]] = None,
              startup_script: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'backendServices' in kwargs:
+        if backend_services is None and 'backendServices' in kwargs:
             backend_services = kwargs['backendServices']
-        if 'clusterId' in kwargs:
+        if cluster_id is None and 'clusterId' in kwargs:
             cluster_id = kwargs['clusterId']
-        if 'clusterZoneName' in kwargs:
+        if cluster_zone_name is None and 'clusterZoneName' in kwargs:
             cluster_zone_name = kwargs['clusterZoneName']
-        if 'desiredCapacity' in kwargs:
+        if desired_capacity is None and 'desiredCapacity' in kwargs:
             desired_capacity = kwargs['desiredCapacity']
-        if 'drainingTimeout' in kwargs:
+        if draining_timeout is None and 'drainingTimeout' in kwargs:
             draining_timeout = kwargs['drainingTimeout']
-        if 'fallbackToOndemand' in kwargs:
+        if fallback_to_ondemand is None and 'fallbackToOndemand' in kwargs:
             fallback_to_ondemand = kwargs['fallbackToOndemand']
-        if 'instanceNamePrefix' in kwargs:
+        if instance_name_prefix is None and 'instanceNamePrefix' in kwargs:
             instance_name_prefix = kwargs['instanceNamePrefix']
-        if 'instanceTypesCustoms' in kwargs:
+        if instance_types_customs is None and 'instanceTypesCustoms' in kwargs:
             instance_types_customs = kwargs['instanceTypesCustoms']
-        if 'instanceTypesOndemand' in kwargs:
+        if instance_types_ondemand is None and 'instanceTypesOndemand' in kwargs:
             instance_types_ondemand = kwargs['instanceTypesOndemand']
-        if 'instanceTypesPreemptibles' in kwargs:
+        if instance_types_preemptibles is None and 'instanceTypesPreemptibles' in kwargs:
             instance_types_preemptibles = kwargs['instanceTypesPreemptibles']
-        if 'integrationDockerSwarm' in kwargs:
+        if integration_docker_swarm is None and 'integrationDockerSwarm' in kwargs:
             integration_docker_swarm = kwargs['integrationDockerSwarm']
-        if 'integrationGke' in kwargs:
+        if integration_gke is None and 'integrationGke' in kwargs:
             integration_gke = kwargs['integrationGke']
-        if 'ipForwarding' in kwargs:
+        if ip_forwarding is None and 'ipForwarding' in kwargs:
             ip_forwarding = kwargs['ipForwarding']
-        if 'maxSize' in kwargs:
+        if max_size is None and 'maxSize' in kwargs:
             max_size = kwargs['maxSize']
-        if 'minSize' in kwargs:
+        if min_size is None and 'minSize' in kwargs:
             min_size = kwargs['minSize']
-        if 'networkInterfaces' in kwargs:
+        if network_interfaces is None and 'networkInterfaces' in kwargs:
             network_interfaces = kwargs['networkInterfaces']
-        if 'nodeImage' in kwargs:
+        if node_image is None and 'nodeImage' in kwargs:
             node_image = kwargs['nodeImage']
-        if 'ondemandCount' in kwargs:
+        if ondemand_count is None and 'ondemandCount' in kwargs:
             ondemand_count = kwargs['ondemandCount']
-        if 'preemptiblePercentage' in kwargs:
+        if preemptible_percentage is None and 'preemptiblePercentage' in kwargs:
             preemptible_percentage = kwargs['preemptiblePercentage']
-        if 'provisioningModel' in kwargs:
+        if provisioning_model is None and 'provisioningModel' in kwargs:
             provisioning_model = kwargs['provisioningModel']
-        if 'scalingDownPolicies' in kwargs:
+        if scaling_down_policies is None and 'scalingDownPolicies' in kwargs:
             scaling_down_policies = kwargs['scalingDownPolicies']
-        if 'scalingUpPolicies' in kwargs:
+        if scaling_up_policies is None and 'scalingUpPolicies' in kwargs:
             scaling_up_policies = kwargs['scalingUpPolicies']
-        if 'serviceAccount' in kwargs:
+        if service_account is None and 'serviceAccount' in kwargs:
             service_account = kwargs['serviceAccount']
-        if 'shutdownScript' in kwargs:
+        if shutdown_script is None and 'shutdownScript' in kwargs:
             shutdown_script = kwargs['shutdownScript']
-        if 'startupScript' in kwargs:
+        if startup_script is None and 'startupScript' in kwargs:
             startup_script = kwargs['startupScript']
 
         if backend_services is not None:
@@ -1097,63 +1101,6 @@ class Elastigroup(pulumi.CustomResource):
         """
         Provides a Spotinst Elastigroup GKE resource. Please see [Importing a GKE cluster](https://api.spotinst.com/elastigroup-for-google-cloud/tutorials/import-a-gke-cluster-as-an-elastigroup/) for detailed information.
 
-        ## Example Usage
-
-        A gke.Elastigroup supports all of the fields defined in spotinst_elastigroup_gcp.
-
-        There are two main differences:
-
-        * you must include `cluster_zone_name` and `cluster_id`
-        * a handful of parameters are created remotely and will not appear in the diff. A complete list can be found below.
-
-        ```python
-        import pulumi
-        import pulumi_spotinst as spotinst
-
-        example_gke_elastigroup = spotinst.gke.Elastigroup("example-gke-elastigroup",
-            backend_services=[spotinst.gke.ElastigroupBackendServiceArgs(
-                location_type="global",
-                named_ports=[spotinst.gke.ElastigroupBackendServiceNamedPortArgs(
-                    name="http",
-                    ports=[
-                        "80",
-                        "8080",
-                    ],
-                )],
-                service_name="backend-service",
-            )],
-            cluster_zone_name="us-central1-a",
-            desired_capacity=3,
-            instance_types_ondemand="n1-standard-1",
-            instance_types_preemptibles=[
-                "n1-standard-1",
-                "n1-standard-2",
-            ],
-            integration_gke=spotinst.gke.ElastigroupIntegrationGkeArgs(
-                autoscale_cooldown=300,
-                autoscale_down=spotinst.gke.ElastigroupIntegrationGkeAutoscaleDownArgs(
-                    evaluation_periods=300,
-                ),
-                autoscale_headroom=spotinst.gke.ElastigroupIntegrationGkeAutoscaleHeadroomArgs(
-                    cpu_per_unit=1024,
-                    memory_per_unit=512,
-                    num_of_units=2,
-                ),
-                autoscale_is_auto_config=False,
-                autoscale_is_enabled=True,
-                autoscale_labels=[spotinst.gke.ElastigroupIntegrationGkeAutoscaleLabelArgs(
-                    key="label_key",
-                    value="label_value",
-                )],
-                cluster_id="example-cluster-id",
-                location="us-central1-a",
-            ),
-            max_size=5,
-            min_size=1,
-            node_image="COS",
-            preemptible_percentage=100)
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster_id: The name of the GKE cluster you wish to import.
@@ -1169,63 +1116,6 @@ class Elastigroup(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a Spotinst Elastigroup GKE resource. Please see [Importing a GKE cluster](https://api.spotinst.com/elastigroup-for-google-cloud/tutorials/import-a-gke-cluster-as-an-elastigroup/) for detailed information.
-
-        ## Example Usage
-
-        A gke.Elastigroup supports all of the fields defined in spotinst_elastigroup_gcp.
-
-        There are two main differences:
-
-        * you must include `cluster_zone_name` and `cluster_id`
-        * a handful of parameters are created remotely and will not appear in the diff. A complete list can be found below.
-
-        ```python
-        import pulumi
-        import pulumi_spotinst as spotinst
-
-        example_gke_elastigroup = spotinst.gke.Elastigroup("example-gke-elastigroup",
-            backend_services=[spotinst.gke.ElastigroupBackendServiceArgs(
-                location_type="global",
-                named_ports=[spotinst.gke.ElastigroupBackendServiceNamedPortArgs(
-                    name="http",
-                    ports=[
-                        "80",
-                        "8080",
-                    ],
-                )],
-                service_name="backend-service",
-            )],
-            cluster_zone_name="us-central1-a",
-            desired_capacity=3,
-            instance_types_ondemand="n1-standard-1",
-            instance_types_preemptibles=[
-                "n1-standard-1",
-                "n1-standard-2",
-            ],
-            integration_gke=spotinst.gke.ElastigroupIntegrationGkeArgs(
-                autoscale_cooldown=300,
-                autoscale_down=spotinst.gke.ElastigroupIntegrationGkeAutoscaleDownArgs(
-                    evaluation_periods=300,
-                ),
-                autoscale_headroom=spotinst.gke.ElastigroupIntegrationGkeAutoscaleHeadroomArgs(
-                    cpu_per_unit=1024,
-                    memory_per_unit=512,
-                    num_of_units=2,
-                ),
-                autoscale_is_auto_config=False,
-                autoscale_is_enabled=True,
-                autoscale_labels=[spotinst.gke.ElastigroupIntegrationGkeAutoscaleLabelArgs(
-                    key="label_key",
-                    value="label_value",
-                )],
-                cluster_id="example-cluster-id",
-                location="us-central1-a",
-            ),
-            max_size=5,
-            min_size=1,
-            node_image="COS",
-            preemptible_percentage=100)
-        ```
 
         :param str resource_name: The name of the resource.
         :param ElastigroupArgs args: The arguments to use to populate this resource's properties.
@@ -1302,17 +1192,9 @@ class Elastigroup(pulumi.CustomResource):
             __props__.__dict__["instance_types_customs"] = instance_types_customs
             __props__.__dict__["instance_types_ondemand"] = instance_types_ondemand
             __props__.__dict__["instance_types_preemptibles"] = instance_types_preemptibles
-            if integration_docker_swarm is not None and not isinstance(integration_docker_swarm, ElastigroupIntegrationDockerSwarmArgs):
-                integration_docker_swarm = integration_docker_swarm or {}
-                def _setter(key, value):
-                    integration_docker_swarm[key] = value
-                ElastigroupIntegrationDockerSwarmArgs._configure(_setter, **integration_docker_swarm)
+            integration_docker_swarm = _utilities.configure(integration_docker_swarm, ElastigroupIntegrationDockerSwarmArgs, True)
             __props__.__dict__["integration_docker_swarm"] = integration_docker_swarm
-            if integration_gke is not None and not isinstance(integration_gke, ElastigroupIntegrationGkeArgs):
-                integration_gke = integration_gke or {}
-                def _setter(key, value):
-                    integration_gke[key] = value
-                ElastigroupIntegrationGkeArgs._configure(_setter, **integration_gke)
+            integration_gke = _utilities.configure(integration_gke, ElastigroupIntegrationGkeArgs, True)
             __props__.__dict__["integration_gke"] = integration_gke
             __props__.__dict__["ip_forwarding"] = ip_forwarding
             __props__.__dict__["labels"] = labels

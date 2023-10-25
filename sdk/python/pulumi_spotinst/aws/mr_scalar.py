@@ -199,7 +199,7 @@ class MrScalarArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             strategy: pulumi.Input[str],
+             strategy: Optional[pulumi.Input[str]] = None,
              additional_info: Optional[pulumi.Input[str]] = None,
              additional_primary_security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              additional_replica_security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -259,113 +259,115 @@ class MrScalarArgs:
              termination_policies: Optional[pulumi.Input[Sequence[pulumi.Input['MrScalarTerminationPolicyArgs']]]] = None,
              termination_protected: Optional[pulumi.Input[bool]] = None,
              visible_to_all_users: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'additionalInfo' in kwargs:
+        if strategy is None:
+            raise TypeError("Missing 'strategy' argument")
+        if additional_info is None and 'additionalInfo' in kwargs:
             additional_info = kwargs['additionalInfo']
-        if 'additionalPrimarySecurityGroups' in kwargs:
+        if additional_primary_security_groups is None and 'additionalPrimarySecurityGroups' in kwargs:
             additional_primary_security_groups = kwargs['additionalPrimarySecurityGroups']
-        if 'additionalReplicaSecurityGroups' in kwargs:
+        if additional_replica_security_groups is None and 'additionalReplicaSecurityGroups' in kwargs:
             additional_replica_security_groups = kwargs['additionalReplicaSecurityGroups']
-        if 'availabilityZones' in kwargs:
+        if availability_zones is None and 'availabilityZones' in kwargs:
             availability_zones = kwargs['availabilityZones']
-        if 'bootstrapActionsFiles' in kwargs:
+        if bootstrap_actions_files is None and 'bootstrapActionsFiles' in kwargs:
             bootstrap_actions_files = kwargs['bootstrapActionsFiles']
-        if 'clusterId' in kwargs:
+        if cluster_id is None and 'clusterId' in kwargs:
             cluster_id = kwargs['clusterId']
-        if 'configurationsFiles' in kwargs:
+        if configurations_files is None and 'configurationsFiles' in kwargs:
             configurations_files = kwargs['configurationsFiles']
-        if 'coreDesiredCapacity' in kwargs:
+        if core_desired_capacity is None and 'coreDesiredCapacity' in kwargs:
             core_desired_capacity = kwargs['coreDesiredCapacity']
-        if 'coreEbsBlockDevices' in kwargs:
+        if core_ebs_block_devices is None and 'coreEbsBlockDevices' in kwargs:
             core_ebs_block_devices = kwargs['coreEbsBlockDevices']
-        if 'coreEbsOptimized' in kwargs:
+        if core_ebs_optimized is None and 'coreEbsOptimized' in kwargs:
             core_ebs_optimized = kwargs['coreEbsOptimized']
-        if 'coreInstanceTypes' in kwargs:
+        if core_instance_types is None and 'coreInstanceTypes' in kwargs:
             core_instance_types = kwargs['coreInstanceTypes']
-        if 'coreLifecycle' in kwargs:
+        if core_lifecycle is None and 'coreLifecycle' in kwargs:
             core_lifecycle = kwargs['coreLifecycle']
-        if 'coreMaxSize' in kwargs:
+        if core_max_size is None and 'coreMaxSize' in kwargs:
             core_max_size = kwargs['coreMaxSize']
-        if 'coreMinSize' in kwargs:
+        if core_min_size is None and 'coreMinSize' in kwargs:
             core_min_size = kwargs['coreMinSize']
-        if 'coreScalingDownPolicies' in kwargs:
+        if core_scaling_down_policies is None and 'coreScalingDownPolicies' in kwargs:
             core_scaling_down_policies = kwargs['coreScalingDownPolicies']
-        if 'coreScalingUpPolicies' in kwargs:
+        if core_scaling_up_policies is None and 'coreScalingUpPolicies' in kwargs:
             core_scaling_up_policies = kwargs['coreScalingUpPolicies']
-        if 'coreUnit' in kwargs:
+        if core_unit is None and 'coreUnit' in kwargs:
             core_unit = kwargs['coreUnit']
-        if 'customAmiId' in kwargs:
+        if custom_ami_id is None and 'customAmiId' in kwargs:
             custom_ami_id = kwargs['customAmiId']
-        if 'ebsRootVolumeSize' in kwargs:
+        if ebs_root_volume_size is None and 'ebsRootVolumeSize' in kwargs:
             ebs_root_volume_size = kwargs['ebsRootVolumeSize']
-        if 'ec2KeyName' in kwargs:
+        if ec2_key_name is None and 'ec2KeyName' in kwargs:
             ec2_key_name = kwargs['ec2KeyName']
-        if 'exposeClusterId' in kwargs:
+        if expose_cluster_id is None and 'exposeClusterId' in kwargs:
             expose_cluster_id = kwargs['exposeClusterId']
-        if 'instanceWeights' in kwargs:
+        if instance_weights is None and 'instanceWeights' in kwargs:
             instance_weights = kwargs['instanceWeights']
-        if 'jobFlowRole' in kwargs:
+        if job_flow_role is None and 'jobFlowRole' in kwargs:
             job_flow_role = kwargs['jobFlowRole']
-        if 'keepJobFlowAlive' in kwargs:
+        if keep_job_flow_alive is None and 'keepJobFlowAlive' in kwargs:
             keep_job_flow_alive = kwargs['keepJobFlowAlive']
-        if 'logUri' in kwargs:
+        if log_uri is None and 'logUri' in kwargs:
             log_uri = kwargs['logUri']
-        if 'managedPrimarySecurityGroup' in kwargs:
+        if managed_primary_security_group is None and 'managedPrimarySecurityGroup' in kwargs:
             managed_primary_security_group = kwargs['managedPrimarySecurityGroup']
-        if 'managedReplicaSecurityGroup' in kwargs:
+        if managed_replica_security_group is None and 'managedReplicaSecurityGroup' in kwargs:
             managed_replica_security_group = kwargs['managedReplicaSecurityGroup']
-        if 'masterEbsBlockDevices' in kwargs:
+        if master_ebs_block_devices is None and 'masterEbsBlockDevices' in kwargs:
             master_ebs_block_devices = kwargs['masterEbsBlockDevices']
-        if 'masterEbsOptimized' in kwargs:
+        if master_ebs_optimized is None and 'masterEbsOptimized' in kwargs:
             master_ebs_optimized = kwargs['masterEbsOptimized']
-        if 'masterInstanceTypes' in kwargs:
+        if master_instance_types is None and 'masterInstanceTypes' in kwargs:
             master_instance_types = kwargs['masterInstanceTypes']
-        if 'masterLifecycle' in kwargs:
+        if master_lifecycle is None and 'masterLifecycle' in kwargs:
             master_lifecycle = kwargs['masterLifecycle']
-        if 'masterTarget' in kwargs:
+        if master_target is None and 'masterTarget' in kwargs:
             master_target = kwargs['masterTarget']
-        if 'provisioningTimeout' in kwargs:
+        if provisioning_timeout is None and 'provisioningTimeout' in kwargs:
             provisioning_timeout = kwargs['provisioningTimeout']
-        if 'releaseLabel' in kwargs:
+        if release_label is None and 'releaseLabel' in kwargs:
             release_label = kwargs['releaseLabel']
-        if 'repoUpgradeOnBoot' in kwargs:
+        if repo_upgrade_on_boot is None and 'repoUpgradeOnBoot' in kwargs:
             repo_upgrade_on_boot = kwargs['repoUpgradeOnBoot']
-        if 'scheduledTasks' in kwargs:
+        if scheduled_tasks is None and 'scheduledTasks' in kwargs:
             scheduled_tasks = kwargs['scheduledTasks']
-        if 'securityConfig' in kwargs:
+        if security_config is None and 'securityConfig' in kwargs:
             security_config = kwargs['securityConfig']
-        if 'serviceAccessSecurityGroup' in kwargs:
+        if service_access_security_group is None and 'serviceAccessSecurityGroup' in kwargs:
             service_access_security_group = kwargs['serviceAccessSecurityGroup']
-        if 'serviceRole' in kwargs:
+        if service_role is None and 'serviceRole' in kwargs:
             service_role = kwargs['serviceRole']
-        if 'stepsFiles' in kwargs:
+        if steps_files is None and 'stepsFiles' in kwargs:
             steps_files = kwargs['stepsFiles']
-        if 'taskDesiredCapacity' in kwargs:
+        if task_desired_capacity is None and 'taskDesiredCapacity' in kwargs:
             task_desired_capacity = kwargs['taskDesiredCapacity']
-        if 'taskEbsBlockDevices' in kwargs:
+        if task_ebs_block_devices is None and 'taskEbsBlockDevices' in kwargs:
             task_ebs_block_devices = kwargs['taskEbsBlockDevices']
-        if 'taskEbsOptimized' in kwargs:
+        if task_ebs_optimized is None and 'taskEbsOptimized' in kwargs:
             task_ebs_optimized = kwargs['taskEbsOptimized']
-        if 'taskInstanceTypes' in kwargs:
+        if task_instance_types is None and 'taskInstanceTypes' in kwargs:
             task_instance_types = kwargs['taskInstanceTypes']
-        if 'taskLifecycle' in kwargs:
+        if task_lifecycle is None and 'taskLifecycle' in kwargs:
             task_lifecycle = kwargs['taskLifecycle']
-        if 'taskMaxSize' in kwargs:
+        if task_max_size is None and 'taskMaxSize' in kwargs:
             task_max_size = kwargs['taskMaxSize']
-        if 'taskMinSize' in kwargs:
+        if task_min_size is None and 'taskMinSize' in kwargs:
             task_min_size = kwargs['taskMinSize']
-        if 'taskScalingDownPolicies' in kwargs:
+        if task_scaling_down_policies is None and 'taskScalingDownPolicies' in kwargs:
             task_scaling_down_policies = kwargs['taskScalingDownPolicies']
-        if 'taskScalingUpPolicies' in kwargs:
+        if task_scaling_up_policies is None and 'taskScalingUpPolicies' in kwargs:
             task_scaling_up_policies = kwargs['taskScalingUpPolicies']
-        if 'taskUnit' in kwargs:
+        if task_unit is None and 'taskUnit' in kwargs:
             task_unit = kwargs['taskUnit']
-        if 'terminationPolicies' in kwargs:
+        if termination_policies is None and 'terminationPolicies' in kwargs:
             termination_policies = kwargs['terminationPolicies']
-        if 'terminationProtected' in kwargs:
+        if termination_protected is None and 'terminationProtected' in kwargs:
             termination_protected = kwargs['terminationProtected']
-        if 'visibleToAllUsers' in kwargs:
+        if visible_to_all_users is None and 'visibleToAllUsers' in kwargs:
             visible_to_all_users = kwargs['visibleToAllUsers']
 
         _setter("strategy", strategy)
@@ -1446,115 +1448,115 @@ class _MrScalarState:
              termination_policies: Optional[pulumi.Input[Sequence[pulumi.Input['MrScalarTerminationPolicyArgs']]]] = None,
              termination_protected: Optional[pulumi.Input[bool]] = None,
              visible_to_all_users: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'additionalInfo' in kwargs:
+        if additional_info is None and 'additionalInfo' in kwargs:
             additional_info = kwargs['additionalInfo']
-        if 'additionalPrimarySecurityGroups' in kwargs:
+        if additional_primary_security_groups is None and 'additionalPrimarySecurityGroups' in kwargs:
             additional_primary_security_groups = kwargs['additionalPrimarySecurityGroups']
-        if 'additionalReplicaSecurityGroups' in kwargs:
+        if additional_replica_security_groups is None and 'additionalReplicaSecurityGroups' in kwargs:
             additional_replica_security_groups = kwargs['additionalReplicaSecurityGroups']
-        if 'availabilityZones' in kwargs:
+        if availability_zones is None and 'availabilityZones' in kwargs:
             availability_zones = kwargs['availabilityZones']
-        if 'bootstrapActionsFiles' in kwargs:
+        if bootstrap_actions_files is None and 'bootstrapActionsFiles' in kwargs:
             bootstrap_actions_files = kwargs['bootstrapActionsFiles']
-        if 'clusterId' in kwargs:
+        if cluster_id is None and 'clusterId' in kwargs:
             cluster_id = kwargs['clusterId']
-        if 'configurationsFiles' in kwargs:
+        if configurations_files is None and 'configurationsFiles' in kwargs:
             configurations_files = kwargs['configurationsFiles']
-        if 'coreDesiredCapacity' in kwargs:
+        if core_desired_capacity is None and 'coreDesiredCapacity' in kwargs:
             core_desired_capacity = kwargs['coreDesiredCapacity']
-        if 'coreEbsBlockDevices' in kwargs:
+        if core_ebs_block_devices is None and 'coreEbsBlockDevices' in kwargs:
             core_ebs_block_devices = kwargs['coreEbsBlockDevices']
-        if 'coreEbsOptimized' in kwargs:
+        if core_ebs_optimized is None and 'coreEbsOptimized' in kwargs:
             core_ebs_optimized = kwargs['coreEbsOptimized']
-        if 'coreInstanceTypes' in kwargs:
+        if core_instance_types is None and 'coreInstanceTypes' in kwargs:
             core_instance_types = kwargs['coreInstanceTypes']
-        if 'coreLifecycle' in kwargs:
+        if core_lifecycle is None and 'coreLifecycle' in kwargs:
             core_lifecycle = kwargs['coreLifecycle']
-        if 'coreMaxSize' in kwargs:
+        if core_max_size is None and 'coreMaxSize' in kwargs:
             core_max_size = kwargs['coreMaxSize']
-        if 'coreMinSize' in kwargs:
+        if core_min_size is None and 'coreMinSize' in kwargs:
             core_min_size = kwargs['coreMinSize']
-        if 'coreScalingDownPolicies' in kwargs:
+        if core_scaling_down_policies is None and 'coreScalingDownPolicies' in kwargs:
             core_scaling_down_policies = kwargs['coreScalingDownPolicies']
-        if 'coreScalingUpPolicies' in kwargs:
+        if core_scaling_up_policies is None and 'coreScalingUpPolicies' in kwargs:
             core_scaling_up_policies = kwargs['coreScalingUpPolicies']
-        if 'coreUnit' in kwargs:
+        if core_unit is None and 'coreUnit' in kwargs:
             core_unit = kwargs['coreUnit']
-        if 'customAmiId' in kwargs:
+        if custom_ami_id is None and 'customAmiId' in kwargs:
             custom_ami_id = kwargs['customAmiId']
-        if 'ebsRootVolumeSize' in kwargs:
+        if ebs_root_volume_size is None and 'ebsRootVolumeSize' in kwargs:
             ebs_root_volume_size = kwargs['ebsRootVolumeSize']
-        if 'ec2KeyName' in kwargs:
+        if ec2_key_name is None and 'ec2KeyName' in kwargs:
             ec2_key_name = kwargs['ec2KeyName']
-        if 'exposeClusterId' in kwargs:
+        if expose_cluster_id is None and 'exposeClusterId' in kwargs:
             expose_cluster_id = kwargs['exposeClusterId']
-        if 'instanceWeights' in kwargs:
+        if instance_weights is None and 'instanceWeights' in kwargs:
             instance_weights = kwargs['instanceWeights']
-        if 'jobFlowRole' in kwargs:
+        if job_flow_role is None and 'jobFlowRole' in kwargs:
             job_flow_role = kwargs['jobFlowRole']
-        if 'keepJobFlowAlive' in kwargs:
+        if keep_job_flow_alive is None and 'keepJobFlowAlive' in kwargs:
             keep_job_flow_alive = kwargs['keepJobFlowAlive']
-        if 'logUri' in kwargs:
+        if log_uri is None and 'logUri' in kwargs:
             log_uri = kwargs['logUri']
-        if 'managedPrimarySecurityGroup' in kwargs:
+        if managed_primary_security_group is None and 'managedPrimarySecurityGroup' in kwargs:
             managed_primary_security_group = kwargs['managedPrimarySecurityGroup']
-        if 'managedReplicaSecurityGroup' in kwargs:
+        if managed_replica_security_group is None and 'managedReplicaSecurityGroup' in kwargs:
             managed_replica_security_group = kwargs['managedReplicaSecurityGroup']
-        if 'masterEbsBlockDevices' in kwargs:
+        if master_ebs_block_devices is None and 'masterEbsBlockDevices' in kwargs:
             master_ebs_block_devices = kwargs['masterEbsBlockDevices']
-        if 'masterEbsOptimized' in kwargs:
+        if master_ebs_optimized is None and 'masterEbsOptimized' in kwargs:
             master_ebs_optimized = kwargs['masterEbsOptimized']
-        if 'masterInstanceTypes' in kwargs:
+        if master_instance_types is None and 'masterInstanceTypes' in kwargs:
             master_instance_types = kwargs['masterInstanceTypes']
-        if 'masterLifecycle' in kwargs:
+        if master_lifecycle is None and 'masterLifecycle' in kwargs:
             master_lifecycle = kwargs['masterLifecycle']
-        if 'masterTarget' in kwargs:
+        if master_target is None and 'masterTarget' in kwargs:
             master_target = kwargs['masterTarget']
-        if 'outputClusterId' in kwargs:
+        if output_cluster_id is None and 'outputClusterId' in kwargs:
             output_cluster_id = kwargs['outputClusterId']
-        if 'provisioningTimeout' in kwargs:
+        if provisioning_timeout is None and 'provisioningTimeout' in kwargs:
             provisioning_timeout = kwargs['provisioningTimeout']
-        if 'releaseLabel' in kwargs:
+        if release_label is None and 'releaseLabel' in kwargs:
             release_label = kwargs['releaseLabel']
-        if 'repoUpgradeOnBoot' in kwargs:
+        if repo_upgrade_on_boot is None and 'repoUpgradeOnBoot' in kwargs:
             repo_upgrade_on_boot = kwargs['repoUpgradeOnBoot']
-        if 'scheduledTasks' in kwargs:
+        if scheduled_tasks is None and 'scheduledTasks' in kwargs:
             scheduled_tasks = kwargs['scheduledTasks']
-        if 'securityConfig' in kwargs:
+        if security_config is None and 'securityConfig' in kwargs:
             security_config = kwargs['securityConfig']
-        if 'serviceAccessSecurityGroup' in kwargs:
+        if service_access_security_group is None and 'serviceAccessSecurityGroup' in kwargs:
             service_access_security_group = kwargs['serviceAccessSecurityGroup']
-        if 'serviceRole' in kwargs:
+        if service_role is None and 'serviceRole' in kwargs:
             service_role = kwargs['serviceRole']
-        if 'stepsFiles' in kwargs:
+        if steps_files is None and 'stepsFiles' in kwargs:
             steps_files = kwargs['stepsFiles']
-        if 'taskDesiredCapacity' in kwargs:
+        if task_desired_capacity is None and 'taskDesiredCapacity' in kwargs:
             task_desired_capacity = kwargs['taskDesiredCapacity']
-        if 'taskEbsBlockDevices' in kwargs:
+        if task_ebs_block_devices is None and 'taskEbsBlockDevices' in kwargs:
             task_ebs_block_devices = kwargs['taskEbsBlockDevices']
-        if 'taskEbsOptimized' in kwargs:
+        if task_ebs_optimized is None and 'taskEbsOptimized' in kwargs:
             task_ebs_optimized = kwargs['taskEbsOptimized']
-        if 'taskInstanceTypes' in kwargs:
+        if task_instance_types is None and 'taskInstanceTypes' in kwargs:
             task_instance_types = kwargs['taskInstanceTypes']
-        if 'taskLifecycle' in kwargs:
+        if task_lifecycle is None and 'taskLifecycle' in kwargs:
             task_lifecycle = kwargs['taskLifecycle']
-        if 'taskMaxSize' in kwargs:
+        if task_max_size is None and 'taskMaxSize' in kwargs:
             task_max_size = kwargs['taskMaxSize']
-        if 'taskMinSize' in kwargs:
+        if task_min_size is None and 'taskMinSize' in kwargs:
             task_min_size = kwargs['taskMinSize']
-        if 'taskScalingDownPolicies' in kwargs:
+        if task_scaling_down_policies is None and 'taskScalingDownPolicies' in kwargs:
             task_scaling_down_policies = kwargs['taskScalingDownPolicies']
-        if 'taskScalingUpPolicies' in kwargs:
+        if task_scaling_up_policies is None and 'taskScalingUpPolicies' in kwargs:
             task_scaling_up_policies = kwargs['taskScalingUpPolicies']
-        if 'taskUnit' in kwargs:
+        if task_unit is None and 'taskUnit' in kwargs:
             task_unit = kwargs['taskUnit']
-        if 'terminationPolicies' in kwargs:
+        if termination_policies is None and 'terminationPolicies' in kwargs:
             termination_policies = kwargs['terminationPolicies']
-        if 'terminationProtected' in kwargs:
+        if termination_protected is None and 'terminationProtected' in kwargs:
             termination_protected = kwargs['terminationProtected']
-        if 'visibleToAllUsers' in kwargs:
+        if visible_to_all_users is None and 'visibleToAllUsers' in kwargs:
             visible_to_all_users = kwargs['visibleToAllUsers']
 
         if additional_info is not None:
@@ -2468,227 +2470,6 @@ class MrScalar(pulumi.CustomResource):
         Provides a Spotinst AWS MrScaler resource.
 
         ## Example Usage
-        ### New Strategy
-
-        ```python
-        import pulumi
-        import pulumi_spotinst as spotinst
-
-        sample__mr_scaler_01 = spotinst.aws.MrScalar("sample-MrScaler-01",
-            additional_info="{'test':'more information'}",
-            additional_primary_security_groups=["sg-456321"],
-            additional_replica_security_groups=["sg-123654"],
-            applications=[
-                spotinst.aws.MrScalarApplicationArgs(
-                    name="Ganglia",
-                    version="1.0",
-                ),
-                spotinst.aws.MrScalarApplicationArgs(
-                    name="Hadoop",
-                ),
-                spotinst.aws.MrScalarApplicationArgs(
-                    args=[
-                        "fake",
-                        "args",
-                    ],
-                    name="Pig",
-                ),
-            ],
-            availability_zones=["us-west-2a:subnet-123456"],
-            bootstrap_actions_files=[spotinst.aws.MrScalarBootstrapActionsFileArgs(
-                bucket="sample-emr-test",
-                key="bootstrap-actions.json",
-            )],
-            configurations_files=[spotinst.aws.MrScalarConfigurationsFileArgs(
-                bucket="example-bucket",
-                key="configurations.json",
-            )],
-            core_desired_capacity=1,
-            core_ebs_block_devices=[spotinst.aws.MrScalarCoreEbsBlockDeviceArgs(
-                size_in_gb=40,
-                volume_type="gp2",
-                volumes_per_instance=2,
-            )],
-            core_ebs_optimized=False,
-            core_instance_types=[
-                "c3.xlarge",
-                "c4.xlarge",
-            ],
-            core_lifecycle="ON_DEMAND",
-            core_max_size=1,
-            core_min_size=1,
-            core_unit="instance",
-            custom_ami_id="ami-123456",
-            description="Testing MrScaler creation",
-            ec2_key_name="test-key",
-            instance_weights=[
-                spotinst.aws.MrScalarInstanceWeightArgs(
-                    instance_type="t2.small",
-                    weighted_capacity=10,
-                ),
-                spotinst.aws.MrScalarInstanceWeightArgs(
-                    instance_type="t2.medium",
-                    weighted_capacity=90,
-                ),
-            ],
-            job_flow_role="EMR_EC2_ExampleRole",
-            keep_job_flow_alive=True,
-            log_uri="s3://example-logs",
-            managed_primary_security_group="sg-123456",
-            managed_replica_security_group="sg-987654",
-            master_ebs_block_devices=[spotinst.aws.MrScalarMasterEbsBlockDeviceArgs(
-                size_in_gb=30,
-                volume_type="gp2",
-                volumes_per_instance=1,
-            )],
-            master_ebs_optimized=True,
-            master_instance_types=["c3.xlarge"],
-            master_lifecycle="SPOT",
-            master_target=1,
-            provisioning_timeout=spotinst.aws.MrScalarProvisioningTimeoutArgs(
-                timeout=15,
-                timeout_action="terminateAndRetry",
-            ),
-            region="us-west-2",
-            release_label="emr-5.17.0",
-            repo_upgrade_on_boot="NONE",
-            retries=2,
-            security_config="example-config",
-            service_access_security_group="access-example",
-            service_role="example-role",
-            steps_files=[spotinst.aws.MrScalarStepsFileArgs(
-                bucket="example-bucket",
-                key="steps.json",
-            )],
-            strategy="new",
-            tags=[spotinst.aws.MrScalarTagArgs(
-                key="Creator",
-                value="Pulumi",
-            )],
-            task_desired_capacity=1,
-            task_ebs_block_devices=[spotinst.aws.MrScalarTaskEbsBlockDeviceArgs(
-                size_in_gb=40,
-                volume_type="gp2",
-                volumes_per_instance=2,
-            )],
-            task_ebs_optimized=False,
-            task_instance_types=[
-                "c3.xlarge",
-                "c4.xlarge",
-            ],
-            task_lifecycle="SPOT",
-            task_max_size=30,
-            task_min_size=0,
-            task_unit="instance",
-            termination_protected=False)
-        ```
-        ### Clone Strategy
-
-        ```python
-        import pulumi
-        import pulumi_spotinst as spotinst
-
-        sample__mr_scaler_01 = spotinst.aws.MrScalar("sample-MrScaler-01",
-            availability_zones=["us-west-2a:subnet-12345678"],
-            cluster_id="j-123456789",
-            core_desired_capacity=1,
-            core_ebs_block_devices=[spotinst.aws.MrScalarCoreEbsBlockDeviceArgs(
-                size_in_gb=40,
-                volume_type="gp2",
-                volumes_per_instance=2,
-            )],
-            core_ebs_optimized=False,
-            core_instance_types=[
-                "c3.xlarge",
-                "c4.xlarge",
-            ],
-            core_lifecycle="ON_DEMAND",
-            core_max_size=1,
-            core_min_size=1,
-            core_unit="instance",
-            description="Testing MrScaler creation",
-            expose_cluster_id=True,
-            master_ebs_block_devices=[spotinst.aws.MrScalarMasterEbsBlockDeviceArgs(
-                size_in_gb=30,
-                volume_type="gp2",
-                volumes_per_instance=1,
-            )],
-            master_ebs_optimized=True,
-            master_instance_types=["c3.xlarge"],
-            master_lifecycle="SPOT",
-            master_target=1,
-            region="us-west-2",
-            strategy="clone",
-            tags=[spotinst.aws.MrScalarTagArgs(
-                key="Creator",
-                value="Pulumi",
-            )],
-            task_desired_capacity=1,
-            task_ebs_block_devices=[spotinst.aws.MrScalarTaskEbsBlockDeviceArgs(
-                size_in_gb=40,
-                volume_type="gp2",
-                volumes_per_instance=2,
-            )],
-            task_ebs_optimized=False,
-            task_instance_types=[
-                "c3.xlarge",
-                "c4.xlarge",
-            ],
-            task_lifecycle="SPOT",
-            task_max_size=30,
-            task_min_size=0,
-            task_scaling_down_policies=[spotinst.aws.MrScalarTaskScalingDownPolicyArgs(
-                action_type="",
-                adjustment="1",
-                cooldown=60,
-                dimensions={
-                    "name": "name-1",
-                    "value": "value-1",
-                },
-                evaluation_periods=10,
-                max_target_capacity="1",
-                maximum="10",
-                metric_name="CPUUtilization",
-                minimum="0",
-                namespace="AWS/EC2",
-                operator="gt",
-                period=60,
-                policy_name="policy-name",
-                statistic="average",
-                target="5",
-                threshold=10,
-                unit="",
-            )],
-            task_unit="instance")
-        pulumi.export("mrscaler-name", sample__mr_scaler_01.name)
-        pulumi.export("mrscaler-created-cluster-id", sample__mr_scaler_01.output_cluster_id)
-        ```
-        ### Wrap Strategy
-
-        ```python
-        import pulumi
-        import pulumi_spotinst as spotinst
-
-        example_scaler_2 = spotinst.aws.MrScalar("example-scaler-2",
-            cluster_id="j-27UVDEHXL4OQM",
-            description="created by Pulumi",
-            region="us-west-2",
-            strategy="wrap",
-            task_desired_capacity=2,
-            task_ebs_block_devices=[spotinst.aws.MrScalarTaskEbsBlockDeviceArgs(
-                size_in_gb=20,
-                volume_type="gp2",
-                volumes_per_instance=1,
-            )],
-            task_instance_types=[
-                "c3.xlarge",
-                "c4.xlarge",
-            ],
-            task_lifecycle="SPOT",
-            task_max_size=4,
-            task_min_size=0,
-            task_unit="instance")
-        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -2757,227 +2538,6 @@ class MrScalar(pulumi.CustomResource):
         Provides a Spotinst AWS MrScaler resource.
 
         ## Example Usage
-        ### New Strategy
-
-        ```python
-        import pulumi
-        import pulumi_spotinst as spotinst
-
-        sample__mr_scaler_01 = spotinst.aws.MrScalar("sample-MrScaler-01",
-            additional_info="{'test':'more information'}",
-            additional_primary_security_groups=["sg-456321"],
-            additional_replica_security_groups=["sg-123654"],
-            applications=[
-                spotinst.aws.MrScalarApplicationArgs(
-                    name="Ganglia",
-                    version="1.0",
-                ),
-                spotinst.aws.MrScalarApplicationArgs(
-                    name="Hadoop",
-                ),
-                spotinst.aws.MrScalarApplicationArgs(
-                    args=[
-                        "fake",
-                        "args",
-                    ],
-                    name="Pig",
-                ),
-            ],
-            availability_zones=["us-west-2a:subnet-123456"],
-            bootstrap_actions_files=[spotinst.aws.MrScalarBootstrapActionsFileArgs(
-                bucket="sample-emr-test",
-                key="bootstrap-actions.json",
-            )],
-            configurations_files=[spotinst.aws.MrScalarConfigurationsFileArgs(
-                bucket="example-bucket",
-                key="configurations.json",
-            )],
-            core_desired_capacity=1,
-            core_ebs_block_devices=[spotinst.aws.MrScalarCoreEbsBlockDeviceArgs(
-                size_in_gb=40,
-                volume_type="gp2",
-                volumes_per_instance=2,
-            )],
-            core_ebs_optimized=False,
-            core_instance_types=[
-                "c3.xlarge",
-                "c4.xlarge",
-            ],
-            core_lifecycle="ON_DEMAND",
-            core_max_size=1,
-            core_min_size=1,
-            core_unit="instance",
-            custom_ami_id="ami-123456",
-            description="Testing MrScaler creation",
-            ec2_key_name="test-key",
-            instance_weights=[
-                spotinst.aws.MrScalarInstanceWeightArgs(
-                    instance_type="t2.small",
-                    weighted_capacity=10,
-                ),
-                spotinst.aws.MrScalarInstanceWeightArgs(
-                    instance_type="t2.medium",
-                    weighted_capacity=90,
-                ),
-            ],
-            job_flow_role="EMR_EC2_ExampleRole",
-            keep_job_flow_alive=True,
-            log_uri="s3://example-logs",
-            managed_primary_security_group="sg-123456",
-            managed_replica_security_group="sg-987654",
-            master_ebs_block_devices=[spotinst.aws.MrScalarMasterEbsBlockDeviceArgs(
-                size_in_gb=30,
-                volume_type="gp2",
-                volumes_per_instance=1,
-            )],
-            master_ebs_optimized=True,
-            master_instance_types=["c3.xlarge"],
-            master_lifecycle="SPOT",
-            master_target=1,
-            provisioning_timeout=spotinst.aws.MrScalarProvisioningTimeoutArgs(
-                timeout=15,
-                timeout_action="terminateAndRetry",
-            ),
-            region="us-west-2",
-            release_label="emr-5.17.0",
-            repo_upgrade_on_boot="NONE",
-            retries=2,
-            security_config="example-config",
-            service_access_security_group="access-example",
-            service_role="example-role",
-            steps_files=[spotinst.aws.MrScalarStepsFileArgs(
-                bucket="example-bucket",
-                key="steps.json",
-            )],
-            strategy="new",
-            tags=[spotinst.aws.MrScalarTagArgs(
-                key="Creator",
-                value="Pulumi",
-            )],
-            task_desired_capacity=1,
-            task_ebs_block_devices=[spotinst.aws.MrScalarTaskEbsBlockDeviceArgs(
-                size_in_gb=40,
-                volume_type="gp2",
-                volumes_per_instance=2,
-            )],
-            task_ebs_optimized=False,
-            task_instance_types=[
-                "c3.xlarge",
-                "c4.xlarge",
-            ],
-            task_lifecycle="SPOT",
-            task_max_size=30,
-            task_min_size=0,
-            task_unit="instance",
-            termination_protected=False)
-        ```
-        ### Clone Strategy
-
-        ```python
-        import pulumi
-        import pulumi_spotinst as spotinst
-
-        sample__mr_scaler_01 = spotinst.aws.MrScalar("sample-MrScaler-01",
-            availability_zones=["us-west-2a:subnet-12345678"],
-            cluster_id="j-123456789",
-            core_desired_capacity=1,
-            core_ebs_block_devices=[spotinst.aws.MrScalarCoreEbsBlockDeviceArgs(
-                size_in_gb=40,
-                volume_type="gp2",
-                volumes_per_instance=2,
-            )],
-            core_ebs_optimized=False,
-            core_instance_types=[
-                "c3.xlarge",
-                "c4.xlarge",
-            ],
-            core_lifecycle="ON_DEMAND",
-            core_max_size=1,
-            core_min_size=1,
-            core_unit="instance",
-            description="Testing MrScaler creation",
-            expose_cluster_id=True,
-            master_ebs_block_devices=[spotinst.aws.MrScalarMasterEbsBlockDeviceArgs(
-                size_in_gb=30,
-                volume_type="gp2",
-                volumes_per_instance=1,
-            )],
-            master_ebs_optimized=True,
-            master_instance_types=["c3.xlarge"],
-            master_lifecycle="SPOT",
-            master_target=1,
-            region="us-west-2",
-            strategy="clone",
-            tags=[spotinst.aws.MrScalarTagArgs(
-                key="Creator",
-                value="Pulumi",
-            )],
-            task_desired_capacity=1,
-            task_ebs_block_devices=[spotinst.aws.MrScalarTaskEbsBlockDeviceArgs(
-                size_in_gb=40,
-                volume_type="gp2",
-                volumes_per_instance=2,
-            )],
-            task_ebs_optimized=False,
-            task_instance_types=[
-                "c3.xlarge",
-                "c4.xlarge",
-            ],
-            task_lifecycle="SPOT",
-            task_max_size=30,
-            task_min_size=0,
-            task_scaling_down_policies=[spotinst.aws.MrScalarTaskScalingDownPolicyArgs(
-                action_type="",
-                adjustment="1",
-                cooldown=60,
-                dimensions={
-                    "name": "name-1",
-                    "value": "value-1",
-                },
-                evaluation_periods=10,
-                max_target_capacity="1",
-                maximum="10",
-                metric_name="CPUUtilization",
-                minimum="0",
-                namespace="AWS/EC2",
-                operator="gt",
-                period=60,
-                policy_name="policy-name",
-                statistic="average",
-                target="5",
-                threshold=10,
-                unit="",
-            )],
-            task_unit="instance")
-        pulumi.export("mrscaler-name", sample__mr_scaler_01.name)
-        pulumi.export("mrscaler-created-cluster-id", sample__mr_scaler_01.output_cluster_id)
-        ```
-        ### Wrap Strategy
-
-        ```python
-        import pulumi
-        import pulumi_spotinst as spotinst
-
-        example_scaler_2 = spotinst.aws.MrScalar("example-scaler-2",
-            cluster_id="j-27UVDEHXL4OQM",
-            description="created by Pulumi",
-            region="us-west-2",
-            strategy="wrap",
-            task_desired_capacity=2,
-            task_ebs_block_devices=[spotinst.aws.MrScalarTaskEbsBlockDeviceArgs(
-                size_in_gb=20,
-                volume_type="gp2",
-                volumes_per_instance=1,
-            )],
-            task_instance_types=[
-                "c3.xlarge",
-                "c4.xlarge",
-            ],
-            task_lifecycle="SPOT",
-            task_max_size=4,
-            task_min_size=0,
-            task_unit="instance")
-        ```
 
         :param str resource_name: The name of the resource.
         :param MrScalarArgs args: The arguments to use to populate this resource's properties.
@@ -3102,11 +2662,7 @@ class MrScalar(pulumi.CustomResource):
             __props__.__dict__["master_lifecycle"] = master_lifecycle
             __props__.__dict__["master_target"] = master_target
             __props__.__dict__["name"] = name
-            if provisioning_timeout is not None and not isinstance(provisioning_timeout, MrScalarProvisioningTimeoutArgs):
-                provisioning_timeout = provisioning_timeout or {}
-                def _setter(key, value):
-                    provisioning_timeout[key] = value
-                MrScalarProvisioningTimeoutArgs._configure(_setter, **provisioning_timeout)
+            provisioning_timeout = _utilities.configure(provisioning_timeout, MrScalarProvisioningTimeoutArgs, True)
             __props__.__dict__["provisioning_timeout"] = provisioning_timeout
             __props__.__dict__["region"] = region
             __props__.__dict__["release_label"] = release_label

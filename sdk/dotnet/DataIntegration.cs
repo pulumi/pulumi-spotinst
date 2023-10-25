@@ -11,29 +11,6 @@ namespace Pulumi.SpotInst
 {
     /// <summary>
     /// Provides a Spotinst Data Integration resource.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using SpotInst = Pulumi.SpotInst;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new SpotInst.DataIntegration("example", new()
-    ///     {
-    ///         S3 = new SpotInst.Inputs.DataIntegrationS3Args
-    ///         {
-    ///             BucketName = "terraform-test-do-not-delete",
-    ///             Subdir = "terraform-test-data-integration",
-    ///         },
-    ///         Status = "enabled",
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// </summary>
     [SpotInstResourceType("spotinst:index/dataIntegration:DataIntegration")]
     public partial class DataIntegration : global::Pulumi.CustomResource

@@ -37,7 +37,7 @@ class DataIntegrationArgs:
              name: Optional[pulumi.Input[str]] = None,
              s3: Optional[pulumi.Input['DataIntegrationS3Args']] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if name is not None:
@@ -108,7 +108,7 @@ class _DataIntegrationState:
              name: Optional[pulumi.Input[str]] = None,
              s3: Optional[pulumi.Input['DataIntegrationS3Args']] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if name is not None:
@@ -167,20 +167,6 @@ class DataIntegration(pulumi.CustomResource):
         """
         Provides a Spotinst Data Integration resource.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_spotinst as spotinst
-
-        example = spotinst.DataIntegration("example",
-            s3=spotinst.DataIntegrationS3Args(
-                bucket_name="terraform-test-do-not-delete",
-                subdir="terraform-test-data-integration",
-            ),
-            status="enabled")
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: The name of the data integration.
@@ -195,20 +181,6 @@ class DataIntegration(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a Spotinst Data Integration resource.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_spotinst as spotinst
-
-        example = spotinst.DataIntegration("example",
-            s3=spotinst.DataIntegrationS3Args(
-                bucket_name="terraform-test-do-not-delete",
-                subdir="terraform-test-data-integration",
-            ),
-            status="enabled")
-        ```
 
         :param str resource_name: The name of the resource.
         :param DataIntegrationArgs args: The arguments to use to populate this resource's properties.
@@ -242,11 +214,7 @@ class DataIntegration(pulumi.CustomResource):
             __props__ = DataIntegrationArgs.__new__(DataIntegrationArgs)
 
             __props__.__dict__["name"] = name
-            if s3 is not None and not isinstance(s3, DataIntegrationS3Args):
-                s3 = s3 or {}
-                def _setter(key, value):
-                    s3[key] = value
-                DataIntegrationS3Args._configure(_setter, **s3)
+            s3 = _utilities.configure(s3, DataIntegrationS3Args, True)
             __props__.__dict__["s3"] = s3
             __props__.__dict__["status"] = status
         super(DataIntegration, __self__).__init__(

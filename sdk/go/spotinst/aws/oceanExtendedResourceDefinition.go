@@ -14,35 +14,6 @@ import (
 )
 
 // Provides a Spotinst Ocean AWS Extended Resource Definition resource.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst/aws"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aws.NewOceanExtendedResourceDefinition(ctx, "example", &aws.OceanExtendedResourceDefinitionArgs{
-//				ResourceMapping: pulumi.AnyMap{
-//					"c3.large":  pulumi.Any("2Ki"),
-//					"c3.xlarge": pulumi.Any("4Ki"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 type OceanExtendedResourceDefinition struct {
 	pulumi.CustomResourceState
 

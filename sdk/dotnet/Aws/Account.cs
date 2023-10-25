@@ -11,22 +11,6 @@ namespace Pulumi.SpotInst.Aws
 {
     /// <summary>
     /// Provides a Spotinst account resource.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using SpotInst = Pulumi.SpotInst;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     // Create a Account
-    ///     var myAwsAcct = new SpotInst.Aws.Account("myAwsAcct");
-    /// 
-    /// });
-    /// ```
     /// </summary>
     [SpotInstResourceType("spotinst:aws/account:Account")]
     public partial class Account : global::Pulumi.CustomResource

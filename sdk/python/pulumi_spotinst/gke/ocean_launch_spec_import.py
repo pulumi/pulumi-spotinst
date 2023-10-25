@@ -29,14 +29,18 @@ class OceanLaunchSpecImportArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             node_pool_name: pulumi.Input[str],
-             ocean_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             node_pool_name: Optional[pulumi.Input[str]] = None,
+             ocean_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'nodePoolName' in kwargs:
+        if node_pool_name is None and 'nodePoolName' in kwargs:
             node_pool_name = kwargs['nodePoolName']
-        if 'oceanId' in kwargs:
+        if node_pool_name is None:
+            raise TypeError("Missing 'node_pool_name' argument")
+        if ocean_id is None and 'oceanId' in kwargs:
             ocean_id = kwargs['oceanId']
+        if ocean_id is None:
+            raise TypeError("Missing 'ocean_id' argument")
 
         _setter("node_pool_name", node_pool_name)
         _setter("ocean_id", ocean_id)
@@ -86,11 +90,11 @@ class _OceanLaunchSpecImportState:
              _setter: Callable[[Any, Any], None],
              node_pool_name: Optional[pulumi.Input[str]] = None,
              ocean_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'nodePoolName' in kwargs:
+        if node_pool_name is None and 'nodePoolName' in kwargs:
             node_pool_name = kwargs['nodePoolName']
-        if 'oceanId' in kwargs:
+        if ocean_id is None and 'oceanId' in kwargs:
             ocean_id = kwargs['oceanId']
 
         if node_pool_name is not None:
@@ -134,22 +138,6 @@ class OceanLaunchSpecImport(pulumi.CustomResource):
         """
         Manages a custom Spotinst Ocean GKE Launch Spec Import resource.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_spotinst as spotinst
-
-        example = spotinst.gke.OceanLaunchSpecImport("example",
-            node_pool_name="default-pool",
-            ocean_id="o-123456")
-        ```
-        ```python
-        import pulumi
-
-        pulumi.export("oceanLaunchspecId", spotinst_ocean_gke_launch_spec_import["example"]["id"])
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] node_pool_name: The node pool you wish to use in your launchSpec.
@@ -163,22 +151,6 @@ class OceanLaunchSpecImport(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages a custom Spotinst Ocean GKE Launch Spec Import resource.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_spotinst as spotinst
-
-        example = spotinst.gke.OceanLaunchSpecImport("example",
-            node_pool_name="default-pool",
-            ocean_id="o-123456")
-        ```
-        ```python
-        import pulumi
-
-        pulumi.export("oceanLaunchspecId", spotinst_ocean_gke_launch_spec_import["example"]["id"])
-        ```
 
         :param str resource_name: The name of the resource.
         :param OceanLaunchSpecImportArgs args: The arguments to use to populate this resource's properties.

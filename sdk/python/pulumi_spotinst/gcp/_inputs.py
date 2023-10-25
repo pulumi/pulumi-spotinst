@@ -57,17 +57,19 @@ class ElastigroupBackendServiceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             service_name: pulumi.Input[str],
+             service_name: Optional[pulumi.Input[str]] = None,
              location_type: Optional[pulumi.Input[str]] = None,
              named_ports: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupBackendServiceNamedPortArgs']]]] = None,
              scheme: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'serviceName' in kwargs:
+        if service_name is None and 'serviceName' in kwargs:
             service_name = kwargs['serviceName']
-        if 'locationType' in kwargs:
+        if service_name is None:
+            raise TypeError("Missing 'service_name' argument")
+        if location_type is None and 'locationType' in kwargs:
             location_type = kwargs['locationType']
-        if 'namedPorts' in kwargs:
+        if named_ports is None and 'namedPorts' in kwargs:
             named_ports = kwargs['namedPorts']
 
         _setter("service_name", service_name)
@@ -137,10 +139,6 @@ class ElastigroupBackendServiceNamedPortArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ports: A list of ports.
                
                Usage:
-               
-               ```python
-               import pulumi
-               ```
         """
         ElastigroupBackendServiceNamedPortArgs._configure(
             lambda key, value: pulumi.set(__self__, key, value),
@@ -150,10 +148,14 @@ class ElastigroupBackendServiceNamedPortArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: pulumi.Input[str],
-             ports: pulumi.Input[Sequence[pulumi.Input[str]]],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             name: Optional[pulumi.Input[str]] = None,
+             ports: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if ports is None:
+            raise TypeError("Missing 'ports' argument")
 
         _setter("name", name)
         _setter("ports", ports)
@@ -177,10 +179,6 @@ class ElastigroupBackendServiceNamedPortArgs:
         A list of ports.
 
         Usage:
-
-        ```python
-        import pulumi
-        ```
         """
         return pulumi.get(self, "ports")
 
@@ -232,13 +230,13 @@ class ElastigroupDiskArgs:
              mode: Optional[pulumi.Input[str]] = None,
              source: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'autoDelete' in kwargs:
+        if auto_delete is None and 'autoDelete' in kwargs:
             auto_delete = kwargs['autoDelete']
-        if 'deviceName' in kwargs:
+        if device_name is None and 'deviceName' in kwargs:
             device_name = kwargs['deviceName']
-        if 'initializeParams' in kwargs:
+        if initialize_params is None and 'initializeParams' in kwargs:
             initialize_params = kwargs['initializeParams']
 
         if auto_delete is not None:
@@ -365,10 +363,6 @@ class ElastigroupDiskInitializeParamArgs:
         :param pulumi.Input[str] source_image: A source image used to create the disk. You can provide a private (custom) image, and Compute Engine will use the corresponding image from your project.
                
                Usage:
-               
-               ```python
-               import pulumi
-               ```
         :param pulumi.Input[str] disk_size_gb: Specifies disk size in gigabytes. Must be in increments of 2.
         :param pulumi.Input[str] disk_type: Specifies the disk type to use to create the instance. Valid values: pd-ssd, local-ssd.
         """
@@ -381,16 +375,18 @@ class ElastigroupDiskInitializeParamArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             source_image: pulumi.Input[str],
+             source_image: Optional[pulumi.Input[str]] = None,
              disk_size_gb: Optional[pulumi.Input[str]] = None,
              disk_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'sourceImage' in kwargs:
+        if source_image is None and 'sourceImage' in kwargs:
             source_image = kwargs['sourceImage']
-        if 'diskSizeGb' in kwargs:
+        if source_image is None:
+            raise TypeError("Missing 'source_image' argument")
+        if disk_size_gb is None and 'diskSizeGb' in kwargs:
             disk_size_gb = kwargs['diskSizeGb']
-        if 'diskType' in kwargs:
+        if disk_type is None and 'diskType' in kwargs:
             disk_type = kwargs['diskType']
 
         _setter("source_image", source_image)
@@ -406,10 +402,6 @@ class ElastigroupDiskInitializeParamArgs:
         A source image used to create the disk. You can provide a private (custom) image, and Compute Engine will use the corresponding image from your project.
 
         Usage:
-
-        ```python
-        import pulumi
-        ```
         """
         return pulumi.get(self, "source_image")
 
@@ -451,10 +443,6 @@ class ElastigroupGpuArgs:
         :param pulumi.Input[int] count: The number of GPUs. Must be 0, 2, 4, 6, 8.
                
                Usage:
-               
-               ```python
-               import pulumi
-               ```
         :param pulumi.Input[str] type: The type of GPU instance. Valid values: `nvidia-tesla-v100`, `nvidia-tesla-p100`, `nvidia-tesla-k80`.
         """
         ElastigroupGpuArgs._configure(
@@ -465,10 +453,14 @@ class ElastigroupGpuArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             count: pulumi.Input[int],
-             type: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             count: Optional[pulumi.Input[int]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if count is None:
+            raise TypeError("Missing 'count' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
 
         _setter("count", count)
         _setter("type", type)
@@ -480,10 +472,6 @@ class ElastigroupGpuArgs:
         The number of GPUs. Must be 0, 2, 4, 6, 8.
 
         Usage:
-
-        ```python
-        import pulumi
-        ```
         """
         return pulumi.get(self, "count")
 
@@ -520,12 +508,16 @@ class ElastigroupInstanceTypesCustomArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             memory_gib: pulumi.Input[int],
-             vcpu: pulumi.Input[int],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             memory_gib: Optional[pulumi.Input[int]] = None,
+             vcpu: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'memoryGib' in kwargs:
+        if memory_gib is None and 'memoryGib' in kwargs:
             memory_gib = kwargs['memoryGib']
+        if memory_gib is None:
+            raise TypeError("Missing 'memory_gib' argument")
+        if vcpu is None:
+            raise TypeError("Missing 'vcpu' argument")
 
         _setter("memory_gib", memory_gib)
         _setter("vcpu", vcpu)
@@ -562,10 +554,6 @@ class ElastigroupIntegrationDockerSwarmArgs:
         :param pulumi.Input[int] master_port: Network port used by your swarm.
                
                Usage:
-               
-               ```python
-               import pulumi
-               ```
         """
         ElastigroupIntegrationDockerSwarmArgs._configure(
             lambda key, value: pulumi.set(__self__, key, value),
@@ -575,14 +563,18 @@ class ElastigroupIntegrationDockerSwarmArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             master_host: pulumi.Input[str],
-             master_port: pulumi.Input[int],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             master_host: Optional[pulumi.Input[str]] = None,
+             master_port: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'masterHost' in kwargs:
+        if master_host is None and 'masterHost' in kwargs:
             master_host = kwargs['masterHost']
-        if 'masterPort' in kwargs:
+        if master_host is None:
+            raise TypeError("Missing 'master_host' argument")
+        if master_port is None and 'masterPort' in kwargs:
             master_port = kwargs['masterPort']
+        if master_port is None:
+            raise TypeError("Missing 'master_port' argument")
 
         _setter("master_host", master_host)
         _setter("master_port", master_port)
@@ -606,10 +598,6 @@ class ElastigroupIntegrationDockerSwarmArgs:
         Network port used by your swarm.
 
         Usage:
-
-        ```python
-        import pulumi
-        ```
         """
         return pulumi.get(self, "master_port")
 
@@ -654,23 +642,23 @@ class ElastigroupIntegrationGkeArgs:
              autoscale_labels: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupIntegrationGkeAutoscaleLabelArgs']]]] = None,
              cluster_id: Optional[pulumi.Input[str]] = None,
              location: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'autoUpdate' in kwargs:
+        if auto_update is None and 'autoUpdate' in kwargs:
             auto_update = kwargs['autoUpdate']
-        if 'autoscaleCooldown' in kwargs:
+        if autoscale_cooldown is None and 'autoscaleCooldown' in kwargs:
             autoscale_cooldown = kwargs['autoscaleCooldown']
-        if 'autoscaleDown' in kwargs:
+        if autoscale_down is None and 'autoscaleDown' in kwargs:
             autoscale_down = kwargs['autoscaleDown']
-        if 'autoscaleHeadroom' in kwargs:
+        if autoscale_headroom is None and 'autoscaleHeadroom' in kwargs:
             autoscale_headroom = kwargs['autoscaleHeadroom']
-        if 'autoscaleIsAutoConfig' in kwargs:
+        if autoscale_is_auto_config is None and 'autoscaleIsAutoConfig' in kwargs:
             autoscale_is_auto_config = kwargs['autoscaleIsAutoConfig']
-        if 'autoscaleIsEnabled' in kwargs:
+        if autoscale_is_enabled is None and 'autoscaleIsEnabled' in kwargs:
             autoscale_is_enabled = kwargs['autoscaleIsEnabled']
-        if 'autoscaleLabels' in kwargs:
+        if autoscale_labels is None and 'autoscaleLabels' in kwargs:
             autoscale_labels = kwargs['autoscaleLabels']
-        if 'clusterId' in kwargs:
+        if cluster_id is None and 'clusterId' in kwargs:
             cluster_id = kwargs['clusterId']
 
         if auto_update is not None:
@@ -789,9 +777,9 @@ class ElastigroupIntegrationGkeAutoscaleDownArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              evaluation_periods: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'evaluationPeriods' in kwargs:
+        if evaluation_periods is None and 'evaluationPeriods' in kwargs:
             evaluation_periods = kwargs['evaluationPeriods']
 
         if evaluation_periods is not None:
@@ -828,13 +816,13 @@ class ElastigroupIntegrationGkeAutoscaleHeadroomArgs:
              cpu_per_unit: Optional[pulumi.Input[int]] = None,
              memory_per_unit: Optional[pulumi.Input[int]] = None,
              num_of_units: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'cpuPerUnit' in kwargs:
+        if cpu_per_unit is None and 'cpuPerUnit' in kwargs:
             cpu_per_unit = kwargs['cpuPerUnit']
-        if 'memoryPerUnit' in kwargs:
+        if memory_per_unit is None and 'memoryPerUnit' in kwargs:
             memory_per_unit = kwargs['memoryPerUnit']
-        if 'numOfUnits' in kwargs:
+        if num_of_units is None and 'numOfUnits' in kwargs:
             num_of_units = kwargs['numOfUnits']
 
         if cpu_per_unit is not None:
@@ -889,10 +877,14 @@ class ElastigroupIntegrationGkeAutoscaleLabelArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: pulumi.Input[str],
-             value: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             key: Optional[pulumi.Input[str]] = None,
+             value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
 
         _setter("key", key)
         _setter("value", value)
@@ -939,10 +931,14 @@ class ElastigroupLabelArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: pulumi.Input[str],
-             value: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             key: Optional[pulumi.Input[str]] = None,
+             value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
 
         _setter("key", key)
         _setter("value", value)
@@ -989,10 +985,14 @@ class ElastigroupMetadataArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: pulumi.Input[str],
-             value: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             key: Optional[pulumi.Input[str]] = None,
+             value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
 
         _setter("key", key)
         _setter("value", value)
@@ -1041,14 +1041,16 @@ class ElastigroupNetworkInterfaceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             network: pulumi.Input[str],
+             network: Optional[pulumi.Input[str]] = None,
              access_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupNetworkInterfaceAccessConfigArgs']]]] = None,
              alias_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupNetworkInterfaceAliasIpRangeArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accessConfigs' in kwargs:
+        if network is None:
+            raise TypeError("Missing 'network' argument")
+        if access_configs is None and 'accessConfigs' in kwargs:
             access_configs = kwargs['accessConfigs']
-        if 'aliasIpRanges' in kwargs:
+        if alias_ip_ranges is None and 'aliasIpRanges' in kwargs:
             alias_ip_ranges = kwargs['aliasIpRanges']
 
         _setter("network", network)
@@ -1110,7 +1112,7 @@ class ElastigroupNetworkInterfaceAccessConfigArgs:
              _setter: Callable[[Any, Any], None],
              name: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if name is not None:
@@ -1156,14 +1158,18 @@ class ElastigroupNetworkInterfaceAliasIpRangeArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             ip_cidr_range: pulumi.Input[str],
-             subnetwork_range_name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             ip_cidr_range: Optional[pulumi.Input[str]] = None,
+             subnetwork_range_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'ipCidrRange' in kwargs:
+        if ip_cidr_range is None and 'ipCidrRange' in kwargs:
             ip_cidr_range = kwargs['ipCidrRange']
-        if 'subnetworkRangeName' in kwargs:
+        if ip_cidr_range is None:
+            raise TypeError("Missing 'ip_cidr_range' argument")
+        if subnetwork_range_name is None and 'subnetworkRangeName' in kwargs:
             subnetwork_range_name = kwargs['subnetworkRangeName']
+        if subnetwork_range_name is None:
+            raise TypeError("Missing 'subnetwork_range_name' argument")
 
         _setter("ip_cidr_range", ip_cidr_range)
         _setter("subnetwork_range_name", subnetwork_range_name)
@@ -1238,11 +1244,11 @@ class ElastigroupScalingDownPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             metric_name: pulumi.Input[str],
-             namespace: pulumi.Input[str],
-             policy_name: pulumi.Input[str],
-             threshold: pulumi.Input[float],
-             unit: pulumi.Input[str],
+             metric_name: Optional[pulumi.Input[str]] = None,
+             namespace: Optional[pulumi.Input[str]] = None,
+             policy_name: Optional[pulumi.Input[str]] = None,
+             threshold: Optional[pulumi.Input[float]] = None,
+             unit: Optional[pulumi.Input[str]] = None,
              action_type: Optional[pulumi.Input[str]] = None,
              adjustment: Optional[pulumi.Input[int]] = None,
              cooldown: Optional[pulumi.Input[int]] = None,
@@ -1252,15 +1258,25 @@ class ElastigroupScalingDownPolicyArgs:
              period: Optional[pulumi.Input[int]] = None,
              source: Optional[pulumi.Input[str]] = None,
              statistic: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'metricName' in kwargs:
+        if metric_name is None and 'metricName' in kwargs:
             metric_name = kwargs['metricName']
-        if 'policyName' in kwargs:
+        if metric_name is None:
+            raise TypeError("Missing 'metric_name' argument")
+        if namespace is None:
+            raise TypeError("Missing 'namespace' argument")
+        if policy_name is None and 'policyName' in kwargs:
             policy_name = kwargs['policyName']
-        if 'actionType' in kwargs:
+        if policy_name is None:
+            raise TypeError("Missing 'policy_name' argument")
+        if threshold is None:
+            raise TypeError("Missing 'threshold' argument")
+        if unit is None:
+            raise TypeError("Missing 'unit' argument")
+        if action_type is None and 'actionType' in kwargs:
             action_type = kwargs['actionType']
-        if 'evaluationPeriods' in kwargs:
+        if evaluation_periods is None and 'evaluationPeriods' in kwargs:
             evaluation_periods = kwargs['evaluationPeriods']
 
         _setter("metric_name", metric_name)
@@ -1467,10 +1483,12 @@ class ElastigroupScalingDownPolicyDimensionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: pulumi.Input[str],
+             name: Optional[pulumi.Input[str]] = None,
              value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
 
         _setter("name", name)
         if value is not None:
@@ -1552,11 +1570,11 @@ class ElastigroupScalingUpPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             metric_name: pulumi.Input[str],
-             namespace: pulumi.Input[str],
-             policy_name: pulumi.Input[str],
-             threshold: pulumi.Input[float],
-             unit: pulumi.Input[str],
+             metric_name: Optional[pulumi.Input[str]] = None,
+             namespace: Optional[pulumi.Input[str]] = None,
+             policy_name: Optional[pulumi.Input[str]] = None,
+             threshold: Optional[pulumi.Input[float]] = None,
+             unit: Optional[pulumi.Input[str]] = None,
              action_type: Optional[pulumi.Input[str]] = None,
              adjustment: Optional[pulumi.Input[int]] = None,
              cooldown: Optional[pulumi.Input[int]] = None,
@@ -1566,15 +1584,25 @@ class ElastigroupScalingUpPolicyArgs:
              period: Optional[pulumi.Input[int]] = None,
              source: Optional[pulumi.Input[str]] = None,
              statistic: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'metricName' in kwargs:
+        if metric_name is None and 'metricName' in kwargs:
             metric_name = kwargs['metricName']
-        if 'policyName' in kwargs:
+        if metric_name is None:
+            raise TypeError("Missing 'metric_name' argument")
+        if namespace is None:
+            raise TypeError("Missing 'namespace' argument")
+        if policy_name is None and 'policyName' in kwargs:
             policy_name = kwargs['policyName']
-        if 'actionType' in kwargs:
+        if policy_name is None:
+            raise TypeError("Missing 'policy_name' argument")
+        if threshold is None:
+            raise TypeError("Missing 'threshold' argument")
+        if unit is None:
+            raise TypeError("Missing 'unit' argument")
+        if action_type is None and 'actionType' in kwargs:
             action_type = kwargs['actionType']
-        if 'evaluationPeriods' in kwargs:
+        if evaluation_periods is None and 'evaluationPeriods' in kwargs:
             evaluation_periods = kwargs['evaluationPeriods']
 
         _setter("metric_name", metric_name)
@@ -1781,10 +1809,12 @@ class ElastigroupScalingUpPolicyDimensionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: pulumi.Input[str],
+             name: Optional[pulumi.Input[str]] = None,
              value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
 
         _setter("name", name)
         if value is not None:
@@ -1831,10 +1861,6 @@ class ElastigroupScheduledTaskArgs:
         :param pulumi.Input[str] max_capacity: The maximum number of instances the group should have.
                
                Usage:
-               
-               ```python
-               import pulumi
-               ```
         :param pulumi.Input[str] min_capacity: The minimum number of instances the group should have.
         :param pulumi.Input[str] target_capacity: The desired number of instances the group should have.
         """
@@ -1850,25 +1876,27 @@ class ElastigroupScheduledTaskArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             task_type: pulumi.Input[str],
+             task_type: Optional[pulumi.Input[str]] = None,
              cron_expression: Optional[pulumi.Input[str]] = None,
              is_enabled: Optional[pulumi.Input[bool]] = None,
              max_capacity: Optional[pulumi.Input[str]] = None,
              min_capacity: Optional[pulumi.Input[str]] = None,
              target_capacity: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'taskType' in kwargs:
+        if task_type is None and 'taskType' in kwargs:
             task_type = kwargs['taskType']
-        if 'cronExpression' in kwargs:
+        if task_type is None:
+            raise TypeError("Missing 'task_type' argument")
+        if cron_expression is None and 'cronExpression' in kwargs:
             cron_expression = kwargs['cronExpression']
-        if 'isEnabled' in kwargs:
+        if is_enabled is None and 'isEnabled' in kwargs:
             is_enabled = kwargs['isEnabled']
-        if 'maxCapacity' in kwargs:
+        if max_capacity is None and 'maxCapacity' in kwargs:
             max_capacity = kwargs['maxCapacity']
-        if 'minCapacity' in kwargs:
+        if min_capacity is None and 'minCapacity' in kwargs:
             min_capacity = kwargs['minCapacity']
-        if 'targetCapacity' in kwargs:
+        if target_capacity is None and 'targetCapacity' in kwargs:
             target_capacity = kwargs['targetCapacity']
 
         _setter("task_type", task_type)
@@ -1926,10 +1954,6 @@ class ElastigroupScheduledTaskArgs:
         The maximum number of instances the group should have.
 
         Usage:
-
-        ```python
-        import pulumi
-        ```
         """
         return pulumi.get(self, "max_capacity")
 
@@ -1979,12 +2003,16 @@ class ElastigroupSubnetArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             region: pulumi.Input[str],
-             subnet_names: pulumi.Input[Sequence[pulumi.Input[str]]],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             region: Optional[pulumi.Input[str]] = None,
+             subnet_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'subnetNames' in kwargs:
+        if region is None:
+            raise TypeError("Missing 'region' argument")
+        if subnet_names is None and 'subnetNames' in kwargs:
             subnet_names = kwargs['subnetNames']
+        if subnet_names is None:
+            raise TypeError("Missing 'subnet_names' argument")
 
         _setter("region", region)
         _setter("subnet_names", subnet_names)

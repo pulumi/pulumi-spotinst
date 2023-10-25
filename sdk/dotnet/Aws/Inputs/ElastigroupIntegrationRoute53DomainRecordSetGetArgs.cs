@@ -22,16 +22,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         /// Designates whether the DNS address should be exposed to connections outside the VPC.
         /// 
         /// Usage:
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        /// });
-        /// ```
         /// </summary>
         [Input("usePublicDns")]
         public Input<bool>? UsePublicDns { get; set; }

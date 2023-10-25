@@ -136,8 +136,8 @@ class OceanArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             security_groups: pulumi.Input[Sequence[pulumi.Input[str]]],
-             subnet_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
+             security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              associate_ipv6_address: Optional[pulumi.Input[bool]] = None,
              associate_public_ip_address: Optional[pulumi.Input[bool]] = None,
              autoscaler: Optional[pulumi.Input['OceanAutoscalerArgs']] = None,
@@ -174,65 +174,69 @@ class OceanArgs:
              utilize_commitments: Optional[pulumi.Input[bool]] = None,
              utilize_reserved_instances: Optional[pulumi.Input[bool]] = None,
              whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'securityGroups' in kwargs:
+        if security_groups is None and 'securityGroups' in kwargs:
             security_groups = kwargs['securityGroups']
-        if 'subnetIds' in kwargs:
+        if security_groups is None:
+            raise TypeError("Missing 'security_groups' argument")
+        if subnet_ids is None and 'subnetIds' in kwargs:
             subnet_ids = kwargs['subnetIds']
-        if 'associateIpv6Address' in kwargs:
+        if subnet_ids is None:
+            raise TypeError("Missing 'subnet_ids' argument")
+        if associate_ipv6_address is None and 'associateIpv6Address' in kwargs:
             associate_ipv6_address = kwargs['associateIpv6Address']
-        if 'associatePublicIpAddress' in kwargs:
+        if associate_public_ip_address is None and 'associatePublicIpAddress' in kwargs:
             associate_public_ip_address = kwargs['associatePublicIpAddress']
-        if 'blockDeviceMappings' in kwargs:
+        if block_device_mappings is None and 'blockDeviceMappings' in kwargs:
             block_device_mappings = kwargs['blockDeviceMappings']
-        if 'clusterOrientations' in kwargs:
+        if cluster_orientations is None and 'clusterOrientations' in kwargs:
             cluster_orientations = kwargs['clusterOrientations']
-        if 'controllerId' in kwargs:
+        if controller_id is None and 'controllerId' in kwargs:
             controller_id = kwargs['controllerId']
-        if 'desiredCapacity' in kwargs:
+        if desired_capacity is None and 'desiredCapacity' in kwargs:
             desired_capacity = kwargs['desiredCapacity']
-        if 'drainingTimeout' in kwargs:
+        if draining_timeout is None and 'drainingTimeout' in kwargs:
             draining_timeout = kwargs['drainingTimeout']
-        if 'ebsOptimized' in kwargs:
+        if ebs_optimized is None and 'ebsOptimized' in kwargs:
             ebs_optimized = kwargs['ebsOptimized']
-        if 'fallbackToOndemand' in kwargs:
+        if fallback_to_ondemand is None and 'fallbackToOndemand' in kwargs:
             fallback_to_ondemand = kwargs['fallbackToOndemand']
-        if 'gracePeriod' in kwargs:
+        if grace_period is None and 'gracePeriod' in kwargs:
             grace_period = kwargs['gracePeriod']
-        if 'iamInstanceProfile' in kwargs:
+        if iam_instance_profile is None and 'iamInstanceProfile' in kwargs:
             iam_instance_profile = kwargs['iamInstanceProfile']
-        if 'imageId' in kwargs:
+        if image_id is None and 'imageId' in kwargs:
             image_id = kwargs['imageId']
-        if 'instanceMetadataOptions' in kwargs:
+        if instance_metadata_options is None and 'instanceMetadataOptions' in kwargs:
             instance_metadata_options = kwargs['instanceMetadataOptions']
-        if 'keyName' in kwargs:
+        if key_name is None and 'keyName' in kwargs:
             key_name = kwargs['keyName']
-        if 'loadBalancers' in kwargs:
+        if load_balancers is None and 'loadBalancers' in kwargs:
             load_balancers = kwargs['loadBalancers']
-        if 'maxSize' in kwargs:
+        if max_size is None and 'maxSize' in kwargs:
             max_size = kwargs['maxSize']
-        if 'minSize' in kwargs:
+        if min_size is None and 'minSize' in kwargs:
             min_size = kwargs['minSize']
-        if 'resourceTagSpecifications' in kwargs:
+        if resource_tag_specifications is None and 'resourceTagSpecifications' in kwargs:
             resource_tag_specifications = kwargs['resourceTagSpecifications']
-        if 'rootVolumeSize' in kwargs:
+        if root_volume_size is None and 'rootVolumeSize' in kwargs:
             root_volume_size = kwargs['rootVolumeSize']
-        if 'scheduledTasks' in kwargs:
+        if scheduled_tasks is None and 'scheduledTasks' in kwargs:
             scheduled_tasks = kwargs['scheduledTasks']
-        if 'spotPercentage' in kwargs:
+        if spot_percentage is None and 'spotPercentage' in kwargs:
             spot_percentage = kwargs['spotPercentage']
-        if 'spreadNodesBy' in kwargs:
+        if spread_nodes_by is None and 'spreadNodesBy' in kwargs:
             spread_nodes_by = kwargs['spreadNodesBy']
-        if 'updatePolicy' in kwargs:
+        if update_policy is None and 'updatePolicy' in kwargs:
             update_policy = kwargs['updatePolicy']
-        if 'useAsTemplateOnly' in kwargs:
+        if use_as_template_only is None and 'useAsTemplateOnly' in kwargs:
             use_as_template_only = kwargs['useAsTemplateOnly']
-        if 'userData' in kwargs:
+        if user_data is None and 'userData' in kwargs:
             user_data = kwargs['userData']
-        if 'utilizeCommitments' in kwargs:
+        if utilize_commitments is None and 'utilizeCommitments' in kwargs:
             utilize_commitments = kwargs['utilizeCommitments']
-        if 'utilizeReservedInstances' in kwargs:
+        if utilize_reserved_instances is None and 'utilizeReservedInstances' in kwargs:
             utilize_reserved_instances = kwargs['utilizeReservedInstances']
 
         _setter("security_groups", security_groups)
@@ -917,65 +921,65 @@ class _OceanState:
              utilize_commitments: Optional[pulumi.Input[bool]] = None,
              utilize_reserved_instances: Optional[pulumi.Input[bool]] = None,
              whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'associateIpv6Address' in kwargs:
+        if associate_ipv6_address is None and 'associateIpv6Address' in kwargs:
             associate_ipv6_address = kwargs['associateIpv6Address']
-        if 'associatePublicIpAddress' in kwargs:
+        if associate_public_ip_address is None and 'associatePublicIpAddress' in kwargs:
             associate_public_ip_address = kwargs['associatePublicIpAddress']
-        if 'blockDeviceMappings' in kwargs:
+        if block_device_mappings is None and 'blockDeviceMappings' in kwargs:
             block_device_mappings = kwargs['blockDeviceMappings']
-        if 'clusterOrientations' in kwargs:
+        if cluster_orientations is None and 'clusterOrientations' in kwargs:
             cluster_orientations = kwargs['clusterOrientations']
-        if 'controllerId' in kwargs:
+        if controller_id is None and 'controllerId' in kwargs:
             controller_id = kwargs['controllerId']
-        if 'desiredCapacity' in kwargs:
+        if desired_capacity is None and 'desiredCapacity' in kwargs:
             desired_capacity = kwargs['desiredCapacity']
-        if 'drainingTimeout' in kwargs:
+        if draining_timeout is None and 'drainingTimeout' in kwargs:
             draining_timeout = kwargs['drainingTimeout']
-        if 'ebsOptimized' in kwargs:
+        if ebs_optimized is None and 'ebsOptimized' in kwargs:
             ebs_optimized = kwargs['ebsOptimized']
-        if 'fallbackToOndemand' in kwargs:
+        if fallback_to_ondemand is None and 'fallbackToOndemand' in kwargs:
             fallback_to_ondemand = kwargs['fallbackToOndemand']
-        if 'gracePeriod' in kwargs:
+        if grace_period is None and 'gracePeriod' in kwargs:
             grace_period = kwargs['gracePeriod']
-        if 'iamInstanceProfile' in kwargs:
+        if iam_instance_profile is None and 'iamInstanceProfile' in kwargs:
             iam_instance_profile = kwargs['iamInstanceProfile']
-        if 'imageId' in kwargs:
+        if image_id is None and 'imageId' in kwargs:
             image_id = kwargs['imageId']
-        if 'instanceMetadataOptions' in kwargs:
+        if instance_metadata_options is None and 'instanceMetadataOptions' in kwargs:
             instance_metadata_options = kwargs['instanceMetadataOptions']
-        if 'keyName' in kwargs:
+        if key_name is None and 'keyName' in kwargs:
             key_name = kwargs['keyName']
-        if 'loadBalancers' in kwargs:
+        if load_balancers is None and 'loadBalancers' in kwargs:
             load_balancers = kwargs['loadBalancers']
-        if 'maxSize' in kwargs:
+        if max_size is None and 'maxSize' in kwargs:
             max_size = kwargs['maxSize']
-        if 'minSize' in kwargs:
+        if min_size is None and 'minSize' in kwargs:
             min_size = kwargs['minSize']
-        if 'resourceTagSpecifications' in kwargs:
+        if resource_tag_specifications is None and 'resourceTagSpecifications' in kwargs:
             resource_tag_specifications = kwargs['resourceTagSpecifications']
-        if 'rootVolumeSize' in kwargs:
+        if root_volume_size is None and 'rootVolumeSize' in kwargs:
             root_volume_size = kwargs['rootVolumeSize']
-        if 'scheduledTasks' in kwargs:
+        if scheduled_tasks is None and 'scheduledTasks' in kwargs:
             scheduled_tasks = kwargs['scheduledTasks']
-        if 'securityGroups' in kwargs:
+        if security_groups is None and 'securityGroups' in kwargs:
             security_groups = kwargs['securityGroups']
-        if 'spotPercentage' in kwargs:
+        if spot_percentage is None and 'spotPercentage' in kwargs:
             spot_percentage = kwargs['spotPercentage']
-        if 'spreadNodesBy' in kwargs:
+        if spread_nodes_by is None and 'spreadNodesBy' in kwargs:
             spread_nodes_by = kwargs['spreadNodesBy']
-        if 'subnetIds' in kwargs:
+        if subnet_ids is None and 'subnetIds' in kwargs:
             subnet_ids = kwargs['subnetIds']
-        if 'updatePolicy' in kwargs:
+        if update_policy is None and 'updatePolicy' in kwargs:
             update_policy = kwargs['updatePolicy']
-        if 'useAsTemplateOnly' in kwargs:
+        if use_as_template_only is None and 'useAsTemplateOnly' in kwargs:
             use_as_template_only = kwargs['useAsTemplateOnly']
-        if 'userData' in kwargs:
+        if user_data is None and 'userData' in kwargs:
             user_data = kwargs['userData']
-        if 'utilizeCommitments' in kwargs:
+        if utilize_commitments is None and 'utilizeCommitments' in kwargs:
             utilize_commitments = kwargs['utilizeCommitments']
-        if 'utilizeReservedInstances' in kwargs:
+        if utilize_reserved_instances is None and 'utilizeReservedInstances' in kwargs:
             utilize_reserved_instances = kwargs['utilizeReservedInstances']
 
         if associate_ipv6_address is not None:
@@ -1546,63 +1550,6 @@ class Ocean(pulumi.CustomResource):
                  whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
-        ## Auto Scaler
-
-        * `autoscaler` - (Optional) Describes the Ocean Kubernetes Auto Scaler.
-            * `autoscale_is_enabled` - (Optional, Default: `true`) Enable the Ocean Kubernetes Auto Scaler.
-            * `autoscale_is_auto_config` - (Optional, Default: `true`) Automatically configure and optimize headroom resources.
-            * `autoscale_cooldown` - (Optional, Default: `null`) Cooldown period between scaling actions.
-            * `auto_headroom_percentage` - (Optional) Set the auto headroom percentage (a number in the range [0, 200]) which controls the percentage of headroom from the cluster. Relevant only when `autoscale_is_auto_config` toggled on.
-            * `enable_automatic_and_manual_headroom` - (Optional, Default: `false`) enables automatic and manual headroom to work in parallel. When set to false, automatic headroom overrides all other headroom definitions manually configured, whether they are at cluster or VNG level.
-            * `autoscale_headroom` - (Optional) Spare resource capacity management enabling fast assignment of Pods without waiting for new resources to launch.
-                * `cpu_per_unit` - (Optional) Optionally configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
-                * `gpu_per_unit` - (Optional) Optionally configure the number of GPUs to allocate the headroom.
-                * `memory_per_unit` - (Optional) Optionally configure the amount of memory (MB) to allocate the headroom.
-                * `num_of_units` - (Optional) The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
-            * `autoscale_down` - (Optional) Auto Scaling scale down operations.
-                * `max_scale_down_percentage` - (Optional) Would represent the maximum % to scale-down. Number between 1-100.
-            * `resource_limits` - (Optional) Optionally set upper and lower bounds on the resource usage of the cluster.
-                * `max_vcpu` - (Optional) The maximum cpu in vCPU units that can be allocated to the cluster.
-                * `max_memory_gib` - (Optional) The maximum memory in GiB units that can be allocated to the cluster.
-            * `extended_resource_definitions` - (Optional) List of Ocean extended resource definitions to use in this cluster.
-
-        ```python
-        import pulumi
-        ```
-
-        ### Update Policy
-
-        * `update_policy` - (Optional)
-            * `should_roll` - (Required) Enables the roll.
-            * `conditioned_roll` - (Optional, Default: false) Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as AMI, Key Pair, user data, instance types, load balancers, etc).
-            * `auto_apply_tags` - (Optional, Default: false) will update instance tags on the fly without rolling the cluster.
-            * `roll_config` - (Required) While used, you can control whether the group should perform a deployment after an update to the configuration.
-                * `batch_size_percentage` - (Required) Sets the percentage of the instances to deploy in each batch.
-                * `launch_spec_ids` - (Optional) List of virtual node group identifiers to be rolled.
-                * `batch_min_healthy_percentage` - (Optional) Default: 50. Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
-                * `respect_pdb` - (Optional, Default: false) During the roll, if the parameter is set to True we honor PDB during the instance replacement.
-        ```python
-        import pulumi
-        ```
-
-        <a id="scheduled-task"></a>
-        ## Scheduled Task
-
-        * `scheduled_task` - (Optional) Set scheduling object.
-            * `shutdown_hours` - (Optional) Set shutdown hours for cluster object.
-                * `is_enabled` - (Optional) Toggle the shutdown hours task. (Example: `true`).
-                * `time_windows` - (Required) Set time windows for shutdown hours. Specify a list of `timeWindows` with at least one time window Each string is in the format of: `ddd:hh:mm-ddd:hh:mm` where `ddd` = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat, `hh` = hour 24 = 0 -23, `mm` = minute = 0 - 59. Time windows should not overlap. Required if `cluster.scheduling.isEnabled` is `true`. (Example: `Fri:15:30-Wed:14:30`).
-            * `tasks` - (Optional) The scheduling tasks for the cluster.
-                * `is_enabled` - (Required)  Describes whether the task is enabled. When true the task should run when false it should not run. Required for `cluster.scheduling.tasks` object.
-                * `cron_expression` - (Required) A valid cron expression. The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of `frequency` or `cronExpression` should be used at a time. Required for `cluster.scheduling.tasks` object. (Example: `0 1 * * *`).
-                * `task_type` - (Required) Valid values: `clusterRoll`. Required for `cluster.scheduling.tasks` object. (Example: `clusterRoll`).
-
-        ```python
-        import pulumi
-        ```
-
-        <a id="attributes-reference"></a>
-
         ## Import
 
         Clusters can be imported using the Ocean `id`, e.g., hcl
@@ -1656,63 +1603,6 @@ class Ocean(pulumi.CustomResource):
                  args: OceanArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Auto Scaler
-
-        * `autoscaler` - (Optional) Describes the Ocean Kubernetes Auto Scaler.
-            * `autoscale_is_enabled` - (Optional, Default: `true`) Enable the Ocean Kubernetes Auto Scaler.
-            * `autoscale_is_auto_config` - (Optional, Default: `true`) Automatically configure and optimize headroom resources.
-            * `autoscale_cooldown` - (Optional, Default: `null`) Cooldown period between scaling actions.
-            * `auto_headroom_percentage` - (Optional) Set the auto headroom percentage (a number in the range [0, 200]) which controls the percentage of headroom from the cluster. Relevant only when `autoscale_is_auto_config` toggled on.
-            * `enable_automatic_and_manual_headroom` - (Optional, Default: `false`) enables automatic and manual headroom to work in parallel. When set to false, automatic headroom overrides all other headroom definitions manually configured, whether they are at cluster or VNG level.
-            * `autoscale_headroom` - (Optional) Spare resource capacity management enabling fast assignment of Pods without waiting for new resources to launch.
-                * `cpu_per_unit` - (Optional) Optionally configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
-                * `gpu_per_unit` - (Optional) Optionally configure the number of GPUs to allocate the headroom.
-                * `memory_per_unit` - (Optional) Optionally configure the amount of memory (MB) to allocate the headroom.
-                * `num_of_units` - (Optional) The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
-            * `autoscale_down` - (Optional) Auto Scaling scale down operations.
-                * `max_scale_down_percentage` - (Optional) Would represent the maximum % to scale-down. Number between 1-100.
-            * `resource_limits` - (Optional) Optionally set upper and lower bounds on the resource usage of the cluster.
-                * `max_vcpu` - (Optional) The maximum cpu in vCPU units that can be allocated to the cluster.
-                * `max_memory_gib` - (Optional) The maximum memory in GiB units that can be allocated to the cluster.
-            * `extended_resource_definitions` - (Optional) List of Ocean extended resource definitions to use in this cluster.
-
-        ```python
-        import pulumi
-        ```
-
-        ### Update Policy
-
-        * `update_policy` - (Optional)
-            * `should_roll` - (Required) Enables the roll.
-            * `conditioned_roll` - (Optional, Default: false) Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as AMI, Key Pair, user data, instance types, load balancers, etc).
-            * `auto_apply_tags` - (Optional, Default: false) will update instance tags on the fly without rolling the cluster.
-            * `roll_config` - (Required) While used, you can control whether the group should perform a deployment after an update to the configuration.
-                * `batch_size_percentage` - (Required) Sets the percentage of the instances to deploy in each batch.
-                * `launch_spec_ids` - (Optional) List of virtual node group identifiers to be rolled.
-                * `batch_min_healthy_percentage` - (Optional) Default: 50. Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
-                * `respect_pdb` - (Optional, Default: false) During the roll, if the parameter is set to True we honor PDB during the instance replacement.
-        ```python
-        import pulumi
-        ```
-
-        <a id="scheduled-task"></a>
-        ## Scheduled Task
-
-        * `scheduled_task` - (Optional) Set scheduling object.
-            * `shutdown_hours` - (Optional) Set shutdown hours for cluster object.
-                * `is_enabled` - (Optional) Toggle the shutdown hours task. (Example: `true`).
-                * `time_windows` - (Required) Set time windows for shutdown hours. Specify a list of `timeWindows` with at least one time window Each string is in the format of: `ddd:hh:mm-ddd:hh:mm` where `ddd` = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat, `hh` = hour 24 = 0 -23, `mm` = minute = 0 - 59. Time windows should not overlap. Required if `cluster.scheduling.isEnabled` is `true`. (Example: `Fri:15:30-Wed:14:30`).
-            * `tasks` - (Optional) The scheduling tasks for the cluster.
-                * `is_enabled` - (Required)  Describes whether the task is enabled. When true the task should run when false it should not run. Required for `cluster.scheduling.tasks` object.
-                * `cron_expression` - (Required) A valid cron expression. The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of `frequency` or `cronExpression` should be used at a time. Required for `cluster.scheduling.tasks` object. (Example: `0 1 * * *`).
-                * `task_type` - (Required) Valid values: `clusterRoll`. Required for `cluster.scheduling.tasks` object. (Example: `clusterRoll`).
-
-        ```python
-        import pulumi
-        ```
-
-        <a id="attributes-reference"></a>
-
         ## Import
 
         Clusters can be imported using the Ocean `id`, e.g., hcl
@@ -1789,11 +1679,7 @@ class Ocean(pulumi.CustomResource):
 
             __props__.__dict__["associate_ipv6_address"] = associate_ipv6_address
             __props__.__dict__["associate_public_ip_address"] = associate_public_ip_address
-            if autoscaler is not None and not isinstance(autoscaler, OceanAutoscalerArgs):
-                autoscaler = autoscaler or {}
-                def _setter(key, value):
-                    autoscaler[key] = value
-                OceanAutoscalerArgs._configure(_setter, **autoscaler)
+            autoscaler = _utilities.configure(autoscaler, OceanAutoscalerArgs, True)
             __props__.__dict__["autoscaler"] = autoscaler
             __props__.__dict__["blacklists"] = blacklists
             __props__.__dict__["block_device_mappings"] = block_device_mappings
@@ -1803,28 +1689,16 @@ class Ocean(pulumi.CustomResource):
             __props__.__dict__["draining_timeout"] = draining_timeout
             __props__.__dict__["ebs_optimized"] = ebs_optimized
             __props__.__dict__["fallback_to_ondemand"] = fallback_to_ondemand
-            if filters is not None and not isinstance(filters, OceanFiltersArgs):
-                filters = filters or {}
-                def _setter(key, value):
-                    filters[key] = value
-                OceanFiltersArgs._configure(_setter, **filters)
+            filters = _utilities.configure(filters, OceanFiltersArgs, True)
             __props__.__dict__["filters"] = filters
             __props__.__dict__["grace_period"] = grace_period
             __props__.__dict__["iam_instance_profile"] = iam_instance_profile
             __props__.__dict__["image_id"] = image_id
-            if instance_metadata_options is not None and not isinstance(instance_metadata_options, OceanInstanceMetadataOptionsArgs):
-                instance_metadata_options = instance_metadata_options or {}
-                def _setter(key, value):
-                    instance_metadata_options[key] = value
-                OceanInstanceMetadataOptionsArgs._configure(_setter, **instance_metadata_options)
+            instance_metadata_options = _utilities.configure(instance_metadata_options, OceanInstanceMetadataOptionsArgs, True)
             __props__.__dict__["instance_metadata_options"] = instance_metadata_options
             __props__.__dict__["key_name"] = key_name
             __props__.__dict__["load_balancers"] = load_balancers
-            if logging is not None and not isinstance(logging, OceanLoggingArgs):
-                logging = logging or {}
-                def _setter(key, value):
-                    logging[key] = value
-                OceanLoggingArgs._configure(_setter, **logging)
+            logging = _utilities.configure(logging, OceanLoggingArgs, True)
             __props__.__dict__["logging"] = logging
             __props__.__dict__["max_size"] = max_size
             __props__.__dict__["min_size"] = min_size
@@ -1843,11 +1717,7 @@ class Ocean(pulumi.CustomResource):
                 raise TypeError("Missing required property 'subnet_ids'")
             __props__.__dict__["subnet_ids"] = subnet_ids
             __props__.__dict__["tags"] = tags
-            if update_policy is not None and not isinstance(update_policy, OceanUpdatePolicyArgs):
-                update_policy = update_policy or {}
-                def _setter(key, value):
-                    update_policy[key] = value
-                OceanUpdatePolicyArgs._configure(_setter, **update_policy)
+            update_policy = _utilities.configure(update_policy, OceanUpdatePolicyArgs, True)
             __props__.__dict__["update_policy"] = update_policy
             __props__.__dict__["use_as_template_only"] = use_as_template_only
             __props__.__dict__["user_data"] = user_data

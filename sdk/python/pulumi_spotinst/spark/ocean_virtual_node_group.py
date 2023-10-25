@@ -27,14 +27,18 @@ class OceanVirtualNodeGroupArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             ocean_spark_cluster_id: pulumi.Input[str],
-             virtual_node_group_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             ocean_spark_cluster_id: Optional[pulumi.Input[str]] = None,
+             virtual_node_group_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'oceanSparkClusterId' in kwargs:
+        if ocean_spark_cluster_id is None and 'oceanSparkClusterId' in kwargs:
             ocean_spark_cluster_id = kwargs['oceanSparkClusterId']
-        if 'virtualNodeGroupId' in kwargs:
+        if ocean_spark_cluster_id is None:
+            raise TypeError("Missing 'ocean_spark_cluster_id' argument")
+        if virtual_node_group_id is None and 'virtualNodeGroupId' in kwargs:
             virtual_node_group_id = kwargs['virtualNodeGroupId']
+        if virtual_node_group_id is None:
+            raise TypeError("Missing 'virtual_node_group_id' argument")
 
         _setter("ocean_spark_cluster_id", ocean_spark_cluster_id)
         _setter("virtual_node_group_id", virtual_node_group_id)
@@ -76,11 +80,11 @@ class _OceanVirtualNodeGroupState:
              _setter: Callable[[Any, Any], None],
              ocean_spark_cluster_id: Optional[pulumi.Input[str]] = None,
              virtual_node_group_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'oceanSparkClusterId' in kwargs:
+        if ocean_spark_cluster_id is None and 'oceanSparkClusterId' in kwargs:
             ocean_spark_cluster_id = kwargs['oceanSparkClusterId']
-        if 'virtualNodeGroupId' in kwargs:
+        if virtual_node_group_id is None and 'virtualNodeGroupId' in kwargs:
             virtual_node_group_id = kwargs['virtualNodeGroupId']
 
         if ocean_spark_cluster_id is not None:
@@ -122,17 +126,6 @@ class OceanVirtualNodeGroup(pulumi.CustomResource):
 
         An existing Ocean cluster and Ocean VNG is required by this resource
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_spotinst as spotinst
-
-        example = spotinst.spark.OceanVirtualNodeGroup("example",
-            ocean_spark_cluster_id="cluster_id",
-            virtual_node_group_id="vng_id")
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
@@ -148,17 +141,6 @@ class OceanVirtualNodeGroup(pulumi.CustomResource):
         ## Prerequisites
 
         An existing Ocean cluster and Ocean VNG is required by this resource
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_spotinst as spotinst
-
-        example = spotinst.spark.OceanVirtualNodeGroup("example",
-            ocean_spark_cluster_id="cluster_id",
-            virtual_node_group_id="vng_id")
-        ```
 
         :param str resource_name: The name of the resource.
         :param OceanVirtualNodeGroupArgs args: The arguments to use to populate this resource's properties.

@@ -16,16 +16,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         /// ID of Multai Load Balancer.
         /// 
         /// Usage:
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        /// });
-        /// ```
         /// </summary>
         [Input("balancerId", required: true)]
         public Input<string> BalancerId { get; set; } = null!;

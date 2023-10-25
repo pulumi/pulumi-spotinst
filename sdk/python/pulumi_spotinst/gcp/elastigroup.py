@@ -89,10 +89,6 @@ class ElastigroupArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ElastigroupSubnetArgs']]] subnets: A list of regions and subnets.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to mark created instances.
         :param pulumi.Input[int] unhealthy_duration: Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
-               
-               ```python
-               import pulumi
-               ```
         """
         ElastigroupArgs._configure(
             lambda key, value: pulumi.set(__self__, key, value),
@@ -136,7 +132,7 @@ class ElastigroupArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             desired_capacity: pulumi.Input[int],
+             desired_capacity: Optional[pulumi.Input[int]] = None,
              auto_healing: Optional[pulumi.Input[bool]] = None,
              availability_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              backend_services: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupBackendServiceArgs']]]] = None,
@@ -172,63 +168,65 @@ class ElastigroupArgs:
              subnets: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupSubnetArgs']]]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              unhealthy_duration: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'desiredCapacity' in kwargs:
+        if desired_capacity is None and 'desiredCapacity' in kwargs:
             desired_capacity = kwargs['desiredCapacity']
-        if 'autoHealing' in kwargs:
+        if desired_capacity is None:
+            raise TypeError("Missing 'desired_capacity' argument")
+        if auto_healing is None and 'autoHealing' in kwargs:
             auto_healing = kwargs['autoHealing']
-        if 'availabilityZones' in kwargs:
+        if availability_zones is None and 'availabilityZones' in kwargs:
             availability_zones = kwargs['availabilityZones']
-        if 'backendServices' in kwargs:
+        if backend_services is None and 'backendServices' in kwargs:
             backend_services = kwargs['backendServices']
-        if 'drainingTimeout' in kwargs:
+        if draining_timeout is None and 'drainingTimeout' in kwargs:
             draining_timeout = kwargs['drainingTimeout']
-        if 'fallbackToOndemand' in kwargs:
+        if fallback_to_ondemand is None and 'fallbackToOndemand' in kwargs:
             fallback_to_ondemand = kwargs['fallbackToOndemand']
-        if 'healthCheckGracePeriod' in kwargs:
+        if health_check_grace_period is None and 'healthCheckGracePeriod' in kwargs:
             health_check_grace_period = kwargs['healthCheckGracePeriod']
-        if 'healthCheckType' in kwargs:
+        if health_check_type is None and 'healthCheckType' in kwargs:
             health_check_type = kwargs['healthCheckType']
-        if 'instanceNamePrefix' in kwargs:
+        if instance_name_prefix is None and 'instanceNamePrefix' in kwargs:
             instance_name_prefix = kwargs['instanceNamePrefix']
-        if 'instanceTypesCustoms' in kwargs:
+        if instance_types_customs is None and 'instanceTypesCustoms' in kwargs:
             instance_types_customs = kwargs['instanceTypesCustoms']
-        if 'instanceTypesOndemand' in kwargs:
+        if instance_types_ondemand is None and 'instanceTypesOndemand' in kwargs:
             instance_types_ondemand = kwargs['instanceTypesOndemand']
-        if 'instanceTypesPreemptibles' in kwargs:
+        if instance_types_preemptibles is None and 'instanceTypesPreemptibles' in kwargs:
             instance_types_preemptibles = kwargs['instanceTypesPreemptibles']
-        if 'integrationDockerSwarm' in kwargs:
+        if integration_docker_swarm is None and 'integrationDockerSwarm' in kwargs:
             integration_docker_swarm = kwargs['integrationDockerSwarm']
-        if 'integrationGke' in kwargs:
+        if integration_gke is None and 'integrationGke' in kwargs:
             integration_gke = kwargs['integrationGke']
-        if 'ipForwarding' in kwargs:
+        if ip_forwarding is None and 'ipForwarding' in kwargs:
             ip_forwarding = kwargs['ipForwarding']
-        if 'maxSize' in kwargs:
+        if max_size is None and 'maxSize' in kwargs:
             max_size = kwargs['maxSize']
-        if 'minSize' in kwargs:
+        if min_size is None and 'minSize' in kwargs:
             min_size = kwargs['minSize']
-        if 'networkInterfaces' in kwargs:
+        if network_interfaces is None and 'networkInterfaces' in kwargs:
             network_interfaces = kwargs['networkInterfaces']
-        if 'ondemandCount' in kwargs:
+        if ondemand_count is None and 'ondemandCount' in kwargs:
             ondemand_count = kwargs['ondemandCount']
-        if 'preemptiblePercentage' in kwargs:
+        if preemptible_percentage is None and 'preemptiblePercentage' in kwargs:
             preemptible_percentage = kwargs['preemptiblePercentage']
-        if 'provisioningModel' in kwargs:
+        if provisioning_model is None and 'provisioningModel' in kwargs:
             provisioning_model = kwargs['provisioningModel']
-        if 'scalingDownPolicies' in kwargs:
+        if scaling_down_policies is None and 'scalingDownPolicies' in kwargs:
             scaling_down_policies = kwargs['scalingDownPolicies']
-        if 'scalingUpPolicies' in kwargs:
+        if scaling_up_policies is None and 'scalingUpPolicies' in kwargs:
             scaling_up_policies = kwargs['scalingUpPolicies']
-        if 'scheduledTasks' in kwargs:
+        if scheduled_tasks is None and 'scheduledTasks' in kwargs:
             scheduled_tasks = kwargs['scheduledTasks']
-        if 'serviceAccount' in kwargs:
+        if service_account is None and 'serviceAccount' in kwargs:
             service_account = kwargs['serviceAccount']
-        if 'shutdownScript' in kwargs:
+        if shutdown_script is None and 'shutdownScript' in kwargs:
             shutdown_script = kwargs['shutdownScript']
-        if 'startupScript' in kwargs:
+        if startup_script is None and 'startupScript' in kwargs:
             startup_script = kwargs['startupScript']
-        if 'unhealthyDuration' in kwargs:
+        if unhealthy_duration is None and 'unhealthyDuration' in kwargs:
             unhealthy_duration = kwargs['unhealthyDuration']
 
         _setter("desired_capacity", desired_capacity)
@@ -723,10 +721,6 @@ class ElastigroupArgs:
     def unhealthy_duration(self) -> Optional[pulumi.Input[int]]:
         """
         Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
-
-        ```python
-        import pulumi
-        ```
         """
         return pulumi.get(self, "unhealthy_duration")
 
@@ -811,10 +805,6 @@ class _ElastigroupState:
         :param pulumi.Input[Sequence[pulumi.Input['ElastigroupSubnetArgs']]] subnets: A list of regions and subnets.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to mark created instances.
         :param pulumi.Input[int] unhealthy_duration: Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
-               
-               ```python
-               import pulumi
-               ```
         """
         _ElastigroupState._configure(
             lambda key, value: pulumi.set(__self__, key, value),
@@ -894,63 +884,63 @@ class _ElastigroupState:
              subnets: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupSubnetArgs']]]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              unhealthy_duration: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'autoHealing' in kwargs:
+        if auto_healing is None and 'autoHealing' in kwargs:
             auto_healing = kwargs['autoHealing']
-        if 'availabilityZones' in kwargs:
+        if availability_zones is None and 'availabilityZones' in kwargs:
             availability_zones = kwargs['availabilityZones']
-        if 'backendServices' in kwargs:
+        if backend_services is None and 'backendServices' in kwargs:
             backend_services = kwargs['backendServices']
-        if 'desiredCapacity' in kwargs:
+        if desired_capacity is None and 'desiredCapacity' in kwargs:
             desired_capacity = kwargs['desiredCapacity']
-        if 'drainingTimeout' in kwargs:
+        if draining_timeout is None and 'drainingTimeout' in kwargs:
             draining_timeout = kwargs['drainingTimeout']
-        if 'fallbackToOndemand' in kwargs:
+        if fallback_to_ondemand is None and 'fallbackToOndemand' in kwargs:
             fallback_to_ondemand = kwargs['fallbackToOndemand']
-        if 'healthCheckGracePeriod' in kwargs:
+        if health_check_grace_period is None and 'healthCheckGracePeriod' in kwargs:
             health_check_grace_period = kwargs['healthCheckGracePeriod']
-        if 'healthCheckType' in kwargs:
+        if health_check_type is None and 'healthCheckType' in kwargs:
             health_check_type = kwargs['healthCheckType']
-        if 'instanceNamePrefix' in kwargs:
+        if instance_name_prefix is None and 'instanceNamePrefix' in kwargs:
             instance_name_prefix = kwargs['instanceNamePrefix']
-        if 'instanceTypesCustoms' in kwargs:
+        if instance_types_customs is None and 'instanceTypesCustoms' in kwargs:
             instance_types_customs = kwargs['instanceTypesCustoms']
-        if 'instanceTypesOndemand' in kwargs:
+        if instance_types_ondemand is None and 'instanceTypesOndemand' in kwargs:
             instance_types_ondemand = kwargs['instanceTypesOndemand']
-        if 'instanceTypesPreemptibles' in kwargs:
+        if instance_types_preemptibles is None and 'instanceTypesPreemptibles' in kwargs:
             instance_types_preemptibles = kwargs['instanceTypesPreemptibles']
-        if 'integrationDockerSwarm' in kwargs:
+        if integration_docker_swarm is None and 'integrationDockerSwarm' in kwargs:
             integration_docker_swarm = kwargs['integrationDockerSwarm']
-        if 'integrationGke' in kwargs:
+        if integration_gke is None and 'integrationGke' in kwargs:
             integration_gke = kwargs['integrationGke']
-        if 'ipForwarding' in kwargs:
+        if ip_forwarding is None and 'ipForwarding' in kwargs:
             ip_forwarding = kwargs['ipForwarding']
-        if 'maxSize' in kwargs:
+        if max_size is None and 'maxSize' in kwargs:
             max_size = kwargs['maxSize']
-        if 'minSize' in kwargs:
+        if min_size is None and 'minSize' in kwargs:
             min_size = kwargs['minSize']
-        if 'networkInterfaces' in kwargs:
+        if network_interfaces is None and 'networkInterfaces' in kwargs:
             network_interfaces = kwargs['networkInterfaces']
-        if 'ondemandCount' in kwargs:
+        if ondemand_count is None and 'ondemandCount' in kwargs:
             ondemand_count = kwargs['ondemandCount']
-        if 'preemptiblePercentage' in kwargs:
+        if preemptible_percentage is None and 'preemptiblePercentage' in kwargs:
             preemptible_percentage = kwargs['preemptiblePercentage']
-        if 'provisioningModel' in kwargs:
+        if provisioning_model is None and 'provisioningModel' in kwargs:
             provisioning_model = kwargs['provisioningModel']
-        if 'scalingDownPolicies' in kwargs:
+        if scaling_down_policies is None and 'scalingDownPolicies' in kwargs:
             scaling_down_policies = kwargs['scalingDownPolicies']
-        if 'scalingUpPolicies' in kwargs:
+        if scaling_up_policies is None and 'scalingUpPolicies' in kwargs:
             scaling_up_policies = kwargs['scalingUpPolicies']
-        if 'scheduledTasks' in kwargs:
+        if scheduled_tasks is None and 'scheduledTasks' in kwargs:
             scheduled_tasks = kwargs['scheduledTasks']
-        if 'serviceAccount' in kwargs:
+        if service_account is None and 'serviceAccount' in kwargs:
             service_account = kwargs['serviceAccount']
-        if 'shutdownScript' in kwargs:
+        if shutdown_script is None and 'shutdownScript' in kwargs:
             shutdown_script = kwargs['shutdownScript']
-        if 'startupScript' in kwargs:
+        if startup_script is None and 'startupScript' in kwargs:
             startup_script = kwargs['startupScript']
-        if 'unhealthyDuration' in kwargs:
+        if unhealthy_duration is None and 'unhealthyDuration' in kwargs:
             unhealthy_duration = kwargs['unhealthyDuration']
 
         if auto_healing is not None:
@@ -1446,10 +1436,6 @@ class _ElastigroupState:
     def unhealthy_duration(self) -> Optional[pulumi.Input[int]]:
         """
         Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
-
-        ```python
-        import pulumi
-        ```
         """
         return pulumi.get(self, "unhealthy_duration")
 
@@ -1503,98 +1489,6 @@ class Elastigroup(pulumi.CustomResource):
         """
         Provides a Spotinst elastigroup GCP resource.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_spotinst as spotinst
-
-        example = spotinst.gcp.Elastigroup("example",
-            availability_zones=[
-                "asia-east1-c",
-                "us-central1-a",
-            ],
-            backend_services=[spotinst.gcp.ElastigroupBackendServiceArgs(
-                location_type="regional",
-                named_ports=[spotinst.gcp.ElastigroupBackendServiceNamedPortArgs(
-                    name="port-name",
-                    ports=[
-                        "8000",
-                        "6000",
-                    ],
-                )],
-                scheme="INTERNAL",
-                service_name="spotinst-elb-backend-service",
-            )],
-            description="spotinst gcp group",
-            desired_capacity=1,
-            disks=[spotinst.gcp.ElastigroupDiskArgs(
-                auto_delete=True,
-                boot=True,
-                device_name="device",
-                initialize_params=[spotinst.gcp.ElastigroupDiskInitializeParamArgs(
-                    disk_size_gb="10",
-                    disk_type="pd-standard",
-                    source_image="",
-                )],
-                interface="SCSI",
-                mode="READ_WRITE",
-                type="PERSISTENT",
-            )],
-            draining_timeout=180,
-            fallback_to_ondemand=True,
-            instance_name_prefix="test-123a",
-            instance_types_customs=[spotinst.gcp.ElastigroupInstanceTypesCustomArgs(
-                memory_gib=7,
-                vcpu=2,
-            )],
-            instance_types_ondemand="n1-standard-1",
-            instance_types_preemptibles=[
-                "n1-standard-1",
-                "n1-standard-2",
-            ],
-            labels=[spotinst.gcp.ElastigroupLabelArgs(
-                key="test_key",
-                value="test_value",
-            )],
-            max_size=1,
-            min_size=0,
-            network_interfaces=[spotinst.gcp.ElastigroupNetworkInterfaceArgs(
-                network="spot-network",
-            )],
-            preemptible_percentage=50,
-            provisioning_model="SPOT",
-            scaling_up_policies=[spotinst.gcp.ElastigroupScalingUpPolicyArgs(
-                action_type="adjustment",
-                adjustment=1,
-                cooldown=300,
-                dimensions=[spotinst.gcp.ElastigroupScalingUpPolicyDimensionArgs(
-                    name="storage_type",
-                    value="pd-ssd",
-                )],
-                evaluation_periods=1,
-                metric_name="instance/disk/read_ops_count",
-                namespace="compute",
-                operator="gte",
-                period=300,
-                policy_name="scale_up_1",
-                source="stackdriver",
-                statistic="average",
-                threshold=10000,
-                unit="percent",
-            )],
-            service_account="example@myProject.iam.gservicecct.com",
-            startup_script="",
-            subnets=[spotinst.gcp.ElastigroupSubnetArgs(
-                region="asia-east1",
-                subnet_names=["default"],
-            )],
-            tags=[
-                "http",
-                "https",
-            ])
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] auto_healing: Enable auto-replacement of unhealthy instances.
@@ -1632,10 +1526,6 @@ class Elastigroup(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupSubnetArgs']]]] subnets: A list of regions and subnets.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to mark created instances.
         :param pulumi.Input[int] unhealthy_duration: Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
-               
-               ```python
-               import pulumi
-               ```
         """
         ...
     @overload
@@ -1645,98 +1535,6 @@ class Elastigroup(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a Spotinst elastigroup GCP resource.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_spotinst as spotinst
-
-        example = spotinst.gcp.Elastigroup("example",
-            availability_zones=[
-                "asia-east1-c",
-                "us-central1-a",
-            ],
-            backend_services=[spotinst.gcp.ElastigroupBackendServiceArgs(
-                location_type="regional",
-                named_ports=[spotinst.gcp.ElastigroupBackendServiceNamedPortArgs(
-                    name="port-name",
-                    ports=[
-                        "8000",
-                        "6000",
-                    ],
-                )],
-                scheme="INTERNAL",
-                service_name="spotinst-elb-backend-service",
-            )],
-            description="spotinst gcp group",
-            desired_capacity=1,
-            disks=[spotinst.gcp.ElastigroupDiskArgs(
-                auto_delete=True,
-                boot=True,
-                device_name="device",
-                initialize_params=[spotinst.gcp.ElastigroupDiskInitializeParamArgs(
-                    disk_size_gb="10",
-                    disk_type="pd-standard",
-                    source_image="",
-                )],
-                interface="SCSI",
-                mode="READ_WRITE",
-                type="PERSISTENT",
-            )],
-            draining_timeout=180,
-            fallback_to_ondemand=True,
-            instance_name_prefix="test-123a",
-            instance_types_customs=[spotinst.gcp.ElastigroupInstanceTypesCustomArgs(
-                memory_gib=7,
-                vcpu=2,
-            )],
-            instance_types_ondemand="n1-standard-1",
-            instance_types_preemptibles=[
-                "n1-standard-1",
-                "n1-standard-2",
-            ],
-            labels=[spotinst.gcp.ElastigroupLabelArgs(
-                key="test_key",
-                value="test_value",
-            )],
-            max_size=1,
-            min_size=0,
-            network_interfaces=[spotinst.gcp.ElastigroupNetworkInterfaceArgs(
-                network="spot-network",
-            )],
-            preemptible_percentage=50,
-            provisioning_model="SPOT",
-            scaling_up_policies=[spotinst.gcp.ElastigroupScalingUpPolicyArgs(
-                action_type="adjustment",
-                adjustment=1,
-                cooldown=300,
-                dimensions=[spotinst.gcp.ElastigroupScalingUpPolicyDimensionArgs(
-                    name="storage_type",
-                    value="pd-ssd",
-                )],
-                evaluation_periods=1,
-                metric_name="instance/disk/read_ops_count",
-                namespace="compute",
-                operator="gte",
-                period=300,
-                policy_name="scale_up_1",
-                source="stackdriver",
-                statistic="average",
-                threshold=10000,
-                unit="percent",
-            )],
-            service_account="example@myProject.iam.gservicecct.com",
-            startup_script="",
-            subnets=[spotinst.gcp.ElastigroupSubnetArgs(
-                region="asia-east1",
-                subnet_names=["default"],
-            )],
-            tags=[
-                "http",
-                "https",
-            ])
-        ```
 
         :param str resource_name: The name of the resource.
         :param ElastigroupArgs args: The arguments to use to populate this resource's properties.
@@ -1819,17 +1617,9 @@ class Elastigroup(pulumi.CustomResource):
             __props__.__dict__["instance_types_customs"] = instance_types_customs
             __props__.__dict__["instance_types_ondemand"] = instance_types_ondemand
             __props__.__dict__["instance_types_preemptibles"] = instance_types_preemptibles
-            if integration_docker_swarm is not None and not isinstance(integration_docker_swarm, ElastigroupIntegrationDockerSwarmArgs):
-                integration_docker_swarm = integration_docker_swarm or {}
-                def _setter(key, value):
-                    integration_docker_swarm[key] = value
-                ElastigroupIntegrationDockerSwarmArgs._configure(_setter, **integration_docker_swarm)
+            integration_docker_swarm = _utilities.configure(integration_docker_swarm, ElastigroupIntegrationDockerSwarmArgs, True)
             __props__.__dict__["integration_docker_swarm"] = integration_docker_swarm
-            if integration_gke is not None and not isinstance(integration_gke, ElastigroupIntegrationGkeArgs):
-                integration_gke = integration_gke or {}
-                def _setter(key, value):
-                    integration_gke[key] = value
-                ElastigroupIntegrationGkeArgs._configure(_setter, **integration_gke)
+            integration_gke = _utilities.configure(integration_gke, ElastigroupIntegrationGkeArgs, True)
             __props__.__dict__["integration_gke"] = integration_gke
             __props__.__dict__["ip_forwarding"] = ip_forwarding
             __props__.__dict__["labels"] = labels
@@ -1938,10 +1728,6 @@ class Elastigroup(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupSubnetArgs']]]] subnets: A list of regions and subnets.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to mark created instances.
         :param pulumi.Input[int] unhealthy_duration: Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
-               
-               ```python
-               import pulumi
-               ```
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -2262,10 +2048,6 @@ class Elastigroup(pulumi.CustomResource):
     def unhealthy_duration(self) -> pulumi.Output[Optional[int]]:
         """
         Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
-
-        ```python
-        import pulumi
-        ```
         """
         return pulumi.get(self, "unhealthy_duration")
 
