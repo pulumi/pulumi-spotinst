@@ -17,7 +17,34 @@ import (
 //
 // ## Prerequisites
 //
-// An existing Ocean cluster and Ocean VNG is required by this resource
+// # An existing Ocean cluster and Ocean VNG is required by this resource
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst/spark"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := spark.NewOceanVirtualNodeGroup(ctx, "example", &spark.OceanVirtualNodeGroupArgs{
+//				OceanSparkClusterId: pulumi.String("cluster_id"),
+//				VirtualNodeGroupId:  pulumi.String("vng_id"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type OceanVirtualNodeGroup struct {
 	pulumi.CustomResourceState
 

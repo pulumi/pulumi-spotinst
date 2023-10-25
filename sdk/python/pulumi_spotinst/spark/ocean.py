@@ -251,6 +251,59 @@ class Ocean(pulumi.CustomResource):
 
         An existing Ocean cluster is required by this resource. See e.g. the `aws.Ocean` resource.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_spotinst as spotinst
+
+        example = spotinst.spark.Ocean("example",
+            ocean_cluster_id="ocean-cluster-id",
+            ingress=spotinst.spark.OceanIngressArgs(
+                controller=spotinst.spark.OceanIngressControllerArgs(
+                    managed=True,
+                ),
+                load_balancer=spotinst.spark.OceanIngressLoadBalancerArgs(
+                    managed=True,
+                    target_group_arn="arn:aws:elasticloadbalancing:eu-north-1:XXXXXXXXXXXX:targetgroup/my-spark-cluster-nlb-tg/a38c2b83XXXXXXXX",
+                    service_annotations={
+                        "service.beta.kubernetes.io/aws-load-balancer-security-groups": "sg-XXXXXXXXXXXXXXXXX",
+                        "some-service-annotation-2": "some-service-annotation-value-2",
+                    },
+                ),
+                custom_endpoint=spotinst.spark.OceanIngressCustomEndpointArgs(
+                    enabled=False,
+                    address="my-spark-cluster-nlb-8cbb8da7XXXXXXXX.elb.us-east-1.amazonaws.com",
+                ),
+                private_link=spotinst.spark.OceanIngressPrivateLinkArgs(
+                    enabled=False,
+                    vpc_endpoint_service="com.amazonaws.vpce.eu-north-1.vpce-svc-XXXXXXXXXXXXXXXXX",
+                ),
+            ),
+            compute=spotinst.spark.OceanComputeArgs(
+                create_vngs=True,
+                use_taints=True,
+            ),
+            log_collection=spotinst.spark.OceanLogCollectionArgs(
+                collect_app_logs=True,
+            ),
+            webhook=spotinst.spark.OceanWebhookArgs(
+                use_host_network=False,
+                host_network_ports=[25554],
+            ),
+            spark=spotinst.spark.OceanSparkArgs(
+                additional_app_namespaces=[
+                    "extra-spark-app-ns-1",
+                    "extra-spark-app-ns-2",
+                ],
+            ))
+        ```
+        ```python
+        import pulumi
+
+        pulumi.export("oceanSparkId", spotinst_ocean_spark["example"]["id"])
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] ocean_cluster_id: - The ID of the Ocean cluster that Ocean for Apache Spark should be installed on.
@@ -267,6 +320,59 @@ class Ocean(pulumi.CustomResource):
         ## Prerequisites
 
         An existing Ocean cluster is required by this resource. See e.g. the `aws.Ocean` resource.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_spotinst as spotinst
+
+        example = spotinst.spark.Ocean("example",
+            ocean_cluster_id="ocean-cluster-id",
+            ingress=spotinst.spark.OceanIngressArgs(
+                controller=spotinst.spark.OceanIngressControllerArgs(
+                    managed=True,
+                ),
+                load_balancer=spotinst.spark.OceanIngressLoadBalancerArgs(
+                    managed=True,
+                    target_group_arn="arn:aws:elasticloadbalancing:eu-north-1:XXXXXXXXXXXX:targetgroup/my-spark-cluster-nlb-tg/a38c2b83XXXXXXXX",
+                    service_annotations={
+                        "service.beta.kubernetes.io/aws-load-balancer-security-groups": "sg-XXXXXXXXXXXXXXXXX",
+                        "some-service-annotation-2": "some-service-annotation-value-2",
+                    },
+                ),
+                custom_endpoint=spotinst.spark.OceanIngressCustomEndpointArgs(
+                    enabled=False,
+                    address="my-spark-cluster-nlb-8cbb8da7XXXXXXXX.elb.us-east-1.amazonaws.com",
+                ),
+                private_link=spotinst.spark.OceanIngressPrivateLinkArgs(
+                    enabled=False,
+                    vpc_endpoint_service="com.amazonaws.vpce.eu-north-1.vpce-svc-XXXXXXXXXXXXXXXXX",
+                ),
+            ),
+            compute=spotinst.spark.OceanComputeArgs(
+                create_vngs=True,
+                use_taints=True,
+            ),
+            log_collection=spotinst.spark.OceanLogCollectionArgs(
+                collect_app_logs=True,
+            ),
+            webhook=spotinst.spark.OceanWebhookArgs(
+                use_host_network=False,
+                host_network_ports=[25554],
+            ),
+            spark=spotinst.spark.OceanSparkArgs(
+                additional_app_namespaces=[
+                    "extra-spark-app-ns-1",
+                    "extra-spark-app-ns-2",
+                ],
+            ))
+        ```
+        ```python
+        import pulumi
+
+        pulumi.export("oceanSparkId", spotinst_ocean_spark["example"]["id"])
+        ```
 
         :param str resource_name: The name of the resource.
         :param OceanArgs args: The arguments to use to populate this resource's properties.

@@ -8,6 +8,37 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a Spotinst access policy.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as spotinst from "@pulumi/spotinst";
+ *
+ * const terraformPolicy = new spotinst.organization.Policy("terraformPolicy", {
+ *     description: "policy by terraform",
+ *     policyContents: [{
+ *         statements: [
+ *             {
+ *                 actions: ["ocean:deleteCluster"],
+ *                 effect: "DENY",
+ *                 resources: [
+ *                     "o-abcd1234",
+ *                     "o-defg6789",
+ *                 ],
+ *             },
+ *             {
+ *                 actions: ["ocean:createCluster"],
+ *                 effect: "DENY",
+ *                 resources: [
+ *                     "o-fhau4752",
+ *                     "o-761owf4r3",
+ *                 ],
+ *             },
+ *         ],
+ *     }],
+ * });
+ * ```
  */
 export class Policy extends pulumi.CustomResource {
     /**

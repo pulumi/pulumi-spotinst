@@ -16,6 +16,16 @@ namespace Pulumi.SpotInst.Aws.Inputs
         /// The public IP of the DC/OS Master.
         /// 
         /// Usage:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        /// });
+        /// ```
         /// </summary>
         [Input("apiServer")]
         public Input<string>? ApiServer { get; set; }
@@ -57,6 +67,16 @@ namespace Pulumi.SpotInst.Aws.Inputs
         /// A key/value mapping of tags to assign to the resource.
         /// 
         /// Usage:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        /// });
+        /// ```
         /// </summary>
         public InputList<Inputs.ElastigroupIntegrationKubernetesAutoscaleLabelGetArgs> AutoscaleLabels
         {

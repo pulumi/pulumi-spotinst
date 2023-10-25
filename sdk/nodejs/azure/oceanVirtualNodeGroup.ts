@@ -8,6 +8,61 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a Spotinst Ocean AKS Virtual Node Group resource.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as spotinst from "@pulumi/spotinst";
+ *
+ * const example = new spotinst.azure.OceanVirtualNodeGroup("example", {
+ *     autoscales: [{
+ *         autoHeadroomPercentage: 5,
+ *         autoscaleHeadrooms: [{
+ *             cpuPerUnit: 4,
+ *             gpuPerUnit: 8,
+ *             memoryPerUnit: 100,
+ *             numOfUnits: 16,
+ *         }],
+ *     }],
+ *     labels: [{
+ *         key: "label_key",
+ *         value: "label_value",
+ *     }],
+ *     launchSpecifications: [{
+ *         maxPods: 30,
+ *         osDisk: {
+ *             sizeGb: 100,
+ *             type: "Standard_LRS",
+ *             utilizeEphemeralStorage: false,
+ *         },
+ *         tags: [{
+ *             key: "label_key",
+ *             value: "label_value",
+ *         }],
+ *     }],
+ *     oceanId: "o-12345",
+ *     resourceLimits: [{
+ *         maxInstanceCount: 4,
+ *     }],
+ *     taints: [{
+ *         effect: "NoSchedule",
+ *         key: "taint_key",
+ *         value: "taint_value",
+ *     }],
+ *     zones: [
+ *         "1",
+ *         "2",
+ *         "3",
+ *     ],
+ * });
+ * ```
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ *
+ * export const oceanId = spotinst_ocean_aks_.example.id;
+ * ```
  */
 export class OceanVirtualNodeGroup extends pulumi.CustomResource {
     /**

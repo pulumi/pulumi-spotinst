@@ -11,6 +11,26 @@ namespace Pulumi.SpotInst.Aws
 {
     /// <summary>
     /// Provides a Spotinst credential AWS resource.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using SpotInst = Pulumi.SpotInst;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // set credential AWS
+    ///     var credential = new SpotInst.Aws.Credentials("credential", new()
+    ///     {
+    ///         Accountid = "act-123456",
+    ///         Iamrole = "arn:aws:iam::1234567890:role/Spot_Iam_Role",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [SpotInstResourceType("spotinst:aws/credentials:Credentials")]
     public partial class Credentials : global::Pulumi.CustomResource

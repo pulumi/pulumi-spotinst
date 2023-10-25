@@ -8,6 +8,87 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a Spotinst Ocean GKE resource.
+ *
+ * ## Prerequisites
+ *
+ * Installation of the Ocean controller is required by this resource. You can accomplish this by using the spotinst/ocean-controller module as follows:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * ```
+ *
+ * > You must configure the same `clusterIdentifier` both for the Ocean controller and for the `spotinst.gke.OceanImport` resource.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as spotinst from "@pulumi/spotinst";
+ *
+ * const example = new spotinst.gke.OceanImport("example", {
+ *     backendServices: [{
+ *         locationType: "regional",
+ *         namedPorts: [{
+ *             name: "http",
+ *             ports: [
+ *                 "80",
+ *                 "8080",
+ *             ],
+ *         }],
+ *         scheme: "INTERNAL",
+ *         serviceName: "example-backend-service",
+ *     }],
+ *     clusterName: "example-cluster-name",
+ *     controllerClusterId: "example-controller-123124",
+ *     desiredCapacity: 0,
+ *     location: "us-central1-a",
+ *     maxSize: 2,
+ *     minSize: 0,
+ *     rootVolumeType: "pd-ssd",
+ *     shieldedInstanceConfig: {
+ *         enableIntegrityMonitoring: true,
+ *         enableSecureBoot: true,
+ *     },
+ *     useAsTemplateOnly: false,
+ *     whitelists: [
+ *         "n1-standard-1",
+ *         "n1-standard-2",
+ *     ],
+ * });
+ * ```
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ *
+ * export const oceanId = spotinst_ocean_gke_import.example.id;
+ * ```
+ * ## Strategy
+ *
+ * * `strategy` - (Optional) Strategy object.
+ *     * `drainingTimeout` - (Optional) The draining timeout (in seconds) before terminating the instance. If no draining timeout is defined, the default draining timeout will be used.
+ *     * `provisioningModel` - (Optional) Define the provisioning model of the launched instances. Valid values: `SPOT`, `PREEMPTIBLE`.
+ *     * `preemptiblePercentage`- (Optional) Defines the desired preemptible percentage for the cluster.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * ```
+ *
+ * <a id="update-policy"></a>
+ * ## Update Policy
+ *
+ * * `updatePolicy` - (Optional)
+ *     * `shouldRoll` - (Required) Enables the roll.
+ *     * `conditionedRoll` - (Optional, Default: false) Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as AMI, Key Pair, user data, instance types, load balancers, etc).
+ *   
+ *     * `rollConfig` - (Required) Holds the roll configuration.
+ *         * `batchSizePercentage` - (Required) Sets the percentage of the instances to deploy in each batch.
+ *         * `launchSpecIds` - (Optional) List of Virtual Node Group identifiers to be rolled.
+ *         * `batchMinHealthyPercentage` - (Optional) Default: 50. Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
+ *         * `respectPdb` - (Optional) Default: False. During the roll, if the parameter is set to True we honor PDB during the instance replacement.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * ```
  */
 export class OceanImport extends pulumi.CustomResource {
     /**

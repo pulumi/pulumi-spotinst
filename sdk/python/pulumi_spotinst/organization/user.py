@@ -334,6 +334,28 @@ class User(pulumi.CustomResource):
         """
         Provides a Spotinst User in the creator's organization.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_spotinst as spotinst
+
+        terraform_user = spotinst.organization.User("terraformUser",
+            email="abc@xyz.com",
+            first_name="test",
+            last_name="user",
+            password="testUser@123",
+            policies=[spotinst.organization.UserPolicyArgs(
+                policy_account_ids=["act-abcf4245"],
+                policy_id="pol-abcd1236",
+            )],
+            role="viewer",
+            user_group_ids=[
+                "ugr-abcd1234",
+                "ugr-defg8763",
+            ])
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] email: Email.
@@ -353,6 +375,28 @@ class User(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a Spotinst User in the creator's organization.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_spotinst as spotinst
+
+        terraform_user = spotinst.organization.User("terraformUser",
+            email="abc@xyz.com",
+            first_name="test",
+            last_name="user",
+            password="testUser@123",
+            policies=[spotinst.organization.UserPolicyArgs(
+                policy_account_ids=["act-abcf4245"],
+                policy_id="pol-abcd1236",
+            )],
+            role="viewer",
+            user_group_ids=[
+                "ugr-abcd1234",
+                "ugr-defg8763",
+            ])
+        ```
 
         :param str resource_name: The name of the resource.
         :param UserArgs args: The arguments to use to populate this resource's properties.

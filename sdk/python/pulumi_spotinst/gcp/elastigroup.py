@@ -89,6 +89,10 @@ class ElastigroupArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ElastigroupSubnetArgs']]] subnets: A list of regions and subnets.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to mark created instances.
         :param pulumi.Input[int] unhealthy_duration: Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
+               
+               ```python
+               import pulumi
+               ```
         """
         ElastigroupArgs._configure(
             lambda key, value: pulumi.set(__self__, key, value),
@@ -721,6 +725,10 @@ class ElastigroupArgs:
     def unhealthy_duration(self) -> Optional[pulumi.Input[int]]:
         """
         Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
+
+        ```python
+        import pulumi
+        ```
         """
         return pulumi.get(self, "unhealthy_duration")
 
@@ -805,6 +813,10 @@ class _ElastigroupState:
         :param pulumi.Input[Sequence[pulumi.Input['ElastigroupSubnetArgs']]] subnets: A list of regions and subnets.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to mark created instances.
         :param pulumi.Input[int] unhealthy_duration: Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
+               
+               ```python
+               import pulumi
+               ```
         """
         _ElastigroupState._configure(
             lambda key, value: pulumi.set(__self__, key, value),
@@ -1436,6 +1448,10 @@ class _ElastigroupState:
     def unhealthy_duration(self) -> Optional[pulumi.Input[int]]:
         """
         Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
+
+        ```python
+        import pulumi
+        ```
         """
         return pulumi.get(self, "unhealthy_duration")
 
@@ -1489,6 +1505,98 @@ class Elastigroup(pulumi.CustomResource):
         """
         Provides a Spotinst elastigroup GCP resource.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_spotinst as spotinst
+
+        example = spotinst.gcp.Elastigroup("example",
+            availability_zones=[
+                "asia-east1-c",
+                "us-central1-a",
+            ],
+            backend_services=[spotinst.gcp.ElastigroupBackendServiceArgs(
+                location_type="regional",
+                named_ports=[spotinst.gcp.ElastigroupBackendServiceNamedPortArgs(
+                    name="port-name",
+                    ports=[
+                        "8000",
+                        "6000",
+                    ],
+                )],
+                scheme="INTERNAL",
+                service_name="spotinst-elb-backend-service",
+            )],
+            description="spotinst gcp group",
+            desired_capacity=1,
+            disks=[spotinst.gcp.ElastigroupDiskArgs(
+                auto_delete=True,
+                boot=True,
+                device_name="device",
+                initialize_params=[spotinst.gcp.ElastigroupDiskInitializeParamArgs(
+                    disk_size_gb="10",
+                    disk_type="pd-standard",
+                    source_image="",
+                )],
+                interface="SCSI",
+                mode="READ_WRITE",
+                type="PERSISTENT",
+            )],
+            draining_timeout=180,
+            fallback_to_ondemand=True,
+            instance_name_prefix="test-123a",
+            instance_types_customs=[spotinst.gcp.ElastigroupInstanceTypesCustomArgs(
+                memory_gib=7,
+                vcpu=2,
+            )],
+            instance_types_ondemand="n1-standard-1",
+            instance_types_preemptibles=[
+                "n1-standard-1",
+                "n1-standard-2",
+            ],
+            labels=[spotinst.gcp.ElastigroupLabelArgs(
+                key="test_key",
+                value="test_value",
+            )],
+            max_size=1,
+            min_size=0,
+            network_interfaces=[spotinst.gcp.ElastigroupNetworkInterfaceArgs(
+                network="spot-network",
+            )],
+            preemptible_percentage=50,
+            provisioning_model="SPOT",
+            scaling_up_policies=[spotinst.gcp.ElastigroupScalingUpPolicyArgs(
+                action_type="adjustment",
+                adjustment=1,
+                cooldown=300,
+                dimensions=[spotinst.gcp.ElastigroupScalingUpPolicyDimensionArgs(
+                    name="storage_type",
+                    value="pd-ssd",
+                )],
+                evaluation_periods=1,
+                metric_name="instance/disk/read_ops_count",
+                namespace="compute",
+                operator="gte",
+                period=300,
+                policy_name="scale_up_1",
+                source="stackdriver",
+                statistic="average",
+                threshold=10000,
+                unit="percent",
+            )],
+            service_account="example@myProject.iam.gservicecct.com",
+            startup_script="",
+            subnets=[spotinst.gcp.ElastigroupSubnetArgs(
+                region="asia-east1",
+                subnet_names=["default"],
+            )],
+            tags=[
+                "http",
+                "https",
+            ])
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] auto_healing: Enable auto-replacement of unhealthy instances.
@@ -1526,6 +1634,10 @@ class Elastigroup(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupSubnetArgs']]]] subnets: A list of regions and subnets.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to mark created instances.
         :param pulumi.Input[int] unhealthy_duration: Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
+               
+               ```python
+               import pulumi
+               ```
         """
         ...
     @overload
@@ -1535,6 +1647,98 @@ class Elastigroup(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a Spotinst elastigroup GCP resource.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_spotinst as spotinst
+
+        example = spotinst.gcp.Elastigroup("example",
+            availability_zones=[
+                "asia-east1-c",
+                "us-central1-a",
+            ],
+            backend_services=[spotinst.gcp.ElastigroupBackendServiceArgs(
+                location_type="regional",
+                named_ports=[spotinst.gcp.ElastigroupBackendServiceNamedPortArgs(
+                    name="port-name",
+                    ports=[
+                        "8000",
+                        "6000",
+                    ],
+                )],
+                scheme="INTERNAL",
+                service_name="spotinst-elb-backend-service",
+            )],
+            description="spotinst gcp group",
+            desired_capacity=1,
+            disks=[spotinst.gcp.ElastigroupDiskArgs(
+                auto_delete=True,
+                boot=True,
+                device_name="device",
+                initialize_params=[spotinst.gcp.ElastigroupDiskInitializeParamArgs(
+                    disk_size_gb="10",
+                    disk_type="pd-standard",
+                    source_image="",
+                )],
+                interface="SCSI",
+                mode="READ_WRITE",
+                type="PERSISTENT",
+            )],
+            draining_timeout=180,
+            fallback_to_ondemand=True,
+            instance_name_prefix="test-123a",
+            instance_types_customs=[spotinst.gcp.ElastigroupInstanceTypesCustomArgs(
+                memory_gib=7,
+                vcpu=2,
+            )],
+            instance_types_ondemand="n1-standard-1",
+            instance_types_preemptibles=[
+                "n1-standard-1",
+                "n1-standard-2",
+            ],
+            labels=[spotinst.gcp.ElastigroupLabelArgs(
+                key="test_key",
+                value="test_value",
+            )],
+            max_size=1,
+            min_size=0,
+            network_interfaces=[spotinst.gcp.ElastigroupNetworkInterfaceArgs(
+                network="spot-network",
+            )],
+            preemptible_percentage=50,
+            provisioning_model="SPOT",
+            scaling_up_policies=[spotinst.gcp.ElastigroupScalingUpPolicyArgs(
+                action_type="adjustment",
+                adjustment=1,
+                cooldown=300,
+                dimensions=[spotinst.gcp.ElastigroupScalingUpPolicyDimensionArgs(
+                    name="storage_type",
+                    value="pd-ssd",
+                )],
+                evaluation_periods=1,
+                metric_name="instance/disk/read_ops_count",
+                namespace="compute",
+                operator="gte",
+                period=300,
+                policy_name="scale_up_1",
+                source="stackdriver",
+                statistic="average",
+                threshold=10000,
+                unit="percent",
+            )],
+            service_account="example@myProject.iam.gservicecct.com",
+            startup_script="",
+            subnets=[spotinst.gcp.ElastigroupSubnetArgs(
+                region="asia-east1",
+                subnet_names=["default"],
+            )],
+            tags=[
+                "http",
+                "https",
+            ])
+        ```
 
         :param str resource_name: The name of the resource.
         :param ElastigroupArgs args: The arguments to use to populate this resource's properties.
@@ -1728,6 +1932,10 @@ class Elastigroup(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupSubnetArgs']]]] subnets: A list of regions and subnets.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to mark created instances.
         :param pulumi.Input[int] unhealthy_duration: Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
+               
+               ```python
+               import pulumi
+               ```
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -2048,6 +2256,10 @@ class Elastigroup(pulumi.CustomResource):
     def unhealthy_duration(self) -> pulumi.Output[Optional[int]]:
         """
         Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
+
+        ```python
+        import pulumi
+        ```
         """
         return pulumi.get(self, "unhealthy_duration")
 

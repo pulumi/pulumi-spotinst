@@ -21,6 +21,16 @@ namespace Pulumi.SpotInst.Aws.Outputs
         /// The signals defined timeout- default is 40 minutes (1800 seconds).
         /// 
         /// Usage:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        /// });
+        /// ```
         /// </summary>
         public readonly int? Timeout;
 

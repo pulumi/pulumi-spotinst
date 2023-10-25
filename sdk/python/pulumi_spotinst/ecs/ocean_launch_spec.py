@@ -730,6 +730,95 @@ class OceanLaunchSpec(pulumi.CustomResource):
         """
         Manages a custom Spotinst Ocean ECS Launch Spec resource.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_spotinst as spotinst
+
+        example = spotinst.ecs.OceanLaunchSpec("example",
+            attributes=[spotinst.ecs.OceanLaunchSpecAttributeArgs(
+                key="fakeKey",
+                value="fakeValue",
+            )],
+            autoscale_headrooms=[spotinst.ecs.OceanLaunchSpecAutoscaleHeadroomArgs(
+                cpu_per_unit=1000,
+                memory_per_unit=2048,
+                num_of_units=5,
+            )],
+            block_device_mappings=[spotinst.ecs.OceanLaunchSpecBlockDeviceMappingArgs(
+                device_name="/dev/xvda1",
+                ebs=spotinst.ecs.OceanLaunchSpecBlockDeviceMappingEbsArgs(
+                    delete_on_termination=True,
+                    dynamic_volume_size=spotinst.ecs.OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs(
+                        base_size=50,
+                        resource="CPU",
+                        size_per_resource_unit=20,
+                    ),
+                    encrypted=False,
+                    throughput=500,
+                    volume_size=50,
+                    volume_type="gp2",
+                ),
+            )],
+            iam_instance_profile="iam-profile",
+            image_id="ami-123456",
+            instance_metadata_options=spotinst.ecs.OceanLaunchSpecInstanceMetadataOptionsArgs(
+                http_put_response_hop_limit=10,
+                http_tokens="required",
+            ),
+            instance_types=[
+                "m3.large",
+                "m3.xlarge",
+                "m3.2xlarge",
+                "m4.large",
+                "m4.xlarge",
+                "m4.4xlarge",
+                "m4.2xlarge",
+                "m4.10xlarge",
+                "m4.16xlarge",
+                "m5.large",
+                "m5.xlarge",
+                "m5.2xlarge",
+                "m5.4xlarge",
+                "m5.12xlarge",
+                "m5.24xlarge",
+            ],
+            ocean_id="o-123456",
+            preferred_spot_types=[
+                "m3.large",
+                "m3.xlarge",
+                "m3.2xlarge",
+                "m4.large",
+                "m4.xlarge",
+            ],
+            restrict_scale_down=True,
+            scheduling_tasks=[spotinst.ecs.OceanLaunchSpecSchedulingTaskArgs(
+                cron_expression="0 1 * * *",
+                is_enabled=True,
+                task_headrooms=[spotinst.ecs.OceanLaunchSpecSchedulingTaskTaskHeadroomArgs(
+                    cpu_per_unit=1000,
+                    memory_per_unit=2048,
+                    num_of_units=5,
+                )],
+                task_type="manualHeadroomUpdate",
+            )],
+            security_group_ids=["awseb-12345"],
+            strategies=[spotinst.ecs.OceanLaunchSpecStrategyArgs(
+                spot_percentage=50,
+            )],
+            subnet_ids=["subnet-12345"],
+            tags=[spotinst.ecs.OceanLaunchSpecTagArgs(
+                key="Env",
+                value="production",
+            )],
+            user_data="echo hello world")
+        ```
+        ```python
+        import pulumi
+
+        pulumi.export("oceanLaunchspecId", spotinst_ocean_ecs_launch_spec["example"]["id"])
+        ```
         ## Block Devices
 
         * `block_device_mappings`- (Optional) Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
@@ -777,6 +866,95 @@ class OceanLaunchSpec(pulumi.CustomResource):
         """
         Manages a custom Spotinst Ocean ECS Launch Spec resource.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_spotinst as spotinst
+
+        example = spotinst.ecs.OceanLaunchSpec("example",
+            attributes=[spotinst.ecs.OceanLaunchSpecAttributeArgs(
+                key="fakeKey",
+                value="fakeValue",
+            )],
+            autoscale_headrooms=[spotinst.ecs.OceanLaunchSpecAutoscaleHeadroomArgs(
+                cpu_per_unit=1000,
+                memory_per_unit=2048,
+                num_of_units=5,
+            )],
+            block_device_mappings=[spotinst.ecs.OceanLaunchSpecBlockDeviceMappingArgs(
+                device_name="/dev/xvda1",
+                ebs=spotinst.ecs.OceanLaunchSpecBlockDeviceMappingEbsArgs(
+                    delete_on_termination=True,
+                    dynamic_volume_size=spotinst.ecs.OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs(
+                        base_size=50,
+                        resource="CPU",
+                        size_per_resource_unit=20,
+                    ),
+                    encrypted=False,
+                    throughput=500,
+                    volume_size=50,
+                    volume_type="gp2",
+                ),
+            )],
+            iam_instance_profile="iam-profile",
+            image_id="ami-123456",
+            instance_metadata_options=spotinst.ecs.OceanLaunchSpecInstanceMetadataOptionsArgs(
+                http_put_response_hop_limit=10,
+                http_tokens="required",
+            ),
+            instance_types=[
+                "m3.large",
+                "m3.xlarge",
+                "m3.2xlarge",
+                "m4.large",
+                "m4.xlarge",
+                "m4.4xlarge",
+                "m4.2xlarge",
+                "m4.10xlarge",
+                "m4.16xlarge",
+                "m5.large",
+                "m5.xlarge",
+                "m5.2xlarge",
+                "m5.4xlarge",
+                "m5.12xlarge",
+                "m5.24xlarge",
+            ],
+            ocean_id="o-123456",
+            preferred_spot_types=[
+                "m3.large",
+                "m3.xlarge",
+                "m3.2xlarge",
+                "m4.large",
+                "m4.xlarge",
+            ],
+            restrict_scale_down=True,
+            scheduling_tasks=[spotinst.ecs.OceanLaunchSpecSchedulingTaskArgs(
+                cron_expression="0 1 * * *",
+                is_enabled=True,
+                task_headrooms=[spotinst.ecs.OceanLaunchSpecSchedulingTaskTaskHeadroomArgs(
+                    cpu_per_unit=1000,
+                    memory_per_unit=2048,
+                    num_of_units=5,
+                )],
+                task_type="manualHeadroomUpdate",
+            )],
+            security_group_ids=["awseb-12345"],
+            strategies=[spotinst.ecs.OceanLaunchSpecStrategyArgs(
+                spot_percentage=50,
+            )],
+            subnet_ids=["subnet-12345"],
+            tags=[spotinst.ecs.OceanLaunchSpecTagArgs(
+                key="Env",
+                value="production",
+            )],
+            user_data="echo hello world")
+        ```
+        ```python
+        import pulumi
+
+        pulumi.export("oceanLaunchspecId", spotinst_ocean_ecs_launch_spec["example"]["id"])
+        ```
         ## Block Devices
 
         * `block_device_mappings`- (Optional) Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.

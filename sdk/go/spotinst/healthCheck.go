@@ -14,6 +14,43 @@ import (
 )
 
 // Provides a Spotinst Health Check resource.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := spotinst.NewHealthCheck(ctx, "httpCheck", &spotinst.HealthCheckArgs{
+//				Check: &spotinst.HealthCheckCheckArgs{
+//					Endpoint:  pulumi.String("http://endpoint.com"),
+//					Healthy:   pulumi.Int(1),
+//					Interval:  pulumi.Int(10),
+//					Port:      pulumi.Int(1337),
+//					Protocol:  pulumi.String("http"),
+//					Timeout:   pulumi.Int(10),
+//					Unhealthy: pulumi.Int(1),
+//				},
+//				ProxyAddress: pulumi.String("http://proxy.com"),
+//				ProxyPort:    pulumi.Int(80),
+//				ResourceId:   pulumi.String("sig-123"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type HealthCheck struct {
 	pulumi.CustomResourceState
 

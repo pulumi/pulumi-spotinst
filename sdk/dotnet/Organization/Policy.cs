@@ -11,6 +11,59 @@ namespace Pulumi.SpotInst.Organization
 {
     /// <summary>
     /// Provides a Spotinst access policy.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using SpotInst = Pulumi.SpotInst;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var terraformPolicy = new SpotInst.Organization.Policy("terraformPolicy", new()
+    ///     {
+    ///         Description = "policy by terraform",
+    ///         PolicyContents = new[]
+    ///         {
+    ///             new SpotInst.Organization.Inputs.PolicyPolicyContentArgs
+    ///             {
+    ///                 Statements = new[]
+    ///                 {
+    ///                     new SpotInst.Organization.Inputs.PolicyPolicyContentStatementArgs
+    ///                     {
+    ///                         Actions = new[]
+    ///                         {
+    ///                             "ocean:deleteCluster",
+    ///                         },
+    ///                         Effect = "DENY",
+    ///                         Resources = new[]
+    ///                         {
+    ///                             "o-abcd1234",
+    ///                             "o-defg6789",
+    ///                         },
+    ///                     },
+    ///                     new SpotInst.Organization.Inputs.PolicyPolicyContentStatementArgs
+    ///                     {
+    ///                         Actions = new[]
+    ///                         {
+    ///                             "ocean:createCluster",
+    ///                         },
+    ///                         Effect = "DENY",
+    ///                         Resources = new[]
+    ///                         {
+    ///                             "o-fhau4752",
+    ///                             "o-761owf4r3",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [SpotInstResourceType("spotinst:organization/policy:Policy")]
     public partial class Policy : global::Pulumi.CustomResource

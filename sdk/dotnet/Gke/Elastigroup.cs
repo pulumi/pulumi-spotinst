@@ -11,6 +11,88 @@ namespace Pulumi.SpotInst.Gke
 {
     /// <summary>
     /// Provides a Spotinst Elastigroup GKE resource. Please see [Importing a GKE cluster](https://api.spotinst.com/elastigroup-for-google-cloud/tutorials/import-a-gke-cluster-as-an-elastigroup/) for detailed information.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// A spotinst.gke.Elastigroup supports all of the fields defined in spotinst_elastigroup_gcp.
+    /// 
+    /// There are two main differences:
+    /// 
+    /// * you must include `cluster_zone_name` and `cluster_id`
+    /// * a handful of parameters are created remotely and will not appear in the diff. A complete list can be found below.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using SpotInst = Pulumi.SpotInst;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example_gke_elastigroup = new SpotInst.Gke.Elastigroup("example-gke-elastigroup", new()
+    ///     {
+    ///         BackendServices = new[]
+    ///         {
+    ///             new SpotInst.Gke.Inputs.ElastigroupBackendServiceArgs
+    ///             {
+    ///                 LocationType = "global",
+    ///                 NamedPorts = new[]
+    ///                 {
+    ///                     new SpotInst.Gke.Inputs.ElastigroupBackendServiceNamedPortArgs
+    ///                     {
+    ///                         Name = "http",
+    ///                         Ports = new[]
+    ///                         {
+    ///                             "80",
+    ///                             "8080",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///                 ServiceName = "backend-service",
+    ///             },
+    ///         },
+    ///         ClusterZoneName = "us-central1-a",
+    ///         DesiredCapacity = 3,
+    ///         InstanceTypesOndemand = "n1-standard-1",
+    ///         InstanceTypesPreemptibles = new[]
+    ///         {
+    ///             "n1-standard-1",
+    ///             "n1-standard-2",
+    ///         },
+    ///         IntegrationGke = new SpotInst.Gke.Inputs.ElastigroupIntegrationGkeArgs
+    ///         {
+    ///             AutoscaleCooldown = 300,
+    ///             AutoscaleDown = new SpotInst.Gke.Inputs.ElastigroupIntegrationGkeAutoscaleDownArgs
+    ///             {
+    ///                 EvaluationPeriods = 300,
+    ///             },
+    ///             AutoscaleHeadroom = new SpotInst.Gke.Inputs.ElastigroupIntegrationGkeAutoscaleHeadroomArgs
+    ///             {
+    ///                 CpuPerUnit = 1024,
+    ///                 MemoryPerUnit = 512,
+    ///                 NumOfUnits = 2,
+    ///             },
+    ///             AutoscaleIsAutoConfig = false,
+    ///             AutoscaleIsEnabled = true,
+    ///             AutoscaleLabels = new[]
+    ///             {
+    ///                 new SpotInst.Gke.Inputs.ElastigroupIntegrationGkeAutoscaleLabelArgs
+    ///                 {
+    ///                     Key = "label_key",
+    ///                     Value = "label_value",
+    ///                 },
+    ///             },
+    ///             ClusterId = "example-cluster-id",
+    ///             Location = "us-central1-a",
+    ///         },
+    ///         MaxSize = 5,
+    ///         MinSize = 1,
+    ///         NodeImage = "COS",
+    ///         PreemptiblePercentage = 100,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [SpotInstResourceType("spotinst:gke/elastigroup:Elastigroup")]
     public partial class Elastigroup : global::Pulumi.CustomResource

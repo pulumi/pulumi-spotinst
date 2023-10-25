@@ -12,6 +12,150 @@ namespace Pulumi.SpotInst.Ecs
     /// <summary>
     /// Manages a custom Spotinst Ocean ECS Launch Spec resource.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using SpotInst = Pulumi.SpotInst;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new SpotInst.Ecs.OceanLaunchSpec("example", new()
+    ///     {
+    ///         Attributes = new[]
+    ///         {
+    ///             new SpotInst.Ecs.Inputs.OceanLaunchSpecAttributeArgs
+    ///             {
+    ///                 Key = "fakeKey",
+    ///                 Value = "fakeValue",
+    ///             },
+    ///         },
+    ///         AutoscaleHeadrooms = new[]
+    ///         {
+    ///             new SpotInst.Ecs.Inputs.OceanLaunchSpecAutoscaleHeadroomArgs
+    ///             {
+    ///                 CpuPerUnit = 1000,
+    ///                 MemoryPerUnit = 2048,
+    ///                 NumOfUnits = 5,
+    ///             },
+    ///         },
+    ///         BlockDeviceMappings = new[]
+    ///         {
+    ///             new SpotInst.Ecs.Inputs.OceanLaunchSpecBlockDeviceMappingArgs
+    ///             {
+    ///                 DeviceName = "/dev/xvda1",
+    ///                 Ebs = new SpotInst.Ecs.Inputs.OceanLaunchSpecBlockDeviceMappingEbsArgs
+    ///                 {
+    ///                     DeleteOnTermination = true,
+    ///                     DynamicVolumeSize = new SpotInst.Ecs.Inputs.OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs
+    ///                     {
+    ///                         BaseSize = 50,
+    ///                         Resource = "CPU",
+    ///                         SizePerResourceUnit = 20,
+    ///                     },
+    ///                     Encrypted = false,
+    ///                     Throughput = 500,
+    ///                     VolumeSize = 50,
+    ///                     VolumeType = "gp2",
+    ///                 },
+    ///             },
+    ///         },
+    ///         IamInstanceProfile = "iam-profile",
+    ///         ImageId = "ami-123456",
+    ///         InstanceMetadataOptions = new SpotInst.Ecs.Inputs.OceanLaunchSpecInstanceMetadataOptionsArgs
+    ///         {
+    ///             HttpPutResponseHopLimit = 10,
+    ///             HttpTokens = "required",
+    ///         },
+    ///         InstanceTypes = new[]
+    ///         {
+    ///             "m3.large",
+    ///             "m3.xlarge",
+    ///             "m3.2xlarge",
+    ///             "m4.large",
+    ///             "m4.xlarge",
+    ///             "m4.4xlarge",
+    ///             "m4.2xlarge",
+    ///             "m4.10xlarge",
+    ///             "m4.16xlarge",
+    ///             "m5.large",
+    ///             "m5.xlarge",
+    ///             "m5.2xlarge",
+    ///             "m5.4xlarge",
+    ///             "m5.12xlarge",
+    ///             "m5.24xlarge",
+    ///         },
+    ///         OceanId = "o-123456",
+    ///         PreferredSpotTypes = new[]
+    ///         {
+    ///             "m3.large",
+    ///             "m3.xlarge",
+    ///             "m3.2xlarge",
+    ///             "m4.large",
+    ///             "m4.xlarge",
+    ///         },
+    ///         RestrictScaleDown = true,
+    ///         SchedulingTasks = new[]
+    ///         {
+    ///             new SpotInst.Ecs.Inputs.OceanLaunchSpecSchedulingTaskArgs
+    ///             {
+    ///                 CronExpression = "0 1 * * *",
+    ///                 IsEnabled = true,
+    ///                 TaskHeadrooms = new[]
+    ///                 {
+    ///                     new SpotInst.Ecs.Inputs.OceanLaunchSpecSchedulingTaskTaskHeadroomArgs
+    ///                     {
+    ///                         CpuPerUnit = 1000,
+    ///                         MemoryPerUnit = 2048,
+    ///                         NumOfUnits = 5,
+    ///                     },
+    ///                 },
+    ///                 TaskType = "manualHeadroomUpdate",
+    ///             },
+    ///         },
+    ///         SecurityGroupIds = new[]
+    ///         {
+    ///             "awseb-12345",
+    ///         },
+    ///         Strategies = new[]
+    ///         {
+    ///             new SpotInst.Ecs.Inputs.OceanLaunchSpecStrategyArgs
+    ///             {
+    ///                 SpotPercentage = 50,
+    ///             },
+    ///         },
+    ///         SubnetIds = new[]
+    ///         {
+    ///             "subnet-12345",
+    ///         },
+    ///         Tags = new[]
+    ///         {
+    ///             new SpotInst.Ecs.Inputs.OceanLaunchSpecTagArgs
+    ///             {
+    ///                 Key = "Env",
+    ///                 Value = "production",
+    ///             },
+    ///         },
+    ///         UserData = "echo hello world",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     return new Dictionary&lt;string, object?&gt;
+    ///     {
+    ///         ["oceanLaunchspecId"] = spotinst_ocean_ecs_launch_spec.Example.Id,
+    ///     };
+    /// });
+    /// ```
     /// ## Block Devices
     /// 
     /// * `block_device_mappings`- (Optional) Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.

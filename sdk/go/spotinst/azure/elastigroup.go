@@ -23,6 +23,91 @@ import (
 // * `drainingTimeout` - (Optional, Default `120`) Time (seconds) to allow the instance to be drained from incoming TCP connections and detached from MLB before terminating it during a scale-down operation.
 //
 // <a id="image"></a>
+// ## Image
+//
+// * `image` - (Required) Image of a VM. An image is a template for creating new VMs. Choose from Azure image catalogue (marketplace) or use a custom image.
+//   - `publisher` - (Optional) Image publisher. Required if resourceGroupName is not specified.
+//   - `offer` - (Optional) Name of the image to use. Required if publisher is specified.
+//   - `sku` - (Optional) Image's Stock Keeping Unit, which is the specific version of the image. Required if publisher is specified.
+//   - `version` -
+//   - `resourceGroupName` - (Optional) Name of Resource Group for custom image. Required if publisher not specified.
+//   - `imageName` - (Optional) Name of the custom image. Required if resourceGroupName is specified.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// <a id="network"></a>
+// ## Network
+//
+// * `network` - (Required) Defines the Virtual Network and Subnet for your Elastigroup.
+//   - `virtualNetworkName` - (Required) Name of Vnet.
+//   - `resourceGroupName` - (Required) Vnet Resource Group Name.
+//   - `networkInterfaces` -
+//   - `subnetName` - (Required) ID of subnet.
+//   - `assignPublicUp` - (Optional, Default: `false`) Assign a public IP to each VM in the Elastigroup.
+//   - `isPrimary` -
+//   - `additionalIpConfigs` - (Optional) Array of additional IP configuration objects.
+//   - `name` - (Required) The IP configuration name.
+//   - `privateIpVersion` - (Optional) Available from Azure Api-Version 2017-03-30 onwards, it represents whether the specific ip configuration is IPv4 or IPv6. Valid values: `IPv4`, `IPv6`.
+//   - `applicationSecurityGroup` - (Optional) - List of Application Security Groups that will be associated to the primary ip configuration of the network interface.
+//   - `name` - (Required) - The name of the Application Security group.
+//   - `resourceGroupName` - (Required) - The resource group of the Application Security Group.
+//     }
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Login
+//
+// * `login` - (Required) Describes the login configuration.
+//   - `userName` - (Required) Set admin access for accessing your VMs.
+//   - `sshPublicKey` - (Optional) SSH for admin access to Linux VMs. Required for Linux OS types.
+//   - `password` - (Optional) Password for admin access to Windows VMs. Required for Windows OS types.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
+// ```
 type Elastigroup struct {
 	pulumi.CustomResourceState
 

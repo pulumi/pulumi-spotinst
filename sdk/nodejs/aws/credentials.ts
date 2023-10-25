@@ -6,6 +6,19 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a Spotinst credential AWS resource.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as spotinst from "@pulumi/spotinst";
+ *
+ * // set credential AWS
+ * const credential = new spotinst.aws.Credentials("credential", {
+ *     accountid: "act-123456",
+ *     iamrole: "arn:aws:iam::1234567890:role/Spot_Iam_Role",
+ * });
+ * ```
  */
 export class Credentials extends pulumi.CustomResource {
     /**

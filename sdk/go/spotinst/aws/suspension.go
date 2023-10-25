@@ -13,6 +13,42 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst/aws"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := aws.NewSuspension(ctx, "resourceName", &aws.SuspensionArgs{
+//				GroupId: pulumi.String("sig-12345678"),
+//				Suspensions: aws.SuspensionSuspensionArray{
+//					&aws.SuspensionSuspensionArgs{
+//						Name: pulumi.String("OUT_OF_STRATEGY"),
+//					},
+//					&aws.SuspensionSuspensionArgs{
+//						Name: pulumi.String("REVERT_PREFERRED"),
+//					},
+//					&aws.SuspensionSuspensionArgs{
+//						Name: pulumi.String("PREVENTIVE_REPLACEMENT"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type Suspension struct {
 	pulumi.CustomResourceState
 

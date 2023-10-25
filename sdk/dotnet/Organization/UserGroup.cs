@@ -11,6 +11,39 @@ namespace Pulumi.SpotInst.Organization
 {
     /// <summary>
     /// Provides a Spotinst user-group of your Spot organization.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using SpotInst = Pulumi.SpotInst;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var terraformUserGroup = new SpotInst.Organization.UserGroup("terraformUserGroup", new()
+    ///     {
+    ///         Description = "user group by terraform",
+    ///         Policies = new[]
+    ///         {
+    ///             new SpotInst.Organization.Inputs.UserGroupPolicyArgs
+    ///             {
+    ///                 AccountIds = new[]
+    ///                 {
+    ///                     "act-a1b2c3d4",
+    ///                 },
+    ///                 PolicyId = "pol-vv7d8c06",
+    ///             },
+    ///         },
+    ///         UserIds = new[]
+    ///         {
+    ///             "u-372gf6ae",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [SpotInstResourceType("spotinst:organization/userGroup:UserGroup")]
     public partial class UserGroup : global::Pulumi.CustomResource

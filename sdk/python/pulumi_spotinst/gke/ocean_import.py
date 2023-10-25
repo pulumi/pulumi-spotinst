@@ -694,6 +694,86 @@ class OceanImport(pulumi.CustomResource):
         """
         Manages a Spotinst Ocean GKE resource.
 
+        ## Prerequisites
+
+        Installation of the Ocean controller is required by this resource. You can accomplish this by using the spotinst/ocean-controller module as follows:
+
+        ```python
+        import pulumi
+        ```
+
+        > You must configure the same `cluster_identifier` both for the Ocean controller and for the `gke.OceanImport` resource.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_spotinst as spotinst
+
+        example = spotinst.gke.OceanImport("example",
+            backend_services=[spotinst.gke.OceanImportBackendServiceArgs(
+                location_type="regional",
+                named_ports=[spotinst.gke.OceanImportBackendServiceNamedPortArgs(
+                    name="http",
+                    ports=[
+                        "80",
+                        "8080",
+                    ],
+                )],
+                scheme="INTERNAL",
+                service_name="example-backend-service",
+            )],
+            cluster_name="example-cluster-name",
+            controller_cluster_id="example-controller-123124",
+            desired_capacity=0,
+            location="us-central1-a",
+            max_size=2,
+            min_size=0,
+            root_volume_type="pd-ssd",
+            shielded_instance_config=spotinst.gke.OceanImportShieldedInstanceConfigArgs(
+                enable_integrity_monitoring=True,
+                enable_secure_boot=True,
+            ),
+            use_as_template_only=False,
+            whitelists=[
+                "n1-standard-1",
+                "n1-standard-2",
+            ])
+        ```
+
+        ```python
+        import pulumi
+
+        pulumi.export("oceanId", spotinst_ocean_gke_import["example"]["id"])
+        ```
+        ## Strategy
+
+        * `strategy` - (Optional) Strategy object.
+            * `draining_timeout` - (Optional) The draining timeout (in seconds) before terminating the instance. If no draining timeout is defined, the default draining timeout will be used.
+            * `provisioning_model` - (Optional) Define the provisioning model of the launched instances. Valid values: `SPOT`, `PREEMPTIBLE`.
+            * `preemptible_percentage`- (Optional) Defines the desired preemptible percentage for the cluster.
+
+        ```python
+        import pulumi
+        ```
+
+        <a id="update-policy"></a>
+        ## Update Policy
+
+        * `update_policy` - (Optional)
+            * `should_roll` - (Required) Enables the roll.
+            * `conditioned_roll` - (Optional, Default: false) Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as AMI, Key Pair, user data, instance types, load balancers, etc).
+          
+            * `roll_config` - (Required) Holds the roll configuration.
+                * `batch_size_percentage` - (Required) Sets the percentage of the instances to deploy in each batch.
+                * `launch_spec_ids` - (Optional) List of Virtual Node Group identifiers to be rolled.
+                * `batch_min_healthy_percentage` - (Optional) Default: 50. Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
+                * `respect_pdb` - (Optional) Default: False. During the roll, if the parameter is set to True we honor PDB during the instance replacement.
+
+        ```python
+        import pulumi
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['OceanImportAutoscalerArgs']] autoscaler: The Ocean Kubernetes Autoscaler object.
@@ -719,6 +799,86 @@ class OceanImport(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages a Spotinst Ocean GKE resource.
+
+        ## Prerequisites
+
+        Installation of the Ocean controller is required by this resource. You can accomplish this by using the spotinst/ocean-controller module as follows:
+
+        ```python
+        import pulumi
+        ```
+
+        > You must configure the same `cluster_identifier` both for the Ocean controller and for the `gke.OceanImport` resource.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_spotinst as spotinst
+
+        example = spotinst.gke.OceanImport("example",
+            backend_services=[spotinst.gke.OceanImportBackendServiceArgs(
+                location_type="regional",
+                named_ports=[spotinst.gke.OceanImportBackendServiceNamedPortArgs(
+                    name="http",
+                    ports=[
+                        "80",
+                        "8080",
+                    ],
+                )],
+                scheme="INTERNAL",
+                service_name="example-backend-service",
+            )],
+            cluster_name="example-cluster-name",
+            controller_cluster_id="example-controller-123124",
+            desired_capacity=0,
+            location="us-central1-a",
+            max_size=2,
+            min_size=0,
+            root_volume_type="pd-ssd",
+            shielded_instance_config=spotinst.gke.OceanImportShieldedInstanceConfigArgs(
+                enable_integrity_monitoring=True,
+                enable_secure_boot=True,
+            ),
+            use_as_template_only=False,
+            whitelists=[
+                "n1-standard-1",
+                "n1-standard-2",
+            ])
+        ```
+
+        ```python
+        import pulumi
+
+        pulumi.export("oceanId", spotinst_ocean_gke_import["example"]["id"])
+        ```
+        ## Strategy
+
+        * `strategy` - (Optional) Strategy object.
+            * `draining_timeout` - (Optional) The draining timeout (in seconds) before terminating the instance. If no draining timeout is defined, the default draining timeout will be used.
+            * `provisioning_model` - (Optional) Define the provisioning model of the launched instances. Valid values: `SPOT`, `PREEMPTIBLE`.
+            * `preemptible_percentage`- (Optional) Defines the desired preemptible percentage for the cluster.
+
+        ```python
+        import pulumi
+        ```
+
+        <a id="update-policy"></a>
+        ## Update Policy
+
+        * `update_policy` - (Optional)
+            * `should_roll` - (Required) Enables the roll.
+            * `conditioned_roll` - (Optional, Default: false) Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as AMI, Key Pair, user data, instance types, load balancers, etc).
+          
+            * `roll_config` - (Required) Holds the roll configuration.
+                * `batch_size_percentage` - (Required) Sets the percentage of the instances to deploy in each batch.
+                * `launch_spec_ids` - (Optional) List of Virtual Node Group identifiers to be rolled.
+                * `batch_min_healthy_percentage` - (Optional) Default: 50. Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
+                * `respect_pdb` - (Optional) Default: False. During the roll, if the parameter is set to True we honor PDB during the instance replacement.
+
+        ```python
+        import pulumi
+        ```
 
         :param str resource_name: The name of the resource.
         :param OceanImportArgs args: The arguments to use to populate this resource's properties.

@@ -1101,6 +1101,63 @@ class Elastigroup(pulumi.CustomResource):
         """
         Provides a Spotinst Elastigroup GKE resource. Please see [Importing a GKE cluster](https://api.spotinst.com/elastigroup-for-google-cloud/tutorials/import-a-gke-cluster-as-an-elastigroup/) for detailed information.
 
+        ## Example Usage
+
+        A gke.Elastigroup supports all of the fields defined in spotinst_elastigroup_gcp.
+
+        There are two main differences:
+
+        * you must include `cluster_zone_name` and `cluster_id`
+        * a handful of parameters are created remotely and will not appear in the diff. A complete list can be found below.
+
+        ```python
+        import pulumi
+        import pulumi_spotinst as spotinst
+
+        example_gke_elastigroup = spotinst.gke.Elastigroup("example-gke-elastigroup",
+            backend_services=[spotinst.gke.ElastigroupBackendServiceArgs(
+                location_type="global",
+                named_ports=[spotinst.gke.ElastigroupBackendServiceNamedPortArgs(
+                    name="http",
+                    ports=[
+                        "80",
+                        "8080",
+                    ],
+                )],
+                service_name="backend-service",
+            )],
+            cluster_zone_name="us-central1-a",
+            desired_capacity=3,
+            instance_types_ondemand="n1-standard-1",
+            instance_types_preemptibles=[
+                "n1-standard-1",
+                "n1-standard-2",
+            ],
+            integration_gke=spotinst.gke.ElastigroupIntegrationGkeArgs(
+                autoscale_cooldown=300,
+                autoscale_down=spotinst.gke.ElastigroupIntegrationGkeAutoscaleDownArgs(
+                    evaluation_periods=300,
+                ),
+                autoscale_headroom=spotinst.gke.ElastigroupIntegrationGkeAutoscaleHeadroomArgs(
+                    cpu_per_unit=1024,
+                    memory_per_unit=512,
+                    num_of_units=2,
+                ),
+                autoscale_is_auto_config=False,
+                autoscale_is_enabled=True,
+                autoscale_labels=[spotinst.gke.ElastigroupIntegrationGkeAutoscaleLabelArgs(
+                    key="label_key",
+                    value="label_value",
+                )],
+                cluster_id="example-cluster-id",
+                location="us-central1-a",
+            ),
+            max_size=5,
+            min_size=1,
+            node_image="COS",
+            preemptible_percentage=100)
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster_id: The name of the GKE cluster you wish to import.
@@ -1116,6 +1173,63 @@ class Elastigroup(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a Spotinst Elastigroup GKE resource. Please see [Importing a GKE cluster](https://api.spotinst.com/elastigroup-for-google-cloud/tutorials/import-a-gke-cluster-as-an-elastigroup/) for detailed information.
+
+        ## Example Usage
+
+        A gke.Elastigroup supports all of the fields defined in spotinst_elastigroup_gcp.
+
+        There are two main differences:
+
+        * you must include `cluster_zone_name` and `cluster_id`
+        * a handful of parameters are created remotely and will not appear in the diff. A complete list can be found below.
+
+        ```python
+        import pulumi
+        import pulumi_spotinst as spotinst
+
+        example_gke_elastigroup = spotinst.gke.Elastigroup("example-gke-elastigroup",
+            backend_services=[spotinst.gke.ElastigroupBackendServiceArgs(
+                location_type="global",
+                named_ports=[spotinst.gke.ElastigroupBackendServiceNamedPortArgs(
+                    name="http",
+                    ports=[
+                        "80",
+                        "8080",
+                    ],
+                )],
+                service_name="backend-service",
+            )],
+            cluster_zone_name="us-central1-a",
+            desired_capacity=3,
+            instance_types_ondemand="n1-standard-1",
+            instance_types_preemptibles=[
+                "n1-standard-1",
+                "n1-standard-2",
+            ],
+            integration_gke=spotinst.gke.ElastigroupIntegrationGkeArgs(
+                autoscale_cooldown=300,
+                autoscale_down=spotinst.gke.ElastigroupIntegrationGkeAutoscaleDownArgs(
+                    evaluation_periods=300,
+                ),
+                autoscale_headroom=spotinst.gke.ElastigroupIntegrationGkeAutoscaleHeadroomArgs(
+                    cpu_per_unit=1024,
+                    memory_per_unit=512,
+                    num_of_units=2,
+                ),
+                autoscale_is_auto_config=False,
+                autoscale_is_enabled=True,
+                autoscale_labels=[spotinst.gke.ElastigroupIntegrationGkeAutoscaleLabelArgs(
+                    key="label_key",
+                    value="label_value",
+                )],
+                cluster_id="example-cluster-id",
+                location="us-central1-a",
+            ),
+            max_size=5,
+            min_size=1,
+            node_image="COS",
+            preemptible_percentage=100)
+        ```
 
         :param str resource_name: The name of the resource.
         :param ElastigroupArgs args: The arguments to use to populate this resource's properties.

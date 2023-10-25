@@ -383,6 +383,10 @@ export namespace aws {
          * The percentage of instances to add or remove.
          *
          * Usage:
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          */
         adjustmentPercentage?: string;
         /**
@@ -477,6 +481,10 @@ export namespace aws {
          * Modifying any `ebsBlockDevice` currently requires resource replacement.
          *
          * Usage:
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          */
         throughput?: number;
         /**
@@ -499,6 +507,10 @@ export namespace aws {
          * (e.g. `"ephemeral0"`).
          *
          * Usage:
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          */
         virtualName: string;
     }
@@ -587,6 +599,10 @@ export namespace aws {
          * Level to update
          *
          * Usage:
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          */
         updateLevel?: string;
     }
@@ -615,6 +631,10 @@ export namespace aws {
          * The deployment group name.
          *
          * Usage:
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          */
         deploymentGroupName: string;
     }
@@ -750,6 +770,10 @@ export namespace aws {
          * Array of strings.
          *
          * Usage:
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          */
         jobQueueNames: string[];
     }
@@ -773,6 +797,10 @@ export namespace aws {
          * The public IP of the DC/OS Master.
          *
          * Usage:
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          */
         apiServer?: string;
         /**
@@ -799,6 +827,10 @@ export namespace aws {
          * A key/value mapping of tags to assign to the resource.
          *
          * Usage:
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          */
         autoscaleLabels?: outputs.aws.ElastigroupIntegrationKubernetesAutoscaleLabel[];
         clusterIdentifier?: string;
@@ -851,6 +883,10 @@ export namespace aws {
          * The public IP of the DC/OS Master.
          *
          * Usage:
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          */
         apiServer: string;
     }
@@ -860,6 +896,10 @@ export namespace aws {
          * The deployment id you want to get
          *
          * Usage:
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          */
         deploymentId: string;
     }
@@ -873,6 +913,10 @@ export namespace aws {
          * A key/value mapping of tags to assign to the resource.
          *
          * Usage:
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          */
         autoscaleConstraints?: outputs.aws.ElastigroupIntegrationNomadAutoscaleConstraint[];
         /**
@@ -947,6 +991,10 @@ export namespace aws {
         /**
          * The Rancher version. Must be `"1"` or `"2"`. If this field is omitted, it’s assumed that the Rancher cluster is version 1. Note that Kubernetes is required when using Rancher version 2^.
          * Usage:
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          */
         version?: string;
     }
@@ -986,6 +1034,10 @@ export namespace aws {
          * Designates whether the DNS address should be exposed to connections outside the VPC.
          *
          * Usage:
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          */
         usePublicDns?: boolean;
         /**
@@ -1072,6 +1124,10 @@ export namespace aws {
          * ID of Multai Load Balancer.
          *
          * Usage:
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          */
         balancerId: string;
         /**
@@ -1149,6 +1205,10 @@ export namespace aws {
          * Indicates whether to assign IPV6 addresses to your instance. Requires a subnet with IPV6 CIDR block ranges.
          *
          * Usage:
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          */
         associateIpv6Address?: boolean;
         /**
@@ -1451,6 +1511,14 @@ export namespace aws {
          * Start a metric prediction process to determine the expected target metric value within the next two days. See [Predictive Autoscaling](https://api.spotinst.com/elastigroup-for-aws/concepts/scaling-concepts/predictive-autoscaling/) documentation for more info. Valid values: `FORECAST_AND_SCALE`, `FORECAST_ONLY`.
          *
          * Usage:
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          */
         predictiveMode?: string;
         /**
@@ -1643,6 +1711,10 @@ export namespace aws {
          * The percentage of instances to add or remove.
          *
          * Usage:
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          */
         adjustmentPercentage?: string;
         /**
@@ -1708,6 +1780,10 @@ export namespace aws {
          * The signals defined timeout- default is 40 minutes (1800 seconds).
          *
          * Usage:
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          */
         timeout?: number;
     }
@@ -1725,6 +1801,10 @@ export namespace aws {
          * For stateful groups: remove snapshots.
          *
          * Usage:
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          */
         shouldDeleteSnapshots?: boolean;
         /**
@@ -1742,6 +1822,10 @@ export namespace aws {
          * String, Action type. Supported action types: `pause`, `resume`, `recycle`, `deallocate`.
          *
          * Usage:
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          */
         type: string;
     }
@@ -1831,6 +1915,10 @@ export namespace aws {
         drainingTimeout?: number;
         /**
          * Decrementing the group target capacity after detaching the instances.
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          */
         shouldDecrementTargetCapacity?: boolean;
         /**
@@ -3710,6 +3798,10 @@ export namespace ecs {
         down?: outputs.ecs.OceanAutoscalerDown;
         /**
          * When set to true, both automatic and per custom launch specification manual headroom to be saved concurrently and independently in the cluster. prerequisite: isAutoConfig must be true
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          */
         enableAutomaticAndManualHeadroom?: boolean;
         /**
@@ -4120,6 +4212,9 @@ export namespace ecs {
         /**
          * Valid values: "clusterRoll". Required for `cluster.scheduling.tasks object`. Example: `clusterRoll`.
          *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          *
          *
          * <a id="attributes-reference"></a>
@@ -4157,6 +4252,10 @@ export namespace ecs {
     export interface OceanUpdatePolicyRollConfig {
         /**
          * Default: 50. Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          */
         batchMinHealthyPercentage?: number;
         /**
@@ -4196,6 +4295,10 @@ export namespace gcp {
          * A list of ports.
          *
          * Usage:
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          */
         ports: string[];
     }
@@ -4248,6 +4351,10 @@ export namespace gcp {
          * A source image used to create the disk. You can provide a private (custom) image, and Compute Engine will use the corresponding image from your project.
          *
          * Usage:
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          */
         sourceImage: string;
     }
@@ -4257,6 +4364,10 @@ export namespace gcp {
          * The number of GPUs. Must be 0, 2, 4, 6, 8.
          *
          * Usage:
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          */
         count: number;
         /**
@@ -4282,6 +4393,10 @@ export namespace gcp {
          * Network port used by your swarm.
          *
          * Usage:
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          */
         masterPort: number;
     }
@@ -4513,6 +4628,10 @@ export namespace gcp {
          * The maximum number of instances the group should have.
          *
          * Usage:
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          */
         maxCapacity?: string;
         /**
@@ -4792,6 +4911,9 @@ export namespace gke {
         /**
          * The maximum memory in GiB units that can be allocated to the cluster.
          *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          *
          * <a id="strategy"></a>
          */
@@ -4875,6 +4997,10 @@ export namespace gke {
         /**
          * Value in % to set size of batch in roll. Valid values are 0-100
          * Example: 20.
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          */
         batchSizePercentage?: number;
         comment?: string;
@@ -4912,6 +5038,10 @@ export namespace gke {
         /**
          * Value in % to set size of batch in roll. Valid values are 0-100
          * Example: 20.
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          */
         batchSizePercentage: number;
         launchSpecIds?: string[];
