@@ -126,6 +126,17 @@ class OceanVirtualNodeGroup(pulumi.CustomResource):
 
         An existing Ocean cluster and Ocean VNG is required by this resource
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_spotinst as spotinst
+
+        example = spotinst.spark.OceanVirtualNodeGroup("example",
+            ocean_spark_cluster_id="cluster_id",
+            virtual_node_group_id="vng_id")
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
@@ -141,6 +152,17 @@ class OceanVirtualNodeGroup(pulumi.CustomResource):
         ## Prerequisites
 
         An existing Ocean cluster and Ocean VNG is required by this resource
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_spotinst as spotinst
+
+        example = spotinst.spark.OceanVirtualNodeGroup("example",
+            ocean_spark_cluster_id="cluster_id",
+            virtual_node_group_id="vng_id")
+        ```
 
         :param str resource_name: The name of the resource.
         :param OceanVirtualNodeGroupArgs args: The arguments to use to populate this resource's properties.

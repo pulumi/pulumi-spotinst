@@ -14,6 +14,48 @@ import (
 )
 
 // Provides a Spotinst User in the creator's organization.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst/organization"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := organization.NewUser(ctx, "terraformUser", &organization.UserArgs{
+//				Email:     pulumi.String("abc@xyz.com"),
+//				FirstName: pulumi.String("test"),
+//				LastName:  pulumi.String("user"),
+//				Password:  pulumi.String("testUser@123"),
+//				Policies: organization.UserPolicyArray{
+//					&organization.UserPolicyArgs{
+//						PolicyAccountIds: pulumi.StringArray{
+//							pulumi.String("act-abcf4245"),
+//						},
+//						PolicyId: pulumi.String("pol-abcd1236"),
+//					},
+//				},
+//				Role: pulumi.String("viewer"),
+//				UserGroupIds: pulumi.StringArray{
+//					pulumi.String("ugr-abcd1234"),
+//					pulumi.String("ugr-defg8763"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type User struct {
 	pulumi.CustomResourceState
 

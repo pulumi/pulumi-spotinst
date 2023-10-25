@@ -172,6 +172,36 @@ class Policy(pulumi.CustomResource):
         """
         Provides a Spotinst access policy.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_spotinst as spotinst
+
+        terraform_policy = spotinst.organization.Policy("terraformPolicy",
+            description="policy by terraform",
+            policy_contents=[spotinst.organization.PolicyPolicyContentArgs(
+                statements=[
+                    spotinst.organization.PolicyPolicyContentStatementArgs(
+                        actions=["ocean:deleteCluster"],
+                        effect="DENY",
+                        resources=[
+                            "o-abcd1234",
+                            "o-defg6789",
+                        ],
+                    ),
+                    spotinst.organization.PolicyPolicyContentStatementArgs(
+                        actions=["ocean:createCluster"],
+                        effect="DENY",
+                        resources=[
+                            "o-fhau4752",
+                            "o-761owf4r3",
+                        ],
+                    ),
+                ],
+            )])
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Short description of policy.
@@ -186,6 +216,36 @@ class Policy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a Spotinst access policy.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_spotinst as spotinst
+
+        terraform_policy = spotinst.organization.Policy("terraformPolicy",
+            description="policy by terraform",
+            policy_contents=[spotinst.organization.PolicyPolicyContentArgs(
+                statements=[
+                    spotinst.organization.PolicyPolicyContentStatementArgs(
+                        actions=["ocean:deleteCluster"],
+                        effect="DENY",
+                        resources=[
+                            "o-abcd1234",
+                            "o-defg6789",
+                        ],
+                    ),
+                    spotinst.organization.PolicyPolicyContentStatementArgs(
+                        actions=["ocean:createCluster"],
+                        effect="DENY",
+                        resources=[
+                            "o-fhau4752",
+                            "o-761owf4r3",
+                        ],
+                    ),
+                ],
+            )])
+        ```
 
         :param str resource_name: The name of the resource.
         :param PolicyArgs args: The arguments to use to populate this resource's properties.

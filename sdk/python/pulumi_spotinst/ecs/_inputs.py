@@ -59,6 +59,10 @@ class OceanAutoscalerArgs:
         :param pulumi.Input[int] cooldown: Cooldown period between scaling actions.
         :param pulumi.Input['OceanAutoscalerDownArgs'] down: Auto Scaling scale down operations.
         :param pulumi.Input[bool] enable_automatic_and_manual_headroom: When set to true, both automatic and per custom launch specification manual headroom to be saved concurrently and independently in the cluster. prerequisite: isAutoConfig must be true
+               
+               ```python
+               import pulumi
+               ```
         :param pulumi.Input['OceanAutoscalerHeadroomArgs'] headroom: Spare resource capacity management enabling fast assignment of tasks without waiting for new resources to launch.
         :param pulumi.Input[bool] is_auto_config: Automatically configure and optimize headroom resources.
         :param pulumi.Input[bool] is_enabled: Enable the Ocean ECS autoscaler.
@@ -164,6 +168,10 @@ class OceanAutoscalerArgs:
     def enable_automatic_and_manual_headroom(self) -> Optional[pulumi.Input[bool]]:
         """
         When set to true, both automatic and per custom launch specification manual headroom to be saved concurrently and independently in the cluster. prerequisite: isAutoConfig must be true
+
+        ```python
+        import pulumi
+        ```
         """
         return pulumi.get(self, "enable_automatic_and_manual_headroom")
 
@@ -2294,6 +2302,9 @@ class OceanScheduledTaskTaskArgs:
         :param pulumi.Input[bool] is_enabled: Enable the Ocean ECS autoscaler.
         :param pulumi.Input[str] task_type: Valid values: "clusterRoll". Required for `cluster.scheduling.tasks object`. Example: `clusterRoll`.
                
+               ```python
+               import pulumi
+               ```
                
                
                <a id="attributes-reference"></a>
@@ -2359,6 +2370,9 @@ class OceanScheduledTaskTaskArgs:
         """
         Valid values: "clusterRoll". Required for `cluster.scheduling.tasks object`. Example: `clusterRoll`.
 
+        ```python
+        import pulumi
+        ```
 
 
         <a id="attributes-reference"></a>
@@ -2525,6 +2539,10 @@ class OceanUpdatePolicyRollConfigArgs:
         """
         :param pulumi.Input[int] batch_size_percentage: Sets the percentage of the instances to deploy in each batch.
         :param pulumi.Input[int] batch_min_healthy_percentage: Default: 50. Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
+               
+               ```python
+               import pulumi
+               ```
         """
         OceanUpdatePolicyRollConfigArgs._configure(
             lambda key, value: pulumi.set(__self__, key, value),
@@ -2566,6 +2584,10 @@ class OceanUpdatePolicyRollConfigArgs:
     def batch_min_healthy_percentage(self) -> Optional[pulumi.Input[int]]:
         """
         Default: 50. Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
+
+        ```python
+        import pulumi
+        ```
         """
         return pulumi.get(self, "batch_min_healthy_percentage")
 

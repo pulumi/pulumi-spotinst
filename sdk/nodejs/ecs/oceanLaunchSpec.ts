@@ -9,6 +9,96 @@ import * as utilities from "../utilities";
 /**
  * Manages a custom Spotinst Ocean ECS Launch Spec resource.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as spotinst from "@pulumi/spotinst";
+ *
+ * const example = new spotinst.ecs.OceanLaunchSpec("example", {
+ *     attributes: [{
+ *         key: "fakeKey",
+ *         value: "fakeValue",
+ *     }],
+ *     autoscaleHeadrooms: [{
+ *         cpuPerUnit: 1000,
+ *         memoryPerUnit: 2048,
+ *         numOfUnits: 5,
+ *     }],
+ *     blockDeviceMappings: [{
+ *         deviceName: "/dev/xvda1",
+ *         ebs: {
+ *             deleteOnTermination: true,
+ *             dynamicVolumeSize: {
+ *                 baseSize: 50,
+ *                 resource: "CPU",
+ *                 sizePerResourceUnit: 20,
+ *             },
+ *             encrypted: false,
+ *             throughput: 500,
+ *             volumeSize: 50,
+ *             volumeType: "gp2",
+ *         },
+ *     }],
+ *     iamInstanceProfile: "iam-profile",
+ *     imageId: "ami-123456",
+ *     instanceMetadataOptions: {
+ *         httpPutResponseHopLimit: 10,
+ *         httpTokens: "required",
+ *     },
+ *     instanceTypes: [
+ *         "m3.large",
+ *         "m3.xlarge",
+ *         "m3.2xlarge",
+ *         "m4.large",
+ *         "m4.xlarge",
+ *         "m4.4xlarge",
+ *         "m4.2xlarge",
+ *         "m4.10xlarge",
+ *         "m4.16xlarge",
+ *         "m5.large",
+ *         "m5.xlarge",
+ *         "m5.2xlarge",
+ *         "m5.4xlarge",
+ *         "m5.12xlarge",
+ *         "m5.24xlarge",
+ *     ],
+ *     oceanId: "o-123456",
+ *     preferredSpotTypes: [
+ *         "m3.large",
+ *         "m3.xlarge",
+ *         "m3.2xlarge",
+ *         "m4.large",
+ *         "m4.xlarge",
+ *     ],
+ *     restrictScaleDown: true,
+ *     schedulingTasks: [{
+ *         cronExpression: "0 1 * * *",
+ *         isEnabled: true,
+ *         taskHeadrooms: [{
+ *             cpuPerUnit: 1000,
+ *             memoryPerUnit: 2048,
+ *             numOfUnits: 5,
+ *         }],
+ *         taskType: "manualHeadroomUpdate",
+ *     }],
+ *     securityGroupIds: ["awseb-12345"],
+ *     strategies: [{
+ *         spotPercentage: 50,
+ *     }],
+ *     subnetIds: ["subnet-12345"],
+ *     tags: [{
+ *         key: "Env",
+ *         value: "production",
+ *     }],
+ *     userData: "echo hello world",
+ * });
+ * ```
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ *
+ * export const oceanLaunchspecId = spotinst_ocean_ecs_launch_spec.example.id;
+ * ```
  * ## Block Devices
  *
  * * `blockDeviceMappings`- (Optional) Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.

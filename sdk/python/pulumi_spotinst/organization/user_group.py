@@ -216,6 +216,21 @@ class UserGroup(pulumi.CustomResource):
         """
         Provides a Spotinst user-group of your Spot organization.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_spotinst as spotinst
+
+        terraform_user_group = spotinst.organization.UserGroup("terraformUserGroup",
+            description="user group by terraform",
+            policies=[spotinst.organization.UserGroupPolicyArgs(
+                account_ids=["act-a1b2c3d4"],
+                policy_id="pol-vv7d8c06",
+            )],
+            user_ids=["u-372gf6ae"])
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: User group description.
@@ -233,6 +248,21 @@ class UserGroup(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a Spotinst user-group of your Spot organization.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_spotinst as spotinst
+
+        terraform_user_group = spotinst.organization.UserGroup("terraformUserGroup",
+            description="user group by terraform",
+            policies=[spotinst.organization.UserGroupPolicyArgs(
+                account_ids=["act-a1b2c3d4"],
+                policy_id="pol-vv7d8c06",
+            )],
+            user_ids=["u-372gf6ae"])
+        ```
 
         :param str resource_name: The name of the resource.
         :param UserGroupArgs args: The arguments to use to populate this resource's properties.

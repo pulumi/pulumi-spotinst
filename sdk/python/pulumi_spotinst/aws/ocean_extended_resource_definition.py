@@ -137,6 +137,18 @@ class OceanExtendedResourceDefinition(pulumi.CustomResource):
         """
         Provides a Spotinst Ocean AWS Extended Resource Definition resource.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_spotinst as spotinst
+
+        example = spotinst.aws.OceanExtendedResourceDefinition("example", resource_mapping={
+            "c3.large": "2Ki",
+            "c3.xlarge": "4Ki",
+        })
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: The extended resource name as should be requested by your pods and registered to the nodes. Cannot be updated.
@@ -151,6 +163,18 @@ class OceanExtendedResourceDefinition(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a Spotinst Ocean AWS Extended Resource Definition resource.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_spotinst as spotinst
+
+        example = spotinst.aws.OceanExtendedResourceDefinition("example", resource_mapping={
+            "c3.large": "2Ki",
+            "c3.xlarge": "4Ki",
+        })
+        ```
 
         :param str resource_name: The name of the resource.
         :param OceanExtendedResourceDefinitionArgs args: The arguments to use to populate this resource's properties.

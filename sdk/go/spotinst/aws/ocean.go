@@ -13,6 +13,103 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
+// ## Auto Scaler
+//
+// * `autoscaler` - (Optional) Describes the Ocean Kubernetes Auto Scaler.
+//   - `autoscaleIsEnabled` - (Optional, Default: `true`) Enable the Ocean Kubernetes Auto Scaler.
+//   - `autoscaleIsAutoConfig` - (Optional, Default: `true`) Automatically configure and optimize headroom resources.
+//   - `autoscaleCooldown` - (Optional, Default: `null`) Cooldown period between scaling actions.
+//   - `autoHeadroomPercentage` - (Optional) Set the auto headroom percentage (a number in the range [0, 200]) which controls the percentage of headroom from the cluster. Relevant only when `autoscaleIsAutoConfig` toggled on.
+//   - `enableAutomaticAndManualHeadroom` - (Optional, Default: `false`) enables automatic and manual headroom to work in parallel. When set to false, automatic headroom overrides all other headroom definitions manually configured, whether they are at cluster or VNG level.
+//   - `autoscaleHeadroom` - (Optional) Spare resource capacity management enabling fast assignment of Pods without waiting for new resources to launch.
+//   - `cpuPerUnit` - (Optional) Optionally configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+//   - `gpuPerUnit` - (Optional) Optionally configure the number of GPUs to allocate the headroom.
+//   - `memoryPerUnit` - (Optional) Optionally configure the amount of memory (MB) to allocate the headroom.
+//   - `numOfUnits` - (Optional) The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
+//   - `autoscaleDown` - (Optional) Auto Scaling scale down operations.
+//   - `maxScaleDownPercentage` - (Optional) Would represent the maximum % to scale-down. Number between 1-100.
+//   - `resourceLimits` - (Optional) Optionally set upper and lower bounds on the resource usage of the cluster.
+//   - `maxVcpu` - (Optional) The maximum cpu in vCPU units that can be allocated to the cluster.
+//   - `maxMemoryGib` - (Optional) The maximum memory in GiB units that can be allocated to the cluster.
+//   - `extendedResourceDefinitions` - (Optional) List of Ocean extended resource definitions to use in this cluster.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Update Policy
+//
+// * `updatePolicy` - (Optional)
+//   - `shouldRoll` - (Required) Enables the roll.
+//   - `conditionedRoll` - (Optional, Default: false) Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as AMI, Key Pair, user data, instance types, load balancers, etc).
+//   - `autoApplyTags` - (Optional, Default: false) will update instance tags on the fly without rolling the cluster.
+//   - `rollConfig` - (Required) While used, you can control whether the group should perform a deployment after an update to the configuration.
+//   - `batchSizePercentage` - (Required) Sets the percentage of the instances to deploy in each batch.
+//   - `launchSpecIds` - (Optional) List of virtual node group identifiers to be rolled.
+//   - `batchMinHealthyPercentage` - (Optional) Default: 50. Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
+//   - `respectPdb` - (Optional, Default: false) During the roll, if the parameter is set to True we honor PDB during the instance replacement.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// <a id="scheduled-task"></a>
+// ## Scheduled Task
+//
+// * `scheduledTask` - (Optional) Set scheduling object.
+//   - `shutdownHours` - (Optional) Set shutdown hours for cluster object.
+//   - `isEnabled` - (Optional) Toggle the shutdown hours task. (Example: `true`).
+//   - `timeWindows` - (Required) Set time windows for shutdown hours. Specify a list of `timeWindows` with at least one time window Each string is in the format of: `ddd:hh:mm-ddd:hh:mm` where `ddd` = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat, `hh` = hour 24 = 0 -23, `mm` = minute = 0 - 59. Time windows should not overlap. Required if `cluster.scheduling.isEnabled` is `true`. (Example: `Fri:15:30-Wed:14:30`).
+//   - `tasks` - (Optional) The scheduling tasks for the cluster.
+//   - `isEnabled` - (Required)  Describes whether the task is enabled. When true the task should run when false it should not run. Required for `cluster.scheduling.tasks` object.
+//   - `cronExpression` - (Required) A valid cron expression. The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of `frequency` or `cronExpression` should be used at a time. Required for `cluster.scheduling.tasks` object. (Example: `0 1 * * *`).
+//   - `taskType` - (Required) Valid values: `clusterRoll`. Required for `cluster.scheduling.tasks` object. (Example: `clusterRoll`).
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// <a id="attributes-reference"></a>
+//
 // ## Import
 //
 // # Clusters can be imported using the Ocean `id`, e.g., hcl

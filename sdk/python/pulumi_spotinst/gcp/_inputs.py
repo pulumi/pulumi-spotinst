@@ -139,6 +139,10 @@ class ElastigroupBackendServiceNamedPortArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ports: A list of ports.
                
                Usage:
+               
+               ```python
+               import pulumi
+               ```
         """
         ElastigroupBackendServiceNamedPortArgs._configure(
             lambda key, value: pulumi.set(__self__, key, value),
@@ -179,6 +183,10 @@ class ElastigroupBackendServiceNamedPortArgs:
         A list of ports.
 
         Usage:
+
+        ```python
+        import pulumi
+        ```
         """
         return pulumi.get(self, "ports")
 
@@ -363,6 +371,10 @@ class ElastigroupDiskInitializeParamArgs:
         :param pulumi.Input[str] source_image: A source image used to create the disk. You can provide a private (custom) image, and Compute Engine will use the corresponding image from your project.
                
                Usage:
+               
+               ```python
+               import pulumi
+               ```
         :param pulumi.Input[str] disk_size_gb: Specifies disk size in gigabytes. Must be in increments of 2.
         :param pulumi.Input[str] disk_type: Specifies the disk type to use to create the instance. Valid values: pd-ssd, local-ssd.
         """
@@ -402,6 +414,10 @@ class ElastigroupDiskInitializeParamArgs:
         A source image used to create the disk. You can provide a private (custom) image, and Compute Engine will use the corresponding image from your project.
 
         Usage:
+
+        ```python
+        import pulumi
+        ```
         """
         return pulumi.get(self, "source_image")
 
@@ -443,6 +459,10 @@ class ElastigroupGpuArgs:
         :param pulumi.Input[int] count: The number of GPUs. Must be 0, 2, 4, 6, 8.
                
                Usage:
+               
+               ```python
+               import pulumi
+               ```
         :param pulumi.Input[str] type: The type of GPU instance. Valid values: `nvidia-tesla-v100`, `nvidia-tesla-p100`, `nvidia-tesla-k80`.
         """
         ElastigroupGpuArgs._configure(
@@ -472,6 +492,10 @@ class ElastigroupGpuArgs:
         The number of GPUs. Must be 0, 2, 4, 6, 8.
 
         Usage:
+
+        ```python
+        import pulumi
+        ```
         """
         return pulumi.get(self, "count")
 
@@ -554,6 +578,10 @@ class ElastigroupIntegrationDockerSwarmArgs:
         :param pulumi.Input[int] master_port: Network port used by your swarm.
                
                Usage:
+               
+               ```python
+               import pulumi
+               ```
         """
         ElastigroupIntegrationDockerSwarmArgs._configure(
             lambda key, value: pulumi.set(__self__, key, value),
@@ -598,6 +626,10 @@ class ElastigroupIntegrationDockerSwarmArgs:
         Network port used by your swarm.
 
         Usage:
+
+        ```python
+        import pulumi
+        ```
         """
         return pulumi.get(self, "master_port")
 
@@ -1861,6 +1893,10 @@ class ElastigroupScheduledTaskArgs:
         :param pulumi.Input[str] max_capacity: The maximum number of instances the group should have.
                
                Usage:
+               
+               ```python
+               import pulumi
+               ```
         :param pulumi.Input[str] min_capacity: The minimum number of instances the group should have.
         :param pulumi.Input[str] target_capacity: The desired number of instances the group should have.
         """
@@ -1954,6 +1990,10 @@ class ElastigroupScheduledTaskArgs:
         The maximum number of instances the group should have.
 
         Usage:
+
+        ```python
+        import pulumi
+        ```
         """
         return pulumi.get(self, "max_capacity")
 

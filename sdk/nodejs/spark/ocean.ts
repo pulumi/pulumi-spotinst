@@ -12,6 +12,60 @@ import * as utilities from "../utilities";
  * ## Prerequisites
  *
  * An existing Ocean cluster is required by this resource. See e.g. the `spotinst.aws.Ocean` resource.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as spotinst from "@pulumi/spotinst";
+ *
+ * const example = new spotinst.spark.Ocean("example", {
+ *     oceanClusterId: "ocean-cluster-id",
+ *     ingress: {
+ *         controller: {
+ *             managed: true,
+ *         },
+ *         loadBalancer: {
+ *             managed: true,
+ *             targetGroupArn: "arn:aws:elasticloadbalancing:eu-north-1:XXXXXXXXXXXX:targetgroup/my-spark-cluster-nlb-tg/a38c2b83XXXXXXXX",
+ *             serviceAnnotations: {
+ *                 "service.beta.kubernetes.io/aws-load-balancer-security-groups": "sg-XXXXXXXXXXXXXXXXX",
+ *                 "some-service-annotation-2": "some-service-annotation-value-2",
+ *             },
+ *         },
+ *         customEndpoint: {
+ *             enabled: false,
+ *             address: "my-spark-cluster-nlb-8cbb8da7XXXXXXXX.elb.us-east-1.amazonaws.com",
+ *         },
+ *         privateLink: {
+ *             enabled: false,
+ *             vpcEndpointService: "com.amazonaws.vpce.eu-north-1.vpce-svc-XXXXXXXXXXXXXXXXX",
+ *         },
+ *     },
+ *     compute: {
+ *         createVngs: true,
+ *         useTaints: true,
+ *     },
+ *     logCollection: {
+ *         collectAppLogs: true,
+ *     },
+ *     webhook: {
+ *         useHostNetwork: false,
+ *         hostNetworkPorts: [25554],
+ *     },
+ *     spark: {
+ *         additionalAppNamespaces: [
+ *             "extra-spark-app-ns-1",
+ *             "extra-spark-app-ns-2",
+ *         ],
+ *     },
+ * });
+ * ```
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ *
+ * export const oceanSparkId = spotinst_ocean_spark.example.id;
+ * ```
  */
 export class Ocean extends pulumi.CustomResource {
     /**

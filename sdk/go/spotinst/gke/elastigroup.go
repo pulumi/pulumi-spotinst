@@ -14,6 +14,85 @@ import (
 )
 
 // Provides a Spotinst Elastigroup GKE resource. Please see [Importing a GKE cluster](https://api.spotinst.com/elastigroup-for-google-cloud/tutorials/import-a-gke-cluster-as-an-elastigroup/) for detailed information.
+//
+// ## Example Usage
+//
+// A gke.Elastigroup supports all of the fields defined in spotinst_elastigroup_gcp.
+//
+// There are two main differences:
+//
+// * you must include `clusterZoneName` and `clusterId`
+// * a handful of parameters are created remotely and will not appear in the diff. A complete list can be found below.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst/gke"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := gke.NewElastigroup(ctx, "example-gke-elastigroup", &gke.ElastigroupArgs{
+//				BackendServices: gke.ElastigroupBackendServiceArray{
+//					&gke.ElastigroupBackendServiceArgs{
+//						LocationType: pulumi.String("global"),
+//						NamedPorts: gke.ElastigroupBackendServiceNamedPortArray{
+//							&gke.ElastigroupBackendServiceNamedPortArgs{
+//								Name: pulumi.String("http"),
+//								Ports: pulumi.StringArray{
+//									pulumi.String("80"),
+//									pulumi.String("8080"),
+//								},
+//							},
+//						},
+//						ServiceName: pulumi.String("backend-service"),
+//					},
+//				},
+//				ClusterZoneName:       pulumi.String("us-central1-a"),
+//				DesiredCapacity:       pulumi.Int(3),
+//				InstanceTypesOndemand: pulumi.String("n1-standard-1"),
+//				InstanceTypesPreemptibles: pulumi.StringArray{
+//					pulumi.String("n1-standard-1"),
+//					pulumi.String("n1-standard-2"),
+//				},
+//				IntegrationGke: &gke.ElastigroupIntegrationGkeArgs{
+//					AutoscaleCooldown: pulumi.Int(300),
+//					AutoscaleDown: &gke.ElastigroupIntegrationGkeAutoscaleDownArgs{
+//						EvaluationPeriods: pulumi.Int(300),
+//					},
+//					AutoscaleHeadroom: &gke.ElastigroupIntegrationGkeAutoscaleHeadroomArgs{
+//						CpuPerUnit:    pulumi.Int(1024),
+//						MemoryPerUnit: pulumi.Int(512),
+//						NumOfUnits:    pulumi.Int(2),
+//					},
+//					AutoscaleIsAutoConfig: pulumi.Bool(false),
+//					AutoscaleIsEnabled:    pulumi.Bool(true),
+//					AutoscaleLabels: gke.ElastigroupIntegrationGkeAutoscaleLabelArray{
+//						&gke.ElastigroupIntegrationGkeAutoscaleLabelArgs{
+//							Key:   pulumi.String("label_key"),
+//							Value: pulumi.String("label_value"),
+//						},
+//					},
+//					ClusterId: pulumi.String("example-cluster-id"),
+//					Location:  pulumi.String("us-central1-a"),
+//				},
+//				MaxSize:               pulumi.Int(5),
+//				MinSize:               pulumi.Int(1),
+//				NodeImage:             pulumi.String("COS"),
+//				PreemptiblePercentage: pulumi.Int(100),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type Elastigroup struct {
 	pulumi.CustomResourceState
 

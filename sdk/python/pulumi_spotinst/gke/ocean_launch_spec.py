@@ -925,6 +925,101 @@ class OceanLaunchSpec(pulumi.CustomResource):
 
         > This resource can be imported from GKE node pool or not. If you want to import the node pool and create the VNG from it, please provide `node_pool_name`.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_spotinst as spotinst
+
+        example = spotinst.gke.OceanLaunchSpec("example",
+            autoscale_headrooms=[spotinst.gke.OceanLaunchSpecAutoscaleHeadroomArgs(
+                cpu_per_unit=1000,
+                gpu_per_unit=0,
+                memory_per_unit=2048,
+                num_of_units=5,
+            )],
+            autoscale_headrooms_automatics=[spotinst.gke.OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs(
+                auto_headroom_percentage=5,
+            )],
+            instance_types=["n1-standard-1, n1-standard-2"],
+            labels=[spotinst.gke.OceanLaunchSpecLabelArgs(
+                key="labelKey",
+                value="labelVal",
+            )],
+            metadatas=[spotinst.gke.OceanLaunchSpecMetadataArgs(
+                key="gci-update-strategy",
+                value="update_disabled",
+            )],
+            network_interfaces=[spotinst.gke.OceanLaunchSpecNetworkInterfaceArgs(
+                access_configs=[spotinst.gke.OceanLaunchSpecNetworkInterfaceAccessConfigArgs(
+                    name="external-nat-vng",
+                    type="ONE_TO_ONE_NAT",
+                )],
+                alias_ip_ranges=[spotinst.gke.OceanLaunchSpecNetworkInterfaceAliasIpRangeArgs(
+                    ip_cidr_range="/25",
+                    subnetwork_range_name="gke-test-native-vpc-pods-123456-vng",
+                )],
+                network="test-vng-network",
+                project_id="test-vng-network-project",
+            )],
+            node_pool_name="default-pool",
+            ocean_id="o-123456",
+            resource_limits=spotinst.gke.OceanLaunchSpecResourceLimitsArgs(
+                max_instance_count=3,
+                min_instance_count=0,
+            ),
+            restrict_scale_down=True,
+            root_volume_size=10,
+            root_volume_type="pd-standard",
+            scheduling_tasks=[spotinst.gke.OceanLaunchSpecSchedulingTaskArgs(
+                cron_expression="0 1 * * *",
+                is_enabled=True,
+                task_headrooms=[spotinst.gke.OceanLaunchSpecSchedulingTaskTaskHeadroomArgs(
+                    cpu_per_unit=1000,
+                    gpu_per_unit=0,
+                    memory_per_unit=2048,
+                    num_of_units=5,
+                )],
+                task_type="manualHeadroomUpdate",
+            )],
+            service_account="default",
+            shielded_instance_config=spotinst.gke.OceanLaunchSpecShieldedInstanceConfigArgs(
+                enable_integrity_monitoring=True,
+                enable_secure_boot=False,
+            ),
+            source_image="image",
+            storage=spotinst.gke.OceanLaunchSpecStorageArgs(
+                local_ssd_count=5,
+            ),
+            strategies=[spotinst.gke.OceanLaunchSpecStrategyArgs(
+                preemptible_percentage=30,
+            )],
+            tags=[
+                "tag1",
+                "tag2",
+            ],
+            taints=[spotinst.gke.OceanLaunchSpecTaintArgs(
+                effect="taintEffect",
+                key="taintKey",
+                value="taintVal",
+            )])
+        ```
+        ```python
+        import pulumi
+
+        pulumi.export("oceanLaunchspecId", spotinst_ocean_gke_launch_spec["example"]["id"])
+        ```
+        ## Update Policy
+
+        * `update_policy` - (Optional)
+          * `should_roll` - (Required) Enables the roll.
+          * `roll_config` - (Required) Holds the roll configuration.
+            * `batch_size_percentage` - (Required) Sets the percentage of the instances to deploy in each batch.
+
+        ```python
+        import pulumi
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecAutoscaleHeadroomArgs']]]] autoscale_headrooms: Set custom headroom per launch spec. provide list of headrooms object.
@@ -959,6 +1054,101 @@ class OceanLaunchSpec(pulumi.CustomResource):
         Manages a custom Spotinst Ocean GKE Launch Spec resource.
 
         > This resource can be imported from GKE node pool or not. If you want to import the node pool and create the VNG from it, please provide `node_pool_name`.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_spotinst as spotinst
+
+        example = spotinst.gke.OceanLaunchSpec("example",
+            autoscale_headrooms=[spotinst.gke.OceanLaunchSpecAutoscaleHeadroomArgs(
+                cpu_per_unit=1000,
+                gpu_per_unit=0,
+                memory_per_unit=2048,
+                num_of_units=5,
+            )],
+            autoscale_headrooms_automatics=[spotinst.gke.OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs(
+                auto_headroom_percentage=5,
+            )],
+            instance_types=["n1-standard-1, n1-standard-2"],
+            labels=[spotinst.gke.OceanLaunchSpecLabelArgs(
+                key="labelKey",
+                value="labelVal",
+            )],
+            metadatas=[spotinst.gke.OceanLaunchSpecMetadataArgs(
+                key="gci-update-strategy",
+                value="update_disabled",
+            )],
+            network_interfaces=[spotinst.gke.OceanLaunchSpecNetworkInterfaceArgs(
+                access_configs=[spotinst.gke.OceanLaunchSpecNetworkInterfaceAccessConfigArgs(
+                    name="external-nat-vng",
+                    type="ONE_TO_ONE_NAT",
+                )],
+                alias_ip_ranges=[spotinst.gke.OceanLaunchSpecNetworkInterfaceAliasIpRangeArgs(
+                    ip_cidr_range="/25",
+                    subnetwork_range_name="gke-test-native-vpc-pods-123456-vng",
+                )],
+                network="test-vng-network",
+                project_id="test-vng-network-project",
+            )],
+            node_pool_name="default-pool",
+            ocean_id="o-123456",
+            resource_limits=spotinst.gke.OceanLaunchSpecResourceLimitsArgs(
+                max_instance_count=3,
+                min_instance_count=0,
+            ),
+            restrict_scale_down=True,
+            root_volume_size=10,
+            root_volume_type="pd-standard",
+            scheduling_tasks=[spotinst.gke.OceanLaunchSpecSchedulingTaskArgs(
+                cron_expression="0 1 * * *",
+                is_enabled=True,
+                task_headrooms=[spotinst.gke.OceanLaunchSpecSchedulingTaskTaskHeadroomArgs(
+                    cpu_per_unit=1000,
+                    gpu_per_unit=0,
+                    memory_per_unit=2048,
+                    num_of_units=5,
+                )],
+                task_type="manualHeadroomUpdate",
+            )],
+            service_account="default",
+            shielded_instance_config=spotinst.gke.OceanLaunchSpecShieldedInstanceConfigArgs(
+                enable_integrity_monitoring=True,
+                enable_secure_boot=False,
+            ),
+            source_image="image",
+            storage=spotinst.gke.OceanLaunchSpecStorageArgs(
+                local_ssd_count=5,
+            ),
+            strategies=[spotinst.gke.OceanLaunchSpecStrategyArgs(
+                preemptible_percentage=30,
+            )],
+            tags=[
+                "tag1",
+                "tag2",
+            ],
+            taints=[spotinst.gke.OceanLaunchSpecTaintArgs(
+                effect="taintEffect",
+                key="taintKey",
+                value="taintVal",
+            )])
+        ```
+        ```python
+        import pulumi
+
+        pulumi.export("oceanLaunchspecId", spotinst_ocean_gke_launch_spec["example"]["id"])
+        ```
+        ## Update Policy
+
+        * `update_policy` - (Optional)
+          * `should_roll` - (Required) Enables the roll.
+          * `roll_config` - (Required) Holds the roll configuration.
+            * `batch_size_percentage` - (Required) Sets the percentage of the instances to deploy in each batch.
+
+        ```python
+        import pulumi
+        ```
 
         :param str resource_name: The name of the resource.
         :param OceanLaunchSpecArgs args: The arguments to use to populate this resource's properties.

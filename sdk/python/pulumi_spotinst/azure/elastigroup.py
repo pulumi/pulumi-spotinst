@@ -932,6 +932,51 @@ class Elastigroup(pulumi.CustomResource):
         * `draining_timeout` - (Optional, Default `120`) Time (seconds) to allow the instance to be drained from incoming TCP connections and detached from MLB before terminating it during a scale-down operation.
 
         <a id="image"></a>
+        ## Image
+
+        * `image` - (Required) Image of a VM. An image is a template for creating new VMs. Choose from Azure image catalogue (marketplace) or use a custom image.
+            * `publisher` - (Optional) Image publisher. Required if resource_group_name is not specified.
+            * `offer` - (Optional) Name of the image to use. Required if publisher is specified.
+            * `sku` - (Optional) Image's Stock Keeping Unit, which is the specific version of the image. Required if publisher is specified.
+            * `version` -
+            * `resource_group_name` - (Optional) Name of Resource Group for custom image. Required if publisher not specified.
+            * `image_name` - (Optional) Name of the custom image. Required if resource_group_name is specified.
+
+        ```python
+        import pulumi
+        ```
+
+        <a id="network"></a>
+        ## Network
+
+        * `network` - (Required) Defines the Virtual Network and Subnet for your Elastigroup.
+            * `virtual_network_name` - (Required) Name of Vnet.
+            * `resource_group_name` - (Required) Vnet Resource Group Name.
+            * `network_interfaces` -
+                * `subnet_name` - (Required) ID of subnet.
+                * `assign_public_up` - (Optional, Default: `false`) Assign a public IP to each VM in the Elastigroup.
+                * `is_primary` -
+                * `additional_ip_configs` - (Optional) Array of additional IP configuration objects.
+                    * `name` - (Required) The IP configuration name.
+                    * `private_ip_version` - (Optional) Available from Azure Api-Version 2017-03-30 onwards, it represents whether the specific ip configuration is IPv4 or IPv6. Valid values: `IPv4`, `IPv6`.
+                * `application_security_group` - (Optional) - List of Application Security Groups that will be associated to the primary ip configuration of the network interface.
+                    * `name` - (Required) - The name of the Application Security group.
+                    * `resource_group_name` - (Required) - The resource group of the Application Security Group.
+                      }
+        ```python
+        import pulumi
+        ```
+
+        ### Login
+
+        * `login` - (Required) Describes the login configuration.
+            * `user_name` - (Required) Set admin access for accessing your VMs.
+            * `ssh_public_key` - (Optional) SSH for admin access to Linux VMs. Required for Linux OS types.
+            * `password` - (Optional) Password for admin access to Windows VMs. Required for Windows OS types.
+
+        ```python
+        import pulumi
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -961,6 +1006,51 @@ class Elastigroup(pulumi.CustomResource):
         * `draining_timeout` - (Optional, Default `120`) Time (seconds) to allow the instance to be drained from incoming TCP connections and detached from MLB before terminating it during a scale-down operation.
 
         <a id="image"></a>
+        ## Image
+
+        * `image` - (Required) Image of a VM. An image is a template for creating new VMs. Choose from Azure image catalogue (marketplace) or use a custom image.
+            * `publisher` - (Optional) Image publisher. Required if resource_group_name is not specified.
+            * `offer` - (Optional) Name of the image to use. Required if publisher is specified.
+            * `sku` - (Optional) Image's Stock Keeping Unit, which is the specific version of the image. Required if publisher is specified.
+            * `version` -
+            * `resource_group_name` - (Optional) Name of Resource Group for custom image. Required if publisher not specified.
+            * `image_name` - (Optional) Name of the custom image. Required if resource_group_name is specified.
+
+        ```python
+        import pulumi
+        ```
+
+        <a id="network"></a>
+        ## Network
+
+        * `network` - (Required) Defines the Virtual Network and Subnet for your Elastigroup.
+            * `virtual_network_name` - (Required) Name of Vnet.
+            * `resource_group_name` - (Required) Vnet Resource Group Name.
+            * `network_interfaces` -
+                * `subnet_name` - (Required) ID of subnet.
+                * `assign_public_up` - (Optional, Default: `false`) Assign a public IP to each VM in the Elastigroup.
+                * `is_primary` -
+                * `additional_ip_configs` - (Optional) Array of additional IP configuration objects.
+                    * `name` - (Required) The IP configuration name.
+                    * `private_ip_version` - (Optional) Available from Azure Api-Version 2017-03-30 onwards, it represents whether the specific ip configuration is IPv4 or IPv6. Valid values: `IPv4`, `IPv6`.
+                * `application_security_group` - (Optional) - List of Application Security Groups that will be associated to the primary ip configuration of the network interface.
+                    * `name` - (Required) - The name of the Application Security group.
+                    * `resource_group_name` - (Required) - The resource group of the Application Security Group.
+                      }
+        ```python
+        import pulumi
+        ```
+
+        ### Login
+
+        * `login` - (Required) Describes the login configuration.
+            * `user_name` - (Required) Set admin access for accessing your VMs.
+            * `ssh_public_key` - (Optional) SSH for admin access to Linux VMs. Required for Linux OS types.
+            * `password` - (Optional) Password for admin access to Windows VMs. Required for Windows OS types.
+
+        ```python
+        import pulumi
+        ```
 
         :param str resource_name: The name of the resource.
         :param ElastigroupArgs args: The arguments to use to populate this resource's properties.

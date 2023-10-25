@@ -167,6 +167,20 @@ class DataIntegration(pulumi.CustomResource):
         """
         Provides a Spotinst Data Integration resource.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_spotinst as spotinst
+
+        example = spotinst.DataIntegration("example",
+            s3=spotinst.DataIntegrationS3Args(
+                bucket_name="terraform-test-do-not-delete",
+                subdir="terraform-test-data-integration",
+            ),
+            status="enabled")
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: The name of the data integration.
@@ -181,6 +195,20 @@ class DataIntegration(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a Spotinst Data Integration resource.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_spotinst as spotinst
+
+        example = spotinst.DataIntegration("example",
+            s3=spotinst.DataIntegrationS3Args(
+                bucket_name="terraform-test-do-not-delete",
+                subdir="terraform-test-data-integration",
+            ),
+            status="enabled")
+        ```
 
         :param str resource_name: The name of the resource.
         :param DataIntegrationArgs args: The arguments to use to populate this resource's properties.

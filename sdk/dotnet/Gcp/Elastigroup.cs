@@ -11,6 +11,153 @@ namespace Pulumi.SpotInst.Gcp
 {
     /// <summary>
     /// Provides a Spotinst elastigroup GCP resource.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using SpotInst = Pulumi.SpotInst;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new SpotInst.Gcp.Elastigroup("example", new()
+    ///     {
+    ///         AvailabilityZones = new[]
+    ///         {
+    ///             "asia-east1-c",
+    ///             "us-central1-a",
+    ///         },
+    ///         BackendServices = new[]
+    ///         {
+    ///             new SpotInst.Gcp.Inputs.ElastigroupBackendServiceArgs
+    ///             {
+    ///                 LocationType = "regional",
+    ///                 NamedPorts = new[]
+    ///                 {
+    ///                     new SpotInst.Gcp.Inputs.ElastigroupBackendServiceNamedPortArgs
+    ///                     {
+    ///                         Name = "port-name",
+    ///                         Ports = new[]
+    ///                         {
+    ///                             "8000",
+    ///                             "6000",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///                 Scheme = "INTERNAL",
+    ///                 ServiceName = "spotinst-elb-backend-service",
+    ///             },
+    ///         },
+    ///         Description = "spotinst gcp group",
+    ///         DesiredCapacity = 1,
+    ///         Disks = new[]
+    ///         {
+    ///             new SpotInst.Gcp.Inputs.ElastigroupDiskArgs
+    ///             {
+    ///                 AutoDelete = true,
+    ///                 Boot = true,
+    ///                 DeviceName = "device",
+    ///                 InitializeParams = new[]
+    ///                 {
+    ///                     new SpotInst.Gcp.Inputs.ElastigroupDiskInitializeParamArgs
+    ///                     {
+    ///                         DiskSizeGb = "10",
+    ///                         DiskType = "pd-standard",
+    ///                         SourceImage = "",
+    ///                     },
+    ///                 },
+    ///                 Interface = "SCSI",
+    ///                 Mode = "READ_WRITE",
+    ///                 Type = "PERSISTENT",
+    ///             },
+    ///         },
+    ///         DrainingTimeout = 180,
+    ///         FallbackToOndemand = true,
+    ///         InstanceNamePrefix = "test-123a",
+    ///         InstanceTypesCustoms = new[]
+    ///         {
+    ///             new SpotInst.Gcp.Inputs.ElastigroupInstanceTypesCustomArgs
+    ///             {
+    ///                 MemoryGib = 7,
+    ///                 Vcpu = 2,
+    ///             },
+    ///         },
+    ///         InstanceTypesOndemand = "n1-standard-1",
+    ///         InstanceTypesPreemptibles = new[]
+    ///         {
+    ///             "n1-standard-1",
+    ///             "n1-standard-2",
+    ///         },
+    ///         Labels = new[]
+    ///         {
+    ///             new SpotInst.Gcp.Inputs.ElastigroupLabelArgs
+    ///             {
+    ///                 Key = "test_key",
+    ///                 Value = "test_value",
+    ///             },
+    ///         },
+    ///         MaxSize = 1,
+    ///         MinSize = 0,
+    ///         NetworkInterfaces = new[]
+    ///         {
+    ///             new SpotInst.Gcp.Inputs.ElastigroupNetworkInterfaceArgs
+    ///             {
+    ///                 Network = "spot-network",
+    ///             },
+    ///         },
+    ///         PreemptiblePercentage = 50,
+    ///         ProvisioningModel = "SPOT",
+    ///         ScalingUpPolicies = new[]
+    ///         {
+    ///             new SpotInst.Gcp.Inputs.ElastigroupScalingUpPolicyArgs
+    ///             {
+    ///                 ActionType = "adjustment",
+    ///                 Adjustment = 1,
+    ///                 Cooldown = 300,
+    ///                 Dimensions = new[]
+    ///                 {
+    ///                     new SpotInst.Gcp.Inputs.ElastigroupScalingUpPolicyDimensionArgs
+    ///                     {
+    ///                         Name = "storage_type",
+    ///                         Value = "pd-ssd",
+    ///                     },
+    ///                 },
+    ///                 EvaluationPeriods = 1,
+    ///                 MetricName = "instance/disk/read_ops_count",
+    ///                 Namespace = "compute",
+    ///                 Operator = "gte",
+    ///                 Period = 300,
+    ///                 PolicyName = "scale_up_1",
+    ///                 Source = "stackdriver",
+    ///                 Statistic = "average",
+    ///                 Threshold = 10000,
+    ///                 Unit = "percent",
+    ///             },
+    ///         },
+    ///         ServiceAccount = "example@myProject.iam.gservicecct.com",
+    ///         StartupScript = "",
+    ///         Subnets = new[]
+    ///         {
+    ///             new SpotInst.Gcp.Inputs.ElastigroupSubnetArgs
+    ///             {
+    ///                 Region = "asia-east1",
+    ///                 SubnetNames = new[]
+    ///                 {
+    ///                     "default",
+    ///                 },
+    ///             },
+    ///         },
+    ///         Tags = new[]
+    ///         {
+    ///             "http",
+    ///             "https",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [SpotInstResourceType("spotinst:gcp/elastigroup:Elastigroup")]
     public partial class Elastigroup : global::Pulumi.CustomResource
@@ -216,6 +363,16 @@ namespace Pulumi.SpotInst.Gcp
 
         /// <summary>
         /// Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        /// });
+        /// ```
         /// </summary>
         [Output("unhealthyDuration")]
         public Output<int?> UnhealthyDuration { get; private set; } = null!;
@@ -550,6 +707,16 @@ namespace Pulumi.SpotInst.Gcp
 
         /// <summary>
         /// Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        /// });
+        /// ```
         /// </summary>
         [Input("unhealthyDuration")]
         public Input<int>? UnhealthyDuration { get; set; }
@@ -846,6 +1013,16 @@ namespace Pulumi.SpotInst.Gcp
 
         /// <summary>
         /// Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        /// });
+        /// ```
         /// </summary>
         [Input("unhealthyDuration")]
         public Input<int>? UnhealthyDuration { get; set; }

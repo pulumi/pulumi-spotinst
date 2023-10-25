@@ -9,6 +9,41 @@ using Pulumi.Serialization;
 
 namespace Pulumi.SpotInst.Aws
 {
+    /// <summary>
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using SpotInst = Pulumi.SpotInst;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Create a suspension for Elastigroup
+    ///     var resourceName = new SpotInst.Aws.Suspension("resourceName", new()
+    ///     {
+    ///         GroupId = "sig-12345678",
+    ///         Suspensions = new[]
+    ///         {
+    ///             new SpotInst.Aws.Inputs.SuspensionSuspensionArgs
+    ///             {
+    ///                 Name = "OUT_OF_STRATEGY",
+    ///             },
+    ///             new SpotInst.Aws.Inputs.SuspensionSuspensionArgs
+    ///             {
+    ///                 Name = "REVERT_PREFERRED",
+    ///             },
+    ///             new SpotInst.Aws.Inputs.SuspensionSuspensionArgs
+    ///             {
+    ///                 Name = "PREVENTIVE_REPLACEMENT",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// </summary>
     [SpotInstResourceType("spotinst:aws/suspension:Suspension")]
     public partial class Suspension : global::Pulumi.CustomResource
     {

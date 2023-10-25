@@ -21,6 +21,16 @@ namespace Pulumi.SpotInst.Aws.Outputs
         /// String, Action type. Supported action types: `pause`, `resume`, `recycle`, `deallocate`.
         /// 
         /// Usage:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        /// });
+        /// ```
         /// </summary>
         public readonly string Type;
 

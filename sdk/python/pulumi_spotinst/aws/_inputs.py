@@ -452,6 +452,10 @@ class BeanstalkScheduledTaskArgs:
         :param pulumi.Input[str] adjustment_percentage: The percentage of instances to add or remove.
                
                Usage:
+               
+               ```python
+               import pulumi
+               ```
         :param pulumi.Input[str] batch_size_percentage: The percentage size of each batch in the scheduled deployment roll.
         :param pulumi.Input[str] cron_expression: A valid cron expression. The cron is running in UTC time zone and is in [Unix cron format](https://en.wikipedia.org/wiki/Cron).
         :param pulumi.Input[str] frequency: The recurrence frequency to run this task. Supported values are `"hourly"`, `"daily"`, `"weekly"` and `"continuous"`.
@@ -593,6 +597,10 @@ class BeanstalkScheduledTaskArgs:
         The percentage of instances to add or remove.
 
         Usage:
+
+        ```python
+        import pulumi
+        ```
         """
         return pulumi.get(self, "adjustment_percentage")
 
@@ -806,6 +814,10 @@ class ElastigroupEbsBlockDeviceArgs:
                Modifying any `ebs_block_device` currently requires resource replacement.
                
                Usage:
+               
+               ```python
+               import pulumi
+               ```
         :param pulumi.Input[int] volume_size: The size of the volume in gigabytes.
         :param pulumi.Input[str] volume_type: The type of volume. Can be `"standard"`, `"gp2"`, `"gp3"`, `"io1"`, `"st1"` or `"sc1"`.
         """
@@ -949,6 +961,10 @@ class ElastigroupEbsBlockDeviceArgs:
         Modifying any `ebs_block_device` currently requires resource replacement.
 
         Usage:
+
+        ```python
+        import pulumi
+        ```
         """
         return pulumi.get(self, "throughput")
 
@@ -992,6 +1008,10 @@ class ElastigroupEphemeralBlockDeviceArgs:
                (e.g. `"ephemeral0"`).
                
                Usage:
+               
+               ```python
+               import pulumi
+               ```
         """
         ElastigroupEphemeralBlockDeviceArgs._configure(
             lambda key, value: pulumi.set(__self__, key, value),
@@ -1037,6 +1057,10 @@ class ElastigroupEphemeralBlockDeviceArgs:
         (e.g. `"ephemeral0"`).
 
         Usage:
+
+        ```python
+        import pulumi
+        ```
         """
         return pulumi.get(self, "virtual_name")
 
@@ -1433,6 +1457,10 @@ class ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdateArgs:
         :param pulumi.Input[str] update_level: Level to update
                
                Usage:
+               
+               ```python
+               import pulumi
+               ```
         """
         ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdateArgs._configure(
             lambda key, value: pulumi.set(__self__, key, value),
@@ -1493,6 +1521,10 @@ class ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdateArgs:
         Level to update
 
         Usage:
+
+        ```python
+        import pulumi
+        ```
         """
         return pulumi.get(self, "update_level")
 
@@ -1590,6 +1622,10 @@ class ElastigroupIntegrationCodedeployDeploymentGroupArgs:
         :param pulumi.Input[str] deployment_group_name: The deployment group name.
                
                Usage:
+               
+               ```python
+               import pulumi
+               ```
         """
         ElastigroupIntegrationCodedeployDeploymentGroupArgs._configure(
             lambda key, value: pulumi.set(__self__, key, value),
@@ -1634,6 +1670,10 @@ class ElastigroupIntegrationCodedeployDeploymentGroupArgs:
         The deployment group name.
 
         Usage:
+
+        ```python
+        import pulumi
+        ```
         """
         return pulumi.get(self, "deployment_group_name")
 
@@ -2297,6 +2337,10 @@ class ElastigroupIntegrationEcsBatchArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] job_queue_names: Array of strings.
                
                Usage:
+               
+               ```python
+               import pulumi
+               ```
         """
         ElastigroupIntegrationEcsBatchArgs._configure(
             lambda key, value: pulumi.set(__self__, key, value),
@@ -2322,6 +2366,10 @@ class ElastigroupIntegrationEcsBatchArgs:
         Array of strings.
 
         Usage:
+
+        ```python
+        import pulumi
+        ```
         """
         return pulumi.get(self, "job_queue_names")
 
@@ -2417,6 +2465,10 @@ class ElastigroupIntegrationKubernetesArgs:
         :param pulumi.Input[str] api_server: The public IP of the DC/OS Master.
                
                Usage:
+               
+               ```python
+               import pulumi
+               ```
         :param pulumi.Input[int] autoscale_cooldown: The amount of time, in seconds, after a scaling activity completes before any further trigger-related scaling activities can start.
         :param pulumi.Input['ElastigroupIntegrationKubernetesAutoscaleDownArgs'] autoscale_down: Settings for scale down actions.
         :param pulumi.Input['ElastigroupIntegrationKubernetesAutoscaleHeadroomArgs'] autoscale_headroom: An option to set compute reserve for the cluster.
@@ -2425,6 +2477,10 @@ class ElastigroupIntegrationKubernetesArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ElastigroupIntegrationKubernetesAutoscaleLabelArgs']]] autoscale_labels: A key/value mapping of tags to assign to the resource.
                
                Usage:
+               
+               ```python
+               import pulumi
+               ```
         :param pulumi.Input[str] integration_mode: Valid values: `"saas"`, `"pod"`.
         :param pulumi.Input[str] token: Kubernetes Token
         """
@@ -2503,6 +2559,10 @@ class ElastigroupIntegrationKubernetesArgs:
         The public IP of the DC/OS Master.
 
         Usage:
+
+        ```python
+        import pulumi
+        ```
         """
         return pulumi.get(self, "api_server")
 
@@ -2577,6 +2637,10 @@ class ElastigroupIntegrationKubernetesArgs:
         A key/value mapping of tags to assign to the resource.
 
         Usage:
+
+        ```python
+        import pulumi
+        ```
         """
         return pulumi.get(self, "autoscale_labels")
 
@@ -2808,6 +2872,10 @@ class ElastigroupIntegrationMesosphereArgs:
         :param pulumi.Input[str] api_server: The public IP of the DC/OS Master.
                
                Usage:
+               
+               ```python
+               import pulumi
+               ```
         """
         ElastigroupIntegrationMesosphereArgs._configure(
             lambda key, value: pulumi.set(__self__, key, value),
@@ -2833,6 +2901,10 @@ class ElastigroupIntegrationMesosphereArgs:
         The public IP of the DC/OS Master.
 
         Usage:
+
+        ```python
+        import pulumi
+        ```
         """
         return pulumi.get(self, "api_server")
 
@@ -2849,6 +2921,10 @@ class ElastigroupIntegrationMultaiRuntimeArgs:
         :param pulumi.Input[str] deployment_id: The deployment id you want to get
                
                Usage:
+               
+               ```python
+               import pulumi
+               ```
         """
         ElastigroupIntegrationMultaiRuntimeArgs._configure(
             lambda key, value: pulumi.set(__self__, key, value),
@@ -2874,6 +2950,10 @@ class ElastigroupIntegrationMultaiRuntimeArgs:
         The deployment id you want to get
 
         Usage:
+
+        ```python
+        import pulumi
+        ```
         """
         return pulumi.get(self, "deployment_id")
 
@@ -2900,6 +2980,10 @@ class ElastigroupIntegrationNomadArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ElastigroupIntegrationNomadAutoscaleConstraintArgs']]] autoscale_constraints: A key/value mapping of tags to assign to the resource.
                
                Usage:
+               
+               ```python
+               import pulumi
+               ```
         :param pulumi.Input[int] autoscale_cooldown: The amount of time, in seconds, after a scaling activity completes before any further trigger-related scaling activities can start.
         :param pulumi.Input['ElastigroupIntegrationNomadAutoscaleDownArgs'] autoscale_down: Settings for scale down actions.
         :param pulumi.Input['ElastigroupIntegrationNomadAutoscaleHeadroomArgs'] autoscale_headroom: An option to set compute reserve for the cluster.
@@ -3008,6 +3092,10 @@ class ElastigroupIntegrationNomadArgs:
         A key/value mapping of tags to assign to the resource.
 
         Usage:
+
+        ```python
+        import pulumi
+        ```
         """
         return pulumi.get(self, "autoscale_constraints")
 
@@ -3239,6 +3327,10 @@ class ElastigroupIntegrationRancherArgs:
         :param pulumi.Input[str] secret_key: The secret key of the Rancher API.
         :param pulumi.Input[str] version: The Rancher version. Must be `"1"` or `"2"`. If this field is omitted, it’s assumed that the Rancher cluster is version 1. Note that Kubernetes is required when using Rancher version 2^.
                Usage:
+               
+               ```python
+               import pulumi
+               ```
         """
         ElastigroupIntegrationRancherArgs._configure(
             lambda key, value: pulumi.set(__self__, key, value),
@@ -3317,6 +3409,10 @@ class ElastigroupIntegrationRancherArgs:
         """
         The Rancher version. Must be `"1"` or `"2"`. If this field is omitted, it’s assumed that the Rancher cluster is version 1. Note that Kubernetes is required when using Rancher version 2^.
         Usage:
+
+        ```python
+        import pulumi
+        ```
         """
         return pulumi.get(self, "version")
 
@@ -3469,6 +3565,10 @@ class ElastigroupIntegrationRoute53DomainRecordSetArgs:
         :param pulumi.Input[bool] use_public_dns: Designates whether the DNS address should be exposed to connections outside the VPC.
                
                Usage:
+               
+               ```python
+               import pulumi
+               ```
         :param pulumi.Input[bool] use_public_ip: Designates whether the IP address should be exposed to connections outside the VPC.
         """
         ElastigroupIntegrationRoute53DomainRecordSetArgs._configure(
@@ -3517,6 +3617,10 @@ class ElastigroupIntegrationRoute53DomainRecordSetArgs:
         Designates whether the DNS address should be exposed to connections outside the VPC.
 
         Usage:
+
+        ```python
+        import pulumi
+        ```
         """
         return pulumi.get(self, "use_public_dns")
 
@@ -4237,6 +4341,10 @@ class ElastigroupMultaiTargetSetArgs:
         :param pulumi.Input[str] balancer_id: ID of Multai Load Balancer.
                
                Usage:
+               
+               ```python
+               import pulumi
+               ```
         :param pulumi.Input[str] target_set_id: ID of Multai target set.
         """
         ElastigroupMultaiTargetSetArgs._configure(
@@ -4270,6 +4378,10 @@ class ElastigroupMultaiTargetSetArgs:
         ID of Multai Load Balancer.
 
         Usage:
+
+        ```python
+        import pulumi
+        ```
         """
         return pulumi.get(self, "balancer_id")
 
@@ -4614,6 +4726,10 @@ class ElastigroupNetworkInterfaceArgs:
         :param pulumi.Input[bool] associate_ipv6_address: Indicates whether to assign IPV6 addresses to your instance. Requires a subnet with IPV6 CIDR block ranges.
                
                Usage:
+               
+               ```python
+               import pulumi
+               ```
         :param pulumi.Input[bool] associate_public_ip_address: Indicates whether to assign a public IP address to an instance you launch in a VPC. The public IP address can only be assigned to a network interface for eth0, and can only be assigned to a new network interface, not an existing one.
         :param pulumi.Input[bool] delete_on_termination: Whether the volume should be destroyed on instance termination.
         :param pulumi.Input[str] description: The group description.
@@ -4697,6 +4813,10 @@ class ElastigroupNetworkInterfaceArgs:
         Indicates whether to assign IPV6 addresses to your instance. Requires a subnet with IPV6 CIDR block ranges.
 
         Usage:
+
+        ```python
+        import pulumi
+        ```
         """
         return pulumi.get(self, "associate_ipv6_address")
 
@@ -5908,6 +6028,14 @@ class ElastigroupScalingTargetPolicyArgs:
         :param pulumi.Input[str] predictive_mode: Start a metric prediction process to determine the expected target metric value within the next two days. See [Predictive Autoscaling](https://api.spotinst.com/elastigroup-for-aws/concepts/scaling-concepts/predictive-autoscaling/) documentation for more info. Valid values: `FORECAST_AND_SCALE`, `FORECAST_ONLY`.
                
                Usage:
+               
+               ```python
+               import pulumi
+               ```
+               
+               ```python
+               import pulumi
+               ```
         :param pulumi.Input[str] source: String, the source of the metric. Valid values: `"cloudWatch"`, `"spectrum"`.
         :param pulumi.Input[str] statistic: String, the metric statistics to return. For information about specific statistics go to [Statistics](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/index.html?CHAP_TerminologyandKeyConcepts.html#Statistic) in the Amazon CloudWatch Developer Guide.
         :param pulumi.Input[str] unit: String, tThe unit for the alarm's associated metric. Valid values: `"percent`, `"seconds"`, `"microseconds"`, `"milliseconds"`, `"bytes"`, `"kilobytes"`, `"megabytes"`, `"gigabytes"`, `"terabytes"`, `"bits"`, `"kilobits"`, `"megabits"`, `"gigabits"`, `"terabits"`, `"count"`, `"bytes/second"`, `"kilobytes/second"`, `"megabytes/second"`, `"gigabytes/second"`, `"terabytes/second"`, `"bits/second"`, `"kilobits/second"`, `"megabits/second"`, `"gigabits/second"`, `"terabits/second"`, `"count/second"`, `"none"`.
@@ -6105,6 +6233,14 @@ class ElastigroupScalingTargetPolicyArgs:
         Start a metric prediction process to determine the expected target metric value within the next two days. See [Predictive Autoscaling](https://api.spotinst.com/elastigroup-for-aws/concepts/scaling-concepts/predictive-autoscaling/) documentation for more info. Valid values: `FORECAST_AND_SCALE`, `FORECAST_ONLY`.
 
         Usage:
+
+        ```python
+        import pulumi
+        ```
+
+        ```python
+        import pulumi
+        ```
         """
         return pulumi.get(self, "predictive_mode")
 
@@ -6919,6 +7055,10 @@ class ElastigroupScheduledTaskArgs:
         :param pulumi.Input[str] adjustment_percentage: The percentage of instances to add or remove.
                
                Usage:
+               
+               ```python
+               import pulumi
+               ```
         :param pulumi.Input[str] batch_size_percentage: The percentage size of each batch in the scheduled deployment roll.
         :param pulumi.Input[str] cron_expression: A valid cron expression. The cron is running in UTC time zone and is in [Unix cron format](https://en.wikipedia.org/wiki/Cron).
         :param pulumi.Input[str] frequency: The recurrence frequency to run this task. Supported values are `"hourly"`, `"daily"`, `"weekly"` and `"continuous"`.
@@ -7060,6 +7200,10 @@ class ElastigroupScheduledTaskArgs:
         The percentage of instances to add or remove.
 
         Usage:
+
+        ```python
+        import pulumi
+        ```
         """
         return pulumi.get(self, "adjustment_percentage")
 
@@ -7222,6 +7366,10 @@ class ElastigroupSignalArgs:
         :param pulumi.Input[int] timeout: The signals defined timeout- default is 40 minutes (1800 seconds).
                
                Usage:
+               
+               ```python
+               import pulumi
+               ```
         """
         ElastigroupSignalArgs._configure(
             lambda key, value: pulumi.set(__self__, key, value),
@@ -7261,6 +7409,10 @@ class ElastigroupSignalArgs:
         The signals defined timeout- default is 40 minutes (1800 seconds).
 
         Usage:
+
+        ```python
+        import pulumi
+        ```
         """
         return pulumi.get(self, "timeout")
 
@@ -7282,6 +7434,10 @@ class ElastigroupStatefulDeallocationArgs:
         :param pulumi.Input[bool] should_delete_snapshots: For stateful groups: remove snapshots.
                
                Usage:
+               
+               ```python
+               import pulumi
+               ```
         :param pulumi.Input[bool] should_delete_volumes: For stateful groups: remove persistent volumes.
         """
         ElastigroupStatefulDeallocationArgs._configure(
@@ -7349,6 +7505,10 @@ class ElastigroupStatefulDeallocationArgs:
         For stateful groups: remove snapshots.
 
         Usage:
+
+        ```python
+        import pulumi
+        ```
         """
         return pulumi.get(self, "should_delete_snapshots")
 
@@ -7379,6 +7539,10 @@ class ElastigroupStatefulInstanceActionArgs:
         :param pulumi.Input[str] type: String, Action type. Supported action types: `pause`, `resume`, `recycle`, `deallocate`.
                
                Usage:
+               
+               ```python
+               import pulumi
+               ```
         """
         ElastigroupStatefulInstanceActionArgs._configure(
             lambda key, value: pulumi.set(__self__, key, value),
@@ -7421,6 +7585,10 @@ class ElastigroupStatefulInstanceActionArgs:
         String, Action type. Supported action types: `pause`, `resume`, `recycle`, `deallocate`.
 
         Usage:
+
+        ```python
+        import pulumi
+        ```
         """
         return pulumi.get(self, "type")
 
@@ -7817,6 +7985,10 @@ class ElastigroupUpdatePolicyRollConfigStrategyOnFailureArgs:
         :param pulumi.Input[str] action_type: The type of action to perform for scaling. Valid values: `"adjustment"`, `"percentageAdjustment"`, `"setMaxTarget"`, `"setMinTarget"`, `"updateCapacity"`. If a `step_adjustment` object is defined, then it cannot be specified.
         :param pulumi.Input[int] draining_timeout: The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
         :param pulumi.Input[bool] should_decrement_target_capacity: Decrementing the group target capacity after detaching the instances.
+               
+               ```python
+               import pulumi
+               ```
         :param pulumi.Input[bool] should_handle_all_batches: Indicator if the action should apply to all batches of the deployment or only the latest batch.
         """
         ElastigroupUpdatePolicyRollConfigStrategyOnFailureArgs._configure(
@@ -7898,6 +8070,10 @@ class ElastigroupUpdatePolicyRollConfigStrategyOnFailureArgs:
     def should_decrement_target_capacity(self) -> Optional[pulumi.Input[bool]]:
         """
         Decrementing the group target capacity after detaching the instances.
+
+        ```python
+        import pulumi
+        ```
         """
         return pulumi.get(self, "should_decrement_target_capacity")
 

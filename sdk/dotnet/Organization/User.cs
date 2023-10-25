@@ -11,6 +11,44 @@ namespace Pulumi.SpotInst.Organization
 {
     /// <summary>
     /// Provides a Spotinst User in the creator's organization.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using SpotInst = Pulumi.SpotInst;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var terraformUser = new SpotInst.Organization.User("terraformUser", new()
+    ///     {
+    ///         Email = "abc@xyz.com",
+    ///         FirstName = "test",
+    ///         LastName = "user",
+    ///         Password = "testUser@123",
+    ///         Policies = new[]
+    ///         {
+    ///             new SpotInst.Organization.Inputs.UserPolicyArgs
+    ///             {
+    ///                 PolicyAccountIds = new[]
+    ///                 {
+    ///                     "act-abcf4245",
+    ///                 },
+    ///                 PolicyId = "pol-abcd1236",
+    ///             },
+    ///         },
+    ///         Role = "viewer",
+    ///         UserGroupIds = new[]
+    ///         {
+    ///             "ugr-abcd1234",
+    ///             "ugr-defg8763",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [SpotInstResourceType("spotinst:organization/user:User")]
     public partial class User : global::Pulumi.CustomResource

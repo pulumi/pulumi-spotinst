@@ -567,6 +567,43 @@ class Beanstalk(pulumi.CustomResource):
         """
         Provides a Spotinst AWS group resource using Elastic Beanstalk.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_spotinst as spotinst
+
+        elastigoup_aws_beanstalk = spotinst.aws.Beanstalk("elastigoup-aws-beanstalk",
+            beanstalk_environment_id="e-example",
+            beanstalk_environment_name="example-env",
+            deployment_preferences=spotinst.aws.BeanstalkDeploymentPreferencesArgs(
+                automatic_roll=True,
+                batch_size_percentage=100,
+                grace_period=90,
+                strategies=[spotinst.aws.BeanstalkDeploymentPreferencesStrategyArgs(
+                    action="REPLACE_SERVER",
+                    should_drain_instances=True,
+                )],
+            ),
+            desired_capacity=0,
+            instance_types_spots=[
+                "t2.micro",
+                "t2.medium",
+                "t2.large",
+            ],
+            managed_actions=spotinst.aws.BeanstalkManagedActionsArgs(
+                platform_update=spotinst.aws.BeanstalkManagedActionsPlatformUpdateArgs(
+                    perform_at="timeWindow",
+                    time_window="Mon:23:50-Tue:00:20",
+                    update_level="minorAndPatch",
+                ),
+            ),
+            max_size=1,
+            min_size=0,
+            product="Linux/UNIX",
+            region="us-west-2")
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] beanstalk_environment_id: The id of an existing Beanstalk environment.
@@ -590,6 +627,43 @@ class Beanstalk(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a Spotinst AWS group resource using Elastic Beanstalk.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_spotinst as spotinst
+
+        elastigoup_aws_beanstalk = spotinst.aws.Beanstalk("elastigoup-aws-beanstalk",
+            beanstalk_environment_id="e-example",
+            beanstalk_environment_name="example-env",
+            deployment_preferences=spotinst.aws.BeanstalkDeploymentPreferencesArgs(
+                automatic_roll=True,
+                batch_size_percentage=100,
+                grace_period=90,
+                strategies=[spotinst.aws.BeanstalkDeploymentPreferencesStrategyArgs(
+                    action="REPLACE_SERVER",
+                    should_drain_instances=True,
+                )],
+            ),
+            desired_capacity=0,
+            instance_types_spots=[
+                "t2.micro",
+                "t2.medium",
+                "t2.large",
+            ],
+            managed_actions=spotinst.aws.BeanstalkManagedActionsArgs(
+                platform_update=spotinst.aws.BeanstalkManagedActionsPlatformUpdateArgs(
+                    perform_at="timeWindow",
+                    time_window="Mon:23:50-Tue:00:20",
+                    update_level="minorAndPatch",
+                ),
+            ),
+            max_size=1,
+            min_size=0,
+            product="Linux/UNIX",
+            region="us-west-2")
+        ```
 
         :param str resource_name: The name of the resource.
         :param BeanstalkArgs args: The arguments to use to populate this resource's properties.

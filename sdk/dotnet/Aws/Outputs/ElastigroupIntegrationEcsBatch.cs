@@ -17,6 +17,16 @@ namespace Pulumi.SpotInst.Aws.Outputs
         /// Array of strings.
         /// 
         /// Usage:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        /// });
+        /// ```
         /// </summary>
         public readonly ImmutableArray<string> JobQueueNames;
 

@@ -11,6 +11,131 @@ namespace Pulumi.SpotInst.Gke
 {
     /// <summary>
     /// Manages a Spotinst Ocean GKE resource.
+    /// 
+    /// ## Prerequisites
+    /// 
+    /// Installation of the Ocean controller is required by this resource. You can accomplish this by using the spotinst/ocean-controller module as follows:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    /// });
+    /// ```
+    /// 
+    /// &gt; You must configure the same `cluster_identifier` both for the Ocean controller and for the `spotinst.gke.OceanImport` resource.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using SpotInst = Pulumi.SpotInst;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new SpotInst.Gke.OceanImport("example", new()
+    ///     {
+    ///         BackendServices = new[]
+    ///         {
+    ///             new SpotInst.Gke.Inputs.OceanImportBackendServiceArgs
+    ///             {
+    ///                 LocationType = "regional",
+    ///                 NamedPorts = new[]
+    ///                 {
+    ///                     new SpotInst.Gke.Inputs.OceanImportBackendServiceNamedPortArgs
+    ///                     {
+    ///                         Name = "http",
+    ///                         Ports = new[]
+    ///                         {
+    ///                             "80",
+    ///                             "8080",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///                 Scheme = "INTERNAL",
+    ///                 ServiceName = "example-backend-service",
+    ///             },
+    ///         },
+    ///         ClusterName = "example-cluster-name",
+    ///         ControllerClusterId = "example-controller-123124",
+    ///         DesiredCapacity = 0,
+    ///         Location = "us-central1-a",
+    ///         MaxSize = 2,
+    ///         MinSize = 0,
+    ///         RootVolumeType = "pd-ssd",
+    ///         ShieldedInstanceConfig = new SpotInst.Gke.Inputs.OceanImportShieldedInstanceConfigArgs
+    ///         {
+    ///             EnableIntegrityMonitoring = true,
+    ///             EnableSecureBoot = true,
+    ///         },
+    ///         UseAsTemplateOnly = false,
+    ///         Whitelists = new[]
+    ///         {
+    ///             "n1-standard-1",
+    ///             "n1-standard-2",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     return new Dictionary&lt;string, object?&gt;
+    ///     {
+    ///         ["oceanId"] = spotinst_ocean_gke_import.Example.Id,
+    ///     };
+    /// });
+    /// ```
+    /// ## Strategy
+    /// 
+    /// * `strategy` - (Optional) Strategy object.
+    ///     * `draining_timeout` - (Optional) The draining timeout (in seconds) before terminating the instance. If no draining timeout is defined, the default draining timeout will be used.
+    ///     * `provisioning_model` - (Optional) Define the provisioning model of the launched instances. Valid values: `SPOT`, `PREEMPTIBLE`.
+    ///     * `preemptible_percentage`- (Optional) Defines the desired preemptible percentage for the cluster.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    /// });
+    /// ```
+    /// 
+    /// &lt;a id="update-policy"&gt;&lt;/a&gt;
+    /// ## Update Policy
+    /// 
+    /// * `update_policy` - (Optional)
+    ///     * `should_roll` - (Required) Enables the roll.
+    ///     * `conditioned_roll` - (Optional, Default: false) Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as AMI, Key Pair, user data, instance types, load balancers, etc).
+    ///   
+    ///     * `roll_config` - (Required) Holds the roll configuration.
+    ///         * `batch_size_percentage` - (Required) Sets the percentage of the instances to deploy in each batch.
+    ///         * `launch_spec_ids` - (Optional) List of Virtual Node Group identifiers to be rolled.
+    ///         * `batch_min_healthy_percentage` - (Optional) Default: 50. Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
+    ///         * `respect_pdb` - (Optional) Default: False. During the roll, if the parameter is set to True we honor PDB during the instance replacement.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    /// });
+    /// ```
     /// </summary>
     [SpotInstResourceType("spotinst:gke/oceanImport:OceanImport")]
     public partial class OceanImport : global::Pulumi.CustomResource

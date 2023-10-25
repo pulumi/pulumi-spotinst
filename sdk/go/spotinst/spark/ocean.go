@@ -18,6 +18,89 @@ import (
 // ## Prerequisites
 //
 // An existing Ocean cluster is required by this resource. See e.g. the `aws.Ocean` resource.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst/spark"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := spark.NewOcean(ctx, "example", &spark.OceanArgs{
+//				OceanClusterId: pulumi.String("ocean-cluster-id"),
+//				Ingress: &spark.OceanIngressArgs{
+//					Controller: &spark.OceanIngressControllerArgs{
+//						Managed: pulumi.Bool(true),
+//					},
+//					LoadBalancer: &spark.OceanIngressLoadBalancerArgs{
+//						Managed:        pulumi.Bool(true),
+//						TargetGroupArn: pulumi.String("arn:aws:elasticloadbalancing:eu-north-1:XXXXXXXXXXXX:targetgroup/my-spark-cluster-nlb-tg/a38c2b83XXXXXXXX"),
+//						ServiceAnnotations: pulumi.StringMap{
+//							"service.beta.kubernetes.io/aws-load-balancer-security-groups": pulumi.String("sg-XXXXXXXXXXXXXXXXX"),
+//							"some-service-annotation-2":                                    pulumi.String("some-service-annotation-value-2"),
+//						},
+//					},
+//					CustomEndpoint: &spark.OceanIngressCustomEndpointArgs{
+//						Enabled: pulumi.Bool(false),
+//						Address: pulumi.String("my-spark-cluster-nlb-8cbb8da7XXXXXXXX.elb.us-east-1.amazonaws.com"),
+//					},
+//					PrivateLink: &spark.OceanIngressPrivateLinkArgs{
+//						Enabled:            pulumi.Bool(false),
+//						VpcEndpointService: pulumi.String("com.amazonaws.vpce.eu-north-1.vpce-svc-XXXXXXXXXXXXXXXXX"),
+//					},
+//				},
+//				Compute: &spark.OceanComputeArgs{
+//					CreateVngs: pulumi.Bool(true),
+//					UseTaints:  pulumi.Bool(true),
+//				},
+//				LogCollection: &spark.OceanLogCollectionArgs{
+//					CollectAppLogs: pulumi.Bool(true),
+//				},
+//				Webhook: &spark.OceanWebhookArgs{
+//					UseHostNetwork: pulumi.Bool(false),
+//					HostNetworkPorts: pulumi.IntArray{
+//						pulumi.Int(25554),
+//					},
+//				},
+//				Spark: &spark.OceanSparkArgs{
+//					AdditionalAppNamespaces: pulumi.StringArray{
+//						pulumi.String("extra-spark-app-ns-1"),
+//						pulumi.String("extra-spark-app-ns-2"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ctx.Export("oceanSparkId", spotinst_ocean_spark.Example.Id)
+//			return nil
+//		})
+//	}
+//
+// ```
 type Ocean struct {
 	pulumi.CustomResourceState
 

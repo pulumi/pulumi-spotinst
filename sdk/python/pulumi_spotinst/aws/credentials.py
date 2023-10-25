@@ -126,6 +126,18 @@ class Credentials(pulumi.CustomResource):
         """
         Provides a Spotinst credential AWS resource.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_spotinst as spotinst
+
+        # set credential AWS
+        credential = spotinst.aws.Credentials("credential",
+            accountid="act-123456",
+            iamrole="arn:aws:iam::1234567890:role/Spot_Iam_Role")
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] iamrole: Provide the IAM Role ARN connected to another AWS account 922761411349 and with the latest Spot Policy - https://docs.spot.io/administration/api/spot-policy-in-aws
@@ -138,6 +150,18 @@ class Credentials(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a Spotinst credential AWS resource.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_spotinst as spotinst
+
+        # set credential AWS
+        credential = spotinst.aws.Credentials("credential",
+            accountid="act-123456",
+            iamrole="arn:aws:iam::1234567890:role/Spot_Iam_Role")
+        ```
 
         :param str resource_name: The name of the resource.
         :param CredentialsArgs args: The arguments to use to populate this resource's properties.

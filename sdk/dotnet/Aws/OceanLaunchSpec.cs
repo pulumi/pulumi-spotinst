@@ -11,6 +11,228 @@ namespace Pulumi.SpotInst.Aws
 {
     /// <summary>
     /// Manages a Spotinst Ocean AWS [Virtual Node Group](https://docs.spot.io/ocean/features/launch-specifications) resource.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using SpotInst = Pulumi.SpotInst;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new SpotInst.Aws.OceanLaunchSpec("example", new()
+    ///     {
+    ///         AssociatePublicIpAddress = true,
+    ///         AutoscaleDowns = new[]
+    ///         {
+    ///             new SpotInst.Aws.Inputs.OceanLaunchSpecAutoscaleDownArgs
+    ///             {
+    ///                 MaxScaleDownPercentage = 20,
+    ///             },
+    ///         },
+    ///         AutoscaleHeadrooms = new[]
+    ///         {
+    ///             new SpotInst.Aws.Inputs.OceanLaunchSpecAutoscaleHeadroomArgs
+    ///             {
+    ///                 CpuPerUnit = 1000,
+    ///                 GpuPerUnit = 0,
+    ///                 MemoryPerUnit = 2048,
+    ///                 NumOfUnits = 5,
+    ///             },
+    ///         },
+    ///         AutoscaleHeadroomsAutomatics = new[]
+    ///         {
+    ///             new SpotInst.Aws.Inputs.OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs
+    ///             {
+    ///                 AutoHeadroomPercentage = 5,
+    ///             },
+    ///         },
+    ///         BlockDeviceMappings = new[]
+    ///         {
+    ///             new SpotInst.Aws.Inputs.OceanLaunchSpecBlockDeviceMappingArgs
+    ///             {
+    ///                 DeviceName = "/dev/xvda",
+    ///                 Ebs = new SpotInst.Aws.Inputs.OceanLaunchSpecBlockDeviceMappingEbsArgs
+    ///                 {
+    ///                     DeleteOnTermination = true,
+    ///                     DynamicVolumeSize = new SpotInst.Aws.Inputs.OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs
+    ///                     {
+    ///                         BaseSize = 50,
+    ///                         Resource = "CPU",
+    ///                         SizePerResourceUnit = 20,
+    ///                     },
+    ///                     Encrypted = false,
+    ///                     Throughput = 500,
+    ///                     VolumeSize = 50,
+    ///                     VolumeType = "gp2",
+    ///                 },
+    ///             },
+    ///         },
+    ///         CreateOptions = new SpotInst.Aws.Inputs.OceanLaunchSpecCreateOptionsArgs
+    ///         {
+    ///             InitialNodes = 1,
+    ///         },
+    ///         DeleteOptions = new SpotInst.Aws.Inputs.OceanLaunchSpecDeleteOptionsArgs
+    ///         {
+    ///             DeleteNodes = true,
+    ///             ForceDelete = true,
+    ///         },
+    ///         ElasticIpPools = new[]
+    ///         {
+    ///             new SpotInst.Aws.Inputs.OceanLaunchSpecElasticIpPoolArgs
+    ///             {
+    ///                 TagSelector = new SpotInst.Aws.Inputs.OceanLaunchSpecElasticIpPoolTagSelectorArgs
+    ///                 {
+    ///                     TagKey = "key",
+    ///                     TagValue = "value",
+    ///                 },
+    ///             },
+    ///         },
+    ///         IamInstanceProfile = "iam-profile",
+    ///         ImageId = "ami-123456",
+    ///         Images = new[]
+    ///         {
+    ///             new SpotInst.Aws.Inputs.OceanLaunchSpecImageArgs
+    ///             {
+    ///                 ImageId = "ami-id1",
+    ///             },
+    ///             new SpotInst.Aws.Inputs.OceanLaunchSpecImageArgs
+    ///             {
+    ///                 ImageId = "ami-id2",
+    ///             },
+    ///         },
+    ///         InstanceMetadataOptions = new SpotInst.Aws.Inputs.OceanLaunchSpecInstanceMetadataOptionsArgs
+    ///         {
+    ///             HttpPutResponseHopLimit = 10,
+    ///             HttpTokens = "required",
+    ///         },
+    ///         InstanceTypes = new[]
+    ///         {
+    ///             "m4.large",
+    ///             "m4.xlarge",
+    ///             "m4.2xlarge",
+    ///             "m4.4xlarge",
+    ///         },
+    ///         Labels = new[]
+    ///         {
+    ///             new SpotInst.Aws.Inputs.OceanLaunchSpecLabelArgs
+    ///             {
+    ///                 Key = "key1",
+    ///                 Value = "value1",
+    ///             },
+    ///         },
+    ///         OceanId = "o-123456",
+    ///         PreferredSpotTypes = new[]
+    ///         {
+    ///             "m4.large",
+    ///             "m4.xlarge",
+    ///         },
+    ///         ResourceLimits = new[]
+    ///         {
+    ///             new SpotInst.Aws.Inputs.OceanLaunchSpecResourceLimitArgs
+    ///             {
+    ///                 MaxInstanceCount = 4,
+    ///                 MinInstanceCount = 0,
+    ///             },
+    ///         },
+    ///         RestrictScaleDown = true,
+    ///         RootVolumeSize = 30,
+    ///         SchedulingShutdownHours = new SpotInst.Aws.Inputs.OceanLaunchSpecSchedulingShutdownHoursArgs
+    ///         {
+    ///             IsEnabled = true,
+    ///             TimeWindows = new[]
+    ///             {
+    ///                 "Sat:08:00-Sat:08:30",
+    ///                 "Sun:08:00-Sun:08:30",
+    ///             },
+    ///         },
+    ///         SchedulingTasks = new[]
+    ///         {
+    ///             new SpotInst.Aws.Inputs.OceanLaunchSpecSchedulingTaskArgs
+    ///             {
+    ///                 CronExpression = "0 1 * * *",
+    ///                 IsEnabled = true,
+    ///                 TaskHeadrooms = new[]
+    ///                 {
+    ///                     new SpotInst.Aws.Inputs.OceanLaunchSpecSchedulingTaskTaskHeadroomArgs
+    ///                     {
+    ///                         CpuPerUnit = 1000,
+    ///                         GpuPerUnit = 0,
+    ///                         MemoryPerUnit = 2048,
+    ///                         NumOfUnits = 5,
+    ///                     },
+    ///                 },
+    ///                 TaskType = "manualHeadroomUpdate",
+    ///             },
+    ///         },
+    ///         SecurityGroups = new[]
+    ///         {
+    ///             "sg-987654321",
+    ///         },
+    ///         Strategies = new[]
+    ///         {
+    ///             new SpotInst.Aws.Inputs.OceanLaunchSpecStrategyArgs
+    ///             {
+    ///                 SpotPercentage = 70,
+    ///             },
+    ///         },
+    ///         SubnetIds = new[]
+    ///         {
+    ///             "subnet-1234",
+    ///         },
+    ///         Tags = new[]
+    ///         {
+    ///             new SpotInst.Aws.Inputs.OceanLaunchSpecTagArgs
+    ///             {
+    ///                 Key = "Env",
+    ///                 Value = "production",
+    ///             },
+    ///         },
+    ///         Taints = new[]
+    ///         {
+    ///             new SpotInst.Aws.Inputs.OceanLaunchSpecTaintArgs
+    ///             {
+    ///                 Effect = "NoExecute",
+    ///                 Key = "key1",
+    ///                 Value = "value1",
+    ///             },
+    ///         },
+    ///         UserData = "echo Hello, world!",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     return new Dictionary&lt;string, object?&gt;
+    ///     {
+    ///         ["oceanLaunchspecId"] = spotinst_ocean_aws_launch_spec.Example.Id,
+    ///     };
+    /// });
+    /// ```
+    /// ## Update Policy
+    /// 
+    /// * `update_policy` - (Optional)
+    ///     * `should_roll` - (Required) Enables the roll.
+    ///     * `roll_config` - (Required) Holds the roll configuration.
+    ///         * `batch_size_percentage` - (Required) Sets the percentage of the instances to deploy in each batch.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    /// });
+    /// ```
     /// </summary>
     [SpotInstResourceType("spotinst:aws/oceanLaunchSpec:OceanLaunchSpec")]
     public partial class OceanLaunchSpec : global::Pulumi.CustomResource

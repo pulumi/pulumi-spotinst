@@ -1931,6 +1931,9 @@ class OceanImportAutoscalerResourceLimits(dict):
         """
         :param int max_memory_gib: The maximum memory in GiB units that can be allocated to the cluster.
                
+               ```python
+               import pulumi
+               ```
                
                <a id="strategy"></a>
         :param int max_vcpu: The maximum cpu in vCpu units that can be allocated to the cluster.
@@ -1963,6 +1966,9 @@ class OceanImportAutoscalerResourceLimits(dict):
         """
         The maximum memory in GiB units that can be allocated to the cluster.
 
+        ```python
+        import pulumi
+        ```
 
         <a id="strategy"></a>
         """
@@ -2426,6 +2432,10 @@ class OceanImportScheduledTaskTaskTaskParametersClusterRoll(dict):
         """
         :param int batch_size_percentage: Value in % to set size of batch in roll. Valid values are 0-100
                Example: 20.
+               
+               ```python
+               import pulumi
+               ```
         """
         OceanImportScheduledTaskTaskTaskParametersClusterRoll._configure(
             lambda key, value: pulumi.set(__self__, key, value),
@@ -2470,6 +2480,10 @@ class OceanImportScheduledTaskTaskTaskParametersClusterRoll(dict):
         """
         Value in % to set size of batch in roll. Valid values are 0-100
         Example: 20.
+
+        ```python
+        import pulumi
+        ```
         """
         return pulumi.get(self, "batch_size_percentage")
 
@@ -2733,6 +2747,10 @@ class OceanImportUpdatePolicyRollConfig(dict):
         """
         :param int batch_size_percentage: Value in % to set size of batch in roll. Valid values are 0-100
                Example: 20.
+               
+               ```python
+               import pulumi
+               ```
         """
         OceanImportUpdatePolicyRollConfig._configure(
             lambda key, value: pulumi.set(__self__, key, value),
@@ -2775,6 +2793,10 @@ class OceanImportUpdatePolicyRollConfig(dict):
         """
         Value in % to set size of batch in roll. Valid values are 0-100
         Example: 20.
+
+        ```python
+        import pulumi
+        ```
         """
         return pulumi.get(self, "batch_size_percentage")
 

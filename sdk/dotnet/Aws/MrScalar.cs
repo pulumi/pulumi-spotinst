@@ -13,6 +13,339 @@ namespace Pulumi.SpotInst.Aws
     /// Provides a Spotinst AWS MrScaler resource.
     /// 
     /// ## Example Usage
+    /// ### New Strategy
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using SpotInst = Pulumi.SpotInst;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var sample_MrScaler_01 = new SpotInst.Aws.MrScalar("sample-MrScaler-01", new()
+    ///     {
+    ///         AdditionalInfo = "{'test':'more information'}",
+    ///         AdditionalPrimarySecurityGroups = new[]
+    ///         {
+    ///             "sg-456321",
+    ///         },
+    ///         AdditionalReplicaSecurityGroups = new[]
+    ///         {
+    ///             "sg-123654",
+    ///         },
+    ///         Applications = new[]
+    ///         {
+    ///             new SpotInst.Aws.Inputs.MrScalarApplicationArgs
+    ///             {
+    ///                 Name = "Ganglia",
+    ///                 Version = "1.0",
+    ///             },
+    ///             new SpotInst.Aws.Inputs.MrScalarApplicationArgs
+    ///             {
+    ///                 Name = "Hadoop",
+    ///             },
+    ///             new SpotInst.Aws.Inputs.MrScalarApplicationArgs
+    ///             {
+    ///                 Args = new[]
+    ///                 {
+    ///                     "fake",
+    ///                     "args",
+    ///                 },
+    ///                 Name = "Pig",
+    ///             },
+    ///         },
+    ///         AvailabilityZones = new[]
+    ///         {
+    ///             "us-west-2a:subnet-123456",
+    ///         },
+    ///         BootstrapActionsFiles = new[]
+    ///         {
+    ///             new SpotInst.Aws.Inputs.MrScalarBootstrapActionsFileArgs
+    ///             {
+    ///                 Bucket = "sample-emr-test",
+    ///                 Key = "bootstrap-actions.json",
+    ///             },
+    ///         },
+    ///         ConfigurationsFiles = new[]
+    ///         {
+    ///             new SpotInst.Aws.Inputs.MrScalarConfigurationsFileArgs
+    ///             {
+    ///                 Bucket = "example-bucket",
+    ///                 Key = "configurations.json",
+    ///             },
+    ///         },
+    ///         CoreDesiredCapacity = 1,
+    ///         CoreEbsBlockDevices = new[]
+    ///         {
+    ///             new SpotInst.Aws.Inputs.MrScalarCoreEbsBlockDeviceArgs
+    ///             {
+    ///                 SizeInGb = 40,
+    ///                 VolumeType = "gp2",
+    ///                 VolumesPerInstance = 2,
+    ///             },
+    ///         },
+    ///         CoreEbsOptimized = false,
+    ///         CoreInstanceTypes = new[]
+    ///         {
+    ///             "c3.xlarge",
+    ///             "c4.xlarge",
+    ///         },
+    ///         CoreLifecycle = "ON_DEMAND",
+    ///         CoreMaxSize = 1,
+    ///         CoreMinSize = 1,
+    ///         CoreUnit = "instance",
+    ///         CustomAmiId = "ami-123456",
+    ///         Description = "Testing MrScaler creation",
+    ///         Ec2KeyName = "test-key",
+    ///         InstanceWeights = new[]
+    ///         {
+    ///             new SpotInst.Aws.Inputs.MrScalarInstanceWeightArgs
+    ///             {
+    ///                 InstanceType = "t2.small",
+    ///                 WeightedCapacity = 10,
+    ///             },
+    ///             new SpotInst.Aws.Inputs.MrScalarInstanceWeightArgs
+    ///             {
+    ///                 InstanceType = "t2.medium",
+    ///                 WeightedCapacity = 90,
+    ///             },
+    ///         },
+    ///         JobFlowRole = "EMR_EC2_ExampleRole",
+    ///         KeepJobFlowAlive = true,
+    ///         LogUri = "s3://example-logs",
+    ///         ManagedPrimarySecurityGroup = "sg-123456",
+    ///         ManagedReplicaSecurityGroup = "sg-987654",
+    ///         MasterEbsBlockDevices = new[]
+    ///         {
+    ///             new SpotInst.Aws.Inputs.MrScalarMasterEbsBlockDeviceArgs
+    ///             {
+    ///                 SizeInGb = 30,
+    ///                 VolumeType = "gp2",
+    ///                 VolumesPerInstance = 1,
+    ///             },
+    ///         },
+    ///         MasterEbsOptimized = true,
+    ///         MasterInstanceTypes = new[]
+    ///         {
+    ///             "c3.xlarge",
+    ///         },
+    ///         MasterLifecycle = "SPOT",
+    ///         MasterTarget = 1,
+    ///         ProvisioningTimeout = new SpotInst.Aws.Inputs.MrScalarProvisioningTimeoutArgs
+    ///         {
+    ///             Timeout = 15,
+    ///             TimeoutAction = "terminateAndRetry",
+    ///         },
+    ///         Region = "us-west-2",
+    ///         ReleaseLabel = "emr-5.17.0",
+    ///         RepoUpgradeOnBoot = "NONE",
+    ///         Retries = 2,
+    ///         SecurityConfig = "example-config",
+    ///         ServiceAccessSecurityGroup = "access-example",
+    ///         ServiceRole = "example-role",
+    ///         StepsFiles = new[]
+    ///         {
+    ///             new SpotInst.Aws.Inputs.MrScalarStepsFileArgs
+    ///             {
+    ///                 Bucket = "example-bucket",
+    ///                 Key = "steps.json",
+    ///             },
+    ///         },
+    ///         Strategy = "new",
+    ///         Tags = new[]
+    ///         {
+    ///             new SpotInst.Aws.Inputs.MrScalarTagArgs
+    ///             {
+    ///                 Key = "Creator",
+    ///                 Value = "Pulumi",
+    ///             },
+    ///         },
+    ///         TaskDesiredCapacity = 1,
+    ///         TaskEbsBlockDevices = new[]
+    ///         {
+    ///             new SpotInst.Aws.Inputs.MrScalarTaskEbsBlockDeviceArgs
+    ///             {
+    ///                 SizeInGb = 40,
+    ///                 VolumeType = "gp2",
+    ///                 VolumesPerInstance = 2,
+    ///             },
+    ///         },
+    ///         TaskEbsOptimized = false,
+    ///         TaskInstanceTypes = new[]
+    ///         {
+    ///             "c3.xlarge",
+    ///             "c4.xlarge",
+    ///         },
+    ///         TaskLifecycle = "SPOT",
+    ///         TaskMaxSize = 30,
+    ///         TaskMinSize = 0,
+    ///         TaskUnit = "instance",
+    ///         TerminationProtected = false,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Clone Strategy
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using SpotInst = Pulumi.SpotInst;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var sample_MrScaler_01 = new SpotInst.Aws.MrScalar("sample-MrScaler-01", new()
+    ///     {
+    ///         AvailabilityZones = new[]
+    ///         {
+    ///             "us-west-2a:subnet-12345678",
+    ///         },
+    ///         ClusterId = "j-123456789",
+    ///         CoreDesiredCapacity = 1,
+    ///         CoreEbsBlockDevices = new[]
+    ///         {
+    ///             new SpotInst.Aws.Inputs.MrScalarCoreEbsBlockDeviceArgs
+    ///             {
+    ///                 SizeInGb = 40,
+    ///                 VolumeType = "gp2",
+    ///                 VolumesPerInstance = 2,
+    ///             },
+    ///         },
+    ///         CoreEbsOptimized = false,
+    ///         CoreInstanceTypes = new[]
+    ///         {
+    ///             "c3.xlarge",
+    ///             "c4.xlarge",
+    ///         },
+    ///         CoreLifecycle = "ON_DEMAND",
+    ///         CoreMaxSize = 1,
+    ///         CoreMinSize = 1,
+    ///         CoreUnit = "instance",
+    ///         Description = "Testing MrScaler creation",
+    ///         ExposeClusterId = true,
+    ///         MasterEbsBlockDevices = new[]
+    ///         {
+    ///             new SpotInst.Aws.Inputs.MrScalarMasterEbsBlockDeviceArgs
+    ///             {
+    ///                 SizeInGb = 30,
+    ///                 VolumeType = "gp2",
+    ///                 VolumesPerInstance = 1,
+    ///             },
+    ///         },
+    ///         MasterEbsOptimized = true,
+    ///         MasterInstanceTypes = new[]
+    ///         {
+    ///             "c3.xlarge",
+    ///         },
+    ///         MasterLifecycle = "SPOT",
+    ///         MasterTarget = 1,
+    ///         Region = "us-west-2",
+    ///         Strategy = "clone",
+    ///         Tags = new[]
+    ///         {
+    ///             new SpotInst.Aws.Inputs.MrScalarTagArgs
+    ///             {
+    ///                 Key = "Creator",
+    ///                 Value = "Pulumi",
+    ///             },
+    ///         },
+    ///         TaskDesiredCapacity = 1,
+    ///         TaskEbsBlockDevices = new[]
+    ///         {
+    ///             new SpotInst.Aws.Inputs.MrScalarTaskEbsBlockDeviceArgs
+    ///             {
+    ///                 SizeInGb = 40,
+    ///                 VolumeType = "gp2",
+    ///                 VolumesPerInstance = 2,
+    ///             },
+    ///         },
+    ///         TaskEbsOptimized = false,
+    ///         TaskInstanceTypes = new[]
+    ///         {
+    ///             "c3.xlarge",
+    ///             "c4.xlarge",
+    ///         },
+    ///         TaskLifecycle = "SPOT",
+    ///         TaskMaxSize = 30,
+    ///         TaskMinSize = 0,
+    ///         TaskScalingDownPolicies = new[]
+    ///         {
+    ///             new SpotInst.Aws.Inputs.MrScalarTaskScalingDownPolicyArgs
+    ///             {
+    ///                 ActionType = "",
+    ///                 Adjustment = "1",
+    ///                 Cooldown = 60,
+    ///                 Dimensions = 
+    ///                 {
+    ///                     { "name", "name-1" },
+    ///                     { "value", "value-1" },
+    ///                 },
+    ///                 EvaluationPeriods = 10,
+    ///                 MaxTargetCapacity = "1",
+    ///                 Maximum = "10",
+    ///                 MetricName = "CPUUtilization",
+    ///                 Minimum = "0",
+    ///                 Namespace = "AWS/EC2",
+    ///                 Operator = "gt",
+    ///                 Period = 60,
+    ///                 PolicyName = "policy-name",
+    ///                 Statistic = "average",
+    ///                 Target = "5",
+    ///                 Threshold = 10,
+    ///                 Unit = "",
+    ///             },
+    ///         },
+    ///         TaskUnit = "instance",
+    ///     });
+    /// 
+    ///     return new Dictionary&lt;string, object?&gt;
+    ///     {
+    ///         ["mrscaler-name"] = sample_MrScaler_01.Name,
+    ///         ["mrscaler-created-cluster-id"] = sample_MrScaler_01.OutputClusterId,
+    ///     };
+    /// });
+    /// ```
+    /// ### Wrap Strategy
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using SpotInst = Pulumi.SpotInst;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example_scaler_2 = new SpotInst.Aws.MrScalar("example-scaler-2", new()
+    ///     {
+    ///         ClusterId = "j-27UVDEHXL4OQM",
+    ///         Description = "created by Pulumi",
+    ///         Region = "us-west-2",
+    ///         Strategy = "wrap",
+    ///         TaskDesiredCapacity = 2,
+    ///         TaskEbsBlockDevices = new[]
+    ///         {
+    ///             new SpotInst.Aws.Inputs.MrScalarTaskEbsBlockDeviceArgs
+    ///             {
+    ///                 SizeInGb = 20,
+    ///                 VolumeType = "gp2",
+    ///                 VolumesPerInstance = 1,
+    ///             },
+    ///         },
+    ///         TaskInstanceTypes = new[]
+    ///         {
+    ///             "c3.xlarge",
+    ///             "c4.xlarge",
+    ///         },
+    ///         TaskLifecycle = "SPOT",
+    ///         TaskMaxSize = 4,
+    ///         TaskMinSize = 0,
+    ///         TaskUnit = "instance",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [SpotInstResourceType("spotinst:aws/mrScalar:MrScalar")]
     public partial class MrScalar : global::Pulumi.CustomResource

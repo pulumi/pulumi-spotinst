@@ -11,6 +11,40 @@ namespace Pulumi.SpotInst.Organization
 {
     /// <summary>
     /// Provides a Spotinst programmatic user in the creator's organization.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using SpotInst = Pulumi.SpotInst;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var terraformProgUser = new SpotInst.Organization.ProgrammaticUser("terraformProgUser", new()
+    ///     {
+    ///         Description = "creating programmatic user",
+    ///         Policies = new[]
+    ///         {
+    ///             new SpotInst.Organization.Inputs.ProgrammaticUserPolicyArgs
+    ///             {
+    ///                 PolicyAccountIds = new[]
+    ///                 {
+    ///                     "act-a1b2c3d4",
+    ///                 },
+    ///                 PolicyId = "pol-g75d8c06",
+    ///             },
+    ///         },
+    ///         UserGroupIds = new[]
+    ///         {
+    ///             "ugr-abcd1234",
+    ///             "ugr-defg8763",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [SpotInstResourceType("spotinst:organization/programmaticUser:ProgrammaticUser")]
     public partial class ProgrammaticUser : global::Pulumi.CustomResource

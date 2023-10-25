@@ -10,6 +10,18 @@ import * as utilities from "../utilities";
  * ## Prerequisites
  *
  * An existing Ocean cluster and Ocean VNG is required by this resource
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as spotinst from "@pulumi/spotinst";
+ *
+ * const example = new spotinst.spark.OceanVirtualNodeGroup("example", {
+ *     oceanSparkClusterId: "cluster_id",
+ *     virtualNodeGroupId: "vng_id",
+ * });
+ * ```
  */
 export class OceanVirtualNodeGroup extends pulumi.CustomResource {
     /**

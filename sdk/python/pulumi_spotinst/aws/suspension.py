@@ -134,7 +134,28 @@ class Suspension(pulumi.CustomResource):
                  suspensions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SuspensionSuspensionArgs']]]]] = None,
                  __props__=None):
         """
-        Create a Suspension resource with the given unique name, props, and options.
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_spotinst as spotinst
+
+        # Create a suspension for Elastigroup
+        resource_name = spotinst.aws.Suspension("resourceName",
+            group_id="sig-12345678",
+            suspensions=[
+                spotinst.aws.SuspensionSuspensionArgs(
+                    name="OUT_OF_STRATEGY",
+                ),
+                spotinst.aws.SuspensionSuspensionArgs(
+                    name="REVERT_PREFERRED",
+                ),
+                spotinst.aws.SuspensionSuspensionArgs(
+                    name="PREVENTIVE_REPLACEMENT",
+                ),
+            ])
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] group_id: Elastigroup ID to apply the suspensions on.
@@ -147,7 +168,28 @@ class Suspension(pulumi.CustomResource):
                  args: SuspensionArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a Suspension resource with the given unique name, props, and options.
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_spotinst as spotinst
+
+        # Create a suspension for Elastigroup
+        resource_name = spotinst.aws.Suspension("resourceName",
+            group_id="sig-12345678",
+            suspensions=[
+                spotinst.aws.SuspensionSuspensionArgs(
+                    name="OUT_OF_STRATEGY",
+                ),
+                spotinst.aws.SuspensionSuspensionArgs(
+                    name="REVERT_PREFERRED",
+                ),
+                spotinst.aws.SuspensionSuspensionArgs(
+                    name="PREVENTIVE_REPLACEMENT",
+                ),
+            ])
+        ```
+
         :param str resource_name: The name of the resource.
         :param SuspensionArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
