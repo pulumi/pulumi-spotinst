@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -63,133 +63,46 @@ class OceanArgs:
         :param pulumi.Input[Sequence[pulumi.Input['OceanVmSizeArgs']]] vm_sizes: The types of virtual machines that may or may not be a part of the Ocean cluster.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] zones: An Array holding default Availability Zones, this configures the availability zones the Ocean may launch instances in.
         """
-        OceanArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            acd_identifier=acd_identifier,
-            aks_name=aks_name,
-            aks_resource_group_name=aks_resource_group_name,
-            ssh_public_key=ssh_public_key,
-            autoscaler=autoscaler,
-            controller_cluster_id=controller_cluster_id,
-            custom_data=custom_data,
-            extensions=extensions,
-            health=health,
-            images=images,
-            load_balancers=load_balancers,
-            managed_service_identities=managed_service_identities,
-            max_pods=max_pods,
-            name=name,
-            network=network,
-            os_disk=os_disk,
-            resource_group_name=resource_group_name,
-            strategies=strategies,
-            tags=tags,
-            user_name=user_name,
-            vm_sizes=vm_sizes,
-            zones=zones,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             acd_identifier: Optional[pulumi.Input[str]] = None,
-             aks_name: Optional[pulumi.Input[str]] = None,
-             aks_resource_group_name: Optional[pulumi.Input[str]] = None,
-             ssh_public_key: Optional[pulumi.Input[str]] = None,
-             autoscaler: Optional[pulumi.Input['OceanAutoscalerArgs']] = None,
-             controller_cluster_id: Optional[pulumi.Input[str]] = None,
-             custom_data: Optional[pulumi.Input[str]] = None,
-             extensions: Optional[pulumi.Input[Sequence[pulumi.Input['OceanExtensionArgs']]]] = None,
-             health: Optional[pulumi.Input['OceanHealthArgs']] = None,
-             images: Optional[pulumi.Input[Sequence[pulumi.Input['OceanImageArgs']]]] = None,
-             load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLoadBalancerArgs']]]] = None,
-             managed_service_identities: Optional[pulumi.Input[Sequence[pulumi.Input['OceanManagedServiceIdentityArgs']]]] = None,
-             max_pods: Optional[pulumi.Input[int]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             network: Optional[pulumi.Input['OceanNetworkArgs']] = None,
-             os_disk: Optional[pulumi.Input['OceanOsDiskArgs']] = None,
-             resource_group_name: Optional[pulumi.Input[str]] = None,
-             strategies: Optional[pulumi.Input[Sequence[pulumi.Input['OceanStrategyArgs']]]] = None,
-             tags: Optional[pulumi.Input[Sequence[pulumi.Input['OceanTagArgs']]]] = None,
-             user_name: Optional[pulumi.Input[str]] = None,
-             vm_sizes: Optional[pulumi.Input[Sequence[pulumi.Input['OceanVmSizeArgs']]]] = None,
-             zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if acd_identifier is None and 'acdIdentifier' in kwargs:
-            acd_identifier = kwargs['acdIdentifier']
-        if acd_identifier is None:
-            raise TypeError("Missing 'acd_identifier' argument")
-        if aks_name is None and 'aksName' in kwargs:
-            aks_name = kwargs['aksName']
-        if aks_name is None:
-            raise TypeError("Missing 'aks_name' argument")
-        if aks_resource_group_name is None and 'aksResourceGroupName' in kwargs:
-            aks_resource_group_name = kwargs['aksResourceGroupName']
-        if aks_resource_group_name is None:
-            raise TypeError("Missing 'aks_resource_group_name' argument")
-        if ssh_public_key is None and 'sshPublicKey' in kwargs:
-            ssh_public_key = kwargs['sshPublicKey']
-        if ssh_public_key is None:
-            raise TypeError("Missing 'ssh_public_key' argument")
-        if controller_cluster_id is None and 'controllerClusterId' in kwargs:
-            controller_cluster_id = kwargs['controllerClusterId']
-        if custom_data is None and 'customData' in kwargs:
-            custom_data = kwargs['customData']
-        if load_balancers is None and 'loadBalancers' in kwargs:
-            load_balancers = kwargs['loadBalancers']
-        if managed_service_identities is None and 'managedServiceIdentities' in kwargs:
-            managed_service_identities = kwargs['managedServiceIdentities']
-        if max_pods is None and 'maxPods' in kwargs:
-            max_pods = kwargs['maxPods']
-        if os_disk is None and 'osDisk' in kwargs:
-            os_disk = kwargs['osDisk']
-        if resource_group_name is None and 'resourceGroupName' in kwargs:
-            resource_group_name = kwargs['resourceGroupName']
-        if user_name is None and 'userName' in kwargs:
-            user_name = kwargs['userName']
-        if vm_sizes is None and 'vmSizes' in kwargs:
-            vm_sizes = kwargs['vmSizes']
-
-        _setter("acd_identifier", acd_identifier)
-        _setter("aks_name", aks_name)
-        _setter("aks_resource_group_name", aks_resource_group_name)
-        _setter("ssh_public_key", ssh_public_key)
+        pulumi.set(__self__, "acd_identifier", acd_identifier)
+        pulumi.set(__self__, "aks_name", aks_name)
+        pulumi.set(__self__, "aks_resource_group_name", aks_resource_group_name)
+        pulumi.set(__self__, "ssh_public_key", ssh_public_key)
         if autoscaler is not None:
-            _setter("autoscaler", autoscaler)
+            pulumi.set(__self__, "autoscaler", autoscaler)
         if controller_cluster_id is not None:
-            _setter("controller_cluster_id", controller_cluster_id)
+            pulumi.set(__self__, "controller_cluster_id", controller_cluster_id)
         if custom_data is not None:
-            _setter("custom_data", custom_data)
+            pulumi.set(__self__, "custom_data", custom_data)
         if extensions is not None:
-            _setter("extensions", extensions)
+            pulumi.set(__self__, "extensions", extensions)
         if health is not None:
-            _setter("health", health)
+            pulumi.set(__self__, "health", health)
         if images is not None:
-            _setter("images", images)
+            pulumi.set(__self__, "images", images)
         if load_balancers is not None:
-            _setter("load_balancers", load_balancers)
+            pulumi.set(__self__, "load_balancers", load_balancers)
         if managed_service_identities is not None:
-            _setter("managed_service_identities", managed_service_identities)
+            pulumi.set(__self__, "managed_service_identities", managed_service_identities)
         if max_pods is not None:
-            _setter("max_pods", max_pods)
+            pulumi.set(__self__, "max_pods", max_pods)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if network is not None:
-            _setter("network", network)
+            pulumi.set(__self__, "network", network)
         if os_disk is not None:
-            _setter("os_disk", os_disk)
+            pulumi.set(__self__, "os_disk", os_disk)
         if resource_group_name is not None:
-            _setter("resource_group_name", resource_group_name)
+            pulumi.set(__self__, "resource_group_name", resource_group_name)
         if strategies is not None:
-            _setter("strategies", strategies)
+            pulumi.set(__self__, "strategies", strategies)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if user_name is not None:
-            _setter("user_name", user_name)
+            pulumi.set(__self__, "user_name", user_name)
         if vm_sizes is not None:
-            _setter("vm_sizes", vm_sizes)
+            pulumi.set(__self__, "vm_sizes", vm_sizes)
         if zones is not None:
-            _setter("zones", zones)
+            pulumi.set(__self__, "zones", zones)
 
     @property
     @pulumi.getter(name="acdIdentifier")
@@ -506,129 +419,50 @@ class _OceanState:
         :param pulumi.Input[Sequence[pulumi.Input['OceanVmSizeArgs']]] vm_sizes: The types of virtual machines that may or may not be a part of the Ocean cluster.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] zones: An Array holding default Availability Zones, this configures the availability zones the Ocean may launch instances in.
         """
-        _OceanState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            acd_identifier=acd_identifier,
-            aks_name=aks_name,
-            aks_resource_group_name=aks_resource_group_name,
-            autoscaler=autoscaler,
-            controller_cluster_id=controller_cluster_id,
-            custom_data=custom_data,
-            extensions=extensions,
-            health=health,
-            images=images,
-            load_balancers=load_balancers,
-            managed_service_identities=managed_service_identities,
-            max_pods=max_pods,
-            name=name,
-            network=network,
-            os_disk=os_disk,
-            resource_group_name=resource_group_name,
-            ssh_public_key=ssh_public_key,
-            strategies=strategies,
-            tags=tags,
-            user_name=user_name,
-            vm_sizes=vm_sizes,
-            zones=zones,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             acd_identifier: Optional[pulumi.Input[str]] = None,
-             aks_name: Optional[pulumi.Input[str]] = None,
-             aks_resource_group_name: Optional[pulumi.Input[str]] = None,
-             autoscaler: Optional[pulumi.Input['OceanAutoscalerArgs']] = None,
-             controller_cluster_id: Optional[pulumi.Input[str]] = None,
-             custom_data: Optional[pulumi.Input[str]] = None,
-             extensions: Optional[pulumi.Input[Sequence[pulumi.Input['OceanExtensionArgs']]]] = None,
-             health: Optional[pulumi.Input['OceanHealthArgs']] = None,
-             images: Optional[pulumi.Input[Sequence[pulumi.Input['OceanImageArgs']]]] = None,
-             load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLoadBalancerArgs']]]] = None,
-             managed_service_identities: Optional[pulumi.Input[Sequence[pulumi.Input['OceanManagedServiceIdentityArgs']]]] = None,
-             max_pods: Optional[pulumi.Input[int]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             network: Optional[pulumi.Input['OceanNetworkArgs']] = None,
-             os_disk: Optional[pulumi.Input['OceanOsDiskArgs']] = None,
-             resource_group_name: Optional[pulumi.Input[str]] = None,
-             ssh_public_key: Optional[pulumi.Input[str]] = None,
-             strategies: Optional[pulumi.Input[Sequence[pulumi.Input['OceanStrategyArgs']]]] = None,
-             tags: Optional[pulumi.Input[Sequence[pulumi.Input['OceanTagArgs']]]] = None,
-             user_name: Optional[pulumi.Input[str]] = None,
-             vm_sizes: Optional[pulumi.Input[Sequence[pulumi.Input['OceanVmSizeArgs']]]] = None,
-             zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if acd_identifier is None and 'acdIdentifier' in kwargs:
-            acd_identifier = kwargs['acdIdentifier']
-        if aks_name is None and 'aksName' in kwargs:
-            aks_name = kwargs['aksName']
-        if aks_resource_group_name is None and 'aksResourceGroupName' in kwargs:
-            aks_resource_group_name = kwargs['aksResourceGroupName']
-        if controller_cluster_id is None and 'controllerClusterId' in kwargs:
-            controller_cluster_id = kwargs['controllerClusterId']
-        if custom_data is None and 'customData' in kwargs:
-            custom_data = kwargs['customData']
-        if load_balancers is None and 'loadBalancers' in kwargs:
-            load_balancers = kwargs['loadBalancers']
-        if managed_service_identities is None and 'managedServiceIdentities' in kwargs:
-            managed_service_identities = kwargs['managedServiceIdentities']
-        if max_pods is None and 'maxPods' in kwargs:
-            max_pods = kwargs['maxPods']
-        if os_disk is None and 'osDisk' in kwargs:
-            os_disk = kwargs['osDisk']
-        if resource_group_name is None and 'resourceGroupName' in kwargs:
-            resource_group_name = kwargs['resourceGroupName']
-        if ssh_public_key is None and 'sshPublicKey' in kwargs:
-            ssh_public_key = kwargs['sshPublicKey']
-        if user_name is None and 'userName' in kwargs:
-            user_name = kwargs['userName']
-        if vm_sizes is None and 'vmSizes' in kwargs:
-            vm_sizes = kwargs['vmSizes']
-
         if acd_identifier is not None:
-            _setter("acd_identifier", acd_identifier)
+            pulumi.set(__self__, "acd_identifier", acd_identifier)
         if aks_name is not None:
-            _setter("aks_name", aks_name)
+            pulumi.set(__self__, "aks_name", aks_name)
         if aks_resource_group_name is not None:
-            _setter("aks_resource_group_name", aks_resource_group_name)
+            pulumi.set(__self__, "aks_resource_group_name", aks_resource_group_name)
         if autoscaler is not None:
-            _setter("autoscaler", autoscaler)
+            pulumi.set(__self__, "autoscaler", autoscaler)
         if controller_cluster_id is not None:
-            _setter("controller_cluster_id", controller_cluster_id)
+            pulumi.set(__self__, "controller_cluster_id", controller_cluster_id)
         if custom_data is not None:
-            _setter("custom_data", custom_data)
+            pulumi.set(__self__, "custom_data", custom_data)
         if extensions is not None:
-            _setter("extensions", extensions)
+            pulumi.set(__self__, "extensions", extensions)
         if health is not None:
-            _setter("health", health)
+            pulumi.set(__self__, "health", health)
         if images is not None:
-            _setter("images", images)
+            pulumi.set(__self__, "images", images)
         if load_balancers is not None:
-            _setter("load_balancers", load_balancers)
+            pulumi.set(__self__, "load_balancers", load_balancers)
         if managed_service_identities is not None:
-            _setter("managed_service_identities", managed_service_identities)
+            pulumi.set(__self__, "managed_service_identities", managed_service_identities)
         if max_pods is not None:
-            _setter("max_pods", max_pods)
+            pulumi.set(__self__, "max_pods", max_pods)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if network is not None:
-            _setter("network", network)
+            pulumi.set(__self__, "network", network)
         if os_disk is not None:
-            _setter("os_disk", os_disk)
+            pulumi.set(__self__, "os_disk", os_disk)
         if resource_group_name is not None:
-            _setter("resource_group_name", resource_group_name)
+            pulumi.set(__self__, "resource_group_name", resource_group_name)
         if ssh_public_key is not None:
-            _setter("ssh_public_key", ssh_public_key)
+            pulumi.set(__self__, "ssh_public_key", ssh_public_key)
         if strategies is not None:
-            _setter("strategies", strategies)
+            pulumi.set(__self__, "strategies", strategies)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if user_name is not None:
-            _setter("user_name", user_name)
+            pulumi.set(__self__, "user_name", user_name)
         if vm_sizes is not None:
-            _setter("vm_sizes", vm_sizes)
+            pulumi.set(__self__, "vm_sizes", vm_sizes)
         if zones is not None:
-            _setter("zones", zones)
+            pulumi.set(__self__, "zones", zones)
 
     @property
     @pulumi.getter(name="acdIdentifier")
@@ -994,10 +828,6 @@ class Ocean(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            OceanArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -1043,21 +873,17 @@ class Ocean(pulumi.CustomResource):
             if aks_resource_group_name is None and not opts.urn:
                 raise TypeError("Missing required property 'aks_resource_group_name'")
             __props__.__dict__["aks_resource_group_name"] = aks_resource_group_name
-            autoscaler = _utilities.configure(autoscaler, OceanAutoscalerArgs, True)
             __props__.__dict__["autoscaler"] = autoscaler
             __props__.__dict__["controller_cluster_id"] = controller_cluster_id
             __props__.__dict__["custom_data"] = custom_data
             __props__.__dict__["extensions"] = extensions
-            health = _utilities.configure(health, OceanHealthArgs, True)
             __props__.__dict__["health"] = health
             __props__.__dict__["images"] = images
             __props__.__dict__["load_balancers"] = load_balancers
             __props__.__dict__["managed_service_identities"] = managed_service_identities
             __props__.__dict__["max_pods"] = max_pods
             __props__.__dict__["name"] = name
-            network = _utilities.configure(network, OceanNetworkArgs, True)
             __props__.__dict__["network"] = network
-            os_disk = _utilities.configure(os_disk, OceanOsDiskArgs, True)
             __props__.__dict__["os_disk"] = os_disk
             __props__.__dict__["resource_group_name"] = resource_group_name
             if ssh_public_key is None and not opts.urn:

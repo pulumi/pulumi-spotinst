@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -76,184 +76,65 @@ class OceanLaunchSpecArgs:
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecTaintArgs']]] taints: Optionally adds labels to instances launched in the cluster.
         :param pulumi.Input[str] user_data: Base64-encoded MIME user data to make available to the instances.
         """
-        OceanLaunchSpecArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            ocean_id=ocean_id,
-            associate_public_ip_address=associate_public_ip_address,
-            autoscale_downs=autoscale_downs,
-            autoscale_headrooms=autoscale_headrooms,
-            autoscale_headrooms_automatics=autoscale_headrooms_automatics,
-            block_device_mappings=block_device_mappings,
-            create_options=create_options,
-            delete_options=delete_options,
-            elastic_ip_pools=elastic_ip_pools,
-            iam_instance_profile=iam_instance_profile,
-            image_id=image_id,
-            images=images,
-            instance_metadata_options=instance_metadata_options,
-            instance_types=instance_types,
-            instance_types_filters=instance_types_filters,
-            labels=labels,
-            name=name,
-            preferred_spot_types=preferred_spot_types,
-            resource_limits=resource_limits,
-            restrict_scale_down=restrict_scale_down,
-            root_volume_size=root_volume_size,
-            scheduling_shutdown_hours=scheduling_shutdown_hours,
-            scheduling_tasks=scheduling_tasks,
-            security_groups=security_groups,
-            strategies=strategies,
-            subnet_ids=subnet_ids,
-            tags=tags,
-            taints=taints,
-            update_policy=update_policy,
-            user_data=user_data,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             ocean_id: Optional[pulumi.Input[str]] = None,
-             associate_public_ip_address: Optional[pulumi.Input[bool]] = None,
-             autoscale_downs: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecAutoscaleDownArgs']]]] = None,
-             autoscale_headrooms: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecAutoscaleHeadroomArgs']]]] = None,
-             autoscale_headrooms_automatics: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs']]]] = None,
-             block_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecBlockDeviceMappingArgs']]]] = None,
-             create_options: Optional[pulumi.Input['OceanLaunchSpecCreateOptionsArgs']] = None,
-             delete_options: Optional[pulumi.Input['OceanLaunchSpecDeleteOptionsArgs']] = None,
-             elastic_ip_pools: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecElasticIpPoolArgs']]]] = None,
-             iam_instance_profile: Optional[pulumi.Input[str]] = None,
-             image_id: Optional[pulumi.Input[str]] = None,
-             images: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecImageArgs']]]] = None,
-             instance_metadata_options: Optional[pulumi.Input['OceanLaunchSpecInstanceMetadataOptionsArgs']] = None,
-             instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             instance_types_filters: Optional[pulumi.Input['OceanLaunchSpecInstanceTypesFiltersArgs']] = None,
-             labels: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecLabelArgs']]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             preferred_spot_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             resource_limits: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecResourceLimitArgs']]]] = None,
-             restrict_scale_down: Optional[pulumi.Input[bool]] = None,
-             root_volume_size: Optional[pulumi.Input[int]] = None,
-             scheduling_shutdown_hours: Optional[pulumi.Input['OceanLaunchSpecSchedulingShutdownHoursArgs']] = None,
-             scheduling_tasks: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecSchedulingTaskArgs']]]] = None,
-             security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             strategies: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecStrategyArgs']]]] = None,
-             subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             tags: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecTagArgs']]]] = None,
-             taints: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecTaintArgs']]]] = None,
-             update_policy: Optional[pulumi.Input['OceanLaunchSpecUpdatePolicyArgs']] = None,
-             user_data: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if ocean_id is None and 'oceanId' in kwargs:
-            ocean_id = kwargs['oceanId']
-        if ocean_id is None:
-            raise TypeError("Missing 'ocean_id' argument")
-        if associate_public_ip_address is None and 'associatePublicIpAddress' in kwargs:
-            associate_public_ip_address = kwargs['associatePublicIpAddress']
-        if autoscale_downs is None and 'autoscaleDowns' in kwargs:
-            autoscale_downs = kwargs['autoscaleDowns']
-        if autoscale_headrooms is None and 'autoscaleHeadrooms' in kwargs:
-            autoscale_headrooms = kwargs['autoscaleHeadrooms']
-        if autoscale_headrooms_automatics is None and 'autoscaleHeadroomsAutomatics' in kwargs:
-            autoscale_headrooms_automatics = kwargs['autoscaleHeadroomsAutomatics']
-        if block_device_mappings is None and 'blockDeviceMappings' in kwargs:
-            block_device_mappings = kwargs['blockDeviceMappings']
-        if create_options is None and 'createOptions' in kwargs:
-            create_options = kwargs['createOptions']
-        if delete_options is None and 'deleteOptions' in kwargs:
-            delete_options = kwargs['deleteOptions']
-        if elastic_ip_pools is None and 'elasticIpPools' in kwargs:
-            elastic_ip_pools = kwargs['elasticIpPools']
-        if iam_instance_profile is None and 'iamInstanceProfile' in kwargs:
-            iam_instance_profile = kwargs['iamInstanceProfile']
-        if image_id is None and 'imageId' in kwargs:
-            image_id = kwargs['imageId']
-        if instance_metadata_options is None and 'instanceMetadataOptions' in kwargs:
-            instance_metadata_options = kwargs['instanceMetadataOptions']
-        if instance_types is None and 'instanceTypes' in kwargs:
-            instance_types = kwargs['instanceTypes']
-        if instance_types_filters is None and 'instanceTypesFilters' in kwargs:
-            instance_types_filters = kwargs['instanceTypesFilters']
-        if preferred_spot_types is None and 'preferredSpotTypes' in kwargs:
-            preferred_spot_types = kwargs['preferredSpotTypes']
-        if resource_limits is None and 'resourceLimits' in kwargs:
-            resource_limits = kwargs['resourceLimits']
-        if restrict_scale_down is None and 'restrictScaleDown' in kwargs:
-            restrict_scale_down = kwargs['restrictScaleDown']
-        if root_volume_size is None and 'rootVolumeSize' in kwargs:
-            root_volume_size = kwargs['rootVolumeSize']
-        if scheduling_shutdown_hours is None and 'schedulingShutdownHours' in kwargs:
-            scheduling_shutdown_hours = kwargs['schedulingShutdownHours']
-        if scheduling_tasks is None and 'schedulingTasks' in kwargs:
-            scheduling_tasks = kwargs['schedulingTasks']
-        if security_groups is None and 'securityGroups' in kwargs:
-            security_groups = kwargs['securityGroups']
-        if subnet_ids is None and 'subnetIds' in kwargs:
-            subnet_ids = kwargs['subnetIds']
-        if update_policy is None and 'updatePolicy' in kwargs:
-            update_policy = kwargs['updatePolicy']
-        if user_data is None and 'userData' in kwargs:
-            user_data = kwargs['userData']
-
-        _setter("ocean_id", ocean_id)
+        pulumi.set(__self__, "ocean_id", ocean_id)
         if associate_public_ip_address is not None:
-            _setter("associate_public_ip_address", associate_public_ip_address)
+            pulumi.set(__self__, "associate_public_ip_address", associate_public_ip_address)
         if autoscale_downs is not None:
-            _setter("autoscale_downs", autoscale_downs)
+            pulumi.set(__self__, "autoscale_downs", autoscale_downs)
         if autoscale_headrooms is not None:
-            _setter("autoscale_headrooms", autoscale_headrooms)
+            pulumi.set(__self__, "autoscale_headrooms", autoscale_headrooms)
         if autoscale_headrooms_automatics is not None:
-            _setter("autoscale_headrooms_automatics", autoscale_headrooms_automatics)
+            pulumi.set(__self__, "autoscale_headrooms_automatics", autoscale_headrooms_automatics)
         if block_device_mappings is not None:
-            _setter("block_device_mappings", block_device_mappings)
+            pulumi.set(__self__, "block_device_mappings", block_device_mappings)
         if create_options is not None:
-            _setter("create_options", create_options)
+            pulumi.set(__self__, "create_options", create_options)
         if delete_options is not None:
-            _setter("delete_options", delete_options)
+            pulumi.set(__self__, "delete_options", delete_options)
         if elastic_ip_pools is not None:
-            _setter("elastic_ip_pools", elastic_ip_pools)
+            pulumi.set(__self__, "elastic_ip_pools", elastic_ip_pools)
         if iam_instance_profile is not None:
-            _setter("iam_instance_profile", iam_instance_profile)
+            pulumi.set(__self__, "iam_instance_profile", iam_instance_profile)
         if image_id is not None:
-            _setter("image_id", image_id)
+            pulumi.set(__self__, "image_id", image_id)
         if images is not None:
-            _setter("images", images)
+            pulumi.set(__self__, "images", images)
         if instance_metadata_options is not None:
-            _setter("instance_metadata_options", instance_metadata_options)
+            pulumi.set(__self__, "instance_metadata_options", instance_metadata_options)
         if instance_types is not None:
-            _setter("instance_types", instance_types)
+            pulumi.set(__self__, "instance_types", instance_types)
         if instance_types_filters is not None:
-            _setter("instance_types_filters", instance_types_filters)
+            pulumi.set(__self__, "instance_types_filters", instance_types_filters)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if preferred_spot_types is not None:
-            _setter("preferred_spot_types", preferred_spot_types)
+            pulumi.set(__self__, "preferred_spot_types", preferred_spot_types)
         if resource_limits is not None:
-            _setter("resource_limits", resource_limits)
+            pulumi.set(__self__, "resource_limits", resource_limits)
         if restrict_scale_down is not None:
-            _setter("restrict_scale_down", restrict_scale_down)
+            pulumi.set(__self__, "restrict_scale_down", restrict_scale_down)
         if root_volume_size is not None:
-            _setter("root_volume_size", root_volume_size)
+            pulumi.set(__self__, "root_volume_size", root_volume_size)
         if scheduling_shutdown_hours is not None:
-            _setter("scheduling_shutdown_hours", scheduling_shutdown_hours)
+            pulumi.set(__self__, "scheduling_shutdown_hours", scheduling_shutdown_hours)
         if scheduling_tasks is not None:
-            _setter("scheduling_tasks", scheduling_tasks)
+            pulumi.set(__self__, "scheduling_tasks", scheduling_tasks)
         if security_groups is not None:
-            _setter("security_groups", security_groups)
+            pulumi.set(__self__, "security_groups", security_groups)
         if strategies is not None:
-            _setter("strategies", strategies)
+            pulumi.set(__self__, "strategies", strategies)
         if subnet_ids is not None:
-            _setter("subnet_ids", subnet_ids)
+            pulumi.set(__self__, "subnet_ids", subnet_ids)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if taints is not None:
-            _setter("taints", taints)
+            pulumi.set(__self__, "taints", taints)
         if update_policy is not None:
-            _setter("update_policy", update_policy)
+            pulumi.set(__self__, "update_policy", update_policy)
         if user_data is not None:
-            _setter("user_data", user_data)
+            pulumi.set(__self__, "user_data", user_data)
 
     @property
     @pulumi.getter(name="oceanId")
@@ -666,183 +547,66 @@ class _OceanLaunchSpecState:
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecTaintArgs']]] taints: Optionally adds labels to instances launched in the cluster.
         :param pulumi.Input[str] user_data: Base64-encoded MIME user data to make available to the instances.
         """
-        _OceanLaunchSpecState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            associate_public_ip_address=associate_public_ip_address,
-            autoscale_downs=autoscale_downs,
-            autoscale_headrooms=autoscale_headrooms,
-            autoscale_headrooms_automatics=autoscale_headrooms_automatics,
-            block_device_mappings=block_device_mappings,
-            create_options=create_options,
-            delete_options=delete_options,
-            elastic_ip_pools=elastic_ip_pools,
-            iam_instance_profile=iam_instance_profile,
-            image_id=image_id,
-            images=images,
-            instance_metadata_options=instance_metadata_options,
-            instance_types=instance_types,
-            instance_types_filters=instance_types_filters,
-            labels=labels,
-            name=name,
-            ocean_id=ocean_id,
-            preferred_spot_types=preferred_spot_types,
-            resource_limits=resource_limits,
-            restrict_scale_down=restrict_scale_down,
-            root_volume_size=root_volume_size,
-            scheduling_shutdown_hours=scheduling_shutdown_hours,
-            scheduling_tasks=scheduling_tasks,
-            security_groups=security_groups,
-            strategies=strategies,
-            subnet_ids=subnet_ids,
-            tags=tags,
-            taints=taints,
-            update_policy=update_policy,
-            user_data=user_data,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             associate_public_ip_address: Optional[pulumi.Input[bool]] = None,
-             autoscale_downs: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecAutoscaleDownArgs']]]] = None,
-             autoscale_headrooms: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecAutoscaleHeadroomArgs']]]] = None,
-             autoscale_headrooms_automatics: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs']]]] = None,
-             block_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecBlockDeviceMappingArgs']]]] = None,
-             create_options: Optional[pulumi.Input['OceanLaunchSpecCreateOptionsArgs']] = None,
-             delete_options: Optional[pulumi.Input['OceanLaunchSpecDeleteOptionsArgs']] = None,
-             elastic_ip_pools: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecElasticIpPoolArgs']]]] = None,
-             iam_instance_profile: Optional[pulumi.Input[str]] = None,
-             image_id: Optional[pulumi.Input[str]] = None,
-             images: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecImageArgs']]]] = None,
-             instance_metadata_options: Optional[pulumi.Input['OceanLaunchSpecInstanceMetadataOptionsArgs']] = None,
-             instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             instance_types_filters: Optional[pulumi.Input['OceanLaunchSpecInstanceTypesFiltersArgs']] = None,
-             labels: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecLabelArgs']]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             ocean_id: Optional[pulumi.Input[str]] = None,
-             preferred_spot_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             resource_limits: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecResourceLimitArgs']]]] = None,
-             restrict_scale_down: Optional[pulumi.Input[bool]] = None,
-             root_volume_size: Optional[pulumi.Input[int]] = None,
-             scheduling_shutdown_hours: Optional[pulumi.Input['OceanLaunchSpecSchedulingShutdownHoursArgs']] = None,
-             scheduling_tasks: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecSchedulingTaskArgs']]]] = None,
-             security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             strategies: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecStrategyArgs']]]] = None,
-             subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             tags: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecTagArgs']]]] = None,
-             taints: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecTaintArgs']]]] = None,
-             update_policy: Optional[pulumi.Input['OceanLaunchSpecUpdatePolicyArgs']] = None,
-             user_data: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if associate_public_ip_address is None and 'associatePublicIpAddress' in kwargs:
-            associate_public_ip_address = kwargs['associatePublicIpAddress']
-        if autoscale_downs is None and 'autoscaleDowns' in kwargs:
-            autoscale_downs = kwargs['autoscaleDowns']
-        if autoscale_headrooms is None and 'autoscaleHeadrooms' in kwargs:
-            autoscale_headrooms = kwargs['autoscaleHeadrooms']
-        if autoscale_headrooms_automatics is None and 'autoscaleHeadroomsAutomatics' in kwargs:
-            autoscale_headrooms_automatics = kwargs['autoscaleHeadroomsAutomatics']
-        if block_device_mappings is None and 'blockDeviceMappings' in kwargs:
-            block_device_mappings = kwargs['blockDeviceMappings']
-        if create_options is None and 'createOptions' in kwargs:
-            create_options = kwargs['createOptions']
-        if delete_options is None and 'deleteOptions' in kwargs:
-            delete_options = kwargs['deleteOptions']
-        if elastic_ip_pools is None and 'elasticIpPools' in kwargs:
-            elastic_ip_pools = kwargs['elasticIpPools']
-        if iam_instance_profile is None and 'iamInstanceProfile' in kwargs:
-            iam_instance_profile = kwargs['iamInstanceProfile']
-        if image_id is None and 'imageId' in kwargs:
-            image_id = kwargs['imageId']
-        if instance_metadata_options is None and 'instanceMetadataOptions' in kwargs:
-            instance_metadata_options = kwargs['instanceMetadataOptions']
-        if instance_types is None and 'instanceTypes' in kwargs:
-            instance_types = kwargs['instanceTypes']
-        if instance_types_filters is None and 'instanceTypesFilters' in kwargs:
-            instance_types_filters = kwargs['instanceTypesFilters']
-        if ocean_id is None and 'oceanId' in kwargs:
-            ocean_id = kwargs['oceanId']
-        if preferred_spot_types is None and 'preferredSpotTypes' in kwargs:
-            preferred_spot_types = kwargs['preferredSpotTypes']
-        if resource_limits is None and 'resourceLimits' in kwargs:
-            resource_limits = kwargs['resourceLimits']
-        if restrict_scale_down is None and 'restrictScaleDown' in kwargs:
-            restrict_scale_down = kwargs['restrictScaleDown']
-        if root_volume_size is None and 'rootVolumeSize' in kwargs:
-            root_volume_size = kwargs['rootVolumeSize']
-        if scheduling_shutdown_hours is None and 'schedulingShutdownHours' in kwargs:
-            scheduling_shutdown_hours = kwargs['schedulingShutdownHours']
-        if scheduling_tasks is None and 'schedulingTasks' in kwargs:
-            scheduling_tasks = kwargs['schedulingTasks']
-        if security_groups is None and 'securityGroups' in kwargs:
-            security_groups = kwargs['securityGroups']
-        if subnet_ids is None and 'subnetIds' in kwargs:
-            subnet_ids = kwargs['subnetIds']
-        if update_policy is None and 'updatePolicy' in kwargs:
-            update_policy = kwargs['updatePolicy']
-        if user_data is None and 'userData' in kwargs:
-            user_data = kwargs['userData']
-
         if associate_public_ip_address is not None:
-            _setter("associate_public_ip_address", associate_public_ip_address)
+            pulumi.set(__self__, "associate_public_ip_address", associate_public_ip_address)
         if autoscale_downs is not None:
-            _setter("autoscale_downs", autoscale_downs)
+            pulumi.set(__self__, "autoscale_downs", autoscale_downs)
         if autoscale_headrooms is not None:
-            _setter("autoscale_headrooms", autoscale_headrooms)
+            pulumi.set(__self__, "autoscale_headrooms", autoscale_headrooms)
         if autoscale_headrooms_automatics is not None:
-            _setter("autoscale_headrooms_automatics", autoscale_headrooms_automatics)
+            pulumi.set(__self__, "autoscale_headrooms_automatics", autoscale_headrooms_automatics)
         if block_device_mappings is not None:
-            _setter("block_device_mappings", block_device_mappings)
+            pulumi.set(__self__, "block_device_mappings", block_device_mappings)
         if create_options is not None:
-            _setter("create_options", create_options)
+            pulumi.set(__self__, "create_options", create_options)
         if delete_options is not None:
-            _setter("delete_options", delete_options)
+            pulumi.set(__self__, "delete_options", delete_options)
         if elastic_ip_pools is not None:
-            _setter("elastic_ip_pools", elastic_ip_pools)
+            pulumi.set(__self__, "elastic_ip_pools", elastic_ip_pools)
         if iam_instance_profile is not None:
-            _setter("iam_instance_profile", iam_instance_profile)
+            pulumi.set(__self__, "iam_instance_profile", iam_instance_profile)
         if image_id is not None:
-            _setter("image_id", image_id)
+            pulumi.set(__self__, "image_id", image_id)
         if images is not None:
-            _setter("images", images)
+            pulumi.set(__self__, "images", images)
         if instance_metadata_options is not None:
-            _setter("instance_metadata_options", instance_metadata_options)
+            pulumi.set(__self__, "instance_metadata_options", instance_metadata_options)
         if instance_types is not None:
-            _setter("instance_types", instance_types)
+            pulumi.set(__self__, "instance_types", instance_types)
         if instance_types_filters is not None:
-            _setter("instance_types_filters", instance_types_filters)
+            pulumi.set(__self__, "instance_types_filters", instance_types_filters)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if ocean_id is not None:
-            _setter("ocean_id", ocean_id)
+            pulumi.set(__self__, "ocean_id", ocean_id)
         if preferred_spot_types is not None:
-            _setter("preferred_spot_types", preferred_spot_types)
+            pulumi.set(__self__, "preferred_spot_types", preferred_spot_types)
         if resource_limits is not None:
-            _setter("resource_limits", resource_limits)
+            pulumi.set(__self__, "resource_limits", resource_limits)
         if restrict_scale_down is not None:
-            _setter("restrict_scale_down", restrict_scale_down)
+            pulumi.set(__self__, "restrict_scale_down", restrict_scale_down)
         if root_volume_size is not None:
-            _setter("root_volume_size", root_volume_size)
+            pulumi.set(__self__, "root_volume_size", root_volume_size)
         if scheduling_shutdown_hours is not None:
-            _setter("scheduling_shutdown_hours", scheduling_shutdown_hours)
+            pulumi.set(__self__, "scheduling_shutdown_hours", scheduling_shutdown_hours)
         if scheduling_tasks is not None:
-            _setter("scheduling_tasks", scheduling_tasks)
+            pulumi.set(__self__, "scheduling_tasks", scheduling_tasks)
         if security_groups is not None:
-            _setter("security_groups", security_groups)
+            pulumi.set(__self__, "security_groups", security_groups)
         if strategies is not None:
-            _setter("strategies", strategies)
+            pulumi.set(__self__, "strategies", strategies)
         if subnet_ids is not None:
-            _setter("subnet_ids", subnet_ids)
+            pulumi.set(__self__, "subnet_ids", subnet_ids)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if taints is not None:
-            _setter("taints", taints)
+            pulumi.set(__self__, "taints", taints)
         if update_policy is not None:
-            _setter("update_policy", update_policy)
+            pulumi.set(__self__, "update_policy", update_policy)
         if user_data is not None:
-            _setter("user_data", user_data)
+            pulumi.set(__self__, "user_data", user_data)
 
     @property
     @pulumi.getter(name="associatePublicIpAddress")
@@ -1546,10 +1310,6 @@ class OceanLaunchSpec(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            OceanLaunchSpecArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -1599,18 +1359,14 @@ class OceanLaunchSpec(pulumi.CustomResource):
             __props__.__dict__["autoscale_headrooms"] = autoscale_headrooms
             __props__.__dict__["autoscale_headrooms_automatics"] = autoscale_headrooms_automatics
             __props__.__dict__["block_device_mappings"] = block_device_mappings
-            create_options = _utilities.configure(create_options, OceanLaunchSpecCreateOptionsArgs, True)
             __props__.__dict__["create_options"] = create_options
-            delete_options = _utilities.configure(delete_options, OceanLaunchSpecDeleteOptionsArgs, True)
             __props__.__dict__["delete_options"] = delete_options
             __props__.__dict__["elastic_ip_pools"] = elastic_ip_pools
             __props__.__dict__["iam_instance_profile"] = iam_instance_profile
             __props__.__dict__["image_id"] = image_id
             __props__.__dict__["images"] = images
-            instance_metadata_options = _utilities.configure(instance_metadata_options, OceanLaunchSpecInstanceMetadataOptionsArgs, True)
             __props__.__dict__["instance_metadata_options"] = instance_metadata_options
             __props__.__dict__["instance_types"] = instance_types
-            instance_types_filters = _utilities.configure(instance_types_filters, OceanLaunchSpecInstanceTypesFiltersArgs, True)
             __props__.__dict__["instance_types_filters"] = instance_types_filters
             __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
@@ -1621,7 +1377,6 @@ class OceanLaunchSpec(pulumi.CustomResource):
             __props__.__dict__["resource_limits"] = resource_limits
             __props__.__dict__["restrict_scale_down"] = restrict_scale_down
             __props__.__dict__["root_volume_size"] = root_volume_size
-            scheduling_shutdown_hours = _utilities.configure(scheduling_shutdown_hours, OceanLaunchSpecSchedulingShutdownHoursArgs, True)
             __props__.__dict__["scheduling_shutdown_hours"] = scheduling_shutdown_hours
             __props__.__dict__["scheduling_tasks"] = scheduling_tasks
             __props__.__dict__["security_groups"] = security_groups
@@ -1629,7 +1384,6 @@ class OceanLaunchSpec(pulumi.CustomResource):
             __props__.__dict__["subnet_ids"] = subnet_ids
             __props__.__dict__["tags"] = tags
             __props__.__dict__["taints"] = taints
-            update_policy = _utilities.configure(update_policy, OceanLaunchSpecUpdatePolicyArgs, True)
             __props__.__dict__["update_policy"] = update_policy
             __props__.__dict__["user_data"] = user_data
         super(OceanLaunchSpec, __self__).__init__(

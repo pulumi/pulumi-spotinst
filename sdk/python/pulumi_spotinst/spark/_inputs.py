@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -30,27 +30,10 @@ class OceanComputeArgs:
         :param pulumi.Input[bool] create_vngs: - Enable/disable the creation of Ocean Spark VNGs during cluster creation.
         :param pulumi.Input[bool] use_taints: - Enable/disable Ocean Spark taints on the Ocean Spark VNGs. By default, Ocean Spark uses taints to prevent non-Spark workloads from running on Ocean Spark VNGs.
         """
-        OceanComputeArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            create_vngs=create_vngs,
-            use_taints=use_taints,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             create_vngs: Optional[pulumi.Input[bool]] = None,
-             use_taints: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if create_vngs is None and 'createVngs' in kwargs:
-            create_vngs = kwargs['createVngs']
-        if use_taints is None and 'useTaints' in kwargs:
-            use_taints = kwargs['useTaints']
-
         if create_vngs is not None:
-            _setter("create_vngs", create_vngs)
+            pulumi.set(__self__, "create_vngs", create_vngs)
         if use_taints is not None:
-            _setter("use_taints", use_taints)
+            pulumi.set(__self__, "use_taints", use_taints)
 
     @property
     @pulumi.getter(name="createVngs")
@@ -88,43 +71,16 @@ class OceanIngressArgs:
         """
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] service_annotations: - **DEPRECATED**: Use `load_balancer.service_annotations` instead.
         """
-        OceanIngressArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            controller=controller,
-            custom_endpoint=custom_endpoint,
-            load_balancer=load_balancer,
-            private_link=private_link,
-            service_annotations=service_annotations,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             controller: Optional[pulumi.Input['OceanIngressControllerArgs']] = None,
-             custom_endpoint: Optional[pulumi.Input['OceanIngressCustomEndpointArgs']] = None,
-             load_balancer: Optional[pulumi.Input['OceanIngressLoadBalancerArgs']] = None,
-             private_link: Optional[pulumi.Input['OceanIngressPrivateLinkArgs']] = None,
-             service_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if custom_endpoint is None and 'customEndpoint' in kwargs:
-            custom_endpoint = kwargs['customEndpoint']
-        if load_balancer is None and 'loadBalancer' in kwargs:
-            load_balancer = kwargs['loadBalancer']
-        if private_link is None and 'privateLink' in kwargs:
-            private_link = kwargs['privateLink']
-        if service_annotations is None and 'serviceAnnotations' in kwargs:
-            service_annotations = kwargs['serviceAnnotations']
-
         if controller is not None:
-            _setter("controller", controller)
+            pulumi.set(__self__, "controller", controller)
         if custom_endpoint is not None:
-            _setter("custom_endpoint", custom_endpoint)
+            pulumi.set(__self__, "custom_endpoint", custom_endpoint)
         if load_balancer is not None:
-            _setter("load_balancer", load_balancer)
+            pulumi.set(__self__, "load_balancer", load_balancer)
         if private_link is not None:
-            _setter("private_link", private_link)
+            pulumi.set(__self__, "private_link", private_link)
         if service_annotations is not None:
-            _setter("service_annotations", service_annotations)
+            pulumi.set(__self__, "service_annotations", service_annotations)
 
     @property
     @pulumi.getter
@@ -182,19 +138,8 @@ class OceanIngressControllerArgs:
         """
         :param pulumi.Input[bool] managed: - Should an ingress controller managed by Ocean for Apache Spark be installed on the cluster.
         """
-        OceanIngressControllerArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            managed=managed,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             managed: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if managed is not None:
-            _setter("managed", managed)
+            pulumi.set(__self__, "managed", managed)
 
     @property
     @pulumi.getter
@@ -218,23 +163,10 @@ class OceanIngressCustomEndpointArgs:
         :param pulumi.Input[str] address: - The address the Ocean for Apache Spark control plane will use when addressing the cluster.
         :param pulumi.Input[bool] enabled: - Should the Ocean for Apache Spark control plane address the cluster using a custom endpoint. Use this to specify the DNS address of an externally provisioned (unmanaged) load balancer.
         """
-        OceanIngressCustomEndpointArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            address=address,
-            enabled=enabled,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             address: Optional[pulumi.Input[str]] = None,
-             enabled: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if address is not None:
-            _setter("address", address)
+            pulumi.set(__self__, "address", address)
         if enabled is not None:
-            _setter("enabled", enabled)
+            pulumi.set(__self__, "enabled", enabled)
 
     @property
     @pulumi.getter
@@ -272,31 +204,12 @@ class OceanIngressLoadBalancerArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] service_annotations: - Annotations to add to the ingress controller load balancer service. This is useful to configure properties of the managed load balancer, like the nature of the load balancer (e.g. ELB, NLB, ALB on AWS), the security groups, or various timeouts.
         :param pulumi.Input[str] target_group_arn: - The ARN of a target group that the Ocean for Apache Spark ingress controller will be bound to. Set this to use an existing load balancer with Ocean for Apache Spark. Has no effect if using a managed load balancer. Only available on AWS.
         """
-        OceanIngressLoadBalancerArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            managed=managed,
-            service_annotations=service_annotations,
-            target_group_arn=target_group_arn,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             managed: Optional[pulumi.Input[bool]] = None,
-             service_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             target_group_arn: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if service_annotations is None and 'serviceAnnotations' in kwargs:
-            service_annotations = kwargs['serviceAnnotations']
-        if target_group_arn is None and 'targetGroupArn' in kwargs:
-            target_group_arn = kwargs['targetGroupArn']
-
         if managed is not None:
-            _setter("managed", managed)
+            pulumi.set(__self__, "managed", managed)
         if service_annotations is not None:
-            _setter("service_annotations", service_annotations)
+            pulumi.set(__self__, "service_annotations", service_annotations)
         if target_group_arn is not None:
-            _setter("target_group_arn", target_group_arn)
+            pulumi.set(__self__, "target_group_arn", target_group_arn)
 
     @property
     @pulumi.getter
@@ -344,25 +257,10 @@ class OceanIngressPrivateLinkArgs:
         :param pulumi.Input[bool] enabled: - Should the Ocean for Apache Spark control plane address the cluster using a custom endpoint. Use this to specify the DNS address of an externally provisioned (unmanaged) load balancer.
         :param pulumi.Input[str] vpc_endpoint_service: - The name of the VPC Endpoint Service the Ocean for Apache Spark control plane should bind to.
         """
-        OceanIngressPrivateLinkArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            enabled=enabled,
-            vpc_endpoint_service=vpc_endpoint_service,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             enabled: Optional[pulumi.Input[bool]] = None,
-             vpc_endpoint_service: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if vpc_endpoint_service is None and 'vpcEndpointService' in kwargs:
-            vpc_endpoint_service = kwargs['vpcEndpointService']
-
         if enabled is not None:
-            _setter("enabled", enabled)
+            pulumi.set(__self__, "enabled", enabled)
         if vpc_endpoint_service is not None:
-            _setter("vpc_endpoint_service", vpc_endpoint_service)
+            pulumi.set(__self__, "vpc_endpoint_service", vpc_endpoint_service)
 
     @property
     @pulumi.getter
@@ -396,21 +294,8 @@ class OceanLogCollectionArgs:
         """
         :param pulumi.Input[bool] collect_app_logs: - Enable/Disable collecting driver and executor logs. When enabled, logs are stored by NetApp and can be downloaded from the Spot console web interface. The logs are deleted after 30 days.
         """
-        OceanLogCollectionArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            collect_app_logs=collect_app_logs,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             collect_app_logs: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if collect_app_logs is None and 'collectAppLogs' in kwargs:
-            collect_app_logs = kwargs['collectAppLogs']
-
         if collect_app_logs is not None:
-            _setter("collect_app_logs", collect_app_logs)
+            pulumi.set(__self__, "collect_app_logs", collect_app_logs)
 
     @property
     @pulumi.getter(name="collectAppLogs")
@@ -432,21 +317,8 @@ class OceanSparkArgs:
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] additional_app_namespaces: - List of Kubernetes namespaces that should be configured to run Spark applications, in addition to the default Spark application namespace `spark-apps`.
         """
-        OceanSparkArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            additional_app_namespaces=additional_app_namespaces,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             additional_app_namespaces: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if additional_app_namespaces is None and 'additionalAppNamespaces' in kwargs:
-            additional_app_namespaces = kwargs['additionalAppNamespaces']
-
         if additional_app_namespaces is not None:
-            _setter("additional_app_namespaces", additional_app_namespaces)
+            pulumi.set(__self__, "additional_app_namespaces", additional_app_namespaces)
 
     @property
     @pulumi.getter(name="additionalAppNamespaces")
@@ -470,27 +342,10 @@ class OceanWebhookArgs:
         :param pulumi.Input[Sequence[pulumi.Input[int]]] host_network_ports: - List of ports allowed to use on the host network - if empty default is `25554`.
         :param pulumi.Input[bool] use_host_network: - Enable/disable host networking for the Spark Operator. Host networking can be useful when using custom CNI plugins like Calico on EKS.
         """
-        OceanWebhookArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            host_network_ports=host_network_ports,
-            use_host_network=use_host_network,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             host_network_ports: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
-             use_host_network: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if host_network_ports is None and 'hostNetworkPorts' in kwargs:
-            host_network_ports = kwargs['hostNetworkPorts']
-        if use_host_network is None and 'useHostNetwork' in kwargs:
-            use_host_network = kwargs['useHostNetwork']
-
         if host_network_ports is not None:
-            _setter("host_network_ports", host_network_ports)
+            pulumi.set(__self__, "host_network_ports", host_network_ports)
         if use_host_network is not None:
-            _setter("use_host_network", use_host_network)
+            pulumi.set(__self__, "use_host_network", use_host_network)
 
     @property
     @pulumi.getter(name="hostNetworkPorts")

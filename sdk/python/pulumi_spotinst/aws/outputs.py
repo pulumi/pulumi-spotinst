@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -203,37 +203,14 @@ class BeanstalkDeploymentPreferences(dict):
         :param int grace_period: Amount of time to wait between batches
         :param Sequence['BeanstalkDeploymentPreferencesStrategyArgs'] strategies: Strategy parameters
         """
-        BeanstalkDeploymentPreferences._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            automatic_roll=automatic_roll,
-            batch_size_percentage=batch_size_percentage,
-            grace_period=grace_period,
-            strategies=strategies,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             automatic_roll: Optional[bool] = None,
-             batch_size_percentage: Optional[int] = None,
-             grace_period: Optional[int] = None,
-             strategies: Optional[Sequence['outputs.BeanstalkDeploymentPreferencesStrategy']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if automatic_roll is None and 'automaticRoll' in kwargs:
-            automatic_roll = kwargs['automaticRoll']
-        if batch_size_percentage is None and 'batchSizePercentage' in kwargs:
-            batch_size_percentage = kwargs['batchSizePercentage']
-        if grace_period is None and 'gracePeriod' in kwargs:
-            grace_period = kwargs['gracePeriod']
-
         if automatic_roll is not None:
-            _setter("automatic_roll", automatic_roll)
+            pulumi.set(__self__, "automatic_roll", automatic_roll)
         if batch_size_percentage is not None:
-            _setter("batch_size_percentage", batch_size_percentage)
+            pulumi.set(__self__, "batch_size_percentage", batch_size_percentage)
         if grace_period is not None:
-            _setter("grace_period", grace_period)
+            pulumi.set(__self__, "grace_period", grace_period)
         if strategies is not None:
-            _setter("strategies", strategies)
+            pulumi.set(__self__, "strategies", strategies)
 
     @property
     @pulumi.getter(name="automaticRoll")
@@ -294,25 +271,10 @@ class BeanstalkDeploymentPreferencesStrategy(dict):
         :param str action: Action to take
         :param bool should_drain_instances: Bool value if to wait to drain instance
         """
-        BeanstalkDeploymentPreferencesStrategy._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            action=action,
-            should_drain_instances=should_drain_instances,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             action: Optional[str] = None,
-             should_drain_instances: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if should_drain_instances is None and 'shouldDrainInstances' in kwargs:
-            should_drain_instances = kwargs['shouldDrainInstances']
-
         if action is not None:
-            _setter("action", action)
+            pulumi.set(__self__, "action", action)
         if should_drain_instances is not None:
-            _setter("should_drain_instances", should_drain_instances)
+            pulumi.set(__self__, "should_drain_instances", should_drain_instances)
 
     @property
     @pulumi.getter
@@ -355,21 +317,8 @@ class BeanstalkManagedActions(dict):
         """
         :param 'BeanstalkManagedActionsPlatformUpdateArgs' platform_update: Platform Update parameters
         """
-        BeanstalkManagedActions._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            platform_update=platform_update,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             platform_update: Optional['outputs.BeanstalkManagedActionsPlatformUpdate'] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if platform_update is None and 'platformUpdate' in kwargs:
-            platform_update = kwargs['platformUpdate']
-
         if platform_update is not None:
-            _setter("platform_update", platform_update)
+            pulumi.set(__self__, "platform_update", platform_update)
 
     @property
     @pulumi.getter(name="platformUpdate")
@@ -412,33 +361,12 @@ class BeanstalkManagedActionsPlatformUpdate(dict):
         :param str time_window: Time Window for when action occurs ex. Mon:23:50-Tue:00:20
         :param str update_level: Level to update
         """
-        BeanstalkManagedActionsPlatformUpdate._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            perform_at=perform_at,
-            time_window=time_window,
-            update_level=update_level,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             perform_at: Optional[str] = None,
-             time_window: Optional[str] = None,
-             update_level: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if perform_at is None and 'performAt' in kwargs:
-            perform_at = kwargs['performAt']
-        if time_window is None and 'timeWindow' in kwargs:
-            time_window = kwargs['timeWindow']
-        if update_level is None and 'updateLevel' in kwargs:
-            update_level = kwargs['updateLevel']
-
         if perform_at is not None:
-            _setter("perform_at", perform_at)
+            pulumi.set(__self__, "perform_at", perform_at)
         if time_window is not None:
-            _setter("time_window", time_window)
+            pulumi.set(__self__, "time_window", time_window)
         if update_level is not None:
-            _setter("update_level", update_level)
+            pulumi.set(__self__, "update_level", update_level)
 
     @property
     @pulumi.getter(name="performAt")
@@ -547,102 +475,35 @@ class BeanstalkScheduledTask(dict):
         :param str start_time: Set a start time for one time tasks.
         :param str target_capacity: The desired number of instances the group should have.
         """
-        BeanstalkScheduledTask._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            task_type=task_type,
-            adjustment=adjustment,
-            adjustment_percentage=adjustment_percentage,
-            batch_size_percentage=batch_size_percentage,
-            cron_expression=cron_expression,
-            frequency=frequency,
-            grace_period=grace_period,
-            is_enabled=is_enabled,
-            max_capacity=max_capacity,
-            min_capacity=min_capacity,
-            scale_max_capacity=scale_max_capacity,
-            scale_min_capacity=scale_min_capacity,
-            scale_target_capacity=scale_target_capacity,
-            start_time=start_time,
-            target_capacity=target_capacity,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             task_type: Optional[str] = None,
-             adjustment: Optional[str] = None,
-             adjustment_percentage: Optional[str] = None,
-             batch_size_percentage: Optional[str] = None,
-             cron_expression: Optional[str] = None,
-             frequency: Optional[str] = None,
-             grace_period: Optional[str] = None,
-             is_enabled: Optional[bool] = None,
-             max_capacity: Optional[str] = None,
-             min_capacity: Optional[str] = None,
-             scale_max_capacity: Optional[str] = None,
-             scale_min_capacity: Optional[str] = None,
-             scale_target_capacity: Optional[str] = None,
-             start_time: Optional[str] = None,
-             target_capacity: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if task_type is None and 'taskType' in kwargs:
-            task_type = kwargs['taskType']
-        if task_type is None:
-            raise TypeError("Missing 'task_type' argument")
-        if adjustment_percentage is None and 'adjustmentPercentage' in kwargs:
-            adjustment_percentage = kwargs['adjustmentPercentage']
-        if batch_size_percentage is None and 'batchSizePercentage' in kwargs:
-            batch_size_percentage = kwargs['batchSizePercentage']
-        if cron_expression is None and 'cronExpression' in kwargs:
-            cron_expression = kwargs['cronExpression']
-        if grace_period is None and 'gracePeriod' in kwargs:
-            grace_period = kwargs['gracePeriod']
-        if is_enabled is None and 'isEnabled' in kwargs:
-            is_enabled = kwargs['isEnabled']
-        if max_capacity is None and 'maxCapacity' in kwargs:
-            max_capacity = kwargs['maxCapacity']
-        if min_capacity is None and 'minCapacity' in kwargs:
-            min_capacity = kwargs['minCapacity']
-        if scale_max_capacity is None and 'scaleMaxCapacity' in kwargs:
-            scale_max_capacity = kwargs['scaleMaxCapacity']
-        if scale_min_capacity is None and 'scaleMinCapacity' in kwargs:
-            scale_min_capacity = kwargs['scaleMinCapacity']
-        if scale_target_capacity is None and 'scaleTargetCapacity' in kwargs:
-            scale_target_capacity = kwargs['scaleTargetCapacity']
-        if start_time is None and 'startTime' in kwargs:
-            start_time = kwargs['startTime']
-        if target_capacity is None and 'targetCapacity' in kwargs:
-            target_capacity = kwargs['targetCapacity']
-
-        _setter("task_type", task_type)
+        pulumi.set(__self__, "task_type", task_type)
         if adjustment is not None:
-            _setter("adjustment", adjustment)
+            pulumi.set(__self__, "adjustment", adjustment)
         if adjustment_percentage is not None:
-            _setter("adjustment_percentage", adjustment_percentage)
+            pulumi.set(__self__, "adjustment_percentage", adjustment_percentage)
         if batch_size_percentage is not None:
-            _setter("batch_size_percentage", batch_size_percentage)
+            pulumi.set(__self__, "batch_size_percentage", batch_size_percentage)
         if cron_expression is not None:
-            _setter("cron_expression", cron_expression)
+            pulumi.set(__self__, "cron_expression", cron_expression)
         if frequency is not None:
-            _setter("frequency", frequency)
+            pulumi.set(__self__, "frequency", frequency)
         if grace_period is not None:
-            _setter("grace_period", grace_period)
+            pulumi.set(__self__, "grace_period", grace_period)
         if is_enabled is not None:
-            _setter("is_enabled", is_enabled)
+            pulumi.set(__self__, "is_enabled", is_enabled)
         if max_capacity is not None:
-            _setter("max_capacity", max_capacity)
+            pulumi.set(__self__, "max_capacity", max_capacity)
         if min_capacity is not None:
-            _setter("min_capacity", min_capacity)
+            pulumi.set(__self__, "min_capacity", min_capacity)
         if scale_max_capacity is not None:
-            _setter("scale_max_capacity", scale_max_capacity)
+            pulumi.set(__self__, "scale_max_capacity", scale_max_capacity)
         if scale_min_capacity is not None:
-            _setter("scale_min_capacity", scale_min_capacity)
+            pulumi.set(__self__, "scale_min_capacity", scale_min_capacity)
         if scale_target_capacity is not None:
-            _setter("scale_target_capacity", scale_target_capacity)
+            pulumi.set(__self__, "scale_target_capacity", scale_target_capacity)
         if start_time is not None:
-            _setter("start_time", start_time)
+            pulumi.set(__self__, "start_time", start_time)
         if target_capacity is not None:
-            _setter("target_capacity", target_capacity)
+            pulumi.set(__self__, "target_capacity", target_capacity)
 
     @property
     @pulumi.getter(name="taskType")
@@ -795,22 +656,7 @@ class ElastigroupCpuOptions(dict):
         """
         :param int threads_per_core: The ability to define the number of threads per core in instances that allow this.
         """
-        ElastigroupCpuOptions._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            threads_per_core=threads_per_core,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             threads_per_core: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if threads_per_core is None and 'threadsPerCore' in kwargs:
-            threads_per_core = kwargs['threadsPerCore']
-        if threads_per_core is None:
-            raise TypeError("Missing 'threads_per_core' argument")
-
-        _setter("threads_per_core", threads_per_core)
+        pulumi.set(__self__, "threads_per_core", threads_per_core)
 
     @property
     @pulumi.getter(name="threadsPerCore")
@@ -879,64 +725,23 @@ class ElastigroupEbsBlockDevice(dict):
         :param int volume_size: The size of the volume in gigabytes.
         :param str volume_type: The type of volume. Can be `"standard"`, `"gp2"`, `"gp3"`, `"io1"`, `"st1"` or `"sc1"`.
         """
-        ElastigroupEbsBlockDevice._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            device_name=device_name,
-            delete_on_termination=delete_on_termination,
-            encrypted=encrypted,
-            iops=iops,
-            kms_key_id=kms_key_id,
-            snapshot_id=snapshot_id,
-            throughput=throughput,
-            volume_size=volume_size,
-            volume_type=volume_type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             device_name: Optional[str] = None,
-             delete_on_termination: Optional[bool] = None,
-             encrypted: Optional[bool] = None,
-             iops: Optional[int] = None,
-             kms_key_id: Optional[str] = None,
-             snapshot_id: Optional[str] = None,
-             throughput: Optional[int] = None,
-             volume_size: Optional[int] = None,
-             volume_type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if device_name is None and 'deviceName' in kwargs:
-            device_name = kwargs['deviceName']
-        if device_name is None:
-            raise TypeError("Missing 'device_name' argument")
-        if delete_on_termination is None and 'deleteOnTermination' in kwargs:
-            delete_on_termination = kwargs['deleteOnTermination']
-        if kms_key_id is None and 'kmsKeyId' in kwargs:
-            kms_key_id = kwargs['kmsKeyId']
-        if snapshot_id is None and 'snapshotId' in kwargs:
-            snapshot_id = kwargs['snapshotId']
-        if volume_size is None and 'volumeSize' in kwargs:
-            volume_size = kwargs['volumeSize']
-        if volume_type is None and 'volumeType' in kwargs:
-            volume_type = kwargs['volumeType']
-
-        _setter("device_name", device_name)
+        pulumi.set(__self__, "device_name", device_name)
         if delete_on_termination is not None:
-            _setter("delete_on_termination", delete_on_termination)
+            pulumi.set(__self__, "delete_on_termination", delete_on_termination)
         if encrypted is not None:
-            _setter("encrypted", encrypted)
+            pulumi.set(__self__, "encrypted", encrypted)
         if iops is not None:
-            _setter("iops", iops)
+            pulumi.set(__self__, "iops", iops)
         if kms_key_id is not None:
-            _setter("kms_key_id", kms_key_id)
+            pulumi.set(__self__, "kms_key_id", kms_key_id)
         if snapshot_id is not None:
-            _setter("snapshot_id", snapshot_id)
+            pulumi.set(__self__, "snapshot_id", snapshot_id)
         if throughput is not None:
-            _setter("throughput", throughput)
+            pulumi.set(__self__, "throughput", throughput)
         if volume_size is not None:
-            _setter("volume_size", volume_size)
+            pulumi.set(__self__, "volume_size", volume_size)
         if volume_type is not None:
-            _setter("volume_type", volume_type)
+            pulumi.set(__self__, "volume_type", volume_type)
 
     @property
     @pulumi.getter(name="deviceName")
@@ -1054,29 +859,8 @@ class ElastigroupEphemeralBlockDevice(dict):
                import pulumi
                ```
         """
-        ElastigroupEphemeralBlockDevice._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            device_name=device_name,
-            virtual_name=virtual_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             device_name: Optional[str] = None,
-             virtual_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if device_name is None and 'deviceName' in kwargs:
-            device_name = kwargs['deviceName']
-        if device_name is None:
-            raise TypeError("Missing 'device_name' argument")
-        if virtual_name is None and 'virtualName' in kwargs:
-            virtual_name = kwargs['virtualName']
-        if virtual_name is None:
-            raise TypeError("Missing 'virtual_name' argument")
-
-        _setter("device_name", device_name)
-        _setter("virtual_name", virtual_name)
+        pulumi.set(__self__, "device_name", device_name)
+        pulumi.set(__self__, "virtual_name", virtual_name)
 
     @property
     @pulumi.getter(name="deviceName")
@@ -1106,20 +890,7 @@ class ElastigroupEphemeralBlockDevice(dict):
 class ElastigroupImage(dict):
     def __init__(__self__, *,
                  images: Sequence['outputs.ElastigroupImageImage']):
-        ElastigroupImage._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            images=images,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             images: Optional[Sequence['outputs.ElastigroupImageImage']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if images is None:
-            raise TypeError("Missing 'images' argument")
-
-        _setter("images", images)
+        pulumi.set(__self__, "images", images)
 
     @property
     @pulumi.getter
@@ -1134,20 +905,7 @@ class ElastigroupImageImage(dict):
         """
         :param str id: The group ID.
         """
-        ElastigroupImageImage._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            id=id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-
-        _setter("id", id)
+        pulumi.set(__self__, "id", id)
 
     @property
     @pulumi.getter
@@ -1184,27 +942,8 @@ class ElastigroupInstanceTypesWeight(dict):
         :param str instance_type: Name of instance type (String).
         :param int weight: Weight per instance type (Integer).
         """
-        ElastigroupInstanceTypesWeight._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            instance_type=instance_type,
-            weight=weight,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             instance_type: Optional[str] = None,
-             weight: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if instance_type is None and 'instanceType' in kwargs:
-            instance_type = kwargs['instanceType']
-        if instance_type is None:
-            raise TypeError("Missing 'instance_type' argument")
-        if weight is None:
-            raise TypeError("Missing 'weight' argument")
-
-        _setter("instance_type", instance_type)
-        _setter("weight", weight)
+        pulumi.set(__self__, "instance_type", instance_type)
+        pulumi.set(__self__, "weight", weight)
 
     @property
     @pulumi.getter(name="instanceType")
@@ -1254,33 +993,12 @@ class ElastigroupIntegrationBeanstalk(dict):
         :param 'ElastigroupIntegrationBeanstalkDeploymentPreferencesArgs' deployment_preferences: Preferences when performing a roll
         :param 'ElastigroupIntegrationBeanstalkManagedActionsArgs' managed_actions: Managed Actions parameters
         """
-        ElastigroupIntegrationBeanstalk._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            deployment_preferences=deployment_preferences,
-            environment_id=environment_id,
-            managed_actions=managed_actions,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             deployment_preferences: Optional['outputs.ElastigroupIntegrationBeanstalkDeploymentPreferences'] = None,
-             environment_id: Optional[str] = None,
-             managed_actions: Optional['outputs.ElastigroupIntegrationBeanstalkManagedActions'] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if deployment_preferences is None and 'deploymentPreferences' in kwargs:
-            deployment_preferences = kwargs['deploymentPreferences']
-        if environment_id is None and 'environmentId' in kwargs:
-            environment_id = kwargs['environmentId']
-        if managed_actions is None and 'managedActions' in kwargs:
-            managed_actions = kwargs['managedActions']
-
         if deployment_preferences is not None:
-            _setter("deployment_preferences", deployment_preferences)
+            pulumi.set(__self__, "deployment_preferences", deployment_preferences)
         if environment_id is not None:
-            _setter("environment_id", environment_id)
+            pulumi.set(__self__, "environment_id", environment_id)
         if managed_actions is not None:
-            _setter("managed_actions", managed_actions)
+            pulumi.set(__self__, "managed_actions", managed_actions)
 
     @property
     @pulumi.getter(name="deploymentPreferences")
@@ -1338,37 +1056,14 @@ class ElastigroupIntegrationBeanstalkDeploymentPreferences(dict):
         :param int grace_period: The period of time (seconds) to wait before checking a batch's health after it's deployment.
         :param 'ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategyArgs' strategy: Strategy parameters
         """
-        ElastigroupIntegrationBeanstalkDeploymentPreferences._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            automatic_roll=automatic_roll,
-            batch_size_percentage=batch_size_percentage,
-            grace_period=grace_period,
-            strategy=strategy,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             automatic_roll: Optional[bool] = None,
-             batch_size_percentage: Optional[int] = None,
-             grace_period: Optional[int] = None,
-             strategy: Optional['outputs.ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategy'] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if automatic_roll is None and 'automaticRoll' in kwargs:
-            automatic_roll = kwargs['automaticRoll']
-        if batch_size_percentage is None and 'batchSizePercentage' in kwargs:
-            batch_size_percentage = kwargs['batchSizePercentage']
-        if grace_period is None and 'gracePeriod' in kwargs:
-            grace_period = kwargs['gracePeriod']
-
         if automatic_roll is not None:
-            _setter("automatic_roll", automatic_roll)
+            pulumi.set(__self__, "automatic_roll", automatic_roll)
         if batch_size_percentage is not None:
-            _setter("batch_size_percentage", batch_size_percentage)
+            pulumi.set(__self__, "batch_size_percentage", batch_size_percentage)
         if grace_period is not None:
-            _setter("grace_period", grace_period)
+            pulumi.set(__self__, "grace_period", grace_period)
         if strategy is not None:
-            _setter("strategy", strategy)
+            pulumi.set(__self__, "strategy", strategy)
 
     @property
     @pulumi.getter(name="automaticRoll")
@@ -1429,25 +1124,10 @@ class ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategy(dict):
         :param str action: The action to take when scale up according to step's threshold is needed.
         :param bool should_drain_instances: Bool value if to wait to drain instance
         """
-        ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategy._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            action=action,
-            should_drain_instances=should_drain_instances,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             action: Optional[str] = None,
-             should_drain_instances: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if should_drain_instances is None and 'shouldDrainInstances' in kwargs:
-            should_drain_instances = kwargs['shouldDrainInstances']
-
         if action is not None:
-            _setter("action", action)
+            pulumi.set(__self__, "action", action)
         if should_drain_instances is not None:
-            _setter("should_drain_instances", should_drain_instances)
+            pulumi.set(__self__, "should_drain_instances", should_drain_instances)
 
     @property
     @pulumi.getter
@@ -1490,21 +1170,8 @@ class ElastigroupIntegrationBeanstalkManagedActions(dict):
         """
         :param 'ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdateArgs' platform_update: Platform Update parameters
         """
-        ElastigroupIntegrationBeanstalkManagedActions._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            platform_update=platform_update,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             platform_update: Optional['outputs.ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdate'] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if platform_update is None and 'platformUpdate' in kwargs:
-            platform_update = kwargs['platformUpdate']
-
         if platform_update is not None:
-            _setter("platform_update", platform_update)
+            pulumi.set(__self__, "platform_update", platform_update)
 
     @property
     @pulumi.getter(name="platformUpdate")
@@ -1553,33 +1220,12 @@ class ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdate(dict):
                import pulumi
                ```
         """
-        ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdate._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            perform_at=perform_at,
-            time_window=time_window,
-            update_level=update_level,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             perform_at: Optional[str] = None,
-             time_window: Optional[str] = None,
-             update_level: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if perform_at is None and 'performAt' in kwargs:
-            perform_at = kwargs['performAt']
-        if time_window is None and 'timeWindow' in kwargs:
-            time_window = kwargs['timeWindow']
-        if update_level is None and 'updateLevel' in kwargs:
-            update_level = kwargs['updateLevel']
-
         if perform_at is not None:
-            _setter("perform_at", perform_at)
+            pulumi.set(__self__, "perform_at", perform_at)
         if time_window is not None:
-            _setter("time_window", time_window)
+            pulumi.set(__self__, "time_window", time_window)
         if update_level is not None:
-            _setter("update_level", update_level)
+            pulumi.set(__self__, "update_level", update_level)
 
     @property
     @pulumi.getter(name="performAt")
@@ -1644,36 +1290,9 @@ class ElastigroupIntegrationCodedeploy(dict):
         :param Sequence['ElastigroupIntegrationCodedeployDeploymentGroupArgs'] deployment_groups: Specify the deployment groups details.
         :param bool terminate_instance_on_failure: Terminate the instance automatically after a failed deploy.
         """
-        ElastigroupIntegrationCodedeploy._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cleanup_on_failure=cleanup_on_failure,
-            deployment_groups=deployment_groups,
-            terminate_instance_on_failure=terminate_instance_on_failure,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cleanup_on_failure: Optional[bool] = None,
-             deployment_groups: Optional[Sequence['outputs.ElastigroupIntegrationCodedeployDeploymentGroup']] = None,
-             terminate_instance_on_failure: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cleanup_on_failure is None and 'cleanupOnFailure' in kwargs:
-            cleanup_on_failure = kwargs['cleanupOnFailure']
-        if cleanup_on_failure is None:
-            raise TypeError("Missing 'cleanup_on_failure' argument")
-        if deployment_groups is None and 'deploymentGroups' in kwargs:
-            deployment_groups = kwargs['deploymentGroups']
-        if deployment_groups is None:
-            raise TypeError("Missing 'deployment_groups' argument")
-        if terminate_instance_on_failure is None and 'terminateInstanceOnFailure' in kwargs:
-            terminate_instance_on_failure = kwargs['terminateInstanceOnFailure']
-        if terminate_instance_on_failure is None:
-            raise TypeError("Missing 'terminate_instance_on_failure' argument")
-
-        _setter("cleanup_on_failure", cleanup_on_failure)
-        _setter("deployment_groups", deployment_groups)
-        _setter("terminate_instance_on_failure", terminate_instance_on_failure)
+        pulumi.set(__self__, "cleanup_on_failure", cleanup_on_failure)
+        pulumi.set(__self__, "deployment_groups", deployment_groups)
+        pulumi.set(__self__, "terminate_instance_on_failure", terminate_instance_on_failure)
 
     @property
     @pulumi.getter(name="cleanupOnFailure")
@@ -1734,29 +1353,8 @@ class ElastigroupIntegrationCodedeployDeploymentGroup(dict):
                import pulumi
                ```
         """
-        ElastigroupIntegrationCodedeployDeploymentGroup._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            application_name=application_name,
-            deployment_group_name=deployment_group_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             application_name: Optional[str] = None,
-             deployment_group_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if application_name is None and 'applicationName' in kwargs:
-            application_name = kwargs['applicationName']
-        if application_name is None:
-            raise TypeError("Missing 'application_name' argument")
-        if deployment_group_name is None and 'deploymentGroupName' in kwargs:
-            deployment_group_name = kwargs['deploymentGroupName']
-        if deployment_group_name is None:
-            raise TypeError("Missing 'deployment_group_name' argument")
-
-        _setter("application_name", application_name)
-        _setter("deployment_group_name", deployment_group_name)
+        pulumi.set(__self__, "application_name", application_name)
+        pulumi.set(__self__, "deployment_group_name", deployment_group_name)
 
     @property
     @pulumi.getter(name="applicationName")
@@ -1825,53 +1423,16 @@ class ElastigroupIntegrationDockerSwarm(dict):
         :param 'ElastigroupIntegrationDockerSwarmAutoscaleHeadroomArgs' autoscale_headroom: An option to set compute reserve for the cluster.
         :param bool autoscale_is_enabled: Specifies whether the auto scaling feature is enabled.
         """
-        ElastigroupIntegrationDockerSwarm._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            master_host=master_host,
-            master_port=master_port,
-            autoscale_cooldown=autoscale_cooldown,
-            autoscale_down=autoscale_down,
-            autoscale_headroom=autoscale_headroom,
-            autoscale_is_enabled=autoscale_is_enabled,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             master_host: Optional[str] = None,
-             master_port: Optional[int] = None,
-             autoscale_cooldown: Optional[int] = None,
-             autoscale_down: Optional['outputs.ElastigroupIntegrationDockerSwarmAutoscaleDown'] = None,
-             autoscale_headroom: Optional['outputs.ElastigroupIntegrationDockerSwarmAutoscaleHeadroom'] = None,
-             autoscale_is_enabled: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if master_host is None and 'masterHost' in kwargs:
-            master_host = kwargs['masterHost']
-        if master_host is None:
-            raise TypeError("Missing 'master_host' argument")
-        if master_port is None and 'masterPort' in kwargs:
-            master_port = kwargs['masterPort']
-        if master_port is None:
-            raise TypeError("Missing 'master_port' argument")
-        if autoscale_cooldown is None and 'autoscaleCooldown' in kwargs:
-            autoscale_cooldown = kwargs['autoscaleCooldown']
-        if autoscale_down is None and 'autoscaleDown' in kwargs:
-            autoscale_down = kwargs['autoscaleDown']
-        if autoscale_headroom is None and 'autoscaleHeadroom' in kwargs:
-            autoscale_headroom = kwargs['autoscaleHeadroom']
-        if autoscale_is_enabled is None and 'autoscaleIsEnabled' in kwargs:
-            autoscale_is_enabled = kwargs['autoscaleIsEnabled']
-
-        _setter("master_host", master_host)
-        _setter("master_port", master_port)
+        pulumi.set(__self__, "master_host", master_host)
+        pulumi.set(__self__, "master_port", master_port)
         if autoscale_cooldown is not None:
-            _setter("autoscale_cooldown", autoscale_cooldown)
+            pulumi.set(__self__, "autoscale_cooldown", autoscale_cooldown)
         if autoscale_down is not None:
-            _setter("autoscale_down", autoscale_down)
+            pulumi.set(__self__, "autoscale_down", autoscale_down)
         if autoscale_headroom is not None:
-            _setter("autoscale_headroom", autoscale_headroom)
+            pulumi.set(__self__, "autoscale_headroom", autoscale_headroom)
         if autoscale_is_enabled is not None:
-            _setter("autoscale_is_enabled", autoscale_is_enabled)
+            pulumi.set(__self__, "autoscale_is_enabled", autoscale_is_enabled)
 
     @property
     @pulumi.getter(name="masterHost")
@@ -1950,27 +1511,10 @@ class ElastigroupIntegrationDockerSwarmAutoscaleDown(dict):
         :param int evaluation_periods: The number of periods over which data is compared to the specified threshold.
         :param float max_scale_down_percentage: Represents the maximum percent to scale-down. Number between 1-100.
         """
-        ElastigroupIntegrationDockerSwarmAutoscaleDown._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            evaluation_periods=evaluation_periods,
-            max_scale_down_percentage=max_scale_down_percentage,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             evaluation_periods: Optional[int] = None,
-             max_scale_down_percentage: Optional[float] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if evaluation_periods is None and 'evaluationPeriods' in kwargs:
-            evaluation_periods = kwargs['evaluationPeriods']
-        if max_scale_down_percentage is None and 'maxScaleDownPercentage' in kwargs:
-            max_scale_down_percentage = kwargs['maxScaleDownPercentage']
-
         if evaluation_periods is not None:
-            _setter("evaluation_periods", evaluation_periods)
+            pulumi.set(__self__, "evaluation_periods", evaluation_periods)
         if max_scale_down_percentage is not None:
-            _setter("max_scale_down_percentage", max_scale_down_percentage)
+            pulumi.set(__self__, "max_scale_down_percentage", max_scale_down_percentage)
 
     @property
     @pulumi.getter(name="evaluationPeriods")
@@ -2021,33 +1565,12 @@ class ElastigroupIntegrationDockerSwarmAutoscaleHeadroom(dict):
         :param int memory_per_unit: How much Memory allocate for headroom unit.
         :param int num_of_units: How many units of headroom to allocate.
         """
-        ElastigroupIntegrationDockerSwarmAutoscaleHeadroom._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cpu_per_unit=cpu_per_unit,
-            memory_per_unit=memory_per_unit,
-            num_of_units=num_of_units,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cpu_per_unit: Optional[int] = None,
-             memory_per_unit: Optional[int] = None,
-             num_of_units: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cpu_per_unit is None and 'cpuPerUnit' in kwargs:
-            cpu_per_unit = kwargs['cpuPerUnit']
-        if memory_per_unit is None and 'memoryPerUnit' in kwargs:
-            memory_per_unit = kwargs['memoryPerUnit']
-        if num_of_units is None and 'numOfUnits' in kwargs:
-            num_of_units = kwargs['numOfUnits']
-
         if cpu_per_unit is not None:
-            _setter("cpu_per_unit", cpu_per_unit)
+            pulumi.set(__self__, "cpu_per_unit", cpu_per_unit)
         if memory_per_unit is not None:
-            _setter("memory_per_unit", memory_per_unit)
+            pulumi.set(__self__, "memory_per_unit", memory_per_unit)
         if num_of_units is not None:
-            _setter("num_of_units", num_of_units)
+            pulumi.set(__self__, "num_of_units", num_of_units)
 
     @property
     @pulumi.getter(name="cpuPerUnit")
@@ -2128,68 +1651,23 @@ class ElastigroupIntegrationEcs(dict):
         :param bool autoscale_scale_down_non_service_tasks: Determines whether to scale down non-service tasks.
         :param 'ElastigroupIntegrationEcsBatchArgs' batch: Batch configuration object:
         """
-        ElastigroupIntegrationEcs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cluster_name=cluster_name,
-            autoscale_attributes=autoscale_attributes,
-            autoscale_cooldown=autoscale_cooldown,
-            autoscale_down=autoscale_down,
-            autoscale_headroom=autoscale_headroom,
-            autoscale_is_auto_config=autoscale_is_auto_config,
-            autoscale_is_enabled=autoscale_is_enabled,
-            autoscale_scale_down_non_service_tasks=autoscale_scale_down_non_service_tasks,
-            batch=batch,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cluster_name: Optional[str] = None,
-             autoscale_attributes: Optional[Sequence['outputs.ElastigroupIntegrationEcsAutoscaleAttribute']] = None,
-             autoscale_cooldown: Optional[int] = None,
-             autoscale_down: Optional['outputs.ElastigroupIntegrationEcsAutoscaleDown'] = None,
-             autoscale_headroom: Optional['outputs.ElastigroupIntegrationEcsAutoscaleHeadroom'] = None,
-             autoscale_is_auto_config: Optional[bool] = None,
-             autoscale_is_enabled: Optional[bool] = None,
-             autoscale_scale_down_non_service_tasks: Optional[bool] = None,
-             batch: Optional['outputs.ElastigroupIntegrationEcsBatch'] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cluster_name is None and 'clusterName' in kwargs:
-            cluster_name = kwargs['clusterName']
-        if cluster_name is None:
-            raise TypeError("Missing 'cluster_name' argument")
-        if autoscale_attributes is None and 'autoscaleAttributes' in kwargs:
-            autoscale_attributes = kwargs['autoscaleAttributes']
-        if autoscale_cooldown is None and 'autoscaleCooldown' in kwargs:
-            autoscale_cooldown = kwargs['autoscaleCooldown']
-        if autoscale_down is None and 'autoscaleDown' in kwargs:
-            autoscale_down = kwargs['autoscaleDown']
-        if autoscale_headroom is None and 'autoscaleHeadroom' in kwargs:
-            autoscale_headroom = kwargs['autoscaleHeadroom']
-        if autoscale_is_auto_config is None and 'autoscaleIsAutoConfig' in kwargs:
-            autoscale_is_auto_config = kwargs['autoscaleIsAutoConfig']
-        if autoscale_is_enabled is None and 'autoscaleIsEnabled' in kwargs:
-            autoscale_is_enabled = kwargs['autoscaleIsEnabled']
-        if autoscale_scale_down_non_service_tasks is None and 'autoscaleScaleDownNonServiceTasks' in kwargs:
-            autoscale_scale_down_non_service_tasks = kwargs['autoscaleScaleDownNonServiceTasks']
-
-        _setter("cluster_name", cluster_name)
+        pulumi.set(__self__, "cluster_name", cluster_name)
         if autoscale_attributes is not None:
-            _setter("autoscale_attributes", autoscale_attributes)
+            pulumi.set(__self__, "autoscale_attributes", autoscale_attributes)
         if autoscale_cooldown is not None:
-            _setter("autoscale_cooldown", autoscale_cooldown)
+            pulumi.set(__self__, "autoscale_cooldown", autoscale_cooldown)
         if autoscale_down is not None:
-            _setter("autoscale_down", autoscale_down)
+            pulumi.set(__self__, "autoscale_down", autoscale_down)
         if autoscale_headroom is not None:
-            _setter("autoscale_headroom", autoscale_headroom)
+            pulumi.set(__self__, "autoscale_headroom", autoscale_headroom)
         if autoscale_is_auto_config is not None:
-            _setter("autoscale_is_auto_config", autoscale_is_auto_config)
+            pulumi.set(__self__, "autoscale_is_auto_config", autoscale_is_auto_config)
         if autoscale_is_enabled is not None:
-            _setter("autoscale_is_enabled", autoscale_is_enabled)
+            pulumi.set(__self__, "autoscale_is_enabled", autoscale_is_enabled)
         if autoscale_scale_down_non_service_tasks is not None:
-            _setter("autoscale_scale_down_non_service_tasks", autoscale_scale_down_non_service_tasks)
+            pulumi.set(__self__, "autoscale_scale_down_non_service_tasks", autoscale_scale_down_non_service_tasks)
         if batch is not None:
-            _setter("batch", batch)
+            pulumi.set(__self__, "batch", batch)
 
     @property
     @pulumi.getter(name="clusterName")
@@ -2272,25 +1750,8 @@ class ElastigroupIntegrationEcsAutoscaleAttribute(dict):
         """
         :param str value: The dimension value.
         """
-        ElastigroupIntegrationEcsAutoscaleAttribute._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            key=key,
-            value=value,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             key: Optional[str] = None,
-             value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if key is None:
-            raise TypeError("Missing 'key' argument")
-        if value is None:
-            raise TypeError("Missing 'value' argument")
-
-        _setter("key", key)
-        _setter("value", value)
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -2334,27 +1795,10 @@ class ElastigroupIntegrationEcsAutoscaleDown(dict):
         :param int evaluation_periods: The number of periods over which data is compared to the specified threshold.
         :param float max_scale_down_percentage: Represents the maximum percent to scale-down. Number between 1-100.
         """
-        ElastigroupIntegrationEcsAutoscaleDown._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            evaluation_periods=evaluation_periods,
-            max_scale_down_percentage=max_scale_down_percentage,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             evaluation_periods: Optional[int] = None,
-             max_scale_down_percentage: Optional[float] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if evaluation_periods is None and 'evaluationPeriods' in kwargs:
-            evaluation_periods = kwargs['evaluationPeriods']
-        if max_scale_down_percentage is None and 'maxScaleDownPercentage' in kwargs:
-            max_scale_down_percentage = kwargs['maxScaleDownPercentage']
-
         if evaluation_periods is not None:
-            _setter("evaluation_periods", evaluation_periods)
+            pulumi.set(__self__, "evaluation_periods", evaluation_periods)
         if max_scale_down_percentage is not None:
-            _setter("max_scale_down_percentage", max_scale_down_percentage)
+            pulumi.set(__self__, "max_scale_down_percentage", max_scale_down_percentage)
 
     @property
     @pulumi.getter(name="evaluationPeriods")
@@ -2405,33 +1849,12 @@ class ElastigroupIntegrationEcsAutoscaleHeadroom(dict):
         :param int memory_per_unit: How much Memory allocate for headroom unit.
         :param int num_of_units: How many units of headroom to allocate.
         """
-        ElastigroupIntegrationEcsAutoscaleHeadroom._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cpu_per_unit=cpu_per_unit,
-            memory_per_unit=memory_per_unit,
-            num_of_units=num_of_units,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cpu_per_unit: Optional[int] = None,
-             memory_per_unit: Optional[int] = None,
-             num_of_units: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cpu_per_unit is None and 'cpuPerUnit' in kwargs:
-            cpu_per_unit = kwargs['cpuPerUnit']
-        if memory_per_unit is None and 'memoryPerUnit' in kwargs:
-            memory_per_unit = kwargs['memoryPerUnit']
-        if num_of_units is None and 'numOfUnits' in kwargs:
-            num_of_units = kwargs['numOfUnits']
-
         if cpu_per_unit is not None:
-            _setter("cpu_per_unit", cpu_per_unit)
+            pulumi.set(__self__, "cpu_per_unit", cpu_per_unit)
         if memory_per_unit is not None:
-            _setter("memory_per_unit", memory_per_unit)
+            pulumi.set(__self__, "memory_per_unit", memory_per_unit)
         if num_of_units is not None:
-            _setter("num_of_units", num_of_units)
+            pulumi.set(__self__, "num_of_units", num_of_units)
 
     @property
     @pulumi.getter(name="cpuPerUnit")
@@ -2488,22 +1911,7 @@ class ElastigroupIntegrationEcsBatch(dict):
                import pulumi
                ```
         """
-        ElastigroupIntegrationEcsBatch._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            job_queue_names=job_queue_names,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             job_queue_names: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if job_queue_names is None and 'jobQueueNames' in kwargs:
-            job_queue_names = kwargs['jobQueueNames']
-        if job_queue_names is None:
-            raise TypeError("Missing 'job_queue_names' argument")
-
-        _setter("job_queue_names", job_queue_names)
+        pulumi.set(__self__, "job_queue_names", job_queue_names)
 
     @property
     @pulumi.getter(name="jobQueueNames")
@@ -2527,19 +1935,8 @@ class ElastigroupIntegrationGitlab(dict):
         """
         :param 'ElastigroupIntegrationGitlabRunnerArgs' runner: Settings for Gitlab runner.
         """
-        ElastigroupIntegrationGitlab._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            runner=runner,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             runner: Optional['outputs.ElastigroupIntegrationGitlabRunner'] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if runner is not None:
-            _setter("runner", runner)
+            pulumi.set(__self__, "runner", runner)
 
     @property
     @pulumi.getter
@@ -2574,21 +1971,8 @@ class ElastigroupIntegrationGitlabRunner(dict):
         """
         :param bool is_enabled: Specifies whether the scaling policy described in this block is enabled.
         """
-        ElastigroupIntegrationGitlabRunner._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            is_enabled=is_enabled,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             is_enabled: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if is_enabled is None and 'isEnabled' in kwargs:
-            is_enabled = kwargs['isEnabled']
-
         if is_enabled is not None:
-            _setter("is_enabled", is_enabled)
+            pulumi.set(__self__, "is_enabled", is_enabled)
 
     @property
     @pulumi.getter(name="isEnabled")
@@ -2668,73 +2052,26 @@ class ElastigroupIntegrationKubernetes(dict):
         :param str integration_mode: Valid values: `"saas"`, `"pod"`.
         :param str token: Kubernetes Token
         """
-        ElastigroupIntegrationKubernetes._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            api_server=api_server,
-            autoscale_cooldown=autoscale_cooldown,
-            autoscale_down=autoscale_down,
-            autoscale_headroom=autoscale_headroom,
-            autoscale_is_auto_config=autoscale_is_auto_config,
-            autoscale_is_enabled=autoscale_is_enabled,
-            autoscale_labels=autoscale_labels,
-            cluster_identifier=cluster_identifier,
-            integration_mode=integration_mode,
-            token=token,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             api_server: Optional[str] = None,
-             autoscale_cooldown: Optional[int] = None,
-             autoscale_down: Optional['outputs.ElastigroupIntegrationKubernetesAutoscaleDown'] = None,
-             autoscale_headroom: Optional['outputs.ElastigroupIntegrationKubernetesAutoscaleHeadroom'] = None,
-             autoscale_is_auto_config: Optional[bool] = None,
-             autoscale_is_enabled: Optional[bool] = None,
-             autoscale_labels: Optional[Sequence['outputs.ElastigroupIntegrationKubernetesAutoscaleLabel']] = None,
-             cluster_identifier: Optional[str] = None,
-             integration_mode: Optional[str] = None,
-             token: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if api_server is None and 'apiServer' in kwargs:
-            api_server = kwargs['apiServer']
-        if autoscale_cooldown is None and 'autoscaleCooldown' in kwargs:
-            autoscale_cooldown = kwargs['autoscaleCooldown']
-        if autoscale_down is None and 'autoscaleDown' in kwargs:
-            autoscale_down = kwargs['autoscaleDown']
-        if autoscale_headroom is None and 'autoscaleHeadroom' in kwargs:
-            autoscale_headroom = kwargs['autoscaleHeadroom']
-        if autoscale_is_auto_config is None and 'autoscaleIsAutoConfig' in kwargs:
-            autoscale_is_auto_config = kwargs['autoscaleIsAutoConfig']
-        if autoscale_is_enabled is None and 'autoscaleIsEnabled' in kwargs:
-            autoscale_is_enabled = kwargs['autoscaleIsEnabled']
-        if autoscale_labels is None and 'autoscaleLabels' in kwargs:
-            autoscale_labels = kwargs['autoscaleLabels']
-        if cluster_identifier is None and 'clusterIdentifier' in kwargs:
-            cluster_identifier = kwargs['clusterIdentifier']
-        if integration_mode is None and 'integrationMode' in kwargs:
-            integration_mode = kwargs['integrationMode']
-
         if api_server is not None:
-            _setter("api_server", api_server)
+            pulumi.set(__self__, "api_server", api_server)
         if autoscale_cooldown is not None:
-            _setter("autoscale_cooldown", autoscale_cooldown)
+            pulumi.set(__self__, "autoscale_cooldown", autoscale_cooldown)
         if autoscale_down is not None:
-            _setter("autoscale_down", autoscale_down)
+            pulumi.set(__self__, "autoscale_down", autoscale_down)
         if autoscale_headroom is not None:
-            _setter("autoscale_headroom", autoscale_headroom)
+            pulumi.set(__self__, "autoscale_headroom", autoscale_headroom)
         if autoscale_is_auto_config is not None:
-            _setter("autoscale_is_auto_config", autoscale_is_auto_config)
+            pulumi.set(__self__, "autoscale_is_auto_config", autoscale_is_auto_config)
         if autoscale_is_enabled is not None:
-            _setter("autoscale_is_enabled", autoscale_is_enabled)
+            pulumi.set(__self__, "autoscale_is_enabled", autoscale_is_enabled)
         if autoscale_labels is not None:
-            _setter("autoscale_labels", autoscale_labels)
+            pulumi.set(__self__, "autoscale_labels", autoscale_labels)
         if cluster_identifier is not None:
-            _setter("cluster_identifier", cluster_identifier)
+            pulumi.set(__self__, "cluster_identifier", cluster_identifier)
         if integration_mode is not None:
-            _setter("integration_mode", integration_mode)
+            pulumi.set(__self__, "integration_mode", integration_mode)
         if token is not None:
-            _setter("token", token)
+            pulumi.set(__self__, "token", token)
 
     @property
     @pulumi.getter(name="apiServer")
@@ -2854,27 +2191,10 @@ class ElastigroupIntegrationKubernetesAutoscaleDown(dict):
         :param int evaluation_periods: The number of periods over which data is compared to the specified threshold.
         :param float max_scale_down_percentage: Represents the maximum percent to scale-down. Number between 1-100.
         """
-        ElastigroupIntegrationKubernetesAutoscaleDown._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            evaluation_periods=evaluation_periods,
-            max_scale_down_percentage=max_scale_down_percentage,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             evaluation_periods: Optional[int] = None,
-             max_scale_down_percentage: Optional[float] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if evaluation_periods is None and 'evaluationPeriods' in kwargs:
-            evaluation_periods = kwargs['evaluationPeriods']
-        if max_scale_down_percentage is None and 'maxScaleDownPercentage' in kwargs:
-            max_scale_down_percentage = kwargs['maxScaleDownPercentage']
-
         if evaluation_periods is not None:
-            _setter("evaluation_periods", evaluation_periods)
+            pulumi.set(__self__, "evaluation_periods", evaluation_periods)
         if max_scale_down_percentage is not None:
-            _setter("max_scale_down_percentage", max_scale_down_percentage)
+            pulumi.set(__self__, "max_scale_down_percentage", max_scale_down_percentage)
 
     @property
     @pulumi.getter(name="evaluationPeriods")
@@ -2925,33 +2245,12 @@ class ElastigroupIntegrationKubernetesAutoscaleHeadroom(dict):
         :param int memory_per_unit: How much Memory allocate for headroom unit.
         :param int num_of_units: How many units of headroom to allocate.
         """
-        ElastigroupIntegrationKubernetesAutoscaleHeadroom._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cpu_per_unit=cpu_per_unit,
-            memory_per_unit=memory_per_unit,
-            num_of_units=num_of_units,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cpu_per_unit: Optional[int] = None,
-             memory_per_unit: Optional[int] = None,
-             num_of_units: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cpu_per_unit is None and 'cpuPerUnit' in kwargs:
-            cpu_per_unit = kwargs['cpuPerUnit']
-        if memory_per_unit is None and 'memoryPerUnit' in kwargs:
-            memory_per_unit = kwargs['memoryPerUnit']
-        if num_of_units is None and 'numOfUnits' in kwargs:
-            num_of_units = kwargs['numOfUnits']
-
         if cpu_per_unit is not None:
-            _setter("cpu_per_unit", cpu_per_unit)
+            pulumi.set(__self__, "cpu_per_unit", cpu_per_unit)
         if memory_per_unit is not None:
-            _setter("memory_per_unit", memory_per_unit)
+            pulumi.set(__self__, "memory_per_unit", memory_per_unit)
         if num_of_units is not None:
-            _setter("num_of_units", num_of_units)
+            pulumi.set(__self__, "num_of_units", num_of_units)
 
     @property
     @pulumi.getter(name="cpuPerUnit")
@@ -2986,25 +2285,8 @@ class ElastigroupIntegrationKubernetesAutoscaleLabel(dict):
         """
         :param str value: The dimension value.
         """
-        ElastigroupIntegrationKubernetesAutoscaleLabel._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            key=key,
-            value=value,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             key: Optional[str] = None,
-             value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if key is None:
-            raise TypeError("Missing 'key' argument")
-        if value is None:
-            raise TypeError("Missing 'value' argument")
-
-        _setter("key", key)
-        _setter("value", value)
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -3050,22 +2332,7 @@ class ElastigroupIntegrationMesosphere(dict):
                import pulumi
                ```
         """
-        ElastigroupIntegrationMesosphere._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            api_server=api_server,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             api_server: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if api_server is None and 'apiServer' in kwargs:
-            api_server = kwargs['apiServer']
-        if api_server is None:
-            raise TypeError("Missing 'api_server' argument")
-
-        _setter("api_server", api_server)
+        pulumi.set(__self__, "api_server", api_server)
 
     @property
     @pulumi.getter(name="apiServer")
@@ -3112,22 +2379,7 @@ class ElastigroupIntegrationMultaiRuntime(dict):
                import pulumi
                ```
         """
-        ElastigroupIntegrationMultaiRuntime._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            deployment_id=deployment_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             deployment_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if deployment_id is None and 'deploymentId' in kwargs:
-            deployment_id = kwargs['deploymentId']
-        if deployment_id is None:
-            raise TypeError("Missing 'deployment_id' argument")
-
-        _setter("deployment_id", deployment_id)
+        pulumi.set(__self__, "deployment_id", deployment_id)
 
     @property
     @pulumi.getter(name="deploymentId")
@@ -3202,65 +2454,20 @@ class ElastigroupIntegrationNomad(dict):
         :param 'ElastigroupIntegrationNomadAutoscaleHeadroomArgs' autoscale_headroom: An option to set compute reserve for the cluster.
         :param bool autoscale_is_enabled: Specifies whether the auto scaling feature is enabled.
         """
-        ElastigroupIntegrationNomad._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            master_host=master_host,
-            master_port=master_port,
-            acl_token=acl_token,
-            autoscale_constraints=autoscale_constraints,
-            autoscale_cooldown=autoscale_cooldown,
-            autoscale_down=autoscale_down,
-            autoscale_headroom=autoscale_headroom,
-            autoscale_is_enabled=autoscale_is_enabled,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             master_host: Optional[str] = None,
-             master_port: Optional[int] = None,
-             acl_token: Optional[str] = None,
-             autoscale_constraints: Optional[Sequence['outputs.ElastigroupIntegrationNomadAutoscaleConstraint']] = None,
-             autoscale_cooldown: Optional[int] = None,
-             autoscale_down: Optional['outputs.ElastigroupIntegrationNomadAutoscaleDown'] = None,
-             autoscale_headroom: Optional['outputs.ElastigroupIntegrationNomadAutoscaleHeadroom'] = None,
-             autoscale_is_enabled: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if master_host is None and 'masterHost' in kwargs:
-            master_host = kwargs['masterHost']
-        if master_host is None:
-            raise TypeError("Missing 'master_host' argument")
-        if master_port is None and 'masterPort' in kwargs:
-            master_port = kwargs['masterPort']
-        if master_port is None:
-            raise TypeError("Missing 'master_port' argument")
-        if acl_token is None and 'aclToken' in kwargs:
-            acl_token = kwargs['aclToken']
-        if autoscale_constraints is None and 'autoscaleConstraints' in kwargs:
-            autoscale_constraints = kwargs['autoscaleConstraints']
-        if autoscale_cooldown is None and 'autoscaleCooldown' in kwargs:
-            autoscale_cooldown = kwargs['autoscaleCooldown']
-        if autoscale_down is None and 'autoscaleDown' in kwargs:
-            autoscale_down = kwargs['autoscaleDown']
-        if autoscale_headroom is None and 'autoscaleHeadroom' in kwargs:
-            autoscale_headroom = kwargs['autoscaleHeadroom']
-        if autoscale_is_enabled is None and 'autoscaleIsEnabled' in kwargs:
-            autoscale_is_enabled = kwargs['autoscaleIsEnabled']
-
-        _setter("master_host", master_host)
-        _setter("master_port", master_port)
+        pulumi.set(__self__, "master_host", master_host)
+        pulumi.set(__self__, "master_port", master_port)
         if acl_token is not None:
-            _setter("acl_token", acl_token)
+            pulumi.set(__self__, "acl_token", acl_token)
         if autoscale_constraints is not None:
-            _setter("autoscale_constraints", autoscale_constraints)
+            pulumi.set(__self__, "autoscale_constraints", autoscale_constraints)
         if autoscale_cooldown is not None:
-            _setter("autoscale_cooldown", autoscale_cooldown)
+            pulumi.set(__self__, "autoscale_cooldown", autoscale_cooldown)
         if autoscale_down is not None:
-            _setter("autoscale_down", autoscale_down)
+            pulumi.set(__self__, "autoscale_down", autoscale_down)
         if autoscale_headroom is not None:
-            _setter("autoscale_headroom", autoscale_headroom)
+            pulumi.set(__self__, "autoscale_headroom", autoscale_headroom)
         if autoscale_is_enabled is not None:
-            _setter("autoscale_is_enabled", autoscale_is_enabled)
+            pulumi.set(__self__, "autoscale_is_enabled", autoscale_is_enabled)
 
     @property
     @pulumi.getter(name="masterHost")
@@ -3341,25 +2548,8 @@ class ElastigroupIntegrationNomadAutoscaleConstraint(dict):
         """
         :param str value: The dimension value.
         """
-        ElastigroupIntegrationNomadAutoscaleConstraint._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            key=key,
-            value=value,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             key: Optional[str] = None,
-             value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if key is None:
-            raise TypeError("Missing 'key' argument")
-        if value is None:
-            raise TypeError("Missing 'value' argument")
-
-        _setter("key", key)
-        _setter("value", value)
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -3399,21 +2589,8 @@ class ElastigroupIntegrationNomadAutoscaleDown(dict):
         """
         :param int evaluation_periods: The number of periods over which data is compared to the specified threshold.
         """
-        ElastigroupIntegrationNomadAutoscaleDown._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            evaluation_periods=evaluation_periods,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             evaluation_periods: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if evaluation_periods is None and 'evaluationPeriods' in kwargs:
-            evaluation_periods = kwargs['evaluationPeriods']
-
         if evaluation_periods is not None:
-            _setter("evaluation_periods", evaluation_periods)
+            pulumi.set(__self__, "evaluation_periods", evaluation_periods)
 
     @property
     @pulumi.getter(name="evaluationPeriods")
@@ -3456,33 +2633,12 @@ class ElastigroupIntegrationNomadAutoscaleHeadroom(dict):
         :param int memory_per_unit: How much Memory allocate for headroom unit.
         :param int num_of_units: How many units of headroom to allocate.
         """
-        ElastigroupIntegrationNomadAutoscaleHeadroom._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cpu_per_unit=cpu_per_unit,
-            memory_per_unit=memory_per_unit,
-            num_of_units=num_of_units,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cpu_per_unit: Optional[int] = None,
-             memory_per_unit: Optional[int] = None,
-             num_of_units: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cpu_per_unit is None and 'cpuPerUnit' in kwargs:
-            cpu_per_unit = kwargs['cpuPerUnit']
-        if memory_per_unit is None and 'memoryPerUnit' in kwargs:
-            memory_per_unit = kwargs['memoryPerUnit']
-        if num_of_units is None and 'numOfUnits' in kwargs:
-            num_of_units = kwargs['numOfUnits']
-
         if cpu_per_unit is not None:
-            _setter("cpu_per_unit", cpu_per_unit)
+            pulumi.set(__self__, "cpu_per_unit", cpu_per_unit)
         if memory_per_unit is not None:
-            _setter("memory_per_unit", memory_per_unit)
+            pulumi.set(__self__, "memory_per_unit", memory_per_unit)
         if num_of_units is not None:
-            _setter("num_of_units", num_of_units)
+            pulumi.set(__self__, "num_of_units", num_of_units)
 
     @property
     @pulumi.getter(name="cpuPerUnit")
@@ -3548,40 +2704,11 @@ class ElastigroupIntegrationRancher(dict):
                import pulumi
                ```
         """
-        ElastigroupIntegrationRancher._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            access_key=access_key,
-            master_host=master_host,
-            secret_key=secret_key,
-            version=version,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             access_key: Optional[str] = None,
-             master_host: Optional[str] = None,
-             secret_key: Optional[str] = None,
-             version: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if access_key is None and 'accessKey' in kwargs:
-            access_key = kwargs['accessKey']
-        if access_key is None:
-            raise TypeError("Missing 'access_key' argument")
-        if master_host is None and 'masterHost' in kwargs:
-            master_host = kwargs['masterHost']
-        if master_host is None:
-            raise TypeError("Missing 'master_host' argument")
-        if secret_key is None and 'secretKey' in kwargs:
-            secret_key = kwargs['secretKey']
-        if secret_key is None:
-            raise TypeError("Missing 'secret_key' argument")
-
-        _setter("access_key", access_key)
-        _setter("master_host", master_host)
-        _setter("secret_key", secret_key)
+        pulumi.set(__self__, "access_key", access_key)
+        pulumi.set(__self__, "master_host", master_host)
+        pulumi.set(__self__, "secret_key", secret_key)
         if version is not None:
-            _setter("version", version)
+            pulumi.set(__self__, "version", version)
 
     @property
     @pulumi.getter(name="accessKey")
@@ -3628,20 +2755,7 @@ class ElastigroupIntegrationRoute53(dict):
         """
         :param Sequence['ElastigroupIntegrationRoute53DomainArgs'] domains: Collection of one or more domains to register.
         """
-        ElastigroupIntegrationRoute53._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            domains=domains,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             domains: Optional[Sequence['outputs.ElastigroupIntegrationRoute53Domain']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if domains is None:
-            raise TypeError("Missing 'domains' argument")
-
-        _setter("domains", domains)
+        pulumi.set(__self__, "domains", domains)
 
     @property
     @pulumi.getter
@@ -3688,41 +2802,12 @@ class ElastigroupIntegrationRoute53Domain(dict):
         :param str record_set_type: The type of the record set. Valid values: `"a"`, `"cname"`.
         :param str spotinst_acct_id: The Spotinst account ID that is linked to the AWS account that holds the Route 53 Hosted Zone ID. The default is the user Spotinst account provided as a URL parameter.
         """
-        ElastigroupIntegrationRoute53Domain._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            hosted_zone_id=hosted_zone_id,
-            record_sets=record_sets,
-            record_set_type=record_set_type,
-            spotinst_acct_id=spotinst_acct_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             hosted_zone_id: Optional[str] = None,
-             record_sets: Optional[Sequence['outputs.ElastigroupIntegrationRoute53DomainRecordSet']] = None,
-             record_set_type: Optional[str] = None,
-             spotinst_acct_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if hosted_zone_id is None and 'hostedZoneId' in kwargs:
-            hosted_zone_id = kwargs['hostedZoneId']
-        if hosted_zone_id is None:
-            raise TypeError("Missing 'hosted_zone_id' argument")
-        if record_sets is None and 'recordSets' in kwargs:
-            record_sets = kwargs['recordSets']
-        if record_sets is None:
-            raise TypeError("Missing 'record_sets' argument")
-        if record_set_type is None and 'recordSetType' in kwargs:
-            record_set_type = kwargs['recordSetType']
-        if spotinst_acct_id is None and 'spotinstAcctId' in kwargs:
-            spotinst_acct_id = kwargs['spotinstAcctId']
-
-        _setter("hosted_zone_id", hosted_zone_id)
-        _setter("record_sets", record_sets)
+        pulumi.set(__self__, "hosted_zone_id", hosted_zone_id)
+        pulumi.set(__self__, "record_sets", record_sets)
         if record_set_type is not None:
-            _setter("record_set_type", record_set_type)
+            pulumi.set(__self__, "record_set_type", record_set_type)
         if spotinst_acct_id is not None:
-            _setter("spotinst_acct_id", spotinst_acct_id)
+            pulumi.set(__self__, "spotinst_acct_id", spotinst_acct_id)
 
     @property
     @pulumi.getter(name="hostedZoneId")
@@ -3793,32 +2878,11 @@ class ElastigroupIntegrationRoute53DomainRecordSet(dict):
                ```
         :param bool use_public_ip: Designates whether the IP address should be exposed to connections outside the VPC.
         """
-        ElastigroupIntegrationRoute53DomainRecordSet._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            name=name,
-            use_public_dns=use_public_dns,
-            use_public_ip=use_public_ip,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             name: Optional[str] = None,
-             use_public_dns: Optional[bool] = None,
-             use_public_ip: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-        if use_public_dns is None and 'usePublicDns' in kwargs:
-            use_public_dns = kwargs['usePublicDns']
-        if use_public_ip is None and 'usePublicIp' in kwargs:
-            use_public_ip = kwargs['usePublicIp']
-
-        _setter("name", name)
+        pulumi.set(__self__, "name", name)
         if use_public_dns is not None:
-            _setter("use_public_dns", use_public_dns)
+            pulumi.set(__self__, "use_public_dns", use_public_dns)
         if use_public_ip is not None:
-            _setter("use_public_ip", use_public_ip)
+            pulumi.set(__self__, "use_public_ip", use_public_ip)
 
     @property
     @pulumi.getter
@@ -3887,55 +2951,14 @@ class ElastigroupItf(dict):
                  weight_strategy: str,
                  default_static_target_group: Optional['outputs.ElastigroupItfDefaultStaticTargetGroup'] = None,
                  migration_healthiness_threshold: Optional[int] = None):
-        ElastigroupItf._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            fixed_target_groups=fixed_target_groups,
-            load_balancers=load_balancers,
-            target_group_configs=target_group_configs,
-            weight_strategy=weight_strategy,
-            default_static_target_group=default_static_target_group,
-            migration_healthiness_threshold=migration_healthiness_threshold,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             fixed_target_groups: Optional[bool] = None,
-             load_balancers: Optional[Sequence['outputs.ElastigroupItfLoadBalancer']] = None,
-             target_group_configs: Optional[Sequence['outputs.ElastigroupItfTargetGroupConfig']] = None,
-             weight_strategy: Optional[str] = None,
-             default_static_target_group: Optional['outputs.ElastigroupItfDefaultStaticTargetGroup'] = None,
-             migration_healthiness_threshold: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if fixed_target_groups is None and 'fixedTargetGroups' in kwargs:
-            fixed_target_groups = kwargs['fixedTargetGroups']
-        if fixed_target_groups is None:
-            raise TypeError("Missing 'fixed_target_groups' argument")
-        if load_balancers is None and 'loadBalancers' in kwargs:
-            load_balancers = kwargs['loadBalancers']
-        if load_balancers is None:
-            raise TypeError("Missing 'load_balancers' argument")
-        if target_group_configs is None and 'targetGroupConfigs' in kwargs:
-            target_group_configs = kwargs['targetGroupConfigs']
-        if target_group_configs is None:
-            raise TypeError("Missing 'target_group_configs' argument")
-        if weight_strategy is None and 'weightStrategy' in kwargs:
-            weight_strategy = kwargs['weightStrategy']
-        if weight_strategy is None:
-            raise TypeError("Missing 'weight_strategy' argument")
-        if default_static_target_group is None and 'defaultStaticTargetGroup' in kwargs:
-            default_static_target_group = kwargs['defaultStaticTargetGroup']
-        if migration_healthiness_threshold is None and 'migrationHealthinessThreshold' in kwargs:
-            migration_healthiness_threshold = kwargs['migrationHealthinessThreshold']
-
-        _setter("fixed_target_groups", fixed_target_groups)
-        _setter("load_balancers", load_balancers)
-        _setter("target_group_configs", target_group_configs)
-        _setter("weight_strategy", weight_strategy)
+        pulumi.set(__self__, "fixed_target_groups", fixed_target_groups)
+        pulumi.set(__self__, "load_balancers", load_balancers)
+        pulumi.set(__self__, "target_group_configs", target_group_configs)
+        pulumi.set(__self__, "weight_strategy", weight_strategy)
         if default_static_target_group is not None:
-            _setter("default_static_target_group", default_static_target_group)
+            pulumi.set(__self__, "default_static_target_group", default_static_target_group)
         if migration_healthiness_threshold is not None:
-            _setter("migration_healthiness_threshold", migration_healthiness_threshold)
+            pulumi.set(__self__, "migration_healthiness_threshold", migration_healthiness_threshold)
 
     @property
     @pulumi.getter(name="fixedTargetGroups")
@@ -3973,25 +2996,8 @@ class ElastigroupItfDefaultStaticTargetGroup(dict):
     def __init__(__self__, *,
                  arn: str,
                  percentage: float):
-        ElastigroupItfDefaultStaticTargetGroup._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            arn=arn,
-            percentage=percentage,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             arn: Optional[str] = None,
-             percentage: Optional[float] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if arn is None:
-            raise TypeError("Missing 'arn' argument")
-        if percentage is None:
-            raise TypeError("Missing 'percentage' argument")
-
-        _setter("arn", arn)
-        _setter("percentage", percentage)
+        pulumi.set(__self__, "arn", arn)
+        pulumi.set(__self__, "percentage", percentage)
 
     @property
     @pulumi.getter
@@ -4028,29 +3034,8 @@ class ElastigroupItfLoadBalancer(dict):
     def __init__(__self__, *,
                  listener_rules: Sequence['outputs.ElastigroupItfLoadBalancerListenerRule'],
                  load_balancer_arn: str):
-        ElastigroupItfLoadBalancer._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            listener_rules=listener_rules,
-            load_balancer_arn=load_balancer_arn,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             listener_rules: Optional[Sequence['outputs.ElastigroupItfLoadBalancerListenerRule']] = None,
-             load_balancer_arn: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if listener_rules is None and 'listenerRules' in kwargs:
-            listener_rules = kwargs['listenerRules']
-        if listener_rules is None:
-            raise TypeError("Missing 'listener_rules' argument")
-        if load_balancer_arn is None and 'loadBalancerArn' in kwargs:
-            load_balancer_arn = kwargs['loadBalancerArn']
-        if load_balancer_arn is None:
-            raise TypeError("Missing 'load_balancer_arn' argument")
-
-        _setter("listener_rules", listener_rules)
-        _setter("load_balancer_arn", load_balancer_arn)
+        pulumi.set(__self__, "listener_rules", listener_rules)
+        pulumi.set(__self__, "load_balancer_arn", load_balancer_arn)
 
     @property
     @pulumi.getter(name="listenerRules")
@@ -4087,28 +3072,9 @@ class ElastigroupItfLoadBalancerListenerRule(dict):
     def __init__(__self__, *,
                  rule_arn: str,
                  static_target_group: Optional['outputs.ElastigroupItfLoadBalancerListenerRuleStaticTargetGroup'] = None):
-        ElastigroupItfLoadBalancerListenerRule._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            rule_arn=rule_arn,
-            static_target_group=static_target_group,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             rule_arn: Optional[str] = None,
-             static_target_group: Optional['outputs.ElastigroupItfLoadBalancerListenerRuleStaticTargetGroup'] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if rule_arn is None and 'ruleArn' in kwargs:
-            rule_arn = kwargs['ruleArn']
-        if rule_arn is None:
-            raise TypeError("Missing 'rule_arn' argument")
-        if static_target_group is None and 'staticTargetGroup' in kwargs:
-            static_target_group = kwargs['staticTargetGroup']
-
-        _setter("rule_arn", rule_arn)
+        pulumi.set(__self__, "rule_arn", rule_arn)
         if static_target_group is not None:
-            _setter("static_target_group", static_target_group)
+            pulumi.set(__self__, "static_target_group", static_target_group)
 
     @property
     @pulumi.getter(name="ruleArn")
@@ -4126,25 +3092,8 @@ class ElastigroupItfLoadBalancerListenerRuleStaticTargetGroup(dict):
     def __init__(__self__, *,
                  arn: str,
                  percentage: float):
-        ElastigroupItfLoadBalancerListenerRuleStaticTargetGroup._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            arn=arn,
-            percentage=percentage,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             arn: Optional[str] = None,
-             percentage: Optional[float] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if arn is None:
-            raise TypeError("Missing 'arn' argument")
-        if percentage is None:
-            raise TypeError("Missing 'percentage' argument")
-
-        _setter("arn", arn)
-        _setter("percentage", percentage)
+        pulumi.set(__self__, "arn", arn)
+        pulumi.set(__self__, "percentage", percentage)
 
     @property
     @pulumi.getter
@@ -4209,89 +3158,28 @@ class ElastigroupItfTargetGroupConfig(dict):
         """
         :param Sequence['ElastigroupItfTargetGroupConfigTagArgs'] tags: A key/value mapping of tags to assign to the resource.
         """
-        ElastigroupItfTargetGroupConfig._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            health_check_path=health_check_path,
-            port=port,
-            protocol=protocol,
-            vpc_id=vpc_id,
-            health_check_interval_seconds=health_check_interval_seconds,
-            health_check_port=health_check_port,
-            health_check_protocol=health_check_protocol,
-            health_check_timeout_seconds=health_check_timeout_seconds,
-            healthy_threshold_count=healthy_threshold_count,
-            matchers=matchers,
-            protocol_version=protocol_version,
-            tags=tags,
-            unhealthy_threshold_count=unhealthy_threshold_count,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             health_check_path: Optional[str] = None,
-             port: Optional[int] = None,
-             protocol: Optional[str] = None,
-             vpc_id: Optional[str] = None,
-             health_check_interval_seconds: Optional[int] = None,
-             health_check_port: Optional[str] = None,
-             health_check_protocol: Optional[str] = None,
-             health_check_timeout_seconds: Optional[int] = None,
-             healthy_threshold_count: Optional[int] = None,
-             matchers: Optional[Sequence['outputs.ElastigroupItfTargetGroupConfigMatcher']] = None,
-             protocol_version: Optional[str] = None,
-             tags: Optional[Sequence['outputs.ElastigroupItfTargetGroupConfigTag']] = None,
-             unhealthy_threshold_count: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if health_check_path is None and 'healthCheckPath' in kwargs:
-            health_check_path = kwargs['healthCheckPath']
-        if health_check_path is None:
-            raise TypeError("Missing 'health_check_path' argument")
-        if port is None:
-            raise TypeError("Missing 'port' argument")
-        if protocol is None:
-            raise TypeError("Missing 'protocol' argument")
-        if vpc_id is None and 'vpcId' in kwargs:
-            vpc_id = kwargs['vpcId']
-        if vpc_id is None:
-            raise TypeError("Missing 'vpc_id' argument")
-        if health_check_interval_seconds is None and 'healthCheckIntervalSeconds' in kwargs:
-            health_check_interval_seconds = kwargs['healthCheckIntervalSeconds']
-        if health_check_port is None and 'healthCheckPort' in kwargs:
-            health_check_port = kwargs['healthCheckPort']
-        if health_check_protocol is None and 'healthCheckProtocol' in kwargs:
-            health_check_protocol = kwargs['healthCheckProtocol']
-        if health_check_timeout_seconds is None and 'healthCheckTimeoutSeconds' in kwargs:
-            health_check_timeout_seconds = kwargs['healthCheckTimeoutSeconds']
-        if healthy_threshold_count is None and 'healthyThresholdCount' in kwargs:
-            healthy_threshold_count = kwargs['healthyThresholdCount']
-        if protocol_version is None and 'protocolVersion' in kwargs:
-            protocol_version = kwargs['protocolVersion']
-        if unhealthy_threshold_count is None and 'unhealthyThresholdCount' in kwargs:
-            unhealthy_threshold_count = kwargs['unhealthyThresholdCount']
-
-        _setter("health_check_path", health_check_path)
-        _setter("port", port)
-        _setter("protocol", protocol)
-        _setter("vpc_id", vpc_id)
+        pulumi.set(__self__, "health_check_path", health_check_path)
+        pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "protocol", protocol)
+        pulumi.set(__self__, "vpc_id", vpc_id)
         if health_check_interval_seconds is not None:
-            _setter("health_check_interval_seconds", health_check_interval_seconds)
+            pulumi.set(__self__, "health_check_interval_seconds", health_check_interval_seconds)
         if health_check_port is not None:
-            _setter("health_check_port", health_check_port)
+            pulumi.set(__self__, "health_check_port", health_check_port)
         if health_check_protocol is not None:
-            _setter("health_check_protocol", health_check_protocol)
+            pulumi.set(__self__, "health_check_protocol", health_check_protocol)
         if health_check_timeout_seconds is not None:
-            _setter("health_check_timeout_seconds", health_check_timeout_seconds)
+            pulumi.set(__self__, "health_check_timeout_seconds", health_check_timeout_seconds)
         if healthy_threshold_count is not None:
-            _setter("healthy_threshold_count", healthy_threshold_count)
+            pulumi.set(__self__, "healthy_threshold_count", healthy_threshold_count)
         if matchers is not None:
-            _setter("matchers", matchers)
+            pulumi.set(__self__, "matchers", matchers)
         if protocol_version is not None:
-            _setter("protocol_version", protocol_version)
+            pulumi.set(__self__, "protocol_version", protocol_version)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if unhealthy_threshold_count is not None:
-            _setter("unhealthy_threshold_count", unhealthy_threshold_count)
+            pulumi.set(__self__, "unhealthy_threshold_count", unhealthy_threshold_count)
 
     @property
     @pulumi.getter(name="healthCheckPath")
@@ -4386,27 +3274,10 @@ class ElastigroupItfTargetGroupConfigMatcher(dict):
     def __init__(__self__, *,
                  grpc_code: Optional[str] = None,
                  http_code: Optional[str] = None):
-        ElastigroupItfTargetGroupConfigMatcher._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            grpc_code=grpc_code,
-            http_code=http_code,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             grpc_code: Optional[str] = None,
-             http_code: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if grpc_code is None and 'grpcCode' in kwargs:
-            grpc_code = kwargs['grpcCode']
-        if http_code is None and 'httpCode' in kwargs:
-            http_code = kwargs['httpCode']
-
         if grpc_code is not None:
-            _setter("grpc_code", grpc_code)
+            pulumi.set(__self__, "grpc_code", grpc_code)
         if http_code is not None:
-            _setter("http_code", http_code)
+            pulumi.set(__self__, "http_code", http_code)
 
     @property
     @pulumi.getter(name="grpcCode")
@@ -4443,28 +3314,9 @@ class ElastigroupItfTargetGroupConfigTag(dict):
     def __init__(__self__, *,
                  tag_key: str,
                  tag_value: Optional[str] = None):
-        ElastigroupItfTargetGroupConfigTag._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            tag_key=tag_key,
-            tag_value=tag_value,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             tag_key: Optional[str] = None,
-             tag_value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if tag_key is None and 'tagKey' in kwargs:
-            tag_key = kwargs['tagKey']
-        if tag_key is None:
-            raise TypeError("Missing 'tag_key' argument")
-        if tag_value is None and 'tagValue' in kwargs:
-            tag_value = kwargs['tagValue']
-
-        _setter("tag_key", tag_key)
+        pulumi.set(__self__, "tag_key", tag_key)
         if tag_value is not None:
-            _setter("tag_value", tag_value)
+            pulumi.set(__self__, "tag_value", tag_value)
 
     @property
     @pulumi.getter(name="tagKey")
@@ -4509,34 +3361,11 @@ class ElastigroupMetadataOptions(dict):
         :param int http_put_response_hop_limit: The desired HTTP PUT response hop limit for instance metadata requests. The larger the number, the further instance metadata requests can travel. Valid values: Integers from `1` to `64`.
         :param str instance_metadata_tags: Indicates whether access to instance tags from the instance metadata is enabled or disabled. Can’t be null.
         """
-        ElastigroupMetadataOptions._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            http_tokens=http_tokens,
-            http_put_response_hop_limit=http_put_response_hop_limit,
-            instance_metadata_tags=instance_metadata_tags,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             http_tokens: Optional[str] = None,
-             http_put_response_hop_limit: Optional[int] = None,
-             instance_metadata_tags: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if http_tokens is None and 'httpTokens' in kwargs:
-            http_tokens = kwargs['httpTokens']
-        if http_tokens is None:
-            raise TypeError("Missing 'http_tokens' argument")
-        if http_put_response_hop_limit is None and 'httpPutResponseHopLimit' in kwargs:
-            http_put_response_hop_limit = kwargs['httpPutResponseHopLimit']
-        if instance_metadata_tags is None and 'instanceMetadataTags' in kwargs:
-            instance_metadata_tags = kwargs['instanceMetadataTags']
-
-        _setter("http_tokens", http_tokens)
+        pulumi.set(__self__, "http_tokens", http_tokens)
         if http_put_response_hop_limit is not None:
-            _setter("http_put_response_hop_limit", http_put_response_hop_limit)
+            pulumi.set(__self__, "http_put_response_hop_limit", http_put_response_hop_limit)
         if instance_metadata_tags is not None:
-            _setter("instance_metadata_tags", instance_metadata_tags)
+            pulumi.set(__self__, "instance_metadata_tags", instance_metadata_tags)
 
     @property
     @pulumi.getter(name="httpTokens")
@@ -4597,29 +3426,8 @@ class ElastigroupMultaiTargetSet(dict):
                ```
         :param str target_set_id: ID of Multai target set.
         """
-        ElastigroupMultaiTargetSet._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            balancer_id=balancer_id,
-            target_set_id=target_set_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             balancer_id: Optional[str] = None,
-             target_set_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if balancer_id is None and 'balancerId' in kwargs:
-            balancer_id = kwargs['balancerId']
-        if balancer_id is None:
-            raise TypeError("Missing 'balancer_id' argument")
-        if target_set_id is None and 'targetSetId' in kwargs:
-            target_set_id = kwargs['targetSetId']
-        if target_set_id is None:
-            raise TypeError("Missing 'target_set_id' argument")
-
-        _setter("balancer_id", balancer_id)
-        _setter("target_set_id", target_set_id)
+        pulumi.set(__self__, "balancer_id", balancer_id)
+        pulumi.set(__self__, "target_set_id", target_set_id)
 
     @property
     @pulumi.getter(name="balancerId")
@@ -4653,23 +3461,10 @@ class ElastigroupMultipleMetrics(dict):
         :param Sequence['ElastigroupMultipleMetricsExpressionArgs'] expressions: Array of objects (Expression config)
         :param Sequence['ElastigroupMultipleMetricsMetricArgs'] metrics: Array of objects (Metric config)
         """
-        ElastigroupMultipleMetrics._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            expressions=expressions,
-            metrics=metrics,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             expressions: Optional[Sequence['outputs.ElastigroupMultipleMetricsExpression']] = None,
-             metrics: Optional[Sequence['outputs.ElastigroupMultipleMetricsMetric']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if expressions is not None:
-            _setter("expressions", expressions)
+            pulumi.set(__self__, "expressions", expressions)
         if metrics is not None:
-            _setter("metrics", metrics)
+            pulumi.set(__self__, "metrics", metrics)
 
     @property
     @pulumi.getter
@@ -4697,25 +3492,8 @@ class ElastigroupMultipleMetricsExpression(dict):
         :param str expression: An expression consisting of the metric names listed in the 'metrics' array.
         :param str name: The group name.
         """
-        ElastigroupMultipleMetricsExpression._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            expression=expression,
-            name=name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             expression: Optional[str] = None,
-             name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if expression is None:
-            raise TypeError("Missing 'expression' argument")
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-
-        _setter("expression", expression)
-        _setter("name", name)
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter
@@ -4772,50 +3550,17 @@ class ElastigroupMultipleMetricsMetric(dict):
         :param str statistic: The metric statistics to return. For information about specific statistics go to [Statistics](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/index.html?CHAP_TerminologyandKeyConcepts.html#Statistic) in the Amazon CloudWatch Developer Guide.
         :param str unit: The unit for the alarm's associated metric. Valid values: `"percent`, `"seconds"`, `"microseconds"`, `"milliseconds"`, `"bytes"`, `"kilobytes"`, `"megabytes"`, `"gigabytes"`, `"terabytes"`, `"bits"`, `"kilobits"`, `"megabits"`, `"gigabits"`, `"terabits"`, `"count"`, `"bytes/second"`, `"kilobytes/second"`, `"megabytes/second"`, `"gigabytes/second"`, `"terabytes/second"`, `"bits/second"`, `"kilobits/second"`, `"megabits/second"`, `"gigabits/second"`, `"terabits/second"`, `"count/second"`, `"none"`.
         """
-        ElastigroupMultipleMetricsMetric._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            metric_name=metric_name,
-            name=name,
-            namespace=namespace,
-            dimensions=dimensions,
-            extended_statistic=extended_statistic,
-            statistic=statistic,
-            unit=unit,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             metric_name: Optional[str] = None,
-             name: Optional[str] = None,
-             namespace: Optional[str] = None,
-             dimensions: Optional[Sequence['outputs.ElastigroupMultipleMetricsMetricDimension']] = None,
-             extended_statistic: Optional[str] = None,
-             statistic: Optional[str] = None,
-             unit: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if metric_name is None and 'metricName' in kwargs:
-            metric_name = kwargs['metricName']
-        if metric_name is None:
-            raise TypeError("Missing 'metric_name' argument")
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-        if namespace is None:
-            raise TypeError("Missing 'namespace' argument")
-        if extended_statistic is None and 'extendedStatistic' in kwargs:
-            extended_statistic = kwargs['extendedStatistic']
-
-        _setter("metric_name", metric_name)
-        _setter("name", name)
-        _setter("namespace", namespace)
+        pulumi.set(__self__, "metric_name", metric_name)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "namespace", namespace)
         if dimensions is not None:
-            _setter("dimensions", dimensions)
+            pulumi.set(__self__, "dimensions", dimensions)
         if extended_statistic is not None:
-            _setter("extended_statistic", extended_statistic)
+            pulumi.set(__self__, "extended_statistic", extended_statistic)
         if statistic is not None:
-            _setter("statistic", statistic)
+            pulumi.set(__self__, "statistic", statistic)
         if unit is not None:
-            _setter("unit", unit)
+            pulumi.set(__self__, "unit", unit)
 
     @property
     @pulumi.getter(name="metricName")
@@ -4883,24 +3628,9 @@ class ElastigroupMultipleMetricsMetricDimension(dict):
         :param str name: The group name.
         :param str value: The dimension value.
         """
-        ElastigroupMultipleMetricsMetricDimension._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            name=name,
-            value=value,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             name: Optional[str] = None,
-             value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-
-        _setter("name", name)
+        pulumi.set(__self__, "name", name)
         if value is not None:
-            _setter("value", value)
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -4975,62 +3705,21 @@ class ElastigroupNetworkInterface(dict):
         :param str private_ip_address: The private IP address of the network interface.
         :param str secondary_private_ip_address_count: The number of secondary private IP addresses.
         """
-        ElastigroupNetworkInterface._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            device_index=device_index,
-            associate_ipv6_address=associate_ipv6_address,
-            associate_public_ip_address=associate_public_ip_address,
-            delete_on_termination=delete_on_termination,
-            description=description,
-            network_interface_id=network_interface_id,
-            private_ip_address=private_ip_address,
-            secondary_private_ip_address_count=secondary_private_ip_address_count,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             device_index: Optional[str] = None,
-             associate_ipv6_address: Optional[bool] = None,
-             associate_public_ip_address: Optional[bool] = None,
-             delete_on_termination: Optional[bool] = None,
-             description: Optional[str] = None,
-             network_interface_id: Optional[str] = None,
-             private_ip_address: Optional[str] = None,
-             secondary_private_ip_address_count: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if device_index is None and 'deviceIndex' in kwargs:
-            device_index = kwargs['deviceIndex']
-        if device_index is None:
-            raise TypeError("Missing 'device_index' argument")
-        if associate_ipv6_address is None and 'associateIpv6Address' in kwargs:
-            associate_ipv6_address = kwargs['associateIpv6Address']
-        if associate_public_ip_address is None and 'associatePublicIpAddress' in kwargs:
-            associate_public_ip_address = kwargs['associatePublicIpAddress']
-        if delete_on_termination is None and 'deleteOnTermination' in kwargs:
-            delete_on_termination = kwargs['deleteOnTermination']
-        if network_interface_id is None and 'networkInterfaceId' in kwargs:
-            network_interface_id = kwargs['networkInterfaceId']
-        if private_ip_address is None and 'privateIpAddress' in kwargs:
-            private_ip_address = kwargs['privateIpAddress']
-        if secondary_private_ip_address_count is None and 'secondaryPrivateIpAddressCount' in kwargs:
-            secondary_private_ip_address_count = kwargs['secondaryPrivateIpAddressCount']
-
-        _setter("device_index", device_index)
+        pulumi.set(__self__, "device_index", device_index)
         if associate_ipv6_address is not None:
-            _setter("associate_ipv6_address", associate_ipv6_address)
+            pulumi.set(__self__, "associate_ipv6_address", associate_ipv6_address)
         if associate_public_ip_address is not None:
-            _setter("associate_public_ip_address", associate_public_ip_address)
+            pulumi.set(__self__, "associate_public_ip_address", associate_public_ip_address)
         if delete_on_termination is not None:
-            _setter("delete_on_termination", delete_on_termination)
+            pulumi.set(__self__, "delete_on_termination", delete_on_termination)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if network_interface_id is not None:
-            _setter("network_interface_id", network_interface_id)
+            pulumi.set(__self__, "network_interface_id", network_interface_id)
         if private_ip_address is not None:
-            _setter("private_ip_address", private_ip_address)
+            pulumi.set(__self__, "private_ip_address", private_ip_address)
         if secondary_private_ip_address_count is not None:
-            _setter("secondary_private_ip_address_count", secondary_private_ip_address_count)
+            pulumi.set(__self__, "secondary_private_ip_address_count", secondary_private_ip_address_count)
 
     @property
     @pulumi.getter(name="deviceIndex")
@@ -5159,73 +3848,20 @@ class ElastigroupResourceRequirement(dict):
         :param int required_gpu_maximum: Required maximum instance GPU (<=16)
         :param int required_gpu_minimum: Required minimum instance GPU (>=1)
         """
-        ElastigroupResourceRequirement._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            required_memory_maximum=required_memory_maximum,
-            required_memory_minimum=required_memory_minimum,
-            required_vcpu_maximum=required_vcpu_maximum,
-            required_vcpu_minimum=required_vcpu_minimum,
-            excluded_instance_families=excluded_instance_families,
-            excluded_instance_generations=excluded_instance_generations,
-            excluded_instance_types=excluded_instance_types,
-            required_gpu_maximum=required_gpu_maximum,
-            required_gpu_minimum=required_gpu_minimum,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             required_memory_maximum: Optional[int] = None,
-             required_memory_minimum: Optional[int] = None,
-             required_vcpu_maximum: Optional[int] = None,
-             required_vcpu_minimum: Optional[int] = None,
-             excluded_instance_families: Optional[Sequence[str]] = None,
-             excluded_instance_generations: Optional[Sequence[str]] = None,
-             excluded_instance_types: Optional[Sequence[str]] = None,
-             required_gpu_maximum: Optional[int] = None,
-             required_gpu_minimum: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if required_memory_maximum is None and 'requiredMemoryMaximum' in kwargs:
-            required_memory_maximum = kwargs['requiredMemoryMaximum']
-        if required_memory_maximum is None:
-            raise TypeError("Missing 'required_memory_maximum' argument")
-        if required_memory_minimum is None and 'requiredMemoryMinimum' in kwargs:
-            required_memory_minimum = kwargs['requiredMemoryMinimum']
-        if required_memory_minimum is None:
-            raise TypeError("Missing 'required_memory_minimum' argument")
-        if required_vcpu_maximum is None and 'requiredVcpuMaximum' in kwargs:
-            required_vcpu_maximum = kwargs['requiredVcpuMaximum']
-        if required_vcpu_maximum is None:
-            raise TypeError("Missing 'required_vcpu_maximum' argument")
-        if required_vcpu_minimum is None and 'requiredVcpuMinimum' in kwargs:
-            required_vcpu_minimum = kwargs['requiredVcpuMinimum']
-        if required_vcpu_minimum is None:
-            raise TypeError("Missing 'required_vcpu_minimum' argument")
-        if excluded_instance_families is None and 'excludedInstanceFamilies' in kwargs:
-            excluded_instance_families = kwargs['excludedInstanceFamilies']
-        if excluded_instance_generations is None and 'excludedInstanceGenerations' in kwargs:
-            excluded_instance_generations = kwargs['excludedInstanceGenerations']
-        if excluded_instance_types is None and 'excludedInstanceTypes' in kwargs:
-            excluded_instance_types = kwargs['excludedInstanceTypes']
-        if required_gpu_maximum is None and 'requiredGpuMaximum' in kwargs:
-            required_gpu_maximum = kwargs['requiredGpuMaximum']
-        if required_gpu_minimum is None and 'requiredGpuMinimum' in kwargs:
-            required_gpu_minimum = kwargs['requiredGpuMinimum']
-
-        _setter("required_memory_maximum", required_memory_maximum)
-        _setter("required_memory_minimum", required_memory_minimum)
-        _setter("required_vcpu_maximum", required_vcpu_maximum)
-        _setter("required_vcpu_minimum", required_vcpu_minimum)
+        pulumi.set(__self__, "required_memory_maximum", required_memory_maximum)
+        pulumi.set(__self__, "required_memory_minimum", required_memory_minimum)
+        pulumi.set(__self__, "required_vcpu_maximum", required_vcpu_maximum)
+        pulumi.set(__self__, "required_vcpu_minimum", required_vcpu_minimum)
         if excluded_instance_families is not None:
-            _setter("excluded_instance_families", excluded_instance_families)
+            pulumi.set(__self__, "excluded_instance_families", excluded_instance_families)
         if excluded_instance_generations is not None:
-            _setter("excluded_instance_generations", excluded_instance_generations)
+            pulumi.set(__self__, "excluded_instance_generations", excluded_instance_generations)
         if excluded_instance_types is not None:
-            _setter("excluded_instance_types", excluded_instance_types)
+            pulumi.set(__self__, "excluded_instance_types", excluded_instance_types)
         if required_gpu_maximum is not None:
-            _setter("required_gpu_maximum", required_gpu_maximum)
+            pulumi.set(__self__, "required_gpu_maximum", required_gpu_maximum)
         if required_gpu_minimum is not None:
-            _setter("required_gpu_minimum", required_gpu_minimum)
+            pulumi.set(__self__, "required_gpu_minimum", required_gpu_minimum)
 
     @property
     @pulumi.getter(name="requiredMemoryMaximum")
@@ -5336,39 +3972,14 @@ class ElastigroupResourceTagSpecification(dict):
         :param bool should_tag_snapshots: Tag specification for Snapshot resources.
         :param bool should_tag_volumes: Tag specification for Volume resources.
         """
-        ElastigroupResourceTagSpecification._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            should_tag_amis=should_tag_amis,
-            should_tag_enis=should_tag_enis,
-            should_tag_snapshots=should_tag_snapshots,
-            should_tag_volumes=should_tag_volumes,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             should_tag_amis: Optional[bool] = None,
-             should_tag_enis: Optional[bool] = None,
-             should_tag_snapshots: Optional[bool] = None,
-             should_tag_volumes: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if should_tag_amis is None and 'shouldTagAmis' in kwargs:
-            should_tag_amis = kwargs['shouldTagAmis']
-        if should_tag_enis is None and 'shouldTagEnis' in kwargs:
-            should_tag_enis = kwargs['shouldTagEnis']
-        if should_tag_snapshots is None and 'shouldTagSnapshots' in kwargs:
-            should_tag_snapshots = kwargs['shouldTagSnapshots']
-        if should_tag_volumes is None and 'shouldTagVolumes' in kwargs:
-            should_tag_volumes = kwargs['shouldTagVolumes']
-
         if should_tag_amis is not None:
-            _setter("should_tag_amis", should_tag_amis)
+            pulumi.set(__self__, "should_tag_amis", should_tag_amis)
         if should_tag_enis is not None:
-            _setter("should_tag_enis", should_tag_enis)
+            pulumi.set(__self__, "should_tag_enis", should_tag_enis)
         if should_tag_snapshots is not None:
-            _setter("should_tag_snapshots", should_tag_snapshots)
+            pulumi.set(__self__, "should_tag_snapshots", should_tag_snapshots)
         if should_tag_volumes is not None:
-            _setter("should_tag_volumes", should_tag_volumes)
+            pulumi.set(__self__, "should_tag_volumes", should_tag_volumes)
 
     @property
     @pulumi.getter(name="shouldTagAmis")
@@ -5431,28 +4042,9 @@ class ElastigroupRevertToSpot(dict):
         :param str perform_at: In the event of a fallback to On-Demand instances, select the time period to revert back to Spot. Supported Arguments – always (default), timeWindow, never. For timeWindow or never to be valid the group must have availabilityOriented OR persistence defined.
         :param Sequence[str] time_windows: Specify a list of time windows for to execute revertToSpot strategy. Time window format: `ddd:hh:mm-ddd:hh:mm`. Example: `Mon:03:00-Wed:02:30`
         """
-        ElastigroupRevertToSpot._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            perform_at=perform_at,
-            time_windows=time_windows,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             perform_at: Optional[str] = None,
-             time_windows: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if perform_at is None and 'performAt' in kwargs:
-            perform_at = kwargs['performAt']
-        if perform_at is None:
-            raise TypeError("Missing 'perform_at' argument")
-        if time_windows is None and 'timeWindows' in kwargs:
-            time_windows = kwargs['timeWindows']
-
-        _setter("perform_at", perform_at)
+        pulumi.set(__self__, "perform_at", perform_at)
         if time_windows is not None:
-            _setter("time_windows", time_windows)
+            pulumi.set(__self__, "time_windows", time_windows)
 
     @property
     @pulumi.getter(name="performAt")
@@ -5555,118 +4147,45 @@ class ElastigroupScalingDownPolicy(dict):
                When using `updateCapacity`       – set the fields `minimum`, `maximum`, and `target`
         :param str unit: The unit for the alarm's associated metric. Valid values: `"percent`, `"seconds"`, `"microseconds"`, `"milliseconds"`, `"bytes"`, `"kilobytes"`, `"megabytes"`, `"gigabytes"`, `"terabytes"`, `"bits"`, `"kilobits"`, `"megabits"`, `"gigabits"`, `"terabits"`, `"count"`, `"bytes/second"`, `"kilobytes/second"`, `"megabytes/second"`, `"gigabytes/second"`, `"terabytes/second"`, `"bits/second"`, `"kilobits/second"`, `"megabits/second"`, `"gigabits/second"`, `"terabits/second"`, `"count/second"`, `"none"`.
         """
-        ElastigroupScalingDownPolicy._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            metric_name=metric_name,
-            namespace=namespace,
-            policy_name=policy_name,
-            action_type=action_type,
-            adjustment=adjustment,
-            cooldown=cooldown,
-            dimensions=dimensions,
-            evaluation_periods=evaluation_periods,
-            is_enabled=is_enabled,
-            max_target_capacity=max_target_capacity,
-            maximum=maximum,
-            min_target_capacity=min_target_capacity,
-            minimum=minimum,
-            operator=operator,
-            period=period,
-            source=source,
-            statistic=statistic,
-            step_adjustments=step_adjustments,
-            target=target,
-            threshold=threshold,
-            unit=unit,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             metric_name: Optional[str] = None,
-             namespace: Optional[str] = None,
-             policy_name: Optional[str] = None,
-             action_type: Optional[str] = None,
-             adjustment: Optional[str] = None,
-             cooldown: Optional[int] = None,
-             dimensions: Optional[Sequence['outputs.ElastigroupScalingDownPolicyDimension']] = None,
-             evaluation_periods: Optional[int] = None,
-             is_enabled: Optional[bool] = None,
-             max_target_capacity: Optional[str] = None,
-             maximum: Optional[str] = None,
-             min_target_capacity: Optional[str] = None,
-             minimum: Optional[str] = None,
-             operator: Optional[str] = None,
-             period: Optional[int] = None,
-             source: Optional[str] = None,
-             statistic: Optional[str] = None,
-             step_adjustments: Optional[Sequence['outputs.ElastigroupScalingDownPolicyStepAdjustment']] = None,
-             target: Optional[str] = None,
-             threshold: Optional[float] = None,
-             unit: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if metric_name is None and 'metricName' in kwargs:
-            metric_name = kwargs['metricName']
-        if metric_name is None:
-            raise TypeError("Missing 'metric_name' argument")
-        if namespace is None:
-            raise TypeError("Missing 'namespace' argument")
-        if policy_name is None and 'policyName' in kwargs:
-            policy_name = kwargs['policyName']
-        if policy_name is None:
-            raise TypeError("Missing 'policy_name' argument")
-        if action_type is None and 'actionType' in kwargs:
-            action_type = kwargs['actionType']
-        if evaluation_periods is None and 'evaluationPeriods' in kwargs:
-            evaluation_periods = kwargs['evaluationPeriods']
-        if is_enabled is None and 'isEnabled' in kwargs:
-            is_enabled = kwargs['isEnabled']
-        if max_target_capacity is None and 'maxTargetCapacity' in kwargs:
-            max_target_capacity = kwargs['maxTargetCapacity']
-        if min_target_capacity is None and 'minTargetCapacity' in kwargs:
-            min_target_capacity = kwargs['minTargetCapacity']
-        if step_adjustments is None and 'stepAdjustments' in kwargs:
-            step_adjustments = kwargs['stepAdjustments']
-
-        _setter("metric_name", metric_name)
-        _setter("namespace", namespace)
-        _setter("policy_name", policy_name)
+        pulumi.set(__self__, "metric_name", metric_name)
+        pulumi.set(__self__, "namespace", namespace)
+        pulumi.set(__self__, "policy_name", policy_name)
         if action_type is not None:
-            _setter("action_type", action_type)
+            pulumi.set(__self__, "action_type", action_type)
         if adjustment is not None:
-            _setter("adjustment", adjustment)
+            pulumi.set(__self__, "adjustment", adjustment)
         if cooldown is not None:
-            _setter("cooldown", cooldown)
+            pulumi.set(__self__, "cooldown", cooldown)
         if dimensions is not None:
-            _setter("dimensions", dimensions)
+            pulumi.set(__self__, "dimensions", dimensions)
         if evaluation_periods is not None:
-            _setter("evaluation_periods", evaluation_periods)
+            pulumi.set(__self__, "evaluation_periods", evaluation_periods)
         if is_enabled is not None:
-            _setter("is_enabled", is_enabled)
+            pulumi.set(__self__, "is_enabled", is_enabled)
         if max_target_capacity is not None:
-            _setter("max_target_capacity", max_target_capacity)
+            pulumi.set(__self__, "max_target_capacity", max_target_capacity)
         if maximum is not None:
-            _setter("maximum", maximum)
+            pulumi.set(__self__, "maximum", maximum)
         if min_target_capacity is not None:
-            _setter("min_target_capacity", min_target_capacity)
+            pulumi.set(__self__, "min_target_capacity", min_target_capacity)
         if minimum is not None:
-            _setter("minimum", minimum)
+            pulumi.set(__self__, "minimum", minimum)
         if operator is not None:
-            _setter("operator", operator)
+            pulumi.set(__self__, "operator", operator)
         if period is not None:
-            _setter("period", period)
+            pulumi.set(__self__, "period", period)
         if source is not None:
-            _setter("source", source)
+            pulumi.set(__self__, "source", source)
         if statistic is not None:
-            _setter("statistic", statistic)
+            pulumi.set(__self__, "statistic", statistic)
         if step_adjustments is not None:
-            _setter("step_adjustments", step_adjustments)
+            pulumi.set(__self__, "step_adjustments", step_adjustments)
         if target is not None:
-            _setter("target", target)
+            pulumi.set(__self__, "target", target)
         if threshold is not None:
-            _setter("threshold", threshold)
+            pulumi.set(__self__, "threshold", threshold)
         if unit is not None:
-            _setter("unit", unit)
+            pulumi.set(__self__, "unit", unit)
 
     @property
     @pulumi.getter(name="metricName")
@@ -5850,24 +4369,9 @@ class ElastigroupScalingDownPolicyDimension(dict):
         :param str name: The group name.
         :param str value: The dimension value.
         """
-        ElastigroupScalingDownPolicyDimension._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            name=name,
-            value=value,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             name: Optional[str] = None,
-             value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-
-        _setter("name", name)
+        pulumi.set(__self__, "name", name)
         if value is not None:
-            _setter("value", value)
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -5902,25 +4406,8 @@ class ElastigroupScalingDownPolicyStepAdjustment(dict):
                When using `adjustment`           – set the field `adjustment`
                When using `updateCapacity`       – set the fields `minimum`, `maximum`, and `target`
         """
-        ElastigroupScalingDownPolicyStepAdjustment._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            action=action,
-            threshold=threshold,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             action: Optional['outputs.ElastigroupScalingDownPolicyStepAdjustmentAction'] = None,
-             threshold: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if action is None:
-            raise TypeError("Missing 'action' argument")
-        if threshold is None:
-            raise TypeError("Missing 'threshold' argument")
-
-        _setter("action", action)
-        _setter("threshold", threshold)
+        pulumi.set(__self__, "action", action)
+        pulumi.set(__self__, "threshold", threshold)
 
     @property
     @pulumi.getter
@@ -5984,48 +4471,19 @@ class ElastigroupScalingDownPolicyStepAdjustmentAction(dict):
         :param str minimum: The minimal number of instances to have in the group.
         :param str target: The target number of instances to have in the group.
         """
-        ElastigroupScalingDownPolicyStepAdjustmentAction._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            type=type,
-            adjustment=adjustment,
-            max_target_capacity=max_target_capacity,
-            maximum=maximum,
-            min_target_capacity=min_target_capacity,
-            minimum=minimum,
-            target=target,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             type: Optional[str] = None,
-             adjustment: Optional[str] = None,
-             max_target_capacity: Optional[str] = None,
-             maximum: Optional[str] = None,
-             min_target_capacity: Optional[str] = None,
-             minimum: Optional[str] = None,
-             target: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if type is None:
-            raise TypeError("Missing 'type' argument")
-        if max_target_capacity is None and 'maxTargetCapacity' in kwargs:
-            max_target_capacity = kwargs['maxTargetCapacity']
-        if min_target_capacity is None and 'minTargetCapacity' in kwargs:
-            min_target_capacity = kwargs['minTargetCapacity']
-
-        _setter("type", type)
+        pulumi.set(__self__, "type", type)
         if adjustment is not None:
-            _setter("adjustment", adjustment)
+            pulumi.set(__self__, "adjustment", adjustment)
         if max_target_capacity is not None:
-            _setter("max_target_capacity", max_target_capacity)
+            pulumi.set(__self__, "max_target_capacity", max_target_capacity)
         if maximum is not None:
-            _setter("maximum", maximum)
+            pulumi.set(__self__, "maximum", maximum)
         if min_target_capacity is not None:
-            _setter("min_target_capacity", min_target_capacity)
+            pulumi.set(__self__, "min_target_capacity", min_target_capacity)
         if minimum is not None:
-            _setter("minimum", minimum)
+            pulumi.set(__self__, "minimum", minimum)
         if target is not None:
-            _setter("target", target)
+            pulumi.set(__self__, "target", target)
 
     @property
     @pulumi.getter
@@ -6112,27 +4570,10 @@ class ElastigroupScalingStrategy(dict):
         :param bool terminate_at_end_of_billing_hour: Specify whether to terminate instances at the end of each billing hour.
         :param str termination_policy: Determines whether to terminate the newest instances when performing a scaling action. Valid values: `"default"`, `"newestInstance"`.
         """
-        ElastigroupScalingStrategy._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            terminate_at_end_of_billing_hour=terminate_at_end_of_billing_hour,
-            termination_policy=termination_policy,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             terminate_at_end_of_billing_hour: Optional[bool] = None,
-             termination_policy: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if terminate_at_end_of_billing_hour is None and 'terminateAtEndOfBillingHour' in kwargs:
-            terminate_at_end_of_billing_hour = kwargs['terminateAtEndOfBillingHour']
-        if termination_policy is None and 'terminationPolicy' in kwargs:
-            termination_policy = kwargs['terminationPolicy']
-
         if terminate_at_end_of_billing_hour is not None:
-            _setter("terminate_at_end_of_billing_hour", terminate_at_end_of_billing_hour)
+            pulumi.set(__self__, "terminate_at_end_of_billing_hour", terminate_at_end_of_billing_hour)
         if termination_policy is not None:
-            _setter("termination_policy", termination_policy)
+            pulumi.set(__self__, "termination_policy", termination_policy)
 
     @property
     @pulumi.getter(name="terminateAtEndOfBillingHour")
@@ -6219,81 +4660,28 @@ class ElastigroupScalingTargetPolicy(dict):
         :param str statistic: String, the metric statistics to return. For information about specific statistics go to [Statistics](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/index.html?CHAP_TerminologyandKeyConcepts.html#Statistic) in the Amazon CloudWatch Developer Guide.
         :param str unit: String, tThe unit for the alarm's associated metric. Valid values: `"percent`, `"seconds"`, `"microseconds"`, `"milliseconds"`, `"bytes"`, `"kilobytes"`, `"megabytes"`, `"gigabytes"`, `"terabytes"`, `"bits"`, `"kilobits"`, `"megabits"`, `"gigabits"`, `"terabits"`, `"count"`, `"bytes/second"`, `"kilobytes/second"`, `"megabytes/second"`, `"gigabytes/second"`, `"terabytes/second"`, `"bits/second"`, `"kilobits/second"`, `"megabits/second"`, `"gigabits/second"`, `"terabits/second"`, `"count/second"`, `"none"`.
         """
-        ElastigroupScalingTargetPolicy._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            metric_name=metric_name,
-            namespace=namespace,
-            policy_name=policy_name,
-            target=target,
-            cooldown=cooldown,
-            dimensions=dimensions,
-            evaluation_periods=evaluation_periods,
-            max_capacity_per_scale=max_capacity_per_scale,
-            period=period,
-            predictive_mode=predictive_mode,
-            source=source,
-            statistic=statistic,
-            unit=unit,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             metric_name: Optional[str] = None,
-             namespace: Optional[str] = None,
-             policy_name: Optional[str] = None,
-             target: Optional[float] = None,
-             cooldown: Optional[int] = None,
-             dimensions: Optional[Sequence['outputs.ElastigroupScalingTargetPolicyDimension']] = None,
-             evaluation_periods: Optional[int] = None,
-             max_capacity_per_scale: Optional[str] = None,
-             period: Optional[int] = None,
-             predictive_mode: Optional[str] = None,
-             source: Optional[str] = None,
-             statistic: Optional[str] = None,
-             unit: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if metric_name is None and 'metricName' in kwargs:
-            metric_name = kwargs['metricName']
-        if metric_name is None:
-            raise TypeError("Missing 'metric_name' argument")
-        if namespace is None:
-            raise TypeError("Missing 'namespace' argument")
-        if policy_name is None and 'policyName' in kwargs:
-            policy_name = kwargs['policyName']
-        if policy_name is None:
-            raise TypeError("Missing 'policy_name' argument")
-        if target is None:
-            raise TypeError("Missing 'target' argument")
-        if evaluation_periods is None and 'evaluationPeriods' in kwargs:
-            evaluation_periods = kwargs['evaluationPeriods']
-        if max_capacity_per_scale is None and 'maxCapacityPerScale' in kwargs:
-            max_capacity_per_scale = kwargs['maxCapacityPerScale']
-        if predictive_mode is None and 'predictiveMode' in kwargs:
-            predictive_mode = kwargs['predictiveMode']
-
-        _setter("metric_name", metric_name)
-        _setter("namespace", namespace)
-        _setter("policy_name", policy_name)
-        _setter("target", target)
+        pulumi.set(__self__, "metric_name", metric_name)
+        pulumi.set(__self__, "namespace", namespace)
+        pulumi.set(__self__, "policy_name", policy_name)
+        pulumi.set(__self__, "target", target)
         if cooldown is not None:
-            _setter("cooldown", cooldown)
+            pulumi.set(__self__, "cooldown", cooldown)
         if dimensions is not None:
-            _setter("dimensions", dimensions)
+            pulumi.set(__self__, "dimensions", dimensions)
         if evaluation_periods is not None:
-            _setter("evaluation_periods", evaluation_periods)
+            pulumi.set(__self__, "evaluation_periods", evaluation_periods)
         if max_capacity_per_scale is not None:
-            _setter("max_capacity_per_scale", max_capacity_per_scale)
+            pulumi.set(__self__, "max_capacity_per_scale", max_capacity_per_scale)
         if period is not None:
-            _setter("period", period)
+            pulumi.set(__self__, "period", period)
         if predictive_mode is not None:
-            _setter("predictive_mode", predictive_mode)
+            pulumi.set(__self__, "predictive_mode", predictive_mode)
         if source is not None:
-            _setter("source", source)
+            pulumi.set(__self__, "source", source)
         if statistic is not None:
-            _setter("statistic", statistic)
+            pulumi.set(__self__, "statistic", statistic)
         if unit is not None:
-            _setter("unit", unit)
+            pulumi.set(__self__, "unit", unit)
 
     @property
     @pulumi.getter(name="metricName")
@@ -6421,24 +4809,9 @@ class ElastigroupScalingTargetPolicyDimension(dict):
         :param str name: The group name.
         :param str value: The dimension value.
         """
-        ElastigroupScalingTargetPolicyDimension._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            name=name,
-            value=value,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             name: Optional[str] = None,
-             value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-
-        _setter("name", name)
+        pulumi.set(__self__, "name", name)
         if value is not None:
-            _setter("value", value)
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -6542,118 +4915,45 @@ class ElastigroupScalingUpPolicy(dict):
                When using `updateCapacity`       – set the fields `minimum`, `maximum`, and `target`
         :param str unit: The unit for the alarm's associated metric. Valid values: `"percent`, `"seconds"`, `"microseconds"`, `"milliseconds"`, `"bytes"`, `"kilobytes"`, `"megabytes"`, `"gigabytes"`, `"terabytes"`, `"bits"`, `"kilobits"`, `"megabits"`, `"gigabits"`, `"terabits"`, `"count"`, `"bytes/second"`, `"kilobytes/second"`, `"megabytes/second"`, `"gigabytes/second"`, `"terabytes/second"`, `"bits/second"`, `"kilobits/second"`, `"megabits/second"`, `"gigabits/second"`, `"terabits/second"`, `"count/second"`, `"none"`.
         """
-        ElastigroupScalingUpPolicy._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            metric_name=metric_name,
-            namespace=namespace,
-            policy_name=policy_name,
-            action_type=action_type,
-            adjustment=adjustment,
-            cooldown=cooldown,
-            dimensions=dimensions,
-            evaluation_periods=evaluation_periods,
-            is_enabled=is_enabled,
-            max_target_capacity=max_target_capacity,
-            maximum=maximum,
-            min_target_capacity=min_target_capacity,
-            minimum=minimum,
-            operator=operator,
-            period=period,
-            source=source,
-            statistic=statistic,
-            step_adjustments=step_adjustments,
-            target=target,
-            threshold=threshold,
-            unit=unit,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             metric_name: Optional[str] = None,
-             namespace: Optional[str] = None,
-             policy_name: Optional[str] = None,
-             action_type: Optional[str] = None,
-             adjustment: Optional[str] = None,
-             cooldown: Optional[int] = None,
-             dimensions: Optional[Sequence['outputs.ElastigroupScalingUpPolicyDimension']] = None,
-             evaluation_periods: Optional[int] = None,
-             is_enabled: Optional[bool] = None,
-             max_target_capacity: Optional[str] = None,
-             maximum: Optional[str] = None,
-             min_target_capacity: Optional[str] = None,
-             minimum: Optional[str] = None,
-             operator: Optional[str] = None,
-             period: Optional[int] = None,
-             source: Optional[str] = None,
-             statistic: Optional[str] = None,
-             step_adjustments: Optional[Sequence['outputs.ElastigroupScalingUpPolicyStepAdjustment']] = None,
-             target: Optional[str] = None,
-             threshold: Optional[float] = None,
-             unit: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if metric_name is None and 'metricName' in kwargs:
-            metric_name = kwargs['metricName']
-        if metric_name is None:
-            raise TypeError("Missing 'metric_name' argument")
-        if namespace is None:
-            raise TypeError("Missing 'namespace' argument")
-        if policy_name is None and 'policyName' in kwargs:
-            policy_name = kwargs['policyName']
-        if policy_name is None:
-            raise TypeError("Missing 'policy_name' argument")
-        if action_type is None and 'actionType' in kwargs:
-            action_type = kwargs['actionType']
-        if evaluation_periods is None and 'evaluationPeriods' in kwargs:
-            evaluation_periods = kwargs['evaluationPeriods']
-        if is_enabled is None and 'isEnabled' in kwargs:
-            is_enabled = kwargs['isEnabled']
-        if max_target_capacity is None and 'maxTargetCapacity' in kwargs:
-            max_target_capacity = kwargs['maxTargetCapacity']
-        if min_target_capacity is None and 'minTargetCapacity' in kwargs:
-            min_target_capacity = kwargs['minTargetCapacity']
-        if step_adjustments is None and 'stepAdjustments' in kwargs:
-            step_adjustments = kwargs['stepAdjustments']
-
-        _setter("metric_name", metric_name)
-        _setter("namespace", namespace)
-        _setter("policy_name", policy_name)
+        pulumi.set(__self__, "metric_name", metric_name)
+        pulumi.set(__self__, "namespace", namespace)
+        pulumi.set(__self__, "policy_name", policy_name)
         if action_type is not None:
-            _setter("action_type", action_type)
+            pulumi.set(__self__, "action_type", action_type)
         if adjustment is not None:
-            _setter("adjustment", adjustment)
+            pulumi.set(__self__, "adjustment", adjustment)
         if cooldown is not None:
-            _setter("cooldown", cooldown)
+            pulumi.set(__self__, "cooldown", cooldown)
         if dimensions is not None:
-            _setter("dimensions", dimensions)
+            pulumi.set(__self__, "dimensions", dimensions)
         if evaluation_periods is not None:
-            _setter("evaluation_periods", evaluation_periods)
+            pulumi.set(__self__, "evaluation_periods", evaluation_periods)
         if is_enabled is not None:
-            _setter("is_enabled", is_enabled)
+            pulumi.set(__self__, "is_enabled", is_enabled)
         if max_target_capacity is not None:
-            _setter("max_target_capacity", max_target_capacity)
+            pulumi.set(__self__, "max_target_capacity", max_target_capacity)
         if maximum is not None:
-            _setter("maximum", maximum)
+            pulumi.set(__self__, "maximum", maximum)
         if min_target_capacity is not None:
-            _setter("min_target_capacity", min_target_capacity)
+            pulumi.set(__self__, "min_target_capacity", min_target_capacity)
         if minimum is not None:
-            _setter("minimum", minimum)
+            pulumi.set(__self__, "minimum", minimum)
         if operator is not None:
-            _setter("operator", operator)
+            pulumi.set(__self__, "operator", operator)
         if period is not None:
-            _setter("period", period)
+            pulumi.set(__self__, "period", period)
         if source is not None:
-            _setter("source", source)
+            pulumi.set(__self__, "source", source)
         if statistic is not None:
-            _setter("statistic", statistic)
+            pulumi.set(__self__, "statistic", statistic)
         if step_adjustments is not None:
-            _setter("step_adjustments", step_adjustments)
+            pulumi.set(__self__, "step_adjustments", step_adjustments)
         if target is not None:
-            _setter("target", target)
+            pulumi.set(__self__, "target", target)
         if threshold is not None:
-            _setter("threshold", threshold)
+            pulumi.set(__self__, "threshold", threshold)
         if unit is not None:
-            _setter("unit", unit)
+            pulumi.set(__self__, "unit", unit)
 
     @property
     @pulumi.getter(name="metricName")
@@ -6838,24 +5138,9 @@ class ElastigroupScalingUpPolicyDimension(dict):
         :param str name: The group name.
         :param str value: The dimension value.
         """
-        ElastigroupScalingUpPolicyDimension._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            name=name,
-            value=value,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             name: Optional[str] = None,
-             value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-
-        _setter("name", name)
+        pulumi.set(__self__, "name", name)
         if value is not None:
-            _setter("value", value)
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -6890,25 +5175,8 @@ class ElastigroupScalingUpPolicyStepAdjustment(dict):
                When using `adjustment`           – set the field `adjustment`
                When using `updateCapacity`       – set the fields `minimum`, `maximum`, and `target`
         """
-        ElastigroupScalingUpPolicyStepAdjustment._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            action=action,
-            threshold=threshold,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             action: Optional['outputs.ElastigroupScalingUpPolicyStepAdjustmentAction'] = None,
-             threshold: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if action is None:
-            raise TypeError("Missing 'action' argument")
-        if threshold is None:
-            raise TypeError("Missing 'threshold' argument")
-
-        _setter("action", action)
-        _setter("threshold", threshold)
+        pulumi.set(__self__, "action", action)
+        pulumi.set(__self__, "threshold", threshold)
 
     @property
     @pulumi.getter
@@ -6972,48 +5240,19 @@ class ElastigroupScalingUpPolicyStepAdjustmentAction(dict):
         :param str minimum: The minimal number of instances to have in the group.
         :param str target: The target number of instances to have in the group.
         """
-        ElastigroupScalingUpPolicyStepAdjustmentAction._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            type=type,
-            adjustment=adjustment,
-            max_target_capacity=max_target_capacity,
-            maximum=maximum,
-            min_target_capacity=min_target_capacity,
-            minimum=minimum,
-            target=target,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             type: Optional[str] = None,
-             adjustment: Optional[str] = None,
-             max_target_capacity: Optional[str] = None,
-             maximum: Optional[str] = None,
-             min_target_capacity: Optional[str] = None,
-             minimum: Optional[str] = None,
-             target: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if type is None:
-            raise TypeError("Missing 'type' argument")
-        if max_target_capacity is None and 'maxTargetCapacity' in kwargs:
-            max_target_capacity = kwargs['maxTargetCapacity']
-        if min_target_capacity is None and 'minTargetCapacity' in kwargs:
-            min_target_capacity = kwargs['minTargetCapacity']
-
-        _setter("type", type)
+        pulumi.set(__self__, "type", type)
         if adjustment is not None:
-            _setter("adjustment", adjustment)
+            pulumi.set(__self__, "adjustment", adjustment)
         if max_target_capacity is not None:
-            _setter("max_target_capacity", max_target_capacity)
+            pulumi.set(__self__, "max_target_capacity", max_target_capacity)
         if maximum is not None:
-            _setter("maximum", maximum)
+            pulumi.set(__self__, "maximum", maximum)
         if min_target_capacity is not None:
-            _setter("min_target_capacity", min_target_capacity)
+            pulumi.set(__self__, "min_target_capacity", min_target_capacity)
         if minimum is not None:
-            _setter("minimum", minimum)
+            pulumi.set(__self__, "minimum", minimum)
         if target is not None:
-            _setter("target", target)
+            pulumi.set(__self__, "target", target)
 
     @property
     @pulumi.getter
@@ -7154,102 +5393,35 @@ class ElastigroupScheduledTask(dict):
         :param str start_time: Set a start time for one time tasks.
         :param str target_capacity: The desired number of instances the group should have.
         """
-        ElastigroupScheduledTask._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            task_type=task_type,
-            adjustment=adjustment,
-            adjustment_percentage=adjustment_percentage,
-            batch_size_percentage=batch_size_percentage,
-            cron_expression=cron_expression,
-            frequency=frequency,
-            grace_period=grace_period,
-            is_enabled=is_enabled,
-            max_capacity=max_capacity,
-            min_capacity=min_capacity,
-            scale_max_capacity=scale_max_capacity,
-            scale_min_capacity=scale_min_capacity,
-            scale_target_capacity=scale_target_capacity,
-            start_time=start_time,
-            target_capacity=target_capacity,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             task_type: Optional[str] = None,
-             adjustment: Optional[str] = None,
-             adjustment_percentage: Optional[str] = None,
-             batch_size_percentage: Optional[str] = None,
-             cron_expression: Optional[str] = None,
-             frequency: Optional[str] = None,
-             grace_period: Optional[str] = None,
-             is_enabled: Optional[bool] = None,
-             max_capacity: Optional[str] = None,
-             min_capacity: Optional[str] = None,
-             scale_max_capacity: Optional[str] = None,
-             scale_min_capacity: Optional[str] = None,
-             scale_target_capacity: Optional[str] = None,
-             start_time: Optional[str] = None,
-             target_capacity: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if task_type is None and 'taskType' in kwargs:
-            task_type = kwargs['taskType']
-        if task_type is None:
-            raise TypeError("Missing 'task_type' argument")
-        if adjustment_percentage is None and 'adjustmentPercentage' in kwargs:
-            adjustment_percentage = kwargs['adjustmentPercentage']
-        if batch_size_percentage is None and 'batchSizePercentage' in kwargs:
-            batch_size_percentage = kwargs['batchSizePercentage']
-        if cron_expression is None and 'cronExpression' in kwargs:
-            cron_expression = kwargs['cronExpression']
-        if grace_period is None and 'gracePeriod' in kwargs:
-            grace_period = kwargs['gracePeriod']
-        if is_enabled is None and 'isEnabled' in kwargs:
-            is_enabled = kwargs['isEnabled']
-        if max_capacity is None and 'maxCapacity' in kwargs:
-            max_capacity = kwargs['maxCapacity']
-        if min_capacity is None and 'minCapacity' in kwargs:
-            min_capacity = kwargs['minCapacity']
-        if scale_max_capacity is None and 'scaleMaxCapacity' in kwargs:
-            scale_max_capacity = kwargs['scaleMaxCapacity']
-        if scale_min_capacity is None and 'scaleMinCapacity' in kwargs:
-            scale_min_capacity = kwargs['scaleMinCapacity']
-        if scale_target_capacity is None and 'scaleTargetCapacity' in kwargs:
-            scale_target_capacity = kwargs['scaleTargetCapacity']
-        if start_time is None and 'startTime' in kwargs:
-            start_time = kwargs['startTime']
-        if target_capacity is None and 'targetCapacity' in kwargs:
-            target_capacity = kwargs['targetCapacity']
-
-        _setter("task_type", task_type)
+        pulumi.set(__self__, "task_type", task_type)
         if adjustment is not None:
-            _setter("adjustment", adjustment)
+            pulumi.set(__self__, "adjustment", adjustment)
         if adjustment_percentage is not None:
-            _setter("adjustment_percentage", adjustment_percentage)
+            pulumi.set(__self__, "adjustment_percentage", adjustment_percentage)
         if batch_size_percentage is not None:
-            _setter("batch_size_percentage", batch_size_percentage)
+            pulumi.set(__self__, "batch_size_percentage", batch_size_percentage)
         if cron_expression is not None:
-            _setter("cron_expression", cron_expression)
+            pulumi.set(__self__, "cron_expression", cron_expression)
         if frequency is not None:
-            _setter("frequency", frequency)
+            pulumi.set(__self__, "frequency", frequency)
         if grace_period is not None:
-            _setter("grace_period", grace_period)
+            pulumi.set(__self__, "grace_period", grace_period)
         if is_enabled is not None:
-            _setter("is_enabled", is_enabled)
+            pulumi.set(__self__, "is_enabled", is_enabled)
         if max_capacity is not None:
-            _setter("max_capacity", max_capacity)
+            pulumi.set(__self__, "max_capacity", max_capacity)
         if min_capacity is not None:
-            _setter("min_capacity", min_capacity)
+            pulumi.set(__self__, "min_capacity", min_capacity)
         if scale_max_capacity is not None:
-            _setter("scale_max_capacity", scale_max_capacity)
+            pulumi.set(__self__, "scale_max_capacity", scale_max_capacity)
         if scale_min_capacity is not None:
-            _setter("scale_min_capacity", scale_min_capacity)
+            pulumi.set(__self__, "scale_min_capacity", scale_min_capacity)
         if scale_target_capacity is not None:
-            _setter("scale_target_capacity", scale_target_capacity)
+            pulumi.set(__self__, "scale_target_capacity", scale_target_capacity)
         if start_time is not None:
-            _setter("start_time", start_time)
+            pulumi.set(__self__, "start_time", start_time)
         if target_capacity is not None:
-            _setter("target_capacity", target_capacity)
+            pulumi.set(__self__, "target_capacity", target_capacity)
 
     @property
     @pulumi.getter(name="taskType")
@@ -7393,24 +5565,9 @@ class ElastigroupSignal(dict):
                import pulumi
                ```
         """
-        ElastigroupSignal._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            name=name,
-            timeout=timeout,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             name: Optional[str] = None,
-             timeout: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-
-        _setter("name", name)
+        pulumi.set(__self__, "name", name)
         if timeout is not None:
-            _setter("timeout", timeout)
+            pulumi.set(__self__, "timeout", timeout)
 
     @property
     @pulumi.getter
@@ -7477,39 +5634,14 @@ class ElastigroupStatefulDeallocation(dict):
                ```
         :param bool should_delete_volumes: For stateful groups: remove persistent volumes.
         """
-        ElastigroupStatefulDeallocation._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            should_delete_images=should_delete_images,
-            should_delete_network_interfaces=should_delete_network_interfaces,
-            should_delete_snapshots=should_delete_snapshots,
-            should_delete_volumes=should_delete_volumes,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             should_delete_images: Optional[bool] = None,
-             should_delete_network_interfaces: Optional[bool] = None,
-             should_delete_snapshots: Optional[bool] = None,
-             should_delete_volumes: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if should_delete_images is None and 'shouldDeleteImages' in kwargs:
-            should_delete_images = kwargs['shouldDeleteImages']
-        if should_delete_network_interfaces is None and 'shouldDeleteNetworkInterfaces' in kwargs:
-            should_delete_network_interfaces = kwargs['shouldDeleteNetworkInterfaces']
-        if should_delete_snapshots is None and 'shouldDeleteSnapshots' in kwargs:
-            should_delete_snapshots = kwargs['shouldDeleteSnapshots']
-        if should_delete_volumes is None and 'shouldDeleteVolumes' in kwargs:
-            should_delete_volumes = kwargs['shouldDeleteVolumes']
-
         if should_delete_images is not None:
-            _setter("should_delete_images", should_delete_images)
+            pulumi.set(__self__, "should_delete_images", should_delete_images)
         if should_delete_network_interfaces is not None:
-            _setter("should_delete_network_interfaces", should_delete_network_interfaces)
+            pulumi.set(__self__, "should_delete_network_interfaces", should_delete_network_interfaces)
         if should_delete_snapshots is not None:
-            _setter("should_delete_snapshots", should_delete_snapshots)
+            pulumi.set(__self__, "should_delete_snapshots", should_delete_snapshots)
         if should_delete_volumes is not None:
-            _setter("should_delete_volumes", should_delete_volumes)
+            pulumi.set(__self__, "should_delete_volumes", should_delete_volumes)
 
     @property
     @pulumi.getter(name="shouldDeleteImages")
@@ -7582,27 +5714,8 @@ class ElastigroupStatefulInstanceAction(dict):
                import pulumi
                ```
         """
-        ElastigroupStatefulInstanceAction._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            stateful_instance_id=stateful_instance_id,
-            type=type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             stateful_instance_id: Optional[str] = None,
-             type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if stateful_instance_id is None and 'statefulInstanceId' in kwargs:
-            stateful_instance_id = kwargs['statefulInstanceId']
-        if stateful_instance_id is None:
-            raise TypeError("Missing 'stateful_instance_id' argument")
-        if type is None:
-            raise TypeError("Missing 'type' argument")
-
-        _setter("stateful_instance_id", stateful_instance_id)
-        _setter("type", type)
+        pulumi.set(__self__, "stateful_instance_id", stateful_instance_id)
+        pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter(name="statefulInstanceId")
@@ -7635,23 +5748,10 @@ class ElastigroupTag(dict):
         """
         :param str value: The dimension value.
         """
-        ElastigroupTag._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            key=key,
-            value=value,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             key: Optional[str] = None,
-             value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if key is not None:
-            _setter("key", key)
+            pulumi.set(__self__, "key", key)
         if value is not None:
-            _setter("value", value)
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -7703,41 +5803,12 @@ class ElastigroupUpdatePolicy(dict):
         :param bool auto_apply_tags: Enables updates to tags without rolling the group when set to `true`.
         :param 'ElastigroupUpdatePolicyRollConfigArgs' roll_config: While used, you can control whether the group should perform a deployment after an update to the configuration.
         """
-        ElastigroupUpdatePolicy._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            should_resume_stateful=should_resume_stateful,
-            should_roll=should_roll,
-            auto_apply_tags=auto_apply_tags,
-            roll_config=roll_config,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             should_resume_stateful: Optional[bool] = None,
-             should_roll: Optional[bool] = None,
-             auto_apply_tags: Optional[bool] = None,
-             roll_config: Optional['outputs.ElastigroupUpdatePolicyRollConfig'] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if should_resume_stateful is None and 'shouldResumeStateful' in kwargs:
-            should_resume_stateful = kwargs['shouldResumeStateful']
-        if should_resume_stateful is None:
-            raise TypeError("Missing 'should_resume_stateful' argument")
-        if should_roll is None and 'shouldRoll' in kwargs:
-            should_roll = kwargs['shouldRoll']
-        if should_roll is None:
-            raise TypeError("Missing 'should_roll' argument")
-        if auto_apply_tags is None and 'autoApplyTags' in kwargs:
-            auto_apply_tags = kwargs['autoApplyTags']
-        if roll_config is None and 'rollConfig' in kwargs:
-            roll_config = kwargs['rollConfig']
-
-        _setter("should_resume_stateful", should_resume_stateful)
-        _setter("should_roll", should_roll)
+        pulumi.set(__self__, "should_resume_stateful", should_resume_stateful)
+        pulumi.set(__self__, "should_roll", should_roll)
         if auto_apply_tags is not None:
-            _setter("auto_apply_tags", auto_apply_tags)
+            pulumi.set(__self__, "auto_apply_tags", auto_apply_tags)
         if roll_config is not None:
-            _setter("roll_config", roll_config)
+            pulumi.set(__self__, "roll_config", roll_config)
 
     @property
     @pulumi.getter(name="shouldResumeStateful")
@@ -7814,50 +5885,17 @@ class ElastigroupUpdatePolicyRollConfig(dict):
         :param float wait_for_roll_percentage: For use with `should_roll`. Sets minimum % of roll required to complete before continuing the plan. Required if `wait_for_roll_timeout` is set.
         :param int wait_for_roll_timeout: For use with `should_roll`. Sets how long to wait for the deployed % of a roll to exceed `wait_for_roll_percentage` before continuing the plan. Required if `wait_for_roll_percentage` is set.
         """
-        ElastigroupUpdatePolicyRollConfig._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            batch_size_percentage=batch_size_percentage,
-            grace_period=grace_period,
-            health_check_type=health_check_type,
-            strategy=strategy,
-            wait_for_roll_percentage=wait_for_roll_percentage,
-            wait_for_roll_timeout=wait_for_roll_timeout,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             batch_size_percentage: Optional[int] = None,
-             grace_period: Optional[int] = None,
-             health_check_type: Optional[str] = None,
-             strategy: Optional['outputs.ElastigroupUpdatePolicyRollConfigStrategy'] = None,
-             wait_for_roll_percentage: Optional[float] = None,
-             wait_for_roll_timeout: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if batch_size_percentage is None and 'batchSizePercentage' in kwargs:
-            batch_size_percentage = kwargs['batchSizePercentage']
-        if batch_size_percentage is None:
-            raise TypeError("Missing 'batch_size_percentage' argument")
-        if grace_period is None and 'gracePeriod' in kwargs:
-            grace_period = kwargs['gracePeriod']
-        if health_check_type is None and 'healthCheckType' in kwargs:
-            health_check_type = kwargs['healthCheckType']
-        if wait_for_roll_percentage is None and 'waitForRollPercentage' in kwargs:
-            wait_for_roll_percentage = kwargs['waitForRollPercentage']
-        if wait_for_roll_timeout is None and 'waitForRollTimeout' in kwargs:
-            wait_for_roll_timeout = kwargs['waitForRollTimeout']
-
-        _setter("batch_size_percentage", batch_size_percentage)
+        pulumi.set(__self__, "batch_size_percentage", batch_size_percentage)
         if grace_period is not None:
-            _setter("grace_period", grace_period)
+            pulumi.set(__self__, "grace_period", grace_period)
         if health_check_type is not None:
-            _setter("health_check_type", health_check_type)
+            pulumi.set(__self__, "health_check_type", health_check_type)
         if strategy is not None:
-            _setter("strategy", strategy)
+            pulumi.set(__self__, "strategy", strategy)
         if wait_for_roll_percentage is not None:
-            _setter("wait_for_roll_percentage", wait_for_roll_percentage)
+            pulumi.set(__self__, "wait_for_roll_percentage", wait_for_roll_percentage)
         if wait_for_roll_timeout is not None:
-            _setter("wait_for_roll_timeout", wait_for_roll_timeout)
+            pulumi.set(__self__, "wait_for_roll_timeout", wait_for_roll_timeout)
 
     @property
     @pulumi.getter(name="batchSizePercentage")
@@ -7942,38 +5980,13 @@ class ElastigroupUpdatePolicyRollConfigStrategy(dict):
         :param 'ElastigroupUpdatePolicyRollConfigStrategyOnFailureArgs' on_failure: Set detach options to the deployment.
         :param bool should_drain_instances: Bool value if to wait to drain instance
         """
-        ElastigroupUpdatePolicyRollConfigStrategy._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            action=action,
-            batch_min_healthy_percentage=batch_min_healthy_percentage,
-            on_failure=on_failure,
-            should_drain_instances=should_drain_instances,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             action: Optional[str] = None,
-             batch_min_healthy_percentage: Optional[int] = None,
-             on_failure: Optional['outputs.ElastigroupUpdatePolicyRollConfigStrategyOnFailure'] = None,
-             should_drain_instances: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if action is None:
-            raise TypeError("Missing 'action' argument")
-        if batch_min_healthy_percentage is None and 'batchMinHealthyPercentage' in kwargs:
-            batch_min_healthy_percentage = kwargs['batchMinHealthyPercentage']
-        if on_failure is None and 'onFailure' in kwargs:
-            on_failure = kwargs['onFailure']
-        if should_drain_instances is None and 'shouldDrainInstances' in kwargs:
-            should_drain_instances = kwargs['shouldDrainInstances']
-
-        _setter("action", action)
+        pulumi.set(__self__, "action", action)
         if batch_min_healthy_percentage is not None:
-            _setter("batch_min_healthy_percentage", batch_min_healthy_percentage)
+            pulumi.set(__self__, "batch_min_healthy_percentage", batch_min_healthy_percentage)
         if on_failure is not None:
-            _setter("on_failure", on_failure)
+            pulumi.set(__self__, "on_failure", on_failure)
         if should_drain_instances is not None:
-            _setter("should_drain_instances", should_drain_instances)
+            pulumi.set(__self__, "should_drain_instances", should_drain_instances)
 
     @property
     @pulumi.getter
@@ -8051,46 +6064,15 @@ class ElastigroupUpdatePolicyRollConfigStrategyOnFailure(dict):
                ```
         :param bool should_handle_all_batches: Indicator if the action should apply to all batches of the deployment or only the latest batch.
         """
-        ElastigroupUpdatePolicyRollConfigStrategyOnFailure._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            action_type=action_type,
-            batch_num=batch_num,
-            draining_timeout=draining_timeout,
-            should_decrement_target_capacity=should_decrement_target_capacity,
-            should_handle_all_batches=should_handle_all_batches,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             action_type: Optional[str] = None,
-             batch_num: Optional[int] = None,
-             draining_timeout: Optional[int] = None,
-             should_decrement_target_capacity: Optional[bool] = None,
-             should_handle_all_batches: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if action_type is None and 'actionType' in kwargs:
-            action_type = kwargs['actionType']
-        if action_type is None:
-            raise TypeError("Missing 'action_type' argument")
-        if batch_num is None and 'batchNum' in kwargs:
-            batch_num = kwargs['batchNum']
-        if draining_timeout is None and 'drainingTimeout' in kwargs:
-            draining_timeout = kwargs['drainingTimeout']
-        if should_decrement_target_capacity is None and 'shouldDecrementTargetCapacity' in kwargs:
-            should_decrement_target_capacity = kwargs['shouldDecrementTargetCapacity']
-        if should_handle_all_batches is None and 'shouldHandleAllBatches' in kwargs:
-            should_handle_all_batches = kwargs['shouldHandleAllBatches']
-
-        _setter("action_type", action_type)
+        pulumi.set(__self__, "action_type", action_type)
         if batch_num is not None:
-            _setter("batch_num", batch_num)
+            pulumi.set(__self__, "batch_num", batch_num)
         if draining_timeout is not None:
-            _setter("draining_timeout", draining_timeout)
+            pulumi.set(__self__, "draining_timeout", draining_timeout)
         if should_decrement_target_capacity is not None:
-            _setter("should_decrement_target_capacity", should_decrement_target_capacity)
+            pulumi.set(__self__, "should_decrement_target_capacity", should_decrement_target_capacity)
         if should_handle_all_batches is not None:
-            _setter("should_handle_all_batches", should_handle_all_batches)
+            pulumi.set(__self__, "should_handle_all_batches", should_handle_all_batches)
 
     @property
     @pulumi.getter(name="actionType")
@@ -8156,26 +6138,9 @@ class ManagedInstanceBlockDeviceMapping(dict):
     def __init__(__self__, *,
                  device_name: str,
                  ebs: Optional['outputs.ManagedInstanceBlockDeviceMappingEbs'] = None):
-        ManagedInstanceBlockDeviceMapping._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            device_name=device_name,
-            ebs=ebs,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             device_name: Optional[str] = None,
-             ebs: Optional['outputs.ManagedInstanceBlockDeviceMappingEbs'] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if device_name is None and 'deviceName' in kwargs:
-            device_name = kwargs['deviceName']
-        if device_name is None:
-            raise TypeError("Missing 'device_name' argument")
-
-        _setter("device_name", device_name)
+        pulumi.set(__self__, "device_name", device_name)
         if ebs is not None:
-            _setter("ebs", ebs)
+            pulumi.set(__self__, "ebs", ebs)
 
     @property
     @pulumi.getter(name="deviceName")
@@ -8217,41 +6182,16 @@ class ManagedInstanceBlockDeviceMappingEbs(dict):
                  throughput: Optional[int] = None,
                  volume_size: Optional[int] = None,
                  volume_type: Optional[str] = None):
-        ManagedInstanceBlockDeviceMappingEbs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            delete_on_termination=delete_on_termination,
-            iops=iops,
-            throughput=throughput,
-            volume_size=volume_size,
-            volume_type=volume_type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             delete_on_termination: Optional[bool] = None,
-             iops: Optional[int] = None,
-             throughput: Optional[int] = None,
-             volume_size: Optional[int] = None,
-             volume_type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if delete_on_termination is None and 'deleteOnTermination' in kwargs:
-            delete_on_termination = kwargs['deleteOnTermination']
-        if volume_size is None and 'volumeSize' in kwargs:
-            volume_size = kwargs['volumeSize']
-        if volume_type is None and 'volumeType' in kwargs:
-            volume_type = kwargs['volumeType']
-
         if delete_on_termination is not None:
-            _setter("delete_on_termination", delete_on_termination)
+            pulumi.set(__self__, "delete_on_termination", delete_on_termination)
         if iops is not None:
-            _setter("iops", iops)
+            pulumi.set(__self__, "iops", iops)
         if throughput is not None:
-            _setter("throughput", throughput)
+            pulumi.set(__self__, "throughput", throughput)
         if volume_size is not None:
-            _setter("volume_size", volume_size)
+            pulumi.set(__self__, "volume_size", volume_size)
         if volume_type is not None:
-            _setter("volume_type", volume_type)
+            pulumi.set(__self__, "volume_type", volume_type)
 
     @property
     @pulumi.getter(name="deleteOnTermination")
@@ -8315,51 +6255,18 @@ class ManagedInstanceDelete(dict):
                  should_delete_snapshots: Optional[bool] = None,
                  should_delete_volumes: Optional[bool] = None,
                  should_terminate_instance: Optional[bool] = None):
-        ManagedInstanceDelete._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            ami_backup_should_delete_images=ami_backup_should_delete_images,
-            deallocation_config_should_delete_images=deallocation_config_should_delete_images,
-            should_delete_network_interfaces=should_delete_network_interfaces,
-            should_delete_snapshots=should_delete_snapshots,
-            should_delete_volumes=should_delete_volumes,
-            should_terminate_instance=should_terminate_instance,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             ami_backup_should_delete_images: Optional[bool] = None,
-             deallocation_config_should_delete_images: Optional[bool] = None,
-             should_delete_network_interfaces: Optional[bool] = None,
-             should_delete_snapshots: Optional[bool] = None,
-             should_delete_volumes: Optional[bool] = None,
-             should_terminate_instance: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if ami_backup_should_delete_images is None and 'amiBackupShouldDeleteImages' in kwargs:
-            ami_backup_should_delete_images = kwargs['amiBackupShouldDeleteImages']
-        if deallocation_config_should_delete_images is None and 'deallocationConfigShouldDeleteImages' in kwargs:
-            deallocation_config_should_delete_images = kwargs['deallocationConfigShouldDeleteImages']
-        if should_delete_network_interfaces is None and 'shouldDeleteNetworkInterfaces' in kwargs:
-            should_delete_network_interfaces = kwargs['shouldDeleteNetworkInterfaces']
-        if should_delete_snapshots is None and 'shouldDeleteSnapshots' in kwargs:
-            should_delete_snapshots = kwargs['shouldDeleteSnapshots']
-        if should_delete_volumes is None and 'shouldDeleteVolumes' in kwargs:
-            should_delete_volumes = kwargs['shouldDeleteVolumes']
-        if should_terminate_instance is None and 'shouldTerminateInstance' in kwargs:
-            should_terminate_instance = kwargs['shouldTerminateInstance']
-
         if ami_backup_should_delete_images is not None:
-            _setter("ami_backup_should_delete_images", ami_backup_should_delete_images)
+            pulumi.set(__self__, "ami_backup_should_delete_images", ami_backup_should_delete_images)
         if deallocation_config_should_delete_images is not None:
-            _setter("deallocation_config_should_delete_images", deallocation_config_should_delete_images)
+            pulumi.set(__self__, "deallocation_config_should_delete_images", deallocation_config_should_delete_images)
         if should_delete_network_interfaces is not None:
-            _setter("should_delete_network_interfaces", should_delete_network_interfaces)
+            pulumi.set(__self__, "should_delete_network_interfaces", should_delete_network_interfaces)
         if should_delete_snapshots is not None:
-            _setter("should_delete_snapshots", should_delete_snapshots)
+            pulumi.set(__self__, "should_delete_snapshots", should_delete_snapshots)
         if should_delete_volumes is not None:
-            _setter("should_delete_volumes", should_delete_volumes)
+            pulumi.set(__self__, "should_delete_volumes", should_delete_volumes)
         if should_terminate_instance is not None:
-            _setter("should_terminate_instance", should_terminate_instance)
+            pulumi.set(__self__, "should_terminate_instance", should_terminate_instance)
 
     @property
     @pulumi.getter(name="amiBackupShouldDeleteImages")
@@ -8396,20 +6303,7 @@ class ManagedInstanceDelete(dict):
 class ManagedInstanceIntegrationRoute53(dict):
     def __init__(__self__, *,
                  domains: Sequence['outputs.ManagedInstanceIntegrationRoute53Domain']):
-        ManagedInstanceIntegrationRoute53._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            domains=domains,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             domains: Optional[Sequence['outputs.ManagedInstanceIntegrationRoute53Domain']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if domains is None:
-            raise TypeError("Missing 'domains' argument")
-
-        _setter("domains", domains)
+        pulumi.set(__self__, "domains", domains)
 
     @property
     @pulumi.getter
@@ -8447,41 +6341,12 @@ class ManagedInstanceIntegrationRoute53Domain(dict):
                  record_sets: Sequence['outputs.ManagedInstanceIntegrationRoute53DomainRecordSet'],
                  record_set_type: Optional[str] = None,
                  spotinst_acct_id: Optional[str] = None):
-        ManagedInstanceIntegrationRoute53Domain._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            hosted_zone_id=hosted_zone_id,
-            record_sets=record_sets,
-            record_set_type=record_set_type,
-            spotinst_acct_id=spotinst_acct_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             hosted_zone_id: Optional[str] = None,
-             record_sets: Optional[Sequence['outputs.ManagedInstanceIntegrationRoute53DomainRecordSet']] = None,
-             record_set_type: Optional[str] = None,
-             spotinst_acct_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if hosted_zone_id is None and 'hostedZoneId' in kwargs:
-            hosted_zone_id = kwargs['hostedZoneId']
-        if hosted_zone_id is None:
-            raise TypeError("Missing 'hosted_zone_id' argument")
-        if record_sets is None and 'recordSets' in kwargs:
-            record_sets = kwargs['recordSets']
-        if record_sets is None:
-            raise TypeError("Missing 'record_sets' argument")
-        if record_set_type is None and 'recordSetType' in kwargs:
-            record_set_type = kwargs['recordSetType']
-        if spotinst_acct_id is None and 'spotinstAcctId' in kwargs:
-            spotinst_acct_id = kwargs['spotinstAcctId']
-
-        _setter("hosted_zone_id", hosted_zone_id)
-        _setter("record_sets", record_sets)
+        pulumi.set(__self__, "hosted_zone_id", hosted_zone_id)
+        pulumi.set(__self__, "record_sets", record_sets)
         if record_set_type is not None:
-            _setter("record_set_type", record_set_type)
+            pulumi.set(__self__, "record_set_type", record_set_type)
         if spotinst_acct_id is not None:
-            _setter("spotinst_acct_id", spotinst_acct_id)
+            pulumi.set(__self__, "spotinst_acct_id", spotinst_acct_id)
 
     @property
     @pulumi.getter(name="hostedZoneId")
@@ -8529,32 +6394,11 @@ class ManagedInstanceIntegrationRoute53DomainRecordSet(dict):
                  name: str,
                  use_public_dns: Optional[bool] = None,
                  use_public_ip: Optional[bool] = None):
-        ManagedInstanceIntegrationRoute53DomainRecordSet._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            name=name,
-            use_public_dns=use_public_dns,
-            use_public_ip=use_public_ip,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             name: Optional[str] = None,
-             use_public_dns: Optional[bool] = None,
-             use_public_ip: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-        if use_public_dns is None and 'usePublicDns' in kwargs:
-            use_public_dns = kwargs['usePublicDns']
-        if use_public_ip is None and 'usePublicIp' in kwargs:
-            use_public_ip = kwargs['usePublicIp']
-
-        _setter("name", name)
+        pulumi.set(__self__, "name", name)
         if use_public_dns is not None:
-            _setter("use_public_dns", use_public_dns)
+            pulumi.set(__self__, "use_public_dns", use_public_dns)
         if use_public_ip is not None:
-            _setter("use_public_ip", use_public_ip)
+            pulumi.set(__self__, "use_public_ip", use_public_ip)
 
     @property
     @pulumi.getter
@@ -8605,52 +6449,19 @@ class ManagedInstanceLoadBalancer(dict):
                  balancer_id: Optional[str] = None,
                  name: Optional[str] = None,
                  target_set_id: Optional[str] = None):
-        ManagedInstanceLoadBalancer._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            type=type,
-            arn=arn,
-            auto_weight=auto_weight,
-            az_awareness=az_awareness,
-            balancer_id=balancer_id,
-            name=name,
-            target_set_id=target_set_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             type: Optional[str] = None,
-             arn: Optional[str] = None,
-             auto_weight: Optional[bool] = None,
-             az_awareness: Optional[bool] = None,
-             balancer_id: Optional[str] = None,
-             name: Optional[str] = None,
-             target_set_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if type is None:
-            raise TypeError("Missing 'type' argument")
-        if auto_weight is None and 'autoWeight' in kwargs:
-            auto_weight = kwargs['autoWeight']
-        if az_awareness is None and 'azAwareness' in kwargs:
-            az_awareness = kwargs['azAwareness']
-        if balancer_id is None and 'balancerId' in kwargs:
-            balancer_id = kwargs['balancerId']
-        if target_set_id is None and 'targetSetId' in kwargs:
-            target_set_id = kwargs['targetSetId']
-
-        _setter("type", type)
+        pulumi.set(__self__, "type", type)
         if arn is not None:
-            _setter("arn", arn)
+            pulumi.set(__self__, "arn", arn)
         if auto_weight is not None:
-            _setter("auto_weight", auto_weight)
+            pulumi.set(__self__, "auto_weight", auto_weight)
         if az_awareness is not None:
-            _setter("az_awareness", az_awareness)
+            pulumi.set(__self__, "az_awareness", az_awareness)
         if balancer_id is not None:
-            _setter("balancer_id", balancer_id)
+            pulumi.set(__self__, "balancer_id", balancer_id)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if target_set_id is not None:
-            _setter("target_set_id", target_set_id)
+            pulumi.set(__self__, "target_set_id", target_set_id)
 
     @property
     @pulumi.getter
@@ -8692,20 +6503,7 @@ class ManagedInstanceLoadBalancer(dict):
 class ManagedInstanceManagedInstanceAction(dict):
     def __init__(__self__, *,
                  type: str):
-        ManagedInstanceManagedInstanceAction._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            type=type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if type is None:
-            raise TypeError("Missing 'type' argument")
-
-        _setter("type", type)
+        pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter
@@ -8740,34 +6538,11 @@ class ManagedInstanceNetworkInterface(dict):
                  device_index: str,
                  associate_ipv6_address: Optional[bool] = None,
                  associate_public_ip_address: Optional[bool] = None):
-        ManagedInstanceNetworkInterface._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            device_index=device_index,
-            associate_ipv6_address=associate_ipv6_address,
-            associate_public_ip_address=associate_public_ip_address,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             device_index: Optional[str] = None,
-             associate_ipv6_address: Optional[bool] = None,
-             associate_public_ip_address: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if device_index is None and 'deviceIndex' in kwargs:
-            device_index = kwargs['deviceIndex']
-        if device_index is None:
-            raise TypeError("Missing 'device_index' argument")
-        if associate_ipv6_address is None and 'associateIpv6Address' in kwargs:
-            associate_ipv6_address = kwargs['associateIpv6Address']
-        if associate_public_ip_address is None and 'associatePublicIpAddress' in kwargs:
-            associate_public_ip_address = kwargs['associatePublicIpAddress']
-
-        _setter("device_index", device_index)
+        pulumi.set(__self__, "device_index", device_index)
         if associate_ipv6_address is not None:
-            _setter("associate_ipv6_address", associate_ipv6_address)
+            pulumi.set(__self__, "associate_ipv6_address", associate_ipv6_address)
         if associate_public_ip_address is not None:
-            _setter("associate_public_ip_address", associate_public_ip_address)
+            pulumi.set(__self__, "associate_public_ip_address", associate_public_ip_address)
 
     @property
     @pulumi.getter(name="deviceIndex")
@@ -8815,39 +6590,14 @@ class ManagedInstanceResourceTagSpecification(dict):
                  should_tag_enis: Optional[bool] = None,
                  should_tag_snapshots: Optional[bool] = None,
                  should_tag_volumes: Optional[bool] = None):
-        ManagedInstanceResourceTagSpecification._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            should_tag_amis=should_tag_amis,
-            should_tag_enis=should_tag_enis,
-            should_tag_snapshots=should_tag_snapshots,
-            should_tag_volumes=should_tag_volumes,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             should_tag_amis: Optional[bool] = None,
-             should_tag_enis: Optional[bool] = None,
-             should_tag_snapshots: Optional[bool] = None,
-             should_tag_volumes: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if should_tag_amis is None and 'shouldTagAmis' in kwargs:
-            should_tag_amis = kwargs['shouldTagAmis']
-        if should_tag_enis is None and 'shouldTagEnis' in kwargs:
-            should_tag_enis = kwargs['shouldTagEnis']
-        if should_tag_snapshots is None and 'shouldTagSnapshots' in kwargs:
-            should_tag_snapshots = kwargs['shouldTagSnapshots']
-        if should_tag_volumes is None and 'shouldTagVolumes' in kwargs:
-            should_tag_volumes = kwargs['shouldTagVolumes']
-
         if should_tag_amis is not None:
-            _setter("should_tag_amis", should_tag_amis)
+            pulumi.set(__self__, "should_tag_amis", should_tag_amis)
         if should_tag_enis is not None:
-            _setter("should_tag_enis", should_tag_enis)
+            pulumi.set(__self__, "should_tag_enis", should_tag_enis)
         if should_tag_snapshots is not None:
-            _setter("should_tag_snapshots", should_tag_snapshots)
+            pulumi.set(__self__, "should_tag_snapshots", should_tag_snapshots)
         if should_tag_volumes is not None:
-            _setter("should_tag_volumes", should_tag_volumes)
+            pulumi.set(__self__, "should_tag_volumes", should_tag_volumes)
 
     @property
     @pulumi.getter(name="shouldTagAmis")
@@ -8891,22 +6641,7 @@ class ManagedInstanceRevertToSpot(dict):
 
     def __init__(__self__, *,
                  perform_at: str):
-        ManagedInstanceRevertToSpot._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            perform_at=perform_at,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             perform_at: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if perform_at is None and 'performAt' in kwargs:
-            perform_at = kwargs['performAt']
-        if perform_at is None:
-            raise TypeError("Missing 'perform_at' argument")
-
-        _setter("perform_at", perform_at)
+        pulumi.set(__self__, "perform_at", perform_at)
 
     @property
     @pulumi.getter(name="performAt")
@@ -8945,44 +6680,15 @@ class ManagedInstanceScheduledTask(dict):
                  frequency: Optional[str] = None,
                  is_enabled: Optional[bool] = None,
                  start_time: Optional[str] = None):
-        ManagedInstanceScheduledTask._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            task_type=task_type,
-            cron_expression=cron_expression,
-            frequency=frequency,
-            is_enabled=is_enabled,
-            start_time=start_time,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             task_type: Optional[str] = None,
-             cron_expression: Optional[str] = None,
-             frequency: Optional[str] = None,
-             is_enabled: Optional[bool] = None,
-             start_time: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if task_type is None and 'taskType' in kwargs:
-            task_type = kwargs['taskType']
-        if task_type is None:
-            raise TypeError("Missing 'task_type' argument")
-        if cron_expression is None and 'cronExpression' in kwargs:
-            cron_expression = kwargs['cronExpression']
-        if is_enabled is None and 'isEnabled' in kwargs:
-            is_enabled = kwargs['isEnabled']
-        if start_time is None and 'startTime' in kwargs:
-            start_time = kwargs['startTime']
-
-        _setter("task_type", task_type)
+        pulumi.set(__self__, "task_type", task_type)
         if cron_expression is not None:
-            _setter("cron_expression", cron_expression)
+            pulumi.set(__self__, "cron_expression", cron_expression)
         if frequency is not None:
-            _setter("frequency", frequency)
+            pulumi.set(__self__, "frequency", frequency)
         if is_enabled is not None:
-            _setter("is_enabled", is_enabled)
+            pulumi.set(__self__, "is_enabled", is_enabled)
         if start_time is not None:
-            _setter("start_time", start_time)
+            pulumi.set(__self__, "start_time", start_time)
 
     @property
     @pulumi.getter(name="taskType")
@@ -9015,23 +6721,10 @@ class ManagedInstanceTag(dict):
     def __init__(__self__, *,
                  key: Optional[str] = None,
                  value: Optional[str] = None):
-        ManagedInstanceTag._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            key=key,
-            value=value,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             key: Optional[str] = None,
-             value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if key is not None:
-            _setter("key", key)
+            pulumi.set(__self__, "key", key)
         if value is not None:
-            _setter("value", value)
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -9055,28 +6748,11 @@ class MrScalarApplication(dict):
         :param Sequence[str] args: Arguments for EMR to pass to the application.
         :param str version: T he version of the application.
         """
-        MrScalarApplication._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            name=name,
-            args=args,
-            version=version,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             name: Optional[str] = None,
-             args: Optional[Sequence[str]] = None,
-             version: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-
-        _setter("name", name)
+        pulumi.set(__self__, "name", name)
         if args is not None:
-            _setter("args", args)
+            pulumi.set(__self__, "args", args)
         if version is not None:
-            _setter("version", version)
+            pulumi.set(__self__, "version", version)
 
     @property
     @pulumi.getter
@@ -9112,25 +6788,8 @@ class MrScalarBootstrapActionsFile(dict):
         :param str bucket: S3 Bucket name for bootstrap actions.
         :param str key: S3 key for bootstrap actions.
         """
-        MrScalarBootstrapActionsFile._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            bucket=bucket,
-            key=key,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             bucket: Optional[str] = None,
-             key: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if bucket is None:
-            raise TypeError("Missing 'bucket' argument")
-        if key is None:
-            raise TypeError("Missing 'key' argument")
-
-        _setter("bucket", bucket)
-        _setter("key", key)
+        pulumi.set(__self__, "bucket", bucket)
+        pulumi.set(__self__, "key", key)
 
     @property
     @pulumi.getter
@@ -9158,25 +6817,8 @@ class MrScalarConfigurationsFile(dict):
         :param str bucket: S3 Bucket name for bootstrap actions.
         :param str key: S3 key for bootstrap actions.
         """
-        MrScalarConfigurationsFile._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            bucket=bucket,
-            key=key,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             bucket: Optional[str] = None,
-             key: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if bucket is None:
-            raise TypeError("Missing 'bucket' argument")
-        if key is None:
-            raise TypeError("Missing 'key' argument")
-
-        _setter("bucket", bucket)
-        _setter("key", key)
+        pulumi.set(__self__, "bucket", bucket)
+        pulumi.set(__self__, "key", key)
 
     @property
     @pulumi.getter
@@ -9229,39 +6871,12 @@ class MrScalarCoreEbsBlockDevice(dict):
         :param int iops: IOPS for the volume. Required in some volume types, such as io1.
         :param int volumes_per_instance: Amount of volumes per instance in the core group.
         """
-        MrScalarCoreEbsBlockDevice._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            size_in_gb=size_in_gb,
-            volume_type=volume_type,
-            iops=iops,
-            volumes_per_instance=volumes_per_instance,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             size_in_gb: Optional[int] = None,
-             volume_type: Optional[str] = None,
-             iops: Optional[int] = None,
-             volumes_per_instance: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if size_in_gb is None and 'sizeInGb' in kwargs:
-            size_in_gb = kwargs['sizeInGb']
-        if size_in_gb is None:
-            raise TypeError("Missing 'size_in_gb' argument")
-        if volume_type is None and 'volumeType' in kwargs:
-            volume_type = kwargs['volumeType']
-        if volume_type is None:
-            raise TypeError("Missing 'volume_type' argument")
-        if volumes_per_instance is None and 'volumesPerInstance' in kwargs:
-            volumes_per_instance = kwargs['volumesPerInstance']
-
-        _setter("size_in_gb", size_in_gb)
-        _setter("volume_type", volume_type)
+        pulumi.set(__self__, "size_in_gb", size_in_gb)
+        pulumi.set(__self__, "volume_type", volume_type)
         if iops is not None:
-            _setter("iops", iops)
+            pulumi.set(__self__, "iops", iops)
         if volumes_per_instance is not None:
-            _setter("volumes_per_instance", volumes_per_instance)
+            pulumi.set(__self__, "volumes_per_instance", volumes_per_instance)
 
     @property
     @pulumi.getter(name="sizeInGb")
@@ -9364,104 +6979,37 @@ class MrScalarCoreScalingDownPolicy(dict):
         :param str statistic: The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`
         :param str target: The number of instances to set when scale is needed.
         """
-        MrScalarCoreScalingDownPolicy._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            metric_name=metric_name,
-            namespace=namespace,
-            policy_name=policy_name,
-            threshold=threshold,
-            unit=unit,
-            action_type=action_type,
-            adjustment=adjustment,
-            cooldown=cooldown,
-            dimensions=dimensions,
-            evaluation_periods=evaluation_periods,
-            max_target_capacity=max_target_capacity,
-            maximum=maximum,
-            min_target_capacity=min_target_capacity,
-            minimum=minimum,
-            operator=operator,
-            period=period,
-            statistic=statistic,
-            target=target,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             metric_name: Optional[str] = None,
-             namespace: Optional[str] = None,
-             policy_name: Optional[str] = None,
-             threshold: Optional[float] = None,
-             unit: Optional[str] = None,
-             action_type: Optional[str] = None,
-             adjustment: Optional[str] = None,
-             cooldown: Optional[int] = None,
-             dimensions: Optional[Mapping[str, Any]] = None,
-             evaluation_periods: Optional[int] = None,
-             max_target_capacity: Optional[str] = None,
-             maximum: Optional[str] = None,
-             min_target_capacity: Optional[str] = None,
-             minimum: Optional[str] = None,
-             operator: Optional[str] = None,
-             period: Optional[int] = None,
-             statistic: Optional[str] = None,
-             target: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if metric_name is None and 'metricName' in kwargs:
-            metric_name = kwargs['metricName']
-        if metric_name is None:
-            raise TypeError("Missing 'metric_name' argument")
-        if namespace is None:
-            raise TypeError("Missing 'namespace' argument")
-        if policy_name is None and 'policyName' in kwargs:
-            policy_name = kwargs['policyName']
-        if policy_name is None:
-            raise TypeError("Missing 'policy_name' argument")
-        if threshold is None:
-            raise TypeError("Missing 'threshold' argument")
-        if unit is None:
-            raise TypeError("Missing 'unit' argument")
-        if action_type is None and 'actionType' in kwargs:
-            action_type = kwargs['actionType']
-        if evaluation_periods is None and 'evaluationPeriods' in kwargs:
-            evaluation_periods = kwargs['evaluationPeriods']
-        if max_target_capacity is None and 'maxTargetCapacity' in kwargs:
-            max_target_capacity = kwargs['maxTargetCapacity']
-        if min_target_capacity is None and 'minTargetCapacity' in kwargs:
-            min_target_capacity = kwargs['minTargetCapacity']
-
-        _setter("metric_name", metric_name)
-        _setter("namespace", namespace)
-        _setter("policy_name", policy_name)
-        _setter("threshold", threshold)
-        _setter("unit", unit)
+        pulumi.set(__self__, "metric_name", metric_name)
+        pulumi.set(__self__, "namespace", namespace)
+        pulumi.set(__self__, "policy_name", policy_name)
+        pulumi.set(__self__, "threshold", threshold)
+        pulumi.set(__self__, "unit", unit)
         if action_type is not None:
-            _setter("action_type", action_type)
+            pulumi.set(__self__, "action_type", action_type)
         if adjustment is not None:
-            _setter("adjustment", adjustment)
+            pulumi.set(__self__, "adjustment", adjustment)
         if cooldown is not None:
-            _setter("cooldown", cooldown)
+            pulumi.set(__self__, "cooldown", cooldown)
         if dimensions is not None:
-            _setter("dimensions", dimensions)
+            pulumi.set(__self__, "dimensions", dimensions)
         if evaluation_periods is not None:
-            _setter("evaluation_periods", evaluation_periods)
+            pulumi.set(__self__, "evaluation_periods", evaluation_periods)
         if max_target_capacity is not None:
-            _setter("max_target_capacity", max_target_capacity)
+            pulumi.set(__self__, "max_target_capacity", max_target_capacity)
         if maximum is not None:
-            _setter("maximum", maximum)
+            pulumi.set(__self__, "maximum", maximum)
         if min_target_capacity is not None:
-            _setter("min_target_capacity", min_target_capacity)
+            pulumi.set(__self__, "min_target_capacity", min_target_capacity)
         if minimum is not None:
-            _setter("minimum", minimum)
+            pulumi.set(__self__, "minimum", minimum)
         if operator is not None:
-            _setter("operator", operator)
+            pulumi.set(__self__, "operator", operator)
         if period is not None:
-            _setter("period", period)
+            pulumi.set(__self__, "period", period)
         if statistic is not None:
-            _setter("statistic", statistic)
+            pulumi.set(__self__, "statistic", statistic)
         if target is not None:
-            _setter("target", target)
+            pulumi.set(__self__, "target", target)
 
     @property
     @pulumi.getter(name="metricName")
@@ -9676,104 +7224,37 @@ class MrScalarCoreScalingUpPolicy(dict):
         :param str statistic: The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`
         :param str target: The number of instances to set when scale is needed.
         """
-        MrScalarCoreScalingUpPolicy._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            metric_name=metric_name,
-            namespace=namespace,
-            policy_name=policy_name,
-            threshold=threshold,
-            unit=unit,
-            action_type=action_type,
-            adjustment=adjustment,
-            cooldown=cooldown,
-            dimensions=dimensions,
-            evaluation_periods=evaluation_periods,
-            max_target_capacity=max_target_capacity,
-            maximum=maximum,
-            min_target_capacity=min_target_capacity,
-            minimum=minimum,
-            operator=operator,
-            period=period,
-            statistic=statistic,
-            target=target,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             metric_name: Optional[str] = None,
-             namespace: Optional[str] = None,
-             policy_name: Optional[str] = None,
-             threshold: Optional[float] = None,
-             unit: Optional[str] = None,
-             action_type: Optional[str] = None,
-             adjustment: Optional[str] = None,
-             cooldown: Optional[int] = None,
-             dimensions: Optional[Mapping[str, Any]] = None,
-             evaluation_periods: Optional[int] = None,
-             max_target_capacity: Optional[str] = None,
-             maximum: Optional[str] = None,
-             min_target_capacity: Optional[str] = None,
-             minimum: Optional[str] = None,
-             operator: Optional[str] = None,
-             period: Optional[int] = None,
-             statistic: Optional[str] = None,
-             target: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if metric_name is None and 'metricName' in kwargs:
-            metric_name = kwargs['metricName']
-        if metric_name is None:
-            raise TypeError("Missing 'metric_name' argument")
-        if namespace is None:
-            raise TypeError("Missing 'namespace' argument")
-        if policy_name is None and 'policyName' in kwargs:
-            policy_name = kwargs['policyName']
-        if policy_name is None:
-            raise TypeError("Missing 'policy_name' argument")
-        if threshold is None:
-            raise TypeError("Missing 'threshold' argument")
-        if unit is None:
-            raise TypeError("Missing 'unit' argument")
-        if action_type is None and 'actionType' in kwargs:
-            action_type = kwargs['actionType']
-        if evaluation_periods is None and 'evaluationPeriods' in kwargs:
-            evaluation_periods = kwargs['evaluationPeriods']
-        if max_target_capacity is None and 'maxTargetCapacity' in kwargs:
-            max_target_capacity = kwargs['maxTargetCapacity']
-        if min_target_capacity is None and 'minTargetCapacity' in kwargs:
-            min_target_capacity = kwargs['minTargetCapacity']
-
-        _setter("metric_name", metric_name)
-        _setter("namespace", namespace)
-        _setter("policy_name", policy_name)
-        _setter("threshold", threshold)
-        _setter("unit", unit)
+        pulumi.set(__self__, "metric_name", metric_name)
+        pulumi.set(__self__, "namespace", namespace)
+        pulumi.set(__self__, "policy_name", policy_name)
+        pulumi.set(__self__, "threshold", threshold)
+        pulumi.set(__self__, "unit", unit)
         if action_type is not None:
-            _setter("action_type", action_type)
+            pulumi.set(__self__, "action_type", action_type)
         if adjustment is not None:
-            _setter("adjustment", adjustment)
+            pulumi.set(__self__, "adjustment", adjustment)
         if cooldown is not None:
-            _setter("cooldown", cooldown)
+            pulumi.set(__self__, "cooldown", cooldown)
         if dimensions is not None:
-            _setter("dimensions", dimensions)
+            pulumi.set(__self__, "dimensions", dimensions)
         if evaluation_periods is not None:
-            _setter("evaluation_periods", evaluation_periods)
+            pulumi.set(__self__, "evaluation_periods", evaluation_periods)
         if max_target_capacity is not None:
-            _setter("max_target_capacity", max_target_capacity)
+            pulumi.set(__self__, "max_target_capacity", max_target_capacity)
         if maximum is not None:
-            _setter("maximum", maximum)
+            pulumi.set(__self__, "maximum", maximum)
         if min_target_capacity is not None:
-            _setter("min_target_capacity", min_target_capacity)
+            pulumi.set(__self__, "min_target_capacity", min_target_capacity)
         if minimum is not None:
-            _setter("minimum", minimum)
+            pulumi.set(__self__, "minimum", minimum)
         if operator is not None:
-            _setter("operator", operator)
+            pulumi.set(__self__, "operator", operator)
         if period is not None:
-            _setter("period", period)
+            pulumi.set(__self__, "period", period)
         if statistic is not None:
-            _setter("statistic", statistic)
+            pulumi.set(__self__, "statistic", statistic)
         if target is not None:
-            _setter("target", target)
+            pulumi.set(__self__, "target", target)
 
     @property
     @pulumi.getter(name="metricName")
@@ -9948,29 +7429,8 @@ class MrScalarInstanceWeight(dict):
         :param str instance_type: The type of the instance.
         :param int weighted_capacity: The weight given to the associated instance type.
         """
-        MrScalarInstanceWeight._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            instance_type=instance_type,
-            weighted_capacity=weighted_capacity,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             instance_type: Optional[str] = None,
-             weighted_capacity: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if instance_type is None and 'instanceType' in kwargs:
-            instance_type = kwargs['instanceType']
-        if instance_type is None:
-            raise TypeError("Missing 'instance_type' argument")
-        if weighted_capacity is None and 'weightedCapacity' in kwargs:
-            weighted_capacity = kwargs['weightedCapacity']
-        if weighted_capacity is None:
-            raise TypeError("Missing 'weighted_capacity' argument")
-
-        _setter("instance_type", instance_type)
-        _setter("weighted_capacity", weighted_capacity)
+        pulumi.set(__self__, "instance_type", instance_type)
+        pulumi.set(__self__, "weighted_capacity", weighted_capacity)
 
     @property
     @pulumi.getter(name="instanceType")
@@ -10023,39 +7483,12 @@ class MrScalarMasterEbsBlockDevice(dict):
         :param int iops: IOPS for the volume. Required in some volume types, such as io1.
         :param int volumes_per_instance: Amount of volumes per instance in the core group.
         """
-        MrScalarMasterEbsBlockDevice._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            size_in_gb=size_in_gb,
-            volume_type=volume_type,
-            iops=iops,
-            volumes_per_instance=volumes_per_instance,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             size_in_gb: Optional[int] = None,
-             volume_type: Optional[str] = None,
-             iops: Optional[int] = None,
-             volumes_per_instance: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if size_in_gb is None and 'sizeInGb' in kwargs:
-            size_in_gb = kwargs['sizeInGb']
-        if size_in_gb is None:
-            raise TypeError("Missing 'size_in_gb' argument")
-        if volume_type is None and 'volumeType' in kwargs:
-            volume_type = kwargs['volumeType']
-        if volume_type is None:
-            raise TypeError("Missing 'volume_type' argument")
-        if volumes_per_instance is None and 'volumesPerInstance' in kwargs:
-            volumes_per_instance = kwargs['volumesPerInstance']
-
-        _setter("size_in_gb", size_in_gb)
-        _setter("volume_type", volume_type)
+        pulumi.set(__self__, "size_in_gb", size_in_gb)
+        pulumi.set(__self__, "volume_type", volume_type)
         if iops is not None:
-            _setter("iops", iops)
+            pulumi.set(__self__, "iops", iops)
         if volumes_per_instance is not None:
-            _setter("volumes_per_instance", volumes_per_instance)
+            pulumi.set(__self__, "volumes_per_instance", volumes_per_instance)
 
     @property
     @pulumi.getter(name="sizeInGb")
@@ -10116,27 +7549,8 @@ class MrScalarProvisioningTimeout(dict):
         :param int timeout: The amount of time (minutes) after which the cluster is automatically terminated if it's still in provisioning status. Minimum: '15'.
         :param str timeout_action: The action to take if the timeout is exceeded. Valid values: `terminate`, `terminateAndRetry`.
         """
-        MrScalarProvisioningTimeout._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            timeout=timeout,
-            timeout_action=timeout_action,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             timeout: Optional[int] = None,
-             timeout_action: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if timeout is None:
-            raise TypeError("Missing 'timeout' argument")
-        if timeout_action is None and 'timeoutAction' in kwargs:
-            timeout_action = kwargs['timeoutAction']
-        if timeout_action is None:
-            raise TypeError("Missing 'timeout_action' argument")
-
-        _setter("timeout", timeout)
-        _setter("timeout_action", timeout_action)
+        pulumi.set(__self__, "timeout", timeout)
+        pulumi.set(__self__, "timeout_action", timeout_action)
 
     @property
     @pulumi.getter
@@ -10201,58 +7615,17 @@ class MrScalarScheduledTask(dict):
         :param str max_capacity: New max capacity for the elastigroup.
         :param str min_capacity: New min capacity for the elastigroup.
         """
-        MrScalarScheduledTask._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cron=cron,
-            instance_group_type=instance_group_type,
-            task_type=task_type,
-            desired_capacity=desired_capacity,
-            is_enabled=is_enabled,
-            max_capacity=max_capacity,
-            min_capacity=min_capacity,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cron: Optional[str] = None,
-             instance_group_type: Optional[str] = None,
-             task_type: Optional[str] = None,
-             desired_capacity: Optional[str] = None,
-             is_enabled: Optional[bool] = None,
-             max_capacity: Optional[str] = None,
-             min_capacity: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cron is None:
-            raise TypeError("Missing 'cron' argument")
-        if instance_group_type is None and 'instanceGroupType' in kwargs:
-            instance_group_type = kwargs['instanceGroupType']
-        if instance_group_type is None:
-            raise TypeError("Missing 'instance_group_type' argument")
-        if task_type is None and 'taskType' in kwargs:
-            task_type = kwargs['taskType']
-        if task_type is None:
-            raise TypeError("Missing 'task_type' argument")
-        if desired_capacity is None and 'desiredCapacity' in kwargs:
-            desired_capacity = kwargs['desiredCapacity']
-        if is_enabled is None and 'isEnabled' in kwargs:
-            is_enabled = kwargs['isEnabled']
-        if max_capacity is None and 'maxCapacity' in kwargs:
-            max_capacity = kwargs['maxCapacity']
-        if min_capacity is None and 'minCapacity' in kwargs:
-            min_capacity = kwargs['minCapacity']
-
-        _setter("cron", cron)
-        _setter("instance_group_type", instance_group_type)
-        _setter("task_type", task_type)
+        pulumi.set(__self__, "cron", cron)
+        pulumi.set(__self__, "instance_group_type", instance_group_type)
+        pulumi.set(__self__, "task_type", task_type)
         if desired_capacity is not None:
-            _setter("desired_capacity", desired_capacity)
+            pulumi.set(__self__, "desired_capacity", desired_capacity)
         if is_enabled is not None:
-            _setter("is_enabled", is_enabled)
+            pulumi.set(__self__, "is_enabled", is_enabled)
         if max_capacity is not None:
-            _setter("max_capacity", max_capacity)
+            pulumi.set(__self__, "max_capacity", max_capacity)
         if min_capacity is not None:
-            _setter("min_capacity", min_capacity)
+            pulumi.set(__self__, "min_capacity", min_capacity)
 
     @property
     @pulumi.getter
@@ -10320,25 +7693,8 @@ class MrScalarStepsFile(dict):
         :param str bucket: S3 Bucket name for bootstrap actions.
         :param str key: S3 key for bootstrap actions.
         """
-        MrScalarStepsFile._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            bucket=bucket,
-            key=key,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             bucket: Optional[str] = None,
-             key: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if bucket is None:
-            raise TypeError("Missing 'bucket' argument")
-        if key is None:
-            raise TypeError("Missing 'key' argument")
-
-        _setter("bucket", bucket)
-        _setter("key", key)
+        pulumi.set(__self__, "bucket", bucket)
+        pulumi.set(__self__, "key", key)
 
     @property
     @pulumi.getter
@@ -10366,25 +7722,8 @@ class MrScalarTag(dict):
         :param str key: S3 key for bootstrap actions.
         :param str value: Tag value.
         """
-        MrScalarTag._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            key=key,
-            value=value,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             key: Optional[str] = None,
-             value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if key is None:
-            raise TypeError("Missing 'key' argument")
-        if value is None:
-            raise TypeError("Missing 'value' argument")
-
-        _setter("key", key)
-        _setter("value", value)
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -10437,39 +7776,12 @@ class MrScalarTaskEbsBlockDevice(dict):
         :param int iops: IOPS for the volume. Required in some volume types, such as io1.
         :param int volumes_per_instance: Amount of volumes per instance in the core group.
         """
-        MrScalarTaskEbsBlockDevice._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            size_in_gb=size_in_gb,
-            volume_type=volume_type,
-            iops=iops,
-            volumes_per_instance=volumes_per_instance,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             size_in_gb: Optional[int] = None,
-             volume_type: Optional[str] = None,
-             iops: Optional[int] = None,
-             volumes_per_instance: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if size_in_gb is None and 'sizeInGb' in kwargs:
-            size_in_gb = kwargs['sizeInGb']
-        if size_in_gb is None:
-            raise TypeError("Missing 'size_in_gb' argument")
-        if volume_type is None and 'volumeType' in kwargs:
-            volume_type = kwargs['volumeType']
-        if volume_type is None:
-            raise TypeError("Missing 'volume_type' argument")
-        if volumes_per_instance is None and 'volumesPerInstance' in kwargs:
-            volumes_per_instance = kwargs['volumesPerInstance']
-
-        _setter("size_in_gb", size_in_gb)
-        _setter("volume_type", volume_type)
+        pulumi.set(__self__, "size_in_gb", size_in_gb)
+        pulumi.set(__self__, "volume_type", volume_type)
         if iops is not None:
-            _setter("iops", iops)
+            pulumi.set(__self__, "iops", iops)
         if volumes_per_instance is not None:
-            _setter("volumes_per_instance", volumes_per_instance)
+            pulumi.set(__self__, "volumes_per_instance", volumes_per_instance)
 
     @property
     @pulumi.getter(name="sizeInGb")
@@ -10572,104 +7884,37 @@ class MrScalarTaskScalingDownPolicy(dict):
         :param str statistic: The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`
         :param str target: The number of instances to set when scale is needed.
         """
-        MrScalarTaskScalingDownPolicy._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            metric_name=metric_name,
-            namespace=namespace,
-            policy_name=policy_name,
-            threshold=threshold,
-            unit=unit,
-            action_type=action_type,
-            adjustment=adjustment,
-            cooldown=cooldown,
-            dimensions=dimensions,
-            evaluation_periods=evaluation_periods,
-            max_target_capacity=max_target_capacity,
-            maximum=maximum,
-            min_target_capacity=min_target_capacity,
-            minimum=minimum,
-            operator=operator,
-            period=period,
-            statistic=statistic,
-            target=target,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             metric_name: Optional[str] = None,
-             namespace: Optional[str] = None,
-             policy_name: Optional[str] = None,
-             threshold: Optional[float] = None,
-             unit: Optional[str] = None,
-             action_type: Optional[str] = None,
-             adjustment: Optional[str] = None,
-             cooldown: Optional[int] = None,
-             dimensions: Optional[Mapping[str, Any]] = None,
-             evaluation_periods: Optional[int] = None,
-             max_target_capacity: Optional[str] = None,
-             maximum: Optional[str] = None,
-             min_target_capacity: Optional[str] = None,
-             minimum: Optional[str] = None,
-             operator: Optional[str] = None,
-             period: Optional[int] = None,
-             statistic: Optional[str] = None,
-             target: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if metric_name is None and 'metricName' in kwargs:
-            metric_name = kwargs['metricName']
-        if metric_name is None:
-            raise TypeError("Missing 'metric_name' argument")
-        if namespace is None:
-            raise TypeError("Missing 'namespace' argument")
-        if policy_name is None and 'policyName' in kwargs:
-            policy_name = kwargs['policyName']
-        if policy_name is None:
-            raise TypeError("Missing 'policy_name' argument")
-        if threshold is None:
-            raise TypeError("Missing 'threshold' argument")
-        if unit is None:
-            raise TypeError("Missing 'unit' argument")
-        if action_type is None and 'actionType' in kwargs:
-            action_type = kwargs['actionType']
-        if evaluation_periods is None and 'evaluationPeriods' in kwargs:
-            evaluation_periods = kwargs['evaluationPeriods']
-        if max_target_capacity is None and 'maxTargetCapacity' in kwargs:
-            max_target_capacity = kwargs['maxTargetCapacity']
-        if min_target_capacity is None and 'minTargetCapacity' in kwargs:
-            min_target_capacity = kwargs['minTargetCapacity']
-
-        _setter("metric_name", metric_name)
-        _setter("namespace", namespace)
-        _setter("policy_name", policy_name)
-        _setter("threshold", threshold)
-        _setter("unit", unit)
+        pulumi.set(__self__, "metric_name", metric_name)
+        pulumi.set(__self__, "namespace", namespace)
+        pulumi.set(__self__, "policy_name", policy_name)
+        pulumi.set(__self__, "threshold", threshold)
+        pulumi.set(__self__, "unit", unit)
         if action_type is not None:
-            _setter("action_type", action_type)
+            pulumi.set(__self__, "action_type", action_type)
         if adjustment is not None:
-            _setter("adjustment", adjustment)
+            pulumi.set(__self__, "adjustment", adjustment)
         if cooldown is not None:
-            _setter("cooldown", cooldown)
+            pulumi.set(__self__, "cooldown", cooldown)
         if dimensions is not None:
-            _setter("dimensions", dimensions)
+            pulumi.set(__self__, "dimensions", dimensions)
         if evaluation_periods is not None:
-            _setter("evaluation_periods", evaluation_periods)
+            pulumi.set(__self__, "evaluation_periods", evaluation_periods)
         if max_target_capacity is not None:
-            _setter("max_target_capacity", max_target_capacity)
+            pulumi.set(__self__, "max_target_capacity", max_target_capacity)
         if maximum is not None:
-            _setter("maximum", maximum)
+            pulumi.set(__self__, "maximum", maximum)
         if min_target_capacity is not None:
-            _setter("min_target_capacity", min_target_capacity)
+            pulumi.set(__self__, "min_target_capacity", min_target_capacity)
         if minimum is not None:
-            _setter("minimum", minimum)
+            pulumi.set(__self__, "minimum", minimum)
         if operator is not None:
-            _setter("operator", operator)
+            pulumi.set(__self__, "operator", operator)
         if period is not None:
-            _setter("period", period)
+            pulumi.set(__self__, "period", period)
         if statistic is not None:
-            _setter("statistic", statistic)
+            pulumi.set(__self__, "statistic", statistic)
         if target is not None:
-            _setter("target", target)
+            pulumi.set(__self__, "target", target)
 
     @property
     @pulumi.getter(name="metricName")
@@ -10884,104 +8129,37 @@ class MrScalarTaskScalingUpPolicy(dict):
         :param str statistic: The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`
         :param str target: The number of instances to set when scale is needed.
         """
-        MrScalarTaskScalingUpPolicy._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            metric_name=metric_name,
-            namespace=namespace,
-            policy_name=policy_name,
-            threshold=threshold,
-            unit=unit,
-            action_type=action_type,
-            adjustment=adjustment,
-            cooldown=cooldown,
-            dimensions=dimensions,
-            evaluation_periods=evaluation_periods,
-            max_target_capacity=max_target_capacity,
-            maximum=maximum,
-            min_target_capacity=min_target_capacity,
-            minimum=minimum,
-            operator=operator,
-            period=period,
-            statistic=statistic,
-            target=target,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             metric_name: Optional[str] = None,
-             namespace: Optional[str] = None,
-             policy_name: Optional[str] = None,
-             threshold: Optional[float] = None,
-             unit: Optional[str] = None,
-             action_type: Optional[str] = None,
-             adjustment: Optional[str] = None,
-             cooldown: Optional[int] = None,
-             dimensions: Optional[Mapping[str, Any]] = None,
-             evaluation_periods: Optional[int] = None,
-             max_target_capacity: Optional[str] = None,
-             maximum: Optional[str] = None,
-             min_target_capacity: Optional[str] = None,
-             minimum: Optional[str] = None,
-             operator: Optional[str] = None,
-             period: Optional[int] = None,
-             statistic: Optional[str] = None,
-             target: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if metric_name is None and 'metricName' in kwargs:
-            metric_name = kwargs['metricName']
-        if metric_name is None:
-            raise TypeError("Missing 'metric_name' argument")
-        if namespace is None:
-            raise TypeError("Missing 'namespace' argument")
-        if policy_name is None and 'policyName' in kwargs:
-            policy_name = kwargs['policyName']
-        if policy_name is None:
-            raise TypeError("Missing 'policy_name' argument")
-        if threshold is None:
-            raise TypeError("Missing 'threshold' argument")
-        if unit is None:
-            raise TypeError("Missing 'unit' argument")
-        if action_type is None and 'actionType' in kwargs:
-            action_type = kwargs['actionType']
-        if evaluation_periods is None and 'evaluationPeriods' in kwargs:
-            evaluation_periods = kwargs['evaluationPeriods']
-        if max_target_capacity is None and 'maxTargetCapacity' in kwargs:
-            max_target_capacity = kwargs['maxTargetCapacity']
-        if min_target_capacity is None and 'minTargetCapacity' in kwargs:
-            min_target_capacity = kwargs['minTargetCapacity']
-
-        _setter("metric_name", metric_name)
-        _setter("namespace", namespace)
-        _setter("policy_name", policy_name)
-        _setter("threshold", threshold)
-        _setter("unit", unit)
+        pulumi.set(__self__, "metric_name", metric_name)
+        pulumi.set(__self__, "namespace", namespace)
+        pulumi.set(__self__, "policy_name", policy_name)
+        pulumi.set(__self__, "threshold", threshold)
+        pulumi.set(__self__, "unit", unit)
         if action_type is not None:
-            _setter("action_type", action_type)
+            pulumi.set(__self__, "action_type", action_type)
         if adjustment is not None:
-            _setter("adjustment", adjustment)
+            pulumi.set(__self__, "adjustment", adjustment)
         if cooldown is not None:
-            _setter("cooldown", cooldown)
+            pulumi.set(__self__, "cooldown", cooldown)
         if dimensions is not None:
-            _setter("dimensions", dimensions)
+            pulumi.set(__self__, "dimensions", dimensions)
         if evaluation_periods is not None:
-            _setter("evaluation_periods", evaluation_periods)
+            pulumi.set(__self__, "evaluation_periods", evaluation_periods)
         if max_target_capacity is not None:
-            _setter("max_target_capacity", max_target_capacity)
+            pulumi.set(__self__, "max_target_capacity", max_target_capacity)
         if maximum is not None:
-            _setter("maximum", maximum)
+            pulumi.set(__self__, "maximum", maximum)
         if min_target_capacity is not None:
-            _setter("min_target_capacity", min_target_capacity)
+            pulumi.set(__self__, "min_target_capacity", min_target_capacity)
         if minimum is not None:
-            _setter("minimum", minimum)
+            pulumi.set(__self__, "minimum", minimum)
         if operator is not None:
-            _setter("operator", operator)
+            pulumi.set(__self__, "operator", operator)
         if period is not None:
-            _setter("period", period)
+            pulumi.set(__self__, "period", period)
         if statistic is not None:
-            _setter("statistic", statistic)
+            pulumi.set(__self__, "statistic", statistic)
         if target is not None:
-            _setter("target", target)
+            pulumi.set(__self__, "target", target)
 
     @property
     @pulumi.getter(name="metricName")
@@ -11132,20 +8310,7 @@ class MrScalarTaskScalingUpPolicy(dict):
 class MrScalarTerminationPolicy(dict):
     def __init__(__self__, *,
                  statements: Sequence['outputs.MrScalarTerminationPolicyStatement']):
-        MrScalarTerminationPolicy._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            statements=statements,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             statements: Optional[Sequence['outputs.MrScalarTerminationPolicyStatement']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if statements is None:
-            raise TypeError("Missing 'statements' argument")
-
-        _setter("statements", statements)
+        pulumi.set(__self__, "statements", statements)
 
     @property
     @pulumi.getter
@@ -11193,54 +8358,19 @@ class MrScalarTerminationPolicyStatement(dict):
         :param str statistic: The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`
         :param str unit: The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`
         """
-        MrScalarTerminationPolicyStatement._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            metric_name=metric_name,
-            namespace=namespace,
-            threshold=threshold,
-            evaluation_periods=evaluation_periods,
-            operator=operator,
-            period=period,
-            statistic=statistic,
-            unit=unit,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             metric_name: Optional[str] = None,
-             namespace: Optional[str] = None,
-             threshold: Optional[float] = None,
-             evaluation_periods: Optional[int] = None,
-             operator: Optional[str] = None,
-             period: Optional[int] = None,
-             statistic: Optional[str] = None,
-             unit: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if metric_name is None and 'metricName' in kwargs:
-            metric_name = kwargs['metricName']
-        if metric_name is None:
-            raise TypeError("Missing 'metric_name' argument")
-        if namespace is None:
-            raise TypeError("Missing 'namespace' argument")
-        if threshold is None:
-            raise TypeError("Missing 'threshold' argument")
-        if evaluation_periods is None and 'evaluationPeriods' in kwargs:
-            evaluation_periods = kwargs['evaluationPeriods']
-
-        _setter("metric_name", metric_name)
-        _setter("namespace", namespace)
-        _setter("threshold", threshold)
+        pulumi.set(__self__, "metric_name", metric_name)
+        pulumi.set(__self__, "namespace", namespace)
+        pulumi.set(__self__, "threshold", threshold)
         if evaluation_periods is not None:
-            _setter("evaluation_periods", evaluation_periods)
+            pulumi.set(__self__, "evaluation_periods", evaluation_periods)
         if operator is not None:
-            _setter("operator", operator)
+            pulumi.set(__self__, "operator", operator)
         if period is not None:
-            _setter("period", period)
+            pulumi.set(__self__, "period", period)
         if statistic is not None:
-            _setter("statistic", statistic)
+            pulumi.set(__self__, "statistic", statistic)
         if unit is not None:
-            _setter("unit", unit)
+            pulumi.set(__self__, "unit", unit)
 
     @property
     @pulumi.getter(name="metricName")
@@ -11352,69 +8482,24 @@ class OceanAutoscaler(dict):
                  enable_automatic_and_manual_headroom: Optional[bool] = None,
                  extended_resource_definitions: Optional[Sequence[str]] = None,
                  resource_limits: Optional['outputs.OceanAutoscalerResourceLimits'] = None):
-        OceanAutoscaler._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            auto_headroom_percentage=auto_headroom_percentage,
-            autoscale_cooldown=autoscale_cooldown,
-            autoscale_down=autoscale_down,
-            autoscale_headroom=autoscale_headroom,
-            autoscale_is_auto_config=autoscale_is_auto_config,
-            autoscale_is_enabled=autoscale_is_enabled,
-            enable_automatic_and_manual_headroom=enable_automatic_and_manual_headroom,
-            extended_resource_definitions=extended_resource_definitions,
-            resource_limits=resource_limits,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             auto_headroom_percentage: Optional[int] = None,
-             autoscale_cooldown: Optional[int] = None,
-             autoscale_down: Optional['outputs.OceanAutoscalerAutoscaleDown'] = None,
-             autoscale_headroom: Optional['outputs.OceanAutoscalerAutoscaleHeadroom'] = None,
-             autoscale_is_auto_config: Optional[bool] = None,
-             autoscale_is_enabled: Optional[bool] = None,
-             enable_automatic_and_manual_headroom: Optional[bool] = None,
-             extended_resource_definitions: Optional[Sequence[str]] = None,
-             resource_limits: Optional['outputs.OceanAutoscalerResourceLimits'] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if auto_headroom_percentage is None and 'autoHeadroomPercentage' in kwargs:
-            auto_headroom_percentage = kwargs['autoHeadroomPercentage']
-        if autoscale_cooldown is None and 'autoscaleCooldown' in kwargs:
-            autoscale_cooldown = kwargs['autoscaleCooldown']
-        if autoscale_down is None and 'autoscaleDown' in kwargs:
-            autoscale_down = kwargs['autoscaleDown']
-        if autoscale_headroom is None and 'autoscaleHeadroom' in kwargs:
-            autoscale_headroom = kwargs['autoscaleHeadroom']
-        if autoscale_is_auto_config is None and 'autoscaleIsAutoConfig' in kwargs:
-            autoscale_is_auto_config = kwargs['autoscaleIsAutoConfig']
-        if autoscale_is_enabled is None and 'autoscaleIsEnabled' in kwargs:
-            autoscale_is_enabled = kwargs['autoscaleIsEnabled']
-        if enable_automatic_and_manual_headroom is None and 'enableAutomaticAndManualHeadroom' in kwargs:
-            enable_automatic_and_manual_headroom = kwargs['enableAutomaticAndManualHeadroom']
-        if extended_resource_definitions is None and 'extendedResourceDefinitions' in kwargs:
-            extended_resource_definitions = kwargs['extendedResourceDefinitions']
-        if resource_limits is None and 'resourceLimits' in kwargs:
-            resource_limits = kwargs['resourceLimits']
-
         if auto_headroom_percentage is not None:
-            _setter("auto_headroom_percentage", auto_headroom_percentage)
+            pulumi.set(__self__, "auto_headroom_percentage", auto_headroom_percentage)
         if autoscale_cooldown is not None:
-            _setter("autoscale_cooldown", autoscale_cooldown)
+            pulumi.set(__self__, "autoscale_cooldown", autoscale_cooldown)
         if autoscale_down is not None:
-            _setter("autoscale_down", autoscale_down)
+            pulumi.set(__self__, "autoscale_down", autoscale_down)
         if autoscale_headroom is not None:
-            _setter("autoscale_headroom", autoscale_headroom)
+            pulumi.set(__self__, "autoscale_headroom", autoscale_headroom)
         if autoscale_is_auto_config is not None:
-            _setter("autoscale_is_auto_config", autoscale_is_auto_config)
+            pulumi.set(__self__, "autoscale_is_auto_config", autoscale_is_auto_config)
         if autoscale_is_enabled is not None:
-            _setter("autoscale_is_enabled", autoscale_is_enabled)
+            pulumi.set(__self__, "autoscale_is_enabled", autoscale_is_enabled)
         if enable_automatic_and_manual_headroom is not None:
-            _setter("enable_automatic_and_manual_headroom", enable_automatic_and_manual_headroom)
+            pulumi.set(__self__, "enable_automatic_and_manual_headroom", enable_automatic_and_manual_headroom)
         if extended_resource_definitions is not None:
-            _setter("extended_resource_definitions", extended_resource_definitions)
+            pulumi.set(__self__, "extended_resource_definitions", extended_resource_definitions)
         if resource_limits is not None:
-            _setter("resource_limits", resource_limits)
+            pulumi.set(__self__, "resource_limits", resource_limits)
 
     @property
     @pulumi.getter(name="autoHeadroomPercentage")
@@ -11486,27 +8571,10 @@ class OceanAutoscalerAutoscaleDown(dict):
     def __init__(__self__, *,
                  evaluation_periods: Optional[int] = None,
                  max_scale_down_percentage: Optional[float] = None):
-        OceanAutoscalerAutoscaleDown._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            evaluation_periods=evaluation_periods,
-            max_scale_down_percentage=max_scale_down_percentage,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             evaluation_periods: Optional[int] = None,
-             max_scale_down_percentage: Optional[float] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if evaluation_periods is None and 'evaluationPeriods' in kwargs:
-            evaluation_periods = kwargs['evaluationPeriods']
-        if max_scale_down_percentage is None and 'maxScaleDownPercentage' in kwargs:
-            max_scale_down_percentage = kwargs['maxScaleDownPercentage']
-
         if evaluation_periods is not None:
-            _setter("evaluation_periods", evaluation_periods)
+            pulumi.set(__self__, "evaluation_periods", evaluation_periods)
         if max_scale_down_percentage is not None:
-            _setter("max_scale_down_percentage", max_scale_down_percentage)
+            pulumi.set(__self__, "max_scale_down_percentage", max_scale_down_percentage)
 
     @property
     @pulumi.getter(name="evaluationPeriods")
@@ -11549,39 +8617,14 @@ class OceanAutoscalerAutoscaleHeadroom(dict):
                  gpu_per_unit: Optional[int] = None,
                  memory_per_unit: Optional[int] = None,
                  num_of_units: Optional[int] = None):
-        OceanAutoscalerAutoscaleHeadroom._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cpu_per_unit=cpu_per_unit,
-            gpu_per_unit=gpu_per_unit,
-            memory_per_unit=memory_per_unit,
-            num_of_units=num_of_units,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cpu_per_unit: Optional[int] = None,
-             gpu_per_unit: Optional[int] = None,
-             memory_per_unit: Optional[int] = None,
-             num_of_units: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cpu_per_unit is None and 'cpuPerUnit' in kwargs:
-            cpu_per_unit = kwargs['cpuPerUnit']
-        if gpu_per_unit is None and 'gpuPerUnit' in kwargs:
-            gpu_per_unit = kwargs['gpuPerUnit']
-        if memory_per_unit is None and 'memoryPerUnit' in kwargs:
-            memory_per_unit = kwargs['memoryPerUnit']
-        if num_of_units is None and 'numOfUnits' in kwargs:
-            num_of_units = kwargs['numOfUnits']
-
         if cpu_per_unit is not None:
-            _setter("cpu_per_unit", cpu_per_unit)
+            pulumi.set(__self__, "cpu_per_unit", cpu_per_unit)
         if gpu_per_unit is not None:
-            _setter("gpu_per_unit", gpu_per_unit)
+            pulumi.set(__self__, "gpu_per_unit", gpu_per_unit)
         if memory_per_unit is not None:
-            _setter("memory_per_unit", memory_per_unit)
+            pulumi.set(__self__, "memory_per_unit", memory_per_unit)
         if num_of_units is not None:
-            _setter("num_of_units", num_of_units)
+            pulumi.set(__self__, "num_of_units", num_of_units)
 
     @property
     @pulumi.getter(name="cpuPerUnit")
@@ -11632,27 +8675,10 @@ class OceanAutoscalerResourceLimits(dict):
         :param int max_memory_gib: Maximum amount of Memory (GiB).
         :param int max_vcpu: Maximum number of vcpus available.
         """
-        OceanAutoscalerResourceLimits._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            max_memory_gib=max_memory_gib,
-            max_vcpu=max_vcpu,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             max_memory_gib: Optional[int] = None,
-             max_vcpu: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if max_memory_gib is None and 'maxMemoryGib' in kwargs:
-            max_memory_gib = kwargs['maxMemoryGib']
-        if max_vcpu is None and 'maxVcpu' in kwargs:
-            max_vcpu = kwargs['maxVcpu']
-
         if max_memory_gib is not None:
-            _setter("max_memory_gib", max_memory_gib)
+            pulumi.set(__self__, "max_memory_gib", max_memory_gib)
         if max_vcpu is not None:
-            _setter("max_vcpu", max_vcpu)
+            pulumi.set(__self__, "max_vcpu", max_vcpu)
 
     @property
     @pulumi.getter(name="maxMemoryGib")
@@ -11697,25 +8723,10 @@ class OceanBlockDeviceMapping(dict):
         :param str device_name: String. Set device name. (Example: `/dev/xvda`).
         :param 'OceanBlockDeviceMappingEbsArgs' ebs: Object. Set Elastic Block Store properties .
         """
-        OceanBlockDeviceMapping._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            device_name=device_name,
-            ebs=ebs,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             device_name: Optional[str] = None,
-             ebs: Optional['outputs.OceanBlockDeviceMappingEbs'] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if device_name is None and 'deviceName' in kwargs:
-            device_name = kwargs['deviceName']
-
         if device_name is not None:
-            _setter("device_name", device_name)
+            pulumi.set(__self__, "device_name", device_name)
         if ebs is not None:
-            _setter("ebs", ebs)
+            pulumi.set(__self__, "ebs", ebs)
 
     @property
     @pulumi.getter(name="deviceName")
@@ -11788,69 +8799,26 @@ class OceanBlockDeviceMappingEbs(dict):
         :param int volume_size: Int. The size, in GB of the volume.
         :param str volume_type: String. The type of the volume. (Example: `gp2`).
         """
-        OceanBlockDeviceMappingEbs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            delete_on_termination=delete_on_termination,
-            dynamic_iops=dynamic_iops,
-            dynamic_volume_size=dynamic_volume_size,
-            encrypted=encrypted,
-            iops=iops,
-            kms_key_id=kms_key_id,
-            snapshot_id=snapshot_id,
-            throughput=throughput,
-            volume_size=volume_size,
-            volume_type=volume_type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             delete_on_termination: Optional[bool] = None,
-             dynamic_iops: Optional['outputs.OceanBlockDeviceMappingEbsDynamicIops'] = None,
-             dynamic_volume_size: Optional['outputs.OceanBlockDeviceMappingEbsDynamicVolumeSize'] = None,
-             encrypted: Optional[bool] = None,
-             iops: Optional[int] = None,
-             kms_key_id: Optional[str] = None,
-             snapshot_id: Optional[str] = None,
-             throughput: Optional[int] = None,
-             volume_size: Optional[int] = None,
-             volume_type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if delete_on_termination is None and 'deleteOnTermination' in kwargs:
-            delete_on_termination = kwargs['deleteOnTermination']
-        if dynamic_iops is None and 'dynamicIops' in kwargs:
-            dynamic_iops = kwargs['dynamicIops']
-        if dynamic_volume_size is None and 'dynamicVolumeSize' in kwargs:
-            dynamic_volume_size = kwargs['dynamicVolumeSize']
-        if kms_key_id is None and 'kmsKeyId' in kwargs:
-            kms_key_id = kwargs['kmsKeyId']
-        if snapshot_id is None and 'snapshotId' in kwargs:
-            snapshot_id = kwargs['snapshotId']
-        if volume_size is None and 'volumeSize' in kwargs:
-            volume_size = kwargs['volumeSize']
-        if volume_type is None and 'volumeType' in kwargs:
-            volume_type = kwargs['volumeType']
-
         if delete_on_termination is not None:
-            _setter("delete_on_termination", delete_on_termination)
+            pulumi.set(__self__, "delete_on_termination", delete_on_termination)
         if dynamic_iops is not None:
-            _setter("dynamic_iops", dynamic_iops)
+            pulumi.set(__self__, "dynamic_iops", dynamic_iops)
         if dynamic_volume_size is not None:
-            _setter("dynamic_volume_size", dynamic_volume_size)
+            pulumi.set(__self__, "dynamic_volume_size", dynamic_volume_size)
         if encrypted is not None:
-            _setter("encrypted", encrypted)
+            pulumi.set(__self__, "encrypted", encrypted)
         if iops is not None:
-            _setter("iops", iops)
+            pulumi.set(__self__, "iops", iops)
         if kms_key_id is not None:
-            _setter("kms_key_id", kms_key_id)
+            pulumi.set(__self__, "kms_key_id", kms_key_id)
         if snapshot_id is not None:
-            _setter("snapshot_id", snapshot_id)
+            pulumi.set(__self__, "snapshot_id", snapshot_id)
         if throughput is not None:
-            _setter("throughput", throughput)
+            pulumi.set(__self__, "throughput", throughput)
         if volume_size is not None:
-            _setter("volume_size", volume_size)
+            pulumi.set(__self__, "volume_size", volume_size)
         if volume_type is not None:
-            _setter("volume_type", volume_type)
+            pulumi.set(__self__, "volume_type", volume_type)
 
     @property
     @pulumi.getter(name="deleteOnTermination")
@@ -11962,34 +8930,9 @@ class OceanBlockDeviceMappingEbsDynamicIops(dict):
         :param int base_size: Initial size for IOPS.
         :param int size_per_resource_unit: Additional size per resource unit (in IOPS). (Example: `baseSize=50`, `sizePerResourceUnit=20`, and an instance with 2 CPU is launched; its IOPS size will be: 90).
         """
-        OceanBlockDeviceMappingEbsDynamicIops._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            base_size=base_size,
-            resource=resource,
-            size_per_resource_unit=size_per_resource_unit,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             base_size: Optional[int] = None,
-             resource: Optional[str] = None,
-             size_per_resource_unit: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if base_size is None and 'baseSize' in kwargs:
-            base_size = kwargs['baseSize']
-        if base_size is None:
-            raise TypeError("Missing 'base_size' argument")
-        if resource is None:
-            raise TypeError("Missing 'resource' argument")
-        if size_per_resource_unit is None and 'sizePerResourceUnit' in kwargs:
-            size_per_resource_unit = kwargs['sizePerResourceUnit']
-        if size_per_resource_unit is None:
-            raise TypeError("Missing 'size_per_resource_unit' argument")
-
-        _setter("base_size", base_size)
-        _setter("resource", resource)
-        _setter("size_per_resource_unit", size_per_resource_unit)
+        pulumi.set(__self__, "base_size", base_size)
+        pulumi.set(__self__, "resource", resource)
+        pulumi.set(__self__, "size_per_resource_unit", size_per_resource_unit)
 
     @property
     @pulumi.getter(name="baseSize")
@@ -12042,34 +8985,9 @@ class OceanBlockDeviceMappingEbsDynamicVolumeSize(dict):
         :param int base_size: Initial size for IOPS.
         :param int size_per_resource_unit: Additional size per resource unit (in IOPS). (Example: `baseSize=50`, `sizePerResourceUnit=20`, and an instance with 2 CPU is launched; its IOPS size will be: 90).
         """
-        OceanBlockDeviceMappingEbsDynamicVolumeSize._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            base_size=base_size,
-            resource=resource,
-            size_per_resource_unit=size_per_resource_unit,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             base_size: Optional[int] = None,
-             resource: Optional[str] = None,
-             size_per_resource_unit: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if base_size is None and 'baseSize' in kwargs:
-            base_size = kwargs['baseSize']
-        if base_size is None:
-            raise TypeError("Missing 'base_size' argument")
-        if resource is None:
-            raise TypeError("Missing 'resource' argument")
-        if size_per_resource_unit is None and 'sizePerResourceUnit' in kwargs:
-            size_per_resource_unit = kwargs['sizePerResourceUnit']
-        if size_per_resource_unit is None:
-            raise TypeError("Missing 'size_per_resource_unit' argument")
-
-        _setter("base_size", base_size)
-        _setter("resource", resource)
-        _setter("size_per_resource_unit", size_per_resource_unit)
+        pulumi.set(__self__, "base_size", base_size)
+        pulumi.set(__self__, "resource", resource)
+        pulumi.set(__self__, "size_per_resource_unit", size_per_resource_unit)
 
     @property
     @pulumi.getter(name="baseSize")
@@ -12117,21 +9035,8 @@ class OceanClusterOrientation(dict):
         """
         :param str availability_vs_cost: You can control the approach that Ocean takes while launching nodes by configuring this value. Possible values: `costOriented`,`balanced`,`cheapest`.
         """
-        OceanClusterOrientation._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            availability_vs_cost=availability_vs_cost,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             availability_vs_cost: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if availability_vs_cost is None and 'availabilityVsCost' in kwargs:
-            availability_vs_cost = kwargs['availabilityVsCost']
-
         if availability_vs_cost is not None:
-            _setter("availability_vs_cost", availability_vs_cost)
+            pulumi.set(__self__, "availability_vs_cost", availability_vs_cost)
 
     @property
     @pulumi.getter(name="availabilityVsCost")
@@ -12232,123 +9137,44 @@ class OceanFilters(dict):
         :param Sequence[str] root_device_types: The filtered instance types will have a root device types from this list.
         :param Sequence[str] virtualization_types: The filtered instance types will support at least one of the virtualization types from this list.
         """
-        OceanFilters._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            architectures=architectures,
-            categories=categories,
-            disk_types=disk_types,
-            exclude_families=exclude_families,
-            exclude_metal=exclude_metal,
-            hypervisors=hypervisors,
-            include_families=include_families,
-            is_ena_supported=is_ena_supported,
-            max_gpu=max_gpu,
-            max_memory_gib=max_memory_gib,
-            max_network_performance=max_network_performance,
-            max_vcpu=max_vcpu,
-            min_enis=min_enis,
-            min_gpu=min_gpu,
-            min_memory_gib=min_memory_gib,
-            min_network_performance=min_network_performance,
-            min_vcpu=min_vcpu,
-            root_device_types=root_device_types,
-            virtualization_types=virtualization_types,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             architectures: Optional[Sequence[str]] = None,
-             categories: Optional[Sequence[str]] = None,
-             disk_types: Optional[Sequence[str]] = None,
-             exclude_families: Optional[Sequence[str]] = None,
-             exclude_metal: Optional[bool] = None,
-             hypervisors: Optional[Sequence[str]] = None,
-             include_families: Optional[Sequence[str]] = None,
-             is_ena_supported: Optional[str] = None,
-             max_gpu: Optional[int] = None,
-             max_memory_gib: Optional[float] = None,
-             max_network_performance: Optional[int] = None,
-             max_vcpu: Optional[int] = None,
-             min_enis: Optional[int] = None,
-             min_gpu: Optional[int] = None,
-             min_memory_gib: Optional[float] = None,
-             min_network_performance: Optional[int] = None,
-             min_vcpu: Optional[int] = None,
-             root_device_types: Optional[Sequence[str]] = None,
-             virtualization_types: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if disk_types is None and 'diskTypes' in kwargs:
-            disk_types = kwargs['diskTypes']
-        if exclude_families is None and 'excludeFamilies' in kwargs:
-            exclude_families = kwargs['excludeFamilies']
-        if exclude_metal is None and 'excludeMetal' in kwargs:
-            exclude_metal = kwargs['excludeMetal']
-        if include_families is None and 'includeFamilies' in kwargs:
-            include_families = kwargs['includeFamilies']
-        if is_ena_supported is None and 'isEnaSupported' in kwargs:
-            is_ena_supported = kwargs['isEnaSupported']
-        if max_gpu is None and 'maxGpu' in kwargs:
-            max_gpu = kwargs['maxGpu']
-        if max_memory_gib is None and 'maxMemoryGib' in kwargs:
-            max_memory_gib = kwargs['maxMemoryGib']
-        if max_network_performance is None and 'maxNetworkPerformance' in kwargs:
-            max_network_performance = kwargs['maxNetworkPerformance']
-        if max_vcpu is None and 'maxVcpu' in kwargs:
-            max_vcpu = kwargs['maxVcpu']
-        if min_enis is None and 'minEnis' in kwargs:
-            min_enis = kwargs['minEnis']
-        if min_gpu is None and 'minGpu' in kwargs:
-            min_gpu = kwargs['minGpu']
-        if min_memory_gib is None and 'minMemoryGib' in kwargs:
-            min_memory_gib = kwargs['minMemoryGib']
-        if min_network_performance is None and 'minNetworkPerformance' in kwargs:
-            min_network_performance = kwargs['minNetworkPerformance']
-        if min_vcpu is None and 'minVcpu' in kwargs:
-            min_vcpu = kwargs['minVcpu']
-        if root_device_types is None and 'rootDeviceTypes' in kwargs:
-            root_device_types = kwargs['rootDeviceTypes']
-        if virtualization_types is None and 'virtualizationTypes' in kwargs:
-            virtualization_types = kwargs['virtualizationTypes']
-
         if architectures is not None:
-            _setter("architectures", architectures)
+            pulumi.set(__self__, "architectures", architectures)
         if categories is not None:
-            _setter("categories", categories)
+            pulumi.set(__self__, "categories", categories)
         if disk_types is not None:
-            _setter("disk_types", disk_types)
+            pulumi.set(__self__, "disk_types", disk_types)
         if exclude_families is not None:
-            _setter("exclude_families", exclude_families)
+            pulumi.set(__self__, "exclude_families", exclude_families)
         if exclude_metal is not None:
-            _setter("exclude_metal", exclude_metal)
+            pulumi.set(__self__, "exclude_metal", exclude_metal)
         if hypervisors is not None:
-            _setter("hypervisors", hypervisors)
+            pulumi.set(__self__, "hypervisors", hypervisors)
         if include_families is not None:
-            _setter("include_families", include_families)
+            pulumi.set(__self__, "include_families", include_families)
         if is_ena_supported is not None:
-            _setter("is_ena_supported", is_ena_supported)
+            pulumi.set(__self__, "is_ena_supported", is_ena_supported)
         if max_gpu is not None:
-            _setter("max_gpu", max_gpu)
+            pulumi.set(__self__, "max_gpu", max_gpu)
         if max_memory_gib is not None:
-            _setter("max_memory_gib", max_memory_gib)
+            pulumi.set(__self__, "max_memory_gib", max_memory_gib)
         if max_network_performance is not None:
-            _setter("max_network_performance", max_network_performance)
+            pulumi.set(__self__, "max_network_performance", max_network_performance)
         if max_vcpu is not None:
-            _setter("max_vcpu", max_vcpu)
+            pulumi.set(__self__, "max_vcpu", max_vcpu)
         if min_enis is not None:
-            _setter("min_enis", min_enis)
+            pulumi.set(__self__, "min_enis", min_enis)
         if min_gpu is not None:
-            _setter("min_gpu", min_gpu)
+            pulumi.set(__self__, "min_gpu", min_gpu)
         if min_memory_gib is not None:
-            _setter("min_memory_gib", min_memory_gib)
+            pulumi.set(__self__, "min_memory_gib", min_memory_gib)
         if min_network_performance is not None:
-            _setter("min_network_performance", min_network_performance)
+            pulumi.set(__self__, "min_network_performance", min_network_performance)
         if min_vcpu is not None:
-            _setter("min_vcpu", min_vcpu)
+            pulumi.set(__self__, "min_vcpu", min_vcpu)
         if root_device_types is not None:
-            _setter("root_device_types", root_device_types)
+            pulumi.set(__self__, "root_device_types", root_device_types)
         if virtualization_types is not None:
-            _setter("virtualization_types", virtualization_types)
+            pulumi.set(__self__, "virtualization_types", virtualization_types)
 
     @property
     @pulumi.getter
@@ -12531,28 +9357,9 @@ class OceanInstanceMetadataOptions(dict):
         :param str http_tokens: Determines if a signed token is required or not. Valid values: `optional` or `required`.
         :param int http_put_response_hop_limit: An integer from 1 through 64. The desired HTTP PUT response hop limit for instance metadata requests. The larger the number, the further the instance metadata requests can travel.
         """
-        OceanInstanceMetadataOptions._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            http_tokens=http_tokens,
-            http_put_response_hop_limit=http_put_response_hop_limit,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             http_tokens: Optional[str] = None,
-             http_put_response_hop_limit: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if http_tokens is None and 'httpTokens' in kwargs:
-            http_tokens = kwargs['httpTokens']
-        if http_tokens is None:
-            raise TypeError("Missing 'http_tokens' argument")
-        if http_put_response_hop_limit is None and 'httpPutResponseHopLimit' in kwargs:
-            http_put_response_hop_limit = kwargs['httpPutResponseHopLimit']
-
-        _setter("http_tokens", http_tokens)
+        pulumi.set(__self__, "http_tokens", http_tokens)
         if http_put_response_hop_limit is not None:
-            _setter("http_put_response_hop_limit", http_put_response_hop_limit)
+            pulumi.set(__self__, "http_put_response_hop_limit", http_put_response_hop_limit)
 
     @property
     @pulumi.getter(name="httpTokens")
@@ -12595,21 +9402,8 @@ class OceanLaunchSpecAutoscaleDown(dict):
         """
         :param float max_scale_down_percentage: The maximum percentage allowed to scale down in a single scaling action on the nodes running in a specific VNG. Allowed only if maxScaleDownPercentage is set to null at the cluster level. Number between [0.1-100].
         """
-        OceanLaunchSpecAutoscaleDown._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            max_scale_down_percentage=max_scale_down_percentage,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             max_scale_down_percentage: Optional[float] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if max_scale_down_percentage is None and 'maxScaleDownPercentage' in kwargs:
-            max_scale_down_percentage = kwargs['maxScaleDownPercentage']
-
         if max_scale_down_percentage is not None:
-            _setter("max_scale_down_percentage", max_scale_down_percentage)
+            pulumi.set(__self__, "max_scale_down_percentage", max_scale_down_percentage)
 
     @property
     @pulumi.getter(name="maxScaleDownPercentage")
@@ -12656,40 +9450,13 @@ class OceanLaunchSpecAutoscaleHeadroom(dict):
         :param int gpu_per_unit: Optionally configure the number of GPUS to allocate for each headroom unit.
         :param int memory_per_unit: Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
         """
-        OceanLaunchSpecAutoscaleHeadroom._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            num_of_units=num_of_units,
-            cpu_per_unit=cpu_per_unit,
-            gpu_per_unit=gpu_per_unit,
-            memory_per_unit=memory_per_unit,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             num_of_units: Optional[int] = None,
-             cpu_per_unit: Optional[int] = None,
-             gpu_per_unit: Optional[int] = None,
-             memory_per_unit: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if num_of_units is None and 'numOfUnits' in kwargs:
-            num_of_units = kwargs['numOfUnits']
-        if num_of_units is None:
-            raise TypeError("Missing 'num_of_units' argument")
-        if cpu_per_unit is None and 'cpuPerUnit' in kwargs:
-            cpu_per_unit = kwargs['cpuPerUnit']
-        if gpu_per_unit is None and 'gpuPerUnit' in kwargs:
-            gpu_per_unit = kwargs['gpuPerUnit']
-        if memory_per_unit is None and 'memoryPerUnit' in kwargs:
-            memory_per_unit = kwargs['memoryPerUnit']
-
-        _setter("num_of_units", num_of_units)
+        pulumi.set(__self__, "num_of_units", num_of_units)
         if cpu_per_unit is not None:
-            _setter("cpu_per_unit", cpu_per_unit)
+            pulumi.set(__self__, "cpu_per_unit", cpu_per_unit)
         if gpu_per_unit is not None:
-            _setter("gpu_per_unit", gpu_per_unit)
+            pulumi.set(__self__, "gpu_per_unit", gpu_per_unit)
         if memory_per_unit is not None:
-            _setter("memory_per_unit", memory_per_unit)
+            pulumi.set(__self__, "memory_per_unit", memory_per_unit)
 
     @property
     @pulumi.getter(name="numOfUnits")
@@ -12748,21 +9515,8 @@ class OceanLaunchSpecAutoscaleHeadroomsAutomatic(dict):
         """
         :param int auto_headroom_percentage: Number between 0-200 to control the headroom % of the specific Virtual Node Group. Effective when cluster.autoScaler.headroom.automatic.`is_enabled` = true is set on the Ocean cluster.
         """
-        OceanLaunchSpecAutoscaleHeadroomsAutomatic._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            auto_headroom_percentage=auto_headroom_percentage,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             auto_headroom_percentage: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if auto_headroom_percentage is None and 'autoHeadroomPercentage' in kwargs:
-            auto_headroom_percentage = kwargs['autoHeadroomPercentage']
-
         if auto_headroom_percentage is not None:
-            _setter("auto_headroom_percentage", auto_headroom_percentage)
+            pulumi.set(__self__, "auto_headroom_percentage", auto_headroom_percentage)
 
     @property
     @pulumi.getter(name="autoHeadroomPercentage")
@@ -12806,37 +9560,14 @@ class OceanLaunchSpecBlockDeviceMapping(dict):
         :param 'OceanLaunchSpecBlockDeviceMappingEbsArgs' ebs: Object. Set Elastic Block Store properties .
         :param str no_device: String. Suppresses the specified device included in the block device mapping of the AMI.
         """
-        OceanLaunchSpecBlockDeviceMapping._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            device_name=device_name,
-            ebs=ebs,
-            no_device=no_device,
-            virtual_name=virtual_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             device_name: Optional[str] = None,
-             ebs: Optional['outputs.OceanLaunchSpecBlockDeviceMappingEbs'] = None,
-             no_device: Optional[str] = None,
-             virtual_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if device_name is None and 'deviceName' in kwargs:
-            device_name = kwargs['deviceName']
-        if no_device is None and 'noDevice' in kwargs:
-            no_device = kwargs['noDevice']
-        if virtual_name is None and 'virtualName' in kwargs:
-            virtual_name = kwargs['virtualName']
-
         if device_name is not None:
-            _setter("device_name", device_name)
+            pulumi.set(__self__, "device_name", device_name)
         if ebs is not None:
-            _setter("ebs", ebs)
+            pulumi.set(__self__, "ebs", ebs)
         if no_device is not None:
-            _setter("no_device", no_device)
+            pulumi.set(__self__, "no_device", no_device)
         if virtual_name is not None:
-            _setter("virtual_name", virtual_name)
+            pulumi.set(__self__, "virtual_name", virtual_name)
 
     @property
     @pulumi.getter(name="deviceName")
@@ -12918,63 +9649,24 @@ class OceanLaunchSpecBlockDeviceMappingEbs(dict):
         :param int volume_size: Int. The size, in GB of the volume.
         :param str volume_type: String. The type of the volume. (Example: `gp2`).
         """
-        OceanLaunchSpecBlockDeviceMappingEbs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            delete_on_termination=delete_on_termination,
-            dynamic_volume_size=dynamic_volume_size,
-            encrypted=encrypted,
-            iops=iops,
-            kms_key_id=kms_key_id,
-            snapshot_id=snapshot_id,
-            throughput=throughput,
-            volume_size=volume_size,
-            volume_type=volume_type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             delete_on_termination: Optional[bool] = None,
-             dynamic_volume_size: Optional['outputs.OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize'] = None,
-             encrypted: Optional[bool] = None,
-             iops: Optional[int] = None,
-             kms_key_id: Optional[str] = None,
-             snapshot_id: Optional[str] = None,
-             throughput: Optional[int] = None,
-             volume_size: Optional[int] = None,
-             volume_type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if delete_on_termination is None and 'deleteOnTermination' in kwargs:
-            delete_on_termination = kwargs['deleteOnTermination']
-        if dynamic_volume_size is None and 'dynamicVolumeSize' in kwargs:
-            dynamic_volume_size = kwargs['dynamicVolumeSize']
-        if kms_key_id is None and 'kmsKeyId' in kwargs:
-            kms_key_id = kwargs['kmsKeyId']
-        if snapshot_id is None and 'snapshotId' in kwargs:
-            snapshot_id = kwargs['snapshotId']
-        if volume_size is None and 'volumeSize' in kwargs:
-            volume_size = kwargs['volumeSize']
-        if volume_type is None and 'volumeType' in kwargs:
-            volume_type = kwargs['volumeType']
-
         if delete_on_termination is not None:
-            _setter("delete_on_termination", delete_on_termination)
+            pulumi.set(__self__, "delete_on_termination", delete_on_termination)
         if dynamic_volume_size is not None:
-            _setter("dynamic_volume_size", dynamic_volume_size)
+            pulumi.set(__self__, "dynamic_volume_size", dynamic_volume_size)
         if encrypted is not None:
-            _setter("encrypted", encrypted)
+            pulumi.set(__self__, "encrypted", encrypted)
         if iops is not None:
-            _setter("iops", iops)
+            pulumi.set(__self__, "iops", iops)
         if kms_key_id is not None:
-            _setter("kms_key_id", kms_key_id)
+            pulumi.set(__self__, "kms_key_id", kms_key_id)
         if snapshot_id is not None:
-            _setter("snapshot_id", snapshot_id)
+            pulumi.set(__self__, "snapshot_id", snapshot_id)
         if throughput is not None:
-            _setter("throughput", throughput)
+            pulumi.set(__self__, "throughput", throughput)
         if volume_size is not None:
-            _setter("volume_size", volume_size)
+            pulumi.set(__self__, "volume_size", volume_size)
         if volume_type is not None:
-            _setter("volume_type", volume_type)
+            pulumi.set(__self__, "volume_type", volume_type)
 
     @property
     @pulumi.getter(name="deleteOnTermination")
@@ -13079,34 +9771,9 @@ class OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize(dict):
         :param str resource: String. Resource type to increase volume size dynamically by. (Valid values: `CPU`)
         :param int size_per_resource_unit: Int. Additional size (in GB) per resource unit. (Example: `baseSize=50`, `sizePerResourceUnit=20`, and instance with 2 CPU is launched; its total disk size will be: 90GB)
         """
-        OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            base_size=base_size,
-            resource=resource,
-            size_per_resource_unit=size_per_resource_unit,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             base_size: Optional[int] = None,
-             resource: Optional[str] = None,
-             size_per_resource_unit: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if base_size is None and 'baseSize' in kwargs:
-            base_size = kwargs['baseSize']
-        if base_size is None:
-            raise TypeError("Missing 'base_size' argument")
-        if resource is None:
-            raise TypeError("Missing 'resource' argument")
-        if size_per_resource_unit is None and 'sizePerResourceUnit' in kwargs:
-            size_per_resource_unit = kwargs['sizePerResourceUnit']
-        if size_per_resource_unit is None:
-            raise TypeError("Missing 'size_per_resource_unit' argument")
-
-        _setter("base_size", base_size)
-        _setter("resource", resource)
-        _setter("size_per_resource_unit", size_per_resource_unit)
+        pulumi.set(__self__, "base_size", base_size)
+        pulumi.set(__self__, "resource", resource)
+        pulumi.set(__self__, "size_per_resource_unit", size_per_resource_unit)
 
     @property
     @pulumi.getter(name="baseSize")
@@ -13157,21 +9824,8 @@ class OceanLaunchSpecCreateOptions(dict):
         """
         :param int initial_nodes: When set to an integer greater than 0, a corresponding amount of nodes will be launched from the created Virtual Node Group. The parameter is recommended in case the use_as_template_only (in aws.Ocean resource) is set to true during Ocean resource creation.
         """
-        OceanLaunchSpecCreateOptions._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            initial_nodes=initial_nodes,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             initial_nodes: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if initial_nodes is None and 'initialNodes' in kwargs:
-            initial_nodes = kwargs['initialNodes']
-
         if initial_nodes is not None:
-            _setter("initial_nodes", initial_nodes)
+            pulumi.set(__self__, "initial_nodes", initial_nodes)
 
     @property
     @pulumi.getter(name="initialNodes")
@@ -13210,28 +9864,9 @@ class OceanLaunchSpecDeleteOptions(dict):
         :param bool force_delete: When set to `true`, delete even if it is the last Virtual Node Group (also, the default Virtual Node Group must be configured with `useAsTemlateOnly = true`). Should be set at creation or update, but will be used only at deletion.
         :param bool delete_nodes: When set to "true", all instances belonging to the deleted launch specification will be drained, detached, and terminated.
         """
-        OceanLaunchSpecDeleteOptions._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            force_delete=force_delete,
-            delete_nodes=delete_nodes,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             force_delete: Optional[bool] = None,
-             delete_nodes: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if force_delete is None and 'forceDelete' in kwargs:
-            force_delete = kwargs['forceDelete']
-        if force_delete is None:
-            raise TypeError("Missing 'force_delete' argument")
-        if delete_nodes is None and 'deleteNodes' in kwargs:
-            delete_nodes = kwargs['deleteNodes']
-
-        _setter("force_delete", force_delete)
+        pulumi.set(__self__, "force_delete", force_delete)
         if delete_nodes is not None:
-            _setter("delete_nodes", delete_nodes)
+            pulumi.set(__self__, "delete_nodes", delete_nodes)
 
     @property
     @pulumi.getter(name="forceDelete")
@@ -13274,21 +9909,8 @@ class OceanLaunchSpecElasticIpPool(dict):
         """
         :param 'OceanLaunchSpecElasticIpPoolTagSelectorArgs' tag_selector: A key-value pair, which defines an Elastic IP from the customer pool. Can be null.
         """
-        OceanLaunchSpecElasticIpPool._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            tag_selector=tag_selector,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             tag_selector: Optional['outputs.OceanLaunchSpecElasticIpPoolTagSelector'] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if tag_selector is None and 'tagSelector' in kwargs:
-            tag_selector = kwargs['tagSelector']
-
         if tag_selector is not None:
-            _setter("tag_selector", tag_selector)
+            pulumi.set(__self__, "tag_selector", tag_selector)
 
     @property
     @pulumi.getter(name="tagSelector")
@@ -13327,28 +9949,9 @@ class OceanLaunchSpecElasticIpPoolTagSelector(dict):
         :param str tag_key: Elastic IP tag key. The Virtual Node Group will consider all Elastic IPs tagged with this tag as a part of the Elastic IP pool to use.
         :param str tag_value: Elastic IP tag value. Can be null.
         """
-        OceanLaunchSpecElasticIpPoolTagSelector._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            tag_key=tag_key,
-            tag_value=tag_value,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             tag_key: Optional[str] = None,
-             tag_value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if tag_key is None and 'tagKey' in kwargs:
-            tag_key = kwargs['tagKey']
-        if tag_key is None:
-            raise TypeError("Missing 'tag_key' argument")
-        if tag_value is None and 'tagValue' in kwargs:
-            tag_value = kwargs['tagValue']
-
-        _setter("tag_key", tag_key)
+        pulumi.set(__self__, "tag_key", tag_key)
         if tag_value is not None:
-            _setter("tag_value", tag_value)
+            pulumi.set(__self__, "tag_value", tag_value)
 
     @property
     @pulumi.getter(name="tagKey")
@@ -13391,21 +9994,8 @@ class OceanLaunchSpecImage(dict):
         """
         :param str image_id: Identifier of the image in AWS. Valid values: any string which is not empty or null.
         """
-        OceanLaunchSpecImage._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            image_id=image_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             image_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if image_id is None and 'imageId' in kwargs:
-            image_id = kwargs['imageId']
-
         if image_id is not None:
-            _setter("image_id", image_id)
+            pulumi.set(__self__, "image_id", image_id)
 
     @property
     @pulumi.getter(name="imageId")
@@ -13444,28 +10034,9 @@ class OceanLaunchSpecInstanceMetadataOptions(dict):
         :param str http_tokens: Determines if a signed token is required or not. Valid values: `optional` or `required`.
         :param int http_put_response_hop_limit: An integer from 1 through 64. The desired HTTP PUT response hop limit for instance metadata requests. The larger the number, the further the instance metadata requests can travel.
         """
-        OceanLaunchSpecInstanceMetadataOptions._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            http_tokens=http_tokens,
-            http_put_response_hop_limit=http_put_response_hop_limit,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             http_tokens: Optional[str] = None,
-             http_put_response_hop_limit: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if http_tokens is None and 'httpTokens' in kwargs:
-            http_tokens = kwargs['httpTokens']
-        if http_tokens is None:
-            raise TypeError("Missing 'http_tokens' argument")
-        if http_put_response_hop_limit is None and 'httpPutResponseHopLimit' in kwargs:
-            http_put_response_hop_limit = kwargs['httpPutResponseHopLimit']
-
-        _setter("http_tokens", http_tokens)
+        pulumi.set(__self__, "http_tokens", http_tokens)
         if http_put_response_hop_limit is not None:
-            _setter("http_put_response_hop_limit", http_put_response_hop_limit)
+            pulumi.set(__self__, "http_put_response_hop_limit", http_put_response_hop_limit)
 
     @property
     @pulumi.getter(name="httpTokens")
@@ -13575,119 +10146,42 @@ class OceanLaunchSpecInstanceTypesFilters(dict):
                
                <a id="update-policy"></a>
         """
-        OceanLaunchSpecInstanceTypesFilters._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            categories=categories,
-            disk_types=disk_types,
-            exclude_families=exclude_families,
-            exclude_metal=exclude_metal,
-            hypervisors=hypervisors,
-            include_families=include_families,
-            is_ena_supported=is_ena_supported,
-            max_gpu=max_gpu,
-            max_memory_gib=max_memory_gib,
-            max_network_performance=max_network_performance,
-            max_vcpu=max_vcpu,
-            min_enis=min_enis,
-            min_gpu=min_gpu,
-            min_memory_gib=min_memory_gib,
-            min_network_performance=min_network_performance,
-            min_vcpu=min_vcpu,
-            root_device_types=root_device_types,
-            virtualization_types=virtualization_types,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             categories: Optional[Sequence[str]] = None,
-             disk_types: Optional[Sequence[str]] = None,
-             exclude_families: Optional[Sequence[str]] = None,
-             exclude_metal: Optional[bool] = None,
-             hypervisors: Optional[Sequence[str]] = None,
-             include_families: Optional[Sequence[str]] = None,
-             is_ena_supported: Optional[str] = None,
-             max_gpu: Optional[int] = None,
-             max_memory_gib: Optional[float] = None,
-             max_network_performance: Optional[int] = None,
-             max_vcpu: Optional[int] = None,
-             min_enis: Optional[int] = None,
-             min_gpu: Optional[int] = None,
-             min_memory_gib: Optional[float] = None,
-             min_network_performance: Optional[int] = None,
-             min_vcpu: Optional[int] = None,
-             root_device_types: Optional[Sequence[str]] = None,
-             virtualization_types: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if disk_types is None and 'diskTypes' in kwargs:
-            disk_types = kwargs['diskTypes']
-        if exclude_families is None and 'excludeFamilies' in kwargs:
-            exclude_families = kwargs['excludeFamilies']
-        if exclude_metal is None and 'excludeMetal' in kwargs:
-            exclude_metal = kwargs['excludeMetal']
-        if include_families is None and 'includeFamilies' in kwargs:
-            include_families = kwargs['includeFamilies']
-        if is_ena_supported is None and 'isEnaSupported' in kwargs:
-            is_ena_supported = kwargs['isEnaSupported']
-        if max_gpu is None and 'maxGpu' in kwargs:
-            max_gpu = kwargs['maxGpu']
-        if max_memory_gib is None and 'maxMemoryGib' in kwargs:
-            max_memory_gib = kwargs['maxMemoryGib']
-        if max_network_performance is None and 'maxNetworkPerformance' in kwargs:
-            max_network_performance = kwargs['maxNetworkPerformance']
-        if max_vcpu is None and 'maxVcpu' in kwargs:
-            max_vcpu = kwargs['maxVcpu']
-        if min_enis is None and 'minEnis' in kwargs:
-            min_enis = kwargs['minEnis']
-        if min_gpu is None and 'minGpu' in kwargs:
-            min_gpu = kwargs['minGpu']
-        if min_memory_gib is None and 'minMemoryGib' in kwargs:
-            min_memory_gib = kwargs['minMemoryGib']
-        if min_network_performance is None and 'minNetworkPerformance' in kwargs:
-            min_network_performance = kwargs['minNetworkPerformance']
-        if min_vcpu is None and 'minVcpu' in kwargs:
-            min_vcpu = kwargs['minVcpu']
-        if root_device_types is None and 'rootDeviceTypes' in kwargs:
-            root_device_types = kwargs['rootDeviceTypes']
-        if virtualization_types is None and 'virtualizationTypes' in kwargs:
-            virtualization_types = kwargs['virtualizationTypes']
-
         if categories is not None:
-            _setter("categories", categories)
+            pulumi.set(__self__, "categories", categories)
         if disk_types is not None:
-            _setter("disk_types", disk_types)
+            pulumi.set(__self__, "disk_types", disk_types)
         if exclude_families is not None:
-            _setter("exclude_families", exclude_families)
+            pulumi.set(__self__, "exclude_families", exclude_families)
         if exclude_metal is not None:
-            _setter("exclude_metal", exclude_metal)
+            pulumi.set(__self__, "exclude_metal", exclude_metal)
         if hypervisors is not None:
-            _setter("hypervisors", hypervisors)
+            pulumi.set(__self__, "hypervisors", hypervisors)
         if include_families is not None:
-            _setter("include_families", include_families)
+            pulumi.set(__self__, "include_families", include_families)
         if is_ena_supported is not None:
-            _setter("is_ena_supported", is_ena_supported)
+            pulumi.set(__self__, "is_ena_supported", is_ena_supported)
         if max_gpu is not None:
-            _setter("max_gpu", max_gpu)
+            pulumi.set(__self__, "max_gpu", max_gpu)
         if max_memory_gib is not None:
-            _setter("max_memory_gib", max_memory_gib)
+            pulumi.set(__self__, "max_memory_gib", max_memory_gib)
         if max_network_performance is not None:
-            _setter("max_network_performance", max_network_performance)
+            pulumi.set(__self__, "max_network_performance", max_network_performance)
         if max_vcpu is not None:
-            _setter("max_vcpu", max_vcpu)
+            pulumi.set(__self__, "max_vcpu", max_vcpu)
         if min_enis is not None:
-            _setter("min_enis", min_enis)
+            pulumi.set(__self__, "min_enis", min_enis)
         if min_gpu is not None:
-            _setter("min_gpu", min_gpu)
+            pulumi.set(__self__, "min_gpu", min_gpu)
         if min_memory_gib is not None:
-            _setter("min_memory_gib", min_memory_gib)
+            pulumi.set(__self__, "min_memory_gib", min_memory_gib)
         if min_network_performance is not None:
-            _setter("min_network_performance", min_network_performance)
+            pulumi.set(__self__, "min_network_performance", min_network_performance)
         if min_vcpu is not None:
-            _setter("min_vcpu", min_vcpu)
+            pulumi.set(__self__, "min_vcpu", min_vcpu)
         if root_device_types is not None:
-            _setter("root_device_types", root_device_types)
+            pulumi.set(__self__, "root_device_types", root_device_types)
         if virtualization_types is not None:
-            _setter("virtualization_types", virtualization_types)
+            pulumi.set(__self__, "virtualization_types", virtualization_types)
 
     @property
     @pulumi.getter
@@ -13846,25 +10340,8 @@ class OceanLaunchSpecLabel(dict):
         :param str key: The taint key.
         :param str value: The taint value.
         """
-        OceanLaunchSpecLabel._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            key=key,
-            value=value,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             key: Optional[str] = None,
-             value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if key is None:
-            raise TypeError("Missing 'key' argument")
-        if value is None:
-            raise TypeError("Missing 'value' argument")
-
-        _setter("key", key)
-        _setter("value", value)
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -13911,27 +10388,10 @@ class OceanLaunchSpecResourceLimit(dict):
         :param int max_instance_count: Set a maximum number of instances per Virtual Node Group. Can be null. If set, value must be greater than or equal to 0.
         :param int min_instance_count: Set a minimum number of instances per Virtual Node Group. Can be null. If set, value must be greater than or equal to 0.
         """
-        OceanLaunchSpecResourceLimit._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            max_instance_count=max_instance_count,
-            min_instance_count=min_instance_count,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             max_instance_count: Optional[int] = None,
-             min_instance_count: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if max_instance_count is None and 'maxInstanceCount' in kwargs:
-            max_instance_count = kwargs['maxInstanceCount']
-        if min_instance_count is None and 'minInstanceCount' in kwargs:
-            min_instance_count = kwargs['minInstanceCount']
-
         if max_instance_count is not None:
-            _setter("max_instance_count", max_instance_count)
+            pulumi.set(__self__, "max_instance_count", max_instance_count)
         if min_instance_count is not None:
-            _setter("min_instance_count", min_instance_count)
+            pulumi.set(__self__, "min_instance_count", min_instance_count)
 
     @property
     @pulumi.getter(name="maxInstanceCount")
@@ -13978,28 +10438,9 @@ class OceanLaunchSpecSchedulingShutdownHours(dict):
         :param Sequence[str] time_windows: The times that the shutdown hours will apply.
         :param bool is_enabled: Flag to enable or disable the shutdown hours mechanism. When False, the mechanism is deactivated, and the virtual node group remains in its current state.
         """
-        OceanLaunchSpecSchedulingShutdownHours._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            time_windows=time_windows,
-            is_enabled=is_enabled,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             time_windows: Optional[Sequence[str]] = None,
-             is_enabled: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if time_windows is None and 'timeWindows' in kwargs:
-            time_windows = kwargs['timeWindows']
-        if time_windows is None:
-            raise TypeError("Missing 'time_windows' argument")
-        if is_enabled is None and 'isEnabled' in kwargs:
-            is_enabled = kwargs['isEnabled']
-
-        _setter("time_windows", time_windows)
+        pulumi.set(__self__, "time_windows", time_windows)
         if is_enabled is not None:
-            _setter("is_enabled", is_enabled)
+            pulumi.set(__self__, "is_enabled", is_enabled)
 
     @property
     @pulumi.getter(name="timeWindows")
@@ -14054,42 +10495,11 @@ class OceanLaunchSpecSchedulingTask(dict):
         :param str task_type: The activity that you are scheduling. Valid values: "manualHeadroomUpdate".
         :param Sequence['OceanLaunchSpecSchedulingTaskTaskHeadroomArgs'] task_headrooms: The config of this scheduled task. Depends on the value of taskType.
         """
-        OceanLaunchSpecSchedulingTask._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cron_expression=cron_expression,
-            is_enabled=is_enabled,
-            task_type=task_type,
-            task_headrooms=task_headrooms,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cron_expression: Optional[str] = None,
-             is_enabled: Optional[bool] = None,
-             task_type: Optional[str] = None,
-             task_headrooms: Optional[Sequence['outputs.OceanLaunchSpecSchedulingTaskTaskHeadroom']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cron_expression is None and 'cronExpression' in kwargs:
-            cron_expression = kwargs['cronExpression']
-        if cron_expression is None:
-            raise TypeError("Missing 'cron_expression' argument")
-        if is_enabled is None and 'isEnabled' in kwargs:
-            is_enabled = kwargs['isEnabled']
-        if is_enabled is None:
-            raise TypeError("Missing 'is_enabled' argument")
-        if task_type is None and 'taskType' in kwargs:
-            task_type = kwargs['taskType']
-        if task_type is None:
-            raise TypeError("Missing 'task_type' argument")
-        if task_headrooms is None and 'taskHeadrooms' in kwargs:
-            task_headrooms = kwargs['taskHeadrooms']
-
-        _setter("cron_expression", cron_expression)
-        _setter("is_enabled", is_enabled)
-        _setter("task_type", task_type)
+        pulumi.set(__self__, "cron_expression", cron_expression)
+        pulumi.set(__self__, "is_enabled", is_enabled)
+        pulumi.set(__self__, "task_type", task_type)
         if task_headrooms is not None:
-            _setter("task_headrooms", task_headrooms)
+            pulumi.set(__self__, "task_headrooms", task_headrooms)
 
     @property
     @pulumi.getter(name="cronExpression")
@@ -14160,40 +10570,13 @@ class OceanLaunchSpecSchedulingTaskTaskHeadroom(dict):
         :param int gpu_per_unit: Optionally configure the number of GPUS to allocate for each headroom unit.
         :param int memory_per_unit: Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
         """
-        OceanLaunchSpecSchedulingTaskTaskHeadroom._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            num_of_units=num_of_units,
-            cpu_per_unit=cpu_per_unit,
-            gpu_per_unit=gpu_per_unit,
-            memory_per_unit=memory_per_unit,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             num_of_units: Optional[int] = None,
-             cpu_per_unit: Optional[int] = None,
-             gpu_per_unit: Optional[int] = None,
-             memory_per_unit: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if num_of_units is None and 'numOfUnits' in kwargs:
-            num_of_units = kwargs['numOfUnits']
-        if num_of_units is None:
-            raise TypeError("Missing 'num_of_units' argument")
-        if cpu_per_unit is None and 'cpuPerUnit' in kwargs:
-            cpu_per_unit = kwargs['cpuPerUnit']
-        if gpu_per_unit is None and 'gpuPerUnit' in kwargs:
-            gpu_per_unit = kwargs['gpuPerUnit']
-        if memory_per_unit is None and 'memoryPerUnit' in kwargs:
-            memory_per_unit = kwargs['memoryPerUnit']
-
-        _setter("num_of_units", num_of_units)
+        pulumi.set(__self__, "num_of_units", num_of_units)
         if cpu_per_unit is not None:
-            _setter("cpu_per_unit", cpu_per_unit)
+            pulumi.set(__self__, "cpu_per_unit", cpu_per_unit)
         if gpu_per_unit is not None:
-            _setter("gpu_per_unit", gpu_per_unit)
+            pulumi.set(__self__, "gpu_per_unit", gpu_per_unit)
         if memory_per_unit is not None:
-            _setter("memory_per_unit", memory_per_unit)
+            pulumi.set(__self__, "memory_per_unit", memory_per_unit)
 
     @property
     @pulumi.getter(name="numOfUnits")
@@ -14252,21 +10635,8 @@ class OceanLaunchSpecStrategy(dict):
         """
         :param int spot_percentage: The desired percentage of the Spot instances out of all running instances for this VNG. Only available when the field is not set in the cluster directly (cluster.strategy.spotPercentage).
         """
-        OceanLaunchSpecStrategy._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            spot_percentage=spot_percentage,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             spot_percentage: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if spot_percentage is None and 'spotPercentage' in kwargs:
-            spot_percentage = kwargs['spotPercentage']
-
         if spot_percentage is not None:
-            _setter("spot_percentage", spot_percentage)
+            pulumi.set(__self__, "spot_percentage", spot_percentage)
 
     @property
     @pulumi.getter(name="spotPercentage")
@@ -14286,25 +10656,8 @@ class OceanLaunchSpecTag(dict):
         :param str key: The taint key.
         :param str value: The taint value.
         """
-        OceanLaunchSpecTag._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            key=key,
-            value=value,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             key: Optional[str] = None,
-             value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if key is None:
-            raise TypeError("Missing 'key' argument")
-        if value is None:
-            raise TypeError("Missing 'value' argument")
-
-        _setter("key", key)
-        _setter("value", value)
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -14334,30 +10687,9 @@ class OceanLaunchSpecTaint(dict):
         :param str key: The taint key.
         :param str value: The taint value.
         """
-        OceanLaunchSpecTaint._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            effect=effect,
-            key=key,
-            value=value,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             effect: Optional[str] = None,
-             key: Optional[str] = None,
-             value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if effect is None:
-            raise TypeError("Missing 'effect' argument")
-        if key is None:
-            raise TypeError("Missing 'key' argument")
-        if value is None:
-            raise TypeError("Missing 'value' argument")
-
-        _setter("effect", effect)
-        _setter("key", key)
-        _setter("value", value)
+        pulumi.set(__self__, "effect", effect)
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -14408,28 +10740,9 @@ class OceanLaunchSpecUpdatePolicy(dict):
     def __init__(__self__, *,
                  should_roll: bool,
                  roll_config: Optional['outputs.OceanLaunchSpecUpdatePolicyRollConfig'] = None):
-        OceanLaunchSpecUpdatePolicy._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            should_roll=should_roll,
-            roll_config=roll_config,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             should_roll: Optional[bool] = None,
-             roll_config: Optional['outputs.OceanLaunchSpecUpdatePolicyRollConfig'] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if should_roll is None and 'shouldRoll' in kwargs:
-            should_roll = kwargs['shouldRoll']
-        if should_roll is None:
-            raise TypeError("Missing 'should_roll' argument")
-        if roll_config is None and 'rollConfig' in kwargs:
-            roll_config = kwargs['rollConfig']
-
-        _setter("should_roll", should_roll)
+        pulumi.set(__self__, "should_roll", should_roll)
         if roll_config is not None:
-            _setter("roll_config", roll_config)
+            pulumi.set(__self__, "roll_config", roll_config)
 
     @property
     @pulumi.getter(name="shouldRoll")
@@ -14463,22 +10776,7 @@ class OceanLaunchSpecUpdatePolicyRollConfig(dict):
 
     def __init__(__self__, *,
                  batch_size_percentage: int):
-        OceanLaunchSpecUpdatePolicyRollConfig._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            batch_size_percentage=batch_size_percentage,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             batch_size_percentage: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if batch_size_percentage is None and 'batchSizePercentage' in kwargs:
-            batch_size_percentage = kwargs['batchSizePercentage']
-        if batch_size_percentage is None:
-            raise TypeError("Missing 'batch_size_percentage' argument")
-
-        _setter("batch_size_percentage", batch_size_percentage)
+        pulumi.set(__self__, "batch_size_percentage", batch_size_percentage)
 
     @property
     @pulumi.getter(name="batchSizePercentage")
@@ -14497,27 +10795,12 @@ class OceanLoadBalancer(dict):
         :param str name: Required if type is set to `CLASSIC`
         :param str type: Can be set to `CLASSIC` or `TARGET_GROUP`
         """
-        OceanLoadBalancer._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            arn=arn,
-            name=name,
-            type=type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             arn: Optional[str] = None,
-             name: Optional[str] = None,
-             type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if arn is not None:
-            _setter("arn", arn)
+            pulumi.set(__self__, "arn", arn)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter
@@ -14551,19 +10834,8 @@ class OceanLogging(dict):
         """
         :param 'OceanLoggingExportArgs' export: Logging Export configuration.
         """
-        OceanLogging._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            export=export,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             export: Optional['outputs.OceanLoggingExport'] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if export is not None:
-            _setter("export", export)
+            pulumi.set(__self__, "export", export)
 
     @property
     @pulumi.getter
@@ -14581,19 +10853,8 @@ class OceanLoggingExport(dict):
         """
         :param Sequence['OceanLoggingExportS3Args'] s3s: Exports your cluster's logs to the S3 bucket and subdir configured on the S3 data integration given.
         """
-        OceanLoggingExport._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            s3s=s3s,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             s3s: Optional[Sequence['outputs.OceanLoggingExportS3']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if s3s is not None:
-            _setter("s3s", s3s)
+            pulumi.set(__self__, "s3s", s3s)
 
     @property
     @pulumi.getter
@@ -14611,20 +10872,7 @@ class OceanLoggingExportS3(dict):
         """
         :param str id: The identifier of The S3 data integration to export the logs to.
         """
-        OceanLoggingExportS3._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            id=id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-
-        _setter("id", id)
+        pulumi.set(__self__, "id", id)
 
     @property
     @pulumi.getter
@@ -14659,21 +10907,8 @@ class OceanResourceTagSpecification(dict):
         """
         :param bool should_tag_volumes: Specify if Volume resources will be tagged with Virtual Node Group tags or Ocean tags.
         """
-        OceanResourceTagSpecification._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            should_tag_volumes=should_tag_volumes,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             should_tag_volumes: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if should_tag_volumes is None and 'shouldTagVolumes' in kwargs:
-            should_tag_volumes = kwargs['shouldTagVolumes']
-
         if should_tag_volumes is not None:
-            _setter("should_tag_volumes", should_tag_volumes)
+            pulumi.set(__self__, "should_tag_volumes", should_tag_volumes)
 
     @property
     @pulumi.getter(name="shouldTagVolumes")
@@ -14706,25 +10941,10 @@ class OceanScheduledTask(dict):
     def __init__(__self__, *,
                  shutdown_hours: Optional['outputs.OceanScheduledTaskShutdownHours'] = None,
                  tasks: Optional[Sequence['outputs.OceanScheduledTaskTask']] = None):
-        OceanScheduledTask._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            shutdown_hours=shutdown_hours,
-            tasks=tasks,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             shutdown_hours: Optional['outputs.OceanScheduledTaskShutdownHours'] = None,
-             tasks: Optional[Sequence['outputs.OceanScheduledTaskTask']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if shutdown_hours is None and 'shutdownHours' in kwargs:
-            shutdown_hours = kwargs['shutdownHours']
-
         if shutdown_hours is not None:
-            _setter("shutdown_hours", shutdown_hours)
+            pulumi.set(__self__, "shutdown_hours", shutdown_hours)
         if tasks is not None:
-            _setter("tasks", tasks)
+            pulumi.set(__self__, "tasks", tasks)
 
     @property
     @pulumi.getter(name="shutdownHours")
@@ -14761,28 +10981,9 @@ class OceanScheduledTaskShutdownHours(dict):
     def __init__(__self__, *,
                  time_windows: Sequence[str],
                  is_enabled: Optional[bool] = None):
-        OceanScheduledTaskShutdownHours._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            time_windows=time_windows,
-            is_enabled=is_enabled,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             time_windows: Optional[Sequence[str]] = None,
-             is_enabled: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if time_windows is None and 'timeWindows' in kwargs:
-            time_windows = kwargs['timeWindows']
-        if time_windows is None:
-            raise TypeError("Missing 'time_windows' argument")
-        if is_enabled is None and 'isEnabled' in kwargs:
-            is_enabled = kwargs['isEnabled']
-
-        _setter("time_windows", time_windows)
+        pulumi.set(__self__, "time_windows", time_windows)
         if is_enabled is not None:
-            _setter("is_enabled", is_enabled)
+            pulumi.set(__self__, "is_enabled", is_enabled)
 
     @property
     @pulumi.getter(name="timeWindows")
@@ -14822,36 +11023,9 @@ class OceanScheduledTaskTask(dict):
                  cron_expression: str,
                  is_enabled: bool,
                  task_type: str):
-        OceanScheduledTaskTask._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cron_expression=cron_expression,
-            is_enabled=is_enabled,
-            task_type=task_type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cron_expression: Optional[str] = None,
-             is_enabled: Optional[bool] = None,
-             task_type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cron_expression is None and 'cronExpression' in kwargs:
-            cron_expression = kwargs['cronExpression']
-        if cron_expression is None:
-            raise TypeError("Missing 'cron_expression' argument")
-        if is_enabled is None and 'isEnabled' in kwargs:
-            is_enabled = kwargs['isEnabled']
-        if is_enabled is None:
-            raise TypeError("Missing 'is_enabled' argument")
-        if task_type is None and 'taskType' in kwargs:
-            task_type = kwargs['taskType']
-        if task_type is None:
-            raise TypeError("Missing 'task_type' argument")
-
-        _setter("cron_expression", cron_expression)
-        _setter("is_enabled", is_enabled)
-        _setter("task_type", task_type)
+        pulumi.set(__self__, "cron_expression", cron_expression)
+        pulumi.set(__self__, "is_enabled", is_enabled)
+        pulumi.set(__self__, "task_type", task_type)
 
     @property
     @pulumi.getter(name="cronExpression")
@@ -14878,25 +11052,8 @@ class OceanTag(dict):
         :param str key: The tag key.
         :param str value: The tag value.
         """
-        OceanTag._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            key=key,
-            value=value,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             key: Optional[str] = None,
-             value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if key is None:
-            raise TypeError("Missing 'key' argument")
-        if value is None:
-            raise TypeError("Missing 'value' argument")
-
-        _setter("key", key)
-        _setter("value", value)
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -14945,40 +11102,13 @@ class OceanUpdatePolicy(dict):
                  auto_apply_tags: Optional[bool] = None,
                  conditioned_roll: Optional[bool] = None,
                  roll_config: Optional['outputs.OceanUpdatePolicyRollConfig'] = None):
-        OceanUpdatePolicy._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            should_roll=should_roll,
-            auto_apply_tags=auto_apply_tags,
-            conditioned_roll=conditioned_roll,
-            roll_config=roll_config,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             should_roll: Optional[bool] = None,
-             auto_apply_tags: Optional[bool] = None,
-             conditioned_roll: Optional[bool] = None,
-             roll_config: Optional['outputs.OceanUpdatePolicyRollConfig'] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if should_roll is None and 'shouldRoll' in kwargs:
-            should_roll = kwargs['shouldRoll']
-        if should_roll is None:
-            raise TypeError("Missing 'should_roll' argument")
-        if auto_apply_tags is None and 'autoApplyTags' in kwargs:
-            auto_apply_tags = kwargs['autoApplyTags']
-        if conditioned_roll is None and 'conditionedRoll' in kwargs:
-            conditioned_roll = kwargs['conditionedRoll']
-        if roll_config is None and 'rollConfig' in kwargs:
-            roll_config = kwargs['rollConfig']
-
-        _setter("should_roll", should_roll)
+        pulumi.set(__self__, "should_roll", should_roll)
         if auto_apply_tags is not None:
-            _setter("auto_apply_tags", auto_apply_tags)
+            pulumi.set(__self__, "auto_apply_tags", auto_apply_tags)
         if conditioned_roll is not None:
-            _setter("conditioned_roll", conditioned_roll)
+            pulumi.set(__self__, "conditioned_roll", conditioned_roll)
         if roll_config is not None:
-            _setter("roll_config", roll_config)
+            pulumi.set(__self__, "roll_config", roll_config)
 
     @property
     @pulumi.getter(name="shouldRoll")
@@ -15031,40 +11161,13 @@ class OceanUpdatePolicyRollConfig(dict):
                  batch_min_healthy_percentage: Optional[int] = None,
                  launch_spec_ids: Optional[Sequence[str]] = None,
                  respect_pdb: Optional[bool] = None):
-        OceanUpdatePolicyRollConfig._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            batch_size_percentage=batch_size_percentage,
-            batch_min_healthy_percentage=batch_min_healthy_percentage,
-            launch_spec_ids=launch_spec_ids,
-            respect_pdb=respect_pdb,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             batch_size_percentage: Optional[int] = None,
-             batch_min_healthy_percentage: Optional[int] = None,
-             launch_spec_ids: Optional[Sequence[str]] = None,
-             respect_pdb: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if batch_size_percentage is None and 'batchSizePercentage' in kwargs:
-            batch_size_percentage = kwargs['batchSizePercentage']
-        if batch_size_percentage is None:
-            raise TypeError("Missing 'batch_size_percentage' argument")
-        if batch_min_healthy_percentage is None and 'batchMinHealthyPercentage' in kwargs:
-            batch_min_healthy_percentage = kwargs['batchMinHealthyPercentage']
-        if launch_spec_ids is None and 'launchSpecIds' in kwargs:
-            launch_spec_ids = kwargs['launchSpecIds']
-        if respect_pdb is None and 'respectPdb' in kwargs:
-            respect_pdb = kwargs['respectPdb']
-
-        _setter("batch_size_percentage", batch_size_percentage)
+        pulumi.set(__self__, "batch_size_percentage", batch_size_percentage)
         if batch_min_healthy_percentage is not None:
-            _setter("batch_min_healthy_percentage", batch_min_healthy_percentage)
+            pulumi.set(__self__, "batch_min_healthy_percentage", batch_min_healthy_percentage)
         if launch_spec_ids is not None:
-            _setter("launch_spec_ids", launch_spec_ids)
+            pulumi.set(__self__, "launch_spec_ids", launch_spec_ids)
         if respect_pdb is not None:
-            _setter("respect_pdb", respect_pdb)
+            pulumi.set(__self__, "respect_pdb", respect_pdb)
 
     @property
     @pulumi.getter(name="batchSizePercentage")
@@ -15094,20 +11197,7 @@ class SuspensionSuspension(dict):
         """
         :param str name: The name of process to suspend. Valid values: `"AUTO_HEALING" , "OUT_OF_STRATEGY", "PREVENTIVE_REPLACEMENT", "REVERT_PREFERRED", or "SCHEDULING"`.
         """
-        SuspensionSuspension._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            name=name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-
-        _setter("name", name)
+        pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter

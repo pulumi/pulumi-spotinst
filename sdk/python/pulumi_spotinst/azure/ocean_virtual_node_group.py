@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -35,54 +35,21 @@ class OceanVirtualNodeGroupArgs:
         :param pulumi.Input[Sequence[pulumi.Input['OceanVirtualNodeGroupTaintArgs']]] taints: Additional taints for the virtual node group. Only custom user labels are allowed. Kubernetes built-in labels and Spot internal labels are not allowed.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] zones: An Array holding Availability Zones, this configures the availability zones the Ocean may launch instances in per VNG.
         """
-        OceanVirtualNodeGroupArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            ocean_id=ocean_id,
-            autoscales=autoscales,
-            labels=labels,
-            launch_specifications=launch_specifications,
-            name=name,
-            resource_limits=resource_limits,
-            taints=taints,
-            zones=zones,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             ocean_id: Optional[pulumi.Input[str]] = None,
-             autoscales: Optional[pulumi.Input[Sequence[pulumi.Input['OceanVirtualNodeGroupAutoscaleArgs']]]] = None,
-             labels: Optional[pulumi.Input[Sequence[pulumi.Input['OceanVirtualNodeGroupLabelArgs']]]] = None,
-             launch_specifications: Optional[pulumi.Input[Sequence[pulumi.Input['OceanVirtualNodeGroupLaunchSpecificationArgs']]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             resource_limits: Optional[pulumi.Input[Sequence[pulumi.Input['OceanVirtualNodeGroupResourceLimitArgs']]]] = None,
-             taints: Optional[pulumi.Input[Sequence[pulumi.Input['OceanVirtualNodeGroupTaintArgs']]]] = None,
-             zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if ocean_id is None and 'oceanId' in kwargs:
-            ocean_id = kwargs['oceanId']
-        if ocean_id is None:
-            raise TypeError("Missing 'ocean_id' argument")
-        if launch_specifications is None and 'launchSpecifications' in kwargs:
-            launch_specifications = kwargs['launchSpecifications']
-        if resource_limits is None and 'resourceLimits' in kwargs:
-            resource_limits = kwargs['resourceLimits']
-
-        _setter("ocean_id", ocean_id)
+        pulumi.set(__self__, "ocean_id", ocean_id)
         if autoscales is not None:
-            _setter("autoscales", autoscales)
+            pulumi.set(__self__, "autoscales", autoscales)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if launch_specifications is not None:
-            _setter("launch_specifications", launch_specifications)
+            pulumi.set(__self__, "launch_specifications", launch_specifications)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if resource_limits is not None:
-            _setter("resource_limits", resource_limits)
+            pulumi.set(__self__, "resource_limits", resource_limits)
         if taints is not None:
-            _setter("taints", taints)
+            pulumi.set(__self__, "taints", taints)
         if zones is not None:
-            _setter("zones", zones)
+            pulumi.set(__self__, "zones", zones)
 
     @property
     @pulumi.getter(name="oceanId")
@@ -203,53 +170,22 @@ class _OceanVirtualNodeGroupState:
         :param pulumi.Input[Sequence[pulumi.Input['OceanVirtualNodeGroupTaintArgs']]] taints: Additional taints for the virtual node group. Only custom user labels are allowed. Kubernetes built-in labels and Spot internal labels are not allowed.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] zones: An Array holding Availability Zones, this configures the availability zones the Ocean may launch instances in per VNG.
         """
-        _OceanVirtualNodeGroupState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            autoscales=autoscales,
-            labels=labels,
-            launch_specifications=launch_specifications,
-            name=name,
-            ocean_id=ocean_id,
-            resource_limits=resource_limits,
-            taints=taints,
-            zones=zones,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             autoscales: Optional[pulumi.Input[Sequence[pulumi.Input['OceanVirtualNodeGroupAutoscaleArgs']]]] = None,
-             labels: Optional[pulumi.Input[Sequence[pulumi.Input['OceanVirtualNodeGroupLabelArgs']]]] = None,
-             launch_specifications: Optional[pulumi.Input[Sequence[pulumi.Input['OceanVirtualNodeGroupLaunchSpecificationArgs']]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             ocean_id: Optional[pulumi.Input[str]] = None,
-             resource_limits: Optional[pulumi.Input[Sequence[pulumi.Input['OceanVirtualNodeGroupResourceLimitArgs']]]] = None,
-             taints: Optional[pulumi.Input[Sequence[pulumi.Input['OceanVirtualNodeGroupTaintArgs']]]] = None,
-             zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if launch_specifications is None and 'launchSpecifications' in kwargs:
-            launch_specifications = kwargs['launchSpecifications']
-        if ocean_id is None and 'oceanId' in kwargs:
-            ocean_id = kwargs['oceanId']
-        if resource_limits is None and 'resourceLimits' in kwargs:
-            resource_limits = kwargs['resourceLimits']
-
         if autoscales is not None:
-            _setter("autoscales", autoscales)
+            pulumi.set(__self__, "autoscales", autoscales)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if launch_specifications is not None:
-            _setter("launch_specifications", launch_specifications)
+            pulumi.set(__self__, "launch_specifications", launch_specifications)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if ocean_id is not None:
-            _setter("ocean_id", ocean_id)
+            pulumi.set(__self__, "ocean_id", ocean_id)
         if resource_limits is not None:
-            _setter("resource_limits", resource_limits)
+            pulumi.set(__self__, "resource_limits", resource_limits)
         if taints is not None:
-            _setter("taints", taints)
+            pulumi.set(__self__, "taints", taints)
         if zones is not None:
-            _setter("zones", zones)
+            pulumi.set(__self__, "zones", zones)
 
     @property
     @pulumi.getter
@@ -503,10 +439,6 @@ class OceanVirtualNodeGroup(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            OceanVirtualNodeGroupArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
