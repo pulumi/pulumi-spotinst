@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -180,499 +180,168 @@ class ElastigroupArgs:
         :param pulumi.Input[int] wait_for_capacity: Minimum number of instances in a 'HEALTHY' status that is required before continuing. This is ignored when updating with blue/green deployment. Cannot exceed `desired_capacity`.
         :param pulumi.Input[int] wait_for_capacity_timeout: Time (seconds) to wait for instances to report a 'HEALTHY' status. Useful for plans with multiple dependencies that take some time to initialize. Leave undefined or set to `0` to indicate no wait. This is ignored when updating with blue/green deployment.
         """
-        ElastigroupArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            fallback_to_ondemand=fallback_to_ondemand,
-            orientation=orientation,
-            product=product,
-            security_groups=security_groups,
-            availability_zones=availability_zones,
-            block_devices_mode=block_devices_mode,
-            capacity_unit=capacity_unit,
-            consider_od_pricing=consider_od_pricing,
-            cpu_credits=cpu_credits,
-            cpu_options=cpu_options,
-            description=description,
-            desired_capacity=desired_capacity,
-            draining_timeout=draining_timeout,
-            ebs_block_devices=ebs_block_devices,
-            ebs_optimized=ebs_optimized,
-            elastic_ips=elastic_ips,
-            elastic_load_balancers=elastic_load_balancers,
-            enable_monitoring=enable_monitoring,
-            ephemeral_block_devices=ephemeral_block_devices,
-            health_check_grace_period=health_check_grace_period,
-            health_check_type=health_check_type,
-            health_check_unhealthy_duration_before_replacement=health_check_unhealthy_duration_before_replacement,
-            iam_instance_profile=iam_instance_profile,
-            image_id=image_id,
-            images=images,
-            immediate_od_recover_threshold=immediate_od_recover_threshold,
-            instance_types_ondemand=instance_types_ondemand,
-            instance_types_preferred_spots=instance_types_preferred_spots,
-            instance_types_spots=instance_types_spots,
-            instance_types_weights=instance_types_weights,
-            integration_beanstalk=integration_beanstalk,
-            integration_codedeploy=integration_codedeploy,
-            integration_docker_swarm=integration_docker_swarm,
-            integration_ecs=integration_ecs,
-            integration_gitlab=integration_gitlab,
-            integration_kubernetes=integration_kubernetes,
-            integration_mesosphere=integration_mesosphere,
-            integration_multai_runtime=integration_multai_runtime,
-            integration_nomad=integration_nomad,
-            integration_rancher=integration_rancher,
-            integration_route53=integration_route53,
-            itfs=itfs,
-            key_name=key_name,
-            lifetime_period=lifetime_period,
-            max_size=max_size,
-            metadata_options=metadata_options,
-            min_size=min_size,
-            minimum_instance_lifetime=minimum_instance_lifetime,
-            multai_target_sets=multai_target_sets,
-            multiple_metrics=multiple_metrics,
-            name=name,
-            network_interfaces=network_interfaces,
-            on_demand_types=on_demand_types,
-            ondemand_count=ondemand_count,
-            persist_block_devices=persist_block_devices,
-            persist_private_ip=persist_private_ip,
-            persist_root_device=persist_root_device,
-            placement_tenancy=placement_tenancy,
-            preferred_availability_zones=preferred_availability_zones,
-            private_ips=private_ips,
-            region=region,
-            resource_requirements=resource_requirements,
-            resource_tag_specifications=resource_tag_specifications,
-            revert_to_spot=revert_to_spot,
-            scaling_down_policies=scaling_down_policies,
-            scaling_strategies=scaling_strategies,
-            scaling_target_policies=scaling_target_policies,
-            scaling_up_policies=scaling_up_policies,
-            scheduled_tasks=scheduled_tasks,
-            shutdown_script=shutdown_script,
-            signals=signals,
-            spot_percentage=spot_percentage,
-            stateful_deallocation=stateful_deallocation,
-            stateful_instance_actions=stateful_instance_actions,
-            subnet_ids=subnet_ids,
-            tags=tags,
-            target_group_arns=target_group_arns,
-            update_policy=update_policy,
-            user_data=user_data,
-            utilize_commitments=utilize_commitments,
-            utilize_reserved_instances=utilize_reserved_instances,
-            wait_for_capacity=wait_for_capacity,
-            wait_for_capacity_timeout=wait_for_capacity_timeout,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             fallback_to_ondemand: Optional[pulumi.Input[bool]] = None,
-             orientation: Optional[pulumi.Input[str]] = None,
-             product: Optional[pulumi.Input[str]] = None,
-             security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             availability_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             block_devices_mode: Optional[pulumi.Input[str]] = None,
-             capacity_unit: Optional[pulumi.Input[str]] = None,
-             consider_od_pricing: Optional[pulumi.Input[bool]] = None,
-             cpu_credits: Optional[pulumi.Input[str]] = None,
-             cpu_options: Optional[pulumi.Input['ElastigroupCpuOptionsArgs']] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             desired_capacity: Optional[pulumi.Input[int]] = None,
-             draining_timeout: Optional[pulumi.Input[int]] = None,
-             ebs_block_devices: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupEbsBlockDeviceArgs']]]] = None,
-             ebs_optimized: Optional[pulumi.Input[bool]] = None,
-             elastic_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             elastic_load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             enable_monitoring: Optional[pulumi.Input[bool]] = None,
-             ephemeral_block_devices: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupEphemeralBlockDeviceArgs']]]] = None,
-             health_check_grace_period: Optional[pulumi.Input[int]] = None,
-             health_check_type: Optional[pulumi.Input[str]] = None,
-             health_check_unhealthy_duration_before_replacement: Optional[pulumi.Input[int]] = None,
-             iam_instance_profile: Optional[pulumi.Input[str]] = None,
-             image_id: Optional[pulumi.Input[str]] = None,
-             images: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupImageArgs']]]] = None,
-             immediate_od_recover_threshold: Optional[pulumi.Input[int]] = None,
-             instance_types_ondemand: Optional[pulumi.Input[str]] = None,
-             instance_types_preferred_spots: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             instance_types_spots: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             instance_types_weights: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupInstanceTypesWeightArgs']]]] = None,
-             integration_beanstalk: Optional[pulumi.Input['ElastigroupIntegrationBeanstalkArgs']] = None,
-             integration_codedeploy: Optional[pulumi.Input['ElastigroupIntegrationCodedeployArgs']] = None,
-             integration_docker_swarm: Optional[pulumi.Input['ElastigroupIntegrationDockerSwarmArgs']] = None,
-             integration_ecs: Optional[pulumi.Input['ElastigroupIntegrationEcsArgs']] = None,
-             integration_gitlab: Optional[pulumi.Input['ElastigroupIntegrationGitlabArgs']] = None,
-             integration_kubernetes: Optional[pulumi.Input['ElastigroupIntegrationKubernetesArgs']] = None,
-             integration_mesosphere: Optional[pulumi.Input['ElastigroupIntegrationMesosphereArgs']] = None,
-             integration_multai_runtime: Optional[pulumi.Input['ElastigroupIntegrationMultaiRuntimeArgs']] = None,
-             integration_nomad: Optional[pulumi.Input['ElastigroupIntegrationNomadArgs']] = None,
-             integration_rancher: Optional[pulumi.Input['ElastigroupIntegrationRancherArgs']] = None,
-             integration_route53: Optional[pulumi.Input['ElastigroupIntegrationRoute53Args']] = None,
-             itfs: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupItfArgs']]]] = None,
-             key_name: Optional[pulumi.Input[str]] = None,
-             lifetime_period: Optional[pulumi.Input[str]] = None,
-             max_size: Optional[pulumi.Input[int]] = None,
-             metadata_options: Optional[pulumi.Input['ElastigroupMetadataOptionsArgs']] = None,
-             min_size: Optional[pulumi.Input[int]] = None,
-             minimum_instance_lifetime: Optional[pulumi.Input[int]] = None,
-             multai_target_sets: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupMultaiTargetSetArgs']]]] = None,
-             multiple_metrics: Optional[pulumi.Input['ElastigroupMultipleMetricsArgs']] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupNetworkInterfaceArgs']]]] = None,
-             on_demand_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             ondemand_count: Optional[pulumi.Input[int]] = None,
-             persist_block_devices: Optional[pulumi.Input[bool]] = None,
-             persist_private_ip: Optional[pulumi.Input[bool]] = None,
-             persist_root_device: Optional[pulumi.Input[bool]] = None,
-             placement_tenancy: Optional[pulumi.Input[str]] = None,
-             preferred_availability_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             private_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             resource_requirements: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupResourceRequirementArgs']]]] = None,
-             resource_tag_specifications: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupResourceTagSpecificationArgs']]]] = None,
-             revert_to_spot: Optional[pulumi.Input['ElastigroupRevertToSpotArgs']] = None,
-             scaling_down_policies: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingDownPolicyArgs']]]] = None,
-             scaling_strategies: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingStrategyArgs']]]] = None,
-             scaling_target_policies: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingTargetPolicyArgs']]]] = None,
-             scaling_up_policies: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingUpPolicyArgs']]]] = None,
-             scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScheduledTaskArgs']]]] = None,
-             shutdown_script: Optional[pulumi.Input[str]] = None,
-             signals: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupSignalArgs']]]] = None,
-             spot_percentage: Optional[pulumi.Input[int]] = None,
-             stateful_deallocation: Optional[pulumi.Input['ElastigroupStatefulDeallocationArgs']] = None,
-             stateful_instance_actions: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupStatefulInstanceActionArgs']]]] = None,
-             subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             tags: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupTagArgs']]]] = None,
-             target_group_arns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             update_policy: Optional[pulumi.Input['ElastigroupUpdatePolicyArgs']] = None,
-             user_data: Optional[pulumi.Input[str]] = None,
-             utilize_commitments: Optional[pulumi.Input[bool]] = None,
-             utilize_reserved_instances: Optional[pulumi.Input[bool]] = None,
-             wait_for_capacity: Optional[pulumi.Input[int]] = None,
-             wait_for_capacity_timeout: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if fallback_to_ondemand is None and 'fallbackToOndemand' in kwargs:
-            fallback_to_ondemand = kwargs['fallbackToOndemand']
-        if fallback_to_ondemand is None:
-            raise TypeError("Missing 'fallback_to_ondemand' argument")
-        if orientation is None:
-            raise TypeError("Missing 'orientation' argument")
-        if product is None:
-            raise TypeError("Missing 'product' argument")
-        if security_groups is None and 'securityGroups' in kwargs:
-            security_groups = kwargs['securityGroups']
-        if security_groups is None:
-            raise TypeError("Missing 'security_groups' argument")
-        if availability_zones is None and 'availabilityZones' in kwargs:
-            availability_zones = kwargs['availabilityZones']
-        if block_devices_mode is None and 'blockDevicesMode' in kwargs:
-            block_devices_mode = kwargs['blockDevicesMode']
-        if capacity_unit is None and 'capacityUnit' in kwargs:
-            capacity_unit = kwargs['capacityUnit']
-        if consider_od_pricing is None and 'considerOdPricing' in kwargs:
-            consider_od_pricing = kwargs['considerOdPricing']
-        if cpu_credits is None and 'cpuCredits' in kwargs:
-            cpu_credits = kwargs['cpuCredits']
-        if cpu_options is None and 'cpuOptions' in kwargs:
-            cpu_options = kwargs['cpuOptions']
-        if desired_capacity is None and 'desiredCapacity' in kwargs:
-            desired_capacity = kwargs['desiredCapacity']
-        if draining_timeout is None and 'drainingTimeout' in kwargs:
-            draining_timeout = kwargs['drainingTimeout']
-        if ebs_block_devices is None and 'ebsBlockDevices' in kwargs:
-            ebs_block_devices = kwargs['ebsBlockDevices']
-        if ebs_optimized is None and 'ebsOptimized' in kwargs:
-            ebs_optimized = kwargs['ebsOptimized']
-        if elastic_ips is None and 'elasticIps' in kwargs:
-            elastic_ips = kwargs['elasticIps']
-        if elastic_load_balancers is None and 'elasticLoadBalancers' in kwargs:
-            elastic_load_balancers = kwargs['elasticLoadBalancers']
-        if enable_monitoring is None and 'enableMonitoring' in kwargs:
-            enable_monitoring = kwargs['enableMonitoring']
-        if ephemeral_block_devices is None and 'ephemeralBlockDevices' in kwargs:
-            ephemeral_block_devices = kwargs['ephemeralBlockDevices']
-        if health_check_grace_period is None and 'healthCheckGracePeriod' in kwargs:
-            health_check_grace_period = kwargs['healthCheckGracePeriod']
-        if health_check_type is None and 'healthCheckType' in kwargs:
-            health_check_type = kwargs['healthCheckType']
-        if health_check_unhealthy_duration_before_replacement is None and 'healthCheckUnhealthyDurationBeforeReplacement' in kwargs:
-            health_check_unhealthy_duration_before_replacement = kwargs['healthCheckUnhealthyDurationBeforeReplacement']
-        if iam_instance_profile is None and 'iamInstanceProfile' in kwargs:
-            iam_instance_profile = kwargs['iamInstanceProfile']
-        if image_id is None and 'imageId' in kwargs:
-            image_id = kwargs['imageId']
-        if immediate_od_recover_threshold is None and 'immediateOdRecoverThreshold' in kwargs:
-            immediate_od_recover_threshold = kwargs['immediateOdRecoverThreshold']
-        if instance_types_ondemand is None and 'instanceTypesOndemand' in kwargs:
-            instance_types_ondemand = kwargs['instanceTypesOndemand']
-        if instance_types_preferred_spots is None and 'instanceTypesPreferredSpots' in kwargs:
-            instance_types_preferred_spots = kwargs['instanceTypesPreferredSpots']
-        if instance_types_spots is None and 'instanceTypesSpots' in kwargs:
-            instance_types_spots = kwargs['instanceTypesSpots']
-        if instance_types_weights is None and 'instanceTypesWeights' in kwargs:
-            instance_types_weights = kwargs['instanceTypesWeights']
-        if integration_beanstalk is None and 'integrationBeanstalk' in kwargs:
-            integration_beanstalk = kwargs['integrationBeanstalk']
-        if integration_codedeploy is None and 'integrationCodedeploy' in kwargs:
-            integration_codedeploy = kwargs['integrationCodedeploy']
-        if integration_docker_swarm is None and 'integrationDockerSwarm' in kwargs:
-            integration_docker_swarm = kwargs['integrationDockerSwarm']
-        if integration_ecs is None and 'integrationEcs' in kwargs:
-            integration_ecs = kwargs['integrationEcs']
-        if integration_gitlab is None and 'integrationGitlab' in kwargs:
-            integration_gitlab = kwargs['integrationGitlab']
-        if integration_kubernetes is None and 'integrationKubernetes' in kwargs:
-            integration_kubernetes = kwargs['integrationKubernetes']
-        if integration_mesosphere is None and 'integrationMesosphere' in kwargs:
-            integration_mesosphere = kwargs['integrationMesosphere']
-        if integration_multai_runtime is None and 'integrationMultaiRuntime' in kwargs:
-            integration_multai_runtime = kwargs['integrationMultaiRuntime']
-        if integration_nomad is None and 'integrationNomad' in kwargs:
-            integration_nomad = kwargs['integrationNomad']
-        if integration_rancher is None and 'integrationRancher' in kwargs:
-            integration_rancher = kwargs['integrationRancher']
-        if integration_route53 is None and 'integrationRoute53' in kwargs:
-            integration_route53 = kwargs['integrationRoute53']
-        if key_name is None and 'keyName' in kwargs:
-            key_name = kwargs['keyName']
-        if lifetime_period is None and 'lifetimePeriod' in kwargs:
-            lifetime_period = kwargs['lifetimePeriod']
-        if max_size is None and 'maxSize' in kwargs:
-            max_size = kwargs['maxSize']
-        if metadata_options is None and 'metadataOptions' in kwargs:
-            metadata_options = kwargs['metadataOptions']
-        if min_size is None and 'minSize' in kwargs:
-            min_size = kwargs['minSize']
-        if minimum_instance_lifetime is None and 'minimumInstanceLifetime' in kwargs:
-            minimum_instance_lifetime = kwargs['minimumInstanceLifetime']
-        if multai_target_sets is None and 'multaiTargetSets' in kwargs:
-            multai_target_sets = kwargs['multaiTargetSets']
-        if multiple_metrics is None and 'multipleMetrics' in kwargs:
-            multiple_metrics = kwargs['multipleMetrics']
-        if network_interfaces is None and 'networkInterfaces' in kwargs:
-            network_interfaces = kwargs['networkInterfaces']
-        if on_demand_types is None and 'onDemandTypes' in kwargs:
-            on_demand_types = kwargs['onDemandTypes']
-        if ondemand_count is None and 'ondemandCount' in kwargs:
-            ondemand_count = kwargs['ondemandCount']
-        if persist_block_devices is None and 'persistBlockDevices' in kwargs:
-            persist_block_devices = kwargs['persistBlockDevices']
-        if persist_private_ip is None and 'persistPrivateIp' in kwargs:
-            persist_private_ip = kwargs['persistPrivateIp']
-        if persist_root_device is None and 'persistRootDevice' in kwargs:
-            persist_root_device = kwargs['persistRootDevice']
-        if placement_tenancy is None and 'placementTenancy' in kwargs:
-            placement_tenancy = kwargs['placementTenancy']
-        if preferred_availability_zones is None and 'preferredAvailabilityZones' in kwargs:
-            preferred_availability_zones = kwargs['preferredAvailabilityZones']
-        if private_ips is None and 'privateIps' in kwargs:
-            private_ips = kwargs['privateIps']
-        if resource_requirements is None and 'resourceRequirements' in kwargs:
-            resource_requirements = kwargs['resourceRequirements']
-        if resource_tag_specifications is None and 'resourceTagSpecifications' in kwargs:
-            resource_tag_specifications = kwargs['resourceTagSpecifications']
-        if revert_to_spot is None and 'revertToSpot' in kwargs:
-            revert_to_spot = kwargs['revertToSpot']
-        if scaling_down_policies is None and 'scalingDownPolicies' in kwargs:
-            scaling_down_policies = kwargs['scalingDownPolicies']
-        if scaling_strategies is None and 'scalingStrategies' in kwargs:
-            scaling_strategies = kwargs['scalingStrategies']
-        if scaling_target_policies is None and 'scalingTargetPolicies' in kwargs:
-            scaling_target_policies = kwargs['scalingTargetPolicies']
-        if scaling_up_policies is None and 'scalingUpPolicies' in kwargs:
-            scaling_up_policies = kwargs['scalingUpPolicies']
-        if scheduled_tasks is None and 'scheduledTasks' in kwargs:
-            scheduled_tasks = kwargs['scheduledTasks']
-        if shutdown_script is None and 'shutdownScript' in kwargs:
-            shutdown_script = kwargs['shutdownScript']
-        if spot_percentage is None and 'spotPercentage' in kwargs:
-            spot_percentage = kwargs['spotPercentage']
-        if stateful_deallocation is None and 'statefulDeallocation' in kwargs:
-            stateful_deallocation = kwargs['statefulDeallocation']
-        if stateful_instance_actions is None and 'statefulInstanceActions' in kwargs:
-            stateful_instance_actions = kwargs['statefulInstanceActions']
-        if subnet_ids is None and 'subnetIds' in kwargs:
-            subnet_ids = kwargs['subnetIds']
-        if target_group_arns is None and 'targetGroupArns' in kwargs:
-            target_group_arns = kwargs['targetGroupArns']
-        if update_policy is None and 'updatePolicy' in kwargs:
-            update_policy = kwargs['updatePolicy']
-        if user_data is None and 'userData' in kwargs:
-            user_data = kwargs['userData']
-        if utilize_commitments is None and 'utilizeCommitments' in kwargs:
-            utilize_commitments = kwargs['utilizeCommitments']
-        if utilize_reserved_instances is None and 'utilizeReservedInstances' in kwargs:
-            utilize_reserved_instances = kwargs['utilizeReservedInstances']
-        if wait_for_capacity is None and 'waitForCapacity' in kwargs:
-            wait_for_capacity = kwargs['waitForCapacity']
-        if wait_for_capacity_timeout is None and 'waitForCapacityTimeout' in kwargs:
-            wait_for_capacity_timeout = kwargs['waitForCapacityTimeout']
-
-        _setter("fallback_to_ondemand", fallback_to_ondemand)
-        _setter("orientation", orientation)
-        _setter("product", product)
-        _setter("security_groups", security_groups)
+        pulumi.set(__self__, "fallback_to_ondemand", fallback_to_ondemand)
+        pulumi.set(__self__, "orientation", orientation)
+        pulumi.set(__self__, "product", product)
+        pulumi.set(__self__, "security_groups", security_groups)
         if availability_zones is not None:
-            _setter("availability_zones", availability_zones)
+            pulumi.set(__self__, "availability_zones", availability_zones)
         if block_devices_mode is not None:
-            _setter("block_devices_mode", block_devices_mode)
+            pulumi.set(__self__, "block_devices_mode", block_devices_mode)
         if capacity_unit is not None:
-            _setter("capacity_unit", capacity_unit)
+            pulumi.set(__self__, "capacity_unit", capacity_unit)
         if consider_od_pricing is not None:
-            _setter("consider_od_pricing", consider_od_pricing)
+            pulumi.set(__self__, "consider_od_pricing", consider_od_pricing)
         if cpu_credits is not None:
-            _setter("cpu_credits", cpu_credits)
+            pulumi.set(__self__, "cpu_credits", cpu_credits)
         if cpu_options is not None:
-            _setter("cpu_options", cpu_options)
+            pulumi.set(__self__, "cpu_options", cpu_options)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if desired_capacity is not None:
-            _setter("desired_capacity", desired_capacity)
+            pulumi.set(__self__, "desired_capacity", desired_capacity)
         if draining_timeout is not None:
-            _setter("draining_timeout", draining_timeout)
+            pulumi.set(__self__, "draining_timeout", draining_timeout)
         if ebs_block_devices is not None:
-            _setter("ebs_block_devices", ebs_block_devices)
+            pulumi.set(__self__, "ebs_block_devices", ebs_block_devices)
         if ebs_optimized is not None:
-            _setter("ebs_optimized", ebs_optimized)
+            pulumi.set(__self__, "ebs_optimized", ebs_optimized)
         if elastic_ips is not None:
-            _setter("elastic_ips", elastic_ips)
+            pulumi.set(__self__, "elastic_ips", elastic_ips)
         if elastic_load_balancers is not None:
-            _setter("elastic_load_balancers", elastic_load_balancers)
+            pulumi.set(__self__, "elastic_load_balancers", elastic_load_balancers)
         if enable_monitoring is not None:
-            _setter("enable_monitoring", enable_monitoring)
+            pulumi.set(__self__, "enable_monitoring", enable_monitoring)
         if ephemeral_block_devices is not None:
-            _setter("ephemeral_block_devices", ephemeral_block_devices)
+            pulumi.set(__self__, "ephemeral_block_devices", ephemeral_block_devices)
         if health_check_grace_period is not None:
-            _setter("health_check_grace_period", health_check_grace_period)
+            pulumi.set(__self__, "health_check_grace_period", health_check_grace_period)
         if health_check_type is not None:
-            _setter("health_check_type", health_check_type)
+            pulumi.set(__self__, "health_check_type", health_check_type)
         if health_check_unhealthy_duration_before_replacement is not None:
-            _setter("health_check_unhealthy_duration_before_replacement", health_check_unhealthy_duration_before_replacement)
+            pulumi.set(__self__, "health_check_unhealthy_duration_before_replacement", health_check_unhealthy_duration_before_replacement)
         if iam_instance_profile is not None:
-            _setter("iam_instance_profile", iam_instance_profile)
+            pulumi.set(__self__, "iam_instance_profile", iam_instance_profile)
         if image_id is not None:
-            _setter("image_id", image_id)
+            pulumi.set(__self__, "image_id", image_id)
         if images is not None:
-            _setter("images", images)
+            pulumi.set(__self__, "images", images)
         if immediate_od_recover_threshold is not None:
-            _setter("immediate_od_recover_threshold", immediate_od_recover_threshold)
+            pulumi.set(__self__, "immediate_od_recover_threshold", immediate_od_recover_threshold)
         if instance_types_ondemand is not None:
-            _setter("instance_types_ondemand", instance_types_ondemand)
+            pulumi.set(__self__, "instance_types_ondemand", instance_types_ondemand)
         if instance_types_preferred_spots is not None:
-            _setter("instance_types_preferred_spots", instance_types_preferred_spots)
+            pulumi.set(__self__, "instance_types_preferred_spots", instance_types_preferred_spots)
         if instance_types_spots is not None:
-            _setter("instance_types_spots", instance_types_spots)
+            pulumi.set(__self__, "instance_types_spots", instance_types_spots)
         if instance_types_weights is not None:
-            _setter("instance_types_weights", instance_types_weights)
+            pulumi.set(__self__, "instance_types_weights", instance_types_weights)
         if integration_beanstalk is not None:
-            _setter("integration_beanstalk", integration_beanstalk)
+            pulumi.set(__self__, "integration_beanstalk", integration_beanstalk)
         if integration_codedeploy is not None:
-            _setter("integration_codedeploy", integration_codedeploy)
+            pulumi.set(__self__, "integration_codedeploy", integration_codedeploy)
         if integration_docker_swarm is not None:
-            _setter("integration_docker_swarm", integration_docker_swarm)
+            pulumi.set(__self__, "integration_docker_swarm", integration_docker_swarm)
         if integration_ecs is not None:
-            _setter("integration_ecs", integration_ecs)
+            pulumi.set(__self__, "integration_ecs", integration_ecs)
         if integration_gitlab is not None:
-            _setter("integration_gitlab", integration_gitlab)
+            pulumi.set(__self__, "integration_gitlab", integration_gitlab)
         if integration_kubernetes is not None:
-            _setter("integration_kubernetes", integration_kubernetes)
+            pulumi.set(__self__, "integration_kubernetes", integration_kubernetes)
         if integration_mesosphere is not None:
-            _setter("integration_mesosphere", integration_mesosphere)
+            pulumi.set(__self__, "integration_mesosphere", integration_mesosphere)
         if integration_multai_runtime is not None:
-            _setter("integration_multai_runtime", integration_multai_runtime)
+            pulumi.set(__self__, "integration_multai_runtime", integration_multai_runtime)
         if integration_nomad is not None:
-            _setter("integration_nomad", integration_nomad)
+            pulumi.set(__self__, "integration_nomad", integration_nomad)
         if integration_rancher is not None:
-            _setter("integration_rancher", integration_rancher)
+            pulumi.set(__self__, "integration_rancher", integration_rancher)
         if integration_route53 is not None:
-            _setter("integration_route53", integration_route53)
+            pulumi.set(__self__, "integration_route53", integration_route53)
         if itfs is not None:
-            _setter("itfs", itfs)
+            pulumi.set(__self__, "itfs", itfs)
         if key_name is not None:
-            _setter("key_name", key_name)
+            pulumi.set(__self__, "key_name", key_name)
         if lifetime_period is not None:
-            _setter("lifetime_period", lifetime_period)
+            pulumi.set(__self__, "lifetime_period", lifetime_period)
         if max_size is not None:
-            _setter("max_size", max_size)
+            pulumi.set(__self__, "max_size", max_size)
         if metadata_options is not None:
-            _setter("metadata_options", metadata_options)
+            pulumi.set(__self__, "metadata_options", metadata_options)
         if min_size is not None:
-            _setter("min_size", min_size)
+            pulumi.set(__self__, "min_size", min_size)
         if minimum_instance_lifetime is not None:
-            _setter("minimum_instance_lifetime", minimum_instance_lifetime)
+            pulumi.set(__self__, "minimum_instance_lifetime", minimum_instance_lifetime)
         if multai_target_sets is not None:
-            _setter("multai_target_sets", multai_target_sets)
+            pulumi.set(__self__, "multai_target_sets", multai_target_sets)
         if multiple_metrics is not None:
-            _setter("multiple_metrics", multiple_metrics)
+            pulumi.set(__self__, "multiple_metrics", multiple_metrics)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if network_interfaces is not None:
-            _setter("network_interfaces", network_interfaces)
+            pulumi.set(__self__, "network_interfaces", network_interfaces)
         if on_demand_types is not None:
-            _setter("on_demand_types", on_demand_types)
+            pulumi.set(__self__, "on_demand_types", on_demand_types)
         if ondemand_count is not None:
-            _setter("ondemand_count", ondemand_count)
+            pulumi.set(__self__, "ondemand_count", ondemand_count)
         if persist_block_devices is not None:
-            _setter("persist_block_devices", persist_block_devices)
+            pulumi.set(__self__, "persist_block_devices", persist_block_devices)
         if persist_private_ip is not None:
-            _setter("persist_private_ip", persist_private_ip)
+            pulumi.set(__self__, "persist_private_ip", persist_private_ip)
         if persist_root_device is not None:
-            _setter("persist_root_device", persist_root_device)
+            pulumi.set(__self__, "persist_root_device", persist_root_device)
         if placement_tenancy is not None:
-            _setter("placement_tenancy", placement_tenancy)
+            pulumi.set(__self__, "placement_tenancy", placement_tenancy)
         if preferred_availability_zones is not None:
-            _setter("preferred_availability_zones", preferred_availability_zones)
+            pulumi.set(__self__, "preferred_availability_zones", preferred_availability_zones)
         if private_ips is not None:
-            _setter("private_ips", private_ips)
+            pulumi.set(__self__, "private_ips", private_ips)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
         if resource_requirements is not None:
-            _setter("resource_requirements", resource_requirements)
+            pulumi.set(__self__, "resource_requirements", resource_requirements)
         if resource_tag_specifications is not None:
-            _setter("resource_tag_specifications", resource_tag_specifications)
+            pulumi.set(__self__, "resource_tag_specifications", resource_tag_specifications)
         if revert_to_spot is not None:
-            _setter("revert_to_spot", revert_to_spot)
+            pulumi.set(__self__, "revert_to_spot", revert_to_spot)
         if scaling_down_policies is not None:
-            _setter("scaling_down_policies", scaling_down_policies)
+            pulumi.set(__self__, "scaling_down_policies", scaling_down_policies)
         if scaling_strategies is not None:
-            _setter("scaling_strategies", scaling_strategies)
+            pulumi.set(__self__, "scaling_strategies", scaling_strategies)
         if scaling_target_policies is not None:
-            _setter("scaling_target_policies", scaling_target_policies)
+            pulumi.set(__self__, "scaling_target_policies", scaling_target_policies)
         if scaling_up_policies is not None:
-            _setter("scaling_up_policies", scaling_up_policies)
+            pulumi.set(__self__, "scaling_up_policies", scaling_up_policies)
         if scheduled_tasks is not None:
-            _setter("scheduled_tasks", scheduled_tasks)
+            pulumi.set(__self__, "scheduled_tasks", scheduled_tasks)
         if shutdown_script is not None:
-            _setter("shutdown_script", shutdown_script)
+            pulumi.set(__self__, "shutdown_script", shutdown_script)
         if signals is not None:
-            _setter("signals", signals)
+            pulumi.set(__self__, "signals", signals)
         if spot_percentage is not None:
-            _setter("spot_percentage", spot_percentage)
+            pulumi.set(__self__, "spot_percentage", spot_percentage)
         if stateful_deallocation is not None:
-            _setter("stateful_deallocation", stateful_deallocation)
+            pulumi.set(__self__, "stateful_deallocation", stateful_deallocation)
         if stateful_instance_actions is not None:
-            _setter("stateful_instance_actions", stateful_instance_actions)
+            pulumi.set(__self__, "stateful_instance_actions", stateful_instance_actions)
         if subnet_ids is not None:
-            _setter("subnet_ids", subnet_ids)
+            pulumi.set(__self__, "subnet_ids", subnet_ids)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if target_group_arns is not None:
-            _setter("target_group_arns", target_group_arns)
+            pulumi.set(__self__, "target_group_arns", target_group_arns)
         if update_policy is not None:
-            _setter("update_policy", update_policy)
+            pulumi.set(__self__, "update_policy", update_policy)
         if user_data is not None:
-            _setter("user_data", user_data)
+            pulumi.set(__self__, "user_data", user_data)
         if utilize_commitments is not None:
-            _setter("utilize_commitments", utilize_commitments)
+            pulumi.set(__self__, "utilize_commitments", utilize_commitments)
         if utilize_reserved_instances is not None:
-            _setter("utilize_reserved_instances", utilize_reserved_instances)
+            pulumi.set(__self__, "utilize_reserved_instances", utilize_reserved_instances)
         if wait_for_capacity is not None:
-            _setter("wait_for_capacity", wait_for_capacity)
+            pulumi.set(__self__, "wait_for_capacity", wait_for_capacity)
         if wait_for_capacity_timeout is not None:
-            _setter("wait_for_capacity_timeout", wait_for_capacity_timeout)
+            pulumi.set(__self__, "wait_for_capacity_timeout", wait_for_capacity_timeout)
 
     @property
     @pulumi.getter(name="fallbackToOndemand")
@@ -1797,495 +1466,172 @@ class _ElastigroupState:
         :param pulumi.Input[int] wait_for_capacity: Minimum number of instances in a 'HEALTHY' status that is required before continuing. This is ignored when updating with blue/green deployment. Cannot exceed `desired_capacity`.
         :param pulumi.Input[int] wait_for_capacity_timeout: Time (seconds) to wait for instances to report a 'HEALTHY' status. Useful for plans with multiple dependencies that take some time to initialize. Leave undefined or set to `0` to indicate no wait. This is ignored when updating with blue/green deployment.
         """
-        _ElastigroupState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            availability_zones=availability_zones,
-            block_devices_mode=block_devices_mode,
-            capacity_unit=capacity_unit,
-            consider_od_pricing=consider_od_pricing,
-            cpu_credits=cpu_credits,
-            cpu_options=cpu_options,
-            description=description,
-            desired_capacity=desired_capacity,
-            draining_timeout=draining_timeout,
-            ebs_block_devices=ebs_block_devices,
-            ebs_optimized=ebs_optimized,
-            elastic_ips=elastic_ips,
-            elastic_load_balancers=elastic_load_balancers,
-            enable_monitoring=enable_monitoring,
-            ephemeral_block_devices=ephemeral_block_devices,
-            fallback_to_ondemand=fallback_to_ondemand,
-            health_check_grace_period=health_check_grace_period,
-            health_check_type=health_check_type,
-            health_check_unhealthy_duration_before_replacement=health_check_unhealthy_duration_before_replacement,
-            iam_instance_profile=iam_instance_profile,
-            image_id=image_id,
-            images=images,
-            immediate_od_recover_threshold=immediate_od_recover_threshold,
-            instance_types_ondemand=instance_types_ondemand,
-            instance_types_preferred_spots=instance_types_preferred_spots,
-            instance_types_spots=instance_types_spots,
-            instance_types_weights=instance_types_weights,
-            integration_beanstalk=integration_beanstalk,
-            integration_codedeploy=integration_codedeploy,
-            integration_docker_swarm=integration_docker_swarm,
-            integration_ecs=integration_ecs,
-            integration_gitlab=integration_gitlab,
-            integration_kubernetes=integration_kubernetes,
-            integration_mesosphere=integration_mesosphere,
-            integration_multai_runtime=integration_multai_runtime,
-            integration_nomad=integration_nomad,
-            integration_rancher=integration_rancher,
-            integration_route53=integration_route53,
-            itfs=itfs,
-            key_name=key_name,
-            lifetime_period=lifetime_period,
-            max_size=max_size,
-            metadata_options=metadata_options,
-            min_size=min_size,
-            minimum_instance_lifetime=minimum_instance_lifetime,
-            multai_target_sets=multai_target_sets,
-            multiple_metrics=multiple_metrics,
-            name=name,
-            network_interfaces=network_interfaces,
-            on_demand_types=on_demand_types,
-            ondemand_count=ondemand_count,
-            orientation=orientation,
-            persist_block_devices=persist_block_devices,
-            persist_private_ip=persist_private_ip,
-            persist_root_device=persist_root_device,
-            placement_tenancy=placement_tenancy,
-            preferred_availability_zones=preferred_availability_zones,
-            private_ips=private_ips,
-            product=product,
-            region=region,
-            resource_requirements=resource_requirements,
-            resource_tag_specifications=resource_tag_specifications,
-            revert_to_spot=revert_to_spot,
-            scaling_down_policies=scaling_down_policies,
-            scaling_strategies=scaling_strategies,
-            scaling_target_policies=scaling_target_policies,
-            scaling_up_policies=scaling_up_policies,
-            scheduled_tasks=scheduled_tasks,
-            security_groups=security_groups,
-            shutdown_script=shutdown_script,
-            signals=signals,
-            spot_percentage=spot_percentage,
-            stateful_deallocation=stateful_deallocation,
-            stateful_instance_actions=stateful_instance_actions,
-            subnet_ids=subnet_ids,
-            tags=tags,
-            target_group_arns=target_group_arns,
-            update_policy=update_policy,
-            user_data=user_data,
-            utilize_commitments=utilize_commitments,
-            utilize_reserved_instances=utilize_reserved_instances,
-            wait_for_capacity=wait_for_capacity,
-            wait_for_capacity_timeout=wait_for_capacity_timeout,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             availability_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             block_devices_mode: Optional[pulumi.Input[str]] = None,
-             capacity_unit: Optional[pulumi.Input[str]] = None,
-             consider_od_pricing: Optional[pulumi.Input[bool]] = None,
-             cpu_credits: Optional[pulumi.Input[str]] = None,
-             cpu_options: Optional[pulumi.Input['ElastigroupCpuOptionsArgs']] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             desired_capacity: Optional[pulumi.Input[int]] = None,
-             draining_timeout: Optional[pulumi.Input[int]] = None,
-             ebs_block_devices: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupEbsBlockDeviceArgs']]]] = None,
-             ebs_optimized: Optional[pulumi.Input[bool]] = None,
-             elastic_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             elastic_load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             enable_monitoring: Optional[pulumi.Input[bool]] = None,
-             ephemeral_block_devices: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupEphemeralBlockDeviceArgs']]]] = None,
-             fallback_to_ondemand: Optional[pulumi.Input[bool]] = None,
-             health_check_grace_period: Optional[pulumi.Input[int]] = None,
-             health_check_type: Optional[pulumi.Input[str]] = None,
-             health_check_unhealthy_duration_before_replacement: Optional[pulumi.Input[int]] = None,
-             iam_instance_profile: Optional[pulumi.Input[str]] = None,
-             image_id: Optional[pulumi.Input[str]] = None,
-             images: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupImageArgs']]]] = None,
-             immediate_od_recover_threshold: Optional[pulumi.Input[int]] = None,
-             instance_types_ondemand: Optional[pulumi.Input[str]] = None,
-             instance_types_preferred_spots: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             instance_types_spots: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             instance_types_weights: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupInstanceTypesWeightArgs']]]] = None,
-             integration_beanstalk: Optional[pulumi.Input['ElastigroupIntegrationBeanstalkArgs']] = None,
-             integration_codedeploy: Optional[pulumi.Input['ElastigroupIntegrationCodedeployArgs']] = None,
-             integration_docker_swarm: Optional[pulumi.Input['ElastigroupIntegrationDockerSwarmArgs']] = None,
-             integration_ecs: Optional[pulumi.Input['ElastigroupIntegrationEcsArgs']] = None,
-             integration_gitlab: Optional[pulumi.Input['ElastigroupIntegrationGitlabArgs']] = None,
-             integration_kubernetes: Optional[pulumi.Input['ElastigroupIntegrationKubernetesArgs']] = None,
-             integration_mesosphere: Optional[pulumi.Input['ElastigroupIntegrationMesosphereArgs']] = None,
-             integration_multai_runtime: Optional[pulumi.Input['ElastigroupIntegrationMultaiRuntimeArgs']] = None,
-             integration_nomad: Optional[pulumi.Input['ElastigroupIntegrationNomadArgs']] = None,
-             integration_rancher: Optional[pulumi.Input['ElastigroupIntegrationRancherArgs']] = None,
-             integration_route53: Optional[pulumi.Input['ElastigroupIntegrationRoute53Args']] = None,
-             itfs: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupItfArgs']]]] = None,
-             key_name: Optional[pulumi.Input[str]] = None,
-             lifetime_period: Optional[pulumi.Input[str]] = None,
-             max_size: Optional[pulumi.Input[int]] = None,
-             metadata_options: Optional[pulumi.Input['ElastigroupMetadataOptionsArgs']] = None,
-             min_size: Optional[pulumi.Input[int]] = None,
-             minimum_instance_lifetime: Optional[pulumi.Input[int]] = None,
-             multai_target_sets: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupMultaiTargetSetArgs']]]] = None,
-             multiple_metrics: Optional[pulumi.Input['ElastigroupMultipleMetricsArgs']] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupNetworkInterfaceArgs']]]] = None,
-             on_demand_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             ondemand_count: Optional[pulumi.Input[int]] = None,
-             orientation: Optional[pulumi.Input[str]] = None,
-             persist_block_devices: Optional[pulumi.Input[bool]] = None,
-             persist_private_ip: Optional[pulumi.Input[bool]] = None,
-             persist_root_device: Optional[pulumi.Input[bool]] = None,
-             placement_tenancy: Optional[pulumi.Input[str]] = None,
-             preferred_availability_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             private_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             product: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             resource_requirements: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupResourceRequirementArgs']]]] = None,
-             resource_tag_specifications: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupResourceTagSpecificationArgs']]]] = None,
-             revert_to_spot: Optional[pulumi.Input['ElastigroupRevertToSpotArgs']] = None,
-             scaling_down_policies: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingDownPolicyArgs']]]] = None,
-             scaling_strategies: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingStrategyArgs']]]] = None,
-             scaling_target_policies: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingTargetPolicyArgs']]]] = None,
-             scaling_up_policies: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingUpPolicyArgs']]]] = None,
-             scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScheduledTaskArgs']]]] = None,
-             security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             shutdown_script: Optional[pulumi.Input[str]] = None,
-             signals: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupSignalArgs']]]] = None,
-             spot_percentage: Optional[pulumi.Input[int]] = None,
-             stateful_deallocation: Optional[pulumi.Input['ElastigroupStatefulDeallocationArgs']] = None,
-             stateful_instance_actions: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupStatefulInstanceActionArgs']]]] = None,
-             subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             tags: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupTagArgs']]]] = None,
-             target_group_arns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             update_policy: Optional[pulumi.Input['ElastigroupUpdatePolicyArgs']] = None,
-             user_data: Optional[pulumi.Input[str]] = None,
-             utilize_commitments: Optional[pulumi.Input[bool]] = None,
-             utilize_reserved_instances: Optional[pulumi.Input[bool]] = None,
-             wait_for_capacity: Optional[pulumi.Input[int]] = None,
-             wait_for_capacity_timeout: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if availability_zones is None and 'availabilityZones' in kwargs:
-            availability_zones = kwargs['availabilityZones']
-        if block_devices_mode is None and 'blockDevicesMode' in kwargs:
-            block_devices_mode = kwargs['blockDevicesMode']
-        if capacity_unit is None and 'capacityUnit' in kwargs:
-            capacity_unit = kwargs['capacityUnit']
-        if consider_od_pricing is None and 'considerOdPricing' in kwargs:
-            consider_od_pricing = kwargs['considerOdPricing']
-        if cpu_credits is None and 'cpuCredits' in kwargs:
-            cpu_credits = kwargs['cpuCredits']
-        if cpu_options is None and 'cpuOptions' in kwargs:
-            cpu_options = kwargs['cpuOptions']
-        if desired_capacity is None and 'desiredCapacity' in kwargs:
-            desired_capacity = kwargs['desiredCapacity']
-        if draining_timeout is None and 'drainingTimeout' in kwargs:
-            draining_timeout = kwargs['drainingTimeout']
-        if ebs_block_devices is None and 'ebsBlockDevices' in kwargs:
-            ebs_block_devices = kwargs['ebsBlockDevices']
-        if ebs_optimized is None and 'ebsOptimized' in kwargs:
-            ebs_optimized = kwargs['ebsOptimized']
-        if elastic_ips is None and 'elasticIps' in kwargs:
-            elastic_ips = kwargs['elasticIps']
-        if elastic_load_balancers is None and 'elasticLoadBalancers' in kwargs:
-            elastic_load_balancers = kwargs['elasticLoadBalancers']
-        if enable_monitoring is None and 'enableMonitoring' in kwargs:
-            enable_monitoring = kwargs['enableMonitoring']
-        if ephemeral_block_devices is None and 'ephemeralBlockDevices' in kwargs:
-            ephemeral_block_devices = kwargs['ephemeralBlockDevices']
-        if fallback_to_ondemand is None and 'fallbackToOndemand' in kwargs:
-            fallback_to_ondemand = kwargs['fallbackToOndemand']
-        if health_check_grace_period is None and 'healthCheckGracePeriod' in kwargs:
-            health_check_grace_period = kwargs['healthCheckGracePeriod']
-        if health_check_type is None and 'healthCheckType' in kwargs:
-            health_check_type = kwargs['healthCheckType']
-        if health_check_unhealthy_duration_before_replacement is None and 'healthCheckUnhealthyDurationBeforeReplacement' in kwargs:
-            health_check_unhealthy_duration_before_replacement = kwargs['healthCheckUnhealthyDurationBeforeReplacement']
-        if iam_instance_profile is None and 'iamInstanceProfile' in kwargs:
-            iam_instance_profile = kwargs['iamInstanceProfile']
-        if image_id is None and 'imageId' in kwargs:
-            image_id = kwargs['imageId']
-        if immediate_od_recover_threshold is None and 'immediateOdRecoverThreshold' in kwargs:
-            immediate_od_recover_threshold = kwargs['immediateOdRecoverThreshold']
-        if instance_types_ondemand is None and 'instanceTypesOndemand' in kwargs:
-            instance_types_ondemand = kwargs['instanceTypesOndemand']
-        if instance_types_preferred_spots is None and 'instanceTypesPreferredSpots' in kwargs:
-            instance_types_preferred_spots = kwargs['instanceTypesPreferredSpots']
-        if instance_types_spots is None and 'instanceTypesSpots' in kwargs:
-            instance_types_spots = kwargs['instanceTypesSpots']
-        if instance_types_weights is None and 'instanceTypesWeights' in kwargs:
-            instance_types_weights = kwargs['instanceTypesWeights']
-        if integration_beanstalk is None and 'integrationBeanstalk' in kwargs:
-            integration_beanstalk = kwargs['integrationBeanstalk']
-        if integration_codedeploy is None and 'integrationCodedeploy' in kwargs:
-            integration_codedeploy = kwargs['integrationCodedeploy']
-        if integration_docker_swarm is None and 'integrationDockerSwarm' in kwargs:
-            integration_docker_swarm = kwargs['integrationDockerSwarm']
-        if integration_ecs is None and 'integrationEcs' in kwargs:
-            integration_ecs = kwargs['integrationEcs']
-        if integration_gitlab is None and 'integrationGitlab' in kwargs:
-            integration_gitlab = kwargs['integrationGitlab']
-        if integration_kubernetes is None and 'integrationKubernetes' in kwargs:
-            integration_kubernetes = kwargs['integrationKubernetes']
-        if integration_mesosphere is None and 'integrationMesosphere' in kwargs:
-            integration_mesosphere = kwargs['integrationMesosphere']
-        if integration_multai_runtime is None and 'integrationMultaiRuntime' in kwargs:
-            integration_multai_runtime = kwargs['integrationMultaiRuntime']
-        if integration_nomad is None and 'integrationNomad' in kwargs:
-            integration_nomad = kwargs['integrationNomad']
-        if integration_rancher is None and 'integrationRancher' in kwargs:
-            integration_rancher = kwargs['integrationRancher']
-        if integration_route53 is None and 'integrationRoute53' in kwargs:
-            integration_route53 = kwargs['integrationRoute53']
-        if key_name is None and 'keyName' in kwargs:
-            key_name = kwargs['keyName']
-        if lifetime_period is None and 'lifetimePeriod' in kwargs:
-            lifetime_period = kwargs['lifetimePeriod']
-        if max_size is None and 'maxSize' in kwargs:
-            max_size = kwargs['maxSize']
-        if metadata_options is None and 'metadataOptions' in kwargs:
-            metadata_options = kwargs['metadataOptions']
-        if min_size is None and 'minSize' in kwargs:
-            min_size = kwargs['minSize']
-        if minimum_instance_lifetime is None and 'minimumInstanceLifetime' in kwargs:
-            minimum_instance_lifetime = kwargs['minimumInstanceLifetime']
-        if multai_target_sets is None and 'multaiTargetSets' in kwargs:
-            multai_target_sets = kwargs['multaiTargetSets']
-        if multiple_metrics is None and 'multipleMetrics' in kwargs:
-            multiple_metrics = kwargs['multipleMetrics']
-        if network_interfaces is None and 'networkInterfaces' in kwargs:
-            network_interfaces = kwargs['networkInterfaces']
-        if on_demand_types is None and 'onDemandTypes' in kwargs:
-            on_demand_types = kwargs['onDemandTypes']
-        if ondemand_count is None and 'ondemandCount' in kwargs:
-            ondemand_count = kwargs['ondemandCount']
-        if persist_block_devices is None and 'persistBlockDevices' in kwargs:
-            persist_block_devices = kwargs['persistBlockDevices']
-        if persist_private_ip is None and 'persistPrivateIp' in kwargs:
-            persist_private_ip = kwargs['persistPrivateIp']
-        if persist_root_device is None and 'persistRootDevice' in kwargs:
-            persist_root_device = kwargs['persistRootDevice']
-        if placement_tenancy is None and 'placementTenancy' in kwargs:
-            placement_tenancy = kwargs['placementTenancy']
-        if preferred_availability_zones is None and 'preferredAvailabilityZones' in kwargs:
-            preferred_availability_zones = kwargs['preferredAvailabilityZones']
-        if private_ips is None and 'privateIps' in kwargs:
-            private_ips = kwargs['privateIps']
-        if resource_requirements is None and 'resourceRequirements' in kwargs:
-            resource_requirements = kwargs['resourceRequirements']
-        if resource_tag_specifications is None and 'resourceTagSpecifications' in kwargs:
-            resource_tag_specifications = kwargs['resourceTagSpecifications']
-        if revert_to_spot is None and 'revertToSpot' in kwargs:
-            revert_to_spot = kwargs['revertToSpot']
-        if scaling_down_policies is None and 'scalingDownPolicies' in kwargs:
-            scaling_down_policies = kwargs['scalingDownPolicies']
-        if scaling_strategies is None and 'scalingStrategies' in kwargs:
-            scaling_strategies = kwargs['scalingStrategies']
-        if scaling_target_policies is None and 'scalingTargetPolicies' in kwargs:
-            scaling_target_policies = kwargs['scalingTargetPolicies']
-        if scaling_up_policies is None and 'scalingUpPolicies' in kwargs:
-            scaling_up_policies = kwargs['scalingUpPolicies']
-        if scheduled_tasks is None and 'scheduledTasks' in kwargs:
-            scheduled_tasks = kwargs['scheduledTasks']
-        if security_groups is None and 'securityGroups' in kwargs:
-            security_groups = kwargs['securityGroups']
-        if shutdown_script is None and 'shutdownScript' in kwargs:
-            shutdown_script = kwargs['shutdownScript']
-        if spot_percentage is None and 'spotPercentage' in kwargs:
-            spot_percentage = kwargs['spotPercentage']
-        if stateful_deallocation is None and 'statefulDeallocation' in kwargs:
-            stateful_deallocation = kwargs['statefulDeallocation']
-        if stateful_instance_actions is None and 'statefulInstanceActions' in kwargs:
-            stateful_instance_actions = kwargs['statefulInstanceActions']
-        if subnet_ids is None and 'subnetIds' in kwargs:
-            subnet_ids = kwargs['subnetIds']
-        if target_group_arns is None and 'targetGroupArns' in kwargs:
-            target_group_arns = kwargs['targetGroupArns']
-        if update_policy is None and 'updatePolicy' in kwargs:
-            update_policy = kwargs['updatePolicy']
-        if user_data is None and 'userData' in kwargs:
-            user_data = kwargs['userData']
-        if utilize_commitments is None and 'utilizeCommitments' in kwargs:
-            utilize_commitments = kwargs['utilizeCommitments']
-        if utilize_reserved_instances is None and 'utilizeReservedInstances' in kwargs:
-            utilize_reserved_instances = kwargs['utilizeReservedInstances']
-        if wait_for_capacity is None and 'waitForCapacity' in kwargs:
-            wait_for_capacity = kwargs['waitForCapacity']
-        if wait_for_capacity_timeout is None and 'waitForCapacityTimeout' in kwargs:
-            wait_for_capacity_timeout = kwargs['waitForCapacityTimeout']
-
         if availability_zones is not None:
-            _setter("availability_zones", availability_zones)
+            pulumi.set(__self__, "availability_zones", availability_zones)
         if block_devices_mode is not None:
-            _setter("block_devices_mode", block_devices_mode)
+            pulumi.set(__self__, "block_devices_mode", block_devices_mode)
         if capacity_unit is not None:
-            _setter("capacity_unit", capacity_unit)
+            pulumi.set(__self__, "capacity_unit", capacity_unit)
         if consider_od_pricing is not None:
-            _setter("consider_od_pricing", consider_od_pricing)
+            pulumi.set(__self__, "consider_od_pricing", consider_od_pricing)
         if cpu_credits is not None:
-            _setter("cpu_credits", cpu_credits)
+            pulumi.set(__self__, "cpu_credits", cpu_credits)
         if cpu_options is not None:
-            _setter("cpu_options", cpu_options)
+            pulumi.set(__self__, "cpu_options", cpu_options)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if desired_capacity is not None:
-            _setter("desired_capacity", desired_capacity)
+            pulumi.set(__self__, "desired_capacity", desired_capacity)
         if draining_timeout is not None:
-            _setter("draining_timeout", draining_timeout)
+            pulumi.set(__self__, "draining_timeout", draining_timeout)
         if ebs_block_devices is not None:
-            _setter("ebs_block_devices", ebs_block_devices)
+            pulumi.set(__self__, "ebs_block_devices", ebs_block_devices)
         if ebs_optimized is not None:
-            _setter("ebs_optimized", ebs_optimized)
+            pulumi.set(__self__, "ebs_optimized", ebs_optimized)
         if elastic_ips is not None:
-            _setter("elastic_ips", elastic_ips)
+            pulumi.set(__self__, "elastic_ips", elastic_ips)
         if elastic_load_balancers is not None:
-            _setter("elastic_load_balancers", elastic_load_balancers)
+            pulumi.set(__self__, "elastic_load_balancers", elastic_load_balancers)
         if enable_monitoring is not None:
-            _setter("enable_monitoring", enable_monitoring)
+            pulumi.set(__self__, "enable_monitoring", enable_monitoring)
         if ephemeral_block_devices is not None:
-            _setter("ephemeral_block_devices", ephemeral_block_devices)
+            pulumi.set(__self__, "ephemeral_block_devices", ephemeral_block_devices)
         if fallback_to_ondemand is not None:
-            _setter("fallback_to_ondemand", fallback_to_ondemand)
+            pulumi.set(__self__, "fallback_to_ondemand", fallback_to_ondemand)
         if health_check_grace_period is not None:
-            _setter("health_check_grace_period", health_check_grace_period)
+            pulumi.set(__self__, "health_check_grace_period", health_check_grace_period)
         if health_check_type is not None:
-            _setter("health_check_type", health_check_type)
+            pulumi.set(__self__, "health_check_type", health_check_type)
         if health_check_unhealthy_duration_before_replacement is not None:
-            _setter("health_check_unhealthy_duration_before_replacement", health_check_unhealthy_duration_before_replacement)
+            pulumi.set(__self__, "health_check_unhealthy_duration_before_replacement", health_check_unhealthy_duration_before_replacement)
         if iam_instance_profile is not None:
-            _setter("iam_instance_profile", iam_instance_profile)
+            pulumi.set(__self__, "iam_instance_profile", iam_instance_profile)
         if image_id is not None:
-            _setter("image_id", image_id)
+            pulumi.set(__self__, "image_id", image_id)
         if images is not None:
-            _setter("images", images)
+            pulumi.set(__self__, "images", images)
         if immediate_od_recover_threshold is not None:
-            _setter("immediate_od_recover_threshold", immediate_od_recover_threshold)
+            pulumi.set(__self__, "immediate_od_recover_threshold", immediate_od_recover_threshold)
         if instance_types_ondemand is not None:
-            _setter("instance_types_ondemand", instance_types_ondemand)
+            pulumi.set(__self__, "instance_types_ondemand", instance_types_ondemand)
         if instance_types_preferred_spots is not None:
-            _setter("instance_types_preferred_spots", instance_types_preferred_spots)
+            pulumi.set(__self__, "instance_types_preferred_spots", instance_types_preferred_spots)
         if instance_types_spots is not None:
-            _setter("instance_types_spots", instance_types_spots)
+            pulumi.set(__self__, "instance_types_spots", instance_types_spots)
         if instance_types_weights is not None:
-            _setter("instance_types_weights", instance_types_weights)
+            pulumi.set(__self__, "instance_types_weights", instance_types_weights)
         if integration_beanstalk is not None:
-            _setter("integration_beanstalk", integration_beanstalk)
+            pulumi.set(__self__, "integration_beanstalk", integration_beanstalk)
         if integration_codedeploy is not None:
-            _setter("integration_codedeploy", integration_codedeploy)
+            pulumi.set(__self__, "integration_codedeploy", integration_codedeploy)
         if integration_docker_swarm is not None:
-            _setter("integration_docker_swarm", integration_docker_swarm)
+            pulumi.set(__self__, "integration_docker_swarm", integration_docker_swarm)
         if integration_ecs is not None:
-            _setter("integration_ecs", integration_ecs)
+            pulumi.set(__self__, "integration_ecs", integration_ecs)
         if integration_gitlab is not None:
-            _setter("integration_gitlab", integration_gitlab)
+            pulumi.set(__self__, "integration_gitlab", integration_gitlab)
         if integration_kubernetes is not None:
-            _setter("integration_kubernetes", integration_kubernetes)
+            pulumi.set(__self__, "integration_kubernetes", integration_kubernetes)
         if integration_mesosphere is not None:
-            _setter("integration_mesosphere", integration_mesosphere)
+            pulumi.set(__self__, "integration_mesosphere", integration_mesosphere)
         if integration_multai_runtime is not None:
-            _setter("integration_multai_runtime", integration_multai_runtime)
+            pulumi.set(__self__, "integration_multai_runtime", integration_multai_runtime)
         if integration_nomad is not None:
-            _setter("integration_nomad", integration_nomad)
+            pulumi.set(__self__, "integration_nomad", integration_nomad)
         if integration_rancher is not None:
-            _setter("integration_rancher", integration_rancher)
+            pulumi.set(__self__, "integration_rancher", integration_rancher)
         if integration_route53 is not None:
-            _setter("integration_route53", integration_route53)
+            pulumi.set(__self__, "integration_route53", integration_route53)
         if itfs is not None:
-            _setter("itfs", itfs)
+            pulumi.set(__self__, "itfs", itfs)
         if key_name is not None:
-            _setter("key_name", key_name)
+            pulumi.set(__self__, "key_name", key_name)
         if lifetime_period is not None:
-            _setter("lifetime_period", lifetime_period)
+            pulumi.set(__self__, "lifetime_period", lifetime_period)
         if max_size is not None:
-            _setter("max_size", max_size)
+            pulumi.set(__self__, "max_size", max_size)
         if metadata_options is not None:
-            _setter("metadata_options", metadata_options)
+            pulumi.set(__self__, "metadata_options", metadata_options)
         if min_size is not None:
-            _setter("min_size", min_size)
+            pulumi.set(__self__, "min_size", min_size)
         if minimum_instance_lifetime is not None:
-            _setter("minimum_instance_lifetime", minimum_instance_lifetime)
+            pulumi.set(__self__, "minimum_instance_lifetime", minimum_instance_lifetime)
         if multai_target_sets is not None:
-            _setter("multai_target_sets", multai_target_sets)
+            pulumi.set(__self__, "multai_target_sets", multai_target_sets)
         if multiple_metrics is not None:
-            _setter("multiple_metrics", multiple_metrics)
+            pulumi.set(__self__, "multiple_metrics", multiple_metrics)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if network_interfaces is not None:
-            _setter("network_interfaces", network_interfaces)
+            pulumi.set(__self__, "network_interfaces", network_interfaces)
         if on_demand_types is not None:
-            _setter("on_demand_types", on_demand_types)
+            pulumi.set(__self__, "on_demand_types", on_demand_types)
         if ondemand_count is not None:
-            _setter("ondemand_count", ondemand_count)
+            pulumi.set(__self__, "ondemand_count", ondemand_count)
         if orientation is not None:
-            _setter("orientation", orientation)
+            pulumi.set(__self__, "orientation", orientation)
         if persist_block_devices is not None:
-            _setter("persist_block_devices", persist_block_devices)
+            pulumi.set(__self__, "persist_block_devices", persist_block_devices)
         if persist_private_ip is not None:
-            _setter("persist_private_ip", persist_private_ip)
+            pulumi.set(__self__, "persist_private_ip", persist_private_ip)
         if persist_root_device is not None:
-            _setter("persist_root_device", persist_root_device)
+            pulumi.set(__self__, "persist_root_device", persist_root_device)
         if placement_tenancy is not None:
-            _setter("placement_tenancy", placement_tenancy)
+            pulumi.set(__self__, "placement_tenancy", placement_tenancy)
         if preferred_availability_zones is not None:
-            _setter("preferred_availability_zones", preferred_availability_zones)
+            pulumi.set(__self__, "preferred_availability_zones", preferred_availability_zones)
         if private_ips is not None:
-            _setter("private_ips", private_ips)
+            pulumi.set(__self__, "private_ips", private_ips)
         if product is not None:
-            _setter("product", product)
+            pulumi.set(__self__, "product", product)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
         if resource_requirements is not None:
-            _setter("resource_requirements", resource_requirements)
+            pulumi.set(__self__, "resource_requirements", resource_requirements)
         if resource_tag_specifications is not None:
-            _setter("resource_tag_specifications", resource_tag_specifications)
+            pulumi.set(__self__, "resource_tag_specifications", resource_tag_specifications)
         if revert_to_spot is not None:
-            _setter("revert_to_spot", revert_to_spot)
+            pulumi.set(__self__, "revert_to_spot", revert_to_spot)
         if scaling_down_policies is not None:
-            _setter("scaling_down_policies", scaling_down_policies)
+            pulumi.set(__self__, "scaling_down_policies", scaling_down_policies)
         if scaling_strategies is not None:
-            _setter("scaling_strategies", scaling_strategies)
+            pulumi.set(__self__, "scaling_strategies", scaling_strategies)
         if scaling_target_policies is not None:
-            _setter("scaling_target_policies", scaling_target_policies)
+            pulumi.set(__self__, "scaling_target_policies", scaling_target_policies)
         if scaling_up_policies is not None:
-            _setter("scaling_up_policies", scaling_up_policies)
+            pulumi.set(__self__, "scaling_up_policies", scaling_up_policies)
         if scheduled_tasks is not None:
-            _setter("scheduled_tasks", scheduled_tasks)
+            pulumi.set(__self__, "scheduled_tasks", scheduled_tasks)
         if security_groups is not None:
-            _setter("security_groups", security_groups)
+            pulumi.set(__self__, "security_groups", security_groups)
         if shutdown_script is not None:
-            _setter("shutdown_script", shutdown_script)
+            pulumi.set(__self__, "shutdown_script", shutdown_script)
         if signals is not None:
-            _setter("signals", signals)
+            pulumi.set(__self__, "signals", signals)
         if spot_percentage is not None:
-            _setter("spot_percentage", spot_percentage)
+            pulumi.set(__self__, "spot_percentage", spot_percentage)
         if stateful_deallocation is not None:
-            _setter("stateful_deallocation", stateful_deallocation)
+            pulumi.set(__self__, "stateful_deallocation", stateful_deallocation)
         if stateful_instance_actions is not None:
-            _setter("stateful_instance_actions", stateful_instance_actions)
+            pulumi.set(__self__, "stateful_instance_actions", stateful_instance_actions)
         if subnet_ids is not None:
-            _setter("subnet_ids", subnet_ids)
+            pulumi.set(__self__, "subnet_ids", subnet_ids)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if target_group_arns is not None:
-            _setter("target_group_arns", target_group_arns)
+            pulumi.set(__self__, "target_group_arns", target_group_arns)
         if update_policy is not None:
-            _setter("update_policy", update_policy)
+            pulumi.set(__self__, "update_policy", update_policy)
         if user_data is not None:
-            _setter("user_data", user_data)
+            pulumi.set(__self__, "user_data", user_data)
         if utilize_commitments is not None:
-            _setter("utilize_commitments", utilize_commitments)
+            pulumi.set(__self__, "utilize_commitments", utilize_commitments)
         if utilize_reserved_instances is not None:
-            _setter("utilize_reserved_instances", utilize_reserved_instances)
+            pulumi.set(__self__, "utilize_reserved_instances", utilize_reserved_instances)
         if wait_for_capacity is not None:
-            _setter("wait_for_capacity", wait_for_capacity)
+            pulumi.set(__self__, "wait_for_capacity", wait_for_capacity)
         if wait_for_capacity_timeout is not None:
-            _setter("wait_for_capacity_timeout", wait_for_capacity_timeout)
+            pulumi.set(__self__, "wait_for_capacity_timeout", wait_for_capacity_timeout)
 
     @property
     @pulumi.getter(name="availabilityZones")
@@ -3435,10 +2781,6 @@ class Elastigroup(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ElastigroupArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -3541,7 +2883,6 @@ class Elastigroup(pulumi.CustomResource):
             __props__.__dict__["capacity_unit"] = capacity_unit
             __props__.__dict__["consider_od_pricing"] = consider_od_pricing
             __props__.__dict__["cpu_credits"] = cpu_credits
-            cpu_options = _utilities.configure(cpu_options, ElastigroupCpuOptionsArgs, True)
             __props__.__dict__["cpu_options"] = cpu_options
             __props__.__dict__["description"] = description
             __props__.__dict__["desired_capacity"] = desired_capacity
@@ -3566,38 +2907,25 @@ class Elastigroup(pulumi.CustomResource):
             __props__.__dict__["instance_types_preferred_spots"] = instance_types_preferred_spots
             __props__.__dict__["instance_types_spots"] = instance_types_spots
             __props__.__dict__["instance_types_weights"] = instance_types_weights
-            integration_beanstalk = _utilities.configure(integration_beanstalk, ElastigroupIntegrationBeanstalkArgs, True)
             __props__.__dict__["integration_beanstalk"] = integration_beanstalk
-            integration_codedeploy = _utilities.configure(integration_codedeploy, ElastigroupIntegrationCodedeployArgs, True)
             __props__.__dict__["integration_codedeploy"] = integration_codedeploy
-            integration_docker_swarm = _utilities.configure(integration_docker_swarm, ElastigroupIntegrationDockerSwarmArgs, True)
             __props__.__dict__["integration_docker_swarm"] = integration_docker_swarm
-            integration_ecs = _utilities.configure(integration_ecs, ElastigroupIntegrationEcsArgs, True)
             __props__.__dict__["integration_ecs"] = integration_ecs
-            integration_gitlab = _utilities.configure(integration_gitlab, ElastigroupIntegrationGitlabArgs, True)
             __props__.__dict__["integration_gitlab"] = integration_gitlab
-            integration_kubernetes = _utilities.configure(integration_kubernetes, ElastigroupIntegrationKubernetesArgs, True)
             __props__.__dict__["integration_kubernetes"] = integration_kubernetes
-            integration_mesosphere = _utilities.configure(integration_mesosphere, ElastigroupIntegrationMesosphereArgs, True)
             __props__.__dict__["integration_mesosphere"] = integration_mesosphere
-            integration_multai_runtime = _utilities.configure(integration_multai_runtime, ElastigroupIntegrationMultaiRuntimeArgs, True)
             __props__.__dict__["integration_multai_runtime"] = integration_multai_runtime
-            integration_nomad = _utilities.configure(integration_nomad, ElastigroupIntegrationNomadArgs, True)
             __props__.__dict__["integration_nomad"] = integration_nomad
-            integration_rancher = _utilities.configure(integration_rancher, ElastigroupIntegrationRancherArgs, True)
             __props__.__dict__["integration_rancher"] = integration_rancher
-            integration_route53 = _utilities.configure(integration_route53, ElastigroupIntegrationRoute53Args, True)
             __props__.__dict__["integration_route53"] = integration_route53
             __props__.__dict__["itfs"] = itfs
             __props__.__dict__["key_name"] = key_name
             __props__.__dict__["lifetime_period"] = lifetime_period
             __props__.__dict__["max_size"] = max_size
-            metadata_options = _utilities.configure(metadata_options, ElastigroupMetadataOptionsArgs, True)
             __props__.__dict__["metadata_options"] = metadata_options
             __props__.__dict__["min_size"] = min_size
             __props__.__dict__["minimum_instance_lifetime"] = minimum_instance_lifetime
             __props__.__dict__["multai_target_sets"] = multai_target_sets
-            multiple_metrics = _utilities.configure(multiple_metrics, ElastigroupMultipleMetricsArgs, True)
             __props__.__dict__["multiple_metrics"] = multiple_metrics
             __props__.__dict__["name"] = name
             __props__.__dict__["network_interfaces"] = network_interfaces
@@ -3618,7 +2946,6 @@ class Elastigroup(pulumi.CustomResource):
             __props__.__dict__["region"] = region
             __props__.__dict__["resource_requirements"] = resource_requirements
             __props__.__dict__["resource_tag_specifications"] = resource_tag_specifications
-            revert_to_spot = _utilities.configure(revert_to_spot, ElastigroupRevertToSpotArgs, True)
             __props__.__dict__["revert_to_spot"] = revert_to_spot
             __props__.__dict__["scaling_down_policies"] = scaling_down_policies
             __props__.__dict__["scaling_strategies"] = scaling_strategies
@@ -3631,13 +2958,11 @@ class Elastigroup(pulumi.CustomResource):
             __props__.__dict__["shutdown_script"] = shutdown_script
             __props__.__dict__["signals"] = signals
             __props__.__dict__["spot_percentage"] = spot_percentage
-            stateful_deallocation = _utilities.configure(stateful_deallocation, ElastigroupStatefulDeallocationArgs, True)
             __props__.__dict__["stateful_deallocation"] = stateful_deallocation
             __props__.__dict__["stateful_instance_actions"] = stateful_instance_actions
             __props__.__dict__["subnet_ids"] = subnet_ids
             __props__.__dict__["tags"] = tags
             __props__.__dict__["target_group_arns"] = target_group_arns
-            update_policy = _utilities.configure(update_policy, ElastigroupUpdatePolicyArgs, True)
             __props__.__dict__["update_policy"] = update_policy
             __props__.__dict__["user_data"] = user_data
             __props__.__dict__["utilize_commitments"] = utilize_commitments

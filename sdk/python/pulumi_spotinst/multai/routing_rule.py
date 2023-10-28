@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -27,59 +27,18 @@ class RoutingRuleArgs:
         """
         The set of arguments for constructing a RoutingRule resource.
         """
-        RoutingRuleArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            balancer_id=balancer_id,
-            listener_id=listener_id,
-            route=route,
-            target_set_ids=target_set_ids,
-            middleware_ids=middleware_ids,
-            priority=priority,
-            strategy=strategy,
-            tags=tags,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             balancer_id: Optional[pulumi.Input[str]] = None,
-             listener_id: Optional[pulumi.Input[str]] = None,
-             route: Optional[pulumi.Input[str]] = None,
-             target_set_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             middleware_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             priority: Optional[pulumi.Input[int]] = None,
-             strategy: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Sequence[pulumi.Input['RoutingRuleTagArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if balancer_id is None and 'balancerId' in kwargs:
-            balancer_id = kwargs['balancerId']
-        if balancer_id is None:
-            raise TypeError("Missing 'balancer_id' argument")
-        if listener_id is None and 'listenerId' in kwargs:
-            listener_id = kwargs['listenerId']
-        if listener_id is None:
-            raise TypeError("Missing 'listener_id' argument")
-        if route is None:
-            raise TypeError("Missing 'route' argument")
-        if target_set_ids is None and 'targetSetIds' in kwargs:
-            target_set_ids = kwargs['targetSetIds']
-        if target_set_ids is None:
-            raise TypeError("Missing 'target_set_ids' argument")
-        if middleware_ids is None and 'middlewareIds' in kwargs:
-            middleware_ids = kwargs['middlewareIds']
-
-        _setter("balancer_id", balancer_id)
-        _setter("listener_id", listener_id)
-        _setter("route", route)
-        _setter("target_set_ids", target_set_ids)
+        pulumi.set(__self__, "balancer_id", balancer_id)
+        pulumi.set(__self__, "listener_id", listener_id)
+        pulumi.set(__self__, "route", route)
+        pulumi.set(__self__, "target_set_ids", target_set_ids)
         if middleware_ids is not None:
-            _setter("middleware_ids", middleware_ids)
+            pulumi.set(__self__, "middleware_ids", middleware_ids)
         if priority is not None:
-            _setter("priority", priority)
+            pulumi.set(__self__, "priority", priority)
         if strategy is not None:
-            _setter("strategy", strategy)
+            pulumi.set(__self__, "strategy", strategy)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter(name="balancerId")
@@ -168,55 +127,22 @@ class _RoutingRuleState:
         """
         Input properties used for looking up and filtering RoutingRule resources.
         """
-        _RoutingRuleState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            balancer_id=balancer_id,
-            listener_id=listener_id,
-            middleware_ids=middleware_ids,
-            priority=priority,
-            route=route,
-            strategy=strategy,
-            tags=tags,
-            target_set_ids=target_set_ids,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             balancer_id: Optional[pulumi.Input[str]] = None,
-             listener_id: Optional[pulumi.Input[str]] = None,
-             middleware_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             priority: Optional[pulumi.Input[int]] = None,
-             route: Optional[pulumi.Input[str]] = None,
-             strategy: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Sequence[pulumi.Input['RoutingRuleTagArgs']]]] = None,
-             target_set_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if balancer_id is None and 'balancerId' in kwargs:
-            balancer_id = kwargs['balancerId']
-        if listener_id is None and 'listenerId' in kwargs:
-            listener_id = kwargs['listenerId']
-        if middleware_ids is None and 'middlewareIds' in kwargs:
-            middleware_ids = kwargs['middlewareIds']
-        if target_set_ids is None and 'targetSetIds' in kwargs:
-            target_set_ids = kwargs['targetSetIds']
-
         if balancer_id is not None:
-            _setter("balancer_id", balancer_id)
+            pulumi.set(__self__, "balancer_id", balancer_id)
         if listener_id is not None:
-            _setter("listener_id", listener_id)
+            pulumi.set(__self__, "listener_id", listener_id)
         if middleware_ids is not None:
-            _setter("middleware_ids", middleware_ids)
+            pulumi.set(__self__, "middleware_ids", middleware_ids)
         if priority is not None:
-            _setter("priority", priority)
+            pulumi.set(__self__, "priority", priority)
         if route is not None:
-            _setter("route", route)
+            pulumi.set(__self__, "route", route)
         if strategy is not None:
-            _setter("strategy", strategy)
+            pulumi.set(__self__, "strategy", strategy)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if target_set_ids is not None:
-            _setter("target_set_ids", target_set_ids)
+            pulumi.set(__self__, "target_set_ids", target_set_ids)
 
     @property
     @pulumi.getter(name="balancerId")
@@ -328,10 +254,6 @@ class RoutingRule(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            RoutingRuleArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

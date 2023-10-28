@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -38,122 +38,37 @@ class ElastigroupAzureV3Args:
         """
         The set of arguments for constructing a ElastigroupAzureV3 resource.
         """
-        ElastigroupAzureV3Args._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            fallback_to_on_demand=fallback_to_on_demand,
-            network=network,
-            od_sizes=od_sizes,
-            os=os,
-            region=region,
-            resource_group_name=resource_group_name,
-            spot_sizes=spot_sizes,
-            custom_data=custom_data,
-            desired_capacity=desired_capacity,
-            draining_timeout=draining_timeout,
-            images=images,
-            login=login,
-            managed_service_identities=managed_service_identities,
-            max_size=max_size,
-            min_size=min_size,
-            name=name,
-            on_demand_count=on_demand_count,
-            spot_percentage=spot_percentage,
-            tags=tags,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             fallback_to_on_demand: Optional[pulumi.Input[bool]] = None,
-             network: Optional[pulumi.Input['ElastigroupAzureV3NetworkArgs']] = None,
-             od_sizes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             os: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             resource_group_name: Optional[pulumi.Input[str]] = None,
-             spot_sizes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             custom_data: Optional[pulumi.Input[str]] = None,
-             desired_capacity: Optional[pulumi.Input[int]] = None,
-             draining_timeout: Optional[pulumi.Input[int]] = None,
-             images: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ImageArgs']]]] = None,
-             login: Optional[pulumi.Input['ElastigroupAzureV3LoginArgs']] = None,
-             managed_service_identities: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ManagedServiceIdentityArgs']]]] = None,
-             max_size: Optional[pulumi.Input[int]] = None,
-             min_size: Optional[pulumi.Input[int]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             on_demand_count: Optional[pulumi.Input[int]] = None,
-             spot_percentage: Optional[pulumi.Input[int]] = None,
-             tags: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3TagArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if fallback_to_on_demand is None and 'fallbackToOnDemand' in kwargs:
-            fallback_to_on_demand = kwargs['fallbackToOnDemand']
-        if fallback_to_on_demand is None:
-            raise TypeError("Missing 'fallback_to_on_demand' argument")
-        if network is None:
-            raise TypeError("Missing 'network' argument")
-        if od_sizes is None and 'odSizes' in kwargs:
-            od_sizes = kwargs['odSizes']
-        if od_sizes is None:
-            raise TypeError("Missing 'od_sizes' argument")
-        if os is None:
-            raise TypeError("Missing 'os' argument")
-        if region is None:
-            raise TypeError("Missing 'region' argument")
-        if resource_group_name is None and 'resourceGroupName' in kwargs:
-            resource_group_name = kwargs['resourceGroupName']
-        if resource_group_name is None:
-            raise TypeError("Missing 'resource_group_name' argument")
-        if spot_sizes is None and 'spotSizes' in kwargs:
-            spot_sizes = kwargs['spotSizes']
-        if spot_sizes is None:
-            raise TypeError("Missing 'spot_sizes' argument")
-        if custom_data is None and 'customData' in kwargs:
-            custom_data = kwargs['customData']
-        if desired_capacity is None and 'desiredCapacity' in kwargs:
-            desired_capacity = kwargs['desiredCapacity']
-        if draining_timeout is None and 'drainingTimeout' in kwargs:
-            draining_timeout = kwargs['drainingTimeout']
-        if managed_service_identities is None and 'managedServiceIdentities' in kwargs:
-            managed_service_identities = kwargs['managedServiceIdentities']
-        if max_size is None and 'maxSize' in kwargs:
-            max_size = kwargs['maxSize']
-        if min_size is None and 'minSize' in kwargs:
-            min_size = kwargs['minSize']
-        if on_demand_count is None and 'onDemandCount' in kwargs:
-            on_demand_count = kwargs['onDemandCount']
-        if spot_percentage is None and 'spotPercentage' in kwargs:
-            spot_percentage = kwargs['spotPercentage']
-
-        _setter("fallback_to_on_demand", fallback_to_on_demand)
-        _setter("network", network)
-        _setter("od_sizes", od_sizes)
-        _setter("os", os)
-        _setter("region", region)
-        _setter("resource_group_name", resource_group_name)
-        _setter("spot_sizes", spot_sizes)
+        pulumi.set(__self__, "fallback_to_on_demand", fallback_to_on_demand)
+        pulumi.set(__self__, "network", network)
+        pulumi.set(__self__, "od_sizes", od_sizes)
+        pulumi.set(__self__, "os", os)
+        pulumi.set(__self__, "region", region)
+        pulumi.set(__self__, "resource_group_name", resource_group_name)
+        pulumi.set(__self__, "spot_sizes", spot_sizes)
         if custom_data is not None:
-            _setter("custom_data", custom_data)
+            pulumi.set(__self__, "custom_data", custom_data)
         if desired_capacity is not None:
-            _setter("desired_capacity", desired_capacity)
+            pulumi.set(__self__, "desired_capacity", desired_capacity)
         if draining_timeout is not None:
-            _setter("draining_timeout", draining_timeout)
+            pulumi.set(__self__, "draining_timeout", draining_timeout)
         if images is not None:
-            _setter("images", images)
+            pulumi.set(__self__, "images", images)
         if login is not None:
-            _setter("login", login)
+            pulumi.set(__self__, "login", login)
         if managed_service_identities is not None:
-            _setter("managed_service_identities", managed_service_identities)
+            pulumi.set(__self__, "managed_service_identities", managed_service_identities)
         if max_size is not None:
-            _setter("max_size", max_size)
+            pulumi.set(__self__, "max_size", max_size)
         if min_size is not None:
-            _setter("min_size", min_size)
+            pulumi.set(__self__, "min_size", min_size)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if on_demand_count is not None:
-            _setter("on_demand_count", on_demand_count)
+            pulumi.set(__self__, "on_demand_count", on_demand_count)
         if spot_percentage is not None:
-            _setter("spot_percentage", spot_percentage)
+            pulumi.set(__self__, "spot_percentage", spot_percentage)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter(name="fallbackToOnDemand")
@@ -352,115 +267,44 @@ class _ElastigroupAzureV3State:
         """
         Input properties used for looking up and filtering ElastigroupAzureV3 resources.
         """
-        _ElastigroupAzureV3State._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            custom_data=custom_data,
-            desired_capacity=desired_capacity,
-            draining_timeout=draining_timeout,
-            fallback_to_on_demand=fallback_to_on_demand,
-            images=images,
-            login=login,
-            managed_service_identities=managed_service_identities,
-            max_size=max_size,
-            min_size=min_size,
-            name=name,
-            network=network,
-            od_sizes=od_sizes,
-            on_demand_count=on_demand_count,
-            os=os,
-            region=region,
-            resource_group_name=resource_group_name,
-            spot_percentage=spot_percentage,
-            spot_sizes=spot_sizes,
-            tags=tags,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             custom_data: Optional[pulumi.Input[str]] = None,
-             desired_capacity: Optional[pulumi.Input[int]] = None,
-             draining_timeout: Optional[pulumi.Input[int]] = None,
-             fallback_to_on_demand: Optional[pulumi.Input[bool]] = None,
-             images: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ImageArgs']]]] = None,
-             login: Optional[pulumi.Input['ElastigroupAzureV3LoginArgs']] = None,
-             managed_service_identities: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3ManagedServiceIdentityArgs']]]] = None,
-             max_size: Optional[pulumi.Input[int]] = None,
-             min_size: Optional[pulumi.Input[int]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             network: Optional[pulumi.Input['ElastigroupAzureV3NetworkArgs']] = None,
-             od_sizes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             on_demand_count: Optional[pulumi.Input[int]] = None,
-             os: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             resource_group_name: Optional[pulumi.Input[str]] = None,
-             spot_percentage: Optional[pulumi.Input[int]] = None,
-             spot_sizes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             tags: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupAzureV3TagArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if custom_data is None and 'customData' in kwargs:
-            custom_data = kwargs['customData']
-        if desired_capacity is None and 'desiredCapacity' in kwargs:
-            desired_capacity = kwargs['desiredCapacity']
-        if draining_timeout is None and 'drainingTimeout' in kwargs:
-            draining_timeout = kwargs['drainingTimeout']
-        if fallback_to_on_demand is None and 'fallbackToOnDemand' in kwargs:
-            fallback_to_on_demand = kwargs['fallbackToOnDemand']
-        if managed_service_identities is None and 'managedServiceIdentities' in kwargs:
-            managed_service_identities = kwargs['managedServiceIdentities']
-        if max_size is None and 'maxSize' in kwargs:
-            max_size = kwargs['maxSize']
-        if min_size is None and 'minSize' in kwargs:
-            min_size = kwargs['minSize']
-        if od_sizes is None and 'odSizes' in kwargs:
-            od_sizes = kwargs['odSizes']
-        if on_demand_count is None and 'onDemandCount' in kwargs:
-            on_demand_count = kwargs['onDemandCount']
-        if resource_group_name is None and 'resourceGroupName' in kwargs:
-            resource_group_name = kwargs['resourceGroupName']
-        if spot_percentage is None and 'spotPercentage' in kwargs:
-            spot_percentage = kwargs['spotPercentage']
-        if spot_sizes is None and 'spotSizes' in kwargs:
-            spot_sizes = kwargs['spotSizes']
-
         if custom_data is not None:
-            _setter("custom_data", custom_data)
+            pulumi.set(__self__, "custom_data", custom_data)
         if desired_capacity is not None:
-            _setter("desired_capacity", desired_capacity)
+            pulumi.set(__self__, "desired_capacity", desired_capacity)
         if draining_timeout is not None:
-            _setter("draining_timeout", draining_timeout)
+            pulumi.set(__self__, "draining_timeout", draining_timeout)
         if fallback_to_on_demand is not None:
-            _setter("fallback_to_on_demand", fallback_to_on_demand)
+            pulumi.set(__self__, "fallback_to_on_demand", fallback_to_on_demand)
         if images is not None:
-            _setter("images", images)
+            pulumi.set(__self__, "images", images)
         if login is not None:
-            _setter("login", login)
+            pulumi.set(__self__, "login", login)
         if managed_service_identities is not None:
-            _setter("managed_service_identities", managed_service_identities)
+            pulumi.set(__self__, "managed_service_identities", managed_service_identities)
         if max_size is not None:
-            _setter("max_size", max_size)
+            pulumi.set(__self__, "max_size", max_size)
         if min_size is not None:
-            _setter("min_size", min_size)
+            pulumi.set(__self__, "min_size", min_size)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if network is not None:
-            _setter("network", network)
+            pulumi.set(__self__, "network", network)
         if od_sizes is not None:
-            _setter("od_sizes", od_sizes)
+            pulumi.set(__self__, "od_sizes", od_sizes)
         if on_demand_count is not None:
-            _setter("on_demand_count", on_demand_count)
+            pulumi.set(__self__, "on_demand_count", on_demand_count)
         if os is not None:
-            _setter("os", os)
+            pulumi.set(__self__, "os", os)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
         if resource_group_name is not None:
-            _setter("resource_group_name", resource_group_name)
+            pulumi.set(__self__, "resource_group_name", resource_group_name)
         if spot_percentage is not None:
-            _setter("spot_percentage", spot_percentage)
+            pulumi.set(__self__, "spot_percentage", spot_percentage)
         if spot_sizes is not None:
-            _setter("spot_sizes", spot_sizes)
+            pulumi.set(__self__, "spot_sizes", spot_sizes)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter(name="customData")
@@ -682,10 +526,6 @@ class ElastigroupAzureV3(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ElastigroupAzureV3Args._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -726,13 +566,11 @@ class ElastigroupAzureV3(pulumi.CustomResource):
                 raise TypeError("Missing required property 'fallback_to_on_demand'")
             __props__.__dict__["fallback_to_on_demand"] = fallback_to_on_demand
             __props__.__dict__["images"] = images
-            login = _utilities.configure(login, ElastigroupAzureV3LoginArgs, True)
             __props__.__dict__["login"] = login
             __props__.__dict__["managed_service_identities"] = managed_service_identities
             __props__.__dict__["max_size"] = max_size
             __props__.__dict__["min_size"] = min_size
             __props__.__dict__["name"] = name
-            network = _utilities.configure(network, ElastigroupAzureV3NetworkArgs, True)
             if network is None and not opts.urn:
                 raise TypeError("Missing required property 'network'")
             __props__.__dict__["network"] = network

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -31,37 +31,16 @@ class ProgrammaticUserArgs:
                If used - Cannot be empty.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] user_group_ids: A list of the user groups to register the given user to (should be existing user groups only)
         """
-        ProgrammaticUserArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            accounts=accounts,
-            description=description,
-            name=name,
-            policies=policies,
-            user_group_ids=user_group_ids,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             accounts: Optional[pulumi.Input[Sequence[pulumi.Input['ProgrammaticUserAccountArgs']]]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             policies: Optional[pulumi.Input[Sequence[pulumi.Input['ProgrammaticUserPolicyArgs']]]] = None,
-             user_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if user_group_ids is None and 'userGroupIds' in kwargs:
-            user_group_ids = kwargs['userGroupIds']
-
         if accounts is not None:
-            _setter("accounts", accounts)
+            pulumi.set(__self__, "accounts", accounts)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if policies is not None:
-            _setter("policies", policies)
+            pulumi.set(__self__, "policies", policies)
         if user_group_ids is not None:
-            _setter("user_group_ids", user_group_ids)
+            pulumi.set(__self__, "user_group_ids", user_group_ids)
 
     @property
     @pulumi.getter
@@ -144,37 +123,16 @@ class _ProgrammaticUserState:
                If used - Cannot be empty.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] user_group_ids: A list of the user groups to register the given user to (should be existing user groups only)
         """
-        _ProgrammaticUserState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            accounts=accounts,
-            description=description,
-            name=name,
-            policies=policies,
-            user_group_ids=user_group_ids,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             accounts: Optional[pulumi.Input[Sequence[pulumi.Input['ProgrammaticUserAccountArgs']]]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             policies: Optional[pulumi.Input[Sequence[pulumi.Input['ProgrammaticUserPolicyArgs']]]] = None,
-             user_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if user_group_ids is None and 'userGroupIds' in kwargs:
-            user_group_ids = kwargs['userGroupIds']
-
         if accounts is not None:
-            _setter("accounts", accounts)
+            pulumi.set(__self__, "accounts", accounts)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if policies is not None:
-            _setter("policies", policies)
+            pulumi.set(__self__, "policies", policies)
         if user_group_ids is not None:
-            _setter("user_group_ids", user_group_ids)
+            pulumi.set(__self__, "user_group_ids", user_group_ids)
 
     @property
     @pulumi.getter
@@ -318,10 +276,6 @@ class ProgrammaticUser(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ProgrammaticUserArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

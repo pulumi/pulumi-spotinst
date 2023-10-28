@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['OceanVirtualNodeGroupArgs', 'OceanVirtualNodeGroup']
@@ -19,29 +19,8 @@ class OceanVirtualNodeGroupArgs:
         """
         The set of arguments for constructing a OceanVirtualNodeGroup resource.
         """
-        OceanVirtualNodeGroupArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            ocean_spark_cluster_id=ocean_spark_cluster_id,
-            virtual_node_group_id=virtual_node_group_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             ocean_spark_cluster_id: Optional[pulumi.Input[str]] = None,
-             virtual_node_group_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if ocean_spark_cluster_id is None and 'oceanSparkClusterId' in kwargs:
-            ocean_spark_cluster_id = kwargs['oceanSparkClusterId']
-        if ocean_spark_cluster_id is None:
-            raise TypeError("Missing 'ocean_spark_cluster_id' argument")
-        if virtual_node_group_id is None and 'virtualNodeGroupId' in kwargs:
-            virtual_node_group_id = kwargs['virtualNodeGroupId']
-        if virtual_node_group_id is None:
-            raise TypeError("Missing 'virtual_node_group_id' argument")
-
-        _setter("ocean_spark_cluster_id", ocean_spark_cluster_id)
-        _setter("virtual_node_group_id", virtual_node_group_id)
+        pulumi.set(__self__, "ocean_spark_cluster_id", ocean_spark_cluster_id)
+        pulumi.set(__self__, "virtual_node_group_id", virtual_node_group_id)
 
     @property
     @pulumi.getter(name="oceanSparkClusterId")
@@ -70,27 +49,10 @@ class _OceanVirtualNodeGroupState:
         """
         Input properties used for looking up and filtering OceanVirtualNodeGroup resources.
         """
-        _OceanVirtualNodeGroupState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            ocean_spark_cluster_id=ocean_spark_cluster_id,
-            virtual_node_group_id=virtual_node_group_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             ocean_spark_cluster_id: Optional[pulumi.Input[str]] = None,
-             virtual_node_group_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if ocean_spark_cluster_id is None and 'oceanSparkClusterId' in kwargs:
-            ocean_spark_cluster_id = kwargs['oceanSparkClusterId']
-        if virtual_node_group_id is None and 'virtualNodeGroupId' in kwargs:
-            virtual_node_group_id = kwargs['virtualNodeGroupId']
-
         if ocean_spark_cluster_id is not None:
-            _setter("ocean_spark_cluster_id", ocean_spark_cluster_id)
+            pulumi.set(__self__, "ocean_spark_cluster_id", ocean_spark_cluster_id)
         if virtual_node_group_id is not None:
-            _setter("virtual_node_group_id", virtual_node_group_id)
+            pulumi.set(__self__, "virtual_node_group_id", virtual_node_group_id)
 
     @property
     @pulumi.getter(name="oceanSparkClusterId")
@@ -174,10 +136,6 @@ class OceanVirtualNodeGroup(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            OceanVirtualNodeGroupArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

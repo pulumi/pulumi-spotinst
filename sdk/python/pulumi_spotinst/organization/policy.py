@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -25,30 +25,11 @@ class PolicyArgs:
         :param pulumi.Input[str] description: Short description of policy.
         :param pulumi.Input[str] name: Name of the Policy.
         """
-        PolicyArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            policy_contents=policy_contents,
-            description=description,
-            name=name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             policy_contents: Optional[pulumi.Input[Sequence[pulumi.Input['PolicyPolicyContentArgs']]]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if policy_contents is None and 'policyContents' in kwargs:
-            policy_contents = kwargs['policyContents']
-        if policy_contents is None:
-            raise TypeError("Missing 'policy_contents' argument")
-
-        _setter("policy_contents", policy_contents)
+        pulumi.set(__self__, "policy_contents", policy_contents)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter(name="policyContents")
@@ -99,29 +80,12 @@ class _PolicyState:
         :param pulumi.Input[str] name: Name of the Policy.
         :param pulumi.Input[Sequence[pulumi.Input['PolicyPolicyContentArgs']]] policy_contents: Set permissions objects list.
         """
-        _PolicyState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            description=description,
-            name=name,
-            policy_contents=policy_contents,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             description: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             policy_contents: Optional[pulumi.Input[Sequence[pulumi.Input['PolicyPolicyContentArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if policy_contents is None and 'policyContents' in kwargs:
-            policy_contents = kwargs['policyContents']
-
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if policy_contents is not None:
-            _setter("policy_contents", policy_contents)
+            pulumi.set(__self__, "policy_contents", policy_contents)
 
     @property
     @pulumi.getter
@@ -257,10 +221,6 @@ class Policy(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            PolicyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

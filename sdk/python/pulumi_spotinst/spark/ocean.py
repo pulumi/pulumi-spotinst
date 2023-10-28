@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -26,44 +26,17 @@ class OceanArgs:
         The set of arguments for constructing a Ocean resource.
         :param pulumi.Input[str] ocean_cluster_id: - The ID of the Ocean cluster that Ocean for Apache Spark should be installed on.
         """
-        OceanArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            ocean_cluster_id=ocean_cluster_id,
-            compute=compute,
-            ingress=ingress,
-            log_collection=log_collection,
-            spark=spark,
-            webhook=webhook,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             ocean_cluster_id: Optional[pulumi.Input[str]] = None,
-             compute: Optional[pulumi.Input['OceanComputeArgs']] = None,
-             ingress: Optional[pulumi.Input['OceanIngressArgs']] = None,
-             log_collection: Optional[pulumi.Input['OceanLogCollectionArgs']] = None,
-             spark: Optional[pulumi.Input['OceanSparkArgs']] = None,
-             webhook: Optional[pulumi.Input['OceanWebhookArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if ocean_cluster_id is None and 'oceanClusterId' in kwargs:
-            ocean_cluster_id = kwargs['oceanClusterId']
-        if ocean_cluster_id is None:
-            raise TypeError("Missing 'ocean_cluster_id' argument")
-        if log_collection is None and 'logCollection' in kwargs:
-            log_collection = kwargs['logCollection']
-
-        _setter("ocean_cluster_id", ocean_cluster_id)
+        pulumi.set(__self__, "ocean_cluster_id", ocean_cluster_id)
         if compute is not None:
-            _setter("compute", compute)
+            pulumi.set(__self__, "compute", compute)
         if ingress is not None:
-            _setter("ingress", ingress)
+            pulumi.set(__self__, "ingress", ingress)
         if log_collection is not None:
-            _setter("log_collection", log_collection)
+            pulumi.set(__self__, "log_collection", log_collection)
         if spark is not None:
-            _setter("spark", spark)
+            pulumi.set(__self__, "spark", spark)
         if webhook is not None:
-            _setter("webhook", webhook)
+            pulumi.set(__self__, "webhook", webhook)
 
     @property
     @pulumi.getter(name="oceanClusterId")
@@ -136,43 +109,18 @@ class _OceanState:
         Input properties used for looking up and filtering Ocean resources.
         :param pulumi.Input[str] ocean_cluster_id: - The ID of the Ocean cluster that Ocean for Apache Spark should be installed on.
         """
-        _OceanState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            compute=compute,
-            ingress=ingress,
-            log_collection=log_collection,
-            ocean_cluster_id=ocean_cluster_id,
-            spark=spark,
-            webhook=webhook,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             compute: Optional[pulumi.Input['OceanComputeArgs']] = None,
-             ingress: Optional[pulumi.Input['OceanIngressArgs']] = None,
-             log_collection: Optional[pulumi.Input['OceanLogCollectionArgs']] = None,
-             ocean_cluster_id: Optional[pulumi.Input[str]] = None,
-             spark: Optional[pulumi.Input['OceanSparkArgs']] = None,
-             webhook: Optional[pulumi.Input['OceanWebhookArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if log_collection is None and 'logCollection' in kwargs:
-            log_collection = kwargs['logCollection']
-        if ocean_cluster_id is None and 'oceanClusterId' in kwargs:
-            ocean_cluster_id = kwargs['oceanClusterId']
-
         if compute is not None:
-            _setter("compute", compute)
+            pulumi.set(__self__, "compute", compute)
         if ingress is not None:
-            _setter("ingress", ingress)
+            pulumi.set(__self__, "ingress", ingress)
         if log_collection is not None:
-            _setter("log_collection", log_collection)
+            pulumi.set(__self__, "log_collection", log_collection)
         if ocean_cluster_id is not None:
-            _setter("ocean_cluster_id", ocean_cluster_id)
+            pulumi.set(__self__, "ocean_cluster_id", ocean_cluster_id)
         if spark is not None:
-            _setter("spark", spark)
+            pulumi.set(__self__, "spark", spark)
         if webhook is not None:
-            _setter("webhook", webhook)
+            pulumi.set(__self__, "webhook", webhook)
 
     @property
     @pulumi.getter
@@ -384,10 +332,6 @@ class Ocean(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            OceanArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -408,18 +352,13 @@ class Ocean(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = OceanArgs.__new__(OceanArgs)
 
-            compute = _utilities.configure(compute, OceanComputeArgs, True)
             __props__.__dict__["compute"] = compute
-            ingress = _utilities.configure(ingress, OceanIngressArgs, True)
             __props__.__dict__["ingress"] = ingress
-            log_collection = _utilities.configure(log_collection, OceanLogCollectionArgs, True)
             __props__.__dict__["log_collection"] = log_collection
             if ocean_cluster_id is None and not opts.urn:
                 raise TypeError("Missing required property 'ocean_cluster_id'")
             __props__.__dict__["ocean_cluster_id"] = ocean_cluster_id
-            spark = _utilities.configure(spark, OceanSparkArgs, True)
             __props__.__dict__["spark"] = spark
-            webhook = _utilities.configure(webhook, OceanWebhookArgs, True)
             __props__.__dict__["webhook"] = webhook
         super(Ocean, __self__).__init__(
             'spotinst:spark/ocean:Ocean',
