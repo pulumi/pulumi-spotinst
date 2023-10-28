@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 
@@ -84,26 +84,9 @@ class DataIntegrationS3(dict):
         """
         :param str subdir: The subdirectory in which your files will be stored within the bucket. Adds the prefix subdir/ to new objects' keys. Can't be null or contain '/'.
         """
-        DataIntegrationS3._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            bucket_name=bucket_name,
-            subdir=subdir,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             bucket_name: Optional[str] = None,
-             subdir: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if bucket_name is None and 'bucketName' in kwargs:
-            bucket_name = kwargs['bucketName']
-        if bucket_name is None:
-            raise TypeError("Missing 'bucket_name' argument")
-
-        _setter("bucket_name", bucket_name)
+        pulumi.set(__self__, "bucket_name", bucket_name)
         if subdir is not None:
-            _setter("subdir", subdir)
+            pulumi.set(__self__, "subdir", subdir)
 
     @property
     @pulumi.getter(name="bucketName")
@@ -124,23 +107,10 @@ class ElastigroupAzureV3Image(dict):
     def __init__(__self__, *,
                  customs: Optional[Sequence['outputs.ElastigroupAzureV3ImageCustom']] = None,
                  marketplaces: Optional[Sequence['outputs.ElastigroupAzureV3ImageMarketplace']] = None):
-        ElastigroupAzureV3Image._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            customs=customs,
-            marketplaces=marketplaces,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             customs: Optional[Sequence['outputs.ElastigroupAzureV3ImageCustom']] = None,
-             marketplaces: Optional[Sequence['outputs.ElastigroupAzureV3ImageMarketplace']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if customs is not None:
-            _setter("customs", customs)
+            pulumi.set(__self__, "customs", customs)
         if marketplaces is not None:
-            _setter("marketplaces", marketplaces)
+            pulumi.set(__self__, "marketplaces", marketplaces)
 
     @property
     @pulumi.getter
@@ -177,29 +147,8 @@ class ElastigroupAzureV3ImageCustom(dict):
     def __init__(__self__, *,
                  image_name: str,
                  resource_group_name: str):
-        ElastigroupAzureV3ImageCustom._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            image_name=image_name,
-            resource_group_name=resource_group_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             image_name: Optional[str] = None,
-             resource_group_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if image_name is None and 'imageName' in kwargs:
-            image_name = kwargs['imageName']
-        if image_name is None:
-            raise TypeError("Missing 'image_name' argument")
-        if resource_group_name is None and 'resourceGroupName' in kwargs:
-            resource_group_name = kwargs['resourceGroupName']
-        if resource_group_name is None:
-            raise TypeError("Missing 'resource_group_name' argument")
-
-        _setter("image_name", image_name)
-        _setter("resource_group_name", resource_group_name)
+        pulumi.set(__self__, "image_name", image_name)
+        pulumi.set(__self__, "resource_group_name", resource_group_name)
 
     @property
     @pulumi.getter(name="imageName")
@@ -219,35 +168,10 @@ class ElastigroupAzureV3ImageMarketplace(dict):
                  publisher: str,
                  sku: str,
                  version: str):
-        ElastigroupAzureV3ImageMarketplace._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            offer=offer,
-            publisher=publisher,
-            sku=sku,
-            version=version,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             offer: Optional[str] = None,
-             publisher: Optional[str] = None,
-             sku: Optional[str] = None,
-             version: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if offer is None:
-            raise TypeError("Missing 'offer' argument")
-        if publisher is None:
-            raise TypeError("Missing 'publisher' argument")
-        if sku is None:
-            raise TypeError("Missing 'sku' argument")
-        if version is None:
-            raise TypeError("Missing 'version' argument")
-
-        _setter("offer", offer)
-        _setter("publisher", publisher)
-        _setter("sku", sku)
-        _setter("version", version)
+        pulumi.set(__self__, "offer", offer)
+        pulumi.set(__self__, "publisher", publisher)
+        pulumi.set(__self__, "sku", sku)
+        pulumi.set(__self__, "version", version)
 
     @property
     @pulumi.getter
@@ -295,32 +219,11 @@ class ElastigroupAzureV3Login(dict):
                  user_name: str,
                  password: Optional[str] = None,
                  ssh_public_key: Optional[str] = None):
-        ElastigroupAzureV3Login._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            user_name=user_name,
-            password=password,
-            ssh_public_key=ssh_public_key,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             user_name: Optional[str] = None,
-             password: Optional[str] = None,
-             ssh_public_key: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if user_name is None and 'userName' in kwargs:
-            user_name = kwargs['userName']
-        if user_name is None:
-            raise TypeError("Missing 'user_name' argument")
-        if ssh_public_key is None and 'sshPublicKey' in kwargs:
-            ssh_public_key = kwargs['sshPublicKey']
-
-        _setter("user_name", user_name)
+        pulumi.set(__self__, "user_name", user_name)
         if password is not None:
-            _setter("password", password)
+            pulumi.set(__self__, "password", password)
         if ssh_public_key is not None:
-            _setter("ssh_public_key", ssh_public_key)
+            pulumi.set(__self__, "ssh_public_key", ssh_public_key)
 
     @property
     @pulumi.getter(name="userName")
@@ -360,27 +263,8 @@ class ElastigroupAzureV3ManagedServiceIdentity(dict):
     def __init__(__self__, *,
                  name: str,
                  resource_group_name: str):
-        ElastigroupAzureV3ManagedServiceIdentity._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            name=name,
-            resource_group_name=resource_group_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             name: Optional[str] = None,
-             resource_group_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-        if resource_group_name is None and 'resourceGroupName' in kwargs:
-            resource_group_name = kwargs['resourceGroupName']
-        if resource_group_name is None:
-            raise TypeError("Missing 'resource_group_name' argument")
-
-        _setter("name", name)
-        _setter("resource_group_name", resource_group_name)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "resource_group_name", resource_group_name)
 
     @property
     @pulumi.getter
@@ -420,36 +304,9 @@ class ElastigroupAzureV3Network(dict):
                  network_interfaces: Sequence['outputs.ElastigroupAzureV3NetworkNetworkInterface'],
                  resource_group_name: str,
                  virtual_network_name: str):
-        ElastigroupAzureV3Network._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            network_interfaces=network_interfaces,
-            resource_group_name=resource_group_name,
-            virtual_network_name=virtual_network_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             network_interfaces: Optional[Sequence['outputs.ElastigroupAzureV3NetworkNetworkInterface']] = None,
-             resource_group_name: Optional[str] = None,
-             virtual_network_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if network_interfaces is None and 'networkInterfaces' in kwargs:
-            network_interfaces = kwargs['networkInterfaces']
-        if network_interfaces is None:
-            raise TypeError("Missing 'network_interfaces' argument")
-        if resource_group_name is None and 'resourceGroupName' in kwargs:
-            resource_group_name = kwargs['resourceGroupName']
-        if resource_group_name is None:
-            raise TypeError("Missing 'resource_group_name' argument")
-        if virtual_network_name is None and 'virtualNetworkName' in kwargs:
-            virtual_network_name = kwargs['virtualNetworkName']
-        if virtual_network_name is None:
-            raise TypeError("Missing 'virtual_network_name' argument")
-
-        _setter("network_interfaces", network_interfaces)
-        _setter("resource_group_name", resource_group_name)
-        _setter("virtual_network_name", virtual_network_name)
+        pulumi.set(__self__, "network_interfaces", network_interfaces)
+        pulumi.set(__self__, "resource_group_name", resource_group_name)
+        pulumi.set(__self__, "virtual_network_name", virtual_network_name)
 
     @property
     @pulumi.getter(name="networkInterfaces")
@@ -500,48 +357,13 @@ class ElastigroupAzureV3NetworkNetworkInterface(dict):
                  subnet_name: str,
                  additional_ip_configs: Optional[Sequence['outputs.ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfig']] = None,
                  application_security_groups: Optional[Sequence['outputs.ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroup']] = None):
-        ElastigroupAzureV3NetworkNetworkInterface._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            assign_public_ip=assign_public_ip,
-            is_primary=is_primary,
-            subnet_name=subnet_name,
-            additional_ip_configs=additional_ip_configs,
-            application_security_groups=application_security_groups,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             assign_public_ip: Optional[bool] = None,
-             is_primary: Optional[bool] = None,
-             subnet_name: Optional[str] = None,
-             additional_ip_configs: Optional[Sequence['outputs.ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfig']] = None,
-             application_security_groups: Optional[Sequence['outputs.ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroup']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if assign_public_ip is None and 'assignPublicIp' in kwargs:
-            assign_public_ip = kwargs['assignPublicIp']
-        if assign_public_ip is None:
-            raise TypeError("Missing 'assign_public_ip' argument")
-        if is_primary is None and 'isPrimary' in kwargs:
-            is_primary = kwargs['isPrimary']
-        if is_primary is None:
-            raise TypeError("Missing 'is_primary' argument")
-        if subnet_name is None and 'subnetName' in kwargs:
-            subnet_name = kwargs['subnetName']
-        if subnet_name is None:
-            raise TypeError("Missing 'subnet_name' argument")
-        if additional_ip_configs is None and 'additionalIpConfigs' in kwargs:
-            additional_ip_configs = kwargs['additionalIpConfigs']
-        if application_security_groups is None and 'applicationSecurityGroups' in kwargs:
-            application_security_groups = kwargs['applicationSecurityGroups']
-
-        _setter("assign_public_ip", assign_public_ip)
-        _setter("is_primary", is_primary)
-        _setter("subnet_name", subnet_name)
+        pulumi.set(__self__, "assign_public_ip", assign_public_ip)
+        pulumi.set(__self__, "is_primary", is_primary)
+        pulumi.set(__self__, "subnet_name", subnet_name)
         if additional_ip_configs is not None:
-            _setter("additional_ip_configs", additional_ip_configs)
+            pulumi.set(__self__, "additional_ip_configs", additional_ip_configs)
         if application_security_groups is not None:
-            _setter("application_security_groups", application_security_groups)
+            pulumi.set(__self__, "application_security_groups", application_security_groups)
 
     @property
     @pulumi.getter(name="assignPublicIp")
@@ -591,26 +413,9 @@ class ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfig(dict):
     def __init__(__self__, *,
                  name: str,
                  private_ip_version: Optional[str] = None):
-        ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfig._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            name=name,
-            private_ip_version=private_ip_version,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             name: Optional[str] = None,
-             private_ip_version: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-        if private_ip_version is None and 'privateIpVersion' in kwargs:
-            private_ip_version = kwargs['privateIpVersion']
-
-        _setter("name", name)
+        pulumi.set(__self__, "name", name)
         if private_ip_version is not None:
-            _setter("private_ip_version", private_ip_version)
+            pulumi.set(__self__, "private_ip_version", private_ip_version)
 
     @property
     @pulumi.getter
@@ -645,27 +450,8 @@ class ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroup(dict):
     def __init__(__self__, *,
                  name: str,
                  resource_group_name: str):
-        ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroup._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            name=name,
-            resource_group_name=resource_group_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             name: Optional[str] = None,
-             resource_group_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-        if resource_group_name is None and 'resourceGroupName' in kwargs:
-            resource_group_name = kwargs['resourceGroupName']
-        if resource_group_name is None:
-            raise TypeError("Missing 'resource_group_name' argument")
-
-        _setter("name", name)
-        _setter("resource_group_name", resource_group_name)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "resource_group_name", resource_group_name)
 
     @property
     @pulumi.getter
@@ -683,25 +469,8 @@ class ElastigroupAzureV3Tag(dict):
     def __init__(__self__, *,
                  key: str,
                  value: str):
-        ElastigroupAzureV3Tag._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            key=key,
-            value=value,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             key: Optional[str] = None,
-             value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if key is None:
-            raise TypeError("Missing 'key' argument")
-        if value is None:
-            raise TypeError("Missing 'value' argument")
-
-        _setter("key", key)
-        _setter("value", value)
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -754,60 +523,19 @@ class HealthCheckCheck(dict):
         :param str endpoint: The destination for the request.
         :param int timeout: the amount of time (in seconds) to wait when receiving a response from the health check.
         """
-        HealthCheckCheck._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            healthy=healthy,
-            interval=interval,
-            port=port,
-            protocol=protocol,
-            unhealthy=unhealthy,
-            end_point=end_point,
-            endpoint=endpoint,
-            time_out=time_out,
-            timeout=timeout,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             healthy: Optional[int] = None,
-             interval: Optional[int] = None,
-             port: Optional[int] = None,
-             protocol: Optional[str] = None,
-             unhealthy: Optional[int] = None,
-             end_point: Optional[str] = None,
-             endpoint: Optional[str] = None,
-             time_out: Optional[int] = None,
-             timeout: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if healthy is None:
-            raise TypeError("Missing 'healthy' argument")
-        if interval is None:
-            raise TypeError("Missing 'interval' argument")
-        if port is None:
-            raise TypeError("Missing 'port' argument")
-        if protocol is None:
-            raise TypeError("Missing 'protocol' argument")
-        if unhealthy is None:
-            raise TypeError("Missing 'unhealthy' argument")
-        if end_point is None and 'endPoint' in kwargs:
-            end_point = kwargs['endPoint']
-        if time_out is None and 'timeOut' in kwargs:
-            time_out = kwargs['timeOut']
-
-        _setter("healthy", healthy)
-        _setter("interval", interval)
-        _setter("port", port)
-        _setter("protocol", protocol)
-        _setter("unhealthy", unhealthy)
+        pulumi.set(__self__, "healthy", healthy)
+        pulumi.set(__self__, "interval", interval)
+        pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "protocol", protocol)
+        pulumi.set(__self__, "unhealthy", unhealthy)
         if end_point is not None:
-            _setter("end_point", end_point)
+            pulumi.set(__self__, "end_point", end_point)
         if endpoint is not None:
-            _setter("endpoint", endpoint)
+            pulumi.set(__self__, "endpoint", endpoint)
         if time_out is not None:
-            _setter("time_out", time_out)
+            pulumi.set(__self__, "time_out", time_out)
         if timeout is not None:
-            _setter("timeout", timeout)
+            pulumi.set(__self__, "timeout", timeout)
 
     @property
     @pulumi.getter
@@ -908,51 +636,14 @@ class StatefulNodeAzureAttachDataDisk(dict):
                  storage_account_type: str,
                  lun: Optional[int] = None,
                  zone: Optional[str] = None):
-        StatefulNodeAzureAttachDataDisk._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            data_disk_name=data_disk_name,
-            data_disk_resource_group_name=data_disk_resource_group_name,
-            size_gb=size_gb,
-            storage_account_type=storage_account_type,
-            lun=lun,
-            zone=zone,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             data_disk_name: Optional[str] = None,
-             data_disk_resource_group_name: Optional[str] = None,
-             size_gb: Optional[int] = None,
-             storage_account_type: Optional[str] = None,
-             lun: Optional[int] = None,
-             zone: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if data_disk_name is None and 'dataDiskName' in kwargs:
-            data_disk_name = kwargs['dataDiskName']
-        if data_disk_name is None:
-            raise TypeError("Missing 'data_disk_name' argument")
-        if data_disk_resource_group_name is None and 'dataDiskResourceGroupName' in kwargs:
-            data_disk_resource_group_name = kwargs['dataDiskResourceGroupName']
-        if data_disk_resource_group_name is None:
-            raise TypeError("Missing 'data_disk_resource_group_name' argument")
-        if size_gb is None and 'sizeGb' in kwargs:
-            size_gb = kwargs['sizeGb']
-        if size_gb is None:
-            raise TypeError("Missing 'size_gb' argument")
-        if storage_account_type is None and 'storageAccountType' in kwargs:
-            storage_account_type = kwargs['storageAccountType']
-        if storage_account_type is None:
-            raise TypeError("Missing 'storage_account_type' argument")
-
-        _setter("data_disk_name", data_disk_name)
-        _setter("data_disk_resource_group_name", data_disk_resource_group_name)
-        _setter("size_gb", size_gb)
-        _setter("storage_account_type", storage_account_type)
+        pulumi.set(__self__, "data_disk_name", data_disk_name)
+        pulumi.set(__self__, "data_disk_resource_group_name", data_disk_resource_group_name)
+        pulumi.set(__self__, "size_gb", size_gb)
+        pulumi.set(__self__, "storage_account_type", storage_account_type)
         if lun is not None:
-            _setter("lun", lun)
+            pulumi.set(__self__, "lun", lun)
         if zone is not None:
-            _setter("zone", zone)
+            pulumi.set(__self__, "zone", zone)
 
     @property
     @pulumi.getter(name="dataDiskName")
@@ -1010,31 +701,12 @@ class StatefulNodeAzureBootDiagnostic(dict):
                  is_enabled: Optional[bool] = None,
                  storage_url: Optional[str] = None,
                  type: Optional[str] = None):
-        StatefulNodeAzureBootDiagnostic._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            is_enabled=is_enabled,
-            storage_url=storage_url,
-            type=type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             is_enabled: Optional[bool] = None,
-             storage_url: Optional[str] = None,
-             type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if is_enabled is None and 'isEnabled' in kwargs:
-            is_enabled = kwargs['isEnabled']
-        if storage_url is None and 'storageUrl' in kwargs:
-            storage_url = kwargs['storageUrl']
-
         if is_enabled is not None:
-            _setter("is_enabled", is_enabled)
+            pulumi.set(__self__, "is_enabled", is_enabled)
         if storage_url is not None:
-            _setter("storage_url", storage_url)
+            pulumi.set(__self__, "storage_url", storage_url)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter(name="isEnabled")
@@ -1075,32 +747,9 @@ class StatefulNodeAzureDataDisk(dict):
                  lun: int,
                  size_gb: int,
                  type: str):
-        StatefulNodeAzureDataDisk._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            lun=lun,
-            size_gb=size_gb,
-            type=type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             lun: Optional[int] = None,
-             size_gb: Optional[int] = None,
-             type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if lun is None:
-            raise TypeError("Missing 'lun' argument")
-        if size_gb is None and 'sizeGb' in kwargs:
-            size_gb = kwargs['sizeGb']
-        if size_gb is None:
-            raise TypeError("Missing 'size_gb' argument")
-        if type is None:
-            raise TypeError("Missing 'type' argument")
-
-        _setter("lun", lun)
-        _setter("size_gb", size_gb)
-        _setter("type", type)
+        pulumi.set(__self__, "lun", lun)
+        pulumi.set(__self__, "size_gb", size_gb)
+        pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter
@@ -1163,74 +812,19 @@ class StatefulNodeAzureDelete(dict):
                  network_ttl_in_hours: Optional[int] = None,
                  public_ip_ttl_in_hours: Optional[int] = None,
                  snapshot_ttl_in_hours: Optional[int] = None):
-        StatefulNodeAzureDelete._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            disk_should_deallocate=disk_should_deallocate,
-            network_should_deallocate=network_should_deallocate,
-            public_ip_should_deallocate=public_ip_should_deallocate,
-            should_terminate_vm=should_terminate_vm,
-            snapshot_should_deallocate=snapshot_should_deallocate,
-            disk_ttl_in_hours=disk_ttl_in_hours,
-            network_ttl_in_hours=network_ttl_in_hours,
-            public_ip_ttl_in_hours=public_ip_ttl_in_hours,
-            snapshot_ttl_in_hours=snapshot_ttl_in_hours,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             disk_should_deallocate: Optional[bool] = None,
-             network_should_deallocate: Optional[bool] = None,
-             public_ip_should_deallocate: Optional[bool] = None,
-             should_terminate_vm: Optional[bool] = None,
-             snapshot_should_deallocate: Optional[bool] = None,
-             disk_ttl_in_hours: Optional[int] = None,
-             network_ttl_in_hours: Optional[int] = None,
-             public_ip_ttl_in_hours: Optional[int] = None,
-             snapshot_ttl_in_hours: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if disk_should_deallocate is None and 'diskShouldDeallocate' in kwargs:
-            disk_should_deallocate = kwargs['diskShouldDeallocate']
-        if disk_should_deallocate is None:
-            raise TypeError("Missing 'disk_should_deallocate' argument")
-        if network_should_deallocate is None and 'networkShouldDeallocate' in kwargs:
-            network_should_deallocate = kwargs['networkShouldDeallocate']
-        if network_should_deallocate is None:
-            raise TypeError("Missing 'network_should_deallocate' argument")
-        if public_ip_should_deallocate is None and 'publicIpShouldDeallocate' in kwargs:
-            public_ip_should_deallocate = kwargs['publicIpShouldDeallocate']
-        if public_ip_should_deallocate is None:
-            raise TypeError("Missing 'public_ip_should_deallocate' argument")
-        if should_terminate_vm is None and 'shouldTerminateVm' in kwargs:
-            should_terminate_vm = kwargs['shouldTerminateVm']
-        if should_terminate_vm is None:
-            raise TypeError("Missing 'should_terminate_vm' argument")
-        if snapshot_should_deallocate is None and 'snapshotShouldDeallocate' in kwargs:
-            snapshot_should_deallocate = kwargs['snapshotShouldDeallocate']
-        if snapshot_should_deallocate is None:
-            raise TypeError("Missing 'snapshot_should_deallocate' argument")
-        if disk_ttl_in_hours is None and 'diskTtlInHours' in kwargs:
-            disk_ttl_in_hours = kwargs['diskTtlInHours']
-        if network_ttl_in_hours is None and 'networkTtlInHours' in kwargs:
-            network_ttl_in_hours = kwargs['networkTtlInHours']
-        if public_ip_ttl_in_hours is None and 'publicIpTtlInHours' in kwargs:
-            public_ip_ttl_in_hours = kwargs['publicIpTtlInHours']
-        if snapshot_ttl_in_hours is None and 'snapshotTtlInHours' in kwargs:
-            snapshot_ttl_in_hours = kwargs['snapshotTtlInHours']
-
-        _setter("disk_should_deallocate", disk_should_deallocate)
-        _setter("network_should_deallocate", network_should_deallocate)
-        _setter("public_ip_should_deallocate", public_ip_should_deallocate)
-        _setter("should_terminate_vm", should_terminate_vm)
-        _setter("snapshot_should_deallocate", snapshot_should_deallocate)
+        pulumi.set(__self__, "disk_should_deallocate", disk_should_deallocate)
+        pulumi.set(__self__, "network_should_deallocate", network_should_deallocate)
+        pulumi.set(__self__, "public_ip_should_deallocate", public_ip_should_deallocate)
+        pulumi.set(__self__, "should_terminate_vm", should_terminate_vm)
+        pulumi.set(__self__, "snapshot_should_deallocate", snapshot_should_deallocate)
         if disk_ttl_in_hours is not None:
-            _setter("disk_ttl_in_hours", disk_ttl_in_hours)
+            pulumi.set(__self__, "disk_ttl_in_hours", disk_ttl_in_hours)
         if network_ttl_in_hours is not None:
-            _setter("network_ttl_in_hours", network_ttl_in_hours)
+            pulumi.set(__self__, "network_ttl_in_hours", network_ttl_in_hours)
         if public_ip_ttl_in_hours is not None:
-            _setter("public_ip_ttl_in_hours", public_ip_ttl_in_hours)
+            pulumi.set(__self__, "public_ip_ttl_in_hours", public_ip_ttl_in_hours)
         if snapshot_ttl_in_hours is not None:
-            _setter("snapshot_ttl_in_hours", snapshot_ttl_in_hours)
+            pulumi.set(__self__, "snapshot_ttl_in_hours", snapshot_ttl_in_hours)
 
     @property
     @pulumi.getter(name="diskShouldDeallocate")
@@ -1308,42 +902,11 @@ class StatefulNodeAzureDetachDataDisk(dict):
                  data_disk_resource_group_name: str,
                  should_deallocate: bool,
                  ttl_in_hours: Optional[int] = None):
-        StatefulNodeAzureDetachDataDisk._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            data_disk_name=data_disk_name,
-            data_disk_resource_group_name=data_disk_resource_group_name,
-            should_deallocate=should_deallocate,
-            ttl_in_hours=ttl_in_hours,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             data_disk_name: Optional[str] = None,
-             data_disk_resource_group_name: Optional[str] = None,
-             should_deallocate: Optional[bool] = None,
-             ttl_in_hours: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if data_disk_name is None and 'dataDiskName' in kwargs:
-            data_disk_name = kwargs['dataDiskName']
-        if data_disk_name is None:
-            raise TypeError("Missing 'data_disk_name' argument")
-        if data_disk_resource_group_name is None and 'dataDiskResourceGroupName' in kwargs:
-            data_disk_resource_group_name = kwargs['dataDiskResourceGroupName']
-        if data_disk_resource_group_name is None:
-            raise TypeError("Missing 'data_disk_resource_group_name' argument")
-        if should_deallocate is None and 'shouldDeallocate' in kwargs:
-            should_deallocate = kwargs['shouldDeallocate']
-        if should_deallocate is None:
-            raise TypeError("Missing 'should_deallocate' argument")
-        if ttl_in_hours is None and 'ttlInHours' in kwargs:
-            ttl_in_hours = kwargs['ttlInHours']
-
-        _setter("data_disk_name", data_disk_name)
-        _setter("data_disk_resource_group_name", data_disk_resource_group_name)
-        _setter("should_deallocate", should_deallocate)
+        pulumi.set(__self__, "data_disk_name", data_disk_name)
+        pulumi.set(__self__, "data_disk_resource_group_name", data_disk_resource_group_name)
+        pulumi.set(__self__, "should_deallocate", should_deallocate)
         if ttl_in_hours is not None:
-            _setter("ttl_in_hours", ttl_in_hours)
+            pulumi.set(__self__, "ttl_in_hours", ttl_in_hours)
 
     @property
     @pulumi.getter(name="dataDiskName")
@@ -1399,56 +962,15 @@ class StatefulNodeAzureExtension(dict):
                  type: str,
                  protected_settings: Optional[Mapping[str, Any]] = None,
                  public_settings: Optional[Mapping[str, Any]] = None):
-        StatefulNodeAzureExtension._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            api_version=api_version,
-            minor_version_auto_upgrade=minor_version_auto_upgrade,
-            name=name,
-            publisher=publisher,
-            type=type,
-            protected_settings=protected_settings,
-            public_settings=public_settings,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             api_version: Optional[str] = None,
-             minor_version_auto_upgrade: Optional[bool] = None,
-             name: Optional[str] = None,
-             publisher: Optional[str] = None,
-             type: Optional[str] = None,
-             protected_settings: Optional[Mapping[str, Any]] = None,
-             public_settings: Optional[Mapping[str, Any]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if api_version is None and 'apiVersion' in kwargs:
-            api_version = kwargs['apiVersion']
-        if api_version is None:
-            raise TypeError("Missing 'api_version' argument")
-        if minor_version_auto_upgrade is None and 'minorVersionAutoUpgrade' in kwargs:
-            minor_version_auto_upgrade = kwargs['minorVersionAutoUpgrade']
-        if minor_version_auto_upgrade is None:
-            raise TypeError("Missing 'minor_version_auto_upgrade' argument")
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-        if publisher is None:
-            raise TypeError("Missing 'publisher' argument")
-        if type is None:
-            raise TypeError("Missing 'type' argument")
-        if protected_settings is None and 'protectedSettings' in kwargs:
-            protected_settings = kwargs['protectedSettings']
-        if public_settings is None and 'publicSettings' in kwargs:
-            public_settings = kwargs['publicSettings']
-
-        _setter("api_version", api_version)
-        _setter("minor_version_auto_upgrade", minor_version_auto_upgrade)
-        _setter("name", name)
-        _setter("publisher", publisher)
-        _setter("type", type)
+        pulumi.set(__self__, "api_version", api_version)
+        pulumi.set(__self__, "minor_version_auto_upgrade", minor_version_auto_upgrade)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "publisher", publisher)
+        pulumi.set(__self__, "type", type)
         if protected_settings is not None:
-            _setter("protected_settings", protected_settings)
+            pulumi.set(__self__, "protected_settings", protected_settings)
         if public_settings is not None:
-            _setter("public_settings", public_settings)
+            pulumi.set(__self__, "public_settings", public_settings)
 
     @property
     @pulumi.getter(name="apiVersion")
@@ -1516,41 +1038,12 @@ class StatefulNodeAzureHealth(dict):
                  health_check_types: Sequence[str],
                  grace_period: Optional[int] = None,
                  unhealthy_duration: Optional[int] = None):
-        StatefulNodeAzureHealth._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            auto_healing=auto_healing,
-            health_check_types=health_check_types,
-            grace_period=grace_period,
-            unhealthy_duration=unhealthy_duration,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             auto_healing: Optional[bool] = None,
-             health_check_types: Optional[Sequence[str]] = None,
-             grace_period: Optional[int] = None,
-             unhealthy_duration: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if auto_healing is None and 'autoHealing' in kwargs:
-            auto_healing = kwargs['autoHealing']
-        if auto_healing is None:
-            raise TypeError("Missing 'auto_healing' argument")
-        if health_check_types is None and 'healthCheckTypes' in kwargs:
-            health_check_types = kwargs['healthCheckTypes']
-        if health_check_types is None:
-            raise TypeError("Missing 'health_check_types' argument")
-        if grace_period is None and 'gracePeriod' in kwargs:
-            grace_period = kwargs['gracePeriod']
-        if unhealthy_duration is None and 'unhealthyDuration' in kwargs:
-            unhealthy_duration = kwargs['unhealthyDuration']
-
-        _setter("auto_healing", auto_healing)
-        _setter("health_check_types", health_check_types)
+        pulumi.set(__self__, "auto_healing", auto_healing)
+        pulumi.set(__self__, "health_check_types", health_check_types)
         if grace_period is not None:
-            _setter("grace_period", grace_period)
+            pulumi.set(__self__, "grace_period", grace_period)
         if unhealthy_duration is not None:
-            _setter("unhealthy_duration", unhealthy_duration)
+            pulumi.set(__self__, "unhealthy_duration", unhealthy_duration)
 
     @property
     @pulumi.getter(name="autoHealing")
@@ -1598,31 +1091,12 @@ class StatefulNodeAzureImage(dict):
                  custom_images: Optional[Sequence['outputs.StatefulNodeAzureImageCustomImage']] = None,
                  galleries: Optional[Sequence['outputs.StatefulNodeAzureImageGallery']] = None,
                  marketplace_images: Optional[Sequence['outputs.StatefulNodeAzureImageMarketplaceImage']] = None):
-        StatefulNodeAzureImage._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            custom_images=custom_images,
-            galleries=galleries,
-            marketplace_images=marketplace_images,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             custom_images: Optional[Sequence['outputs.StatefulNodeAzureImageCustomImage']] = None,
-             galleries: Optional[Sequence['outputs.StatefulNodeAzureImageGallery']] = None,
-             marketplace_images: Optional[Sequence['outputs.StatefulNodeAzureImageMarketplaceImage']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if custom_images is None and 'customImages' in kwargs:
-            custom_images = kwargs['customImages']
-        if marketplace_images is None and 'marketplaceImages' in kwargs:
-            marketplace_images = kwargs['marketplaceImages']
-
         if custom_images is not None:
-            _setter("custom_images", custom_images)
+            pulumi.set(__self__, "custom_images", custom_images)
         if galleries is not None:
-            _setter("galleries", galleries)
+            pulumi.set(__self__, "galleries", galleries)
         if marketplace_images is not None:
-            _setter("marketplace_images", marketplace_images)
+            pulumi.set(__self__, "marketplace_images", marketplace_images)
 
     @property
     @pulumi.getter(name="customImages")
@@ -1662,27 +1136,8 @@ class StatefulNodeAzureImageCustomImage(dict):
     def __init__(__self__, *,
                  custom_image_resource_group_name: str,
                  name: str):
-        StatefulNodeAzureImageCustomImage._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            custom_image_resource_group_name=custom_image_resource_group_name,
-            name=name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             custom_image_resource_group_name: Optional[str] = None,
-             name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if custom_image_resource_group_name is None and 'customImageResourceGroupName' in kwargs:
-            custom_image_resource_group_name = kwargs['customImageResourceGroupName']
-        if custom_image_resource_group_name is None:
-            raise TypeError("Missing 'custom_image_resource_group_name' argument")
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-
-        _setter("custom_image_resource_group_name", custom_image_resource_group_name)
-        _setter("name", name)
+        pulumi.set(__self__, "custom_image_resource_group_name", custom_image_resource_group_name)
+        pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter(name="customImageResourceGroupName")
@@ -1725,43 +1180,10 @@ class StatefulNodeAzureImageGallery(dict):
                  gallery_resource_group_name: str,
                  image_name: str,
                  version_name: str):
-        StatefulNodeAzureImageGallery._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            gallery_name=gallery_name,
-            gallery_resource_group_name=gallery_resource_group_name,
-            image_name=image_name,
-            version_name=version_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             gallery_name: Optional[str] = None,
-             gallery_resource_group_name: Optional[str] = None,
-             image_name: Optional[str] = None,
-             version_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if gallery_name is None and 'galleryName' in kwargs:
-            gallery_name = kwargs['galleryName']
-        if gallery_name is None:
-            raise TypeError("Missing 'gallery_name' argument")
-        if gallery_resource_group_name is None and 'galleryResourceGroupName' in kwargs:
-            gallery_resource_group_name = kwargs['galleryResourceGroupName']
-        if gallery_resource_group_name is None:
-            raise TypeError("Missing 'gallery_resource_group_name' argument")
-        if image_name is None and 'imageName' in kwargs:
-            image_name = kwargs['imageName']
-        if image_name is None:
-            raise TypeError("Missing 'image_name' argument")
-        if version_name is None and 'versionName' in kwargs:
-            version_name = kwargs['versionName']
-        if version_name is None:
-            raise TypeError("Missing 'version_name' argument")
-
-        _setter("gallery_name", gallery_name)
-        _setter("gallery_resource_group_name", gallery_resource_group_name)
-        _setter("image_name", image_name)
-        _setter("version_name", version_name)
+        pulumi.set(__self__, "gallery_name", gallery_name)
+        pulumi.set(__self__, "gallery_resource_group_name", gallery_resource_group_name)
+        pulumi.set(__self__, "image_name", image_name)
+        pulumi.set(__self__, "version_name", version_name)
 
     @property
     @pulumi.getter(name="galleryName")
@@ -1791,35 +1213,10 @@ class StatefulNodeAzureImageMarketplaceImage(dict):
                  publisher: str,
                  sku: str,
                  version: str):
-        StatefulNodeAzureImageMarketplaceImage._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            offer=offer,
-            publisher=publisher,
-            sku=sku,
-            version=version,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             offer: Optional[str] = None,
-             publisher: Optional[str] = None,
-             sku: Optional[str] = None,
-             version: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if offer is None:
-            raise TypeError("Missing 'offer' argument")
-        if publisher is None:
-            raise TypeError("Missing 'publisher' argument")
-        if sku is None:
-            raise TypeError("Missing 'sku' argument")
-        if version is None:
-            raise TypeError("Missing 'version' argument")
-
-        _setter("offer", offer)
-        _setter("publisher", publisher)
-        _setter("sku", sku)
-        _setter("version", version)
+        pulumi.set(__self__, "offer", offer)
+        pulumi.set(__self__, "publisher", publisher)
+        pulumi.set(__self__, "sku", sku)
+        pulumi.set(__self__, "version", version)
 
     @property
     @pulumi.getter
@@ -1872,41 +1269,12 @@ class StatefulNodeAzureImportVm(dict):
                  resource_group_name: str,
                  draining_timeout: Optional[int] = None,
                  resources_retention_time: Optional[int] = None):
-        StatefulNodeAzureImportVm._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            original_vm_name=original_vm_name,
-            resource_group_name=resource_group_name,
-            draining_timeout=draining_timeout,
-            resources_retention_time=resources_retention_time,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             original_vm_name: Optional[str] = None,
-             resource_group_name: Optional[str] = None,
-             draining_timeout: Optional[int] = None,
-             resources_retention_time: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if original_vm_name is None and 'originalVmName' in kwargs:
-            original_vm_name = kwargs['originalVmName']
-        if original_vm_name is None:
-            raise TypeError("Missing 'original_vm_name' argument")
-        if resource_group_name is None and 'resourceGroupName' in kwargs:
-            resource_group_name = kwargs['resourceGroupName']
-        if resource_group_name is None:
-            raise TypeError("Missing 'resource_group_name' argument")
-        if draining_timeout is None and 'drainingTimeout' in kwargs:
-            draining_timeout = kwargs['drainingTimeout']
-        if resources_retention_time is None and 'resourcesRetentionTime' in kwargs:
-            resources_retention_time = kwargs['resourcesRetentionTime']
-
-        _setter("original_vm_name", original_vm_name)
-        _setter("resource_group_name", resource_group_name)
+        pulumi.set(__self__, "original_vm_name", original_vm_name)
+        pulumi.set(__self__, "resource_group_name", resource_group_name)
         if draining_timeout is not None:
-            _setter("draining_timeout", draining_timeout)
+            pulumi.set(__self__, "draining_timeout", draining_timeout)
         if resources_retention_time is not None:
-            _setter("resources_retention_time", resources_retention_time)
+            pulumi.set(__self__, "resources_retention_time", resources_retention_time)
 
     @property
     @pulumi.getter(name="originalVmName")
@@ -1956,43 +1324,12 @@ class StatefulNodeAzureLoadBalancer(dict):
                  resource_group_name: str,
                  type: str,
                  sku: Optional[str] = None):
-        StatefulNodeAzureLoadBalancer._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            backend_pool_names=backend_pool_names,
-            name=name,
-            resource_group_name=resource_group_name,
-            type=type,
-            sku=sku,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             backend_pool_names: Optional[Sequence[str]] = None,
-             name: Optional[str] = None,
-             resource_group_name: Optional[str] = None,
-             type: Optional[str] = None,
-             sku: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if backend_pool_names is None and 'backendPoolNames' in kwargs:
-            backend_pool_names = kwargs['backendPoolNames']
-        if backend_pool_names is None:
-            raise TypeError("Missing 'backend_pool_names' argument")
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-        if resource_group_name is None and 'resourceGroupName' in kwargs:
-            resource_group_name = kwargs['resourceGroupName']
-        if resource_group_name is None:
-            raise TypeError("Missing 'resource_group_name' argument")
-        if type is None:
-            raise TypeError("Missing 'type' argument")
-
-        _setter("backend_pool_names", backend_pool_names)
-        _setter("name", name)
-        _setter("resource_group_name", resource_group_name)
-        _setter("type", type)
+        pulumi.set(__self__, "backend_pool_names", backend_pool_names)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "resource_group_name", resource_group_name)
+        pulumi.set(__self__, "type", type)
         if sku is not None:
-            _setter("sku", sku)
+            pulumi.set(__self__, "sku", sku)
 
     @property
     @pulumi.getter(name="backendPoolNames")
@@ -2045,32 +1382,11 @@ class StatefulNodeAzureLogin(dict):
                  user_name: str,
                  password: Optional[str] = None,
                  ssh_public_key: Optional[str] = None):
-        StatefulNodeAzureLogin._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            user_name=user_name,
-            password=password,
-            ssh_public_key=ssh_public_key,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             user_name: Optional[str] = None,
-             password: Optional[str] = None,
-             ssh_public_key: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if user_name is None and 'userName' in kwargs:
-            user_name = kwargs['userName']
-        if user_name is None:
-            raise TypeError("Missing 'user_name' argument")
-        if ssh_public_key is None and 'sshPublicKey' in kwargs:
-            ssh_public_key = kwargs['sshPublicKey']
-
-        _setter("user_name", user_name)
+        pulumi.set(__self__, "user_name", user_name)
         if password is not None:
-            _setter("password", password)
+            pulumi.set(__self__, "password", password)
         if ssh_public_key is not None:
-            _setter("ssh_public_key", ssh_public_key)
+            pulumi.set(__self__, "ssh_public_key", ssh_public_key)
 
     @property
     @pulumi.getter(name="userName")
@@ -2110,27 +1426,8 @@ class StatefulNodeAzureManagedServiceIdentity(dict):
     def __init__(__self__, *,
                  name: str,
                  resource_group_name: str):
-        StatefulNodeAzureManagedServiceIdentity._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            name=name,
-            resource_group_name=resource_group_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             name: Optional[str] = None,
-             resource_group_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-        if resource_group_name is None and 'resourceGroupName' in kwargs:
-            resource_group_name = kwargs['resourceGroupName']
-        if resource_group_name is None:
-            raise TypeError("Missing 'resource_group_name' argument")
-
-        _setter("name", name)
-        _setter("resource_group_name", resource_group_name)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "resource_group_name", resource_group_name)
 
     @property
     @pulumi.getter
@@ -2170,36 +1467,9 @@ class StatefulNodeAzureNetwork(dict):
                  network_interfaces: Sequence['outputs.StatefulNodeAzureNetworkNetworkInterface'],
                  network_resource_group_name: str,
                  virtual_network_name: str):
-        StatefulNodeAzureNetwork._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            network_interfaces=network_interfaces,
-            network_resource_group_name=network_resource_group_name,
-            virtual_network_name=virtual_network_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             network_interfaces: Optional[Sequence['outputs.StatefulNodeAzureNetworkNetworkInterface']] = None,
-             network_resource_group_name: Optional[str] = None,
-             virtual_network_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if network_interfaces is None and 'networkInterfaces' in kwargs:
-            network_interfaces = kwargs['networkInterfaces']
-        if network_interfaces is None:
-            raise TypeError("Missing 'network_interfaces' argument")
-        if network_resource_group_name is None and 'networkResourceGroupName' in kwargs:
-            network_resource_group_name = kwargs['networkResourceGroupName']
-        if network_resource_group_name is None:
-            raise TypeError("Missing 'network_resource_group_name' argument")
-        if virtual_network_name is None and 'virtualNetworkName' in kwargs:
-            virtual_network_name = kwargs['virtualNetworkName']
-        if virtual_network_name is None:
-            raise TypeError("Missing 'virtual_network_name' argument")
-
-        _setter("network_interfaces", network_interfaces)
-        _setter("network_resource_group_name", network_resource_group_name)
-        _setter("virtual_network_name", virtual_network_name)
+        pulumi.set(__self__, "network_interfaces", network_interfaces)
+        pulumi.set(__self__, "network_resource_group_name", network_resource_group_name)
+        pulumi.set(__self__, "virtual_network_name", virtual_network_name)
 
     @property
     @pulumi.getter(name="networkInterfaces")
@@ -2265,77 +1535,24 @@ class StatefulNodeAzureNetworkNetworkInterface(dict):
                  private_ip_addresses: Optional[Sequence[str]] = None,
                  public_ip_sku: Optional[str] = None,
                  public_ips: Optional[Sequence['outputs.StatefulNodeAzureNetworkNetworkInterfacePublicIp']] = None):
-        StatefulNodeAzureNetworkNetworkInterface._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            is_primary=is_primary,
-            subnet_name=subnet_name,
-            additional_ip_configurations=additional_ip_configurations,
-            application_security_groups=application_security_groups,
-            assign_public_ip=assign_public_ip,
-            enable_ip_forwarding=enable_ip_forwarding,
-            network_security_groups=network_security_groups,
-            private_ip_addresses=private_ip_addresses,
-            public_ip_sku=public_ip_sku,
-            public_ips=public_ips,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             is_primary: Optional[bool] = None,
-             subnet_name: Optional[str] = None,
-             additional_ip_configurations: Optional[Sequence['outputs.StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfiguration']] = None,
-             application_security_groups: Optional[Sequence['outputs.StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroup']] = None,
-             assign_public_ip: Optional[bool] = None,
-             enable_ip_forwarding: Optional[bool] = None,
-             network_security_groups: Optional[Sequence['outputs.StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroup']] = None,
-             private_ip_addresses: Optional[Sequence[str]] = None,
-             public_ip_sku: Optional[str] = None,
-             public_ips: Optional[Sequence['outputs.StatefulNodeAzureNetworkNetworkInterfacePublicIp']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if is_primary is None and 'isPrimary' in kwargs:
-            is_primary = kwargs['isPrimary']
-        if is_primary is None:
-            raise TypeError("Missing 'is_primary' argument")
-        if subnet_name is None and 'subnetName' in kwargs:
-            subnet_name = kwargs['subnetName']
-        if subnet_name is None:
-            raise TypeError("Missing 'subnet_name' argument")
-        if additional_ip_configurations is None and 'additionalIpConfigurations' in kwargs:
-            additional_ip_configurations = kwargs['additionalIpConfigurations']
-        if application_security_groups is None and 'applicationSecurityGroups' in kwargs:
-            application_security_groups = kwargs['applicationSecurityGroups']
-        if assign_public_ip is None and 'assignPublicIp' in kwargs:
-            assign_public_ip = kwargs['assignPublicIp']
-        if enable_ip_forwarding is None and 'enableIpForwarding' in kwargs:
-            enable_ip_forwarding = kwargs['enableIpForwarding']
-        if network_security_groups is None and 'networkSecurityGroups' in kwargs:
-            network_security_groups = kwargs['networkSecurityGroups']
-        if private_ip_addresses is None and 'privateIpAddresses' in kwargs:
-            private_ip_addresses = kwargs['privateIpAddresses']
-        if public_ip_sku is None and 'publicIpSku' in kwargs:
-            public_ip_sku = kwargs['publicIpSku']
-        if public_ips is None and 'publicIps' in kwargs:
-            public_ips = kwargs['publicIps']
-
-        _setter("is_primary", is_primary)
-        _setter("subnet_name", subnet_name)
+        pulumi.set(__self__, "is_primary", is_primary)
+        pulumi.set(__self__, "subnet_name", subnet_name)
         if additional_ip_configurations is not None:
-            _setter("additional_ip_configurations", additional_ip_configurations)
+            pulumi.set(__self__, "additional_ip_configurations", additional_ip_configurations)
         if application_security_groups is not None:
-            _setter("application_security_groups", application_security_groups)
+            pulumi.set(__self__, "application_security_groups", application_security_groups)
         if assign_public_ip is not None:
-            _setter("assign_public_ip", assign_public_ip)
+            pulumi.set(__self__, "assign_public_ip", assign_public_ip)
         if enable_ip_forwarding is not None:
-            _setter("enable_ip_forwarding", enable_ip_forwarding)
+            pulumi.set(__self__, "enable_ip_forwarding", enable_ip_forwarding)
         if network_security_groups is not None:
-            _setter("network_security_groups", network_security_groups)
+            pulumi.set(__self__, "network_security_groups", network_security_groups)
         if private_ip_addresses is not None:
-            _setter("private_ip_addresses", private_ip_addresses)
+            pulumi.set(__self__, "private_ip_addresses", private_ip_addresses)
         if public_ip_sku is not None:
-            _setter("public_ip_sku", public_ip_sku)
+            pulumi.set(__self__, "public_ip_sku", public_ip_sku)
         if public_ips is not None:
-            _setter("public_ips", public_ips)
+            pulumi.set(__self__, "public_ips", public_ips)
 
     @property
     @pulumi.getter(name="isPrimary")
@@ -2410,27 +1627,8 @@ class StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfiguration(dict):
     def __init__(__self__, *,
                  name: str,
                  private_ip_address_version: str):
-        StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfiguration._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            name=name,
-            private_ip_address_version=private_ip_address_version,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             name: Optional[str] = None,
-             private_ip_address_version: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-        if private_ip_address_version is None and 'privateIpAddressVersion' in kwargs:
-            private_ip_address_version = kwargs['privateIpAddressVersion']
-        if private_ip_address_version is None:
-            raise TypeError("Missing 'private_ip_address_version' argument")
-
-        _setter("name", name)
-        _setter("private_ip_address_version", private_ip_address_version)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "private_ip_address_version", private_ip_address_version)
 
     @property
     @pulumi.getter
@@ -2465,27 +1663,8 @@ class StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroup(dict):
     def __init__(__self__, *,
                  name: str,
                  network_resource_group_name: str):
-        StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroup._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            name=name,
-            network_resource_group_name=network_resource_group_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             name: Optional[str] = None,
-             network_resource_group_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-        if network_resource_group_name is None and 'networkResourceGroupName' in kwargs:
-            network_resource_group_name = kwargs['networkResourceGroupName']
-        if network_resource_group_name is None:
-            raise TypeError("Missing 'network_resource_group_name' argument")
-
-        _setter("name", name)
-        _setter("network_resource_group_name", network_resource_group_name)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "network_resource_group_name", network_resource_group_name)
 
     @property
     @pulumi.getter
@@ -2520,25 +1699,10 @@ class StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroup(dict):
     def __init__(__self__, *,
                  name: Optional[str] = None,
                  network_resource_group_name: Optional[str] = None):
-        StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroup._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            name=name,
-            network_resource_group_name=network_resource_group_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             name: Optional[str] = None,
-             network_resource_group_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if network_resource_group_name is None and 'networkResourceGroupName' in kwargs:
-            network_resource_group_name = kwargs['networkResourceGroupName']
-
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if network_resource_group_name is not None:
-            _setter("network_resource_group_name", network_resource_group_name)
+            pulumi.set(__self__, "network_resource_group_name", network_resource_group_name)
 
     @property
     @pulumi.getter
@@ -2573,27 +1737,8 @@ class StatefulNodeAzureNetworkNetworkInterfacePublicIp(dict):
     def __init__(__self__, *,
                  name: str,
                  network_resource_group_name: str):
-        StatefulNodeAzureNetworkNetworkInterfacePublicIp._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            name=name,
-            network_resource_group_name=network_resource_group_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             name: Optional[str] = None,
-             network_resource_group_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-        if network_resource_group_name is None and 'networkResourceGroupName' in kwargs:
-            network_resource_group_name = kwargs['networkResourceGroupName']
-        if network_resource_group_name is None:
-            raise TypeError("Missing 'network_resource_group_name' argument")
-
-        _setter("name", name)
-        _setter("network_resource_group_name", network_resource_group_name)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "network_resource_group_name", network_resource_group_name)
 
     @property
     @pulumi.getter
@@ -2628,26 +1773,9 @@ class StatefulNodeAzureOsDisk(dict):
     def __init__(__self__, *,
                  type: str,
                  size_gb: Optional[int] = None):
-        StatefulNodeAzureOsDisk._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            type=type,
-            size_gb=size_gb,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             type: Optional[str] = None,
-             size_gb: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if type is None:
-            raise TypeError("Missing 'type' argument")
-        if size_gb is None and 'sizeGb' in kwargs:
-            size_gb = kwargs['sizeGb']
-
-        _setter("type", type)
+        pulumi.set(__self__, "type", type)
         if size_gb is not None:
-            _setter("size_gb", size_gb)
+            pulumi.set(__self__, "size_gb", size_gb)
 
     @property
     @pulumi.getter
@@ -2685,34 +1813,9 @@ class StatefulNodeAzureSchedulingTask(dict):
                  cron_expression: str,
                  is_enabled: bool,
                  type: str):
-        StatefulNodeAzureSchedulingTask._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cron_expression=cron_expression,
-            is_enabled=is_enabled,
-            type=type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cron_expression: Optional[str] = None,
-             is_enabled: Optional[bool] = None,
-             type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cron_expression is None and 'cronExpression' in kwargs:
-            cron_expression = kwargs['cronExpression']
-        if cron_expression is None:
-            raise TypeError("Missing 'cron_expression' argument")
-        if is_enabled is None and 'isEnabled' in kwargs:
-            is_enabled = kwargs['isEnabled']
-        if is_enabled is None:
-            raise TypeError("Missing 'is_enabled' argument")
-        if type is None:
-            raise TypeError("Missing 'type' argument")
-
-        _setter("cron_expression", cron_expression)
-        _setter("is_enabled", is_enabled)
-        _setter("type", type)
+        pulumi.set(__self__, "cron_expression", cron_expression)
+        pulumi.set(__self__, "is_enabled", is_enabled)
+        pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter(name="cronExpression")
@@ -2754,29 +1857,8 @@ class StatefulNodeAzureSecret(dict):
     def __init__(__self__, *,
                  source_vaults: Sequence['outputs.StatefulNodeAzureSecretSourceVault'],
                  vault_certificates: Sequence['outputs.StatefulNodeAzureSecretVaultCertificate']):
-        StatefulNodeAzureSecret._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            source_vaults=source_vaults,
-            vault_certificates=vault_certificates,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             source_vaults: Optional[Sequence['outputs.StatefulNodeAzureSecretSourceVault']] = None,
-             vault_certificates: Optional[Sequence['outputs.StatefulNodeAzureSecretVaultCertificate']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if source_vaults is None and 'sourceVaults' in kwargs:
-            source_vaults = kwargs['sourceVaults']
-        if source_vaults is None:
-            raise TypeError("Missing 'source_vaults' argument")
-        if vault_certificates is None and 'vaultCertificates' in kwargs:
-            vault_certificates = kwargs['vaultCertificates']
-        if vault_certificates is None:
-            raise TypeError("Missing 'vault_certificates' argument")
-
-        _setter("source_vaults", source_vaults)
-        _setter("vault_certificates", vault_certificates)
+        pulumi.set(__self__, "source_vaults", source_vaults)
+        pulumi.set(__self__, "vault_certificates", vault_certificates)
 
     @property
     @pulumi.getter(name="sourceVaults")
@@ -2811,27 +1893,8 @@ class StatefulNodeAzureSecretSourceVault(dict):
     def __init__(__self__, *,
                  name: str,
                  resource_group_name: str):
-        StatefulNodeAzureSecretSourceVault._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            name=name,
-            resource_group_name=resource_group_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             name: Optional[str] = None,
-             resource_group_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-        if resource_group_name is None and 'resourceGroupName' in kwargs:
-            resource_group_name = kwargs['resourceGroupName']
-        if resource_group_name is None:
-            raise TypeError("Missing 'resource_group_name' argument")
-
-        _setter("name", name)
-        _setter("resource_group_name", resource_group_name)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "resource_group_name", resource_group_name)
 
     @property
     @pulumi.getter
@@ -2868,27 +1931,10 @@ class StatefulNodeAzureSecretVaultCertificate(dict):
     def __init__(__self__, *,
                  certificate_store: Optional[str] = None,
                  certificate_url: Optional[str] = None):
-        StatefulNodeAzureSecretVaultCertificate._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            certificate_store=certificate_store,
-            certificate_url=certificate_url,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             certificate_store: Optional[str] = None,
-             certificate_url: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if certificate_store is None and 'certificateStore' in kwargs:
-            certificate_store = kwargs['certificateStore']
-        if certificate_url is None and 'certificateUrl' in kwargs:
-            certificate_url = kwargs['certificateUrl']
-
         if certificate_store is not None:
-            _setter("certificate_store", certificate_store)
+            pulumi.set(__self__, "certificate_store", certificate_store)
         if certificate_url is not None:
-            _setter("certificate_url", certificate_url)
+            pulumi.set(__self__, "certificate_url", certificate_url)
 
     @property
     @pulumi.getter(name="certificateStore")
@@ -2928,33 +1974,12 @@ class StatefulNodeAzureSecurity(dict):
                  secure_boot_enabled: Optional[bool] = None,
                  security_type: Optional[str] = None,
                  vtpm_enabled: Optional[bool] = None):
-        StatefulNodeAzureSecurity._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            secure_boot_enabled=secure_boot_enabled,
-            security_type=security_type,
-            vtpm_enabled=vtpm_enabled,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             secure_boot_enabled: Optional[bool] = None,
-             security_type: Optional[str] = None,
-             vtpm_enabled: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if secure_boot_enabled is None and 'secureBootEnabled' in kwargs:
-            secure_boot_enabled = kwargs['secureBootEnabled']
-        if security_type is None and 'securityType' in kwargs:
-            security_type = kwargs['securityType']
-        if vtpm_enabled is None and 'vtpmEnabled' in kwargs:
-            vtpm_enabled = kwargs['vtpmEnabled']
-
         if secure_boot_enabled is not None:
-            _setter("secure_boot_enabled", secure_boot_enabled)
+            pulumi.set(__self__, "secure_boot_enabled", secure_boot_enabled)
         if security_type is not None:
-            _setter("security_type", security_type)
+            pulumi.set(__self__, "security_type", security_type)
         if vtpm_enabled is not None:
-            _setter("vtpm_enabled", vtpm_enabled)
+            pulumi.set(__self__, "vtpm_enabled", vtpm_enabled)
 
     @property
     @pulumi.getter(name="secureBootEnabled")
@@ -2977,25 +2002,8 @@ class StatefulNodeAzureSignal(dict):
     def __init__(__self__, *,
                  timeout: int,
                  type: str):
-        StatefulNodeAzureSignal._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            timeout=timeout,
-            type=type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             timeout: Optional[int] = None,
-             type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if timeout is None:
-            raise TypeError("Missing 'timeout' argument")
-        if type is None:
-            raise TypeError("Missing 'type' argument")
-
-        _setter("timeout", timeout)
-        _setter("type", type)
+        pulumi.set(__self__, "timeout", timeout)
+        pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter
@@ -3044,52 +2052,17 @@ class StatefulNodeAzureStrategy(dict):
                  optimization_windows: Optional[Sequence[str]] = None,
                  preferred_life_cycle: Optional[str] = None,
                  revert_to_spot: Optional['outputs.StatefulNodeAzureStrategyRevertToSpot'] = None):
-        StatefulNodeAzureStrategy._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            fallback_to_on_demand=fallback_to_on_demand,
-            capacity_reservations=capacity_reservations,
-            draining_timeout=draining_timeout,
-            optimization_windows=optimization_windows,
-            preferred_life_cycle=preferred_life_cycle,
-            revert_to_spot=revert_to_spot,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             fallback_to_on_demand: Optional[bool] = None,
-             capacity_reservations: Optional[Sequence['outputs.StatefulNodeAzureStrategyCapacityReservation']] = None,
-             draining_timeout: Optional[int] = None,
-             optimization_windows: Optional[Sequence[str]] = None,
-             preferred_life_cycle: Optional[str] = None,
-             revert_to_spot: Optional['outputs.StatefulNodeAzureStrategyRevertToSpot'] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if fallback_to_on_demand is None and 'fallbackToOnDemand' in kwargs:
-            fallback_to_on_demand = kwargs['fallbackToOnDemand']
-        if fallback_to_on_demand is None:
-            raise TypeError("Missing 'fallback_to_on_demand' argument")
-        if capacity_reservations is None and 'capacityReservations' in kwargs:
-            capacity_reservations = kwargs['capacityReservations']
-        if draining_timeout is None and 'drainingTimeout' in kwargs:
-            draining_timeout = kwargs['drainingTimeout']
-        if optimization_windows is None and 'optimizationWindows' in kwargs:
-            optimization_windows = kwargs['optimizationWindows']
-        if preferred_life_cycle is None and 'preferredLifeCycle' in kwargs:
-            preferred_life_cycle = kwargs['preferredLifeCycle']
-        if revert_to_spot is None and 'revertToSpot' in kwargs:
-            revert_to_spot = kwargs['revertToSpot']
-
-        _setter("fallback_to_on_demand", fallback_to_on_demand)
+        pulumi.set(__self__, "fallback_to_on_demand", fallback_to_on_demand)
         if capacity_reservations is not None:
-            _setter("capacity_reservations", capacity_reservations)
+            pulumi.set(__self__, "capacity_reservations", capacity_reservations)
         if draining_timeout is not None:
-            _setter("draining_timeout", draining_timeout)
+            pulumi.set(__self__, "draining_timeout", draining_timeout)
         if optimization_windows is not None:
-            _setter("optimization_windows", optimization_windows)
+            pulumi.set(__self__, "optimization_windows", optimization_windows)
         if preferred_life_cycle is not None:
-            _setter("preferred_life_cycle", preferred_life_cycle)
+            pulumi.set(__self__, "preferred_life_cycle", preferred_life_cycle)
         if revert_to_spot is not None:
-            _setter("revert_to_spot", revert_to_spot)
+            pulumi.set(__self__, "revert_to_spot", revert_to_spot)
 
     @property
     @pulumi.getter(name="fallbackToOnDemand")
@@ -3149,35 +2122,10 @@ class StatefulNodeAzureStrategyCapacityReservation(dict):
                  should_utilize: bool,
                  utilization_strategy: str,
                  capacity_reservation_groups: Optional[Sequence['outputs.StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroup']] = None):
-        StatefulNodeAzureStrategyCapacityReservation._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            should_utilize=should_utilize,
-            utilization_strategy=utilization_strategy,
-            capacity_reservation_groups=capacity_reservation_groups,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             should_utilize: Optional[bool] = None,
-             utilization_strategy: Optional[str] = None,
-             capacity_reservation_groups: Optional[Sequence['outputs.StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroup']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if should_utilize is None and 'shouldUtilize' in kwargs:
-            should_utilize = kwargs['shouldUtilize']
-        if should_utilize is None:
-            raise TypeError("Missing 'should_utilize' argument")
-        if utilization_strategy is None and 'utilizationStrategy' in kwargs:
-            utilization_strategy = kwargs['utilizationStrategy']
-        if utilization_strategy is None:
-            raise TypeError("Missing 'utilization_strategy' argument")
-        if capacity_reservation_groups is None and 'capacityReservationGroups' in kwargs:
-            capacity_reservation_groups = kwargs['capacityReservationGroups']
-
-        _setter("should_utilize", should_utilize)
-        _setter("utilization_strategy", utilization_strategy)
+        pulumi.set(__self__, "should_utilize", should_utilize)
+        pulumi.set(__self__, "utilization_strategy", utilization_strategy)
         if capacity_reservation_groups is not None:
-            _setter("capacity_reservation_groups", capacity_reservation_groups)
+            pulumi.set(__self__, "capacity_reservation_groups", capacity_reservation_groups)
 
     @property
     @pulumi.getter(name="shouldUtilize")
@@ -3222,35 +2170,10 @@ class StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroup(dict)
                  crg_name: str,
                  crg_resource_group_name: str,
                  crg_should_prioritize: Optional[bool] = None):
-        StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroup._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            crg_name=crg_name,
-            crg_resource_group_name=crg_resource_group_name,
-            crg_should_prioritize=crg_should_prioritize,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             crg_name: Optional[str] = None,
-             crg_resource_group_name: Optional[str] = None,
-             crg_should_prioritize: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if crg_name is None and 'crgName' in kwargs:
-            crg_name = kwargs['crgName']
-        if crg_name is None:
-            raise TypeError("Missing 'crg_name' argument")
-        if crg_resource_group_name is None and 'crgResourceGroupName' in kwargs:
-            crg_resource_group_name = kwargs['crgResourceGroupName']
-        if crg_resource_group_name is None:
-            raise TypeError("Missing 'crg_resource_group_name' argument")
-        if crg_should_prioritize is None and 'crgShouldPrioritize' in kwargs:
-            crg_should_prioritize = kwargs['crgShouldPrioritize']
-
-        _setter("crg_name", crg_name)
-        _setter("crg_resource_group_name", crg_resource_group_name)
+        pulumi.set(__self__, "crg_name", crg_name)
+        pulumi.set(__self__, "crg_resource_group_name", crg_resource_group_name)
         if crg_should_prioritize is not None:
-            _setter("crg_should_prioritize", crg_should_prioritize)
+            pulumi.set(__self__, "crg_should_prioritize", crg_should_prioritize)
 
     @property
     @pulumi.getter(name="crgName")
@@ -3289,22 +2212,7 @@ class StatefulNodeAzureStrategyRevertToSpot(dict):
 
     def __init__(__self__, *,
                  perform_at: str):
-        StatefulNodeAzureStrategyRevertToSpot._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            perform_at=perform_at,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             perform_at: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if perform_at is None and 'performAt' in kwargs:
-            perform_at = kwargs['performAt']
-        if perform_at is None:
-            raise TypeError("Missing 'perform_at' argument")
-
-        _setter("perform_at", perform_at)
+        pulumi.set(__self__, "perform_at", perform_at)
 
     @property
     @pulumi.getter(name="performAt")
@@ -3336,28 +2244,9 @@ class StatefulNodeAzureTag(dict):
     def __init__(__self__, *,
                  tag_key: str,
                  tag_value: Optional[str] = None):
-        StatefulNodeAzureTag._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            tag_key=tag_key,
-            tag_value=tag_value,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             tag_key: Optional[str] = None,
-             tag_value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if tag_key is None and 'tagKey' in kwargs:
-            tag_key = kwargs['tagKey']
-        if tag_key is None:
-            raise TypeError("Missing 'tag_key' argument")
-        if tag_value is None and 'tagValue' in kwargs:
-            tag_value = kwargs['tagValue']
-
-        _setter("tag_key", tag_key)
+        pulumi.set(__self__, "tag_key", tag_key)
         if tag_value is not None:
-            _setter("tag_value", tag_value)
+            pulumi.set(__self__, "tag_value", tag_value)
 
     @property
     @pulumi.getter(name="tagKey")
@@ -3374,20 +2263,7 @@ class StatefulNodeAzureTag(dict):
 class StatefulNodeAzureUpdateState(dict):
     def __init__(__self__, *,
                  state: str):
-        StatefulNodeAzureUpdateState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            state=state,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             state: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if state is None:
-            raise TypeError("Missing 'state' argument")
-
-        _setter("state", state)
+        pulumi.set(__self__, "state", state)
 
     @property
     @pulumi.getter

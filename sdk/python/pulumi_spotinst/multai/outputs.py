@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -25,23 +25,10 @@ class BalancerConnectionTimeouts(dict):
     def __init__(__self__, *,
                  draining: Optional[int] = None,
                  idle: Optional[int] = None):
-        BalancerConnectionTimeouts._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            draining=draining,
-            idle=idle,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             draining: Optional[int] = None,
-             idle: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if draining is not None:
-            _setter("draining", draining)
+            pulumi.set(__self__, "draining", draining)
         if idle is not None:
-            _setter("idle", idle)
+            pulumi.set(__self__, "idle", idle)
 
     @property
     @pulumi.getter
@@ -59,25 +46,8 @@ class BalancerTag(dict):
     def __init__(__self__, *,
                  key: str,
                  value: str):
-        BalancerTag._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            key=key,
-            value=value,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             key: Optional[str] = None,
-             value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if key is None:
-            raise TypeError("Missing 'key' argument")
-        if value is None:
-            raise TypeError("Missing 'value' argument")
-
-        _setter("key", key)
-        _setter("value", value)
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -95,25 +65,8 @@ class ListenerTag(dict):
     def __init__(__self__, *,
                  key: str,
                  value: str):
-        ListenerTag._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            key=key,
-            value=value,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             key: Optional[str] = None,
-             value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if key is None:
-            raise TypeError("Missing 'key' argument")
-        if value is None:
-            raise TypeError("Missing 'value' argument")
-
-        _setter("key", key)
-        _setter("value", value)
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -162,57 +115,12 @@ class ListenerTlsConfig(dict):
                  min_version: str,
                  prefer_server_cipher_suites: bool,
                  session_tickets_disabled: bool):
-        ListenerTlsConfig._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            certificate_ids=certificate_ids,
-            cipher_suites=cipher_suites,
-            max_version=max_version,
-            min_version=min_version,
-            prefer_server_cipher_suites=prefer_server_cipher_suites,
-            session_tickets_disabled=session_tickets_disabled,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             certificate_ids: Optional[Sequence[str]] = None,
-             cipher_suites: Optional[Sequence[str]] = None,
-             max_version: Optional[str] = None,
-             min_version: Optional[str] = None,
-             prefer_server_cipher_suites: Optional[bool] = None,
-             session_tickets_disabled: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if certificate_ids is None and 'certificateIds' in kwargs:
-            certificate_ids = kwargs['certificateIds']
-        if certificate_ids is None:
-            raise TypeError("Missing 'certificate_ids' argument")
-        if cipher_suites is None and 'cipherSuites' in kwargs:
-            cipher_suites = kwargs['cipherSuites']
-        if cipher_suites is None:
-            raise TypeError("Missing 'cipher_suites' argument")
-        if max_version is None and 'maxVersion' in kwargs:
-            max_version = kwargs['maxVersion']
-        if max_version is None:
-            raise TypeError("Missing 'max_version' argument")
-        if min_version is None and 'minVersion' in kwargs:
-            min_version = kwargs['minVersion']
-        if min_version is None:
-            raise TypeError("Missing 'min_version' argument")
-        if prefer_server_cipher_suites is None and 'preferServerCipherSuites' in kwargs:
-            prefer_server_cipher_suites = kwargs['preferServerCipherSuites']
-        if prefer_server_cipher_suites is None:
-            raise TypeError("Missing 'prefer_server_cipher_suites' argument")
-        if session_tickets_disabled is None and 'sessionTicketsDisabled' in kwargs:
-            session_tickets_disabled = kwargs['sessionTicketsDisabled']
-        if session_tickets_disabled is None:
-            raise TypeError("Missing 'session_tickets_disabled' argument")
-
-        _setter("certificate_ids", certificate_ids)
-        _setter("cipher_suites", cipher_suites)
-        _setter("max_version", max_version)
-        _setter("min_version", min_version)
-        _setter("prefer_server_cipher_suites", prefer_server_cipher_suites)
-        _setter("session_tickets_disabled", session_tickets_disabled)
+        pulumi.set(__self__, "certificate_ids", certificate_ids)
+        pulumi.set(__self__, "cipher_suites", cipher_suites)
+        pulumi.set(__self__, "max_version", max_version)
+        pulumi.set(__self__, "min_version", min_version)
+        pulumi.set(__self__, "prefer_server_cipher_suites", prefer_server_cipher_suites)
+        pulumi.set(__self__, "session_tickets_disabled", session_tickets_disabled)
 
     @property
     @pulumi.getter(name="certificateIds")
@@ -250,25 +158,8 @@ class RoutingRuleTag(dict):
     def __init__(__self__, *,
                  key: str,
                  value: str):
-        RoutingRuleTag._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            key=key,
-            value=value,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             key: Optional[str] = None,
-             value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if key is None:
-            raise TypeError("Missing 'key' argument")
-        if value is None:
-            raise TypeError("Missing 'value' argument")
-
-        _setter("key", key)
-        _setter("value", value)
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -310,53 +201,14 @@ class TargetSetHealthCheck(dict):
                  timeout: int,
                  unhealthy_threshold: int,
                  port: Optional[int] = None):
-        TargetSetHealthCheck._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            healthy_threshold=healthy_threshold,
-            interval=interval,
-            path=path,
-            protocol=protocol,
-            timeout=timeout,
-            unhealthy_threshold=unhealthy_threshold,
-            port=port,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             healthy_threshold: Optional[int] = None,
-             interval: Optional[int] = None,
-             path: Optional[str] = None,
-             protocol: Optional[str] = None,
-             timeout: Optional[int] = None,
-             unhealthy_threshold: Optional[int] = None,
-             port: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if healthy_threshold is None and 'healthyThreshold' in kwargs:
-            healthy_threshold = kwargs['healthyThreshold']
-        if healthy_threshold is None:
-            raise TypeError("Missing 'healthy_threshold' argument")
-        if interval is None:
-            raise TypeError("Missing 'interval' argument")
-        if path is None:
-            raise TypeError("Missing 'path' argument")
-        if protocol is None:
-            raise TypeError("Missing 'protocol' argument")
-        if timeout is None:
-            raise TypeError("Missing 'timeout' argument")
-        if unhealthy_threshold is None and 'unhealthyThreshold' in kwargs:
-            unhealthy_threshold = kwargs['unhealthyThreshold']
-        if unhealthy_threshold is None:
-            raise TypeError("Missing 'unhealthy_threshold' argument")
-
-        _setter("healthy_threshold", healthy_threshold)
-        _setter("interval", interval)
-        _setter("path", path)
-        _setter("protocol", protocol)
-        _setter("timeout", timeout)
-        _setter("unhealthy_threshold", unhealthy_threshold)
+        pulumi.set(__self__, "healthy_threshold", healthy_threshold)
+        pulumi.set(__self__, "interval", interval)
+        pulumi.set(__self__, "path", path)
+        pulumi.set(__self__, "protocol", protocol)
+        pulumi.set(__self__, "timeout", timeout)
+        pulumi.set(__self__, "unhealthy_threshold", unhealthy_threshold)
         if port is not None:
-            _setter("port", port)
+            pulumi.set(__self__, "port", port)
 
     @property
     @pulumi.getter(name="healthyThreshold")
@@ -399,25 +251,8 @@ class TargetSetTag(dict):
     def __init__(__self__, *,
                  key: str,
                  value: str):
-        TargetSetTag._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            key=key,
-            value=value,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             key: Optional[str] = None,
-             value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if key is None:
-            raise TypeError("Missing 'key' argument")
-        if value is None:
-            raise TypeError("Missing 'value' argument")
-
-        _setter("key", key)
-        _setter("value", value)
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -435,25 +270,8 @@ class TargetTag(dict):
     def __init__(__self__, *,
                  key: str,
                  value: str):
-        TargetTag._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            key=key,
-            value=value,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             key: Optional[str] = None,
-             value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if key is None:
-            raise TypeError("Missing 'key' argument")
-        if value is None:
-            raise TypeError("Missing 'value' argument")
-
-        _setter("key", key)
-        _setter("value", value)
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter

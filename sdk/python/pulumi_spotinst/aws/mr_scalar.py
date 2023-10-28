@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -133,365 +133,128 @@ class MrScalarArgs:
         :param pulumi.Input[Sequence[pulumi.Input['MrScalarTerminationPolicyArgs']]] termination_policies: Allows defining termination policies for EMR clusters based on CloudWatch Metrics.
         :param pulumi.Input[bool] termination_protected: Specifies whether the Amazon EC2 instances in the cluster are protected from termination by API calls, user intervention, or in the event of a job-flow error.
         """
-        MrScalarArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            strategy=strategy,
-            additional_info=additional_info,
-            additional_primary_security_groups=additional_primary_security_groups,
-            additional_replica_security_groups=additional_replica_security_groups,
-            applications=applications,
-            availability_zones=availability_zones,
-            bootstrap_actions_files=bootstrap_actions_files,
-            cluster_id=cluster_id,
-            configurations_files=configurations_files,
-            core_desired_capacity=core_desired_capacity,
-            core_ebs_block_devices=core_ebs_block_devices,
-            core_ebs_optimized=core_ebs_optimized,
-            core_instance_types=core_instance_types,
-            core_lifecycle=core_lifecycle,
-            core_max_size=core_max_size,
-            core_min_size=core_min_size,
-            core_scaling_down_policies=core_scaling_down_policies,
-            core_scaling_up_policies=core_scaling_up_policies,
-            core_unit=core_unit,
-            custom_ami_id=custom_ami_id,
-            description=description,
-            ebs_root_volume_size=ebs_root_volume_size,
-            ec2_key_name=ec2_key_name,
-            expose_cluster_id=expose_cluster_id,
-            instance_weights=instance_weights,
-            job_flow_role=job_flow_role,
-            keep_job_flow_alive=keep_job_flow_alive,
-            log_uri=log_uri,
-            managed_primary_security_group=managed_primary_security_group,
-            managed_replica_security_group=managed_replica_security_group,
-            master_ebs_block_devices=master_ebs_block_devices,
-            master_ebs_optimized=master_ebs_optimized,
-            master_instance_types=master_instance_types,
-            master_lifecycle=master_lifecycle,
-            master_target=master_target,
-            name=name,
-            provisioning_timeout=provisioning_timeout,
-            region=region,
-            release_label=release_label,
-            repo_upgrade_on_boot=repo_upgrade_on_boot,
-            retries=retries,
-            scheduled_tasks=scheduled_tasks,
-            security_config=security_config,
-            service_access_security_group=service_access_security_group,
-            service_role=service_role,
-            steps_files=steps_files,
-            tags=tags,
-            task_desired_capacity=task_desired_capacity,
-            task_ebs_block_devices=task_ebs_block_devices,
-            task_ebs_optimized=task_ebs_optimized,
-            task_instance_types=task_instance_types,
-            task_lifecycle=task_lifecycle,
-            task_max_size=task_max_size,
-            task_min_size=task_min_size,
-            task_scaling_down_policies=task_scaling_down_policies,
-            task_scaling_up_policies=task_scaling_up_policies,
-            task_unit=task_unit,
-            termination_policies=termination_policies,
-            termination_protected=termination_protected,
-            visible_to_all_users=visible_to_all_users,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             strategy: Optional[pulumi.Input[str]] = None,
-             additional_info: Optional[pulumi.Input[str]] = None,
-             additional_primary_security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             additional_replica_security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             applications: Optional[pulumi.Input[Sequence[pulumi.Input['MrScalarApplicationArgs']]]] = None,
-             availability_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             bootstrap_actions_files: Optional[pulumi.Input[Sequence[pulumi.Input['MrScalarBootstrapActionsFileArgs']]]] = None,
-             cluster_id: Optional[pulumi.Input[str]] = None,
-             configurations_files: Optional[pulumi.Input[Sequence[pulumi.Input['MrScalarConfigurationsFileArgs']]]] = None,
-             core_desired_capacity: Optional[pulumi.Input[int]] = None,
-             core_ebs_block_devices: Optional[pulumi.Input[Sequence[pulumi.Input['MrScalarCoreEbsBlockDeviceArgs']]]] = None,
-             core_ebs_optimized: Optional[pulumi.Input[bool]] = None,
-             core_instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             core_lifecycle: Optional[pulumi.Input[str]] = None,
-             core_max_size: Optional[pulumi.Input[int]] = None,
-             core_min_size: Optional[pulumi.Input[int]] = None,
-             core_scaling_down_policies: Optional[pulumi.Input[Sequence[pulumi.Input['MrScalarCoreScalingDownPolicyArgs']]]] = None,
-             core_scaling_up_policies: Optional[pulumi.Input[Sequence[pulumi.Input['MrScalarCoreScalingUpPolicyArgs']]]] = None,
-             core_unit: Optional[pulumi.Input[str]] = None,
-             custom_ami_id: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             ebs_root_volume_size: Optional[pulumi.Input[int]] = None,
-             ec2_key_name: Optional[pulumi.Input[str]] = None,
-             expose_cluster_id: Optional[pulumi.Input[bool]] = None,
-             instance_weights: Optional[pulumi.Input[Sequence[pulumi.Input['MrScalarInstanceWeightArgs']]]] = None,
-             job_flow_role: Optional[pulumi.Input[str]] = None,
-             keep_job_flow_alive: Optional[pulumi.Input[bool]] = None,
-             log_uri: Optional[pulumi.Input[str]] = None,
-             managed_primary_security_group: Optional[pulumi.Input[str]] = None,
-             managed_replica_security_group: Optional[pulumi.Input[str]] = None,
-             master_ebs_block_devices: Optional[pulumi.Input[Sequence[pulumi.Input['MrScalarMasterEbsBlockDeviceArgs']]]] = None,
-             master_ebs_optimized: Optional[pulumi.Input[bool]] = None,
-             master_instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             master_lifecycle: Optional[pulumi.Input[str]] = None,
-             master_target: Optional[pulumi.Input[int]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             provisioning_timeout: Optional[pulumi.Input['MrScalarProvisioningTimeoutArgs']] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             release_label: Optional[pulumi.Input[str]] = None,
-             repo_upgrade_on_boot: Optional[pulumi.Input[str]] = None,
-             retries: Optional[pulumi.Input[int]] = None,
-             scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input['MrScalarScheduledTaskArgs']]]] = None,
-             security_config: Optional[pulumi.Input[str]] = None,
-             service_access_security_group: Optional[pulumi.Input[str]] = None,
-             service_role: Optional[pulumi.Input[str]] = None,
-             steps_files: Optional[pulumi.Input[Sequence[pulumi.Input['MrScalarStepsFileArgs']]]] = None,
-             tags: Optional[pulumi.Input[Sequence[pulumi.Input['MrScalarTagArgs']]]] = None,
-             task_desired_capacity: Optional[pulumi.Input[int]] = None,
-             task_ebs_block_devices: Optional[pulumi.Input[Sequence[pulumi.Input['MrScalarTaskEbsBlockDeviceArgs']]]] = None,
-             task_ebs_optimized: Optional[pulumi.Input[bool]] = None,
-             task_instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             task_lifecycle: Optional[pulumi.Input[str]] = None,
-             task_max_size: Optional[pulumi.Input[int]] = None,
-             task_min_size: Optional[pulumi.Input[int]] = None,
-             task_scaling_down_policies: Optional[pulumi.Input[Sequence[pulumi.Input['MrScalarTaskScalingDownPolicyArgs']]]] = None,
-             task_scaling_up_policies: Optional[pulumi.Input[Sequence[pulumi.Input['MrScalarTaskScalingUpPolicyArgs']]]] = None,
-             task_unit: Optional[pulumi.Input[str]] = None,
-             termination_policies: Optional[pulumi.Input[Sequence[pulumi.Input['MrScalarTerminationPolicyArgs']]]] = None,
-             termination_protected: Optional[pulumi.Input[bool]] = None,
-             visible_to_all_users: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if strategy is None:
-            raise TypeError("Missing 'strategy' argument")
-        if additional_info is None and 'additionalInfo' in kwargs:
-            additional_info = kwargs['additionalInfo']
-        if additional_primary_security_groups is None and 'additionalPrimarySecurityGroups' in kwargs:
-            additional_primary_security_groups = kwargs['additionalPrimarySecurityGroups']
-        if additional_replica_security_groups is None and 'additionalReplicaSecurityGroups' in kwargs:
-            additional_replica_security_groups = kwargs['additionalReplicaSecurityGroups']
-        if availability_zones is None and 'availabilityZones' in kwargs:
-            availability_zones = kwargs['availabilityZones']
-        if bootstrap_actions_files is None and 'bootstrapActionsFiles' in kwargs:
-            bootstrap_actions_files = kwargs['bootstrapActionsFiles']
-        if cluster_id is None and 'clusterId' in kwargs:
-            cluster_id = kwargs['clusterId']
-        if configurations_files is None and 'configurationsFiles' in kwargs:
-            configurations_files = kwargs['configurationsFiles']
-        if core_desired_capacity is None and 'coreDesiredCapacity' in kwargs:
-            core_desired_capacity = kwargs['coreDesiredCapacity']
-        if core_ebs_block_devices is None and 'coreEbsBlockDevices' in kwargs:
-            core_ebs_block_devices = kwargs['coreEbsBlockDevices']
-        if core_ebs_optimized is None and 'coreEbsOptimized' in kwargs:
-            core_ebs_optimized = kwargs['coreEbsOptimized']
-        if core_instance_types is None and 'coreInstanceTypes' in kwargs:
-            core_instance_types = kwargs['coreInstanceTypes']
-        if core_lifecycle is None and 'coreLifecycle' in kwargs:
-            core_lifecycle = kwargs['coreLifecycle']
-        if core_max_size is None and 'coreMaxSize' in kwargs:
-            core_max_size = kwargs['coreMaxSize']
-        if core_min_size is None and 'coreMinSize' in kwargs:
-            core_min_size = kwargs['coreMinSize']
-        if core_scaling_down_policies is None and 'coreScalingDownPolicies' in kwargs:
-            core_scaling_down_policies = kwargs['coreScalingDownPolicies']
-        if core_scaling_up_policies is None and 'coreScalingUpPolicies' in kwargs:
-            core_scaling_up_policies = kwargs['coreScalingUpPolicies']
-        if core_unit is None and 'coreUnit' in kwargs:
-            core_unit = kwargs['coreUnit']
-        if custom_ami_id is None and 'customAmiId' in kwargs:
-            custom_ami_id = kwargs['customAmiId']
-        if ebs_root_volume_size is None and 'ebsRootVolumeSize' in kwargs:
-            ebs_root_volume_size = kwargs['ebsRootVolumeSize']
-        if ec2_key_name is None and 'ec2KeyName' in kwargs:
-            ec2_key_name = kwargs['ec2KeyName']
-        if expose_cluster_id is None and 'exposeClusterId' in kwargs:
-            expose_cluster_id = kwargs['exposeClusterId']
-        if instance_weights is None and 'instanceWeights' in kwargs:
-            instance_weights = kwargs['instanceWeights']
-        if job_flow_role is None and 'jobFlowRole' in kwargs:
-            job_flow_role = kwargs['jobFlowRole']
-        if keep_job_flow_alive is None and 'keepJobFlowAlive' in kwargs:
-            keep_job_flow_alive = kwargs['keepJobFlowAlive']
-        if log_uri is None and 'logUri' in kwargs:
-            log_uri = kwargs['logUri']
-        if managed_primary_security_group is None and 'managedPrimarySecurityGroup' in kwargs:
-            managed_primary_security_group = kwargs['managedPrimarySecurityGroup']
-        if managed_replica_security_group is None and 'managedReplicaSecurityGroup' in kwargs:
-            managed_replica_security_group = kwargs['managedReplicaSecurityGroup']
-        if master_ebs_block_devices is None and 'masterEbsBlockDevices' in kwargs:
-            master_ebs_block_devices = kwargs['masterEbsBlockDevices']
-        if master_ebs_optimized is None and 'masterEbsOptimized' in kwargs:
-            master_ebs_optimized = kwargs['masterEbsOptimized']
-        if master_instance_types is None and 'masterInstanceTypes' in kwargs:
-            master_instance_types = kwargs['masterInstanceTypes']
-        if master_lifecycle is None and 'masterLifecycle' in kwargs:
-            master_lifecycle = kwargs['masterLifecycle']
-        if master_target is None and 'masterTarget' in kwargs:
-            master_target = kwargs['masterTarget']
-        if provisioning_timeout is None and 'provisioningTimeout' in kwargs:
-            provisioning_timeout = kwargs['provisioningTimeout']
-        if release_label is None and 'releaseLabel' in kwargs:
-            release_label = kwargs['releaseLabel']
-        if repo_upgrade_on_boot is None and 'repoUpgradeOnBoot' in kwargs:
-            repo_upgrade_on_boot = kwargs['repoUpgradeOnBoot']
-        if scheduled_tasks is None and 'scheduledTasks' in kwargs:
-            scheduled_tasks = kwargs['scheduledTasks']
-        if security_config is None and 'securityConfig' in kwargs:
-            security_config = kwargs['securityConfig']
-        if service_access_security_group is None and 'serviceAccessSecurityGroup' in kwargs:
-            service_access_security_group = kwargs['serviceAccessSecurityGroup']
-        if service_role is None and 'serviceRole' in kwargs:
-            service_role = kwargs['serviceRole']
-        if steps_files is None and 'stepsFiles' in kwargs:
-            steps_files = kwargs['stepsFiles']
-        if task_desired_capacity is None and 'taskDesiredCapacity' in kwargs:
-            task_desired_capacity = kwargs['taskDesiredCapacity']
-        if task_ebs_block_devices is None and 'taskEbsBlockDevices' in kwargs:
-            task_ebs_block_devices = kwargs['taskEbsBlockDevices']
-        if task_ebs_optimized is None and 'taskEbsOptimized' in kwargs:
-            task_ebs_optimized = kwargs['taskEbsOptimized']
-        if task_instance_types is None and 'taskInstanceTypes' in kwargs:
-            task_instance_types = kwargs['taskInstanceTypes']
-        if task_lifecycle is None and 'taskLifecycle' in kwargs:
-            task_lifecycle = kwargs['taskLifecycle']
-        if task_max_size is None and 'taskMaxSize' in kwargs:
-            task_max_size = kwargs['taskMaxSize']
-        if task_min_size is None and 'taskMinSize' in kwargs:
-            task_min_size = kwargs['taskMinSize']
-        if task_scaling_down_policies is None and 'taskScalingDownPolicies' in kwargs:
-            task_scaling_down_policies = kwargs['taskScalingDownPolicies']
-        if task_scaling_up_policies is None and 'taskScalingUpPolicies' in kwargs:
-            task_scaling_up_policies = kwargs['taskScalingUpPolicies']
-        if task_unit is None and 'taskUnit' in kwargs:
-            task_unit = kwargs['taskUnit']
-        if termination_policies is None and 'terminationPolicies' in kwargs:
-            termination_policies = kwargs['terminationPolicies']
-        if termination_protected is None and 'terminationProtected' in kwargs:
-            termination_protected = kwargs['terminationProtected']
-        if visible_to_all_users is None and 'visibleToAllUsers' in kwargs:
-            visible_to_all_users = kwargs['visibleToAllUsers']
-
-        _setter("strategy", strategy)
+        pulumi.set(__self__, "strategy", strategy)
         if additional_info is not None:
-            _setter("additional_info", additional_info)
+            pulumi.set(__self__, "additional_info", additional_info)
         if additional_primary_security_groups is not None:
-            _setter("additional_primary_security_groups", additional_primary_security_groups)
+            pulumi.set(__self__, "additional_primary_security_groups", additional_primary_security_groups)
         if additional_replica_security_groups is not None:
-            _setter("additional_replica_security_groups", additional_replica_security_groups)
+            pulumi.set(__self__, "additional_replica_security_groups", additional_replica_security_groups)
         if applications is not None:
-            _setter("applications", applications)
+            pulumi.set(__self__, "applications", applications)
         if availability_zones is not None:
-            _setter("availability_zones", availability_zones)
+            pulumi.set(__self__, "availability_zones", availability_zones)
         if bootstrap_actions_files is not None:
-            _setter("bootstrap_actions_files", bootstrap_actions_files)
+            pulumi.set(__self__, "bootstrap_actions_files", bootstrap_actions_files)
         if cluster_id is not None:
-            _setter("cluster_id", cluster_id)
+            pulumi.set(__self__, "cluster_id", cluster_id)
         if configurations_files is not None:
-            _setter("configurations_files", configurations_files)
+            pulumi.set(__self__, "configurations_files", configurations_files)
         if core_desired_capacity is not None:
-            _setter("core_desired_capacity", core_desired_capacity)
+            pulumi.set(__self__, "core_desired_capacity", core_desired_capacity)
         if core_ebs_block_devices is not None:
-            _setter("core_ebs_block_devices", core_ebs_block_devices)
+            pulumi.set(__self__, "core_ebs_block_devices", core_ebs_block_devices)
         if core_ebs_optimized is not None:
-            _setter("core_ebs_optimized", core_ebs_optimized)
+            pulumi.set(__self__, "core_ebs_optimized", core_ebs_optimized)
         if core_instance_types is not None:
-            _setter("core_instance_types", core_instance_types)
+            pulumi.set(__self__, "core_instance_types", core_instance_types)
         if core_lifecycle is not None:
-            _setter("core_lifecycle", core_lifecycle)
+            pulumi.set(__self__, "core_lifecycle", core_lifecycle)
         if core_max_size is not None:
-            _setter("core_max_size", core_max_size)
+            pulumi.set(__self__, "core_max_size", core_max_size)
         if core_min_size is not None:
-            _setter("core_min_size", core_min_size)
+            pulumi.set(__self__, "core_min_size", core_min_size)
         if core_scaling_down_policies is not None:
-            _setter("core_scaling_down_policies", core_scaling_down_policies)
+            pulumi.set(__self__, "core_scaling_down_policies", core_scaling_down_policies)
         if core_scaling_up_policies is not None:
-            _setter("core_scaling_up_policies", core_scaling_up_policies)
+            pulumi.set(__self__, "core_scaling_up_policies", core_scaling_up_policies)
         if core_unit is not None:
-            _setter("core_unit", core_unit)
+            pulumi.set(__self__, "core_unit", core_unit)
         if custom_ami_id is not None:
-            _setter("custom_ami_id", custom_ami_id)
+            pulumi.set(__self__, "custom_ami_id", custom_ami_id)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if ebs_root_volume_size is not None:
-            _setter("ebs_root_volume_size", ebs_root_volume_size)
+            pulumi.set(__self__, "ebs_root_volume_size", ebs_root_volume_size)
         if ec2_key_name is not None:
-            _setter("ec2_key_name", ec2_key_name)
+            pulumi.set(__self__, "ec2_key_name", ec2_key_name)
         if expose_cluster_id is not None:
-            _setter("expose_cluster_id", expose_cluster_id)
+            pulumi.set(__self__, "expose_cluster_id", expose_cluster_id)
         if instance_weights is not None:
-            _setter("instance_weights", instance_weights)
+            pulumi.set(__self__, "instance_weights", instance_weights)
         if job_flow_role is not None:
-            _setter("job_flow_role", job_flow_role)
+            pulumi.set(__self__, "job_flow_role", job_flow_role)
         if keep_job_flow_alive is not None:
-            _setter("keep_job_flow_alive", keep_job_flow_alive)
+            pulumi.set(__self__, "keep_job_flow_alive", keep_job_flow_alive)
         if log_uri is not None:
-            _setter("log_uri", log_uri)
+            pulumi.set(__self__, "log_uri", log_uri)
         if managed_primary_security_group is not None:
-            _setter("managed_primary_security_group", managed_primary_security_group)
+            pulumi.set(__self__, "managed_primary_security_group", managed_primary_security_group)
         if managed_replica_security_group is not None:
-            _setter("managed_replica_security_group", managed_replica_security_group)
+            pulumi.set(__self__, "managed_replica_security_group", managed_replica_security_group)
         if master_ebs_block_devices is not None:
-            _setter("master_ebs_block_devices", master_ebs_block_devices)
+            pulumi.set(__self__, "master_ebs_block_devices", master_ebs_block_devices)
         if master_ebs_optimized is not None:
-            _setter("master_ebs_optimized", master_ebs_optimized)
+            pulumi.set(__self__, "master_ebs_optimized", master_ebs_optimized)
         if master_instance_types is not None:
-            _setter("master_instance_types", master_instance_types)
+            pulumi.set(__self__, "master_instance_types", master_instance_types)
         if master_lifecycle is not None:
-            _setter("master_lifecycle", master_lifecycle)
+            pulumi.set(__self__, "master_lifecycle", master_lifecycle)
         if master_target is not None:
-            _setter("master_target", master_target)
+            pulumi.set(__self__, "master_target", master_target)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if provisioning_timeout is not None:
-            _setter("provisioning_timeout", provisioning_timeout)
+            pulumi.set(__self__, "provisioning_timeout", provisioning_timeout)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
         if release_label is not None:
-            _setter("release_label", release_label)
+            pulumi.set(__self__, "release_label", release_label)
         if repo_upgrade_on_boot is not None:
-            _setter("repo_upgrade_on_boot", repo_upgrade_on_boot)
+            pulumi.set(__self__, "repo_upgrade_on_boot", repo_upgrade_on_boot)
         if retries is not None:
-            _setter("retries", retries)
+            pulumi.set(__self__, "retries", retries)
         if scheduled_tasks is not None:
-            _setter("scheduled_tasks", scheduled_tasks)
+            pulumi.set(__self__, "scheduled_tasks", scheduled_tasks)
         if security_config is not None:
-            _setter("security_config", security_config)
+            pulumi.set(__self__, "security_config", security_config)
         if service_access_security_group is not None:
-            _setter("service_access_security_group", service_access_security_group)
+            pulumi.set(__self__, "service_access_security_group", service_access_security_group)
         if service_role is not None:
-            _setter("service_role", service_role)
+            pulumi.set(__self__, "service_role", service_role)
         if steps_files is not None:
-            _setter("steps_files", steps_files)
+            pulumi.set(__self__, "steps_files", steps_files)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if task_desired_capacity is not None:
-            _setter("task_desired_capacity", task_desired_capacity)
+            pulumi.set(__self__, "task_desired_capacity", task_desired_capacity)
         if task_ebs_block_devices is not None:
-            _setter("task_ebs_block_devices", task_ebs_block_devices)
+            pulumi.set(__self__, "task_ebs_block_devices", task_ebs_block_devices)
         if task_ebs_optimized is not None:
-            _setter("task_ebs_optimized", task_ebs_optimized)
+            pulumi.set(__self__, "task_ebs_optimized", task_ebs_optimized)
         if task_instance_types is not None:
-            _setter("task_instance_types", task_instance_types)
+            pulumi.set(__self__, "task_instance_types", task_instance_types)
         if task_lifecycle is not None:
-            _setter("task_lifecycle", task_lifecycle)
+            pulumi.set(__self__, "task_lifecycle", task_lifecycle)
         if task_max_size is not None:
-            _setter("task_max_size", task_max_size)
+            pulumi.set(__self__, "task_max_size", task_max_size)
         if task_min_size is not None:
-            _setter("task_min_size", task_min_size)
+            pulumi.set(__self__, "task_min_size", task_min_size)
         if task_scaling_down_policies is not None:
-            _setter("task_scaling_down_policies", task_scaling_down_policies)
+            pulumi.set(__self__, "task_scaling_down_policies", task_scaling_down_policies)
         if task_scaling_up_policies is not None:
-            _setter("task_scaling_up_policies", task_scaling_up_policies)
+            pulumi.set(__self__, "task_scaling_up_policies", task_scaling_up_policies)
         if task_unit is not None:
-            _setter("task_unit", task_unit)
+            pulumi.set(__self__, "task_unit", task_unit)
         if termination_policies is not None:
-            _setter("termination_policies", termination_policies)
+            pulumi.set(__self__, "termination_policies", termination_policies)
         if termination_protected is not None:
-            _setter("termination_protected", termination_protected)
+            pulumi.set(__self__, "termination_protected", termination_protected)
         if visible_to_all_users is not None:
             warnings.warn("""This field has been removed from our API and is no longer functional.""", DeprecationWarning)
             pulumi.log.warn("""visible_to_all_users is deprecated: This field has been removed from our API and is no longer functional.""")
         if visible_to_all_users is not None:
-            _setter("visible_to_all_users", visible_to_all_users)
+            pulumi.set(__self__, "visible_to_all_users", visible_to_all_users)
 
     @property
     @pulumi.getter
@@ -1320,370 +1083,131 @@ class _MrScalarState:
         :param pulumi.Input[Sequence[pulumi.Input['MrScalarTerminationPolicyArgs']]] termination_policies: Allows defining termination policies for EMR clusters based on CloudWatch Metrics.
         :param pulumi.Input[bool] termination_protected: Specifies whether the Amazon EC2 instances in the cluster are protected from termination by API calls, user intervention, or in the event of a job-flow error.
         """
-        _MrScalarState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            additional_info=additional_info,
-            additional_primary_security_groups=additional_primary_security_groups,
-            additional_replica_security_groups=additional_replica_security_groups,
-            applications=applications,
-            availability_zones=availability_zones,
-            bootstrap_actions_files=bootstrap_actions_files,
-            cluster_id=cluster_id,
-            configurations_files=configurations_files,
-            core_desired_capacity=core_desired_capacity,
-            core_ebs_block_devices=core_ebs_block_devices,
-            core_ebs_optimized=core_ebs_optimized,
-            core_instance_types=core_instance_types,
-            core_lifecycle=core_lifecycle,
-            core_max_size=core_max_size,
-            core_min_size=core_min_size,
-            core_scaling_down_policies=core_scaling_down_policies,
-            core_scaling_up_policies=core_scaling_up_policies,
-            core_unit=core_unit,
-            custom_ami_id=custom_ami_id,
-            description=description,
-            ebs_root_volume_size=ebs_root_volume_size,
-            ec2_key_name=ec2_key_name,
-            expose_cluster_id=expose_cluster_id,
-            instance_weights=instance_weights,
-            job_flow_role=job_flow_role,
-            keep_job_flow_alive=keep_job_flow_alive,
-            log_uri=log_uri,
-            managed_primary_security_group=managed_primary_security_group,
-            managed_replica_security_group=managed_replica_security_group,
-            master_ebs_block_devices=master_ebs_block_devices,
-            master_ebs_optimized=master_ebs_optimized,
-            master_instance_types=master_instance_types,
-            master_lifecycle=master_lifecycle,
-            master_target=master_target,
-            name=name,
-            output_cluster_id=output_cluster_id,
-            provisioning_timeout=provisioning_timeout,
-            region=region,
-            release_label=release_label,
-            repo_upgrade_on_boot=repo_upgrade_on_boot,
-            retries=retries,
-            scheduled_tasks=scheduled_tasks,
-            security_config=security_config,
-            service_access_security_group=service_access_security_group,
-            service_role=service_role,
-            steps_files=steps_files,
-            strategy=strategy,
-            tags=tags,
-            task_desired_capacity=task_desired_capacity,
-            task_ebs_block_devices=task_ebs_block_devices,
-            task_ebs_optimized=task_ebs_optimized,
-            task_instance_types=task_instance_types,
-            task_lifecycle=task_lifecycle,
-            task_max_size=task_max_size,
-            task_min_size=task_min_size,
-            task_scaling_down_policies=task_scaling_down_policies,
-            task_scaling_up_policies=task_scaling_up_policies,
-            task_unit=task_unit,
-            termination_policies=termination_policies,
-            termination_protected=termination_protected,
-            visible_to_all_users=visible_to_all_users,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             additional_info: Optional[pulumi.Input[str]] = None,
-             additional_primary_security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             additional_replica_security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             applications: Optional[pulumi.Input[Sequence[pulumi.Input['MrScalarApplicationArgs']]]] = None,
-             availability_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             bootstrap_actions_files: Optional[pulumi.Input[Sequence[pulumi.Input['MrScalarBootstrapActionsFileArgs']]]] = None,
-             cluster_id: Optional[pulumi.Input[str]] = None,
-             configurations_files: Optional[pulumi.Input[Sequence[pulumi.Input['MrScalarConfigurationsFileArgs']]]] = None,
-             core_desired_capacity: Optional[pulumi.Input[int]] = None,
-             core_ebs_block_devices: Optional[pulumi.Input[Sequence[pulumi.Input['MrScalarCoreEbsBlockDeviceArgs']]]] = None,
-             core_ebs_optimized: Optional[pulumi.Input[bool]] = None,
-             core_instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             core_lifecycle: Optional[pulumi.Input[str]] = None,
-             core_max_size: Optional[pulumi.Input[int]] = None,
-             core_min_size: Optional[pulumi.Input[int]] = None,
-             core_scaling_down_policies: Optional[pulumi.Input[Sequence[pulumi.Input['MrScalarCoreScalingDownPolicyArgs']]]] = None,
-             core_scaling_up_policies: Optional[pulumi.Input[Sequence[pulumi.Input['MrScalarCoreScalingUpPolicyArgs']]]] = None,
-             core_unit: Optional[pulumi.Input[str]] = None,
-             custom_ami_id: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             ebs_root_volume_size: Optional[pulumi.Input[int]] = None,
-             ec2_key_name: Optional[pulumi.Input[str]] = None,
-             expose_cluster_id: Optional[pulumi.Input[bool]] = None,
-             instance_weights: Optional[pulumi.Input[Sequence[pulumi.Input['MrScalarInstanceWeightArgs']]]] = None,
-             job_flow_role: Optional[pulumi.Input[str]] = None,
-             keep_job_flow_alive: Optional[pulumi.Input[bool]] = None,
-             log_uri: Optional[pulumi.Input[str]] = None,
-             managed_primary_security_group: Optional[pulumi.Input[str]] = None,
-             managed_replica_security_group: Optional[pulumi.Input[str]] = None,
-             master_ebs_block_devices: Optional[pulumi.Input[Sequence[pulumi.Input['MrScalarMasterEbsBlockDeviceArgs']]]] = None,
-             master_ebs_optimized: Optional[pulumi.Input[bool]] = None,
-             master_instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             master_lifecycle: Optional[pulumi.Input[str]] = None,
-             master_target: Optional[pulumi.Input[int]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             output_cluster_id: Optional[pulumi.Input[str]] = None,
-             provisioning_timeout: Optional[pulumi.Input['MrScalarProvisioningTimeoutArgs']] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             release_label: Optional[pulumi.Input[str]] = None,
-             repo_upgrade_on_boot: Optional[pulumi.Input[str]] = None,
-             retries: Optional[pulumi.Input[int]] = None,
-             scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input['MrScalarScheduledTaskArgs']]]] = None,
-             security_config: Optional[pulumi.Input[str]] = None,
-             service_access_security_group: Optional[pulumi.Input[str]] = None,
-             service_role: Optional[pulumi.Input[str]] = None,
-             steps_files: Optional[pulumi.Input[Sequence[pulumi.Input['MrScalarStepsFileArgs']]]] = None,
-             strategy: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Sequence[pulumi.Input['MrScalarTagArgs']]]] = None,
-             task_desired_capacity: Optional[pulumi.Input[int]] = None,
-             task_ebs_block_devices: Optional[pulumi.Input[Sequence[pulumi.Input['MrScalarTaskEbsBlockDeviceArgs']]]] = None,
-             task_ebs_optimized: Optional[pulumi.Input[bool]] = None,
-             task_instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             task_lifecycle: Optional[pulumi.Input[str]] = None,
-             task_max_size: Optional[pulumi.Input[int]] = None,
-             task_min_size: Optional[pulumi.Input[int]] = None,
-             task_scaling_down_policies: Optional[pulumi.Input[Sequence[pulumi.Input['MrScalarTaskScalingDownPolicyArgs']]]] = None,
-             task_scaling_up_policies: Optional[pulumi.Input[Sequence[pulumi.Input['MrScalarTaskScalingUpPolicyArgs']]]] = None,
-             task_unit: Optional[pulumi.Input[str]] = None,
-             termination_policies: Optional[pulumi.Input[Sequence[pulumi.Input['MrScalarTerminationPolicyArgs']]]] = None,
-             termination_protected: Optional[pulumi.Input[bool]] = None,
-             visible_to_all_users: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if additional_info is None and 'additionalInfo' in kwargs:
-            additional_info = kwargs['additionalInfo']
-        if additional_primary_security_groups is None and 'additionalPrimarySecurityGroups' in kwargs:
-            additional_primary_security_groups = kwargs['additionalPrimarySecurityGroups']
-        if additional_replica_security_groups is None and 'additionalReplicaSecurityGroups' in kwargs:
-            additional_replica_security_groups = kwargs['additionalReplicaSecurityGroups']
-        if availability_zones is None and 'availabilityZones' in kwargs:
-            availability_zones = kwargs['availabilityZones']
-        if bootstrap_actions_files is None and 'bootstrapActionsFiles' in kwargs:
-            bootstrap_actions_files = kwargs['bootstrapActionsFiles']
-        if cluster_id is None and 'clusterId' in kwargs:
-            cluster_id = kwargs['clusterId']
-        if configurations_files is None and 'configurationsFiles' in kwargs:
-            configurations_files = kwargs['configurationsFiles']
-        if core_desired_capacity is None and 'coreDesiredCapacity' in kwargs:
-            core_desired_capacity = kwargs['coreDesiredCapacity']
-        if core_ebs_block_devices is None and 'coreEbsBlockDevices' in kwargs:
-            core_ebs_block_devices = kwargs['coreEbsBlockDevices']
-        if core_ebs_optimized is None and 'coreEbsOptimized' in kwargs:
-            core_ebs_optimized = kwargs['coreEbsOptimized']
-        if core_instance_types is None and 'coreInstanceTypes' in kwargs:
-            core_instance_types = kwargs['coreInstanceTypes']
-        if core_lifecycle is None and 'coreLifecycle' in kwargs:
-            core_lifecycle = kwargs['coreLifecycle']
-        if core_max_size is None and 'coreMaxSize' in kwargs:
-            core_max_size = kwargs['coreMaxSize']
-        if core_min_size is None and 'coreMinSize' in kwargs:
-            core_min_size = kwargs['coreMinSize']
-        if core_scaling_down_policies is None and 'coreScalingDownPolicies' in kwargs:
-            core_scaling_down_policies = kwargs['coreScalingDownPolicies']
-        if core_scaling_up_policies is None and 'coreScalingUpPolicies' in kwargs:
-            core_scaling_up_policies = kwargs['coreScalingUpPolicies']
-        if core_unit is None and 'coreUnit' in kwargs:
-            core_unit = kwargs['coreUnit']
-        if custom_ami_id is None and 'customAmiId' in kwargs:
-            custom_ami_id = kwargs['customAmiId']
-        if ebs_root_volume_size is None and 'ebsRootVolumeSize' in kwargs:
-            ebs_root_volume_size = kwargs['ebsRootVolumeSize']
-        if ec2_key_name is None and 'ec2KeyName' in kwargs:
-            ec2_key_name = kwargs['ec2KeyName']
-        if expose_cluster_id is None and 'exposeClusterId' in kwargs:
-            expose_cluster_id = kwargs['exposeClusterId']
-        if instance_weights is None and 'instanceWeights' in kwargs:
-            instance_weights = kwargs['instanceWeights']
-        if job_flow_role is None and 'jobFlowRole' in kwargs:
-            job_flow_role = kwargs['jobFlowRole']
-        if keep_job_flow_alive is None and 'keepJobFlowAlive' in kwargs:
-            keep_job_flow_alive = kwargs['keepJobFlowAlive']
-        if log_uri is None and 'logUri' in kwargs:
-            log_uri = kwargs['logUri']
-        if managed_primary_security_group is None and 'managedPrimarySecurityGroup' in kwargs:
-            managed_primary_security_group = kwargs['managedPrimarySecurityGroup']
-        if managed_replica_security_group is None and 'managedReplicaSecurityGroup' in kwargs:
-            managed_replica_security_group = kwargs['managedReplicaSecurityGroup']
-        if master_ebs_block_devices is None and 'masterEbsBlockDevices' in kwargs:
-            master_ebs_block_devices = kwargs['masterEbsBlockDevices']
-        if master_ebs_optimized is None and 'masterEbsOptimized' in kwargs:
-            master_ebs_optimized = kwargs['masterEbsOptimized']
-        if master_instance_types is None and 'masterInstanceTypes' in kwargs:
-            master_instance_types = kwargs['masterInstanceTypes']
-        if master_lifecycle is None and 'masterLifecycle' in kwargs:
-            master_lifecycle = kwargs['masterLifecycle']
-        if master_target is None and 'masterTarget' in kwargs:
-            master_target = kwargs['masterTarget']
-        if output_cluster_id is None and 'outputClusterId' in kwargs:
-            output_cluster_id = kwargs['outputClusterId']
-        if provisioning_timeout is None and 'provisioningTimeout' in kwargs:
-            provisioning_timeout = kwargs['provisioningTimeout']
-        if release_label is None and 'releaseLabel' in kwargs:
-            release_label = kwargs['releaseLabel']
-        if repo_upgrade_on_boot is None and 'repoUpgradeOnBoot' in kwargs:
-            repo_upgrade_on_boot = kwargs['repoUpgradeOnBoot']
-        if scheduled_tasks is None and 'scheduledTasks' in kwargs:
-            scheduled_tasks = kwargs['scheduledTasks']
-        if security_config is None and 'securityConfig' in kwargs:
-            security_config = kwargs['securityConfig']
-        if service_access_security_group is None and 'serviceAccessSecurityGroup' in kwargs:
-            service_access_security_group = kwargs['serviceAccessSecurityGroup']
-        if service_role is None and 'serviceRole' in kwargs:
-            service_role = kwargs['serviceRole']
-        if steps_files is None and 'stepsFiles' in kwargs:
-            steps_files = kwargs['stepsFiles']
-        if task_desired_capacity is None and 'taskDesiredCapacity' in kwargs:
-            task_desired_capacity = kwargs['taskDesiredCapacity']
-        if task_ebs_block_devices is None and 'taskEbsBlockDevices' in kwargs:
-            task_ebs_block_devices = kwargs['taskEbsBlockDevices']
-        if task_ebs_optimized is None and 'taskEbsOptimized' in kwargs:
-            task_ebs_optimized = kwargs['taskEbsOptimized']
-        if task_instance_types is None and 'taskInstanceTypes' in kwargs:
-            task_instance_types = kwargs['taskInstanceTypes']
-        if task_lifecycle is None and 'taskLifecycle' in kwargs:
-            task_lifecycle = kwargs['taskLifecycle']
-        if task_max_size is None and 'taskMaxSize' in kwargs:
-            task_max_size = kwargs['taskMaxSize']
-        if task_min_size is None and 'taskMinSize' in kwargs:
-            task_min_size = kwargs['taskMinSize']
-        if task_scaling_down_policies is None and 'taskScalingDownPolicies' in kwargs:
-            task_scaling_down_policies = kwargs['taskScalingDownPolicies']
-        if task_scaling_up_policies is None and 'taskScalingUpPolicies' in kwargs:
-            task_scaling_up_policies = kwargs['taskScalingUpPolicies']
-        if task_unit is None and 'taskUnit' in kwargs:
-            task_unit = kwargs['taskUnit']
-        if termination_policies is None and 'terminationPolicies' in kwargs:
-            termination_policies = kwargs['terminationPolicies']
-        if termination_protected is None and 'terminationProtected' in kwargs:
-            termination_protected = kwargs['terminationProtected']
-        if visible_to_all_users is None and 'visibleToAllUsers' in kwargs:
-            visible_to_all_users = kwargs['visibleToAllUsers']
-
         if additional_info is not None:
-            _setter("additional_info", additional_info)
+            pulumi.set(__self__, "additional_info", additional_info)
         if additional_primary_security_groups is not None:
-            _setter("additional_primary_security_groups", additional_primary_security_groups)
+            pulumi.set(__self__, "additional_primary_security_groups", additional_primary_security_groups)
         if additional_replica_security_groups is not None:
-            _setter("additional_replica_security_groups", additional_replica_security_groups)
+            pulumi.set(__self__, "additional_replica_security_groups", additional_replica_security_groups)
         if applications is not None:
-            _setter("applications", applications)
+            pulumi.set(__self__, "applications", applications)
         if availability_zones is not None:
-            _setter("availability_zones", availability_zones)
+            pulumi.set(__self__, "availability_zones", availability_zones)
         if bootstrap_actions_files is not None:
-            _setter("bootstrap_actions_files", bootstrap_actions_files)
+            pulumi.set(__self__, "bootstrap_actions_files", bootstrap_actions_files)
         if cluster_id is not None:
-            _setter("cluster_id", cluster_id)
+            pulumi.set(__self__, "cluster_id", cluster_id)
         if configurations_files is not None:
-            _setter("configurations_files", configurations_files)
+            pulumi.set(__self__, "configurations_files", configurations_files)
         if core_desired_capacity is not None:
-            _setter("core_desired_capacity", core_desired_capacity)
+            pulumi.set(__self__, "core_desired_capacity", core_desired_capacity)
         if core_ebs_block_devices is not None:
-            _setter("core_ebs_block_devices", core_ebs_block_devices)
+            pulumi.set(__self__, "core_ebs_block_devices", core_ebs_block_devices)
         if core_ebs_optimized is not None:
-            _setter("core_ebs_optimized", core_ebs_optimized)
+            pulumi.set(__self__, "core_ebs_optimized", core_ebs_optimized)
         if core_instance_types is not None:
-            _setter("core_instance_types", core_instance_types)
+            pulumi.set(__self__, "core_instance_types", core_instance_types)
         if core_lifecycle is not None:
-            _setter("core_lifecycle", core_lifecycle)
+            pulumi.set(__self__, "core_lifecycle", core_lifecycle)
         if core_max_size is not None:
-            _setter("core_max_size", core_max_size)
+            pulumi.set(__self__, "core_max_size", core_max_size)
         if core_min_size is not None:
-            _setter("core_min_size", core_min_size)
+            pulumi.set(__self__, "core_min_size", core_min_size)
         if core_scaling_down_policies is not None:
-            _setter("core_scaling_down_policies", core_scaling_down_policies)
+            pulumi.set(__self__, "core_scaling_down_policies", core_scaling_down_policies)
         if core_scaling_up_policies is not None:
-            _setter("core_scaling_up_policies", core_scaling_up_policies)
+            pulumi.set(__self__, "core_scaling_up_policies", core_scaling_up_policies)
         if core_unit is not None:
-            _setter("core_unit", core_unit)
+            pulumi.set(__self__, "core_unit", core_unit)
         if custom_ami_id is not None:
-            _setter("custom_ami_id", custom_ami_id)
+            pulumi.set(__self__, "custom_ami_id", custom_ami_id)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if ebs_root_volume_size is not None:
-            _setter("ebs_root_volume_size", ebs_root_volume_size)
+            pulumi.set(__self__, "ebs_root_volume_size", ebs_root_volume_size)
         if ec2_key_name is not None:
-            _setter("ec2_key_name", ec2_key_name)
+            pulumi.set(__self__, "ec2_key_name", ec2_key_name)
         if expose_cluster_id is not None:
-            _setter("expose_cluster_id", expose_cluster_id)
+            pulumi.set(__self__, "expose_cluster_id", expose_cluster_id)
         if instance_weights is not None:
-            _setter("instance_weights", instance_weights)
+            pulumi.set(__self__, "instance_weights", instance_weights)
         if job_flow_role is not None:
-            _setter("job_flow_role", job_flow_role)
+            pulumi.set(__self__, "job_flow_role", job_flow_role)
         if keep_job_flow_alive is not None:
-            _setter("keep_job_flow_alive", keep_job_flow_alive)
+            pulumi.set(__self__, "keep_job_flow_alive", keep_job_flow_alive)
         if log_uri is not None:
-            _setter("log_uri", log_uri)
+            pulumi.set(__self__, "log_uri", log_uri)
         if managed_primary_security_group is not None:
-            _setter("managed_primary_security_group", managed_primary_security_group)
+            pulumi.set(__self__, "managed_primary_security_group", managed_primary_security_group)
         if managed_replica_security_group is not None:
-            _setter("managed_replica_security_group", managed_replica_security_group)
+            pulumi.set(__self__, "managed_replica_security_group", managed_replica_security_group)
         if master_ebs_block_devices is not None:
-            _setter("master_ebs_block_devices", master_ebs_block_devices)
+            pulumi.set(__self__, "master_ebs_block_devices", master_ebs_block_devices)
         if master_ebs_optimized is not None:
-            _setter("master_ebs_optimized", master_ebs_optimized)
+            pulumi.set(__self__, "master_ebs_optimized", master_ebs_optimized)
         if master_instance_types is not None:
-            _setter("master_instance_types", master_instance_types)
+            pulumi.set(__self__, "master_instance_types", master_instance_types)
         if master_lifecycle is not None:
-            _setter("master_lifecycle", master_lifecycle)
+            pulumi.set(__self__, "master_lifecycle", master_lifecycle)
         if master_target is not None:
-            _setter("master_target", master_target)
+            pulumi.set(__self__, "master_target", master_target)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if output_cluster_id is not None:
-            _setter("output_cluster_id", output_cluster_id)
+            pulumi.set(__self__, "output_cluster_id", output_cluster_id)
         if provisioning_timeout is not None:
-            _setter("provisioning_timeout", provisioning_timeout)
+            pulumi.set(__self__, "provisioning_timeout", provisioning_timeout)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
         if release_label is not None:
-            _setter("release_label", release_label)
+            pulumi.set(__self__, "release_label", release_label)
         if repo_upgrade_on_boot is not None:
-            _setter("repo_upgrade_on_boot", repo_upgrade_on_boot)
+            pulumi.set(__self__, "repo_upgrade_on_boot", repo_upgrade_on_boot)
         if retries is not None:
-            _setter("retries", retries)
+            pulumi.set(__self__, "retries", retries)
         if scheduled_tasks is not None:
-            _setter("scheduled_tasks", scheduled_tasks)
+            pulumi.set(__self__, "scheduled_tasks", scheduled_tasks)
         if security_config is not None:
-            _setter("security_config", security_config)
+            pulumi.set(__self__, "security_config", security_config)
         if service_access_security_group is not None:
-            _setter("service_access_security_group", service_access_security_group)
+            pulumi.set(__self__, "service_access_security_group", service_access_security_group)
         if service_role is not None:
-            _setter("service_role", service_role)
+            pulumi.set(__self__, "service_role", service_role)
         if steps_files is not None:
-            _setter("steps_files", steps_files)
+            pulumi.set(__self__, "steps_files", steps_files)
         if strategy is not None:
-            _setter("strategy", strategy)
+            pulumi.set(__self__, "strategy", strategy)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if task_desired_capacity is not None:
-            _setter("task_desired_capacity", task_desired_capacity)
+            pulumi.set(__self__, "task_desired_capacity", task_desired_capacity)
         if task_ebs_block_devices is not None:
-            _setter("task_ebs_block_devices", task_ebs_block_devices)
+            pulumi.set(__self__, "task_ebs_block_devices", task_ebs_block_devices)
         if task_ebs_optimized is not None:
-            _setter("task_ebs_optimized", task_ebs_optimized)
+            pulumi.set(__self__, "task_ebs_optimized", task_ebs_optimized)
         if task_instance_types is not None:
-            _setter("task_instance_types", task_instance_types)
+            pulumi.set(__self__, "task_instance_types", task_instance_types)
         if task_lifecycle is not None:
-            _setter("task_lifecycle", task_lifecycle)
+            pulumi.set(__self__, "task_lifecycle", task_lifecycle)
         if task_max_size is not None:
-            _setter("task_max_size", task_max_size)
+            pulumi.set(__self__, "task_max_size", task_max_size)
         if task_min_size is not None:
-            _setter("task_min_size", task_min_size)
+            pulumi.set(__self__, "task_min_size", task_min_size)
         if task_scaling_down_policies is not None:
-            _setter("task_scaling_down_policies", task_scaling_down_policies)
+            pulumi.set(__self__, "task_scaling_down_policies", task_scaling_down_policies)
         if task_scaling_up_policies is not None:
-            _setter("task_scaling_up_policies", task_scaling_up_policies)
+            pulumi.set(__self__, "task_scaling_up_policies", task_scaling_up_policies)
         if task_unit is not None:
-            _setter("task_unit", task_unit)
+            pulumi.set(__self__, "task_unit", task_unit)
         if termination_policies is not None:
-            _setter("termination_policies", termination_policies)
+            pulumi.set(__self__, "termination_policies", termination_policies)
         if termination_protected is not None:
-            _setter("termination_protected", termination_protected)
+            pulumi.set(__self__, "termination_protected", termination_protected)
         if visible_to_all_users is not None:
             warnings.warn("""This field has been removed from our API and is no longer functional.""", DeprecationWarning)
             pulumi.log.warn("""visible_to_all_users is deprecated: This field has been removed from our API and is no longer functional.""")
         if visible_to_all_users is not None:
-            _setter("visible_to_all_users", visible_to_all_users)
+            pulumi.set(__self__, "visible_to_all_users", visible_to_all_users)
 
     @property
     @pulumi.getter(name="additionalInfo")
@@ -2991,10 +2515,6 @@ class MrScalar(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            MrScalarArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -3104,7 +2624,6 @@ class MrScalar(pulumi.CustomResource):
             __props__.__dict__["master_lifecycle"] = master_lifecycle
             __props__.__dict__["master_target"] = master_target
             __props__.__dict__["name"] = name
-            provisioning_timeout = _utilities.configure(provisioning_timeout, MrScalarProvisioningTimeoutArgs, True)
             __props__.__dict__["provisioning_timeout"] = provisioning_timeout
             __props__.__dict__["region"] = region
             __props__.__dict__["release_label"] = release_label

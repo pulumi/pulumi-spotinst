@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -47,170 +47,57 @@ class OceanNpArgs:
         """
         The set of arguments for constructing a OceanNp resource.
         """
-        OceanNpArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            aks_cluster_name=aks_cluster_name,
-            aks_infrastructure_resource_group_name=aks_infrastructure_resource_group_name,
-            aks_region=aks_region,
-            aks_resource_group_name=aks_resource_group_name,
-            availability_zones=availability_zones,
-            autoscaler=autoscaler,
-            controller_cluster_id=controller_cluster_id,
-            enable_node_public_ip=enable_node_public_ip,
-            fallback_to_ondemand=fallback_to_ondemand,
-            filters=filters,
-            headrooms=headrooms,
-            health=health,
-            kubernetes_version=kubernetes_version,
-            labels=labels,
-            max_count=max_count,
-            max_pods_per_node=max_pods_per_node,
-            min_count=min_count,
-            name=name,
-            os_disk_size_gb=os_disk_size_gb,
-            os_disk_type=os_disk_type,
-            os_sku=os_sku,
-            os_type=os_type,
-            pod_subnet_ids=pod_subnet_ids,
-            scheduling=scheduling,
-            spot_percentage=spot_percentage,
-            tags=tags,
-            taints=taints,
-            vnet_subnet_ids=vnet_subnet_ids,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             aks_cluster_name: Optional[pulumi.Input[str]] = None,
-             aks_infrastructure_resource_group_name: Optional[pulumi.Input[str]] = None,
-             aks_region: Optional[pulumi.Input[str]] = None,
-             aks_resource_group_name: Optional[pulumi.Input[str]] = None,
-             availability_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             autoscaler: Optional[pulumi.Input['OceanNpAutoscalerArgs']] = None,
-             controller_cluster_id: Optional[pulumi.Input[str]] = None,
-             enable_node_public_ip: Optional[pulumi.Input[bool]] = None,
-             fallback_to_ondemand: Optional[pulumi.Input[bool]] = None,
-             filters: Optional[pulumi.Input['OceanNpFiltersArgs']] = None,
-             headrooms: Optional[pulumi.Input[Sequence[pulumi.Input['OceanNpHeadroomArgs']]]] = None,
-             health: Optional[pulumi.Input['OceanNpHealthArgs']] = None,
-             kubernetes_version: Optional[pulumi.Input[str]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             max_count: Optional[pulumi.Input[int]] = None,
-             max_pods_per_node: Optional[pulumi.Input[int]] = None,
-             min_count: Optional[pulumi.Input[int]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             os_disk_size_gb: Optional[pulumi.Input[int]] = None,
-             os_disk_type: Optional[pulumi.Input[str]] = None,
-             os_sku: Optional[pulumi.Input[str]] = None,
-             os_type: Optional[pulumi.Input[str]] = None,
-             pod_subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             scheduling: Optional[pulumi.Input['OceanNpSchedulingArgs']] = None,
-             spot_percentage: Optional[pulumi.Input[int]] = None,
-             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             taints: Optional[pulumi.Input[Sequence[pulumi.Input['OceanNpTaintArgs']]]] = None,
-             vnet_subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if aks_cluster_name is None and 'aksClusterName' in kwargs:
-            aks_cluster_name = kwargs['aksClusterName']
-        if aks_cluster_name is None:
-            raise TypeError("Missing 'aks_cluster_name' argument")
-        if aks_infrastructure_resource_group_name is None and 'aksInfrastructureResourceGroupName' in kwargs:
-            aks_infrastructure_resource_group_name = kwargs['aksInfrastructureResourceGroupName']
-        if aks_infrastructure_resource_group_name is None:
-            raise TypeError("Missing 'aks_infrastructure_resource_group_name' argument")
-        if aks_region is None and 'aksRegion' in kwargs:
-            aks_region = kwargs['aksRegion']
-        if aks_region is None:
-            raise TypeError("Missing 'aks_region' argument")
-        if aks_resource_group_name is None and 'aksResourceGroupName' in kwargs:
-            aks_resource_group_name = kwargs['aksResourceGroupName']
-        if aks_resource_group_name is None:
-            raise TypeError("Missing 'aks_resource_group_name' argument")
-        if availability_zones is None and 'availabilityZones' in kwargs:
-            availability_zones = kwargs['availabilityZones']
-        if availability_zones is None:
-            raise TypeError("Missing 'availability_zones' argument")
-        if controller_cluster_id is None and 'controllerClusterId' in kwargs:
-            controller_cluster_id = kwargs['controllerClusterId']
-        if enable_node_public_ip is None and 'enableNodePublicIp' in kwargs:
-            enable_node_public_ip = kwargs['enableNodePublicIp']
-        if fallback_to_ondemand is None and 'fallbackToOndemand' in kwargs:
-            fallback_to_ondemand = kwargs['fallbackToOndemand']
-        if kubernetes_version is None and 'kubernetesVersion' in kwargs:
-            kubernetes_version = kwargs['kubernetesVersion']
-        if max_count is None and 'maxCount' in kwargs:
-            max_count = kwargs['maxCount']
-        if max_pods_per_node is None and 'maxPodsPerNode' in kwargs:
-            max_pods_per_node = kwargs['maxPodsPerNode']
-        if min_count is None and 'minCount' in kwargs:
-            min_count = kwargs['minCount']
-        if os_disk_size_gb is None and 'osDiskSizeGb' in kwargs:
-            os_disk_size_gb = kwargs['osDiskSizeGb']
-        if os_disk_type is None and 'osDiskType' in kwargs:
-            os_disk_type = kwargs['osDiskType']
-        if os_sku is None and 'osSku' in kwargs:
-            os_sku = kwargs['osSku']
-        if os_type is None and 'osType' in kwargs:
-            os_type = kwargs['osType']
-        if pod_subnet_ids is None and 'podSubnetIds' in kwargs:
-            pod_subnet_ids = kwargs['podSubnetIds']
-        if spot_percentage is None and 'spotPercentage' in kwargs:
-            spot_percentage = kwargs['spotPercentage']
-        if vnet_subnet_ids is None and 'vnetSubnetIds' in kwargs:
-            vnet_subnet_ids = kwargs['vnetSubnetIds']
-
-        _setter("aks_cluster_name", aks_cluster_name)
-        _setter("aks_infrastructure_resource_group_name", aks_infrastructure_resource_group_name)
-        _setter("aks_region", aks_region)
-        _setter("aks_resource_group_name", aks_resource_group_name)
-        _setter("availability_zones", availability_zones)
+        pulumi.set(__self__, "aks_cluster_name", aks_cluster_name)
+        pulumi.set(__self__, "aks_infrastructure_resource_group_name", aks_infrastructure_resource_group_name)
+        pulumi.set(__self__, "aks_region", aks_region)
+        pulumi.set(__self__, "aks_resource_group_name", aks_resource_group_name)
+        pulumi.set(__self__, "availability_zones", availability_zones)
         if autoscaler is not None:
-            _setter("autoscaler", autoscaler)
+            pulumi.set(__self__, "autoscaler", autoscaler)
         if controller_cluster_id is not None:
-            _setter("controller_cluster_id", controller_cluster_id)
+            pulumi.set(__self__, "controller_cluster_id", controller_cluster_id)
         if enable_node_public_ip is not None:
-            _setter("enable_node_public_ip", enable_node_public_ip)
+            pulumi.set(__self__, "enable_node_public_ip", enable_node_public_ip)
         if fallback_to_ondemand is not None:
-            _setter("fallback_to_ondemand", fallback_to_ondemand)
+            pulumi.set(__self__, "fallback_to_ondemand", fallback_to_ondemand)
         if filters is not None:
-            _setter("filters", filters)
+            pulumi.set(__self__, "filters", filters)
         if headrooms is not None:
-            _setter("headrooms", headrooms)
+            pulumi.set(__self__, "headrooms", headrooms)
         if health is not None:
-            _setter("health", health)
+            pulumi.set(__self__, "health", health)
         if kubernetes_version is not None:
-            _setter("kubernetes_version", kubernetes_version)
+            pulumi.set(__self__, "kubernetes_version", kubernetes_version)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if max_count is not None:
-            _setter("max_count", max_count)
+            pulumi.set(__self__, "max_count", max_count)
         if max_pods_per_node is not None:
-            _setter("max_pods_per_node", max_pods_per_node)
+            pulumi.set(__self__, "max_pods_per_node", max_pods_per_node)
         if min_count is not None:
-            _setter("min_count", min_count)
+            pulumi.set(__self__, "min_count", min_count)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if os_disk_size_gb is not None:
-            _setter("os_disk_size_gb", os_disk_size_gb)
+            pulumi.set(__self__, "os_disk_size_gb", os_disk_size_gb)
         if os_disk_type is not None:
-            _setter("os_disk_type", os_disk_type)
+            pulumi.set(__self__, "os_disk_type", os_disk_type)
         if os_sku is not None:
-            _setter("os_sku", os_sku)
+            pulumi.set(__self__, "os_sku", os_sku)
         if os_type is not None:
-            _setter("os_type", os_type)
+            pulumi.set(__self__, "os_type", os_type)
         if pod_subnet_ids is not None:
-            _setter("pod_subnet_ids", pod_subnet_ids)
+            pulumi.set(__self__, "pod_subnet_ids", pod_subnet_ids)
         if scheduling is not None:
-            _setter("scheduling", scheduling)
+            pulumi.set(__self__, "scheduling", scheduling)
         if spot_percentage is not None:
-            _setter("spot_percentage", spot_percentage)
+            pulumi.set(__self__, "spot_percentage", spot_percentage)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if taints is not None:
-            _setter("taints", taints)
+            pulumi.set(__self__, "taints", taints)
         if vnet_subnet_ids is not None:
-            _setter("vnet_subnet_ids", vnet_subnet_ids)
+            pulumi.set(__self__, "vnet_subnet_ids", vnet_subnet_ids)
 
     @property
     @pulumi.getter(name="aksClusterName")
@@ -499,165 +386,62 @@ class _OceanNpState:
         """
         Input properties used for looking up and filtering OceanNp resources.
         """
-        _OceanNpState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            aks_cluster_name=aks_cluster_name,
-            aks_infrastructure_resource_group_name=aks_infrastructure_resource_group_name,
-            aks_region=aks_region,
-            aks_resource_group_name=aks_resource_group_name,
-            autoscaler=autoscaler,
-            availability_zones=availability_zones,
-            controller_cluster_id=controller_cluster_id,
-            enable_node_public_ip=enable_node_public_ip,
-            fallback_to_ondemand=fallback_to_ondemand,
-            filters=filters,
-            headrooms=headrooms,
-            health=health,
-            kubernetes_version=kubernetes_version,
-            labels=labels,
-            max_count=max_count,
-            max_pods_per_node=max_pods_per_node,
-            min_count=min_count,
-            name=name,
-            os_disk_size_gb=os_disk_size_gb,
-            os_disk_type=os_disk_type,
-            os_sku=os_sku,
-            os_type=os_type,
-            pod_subnet_ids=pod_subnet_ids,
-            scheduling=scheduling,
-            spot_percentage=spot_percentage,
-            tags=tags,
-            taints=taints,
-            vnet_subnet_ids=vnet_subnet_ids,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             aks_cluster_name: Optional[pulumi.Input[str]] = None,
-             aks_infrastructure_resource_group_name: Optional[pulumi.Input[str]] = None,
-             aks_region: Optional[pulumi.Input[str]] = None,
-             aks_resource_group_name: Optional[pulumi.Input[str]] = None,
-             autoscaler: Optional[pulumi.Input['OceanNpAutoscalerArgs']] = None,
-             availability_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             controller_cluster_id: Optional[pulumi.Input[str]] = None,
-             enable_node_public_ip: Optional[pulumi.Input[bool]] = None,
-             fallback_to_ondemand: Optional[pulumi.Input[bool]] = None,
-             filters: Optional[pulumi.Input['OceanNpFiltersArgs']] = None,
-             headrooms: Optional[pulumi.Input[Sequence[pulumi.Input['OceanNpHeadroomArgs']]]] = None,
-             health: Optional[pulumi.Input['OceanNpHealthArgs']] = None,
-             kubernetes_version: Optional[pulumi.Input[str]] = None,
-             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             max_count: Optional[pulumi.Input[int]] = None,
-             max_pods_per_node: Optional[pulumi.Input[int]] = None,
-             min_count: Optional[pulumi.Input[int]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             os_disk_size_gb: Optional[pulumi.Input[int]] = None,
-             os_disk_type: Optional[pulumi.Input[str]] = None,
-             os_sku: Optional[pulumi.Input[str]] = None,
-             os_type: Optional[pulumi.Input[str]] = None,
-             pod_subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             scheduling: Optional[pulumi.Input['OceanNpSchedulingArgs']] = None,
-             spot_percentage: Optional[pulumi.Input[int]] = None,
-             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             taints: Optional[pulumi.Input[Sequence[pulumi.Input['OceanNpTaintArgs']]]] = None,
-             vnet_subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if aks_cluster_name is None and 'aksClusterName' in kwargs:
-            aks_cluster_name = kwargs['aksClusterName']
-        if aks_infrastructure_resource_group_name is None and 'aksInfrastructureResourceGroupName' in kwargs:
-            aks_infrastructure_resource_group_name = kwargs['aksInfrastructureResourceGroupName']
-        if aks_region is None and 'aksRegion' in kwargs:
-            aks_region = kwargs['aksRegion']
-        if aks_resource_group_name is None and 'aksResourceGroupName' in kwargs:
-            aks_resource_group_name = kwargs['aksResourceGroupName']
-        if availability_zones is None and 'availabilityZones' in kwargs:
-            availability_zones = kwargs['availabilityZones']
-        if controller_cluster_id is None and 'controllerClusterId' in kwargs:
-            controller_cluster_id = kwargs['controllerClusterId']
-        if enable_node_public_ip is None and 'enableNodePublicIp' in kwargs:
-            enable_node_public_ip = kwargs['enableNodePublicIp']
-        if fallback_to_ondemand is None and 'fallbackToOndemand' in kwargs:
-            fallback_to_ondemand = kwargs['fallbackToOndemand']
-        if kubernetes_version is None and 'kubernetesVersion' in kwargs:
-            kubernetes_version = kwargs['kubernetesVersion']
-        if max_count is None and 'maxCount' in kwargs:
-            max_count = kwargs['maxCount']
-        if max_pods_per_node is None and 'maxPodsPerNode' in kwargs:
-            max_pods_per_node = kwargs['maxPodsPerNode']
-        if min_count is None and 'minCount' in kwargs:
-            min_count = kwargs['minCount']
-        if os_disk_size_gb is None and 'osDiskSizeGb' in kwargs:
-            os_disk_size_gb = kwargs['osDiskSizeGb']
-        if os_disk_type is None and 'osDiskType' in kwargs:
-            os_disk_type = kwargs['osDiskType']
-        if os_sku is None and 'osSku' in kwargs:
-            os_sku = kwargs['osSku']
-        if os_type is None and 'osType' in kwargs:
-            os_type = kwargs['osType']
-        if pod_subnet_ids is None and 'podSubnetIds' in kwargs:
-            pod_subnet_ids = kwargs['podSubnetIds']
-        if spot_percentage is None and 'spotPercentage' in kwargs:
-            spot_percentage = kwargs['spotPercentage']
-        if vnet_subnet_ids is None and 'vnetSubnetIds' in kwargs:
-            vnet_subnet_ids = kwargs['vnetSubnetIds']
-
         if aks_cluster_name is not None:
-            _setter("aks_cluster_name", aks_cluster_name)
+            pulumi.set(__self__, "aks_cluster_name", aks_cluster_name)
         if aks_infrastructure_resource_group_name is not None:
-            _setter("aks_infrastructure_resource_group_name", aks_infrastructure_resource_group_name)
+            pulumi.set(__self__, "aks_infrastructure_resource_group_name", aks_infrastructure_resource_group_name)
         if aks_region is not None:
-            _setter("aks_region", aks_region)
+            pulumi.set(__self__, "aks_region", aks_region)
         if aks_resource_group_name is not None:
-            _setter("aks_resource_group_name", aks_resource_group_name)
+            pulumi.set(__self__, "aks_resource_group_name", aks_resource_group_name)
         if autoscaler is not None:
-            _setter("autoscaler", autoscaler)
+            pulumi.set(__self__, "autoscaler", autoscaler)
         if availability_zones is not None:
-            _setter("availability_zones", availability_zones)
+            pulumi.set(__self__, "availability_zones", availability_zones)
         if controller_cluster_id is not None:
-            _setter("controller_cluster_id", controller_cluster_id)
+            pulumi.set(__self__, "controller_cluster_id", controller_cluster_id)
         if enable_node_public_ip is not None:
-            _setter("enable_node_public_ip", enable_node_public_ip)
+            pulumi.set(__self__, "enable_node_public_ip", enable_node_public_ip)
         if fallback_to_ondemand is not None:
-            _setter("fallback_to_ondemand", fallback_to_ondemand)
+            pulumi.set(__self__, "fallback_to_ondemand", fallback_to_ondemand)
         if filters is not None:
-            _setter("filters", filters)
+            pulumi.set(__self__, "filters", filters)
         if headrooms is not None:
-            _setter("headrooms", headrooms)
+            pulumi.set(__self__, "headrooms", headrooms)
         if health is not None:
-            _setter("health", health)
+            pulumi.set(__self__, "health", health)
         if kubernetes_version is not None:
-            _setter("kubernetes_version", kubernetes_version)
+            pulumi.set(__self__, "kubernetes_version", kubernetes_version)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if max_count is not None:
-            _setter("max_count", max_count)
+            pulumi.set(__self__, "max_count", max_count)
         if max_pods_per_node is not None:
-            _setter("max_pods_per_node", max_pods_per_node)
+            pulumi.set(__self__, "max_pods_per_node", max_pods_per_node)
         if min_count is not None:
-            _setter("min_count", min_count)
+            pulumi.set(__self__, "min_count", min_count)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if os_disk_size_gb is not None:
-            _setter("os_disk_size_gb", os_disk_size_gb)
+            pulumi.set(__self__, "os_disk_size_gb", os_disk_size_gb)
         if os_disk_type is not None:
-            _setter("os_disk_type", os_disk_type)
+            pulumi.set(__self__, "os_disk_type", os_disk_type)
         if os_sku is not None:
-            _setter("os_sku", os_sku)
+            pulumi.set(__self__, "os_sku", os_sku)
         if os_type is not None:
-            _setter("os_type", os_type)
+            pulumi.set(__self__, "os_type", os_type)
         if pod_subnet_ids is not None:
-            _setter("pod_subnet_ids", pod_subnet_ids)
+            pulumi.set(__self__, "pod_subnet_ids", pod_subnet_ids)
         if scheduling is not None:
-            _setter("scheduling", scheduling)
+            pulumi.set(__self__, "scheduling", scheduling)
         if spot_percentage is not None:
-            _setter("spot_percentage", spot_percentage)
+            pulumi.set(__self__, "spot_percentage", spot_percentage)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if taints is not None:
-            _setter("taints", taints)
+            pulumi.set(__self__, "taints", taints)
         if vnet_subnet_ids is not None:
-            _setter("vnet_subnet_ids", vnet_subnet_ids)
+            pulumi.set(__self__, "vnet_subnet_ids", vnet_subnet_ids)
 
     @property
     @pulumi.getter(name="aksClusterName")
@@ -969,10 +753,6 @@ class OceanNp(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            OceanNpArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -1027,7 +807,6 @@ class OceanNp(pulumi.CustomResource):
             if aks_resource_group_name is None and not opts.urn:
                 raise TypeError("Missing required property 'aks_resource_group_name'")
             __props__.__dict__["aks_resource_group_name"] = aks_resource_group_name
-            autoscaler = _utilities.configure(autoscaler, OceanNpAutoscalerArgs, True)
             __props__.__dict__["autoscaler"] = autoscaler
             if availability_zones is None and not opts.urn:
                 raise TypeError("Missing required property 'availability_zones'")
@@ -1035,10 +814,8 @@ class OceanNp(pulumi.CustomResource):
             __props__.__dict__["controller_cluster_id"] = controller_cluster_id
             __props__.__dict__["enable_node_public_ip"] = enable_node_public_ip
             __props__.__dict__["fallback_to_ondemand"] = fallback_to_ondemand
-            filters = _utilities.configure(filters, OceanNpFiltersArgs, True)
             __props__.__dict__["filters"] = filters
             __props__.__dict__["headrooms"] = headrooms
-            health = _utilities.configure(health, OceanNpHealthArgs, True)
             __props__.__dict__["health"] = health
             __props__.__dict__["kubernetes_version"] = kubernetes_version
             __props__.__dict__["labels"] = labels
@@ -1051,7 +828,6 @@ class OceanNp(pulumi.CustomResource):
             __props__.__dict__["os_sku"] = os_sku
             __props__.__dict__["os_type"] = os_type
             __props__.__dict__["pod_subnet_ids"] = pod_subnet_ids
-            scheduling = _utilities.configure(scheduling, OceanNpSchedulingArgs, True)
             __props__.__dict__["scheduling"] = scheduling
             __props__.__dict__["spot_percentage"] = spot_percentage
             __props__.__dict__["tags"] = tags

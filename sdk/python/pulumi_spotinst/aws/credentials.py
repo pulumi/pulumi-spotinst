@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['CredentialsArgs', 'Credentials']
@@ -20,27 +20,8 @@ class CredentialsArgs:
         The set of arguments for constructing a Credentials resource.
         :param pulumi.Input[str] iamrole: Provide the IAM Role ARN connected to another AWS account 922761411349 and with the latest Spot Policy - https://docs.spot.io/administration/api/spot-policy-in-aws
         """
-        CredentialsArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            account_id=account_id,
-            iamrole=iamrole,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             account_id: Optional[pulumi.Input[str]] = None,
-             iamrole: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if account_id is None and 'accountId' in kwargs:
-            account_id = kwargs['accountId']
-        if account_id is None:
-            raise TypeError("Missing 'account_id' argument")
-        if iamrole is None:
-            raise TypeError("Missing 'iamrole' argument")
-
-        _setter("account_id", account_id)
-        _setter("iamrole", iamrole)
+        pulumi.set(__self__, "account_id", account_id)
+        pulumi.set(__self__, "iamrole", iamrole)
 
     @property
     @pulumi.getter(name="accountId")
@@ -73,25 +54,10 @@ class _CredentialsState:
         Input properties used for looking up and filtering Credentials resources.
         :param pulumi.Input[str] iamrole: Provide the IAM Role ARN connected to another AWS account 922761411349 and with the latest Spot Policy - https://docs.spot.io/administration/api/spot-policy-in-aws
         """
-        _CredentialsState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            account_id=account_id,
-            iamrole=iamrole,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             account_id: Optional[pulumi.Input[str]] = None,
-             iamrole: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if account_id is None and 'accountId' in kwargs:
-            account_id = kwargs['accountId']
-
         if account_id is not None:
-            _setter("account_id", account_id)
+            pulumi.set(__self__, "account_id", account_id)
         if iamrole is not None:
-            _setter("iamrole", iamrole)
+            pulumi.set(__self__, "iamrole", iamrole)
 
     @property
     @pulumi.getter(name="accountId")
@@ -173,10 +139,6 @@ class Credentials(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            CredentialsArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
