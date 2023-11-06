@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Spotinst programmatic user in the creator's organization.
@@ -185,12 +184,6 @@ func (i *ProgrammaticUser) ToProgrammaticUserOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(ProgrammaticUserOutput)
 }
 
-func (i *ProgrammaticUser) ToOutput(ctx context.Context) pulumix.Output[*ProgrammaticUser] {
-	return pulumix.Output[*ProgrammaticUser]{
-		OutputState: i.ToProgrammaticUserOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ProgrammaticUserArrayInput is an input type that accepts ProgrammaticUserArray and ProgrammaticUserArrayOutput values.
 // You can construct a concrete instance of `ProgrammaticUserArrayInput` via:
 //
@@ -214,12 +207,6 @@ func (i ProgrammaticUserArray) ToProgrammaticUserArrayOutput() ProgrammaticUserA
 
 func (i ProgrammaticUserArray) ToProgrammaticUserArrayOutputWithContext(ctx context.Context) ProgrammaticUserArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ProgrammaticUserArrayOutput)
-}
-
-func (i ProgrammaticUserArray) ToOutput(ctx context.Context) pulumix.Output[[]*ProgrammaticUser] {
-	return pulumix.Output[[]*ProgrammaticUser]{
-		OutputState: i.ToProgrammaticUserArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ProgrammaticUserMapInput is an input type that accepts ProgrammaticUserMap and ProgrammaticUserMapOutput values.
@@ -247,12 +234,6 @@ func (i ProgrammaticUserMap) ToProgrammaticUserMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(ProgrammaticUserMapOutput)
 }
 
-func (i ProgrammaticUserMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ProgrammaticUser] {
-	return pulumix.Output[map[string]*ProgrammaticUser]{
-		OutputState: i.ToProgrammaticUserMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ProgrammaticUserOutput struct{ *pulumi.OutputState }
 
 func (ProgrammaticUserOutput) ElementType() reflect.Type {
@@ -265,12 +246,6 @@ func (o ProgrammaticUserOutput) ToProgrammaticUserOutput() ProgrammaticUserOutpu
 
 func (o ProgrammaticUserOutput) ToProgrammaticUserOutputWithContext(ctx context.Context) ProgrammaticUserOutput {
 	return o
-}
-
-func (o ProgrammaticUserOutput) ToOutput(ctx context.Context) pulumix.Output[*ProgrammaticUser] {
-	return pulumix.Output[*ProgrammaticUser]{
-		OutputState: o.OutputState,
-	}
 }
 
 // All the accounts the programmatic user will have access to.
@@ -314,12 +289,6 @@ func (o ProgrammaticUserArrayOutput) ToProgrammaticUserArrayOutputWithContext(ct
 	return o
 }
 
-func (o ProgrammaticUserArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ProgrammaticUser] {
-	return pulumix.Output[[]*ProgrammaticUser]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ProgrammaticUserArrayOutput) Index(i pulumi.IntInput) ProgrammaticUserOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ProgrammaticUser {
 		return vs[0].([]*ProgrammaticUser)[vs[1].(int)]
@@ -338,12 +307,6 @@ func (o ProgrammaticUserMapOutput) ToProgrammaticUserMapOutput() ProgrammaticUse
 
 func (o ProgrammaticUserMapOutput) ToProgrammaticUserMapOutputWithContext(ctx context.Context) ProgrammaticUserMapOutput {
 	return o
-}
-
-func (o ProgrammaticUserMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ProgrammaticUser] {
-	return pulumix.Output[map[string]*ProgrammaticUser]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ProgrammaticUserMapOutput) MapIndex(k pulumi.StringInput) ProgrammaticUserOutput {

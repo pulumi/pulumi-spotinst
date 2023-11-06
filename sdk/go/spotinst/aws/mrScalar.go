@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Spotinst AWS MrScaler resource.
@@ -978,12 +977,6 @@ func (i *MrScalar) ToMrScalarOutputWithContext(ctx context.Context) MrScalarOutp
 	return pulumi.ToOutputWithContext(ctx, i).(MrScalarOutput)
 }
 
-func (i *MrScalar) ToOutput(ctx context.Context) pulumix.Output[*MrScalar] {
-	return pulumix.Output[*MrScalar]{
-		OutputState: i.ToMrScalarOutputWithContext(ctx).OutputState,
-	}
-}
-
 // MrScalarArrayInput is an input type that accepts MrScalarArray and MrScalarArrayOutput values.
 // You can construct a concrete instance of `MrScalarArrayInput` via:
 //
@@ -1007,12 +1000,6 @@ func (i MrScalarArray) ToMrScalarArrayOutput() MrScalarArrayOutput {
 
 func (i MrScalarArray) ToMrScalarArrayOutputWithContext(ctx context.Context) MrScalarArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MrScalarArrayOutput)
-}
-
-func (i MrScalarArray) ToOutput(ctx context.Context) pulumix.Output[[]*MrScalar] {
-	return pulumix.Output[[]*MrScalar]{
-		OutputState: i.ToMrScalarArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // MrScalarMapInput is an input type that accepts MrScalarMap and MrScalarMapOutput values.
@@ -1040,12 +1027,6 @@ func (i MrScalarMap) ToMrScalarMapOutputWithContext(ctx context.Context) MrScala
 	return pulumi.ToOutputWithContext(ctx, i).(MrScalarMapOutput)
 }
 
-func (i MrScalarMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*MrScalar] {
-	return pulumix.Output[map[string]*MrScalar]{
-		OutputState: i.ToMrScalarMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MrScalarOutput struct{ *pulumi.OutputState }
 
 func (MrScalarOutput) ElementType() reflect.Type {
@@ -1058,12 +1039,6 @@ func (o MrScalarOutput) ToMrScalarOutput() MrScalarOutput {
 
 func (o MrScalarOutput) ToMrScalarOutputWithContext(ctx context.Context) MrScalarOutput {
 	return o
-}
-
-func (o MrScalarOutput) ToOutput(ctx context.Context) pulumix.Output[*MrScalar] {
-	return pulumix.Output[*MrScalar]{
-		OutputState: o.OutputState,
-	}
 }
 
 // This is meta information about third-party applications that third-party vendors use for testing purposes.
@@ -1379,12 +1354,6 @@ func (o MrScalarArrayOutput) ToMrScalarArrayOutputWithContext(ctx context.Contex
 	return o
 }
 
-func (o MrScalarArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*MrScalar] {
-	return pulumix.Output[[]*MrScalar]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o MrScalarArrayOutput) Index(i pulumi.IntInput) MrScalarOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *MrScalar {
 		return vs[0].([]*MrScalar)[vs[1].(int)]
@@ -1403,12 +1372,6 @@ func (o MrScalarMapOutput) ToMrScalarMapOutput() MrScalarMapOutput {
 
 func (o MrScalarMapOutput) ToMrScalarMapOutputWithContext(ctx context.Context) MrScalarMapOutput {
 	return o
-}
-
-func (o MrScalarMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*MrScalar] {
-	return pulumix.Output[map[string]*MrScalar]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MrScalarMapOutput) MapIndex(k pulumi.StringInput) MrScalarOutput {

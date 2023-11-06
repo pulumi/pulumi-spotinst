@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Spotinst credential AWS resource.
@@ -136,12 +135,6 @@ func (i *Credentials) ToCredentialsOutputWithContext(ctx context.Context) Creden
 	return pulumi.ToOutputWithContext(ctx, i).(CredentialsOutput)
 }
 
-func (i *Credentials) ToOutput(ctx context.Context) pulumix.Output[*Credentials] {
-	return pulumix.Output[*Credentials]{
-		OutputState: i.ToCredentialsOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CredentialsArrayInput is an input type that accepts CredentialsArray and CredentialsArrayOutput values.
 // You can construct a concrete instance of `CredentialsArrayInput` via:
 //
@@ -165,12 +158,6 @@ func (i CredentialsArray) ToCredentialsArrayOutput() CredentialsArrayOutput {
 
 func (i CredentialsArray) ToCredentialsArrayOutputWithContext(ctx context.Context) CredentialsArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CredentialsArrayOutput)
-}
-
-func (i CredentialsArray) ToOutput(ctx context.Context) pulumix.Output[[]*Credentials] {
-	return pulumix.Output[[]*Credentials]{
-		OutputState: i.ToCredentialsArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // CredentialsMapInput is an input type that accepts CredentialsMap and CredentialsMapOutput values.
@@ -198,12 +185,6 @@ func (i CredentialsMap) ToCredentialsMapOutputWithContext(ctx context.Context) C
 	return pulumi.ToOutputWithContext(ctx, i).(CredentialsMapOutput)
 }
 
-func (i CredentialsMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Credentials] {
-	return pulumix.Output[map[string]*Credentials]{
-		OutputState: i.ToCredentialsMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CredentialsOutput struct{ *pulumi.OutputState }
 
 func (CredentialsOutput) ElementType() reflect.Type {
@@ -216,12 +197,6 @@ func (o CredentialsOutput) ToCredentialsOutput() CredentialsOutput {
 
 func (o CredentialsOutput) ToCredentialsOutputWithContext(ctx context.Context) CredentialsOutput {
 	return o
-}
-
-func (o CredentialsOutput) ToOutput(ctx context.Context) pulumix.Output[*Credentials] {
-	return pulumix.Output[*Credentials]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CredentialsOutput) AccountId() pulumi.StringOutput {
@@ -247,12 +222,6 @@ func (o CredentialsArrayOutput) ToCredentialsArrayOutputWithContext(ctx context.
 	return o
 }
 
-func (o CredentialsArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Credentials] {
-	return pulumix.Output[[]*Credentials]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CredentialsArrayOutput) Index(i pulumi.IntInput) CredentialsOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Credentials {
 		return vs[0].([]*Credentials)[vs[1].(int)]
@@ -271,12 +240,6 @@ func (o CredentialsMapOutput) ToCredentialsMapOutput() CredentialsMapOutput {
 
 func (o CredentialsMapOutput) ToCredentialsMapOutputWithContext(ctx context.Context) CredentialsMapOutput {
 	return o
-}
-
-func (o CredentialsMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Credentials] {
-	return pulumix.Output[map[string]*Credentials]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CredentialsMapOutput) MapIndex(k pulumi.StringInput) CredentialsOutput {

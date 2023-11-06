@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Spotinst stateful node Azure resource.
@@ -570,12 +569,6 @@ func (i *StatefulNodeAzure) ToStatefulNodeAzureOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureOutput)
 }
 
-func (i *StatefulNodeAzure) ToOutput(ctx context.Context) pulumix.Output[*StatefulNodeAzure] {
-	return pulumix.Output[*StatefulNodeAzure]{
-		OutputState: i.ToStatefulNodeAzureOutputWithContext(ctx).OutputState,
-	}
-}
-
 // StatefulNodeAzureArrayInput is an input type that accepts StatefulNodeAzureArray and StatefulNodeAzureArrayOutput values.
 // You can construct a concrete instance of `StatefulNodeAzureArrayInput` via:
 //
@@ -599,12 +592,6 @@ func (i StatefulNodeAzureArray) ToStatefulNodeAzureArrayOutput() StatefulNodeAzu
 
 func (i StatefulNodeAzureArray) ToStatefulNodeAzureArrayOutputWithContext(ctx context.Context) StatefulNodeAzureArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureArrayOutput)
-}
-
-func (i StatefulNodeAzureArray) ToOutput(ctx context.Context) pulumix.Output[[]*StatefulNodeAzure] {
-	return pulumix.Output[[]*StatefulNodeAzure]{
-		OutputState: i.ToStatefulNodeAzureArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // StatefulNodeAzureMapInput is an input type that accepts StatefulNodeAzureMap and StatefulNodeAzureMapOutput values.
@@ -632,12 +619,6 @@ func (i StatefulNodeAzureMap) ToStatefulNodeAzureMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureMapOutput)
 }
 
-func (i StatefulNodeAzureMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*StatefulNodeAzure] {
-	return pulumix.Output[map[string]*StatefulNodeAzure]{
-		OutputState: i.ToStatefulNodeAzureMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StatefulNodeAzureOutput struct{ *pulumi.OutputState }
 
 func (StatefulNodeAzureOutput) ElementType() reflect.Type {
@@ -650,12 +631,6 @@ func (o StatefulNodeAzureOutput) ToStatefulNodeAzureOutput() StatefulNodeAzureOu
 
 func (o StatefulNodeAzureOutput) ToStatefulNodeAzureOutputWithContext(ctx context.Context) StatefulNodeAzureOutput {
 	return o
-}
-
-func (o StatefulNodeAzureOutput) ToOutput(ctx context.Context) pulumix.Output[*StatefulNodeAzure] {
-	return pulumix.Output[*StatefulNodeAzure]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StatefulNodeAzureOutput) AttachDataDisks() StatefulNodeAzureAttachDataDiskArrayOutput {
@@ -838,12 +813,6 @@ func (o StatefulNodeAzureArrayOutput) ToStatefulNodeAzureArrayOutputWithContext(
 	return o
 }
 
-func (o StatefulNodeAzureArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*StatefulNodeAzure] {
-	return pulumix.Output[[]*StatefulNodeAzure]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o StatefulNodeAzureArrayOutput) Index(i pulumi.IntInput) StatefulNodeAzureOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *StatefulNodeAzure {
 		return vs[0].([]*StatefulNodeAzure)[vs[1].(int)]
@@ -862,12 +831,6 @@ func (o StatefulNodeAzureMapOutput) ToStatefulNodeAzureMapOutput() StatefulNodeA
 
 func (o StatefulNodeAzureMapOutput) ToStatefulNodeAzureMapOutputWithContext(ctx context.Context) StatefulNodeAzureMapOutput {
 	return o
-}
-
-func (o StatefulNodeAzureMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*StatefulNodeAzure] {
-	return pulumix.Output[map[string]*StatefulNodeAzure]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StatefulNodeAzureMapOutput) MapIndex(k pulumi.StringInput) StatefulNodeAzureOutput {

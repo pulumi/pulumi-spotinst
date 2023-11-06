@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type Balancer struct {
@@ -111,12 +110,6 @@ func (i *Balancer) ToBalancerOutputWithContext(ctx context.Context) BalancerOutp
 	return pulumi.ToOutputWithContext(ctx, i).(BalancerOutput)
 }
 
-func (i *Balancer) ToOutput(ctx context.Context) pulumix.Output[*Balancer] {
-	return pulumix.Output[*Balancer]{
-		OutputState: i.ToBalancerOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BalancerArrayInput is an input type that accepts BalancerArray and BalancerArrayOutput values.
 // You can construct a concrete instance of `BalancerArrayInput` via:
 //
@@ -140,12 +133,6 @@ func (i BalancerArray) ToBalancerArrayOutput() BalancerArrayOutput {
 
 func (i BalancerArray) ToBalancerArrayOutputWithContext(ctx context.Context) BalancerArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BalancerArrayOutput)
-}
-
-func (i BalancerArray) ToOutput(ctx context.Context) pulumix.Output[[]*Balancer] {
-	return pulumix.Output[[]*Balancer]{
-		OutputState: i.ToBalancerArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // BalancerMapInput is an input type that accepts BalancerMap and BalancerMapOutput values.
@@ -173,12 +160,6 @@ func (i BalancerMap) ToBalancerMapOutputWithContext(ctx context.Context) Balance
 	return pulumi.ToOutputWithContext(ctx, i).(BalancerMapOutput)
 }
 
-func (i BalancerMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Balancer] {
-	return pulumix.Output[map[string]*Balancer]{
-		OutputState: i.ToBalancerMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BalancerOutput struct{ *pulumi.OutputState }
 
 func (BalancerOutput) ElementType() reflect.Type {
@@ -191,12 +172,6 @@ func (o BalancerOutput) ToBalancerOutput() BalancerOutput {
 
 func (o BalancerOutput) ToBalancerOutputWithContext(ctx context.Context) BalancerOutput {
 	return o
-}
-
-func (o BalancerOutput) ToOutput(ctx context.Context) pulumix.Output[*Balancer] {
-	return pulumix.Output[*Balancer]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BalancerOutput) ConnectionTimeouts() BalancerConnectionTimeoutsPtrOutput {
@@ -233,12 +208,6 @@ func (o BalancerArrayOutput) ToBalancerArrayOutputWithContext(ctx context.Contex
 	return o
 }
 
-func (o BalancerArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Balancer] {
-	return pulumix.Output[[]*Balancer]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o BalancerArrayOutput) Index(i pulumi.IntInput) BalancerOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Balancer {
 		return vs[0].([]*Balancer)[vs[1].(int)]
@@ -257,12 +226,6 @@ func (o BalancerMapOutput) ToBalancerMapOutput() BalancerMapOutput {
 
 func (o BalancerMapOutput) ToBalancerMapOutputWithContext(ctx context.Context) BalancerMapOutput {
 	return o
-}
-
-func (o BalancerMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Balancer] {
-	return pulumix.Output[map[string]*Balancer]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BalancerMapOutput) MapIndex(k pulumi.StringInput) BalancerOutput {

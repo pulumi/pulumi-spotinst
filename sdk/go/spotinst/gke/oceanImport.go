@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Manages a Spotinst Ocean GKE resource.
@@ -404,12 +403,6 @@ func (i *OceanImport) ToOceanImportOutputWithContext(ctx context.Context) OceanI
 	return pulumi.ToOutputWithContext(ctx, i).(OceanImportOutput)
 }
 
-func (i *OceanImport) ToOutput(ctx context.Context) pulumix.Output[*OceanImport] {
-	return pulumix.Output[*OceanImport]{
-		OutputState: i.ToOceanImportOutputWithContext(ctx).OutputState,
-	}
-}
-
 // OceanImportArrayInput is an input type that accepts OceanImportArray and OceanImportArrayOutput values.
 // You can construct a concrete instance of `OceanImportArrayInput` via:
 //
@@ -433,12 +426,6 @@ func (i OceanImportArray) ToOceanImportArrayOutput() OceanImportArrayOutput {
 
 func (i OceanImportArray) ToOceanImportArrayOutputWithContext(ctx context.Context) OceanImportArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(OceanImportArrayOutput)
-}
-
-func (i OceanImportArray) ToOutput(ctx context.Context) pulumix.Output[[]*OceanImport] {
-	return pulumix.Output[[]*OceanImport]{
-		OutputState: i.ToOceanImportArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // OceanImportMapInput is an input type that accepts OceanImportMap and OceanImportMapOutput values.
@@ -466,12 +453,6 @@ func (i OceanImportMap) ToOceanImportMapOutputWithContext(ctx context.Context) O
 	return pulumi.ToOutputWithContext(ctx, i).(OceanImportMapOutput)
 }
 
-func (i OceanImportMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*OceanImport] {
-	return pulumix.Output[map[string]*OceanImport]{
-		OutputState: i.ToOceanImportMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OceanImportOutput struct{ *pulumi.OutputState }
 
 func (OceanImportOutput) ElementType() reflect.Type {
@@ -484,12 +465,6 @@ func (o OceanImportOutput) ToOceanImportOutput() OceanImportOutput {
 
 func (o OceanImportOutput) ToOceanImportOutputWithContext(ctx context.Context) OceanImportOutput {
 	return o
-}
-
-func (o OceanImportOutput) ToOutput(ctx context.Context) pulumix.Output[*OceanImport] {
-	return pulumix.Output[*OceanImport]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The Ocean Kubernetes Autoscaler object.
@@ -588,12 +563,6 @@ func (o OceanImportArrayOutput) ToOceanImportArrayOutputWithContext(ctx context.
 	return o
 }
 
-func (o OceanImportArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*OceanImport] {
-	return pulumix.Output[[]*OceanImport]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o OceanImportArrayOutput) Index(i pulumi.IntInput) OceanImportOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *OceanImport {
 		return vs[0].([]*OceanImport)[vs[1].(int)]
@@ -612,12 +581,6 @@ func (o OceanImportMapOutput) ToOceanImportMapOutput() OceanImportMapOutput {
 
 func (o OceanImportMapOutput) ToOceanImportMapOutputWithContext(ctx context.Context) OceanImportMapOutput {
 	return o
-}
-
-func (o OceanImportMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*OceanImport] {
-	return pulumix.Output[map[string]*OceanImport]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OceanImportMapOutput) MapIndex(k pulumi.StringInput) OceanImportOutput {
