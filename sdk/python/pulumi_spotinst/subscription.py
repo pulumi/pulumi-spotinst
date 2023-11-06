@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['SubscriptionArgs', 'Subscription']
@@ -42,12 +42,43 @@ class SubscriptionArgs:
                Example: {"event": `"event"`, `"resourceId"`: `"resource-id"`, `"resourceName"`: `"resource-name"`", `"myCustomKey"`: `"My content is set here"` }
                Default: {`"event"`: `"<event>"`, `"instanceId"`: `"<instance-id>"`, `"resourceId"`: `"<resource-id>"`, `"resourceName"`: `"<resource-name>"` }.
         """
-        pulumi.set(__self__, "endpoint", endpoint)
-        pulumi.set(__self__, "event_type", event_type)
-        pulumi.set(__self__, "protocol", protocol)
-        pulumi.set(__self__, "resource_id", resource_id)
+        SubscriptionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            endpoint=endpoint,
+            event_type=event_type,
+            protocol=protocol,
+            resource_id=resource_id,
+            format=format,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             endpoint: Optional[pulumi.Input[str]] = None,
+             event_type: Optional[pulumi.Input[str]] = None,
+             protocol: Optional[pulumi.Input[str]] = None,
+             resource_id: Optional[pulumi.Input[str]] = None,
+             format: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if endpoint is None:
+            raise TypeError("Missing 'endpoint' argument")
+        if event_type is None and 'eventType' in kwargs:
+            event_type = kwargs['eventType']
+        if event_type is None:
+            raise TypeError("Missing 'event_type' argument")
+        if protocol is None:
+            raise TypeError("Missing 'protocol' argument")
+        if resource_id is None and 'resourceId' in kwargs:
+            resource_id = kwargs['resourceId']
+        if resource_id is None:
+            raise TypeError("Missing 'resource_id' argument")
+
+        _setter("endpoint", endpoint)
+        _setter("event_type", event_type)
+        _setter("protocol", protocol)
+        _setter("resource_id", resource_id)
         if format is not None:
-            pulumi.set(__self__, "format", format)
+            _setter("format", format)
 
     @property
     @pulumi.getter
@@ -156,16 +187,39 @@ class _SubscriptionState:
                `"aws-sns"` is only supported with AWS provider
         :param pulumi.Input[str] resource_id: Spotinst Resource id (Elastigroup or Ocean ID).
         """
+        _SubscriptionState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            endpoint=endpoint,
+            event_type=event_type,
+            format=format,
+            protocol=protocol,
+            resource_id=resource_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             endpoint: Optional[pulumi.Input[str]] = None,
+             event_type: Optional[pulumi.Input[str]] = None,
+             format: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             protocol: Optional[pulumi.Input[str]] = None,
+             resource_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if event_type is None and 'eventType' in kwargs:
+            event_type = kwargs['eventType']
+        if resource_id is None and 'resourceId' in kwargs:
+            resource_id = kwargs['resourceId']
+
         if endpoint is not None:
-            pulumi.set(__self__, "endpoint", endpoint)
+            _setter("endpoint", endpoint)
         if event_type is not None:
-            pulumi.set(__self__, "event_type", event_type)
+            _setter("event_type", event_type)
         if format is not None:
-            pulumi.set(__self__, "format", format)
+            _setter("format", format)
         if protocol is not None:
-            pulumi.set(__self__, "protocol", protocol)
+            _setter("protocol", protocol)
         if resource_id is not None:
-            pulumi.set(__self__, "resource_id", resource_id)
+            _setter("resource_id", resource_id)
 
     @property
     @pulumi.getter
@@ -341,6 +395,10 @@ class Subscription(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            SubscriptionArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

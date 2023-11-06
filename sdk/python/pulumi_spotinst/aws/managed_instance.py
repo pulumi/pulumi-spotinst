@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -64,90 +64,277 @@ class ManagedInstanceArgs:
         """
         The set of arguments for constructing a ManagedInstance resource.
         """
-        pulumi.set(__self__, "image_id", image_id)
-        pulumi.set(__self__, "instance_types", instance_types)
-        pulumi.set(__self__, "persist_block_devices", persist_block_devices)
-        pulumi.set(__self__, "product", product)
-        pulumi.set(__self__, "subnet_ids", subnet_ids)
-        pulumi.set(__self__, "vpc_id", vpc_id)
+        ManagedInstanceArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            image_id=image_id,
+            instance_types=instance_types,
+            persist_block_devices=persist_block_devices,
+            product=product,
+            subnet_ids=subnet_ids,
+            vpc_id=vpc_id,
+            auto_healing=auto_healing,
+            block_device_mappings=block_device_mappings,
+            block_devices_mode=block_devices_mode,
+            cpu_credits=cpu_credits,
+            deletes=deletes,
+            description=description,
+            draining_timeout=draining_timeout,
+            ebs_optimized=ebs_optimized,
+            elastic_ip=elastic_ip,
+            enable_monitoring=enable_monitoring,
+            fall_back_to_od=fall_back_to_od,
+            grace_period=grace_period,
+            health_check_type=health_check_type,
+            iam_instance_profile=iam_instance_profile,
+            integration_route53=integration_route53,
+            key_pair=key_pair,
+            life_cycle=life_cycle,
+            load_balancers=load_balancers,
+            managed_instance_action=managed_instance_action,
+            minimum_instance_lifetime=minimum_instance_lifetime,
+            name=name,
+            network_interfaces=network_interfaces,
+            optimization_windows=optimization_windows,
+            orientation=orientation,
+            persist_private_ip=persist_private_ip,
+            persist_root_device=persist_root_device,
+            placement_tenancy=placement_tenancy,
+            preferred_type=preferred_type,
+            private_ip=private_ip,
+            region=region,
+            resource_tag_specifications=resource_tag_specifications,
+            revert_to_spot=revert_to_spot,
+            scheduled_tasks=scheduled_tasks,
+            security_group_ids=security_group_ids,
+            shutdown_script=shutdown_script,
+            tags=tags,
+            unhealthy_duration=unhealthy_duration,
+            user_data=user_data,
+            utilize_reserved_instances=utilize_reserved_instances,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             image_id: Optional[pulumi.Input[str]] = None,
+             instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             persist_block_devices: Optional[pulumi.Input[bool]] = None,
+             product: Optional[pulumi.Input[str]] = None,
+             subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             vpc_id: Optional[pulumi.Input[str]] = None,
+             auto_healing: Optional[pulumi.Input[bool]] = None,
+             block_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedInstanceBlockDeviceMappingArgs']]]] = None,
+             block_devices_mode: Optional[pulumi.Input[str]] = None,
+             cpu_credits: Optional[pulumi.Input[str]] = None,
+             deletes: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedInstanceDeleteArgs']]]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             draining_timeout: Optional[pulumi.Input[int]] = None,
+             ebs_optimized: Optional[pulumi.Input[bool]] = None,
+             elastic_ip: Optional[pulumi.Input[str]] = None,
+             enable_monitoring: Optional[pulumi.Input[bool]] = None,
+             fall_back_to_od: Optional[pulumi.Input[bool]] = None,
+             grace_period: Optional[pulumi.Input[int]] = None,
+             health_check_type: Optional[pulumi.Input[str]] = None,
+             iam_instance_profile: Optional[pulumi.Input[str]] = None,
+             integration_route53: Optional[pulumi.Input['ManagedInstanceIntegrationRoute53Args']] = None,
+             key_pair: Optional[pulumi.Input[str]] = None,
+             life_cycle: Optional[pulumi.Input[str]] = None,
+             load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedInstanceLoadBalancerArgs']]]] = None,
+             managed_instance_action: Optional[pulumi.Input['ManagedInstanceManagedInstanceActionArgs']] = None,
+             minimum_instance_lifetime: Optional[pulumi.Input[int]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedInstanceNetworkInterfaceArgs']]]] = None,
+             optimization_windows: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             orientation: Optional[pulumi.Input[str]] = None,
+             persist_private_ip: Optional[pulumi.Input[bool]] = None,
+             persist_root_device: Optional[pulumi.Input[bool]] = None,
+             placement_tenancy: Optional[pulumi.Input[str]] = None,
+             preferred_type: Optional[pulumi.Input[str]] = None,
+             private_ip: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             resource_tag_specifications: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedInstanceResourceTagSpecificationArgs']]]] = None,
+             revert_to_spot: Optional[pulumi.Input['ManagedInstanceRevertToSpotArgs']] = None,
+             scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedInstanceScheduledTaskArgs']]]] = None,
+             security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             shutdown_script: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedInstanceTagArgs']]]] = None,
+             unhealthy_duration: Optional[pulumi.Input[int]] = None,
+             user_data: Optional[pulumi.Input[str]] = None,
+             utilize_reserved_instances: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if image_id is None and 'imageId' in kwargs:
+            image_id = kwargs['imageId']
+        if image_id is None:
+            raise TypeError("Missing 'image_id' argument")
+        if instance_types is None and 'instanceTypes' in kwargs:
+            instance_types = kwargs['instanceTypes']
+        if instance_types is None:
+            raise TypeError("Missing 'instance_types' argument")
+        if persist_block_devices is None and 'persistBlockDevices' in kwargs:
+            persist_block_devices = kwargs['persistBlockDevices']
+        if persist_block_devices is None:
+            raise TypeError("Missing 'persist_block_devices' argument")
+        if product is None:
+            raise TypeError("Missing 'product' argument")
+        if subnet_ids is None and 'subnetIds' in kwargs:
+            subnet_ids = kwargs['subnetIds']
+        if subnet_ids is None:
+            raise TypeError("Missing 'subnet_ids' argument")
+        if vpc_id is None and 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if vpc_id is None:
+            raise TypeError("Missing 'vpc_id' argument")
+        if auto_healing is None and 'autoHealing' in kwargs:
+            auto_healing = kwargs['autoHealing']
+        if block_device_mappings is None and 'blockDeviceMappings' in kwargs:
+            block_device_mappings = kwargs['blockDeviceMappings']
+        if block_devices_mode is None and 'blockDevicesMode' in kwargs:
+            block_devices_mode = kwargs['blockDevicesMode']
+        if cpu_credits is None and 'cpuCredits' in kwargs:
+            cpu_credits = kwargs['cpuCredits']
+        if draining_timeout is None and 'drainingTimeout' in kwargs:
+            draining_timeout = kwargs['drainingTimeout']
+        if ebs_optimized is None and 'ebsOptimized' in kwargs:
+            ebs_optimized = kwargs['ebsOptimized']
+        if elastic_ip is None and 'elasticIp' in kwargs:
+            elastic_ip = kwargs['elasticIp']
+        if enable_monitoring is None and 'enableMonitoring' in kwargs:
+            enable_monitoring = kwargs['enableMonitoring']
+        if fall_back_to_od is None and 'fallBackToOd' in kwargs:
+            fall_back_to_od = kwargs['fallBackToOd']
+        if grace_period is None and 'gracePeriod' in kwargs:
+            grace_period = kwargs['gracePeriod']
+        if health_check_type is None and 'healthCheckType' in kwargs:
+            health_check_type = kwargs['healthCheckType']
+        if iam_instance_profile is None and 'iamInstanceProfile' in kwargs:
+            iam_instance_profile = kwargs['iamInstanceProfile']
+        if integration_route53 is None and 'integrationRoute53' in kwargs:
+            integration_route53 = kwargs['integrationRoute53']
+        if key_pair is None and 'keyPair' in kwargs:
+            key_pair = kwargs['keyPair']
+        if life_cycle is None and 'lifeCycle' in kwargs:
+            life_cycle = kwargs['lifeCycle']
+        if load_balancers is None and 'loadBalancers' in kwargs:
+            load_balancers = kwargs['loadBalancers']
+        if managed_instance_action is None and 'managedInstanceAction' in kwargs:
+            managed_instance_action = kwargs['managedInstanceAction']
+        if minimum_instance_lifetime is None and 'minimumInstanceLifetime' in kwargs:
+            minimum_instance_lifetime = kwargs['minimumInstanceLifetime']
+        if network_interfaces is None and 'networkInterfaces' in kwargs:
+            network_interfaces = kwargs['networkInterfaces']
+        if optimization_windows is None and 'optimizationWindows' in kwargs:
+            optimization_windows = kwargs['optimizationWindows']
+        if persist_private_ip is None and 'persistPrivateIp' in kwargs:
+            persist_private_ip = kwargs['persistPrivateIp']
+        if persist_root_device is None and 'persistRootDevice' in kwargs:
+            persist_root_device = kwargs['persistRootDevice']
+        if placement_tenancy is None and 'placementTenancy' in kwargs:
+            placement_tenancy = kwargs['placementTenancy']
+        if preferred_type is None and 'preferredType' in kwargs:
+            preferred_type = kwargs['preferredType']
+        if private_ip is None and 'privateIp' in kwargs:
+            private_ip = kwargs['privateIp']
+        if resource_tag_specifications is None and 'resourceTagSpecifications' in kwargs:
+            resource_tag_specifications = kwargs['resourceTagSpecifications']
+        if revert_to_spot is None and 'revertToSpot' in kwargs:
+            revert_to_spot = kwargs['revertToSpot']
+        if scheduled_tasks is None and 'scheduledTasks' in kwargs:
+            scheduled_tasks = kwargs['scheduledTasks']
+        if security_group_ids is None and 'securityGroupIds' in kwargs:
+            security_group_ids = kwargs['securityGroupIds']
+        if shutdown_script is None and 'shutdownScript' in kwargs:
+            shutdown_script = kwargs['shutdownScript']
+        if unhealthy_duration is None and 'unhealthyDuration' in kwargs:
+            unhealthy_duration = kwargs['unhealthyDuration']
+        if user_data is None and 'userData' in kwargs:
+            user_data = kwargs['userData']
+        if utilize_reserved_instances is None and 'utilizeReservedInstances' in kwargs:
+            utilize_reserved_instances = kwargs['utilizeReservedInstances']
+
+        _setter("image_id", image_id)
+        _setter("instance_types", instance_types)
+        _setter("persist_block_devices", persist_block_devices)
+        _setter("product", product)
+        _setter("subnet_ids", subnet_ids)
+        _setter("vpc_id", vpc_id)
         if auto_healing is not None:
-            pulumi.set(__self__, "auto_healing", auto_healing)
+            _setter("auto_healing", auto_healing)
         if block_device_mappings is not None:
-            pulumi.set(__self__, "block_device_mappings", block_device_mappings)
+            _setter("block_device_mappings", block_device_mappings)
         if block_devices_mode is not None:
-            pulumi.set(__self__, "block_devices_mode", block_devices_mode)
+            _setter("block_devices_mode", block_devices_mode)
         if cpu_credits is not None:
-            pulumi.set(__self__, "cpu_credits", cpu_credits)
+            _setter("cpu_credits", cpu_credits)
         if deletes is not None:
-            pulumi.set(__self__, "deletes", deletes)
+            _setter("deletes", deletes)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if draining_timeout is not None:
-            pulumi.set(__self__, "draining_timeout", draining_timeout)
+            _setter("draining_timeout", draining_timeout)
         if ebs_optimized is not None:
-            pulumi.set(__self__, "ebs_optimized", ebs_optimized)
+            _setter("ebs_optimized", ebs_optimized)
         if elastic_ip is not None:
-            pulumi.set(__self__, "elastic_ip", elastic_ip)
+            _setter("elastic_ip", elastic_ip)
         if enable_monitoring is not None:
-            pulumi.set(__self__, "enable_monitoring", enable_monitoring)
+            _setter("enable_monitoring", enable_monitoring)
         if fall_back_to_od is not None:
-            pulumi.set(__self__, "fall_back_to_od", fall_back_to_od)
+            _setter("fall_back_to_od", fall_back_to_od)
         if grace_period is not None:
-            pulumi.set(__self__, "grace_period", grace_period)
+            _setter("grace_period", grace_period)
         if health_check_type is not None:
-            pulumi.set(__self__, "health_check_type", health_check_type)
+            _setter("health_check_type", health_check_type)
         if iam_instance_profile is not None:
-            pulumi.set(__self__, "iam_instance_profile", iam_instance_profile)
+            _setter("iam_instance_profile", iam_instance_profile)
         if integration_route53 is not None:
-            pulumi.set(__self__, "integration_route53", integration_route53)
+            _setter("integration_route53", integration_route53)
         if key_pair is not None:
-            pulumi.set(__self__, "key_pair", key_pair)
+            _setter("key_pair", key_pair)
         if life_cycle is not None:
-            pulumi.set(__self__, "life_cycle", life_cycle)
+            _setter("life_cycle", life_cycle)
         if load_balancers is not None:
-            pulumi.set(__self__, "load_balancers", load_balancers)
+            _setter("load_balancers", load_balancers)
         if managed_instance_action is not None:
-            pulumi.set(__self__, "managed_instance_action", managed_instance_action)
+            _setter("managed_instance_action", managed_instance_action)
         if minimum_instance_lifetime is not None:
-            pulumi.set(__self__, "minimum_instance_lifetime", minimum_instance_lifetime)
+            _setter("minimum_instance_lifetime", minimum_instance_lifetime)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if network_interfaces is not None:
-            pulumi.set(__self__, "network_interfaces", network_interfaces)
+            _setter("network_interfaces", network_interfaces)
         if optimization_windows is not None:
-            pulumi.set(__self__, "optimization_windows", optimization_windows)
+            _setter("optimization_windows", optimization_windows)
         if orientation is not None:
-            pulumi.set(__self__, "orientation", orientation)
+            _setter("orientation", orientation)
         if persist_private_ip is not None:
-            pulumi.set(__self__, "persist_private_ip", persist_private_ip)
+            _setter("persist_private_ip", persist_private_ip)
         if persist_root_device is not None:
-            pulumi.set(__self__, "persist_root_device", persist_root_device)
+            _setter("persist_root_device", persist_root_device)
         if placement_tenancy is not None:
-            pulumi.set(__self__, "placement_tenancy", placement_tenancy)
+            _setter("placement_tenancy", placement_tenancy)
         if preferred_type is not None:
-            pulumi.set(__self__, "preferred_type", preferred_type)
+            _setter("preferred_type", preferred_type)
         if private_ip is not None:
-            pulumi.set(__self__, "private_ip", private_ip)
+            _setter("private_ip", private_ip)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if resource_tag_specifications is not None:
-            pulumi.set(__self__, "resource_tag_specifications", resource_tag_specifications)
+            _setter("resource_tag_specifications", resource_tag_specifications)
         if revert_to_spot is not None:
-            pulumi.set(__self__, "revert_to_spot", revert_to_spot)
+            _setter("revert_to_spot", revert_to_spot)
         if scheduled_tasks is not None:
-            pulumi.set(__self__, "scheduled_tasks", scheduled_tasks)
+            _setter("scheduled_tasks", scheduled_tasks)
         if security_group_ids is not None:
-            pulumi.set(__self__, "security_group_ids", security_group_ids)
+            _setter("security_group_ids", security_group_ids)
         if shutdown_script is not None:
-            pulumi.set(__self__, "shutdown_script", shutdown_script)
+            _setter("shutdown_script", shutdown_script)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if unhealthy_duration is not None:
-            pulumi.set(__self__, "unhealthy_duration", unhealthy_duration)
+            _setter("unhealthy_duration", unhealthy_duration)
         if user_data is not None:
-            pulumi.set(__self__, "user_data", user_data)
+            _setter("user_data", user_data)
         if utilize_reserved_instances is not None:
-            pulumi.set(__self__, "utilize_reserved_instances", utilize_reserved_instances)
+            _setter("utilize_reserved_instances", utilize_reserved_instances)
 
     @property
     @pulumi.getter(name="imageId")
@@ -606,96 +793,271 @@ class _ManagedInstanceState:
         """
         Input properties used for looking up and filtering ManagedInstance resources.
         """
+        _ManagedInstanceState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            auto_healing=auto_healing,
+            block_device_mappings=block_device_mappings,
+            block_devices_mode=block_devices_mode,
+            cpu_credits=cpu_credits,
+            deletes=deletes,
+            description=description,
+            draining_timeout=draining_timeout,
+            ebs_optimized=ebs_optimized,
+            elastic_ip=elastic_ip,
+            enable_monitoring=enable_monitoring,
+            fall_back_to_od=fall_back_to_od,
+            grace_period=grace_period,
+            health_check_type=health_check_type,
+            iam_instance_profile=iam_instance_profile,
+            image_id=image_id,
+            instance_types=instance_types,
+            integration_route53=integration_route53,
+            key_pair=key_pair,
+            life_cycle=life_cycle,
+            load_balancers=load_balancers,
+            managed_instance_action=managed_instance_action,
+            minimum_instance_lifetime=minimum_instance_lifetime,
+            name=name,
+            network_interfaces=network_interfaces,
+            optimization_windows=optimization_windows,
+            orientation=orientation,
+            persist_block_devices=persist_block_devices,
+            persist_private_ip=persist_private_ip,
+            persist_root_device=persist_root_device,
+            placement_tenancy=placement_tenancy,
+            preferred_type=preferred_type,
+            private_ip=private_ip,
+            product=product,
+            region=region,
+            resource_tag_specifications=resource_tag_specifications,
+            revert_to_spot=revert_to_spot,
+            scheduled_tasks=scheduled_tasks,
+            security_group_ids=security_group_ids,
+            shutdown_script=shutdown_script,
+            subnet_ids=subnet_ids,
+            tags=tags,
+            unhealthy_duration=unhealthy_duration,
+            user_data=user_data,
+            utilize_reserved_instances=utilize_reserved_instances,
+            vpc_id=vpc_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             auto_healing: Optional[pulumi.Input[bool]] = None,
+             block_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedInstanceBlockDeviceMappingArgs']]]] = None,
+             block_devices_mode: Optional[pulumi.Input[str]] = None,
+             cpu_credits: Optional[pulumi.Input[str]] = None,
+             deletes: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedInstanceDeleteArgs']]]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             draining_timeout: Optional[pulumi.Input[int]] = None,
+             ebs_optimized: Optional[pulumi.Input[bool]] = None,
+             elastic_ip: Optional[pulumi.Input[str]] = None,
+             enable_monitoring: Optional[pulumi.Input[bool]] = None,
+             fall_back_to_od: Optional[pulumi.Input[bool]] = None,
+             grace_period: Optional[pulumi.Input[int]] = None,
+             health_check_type: Optional[pulumi.Input[str]] = None,
+             iam_instance_profile: Optional[pulumi.Input[str]] = None,
+             image_id: Optional[pulumi.Input[str]] = None,
+             instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             integration_route53: Optional[pulumi.Input['ManagedInstanceIntegrationRoute53Args']] = None,
+             key_pair: Optional[pulumi.Input[str]] = None,
+             life_cycle: Optional[pulumi.Input[str]] = None,
+             load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedInstanceLoadBalancerArgs']]]] = None,
+             managed_instance_action: Optional[pulumi.Input['ManagedInstanceManagedInstanceActionArgs']] = None,
+             minimum_instance_lifetime: Optional[pulumi.Input[int]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedInstanceNetworkInterfaceArgs']]]] = None,
+             optimization_windows: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             orientation: Optional[pulumi.Input[str]] = None,
+             persist_block_devices: Optional[pulumi.Input[bool]] = None,
+             persist_private_ip: Optional[pulumi.Input[bool]] = None,
+             persist_root_device: Optional[pulumi.Input[bool]] = None,
+             placement_tenancy: Optional[pulumi.Input[str]] = None,
+             preferred_type: Optional[pulumi.Input[str]] = None,
+             private_ip: Optional[pulumi.Input[str]] = None,
+             product: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             resource_tag_specifications: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedInstanceResourceTagSpecificationArgs']]]] = None,
+             revert_to_spot: Optional[pulumi.Input['ManagedInstanceRevertToSpotArgs']] = None,
+             scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedInstanceScheduledTaskArgs']]]] = None,
+             security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             shutdown_script: Optional[pulumi.Input[str]] = None,
+             subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedInstanceTagArgs']]]] = None,
+             unhealthy_duration: Optional[pulumi.Input[int]] = None,
+             user_data: Optional[pulumi.Input[str]] = None,
+             utilize_reserved_instances: Optional[pulumi.Input[bool]] = None,
+             vpc_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if auto_healing is None and 'autoHealing' in kwargs:
+            auto_healing = kwargs['autoHealing']
+        if block_device_mappings is None and 'blockDeviceMappings' in kwargs:
+            block_device_mappings = kwargs['blockDeviceMappings']
+        if block_devices_mode is None and 'blockDevicesMode' in kwargs:
+            block_devices_mode = kwargs['blockDevicesMode']
+        if cpu_credits is None and 'cpuCredits' in kwargs:
+            cpu_credits = kwargs['cpuCredits']
+        if draining_timeout is None and 'drainingTimeout' in kwargs:
+            draining_timeout = kwargs['drainingTimeout']
+        if ebs_optimized is None and 'ebsOptimized' in kwargs:
+            ebs_optimized = kwargs['ebsOptimized']
+        if elastic_ip is None and 'elasticIp' in kwargs:
+            elastic_ip = kwargs['elasticIp']
+        if enable_monitoring is None and 'enableMonitoring' in kwargs:
+            enable_monitoring = kwargs['enableMonitoring']
+        if fall_back_to_od is None and 'fallBackToOd' in kwargs:
+            fall_back_to_od = kwargs['fallBackToOd']
+        if grace_period is None and 'gracePeriod' in kwargs:
+            grace_period = kwargs['gracePeriod']
+        if health_check_type is None and 'healthCheckType' in kwargs:
+            health_check_type = kwargs['healthCheckType']
+        if iam_instance_profile is None and 'iamInstanceProfile' in kwargs:
+            iam_instance_profile = kwargs['iamInstanceProfile']
+        if image_id is None and 'imageId' in kwargs:
+            image_id = kwargs['imageId']
+        if instance_types is None and 'instanceTypes' in kwargs:
+            instance_types = kwargs['instanceTypes']
+        if integration_route53 is None and 'integrationRoute53' in kwargs:
+            integration_route53 = kwargs['integrationRoute53']
+        if key_pair is None and 'keyPair' in kwargs:
+            key_pair = kwargs['keyPair']
+        if life_cycle is None and 'lifeCycle' in kwargs:
+            life_cycle = kwargs['lifeCycle']
+        if load_balancers is None and 'loadBalancers' in kwargs:
+            load_balancers = kwargs['loadBalancers']
+        if managed_instance_action is None and 'managedInstanceAction' in kwargs:
+            managed_instance_action = kwargs['managedInstanceAction']
+        if minimum_instance_lifetime is None and 'minimumInstanceLifetime' in kwargs:
+            minimum_instance_lifetime = kwargs['minimumInstanceLifetime']
+        if network_interfaces is None and 'networkInterfaces' in kwargs:
+            network_interfaces = kwargs['networkInterfaces']
+        if optimization_windows is None and 'optimizationWindows' in kwargs:
+            optimization_windows = kwargs['optimizationWindows']
+        if persist_block_devices is None and 'persistBlockDevices' in kwargs:
+            persist_block_devices = kwargs['persistBlockDevices']
+        if persist_private_ip is None and 'persistPrivateIp' in kwargs:
+            persist_private_ip = kwargs['persistPrivateIp']
+        if persist_root_device is None and 'persistRootDevice' in kwargs:
+            persist_root_device = kwargs['persistRootDevice']
+        if placement_tenancy is None and 'placementTenancy' in kwargs:
+            placement_tenancy = kwargs['placementTenancy']
+        if preferred_type is None and 'preferredType' in kwargs:
+            preferred_type = kwargs['preferredType']
+        if private_ip is None and 'privateIp' in kwargs:
+            private_ip = kwargs['privateIp']
+        if resource_tag_specifications is None and 'resourceTagSpecifications' in kwargs:
+            resource_tag_specifications = kwargs['resourceTagSpecifications']
+        if revert_to_spot is None and 'revertToSpot' in kwargs:
+            revert_to_spot = kwargs['revertToSpot']
+        if scheduled_tasks is None and 'scheduledTasks' in kwargs:
+            scheduled_tasks = kwargs['scheduledTasks']
+        if security_group_ids is None and 'securityGroupIds' in kwargs:
+            security_group_ids = kwargs['securityGroupIds']
+        if shutdown_script is None and 'shutdownScript' in kwargs:
+            shutdown_script = kwargs['shutdownScript']
+        if subnet_ids is None and 'subnetIds' in kwargs:
+            subnet_ids = kwargs['subnetIds']
+        if unhealthy_duration is None and 'unhealthyDuration' in kwargs:
+            unhealthy_duration = kwargs['unhealthyDuration']
+        if user_data is None and 'userData' in kwargs:
+            user_data = kwargs['userData']
+        if utilize_reserved_instances is None and 'utilizeReservedInstances' in kwargs:
+            utilize_reserved_instances = kwargs['utilizeReservedInstances']
+        if vpc_id is None and 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+
         if auto_healing is not None:
-            pulumi.set(__self__, "auto_healing", auto_healing)
+            _setter("auto_healing", auto_healing)
         if block_device_mappings is not None:
-            pulumi.set(__self__, "block_device_mappings", block_device_mappings)
+            _setter("block_device_mappings", block_device_mappings)
         if block_devices_mode is not None:
-            pulumi.set(__self__, "block_devices_mode", block_devices_mode)
+            _setter("block_devices_mode", block_devices_mode)
         if cpu_credits is not None:
-            pulumi.set(__self__, "cpu_credits", cpu_credits)
+            _setter("cpu_credits", cpu_credits)
         if deletes is not None:
-            pulumi.set(__self__, "deletes", deletes)
+            _setter("deletes", deletes)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if draining_timeout is not None:
-            pulumi.set(__self__, "draining_timeout", draining_timeout)
+            _setter("draining_timeout", draining_timeout)
         if ebs_optimized is not None:
-            pulumi.set(__self__, "ebs_optimized", ebs_optimized)
+            _setter("ebs_optimized", ebs_optimized)
         if elastic_ip is not None:
-            pulumi.set(__self__, "elastic_ip", elastic_ip)
+            _setter("elastic_ip", elastic_ip)
         if enable_monitoring is not None:
-            pulumi.set(__self__, "enable_monitoring", enable_monitoring)
+            _setter("enable_monitoring", enable_monitoring)
         if fall_back_to_od is not None:
-            pulumi.set(__self__, "fall_back_to_od", fall_back_to_od)
+            _setter("fall_back_to_od", fall_back_to_od)
         if grace_period is not None:
-            pulumi.set(__self__, "grace_period", grace_period)
+            _setter("grace_period", grace_period)
         if health_check_type is not None:
-            pulumi.set(__self__, "health_check_type", health_check_type)
+            _setter("health_check_type", health_check_type)
         if iam_instance_profile is not None:
-            pulumi.set(__self__, "iam_instance_profile", iam_instance_profile)
+            _setter("iam_instance_profile", iam_instance_profile)
         if image_id is not None:
-            pulumi.set(__self__, "image_id", image_id)
+            _setter("image_id", image_id)
         if instance_types is not None:
-            pulumi.set(__self__, "instance_types", instance_types)
+            _setter("instance_types", instance_types)
         if integration_route53 is not None:
-            pulumi.set(__self__, "integration_route53", integration_route53)
+            _setter("integration_route53", integration_route53)
         if key_pair is not None:
-            pulumi.set(__self__, "key_pair", key_pair)
+            _setter("key_pair", key_pair)
         if life_cycle is not None:
-            pulumi.set(__self__, "life_cycle", life_cycle)
+            _setter("life_cycle", life_cycle)
         if load_balancers is not None:
-            pulumi.set(__self__, "load_balancers", load_balancers)
+            _setter("load_balancers", load_balancers)
         if managed_instance_action is not None:
-            pulumi.set(__self__, "managed_instance_action", managed_instance_action)
+            _setter("managed_instance_action", managed_instance_action)
         if minimum_instance_lifetime is not None:
-            pulumi.set(__self__, "minimum_instance_lifetime", minimum_instance_lifetime)
+            _setter("minimum_instance_lifetime", minimum_instance_lifetime)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if network_interfaces is not None:
-            pulumi.set(__self__, "network_interfaces", network_interfaces)
+            _setter("network_interfaces", network_interfaces)
         if optimization_windows is not None:
-            pulumi.set(__self__, "optimization_windows", optimization_windows)
+            _setter("optimization_windows", optimization_windows)
         if orientation is not None:
-            pulumi.set(__self__, "orientation", orientation)
+            _setter("orientation", orientation)
         if persist_block_devices is not None:
-            pulumi.set(__self__, "persist_block_devices", persist_block_devices)
+            _setter("persist_block_devices", persist_block_devices)
         if persist_private_ip is not None:
-            pulumi.set(__self__, "persist_private_ip", persist_private_ip)
+            _setter("persist_private_ip", persist_private_ip)
         if persist_root_device is not None:
-            pulumi.set(__self__, "persist_root_device", persist_root_device)
+            _setter("persist_root_device", persist_root_device)
         if placement_tenancy is not None:
-            pulumi.set(__self__, "placement_tenancy", placement_tenancy)
+            _setter("placement_tenancy", placement_tenancy)
         if preferred_type is not None:
-            pulumi.set(__self__, "preferred_type", preferred_type)
+            _setter("preferred_type", preferred_type)
         if private_ip is not None:
-            pulumi.set(__self__, "private_ip", private_ip)
+            _setter("private_ip", private_ip)
         if product is not None:
-            pulumi.set(__self__, "product", product)
+            _setter("product", product)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if resource_tag_specifications is not None:
-            pulumi.set(__self__, "resource_tag_specifications", resource_tag_specifications)
+            _setter("resource_tag_specifications", resource_tag_specifications)
         if revert_to_spot is not None:
-            pulumi.set(__self__, "revert_to_spot", revert_to_spot)
+            _setter("revert_to_spot", revert_to_spot)
         if scheduled_tasks is not None:
-            pulumi.set(__self__, "scheduled_tasks", scheduled_tasks)
+            _setter("scheduled_tasks", scheduled_tasks)
         if security_group_ids is not None:
-            pulumi.set(__self__, "security_group_ids", security_group_ids)
+            _setter("security_group_ids", security_group_ids)
         if shutdown_script is not None:
-            pulumi.set(__self__, "shutdown_script", shutdown_script)
+            _setter("shutdown_script", shutdown_script)
         if subnet_ids is not None:
-            pulumi.set(__self__, "subnet_ids", subnet_ids)
+            _setter("subnet_ids", subnet_ids)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if unhealthy_duration is not None:
-            pulumi.set(__self__, "unhealthy_duration", unhealthy_duration)
+            _setter("unhealthy_duration", unhealthy_duration)
         if user_data is not None:
-            pulumi.set(__self__, "user_data", user_data)
+            _setter("user_data", user_data)
         if utilize_reserved_instances is not None:
-            pulumi.set(__self__, "utilize_reserved_instances", utilize_reserved_instances)
+            _setter("utilize_reserved_instances", utilize_reserved_instances)
         if vpc_id is not None:
-            pulumi.set(__self__, "vpc_id", vpc_id)
+            _setter("vpc_id", vpc_id)
 
     @property
     @pulumi.getter(name="autoHealing")
@@ -1177,6 +1539,10 @@ class ManagedInstance(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ManagedInstanceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -1256,10 +1622,20 @@ class ManagedInstance(pulumi.CustomResource):
             if instance_types is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_types'")
             __props__.__dict__["instance_types"] = instance_types
+            if integration_route53 is not None and not isinstance(integration_route53, ManagedInstanceIntegrationRoute53Args):
+                integration_route53 = integration_route53 or {}
+                def _setter(key, value):
+                    integration_route53[key] = value
+                ManagedInstanceIntegrationRoute53Args._configure(_setter, **integration_route53)
             __props__.__dict__["integration_route53"] = integration_route53
             __props__.__dict__["key_pair"] = key_pair
             __props__.__dict__["life_cycle"] = life_cycle
             __props__.__dict__["load_balancers"] = load_balancers
+            if managed_instance_action is not None and not isinstance(managed_instance_action, ManagedInstanceManagedInstanceActionArgs):
+                managed_instance_action = managed_instance_action or {}
+                def _setter(key, value):
+                    managed_instance_action[key] = value
+                ManagedInstanceManagedInstanceActionArgs._configure(_setter, **managed_instance_action)
             __props__.__dict__["managed_instance_action"] = managed_instance_action
             __props__.__dict__["minimum_instance_lifetime"] = minimum_instance_lifetime
             __props__.__dict__["name"] = name
@@ -1279,6 +1655,11 @@ class ManagedInstance(pulumi.CustomResource):
             __props__.__dict__["product"] = product
             __props__.__dict__["region"] = region
             __props__.__dict__["resource_tag_specifications"] = resource_tag_specifications
+            if revert_to_spot is not None and not isinstance(revert_to_spot, ManagedInstanceRevertToSpotArgs):
+                revert_to_spot = revert_to_spot or {}
+                def _setter(key, value):
+                    revert_to_spot[key] = value
+                ManagedInstanceRevertToSpotArgs._configure(_setter, **revert_to_spot)
             __props__.__dict__["revert_to_spot"] = revert_to_spot
             __props__.__dict__["scheduled_tasks"] = scheduled_tasks
             __props__.__dict__["security_group_ids"] = security_group_ids

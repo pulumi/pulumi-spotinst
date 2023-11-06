@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -34,17 +34,52 @@ class UserArgs:
         :param pulumi.Input[str] role: User's role.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] user_group_ids: A list of the user groups to register the given user to (should be existing user groups only)
         """
-        pulumi.set(__self__, "email", email)
-        pulumi.set(__self__, "first_name", first_name)
-        pulumi.set(__self__, "last_name", last_name)
+        UserArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            email=email,
+            first_name=first_name,
+            last_name=last_name,
+            password=password,
+            policies=policies,
+            role=role,
+            user_group_ids=user_group_ids,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             email: Optional[pulumi.Input[str]] = None,
+             first_name: Optional[pulumi.Input[str]] = None,
+             last_name: Optional[pulumi.Input[str]] = None,
+             password: Optional[pulumi.Input[str]] = None,
+             policies: Optional[pulumi.Input[Sequence[pulumi.Input['UserPolicyArgs']]]] = None,
+             role: Optional[pulumi.Input[str]] = None,
+             user_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if email is None:
+            raise TypeError("Missing 'email' argument")
+        if first_name is None and 'firstName' in kwargs:
+            first_name = kwargs['firstName']
+        if first_name is None:
+            raise TypeError("Missing 'first_name' argument")
+        if last_name is None and 'lastName' in kwargs:
+            last_name = kwargs['lastName']
+        if last_name is None:
+            raise TypeError("Missing 'last_name' argument")
+        if user_group_ids is None and 'userGroupIds' in kwargs:
+            user_group_ids = kwargs['userGroupIds']
+
+        _setter("email", email)
+        _setter("first_name", first_name)
+        _setter("last_name", last_name)
         if password is not None:
-            pulumi.set(__self__, "password", password)
+            _setter("password", password)
         if policies is not None:
-            pulumi.set(__self__, "policies", policies)
+            _setter("policies", policies)
         if role is not None:
-            pulumi.set(__self__, "role", role)
+            _setter("role", role)
         if user_group_ids is not None:
-            pulumi.set(__self__, "user_group_ids", user_group_ids)
+            _setter("user_group_ids", user_group_ids)
 
     @property
     @pulumi.getter
@@ -153,20 +188,49 @@ class _UserState:
         :param pulumi.Input[str] role: User's role.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] user_group_ids: A list of the user groups to register the given user to (should be existing user groups only)
         """
+        _UserState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            email=email,
+            first_name=first_name,
+            last_name=last_name,
+            password=password,
+            policies=policies,
+            role=role,
+            user_group_ids=user_group_ids,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             email: Optional[pulumi.Input[str]] = None,
+             first_name: Optional[pulumi.Input[str]] = None,
+             last_name: Optional[pulumi.Input[str]] = None,
+             password: Optional[pulumi.Input[str]] = None,
+             policies: Optional[pulumi.Input[Sequence[pulumi.Input['UserPolicyArgs']]]] = None,
+             role: Optional[pulumi.Input[str]] = None,
+             user_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if first_name is None and 'firstName' in kwargs:
+            first_name = kwargs['firstName']
+        if last_name is None and 'lastName' in kwargs:
+            last_name = kwargs['lastName']
+        if user_group_ids is None and 'userGroupIds' in kwargs:
+            user_group_ids = kwargs['userGroupIds']
+
         if email is not None:
-            pulumi.set(__self__, "email", email)
+            _setter("email", email)
         if first_name is not None:
-            pulumi.set(__self__, "first_name", first_name)
+            _setter("first_name", first_name)
         if last_name is not None:
-            pulumi.set(__self__, "last_name", last_name)
+            _setter("last_name", last_name)
         if password is not None:
-            pulumi.set(__self__, "password", password)
+            _setter("password", password)
         if policies is not None:
-            pulumi.set(__self__, "policies", policies)
+            _setter("policies", policies)
         if role is not None:
-            pulumi.set(__self__, "role", role)
+            _setter("role", role)
         if user_group_ids is not None:
-            pulumi.set(__self__, "user_group_ids", user_group_ids)
+            _setter("user_group_ids", user_group_ids)
 
     @property
     @pulumi.getter
@@ -344,6 +408,10 @@ class User(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            UserArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -44,26 +44,91 @@ class BeanstalkArgs:
         :param pulumi.Input['BeanstalkManagedActionsArgs'] managed_actions: Managed Actions parameters
         :param pulumi.Input[str] name: The group name.
         """
-        pulumi.set(__self__, "desired_capacity", desired_capacity)
-        pulumi.set(__self__, "instance_types_spots", instance_types_spots)
-        pulumi.set(__self__, "max_size", max_size)
-        pulumi.set(__self__, "min_size", min_size)
-        pulumi.set(__self__, "product", product)
-        pulumi.set(__self__, "region", region)
+        BeanstalkArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            desired_capacity=desired_capacity,
+            instance_types_spots=instance_types_spots,
+            max_size=max_size,
+            min_size=min_size,
+            product=product,
+            region=region,
+            beanstalk_environment_id=beanstalk_environment_id,
+            beanstalk_environment_name=beanstalk_environment_name,
+            deployment_preferences=deployment_preferences,
+            maintenance=maintenance,
+            managed_actions=managed_actions,
+            name=name,
+            scheduled_tasks=scheduled_tasks,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             desired_capacity: Optional[pulumi.Input[int]] = None,
+             instance_types_spots: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             max_size: Optional[pulumi.Input[int]] = None,
+             min_size: Optional[pulumi.Input[int]] = None,
+             product: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             beanstalk_environment_id: Optional[pulumi.Input[str]] = None,
+             beanstalk_environment_name: Optional[pulumi.Input[str]] = None,
+             deployment_preferences: Optional[pulumi.Input['BeanstalkDeploymentPreferencesArgs']] = None,
+             maintenance: Optional[pulumi.Input[str]] = None,
+             managed_actions: Optional[pulumi.Input['BeanstalkManagedActionsArgs']] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input['BeanstalkScheduledTaskArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if desired_capacity is None and 'desiredCapacity' in kwargs:
+            desired_capacity = kwargs['desiredCapacity']
+        if desired_capacity is None:
+            raise TypeError("Missing 'desired_capacity' argument")
+        if instance_types_spots is None and 'instanceTypesSpots' in kwargs:
+            instance_types_spots = kwargs['instanceTypesSpots']
+        if instance_types_spots is None:
+            raise TypeError("Missing 'instance_types_spots' argument")
+        if max_size is None and 'maxSize' in kwargs:
+            max_size = kwargs['maxSize']
+        if max_size is None:
+            raise TypeError("Missing 'max_size' argument")
+        if min_size is None and 'minSize' in kwargs:
+            min_size = kwargs['minSize']
+        if min_size is None:
+            raise TypeError("Missing 'min_size' argument")
+        if product is None:
+            raise TypeError("Missing 'product' argument")
+        if region is None:
+            raise TypeError("Missing 'region' argument")
+        if beanstalk_environment_id is None and 'beanstalkEnvironmentId' in kwargs:
+            beanstalk_environment_id = kwargs['beanstalkEnvironmentId']
+        if beanstalk_environment_name is None and 'beanstalkEnvironmentName' in kwargs:
+            beanstalk_environment_name = kwargs['beanstalkEnvironmentName']
+        if deployment_preferences is None and 'deploymentPreferences' in kwargs:
+            deployment_preferences = kwargs['deploymentPreferences']
+        if managed_actions is None and 'managedActions' in kwargs:
+            managed_actions = kwargs['managedActions']
+        if scheduled_tasks is None and 'scheduledTasks' in kwargs:
+            scheduled_tasks = kwargs['scheduledTasks']
+
+        _setter("desired_capacity", desired_capacity)
+        _setter("instance_types_spots", instance_types_spots)
+        _setter("max_size", max_size)
+        _setter("min_size", min_size)
+        _setter("product", product)
+        _setter("region", region)
         if beanstalk_environment_id is not None:
-            pulumi.set(__self__, "beanstalk_environment_id", beanstalk_environment_id)
+            _setter("beanstalk_environment_id", beanstalk_environment_id)
         if beanstalk_environment_name is not None:
-            pulumi.set(__self__, "beanstalk_environment_name", beanstalk_environment_name)
+            _setter("beanstalk_environment_name", beanstalk_environment_name)
         if deployment_preferences is not None:
-            pulumi.set(__self__, "deployment_preferences", deployment_preferences)
+            _setter("deployment_preferences", deployment_preferences)
         if maintenance is not None:
-            pulumi.set(__self__, "maintenance", maintenance)
+            _setter("maintenance", maintenance)
         if managed_actions is not None:
-            pulumi.set(__self__, "managed_actions", managed_actions)
+            _setter("managed_actions", managed_actions)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if scheduled_tasks is not None:
-            pulumi.set(__self__, "scheduled_tasks", scheduled_tasks)
+            _setter("scheduled_tasks", scheduled_tasks)
 
     @property
     @pulumi.getter(name="desiredCapacity")
@@ -248,32 +313,85 @@ class _BeanstalkState:
                For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
         :param pulumi.Input[str] region: The AWS region your group will be created in. Cannot be changed after the group has been created.
         """
+        _BeanstalkState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            beanstalk_environment_id=beanstalk_environment_id,
+            beanstalk_environment_name=beanstalk_environment_name,
+            deployment_preferences=deployment_preferences,
+            desired_capacity=desired_capacity,
+            instance_types_spots=instance_types_spots,
+            maintenance=maintenance,
+            managed_actions=managed_actions,
+            max_size=max_size,
+            min_size=min_size,
+            name=name,
+            product=product,
+            region=region,
+            scheduled_tasks=scheduled_tasks,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             beanstalk_environment_id: Optional[pulumi.Input[str]] = None,
+             beanstalk_environment_name: Optional[pulumi.Input[str]] = None,
+             deployment_preferences: Optional[pulumi.Input['BeanstalkDeploymentPreferencesArgs']] = None,
+             desired_capacity: Optional[pulumi.Input[int]] = None,
+             instance_types_spots: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             maintenance: Optional[pulumi.Input[str]] = None,
+             managed_actions: Optional[pulumi.Input['BeanstalkManagedActionsArgs']] = None,
+             max_size: Optional[pulumi.Input[int]] = None,
+             min_size: Optional[pulumi.Input[int]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             product: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             scheduled_tasks: Optional[pulumi.Input[Sequence[pulumi.Input['BeanstalkScheduledTaskArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if beanstalk_environment_id is None and 'beanstalkEnvironmentId' in kwargs:
+            beanstalk_environment_id = kwargs['beanstalkEnvironmentId']
+        if beanstalk_environment_name is None and 'beanstalkEnvironmentName' in kwargs:
+            beanstalk_environment_name = kwargs['beanstalkEnvironmentName']
+        if deployment_preferences is None and 'deploymentPreferences' in kwargs:
+            deployment_preferences = kwargs['deploymentPreferences']
+        if desired_capacity is None and 'desiredCapacity' in kwargs:
+            desired_capacity = kwargs['desiredCapacity']
+        if instance_types_spots is None and 'instanceTypesSpots' in kwargs:
+            instance_types_spots = kwargs['instanceTypesSpots']
+        if managed_actions is None and 'managedActions' in kwargs:
+            managed_actions = kwargs['managedActions']
+        if max_size is None and 'maxSize' in kwargs:
+            max_size = kwargs['maxSize']
+        if min_size is None and 'minSize' in kwargs:
+            min_size = kwargs['minSize']
+        if scheduled_tasks is None and 'scheduledTasks' in kwargs:
+            scheduled_tasks = kwargs['scheduledTasks']
+
         if beanstalk_environment_id is not None:
-            pulumi.set(__self__, "beanstalk_environment_id", beanstalk_environment_id)
+            _setter("beanstalk_environment_id", beanstalk_environment_id)
         if beanstalk_environment_name is not None:
-            pulumi.set(__self__, "beanstalk_environment_name", beanstalk_environment_name)
+            _setter("beanstalk_environment_name", beanstalk_environment_name)
         if deployment_preferences is not None:
-            pulumi.set(__self__, "deployment_preferences", deployment_preferences)
+            _setter("deployment_preferences", deployment_preferences)
         if desired_capacity is not None:
-            pulumi.set(__self__, "desired_capacity", desired_capacity)
+            _setter("desired_capacity", desired_capacity)
         if instance_types_spots is not None:
-            pulumi.set(__self__, "instance_types_spots", instance_types_spots)
+            _setter("instance_types_spots", instance_types_spots)
         if maintenance is not None:
-            pulumi.set(__self__, "maintenance", maintenance)
+            _setter("maintenance", maintenance)
         if managed_actions is not None:
-            pulumi.set(__self__, "managed_actions", managed_actions)
+            _setter("managed_actions", managed_actions)
         if max_size is not None:
-            pulumi.set(__self__, "max_size", max_size)
+            _setter("max_size", max_size)
         if min_size is not None:
-            pulumi.set(__self__, "min_size", min_size)
+            _setter("min_size", min_size)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if product is not None:
-            pulumi.set(__self__, "product", product)
+            _setter("product", product)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if scheduled_tasks is not None:
-            pulumi.set(__self__, "scheduled_tasks", scheduled_tasks)
+            _setter("scheduled_tasks", scheduled_tasks)
 
     @property
     @pulumi.getter(name="beanstalkEnvironmentId")
@@ -557,6 +675,10 @@ class Beanstalk(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            BeanstalkArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -586,6 +708,11 @@ class Beanstalk(pulumi.CustomResource):
 
             __props__.__dict__["beanstalk_environment_id"] = beanstalk_environment_id
             __props__.__dict__["beanstalk_environment_name"] = beanstalk_environment_name
+            if deployment_preferences is not None and not isinstance(deployment_preferences, BeanstalkDeploymentPreferencesArgs):
+                deployment_preferences = deployment_preferences or {}
+                def _setter(key, value):
+                    deployment_preferences[key] = value
+                BeanstalkDeploymentPreferencesArgs._configure(_setter, **deployment_preferences)
             __props__.__dict__["deployment_preferences"] = deployment_preferences
             if desired_capacity is None and not opts.urn:
                 raise TypeError("Missing required property 'desired_capacity'")
@@ -594,6 +721,11 @@ class Beanstalk(pulumi.CustomResource):
                 raise TypeError("Missing required property 'instance_types_spots'")
             __props__.__dict__["instance_types_spots"] = instance_types_spots
             __props__.__dict__["maintenance"] = maintenance
+            if managed_actions is not None and not isinstance(managed_actions, BeanstalkManagedActionsArgs):
+                managed_actions = managed_actions or {}
+                def _setter(key, value):
+                    managed_actions[key] = value
+                BeanstalkManagedActionsArgs._configure(_setter, **managed_actions)
             __props__.__dict__["managed_actions"] = managed_actions
             if max_size is None and not opts.urn:
                 raise TypeError("Missing required property 'max_size'")

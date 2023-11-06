@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['OceanLaunchSpecImportArgs', 'OceanLaunchSpecImport']
@@ -21,8 +21,29 @@ class OceanLaunchSpecImportArgs:
         :param pulumi.Input[str] node_pool_name: The node pool you wish to use in your launchSpec.
         :param pulumi.Input[str] ocean_id: The Ocean cluster ID required for launchSpec create.
         """
-        pulumi.set(__self__, "node_pool_name", node_pool_name)
-        pulumi.set(__self__, "ocean_id", ocean_id)
+        OceanLaunchSpecImportArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            node_pool_name=node_pool_name,
+            ocean_id=ocean_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             node_pool_name: Optional[pulumi.Input[str]] = None,
+             ocean_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if node_pool_name is None and 'nodePoolName' in kwargs:
+            node_pool_name = kwargs['nodePoolName']
+        if node_pool_name is None:
+            raise TypeError("Missing 'node_pool_name' argument")
+        if ocean_id is None and 'oceanId' in kwargs:
+            ocean_id = kwargs['oceanId']
+        if ocean_id is None:
+            raise TypeError("Missing 'ocean_id' argument")
+
+        _setter("node_pool_name", node_pool_name)
+        _setter("ocean_id", ocean_id)
 
     @property
     @pulumi.getter(name="nodePoolName")
@@ -59,10 +80,27 @@ class _OceanLaunchSpecImportState:
         :param pulumi.Input[str] node_pool_name: The node pool you wish to use in your launchSpec.
         :param pulumi.Input[str] ocean_id: The Ocean cluster ID required for launchSpec create.
         """
+        _OceanLaunchSpecImportState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            node_pool_name=node_pool_name,
+            ocean_id=ocean_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             node_pool_name: Optional[pulumi.Input[str]] = None,
+             ocean_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if node_pool_name is None and 'nodePoolName' in kwargs:
+            node_pool_name = kwargs['nodePoolName']
+        if ocean_id is None and 'oceanId' in kwargs:
+            ocean_id = kwargs['oceanId']
+
         if node_pool_name is not None:
-            pulumi.set(__self__, "node_pool_name", node_pool_name)
+            _setter("node_pool_name", node_pool_name)
         if ocean_id is not None:
-            pulumi.set(__self__, "ocean_id", ocean_id)
+            _setter("ocean_id", ocean_id)
 
     @property
     @pulumi.getter(name="nodePoolName")
@@ -156,6 +194,10 @@ class OceanLaunchSpecImport(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            OceanLaunchSpecImportArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

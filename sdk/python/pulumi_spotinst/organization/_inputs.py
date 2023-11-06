@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -25,7 +25,20 @@ class PolicyPolicyContentArgs:
         """
         :param pulumi.Input[Sequence[pulumi.Input['PolicyPolicyContentStatementArgs']]] statements: List of permissions statements.
         """
-        pulumi.set(__self__, "statements", statements)
+        PolicyPolicyContentArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            statements=statements,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             statements: Optional[pulumi.Input[Sequence[pulumi.Input['PolicyPolicyContentStatementArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if statements is None:
+            raise TypeError("Missing 'statements' argument")
+
+        _setter("statements", statements)
 
     @property
     @pulumi.getter
@@ -52,9 +65,30 @@ class PolicyPolicyContentStatementArgs:
         :param pulumi.Input[str] effect: Valid values "ALLOW", "DENY".
         :param pulumi.Input[Sequence[pulumi.Input[str]]] resources: Set a list of resources IDs. In order to include all resources in this statement - use "*".
         """
-        pulumi.set(__self__, "actions", actions)
-        pulumi.set(__self__, "effect", effect)
-        pulumi.set(__self__, "resources", resources)
+        PolicyPolicyContentStatementArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            actions=actions,
+            effect=effect,
+            resources=resources,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             actions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             effect: Optional[pulumi.Input[str]] = None,
+             resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if actions is None:
+            raise TypeError("Missing 'actions' argument")
+        if effect is None:
+            raise TypeError("Missing 'effect' argument")
+        if resources is None:
+            raise TypeError("Missing 'resources' argument")
+
+        _setter("actions", actions)
+        _setter("effect", effect)
+        _setter("resources", resources)
 
     @property
     @pulumi.getter
@@ -104,8 +138,29 @@ class ProgrammaticUserAccountArgs:
         :param pulumi.Input[str] account_role: (Enum: `"viewer", "editor") Role to be associated with the
                programmatic user for this account.
         """
-        pulumi.set(__self__, "account_id", account_id)
-        pulumi.set(__self__, "account_role", account_role)
+        ProgrammaticUserAccountArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_id=account_id,
+            account_role=account_role,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_id: Optional[pulumi.Input[str]] = None,
+             account_role: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if account_id is None and 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if account_id is None:
+            raise TypeError("Missing 'account_id' argument")
+        if account_role is None and 'accountRole' in kwargs:
+            account_role = kwargs['accountRole']
+        if account_role is None:
+            raise TypeError("Missing 'account_role' argument")
+
+        _setter("account_id", account_id)
+        _setter("account_role", account_role)
 
     @property
     @pulumi.getter(name="accountId")
@@ -143,8 +198,29 @@ class ProgrammaticUserPolicyArgs:
                enforced for the user.
         :param pulumi.Input[str] policy_id: Policy ID the programmatic user will have access to.
         """
-        pulumi.set(__self__, "policy_account_ids", policy_account_ids)
-        pulumi.set(__self__, "policy_id", policy_id)
+        ProgrammaticUserPolicyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            policy_account_ids=policy_account_ids,
+            policy_id=policy_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             policy_account_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             policy_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if policy_account_ids is None and 'policyAccountIds' in kwargs:
+            policy_account_ids = kwargs['policyAccountIds']
+        if policy_account_ids is None:
+            raise TypeError("Missing 'policy_account_ids' argument")
+        if policy_id is None and 'policyId' in kwargs:
+            policy_id = kwargs['policyId']
+        if policy_id is None:
+            raise TypeError("Missing 'policy_id' argument")
+
+        _setter("policy_account_ids", policy_account_ids)
+        _setter("policy_id", policy_id)
 
     @property
     @pulumi.getter(name="policyAccountIds")
@@ -183,8 +259,29 @@ class UserGroupPolicyArgs:
         :param pulumi.Input[str] policy_id: A policy to register under the given group
                (should be existing policy only).
         """
-        pulumi.set(__self__, "account_ids", account_ids)
-        pulumi.set(__self__, "policy_id", policy_id)
+        UserGroupPolicyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_ids=account_ids,
+            policy_id=policy_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             policy_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if account_ids is None and 'accountIds' in kwargs:
+            account_ids = kwargs['accountIds']
+        if account_ids is None:
+            raise TypeError("Missing 'account_ids' argument")
+        if policy_id is None and 'policyId' in kwargs:
+            policy_id = kwargs['policyId']
+        if policy_id is None:
+            raise TypeError("Missing 'policy_id' argument")
+
+        _setter("account_ids", account_ids)
+        _setter("policy_id", policy_id)
 
     @property
     @pulumi.getter(name="accountIds")
@@ -222,8 +319,29 @@ class UserPolicyArgs:
         :param pulumi.Input[str] policy_id: A policy to register under the given group
                (should be existing policy only).
         """
-        pulumi.set(__self__, "policy_account_ids", policy_account_ids)
-        pulumi.set(__self__, "policy_id", policy_id)
+        UserPolicyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            policy_account_ids=policy_account_ids,
+            policy_id=policy_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             policy_account_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             policy_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if policy_account_ids is None and 'policyAccountIds' in kwargs:
+            policy_account_ids = kwargs['policyAccountIds']
+        if policy_account_ids is None:
+            raise TypeError("Missing 'policy_account_ids' argument")
+        if policy_id is None and 'policyId' in kwargs:
+            policy_id = kwargs['policyId']
+        if policy_id is None:
+            raise TypeError("Missing 'policy_id' argument")
+
+        _setter("policy_account_ids", policy_account_ids)
+        _setter("policy_id", policy_id)
 
     @property
     @pulumi.getter(name="policyAccountIds")
