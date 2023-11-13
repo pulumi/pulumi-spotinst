@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type RoutingRule struct {
@@ -139,12 +138,6 @@ func (i *RoutingRule) ToRoutingRuleOutputWithContext(ctx context.Context) Routin
 	return pulumi.ToOutputWithContext(ctx, i).(RoutingRuleOutput)
 }
 
-func (i *RoutingRule) ToOutput(ctx context.Context) pulumix.Output[*RoutingRule] {
-	return pulumix.Output[*RoutingRule]{
-		OutputState: i.ToRoutingRuleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // RoutingRuleArrayInput is an input type that accepts RoutingRuleArray and RoutingRuleArrayOutput values.
 // You can construct a concrete instance of `RoutingRuleArrayInput` via:
 //
@@ -168,12 +161,6 @@ func (i RoutingRuleArray) ToRoutingRuleArrayOutput() RoutingRuleArrayOutput {
 
 func (i RoutingRuleArray) ToRoutingRuleArrayOutputWithContext(ctx context.Context) RoutingRuleArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RoutingRuleArrayOutput)
-}
-
-func (i RoutingRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]*RoutingRule] {
-	return pulumix.Output[[]*RoutingRule]{
-		OutputState: i.ToRoutingRuleArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // RoutingRuleMapInput is an input type that accepts RoutingRuleMap and RoutingRuleMapOutput values.
@@ -201,12 +188,6 @@ func (i RoutingRuleMap) ToRoutingRuleMapOutputWithContext(ctx context.Context) R
 	return pulumi.ToOutputWithContext(ctx, i).(RoutingRuleMapOutput)
 }
 
-func (i RoutingRuleMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*RoutingRule] {
-	return pulumix.Output[map[string]*RoutingRule]{
-		OutputState: i.ToRoutingRuleMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RoutingRuleOutput struct{ *pulumi.OutputState }
 
 func (RoutingRuleOutput) ElementType() reflect.Type {
@@ -219,12 +200,6 @@ func (o RoutingRuleOutput) ToRoutingRuleOutput() RoutingRuleOutput {
 
 func (o RoutingRuleOutput) ToRoutingRuleOutputWithContext(ctx context.Context) RoutingRuleOutput {
 	return o
-}
-
-func (o RoutingRuleOutput) ToOutput(ctx context.Context) pulumix.Output[*RoutingRule] {
-	return pulumix.Output[*RoutingRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RoutingRuleOutput) BalancerId() pulumi.StringOutput {
@@ -273,12 +248,6 @@ func (o RoutingRuleArrayOutput) ToRoutingRuleArrayOutputWithContext(ctx context.
 	return o
 }
 
-func (o RoutingRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*RoutingRule] {
-	return pulumix.Output[[]*RoutingRule]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o RoutingRuleArrayOutput) Index(i pulumi.IntInput) RoutingRuleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *RoutingRule {
 		return vs[0].([]*RoutingRule)[vs[1].(int)]
@@ -297,12 +266,6 @@ func (o RoutingRuleMapOutput) ToRoutingRuleMapOutput() RoutingRuleMapOutput {
 
 func (o RoutingRuleMapOutput) ToRoutingRuleMapOutputWithContext(ctx context.Context) RoutingRuleMapOutput {
 	return o
-}
-
-func (o RoutingRuleMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*RoutingRule] {
-	return pulumix.Output[map[string]*RoutingRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RoutingRuleMapOutput) MapIndex(k pulumi.StringInput) RoutingRuleOutput {

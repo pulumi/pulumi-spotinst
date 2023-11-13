@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Manages a custom Spotinst Ocean GKE Launch Spec Import resource.
@@ -158,12 +157,6 @@ func (i *OceanLaunchSpecImport) ToOceanLaunchSpecImportOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(OceanLaunchSpecImportOutput)
 }
 
-func (i *OceanLaunchSpecImport) ToOutput(ctx context.Context) pulumix.Output[*OceanLaunchSpecImport] {
-	return pulumix.Output[*OceanLaunchSpecImport]{
-		OutputState: i.ToOceanLaunchSpecImportOutputWithContext(ctx).OutputState,
-	}
-}
-
 // OceanLaunchSpecImportArrayInput is an input type that accepts OceanLaunchSpecImportArray and OceanLaunchSpecImportArrayOutput values.
 // You can construct a concrete instance of `OceanLaunchSpecImportArrayInput` via:
 //
@@ -187,12 +180,6 @@ func (i OceanLaunchSpecImportArray) ToOceanLaunchSpecImportArrayOutput() OceanLa
 
 func (i OceanLaunchSpecImportArray) ToOceanLaunchSpecImportArrayOutputWithContext(ctx context.Context) OceanLaunchSpecImportArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(OceanLaunchSpecImportArrayOutput)
-}
-
-func (i OceanLaunchSpecImportArray) ToOutput(ctx context.Context) pulumix.Output[[]*OceanLaunchSpecImport] {
-	return pulumix.Output[[]*OceanLaunchSpecImport]{
-		OutputState: i.ToOceanLaunchSpecImportArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // OceanLaunchSpecImportMapInput is an input type that accepts OceanLaunchSpecImportMap and OceanLaunchSpecImportMapOutput values.
@@ -220,12 +207,6 @@ func (i OceanLaunchSpecImportMap) ToOceanLaunchSpecImportMapOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(OceanLaunchSpecImportMapOutput)
 }
 
-func (i OceanLaunchSpecImportMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*OceanLaunchSpecImport] {
-	return pulumix.Output[map[string]*OceanLaunchSpecImport]{
-		OutputState: i.ToOceanLaunchSpecImportMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OceanLaunchSpecImportOutput struct{ *pulumi.OutputState }
 
 func (OceanLaunchSpecImportOutput) ElementType() reflect.Type {
@@ -238,12 +219,6 @@ func (o OceanLaunchSpecImportOutput) ToOceanLaunchSpecImportOutput() OceanLaunch
 
 func (o OceanLaunchSpecImportOutput) ToOceanLaunchSpecImportOutputWithContext(ctx context.Context) OceanLaunchSpecImportOutput {
 	return o
-}
-
-func (o OceanLaunchSpecImportOutput) ToOutput(ctx context.Context) pulumix.Output[*OceanLaunchSpecImport] {
-	return pulumix.Output[*OceanLaunchSpecImport]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The node pool you wish to use in your launchSpec.
@@ -270,12 +245,6 @@ func (o OceanLaunchSpecImportArrayOutput) ToOceanLaunchSpecImportArrayOutputWith
 	return o
 }
 
-func (o OceanLaunchSpecImportArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*OceanLaunchSpecImport] {
-	return pulumix.Output[[]*OceanLaunchSpecImport]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o OceanLaunchSpecImportArrayOutput) Index(i pulumi.IntInput) OceanLaunchSpecImportOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *OceanLaunchSpecImport {
 		return vs[0].([]*OceanLaunchSpecImport)[vs[1].(int)]
@@ -294,12 +263,6 @@ func (o OceanLaunchSpecImportMapOutput) ToOceanLaunchSpecImportMapOutput() Ocean
 
 func (o OceanLaunchSpecImportMapOutput) ToOceanLaunchSpecImportMapOutputWithContext(ctx context.Context) OceanLaunchSpecImportMapOutput {
 	return o
-}
-
-func (o OceanLaunchSpecImportMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*OceanLaunchSpecImport] {
-	return pulumix.Output[map[string]*OceanLaunchSpecImport]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OceanLaunchSpecImportMapOutput) MapIndex(k pulumi.StringInput) OceanLaunchSpecImportOutput {

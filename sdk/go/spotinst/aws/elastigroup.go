@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Spotinst AWS group resource.
@@ -955,12 +954,6 @@ func (i *Elastigroup) ToElastigroupOutputWithContext(ctx context.Context) Elasti
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupOutput)
 }
 
-func (i *Elastigroup) ToOutput(ctx context.Context) pulumix.Output[*Elastigroup] {
-	return pulumix.Output[*Elastigroup]{
-		OutputState: i.ToElastigroupOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ElastigroupArrayInput is an input type that accepts ElastigroupArray and ElastigroupArrayOutput values.
 // You can construct a concrete instance of `ElastigroupArrayInput` via:
 //
@@ -984,12 +977,6 @@ func (i ElastigroupArray) ToElastigroupArrayOutput() ElastigroupArrayOutput {
 
 func (i ElastigroupArray) ToElastigroupArrayOutputWithContext(ctx context.Context) ElastigroupArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupArrayOutput)
-}
-
-func (i ElastigroupArray) ToOutput(ctx context.Context) pulumix.Output[[]*Elastigroup] {
-	return pulumix.Output[[]*Elastigroup]{
-		OutputState: i.ToElastigroupArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ElastigroupMapInput is an input type that accepts ElastigroupMap and ElastigroupMapOutput values.
@@ -1017,12 +1004,6 @@ func (i ElastigroupMap) ToElastigroupMapOutputWithContext(ctx context.Context) E
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupMapOutput)
 }
 
-func (i ElastigroupMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Elastigroup] {
-	return pulumix.Output[map[string]*Elastigroup]{
-		OutputState: i.ToElastigroupMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ElastigroupOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupOutput) ElementType() reflect.Type {
@@ -1035,12 +1016,6 @@ func (o ElastigroupOutput) ToElastigroupOutput() ElastigroupOutput {
 
 func (o ElastigroupOutput) ToElastigroupOutputWithContext(ctx context.Context) ElastigroupOutput {
 	return o
-}
-
-func (o ElastigroupOutput) ToOutput(ctx context.Context) pulumix.Output[*Elastigroup] {
-	return pulumix.Output[*Elastigroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 // List of Strings of availability zones. When this parameter is set, `subnetIds` should be left unused.
@@ -1482,12 +1457,6 @@ func (o ElastigroupArrayOutput) ToElastigroupArrayOutputWithContext(ctx context.
 	return o
 }
 
-func (o ElastigroupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Elastigroup] {
-	return pulumix.Output[[]*Elastigroup]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ElastigroupArrayOutput) Index(i pulumi.IntInput) ElastigroupOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Elastigroup {
 		return vs[0].([]*Elastigroup)[vs[1].(int)]
@@ -1506,12 +1475,6 @@ func (o ElastigroupMapOutput) ToElastigroupMapOutput() ElastigroupMapOutput {
 
 func (o ElastigroupMapOutput) ToElastigroupMapOutputWithContext(ctx context.Context) ElastigroupMapOutput {
 	return o
-}
-
-func (o ElastigroupMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Elastigroup] {
-	return pulumix.Output[map[string]*Elastigroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ElastigroupMapOutput) MapIndex(k pulumi.StringInput) ElastigroupOutput {

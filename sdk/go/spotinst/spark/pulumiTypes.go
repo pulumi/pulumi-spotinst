@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -49,12 +48,6 @@ func (i OceanComputeArgs) ToOceanComputeOutput() OceanComputeOutput {
 
 func (i OceanComputeArgs) ToOceanComputeOutputWithContext(ctx context.Context) OceanComputeOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(OceanComputeOutput)
-}
-
-func (i OceanComputeArgs) ToOutput(ctx context.Context) pulumix.Output[OceanCompute] {
-	return pulumix.Output[OceanCompute]{
-		OutputState: i.ToOceanComputeOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i OceanComputeArgs) ToOceanComputePtrOutput() OceanComputePtrOutput {
@@ -98,12 +91,6 @@ func (i *oceanComputePtrType) ToOceanComputePtrOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(OceanComputePtrOutput)
 }
 
-func (i *oceanComputePtrType) ToOutput(ctx context.Context) pulumix.Output[*OceanCompute] {
-	return pulumix.Output[*OceanCompute]{
-		OutputState: i.ToOceanComputePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OceanComputeOutput struct{ *pulumi.OutputState }
 
 func (OceanComputeOutput) ElementType() reflect.Type {
@@ -128,12 +115,6 @@ func (o OceanComputeOutput) ToOceanComputePtrOutputWithContext(ctx context.Conte
 	}).(OceanComputePtrOutput)
 }
 
-func (o OceanComputeOutput) ToOutput(ctx context.Context) pulumix.Output[OceanCompute] {
-	return pulumix.Output[OceanCompute]{
-		OutputState: o.OutputState,
-	}
-}
-
 // - Enable/disable the creation of Ocean Spark VNGs during cluster creation.
 func (o OceanComputeOutput) CreateVngs() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OceanCompute) *bool { return v.CreateVngs }).(pulumi.BoolPtrOutput)
@@ -156,12 +137,6 @@ func (o OceanComputePtrOutput) ToOceanComputePtrOutput() OceanComputePtrOutput {
 
 func (o OceanComputePtrOutput) ToOceanComputePtrOutputWithContext(ctx context.Context) OceanComputePtrOutput {
 	return o
-}
-
-func (o OceanComputePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OceanCompute] {
-	return pulumix.Output[*OceanCompute]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OceanComputePtrOutput) Elem() OceanComputeOutput {
@@ -235,12 +210,6 @@ func (i OceanIngressArgs) ToOceanIngressOutputWithContext(ctx context.Context) O
 	return pulumi.ToOutputWithContext(ctx, i).(OceanIngressOutput)
 }
 
-func (i OceanIngressArgs) ToOutput(ctx context.Context) pulumix.Output[OceanIngress] {
-	return pulumix.Output[OceanIngress]{
-		OutputState: i.ToOceanIngressOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i OceanIngressArgs) ToOceanIngressPtrOutput() OceanIngressPtrOutput {
 	return i.ToOceanIngressPtrOutputWithContext(context.Background())
 }
@@ -282,12 +251,6 @@ func (i *oceanIngressPtrType) ToOceanIngressPtrOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(OceanIngressPtrOutput)
 }
 
-func (i *oceanIngressPtrType) ToOutput(ctx context.Context) pulumix.Output[*OceanIngress] {
-	return pulumix.Output[*OceanIngress]{
-		OutputState: i.ToOceanIngressPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OceanIngressOutput struct{ *pulumi.OutputState }
 
 func (OceanIngressOutput) ElementType() reflect.Type {
@@ -310,12 +273,6 @@ func (o OceanIngressOutput) ToOceanIngressPtrOutputWithContext(ctx context.Conte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v OceanIngress) *OceanIngress {
 		return &v
 	}).(OceanIngressPtrOutput)
-}
-
-func (o OceanIngressOutput) ToOutput(ctx context.Context) pulumix.Output[OceanIngress] {
-	return pulumix.Output[OceanIngress]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OceanIngressOutput) Controller() OceanIngressControllerPtrOutput {
@@ -351,12 +308,6 @@ func (o OceanIngressPtrOutput) ToOceanIngressPtrOutput() OceanIngressPtrOutput {
 
 func (o OceanIngressPtrOutput) ToOceanIngressPtrOutputWithContext(ctx context.Context) OceanIngressPtrOutput {
 	return o
-}
-
-func (o OceanIngressPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OceanIngress] {
-	return pulumix.Output[*OceanIngress]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OceanIngressPtrOutput) Elem() OceanIngressOutput {
@@ -448,12 +399,6 @@ func (i OceanIngressControllerArgs) ToOceanIngressControllerOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(OceanIngressControllerOutput)
 }
 
-func (i OceanIngressControllerArgs) ToOutput(ctx context.Context) pulumix.Output[OceanIngressController] {
-	return pulumix.Output[OceanIngressController]{
-		OutputState: i.ToOceanIngressControllerOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i OceanIngressControllerArgs) ToOceanIngressControllerPtrOutput() OceanIngressControllerPtrOutput {
 	return i.ToOceanIngressControllerPtrOutputWithContext(context.Background())
 }
@@ -495,12 +440,6 @@ func (i *oceanIngressControllerPtrType) ToOceanIngressControllerPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(OceanIngressControllerPtrOutput)
 }
 
-func (i *oceanIngressControllerPtrType) ToOutput(ctx context.Context) pulumix.Output[*OceanIngressController] {
-	return pulumix.Output[*OceanIngressController]{
-		OutputState: i.ToOceanIngressControllerPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OceanIngressControllerOutput struct{ *pulumi.OutputState }
 
 func (OceanIngressControllerOutput) ElementType() reflect.Type {
@@ -525,12 +464,6 @@ func (o OceanIngressControllerOutput) ToOceanIngressControllerPtrOutputWithConte
 	}).(OceanIngressControllerPtrOutput)
 }
 
-func (o OceanIngressControllerOutput) ToOutput(ctx context.Context) pulumix.Output[OceanIngressController] {
-	return pulumix.Output[OceanIngressController]{
-		OutputState: o.OutputState,
-	}
-}
-
 // - Should an ingress controller managed by Ocean for Apache Spark be installed on the cluster.
 func (o OceanIngressControllerOutput) Managed() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OceanIngressController) *bool { return v.Managed }).(pulumi.BoolPtrOutput)
@@ -548,12 +481,6 @@ func (o OceanIngressControllerPtrOutput) ToOceanIngressControllerPtrOutput() Oce
 
 func (o OceanIngressControllerPtrOutput) ToOceanIngressControllerPtrOutputWithContext(ctx context.Context) OceanIngressControllerPtrOutput {
 	return o
-}
-
-func (o OceanIngressControllerPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OceanIngressController] {
-	return pulumix.Output[*OceanIngressController]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OceanIngressControllerPtrOutput) Elem() OceanIngressControllerOutput {
@@ -613,12 +540,6 @@ func (i OceanIngressCustomEndpointArgs) ToOceanIngressCustomEndpointOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(OceanIngressCustomEndpointOutput)
 }
 
-func (i OceanIngressCustomEndpointArgs) ToOutput(ctx context.Context) pulumix.Output[OceanIngressCustomEndpoint] {
-	return pulumix.Output[OceanIngressCustomEndpoint]{
-		OutputState: i.ToOceanIngressCustomEndpointOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i OceanIngressCustomEndpointArgs) ToOceanIngressCustomEndpointPtrOutput() OceanIngressCustomEndpointPtrOutput {
 	return i.ToOceanIngressCustomEndpointPtrOutputWithContext(context.Background())
 }
@@ -660,12 +581,6 @@ func (i *oceanIngressCustomEndpointPtrType) ToOceanIngressCustomEndpointPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(OceanIngressCustomEndpointPtrOutput)
 }
 
-func (i *oceanIngressCustomEndpointPtrType) ToOutput(ctx context.Context) pulumix.Output[*OceanIngressCustomEndpoint] {
-	return pulumix.Output[*OceanIngressCustomEndpoint]{
-		OutputState: i.ToOceanIngressCustomEndpointPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OceanIngressCustomEndpointOutput struct{ *pulumi.OutputState }
 
 func (OceanIngressCustomEndpointOutput) ElementType() reflect.Type {
@@ -690,12 +605,6 @@ func (o OceanIngressCustomEndpointOutput) ToOceanIngressCustomEndpointPtrOutputW
 	}).(OceanIngressCustomEndpointPtrOutput)
 }
 
-func (o OceanIngressCustomEndpointOutput) ToOutput(ctx context.Context) pulumix.Output[OceanIngressCustomEndpoint] {
-	return pulumix.Output[OceanIngressCustomEndpoint]{
-		OutputState: o.OutputState,
-	}
-}
-
 // - The address the Ocean for Apache Spark control plane will use when addressing the cluster.
 func (o OceanIngressCustomEndpointOutput) Address() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OceanIngressCustomEndpoint) *string { return v.Address }).(pulumi.StringPtrOutput)
@@ -718,12 +627,6 @@ func (o OceanIngressCustomEndpointPtrOutput) ToOceanIngressCustomEndpointPtrOutp
 
 func (o OceanIngressCustomEndpointPtrOutput) ToOceanIngressCustomEndpointPtrOutputWithContext(ctx context.Context) OceanIngressCustomEndpointPtrOutput {
 	return o
-}
-
-func (o OceanIngressCustomEndpointPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OceanIngressCustomEndpoint] {
-	return pulumix.Output[*OceanIngressCustomEndpoint]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OceanIngressCustomEndpointPtrOutput) Elem() OceanIngressCustomEndpointOutput {
@@ -797,12 +700,6 @@ func (i OceanIngressLoadBalancerArgs) ToOceanIngressLoadBalancerOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(OceanIngressLoadBalancerOutput)
 }
 
-func (i OceanIngressLoadBalancerArgs) ToOutput(ctx context.Context) pulumix.Output[OceanIngressLoadBalancer] {
-	return pulumix.Output[OceanIngressLoadBalancer]{
-		OutputState: i.ToOceanIngressLoadBalancerOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i OceanIngressLoadBalancerArgs) ToOceanIngressLoadBalancerPtrOutput() OceanIngressLoadBalancerPtrOutput {
 	return i.ToOceanIngressLoadBalancerPtrOutputWithContext(context.Background())
 }
@@ -844,12 +741,6 @@ func (i *oceanIngressLoadBalancerPtrType) ToOceanIngressLoadBalancerPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(OceanIngressLoadBalancerPtrOutput)
 }
 
-func (i *oceanIngressLoadBalancerPtrType) ToOutput(ctx context.Context) pulumix.Output[*OceanIngressLoadBalancer] {
-	return pulumix.Output[*OceanIngressLoadBalancer]{
-		OutputState: i.ToOceanIngressLoadBalancerPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OceanIngressLoadBalancerOutput struct{ *pulumi.OutputState }
 
 func (OceanIngressLoadBalancerOutput) ElementType() reflect.Type {
@@ -872,12 +763,6 @@ func (o OceanIngressLoadBalancerOutput) ToOceanIngressLoadBalancerPtrOutputWithC
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v OceanIngressLoadBalancer) *OceanIngressLoadBalancer {
 		return &v
 	}).(OceanIngressLoadBalancerPtrOutput)
-}
-
-func (o OceanIngressLoadBalancerOutput) ToOutput(ctx context.Context) pulumix.Output[OceanIngressLoadBalancer] {
-	return pulumix.Output[OceanIngressLoadBalancer]{
-		OutputState: o.OutputState,
-	}
 }
 
 // - Should an ingress controller managed by Ocean for Apache Spark be installed on the cluster.
@@ -907,12 +792,6 @@ func (o OceanIngressLoadBalancerPtrOutput) ToOceanIngressLoadBalancerPtrOutput()
 
 func (o OceanIngressLoadBalancerPtrOutput) ToOceanIngressLoadBalancerPtrOutputWithContext(ctx context.Context) OceanIngressLoadBalancerPtrOutput {
 	return o
-}
-
-func (o OceanIngressLoadBalancerPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OceanIngressLoadBalancer] {
-	return pulumix.Output[*OceanIngressLoadBalancer]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OceanIngressLoadBalancerPtrOutput) Elem() OceanIngressLoadBalancerOutput {
@@ -992,12 +871,6 @@ func (i OceanIngressPrivateLinkArgs) ToOceanIngressPrivateLinkOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(OceanIngressPrivateLinkOutput)
 }
 
-func (i OceanIngressPrivateLinkArgs) ToOutput(ctx context.Context) pulumix.Output[OceanIngressPrivateLink] {
-	return pulumix.Output[OceanIngressPrivateLink]{
-		OutputState: i.ToOceanIngressPrivateLinkOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i OceanIngressPrivateLinkArgs) ToOceanIngressPrivateLinkPtrOutput() OceanIngressPrivateLinkPtrOutput {
 	return i.ToOceanIngressPrivateLinkPtrOutputWithContext(context.Background())
 }
@@ -1039,12 +912,6 @@ func (i *oceanIngressPrivateLinkPtrType) ToOceanIngressPrivateLinkPtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(OceanIngressPrivateLinkPtrOutput)
 }
 
-func (i *oceanIngressPrivateLinkPtrType) ToOutput(ctx context.Context) pulumix.Output[*OceanIngressPrivateLink] {
-	return pulumix.Output[*OceanIngressPrivateLink]{
-		OutputState: i.ToOceanIngressPrivateLinkPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OceanIngressPrivateLinkOutput struct{ *pulumi.OutputState }
 
 func (OceanIngressPrivateLinkOutput) ElementType() reflect.Type {
@@ -1069,12 +936,6 @@ func (o OceanIngressPrivateLinkOutput) ToOceanIngressPrivateLinkPtrOutputWithCon
 	}).(OceanIngressPrivateLinkPtrOutput)
 }
 
-func (o OceanIngressPrivateLinkOutput) ToOutput(ctx context.Context) pulumix.Output[OceanIngressPrivateLink] {
-	return pulumix.Output[OceanIngressPrivateLink]{
-		OutputState: o.OutputState,
-	}
-}
-
 // - Should the Ocean for Apache Spark control plane address the cluster using a custom endpoint. Use this to specify the DNS address of an externally provisioned (unmanaged) load balancer.
 func (o OceanIngressPrivateLinkOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OceanIngressPrivateLink) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
@@ -1097,12 +958,6 @@ func (o OceanIngressPrivateLinkPtrOutput) ToOceanIngressPrivateLinkPtrOutput() O
 
 func (o OceanIngressPrivateLinkPtrOutput) ToOceanIngressPrivateLinkPtrOutputWithContext(ctx context.Context) OceanIngressPrivateLinkPtrOutput {
 	return o
-}
-
-func (o OceanIngressPrivateLinkPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OceanIngressPrivateLink] {
-	return pulumix.Output[*OceanIngressPrivateLink]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OceanIngressPrivateLinkPtrOutput) Elem() OceanIngressPrivateLinkOutput {
@@ -1168,12 +1023,6 @@ func (i OceanLogCollectionArgs) ToOceanLogCollectionOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(OceanLogCollectionOutput)
 }
 
-func (i OceanLogCollectionArgs) ToOutput(ctx context.Context) pulumix.Output[OceanLogCollection] {
-	return pulumix.Output[OceanLogCollection]{
-		OutputState: i.ToOceanLogCollectionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i OceanLogCollectionArgs) ToOceanLogCollectionPtrOutput() OceanLogCollectionPtrOutput {
 	return i.ToOceanLogCollectionPtrOutputWithContext(context.Background())
 }
@@ -1215,12 +1064,6 @@ func (i *oceanLogCollectionPtrType) ToOceanLogCollectionPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(OceanLogCollectionPtrOutput)
 }
 
-func (i *oceanLogCollectionPtrType) ToOutput(ctx context.Context) pulumix.Output[*OceanLogCollection] {
-	return pulumix.Output[*OceanLogCollection]{
-		OutputState: i.ToOceanLogCollectionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OceanLogCollectionOutput struct{ *pulumi.OutputState }
 
 func (OceanLogCollectionOutput) ElementType() reflect.Type {
@@ -1245,12 +1088,6 @@ func (o OceanLogCollectionOutput) ToOceanLogCollectionPtrOutputWithContext(ctx c
 	}).(OceanLogCollectionPtrOutput)
 }
 
-func (o OceanLogCollectionOutput) ToOutput(ctx context.Context) pulumix.Output[OceanLogCollection] {
-	return pulumix.Output[OceanLogCollection]{
-		OutputState: o.OutputState,
-	}
-}
-
 // - Enable/Disable collecting driver and executor logs. When enabled, logs are stored by NetApp and can be downloaded from the Spot console web interface. The logs are deleted after 30 days.
 func (o OceanLogCollectionOutput) CollectAppLogs() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OceanLogCollection) *bool { return v.CollectAppLogs }).(pulumi.BoolPtrOutput)
@@ -1268,12 +1105,6 @@ func (o OceanLogCollectionPtrOutput) ToOceanLogCollectionPtrOutput() OceanLogCol
 
 func (o OceanLogCollectionPtrOutput) ToOceanLogCollectionPtrOutputWithContext(ctx context.Context) OceanLogCollectionPtrOutput {
 	return o
-}
-
-func (o OceanLogCollectionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OceanLogCollection] {
-	return pulumix.Output[*OceanLogCollection]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OceanLogCollectionPtrOutput) Elem() OceanLogCollectionOutput {
@@ -1329,12 +1160,6 @@ func (i OceanSparkArgs) ToOceanSparkOutputWithContext(ctx context.Context) Ocean
 	return pulumi.ToOutputWithContext(ctx, i).(OceanSparkOutput)
 }
 
-func (i OceanSparkArgs) ToOutput(ctx context.Context) pulumix.Output[OceanSpark] {
-	return pulumix.Output[OceanSpark]{
-		OutputState: i.ToOceanSparkOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i OceanSparkArgs) ToOceanSparkPtrOutput() OceanSparkPtrOutput {
 	return i.ToOceanSparkPtrOutputWithContext(context.Background())
 }
@@ -1376,12 +1201,6 @@ func (i *oceanSparkPtrType) ToOceanSparkPtrOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(OceanSparkPtrOutput)
 }
 
-func (i *oceanSparkPtrType) ToOutput(ctx context.Context) pulumix.Output[*OceanSpark] {
-	return pulumix.Output[*OceanSpark]{
-		OutputState: i.ToOceanSparkPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OceanSparkOutput struct{ *pulumi.OutputState }
 
 func (OceanSparkOutput) ElementType() reflect.Type {
@@ -1406,12 +1225,6 @@ func (o OceanSparkOutput) ToOceanSparkPtrOutputWithContext(ctx context.Context) 
 	}).(OceanSparkPtrOutput)
 }
 
-func (o OceanSparkOutput) ToOutput(ctx context.Context) pulumix.Output[OceanSpark] {
-	return pulumix.Output[OceanSpark]{
-		OutputState: o.OutputState,
-	}
-}
-
 // - List of Kubernetes namespaces that should be configured to run Spark applications, in addition to the default Spark application namespace `spark-apps`.
 func (o OceanSparkOutput) AdditionalAppNamespaces() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v OceanSpark) []string { return v.AdditionalAppNamespaces }).(pulumi.StringArrayOutput)
@@ -1429,12 +1242,6 @@ func (o OceanSparkPtrOutput) ToOceanSparkPtrOutput() OceanSparkPtrOutput {
 
 func (o OceanSparkPtrOutput) ToOceanSparkPtrOutputWithContext(ctx context.Context) OceanSparkPtrOutput {
 	return o
-}
-
-func (o OceanSparkPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OceanSpark] {
-	return pulumix.Output[*OceanSpark]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OceanSparkPtrOutput) Elem() OceanSparkOutput {
@@ -1494,12 +1301,6 @@ func (i OceanWebhookArgs) ToOceanWebhookOutputWithContext(ctx context.Context) O
 	return pulumi.ToOutputWithContext(ctx, i).(OceanWebhookOutput)
 }
 
-func (i OceanWebhookArgs) ToOutput(ctx context.Context) pulumix.Output[OceanWebhook] {
-	return pulumix.Output[OceanWebhook]{
-		OutputState: i.ToOceanWebhookOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i OceanWebhookArgs) ToOceanWebhookPtrOutput() OceanWebhookPtrOutput {
 	return i.ToOceanWebhookPtrOutputWithContext(context.Background())
 }
@@ -1541,12 +1342,6 @@ func (i *oceanWebhookPtrType) ToOceanWebhookPtrOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(OceanWebhookPtrOutput)
 }
 
-func (i *oceanWebhookPtrType) ToOutput(ctx context.Context) pulumix.Output[*OceanWebhook] {
-	return pulumix.Output[*OceanWebhook]{
-		OutputState: i.ToOceanWebhookPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OceanWebhookOutput struct{ *pulumi.OutputState }
 
 func (OceanWebhookOutput) ElementType() reflect.Type {
@@ -1571,12 +1366,6 @@ func (o OceanWebhookOutput) ToOceanWebhookPtrOutputWithContext(ctx context.Conte
 	}).(OceanWebhookPtrOutput)
 }
 
-func (o OceanWebhookOutput) ToOutput(ctx context.Context) pulumix.Output[OceanWebhook] {
-	return pulumix.Output[OceanWebhook]{
-		OutputState: o.OutputState,
-	}
-}
-
 // - List of ports allowed to use on the host network - if empty default is `25554`.
 func (o OceanWebhookOutput) HostNetworkPorts() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v OceanWebhook) []int { return v.HostNetworkPorts }).(pulumi.IntArrayOutput)
@@ -1599,12 +1388,6 @@ func (o OceanWebhookPtrOutput) ToOceanWebhookPtrOutput() OceanWebhookPtrOutput {
 
 func (o OceanWebhookPtrOutput) ToOceanWebhookPtrOutputWithContext(ctx context.Context) OceanWebhookPtrOutput {
 	return o
-}
-
-func (o OceanWebhookPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OceanWebhook] {
-	return pulumix.Output[*OceanWebhook]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OceanWebhookPtrOutput) Elem() OceanWebhookOutput {

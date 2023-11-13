@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -47,12 +46,6 @@ func (i DataIntegrationS3Args) ToDataIntegrationS3Output() DataIntegrationS3Outp
 
 func (i DataIntegrationS3Args) ToDataIntegrationS3OutputWithContext(ctx context.Context) DataIntegrationS3Output {
 	return pulumi.ToOutputWithContext(ctx, i).(DataIntegrationS3Output)
-}
-
-func (i DataIntegrationS3Args) ToOutput(ctx context.Context) pulumix.Output[DataIntegrationS3] {
-	return pulumix.Output[DataIntegrationS3]{
-		OutputState: i.ToDataIntegrationS3OutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i DataIntegrationS3Args) ToDataIntegrationS3PtrOutput() DataIntegrationS3PtrOutput {
@@ -96,12 +89,6 @@ func (i *dataIntegrationS3PtrType) ToDataIntegrationS3PtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(DataIntegrationS3PtrOutput)
 }
 
-func (i *dataIntegrationS3PtrType) ToOutput(ctx context.Context) pulumix.Output[*DataIntegrationS3] {
-	return pulumix.Output[*DataIntegrationS3]{
-		OutputState: i.ToDataIntegrationS3PtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DataIntegrationS3Output struct{ *pulumi.OutputState }
 
 func (DataIntegrationS3Output) ElementType() reflect.Type {
@@ -126,12 +113,6 @@ func (o DataIntegrationS3Output) ToDataIntegrationS3PtrOutputWithContext(ctx con
 	}).(DataIntegrationS3PtrOutput)
 }
 
-func (o DataIntegrationS3Output) ToOutput(ctx context.Context) pulumix.Output[DataIntegrationS3] {
-	return pulumix.Output[DataIntegrationS3]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DataIntegrationS3Output) BucketName() pulumi.StringOutput {
 	return o.ApplyT(func(v DataIntegrationS3) string { return v.BucketName }).(pulumi.StringOutput)
 }
@@ -153,12 +134,6 @@ func (o DataIntegrationS3PtrOutput) ToDataIntegrationS3PtrOutput() DataIntegrati
 
 func (o DataIntegrationS3PtrOutput) ToDataIntegrationS3PtrOutputWithContext(ctx context.Context) DataIntegrationS3PtrOutput {
 	return o
-}
-
-func (o DataIntegrationS3PtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DataIntegrationS3] {
-	return pulumix.Output[*DataIntegrationS3]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DataIntegrationS3PtrOutput) Elem() DataIntegrationS3Output {
@@ -223,12 +198,6 @@ func (i ElastigroupAzureV3ImageArgs) ToElastigroupAzureV3ImageOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupAzureV3ImageOutput)
 }
 
-func (i ElastigroupAzureV3ImageArgs) ToOutput(ctx context.Context) pulumix.Output[ElastigroupAzureV3Image] {
-	return pulumix.Output[ElastigroupAzureV3Image]{
-		OutputState: i.ToElastigroupAzureV3ImageOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ElastigroupAzureV3ImageArrayInput is an input type that accepts ElastigroupAzureV3ImageArray and ElastigroupAzureV3ImageArrayOutput values.
 // You can construct a concrete instance of `ElastigroupAzureV3ImageArrayInput` via:
 //
@@ -254,12 +223,6 @@ func (i ElastigroupAzureV3ImageArray) ToElastigroupAzureV3ImageArrayOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupAzureV3ImageArrayOutput)
 }
 
-func (i ElastigroupAzureV3ImageArray) ToOutput(ctx context.Context) pulumix.Output[[]ElastigroupAzureV3Image] {
-	return pulumix.Output[[]ElastigroupAzureV3Image]{
-		OutputState: i.ToElastigroupAzureV3ImageArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ElastigroupAzureV3ImageOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupAzureV3ImageOutput) ElementType() reflect.Type {
@@ -272,12 +235,6 @@ func (o ElastigroupAzureV3ImageOutput) ToElastigroupAzureV3ImageOutput() Elastig
 
 func (o ElastigroupAzureV3ImageOutput) ToElastigroupAzureV3ImageOutputWithContext(ctx context.Context) ElastigroupAzureV3ImageOutput {
 	return o
-}
-
-func (o ElastigroupAzureV3ImageOutput) ToOutput(ctx context.Context) pulumix.Output[ElastigroupAzureV3Image] {
-	return pulumix.Output[ElastigroupAzureV3Image]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ElastigroupAzureV3ImageOutput) Customs() ElastigroupAzureV3ImageCustomArrayOutput {
@@ -300,12 +257,6 @@ func (o ElastigroupAzureV3ImageArrayOutput) ToElastigroupAzureV3ImageArrayOutput
 
 func (o ElastigroupAzureV3ImageArrayOutput) ToElastigroupAzureV3ImageArrayOutputWithContext(ctx context.Context) ElastigroupAzureV3ImageArrayOutput {
 	return o
-}
-
-func (o ElastigroupAzureV3ImageArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ElastigroupAzureV3Image] {
-	return pulumix.Output[[]ElastigroupAzureV3Image]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ElastigroupAzureV3ImageArrayOutput) Index(i pulumi.IntInput) ElastigroupAzureV3ImageOutput {
@@ -347,12 +298,6 @@ func (i ElastigroupAzureV3ImageCustomArgs) ToElastigroupAzureV3ImageCustomOutput
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupAzureV3ImageCustomOutput)
 }
 
-func (i ElastigroupAzureV3ImageCustomArgs) ToOutput(ctx context.Context) pulumix.Output[ElastigroupAzureV3ImageCustom] {
-	return pulumix.Output[ElastigroupAzureV3ImageCustom]{
-		OutputState: i.ToElastigroupAzureV3ImageCustomOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ElastigroupAzureV3ImageCustomArrayInput is an input type that accepts ElastigroupAzureV3ImageCustomArray and ElastigroupAzureV3ImageCustomArrayOutput values.
 // You can construct a concrete instance of `ElastigroupAzureV3ImageCustomArrayInput` via:
 //
@@ -378,12 +323,6 @@ func (i ElastigroupAzureV3ImageCustomArray) ToElastigroupAzureV3ImageCustomArray
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupAzureV3ImageCustomArrayOutput)
 }
 
-func (i ElastigroupAzureV3ImageCustomArray) ToOutput(ctx context.Context) pulumix.Output[[]ElastigroupAzureV3ImageCustom] {
-	return pulumix.Output[[]ElastigroupAzureV3ImageCustom]{
-		OutputState: i.ToElastigroupAzureV3ImageCustomArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ElastigroupAzureV3ImageCustomOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupAzureV3ImageCustomOutput) ElementType() reflect.Type {
@@ -396,12 +335,6 @@ func (o ElastigroupAzureV3ImageCustomOutput) ToElastigroupAzureV3ImageCustomOutp
 
 func (o ElastigroupAzureV3ImageCustomOutput) ToElastigroupAzureV3ImageCustomOutputWithContext(ctx context.Context) ElastigroupAzureV3ImageCustomOutput {
 	return o
-}
-
-func (o ElastigroupAzureV3ImageCustomOutput) ToOutput(ctx context.Context) pulumix.Output[ElastigroupAzureV3ImageCustom] {
-	return pulumix.Output[ElastigroupAzureV3ImageCustom]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ElastigroupAzureV3ImageCustomOutput) ImageName() pulumi.StringOutput {
@@ -424,12 +357,6 @@ func (o ElastigroupAzureV3ImageCustomArrayOutput) ToElastigroupAzureV3ImageCusto
 
 func (o ElastigroupAzureV3ImageCustomArrayOutput) ToElastigroupAzureV3ImageCustomArrayOutputWithContext(ctx context.Context) ElastigroupAzureV3ImageCustomArrayOutput {
 	return o
-}
-
-func (o ElastigroupAzureV3ImageCustomArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ElastigroupAzureV3ImageCustom] {
-	return pulumix.Output[[]ElastigroupAzureV3ImageCustom]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ElastigroupAzureV3ImageCustomArrayOutput) Index(i pulumi.IntInput) ElastigroupAzureV3ImageCustomOutput {
@@ -475,12 +402,6 @@ func (i ElastigroupAzureV3ImageMarketplaceArgs) ToElastigroupAzureV3ImageMarketp
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupAzureV3ImageMarketplaceOutput)
 }
 
-func (i ElastigroupAzureV3ImageMarketplaceArgs) ToOutput(ctx context.Context) pulumix.Output[ElastigroupAzureV3ImageMarketplace] {
-	return pulumix.Output[ElastigroupAzureV3ImageMarketplace]{
-		OutputState: i.ToElastigroupAzureV3ImageMarketplaceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ElastigroupAzureV3ImageMarketplaceArrayInput is an input type that accepts ElastigroupAzureV3ImageMarketplaceArray and ElastigroupAzureV3ImageMarketplaceArrayOutput values.
 // You can construct a concrete instance of `ElastigroupAzureV3ImageMarketplaceArrayInput` via:
 //
@@ -506,12 +427,6 @@ func (i ElastigroupAzureV3ImageMarketplaceArray) ToElastigroupAzureV3ImageMarket
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupAzureV3ImageMarketplaceArrayOutput)
 }
 
-func (i ElastigroupAzureV3ImageMarketplaceArray) ToOutput(ctx context.Context) pulumix.Output[[]ElastigroupAzureV3ImageMarketplace] {
-	return pulumix.Output[[]ElastigroupAzureV3ImageMarketplace]{
-		OutputState: i.ToElastigroupAzureV3ImageMarketplaceArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ElastigroupAzureV3ImageMarketplaceOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupAzureV3ImageMarketplaceOutput) ElementType() reflect.Type {
@@ -524,12 +439,6 @@ func (o ElastigroupAzureV3ImageMarketplaceOutput) ToElastigroupAzureV3ImageMarke
 
 func (o ElastigroupAzureV3ImageMarketplaceOutput) ToElastigroupAzureV3ImageMarketplaceOutputWithContext(ctx context.Context) ElastigroupAzureV3ImageMarketplaceOutput {
 	return o
-}
-
-func (o ElastigroupAzureV3ImageMarketplaceOutput) ToOutput(ctx context.Context) pulumix.Output[ElastigroupAzureV3ImageMarketplace] {
-	return pulumix.Output[ElastigroupAzureV3ImageMarketplace]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ElastigroupAzureV3ImageMarketplaceOutput) Offer() pulumi.StringOutput {
@@ -560,12 +469,6 @@ func (o ElastigroupAzureV3ImageMarketplaceArrayOutput) ToElastigroupAzureV3Image
 
 func (o ElastigroupAzureV3ImageMarketplaceArrayOutput) ToElastigroupAzureV3ImageMarketplaceArrayOutputWithContext(ctx context.Context) ElastigroupAzureV3ImageMarketplaceArrayOutput {
 	return o
-}
-
-func (o ElastigroupAzureV3ImageMarketplaceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ElastigroupAzureV3ImageMarketplace] {
-	return pulumix.Output[[]ElastigroupAzureV3ImageMarketplace]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ElastigroupAzureV3ImageMarketplaceArrayOutput) Index(i pulumi.IntInput) ElastigroupAzureV3ImageMarketplaceOutput {
@@ -609,12 +512,6 @@ func (i ElastigroupAzureV3LoginArgs) ToElastigroupAzureV3LoginOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupAzureV3LoginOutput)
 }
 
-func (i ElastigroupAzureV3LoginArgs) ToOutput(ctx context.Context) pulumix.Output[ElastigroupAzureV3Login] {
-	return pulumix.Output[ElastigroupAzureV3Login]{
-		OutputState: i.ToElastigroupAzureV3LoginOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ElastigroupAzureV3LoginArgs) ToElastigroupAzureV3LoginPtrOutput() ElastigroupAzureV3LoginPtrOutput {
 	return i.ToElastigroupAzureV3LoginPtrOutputWithContext(context.Background())
 }
@@ -656,12 +553,6 @@ func (i *elastigroupAzureV3LoginPtrType) ToElastigroupAzureV3LoginPtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupAzureV3LoginPtrOutput)
 }
 
-func (i *elastigroupAzureV3LoginPtrType) ToOutput(ctx context.Context) pulumix.Output[*ElastigroupAzureV3Login] {
-	return pulumix.Output[*ElastigroupAzureV3Login]{
-		OutputState: i.ToElastigroupAzureV3LoginPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ElastigroupAzureV3LoginOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupAzureV3LoginOutput) ElementType() reflect.Type {
@@ -684,12 +575,6 @@ func (o ElastigroupAzureV3LoginOutput) ToElastigroupAzureV3LoginPtrOutputWithCon
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElastigroupAzureV3Login) *ElastigroupAzureV3Login {
 		return &v
 	}).(ElastigroupAzureV3LoginPtrOutput)
-}
-
-func (o ElastigroupAzureV3LoginOutput) ToOutput(ctx context.Context) pulumix.Output[ElastigroupAzureV3Login] {
-	return pulumix.Output[ElastigroupAzureV3Login]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ElastigroupAzureV3LoginOutput) Password() pulumi.StringPtrOutput {
@@ -716,12 +601,6 @@ func (o ElastigroupAzureV3LoginPtrOutput) ToElastigroupAzureV3LoginPtrOutput() E
 
 func (o ElastigroupAzureV3LoginPtrOutput) ToElastigroupAzureV3LoginPtrOutputWithContext(ctx context.Context) ElastigroupAzureV3LoginPtrOutput {
 	return o
-}
-
-func (o ElastigroupAzureV3LoginPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ElastigroupAzureV3Login] {
-	return pulumix.Output[*ElastigroupAzureV3Login]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ElastigroupAzureV3LoginPtrOutput) Elem() ElastigroupAzureV3LoginOutput {
@@ -794,12 +673,6 @@ func (i ElastigroupAzureV3ManagedServiceIdentityArgs) ToElastigroupAzureV3Manage
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupAzureV3ManagedServiceIdentityOutput)
 }
 
-func (i ElastigroupAzureV3ManagedServiceIdentityArgs) ToOutput(ctx context.Context) pulumix.Output[ElastigroupAzureV3ManagedServiceIdentity] {
-	return pulumix.Output[ElastigroupAzureV3ManagedServiceIdentity]{
-		OutputState: i.ToElastigroupAzureV3ManagedServiceIdentityOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ElastigroupAzureV3ManagedServiceIdentityArrayInput is an input type that accepts ElastigroupAzureV3ManagedServiceIdentityArray and ElastigroupAzureV3ManagedServiceIdentityArrayOutput values.
 // You can construct a concrete instance of `ElastigroupAzureV3ManagedServiceIdentityArrayInput` via:
 //
@@ -825,12 +698,6 @@ func (i ElastigroupAzureV3ManagedServiceIdentityArray) ToElastigroupAzureV3Manag
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupAzureV3ManagedServiceIdentityArrayOutput)
 }
 
-func (i ElastigroupAzureV3ManagedServiceIdentityArray) ToOutput(ctx context.Context) pulumix.Output[[]ElastigroupAzureV3ManagedServiceIdentity] {
-	return pulumix.Output[[]ElastigroupAzureV3ManagedServiceIdentity]{
-		OutputState: i.ToElastigroupAzureV3ManagedServiceIdentityArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ElastigroupAzureV3ManagedServiceIdentityOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupAzureV3ManagedServiceIdentityOutput) ElementType() reflect.Type {
@@ -843,12 +710,6 @@ func (o ElastigroupAzureV3ManagedServiceIdentityOutput) ToElastigroupAzureV3Mana
 
 func (o ElastigroupAzureV3ManagedServiceIdentityOutput) ToElastigroupAzureV3ManagedServiceIdentityOutputWithContext(ctx context.Context) ElastigroupAzureV3ManagedServiceIdentityOutput {
 	return o
-}
-
-func (o ElastigroupAzureV3ManagedServiceIdentityOutput) ToOutput(ctx context.Context) pulumix.Output[ElastigroupAzureV3ManagedServiceIdentity] {
-	return pulumix.Output[ElastigroupAzureV3ManagedServiceIdentity]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ElastigroupAzureV3ManagedServiceIdentityOutput) Name() pulumi.StringOutput {
@@ -871,12 +732,6 @@ func (o ElastigroupAzureV3ManagedServiceIdentityArrayOutput) ToElastigroupAzureV
 
 func (o ElastigroupAzureV3ManagedServiceIdentityArrayOutput) ToElastigroupAzureV3ManagedServiceIdentityArrayOutputWithContext(ctx context.Context) ElastigroupAzureV3ManagedServiceIdentityArrayOutput {
 	return o
-}
-
-func (o ElastigroupAzureV3ManagedServiceIdentityArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ElastigroupAzureV3ManagedServiceIdentity] {
-	return pulumix.Output[[]ElastigroupAzureV3ManagedServiceIdentity]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ElastigroupAzureV3ManagedServiceIdentityArrayOutput) Index(i pulumi.IntInput) ElastigroupAzureV3ManagedServiceIdentityOutput {
@@ -920,12 +775,6 @@ func (i ElastigroupAzureV3NetworkArgs) ToElastigroupAzureV3NetworkOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupAzureV3NetworkOutput)
 }
 
-func (i ElastigroupAzureV3NetworkArgs) ToOutput(ctx context.Context) pulumix.Output[ElastigroupAzureV3Network] {
-	return pulumix.Output[ElastigroupAzureV3Network]{
-		OutputState: i.ToElastigroupAzureV3NetworkOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ElastigroupAzureV3NetworkArgs) ToElastigroupAzureV3NetworkPtrOutput() ElastigroupAzureV3NetworkPtrOutput {
 	return i.ToElastigroupAzureV3NetworkPtrOutputWithContext(context.Background())
 }
@@ -967,12 +816,6 @@ func (i *elastigroupAzureV3NetworkPtrType) ToElastigroupAzureV3NetworkPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupAzureV3NetworkPtrOutput)
 }
 
-func (i *elastigroupAzureV3NetworkPtrType) ToOutput(ctx context.Context) pulumix.Output[*ElastigroupAzureV3Network] {
-	return pulumix.Output[*ElastigroupAzureV3Network]{
-		OutputState: i.ToElastigroupAzureV3NetworkPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ElastigroupAzureV3NetworkOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupAzureV3NetworkOutput) ElementType() reflect.Type {
@@ -995,12 +838,6 @@ func (o ElastigroupAzureV3NetworkOutput) ToElastigroupAzureV3NetworkPtrOutputWit
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElastigroupAzureV3Network) *ElastigroupAzureV3Network {
 		return &v
 	}).(ElastigroupAzureV3NetworkPtrOutput)
-}
-
-func (o ElastigroupAzureV3NetworkOutput) ToOutput(ctx context.Context) pulumix.Output[ElastigroupAzureV3Network] {
-	return pulumix.Output[ElastigroupAzureV3Network]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ElastigroupAzureV3NetworkOutput) NetworkInterfaces() ElastigroupAzureV3NetworkNetworkInterfaceArrayOutput {
@@ -1029,12 +866,6 @@ func (o ElastigroupAzureV3NetworkPtrOutput) ToElastigroupAzureV3NetworkPtrOutput
 
 func (o ElastigroupAzureV3NetworkPtrOutput) ToElastigroupAzureV3NetworkPtrOutputWithContext(ctx context.Context) ElastigroupAzureV3NetworkPtrOutput {
 	return o
-}
-
-func (o ElastigroupAzureV3NetworkPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ElastigroupAzureV3Network] {
-	return pulumix.Output[*ElastigroupAzureV3Network]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ElastigroupAzureV3NetworkPtrOutput) Elem() ElastigroupAzureV3NetworkOutput {
@@ -1113,12 +944,6 @@ func (i ElastigroupAzureV3NetworkNetworkInterfaceArgs) ToElastigroupAzureV3Netwo
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupAzureV3NetworkNetworkInterfaceOutput)
 }
 
-func (i ElastigroupAzureV3NetworkNetworkInterfaceArgs) ToOutput(ctx context.Context) pulumix.Output[ElastigroupAzureV3NetworkNetworkInterface] {
-	return pulumix.Output[ElastigroupAzureV3NetworkNetworkInterface]{
-		OutputState: i.ToElastigroupAzureV3NetworkNetworkInterfaceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ElastigroupAzureV3NetworkNetworkInterfaceArrayInput is an input type that accepts ElastigroupAzureV3NetworkNetworkInterfaceArray and ElastigroupAzureV3NetworkNetworkInterfaceArrayOutput values.
 // You can construct a concrete instance of `ElastigroupAzureV3NetworkNetworkInterfaceArrayInput` via:
 //
@@ -1144,12 +969,6 @@ func (i ElastigroupAzureV3NetworkNetworkInterfaceArray) ToElastigroupAzureV3Netw
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupAzureV3NetworkNetworkInterfaceArrayOutput)
 }
 
-func (i ElastigroupAzureV3NetworkNetworkInterfaceArray) ToOutput(ctx context.Context) pulumix.Output[[]ElastigroupAzureV3NetworkNetworkInterface] {
-	return pulumix.Output[[]ElastigroupAzureV3NetworkNetworkInterface]{
-		OutputState: i.ToElastigroupAzureV3NetworkNetworkInterfaceArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ElastigroupAzureV3NetworkNetworkInterfaceOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupAzureV3NetworkNetworkInterfaceOutput) ElementType() reflect.Type {
@@ -1162,12 +981,6 @@ func (o ElastigroupAzureV3NetworkNetworkInterfaceOutput) ToElastigroupAzureV3Net
 
 func (o ElastigroupAzureV3NetworkNetworkInterfaceOutput) ToElastigroupAzureV3NetworkNetworkInterfaceOutputWithContext(ctx context.Context) ElastigroupAzureV3NetworkNetworkInterfaceOutput {
 	return o
-}
-
-func (o ElastigroupAzureV3NetworkNetworkInterfaceOutput) ToOutput(ctx context.Context) pulumix.Output[ElastigroupAzureV3NetworkNetworkInterface] {
-	return pulumix.Output[ElastigroupAzureV3NetworkNetworkInterface]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ElastigroupAzureV3NetworkNetworkInterfaceOutput) AdditionalIpConfigs() ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArrayOutput {
@@ -1206,12 +1019,6 @@ func (o ElastigroupAzureV3NetworkNetworkInterfaceArrayOutput) ToElastigroupAzure
 
 func (o ElastigroupAzureV3NetworkNetworkInterfaceArrayOutput) ToElastigroupAzureV3NetworkNetworkInterfaceArrayOutputWithContext(ctx context.Context) ElastigroupAzureV3NetworkNetworkInterfaceArrayOutput {
 	return o
-}
-
-func (o ElastigroupAzureV3NetworkNetworkInterfaceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ElastigroupAzureV3NetworkNetworkInterface] {
-	return pulumix.Output[[]ElastigroupAzureV3NetworkNetworkInterface]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ElastigroupAzureV3NetworkNetworkInterfaceArrayOutput) Index(i pulumi.IntInput) ElastigroupAzureV3NetworkNetworkInterfaceOutput {
@@ -1253,12 +1060,6 @@ func (i ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArgs) ToElast
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigOutput)
 }
 
-func (i ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfig] {
-	return pulumix.Output[ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfig]{
-		OutputState: i.ToElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArrayInput is an input type that accepts ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArray and ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArrayOutput values.
 // You can construct a concrete instance of `ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArrayInput` via:
 //
@@ -1284,12 +1085,6 @@ func (i ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArray) ToElas
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArrayOutput)
 }
 
-func (i ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfig] {
-	return pulumix.Output[[]ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfig]{
-		OutputState: i.ToElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigOutput) ElementType() reflect.Type {
@@ -1302,12 +1097,6 @@ func (o ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigOutput) ToEla
 
 func (o ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigOutput) ToElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigOutputWithContext(ctx context.Context) ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigOutput {
 	return o
-}
-
-func (o ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfig] {
-	return pulumix.Output[ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigOutput) Name() pulumi.StringOutput {
@@ -1330,12 +1119,6 @@ func (o ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArrayOutput) 
 
 func (o ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArrayOutput) ToElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArrayOutputWithContext(ctx context.Context) ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArrayOutput {
 	return o
-}
-
-func (o ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfig] {
-	return pulumix.Output[[]ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArrayOutput) Index(i pulumi.IntInput) ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigOutput {
@@ -1377,12 +1160,6 @@ func (i ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArgs) T
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupOutput)
 }
 
-func (i ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArgs) ToOutput(ctx context.Context) pulumix.Output[ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroup] {
-	return pulumix.Output[ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroup]{
-		OutputState: i.ToElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArrayInput is an input type that accepts ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArray and ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArrayOutput values.
 // You can construct a concrete instance of `ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArrayInput` via:
 //
@@ -1408,12 +1185,6 @@ func (i ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArray) 
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArrayOutput)
 }
 
-func (i ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArray) ToOutput(ctx context.Context) pulumix.Output[[]ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroup] {
-	return pulumix.Output[[]ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroup]{
-		OutputState: i.ToElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupOutput) ElementType() reflect.Type {
@@ -1426,12 +1197,6 @@ func (o ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupOutput)
 
 func (o ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupOutput) ToElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupOutputWithContext(ctx context.Context) ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupOutput {
 	return o
-}
-
-func (o ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupOutput) ToOutput(ctx context.Context) pulumix.Output[ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroup] {
-	return pulumix.Output[ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupOutput) Name() pulumi.StringOutput {
@@ -1456,12 +1221,6 @@ func (o ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArrayOu
 
 func (o ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArrayOutput) ToElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArrayOutputWithContext(ctx context.Context) ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArrayOutput {
 	return o
-}
-
-func (o ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroup] {
-	return pulumix.Output[[]ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArrayOutput) Index(i pulumi.IntInput) ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupOutput {
@@ -1503,12 +1262,6 @@ func (i ElastigroupAzureV3TagArgs) ToElastigroupAzureV3TagOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupAzureV3TagOutput)
 }
 
-func (i ElastigroupAzureV3TagArgs) ToOutput(ctx context.Context) pulumix.Output[ElastigroupAzureV3Tag] {
-	return pulumix.Output[ElastigroupAzureV3Tag]{
-		OutputState: i.ToElastigroupAzureV3TagOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ElastigroupAzureV3TagArrayInput is an input type that accepts ElastigroupAzureV3TagArray and ElastigroupAzureV3TagArrayOutput values.
 // You can construct a concrete instance of `ElastigroupAzureV3TagArrayInput` via:
 //
@@ -1534,12 +1287,6 @@ func (i ElastigroupAzureV3TagArray) ToElastigroupAzureV3TagArrayOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupAzureV3TagArrayOutput)
 }
 
-func (i ElastigroupAzureV3TagArray) ToOutput(ctx context.Context) pulumix.Output[[]ElastigroupAzureV3Tag] {
-	return pulumix.Output[[]ElastigroupAzureV3Tag]{
-		OutputState: i.ToElastigroupAzureV3TagArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ElastigroupAzureV3TagOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupAzureV3TagOutput) ElementType() reflect.Type {
@@ -1552,12 +1299,6 @@ func (o ElastigroupAzureV3TagOutput) ToElastigroupAzureV3TagOutput() Elastigroup
 
 func (o ElastigroupAzureV3TagOutput) ToElastigroupAzureV3TagOutputWithContext(ctx context.Context) ElastigroupAzureV3TagOutput {
 	return o
-}
-
-func (o ElastigroupAzureV3TagOutput) ToOutput(ctx context.Context) pulumix.Output[ElastigroupAzureV3Tag] {
-	return pulumix.Output[ElastigroupAzureV3Tag]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ElastigroupAzureV3TagOutput) Key() pulumi.StringOutput {
@@ -1580,12 +1321,6 @@ func (o ElastigroupAzureV3TagArrayOutput) ToElastigroupAzureV3TagArrayOutput() E
 
 func (o ElastigroupAzureV3TagArrayOutput) ToElastigroupAzureV3TagArrayOutputWithContext(ctx context.Context) ElastigroupAzureV3TagArrayOutput {
 	return o
-}
-
-func (o ElastigroupAzureV3TagArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ElastigroupAzureV3Tag] {
-	return pulumix.Output[[]ElastigroupAzureV3Tag]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ElastigroupAzureV3TagArrayOutput) Index(i pulumi.IntInput) ElastigroupAzureV3TagOutput {
@@ -1655,12 +1390,6 @@ func (i HealthCheckCheckArgs) ToHealthCheckCheckOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(HealthCheckCheckOutput)
 }
 
-func (i HealthCheckCheckArgs) ToOutput(ctx context.Context) pulumix.Output[HealthCheckCheck] {
-	return pulumix.Output[HealthCheckCheck]{
-		OutputState: i.ToHealthCheckCheckOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i HealthCheckCheckArgs) ToHealthCheckCheckPtrOutput() HealthCheckCheckPtrOutput {
 	return i.ToHealthCheckCheckPtrOutputWithContext(context.Background())
 }
@@ -1702,12 +1431,6 @@ func (i *healthCheckCheckPtrType) ToHealthCheckCheckPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(HealthCheckCheckPtrOutput)
 }
 
-func (i *healthCheckCheckPtrType) ToOutput(ctx context.Context) pulumix.Output[*HealthCheckCheck] {
-	return pulumix.Output[*HealthCheckCheck]{
-		OutputState: i.ToHealthCheckCheckPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type HealthCheckCheckOutput struct{ *pulumi.OutputState }
 
 func (HealthCheckCheckOutput) ElementType() reflect.Type {
@@ -1730,12 +1453,6 @@ func (o HealthCheckCheckOutput) ToHealthCheckCheckPtrOutputWithContext(ctx conte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v HealthCheckCheck) *HealthCheckCheck {
 		return &v
 	}).(HealthCheckCheckPtrOutput)
-}
-
-func (o HealthCheckCheckOutput) ToOutput(ctx context.Context) pulumix.Output[HealthCheckCheck] {
-	return pulumix.Output[HealthCheckCheck]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o HealthCheckCheckOutput) EndPoint() pulumi.StringPtrOutput {
@@ -1793,12 +1510,6 @@ func (o HealthCheckCheckPtrOutput) ToHealthCheckCheckPtrOutput() HealthCheckChec
 
 func (o HealthCheckCheckPtrOutput) ToHealthCheckCheckPtrOutputWithContext(ctx context.Context) HealthCheckCheckPtrOutput {
 	return o
-}
-
-func (o HealthCheckCheckPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HealthCheckCheck] {
-	return pulumix.Output[*HealthCheckCheck]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o HealthCheckCheckPtrOutput) Elem() HealthCheckCheckOutput {
@@ -1940,12 +1651,6 @@ func (i StatefulNodeAzureAttachDataDiskArgs) ToStatefulNodeAzureAttachDataDiskOu
 	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureAttachDataDiskOutput)
 }
 
-func (i StatefulNodeAzureAttachDataDiskArgs) ToOutput(ctx context.Context) pulumix.Output[StatefulNodeAzureAttachDataDisk] {
-	return pulumix.Output[StatefulNodeAzureAttachDataDisk]{
-		OutputState: i.ToStatefulNodeAzureAttachDataDiskOutputWithContext(ctx).OutputState,
-	}
-}
-
 // StatefulNodeAzureAttachDataDiskArrayInput is an input type that accepts StatefulNodeAzureAttachDataDiskArray and StatefulNodeAzureAttachDataDiskArrayOutput values.
 // You can construct a concrete instance of `StatefulNodeAzureAttachDataDiskArrayInput` via:
 //
@@ -1971,12 +1676,6 @@ func (i StatefulNodeAzureAttachDataDiskArray) ToStatefulNodeAzureAttachDataDiskA
 	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureAttachDataDiskArrayOutput)
 }
 
-func (i StatefulNodeAzureAttachDataDiskArray) ToOutput(ctx context.Context) pulumix.Output[[]StatefulNodeAzureAttachDataDisk] {
-	return pulumix.Output[[]StatefulNodeAzureAttachDataDisk]{
-		OutputState: i.ToStatefulNodeAzureAttachDataDiskArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StatefulNodeAzureAttachDataDiskOutput struct{ *pulumi.OutputState }
 
 func (StatefulNodeAzureAttachDataDiskOutput) ElementType() reflect.Type {
@@ -1989,12 +1688,6 @@ func (o StatefulNodeAzureAttachDataDiskOutput) ToStatefulNodeAzureAttachDataDisk
 
 func (o StatefulNodeAzureAttachDataDiskOutput) ToStatefulNodeAzureAttachDataDiskOutputWithContext(ctx context.Context) StatefulNodeAzureAttachDataDiskOutput {
 	return o
-}
-
-func (o StatefulNodeAzureAttachDataDiskOutput) ToOutput(ctx context.Context) pulumix.Output[StatefulNodeAzureAttachDataDisk] {
-	return pulumix.Output[StatefulNodeAzureAttachDataDisk]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StatefulNodeAzureAttachDataDiskOutput) DataDiskName() pulumi.StringOutput {
@@ -2033,12 +1726,6 @@ func (o StatefulNodeAzureAttachDataDiskArrayOutput) ToStatefulNodeAzureAttachDat
 
 func (o StatefulNodeAzureAttachDataDiskArrayOutput) ToStatefulNodeAzureAttachDataDiskArrayOutputWithContext(ctx context.Context) StatefulNodeAzureAttachDataDiskArrayOutput {
 	return o
-}
-
-func (o StatefulNodeAzureAttachDataDiskArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StatefulNodeAzureAttachDataDisk] {
-	return pulumix.Output[[]StatefulNodeAzureAttachDataDisk]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StatefulNodeAzureAttachDataDiskArrayOutput) Index(i pulumi.IntInput) StatefulNodeAzureAttachDataDiskOutput {
@@ -2082,12 +1769,6 @@ func (i StatefulNodeAzureBootDiagnosticArgs) ToStatefulNodeAzureBootDiagnosticOu
 	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureBootDiagnosticOutput)
 }
 
-func (i StatefulNodeAzureBootDiagnosticArgs) ToOutput(ctx context.Context) pulumix.Output[StatefulNodeAzureBootDiagnostic] {
-	return pulumix.Output[StatefulNodeAzureBootDiagnostic]{
-		OutputState: i.ToStatefulNodeAzureBootDiagnosticOutputWithContext(ctx).OutputState,
-	}
-}
-
 // StatefulNodeAzureBootDiagnosticArrayInput is an input type that accepts StatefulNodeAzureBootDiagnosticArray and StatefulNodeAzureBootDiagnosticArrayOutput values.
 // You can construct a concrete instance of `StatefulNodeAzureBootDiagnosticArrayInput` via:
 //
@@ -2113,12 +1794,6 @@ func (i StatefulNodeAzureBootDiagnosticArray) ToStatefulNodeAzureBootDiagnosticA
 	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureBootDiagnosticArrayOutput)
 }
 
-func (i StatefulNodeAzureBootDiagnosticArray) ToOutput(ctx context.Context) pulumix.Output[[]StatefulNodeAzureBootDiagnostic] {
-	return pulumix.Output[[]StatefulNodeAzureBootDiagnostic]{
-		OutputState: i.ToStatefulNodeAzureBootDiagnosticArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StatefulNodeAzureBootDiagnosticOutput struct{ *pulumi.OutputState }
 
 func (StatefulNodeAzureBootDiagnosticOutput) ElementType() reflect.Type {
@@ -2131,12 +1806,6 @@ func (o StatefulNodeAzureBootDiagnosticOutput) ToStatefulNodeAzureBootDiagnostic
 
 func (o StatefulNodeAzureBootDiagnosticOutput) ToStatefulNodeAzureBootDiagnosticOutputWithContext(ctx context.Context) StatefulNodeAzureBootDiagnosticOutput {
 	return o
-}
-
-func (o StatefulNodeAzureBootDiagnosticOutput) ToOutput(ctx context.Context) pulumix.Output[StatefulNodeAzureBootDiagnostic] {
-	return pulumix.Output[StatefulNodeAzureBootDiagnostic]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StatefulNodeAzureBootDiagnosticOutput) IsEnabled() pulumi.BoolPtrOutput {
@@ -2163,12 +1832,6 @@ func (o StatefulNodeAzureBootDiagnosticArrayOutput) ToStatefulNodeAzureBootDiagn
 
 func (o StatefulNodeAzureBootDiagnosticArrayOutput) ToStatefulNodeAzureBootDiagnosticArrayOutputWithContext(ctx context.Context) StatefulNodeAzureBootDiagnosticArrayOutput {
 	return o
-}
-
-func (o StatefulNodeAzureBootDiagnosticArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StatefulNodeAzureBootDiagnostic] {
-	return pulumix.Output[[]StatefulNodeAzureBootDiagnostic]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StatefulNodeAzureBootDiagnosticArrayOutput) Index(i pulumi.IntInput) StatefulNodeAzureBootDiagnosticOutput {
@@ -2212,12 +1875,6 @@ func (i StatefulNodeAzureDataDiskArgs) ToStatefulNodeAzureDataDiskOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureDataDiskOutput)
 }
 
-func (i StatefulNodeAzureDataDiskArgs) ToOutput(ctx context.Context) pulumix.Output[StatefulNodeAzureDataDisk] {
-	return pulumix.Output[StatefulNodeAzureDataDisk]{
-		OutputState: i.ToStatefulNodeAzureDataDiskOutputWithContext(ctx).OutputState,
-	}
-}
-
 // StatefulNodeAzureDataDiskArrayInput is an input type that accepts StatefulNodeAzureDataDiskArray and StatefulNodeAzureDataDiskArrayOutput values.
 // You can construct a concrete instance of `StatefulNodeAzureDataDiskArrayInput` via:
 //
@@ -2243,12 +1900,6 @@ func (i StatefulNodeAzureDataDiskArray) ToStatefulNodeAzureDataDiskArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureDataDiskArrayOutput)
 }
 
-func (i StatefulNodeAzureDataDiskArray) ToOutput(ctx context.Context) pulumix.Output[[]StatefulNodeAzureDataDisk] {
-	return pulumix.Output[[]StatefulNodeAzureDataDisk]{
-		OutputState: i.ToStatefulNodeAzureDataDiskArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StatefulNodeAzureDataDiskOutput struct{ *pulumi.OutputState }
 
 func (StatefulNodeAzureDataDiskOutput) ElementType() reflect.Type {
@@ -2261,12 +1912,6 @@ func (o StatefulNodeAzureDataDiskOutput) ToStatefulNodeAzureDataDiskOutput() Sta
 
 func (o StatefulNodeAzureDataDiskOutput) ToStatefulNodeAzureDataDiskOutputWithContext(ctx context.Context) StatefulNodeAzureDataDiskOutput {
 	return o
-}
-
-func (o StatefulNodeAzureDataDiskOutput) ToOutput(ctx context.Context) pulumix.Output[StatefulNodeAzureDataDisk] {
-	return pulumix.Output[StatefulNodeAzureDataDisk]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StatefulNodeAzureDataDiskOutput) Lun() pulumi.IntOutput {
@@ -2293,12 +1938,6 @@ func (o StatefulNodeAzureDataDiskArrayOutput) ToStatefulNodeAzureDataDiskArrayOu
 
 func (o StatefulNodeAzureDataDiskArrayOutput) ToStatefulNodeAzureDataDiskArrayOutputWithContext(ctx context.Context) StatefulNodeAzureDataDiskArrayOutput {
 	return o
-}
-
-func (o StatefulNodeAzureDataDiskArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StatefulNodeAzureDataDisk] {
-	return pulumix.Output[[]StatefulNodeAzureDataDisk]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StatefulNodeAzureDataDiskArrayOutput) Index(i pulumi.IntInput) StatefulNodeAzureDataDiskOutput {
@@ -2354,12 +1993,6 @@ func (i StatefulNodeAzureDeleteArgs) ToStatefulNodeAzureDeleteOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureDeleteOutput)
 }
 
-func (i StatefulNodeAzureDeleteArgs) ToOutput(ctx context.Context) pulumix.Output[StatefulNodeAzureDelete] {
-	return pulumix.Output[StatefulNodeAzureDelete]{
-		OutputState: i.ToStatefulNodeAzureDeleteOutputWithContext(ctx).OutputState,
-	}
-}
-
 // StatefulNodeAzureDeleteArrayInput is an input type that accepts StatefulNodeAzureDeleteArray and StatefulNodeAzureDeleteArrayOutput values.
 // You can construct a concrete instance of `StatefulNodeAzureDeleteArrayInput` via:
 //
@@ -2385,12 +2018,6 @@ func (i StatefulNodeAzureDeleteArray) ToStatefulNodeAzureDeleteArrayOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureDeleteArrayOutput)
 }
 
-func (i StatefulNodeAzureDeleteArray) ToOutput(ctx context.Context) pulumix.Output[[]StatefulNodeAzureDelete] {
-	return pulumix.Output[[]StatefulNodeAzureDelete]{
-		OutputState: i.ToStatefulNodeAzureDeleteArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StatefulNodeAzureDeleteOutput struct{ *pulumi.OutputState }
 
 func (StatefulNodeAzureDeleteOutput) ElementType() reflect.Type {
@@ -2403,12 +2030,6 @@ func (o StatefulNodeAzureDeleteOutput) ToStatefulNodeAzureDeleteOutput() Statefu
 
 func (o StatefulNodeAzureDeleteOutput) ToStatefulNodeAzureDeleteOutputWithContext(ctx context.Context) StatefulNodeAzureDeleteOutput {
 	return o
-}
-
-func (o StatefulNodeAzureDeleteOutput) ToOutput(ctx context.Context) pulumix.Output[StatefulNodeAzureDelete] {
-	return pulumix.Output[StatefulNodeAzureDelete]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StatefulNodeAzureDeleteOutput) DiskShouldDeallocate() pulumi.BoolOutput {
@@ -2461,12 +2082,6 @@ func (o StatefulNodeAzureDeleteArrayOutput) ToStatefulNodeAzureDeleteArrayOutput
 	return o
 }
 
-func (o StatefulNodeAzureDeleteArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StatefulNodeAzureDelete] {
-	return pulumix.Output[[]StatefulNodeAzureDelete]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o StatefulNodeAzureDeleteArrayOutput) Index(i pulumi.IntInput) StatefulNodeAzureDeleteOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StatefulNodeAzureDelete {
 		return vs[0].([]StatefulNodeAzureDelete)[vs[1].(int)]
@@ -2510,12 +2125,6 @@ func (i StatefulNodeAzureDetachDataDiskArgs) ToStatefulNodeAzureDetachDataDiskOu
 	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureDetachDataDiskOutput)
 }
 
-func (i StatefulNodeAzureDetachDataDiskArgs) ToOutput(ctx context.Context) pulumix.Output[StatefulNodeAzureDetachDataDisk] {
-	return pulumix.Output[StatefulNodeAzureDetachDataDisk]{
-		OutputState: i.ToStatefulNodeAzureDetachDataDiskOutputWithContext(ctx).OutputState,
-	}
-}
-
 // StatefulNodeAzureDetachDataDiskArrayInput is an input type that accepts StatefulNodeAzureDetachDataDiskArray and StatefulNodeAzureDetachDataDiskArrayOutput values.
 // You can construct a concrete instance of `StatefulNodeAzureDetachDataDiskArrayInput` via:
 //
@@ -2541,12 +2150,6 @@ func (i StatefulNodeAzureDetachDataDiskArray) ToStatefulNodeAzureDetachDataDiskA
 	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureDetachDataDiskArrayOutput)
 }
 
-func (i StatefulNodeAzureDetachDataDiskArray) ToOutput(ctx context.Context) pulumix.Output[[]StatefulNodeAzureDetachDataDisk] {
-	return pulumix.Output[[]StatefulNodeAzureDetachDataDisk]{
-		OutputState: i.ToStatefulNodeAzureDetachDataDiskArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StatefulNodeAzureDetachDataDiskOutput struct{ *pulumi.OutputState }
 
 func (StatefulNodeAzureDetachDataDiskOutput) ElementType() reflect.Type {
@@ -2559,12 +2162,6 @@ func (o StatefulNodeAzureDetachDataDiskOutput) ToStatefulNodeAzureDetachDataDisk
 
 func (o StatefulNodeAzureDetachDataDiskOutput) ToStatefulNodeAzureDetachDataDiskOutputWithContext(ctx context.Context) StatefulNodeAzureDetachDataDiskOutput {
 	return o
-}
-
-func (o StatefulNodeAzureDetachDataDiskOutput) ToOutput(ctx context.Context) pulumix.Output[StatefulNodeAzureDetachDataDisk] {
-	return pulumix.Output[StatefulNodeAzureDetachDataDisk]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StatefulNodeAzureDetachDataDiskOutput) DataDiskName() pulumi.StringOutput {
@@ -2595,12 +2192,6 @@ func (o StatefulNodeAzureDetachDataDiskArrayOutput) ToStatefulNodeAzureDetachDat
 
 func (o StatefulNodeAzureDetachDataDiskArrayOutput) ToStatefulNodeAzureDetachDataDiskArrayOutputWithContext(ctx context.Context) StatefulNodeAzureDetachDataDiskArrayOutput {
 	return o
-}
-
-func (o StatefulNodeAzureDetachDataDiskArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StatefulNodeAzureDetachDataDisk] {
-	return pulumix.Output[[]StatefulNodeAzureDetachDataDisk]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StatefulNodeAzureDetachDataDiskArrayOutput) Index(i pulumi.IntInput) StatefulNodeAzureDetachDataDiskOutput {
@@ -2652,12 +2243,6 @@ func (i StatefulNodeAzureExtensionArgs) ToStatefulNodeAzureExtensionOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureExtensionOutput)
 }
 
-func (i StatefulNodeAzureExtensionArgs) ToOutput(ctx context.Context) pulumix.Output[StatefulNodeAzureExtension] {
-	return pulumix.Output[StatefulNodeAzureExtension]{
-		OutputState: i.ToStatefulNodeAzureExtensionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // StatefulNodeAzureExtensionArrayInput is an input type that accepts StatefulNodeAzureExtensionArray and StatefulNodeAzureExtensionArrayOutput values.
 // You can construct a concrete instance of `StatefulNodeAzureExtensionArrayInput` via:
 //
@@ -2683,12 +2268,6 @@ func (i StatefulNodeAzureExtensionArray) ToStatefulNodeAzureExtensionArrayOutput
 	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureExtensionArrayOutput)
 }
 
-func (i StatefulNodeAzureExtensionArray) ToOutput(ctx context.Context) pulumix.Output[[]StatefulNodeAzureExtension] {
-	return pulumix.Output[[]StatefulNodeAzureExtension]{
-		OutputState: i.ToStatefulNodeAzureExtensionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StatefulNodeAzureExtensionOutput struct{ *pulumi.OutputState }
 
 func (StatefulNodeAzureExtensionOutput) ElementType() reflect.Type {
@@ -2701,12 +2280,6 @@ func (o StatefulNodeAzureExtensionOutput) ToStatefulNodeAzureExtensionOutput() S
 
 func (o StatefulNodeAzureExtensionOutput) ToStatefulNodeAzureExtensionOutputWithContext(ctx context.Context) StatefulNodeAzureExtensionOutput {
 	return o
-}
-
-func (o StatefulNodeAzureExtensionOutput) ToOutput(ctx context.Context) pulumix.Output[StatefulNodeAzureExtension] {
-	return pulumix.Output[StatefulNodeAzureExtension]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StatefulNodeAzureExtensionOutput) ApiVersion() pulumi.StringOutput {
@@ -2749,12 +2322,6 @@ func (o StatefulNodeAzureExtensionArrayOutput) ToStatefulNodeAzureExtensionArray
 
 func (o StatefulNodeAzureExtensionArrayOutput) ToStatefulNodeAzureExtensionArrayOutputWithContext(ctx context.Context) StatefulNodeAzureExtensionArrayOutput {
 	return o
-}
-
-func (o StatefulNodeAzureExtensionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StatefulNodeAzureExtension] {
-	return pulumix.Output[[]StatefulNodeAzureExtension]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StatefulNodeAzureExtensionArrayOutput) Index(i pulumi.IntInput) StatefulNodeAzureExtensionOutput {
@@ -2800,12 +2367,6 @@ func (i StatefulNodeAzureHealthArgs) ToStatefulNodeAzureHealthOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureHealthOutput)
 }
 
-func (i StatefulNodeAzureHealthArgs) ToOutput(ctx context.Context) pulumix.Output[StatefulNodeAzureHealth] {
-	return pulumix.Output[StatefulNodeAzureHealth]{
-		OutputState: i.ToStatefulNodeAzureHealthOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i StatefulNodeAzureHealthArgs) ToStatefulNodeAzureHealthPtrOutput() StatefulNodeAzureHealthPtrOutput {
 	return i.ToStatefulNodeAzureHealthPtrOutputWithContext(context.Background())
 }
@@ -2847,12 +2408,6 @@ func (i *statefulNodeAzureHealthPtrType) ToStatefulNodeAzureHealthPtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureHealthPtrOutput)
 }
 
-func (i *statefulNodeAzureHealthPtrType) ToOutput(ctx context.Context) pulumix.Output[*StatefulNodeAzureHealth] {
-	return pulumix.Output[*StatefulNodeAzureHealth]{
-		OutputState: i.ToStatefulNodeAzureHealthPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StatefulNodeAzureHealthOutput struct{ *pulumi.OutputState }
 
 func (StatefulNodeAzureHealthOutput) ElementType() reflect.Type {
@@ -2875,12 +2430,6 @@ func (o StatefulNodeAzureHealthOutput) ToStatefulNodeAzureHealthPtrOutputWithCon
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v StatefulNodeAzureHealth) *StatefulNodeAzureHealth {
 		return &v
 	}).(StatefulNodeAzureHealthPtrOutput)
-}
-
-func (o StatefulNodeAzureHealthOutput) ToOutput(ctx context.Context) pulumix.Output[StatefulNodeAzureHealth] {
-	return pulumix.Output[StatefulNodeAzureHealth]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StatefulNodeAzureHealthOutput) AutoHealing() pulumi.BoolOutput {
@@ -2911,12 +2460,6 @@ func (o StatefulNodeAzureHealthPtrOutput) ToStatefulNodeAzureHealthPtrOutput() S
 
 func (o StatefulNodeAzureHealthPtrOutput) ToStatefulNodeAzureHealthPtrOutputWithContext(ctx context.Context) StatefulNodeAzureHealthPtrOutput {
 	return o
-}
-
-func (o StatefulNodeAzureHealthPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StatefulNodeAzureHealth] {
-	return pulumix.Output[*StatefulNodeAzureHealth]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StatefulNodeAzureHealthPtrOutput) Elem() StatefulNodeAzureHealthOutput {
@@ -3000,12 +2543,6 @@ func (i StatefulNodeAzureImageArgs) ToStatefulNodeAzureImageOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureImageOutput)
 }
 
-func (i StatefulNodeAzureImageArgs) ToOutput(ctx context.Context) pulumix.Output[StatefulNodeAzureImage] {
-	return pulumix.Output[StatefulNodeAzureImage]{
-		OutputState: i.ToStatefulNodeAzureImageOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i StatefulNodeAzureImageArgs) ToStatefulNodeAzureImagePtrOutput() StatefulNodeAzureImagePtrOutput {
 	return i.ToStatefulNodeAzureImagePtrOutputWithContext(context.Background())
 }
@@ -3047,12 +2584,6 @@ func (i *statefulNodeAzureImagePtrType) ToStatefulNodeAzureImagePtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureImagePtrOutput)
 }
 
-func (i *statefulNodeAzureImagePtrType) ToOutput(ctx context.Context) pulumix.Output[*StatefulNodeAzureImage] {
-	return pulumix.Output[*StatefulNodeAzureImage]{
-		OutputState: i.ToStatefulNodeAzureImagePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StatefulNodeAzureImageOutput struct{ *pulumi.OutputState }
 
 func (StatefulNodeAzureImageOutput) ElementType() reflect.Type {
@@ -3075,12 +2606,6 @@ func (o StatefulNodeAzureImageOutput) ToStatefulNodeAzureImagePtrOutputWithConte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v StatefulNodeAzureImage) *StatefulNodeAzureImage {
 		return &v
 	}).(StatefulNodeAzureImagePtrOutput)
-}
-
-func (o StatefulNodeAzureImageOutput) ToOutput(ctx context.Context) pulumix.Output[StatefulNodeAzureImage] {
-	return pulumix.Output[StatefulNodeAzureImage]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StatefulNodeAzureImageOutput) CustomImages() StatefulNodeAzureImageCustomImageArrayOutput {
@@ -3107,12 +2632,6 @@ func (o StatefulNodeAzureImagePtrOutput) ToStatefulNodeAzureImagePtrOutput() Sta
 
 func (o StatefulNodeAzureImagePtrOutput) ToStatefulNodeAzureImagePtrOutputWithContext(ctx context.Context) StatefulNodeAzureImagePtrOutput {
 	return o
-}
-
-func (o StatefulNodeAzureImagePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StatefulNodeAzureImage] {
-	return pulumix.Output[*StatefulNodeAzureImage]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StatefulNodeAzureImagePtrOutput) Elem() StatefulNodeAzureImageOutput {
@@ -3185,12 +2704,6 @@ func (i StatefulNodeAzureImageCustomImageArgs) ToStatefulNodeAzureImageCustomIma
 	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureImageCustomImageOutput)
 }
 
-func (i StatefulNodeAzureImageCustomImageArgs) ToOutput(ctx context.Context) pulumix.Output[StatefulNodeAzureImageCustomImage] {
-	return pulumix.Output[StatefulNodeAzureImageCustomImage]{
-		OutputState: i.ToStatefulNodeAzureImageCustomImageOutputWithContext(ctx).OutputState,
-	}
-}
-
 // StatefulNodeAzureImageCustomImageArrayInput is an input type that accepts StatefulNodeAzureImageCustomImageArray and StatefulNodeAzureImageCustomImageArrayOutput values.
 // You can construct a concrete instance of `StatefulNodeAzureImageCustomImageArrayInput` via:
 //
@@ -3216,12 +2729,6 @@ func (i StatefulNodeAzureImageCustomImageArray) ToStatefulNodeAzureImageCustomIm
 	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureImageCustomImageArrayOutput)
 }
 
-func (i StatefulNodeAzureImageCustomImageArray) ToOutput(ctx context.Context) pulumix.Output[[]StatefulNodeAzureImageCustomImage] {
-	return pulumix.Output[[]StatefulNodeAzureImageCustomImage]{
-		OutputState: i.ToStatefulNodeAzureImageCustomImageArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StatefulNodeAzureImageCustomImageOutput struct{ *pulumi.OutputState }
 
 func (StatefulNodeAzureImageCustomImageOutput) ElementType() reflect.Type {
@@ -3234,12 +2741,6 @@ func (o StatefulNodeAzureImageCustomImageOutput) ToStatefulNodeAzureImageCustomI
 
 func (o StatefulNodeAzureImageCustomImageOutput) ToStatefulNodeAzureImageCustomImageOutputWithContext(ctx context.Context) StatefulNodeAzureImageCustomImageOutput {
 	return o
-}
-
-func (o StatefulNodeAzureImageCustomImageOutput) ToOutput(ctx context.Context) pulumix.Output[StatefulNodeAzureImageCustomImage] {
-	return pulumix.Output[StatefulNodeAzureImageCustomImage]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StatefulNodeAzureImageCustomImageOutput) CustomImageResourceGroupName() pulumi.StringOutput {
@@ -3262,12 +2763,6 @@ func (o StatefulNodeAzureImageCustomImageArrayOutput) ToStatefulNodeAzureImageCu
 
 func (o StatefulNodeAzureImageCustomImageArrayOutput) ToStatefulNodeAzureImageCustomImageArrayOutputWithContext(ctx context.Context) StatefulNodeAzureImageCustomImageArrayOutput {
 	return o
-}
-
-func (o StatefulNodeAzureImageCustomImageArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StatefulNodeAzureImageCustomImage] {
-	return pulumix.Output[[]StatefulNodeAzureImageCustomImage]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StatefulNodeAzureImageCustomImageArrayOutput) Index(i pulumi.IntInput) StatefulNodeAzureImageCustomImageOutput {
@@ -3313,12 +2808,6 @@ func (i StatefulNodeAzureImageGalleryArgs) ToStatefulNodeAzureImageGalleryOutput
 	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureImageGalleryOutput)
 }
 
-func (i StatefulNodeAzureImageGalleryArgs) ToOutput(ctx context.Context) pulumix.Output[StatefulNodeAzureImageGallery] {
-	return pulumix.Output[StatefulNodeAzureImageGallery]{
-		OutputState: i.ToStatefulNodeAzureImageGalleryOutputWithContext(ctx).OutputState,
-	}
-}
-
 // StatefulNodeAzureImageGalleryArrayInput is an input type that accepts StatefulNodeAzureImageGalleryArray and StatefulNodeAzureImageGalleryArrayOutput values.
 // You can construct a concrete instance of `StatefulNodeAzureImageGalleryArrayInput` via:
 //
@@ -3344,12 +2833,6 @@ func (i StatefulNodeAzureImageGalleryArray) ToStatefulNodeAzureImageGalleryArray
 	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureImageGalleryArrayOutput)
 }
 
-func (i StatefulNodeAzureImageGalleryArray) ToOutput(ctx context.Context) pulumix.Output[[]StatefulNodeAzureImageGallery] {
-	return pulumix.Output[[]StatefulNodeAzureImageGallery]{
-		OutputState: i.ToStatefulNodeAzureImageGalleryArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StatefulNodeAzureImageGalleryOutput struct{ *pulumi.OutputState }
 
 func (StatefulNodeAzureImageGalleryOutput) ElementType() reflect.Type {
@@ -3362,12 +2845,6 @@ func (o StatefulNodeAzureImageGalleryOutput) ToStatefulNodeAzureImageGalleryOutp
 
 func (o StatefulNodeAzureImageGalleryOutput) ToStatefulNodeAzureImageGalleryOutputWithContext(ctx context.Context) StatefulNodeAzureImageGalleryOutput {
 	return o
-}
-
-func (o StatefulNodeAzureImageGalleryOutput) ToOutput(ctx context.Context) pulumix.Output[StatefulNodeAzureImageGallery] {
-	return pulumix.Output[StatefulNodeAzureImageGallery]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StatefulNodeAzureImageGalleryOutput) GalleryName() pulumi.StringOutput {
@@ -3398,12 +2875,6 @@ func (o StatefulNodeAzureImageGalleryArrayOutput) ToStatefulNodeAzureImageGaller
 
 func (o StatefulNodeAzureImageGalleryArrayOutput) ToStatefulNodeAzureImageGalleryArrayOutputWithContext(ctx context.Context) StatefulNodeAzureImageGalleryArrayOutput {
 	return o
-}
-
-func (o StatefulNodeAzureImageGalleryArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StatefulNodeAzureImageGallery] {
-	return pulumix.Output[[]StatefulNodeAzureImageGallery]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StatefulNodeAzureImageGalleryArrayOutput) Index(i pulumi.IntInput) StatefulNodeAzureImageGalleryOutput {
@@ -3449,12 +2920,6 @@ func (i StatefulNodeAzureImageMarketplaceImageArgs) ToStatefulNodeAzureImageMark
 	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureImageMarketplaceImageOutput)
 }
 
-func (i StatefulNodeAzureImageMarketplaceImageArgs) ToOutput(ctx context.Context) pulumix.Output[StatefulNodeAzureImageMarketplaceImage] {
-	return pulumix.Output[StatefulNodeAzureImageMarketplaceImage]{
-		OutputState: i.ToStatefulNodeAzureImageMarketplaceImageOutputWithContext(ctx).OutputState,
-	}
-}
-
 // StatefulNodeAzureImageMarketplaceImageArrayInput is an input type that accepts StatefulNodeAzureImageMarketplaceImageArray and StatefulNodeAzureImageMarketplaceImageArrayOutput values.
 // You can construct a concrete instance of `StatefulNodeAzureImageMarketplaceImageArrayInput` via:
 //
@@ -3480,12 +2945,6 @@ func (i StatefulNodeAzureImageMarketplaceImageArray) ToStatefulNodeAzureImageMar
 	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureImageMarketplaceImageArrayOutput)
 }
 
-func (i StatefulNodeAzureImageMarketplaceImageArray) ToOutput(ctx context.Context) pulumix.Output[[]StatefulNodeAzureImageMarketplaceImage] {
-	return pulumix.Output[[]StatefulNodeAzureImageMarketplaceImage]{
-		OutputState: i.ToStatefulNodeAzureImageMarketplaceImageArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StatefulNodeAzureImageMarketplaceImageOutput struct{ *pulumi.OutputState }
 
 func (StatefulNodeAzureImageMarketplaceImageOutput) ElementType() reflect.Type {
@@ -3498,12 +2957,6 @@ func (o StatefulNodeAzureImageMarketplaceImageOutput) ToStatefulNodeAzureImageMa
 
 func (o StatefulNodeAzureImageMarketplaceImageOutput) ToStatefulNodeAzureImageMarketplaceImageOutputWithContext(ctx context.Context) StatefulNodeAzureImageMarketplaceImageOutput {
 	return o
-}
-
-func (o StatefulNodeAzureImageMarketplaceImageOutput) ToOutput(ctx context.Context) pulumix.Output[StatefulNodeAzureImageMarketplaceImage] {
-	return pulumix.Output[StatefulNodeAzureImageMarketplaceImage]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StatefulNodeAzureImageMarketplaceImageOutput) Offer() pulumi.StringOutput {
@@ -3534,12 +2987,6 @@ func (o StatefulNodeAzureImageMarketplaceImageArrayOutput) ToStatefulNodeAzureIm
 
 func (o StatefulNodeAzureImageMarketplaceImageArrayOutput) ToStatefulNodeAzureImageMarketplaceImageArrayOutputWithContext(ctx context.Context) StatefulNodeAzureImageMarketplaceImageArrayOutput {
 	return o
-}
-
-func (o StatefulNodeAzureImageMarketplaceImageArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StatefulNodeAzureImageMarketplaceImage] {
-	return pulumix.Output[[]StatefulNodeAzureImageMarketplaceImage]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StatefulNodeAzureImageMarketplaceImageArrayOutput) Index(i pulumi.IntInput) StatefulNodeAzureImageMarketplaceImageOutput {
@@ -3585,12 +3032,6 @@ func (i StatefulNodeAzureImportVmArgs) ToStatefulNodeAzureImportVmOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureImportVmOutput)
 }
 
-func (i StatefulNodeAzureImportVmArgs) ToOutput(ctx context.Context) pulumix.Output[StatefulNodeAzureImportVm] {
-	return pulumix.Output[StatefulNodeAzureImportVm]{
-		OutputState: i.ToStatefulNodeAzureImportVmOutputWithContext(ctx).OutputState,
-	}
-}
-
 // StatefulNodeAzureImportVmArrayInput is an input type that accepts StatefulNodeAzureImportVmArray and StatefulNodeAzureImportVmArrayOutput values.
 // You can construct a concrete instance of `StatefulNodeAzureImportVmArrayInput` via:
 //
@@ -3616,12 +3057,6 @@ func (i StatefulNodeAzureImportVmArray) ToStatefulNodeAzureImportVmArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureImportVmArrayOutput)
 }
 
-func (i StatefulNodeAzureImportVmArray) ToOutput(ctx context.Context) pulumix.Output[[]StatefulNodeAzureImportVm] {
-	return pulumix.Output[[]StatefulNodeAzureImportVm]{
-		OutputState: i.ToStatefulNodeAzureImportVmArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StatefulNodeAzureImportVmOutput struct{ *pulumi.OutputState }
 
 func (StatefulNodeAzureImportVmOutput) ElementType() reflect.Type {
@@ -3634,12 +3069,6 @@ func (o StatefulNodeAzureImportVmOutput) ToStatefulNodeAzureImportVmOutput() Sta
 
 func (o StatefulNodeAzureImportVmOutput) ToStatefulNodeAzureImportVmOutputWithContext(ctx context.Context) StatefulNodeAzureImportVmOutput {
 	return o
-}
-
-func (o StatefulNodeAzureImportVmOutput) ToOutput(ctx context.Context) pulumix.Output[StatefulNodeAzureImportVm] {
-	return pulumix.Output[StatefulNodeAzureImportVm]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StatefulNodeAzureImportVmOutput) DrainingTimeout() pulumi.IntPtrOutput {
@@ -3670,12 +3099,6 @@ func (o StatefulNodeAzureImportVmArrayOutput) ToStatefulNodeAzureImportVmArrayOu
 
 func (o StatefulNodeAzureImportVmArrayOutput) ToStatefulNodeAzureImportVmArrayOutputWithContext(ctx context.Context) StatefulNodeAzureImportVmArrayOutput {
 	return o
-}
-
-func (o StatefulNodeAzureImportVmArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StatefulNodeAzureImportVm] {
-	return pulumix.Output[[]StatefulNodeAzureImportVm]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StatefulNodeAzureImportVmArrayOutput) Index(i pulumi.IntInput) StatefulNodeAzureImportVmOutput {
@@ -3723,12 +3146,6 @@ func (i StatefulNodeAzureLoadBalancerArgs) ToStatefulNodeAzureLoadBalancerOutput
 	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureLoadBalancerOutput)
 }
 
-func (i StatefulNodeAzureLoadBalancerArgs) ToOutput(ctx context.Context) pulumix.Output[StatefulNodeAzureLoadBalancer] {
-	return pulumix.Output[StatefulNodeAzureLoadBalancer]{
-		OutputState: i.ToStatefulNodeAzureLoadBalancerOutputWithContext(ctx).OutputState,
-	}
-}
-
 // StatefulNodeAzureLoadBalancerArrayInput is an input type that accepts StatefulNodeAzureLoadBalancerArray and StatefulNodeAzureLoadBalancerArrayOutput values.
 // You can construct a concrete instance of `StatefulNodeAzureLoadBalancerArrayInput` via:
 //
@@ -3754,12 +3171,6 @@ func (i StatefulNodeAzureLoadBalancerArray) ToStatefulNodeAzureLoadBalancerArray
 	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureLoadBalancerArrayOutput)
 }
 
-func (i StatefulNodeAzureLoadBalancerArray) ToOutput(ctx context.Context) pulumix.Output[[]StatefulNodeAzureLoadBalancer] {
-	return pulumix.Output[[]StatefulNodeAzureLoadBalancer]{
-		OutputState: i.ToStatefulNodeAzureLoadBalancerArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StatefulNodeAzureLoadBalancerOutput struct{ *pulumi.OutputState }
 
 func (StatefulNodeAzureLoadBalancerOutput) ElementType() reflect.Type {
@@ -3772,12 +3183,6 @@ func (o StatefulNodeAzureLoadBalancerOutput) ToStatefulNodeAzureLoadBalancerOutp
 
 func (o StatefulNodeAzureLoadBalancerOutput) ToStatefulNodeAzureLoadBalancerOutputWithContext(ctx context.Context) StatefulNodeAzureLoadBalancerOutput {
 	return o
-}
-
-func (o StatefulNodeAzureLoadBalancerOutput) ToOutput(ctx context.Context) pulumix.Output[StatefulNodeAzureLoadBalancer] {
-	return pulumix.Output[StatefulNodeAzureLoadBalancer]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StatefulNodeAzureLoadBalancerOutput) BackendPoolNames() pulumi.StringArrayOutput {
@@ -3812,12 +3217,6 @@ func (o StatefulNodeAzureLoadBalancerArrayOutput) ToStatefulNodeAzureLoadBalance
 
 func (o StatefulNodeAzureLoadBalancerArrayOutput) ToStatefulNodeAzureLoadBalancerArrayOutputWithContext(ctx context.Context) StatefulNodeAzureLoadBalancerArrayOutput {
 	return o
-}
-
-func (o StatefulNodeAzureLoadBalancerArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StatefulNodeAzureLoadBalancer] {
-	return pulumix.Output[[]StatefulNodeAzureLoadBalancer]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StatefulNodeAzureLoadBalancerArrayOutput) Index(i pulumi.IntInput) StatefulNodeAzureLoadBalancerOutput {
@@ -3861,12 +3260,6 @@ func (i StatefulNodeAzureLoginArgs) ToStatefulNodeAzureLoginOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureLoginOutput)
 }
 
-func (i StatefulNodeAzureLoginArgs) ToOutput(ctx context.Context) pulumix.Output[StatefulNodeAzureLogin] {
-	return pulumix.Output[StatefulNodeAzureLogin]{
-		OutputState: i.ToStatefulNodeAzureLoginOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i StatefulNodeAzureLoginArgs) ToStatefulNodeAzureLoginPtrOutput() StatefulNodeAzureLoginPtrOutput {
 	return i.ToStatefulNodeAzureLoginPtrOutputWithContext(context.Background())
 }
@@ -3908,12 +3301,6 @@ func (i *statefulNodeAzureLoginPtrType) ToStatefulNodeAzureLoginPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureLoginPtrOutput)
 }
 
-func (i *statefulNodeAzureLoginPtrType) ToOutput(ctx context.Context) pulumix.Output[*StatefulNodeAzureLogin] {
-	return pulumix.Output[*StatefulNodeAzureLogin]{
-		OutputState: i.ToStatefulNodeAzureLoginPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StatefulNodeAzureLoginOutput struct{ *pulumi.OutputState }
 
 func (StatefulNodeAzureLoginOutput) ElementType() reflect.Type {
@@ -3936,12 +3323,6 @@ func (o StatefulNodeAzureLoginOutput) ToStatefulNodeAzureLoginPtrOutputWithConte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v StatefulNodeAzureLogin) *StatefulNodeAzureLogin {
 		return &v
 	}).(StatefulNodeAzureLoginPtrOutput)
-}
-
-func (o StatefulNodeAzureLoginOutput) ToOutput(ctx context.Context) pulumix.Output[StatefulNodeAzureLogin] {
-	return pulumix.Output[StatefulNodeAzureLogin]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StatefulNodeAzureLoginOutput) Password() pulumi.StringPtrOutput {
@@ -3968,12 +3349,6 @@ func (o StatefulNodeAzureLoginPtrOutput) ToStatefulNodeAzureLoginPtrOutput() Sta
 
 func (o StatefulNodeAzureLoginPtrOutput) ToStatefulNodeAzureLoginPtrOutputWithContext(ctx context.Context) StatefulNodeAzureLoginPtrOutput {
 	return o
-}
-
-func (o StatefulNodeAzureLoginPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StatefulNodeAzureLogin] {
-	return pulumix.Output[*StatefulNodeAzureLogin]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StatefulNodeAzureLoginPtrOutput) Elem() StatefulNodeAzureLoginOutput {
@@ -4046,12 +3421,6 @@ func (i StatefulNodeAzureManagedServiceIdentityArgs) ToStatefulNodeAzureManagedS
 	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureManagedServiceIdentityOutput)
 }
 
-func (i StatefulNodeAzureManagedServiceIdentityArgs) ToOutput(ctx context.Context) pulumix.Output[StatefulNodeAzureManagedServiceIdentity] {
-	return pulumix.Output[StatefulNodeAzureManagedServiceIdentity]{
-		OutputState: i.ToStatefulNodeAzureManagedServiceIdentityOutputWithContext(ctx).OutputState,
-	}
-}
-
 // StatefulNodeAzureManagedServiceIdentityArrayInput is an input type that accepts StatefulNodeAzureManagedServiceIdentityArray and StatefulNodeAzureManagedServiceIdentityArrayOutput values.
 // You can construct a concrete instance of `StatefulNodeAzureManagedServiceIdentityArrayInput` via:
 //
@@ -4077,12 +3446,6 @@ func (i StatefulNodeAzureManagedServiceIdentityArray) ToStatefulNodeAzureManaged
 	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureManagedServiceIdentityArrayOutput)
 }
 
-func (i StatefulNodeAzureManagedServiceIdentityArray) ToOutput(ctx context.Context) pulumix.Output[[]StatefulNodeAzureManagedServiceIdentity] {
-	return pulumix.Output[[]StatefulNodeAzureManagedServiceIdentity]{
-		OutputState: i.ToStatefulNodeAzureManagedServiceIdentityArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StatefulNodeAzureManagedServiceIdentityOutput struct{ *pulumi.OutputState }
 
 func (StatefulNodeAzureManagedServiceIdentityOutput) ElementType() reflect.Type {
@@ -4095,12 +3458,6 @@ func (o StatefulNodeAzureManagedServiceIdentityOutput) ToStatefulNodeAzureManage
 
 func (o StatefulNodeAzureManagedServiceIdentityOutput) ToStatefulNodeAzureManagedServiceIdentityOutputWithContext(ctx context.Context) StatefulNodeAzureManagedServiceIdentityOutput {
 	return o
-}
-
-func (o StatefulNodeAzureManagedServiceIdentityOutput) ToOutput(ctx context.Context) pulumix.Output[StatefulNodeAzureManagedServiceIdentity] {
-	return pulumix.Output[StatefulNodeAzureManagedServiceIdentity]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StatefulNodeAzureManagedServiceIdentityOutput) Name() pulumi.StringOutput {
@@ -4123,12 +3480,6 @@ func (o StatefulNodeAzureManagedServiceIdentityArrayOutput) ToStatefulNodeAzureM
 
 func (o StatefulNodeAzureManagedServiceIdentityArrayOutput) ToStatefulNodeAzureManagedServiceIdentityArrayOutputWithContext(ctx context.Context) StatefulNodeAzureManagedServiceIdentityArrayOutput {
 	return o
-}
-
-func (o StatefulNodeAzureManagedServiceIdentityArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StatefulNodeAzureManagedServiceIdentity] {
-	return pulumix.Output[[]StatefulNodeAzureManagedServiceIdentity]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StatefulNodeAzureManagedServiceIdentityArrayOutput) Index(i pulumi.IntInput) StatefulNodeAzureManagedServiceIdentityOutput {
@@ -4172,12 +3523,6 @@ func (i StatefulNodeAzureNetworkArgs) ToStatefulNodeAzureNetworkOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureNetworkOutput)
 }
 
-func (i StatefulNodeAzureNetworkArgs) ToOutput(ctx context.Context) pulumix.Output[StatefulNodeAzureNetwork] {
-	return pulumix.Output[StatefulNodeAzureNetwork]{
-		OutputState: i.ToStatefulNodeAzureNetworkOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i StatefulNodeAzureNetworkArgs) ToStatefulNodeAzureNetworkPtrOutput() StatefulNodeAzureNetworkPtrOutput {
 	return i.ToStatefulNodeAzureNetworkPtrOutputWithContext(context.Background())
 }
@@ -4219,12 +3564,6 @@ func (i *statefulNodeAzureNetworkPtrType) ToStatefulNodeAzureNetworkPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureNetworkPtrOutput)
 }
 
-func (i *statefulNodeAzureNetworkPtrType) ToOutput(ctx context.Context) pulumix.Output[*StatefulNodeAzureNetwork] {
-	return pulumix.Output[*StatefulNodeAzureNetwork]{
-		OutputState: i.ToStatefulNodeAzureNetworkPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StatefulNodeAzureNetworkOutput struct{ *pulumi.OutputState }
 
 func (StatefulNodeAzureNetworkOutput) ElementType() reflect.Type {
@@ -4247,12 +3586,6 @@ func (o StatefulNodeAzureNetworkOutput) ToStatefulNodeAzureNetworkPtrOutputWithC
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v StatefulNodeAzureNetwork) *StatefulNodeAzureNetwork {
 		return &v
 	}).(StatefulNodeAzureNetworkPtrOutput)
-}
-
-func (o StatefulNodeAzureNetworkOutput) ToOutput(ctx context.Context) pulumix.Output[StatefulNodeAzureNetwork] {
-	return pulumix.Output[StatefulNodeAzureNetwork]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StatefulNodeAzureNetworkOutput) NetworkInterfaces() StatefulNodeAzureNetworkNetworkInterfaceArrayOutput {
@@ -4281,12 +3614,6 @@ func (o StatefulNodeAzureNetworkPtrOutput) ToStatefulNodeAzureNetworkPtrOutput()
 
 func (o StatefulNodeAzureNetworkPtrOutput) ToStatefulNodeAzureNetworkPtrOutputWithContext(ctx context.Context) StatefulNodeAzureNetworkPtrOutput {
 	return o
-}
-
-func (o StatefulNodeAzureNetworkPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StatefulNodeAzureNetwork] {
-	return pulumix.Output[*StatefulNodeAzureNetwork]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StatefulNodeAzureNetworkPtrOutput) Elem() StatefulNodeAzureNetworkOutput {
@@ -4375,12 +3702,6 @@ func (i StatefulNodeAzureNetworkNetworkInterfaceArgs) ToStatefulNodeAzureNetwork
 	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureNetworkNetworkInterfaceOutput)
 }
 
-func (i StatefulNodeAzureNetworkNetworkInterfaceArgs) ToOutput(ctx context.Context) pulumix.Output[StatefulNodeAzureNetworkNetworkInterface] {
-	return pulumix.Output[StatefulNodeAzureNetworkNetworkInterface]{
-		OutputState: i.ToStatefulNodeAzureNetworkNetworkInterfaceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // StatefulNodeAzureNetworkNetworkInterfaceArrayInput is an input type that accepts StatefulNodeAzureNetworkNetworkInterfaceArray and StatefulNodeAzureNetworkNetworkInterfaceArrayOutput values.
 // You can construct a concrete instance of `StatefulNodeAzureNetworkNetworkInterfaceArrayInput` via:
 //
@@ -4406,12 +3727,6 @@ func (i StatefulNodeAzureNetworkNetworkInterfaceArray) ToStatefulNodeAzureNetwor
 	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureNetworkNetworkInterfaceArrayOutput)
 }
 
-func (i StatefulNodeAzureNetworkNetworkInterfaceArray) ToOutput(ctx context.Context) pulumix.Output[[]StatefulNodeAzureNetworkNetworkInterface] {
-	return pulumix.Output[[]StatefulNodeAzureNetworkNetworkInterface]{
-		OutputState: i.ToStatefulNodeAzureNetworkNetworkInterfaceArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StatefulNodeAzureNetworkNetworkInterfaceOutput struct{ *pulumi.OutputState }
 
 func (StatefulNodeAzureNetworkNetworkInterfaceOutput) ElementType() reflect.Type {
@@ -4424,12 +3739,6 @@ func (o StatefulNodeAzureNetworkNetworkInterfaceOutput) ToStatefulNodeAzureNetwo
 
 func (o StatefulNodeAzureNetworkNetworkInterfaceOutput) ToStatefulNodeAzureNetworkNetworkInterfaceOutputWithContext(ctx context.Context) StatefulNodeAzureNetworkNetworkInterfaceOutput {
 	return o
-}
-
-func (o StatefulNodeAzureNetworkNetworkInterfaceOutput) ToOutput(ctx context.Context) pulumix.Output[StatefulNodeAzureNetworkNetworkInterface] {
-	return pulumix.Output[StatefulNodeAzureNetworkNetworkInterface]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StatefulNodeAzureNetworkNetworkInterfaceOutput) AdditionalIpConfigurations() StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationArrayOutput {
@@ -4494,12 +3803,6 @@ func (o StatefulNodeAzureNetworkNetworkInterfaceArrayOutput) ToStatefulNodeAzure
 	return o
 }
 
-func (o StatefulNodeAzureNetworkNetworkInterfaceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StatefulNodeAzureNetworkNetworkInterface] {
-	return pulumix.Output[[]StatefulNodeAzureNetworkNetworkInterface]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o StatefulNodeAzureNetworkNetworkInterfaceArrayOutput) Index(i pulumi.IntInput) StatefulNodeAzureNetworkNetworkInterfaceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StatefulNodeAzureNetworkNetworkInterface {
 		return vs[0].([]StatefulNodeAzureNetworkNetworkInterface)[vs[1].(int)]
@@ -4539,12 +3842,6 @@ func (i StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationArgs) T
 	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationOutput)
 }
 
-func (i StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfiguration] {
-	return pulumix.Output[StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfiguration]{
-		OutputState: i.ToStatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationOutputWithContext(ctx).OutputState,
-	}
-}
-
 // StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationArrayInput is an input type that accepts StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationArray and StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationArrayOutput values.
 // You can construct a concrete instance of `StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationArrayInput` via:
 //
@@ -4570,12 +3867,6 @@ func (i StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationArray) 
 	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationArrayOutput)
 }
 
-func (i StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationArray) ToOutput(ctx context.Context) pulumix.Output[[]StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfiguration] {
-	return pulumix.Output[[]StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfiguration]{
-		OutputState: i.ToStatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationOutput struct{ *pulumi.OutputState }
 
 func (StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationOutput) ElementType() reflect.Type {
@@ -4588,12 +3879,6 @@ func (o StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationOutput)
 
 func (o StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationOutput) ToStatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationOutputWithContext(ctx context.Context) StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationOutput {
 	return o
-}
-
-func (o StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfiguration] {
-	return pulumix.Output[StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationOutput) Name() pulumi.StringOutput {
@@ -4618,12 +3903,6 @@ func (o StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationArrayOu
 
 func (o StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationArrayOutput) ToStatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationArrayOutputWithContext(ctx context.Context) StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationArrayOutput {
 	return o
-}
-
-func (o StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfiguration] {
-	return pulumix.Output[[]StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationArrayOutput) Index(i pulumi.IntInput) StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationOutput {
@@ -4665,12 +3944,6 @@ func (i StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArgs) To
 	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupOutput)
 }
 
-func (i StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArgs) ToOutput(ctx context.Context) pulumix.Output[StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroup] {
-	return pulumix.Output[StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroup]{
-		OutputState: i.ToStatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupOutputWithContext(ctx).OutputState,
-	}
-}
-
 // StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArrayInput is an input type that accepts StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArray and StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArrayOutput values.
 // You can construct a concrete instance of `StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArrayInput` via:
 //
@@ -4696,12 +3969,6 @@ func (i StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArray) T
 	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArrayOutput)
 }
 
-func (i StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArray) ToOutput(ctx context.Context) pulumix.Output[[]StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroup] {
-	return pulumix.Output[[]StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroup]{
-		OutputState: i.ToStatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupOutput struct{ *pulumi.OutputState }
 
 func (StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupOutput) ElementType() reflect.Type {
@@ -4714,12 +3981,6 @@ func (o StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupOutput) 
 
 func (o StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupOutput) ToStatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupOutputWithContext(ctx context.Context) StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupOutput {
 	return o
-}
-
-func (o StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupOutput) ToOutput(ctx context.Context) pulumix.Output[StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroup] {
-	return pulumix.Output[StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupOutput) Name() pulumi.StringOutput {
@@ -4744,12 +4005,6 @@ func (o StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArrayOut
 
 func (o StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArrayOutput) ToStatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArrayOutputWithContext(ctx context.Context) StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArrayOutput {
 	return o
-}
-
-func (o StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroup] {
-	return pulumix.Output[[]StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArrayOutput) Index(i pulumi.IntInput) StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupOutput {
@@ -4791,12 +4046,6 @@ func (i StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupArgs) ToStat
 	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupOutput)
 }
 
-func (i StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupArgs) ToOutput(ctx context.Context) pulumix.Output[StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroup] {
-	return pulumix.Output[StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroup]{
-		OutputState: i.ToStatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupOutputWithContext(ctx).OutputState,
-	}
-}
-
 // StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupArrayInput is an input type that accepts StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupArray and StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupArrayOutput values.
 // You can construct a concrete instance of `StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupArrayInput` via:
 //
@@ -4822,12 +4071,6 @@ func (i StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupArray) ToSta
 	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupArrayOutput)
 }
 
-func (i StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupArray) ToOutput(ctx context.Context) pulumix.Output[[]StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroup] {
-	return pulumix.Output[[]StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroup]{
-		OutputState: i.ToStatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupOutput struct{ *pulumi.OutputState }
 
 func (StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupOutput) ElementType() reflect.Type {
@@ -4840,12 +4083,6 @@ func (o StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupOutput) ToSt
 
 func (o StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupOutput) ToStatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupOutputWithContext(ctx context.Context) StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupOutput {
 	return o
-}
-
-func (o StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupOutput) ToOutput(ctx context.Context) pulumix.Output[StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroup] {
-	return pulumix.Output[StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupOutput) Name() pulumi.StringPtrOutput {
@@ -4870,12 +4107,6 @@ func (o StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupArrayOutput)
 
 func (o StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupArrayOutput) ToStatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupArrayOutputWithContext(ctx context.Context) StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupArrayOutput {
 	return o
-}
-
-func (o StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroup] {
-	return pulumix.Output[[]StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupArrayOutput) Index(i pulumi.IntInput) StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupOutput {
@@ -4917,12 +4148,6 @@ func (i StatefulNodeAzureNetworkNetworkInterfacePublicIpArgs) ToStatefulNodeAzur
 	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureNetworkNetworkInterfacePublicIpOutput)
 }
 
-func (i StatefulNodeAzureNetworkNetworkInterfacePublicIpArgs) ToOutput(ctx context.Context) pulumix.Output[StatefulNodeAzureNetworkNetworkInterfacePublicIp] {
-	return pulumix.Output[StatefulNodeAzureNetworkNetworkInterfacePublicIp]{
-		OutputState: i.ToStatefulNodeAzureNetworkNetworkInterfacePublicIpOutputWithContext(ctx).OutputState,
-	}
-}
-
 // StatefulNodeAzureNetworkNetworkInterfacePublicIpArrayInput is an input type that accepts StatefulNodeAzureNetworkNetworkInterfacePublicIpArray and StatefulNodeAzureNetworkNetworkInterfacePublicIpArrayOutput values.
 // You can construct a concrete instance of `StatefulNodeAzureNetworkNetworkInterfacePublicIpArrayInput` via:
 //
@@ -4948,12 +4173,6 @@ func (i StatefulNodeAzureNetworkNetworkInterfacePublicIpArray) ToStatefulNodeAzu
 	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureNetworkNetworkInterfacePublicIpArrayOutput)
 }
 
-func (i StatefulNodeAzureNetworkNetworkInterfacePublicIpArray) ToOutput(ctx context.Context) pulumix.Output[[]StatefulNodeAzureNetworkNetworkInterfacePublicIp] {
-	return pulumix.Output[[]StatefulNodeAzureNetworkNetworkInterfacePublicIp]{
-		OutputState: i.ToStatefulNodeAzureNetworkNetworkInterfacePublicIpArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StatefulNodeAzureNetworkNetworkInterfacePublicIpOutput struct{ *pulumi.OutputState }
 
 func (StatefulNodeAzureNetworkNetworkInterfacePublicIpOutput) ElementType() reflect.Type {
@@ -4966,12 +4185,6 @@ func (o StatefulNodeAzureNetworkNetworkInterfacePublicIpOutput) ToStatefulNodeAz
 
 func (o StatefulNodeAzureNetworkNetworkInterfacePublicIpOutput) ToStatefulNodeAzureNetworkNetworkInterfacePublicIpOutputWithContext(ctx context.Context) StatefulNodeAzureNetworkNetworkInterfacePublicIpOutput {
 	return o
-}
-
-func (o StatefulNodeAzureNetworkNetworkInterfacePublicIpOutput) ToOutput(ctx context.Context) pulumix.Output[StatefulNodeAzureNetworkNetworkInterfacePublicIp] {
-	return pulumix.Output[StatefulNodeAzureNetworkNetworkInterfacePublicIp]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StatefulNodeAzureNetworkNetworkInterfacePublicIpOutput) Name() pulumi.StringOutput {
@@ -4994,12 +4207,6 @@ func (o StatefulNodeAzureNetworkNetworkInterfacePublicIpArrayOutput) ToStatefulN
 
 func (o StatefulNodeAzureNetworkNetworkInterfacePublicIpArrayOutput) ToStatefulNodeAzureNetworkNetworkInterfacePublicIpArrayOutputWithContext(ctx context.Context) StatefulNodeAzureNetworkNetworkInterfacePublicIpArrayOutput {
 	return o
-}
-
-func (o StatefulNodeAzureNetworkNetworkInterfacePublicIpArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StatefulNodeAzureNetworkNetworkInterfacePublicIp] {
-	return pulumix.Output[[]StatefulNodeAzureNetworkNetworkInterfacePublicIp]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StatefulNodeAzureNetworkNetworkInterfacePublicIpArrayOutput) Index(i pulumi.IntInput) StatefulNodeAzureNetworkNetworkInterfacePublicIpOutput {
@@ -5039,12 +4246,6 @@ func (i StatefulNodeAzureOsDiskArgs) ToStatefulNodeAzureOsDiskOutput() StatefulN
 
 func (i StatefulNodeAzureOsDiskArgs) ToStatefulNodeAzureOsDiskOutputWithContext(ctx context.Context) StatefulNodeAzureOsDiskOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureOsDiskOutput)
-}
-
-func (i StatefulNodeAzureOsDiskArgs) ToOutput(ctx context.Context) pulumix.Output[StatefulNodeAzureOsDisk] {
-	return pulumix.Output[StatefulNodeAzureOsDisk]{
-		OutputState: i.ToStatefulNodeAzureOsDiskOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i StatefulNodeAzureOsDiskArgs) ToStatefulNodeAzureOsDiskPtrOutput() StatefulNodeAzureOsDiskPtrOutput {
@@ -5088,12 +4289,6 @@ func (i *statefulNodeAzureOsDiskPtrType) ToStatefulNodeAzureOsDiskPtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureOsDiskPtrOutput)
 }
 
-func (i *statefulNodeAzureOsDiskPtrType) ToOutput(ctx context.Context) pulumix.Output[*StatefulNodeAzureOsDisk] {
-	return pulumix.Output[*StatefulNodeAzureOsDisk]{
-		OutputState: i.ToStatefulNodeAzureOsDiskPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StatefulNodeAzureOsDiskOutput struct{ *pulumi.OutputState }
 
 func (StatefulNodeAzureOsDiskOutput) ElementType() reflect.Type {
@@ -5118,12 +4313,6 @@ func (o StatefulNodeAzureOsDiskOutput) ToStatefulNodeAzureOsDiskPtrOutputWithCon
 	}).(StatefulNodeAzureOsDiskPtrOutput)
 }
 
-func (o StatefulNodeAzureOsDiskOutput) ToOutput(ctx context.Context) pulumix.Output[StatefulNodeAzureOsDisk] {
-	return pulumix.Output[StatefulNodeAzureOsDisk]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o StatefulNodeAzureOsDiskOutput) SizeGb() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v StatefulNodeAzureOsDisk) *int { return v.SizeGb }).(pulumi.IntPtrOutput)
 }
@@ -5144,12 +4333,6 @@ func (o StatefulNodeAzureOsDiskPtrOutput) ToStatefulNodeAzureOsDiskPtrOutput() S
 
 func (o StatefulNodeAzureOsDiskPtrOutput) ToStatefulNodeAzureOsDiskPtrOutputWithContext(ctx context.Context) StatefulNodeAzureOsDiskPtrOutput {
 	return o
-}
-
-func (o StatefulNodeAzureOsDiskPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StatefulNodeAzureOsDisk] {
-	return pulumix.Output[*StatefulNodeAzureOsDisk]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StatefulNodeAzureOsDiskPtrOutput) Elem() StatefulNodeAzureOsDiskOutput {
@@ -5215,12 +4398,6 @@ func (i StatefulNodeAzureSchedulingTaskArgs) ToStatefulNodeAzureSchedulingTaskOu
 	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureSchedulingTaskOutput)
 }
 
-func (i StatefulNodeAzureSchedulingTaskArgs) ToOutput(ctx context.Context) pulumix.Output[StatefulNodeAzureSchedulingTask] {
-	return pulumix.Output[StatefulNodeAzureSchedulingTask]{
-		OutputState: i.ToStatefulNodeAzureSchedulingTaskOutputWithContext(ctx).OutputState,
-	}
-}
-
 // StatefulNodeAzureSchedulingTaskArrayInput is an input type that accepts StatefulNodeAzureSchedulingTaskArray and StatefulNodeAzureSchedulingTaskArrayOutput values.
 // You can construct a concrete instance of `StatefulNodeAzureSchedulingTaskArrayInput` via:
 //
@@ -5246,12 +4423,6 @@ func (i StatefulNodeAzureSchedulingTaskArray) ToStatefulNodeAzureSchedulingTaskA
 	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureSchedulingTaskArrayOutput)
 }
 
-func (i StatefulNodeAzureSchedulingTaskArray) ToOutput(ctx context.Context) pulumix.Output[[]StatefulNodeAzureSchedulingTask] {
-	return pulumix.Output[[]StatefulNodeAzureSchedulingTask]{
-		OutputState: i.ToStatefulNodeAzureSchedulingTaskArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StatefulNodeAzureSchedulingTaskOutput struct{ *pulumi.OutputState }
 
 func (StatefulNodeAzureSchedulingTaskOutput) ElementType() reflect.Type {
@@ -5264,12 +4435,6 @@ func (o StatefulNodeAzureSchedulingTaskOutput) ToStatefulNodeAzureSchedulingTask
 
 func (o StatefulNodeAzureSchedulingTaskOutput) ToStatefulNodeAzureSchedulingTaskOutputWithContext(ctx context.Context) StatefulNodeAzureSchedulingTaskOutput {
 	return o
-}
-
-func (o StatefulNodeAzureSchedulingTaskOutput) ToOutput(ctx context.Context) pulumix.Output[StatefulNodeAzureSchedulingTask] {
-	return pulumix.Output[StatefulNodeAzureSchedulingTask]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StatefulNodeAzureSchedulingTaskOutput) CronExpression() pulumi.StringOutput {
@@ -5296,12 +4461,6 @@ func (o StatefulNodeAzureSchedulingTaskArrayOutput) ToStatefulNodeAzureSchedulin
 
 func (o StatefulNodeAzureSchedulingTaskArrayOutput) ToStatefulNodeAzureSchedulingTaskArrayOutputWithContext(ctx context.Context) StatefulNodeAzureSchedulingTaskArrayOutput {
 	return o
-}
-
-func (o StatefulNodeAzureSchedulingTaskArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StatefulNodeAzureSchedulingTask] {
-	return pulumix.Output[[]StatefulNodeAzureSchedulingTask]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StatefulNodeAzureSchedulingTaskArrayOutput) Index(i pulumi.IntInput) StatefulNodeAzureSchedulingTaskOutput {
@@ -5343,12 +4502,6 @@ func (i StatefulNodeAzureSecretArgs) ToStatefulNodeAzureSecretOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureSecretOutput)
 }
 
-func (i StatefulNodeAzureSecretArgs) ToOutput(ctx context.Context) pulumix.Output[StatefulNodeAzureSecret] {
-	return pulumix.Output[StatefulNodeAzureSecret]{
-		OutputState: i.ToStatefulNodeAzureSecretOutputWithContext(ctx).OutputState,
-	}
-}
-
 // StatefulNodeAzureSecretArrayInput is an input type that accepts StatefulNodeAzureSecretArray and StatefulNodeAzureSecretArrayOutput values.
 // You can construct a concrete instance of `StatefulNodeAzureSecretArrayInput` via:
 //
@@ -5374,12 +4527,6 @@ func (i StatefulNodeAzureSecretArray) ToStatefulNodeAzureSecretArrayOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureSecretArrayOutput)
 }
 
-func (i StatefulNodeAzureSecretArray) ToOutput(ctx context.Context) pulumix.Output[[]StatefulNodeAzureSecret] {
-	return pulumix.Output[[]StatefulNodeAzureSecret]{
-		OutputState: i.ToStatefulNodeAzureSecretArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StatefulNodeAzureSecretOutput struct{ *pulumi.OutputState }
 
 func (StatefulNodeAzureSecretOutput) ElementType() reflect.Type {
@@ -5392,12 +4539,6 @@ func (o StatefulNodeAzureSecretOutput) ToStatefulNodeAzureSecretOutput() Statefu
 
 func (o StatefulNodeAzureSecretOutput) ToStatefulNodeAzureSecretOutputWithContext(ctx context.Context) StatefulNodeAzureSecretOutput {
 	return o
-}
-
-func (o StatefulNodeAzureSecretOutput) ToOutput(ctx context.Context) pulumix.Output[StatefulNodeAzureSecret] {
-	return pulumix.Output[StatefulNodeAzureSecret]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StatefulNodeAzureSecretOutput) SourceVaults() StatefulNodeAzureSecretSourceVaultArrayOutput {
@@ -5420,12 +4561,6 @@ func (o StatefulNodeAzureSecretArrayOutput) ToStatefulNodeAzureSecretArrayOutput
 
 func (o StatefulNodeAzureSecretArrayOutput) ToStatefulNodeAzureSecretArrayOutputWithContext(ctx context.Context) StatefulNodeAzureSecretArrayOutput {
 	return o
-}
-
-func (o StatefulNodeAzureSecretArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StatefulNodeAzureSecret] {
-	return pulumix.Output[[]StatefulNodeAzureSecret]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StatefulNodeAzureSecretArrayOutput) Index(i pulumi.IntInput) StatefulNodeAzureSecretOutput {
@@ -5467,12 +4602,6 @@ func (i StatefulNodeAzureSecretSourceVaultArgs) ToStatefulNodeAzureSecretSourceV
 	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureSecretSourceVaultOutput)
 }
 
-func (i StatefulNodeAzureSecretSourceVaultArgs) ToOutput(ctx context.Context) pulumix.Output[StatefulNodeAzureSecretSourceVault] {
-	return pulumix.Output[StatefulNodeAzureSecretSourceVault]{
-		OutputState: i.ToStatefulNodeAzureSecretSourceVaultOutputWithContext(ctx).OutputState,
-	}
-}
-
 // StatefulNodeAzureSecretSourceVaultArrayInput is an input type that accepts StatefulNodeAzureSecretSourceVaultArray and StatefulNodeAzureSecretSourceVaultArrayOutput values.
 // You can construct a concrete instance of `StatefulNodeAzureSecretSourceVaultArrayInput` via:
 //
@@ -5498,12 +4627,6 @@ func (i StatefulNodeAzureSecretSourceVaultArray) ToStatefulNodeAzureSecretSource
 	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureSecretSourceVaultArrayOutput)
 }
 
-func (i StatefulNodeAzureSecretSourceVaultArray) ToOutput(ctx context.Context) pulumix.Output[[]StatefulNodeAzureSecretSourceVault] {
-	return pulumix.Output[[]StatefulNodeAzureSecretSourceVault]{
-		OutputState: i.ToStatefulNodeAzureSecretSourceVaultArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StatefulNodeAzureSecretSourceVaultOutput struct{ *pulumi.OutputState }
 
 func (StatefulNodeAzureSecretSourceVaultOutput) ElementType() reflect.Type {
@@ -5516,12 +4639,6 @@ func (o StatefulNodeAzureSecretSourceVaultOutput) ToStatefulNodeAzureSecretSourc
 
 func (o StatefulNodeAzureSecretSourceVaultOutput) ToStatefulNodeAzureSecretSourceVaultOutputWithContext(ctx context.Context) StatefulNodeAzureSecretSourceVaultOutput {
 	return o
-}
-
-func (o StatefulNodeAzureSecretSourceVaultOutput) ToOutput(ctx context.Context) pulumix.Output[StatefulNodeAzureSecretSourceVault] {
-	return pulumix.Output[StatefulNodeAzureSecretSourceVault]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StatefulNodeAzureSecretSourceVaultOutput) Name() pulumi.StringOutput {
@@ -5544,12 +4661,6 @@ func (o StatefulNodeAzureSecretSourceVaultArrayOutput) ToStatefulNodeAzureSecret
 
 func (o StatefulNodeAzureSecretSourceVaultArrayOutput) ToStatefulNodeAzureSecretSourceVaultArrayOutputWithContext(ctx context.Context) StatefulNodeAzureSecretSourceVaultArrayOutput {
 	return o
-}
-
-func (o StatefulNodeAzureSecretSourceVaultArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StatefulNodeAzureSecretSourceVault] {
-	return pulumix.Output[[]StatefulNodeAzureSecretSourceVault]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StatefulNodeAzureSecretSourceVaultArrayOutput) Index(i pulumi.IntInput) StatefulNodeAzureSecretSourceVaultOutput {
@@ -5591,12 +4702,6 @@ func (i StatefulNodeAzureSecretVaultCertificateArgs) ToStatefulNodeAzureSecretVa
 	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureSecretVaultCertificateOutput)
 }
 
-func (i StatefulNodeAzureSecretVaultCertificateArgs) ToOutput(ctx context.Context) pulumix.Output[StatefulNodeAzureSecretVaultCertificate] {
-	return pulumix.Output[StatefulNodeAzureSecretVaultCertificate]{
-		OutputState: i.ToStatefulNodeAzureSecretVaultCertificateOutputWithContext(ctx).OutputState,
-	}
-}
-
 // StatefulNodeAzureSecretVaultCertificateArrayInput is an input type that accepts StatefulNodeAzureSecretVaultCertificateArray and StatefulNodeAzureSecretVaultCertificateArrayOutput values.
 // You can construct a concrete instance of `StatefulNodeAzureSecretVaultCertificateArrayInput` via:
 //
@@ -5622,12 +4727,6 @@ func (i StatefulNodeAzureSecretVaultCertificateArray) ToStatefulNodeAzureSecretV
 	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureSecretVaultCertificateArrayOutput)
 }
 
-func (i StatefulNodeAzureSecretVaultCertificateArray) ToOutput(ctx context.Context) pulumix.Output[[]StatefulNodeAzureSecretVaultCertificate] {
-	return pulumix.Output[[]StatefulNodeAzureSecretVaultCertificate]{
-		OutputState: i.ToStatefulNodeAzureSecretVaultCertificateArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StatefulNodeAzureSecretVaultCertificateOutput struct{ *pulumi.OutputState }
 
 func (StatefulNodeAzureSecretVaultCertificateOutput) ElementType() reflect.Type {
@@ -5640,12 +4739,6 @@ func (o StatefulNodeAzureSecretVaultCertificateOutput) ToStatefulNodeAzureSecret
 
 func (o StatefulNodeAzureSecretVaultCertificateOutput) ToStatefulNodeAzureSecretVaultCertificateOutputWithContext(ctx context.Context) StatefulNodeAzureSecretVaultCertificateOutput {
 	return o
-}
-
-func (o StatefulNodeAzureSecretVaultCertificateOutput) ToOutput(ctx context.Context) pulumix.Output[StatefulNodeAzureSecretVaultCertificate] {
-	return pulumix.Output[StatefulNodeAzureSecretVaultCertificate]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StatefulNodeAzureSecretVaultCertificateOutput) CertificateStore() pulumi.StringPtrOutput {
@@ -5668,12 +4761,6 @@ func (o StatefulNodeAzureSecretVaultCertificateArrayOutput) ToStatefulNodeAzureS
 
 func (o StatefulNodeAzureSecretVaultCertificateArrayOutput) ToStatefulNodeAzureSecretVaultCertificateArrayOutputWithContext(ctx context.Context) StatefulNodeAzureSecretVaultCertificateArrayOutput {
 	return o
-}
-
-func (o StatefulNodeAzureSecretVaultCertificateArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StatefulNodeAzureSecretVaultCertificate] {
-	return pulumix.Output[[]StatefulNodeAzureSecretVaultCertificate]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StatefulNodeAzureSecretVaultCertificateArrayOutput) Index(i pulumi.IntInput) StatefulNodeAzureSecretVaultCertificateOutput {
@@ -5717,12 +4804,6 @@ func (i StatefulNodeAzureSecurityArgs) ToStatefulNodeAzureSecurityOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureSecurityOutput)
 }
 
-func (i StatefulNodeAzureSecurityArgs) ToOutput(ctx context.Context) pulumix.Output[StatefulNodeAzureSecurity] {
-	return pulumix.Output[StatefulNodeAzureSecurity]{
-		OutputState: i.ToStatefulNodeAzureSecurityOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i StatefulNodeAzureSecurityArgs) ToStatefulNodeAzureSecurityPtrOutput() StatefulNodeAzureSecurityPtrOutput {
 	return i.ToStatefulNodeAzureSecurityPtrOutputWithContext(context.Background())
 }
@@ -5764,12 +4845,6 @@ func (i *statefulNodeAzureSecurityPtrType) ToStatefulNodeAzureSecurityPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureSecurityPtrOutput)
 }
 
-func (i *statefulNodeAzureSecurityPtrType) ToOutput(ctx context.Context) pulumix.Output[*StatefulNodeAzureSecurity] {
-	return pulumix.Output[*StatefulNodeAzureSecurity]{
-		OutputState: i.ToStatefulNodeAzureSecurityPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StatefulNodeAzureSecurityOutput struct{ *pulumi.OutputState }
 
 func (StatefulNodeAzureSecurityOutput) ElementType() reflect.Type {
@@ -5792,12 +4867,6 @@ func (o StatefulNodeAzureSecurityOutput) ToStatefulNodeAzureSecurityPtrOutputWit
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v StatefulNodeAzureSecurity) *StatefulNodeAzureSecurity {
 		return &v
 	}).(StatefulNodeAzureSecurityPtrOutput)
-}
-
-func (o StatefulNodeAzureSecurityOutput) ToOutput(ctx context.Context) pulumix.Output[StatefulNodeAzureSecurity] {
-	return pulumix.Output[StatefulNodeAzureSecurity]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StatefulNodeAzureSecurityOutput) SecureBootEnabled() pulumi.BoolPtrOutput {
@@ -5824,12 +4893,6 @@ func (o StatefulNodeAzureSecurityPtrOutput) ToStatefulNodeAzureSecurityPtrOutput
 
 func (o StatefulNodeAzureSecurityPtrOutput) ToStatefulNodeAzureSecurityPtrOutputWithContext(ctx context.Context) StatefulNodeAzureSecurityPtrOutput {
 	return o
-}
-
-func (o StatefulNodeAzureSecurityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StatefulNodeAzureSecurity] {
-	return pulumix.Output[*StatefulNodeAzureSecurity]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StatefulNodeAzureSecurityPtrOutput) Elem() StatefulNodeAzureSecurityOutput {
@@ -5902,12 +4965,6 @@ func (i StatefulNodeAzureSignalArgs) ToStatefulNodeAzureSignalOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureSignalOutput)
 }
 
-func (i StatefulNodeAzureSignalArgs) ToOutput(ctx context.Context) pulumix.Output[StatefulNodeAzureSignal] {
-	return pulumix.Output[StatefulNodeAzureSignal]{
-		OutputState: i.ToStatefulNodeAzureSignalOutputWithContext(ctx).OutputState,
-	}
-}
-
 // StatefulNodeAzureSignalArrayInput is an input type that accepts StatefulNodeAzureSignalArray and StatefulNodeAzureSignalArrayOutput values.
 // You can construct a concrete instance of `StatefulNodeAzureSignalArrayInput` via:
 //
@@ -5933,12 +4990,6 @@ func (i StatefulNodeAzureSignalArray) ToStatefulNodeAzureSignalArrayOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureSignalArrayOutput)
 }
 
-func (i StatefulNodeAzureSignalArray) ToOutput(ctx context.Context) pulumix.Output[[]StatefulNodeAzureSignal] {
-	return pulumix.Output[[]StatefulNodeAzureSignal]{
-		OutputState: i.ToStatefulNodeAzureSignalArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StatefulNodeAzureSignalOutput struct{ *pulumi.OutputState }
 
 func (StatefulNodeAzureSignalOutput) ElementType() reflect.Type {
@@ -5951,12 +5002,6 @@ func (o StatefulNodeAzureSignalOutput) ToStatefulNodeAzureSignalOutput() Statefu
 
 func (o StatefulNodeAzureSignalOutput) ToStatefulNodeAzureSignalOutputWithContext(ctx context.Context) StatefulNodeAzureSignalOutput {
 	return o
-}
-
-func (o StatefulNodeAzureSignalOutput) ToOutput(ctx context.Context) pulumix.Output[StatefulNodeAzureSignal] {
-	return pulumix.Output[StatefulNodeAzureSignal]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StatefulNodeAzureSignalOutput) Timeout() pulumi.IntOutput {
@@ -5979,12 +5024,6 @@ func (o StatefulNodeAzureSignalArrayOutput) ToStatefulNodeAzureSignalArrayOutput
 
 func (o StatefulNodeAzureSignalArrayOutput) ToStatefulNodeAzureSignalArrayOutputWithContext(ctx context.Context) StatefulNodeAzureSignalArrayOutput {
 	return o
-}
-
-func (o StatefulNodeAzureSignalArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StatefulNodeAzureSignal] {
-	return pulumix.Output[[]StatefulNodeAzureSignal]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StatefulNodeAzureSignalArrayOutput) Index(i pulumi.IntInput) StatefulNodeAzureSignalOutput {
@@ -6034,12 +5073,6 @@ func (i StatefulNodeAzureStrategyArgs) ToStatefulNodeAzureStrategyOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureStrategyOutput)
 }
 
-func (i StatefulNodeAzureStrategyArgs) ToOutput(ctx context.Context) pulumix.Output[StatefulNodeAzureStrategy] {
-	return pulumix.Output[StatefulNodeAzureStrategy]{
-		OutputState: i.ToStatefulNodeAzureStrategyOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i StatefulNodeAzureStrategyArgs) ToStatefulNodeAzureStrategyPtrOutput() StatefulNodeAzureStrategyPtrOutput {
 	return i.ToStatefulNodeAzureStrategyPtrOutputWithContext(context.Background())
 }
@@ -6081,12 +5114,6 @@ func (i *statefulNodeAzureStrategyPtrType) ToStatefulNodeAzureStrategyPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureStrategyPtrOutput)
 }
 
-func (i *statefulNodeAzureStrategyPtrType) ToOutput(ctx context.Context) pulumix.Output[*StatefulNodeAzureStrategy] {
-	return pulumix.Output[*StatefulNodeAzureStrategy]{
-		OutputState: i.ToStatefulNodeAzureStrategyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StatefulNodeAzureStrategyOutput struct{ *pulumi.OutputState }
 
 func (StatefulNodeAzureStrategyOutput) ElementType() reflect.Type {
@@ -6109,12 +5136,6 @@ func (o StatefulNodeAzureStrategyOutput) ToStatefulNodeAzureStrategyPtrOutputWit
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v StatefulNodeAzureStrategy) *StatefulNodeAzureStrategy {
 		return &v
 	}).(StatefulNodeAzureStrategyPtrOutput)
-}
-
-func (o StatefulNodeAzureStrategyOutput) ToOutput(ctx context.Context) pulumix.Output[StatefulNodeAzureStrategy] {
-	return pulumix.Output[StatefulNodeAzureStrategy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StatefulNodeAzureStrategyOutput) CapacityReservations() StatefulNodeAzureStrategyCapacityReservationArrayOutput {
@@ -6155,12 +5176,6 @@ func (o StatefulNodeAzureStrategyPtrOutput) ToStatefulNodeAzureStrategyPtrOutput
 
 func (o StatefulNodeAzureStrategyPtrOutput) ToStatefulNodeAzureStrategyPtrOutputWithContext(ctx context.Context) StatefulNodeAzureStrategyPtrOutput {
 	return o
-}
-
-func (o StatefulNodeAzureStrategyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StatefulNodeAzureStrategy] {
-	return pulumix.Output[*StatefulNodeAzureStrategy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StatefulNodeAzureStrategyPtrOutput) Elem() StatefulNodeAzureStrategyOutput {
@@ -6262,12 +5277,6 @@ func (i StatefulNodeAzureStrategyCapacityReservationArgs) ToStatefulNodeAzureStr
 	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureStrategyCapacityReservationOutput)
 }
 
-func (i StatefulNodeAzureStrategyCapacityReservationArgs) ToOutput(ctx context.Context) pulumix.Output[StatefulNodeAzureStrategyCapacityReservation] {
-	return pulumix.Output[StatefulNodeAzureStrategyCapacityReservation]{
-		OutputState: i.ToStatefulNodeAzureStrategyCapacityReservationOutputWithContext(ctx).OutputState,
-	}
-}
-
 // StatefulNodeAzureStrategyCapacityReservationArrayInput is an input type that accepts StatefulNodeAzureStrategyCapacityReservationArray and StatefulNodeAzureStrategyCapacityReservationArrayOutput values.
 // You can construct a concrete instance of `StatefulNodeAzureStrategyCapacityReservationArrayInput` via:
 //
@@ -6293,12 +5302,6 @@ func (i StatefulNodeAzureStrategyCapacityReservationArray) ToStatefulNodeAzureSt
 	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureStrategyCapacityReservationArrayOutput)
 }
 
-func (i StatefulNodeAzureStrategyCapacityReservationArray) ToOutput(ctx context.Context) pulumix.Output[[]StatefulNodeAzureStrategyCapacityReservation] {
-	return pulumix.Output[[]StatefulNodeAzureStrategyCapacityReservation]{
-		OutputState: i.ToStatefulNodeAzureStrategyCapacityReservationArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StatefulNodeAzureStrategyCapacityReservationOutput struct{ *pulumi.OutputState }
 
 func (StatefulNodeAzureStrategyCapacityReservationOutput) ElementType() reflect.Type {
@@ -6311,12 +5314,6 @@ func (o StatefulNodeAzureStrategyCapacityReservationOutput) ToStatefulNodeAzureS
 
 func (o StatefulNodeAzureStrategyCapacityReservationOutput) ToStatefulNodeAzureStrategyCapacityReservationOutputWithContext(ctx context.Context) StatefulNodeAzureStrategyCapacityReservationOutput {
 	return o
-}
-
-func (o StatefulNodeAzureStrategyCapacityReservationOutput) ToOutput(ctx context.Context) pulumix.Output[StatefulNodeAzureStrategyCapacityReservation] {
-	return pulumix.Output[StatefulNodeAzureStrategyCapacityReservation]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StatefulNodeAzureStrategyCapacityReservationOutput) CapacityReservationGroups() StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupArrayOutput {
@@ -6345,12 +5342,6 @@ func (o StatefulNodeAzureStrategyCapacityReservationArrayOutput) ToStatefulNodeA
 
 func (o StatefulNodeAzureStrategyCapacityReservationArrayOutput) ToStatefulNodeAzureStrategyCapacityReservationArrayOutputWithContext(ctx context.Context) StatefulNodeAzureStrategyCapacityReservationArrayOutput {
 	return o
-}
-
-func (o StatefulNodeAzureStrategyCapacityReservationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StatefulNodeAzureStrategyCapacityReservation] {
-	return pulumix.Output[[]StatefulNodeAzureStrategyCapacityReservation]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StatefulNodeAzureStrategyCapacityReservationArrayOutput) Index(i pulumi.IntInput) StatefulNodeAzureStrategyCapacityReservationOutput {
@@ -6394,12 +5385,6 @@ func (i StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupArgs
 	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupOutput)
 }
 
-func (i StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupArgs) ToOutput(ctx context.Context) pulumix.Output[StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroup] {
-	return pulumix.Output[StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroup]{
-		OutputState: i.ToStatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupOutputWithContext(ctx).OutputState,
-	}
-}
-
 // StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupArrayInput is an input type that accepts StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupArray and StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupArrayOutput values.
 // You can construct a concrete instance of `StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupArrayInput` via:
 //
@@ -6425,12 +5410,6 @@ func (i StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupArra
 	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupArrayOutput)
 }
 
-func (i StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupArray) ToOutput(ctx context.Context) pulumix.Output[[]StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroup] {
-	return pulumix.Output[[]StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroup]{
-		OutputState: i.ToStatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupOutput struct{ *pulumi.OutputState }
 
 func (StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupOutput) ElementType() reflect.Type {
@@ -6443,12 +5422,6 @@ func (o StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupOutp
 
 func (o StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupOutput) ToStatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupOutputWithContext(ctx context.Context) StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupOutput {
 	return o
-}
-
-func (o StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupOutput) ToOutput(ctx context.Context) pulumix.Output[StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroup] {
-	return pulumix.Output[StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupOutput) CrgName() pulumi.StringOutput {
@@ -6479,12 +5452,6 @@ func (o StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupArra
 
 func (o StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupArrayOutput) ToStatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupArrayOutputWithContext(ctx context.Context) StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupArrayOutput {
 	return o
-}
-
-func (o StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroup] {
-	return pulumix.Output[[]StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupArrayOutput) Index(i pulumi.IntInput) StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupOutput {
@@ -6522,12 +5489,6 @@ func (i StatefulNodeAzureStrategyRevertToSpotArgs) ToStatefulNodeAzureStrategyRe
 
 func (i StatefulNodeAzureStrategyRevertToSpotArgs) ToStatefulNodeAzureStrategyRevertToSpotOutputWithContext(ctx context.Context) StatefulNodeAzureStrategyRevertToSpotOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureStrategyRevertToSpotOutput)
-}
-
-func (i StatefulNodeAzureStrategyRevertToSpotArgs) ToOutput(ctx context.Context) pulumix.Output[StatefulNodeAzureStrategyRevertToSpot] {
-	return pulumix.Output[StatefulNodeAzureStrategyRevertToSpot]{
-		OutputState: i.ToStatefulNodeAzureStrategyRevertToSpotOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i StatefulNodeAzureStrategyRevertToSpotArgs) ToStatefulNodeAzureStrategyRevertToSpotPtrOutput() StatefulNodeAzureStrategyRevertToSpotPtrOutput {
@@ -6571,12 +5532,6 @@ func (i *statefulNodeAzureStrategyRevertToSpotPtrType) ToStatefulNodeAzureStrate
 	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureStrategyRevertToSpotPtrOutput)
 }
 
-func (i *statefulNodeAzureStrategyRevertToSpotPtrType) ToOutput(ctx context.Context) pulumix.Output[*StatefulNodeAzureStrategyRevertToSpot] {
-	return pulumix.Output[*StatefulNodeAzureStrategyRevertToSpot]{
-		OutputState: i.ToStatefulNodeAzureStrategyRevertToSpotPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StatefulNodeAzureStrategyRevertToSpotOutput struct{ *pulumi.OutputState }
 
 func (StatefulNodeAzureStrategyRevertToSpotOutput) ElementType() reflect.Type {
@@ -6601,12 +5556,6 @@ func (o StatefulNodeAzureStrategyRevertToSpotOutput) ToStatefulNodeAzureStrategy
 	}).(StatefulNodeAzureStrategyRevertToSpotPtrOutput)
 }
 
-func (o StatefulNodeAzureStrategyRevertToSpotOutput) ToOutput(ctx context.Context) pulumix.Output[StatefulNodeAzureStrategyRevertToSpot] {
-	return pulumix.Output[StatefulNodeAzureStrategyRevertToSpot]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o StatefulNodeAzureStrategyRevertToSpotOutput) PerformAt() pulumi.StringOutput {
 	return o.ApplyT(func(v StatefulNodeAzureStrategyRevertToSpot) string { return v.PerformAt }).(pulumi.StringOutput)
 }
@@ -6623,12 +5572,6 @@ func (o StatefulNodeAzureStrategyRevertToSpotPtrOutput) ToStatefulNodeAzureStrat
 
 func (o StatefulNodeAzureStrategyRevertToSpotPtrOutput) ToStatefulNodeAzureStrategyRevertToSpotPtrOutputWithContext(ctx context.Context) StatefulNodeAzureStrategyRevertToSpotPtrOutput {
 	return o
-}
-
-func (o StatefulNodeAzureStrategyRevertToSpotPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StatefulNodeAzureStrategyRevertToSpot] {
-	return pulumix.Output[*StatefulNodeAzureStrategyRevertToSpot]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StatefulNodeAzureStrategyRevertToSpotPtrOutput) Elem() StatefulNodeAzureStrategyRevertToSpotOutput {
@@ -6683,12 +5626,6 @@ func (i StatefulNodeAzureTagArgs) ToStatefulNodeAzureTagOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureTagOutput)
 }
 
-func (i StatefulNodeAzureTagArgs) ToOutput(ctx context.Context) pulumix.Output[StatefulNodeAzureTag] {
-	return pulumix.Output[StatefulNodeAzureTag]{
-		OutputState: i.ToStatefulNodeAzureTagOutputWithContext(ctx).OutputState,
-	}
-}
-
 // StatefulNodeAzureTagArrayInput is an input type that accepts StatefulNodeAzureTagArray and StatefulNodeAzureTagArrayOutput values.
 // You can construct a concrete instance of `StatefulNodeAzureTagArrayInput` via:
 //
@@ -6714,12 +5651,6 @@ func (i StatefulNodeAzureTagArray) ToStatefulNodeAzureTagArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureTagArrayOutput)
 }
 
-func (i StatefulNodeAzureTagArray) ToOutput(ctx context.Context) pulumix.Output[[]StatefulNodeAzureTag] {
-	return pulumix.Output[[]StatefulNodeAzureTag]{
-		OutputState: i.ToStatefulNodeAzureTagArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StatefulNodeAzureTagOutput struct{ *pulumi.OutputState }
 
 func (StatefulNodeAzureTagOutput) ElementType() reflect.Type {
@@ -6732,12 +5663,6 @@ func (o StatefulNodeAzureTagOutput) ToStatefulNodeAzureTagOutput() StatefulNodeA
 
 func (o StatefulNodeAzureTagOutput) ToStatefulNodeAzureTagOutputWithContext(ctx context.Context) StatefulNodeAzureTagOutput {
 	return o
-}
-
-func (o StatefulNodeAzureTagOutput) ToOutput(ctx context.Context) pulumix.Output[StatefulNodeAzureTag] {
-	return pulumix.Output[StatefulNodeAzureTag]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StatefulNodeAzureTagOutput) TagKey() pulumi.StringOutput {
@@ -6760,12 +5685,6 @@ func (o StatefulNodeAzureTagArrayOutput) ToStatefulNodeAzureTagArrayOutput() Sta
 
 func (o StatefulNodeAzureTagArrayOutput) ToStatefulNodeAzureTagArrayOutputWithContext(ctx context.Context) StatefulNodeAzureTagArrayOutput {
 	return o
-}
-
-func (o StatefulNodeAzureTagArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StatefulNodeAzureTag] {
-	return pulumix.Output[[]StatefulNodeAzureTag]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StatefulNodeAzureTagArrayOutput) Index(i pulumi.IntInput) StatefulNodeAzureTagOutput {
@@ -6805,12 +5724,6 @@ func (i StatefulNodeAzureUpdateStateArgs) ToStatefulNodeAzureUpdateStateOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureUpdateStateOutput)
 }
 
-func (i StatefulNodeAzureUpdateStateArgs) ToOutput(ctx context.Context) pulumix.Output[StatefulNodeAzureUpdateState] {
-	return pulumix.Output[StatefulNodeAzureUpdateState]{
-		OutputState: i.ToStatefulNodeAzureUpdateStateOutputWithContext(ctx).OutputState,
-	}
-}
-
 // StatefulNodeAzureUpdateStateArrayInput is an input type that accepts StatefulNodeAzureUpdateStateArray and StatefulNodeAzureUpdateStateArrayOutput values.
 // You can construct a concrete instance of `StatefulNodeAzureUpdateStateArrayInput` via:
 //
@@ -6836,12 +5749,6 @@ func (i StatefulNodeAzureUpdateStateArray) ToStatefulNodeAzureUpdateStateArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureUpdateStateArrayOutput)
 }
 
-func (i StatefulNodeAzureUpdateStateArray) ToOutput(ctx context.Context) pulumix.Output[[]StatefulNodeAzureUpdateState] {
-	return pulumix.Output[[]StatefulNodeAzureUpdateState]{
-		OutputState: i.ToStatefulNodeAzureUpdateStateArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StatefulNodeAzureUpdateStateOutput struct{ *pulumi.OutputState }
 
 func (StatefulNodeAzureUpdateStateOutput) ElementType() reflect.Type {
@@ -6854,12 +5761,6 @@ func (o StatefulNodeAzureUpdateStateOutput) ToStatefulNodeAzureUpdateStateOutput
 
 func (o StatefulNodeAzureUpdateStateOutput) ToStatefulNodeAzureUpdateStateOutputWithContext(ctx context.Context) StatefulNodeAzureUpdateStateOutput {
 	return o
-}
-
-func (o StatefulNodeAzureUpdateStateOutput) ToOutput(ctx context.Context) pulumix.Output[StatefulNodeAzureUpdateState] {
-	return pulumix.Output[StatefulNodeAzureUpdateState]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StatefulNodeAzureUpdateStateOutput) State() pulumi.StringOutput {
@@ -6878,12 +5779,6 @@ func (o StatefulNodeAzureUpdateStateArrayOutput) ToStatefulNodeAzureUpdateStateA
 
 func (o StatefulNodeAzureUpdateStateArrayOutput) ToStatefulNodeAzureUpdateStateArrayOutputWithContext(ctx context.Context) StatefulNodeAzureUpdateStateArrayOutput {
 	return o
-}
-
-func (o StatefulNodeAzureUpdateStateArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StatefulNodeAzureUpdateState] {
-	return pulumix.Output[[]StatefulNodeAzureUpdateState]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StatefulNodeAzureUpdateStateArrayOutput) Index(i pulumi.IntInput) StatefulNodeAzureUpdateStateOutput {
