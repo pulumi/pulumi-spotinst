@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type ElastigroupAzureV3 struct {
@@ -203,12 +202,6 @@ func (i *ElastigroupAzureV3) ToElastigroupAzureV3OutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupAzureV3Output)
 }
 
-func (i *ElastigroupAzureV3) ToOutput(ctx context.Context) pulumix.Output[*ElastigroupAzureV3] {
-	return pulumix.Output[*ElastigroupAzureV3]{
-		OutputState: i.ToElastigroupAzureV3OutputWithContext(ctx).OutputState,
-	}
-}
-
 // ElastigroupAzureV3ArrayInput is an input type that accepts ElastigroupAzureV3Array and ElastigroupAzureV3ArrayOutput values.
 // You can construct a concrete instance of `ElastigroupAzureV3ArrayInput` via:
 //
@@ -232,12 +225,6 @@ func (i ElastigroupAzureV3Array) ToElastigroupAzureV3ArrayOutput() ElastigroupAz
 
 func (i ElastigroupAzureV3Array) ToElastigroupAzureV3ArrayOutputWithContext(ctx context.Context) ElastigroupAzureV3ArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupAzureV3ArrayOutput)
-}
-
-func (i ElastigroupAzureV3Array) ToOutput(ctx context.Context) pulumix.Output[[]*ElastigroupAzureV3] {
-	return pulumix.Output[[]*ElastigroupAzureV3]{
-		OutputState: i.ToElastigroupAzureV3ArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ElastigroupAzureV3MapInput is an input type that accepts ElastigroupAzureV3Map and ElastigroupAzureV3MapOutput values.
@@ -265,12 +252,6 @@ func (i ElastigroupAzureV3Map) ToElastigroupAzureV3MapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupAzureV3MapOutput)
 }
 
-func (i ElastigroupAzureV3Map) ToOutput(ctx context.Context) pulumix.Output[map[string]*ElastigroupAzureV3] {
-	return pulumix.Output[map[string]*ElastigroupAzureV3]{
-		OutputState: i.ToElastigroupAzureV3MapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ElastigroupAzureV3Output struct{ *pulumi.OutputState }
 
 func (ElastigroupAzureV3Output) ElementType() reflect.Type {
@@ -283,12 +264,6 @@ func (o ElastigroupAzureV3Output) ToElastigroupAzureV3Output() ElastigroupAzureV
 
 func (o ElastigroupAzureV3Output) ToElastigroupAzureV3OutputWithContext(ctx context.Context) ElastigroupAzureV3Output {
 	return o
-}
-
-func (o ElastigroupAzureV3Output) ToOutput(ctx context.Context) pulumix.Output[*ElastigroupAzureV3] {
-	return pulumix.Output[*ElastigroupAzureV3]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ElastigroupAzureV3Output) CustomData() pulumi.StringPtrOutput {
@@ -383,12 +358,6 @@ func (o ElastigroupAzureV3ArrayOutput) ToElastigroupAzureV3ArrayOutputWithContex
 	return o
 }
 
-func (o ElastigroupAzureV3ArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ElastigroupAzureV3] {
-	return pulumix.Output[[]*ElastigroupAzureV3]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ElastigroupAzureV3ArrayOutput) Index(i pulumi.IntInput) ElastigroupAzureV3Output {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ElastigroupAzureV3 {
 		return vs[0].([]*ElastigroupAzureV3)[vs[1].(int)]
@@ -407,12 +376,6 @@ func (o ElastigroupAzureV3MapOutput) ToElastigroupAzureV3MapOutput() Elastigroup
 
 func (o ElastigroupAzureV3MapOutput) ToElastigroupAzureV3MapOutputWithContext(ctx context.Context) ElastigroupAzureV3MapOutput {
 	return o
-}
-
-func (o ElastigroupAzureV3MapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ElastigroupAzureV3] {
-	return pulumix.Output[map[string]*ElastigroupAzureV3]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ElastigroupAzureV3MapOutput) MapIndex(k pulumi.StringInput) ElastigroupAzureV3Output {

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -47,12 +46,6 @@ func (i PolicyPolicyContentArgs) ToPolicyPolicyContentOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(PolicyPolicyContentOutput)
 }
 
-func (i PolicyPolicyContentArgs) ToOutput(ctx context.Context) pulumix.Output[PolicyPolicyContent] {
-	return pulumix.Output[PolicyPolicyContent]{
-		OutputState: i.ToPolicyPolicyContentOutputWithContext(ctx).OutputState,
-	}
-}
-
 // PolicyPolicyContentArrayInput is an input type that accepts PolicyPolicyContentArray and PolicyPolicyContentArrayOutput values.
 // You can construct a concrete instance of `PolicyPolicyContentArrayInput` via:
 //
@@ -78,12 +71,6 @@ func (i PolicyPolicyContentArray) ToPolicyPolicyContentArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(PolicyPolicyContentArrayOutput)
 }
 
-func (i PolicyPolicyContentArray) ToOutput(ctx context.Context) pulumix.Output[[]PolicyPolicyContent] {
-	return pulumix.Output[[]PolicyPolicyContent]{
-		OutputState: i.ToPolicyPolicyContentArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PolicyPolicyContentOutput struct{ *pulumi.OutputState }
 
 func (PolicyPolicyContentOutput) ElementType() reflect.Type {
@@ -96,12 +83,6 @@ func (o PolicyPolicyContentOutput) ToPolicyPolicyContentOutput() PolicyPolicyCon
 
 func (o PolicyPolicyContentOutput) ToPolicyPolicyContentOutputWithContext(ctx context.Context) PolicyPolicyContentOutput {
 	return o
-}
-
-func (o PolicyPolicyContentOutput) ToOutput(ctx context.Context) pulumix.Output[PolicyPolicyContent] {
-	return pulumix.Output[PolicyPolicyContent]{
-		OutputState: o.OutputState,
-	}
 }
 
 // List of permissions statements.
@@ -121,12 +102,6 @@ func (o PolicyPolicyContentArrayOutput) ToPolicyPolicyContentArrayOutput() Polic
 
 func (o PolicyPolicyContentArrayOutput) ToPolicyPolicyContentArrayOutputWithContext(ctx context.Context) PolicyPolicyContentArrayOutput {
 	return o
-}
-
-func (o PolicyPolicyContentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PolicyPolicyContent] {
-	return pulumix.Output[[]PolicyPolicyContent]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PolicyPolicyContentArrayOutput) Index(i pulumi.IntInput) PolicyPolicyContentOutput {
@@ -178,12 +153,6 @@ func (i PolicyPolicyContentStatementArgs) ToPolicyPolicyContentStatementOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(PolicyPolicyContentStatementOutput)
 }
 
-func (i PolicyPolicyContentStatementArgs) ToOutput(ctx context.Context) pulumix.Output[PolicyPolicyContentStatement] {
-	return pulumix.Output[PolicyPolicyContentStatement]{
-		OutputState: i.ToPolicyPolicyContentStatementOutputWithContext(ctx).OutputState,
-	}
-}
-
 // PolicyPolicyContentStatementArrayInput is an input type that accepts PolicyPolicyContentStatementArray and PolicyPolicyContentStatementArrayOutput values.
 // You can construct a concrete instance of `PolicyPolicyContentStatementArrayInput` via:
 //
@@ -209,12 +178,6 @@ func (i PolicyPolicyContentStatementArray) ToPolicyPolicyContentStatementArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(PolicyPolicyContentStatementArrayOutput)
 }
 
-func (i PolicyPolicyContentStatementArray) ToOutput(ctx context.Context) pulumix.Output[[]PolicyPolicyContentStatement] {
-	return pulumix.Output[[]PolicyPolicyContentStatement]{
-		OutputState: i.ToPolicyPolicyContentStatementArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PolicyPolicyContentStatementOutput struct{ *pulumi.OutputState }
 
 func (PolicyPolicyContentStatementOutput) ElementType() reflect.Type {
@@ -227,12 +190,6 @@ func (o PolicyPolicyContentStatementOutput) ToPolicyPolicyContentStatementOutput
 
 func (o PolicyPolicyContentStatementOutput) ToPolicyPolicyContentStatementOutputWithContext(ctx context.Context) PolicyPolicyContentStatementOutput {
 	return o
-}
-
-func (o PolicyPolicyContentStatementOutput) ToOutput(ctx context.Context) pulumix.Output[PolicyPolicyContentStatement] {
-	return pulumix.Output[PolicyPolicyContentStatement]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Set a list of required actions for this permissions statement.
@@ -263,12 +220,6 @@ func (o PolicyPolicyContentStatementArrayOutput) ToPolicyPolicyContentStatementA
 
 func (o PolicyPolicyContentStatementArrayOutput) ToPolicyPolicyContentStatementArrayOutputWithContext(ctx context.Context) PolicyPolicyContentStatementArrayOutput {
 	return o
-}
-
-func (o PolicyPolicyContentStatementArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PolicyPolicyContentStatement] {
-	return pulumix.Output[[]PolicyPolicyContentStatement]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PolicyPolicyContentStatementArrayOutput) Index(i pulumi.IntInput) PolicyPolicyContentStatementOutput {
@@ -316,12 +267,6 @@ func (i ProgrammaticUserAccountArgs) ToProgrammaticUserAccountOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(ProgrammaticUserAccountOutput)
 }
 
-func (i ProgrammaticUserAccountArgs) ToOutput(ctx context.Context) pulumix.Output[ProgrammaticUserAccount] {
-	return pulumix.Output[ProgrammaticUserAccount]{
-		OutputState: i.ToProgrammaticUserAccountOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ProgrammaticUserAccountArrayInput is an input type that accepts ProgrammaticUserAccountArray and ProgrammaticUserAccountArrayOutput values.
 // You can construct a concrete instance of `ProgrammaticUserAccountArrayInput` via:
 //
@@ -347,12 +292,6 @@ func (i ProgrammaticUserAccountArray) ToProgrammaticUserAccountArrayOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(ProgrammaticUserAccountArrayOutput)
 }
 
-func (i ProgrammaticUserAccountArray) ToOutput(ctx context.Context) pulumix.Output[[]ProgrammaticUserAccount] {
-	return pulumix.Output[[]ProgrammaticUserAccount]{
-		OutputState: i.ToProgrammaticUserAccountArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ProgrammaticUserAccountOutput struct{ *pulumi.OutputState }
 
 func (ProgrammaticUserAccountOutput) ElementType() reflect.Type {
@@ -365,12 +304,6 @@ func (o ProgrammaticUserAccountOutput) ToProgrammaticUserAccountOutput() Program
 
 func (o ProgrammaticUserAccountOutput) ToProgrammaticUserAccountOutputWithContext(ctx context.Context) ProgrammaticUserAccountOutput {
 	return o
-}
-
-func (o ProgrammaticUserAccountOutput) ToOutput(ctx context.Context) pulumix.Output[ProgrammaticUserAccount] {
-	return pulumix.Output[ProgrammaticUserAccount]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Account ID the programmatic user will have access to.
@@ -396,12 +329,6 @@ func (o ProgrammaticUserAccountArrayOutput) ToProgrammaticUserAccountArrayOutput
 
 func (o ProgrammaticUserAccountArrayOutput) ToProgrammaticUserAccountArrayOutputWithContext(ctx context.Context) ProgrammaticUserAccountArrayOutput {
 	return o
-}
-
-func (o ProgrammaticUserAccountArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ProgrammaticUserAccount] {
-	return pulumix.Output[[]ProgrammaticUserAccount]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ProgrammaticUserAccountArrayOutput) Index(i pulumi.IntInput) ProgrammaticUserAccountOutput {
@@ -449,12 +376,6 @@ func (i ProgrammaticUserPolicyArgs) ToProgrammaticUserPolicyOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(ProgrammaticUserPolicyOutput)
 }
 
-func (i ProgrammaticUserPolicyArgs) ToOutput(ctx context.Context) pulumix.Output[ProgrammaticUserPolicy] {
-	return pulumix.Output[ProgrammaticUserPolicy]{
-		OutputState: i.ToProgrammaticUserPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ProgrammaticUserPolicyArrayInput is an input type that accepts ProgrammaticUserPolicyArray and ProgrammaticUserPolicyArrayOutput values.
 // You can construct a concrete instance of `ProgrammaticUserPolicyArrayInput` via:
 //
@@ -480,12 +401,6 @@ func (i ProgrammaticUserPolicyArray) ToProgrammaticUserPolicyArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(ProgrammaticUserPolicyArrayOutput)
 }
 
-func (i ProgrammaticUserPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]ProgrammaticUserPolicy] {
-	return pulumix.Output[[]ProgrammaticUserPolicy]{
-		OutputState: i.ToProgrammaticUserPolicyArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ProgrammaticUserPolicyOutput struct{ *pulumi.OutputState }
 
 func (ProgrammaticUserPolicyOutput) ElementType() reflect.Type {
@@ -498,12 +413,6 @@ func (o ProgrammaticUserPolicyOutput) ToProgrammaticUserPolicyOutput() Programma
 
 func (o ProgrammaticUserPolicyOutput) ToProgrammaticUserPolicyOutputWithContext(ctx context.Context) ProgrammaticUserPolicyOutput {
 	return o
-}
-
-func (o ProgrammaticUserPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[ProgrammaticUserPolicy] {
-	return pulumix.Output[ProgrammaticUserPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A list of the accounts that the policy should be
@@ -529,12 +438,6 @@ func (o ProgrammaticUserPolicyArrayOutput) ToProgrammaticUserPolicyArrayOutput()
 
 func (o ProgrammaticUserPolicyArrayOutput) ToProgrammaticUserPolicyArrayOutputWithContext(ctx context.Context) ProgrammaticUserPolicyArrayOutput {
 	return o
-}
-
-func (o ProgrammaticUserPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ProgrammaticUserPolicy] {
-	return pulumix.Output[[]ProgrammaticUserPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ProgrammaticUserPolicyArrayOutput) Index(i pulumi.IntInput) ProgrammaticUserPolicyOutput {
@@ -584,12 +487,6 @@ func (i UserGroupPolicyArgs) ToUserGroupPolicyOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(UserGroupPolicyOutput)
 }
 
-func (i UserGroupPolicyArgs) ToOutput(ctx context.Context) pulumix.Output[UserGroupPolicy] {
-	return pulumix.Output[UserGroupPolicy]{
-		OutputState: i.ToUserGroupPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // UserGroupPolicyArrayInput is an input type that accepts UserGroupPolicyArray and UserGroupPolicyArrayOutput values.
 // You can construct a concrete instance of `UserGroupPolicyArrayInput` via:
 //
@@ -615,12 +512,6 @@ func (i UserGroupPolicyArray) ToUserGroupPolicyArrayOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(UserGroupPolicyArrayOutput)
 }
 
-func (i UserGroupPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]UserGroupPolicy] {
-	return pulumix.Output[[]UserGroupPolicy]{
-		OutputState: i.ToUserGroupPolicyArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type UserGroupPolicyOutput struct{ *pulumi.OutputState }
 
 func (UserGroupPolicyOutput) ElementType() reflect.Type {
@@ -633,12 +524,6 @@ func (o UserGroupPolicyOutput) ToUserGroupPolicyOutput() UserGroupPolicyOutput {
 
 func (o UserGroupPolicyOutput) ToUserGroupPolicyOutputWithContext(ctx context.Context) UserGroupPolicyOutput {
 	return o
-}
-
-func (o UserGroupPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[UserGroupPolicy] {
-	return pulumix.Output[UserGroupPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A list of accounts to register with the assigned under the
@@ -665,12 +550,6 @@ func (o UserGroupPolicyArrayOutput) ToUserGroupPolicyArrayOutput() UserGroupPoli
 
 func (o UserGroupPolicyArrayOutput) ToUserGroupPolicyArrayOutputWithContext(ctx context.Context) UserGroupPolicyArrayOutput {
 	return o
-}
-
-func (o UserGroupPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]UserGroupPolicy] {
-	return pulumix.Output[[]UserGroupPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o UserGroupPolicyArrayOutput) Index(i pulumi.IntInput) UserGroupPolicyOutput {
@@ -716,12 +595,6 @@ func (i UserPolicyArgs) ToUserPolicyOutputWithContext(ctx context.Context) UserP
 	return pulumi.ToOutputWithContext(ctx, i).(UserPolicyOutput)
 }
 
-func (i UserPolicyArgs) ToOutput(ctx context.Context) pulumix.Output[UserPolicy] {
-	return pulumix.Output[UserPolicy]{
-		OutputState: i.ToUserPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // UserPolicyArrayInput is an input type that accepts UserPolicyArray and UserPolicyArrayOutput values.
 // You can construct a concrete instance of `UserPolicyArrayInput` via:
 //
@@ -747,12 +620,6 @@ func (i UserPolicyArray) ToUserPolicyArrayOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(UserPolicyArrayOutput)
 }
 
-func (i UserPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]UserPolicy] {
-	return pulumix.Output[[]UserPolicy]{
-		OutputState: i.ToUserPolicyArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type UserPolicyOutput struct{ *pulumi.OutputState }
 
 func (UserPolicyOutput) ElementType() reflect.Type {
@@ -765,12 +632,6 @@ func (o UserPolicyOutput) ToUserPolicyOutput() UserPolicyOutput {
 
 func (o UserPolicyOutput) ToUserPolicyOutputWithContext(ctx context.Context) UserPolicyOutput {
 	return o
-}
-
-func (o UserPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[UserPolicy] {
-	return pulumix.Output[UserPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o UserPolicyOutput) PolicyAccountIds() pulumi.StringArrayOutput {
@@ -795,12 +656,6 @@ func (o UserPolicyArrayOutput) ToUserPolicyArrayOutput() UserPolicyArrayOutput {
 
 func (o UserPolicyArrayOutput) ToUserPolicyArrayOutputWithContext(ctx context.Context) UserPolicyArrayOutput {
 	return o
-}
-
-func (o UserPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]UserPolicy] {
-	return pulumix.Output[[]UserPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o UserPolicyArrayOutput) Index(i pulumi.IntInput) UserPolicyOutput {

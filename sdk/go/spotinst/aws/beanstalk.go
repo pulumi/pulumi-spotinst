@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Spotinst AWS group resource using Elastic Beanstalk.
@@ -286,12 +285,6 @@ func (i *Beanstalk) ToBeanstalkOutputWithContext(ctx context.Context) BeanstalkO
 	return pulumi.ToOutputWithContext(ctx, i).(BeanstalkOutput)
 }
 
-func (i *Beanstalk) ToOutput(ctx context.Context) pulumix.Output[*Beanstalk] {
-	return pulumix.Output[*Beanstalk]{
-		OutputState: i.ToBeanstalkOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BeanstalkArrayInput is an input type that accepts BeanstalkArray and BeanstalkArrayOutput values.
 // You can construct a concrete instance of `BeanstalkArrayInput` via:
 //
@@ -315,12 +308,6 @@ func (i BeanstalkArray) ToBeanstalkArrayOutput() BeanstalkArrayOutput {
 
 func (i BeanstalkArray) ToBeanstalkArrayOutputWithContext(ctx context.Context) BeanstalkArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BeanstalkArrayOutput)
-}
-
-func (i BeanstalkArray) ToOutput(ctx context.Context) pulumix.Output[[]*Beanstalk] {
-	return pulumix.Output[[]*Beanstalk]{
-		OutputState: i.ToBeanstalkArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // BeanstalkMapInput is an input type that accepts BeanstalkMap and BeanstalkMapOutput values.
@@ -348,12 +335,6 @@ func (i BeanstalkMap) ToBeanstalkMapOutputWithContext(ctx context.Context) Beans
 	return pulumi.ToOutputWithContext(ctx, i).(BeanstalkMapOutput)
 }
 
-func (i BeanstalkMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Beanstalk] {
-	return pulumix.Output[map[string]*Beanstalk]{
-		OutputState: i.ToBeanstalkMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BeanstalkOutput struct{ *pulumi.OutputState }
 
 func (BeanstalkOutput) ElementType() reflect.Type {
@@ -366,12 +347,6 @@ func (o BeanstalkOutput) ToBeanstalkOutput() BeanstalkOutput {
 
 func (o BeanstalkOutput) ToBeanstalkOutputWithContext(ctx context.Context) BeanstalkOutput {
 	return o
-}
-
-func (o BeanstalkOutput) ToOutput(ctx context.Context) pulumix.Output[*Beanstalk] {
-	return pulumix.Output[*Beanstalk]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The id of an existing Beanstalk environment.
@@ -452,12 +427,6 @@ func (o BeanstalkArrayOutput) ToBeanstalkArrayOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o BeanstalkArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Beanstalk] {
-	return pulumix.Output[[]*Beanstalk]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o BeanstalkArrayOutput) Index(i pulumi.IntInput) BeanstalkOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Beanstalk {
 		return vs[0].([]*Beanstalk)[vs[1].(int)]
@@ -476,12 +445,6 @@ func (o BeanstalkMapOutput) ToBeanstalkMapOutput() BeanstalkMapOutput {
 
 func (o BeanstalkMapOutput) ToBeanstalkMapOutputWithContext(ctx context.Context) BeanstalkMapOutput {
 	return o
-}
-
-func (o BeanstalkMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Beanstalk] {
-	return pulumix.Output[map[string]*Beanstalk]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BeanstalkMapOutput) MapIndex(k pulumi.StringInput) BeanstalkOutput {

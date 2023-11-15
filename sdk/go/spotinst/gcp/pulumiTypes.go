@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -59,12 +58,6 @@ func (i ElastigroupBackendServiceArgs) ToElastigroupBackendServiceOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupBackendServiceOutput)
 }
 
-func (i ElastigroupBackendServiceArgs) ToOutput(ctx context.Context) pulumix.Output[ElastigroupBackendService] {
-	return pulumix.Output[ElastigroupBackendService]{
-		OutputState: i.ToElastigroupBackendServiceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ElastigroupBackendServiceArrayInput is an input type that accepts ElastigroupBackendServiceArray and ElastigroupBackendServiceArrayOutput values.
 // You can construct a concrete instance of `ElastigroupBackendServiceArrayInput` via:
 //
@@ -90,12 +83,6 @@ func (i ElastigroupBackendServiceArray) ToElastigroupBackendServiceArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupBackendServiceArrayOutput)
 }
 
-func (i ElastigroupBackendServiceArray) ToOutput(ctx context.Context) pulumix.Output[[]ElastigroupBackendService] {
-	return pulumix.Output[[]ElastigroupBackendService]{
-		OutputState: i.ToElastigroupBackendServiceArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ElastigroupBackendServiceOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupBackendServiceOutput) ElementType() reflect.Type {
@@ -108,12 +95,6 @@ func (o ElastigroupBackendServiceOutput) ToElastigroupBackendServiceOutput() Ela
 
 func (o ElastigroupBackendServiceOutput) ToElastigroupBackendServiceOutputWithContext(ctx context.Context) ElastigroupBackendServiceOutput {
 	return o
-}
-
-func (o ElastigroupBackendServiceOutput) ToOutput(ctx context.Context) pulumix.Output[ElastigroupBackendService] {
-	return pulumix.Output[ElastigroupBackendService]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Sets which location the backend services will be active. Valid values: `regional`, `global`.
@@ -148,12 +129,6 @@ func (o ElastigroupBackendServiceArrayOutput) ToElastigroupBackendServiceArrayOu
 
 func (o ElastigroupBackendServiceArrayOutput) ToElastigroupBackendServiceArrayOutputWithContext(ctx context.Context) ElastigroupBackendServiceArrayOutput {
 	return o
-}
-
-func (o ElastigroupBackendServiceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ElastigroupBackendService] {
-	return pulumix.Output[[]ElastigroupBackendService]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ElastigroupBackendServiceArrayOutput) Index(i pulumi.IntInput) ElastigroupBackendServiceOutput {
@@ -231,12 +206,6 @@ func (i ElastigroupBackendServiceNamedPortArgs) ToElastigroupBackendServiceNamed
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupBackendServiceNamedPortOutput)
 }
 
-func (i ElastigroupBackendServiceNamedPortArgs) ToOutput(ctx context.Context) pulumix.Output[ElastigroupBackendServiceNamedPort] {
-	return pulumix.Output[ElastigroupBackendServiceNamedPort]{
-		OutputState: i.ToElastigroupBackendServiceNamedPortOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ElastigroupBackendServiceNamedPortArrayInput is an input type that accepts ElastigroupBackendServiceNamedPortArray and ElastigroupBackendServiceNamedPortArrayOutput values.
 // You can construct a concrete instance of `ElastigroupBackendServiceNamedPortArrayInput` via:
 //
@@ -262,12 +231,6 @@ func (i ElastigroupBackendServiceNamedPortArray) ToElastigroupBackendServiceName
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupBackendServiceNamedPortArrayOutput)
 }
 
-func (i ElastigroupBackendServiceNamedPortArray) ToOutput(ctx context.Context) pulumix.Output[[]ElastigroupBackendServiceNamedPort] {
-	return pulumix.Output[[]ElastigroupBackendServiceNamedPort]{
-		OutputState: i.ToElastigroupBackendServiceNamedPortArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ElastigroupBackendServiceNamedPortOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupBackendServiceNamedPortOutput) ElementType() reflect.Type {
@@ -280,12 +243,6 @@ func (o ElastigroupBackendServiceNamedPortOutput) ToElastigroupBackendServiceNam
 
 func (o ElastigroupBackendServiceNamedPortOutput) ToElastigroupBackendServiceNamedPortOutputWithContext(ctx context.Context) ElastigroupBackendServiceNamedPortOutput {
 	return o
-}
-
-func (o ElastigroupBackendServiceNamedPortOutput) ToOutput(ctx context.Context) pulumix.Output[ElastigroupBackendServiceNamedPort] {
-	return pulumix.Output[ElastigroupBackendServiceNamedPort]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The group name.
@@ -329,12 +286,6 @@ func (o ElastigroupBackendServiceNamedPortArrayOutput) ToElastigroupBackendServi
 
 func (o ElastigroupBackendServiceNamedPortArrayOutput) ToElastigroupBackendServiceNamedPortArrayOutputWithContext(ctx context.Context) ElastigroupBackendServiceNamedPortArrayOutput {
 	return o
-}
-
-func (o ElastigroupBackendServiceNamedPortArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ElastigroupBackendServiceNamedPort] {
-	return pulumix.Output[[]ElastigroupBackendServiceNamedPort]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ElastigroupBackendServiceNamedPortArrayOutput) Index(i pulumi.IntInput) ElastigroupBackendServiceNamedPortOutput {
@@ -404,12 +355,6 @@ func (i ElastigroupDiskArgs) ToElastigroupDiskOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupDiskOutput)
 }
 
-func (i ElastigroupDiskArgs) ToOutput(ctx context.Context) pulumix.Output[ElastigroupDisk] {
-	return pulumix.Output[ElastigroupDisk]{
-		OutputState: i.ToElastigroupDiskOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ElastigroupDiskArrayInput is an input type that accepts ElastigroupDiskArray and ElastigroupDiskArrayOutput values.
 // You can construct a concrete instance of `ElastigroupDiskArrayInput` via:
 //
@@ -435,12 +380,6 @@ func (i ElastigroupDiskArray) ToElastigroupDiskArrayOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupDiskArrayOutput)
 }
 
-func (i ElastigroupDiskArray) ToOutput(ctx context.Context) pulumix.Output[[]ElastigroupDisk] {
-	return pulumix.Output[[]ElastigroupDisk]{
-		OutputState: i.ToElastigroupDiskArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ElastigroupDiskOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupDiskOutput) ElementType() reflect.Type {
@@ -453,12 +392,6 @@ func (o ElastigroupDiskOutput) ToElastigroupDiskOutput() ElastigroupDiskOutput {
 
 func (o ElastigroupDiskOutput) ToElastigroupDiskOutputWithContext(ctx context.Context) ElastigroupDiskOutput {
 	return o
-}
-
-func (o ElastigroupDiskOutput) ToOutput(ctx context.Context) pulumix.Output[ElastigroupDisk] {
-	return pulumix.Output[ElastigroupDisk]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies whether the disk will be auto-deleted when the instance is deleted.
@@ -513,12 +446,6 @@ func (o ElastigroupDiskArrayOutput) ToElastigroupDiskArrayOutput() ElastigroupDi
 
 func (o ElastigroupDiskArrayOutput) ToElastigroupDiskArrayOutputWithContext(ctx context.Context) ElastigroupDiskArrayOutput {
 	return o
-}
-
-func (o ElastigroupDiskArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ElastigroupDisk] {
-	return pulumix.Output[[]ElastigroupDisk]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ElastigroupDiskArrayOutput) Index(i pulumi.IntInput) ElastigroupDiskOutput {
@@ -600,12 +527,6 @@ func (i ElastigroupDiskInitializeParamArgs) ToElastigroupDiskInitializeParamOutp
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupDiskInitializeParamOutput)
 }
 
-func (i ElastigroupDiskInitializeParamArgs) ToOutput(ctx context.Context) pulumix.Output[ElastigroupDiskInitializeParam] {
-	return pulumix.Output[ElastigroupDiskInitializeParam]{
-		OutputState: i.ToElastigroupDiskInitializeParamOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ElastigroupDiskInitializeParamArrayInput is an input type that accepts ElastigroupDiskInitializeParamArray and ElastigroupDiskInitializeParamArrayOutput values.
 // You can construct a concrete instance of `ElastigroupDiskInitializeParamArrayInput` via:
 //
@@ -631,12 +552,6 @@ func (i ElastigroupDiskInitializeParamArray) ToElastigroupDiskInitializeParamArr
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupDiskInitializeParamArrayOutput)
 }
 
-func (i ElastigroupDiskInitializeParamArray) ToOutput(ctx context.Context) pulumix.Output[[]ElastigroupDiskInitializeParam] {
-	return pulumix.Output[[]ElastigroupDiskInitializeParam]{
-		OutputState: i.ToElastigroupDiskInitializeParamArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ElastigroupDiskInitializeParamOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupDiskInitializeParamOutput) ElementType() reflect.Type {
@@ -649,12 +564,6 @@ func (o ElastigroupDiskInitializeParamOutput) ToElastigroupDiskInitializeParamOu
 
 func (o ElastigroupDiskInitializeParamOutput) ToElastigroupDiskInitializeParamOutputWithContext(ctx context.Context) ElastigroupDiskInitializeParamOutput {
 	return o
-}
-
-func (o ElastigroupDiskInitializeParamOutput) ToOutput(ctx context.Context) pulumix.Output[ElastigroupDiskInitializeParam] {
-	return pulumix.Output[ElastigroupDiskInitializeParam]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies disk size in gigabytes. Must be in increments of 2.
@@ -703,12 +612,6 @@ func (o ElastigroupDiskInitializeParamArrayOutput) ToElastigroupDiskInitializePa
 
 func (o ElastigroupDiskInitializeParamArrayOutput) ToElastigroupDiskInitializeParamArrayOutputWithContext(ctx context.Context) ElastigroupDiskInitializeParamArrayOutput {
 	return o
-}
-
-func (o ElastigroupDiskInitializeParamArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ElastigroupDiskInitializeParam] {
-	return pulumix.Output[[]ElastigroupDiskInitializeParam]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ElastigroupDiskInitializeParamArrayOutput) Index(i pulumi.IntInput) ElastigroupDiskInitializeParamOutput {
@@ -786,12 +689,6 @@ func (i ElastigroupGpuArgs) ToElastigroupGpuOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupGpuOutput)
 }
 
-func (i ElastigroupGpuArgs) ToOutput(ctx context.Context) pulumix.Output[ElastigroupGpu] {
-	return pulumix.Output[ElastigroupGpu]{
-		OutputState: i.ToElastigroupGpuOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ElastigroupGpuArrayInput is an input type that accepts ElastigroupGpuArray and ElastigroupGpuArrayOutput values.
 // You can construct a concrete instance of `ElastigroupGpuArrayInput` via:
 //
@@ -817,12 +714,6 @@ func (i ElastigroupGpuArray) ToElastigroupGpuArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupGpuArrayOutput)
 }
 
-func (i ElastigroupGpuArray) ToOutput(ctx context.Context) pulumix.Output[[]ElastigroupGpu] {
-	return pulumix.Output[[]ElastigroupGpu]{
-		OutputState: i.ToElastigroupGpuArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ElastigroupGpuOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupGpuOutput) ElementType() reflect.Type {
@@ -835,12 +726,6 @@ func (o ElastigroupGpuOutput) ToElastigroupGpuOutput() ElastigroupGpuOutput {
 
 func (o ElastigroupGpuOutput) ToElastigroupGpuOutputWithContext(ctx context.Context) ElastigroupGpuOutput {
 	return o
-}
-
-func (o ElastigroupGpuOutput) ToOutput(ctx context.Context) pulumix.Output[ElastigroupGpu] {
-	return pulumix.Output[ElastigroupGpu]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The number of GPUs. Must be 0, 2, 4, 6, 8.
@@ -886,12 +771,6 @@ func (o ElastigroupGpuArrayOutput) ToElastigroupGpuArrayOutputWithContext(ctx co
 	return o
 }
 
-func (o ElastigroupGpuArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ElastigroupGpu] {
-	return pulumix.Output[[]ElastigroupGpu]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ElastigroupGpuArrayOutput) Index(i pulumi.IntInput) ElastigroupGpuOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ElastigroupGpu {
 		return vs[0].([]ElastigroupGpu)[vs[1].(int)]
@@ -933,12 +812,6 @@ func (i ElastigroupInstanceTypesCustomArgs) ToElastigroupInstanceTypesCustomOutp
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupInstanceTypesCustomOutput)
 }
 
-func (i ElastigroupInstanceTypesCustomArgs) ToOutput(ctx context.Context) pulumix.Output[ElastigroupInstanceTypesCustom] {
-	return pulumix.Output[ElastigroupInstanceTypesCustom]{
-		OutputState: i.ToElastigroupInstanceTypesCustomOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ElastigroupInstanceTypesCustomArrayInput is an input type that accepts ElastigroupInstanceTypesCustomArray and ElastigroupInstanceTypesCustomArrayOutput values.
 // You can construct a concrete instance of `ElastigroupInstanceTypesCustomArrayInput` via:
 //
@@ -964,12 +837,6 @@ func (i ElastigroupInstanceTypesCustomArray) ToElastigroupInstanceTypesCustomArr
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupInstanceTypesCustomArrayOutput)
 }
 
-func (i ElastigroupInstanceTypesCustomArray) ToOutput(ctx context.Context) pulumix.Output[[]ElastigroupInstanceTypesCustom] {
-	return pulumix.Output[[]ElastigroupInstanceTypesCustom]{
-		OutputState: i.ToElastigroupInstanceTypesCustomArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ElastigroupInstanceTypesCustomOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupInstanceTypesCustomOutput) ElementType() reflect.Type {
@@ -982,12 +849,6 @@ func (o ElastigroupInstanceTypesCustomOutput) ToElastigroupInstanceTypesCustomOu
 
 func (o ElastigroupInstanceTypesCustomOutput) ToElastigroupInstanceTypesCustomOutputWithContext(ctx context.Context) ElastigroupInstanceTypesCustomOutput {
 	return o
-}
-
-func (o ElastigroupInstanceTypesCustomOutput) ToOutput(ctx context.Context) pulumix.Output[ElastigroupInstanceTypesCustom] {
-	return pulumix.Output[ElastigroupInstanceTypesCustom]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The memory (in GiB) in the custom instance types. GCP has a number of limitations on accepted memory values.For more information, see the GCP documentation (here.)[https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#specifications]
@@ -1011,12 +872,6 @@ func (o ElastigroupInstanceTypesCustomArrayOutput) ToElastigroupInstanceTypesCus
 
 func (o ElastigroupInstanceTypesCustomArrayOutput) ToElastigroupInstanceTypesCustomArrayOutputWithContext(ctx context.Context) ElastigroupInstanceTypesCustomArrayOutput {
 	return o
-}
-
-func (o ElastigroupInstanceTypesCustomArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ElastigroupInstanceTypesCustom] {
-	return pulumix.Output[[]ElastigroupInstanceTypesCustom]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ElastigroupInstanceTypesCustomArrayOutput) Index(i pulumi.IntInput) ElastigroupInstanceTypesCustomOutput {
@@ -1094,12 +949,6 @@ func (i ElastigroupIntegrationDockerSwarmArgs) ToElastigroupIntegrationDockerSwa
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupIntegrationDockerSwarmOutput)
 }
 
-func (i ElastigroupIntegrationDockerSwarmArgs) ToOutput(ctx context.Context) pulumix.Output[ElastigroupIntegrationDockerSwarm] {
-	return pulumix.Output[ElastigroupIntegrationDockerSwarm]{
-		OutputState: i.ToElastigroupIntegrationDockerSwarmOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ElastigroupIntegrationDockerSwarmArgs) ToElastigroupIntegrationDockerSwarmPtrOutput() ElastigroupIntegrationDockerSwarmPtrOutput {
 	return i.ToElastigroupIntegrationDockerSwarmPtrOutputWithContext(context.Background())
 }
@@ -1141,12 +990,6 @@ func (i *elastigroupIntegrationDockerSwarmPtrType) ToElastigroupIntegrationDocke
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupIntegrationDockerSwarmPtrOutput)
 }
 
-func (i *elastigroupIntegrationDockerSwarmPtrType) ToOutput(ctx context.Context) pulumix.Output[*ElastigroupIntegrationDockerSwarm] {
-	return pulumix.Output[*ElastigroupIntegrationDockerSwarm]{
-		OutputState: i.ToElastigroupIntegrationDockerSwarmPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ElastigroupIntegrationDockerSwarmOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupIntegrationDockerSwarmOutput) ElementType() reflect.Type {
@@ -1169,12 +1012,6 @@ func (o ElastigroupIntegrationDockerSwarmOutput) ToElastigroupIntegrationDockerS
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElastigroupIntegrationDockerSwarm) *ElastigroupIntegrationDockerSwarm {
 		return &v
 	}).(ElastigroupIntegrationDockerSwarmPtrOutput)
-}
-
-func (o ElastigroupIntegrationDockerSwarmOutput) ToOutput(ctx context.Context) pulumix.Output[ElastigroupIntegrationDockerSwarm] {
-	return pulumix.Output[ElastigroupIntegrationDockerSwarm]{
-		OutputState: o.OutputState,
-	}
 }
 
 // IP or FQDN of one of your swarm managers.
@@ -1218,12 +1055,6 @@ func (o ElastigroupIntegrationDockerSwarmPtrOutput) ToElastigroupIntegrationDock
 
 func (o ElastigroupIntegrationDockerSwarmPtrOutput) ToElastigroupIntegrationDockerSwarmPtrOutputWithContext(ctx context.Context) ElastigroupIntegrationDockerSwarmPtrOutput {
 	return o
-}
-
-func (o ElastigroupIntegrationDockerSwarmPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ElastigroupIntegrationDockerSwarm] {
-	return pulumix.Output[*ElastigroupIntegrationDockerSwarm]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ElastigroupIntegrationDockerSwarmPtrOutput) Elem() ElastigroupIntegrationDockerSwarmOutput {
@@ -1322,12 +1153,6 @@ func (i ElastigroupIntegrationGkeArgs) ToElastigroupIntegrationGkeOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupIntegrationGkeOutput)
 }
 
-func (i ElastigroupIntegrationGkeArgs) ToOutput(ctx context.Context) pulumix.Output[ElastigroupIntegrationGke] {
-	return pulumix.Output[ElastigroupIntegrationGke]{
-		OutputState: i.ToElastigroupIntegrationGkeOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ElastigroupIntegrationGkeArgs) ToElastigroupIntegrationGkePtrOutput() ElastigroupIntegrationGkePtrOutput {
 	return i.ToElastigroupIntegrationGkePtrOutputWithContext(context.Background())
 }
@@ -1369,12 +1194,6 @@ func (i *elastigroupIntegrationGkePtrType) ToElastigroupIntegrationGkePtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupIntegrationGkePtrOutput)
 }
 
-func (i *elastigroupIntegrationGkePtrType) ToOutput(ctx context.Context) pulumix.Output[*ElastigroupIntegrationGke] {
-	return pulumix.Output[*ElastigroupIntegrationGke]{
-		OutputState: i.ToElastigroupIntegrationGkePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ElastigroupIntegrationGkeOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupIntegrationGkeOutput) ElementType() reflect.Type {
@@ -1397,12 +1216,6 @@ func (o ElastigroupIntegrationGkeOutput) ToElastigroupIntegrationGkePtrOutputWit
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElastigroupIntegrationGke) *ElastigroupIntegrationGke {
 		return &v
 	}).(ElastigroupIntegrationGkePtrOutput)
-}
-
-func (o ElastigroupIntegrationGkeOutput) ToOutput(ctx context.Context) pulumix.Output[ElastigroupIntegrationGke] {
-	return pulumix.Output[ElastigroupIntegrationGke]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ElastigroupIntegrationGkeOutput) AutoUpdate() pulumi.BoolPtrOutput {
@@ -1455,12 +1268,6 @@ func (o ElastigroupIntegrationGkePtrOutput) ToElastigroupIntegrationGkePtrOutput
 
 func (o ElastigroupIntegrationGkePtrOutput) ToElastigroupIntegrationGkePtrOutputWithContext(ctx context.Context) ElastigroupIntegrationGkePtrOutput {
 	return o
-}
-
-func (o ElastigroupIntegrationGkePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ElastigroupIntegrationGke] {
-	return pulumix.Output[*ElastigroupIntegrationGke]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ElastigroupIntegrationGkePtrOutput) Elem() ElastigroupIntegrationGkeOutput {
@@ -1587,12 +1394,6 @@ func (i ElastigroupIntegrationGkeAutoscaleDownArgs) ToElastigroupIntegrationGkeA
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupIntegrationGkeAutoscaleDownOutput)
 }
 
-func (i ElastigroupIntegrationGkeAutoscaleDownArgs) ToOutput(ctx context.Context) pulumix.Output[ElastigroupIntegrationGkeAutoscaleDown] {
-	return pulumix.Output[ElastigroupIntegrationGkeAutoscaleDown]{
-		OutputState: i.ToElastigroupIntegrationGkeAutoscaleDownOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ElastigroupIntegrationGkeAutoscaleDownArgs) ToElastigroupIntegrationGkeAutoscaleDownPtrOutput() ElastigroupIntegrationGkeAutoscaleDownPtrOutput {
 	return i.ToElastigroupIntegrationGkeAutoscaleDownPtrOutputWithContext(context.Background())
 }
@@ -1634,12 +1435,6 @@ func (i *elastigroupIntegrationGkeAutoscaleDownPtrType) ToElastigroupIntegration
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupIntegrationGkeAutoscaleDownPtrOutput)
 }
 
-func (i *elastigroupIntegrationGkeAutoscaleDownPtrType) ToOutput(ctx context.Context) pulumix.Output[*ElastigroupIntegrationGkeAutoscaleDown] {
-	return pulumix.Output[*ElastigroupIntegrationGkeAutoscaleDown]{
-		OutputState: i.ToElastigroupIntegrationGkeAutoscaleDownPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ElastigroupIntegrationGkeAutoscaleDownOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupIntegrationGkeAutoscaleDownOutput) ElementType() reflect.Type {
@@ -1664,12 +1459,6 @@ func (o ElastigroupIntegrationGkeAutoscaleDownOutput) ToElastigroupIntegrationGk
 	}).(ElastigroupIntegrationGkeAutoscaleDownPtrOutput)
 }
 
-func (o ElastigroupIntegrationGkeAutoscaleDownOutput) ToOutput(ctx context.Context) pulumix.Output[ElastigroupIntegrationGkeAutoscaleDown] {
-	return pulumix.Output[ElastigroupIntegrationGkeAutoscaleDown]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Number of consecutive periods in which the threshold must be met in order to trigger a scaling action.
 func (o ElastigroupIntegrationGkeAutoscaleDownOutput) EvaluationPeriods() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ElastigroupIntegrationGkeAutoscaleDown) *int { return v.EvaluationPeriods }).(pulumi.IntPtrOutput)
@@ -1687,12 +1476,6 @@ func (o ElastigroupIntegrationGkeAutoscaleDownPtrOutput) ToElastigroupIntegratio
 
 func (o ElastigroupIntegrationGkeAutoscaleDownPtrOutput) ToElastigroupIntegrationGkeAutoscaleDownPtrOutputWithContext(ctx context.Context) ElastigroupIntegrationGkeAutoscaleDownPtrOutput {
 	return o
-}
-
-func (o ElastigroupIntegrationGkeAutoscaleDownPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ElastigroupIntegrationGkeAutoscaleDown] {
-	return pulumix.Output[*ElastigroupIntegrationGkeAutoscaleDown]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ElastigroupIntegrationGkeAutoscaleDownPtrOutput) Elem() ElastigroupIntegrationGkeAutoscaleDownOutput {
@@ -1750,12 +1533,6 @@ func (i ElastigroupIntegrationGkeAutoscaleHeadroomArgs) ToElastigroupIntegration
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupIntegrationGkeAutoscaleHeadroomOutput)
 }
 
-func (i ElastigroupIntegrationGkeAutoscaleHeadroomArgs) ToOutput(ctx context.Context) pulumix.Output[ElastigroupIntegrationGkeAutoscaleHeadroom] {
-	return pulumix.Output[ElastigroupIntegrationGkeAutoscaleHeadroom]{
-		OutputState: i.ToElastigroupIntegrationGkeAutoscaleHeadroomOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ElastigroupIntegrationGkeAutoscaleHeadroomArgs) ToElastigroupIntegrationGkeAutoscaleHeadroomPtrOutput() ElastigroupIntegrationGkeAutoscaleHeadroomPtrOutput {
 	return i.ToElastigroupIntegrationGkeAutoscaleHeadroomPtrOutputWithContext(context.Background())
 }
@@ -1797,12 +1574,6 @@ func (i *elastigroupIntegrationGkeAutoscaleHeadroomPtrType) ToElastigroupIntegra
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupIntegrationGkeAutoscaleHeadroomPtrOutput)
 }
 
-func (i *elastigroupIntegrationGkeAutoscaleHeadroomPtrType) ToOutput(ctx context.Context) pulumix.Output[*ElastigroupIntegrationGkeAutoscaleHeadroom] {
-	return pulumix.Output[*ElastigroupIntegrationGkeAutoscaleHeadroom]{
-		OutputState: i.ToElastigroupIntegrationGkeAutoscaleHeadroomPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ElastigroupIntegrationGkeAutoscaleHeadroomOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupIntegrationGkeAutoscaleHeadroomOutput) ElementType() reflect.Type {
@@ -1825,12 +1596,6 @@ func (o ElastigroupIntegrationGkeAutoscaleHeadroomOutput) ToElastigroupIntegrati
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElastigroupIntegrationGkeAutoscaleHeadroom) *ElastigroupIntegrationGkeAutoscaleHeadroom {
 		return &v
 	}).(ElastigroupIntegrationGkeAutoscaleHeadroomPtrOutput)
-}
-
-func (o ElastigroupIntegrationGkeAutoscaleHeadroomOutput) ToOutput(ctx context.Context) pulumix.Output[ElastigroupIntegrationGkeAutoscaleHeadroom] {
-	return pulumix.Output[ElastigroupIntegrationGkeAutoscaleHeadroom]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ElastigroupIntegrationGkeAutoscaleHeadroomOutput) CpuPerUnit() pulumi.IntPtrOutput {
@@ -1857,12 +1622,6 @@ func (o ElastigroupIntegrationGkeAutoscaleHeadroomPtrOutput) ToElastigroupIntegr
 
 func (o ElastigroupIntegrationGkeAutoscaleHeadroomPtrOutput) ToElastigroupIntegrationGkeAutoscaleHeadroomPtrOutputWithContext(ctx context.Context) ElastigroupIntegrationGkeAutoscaleHeadroomPtrOutput {
 	return o
-}
-
-func (o ElastigroupIntegrationGkeAutoscaleHeadroomPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ElastigroupIntegrationGkeAutoscaleHeadroom] {
-	return pulumix.Output[*ElastigroupIntegrationGkeAutoscaleHeadroom]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ElastigroupIntegrationGkeAutoscaleHeadroomPtrOutput) Elem() ElastigroupIntegrationGkeAutoscaleHeadroomOutput {
@@ -1939,12 +1698,6 @@ func (i ElastigroupIntegrationGkeAutoscaleLabelArgs) ToElastigroupIntegrationGke
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupIntegrationGkeAutoscaleLabelOutput)
 }
 
-func (i ElastigroupIntegrationGkeAutoscaleLabelArgs) ToOutput(ctx context.Context) pulumix.Output[ElastigroupIntegrationGkeAutoscaleLabel] {
-	return pulumix.Output[ElastigroupIntegrationGkeAutoscaleLabel]{
-		OutputState: i.ToElastigroupIntegrationGkeAutoscaleLabelOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ElastigroupIntegrationGkeAutoscaleLabelArrayInput is an input type that accepts ElastigroupIntegrationGkeAutoscaleLabelArray and ElastigroupIntegrationGkeAutoscaleLabelArrayOutput values.
 // You can construct a concrete instance of `ElastigroupIntegrationGkeAutoscaleLabelArrayInput` via:
 //
@@ -1970,12 +1723,6 @@ func (i ElastigroupIntegrationGkeAutoscaleLabelArray) ToElastigroupIntegrationGk
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupIntegrationGkeAutoscaleLabelArrayOutput)
 }
 
-func (i ElastigroupIntegrationGkeAutoscaleLabelArray) ToOutput(ctx context.Context) pulumix.Output[[]ElastigroupIntegrationGkeAutoscaleLabel] {
-	return pulumix.Output[[]ElastigroupIntegrationGkeAutoscaleLabel]{
-		OutputState: i.ToElastigroupIntegrationGkeAutoscaleLabelArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ElastigroupIntegrationGkeAutoscaleLabelOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupIntegrationGkeAutoscaleLabelOutput) ElementType() reflect.Type {
@@ -1988,12 +1735,6 @@ func (o ElastigroupIntegrationGkeAutoscaleLabelOutput) ToElastigroupIntegrationG
 
 func (o ElastigroupIntegrationGkeAutoscaleLabelOutput) ToElastigroupIntegrationGkeAutoscaleLabelOutputWithContext(ctx context.Context) ElastigroupIntegrationGkeAutoscaleLabelOutput {
 	return o
-}
-
-func (o ElastigroupIntegrationGkeAutoscaleLabelOutput) ToOutput(ctx context.Context) pulumix.Output[ElastigroupIntegrationGkeAutoscaleLabel] {
-	return pulumix.Output[ElastigroupIntegrationGkeAutoscaleLabel]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Labels key.
@@ -2018,12 +1759,6 @@ func (o ElastigroupIntegrationGkeAutoscaleLabelArrayOutput) ToElastigroupIntegra
 
 func (o ElastigroupIntegrationGkeAutoscaleLabelArrayOutput) ToElastigroupIntegrationGkeAutoscaleLabelArrayOutputWithContext(ctx context.Context) ElastigroupIntegrationGkeAutoscaleLabelArrayOutput {
 	return o
-}
-
-func (o ElastigroupIntegrationGkeAutoscaleLabelArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ElastigroupIntegrationGkeAutoscaleLabel] {
-	return pulumix.Output[[]ElastigroupIntegrationGkeAutoscaleLabel]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ElastigroupIntegrationGkeAutoscaleLabelArrayOutput) Index(i pulumi.IntInput) ElastigroupIntegrationGkeAutoscaleLabelOutput {
@@ -2069,12 +1804,6 @@ func (i ElastigroupLabelArgs) ToElastigroupLabelOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupLabelOutput)
 }
 
-func (i ElastigroupLabelArgs) ToOutput(ctx context.Context) pulumix.Output[ElastigroupLabel] {
-	return pulumix.Output[ElastigroupLabel]{
-		OutputState: i.ToElastigroupLabelOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ElastigroupLabelArrayInput is an input type that accepts ElastigroupLabelArray and ElastigroupLabelArrayOutput values.
 // You can construct a concrete instance of `ElastigroupLabelArrayInput` via:
 //
@@ -2100,12 +1829,6 @@ func (i ElastigroupLabelArray) ToElastigroupLabelArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupLabelArrayOutput)
 }
 
-func (i ElastigroupLabelArray) ToOutput(ctx context.Context) pulumix.Output[[]ElastigroupLabel] {
-	return pulumix.Output[[]ElastigroupLabel]{
-		OutputState: i.ToElastigroupLabelArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ElastigroupLabelOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupLabelOutput) ElementType() reflect.Type {
@@ -2118,12 +1841,6 @@ func (o ElastigroupLabelOutput) ToElastigroupLabelOutput() ElastigroupLabelOutpu
 
 func (o ElastigroupLabelOutput) ToElastigroupLabelOutputWithContext(ctx context.Context) ElastigroupLabelOutput {
 	return o
-}
-
-func (o ElastigroupLabelOutput) ToOutput(ctx context.Context) pulumix.Output[ElastigroupLabel] {
-	return pulumix.Output[ElastigroupLabel]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Labels key.
@@ -2148,12 +1865,6 @@ func (o ElastigroupLabelArrayOutput) ToElastigroupLabelArrayOutput() Elastigroup
 
 func (o ElastigroupLabelArrayOutput) ToElastigroupLabelArrayOutputWithContext(ctx context.Context) ElastigroupLabelArrayOutput {
 	return o
-}
-
-func (o ElastigroupLabelArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ElastigroupLabel] {
-	return pulumix.Output[[]ElastigroupLabel]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ElastigroupLabelArrayOutput) Index(i pulumi.IntInput) ElastigroupLabelOutput {
@@ -2199,12 +1910,6 @@ func (i ElastigroupMetadataArgs) ToElastigroupMetadataOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupMetadataOutput)
 }
 
-func (i ElastigroupMetadataArgs) ToOutput(ctx context.Context) pulumix.Output[ElastigroupMetadata] {
-	return pulumix.Output[ElastigroupMetadata]{
-		OutputState: i.ToElastigroupMetadataOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ElastigroupMetadataArrayInput is an input type that accepts ElastigroupMetadataArray and ElastigroupMetadataArrayOutput values.
 // You can construct a concrete instance of `ElastigroupMetadataArrayInput` via:
 //
@@ -2230,12 +1935,6 @@ func (i ElastigroupMetadataArray) ToElastigroupMetadataArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupMetadataArrayOutput)
 }
 
-func (i ElastigroupMetadataArray) ToOutput(ctx context.Context) pulumix.Output[[]ElastigroupMetadata] {
-	return pulumix.Output[[]ElastigroupMetadata]{
-		OutputState: i.ToElastigroupMetadataArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ElastigroupMetadataOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupMetadataOutput) ElementType() reflect.Type {
@@ -2248,12 +1947,6 @@ func (o ElastigroupMetadataOutput) ToElastigroupMetadataOutput() ElastigroupMeta
 
 func (o ElastigroupMetadataOutput) ToElastigroupMetadataOutputWithContext(ctx context.Context) ElastigroupMetadataOutput {
 	return o
-}
-
-func (o ElastigroupMetadataOutput) ToOutput(ctx context.Context) pulumix.Output[ElastigroupMetadata] {
-	return pulumix.Output[ElastigroupMetadata]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Labels key.
@@ -2278,12 +1971,6 @@ func (o ElastigroupMetadataArrayOutput) ToElastigroupMetadataArrayOutput() Elast
 
 func (o ElastigroupMetadataArrayOutput) ToElastigroupMetadataArrayOutputWithContext(ctx context.Context) ElastigroupMetadataArrayOutput {
 	return o
-}
-
-func (o ElastigroupMetadataArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ElastigroupMetadata] {
-	return pulumix.Output[[]ElastigroupMetadata]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ElastigroupMetadataArrayOutput) Index(i pulumi.IntInput) ElastigroupMetadataOutput {
@@ -2331,12 +2018,6 @@ func (i ElastigroupNetworkInterfaceArgs) ToElastigroupNetworkInterfaceOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupNetworkInterfaceOutput)
 }
 
-func (i ElastigroupNetworkInterfaceArgs) ToOutput(ctx context.Context) pulumix.Output[ElastigroupNetworkInterface] {
-	return pulumix.Output[ElastigroupNetworkInterface]{
-		OutputState: i.ToElastigroupNetworkInterfaceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ElastigroupNetworkInterfaceArrayInput is an input type that accepts ElastigroupNetworkInterfaceArray and ElastigroupNetworkInterfaceArrayOutput values.
 // You can construct a concrete instance of `ElastigroupNetworkInterfaceArrayInput` via:
 //
@@ -2362,12 +2043,6 @@ func (i ElastigroupNetworkInterfaceArray) ToElastigroupNetworkInterfaceArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupNetworkInterfaceArrayOutput)
 }
 
-func (i ElastigroupNetworkInterfaceArray) ToOutput(ctx context.Context) pulumix.Output[[]ElastigroupNetworkInterface] {
-	return pulumix.Output[[]ElastigroupNetworkInterface]{
-		OutputState: i.ToElastigroupNetworkInterfaceArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ElastigroupNetworkInterfaceOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupNetworkInterfaceOutput) ElementType() reflect.Type {
@@ -2380,12 +2055,6 @@ func (o ElastigroupNetworkInterfaceOutput) ToElastigroupNetworkInterfaceOutput()
 
 func (o ElastigroupNetworkInterfaceOutput) ToElastigroupNetworkInterfaceOutputWithContext(ctx context.Context) ElastigroupNetworkInterfaceOutput {
 	return o
-}
-
-func (o ElastigroupNetworkInterfaceOutput) ToOutput(ctx context.Context) pulumix.Output[ElastigroupNetworkInterface] {
-	return pulumix.Output[ElastigroupNetworkInterface]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Array of configurations.
@@ -2414,12 +2083,6 @@ func (o ElastigroupNetworkInterfaceArrayOutput) ToElastigroupNetworkInterfaceArr
 
 func (o ElastigroupNetworkInterfaceArrayOutput) ToElastigroupNetworkInterfaceArrayOutputWithContext(ctx context.Context) ElastigroupNetworkInterfaceArrayOutput {
 	return o
-}
-
-func (o ElastigroupNetworkInterfaceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ElastigroupNetworkInterface] {
-	return pulumix.Output[[]ElastigroupNetworkInterface]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ElastigroupNetworkInterfaceArrayOutput) Index(i pulumi.IntInput) ElastigroupNetworkInterfaceOutput {
@@ -2465,12 +2128,6 @@ func (i ElastigroupNetworkInterfaceAccessConfigArgs) ToElastigroupNetworkInterfa
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupNetworkInterfaceAccessConfigOutput)
 }
 
-func (i ElastigroupNetworkInterfaceAccessConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ElastigroupNetworkInterfaceAccessConfig] {
-	return pulumix.Output[ElastigroupNetworkInterfaceAccessConfig]{
-		OutputState: i.ToElastigroupNetworkInterfaceAccessConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ElastigroupNetworkInterfaceAccessConfigArrayInput is an input type that accepts ElastigroupNetworkInterfaceAccessConfigArray and ElastigroupNetworkInterfaceAccessConfigArrayOutput values.
 // You can construct a concrete instance of `ElastigroupNetworkInterfaceAccessConfigArrayInput` via:
 //
@@ -2496,12 +2153,6 @@ func (i ElastigroupNetworkInterfaceAccessConfigArray) ToElastigroupNetworkInterf
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupNetworkInterfaceAccessConfigArrayOutput)
 }
 
-func (i ElastigroupNetworkInterfaceAccessConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]ElastigroupNetworkInterfaceAccessConfig] {
-	return pulumix.Output[[]ElastigroupNetworkInterfaceAccessConfig]{
-		OutputState: i.ToElastigroupNetworkInterfaceAccessConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ElastigroupNetworkInterfaceAccessConfigOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupNetworkInterfaceAccessConfigOutput) ElementType() reflect.Type {
@@ -2514,12 +2165,6 @@ func (o ElastigroupNetworkInterfaceAccessConfigOutput) ToElastigroupNetworkInter
 
 func (o ElastigroupNetworkInterfaceAccessConfigOutput) ToElastigroupNetworkInterfaceAccessConfigOutputWithContext(ctx context.Context) ElastigroupNetworkInterfaceAccessConfigOutput {
 	return o
-}
-
-func (o ElastigroupNetworkInterfaceAccessConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ElastigroupNetworkInterfaceAccessConfig] {
-	return pulumix.Output[ElastigroupNetworkInterfaceAccessConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The group name.
@@ -2544,12 +2189,6 @@ func (o ElastigroupNetworkInterfaceAccessConfigArrayOutput) ToElastigroupNetwork
 
 func (o ElastigroupNetworkInterfaceAccessConfigArrayOutput) ToElastigroupNetworkInterfaceAccessConfigArrayOutputWithContext(ctx context.Context) ElastigroupNetworkInterfaceAccessConfigArrayOutput {
 	return o
-}
-
-func (o ElastigroupNetworkInterfaceAccessConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ElastigroupNetworkInterfaceAccessConfig] {
-	return pulumix.Output[[]ElastigroupNetworkInterfaceAccessConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ElastigroupNetworkInterfaceAccessConfigArrayOutput) Index(i pulumi.IntInput) ElastigroupNetworkInterfaceAccessConfigOutput {
@@ -2591,12 +2230,6 @@ func (i ElastigroupNetworkInterfaceAliasIpRangeArgs) ToElastigroupNetworkInterfa
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupNetworkInterfaceAliasIpRangeOutput)
 }
 
-func (i ElastigroupNetworkInterfaceAliasIpRangeArgs) ToOutput(ctx context.Context) pulumix.Output[ElastigroupNetworkInterfaceAliasIpRange] {
-	return pulumix.Output[ElastigroupNetworkInterfaceAliasIpRange]{
-		OutputState: i.ToElastigroupNetworkInterfaceAliasIpRangeOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ElastigroupNetworkInterfaceAliasIpRangeArrayInput is an input type that accepts ElastigroupNetworkInterfaceAliasIpRangeArray and ElastigroupNetworkInterfaceAliasIpRangeArrayOutput values.
 // You can construct a concrete instance of `ElastigroupNetworkInterfaceAliasIpRangeArrayInput` via:
 //
@@ -2622,12 +2255,6 @@ func (i ElastigroupNetworkInterfaceAliasIpRangeArray) ToElastigroupNetworkInterf
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupNetworkInterfaceAliasIpRangeArrayOutput)
 }
 
-func (i ElastigroupNetworkInterfaceAliasIpRangeArray) ToOutput(ctx context.Context) pulumix.Output[[]ElastigroupNetworkInterfaceAliasIpRange] {
-	return pulumix.Output[[]ElastigroupNetworkInterfaceAliasIpRange]{
-		OutputState: i.ToElastigroupNetworkInterfaceAliasIpRangeArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ElastigroupNetworkInterfaceAliasIpRangeOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupNetworkInterfaceAliasIpRangeOutput) ElementType() reflect.Type {
@@ -2640,12 +2267,6 @@ func (o ElastigroupNetworkInterfaceAliasIpRangeOutput) ToElastigroupNetworkInter
 
 func (o ElastigroupNetworkInterfaceAliasIpRangeOutput) ToElastigroupNetworkInterfaceAliasIpRangeOutputWithContext(ctx context.Context) ElastigroupNetworkInterfaceAliasIpRangeOutput {
 	return o
-}
-
-func (o ElastigroupNetworkInterfaceAliasIpRangeOutput) ToOutput(ctx context.Context) pulumix.Output[ElastigroupNetworkInterfaceAliasIpRange] {
-	return pulumix.Output[ElastigroupNetworkInterfaceAliasIpRange]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ElastigroupNetworkInterfaceAliasIpRangeOutput) IpCidrRange() pulumi.StringOutput {
@@ -2668,12 +2289,6 @@ func (o ElastigroupNetworkInterfaceAliasIpRangeArrayOutput) ToElastigroupNetwork
 
 func (o ElastigroupNetworkInterfaceAliasIpRangeArrayOutput) ToElastigroupNetworkInterfaceAliasIpRangeArrayOutputWithContext(ctx context.Context) ElastigroupNetworkInterfaceAliasIpRangeArrayOutput {
 	return o
-}
-
-func (o ElastigroupNetworkInterfaceAliasIpRangeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ElastigroupNetworkInterfaceAliasIpRange] {
-	return pulumix.Output[[]ElastigroupNetworkInterfaceAliasIpRange]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ElastigroupNetworkInterfaceAliasIpRangeArrayOutput) Index(i pulumi.IntInput) ElastigroupNetworkInterfaceAliasIpRangeOutput {
@@ -2763,12 +2378,6 @@ func (i ElastigroupScalingDownPolicyArgs) ToElastigroupScalingDownPolicyOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupScalingDownPolicyOutput)
 }
 
-func (i ElastigroupScalingDownPolicyArgs) ToOutput(ctx context.Context) pulumix.Output[ElastigroupScalingDownPolicy] {
-	return pulumix.Output[ElastigroupScalingDownPolicy]{
-		OutputState: i.ToElastigroupScalingDownPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ElastigroupScalingDownPolicyArrayInput is an input type that accepts ElastigroupScalingDownPolicyArray and ElastigroupScalingDownPolicyArrayOutput values.
 // You can construct a concrete instance of `ElastigroupScalingDownPolicyArrayInput` via:
 //
@@ -2794,12 +2403,6 @@ func (i ElastigroupScalingDownPolicyArray) ToElastigroupScalingDownPolicyArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupScalingDownPolicyArrayOutput)
 }
 
-func (i ElastigroupScalingDownPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]ElastigroupScalingDownPolicy] {
-	return pulumix.Output[[]ElastigroupScalingDownPolicy]{
-		OutputState: i.ToElastigroupScalingDownPolicyArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ElastigroupScalingDownPolicyOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupScalingDownPolicyOutput) ElementType() reflect.Type {
@@ -2812,12 +2415,6 @@ func (o ElastigroupScalingDownPolicyOutput) ToElastigroupScalingDownPolicyOutput
 
 func (o ElastigroupScalingDownPolicyOutput) ToElastigroupScalingDownPolicyOutputWithContext(ctx context.Context) ElastigroupScalingDownPolicyOutput {
 	return o
-}
-
-func (o ElastigroupScalingDownPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[ElastigroupScalingDownPolicy] {
-	return pulumix.Output[ElastigroupScalingDownPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Type of scaling action to take when the scaling policy is triggered. Valid values: "adjustment", "setMinTarget", "updateCapacity", "percentageAdjustment"
@@ -2902,12 +2499,6 @@ func (o ElastigroupScalingDownPolicyArrayOutput) ToElastigroupScalingDownPolicyA
 	return o
 }
 
-func (o ElastigroupScalingDownPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ElastigroupScalingDownPolicy] {
-	return pulumix.Output[[]ElastigroupScalingDownPolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ElastigroupScalingDownPolicyArrayOutput) Index(i pulumi.IntInput) ElastigroupScalingDownPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ElastigroupScalingDownPolicy {
 		return vs[0].([]ElastigroupScalingDownPolicy)[vs[1].(int)]
@@ -2951,12 +2542,6 @@ func (i ElastigroupScalingDownPolicyDimensionArgs) ToElastigroupScalingDownPolic
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupScalingDownPolicyDimensionOutput)
 }
 
-func (i ElastigroupScalingDownPolicyDimensionArgs) ToOutput(ctx context.Context) pulumix.Output[ElastigroupScalingDownPolicyDimension] {
-	return pulumix.Output[ElastigroupScalingDownPolicyDimension]{
-		OutputState: i.ToElastigroupScalingDownPolicyDimensionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ElastigroupScalingDownPolicyDimensionArrayInput is an input type that accepts ElastigroupScalingDownPolicyDimensionArray and ElastigroupScalingDownPolicyDimensionArrayOutput values.
 // You can construct a concrete instance of `ElastigroupScalingDownPolicyDimensionArrayInput` via:
 //
@@ -2982,12 +2567,6 @@ func (i ElastigroupScalingDownPolicyDimensionArray) ToElastigroupScalingDownPoli
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupScalingDownPolicyDimensionArrayOutput)
 }
 
-func (i ElastigroupScalingDownPolicyDimensionArray) ToOutput(ctx context.Context) pulumix.Output[[]ElastigroupScalingDownPolicyDimension] {
-	return pulumix.Output[[]ElastigroupScalingDownPolicyDimension]{
-		OutputState: i.ToElastigroupScalingDownPolicyDimensionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ElastigroupScalingDownPolicyDimensionOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupScalingDownPolicyDimensionOutput) ElementType() reflect.Type {
@@ -3000,12 +2579,6 @@ func (o ElastigroupScalingDownPolicyDimensionOutput) ToElastigroupScalingDownPol
 
 func (o ElastigroupScalingDownPolicyDimensionOutput) ToElastigroupScalingDownPolicyDimensionOutputWithContext(ctx context.Context) ElastigroupScalingDownPolicyDimensionOutput {
 	return o
-}
-
-func (o ElastigroupScalingDownPolicyDimensionOutput) ToOutput(ctx context.Context) pulumix.Output[ElastigroupScalingDownPolicyDimension] {
-	return pulumix.Output[ElastigroupScalingDownPolicyDimension]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The group name.
@@ -3030,12 +2603,6 @@ func (o ElastigroupScalingDownPolicyDimensionArrayOutput) ToElastigroupScalingDo
 
 func (o ElastigroupScalingDownPolicyDimensionArrayOutput) ToElastigroupScalingDownPolicyDimensionArrayOutputWithContext(ctx context.Context) ElastigroupScalingDownPolicyDimensionArrayOutput {
 	return o
-}
-
-func (o ElastigroupScalingDownPolicyDimensionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ElastigroupScalingDownPolicyDimension] {
-	return pulumix.Output[[]ElastigroupScalingDownPolicyDimension]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ElastigroupScalingDownPolicyDimensionArrayOutput) Index(i pulumi.IntInput) ElastigroupScalingDownPolicyDimensionOutput {
@@ -3125,12 +2692,6 @@ func (i ElastigroupScalingUpPolicyArgs) ToElastigroupScalingUpPolicyOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupScalingUpPolicyOutput)
 }
 
-func (i ElastigroupScalingUpPolicyArgs) ToOutput(ctx context.Context) pulumix.Output[ElastigroupScalingUpPolicy] {
-	return pulumix.Output[ElastigroupScalingUpPolicy]{
-		OutputState: i.ToElastigroupScalingUpPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ElastigroupScalingUpPolicyArrayInput is an input type that accepts ElastigroupScalingUpPolicyArray and ElastigroupScalingUpPolicyArrayOutput values.
 // You can construct a concrete instance of `ElastigroupScalingUpPolicyArrayInput` via:
 //
@@ -3156,12 +2717,6 @@ func (i ElastigroupScalingUpPolicyArray) ToElastigroupScalingUpPolicyArrayOutput
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupScalingUpPolicyArrayOutput)
 }
 
-func (i ElastigroupScalingUpPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]ElastigroupScalingUpPolicy] {
-	return pulumix.Output[[]ElastigroupScalingUpPolicy]{
-		OutputState: i.ToElastigroupScalingUpPolicyArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ElastigroupScalingUpPolicyOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupScalingUpPolicyOutput) ElementType() reflect.Type {
@@ -3174,12 +2729,6 @@ func (o ElastigroupScalingUpPolicyOutput) ToElastigroupScalingUpPolicyOutput() E
 
 func (o ElastigroupScalingUpPolicyOutput) ToElastigroupScalingUpPolicyOutputWithContext(ctx context.Context) ElastigroupScalingUpPolicyOutput {
 	return o
-}
-
-func (o ElastigroupScalingUpPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[ElastigroupScalingUpPolicy] {
-	return pulumix.Output[ElastigroupScalingUpPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Type of scaling action to take when the scaling policy is triggered. Valid values: "adjustment", "setMinTarget", "updateCapacity", "percentageAdjustment"
@@ -3264,12 +2813,6 @@ func (o ElastigroupScalingUpPolicyArrayOutput) ToElastigroupScalingUpPolicyArray
 	return o
 }
 
-func (o ElastigroupScalingUpPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ElastigroupScalingUpPolicy] {
-	return pulumix.Output[[]ElastigroupScalingUpPolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ElastigroupScalingUpPolicyArrayOutput) Index(i pulumi.IntInput) ElastigroupScalingUpPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ElastigroupScalingUpPolicy {
 		return vs[0].([]ElastigroupScalingUpPolicy)[vs[1].(int)]
@@ -3313,12 +2856,6 @@ func (i ElastigroupScalingUpPolicyDimensionArgs) ToElastigroupScalingUpPolicyDim
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupScalingUpPolicyDimensionOutput)
 }
 
-func (i ElastigroupScalingUpPolicyDimensionArgs) ToOutput(ctx context.Context) pulumix.Output[ElastigroupScalingUpPolicyDimension] {
-	return pulumix.Output[ElastigroupScalingUpPolicyDimension]{
-		OutputState: i.ToElastigroupScalingUpPolicyDimensionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ElastigroupScalingUpPolicyDimensionArrayInput is an input type that accepts ElastigroupScalingUpPolicyDimensionArray and ElastigroupScalingUpPolicyDimensionArrayOutput values.
 // You can construct a concrete instance of `ElastigroupScalingUpPolicyDimensionArrayInput` via:
 //
@@ -3344,12 +2881,6 @@ func (i ElastigroupScalingUpPolicyDimensionArray) ToElastigroupScalingUpPolicyDi
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupScalingUpPolicyDimensionArrayOutput)
 }
 
-func (i ElastigroupScalingUpPolicyDimensionArray) ToOutput(ctx context.Context) pulumix.Output[[]ElastigroupScalingUpPolicyDimension] {
-	return pulumix.Output[[]ElastigroupScalingUpPolicyDimension]{
-		OutputState: i.ToElastigroupScalingUpPolicyDimensionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ElastigroupScalingUpPolicyDimensionOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupScalingUpPolicyDimensionOutput) ElementType() reflect.Type {
@@ -3362,12 +2893,6 @@ func (o ElastigroupScalingUpPolicyDimensionOutput) ToElastigroupScalingUpPolicyD
 
 func (o ElastigroupScalingUpPolicyDimensionOutput) ToElastigroupScalingUpPolicyDimensionOutputWithContext(ctx context.Context) ElastigroupScalingUpPolicyDimensionOutput {
 	return o
-}
-
-func (o ElastigroupScalingUpPolicyDimensionOutput) ToOutput(ctx context.Context) pulumix.Output[ElastigroupScalingUpPolicyDimension] {
-	return pulumix.Output[ElastigroupScalingUpPolicyDimension]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The group name.
@@ -3392,12 +2917,6 @@ func (o ElastigroupScalingUpPolicyDimensionArrayOutput) ToElastigroupScalingUpPo
 
 func (o ElastigroupScalingUpPolicyDimensionArrayOutput) ToElastigroupScalingUpPolicyDimensionArrayOutputWithContext(ctx context.Context) ElastigroupScalingUpPolicyDimensionArrayOutput {
 	return o
-}
-
-func (o ElastigroupScalingUpPolicyDimensionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ElastigroupScalingUpPolicyDimension] {
-	return pulumix.Output[[]ElastigroupScalingUpPolicyDimension]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ElastigroupScalingUpPolicyDimensionArrayOutput) Index(i pulumi.IntInput) ElastigroupScalingUpPolicyDimensionOutput {
@@ -3491,12 +3010,6 @@ func (i ElastigroupScheduledTaskArgs) ToElastigroupScheduledTaskOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupScheduledTaskOutput)
 }
 
-func (i ElastigroupScheduledTaskArgs) ToOutput(ctx context.Context) pulumix.Output[ElastigroupScheduledTask] {
-	return pulumix.Output[ElastigroupScheduledTask]{
-		OutputState: i.ToElastigroupScheduledTaskOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ElastigroupScheduledTaskArrayInput is an input type that accepts ElastigroupScheduledTaskArray and ElastigroupScheduledTaskArrayOutput values.
 // You can construct a concrete instance of `ElastigroupScheduledTaskArrayInput` via:
 //
@@ -3522,12 +3035,6 @@ func (i ElastigroupScheduledTaskArray) ToElastigroupScheduledTaskArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupScheduledTaskArrayOutput)
 }
 
-func (i ElastigroupScheduledTaskArray) ToOutput(ctx context.Context) pulumix.Output[[]ElastigroupScheduledTask] {
-	return pulumix.Output[[]ElastigroupScheduledTask]{
-		OutputState: i.ToElastigroupScheduledTaskArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ElastigroupScheduledTaskOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupScheduledTaskOutput) ElementType() reflect.Type {
@@ -3540,12 +3047,6 @@ func (o ElastigroupScheduledTaskOutput) ToElastigroupScheduledTaskOutput() Elast
 
 func (o ElastigroupScheduledTaskOutput) ToElastigroupScheduledTaskOutputWithContext(ctx context.Context) ElastigroupScheduledTaskOutput {
 	return o
-}
-
-func (o ElastigroupScheduledTaskOutput) ToOutput(ctx context.Context) pulumix.Output[ElastigroupScheduledTask] {
-	return pulumix.Output[ElastigroupScheduledTask]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A valid cron expression. The cron is running in UTC time zone and is in [Unix cron format](https://en.wikipedia.org/wiki/Cron).
@@ -3611,12 +3112,6 @@ func (o ElastigroupScheduledTaskArrayOutput) ToElastigroupScheduledTaskArrayOutp
 	return o
 }
 
-func (o ElastigroupScheduledTaskArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ElastigroupScheduledTask] {
-	return pulumix.Output[[]ElastigroupScheduledTask]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ElastigroupScheduledTaskArrayOutput) Index(i pulumi.IntInput) ElastigroupScheduledTaskOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ElastigroupScheduledTask {
 		return vs[0].([]ElastigroupScheduledTask)[vs[1].(int)]
@@ -3660,12 +3155,6 @@ func (i ElastigroupSubnetArgs) ToElastigroupSubnetOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupSubnetOutput)
 }
 
-func (i ElastigroupSubnetArgs) ToOutput(ctx context.Context) pulumix.Output[ElastigroupSubnet] {
-	return pulumix.Output[ElastigroupSubnet]{
-		OutputState: i.ToElastigroupSubnetOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ElastigroupSubnetArrayInput is an input type that accepts ElastigroupSubnetArray and ElastigroupSubnetArrayOutput values.
 // You can construct a concrete instance of `ElastigroupSubnetArrayInput` via:
 //
@@ -3691,12 +3180,6 @@ func (i ElastigroupSubnetArray) ToElastigroupSubnetArrayOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupSubnetArrayOutput)
 }
 
-func (i ElastigroupSubnetArray) ToOutput(ctx context.Context) pulumix.Output[[]ElastigroupSubnet] {
-	return pulumix.Output[[]ElastigroupSubnet]{
-		OutputState: i.ToElastigroupSubnetArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ElastigroupSubnetOutput struct{ *pulumi.OutputState }
 
 func (ElastigroupSubnetOutput) ElementType() reflect.Type {
@@ -3709,12 +3192,6 @@ func (o ElastigroupSubnetOutput) ToElastigroupSubnetOutput() ElastigroupSubnetOu
 
 func (o ElastigroupSubnetOutput) ToElastigroupSubnetOutputWithContext(ctx context.Context) ElastigroupSubnetOutput {
 	return o
-}
-
-func (o ElastigroupSubnetOutput) ToOutput(ctx context.Context) pulumix.Output[ElastigroupSubnet] {
-	return pulumix.Output[ElastigroupSubnet]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The region for the group of subnets.
@@ -3739,12 +3216,6 @@ func (o ElastigroupSubnetArrayOutput) ToElastigroupSubnetArrayOutput() Elastigro
 
 func (o ElastigroupSubnetArrayOutput) ToElastigroupSubnetArrayOutputWithContext(ctx context.Context) ElastigroupSubnetArrayOutput {
 	return o
-}
-
-func (o ElastigroupSubnetArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ElastigroupSubnet] {
-	return pulumix.Output[[]ElastigroupSubnet]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ElastigroupSubnetArrayOutput) Index(i pulumi.IntInput) ElastigroupSubnetOutput {
