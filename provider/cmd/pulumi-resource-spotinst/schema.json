@@ -356,11 +356,11 @@
                 },
                 "batchSizePercentage": {
                     "type": "integer",
-                    "description": "The percentage size of each batch in the scheduled deployment roll.\n"
+                    "description": "Percent size of each batch\n"
                 },
                 "gracePeriod": {
                     "type": "integer",
-                    "description": "The period of time (seconds) to wait before checking a batch's health after it's deployment.\n"
+                    "description": "Amount of time to wait between batches\n"
                 },
                 "strategy": {
                     "$ref": "#/types/spotinst:aws/ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategy:ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategy",
@@ -373,7 +373,7 @@
             "properties": {
                 "action": {
                     "type": "string",
-                    "description": "The action to take when scale up according to step's threshold is needed.\n"
+                    "description": "Action to take\n"
                 },
                 "shouldDrainInstances": {
                     "type": "boolean",
@@ -395,7 +395,7 @@
             "properties": {
                 "performAt": {
                     "type": "string",
-                    "description": "In the event of a fallback to On-Demand instances, select the time period to revert back to Spot. Supported Arguments – always (default), timeWindow, never. For timeWindow or never to be valid the group must have availabilityOriented OR persistence defined.\n"
+                    "description": "Actions to perform (options: timeWindow, never)\n"
                 },
                 "timeWindow": {
                     "type": "string",
@@ -454,7 +454,7 @@
             "properties": {
                 "autoscaleCooldown": {
                     "type": "integer",
-                    "description": "The amount of time, in seconds, after a scaling activity completes before any further trigger-related scaling activities can start.\n"
+                    "description": "The amount of time, in seconds, after a scaling activity completes before any further trigger-related scaling activities can start. Minimum 180, must be a multiple of 60.\n"
                 },
                 "autoscaleDown": {
                     "$ref": "#/types/spotinst:aws/ElastigroupIntegrationDockerSwarmAutoscaleDown:ElastigroupIntegrationDockerSwarmAutoscaleDown",
@@ -470,11 +470,11 @@
                 },
                 "masterHost": {
                     "type": "string",
-                    "description": "The URL for the Nomad master host.\n"
+                    "description": "IP or FQDN of one of your swarm managers.\n"
                 },
                 "masterPort": {
                     "type": "integer",
-                    "description": "The network port for the master host.\n"
+                    "description": "Network port used by your swarm.\n"
                 }
             },
             "type": "object",
@@ -487,7 +487,7 @@
             "properties": {
                 "evaluationPeriods": {
                     "type": "integer",
-                    "description": "The number of periods over which data is compared to the specified threshold.\n"
+                    "description": "How many evaluation periods should accumulate before a scale down action takes place.\n"
                 },
                 "maxScaleDownPercentage": {
                     "type": "number",
@@ -500,15 +500,15 @@
             "properties": {
                 "cpuPerUnit": {
                     "type": "integer",
-                    "description": "How much CPU (MHz) to allocate for headroom unit.\n"
+                    "description": "How much CPU to allocate for headroom unit.\n"
                 },
                 "memoryPerUnit": {
                     "type": "integer",
-                    "description": "How much Memory allocate for headroom unit.\n"
+                    "description": "The amount of memory in each headroom unit. Measured in MiB.\n"
                 },
                 "numOfUnits": {
                     "type": "integer",
-                    "description": "How many units of headroom to allocate.\n"
+                    "description": "How many units to allocate for headroom unit.\n"
                 }
             },
             "type": "object"
@@ -532,11 +532,11 @@
                 },
                 "autoscaleHeadroom": {
                     "$ref": "#/types/spotinst:aws/ElastigroupIntegrationEcsAutoscaleHeadroom:ElastigroupIntegrationEcsAutoscaleHeadroom",
-                    "description": "An option to set compute reserve for the cluster.\n"
+                    "description": "Headroom for the cluster.\n"
                 },
                 "autoscaleIsAutoConfig": {
                     "type": "boolean",
-                    "description": "Enabling the automatic k8s auto-scaler functionality. For more information please see: [Kubernetes auto scaler](https://api.spotinst.com/integration-docs/elastigroup/container-management/kubernetes/autoscaler/).\n"
+                    "description": "Enabling the automatic auto-scaler functionality. For more information please see: [ECS auto scaler](https://api.spotinst.com/container-management/amazon-ecs/elastigroup-for-ecs-concepts/autoscaling/).\n"
                 },
                 "autoscaleIsEnabled": {
                     "type": "boolean",
@@ -580,7 +580,7 @@
             "properties": {
                 "evaluationPeriods": {
                     "type": "integer",
-                    "description": "The number of periods over which data is compared to the specified threshold.\n"
+                    "description": "How many evaluation periods should accumulate before a scale down action takes place.\n"
                 },
                 "maxScaleDownPercentage": {
                     "type": "number",
@@ -593,15 +593,15 @@
             "properties": {
                 "cpuPerUnit": {
                     "type": "integer",
-                    "description": "How much CPU (MHz) to allocate for headroom unit.\n"
+                    "description": "How much CPU to allocate for headroom unit.\n"
                 },
                 "memoryPerUnit": {
                     "type": "integer",
-                    "description": "How much Memory allocate for headroom unit.\n"
+                    "description": "The amount of memory in each headroom unit. Measured in MiB.\n"
                 },
                 "numOfUnits": {
                     "type": "integer",
-                    "description": "How many units of headroom to allocate.\n"
+                    "description": "How many units to allocate for headroom unit.\n"
                 }
             },
             "type": "object"
@@ -634,7 +634,7 @@
             "properties": {
                 "isEnabled": {
                     "type": "boolean",
-                    "description": "Specifies whether the scaling policy described in this block is enabled.\n"
+                    "description": "Specifies whether the integration is enabled.\n\nUsage:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\n```\n```python\nimport pulumi\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n    }\n}\n```\n```yaml\n{}\n```\n"
                 }
             },
             "type": "object"
@@ -642,8 +642,7 @@
         "spotinst:aws/ElastigroupIntegrationKubernetes:ElastigroupIntegrationKubernetes": {
             "properties": {
                 "apiServer": {
-                    "type": "string",
-                    "description": "The public IP of the DC/OS Master.\n\nUsage:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\n```\n```python\nimport pulumi\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n    }\n}\n```\n```yaml\n{}\n```\n"
+                    "type": "string"
                 },
                 "autoscaleCooldown": {
                     "type": "integer",
@@ -690,7 +689,7 @@
             "properties": {
                 "evaluationPeriods": {
                     "type": "integer",
-                    "description": "The number of periods over which data is compared to the specified threshold.\n"
+                    "description": "How many evaluation periods should accumulate before a scale down action takes place.\n"
                 },
                 "maxScaleDownPercentage": {
                     "type": "number",
@@ -703,15 +702,15 @@
             "properties": {
                 "cpuPerUnit": {
                     "type": "integer",
-                    "description": "How much CPU (MHz) to allocate for headroom unit.\n"
+                    "description": "How much CPU to allocate for headroom unit.\n"
                 },
                 "memoryPerUnit": {
                     "type": "integer",
-                    "description": "How much Memory allocate for headroom unit.\n"
+                    "description": "The amount of memory in each headroom unit. Measured in MiB.\n"
                 },
                 "numOfUnits": {
                     "type": "integer",
-                    "description": "How many units of headroom to allocate.\n"
+                    "description": "How many units to allocate for headroom unit.\n"
                 }
             },
             "type": "object"
@@ -820,7 +819,7 @@
             "properties": {
                 "evaluationPeriods": {
                     "type": "integer",
-                    "description": "The number of periods over which data is compared to the specified threshold.\n"
+                    "description": "How many evaluation periods should accumulate before a scale down action takes place.\n"
                 }
             },
             "type": "object"
@@ -829,15 +828,15 @@
             "properties": {
                 "cpuPerUnit": {
                     "type": "integer",
-                    "description": "How much CPU (MHz) to allocate for headroom unit.\n"
+                    "description": "How much CPU to allocate for headroom unit.\n"
                 },
                 "memoryPerUnit": {
                     "type": "integer",
-                    "description": "How much Memory allocate for headroom unit.\n"
+                    "description": "The amount of memory in each headroom unit. Measured in MiB.\n"
                 },
                 "numOfUnits": {
                     "type": "integer",
-                    "description": "How many units of headroom to allocate.\n"
+                    "description": "How many units to allocate for headroom unit.\n"
                 }
             },
             "type": "object"
@@ -850,7 +849,7 @@
                 },
                 "masterHost": {
                     "type": "string",
-                    "description": "The URL for the Nomad master host.\n"
+                    "description": "IP or FQDN of one of your swarm managers.\n"
                 },
                 "secretKey": {
                     "type": "string",
@@ -1190,7 +1189,7 @@
                     "items": {
                         "$ref": "#/types/spotinst:aws/ElastigroupMultipleMetricsMetricDimension:ElastigroupMultipleMetricsMetricDimension"
                     },
-                    "description": "A list of dimensions describing qualities of the metric.\n"
+                    "description": "The dimensions for the alarm's associated metric. When name is \"instanceId\", no value is needed.\n*`name` - (Required) the dimension name.\n*`value` - (Optional) the dimension value.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\n```\n```python\nimport pulumi\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n    }\n}\n```\n```yaml\n{}\n```\n"
                 },
                 "extendedStatistic": {
                     "type": "string",
@@ -1198,11 +1197,11 @@
                 },
                 "metricName": {
                     "type": "string",
-                    "description": "The name of the metric, with or without spaces.\n"
+                    "description": "The name of the source metric.\n"
                 },
                 "name": {
                     "type": "string",
-                    "description": "The group name.\n"
+                    "description": "The expression name.\n"
                 },
                 "namespace": {
                     "type": "string",
@@ -1210,11 +1209,11 @@
                 },
                 "statistic": {
                     "type": "string",
-                    "description": "The metric statistics to return. For information about specific statistics go to [Statistics](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/index.html?CHAP_TerminologyandKeyConcepts.html#Statistic) in the Amazon CloudWatch Developer Guide.\n"
+                    "description": "The metric statistics to return. Valid values: `\"average\"`, `\"sum\"`, `\"sampleCount\"`, `\"maximum\"`, `\"minimum\"`, `\"percentile\"`.\n"
                 },
                 "unit": {
                     "type": "string",
-                    "description": "The unit for the alarm's associated metric. Valid values: `\"percent`, `\"seconds\"`, `\"microseconds\"`, `\"milliseconds\"`, `\"bytes\"`, `\"kilobytes\"`, `\"megabytes\"`, `\"gigabytes\"`, `\"terabytes\"`, `\"bits\"`, `\"kilobits\"`, `\"megabits\"`, `\"gigabits\"`, `\"terabits\"`, `\"count\"`, `\"bytes/second\"`, `\"kilobytes/second\"`, `\"megabytes/second\"`, `\"gigabytes/second\"`, `\"terabytes/second\"`, `\"bits/second\"`, `\"kilobits/second\"`, `\"megabits/second\"`, `\"gigabits/second\"`, `\"terabits/second\"`, `\"count/second\"`, `\"none\"`.\n"
+                    "description": "The unit for the alarm's associated metric. Valid values: `\"seconds\"`, `\"microseconds\"`, `\"milliseconds\"`, `\"bytes\"`, `\"kilobytes\"`, `\"megabytes\"`, `\"gigabytes\"`, `\"terabytes\"`, `\"bits\"`, `\"kilobits\"`, `\"megabits\"`, `\"gigabits\"`, `\"terabits\"`, `\"percent\"`, `\"count\"`, `\"bytes/second\"`, `\"kilobytes/second\"`, `\"megabytes/second\"`, `\"gigabytes/second\"`, `\"terabytes/second\"`, `\"bits/second\"`, `\"kilobits/second\"`, `\"megabits/second\"`, `\"gigabits/second\"`, `\"terabits/second\"`, `\"count/second\"`, `\"none\"`.\n"
                 }
             },
             "type": "object",
@@ -1469,7 +1468,7 @@
                 },
                 "threshold": {
                     "type": "number",
-                    "description": "The value against which the specified statistic is compared in order to determine if a step should be applied.\n\n\nIf you do not specify an action type, you can only use – `adjustment`, `minTargetCapacity`, `maxTargetCapacity`.\nWhile using action_type, please also set the following:\n\nWhen using `adjustment`           – set the field `adjustment`\nWhen using `updateCapacity`       – set the fields `minimum`, `maximum`, and `target`\n"
+                    "description": "The value against which the specified statistic is compared. If a `step_adjustment` object is defined, then it cannot be specified.\n"
                 },
                 "unit": {
                     "type": "string",
@@ -1516,11 +1515,11 @@
             "properties": {
                 "action": {
                     "$ref": "#/types/spotinst:aws/ElastigroupScalingDownPolicyStepAdjustmentAction:ElastigroupScalingDownPolicyStepAdjustmentAction",
-                    "description": "The action to take when scale up according to step's threshold is needed.\n"
+                    "description": "Action to take\n"
                 },
                 "threshold": {
                     "type": "integer",
-                    "description": "The value against which the specified statistic is compared in order to determine if a step should be applied.\n\n\nIf you do not specify an action type, you can only use – `adjustment`, `minTargetCapacity`, `maxTargetCapacity`.\nWhile using action_type, please also set the following:\n\nWhen using `adjustment`           – set the field `adjustment`\nWhen using `updateCapacity`       – set the fields `minimum`, `maximum`, and `target`\n"
+                    "description": "The value against which the specified statistic is compared in order to determine if a step should be applied.\n\nIf you do not specify an action type, you can only use – `adjustment`, `minTargetCapacity`, `maxTargetCapacity`.\nWhile using action_type, please also set the following:\n\nWhen using `adjustment`           – set the field `adjustment`\nWhen using `updateCapacity`       – set the fields `minimum`, `maximum`, and `target`\n"
                 }
             },
             "type": "object",
@@ -1557,7 +1556,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "The type of the action to take when scale up is needed. Valid types: `\"adjustment\"`, `\"updateCapacity\"`, `\"setMaxTarget\"`, `\"percentageAdjustment\"`.\n"
+                    "description": "String, Action type. Supported action types: `pause`, `resume`, `recycle`, `deallocate`.\n\nUsage:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\n```\n```python\nimport pulumi\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n    }\n}\n```\n```yaml\n{}\n```\n"
                 }
             },
             "type": "object",
@@ -1593,7 +1592,7 @@
                 },
                 "evaluationPeriods": {
                     "type": "integer",
-                    "description": "The number of periods over which data is compared to the specified threshold.\n"
+                    "description": "How many evaluation periods should accumulate before a scale down action takes place.\n"
                 },
                 "maxCapacityPerScale": {
                     "type": "string",
@@ -1756,7 +1755,7 @@
                 },
                 "threshold": {
                     "type": "number",
-                    "description": "The value against which the specified statistic is compared in order to determine if a step should be applied.\n\n\nIf you do not specify an action type, you can only use – `adjustment`, `minTargetCapacity`, `maxTargetCapacity`.\nWhile using action_type, please also set the following:\n\nWhen using `adjustment`           – set the field `adjustment`\nWhen using `setMinTarget`         – set the field `min_target_capacity`\nWhen using `updateCapacity`       – set the fields `minimum`, `maximum`, and `target`\n"
+                    "description": "The value against which the specified statistic is compared. If a `step_adjustment` object is defined, then it cannot be specified.\n"
                 },
                 "unit": {
                     "type": "string",
@@ -1803,11 +1802,11 @@
             "properties": {
                 "action": {
                     "$ref": "#/types/spotinst:aws/ElastigroupScalingUpPolicyStepAdjustmentAction:ElastigroupScalingUpPolicyStepAdjustmentAction",
-                    "description": "The action to take when scale up according to step's threshold is needed.\n"
+                    "description": "Action to take\n"
                 },
                 "threshold": {
                     "type": "integer",
-                    "description": "The value against which the specified statistic is compared in order to determine if a step should be applied.\n\n\nIf you do not specify an action type, you can only use – `adjustment`, `minTargetCapacity`, `maxTargetCapacity`.\nWhile using action_type, please also set the following:\n\nWhen using `adjustment`           – set the field `adjustment`\nWhen using `updateCapacity`       – set the fields `minimum`, `maximum`, and `target`\n"
+                    "description": "The value against which the specified statistic is compared in order to determine if a step should be applied.\n\nIf you do not specify an action type, you can only use – `adjustment`, `minTargetCapacity`, `maxTargetCapacity`.\nWhile using action_type, please also set the following:\n\nWhen using `adjustment`           – set the field `adjustment`\nWhen using `updateCapacity`       – set the fields `minimum`, `maximum`, and `target`\n"
                 }
             },
             "type": "object",
@@ -1844,7 +1843,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "The type of the action to take when scale up is needed. Valid types: `\"adjustment\"`, `\"updateCapacity\"`, `\"setMaxTarget\"`, `\"percentageAdjustment\"`.\n"
+                    "description": "String, Action type. Supported action types: `pause`, `resume`, `recycle`, `deallocate`.\n\nUsage:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\n```\n```python\nimport pulumi\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n    }\n}\n```\n```yaml\n{}\n```\n"
                 }
             },
             "type": "object",
@@ -2015,11 +2014,11 @@
             "properties": {
                 "batchSizePercentage": {
                     "type": "integer",
-                    "description": "The percentage size of each batch in the scheduled deployment roll.\n"
+                    "description": "Percent size of each batch\n"
                 },
                 "gracePeriod": {
                     "type": "integer",
-                    "description": "The period of time (seconds) to wait before checking a batch's health after it's deployment.\n"
+                    "description": "Amount of time to wait between batches\n"
                 },
                 "healthCheckType": {
                     "type": "string",
@@ -2047,7 +2046,7 @@
             "properties": {
                 "action": {
                     "type": "string",
-                    "description": "The action to take when scale up according to step's threshold is needed.\n"
+                    "description": "Action to take\n"
                 },
                 "batchMinHealthyPercentage": {
                     "type": "integer",
@@ -2450,7 +2449,7 @@
                 },
                 "metricName": {
                     "type": "string",
-                    "description": "The name of the metric in CloudWatch which the statement will be based on.\n"
+                    "description": "The name of the metric, with or without spaces.\n"
                 },
                 "minTargetCapacity": {
                     "type": "string",
@@ -2462,15 +2461,15 @@
                 },
                 "namespace": {
                     "type": "string",
-                    "description": "Must contain the value: `AWS/ElasticMapReduce`.\n"
+                    "description": "The namespace for the metric.\n"
                 },
                 "operator": {
                     "type": "string",
-                    "description": "The operator to use in order to determine if the policy is applicable. Valid values: `gt` | `gte` | `lt` | `lte`\n"
+                    "description": "The operator to use. Allowed values are : 'gt', 'gte', 'lt' , 'lte'.\n"
                 },
                 "period": {
                     "type": "integer",
-                    "description": "The time window in seconds over which the statistic is applied.\n"
+                    "description": "The granularity, in seconds, of the returned datapoints. Period must be at least 60 seconds and must be a multiple of 60.\n"
                 },
                 "policyName": {
                     "type": "string",
@@ -2478,7 +2477,7 @@
                 },
                 "statistic": {
                     "type": "string",
-                    "description": "The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`\n"
+                    "description": "The metric statistics to return. For information about specific statistics go to [Statistics](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/index.html?CHAP_TerminologyandKeyConcepts.html#Statistic) in the Amazon CloudWatch Developer Guide.\n"
                 },
                 "target": {
                     "type": "string",
@@ -2486,11 +2485,11 @@
                 },
                 "threshold": {
                     "type": "number",
-                    "description": "The value that the specified statistic is compared to.\n"
+                    "description": "The value against which the specified statistic is compared.\n"
                 },
                 "unit": {
                     "type": "string",
-                    "description": "The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`\n"
+                    "description": "The unit for the metric.\n"
                 }
             },
             "type": "object",
@@ -2553,7 +2552,7 @@
                 },
                 "metricName": {
                     "type": "string",
-                    "description": "The name of the metric in CloudWatch which the statement will be based on.\n"
+                    "description": "The name of the metric, with or without spaces.\n"
                 },
                 "minTargetCapacity": {
                     "type": "string",
@@ -2565,15 +2564,15 @@
                 },
                 "namespace": {
                     "type": "string",
-                    "description": "Must contain the value: `AWS/ElasticMapReduce`.\n"
+                    "description": "The namespace for the metric.\n"
                 },
                 "operator": {
                     "type": "string",
-                    "description": "The operator to use in order to determine if the policy is applicable. Valid values: `gt` | `gte` | `lt` | `lte`\n"
+                    "description": "The operator to use. Allowed values are : 'gt', 'gte', 'lt' , 'lte'.\n"
                 },
                 "period": {
                     "type": "integer",
-                    "description": "The time window in seconds over which the statistic is applied.\n"
+                    "description": "The granularity, in seconds, of the returned datapoints. Period must be at least 60 seconds and must be a multiple of 60.\n"
                 },
                 "policyName": {
                     "type": "string",
@@ -2581,7 +2580,7 @@
                 },
                 "statistic": {
                     "type": "string",
-                    "description": "The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`\n"
+                    "description": "The metric statistics to return. For information about specific statistics go to [Statistics](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/index.html?CHAP_TerminologyandKeyConcepts.html#Statistic) in the Amazon CloudWatch Developer Guide.\n"
                 },
                 "target": {
                     "type": "string",
@@ -2589,11 +2588,11 @@
                 },
                 "threshold": {
                     "type": "number",
-                    "description": "The value that the specified statistic is compared to.\n"
+                    "description": "The value against which the specified statistic is compared.\n"
                 },
                 "unit": {
                     "type": "string",
-                    "description": "The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`\n"
+                    "description": "The unit for the metric.\n"
                 }
             },
             "type": "object",
@@ -2812,7 +2811,7 @@
                 },
                 "metricName": {
                     "type": "string",
-                    "description": "The name of the metric in CloudWatch which the statement will be based on.\n"
+                    "description": "The name of the metric, with or without spaces.\n"
                 },
                 "minTargetCapacity": {
                     "type": "string",
@@ -2824,15 +2823,15 @@
                 },
                 "namespace": {
                     "type": "string",
-                    "description": "Must contain the value: `AWS/ElasticMapReduce`.\n"
+                    "description": "The namespace for the metric.\n"
                 },
                 "operator": {
                     "type": "string",
-                    "description": "The operator to use in order to determine if the policy is applicable. Valid values: `gt` | `gte` | `lt` | `lte`\n"
+                    "description": "The operator to use. Allowed values are : 'gt', 'gte', 'lt' , 'lte'.\n"
                 },
                 "period": {
                     "type": "integer",
-                    "description": "The time window in seconds over which the statistic is applied.\n"
+                    "description": "The granularity, in seconds, of the returned datapoints. Period must be at least 60 seconds and must be a multiple of 60.\n"
                 },
                 "policyName": {
                     "type": "string",
@@ -2840,7 +2839,7 @@
                 },
                 "statistic": {
                     "type": "string",
-                    "description": "The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`\n"
+                    "description": "The metric statistics to return. For information about specific statistics go to [Statistics](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/index.html?CHAP_TerminologyandKeyConcepts.html#Statistic) in the Amazon CloudWatch Developer Guide.\n"
                 },
                 "target": {
                     "type": "string",
@@ -2848,11 +2847,11 @@
                 },
                 "threshold": {
                     "type": "number",
-                    "description": "The value that the specified statistic is compared to.\n"
+                    "description": "The value against which the specified statistic is compared.\n"
                 },
                 "unit": {
                     "type": "string",
-                    "description": "The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`\n"
+                    "description": "The unit for the metric.\n"
                 }
             },
             "type": "object",
@@ -2915,7 +2914,7 @@
                 },
                 "metricName": {
                     "type": "string",
-                    "description": "The name of the metric in CloudWatch which the statement will be based on.\n"
+                    "description": "The name of the metric, with or without spaces.\n"
                 },
                 "minTargetCapacity": {
                     "type": "string",
@@ -2927,15 +2926,15 @@
                 },
                 "namespace": {
                     "type": "string",
-                    "description": "Must contain the value: `AWS/ElasticMapReduce`.\n"
+                    "description": "The namespace for the metric.\n"
                 },
                 "operator": {
                     "type": "string",
-                    "description": "The operator to use in order to determine if the policy is applicable. Valid values: `gt` | `gte` | `lt` | `lte`\n"
+                    "description": "The operator to use. Allowed values are : 'gt', 'gte', 'lt' , 'lte'.\n"
                 },
                 "period": {
                     "type": "integer",
-                    "description": "The time window in seconds over which the statistic is applied.\n"
+                    "description": "The granularity, in seconds, of the returned datapoints. Period must be at least 60 seconds and must be a multiple of 60.\n"
                 },
                 "policyName": {
                     "type": "string",
@@ -2943,7 +2942,7 @@
                 },
                 "statistic": {
                     "type": "string",
-                    "description": "The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`\n"
+                    "description": "The metric statistics to return. For information about specific statistics go to [Statistics](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/index.html?CHAP_TerminologyandKeyConcepts.html#Statistic) in the Amazon CloudWatch Developer Guide.\n"
                 },
                 "target": {
                     "type": "string",
@@ -2951,11 +2950,11 @@
                 },
                 "threshold": {
                     "type": "number",
-                    "description": "The value that the specified statistic is compared to.\n"
+                    "description": "The value against which the specified statistic is compared.\n"
                 },
                 "unit": {
                     "type": "string",
-                    "description": "The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`\n"
+                    "description": "The unit for the metric.\n"
                 }
             },
             "type": "object",
@@ -3005,31 +3004,31 @@
                 },
                 "metricName": {
                     "type": "string",
-                    "description": "The name of the metric in CloudWatch which the statement will be based on.\n"
+                    "description": "The name of the metric, with or without spaces.\n"
                 },
                 "namespace": {
                     "type": "string",
-                    "description": "Must contain the value: `AWS/ElasticMapReduce`.\n"
+                    "description": "The namespace for the metric.\n"
                 },
                 "operator": {
                     "type": "string",
-                    "description": "The operator to use in order to determine if the policy is applicable. Valid values: `gt` | `gte` | `lt` | `lte`\n"
+                    "description": "The operator to use. Allowed values are : 'gt', 'gte', 'lt' , 'lte'.\n"
                 },
                 "period": {
                     "type": "integer",
-                    "description": "The time window in seconds over which the statistic is applied.\n"
+                    "description": "The granularity, in seconds, of the returned datapoints. Period must be at least 60 seconds and must be a multiple of 60.\n"
                 },
                 "statistic": {
                     "type": "string",
-                    "description": "The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`\n"
+                    "description": "The metric statistics to return. For information about specific statistics go to [Statistics](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/index.html?CHAP_TerminologyandKeyConcepts.html#Statistic) in the Amazon CloudWatch Developer Guide.\n"
                 },
                 "threshold": {
                     "type": "number",
-                    "description": "The value that the specified statistic is compared to.\n"
+                    "description": "The value against which the specified statistic is compared.\n"
                 },
                 "unit": {
                     "type": "string",
-                    "description": "The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`\n"
+                    "description": "The unit for the metric.\n"
                 }
             },
             "type": "object",
@@ -3156,7 +3155,7 @@
                 },
                 "snapshotId": {
                     "type": "string",
-                    "description": "(Optional) String. The Snapshot ID to mount by.\n"
+                    "description": "String. The Snapshot ID to mount by.\n"
                 },
                 "throughput": {
                     "type": "integer",
@@ -3207,14 +3206,15 @@
             "properties": {
                 "baseSize": {
                     "type": "integer",
-                    "description": "Initial size for IOPS.\n"
+                    "description": "Int. Initial size for volume. (Example: 50)\n"
                 },
                 "resource": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "String. Resource type to increase volume size dynamically by. (Valid values: `CPU`)\n"
                 },
                 "sizePerResourceUnit": {
                     "type": "integer",
-                    "description": "Additional size per resource unit (in IOPS). (Example: `baseSize=50`, `sizePerResourceUnit=20`, and an instance with 2 CPU is launched; its IOPS size will be: 90).\n"
+                    "description": "Int. Additional size (in GB) per resource unit. (Example: `baseSize=50`, `sizePerResourceUnit=20`, and instance with 2 CPU is launched; its total disk size will be: 90GB).\n"
                 }
             },
             "type": "object",
@@ -3440,7 +3440,7 @@
                 },
                 "snapshotId": {
                     "type": "string",
-                    "description": "(Optional) String. The Snapshot ID to mount by.\n"
+                    "description": "String. The Snapshot ID to mount by.\n"
                 },
                 "throughput": {
                     "type": "integer",
@@ -3656,7 +3656,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "The filtered instance types will support at least one of the virtualization types from this list. Valid values: `hvm`, `paravirtual`.\n\n\n\u003ca id=\"update-policy\"\u003e\u003c/a\u003e\n"
+                    "description": "The filtered instance types will support at least one of the virtualization types from this list. Valid values: `hvm`, `paravirtual`.\n\n\u003ca id=\"update-policy\"\u003e\u003c/a\u003e\n"
                 }
             },
             "type": "object"
@@ -3665,11 +3665,11 @@
             "properties": {
                 "key": {
                     "type": "string",
-                    "description": "The taint key.\n"
+                    "description": "The label key.\n"
                 },
                 "value": {
                     "type": "string",
-                    "description": "The taint value.\n"
+                    "description": "The label value.\n"
                 }
             },
             "type": "object",
@@ -3718,7 +3718,7 @@
                 },
                 "isEnabled": {
                     "type": "boolean",
-                    "description": "Flag to enable or disable the shutdown hours mechanism. When False, the mechanism is deactivated, and the virtual node group remains in its current state.\n"
+                    "description": "Describes whether the task is enabled. When True, the task runs. When False, it does not run.\n"
                 },
                 "taskHeadrooms": {
                     "type": "array",
@@ -3776,11 +3776,11 @@
             "properties": {
                 "key": {
                     "type": "string",
-                    "description": "The taint key.\n"
+                    "description": "The label key.\n"
                 },
                 "value": {
                     "type": "string",
-                    "description": "The taint value.\n"
+                    "description": "The label value.\n"
                 }
             },
             "type": "object",
@@ -4058,7 +4058,7 @@
                 },
                 "resourceGroupName": {
                     "type": "string",
-                    "description": "Name of the Azure Resource Group where the Managed Service Identity is located.\n"
+                    "description": "Name of the Resource Group for Elastigroup.\n"
                 }
             },
             "type": "object",
@@ -4149,11 +4149,11 @@
             "properties": {
                 "name": {
                     "type": "string",
-                    "description": "Name of the Managed Service Identity.\n"
+                    "description": "The group name.\n"
                 },
                 "resourceGroupName": {
                     "type": "string",
-                    "description": "Name of the Azure Resource Group where the Managed Service Identity is located.\n"
+                    "description": "Name of the Resource Group for Elastigroup.\n"
                 }
             },
             "type": "object",
@@ -4175,7 +4175,7 @@
                 },
                 "resourceGroupName": {
                     "type": "string",
-                    "description": "Name of the Azure Resource Group where the Managed Service Identity is located.\n"
+                    "description": "Name of the Resource Group for Elastigroup.\n"
                 },
                 "subnetName": {
                     "type": "string"
@@ -4195,7 +4195,7 @@
             "properties": {
                 "name": {
                     "type": "string",
-                    "description": "Name of the Managed Service Identity.\n"
+                    "description": "The group name.\n"
                 },
                 "privateIpVersion": {
                     "type": "string"
@@ -4293,7 +4293,7 @@
             "properties": {
                 "name": {
                     "type": "string",
-                    "description": "Name of the Managed Service Identity.\n"
+                    "description": "The group name.\n"
                 },
                 "value": {
                     "type": "string",
@@ -4392,7 +4392,7 @@
             "properties": {
                 "name": {
                     "type": "string",
-                    "description": "Name of the Managed Service Identity.\n"
+                    "description": "The group name.\n"
                 },
                 "value": {
                     "type": "string",
@@ -4604,7 +4604,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "Name of the Load Balancer.\n"
+                    "description": "Extension name.\n"
                 },
                 "publisher": {
                     "type": "string",
@@ -4612,7 +4612,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "The type of load balancer. Supported value: `loadBalancer`\n"
+                    "description": "Extension type.\n"
                 }
             },
             "type": "object",
@@ -4730,11 +4730,11 @@
             "properties": {
                 "name": {
                     "type": "string",
-                    "description": "Name of the Load Balancer.\n"
+                    "description": "Name of the Managed Service Identity.\n"
                 },
                 "resourceGroupName": {
                     "type": "string",
-                    "description": "The Resource Group name of the Load Balancer.\n"
+                    "description": "Name of the Azure Resource Group where the Managed Service Identity is located.\n"
                 }
             },
             "type": "object",
@@ -4754,7 +4754,7 @@
                 },
                 "resourceGroupName": {
                     "type": "string",
-                    "description": "The Resource Group name of the Load Balancer.\n"
+                    "description": "Vnet resource group name.\n"
                 },
                 "virtualNetworkName": {
                     "type": "string",
@@ -4814,7 +4814,7 @@
             "properties": {
                 "name": {
                     "type": "string",
-                    "description": "Name of the Load Balancer.\n"
+                    "description": "The Ocean cluster name.\n"
                 },
                 "privateIpVersion": {
                     "type": "string",
@@ -4835,11 +4835,11 @@
             "properties": {
                 "name": {
                     "type": "string",
-                    "description": "Name of the Load Balancer.\n"
+                    "description": "The Ocean cluster name.\n"
                 },
                 "resourceGroupName": {
                     "type": "string",
-                    "description": "The Resource Group name of the Load Balancer.\n"
+                    "description": "Name of the Azure Resource Group into which VMs will be launched. Cannot be updated.\n"
                 }
             },
             "type": "object",
@@ -5135,7 +5135,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "The type of load balancer. Supported value: `loadBalancer`\n"
+                    "description": "The type of the OS disk. Supported values: `Standard_LRS`, `Premium_LRS`, `StandardSSD_LRS`.\n"
                 }
             },
             "type": "object",
@@ -5212,11 +5212,11 @@
             "properties": {
                 "key": {
                     "type": "string",
-                    "description": "Tag Key for Vms in the cluster.\n"
+                    "description": "The label key.\n"
                 },
                 "value": {
                     "type": "string",
-                    "description": "Tag Value for VMs in the cluster.\n"
+                    "description": "The label value.\n"
                 }
             },
             "type": "object",
@@ -5294,11 +5294,11 @@
                 },
                 "key": {
                     "type": "string",
-                    "description": "Tag Key for Vms in the cluster.\n"
+                    "description": "The taint key.\n"
                 },
                 "value": {
                     "type": "string",
-                    "description": "Tag Value for VMs in the cluster.\n"
+                    "description": "The taint value.\n"
                 }
             },
             "type": "object",
@@ -5391,11 +5391,11 @@
             "properties": {
                 "maxMemoryGib": {
                     "type": "integer",
-                    "description": "Maximum amount of Memory (GiB).\n"
+                    "description": "The maximum memory in GiB units that can be allocated to the cluster.\n"
                 },
                 "maxVcpu": {
                     "type": "integer",
-                    "description": "Maximum number of vcpus available.\n"
+                    "description": "The maximum cpu in vCPU units that can be allocated to the cluster.\n"
                 }
             },
             "type": "object"
@@ -5447,7 +5447,7 @@
                 },
                 "snapshotId": {
                     "type": "string",
-                    "description": "(Optional) String. The snapshot ID to mount by.\n"
+                    "description": "String. The snapshot ID to mount by.\n"
                 },
                 "throughput": {
                     "type": "integer",
@@ -5646,7 +5646,7 @@
             "properties": {
                 "cpuPerUnit": {
                     "type": "integer",
-                    "description": "Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.\n"
+                    "description": "Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in CPU units, where 1024 units = 1 vCPU.\n"
                 },
                 "memoryPerUnit": {
                     "type": "integer",
@@ -5654,7 +5654,7 @@
                 },
                 "numOfUnits": {
                     "type": "integer",
-                    "description": "The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.\n"
+                    "description": "The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.\n"
                 }
             },
             "type": "object",
@@ -5791,7 +5791,7 @@
             "properties": {
                 "cpuPerUnit": {
                     "type": "integer",
-                    "description": "Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.\n"
+                    "description": "Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in CPU units, where 1024 units = 1 vCPU.\n"
                 },
                 "memoryPerUnit": {
                     "type": "integer",
@@ -5799,7 +5799,7 @@
                 },
                 "numOfUnits": {
                     "type": "integer",
-                    "description": "The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.\n"
+                    "description": "The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.\n"
                 }
             },
             "type": "object",
@@ -5933,11 +5933,11 @@
                 },
                 "isEnabled": {
                     "type": "boolean",
-                    "description": "Enable the Ocean ECS autoscaler.\n"
+                    "description": "Describes whether the task is enabled. When true the task should run when false it should not run. Required for `cluster.scheduling.tasks` object.\n"
                 },
                 "taskType": {
                     "type": "string",
-                    "description": "Valid values: \"clusterRoll\". Required for `cluster.scheduling.tasks object`. Example: `clusterRoll`.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\n```\n```python\nimport pulumi\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n    }\n}\n```\n```yaml\n{}\n```\n\n\n\u003ca id=\"attributes-reference\"\u003e\u003c/a\u003e\n"
+                    "description": "Valid values: \"clusterRoll\". Required for `cluster.scheduling.tasks object`. Example: `clusterRoll`.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\n```\n```python\nimport pulumi\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n    }\n}\n```\n```yaml\n{}\n```\n\n\u003ca id=\"attributes-reference\"\u003e\u003c/a\u003e\n"
                 }
             },
             "type": "object",
@@ -6118,7 +6118,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "The type of GPU instance. Valid values: `nvidia-tesla-v100`, `nvidia-tesla-p100`, `nvidia-tesla-k80`.\n"
+                    "description": "Specifies the type of disk, either SCRATCH or PERSISTENT.\n"
                 }
             },
             "type": "object",
@@ -6256,11 +6256,11 @@
             "properties": {
                 "key": {
                     "type": "string",
-                    "description": "Labels key.\n"
+                    "description": "Metadata key.\n"
                 },
                 "value": {
                     "type": "string",
-                    "description": "Labels value.\n"
+                    "description": "Metadata value.\n"
                 }
             },
             "type": "object",
@@ -6784,10 +6784,12 @@
         "spotinst:gke/ElastigroupIntegrationGkeAutoscaleLabel:ElastigroupIntegrationGkeAutoscaleLabel": {
             "properties": {
                 "key": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The label name.\n"
                 },
                 "value": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The label value.\n\nUsage:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\n```\n```python\nimport pulumi\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n    }\n}\n```\n```yaml\n{}\n```\n"
                 }
             },
             "type": "object",
@@ -6956,7 +6958,8 @@
                     "type": "string"
                 },
                 "value": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The label value.\n\nUsage:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\n```\n```python\nimport pulumi\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n    }\n}\n```\n```yaml\n{}\n```\n"
                 }
             },
             "type": "object",
@@ -7045,7 +7048,8 @@
                     "type": "string"
                 },
                 "value": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The label value.\n\nUsage:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\n```\n```python\nimport pulumi\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n    }\n}\n```\n```yaml\n{}\n```\n"
                 }
             },
             "type": "object",
@@ -7225,7 +7229,7 @@
                 },
                 "isEnabled": {
                     "type": "boolean",
-                    "description": "Enable the Ocean Kubernetes Autoscaler.\n"
+                    "description": "Describes whether the task is enabled. When true the task should run when false it should not run. Required for cluster.scheduling.tasks object.\n"
                 },
                 "taskParameters": {
                     "$ref": "#/types/spotinst:gke/OceanImportScheduledTaskTaskTaskParameters:OceanImportScheduledTaskTaskTaskParameters"
@@ -7403,11 +7407,11 @@
             "properties": {
                 "key": {
                     "type": "string",
-                    "description": "The label key.\n"
+                    "description": "The metadata key.\n"
                 },
                 "value": {
                     "type": "string",
-                    "description": "The label value.\n"
+                    "description": "The metadata value.\n"
                 }
             },
             "type": "object",
@@ -7454,7 +7458,7 @@
             "properties": {
                 "name": {
                     "type": "string",
-                    "description": "The name of the access configuration.\n"
+                    "description": "The launch specification name.\n"
                 },
                 "type": {
                     "type": "string",
@@ -7600,11 +7604,11 @@
                 },
                 "key": {
                     "type": "string",
-                    "description": "The label key.\n"
+                    "description": "The taint key.\n"
                 },
                 "value": {
                     "type": "string",
-                    "description": "The label value.\n"
+                    "description": "The taint value.\n"
                 }
             },
             "type": "object",
@@ -7861,7 +7865,7 @@
                 },
                 "port": {
                     "type": "integer",
-                    "description": "The port of the Spotinst HCS (default: 80).\n"
+                    "description": "The port to use to connect with the instance.\n"
                 },
                 "protocol": {
                     "type": "string",
@@ -11262,8 +11266,7 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/spotinst:aws/MrScalarCoreScalingDownPolicy:MrScalarCoreScalingDownPolicy"
-                    },
-                    "description": "Each `*_scaling_*_policy` supports the following:\n"
+                    }
                 },
                 "coreScalingUpPolicies": {
                     "type": "array",
@@ -11571,8 +11574,7 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/spotinst:aws/MrScalarCoreScalingDownPolicy:MrScalarCoreScalingDownPolicy"
-                    },
-                    "description": "Each `*_scaling_*_policy` supports the following:\n"
+                    }
                 },
                 "coreScalingUpPolicies": {
                     "type": "array",
@@ -11879,8 +11881,7 @@
                         "type": "array",
                         "items": {
                             "$ref": "#/types/spotinst:aws/MrScalarCoreScalingDownPolicy:MrScalarCoreScalingDownPolicy"
-                        },
-                        "description": "Each `*_scaling_*_policy` supports the following:\n"
+                        }
                     },
                     "coreScalingUpPolicies": {
                         "type": "array",
@@ -12201,7 +12202,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "Required if type is set to `CLASSIC`\n"
+                    "description": "The cluster name.\n"
                 },
                 "region": {
                     "type": "string",
@@ -12388,7 +12389,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "Required if type is set to `CLASSIC`\n"
+                    "description": "The cluster name.\n"
                 },
                 "region": {
                     "type": "string",
@@ -12574,7 +12575,7 @@
                     },
                     "name": {
                         "type": "string",
-                        "description": "Required if type is set to `CLASSIC`\n"
+                        "description": "The cluster name.\n"
                     },
                     "region": {
                         "type": "string",
@@ -12763,7 +12764,7 @@
                 },
                 "imageId": {
                     "type": "string",
-                    "description": "Identifier of the image in AWS. Valid values: any string which is not empty or null.\n"
+                    "description": "ID of the image used to launch the instances.\n"
                 },
                 "images": {
                     "type": "array",
@@ -12932,7 +12933,7 @@
                 },
                 "imageId": {
                     "type": "string",
-                    "description": "Identifier of the image in AWS. Valid values: any string which is not empty or null.\n"
+                    "description": "ID of the image used to launch the instances.\n"
                 },
                 "images": {
                     "type": "array",
@@ -13103,7 +13104,7 @@
                     },
                     "imageId": {
                         "type": "string",
-                        "description": "Identifier of the image in AWS. Valid values: any string which is not empty or null.\n"
+                        "description": "ID of the image used to launch the instances.\n"
                     },
                     "images": {
                         "type": "array",
@@ -13333,7 +13334,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "Name of the Managed Service Identity.\n"
+                    "description": "The group name.\n"
                 },
                 "network": {
                     "$ref": "#/types/spotinst:azure/ElastigroupNetwork:ElastigroupNetwork"
@@ -13354,7 +13355,7 @@
                 },
                 "resourceGroupName": {
                     "type": "string",
-                    "description": "Name of the Azure Resource Group where the Managed Service Identity is located.\n"
+                    "description": "Name of the Resource Group for Elastigroup.\n"
                 },
                 "scalingDownPolicies": {
                     "type": "array",
@@ -13454,7 +13455,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "Name of the Managed Service Identity.\n"
+                    "description": "The group name.\n"
                 },
                 "network": {
                     "$ref": "#/types/spotinst:azure/ElastigroupNetwork:ElastigroupNetwork"
@@ -13475,7 +13476,7 @@
                 },
                 "resourceGroupName": {
                     "type": "string",
-                    "description": "Name of the Azure Resource Group where the Managed Service Identity is located.\n"
+                    "description": "Name of the Resource Group for Elastigroup.\n"
                 },
                 "scalingDownPolicies": {
                     "type": "array",
@@ -13574,7 +13575,7 @@
                     },
                     "name": {
                         "type": "string",
-                        "description": "Name of the Managed Service Identity.\n"
+                        "description": "The group name.\n"
                     },
                     "network": {
                         "$ref": "#/types/spotinst:azure/ElastigroupNetwork:ElastigroupNetwork"
@@ -13595,7 +13596,7 @@
                     },
                     "resourceGroupName": {
                         "type": "string",
-                        "description": "Name of the Azure Resource Group where the Managed Service Identity is located.\n"
+                        "description": "Name of the Resource Group for Elastigroup.\n"
                     },
                     "scalingDownPolicies": {
                         "type": "array",
@@ -13696,7 +13697,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "Name of the Load Balancer.\n"
+                    "description": "The Ocean cluster name.\n"
                 },
                 "network": {
                     "$ref": "#/types/spotinst:azure/OceanNetwork:OceanNetwork",
@@ -13708,7 +13709,7 @@
                 },
                 "resourceGroupName": {
                     "type": "string",
-                    "description": "The Resource Group name of the Load Balancer.\n"
+                    "description": "Name of the Azure Resource Group into which VMs will be launched. Cannot be updated.\n"
                 },
                 "sshPublicKey": {
                     "type": "string",
@@ -13827,7 +13828,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "Name of the Load Balancer.\n"
+                    "description": "The Ocean cluster name.\n"
                 },
                 "network": {
                     "$ref": "#/types/spotinst:azure/OceanNetwork:OceanNetwork",
@@ -13839,7 +13840,7 @@
                 },
                 "resourceGroupName": {
                     "type": "string",
-                    "description": "The Resource Group name of the Load Balancer.\n"
+                    "description": "Name of the Azure Resource Group into which VMs will be launched. Cannot be updated.\n"
                 },
                 "sshPublicKey": {
                     "type": "string",
@@ -13949,7 +13950,7 @@
                     },
                     "name": {
                         "type": "string",
-                        "description": "Name of the Load Balancer.\n"
+                        "description": "The Ocean cluster name.\n"
                     },
                     "network": {
                         "$ref": "#/types/spotinst:azure/OceanNetwork:OceanNetwork",
@@ -13961,7 +13962,7 @@
                     },
                     "resourceGroupName": {
                         "type": "string",
-                        "description": "The Resource Group name of the Load Balancer.\n"
+                        "description": "Name of the Azure Resource Group into which VMs will be launched. Cannot be updated.\n"
                     },
                     "sshPublicKey": {
                         "type": "string",
@@ -15642,7 +15643,7 @@
                 },
                 "instanceNamePrefix": {
                     "type": "string",
-                    "description": "Set an instance name prefix to be used for all launched instances and their boot disk. The prefix value should comply with the following limitations: \n* A maximal length of 25 characters.\n* The first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.\n"
+                    "description": "Set an instance name prefix to be used for all launched instances and their boot disk. The prefix value should comply with the following limitations:\n* A maximal length of 25 characters.\n* The first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.\n"
                 },
                 "instanceTypesCustoms": {
                     "type": "array",
@@ -15721,7 +15722,7 @@
                     "items": {
                         "$ref": "#/types/spotinst:gcp/ElastigroupScalingDownPolicy:ElastigroupScalingDownPolicy"
                     },
-                    "description": "Contains scaling policies for scaling the Elastigroup down.\n\nEach `scaling_*_policy` supports the following:\n"
+                    "description": "Contains scaling policies for scaling the Elastigroup down.\n"
                 },
                 "scalingUpPolicies": {
                     "type": "array",
@@ -15832,7 +15833,7 @@
                 },
                 "instanceNamePrefix": {
                     "type": "string",
-                    "description": "Set an instance name prefix to be used for all launched instances and their boot disk. The prefix value should comply with the following limitations: \n* A maximal length of 25 characters.\n* The first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.\n"
+                    "description": "Set an instance name prefix to be used for all launched instances and their boot disk. The prefix value should comply with the following limitations:\n* A maximal length of 25 characters.\n* The first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.\n"
                 },
                 "instanceTypesCustoms": {
                     "type": "array",
@@ -15911,7 +15912,7 @@
                     "items": {
                         "$ref": "#/types/spotinst:gcp/ElastigroupScalingDownPolicy:ElastigroupScalingDownPolicy"
                     },
-                    "description": "Contains scaling policies for scaling the Elastigroup down.\n\nEach `scaling_*_policy` supports the following:\n"
+                    "description": "Contains scaling policies for scaling the Elastigroup down.\n"
                 },
                 "scalingUpPolicies": {
                     "type": "array",
@@ -16021,7 +16022,7 @@
                     },
                     "instanceNamePrefix": {
                         "type": "string",
-                        "description": "Set an instance name prefix to be used for all launched instances and their boot disk. The prefix value should comply with the following limitations: \n* A maximal length of 25 characters.\n* The first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.\n"
+                        "description": "Set an instance name prefix to be used for all launched instances and their boot disk. The prefix value should comply with the following limitations:\n* A maximal length of 25 characters.\n* The first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.\n"
                     },
                     "instanceTypesCustoms": {
                         "type": "array",
@@ -16100,7 +16101,7 @@
                         "items": {
                             "$ref": "#/types/spotinst:gcp/ElastigroupScalingDownPolicy:ElastigroupScalingDownPolicy"
                         },
-                        "description": "Contains scaling policies for scaling the Elastigroup down.\n\nEach `scaling_*_policy` supports the following:\n"
+                        "description": "Contains scaling policies for scaling the Elastigroup down.\n"
                     },
                     "scalingUpPolicies": {
                         "type": "array",
@@ -16871,7 +16872,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "The name of the access configuration.\n"
+                    "description": "The launch specification name.\n"
                 },
                 "networkInterfaces": {
                     "type": "array",
@@ -17006,7 +17007,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "The name of the access configuration.\n"
+                    "description": "The launch specification name.\n"
                 },
                 "networkInterfaces": {
                     "type": "array",
@@ -17131,7 +17132,7 @@
                     },
                     "name": {
                         "type": "string",
-                        "description": "The name of the access configuration.\n"
+                        "description": "The launch specification name.\n"
                     },
                     "networkInterfaces": {
                         "type": "array",
