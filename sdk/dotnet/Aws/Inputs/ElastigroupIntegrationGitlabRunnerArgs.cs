@@ -13,7 +13,19 @@ namespace Pulumi.SpotInst.Aws.Inputs
     public sealed class ElastigroupIntegrationGitlabRunnerArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specifies whether the scaling policy described in this block is enabled.
+        /// Specifies whether the integration is enabled.
+        /// 
+        /// Usage:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        /// });
+        /// ```
         /// </summary>
         [Input("isEnabled")]
         public Input<bool>? IsEnabled { get; set; }

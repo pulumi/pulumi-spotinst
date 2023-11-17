@@ -27,7 +27,7 @@ namespace Pulumi.SpotInst.Outputs
         /// </summary>
         public readonly int Interval;
         /// <summary>
-        /// The port of the Spotinst HCS (default: 80).
+        /// The port to use to connect with the instance.
         /// </summary>
         public readonly int Port;
         /// <summary>

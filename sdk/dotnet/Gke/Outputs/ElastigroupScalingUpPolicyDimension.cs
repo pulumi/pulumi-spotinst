@@ -14,6 +14,21 @@ namespace Pulumi.SpotInst.Gke.Outputs
     public sealed class ElastigroupScalingUpPolicyDimension
     {
         public readonly string Name;
+        /// <summary>
+        /// The label value.
+        /// 
+        /// Usage:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        /// });
+        /// ```
+        /// </summary>
         public readonly string? Value;
 
         [OutputConstructor]

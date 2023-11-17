@@ -40,7 +40,7 @@ public final class ElastigroupGpu {
      */
     private Integer count;
     /**
-     * @return The type of GPU instance. Valid values: `nvidia-tesla-v100`, `nvidia-tesla-p100`, `nvidia-tesla-k80`.
+     * @return Specifies the type of disk, either SCRATCH or PERSISTENT.
      * 
      */
     private String type;
@@ -78,7 +78,7 @@ public final class ElastigroupGpu {
         return this.count;
     }
     /**
-     * @return The type of GPU instance. Valid values: `nvidia-tesla-v100`, `nvidia-tesla-p100`, `nvidia-tesla-k80`.
+     * @return Specifies the type of disk, either SCRATCH or PERSISTENT.
      * 
      */
     public String type() {

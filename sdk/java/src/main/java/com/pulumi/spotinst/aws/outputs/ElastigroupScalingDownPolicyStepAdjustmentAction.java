@@ -42,7 +42,31 @@ public final class ElastigroupScalingDownPolicyStepAdjustmentAction {
      */
     private @Nullable String target;
     /**
-     * @return The type of the action to take when scale up is needed. Valid types: `&#34;adjustment&#34;`, `&#34;updateCapacity&#34;`, `&#34;setMaxTarget&#34;`, `&#34;percentageAdjustment&#34;`.
+     * @return String, Action type. Supported action types: `pause`, `resume`, `recycle`, `deallocate`.
+     * 
+     * Usage:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *     }
+     * }
+     * ```
      * 
      */
     private String type;
@@ -91,7 +115,31 @@ public final class ElastigroupScalingDownPolicyStepAdjustmentAction {
         return Optional.ofNullable(this.target);
     }
     /**
-     * @return The type of the action to take when scale up is needed. Valid types: `&#34;adjustment&#34;`, `&#34;updateCapacity&#34;`, `&#34;setMaxTarget&#34;`, `&#34;percentageAdjustment&#34;`.
+     * @return String, Action type. Supported action types: `pause`, `resume`, `recycle`, `deallocate`.
+     * 
+     * Usage:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *     }
+     * }
+     * ```
      * 
      */
     public String type() {

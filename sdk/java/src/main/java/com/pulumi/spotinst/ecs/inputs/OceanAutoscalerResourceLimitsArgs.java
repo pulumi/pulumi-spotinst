@@ -16,14 +16,14 @@ public final class OceanAutoscalerResourceLimitsArgs extends com.pulumi.resource
     public static final OceanAutoscalerResourceLimitsArgs Empty = new OceanAutoscalerResourceLimitsArgs();
 
     /**
-     * Maximum amount of Memory (GiB).
+     * The maximum memory in GiB units that can be allocated to the cluster.
      * 
      */
     @Import(name="maxMemoryGib")
     private @Nullable Output<Integer> maxMemoryGib;
 
     /**
-     * @return Maximum amount of Memory (GiB).
+     * @return The maximum memory in GiB units that can be allocated to the cluster.
      * 
      */
     public Optional<Output<Integer>> maxMemoryGib() {
@@ -31,14 +31,14 @@ public final class OceanAutoscalerResourceLimitsArgs extends com.pulumi.resource
     }
 
     /**
-     * Maximum number of vcpus available.
+     * The maximum cpu in vCPU units that can be allocated to the cluster.
      * 
      */
     @Import(name="maxVcpu")
     private @Nullable Output<Integer> maxVcpu;
 
     /**
-     * @return Maximum number of vcpus available.
+     * @return The maximum cpu in vCPU units that can be allocated to the cluster.
      * 
      */
     public Optional<Output<Integer>> maxVcpu() {
@@ -71,7 +71,7 @@ public final class OceanAutoscalerResourceLimitsArgs extends com.pulumi.resource
         }
 
         /**
-         * @param maxMemoryGib Maximum amount of Memory (GiB).
+         * @param maxMemoryGib The maximum memory in GiB units that can be allocated to the cluster.
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class OceanAutoscalerResourceLimitsArgs extends com.pulumi.resource
         }
 
         /**
-         * @param maxMemoryGib Maximum amount of Memory (GiB).
+         * @param maxMemoryGib The maximum memory in GiB units that can be allocated to the cluster.
          * 
          * @return builder
          * 
@@ -92,7 +92,7 @@ public final class OceanAutoscalerResourceLimitsArgs extends com.pulumi.resource
         }
 
         /**
-         * @param maxVcpu Maximum number of vcpus available.
+         * @param maxVcpu The maximum cpu in vCPU units that can be allocated to the cluster.
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class OceanAutoscalerResourceLimitsArgs extends com.pulumi.resource
         }
 
         /**
-         * @param maxVcpu Maximum number of vcpus available.
+         * @param maxVcpu The maximum cpu in vCPU units that can be allocated to the cluster.
          * 
          * @return builder
          * 

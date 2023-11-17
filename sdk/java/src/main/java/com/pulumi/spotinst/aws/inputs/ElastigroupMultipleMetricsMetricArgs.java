@@ -18,14 +18,62 @@ public final class ElastigroupMultipleMetricsMetricArgs extends com.pulumi.resou
     public static final ElastigroupMultipleMetricsMetricArgs Empty = new ElastigroupMultipleMetricsMetricArgs();
 
     /**
-     * A list of dimensions describing qualities of the metric.
+     * The dimensions for the alarm&#39;s associated metric. When name is &#34;instanceId&#34;, no value is needed.
+     * *`name` - (Required) the dimension name.
+     * *`value` - (Optional) the dimension value.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *     }
+     * }
+     * ```
      * 
      */
     @Import(name="dimensions")
     private @Nullable Output<List<ElastigroupMultipleMetricsMetricDimensionArgs>> dimensions;
 
     /**
-     * @return A list of dimensions describing qualities of the metric.
+     * @return The dimensions for the alarm&#39;s associated metric. When name is &#34;instanceId&#34;, no value is needed.
+     * *`name` - (Required) the dimension name.
+     * *`value` - (Optional) the dimension value.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *     }
+     * }
+     * ```
      * 
      */
     public Optional<Output<List<ElastigroupMultipleMetricsMetricDimensionArgs>>> dimensions() {
@@ -48,14 +96,14 @@ public final class ElastigroupMultipleMetricsMetricArgs extends com.pulumi.resou
     }
 
     /**
-     * The name of the metric, with or without spaces.
+     * The name of the source metric.
      * 
      */
     @Import(name="metricName", required=true)
     private Output<String> metricName;
 
     /**
-     * @return The name of the metric, with or without spaces.
+     * @return The name of the source metric.
      * 
      */
     public Output<String> metricName() {
@@ -63,14 +111,14 @@ public final class ElastigroupMultipleMetricsMetricArgs extends com.pulumi.resou
     }
 
     /**
-     * The group name.
+     * The expression name.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return The group name.
+     * @return The expression name.
      * 
      */
     public Output<String> name() {
@@ -93,14 +141,14 @@ public final class ElastigroupMultipleMetricsMetricArgs extends com.pulumi.resou
     }
 
     /**
-     * The metric statistics to return. For information about specific statistics go to [Statistics](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/index.html?CHAP_TerminologyandKeyConcepts.html#Statistic) in the Amazon CloudWatch Developer Guide.
+     * The metric statistics to return. Valid values: `&#34;average&#34;`, `&#34;sum&#34;`, `&#34;sampleCount&#34;`, `&#34;maximum&#34;`, `&#34;minimum&#34;`, `&#34;percentile&#34;`.
      * 
      */
     @Import(name="statistic")
     private @Nullable Output<String> statistic;
 
     /**
-     * @return The metric statistics to return. For information about specific statistics go to [Statistics](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/index.html?CHAP_TerminologyandKeyConcepts.html#Statistic) in the Amazon CloudWatch Developer Guide.
+     * @return The metric statistics to return. Valid values: `&#34;average&#34;`, `&#34;sum&#34;`, `&#34;sampleCount&#34;`, `&#34;maximum&#34;`, `&#34;minimum&#34;`, `&#34;percentile&#34;`.
      * 
      */
     public Optional<Output<String>> statistic() {
@@ -108,14 +156,14 @@ public final class ElastigroupMultipleMetricsMetricArgs extends com.pulumi.resou
     }
 
     /**
-     * The unit for the alarm&#39;s associated metric. Valid values: `&#34;percent`, `&#34;seconds&#34;`, `&#34;microseconds&#34;`, `&#34;milliseconds&#34;`, `&#34;bytes&#34;`, `&#34;kilobytes&#34;`, `&#34;megabytes&#34;`, `&#34;gigabytes&#34;`, `&#34;terabytes&#34;`, `&#34;bits&#34;`, `&#34;kilobits&#34;`, `&#34;megabits&#34;`, `&#34;gigabits&#34;`, `&#34;terabits&#34;`, `&#34;count&#34;`, `&#34;bytes/second&#34;`, `&#34;kilobytes/second&#34;`, `&#34;megabytes/second&#34;`, `&#34;gigabytes/second&#34;`, `&#34;terabytes/second&#34;`, `&#34;bits/second&#34;`, `&#34;kilobits/second&#34;`, `&#34;megabits/second&#34;`, `&#34;gigabits/second&#34;`, `&#34;terabits/second&#34;`, `&#34;count/second&#34;`, `&#34;none&#34;`.
+     * The unit for the alarm&#39;s associated metric. Valid values: `&#34;seconds&#34;`, `&#34;microseconds&#34;`, `&#34;milliseconds&#34;`, `&#34;bytes&#34;`, `&#34;kilobytes&#34;`, `&#34;megabytes&#34;`, `&#34;gigabytes&#34;`, `&#34;terabytes&#34;`, `&#34;bits&#34;`, `&#34;kilobits&#34;`, `&#34;megabits&#34;`, `&#34;gigabits&#34;`, `&#34;terabits&#34;`, `&#34;percent&#34;`, `&#34;count&#34;`, `&#34;bytes/second&#34;`, `&#34;kilobytes/second&#34;`, `&#34;megabytes/second&#34;`, `&#34;gigabytes/second&#34;`, `&#34;terabytes/second&#34;`, `&#34;bits/second&#34;`, `&#34;kilobits/second&#34;`, `&#34;megabits/second&#34;`, `&#34;gigabits/second&#34;`, `&#34;terabits/second&#34;`, `&#34;count/second&#34;`, `&#34;none&#34;`.
      * 
      */
     @Import(name="unit")
     private @Nullable Output<String> unit;
 
     /**
-     * @return The unit for the alarm&#39;s associated metric. Valid values: `&#34;percent`, `&#34;seconds&#34;`, `&#34;microseconds&#34;`, `&#34;milliseconds&#34;`, `&#34;bytes&#34;`, `&#34;kilobytes&#34;`, `&#34;megabytes&#34;`, `&#34;gigabytes&#34;`, `&#34;terabytes&#34;`, `&#34;bits&#34;`, `&#34;kilobits&#34;`, `&#34;megabits&#34;`, `&#34;gigabits&#34;`, `&#34;terabits&#34;`, `&#34;count&#34;`, `&#34;bytes/second&#34;`, `&#34;kilobytes/second&#34;`, `&#34;megabytes/second&#34;`, `&#34;gigabytes/second&#34;`, `&#34;terabytes/second&#34;`, `&#34;bits/second&#34;`, `&#34;kilobits/second&#34;`, `&#34;megabits/second&#34;`, `&#34;gigabits/second&#34;`, `&#34;terabits/second&#34;`, `&#34;count/second&#34;`, `&#34;none&#34;`.
+     * @return The unit for the alarm&#39;s associated metric. Valid values: `&#34;seconds&#34;`, `&#34;microseconds&#34;`, `&#34;milliseconds&#34;`, `&#34;bytes&#34;`, `&#34;kilobytes&#34;`, `&#34;megabytes&#34;`, `&#34;gigabytes&#34;`, `&#34;terabytes&#34;`, `&#34;bits&#34;`, `&#34;kilobits&#34;`, `&#34;megabits&#34;`, `&#34;gigabits&#34;`, `&#34;terabits&#34;`, `&#34;percent&#34;`, `&#34;count&#34;`, `&#34;bytes/second&#34;`, `&#34;kilobytes/second&#34;`, `&#34;megabytes/second&#34;`, `&#34;gigabytes/second&#34;`, `&#34;terabytes/second&#34;`, `&#34;bits/second&#34;`, `&#34;kilobits/second&#34;`, `&#34;megabits/second&#34;`, `&#34;gigabits/second&#34;`, `&#34;terabits/second&#34;`, `&#34;count/second&#34;`, `&#34;none&#34;`.
      * 
      */
     public Optional<Output<String>> unit() {
@@ -153,7 +201,31 @@ public final class ElastigroupMultipleMetricsMetricArgs extends com.pulumi.resou
         }
 
         /**
-         * @param dimensions A list of dimensions describing qualities of the metric.
+         * @param dimensions The dimensions for the alarm&#39;s associated metric. When name is &#34;instanceId&#34;, no value is needed.
+         * *`name` - (Required) the dimension name.
+         * *`value` - (Optional) the dimension value.
+         * ```java
+         * package generated_program;
+         * 
+         * import com.pulumi.Context;
+         * import com.pulumi.Pulumi;
+         * import com.pulumi.core.Output;
+         * import java.util.List;
+         * import java.util.ArrayList;
+         * import java.util.Map;
+         * import java.io.File;
+         * import java.nio.file.Files;
+         * import java.nio.file.Paths;
+         * 
+         * public class App {
+         *     public static void main(String[] args) {
+         *         Pulumi.run(App::stack);
+         *     }
+         * 
+         *     public static void stack(Context ctx) {
+         *     }
+         * }
+         * ```
          * 
          * @return builder
          * 
@@ -164,7 +236,31 @@ public final class ElastigroupMultipleMetricsMetricArgs extends com.pulumi.resou
         }
 
         /**
-         * @param dimensions A list of dimensions describing qualities of the metric.
+         * @param dimensions The dimensions for the alarm&#39;s associated metric. When name is &#34;instanceId&#34;, no value is needed.
+         * *`name` - (Required) the dimension name.
+         * *`value` - (Optional) the dimension value.
+         * ```java
+         * package generated_program;
+         * 
+         * import com.pulumi.Context;
+         * import com.pulumi.Pulumi;
+         * import com.pulumi.core.Output;
+         * import java.util.List;
+         * import java.util.ArrayList;
+         * import java.util.Map;
+         * import java.io.File;
+         * import java.nio.file.Files;
+         * import java.nio.file.Paths;
+         * 
+         * public class App {
+         *     public static void main(String[] args) {
+         *         Pulumi.run(App::stack);
+         *     }
+         * 
+         *     public static void stack(Context ctx) {
+         *     }
+         * }
+         * ```
          * 
          * @return builder
          * 
@@ -174,7 +270,31 @@ public final class ElastigroupMultipleMetricsMetricArgs extends com.pulumi.resou
         }
 
         /**
-         * @param dimensions A list of dimensions describing qualities of the metric.
+         * @param dimensions The dimensions for the alarm&#39;s associated metric. When name is &#34;instanceId&#34;, no value is needed.
+         * *`name` - (Required) the dimension name.
+         * *`value` - (Optional) the dimension value.
+         * ```java
+         * package generated_program;
+         * 
+         * import com.pulumi.Context;
+         * import com.pulumi.Pulumi;
+         * import com.pulumi.core.Output;
+         * import java.util.List;
+         * import java.util.ArrayList;
+         * import java.util.Map;
+         * import java.io.File;
+         * import java.nio.file.Files;
+         * import java.nio.file.Paths;
+         * 
+         * public class App {
+         *     public static void main(String[] args) {
+         *         Pulumi.run(App::stack);
+         *     }
+         * 
+         *     public static void stack(Context ctx) {
+         *     }
+         * }
+         * ```
          * 
          * @return builder
          * 
@@ -205,7 +325,7 @@ public final class ElastigroupMultipleMetricsMetricArgs extends com.pulumi.resou
         }
 
         /**
-         * @param metricName The name of the metric, with or without spaces.
+         * @param metricName The name of the source metric.
          * 
          * @return builder
          * 
@@ -216,7 +336,7 @@ public final class ElastigroupMultipleMetricsMetricArgs extends com.pulumi.resou
         }
 
         /**
-         * @param metricName The name of the metric, with or without spaces.
+         * @param metricName The name of the source metric.
          * 
          * @return builder
          * 
@@ -226,7 +346,7 @@ public final class ElastigroupMultipleMetricsMetricArgs extends com.pulumi.resou
         }
 
         /**
-         * @param name The group name.
+         * @param name The expression name.
          * 
          * @return builder
          * 
@@ -237,7 +357,7 @@ public final class ElastigroupMultipleMetricsMetricArgs extends com.pulumi.resou
         }
 
         /**
-         * @param name The group name.
+         * @param name The expression name.
          * 
          * @return builder
          * 
@@ -268,7 +388,7 @@ public final class ElastigroupMultipleMetricsMetricArgs extends com.pulumi.resou
         }
 
         /**
-         * @param statistic The metric statistics to return. For information about specific statistics go to [Statistics](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/index.html?CHAP_TerminologyandKeyConcepts.html#Statistic) in the Amazon CloudWatch Developer Guide.
+         * @param statistic The metric statistics to return. Valid values: `&#34;average&#34;`, `&#34;sum&#34;`, `&#34;sampleCount&#34;`, `&#34;maximum&#34;`, `&#34;minimum&#34;`, `&#34;percentile&#34;`.
          * 
          * @return builder
          * 
@@ -279,7 +399,7 @@ public final class ElastigroupMultipleMetricsMetricArgs extends com.pulumi.resou
         }
 
         /**
-         * @param statistic The metric statistics to return. For information about specific statistics go to [Statistics](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/index.html?CHAP_TerminologyandKeyConcepts.html#Statistic) in the Amazon CloudWatch Developer Guide.
+         * @param statistic The metric statistics to return. Valid values: `&#34;average&#34;`, `&#34;sum&#34;`, `&#34;sampleCount&#34;`, `&#34;maximum&#34;`, `&#34;minimum&#34;`, `&#34;percentile&#34;`.
          * 
          * @return builder
          * 
@@ -289,7 +409,7 @@ public final class ElastigroupMultipleMetricsMetricArgs extends com.pulumi.resou
         }
 
         /**
-         * @param unit The unit for the alarm&#39;s associated metric. Valid values: `&#34;percent`, `&#34;seconds&#34;`, `&#34;microseconds&#34;`, `&#34;milliseconds&#34;`, `&#34;bytes&#34;`, `&#34;kilobytes&#34;`, `&#34;megabytes&#34;`, `&#34;gigabytes&#34;`, `&#34;terabytes&#34;`, `&#34;bits&#34;`, `&#34;kilobits&#34;`, `&#34;megabits&#34;`, `&#34;gigabits&#34;`, `&#34;terabits&#34;`, `&#34;count&#34;`, `&#34;bytes/second&#34;`, `&#34;kilobytes/second&#34;`, `&#34;megabytes/second&#34;`, `&#34;gigabytes/second&#34;`, `&#34;terabytes/second&#34;`, `&#34;bits/second&#34;`, `&#34;kilobits/second&#34;`, `&#34;megabits/second&#34;`, `&#34;gigabits/second&#34;`, `&#34;terabits/second&#34;`, `&#34;count/second&#34;`, `&#34;none&#34;`.
+         * @param unit The unit for the alarm&#39;s associated metric. Valid values: `&#34;seconds&#34;`, `&#34;microseconds&#34;`, `&#34;milliseconds&#34;`, `&#34;bytes&#34;`, `&#34;kilobytes&#34;`, `&#34;megabytes&#34;`, `&#34;gigabytes&#34;`, `&#34;terabytes&#34;`, `&#34;bits&#34;`, `&#34;kilobits&#34;`, `&#34;megabits&#34;`, `&#34;gigabits&#34;`, `&#34;terabits&#34;`, `&#34;percent&#34;`, `&#34;count&#34;`, `&#34;bytes/second&#34;`, `&#34;kilobytes/second&#34;`, `&#34;megabytes/second&#34;`, `&#34;gigabytes/second&#34;`, `&#34;terabytes/second&#34;`, `&#34;bits/second&#34;`, `&#34;kilobits/second&#34;`, `&#34;megabits/second&#34;`, `&#34;gigabits/second&#34;`, `&#34;terabits/second&#34;`, `&#34;count/second&#34;`, `&#34;none&#34;`.
          * 
          * @return builder
          * 
@@ -300,7 +420,7 @@ public final class ElastigroupMultipleMetricsMetricArgs extends com.pulumi.resou
         }
 
         /**
-         * @param unit The unit for the alarm&#39;s associated metric. Valid values: `&#34;percent`, `&#34;seconds&#34;`, `&#34;microseconds&#34;`, `&#34;milliseconds&#34;`, `&#34;bytes&#34;`, `&#34;kilobytes&#34;`, `&#34;megabytes&#34;`, `&#34;gigabytes&#34;`, `&#34;terabytes&#34;`, `&#34;bits&#34;`, `&#34;kilobits&#34;`, `&#34;megabits&#34;`, `&#34;gigabits&#34;`, `&#34;terabits&#34;`, `&#34;count&#34;`, `&#34;bytes/second&#34;`, `&#34;kilobytes/second&#34;`, `&#34;megabytes/second&#34;`, `&#34;gigabytes/second&#34;`, `&#34;terabytes/second&#34;`, `&#34;bits/second&#34;`, `&#34;kilobits/second&#34;`, `&#34;megabits/second&#34;`, `&#34;gigabits/second&#34;`, `&#34;terabits/second&#34;`, `&#34;count/second&#34;`, `&#34;none&#34;`.
+         * @param unit The unit for the alarm&#39;s associated metric. Valid values: `&#34;seconds&#34;`, `&#34;microseconds&#34;`, `&#34;milliseconds&#34;`, `&#34;bytes&#34;`, `&#34;kilobytes&#34;`, `&#34;megabytes&#34;`, `&#34;gigabytes&#34;`, `&#34;terabytes&#34;`, `&#34;bits&#34;`, `&#34;kilobits&#34;`, `&#34;megabits&#34;`, `&#34;gigabits&#34;`, `&#34;terabits&#34;`, `&#34;percent&#34;`, `&#34;count&#34;`, `&#34;bytes/second&#34;`, `&#34;kilobytes/second&#34;`, `&#34;megabytes/second&#34;`, `&#34;gigabytes/second&#34;`, `&#34;terabytes/second&#34;`, `&#34;bits/second&#34;`, `&#34;kilobits/second&#34;`, `&#34;megabits/second&#34;`, `&#34;gigabits/second&#34;`, `&#34;terabits/second&#34;`, `&#34;count/second&#34;`, `&#34;none&#34;`.
          * 
          * @return builder
          * 

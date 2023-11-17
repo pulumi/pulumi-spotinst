@@ -13,7 +13,7 @@ namespace Pulumi.SpotInst.Aws.Inputs
     public sealed class ElastigroupIntegrationEcsAutoscaleDownGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The number of periods over which data is compared to the specified threshold.
+        /// How many evaluation periods should accumulate before a scale down action takes place.
         /// </summary>
         [Input("evaluationPeriods")]
         public Input<int>? EvaluationPeriods { get; set; }

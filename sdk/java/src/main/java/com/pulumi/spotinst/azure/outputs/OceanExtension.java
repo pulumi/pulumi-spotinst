@@ -23,7 +23,7 @@ public final class OceanExtension {
      */
     private @Nullable Boolean minorVersionAutoUpgrade;
     /**
-     * @return Name of the Load Balancer.
+     * @return Extension name.
      * 
      */
     private @Nullable String name;
@@ -33,7 +33,7 @@ public final class OceanExtension {
      */
     private @Nullable String publisher;
     /**
-     * @return The type of load balancer. Supported value: `loadBalancer`
+     * @return Extension type.
      * 
      */
     private @Nullable String type;
@@ -54,7 +54,7 @@ public final class OceanExtension {
         return Optional.ofNullable(this.minorVersionAutoUpgrade);
     }
     /**
-     * @return Name of the Load Balancer.
+     * @return Extension name.
      * 
      */
     public Optional<String> name() {
@@ -68,7 +68,7 @@ public final class OceanExtension {
         return Optional.ofNullable(this.publisher);
     }
     /**
-     * @return The type of load balancer. Supported value: `loadBalancer`
+     * @return Extension type.
      * 
      */
     public Optional<String> type() {

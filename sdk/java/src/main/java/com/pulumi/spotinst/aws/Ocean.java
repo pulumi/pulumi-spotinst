@@ -445,14 +445,14 @@ public class Ocean extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.monitoring);
     }
     /**
-     * Required if type is set to `CLASSIC`
+     * The cluster name.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Required if type is set to `CLASSIC`
+     * @return The cluster name.
      * 
      */
     public Output<String> name() {

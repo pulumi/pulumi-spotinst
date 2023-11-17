@@ -156,14 +156,14 @@ public final class OceanLaunchSpecArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Identifier of the image in AWS. Valid values: any string which is not empty or null.
+     * ID of the image used to launch the instances.
      * 
      */
     @Import(name="imageId")
     private @Nullable Output<String> imageId;
 
     /**
-     * @return Identifier of the image in AWS. Valid values: any string which is not empty or null.
+     * @return ID of the image used to launch the instances.
      * 
      */
     public Optional<Output<String>> imageId() {
@@ -719,7 +719,7 @@ public final class OceanLaunchSpecArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param imageId Identifier of the image in AWS. Valid values: any string which is not empty or null.
+         * @param imageId ID of the image used to launch the instances.
          * 
          * @return builder
          * 
@@ -730,7 +730,7 @@ public final class OceanLaunchSpecArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param imageId Identifier of the image in AWS. Valid values: any string which is not empty or null.
+         * @param imageId ID of the image used to launch the instances.
          * 
          * @return builder
          * 

@@ -51,7 +51,7 @@ public final class MrScalarCoreScalingUpPolicy {
      */
     private @Nullable String maximum;
     /**
-     * @return The name of the metric in CloudWatch which the statement will be based on.
+     * @return The name of the metric, with or without spaces.
      * 
      */
     private String metricName;
@@ -66,17 +66,17 @@ public final class MrScalarCoreScalingUpPolicy {
      */
     private @Nullable String minimum;
     /**
-     * @return Must contain the value: `AWS/ElasticMapReduce`.
+     * @return The namespace for the metric.
      * 
      */
     private String namespace;
     /**
-     * @return The operator to use in order to determine if the policy is applicable. Valid values: `gt` | `gte` | `lt` | `lte`
+     * @return The operator to use. Allowed values are : &#39;gt&#39;, &#39;gte&#39;, &#39;lt&#39; , &#39;lte&#39;.
      * 
      */
     private @Nullable String operator;
     /**
-     * @return The time window in seconds over which the statistic is applied.
+     * @return The granularity, in seconds, of the returned datapoints. Period must be at least 60 seconds and must be a multiple of 60.
      * 
      */
     private @Nullable Integer period;
@@ -86,7 +86,7 @@ public final class MrScalarCoreScalingUpPolicy {
      */
     private String policyName;
     /**
-     * @return The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`
+     * @return The metric statistics to return. For information about specific statistics go to [Statistics](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/index.html?CHAP_TerminologyandKeyConcepts.html#Statistic) in the Amazon CloudWatch Developer Guide.
      * 
      */
     private @Nullable String statistic;
@@ -96,12 +96,12 @@ public final class MrScalarCoreScalingUpPolicy {
      */
     private @Nullable String target;
     /**
-     * @return The value that the specified statistic is compared to.
+     * @return The value against which the specified statistic is compared.
      * 
      */
     private Double threshold;
     /**
-     * @return The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`
+     * @return The unit for the metric.
      * 
      */
     private String unit;
@@ -157,7 +157,7 @@ public final class MrScalarCoreScalingUpPolicy {
         return Optional.ofNullable(this.maximum);
     }
     /**
-     * @return The name of the metric in CloudWatch which the statement will be based on.
+     * @return The name of the metric, with or without spaces.
      * 
      */
     public String metricName() {
@@ -178,21 +178,21 @@ public final class MrScalarCoreScalingUpPolicy {
         return Optional.ofNullable(this.minimum);
     }
     /**
-     * @return Must contain the value: `AWS/ElasticMapReduce`.
+     * @return The namespace for the metric.
      * 
      */
     public String namespace() {
         return this.namespace;
     }
     /**
-     * @return The operator to use in order to determine if the policy is applicable. Valid values: `gt` | `gte` | `lt` | `lte`
+     * @return The operator to use. Allowed values are : &#39;gt&#39;, &#39;gte&#39;, &#39;lt&#39; , &#39;lte&#39;.
      * 
      */
     public Optional<String> operator() {
         return Optional.ofNullable(this.operator);
     }
     /**
-     * @return The time window in seconds over which the statistic is applied.
+     * @return The granularity, in seconds, of the returned datapoints. Period must be at least 60 seconds and must be a multiple of 60.
      * 
      */
     public Optional<Integer> period() {
@@ -206,7 +206,7 @@ public final class MrScalarCoreScalingUpPolicy {
         return this.policyName;
     }
     /**
-     * @return The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`
+     * @return The metric statistics to return. For information about specific statistics go to [Statistics](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/index.html?CHAP_TerminologyandKeyConcepts.html#Statistic) in the Amazon CloudWatch Developer Guide.
      * 
      */
     public Optional<String> statistic() {
@@ -220,14 +220,14 @@ public final class MrScalarCoreScalingUpPolicy {
         return Optional.ofNullable(this.target);
     }
     /**
-     * @return The value that the specified statistic is compared to.
+     * @return The value against which the specified statistic is compared.
      * 
      */
     public Double threshold() {
         return this.threshold;
     }
     /**
-     * @return The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`
+     * @return The unit for the metric.
      * 
      */
     public String unit() {

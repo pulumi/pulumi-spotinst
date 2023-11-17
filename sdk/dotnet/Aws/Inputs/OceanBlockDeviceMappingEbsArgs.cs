@@ -49,7 +49,7 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public Input<string>? KmsKeyId { get; set; }
 
         /// <summary>
-        /// (Optional) String. The Snapshot ID to mount by.
+        /// String. The Snapshot ID to mount by.
         /// </summary>
         [Input("snapshotId")]
         public Input<string>? SnapshotId { get; set; }

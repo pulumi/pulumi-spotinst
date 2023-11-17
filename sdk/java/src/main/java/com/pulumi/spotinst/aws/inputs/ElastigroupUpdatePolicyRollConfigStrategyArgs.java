@@ -19,14 +19,14 @@ public final class ElastigroupUpdatePolicyRollConfigStrategyArgs extends com.pul
     public static final ElastigroupUpdatePolicyRollConfigStrategyArgs Empty = new ElastigroupUpdatePolicyRollConfigStrategyArgs();
 
     /**
-     * The action to take when scale up according to step&#39;s threshold is needed.
+     * Action to take
      * 
      */
     @Import(name="action", required=true)
     private Output<String> action;
 
     /**
-     * @return The action to take when scale up according to step&#39;s threshold is needed.
+     * @return Action to take
      * 
      */
     public Output<String> action() {
@@ -106,7 +106,7 @@ public final class ElastigroupUpdatePolicyRollConfigStrategyArgs extends com.pul
         }
 
         /**
-         * @param action The action to take when scale up according to step&#39;s threshold is needed.
+         * @param action Action to take
          * 
          * @return builder
          * 
@@ -117,7 +117,7 @@ public final class ElastigroupUpdatePolicyRollConfigStrategyArgs extends com.pul
         }
 
         /**
-         * @param action The action to take when scale up according to step&#39;s threshold is needed.
+         * @param action Action to take
          * 
          * @return builder
          * 

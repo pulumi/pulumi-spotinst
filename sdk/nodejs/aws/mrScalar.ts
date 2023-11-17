@@ -327,9 +327,6 @@ export class MrScalar extends pulumi.CustomResource {
      * The minimal amount of instances in core group.
      */
     public readonly coreMinSize!: pulumi.Output<number | undefined>;
-    /**
-     * Each `*_scaling_*_policy` supports the following:
-     */
     public readonly coreScalingDownPolicies!: pulumi.Output<outputs.aws.MrScalarCoreScalingDownPolicy[] | undefined>;
     public readonly coreScalingUpPolicies!: pulumi.Output<outputs.aws.MrScalarCoreScalingUpPolicy[] | undefined>;
     /**
@@ -704,9 +701,6 @@ export interface MrScalarState {
      * The minimal amount of instances in core group.
      */
     coreMinSize?: pulumi.Input<number>;
-    /**
-     * Each `*_scaling_*_policy` supports the following:
-     */
     coreScalingDownPolicies?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarCoreScalingDownPolicy>[]>;
     coreScalingUpPolicies?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarCoreScalingUpPolicy>[]>;
     /**
@@ -936,9 +930,6 @@ export interface MrScalarArgs {
      * The minimal amount of instances in core group.
      */
     coreMinSize?: pulumi.Input<number>;
-    /**
-     * Each `*_scaling_*_policy` supports the following:
-     */
     coreScalingDownPolicies?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarCoreScalingDownPolicy>[]>;
     coreScalingUpPolicies?: pulumi.Input<pulumi.Input<inputs.aws.MrScalarCoreScalingUpPolicy>[]>;
     /**

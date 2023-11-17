@@ -31,14 +31,14 @@ public final class ElastigroupIntegrationRancherArgs extends com.pulumi.resource
     }
 
     /**
-     * The URL for the Nomad master host.
+     * IP or FQDN of one of your swarm managers.
      * 
      */
     @Import(name="masterHost", required=true)
     private Output<String> masterHost;
 
     /**
-     * @return The URL for the Nomad master host.
+     * @return IP or FQDN of one of your swarm managers.
      * 
      */
     public Output<String> masterHost() {
@@ -170,7 +170,7 @@ public final class ElastigroupIntegrationRancherArgs extends com.pulumi.resource
         }
 
         /**
-         * @param masterHost The URL for the Nomad master host.
+         * @param masterHost IP or FQDN of one of your swarm managers.
          * 
          * @return builder
          * 
@@ -181,7 +181,7 @@ public final class ElastigroupIntegrationRancherArgs extends com.pulumi.resource
         }
 
         /**
-         * @param masterHost The URL for the Nomad master host.
+         * @param masterHost IP or FQDN of one of your swarm managers.
          * 
          * @return builder
          * 

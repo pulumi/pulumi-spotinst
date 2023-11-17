@@ -34,14 +34,14 @@ public final class OceanLaunchSpecSchedulingTaskArgs extends com.pulumi.resource
     }
 
     /**
-     * Flag to enable or disable the shutdown hours mechanism. When False, the mechanism is deactivated, and the virtual node group remains in its current state.
+     * Describes whether the task is enabled. When True, the task runs. When False, it does not run.
      * 
      */
     @Import(name="isEnabled", required=true)
     private Output<Boolean> isEnabled;
 
     /**
-     * @return Flag to enable or disable the shutdown hours mechanism. When False, the mechanism is deactivated, and the virtual node group remains in its current state.
+     * @return Describes whether the task is enabled. When True, the task runs. When False, it does not run.
      * 
      */
     public Output<Boolean> isEnabled() {
@@ -127,7 +127,7 @@ public final class OceanLaunchSpecSchedulingTaskArgs extends com.pulumi.resource
         }
 
         /**
-         * @param isEnabled Flag to enable or disable the shutdown hours mechanism. When False, the mechanism is deactivated, and the virtual node group remains in its current state.
+         * @param isEnabled Describes whether the task is enabled. When True, the task runs. When False, it does not run.
          * 
          * @return builder
          * 
@@ -138,7 +138,7 @@ public final class OceanLaunchSpecSchedulingTaskArgs extends com.pulumi.resource
         }
 
         /**
-         * @param isEnabled Flag to enable or disable the shutdown hours mechanism. When False, the mechanism is deactivated, and the virtual node group remains in its current state.
+         * @param isEnabled Describes whether the task is enabled. When True, the task runs. When False, it does not run.
          * 
          * @return builder
          * 

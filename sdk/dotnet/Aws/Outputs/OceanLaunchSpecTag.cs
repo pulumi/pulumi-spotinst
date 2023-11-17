@@ -14,11 +14,11 @@ namespace Pulumi.SpotInst.Aws.Outputs
     public sealed class OceanLaunchSpecTag
     {
         /// <summary>
-        /// The taint key.
+        /// The label key.
         /// </summary>
         public readonly string Key;
         /// <summary>
-        /// The taint value.
+        /// The label value.
         /// </summary>
         public readonly string Value;
 

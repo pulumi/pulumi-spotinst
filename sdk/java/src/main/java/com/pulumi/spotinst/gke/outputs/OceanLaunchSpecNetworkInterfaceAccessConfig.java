@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class OceanLaunchSpecNetworkInterfaceAccessConfig {
     /**
-     * @return The name of the access configuration.
+     * @return The launch specification name.
      * 
      */
     private @Nullable String name;
@@ -24,7 +24,7 @@ public final class OceanLaunchSpecNetworkInterfaceAccessConfig {
 
     private OceanLaunchSpecNetworkInterfaceAccessConfig() {}
     /**
-     * @return The name of the access configuration.
+     * @return The launch specification name.
      * 
      */
     public Optional<String> name() {

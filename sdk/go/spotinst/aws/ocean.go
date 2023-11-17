@@ -163,7 +163,7 @@ type Ocean struct {
 	MinSize pulumi.IntOutput `pulumi:"minSize"`
 	// Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
 	Monitoring pulumi.BoolPtrOutput `pulumi:"monitoring"`
-	// Required if type is set to `CLASSIC`
+	// The cluster name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The region the cluster will run in.
 	Region pulumi.StringPtrOutput `pulumi:"region"`
@@ -274,7 +274,7 @@ type oceanState struct {
 	MinSize *int `pulumi:"minSize"`
 	// Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
 	Monitoring *bool `pulumi:"monitoring"`
-	// Required if type is set to `CLASSIC`
+	// The cluster name.
 	Name *string `pulumi:"name"`
 	// The region the cluster will run in.
 	Region *string `pulumi:"region"`
@@ -350,7 +350,7 @@ type OceanState struct {
 	MinSize pulumi.IntPtrInput
 	// Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
 	Monitoring pulumi.BoolPtrInput
-	// Required if type is set to `CLASSIC`
+	// The cluster name.
 	Name pulumi.StringPtrInput
 	// The region the cluster will run in.
 	Region pulumi.StringPtrInput
@@ -430,7 +430,7 @@ type oceanArgs struct {
 	MinSize *int `pulumi:"minSize"`
 	// Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
 	Monitoring *bool `pulumi:"monitoring"`
-	// Required if type is set to `CLASSIC`
+	// The cluster name.
 	Name *string `pulumi:"name"`
 	// The region the cluster will run in.
 	Region *string `pulumi:"region"`
@@ -507,7 +507,7 @@ type OceanArgs struct {
 	MinSize pulumi.IntPtrInput
 	// Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
 	Monitoring pulumi.BoolPtrInput
-	// Required if type is set to `CLASSIC`
+	// The cluster name.
 	Name pulumi.StringPtrInput
 	// The region the cluster will run in.
 	Region pulumi.StringPtrInput
@@ -735,7 +735,7 @@ func (o OceanOutput) Monitoring() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Ocean) pulumi.BoolPtrOutput { return v.Monitoring }).(pulumi.BoolPtrOutput)
 }
 
-// Required if type is set to `CLASSIC`
+// The cluster name.
 func (o OceanOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Ocean) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

@@ -269,14 +269,14 @@ public class OceanLaunchSpec extends com.pulumi.resources.CustomResource {
         return this.metadatas;
     }
     /**
-     * The name of the access configuration.
+     * The launch specification name.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return The name of the access configuration.
+     * @return The launch specification name.
      * 
      */
     public Output<String> name() {

@@ -33,14 +33,14 @@ public final class MrScalarTerminationPolicyStatementArgs extends com.pulumi.res
     }
 
     /**
-     * The name of the metric in CloudWatch which the statement will be based on.
+     * The name of the metric, with or without spaces.
      * 
      */
     @Import(name="metricName", required=true)
     private Output<String> metricName;
 
     /**
-     * @return The name of the metric in CloudWatch which the statement will be based on.
+     * @return The name of the metric, with or without spaces.
      * 
      */
     public Output<String> metricName() {
@@ -48,14 +48,14 @@ public final class MrScalarTerminationPolicyStatementArgs extends com.pulumi.res
     }
 
     /**
-     * Must contain the value: `AWS/ElasticMapReduce`.
+     * The namespace for the metric.
      * 
      */
     @Import(name="namespace", required=true)
     private Output<String> namespace;
 
     /**
-     * @return Must contain the value: `AWS/ElasticMapReduce`.
+     * @return The namespace for the metric.
      * 
      */
     public Output<String> namespace() {
@@ -63,14 +63,14 @@ public final class MrScalarTerminationPolicyStatementArgs extends com.pulumi.res
     }
 
     /**
-     * The operator to use in order to determine if the policy is applicable. Valid values: `gt` | `gte` | `lt` | `lte`
+     * The operator to use. Allowed values are : &#39;gt&#39;, &#39;gte&#39;, &#39;lt&#39; , &#39;lte&#39;.
      * 
      */
     @Import(name="operator")
     private @Nullable Output<String> operator;
 
     /**
-     * @return The operator to use in order to determine if the policy is applicable. Valid values: `gt` | `gte` | `lt` | `lte`
+     * @return The operator to use. Allowed values are : &#39;gt&#39;, &#39;gte&#39;, &#39;lt&#39; , &#39;lte&#39;.
      * 
      */
     public Optional<Output<String>> operator() {
@@ -78,14 +78,14 @@ public final class MrScalarTerminationPolicyStatementArgs extends com.pulumi.res
     }
 
     /**
-     * The time window in seconds over which the statistic is applied.
+     * The granularity, in seconds, of the returned datapoints. Period must be at least 60 seconds and must be a multiple of 60.
      * 
      */
     @Import(name="period")
     private @Nullable Output<Integer> period;
 
     /**
-     * @return The time window in seconds over which the statistic is applied.
+     * @return The granularity, in seconds, of the returned datapoints. Period must be at least 60 seconds and must be a multiple of 60.
      * 
      */
     public Optional<Output<Integer>> period() {
@@ -93,14 +93,14 @@ public final class MrScalarTerminationPolicyStatementArgs extends com.pulumi.res
     }
 
     /**
-     * The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`
+     * The metric statistics to return. For information about specific statistics go to [Statistics](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/index.html?CHAP_TerminologyandKeyConcepts.html#Statistic) in the Amazon CloudWatch Developer Guide.
      * 
      */
     @Import(name="statistic")
     private @Nullable Output<String> statistic;
 
     /**
-     * @return The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`
+     * @return The metric statistics to return. For information about specific statistics go to [Statistics](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/index.html?CHAP_TerminologyandKeyConcepts.html#Statistic) in the Amazon CloudWatch Developer Guide.
      * 
      */
     public Optional<Output<String>> statistic() {
@@ -108,14 +108,14 @@ public final class MrScalarTerminationPolicyStatementArgs extends com.pulumi.res
     }
 
     /**
-     * The value that the specified statistic is compared to.
+     * The value against which the specified statistic is compared.
      * 
      */
     @Import(name="threshold", required=true)
     private Output<Double> threshold;
 
     /**
-     * @return The value that the specified statistic is compared to.
+     * @return The value against which the specified statistic is compared.
      * 
      */
     public Output<Double> threshold() {
@@ -123,14 +123,14 @@ public final class MrScalarTerminationPolicyStatementArgs extends com.pulumi.res
     }
 
     /**
-     * The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`
+     * The unit for the metric.
      * 
      */
     @Import(name="unit")
     private @Nullable Output<String> unit;
 
     /**
-     * @return The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`
+     * @return The unit for the metric.
      * 
      */
     public Optional<Output<String>> unit() {
@@ -190,7 +190,7 @@ public final class MrScalarTerminationPolicyStatementArgs extends com.pulumi.res
         }
 
         /**
-         * @param metricName The name of the metric in CloudWatch which the statement will be based on.
+         * @param metricName The name of the metric, with or without spaces.
          * 
          * @return builder
          * 
@@ -201,7 +201,7 @@ public final class MrScalarTerminationPolicyStatementArgs extends com.pulumi.res
         }
 
         /**
-         * @param metricName The name of the metric in CloudWatch which the statement will be based on.
+         * @param metricName The name of the metric, with or without spaces.
          * 
          * @return builder
          * 
@@ -211,7 +211,7 @@ public final class MrScalarTerminationPolicyStatementArgs extends com.pulumi.res
         }
 
         /**
-         * @param namespace Must contain the value: `AWS/ElasticMapReduce`.
+         * @param namespace The namespace for the metric.
          * 
          * @return builder
          * 
@@ -222,7 +222,7 @@ public final class MrScalarTerminationPolicyStatementArgs extends com.pulumi.res
         }
 
         /**
-         * @param namespace Must contain the value: `AWS/ElasticMapReduce`.
+         * @param namespace The namespace for the metric.
          * 
          * @return builder
          * 
@@ -232,7 +232,7 @@ public final class MrScalarTerminationPolicyStatementArgs extends com.pulumi.res
         }
 
         /**
-         * @param operator The operator to use in order to determine if the policy is applicable. Valid values: `gt` | `gte` | `lt` | `lte`
+         * @param operator The operator to use. Allowed values are : &#39;gt&#39;, &#39;gte&#39;, &#39;lt&#39; , &#39;lte&#39;.
          * 
          * @return builder
          * 
@@ -243,7 +243,7 @@ public final class MrScalarTerminationPolicyStatementArgs extends com.pulumi.res
         }
 
         /**
-         * @param operator The operator to use in order to determine if the policy is applicable. Valid values: `gt` | `gte` | `lt` | `lte`
+         * @param operator The operator to use. Allowed values are : &#39;gt&#39;, &#39;gte&#39;, &#39;lt&#39; , &#39;lte&#39;.
          * 
          * @return builder
          * 
@@ -253,7 +253,7 @@ public final class MrScalarTerminationPolicyStatementArgs extends com.pulumi.res
         }
 
         /**
-         * @param period The time window in seconds over which the statistic is applied.
+         * @param period The granularity, in seconds, of the returned datapoints. Period must be at least 60 seconds and must be a multiple of 60.
          * 
          * @return builder
          * 
@@ -264,7 +264,7 @@ public final class MrScalarTerminationPolicyStatementArgs extends com.pulumi.res
         }
 
         /**
-         * @param period The time window in seconds over which the statistic is applied.
+         * @param period The granularity, in seconds, of the returned datapoints. Period must be at least 60 seconds and must be a multiple of 60.
          * 
          * @return builder
          * 
@@ -274,7 +274,7 @@ public final class MrScalarTerminationPolicyStatementArgs extends com.pulumi.res
         }
 
         /**
-         * @param statistic The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`
+         * @param statistic The metric statistics to return. For information about specific statistics go to [Statistics](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/index.html?CHAP_TerminologyandKeyConcepts.html#Statistic) in the Amazon CloudWatch Developer Guide.
          * 
          * @return builder
          * 
@@ -285,7 +285,7 @@ public final class MrScalarTerminationPolicyStatementArgs extends com.pulumi.res
         }
 
         /**
-         * @param statistic The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`
+         * @param statistic The metric statistics to return. For information about specific statistics go to [Statistics](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/index.html?CHAP_TerminologyandKeyConcepts.html#Statistic) in the Amazon CloudWatch Developer Guide.
          * 
          * @return builder
          * 
@@ -295,7 +295,7 @@ public final class MrScalarTerminationPolicyStatementArgs extends com.pulumi.res
         }
 
         /**
-         * @param threshold The value that the specified statistic is compared to.
+         * @param threshold The value against which the specified statistic is compared.
          * 
          * @return builder
          * 
@@ -306,7 +306,7 @@ public final class MrScalarTerminationPolicyStatementArgs extends com.pulumi.res
         }
 
         /**
-         * @param threshold The value that the specified statistic is compared to.
+         * @param threshold The value against which the specified statistic is compared.
          * 
          * @return builder
          * 
@@ -316,7 +316,7 @@ public final class MrScalarTerminationPolicyStatementArgs extends com.pulumi.res
         }
 
         /**
-         * @param unit The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`
+         * @param unit The unit for the metric.
          * 
          * @return builder
          * 
@@ -327,7 +327,7 @@ public final class MrScalarTerminationPolicyStatementArgs extends com.pulumi.res
         }
 
         /**
-         * @param unit The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`
+         * @param unit The unit for the metric.
          * 
          * @return builder
          * 

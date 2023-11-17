@@ -201,8 +201,6 @@ type Elastigroup struct {
 	// Valid values: "SPOT", "PREEMPTIBLE". Define the provisioning model of the launched instances. Default value is "PREEMPTIBLE".
 	ProvisioningModel pulumi.StringPtrOutput `pulumi:"provisioningModel"`
 	// Contains scaling policies for scaling the Elastigroup down.
-	//
-	// Each `scaling_*_policy` supports the following:
 	ScalingDownPolicies ElastigroupScalingDownPolicyArrayOutput `pulumi:"scalingDownPolicies"`
 	// Contains scaling policies for scaling the Elastigroup up.
 	ScalingUpPolicies ElastigroupScalingUpPolicyArrayOutput `pulumi:"scalingUpPolicies"`
@@ -323,8 +321,6 @@ type elastigroupState struct {
 	// Valid values: "SPOT", "PREEMPTIBLE". Define the provisioning model of the launched instances. Default value is "PREEMPTIBLE".
 	ProvisioningModel *string `pulumi:"provisioningModel"`
 	// Contains scaling policies for scaling the Elastigroup down.
-	//
-	// Each `scaling_*_policy` supports the following:
 	ScalingDownPolicies []ElastigroupScalingDownPolicy `pulumi:"scalingDownPolicies"`
 	// Contains scaling policies for scaling the Elastigroup up.
 	ScalingUpPolicies []ElastigroupScalingUpPolicy `pulumi:"scalingUpPolicies"`
@@ -413,8 +409,6 @@ type ElastigroupState struct {
 	// Valid values: "SPOT", "PREEMPTIBLE". Define the provisioning model of the launched instances. Default value is "PREEMPTIBLE".
 	ProvisioningModel pulumi.StringPtrInput
 	// Contains scaling policies for scaling the Elastigroup down.
-	//
-	// Each `scaling_*_policy` supports the following:
 	ScalingDownPolicies ElastigroupScalingDownPolicyArrayInput
 	// Contains scaling policies for scaling the Elastigroup up.
 	ScalingUpPolicies ElastigroupScalingUpPolicyArrayInput
@@ -507,8 +501,6 @@ type elastigroupArgs struct {
 	// Valid values: "SPOT", "PREEMPTIBLE". Define the provisioning model of the launched instances. Default value is "PREEMPTIBLE".
 	ProvisioningModel *string `pulumi:"provisioningModel"`
 	// Contains scaling policies for scaling the Elastigroup down.
-	//
-	// Each `scaling_*_policy` supports the following:
 	ScalingDownPolicies []ElastigroupScalingDownPolicy `pulumi:"scalingDownPolicies"`
 	// Contains scaling policies for scaling the Elastigroup up.
 	ScalingUpPolicies []ElastigroupScalingUpPolicy `pulumi:"scalingUpPolicies"`
@@ -598,8 +590,6 @@ type ElastigroupArgs struct {
 	// Valid values: "SPOT", "PREEMPTIBLE". Define the provisioning model of the launched instances. Default value is "PREEMPTIBLE".
 	ProvisioningModel pulumi.StringPtrInput
 	// Contains scaling policies for scaling the Elastigroup down.
-	//
-	// Each `scaling_*_policy` supports the following:
 	ScalingDownPolicies ElastigroupScalingDownPolicyArrayInput
 	// Contains scaling policies for scaling the Elastigroup up.
 	ScalingUpPolicies ElastigroupScalingUpPolicyArrayInput
@@ -855,8 +845,6 @@ func (o ElastigroupOutput) ProvisioningModel() pulumi.StringPtrOutput {
 }
 
 // Contains scaling policies for scaling the Elastigroup down.
-//
-// Each `scaling_*_policy` supports the following:
 func (o ElastigroupOutput) ScalingDownPolicies() ElastigroupScalingDownPolicyArrayOutput {
 	return o.ApplyT(func(v *Elastigroup) ElastigroupScalingDownPolicyArrayOutput { return v.ScalingDownPolicies }).(ElastigroupScalingDownPolicyArrayOutput)
 }

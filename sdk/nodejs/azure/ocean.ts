@@ -98,7 +98,7 @@ export class Ocean extends pulumi.CustomResource {
      */
     public readonly maxPods!: pulumi.Output<number | undefined>;
     /**
-     * Name of the Load Balancer.
+     * The Ocean cluster name.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -110,7 +110,7 @@ export class Ocean extends pulumi.CustomResource {
      */
     public readonly osDisk!: pulumi.Output<outputs.azure.OceanOsDisk | undefined>;
     /**
-     * The Resource Group name of the Load Balancer.
+     * Name of the Azure Resource Group into which VMs will be launched. Cannot be updated.
      */
     public readonly resourceGroupName!: pulumi.Output<string>;
     /**
@@ -268,7 +268,7 @@ export interface OceanState {
      */
     maxPods?: pulumi.Input<number>;
     /**
-     * Name of the Load Balancer.
+     * The Ocean cluster name.
      */
     name?: pulumi.Input<string>;
     /**
@@ -280,7 +280,7 @@ export interface OceanState {
      */
     osDisk?: pulumi.Input<inputs.azure.OceanOsDisk>;
     /**
-     * The Resource Group name of the Load Balancer.
+     * Name of the Azure Resource Group into which VMs will be launched. Cannot be updated.
      */
     resourceGroupName?: pulumi.Input<string>;
     /**
@@ -362,7 +362,7 @@ export interface OceanArgs {
      */
     maxPods?: pulumi.Input<number>;
     /**
-     * Name of the Load Balancer.
+     * The Ocean cluster name.
      */
     name?: pulumi.Input<string>;
     /**
@@ -374,7 +374,7 @@ export interface OceanArgs {
      */
     osDisk?: pulumi.Input<inputs.azure.OceanOsDisk>;
     /**
-     * The Resource Group name of the Load Balancer.
+     * Name of the Azure Resource Group into which VMs will be launched. Cannot be updated.
      */
     resourceGroupName?: pulumi.Input<string>;
     /**

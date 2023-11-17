@@ -12,26 +12,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class OceanLaunchSpecMetadata {
     /**
-     * @return The label key.
+     * @return The metadata key.
      * 
      */
     private @Nullable String key;
     /**
-     * @return The label value.
+     * @return The metadata value.
      * 
      */
     private @Nullable String value;
 
     private OceanLaunchSpecMetadata() {}
     /**
-     * @return The label key.
+     * @return The metadata key.
      * 
      */
     public Optional<String> key() {
         return Optional.ofNullable(this.key);
     }
     /**
-     * @return The label value.
+     * @return The metadata value.
      * 
      */
     public Optional<String> value() {

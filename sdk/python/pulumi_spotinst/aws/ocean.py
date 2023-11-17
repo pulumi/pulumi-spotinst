@@ -78,7 +78,7 @@ class OceanArgs:
         :param pulumi.Input[int] max_size: The upper limit of instances the cluster can scale up to.
         :param pulumi.Input[int] min_size: The lower limit of instances the cluster can scale down to.
         :param pulumi.Input[bool] monitoring: Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
-        :param pulumi.Input[str] name: Required if type is set to `CLASSIC`
+        :param pulumi.Input[str] name: The cluster name.
         :param pulumi.Input[str] region: The region the cluster will run in.
         :param pulumi.Input[Sequence[pulumi.Input['OceanResourceTagSpecificationArgs']]] resource_tag_specifications: Specify which resources should be tagged with Virtual Node Group tags or Ocean tags. If tags are set on the VNG, the resources will be tagged with the VNG tags; otherwise, they will be tagged with the Ocean tags.
         :param pulumi.Input[int] root_volume_size: The size (in Gb) to allocate for the root volume. Minimum `20`.
@@ -453,7 +453,7 @@ class OceanArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Required if type is set to `CLASSIC`
+        The cluster name.
         """
         return pulumi.get(self, "name")
 
@@ -676,7 +676,7 @@ class _OceanState:
         :param pulumi.Input[int] max_size: The upper limit of instances the cluster can scale up to.
         :param pulumi.Input[int] min_size: The lower limit of instances the cluster can scale down to.
         :param pulumi.Input[bool] monitoring: Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
-        :param pulumi.Input[str] name: Required if type is set to `CLASSIC`
+        :param pulumi.Input[str] name: The cluster name.
         :param pulumi.Input[str] region: The region the cluster will run in.
         :param pulumi.Input[Sequence[pulumi.Input['OceanResourceTagSpecificationArgs']]] resource_tag_specifications: Specify which resources should be tagged with Virtual Node Group tags or Ocean tags. If tags are set on the VNG, the resources will be tagged with the VNG tags; otherwise, they will be tagged with the Ocean tags.
         :param pulumi.Input[int] root_volume_size: The size (in Gb) to allocate for the root volume. Minimum `20`.
@@ -1031,7 +1031,7 @@ class _OceanState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Required if type is set to `CLASSIC`
+        The cluster name.
         """
         return pulumi.get(self, "name")
 
@@ -1347,7 +1347,7 @@ class Ocean(pulumi.CustomResource):
         :param pulumi.Input[int] max_size: The upper limit of instances the cluster can scale up to.
         :param pulumi.Input[int] min_size: The lower limit of instances the cluster can scale down to.
         :param pulumi.Input[bool] monitoring: Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
-        :param pulumi.Input[str] name: Required if type is set to `CLASSIC`
+        :param pulumi.Input[str] name: The cluster name.
         :param pulumi.Input[str] region: The region the cluster will run in.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanResourceTagSpecificationArgs']]]] resource_tag_specifications: Specify which resources should be tagged with Virtual Node Group tags or Ocean tags. If tags are set on the VNG, the resources will be tagged with the VNG tags; otherwise, they will be tagged with the Ocean tags.
         :param pulumi.Input[int] root_volume_size: The size (in Gb) to allocate for the root volume. Minimum `20`.
@@ -1614,7 +1614,7 @@ class Ocean(pulumi.CustomResource):
         :param pulumi.Input[int] max_size: The upper limit of instances the cluster can scale up to.
         :param pulumi.Input[int] min_size: The lower limit of instances the cluster can scale down to.
         :param pulumi.Input[bool] monitoring: Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
-        :param pulumi.Input[str] name: Required if type is set to `CLASSIC`
+        :param pulumi.Input[str] name: The cluster name.
         :param pulumi.Input[str] region: The region the cluster will run in.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanResourceTagSpecificationArgs']]]] resource_tag_specifications: Specify which resources should be tagged with Virtual Node Group tags or Ocean tags. If tags are set on the VNG, the resources will be tagged with the VNG tags; otherwise, they will be tagged with the Ocean tags.
         :param pulumi.Input[int] root_volume_size: The size (in Gb) to allocate for the root volume. Minimum `20`.
@@ -1848,7 +1848,7 @@ class Ocean(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Required if type is set to `CLASSIC`
+        The cluster name.
         """
         return pulumi.get(self, "name")
 

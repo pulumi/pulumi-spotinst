@@ -590,12 +590,25 @@ class ElastigroupIntegrationGkeAutoscaleLabelArgs:
     def __init__(__self__, *,
                  key: pulumi.Input[str],
                  value: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] key: The label name.
+        :param pulumi.Input[str] value: The label value.
+               
+               Usage:
+               
+               ```python
+               import pulumi
+               ```
+        """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
     def key(self) -> pulumi.Input[str]:
+        """
+        The label name.
+        """
         return pulumi.get(self, "key")
 
     @key.setter
@@ -605,6 +618,15 @@ class ElastigroupIntegrationGkeAutoscaleLabelArgs:
     @property
     @pulumi.getter
     def value(self) -> pulumi.Input[str]:
+        """
+        The label value.
+
+        Usage:
+
+        ```python
+        import pulumi
+        ```
+        """
         return pulumi.get(self, "value")
 
     @value.setter
@@ -941,6 +963,15 @@ class ElastigroupScalingDownPolicyDimensionArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
                  value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] value: The label value.
+               
+               Usage:
+               
+               ```python
+               import pulumi
+               ```
+        """
         pulumi.set(__self__, "name", name)
         if value is not None:
             pulumi.set(__self__, "value", value)
@@ -957,6 +988,15 @@ class ElastigroupScalingDownPolicyDimensionArgs:
     @property
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The label value.
+
+        Usage:
+
+        ```python
+        import pulumi
+        ```
+        """
         return pulumi.get(self, "value")
 
     @value.setter
@@ -1143,6 +1183,15 @@ class ElastigroupScalingUpPolicyDimensionArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
                  value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] value: The label value.
+               
+               Usage:
+               
+               ```python
+               import pulumi
+               ```
+        """
         pulumi.set(__self__, "name", name)
         if value is not None:
             pulumi.set(__self__, "value", value)
@@ -1159,6 +1208,15 @@ class ElastigroupScalingUpPolicyDimensionArgs:
     @property
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The label value.
+
+        Usage:
+
+        ```python
+        import pulumi
+        ```
+        """
         return pulumi.get(self, "value")
 
     @value.setter
@@ -1650,7 +1708,7 @@ class OceanImportScheduledTaskTaskArgs:
         """
         :param pulumi.Input[str] cron_expression: A valid cron expression. For example : " * * * * * ".The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of ‘frequency’ or ‘cronExpression’ should be used at a time. Required for cluster.scheduling.tasks object
                Example: 0 1 * * *
-        :param pulumi.Input[bool] is_enabled: Enable the Ocean Kubernetes Autoscaler.
+        :param pulumi.Input[bool] is_enabled: Describes whether the task is enabled. When true the task should run when false it should not run. Required for cluster.scheduling.tasks object.
         :param pulumi.Input[str] task_type: Valid values: "clusterRoll". Required for cluster.scheduling.tasks object.
         """
         pulumi.set(__self__, "cron_expression", cron_expression)
@@ -1676,7 +1734,7 @@ class OceanImportScheduledTaskTaskArgs:
     @pulumi.getter(name="isEnabled")
     def is_enabled(self) -> pulumi.Input[bool]:
         """
-        Enable the Ocean Kubernetes Autoscaler.
+        Describes whether the task is enabled. When true the task should run when false it should not run. Required for cluster.scheduling.tasks object.
         """
         return pulumi.get(self, "is_enabled")
 
@@ -2124,8 +2182,8 @@ class OceanLaunchSpecMetadataArgs:
                  key: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] key: The label key.
-        :param pulumi.Input[str] value: The label value.
+        :param pulumi.Input[str] key: The metadata key.
+        :param pulumi.Input[str] value: The metadata value.
         """
         if key is not None:
             pulumi.set(__self__, "key", key)
@@ -2136,7 +2194,7 @@ class OceanLaunchSpecMetadataArgs:
     @pulumi.getter
     def key(self) -> Optional[pulumi.Input[str]]:
         """
-        The label key.
+        The metadata key.
         """
         return pulumi.get(self, "key")
 
@@ -2148,7 +2206,7 @@ class OceanLaunchSpecMetadataArgs:
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[str]]:
         """
-        The label value.
+        The metadata value.
         """
         return pulumi.get(self, "value")
 
@@ -2233,7 +2291,7 @@ class OceanLaunchSpecNetworkInterfaceAccessConfigArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] name: The name of the access configuration.
+        :param pulumi.Input[str] name: The launch specification name.
         :param pulumi.Input[str] type: The type of the access configuration.
         """
         if name is not None:
@@ -2245,7 +2303,7 @@ class OceanLaunchSpecNetworkInterfaceAccessConfigArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the access configuration.
+        The launch specification name.
         """
         return pulumi.get(self, "name")
 
@@ -2577,8 +2635,8 @@ class OceanLaunchSpecTaintArgs:
                  value: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] effect: The effect of the taint. Valid values: `"NoSchedule"`, `"PreferNoSchedule"`, `"NoExecute"`.
-        :param pulumi.Input[str] key: The label key.
-        :param pulumi.Input[str] value: The label value.
+        :param pulumi.Input[str] key: The taint key.
+        :param pulumi.Input[str] value: The taint value.
         """
         if effect is not None:
             pulumi.set(__self__, "effect", effect)
@@ -2603,7 +2661,7 @@ class OceanLaunchSpecTaintArgs:
     @pulumi.getter
     def key(self) -> Optional[pulumi.Input[str]]:
         """
-        The label key.
+        The taint key.
         """
         return pulumi.get(self, "key")
 
@@ -2615,7 +2673,7 @@ class OceanLaunchSpecTaintArgs:
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[str]]:
         """
-        The label value.
+        The taint value.
         """
         return pulumi.get(self, "value")
 

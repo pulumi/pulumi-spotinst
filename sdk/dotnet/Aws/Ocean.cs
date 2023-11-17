@@ -223,7 +223,7 @@ namespace Pulumi.SpotInst.Aws
         public Output<bool?> Monitoring { get; private set; } = null!;
 
         /// <summary>
-        /// Required if type is set to `CLASSIC`
+        /// The cluster name.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -509,7 +509,7 @@ namespace Pulumi.SpotInst.Aws
         public Input<bool>? Monitoring { get; set; }
 
         /// <summary>
-        /// Required if type is set to `CLASSIC`
+        /// The cluster name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -792,7 +792,7 @@ namespace Pulumi.SpotInst.Aws
         public Input<bool>? Monitoring { get; set; }
 
         /// <summary>
-        /// Required if type is set to `CLASSIC`
+        /// The cluster name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

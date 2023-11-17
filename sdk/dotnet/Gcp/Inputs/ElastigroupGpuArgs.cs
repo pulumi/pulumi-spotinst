@@ -31,7 +31,7 @@ namespace Pulumi.SpotInst.Gcp.Inputs
         public Input<int> Count { get; set; } = null!;
 
         /// <summary>
-        /// The type of GPU instance. Valid values: `nvidia-tesla-v100`, `nvidia-tesla-p100`, `nvidia-tesla-k80`.
+        /// Specifies the type of disk, either SCRATCH or PERSISTENT.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;

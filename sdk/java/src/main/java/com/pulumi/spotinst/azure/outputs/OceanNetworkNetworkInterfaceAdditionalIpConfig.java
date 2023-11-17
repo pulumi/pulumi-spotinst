@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class OceanNetworkNetworkInterfaceAdditionalIpConfig {
     /**
-     * @return Name of the Load Balancer.
+     * @return The Ocean cluster name.
      * 
      */
     private @Nullable String name;
@@ -24,7 +24,7 @@ public final class OceanNetworkNetworkInterfaceAdditionalIpConfig {
 
     private OceanNetworkNetworkInterfaceAdditionalIpConfig() {}
     /**
-     * @return Name of the Load Balancer.
+     * @return The Ocean cluster name.
      * 
      */
     public Optional<String> name() {

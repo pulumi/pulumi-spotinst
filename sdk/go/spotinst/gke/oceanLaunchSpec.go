@@ -188,7 +188,7 @@ type OceanLaunchSpec struct {
 	Labels OceanLaunchSpecLabelArrayOutput `pulumi:"labels"`
 	// Cluster's metadata.
 	Metadatas OceanLaunchSpecMetadataArrayOutput `pulumi:"metadatas"`
-	// The name of the access configuration.
+	// The launch specification name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Settings for network interfaces.
 	NetworkInterfaces OceanLaunchSpecNetworkInterfaceArrayOutput `pulumi:"networkInterfaces"`
@@ -266,7 +266,7 @@ type oceanLaunchSpecState struct {
 	Labels []OceanLaunchSpecLabel `pulumi:"labels"`
 	// Cluster's metadata.
 	Metadatas []OceanLaunchSpecMetadata `pulumi:"metadatas"`
-	// The name of the access configuration.
+	// The launch specification name.
 	Name *string `pulumi:"name"`
 	// Settings for network interfaces.
 	NetworkInterfaces []OceanLaunchSpecNetworkInterface `pulumi:"networkInterfaces"`
@@ -312,7 +312,7 @@ type OceanLaunchSpecState struct {
 	Labels OceanLaunchSpecLabelArrayInput
 	// Cluster's metadata.
 	Metadatas OceanLaunchSpecMetadataArrayInput
-	// The name of the access configuration.
+	// The launch specification name.
 	Name pulumi.StringPtrInput
 	// Settings for network interfaces.
 	NetworkInterfaces OceanLaunchSpecNetworkInterfaceArrayInput
@@ -362,7 +362,7 @@ type oceanLaunchSpecArgs struct {
 	Labels []OceanLaunchSpecLabel `pulumi:"labels"`
 	// Cluster's metadata.
 	Metadatas []OceanLaunchSpecMetadata `pulumi:"metadatas"`
-	// The name of the access configuration.
+	// The launch specification name.
 	Name *string `pulumi:"name"`
 	// Settings for network interfaces.
 	NetworkInterfaces []OceanLaunchSpecNetworkInterface `pulumi:"networkInterfaces"`
@@ -409,7 +409,7 @@ type OceanLaunchSpecArgs struct {
 	Labels OceanLaunchSpecLabelArrayInput
 	// Cluster's metadata.
 	Metadatas OceanLaunchSpecMetadataArrayInput
-	// The name of the access configuration.
+	// The launch specification name.
 	Name pulumi.StringPtrInput
 	// Settings for network interfaces.
 	NetworkInterfaces OceanLaunchSpecNetworkInterfaceArrayInput
@@ -558,7 +558,7 @@ func (o OceanLaunchSpecOutput) Metadatas() OceanLaunchSpecMetadataArrayOutput {
 	return o.ApplyT(func(v *OceanLaunchSpec) OceanLaunchSpecMetadataArrayOutput { return v.Metadatas }).(OceanLaunchSpecMetadataArrayOutput)
 }
 
-// The name of the access configuration.
+// The launch specification name.
 func (o OceanLaunchSpecOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *OceanLaunchSpec) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

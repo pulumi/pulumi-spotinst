@@ -17,14 +17,14 @@ public final class ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategyA
     public static final ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategyArgs Empty = new ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategyArgs();
 
     /**
-     * The action to take when scale up according to step&#39;s threshold is needed.
+     * Action to take
      * 
      */
     @Import(name="action")
     private @Nullable Output<String> action;
 
     /**
-     * @return The action to take when scale up according to step&#39;s threshold is needed.
+     * @return Action to take
      * 
      */
     public Optional<Output<String>> action() {
@@ -72,7 +72,7 @@ public final class ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategyA
         }
 
         /**
-         * @param action The action to take when scale up according to step&#39;s threshold is needed.
+         * @param action Action to take
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategyA
         }
 
         /**
-         * @param action The action to take when scale up according to step&#39;s threshold is needed.
+         * @param action Action to take
          * 
          * @return builder
          * 

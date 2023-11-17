@@ -13,21 +13,6 @@ namespace Pulumi.SpotInst.Aws.Outputs
     [OutputType]
     public sealed class ElastigroupIntegrationKubernetes
     {
-        /// <summary>
-        /// The public IP of the DC/OS Master.
-        /// 
-        /// Usage:
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        /// });
-        /// ```
-        /// </summary>
         public readonly string? ApiServer;
         /// <summary>
         /// The amount of time, in seconds, after a scaling activity completes before any further trigger-related scaling activities can start.

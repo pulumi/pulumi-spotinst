@@ -677,9 +677,9 @@ func (o OceanAutoscalerHeadroomPtrOutput) NumOfUnits() pulumi.IntPtrOutput {
 }
 
 type OceanAutoscalerResourceLimits struct {
-	// Maximum amount of Memory (GiB).
+	// The maximum memory in GiB units that can be allocated to the cluster.
 	MaxMemoryGib *int `pulumi:"maxMemoryGib"`
-	// Maximum number of vcpus available.
+	// The maximum cpu in vCPU units that can be allocated to the cluster.
 	MaxVcpu *int `pulumi:"maxVcpu"`
 }
 
@@ -695,9 +695,9 @@ type OceanAutoscalerResourceLimitsInput interface {
 }
 
 type OceanAutoscalerResourceLimitsArgs struct {
-	// Maximum amount of Memory (GiB).
+	// The maximum memory in GiB units that can be allocated to the cluster.
 	MaxMemoryGib pulumi.IntPtrInput `pulumi:"maxMemoryGib"`
-	// Maximum number of vcpus available.
+	// The maximum cpu in vCPU units that can be allocated to the cluster.
 	MaxVcpu pulumi.IntPtrInput `pulumi:"maxVcpu"`
 }
 
@@ -778,12 +778,12 @@ func (o OceanAutoscalerResourceLimitsOutput) ToOceanAutoscalerResourceLimitsPtrO
 	}).(OceanAutoscalerResourceLimitsPtrOutput)
 }
 
-// Maximum amount of Memory (GiB).
+// The maximum memory in GiB units that can be allocated to the cluster.
 func (o OceanAutoscalerResourceLimitsOutput) MaxMemoryGib() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanAutoscalerResourceLimits) *int { return v.MaxMemoryGib }).(pulumi.IntPtrOutput)
 }
 
-// Maximum number of vcpus available.
+// The maximum cpu in vCPU units that can be allocated to the cluster.
 func (o OceanAutoscalerResourceLimitsOutput) MaxVcpu() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanAutoscalerResourceLimits) *int { return v.MaxVcpu }).(pulumi.IntPtrOutput)
 }
@@ -812,7 +812,7 @@ func (o OceanAutoscalerResourceLimitsPtrOutput) Elem() OceanAutoscalerResourceLi
 	}).(OceanAutoscalerResourceLimitsOutput)
 }
 
-// Maximum amount of Memory (GiB).
+// The maximum memory in GiB units that can be allocated to the cluster.
 func (o OceanAutoscalerResourceLimitsPtrOutput) MaxMemoryGib() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanAutoscalerResourceLimits) *int {
 		if v == nil {
@@ -822,7 +822,7 @@ func (o OceanAutoscalerResourceLimitsPtrOutput) MaxMemoryGib() pulumi.IntPtrOutp
 	}).(pulumi.IntPtrOutput)
 }
 
-// Maximum number of vcpus available.
+// The maximum cpu in vCPU units that can be allocated to the cluster.
 func (o OceanAutoscalerResourceLimitsPtrOutput) MaxVcpu() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanAutoscalerResourceLimits) *int {
 		if v == nil {
@@ -964,7 +964,7 @@ type OceanBlockDeviceMappingEbs struct {
 	Iops *int `pulumi:"iops"`
 	// String. Identifier (key ID, key alias, ID ARN, or alias ARN) for a customer managed CMK under which the EBS volume is encrypted.
 	KmsKeyId *string `pulumi:"kmsKeyId"`
-	// (Optional) String. The snapshot ID to mount by.
+	// String. The snapshot ID to mount by.
 	SnapshotId *string `pulumi:"snapshotId"`
 	// The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volumeType` = gp3.
 	Throughput *int `pulumi:"throughput"`
@@ -996,7 +996,7 @@ type OceanBlockDeviceMappingEbsArgs struct {
 	Iops pulumi.IntPtrInput `pulumi:"iops"`
 	// String. Identifier (key ID, key alias, ID ARN, or alias ARN) for a customer managed CMK under which the EBS volume is encrypted.
 	KmsKeyId pulumi.StringPtrInput `pulumi:"kmsKeyId"`
-	// (Optional) String. The snapshot ID to mount by.
+	// String. The snapshot ID to mount by.
 	SnapshotId pulumi.StringPtrInput `pulumi:"snapshotId"`
 	// The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volumeType` = gp3.
 	Throughput pulumi.IntPtrInput `pulumi:"throughput"`
@@ -1110,7 +1110,7 @@ func (o OceanBlockDeviceMappingEbsOutput) KmsKeyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OceanBlockDeviceMappingEbs) *string { return v.KmsKeyId }).(pulumi.StringPtrOutput)
 }
 
-// (Optional) String. The snapshot ID to mount by.
+// String. The snapshot ID to mount by.
 func (o OceanBlockDeviceMappingEbsOutput) SnapshotId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OceanBlockDeviceMappingEbs) *string { return v.SnapshotId }).(pulumi.StringPtrOutput)
 }
@@ -1204,7 +1204,7 @@ func (o OceanBlockDeviceMappingEbsPtrOutput) KmsKeyId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// (Optional) String. The snapshot ID to mount by.
+// String. The snapshot ID to mount by.
 func (o OceanBlockDeviceMappingEbsPtrOutput) SnapshotId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OceanBlockDeviceMappingEbs) *string {
 		if v == nil {
@@ -2258,11 +2258,11 @@ func (o OceanLaunchSpecAttributeArrayOutput) Index(i pulumi.IntInput) OceanLaunc
 }
 
 type OceanLaunchSpecAutoscaleHeadroom struct {
-	// Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+	// Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in CPU units, where 1024 units = 1 vCPU.
 	CpuPerUnit *int `pulumi:"cpuPerUnit"`
 	// Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
 	MemoryPerUnit *int `pulumi:"memoryPerUnit"`
-	// The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
+	// The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
 	NumOfUnits int `pulumi:"numOfUnits"`
 }
 
@@ -2278,11 +2278,11 @@ type OceanLaunchSpecAutoscaleHeadroomInput interface {
 }
 
 type OceanLaunchSpecAutoscaleHeadroomArgs struct {
-	// Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+	// Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in CPU units, where 1024 units = 1 vCPU.
 	CpuPerUnit pulumi.IntPtrInput `pulumi:"cpuPerUnit"`
 	// Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
 	MemoryPerUnit pulumi.IntPtrInput `pulumi:"memoryPerUnit"`
-	// The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
+	// The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
 	NumOfUnits pulumi.IntInput `pulumi:"numOfUnits"`
 }
 
@@ -2337,7 +2337,7 @@ func (o OceanLaunchSpecAutoscaleHeadroomOutput) ToOceanLaunchSpecAutoscaleHeadro
 	return o
 }
 
-// Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+// Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in CPU units, where 1024 units = 1 vCPU.
 func (o OceanLaunchSpecAutoscaleHeadroomOutput) CpuPerUnit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanLaunchSpecAutoscaleHeadroom) *int { return v.CpuPerUnit }).(pulumi.IntPtrOutput)
 }
@@ -2347,7 +2347,7 @@ func (o OceanLaunchSpecAutoscaleHeadroomOutput) MemoryPerUnit() pulumi.IntPtrOut
 	return o.ApplyT(func(v OceanLaunchSpecAutoscaleHeadroom) *int { return v.MemoryPerUnit }).(pulumi.IntPtrOutput)
 }
 
-// The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
+// The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
 func (o OceanLaunchSpecAutoscaleHeadroomOutput) NumOfUnits() pulumi.IntOutput {
 	return o.ApplyT(func(v OceanLaunchSpecAutoscaleHeadroom) int { return v.NumOfUnits }).(pulumi.IntOutput)
 }
@@ -3185,11 +3185,11 @@ func (o OceanLaunchSpecSchedulingTaskArrayOutput) Index(i pulumi.IntInput) Ocean
 }
 
 type OceanLaunchSpecSchedulingTaskTaskHeadroom struct {
-	// Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+	// Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in CPU units, where 1024 units = 1 vCPU.
 	CpuPerUnit *int `pulumi:"cpuPerUnit"`
 	// Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
 	MemoryPerUnit *int `pulumi:"memoryPerUnit"`
-	// The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
+	// The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
 	NumOfUnits int `pulumi:"numOfUnits"`
 }
 
@@ -3205,11 +3205,11 @@ type OceanLaunchSpecSchedulingTaskTaskHeadroomInput interface {
 }
 
 type OceanLaunchSpecSchedulingTaskTaskHeadroomArgs struct {
-	// Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+	// Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in CPU units, where 1024 units = 1 vCPU.
 	CpuPerUnit pulumi.IntPtrInput `pulumi:"cpuPerUnit"`
 	// Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
 	MemoryPerUnit pulumi.IntPtrInput `pulumi:"memoryPerUnit"`
-	// The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
+	// The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
 	NumOfUnits pulumi.IntInput `pulumi:"numOfUnits"`
 }
 
@@ -3264,7 +3264,7 @@ func (o OceanLaunchSpecSchedulingTaskTaskHeadroomOutput) ToOceanLaunchSpecSchedu
 	return o
 }
 
-// Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+// Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in CPU units, where 1024 units = 1 vCPU.
 func (o OceanLaunchSpecSchedulingTaskTaskHeadroomOutput) CpuPerUnit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanLaunchSpecSchedulingTaskTaskHeadroom) *int { return v.CpuPerUnit }).(pulumi.IntPtrOutput)
 }
@@ -3274,7 +3274,7 @@ func (o OceanLaunchSpecSchedulingTaskTaskHeadroomOutput) MemoryPerUnit() pulumi.
 	return o.ApplyT(func(v OceanLaunchSpecSchedulingTaskTaskHeadroom) *int { return v.MemoryPerUnit }).(pulumi.IntPtrOutput)
 }
 
-// The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
+// The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
 func (o OceanLaunchSpecSchedulingTaskTaskHeadroomOutput) NumOfUnits() pulumi.IntOutput {
 	return o.ApplyT(func(v OceanLaunchSpecSchedulingTaskTaskHeadroom) int { return v.NumOfUnits }).(pulumi.IntOutput)
 }
@@ -4319,7 +4319,7 @@ func (o OceanScheduledTaskShutdownHoursPtrOutput) TimeWindows() pulumi.StringArr
 type OceanScheduledTaskTask struct {
 	// A valid cron expression. The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of `frequency` or `cronExpression` should be used at a time. Required for `cluster.scheduling.tasks` object. Example: `0 1 * * *`.
 	CronExpression string `pulumi:"cronExpression"`
-	// Enable the Ocean ECS autoscaler.
+	// Describes whether the task is enabled. When true the task should run when false it should not run. Required for `cluster.scheduling.tasks` object.
 	IsEnabled bool `pulumi:"isEnabled"`
 	// Valid values: "clusterRoll". Required for `cluster.scheduling.tasks object`. Example: `clusterRoll`.
 	//
@@ -4355,7 +4355,7 @@ type OceanScheduledTaskTaskInput interface {
 type OceanScheduledTaskTaskArgs struct {
 	// A valid cron expression. The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of `frequency` or `cronExpression` should be used at a time. Required for `cluster.scheduling.tasks` object. Example: `0 1 * * *`.
 	CronExpression pulumi.StringInput `pulumi:"cronExpression"`
-	// Enable the Ocean ECS autoscaler.
+	// Describes whether the task is enabled. When true the task should run when false it should not run. Required for `cluster.scheduling.tasks` object.
 	IsEnabled pulumi.BoolInput `pulumi:"isEnabled"`
 	// Valid values: "clusterRoll". Required for `cluster.scheduling.tasks object`. Example: `clusterRoll`.
 	//
@@ -4433,7 +4433,7 @@ func (o OceanScheduledTaskTaskOutput) CronExpression() pulumi.StringOutput {
 	return o.ApplyT(func(v OceanScheduledTaskTask) string { return v.CronExpression }).(pulumi.StringOutput)
 }
 
-// Enable the Ocean ECS autoscaler.
+// Describes whether the task is enabled. When true the task should run when false it should not run. Required for `cluster.scheduling.tasks` object.
 func (o OceanScheduledTaskTaskOutput) IsEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v OceanScheduledTaskTask) bool { return v.IsEnabled }).(pulumi.BoolOutput)
 }

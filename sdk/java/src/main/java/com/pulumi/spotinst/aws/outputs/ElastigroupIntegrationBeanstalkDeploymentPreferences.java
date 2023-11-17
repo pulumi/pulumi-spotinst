@@ -19,12 +19,12 @@ public final class ElastigroupIntegrationBeanstalkDeploymentPreferences {
      */
     private @Nullable Boolean automaticRoll;
     /**
-     * @return The percentage size of each batch in the scheduled deployment roll.
+     * @return Percent size of each batch
      * 
      */
     private @Nullable Integer batchSizePercentage;
     /**
-     * @return The period of time (seconds) to wait before checking a batch&#39;s health after it&#39;s deployment.
+     * @return Amount of time to wait between batches
      * 
      */
     private @Nullable Integer gracePeriod;
@@ -43,14 +43,14 @@ public final class ElastigroupIntegrationBeanstalkDeploymentPreferences {
         return Optional.ofNullable(this.automaticRoll);
     }
     /**
-     * @return The percentage size of each batch in the scheduled deployment roll.
+     * @return Percent size of each batch
      * 
      */
     public Optional<Integer> batchSizePercentage() {
         return Optional.ofNullable(this.batchSizePercentage);
     }
     /**
-     * @return The period of time (seconds) to wait before checking a batch&#39;s health after it&#39;s deployment.
+     * @return Amount of time to wait between batches
      * 
      */
     public Optional<Integer> gracePeriod() {

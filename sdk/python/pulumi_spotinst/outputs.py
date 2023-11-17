@@ -517,7 +517,7 @@ class HealthCheckCheck(dict):
         """
         :param int healthy: The number of consecutive successful health checks that must occur before declaring an instance healthy.
         :param int interval: The amount of time (in seconds) between each health check (minimum: 10).
-        :param int port: The port of the Spotinst HCS (default: 80).
+        :param int port: The port to use to connect with the instance.
         :param str protocol: The protocol to use to connect with the instance. Valid values: http, https.
         :param int unhealthy: The number of consecutive failed health checks that must occur before declaring an instance unhealthy.
         :param str endpoint: The destination for the request.
@@ -557,7 +557,7 @@ class HealthCheckCheck(dict):
     @pulumi.getter
     def port(self) -> int:
         """
-        The port of the Spotinst HCS (default: 80).
+        The port to use to connect with the instance.
         """
         return pulumi.get(self, "port")
 

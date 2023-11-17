@@ -344,14 +344,14 @@ public final class OceanArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Required if type is set to `CLASSIC`
+     * The cluster name.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Required if type is set to `CLASSIC`
+     * @return The cluster name.
      * 
      */
     public Optional<Output<String>> name() {
@@ -1103,7 +1103,7 @@ public final class OceanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Required if type is set to `CLASSIC`
+         * @param name The cluster name.
          * 
          * @return builder
          * 
@@ -1114,7 +1114,7 @@ public final class OceanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Required if type is set to `CLASSIC`
+         * @param name The cluster name.
          * 
          * @return builder
          * 

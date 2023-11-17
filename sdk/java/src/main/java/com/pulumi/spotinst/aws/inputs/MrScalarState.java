@@ -259,17 +259,9 @@ public final class MrScalarState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.coreMinSize);
     }
 
-    /**
-     * Each `*_scaling_*_policy` supports the following:
-     * 
-     */
     @Import(name="coreScalingDownPolicies")
     private @Nullable Output<List<MrScalarCoreScalingDownPolicyArgs>> coreScalingDownPolicies;
 
-    /**
-     * @return Each `*_scaling_*_policy` supports the following:
-     * 
-     */
     public Optional<Output<List<MrScalarCoreScalingDownPolicyArgs>>> coreScalingDownPolicies() {
         return Optional.ofNullable(this.coreScalingDownPolicies);
     }
@@ -1384,33 +1376,15 @@ public final class MrScalarState extends com.pulumi.resources.ResourceArgs {
             return coreMinSize(Output.of(coreMinSize));
         }
 
-        /**
-         * @param coreScalingDownPolicies Each `*_scaling_*_policy` supports the following:
-         * 
-         * @return builder
-         * 
-         */
         public Builder coreScalingDownPolicies(@Nullable Output<List<MrScalarCoreScalingDownPolicyArgs>> coreScalingDownPolicies) {
             $.coreScalingDownPolicies = coreScalingDownPolicies;
             return this;
         }
 
-        /**
-         * @param coreScalingDownPolicies Each `*_scaling_*_policy` supports the following:
-         * 
-         * @return builder
-         * 
-         */
         public Builder coreScalingDownPolicies(List<MrScalarCoreScalingDownPolicyArgs> coreScalingDownPolicies) {
             return coreScalingDownPolicies(Output.of(coreScalingDownPolicies));
         }
 
-        /**
-         * @param coreScalingDownPolicies Each `*_scaling_*_policy` supports the following:
-         * 
-         * @return builder
-         * 
-         */
         public Builder coreScalingDownPolicies(MrScalarCoreScalingDownPolicyArgs... coreScalingDownPolicies) {
             return coreScalingDownPolicies(List.of(coreScalingDownPolicies));
         }

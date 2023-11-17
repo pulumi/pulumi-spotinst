@@ -69,14 +69,14 @@ public final class HealthCheckCheckArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The port of the Spotinst HCS (default: 80).
+     * The port to use to connect with the instance.
      * 
      */
     @Import(name="port", required=true)
     private Output<Integer> port;
 
     /**
-     * @return The port of the Spotinst HCS (default: 80).
+     * @return The port to use to connect with the instance.
      * 
      */
     public Output<Integer> port() {
@@ -240,7 +240,7 @@ public final class HealthCheckCheckArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param port The port of the Spotinst HCS (default: 80).
+         * @param port The port to use to connect with the instance.
          * 
          * @return builder
          * 
@@ -251,7 +251,7 @@ public final class HealthCheckCheckArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param port The port of the Spotinst HCS (default: 80).
+         * @param port The port to use to connect with the instance.
          * 
          * @return builder
          * 

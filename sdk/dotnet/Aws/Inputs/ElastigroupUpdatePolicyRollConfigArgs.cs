@@ -13,13 +13,13 @@ namespace Pulumi.SpotInst.Aws.Inputs
     public sealed class ElastigroupUpdatePolicyRollConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The percentage size of each batch in the scheduled deployment roll.
+        /// Percent size of each batch
         /// </summary>
         [Input("batchSizePercentage", required: true)]
         public Input<int> BatchSizePercentage { get; set; } = null!;
 
         /// <summary>
-        /// The period of time (seconds) to wait before checking a batch's health after it's deployment.
+        /// Amount of time to wait between batches
         /// </summary>
         [Input("gracePeriod")]
         public Input<int>? GracePeriod { get; set; }

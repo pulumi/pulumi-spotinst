@@ -540,17 +540,9 @@ public class MrScalar extends com.pulumi.resources.CustomResource {
     public Output<Optional<Integer>> coreMinSize() {
         return Codegen.optional(this.coreMinSize);
     }
-    /**
-     * Each `*_scaling_*_policy` supports the following:
-     * 
-     */
     @Export(name="coreScalingDownPolicies", refs={List.class,MrScalarCoreScalingDownPolicy.class}, tree="[0,1]")
     private Output</* @Nullable */ List<MrScalarCoreScalingDownPolicy>> coreScalingDownPolicies;
 
-    /**
-     * @return Each `*_scaling_*_policy` supports the following:
-     * 
-     */
     public Output<Optional<List<MrScalarCoreScalingDownPolicy>>> coreScalingDownPolicies() {
         return Codegen.optional(this.coreScalingDownPolicies);
     }

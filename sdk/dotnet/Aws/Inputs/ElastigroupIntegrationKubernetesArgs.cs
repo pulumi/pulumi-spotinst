@@ -12,21 +12,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
 
     public sealed class ElastigroupIntegrationKubernetesArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The public IP of the DC/OS Master.
-        /// 
-        /// Usage:
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        /// });
-        /// ```
-        /// </summary>
         [Input("apiServer")]
         public Input<string>? ApiServer { get; set; }
 

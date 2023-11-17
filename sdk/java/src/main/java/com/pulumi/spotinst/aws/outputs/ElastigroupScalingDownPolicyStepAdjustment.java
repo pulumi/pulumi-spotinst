@@ -11,7 +11,7 @@ import java.util.Objects;
 @CustomType
 public final class ElastigroupScalingDownPolicyStepAdjustment {
     /**
-     * @return The action to take when scale up according to step&#39;s threshold is needed.
+     * @return Action to take
      * 
      */
     private ElastigroupScalingDownPolicyStepAdjustmentAction action;
@@ -29,7 +29,7 @@ public final class ElastigroupScalingDownPolicyStepAdjustment {
 
     private ElastigroupScalingDownPolicyStepAdjustment() {}
     /**
-     * @return The action to take when scale up according to step&#39;s threshold is needed.
+     * @return Action to take
      * 
      */
     public ElastigroupScalingDownPolicyStepAdjustmentAction action() {

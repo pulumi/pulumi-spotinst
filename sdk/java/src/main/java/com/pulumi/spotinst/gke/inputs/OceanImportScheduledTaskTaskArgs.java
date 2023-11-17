@@ -35,14 +35,14 @@ public final class OceanImportScheduledTaskTaskArgs extends com.pulumi.resources
     }
 
     /**
-     * Enable the Ocean Kubernetes Autoscaler.
+     * Describes whether the task is enabled. When true the task should run when false it should not run. Required for cluster.scheduling.tasks object.
      * 
      */
     @Import(name="isEnabled", required=true)
     private Output<Boolean> isEnabled;
 
     /**
-     * @return Enable the Ocean Kubernetes Autoscaler.
+     * @return Describes whether the task is enabled. When true the task should run when false it should not run. Required for cluster.scheduling.tasks object.
      * 
      */
     public Output<Boolean> isEnabled() {
@@ -122,7 +122,7 @@ public final class OceanImportScheduledTaskTaskArgs extends com.pulumi.resources
         }
 
         /**
-         * @param isEnabled Enable the Ocean Kubernetes Autoscaler.
+         * @param isEnabled Describes whether the task is enabled. When true the task should run when false it should not run. Required for cluster.scheduling.tasks object.
          * 
          * @return builder
          * 
@@ -133,7 +133,7 @@ public final class OceanImportScheduledTaskTaskArgs extends com.pulumi.resources
         }
 
         /**
-         * @param isEnabled Enable the Ocean Kubernetes Autoscaler.
+         * @param isEnabled Describes whether the task is enabled. When true the task should run when false it should not run. Required for cluster.scheduling.tasks object.
          * 
          * @return builder
          * 

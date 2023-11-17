@@ -18,7 +18,7 @@ namespace Pulumi.SpotInst.Aws.Outputs
         /// </summary>
         public readonly string AccessKey;
         /// <summary>
-        /// The URL for the Nomad master host.
+        /// IP or FQDN of one of your swarm managers.
         /// </summary>
         public readonly string MasterHost;
         /// <summary>

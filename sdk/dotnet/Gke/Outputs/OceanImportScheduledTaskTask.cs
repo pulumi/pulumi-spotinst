@@ -19,7 +19,7 @@ namespace Pulumi.SpotInst.Gke.Outputs
         /// </summary>
         public readonly string CronExpression;
         /// <summary>
-        /// Enable the Ocean Kubernetes Autoscaler.
+        /// Describes whether the task is enabled. When true the task should run when false it should not run. Required for cluster.scheduling.tasks object.
         /// </summary>
         public readonly bool IsEnabled;
         public readonly Outputs.OceanImportScheduledTaskTaskTaskParameters? TaskParameters;

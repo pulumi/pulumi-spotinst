@@ -61,7 +61,7 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public Input<string>? Maximum { get; set; }
 
         /// <summary>
-        /// The name of the metric in CloudWatch which the statement will be based on.
+        /// The name of the metric, with or without spaces.
         /// </summary>
         [Input("metricName", required: true)]
         public Input<string> MetricName { get; set; } = null!;
@@ -79,19 +79,19 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public Input<string>? Minimum { get; set; }
 
         /// <summary>
-        /// Must contain the value: `AWS/ElasticMapReduce`.
+        /// The namespace for the metric.
         /// </summary>
         [Input("namespace", required: true)]
         public Input<string> Namespace { get; set; } = null!;
 
         /// <summary>
-        /// The operator to use in order to determine if the policy is applicable. Valid values: `gt` | `gte` | `lt` | `lte`
+        /// The operator to use. Allowed values are : 'gt', 'gte', 'lt' , 'lte'.
         /// </summary>
         [Input("operator")]
         public Input<string>? Operator { get; set; }
 
         /// <summary>
-        /// The time window in seconds over which the statistic is applied.
+        /// The granularity, in seconds, of the returned datapoints. Period must be at least 60 seconds and must be a multiple of 60.
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
@@ -103,7 +103,7 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public Input<string> PolicyName { get; set; } = null!;
 
         /// <summary>
-        /// The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`
+        /// The metric statistics to return. For information about specific statistics go to [Statistics](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/index.html?CHAP_TerminologyandKeyConcepts.html#Statistic) in the Amazon CloudWatch Developer Guide.
         /// </summary>
         [Input("statistic")]
         public Input<string>? Statistic { get; set; }
@@ -115,13 +115,13 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public Input<string>? Target { get; set; }
 
         /// <summary>
-        /// The value that the specified statistic is compared to.
+        /// The value against which the specified statistic is compared.
         /// </summary>
         [Input("threshold", required: true)]
         public Input<double> Threshold { get; set; } = null!;
 
         /// <summary>
-        /// The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`
+        /// The unit for the metric.
         /// </summary>
         [Input("unit", required: true)]
         public Input<string> Unit { get; set; } = null!;

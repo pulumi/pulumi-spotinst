@@ -14,14 +14,14 @@ public final class OceanManagedServiceIdentityArgs extends com.pulumi.resources.
     public static final OceanManagedServiceIdentityArgs Empty = new OceanManagedServiceIdentityArgs();
 
     /**
-     * Name of the Load Balancer.
+     * Name of the Managed Service Identity.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return Name of the Load Balancer.
+     * @return Name of the Managed Service Identity.
      * 
      */
     public Output<String> name() {
@@ -29,14 +29,14 @@ public final class OceanManagedServiceIdentityArgs extends com.pulumi.resources.
     }
 
     /**
-     * The Resource Group name of the Load Balancer.
+     * Name of the Azure Resource Group where the Managed Service Identity is located.
      * 
      */
     @Import(name="resourceGroupName", required=true)
     private Output<String> resourceGroupName;
 
     /**
-     * @return The Resource Group name of the Load Balancer.
+     * @return Name of the Azure Resource Group where the Managed Service Identity is located.
      * 
      */
     public Output<String> resourceGroupName() {
@@ -69,7 +69,7 @@ public final class OceanManagedServiceIdentityArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param name Name of the Load Balancer.
+         * @param name Name of the Managed Service Identity.
          * 
          * @return builder
          * 
@@ -80,7 +80,7 @@ public final class OceanManagedServiceIdentityArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param name Name of the Load Balancer.
+         * @param name Name of the Managed Service Identity.
          * 
          * @return builder
          * 
@@ -90,7 +90,7 @@ public final class OceanManagedServiceIdentityArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param resourceGroupName The Resource Group name of the Load Balancer.
+         * @param resourceGroupName Name of the Azure Resource Group where the Managed Service Identity is located.
          * 
          * @return builder
          * 
@@ -101,7 +101,7 @@ public final class OceanManagedServiceIdentityArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param resourceGroupName The Resource Group name of the Load Balancer.
+         * @param resourceGroupName Name of the Azure Resource Group where the Managed Service Identity is located.
          * 
          * @return builder
          * 

@@ -147,7 +147,7 @@ class ElastigroupImageCustomArgs:
                  image_name: pulumi.Input[str],
                  resource_group_name: pulumi.Input[str]):
         """
-        :param pulumi.Input[str] resource_group_name: Name of the Azure Resource Group where the Managed Service Identity is located.
+        :param pulumi.Input[str] resource_group_name: Name of the Resource Group for Elastigroup.
         """
         pulumi.set(__self__, "image_name", image_name)
         pulumi.set(__self__, "resource_group_name", resource_group_name)
@@ -165,7 +165,7 @@ class ElastigroupImageCustomArgs:
     @pulumi.getter(name="resourceGroupName")
     def resource_group_name(self) -> pulumi.Input[str]:
         """
-        Name of the Azure Resource Group where the Managed Service Identity is located.
+        Name of the Resource Group for Elastigroup.
         """
         return pulumi.get(self, "resource_group_name")
 
@@ -342,8 +342,8 @@ class ElastigroupManagedServiceIdentityArgs:
                  name: pulumi.Input[str],
                  resource_group_name: pulumi.Input[str]):
         """
-        :param pulumi.Input[str] name: Name of the Managed Service Identity.
-        :param pulumi.Input[str] resource_group_name: Name of the Azure Resource Group where the Managed Service Identity is located.
+        :param pulumi.Input[str] name: The group name.
+        :param pulumi.Input[str] resource_group_name: Name of the Resource Group for Elastigroup.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "resource_group_name", resource_group_name)
@@ -352,7 +352,7 @@ class ElastigroupManagedServiceIdentityArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        Name of the Managed Service Identity.
+        The group name.
         """
         return pulumi.get(self, "name")
 
@@ -364,7 +364,7 @@ class ElastigroupManagedServiceIdentityArgs:
     @pulumi.getter(name="resourceGroupName")
     def resource_group_name(self) -> pulumi.Input[str]:
         """
-        Name of the Azure Resource Group where the Managed Service Identity is located.
+        Name of the Resource Group for Elastigroup.
         """
         return pulumi.get(self, "resource_group_name")
 
@@ -382,7 +382,7 @@ class ElastigroupNetworkArgs:
                  additional_ip_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupNetworkAdditionalIpConfigArgs']]]] = None,
                  assign_public_ip: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[str] resource_group_name: Name of the Azure Resource Group where the Managed Service Identity is located.
+        :param pulumi.Input[str] resource_group_name: Name of the Resource Group for Elastigroup.
         """
         pulumi.set(__self__, "resource_group_name", resource_group_name)
         pulumi.set(__self__, "subnet_name", subnet_name)
@@ -396,7 +396,7 @@ class ElastigroupNetworkArgs:
     @pulumi.getter(name="resourceGroupName")
     def resource_group_name(self) -> pulumi.Input[str]:
         """
-        Name of the Azure Resource Group where the Managed Service Identity is located.
+        Name of the Resource Group for Elastigroup.
         """
         return pulumi.get(self, "resource_group_name")
 
@@ -447,7 +447,7 @@ class ElastigroupNetworkAdditionalIpConfigArgs:
                  name: pulumi.Input[str],
                  private_ip_version: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] name: Name of the Managed Service Identity.
+        :param pulumi.Input[str] name: The group name.
         """
         pulumi.set(__self__, "name", name)
         if private_ip_version is not None:
@@ -457,7 +457,7 @@ class ElastigroupNetworkAdditionalIpConfigArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        Name of the Managed Service Identity.
+        The group name.
         """
         return pulumi.get(self, "name")
 
@@ -698,7 +698,7 @@ class ElastigroupScalingDownPolicyDimensionArgs:
                  name: pulumi.Input[str],
                  value: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] name: Name of the Managed Service Identity.
+        :param pulumi.Input[str] name: The group name.
         :param pulumi.Input[str] value: Tag Value for Vms in Elastigroup.
         """
         pulumi.set(__self__, "name", name)
@@ -709,7 +709,7 @@ class ElastigroupScalingDownPolicyDimensionArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        Name of the Managed Service Identity.
+        The group name.
         """
         return pulumi.get(self, "name")
 
@@ -953,7 +953,7 @@ class ElastigroupScalingUpPolicyDimensionArgs:
                  name: pulumi.Input[str],
                  value: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] name: Name of the Managed Service Identity.
+        :param pulumi.Input[str] name: The group name.
         :param pulumi.Input[str] value: Tag Value for Vms in Elastigroup.
         """
         pulumi.set(__self__, "name", name)
@@ -964,7 +964,7 @@ class ElastigroupScalingUpPolicyDimensionArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        Name of the Managed Service Identity.
+        The group name.
         """
         return pulumi.get(self, "name")
 
@@ -1423,9 +1423,9 @@ class OceanExtensionArgs:
         """
         :param pulumi.Input[str] api_version: API version of the extension.
         :param pulumi.Input[bool] minor_version_auto_upgrade: Toggles whether auto upgrades are allowed.
-        :param pulumi.Input[str] name: Name of the Load Balancer.
+        :param pulumi.Input[str] name: Extension name.
         :param pulumi.Input[str] publisher: Image publisher.
-        :param pulumi.Input[str] type: The type of load balancer. Supported value: `loadBalancer`
+        :param pulumi.Input[str] type: Extension type.
         """
         if api_version is not None:
             pulumi.set(__self__, "api_version", api_version)
@@ -1466,7 +1466,7 @@ class OceanExtensionArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the Load Balancer.
+        Extension name.
         """
         return pulumi.get(self, "name")
 
@@ -1490,7 +1490,7 @@ class OceanExtensionArgs:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of load balancer. Supported value: `loadBalancer`
+        Extension type.
         """
         return pulumi.get(self, "type")
 
@@ -1709,8 +1709,8 @@ class OceanManagedServiceIdentityArgs:
                  name: pulumi.Input[str],
                  resource_group_name: pulumi.Input[str]):
         """
-        :param pulumi.Input[str] name: Name of the Load Balancer.
-        :param pulumi.Input[str] resource_group_name: The Resource Group name of the Load Balancer.
+        :param pulumi.Input[str] name: Name of the Managed Service Identity.
+        :param pulumi.Input[str] resource_group_name: Name of the Azure Resource Group where the Managed Service Identity is located.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "resource_group_name", resource_group_name)
@@ -1719,7 +1719,7 @@ class OceanManagedServiceIdentityArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        Name of the Load Balancer.
+        Name of the Managed Service Identity.
         """
         return pulumi.get(self, "name")
 
@@ -1731,7 +1731,7 @@ class OceanManagedServiceIdentityArgs:
     @pulumi.getter(name="resourceGroupName")
     def resource_group_name(self) -> pulumi.Input[str]:
         """
-        The Resource Group name of the Load Balancer.
+        Name of the Azure Resource Group where the Managed Service Identity is located.
         """
         return pulumi.get(self, "resource_group_name")
 
@@ -1748,7 +1748,7 @@ class OceanNetworkArgs:
                  virtual_network_name: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['OceanNetworkNetworkInterfaceArgs']]] network_interfaces: A list of virtual network interfaces. The publicIpSku must be identical between all the network interfaces. One network interface must be set as the primary.
-        :param pulumi.Input[str] resource_group_name: The Resource Group name of the Load Balancer.
+        :param pulumi.Input[str] resource_group_name: Vnet resource group name.
         :param pulumi.Input[str] virtual_network_name: Virtual network.
         """
         if network_interfaces is not None:
@@ -1774,7 +1774,7 @@ class OceanNetworkArgs:
     @pulumi.getter(name="resourceGroupName")
     def resource_group_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The Resource Group name of the Load Balancer.
+        Vnet resource group name.
         """
         return pulumi.get(self, "resource_group_name")
 
@@ -1884,7 +1884,7 @@ class OceanNetworkNetworkInterfaceAdditionalIpConfigArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  private_ip_version: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] name: Name of the Load Balancer.
+        :param pulumi.Input[str] name: The Ocean cluster name.
         :param pulumi.Input[str] private_ip_version: Supported values: `IPv4`, `IPv6`.
         """
         if name is not None:
@@ -1896,7 +1896,7 @@ class OceanNetworkNetworkInterfaceAdditionalIpConfigArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the Load Balancer.
+        The Ocean cluster name.
         """
         return pulumi.get(self, "name")
 
@@ -1923,8 +1923,8 @@ class OceanNetworkNetworkInterfaceSecurityGroupArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  resource_group_name: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] name: Name of the Load Balancer.
-        :param pulumi.Input[str] resource_group_name: The Resource Group name of the Load Balancer.
+        :param pulumi.Input[str] name: The Ocean cluster name.
+        :param pulumi.Input[str] resource_group_name: Name of the Azure Resource Group into which VMs will be launched. Cannot be updated.
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -1935,7 +1935,7 @@ class OceanNetworkNetworkInterfaceSecurityGroupArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the Load Balancer.
+        The Ocean cluster name.
         """
         return pulumi.get(self, "name")
 
@@ -1947,7 +1947,7 @@ class OceanNetworkNetworkInterfaceSecurityGroupArgs:
     @pulumi.getter(name="resourceGroupName")
     def resource_group_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The Resource Group name of the Load Balancer.
+        Name of the Azure Resource Group into which VMs will be launched. Cannot be updated.
         """
         return pulumi.get(self, "resource_group_name")
 
@@ -2686,7 +2686,7 @@ class OceanOsDiskArgs:
                  type: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[int] size_gb: The size of the OS disk in GB.
-        :param pulumi.Input[str] type: The type of load balancer. Supported value: `loadBalancer`
+        :param pulumi.Input[str] type: The type of the OS disk. Supported values: `Standard_LRS`, `Premium_LRS`, `StandardSSD_LRS`.
         """
         pulumi.set(__self__, "size_gb", size_gb)
         if type is not None:
@@ -2708,7 +2708,7 @@ class OceanOsDiskArgs:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of load balancer. Supported value: `loadBalancer`
+        The type of the OS disk. Supported values: `Standard_LRS`, `Premium_LRS`, `StandardSSD_LRS`.
         """
         return pulumi.get(self, "type")
 
@@ -2906,8 +2906,8 @@ class OceanVirtualNodeGroupLabelArgs:
                  key: pulumi.Input[str],
                  value: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] key: Tag Key for Vms in the cluster.
-        :param pulumi.Input[str] value: Tag Value for VMs in the cluster.
+        :param pulumi.Input[str] key: The label key.
+        :param pulumi.Input[str] value: The label value.
         """
         pulumi.set(__self__, "key", key)
         if value is not None:
@@ -2917,7 +2917,7 @@ class OceanVirtualNodeGroupLabelArgs:
     @pulumi.getter
     def key(self) -> pulumi.Input[str]:
         """
-        Tag Key for Vms in the cluster.
+        The label key.
         """
         return pulumi.get(self, "key")
 
@@ -2929,7 +2929,7 @@ class OceanVirtualNodeGroupLabelArgs:
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[str]]:
         """
-        Tag Value for VMs in the cluster.
+        The label value.
         """
         return pulumi.get(self, "value")
 
@@ -3117,8 +3117,8 @@ class OceanVirtualNodeGroupTaintArgs:
                  value: pulumi.Input[str]):
         """
         :param pulumi.Input[str] effect: The effect of the taint. Valid values: `"NoSchedule"`, `"PreferNoSchedule"`, `"NoExecute"`, `"PreferNoExecute"`.
-        :param pulumi.Input[str] key: Tag Key for Vms in the cluster.
-        :param pulumi.Input[str] value: Tag Value for VMs in the cluster.
+        :param pulumi.Input[str] key: The taint key.
+        :param pulumi.Input[str] value: The taint value.
         """
         pulumi.set(__self__, "effect", effect)
         pulumi.set(__self__, "key", key)
@@ -3140,7 +3140,7 @@ class OceanVirtualNodeGroupTaintArgs:
     @pulumi.getter
     def key(self) -> pulumi.Input[str]:
         """
-        Tag Key for Vms in the cluster.
+        The taint key.
         """
         return pulumi.get(self, "key")
 
@@ -3152,7 +3152,7 @@ class OceanVirtualNodeGroupTaintArgs:
     @pulumi.getter
     def value(self) -> pulumi.Input[str]:
         """
-        Tag Value for VMs in the cluster.
+        The taint value.
         """
         return pulumi.get(self, "value")
 

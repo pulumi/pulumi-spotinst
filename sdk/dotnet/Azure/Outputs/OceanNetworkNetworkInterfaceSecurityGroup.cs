@@ -14,11 +14,11 @@ namespace Pulumi.SpotInst.Azure.Outputs
     public sealed class OceanNetworkNetworkInterfaceSecurityGroup
     {
         /// <summary>
-        /// Name of the Load Balancer.
+        /// The Ocean cluster name.
         /// </summary>
         public readonly string? Name;
         /// <summary>
-        /// The Resource Group name of the Load Balancer.
+        /// Name of the Azure Resource Group into which VMs will be launched. Cannot be updated.
         /// </summary>
         public readonly string? ResourceGroupName;
 

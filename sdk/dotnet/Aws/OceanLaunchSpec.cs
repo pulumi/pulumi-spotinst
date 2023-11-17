@@ -286,7 +286,7 @@ namespace Pulumi.SpotInst.Aws
         public Output<string?> IamInstanceProfile { get; private set; } = null!;
 
         /// <summary>
-        /// Identifier of the image in AWS. Valid values: any string which is not empty or null.
+        /// ID of the image used to launch the instances.
         /// </summary>
         [Output("imageId")]
         public Output<string?> ImageId { get; private set; } = null!;
@@ -529,7 +529,7 @@ namespace Pulumi.SpotInst.Aws
         public Input<string>? IamInstanceProfile { get; set; }
 
         /// <summary>
-        /// Identifier of the image in AWS. Valid values: any string which is not empty or null.
+        /// ID of the image used to launch the instances.
         /// </summary>
         [Input("imageId")]
         public Input<string>? ImageId { get; set; }
@@ -798,7 +798,7 @@ namespace Pulumi.SpotInst.Aws
         public Input<string>? IamInstanceProfile { get; set; }
 
         /// <summary>
-        /// Identifier of the image in AWS. Valid values: any string which is not empty or null.
+        /// ID of the image used to launch the instances.
         /// </summary>
         [Input("imageId")]
         public Input<string>? ImageId { get; set; }

@@ -15,12 +15,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ElastigroupUpdatePolicyRollConfig {
     /**
-     * @return The percentage size of each batch in the scheduled deployment roll.
+     * @return Percent size of each batch
      * 
      */
     private Integer batchSizePercentage;
     /**
-     * @return The period of time (seconds) to wait before checking a batch&#39;s health after it&#39;s deployment.
+     * @return Amount of time to wait between batches
      * 
      */
     private @Nullable Integer gracePeriod;
@@ -47,14 +47,14 @@ public final class ElastigroupUpdatePolicyRollConfig {
 
     private ElastigroupUpdatePolicyRollConfig() {}
     /**
-     * @return The percentage size of each batch in the scheduled deployment roll.
+     * @return Percent size of each batch
      * 
      */
     public Integer batchSizePercentage() {
         return this.batchSizePercentage;
     }
     /**
-     * @return The period of time (seconds) to wait before checking a batch&#39;s health after it&#39;s deployment.
+     * @return Amount of time to wait between batches
      * 
      */
     public Optional<Integer> gracePeriod() {

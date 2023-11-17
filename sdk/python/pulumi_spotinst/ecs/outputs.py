@@ -318,8 +318,8 @@ class OceanAutoscalerResourceLimits(dict):
                  max_memory_gib: Optional[int] = None,
                  max_vcpu: Optional[int] = None):
         """
-        :param int max_memory_gib: Maximum amount of Memory (GiB).
-        :param int max_vcpu: Maximum number of vcpus available.
+        :param int max_memory_gib: The maximum memory in GiB units that can be allocated to the cluster.
+        :param int max_vcpu: The maximum cpu in vCPU units that can be allocated to the cluster.
         """
         if max_memory_gib is not None:
             pulumi.set(__self__, "max_memory_gib", max_memory_gib)
@@ -330,7 +330,7 @@ class OceanAutoscalerResourceLimits(dict):
     @pulumi.getter(name="maxMemoryGib")
     def max_memory_gib(self) -> Optional[int]:
         """
-        Maximum amount of Memory (GiB).
+        The maximum memory in GiB units that can be allocated to the cluster.
         """
         return pulumi.get(self, "max_memory_gib")
 
@@ -338,7 +338,7 @@ class OceanAutoscalerResourceLimits(dict):
     @pulumi.getter(name="maxVcpu")
     def max_vcpu(self) -> Optional[int]:
         """
-        Maximum number of vcpus available.
+        The maximum cpu in vCPU units that can be allocated to the cluster.
         """
         return pulumi.get(self, "max_vcpu")
 
@@ -459,7 +459,7 @@ class OceanBlockDeviceMappingEbs(dict):
         :param bool encrypted: Boolean. Enables [EBS encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) on the volume.
         :param int iops: Int. The number of I/O operations per second (IOPS) that the volume supports.
         :param str kms_key_id: String. Identifier (key ID, key alias, ID ARN, or alias ARN) for a customer managed CMK under which the EBS volume is encrypted.
-        :param str snapshot_id: (Optional) String. The snapshot ID to mount by.
+        :param str snapshot_id: String. The snapshot ID to mount by.
         :param int throughput: The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volume_type` = gp3.
         :param int volume_size: Int. The size (in GB) of the volume.
         :param str volume_type: String. The type of the volume. Example: `gp2`.
@@ -527,7 +527,7 @@ class OceanBlockDeviceMappingEbs(dict):
     @pulumi.getter(name="snapshotId")
     def snapshot_id(self) -> Optional[str]:
         """
-        (Optional) String. The snapshot ID to mount by.
+        String. The snapshot ID to mount by.
         """
         return pulumi.get(self, "snapshot_id")
 
@@ -1039,8 +1039,8 @@ class OceanLaunchSpecAutoscaleHeadroom(dict):
                  cpu_per_unit: Optional[int] = None,
                  memory_per_unit: Optional[int] = None):
         """
-        :param int num_of_units: The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
-        :param int cpu_per_unit: Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+        :param int num_of_units: The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
+        :param int cpu_per_unit: Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in CPU units, where 1024 units = 1 vCPU.
         :param int memory_per_unit: Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
         """
         pulumi.set(__self__, "num_of_units", num_of_units)
@@ -1053,7 +1053,7 @@ class OceanLaunchSpecAutoscaleHeadroom(dict):
     @pulumi.getter(name="numOfUnits")
     def num_of_units(self) -> int:
         """
-        The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
+        The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
         """
         return pulumi.get(self, "num_of_units")
 
@@ -1061,7 +1061,7 @@ class OceanLaunchSpecAutoscaleHeadroom(dict):
     @pulumi.getter(name="cpuPerUnit")
     def cpu_per_unit(self) -> Optional[int]:
         """
-        Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+        Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in CPU units, where 1024 units = 1 vCPU.
         """
         return pulumi.get(self, "cpu_per_unit")
 
@@ -1432,8 +1432,8 @@ class OceanLaunchSpecSchedulingTaskTaskHeadroom(dict):
                  cpu_per_unit: Optional[int] = None,
                  memory_per_unit: Optional[int] = None):
         """
-        :param int num_of_units: The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
-        :param int cpu_per_unit: Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+        :param int num_of_units: The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
+        :param int cpu_per_unit: Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in CPU units, where 1024 units = 1 vCPU.
         :param int memory_per_unit: Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
         """
         pulumi.set(__self__, "num_of_units", num_of_units)
@@ -1446,7 +1446,7 @@ class OceanLaunchSpecSchedulingTaskTaskHeadroom(dict):
     @pulumi.getter(name="numOfUnits")
     def num_of_units(self) -> int:
         """
-        The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
+        The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
         """
         return pulumi.get(self, "num_of_units")
 
@@ -1454,7 +1454,7 @@ class OceanLaunchSpecSchedulingTaskTaskHeadroom(dict):
     @pulumi.getter(name="cpuPerUnit")
     def cpu_per_unit(self) -> Optional[int]:
         """
-        Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+        Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in CPU units, where 1024 units = 1 vCPU.
         """
         return pulumi.get(self, "cpu_per_unit")
 
@@ -1780,13 +1780,12 @@ class OceanScheduledTaskTask(dict):
                  task_type: str):
         """
         :param str cron_expression: A valid cron expression. The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of `frequency` or `cronExpression` should be used at a time. Required for `cluster.scheduling.tasks` object. Example: `0 1 * * *`.
-        :param bool is_enabled: Enable the Ocean ECS autoscaler.
+        :param bool is_enabled: Describes whether the task is enabled. When true the task should run when false it should not run. Required for `cluster.scheduling.tasks` object.
         :param str task_type: Valid values: "clusterRoll". Required for `cluster.scheduling.tasks object`. Example: `clusterRoll`.
                
                ```python
                import pulumi
                ```
-               
                
                <a id="attributes-reference"></a>
         """
@@ -1806,7 +1805,7 @@ class OceanScheduledTaskTask(dict):
     @pulumi.getter(name="isEnabled")
     def is_enabled(self) -> bool:
         """
-        Enable the Ocean ECS autoscaler.
+        Describes whether the task is enabled. When true the task should run when false it should not run. Required for `cluster.scheduling.tasks` object.
         """
         return pulumi.get(self, "is_enabled")
 
@@ -1819,7 +1818,6 @@ class OceanScheduledTaskTask(dict):
         ```python
         import pulumi
         ```
-
 
         <a id="attributes-reference"></a>
         """

@@ -216,7 +216,7 @@ namespace Pulumi.SpotInst.Gke
         public Output<ImmutableArray<Outputs.OceanLaunchSpecMetadata>> Metadatas { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the access configuration.
+        /// The launch specification name.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -421,7 +421,7 @@ namespace Pulumi.SpotInst.Gke
         }
 
         /// <summary>
-        /// The name of the access configuration.
+        /// The launch specification name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -618,7 +618,7 @@ namespace Pulumi.SpotInst.Gke
         }
 
         /// <summary>
-        /// The name of the access configuration.
+        /// The launch specification name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

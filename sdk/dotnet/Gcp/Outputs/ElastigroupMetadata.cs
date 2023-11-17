@@ -14,11 +14,11 @@ namespace Pulumi.SpotInst.Gcp.Outputs
     public sealed class ElastigroupMetadata
     {
         /// <summary>
-        /// Labels key.
+        /// Metadata key.
         /// </summary>
         public readonly string Key;
         /// <summary>
-        /// Labels value.
+        /// Metadata value.
         /// </summary>
         public readonly string Value;
 

@@ -50,14 +50,14 @@ public final class ElastigroupScalingTargetPolicyArgs extends com.pulumi.resourc
     }
 
     /**
-     * The number of periods over which data is compared to the specified threshold.
+     * How many evaluation periods should accumulate before a scale down action takes place.
      * 
      */
     @Import(name="evaluationPeriods")
     private @Nullable Output<Integer> evaluationPeriods;
 
     /**
-     * @return The number of periods over which data is compared to the specified threshold.
+     * @return How many evaluation periods should accumulate before a scale down action takes place.
      * 
      */
     public Optional<Output<Integer>> evaluationPeriods() {
@@ -399,7 +399,7 @@ public final class ElastigroupScalingTargetPolicyArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param evaluationPeriods The number of periods over which data is compared to the specified threshold.
+         * @param evaluationPeriods How many evaluation periods should accumulate before a scale down action takes place.
          * 
          * @return builder
          * 
@@ -410,7 +410,7 @@ public final class ElastigroupScalingTargetPolicyArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param evaluationPeriods The number of periods over which data is compared to the specified threshold.
+         * @param evaluationPeriods How many evaluation periods should accumulate before a scale down action takes place.
          * 
          * @return builder
          * 

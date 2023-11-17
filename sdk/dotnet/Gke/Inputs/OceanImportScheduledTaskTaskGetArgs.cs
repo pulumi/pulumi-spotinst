@@ -20,7 +20,7 @@ namespace Pulumi.SpotInst.Gke.Inputs
         public Input<string> CronExpression { get; set; } = null!;
 
         /// <summary>
-        /// Enable the Ocean Kubernetes Autoscaler.
+        /// Describes whether the task is enabled. When true the task should run when false it should not run. Required for cluster.scheduling.tasks object.
         /// </summary>
         [Input("isEnabled", required: true)]
         public Input<bool> IsEnabled { get; set; } = null!;

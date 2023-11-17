@@ -14,7 +14,7 @@ namespace Pulumi.SpotInst.Aws.Outputs
     public sealed class ElastigroupIntegrationDockerSwarm
     {
         /// <summary>
-        /// The amount of time, in seconds, after a scaling activity completes before any further trigger-related scaling activities can start.
+        /// The amount of time, in seconds, after a scaling activity completes before any further trigger-related scaling activities can start. Minimum 180, must be a multiple of 60.
         /// </summary>
         public readonly int? AutoscaleCooldown;
         /// <summary>
@@ -30,11 +30,11 @@ namespace Pulumi.SpotInst.Aws.Outputs
         /// </summary>
         public readonly bool? AutoscaleIsEnabled;
         /// <summary>
-        /// The URL for the Nomad master host.
+        /// IP or FQDN of one of your swarm managers.
         /// </summary>
         public readonly string MasterHost;
         /// <summary>
-        /// The network port for the master host.
+        /// Network port used by your swarm.
         /// </summary>
         public readonly int MasterPort;
 

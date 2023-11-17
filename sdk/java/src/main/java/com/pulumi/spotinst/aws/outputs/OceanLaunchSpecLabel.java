@@ -10,26 +10,26 @@ import java.util.Objects;
 @CustomType
 public final class OceanLaunchSpecLabel {
     /**
-     * @return The taint key.
+     * @return The label key.
      * 
      */
     private String key;
     /**
-     * @return The taint value.
+     * @return The label value.
      * 
      */
     private String value;
 
     private OceanLaunchSpecLabel() {}
     /**
-     * @return The taint key.
+     * @return The label key.
      * 
      */
     public String key() {
         return this.key;
     }
     /**
-     * @return The taint value.
+     * @return The label value.
      * 
      */
     public String value() {

@@ -419,16 +419,12 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Contains scaling policies for scaling the Elastigroup down.
      * 
-     * Each `scaling_*_policy` supports the following:
-     * 
      */
     @Import(name="scalingDownPolicies")
     private @Nullable Output<List<ElastigroupScalingDownPolicyArgs>> scalingDownPolicies;
 
     /**
      * @return Contains scaling policies for scaling the Elastigroup down.
-     * 
-     * Each `scaling_*_policy` supports the following:
      * 
      */
     public Optional<Output<List<ElastigroupScalingDownPolicyArgs>>> scalingDownPolicies() {
@@ -1272,8 +1268,6 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param scalingDownPolicies Contains scaling policies for scaling the Elastigroup down.
          * 
-         * Each `scaling_*_policy` supports the following:
-         * 
          * @return builder
          * 
          */
@@ -1285,8 +1279,6 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param scalingDownPolicies Contains scaling policies for scaling the Elastigroup down.
          * 
-         * Each `scaling_*_policy` supports the following:
-         * 
          * @return builder
          * 
          */
@@ -1296,8 +1288,6 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param scalingDownPolicies Contains scaling policies for scaling the Elastigroup down.
-         * 
-         * Each `scaling_*_policy` supports the following:
          * 
          * @return builder
          * 

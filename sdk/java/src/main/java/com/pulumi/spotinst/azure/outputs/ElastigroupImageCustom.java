@@ -11,7 +11,7 @@ import java.util.Objects;
 public final class ElastigroupImageCustom {
     private String imageName;
     /**
-     * @return Name of the Azure Resource Group where the Managed Service Identity is located.
+     * @return Name of the Resource Group for Elastigroup.
      * 
      */
     private String resourceGroupName;
@@ -21,7 +21,7 @@ public final class ElastigroupImageCustom {
         return this.imageName;
     }
     /**
-     * @return Name of the Azure Resource Group where the Managed Service Identity is located.
+     * @return Name of the Resource Group for Elastigroup.
      * 
      */
     public String resourceGroupName() {

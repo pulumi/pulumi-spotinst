@@ -20,7 +20,7 @@ public final class OceanImportScheduledTaskTask {
      */
     private String cronExpression;
     /**
-     * @return Enable the Ocean Kubernetes Autoscaler.
+     * @return Describes whether the task is enabled. When true the task should run when false it should not run. Required for cluster.scheduling.tasks object.
      * 
      */
     private Boolean isEnabled;
@@ -41,7 +41,7 @@ public final class OceanImportScheduledTaskTask {
         return this.cronExpression;
     }
     /**
-     * @return Enable the Ocean Kubernetes Autoscaler.
+     * @return Describes whether the task is enabled. When true the task should run when false it should not run. Required for cluster.scheduling.tasks object.
      * 
      */
     public Boolean isEnabled() {

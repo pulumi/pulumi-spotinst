@@ -367,7 +367,7 @@ class ElastigroupGpuArgs:
                ```python
                import pulumi
                ```
-        :param pulumi.Input[str] type: The type of GPU instance. Valid values: `nvidia-tesla-v100`, `nvidia-tesla-p100`, `nvidia-tesla-k80`.
+        :param pulumi.Input[str] type: Specifies the type of disk, either SCRATCH or PERSISTENT.
         """
         pulumi.set(__self__, "count", count)
         pulumi.set(__self__, "type", type)
@@ -394,7 +394,7 @@ class ElastigroupGpuArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
         """
-        The type of GPU instance. Valid values: `nvidia-tesla-v100`, `nvidia-tesla-p100`, `nvidia-tesla-k80`.
+        Specifies the type of disk, either SCRATCH or PERSISTENT.
         """
         return pulumi.get(self, "type")
 
@@ -742,8 +742,8 @@ class ElastigroupMetadataArgs:
                  key: pulumi.Input[str],
                  value: pulumi.Input[str]):
         """
-        :param pulumi.Input[str] key: Labels key.
-        :param pulumi.Input[str] value: Labels value.
+        :param pulumi.Input[str] key: Metadata key.
+        :param pulumi.Input[str] value: Metadata value.
         """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "value", value)
@@ -752,7 +752,7 @@ class ElastigroupMetadataArgs:
     @pulumi.getter
     def key(self) -> pulumi.Input[str]:
         """
-        Labels key.
+        Metadata key.
         """
         return pulumi.get(self, "key")
 
@@ -764,7 +764,7 @@ class ElastigroupMetadataArgs:
     @pulumi.getter
     def value(self) -> pulumi.Input[str]:
         """
-        Labels value.
+        Metadata value.
         """
         return pulumi.get(self, "value")
 

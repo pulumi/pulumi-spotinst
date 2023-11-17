@@ -10,26 +10,26 @@ import java.util.Objects;
 @CustomType
 public final class OceanManagedServiceIdentity {
     /**
-     * @return Name of the Load Balancer.
+     * @return Name of the Managed Service Identity.
      * 
      */
     private String name;
     /**
-     * @return The Resource Group name of the Load Balancer.
+     * @return Name of the Azure Resource Group where the Managed Service Identity is located.
      * 
      */
     private String resourceGroupName;
 
     private OceanManagedServiceIdentity() {}
     /**
-     * @return Name of the Load Balancer.
+     * @return Name of the Managed Service Identity.
      * 
      */
     public String name() {
         return this.name;
     }
     /**
-     * @return The Resource Group name of the Load Balancer.
+     * @return Name of the Azure Resource Group where the Managed Service Identity is located.
      * 
      */
     public String resourceGroupName() {

@@ -14,12 +14,11 @@ namespace Pulumi.SpotInst.Aws.Outputs
     public sealed class ElastigroupScalingUpPolicyStepAdjustment
     {
         /// <summary>
-        /// The action to take when scale up according to step's threshold is needed.
+        /// Action to take
         /// </summary>
         public readonly Outputs.ElastigroupScalingUpPolicyStepAdjustmentAction Action;
         /// <summary>
         /// The value against which the specified statistic is compared in order to determine if a step should be applied.
-        /// 
         /// 
         /// If you do not specify an action type, you can only use – `adjustment`, `minTargetCapacity`, `maxTargetCapacity`.
         /// While using action_type, please also set the following:

@@ -14,12 +14,15 @@ namespace Pulumi.SpotInst.Aws.Outputs
     public sealed class OceanBlockDeviceMappingEbsDynamicVolumeSize
     {
         /// <summary>
-        /// Initial size for IOPS.
+        /// Int. Initial size for volume. (Example: 50)
         /// </summary>
         public readonly int BaseSize;
+        /// <summary>
+        /// String. Resource type to increase volume size dynamically by. (Valid values: `CPU`)
+        /// </summary>
         public readonly string Resource;
         /// <summary>
-        /// Additional size per resource unit (in IOPS). (Example: `baseSize=50`, `sizePerResourceUnit=20`, and an instance with 2 CPU is launched; its IOPS size will be: 90).
+        /// Int. Additional size (in GB) per resource unit. (Example: `baseSize=50`, `sizePerResourceUnit=20`, and instance with 2 CPU is launched; its total disk size will be: 90GB).
         /// </summary>
         public readonly int SizePerResourceUnit;
 

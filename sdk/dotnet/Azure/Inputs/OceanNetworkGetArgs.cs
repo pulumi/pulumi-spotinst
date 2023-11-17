@@ -25,7 +25,7 @@ namespace Pulumi.SpotInst.Azure.Inputs
         }
 
         /// <summary>
-        /// The Resource Group name of the Load Balancer.
+        /// Vnet resource group name.
         /// </summary>
         [Input("resourceGroupName")]
         public Input<string>? ResourceGroupName { get; set; }

@@ -14,7 +14,7 @@ namespace Pulumi.SpotInst.Aws.Outputs
     public sealed class ElastigroupUpdatePolicyRollConfigStrategy
     {
         /// <summary>
-        /// The action to take when scale up according to step's threshold is needed.
+        /// Action to take
         /// </summary>
         public readonly string Action;
         /// <summary>

@@ -147,14 +147,14 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of the Managed Service Identity.
+     * The group name.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the Managed Service Identity.
+     * @return The group name.
      * 
      */
     public Optional<Output<String>> name() {
@@ -206,14 +206,14 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of the Azure Resource Group where the Managed Service Identity is located.
+     * Name of the Resource Group for Elastigroup.
      * 
      */
     @Import(name="resourceGroupName", required=true)
     private Output<String> resourceGroupName;
 
     /**
-     * @return Name of the Azure Resource Group where the Managed Service Identity is located.
+     * @return Name of the Resource Group for Elastigroup.
      * 
      */
     public Output<String> resourceGroupName() {
@@ -490,7 +490,7 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the Managed Service Identity.
+         * @param name The group name.
          * 
          * @return builder
          * 
@@ -501,7 +501,7 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the Managed Service Identity.
+         * @param name The group name.
          * 
          * @return builder
          * 
@@ -581,7 +581,7 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceGroupName Name of the Azure Resource Group where the Managed Service Identity is located.
+         * @param resourceGroupName Name of the Resource Group for Elastigroup.
          * 
          * @return builder
          * 
@@ -592,7 +592,7 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceGroupName Name of the Azure Resource Group where the Managed Service Identity is located.
+         * @param resourceGroupName Name of the Resource Group for Elastigroup.
          * 
          * @return builder
          * 

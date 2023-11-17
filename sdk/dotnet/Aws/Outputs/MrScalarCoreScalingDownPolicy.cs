@@ -42,7 +42,7 @@ namespace Pulumi.SpotInst.Aws.Outputs
         /// </summary>
         public readonly string? Maximum;
         /// <summary>
-        /// The name of the metric in CloudWatch which the statement will be based on.
+        /// The name of the metric, with or without spaces.
         /// </summary>
         public readonly string MetricName;
         /// <summary>
@@ -54,15 +54,15 @@ namespace Pulumi.SpotInst.Aws.Outputs
         /// </summary>
         public readonly string? Minimum;
         /// <summary>
-        /// Must contain the value: `AWS/ElasticMapReduce`.
+        /// The namespace for the metric.
         /// </summary>
         public readonly string Namespace;
         /// <summary>
-        /// The operator to use in order to determine if the policy is applicable. Valid values: `gt` | `gte` | `lt` | `lte`
+        /// The operator to use. Allowed values are : 'gt', 'gte', 'lt' , 'lte'.
         /// </summary>
         public readonly string? Operator;
         /// <summary>
-        /// The time window in seconds over which the statistic is applied.
+        /// The granularity, in seconds, of the returned datapoints. Period must be at least 60 seconds and must be a multiple of 60.
         /// </summary>
         public readonly int? Period;
         /// <summary>
@@ -70,7 +70,7 @@ namespace Pulumi.SpotInst.Aws.Outputs
         /// </summary>
         public readonly string PolicyName;
         /// <summary>
-        /// The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`
+        /// The metric statistics to return. For information about specific statistics go to [Statistics](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/index.html?CHAP_TerminologyandKeyConcepts.html#Statistic) in the Amazon CloudWatch Developer Guide.
         /// </summary>
         public readonly string? Statistic;
         /// <summary>
@@ -78,11 +78,11 @@ namespace Pulumi.SpotInst.Aws.Outputs
         /// </summary>
         public readonly string? Target;
         /// <summary>
-        /// The value that the specified statistic is compared to.
+        /// The value against which the specified statistic is compared.
         /// </summary>
         public readonly double Threshold;
         /// <summary>
-        /// The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`
+        /// The unit for the metric.
         /// </summary>
         public readonly string Unit;
 

@@ -14,7 +14,19 @@ namespace Pulumi.SpotInst.Aws.Outputs
     public sealed class ElastigroupIntegrationGitlabRunner
     {
         /// <summary>
-        /// Specifies whether the scaling policy described in this block is enabled.
+        /// Specifies whether the integration is enabled.
+        /// 
+        /// Usage:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        /// });
+        /// ```
         /// </summary>
         public readonly bool? IsEnabled;
 

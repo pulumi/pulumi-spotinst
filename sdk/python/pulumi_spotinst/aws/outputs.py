@@ -1052,8 +1052,8 @@ class ElastigroupIntegrationBeanstalkDeploymentPreferences(dict):
                  strategy: Optional['outputs.ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategy'] = None):
         """
         :param bool automatic_roll: Should roll perform automatically
-        :param int batch_size_percentage: The percentage size of each batch in the scheduled deployment roll.
-        :param int grace_period: The period of time (seconds) to wait before checking a batch's health after it's deployment.
+        :param int batch_size_percentage: Percent size of each batch
+        :param int grace_period: Amount of time to wait between batches
         :param 'ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategyArgs' strategy: Strategy parameters
         """
         if automatic_roll is not None:
@@ -1077,7 +1077,7 @@ class ElastigroupIntegrationBeanstalkDeploymentPreferences(dict):
     @pulumi.getter(name="batchSizePercentage")
     def batch_size_percentage(self) -> Optional[int]:
         """
-        The percentage size of each batch in the scheduled deployment roll.
+        Percent size of each batch
         """
         return pulumi.get(self, "batch_size_percentage")
 
@@ -1085,7 +1085,7 @@ class ElastigroupIntegrationBeanstalkDeploymentPreferences(dict):
     @pulumi.getter(name="gracePeriod")
     def grace_period(self) -> Optional[int]:
         """
-        The period of time (seconds) to wait before checking a batch's health after it's deployment.
+        Amount of time to wait between batches
         """
         return pulumi.get(self, "grace_period")
 
@@ -1121,7 +1121,7 @@ class ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategy(dict):
                  action: Optional[str] = None,
                  should_drain_instances: Optional[bool] = None):
         """
-        :param str action: The action to take when scale up according to step's threshold is needed.
+        :param str action: Action to take
         :param bool should_drain_instances: Bool value if to wait to drain instance
         """
         if action is not None:
@@ -1133,7 +1133,7 @@ class ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategy(dict):
     @pulumi.getter
     def action(self) -> Optional[str]:
         """
-        The action to take when scale up according to step's threshold is needed.
+        Action to take
         """
         return pulumi.get(self, "action")
 
@@ -1210,7 +1210,7 @@ class ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdate(dict):
                  time_window: Optional[str] = None,
                  update_level: Optional[str] = None):
         """
-        :param str perform_at: In the event of a fallback to On-Demand instances, select the time period to revert back to Spot. Supported Arguments – always (default), timeWindow, never. For timeWindow or never to be valid the group must have availabilityOriented OR persistence defined.
+        :param str perform_at: Actions to perform (options: timeWindow, never)
         :param str time_window: Time Window for when action occurs ex. Mon:23:50-Tue:00:20
         :param str update_level: Level to update
                
@@ -1231,7 +1231,7 @@ class ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdate(dict):
     @pulumi.getter(name="performAt")
     def perform_at(self) -> Optional[str]:
         """
-        In the event of a fallback to On-Demand instances, select the time period to revert back to Spot. Supported Arguments – always (default), timeWindow, never. For timeWindow or never to be valid the group must have availabilityOriented OR persistence defined.
+        Actions to perform (options: timeWindow, never)
         """
         return pulumi.get(self, "perform_at")
 
@@ -1416,9 +1416,9 @@ class ElastigroupIntegrationDockerSwarm(dict):
                  autoscale_headroom: Optional['outputs.ElastigroupIntegrationDockerSwarmAutoscaleHeadroom'] = None,
                  autoscale_is_enabled: Optional[bool] = None):
         """
-        :param str master_host: The URL for the Nomad master host.
-        :param int master_port: The network port for the master host.
-        :param int autoscale_cooldown: The amount of time, in seconds, after a scaling activity completes before any further trigger-related scaling activities can start.
+        :param str master_host: IP or FQDN of one of your swarm managers.
+        :param int master_port: Network port used by your swarm.
+        :param int autoscale_cooldown: The amount of time, in seconds, after a scaling activity completes before any further trigger-related scaling activities can start. Minimum 180, must be a multiple of 60.
         :param 'ElastigroupIntegrationDockerSwarmAutoscaleDownArgs' autoscale_down: Settings for scale down actions.
         :param 'ElastigroupIntegrationDockerSwarmAutoscaleHeadroomArgs' autoscale_headroom: An option to set compute reserve for the cluster.
         :param bool autoscale_is_enabled: Specifies whether the auto scaling feature is enabled.
@@ -1438,7 +1438,7 @@ class ElastigroupIntegrationDockerSwarm(dict):
     @pulumi.getter(name="masterHost")
     def master_host(self) -> str:
         """
-        The URL for the Nomad master host.
+        IP or FQDN of one of your swarm managers.
         """
         return pulumi.get(self, "master_host")
 
@@ -1446,7 +1446,7 @@ class ElastigroupIntegrationDockerSwarm(dict):
     @pulumi.getter(name="masterPort")
     def master_port(self) -> int:
         """
-        The network port for the master host.
+        Network port used by your swarm.
         """
         return pulumi.get(self, "master_port")
 
@@ -1454,7 +1454,7 @@ class ElastigroupIntegrationDockerSwarm(dict):
     @pulumi.getter(name="autoscaleCooldown")
     def autoscale_cooldown(self) -> Optional[int]:
         """
-        The amount of time, in seconds, after a scaling activity completes before any further trigger-related scaling activities can start.
+        The amount of time, in seconds, after a scaling activity completes before any further trigger-related scaling activities can start. Minimum 180, must be a multiple of 60.
         """
         return pulumi.get(self, "autoscale_cooldown")
 
@@ -1508,7 +1508,7 @@ class ElastigroupIntegrationDockerSwarmAutoscaleDown(dict):
                  evaluation_periods: Optional[int] = None,
                  max_scale_down_percentage: Optional[float] = None):
         """
-        :param int evaluation_periods: The number of periods over which data is compared to the specified threshold.
+        :param int evaluation_periods: How many evaluation periods should accumulate before a scale down action takes place.
         :param float max_scale_down_percentage: Represents the maximum percent to scale-down. Number between 1-100.
         """
         if evaluation_periods is not None:
@@ -1520,7 +1520,7 @@ class ElastigroupIntegrationDockerSwarmAutoscaleDown(dict):
     @pulumi.getter(name="evaluationPeriods")
     def evaluation_periods(self) -> Optional[int]:
         """
-        The number of periods over which data is compared to the specified threshold.
+        How many evaluation periods should accumulate before a scale down action takes place.
         """
         return pulumi.get(self, "evaluation_periods")
 
@@ -1561,9 +1561,9 @@ class ElastigroupIntegrationDockerSwarmAutoscaleHeadroom(dict):
                  memory_per_unit: Optional[int] = None,
                  num_of_units: Optional[int] = None):
         """
-        :param int cpu_per_unit: How much CPU (MHz) to allocate for headroom unit.
-        :param int memory_per_unit: How much Memory allocate for headroom unit.
-        :param int num_of_units: How many units of headroom to allocate.
+        :param int cpu_per_unit: How much CPU to allocate for headroom unit.
+        :param int memory_per_unit: The amount of memory in each headroom unit. Measured in MiB.
+        :param int num_of_units: How many units to allocate for headroom unit.
         """
         if cpu_per_unit is not None:
             pulumi.set(__self__, "cpu_per_unit", cpu_per_unit)
@@ -1576,7 +1576,7 @@ class ElastigroupIntegrationDockerSwarmAutoscaleHeadroom(dict):
     @pulumi.getter(name="cpuPerUnit")
     def cpu_per_unit(self) -> Optional[int]:
         """
-        How much CPU (MHz) to allocate for headroom unit.
+        How much CPU to allocate for headroom unit.
         """
         return pulumi.get(self, "cpu_per_unit")
 
@@ -1584,7 +1584,7 @@ class ElastigroupIntegrationDockerSwarmAutoscaleHeadroom(dict):
     @pulumi.getter(name="memoryPerUnit")
     def memory_per_unit(self) -> Optional[int]:
         """
-        How much Memory allocate for headroom unit.
+        The amount of memory in each headroom unit. Measured in MiB.
         """
         return pulumi.get(self, "memory_per_unit")
 
@@ -1592,7 +1592,7 @@ class ElastigroupIntegrationDockerSwarmAutoscaleHeadroom(dict):
     @pulumi.getter(name="numOfUnits")
     def num_of_units(self) -> Optional[int]:
         """
-        How many units of headroom to allocate.
+        How many units to allocate for headroom unit.
         """
         return pulumi.get(self, "num_of_units")
 
@@ -1645,8 +1645,8 @@ class ElastigroupIntegrationEcs(dict):
         :param Sequence['ElastigroupIntegrationEcsAutoscaleAttributeArgs'] autoscale_attributes: A key/value mapping of tags to assign to the resource.
         :param int autoscale_cooldown: The amount of time, in seconds, after a scaling activity completes before any further trigger-related scaling activities can start.
         :param 'ElastigroupIntegrationEcsAutoscaleDownArgs' autoscale_down: Settings for scale down actions.
-        :param 'ElastigroupIntegrationEcsAutoscaleHeadroomArgs' autoscale_headroom: An option to set compute reserve for the cluster.
-        :param bool autoscale_is_auto_config: Enabling the automatic k8s auto-scaler functionality. For more information please see: [Kubernetes auto scaler](https://api.spotinst.com/integration-docs/elastigroup/container-management/kubernetes/autoscaler/).
+        :param 'ElastigroupIntegrationEcsAutoscaleHeadroomArgs' autoscale_headroom: Headroom for the cluster.
+        :param bool autoscale_is_auto_config: Enabling the automatic auto-scaler functionality. For more information please see: [ECS auto scaler](https://api.spotinst.com/container-management/amazon-ecs/elastigroup-for-ecs-concepts/autoscaling/).
         :param bool autoscale_is_enabled: Specifies whether the auto scaling feature is enabled.
         :param bool autoscale_scale_down_non_service_tasks: Determines whether to scale down non-service tasks.
         :param 'ElastigroupIntegrationEcsBatchArgs' batch: Batch configuration object:
@@ -1705,7 +1705,7 @@ class ElastigroupIntegrationEcs(dict):
     @pulumi.getter(name="autoscaleHeadroom")
     def autoscale_headroom(self) -> Optional['outputs.ElastigroupIntegrationEcsAutoscaleHeadroom']:
         """
-        An option to set compute reserve for the cluster.
+        Headroom for the cluster.
         """
         return pulumi.get(self, "autoscale_headroom")
 
@@ -1713,7 +1713,7 @@ class ElastigroupIntegrationEcs(dict):
     @pulumi.getter(name="autoscaleIsAutoConfig")
     def autoscale_is_auto_config(self) -> Optional[bool]:
         """
-        Enabling the automatic k8s auto-scaler functionality. For more information please see: [Kubernetes auto scaler](https://api.spotinst.com/integration-docs/elastigroup/container-management/kubernetes/autoscaler/).
+        Enabling the automatic auto-scaler functionality. For more information please see: [ECS auto scaler](https://api.spotinst.com/container-management/amazon-ecs/elastigroup-for-ecs-concepts/autoscaling/).
         """
         return pulumi.get(self, "autoscale_is_auto_config")
 
@@ -1792,7 +1792,7 @@ class ElastigroupIntegrationEcsAutoscaleDown(dict):
                  evaluation_periods: Optional[int] = None,
                  max_scale_down_percentage: Optional[float] = None):
         """
-        :param int evaluation_periods: The number of periods over which data is compared to the specified threshold.
+        :param int evaluation_periods: How many evaluation periods should accumulate before a scale down action takes place.
         :param float max_scale_down_percentage: Represents the maximum percent to scale-down. Number between 1-100.
         """
         if evaluation_periods is not None:
@@ -1804,7 +1804,7 @@ class ElastigroupIntegrationEcsAutoscaleDown(dict):
     @pulumi.getter(name="evaluationPeriods")
     def evaluation_periods(self) -> Optional[int]:
         """
-        The number of periods over which data is compared to the specified threshold.
+        How many evaluation periods should accumulate before a scale down action takes place.
         """
         return pulumi.get(self, "evaluation_periods")
 
@@ -1845,9 +1845,9 @@ class ElastigroupIntegrationEcsAutoscaleHeadroom(dict):
                  memory_per_unit: Optional[int] = None,
                  num_of_units: Optional[int] = None):
         """
-        :param int cpu_per_unit: How much CPU (MHz) to allocate for headroom unit.
-        :param int memory_per_unit: How much Memory allocate for headroom unit.
-        :param int num_of_units: How many units of headroom to allocate.
+        :param int cpu_per_unit: How much CPU to allocate for headroom unit.
+        :param int memory_per_unit: The amount of memory in each headroom unit. Measured in MiB.
+        :param int num_of_units: How many units to allocate for headroom unit.
         """
         if cpu_per_unit is not None:
             pulumi.set(__self__, "cpu_per_unit", cpu_per_unit)
@@ -1860,7 +1860,7 @@ class ElastigroupIntegrationEcsAutoscaleHeadroom(dict):
     @pulumi.getter(name="cpuPerUnit")
     def cpu_per_unit(self) -> Optional[int]:
         """
-        How much CPU (MHz) to allocate for headroom unit.
+        How much CPU to allocate for headroom unit.
         """
         return pulumi.get(self, "cpu_per_unit")
 
@@ -1868,7 +1868,7 @@ class ElastigroupIntegrationEcsAutoscaleHeadroom(dict):
     @pulumi.getter(name="memoryPerUnit")
     def memory_per_unit(self) -> Optional[int]:
         """
-        How much Memory allocate for headroom unit.
+        The amount of memory in each headroom unit. Measured in MiB.
         """
         return pulumi.get(self, "memory_per_unit")
 
@@ -1876,7 +1876,7 @@ class ElastigroupIntegrationEcsAutoscaleHeadroom(dict):
     @pulumi.getter(name="numOfUnits")
     def num_of_units(self) -> Optional[int]:
         """
-        How many units of headroom to allocate.
+        How many units to allocate for headroom unit.
         """
         return pulumi.get(self, "num_of_units")
 
@@ -1969,7 +1969,13 @@ class ElastigroupIntegrationGitlabRunner(dict):
     def __init__(__self__, *,
                  is_enabled: Optional[bool] = None):
         """
-        :param bool is_enabled: Specifies whether the scaling policy described in this block is enabled.
+        :param bool is_enabled: Specifies whether the integration is enabled.
+               
+               Usage:
+               
+               ```python
+               import pulumi
+               ```
         """
         if is_enabled is not None:
             pulumi.set(__self__, "is_enabled", is_enabled)
@@ -1978,7 +1984,13 @@ class ElastigroupIntegrationGitlabRunner(dict):
     @pulumi.getter(name="isEnabled")
     def is_enabled(self) -> Optional[bool]:
         """
-        Specifies whether the scaling policy described in this block is enabled.
+        Specifies whether the integration is enabled.
+
+        Usage:
+
+        ```python
+        import pulumi
+        ```
         """
         return pulumi.get(self, "is_enabled")
 
@@ -2030,13 +2042,6 @@ class ElastigroupIntegrationKubernetes(dict):
                  integration_mode: Optional[str] = None,
                  token: Optional[str] = None):
         """
-        :param str api_server: The public IP of the DC/OS Master.
-               
-               Usage:
-               
-               ```python
-               import pulumi
-               ```
         :param int autoscale_cooldown: The amount of time, in seconds, after a scaling activity completes before any further trigger-related scaling activities can start.
         :param 'ElastigroupIntegrationKubernetesAutoscaleDownArgs' autoscale_down: Settings for scale down actions.
         :param 'ElastigroupIntegrationKubernetesAutoscaleHeadroomArgs' autoscale_headroom: An option to set compute reserve for the cluster.
@@ -2076,15 +2081,6 @@ class ElastigroupIntegrationKubernetes(dict):
     @property
     @pulumi.getter(name="apiServer")
     def api_server(self) -> Optional[str]:
-        """
-        The public IP of the DC/OS Master.
-
-        Usage:
-
-        ```python
-        import pulumi
-        ```
-        """
         return pulumi.get(self, "api_server")
 
     @property
@@ -2188,7 +2184,7 @@ class ElastigroupIntegrationKubernetesAutoscaleDown(dict):
                  evaluation_periods: Optional[int] = None,
                  max_scale_down_percentage: Optional[float] = None):
         """
-        :param int evaluation_periods: The number of periods over which data is compared to the specified threshold.
+        :param int evaluation_periods: How many evaluation periods should accumulate before a scale down action takes place.
         :param float max_scale_down_percentage: Represents the maximum percent to scale-down. Number between 1-100.
         """
         if evaluation_periods is not None:
@@ -2200,7 +2196,7 @@ class ElastigroupIntegrationKubernetesAutoscaleDown(dict):
     @pulumi.getter(name="evaluationPeriods")
     def evaluation_periods(self) -> Optional[int]:
         """
-        The number of periods over which data is compared to the specified threshold.
+        How many evaluation periods should accumulate before a scale down action takes place.
         """
         return pulumi.get(self, "evaluation_periods")
 
@@ -2241,9 +2237,9 @@ class ElastigroupIntegrationKubernetesAutoscaleHeadroom(dict):
                  memory_per_unit: Optional[int] = None,
                  num_of_units: Optional[int] = None):
         """
-        :param int cpu_per_unit: How much CPU (MHz) to allocate for headroom unit.
-        :param int memory_per_unit: How much Memory allocate for headroom unit.
-        :param int num_of_units: How many units of headroom to allocate.
+        :param int cpu_per_unit: How much CPU to allocate for headroom unit.
+        :param int memory_per_unit: The amount of memory in each headroom unit. Measured in MiB.
+        :param int num_of_units: How many units to allocate for headroom unit.
         """
         if cpu_per_unit is not None:
             pulumi.set(__self__, "cpu_per_unit", cpu_per_unit)
@@ -2256,7 +2252,7 @@ class ElastigroupIntegrationKubernetesAutoscaleHeadroom(dict):
     @pulumi.getter(name="cpuPerUnit")
     def cpu_per_unit(self) -> Optional[int]:
         """
-        How much CPU (MHz) to allocate for headroom unit.
+        How much CPU to allocate for headroom unit.
         """
         return pulumi.get(self, "cpu_per_unit")
 
@@ -2264,7 +2260,7 @@ class ElastigroupIntegrationKubernetesAutoscaleHeadroom(dict):
     @pulumi.getter(name="memoryPerUnit")
     def memory_per_unit(self) -> Optional[int]:
         """
-        How much Memory allocate for headroom unit.
+        The amount of memory in each headroom unit. Measured in MiB.
         """
         return pulumi.get(self, "memory_per_unit")
 
@@ -2272,7 +2268,7 @@ class ElastigroupIntegrationKubernetesAutoscaleHeadroom(dict):
     @pulumi.getter(name="numOfUnits")
     def num_of_units(self) -> Optional[int]:
         """
-        How many units of headroom to allocate.
+        How many units to allocate for headroom unit.
         """
         return pulumi.get(self, "num_of_units")
 
@@ -2587,7 +2583,7 @@ class ElastigroupIntegrationNomadAutoscaleDown(dict):
     def __init__(__self__, *,
                  evaluation_periods: Optional[int] = None):
         """
-        :param int evaluation_periods: The number of periods over which data is compared to the specified threshold.
+        :param int evaluation_periods: How many evaluation periods should accumulate before a scale down action takes place.
         """
         if evaluation_periods is not None:
             pulumi.set(__self__, "evaluation_periods", evaluation_periods)
@@ -2596,7 +2592,7 @@ class ElastigroupIntegrationNomadAutoscaleDown(dict):
     @pulumi.getter(name="evaluationPeriods")
     def evaluation_periods(self) -> Optional[int]:
         """
-        The number of periods over which data is compared to the specified threshold.
+        How many evaluation periods should accumulate before a scale down action takes place.
         """
         return pulumi.get(self, "evaluation_periods")
 
@@ -2629,9 +2625,9 @@ class ElastigroupIntegrationNomadAutoscaleHeadroom(dict):
                  memory_per_unit: Optional[int] = None,
                  num_of_units: Optional[int] = None):
         """
-        :param int cpu_per_unit: How much CPU (MHz) to allocate for headroom unit.
-        :param int memory_per_unit: How much Memory allocate for headroom unit.
-        :param int num_of_units: How many units of headroom to allocate.
+        :param int cpu_per_unit: How much CPU to allocate for headroom unit.
+        :param int memory_per_unit: The amount of memory in each headroom unit. Measured in MiB.
+        :param int num_of_units: How many units to allocate for headroom unit.
         """
         if cpu_per_unit is not None:
             pulumi.set(__self__, "cpu_per_unit", cpu_per_unit)
@@ -2644,7 +2640,7 @@ class ElastigroupIntegrationNomadAutoscaleHeadroom(dict):
     @pulumi.getter(name="cpuPerUnit")
     def cpu_per_unit(self) -> Optional[int]:
         """
-        How much CPU (MHz) to allocate for headroom unit.
+        How much CPU to allocate for headroom unit.
         """
         return pulumi.get(self, "cpu_per_unit")
 
@@ -2652,7 +2648,7 @@ class ElastigroupIntegrationNomadAutoscaleHeadroom(dict):
     @pulumi.getter(name="memoryPerUnit")
     def memory_per_unit(self) -> Optional[int]:
         """
-        How much Memory allocate for headroom unit.
+        The amount of memory in each headroom unit. Measured in MiB.
         """
         return pulumi.get(self, "memory_per_unit")
 
@@ -2660,7 +2656,7 @@ class ElastigroupIntegrationNomadAutoscaleHeadroom(dict):
     @pulumi.getter(name="numOfUnits")
     def num_of_units(self) -> Optional[int]:
         """
-        How many units of headroom to allocate.
+        How many units to allocate for headroom unit.
         """
         return pulumi.get(self, "num_of_units")
 
@@ -2695,7 +2691,7 @@ class ElastigroupIntegrationRancher(dict):
                  version: Optional[str] = None):
         """
         :param str access_key: The access key of the Rancher API.
-        :param str master_host: The URL for the Nomad master host.
+        :param str master_host: IP or FQDN of one of your swarm managers.
         :param str secret_key: The secret key of the Rancher API.
         :param str version: The Rancher version. Must be `"1"` or `"2"`. If this field is omitted, it’s assumed that the Rancher cluster is version 1. Note that Kubernetes is required when using Rancher version 2^.
                Usage:
@@ -2722,7 +2718,7 @@ class ElastigroupIntegrationRancher(dict):
     @pulumi.getter(name="masterHost")
     def master_host(self) -> str:
         """
-        The URL for the Nomad master host.
+        IP or FQDN of one of your swarm managers.
         """
         return pulumi.get(self, "master_host")
 
@@ -3542,13 +3538,19 @@ class ElastigroupMultipleMetricsMetric(dict):
                  statistic: Optional[str] = None,
                  unit: Optional[str] = None):
         """
-        :param str metric_name: The name of the metric, with or without spaces.
-        :param str name: The group name.
+        :param str metric_name: The name of the source metric.
+        :param str name: The expression name.
         :param str namespace: The namespace for the alarm's associated metric.
-        :param Sequence['ElastigroupMultipleMetricsMetricDimensionArgs'] dimensions: A list of dimensions describing qualities of the metric.
+        :param Sequence['ElastigroupMultipleMetricsMetricDimensionArgs'] dimensions: The dimensions for the alarm's associated metric. When name is "instanceId", no value is needed.
+               *`name` - (Required) the dimension name.
+               *`value` - (Optional) the dimension value.
+               
+               ```python
+               import pulumi
+               ```
         :param str extended_statistic: Percentile statistic. Valid values: `"p0.1"` - `"p100"`.
-        :param str statistic: The metric statistics to return. For information about specific statistics go to [Statistics](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/index.html?CHAP_TerminologyandKeyConcepts.html#Statistic) in the Amazon CloudWatch Developer Guide.
-        :param str unit: The unit for the alarm's associated metric. Valid values: `"percent`, `"seconds"`, `"microseconds"`, `"milliseconds"`, `"bytes"`, `"kilobytes"`, `"megabytes"`, `"gigabytes"`, `"terabytes"`, `"bits"`, `"kilobits"`, `"megabits"`, `"gigabits"`, `"terabits"`, `"count"`, `"bytes/second"`, `"kilobytes/second"`, `"megabytes/second"`, `"gigabytes/second"`, `"terabytes/second"`, `"bits/second"`, `"kilobits/second"`, `"megabits/second"`, `"gigabits/second"`, `"terabits/second"`, `"count/second"`, `"none"`.
+        :param str statistic: The metric statistics to return. Valid values: `"average"`, `"sum"`, `"sampleCount"`, `"maximum"`, `"minimum"`, `"percentile"`.
+        :param str unit: The unit for the alarm's associated metric. Valid values: `"seconds"`, `"microseconds"`, `"milliseconds"`, `"bytes"`, `"kilobytes"`, `"megabytes"`, `"gigabytes"`, `"terabytes"`, `"bits"`, `"kilobits"`, `"megabits"`, `"gigabits"`, `"terabits"`, `"percent"`, `"count"`, `"bytes/second"`, `"kilobytes/second"`, `"megabytes/second"`, `"gigabytes/second"`, `"terabytes/second"`, `"bits/second"`, `"kilobits/second"`, `"megabits/second"`, `"gigabits/second"`, `"terabits/second"`, `"count/second"`, `"none"`.
         """
         pulumi.set(__self__, "metric_name", metric_name)
         pulumi.set(__self__, "name", name)
@@ -3566,7 +3568,7 @@ class ElastigroupMultipleMetricsMetric(dict):
     @pulumi.getter(name="metricName")
     def metric_name(self) -> str:
         """
-        The name of the metric, with or without spaces.
+        The name of the source metric.
         """
         return pulumi.get(self, "metric_name")
 
@@ -3574,7 +3576,7 @@ class ElastigroupMultipleMetricsMetric(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        The group name.
+        The expression name.
         """
         return pulumi.get(self, "name")
 
@@ -3590,7 +3592,13 @@ class ElastigroupMultipleMetricsMetric(dict):
     @pulumi.getter
     def dimensions(self) -> Optional[Sequence['outputs.ElastigroupMultipleMetricsMetricDimension']]:
         """
-        A list of dimensions describing qualities of the metric.
+        The dimensions for the alarm's associated metric. When name is "instanceId", no value is needed.
+        *`name` - (Required) the dimension name.
+        *`value` - (Optional) the dimension value.
+
+        ```python
+        import pulumi
+        ```
         """
         return pulumi.get(self, "dimensions")
 
@@ -3606,7 +3614,7 @@ class ElastigroupMultipleMetricsMetric(dict):
     @pulumi.getter
     def statistic(self) -> Optional[str]:
         """
-        The metric statistics to return. For information about specific statistics go to [Statistics](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/index.html?CHAP_TerminologyandKeyConcepts.html#Statistic) in the Amazon CloudWatch Developer Guide.
+        The metric statistics to return. Valid values: `"average"`, `"sum"`, `"sampleCount"`, `"maximum"`, `"minimum"`, `"percentile"`.
         """
         return pulumi.get(self, "statistic")
 
@@ -3614,7 +3622,7 @@ class ElastigroupMultipleMetricsMetric(dict):
     @pulumi.getter
     def unit(self) -> Optional[str]:
         """
-        The unit for the alarm's associated metric. Valid values: `"percent`, `"seconds"`, `"microseconds"`, `"milliseconds"`, `"bytes"`, `"kilobytes"`, `"megabytes"`, `"gigabytes"`, `"terabytes"`, `"bits"`, `"kilobits"`, `"megabits"`, `"gigabits"`, `"terabits"`, `"count"`, `"bytes/second"`, `"kilobytes/second"`, `"megabytes/second"`, `"gigabytes/second"`, `"terabytes/second"`, `"bits/second"`, `"kilobits/second"`, `"megabits/second"`, `"gigabits/second"`, `"terabits/second"`, `"count/second"`, `"none"`.
+        The unit for the alarm's associated metric. Valid values: `"seconds"`, `"microseconds"`, `"milliseconds"`, `"bytes"`, `"kilobytes"`, `"megabytes"`, `"gigabytes"`, `"terabytes"`, `"bits"`, `"kilobits"`, `"megabits"`, `"gigabits"`, `"terabits"`, `"percent"`, `"count"`, `"bytes/second"`, `"kilobytes/second"`, `"megabytes/second"`, `"gigabytes/second"`, `"terabytes/second"`, `"bits/second"`, `"kilobits/second"`, `"megabits/second"`, `"gigabits/second"`, `"terabits/second"`, `"count/second"`, `"none"`.
         """
         return pulumi.get(self, "unit")
 
@@ -4137,14 +4145,7 @@ class ElastigroupScalingDownPolicy(dict):
         :param str source: The source of the metric. Valid values: `"cloudWatch"`, `"spectrum"`.
         :param str statistic: The metric statistics to return. For information about specific statistics go to [Statistics](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/index.html?CHAP_TerminologyandKeyConcepts.html#Statistic) in the Amazon CloudWatch Developer Guide.
         :param str target: The target number of instances to have in the group.
-        :param float threshold: The value against which the specified statistic is compared in order to determine if a step should be applied.
-               
-               
-               If you do not specify an action type, you can only use – `adjustment`, `minTargetCapacity`, `maxTargetCapacity`.
-               While using action_type, please also set the following:
-               
-               When using `adjustment`           – set the field `adjustment`
-               When using `updateCapacity`       – set the fields `minimum`, `maximum`, and `target`
+        :param float threshold: The value against which the specified statistic is compared. If a `step_adjustment` object is defined, then it cannot be specified.
         :param str unit: The unit for the alarm's associated metric. Valid values: `"percent`, `"seconds"`, `"microseconds"`, `"milliseconds"`, `"bytes"`, `"kilobytes"`, `"megabytes"`, `"gigabytes"`, `"terabytes"`, `"bits"`, `"kilobits"`, `"megabits"`, `"gigabits"`, `"terabits"`, `"count"`, `"bytes/second"`, `"kilobytes/second"`, `"megabytes/second"`, `"gigabytes/second"`, `"terabytes/second"`, `"bits/second"`, `"kilobits/second"`, `"megabits/second"`, `"gigabits/second"`, `"terabits/second"`, `"count/second"`, `"none"`.
         """
         pulumi.set(__self__, "metric_name", metric_name)
@@ -4340,14 +4341,7 @@ class ElastigroupScalingDownPolicy(dict):
     @pulumi.getter
     def threshold(self) -> Optional[float]:
         """
-        The value against which the specified statistic is compared in order to determine if a step should be applied.
-
-
-        If you do not specify an action type, you can only use – `adjustment`, `minTargetCapacity`, `maxTargetCapacity`.
-        While using action_type, please also set the following:
-
-        When using `adjustment`           – set the field `adjustment`
-        When using `updateCapacity`       – set the fields `minimum`, `maximum`, and `target`
+        The value against which the specified statistic is compared. If a `step_adjustment` object is defined, then it cannot be specified.
         """
         return pulumi.get(self, "threshold")
 
@@ -4396,9 +4390,8 @@ class ElastigroupScalingDownPolicyStepAdjustment(dict):
                  action: 'outputs.ElastigroupScalingDownPolicyStepAdjustmentAction',
                  threshold: int):
         """
-        :param 'ElastigroupScalingDownPolicyStepAdjustmentActionArgs' action: The action to take when scale up according to step's threshold is needed.
+        :param 'ElastigroupScalingDownPolicyStepAdjustmentActionArgs' action: Action to take
         :param int threshold: The value against which the specified statistic is compared in order to determine if a step should be applied.
-               
                
                If you do not specify an action type, you can only use – `adjustment`, `minTargetCapacity`, `maxTargetCapacity`.
                While using action_type, please also set the following:
@@ -4413,7 +4406,7 @@ class ElastigroupScalingDownPolicyStepAdjustment(dict):
     @pulumi.getter
     def action(self) -> 'outputs.ElastigroupScalingDownPolicyStepAdjustmentAction':
         """
-        The action to take when scale up according to step's threshold is needed.
+        Action to take
         """
         return pulumi.get(self, "action")
 
@@ -4422,7 +4415,6 @@ class ElastigroupScalingDownPolicyStepAdjustment(dict):
     def threshold(self) -> int:
         """
         The value against which the specified statistic is compared in order to determine if a step should be applied.
-
 
         If you do not specify an action type, you can only use – `adjustment`, `minTargetCapacity`, `maxTargetCapacity`.
         While using action_type, please also set the following:
@@ -4463,7 +4455,13 @@ class ElastigroupScalingDownPolicyStepAdjustmentAction(dict):
                  minimum: Optional[str] = None,
                  target: Optional[str] = None):
         """
-        :param str type: The type of the action to take when scale up is needed. Valid types: `"adjustment"`, `"updateCapacity"`, `"setMaxTarget"`, `"percentageAdjustment"`.
+        :param str type: String, Action type. Supported action types: `pause`, `resume`, `recycle`, `deallocate`.
+               
+               Usage:
+               
+               ```python
+               import pulumi
+               ```
         :param str adjustment: The number of instances to add/remove to/from the target capacity when scale is needed. Can be used as advanced expression for scaling of instances to add/remove to/from the target capacity when scale is needed. You can see more information here: Advanced expression. Example value: `"MAX(currCapacity / 5, value * 10)"`
         :param str max_target_capacity: . The number of the desired target (and maximum) capacity
         :param str maximum: The maximal number of instances to have in the group.
@@ -4489,7 +4487,13 @@ class ElastigroupScalingDownPolicyStepAdjustmentAction(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        The type of the action to take when scale up is needed. Valid types: `"adjustment"`, `"updateCapacity"`, `"setMaxTarget"`, `"percentageAdjustment"`.
+        String, Action type. Supported action types: `pause`, `resume`, `recycle`, `deallocate`.
+
+        Usage:
+
+        ```python
+        import pulumi
+        ```
         """
         return pulumi.get(self, "type")
 
@@ -4640,7 +4644,7 @@ class ElastigroupScalingTargetPolicy(dict):
         :param float target: The target number of instances to have in the group.
         :param int cooldown: Integer the amount of time, in seconds, after a scaling activity completes and before the next scaling activity can start. If this parameter is not specified, the default cooldown period for the group applies.
         :param Sequence['ElastigroupScalingTargetPolicyDimensionArgs'] dimensions: A list of dimensions describing qualities of the metric.
-        :param int evaluation_periods: The number of periods over which data is compared to the specified threshold.
+        :param int evaluation_periods: How many evaluation periods should accumulate before a scale down action takes place.
         :param str max_capacity_per_scale: String, restrict the maximal number of instances which can be added in each scale-up action.
                
                `scaling_target_policies` support predictive scaling:
@@ -4735,7 +4739,7 @@ class ElastigroupScalingTargetPolicy(dict):
     @pulumi.getter(name="evaluationPeriods")
     def evaluation_periods(self) -> Optional[int]:
         """
-        The number of periods over which data is compared to the specified threshold.
+        How many evaluation periods should accumulate before a scale down action takes place.
         """
         return pulumi.get(self, "evaluation_periods")
 
@@ -4904,15 +4908,7 @@ class ElastigroupScalingUpPolicy(dict):
         :param str source: The source of the metric. Valid values: `"cloudWatch"`, `"spectrum"`.
         :param str statistic: The metric statistics to return. For information about specific statistics go to [Statistics](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/index.html?CHAP_TerminologyandKeyConcepts.html#Statistic) in the Amazon CloudWatch Developer Guide.
         :param str target: The target number of instances to have in the group.
-        :param float threshold: The value against which the specified statistic is compared in order to determine if a step should be applied.
-               
-               
-               If you do not specify an action type, you can only use – `adjustment`, `minTargetCapacity`, `maxTargetCapacity`.
-               While using action_type, please also set the following:
-               
-               When using `adjustment`           – set the field `adjustment`
-               When using `setMinTarget`         – set the field `min_target_capacity`
-               When using `updateCapacity`       – set the fields `minimum`, `maximum`, and `target`
+        :param float threshold: The value against which the specified statistic is compared. If a `step_adjustment` object is defined, then it cannot be specified.
         :param str unit: The unit for the alarm's associated metric. Valid values: `"percent`, `"seconds"`, `"microseconds"`, `"milliseconds"`, `"bytes"`, `"kilobytes"`, `"megabytes"`, `"gigabytes"`, `"terabytes"`, `"bits"`, `"kilobits"`, `"megabits"`, `"gigabits"`, `"terabits"`, `"count"`, `"bytes/second"`, `"kilobytes/second"`, `"megabytes/second"`, `"gigabytes/second"`, `"terabytes/second"`, `"bits/second"`, `"kilobits/second"`, `"megabits/second"`, `"gigabits/second"`, `"terabits/second"`, `"count/second"`, `"none"`.
         """
         pulumi.set(__self__, "metric_name", metric_name)
@@ -5108,15 +5104,7 @@ class ElastigroupScalingUpPolicy(dict):
     @pulumi.getter
     def threshold(self) -> Optional[float]:
         """
-        The value against which the specified statistic is compared in order to determine if a step should be applied.
-
-
-        If you do not specify an action type, you can only use – `adjustment`, `minTargetCapacity`, `maxTargetCapacity`.
-        While using action_type, please also set the following:
-
-        When using `adjustment`           – set the field `adjustment`
-        When using `setMinTarget`         – set the field `min_target_capacity`
-        When using `updateCapacity`       – set the fields `minimum`, `maximum`, and `target`
+        The value against which the specified statistic is compared. If a `step_adjustment` object is defined, then it cannot be specified.
         """
         return pulumi.get(self, "threshold")
 
@@ -5165,9 +5153,8 @@ class ElastigroupScalingUpPolicyStepAdjustment(dict):
                  action: 'outputs.ElastigroupScalingUpPolicyStepAdjustmentAction',
                  threshold: int):
         """
-        :param 'ElastigroupScalingUpPolicyStepAdjustmentActionArgs' action: The action to take when scale up according to step's threshold is needed.
+        :param 'ElastigroupScalingUpPolicyStepAdjustmentActionArgs' action: Action to take
         :param int threshold: The value against which the specified statistic is compared in order to determine if a step should be applied.
-               
                
                If you do not specify an action type, you can only use – `adjustment`, `minTargetCapacity`, `maxTargetCapacity`.
                While using action_type, please also set the following:
@@ -5182,7 +5169,7 @@ class ElastigroupScalingUpPolicyStepAdjustment(dict):
     @pulumi.getter
     def action(self) -> 'outputs.ElastigroupScalingUpPolicyStepAdjustmentAction':
         """
-        The action to take when scale up according to step's threshold is needed.
+        Action to take
         """
         return pulumi.get(self, "action")
 
@@ -5191,7 +5178,6 @@ class ElastigroupScalingUpPolicyStepAdjustment(dict):
     def threshold(self) -> int:
         """
         The value against which the specified statistic is compared in order to determine if a step should be applied.
-
 
         If you do not specify an action type, you can only use – `adjustment`, `minTargetCapacity`, `maxTargetCapacity`.
         While using action_type, please also set the following:
@@ -5232,7 +5218,13 @@ class ElastigroupScalingUpPolicyStepAdjustmentAction(dict):
                  minimum: Optional[str] = None,
                  target: Optional[str] = None):
         """
-        :param str type: The type of the action to take when scale up is needed. Valid types: `"adjustment"`, `"updateCapacity"`, `"setMaxTarget"`, `"percentageAdjustment"`.
+        :param str type: String, Action type. Supported action types: `pause`, `resume`, `recycle`, `deallocate`.
+               
+               Usage:
+               
+               ```python
+               import pulumi
+               ```
         :param str adjustment: The number of instances to add/remove to/from the target capacity when scale is needed. Can be used as advanced expression for scaling of instances to add/remove to/from the target capacity when scale is needed. You can see more information here: Advanced expression. Example value: `"MAX(currCapacity / 5, value * 10)"`
         :param str max_target_capacity: . The number of the desired target (and maximum) capacity
         :param str maximum: The maximal number of instances to have in the group.
@@ -5258,7 +5250,13 @@ class ElastigroupScalingUpPolicyStepAdjustmentAction(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        The type of the action to take when scale up is needed. Valid types: `"adjustment"`, `"updateCapacity"`, `"setMaxTarget"`, `"percentageAdjustment"`.
+        String, Action type. Supported action types: `pause`, `resume`, `recycle`, `deallocate`.
+
+        Usage:
+
+        ```python
+        import pulumi
+        ```
         """
         return pulumi.get(self, "type")
 
@@ -5878,8 +5876,8 @@ class ElastigroupUpdatePolicyRollConfig(dict):
                  wait_for_roll_percentage: Optional[float] = None,
                  wait_for_roll_timeout: Optional[int] = None):
         """
-        :param int batch_size_percentage: The percentage size of each batch in the scheduled deployment roll.
-        :param int grace_period: The period of time (seconds) to wait before checking a batch's health after it's deployment.
+        :param int batch_size_percentage: Percent size of each batch
+        :param int grace_period: Amount of time to wait between batches
         :param str health_check_type: The service that will perform health checks for the instance. Valid values: `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"MLB"`, `"EC2"`, `"MULTAI_TARGET_SET"`, `"MLB_RUNTIME"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
         :param 'ElastigroupUpdatePolicyRollConfigStrategyArgs' strategy: Strategy parameters
         :param float wait_for_roll_percentage: For use with `should_roll`. Sets minimum % of roll required to complete before continuing the plan. Required if `wait_for_roll_timeout` is set.
@@ -5901,7 +5899,7 @@ class ElastigroupUpdatePolicyRollConfig(dict):
     @pulumi.getter(name="batchSizePercentage")
     def batch_size_percentage(self) -> int:
         """
-        The percentage size of each batch in the scheduled deployment roll.
+        Percent size of each batch
         """
         return pulumi.get(self, "batch_size_percentage")
 
@@ -5909,7 +5907,7 @@ class ElastigroupUpdatePolicyRollConfig(dict):
     @pulumi.getter(name="gracePeriod")
     def grace_period(self) -> Optional[int]:
         """
-        The period of time (seconds) to wait before checking a batch's health after it's deployment.
+        Amount of time to wait between batches
         """
         return pulumi.get(self, "grace_period")
 
@@ -5975,7 +5973,7 @@ class ElastigroupUpdatePolicyRollConfigStrategy(dict):
                  on_failure: Optional['outputs.ElastigroupUpdatePolicyRollConfigStrategyOnFailure'] = None,
                  should_drain_instances: Optional[bool] = None):
         """
-        :param str action: The action to take when scale up according to step's threshold is needed.
+        :param str action: Action to take
         :param int batch_min_healthy_percentage: Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the deployment will fail. Range `1` - `100`.
         :param 'ElastigroupUpdatePolicyRollConfigStrategyOnFailureArgs' on_failure: Set detach options to the deployment.
         :param bool should_drain_instances: Bool value if to wait to drain instance
@@ -5992,7 +5990,7 @@ class ElastigroupUpdatePolicyRollConfigStrategy(dict):
     @pulumi.getter
     def action(self) -> str:
         """
-        The action to take when scale up according to step's threshold is needed.
+        Action to take
         """
         return pulumi.get(self, "action")
 
@@ -6960,11 +6958,11 @@ class MrScalarCoreScalingDownPolicy(dict):
                  statistic: Optional[str] = None,
                  target: Optional[str] = None):
         """
-        :param str metric_name: The name of the metric in CloudWatch which the statement will be based on.
-        :param str namespace: Must contain the value: `AWS/ElasticMapReduce`.
+        :param str metric_name: The name of the metric, with or without spaces.
+        :param str namespace: The namespace for the metric.
         :param str policy_name: The name of the policy.
-        :param float threshold: The value that the specified statistic is compared to.
-        :param str unit: The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`
+        :param float threshold: The value against which the specified statistic is compared.
+        :param str unit: The unit for the metric.
         :param str action_type: The type of action to perform. Allowed values are : 'adjustment', 'setMinTarget', 'setMaxTarget', 'updateCapacity', 'percentageAdjustment'
         :param str adjustment: The number of instances to add/remove to/from the target capacity when scale is needed.
         :param int cooldown: The amount of time, in seconds, after a scaling activity completes and before the next scaling activity can start.
@@ -6974,9 +6972,9 @@ class MrScalarCoreScalingDownPolicy(dict):
         :param str maximum: The maximum to set when scale is needed.
         :param str min_target_capacity: Min target capacity for scale up.
         :param str minimum: The minimum to set when scale is needed.
-        :param str operator: The operator to use in order to determine if the policy is applicable. Valid values: `gt` | `gte` | `lt` | `lte`
-        :param int period: The time window in seconds over which the statistic is applied.
-        :param str statistic: The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`
+        :param str operator: The operator to use. Allowed values are : 'gt', 'gte', 'lt' , 'lte'.
+        :param int period: The granularity, in seconds, of the returned datapoints. Period must be at least 60 seconds and must be a multiple of 60.
+        :param str statistic: The metric statistics to return. For information about specific statistics go to [Statistics](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/index.html?CHAP_TerminologyandKeyConcepts.html#Statistic) in the Amazon CloudWatch Developer Guide.
         :param str target: The number of instances to set when scale is needed.
         """
         pulumi.set(__self__, "metric_name", metric_name)
@@ -7015,7 +7013,7 @@ class MrScalarCoreScalingDownPolicy(dict):
     @pulumi.getter(name="metricName")
     def metric_name(self) -> str:
         """
-        The name of the metric in CloudWatch which the statement will be based on.
+        The name of the metric, with or without spaces.
         """
         return pulumi.get(self, "metric_name")
 
@@ -7023,7 +7021,7 @@ class MrScalarCoreScalingDownPolicy(dict):
     @pulumi.getter
     def namespace(self) -> str:
         """
-        Must contain the value: `AWS/ElasticMapReduce`.
+        The namespace for the metric.
         """
         return pulumi.get(self, "namespace")
 
@@ -7039,7 +7037,7 @@ class MrScalarCoreScalingDownPolicy(dict):
     @pulumi.getter
     def threshold(self) -> float:
         """
-        The value that the specified statistic is compared to.
+        The value against which the specified statistic is compared.
         """
         return pulumi.get(self, "threshold")
 
@@ -7047,7 +7045,7 @@ class MrScalarCoreScalingDownPolicy(dict):
     @pulumi.getter
     def unit(self) -> str:
         """
-        The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`
+        The unit for the metric.
         """
         return pulumi.get(self, "unit")
 
@@ -7127,7 +7125,7 @@ class MrScalarCoreScalingDownPolicy(dict):
     @pulumi.getter
     def operator(self) -> Optional[str]:
         """
-        The operator to use in order to determine if the policy is applicable. Valid values: `gt` | `gte` | `lt` | `lte`
+        The operator to use. Allowed values are : 'gt', 'gte', 'lt' , 'lte'.
         """
         return pulumi.get(self, "operator")
 
@@ -7135,7 +7133,7 @@ class MrScalarCoreScalingDownPolicy(dict):
     @pulumi.getter
     def period(self) -> Optional[int]:
         """
-        The time window in seconds over which the statistic is applied.
+        The granularity, in seconds, of the returned datapoints. Period must be at least 60 seconds and must be a multiple of 60.
         """
         return pulumi.get(self, "period")
 
@@ -7143,7 +7141,7 @@ class MrScalarCoreScalingDownPolicy(dict):
     @pulumi.getter
     def statistic(self) -> Optional[str]:
         """
-        The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`
+        The metric statistics to return. For information about specific statistics go to [Statistics](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/index.html?CHAP_TerminologyandKeyConcepts.html#Statistic) in the Amazon CloudWatch Developer Guide.
         """
         return pulumi.get(self, "statistic")
 
@@ -7205,11 +7203,11 @@ class MrScalarCoreScalingUpPolicy(dict):
                  statistic: Optional[str] = None,
                  target: Optional[str] = None):
         """
-        :param str metric_name: The name of the metric in CloudWatch which the statement will be based on.
-        :param str namespace: Must contain the value: `AWS/ElasticMapReduce`.
+        :param str metric_name: The name of the metric, with or without spaces.
+        :param str namespace: The namespace for the metric.
         :param str policy_name: The name of the policy.
-        :param float threshold: The value that the specified statistic is compared to.
-        :param str unit: The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`
+        :param float threshold: The value against which the specified statistic is compared.
+        :param str unit: The unit for the metric.
         :param str action_type: The type of action to perform. Allowed values are : 'adjustment', 'setMinTarget', 'setMaxTarget', 'updateCapacity', 'percentageAdjustment'
         :param str adjustment: The number of instances to add/remove to/from the target capacity when scale is needed.
         :param int cooldown: The amount of time, in seconds, after a scaling activity completes and before the next scaling activity can start.
@@ -7219,9 +7217,9 @@ class MrScalarCoreScalingUpPolicy(dict):
         :param str maximum: The maximum to set when scale is needed.
         :param str min_target_capacity: Min target capacity for scale up.
         :param str minimum: The minimum to set when scale is needed.
-        :param str operator: The operator to use in order to determine if the policy is applicable. Valid values: `gt` | `gte` | `lt` | `lte`
-        :param int period: The time window in seconds over which the statistic is applied.
-        :param str statistic: The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`
+        :param str operator: The operator to use. Allowed values are : 'gt', 'gte', 'lt' , 'lte'.
+        :param int period: The granularity, in seconds, of the returned datapoints. Period must be at least 60 seconds and must be a multiple of 60.
+        :param str statistic: The metric statistics to return. For information about specific statistics go to [Statistics](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/index.html?CHAP_TerminologyandKeyConcepts.html#Statistic) in the Amazon CloudWatch Developer Guide.
         :param str target: The number of instances to set when scale is needed.
         """
         pulumi.set(__self__, "metric_name", metric_name)
@@ -7260,7 +7258,7 @@ class MrScalarCoreScalingUpPolicy(dict):
     @pulumi.getter(name="metricName")
     def metric_name(self) -> str:
         """
-        The name of the metric in CloudWatch which the statement will be based on.
+        The name of the metric, with or without spaces.
         """
         return pulumi.get(self, "metric_name")
 
@@ -7268,7 +7266,7 @@ class MrScalarCoreScalingUpPolicy(dict):
     @pulumi.getter
     def namespace(self) -> str:
         """
-        Must contain the value: `AWS/ElasticMapReduce`.
+        The namespace for the metric.
         """
         return pulumi.get(self, "namespace")
 
@@ -7284,7 +7282,7 @@ class MrScalarCoreScalingUpPolicy(dict):
     @pulumi.getter
     def threshold(self) -> float:
         """
-        The value that the specified statistic is compared to.
+        The value against which the specified statistic is compared.
         """
         return pulumi.get(self, "threshold")
 
@@ -7292,7 +7290,7 @@ class MrScalarCoreScalingUpPolicy(dict):
     @pulumi.getter
     def unit(self) -> str:
         """
-        The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`
+        The unit for the metric.
         """
         return pulumi.get(self, "unit")
 
@@ -7372,7 +7370,7 @@ class MrScalarCoreScalingUpPolicy(dict):
     @pulumi.getter
     def operator(self) -> Optional[str]:
         """
-        The operator to use in order to determine if the policy is applicable. Valid values: `gt` | `gte` | `lt` | `lte`
+        The operator to use. Allowed values are : 'gt', 'gte', 'lt' , 'lte'.
         """
         return pulumi.get(self, "operator")
 
@@ -7380,7 +7378,7 @@ class MrScalarCoreScalingUpPolicy(dict):
     @pulumi.getter
     def period(self) -> Optional[int]:
         """
-        The time window in seconds over which the statistic is applied.
+        The granularity, in seconds, of the returned datapoints. Period must be at least 60 seconds and must be a multiple of 60.
         """
         return pulumi.get(self, "period")
 
@@ -7388,7 +7386,7 @@ class MrScalarCoreScalingUpPolicy(dict):
     @pulumi.getter
     def statistic(self) -> Optional[str]:
         """
-        The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`
+        The metric statistics to return. For information about specific statistics go to [Statistics](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/index.html?CHAP_TerminologyandKeyConcepts.html#Statistic) in the Amazon CloudWatch Developer Guide.
         """
         return pulumi.get(self, "statistic")
 
@@ -7865,11 +7863,11 @@ class MrScalarTaskScalingDownPolicy(dict):
                  statistic: Optional[str] = None,
                  target: Optional[str] = None):
         """
-        :param str metric_name: The name of the metric in CloudWatch which the statement will be based on.
-        :param str namespace: Must contain the value: `AWS/ElasticMapReduce`.
+        :param str metric_name: The name of the metric, with or without spaces.
+        :param str namespace: The namespace for the metric.
         :param str policy_name: The name of the policy.
-        :param float threshold: The value that the specified statistic is compared to.
-        :param str unit: The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`
+        :param float threshold: The value against which the specified statistic is compared.
+        :param str unit: The unit for the metric.
         :param str action_type: The type of action to perform. Allowed values are : 'adjustment', 'setMinTarget', 'setMaxTarget', 'updateCapacity', 'percentageAdjustment'
         :param str adjustment: The number of instances to add/remove to/from the target capacity when scale is needed.
         :param int cooldown: The amount of time, in seconds, after a scaling activity completes and before the next scaling activity can start.
@@ -7879,9 +7877,9 @@ class MrScalarTaskScalingDownPolicy(dict):
         :param str maximum: The maximum to set when scale is needed.
         :param str min_target_capacity: Min target capacity for scale up.
         :param str minimum: The minimum to set when scale is needed.
-        :param str operator: The operator to use in order to determine if the policy is applicable. Valid values: `gt` | `gte` | `lt` | `lte`
-        :param int period: The time window in seconds over which the statistic is applied.
-        :param str statistic: The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`
+        :param str operator: The operator to use. Allowed values are : 'gt', 'gte', 'lt' , 'lte'.
+        :param int period: The granularity, in seconds, of the returned datapoints. Period must be at least 60 seconds and must be a multiple of 60.
+        :param str statistic: The metric statistics to return. For information about specific statistics go to [Statistics](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/index.html?CHAP_TerminologyandKeyConcepts.html#Statistic) in the Amazon CloudWatch Developer Guide.
         :param str target: The number of instances to set when scale is needed.
         """
         pulumi.set(__self__, "metric_name", metric_name)
@@ -7920,7 +7918,7 @@ class MrScalarTaskScalingDownPolicy(dict):
     @pulumi.getter(name="metricName")
     def metric_name(self) -> str:
         """
-        The name of the metric in CloudWatch which the statement will be based on.
+        The name of the metric, with or without spaces.
         """
         return pulumi.get(self, "metric_name")
 
@@ -7928,7 +7926,7 @@ class MrScalarTaskScalingDownPolicy(dict):
     @pulumi.getter
     def namespace(self) -> str:
         """
-        Must contain the value: `AWS/ElasticMapReduce`.
+        The namespace for the metric.
         """
         return pulumi.get(self, "namespace")
 
@@ -7944,7 +7942,7 @@ class MrScalarTaskScalingDownPolicy(dict):
     @pulumi.getter
     def threshold(self) -> float:
         """
-        The value that the specified statistic is compared to.
+        The value against which the specified statistic is compared.
         """
         return pulumi.get(self, "threshold")
 
@@ -7952,7 +7950,7 @@ class MrScalarTaskScalingDownPolicy(dict):
     @pulumi.getter
     def unit(self) -> str:
         """
-        The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`
+        The unit for the metric.
         """
         return pulumi.get(self, "unit")
 
@@ -8032,7 +8030,7 @@ class MrScalarTaskScalingDownPolicy(dict):
     @pulumi.getter
     def operator(self) -> Optional[str]:
         """
-        The operator to use in order to determine if the policy is applicable. Valid values: `gt` | `gte` | `lt` | `lte`
+        The operator to use. Allowed values are : 'gt', 'gte', 'lt' , 'lte'.
         """
         return pulumi.get(self, "operator")
 
@@ -8040,7 +8038,7 @@ class MrScalarTaskScalingDownPolicy(dict):
     @pulumi.getter
     def period(self) -> Optional[int]:
         """
-        The time window in seconds over which the statistic is applied.
+        The granularity, in seconds, of the returned datapoints. Period must be at least 60 seconds and must be a multiple of 60.
         """
         return pulumi.get(self, "period")
 
@@ -8048,7 +8046,7 @@ class MrScalarTaskScalingDownPolicy(dict):
     @pulumi.getter
     def statistic(self) -> Optional[str]:
         """
-        The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`
+        The metric statistics to return. For information about specific statistics go to [Statistics](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/index.html?CHAP_TerminologyandKeyConcepts.html#Statistic) in the Amazon CloudWatch Developer Guide.
         """
         return pulumi.get(self, "statistic")
 
@@ -8110,11 +8108,11 @@ class MrScalarTaskScalingUpPolicy(dict):
                  statistic: Optional[str] = None,
                  target: Optional[str] = None):
         """
-        :param str metric_name: The name of the metric in CloudWatch which the statement will be based on.
-        :param str namespace: Must contain the value: `AWS/ElasticMapReduce`.
+        :param str metric_name: The name of the metric, with or without spaces.
+        :param str namespace: The namespace for the metric.
         :param str policy_name: The name of the policy.
-        :param float threshold: The value that the specified statistic is compared to.
-        :param str unit: The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`
+        :param float threshold: The value against which the specified statistic is compared.
+        :param str unit: The unit for the metric.
         :param str action_type: The type of action to perform. Allowed values are : 'adjustment', 'setMinTarget', 'setMaxTarget', 'updateCapacity', 'percentageAdjustment'
         :param str adjustment: The number of instances to add/remove to/from the target capacity when scale is needed.
         :param int cooldown: The amount of time, in seconds, after a scaling activity completes and before the next scaling activity can start.
@@ -8124,9 +8122,9 @@ class MrScalarTaskScalingUpPolicy(dict):
         :param str maximum: The maximum to set when scale is needed.
         :param str min_target_capacity: Min target capacity for scale up.
         :param str minimum: The minimum to set when scale is needed.
-        :param str operator: The operator to use in order to determine if the policy is applicable. Valid values: `gt` | `gte` | `lt` | `lte`
-        :param int period: The time window in seconds over which the statistic is applied.
-        :param str statistic: The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`
+        :param str operator: The operator to use. Allowed values are : 'gt', 'gte', 'lt' , 'lte'.
+        :param int period: The granularity, in seconds, of the returned datapoints. Period must be at least 60 seconds and must be a multiple of 60.
+        :param str statistic: The metric statistics to return. For information about specific statistics go to [Statistics](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/index.html?CHAP_TerminologyandKeyConcepts.html#Statistic) in the Amazon CloudWatch Developer Guide.
         :param str target: The number of instances to set when scale is needed.
         """
         pulumi.set(__self__, "metric_name", metric_name)
@@ -8165,7 +8163,7 @@ class MrScalarTaskScalingUpPolicy(dict):
     @pulumi.getter(name="metricName")
     def metric_name(self) -> str:
         """
-        The name of the metric in CloudWatch which the statement will be based on.
+        The name of the metric, with or without spaces.
         """
         return pulumi.get(self, "metric_name")
 
@@ -8173,7 +8171,7 @@ class MrScalarTaskScalingUpPolicy(dict):
     @pulumi.getter
     def namespace(self) -> str:
         """
-        Must contain the value: `AWS/ElasticMapReduce`.
+        The namespace for the metric.
         """
         return pulumi.get(self, "namespace")
 
@@ -8189,7 +8187,7 @@ class MrScalarTaskScalingUpPolicy(dict):
     @pulumi.getter
     def threshold(self) -> float:
         """
-        The value that the specified statistic is compared to.
+        The value against which the specified statistic is compared.
         """
         return pulumi.get(self, "threshold")
 
@@ -8197,7 +8195,7 @@ class MrScalarTaskScalingUpPolicy(dict):
     @pulumi.getter
     def unit(self) -> str:
         """
-        The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`
+        The unit for the metric.
         """
         return pulumi.get(self, "unit")
 
@@ -8277,7 +8275,7 @@ class MrScalarTaskScalingUpPolicy(dict):
     @pulumi.getter
     def operator(self) -> Optional[str]:
         """
-        The operator to use in order to determine if the policy is applicable. Valid values: `gt` | `gte` | `lt` | `lte`
+        The operator to use. Allowed values are : 'gt', 'gte', 'lt' , 'lte'.
         """
         return pulumi.get(self, "operator")
 
@@ -8285,7 +8283,7 @@ class MrScalarTaskScalingUpPolicy(dict):
     @pulumi.getter
     def period(self) -> Optional[int]:
         """
-        The time window in seconds over which the statistic is applied.
+        The granularity, in seconds, of the returned datapoints. Period must be at least 60 seconds and must be a multiple of 60.
         """
         return pulumi.get(self, "period")
 
@@ -8293,7 +8291,7 @@ class MrScalarTaskScalingUpPolicy(dict):
     @pulumi.getter
     def statistic(self) -> Optional[str]:
         """
-        The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`
+        The metric statistics to return. For information about specific statistics go to [Statistics](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/index.html?CHAP_TerminologyandKeyConcepts.html#Statistic) in the Amazon CloudWatch Developer Guide.
         """
         return pulumi.get(self, "statistic")
 
@@ -8349,14 +8347,14 @@ class MrScalarTerminationPolicyStatement(dict):
                  statistic: Optional[str] = None,
                  unit: Optional[str] = None):
         """
-        :param str metric_name: The name of the metric in CloudWatch which the statement will be based on.
-        :param str namespace: Must contain the value: `AWS/ElasticMapReduce`.
-        :param float threshold: The value that the specified statistic is compared to.
+        :param str metric_name: The name of the metric, with or without spaces.
+        :param str namespace: The namespace for the metric.
+        :param float threshold: The value against which the specified statistic is compared.
         :param int evaluation_periods: The number of periods over which data is compared to the specified threshold.
-        :param str operator: The operator to use in order to determine if the policy is applicable. Valid values: `gt` | `gte` | `lt` | `lte`
-        :param int period: The time window in seconds over which the statistic is applied.
-        :param str statistic: The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`
-        :param str unit: The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`
+        :param str operator: The operator to use. Allowed values are : 'gt', 'gte', 'lt' , 'lte'.
+        :param int period: The granularity, in seconds, of the returned datapoints. Period must be at least 60 seconds and must be a multiple of 60.
+        :param str statistic: The metric statistics to return. For information about specific statistics go to [Statistics](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/index.html?CHAP_TerminologyandKeyConcepts.html#Statistic) in the Amazon CloudWatch Developer Guide.
+        :param str unit: The unit for the metric.
         """
         pulumi.set(__self__, "metric_name", metric_name)
         pulumi.set(__self__, "namespace", namespace)
@@ -8376,7 +8374,7 @@ class MrScalarTerminationPolicyStatement(dict):
     @pulumi.getter(name="metricName")
     def metric_name(self) -> str:
         """
-        The name of the metric in CloudWatch which the statement will be based on.
+        The name of the metric, with or without spaces.
         """
         return pulumi.get(self, "metric_name")
 
@@ -8384,7 +8382,7 @@ class MrScalarTerminationPolicyStatement(dict):
     @pulumi.getter
     def namespace(self) -> str:
         """
-        Must contain the value: `AWS/ElasticMapReduce`.
+        The namespace for the metric.
         """
         return pulumi.get(self, "namespace")
 
@@ -8392,7 +8390,7 @@ class MrScalarTerminationPolicyStatement(dict):
     @pulumi.getter
     def threshold(self) -> float:
         """
-        The value that the specified statistic is compared to.
+        The value against which the specified statistic is compared.
         """
         return pulumi.get(self, "threshold")
 
@@ -8408,7 +8406,7 @@ class MrScalarTerminationPolicyStatement(dict):
     @pulumi.getter
     def operator(self) -> Optional[str]:
         """
-        The operator to use in order to determine if the policy is applicable. Valid values: `gt` | `gte` | `lt` | `lte`
+        The operator to use. Allowed values are : 'gt', 'gte', 'lt' , 'lte'.
         """
         return pulumi.get(self, "operator")
 
@@ -8416,7 +8414,7 @@ class MrScalarTerminationPolicyStatement(dict):
     @pulumi.getter
     def period(self) -> Optional[int]:
         """
-        The time window in seconds over which the statistic is applied.
+        The granularity, in seconds, of the returned datapoints. Period must be at least 60 seconds and must be a multiple of 60.
         """
         return pulumi.get(self, "period")
 
@@ -8424,7 +8422,7 @@ class MrScalarTerminationPolicyStatement(dict):
     @pulumi.getter
     def statistic(self) -> Optional[str]:
         """
-        The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`
+        The metric statistics to return. For information about specific statistics go to [Statistics](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/index.html?CHAP_TerminologyandKeyConcepts.html#Statistic) in the Amazon CloudWatch Developer Guide.
         """
         return pulumi.get(self, "statistic")
 
@@ -8432,7 +8430,7 @@ class MrScalarTerminationPolicyStatement(dict):
     @pulumi.getter
     def unit(self) -> Optional[str]:
         """
-        The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`
+        The unit for the metric.
         """
         return pulumi.get(self, "unit")
 
@@ -8794,7 +8792,7 @@ class OceanBlockDeviceMappingEbs(dict):
         :param bool encrypted: Boolean. Enables [EBS encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) on the volume.
         :param int iops: Must be greater than or equal to 0.
         :param str kms_key_id: String. Identifier (key ID, key alias, ID ARN, or alias ARN) for a customer managed CMK under which the EBS volume is encrypted.
-        :param str snapshot_id: (Optional) String. The Snapshot ID to mount by.
+        :param str snapshot_id: String. The Snapshot ID to mount by.
         :param int throughput: The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volume_type` = `gp3`.
         :param int volume_size: Int. The size, in GB of the volume.
         :param str volume_type: String. The type of the volume. (Example: `gp2`).
@@ -8872,7 +8870,7 @@ class OceanBlockDeviceMappingEbs(dict):
     @pulumi.getter(name="snapshotId")
     def snapshot_id(self) -> Optional[str]:
         """
-        (Optional) String. The Snapshot ID to mount by.
+        String. The Snapshot ID to mount by.
         """
         return pulumi.get(self, "snapshot_id")
 
@@ -8982,8 +8980,9 @@ class OceanBlockDeviceMappingEbsDynamicVolumeSize(dict):
                  resource: str,
                  size_per_resource_unit: int):
         """
-        :param int base_size: Initial size for IOPS.
-        :param int size_per_resource_unit: Additional size per resource unit (in IOPS). (Example: `baseSize=50`, `sizePerResourceUnit=20`, and an instance with 2 CPU is launched; its IOPS size will be: 90).
+        :param int base_size: Int. Initial size for volume. (Example: 50)
+        :param str resource: String. Resource type to increase volume size dynamically by. (Valid values: `CPU`)
+        :param int size_per_resource_unit: Int. Additional size (in GB) per resource unit. (Example: `baseSize=50`, `sizePerResourceUnit=20`, and instance with 2 CPU is launched; its total disk size will be: 90GB).
         """
         pulumi.set(__self__, "base_size", base_size)
         pulumi.set(__self__, "resource", resource)
@@ -8993,20 +8992,23 @@ class OceanBlockDeviceMappingEbsDynamicVolumeSize(dict):
     @pulumi.getter(name="baseSize")
     def base_size(self) -> int:
         """
-        Initial size for IOPS.
+        Int. Initial size for volume. (Example: 50)
         """
         return pulumi.get(self, "base_size")
 
     @property
     @pulumi.getter
     def resource(self) -> str:
+        """
+        String. Resource type to increase volume size dynamically by. (Valid values: `CPU`)
+        """
         return pulumi.get(self, "resource")
 
     @property
     @pulumi.getter(name="sizePerResourceUnit")
     def size_per_resource_unit(self) -> int:
         """
-        Additional size per resource unit (in IOPS). (Example: `baseSize=50`, `sizePerResourceUnit=20`, and an instance with 2 CPU is launched; its IOPS size will be: 90).
+        Int. Additional size (in GB) per resource unit. (Example: `baseSize=50`, `sizePerResourceUnit=20`, and instance with 2 CPU is launched; its total disk size will be: 90GB).
         """
         return pulumi.get(self, "size_per_resource_unit")
 
@@ -9644,7 +9646,7 @@ class OceanLaunchSpecBlockDeviceMappingEbs(dict):
         :param bool encrypted: Boolean. Enables [EBS encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) on the volume.
         :param int iops: Int. The number of I/O operations per second (IOPS) that the volume supports.
         :param str kms_key_id: String. Identifier (key ID, key alias, ID ARN, or alias ARN) for a customer managed CMK under which the EBS volume is encrypted.
-        :param str snapshot_id: (Optional) String. The Snapshot ID to mount by.
+        :param str snapshot_id: String. The Snapshot ID to mount by.
         :param int throughput: The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volume_type` = `gp3`.
         :param int volume_size: Int. The size, in GB of the volume.
         :param str volume_type: String. The type of the volume. (Example: `gp2`).
@@ -9712,7 +9714,7 @@ class OceanLaunchSpecBlockDeviceMappingEbs(dict):
     @pulumi.getter(name="snapshotId")
     def snapshot_id(self) -> Optional[str]:
         """
-        (Optional) String. The Snapshot ID to mount by.
+        String. The Snapshot ID to mount by.
         """
         return pulumi.get(self, "snapshot_id")
 
@@ -10143,7 +10145,6 @@ class OceanLaunchSpecInstanceTypesFilters(dict):
         :param Sequence[str] root_device_types: The filtered instance types will have a root device types from this list. Valid values: `ebs`, or `instance-store`.
         :param Sequence[str] virtualization_types: The filtered instance types will support at least one of the virtualization types from this list. Valid values: `hvm`, `paravirtual`.
                
-               
                <a id="update-policy"></a>
         """
         if categories is not None:
@@ -10325,7 +10326,6 @@ class OceanLaunchSpecInstanceTypesFilters(dict):
         """
         The filtered instance types will support at least one of the virtualization types from this list. Valid values: `hvm`, `paravirtual`.
 
-
         <a id="update-policy"></a>
         """
         return pulumi.get(self, "virtualization_types")
@@ -10337,8 +10337,8 @@ class OceanLaunchSpecLabel(dict):
                  key: str,
                  value: str):
         """
-        :param str key: The taint key.
-        :param str value: The taint value.
+        :param str key: The label key.
+        :param str value: The label value.
         """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "value", value)
@@ -10347,7 +10347,7 @@ class OceanLaunchSpecLabel(dict):
     @pulumi.getter
     def key(self) -> str:
         """
-        The taint key.
+        The label key.
         """
         return pulumi.get(self, "key")
 
@@ -10355,7 +10355,7 @@ class OceanLaunchSpecLabel(dict):
     @pulumi.getter
     def value(self) -> str:
         """
-        The taint value.
+        The label value.
         """
         return pulumi.get(self, "value")
 
@@ -10491,7 +10491,7 @@ class OceanLaunchSpecSchedulingTask(dict):
                  task_headrooms: Optional[Sequence['outputs.OceanLaunchSpecSchedulingTaskTaskHeadroom']] = None):
         """
         :param str cron_expression: A valid cron expression. For example : " * * * * * ". The cron job runs in UTC time and is in Unix cron format.
-        :param bool is_enabled: Flag to enable or disable the shutdown hours mechanism. When False, the mechanism is deactivated, and the virtual node group remains in its current state.
+        :param bool is_enabled: Describes whether the task is enabled. When True, the task runs. When False, it does not run.
         :param str task_type: The activity that you are scheduling. Valid values: "manualHeadroomUpdate".
         :param Sequence['OceanLaunchSpecSchedulingTaskTaskHeadroomArgs'] task_headrooms: The config of this scheduled task. Depends on the value of taskType.
         """
@@ -10513,7 +10513,7 @@ class OceanLaunchSpecSchedulingTask(dict):
     @pulumi.getter(name="isEnabled")
     def is_enabled(self) -> bool:
         """
-        Flag to enable or disable the shutdown hours mechanism. When False, the mechanism is deactivated, and the virtual node group remains in its current state.
+        Describes whether the task is enabled. When True, the task runs. When False, it does not run.
         """
         return pulumi.get(self, "is_enabled")
 
@@ -10653,8 +10653,8 @@ class OceanLaunchSpecTag(dict):
                  key: str,
                  value: str):
         """
-        :param str key: The taint key.
-        :param str value: The taint value.
+        :param str key: The label key.
+        :param str value: The label value.
         """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "value", value)
@@ -10663,7 +10663,7 @@ class OceanLaunchSpecTag(dict):
     @pulumi.getter
     def key(self) -> str:
         """
-        The taint key.
+        The label key.
         """
         return pulumi.get(self, "key")
 
@@ -10671,7 +10671,7 @@ class OceanLaunchSpecTag(dict):
     @pulumi.getter
     def value(self) -> str:
         """
-        The taint value.
+        The label value.
         """
         return pulumi.get(self, "value")
 

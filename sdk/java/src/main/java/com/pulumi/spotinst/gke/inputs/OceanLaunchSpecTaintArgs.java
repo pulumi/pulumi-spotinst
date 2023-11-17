@@ -31,14 +31,14 @@ public final class OceanLaunchSpecTaintArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The label key.
+     * The taint key.
      * 
      */
     @Import(name="key")
     private @Nullable Output<String> key;
 
     /**
-     * @return The label key.
+     * @return The taint key.
      * 
      */
     public Optional<Output<String>> key() {
@@ -46,14 +46,14 @@ public final class OceanLaunchSpecTaintArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The label value.
+     * The taint value.
      * 
      */
     @Import(name="value")
     private @Nullable Output<String> value;
 
     /**
-     * @return The label value.
+     * @return The taint value.
      * 
      */
     public Optional<Output<String>> value() {
@@ -108,7 +108,7 @@ public final class OceanLaunchSpecTaintArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param key The label key.
+         * @param key The taint key.
          * 
          * @return builder
          * 
@@ -119,7 +119,7 @@ public final class OceanLaunchSpecTaintArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param key The label key.
+         * @param key The taint key.
          * 
          * @return builder
          * 
@@ -129,7 +129,7 @@ public final class OceanLaunchSpecTaintArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param value The label value.
+         * @param value The taint value.
          * 
          * @return builder
          * 
@@ -140,7 +140,7 @@ public final class OceanLaunchSpecTaintArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param value The label value.
+         * @param value The taint value.
          * 
          * @return builder
          * 

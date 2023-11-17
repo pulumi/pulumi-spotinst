@@ -615,17 +615,39 @@ class ElastigroupIntegrationGkeAutoscaleLabel(dict):
     def __init__(__self__, *,
                  key: str,
                  value: str):
+        """
+        :param str key: The label name.
+        :param str value: The label value.
+               
+               Usage:
+               
+               ```python
+               import pulumi
+               ```
+        """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
     def key(self) -> str:
+        """
+        The label name.
+        """
         return pulumi.get(self, "key")
 
     @property
     @pulumi.getter
     def value(self) -> str:
+        """
+        The label value.
+
+        Usage:
+
+        ```python
+        import pulumi
+        ```
+        """
         return pulumi.get(self, "value")
 
 
@@ -919,6 +941,15 @@ class ElastigroupScalingDownPolicyDimension(dict):
     def __init__(__self__, *,
                  name: str,
                  value: Optional[str] = None):
+        """
+        :param str value: The label value.
+               
+               Usage:
+               
+               ```python
+               import pulumi
+               ```
+        """
         pulumi.set(__self__, "name", name)
         if value is not None:
             pulumi.set(__self__, "value", value)
@@ -931,6 +962,15 @@ class ElastigroupScalingDownPolicyDimension(dict):
     @property
     @pulumi.getter
     def value(self) -> Optional[str]:
+        """
+        The label value.
+
+        Usage:
+
+        ```python
+        import pulumi
+        ```
+        """
         return pulumi.get(self, "value")
 
 
@@ -1080,6 +1120,15 @@ class ElastigroupScalingUpPolicyDimension(dict):
     def __init__(__self__, *,
                  name: str,
                  value: Optional[str] = None):
+        """
+        :param str value: The label value.
+               
+               Usage:
+               
+               ```python
+               import pulumi
+               ```
+        """
         pulumi.set(__self__, "name", name)
         if value is not None:
             pulumi.set(__self__, "value", value)
@@ -1092,6 +1141,15 @@ class ElastigroupScalingUpPolicyDimension(dict):
     @property
     @pulumi.getter
     def value(self) -> Optional[str]:
+        """
+        The label value.
+
+        Usage:
+
+        ```python
+        import pulumi
+        ```
+        """
         return pulumi.get(self, "value")
 
 
@@ -1641,7 +1699,7 @@ class OceanImportScheduledTaskTask(dict):
         """
         :param str cron_expression: A valid cron expression. For example : " * * * * * ".The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of ‘frequency’ or ‘cronExpression’ should be used at a time. Required for cluster.scheduling.tasks object
                Example: 0 1 * * *
-        :param bool is_enabled: Enable the Ocean Kubernetes Autoscaler.
+        :param bool is_enabled: Describes whether the task is enabled. When true the task should run when false it should not run. Required for cluster.scheduling.tasks object.
         :param str task_type: Valid values: "clusterRoll". Required for cluster.scheduling.tasks object.
         """
         pulumi.set(__self__, "cron_expression", cron_expression)
@@ -1663,7 +1721,7 @@ class OceanImportScheduledTaskTask(dict):
     @pulumi.getter(name="isEnabled")
     def is_enabled(self) -> bool:
         """
-        Enable the Ocean Kubernetes Autoscaler.
+        Describes whether the task is enabled. When true the task should run when false it should not run. Required for cluster.scheduling.tasks object.
         """
         return pulumi.get(self, "is_enabled")
 
@@ -2165,8 +2223,8 @@ class OceanLaunchSpecMetadata(dict):
                  key: Optional[str] = None,
                  value: Optional[str] = None):
         """
-        :param str key: The label key.
-        :param str value: The label value.
+        :param str key: The metadata key.
+        :param str value: The metadata value.
         """
         if key is not None:
             pulumi.set(__self__, "key", key)
@@ -2177,7 +2235,7 @@ class OceanLaunchSpecMetadata(dict):
     @pulumi.getter
     def key(self) -> Optional[str]:
         """
-        The label key.
+        The metadata key.
         """
         return pulumi.get(self, "key")
 
@@ -2185,7 +2243,7 @@ class OceanLaunchSpecMetadata(dict):
     @pulumi.getter
     def value(self) -> Optional[str]:
         """
-        The label value.
+        The metadata value.
         """
         return pulumi.get(self, "value")
 
@@ -2271,7 +2329,7 @@ class OceanLaunchSpecNetworkInterfaceAccessConfig(dict):
                  name: Optional[str] = None,
                  type: Optional[str] = None):
         """
-        :param str name: The name of the access configuration.
+        :param str name: The launch specification name.
         :param str type: The type of the access configuration.
         """
         if name is not None:
@@ -2283,7 +2341,7 @@ class OceanLaunchSpecNetworkInterfaceAccessConfig(dict):
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        The name of the access configuration.
+        The launch specification name.
         """
         return pulumi.get(self, "name")
 
@@ -2680,8 +2738,8 @@ class OceanLaunchSpecTaint(dict):
                  value: Optional[str] = None):
         """
         :param str effect: The effect of the taint. Valid values: `"NoSchedule"`, `"PreferNoSchedule"`, `"NoExecute"`.
-        :param str key: The label key.
-        :param str value: The label value.
+        :param str key: The taint key.
+        :param str value: The taint value.
         """
         if effect is not None:
             pulumi.set(__self__, "effect", effect)
@@ -2702,7 +2760,7 @@ class OceanLaunchSpecTaint(dict):
     @pulumi.getter
     def key(self) -> Optional[str]:
         """
-        The label key.
+        The taint key.
         """
         return pulumi.get(self, "key")
 
@@ -2710,7 +2768,7 @@ class OceanLaunchSpecTaint(dict):
     @pulumi.getter
     def value(self) -> Optional[str]:
         """
-        The label value.
+        The taint value.
         """
         return pulumi.get(self, "value")
 

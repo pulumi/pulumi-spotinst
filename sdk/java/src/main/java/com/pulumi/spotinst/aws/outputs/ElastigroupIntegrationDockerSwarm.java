@@ -16,7 +16,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ElastigroupIntegrationDockerSwarm {
     /**
-     * @return The amount of time, in seconds, after a scaling activity completes before any further trigger-related scaling activities can start.
+     * @return The amount of time, in seconds, after a scaling activity completes before any further trigger-related scaling activities can start. Minimum 180, must be a multiple of 60.
      * 
      */
     private @Nullable Integer autoscaleCooldown;
@@ -36,19 +36,19 @@ public final class ElastigroupIntegrationDockerSwarm {
      */
     private @Nullable Boolean autoscaleIsEnabled;
     /**
-     * @return The URL for the Nomad master host.
+     * @return IP or FQDN of one of your swarm managers.
      * 
      */
     private String masterHost;
     /**
-     * @return The network port for the master host.
+     * @return Network port used by your swarm.
      * 
      */
     private Integer masterPort;
 
     private ElastigroupIntegrationDockerSwarm() {}
     /**
-     * @return The amount of time, in seconds, after a scaling activity completes before any further trigger-related scaling activities can start.
+     * @return The amount of time, in seconds, after a scaling activity completes before any further trigger-related scaling activities can start. Minimum 180, must be a multiple of 60.
      * 
      */
     public Optional<Integer> autoscaleCooldown() {
@@ -76,14 +76,14 @@ public final class ElastigroupIntegrationDockerSwarm {
         return Optional.ofNullable(this.autoscaleIsEnabled);
     }
     /**
-     * @return The URL for the Nomad master host.
+     * @return IP or FQDN of one of your swarm managers.
      * 
      */
     public String masterHost() {
         return this.masterHost;
     }
     /**
-     * @return The network port for the master host.
+     * @return Network port used by your swarm.
      * 
      */
     public Integer masterPort() {

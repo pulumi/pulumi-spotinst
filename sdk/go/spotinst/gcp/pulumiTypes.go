@@ -639,7 +639,7 @@ type ElastigroupGpu struct {
 	// }
 	// ```
 	Count int `pulumi:"count"`
-	// The type of GPU instance. Valid values: `nvidia-tesla-v100`, `nvidia-tesla-p100`, `nvidia-tesla-k80`.
+	// Specifies the type of disk, either SCRATCH or PERSISTENT.
 	Type string `pulumi:"type"`
 }
 
@@ -673,7 +673,7 @@ type ElastigroupGpuArgs struct {
 	// }
 	// ```
 	Count pulumi.IntInput `pulumi:"count"`
-	// The type of GPU instance. Valid values: `nvidia-tesla-v100`, `nvidia-tesla-p100`, `nvidia-tesla-k80`.
+	// Specifies the type of disk, either SCRATCH or PERSISTENT.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -752,7 +752,7 @@ func (o ElastigroupGpuOutput) Count() pulumi.IntOutput {
 	return o.ApplyT(func(v ElastigroupGpu) int { return v.Count }).(pulumi.IntOutput)
 }
 
-// The type of GPU instance. Valid values: `nvidia-tesla-v100`, `nvidia-tesla-p100`, `nvidia-tesla-k80`.
+// Specifies the type of disk, either SCRATCH or PERSISTENT.
 func (o ElastigroupGpuOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ElastigroupGpu) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -1874,9 +1874,9 @@ func (o ElastigroupLabelArrayOutput) Index(i pulumi.IntInput) ElastigroupLabelOu
 }
 
 type ElastigroupMetadata struct {
-	// Labels key.
+	// Metadata key.
 	Key string `pulumi:"key"`
-	// Labels value.
+	// Metadata value.
 	Value string `pulumi:"value"`
 }
 
@@ -1892,9 +1892,9 @@ type ElastigroupMetadataInput interface {
 }
 
 type ElastigroupMetadataArgs struct {
-	// Labels key.
+	// Metadata key.
 	Key pulumi.StringInput `pulumi:"key"`
-	// Labels value.
+	// Metadata value.
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -1949,12 +1949,12 @@ func (o ElastigroupMetadataOutput) ToElastigroupMetadataOutputWithContext(ctx co
 	return o
 }
 
-// Labels key.
+// Metadata key.
 func (o ElastigroupMetadataOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v ElastigroupMetadata) string { return v.Key }).(pulumi.StringOutput)
 }
 
-// Labels value.
+// Metadata value.
 func (o ElastigroupMetadataOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v ElastigroupMetadata) string { return v.Value }).(pulumi.StringOutput)
 }

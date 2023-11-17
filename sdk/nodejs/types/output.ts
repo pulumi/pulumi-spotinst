@@ -85,7 +85,7 @@ export interface HealthCheckCheck {
      */
     interval: number;
     /**
-     * The port of the Spotinst HCS (default: 80).
+     * The port to use to connect with the instance.
      */
     port: number;
     /**
@@ -555,11 +555,11 @@ export namespace aws {
          */
         automaticRoll?: boolean;
         /**
-         * The percentage size of each batch in the scheduled deployment roll.
+         * Percent size of each batch
          */
         batchSizePercentage?: number;
         /**
-         * The period of time (seconds) to wait before checking a batch's health after it's deployment.
+         * Amount of time to wait between batches
          */
         gracePeriod?: number;
         /**
@@ -570,7 +570,7 @@ export namespace aws {
 
     export interface ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategy {
         /**
-         * The action to take when scale up according to step's threshold is needed.
+         * Action to take
          */
         action?: string;
         /**
@@ -588,7 +588,7 @@ export namespace aws {
 
     export interface ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdate {
         /**
-         * In the event of a fallback to On-Demand instances, select the time period to revert back to Spot. Supported Arguments – always (default), timeWindow, never. For timeWindow or never to be valid the group must have availabilityOriented OR persistence defined.
+         * Actions to perform (options: timeWindow, never)
          */
         performAt?: string;
         /**
@@ -641,7 +641,7 @@ export namespace aws {
 
     export interface ElastigroupIntegrationDockerSwarm {
         /**
-         * The amount of time, in seconds, after a scaling activity completes before any further trigger-related scaling activities can start.
+         * The amount of time, in seconds, after a scaling activity completes before any further trigger-related scaling activities can start. Minimum 180, must be a multiple of 60.
          */
         autoscaleCooldown?: number;
         /**
@@ -657,18 +657,18 @@ export namespace aws {
          */
         autoscaleIsEnabled?: boolean;
         /**
-         * The URL for the Nomad master host.
+         * IP or FQDN of one of your swarm managers.
          */
         masterHost: string;
         /**
-         * The network port for the master host.
+         * Network port used by your swarm.
          */
         masterPort: number;
     }
 
     export interface ElastigroupIntegrationDockerSwarmAutoscaleDown {
         /**
-         * The number of periods over which data is compared to the specified threshold.
+         * How many evaluation periods should accumulate before a scale down action takes place.
          */
         evaluationPeriods?: number;
         /**
@@ -679,15 +679,15 @@ export namespace aws {
 
     export interface ElastigroupIntegrationDockerSwarmAutoscaleHeadroom {
         /**
-         * How much CPU (MHz) to allocate for headroom unit.
+         * How much CPU to allocate for headroom unit.
          */
         cpuPerUnit?: number;
         /**
-         * How much Memory allocate for headroom unit.
+         * The amount of memory in each headroom unit. Measured in MiB.
          */
         memoryPerUnit?: number;
         /**
-         * How many units of headroom to allocate.
+         * How many units to allocate for headroom unit.
          */
         numOfUnits?: number;
     }
@@ -706,11 +706,11 @@ export namespace aws {
          */
         autoscaleDown?: outputs.aws.ElastigroupIntegrationEcsAutoscaleDown;
         /**
-         * An option to set compute reserve for the cluster.
+         * Headroom for the cluster.
          */
         autoscaleHeadroom?: outputs.aws.ElastigroupIntegrationEcsAutoscaleHeadroom;
         /**
-         * Enabling the automatic k8s auto-scaler functionality. For more information please see: [Kubernetes auto scaler](https://api.spotinst.com/integration-docs/elastigroup/container-management/kubernetes/autoscaler/).
+         * Enabling the automatic auto-scaler functionality. For more information please see: [ECS auto scaler](https://api.spotinst.com/container-management/amazon-ecs/elastigroup-for-ecs-concepts/autoscaling/).
          */
         autoscaleIsAutoConfig?: boolean;
         /**
@@ -741,7 +741,7 @@ export namespace aws {
 
     export interface ElastigroupIntegrationEcsAutoscaleDown {
         /**
-         * The number of periods over which data is compared to the specified threshold.
+         * How many evaluation periods should accumulate before a scale down action takes place.
          */
         evaluationPeriods?: number;
         /**
@@ -752,15 +752,15 @@ export namespace aws {
 
     export interface ElastigroupIntegrationEcsAutoscaleHeadroom {
         /**
-         * How much CPU (MHz) to allocate for headroom unit.
+         * How much CPU to allocate for headroom unit.
          */
         cpuPerUnit?: number;
         /**
-         * How much Memory allocate for headroom unit.
+         * The amount of memory in each headroom unit. Measured in MiB.
          */
         memoryPerUnit?: number;
         /**
-         * How many units of headroom to allocate.
+         * How many units to allocate for headroom unit.
          */
         numOfUnits?: number;
     }
@@ -787,14 +787,7 @@ export namespace aws {
 
     export interface ElastigroupIntegrationGitlabRunner {
         /**
-         * Specifies whether the scaling policy described in this block is enabled.
-         */
-        isEnabled?: boolean;
-    }
-
-    export interface ElastigroupIntegrationKubernetes {
-        /**
-         * The public IP of the DC/OS Master.
+         * Specifies whether the integration is enabled.
          *
          * Usage:
          *
@@ -802,6 +795,10 @@ export namespace aws {
          * import * as pulumi from "@pulumi/pulumi";
          * ```
          */
+        isEnabled?: boolean;
+    }
+
+    export interface ElastigroupIntegrationKubernetes {
         apiServer?: string;
         /**
          * The amount of time, in seconds, after a scaling activity completes before any further trigger-related scaling activities can start.
@@ -846,7 +843,7 @@ export namespace aws {
 
     export interface ElastigroupIntegrationKubernetesAutoscaleDown {
         /**
-         * The number of periods over which data is compared to the specified threshold.
+         * How many evaluation periods should accumulate before a scale down action takes place.
          */
         evaluationPeriods?: number;
         /**
@@ -857,15 +854,15 @@ export namespace aws {
 
     export interface ElastigroupIntegrationKubernetesAutoscaleHeadroom {
         /**
-         * How much CPU (MHz) to allocate for headroom unit.
+         * How much CPU to allocate for headroom unit.
          */
         cpuPerUnit?: number;
         /**
-         * How much Memory allocate for headroom unit.
+         * The amount of memory in each headroom unit. Measured in MiB.
          */
         memoryPerUnit?: number;
         /**
-         * How many units of headroom to allocate.
+         * How many units to allocate for headroom unit.
          */
         numOfUnits?: number;
     }
@@ -955,22 +952,22 @@ export namespace aws {
 
     export interface ElastigroupIntegrationNomadAutoscaleDown {
         /**
-         * The number of periods over which data is compared to the specified threshold.
+         * How many evaluation periods should accumulate before a scale down action takes place.
          */
         evaluationPeriods?: number;
     }
 
     export interface ElastigroupIntegrationNomadAutoscaleHeadroom {
         /**
-         * How much CPU (MHz) to allocate for headroom unit.
+         * How much CPU to allocate for headroom unit.
          */
         cpuPerUnit?: number;
         /**
-         * How much Memory allocate for headroom unit.
+         * The amount of memory in each headroom unit. Measured in MiB.
          */
         memoryPerUnit?: number;
         /**
-         * How many units of headroom to allocate.
+         * How many units to allocate for headroom unit.
          */
         numOfUnits?: number;
     }
@@ -981,7 +978,7 @@ export namespace aws {
          */
         accessKey: string;
         /**
-         * The URL for the Nomad master host.
+         * IP or FQDN of one of your swarm managers.
          */
         masterHost: string;
         /**
@@ -1160,7 +1157,13 @@ export namespace aws {
 
     export interface ElastigroupMultipleMetricsMetric {
         /**
-         * A list of dimensions describing qualities of the metric.
+         * The dimensions for the alarm's associated metric. When name is "instanceId", no value is needed.
+         * *`name` - (Required) the dimension name.
+         * *`value` - (Optional) the dimension value.
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          */
         dimensions?: outputs.aws.ElastigroupMultipleMetricsMetricDimension[];
         /**
@@ -1168,11 +1171,11 @@ export namespace aws {
          */
         extendedStatistic?: string;
         /**
-         * The name of the metric, with or without spaces.
+         * The name of the source metric.
          */
         metricName: string;
         /**
-         * The group name.
+         * The expression name.
          */
         name: string;
         /**
@@ -1180,11 +1183,11 @@ export namespace aws {
          */
         namespace: string;
         /**
-         * The metric statistics to return. For information about specific statistics go to [Statistics](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/index.html?CHAP_TerminologyandKeyConcepts.html#Statistic) in the Amazon CloudWatch Developer Guide.
+         * The metric statistics to return. Valid values: `"average"`, `"sum"`, `"sampleCount"`, `"maximum"`, `"minimum"`, `"percentile"`.
          */
         statistic?: string;
         /**
-         * The unit for the alarm's associated metric. Valid values: `"percent`, `"seconds"`, `"microseconds"`, `"milliseconds"`, `"bytes"`, `"kilobytes"`, `"megabytes"`, `"gigabytes"`, `"terabytes"`, `"bits"`, `"kilobits"`, `"megabits"`, `"gigabits"`, `"terabits"`, `"count"`, `"bytes/second"`, `"kilobytes/second"`, `"megabytes/second"`, `"gigabytes/second"`, `"terabytes/second"`, `"bits/second"`, `"kilobits/second"`, `"megabits/second"`, `"gigabits/second"`, `"terabits/second"`, `"count/second"`, `"none"`.
+         * The unit for the alarm's associated metric. Valid values: `"seconds"`, `"microseconds"`, `"milliseconds"`, `"bytes"`, `"kilobytes"`, `"megabytes"`, `"gigabytes"`, `"terabytes"`, `"bits"`, `"kilobits"`, `"megabits"`, `"gigabits"`, `"terabits"`, `"percent"`, `"count"`, `"bytes/second"`, `"kilobytes/second"`, `"megabytes/second"`, `"gigabytes/second"`, `"terabytes/second"`, `"bits/second"`, `"kilobits/second"`, `"megabits/second"`, `"gigabits/second"`, `"terabits/second"`, `"count/second"`, `"none"`.
          */
         unit?: string;
     }
@@ -1385,14 +1388,7 @@ export namespace aws {
          */
         target?: string;
         /**
-         * The value against which the specified statistic is compared in order to determine if a step should be applied.
-         *
-         *
-         * If you do not specify an action type, you can only use – `adjustment`, `minTargetCapacity`, `maxTargetCapacity`.
-         * While using action_type, please also set the following:
-         *
-         * When using `adjustment`           – set the field `adjustment`
-         * When using `updateCapacity`       – set the fields `minimum`, `maximum`, and `target`
+         * The value against which the specified statistic is compared. If a `stepAdjustment` object is defined, then it cannot be specified.
          */
         threshold?: number;
         /**
@@ -1414,12 +1410,11 @@ export namespace aws {
 
     export interface ElastigroupScalingDownPolicyStepAdjustment {
         /**
-         * The action to take when scale up according to step's threshold is needed.
+         * Action to take
          */
         action: outputs.aws.ElastigroupScalingDownPolicyStepAdjustmentAction;
         /**
          * The value against which the specified statistic is compared in order to determine if a step should be applied.
-         *
          *
          * If you do not specify an action type, you can only use – `adjustment`, `minTargetCapacity`, `maxTargetCapacity`.
          * While using action_type, please also set the following:
@@ -1456,7 +1451,13 @@ export namespace aws {
          */
         target?: string;
         /**
-         * The type of the action to take when scale up is needed. Valid types: `"adjustment"`, `"updateCapacity"`, `"setMaxTarget"`, `"percentageAdjustment"`.
+         * String, Action type. Supported action types: `pause`, `resume`, `recycle`, `deallocate`.
+         *
+         * Usage:
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          */
         type: string;
     }
@@ -1482,7 +1483,7 @@ export namespace aws {
          */
         dimensions?: outputs.aws.ElastigroupScalingTargetPolicyDimension[];
         /**
-         * The number of periods over which data is compared to the specified threshold.
+         * How many evaluation periods should accumulate before a scale down action takes place.
          */
         evaluationPeriods?: number;
         /**
@@ -1625,15 +1626,7 @@ export namespace aws {
          */
         target?: string;
         /**
-         * The value against which the specified statistic is compared in order to determine if a step should be applied.
-         *
-         *
-         * If you do not specify an action type, you can only use – `adjustment`, `minTargetCapacity`, `maxTargetCapacity`.
-         * While using action_type, please also set the following:
-         *
-         * When using `adjustment`           – set the field `adjustment`
-         * When using `setMinTarget`         – set the field `minTargetCapacity`
-         * When using `updateCapacity`       – set the fields `minimum`, `maximum`, and `target`
+         * The value against which the specified statistic is compared. If a `stepAdjustment` object is defined, then it cannot be specified.
          */
         threshold?: number;
         /**
@@ -1655,12 +1648,11 @@ export namespace aws {
 
     export interface ElastigroupScalingUpPolicyStepAdjustment {
         /**
-         * The action to take when scale up according to step's threshold is needed.
+         * Action to take
          */
         action: outputs.aws.ElastigroupScalingUpPolicyStepAdjustmentAction;
         /**
          * The value against which the specified statistic is compared in order to determine if a step should be applied.
-         *
          *
          * If you do not specify an action type, you can only use – `adjustment`, `minTargetCapacity`, `maxTargetCapacity`.
          * While using action_type, please also set the following:
@@ -1697,7 +1689,13 @@ export namespace aws {
          */
         target?: string;
         /**
-         * The type of the action to take when scale up is needed. Valid types: `"adjustment"`, `"updateCapacity"`, `"setMaxTarget"`, `"percentageAdjustment"`.
+         * String, Action type. Supported action types: `pause`, `resume`, `recycle`, `deallocate`.
+         *
+         * Usage:
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          */
         type: string;
     }
@@ -1859,11 +1857,11 @@ export namespace aws {
 
     export interface ElastigroupUpdatePolicyRollConfig {
         /**
-         * The percentage size of each batch in the scheduled deployment roll.
+         * Percent size of each batch
          */
         batchSizePercentage: number;
         /**
-         * The period of time (seconds) to wait before checking a batch's health after it's deployment.
+         * Amount of time to wait between batches
          */
         gracePeriod?: number;
         /**
@@ -1886,7 +1884,7 @@ export namespace aws {
 
     export interface ElastigroupUpdatePolicyRollConfigStrategy {
         /**
-         * The action to take when scale up according to step's threshold is needed.
+         * Action to take
          */
         action: string;
         /**
@@ -2096,7 +2094,7 @@ export namespace aws {
          */
         maximum?: string;
         /**
-         * The name of the metric in CloudWatch which the statement will be based on.
+         * The name of the metric, with or without spaces.
          */
         metricName: string;
         /**
@@ -2108,15 +2106,15 @@ export namespace aws {
          */
         minimum?: string;
         /**
-         * Must contain the value: `AWS/ElasticMapReduce`.
+         * The namespace for the metric.
          */
         namespace: string;
         /**
-         * The operator to use in order to determine if the policy is applicable. Valid values: `gt` | `gte` | `lt` | `lte`
+         * The operator to use. Allowed values are : 'gt', 'gte', 'lt' , 'lte'.
          */
         operator: string;
         /**
-         * The time window in seconds over which the statistic is applied.
+         * The granularity, in seconds, of the returned datapoints. Period must be at least 60 seconds and must be a multiple of 60.
          */
         period: number;
         /**
@@ -2124,7 +2122,7 @@ export namespace aws {
          */
         policyName: string;
         /**
-         * The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`
+         * The metric statistics to return. For information about specific statistics go to [Statistics](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/index.html?CHAP_TerminologyandKeyConcepts.html#Statistic) in the Amazon CloudWatch Developer Guide.
          */
         statistic: string;
         /**
@@ -2132,11 +2130,11 @@ export namespace aws {
          */
         target?: string;
         /**
-         * The value that the specified statistic is compared to.
+         * The value against which the specified statistic is compared.
          */
         threshold: number;
         /**
-         * The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`
+         * The unit for the metric.
          */
         unit: string;
     }
@@ -2171,7 +2169,7 @@ export namespace aws {
          */
         maximum?: string;
         /**
-         * The name of the metric in CloudWatch which the statement will be based on.
+         * The name of the metric, with or without spaces.
          */
         metricName: string;
         /**
@@ -2183,15 +2181,15 @@ export namespace aws {
          */
         minimum?: string;
         /**
-         * Must contain the value: `AWS/ElasticMapReduce`.
+         * The namespace for the metric.
          */
         namespace: string;
         /**
-         * The operator to use in order to determine if the policy is applicable. Valid values: `gt` | `gte` | `lt` | `lte`
+         * The operator to use. Allowed values are : 'gt', 'gte', 'lt' , 'lte'.
          */
         operator: string;
         /**
-         * The time window in seconds over which the statistic is applied.
+         * The granularity, in seconds, of the returned datapoints. Period must be at least 60 seconds and must be a multiple of 60.
          */
         period: number;
         /**
@@ -2199,7 +2197,7 @@ export namespace aws {
          */
         policyName: string;
         /**
-         * The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`
+         * The metric statistics to return. For information about specific statistics go to [Statistics](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/index.html?CHAP_TerminologyandKeyConcepts.html#Statistic) in the Amazon CloudWatch Developer Guide.
          */
         statistic: string;
         /**
@@ -2207,11 +2205,11 @@ export namespace aws {
          */
         target?: string;
         /**
-         * The value that the specified statistic is compared to.
+         * The value against which the specified statistic is compared.
          */
         threshold: number;
         /**
-         * The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`
+         * The unit for the metric.
          */
         unit: string;
     }
@@ -2359,7 +2357,7 @@ export namespace aws {
          */
         maximum?: string;
         /**
-         * The name of the metric in CloudWatch which the statement will be based on.
+         * The name of the metric, with or without spaces.
          */
         metricName: string;
         /**
@@ -2371,15 +2369,15 @@ export namespace aws {
          */
         minimum?: string;
         /**
-         * Must contain the value: `AWS/ElasticMapReduce`.
+         * The namespace for the metric.
          */
         namespace: string;
         /**
-         * The operator to use in order to determine if the policy is applicable. Valid values: `gt` | `gte` | `lt` | `lte`
+         * The operator to use. Allowed values are : 'gt', 'gte', 'lt' , 'lte'.
          */
         operator: string;
         /**
-         * The time window in seconds over which the statistic is applied.
+         * The granularity, in seconds, of the returned datapoints. Period must be at least 60 seconds and must be a multiple of 60.
          */
         period: number;
         /**
@@ -2387,7 +2385,7 @@ export namespace aws {
          */
         policyName: string;
         /**
-         * The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`
+         * The metric statistics to return. For information about specific statistics go to [Statistics](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/index.html?CHAP_TerminologyandKeyConcepts.html#Statistic) in the Amazon CloudWatch Developer Guide.
          */
         statistic: string;
         /**
@@ -2395,11 +2393,11 @@ export namespace aws {
          */
         target?: string;
         /**
-         * The value that the specified statistic is compared to.
+         * The value against which the specified statistic is compared.
          */
         threshold: number;
         /**
-         * The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`
+         * The unit for the metric.
          */
         unit: string;
     }
@@ -2434,7 +2432,7 @@ export namespace aws {
          */
         maximum?: string;
         /**
-         * The name of the metric in CloudWatch which the statement will be based on.
+         * The name of the metric, with or without spaces.
          */
         metricName: string;
         /**
@@ -2446,15 +2444,15 @@ export namespace aws {
          */
         minimum?: string;
         /**
-         * Must contain the value: `AWS/ElasticMapReduce`.
+         * The namespace for the metric.
          */
         namespace: string;
         /**
-         * The operator to use in order to determine if the policy is applicable. Valid values: `gt` | `gte` | `lt` | `lte`
+         * The operator to use. Allowed values are : 'gt', 'gte', 'lt' , 'lte'.
          */
         operator: string;
         /**
-         * The time window in seconds over which the statistic is applied.
+         * The granularity, in seconds, of the returned datapoints. Period must be at least 60 seconds and must be a multiple of 60.
          */
         period: number;
         /**
@@ -2462,7 +2460,7 @@ export namespace aws {
          */
         policyName: string;
         /**
-         * The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`
+         * The metric statistics to return. For information about specific statistics go to [Statistics](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/index.html?CHAP_TerminologyandKeyConcepts.html#Statistic) in the Amazon CloudWatch Developer Guide.
          */
         statistic: string;
         /**
@@ -2470,11 +2468,11 @@ export namespace aws {
          */
         target?: string;
         /**
-         * The value that the specified statistic is compared to.
+         * The value against which the specified statistic is compared.
          */
         threshold: number;
         /**
-         * The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`
+         * The unit for the metric.
          */
         unit: string;
     }
@@ -2489,31 +2487,31 @@ export namespace aws {
          */
         evaluationPeriods?: number;
         /**
-         * The name of the metric in CloudWatch which the statement will be based on.
+         * The name of the metric, with or without spaces.
          */
         metricName: string;
         /**
-         * Must contain the value: `AWS/ElasticMapReduce`.
+         * The namespace for the metric.
          */
         namespace: string;
         /**
-         * The operator to use in order to determine if the policy is applicable. Valid values: `gt` | `gte` | `lt` | `lte`
+         * The operator to use. Allowed values are : 'gt', 'gte', 'lt' , 'lte'.
          */
         operator?: string;
         /**
-         * The time window in seconds over which the statistic is applied.
+         * The granularity, in seconds, of the returned datapoints. Period must be at least 60 seconds and must be a multiple of 60.
          */
         period?: number;
         /**
-         * The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`
+         * The metric statistics to return. For information about specific statistics go to [Statistics](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/index.html?CHAP_TerminologyandKeyConcepts.html#Statistic) in the Amazon CloudWatch Developer Guide.
          */
         statistic?: string;
         /**
-         * The value that the specified statistic is compared to.
+         * The value against which the specified statistic is compared.
          */
         threshold: number;
         /**
-         * The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`
+         * The unit for the metric.
          */
         unit?: string;
     }
@@ -2590,7 +2588,7 @@ export namespace aws {
          */
         kmsKeyId?: string;
         /**
-         * (Optional) String. The Snapshot ID to mount by.
+         * String. The Snapshot ID to mount by.
          */
         snapshotId?: string;
         /**
@@ -2621,12 +2619,15 @@ export namespace aws {
 
     export interface OceanBlockDeviceMappingEbsDynamicVolumeSize {
         /**
-         * Initial size for IOPS.
+         * Int. Initial size for volume. (Example: 50)
          */
         baseSize: number;
+        /**
+         * String. Resource type to increase volume size dynamically by. (Valid values: `CPU`)
+         */
         resource: string;
         /**
-         * Additional size per resource unit (in IOPS). (Example: `baseSize=50`, `sizePerResourceUnit=20`, and an instance with 2 CPU is launched; its IOPS size will be: 90).
+         * Int. Additional size (in GB) per resource unit. (Example: `baseSize=50`, `sizePerResourceUnit=20`, and instance with 2 CPU is launched; its total disk size will be: 90GB).
          */
         sizePerResourceUnit: number;
     }
@@ -2799,7 +2800,7 @@ export namespace aws {
          */
         kmsKeyId?: string;
         /**
-         * (Optional) String. The Snapshot ID to mount by.
+         * String. The Snapshot ID to mount by.
          */
         snapshotId?: string;
         /**
@@ -2957,7 +2958,6 @@ export namespace aws {
         /**
          * The filtered instance types will support at least one of the virtualization types from this list. Valid values: `hvm`, `paravirtual`.
          *
-         *
          * <a id="update-policy"></a>
          */
         virtualizationTypes?: string[];
@@ -2965,11 +2965,11 @@ export namespace aws {
 
     export interface OceanLaunchSpecLabel {
         /**
-         * The taint key.
+         * The label key.
          */
         key: string;
         /**
-         * The taint value.
+         * The label value.
          */
         value: string;
     }
@@ -3002,7 +3002,7 @@ export namespace aws {
          */
         cronExpression: string;
         /**
-         * Flag to enable or disable the shutdown hours mechanism. When False, the mechanism is deactivated, and the virtual node group remains in its current state.
+         * Describes whether the task is enabled. When True, the task runs. When False, it does not run.
          */
         isEnabled: boolean;
         /**
@@ -3043,11 +3043,11 @@ export namespace aws {
 
     export interface OceanLaunchSpecTag {
         /**
-         * The taint key.
+         * The label key.
          */
         key: string;
         /**
-         * The taint value.
+         * The label value.
          */
         value: string;
     }
@@ -3184,7 +3184,7 @@ export namespace azure {
     export interface ElastigroupImageCustom {
         imageName: string;
         /**
-         * Name of the Azure Resource Group where the Managed Service Identity is located.
+         * Name of the Resource Group for Elastigroup.
          */
         resourceGroupName: string;
     }
@@ -3218,11 +3218,11 @@ export namespace azure {
 
     export interface ElastigroupManagedServiceIdentity {
         /**
-         * Name of the Managed Service Identity.
+         * The group name.
          */
         name: string;
         /**
-         * Name of the Azure Resource Group where the Managed Service Identity is located.
+         * Name of the Resource Group for Elastigroup.
          */
         resourceGroupName: string;
     }
@@ -3231,7 +3231,7 @@ export namespace azure {
         additionalIpConfigs?: outputs.azure.ElastigroupNetworkAdditionalIpConfig[];
         assignPublicIp?: boolean;
         /**
-         * Name of the Azure Resource Group where the Managed Service Identity is located.
+         * Name of the Resource Group for Elastigroup.
          */
         resourceGroupName: string;
         subnetName: string;
@@ -3240,7 +3240,7 @@ export namespace azure {
 
     export interface ElastigroupNetworkAdditionalIpConfig {
         /**
-         * Name of the Managed Service Identity.
+         * The group name.
          */
         name: string;
         privateIpVersion?: string;
@@ -3269,7 +3269,7 @@ export namespace azure {
 
     export interface ElastigroupScalingDownPolicyDimension {
         /**
-         * Name of the Managed Service Identity.
+         * The group name.
          */
         name: string;
         /**
@@ -3301,7 +3301,7 @@ export namespace azure {
 
     export interface ElastigroupScalingUpPolicyDimension {
         /**
-         * Name of the Managed Service Identity.
+         * The group name.
          */
         name: string;
         /**
@@ -3405,7 +3405,7 @@ export namespace azure {
          */
         minorVersionAutoUpgrade: boolean;
         /**
-         * Name of the Load Balancer.
+         * Extension name.
          */
         name: string;
         /**
@@ -3413,7 +3413,7 @@ export namespace azure {
          */
         publisher: string;
         /**
-         * The type of load balancer. Supported value: `loadBalancer`
+         * Extension type.
          */
         type: string;
     }
@@ -3476,11 +3476,11 @@ export namespace azure {
 
     export interface OceanManagedServiceIdentity {
         /**
-         * Name of the Load Balancer.
+         * Name of the Managed Service Identity.
          */
         name: string;
         /**
-         * The Resource Group name of the Load Balancer.
+         * Name of the Azure Resource Group where the Managed Service Identity is located.
          */
         resourceGroupName: string;
     }
@@ -3491,7 +3491,7 @@ export namespace azure {
          */
         networkInterfaces: outputs.azure.OceanNetworkNetworkInterface[];
         /**
-         * The Resource Group name of the Load Balancer.
+         * Vnet resource group name.
          */
         resourceGroupName: string;
         /**
@@ -3522,7 +3522,7 @@ export namespace azure {
 
     export interface OceanNetworkNetworkInterfaceAdditionalIpConfig {
         /**
-         * Name of the Load Balancer.
+         * The Ocean cluster name.
          */
         name: string;
         /**
@@ -3533,11 +3533,11 @@ export namespace azure {
 
     export interface OceanNetworkNetworkInterfaceSecurityGroup {
         /**
-         * Name of the Load Balancer.
+         * The Ocean cluster name.
          */
         name: string;
         /**
-         * The Resource Group name of the Load Balancer.
+         * Name of the Azure Resource Group into which VMs will be launched. Cannot be updated.
          */
         resourceGroupName: string;
     }
@@ -3645,7 +3645,7 @@ export namespace azure {
          */
         sizeGb: number;
         /**
-         * The type of load balancer. Supported value: `loadBalancer`
+         * The type of the OS disk. Supported values: `Standard_LRS`, `Premium_LRS`, `StandardSSD_LRS`.
          */
         type?: string;
     }
@@ -3701,11 +3701,11 @@ export namespace azure {
 
     export interface OceanVirtualNodeGroupLabel {
         /**
-         * Tag Key for Vms in the cluster.
+         * The label key.
          */
         key: string;
         /**
-         * Tag Value for VMs in the cluster.
+         * The label value.
          */
         value?: string;
     }
@@ -3764,11 +3764,11 @@ export namespace azure {
          */
         effect: string;
         /**
-         * Tag Key for Vms in the cluster.
+         * The taint key.
          */
         key: string;
         /**
-         * Tag Value for VMs in the cluster.
+         * The taint value.
          */
         value: string;
     }
@@ -3850,11 +3850,11 @@ export namespace ecs {
 
     export interface OceanAutoscalerResourceLimits {
         /**
-         * Maximum amount of Memory (GiB).
+         * The maximum memory in GiB units that can be allocated to the cluster.
          */
         maxMemoryGib?: number;
         /**
-         * Maximum number of vcpus available.
+         * The maximum cpu in vCPU units that can be allocated to the cluster.
          */
         maxVcpu?: number;
     }
@@ -3897,7 +3897,7 @@ export namespace ecs {
          */
         kmsKeyId?: string;
         /**
-         * (Optional) String. The snapshot ID to mount by.
+         * String. The snapshot ID to mount by.
          */
         snapshotId?: string;
         /**
@@ -4039,7 +4039,7 @@ export namespace ecs {
 
     export interface OceanLaunchSpecAutoscaleHeadroom {
         /**
-         * Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+         * Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in CPU units, where 1024 units = 1 vCPU.
          */
         cpuPerUnit?: number;
         /**
@@ -4047,7 +4047,7 @@ export namespace ecs {
          */
         memoryPerUnit?: number;
         /**
-         * The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
+         * The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
          */
         numOfUnits: number;
     }
@@ -4109,7 +4109,7 @@ export namespace ecs {
 
     export interface OceanLaunchSpecSchedulingTaskTaskHeadroom {
         /**
-         * Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+         * Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in CPU units, where 1024 units = 1 vCPU.
          */
         cpuPerUnit?: number;
         /**
@@ -4117,7 +4117,7 @@ export namespace ecs {
          */
         memoryPerUnit?: number;
         /**
-         * The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
+         * The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
          */
         numOfUnits: number;
     }
@@ -4206,7 +4206,7 @@ export namespace ecs {
          */
         cronExpression: string;
         /**
-         * Enable the Ocean ECS autoscaler.
+         * Describes whether the task is enabled. When true the task should run when false it should not run. Required for `cluster.scheduling.tasks` object.
          */
         isEnabled: boolean;
         /**
@@ -4215,7 +4215,6 @@ export namespace ecs {
          * ```typescript
          * import * as pulumi from "@pulumi/pulumi";
          * ```
-         *
          *
          * <a id="attributes-reference"></a>
          */
@@ -4371,7 +4370,7 @@ export namespace gcp {
          */
         count: number;
         /**
-         * The type of GPU instance. Valid values: `nvidia-tesla-v100`, `nvidia-tesla-p100`, `nvidia-tesla-k80`.
+         * Specifies the type of disk, either SCRATCH or PERSISTENT.
          */
         type: string;
     }
@@ -4450,11 +4449,11 @@ export namespace gcp {
 
     export interface ElastigroupMetadata {
         /**
-         * Labels key.
+         * Metadata key.
          */
         key: string;
         /**
-         * Labels value.
+         * Metadata value.
          */
         value: string;
     }
@@ -4762,7 +4761,19 @@ export namespace gke {
     }
 
     export interface ElastigroupIntegrationGkeAutoscaleLabel {
+        /**
+         * The label name.
+         */
         key: string;
+        /**
+         * The label value.
+         *
+         * Usage:
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
+         */
         value: string;
     }
 
@@ -4814,6 +4825,15 @@ export namespace gke {
 
     export interface ElastigroupScalingDownPolicyDimension {
         name: string;
+        /**
+         * The label value.
+         *
+         * Usage:
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
+         */
         value?: string;
     }
 
@@ -4839,6 +4859,15 @@ export namespace gke {
 
     export interface ElastigroupScalingUpPolicyDimension {
         name: string;
+        /**
+         * The label value.
+         *
+         * Usage:
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
+         */
         value?: string;
     }
 
@@ -4978,7 +5007,7 @@ export namespace gke {
          */
         cronExpression: string;
         /**
-         * Enable the Ocean Kubernetes Autoscaler.
+         * Describes whether the task is enabled. When true the task should run when false it should not run. Required for cluster.scheduling.tasks object.
          */
         isEnabled: boolean;
         taskParameters?: outputs.gke.OceanImportScheduledTaskTaskTaskParameters;
@@ -5087,11 +5116,11 @@ export namespace gke {
 
     export interface OceanLaunchSpecMetadata {
         /**
-         * The label key.
+         * The metadata key.
          */
         key: string;
         /**
-         * The label value.
+         * The metadata value.
          */
         value: string;
     }
@@ -5117,7 +5146,7 @@ export namespace gke {
 
     export interface OceanLaunchSpecNetworkInterfaceAccessConfig {
         /**
-         * The name of the access configuration.
+         * The launch specification name.
          */
         name?: string;
         /**
@@ -5219,11 +5248,11 @@ export namespace gke {
          */
         effect: string;
         /**
-         * The label key.
+         * The taint key.
          */
         key: string;
         /**
-         * The label value.
+         * The taint value.
          */
         value: string;
     }

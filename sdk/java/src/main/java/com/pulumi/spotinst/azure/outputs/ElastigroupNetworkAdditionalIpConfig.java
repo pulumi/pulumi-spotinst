@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ElastigroupNetworkAdditionalIpConfig {
     /**
-     * @return Name of the Managed Service Identity.
+     * @return The group name.
      * 
      */
     private String name;
@@ -20,7 +20,7 @@ public final class ElastigroupNetworkAdditionalIpConfig {
 
     private ElastigroupNetworkAdditionalIpConfig() {}
     /**
-     * @return Name of the Managed Service Identity.
+     * @return The group name.
      * 
      */
     public String name() {

@@ -45,12 +45,12 @@ class ElastigroupArgs:
         The set of arguments for constructing a Elastigroup resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] od_sizes: Available On-Demand sizes
         :param pulumi.Input[str] region: The region your Azure group will be created in.
-        :param pulumi.Input[str] resource_group_name: Name of the Azure Resource Group where the Managed Service Identity is located.
+        :param pulumi.Input[str] resource_group_name: Name of the Resource Group for Elastigroup.
         :param pulumi.Input[str] custom_data: Custom init script file or text in Base64 encoded format.
         :param pulumi.Input[int] desired_capacity: The desired number of instances the group should have at any time.
         :param pulumi.Input[int] max_size: The maximum number of instances the group should have at any time.
         :param pulumi.Input[int] min_size: The minimum number of instances the group should have at any time.
-        :param pulumi.Input[str] name: Name of the Managed Service Identity.
+        :param pulumi.Input[str] name: The group name.
         """
         pulumi.set(__self__, "low_priority_sizes", low_priority_sizes)
         pulumi.set(__self__, "network", network)
@@ -151,7 +151,7 @@ class ElastigroupArgs:
     @pulumi.getter(name="resourceGroupName")
     def resource_group_name(self) -> pulumi.Input[str]:
         """
-        Name of the Azure Resource Group where the Managed Service Identity is located.
+        Name of the Resource Group for Elastigroup.
         """
         return pulumi.get(self, "resource_group_name")
 
@@ -283,7 +283,7 @@ class ElastigroupArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the Managed Service Identity.
+        The group name.
         """
         return pulumi.get(self, "name")
 
@@ -380,10 +380,10 @@ class _ElastigroupState:
         :param pulumi.Input[int] desired_capacity: The desired number of instances the group should have at any time.
         :param pulumi.Input[int] max_size: The maximum number of instances the group should have at any time.
         :param pulumi.Input[int] min_size: The minimum number of instances the group should have at any time.
-        :param pulumi.Input[str] name: Name of the Managed Service Identity.
+        :param pulumi.Input[str] name: The group name.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] od_sizes: Available On-Demand sizes
         :param pulumi.Input[str] region: The region your Azure group will be created in.
-        :param pulumi.Input[str] resource_group_name: Name of the Azure Resource Group where the Managed Service Identity is located.
+        :param pulumi.Input[str] resource_group_name: Name of the Resource Group for Elastigroup.
         """
         if custom_data is not None:
             pulumi.set(__self__, "custom_data", custom_data)
@@ -560,7 +560,7 @@ class _ElastigroupState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the Managed Service Identity.
+        The group name.
         """
         return pulumi.get(self, "name")
 
@@ -614,7 +614,7 @@ class _ElastigroupState:
     @pulumi.getter(name="resourceGroupName")
     def resource_group_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the Azure Resource Group where the Managed Service Identity is located.
+        Name of the Resource Group for Elastigroup.
         """
         return pulumi.get(self, "resource_group_name")
 
@@ -780,10 +780,10 @@ class Elastigroup(pulumi.CustomResource):
         :param pulumi.Input[int] desired_capacity: The desired number of instances the group should have at any time.
         :param pulumi.Input[int] max_size: The maximum number of instances the group should have at any time.
         :param pulumi.Input[int] min_size: The minimum number of instances the group should have at any time.
-        :param pulumi.Input[str] name: Name of the Managed Service Identity.
+        :param pulumi.Input[str] name: The group name.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] od_sizes: Available On-Demand sizes
         :param pulumi.Input[str] region: The region your Azure group will be created in.
-        :param pulumi.Input[str] resource_group_name: Name of the Azure Resource Group where the Managed Service Identity is located.
+        :param pulumi.Input[str] resource_group_name: Name of the Resource Group for Elastigroup.
         """
         ...
     @overload
@@ -982,10 +982,10 @@ class Elastigroup(pulumi.CustomResource):
         :param pulumi.Input[int] desired_capacity: The desired number of instances the group should have at any time.
         :param pulumi.Input[int] max_size: The maximum number of instances the group should have at any time.
         :param pulumi.Input[int] min_size: The minimum number of instances the group should have at any time.
-        :param pulumi.Input[str] name: Name of the Managed Service Identity.
+        :param pulumi.Input[str] name: The group name.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] od_sizes: Available On-Demand sizes
         :param pulumi.Input[str] region: The region your Azure group will be created in.
-        :param pulumi.Input[str] resource_group_name: Name of the Azure Resource Group where the Managed Service Identity is located.
+        :param pulumi.Input[str] resource_group_name: Name of the Resource Group for Elastigroup.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1094,7 +1094,7 @@ class Elastigroup(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Name of the Managed Service Identity.
+        The group name.
         """
         return pulumi.get(self, "name")
 
@@ -1128,7 +1128,7 @@ class Elastigroup(pulumi.CustomResource):
     @pulumi.getter(name="resourceGroupName")
     def resource_group_name(self) -> pulumi.Output[str]:
         """
-        Name of the Azure Resource Group where the Managed Service Identity is located.
+        Name of the Resource Group for Elastigroup.
         """
         return pulumi.get(self, "resource_group_name")
 

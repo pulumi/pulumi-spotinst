@@ -16,14 +16,14 @@ public final class OceanLaunchSpecSchedulingTaskTaskHeadroomArgs extends com.pul
     public static final OceanLaunchSpecSchedulingTaskTaskHeadroomArgs Empty = new OceanLaunchSpecSchedulingTaskTaskHeadroomArgs();
 
     /**
-     * Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+     * Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in CPU units, where 1024 units = 1 vCPU.
      * 
      */
     @Import(name="cpuPerUnit")
     private @Nullable Output<Integer> cpuPerUnit;
 
     /**
-     * @return Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+     * @return Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in CPU units, where 1024 units = 1 vCPU.
      * 
      */
     public Optional<Output<Integer>> cpuPerUnit() {
@@ -46,14 +46,14 @@ public final class OceanLaunchSpecSchedulingTaskTaskHeadroomArgs extends com.pul
     }
 
     /**
-     * The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
+     * The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
      * 
      */
     @Import(name="numOfUnits", required=true)
     private Output<Integer> numOfUnits;
 
     /**
-     * @return The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
+     * @return The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
      * 
      */
     public Output<Integer> numOfUnits() {
@@ -87,7 +87,7 @@ public final class OceanLaunchSpecSchedulingTaskTaskHeadroomArgs extends com.pul
         }
 
         /**
-         * @param cpuPerUnit Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+         * @param cpuPerUnit Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in CPU units, where 1024 units = 1 vCPU.
          * 
          * @return builder
          * 
@@ -98,7 +98,7 @@ public final class OceanLaunchSpecSchedulingTaskTaskHeadroomArgs extends com.pul
         }
 
         /**
-         * @param cpuPerUnit Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+         * @param cpuPerUnit Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in CPU units, where 1024 units = 1 vCPU.
          * 
          * @return builder
          * 
@@ -129,7 +129,7 @@ public final class OceanLaunchSpecSchedulingTaskTaskHeadroomArgs extends com.pul
         }
 
         /**
-         * @param numOfUnits The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
+         * @param numOfUnits The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
          * 
          * @return builder
          * 
@@ -140,7 +140,7 @@ public final class OceanLaunchSpecSchedulingTaskTaskHeadroomArgs extends com.pul
         }
 
         /**
-         * @param numOfUnits The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
+         * @param numOfUnits The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
          * 
          * @return builder
          * 

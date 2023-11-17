@@ -383,14 +383,14 @@ public class Ocean extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.maxPods);
     }
     /**
-     * Name of the Load Balancer.
+     * The Ocean cluster name.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Name of the Load Balancer.
+     * @return The Ocean cluster name.
      * 
      */
     public Output<String> name() {
@@ -425,14 +425,14 @@ public class Ocean extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.osDisk);
     }
     /**
-     * The Resource Group name of the Load Balancer.
+     * Name of the Azure Resource Group into which VMs will be launched. Cannot be updated.
      * 
      */
     @Export(name="resourceGroupName", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupName;
 
     /**
-     * @return The Resource Group name of the Load Balancer.
+     * @return Name of the Azure Resource Group into which VMs will be launched. Cannot be updated.
      * 
      */
     public Output<String> resourceGroupName() {

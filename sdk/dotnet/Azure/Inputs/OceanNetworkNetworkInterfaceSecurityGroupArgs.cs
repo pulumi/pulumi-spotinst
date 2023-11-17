@@ -13,13 +13,13 @@ namespace Pulumi.SpotInst.Azure.Inputs
     public sealed class OceanNetworkNetworkInterfaceSecurityGroupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Name of the Load Balancer.
+        /// The Ocean cluster name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The Resource Group name of the Load Balancer.
+        /// Name of the Azure Resource Group into which VMs will be launched. Cannot be updated.
         /// </summary>
         [Input("resourceGroupName")]
         public Input<string>? ResourceGroupName { get; set; }

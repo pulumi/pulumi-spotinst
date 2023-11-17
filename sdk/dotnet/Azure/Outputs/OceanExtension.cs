@@ -22,7 +22,7 @@ namespace Pulumi.SpotInst.Azure.Outputs
         /// </summary>
         public readonly bool? MinorVersionAutoUpgrade;
         /// <summary>
-        /// Name of the Load Balancer.
+        /// Extension name.
         /// </summary>
         public readonly string? Name;
         /// <summary>
@@ -30,7 +30,7 @@ namespace Pulumi.SpotInst.Azure.Outputs
         /// </summary>
         public readonly string? Publisher;
         /// <summary>
-        /// The type of load balancer. Supported value: `loadBalancer`
+        /// Extension type.
         /// </summary>
         public readonly string? Type;
 

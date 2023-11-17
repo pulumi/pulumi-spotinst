@@ -16,14 +16,14 @@ public final class ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdateAr
     public static final ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdateArgs Empty = new ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdateArgs();
 
     /**
-     * In the event of a fallback to On-Demand instances, select the time period to revert back to Spot. Supported Arguments – always (default), timeWindow, never. For timeWindow or never to be valid the group must have availabilityOriented OR persistence defined.
+     * Actions to perform (options: timeWindow, never)
      * 
      */
     @Import(name="performAt")
     private @Nullable Output<String> performAt;
 
     /**
-     * @return In the event of a fallback to On-Demand instances, select the time period to revert back to Spot. Supported Arguments – always (default), timeWindow, never. For timeWindow or never to be valid the group must have availabilityOriented OR persistence defined.
+     * @return Actions to perform (options: timeWindow, never)
      * 
      */
     public Optional<Output<String>> performAt() {
@@ -135,7 +135,7 @@ public final class ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdateAr
         }
 
         /**
-         * @param performAt In the event of a fallback to On-Demand instances, select the time period to revert back to Spot. Supported Arguments – always (default), timeWindow, never. For timeWindow or never to be valid the group must have availabilityOriented OR persistence defined.
+         * @param performAt Actions to perform (options: timeWindow, never)
          * 
          * @return builder
          * 
@@ -146,7 +146,7 @@ public final class ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdateAr
         }
 
         /**
-         * @param performAt In the event of a fallback to On-Demand instances, select the time period to revert back to Spot. Supported Arguments – always (default), timeWindow, never. For timeWindow or never to be valid the group must have availabilityOriented OR persistence defined.
+         * @param performAt Actions to perform (options: timeWindow, never)
          * 
          * @return builder
          * 

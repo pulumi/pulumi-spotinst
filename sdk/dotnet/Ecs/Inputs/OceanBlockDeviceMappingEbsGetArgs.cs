@@ -43,7 +43,7 @@ namespace Pulumi.SpotInst.Ecs.Inputs
         public Input<string>? KmsKeyId { get; set; }
 
         /// <summary>
-        /// (Optional) String. The snapshot ID to mount by.
+        /// String. The snapshot ID to mount by.
         /// </summary>
         [Input("snapshotId")]
         public Input<string>? SnapshotId { get; set; }

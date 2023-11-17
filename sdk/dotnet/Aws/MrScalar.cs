@@ -440,9 +440,6 @@ namespace Pulumi.SpotInst.Aws
         [Output("coreMinSize")]
         public Output<int?> CoreMinSize { get; private set; } = null!;
 
-        /// <summary>
-        /// Each `*_scaling_*_policy` supports the following:
-        /// </summary>
         [Output("coreScalingDownPolicies")]
         public Output<ImmutableArray<Outputs.MrScalarCoreScalingDownPolicy>> CoreScalingDownPolicies { get; private set; } = null!;
 
@@ -881,10 +878,6 @@ namespace Pulumi.SpotInst.Aws
 
         [Input("coreScalingDownPolicies")]
         private InputList<Inputs.MrScalarCoreScalingDownPolicyArgs>? _coreScalingDownPolicies;
-
-        /// <summary>
-        /// Each `*_scaling_*_policy` supports the following:
-        /// </summary>
         public InputList<Inputs.MrScalarCoreScalingDownPolicyArgs> CoreScalingDownPolicies
         {
             get => _coreScalingDownPolicies ?? (_coreScalingDownPolicies = new InputList<Inputs.MrScalarCoreScalingDownPolicyArgs>());
@@ -1355,10 +1348,6 @@ namespace Pulumi.SpotInst.Aws
 
         [Input("coreScalingDownPolicies")]
         private InputList<Inputs.MrScalarCoreScalingDownPolicyGetArgs>? _coreScalingDownPolicies;
-
-        /// <summary>
-        /// Each `*_scaling_*_policy` supports the following:
-        /// </summary>
         public InputList<Inputs.MrScalarCoreScalingDownPolicyGetArgs> CoreScalingDownPolicies
         {
             get => _coreScalingDownPolicies ?? (_coreScalingDownPolicies = new InputList<Inputs.MrScalarCoreScalingDownPolicyGetArgs>());

@@ -12,26 +12,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class OceanAutoscalerResourceLimits {
     /**
-     * @return Maximum amount of Memory (GiB).
+     * @return The maximum memory in GiB units that can be allocated to the cluster.
      * 
      */
     private @Nullable Integer maxMemoryGib;
     /**
-     * @return Maximum number of vcpus available.
+     * @return The maximum cpu in vCPU units that can be allocated to the cluster.
      * 
      */
     private @Nullable Integer maxVcpu;
 
     private OceanAutoscalerResourceLimits() {}
     /**
-     * @return Maximum amount of Memory (GiB).
+     * @return The maximum memory in GiB units that can be allocated to the cluster.
      * 
      */
     public Optional<Integer> maxMemoryGib() {
         return Optional.ofNullable(this.maxMemoryGib);
     }
     /**
-     * @return Maximum number of vcpus available.
+     * @return The maximum cpu in vCPU units that can be allocated to the cluster.
      * 
      */
     public Optional<Integer> maxVcpu() {

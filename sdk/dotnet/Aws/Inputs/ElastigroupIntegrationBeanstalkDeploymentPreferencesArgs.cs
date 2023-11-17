@@ -19,13 +19,13 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public Input<bool>? AutomaticRoll { get; set; }
 
         /// <summary>
-        /// The percentage size of each batch in the scheduled deployment roll.
+        /// Percent size of each batch
         /// </summary>
         [Input("batchSizePercentage")]
         public Input<int>? BatchSizePercentage { get; set; }
 
         /// <summary>
-        /// The period of time (seconds) to wait before checking a batch's health after it's deployment.
+        /// Amount of time to wait between batches
         /// </summary>
         [Input("gracePeriod")]
         public Input<int>? GracePeriod { get; set; }

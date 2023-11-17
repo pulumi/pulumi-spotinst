@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategy {
     /**
-     * @return The action to take when scale up according to step&#39;s threshold is needed.
+     * @return Action to take
      * 
      */
     private @Nullable String action;
@@ -25,7 +25,7 @@ public final class ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategy 
 
     private ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategy() {}
     /**
-     * @return The action to take when scale up according to step&#39;s threshold is needed.
+     * @return Action to take
      * 
      */
     public Optional<String> action() {

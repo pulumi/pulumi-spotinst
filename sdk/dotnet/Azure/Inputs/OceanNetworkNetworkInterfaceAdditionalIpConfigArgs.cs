@@ -13,7 +13,7 @@ namespace Pulumi.SpotInst.Azure.Inputs
     public sealed class OceanNetworkNetworkInterfaceAdditionalIpConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Name of the Load Balancer.
+        /// The Ocean cluster name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

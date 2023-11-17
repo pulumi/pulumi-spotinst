@@ -78,14 +78,14 @@ public final class ElastigroupGpuArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The type of GPU instance. Valid values: `nvidia-tesla-v100`, `nvidia-tesla-p100`, `nvidia-tesla-k80`.
+     * Specifies the type of disk, either SCRATCH or PERSISTENT.
      * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
-     * @return The type of GPU instance. Valid values: `nvidia-tesla-v100`, `nvidia-tesla-p100`, `nvidia-tesla-k80`.
+     * @return Specifies the type of disk, either SCRATCH or PERSISTENT.
      * 
      */
     public Output<String> type() {
@@ -187,7 +187,7 @@ public final class ElastigroupGpuArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param type The type of GPU instance. Valid values: `nvidia-tesla-v100`, `nvidia-tesla-p100`, `nvidia-tesla-k80`.
+         * @param type Specifies the type of disk, either SCRATCH or PERSISTENT.
          * 
          * @return builder
          * 
@@ -198,7 +198,7 @@ public final class ElastigroupGpuArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param type The type of GPU instance. Valid values: `nvidia-tesla-v100`, `nvidia-tesla-p100`, `nvidia-tesla-k80`.
+         * @param type Specifies the type of disk, either SCRATCH or PERSISTENT.
          * 
          * @return builder
          * 

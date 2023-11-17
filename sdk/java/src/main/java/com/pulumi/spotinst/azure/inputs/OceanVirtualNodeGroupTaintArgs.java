@@ -29,14 +29,14 @@ public final class OceanVirtualNodeGroupTaintArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Tag Key for Vms in the cluster.
+     * The taint key.
      * 
      */
     @Import(name="key", required=true)
     private Output<String> key;
 
     /**
-     * @return Tag Key for Vms in the cluster.
+     * @return The taint key.
      * 
      */
     public Output<String> key() {
@@ -44,14 +44,14 @@ public final class OceanVirtualNodeGroupTaintArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Tag Value for VMs in the cluster.
+     * The taint value.
      * 
      */
     @Import(name="value", required=true)
     private Output<String> value;
 
     /**
-     * @return Tag Value for VMs in the cluster.
+     * @return The taint value.
      * 
      */
     public Output<String> value() {
@@ -106,7 +106,7 @@ public final class OceanVirtualNodeGroupTaintArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param key Tag Key for Vms in the cluster.
+         * @param key The taint key.
          * 
          * @return builder
          * 
@@ -117,7 +117,7 @@ public final class OceanVirtualNodeGroupTaintArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param key Tag Key for Vms in the cluster.
+         * @param key The taint key.
          * 
          * @return builder
          * 
@@ -127,7 +127,7 @@ public final class OceanVirtualNodeGroupTaintArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param value Tag Value for VMs in the cluster.
+         * @param value The taint value.
          * 
          * @return builder
          * 
@@ -138,7 +138,7 @@ public final class OceanVirtualNodeGroupTaintArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param value Tag Value for VMs in the cluster.
+         * @param value The taint value.
          * 
          * @return builder
          * 

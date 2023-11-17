@@ -10,26 +10,26 @@ import java.util.Objects;
 @CustomType
 public final class ElastigroupMetadata {
     /**
-     * @return Labels key.
+     * @return Metadata key.
      * 
      */
     private String key;
     /**
-     * @return Labels value.
+     * @return Metadata value.
      * 
      */
     private String value;
 
     private ElastigroupMetadata() {}
     /**
-     * @return Labels key.
+     * @return Metadata key.
      * 
      */
     public String key() {
         return this.key;
     }
     /**
-     * @return Labels value.
+     * @return Metadata value.
      * 
      */
     public String value() {

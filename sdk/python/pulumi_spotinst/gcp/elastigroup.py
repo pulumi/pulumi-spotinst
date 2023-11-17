@@ -64,7 +64,7 @@ class ElastigroupArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ElastigroupGpuArgs']]] gpu: Defines the GPU configuration.
         :param pulumi.Input[int] health_check_grace_period: Period of time (seconds) to wait for VM to reach healthiness before monitoring for unhealthiness.
         :param pulumi.Input[str] health_check_type: The kind of health check to perform when monitoring for unhealthiness.
-        :param pulumi.Input[str] instance_name_prefix: Set an instance name prefix to be used for all launched instances and their boot disk. The prefix value should comply with the following limitations: 
+        :param pulumi.Input[str] instance_name_prefix: Set an instance name prefix to be used for all launched instances and their boot disk. The prefix value should comply with the following limitations:
                * A maximal length of 25 characters.
                * The first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
         :param pulumi.Input[Sequence[pulumi.Input['ElastigroupInstanceTypesCustomArgs']]] instance_types_customs: Defines a set of custom instance types. Required if instance_types_preemptible and instance_types_ondemand are not set.
@@ -80,8 +80,6 @@ class ElastigroupArgs:
         :param pulumi.Input[int] preemptible_percentage: Percentage of Preemptible VMs to spin up from the "desired_capacity".
         :param pulumi.Input[str] provisioning_model: Valid values: "SPOT", "PREEMPTIBLE". Define the provisioning model of the launched instances. Default value is "PREEMPTIBLE".
         :param pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingDownPolicyArgs']]] scaling_down_policies: Contains scaling policies for scaling the Elastigroup down.
-               
-               Each `scaling_*_policy` supports the following:
         :param pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingUpPolicyArgs']]] scaling_up_policies: Contains scaling policies for scaling the Elastigroup up.
         :param pulumi.Input[str] service_account: The email of the service account in which the group instances will be launched.
         :param pulumi.Input[str] shutdown_script: The Base64-encoded shutdown script that executes prior to instance termination, for more information please see: [Shutdown Script](https://api.spotinst.com/integration-docs/elastigroup/concepts/compute-concepts/shutdown-scripts/)
@@ -305,7 +303,7 @@ class ElastigroupArgs:
     @pulumi.getter(name="instanceNamePrefix")
     def instance_name_prefix(self) -> Optional[pulumi.Input[str]]:
         """
-        Set an instance name prefix to be used for all launched instances and their boot disk. The prefix value should comply with the following limitations: 
+        Set an instance name prefix to be used for all launched instances and their boot disk. The prefix value should comply with the following limitations:
         * A maximal length of 25 characters.
         * The first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
         """
@@ -491,8 +489,6 @@ class ElastigroupArgs:
     def scaling_down_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingDownPolicyArgs']]]]:
         """
         Contains scaling policies for scaling the Elastigroup down.
-
-        Each `scaling_*_policy` supports the following:
         """
         return pulumi.get(self, "scaling_down_policies")
 
@@ -649,7 +645,7 @@ class _ElastigroupState:
         :param pulumi.Input[Sequence[pulumi.Input['ElastigroupGpuArgs']]] gpu: Defines the GPU configuration.
         :param pulumi.Input[int] health_check_grace_period: Period of time (seconds) to wait for VM to reach healthiness before monitoring for unhealthiness.
         :param pulumi.Input[str] health_check_type: The kind of health check to perform when monitoring for unhealthiness.
-        :param pulumi.Input[str] instance_name_prefix: Set an instance name prefix to be used for all launched instances and their boot disk. The prefix value should comply with the following limitations: 
+        :param pulumi.Input[str] instance_name_prefix: Set an instance name prefix to be used for all launched instances and their boot disk. The prefix value should comply with the following limitations:
                * A maximal length of 25 characters.
                * The first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
         :param pulumi.Input[Sequence[pulumi.Input['ElastigroupInstanceTypesCustomArgs']]] instance_types_customs: Defines a set of custom instance types. Required if instance_types_preemptible and instance_types_ondemand are not set.
@@ -665,8 +661,6 @@ class _ElastigroupState:
         :param pulumi.Input[int] preemptible_percentage: Percentage of Preemptible VMs to spin up from the "desired_capacity".
         :param pulumi.Input[str] provisioning_model: Valid values: "SPOT", "PREEMPTIBLE". Define the provisioning model of the launched instances. Default value is "PREEMPTIBLE".
         :param pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingDownPolicyArgs']]] scaling_down_policies: Contains scaling policies for scaling the Elastigroup down.
-               
-               Each `scaling_*_policy` supports the following:
         :param pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingUpPolicyArgs']]] scaling_up_policies: Contains scaling policies for scaling the Elastigroup up.
         :param pulumi.Input[str] service_account: The email of the service account in which the group instances will be launched.
         :param pulumi.Input[str] shutdown_script: The Base64-encoded shutdown script that executes prior to instance termination, for more information please see: [Shutdown Script](https://api.spotinst.com/integration-docs/elastigroup/concepts/compute-concepts/shutdown-scripts/)
@@ -891,7 +885,7 @@ class _ElastigroupState:
     @pulumi.getter(name="instanceNamePrefix")
     def instance_name_prefix(self) -> Optional[pulumi.Input[str]]:
         """
-        Set an instance name prefix to be used for all launched instances and their boot disk. The prefix value should comply with the following limitations: 
+        Set an instance name prefix to be used for all launched instances and their boot disk. The prefix value should comply with the following limitations:
         * A maximal length of 25 characters.
         * The first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
         """
@@ -1077,8 +1071,6 @@ class _ElastigroupState:
     def scaling_down_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingDownPolicyArgs']]]]:
         """
         Contains scaling policies for scaling the Elastigroup down.
-
-        Each `scaling_*_policy` supports the following:
         """
         return pulumi.get(self, "scaling_down_policies")
 
@@ -1333,7 +1325,7 @@ class Elastigroup(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupGpuArgs']]]] gpu: Defines the GPU configuration.
         :param pulumi.Input[int] health_check_grace_period: Period of time (seconds) to wait for VM to reach healthiness before monitoring for unhealthiness.
         :param pulumi.Input[str] health_check_type: The kind of health check to perform when monitoring for unhealthiness.
-        :param pulumi.Input[str] instance_name_prefix: Set an instance name prefix to be used for all launched instances and their boot disk. The prefix value should comply with the following limitations: 
+        :param pulumi.Input[str] instance_name_prefix: Set an instance name prefix to be used for all launched instances and their boot disk. The prefix value should comply with the following limitations:
                * A maximal length of 25 characters.
                * The first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupInstanceTypesCustomArgs']]]] instance_types_customs: Defines a set of custom instance types. Required if instance_types_preemptible and instance_types_ondemand are not set.
@@ -1349,8 +1341,6 @@ class Elastigroup(pulumi.CustomResource):
         :param pulumi.Input[int] preemptible_percentage: Percentage of Preemptible VMs to spin up from the "desired_capacity".
         :param pulumi.Input[str] provisioning_model: Valid values: "SPOT", "PREEMPTIBLE". Define the provisioning model of the launched instances. Default value is "PREEMPTIBLE".
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupScalingDownPolicyArgs']]]] scaling_down_policies: Contains scaling policies for scaling the Elastigroup down.
-               
-               Each `scaling_*_policy` supports the following:
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupScalingUpPolicyArgs']]]] scaling_up_policies: Contains scaling policies for scaling the Elastigroup up.
         :param pulumi.Input[str] service_account: The email of the service account in which the group instances will be launched.
         :param pulumi.Input[str] shutdown_script: The Base64-encoded shutdown script that executes prior to instance termination, for more information please see: [Shutdown Script](https://api.spotinst.com/integration-docs/elastigroup/concepts/compute-concepts/shutdown-scripts/)
@@ -1625,7 +1615,7 @@ class Elastigroup(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupGpuArgs']]]] gpu: Defines the GPU configuration.
         :param pulumi.Input[int] health_check_grace_period: Period of time (seconds) to wait for VM to reach healthiness before monitoring for unhealthiness.
         :param pulumi.Input[str] health_check_type: The kind of health check to perform when monitoring for unhealthiness.
-        :param pulumi.Input[str] instance_name_prefix: Set an instance name prefix to be used for all launched instances and their boot disk. The prefix value should comply with the following limitations: 
+        :param pulumi.Input[str] instance_name_prefix: Set an instance name prefix to be used for all launched instances and their boot disk. The prefix value should comply with the following limitations:
                * A maximal length of 25 characters.
                * The first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupInstanceTypesCustomArgs']]]] instance_types_customs: Defines a set of custom instance types. Required if instance_types_preemptible and instance_types_ondemand are not set.
@@ -1641,8 +1631,6 @@ class Elastigroup(pulumi.CustomResource):
         :param pulumi.Input[int] preemptible_percentage: Percentage of Preemptible VMs to spin up from the "desired_capacity".
         :param pulumi.Input[str] provisioning_model: Valid values: "SPOT", "PREEMPTIBLE". Define the provisioning model of the launched instances. Default value is "PREEMPTIBLE".
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupScalingDownPolicyArgs']]]] scaling_down_policies: Contains scaling policies for scaling the Elastigroup down.
-               
-               Each `scaling_*_policy` supports the following:
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupScalingUpPolicyArgs']]]] scaling_up_policies: Contains scaling policies for scaling the Elastigroup up.
         :param pulumi.Input[str] service_account: The email of the service account in which the group instances will be launched.
         :param pulumi.Input[str] shutdown_script: The Base64-encoded shutdown script that executes prior to instance termination, for more information please see: [Shutdown Script](https://api.spotinst.com/integration-docs/elastigroup/concepts/compute-concepts/shutdown-scripts/)
@@ -1789,7 +1777,7 @@ class Elastigroup(pulumi.CustomResource):
     @pulumi.getter(name="instanceNamePrefix")
     def instance_name_prefix(self) -> pulumi.Output[Optional[str]]:
         """
-        Set an instance name prefix to be used for all launched instances and their boot disk. The prefix value should comply with the following limitations: 
+        Set an instance name prefix to be used for all launched instances and their boot disk. The prefix value should comply with the following limitations:
         * A maximal length of 25 characters.
         * The first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
         """
@@ -1911,8 +1899,6 @@ class Elastigroup(pulumi.CustomResource):
     def scaling_down_policies(self) -> pulumi.Output[Optional[Sequence['outputs.ElastigroupScalingDownPolicy']]]:
         """
         Contains scaling policies for scaling the Elastigroup down.
-
-        Each `scaling_*_policy` supports the following:
         """
         return pulumi.get(self, "scaling_down_policies")
 

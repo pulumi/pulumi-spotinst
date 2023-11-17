@@ -15,14 +15,14 @@ public final class ElastigroupScalingDownPolicyStepAdjustmentArgs extends com.pu
     public static final ElastigroupScalingDownPolicyStepAdjustmentArgs Empty = new ElastigroupScalingDownPolicyStepAdjustmentArgs();
 
     /**
-     * The action to take when scale up according to step&#39;s threshold is needed.
+     * Action to take
      * 
      */
     @Import(name="action", required=true)
     private Output<ElastigroupScalingDownPolicyStepAdjustmentActionArgs> action;
 
     /**
-     * @return The action to take when scale up according to step&#39;s threshold is needed.
+     * @return Action to take
      * 
      */
     public Output<ElastigroupScalingDownPolicyStepAdjustmentActionArgs> action() {
@@ -82,7 +82,7 @@ public final class ElastigroupScalingDownPolicyStepAdjustmentArgs extends com.pu
         }
 
         /**
-         * @param action The action to take when scale up according to step&#39;s threshold is needed.
+         * @param action Action to take
          * 
          * @return builder
          * 
@@ -93,7 +93,7 @@ public final class ElastigroupScalingDownPolicyStepAdjustmentArgs extends com.pu
         }
 
         /**
-         * @param action The action to take when scale up according to step&#39;s threshold is needed.
+         * @param action Action to take
          * 
          * @return builder
          * 

@@ -17,7 +17,7 @@ public final class ElastigroupNetwork {
     private @Nullable List<ElastigroupNetworkAdditionalIpConfig> additionalIpConfigs;
     private @Nullable Boolean assignPublicIp;
     /**
-     * @return Name of the Azure Resource Group where the Managed Service Identity is located.
+     * @return Name of the Resource Group for Elastigroup.
      * 
      */
     private String resourceGroupName;
@@ -32,7 +32,7 @@ public final class ElastigroupNetwork {
         return Optional.ofNullable(this.assignPublicIp);
     }
     /**
-     * @return Name of the Azure Resource Group where the Managed Service Identity is located.
+     * @return Name of the Resource Group for Elastigroup.
      * 
      */
     public String resourceGroupName() {

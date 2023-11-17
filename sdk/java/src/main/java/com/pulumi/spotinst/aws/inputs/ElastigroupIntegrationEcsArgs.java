@@ -68,14 +68,14 @@ public final class ElastigroupIntegrationEcsArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * An option to set compute reserve for the cluster.
+     * Headroom for the cluster.
      * 
      */
     @Import(name="autoscaleHeadroom")
     private @Nullable Output<ElastigroupIntegrationEcsAutoscaleHeadroomArgs> autoscaleHeadroom;
 
     /**
-     * @return An option to set compute reserve for the cluster.
+     * @return Headroom for the cluster.
      * 
      */
     public Optional<Output<ElastigroupIntegrationEcsAutoscaleHeadroomArgs>> autoscaleHeadroom() {
@@ -83,14 +83,14 @@ public final class ElastigroupIntegrationEcsArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Enabling the automatic k8s auto-scaler functionality. For more information please see: [Kubernetes auto scaler](https://api.spotinst.com/integration-docs/elastigroup/container-management/kubernetes/autoscaler/).
+     * Enabling the automatic auto-scaler functionality. For more information please see: [ECS auto scaler](https://api.spotinst.com/container-management/amazon-ecs/elastigroup-for-ecs-concepts/autoscaling/).
      * 
      */
     @Import(name="autoscaleIsAutoConfig")
     private @Nullable Output<Boolean> autoscaleIsAutoConfig;
 
     /**
-     * @return Enabling the automatic k8s auto-scaler functionality. For more information please see: [Kubernetes auto scaler](https://api.spotinst.com/integration-docs/elastigroup/container-management/kubernetes/autoscaler/).
+     * @return Enabling the automatic auto-scaler functionality. For more information please see: [ECS auto scaler](https://api.spotinst.com/container-management/amazon-ecs/elastigroup-for-ecs-concepts/autoscaling/).
      * 
      */
     public Optional<Output<Boolean>> autoscaleIsAutoConfig() {
@@ -263,7 +263,7 @@ public final class ElastigroupIntegrationEcsArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param autoscaleHeadroom An option to set compute reserve for the cluster.
+         * @param autoscaleHeadroom Headroom for the cluster.
          * 
          * @return builder
          * 
@@ -274,7 +274,7 @@ public final class ElastigroupIntegrationEcsArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param autoscaleHeadroom An option to set compute reserve for the cluster.
+         * @param autoscaleHeadroom Headroom for the cluster.
          * 
          * @return builder
          * 
@@ -284,7 +284,7 @@ public final class ElastigroupIntegrationEcsArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param autoscaleIsAutoConfig Enabling the automatic k8s auto-scaler functionality. For more information please see: [Kubernetes auto scaler](https://api.spotinst.com/integration-docs/elastigroup/container-management/kubernetes/autoscaler/).
+         * @param autoscaleIsAutoConfig Enabling the automatic auto-scaler functionality. For more information please see: [ECS auto scaler](https://api.spotinst.com/container-management/amazon-ecs/elastigroup-for-ecs-concepts/autoscaling/).
          * 
          * @return builder
          * 
@@ -295,7 +295,7 @@ public final class ElastigroupIntegrationEcsArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param autoscaleIsAutoConfig Enabling the automatic k8s auto-scaler functionality. For more information please see: [Kubernetes auto scaler](https://api.spotinst.com/integration-docs/elastigroup/container-management/kubernetes/autoscaler/).
+         * @param autoscaleIsAutoConfig Enabling the automatic auto-scaler functionality. For more information please see: [ECS auto scaler](https://api.spotinst.com/container-management/amazon-ecs/elastigroup-for-ecs-concepts/autoscaling/).
          * 
          * @return builder
          * 

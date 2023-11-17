@@ -12,26 +12,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class OceanVirtualNodeGroupLabel {
     /**
-     * @return Tag Key for Vms in the cluster.
+     * @return The label key.
      * 
      */
     private String key;
     /**
-     * @return Tag Value for VMs in the cluster.
+     * @return The label value.
      * 
      */
     private @Nullable String value;
 
     private OceanVirtualNodeGroupLabel() {}
     /**
-     * @return Tag Key for Vms in the cluster.
+     * @return The label key.
      * 
      */
     public String key() {
         return this.key;
     }
     /**
-     * @return Tag Value for VMs in the cluster.
+     * @return The label value.
      * 
      */
     public Optional<String> value() {

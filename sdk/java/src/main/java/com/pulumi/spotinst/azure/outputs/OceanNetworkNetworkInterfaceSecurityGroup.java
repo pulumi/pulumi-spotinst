@@ -12,26 +12,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class OceanNetworkNetworkInterfaceSecurityGroup {
     /**
-     * @return Name of the Load Balancer.
+     * @return The Ocean cluster name.
      * 
      */
     private @Nullable String name;
     /**
-     * @return The Resource Group name of the Load Balancer.
+     * @return Name of the Azure Resource Group into which VMs will be launched. Cannot be updated.
      * 
      */
     private @Nullable String resourceGroupName;
 
     private OceanNetworkNetworkInterfaceSecurityGroup() {}
     /**
-     * @return Name of the Load Balancer.
+     * @return The Ocean cluster name.
      * 
      */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return The Resource Group name of the Load Balancer.
+     * @return Name of the Azure Resource Group into which VMs will be launched. Cannot be updated.
      * 
      */
     public Optional<String> resourceGroupName() {

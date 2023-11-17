@@ -40,7 +40,7 @@ public final class OceanBlockDeviceMappingEbs {
      */
     private @Nullable String kmsKeyId;
     /**
-     * @return (Optional) String. The snapshot ID to mount by.
+     * @return String. The snapshot ID to mount by.
      * 
      */
     private @Nullable String snapshotId;
@@ -97,7 +97,7 @@ public final class OceanBlockDeviceMappingEbs {
         return Optional.ofNullable(this.kmsKeyId);
     }
     /**
-     * @return (Optional) String. The snapshot ID to mount by.
+     * @return String. The snapshot ID to mount by.
      * 
      */
     public Optional<String> snapshotId() {

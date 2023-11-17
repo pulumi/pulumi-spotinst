@@ -19,7 +19,7 @@ public final class OceanLaunchSpecSchedulingTask {
      */
     private String cronExpression;
     /**
-     * @return Flag to enable or disable the shutdown hours mechanism. When False, the mechanism is deactivated, and the virtual node group remains in its current state.
+     * @return Describes whether the task is enabled. When True, the task runs. When False, it does not run.
      * 
      */
     private Boolean isEnabled;
@@ -43,7 +43,7 @@ public final class OceanLaunchSpecSchedulingTask {
         return this.cronExpression;
     }
     /**
-     * @return Flag to enable or disable the shutdown hours mechanism. When False, the mechanism is deactivated, and the virtual node group remains in its current state.
+     * @return Describes whether the task is enabled. When True, the task runs. When False, it does not run.
      * 
      */
     public Boolean isEnabled() {

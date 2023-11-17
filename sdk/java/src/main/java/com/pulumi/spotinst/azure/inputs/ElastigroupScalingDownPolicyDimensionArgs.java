@@ -16,14 +16,14 @@ public final class ElastigroupScalingDownPolicyDimensionArgs extends com.pulumi.
     public static final ElastigroupScalingDownPolicyDimensionArgs Empty = new ElastigroupScalingDownPolicyDimensionArgs();
 
     /**
-     * Name of the Managed Service Identity.
+     * The group name.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return Name of the Managed Service Identity.
+     * @return The group name.
      * 
      */
     public Output<String> name() {
@@ -71,7 +71,7 @@ public final class ElastigroupScalingDownPolicyDimensionArgs extends com.pulumi.
         }
 
         /**
-         * @param name Name of the Managed Service Identity.
+         * @param name The group name.
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class ElastigroupScalingDownPolicyDimensionArgs extends com.pulumi.
         }
 
         /**
-         * @param name Name of the Managed Service Identity.
+         * @param name The group name.
          * 
          * @return builder
          * 

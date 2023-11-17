@@ -202,7 +202,7 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
      */
     public readonly iamInstanceProfile!: pulumi.Output<string | undefined>;
     /**
-     * Identifier of the image in AWS. Valid values: any string which is not empty or null.
+     * ID of the image used to launch the instances.
      */
     public readonly imageId!: pulumi.Output<string | undefined>;
     /**
@@ -398,7 +398,7 @@ export interface OceanLaunchSpecState {
      */
     iamInstanceProfile?: pulumi.Input<string>;
     /**
-     * Identifier of the image in AWS. Valid values: any string which is not empty or null.
+     * ID of the image used to launch the instances.
      */
     imageId?: pulumi.Input<string>;
     /**
@@ -511,7 +511,7 @@ export interface OceanLaunchSpecArgs {
      */
     iamInstanceProfile?: pulumi.Input<string>;
     /**
-     * Identifier of the image in AWS. Valid values: any string which is not empty or null.
+     * ID of the image used to launch the instances.
      */
     imageId?: pulumi.Input<string>;
     /**

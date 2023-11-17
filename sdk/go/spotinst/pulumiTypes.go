@@ -1337,7 +1337,7 @@ type HealthCheckCheck struct {
 	Healthy int `pulumi:"healthy"`
 	// The amount of time (in seconds) between each health check (minimum: 10).
 	Interval int `pulumi:"interval"`
-	// The port of the Spotinst HCS (default: 80).
+	// The port to use to connect with the instance.
 	Port int `pulumi:"port"`
 	// The protocol to use to connect with the instance. Valid values: http, https.
 	Protocol string `pulumi:"protocol"`
@@ -1367,7 +1367,7 @@ type HealthCheckCheckArgs struct {
 	Healthy pulumi.IntInput `pulumi:"healthy"`
 	// The amount of time (in seconds) between each health check (minimum: 10).
 	Interval pulumi.IntInput `pulumi:"interval"`
-	// The port of the Spotinst HCS (default: 80).
+	// The port to use to connect with the instance.
 	Port pulumi.IntInput `pulumi:"port"`
 	// The protocol to use to connect with the instance. Valid values: http, https.
 	Protocol pulumi.StringInput `pulumi:"protocol"`
@@ -1474,7 +1474,7 @@ func (o HealthCheckCheckOutput) Interval() pulumi.IntOutput {
 	return o.ApplyT(func(v HealthCheckCheck) int { return v.Interval }).(pulumi.IntOutput)
 }
 
-// The port of the Spotinst HCS (default: 80).
+// The port to use to connect with the instance.
 func (o HealthCheckCheckOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v HealthCheckCheck) int { return v.Port }).(pulumi.IntOutput)
 }
@@ -1561,7 +1561,7 @@ func (o HealthCheckCheckPtrOutput) Interval() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// The port of the Spotinst HCS (default: 80).
+// The port to use to connect with the instance.
 func (o HealthCheckCheckPtrOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *HealthCheckCheck) *int {
 		if v == nil {

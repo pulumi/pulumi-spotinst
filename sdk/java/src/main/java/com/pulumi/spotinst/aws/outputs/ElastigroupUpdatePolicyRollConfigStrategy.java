@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ElastigroupUpdatePolicyRollConfigStrategy {
     /**
-     * @return The action to take when scale up according to step&#39;s threshold is needed.
+     * @return Action to take
      * 
      */
     private String action;
@@ -37,7 +37,7 @@ public final class ElastigroupUpdatePolicyRollConfigStrategy {
 
     private ElastigroupUpdatePolicyRollConfigStrategy() {}
     /**
-     * @return The action to take when scale up according to step&#39;s threshold is needed.
+     * @return Action to take
      * 
      */
     public String action() {

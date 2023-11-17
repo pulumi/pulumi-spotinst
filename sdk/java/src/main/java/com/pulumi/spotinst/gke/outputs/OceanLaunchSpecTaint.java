@@ -17,12 +17,12 @@ public final class OceanLaunchSpecTaint {
      */
     private @Nullable String effect;
     /**
-     * @return The label key.
+     * @return The taint key.
      * 
      */
     private @Nullable String key;
     /**
-     * @return The label value.
+     * @return The taint value.
      * 
      */
     private @Nullable String value;
@@ -36,14 +36,14 @@ public final class OceanLaunchSpecTaint {
         return Optional.ofNullable(this.effect);
     }
     /**
-     * @return The label key.
+     * @return The taint key.
      * 
      */
     public Optional<String> key() {
         return Optional.ofNullable(this.key);
     }
     /**
-     * @return The label value.
+     * @return The taint value.
      * 
      */
     public Optional<String> value() {

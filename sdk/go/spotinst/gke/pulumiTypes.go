@@ -1411,7 +1411,25 @@ func (o ElastigroupIntegrationGkeAutoscaleHeadroomPtrOutput) NumOfUnits() pulumi
 }
 
 type ElastigroupIntegrationGkeAutoscaleLabel struct {
-	Key   string `pulumi:"key"`
+	// The label name.
+	Key string `pulumi:"key"`
+	// The label value.
+	//
+	// Usage:
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	Value string `pulumi:"value"`
 }
 
@@ -1427,7 +1445,25 @@ type ElastigroupIntegrationGkeAutoscaleLabelInput interface {
 }
 
 type ElastigroupIntegrationGkeAutoscaleLabelArgs struct {
-	Key   pulumi.StringInput `pulumi:"key"`
+	// The label name.
+	Key pulumi.StringInput `pulumi:"key"`
+	// The label value.
+	//
+	// Usage:
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -1482,10 +1518,31 @@ func (o ElastigroupIntegrationGkeAutoscaleLabelOutput) ToElastigroupIntegrationG
 	return o
 }
 
+// The label name.
 func (o ElastigroupIntegrationGkeAutoscaleLabelOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v ElastigroupIntegrationGkeAutoscaleLabel) string { return v.Key }).(pulumi.StringOutput)
 }
 
+// The label value.
+//
+// Usage:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
+// ```
 func (o ElastigroupIntegrationGkeAutoscaleLabelOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v ElastigroupIntegrationGkeAutoscaleLabel) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -2192,7 +2249,24 @@ func (o ElastigroupScalingDownPolicyArrayOutput) Index(i pulumi.IntInput) Elasti
 }
 
 type ElastigroupScalingDownPolicyDimension struct {
-	Name  string  `pulumi:"name"`
+	Name string `pulumi:"name"`
+	// The label value.
+	//
+	// Usage:
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	Value *string `pulumi:"value"`
 }
 
@@ -2208,7 +2282,24 @@ type ElastigroupScalingDownPolicyDimensionInput interface {
 }
 
 type ElastigroupScalingDownPolicyDimensionArgs struct {
-	Name  pulumi.StringInput    `pulumi:"name"`
+	Name pulumi.StringInput `pulumi:"name"`
+	// The label value.
+	//
+	// Usage:
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -2267,6 +2358,26 @@ func (o ElastigroupScalingDownPolicyDimensionOutput) Name() pulumi.StringOutput 
 	return o.ApplyT(func(v ElastigroupScalingDownPolicyDimension) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The label value.
+//
+// Usage:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
+// ```
 func (o ElastigroupScalingDownPolicyDimensionOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElastigroupScalingDownPolicyDimension) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -2467,7 +2578,24 @@ func (o ElastigroupScalingUpPolicyArrayOutput) Index(i pulumi.IntInput) Elastigr
 }
 
 type ElastigroupScalingUpPolicyDimension struct {
-	Name  string  `pulumi:"name"`
+	Name string `pulumi:"name"`
+	// The label value.
+	//
+	// Usage:
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	Value *string `pulumi:"value"`
 }
 
@@ -2483,7 +2611,24 @@ type ElastigroupScalingUpPolicyDimensionInput interface {
 }
 
 type ElastigroupScalingUpPolicyDimensionArgs struct {
-	Name  pulumi.StringInput    `pulumi:"name"`
+	Name pulumi.StringInput `pulumi:"name"`
+	// The label value.
+	//
+	// Usage:
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -2542,6 +2687,26 @@ func (o ElastigroupScalingUpPolicyDimensionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ElastigroupScalingUpPolicyDimension) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The label value.
+//
+// Usage:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
+// ```
 func (o ElastigroupScalingUpPolicyDimensionOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElastigroupScalingUpPolicyDimension) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -3906,7 +4071,7 @@ type OceanImportScheduledTaskTask struct {
 	// A valid cron expression. For example : " * * * * * ".The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of ‘frequency’ or ‘cronExpression’ should be used at a time. Required for cluster.scheduling.tasks object
 	// Example: 0 1 * * *
 	CronExpression string `pulumi:"cronExpression"`
-	// Enable the Ocean Kubernetes Autoscaler.
+	// Describes whether the task is enabled. When true the task should run when false it should not run. Required for cluster.scheduling.tasks object.
 	IsEnabled      bool                                        `pulumi:"isEnabled"`
 	TaskParameters *OceanImportScheduledTaskTaskTaskParameters `pulumi:"taskParameters"`
 	// Valid values: "clusterRoll". Required for cluster.scheduling.tasks object.
@@ -3928,7 +4093,7 @@ type OceanImportScheduledTaskTaskArgs struct {
 	// A valid cron expression. For example : " * * * * * ".The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of ‘frequency’ or ‘cronExpression’ should be used at a time. Required for cluster.scheduling.tasks object
 	// Example: 0 1 * * *
 	CronExpression pulumi.StringInput `pulumi:"cronExpression"`
-	// Enable the Ocean Kubernetes Autoscaler.
+	// Describes whether the task is enabled. When true the task should run when false it should not run. Required for cluster.scheduling.tasks object.
 	IsEnabled      pulumi.BoolInput                                   `pulumi:"isEnabled"`
 	TaskParameters OceanImportScheduledTaskTaskTaskParametersPtrInput `pulumi:"taskParameters"`
 	// Valid values: "clusterRoll". Required for cluster.scheduling.tasks object.
@@ -3992,7 +4157,7 @@ func (o OceanImportScheduledTaskTaskOutput) CronExpression() pulumi.StringOutput
 	return o.ApplyT(func(v OceanImportScheduledTaskTask) string { return v.CronExpression }).(pulumi.StringOutput)
 }
 
-// Enable the Ocean Kubernetes Autoscaler.
+// Describes whether the task is enabled. When true the task should run when false it should not run. Required for cluster.scheduling.tasks object.
 func (o OceanImportScheduledTaskTaskOutput) IsEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v OceanImportScheduledTaskTask) bool { return v.IsEnabled }).(pulumi.BoolOutput)
 }
@@ -5415,9 +5580,9 @@ func (o OceanLaunchSpecLabelArrayOutput) Index(i pulumi.IntInput) OceanLaunchSpe
 }
 
 type OceanLaunchSpecMetadata struct {
-	// The label key.
+	// The metadata key.
 	Key *string `pulumi:"key"`
-	// The label value.
+	// The metadata value.
 	Value *string `pulumi:"value"`
 }
 
@@ -5433,9 +5598,9 @@ type OceanLaunchSpecMetadataInput interface {
 }
 
 type OceanLaunchSpecMetadataArgs struct {
-	// The label key.
+	// The metadata key.
 	Key pulumi.StringPtrInput `pulumi:"key"`
-	// The label value.
+	// The metadata value.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -5490,12 +5655,12 @@ func (o OceanLaunchSpecMetadataOutput) ToOceanLaunchSpecMetadataOutputWithContex
 	return o
 }
 
-// The label key.
+// The metadata key.
 func (o OceanLaunchSpecMetadataOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OceanLaunchSpecMetadata) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
 
-// The label value.
+// The metadata value.
 func (o OceanLaunchSpecMetadataOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OceanLaunchSpecMetadata) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -5649,7 +5814,7 @@ func (o OceanLaunchSpecNetworkInterfaceArrayOutput) Index(i pulumi.IntInput) Oce
 }
 
 type OceanLaunchSpecNetworkInterfaceAccessConfig struct {
-	// The name of the access configuration.
+	// The launch specification name.
 	Name *string `pulumi:"name"`
 	// The type of the access configuration.
 	Type *string `pulumi:"type"`
@@ -5667,7 +5832,7 @@ type OceanLaunchSpecNetworkInterfaceAccessConfigInput interface {
 }
 
 type OceanLaunchSpecNetworkInterfaceAccessConfigArgs struct {
-	// The name of the access configuration.
+	// The launch specification name.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The type of the access configuration.
 	Type pulumi.StringPtrInput `pulumi:"type"`
@@ -5724,7 +5889,7 @@ func (o OceanLaunchSpecNetworkInterfaceAccessConfigOutput) ToOceanLaunchSpecNetw
 	return o
 }
 
-// The name of the access configuration.
+// The launch specification name.
 func (o OceanLaunchSpecNetworkInterfaceAccessConfigOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OceanLaunchSpecNetworkInterfaceAccessConfig) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -6665,9 +6830,9 @@ func (o OceanLaunchSpecStrategyArrayOutput) Index(i pulumi.IntInput) OceanLaunch
 type OceanLaunchSpecTaint struct {
 	// The effect of the taint. Valid values: `"NoSchedule"`, `"PreferNoSchedule"`, `"NoExecute"`.
 	Effect *string `pulumi:"effect"`
-	// The label key.
+	// The taint key.
 	Key *string `pulumi:"key"`
-	// The label value.
+	// The taint value.
 	Value *string `pulumi:"value"`
 }
 
@@ -6685,9 +6850,9 @@ type OceanLaunchSpecTaintInput interface {
 type OceanLaunchSpecTaintArgs struct {
 	// The effect of the taint. Valid values: `"NoSchedule"`, `"PreferNoSchedule"`, `"NoExecute"`.
 	Effect pulumi.StringPtrInput `pulumi:"effect"`
-	// The label key.
+	// The taint key.
 	Key pulumi.StringPtrInput `pulumi:"key"`
-	// The label value.
+	// The taint value.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -6747,12 +6912,12 @@ func (o OceanLaunchSpecTaintOutput) Effect() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OceanLaunchSpecTaint) *string { return v.Effect }).(pulumi.StringPtrOutput)
 }
 
-// The label key.
+// The taint key.
 func (o OceanLaunchSpecTaintOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OceanLaunchSpecTaint) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
 
-// The label value.
+// The taint value.
 func (o OceanLaunchSpecTaintOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OceanLaunchSpecTaint) *string { return v.Value }).(pulumi.StringPtrOutput)
 }

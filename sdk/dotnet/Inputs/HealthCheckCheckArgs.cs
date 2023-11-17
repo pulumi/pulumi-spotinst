@@ -34,7 +34,7 @@ namespace Pulumi.SpotInst.Inputs
         public Input<int> Interval { get; set; } = null!;
 
         /// <summary>
-        /// The port of the Spotinst HCS (default: 80).
+        /// The port to use to connect with the instance.
         /// </summary>
         [Input("port", required: true)]
         public Input<int> Port { get; set; } = null!;

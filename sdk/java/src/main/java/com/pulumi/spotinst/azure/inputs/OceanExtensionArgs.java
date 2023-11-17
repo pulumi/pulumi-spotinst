@@ -47,14 +47,14 @@ public final class OceanExtensionArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Name of the Load Balancer.
+     * Extension name.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the Load Balancer.
+     * @return Extension name.
      * 
      */
     public Optional<Output<String>> name() {
@@ -77,14 +77,14 @@ public final class OceanExtensionArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The type of load balancer. Supported value: `loadBalancer`
+     * Extension type.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return The type of load balancer. Supported value: `loadBalancer`
+     * @return Extension type.
      * 
      */
     public Optional<Output<String>> type() {
@@ -162,7 +162,7 @@ public final class OceanExtensionArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param name Name of the Load Balancer.
+         * @param name Extension name.
          * 
          * @return builder
          * 
@@ -173,7 +173,7 @@ public final class OceanExtensionArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param name Name of the Load Balancer.
+         * @param name Extension name.
          * 
          * @return builder
          * 
@@ -204,7 +204,7 @@ public final class OceanExtensionArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param type The type of load balancer. Supported value: `loadBalancer`
+         * @param type Extension type.
          * 
          * @return builder
          * 
@@ -215,7 +215,7 @@ public final class OceanExtensionArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param type The type of load balancer. Supported value: `loadBalancer`
+         * @param type Extension type.
          * 
          * @return builder
          * 

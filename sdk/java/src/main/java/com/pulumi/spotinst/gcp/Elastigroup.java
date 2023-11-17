@@ -508,16 +508,12 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
     /**
      * Contains scaling policies for scaling the Elastigroup down.
      * 
-     * Each `scaling_*_policy` supports the following:
-     * 
      */
     @Export(name="scalingDownPolicies", refs={List.class,ElastigroupScalingDownPolicy.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ElastigroupScalingDownPolicy>> scalingDownPolicies;
 
     /**
      * @return Contains scaling policies for scaling the Elastigroup down.
-     * 
-     * Each `scaling_*_policy` supports the following:
      * 
      */
     public Output<Optional<List<ElastigroupScalingDownPolicy>>> scalingDownPolicies() {

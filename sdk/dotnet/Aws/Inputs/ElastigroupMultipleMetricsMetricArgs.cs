@@ -16,7 +16,19 @@ namespace Pulumi.SpotInst.Aws.Inputs
         private InputList<Inputs.ElastigroupMultipleMetricsMetricDimensionArgs>? _dimensions;
 
         /// <summary>
-        /// A list of dimensions describing qualities of the metric.
+        /// The dimensions for the alarm's associated metric. When name is "instanceId", no value is needed.
+        /// *`name` - (Required) the dimension name.
+        /// *`value` - (Optional) the dimension value.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        /// });
+        /// ```
         /// </summary>
         public InputList<Inputs.ElastigroupMultipleMetricsMetricDimensionArgs> Dimensions
         {
@@ -31,13 +43,13 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public Input<string>? ExtendedStatistic { get; set; }
 
         /// <summary>
-        /// The name of the metric, with or without spaces.
+        /// The name of the source metric.
         /// </summary>
         [Input("metricName", required: true)]
         public Input<string> MetricName { get; set; } = null!;
 
         /// <summary>
-        /// The group name.
+        /// The expression name.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
@@ -49,13 +61,13 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public Input<string> Namespace { get; set; } = null!;
 
         /// <summary>
-        /// The metric statistics to return. For information about specific statistics go to [Statistics](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/index.html?CHAP_TerminologyandKeyConcepts.html#Statistic) in the Amazon CloudWatch Developer Guide.
+        /// The metric statistics to return. Valid values: `"average"`, `"sum"`, `"sampleCount"`, `"maximum"`, `"minimum"`, `"percentile"`.
         /// </summary>
         [Input("statistic")]
         public Input<string>? Statistic { get; set; }
 
         /// <summary>
-        /// The unit for the alarm's associated metric. Valid values: `"percent`, `"seconds"`, `"microseconds"`, `"milliseconds"`, `"bytes"`, `"kilobytes"`, `"megabytes"`, `"gigabytes"`, `"terabytes"`, `"bits"`, `"kilobits"`, `"megabits"`, `"gigabits"`, `"terabits"`, `"count"`, `"bytes/second"`, `"kilobytes/second"`, `"megabytes/second"`, `"gigabytes/second"`, `"terabytes/second"`, `"bits/second"`, `"kilobits/second"`, `"megabits/second"`, `"gigabits/second"`, `"terabits/second"`, `"count/second"`, `"none"`.
+        /// The unit for the alarm's associated metric. Valid values: `"seconds"`, `"microseconds"`, `"milliseconds"`, `"bytes"`, `"kilobytes"`, `"megabytes"`, `"gigabytes"`, `"terabytes"`, `"bits"`, `"kilobits"`, `"megabits"`, `"gigabits"`, `"terabits"`, `"percent"`, `"count"`, `"bytes/second"`, `"kilobytes/second"`, `"megabytes/second"`, `"gigabytes/second"`, `"terabytes/second"`, `"bits/second"`, `"kilobits/second"`, `"megabits/second"`, `"gigabits/second"`, `"terabits/second"`, `"count/second"`, `"none"`.
         /// </summary>
         [Input("unit")]
         public Input<string>? Unit { get; set; }

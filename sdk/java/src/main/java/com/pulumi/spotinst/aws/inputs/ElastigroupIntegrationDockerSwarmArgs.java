@@ -20,14 +20,14 @@ public final class ElastigroupIntegrationDockerSwarmArgs extends com.pulumi.reso
     public static final ElastigroupIntegrationDockerSwarmArgs Empty = new ElastigroupIntegrationDockerSwarmArgs();
 
     /**
-     * The amount of time, in seconds, after a scaling activity completes before any further trigger-related scaling activities can start.
+     * The amount of time, in seconds, after a scaling activity completes before any further trigger-related scaling activities can start. Minimum 180, must be a multiple of 60.
      * 
      */
     @Import(name="autoscaleCooldown")
     private @Nullable Output<Integer> autoscaleCooldown;
 
     /**
-     * @return The amount of time, in seconds, after a scaling activity completes before any further trigger-related scaling activities can start.
+     * @return The amount of time, in seconds, after a scaling activity completes before any further trigger-related scaling activities can start. Minimum 180, must be a multiple of 60.
      * 
      */
     public Optional<Output<Integer>> autoscaleCooldown() {
@@ -80,14 +80,14 @@ public final class ElastigroupIntegrationDockerSwarmArgs extends com.pulumi.reso
     }
 
     /**
-     * The URL for the Nomad master host.
+     * IP or FQDN of one of your swarm managers.
      * 
      */
     @Import(name="masterHost", required=true)
     private Output<String> masterHost;
 
     /**
-     * @return The URL for the Nomad master host.
+     * @return IP or FQDN of one of your swarm managers.
      * 
      */
     public Output<String> masterHost() {
@@ -95,14 +95,14 @@ public final class ElastigroupIntegrationDockerSwarmArgs extends com.pulumi.reso
     }
 
     /**
-     * The network port for the master host.
+     * Network port used by your swarm.
      * 
      */
     @Import(name="masterPort", required=true)
     private Output<Integer> masterPort;
 
     /**
-     * @return The network port for the master host.
+     * @return Network port used by your swarm.
      * 
      */
     public Output<Integer> masterPort() {
@@ -139,7 +139,7 @@ public final class ElastigroupIntegrationDockerSwarmArgs extends com.pulumi.reso
         }
 
         /**
-         * @param autoscaleCooldown The amount of time, in seconds, after a scaling activity completes before any further trigger-related scaling activities can start.
+         * @param autoscaleCooldown The amount of time, in seconds, after a scaling activity completes before any further trigger-related scaling activities can start. Minimum 180, must be a multiple of 60.
          * 
          * @return builder
          * 
@@ -150,7 +150,7 @@ public final class ElastigroupIntegrationDockerSwarmArgs extends com.pulumi.reso
         }
 
         /**
-         * @param autoscaleCooldown The amount of time, in seconds, after a scaling activity completes before any further trigger-related scaling activities can start.
+         * @param autoscaleCooldown The amount of time, in seconds, after a scaling activity completes before any further trigger-related scaling activities can start. Minimum 180, must be a multiple of 60.
          * 
          * @return builder
          * 
@@ -223,7 +223,7 @@ public final class ElastigroupIntegrationDockerSwarmArgs extends com.pulumi.reso
         }
 
         /**
-         * @param masterHost The URL for the Nomad master host.
+         * @param masterHost IP or FQDN of one of your swarm managers.
          * 
          * @return builder
          * 
@@ -234,7 +234,7 @@ public final class ElastigroupIntegrationDockerSwarmArgs extends com.pulumi.reso
         }
 
         /**
-         * @param masterHost The URL for the Nomad master host.
+         * @param masterHost IP or FQDN of one of your swarm managers.
          * 
          * @return builder
          * 
@@ -244,7 +244,7 @@ public final class ElastigroupIntegrationDockerSwarmArgs extends com.pulumi.reso
         }
 
         /**
-         * @param masterPort The network port for the master host.
+         * @param masterPort Network port used by your swarm.
          * 
          * @return builder
          * 
@@ -255,7 +255,7 @@ public final class ElastigroupIntegrationDockerSwarmArgs extends com.pulumi.reso
         }
 
         /**
-         * @param masterPort The network port for the master host.
+         * @param masterPort Network port used by your swarm.
          * 
          * @return builder
          * 

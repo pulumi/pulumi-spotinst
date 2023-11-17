@@ -19,7 +19,7 @@ namespace Pulumi.SpotInst.Ecs.Inputs
         public Input<string> CronExpression { get; set; } = null!;
 
         /// <summary>
-        /// Enable the Ocean ECS autoscaler.
+        /// Describes whether the task is enabled. When true the task should run when false it should not run. Required for `cluster.scheduling.tasks` object.
         /// </summary>
         [Input("isEnabled", required: true)]
         public Input<bool> IsEnabled { get; set; } = null!;
@@ -36,7 +36,6 @@ namespace Pulumi.SpotInst.Ecs.Inputs
         /// {
         /// });
         /// ```
-        /// 
         /// 
         /// &lt;a id="attributes-reference"&gt;&lt;/a&gt;
         /// </summary>

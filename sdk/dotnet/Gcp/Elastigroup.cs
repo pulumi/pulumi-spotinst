@@ -226,7 +226,7 @@ namespace Pulumi.SpotInst.Gcp
         public Output<string?> HealthCheckType { get; private set; } = null!;
 
         /// <summary>
-        /// Set an instance name prefix to be used for all launched instances and their boot disk. The prefix value should comply with the following limitations: 
+        /// Set an instance name prefix to be used for all launched instances and their boot disk. The prefix value should comply with the following limitations:
         /// * A maximal length of 25 characters.
         /// * The first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
         /// </summary>
@@ -316,8 +316,6 @@ namespace Pulumi.SpotInst.Gcp
 
         /// <summary>
         /// Contains scaling policies for scaling the Elastigroup down.
-        /// 
-        /// Each `scaling_*_policy` supports the following:
         /// </summary>
         [Output("scalingDownPolicies")]
         public Output<ImmutableArray<Outputs.ElastigroupScalingDownPolicy>> ScalingDownPolicies { get; private set; } = null!;
@@ -511,7 +509,7 @@ namespace Pulumi.SpotInst.Gcp
         public Input<string>? HealthCheckType { get; set; }
 
         /// <summary>
-        /// Set an instance name prefix to be used for all launched instances and their boot disk. The prefix value should comply with the following limitations: 
+        /// Set an instance name prefix to be used for all launched instances and their boot disk. The prefix value should comply with the following limitations:
         /// * A maximal length of 25 characters.
         /// * The first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
         /// </summary>
@@ -634,8 +632,6 @@ namespace Pulumi.SpotInst.Gcp
 
         /// <summary>
         /// Contains scaling policies for scaling the Elastigroup down.
-        /// 
-        /// Each `scaling_*_policy` supports the following:
         /// </summary>
         public InputList<Inputs.ElastigroupScalingDownPolicyArgs> ScalingDownPolicies
         {
@@ -817,7 +813,7 @@ namespace Pulumi.SpotInst.Gcp
         public Input<string>? HealthCheckType { get; set; }
 
         /// <summary>
-        /// Set an instance name prefix to be used for all launched instances and their boot disk. The prefix value should comply with the following limitations: 
+        /// Set an instance name prefix to be used for all launched instances and their boot disk. The prefix value should comply with the following limitations:
         /// * A maximal length of 25 characters.
         /// * The first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
         /// </summary>
@@ -940,8 +936,6 @@ namespace Pulumi.SpotInst.Gcp
 
         /// <summary>
         /// Contains scaling policies for scaling the Elastigroup down.
-        /// 
-        /// Each `scaling_*_policy` supports the following:
         /// </summary>
         public InputList<Inputs.ElastigroupScalingDownPolicyGetArgs> ScalingDownPolicies
         {

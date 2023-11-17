@@ -16,7 +16,7 @@ public final class OceanScheduledTaskTask {
      */
     private String cronExpression;
     /**
-     * @return Enable the Ocean ECS autoscaler.
+     * @return Describes whether the task is enabled. When true the task should run when false it should not run. Required for `cluster.scheduling.tasks` object.
      * 
      */
     private Boolean isEnabled;
@@ -59,7 +59,7 @@ public final class OceanScheduledTaskTask {
         return this.cronExpression;
     }
     /**
-     * @return Enable the Ocean ECS autoscaler.
+     * @return Describes whether the task is enabled. When true the task should run when false it should not run. Required for `cluster.scheduling.tasks` object.
      * 
      */
     public Boolean isEnabled() {

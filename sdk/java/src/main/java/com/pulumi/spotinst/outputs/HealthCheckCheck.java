@@ -29,7 +29,7 @@ public final class HealthCheckCheck {
      */
     private Integer interval;
     /**
-     * @return The port of the Spotinst HCS (default: 80).
+     * @return The port to use to connect with the instance.
      * 
      */
     private Integer port;
@@ -76,7 +76,7 @@ public final class HealthCheckCheck {
         return this.interval;
     }
     /**
-     * @return The port of the Spotinst HCS (default: 80).
+     * @return The port to use to connect with the instance.
      * 
      */
     public Integer port() {

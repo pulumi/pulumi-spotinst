@@ -15,36 +15,44 @@ public final class OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs extends com.p
     public static final OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs Empty = new OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs();
 
     /**
-     * Initial size for IOPS.
+     * Int. Initial size for volume. (Example: 50)
      * 
      */
     @Import(name="baseSize", required=true)
     private Output<Integer> baseSize;
 
     /**
-     * @return Initial size for IOPS.
+     * @return Int. Initial size for volume. (Example: 50)
      * 
      */
     public Output<Integer> baseSize() {
         return this.baseSize;
     }
 
+    /**
+     * String. Resource type to increase volume size dynamically by. (Valid values: `CPU`)
+     * 
+     */
     @Import(name="resource", required=true)
     private Output<String> resource;
 
+    /**
+     * @return String. Resource type to increase volume size dynamically by. (Valid values: `CPU`)
+     * 
+     */
     public Output<String> resource() {
         return this.resource;
     }
 
     /**
-     * Additional size per resource unit (in IOPS). (Example: `baseSize=50`, `sizePerResourceUnit=20`, and an instance with 2 CPU is launched; its IOPS size will be: 90).
+     * Int. Additional size (in GB) per resource unit. (Example: `baseSize=50`, `sizePerResourceUnit=20`, and instance with 2 CPU is launched; its total disk size will be: 90GB).
      * 
      */
     @Import(name="sizePerResourceUnit", required=true)
     private Output<Integer> sizePerResourceUnit;
 
     /**
-     * @return Additional size per resource unit (in IOPS). (Example: `baseSize=50`, `sizePerResourceUnit=20`, and an instance with 2 CPU is launched; its IOPS size will be: 90).
+     * @return Int. Additional size (in GB) per resource unit. (Example: `baseSize=50`, `sizePerResourceUnit=20`, and instance with 2 CPU is launched; its total disk size will be: 90GB).
      * 
      */
     public Output<Integer> sizePerResourceUnit() {
@@ -78,7 +86,7 @@ public final class OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs extends com.p
         }
 
         /**
-         * @param baseSize Initial size for IOPS.
+         * @param baseSize Int. Initial size for volume. (Example: 50)
          * 
          * @return builder
          * 
@@ -89,7 +97,7 @@ public final class OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs extends com.p
         }
 
         /**
-         * @param baseSize Initial size for IOPS.
+         * @param baseSize Int. Initial size for volume. (Example: 50)
          * 
          * @return builder
          * 
@@ -98,17 +106,29 @@ public final class OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs extends com.p
             return baseSize(Output.of(baseSize));
         }
 
+        /**
+         * @param resource String. Resource type to increase volume size dynamically by. (Valid values: `CPU`)
+         * 
+         * @return builder
+         * 
+         */
         public Builder resource(Output<String> resource) {
             $.resource = resource;
             return this;
         }
 
+        /**
+         * @param resource String. Resource type to increase volume size dynamically by. (Valid values: `CPU`)
+         * 
+         * @return builder
+         * 
+         */
         public Builder resource(String resource) {
             return resource(Output.of(resource));
         }
 
         /**
-         * @param sizePerResourceUnit Additional size per resource unit (in IOPS). (Example: `baseSize=50`, `sizePerResourceUnit=20`, and an instance with 2 CPU is launched; its IOPS size will be: 90).
+         * @param sizePerResourceUnit Int. Additional size (in GB) per resource unit. (Example: `baseSize=50`, `sizePerResourceUnit=20`, and instance with 2 CPU is launched; its total disk size will be: 90GB).
          * 
          * @return builder
          * 
@@ -119,7 +139,7 @@ public final class OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs extends com.p
         }
 
         /**
-         * @param sizePerResourceUnit Additional size per resource unit (in IOPS). (Example: `baseSize=50`, `sizePerResourceUnit=20`, and an instance with 2 CPU is launched; its IOPS size will be: 90).
+         * @param sizePerResourceUnit Int. Additional size (in GB) per resource unit. (Example: `baseSize=50`, `sizePerResourceUnit=20`, and instance with 2 CPU is launched; its total disk size will be: 90GB).
          * 
          * @return builder
          * 

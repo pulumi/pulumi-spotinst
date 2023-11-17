@@ -19,7 +19,7 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public Input<string> AccessKey { get; set; } = null!;
 
         /// <summary>
-        /// The URL for the Nomad master host.
+        /// IP or FQDN of one of your swarm managers.
         /// </summary>
         [Input("masterHost", required: true)]
         public Input<string> MasterHost { get; set; } = null!;

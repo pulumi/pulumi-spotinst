@@ -17,7 +17,7 @@ public final class ElastigroupIntegrationRancher {
      */
     private String accessKey;
     /**
-     * @return The URL for the Nomad master host.
+     * @return IP or FQDN of one of your swarm managers.
      * 
      */
     private String masterHost;
@@ -64,7 +64,7 @@ public final class ElastigroupIntegrationRancher {
         return this.accessKey;
     }
     /**
-     * @return The URL for the Nomad master host.
+     * @return IP or FQDN of one of your swarm managers.
      * 
      */
     public String masterHost() {

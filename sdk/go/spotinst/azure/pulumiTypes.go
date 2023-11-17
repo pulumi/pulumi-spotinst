@@ -278,7 +278,7 @@ func (o ElastigroupImageArrayOutput) Index(i pulumi.IntInput) ElastigroupImageOu
 
 type ElastigroupImageCustom struct {
 	ImageName string `pulumi:"imageName"`
-	// Name of the Azure Resource Group where the Managed Service Identity is located.
+	// Name of the Resource Group for Elastigroup.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
@@ -295,7 +295,7 @@ type ElastigroupImageCustomInput interface {
 
 type ElastigroupImageCustomArgs struct {
 	ImageName pulumi.StringInput `pulumi:"imageName"`
-	// Name of the Azure Resource Group where the Managed Service Identity is located.
+	// Name of the Resource Group for Elastigroup.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -354,7 +354,7 @@ func (o ElastigroupImageCustomOutput) ImageName() pulumi.StringOutput {
 	return o.ApplyT(func(v ElastigroupImageCustom) string { return v.ImageName }).(pulumi.StringOutput)
 }
 
-// Name of the Azure Resource Group where the Managed Service Identity is located.
+// Name of the Resource Group for Elastigroup.
 func (o ElastigroupImageCustomOutput) ResourceGroupName() pulumi.StringOutput {
 	return o.ApplyT(func(v ElastigroupImageCustom) string { return v.ResourceGroupName }).(pulumi.StringOutput)
 }
@@ -1027,9 +1027,9 @@ func (o ElastigroupLoginPtrOutput) UserName() pulumi.StringPtrOutput {
 }
 
 type ElastigroupManagedServiceIdentity struct {
-	// Name of the Managed Service Identity.
+	// The group name.
 	Name string `pulumi:"name"`
-	// Name of the Azure Resource Group where the Managed Service Identity is located.
+	// Name of the Resource Group for Elastigroup.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
@@ -1045,9 +1045,9 @@ type ElastigroupManagedServiceIdentityInput interface {
 }
 
 type ElastigroupManagedServiceIdentityArgs struct {
-	// Name of the Managed Service Identity.
+	// The group name.
 	Name pulumi.StringInput `pulumi:"name"`
-	// Name of the Azure Resource Group where the Managed Service Identity is located.
+	// Name of the Resource Group for Elastigroup.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -1102,12 +1102,12 @@ func (o ElastigroupManagedServiceIdentityOutput) ToElastigroupManagedServiceIden
 	return o
 }
 
-// Name of the Managed Service Identity.
+// The group name.
 func (o ElastigroupManagedServiceIdentityOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ElastigroupManagedServiceIdentity) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Name of the Azure Resource Group where the Managed Service Identity is located.
+// Name of the Resource Group for Elastigroup.
 func (o ElastigroupManagedServiceIdentityOutput) ResourceGroupName() pulumi.StringOutput {
 	return o.ApplyT(func(v ElastigroupManagedServiceIdentity) string { return v.ResourceGroupName }).(pulumi.StringOutput)
 }
@@ -1135,7 +1135,7 @@ func (o ElastigroupManagedServiceIdentityArrayOutput) Index(i pulumi.IntInput) E
 type ElastigroupNetwork struct {
 	AdditionalIpConfigs []ElastigroupNetworkAdditionalIpConfig `pulumi:"additionalIpConfigs"`
 	AssignPublicIp      *bool                                  `pulumi:"assignPublicIp"`
-	// Name of the Azure Resource Group where the Managed Service Identity is located.
+	// Name of the Resource Group for Elastigroup.
 	ResourceGroupName  string `pulumi:"resourceGroupName"`
 	SubnetName         string `pulumi:"subnetName"`
 	VirtualNetworkName string `pulumi:"virtualNetworkName"`
@@ -1155,7 +1155,7 @@ type ElastigroupNetworkInput interface {
 type ElastigroupNetworkArgs struct {
 	AdditionalIpConfigs ElastigroupNetworkAdditionalIpConfigArrayInput `pulumi:"additionalIpConfigs"`
 	AssignPublicIp      pulumi.BoolPtrInput                            `pulumi:"assignPublicIp"`
-	// Name of the Azure Resource Group where the Managed Service Identity is located.
+	// Name of the Resource Group for Elastigroup.
 	ResourceGroupName  pulumi.StringInput `pulumi:"resourceGroupName"`
 	SubnetName         pulumi.StringInput `pulumi:"subnetName"`
 	VirtualNetworkName pulumi.StringInput `pulumi:"virtualNetworkName"`
@@ -1246,7 +1246,7 @@ func (o ElastigroupNetworkOutput) AssignPublicIp() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ElastigroupNetwork) *bool { return v.AssignPublicIp }).(pulumi.BoolPtrOutput)
 }
 
-// Name of the Azure Resource Group where the Managed Service Identity is located.
+// Name of the Resource Group for Elastigroup.
 func (o ElastigroupNetworkOutput) ResourceGroupName() pulumi.StringOutput {
 	return o.ApplyT(func(v ElastigroupNetwork) string { return v.ResourceGroupName }).(pulumi.StringOutput)
 }
@@ -1301,7 +1301,7 @@ func (o ElastigroupNetworkPtrOutput) AssignPublicIp() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Name of the Azure Resource Group where the Managed Service Identity is located.
+// Name of the Resource Group for Elastigroup.
 func (o ElastigroupNetworkPtrOutput) ResourceGroupName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ElastigroupNetwork) *string {
 		if v == nil {
@@ -1330,7 +1330,7 @@ func (o ElastigroupNetworkPtrOutput) VirtualNetworkName() pulumi.StringPtrOutput
 }
 
 type ElastigroupNetworkAdditionalIpConfig struct {
-	// Name of the Managed Service Identity.
+	// The group name.
 	Name             string  `pulumi:"name"`
 	PrivateIpVersion *string `pulumi:"privateIpVersion"`
 }
@@ -1347,7 +1347,7 @@ type ElastigroupNetworkAdditionalIpConfigInput interface {
 }
 
 type ElastigroupNetworkAdditionalIpConfigArgs struct {
-	// Name of the Managed Service Identity.
+	// The group name.
 	Name             pulumi.StringInput    `pulumi:"name"`
 	PrivateIpVersion pulumi.StringPtrInput `pulumi:"privateIpVersion"`
 }
@@ -1403,7 +1403,7 @@ func (o ElastigroupNetworkAdditionalIpConfigOutput) ToElastigroupNetworkAddition
 	return o
 }
 
-// Name of the Managed Service Identity.
+// The group name.
 func (o ElastigroupNetworkAdditionalIpConfigOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ElastigroupNetworkAdditionalIpConfig) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -1629,7 +1629,7 @@ func (o ElastigroupScalingDownPolicyArrayOutput) Index(i pulumi.IntInput) Elasti
 }
 
 type ElastigroupScalingDownPolicyDimension struct {
-	// Name of the Managed Service Identity.
+	// The group name.
 	Name string `pulumi:"name"`
 	// Tag Value for Vms in Elastigroup.
 	Value *string `pulumi:"value"`
@@ -1647,7 +1647,7 @@ type ElastigroupScalingDownPolicyDimensionInput interface {
 }
 
 type ElastigroupScalingDownPolicyDimensionArgs struct {
-	// Name of the Managed Service Identity.
+	// The group name.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Tag Value for Vms in Elastigroup.
 	Value pulumi.StringPtrInput `pulumi:"value"`
@@ -1704,7 +1704,7 @@ func (o ElastigroupScalingDownPolicyDimensionOutput) ToElastigroupScalingDownPol
 	return o
 }
 
-// Name of the Managed Service Identity.
+// The group name.
 func (o ElastigroupScalingDownPolicyDimensionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ElastigroupScalingDownPolicyDimension) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -1931,7 +1931,7 @@ func (o ElastigroupScalingUpPolicyArrayOutput) Index(i pulumi.IntInput) Elastigr
 }
 
 type ElastigroupScalingUpPolicyDimension struct {
-	// Name of the Managed Service Identity.
+	// The group name.
 	Name string `pulumi:"name"`
 	// Tag Value for Vms in Elastigroup.
 	Value *string `pulumi:"value"`
@@ -1949,7 +1949,7 @@ type ElastigroupScalingUpPolicyDimensionInput interface {
 }
 
 type ElastigroupScalingUpPolicyDimensionArgs struct {
-	// Name of the Managed Service Identity.
+	// The group name.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Tag Value for Vms in Elastigroup.
 	Value pulumi.StringPtrInput `pulumi:"value"`
@@ -2006,7 +2006,7 @@ func (o ElastigroupScalingUpPolicyDimensionOutput) ToElastigroupScalingUpPolicyD
 	return o
 }
 
-// Name of the Managed Service Identity.
+// The group name.
 func (o ElastigroupScalingUpPolicyDimensionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ElastigroupScalingUpPolicyDimension) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -3445,11 +3445,11 @@ type OceanExtension struct {
 	ApiVersion *string `pulumi:"apiVersion"`
 	// Toggles whether auto upgrades are allowed.
 	MinorVersionAutoUpgrade *bool `pulumi:"minorVersionAutoUpgrade"`
-	// Name of the Load Balancer.
+	// Extension name.
 	Name *string `pulumi:"name"`
 	// Image publisher.
 	Publisher *string `pulumi:"publisher"`
-	// The type of load balancer. Supported value: `loadBalancer`
+	// Extension type.
 	Type *string `pulumi:"type"`
 }
 
@@ -3469,11 +3469,11 @@ type OceanExtensionArgs struct {
 	ApiVersion pulumi.StringPtrInput `pulumi:"apiVersion"`
 	// Toggles whether auto upgrades are allowed.
 	MinorVersionAutoUpgrade pulumi.BoolPtrInput `pulumi:"minorVersionAutoUpgrade"`
-	// Name of the Load Balancer.
+	// Extension name.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Image publisher.
 	Publisher pulumi.StringPtrInput `pulumi:"publisher"`
-	// The type of load balancer. Supported value: `loadBalancer`
+	// Extension type.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
@@ -3538,7 +3538,7 @@ func (o OceanExtensionOutput) MinorVersionAutoUpgrade() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OceanExtension) *bool { return v.MinorVersionAutoUpgrade }).(pulumi.BoolPtrOutput)
 }
 
-// Name of the Load Balancer.
+// Extension name.
 func (o OceanExtensionOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OceanExtension) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -3548,7 +3548,7 @@ func (o OceanExtensionOutput) Publisher() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OceanExtension) *string { return v.Publisher }).(pulumi.StringPtrOutput)
 }
 
-// The type of load balancer. Supported value: `loadBalancer`
+// Extension type.
 func (o OceanExtensionOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OceanExtension) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -4065,9 +4065,9 @@ func (o OceanLoadBalancerArrayOutput) Index(i pulumi.IntInput) OceanLoadBalancer
 }
 
 type OceanManagedServiceIdentity struct {
-	// Name of the Load Balancer.
+	// Name of the Managed Service Identity.
 	Name string `pulumi:"name"`
-	// The Resource Group name of the Load Balancer.
+	// Name of the Azure Resource Group where the Managed Service Identity is located.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
@@ -4083,9 +4083,9 @@ type OceanManagedServiceIdentityInput interface {
 }
 
 type OceanManagedServiceIdentityArgs struct {
-	// Name of the Load Balancer.
+	// Name of the Managed Service Identity.
 	Name pulumi.StringInput `pulumi:"name"`
-	// The Resource Group name of the Load Balancer.
+	// Name of the Azure Resource Group where the Managed Service Identity is located.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -4140,12 +4140,12 @@ func (o OceanManagedServiceIdentityOutput) ToOceanManagedServiceIdentityOutputWi
 	return o
 }
 
-// Name of the Load Balancer.
+// Name of the Managed Service Identity.
 func (o OceanManagedServiceIdentityOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v OceanManagedServiceIdentity) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The Resource Group name of the Load Balancer.
+// Name of the Azure Resource Group where the Managed Service Identity is located.
 func (o OceanManagedServiceIdentityOutput) ResourceGroupName() pulumi.StringOutput {
 	return o.ApplyT(func(v OceanManagedServiceIdentity) string { return v.ResourceGroupName }).(pulumi.StringOutput)
 }
@@ -4173,7 +4173,7 @@ func (o OceanManagedServiceIdentityArrayOutput) Index(i pulumi.IntInput) OceanMa
 type OceanNetwork struct {
 	// A list of virtual network interfaces. The publicIpSku must be identical between all the network interfaces. One network interface must be set as the primary.
 	NetworkInterfaces []OceanNetworkNetworkInterface `pulumi:"networkInterfaces"`
-	// The Resource Group name of the Load Balancer.
+	// Vnet resource group name.
 	ResourceGroupName *string `pulumi:"resourceGroupName"`
 	// Virtual network.
 	VirtualNetworkName *string `pulumi:"virtualNetworkName"`
@@ -4193,7 +4193,7 @@ type OceanNetworkInput interface {
 type OceanNetworkArgs struct {
 	// A list of virtual network interfaces. The publicIpSku must be identical between all the network interfaces. One network interface must be set as the primary.
 	NetworkInterfaces OceanNetworkNetworkInterfaceArrayInput `pulumi:"networkInterfaces"`
-	// The Resource Group name of the Load Balancer.
+	// Vnet resource group name.
 	ResourceGroupName pulumi.StringPtrInput `pulumi:"resourceGroupName"`
 	// Virtual network.
 	VirtualNetworkName pulumi.StringPtrInput `pulumi:"virtualNetworkName"`
@@ -4281,7 +4281,7 @@ func (o OceanNetworkOutput) NetworkInterfaces() OceanNetworkNetworkInterfaceArra
 	return o.ApplyT(func(v OceanNetwork) []OceanNetworkNetworkInterface { return v.NetworkInterfaces }).(OceanNetworkNetworkInterfaceArrayOutput)
 }
 
-// The Resource Group name of the Load Balancer.
+// Vnet resource group name.
 func (o OceanNetworkOutput) ResourceGroupName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OceanNetwork) *string { return v.ResourceGroupName }).(pulumi.StringPtrOutput)
 }
@@ -4325,7 +4325,7 @@ func (o OceanNetworkPtrOutput) NetworkInterfaces() OceanNetworkNetworkInterfaceA
 	}).(OceanNetworkNetworkInterfaceArrayOutput)
 }
 
-// The Resource Group name of the Load Balancer.
+// Vnet resource group name.
 func (o OceanNetworkPtrOutput) ResourceGroupName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OceanNetwork) *string {
 		if v == nil {
@@ -4480,7 +4480,7 @@ func (o OceanNetworkNetworkInterfaceArrayOutput) Index(i pulumi.IntInput) OceanN
 }
 
 type OceanNetworkNetworkInterfaceAdditionalIpConfig struct {
-	// Name of the Load Balancer.
+	// The Ocean cluster name.
 	Name *string `pulumi:"name"`
 	// Supported values: `IPv4`, `IPv6`.
 	PrivateIpVersion *string `pulumi:"privateIpVersion"`
@@ -4498,7 +4498,7 @@ type OceanNetworkNetworkInterfaceAdditionalIpConfigInput interface {
 }
 
 type OceanNetworkNetworkInterfaceAdditionalIpConfigArgs struct {
-	// Name of the Load Balancer.
+	// The Ocean cluster name.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Supported values: `IPv4`, `IPv6`.
 	PrivateIpVersion pulumi.StringPtrInput `pulumi:"privateIpVersion"`
@@ -4555,7 +4555,7 @@ func (o OceanNetworkNetworkInterfaceAdditionalIpConfigOutput) ToOceanNetworkNetw
 	return o
 }
 
-// Name of the Load Balancer.
+// The Ocean cluster name.
 func (o OceanNetworkNetworkInterfaceAdditionalIpConfigOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OceanNetworkNetworkInterfaceAdditionalIpConfig) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -4586,9 +4586,9 @@ func (o OceanNetworkNetworkInterfaceAdditionalIpConfigArrayOutput) Index(i pulum
 }
 
 type OceanNetworkNetworkInterfaceSecurityGroup struct {
-	// Name of the Load Balancer.
+	// The Ocean cluster name.
 	Name *string `pulumi:"name"`
-	// The Resource Group name of the Load Balancer.
+	// Name of the Azure Resource Group into which VMs will be launched. Cannot be updated.
 	ResourceGroupName *string `pulumi:"resourceGroupName"`
 }
 
@@ -4604,9 +4604,9 @@ type OceanNetworkNetworkInterfaceSecurityGroupInput interface {
 }
 
 type OceanNetworkNetworkInterfaceSecurityGroupArgs struct {
-	// Name of the Load Balancer.
+	// The Ocean cluster name.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// The Resource Group name of the Load Balancer.
+	// Name of the Azure Resource Group into which VMs will be launched. Cannot be updated.
 	ResourceGroupName pulumi.StringPtrInput `pulumi:"resourceGroupName"`
 }
 
@@ -4687,12 +4687,12 @@ func (o OceanNetworkNetworkInterfaceSecurityGroupOutput) ToOceanNetworkNetworkIn
 	}).(OceanNetworkNetworkInterfaceSecurityGroupPtrOutput)
 }
 
-// Name of the Load Balancer.
+// The Ocean cluster name.
 func (o OceanNetworkNetworkInterfaceSecurityGroupOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OceanNetworkNetworkInterfaceSecurityGroup) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// The Resource Group name of the Load Balancer.
+// Name of the Azure Resource Group into which VMs will be launched. Cannot be updated.
 func (o OceanNetworkNetworkInterfaceSecurityGroupOutput) ResourceGroupName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OceanNetworkNetworkInterfaceSecurityGroup) *string { return v.ResourceGroupName }).(pulumi.StringPtrOutput)
 }
@@ -4721,7 +4721,7 @@ func (o OceanNetworkNetworkInterfaceSecurityGroupPtrOutput) Elem() OceanNetworkN
 	}).(OceanNetworkNetworkInterfaceSecurityGroupOutput)
 }
 
-// Name of the Load Balancer.
+// The Ocean cluster name.
 func (o OceanNetworkNetworkInterfaceSecurityGroupPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OceanNetworkNetworkInterfaceSecurityGroup) *string {
 		if v == nil {
@@ -4731,7 +4731,7 @@ func (o OceanNetworkNetworkInterfaceSecurityGroupPtrOutput) Name() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
-// The Resource Group name of the Load Balancer.
+// Name of the Azure Resource Group into which VMs will be launched. Cannot be updated.
 func (o OceanNetworkNetworkInterfaceSecurityGroupPtrOutput) ResourceGroupName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OceanNetworkNetworkInterfaceSecurityGroup) *string {
 		if v == nil {
@@ -6977,7 +6977,7 @@ func (o OceanNpVirtualNodeGroupTaintArrayOutput) Index(i pulumi.IntInput) OceanN
 type OceanOsDisk struct {
 	// The size of the OS disk in GB.
 	SizeGb int `pulumi:"sizeGb"`
-	// The type of load balancer. Supported value: `loadBalancer`
+	// The type of the OS disk. Supported values: `Standard_LRS`, `Premium_LRS`, `StandardSSD_LRS`.
 	Type *string `pulumi:"type"`
 }
 
@@ -6995,7 +6995,7 @@ type OceanOsDiskInput interface {
 type OceanOsDiskArgs struct {
 	// The size of the OS disk in GB.
 	SizeGb pulumi.IntInput `pulumi:"sizeGb"`
-	// The type of load balancer. Supported value: `loadBalancer`
+	// The type of the OS disk. Supported values: `Standard_LRS`, `Premium_LRS`, `StandardSSD_LRS`.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
@@ -7081,7 +7081,7 @@ func (o OceanOsDiskOutput) SizeGb() pulumi.IntOutput {
 	return o.ApplyT(func(v OceanOsDisk) int { return v.SizeGb }).(pulumi.IntOutput)
 }
 
-// The type of load balancer. Supported value: `loadBalancer`
+// The type of the OS disk. Supported values: `Standard_LRS`, `Premium_LRS`, `StandardSSD_LRS`.
 func (o OceanOsDiskOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OceanOsDisk) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -7120,7 +7120,7 @@ func (o OceanOsDiskPtrOutput) SizeGb() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// The type of load balancer. Supported value: `loadBalancer`
+// The type of the OS disk. Supported values: `Standard_LRS`, `Premium_LRS`, `StandardSSD_LRS`.
 func (o OceanOsDiskPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OceanOsDisk) *string {
 		if v == nil {
@@ -7572,9 +7572,9 @@ func (o OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArrayOutput) Index(i pulu
 }
 
 type OceanVirtualNodeGroupLabel struct {
-	// Tag Key for Vms in the cluster.
+	// The label key.
 	Key string `pulumi:"key"`
-	// Tag Value for VMs in the cluster.
+	// The label value.
 	Value *string `pulumi:"value"`
 }
 
@@ -7590,9 +7590,9 @@ type OceanVirtualNodeGroupLabelInput interface {
 }
 
 type OceanVirtualNodeGroupLabelArgs struct {
-	// Tag Key for Vms in the cluster.
+	// The label key.
 	Key pulumi.StringInput `pulumi:"key"`
-	// Tag Value for VMs in the cluster.
+	// The label value.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -7647,12 +7647,12 @@ func (o OceanVirtualNodeGroupLabelOutput) ToOceanVirtualNodeGroupLabelOutputWith
 	return o
 }
 
-// Tag Key for Vms in the cluster.
+// The label key.
 func (o OceanVirtualNodeGroupLabelOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v OceanVirtualNodeGroupLabel) string { return v.Key }).(pulumi.StringOutput)
 }
 
-// Tag Value for VMs in the cluster.
+// The label value.
 func (o OceanVirtualNodeGroupLabelOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OceanVirtualNodeGroupLabel) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -8177,9 +8177,9 @@ func (o OceanVirtualNodeGroupResourceLimitArrayOutput) Index(i pulumi.IntInput) 
 type OceanVirtualNodeGroupTaint struct {
 	// The effect of the taint. Valid values: `"NoSchedule"`, `"PreferNoSchedule"`, `"NoExecute"`, `"PreferNoExecute"`.
 	Effect string `pulumi:"effect"`
-	// Tag Key for Vms in the cluster.
+	// The taint key.
 	Key string `pulumi:"key"`
-	// Tag Value for VMs in the cluster.
+	// The taint value.
 	Value string `pulumi:"value"`
 }
 
@@ -8197,9 +8197,9 @@ type OceanVirtualNodeGroupTaintInput interface {
 type OceanVirtualNodeGroupTaintArgs struct {
 	// The effect of the taint. Valid values: `"NoSchedule"`, `"PreferNoSchedule"`, `"NoExecute"`, `"PreferNoExecute"`.
 	Effect pulumi.StringInput `pulumi:"effect"`
-	// Tag Key for Vms in the cluster.
+	// The taint key.
 	Key pulumi.StringInput `pulumi:"key"`
-	// Tag Value for VMs in the cluster.
+	// The taint value.
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -8259,12 +8259,12 @@ func (o OceanVirtualNodeGroupTaintOutput) Effect() pulumi.StringOutput {
 	return o.ApplyT(func(v OceanVirtualNodeGroupTaint) string { return v.Effect }).(pulumi.StringOutput)
 }
 
-// Tag Key for Vms in the cluster.
+// The taint key.
 func (o OceanVirtualNodeGroupTaintOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v OceanVirtualNodeGroupTaint) string { return v.Key }).(pulumi.StringOutput)
 }
 
-// Tag Value for VMs in the cluster.
+// The taint value.
 func (o OceanVirtualNodeGroupTaintOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v OceanVirtualNodeGroupTaint) string { return v.Value }).(pulumi.StringOutput)
 }

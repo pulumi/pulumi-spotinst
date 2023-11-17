@@ -16,14 +16,14 @@ public final class OceanNetworkNetworkInterfaceAdditionalIpConfigArgs extends co
     public static final OceanNetworkNetworkInterfaceAdditionalIpConfigArgs Empty = new OceanNetworkNetworkInterfaceAdditionalIpConfigArgs();
 
     /**
-     * Name of the Load Balancer.
+     * The Ocean cluster name.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the Load Balancer.
+     * @return The Ocean cluster name.
      * 
      */
     public Optional<Output<String>> name() {
@@ -71,7 +71,7 @@ public final class OceanNetworkNetworkInterfaceAdditionalIpConfigArgs extends co
         }
 
         /**
-         * @param name Name of the Load Balancer.
+         * @param name The Ocean cluster name.
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class OceanNetworkNetworkInterfaceAdditionalIpConfigArgs extends co
         }
 
         /**
-         * @param name Name of the Load Balancer.
+         * @param name The Ocean cluster name.
          * 
          * @return builder
          * 

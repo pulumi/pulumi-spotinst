@@ -174,7 +174,7 @@ export class Elastigroup extends pulumi.CustomResource {
      */
     public readonly healthCheckType!: pulumi.Output<string | undefined>;
     /**
-     * Set an instance name prefix to be used for all launched instances and their boot disk. The prefix value should comply with the following limitations: 
+     * Set an instance name prefix to be used for all launched instances and their boot disk. The prefix value should comply with the following limitations:
      * * A maximal length of 25 characters.
      * * The first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
      */
@@ -232,8 +232,6 @@ export class Elastigroup extends pulumi.CustomResource {
     public readonly provisioningModel!: pulumi.Output<string | undefined>;
     /**
      * Contains scaling policies for scaling the Elastigroup down.
-     *
-     * Each `scaling_*_policy` supports the following:
      */
     public readonly scalingDownPolicies!: pulumi.Output<outputs.gcp.ElastigroupScalingDownPolicy[] | undefined>;
     /**
@@ -414,7 +412,7 @@ export interface ElastigroupState {
      */
     healthCheckType?: pulumi.Input<string>;
     /**
-     * Set an instance name prefix to be used for all launched instances and their boot disk. The prefix value should comply with the following limitations: 
+     * Set an instance name prefix to be used for all launched instances and their boot disk. The prefix value should comply with the following limitations:
      * * A maximal length of 25 characters.
      * * The first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
      */
@@ -472,8 +470,6 @@ export interface ElastigroupState {
     provisioningModel?: pulumi.Input<string>;
     /**
      * Contains scaling policies for scaling the Elastigroup down.
-     *
-     * Each `scaling_*_policy` supports the following:
      */
     scalingDownPolicies?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupScalingDownPolicy>[]>;
     /**
@@ -559,7 +555,7 @@ export interface ElastigroupArgs {
      */
     healthCheckType?: pulumi.Input<string>;
     /**
-     * Set an instance name prefix to be used for all launched instances and their boot disk. The prefix value should comply with the following limitations: 
+     * Set an instance name prefix to be used for all launched instances and their boot disk. The prefix value should comply with the following limitations:
      * * A maximal length of 25 characters.
      * * The first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
      */
@@ -617,8 +613,6 @@ export interface ElastigroupArgs {
     provisioningModel?: pulumi.Input<string>;
     /**
      * Contains scaling policies for scaling the Elastigroup down.
-     *
-     * Each `scaling_*_policy` supports the following:
      */
     scalingDownPolicies?: pulumi.Input<pulumi.Input<inputs.gcp.ElastigroupScalingDownPolicy>[]>;
     /**

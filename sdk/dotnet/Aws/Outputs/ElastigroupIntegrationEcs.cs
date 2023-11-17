@@ -26,11 +26,11 @@ namespace Pulumi.SpotInst.Aws.Outputs
         /// </summary>
         public readonly Outputs.ElastigroupIntegrationEcsAutoscaleDown? AutoscaleDown;
         /// <summary>
-        /// An option to set compute reserve for the cluster.
+        /// Headroom for the cluster.
         /// </summary>
         public readonly Outputs.ElastigroupIntegrationEcsAutoscaleHeadroom? AutoscaleHeadroom;
         /// <summary>
-        /// Enabling the automatic k8s auto-scaler functionality. For more information please see: [Kubernetes auto scaler](https://api.spotinst.com/integration-docs/elastigroup/container-management/kubernetes/autoscaler/).
+        /// Enabling the automatic auto-scaler functionality. For more information please see: [ECS auto scaler](https://api.spotinst.com/container-management/amazon-ecs/elastigroup-for-ecs-concepts/autoscaling/).
         /// </summary>
         public readonly bool? AutoscaleIsAutoConfig;
         /// <summary>

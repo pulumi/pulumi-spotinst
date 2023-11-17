@@ -14,11 +14,11 @@ namespace Pulumi.SpotInst.Ecs.Outputs
     public sealed class OceanAutoscalerResourceLimits
     {
         /// <summary>
-        /// Maximum amount of Memory (GiB).
+        /// The maximum memory in GiB units that can be allocated to the cluster.
         /// </summary>
         public readonly int? MaxMemoryGib;
         /// <summary>
-        /// Maximum number of vcpus available.
+        /// The maximum cpu in vCPU units that can be allocated to the cluster.
         /// </summary>
         public readonly int? MaxVcpu;
 

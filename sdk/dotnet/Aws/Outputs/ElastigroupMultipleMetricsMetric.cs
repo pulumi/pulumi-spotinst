@@ -14,7 +14,19 @@ namespace Pulumi.SpotInst.Aws.Outputs
     public sealed class ElastigroupMultipleMetricsMetric
     {
         /// <summary>
-        /// A list of dimensions describing qualities of the metric.
+        /// The dimensions for the alarm's associated metric. When name is "instanceId", no value is needed.
+        /// *`name` - (Required) the dimension name.
+        /// *`value` - (Optional) the dimension value.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        /// });
+        /// ```
         /// </summary>
         public readonly ImmutableArray<Outputs.ElastigroupMultipleMetricsMetricDimension> Dimensions;
         /// <summary>
@@ -22,11 +34,11 @@ namespace Pulumi.SpotInst.Aws.Outputs
         /// </summary>
         public readonly string? ExtendedStatistic;
         /// <summary>
-        /// The name of the metric, with or without spaces.
+        /// The name of the source metric.
         /// </summary>
         public readonly string MetricName;
         /// <summary>
-        /// The group name.
+        /// The expression name.
         /// </summary>
         public readonly string Name;
         /// <summary>
@@ -34,11 +46,11 @@ namespace Pulumi.SpotInst.Aws.Outputs
         /// </summary>
         public readonly string Namespace;
         /// <summary>
-        /// The metric statistics to return. For information about specific statistics go to [Statistics](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/index.html?CHAP_TerminologyandKeyConcepts.html#Statistic) in the Amazon CloudWatch Developer Guide.
+        /// The metric statistics to return. Valid values: `"average"`, `"sum"`, `"sampleCount"`, `"maximum"`, `"minimum"`, `"percentile"`.
         /// </summary>
         public readonly string? Statistic;
         /// <summary>
-        /// The unit for the alarm's associated metric. Valid values: `"percent`, `"seconds"`, `"microseconds"`, `"milliseconds"`, `"bytes"`, `"kilobytes"`, `"megabytes"`, `"gigabytes"`, `"terabytes"`, `"bits"`, `"kilobits"`, `"megabits"`, `"gigabits"`, `"terabits"`, `"count"`, `"bytes/second"`, `"kilobytes/second"`, `"megabytes/second"`, `"gigabytes/second"`, `"terabytes/second"`, `"bits/second"`, `"kilobits/second"`, `"megabits/second"`, `"gigabits/second"`, `"terabits/second"`, `"count/second"`, `"none"`.
+        /// The unit for the alarm's associated metric. Valid values: `"seconds"`, `"microseconds"`, `"milliseconds"`, `"bytes"`, `"kilobytes"`, `"megabytes"`, `"gigabytes"`, `"terabytes"`, `"bits"`, `"kilobits"`, `"megabits"`, `"gigabits"`, `"terabits"`, `"percent"`, `"count"`, `"bytes/second"`, `"kilobytes/second"`, `"megabytes/second"`, `"gigabytes/second"`, `"terabytes/second"`, `"bits/second"`, `"kilobits/second"`, `"megabits/second"`, `"gigabits/second"`, `"terabits/second"`, `"count/second"`, `"none"`.
         /// </summary>
         public readonly string? Unit;
 

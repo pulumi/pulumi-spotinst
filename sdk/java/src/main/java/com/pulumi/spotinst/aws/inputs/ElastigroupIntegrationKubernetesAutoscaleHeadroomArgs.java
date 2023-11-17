@@ -16,14 +16,14 @@ public final class ElastigroupIntegrationKubernetesAutoscaleHeadroomArgs extends
     public static final ElastigroupIntegrationKubernetesAutoscaleHeadroomArgs Empty = new ElastigroupIntegrationKubernetesAutoscaleHeadroomArgs();
 
     /**
-     * How much CPU (MHz) to allocate for headroom unit.
+     * How much CPU to allocate for headroom unit.
      * 
      */
     @Import(name="cpuPerUnit")
     private @Nullable Output<Integer> cpuPerUnit;
 
     /**
-     * @return How much CPU (MHz) to allocate for headroom unit.
+     * @return How much CPU to allocate for headroom unit.
      * 
      */
     public Optional<Output<Integer>> cpuPerUnit() {
@@ -31,14 +31,14 @@ public final class ElastigroupIntegrationKubernetesAutoscaleHeadroomArgs extends
     }
 
     /**
-     * How much Memory allocate for headroom unit.
+     * The amount of memory in each headroom unit. Measured in MiB.
      * 
      */
     @Import(name="memoryPerUnit")
     private @Nullable Output<Integer> memoryPerUnit;
 
     /**
-     * @return How much Memory allocate for headroom unit.
+     * @return The amount of memory in each headroom unit. Measured in MiB.
      * 
      */
     public Optional<Output<Integer>> memoryPerUnit() {
@@ -46,14 +46,14 @@ public final class ElastigroupIntegrationKubernetesAutoscaleHeadroomArgs extends
     }
 
     /**
-     * How many units of headroom to allocate.
+     * How many units to allocate for headroom unit.
      * 
      */
     @Import(name="numOfUnits")
     private @Nullable Output<Integer> numOfUnits;
 
     /**
-     * @return How many units of headroom to allocate.
+     * @return How many units to allocate for headroom unit.
      * 
      */
     public Optional<Output<Integer>> numOfUnits() {
@@ -87,7 +87,7 @@ public final class ElastigroupIntegrationKubernetesAutoscaleHeadroomArgs extends
         }
 
         /**
-         * @param cpuPerUnit How much CPU (MHz) to allocate for headroom unit.
+         * @param cpuPerUnit How much CPU to allocate for headroom unit.
          * 
          * @return builder
          * 
@@ -98,7 +98,7 @@ public final class ElastigroupIntegrationKubernetesAutoscaleHeadroomArgs extends
         }
 
         /**
-         * @param cpuPerUnit How much CPU (MHz) to allocate for headroom unit.
+         * @param cpuPerUnit How much CPU to allocate for headroom unit.
          * 
          * @return builder
          * 
@@ -108,7 +108,7 @@ public final class ElastigroupIntegrationKubernetesAutoscaleHeadroomArgs extends
         }
 
         /**
-         * @param memoryPerUnit How much Memory allocate for headroom unit.
+         * @param memoryPerUnit The amount of memory in each headroom unit. Measured in MiB.
          * 
          * @return builder
          * 
@@ -119,7 +119,7 @@ public final class ElastigroupIntegrationKubernetesAutoscaleHeadroomArgs extends
         }
 
         /**
-         * @param memoryPerUnit How much Memory allocate for headroom unit.
+         * @param memoryPerUnit The amount of memory in each headroom unit. Measured in MiB.
          * 
          * @return builder
          * 
@@ -129,7 +129,7 @@ public final class ElastigroupIntegrationKubernetesAutoscaleHeadroomArgs extends
         }
 
         /**
-         * @param numOfUnits How many units of headroom to allocate.
+         * @param numOfUnits How many units to allocate for headroom unit.
          * 
          * @return builder
          * 
@@ -140,7 +140,7 @@ public final class ElastigroupIntegrationKubernetesAutoscaleHeadroomArgs extends
         }
 
         /**
-         * @param numOfUnits How many units of headroom to allocate.
+         * @param numOfUnits How many units to allocate for headroom unit.
          * 
          * @return builder
          * 

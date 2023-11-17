@@ -34,7 +34,7 @@ namespace Pulumi.SpotInst.Ecs.Outputs
         /// </summary>
         public readonly string? KmsKeyId;
         /// <summary>
-        /// (Optional) String. The snapshot ID to mount by.
+        /// String. The snapshot ID to mount by.
         /// </summary>
         public readonly string? SnapshotId;
         /// <summary>

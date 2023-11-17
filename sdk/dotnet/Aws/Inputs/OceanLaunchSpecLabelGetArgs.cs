@@ -13,13 +13,13 @@ namespace Pulumi.SpotInst.Aws.Inputs
     public sealed class OceanLaunchSpecLabelGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The taint key.
+        /// The label key.
         /// </summary>
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;
 
         /// <summary>
-        /// The taint value.
+        /// The label value.
         /// </summary>
         [Input("value", required: true)]
         public Input<string> Value { get; set; } = null!;

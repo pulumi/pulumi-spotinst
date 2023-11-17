@@ -13,7 +13,7 @@ namespace Pulumi.SpotInst.Azure.Inputs
     public sealed class ElastigroupScalingUpPolicyDimensionGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Name of the Managed Service Identity.
+        /// The group name.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;

@@ -156,7 +156,7 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
      */
     public readonly metadatas!: pulumi.Output<outputs.gke.OceanLaunchSpecMetadata[]>;
     /**
-     * The name of the access configuration.
+     * The launch specification name.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -314,7 +314,7 @@ export interface OceanLaunchSpecState {
      */
     metadatas?: pulumi.Input<pulumi.Input<inputs.gke.OceanLaunchSpecMetadata>[]>;
     /**
-     * The name of the access configuration.
+     * The launch specification name.
      */
     name?: pulumi.Input<string>;
     /**
@@ -405,7 +405,7 @@ export interface OceanLaunchSpecArgs {
      */
     metadatas?: pulumi.Input<pulumi.Input<inputs.gke.OceanLaunchSpecMetadata>[]>;
     /**
-     * The name of the access configuration.
+     * The launch specification name.
      */
     name?: pulumi.Input<string>;
     /**

@@ -33,14 +33,14 @@ public final class ElastigroupIntegrationBeanstalkDeploymentPreferencesArgs exte
     }
 
     /**
-     * The percentage size of each batch in the scheduled deployment roll.
+     * Percent size of each batch
      * 
      */
     @Import(name="batchSizePercentage")
     private @Nullable Output<Integer> batchSizePercentage;
 
     /**
-     * @return The percentage size of each batch in the scheduled deployment roll.
+     * @return Percent size of each batch
      * 
      */
     public Optional<Output<Integer>> batchSizePercentage() {
@@ -48,14 +48,14 @@ public final class ElastigroupIntegrationBeanstalkDeploymentPreferencesArgs exte
     }
 
     /**
-     * The period of time (seconds) to wait before checking a batch&#39;s health after it&#39;s deployment.
+     * Amount of time to wait between batches
      * 
      */
     @Import(name="gracePeriod")
     private @Nullable Output<Integer> gracePeriod;
 
     /**
-     * @return The period of time (seconds) to wait before checking a batch&#39;s health after it&#39;s deployment.
+     * @return Amount of time to wait between batches
      * 
      */
     public Optional<Output<Integer>> gracePeriod() {
@@ -126,7 +126,7 @@ public final class ElastigroupIntegrationBeanstalkDeploymentPreferencesArgs exte
         }
 
         /**
-         * @param batchSizePercentage The percentage size of each batch in the scheduled deployment roll.
+         * @param batchSizePercentage Percent size of each batch
          * 
          * @return builder
          * 
@@ -137,7 +137,7 @@ public final class ElastigroupIntegrationBeanstalkDeploymentPreferencesArgs exte
         }
 
         /**
-         * @param batchSizePercentage The percentage size of each batch in the scheduled deployment roll.
+         * @param batchSizePercentage Percent size of each batch
          * 
          * @return builder
          * 
@@ -147,7 +147,7 @@ public final class ElastigroupIntegrationBeanstalkDeploymentPreferencesArgs exte
         }
 
         /**
-         * @param gracePeriod The period of time (seconds) to wait before checking a batch&#39;s health after it&#39;s deployment.
+         * @param gracePeriod Amount of time to wait between batches
          * 
          * @return builder
          * 
@@ -158,7 +158,7 @@ public final class ElastigroupIntegrationBeanstalkDeploymentPreferencesArgs exte
         }
 
         /**
-         * @param gracePeriod The period of time (seconds) to wait before checking a batch&#39;s health after it&#39;s deployment.
+         * @param gracePeriod Amount of time to wait between batches
          * 
          * @return builder
          * 

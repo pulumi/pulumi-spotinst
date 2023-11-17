@@ -183,7 +183,7 @@ export class Ocean extends pulumi.CustomResource {
      */
     public readonly monitoring!: pulumi.Output<boolean | undefined>;
     /**
-     * Required if type is set to `CLASSIC`
+     * The cluster name.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -432,7 +432,7 @@ export interface OceanState {
      */
     monitoring?: pulumi.Input<boolean>;
     /**
-     * Required if type is set to `CLASSIC`
+     * The cluster name.
      */
     name?: pulumi.Input<string>;
     /**
@@ -579,7 +579,7 @@ export interface OceanArgs {
      */
     monitoring?: pulumi.Input<boolean>;
     /**
-     * Required if type is set to `CLASSIC`
+     * The cluster name.
      */
     name?: pulumi.Input<string>;
     /**

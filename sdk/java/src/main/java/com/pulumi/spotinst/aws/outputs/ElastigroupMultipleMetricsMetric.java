@@ -14,7 +14,31 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ElastigroupMultipleMetricsMetric {
     /**
-     * @return A list of dimensions describing qualities of the metric.
+     * @return The dimensions for the alarm&#39;s associated metric. When name is &#34;instanceId&#34;, no value is needed.
+     * *`name` - (Required) the dimension name.
+     * *`value` - (Optional) the dimension value.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *     }
+     * }
+     * ```
      * 
      */
     private @Nullable List<ElastigroupMultipleMetricsMetricDimension> dimensions;
@@ -24,12 +48,12 @@ public final class ElastigroupMultipleMetricsMetric {
      */
     private @Nullable String extendedStatistic;
     /**
-     * @return The name of the metric, with or without spaces.
+     * @return The name of the source metric.
      * 
      */
     private String metricName;
     /**
-     * @return The group name.
+     * @return The expression name.
      * 
      */
     private String name;
@@ -39,19 +63,43 @@ public final class ElastigroupMultipleMetricsMetric {
      */
     private String namespace;
     /**
-     * @return The metric statistics to return. For information about specific statistics go to [Statistics](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/index.html?CHAP_TerminologyandKeyConcepts.html#Statistic) in the Amazon CloudWatch Developer Guide.
+     * @return The metric statistics to return. Valid values: `&#34;average&#34;`, `&#34;sum&#34;`, `&#34;sampleCount&#34;`, `&#34;maximum&#34;`, `&#34;minimum&#34;`, `&#34;percentile&#34;`.
      * 
      */
     private @Nullable String statistic;
     /**
-     * @return The unit for the alarm&#39;s associated metric. Valid values: `&#34;percent`, `&#34;seconds&#34;`, `&#34;microseconds&#34;`, `&#34;milliseconds&#34;`, `&#34;bytes&#34;`, `&#34;kilobytes&#34;`, `&#34;megabytes&#34;`, `&#34;gigabytes&#34;`, `&#34;terabytes&#34;`, `&#34;bits&#34;`, `&#34;kilobits&#34;`, `&#34;megabits&#34;`, `&#34;gigabits&#34;`, `&#34;terabits&#34;`, `&#34;count&#34;`, `&#34;bytes/second&#34;`, `&#34;kilobytes/second&#34;`, `&#34;megabytes/second&#34;`, `&#34;gigabytes/second&#34;`, `&#34;terabytes/second&#34;`, `&#34;bits/second&#34;`, `&#34;kilobits/second&#34;`, `&#34;megabits/second&#34;`, `&#34;gigabits/second&#34;`, `&#34;terabits/second&#34;`, `&#34;count/second&#34;`, `&#34;none&#34;`.
+     * @return The unit for the alarm&#39;s associated metric. Valid values: `&#34;seconds&#34;`, `&#34;microseconds&#34;`, `&#34;milliseconds&#34;`, `&#34;bytes&#34;`, `&#34;kilobytes&#34;`, `&#34;megabytes&#34;`, `&#34;gigabytes&#34;`, `&#34;terabytes&#34;`, `&#34;bits&#34;`, `&#34;kilobits&#34;`, `&#34;megabits&#34;`, `&#34;gigabits&#34;`, `&#34;terabits&#34;`, `&#34;percent&#34;`, `&#34;count&#34;`, `&#34;bytes/second&#34;`, `&#34;kilobytes/second&#34;`, `&#34;megabytes/second&#34;`, `&#34;gigabytes/second&#34;`, `&#34;terabytes/second&#34;`, `&#34;bits/second&#34;`, `&#34;kilobits/second&#34;`, `&#34;megabits/second&#34;`, `&#34;gigabits/second&#34;`, `&#34;terabits/second&#34;`, `&#34;count/second&#34;`, `&#34;none&#34;`.
      * 
      */
     private @Nullable String unit;
 
     private ElastigroupMultipleMetricsMetric() {}
     /**
-     * @return A list of dimensions describing qualities of the metric.
+     * @return The dimensions for the alarm&#39;s associated metric. When name is &#34;instanceId&#34;, no value is needed.
+     * *`name` - (Required) the dimension name.
+     * *`value` - (Optional) the dimension value.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *     }
+     * }
+     * ```
      * 
      */
     public List<ElastigroupMultipleMetricsMetricDimension> dimensions() {
@@ -65,14 +113,14 @@ public final class ElastigroupMultipleMetricsMetric {
         return Optional.ofNullable(this.extendedStatistic);
     }
     /**
-     * @return The name of the metric, with or without spaces.
+     * @return The name of the source metric.
      * 
      */
     public String metricName() {
         return this.metricName;
     }
     /**
-     * @return The group name.
+     * @return The expression name.
      * 
      */
     public String name() {
@@ -86,14 +134,14 @@ public final class ElastigroupMultipleMetricsMetric {
         return this.namespace;
     }
     /**
-     * @return The metric statistics to return. For information about specific statistics go to [Statistics](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/index.html?CHAP_TerminologyandKeyConcepts.html#Statistic) in the Amazon CloudWatch Developer Guide.
+     * @return The metric statistics to return. Valid values: `&#34;average&#34;`, `&#34;sum&#34;`, `&#34;sampleCount&#34;`, `&#34;maximum&#34;`, `&#34;minimum&#34;`, `&#34;percentile&#34;`.
      * 
      */
     public Optional<String> statistic() {
         return Optional.ofNullable(this.statistic);
     }
     /**
-     * @return The unit for the alarm&#39;s associated metric. Valid values: `&#34;percent`, `&#34;seconds&#34;`, `&#34;microseconds&#34;`, `&#34;milliseconds&#34;`, `&#34;bytes&#34;`, `&#34;kilobytes&#34;`, `&#34;megabytes&#34;`, `&#34;gigabytes&#34;`, `&#34;terabytes&#34;`, `&#34;bits&#34;`, `&#34;kilobits&#34;`, `&#34;megabits&#34;`, `&#34;gigabits&#34;`, `&#34;terabits&#34;`, `&#34;count&#34;`, `&#34;bytes/second&#34;`, `&#34;kilobytes/second&#34;`, `&#34;megabytes/second&#34;`, `&#34;gigabytes/second&#34;`, `&#34;terabytes/second&#34;`, `&#34;bits/second&#34;`, `&#34;kilobits/second&#34;`, `&#34;megabits/second&#34;`, `&#34;gigabits/second&#34;`, `&#34;terabits/second&#34;`, `&#34;count/second&#34;`, `&#34;none&#34;`.
+     * @return The unit for the alarm&#39;s associated metric. Valid values: `&#34;seconds&#34;`, `&#34;microseconds&#34;`, `&#34;milliseconds&#34;`, `&#34;bytes&#34;`, `&#34;kilobytes&#34;`, `&#34;megabytes&#34;`, `&#34;gigabytes&#34;`, `&#34;terabytes&#34;`, `&#34;bits&#34;`, `&#34;kilobits&#34;`, `&#34;megabits&#34;`, `&#34;gigabits&#34;`, `&#34;terabits&#34;`, `&#34;percent&#34;`, `&#34;count&#34;`, `&#34;bytes/second&#34;`, `&#34;kilobytes/second&#34;`, `&#34;megabytes/second&#34;`, `&#34;gigabytes/second&#34;`, `&#34;terabytes/second&#34;`, `&#34;bits/second&#34;`, `&#34;kilobits/second&#34;`, `&#34;megabits/second&#34;`, `&#34;gigabits/second&#34;`, `&#34;terabits/second&#34;`, `&#34;count/second&#34;`, `&#34;none&#34;`.
      * 
      */
     public Optional<String> unit() {

@@ -94,14 +94,14 @@ public final class OceanBlockDeviceMappingEbsArgs extends com.pulumi.resources.R
     }
 
     /**
-     * (Optional) String. The snapshot ID to mount by.
+     * String. The snapshot ID to mount by.
      * 
      */
     @Import(name="snapshotId")
     private @Nullable Output<String> snapshotId;
 
     /**
-     * @return (Optional) String. The snapshot ID to mount by.
+     * @return String. The snapshot ID to mount by.
      * 
      */
     public Optional<Output<String>> snapshotId() {
@@ -291,7 +291,7 @@ public final class OceanBlockDeviceMappingEbsArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param snapshotId (Optional) String. The snapshot ID to mount by.
+         * @param snapshotId String. The snapshot ID to mount by.
          * 
          * @return builder
          * 
@@ -302,7 +302,7 @@ public final class OceanBlockDeviceMappingEbsArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param snapshotId (Optional) String. The snapshot ID to mount by.
+         * @param snapshotId String. The snapshot ID to mount by.
          * 
          * @return builder
          * 

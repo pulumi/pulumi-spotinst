@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ElastigroupScalingDownPolicyDimension {
     /**
-     * @return Name of the Managed Service Identity.
+     * @return The group name.
      * 
      */
     private String name;
@@ -24,7 +24,7 @@ public final class ElastigroupScalingDownPolicyDimension {
 
     private ElastigroupScalingDownPolicyDimension() {}
     /**
-     * @return Name of the Managed Service Identity.
+     * @return The group name.
      * 
      */
     public String name() {

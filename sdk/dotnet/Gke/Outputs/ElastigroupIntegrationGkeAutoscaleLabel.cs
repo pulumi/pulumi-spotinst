@@ -13,7 +13,25 @@ namespace Pulumi.SpotInst.Gke.Outputs
     [OutputType]
     public sealed class ElastigroupIntegrationGkeAutoscaleLabel
     {
+        /// <summary>
+        /// The label name.
+        /// </summary>
         public readonly string Key;
+        /// <summary>
+        /// The label value.
+        /// 
+        /// Usage:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        /// });
+        /// ```
+        /// </summary>
         public readonly string Value;
 
         [OutputConstructor]
