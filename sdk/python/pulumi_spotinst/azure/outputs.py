@@ -2177,8 +2177,8 @@ class OceanNpFilters(dict):
             suggest = "max_memory_gib"
         elif key == "maxVcpu":
             suggest = "max_vcpu"
-        elif key == "minData":
-            suggest = "min_data"
+        elif key == "minDisk":
+            suggest = "min_disk"
         elif key == "minGpu":
             suggest = "min_gpu"
         elif key == "minMemoryGib":
@@ -2209,7 +2209,7 @@ class OceanNpFilters(dict):
                  max_gpu: Optional[float] = None,
                  max_memory_gib: Optional[float] = None,
                  max_vcpu: Optional[int] = None,
-                 min_data: Optional[int] = None,
+                 min_disk: Optional[int] = None,
                  min_gpu: Optional[float] = None,
                  min_memory_gib: Optional[float] = None,
                  min_nics: Optional[int] = None,
@@ -2230,8 +2230,8 @@ class OceanNpFilters(dict):
             pulumi.set(__self__, "max_memory_gib", max_memory_gib)
         if max_vcpu is not None:
             pulumi.set(__self__, "max_vcpu", max_vcpu)
-        if min_data is not None:
-            pulumi.set(__self__, "min_data", min_data)
+        if min_disk is not None:
+            pulumi.set(__self__, "min_disk", min_disk)
         if min_gpu is not None:
             pulumi.set(__self__, "min_gpu", min_gpu)
         if min_memory_gib is not None:
@@ -2281,9 +2281,9 @@ class OceanNpFilters(dict):
         return pulumi.get(self, "max_vcpu")
 
     @property
-    @pulumi.getter(name="minData")
-    def min_data(self) -> Optional[int]:
-        return pulumi.get(self, "min_data")
+    @pulumi.getter(name="minDisk")
+    def min_disk(self) -> Optional[int]:
+        return pulumi.get(self, "min_disk")
 
     @property
     @pulumi.getter(name="minGpu")
@@ -2518,8 +2518,8 @@ class OceanNpVirtualNodeGroupFilters(dict):
             suggest = "max_memory_gib"
         elif key == "maxVcpu":
             suggest = "max_vcpu"
-        elif key == "minData":
-            suggest = "min_data"
+        elif key == "minDisk":
+            suggest = "min_disk"
         elif key == "minGpu":
             suggest = "min_gpu"
         elif key == "minMemoryGib":
@@ -2550,7 +2550,7 @@ class OceanNpVirtualNodeGroupFilters(dict):
                  max_gpu: Optional[float] = None,
                  max_memory_gib: Optional[float] = None,
                  max_vcpu: Optional[int] = None,
-                 min_data: Optional[int] = None,
+                 min_disk: Optional[int] = None,
                  min_gpu: Optional[float] = None,
                  min_memory_gib: Optional[float] = None,
                  min_nics: Optional[int] = None,
@@ -2571,8 +2571,8 @@ class OceanNpVirtualNodeGroupFilters(dict):
             pulumi.set(__self__, "max_memory_gib", max_memory_gib)
         if max_vcpu is not None:
             pulumi.set(__self__, "max_vcpu", max_vcpu)
-        if min_data is not None:
-            pulumi.set(__self__, "min_data", min_data)
+        if min_disk is not None:
+            pulumi.set(__self__, "min_disk", min_disk)
         if min_gpu is not None:
             pulumi.set(__self__, "min_gpu", min_gpu)
         if min_memory_gib is not None:
@@ -2622,9 +2622,9 @@ class OceanNpVirtualNodeGroupFilters(dict):
         return pulumi.get(self, "max_vcpu")
 
     @property
-    @pulumi.getter(name="minData")
-    def min_data(self) -> Optional[int]:
-        return pulumi.get(self, "min_data")
+    @pulumi.getter(name="minDisk")
+    def min_disk(self) -> Optional[int]:
+        return pulumi.get(self, "min_disk")
 
     @property
     @pulumi.getter(name="minGpu")

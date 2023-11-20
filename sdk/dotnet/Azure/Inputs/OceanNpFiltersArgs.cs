@@ -43,8 +43,8 @@ namespace Pulumi.SpotInst.Azure.Inputs
         [Input("maxVcpu")]
         public Input<int>? MaxVcpu { get; set; }
 
-        [Input("minData")]
-        public Input<int>? MinData { get; set; }
+        [Input("minDisk")]
+        public Input<int>? MinDisk { get; set; }
 
         [Input("minGpu")]
         public Input<double>? MinGpu { get; set; }

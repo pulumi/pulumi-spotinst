@@ -121,14 +121,6 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"spotinst_mrscaler_aws": {Tok: makeResource(awsMod, "MrScalar")},
 
-			// Lack of docs is tracked in: https://github.com/pulumi/pulumi-spotinst/issues/193
-			"spotinst_multai_balancer":     {Docs: noUpstreamDocs},
-			"spotinst_multai_deployment":   {Docs: noUpstreamDocs},
-			"spotinst_multai_listener":     {Docs: noUpstreamDocs},
-			"spotinst_multai_routing_rule": {Docs: noUpstreamDocs},
-			"spotinst_multai_target":       {Docs: noUpstreamDocs},
-			"spotinst_multai_target_set":   {Docs: noUpstreamDocs},
-
 			"spotinst_ocean_aws":                              {Tok: makeResource(awsMod, "Ocean")},
 			"spotinst_ocean_aws_launch_spec":                  {Tok: makeResource(awsMod, "OceanLaunchSpec")},
 			"spotinst_ocean_aws_extended_resource_definition": {Tok: makeResource(awsMod, "OceanExtendedResourceDefinition")},

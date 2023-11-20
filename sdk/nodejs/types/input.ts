@@ -3572,7 +3572,7 @@ export namespace azure {
         maxGpu?: pulumi.Input<number>;
         maxMemoryGib?: pulumi.Input<number>;
         maxVcpu?: pulumi.Input<number>;
-        minData?: pulumi.Input<number>;
+        minDisk?: pulumi.Input<number>;
         minGpu?: pulumi.Input<number>;
         minMemoryGib?: pulumi.Input<number>;
         minNics?: pulumi.Input<number>;
@@ -3615,7 +3615,7 @@ export namespace azure {
         maxGpu?: pulumi.Input<number>;
         maxMemoryGib?: pulumi.Input<number>;
         maxVcpu?: pulumi.Input<number>;
-        minData?: pulumi.Input<number>;
+        minDisk?: pulumi.Input<number>;
         minGpu?: pulumi.Input<number>;
         minMemoryGib?: pulumi.Input<number>;
         minNics?: pulumi.Input<number>;
@@ -4072,6 +4072,13 @@ export namespace ecs {
         baseSize: pulumi.Input<number>;
         resource: pulumi.Input<string>;
         sizePerResourceUnit: pulumi.Input<number>;
+    }
+
+    export interface OceanLaunchSpecImage {
+        /**
+         * Identifier of the image in AWS. Valid values: any string which is not empty or null.
+         */
+        imageId?: pulumi.Input<string>;
     }
 
     export interface OceanLaunchSpecInstanceMetadataOptions {
@@ -5230,57 +5237,6 @@ export namespace gke {
 
     export interface OceanLaunchSpecUpdatePolicyRollConfig {
         batchSizePercentage: pulumi.Input<number>;
-    }
-}
-
-export namespace multai {
-    export interface BalancerConnectionTimeouts {
-        draining?: pulumi.Input<number>;
-        idle?: pulumi.Input<number>;
-    }
-
-    export interface BalancerTag {
-        key: pulumi.Input<string>;
-        value: pulumi.Input<string>;
-    }
-
-    export interface ListenerTag {
-        key: pulumi.Input<string>;
-        value: pulumi.Input<string>;
-    }
-
-    export interface ListenerTlsConfig {
-        certificateIds: pulumi.Input<pulumi.Input<string>[]>;
-        cipherSuites: pulumi.Input<pulumi.Input<string>[]>;
-        maxVersion: pulumi.Input<string>;
-        minVersion: pulumi.Input<string>;
-        preferServerCipherSuites: pulumi.Input<boolean>;
-        sessionTicketsDisabled: pulumi.Input<boolean>;
-    }
-
-    export interface RoutingRuleTag {
-        key: pulumi.Input<string>;
-        value: pulumi.Input<string>;
-    }
-
-    export interface TargetSetHealthCheck {
-        healthyThreshold: pulumi.Input<number>;
-        interval: pulumi.Input<number>;
-        path: pulumi.Input<string>;
-        port?: pulumi.Input<number>;
-        protocol: pulumi.Input<string>;
-        timeout: pulumi.Input<number>;
-        unhealthyThreshold: pulumi.Input<number>;
-    }
-
-    export interface TargetSetTag {
-        key: pulumi.Input<string>;
-        value: pulumi.Input<string>;
-    }
-
-    export interface TargetTag {
-        key: pulumi.Input<string>;
-        value: pulumi.Input<string>;
     }
 }
 

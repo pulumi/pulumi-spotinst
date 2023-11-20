@@ -67,6 +67,9 @@ func NewOceanNp(ctx *pulumi.Context,
 	if args.AvailabilityZones == nil {
 		return nil, errors.New("invalid value for required argument 'AvailabilityZones'")
 	}
+	if args.ControllerClusterId == nil {
+		return nil, errors.New("invalid value for required argument 'ControllerClusterId'")
+	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource OceanNp
 	err := ctx.RegisterResource("spotinst:azure/oceanNp:OceanNp", name, args, &resource, opts...)
@@ -162,7 +165,7 @@ type oceanNpArgs struct {
 	AksResourceGroupName               string                 `pulumi:"aksResourceGroupName"`
 	Autoscaler                         *OceanNpAutoscaler     `pulumi:"autoscaler"`
 	AvailabilityZones                  []string               `pulumi:"availabilityZones"`
-	ControllerClusterId                *string                `pulumi:"controllerClusterId"`
+	ControllerClusterId                string                 `pulumi:"controllerClusterId"`
 	EnableNodePublicIp                 *bool                  `pulumi:"enableNodePublicIp"`
 	FallbackToOndemand                 *bool                  `pulumi:"fallbackToOndemand"`
 	Filters                            *OceanNpFilters        `pulumi:"filters"`
@@ -194,7 +197,7 @@ type OceanNpArgs struct {
 	AksResourceGroupName               pulumi.StringInput
 	Autoscaler                         OceanNpAutoscalerPtrInput
 	AvailabilityZones                  pulumi.StringArrayInput
-	ControllerClusterId                pulumi.StringPtrInput
+	ControllerClusterId                pulumi.StringInput
 	EnableNodePublicIp                 pulumi.BoolPtrInput
 	FallbackToOndemand                 pulumi.BoolPtrInput
 	Filters                            OceanNpFiltersPtrInput

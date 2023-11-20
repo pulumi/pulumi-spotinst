@@ -121,6 +121,9 @@ export class OceanNp extends pulumi.CustomResource {
             if ((!args || args.availabilityZones === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'availabilityZones'");
             }
+            if ((!args || args.controllerClusterId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'controllerClusterId'");
+            }
             resourceInputs["aksClusterName"] = args ? args.aksClusterName : undefined;
             resourceInputs["aksInfrastructureResourceGroupName"] = args ? args.aksInfrastructureResourceGroupName : undefined;
             resourceInputs["aksRegion"] = args ? args.aksRegion : undefined;
@@ -199,7 +202,7 @@ export interface OceanNpArgs {
     aksResourceGroupName: pulumi.Input<string>;
     autoscaler?: pulumi.Input<inputs.azure.OceanNpAutoscaler>;
     availabilityZones: pulumi.Input<pulumi.Input<string>[]>;
-    controllerClusterId?: pulumi.Input<string>;
+    controllerClusterId: pulumi.Input<string>;
     enableNodePublicIp?: pulumi.Input<boolean>;
     fallbackToOndemand?: pulumi.Input<boolean>;
     filters?: pulumi.Input<inputs.azure.OceanNpFilters>;

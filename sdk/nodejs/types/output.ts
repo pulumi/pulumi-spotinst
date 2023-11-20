@@ -3574,7 +3574,7 @@ export namespace azure {
         maxGpu?: number;
         maxMemoryGib?: number;
         maxVcpu?: number;
-        minData?: number;
+        minDisk?: number;
         minGpu?: number;
         minMemoryGib?: number;
         minNics?: number;
@@ -3617,7 +3617,7 @@ export namespace azure {
         maxGpu?: number;
         maxMemoryGib?: number;
         maxVcpu?: number;
-        minData?: number;
+        minDisk?: number;
         minGpu?: number;
         minMemoryGib?: number;
         minNics?: number;
@@ -4075,6 +4075,13 @@ export namespace ecs {
         baseSize: number;
         resource: string;
         sizePerResourceUnit: number;
+    }
+
+    export interface OceanLaunchSpecImage {
+        /**
+         * Identifier of the image in AWS. Valid values: any string which is not empty or null.
+         */
+        imageId?: string;
     }
 
     export interface OceanLaunchSpecInstanceMetadataOptions {
@@ -5235,58 +5242,6 @@ export namespace gke {
 
     export interface OceanLaunchSpecUpdatePolicyRollConfig {
         batchSizePercentage: number;
-    }
-
-}
-
-export namespace multai {
-    export interface BalancerConnectionTimeouts {
-        draining?: number;
-        idle?: number;
-    }
-
-    export interface BalancerTag {
-        key: string;
-        value: string;
-    }
-
-    export interface ListenerTag {
-        key: string;
-        value: string;
-    }
-
-    export interface ListenerTlsConfig {
-        certificateIds: string[];
-        cipherSuites: string[];
-        maxVersion: string;
-        minVersion: string;
-        preferServerCipherSuites: boolean;
-        sessionTicketsDisabled: boolean;
-    }
-
-    export interface RoutingRuleTag {
-        key: string;
-        value: string;
-    }
-
-    export interface TargetSetHealthCheck {
-        healthyThreshold: number;
-        interval: number;
-        path: string;
-        port: number;
-        protocol: string;
-        timeout: number;
-        unhealthyThreshold: number;
-    }
-
-    export interface TargetSetTag {
-        key: string;
-        value: string;
-    }
-
-    export interface TargetTag {
-        key: string;
-        value: string;
     }
 
 }

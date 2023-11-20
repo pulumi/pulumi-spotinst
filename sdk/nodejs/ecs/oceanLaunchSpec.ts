@@ -42,6 +42,14 @@ import * as utilities from "../utilities";
  *     }],
  *     iamInstanceProfile: "iam-profile",
  *     imageId: "ami-123456",
+ *     images: [
+ *         {
+ *             imageId: "ami-12345",
+ *         },
+ *         {
+ *             imageId: "ami-67890",
+ *         },
+ *     ],
  *     instanceMetadataOptions: {
  *         httpPutResponseHopLimit: 10,
  *         httpTokens: "required",
@@ -160,9 +168,13 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
      */
     public readonly iamInstanceProfile!: pulumi.Output<string | undefined>;
     /**
-     * ID of the image used to launch the instances.
+     * Identifier of the image in AWS. Valid values: any string which is not empty or null.
      */
     public readonly imageId!: pulumi.Output<string | undefined>;
+    /**
+     * You can configure VNG with either the imageId or images objects, but not both simultaneously. For each architecture type (amd64, arm64) only one AMI is allowed. Valid values: null, or an array with at least one element
+     */
+    public readonly images!: pulumi.Output<outputs.ecs.OceanLaunchSpecImage[] | undefined>;
     /**
      * Ocean instance metadata options object for IMDSv2.
      */
@@ -230,6 +242,7 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
             resourceInputs["blockDeviceMappings"] = state ? state.blockDeviceMappings : undefined;
             resourceInputs["iamInstanceProfile"] = state ? state.iamInstanceProfile : undefined;
             resourceInputs["imageId"] = state ? state.imageId : undefined;
+            resourceInputs["images"] = state ? state.images : undefined;
             resourceInputs["instanceMetadataOptions"] = state ? state.instanceMetadataOptions : undefined;
             resourceInputs["instanceTypes"] = state ? state.instanceTypes : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
@@ -252,6 +265,7 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
             resourceInputs["blockDeviceMappings"] = args ? args.blockDeviceMappings : undefined;
             resourceInputs["iamInstanceProfile"] = args ? args.iamInstanceProfile : undefined;
             resourceInputs["imageId"] = args ? args.imageId : undefined;
+            resourceInputs["images"] = args ? args.images : undefined;
             resourceInputs["instanceMetadataOptions"] = args ? args.instanceMetadataOptions : undefined;
             resourceInputs["instanceTypes"] = args ? args.instanceTypes : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -288,9 +302,13 @@ export interface OceanLaunchSpecState {
      */
     iamInstanceProfile?: pulumi.Input<string>;
     /**
-     * ID of the image used to launch the instances.
+     * Identifier of the image in AWS. Valid values: any string which is not empty or null.
      */
     imageId?: pulumi.Input<string>;
+    /**
+     * You can configure VNG with either the imageId or images objects, but not both simultaneously. For each architecture type (amd64, arm64) only one AMI is allowed. Valid values: null, or an array with at least one element
+     */
+    images?: pulumi.Input<pulumi.Input<inputs.ecs.OceanLaunchSpecImage>[]>;
     /**
      * Ocean instance metadata options object for IMDSv2.
      */
@@ -359,9 +377,13 @@ export interface OceanLaunchSpecArgs {
      */
     iamInstanceProfile?: pulumi.Input<string>;
     /**
-     * ID of the image used to launch the instances.
+     * Identifier of the image in AWS. Valid values: any string which is not empty or null.
      */
     imageId?: pulumi.Input<string>;
+    /**
+     * You can configure VNG with either the imageId or images objects, but not both simultaneously. For each architecture type (amd64, arm64) only one AMI is allowed. Valid values: null, or an array with at least one element
+     */
+    images?: pulumi.Input<pulumi.Input<inputs.ecs.OceanLaunchSpecImage>[]>;
     /**
      * Ocean instance metadata options object for IMDSv2.
      */

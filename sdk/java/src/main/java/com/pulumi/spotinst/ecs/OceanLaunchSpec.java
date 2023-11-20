@@ -13,6 +13,7 @@ import com.pulumi.spotinst.ecs.inputs.OceanLaunchSpecState;
 import com.pulumi.spotinst.ecs.outputs.OceanLaunchSpecAttribute;
 import com.pulumi.spotinst.ecs.outputs.OceanLaunchSpecAutoscaleHeadroom;
 import com.pulumi.spotinst.ecs.outputs.OceanLaunchSpecBlockDeviceMapping;
+import com.pulumi.spotinst.ecs.outputs.OceanLaunchSpecImage;
 import com.pulumi.spotinst.ecs.outputs.OceanLaunchSpecInstanceMetadataOptions;
 import com.pulumi.spotinst.ecs.outputs.OceanLaunchSpecSchedulingTask;
 import com.pulumi.spotinst.ecs.outputs.OceanLaunchSpecStrategy;
@@ -40,6 +41,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.spotinst.ecs.inputs.OceanLaunchSpecBlockDeviceMappingArgs;
  * import com.pulumi.spotinst.ecs.inputs.OceanLaunchSpecBlockDeviceMappingEbsArgs;
  * import com.pulumi.spotinst.ecs.inputs.OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs;
+ * import com.pulumi.spotinst.ecs.inputs.OceanLaunchSpecImageArgs;
  * import com.pulumi.spotinst.ecs.inputs.OceanLaunchSpecInstanceMetadataOptionsArgs;
  * import com.pulumi.spotinst.ecs.inputs.OceanLaunchSpecSchedulingTaskArgs;
  * import com.pulumi.spotinst.ecs.inputs.OceanLaunchSpecStrategyArgs;
@@ -84,6 +86,13 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .iamInstanceProfile(&#34;iam-profile&#34;)
  *             .imageId(&#34;ami-123456&#34;)
+ *             .images(            
+ *                 OceanLaunchSpecImageArgs.builder()
+ *                     .imageId(&#34;ami-12345&#34;)
+ *                     .build(),
+ *                 OceanLaunchSpecImageArgs.builder()
+ *                     .imageId(&#34;ami-67890&#34;)
+ *                     .build())
  *             .instanceMetadataOptions(OceanLaunchSpecInstanceMetadataOptionsArgs.builder()
  *                 .httpPutResponseHopLimit(10)
  *                 .httpTokens(&#34;required&#34;)
@@ -231,18 +240,32 @@ public class OceanLaunchSpec extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.iamInstanceProfile);
     }
     /**
-     * ID of the image used to launch the instances.
+     * Identifier of the image in AWS. Valid values: any string which is not empty or null.
      * 
      */
     @Export(name="imageId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> imageId;
 
     /**
-     * @return ID of the image used to launch the instances.
+     * @return Identifier of the image in AWS. Valid values: any string which is not empty or null.
      * 
      */
     public Output<Optional<String>> imageId() {
         return Codegen.optional(this.imageId);
+    }
+    /**
+     * You can configure VNG with either the imageId or images objects, but not both simultaneously. For each architecture type (amd64, arm64) only one AMI is allowed. Valid values: null, or an array with at least one element
+     * 
+     */
+    @Export(name="images", refs={List.class,OceanLaunchSpecImage.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<OceanLaunchSpecImage>> images;
+
+    /**
+     * @return You can configure VNG with either the imageId or images objects, but not both simultaneously. For each architecture type (amd64, arm64) only one AMI is allowed. Valid values: null, or an array with at least one element
+     * 
+     */
+    public Output<Optional<List<OceanLaunchSpecImage>>> images() {
+        return Codegen.optional(this.images);
     }
     /**
      * Ocean instance metadata options object for IMDSv2.
