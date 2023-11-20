@@ -3889,6 +3889,9 @@
                     },
                     "iam_instance_profile": {},
                     "image_id": {},
+                    "images": {
+                        "maxItemsOne": false
+                    },
                     "instance_metadata_options": {
                         "maxItemsOne": true,
                         "elem": {
@@ -4901,12 +4904,6 @@
             "spotinst:index/healthCheck:HealthCheck": "spotinst_health_check",
             "spotinst:index/statefulNodeAzure:StatefulNodeAzure": "spotinst_stateful_node_azure",
             "spotinst:index/subscription:Subscription": "spotinst_subscription",
-            "spotinst:multai/balancer:Balancer": "spotinst_multai_balancer",
-            "spotinst:multai/deployment:Deployment": "spotinst_multai_deployment",
-            "spotinst:multai/listener:Listener": "spotinst_multai_listener",
-            "spotinst:multai/routingRule:RoutingRule": "spotinst_multai_routing_rule",
-            "spotinst:multai/target:Target": "spotinst_multai_target",
-            "spotinst:multai/targetSet:TargetSet": "spotinst_multai_target_set",
             "spotinst:organization/policy:Policy": "spotinst_organization_policy",
             "spotinst:organization/programmaticUser:ProgrammaticUser": "spotinst_organization_programmatic_user",
             "spotinst:organization/user:User": "spotinst_organization_user",
@@ -5994,7 +5991,7 @@
                 "maxGpu": "max_gpu",
                 "maxMemoryGib": "max_memory_gib",
                 "maxVcpu": "max_vcpu",
-                "minData": "min_data",
+                "minDisk": "min_disk",
                 "minGpu": "min_gpu",
                 "minMemoryGib": "min_memory_gib",
                 "minNics": "min_nics",
@@ -6024,7 +6021,7 @@
                 "maxGpu": "max_gpu",
                 "maxMemoryGib": "max_memory_gib",
                 "maxVcpu": "max_vcpu",
-                "minData": "min_data",
+                "minDisk": "min_disk",
                 "minGpu": "min_gpu",
                 "minMemoryGib": "min_memory_gib",
                 "minNics": "min_nics",
@@ -6239,6 +6236,9 @@
             "spotinst:ecs/OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize:OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize": {
                 "baseSize": "base_size",
                 "sizePerResourceUnit": "size_per_resource_unit"
+            },
+            "spotinst:ecs/OceanLaunchSpecImage:OceanLaunchSpecImage": {
+                "imageId": "image_id"
             },
             "spotinst:ecs/OceanLaunchSpecInstanceMetadataOptions:OceanLaunchSpecInstanceMetadataOptions": {
                 "httpPutResponseHopLimit": "http_put_response_hop_limit",
@@ -6929,41 +6929,6 @@
             },
             "spotinst:index:Provider": {
                 "featureFlags": "feature_flags"
-            },
-            "spotinst:multai/ListenerTlsConfig:ListenerTlsConfig": {
-                "certificateIds": "certificate_ids",
-                "cipherSuites": "cipher_suites",
-                "maxVersion": "max_version",
-                "minVersion": "min_version",
-                "preferServerCipherSuites": "prefer_server_cipher_suites",
-                "sessionTicketsDisabled": "session_tickets_disabled"
-            },
-            "spotinst:multai/TargetSetHealthCheck:TargetSetHealthCheck": {
-                "healthyThreshold": "healthy_threshold",
-                "unhealthyThreshold": "unhealthy_threshold"
-            },
-            "spotinst:multai/balancer:Balancer": {
-                "connectionTimeouts": "connection_timeouts",
-                "dnsCnameAliases": "dns_cname_aliases"
-            },
-            "spotinst:multai/listener:Listener": {
-                "balancerId": "balancer_id",
-                "tlsConfig": "tls_config"
-            },
-            "spotinst:multai/routingRule:RoutingRule": {
-                "balancerId": "balancer_id",
-                "listenerId": "listener_id",
-                "middlewareIds": "middleware_ids",
-                "targetSetIds": "target_set_ids"
-            },
-            "spotinst:multai/target:Target": {
-                "balancerId": "balancer_id",
-                "targetSetId": "target_set_id"
-            },
-            "spotinst:multai/targetSet:TargetSet": {
-                "balancerId": "balancer_id",
-                "deploymentId": "deployment_id",
-                "healthCheck": "health_check"
             },
             "spotinst:organization/ProgrammaticUserAccount:ProgrammaticUserAccount": {
                 "accountId": "account_id",

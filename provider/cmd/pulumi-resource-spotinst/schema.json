@@ -4933,7 +4933,7 @@
                 "maxVcpu": {
                     "type": "integer"
                 },
-                "minData": {
+                "minDisk": {
                     "type": "integer"
                 },
                 "minGpu": {
@@ -5061,7 +5061,7 @@
                 "maxVcpu": {
                     "type": "integer"
                 },
-                "minData": {
+                "minDisk": {
                     "type": "integer"
                 },
                 "minGpu": {
@@ -5741,6 +5741,15 @@
                 "resource",
                 "sizePerResourceUnit"
             ]
+        },
+        "spotinst:ecs/OceanLaunchSpecImage:OceanLaunchSpecImage": {
+            "properties": {
+                "imageId": {
+                    "type": "string",
+                    "description": "Identifier of the image in AWS. Valid values: any string which is not empty or null.\n"
+                }
+            },
+            "type": "object"
         },
         "spotinst:ecs/OceanLaunchSpecInstanceMetadataOptions:OceanLaunchSpecInstanceMetadataOptions": {
             "properties": {
@@ -8648,176 +8657,6 @@
             "type": "object",
             "required": [
                 "state"
-            ]
-        },
-        "spotinst:multai/BalancerConnectionTimeouts:BalancerConnectionTimeouts": {
-            "properties": {
-                "draining": {
-                    "type": "integer"
-                },
-                "idle": {
-                    "type": "integer"
-                }
-            },
-            "type": "object"
-        },
-        "spotinst:multai/BalancerTag:BalancerTag": {
-            "properties": {
-                "key": {
-                    "type": "string"
-                },
-                "value": {
-                    "type": "string"
-                }
-            },
-            "type": "object",
-            "required": [
-                "key",
-                "value"
-            ]
-        },
-        "spotinst:multai/ListenerTag:ListenerTag": {
-            "properties": {
-                "key": {
-                    "type": "string"
-                },
-                "value": {
-                    "type": "string"
-                }
-            },
-            "type": "object",
-            "required": [
-                "key",
-                "value"
-            ]
-        },
-        "spotinst:multai/ListenerTlsConfig:ListenerTlsConfig": {
-            "properties": {
-                "certificateIds": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    }
-                },
-                "cipherSuites": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    }
-                },
-                "maxVersion": {
-                    "type": "string"
-                },
-                "minVersion": {
-                    "type": "string"
-                },
-                "preferServerCipherSuites": {
-                    "type": "boolean"
-                },
-                "sessionTicketsDisabled": {
-                    "type": "boolean"
-                }
-            },
-            "type": "object",
-            "required": [
-                "certificateIds",
-                "cipherSuites",
-                "maxVersion",
-                "minVersion",
-                "preferServerCipherSuites",
-                "sessionTicketsDisabled"
-            ]
-        },
-        "spotinst:multai/RoutingRuleTag:RoutingRuleTag": {
-            "properties": {
-                "key": {
-                    "type": "string"
-                },
-                "value": {
-                    "type": "string"
-                }
-            },
-            "type": "object",
-            "required": [
-                "key",
-                "value"
-            ]
-        },
-        "spotinst:multai/TargetSetHealthCheck:TargetSetHealthCheck": {
-            "properties": {
-                "healthyThreshold": {
-                    "type": "integer"
-                },
-                "interval": {
-                    "type": "integer"
-                },
-                "path": {
-                    "type": "string"
-                },
-                "port": {
-                    "type": "integer"
-                },
-                "protocol": {
-                    "type": "string"
-                },
-                "timeout": {
-                    "type": "integer"
-                },
-                "unhealthyThreshold": {
-                    "type": "integer"
-                }
-            },
-            "type": "object",
-            "required": [
-                "healthyThreshold",
-                "interval",
-                "path",
-                "protocol",
-                "timeout",
-                "unhealthyThreshold"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "healthyThreshold",
-                        "interval",
-                        "path",
-                        "port",
-                        "protocol",
-                        "timeout",
-                        "unhealthyThreshold"
-                    ]
-                }
-            }
-        },
-        "spotinst:multai/TargetSetTag:TargetSetTag": {
-            "properties": {
-                "key": {
-                    "type": "string"
-                },
-                "value": {
-                    "type": "string"
-                }
-            },
-            "type": "object",
-            "required": [
-                "key",
-                "value"
-            ]
-        },
-        "spotinst:multai/TargetTag:TargetTag": {
-            "properties": {
-                "key": {
-                    "type": "string"
-                },
-                "value": {
-                    "type": "string"
-                }
-            },
-            "type": "object",
-            "required": [
-                "key",
-                "value"
             ]
         },
         "spotinst:organization/PolicyPolicyContent:PolicyPolicyContent": {
@@ -14233,7 +14072,8 @@
                 "aksInfrastructureResourceGroupName",
                 "aksRegion",
                 "aksResourceGroupName",
-                "availabilityZones"
+                "availabilityZones",
+                "controllerClusterId"
             ],
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering OceanNp resources.\n",
@@ -15271,7 +15111,7 @@
             }
         },
         "spotinst:ecs/oceanLaunchSpec:OceanLaunchSpec": {
-            "description": "Manages a custom Spotinst Ocean ECS Launch Spec resource.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as spotinst from \"@pulumi/spotinst\";\n\nconst example = new spotinst.ecs.OceanLaunchSpec(\"example\", {\n    attributes: [{\n        key: \"fakeKey\",\n        value: \"fakeValue\",\n    }],\n    autoscaleHeadrooms: [{\n        cpuPerUnit: 1000,\n        memoryPerUnit: 2048,\n        numOfUnits: 5,\n    }],\n    blockDeviceMappings: [{\n        deviceName: \"/dev/xvda1\",\n        ebs: {\n            deleteOnTermination: true,\n            dynamicVolumeSize: {\n                baseSize: 50,\n                resource: \"CPU\",\n                sizePerResourceUnit: 20,\n            },\n            encrypted: false,\n            throughput: 500,\n            volumeSize: 50,\n            volumeType: \"gp2\",\n        },\n    }],\n    iamInstanceProfile: \"iam-profile\",\n    imageId: \"ami-123456\",\n    instanceMetadataOptions: {\n        httpPutResponseHopLimit: 10,\n        httpTokens: \"required\",\n    },\n    instanceTypes: [\n        \"m3.large\",\n        \"m3.xlarge\",\n        \"m3.2xlarge\",\n        \"m4.large\",\n        \"m4.xlarge\",\n        \"m4.4xlarge\",\n        \"m4.2xlarge\",\n        \"m4.10xlarge\",\n        \"m4.16xlarge\",\n        \"m5.large\",\n        \"m5.xlarge\",\n        \"m5.2xlarge\",\n        \"m5.4xlarge\",\n        \"m5.12xlarge\",\n        \"m5.24xlarge\",\n    ],\n    oceanId: \"o-123456\",\n    preferredSpotTypes: [\n        \"m3.large\",\n        \"m3.xlarge\",\n        \"m3.2xlarge\",\n        \"m4.large\",\n        \"m4.xlarge\",\n    ],\n    restrictScaleDown: true,\n    schedulingTasks: [{\n        cronExpression: \"0 1 * * *\",\n        isEnabled: true,\n        taskHeadrooms: [{\n            cpuPerUnit: 1000,\n            memoryPerUnit: 2048,\n            numOfUnits: 5,\n        }],\n        taskType: \"manualHeadroomUpdate\",\n    }],\n    securityGroupIds: [\"awseb-12345\"],\n    strategies: [{\n        spotPercentage: 50,\n    }],\n    subnetIds: [\"subnet-12345\"],\n    tags: [{\n        key: \"Env\",\n        value: \"production\",\n    }],\n    userData: \"echo hello world\",\n});\n```\n```python\nimport pulumi\nimport pulumi_spotinst as spotinst\n\nexample = spotinst.ecs.OceanLaunchSpec(\"example\",\n    attributes=[spotinst.ecs.OceanLaunchSpecAttributeArgs(\n        key=\"fakeKey\",\n        value=\"fakeValue\",\n    )],\n    autoscale_headrooms=[spotinst.ecs.OceanLaunchSpecAutoscaleHeadroomArgs(\n        cpu_per_unit=1000,\n        memory_per_unit=2048,\n        num_of_units=5,\n    )],\n    block_device_mappings=[spotinst.ecs.OceanLaunchSpecBlockDeviceMappingArgs(\n        device_name=\"/dev/xvda1\",\n        ebs=spotinst.ecs.OceanLaunchSpecBlockDeviceMappingEbsArgs(\n            delete_on_termination=True,\n            dynamic_volume_size=spotinst.ecs.OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs(\n                base_size=50,\n                resource=\"CPU\",\n                size_per_resource_unit=20,\n            ),\n            encrypted=False,\n            throughput=500,\n            volume_size=50,\n            volume_type=\"gp2\",\n        ),\n    )],\n    iam_instance_profile=\"iam-profile\",\n    image_id=\"ami-123456\",\n    instance_metadata_options=spotinst.ecs.OceanLaunchSpecInstanceMetadataOptionsArgs(\n        http_put_response_hop_limit=10,\n        http_tokens=\"required\",\n    ),\n    instance_types=[\n        \"m3.large\",\n        \"m3.xlarge\",\n        \"m3.2xlarge\",\n        \"m4.large\",\n        \"m4.xlarge\",\n        \"m4.4xlarge\",\n        \"m4.2xlarge\",\n        \"m4.10xlarge\",\n        \"m4.16xlarge\",\n        \"m5.large\",\n        \"m5.xlarge\",\n        \"m5.2xlarge\",\n        \"m5.4xlarge\",\n        \"m5.12xlarge\",\n        \"m5.24xlarge\",\n    ],\n    ocean_id=\"o-123456\",\n    preferred_spot_types=[\n        \"m3.large\",\n        \"m3.xlarge\",\n        \"m3.2xlarge\",\n        \"m4.large\",\n        \"m4.xlarge\",\n    ],\n    restrict_scale_down=True,\n    scheduling_tasks=[spotinst.ecs.OceanLaunchSpecSchedulingTaskArgs(\n        cron_expression=\"0 1 * * *\",\n        is_enabled=True,\n        task_headrooms=[spotinst.ecs.OceanLaunchSpecSchedulingTaskTaskHeadroomArgs(\n            cpu_per_unit=1000,\n            memory_per_unit=2048,\n            num_of_units=5,\n        )],\n        task_type=\"manualHeadroomUpdate\",\n    )],\n    security_group_ids=[\"awseb-12345\"],\n    strategies=[spotinst.ecs.OceanLaunchSpecStrategyArgs(\n        spot_percentage=50,\n    )],\n    subnet_ids=[\"subnet-12345\"],\n    tags=[spotinst.ecs.OceanLaunchSpecTagArgs(\n        key=\"Env\",\n        value=\"production\",\n    )],\n    user_data=\"echo hello world\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing SpotInst = Pulumi.SpotInst;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new SpotInst.Ecs.OceanLaunchSpec(\"example\", new()\n    {\n        Attributes = new[]\n        {\n            new SpotInst.Ecs.Inputs.OceanLaunchSpecAttributeArgs\n            {\n                Key = \"fakeKey\",\n                Value = \"fakeValue\",\n            },\n        },\n        AutoscaleHeadrooms = new[]\n        {\n            new SpotInst.Ecs.Inputs.OceanLaunchSpecAutoscaleHeadroomArgs\n            {\n                CpuPerUnit = 1000,\n                MemoryPerUnit = 2048,\n                NumOfUnits = 5,\n            },\n        },\n        BlockDeviceMappings = new[]\n        {\n            new SpotInst.Ecs.Inputs.OceanLaunchSpecBlockDeviceMappingArgs\n            {\n                DeviceName = \"/dev/xvda1\",\n                Ebs = new SpotInst.Ecs.Inputs.OceanLaunchSpecBlockDeviceMappingEbsArgs\n                {\n                    DeleteOnTermination = true,\n                    DynamicVolumeSize = new SpotInst.Ecs.Inputs.OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs\n                    {\n                        BaseSize = 50,\n                        Resource = \"CPU\",\n                        SizePerResourceUnit = 20,\n                    },\n                    Encrypted = false,\n                    Throughput = 500,\n                    VolumeSize = 50,\n                    VolumeType = \"gp2\",\n                },\n            },\n        },\n        IamInstanceProfile = \"iam-profile\",\n        ImageId = \"ami-123456\",\n        InstanceMetadataOptions = new SpotInst.Ecs.Inputs.OceanLaunchSpecInstanceMetadataOptionsArgs\n        {\n            HttpPutResponseHopLimit = 10,\n            HttpTokens = \"required\",\n        },\n        InstanceTypes = new[]\n        {\n            \"m3.large\",\n            \"m3.xlarge\",\n            \"m3.2xlarge\",\n            \"m4.large\",\n            \"m4.xlarge\",\n            \"m4.4xlarge\",\n            \"m4.2xlarge\",\n            \"m4.10xlarge\",\n            \"m4.16xlarge\",\n            \"m5.large\",\n            \"m5.xlarge\",\n            \"m5.2xlarge\",\n            \"m5.4xlarge\",\n            \"m5.12xlarge\",\n            \"m5.24xlarge\",\n        },\n        OceanId = \"o-123456\",\n        PreferredSpotTypes = new[]\n        {\n            \"m3.large\",\n            \"m3.xlarge\",\n            \"m3.2xlarge\",\n            \"m4.large\",\n            \"m4.xlarge\",\n        },\n        RestrictScaleDown = true,\n        SchedulingTasks = new[]\n        {\n            new SpotInst.Ecs.Inputs.OceanLaunchSpecSchedulingTaskArgs\n            {\n                CronExpression = \"0 1 * * *\",\n                IsEnabled = true,\n                TaskHeadrooms = new[]\n                {\n                    new SpotInst.Ecs.Inputs.OceanLaunchSpecSchedulingTaskTaskHeadroomArgs\n                    {\n                        CpuPerUnit = 1000,\n                        MemoryPerUnit = 2048,\n                        NumOfUnits = 5,\n                    },\n                },\n                TaskType = \"manualHeadroomUpdate\",\n            },\n        },\n        SecurityGroupIds = new[]\n        {\n            \"awseb-12345\",\n        },\n        Strategies = new[]\n        {\n            new SpotInst.Ecs.Inputs.OceanLaunchSpecStrategyArgs\n            {\n                SpotPercentage = 50,\n            },\n        },\n        SubnetIds = new[]\n        {\n            \"subnet-12345\",\n        },\n        Tags = new[]\n        {\n            new SpotInst.Ecs.Inputs.OceanLaunchSpecTagArgs\n            {\n                Key = \"Env\",\n                Value = \"production\",\n            },\n        },\n        UserData = \"echo hello world\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst/ecs\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := ecs.NewOceanLaunchSpec(ctx, \"example\", \u0026ecs.OceanLaunchSpecArgs{\n\t\t\tAttributes: ecs.OceanLaunchSpecAttributeArray{\n\t\t\t\t\u0026ecs.OceanLaunchSpecAttributeArgs{\n\t\t\t\t\tKey:   pulumi.String(\"fakeKey\"),\n\t\t\t\t\tValue: pulumi.String(\"fakeValue\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tAutoscaleHeadrooms: ecs.OceanLaunchSpecAutoscaleHeadroomArray{\n\t\t\t\t\u0026ecs.OceanLaunchSpecAutoscaleHeadroomArgs{\n\t\t\t\t\tCpuPerUnit:    pulumi.Int(1000),\n\t\t\t\t\tMemoryPerUnit: pulumi.Int(2048),\n\t\t\t\t\tNumOfUnits:    pulumi.Int(5),\n\t\t\t\t},\n\t\t\t},\n\t\t\tBlockDeviceMappings: ecs.OceanLaunchSpecBlockDeviceMappingArray{\n\t\t\t\t\u0026ecs.OceanLaunchSpecBlockDeviceMappingArgs{\n\t\t\t\t\tDeviceName: pulumi.String(\"/dev/xvda1\"),\n\t\t\t\t\tEbs: \u0026ecs.OceanLaunchSpecBlockDeviceMappingEbsArgs{\n\t\t\t\t\t\tDeleteOnTermination: pulumi.Bool(true),\n\t\t\t\t\t\tDynamicVolumeSize: \u0026ecs.OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs{\n\t\t\t\t\t\t\tBaseSize:            pulumi.Int(50),\n\t\t\t\t\t\t\tResource:            pulumi.String(\"CPU\"),\n\t\t\t\t\t\t\tSizePerResourceUnit: pulumi.Int(20),\n\t\t\t\t\t\t},\n\t\t\t\t\t\tEncrypted:  pulumi.Bool(false),\n\t\t\t\t\t\tThroughput: pulumi.Int(500),\n\t\t\t\t\t\tVolumeSize: pulumi.Int(50),\n\t\t\t\t\t\tVolumeType: pulumi.String(\"gp2\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tIamInstanceProfile: pulumi.String(\"iam-profile\"),\n\t\t\tImageId:            pulumi.String(\"ami-123456\"),\n\t\t\tInstanceMetadataOptions: \u0026ecs.OceanLaunchSpecInstanceMetadataOptionsArgs{\n\t\t\t\tHttpPutResponseHopLimit: pulumi.Int(10),\n\t\t\t\tHttpTokens:              pulumi.String(\"required\"),\n\t\t\t},\n\t\t\tInstanceTypes: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"m3.large\"),\n\t\t\t\tpulumi.String(\"m3.xlarge\"),\n\t\t\t\tpulumi.String(\"m3.2xlarge\"),\n\t\t\t\tpulumi.String(\"m4.large\"),\n\t\t\t\tpulumi.String(\"m4.xlarge\"),\n\t\t\t\tpulumi.String(\"m4.4xlarge\"),\n\t\t\t\tpulumi.String(\"m4.2xlarge\"),\n\t\t\t\tpulumi.String(\"m4.10xlarge\"),\n\t\t\t\tpulumi.String(\"m4.16xlarge\"),\n\t\t\t\tpulumi.String(\"m5.large\"),\n\t\t\t\tpulumi.String(\"m5.xlarge\"),\n\t\t\t\tpulumi.String(\"m5.2xlarge\"),\n\t\t\t\tpulumi.String(\"m5.4xlarge\"),\n\t\t\t\tpulumi.String(\"m5.12xlarge\"),\n\t\t\t\tpulumi.String(\"m5.24xlarge\"),\n\t\t\t},\n\t\t\tOceanId: pulumi.String(\"o-123456\"),\n\t\t\tPreferredSpotTypes: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"m3.large\"),\n\t\t\t\tpulumi.String(\"m3.xlarge\"),\n\t\t\t\tpulumi.String(\"m3.2xlarge\"),\n\t\t\t\tpulumi.String(\"m4.large\"),\n\t\t\t\tpulumi.String(\"m4.xlarge\"),\n\t\t\t},\n\t\t\tRestrictScaleDown: pulumi.Bool(true),\n\t\t\tSchedulingTasks: ecs.OceanLaunchSpecSchedulingTaskArray{\n\t\t\t\t\u0026ecs.OceanLaunchSpecSchedulingTaskArgs{\n\t\t\t\t\tCronExpression: pulumi.String(\"0 1 * * *\"),\n\t\t\t\t\tIsEnabled:      pulumi.Bool(true),\n\t\t\t\t\tTaskHeadrooms: ecs.OceanLaunchSpecSchedulingTaskTaskHeadroomArray{\n\t\t\t\t\t\t\u0026ecs.OceanLaunchSpecSchedulingTaskTaskHeadroomArgs{\n\t\t\t\t\t\t\tCpuPerUnit:    pulumi.Int(1000),\n\t\t\t\t\t\t\tMemoryPerUnit: pulumi.Int(2048),\n\t\t\t\t\t\t\tNumOfUnits:    pulumi.Int(5),\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t\tTaskType: pulumi.String(\"manualHeadroomUpdate\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tSecurityGroupIds: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"awseb-12345\"),\n\t\t\t},\n\t\t\tStrategies: ecs.OceanLaunchSpecStrategyArray{\n\t\t\t\t\u0026ecs.OceanLaunchSpecStrategyArgs{\n\t\t\t\t\tSpotPercentage: pulumi.Int(50),\n\t\t\t\t},\n\t\t\t},\n\t\t\tSubnetIds: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"subnet-12345\"),\n\t\t\t},\n\t\t\tTags: ecs.OceanLaunchSpecTagArray{\n\t\t\t\t\u0026ecs.OceanLaunchSpecTagArgs{\n\t\t\t\t\tKey:   pulumi.String(\"Env\"),\n\t\t\t\t\tValue: pulumi.String(\"production\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tUserData: pulumi.String(\"echo hello world\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.spotinst.ecs.OceanLaunchSpec;\nimport com.pulumi.spotinst.ecs.OceanLaunchSpecArgs;\nimport com.pulumi.spotinst.ecs.inputs.OceanLaunchSpecAttributeArgs;\nimport com.pulumi.spotinst.ecs.inputs.OceanLaunchSpecAutoscaleHeadroomArgs;\nimport com.pulumi.spotinst.ecs.inputs.OceanLaunchSpecBlockDeviceMappingArgs;\nimport com.pulumi.spotinst.ecs.inputs.OceanLaunchSpecBlockDeviceMappingEbsArgs;\nimport com.pulumi.spotinst.ecs.inputs.OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs;\nimport com.pulumi.spotinst.ecs.inputs.OceanLaunchSpecInstanceMetadataOptionsArgs;\nimport com.pulumi.spotinst.ecs.inputs.OceanLaunchSpecSchedulingTaskArgs;\nimport com.pulumi.spotinst.ecs.inputs.OceanLaunchSpecStrategyArgs;\nimport com.pulumi.spotinst.ecs.inputs.OceanLaunchSpecTagArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new OceanLaunchSpec(\"example\", OceanLaunchSpecArgs.builder()        \n            .attributes(OceanLaunchSpecAttributeArgs.builder()\n                .key(\"fakeKey\")\n                .value(\"fakeValue\")\n                .build())\n            .autoscaleHeadrooms(OceanLaunchSpecAutoscaleHeadroomArgs.builder()\n                .cpuPerUnit(1000)\n                .memoryPerUnit(2048)\n                .numOfUnits(5)\n                .build())\n            .blockDeviceMappings(OceanLaunchSpecBlockDeviceMappingArgs.builder()\n                .deviceName(\"/dev/xvda1\")\n                .ebs(OceanLaunchSpecBlockDeviceMappingEbsArgs.builder()\n                    .deleteOnTermination(\"true\")\n                    .dynamicVolumeSize(OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs.builder()\n                        .baseSize(50)\n                        .resource(\"CPU\")\n                        .sizePerResourceUnit(20)\n                        .build())\n                    .encrypted(\"false\")\n                    .throughput(500)\n                    .volumeSize(50)\n                    .volumeType(\"gp2\")\n                    .build())\n                .build())\n            .iamInstanceProfile(\"iam-profile\")\n            .imageId(\"ami-123456\")\n            .instanceMetadataOptions(OceanLaunchSpecInstanceMetadataOptionsArgs.builder()\n                .httpPutResponseHopLimit(10)\n                .httpTokens(\"required\")\n                .build())\n            .instanceTypes(            \n                \"m3.large\",\n                \"m3.xlarge\",\n                \"m3.2xlarge\",\n                \"m4.large\",\n                \"m4.xlarge\",\n                \"m4.4xlarge\",\n                \"m4.2xlarge\",\n                \"m4.10xlarge\",\n                \"m4.16xlarge\",\n                \"m5.large\",\n                \"m5.xlarge\",\n                \"m5.2xlarge\",\n                \"m5.4xlarge\",\n                \"m5.12xlarge\",\n                \"m5.24xlarge\")\n            .oceanId(\"o-123456\")\n            .preferredSpotTypes(            \n                \"m3.large\",\n                \"m3.xlarge\",\n                \"m3.2xlarge\",\n                \"m4.large\",\n                \"m4.xlarge\")\n            .restrictScaleDown(true)\n            .schedulingTasks(OceanLaunchSpecSchedulingTaskArgs.builder()\n                .cronExpression(\"0 1 * * *\")\n                .isEnabled(true)\n                .taskHeadrooms(OceanLaunchSpecSchedulingTaskTaskHeadroomArgs.builder()\n                    .cpuPerUnit(1000)\n                    .memoryPerUnit(2048)\n                    .numOfUnits(5)\n                    .build())\n                .taskType(\"manualHeadroomUpdate\")\n                .build())\n            .securityGroupIds(\"awseb-12345\")\n            .strategies(OceanLaunchSpecStrategyArgs.builder()\n                .spotPercentage(50)\n                .build())\n            .subnetIds(\"subnet-12345\")\n            .tags(OceanLaunchSpecTagArgs.builder()\n                .key(\"Env\")\n                .value(\"production\")\n                .build())\n            .userData(\"echo hello world\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: spotinst:ecs:OceanLaunchSpec\n    properties:\n      attributes:\n        - key: fakeKey\n          value: fakeValue\n      autoscaleHeadrooms:\n        - cpuPerUnit: 1000\n          memoryPerUnit: 2048\n          numOfUnits: 5\n      blockDeviceMappings:\n        - deviceName: /dev/xvda1\n          ebs:\n            deleteOnTermination: 'true'\n            dynamicVolumeSize:\n              baseSize: 50\n              resource: CPU\n              sizePerResourceUnit: 20\n            encrypted: 'false'\n            throughput: 500\n            volumeSize: 50\n            volumeType: gp2\n      iamInstanceProfile: iam-profile\n      imageId: ami-123456\n      instanceMetadataOptions:\n        httpPutResponseHopLimit: 10\n        httpTokens: required\n      instanceTypes:\n        - m3.large\n        - m3.xlarge\n        - m3.2xlarge\n        - m4.large\n        - m4.xlarge\n        - m4.4xlarge\n        - m4.2xlarge\n        - m4.10xlarge\n        - m4.16xlarge\n        - m5.large\n        - m5.xlarge\n        - m5.2xlarge\n        - m5.4xlarge\n        - m5.12xlarge\n        - m5.24xlarge\n      oceanId: o-123456\n      preferredSpotTypes:\n        - m3.large\n        - m3.xlarge\n        - m3.2xlarge\n        - m4.large\n        - m4.xlarge\n      restrictScaleDown: true\n      schedulingTasks:\n        - cronExpression: 0 1 * * *\n          isEnabled: true\n          taskHeadrooms:\n            - cpuPerUnit: 1000\n              memoryPerUnit: 2048\n              numOfUnits: 5\n          taskType: manualHeadroomUpdate\n      securityGroupIds:\n        - awseb-12345\n      strategies:\n        - spotPercentage: 50\n      subnetIds:\n        - subnet-12345\n      tags:\n        - key: Env\n          value: production\n      userData: echo hello world\n```\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\n\nexport const oceanLaunchspecId = spotinst_ocean_ecs_launch_spec.example.id;\n```\n```python\nimport pulumi\n\npulumi.export(\"oceanLaunchspecId\", spotinst_ocean_ecs_launch_spec[\"example\"][\"id\"])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"oceanLaunchspecId\"] = spotinst_ocean_ecs_launch_spec.Example.Id,\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tctx.Export(\"oceanLaunchspecId\", spotinst_ocean_ecs_launch_spec.Example.Id)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        ctx.export(\"oceanLaunchspecId\", spotinst_ocean_ecs_launch_spec.example().id());\n    }\n}\n```\n```yaml\noutputs:\n  oceanLaunchspecId: ${spotinst_ocean_ecs_launch_spec.example.id}\n```\n{{% /example %}}\n{{% /examples %}}\n## Block Devices\n\n* `block_device_mappings`- (Optional) Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.   \n    * `device_name` - (Optional) String. Set device name. (Example: \"/dev/xvda1\").\n    * `ebs`- (Optional) Object. Set Elastic Block Store properties .\n        * `delete_on_termination`- (Optional) Boolean. Flag to delete the EBS on instance termination. \n        * `encrypted`- (Optional) Boolean. Enables [EBS encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) on the volume.\n        * `iops`- (Required for requests to create io1 volumes; it is not used in requests to create gp2, st1, sc1, or standard volumes) Int. The number of I/O operations per second (IOPS) that the volume supports.\n        * `kms_key_id`- (Optional) String. Identifier (key ID, key alias, ID ARN, or alias ARN) for a customer managed CMK under which the EBS volume is encrypted.\n        * `snapshot_id`- (Optional) (Optional) String. The Snapshot ID to mount by. \n        * `volume_type`- (Optional, Default: `\"standard\"`) String. The type of the volume (example: \"gp2\").\n        * `volume_size`- (Optional) Int. The size, in GB of the volume.\n        * `throughput`- (Optional) The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volume_type` = gp3.\n        * `dynamic_volume_size`- (Optional) Object. Set dynamic volume size properties. When using this object, you cannot use volumeSize. You must use one or the other.\n            * `base_size`- (Required) Int. Initial size for volume. (Example: 50)\n            * `resource`- (Required) String. Resource type to increase volume size dynamically by. (valid values: \"CPU\")\n            * `size_per_resource_unit`- (Required) Int. Additional size (in GB) per resource unit. (Example: baseSize= 50, sizePerResourceUnit=20, and instance with 2 CPU is launched - its total disk size will be: 90GB)\n        * `no_device`- (Optional) String. suppresses the specified device included in the block device mapping of the AMI.\n",
+            "description": "Manages a custom Spotinst Ocean ECS Launch Spec resource.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as spotinst from \"@pulumi/spotinst\";\n\nconst example = new spotinst.ecs.OceanLaunchSpec(\"example\", {\n    attributes: [{\n        key: \"fakeKey\",\n        value: \"fakeValue\",\n    }],\n    autoscaleHeadrooms: [{\n        cpuPerUnit: 1000,\n        memoryPerUnit: 2048,\n        numOfUnits: 5,\n    }],\n    blockDeviceMappings: [{\n        deviceName: \"/dev/xvda1\",\n        ebs: {\n            deleteOnTermination: true,\n            dynamicVolumeSize: {\n                baseSize: 50,\n                resource: \"CPU\",\n                sizePerResourceUnit: 20,\n            },\n            encrypted: false,\n            throughput: 500,\n            volumeSize: 50,\n            volumeType: \"gp2\",\n        },\n    }],\n    iamInstanceProfile: \"iam-profile\",\n    imageId: \"ami-123456\",\n    images: [\n        {\n            imageId: \"ami-12345\",\n        },\n        {\n            imageId: \"ami-67890\",\n        },\n    ],\n    instanceMetadataOptions: {\n        httpPutResponseHopLimit: 10,\n        httpTokens: \"required\",\n    },\n    instanceTypes: [\n        \"m3.large\",\n        \"m3.xlarge\",\n        \"m3.2xlarge\",\n        \"m4.large\",\n        \"m4.xlarge\",\n        \"m4.4xlarge\",\n        \"m4.2xlarge\",\n        \"m4.10xlarge\",\n        \"m4.16xlarge\",\n        \"m5.large\",\n        \"m5.xlarge\",\n        \"m5.2xlarge\",\n        \"m5.4xlarge\",\n        \"m5.12xlarge\",\n        \"m5.24xlarge\",\n    ],\n    oceanId: \"o-123456\",\n    preferredSpotTypes: [\n        \"m3.large\",\n        \"m3.xlarge\",\n        \"m3.2xlarge\",\n        \"m4.large\",\n        \"m4.xlarge\",\n    ],\n    restrictScaleDown: true,\n    schedulingTasks: [{\n        cronExpression: \"0 1 * * *\",\n        isEnabled: true,\n        taskHeadrooms: [{\n            cpuPerUnit: 1000,\n            memoryPerUnit: 2048,\n            numOfUnits: 5,\n        }],\n        taskType: \"manualHeadroomUpdate\",\n    }],\n    securityGroupIds: [\"awseb-12345\"],\n    strategies: [{\n        spotPercentage: 50,\n    }],\n    subnetIds: [\"subnet-12345\"],\n    tags: [{\n        key: \"Env\",\n        value: \"production\",\n    }],\n    userData: \"echo hello world\",\n});\n```\n```python\nimport pulumi\nimport pulumi_spotinst as spotinst\n\nexample = spotinst.ecs.OceanLaunchSpec(\"example\",\n    attributes=[spotinst.ecs.OceanLaunchSpecAttributeArgs(\n        key=\"fakeKey\",\n        value=\"fakeValue\",\n    )],\n    autoscale_headrooms=[spotinst.ecs.OceanLaunchSpecAutoscaleHeadroomArgs(\n        cpu_per_unit=1000,\n        memory_per_unit=2048,\n        num_of_units=5,\n    )],\n    block_device_mappings=[spotinst.ecs.OceanLaunchSpecBlockDeviceMappingArgs(\n        device_name=\"/dev/xvda1\",\n        ebs=spotinst.ecs.OceanLaunchSpecBlockDeviceMappingEbsArgs(\n            delete_on_termination=True,\n            dynamic_volume_size=spotinst.ecs.OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs(\n                base_size=50,\n                resource=\"CPU\",\n                size_per_resource_unit=20,\n            ),\n            encrypted=False,\n            throughput=500,\n            volume_size=50,\n            volume_type=\"gp2\",\n        ),\n    )],\n    iam_instance_profile=\"iam-profile\",\n    image_id=\"ami-123456\",\n    images=[\n        spotinst.ecs.OceanLaunchSpecImageArgs(\n            image_id=\"ami-12345\",\n        ),\n        spotinst.ecs.OceanLaunchSpecImageArgs(\n            image_id=\"ami-67890\",\n        ),\n    ],\n    instance_metadata_options=spotinst.ecs.OceanLaunchSpecInstanceMetadataOptionsArgs(\n        http_put_response_hop_limit=10,\n        http_tokens=\"required\",\n    ),\n    instance_types=[\n        \"m3.large\",\n        \"m3.xlarge\",\n        \"m3.2xlarge\",\n        \"m4.large\",\n        \"m4.xlarge\",\n        \"m4.4xlarge\",\n        \"m4.2xlarge\",\n        \"m4.10xlarge\",\n        \"m4.16xlarge\",\n        \"m5.large\",\n        \"m5.xlarge\",\n        \"m5.2xlarge\",\n        \"m5.4xlarge\",\n        \"m5.12xlarge\",\n        \"m5.24xlarge\",\n    ],\n    ocean_id=\"o-123456\",\n    preferred_spot_types=[\n        \"m3.large\",\n        \"m3.xlarge\",\n        \"m3.2xlarge\",\n        \"m4.large\",\n        \"m4.xlarge\",\n    ],\n    restrict_scale_down=True,\n    scheduling_tasks=[spotinst.ecs.OceanLaunchSpecSchedulingTaskArgs(\n        cron_expression=\"0 1 * * *\",\n        is_enabled=True,\n        task_headrooms=[spotinst.ecs.OceanLaunchSpecSchedulingTaskTaskHeadroomArgs(\n            cpu_per_unit=1000,\n            memory_per_unit=2048,\n            num_of_units=5,\n        )],\n        task_type=\"manualHeadroomUpdate\",\n    )],\n    security_group_ids=[\"awseb-12345\"],\n    strategies=[spotinst.ecs.OceanLaunchSpecStrategyArgs(\n        spot_percentage=50,\n    )],\n    subnet_ids=[\"subnet-12345\"],\n    tags=[spotinst.ecs.OceanLaunchSpecTagArgs(\n        key=\"Env\",\n        value=\"production\",\n    )],\n    user_data=\"echo hello world\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing SpotInst = Pulumi.SpotInst;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new SpotInst.Ecs.OceanLaunchSpec(\"example\", new()\n    {\n        Attributes = new[]\n        {\n            new SpotInst.Ecs.Inputs.OceanLaunchSpecAttributeArgs\n            {\n                Key = \"fakeKey\",\n                Value = \"fakeValue\",\n            },\n        },\n        AutoscaleHeadrooms = new[]\n        {\n            new SpotInst.Ecs.Inputs.OceanLaunchSpecAutoscaleHeadroomArgs\n            {\n                CpuPerUnit = 1000,\n                MemoryPerUnit = 2048,\n                NumOfUnits = 5,\n            },\n        },\n        BlockDeviceMappings = new[]\n        {\n            new SpotInst.Ecs.Inputs.OceanLaunchSpecBlockDeviceMappingArgs\n            {\n                DeviceName = \"/dev/xvda1\",\n                Ebs = new SpotInst.Ecs.Inputs.OceanLaunchSpecBlockDeviceMappingEbsArgs\n                {\n                    DeleteOnTermination = true,\n                    DynamicVolumeSize = new SpotInst.Ecs.Inputs.OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs\n                    {\n                        BaseSize = 50,\n                        Resource = \"CPU\",\n                        SizePerResourceUnit = 20,\n                    },\n                    Encrypted = false,\n                    Throughput = 500,\n                    VolumeSize = 50,\n                    VolumeType = \"gp2\",\n                },\n            },\n        },\n        IamInstanceProfile = \"iam-profile\",\n        ImageId = \"ami-123456\",\n        Images = new[]\n        {\n            new SpotInst.Ecs.Inputs.OceanLaunchSpecImageArgs\n            {\n                ImageId = \"ami-12345\",\n            },\n            new SpotInst.Ecs.Inputs.OceanLaunchSpecImageArgs\n            {\n                ImageId = \"ami-67890\",\n            },\n        },\n        InstanceMetadataOptions = new SpotInst.Ecs.Inputs.OceanLaunchSpecInstanceMetadataOptionsArgs\n        {\n            HttpPutResponseHopLimit = 10,\n            HttpTokens = \"required\",\n        },\n        InstanceTypes = new[]\n        {\n            \"m3.large\",\n            \"m3.xlarge\",\n            \"m3.2xlarge\",\n            \"m4.large\",\n            \"m4.xlarge\",\n            \"m4.4xlarge\",\n            \"m4.2xlarge\",\n            \"m4.10xlarge\",\n            \"m4.16xlarge\",\n            \"m5.large\",\n            \"m5.xlarge\",\n            \"m5.2xlarge\",\n            \"m5.4xlarge\",\n            \"m5.12xlarge\",\n            \"m5.24xlarge\",\n        },\n        OceanId = \"o-123456\",\n        PreferredSpotTypes = new[]\n        {\n            \"m3.large\",\n            \"m3.xlarge\",\n            \"m3.2xlarge\",\n            \"m4.large\",\n            \"m4.xlarge\",\n        },\n        RestrictScaleDown = true,\n        SchedulingTasks = new[]\n        {\n            new SpotInst.Ecs.Inputs.OceanLaunchSpecSchedulingTaskArgs\n            {\n                CronExpression = \"0 1 * * *\",\n                IsEnabled = true,\n                TaskHeadrooms = new[]\n                {\n                    new SpotInst.Ecs.Inputs.OceanLaunchSpecSchedulingTaskTaskHeadroomArgs\n                    {\n                        CpuPerUnit = 1000,\n                        MemoryPerUnit = 2048,\n                        NumOfUnits = 5,\n                    },\n                },\n                TaskType = \"manualHeadroomUpdate\",\n            },\n        },\n        SecurityGroupIds = new[]\n        {\n            \"awseb-12345\",\n        },\n        Strategies = new[]\n        {\n            new SpotInst.Ecs.Inputs.OceanLaunchSpecStrategyArgs\n            {\n                SpotPercentage = 50,\n            },\n        },\n        SubnetIds = new[]\n        {\n            \"subnet-12345\",\n        },\n        Tags = new[]\n        {\n            new SpotInst.Ecs.Inputs.OceanLaunchSpecTagArgs\n            {\n                Key = \"Env\",\n                Value = \"production\",\n            },\n        },\n        UserData = \"echo hello world\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst/ecs\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := ecs.NewOceanLaunchSpec(ctx, \"example\", \u0026ecs.OceanLaunchSpecArgs{\n\t\t\tAttributes: ecs.OceanLaunchSpecAttributeArray{\n\t\t\t\t\u0026ecs.OceanLaunchSpecAttributeArgs{\n\t\t\t\t\tKey:   pulumi.String(\"fakeKey\"),\n\t\t\t\t\tValue: pulumi.String(\"fakeValue\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tAutoscaleHeadrooms: ecs.OceanLaunchSpecAutoscaleHeadroomArray{\n\t\t\t\t\u0026ecs.OceanLaunchSpecAutoscaleHeadroomArgs{\n\t\t\t\t\tCpuPerUnit:    pulumi.Int(1000),\n\t\t\t\t\tMemoryPerUnit: pulumi.Int(2048),\n\t\t\t\t\tNumOfUnits:    pulumi.Int(5),\n\t\t\t\t},\n\t\t\t},\n\t\t\tBlockDeviceMappings: ecs.OceanLaunchSpecBlockDeviceMappingArray{\n\t\t\t\t\u0026ecs.OceanLaunchSpecBlockDeviceMappingArgs{\n\t\t\t\t\tDeviceName: pulumi.String(\"/dev/xvda1\"),\n\t\t\t\t\tEbs: \u0026ecs.OceanLaunchSpecBlockDeviceMappingEbsArgs{\n\t\t\t\t\t\tDeleteOnTermination: pulumi.Bool(true),\n\t\t\t\t\t\tDynamicVolumeSize: \u0026ecs.OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs{\n\t\t\t\t\t\t\tBaseSize:            pulumi.Int(50),\n\t\t\t\t\t\t\tResource:            pulumi.String(\"CPU\"),\n\t\t\t\t\t\t\tSizePerResourceUnit: pulumi.Int(20),\n\t\t\t\t\t\t},\n\t\t\t\t\t\tEncrypted:  pulumi.Bool(false),\n\t\t\t\t\t\tThroughput: pulumi.Int(500),\n\t\t\t\t\t\tVolumeSize: pulumi.Int(50),\n\t\t\t\t\t\tVolumeType: pulumi.String(\"gp2\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tIamInstanceProfile: pulumi.String(\"iam-profile\"),\n\t\t\tImageId:            pulumi.String(\"ami-123456\"),\n\t\t\tImages: ecs.OceanLaunchSpecImageArray{\n\t\t\t\t\u0026ecs.OceanLaunchSpecImageArgs{\n\t\t\t\t\tImageId: pulumi.String(\"ami-12345\"),\n\t\t\t\t},\n\t\t\t\t\u0026ecs.OceanLaunchSpecImageArgs{\n\t\t\t\t\tImageId: pulumi.String(\"ami-67890\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tInstanceMetadataOptions: \u0026ecs.OceanLaunchSpecInstanceMetadataOptionsArgs{\n\t\t\t\tHttpPutResponseHopLimit: pulumi.Int(10),\n\t\t\t\tHttpTokens:              pulumi.String(\"required\"),\n\t\t\t},\n\t\t\tInstanceTypes: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"m3.large\"),\n\t\t\t\tpulumi.String(\"m3.xlarge\"),\n\t\t\t\tpulumi.String(\"m3.2xlarge\"),\n\t\t\t\tpulumi.String(\"m4.large\"),\n\t\t\t\tpulumi.String(\"m4.xlarge\"),\n\t\t\t\tpulumi.String(\"m4.4xlarge\"),\n\t\t\t\tpulumi.String(\"m4.2xlarge\"),\n\t\t\t\tpulumi.String(\"m4.10xlarge\"),\n\t\t\t\tpulumi.String(\"m4.16xlarge\"),\n\t\t\t\tpulumi.String(\"m5.large\"),\n\t\t\t\tpulumi.String(\"m5.xlarge\"),\n\t\t\t\tpulumi.String(\"m5.2xlarge\"),\n\t\t\t\tpulumi.String(\"m5.4xlarge\"),\n\t\t\t\tpulumi.String(\"m5.12xlarge\"),\n\t\t\t\tpulumi.String(\"m5.24xlarge\"),\n\t\t\t},\n\t\t\tOceanId: pulumi.String(\"o-123456\"),\n\t\t\tPreferredSpotTypes: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"m3.large\"),\n\t\t\t\tpulumi.String(\"m3.xlarge\"),\n\t\t\t\tpulumi.String(\"m3.2xlarge\"),\n\t\t\t\tpulumi.String(\"m4.large\"),\n\t\t\t\tpulumi.String(\"m4.xlarge\"),\n\t\t\t},\n\t\t\tRestrictScaleDown: pulumi.Bool(true),\n\t\t\tSchedulingTasks: ecs.OceanLaunchSpecSchedulingTaskArray{\n\t\t\t\t\u0026ecs.OceanLaunchSpecSchedulingTaskArgs{\n\t\t\t\t\tCronExpression: pulumi.String(\"0 1 * * *\"),\n\t\t\t\t\tIsEnabled:      pulumi.Bool(true),\n\t\t\t\t\tTaskHeadrooms: ecs.OceanLaunchSpecSchedulingTaskTaskHeadroomArray{\n\t\t\t\t\t\t\u0026ecs.OceanLaunchSpecSchedulingTaskTaskHeadroomArgs{\n\t\t\t\t\t\t\tCpuPerUnit:    pulumi.Int(1000),\n\t\t\t\t\t\t\tMemoryPerUnit: pulumi.Int(2048),\n\t\t\t\t\t\t\tNumOfUnits:    pulumi.Int(5),\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t\tTaskType: pulumi.String(\"manualHeadroomUpdate\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tSecurityGroupIds: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"awseb-12345\"),\n\t\t\t},\n\t\t\tStrategies: ecs.OceanLaunchSpecStrategyArray{\n\t\t\t\t\u0026ecs.OceanLaunchSpecStrategyArgs{\n\t\t\t\t\tSpotPercentage: pulumi.Int(50),\n\t\t\t\t},\n\t\t\t},\n\t\t\tSubnetIds: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"subnet-12345\"),\n\t\t\t},\n\t\t\tTags: ecs.OceanLaunchSpecTagArray{\n\t\t\t\t\u0026ecs.OceanLaunchSpecTagArgs{\n\t\t\t\t\tKey:   pulumi.String(\"Env\"),\n\t\t\t\t\tValue: pulumi.String(\"production\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tUserData: pulumi.String(\"echo hello world\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.spotinst.ecs.OceanLaunchSpec;\nimport com.pulumi.spotinst.ecs.OceanLaunchSpecArgs;\nimport com.pulumi.spotinst.ecs.inputs.OceanLaunchSpecAttributeArgs;\nimport com.pulumi.spotinst.ecs.inputs.OceanLaunchSpecAutoscaleHeadroomArgs;\nimport com.pulumi.spotinst.ecs.inputs.OceanLaunchSpecBlockDeviceMappingArgs;\nimport com.pulumi.spotinst.ecs.inputs.OceanLaunchSpecBlockDeviceMappingEbsArgs;\nimport com.pulumi.spotinst.ecs.inputs.OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs;\nimport com.pulumi.spotinst.ecs.inputs.OceanLaunchSpecImageArgs;\nimport com.pulumi.spotinst.ecs.inputs.OceanLaunchSpecInstanceMetadataOptionsArgs;\nimport com.pulumi.spotinst.ecs.inputs.OceanLaunchSpecSchedulingTaskArgs;\nimport com.pulumi.spotinst.ecs.inputs.OceanLaunchSpecStrategyArgs;\nimport com.pulumi.spotinst.ecs.inputs.OceanLaunchSpecTagArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new OceanLaunchSpec(\"example\", OceanLaunchSpecArgs.builder()        \n            .attributes(OceanLaunchSpecAttributeArgs.builder()\n                .key(\"fakeKey\")\n                .value(\"fakeValue\")\n                .build())\n            .autoscaleHeadrooms(OceanLaunchSpecAutoscaleHeadroomArgs.builder()\n                .cpuPerUnit(1000)\n                .memoryPerUnit(2048)\n                .numOfUnits(5)\n                .build())\n            .blockDeviceMappings(OceanLaunchSpecBlockDeviceMappingArgs.builder()\n                .deviceName(\"/dev/xvda1\")\n                .ebs(OceanLaunchSpecBlockDeviceMappingEbsArgs.builder()\n                    .deleteOnTermination(\"true\")\n                    .dynamicVolumeSize(OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs.builder()\n                        .baseSize(50)\n                        .resource(\"CPU\")\n                        .sizePerResourceUnit(20)\n                        .build())\n                    .encrypted(\"false\")\n                    .throughput(500)\n                    .volumeSize(50)\n                    .volumeType(\"gp2\")\n                    .build())\n                .build())\n            .iamInstanceProfile(\"iam-profile\")\n            .imageId(\"ami-123456\")\n            .images(            \n                OceanLaunchSpecImageArgs.builder()\n                    .imageId(\"ami-12345\")\n                    .build(),\n                OceanLaunchSpecImageArgs.builder()\n                    .imageId(\"ami-67890\")\n                    .build())\n            .instanceMetadataOptions(OceanLaunchSpecInstanceMetadataOptionsArgs.builder()\n                .httpPutResponseHopLimit(10)\n                .httpTokens(\"required\")\n                .build())\n            .instanceTypes(            \n                \"m3.large\",\n                \"m3.xlarge\",\n                \"m3.2xlarge\",\n                \"m4.large\",\n                \"m4.xlarge\",\n                \"m4.4xlarge\",\n                \"m4.2xlarge\",\n                \"m4.10xlarge\",\n                \"m4.16xlarge\",\n                \"m5.large\",\n                \"m5.xlarge\",\n                \"m5.2xlarge\",\n                \"m5.4xlarge\",\n                \"m5.12xlarge\",\n                \"m5.24xlarge\")\n            .oceanId(\"o-123456\")\n            .preferredSpotTypes(            \n                \"m3.large\",\n                \"m3.xlarge\",\n                \"m3.2xlarge\",\n                \"m4.large\",\n                \"m4.xlarge\")\n            .restrictScaleDown(true)\n            .schedulingTasks(OceanLaunchSpecSchedulingTaskArgs.builder()\n                .cronExpression(\"0 1 * * *\")\n                .isEnabled(true)\n                .taskHeadrooms(OceanLaunchSpecSchedulingTaskTaskHeadroomArgs.builder()\n                    .cpuPerUnit(1000)\n                    .memoryPerUnit(2048)\n                    .numOfUnits(5)\n                    .build())\n                .taskType(\"manualHeadroomUpdate\")\n                .build())\n            .securityGroupIds(\"awseb-12345\")\n            .strategies(OceanLaunchSpecStrategyArgs.builder()\n                .spotPercentage(50)\n                .build())\n            .subnetIds(\"subnet-12345\")\n            .tags(OceanLaunchSpecTagArgs.builder()\n                .key(\"Env\")\n                .value(\"production\")\n                .build())\n            .userData(\"echo hello world\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: spotinst:ecs:OceanLaunchSpec\n    properties:\n      attributes:\n        - key: fakeKey\n          value: fakeValue\n      autoscaleHeadrooms:\n        - cpuPerUnit: 1000\n          memoryPerUnit: 2048\n          numOfUnits: 5\n      blockDeviceMappings:\n        - deviceName: /dev/xvda1\n          ebs:\n            deleteOnTermination: 'true'\n            dynamicVolumeSize:\n              baseSize: 50\n              resource: CPU\n              sizePerResourceUnit: 20\n            encrypted: 'false'\n            throughput: 500\n            volumeSize: 50\n            volumeType: gp2\n      iamInstanceProfile: iam-profile\n      imageId: ami-123456\n      images:\n        - imageId: ami-12345\n        - imageId: ami-67890\n      instanceMetadataOptions:\n        httpPutResponseHopLimit: 10\n        httpTokens: required\n      instanceTypes:\n        - m3.large\n        - m3.xlarge\n        - m3.2xlarge\n        - m4.large\n        - m4.xlarge\n        - m4.4xlarge\n        - m4.2xlarge\n        - m4.10xlarge\n        - m4.16xlarge\n        - m5.large\n        - m5.xlarge\n        - m5.2xlarge\n        - m5.4xlarge\n        - m5.12xlarge\n        - m5.24xlarge\n      oceanId: o-123456\n      preferredSpotTypes:\n        - m3.large\n        - m3.xlarge\n        - m3.2xlarge\n        - m4.large\n        - m4.xlarge\n      restrictScaleDown: true\n      schedulingTasks:\n        - cronExpression: 0 1 * * *\n          isEnabled: true\n          taskHeadrooms:\n            - cpuPerUnit: 1000\n              memoryPerUnit: 2048\n              numOfUnits: 5\n          taskType: manualHeadroomUpdate\n      securityGroupIds:\n        - awseb-12345\n      strategies:\n        - spotPercentage: 50\n      subnetIds:\n        - subnet-12345\n      tags:\n        - key: Env\n          value: production\n      userData: echo hello world\n```\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\n\nexport const oceanLaunchspecId = spotinst_ocean_ecs_launch_spec.example.id;\n```\n```python\nimport pulumi\n\npulumi.export(\"oceanLaunchspecId\", spotinst_ocean_ecs_launch_spec[\"example\"][\"id\"])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"oceanLaunchspecId\"] = spotinst_ocean_ecs_launch_spec.Example.Id,\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tctx.Export(\"oceanLaunchspecId\", spotinst_ocean_ecs_launch_spec.Example.Id)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        ctx.export(\"oceanLaunchspecId\", spotinst_ocean_ecs_launch_spec.example().id());\n    }\n}\n```\n```yaml\noutputs:\n  oceanLaunchspecId: ${spotinst_ocean_ecs_launch_spec.example.id}\n```\n{{% /example %}}\n{{% /examples %}}\n## Block Devices\n\n* `block_device_mappings`- (Optional) Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.   \n    * `device_name` - (Optional) String. Set device name. (Example: \"/dev/xvda1\").\n    * `ebs`- (Optional) Object. Set Elastic Block Store properties .\n        * `delete_on_termination`- (Optional) Boolean. Flag to delete the EBS on instance termination. \n        * `encrypted`- (Optional) Boolean. Enables [EBS encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) on the volume.\n        * `iops`- (Required for requests to create io1 volumes; it is not used in requests to create gp2, st1, sc1, or standard volumes) Int. The number of I/O operations per second (IOPS) that the volume supports.\n        * `kms_key_id`- (Optional) String. Identifier (key ID, key alias, ID ARN, or alias ARN) for a customer managed CMK under which the EBS volume is encrypted.\n        * `snapshot_id`- (Optional) (Optional) String. The Snapshot ID to mount by. \n        * `volume_type`- (Optional, Default: `\"standard\"`) String. The type of the volume (example: \"gp2\").\n        * `volume_size`- (Optional) Int. The size, in GB of the volume.\n        * `throughput`- (Optional) The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volume_type` = gp3.\n        * `dynamic_volume_size`- (Optional) Object. Set dynamic volume size properties. When using this object, you cannot use volumeSize. You must use one or the other.\n            * `base_size`- (Required) Int. Initial size for volume. (Example: 50)\n            * `resource`- (Required) String. Resource type to increase volume size dynamically by. (valid values: \"CPU\")\n            * `size_per_resource_unit`- (Required) Int. Additional size (in GB) per resource unit. (Example: baseSize= 50, sizePerResourceUnit=20, and instance with 2 CPU is launched - its total disk size will be: 90GB)\n        * `no_device`- (Optional) String. suppresses the specified device included in the block device mapping of the AMI.\n",
             "properties": {
                 "attributes": {
                     "type": "array",
@@ -15299,7 +15139,14 @@
                 },
                 "imageId": {
                     "type": "string",
-                    "description": "ID of the image used to launch the instances.\n"
+                    "description": "Identifier of the image in AWS. Valid values: any string which is not empty or null.\n"
+                },
+                "images": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/spotinst:ecs/OceanLaunchSpecImage:OceanLaunchSpecImage"
+                    },
+                    "description": "You can configure VNG with either the imageId or images objects, but not both simultaneously. For each architecture type (amd64, arm64) only one AMI is allowed. Valid values: null, or an array with at least one element\n"
                 },
                 "instanceMetadataOptions": {
                     "$ref": "#/types/spotinst:ecs/OceanLaunchSpecInstanceMetadataOptions:OceanLaunchSpecInstanceMetadataOptions",
@@ -15402,7 +15249,14 @@
                 },
                 "imageId": {
                     "type": "string",
-                    "description": "ID of the image used to launch the instances.\n"
+                    "description": "Identifier of the image in AWS. Valid values: any string which is not empty or null.\n"
+                },
+                "images": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/spotinst:ecs/OceanLaunchSpecImage:OceanLaunchSpecImage"
+                    },
+                    "description": "You can configure VNG with either the imageId or images objects, but not both simultaneously. For each architecture type (amd64, arm64) only one AMI is allowed. Valid values: null, or an array with at least one element\n"
                 },
                 "instanceMetadataOptions": {
                     "$ref": "#/types/spotinst:ecs/OceanLaunchSpecInstanceMetadataOptions:OceanLaunchSpecInstanceMetadataOptions",
@@ -15506,7 +15360,14 @@
                     },
                     "imageId": {
                         "type": "string",
-                        "description": "ID of the image used to launch the instances.\n"
+                        "description": "Identifier of the image in AWS. Valid values: any string which is not empty or null.\n"
+                    },
+                    "images": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/spotinst:ecs/OceanLaunchSpecImage:OceanLaunchSpecImage"
+                        },
+                        "description": "You can configure VNG with either the imageId or images objects, but not both simultaneously. For each architecture type (amd64, arm64) only one AMI is allowed. Valid values: null, or an array with at least one element\n"
                     },
                     "instanceMetadataOptions": {
                         "$ref": "#/types/spotinst:ecs/OceanLaunchSpecInstanceMetadataOptions:OceanLaunchSpecInstanceMetadataOptions",
@@ -18316,512 +18177,6 @@
                     "resourceId": {
                         "type": "string",
                         "description": "Spotinst Resource id (Elastigroup or Ocean ID).\n"
-                    }
-                },
-                "type": "object"
-            }
-        },
-        "spotinst:multai/balancer:Balancer": {
-            "properties": {
-                "connectionTimeouts": {
-                    "$ref": "#/types/spotinst:multai/BalancerConnectionTimeouts:BalancerConnectionTimeouts"
-                },
-                "dnsCnameAliases": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    }
-                },
-                "name": {
-                    "type": "string"
-                },
-                "scheme": {
-                    "type": "string"
-                },
-                "tags": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/spotinst:multai/BalancerTag:BalancerTag"
-                    }
-                }
-            },
-            "required": [
-                "name"
-            ],
-            "inputProperties": {
-                "connectionTimeouts": {
-                    "$ref": "#/types/spotinst:multai/BalancerConnectionTimeouts:BalancerConnectionTimeouts"
-                },
-                "dnsCnameAliases": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    }
-                },
-                "name": {
-                    "type": "string"
-                },
-                "scheme": {
-                    "type": "string"
-                },
-                "tags": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/spotinst:multai/BalancerTag:BalancerTag"
-                    }
-                }
-            },
-            "stateInputs": {
-                "description": "Input properties used for looking up and filtering Balancer resources.\n",
-                "properties": {
-                    "connectionTimeouts": {
-                        "$ref": "#/types/spotinst:multai/BalancerConnectionTimeouts:BalancerConnectionTimeouts"
-                    },
-                    "dnsCnameAliases": {
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        }
-                    },
-                    "name": {
-                        "type": "string"
-                    },
-                    "scheme": {
-                        "type": "string"
-                    },
-                    "tags": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/types/spotinst:multai/BalancerTag:BalancerTag"
-                        }
-                    }
-                },
-                "type": "object"
-            }
-        },
-        "spotinst:multai/deployment:Deployment": {
-            "properties": {
-                "name": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "name"
-            ],
-            "inputProperties": {
-                "name": {
-                    "type": "string"
-                }
-            },
-            "stateInputs": {
-                "description": "Input properties used for looking up and filtering Deployment resources.\n",
-                "properties": {
-                    "name": {
-                        "type": "string"
-                    }
-                },
-                "type": "object"
-            }
-        },
-        "spotinst:multai/listener:Listener": {
-            "properties": {
-                "balancerId": {
-                    "type": "string"
-                },
-                "port": {
-                    "type": "integer"
-                },
-                "protocol": {
-                    "type": "string"
-                },
-                "tags": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/spotinst:multai/ListenerTag:ListenerTag"
-                    }
-                },
-                "tlsConfig": {
-                    "$ref": "#/types/spotinst:multai/ListenerTlsConfig:ListenerTlsConfig"
-                }
-            },
-            "required": [
-                "balancerId",
-                "port",
-                "protocol"
-            ],
-            "inputProperties": {
-                "balancerId": {
-                    "type": "string"
-                },
-                "port": {
-                    "type": "integer"
-                },
-                "protocol": {
-                    "type": "string"
-                },
-                "tags": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/spotinst:multai/ListenerTag:ListenerTag"
-                    }
-                },
-                "tlsConfig": {
-                    "$ref": "#/types/spotinst:multai/ListenerTlsConfig:ListenerTlsConfig"
-                }
-            },
-            "requiredInputs": [
-                "balancerId",
-                "port",
-                "protocol"
-            ],
-            "stateInputs": {
-                "description": "Input properties used for looking up and filtering Listener resources.\n",
-                "properties": {
-                    "balancerId": {
-                        "type": "string"
-                    },
-                    "port": {
-                        "type": "integer"
-                    },
-                    "protocol": {
-                        "type": "string"
-                    },
-                    "tags": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/types/spotinst:multai/ListenerTag:ListenerTag"
-                        }
-                    },
-                    "tlsConfig": {
-                        "$ref": "#/types/spotinst:multai/ListenerTlsConfig:ListenerTlsConfig"
-                    }
-                },
-                "type": "object"
-            }
-        },
-        "spotinst:multai/routingRule:RoutingRule": {
-            "properties": {
-                "balancerId": {
-                    "type": "string"
-                },
-                "listenerId": {
-                    "type": "string"
-                },
-                "middlewareIds": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    }
-                },
-                "priority": {
-                    "type": "integer"
-                },
-                "route": {
-                    "type": "string"
-                },
-                "strategy": {
-                    "type": "string"
-                },
-                "tags": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/spotinst:multai/RoutingRuleTag:RoutingRuleTag"
-                    }
-                },
-                "targetSetIds": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    }
-                }
-            },
-            "required": [
-                "balancerId",
-                "listenerId",
-                "route",
-                "targetSetIds"
-            ],
-            "inputProperties": {
-                "balancerId": {
-                    "type": "string"
-                },
-                "listenerId": {
-                    "type": "string"
-                },
-                "middlewareIds": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    }
-                },
-                "priority": {
-                    "type": "integer"
-                },
-                "route": {
-                    "type": "string"
-                },
-                "strategy": {
-                    "type": "string"
-                },
-                "tags": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/spotinst:multai/RoutingRuleTag:RoutingRuleTag"
-                    }
-                },
-                "targetSetIds": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    }
-                }
-            },
-            "requiredInputs": [
-                "balancerId",
-                "listenerId",
-                "route",
-                "targetSetIds"
-            ],
-            "stateInputs": {
-                "description": "Input properties used for looking up and filtering RoutingRule resources.\n",
-                "properties": {
-                    "balancerId": {
-                        "type": "string"
-                    },
-                    "listenerId": {
-                        "type": "string"
-                    },
-                    "middlewareIds": {
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        }
-                    },
-                    "priority": {
-                        "type": "integer"
-                    },
-                    "route": {
-                        "type": "string"
-                    },
-                    "strategy": {
-                        "type": "string"
-                    },
-                    "tags": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/types/spotinst:multai/RoutingRuleTag:RoutingRuleTag"
-                        }
-                    },
-                    "targetSetIds": {
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        }
-                    }
-                },
-                "type": "object"
-            }
-        },
-        "spotinst:multai/target:Target": {
-            "properties": {
-                "balancerId": {
-                    "type": "string"
-                },
-                "host": {
-                    "type": "string"
-                },
-                "name": {
-                    "type": "string"
-                },
-                "port": {
-                    "type": "integer"
-                },
-                "tags": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/spotinst:multai/TargetTag:TargetTag"
-                    }
-                },
-                "targetSetId": {
-                    "type": "string"
-                },
-                "weight": {
-                    "type": "integer"
-                }
-            },
-            "required": [
-                "balancerId",
-                "host",
-                "name",
-                "targetSetId",
-                "weight"
-            ],
-            "inputProperties": {
-                "balancerId": {
-                    "type": "string"
-                },
-                "host": {
-                    "type": "string"
-                },
-                "name": {
-                    "type": "string"
-                },
-                "port": {
-                    "type": "integer"
-                },
-                "tags": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/spotinst:multai/TargetTag:TargetTag"
-                    }
-                },
-                "targetSetId": {
-                    "type": "string"
-                },
-                "weight": {
-                    "type": "integer"
-                }
-            },
-            "requiredInputs": [
-                "balancerId",
-                "host",
-                "targetSetId",
-                "weight"
-            ],
-            "stateInputs": {
-                "description": "Input properties used for looking up and filtering Target resources.\n",
-                "properties": {
-                    "balancerId": {
-                        "type": "string"
-                    },
-                    "host": {
-                        "type": "string"
-                    },
-                    "name": {
-                        "type": "string"
-                    },
-                    "port": {
-                        "type": "integer"
-                    },
-                    "tags": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/types/spotinst:multai/TargetTag:TargetTag"
-                        }
-                    },
-                    "targetSetId": {
-                        "type": "string"
-                    },
-                    "weight": {
-                        "type": "integer"
-                    }
-                },
-                "type": "object"
-            }
-        },
-        "spotinst:multai/targetSet:TargetSet": {
-            "properties": {
-                "balancerId": {
-                    "type": "string"
-                },
-                "deploymentId": {
-                    "type": "string"
-                },
-                "healthCheck": {
-                    "$ref": "#/types/spotinst:multai/TargetSetHealthCheck:TargetSetHealthCheck"
-                },
-                "name": {
-                    "type": "string"
-                },
-                "port": {
-                    "type": "integer"
-                },
-                "protocol": {
-                    "type": "string"
-                },
-                "tags": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/spotinst:multai/TargetSetTag:TargetSetTag"
-                    }
-                },
-                "weight": {
-                    "type": "integer"
-                }
-            },
-            "required": [
-                "balancerId",
-                "deploymentId",
-                "healthCheck",
-                "name",
-                "protocol",
-                "weight"
-            ],
-            "inputProperties": {
-                "balancerId": {
-                    "type": "string"
-                },
-                "deploymentId": {
-                    "type": "string"
-                },
-                "healthCheck": {
-                    "$ref": "#/types/spotinst:multai/TargetSetHealthCheck:TargetSetHealthCheck"
-                },
-                "name": {
-                    "type": "string"
-                },
-                "port": {
-                    "type": "integer"
-                },
-                "protocol": {
-                    "type": "string"
-                },
-                "tags": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/spotinst:multai/TargetSetTag:TargetSetTag"
-                    }
-                },
-                "weight": {
-                    "type": "integer"
-                }
-            },
-            "requiredInputs": [
-                "balancerId",
-                "deploymentId",
-                "healthCheck",
-                "protocol",
-                "weight"
-            ],
-            "stateInputs": {
-                "description": "Input properties used for looking up and filtering TargetSet resources.\n",
-                "properties": {
-                    "balancerId": {
-                        "type": "string"
-                    },
-                    "deploymentId": {
-                        "type": "string"
-                    },
-                    "healthCheck": {
-                        "$ref": "#/types/spotinst:multai/TargetSetHealthCheck:TargetSetHealthCheck"
-                    },
-                    "name": {
-                        "type": "string"
-                    },
-                    "port": {
-                        "type": "integer"
-                    },
-                    "protocol": {
-                        "type": "string"
-                    },
-                    "tags": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/types/spotinst:multai/TargetSetTag:TargetSetTag"
-                        }
-                    },
-                    "weight": {
-                        "type": "integer"
                     }
                 },
                 "type": "object"
