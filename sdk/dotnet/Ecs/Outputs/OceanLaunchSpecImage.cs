@@ -7,23 +7,21 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.SpotInst.Multai.Outputs
+namespace Pulumi.SpotInst.Ecs.Outputs
 {
 
     [OutputType]
-    public sealed class RoutingRuleTag
+    public sealed class OceanLaunchSpecImage
     {
-        public readonly string Key;
-        public readonly string Value;
+        /// <summary>
+        /// Identifier of the image in AWS. Valid values: any string which is not empty or null.
+        /// </summary>
+        public readonly string? ImageId;
 
         [OutputConstructor]
-        private RoutingRuleTag(
-            string key,
-
-            string value)
+        private OceanLaunchSpecImage(string? imageId)
         {
-            Key = key;
-            Value = value;
+            ImageId = imageId;
         }
     }
 }

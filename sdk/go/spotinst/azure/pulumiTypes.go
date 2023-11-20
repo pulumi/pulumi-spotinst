@@ -5476,7 +5476,7 @@ type OceanNpFilters struct {
 	MaxGpu                *float64 `pulumi:"maxGpu"`
 	MaxMemoryGib          *float64 `pulumi:"maxMemoryGib"`
 	MaxVcpu               *int     `pulumi:"maxVcpu"`
-	MinData               *int     `pulumi:"minData"`
+	MinDisk               *int     `pulumi:"minDisk"`
 	MinGpu                *float64 `pulumi:"minGpu"`
 	MinMemoryGib          *float64 `pulumi:"minMemoryGib"`
 	MinNics               *int     `pulumi:"minNics"`
@@ -5504,7 +5504,7 @@ type OceanNpFiltersArgs struct {
 	MaxGpu                pulumi.Float64PtrInput  `pulumi:"maxGpu"`
 	MaxMemoryGib          pulumi.Float64PtrInput  `pulumi:"maxMemoryGib"`
 	MaxVcpu               pulumi.IntPtrInput      `pulumi:"maxVcpu"`
-	MinData               pulumi.IntPtrInput      `pulumi:"minData"`
+	MinDisk               pulumi.IntPtrInput      `pulumi:"minDisk"`
 	MinGpu                pulumi.Float64PtrInput  `pulumi:"minGpu"`
 	MinMemoryGib          pulumi.Float64PtrInput  `pulumi:"minMemoryGib"`
 	MinNics               pulumi.IntPtrInput      `pulumi:"minNics"`
@@ -5618,8 +5618,8 @@ func (o OceanNpFiltersOutput) MaxVcpu() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanNpFilters) *int { return v.MaxVcpu }).(pulumi.IntPtrOutput)
 }
 
-func (o OceanNpFiltersOutput) MinData() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v OceanNpFilters) *int { return v.MinData }).(pulumi.IntPtrOutput)
+func (o OceanNpFiltersOutput) MinDisk() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OceanNpFilters) *int { return v.MinDisk }).(pulumi.IntPtrOutput)
 }
 
 func (o OceanNpFiltersOutput) MinGpu() pulumi.Float64PtrOutput {
@@ -5733,12 +5733,12 @@ func (o OceanNpFiltersPtrOutput) MaxVcpu() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-func (o OceanNpFiltersPtrOutput) MinData() pulumi.IntPtrOutput {
+func (o OceanNpFiltersPtrOutput) MinDisk() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanNpFilters) *int {
 		if v == nil {
 			return nil
 		}
-		return v.MinData
+		return v.MinDisk
 	}).(pulumi.IntPtrOutput)
 }
 
@@ -6436,7 +6436,7 @@ type OceanNpVirtualNodeGroupFilters struct {
 	MaxGpu                *float64 `pulumi:"maxGpu"`
 	MaxMemoryGib          *float64 `pulumi:"maxMemoryGib"`
 	MaxVcpu               *int     `pulumi:"maxVcpu"`
-	MinData               *int     `pulumi:"minData"`
+	MinDisk               *int     `pulumi:"minDisk"`
 	MinGpu                *float64 `pulumi:"minGpu"`
 	MinMemoryGib          *float64 `pulumi:"minMemoryGib"`
 	MinNics               *int     `pulumi:"minNics"`
@@ -6464,7 +6464,7 @@ type OceanNpVirtualNodeGroupFiltersArgs struct {
 	MaxGpu                pulumi.Float64PtrInput  `pulumi:"maxGpu"`
 	MaxMemoryGib          pulumi.Float64PtrInput  `pulumi:"maxMemoryGib"`
 	MaxVcpu               pulumi.IntPtrInput      `pulumi:"maxVcpu"`
-	MinData               pulumi.IntPtrInput      `pulumi:"minData"`
+	MinDisk               pulumi.IntPtrInput      `pulumi:"minDisk"`
 	MinGpu                pulumi.Float64PtrInput  `pulumi:"minGpu"`
 	MinMemoryGib          pulumi.Float64PtrInput  `pulumi:"minMemoryGib"`
 	MinNics               pulumi.IntPtrInput      `pulumi:"minNics"`
@@ -6578,8 +6578,8 @@ func (o OceanNpVirtualNodeGroupFiltersOutput) MaxVcpu() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanNpVirtualNodeGroupFilters) *int { return v.MaxVcpu }).(pulumi.IntPtrOutput)
 }
 
-func (o OceanNpVirtualNodeGroupFiltersOutput) MinData() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v OceanNpVirtualNodeGroupFilters) *int { return v.MinData }).(pulumi.IntPtrOutput)
+func (o OceanNpVirtualNodeGroupFiltersOutput) MinDisk() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OceanNpVirtualNodeGroupFilters) *int { return v.MinDisk }).(pulumi.IntPtrOutput)
 }
 
 func (o OceanNpVirtualNodeGroupFiltersOutput) MinGpu() pulumi.Float64PtrOutput {
@@ -6693,12 +6693,12 @@ func (o OceanNpVirtualNodeGroupFiltersPtrOutput) MaxVcpu() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-func (o OceanNpVirtualNodeGroupFiltersPtrOutput) MinData() pulumi.IntPtrOutput {
+func (o OceanNpVirtualNodeGroupFiltersPtrOutput) MinDisk() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanNpVirtualNodeGroupFilters) *int {
 		if v == nil {
 			return nil
 		}
-		return v.MinData
+		return v.MinDisk
 	}).(pulumi.IntPtrOutput)
 }
 

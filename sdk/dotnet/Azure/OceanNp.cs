@@ -165,8 +165,8 @@ namespace Pulumi.SpotInst.Azure
             set => _availabilityZones = value;
         }
 
-        [Input("controllerClusterId")]
-        public Input<string>? ControllerClusterId { get; set; }
+        [Input("controllerClusterId", required: true)]
+        public Input<string> ControllerClusterId { get; set; } = null!;
 
         [Input("enableNodePublicIp")]
         public Input<bool>? EnableNodePublicIp { get; set; }

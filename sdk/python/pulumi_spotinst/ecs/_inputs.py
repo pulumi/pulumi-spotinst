@@ -25,6 +25,7 @@ __all__ = [
     'OceanLaunchSpecBlockDeviceMappingArgs',
     'OceanLaunchSpecBlockDeviceMappingEbsArgs',
     'OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs',
+    'OceanLaunchSpecImageArgs',
     'OceanLaunchSpecInstanceMetadataOptionsArgs',
     'OceanLaunchSpecSchedulingTaskArgs',
     'OceanLaunchSpecSchedulingTaskTaskHeadroomArgs',
@@ -1251,6 +1252,29 @@ class OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs:
     @size_per_resource_unit.setter
     def size_per_resource_unit(self, value: pulumi.Input[int]):
         pulumi.set(self, "size_per_resource_unit", value)
+
+
+@pulumi.input_type
+class OceanLaunchSpecImageArgs:
+    def __init__(__self__, *,
+                 image_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] image_id: Identifier of the image in AWS. Valid values: any string which is not empty or null.
+        """
+        if image_id is not None:
+            pulumi.set(__self__, "image_id", image_id)
+
+    @property
+    @pulumi.getter(name="imageId")
+    def image_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Identifier of the image in AWS. Valid values: any string which is not empty or null.
+        """
+        return pulumi.get(self, "image_id")
+
+    @image_id.setter
+    def image_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "image_id", value)
 
 
 @pulumi.input_type

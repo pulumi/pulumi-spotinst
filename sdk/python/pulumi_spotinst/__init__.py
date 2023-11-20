@@ -28,8 +28,6 @@ if typing.TYPE_CHECKING:
     gcp = __gcp
     import pulumi_spotinst.gke as __gke
     gke = __gke
-    import pulumi_spotinst.multai as __multai
-    multai = __multai
     import pulumi_spotinst.organization as __organization
     organization = __organization
     import pulumi_spotinst.spark as __spark
@@ -41,7 +39,6 @@ else:
     ecs = _utilities.lazy_import('pulumi_spotinst.ecs')
     gcp = _utilities.lazy_import('pulumi_spotinst.gcp')
     gke = _utilities.lazy_import('pulumi_spotinst.gke')
-    multai = _utilities.lazy_import('pulumi_spotinst.multai')
     organization = _utilities.lazy_import('pulumi_spotinst.organization')
     spark = _utilities.lazy_import('pulumi_spotinst.spark')
 
@@ -262,54 +259,6 @@ _utilities.register(
   "fqn": "pulumi_spotinst",
   "classes": {
    "spotinst:index/subscription:Subscription": "Subscription"
-  }
- },
- {
-  "pkg": "spotinst",
-  "mod": "multai/balancer",
-  "fqn": "pulumi_spotinst.multai",
-  "classes": {
-   "spotinst:multai/balancer:Balancer": "Balancer"
-  }
- },
- {
-  "pkg": "spotinst",
-  "mod": "multai/deployment",
-  "fqn": "pulumi_spotinst.multai",
-  "classes": {
-   "spotinst:multai/deployment:Deployment": "Deployment"
-  }
- },
- {
-  "pkg": "spotinst",
-  "mod": "multai/listener",
-  "fqn": "pulumi_spotinst.multai",
-  "classes": {
-   "spotinst:multai/listener:Listener": "Listener"
-  }
- },
- {
-  "pkg": "spotinst",
-  "mod": "multai/routingRule",
-  "fqn": "pulumi_spotinst.multai",
-  "classes": {
-   "spotinst:multai/routingRule:RoutingRule": "RoutingRule"
-  }
- },
- {
-  "pkg": "spotinst",
-  "mod": "multai/target",
-  "fqn": "pulumi_spotinst.multai",
-  "classes": {
-   "spotinst:multai/target:Target": "Target"
-  }
- },
- {
-  "pkg": "spotinst",
-  "mod": "multai/targetSet",
-  "fqn": "pulumi_spotinst.multai",
-  "classes": {
-   "spotinst:multai/targetSet:TargetSet": "TargetSet"
   }
  },
  {

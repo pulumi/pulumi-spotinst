@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.spotinst.ecs.inputs.OceanLaunchSpecAttributeArgs;
 import com.pulumi.spotinst.ecs.inputs.OceanLaunchSpecAutoscaleHeadroomArgs;
 import com.pulumi.spotinst.ecs.inputs.OceanLaunchSpecBlockDeviceMappingArgs;
+import com.pulumi.spotinst.ecs.inputs.OceanLaunchSpecImageArgs;
 import com.pulumi.spotinst.ecs.inputs.OceanLaunchSpecInstanceMetadataOptionsArgs;
 import com.pulumi.spotinst.ecs.inputs.OceanLaunchSpecSchedulingTaskArgs;
 import com.pulumi.spotinst.ecs.inputs.OceanLaunchSpecStrategyArgs;
@@ -77,18 +78,33 @@ public final class OceanLaunchSpecArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * ID of the image used to launch the instances.
+     * Identifier of the image in AWS. Valid values: any string which is not empty or null.
      * 
      */
     @Import(name="imageId")
     private @Nullable Output<String> imageId;
 
     /**
-     * @return ID of the image used to launch the instances.
+     * @return Identifier of the image in AWS. Valid values: any string which is not empty or null.
      * 
      */
     public Optional<Output<String>> imageId() {
         return Optional.ofNullable(this.imageId);
+    }
+
+    /**
+     * You can configure VNG with either the imageId or images objects, but not both simultaneously. For each architecture type (amd64, arm64) only one AMI is allowed. Valid values: null, or an array with at least one element
+     * 
+     */
+    @Import(name="images")
+    private @Nullable Output<List<OceanLaunchSpecImageArgs>> images;
+
+    /**
+     * @return You can configure VNG with either the imageId or images objects, but not both simultaneously. For each architecture type (amd64, arm64) only one AMI is allowed. Valid values: null, or an array with at least one element
+     * 
+     */
+    public Optional<Output<List<OceanLaunchSpecImageArgs>>> images() {
+        return Optional.ofNullable(this.images);
     }
 
     /**
@@ -279,6 +295,7 @@ public final class OceanLaunchSpecArgs extends com.pulumi.resources.ResourceArgs
         this.blockDeviceMappings = $.blockDeviceMappings;
         this.iamInstanceProfile = $.iamInstanceProfile;
         this.imageId = $.imageId;
+        this.images = $.images;
         this.instanceMetadataOptions = $.instanceMetadataOptions;
         this.instanceTypes = $.instanceTypes;
         this.name = $.name;
@@ -408,7 +425,7 @@ public final class OceanLaunchSpecArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param imageId ID of the image used to launch the instances.
+         * @param imageId Identifier of the image in AWS. Valid values: any string which is not empty or null.
          * 
          * @return builder
          * 
@@ -419,13 +436,44 @@ public final class OceanLaunchSpecArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param imageId ID of the image used to launch the instances.
+         * @param imageId Identifier of the image in AWS. Valid values: any string which is not empty or null.
          * 
          * @return builder
          * 
          */
         public Builder imageId(String imageId) {
             return imageId(Output.of(imageId));
+        }
+
+        /**
+         * @param images You can configure VNG with either the imageId or images objects, but not both simultaneously. For each architecture type (amd64, arm64) only one AMI is allowed. Valid values: null, or an array with at least one element
+         * 
+         * @return builder
+         * 
+         */
+        public Builder images(@Nullable Output<List<OceanLaunchSpecImageArgs>> images) {
+            $.images = images;
+            return this;
+        }
+
+        /**
+         * @param images You can configure VNG with either the imageId or images objects, but not both simultaneously. For each architecture type (amd64, arm64) only one AMI is allowed. Valid values: null, or an array with at least one element
+         * 
+         * @return builder
+         * 
+         */
+        public Builder images(List<OceanLaunchSpecImageArgs> images) {
+            return images(Output.of(images));
+        }
+
+        /**
+         * @param images You can configure VNG with either the imageId or images objects, but not both simultaneously. For each architecture type (amd64, arm64) only one AMI is allowed. Valid values: null, or an array with at least one element
+         * 
+         * @return builder
+         * 
+         */
+        public Builder images(OceanLaunchSpecImageArgs... images) {
+            return images(List.of(images));
         }
 
         /**

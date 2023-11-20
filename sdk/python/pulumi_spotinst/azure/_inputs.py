@@ -2099,7 +2099,7 @@ class OceanNpFiltersArgs:
                  max_gpu: Optional[pulumi.Input[float]] = None,
                  max_memory_gib: Optional[pulumi.Input[float]] = None,
                  max_vcpu: Optional[pulumi.Input[int]] = None,
-                 min_data: Optional[pulumi.Input[int]] = None,
+                 min_disk: Optional[pulumi.Input[int]] = None,
                  min_gpu: Optional[pulumi.Input[float]] = None,
                  min_memory_gib: Optional[pulumi.Input[float]] = None,
                  min_nics: Optional[pulumi.Input[int]] = None,
@@ -2120,8 +2120,8 @@ class OceanNpFiltersArgs:
             pulumi.set(__self__, "max_memory_gib", max_memory_gib)
         if max_vcpu is not None:
             pulumi.set(__self__, "max_vcpu", max_vcpu)
-        if min_data is not None:
-            pulumi.set(__self__, "min_data", min_data)
+        if min_disk is not None:
+            pulumi.set(__self__, "min_disk", min_disk)
         if min_gpu is not None:
             pulumi.set(__self__, "min_gpu", min_gpu)
         if min_memory_gib is not None:
@@ -2199,13 +2199,13 @@ class OceanNpFiltersArgs:
         pulumi.set(self, "max_vcpu", value)
 
     @property
-    @pulumi.getter(name="minData")
-    def min_data(self) -> Optional[pulumi.Input[int]]:
-        return pulumi.get(self, "min_data")
+    @pulumi.getter(name="minDisk")
+    def min_disk(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "min_disk")
 
-    @min_data.setter
-    def min_data(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "min_data", value)
+    @min_disk.setter
+    def min_disk(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "min_disk", value)
 
     @property
     @pulumi.getter(name="minGpu")
@@ -2425,7 +2425,7 @@ class OceanNpVirtualNodeGroupFiltersArgs:
                  max_gpu: Optional[pulumi.Input[float]] = None,
                  max_memory_gib: Optional[pulumi.Input[float]] = None,
                  max_vcpu: Optional[pulumi.Input[int]] = None,
-                 min_data: Optional[pulumi.Input[int]] = None,
+                 min_disk: Optional[pulumi.Input[int]] = None,
                  min_gpu: Optional[pulumi.Input[float]] = None,
                  min_memory_gib: Optional[pulumi.Input[float]] = None,
                  min_nics: Optional[pulumi.Input[int]] = None,
@@ -2446,8 +2446,8 @@ class OceanNpVirtualNodeGroupFiltersArgs:
             pulumi.set(__self__, "max_memory_gib", max_memory_gib)
         if max_vcpu is not None:
             pulumi.set(__self__, "max_vcpu", max_vcpu)
-        if min_data is not None:
-            pulumi.set(__self__, "min_data", min_data)
+        if min_disk is not None:
+            pulumi.set(__self__, "min_disk", min_disk)
         if min_gpu is not None:
             pulumi.set(__self__, "min_gpu", min_gpu)
         if min_memory_gib is not None:
@@ -2525,13 +2525,13 @@ class OceanNpVirtualNodeGroupFiltersArgs:
         pulumi.set(self, "max_vcpu", value)
 
     @property
-    @pulumi.getter(name="minData")
-    def min_data(self) -> Optional[pulumi.Input[int]]:
-        return pulumi.get(self, "min_data")
+    @pulumi.getter(name="minDisk")
+    def min_disk(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "min_disk")
 
-    @min_data.setter
-    def min_data(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "min_data", value)
+    @min_disk.setter
+    def min_disk(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "min_disk", value)
 
     @property
     @pulumi.getter(name="minGpu")

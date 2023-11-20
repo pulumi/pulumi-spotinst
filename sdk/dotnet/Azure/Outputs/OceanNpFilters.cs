@@ -20,7 +20,7 @@ namespace Pulumi.SpotInst.Azure.Outputs
         public readonly double? MaxGpu;
         public readonly double? MaxMemoryGib;
         public readonly int? MaxVcpu;
-        public readonly int? MinData;
+        public readonly int? MinDisk;
         public readonly double? MinGpu;
         public readonly double? MinMemoryGib;
         public readonly int? MinNics;
@@ -44,7 +44,7 @@ namespace Pulumi.SpotInst.Azure.Outputs
 
             int? maxVcpu,
 
-            int? minData,
+            int? minDisk,
 
             double? minGpu,
 
@@ -65,7 +65,7 @@ namespace Pulumi.SpotInst.Azure.Outputs
             MaxGpu = maxGpu;
             MaxMemoryGib = maxMemoryGib;
             MaxVcpu = maxVcpu;
-            MinData = minData;
+            MinDisk = minDisk;
             MinGpu = minGpu;
             MinMemoryGib = minMemoryGib;
             MinNics = minNics;

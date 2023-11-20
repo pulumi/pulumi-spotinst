@@ -26,6 +26,7 @@ __all__ = [
     'OceanLaunchSpecBlockDeviceMapping',
     'OceanLaunchSpecBlockDeviceMappingEbs',
     'OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize',
+    'OceanLaunchSpecImage',
     'OceanLaunchSpecInstanceMetadataOptions',
     'OceanLaunchSpecSchedulingTask',
     'OceanLaunchSpecSchedulingTaskTaskHeadroom',
@@ -1278,6 +1279,42 @@ class OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize(dict):
     @pulumi.getter(name="sizePerResourceUnit")
     def size_per_resource_unit(self) -> int:
         return pulumi.get(self, "size_per_resource_unit")
+
+
+@pulumi.output_type
+class OceanLaunchSpecImage(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "imageId":
+            suggest = "image_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OceanLaunchSpecImage. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OceanLaunchSpecImage.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OceanLaunchSpecImage.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 image_id: Optional[str] = None):
+        """
+        :param str image_id: Identifier of the image in AWS. Valid values: any string which is not empty or null.
+        """
+        if image_id is not None:
+            pulumi.set(__self__, "image_id", image_id)
+
+    @property
+    @pulumi.getter(name="imageId")
+    def image_id(self) -> Optional[str]:
+        """
+        Identifier of the image in AWS. Valid values: any string which is not empty or null.
+        """
+        return pulumi.get(self, "image_id")
 
 
 @pulumi.output_type

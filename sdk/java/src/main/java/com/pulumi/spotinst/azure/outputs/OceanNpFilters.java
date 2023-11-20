@@ -21,7 +21,7 @@ public final class OceanNpFilters {
     private @Nullable Double maxGpu;
     private @Nullable Double maxMemoryGib;
     private @Nullable Integer maxVcpu;
-    private @Nullable Integer minData;
+    private @Nullable Integer minDisk;
     private @Nullable Double minGpu;
     private @Nullable Double minMemoryGib;
     private @Nullable Integer minNics;
@@ -51,8 +51,8 @@ public final class OceanNpFilters {
     public Optional<Integer> maxVcpu() {
         return Optional.ofNullable(this.maxVcpu);
     }
-    public Optional<Integer> minData() {
-        return Optional.ofNullable(this.minData);
+    public Optional<Integer> minDisk() {
+        return Optional.ofNullable(this.minDisk);
     }
     public Optional<Double> minGpu() {
         return Optional.ofNullable(this.minGpu);
@@ -89,7 +89,7 @@ public final class OceanNpFilters {
         private @Nullable Double maxGpu;
         private @Nullable Double maxMemoryGib;
         private @Nullable Integer maxVcpu;
-        private @Nullable Integer minData;
+        private @Nullable Integer minDisk;
         private @Nullable Double minGpu;
         private @Nullable Double minMemoryGib;
         private @Nullable Integer minNics;
@@ -106,7 +106,7 @@ public final class OceanNpFilters {
     	      this.maxGpu = defaults.maxGpu;
     	      this.maxMemoryGib = defaults.maxMemoryGib;
     	      this.maxVcpu = defaults.maxVcpu;
-    	      this.minData = defaults.minData;
+    	      this.minDisk = defaults.minDisk;
     	      this.minGpu = defaults.minGpu;
     	      this.minMemoryGib = defaults.minMemoryGib;
     	      this.minNics = defaults.minNics;
@@ -157,8 +157,8 @@ public final class OceanNpFilters {
             return this;
         }
         @CustomType.Setter
-        public Builder minData(@Nullable Integer minData) {
-            this.minData = minData;
+        public Builder minDisk(@Nullable Integer minDisk) {
+            this.minDisk = minDisk;
             return this;
         }
         @CustomType.Setter
@@ -206,7 +206,7 @@ public final class OceanNpFilters {
             o.maxGpu = maxGpu;
             o.maxMemoryGib = maxMemoryGib;
             o.maxVcpu = maxVcpu;
-            o.minData = minData;
+            o.minDisk = minDisk;
             o.minGpu = minGpu;
             o.minMemoryGib = minMemoryGib;
             o.minNics = minNics;
