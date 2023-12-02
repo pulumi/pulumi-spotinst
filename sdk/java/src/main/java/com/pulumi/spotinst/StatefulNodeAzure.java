@@ -24,6 +24,7 @@ import com.pulumi.spotinst.outputs.StatefulNodeAzureLogin;
 import com.pulumi.spotinst.outputs.StatefulNodeAzureManagedServiceIdentity;
 import com.pulumi.spotinst.outputs.StatefulNodeAzureNetwork;
 import com.pulumi.spotinst.outputs.StatefulNodeAzureOsDisk;
+import com.pulumi.spotinst.outputs.StatefulNodeAzureProximityPlacementGroup;
 import com.pulumi.spotinst.outputs.StatefulNodeAzureSchedulingTask;
 import com.pulumi.spotinst.outputs.StatefulNodeAzureSecret;
 import com.pulumi.spotinst.outputs.StatefulNodeAzureSecurity;
@@ -41,7 +42,6 @@ import javax.annotation.Nullable;
  * Provides a Spotinst stateful node Azure resource.
  * 
  * ## Example Usage
- * 
  * ```java
  * package generated_program;
  * 
@@ -67,6 +67,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.spotinst.inputs.StatefulNodeAzureHealthArgs;
  * import com.pulumi.spotinst.inputs.StatefulNodeAzureSchedulingTaskArgs;
  * import com.pulumi.spotinst.inputs.StatefulNodeAzureSignalArgs;
+ * import com.pulumi.spotinst.inputs.StatefulNodeAzureProximityPlacementGroupArgs;
+ * import com.pulumi.spotinst.inputs.StatefulNodeAzureDeleteArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -186,11 +188,11 @@ import javax.annotation.Nullable;
  *                         .privateIpAddressVersion(&#34;IPv4&#34;)
  *                         .build())
  *                     .publicIps(StatefulNodeAzureNetworkNetworkInterfacePublicIpArgs.builder()
- *                         .resourceGroupName(&#34;resourceGroup&#34;)
+ *                         .networkResourceGroupName(&#34;resourceGroup&#34;)
  *                         .name(&#34;test&#34;)
  *                         .build())
  *                     .applicationSecurityGroups(StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArgs.builder()
- *                         .resourceGroupName(&#34;AsgResourceGroup&#34;)
+ *                         .networkResourceGroupName(&#34;AsgResourceGroup&#34;)
  *                         .name(&#34;AsgName&#34;)
  *                         .build())
  *                     .build())
@@ -254,6 +256,21 @@ import javax.annotation.Nullable;
  *                     .type(&#34;vmReady&#34;)
  *                     .timeout(40)
  *                     .build())
+ *             .proximityPlacementGroups(StatefulNodeAzureProximityPlacementGroupArgs.builder()
+ *                 .name(&#34;TestPPG&#34;)
+ *                 .resourceGroupName(&#34;TestResourceGroup&#34;)
+ *                 .build())
+ *             .deletes(StatefulNodeAzureDeleteArgs.builder()
+ *                 .shouldTerminateVm(true)
+ *                 .networkShouldDeallocate(true)
+ *                 .networkTtlInHours(0)
+ *                 .diskShouldDeallocate(true)
+ *                 .diskTtlInHours(0)
+ *                 .snapshotShouldDeallocate(true)
+ *                 .snapshotTtlInHours(0)
+ *                 .publicIpShouldDeallocate(true)
+ *                 .publicIpTtlInHours(0)
+ *                 .build())
  *             .build());
  * 
  *     }
@@ -374,6 +391,13 @@ import javax.annotation.Nullable;
  * * `managed_service_identities` - (Optional) Add a user-assigned managed identity to the Stateful Node&#39;s VM.
  *   * `name` - (Required) name of the managed identity.
  *   * `resource_group_name` - (Required) The Resource Group that the user-assigned managed identity resides in.
+ * 
+ * &lt;a id=&#34;proximity_placement_groups&#34;&gt;&lt;/a&gt;
+ * ## Proximity Placement Groups
+ * 
+ * * `proximity_placement_groups` - (Optional) Defines the proximity placement group in which the VM will be launched.
+ *   * `name` - (Required) name of the proximity placement group.
+ *   * `resource_group_name` - (Required) The Resource Group name of the proximity placement group.
  * 
  * &lt;a id=&#34;network&#34;&gt;&lt;/a&gt;
  * ## Network
@@ -660,6 +684,12 @@ public class StatefulNodeAzure extends com.pulumi.resources.CustomResource {
 
     public Output<String> preferredZone() {
         return this.preferredZone;
+    }
+    @Export(name="proximityPlacementGroups", refs={List.class,StatefulNodeAzureProximityPlacementGroup.class}, tree="[0,1]")
+    private Output<List<StatefulNodeAzureProximityPlacementGroup>> proximityPlacementGroups;
+
+    public Output<List<StatefulNodeAzureProximityPlacementGroup>> proximityPlacementGroups() {
+        return this.proximityPlacementGroups;
     }
     @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;

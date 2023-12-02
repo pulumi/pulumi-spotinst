@@ -44,6 +44,7 @@ __all__ = [
     'StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupArgs',
     'StatefulNodeAzureNetworkNetworkInterfacePublicIpArgs',
     'StatefulNodeAzureOsDiskArgs',
+    'StatefulNodeAzureProximityPlacementGroupArgs',
     'StatefulNodeAzureSchedulingTaskArgs',
     'StatefulNodeAzureSecretArgs',
     'StatefulNodeAzureSecretSourceVaultArgs',
@@ -1671,6 +1672,33 @@ class StatefulNodeAzureOsDiskArgs:
     @size_gb.setter
     def size_gb(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "size_gb", value)
+
+
+@pulumi.input_type
+class StatefulNodeAzureProximityPlacementGroupArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 resource_group_name: pulumi.Input[str]):
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "resource_group_name", resource_group_name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "resource_group_name")
+
+    @resource_group_name.setter
+    def resource_group_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_group_name", value)
 
 
 @pulumi.input_type

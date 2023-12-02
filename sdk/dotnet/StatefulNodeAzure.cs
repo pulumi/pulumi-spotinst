@@ -12,6 +12,337 @@ namespace Pulumi.SpotInst
     /// <summary>
     /// Provides a Spotinst stateful node Azure resource.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using SpotInst = Pulumi.SpotInst;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var testStatefulNodeAzure = new SpotInst.StatefulNodeAzure("testStatefulNodeAzure", new()
+    ///     {
+    ///         Region = "eastus",
+    ///         ResourceGroupName = "spotinst-azure",
+    ///         Description = "example_stateful_node_azure_description",
+    ///         Strategy = new SpotInst.Inputs.StatefulNodeAzureStrategyArgs
+    ///         {
+    ///             DrainingTimeout = 30,
+    ///             FallbackToOnDemand = true,
+    ///             OptimizationWindows = new[]
+    ///             {
+    ///                 "Tue:19:46-Tue:20:46",
+    ///             },
+    ///             RevertToSpot = new SpotInst.Inputs.StatefulNodeAzureStrategyRevertToSpotArgs
+    ///             {
+    ///                 PerformAt = "timeWindow",
+    ///             },
+    ///             PreferredLifeCycle = "od",
+    ///             CapacityReservations = new[]
+    ///             {
+    ///                 new SpotInst.Inputs.StatefulNodeAzureStrategyCapacityReservationArgs
+    ///                 {
+    ///                     ShouldUtilize = true,
+    ///                     UtilizationStrategy = "utilizeOverOD",
+    ///                     CapacityReservationGroups = new[]
+    ///                     {
+    ///                         new SpotInst.Inputs.StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupArgs
+    ///                         {
+    ///                             CrgName = "crg name",
+    ///                             CrgResourceGroupName = "resourceGroupName",
+    ///                             CrgShouldPrioritize = true,
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         Os = "Linux",
+    ///         OdSizes = new[]
+    ///         {
+    ///             "standard_ds1_v2",
+    ///             "standard_ds2_v2",
+    ///         },
+    ///         SpotSizes = new[]
+    ///         {
+    ///             "standard_ds1_v2",
+    ///             "standard_ds2_v2",
+    ///         },
+    ///         PreferredSpotSizes = new[]
+    ///         {
+    ///             "standard_ds1_v2",
+    ///         },
+    ///         Zones = new[]
+    ///         {
+    ///             "1",
+    ///             "3",
+    ///         },
+    ///         PreferredZone = "1",
+    ///         CustomData = "",
+    ///         ShutdownScript = "",
+    ///         UserData = "",
+    ///         VmName = "VMName",
+    ///         BootDiagnostics = new[]
+    ///         {
+    ///             new SpotInst.Inputs.StatefulNodeAzureBootDiagnosticArgs
+    ///             {
+    ///                 IsEnabled = true,
+    ///                 StorageUrl = "https://.blob.core.windows.net/test",
+    ///                 Type = "unmanaged",
+    ///             },
+    ///         },
+    ///         DataDisks = new[]
+    ///         {
+    ///             new SpotInst.Inputs.StatefulNodeAzureDataDiskArgs
+    ///             {
+    ///                 SizeGb = 1,
+    ///                 Lun = 1,
+    ///                 Type = "Standard_LRS",
+    ///             },
+    ///             new SpotInst.Inputs.StatefulNodeAzureDataDiskArgs
+    ///             {
+    ///                 SizeGb = 10,
+    ///                 Lun = 2,
+    ///                 Type = "Standard_LRS",
+    ///             },
+    ///         },
+    ///         Extensions = new[]
+    ///         {
+    ///             new SpotInst.Inputs.StatefulNodeAzureExtensionArgs
+    ///             {
+    ///                 Name = "extensionName",
+    ///                 Type = "customScript",
+    ///                 Publisher = "Microsoft.Azure.Extensions",
+    ///                 ApiVersion = "2.0",
+    ///                 MinorVersionAutoUpgrade = true,
+    ///                 ProtectedSettings = 
+    ///                 {
+    ///                     { "script", "IyEvYmluL2Jhc2gKZWNobyAibmlyIiA+IC9ob29uaXIudHh0Cg==" },
+    ///                 },
+    ///             },
+    ///         },
+    ///         Image = new SpotInst.Inputs.StatefulNodeAzureImageArgs
+    ///         {
+    ///             MarketplaceImages = new[]
+    ///             {
+    ///                 new SpotInst.Inputs.StatefulNodeAzureImageMarketplaceImageArgs
+    ///                 {
+    ///                     Publisher = "Canonical",
+    ///                     Offer = "UbuntuServer",
+    ///                     Sku = "16.04-LTS",
+    ///                     Version = "latest",
+    ///                 },
+    ///             },
+    ///         },
+    ///         LoadBalancers = new[]
+    ///         {
+    ///             new SpotInst.Inputs.StatefulNodeAzureLoadBalancerArgs
+    ///             {
+    ///                 Type = "loadBalancer",
+    ///                 ResourceGroupName = "testResourceGroup",
+    ///                 Name = "testLoadBalancer",
+    ///                 Sku = "Standard",
+    ///                 BackendPoolNames = new[]
+    ///                 {
+    ///                     "testBackendPool1",
+    ///                     "testBackendPool2",
+    ///                 },
+    ///             },
+    ///         },
+    ///         Login = new SpotInst.Inputs.StatefulNodeAzureLoginArgs
+    ///         {
+    ///             UserName = "admin",
+    ///             SshPublicKey = "33a2s1f3g5a1df5g1ad3f2g1adfg56dfg==",
+    ///         },
+    ///         ManagedServiceIdentities = new[]
+    ///         {
+    ///             new SpotInst.Inputs.StatefulNodeAzureManagedServiceIdentityArgs
+    ///             {
+    ///                 Name = "mySI2",
+    ///                 ResourceGroupName = "myResourceGroup",
+    ///             },
+    ///         },
+    ///         Network = new SpotInst.Inputs.StatefulNodeAzureNetworkArgs
+    ///         {
+    ///             NetworkResourceGroupName = "subnetResourceGroup",
+    ///             VirtualNetworkName = "vname",
+    ///             NetworkInterfaces = new[]
+    ///             {
+    ///                 new SpotInst.Inputs.StatefulNodeAzureNetworkNetworkInterfaceArgs
+    ///                 {
+    ///                     IsPrimary = true,
+    ///                     SubnetName = "testSubnet",
+    ///                     AssignPublicIp = true,
+    ///                     PublicIpSku = "Standard",
+    ///                     NetworkSecurityGroups = new[]
+    ///                     {
+    ///                         new SpotInst.Inputs.StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupArgs
+    ///                         {
+    ///                             NetworkResourceGroupName = "test",
+    ///                             Name = "test",
+    ///                         },
+    ///                     },
+    ///                     EnableIpForwarding = true,
+    ///                     PrivateIpAddresses = new[]
+    ///                     {
+    ///                         "172.23.4.20",
+    ///                     },
+    ///                     AdditionalIpConfigurations = new[]
+    ///                     {
+    ///                         new SpotInst.Inputs.StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationArgs
+    ///                         {
+    ///                             Name = "test",
+    ///                             PrivateIpAddressVersion = "IPv4",
+    ///                         },
+    ///                     },
+    ///                     PublicIps = new[]
+    ///                     {
+    ///                         new SpotInst.Inputs.StatefulNodeAzureNetworkNetworkInterfacePublicIpArgs
+    ///                         {
+    ///                             NetworkResourceGroupName = "resourceGroup",
+    ///                             Name = "test",
+    ///                         },
+    ///                     },
+    ///                     ApplicationSecurityGroups = new[]
+    ///                     {
+    ///                         new SpotInst.Inputs.StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArgs
+    ///                         {
+    ///                             NetworkResourceGroupName = "AsgResourceGroup",
+    ///                             Name = "AsgName",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         OsDisk = new SpotInst.Inputs.StatefulNodeAzureOsDiskArgs
+    ///         {
+    ///             SizeGb = 30,
+    ///             Type = "Standard_LRS",
+    ///         },
+    ///         Secrets = new[]
+    ///         {
+    ///             new SpotInst.Inputs.StatefulNodeAzureSecretArgs
+    ///             {
+    ///                 SourceVaults = new[]
+    ///                 {
+    ///                     new SpotInst.Inputs.StatefulNodeAzureSecretSourceVaultArgs
+    ///                     {
+    ///                         Name = "string",
+    ///                         ResourceGroupName = "string",
+    ///                     },
+    ///                 },
+    ///                 VaultCertificates = new[]
+    ///                 {
+    ///                     new SpotInst.Inputs.StatefulNodeAzureSecretVaultCertificateArgs
+    ///                     {
+    ///                         CertificateUrl = "string",
+    ///                         CertificateStore = "string",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         Security = new SpotInst.Inputs.StatefulNodeAzureSecurityArgs
+    ///         {
+    ///             SecurityType = "Standard",
+    ///             SecureBootEnabled = false,
+    ///             VtpmEnabled = false,
+    ///         },
+    ///         Tags = new[]
+    ///         {
+    ///             new SpotInst.Inputs.StatefulNodeAzureTagArgs
+    ///             {
+    ///                 TagKey = "Creator",
+    ///                 TagValue = "string",
+    ///             },
+    ///         },
+    ///         Health = new SpotInst.Inputs.StatefulNodeAzureHealthArgs
+    ///         {
+    ///             HealthCheckTypes = new[]
+    ///             {
+    ///                 "vmState",
+    ///             },
+    ///             UnhealthyDuration = 300,
+    ///             GracePeriod = 120,
+    ///             AutoHealing = true,
+    ///         },
+    ///         ShouldPersistOsDisk = false,
+    ///         OsDiskPersistenceMode = "reattach",
+    ///         ShouldPersistDataDisks = true,
+    ///         DataDisksPersistenceMode = "reattach",
+    ///         ShouldPersistNetwork = true,
+    ///         SchedulingTasks = new[]
+    ///         {
+    ///             new SpotInst.Inputs.StatefulNodeAzureSchedulingTaskArgs
+    ///             {
+    ///                 IsEnabled = true,
+    ///                 Type = "pause",
+    ///                 CronExpression = "44 10 * * *",
+    ///             },
+    ///             new SpotInst.Inputs.StatefulNodeAzureSchedulingTaskArgs
+    ///             {
+    ///                 IsEnabled = true,
+    ///                 Type = "resume",
+    ///                 CronExpression = "48 10 * * *",
+    ///             },
+    ///             new SpotInst.Inputs.StatefulNodeAzureSchedulingTaskArgs
+    ///             {
+    ///                 IsEnabled = true,
+    ///                 Type = "recycle",
+    ///                 CronExpression = "52 10 * * *",
+    ///             },
+    ///         },
+    ///         Signals = new[]
+    ///         {
+    ///             new SpotInst.Inputs.StatefulNodeAzureSignalArgs
+    ///             {
+    ///                 Type = "vmReady",
+    ///                 Timeout = 20,
+    ///             },
+    ///             new SpotInst.Inputs.StatefulNodeAzureSignalArgs
+    ///             {
+    ///                 Type = "vmReady",
+    ///                 Timeout = 40,
+    ///             },
+    ///         },
+    ///         ProximityPlacementGroups = new[]
+    ///         {
+    ///             new SpotInst.Inputs.StatefulNodeAzureProximityPlacementGroupArgs
+    ///             {
+    ///                 Name = "TestPPG",
+    ///                 ResourceGroupName = "TestResourceGroup",
+    ///             },
+    ///         },
+    ///         Deletes = new[]
+    ///         {
+    ///             new SpotInst.Inputs.StatefulNodeAzureDeleteArgs
+    ///             {
+    ///                 ShouldTerminateVm = true,
+    ///                 NetworkShouldDeallocate = true,
+    ///                 NetworkTtlInHours = 0,
+    ///                 DiskShouldDeallocate = true,
+    ///                 DiskTtlInHours = 0,
+    ///                 SnapshotShouldDeallocate = true,
+    ///                 SnapshotTtlInHours = 0,
+    ///                 PublicIpShouldDeallocate = true,
+    ///                 PublicIpTtlInHours = 0,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// # Argument Reference
+    /// 
+    /// The following arguments are supported:
+    /// 
+    /// * `name` - (Required) Azure stateful node name.
+    /// * `region` - (Required) The Azure region your stateful node will be created in.
+    /// * `resource_group_name` - (Required) Name of the Resource Group for stateful node.
+    /// * `description` - (Optional) Describe your Azure stateful node.
+    /// 
+    /// &lt;a id="strategy"&gt;&lt;/a&gt;
     /// ## Strategy
     /// 
     /// * `strategy` - (Required) Strategy for stateful node.
@@ -116,6 +447,13 @@ namespace Pulumi.SpotInst
     /// * `managed_service_identities` - (Optional) Add a user-assigned managed identity to the Stateful Node's VM.
     ///   * `name` - (Required) name of the managed identity.
     ///   * `resource_group_name` - (Required) The Resource Group that the user-assigned managed identity resides in.
+    /// 
+    /// &lt;a id="proximity_placement_groups"&gt;&lt;/a&gt;
+    /// ## Proximity Placement Groups
+    /// 
+    /// * `proximity_placement_groups` - (Optional) Defines the proximity placement group in which the VM will be launched.
+    ///   * `name` - (Required) name of the proximity placement group.
+    ///   * `resource_group_name` - (Required) The Resource Group name of the proximity placement group.
     /// 
     /// &lt;a id="network"&gt;&lt;/a&gt;
     /// ## Network
@@ -333,6 +671,9 @@ namespace Pulumi.SpotInst
 
         [Output("preferredZone")]
         public Output<string> PreferredZone { get; private set; } = null!;
+
+        [Output("proximityPlacementGroups")]
+        public Output<ImmutableArray<Outputs.StatefulNodeAzureProximityPlacementGroup>> ProximityPlacementGroups { get; private set; } = null!;
 
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
@@ -558,6 +899,14 @@ namespace Pulumi.SpotInst
         [Input("preferredZone")]
         public Input<string>? PreferredZone { get; set; }
 
+        [Input("proximityPlacementGroups")]
+        private InputList<Inputs.StatefulNodeAzureProximityPlacementGroupArgs>? _proximityPlacementGroups;
+        public InputList<Inputs.StatefulNodeAzureProximityPlacementGroupArgs> ProximityPlacementGroups
+        {
+            get => _proximityPlacementGroups ?? (_proximityPlacementGroups = new InputList<Inputs.StatefulNodeAzureProximityPlacementGroupArgs>());
+            set => _proximityPlacementGroups = value;
+        }
+
         [Input("region", required: true)]
         public Input<string> Region { get; set; } = null!;
 
@@ -778,6 +1127,14 @@ namespace Pulumi.SpotInst
 
         [Input("preferredZone")]
         public Input<string>? PreferredZone { get; set; }
+
+        [Input("proximityPlacementGroups")]
+        private InputList<Inputs.StatefulNodeAzureProximityPlacementGroupGetArgs>? _proximityPlacementGroups;
+        public InputList<Inputs.StatefulNodeAzureProximityPlacementGroupGetArgs> ProximityPlacementGroups
+        {
+            get => _proximityPlacementGroups ?? (_proximityPlacementGroups = new InputList<Inputs.StatefulNodeAzureProximityPlacementGroupGetArgs>());
+            set => _proximityPlacementGroups = value;
+        }
 
         [Input("region")]
         public Input<string>? Region { get; set; }

@@ -46,6 +46,7 @@ class StatefulNodeAzureArgs:
                  os_disk_persistence_mode: Optional[pulumi.Input[str]] = None,
                  preferred_spot_sizes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  preferred_zone: Optional[pulumi.Input[str]] = None,
+                 proximity_placement_groups: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureProximityPlacementGroupArgs']]]] = None,
                  scheduling_tasks: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureSchedulingTaskArgs']]]] = None,
                  secrets: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureSecretArgs']]]] = None,
                  security: Optional[pulumi.Input['StatefulNodeAzureSecurityArgs']] = None,
@@ -111,6 +112,8 @@ class StatefulNodeAzureArgs:
             pulumi.set(__self__, "preferred_spot_sizes", preferred_spot_sizes)
         if preferred_zone is not None:
             pulumi.set(__self__, "preferred_zone", preferred_zone)
+        if proximity_placement_groups is not None:
+            pulumi.set(__self__, "proximity_placement_groups", proximity_placement_groups)
         if scheduling_tasks is not None:
             pulumi.set(__self__, "scheduling_tasks", scheduling_tasks)
         if secrets is not None:
@@ -405,6 +408,15 @@ class StatefulNodeAzureArgs:
         pulumi.set(self, "preferred_zone", value)
 
     @property
+    @pulumi.getter(name="proximityPlacementGroups")
+    def proximity_placement_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureProximityPlacementGroupArgs']]]]:
+        return pulumi.get(self, "proximity_placement_groups")
+
+    @proximity_placement_groups.setter
+    def proximity_placement_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureProximityPlacementGroupArgs']]]]):
+        pulumi.set(self, "proximity_placement_groups", value)
+
+    @property
     @pulumi.getter(name="schedulingTasks")
     def scheduling_tasks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureSchedulingTaskArgs']]]]:
         return pulumi.get(self, "scheduling_tasks")
@@ -530,6 +542,7 @@ class _StatefulNodeAzureState:
                  os_disk_persistence_mode: Optional[pulumi.Input[str]] = None,
                  preferred_spot_sizes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  preferred_zone: Optional[pulumi.Input[str]] = None,
+                 proximity_placement_groups: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureProximityPlacementGroupArgs']]]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  resource_group_name: Optional[pulumi.Input[str]] = None,
                  scheduling_tasks: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureSchedulingTaskArgs']]]] = None,
@@ -597,6 +610,8 @@ class _StatefulNodeAzureState:
             pulumi.set(__self__, "preferred_spot_sizes", preferred_spot_sizes)
         if preferred_zone is not None:
             pulumi.set(__self__, "preferred_zone", preferred_zone)
+        if proximity_placement_groups is not None:
+            pulumi.set(__self__, "proximity_placement_groups", proximity_placement_groups)
         if region is not None:
             pulumi.set(__self__, "region", region)
         if resource_group_name is not None:
@@ -842,6 +857,15 @@ class _StatefulNodeAzureState:
         pulumi.set(self, "preferred_zone", value)
 
     @property
+    @pulumi.getter(name="proximityPlacementGroups")
+    def proximity_placement_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureProximityPlacementGroupArgs']]]]:
+        return pulumi.get(self, "proximity_placement_groups")
+
+    @proximity_placement_groups.setter
+    def proximity_placement_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StatefulNodeAzureProximityPlacementGroupArgs']]]]):
+        pulumi.set(self, "proximity_placement_groups", value)
+
+    @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "region")
@@ -1032,6 +1056,7 @@ class StatefulNodeAzure(pulumi.CustomResource):
                  os_disk_persistence_mode: Optional[pulumi.Input[str]] = None,
                  preferred_spot_sizes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  preferred_zone: Optional[pulumi.Input[str]] = None,
+                 proximity_placement_groups: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StatefulNodeAzureProximityPlacementGroupArgs']]]]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  resource_group_name: Optional[pulumi.Input[str]] = None,
                  scheduling_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StatefulNodeAzureSchedulingTaskArgs']]]]] = None,
@@ -1054,6 +1079,222 @@ class StatefulNodeAzure(pulumi.CustomResource):
         """
         Provides a Spotinst stateful node Azure resource.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_spotinst as spotinst
+
+        test_stateful_node_azure = spotinst.StatefulNodeAzure("testStatefulNodeAzure",
+            region="eastus",
+            resource_group_name="spotinst-azure",
+            description="example_stateful_node_azure_description",
+            strategy=spotinst.StatefulNodeAzureStrategyArgs(
+                draining_timeout=30,
+                fallback_to_on_demand=True,
+                optimization_windows=["Tue:19:46-Tue:20:46"],
+                revert_to_spot=spotinst.StatefulNodeAzureStrategyRevertToSpotArgs(
+                    perform_at="timeWindow",
+                ),
+                preferred_life_cycle="od",
+                capacity_reservations=[spotinst.StatefulNodeAzureStrategyCapacityReservationArgs(
+                    should_utilize=True,
+                    utilization_strategy="utilizeOverOD",
+                    capacity_reservation_groups=[spotinst.StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupArgs(
+                        crg_name="crg name",
+                        crg_resource_group_name="resourceGroupName",
+                        crg_should_prioritize=True,
+                    )],
+                )],
+            ),
+            os="Linux",
+            od_sizes=[
+                "standard_ds1_v2",
+                "standard_ds2_v2",
+            ],
+            spot_sizes=[
+                "standard_ds1_v2",
+                "standard_ds2_v2",
+            ],
+            preferred_spot_sizes=["standard_ds1_v2"],
+            zones=[
+                "1",
+                "3",
+            ],
+            preferred_zone="1",
+            custom_data="",
+            shutdown_script="",
+            user_data="",
+            vm_name="VMName",
+            boot_diagnostics=[spotinst.StatefulNodeAzureBootDiagnosticArgs(
+                is_enabled=True,
+                storage_url="https://.blob.core.windows.net/test",
+                type="unmanaged",
+            )],
+            data_disks=[
+                spotinst.StatefulNodeAzureDataDiskArgs(
+                    size_gb=1,
+                    lun=1,
+                    type="Standard_LRS",
+                ),
+                spotinst.StatefulNodeAzureDataDiskArgs(
+                    size_gb=10,
+                    lun=2,
+                    type="Standard_LRS",
+                ),
+            ],
+            extensions=[spotinst.StatefulNodeAzureExtensionArgs(
+                name="extensionName",
+                type="customScript",
+                publisher="Microsoft.Azure.Extensions",
+                api_version="2.0",
+                minor_version_auto_upgrade=True,
+                protected_settings={
+                    "script": "IyEvYmluL2Jhc2gKZWNobyAibmlyIiA+IC9ob29uaXIudHh0Cg==",
+                },
+            )],
+            image=spotinst.StatefulNodeAzureImageArgs(
+                marketplace_images=[spotinst.StatefulNodeAzureImageMarketplaceImageArgs(
+                    publisher="Canonical",
+                    offer="UbuntuServer",
+                    sku="16.04-LTS",
+                    version="latest",
+                )],
+            ),
+            load_balancers=[spotinst.StatefulNodeAzureLoadBalancerArgs(
+                type="loadBalancer",
+                resource_group_name="testResourceGroup",
+                name="testLoadBalancer",
+                sku="Standard",
+                backend_pool_names=[
+                    "testBackendPool1",
+                    "testBackendPool2",
+                ],
+            )],
+            login=spotinst.StatefulNodeAzureLoginArgs(
+                user_name="admin",
+                ssh_public_key="33a2s1f3g5a1df5g1ad3f2g1adfg56dfg==",
+            ),
+            managed_service_identities=[spotinst.StatefulNodeAzureManagedServiceIdentityArgs(
+                name="mySI2",
+                resource_group_name="myResourceGroup",
+            )],
+            network=spotinst.StatefulNodeAzureNetworkArgs(
+                network_resource_group_name="subnetResourceGroup",
+                virtual_network_name="vname",
+                network_interfaces=[spotinst.StatefulNodeAzureNetworkNetworkInterfaceArgs(
+                    is_primary=True,
+                    subnet_name="testSubnet",
+                    assign_public_ip=True,
+                    public_ip_sku="Standard",
+                    network_security_groups=[spotinst.StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupArgs(
+                        network_resource_group_name="test",
+                        name="test",
+                    )],
+                    enable_ip_forwarding=True,
+                    private_ip_addresses=["172.23.4.20"],
+                    additional_ip_configurations=[spotinst.StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationArgs(
+                        name="test",
+                        private_ip_address_version="IPv4",
+                    )],
+                    public_ips=[spotinst.StatefulNodeAzureNetworkNetworkInterfacePublicIpArgs(
+                        network_resource_group_name="resourceGroup",
+                        name="test",
+                    )],
+                    application_security_groups=[spotinst.StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArgs(
+                        network_resource_group_name="AsgResourceGroup",
+                        name="AsgName",
+                    )],
+                )],
+            ),
+            os_disk=spotinst.StatefulNodeAzureOsDiskArgs(
+                size_gb=30,
+                type="Standard_LRS",
+            ),
+            secrets=[spotinst.StatefulNodeAzureSecretArgs(
+                source_vaults=[spotinst.StatefulNodeAzureSecretSourceVaultArgs(
+                    name="string",
+                    resource_group_name="string",
+                )],
+                vault_certificates=[spotinst.StatefulNodeAzureSecretVaultCertificateArgs(
+                    certificate_url="string",
+                    certificate_store="string",
+                )],
+            )],
+            security=spotinst.StatefulNodeAzureSecurityArgs(
+                security_type="Standard",
+                secure_boot_enabled=False,
+                vtpm_enabled=False,
+            ),
+            tags=[spotinst.StatefulNodeAzureTagArgs(
+                tag_key="Creator",
+                tag_value="string",
+            )],
+            health=spotinst.StatefulNodeAzureHealthArgs(
+                health_check_types=["vmState"],
+                unhealthy_duration=300,
+                grace_period=120,
+                auto_healing=True,
+            ),
+            should_persist_os_disk=False,
+            os_disk_persistence_mode="reattach",
+            should_persist_data_disks=True,
+            data_disks_persistence_mode="reattach",
+            should_persist_network=True,
+            scheduling_tasks=[
+                spotinst.StatefulNodeAzureSchedulingTaskArgs(
+                    is_enabled=True,
+                    type="pause",
+                    cron_expression="44 10 * * *",
+                ),
+                spotinst.StatefulNodeAzureSchedulingTaskArgs(
+                    is_enabled=True,
+                    type="resume",
+                    cron_expression="48 10 * * *",
+                ),
+                spotinst.StatefulNodeAzureSchedulingTaskArgs(
+                    is_enabled=True,
+                    type="recycle",
+                    cron_expression="52 10 * * *",
+                ),
+            ],
+            signals=[
+                spotinst.StatefulNodeAzureSignalArgs(
+                    type="vmReady",
+                    timeout=20,
+                ),
+                spotinst.StatefulNodeAzureSignalArgs(
+                    type="vmReady",
+                    timeout=40,
+                ),
+            ],
+            proximity_placement_groups=[spotinst.StatefulNodeAzureProximityPlacementGroupArgs(
+                name="TestPPG",
+                resource_group_name="TestResourceGroup",
+            )],
+            deletes=[spotinst.StatefulNodeAzureDeleteArgs(
+                should_terminate_vm=True,
+                network_should_deallocate=True,
+                network_ttl_in_hours=0,
+                disk_should_deallocate=True,
+                disk_ttl_in_hours=0,
+                snapshot_should_deallocate=True,
+                snapshot_ttl_in_hours=0,
+                public_ip_should_deallocate=True,
+                public_ip_ttl_in_hours=0,
+            )])
+        ```
+
+        # Argument Reference
+
+        The following arguments are supported:
+
+        * `name` - (Required) Azure stateful node name.
+        * `region` - (Required) The Azure region your stateful node will be created in.
+        * `resource_group_name` - (Required) Name of the Resource Group for stateful node.
+        * `description` - (Optional) Describe your Azure stateful node.
+
+        <a id="strategy"></a>
         ## Strategy
 
         * `strategy` - (Required) Strategy for stateful node.
@@ -1158,6 +1399,13 @@ class StatefulNodeAzure(pulumi.CustomResource):
         * `managed_service_identities` - (Optional) Add a user-assigned managed identity to the Stateful Node's VM.
           * `name` - (Required) name of the managed identity.
           * `resource_group_name` - (Required) The Resource Group that the user-assigned managed identity resides in.
+
+        <a id="proximity_placement_groups"></a>
+        ## Proximity Placement Groups
+
+        * `proximity_placement_groups` - (Optional) Defines the proximity placement group in which the VM will be launched.
+          * `name` - (Required) name of the proximity placement group.
+          * `resource_group_name` - (Required) The Resource Group name of the proximity placement group.
 
         <a id="network"></a>
         ## Network
@@ -1316,6 +1564,222 @@ class StatefulNodeAzure(pulumi.CustomResource):
         """
         Provides a Spotinst stateful node Azure resource.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_spotinst as spotinst
+
+        test_stateful_node_azure = spotinst.StatefulNodeAzure("testStatefulNodeAzure",
+            region="eastus",
+            resource_group_name="spotinst-azure",
+            description="example_stateful_node_azure_description",
+            strategy=spotinst.StatefulNodeAzureStrategyArgs(
+                draining_timeout=30,
+                fallback_to_on_demand=True,
+                optimization_windows=["Tue:19:46-Tue:20:46"],
+                revert_to_spot=spotinst.StatefulNodeAzureStrategyRevertToSpotArgs(
+                    perform_at="timeWindow",
+                ),
+                preferred_life_cycle="od",
+                capacity_reservations=[spotinst.StatefulNodeAzureStrategyCapacityReservationArgs(
+                    should_utilize=True,
+                    utilization_strategy="utilizeOverOD",
+                    capacity_reservation_groups=[spotinst.StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupArgs(
+                        crg_name="crg name",
+                        crg_resource_group_name="resourceGroupName",
+                        crg_should_prioritize=True,
+                    )],
+                )],
+            ),
+            os="Linux",
+            od_sizes=[
+                "standard_ds1_v2",
+                "standard_ds2_v2",
+            ],
+            spot_sizes=[
+                "standard_ds1_v2",
+                "standard_ds2_v2",
+            ],
+            preferred_spot_sizes=["standard_ds1_v2"],
+            zones=[
+                "1",
+                "3",
+            ],
+            preferred_zone="1",
+            custom_data="",
+            shutdown_script="",
+            user_data="",
+            vm_name="VMName",
+            boot_diagnostics=[spotinst.StatefulNodeAzureBootDiagnosticArgs(
+                is_enabled=True,
+                storage_url="https://.blob.core.windows.net/test",
+                type="unmanaged",
+            )],
+            data_disks=[
+                spotinst.StatefulNodeAzureDataDiskArgs(
+                    size_gb=1,
+                    lun=1,
+                    type="Standard_LRS",
+                ),
+                spotinst.StatefulNodeAzureDataDiskArgs(
+                    size_gb=10,
+                    lun=2,
+                    type="Standard_LRS",
+                ),
+            ],
+            extensions=[spotinst.StatefulNodeAzureExtensionArgs(
+                name="extensionName",
+                type="customScript",
+                publisher="Microsoft.Azure.Extensions",
+                api_version="2.0",
+                minor_version_auto_upgrade=True,
+                protected_settings={
+                    "script": "IyEvYmluL2Jhc2gKZWNobyAibmlyIiA+IC9ob29uaXIudHh0Cg==",
+                },
+            )],
+            image=spotinst.StatefulNodeAzureImageArgs(
+                marketplace_images=[spotinst.StatefulNodeAzureImageMarketplaceImageArgs(
+                    publisher="Canonical",
+                    offer="UbuntuServer",
+                    sku="16.04-LTS",
+                    version="latest",
+                )],
+            ),
+            load_balancers=[spotinst.StatefulNodeAzureLoadBalancerArgs(
+                type="loadBalancer",
+                resource_group_name="testResourceGroup",
+                name="testLoadBalancer",
+                sku="Standard",
+                backend_pool_names=[
+                    "testBackendPool1",
+                    "testBackendPool2",
+                ],
+            )],
+            login=spotinst.StatefulNodeAzureLoginArgs(
+                user_name="admin",
+                ssh_public_key="33a2s1f3g5a1df5g1ad3f2g1adfg56dfg==",
+            ),
+            managed_service_identities=[spotinst.StatefulNodeAzureManagedServiceIdentityArgs(
+                name="mySI2",
+                resource_group_name="myResourceGroup",
+            )],
+            network=spotinst.StatefulNodeAzureNetworkArgs(
+                network_resource_group_name="subnetResourceGroup",
+                virtual_network_name="vname",
+                network_interfaces=[spotinst.StatefulNodeAzureNetworkNetworkInterfaceArgs(
+                    is_primary=True,
+                    subnet_name="testSubnet",
+                    assign_public_ip=True,
+                    public_ip_sku="Standard",
+                    network_security_groups=[spotinst.StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupArgs(
+                        network_resource_group_name="test",
+                        name="test",
+                    )],
+                    enable_ip_forwarding=True,
+                    private_ip_addresses=["172.23.4.20"],
+                    additional_ip_configurations=[spotinst.StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationArgs(
+                        name="test",
+                        private_ip_address_version="IPv4",
+                    )],
+                    public_ips=[spotinst.StatefulNodeAzureNetworkNetworkInterfacePublicIpArgs(
+                        network_resource_group_name="resourceGroup",
+                        name="test",
+                    )],
+                    application_security_groups=[spotinst.StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArgs(
+                        network_resource_group_name="AsgResourceGroup",
+                        name="AsgName",
+                    )],
+                )],
+            ),
+            os_disk=spotinst.StatefulNodeAzureOsDiskArgs(
+                size_gb=30,
+                type="Standard_LRS",
+            ),
+            secrets=[spotinst.StatefulNodeAzureSecretArgs(
+                source_vaults=[spotinst.StatefulNodeAzureSecretSourceVaultArgs(
+                    name="string",
+                    resource_group_name="string",
+                )],
+                vault_certificates=[spotinst.StatefulNodeAzureSecretVaultCertificateArgs(
+                    certificate_url="string",
+                    certificate_store="string",
+                )],
+            )],
+            security=spotinst.StatefulNodeAzureSecurityArgs(
+                security_type="Standard",
+                secure_boot_enabled=False,
+                vtpm_enabled=False,
+            ),
+            tags=[spotinst.StatefulNodeAzureTagArgs(
+                tag_key="Creator",
+                tag_value="string",
+            )],
+            health=spotinst.StatefulNodeAzureHealthArgs(
+                health_check_types=["vmState"],
+                unhealthy_duration=300,
+                grace_period=120,
+                auto_healing=True,
+            ),
+            should_persist_os_disk=False,
+            os_disk_persistence_mode="reattach",
+            should_persist_data_disks=True,
+            data_disks_persistence_mode="reattach",
+            should_persist_network=True,
+            scheduling_tasks=[
+                spotinst.StatefulNodeAzureSchedulingTaskArgs(
+                    is_enabled=True,
+                    type="pause",
+                    cron_expression="44 10 * * *",
+                ),
+                spotinst.StatefulNodeAzureSchedulingTaskArgs(
+                    is_enabled=True,
+                    type="resume",
+                    cron_expression="48 10 * * *",
+                ),
+                spotinst.StatefulNodeAzureSchedulingTaskArgs(
+                    is_enabled=True,
+                    type="recycle",
+                    cron_expression="52 10 * * *",
+                ),
+            ],
+            signals=[
+                spotinst.StatefulNodeAzureSignalArgs(
+                    type="vmReady",
+                    timeout=20,
+                ),
+                spotinst.StatefulNodeAzureSignalArgs(
+                    type="vmReady",
+                    timeout=40,
+                ),
+            ],
+            proximity_placement_groups=[spotinst.StatefulNodeAzureProximityPlacementGroupArgs(
+                name="TestPPG",
+                resource_group_name="TestResourceGroup",
+            )],
+            deletes=[spotinst.StatefulNodeAzureDeleteArgs(
+                should_terminate_vm=True,
+                network_should_deallocate=True,
+                network_ttl_in_hours=0,
+                disk_should_deallocate=True,
+                disk_ttl_in_hours=0,
+                snapshot_should_deallocate=True,
+                snapshot_ttl_in_hours=0,
+                public_ip_should_deallocate=True,
+                public_ip_ttl_in_hours=0,
+            )])
+        ```
+
+        # Argument Reference
+
+        The following arguments are supported:
+
+        * `name` - (Required) Azure stateful node name.
+        * `region` - (Required) The Azure region your stateful node will be created in.
+        * `resource_group_name` - (Required) Name of the Resource Group for stateful node.
+        * `description` - (Optional) Describe your Azure stateful node.
+
+        <a id="strategy"></a>
         ## Strategy
 
         * `strategy` - (Required) Strategy for stateful node.
@@ -1420,6 +1884,13 @@ class StatefulNodeAzure(pulumi.CustomResource):
         * `managed_service_identities` - (Optional) Add a user-assigned managed identity to the Stateful Node's VM.
           * `name` - (Required) name of the managed identity.
           * `resource_group_name` - (Required) The Resource Group that the user-assigned managed identity resides in.
+
+        <a id="proximity_placement_groups"></a>
+        ## Proximity Placement Groups
+
+        * `proximity_placement_groups` - (Optional) Defines the proximity placement group in which the VM will be launched.
+          * `name` - (Required) name of the proximity placement group.
+          * `resource_group_name` - (Required) The Resource Group name of the proximity placement group.
 
         <a id="network"></a>
         ## Network
@@ -1604,6 +2075,7 @@ class StatefulNodeAzure(pulumi.CustomResource):
                  os_disk_persistence_mode: Optional[pulumi.Input[str]] = None,
                  preferred_spot_sizes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  preferred_zone: Optional[pulumi.Input[str]] = None,
+                 proximity_placement_groups: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StatefulNodeAzureProximityPlacementGroupArgs']]]]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  resource_group_name: Optional[pulumi.Input[str]] = None,
                  scheduling_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StatefulNodeAzureSchedulingTaskArgs']]]]] = None,
@@ -1658,6 +2130,7 @@ class StatefulNodeAzure(pulumi.CustomResource):
             __props__.__dict__["os_disk_persistence_mode"] = os_disk_persistence_mode
             __props__.__dict__["preferred_spot_sizes"] = preferred_spot_sizes
             __props__.__dict__["preferred_zone"] = preferred_zone
+            __props__.__dict__["proximity_placement_groups"] = proximity_placement_groups
             if region is None and not opts.urn:
                 raise TypeError("Missing required property 'region'")
             __props__.__dict__["region"] = region
@@ -1723,6 +2196,7 @@ class StatefulNodeAzure(pulumi.CustomResource):
             os_disk_persistence_mode: Optional[pulumi.Input[str]] = None,
             preferred_spot_sizes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             preferred_zone: Optional[pulumi.Input[str]] = None,
+            proximity_placement_groups: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StatefulNodeAzureProximityPlacementGroupArgs']]]]] = None,
             region: Optional[pulumi.Input[str]] = None,
             resource_group_name: Optional[pulumi.Input[str]] = None,
             scheduling_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StatefulNodeAzureSchedulingTaskArgs']]]]] = None,
@@ -1776,6 +2250,7 @@ class StatefulNodeAzure(pulumi.CustomResource):
         __props__.__dict__["os_disk_persistence_mode"] = os_disk_persistence_mode
         __props__.__dict__["preferred_spot_sizes"] = preferred_spot_sizes
         __props__.__dict__["preferred_zone"] = preferred_zone
+        __props__.__dict__["proximity_placement_groups"] = proximity_placement_groups
         __props__.__dict__["region"] = region
         __props__.__dict__["resource_group_name"] = resource_group_name
         __props__.__dict__["scheduling_tasks"] = scheduling_tasks
@@ -1910,6 +2385,11 @@ class StatefulNodeAzure(pulumi.CustomResource):
     @pulumi.getter(name="preferredZone")
     def preferred_zone(self) -> pulumi.Output[str]:
         return pulumi.get(self, "preferred_zone")
+
+    @property
+    @pulumi.getter(name="proximityPlacementGroups")
+    def proximity_placement_groups(self) -> pulumi.Output[Sequence['outputs.StatefulNodeAzureProximityPlacementGroup']]:
+        return pulumi.get(self, "proximity_placement_groups")
 
     @property
     @pulumi.getter

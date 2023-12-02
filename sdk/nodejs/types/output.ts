@@ -255,6 +255,11 @@ export interface StatefulNodeAzureOsDisk {
     type: string;
 }
 
+export interface StatefulNodeAzureProximityPlacementGroup {
+    name: string;
+    resourceGroupName: string;
+}
+
 export interface StatefulNodeAzureSchedulingTask {
     cronExpression: string;
     isEnabled: boolean;
