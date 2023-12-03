@@ -45,6 +45,7 @@ __all__ = [
     'StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroup',
     'StatefulNodeAzureNetworkNetworkInterfacePublicIp',
     'StatefulNodeAzureOsDisk',
+    'StatefulNodeAzureProximityPlacementGroup',
     'StatefulNodeAzureSchedulingTask',
     'StatefulNodeAzureSecret',
     'StatefulNodeAzureSecretSourceVault',
@@ -1786,6 +1787,42 @@ class StatefulNodeAzureOsDisk(dict):
     @pulumi.getter(name="sizeGb")
     def size_gb(self) -> Optional[int]:
         return pulumi.get(self, "size_gb")
+
+
+@pulumi.output_type
+class StatefulNodeAzureProximityPlacementGroup(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "resourceGroupName":
+            suggest = "resource_group_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StatefulNodeAzureProximityPlacementGroup. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StatefulNodeAzureProximityPlacementGroup.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StatefulNodeAzureProximityPlacementGroup.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 name: str,
+                 resource_group_name: str):
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "resource_group_name", resource_group_name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="resourceGroupName")
+    def resource_group_name(self) -> str:
+        return pulumi.get(self, "resource_group_name")
 
 
 @pulumi.output_type

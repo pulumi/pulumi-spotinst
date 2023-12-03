@@ -4363,6 +4363,106 @@ func (o StatefulNodeAzureOsDiskPtrOutput) Type() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type StatefulNodeAzureProximityPlacementGroup struct {
+	Name              string `pulumi:"name"`
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+}
+
+// StatefulNodeAzureProximityPlacementGroupInput is an input type that accepts StatefulNodeAzureProximityPlacementGroupArgs and StatefulNodeAzureProximityPlacementGroupOutput values.
+// You can construct a concrete instance of `StatefulNodeAzureProximityPlacementGroupInput` via:
+//
+//	StatefulNodeAzureProximityPlacementGroupArgs{...}
+type StatefulNodeAzureProximityPlacementGroupInput interface {
+	pulumi.Input
+
+	ToStatefulNodeAzureProximityPlacementGroupOutput() StatefulNodeAzureProximityPlacementGroupOutput
+	ToStatefulNodeAzureProximityPlacementGroupOutputWithContext(context.Context) StatefulNodeAzureProximityPlacementGroupOutput
+}
+
+type StatefulNodeAzureProximityPlacementGroupArgs struct {
+	Name              pulumi.StringInput `pulumi:"name"`
+	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
+}
+
+func (StatefulNodeAzureProximityPlacementGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatefulNodeAzureProximityPlacementGroup)(nil)).Elem()
+}
+
+func (i StatefulNodeAzureProximityPlacementGroupArgs) ToStatefulNodeAzureProximityPlacementGroupOutput() StatefulNodeAzureProximityPlacementGroupOutput {
+	return i.ToStatefulNodeAzureProximityPlacementGroupOutputWithContext(context.Background())
+}
+
+func (i StatefulNodeAzureProximityPlacementGroupArgs) ToStatefulNodeAzureProximityPlacementGroupOutputWithContext(ctx context.Context) StatefulNodeAzureProximityPlacementGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureProximityPlacementGroupOutput)
+}
+
+// StatefulNodeAzureProximityPlacementGroupArrayInput is an input type that accepts StatefulNodeAzureProximityPlacementGroupArray and StatefulNodeAzureProximityPlacementGroupArrayOutput values.
+// You can construct a concrete instance of `StatefulNodeAzureProximityPlacementGroupArrayInput` via:
+//
+//	StatefulNodeAzureProximityPlacementGroupArray{ StatefulNodeAzureProximityPlacementGroupArgs{...} }
+type StatefulNodeAzureProximityPlacementGroupArrayInput interface {
+	pulumi.Input
+
+	ToStatefulNodeAzureProximityPlacementGroupArrayOutput() StatefulNodeAzureProximityPlacementGroupArrayOutput
+	ToStatefulNodeAzureProximityPlacementGroupArrayOutputWithContext(context.Context) StatefulNodeAzureProximityPlacementGroupArrayOutput
+}
+
+type StatefulNodeAzureProximityPlacementGroupArray []StatefulNodeAzureProximityPlacementGroupInput
+
+func (StatefulNodeAzureProximityPlacementGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StatefulNodeAzureProximityPlacementGroup)(nil)).Elem()
+}
+
+func (i StatefulNodeAzureProximityPlacementGroupArray) ToStatefulNodeAzureProximityPlacementGroupArrayOutput() StatefulNodeAzureProximityPlacementGroupArrayOutput {
+	return i.ToStatefulNodeAzureProximityPlacementGroupArrayOutputWithContext(context.Background())
+}
+
+func (i StatefulNodeAzureProximityPlacementGroupArray) ToStatefulNodeAzureProximityPlacementGroupArrayOutputWithContext(ctx context.Context) StatefulNodeAzureProximityPlacementGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatefulNodeAzureProximityPlacementGroupArrayOutput)
+}
+
+type StatefulNodeAzureProximityPlacementGroupOutput struct{ *pulumi.OutputState }
+
+func (StatefulNodeAzureProximityPlacementGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatefulNodeAzureProximityPlacementGroup)(nil)).Elem()
+}
+
+func (o StatefulNodeAzureProximityPlacementGroupOutput) ToStatefulNodeAzureProximityPlacementGroupOutput() StatefulNodeAzureProximityPlacementGroupOutput {
+	return o
+}
+
+func (o StatefulNodeAzureProximityPlacementGroupOutput) ToStatefulNodeAzureProximityPlacementGroupOutputWithContext(ctx context.Context) StatefulNodeAzureProximityPlacementGroupOutput {
+	return o
+}
+
+func (o StatefulNodeAzureProximityPlacementGroupOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v StatefulNodeAzureProximityPlacementGroup) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o StatefulNodeAzureProximityPlacementGroupOutput) ResourceGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v StatefulNodeAzureProximityPlacementGroup) string { return v.ResourceGroupName }).(pulumi.StringOutput)
+}
+
+type StatefulNodeAzureProximityPlacementGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (StatefulNodeAzureProximityPlacementGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StatefulNodeAzureProximityPlacementGroup)(nil)).Elem()
+}
+
+func (o StatefulNodeAzureProximityPlacementGroupArrayOutput) ToStatefulNodeAzureProximityPlacementGroupArrayOutput() StatefulNodeAzureProximityPlacementGroupArrayOutput {
+	return o
+}
+
+func (o StatefulNodeAzureProximityPlacementGroupArrayOutput) ToStatefulNodeAzureProximityPlacementGroupArrayOutputWithContext(ctx context.Context) StatefulNodeAzureProximityPlacementGroupArrayOutput {
+	return o
+}
+
+func (o StatefulNodeAzureProximityPlacementGroupArrayOutput) Index(i pulumi.IntInput) StatefulNodeAzureProximityPlacementGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StatefulNodeAzureProximityPlacementGroup {
+		return vs[0].([]StatefulNodeAzureProximityPlacementGroup)[vs[1].(int)]
+	}).(StatefulNodeAzureProximityPlacementGroupOutput)
+}
+
 type StatefulNodeAzureSchedulingTask struct {
 	CronExpression string `pulumi:"cronExpression"`
 	IsEnabled      bool   `pulumi:"isEnabled"`
@@ -5856,6 +5956,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*StatefulNodeAzureNetworkNetworkInterfacePublicIpArrayInput)(nil)).Elem(), StatefulNodeAzureNetworkNetworkInterfacePublicIpArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StatefulNodeAzureOsDiskInput)(nil)).Elem(), StatefulNodeAzureOsDiskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StatefulNodeAzureOsDiskPtrInput)(nil)).Elem(), StatefulNodeAzureOsDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatefulNodeAzureProximityPlacementGroupInput)(nil)).Elem(), StatefulNodeAzureProximityPlacementGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatefulNodeAzureProximityPlacementGroupArrayInput)(nil)).Elem(), StatefulNodeAzureProximityPlacementGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StatefulNodeAzureSchedulingTaskInput)(nil)).Elem(), StatefulNodeAzureSchedulingTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StatefulNodeAzureSchedulingTaskArrayInput)(nil)).Elem(), StatefulNodeAzureSchedulingTaskArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StatefulNodeAzureSecretInput)(nil)).Elem(), StatefulNodeAzureSecretArgs{})
@@ -5948,6 +6050,8 @@ func init() {
 	pulumi.RegisterOutputType(StatefulNodeAzureNetworkNetworkInterfacePublicIpArrayOutput{})
 	pulumi.RegisterOutputType(StatefulNodeAzureOsDiskOutput{})
 	pulumi.RegisterOutputType(StatefulNodeAzureOsDiskPtrOutput{})
+	pulumi.RegisterOutputType(StatefulNodeAzureProximityPlacementGroupOutput{})
+	pulumi.RegisterOutputType(StatefulNodeAzureProximityPlacementGroupArrayOutput{})
 	pulumi.RegisterOutputType(StatefulNodeAzureSchedulingTaskOutput{})
 	pulumi.RegisterOutputType(StatefulNodeAzureSchedulingTaskArrayOutput{})
 	pulumi.RegisterOutputType(StatefulNodeAzureSecretOutput{})

@@ -19,6 +19,7 @@ import com.pulumi.spotinst.inputs.StatefulNodeAzureLoginArgs;
 import com.pulumi.spotinst.inputs.StatefulNodeAzureManagedServiceIdentityArgs;
 import com.pulumi.spotinst.inputs.StatefulNodeAzureNetworkArgs;
 import com.pulumi.spotinst.inputs.StatefulNodeAzureOsDiskArgs;
+import com.pulumi.spotinst.inputs.StatefulNodeAzureProximityPlacementGroupArgs;
 import com.pulumi.spotinst.inputs.StatefulNodeAzureSchedulingTaskArgs;
 import com.pulumi.spotinst.inputs.StatefulNodeAzureSecretArgs;
 import com.pulumi.spotinst.inputs.StatefulNodeAzureSecurityArgs;
@@ -199,6 +200,13 @@ public final class StatefulNodeAzureArgs extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.preferredZone);
     }
 
+    @Import(name="proximityPlacementGroups")
+    private @Nullable Output<List<StatefulNodeAzureProximityPlacementGroupArgs>> proximityPlacementGroups;
+
+    public Optional<Output<List<StatefulNodeAzureProximityPlacementGroupArgs>>> proximityPlacementGroups() {
+        return Optional.ofNullable(this.proximityPlacementGroups);
+    }
+
     @Import(name="region", required=true)
     private Output<String> region;
 
@@ -351,6 +359,7 @@ public final class StatefulNodeAzureArgs extends com.pulumi.resources.ResourceAr
         this.osDiskPersistenceMode = $.osDiskPersistenceMode;
         this.preferredSpotSizes = $.preferredSpotSizes;
         this.preferredZone = $.preferredZone;
+        this.proximityPlacementGroups = $.proximityPlacementGroups;
         this.region = $.region;
         this.resourceGroupName = $.resourceGroupName;
         this.schedulingTasks = $.schedulingTasks;
@@ -638,6 +647,19 @@ public final class StatefulNodeAzureArgs extends com.pulumi.resources.ResourceAr
 
         public Builder preferredZone(String preferredZone) {
             return preferredZone(Output.of(preferredZone));
+        }
+
+        public Builder proximityPlacementGroups(@Nullable Output<List<StatefulNodeAzureProximityPlacementGroupArgs>> proximityPlacementGroups) {
+            $.proximityPlacementGroups = proximityPlacementGroups;
+            return this;
+        }
+
+        public Builder proximityPlacementGroups(List<StatefulNodeAzureProximityPlacementGroupArgs> proximityPlacementGroups) {
+            return proximityPlacementGroups(Output.of(proximityPlacementGroups));
+        }
+
+        public Builder proximityPlacementGroups(StatefulNodeAzureProximityPlacementGroupArgs... proximityPlacementGroups) {
+            return proximityPlacementGroups(List.of(proximityPlacementGroups));
         }
 
         public Builder region(Output<String> region) {

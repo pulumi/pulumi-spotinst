@@ -255,6 +255,11 @@ export interface StatefulNodeAzureOsDisk {
     type: pulumi.Input<string>;
 }
 
+export interface StatefulNodeAzureProximityPlacementGroup {
+    name: pulumi.Input<string>;
+    resourceGroupName: pulumi.Input<string>;
+}
+
 export interface StatefulNodeAzureSchedulingTask {
     cronExpression: pulumi.Input<string>;
     isEnabled: pulumi.Input<boolean>;

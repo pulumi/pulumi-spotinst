@@ -4750,6 +4750,9 @@
                         "elem": {}
                     },
                     "preferred_zones": {},
+                    "proximity_placement_groups": {
+                        "maxItemsOne": false
+                    },
                     "region": {},
                     "resource_group_name": {},
                     "scheduling_task": {
@@ -6826,6 +6829,9 @@
             "spotinst:index/StatefulNodeAzureOsDisk:StatefulNodeAzureOsDisk": {
                 "sizeGb": "size_gb"
             },
+            "spotinst:index/StatefulNodeAzureProximityPlacementGroup:StatefulNodeAzureProximityPlacementGroup": {
+                "resourceGroupName": "resource_group_name"
+            },
             "spotinst:index/StatefulNodeAzureSchedulingTask:StatefulNodeAzureSchedulingTask": {
                 "cronExpression": "cron_expression",
                 "isEnabled": "is_enabled"
@@ -6908,6 +6914,7 @@
                 "osDiskPersistenceMode": "os_disk_persistence_mode",
                 "preferredSpotSizes": "preferred_spot_sizes",
                 "preferredZone": "preferred_zone",
+                "proximityPlacementGroups": "proximity_placement_groups",
                 "resourceGroupName": "resource_group_name",
                 "schedulingTasks": "scheduling_task",
                 "secrets": "secret",

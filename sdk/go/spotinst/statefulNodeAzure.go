@@ -14,6 +14,282 @@ import (
 
 // Provides a Spotinst stateful node Azure resource.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := spotinst.NewStatefulNodeAzure(ctx, "testStatefulNodeAzure", &spotinst.StatefulNodeAzureArgs{
+//				Region:            pulumi.String("eastus"),
+//				ResourceGroupName: pulumi.String("spotinst-azure"),
+//				Description:       pulumi.String("example_stateful_node_azure_description"),
+//				Strategy: &spotinst.StatefulNodeAzureStrategyArgs{
+//					DrainingTimeout:    pulumi.Int(30),
+//					FallbackToOnDemand: pulumi.Bool(true),
+//					OptimizationWindows: pulumi.StringArray{
+//						pulumi.String("Tue:19:46-Tue:20:46"),
+//					},
+//					RevertToSpot: &spotinst.StatefulNodeAzureStrategyRevertToSpotArgs{
+//						PerformAt: pulumi.String("timeWindow"),
+//					},
+//					PreferredLifeCycle: pulumi.String("od"),
+//					CapacityReservations: spotinst.StatefulNodeAzureStrategyCapacityReservationArray{
+//						&spotinst.StatefulNodeAzureStrategyCapacityReservationArgs{
+//							ShouldUtilize:       pulumi.Bool(true),
+//							UtilizationStrategy: pulumi.String("utilizeOverOD"),
+//							CapacityReservationGroups: spotinst.StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupArray{
+//								&spotinst.StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupArgs{
+//									CrgName:              pulumi.String("crg name"),
+//									CrgResourceGroupName: pulumi.String("resourceGroupName"),
+//									CrgShouldPrioritize:  pulumi.Bool(true),
+//								},
+//							},
+//						},
+//					},
+//				},
+//				Os: pulumi.String("Linux"),
+//				OdSizes: pulumi.StringArray{
+//					pulumi.String("standard_ds1_v2"),
+//					pulumi.String("standard_ds2_v2"),
+//				},
+//				SpotSizes: pulumi.StringArray{
+//					pulumi.String("standard_ds1_v2"),
+//					pulumi.String("standard_ds2_v2"),
+//				},
+//				PreferredSpotSizes: pulumi.StringArray{
+//					pulumi.String("standard_ds1_v2"),
+//				},
+//				Zones: pulumi.StringArray{
+//					pulumi.String("1"),
+//					pulumi.String("3"),
+//				},
+//				PreferredZone:  pulumi.String("1"),
+//				CustomData:     pulumi.String(""),
+//				ShutdownScript: pulumi.String(""),
+//				UserData:       pulumi.String(""),
+//				VmName:         pulumi.String("VMName"),
+//				BootDiagnostics: spotinst.StatefulNodeAzureBootDiagnosticArray{
+//					&spotinst.StatefulNodeAzureBootDiagnosticArgs{
+//						IsEnabled:  pulumi.Bool(true),
+//						StorageUrl: pulumi.String("https://.blob.core.windows.net/test"),
+//						Type:       pulumi.String("unmanaged"),
+//					},
+//				},
+//				DataDisks: spotinst.StatefulNodeAzureDataDiskArray{
+//					&spotinst.StatefulNodeAzureDataDiskArgs{
+//						SizeGb: pulumi.Int(1),
+//						Lun:    pulumi.Int(1),
+//						Type:   pulumi.String("Standard_LRS"),
+//					},
+//					&spotinst.StatefulNodeAzureDataDiskArgs{
+//						SizeGb: pulumi.Int(10),
+//						Lun:    pulumi.Int(2),
+//						Type:   pulumi.String("Standard_LRS"),
+//					},
+//				},
+//				Extensions: spotinst.StatefulNodeAzureExtensionArray{
+//					&spotinst.StatefulNodeAzureExtensionArgs{
+//						Name:                    pulumi.String("extensionName"),
+//						Type:                    pulumi.String("customScript"),
+//						Publisher:               pulumi.String("Microsoft.Azure.Extensions"),
+//						ApiVersion:              pulumi.String("2.0"),
+//						MinorVersionAutoUpgrade: pulumi.Bool(true),
+//						ProtectedSettings: pulumi.Map{
+//							"script": pulumi.Any("IyEvYmluL2Jhc2gKZWNobyAibmlyIiA+IC9ob29uaXIudHh0Cg=="),
+//						},
+//					},
+//				},
+//				Image: &spotinst.StatefulNodeAzureImageArgs{
+//					MarketplaceImages: spotinst.StatefulNodeAzureImageMarketplaceImageArray{
+//						&spotinst.StatefulNodeAzureImageMarketplaceImageArgs{
+//							Publisher: pulumi.String("Canonical"),
+//							Offer:     pulumi.String("UbuntuServer"),
+//							Sku:       pulumi.String("16.04-LTS"),
+//							Version:   pulumi.String("latest"),
+//						},
+//					},
+//				},
+//				LoadBalancers: spotinst.StatefulNodeAzureLoadBalancerArray{
+//					&spotinst.StatefulNodeAzureLoadBalancerArgs{
+//						Type:              pulumi.String("loadBalancer"),
+//						ResourceGroupName: pulumi.String("testResourceGroup"),
+//						Name:              pulumi.String("testLoadBalancer"),
+//						Sku:               pulumi.String("Standard"),
+//						BackendPoolNames: pulumi.StringArray{
+//							pulumi.String("testBackendPool1"),
+//							pulumi.String("testBackendPool2"),
+//						},
+//					},
+//				},
+//				Login: &spotinst.StatefulNodeAzureLoginArgs{
+//					UserName:     pulumi.String("admin"),
+//					SshPublicKey: pulumi.String("33a2s1f3g5a1df5g1ad3f2g1adfg56dfg=="),
+//				},
+//				ManagedServiceIdentities: spotinst.StatefulNodeAzureManagedServiceIdentityArray{
+//					&spotinst.StatefulNodeAzureManagedServiceIdentityArgs{
+//						Name:              pulumi.String("mySI2"),
+//						ResourceGroupName: pulumi.String("myResourceGroup"),
+//					},
+//				},
+//				Network: &spotinst.StatefulNodeAzureNetworkArgs{
+//					NetworkResourceGroupName: pulumi.String("subnetResourceGroup"),
+//					VirtualNetworkName:       pulumi.String("vname"),
+//					NetworkInterfaces: spotinst.StatefulNodeAzureNetworkNetworkInterfaceArray{
+//						&spotinst.StatefulNodeAzureNetworkNetworkInterfaceArgs{
+//							IsPrimary:      pulumi.Bool(true),
+//							SubnetName:     pulumi.String("testSubnet"),
+//							AssignPublicIp: pulumi.Bool(true),
+//							PublicIpSku:    pulumi.String("Standard"),
+//							NetworkSecurityGroups: spotinst.StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupArray{
+//								&spotinst.StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupArgs{
+//									NetworkResourceGroupName: pulumi.String("test"),
+//									Name:                     pulumi.String("test"),
+//								},
+//							},
+//							EnableIpForwarding: pulumi.Bool(true),
+//							PrivateIpAddresses: pulumi.StringArray{
+//								pulumi.String("172.23.4.20"),
+//							},
+//							AdditionalIpConfigurations: spotinst.StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationArray{
+//								&spotinst.StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationArgs{
+//									Name:                    pulumi.String("test"),
+//									PrivateIpAddressVersion: pulumi.String("IPv4"),
+//								},
+//							},
+//							PublicIps: spotinst.StatefulNodeAzureNetworkNetworkInterfacePublicIpArray{
+//								&spotinst.StatefulNodeAzureNetworkNetworkInterfacePublicIpArgs{
+//									NetworkResourceGroupName: pulumi.String("resourceGroup"),
+//									Name:                     pulumi.String("test"),
+//								},
+//							},
+//							ApplicationSecurityGroups: spotinst.StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArray{
+//								&spotinst.StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArgs{
+//									NetworkResourceGroupName: pulumi.String("AsgResourceGroup"),
+//									Name:                     pulumi.String("AsgName"),
+//								},
+//							},
+//						},
+//					},
+//				},
+//				OsDisk: &spotinst.StatefulNodeAzureOsDiskArgs{
+//					SizeGb: pulumi.Int(30),
+//					Type:   pulumi.String("Standard_LRS"),
+//				},
+//				Secrets: spotinst.StatefulNodeAzureSecretArray{
+//					&spotinst.StatefulNodeAzureSecretArgs{
+//						SourceVaults: spotinst.StatefulNodeAzureSecretSourceVaultArray{
+//							&spotinst.StatefulNodeAzureSecretSourceVaultArgs{
+//								Name:              pulumi.String("string"),
+//								ResourceGroupName: pulumi.String("string"),
+//							},
+//						},
+//						VaultCertificates: spotinst.StatefulNodeAzureSecretVaultCertificateArray{
+//							&spotinst.StatefulNodeAzureSecretVaultCertificateArgs{
+//								CertificateUrl:   pulumi.String("string"),
+//								CertificateStore: pulumi.String("string"),
+//							},
+//						},
+//					},
+//				},
+//				Security: &spotinst.StatefulNodeAzureSecurityArgs{
+//					SecurityType:      pulumi.String("Standard"),
+//					SecureBootEnabled: pulumi.Bool(false),
+//					VtpmEnabled:       pulumi.Bool(false),
+//				},
+//				Tags: spotinst.StatefulNodeAzureTagArray{
+//					&spotinst.StatefulNodeAzureTagArgs{
+//						TagKey:   pulumi.String("Creator"),
+//						TagValue: pulumi.String("string"),
+//					},
+//				},
+//				Health: &spotinst.StatefulNodeAzureHealthArgs{
+//					HealthCheckTypes: pulumi.StringArray{
+//						pulumi.String("vmState"),
+//					},
+//					UnhealthyDuration: pulumi.Int(300),
+//					GracePeriod:       pulumi.Int(120),
+//					AutoHealing:       pulumi.Bool(true),
+//				},
+//				ShouldPersistOsDisk:      pulumi.Bool(false),
+//				OsDiskPersistenceMode:    pulumi.String("reattach"),
+//				ShouldPersistDataDisks:   pulumi.Bool(true),
+//				DataDisksPersistenceMode: pulumi.String("reattach"),
+//				ShouldPersistNetwork:     pulumi.Bool(true),
+//				SchedulingTasks: spotinst.StatefulNodeAzureSchedulingTaskArray{
+//					&spotinst.StatefulNodeAzureSchedulingTaskArgs{
+//						IsEnabled:      pulumi.Bool(true),
+//						Type:           pulumi.String("pause"),
+//						CronExpression: pulumi.String("44 10 * * *"),
+//					},
+//					&spotinst.StatefulNodeAzureSchedulingTaskArgs{
+//						IsEnabled:      pulumi.Bool(true),
+//						Type:           pulumi.String("resume"),
+//						CronExpression: pulumi.String("48 10 * * *"),
+//					},
+//					&spotinst.StatefulNodeAzureSchedulingTaskArgs{
+//						IsEnabled:      pulumi.Bool(true),
+//						Type:           pulumi.String("recycle"),
+//						CronExpression: pulumi.String("52 10 * * *"),
+//					},
+//				},
+//				Signals: spotinst.StatefulNodeAzureSignalArray{
+//					&spotinst.StatefulNodeAzureSignalArgs{
+//						Type:    pulumi.String("vmReady"),
+//						Timeout: pulumi.Int(20),
+//					},
+//					&spotinst.StatefulNodeAzureSignalArgs{
+//						Type:    pulumi.String("vmReady"),
+//						Timeout: pulumi.Int(40),
+//					},
+//				},
+//				ProximityPlacementGroups: spotinst.StatefulNodeAzureProximityPlacementGroupArray{
+//					&spotinst.StatefulNodeAzureProximityPlacementGroupArgs{
+//						Name:              pulumi.String("TestPPG"),
+//						ResourceGroupName: pulumi.String("TestResourceGroup"),
+//					},
+//				},
+//				Deletes: spotinst.StatefulNodeAzureDeleteArray{
+//					&spotinst.StatefulNodeAzureDeleteArgs{
+//						ShouldTerminateVm:        pulumi.Bool(true),
+//						NetworkShouldDeallocate:  pulumi.Bool(true),
+//						NetworkTtlInHours:        pulumi.Int(0),
+//						DiskShouldDeallocate:     pulumi.Bool(true),
+//						DiskTtlInHours:           pulumi.Int(0),
+//						SnapshotShouldDeallocate: pulumi.Bool(true),
+//						SnapshotTtlInHours:       pulumi.Int(0),
+//						PublicIpShouldDeallocate: pulumi.Bool(true),
+//						PublicIpTtlInHours:       pulumi.Int(0),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// # Argument Reference
+//
+// The following arguments are supported:
+//
+// * `name` - (Required) Azure stateful node name.
+// * `region` - (Required) The Azure region your stateful node will be created in.
+// * `resourceGroupName` - (Required) Name of the Resource Group for stateful node.
+// * `description` - (Optional) Describe your Azure stateful node.
+//
+// <a id="strategy"></a>
 // ## Strategy
 //
 // * `strategy` - (Required) Strategy for stateful node.
@@ -118,6 +394,13 @@ import (
 // * `managedServiceIdentities` - (Optional) Add a user-assigned managed identity to the Stateful Node's VM.
 //   - `name` - (Required) name of the managed identity.
 //   - `resourceGroupName` - (Required) The Resource Group that the user-assigned managed identity resides in.
+//
+// <a id="proximityPlacementGroups"></a>
+// ## Proximity Placement Groups
+//
+// * `proximityPlacementGroups` - (Optional) Defines the proximity placement group in which the VM will be launched.
+//   - `name` - (Required) name of the proximity placement group.
+//   - `resourceGroupName` - (Required) The Resource Group name of the proximity placement group.
 //
 // <a id="network"></a>
 // ## Network
@@ -266,47 +549,48 @@ import (
 type StatefulNodeAzure struct {
 	pulumi.CustomResourceState
 
-	AttachDataDisks          StatefulNodeAzureAttachDataDiskArrayOutput         `pulumi:"attachDataDisks"`
-	BootDiagnostics          StatefulNodeAzureBootDiagnosticArrayOutput         `pulumi:"bootDiagnostics"`
-	CustomData               pulumi.StringOutput                                `pulumi:"customData"`
-	DataDisks                StatefulNodeAzureDataDiskArrayOutput               `pulumi:"dataDisks"`
-	DataDisksPersistenceMode pulumi.StringOutput                                `pulumi:"dataDisksPersistenceMode"`
-	Deletes                  StatefulNodeAzureDeleteArrayOutput                 `pulumi:"deletes"`
-	Description              pulumi.StringOutput                                `pulumi:"description"`
-	DetachDataDisks          StatefulNodeAzureDetachDataDiskArrayOutput         `pulumi:"detachDataDisks"`
-	Extensions               StatefulNodeAzureExtensionArrayOutput              `pulumi:"extensions"`
-	Health                   StatefulNodeAzureHealthOutput                      `pulumi:"health"`
-	Image                    StatefulNodeAzureImagePtrOutput                    `pulumi:"image"`
-	ImportVms                StatefulNodeAzureImportVmArrayOutput               `pulumi:"importVms"`
-	LoadBalancers            StatefulNodeAzureLoadBalancerArrayOutput           `pulumi:"loadBalancers"`
-	Login                    StatefulNodeAzureLoginPtrOutput                    `pulumi:"login"`
-	ManagedServiceIdentities StatefulNodeAzureManagedServiceIdentityArrayOutput `pulumi:"managedServiceIdentities"`
-	Name                     pulumi.StringOutput                                `pulumi:"name"`
-	Network                  StatefulNodeAzureNetworkPtrOutput                  `pulumi:"network"`
-	OdSizes                  pulumi.StringArrayOutput                           `pulumi:"odSizes"`
-	Os                       pulumi.StringOutput                                `pulumi:"os"`
-	OsDisk                   StatefulNodeAzureOsDiskPtrOutput                   `pulumi:"osDisk"`
-	OsDiskPersistenceMode    pulumi.StringOutput                                `pulumi:"osDiskPersistenceMode"`
-	PreferredSpotSizes       pulumi.StringArrayOutput                           `pulumi:"preferredSpotSizes"`
-	PreferredZone            pulumi.StringOutput                                `pulumi:"preferredZone"`
-	Region                   pulumi.StringOutput                                `pulumi:"region"`
-	ResourceGroupName        pulumi.StringOutput                                `pulumi:"resourceGroupName"`
-	SchedulingTasks          StatefulNodeAzureSchedulingTaskArrayOutput         `pulumi:"schedulingTasks"`
-	Secrets                  StatefulNodeAzureSecretArrayOutput                 `pulumi:"secrets"`
-	Security                 StatefulNodeAzureSecurityPtrOutput                 `pulumi:"security"`
-	ShouldPersistDataDisks   pulumi.BoolOutput                                  `pulumi:"shouldPersistDataDisks"`
-	ShouldPersistNetwork     pulumi.BoolOutput                                  `pulumi:"shouldPersistNetwork"`
-	ShouldPersistOsDisk      pulumi.BoolOutput                                  `pulumi:"shouldPersistOsDisk"`
-	ShouldPersistVm          pulumi.BoolOutput                                  `pulumi:"shouldPersistVm"`
-	ShutdownScript           pulumi.StringOutput                                `pulumi:"shutdownScript"`
-	Signals                  StatefulNodeAzureSignalArrayOutput                 `pulumi:"signals"`
-	SpotSizes                pulumi.StringArrayOutput                           `pulumi:"spotSizes"`
-	Strategy                 StatefulNodeAzureStrategyOutput                    `pulumi:"strategy"`
-	Tags                     StatefulNodeAzureTagArrayOutput                    `pulumi:"tags"`
-	UpdateStates             StatefulNodeAzureUpdateStateArrayOutput            `pulumi:"updateStates"`
-	UserData                 pulumi.StringOutput                                `pulumi:"userData"`
-	VmName                   pulumi.StringPtrOutput                             `pulumi:"vmName"`
-	Zones                    pulumi.StringArrayOutput                           `pulumi:"zones"`
+	AttachDataDisks          StatefulNodeAzureAttachDataDiskArrayOutput          `pulumi:"attachDataDisks"`
+	BootDiagnostics          StatefulNodeAzureBootDiagnosticArrayOutput          `pulumi:"bootDiagnostics"`
+	CustomData               pulumi.StringOutput                                 `pulumi:"customData"`
+	DataDisks                StatefulNodeAzureDataDiskArrayOutput                `pulumi:"dataDisks"`
+	DataDisksPersistenceMode pulumi.StringOutput                                 `pulumi:"dataDisksPersistenceMode"`
+	Deletes                  StatefulNodeAzureDeleteArrayOutput                  `pulumi:"deletes"`
+	Description              pulumi.StringOutput                                 `pulumi:"description"`
+	DetachDataDisks          StatefulNodeAzureDetachDataDiskArrayOutput          `pulumi:"detachDataDisks"`
+	Extensions               StatefulNodeAzureExtensionArrayOutput               `pulumi:"extensions"`
+	Health                   StatefulNodeAzureHealthOutput                       `pulumi:"health"`
+	Image                    StatefulNodeAzureImagePtrOutput                     `pulumi:"image"`
+	ImportVms                StatefulNodeAzureImportVmArrayOutput                `pulumi:"importVms"`
+	LoadBalancers            StatefulNodeAzureLoadBalancerArrayOutput            `pulumi:"loadBalancers"`
+	Login                    StatefulNodeAzureLoginPtrOutput                     `pulumi:"login"`
+	ManagedServiceIdentities StatefulNodeAzureManagedServiceIdentityArrayOutput  `pulumi:"managedServiceIdentities"`
+	Name                     pulumi.StringOutput                                 `pulumi:"name"`
+	Network                  StatefulNodeAzureNetworkPtrOutput                   `pulumi:"network"`
+	OdSizes                  pulumi.StringArrayOutput                            `pulumi:"odSizes"`
+	Os                       pulumi.StringOutput                                 `pulumi:"os"`
+	OsDisk                   StatefulNodeAzureOsDiskPtrOutput                    `pulumi:"osDisk"`
+	OsDiskPersistenceMode    pulumi.StringOutput                                 `pulumi:"osDiskPersistenceMode"`
+	PreferredSpotSizes       pulumi.StringArrayOutput                            `pulumi:"preferredSpotSizes"`
+	PreferredZone            pulumi.StringOutput                                 `pulumi:"preferredZone"`
+	ProximityPlacementGroups StatefulNodeAzureProximityPlacementGroupArrayOutput `pulumi:"proximityPlacementGroups"`
+	Region                   pulumi.StringOutput                                 `pulumi:"region"`
+	ResourceGroupName        pulumi.StringOutput                                 `pulumi:"resourceGroupName"`
+	SchedulingTasks          StatefulNodeAzureSchedulingTaskArrayOutput          `pulumi:"schedulingTasks"`
+	Secrets                  StatefulNodeAzureSecretArrayOutput                  `pulumi:"secrets"`
+	Security                 StatefulNodeAzureSecurityPtrOutput                  `pulumi:"security"`
+	ShouldPersistDataDisks   pulumi.BoolOutput                                   `pulumi:"shouldPersistDataDisks"`
+	ShouldPersistNetwork     pulumi.BoolOutput                                   `pulumi:"shouldPersistNetwork"`
+	ShouldPersistOsDisk      pulumi.BoolOutput                                   `pulumi:"shouldPersistOsDisk"`
+	ShouldPersistVm          pulumi.BoolOutput                                   `pulumi:"shouldPersistVm"`
+	ShutdownScript           pulumi.StringOutput                                 `pulumi:"shutdownScript"`
+	Signals                  StatefulNodeAzureSignalArrayOutput                  `pulumi:"signals"`
+	SpotSizes                pulumi.StringArrayOutput                            `pulumi:"spotSizes"`
+	Strategy                 StatefulNodeAzureStrategyOutput                     `pulumi:"strategy"`
+	Tags                     StatefulNodeAzureTagArrayOutput                     `pulumi:"tags"`
+	UpdateStates             StatefulNodeAzureUpdateStateArrayOutput             `pulumi:"updateStates"`
+	UserData                 pulumi.StringOutput                                 `pulumi:"userData"`
+	VmName                   pulumi.StringPtrOutput                              `pulumi:"vmName"`
+	Zones                    pulumi.StringArrayOutput                            `pulumi:"zones"`
 }
 
 // NewStatefulNodeAzure registers a new resource with the given unique name, arguments, and options.
@@ -366,47 +650,48 @@ func GetStatefulNodeAzure(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering StatefulNodeAzure resources.
 type statefulNodeAzureState struct {
-	AttachDataDisks          []StatefulNodeAzureAttachDataDisk         `pulumi:"attachDataDisks"`
-	BootDiagnostics          []StatefulNodeAzureBootDiagnostic         `pulumi:"bootDiagnostics"`
-	CustomData               *string                                   `pulumi:"customData"`
-	DataDisks                []StatefulNodeAzureDataDisk               `pulumi:"dataDisks"`
-	DataDisksPersistenceMode *string                                   `pulumi:"dataDisksPersistenceMode"`
-	Deletes                  []StatefulNodeAzureDelete                 `pulumi:"deletes"`
-	Description              *string                                   `pulumi:"description"`
-	DetachDataDisks          []StatefulNodeAzureDetachDataDisk         `pulumi:"detachDataDisks"`
-	Extensions               []StatefulNodeAzureExtension              `pulumi:"extensions"`
-	Health                   *StatefulNodeAzureHealth                  `pulumi:"health"`
-	Image                    *StatefulNodeAzureImage                   `pulumi:"image"`
-	ImportVms                []StatefulNodeAzureImportVm               `pulumi:"importVms"`
-	LoadBalancers            []StatefulNodeAzureLoadBalancer           `pulumi:"loadBalancers"`
-	Login                    *StatefulNodeAzureLogin                   `pulumi:"login"`
-	ManagedServiceIdentities []StatefulNodeAzureManagedServiceIdentity `pulumi:"managedServiceIdentities"`
-	Name                     *string                                   `pulumi:"name"`
-	Network                  *StatefulNodeAzureNetwork                 `pulumi:"network"`
-	OdSizes                  []string                                  `pulumi:"odSizes"`
-	Os                       *string                                   `pulumi:"os"`
-	OsDisk                   *StatefulNodeAzureOsDisk                  `pulumi:"osDisk"`
-	OsDiskPersistenceMode    *string                                   `pulumi:"osDiskPersistenceMode"`
-	PreferredSpotSizes       []string                                  `pulumi:"preferredSpotSizes"`
-	PreferredZone            *string                                   `pulumi:"preferredZone"`
-	Region                   *string                                   `pulumi:"region"`
-	ResourceGroupName        *string                                   `pulumi:"resourceGroupName"`
-	SchedulingTasks          []StatefulNodeAzureSchedulingTask         `pulumi:"schedulingTasks"`
-	Secrets                  []StatefulNodeAzureSecret                 `pulumi:"secrets"`
-	Security                 *StatefulNodeAzureSecurity                `pulumi:"security"`
-	ShouldPersistDataDisks   *bool                                     `pulumi:"shouldPersistDataDisks"`
-	ShouldPersistNetwork     *bool                                     `pulumi:"shouldPersistNetwork"`
-	ShouldPersistOsDisk      *bool                                     `pulumi:"shouldPersistOsDisk"`
-	ShouldPersistVm          *bool                                     `pulumi:"shouldPersistVm"`
-	ShutdownScript           *string                                   `pulumi:"shutdownScript"`
-	Signals                  []StatefulNodeAzureSignal                 `pulumi:"signals"`
-	SpotSizes                []string                                  `pulumi:"spotSizes"`
-	Strategy                 *StatefulNodeAzureStrategy                `pulumi:"strategy"`
-	Tags                     []StatefulNodeAzureTag                    `pulumi:"tags"`
-	UpdateStates             []StatefulNodeAzureUpdateState            `pulumi:"updateStates"`
-	UserData                 *string                                   `pulumi:"userData"`
-	VmName                   *string                                   `pulumi:"vmName"`
-	Zones                    []string                                  `pulumi:"zones"`
+	AttachDataDisks          []StatefulNodeAzureAttachDataDisk          `pulumi:"attachDataDisks"`
+	BootDiagnostics          []StatefulNodeAzureBootDiagnostic          `pulumi:"bootDiagnostics"`
+	CustomData               *string                                    `pulumi:"customData"`
+	DataDisks                []StatefulNodeAzureDataDisk                `pulumi:"dataDisks"`
+	DataDisksPersistenceMode *string                                    `pulumi:"dataDisksPersistenceMode"`
+	Deletes                  []StatefulNodeAzureDelete                  `pulumi:"deletes"`
+	Description              *string                                    `pulumi:"description"`
+	DetachDataDisks          []StatefulNodeAzureDetachDataDisk          `pulumi:"detachDataDisks"`
+	Extensions               []StatefulNodeAzureExtension               `pulumi:"extensions"`
+	Health                   *StatefulNodeAzureHealth                   `pulumi:"health"`
+	Image                    *StatefulNodeAzureImage                    `pulumi:"image"`
+	ImportVms                []StatefulNodeAzureImportVm                `pulumi:"importVms"`
+	LoadBalancers            []StatefulNodeAzureLoadBalancer            `pulumi:"loadBalancers"`
+	Login                    *StatefulNodeAzureLogin                    `pulumi:"login"`
+	ManagedServiceIdentities []StatefulNodeAzureManagedServiceIdentity  `pulumi:"managedServiceIdentities"`
+	Name                     *string                                    `pulumi:"name"`
+	Network                  *StatefulNodeAzureNetwork                  `pulumi:"network"`
+	OdSizes                  []string                                   `pulumi:"odSizes"`
+	Os                       *string                                    `pulumi:"os"`
+	OsDisk                   *StatefulNodeAzureOsDisk                   `pulumi:"osDisk"`
+	OsDiskPersistenceMode    *string                                    `pulumi:"osDiskPersistenceMode"`
+	PreferredSpotSizes       []string                                   `pulumi:"preferredSpotSizes"`
+	PreferredZone            *string                                    `pulumi:"preferredZone"`
+	ProximityPlacementGroups []StatefulNodeAzureProximityPlacementGroup `pulumi:"proximityPlacementGroups"`
+	Region                   *string                                    `pulumi:"region"`
+	ResourceGroupName        *string                                    `pulumi:"resourceGroupName"`
+	SchedulingTasks          []StatefulNodeAzureSchedulingTask          `pulumi:"schedulingTasks"`
+	Secrets                  []StatefulNodeAzureSecret                  `pulumi:"secrets"`
+	Security                 *StatefulNodeAzureSecurity                 `pulumi:"security"`
+	ShouldPersistDataDisks   *bool                                      `pulumi:"shouldPersistDataDisks"`
+	ShouldPersistNetwork     *bool                                      `pulumi:"shouldPersistNetwork"`
+	ShouldPersistOsDisk      *bool                                      `pulumi:"shouldPersistOsDisk"`
+	ShouldPersistVm          *bool                                      `pulumi:"shouldPersistVm"`
+	ShutdownScript           *string                                    `pulumi:"shutdownScript"`
+	Signals                  []StatefulNodeAzureSignal                  `pulumi:"signals"`
+	SpotSizes                []string                                   `pulumi:"spotSizes"`
+	Strategy                 *StatefulNodeAzureStrategy                 `pulumi:"strategy"`
+	Tags                     []StatefulNodeAzureTag                     `pulumi:"tags"`
+	UpdateStates             []StatefulNodeAzureUpdateState             `pulumi:"updateStates"`
+	UserData                 *string                                    `pulumi:"userData"`
+	VmName                   *string                                    `pulumi:"vmName"`
+	Zones                    []string                                   `pulumi:"zones"`
 }
 
 type StatefulNodeAzureState struct {
@@ -433,6 +718,7 @@ type StatefulNodeAzureState struct {
 	OsDiskPersistenceMode    pulumi.StringPtrInput
 	PreferredSpotSizes       pulumi.StringArrayInput
 	PreferredZone            pulumi.StringPtrInput
+	ProximityPlacementGroups StatefulNodeAzureProximityPlacementGroupArrayInput
 	Region                   pulumi.StringPtrInput
 	ResourceGroupName        pulumi.StringPtrInput
 	SchedulingTasks          StatefulNodeAzureSchedulingTaskArrayInput
@@ -458,47 +744,48 @@ func (StatefulNodeAzureState) ElementType() reflect.Type {
 }
 
 type statefulNodeAzureArgs struct {
-	AttachDataDisks          []StatefulNodeAzureAttachDataDisk         `pulumi:"attachDataDisks"`
-	BootDiagnostics          []StatefulNodeAzureBootDiagnostic         `pulumi:"bootDiagnostics"`
-	CustomData               *string                                   `pulumi:"customData"`
-	DataDisks                []StatefulNodeAzureDataDisk               `pulumi:"dataDisks"`
-	DataDisksPersistenceMode *string                                   `pulumi:"dataDisksPersistenceMode"`
-	Deletes                  []StatefulNodeAzureDelete                 `pulumi:"deletes"`
-	Description              *string                                   `pulumi:"description"`
-	DetachDataDisks          []StatefulNodeAzureDetachDataDisk         `pulumi:"detachDataDisks"`
-	Extensions               []StatefulNodeAzureExtension              `pulumi:"extensions"`
-	Health                   *StatefulNodeAzureHealth                  `pulumi:"health"`
-	Image                    *StatefulNodeAzureImage                   `pulumi:"image"`
-	ImportVms                []StatefulNodeAzureImportVm               `pulumi:"importVms"`
-	LoadBalancers            []StatefulNodeAzureLoadBalancer           `pulumi:"loadBalancers"`
-	Login                    *StatefulNodeAzureLogin                   `pulumi:"login"`
-	ManagedServiceIdentities []StatefulNodeAzureManagedServiceIdentity `pulumi:"managedServiceIdentities"`
-	Name                     *string                                   `pulumi:"name"`
-	Network                  *StatefulNodeAzureNetwork                 `pulumi:"network"`
-	OdSizes                  []string                                  `pulumi:"odSizes"`
-	Os                       string                                    `pulumi:"os"`
-	OsDisk                   *StatefulNodeAzureOsDisk                  `pulumi:"osDisk"`
-	OsDiskPersistenceMode    *string                                   `pulumi:"osDiskPersistenceMode"`
-	PreferredSpotSizes       []string                                  `pulumi:"preferredSpotSizes"`
-	PreferredZone            *string                                   `pulumi:"preferredZone"`
-	Region                   string                                    `pulumi:"region"`
-	ResourceGroupName        string                                    `pulumi:"resourceGroupName"`
-	SchedulingTasks          []StatefulNodeAzureSchedulingTask         `pulumi:"schedulingTasks"`
-	Secrets                  []StatefulNodeAzureSecret                 `pulumi:"secrets"`
-	Security                 *StatefulNodeAzureSecurity                `pulumi:"security"`
-	ShouldPersistDataDisks   bool                                      `pulumi:"shouldPersistDataDisks"`
-	ShouldPersistNetwork     bool                                      `pulumi:"shouldPersistNetwork"`
-	ShouldPersistOsDisk      bool                                      `pulumi:"shouldPersistOsDisk"`
-	ShouldPersistVm          *bool                                     `pulumi:"shouldPersistVm"`
-	ShutdownScript           *string                                   `pulumi:"shutdownScript"`
-	Signals                  []StatefulNodeAzureSignal                 `pulumi:"signals"`
-	SpotSizes                []string                                  `pulumi:"spotSizes"`
-	Strategy                 StatefulNodeAzureStrategy                 `pulumi:"strategy"`
-	Tags                     []StatefulNodeAzureTag                    `pulumi:"tags"`
-	UpdateStates             []StatefulNodeAzureUpdateState            `pulumi:"updateStates"`
-	UserData                 *string                                   `pulumi:"userData"`
-	VmName                   *string                                   `pulumi:"vmName"`
-	Zones                    []string                                  `pulumi:"zones"`
+	AttachDataDisks          []StatefulNodeAzureAttachDataDisk          `pulumi:"attachDataDisks"`
+	BootDiagnostics          []StatefulNodeAzureBootDiagnostic          `pulumi:"bootDiagnostics"`
+	CustomData               *string                                    `pulumi:"customData"`
+	DataDisks                []StatefulNodeAzureDataDisk                `pulumi:"dataDisks"`
+	DataDisksPersistenceMode *string                                    `pulumi:"dataDisksPersistenceMode"`
+	Deletes                  []StatefulNodeAzureDelete                  `pulumi:"deletes"`
+	Description              *string                                    `pulumi:"description"`
+	DetachDataDisks          []StatefulNodeAzureDetachDataDisk          `pulumi:"detachDataDisks"`
+	Extensions               []StatefulNodeAzureExtension               `pulumi:"extensions"`
+	Health                   *StatefulNodeAzureHealth                   `pulumi:"health"`
+	Image                    *StatefulNodeAzureImage                    `pulumi:"image"`
+	ImportVms                []StatefulNodeAzureImportVm                `pulumi:"importVms"`
+	LoadBalancers            []StatefulNodeAzureLoadBalancer            `pulumi:"loadBalancers"`
+	Login                    *StatefulNodeAzureLogin                    `pulumi:"login"`
+	ManagedServiceIdentities []StatefulNodeAzureManagedServiceIdentity  `pulumi:"managedServiceIdentities"`
+	Name                     *string                                    `pulumi:"name"`
+	Network                  *StatefulNodeAzureNetwork                  `pulumi:"network"`
+	OdSizes                  []string                                   `pulumi:"odSizes"`
+	Os                       string                                     `pulumi:"os"`
+	OsDisk                   *StatefulNodeAzureOsDisk                   `pulumi:"osDisk"`
+	OsDiskPersistenceMode    *string                                    `pulumi:"osDiskPersistenceMode"`
+	PreferredSpotSizes       []string                                   `pulumi:"preferredSpotSizes"`
+	PreferredZone            *string                                    `pulumi:"preferredZone"`
+	ProximityPlacementGroups []StatefulNodeAzureProximityPlacementGroup `pulumi:"proximityPlacementGroups"`
+	Region                   string                                     `pulumi:"region"`
+	ResourceGroupName        string                                     `pulumi:"resourceGroupName"`
+	SchedulingTasks          []StatefulNodeAzureSchedulingTask          `pulumi:"schedulingTasks"`
+	Secrets                  []StatefulNodeAzureSecret                  `pulumi:"secrets"`
+	Security                 *StatefulNodeAzureSecurity                 `pulumi:"security"`
+	ShouldPersistDataDisks   bool                                       `pulumi:"shouldPersistDataDisks"`
+	ShouldPersistNetwork     bool                                       `pulumi:"shouldPersistNetwork"`
+	ShouldPersistOsDisk      bool                                       `pulumi:"shouldPersistOsDisk"`
+	ShouldPersistVm          *bool                                      `pulumi:"shouldPersistVm"`
+	ShutdownScript           *string                                    `pulumi:"shutdownScript"`
+	Signals                  []StatefulNodeAzureSignal                  `pulumi:"signals"`
+	SpotSizes                []string                                   `pulumi:"spotSizes"`
+	Strategy                 StatefulNodeAzureStrategy                  `pulumi:"strategy"`
+	Tags                     []StatefulNodeAzureTag                     `pulumi:"tags"`
+	UpdateStates             []StatefulNodeAzureUpdateState             `pulumi:"updateStates"`
+	UserData                 *string                                    `pulumi:"userData"`
+	VmName                   *string                                    `pulumi:"vmName"`
+	Zones                    []string                                   `pulumi:"zones"`
 }
 
 // The set of arguments for constructing a StatefulNodeAzure resource.
@@ -526,6 +813,7 @@ type StatefulNodeAzureArgs struct {
 	OsDiskPersistenceMode    pulumi.StringPtrInput
 	PreferredSpotSizes       pulumi.StringArrayInput
 	PreferredZone            pulumi.StringPtrInput
+	ProximityPlacementGroups StatefulNodeAzureProximityPlacementGroupArrayInput
 	Region                   pulumi.StringInput
 	ResourceGroupName        pulumi.StringInput
 	SchedulingTasks          StatefulNodeAzureSchedulingTaskArrayInput
@@ -725,6 +1013,12 @@ func (o StatefulNodeAzureOutput) PreferredSpotSizes() pulumi.StringArrayOutput {
 
 func (o StatefulNodeAzureOutput) PreferredZone() pulumi.StringOutput {
 	return o.ApplyT(func(v *StatefulNodeAzure) pulumi.StringOutput { return v.PreferredZone }).(pulumi.StringOutput)
+}
+
+func (o StatefulNodeAzureOutput) ProximityPlacementGroups() StatefulNodeAzureProximityPlacementGroupArrayOutput {
+	return o.ApplyT(func(v *StatefulNodeAzure) StatefulNodeAzureProximityPlacementGroupArrayOutput {
+		return v.ProximityPlacementGroups
+	}).(StatefulNodeAzureProximityPlacementGroupArrayOutput)
 }
 
 func (o StatefulNodeAzureOutput) Region() pulumi.StringOutput {

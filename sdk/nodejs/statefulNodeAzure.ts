@@ -9,6 +9,223 @@ import * as utilities from "./utilities";
 /**
  * Provides a Spotinst stateful node Azure resource.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as spotinst from "@pulumi/spotinst";
+ *
+ * const testStatefulNodeAzure = new spotinst.StatefulNodeAzure("testStatefulNodeAzure", {
+ *     region: "eastus",
+ *     resourceGroupName: "spotinst-azure",
+ *     description: "example_stateful_node_azure_description",
+ *     strategy: {
+ *         drainingTimeout: 30,
+ *         fallbackToOnDemand: true,
+ *         optimizationWindows: ["Tue:19:46-Tue:20:46"],
+ *         revertToSpot: {
+ *             performAt: "timeWindow",
+ *         },
+ *         preferredLifeCycle: "od",
+ *         capacityReservations: [{
+ *             shouldUtilize: true,
+ *             utilizationStrategy: "utilizeOverOD",
+ *             capacityReservationGroups: [{
+ *                 crgName: "crg name",
+ *                 crgResourceGroupName: "resourceGroupName",
+ *                 crgShouldPrioritize: true,
+ *             }],
+ *         }],
+ *     },
+ *     os: "Linux",
+ *     odSizes: [
+ *         "standard_ds1_v2",
+ *         "standard_ds2_v2",
+ *     ],
+ *     spotSizes: [
+ *         "standard_ds1_v2",
+ *         "standard_ds2_v2",
+ *     ],
+ *     preferredSpotSizes: ["standard_ds1_v2"],
+ *     zones: [
+ *         "1",
+ *         "3",
+ *     ],
+ *     preferredZone: "1",
+ *     customData: "",
+ *     shutdownScript: "",
+ *     userData: "",
+ *     vmName: "VMName",
+ *     bootDiagnostics: [{
+ *         isEnabled: true,
+ *         storageUrl: "https://.blob.core.windows.net/test",
+ *         type: "unmanaged",
+ *     }],
+ *     dataDisks: [
+ *         {
+ *             sizeGb: 1,
+ *             lun: 1,
+ *             type: "Standard_LRS",
+ *         },
+ *         {
+ *             sizeGb: 10,
+ *             lun: 2,
+ *             type: "Standard_LRS",
+ *         },
+ *     ],
+ *     extensions: [{
+ *         name: "extensionName",
+ *         type: "customScript",
+ *         publisher: "Microsoft.Azure.Extensions",
+ *         apiVersion: "2.0",
+ *         minorVersionAutoUpgrade: true,
+ *         protectedSettings: {
+ *             script: "IyEvYmluL2Jhc2gKZWNobyAibmlyIiA+IC9ob29uaXIudHh0Cg==",
+ *         },
+ *     }],
+ *     image: {
+ *         marketplaceImages: [{
+ *             publisher: "Canonical",
+ *             offer: "UbuntuServer",
+ *             sku: "16.04-LTS",
+ *             version: "latest",
+ *         }],
+ *     },
+ *     loadBalancers: [{
+ *         type: "loadBalancer",
+ *         resourceGroupName: "testResourceGroup",
+ *         name: "testLoadBalancer",
+ *         sku: "Standard",
+ *         backendPoolNames: [
+ *             "testBackendPool1",
+ *             "testBackendPool2",
+ *         ],
+ *     }],
+ *     login: {
+ *         userName: "admin",
+ *         sshPublicKey: "33a2s1f3g5a1df5g1ad3f2g1adfg56dfg==",
+ *     },
+ *     managedServiceIdentities: [{
+ *         name: "mySI2",
+ *         resourceGroupName: "myResourceGroup",
+ *     }],
+ *     network: {
+ *         networkResourceGroupName: "subnetResourceGroup",
+ *         virtualNetworkName: "vname",
+ *         networkInterfaces: [{
+ *             isPrimary: true,
+ *             subnetName: "testSubnet",
+ *             assignPublicIp: true,
+ *             publicIpSku: "Standard",
+ *             networkSecurityGroups: [{
+ *                 networkResourceGroupName: "test",
+ *                 name: "test",
+ *             }],
+ *             enableIpForwarding: true,
+ *             privateIpAddresses: ["172.23.4.20"],
+ *             additionalIpConfigurations: [{
+ *                 name: "test",
+ *                 privateIpAddressVersion: "IPv4",
+ *             }],
+ *             publicIps: [{
+ *                 networkResourceGroupName: "resourceGroup",
+ *                 name: "test",
+ *             }],
+ *             applicationSecurityGroups: [{
+ *                 networkResourceGroupName: "AsgResourceGroup",
+ *                 name: "AsgName",
+ *             }],
+ *         }],
+ *     },
+ *     osDisk: {
+ *         sizeGb: 30,
+ *         type: "Standard_LRS",
+ *     },
+ *     secrets: [{
+ *         sourceVaults: [{
+ *             name: "string",
+ *             resourceGroupName: "string",
+ *         }],
+ *         vaultCertificates: [{
+ *             certificateUrl: "string",
+ *             certificateStore: "string",
+ *         }],
+ *     }],
+ *     security: {
+ *         securityType: "Standard",
+ *         secureBootEnabled: false,
+ *         vtpmEnabled: false,
+ *     },
+ *     tags: [{
+ *         tagKey: "Creator",
+ *         tagValue: "string",
+ *     }],
+ *     health: {
+ *         healthCheckTypes: ["vmState"],
+ *         unhealthyDuration: 300,
+ *         gracePeriod: 120,
+ *         autoHealing: true,
+ *     },
+ *     shouldPersistOsDisk: false,
+ *     osDiskPersistenceMode: "reattach",
+ *     shouldPersistDataDisks: true,
+ *     dataDisksPersistenceMode: "reattach",
+ *     shouldPersistNetwork: true,
+ *     schedulingTasks: [
+ *         {
+ *             isEnabled: true,
+ *             type: "pause",
+ *             cronExpression: "44 10 * * *",
+ *         },
+ *         {
+ *             isEnabled: true,
+ *             type: "resume",
+ *             cronExpression: "48 10 * * *",
+ *         },
+ *         {
+ *             isEnabled: true,
+ *             type: "recycle",
+ *             cronExpression: "52 10 * * *",
+ *         },
+ *     ],
+ *     signals: [
+ *         {
+ *             type: "vmReady",
+ *             timeout: 20,
+ *         },
+ *         {
+ *             type: "vmReady",
+ *             timeout: 40,
+ *         },
+ *     ],
+ *     proximityPlacementGroups: [{
+ *         name: "TestPPG",
+ *         resourceGroupName: "TestResourceGroup",
+ *     }],
+ *     deletes: [{
+ *         shouldTerminateVm: true,
+ *         networkShouldDeallocate: true,
+ *         networkTtlInHours: 0,
+ *         diskShouldDeallocate: true,
+ *         diskTtlInHours: 0,
+ *         snapshotShouldDeallocate: true,
+ *         snapshotTtlInHours: 0,
+ *         publicIpShouldDeallocate: true,
+ *         publicIpTtlInHours: 0,
+ *     }],
+ * });
+ * ```
+ *
+ * # Argument Reference
+ *
+ * The following arguments are supported:
+ *
+ * * `name` - (Required) Azure stateful node name.
+ * * `region` - (Required) The Azure region your stateful node will be created in.
+ * * `resourceGroupName` - (Required) Name of the Resource Group for stateful node.
+ * * `description` - (Optional) Describe your Azure stateful node.
+ *
+ * <a id="strategy"></a>
  * ## Strategy
  *
  * * `strategy` - (Required) Strategy for stateful node.
@@ -113,6 +330,13 @@ import * as utilities from "./utilities";
  * * `managedServiceIdentities` - (Optional) Add a user-assigned managed identity to the Stateful Node's VM.
  *   * `name` - (Required) name of the managed identity.
  *   * `resourceGroupName` - (Required) The Resource Group that the user-assigned managed identity resides in.
+ *
+ * <a id="proximityPlacementGroups"></a>
+ * ## Proximity Placement Groups
+ *
+ * * `proximityPlacementGroups` - (Optional) Defines the proximity placement group in which the VM will be launched.
+ *   * `name` - (Required) name of the proximity placement group.
+ *   * `resourceGroupName` - (Required) The Resource Group name of the proximity placement group.
  *
  * <a id="network"></a>
  * ## Network
@@ -310,6 +534,7 @@ export class StatefulNodeAzure extends pulumi.CustomResource {
     public readonly osDiskPersistenceMode!: pulumi.Output<string>;
     public readonly preferredSpotSizes!: pulumi.Output<string[]>;
     public readonly preferredZone!: pulumi.Output<string>;
+    public readonly proximityPlacementGroups!: pulumi.Output<outputs.StatefulNodeAzureProximityPlacementGroup[]>;
     public readonly region!: pulumi.Output<string>;
     public readonly resourceGroupName!: pulumi.Output<string>;
     public readonly schedulingTasks!: pulumi.Output<outputs.StatefulNodeAzureSchedulingTask[]>;
@@ -365,6 +590,7 @@ export class StatefulNodeAzure extends pulumi.CustomResource {
             resourceInputs["osDiskPersistenceMode"] = state ? state.osDiskPersistenceMode : undefined;
             resourceInputs["preferredSpotSizes"] = state ? state.preferredSpotSizes : undefined;
             resourceInputs["preferredZone"] = state ? state.preferredZone : undefined;
+            resourceInputs["proximityPlacementGroups"] = state ? state.proximityPlacementGroups : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
             resourceInputs["resourceGroupName"] = state ? state.resourceGroupName : undefined;
             resourceInputs["schedulingTasks"] = state ? state.schedulingTasks : undefined;
@@ -435,6 +661,7 @@ export class StatefulNodeAzure extends pulumi.CustomResource {
             resourceInputs["osDiskPersistenceMode"] = args ? args.osDiskPersistenceMode : undefined;
             resourceInputs["preferredSpotSizes"] = args ? args.preferredSpotSizes : undefined;
             resourceInputs["preferredZone"] = args ? args.preferredZone : undefined;
+            resourceInputs["proximityPlacementGroups"] = args ? args.proximityPlacementGroups : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["schedulingTasks"] = args ? args.schedulingTasks : undefined;
@@ -486,6 +713,7 @@ export interface StatefulNodeAzureState {
     osDiskPersistenceMode?: pulumi.Input<string>;
     preferredSpotSizes?: pulumi.Input<pulumi.Input<string>[]>;
     preferredZone?: pulumi.Input<string>;
+    proximityPlacementGroups?: pulumi.Input<pulumi.Input<inputs.StatefulNodeAzureProximityPlacementGroup>[]>;
     region?: pulumi.Input<string>;
     resourceGroupName?: pulumi.Input<string>;
     schedulingTasks?: pulumi.Input<pulumi.Input<inputs.StatefulNodeAzureSchedulingTask>[]>;
@@ -533,6 +761,7 @@ export interface StatefulNodeAzureArgs {
     osDiskPersistenceMode?: pulumi.Input<string>;
     preferredSpotSizes?: pulumi.Input<pulumi.Input<string>[]>;
     preferredZone?: pulumi.Input<string>;
+    proximityPlacementGroups?: pulumi.Input<pulumi.Input<inputs.StatefulNodeAzureProximityPlacementGroup>[]>;
     region: pulumi.Input<string>;
     resourceGroupName: pulumi.Input<string>;
     schedulingTasks?: pulumi.Input<pulumi.Input<inputs.StatefulNodeAzureSchedulingTask>[]>;
