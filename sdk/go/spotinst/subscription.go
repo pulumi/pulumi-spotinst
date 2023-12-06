@@ -64,7 +64,8 @@ type Subscription struct {
 	// `"AWS_EC2_MANAGED_INSTANCE_PAUSING"`,
 	// `"AWS_EC2_MANAGED_INSTANCE_RESUMING"`,
 	// `"AWS_EC2_MANAGED_INSTANCE_RECYCLING"`,`"AWS_EC2_MANAGED_INSTANCE_DELETING"`.
-	// Ocean Events:`"CLUSTER_ROLL_FINISHED"`,`"GROUP_ROLL_FAILED"`.
+	// Ocean Events:`"CLUSTER_ROLL_FINISHED"`,`"GROUP_ROLL_FAILED"`,`"OCEAN_CANT_SCALE_UP_MAX_RESOURCES"`
+	// `"OCEAN_LAUNCH_SPEC_CANT_SCALE_UP_MAX_INSTANCES"`,`"OCEAN_K8S_NODE_REMOVED"`.
 	EventType pulumi.StringOutput `pulumi:"eventType"`
 	// The format of the notification content (JSON Format - Key+Value). Valid Values : `"instance-id"`, `"event"`, `"resource-id"`, `"resource-name"`, `"subnet-id"`, `"availability-zone"`, `"reason"`, `"private-ip"`, `"launchspec-id"`
 	// Example: {"event": `"event"`, `"resourceId"`: `"resource-id"`, `"resourceName"`: `"resource-name"`", `"myCustomKey"`: `"My content is set here"` }
@@ -133,7 +134,8 @@ type subscriptionState struct {
 	// `"AWS_EC2_MANAGED_INSTANCE_PAUSING"`,
 	// `"AWS_EC2_MANAGED_INSTANCE_RESUMING"`,
 	// `"AWS_EC2_MANAGED_INSTANCE_RECYCLING"`,`"AWS_EC2_MANAGED_INSTANCE_DELETING"`.
-	// Ocean Events:`"CLUSTER_ROLL_FINISHED"`,`"GROUP_ROLL_FAILED"`.
+	// Ocean Events:`"CLUSTER_ROLL_FINISHED"`,`"GROUP_ROLL_FAILED"`,`"OCEAN_CANT_SCALE_UP_MAX_RESOURCES"`
+	// `"OCEAN_LAUNCH_SPEC_CANT_SCALE_UP_MAX_INSTANCES"`,`"OCEAN_K8S_NODE_REMOVED"`.
 	EventType *string `pulumi:"eventType"`
 	// The format of the notification content (JSON Format - Key+Value). Valid Values : `"instance-id"`, `"event"`, `"resource-id"`, `"resource-name"`, `"subnet-id"`, `"availability-zone"`, `"reason"`, `"private-ip"`, `"launchspec-id"`
 	// Example: {"event": `"event"`, `"resourceId"`: `"resource-id"`, `"resourceName"`: `"resource-name"`", `"myCustomKey"`: `"My content is set here"` }
@@ -161,7 +163,8 @@ type SubscriptionState struct {
 	// `"AWS_EC2_MANAGED_INSTANCE_PAUSING"`,
 	// `"AWS_EC2_MANAGED_INSTANCE_RESUMING"`,
 	// `"AWS_EC2_MANAGED_INSTANCE_RECYCLING"`,`"AWS_EC2_MANAGED_INSTANCE_DELETING"`.
-	// Ocean Events:`"CLUSTER_ROLL_FINISHED"`,`"GROUP_ROLL_FAILED"`.
+	// Ocean Events:`"CLUSTER_ROLL_FINISHED"`,`"GROUP_ROLL_FAILED"`,`"OCEAN_CANT_SCALE_UP_MAX_RESOURCES"`
+	// `"OCEAN_LAUNCH_SPEC_CANT_SCALE_UP_MAX_INSTANCES"`,`"OCEAN_K8S_NODE_REMOVED"`.
 	EventType pulumi.StringPtrInput
 	// The format of the notification content (JSON Format - Key+Value). Valid Values : `"instance-id"`, `"event"`, `"resource-id"`, `"resource-name"`, `"subnet-id"`, `"availability-zone"`, `"reason"`, `"private-ip"`, `"launchspec-id"`
 	// Example: {"event": `"event"`, `"resourceId"`: `"resource-id"`, `"resourceName"`: `"resource-name"`", `"myCustomKey"`: `"My content is set here"` }
@@ -193,7 +196,8 @@ type subscriptionArgs struct {
 	// `"AWS_EC2_MANAGED_INSTANCE_PAUSING"`,
 	// `"AWS_EC2_MANAGED_INSTANCE_RESUMING"`,
 	// `"AWS_EC2_MANAGED_INSTANCE_RECYCLING"`,`"AWS_EC2_MANAGED_INSTANCE_DELETING"`.
-	// Ocean Events:`"CLUSTER_ROLL_FINISHED"`,`"GROUP_ROLL_FAILED"`.
+	// Ocean Events:`"CLUSTER_ROLL_FINISHED"`,`"GROUP_ROLL_FAILED"`,`"OCEAN_CANT_SCALE_UP_MAX_RESOURCES"`
+	// `"OCEAN_LAUNCH_SPEC_CANT_SCALE_UP_MAX_INSTANCES"`,`"OCEAN_K8S_NODE_REMOVED"`.
 	EventType string `pulumi:"eventType"`
 	// The format of the notification content (JSON Format - Key+Value). Valid Values : `"instance-id"`, `"event"`, `"resource-id"`, `"resource-name"`, `"subnet-id"`, `"availability-zone"`, `"reason"`, `"private-ip"`, `"launchspec-id"`
 	// Example: {"event": `"event"`, `"resourceId"`: `"resource-id"`, `"resourceName"`: `"resource-name"`", `"myCustomKey"`: `"My content is set here"` }
@@ -222,7 +226,8 @@ type SubscriptionArgs struct {
 	// `"AWS_EC2_MANAGED_INSTANCE_PAUSING"`,
 	// `"AWS_EC2_MANAGED_INSTANCE_RESUMING"`,
 	// `"AWS_EC2_MANAGED_INSTANCE_RECYCLING"`,`"AWS_EC2_MANAGED_INSTANCE_DELETING"`.
-	// Ocean Events:`"CLUSTER_ROLL_FINISHED"`,`"GROUP_ROLL_FAILED"`.
+	// Ocean Events:`"CLUSTER_ROLL_FINISHED"`,`"GROUP_ROLL_FAILED"`,`"OCEAN_CANT_SCALE_UP_MAX_RESOURCES"`
+	// `"OCEAN_LAUNCH_SPEC_CANT_SCALE_UP_MAX_INSTANCES"`,`"OCEAN_K8S_NODE_REMOVED"`.
 	EventType pulumi.StringInput
 	// The format of the notification content (JSON Format - Key+Value). Valid Values : `"instance-id"`, `"event"`, `"resource-id"`, `"resource-name"`, `"subnet-id"`, `"availability-zone"`, `"reason"`, `"private-ip"`, `"launchspec-id"`
 	// Example: {"event": `"event"`, `"resourceId"`: `"resource-id"`, `"resourceName"`: `"resource-name"`", `"myCustomKey"`: `"My content is set here"` }
@@ -339,7 +344,8 @@ func (o SubscriptionOutput) Endpoint() pulumi.StringOutput {
 // `"AWS_EC2_MANAGED_INSTANCE_PAUSING"`,
 // `"AWS_EC2_MANAGED_INSTANCE_RESUMING"`,
 // `"AWS_EC2_MANAGED_INSTANCE_RECYCLING"`,`"AWS_EC2_MANAGED_INSTANCE_DELETING"`.
-// Ocean Events:`"CLUSTER_ROLL_FINISHED"`,`"GROUP_ROLL_FAILED"`.
+// Ocean Events:`"CLUSTER_ROLL_FINISHED"`,`"GROUP_ROLL_FAILED"`,`"OCEAN_CANT_SCALE_UP_MAX_RESOURCES"`
+// `"OCEAN_LAUNCH_SPEC_CANT_SCALE_UP_MAX_INSTANCES"`,`"OCEAN_K8S_NODE_REMOVED"`.
 func (o SubscriptionOutput) EventType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Subscription) pulumi.StringOutput { return v.EventType }).(pulumi.StringOutput)
 }
