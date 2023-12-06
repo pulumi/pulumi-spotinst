@@ -62,7 +62,8 @@ namespace Pulumi.SpotInst
         /// `"AWS_EC2_MANAGED_INSTANCE_PAUSING"`,
         /// `"AWS_EC2_MANAGED_INSTANCE_RESUMING"`,
         /// `"AWS_EC2_MANAGED_INSTANCE_RECYCLING"`,`"AWS_EC2_MANAGED_INSTANCE_DELETING"`.
-        /// Ocean Events:`"CLUSTER_ROLL_FINISHED"`,`"GROUP_ROLL_FAILED"`.
+        /// Ocean Events:`"CLUSTER_ROLL_FINISHED"`,`"GROUP_ROLL_FAILED"`,`"OCEAN_CANT_SCALE_UP_MAX_RESOURCES"`
+        /// `"OCEAN_LAUNCH_SPEC_CANT_SCALE_UP_MAX_INSTANCES"`,`"OCEAN_K8S_NODE_REMOVED"`.
         /// </summary>
         [Output("eventType")]
         public Output<string> EventType { get; private set; } = null!;
@@ -153,7 +154,8 @@ namespace Pulumi.SpotInst
         /// `"AWS_EC2_MANAGED_INSTANCE_PAUSING"`,
         /// `"AWS_EC2_MANAGED_INSTANCE_RESUMING"`,
         /// `"AWS_EC2_MANAGED_INSTANCE_RECYCLING"`,`"AWS_EC2_MANAGED_INSTANCE_DELETING"`.
-        /// Ocean Events:`"CLUSTER_ROLL_FINISHED"`,`"GROUP_ROLL_FAILED"`.
+        /// Ocean Events:`"CLUSTER_ROLL_FINISHED"`,`"GROUP_ROLL_FAILED"`,`"OCEAN_CANT_SCALE_UP_MAX_RESOURCES"`
+        /// `"OCEAN_LAUNCH_SPEC_CANT_SCALE_UP_MAX_INSTANCES"`,`"OCEAN_K8S_NODE_REMOVED"`.
         /// </summary>
         [Input("eventType", required: true)]
         public Input<string> EventType { get; set; } = null!;
@@ -212,7 +214,8 @@ namespace Pulumi.SpotInst
         /// `"AWS_EC2_MANAGED_INSTANCE_PAUSING"`,
         /// `"AWS_EC2_MANAGED_INSTANCE_RESUMING"`,
         /// `"AWS_EC2_MANAGED_INSTANCE_RECYCLING"`,`"AWS_EC2_MANAGED_INSTANCE_DELETING"`.
-        /// Ocean Events:`"CLUSTER_ROLL_FINISHED"`,`"GROUP_ROLL_FAILED"`.
+        /// Ocean Events:`"CLUSTER_ROLL_FINISHED"`,`"GROUP_ROLL_FAILED"`,`"OCEAN_CANT_SCALE_UP_MAX_RESOURCES"`
+        /// `"OCEAN_LAUNCH_SPEC_CANT_SCALE_UP_MAX_INSTANCES"`,`"OCEAN_K8S_NODE_REMOVED"`.
         /// </summary>
         [Input("eventType")]
         public Input<string>? EventType { get; set; }

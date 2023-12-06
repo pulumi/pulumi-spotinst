@@ -43,7 +43,8 @@ public final class SubscriptionState extends com.pulumi.resources.ResourceArgs {
      * `&#34;AWS_EC2_MANAGED_INSTANCE_PAUSING&#34;`,
      * `&#34;AWS_EC2_MANAGED_INSTANCE_RESUMING&#34;`,
      * `&#34;AWS_EC2_MANAGED_INSTANCE_RECYCLING&#34;`,`&#34;AWS_EC2_MANAGED_INSTANCE_DELETING&#34;`.
-     * Ocean Events:`&#34;CLUSTER_ROLL_FINISHED&#34;`,`&#34;GROUP_ROLL_FAILED&#34;`.
+     * Ocean Events:`&#34;CLUSTER_ROLL_FINISHED&#34;`,`&#34;GROUP_ROLL_FAILED&#34;`,`&#34;OCEAN_CANT_SCALE_UP_MAX_RESOURCES&#34;`
+     * `&#34;OCEAN_LAUNCH_SPEC_CANT_SCALE_UP_MAX_INSTANCES&#34;`,`&#34;OCEAN_K8S_NODE_REMOVED&#34;`.
      * 
      */
     @Import(name="eventType")
@@ -60,7 +61,8 @@ public final class SubscriptionState extends com.pulumi.resources.ResourceArgs {
      * `&#34;AWS_EC2_MANAGED_INSTANCE_PAUSING&#34;`,
      * `&#34;AWS_EC2_MANAGED_INSTANCE_RESUMING&#34;`,
      * `&#34;AWS_EC2_MANAGED_INSTANCE_RECYCLING&#34;`,`&#34;AWS_EC2_MANAGED_INSTANCE_DELETING&#34;`.
-     * Ocean Events:`&#34;CLUSTER_ROLL_FINISHED&#34;`,`&#34;GROUP_ROLL_FAILED&#34;`.
+     * Ocean Events:`&#34;CLUSTER_ROLL_FINISHED&#34;`,`&#34;GROUP_ROLL_FAILED&#34;`,`&#34;OCEAN_CANT_SCALE_UP_MAX_RESOURCES&#34;`
+     * `&#34;OCEAN_LAUNCH_SPEC_CANT_SCALE_UP_MAX_INSTANCES&#34;`,`&#34;OCEAN_K8S_NODE_REMOVED&#34;`.
      * 
      */
     public Optional<Output<String>> eventType() {
@@ -182,7 +184,8 @@ public final class SubscriptionState extends com.pulumi.resources.ResourceArgs {
          * `&#34;AWS_EC2_MANAGED_INSTANCE_PAUSING&#34;`,
          * `&#34;AWS_EC2_MANAGED_INSTANCE_RESUMING&#34;`,
          * `&#34;AWS_EC2_MANAGED_INSTANCE_RECYCLING&#34;`,`&#34;AWS_EC2_MANAGED_INSTANCE_DELETING&#34;`.
-         * Ocean Events:`&#34;CLUSTER_ROLL_FINISHED&#34;`,`&#34;GROUP_ROLL_FAILED&#34;`.
+         * Ocean Events:`&#34;CLUSTER_ROLL_FINISHED&#34;`,`&#34;GROUP_ROLL_FAILED&#34;`,`&#34;OCEAN_CANT_SCALE_UP_MAX_RESOURCES&#34;`
+         * `&#34;OCEAN_LAUNCH_SPEC_CANT_SCALE_UP_MAX_INSTANCES&#34;`,`&#34;OCEAN_K8S_NODE_REMOVED&#34;`.
          * 
          * @return builder
          * 
@@ -203,7 +206,8 @@ public final class SubscriptionState extends com.pulumi.resources.ResourceArgs {
          * `&#34;AWS_EC2_MANAGED_INSTANCE_PAUSING&#34;`,
          * `&#34;AWS_EC2_MANAGED_INSTANCE_RESUMING&#34;`,
          * `&#34;AWS_EC2_MANAGED_INSTANCE_RECYCLING&#34;`,`&#34;AWS_EC2_MANAGED_INSTANCE_DELETING&#34;`.
-         * Ocean Events:`&#34;CLUSTER_ROLL_FINISHED&#34;`,`&#34;GROUP_ROLL_FAILED&#34;`.
+         * Ocean Events:`&#34;CLUSTER_ROLL_FINISHED&#34;`,`&#34;GROUP_ROLL_FAILED&#34;`,`&#34;OCEAN_CANT_SCALE_UP_MAX_RESOURCES&#34;`
+         * `&#34;OCEAN_LAUNCH_SPEC_CANT_SCALE_UP_MAX_INSTANCES&#34;`,`&#34;OCEAN_K8S_NODE_REMOVED&#34;`.
          * 
          * @return builder
          * 
