@@ -3,7 +3,7 @@ module github.com/pulumi/pulumi-spotinst/provider/v3
 go 1.21
 
 require (
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.67.0
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.67.1-0.20231207031853-2c55739033aa
 	github.com/pulumi/pulumi/sdk/v3 v3.95.0
 	github.com/spotinst/terraform-provider-spotinst v0.0.0
 )
