@@ -38,9 +38,9 @@ public final class ManagedInstanceRevertToSpot {
             return this;
         }
         public ManagedInstanceRevertToSpot build() {
-            final var o = new ManagedInstanceRevertToSpot();
-            o.performAt = performAt;
-            return o;
+            final var _resultValue = new ManagedInstanceRevertToSpot();
+            _resultValue.performAt = performAt;
+            return _resultValue;
         }
     }
 }

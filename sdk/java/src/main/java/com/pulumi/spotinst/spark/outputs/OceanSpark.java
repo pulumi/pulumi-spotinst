@@ -51,9 +51,9 @@ public final class OceanSpark {
             return additionalAppNamespaces(List.of(additionalAppNamespaces));
         }
         public OceanSpark build() {
-            final var o = new OceanSpark();
-            o.additionalAppNamespaces = additionalAppNamespaces;
-            return o;
+            final var _resultValue = new OceanSpark();
+            _resultValue.additionalAppNamespaces = additionalAppNamespaces;
+            return _resultValue;
         }
     }
 }

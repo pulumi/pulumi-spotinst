@@ -68,10 +68,10 @@ public final class ElastigroupIntegrationKubernetesAutoscaleDown {
             return this;
         }
         public ElastigroupIntegrationKubernetesAutoscaleDown build() {
-            final var o = new ElastigroupIntegrationKubernetesAutoscaleDown();
-            o.evaluationPeriods = evaluationPeriods;
-            o.maxScaleDownPercentage = maxScaleDownPercentage;
-            return o;
+            final var _resultValue = new ElastigroupIntegrationKubernetesAutoscaleDown();
+            _resultValue.evaluationPeriods = evaluationPeriods;
+            _resultValue.maxScaleDownPercentage = maxScaleDownPercentage;
+            return _resultValue;
         }
     }
 }

@@ -400,26 +400,26 @@ public final class OceanLaunchSpecInstanceTypesFilters {
             return virtualizationTypes(List.of(virtualizationTypes));
         }
         public OceanLaunchSpecInstanceTypesFilters build() {
-            final var o = new OceanLaunchSpecInstanceTypesFilters();
-            o.categories = categories;
-            o.diskTypes = diskTypes;
-            o.excludeFamilies = excludeFamilies;
-            o.excludeMetal = excludeMetal;
-            o.hypervisors = hypervisors;
-            o.includeFamilies = includeFamilies;
-            o.isEnaSupported = isEnaSupported;
-            o.maxGpu = maxGpu;
-            o.maxMemoryGib = maxMemoryGib;
-            o.maxNetworkPerformance = maxNetworkPerformance;
-            o.maxVcpu = maxVcpu;
-            o.minEnis = minEnis;
-            o.minGpu = minGpu;
-            o.minMemoryGib = minMemoryGib;
-            o.minNetworkPerformance = minNetworkPerformance;
-            o.minVcpu = minVcpu;
-            o.rootDeviceTypes = rootDeviceTypes;
-            o.virtualizationTypes = virtualizationTypes;
-            return o;
+            final var _resultValue = new OceanLaunchSpecInstanceTypesFilters();
+            _resultValue.categories = categories;
+            _resultValue.diskTypes = diskTypes;
+            _resultValue.excludeFamilies = excludeFamilies;
+            _resultValue.excludeMetal = excludeMetal;
+            _resultValue.hypervisors = hypervisors;
+            _resultValue.includeFamilies = includeFamilies;
+            _resultValue.isEnaSupported = isEnaSupported;
+            _resultValue.maxGpu = maxGpu;
+            _resultValue.maxMemoryGib = maxMemoryGib;
+            _resultValue.maxNetworkPerformance = maxNetworkPerformance;
+            _resultValue.maxVcpu = maxVcpu;
+            _resultValue.minEnis = minEnis;
+            _resultValue.minGpu = minGpu;
+            _resultValue.minMemoryGib = minMemoryGib;
+            _resultValue.minNetworkPerformance = minNetworkPerformance;
+            _resultValue.minVcpu = minVcpu;
+            _resultValue.rootDeviceTypes = rootDeviceTypes;
+            _resultValue.virtualizationTypes = virtualizationTypes;
+            return _resultValue;
         }
     }
 }

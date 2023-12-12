@@ -62,11 +62,11 @@ public final class ElastigroupLogin {
             return this;
         }
         public ElastigroupLogin build() {
-            final var o = new ElastigroupLogin();
-            o.password = password;
-            o.sshPublicKey = sshPublicKey;
-            o.userName = userName;
-            return o;
+            final var _resultValue = new ElastigroupLogin();
+            _resultValue.password = password;
+            _resultValue.sshPublicKey = sshPublicKey;
+            _resultValue.userName = userName;
+            return _resultValue;
         }
     }
 }

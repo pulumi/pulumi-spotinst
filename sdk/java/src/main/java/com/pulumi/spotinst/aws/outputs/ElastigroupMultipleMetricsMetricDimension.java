@@ -67,10 +67,10 @@ public final class ElastigroupMultipleMetricsMetricDimension {
             return this;
         }
         public ElastigroupMultipleMetricsMetricDimension build() {
-            final var o = new ElastigroupMultipleMetricsMetricDimension();
-            o.name = name;
-            o.value = value;
-            return o;
+            final var _resultValue = new ElastigroupMultipleMetricsMetricDimension();
+            _resultValue.name = name;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

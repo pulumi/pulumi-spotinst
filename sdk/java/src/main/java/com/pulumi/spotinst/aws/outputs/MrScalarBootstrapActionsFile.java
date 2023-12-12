@@ -65,10 +65,10 @@ public final class MrScalarBootstrapActionsFile {
             return this;
         }
         public MrScalarBootstrapActionsFile build() {
-            final var o = new MrScalarBootstrapActionsFile();
-            o.bucket = bucket;
-            o.key = key;
-            return o;
+            final var _resultValue = new MrScalarBootstrapActionsFile();
+            _resultValue.bucket = bucket;
+            _resultValue.key = key;
+            return _resultValue;
         }
     }
 }

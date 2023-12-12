@@ -62,11 +62,11 @@ public final class ElastigroupAzureV3Login {
             return this;
         }
         public ElastigroupAzureV3Login build() {
-            final var o = new ElastigroupAzureV3Login();
-            o.password = password;
-            o.sshPublicKey = sshPublicKey;
-            o.userName = userName;
-            return o;
+            final var _resultValue = new ElastigroupAzureV3Login();
+            _resultValue.password = password;
+            _resultValue.sshPublicKey = sshPublicKey;
+            _resultValue.userName = userName;
+            return _resultValue;
         }
     }
 }

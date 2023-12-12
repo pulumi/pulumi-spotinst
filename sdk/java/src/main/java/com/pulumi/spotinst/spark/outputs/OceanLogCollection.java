@@ -48,9 +48,9 @@ public final class OceanLogCollection {
             return this;
         }
         public OceanLogCollection build() {
-            final var o = new OceanLogCollection();
-            o.collectAppLogs = collectAppLogs;
-            return o;
+            final var _resultValue = new OceanLogCollection();
+            _resultValue.collectAppLogs = collectAppLogs;
+            return _resultValue;
         }
     }
 }

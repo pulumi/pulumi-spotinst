@@ -74,12 +74,12 @@ public final class OceanUpdatePolicy {
             return this;
         }
         public OceanUpdatePolicy build() {
-            final var o = new OceanUpdatePolicy();
-            o.autoApplyTags = autoApplyTags;
-            o.conditionedRoll = conditionedRoll;
-            o.rollConfig = rollConfig;
-            o.shouldRoll = shouldRoll;
-            return o;
+            final var _resultValue = new OceanUpdatePolicy();
+            _resultValue.autoApplyTags = autoApplyTags;
+            _resultValue.conditionedRoll = conditionedRoll;
+            _resultValue.rollConfig = rollConfig;
+            _resultValue.shouldRoll = shouldRoll;
+            return _resultValue;
         }
     }
 }

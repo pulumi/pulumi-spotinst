@@ -69,10 +69,10 @@ public final class OceanLaunchSpecNetworkInterfaceAliasIpRange {
             return this;
         }
         public OceanLaunchSpecNetworkInterfaceAliasIpRange build() {
-            final var o = new OceanLaunchSpecNetworkInterfaceAliasIpRange();
-            o.ipCidrRange = ipCidrRange;
-            o.subnetworkRangeName = subnetworkRangeName;
-            return o;
+            final var _resultValue = new OceanLaunchSpecNetworkInterfaceAliasIpRange();
+            _resultValue.ipCidrRange = ipCidrRange;
+            _resultValue.subnetworkRangeName = subnetworkRangeName;
+            return _resultValue;
         }
     }
 }

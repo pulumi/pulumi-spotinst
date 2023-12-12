@@ -71,12 +71,12 @@ public final class ElastigroupAzureV3ImageMarketplace {
             return this;
         }
         public ElastigroupAzureV3ImageMarketplace build() {
-            final var o = new ElastigroupAzureV3ImageMarketplace();
-            o.offer = offer;
-            o.publisher = publisher;
-            o.sku = sku;
-            o.version = version;
-            return o;
+            final var _resultValue = new ElastigroupAzureV3ImageMarketplace();
+            _resultValue.offer = offer;
+            _resultValue.publisher = publisher;
+            _resultValue.sku = sku;
+            _resultValue.version = version;
+            return _resultValue;
         }
     }
 }

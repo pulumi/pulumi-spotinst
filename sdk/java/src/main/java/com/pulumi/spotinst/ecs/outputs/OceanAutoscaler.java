@@ -248,17 +248,17 @@ public final class OceanAutoscaler {
             return this;
         }
         public OceanAutoscaler build() {
-            final var o = new OceanAutoscaler();
-            o.autoHeadroomPercentage = autoHeadroomPercentage;
-            o.cooldown = cooldown;
-            o.down = down;
-            o.enableAutomaticAndManualHeadroom = enableAutomaticAndManualHeadroom;
-            o.headroom = headroom;
-            o.isAutoConfig = isAutoConfig;
-            o.isEnabled = isEnabled;
-            o.resourceLimits = resourceLimits;
-            o.shouldScaleDownNonServiceTasks = shouldScaleDownNonServiceTasks;
-            return o;
+            final var _resultValue = new OceanAutoscaler();
+            _resultValue.autoHeadroomPercentage = autoHeadroomPercentage;
+            _resultValue.cooldown = cooldown;
+            _resultValue.down = down;
+            _resultValue.enableAutomaticAndManualHeadroom = enableAutomaticAndManualHeadroom;
+            _resultValue.headroom = headroom;
+            _resultValue.isAutoConfig = isAutoConfig;
+            _resultValue.isEnabled = isEnabled;
+            _resultValue.resourceLimits = resourceLimits;
+            _resultValue.shouldScaleDownNonServiceTasks = shouldScaleDownNonServiceTasks;
+            return _resultValue;
         }
     }
 }

@@ -234,26 +234,26 @@ public final class ElastigroupScalingUpPolicy {
             return this;
         }
         public ElastigroupScalingUpPolicy build() {
-            final var o = new ElastigroupScalingUpPolicy();
-            o.actionType = actionType;
-            o.adjustment = adjustment;
-            o.cooldown = cooldown;
-            o.dimensions = dimensions;
-            o.evaluationPeriods = evaluationPeriods;
-            o.maxTargetCapacity = maxTargetCapacity;
-            o.maximum = maximum;
-            o.metricName = metricName;
-            o.minTargetCapacity = minTargetCapacity;
-            o.minimum = minimum;
-            o.namespace = namespace;
-            o.operator = operator;
-            o.period = period;
-            o.policyName = policyName;
-            o.statistic = statistic;
-            o.target = target;
-            o.threshold = threshold;
-            o.unit = unit;
-            return o;
+            final var _resultValue = new ElastigroupScalingUpPolicy();
+            _resultValue.actionType = actionType;
+            _resultValue.adjustment = adjustment;
+            _resultValue.cooldown = cooldown;
+            _resultValue.dimensions = dimensions;
+            _resultValue.evaluationPeriods = evaluationPeriods;
+            _resultValue.maxTargetCapacity = maxTargetCapacity;
+            _resultValue.maximum = maximum;
+            _resultValue.metricName = metricName;
+            _resultValue.minTargetCapacity = minTargetCapacity;
+            _resultValue.minimum = minimum;
+            _resultValue.namespace = namespace;
+            _resultValue.operator = operator;
+            _resultValue.period = period;
+            _resultValue.policyName = policyName;
+            _resultValue.statistic = statistic;
+            _resultValue.target = target;
+            _resultValue.threshold = threshold;
+            _resultValue.unit = unit;
+            return _resultValue;
         }
     }
 }

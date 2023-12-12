@@ -38,9 +38,9 @@ public final class OceanLaunchSpecUpdatePolicyRollConfig {
             return this;
         }
         public OceanLaunchSpecUpdatePolicyRollConfig build() {
-            final var o = new OceanLaunchSpecUpdatePolicyRollConfig();
-            o.batchSizePercentage = batchSizePercentage;
-            return o;
+            final var _resultValue = new OceanLaunchSpecUpdatePolicyRollConfig();
+            _resultValue.batchSizePercentage = batchSizePercentage;
+            return _resultValue;
         }
     }
 }

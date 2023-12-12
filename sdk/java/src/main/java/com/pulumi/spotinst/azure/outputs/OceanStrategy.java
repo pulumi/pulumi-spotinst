@@ -68,10 +68,10 @@ public final class OceanStrategy {
             return this;
         }
         public OceanStrategy build() {
-            final var o = new OceanStrategy();
-            o.fallbackToOndemand = fallbackToOndemand;
-            o.spotPercentage = spotPercentage;
-            return o;
+            final var _resultValue = new OceanStrategy();
+            _resultValue.fallbackToOndemand = fallbackToOndemand;
+            _resultValue.spotPercentage = spotPercentage;
+            return _resultValue;
         }
     }
 }

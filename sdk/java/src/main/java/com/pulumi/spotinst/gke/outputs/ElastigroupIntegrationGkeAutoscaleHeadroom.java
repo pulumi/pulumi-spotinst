@@ -86,11 +86,11 @@ public final class ElastigroupIntegrationGkeAutoscaleHeadroom {
             return this;
         }
         public ElastigroupIntegrationGkeAutoscaleHeadroom build() {
-            final var o = new ElastigroupIntegrationGkeAutoscaleHeadroom();
-            o.cpuPerUnit = cpuPerUnit;
-            o.memoryPerUnit = memoryPerUnit;
-            o.numOfUnits = numOfUnits;
-            return o;
+            final var _resultValue = new ElastigroupIntegrationGkeAutoscaleHeadroom();
+            _resultValue.cpuPerUnit = cpuPerUnit;
+            _resultValue.memoryPerUnit = memoryPerUnit;
+            _resultValue.numOfUnits = numOfUnits;
+            return _resultValue;
         }
     }
 }

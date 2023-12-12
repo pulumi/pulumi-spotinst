@@ -46,9 +46,9 @@ public final class ElastigroupLoggingExportS3 {
             return this;
         }
         public ElastigroupLoggingExportS3 build() {
-            final var o = new ElastigroupLoggingExportS3();
-            o.id = id;
-            return o;
+            final var _resultValue = new ElastigroupLoggingExportS3();
+            _resultValue.id = id;
+            return _resultValue;
         }
     }
 }

@@ -49,10 +49,10 @@ public final class StatefulNodeAzureManagedServiceIdentity {
             return this;
         }
         public StatefulNodeAzureManagedServiceIdentity build() {
-            final var o = new StatefulNodeAzureManagedServiceIdentity();
-            o.name = name;
-            o.resourceGroupName = resourceGroupName;
-            return o;
+            final var _resultValue = new StatefulNodeAzureManagedServiceIdentity();
+            _resultValue.name = name;
+            _resultValue.resourceGroupName = resourceGroupName;
+            return _resultValue;
         }
     }
 }

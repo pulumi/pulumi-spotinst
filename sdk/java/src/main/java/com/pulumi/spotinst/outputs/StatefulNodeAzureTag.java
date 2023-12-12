@@ -51,10 +51,10 @@ public final class StatefulNodeAzureTag {
             return this;
         }
         public StatefulNodeAzureTag build() {
-            final var o = new StatefulNodeAzureTag();
-            o.tagKey = tagKey;
-            o.tagValue = tagValue;
-            return o;
+            final var _resultValue = new StatefulNodeAzureTag();
+            _resultValue.tagKey = tagKey;
+            _resultValue.tagValue = tagValue;
+            return _resultValue;
         }
     }
 }

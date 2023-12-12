@@ -107,12 +107,12 @@ public final class ElastigroupIntegrationBeanstalkDeploymentPreferences {
             return this;
         }
         public ElastigroupIntegrationBeanstalkDeploymentPreferences build() {
-            final var o = new ElastigroupIntegrationBeanstalkDeploymentPreferences();
-            o.automaticRoll = automaticRoll;
-            o.batchSizePercentage = batchSizePercentage;
-            o.gracePeriod = gracePeriod;
-            o.strategy = strategy;
-            return o;
+            final var _resultValue = new ElastigroupIntegrationBeanstalkDeploymentPreferences();
+            _resultValue.automaticRoll = automaticRoll;
+            _resultValue.batchSizePercentage = batchSizePercentage;
+            _resultValue.gracePeriod = gracePeriod;
+            _resultValue.strategy = strategy;
+            return _resultValue;
         }
     }
 }

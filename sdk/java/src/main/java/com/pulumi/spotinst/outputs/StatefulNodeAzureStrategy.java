@@ -106,14 +106,14 @@ public final class StatefulNodeAzureStrategy {
             return this;
         }
         public StatefulNodeAzureStrategy build() {
-            final var o = new StatefulNodeAzureStrategy();
-            o.capacityReservations = capacityReservations;
-            o.drainingTimeout = drainingTimeout;
-            o.fallbackToOnDemand = fallbackToOnDemand;
-            o.optimizationWindows = optimizationWindows;
-            o.preferredLifeCycle = preferredLifeCycle;
-            o.revertToSpot = revertToSpot;
-            return o;
+            final var _resultValue = new StatefulNodeAzureStrategy();
+            _resultValue.capacityReservations = capacityReservations;
+            _resultValue.drainingTimeout = drainingTimeout;
+            _resultValue.fallbackToOnDemand = fallbackToOnDemand;
+            _resultValue.optimizationWindows = optimizationWindows;
+            _resultValue.preferredLifeCycle = preferredLifeCycle;
+            _resultValue.revertToSpot = revertToSpot;
+            return _resultValue;
         }
     }
 }

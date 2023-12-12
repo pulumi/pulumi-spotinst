@@ -128,13 +128,13 @@ public final class OceanLoadBalancer {
             return this;
         }
         public OceanLoadBalancer build() {
-            final var o = new OceanLoadBalancer();
-            o.backendPoolNames = backendPoolNames;
-            o.loadBalancerSku = loadBalancerSku;
-            o.name = name;
-            o.resourceGroupName = resourceGroupName;
-            o.type = type;
-            return o;
+            final var _resultValue = new OceanLoadBalancer();
+            _resultValue.backendPoolNames = backendPoolNames;
+            _resultValue.loadBalancerSku = loadBalancerSku;
+            _resultValue.name = name;
+            _resultValue.resourceGroupName = resourceGroupName;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

@@ -65,10 +65,10 @@ public final class ElastigroupManagedServiceIdentity {
             return this;
         }
         public ElastigroupManagedServiceIdentity build() {
-            final var o = new ElastigroupManagedServiceIdentity();
-            o.name = name;
-            o.resourceGroupName = resourceGroupName;
-            return o;
+            final var _resultValue = new ElastigroupManagedServiceIdentity();
+            _resultValue.name = name;
+            _resultValue.resourceGroupName = resourceGroupName;
+            return _resultValue;
         }
     }
 }

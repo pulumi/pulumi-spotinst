@@ -61,11 +61,11 @@ public final class StatefulNodeAzureSchedulingTask {
             return this;
         }
         public StatefulNodeAzureSchedulingTask build() {
-            final var o = new StatefulNodeAzureSchedulingTask();
-            o.cronExpression = cronExpression;
-            o.isEnabled = isEnabled;
-            o.type = type;
-            return o;
+            final var _resultValue = new StatefulNodeAzureSchedulingTask();
+            _resultValue.cronExpression = cronExpression;
+            _resultValue.isEnabled = isEnabled;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

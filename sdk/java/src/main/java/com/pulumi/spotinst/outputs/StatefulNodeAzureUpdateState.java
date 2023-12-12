@@ -38,9 +38,9 @@ public final class StatefulNodeAzureUpdateState {
             return this;
         }
         public StatefulNodeAzureUpdateState build() {
-            final var o = new StatefulNodeAzureUpdateState();
-            o.state = state;
-            return o;
+            final var _resultValue = new StatefulNodeAzureUpdateState();
+            _resultValue.state = state;
+            return _resultValue;
         }
     }
 }

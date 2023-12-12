@@ -57,10 +57,10 @@ public final class StatefulNodeAzureSecret {
             return vaultCertificates(List.of(vaultCertificates));
         }
         public StatefulNodeAzureSecret build() {
-            final var o = new StatefulNodeAzureSecret();
-            o.sourceVaults = sourceVaults;
-            o.vaultCertificates = vaultCertificates;
-            return o;
+            final var _resultValue = new StatefulNodeAzureSecret();
+            _resultValue.sourceVaults = sourceVaults;
+            _resultValue.vaultCertificates = vaultCertificates;
+            return _resultValue;
         }
     }
 }

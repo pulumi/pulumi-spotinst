@@ -78,10 +78,10 @@ public final class ElastigroupScalingDownPolicyStepAdjustment {
             return this;
         }
         public ElastigroupScalingDownPolicyStepAdjustment build() {
-            final var o = new ElastigroupScalingDownPolicyStepAdjustment();
-            o.action = action;
-            o.threshold = threshold;
-            return o;
+            final var _resultValue = new ElastigroupScalingDownPolicyStepAdjustment();
+            _resultValue.action = action;
+            _resultValue.threshold = threshold;
+            return _resultValue;
         }
     }
 }

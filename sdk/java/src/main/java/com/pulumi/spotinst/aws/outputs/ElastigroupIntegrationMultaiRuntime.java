@@ -94,9 +94,9 @@ public final class ElastigroupIntegrationMultaiRuntime {
             return this;
         }
         public ElastigroupIntegrationMultaiRuntime build() {
-            final var o = new ElastigroupIntegrationMultaiRuntime();
-            o.deploymentId = deploymentId;
-            return o;
+            final var _resultValue = new ElastigroupIntegrationMultaiRuntime();
+            _resultValue.deploymentId = deploymentId;
+            return _resultValue;
         }
     }
 }

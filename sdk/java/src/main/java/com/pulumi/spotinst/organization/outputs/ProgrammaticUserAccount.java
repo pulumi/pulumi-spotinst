@@ -67,10 +67,10 @@ public final class ProgrammaticUserAccount {
             return this;
         }
         public ProgrammaticUserAccount build() {
-            final var o = new ProgrammaticUserAccount();
-            o.accountId = accountId;
-            o.accountRole = accountRole;
-            return o;
+            final var _resultValue = new ProgrammaticUserAccount();
+            _resultValue.accountId = accountId;
+            _resultValue.accountRole = accountRole;
+            return _resultValue;
         }
     }
 }

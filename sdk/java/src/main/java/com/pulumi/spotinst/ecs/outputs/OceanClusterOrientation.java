@@ -48,9 +48,9 @@ public final class OceanClusterOrientation {
             return this;
         }
         public OceanClusterOrientation build() {
-            final var o = new OceanClusterOrientation();
-            o.availabilityVsCost = availabilityVsCost;
-            return o;
+            final var _resultValue = new OceanClusterOrientation();
+            _resultValue.availabilityVsCost = availabilityVsCost;
+            return _resultValue;
         }
     }
 }

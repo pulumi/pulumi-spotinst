@@ -49,10 +49,10 @@ public final class StatefulNodeAzureSecretSourceVault {
             return this;
         }
         public StatefulNodeAzureSecretSourceVault build() {
-            final var o = new StatefulNodeAzureSecretSourceVault();
-            o.name = name;
-            o.resourceGroupName = resourceGroupName;
-            return o;
+            final var _resultValue = new StatefulNodeAzureSecretSourceVault();
+            _resultValue.name = name;
+            _resultValue.resourceGroupName = resourceGroupName;
+            return _resultValue;
         }
     }
 }

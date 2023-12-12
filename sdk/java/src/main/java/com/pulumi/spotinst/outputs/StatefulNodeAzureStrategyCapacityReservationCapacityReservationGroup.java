@@ -63,11 +63,11 @@ public final class StatefulNodeAzureStrategyCapacityReservationCapacityReservati
             return this;
         }
         public StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroup build() {
-            final var o = new StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroup();
-            o.crgName = crgName;
-            o.crgResourceGroupName = crgResourceGroupName;
-            o.crgShouldPrioritize = crgShouldPrioritize;
-            return o;
+            final var _resultValue = new StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroup();
+            _resultValue.crgName = crgName;
+            _resultValue.crgResourceGroupName = crgResourceGroupName;
+            _resultValue.crgShouldPrioritize = crgShouldPrioritize;
+            return _resultValue;
         }
     }
 }

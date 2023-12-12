@@ -71,10 +71,10 @@ public final class ProgrammaticUserPolicy {
             return this;
         }
         public ProgrammaticUserPolicy build() {
-            final var o = new ProgrammaticUserPolicy();
-            o.policyAccountIds = policyAccountIds;
-            o.policyId = policyId;
-            return o;
+            final var _resultValue = new ProgrammaticUserPolicy();
+            _resultValue.policyAccountIds = policyAccountIds;
+            _resultValue.policyId = policyId;
+            return _resultValue;
         }
     }
 }

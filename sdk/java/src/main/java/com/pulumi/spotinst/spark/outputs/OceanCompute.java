@@ -67,10 +67,10 @@ public final class OceanCompute {
             return this;
         }
         public OceanCompute build() {
-            final var o = new OceanCompute();
-            o.createVngs = createVngs;
-            o.useTaints = useTaints;
-            return o;
+            final var _resultValue = new OceanCompute();
+            _resultValue.createVngs = createVngs;
+            _resultValue.useTaints = useTaints;
+            return _resultValue;
         }
     }
 }

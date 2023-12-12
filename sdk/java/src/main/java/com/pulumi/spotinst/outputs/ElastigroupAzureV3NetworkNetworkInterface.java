@@ -93,13 +93,13 @@ public final class ElastigroupAzureV3NetworkNetworkInterface {
             return this;
         }
         public ElastigroupAzureV3NetworkNetworkInterface build() {
-            final var o = new ElastigroupAzureV3NetworkNetworkInterface();
-            o.additionalIpConfigs = additionalIpConfigs;
-            o.applicationSecurityGroups = applicationSecurityGroups;
-            o.assignPublicIp = assignPublicIp;
-            o.isPrimary = isPrimary;
-            o.subnetName = subnetName;
-            return o;
+            final var _resultValue = new ElastigroupAzureV3NetworkNetworkInterface();
+            _resultValue.additionalIpConfigs = additionalIpConfigs;
+            _resultValue.applicationSecurityGroups = applicationSecurityGroups;
+            _resultValue.assignPublicIp = assignPublicIp;
+            _resultValue.isPrimary = isPrimary;
+            _resultValue.subnetName = subnetName;
+            return _resultValue;
         }
     }
 }

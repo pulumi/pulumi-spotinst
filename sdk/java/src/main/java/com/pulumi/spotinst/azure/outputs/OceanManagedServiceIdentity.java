@@ -65,10 +65,10 @@ public final class OceanManagedServiceIdentity {
             return this;
         }
         public OceanManagedServiceIdentity build() {
-            final var o = new OceanManagedServiceIdentity();
-            o.name = name;
-            o.resourceGroupName = resourceGroupName;
-            return o;
+            final var _resultValue = new OceanManagedServiceIdentity();
+            _resultValue.name = name;
+            _resultValue.resourceGroupName = resourceGroupName;
+            return _resultValue;
         }
     }
 }

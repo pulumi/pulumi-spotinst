@@ -230,16 +230,16 @@ public final class ElastigroupNetworkInterface {
             return this;
         }
         public ElastigroupNetworkInterface build() {
-            final var o = new ElastigroupNetworkInterface();
-            o.associateIpv6Address = associateIpv6Address;
-            o.associatePublicIpAddress = associatePublicIpAddress;
-            o.deleteOnTermination = deleteOnTermination;
-            o.description = description;
-            o.deviceIndex = deviceIndex;
-            o.networkInterfaceId = networkInterfaceId;
-            o.privateIpAddress = privateIpAddress;
-            o.secondaryPrivateIpAddressCount = secondaryPrivateIpAddressCount;
-            return o;
+            final var _resultValue = new ElastigroupNetworkInterface();
+            _resultValue.associateIpv6Address = associateIpv6Address;
+            _resultValue.associatePublicIpAddress = associatePublicIpAddress;
+            _resultValue.deleteOnTermination = deleteOnTermination;
+            _resultValue.description = description;
+            _resultValue.deviceIndex = deviceIndex;
+            _resultValue.networkInterfaceId = networkInterfaceId;
+            _resultValue.privateIpAddress = privateIpAddress;
+            _resultValue.secondaryPrivateIpAddressCount = secondaryPrivateIpAddressCount;
+            return _resultValue;
         }
     }
 }

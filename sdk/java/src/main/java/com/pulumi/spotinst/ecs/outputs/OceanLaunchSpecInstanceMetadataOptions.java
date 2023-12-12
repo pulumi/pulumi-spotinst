@@ -68,10 +68,10 @@ public final class OceanLaunchSpecInstanceMetadataOptions {
             return this;
         }
         public OceanLaunchSpecInstanceMetadataOptions build() {
-            final var o = new OceanLaunchSpecInstanceMetadataOptions();
-            o.httpPutResponseHopLimit = httpPutResponseHopLimit;
-            o.httpTokens = httpTokens;
-            return o;
+            final var _resultValue = new OceanLaunchSpecInstanceMetadataOptions();
+            _resultValue.httpPutResponseHopLimit = httpPutResponseHopLimit;
+            _resultValue.httpTokens = httpTokens;
+            return _resultValue;
         }
     }
 }

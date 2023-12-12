@@ -50,9 +50,9 @@ public final class ElastigroupIntegrationRoute53 {
             return domains(List.of(domains));
         }
         public ElastigroupIntegrationRoute53 build() {
-            final var o = new ElastigroupIntegrationRoute53();
-            o.domains = domains;
-            return o;
+            final var _resultValue = new ElastigroupIntegrationRoute53();
+            _resultValue.domains = domains;
+            return _resultValue;
         }
     }
 }

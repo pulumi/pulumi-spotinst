@@ -113,10 +113,10 @@ public final class ElastigroupIntegrationCodedeployDeploymentGroup {
             return this;
         }
         public ElastigroupIntegrationCodedeployDeploymentGroup build() {
-            final var o = new ElastigroupIntegrationCodedeployDeploymentGroup();
-            o.applicationName = applicationName;
-            o.deploymentGroupName = deploymentGroupName;
-            return o;
+            final var _resultValue = new ElastigroupIntegrationCodedeployDeploymentGroup();
+            _resultValue.applicationName = applicationName;
+            _resultValue.deploymentGroupName = deploymentGroupName;
+            return _resultValue;
         }
     }
 }

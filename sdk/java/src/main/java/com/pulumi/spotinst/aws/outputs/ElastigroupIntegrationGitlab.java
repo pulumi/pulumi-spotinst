@@ -48,9 +48,9 @@ public final class ElastigroupIntegrationGitlab {
             return this;
         }
         public ElastigroupIntegrationGitlab build() {
-            final var o = new ElastigroupIntegrationGitlab();
-            o.runner = runner;
-            return o;
+            final var _resultValue = new ElastigroupIntegrationGitlab();
+            _resultValue.runner = runner;
+            return _resultValue;
         }
     }
 }

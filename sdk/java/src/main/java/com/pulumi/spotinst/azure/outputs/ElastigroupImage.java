@@ -58,10 +58,10 @@ public final class ElastigroupImage {
             return marketplaces(List.of(marketplaces));
         }
         public ElastigroupImage build() {
-            final var o = new ElastigroupImage();
-            o.customs = customs;
-            o.marketplaces = marketplaces;
-            return o;
+            final var _resultValue = new ElastigroupImage();
+            _resultValue.customs = customs;
+            _resultValue.marketplaces = marketplaces;
+            return _resultValue;
         }
     }
 }

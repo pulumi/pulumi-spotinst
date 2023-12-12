@@ -50,10 +50,10 @@ public final class ElastigroupItfLoadBalancerListenerRuleStaticTargetGroup {
             return this;
         }
         public ElastigroupItfLoadBalancerListenerRuleStaticTargetGroup build() {
-            final var o = new ElastigroupItfLoadBalancerListenerRuleStaticTargetGroup();
-            o.arn = arn;
-            o.percentage = percentage;
-            return o;
+            final var _resultValue = new ElastigroupItfLoadBalancerListenerRuleStaticTargetGroup();
+            _resultValue.arn = arn;
+            _resultValue.percentage = percentage;
+            return _resultValue;
         }
     }
 }

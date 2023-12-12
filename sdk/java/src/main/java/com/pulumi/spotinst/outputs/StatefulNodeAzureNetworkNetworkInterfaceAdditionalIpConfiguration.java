@@ -49,10 +49,10 @@ public final class StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigura
             return this;
         }
         public StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfiguration build() {
-            final var o = new StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfiguration();
-            o.name = name;
-            o.privateIpAddressVersion = privateIpAddressVersion;
-            return o;
+            final var _resultValue = new StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfiguration();
+            _resultValue.name = name;
+            _resultValue.privateIpAddressVersion = privateIpAddressVersion;
+            return _resultValue;
         }
     }
 }

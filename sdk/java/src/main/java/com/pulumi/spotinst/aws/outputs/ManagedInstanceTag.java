@@ -51,10 +51,10 @@ public final class ManagedInstanceTag {
             return this;
         }
         public ManagedInstanceTag build() {
-            final var o = new ManagedInstanceTag();
-            o.key = key;
-            o.value = value;
-            return o;
+            final var _resultValue = new ManagedInstanceTag();
+            _resultValue.key = key;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

@@ -85,13 +85,13 @@ public final class ManagedInstanceScheduledTask {
             return this;
         }
         public ManagedInstanceScheduledTask build() {
-            final var o = new ManagedInstanceScheduledTask();
-            o.cronExpression = cronExpression;
-            o.frequency = frequency;
-            o.isEnabled = isEnabled;
-            o.startTime = startTime;
-            o.taskType = taskType;
-            return o;
+            final var _resultValue = new ManagedInstanceScheduledTask();
+            _resultValue.cronExpression = cronExpression;
+            _resultValue.frequency = frequency;
+            _resultValue.isEnabled = isEnabled;
+            _resultValue.startTime = startTime;
+            _resultValue.taskType = taskType;
+            return _resultValue;
         }
     }
 }

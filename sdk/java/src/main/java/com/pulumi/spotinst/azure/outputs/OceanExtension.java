@@ -125,13 +125,13 @@ public final class OceanExtension {
             return this;
         }
         public OceanExtension build() {
-            final var o = new OceanExtension();
-            o.apiVersion = apiVersion;
-            o.minorVersionAutoUpgrade = minorVersionAutoUpgrade;
-            o.name = name;
-            o.publisher = publisher;
-            o.type = type;
-            return o;
+            final var _resultValue = new OceanExtension();
+            _resultValue.apiVersion = apiVersion;
+            _resultValue.minorVersionAutoUpgrade = minorVersionAutoUpgrade;
+            _resultValue.name = name;
+            _resultValue.publisher = publisher;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

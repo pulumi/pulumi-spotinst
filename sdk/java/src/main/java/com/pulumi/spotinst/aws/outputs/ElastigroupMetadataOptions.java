@@ -87,11 +87,11 @@ public final class ElastigroupMetadataOptions {
             return this;
         }
         public ElastigroupMetadataOptions build() {
-            final var o = new ElastigroupMetadataOptions();
-            o.httpPutResponseHopLimit = httpPutResponseHopLimit;
-            o.httpTokens = httpTokens;
-            o.instanceMetadataTags = instanceMetadataTags;
-            return o;
+            final var _resultValue = new ElastigroupMetadataOptions();
+            _resultValue.httpPutResponseHopLimit = httpPutResponseHopLimit;
+            _resultValue.httpTokens = httpTokens;
+            _resultValue.instanceMetadataTags = instanceMetadataTags;
+            return _resultValue;
         }
     }
 }

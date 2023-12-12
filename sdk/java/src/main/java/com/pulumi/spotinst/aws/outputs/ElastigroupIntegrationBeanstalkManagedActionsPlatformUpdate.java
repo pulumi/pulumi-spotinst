@@ -134,11 +134,11 @@ public final class ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdate {
             return this;
         }
         public ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdate build() {
-            final var o = new ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdate();
-            o.performAt = performAt;
-            o.timeWindow = timeWindow;
-            o.updateLevel = updateLevel;
-            return o;
+            final var _resultValue = new ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdate();
+            _resultValue.performAt = performAt;
+            _resultValue.timeWindow = timeWindow;
+            _resultValue.updateLevel = updateLevel;
+            return _resultValue;
         }
     }
 }

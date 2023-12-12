@@ -163,15 +163,15 @@ public final class MrScalarScheduledTask {
             return this;
         }
         public MrScalarScheduledTask build() {
-            final var o = new MrScalarScheduledTask();
-            o.cron = cron;
-            o.desiredCapacity = desiredCapacity;
-            o.instanceGroupType = instanceGroupType;
-            o.isEnabled = isEnabled;
-            o.maxCapacity = maxCapacity;
-            o.minCapacity = minCapacity;
-            o.taskType = taskType;
-            return o;
+            final var _resultValue = new MrScalarScheduledTask();
+            _resultValue.cron = cron;
+            _resultValue.desiredCapacity = desiredCapacity;
+            _resultValue.instanceGroupType = instanceGroupType;
+            _resultValue.isEnabled = isEnabled;
+            _resultValue.maxCapacity = maxCapacity;
+            _resultValue.minCapacity = minCapacity;
+            _resultValue.taskType = taskType;
+            return _resultValue;
         }
     }
 }

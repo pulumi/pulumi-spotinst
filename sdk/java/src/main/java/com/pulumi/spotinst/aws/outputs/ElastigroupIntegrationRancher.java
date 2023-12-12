@@ -151,12 +151,12 @@ public final class ElastigroupIntegrationRancher {
             return this;
         }
         public ElastigroupIntegrationRancher build() {
-            final var o = new ElastigroupIntegrationRancher();
-            o.accessKey = accessKey;
-            o.masterHost = masterHost;
-            o.secretKey = secretKey;
-            o.version = version;
-            return o;
+            final var _resultValue = new ElastigroupIntegrationRancher();
+            _resultValue.accessKey = accessKey;
+            _resultValue.masterHost = masterHost;
+            _resultValue.secretKey = secretKey;
+            _resultValue.version = version;
+            return _resultValue;
         }
     }
 }

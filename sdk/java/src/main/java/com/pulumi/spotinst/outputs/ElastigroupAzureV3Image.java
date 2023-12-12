@@ -58,10 +58,10 @@ public final class ElastigroupAzureV3Image {
             return marketplaces(List.of(marketplaces));
         }
         public ElastigroupAzureV3Image build() {
-            final var o = new ElastigroupAzureV3Image();
-            o.customs = customs;
-            o.marketplaces = marketplaces;
-            return o;
+            final var _resultValue = new ElastigroupAzureV3Image();
+            _resultValue.customs = customs;
+            _resultValue.marketplaces = marketplaces;
+            return _resultValue;
         }
     }
 }

@@ -65,10 +65,10 @@ public final class MrScalarTag {
             return this;
         }
         public MrScalarTag build() {
-            final var o = new MrScalarTag();
-            o.key = key;
-            o.value = value;
-            return o;
+            final var _resultValue = new MrScalarTag();
+            _resultValue.key = key;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

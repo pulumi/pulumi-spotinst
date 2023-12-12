@@ -110,12 +110,12 @@ public final class ElastigroupIntegrationRoute53Domain {
             return this;
         }
         public ElastigroupIntegrationRoute53Domain build() {
-            final var o = new ElastigroupIntegrationRoute53Domain();
-            o.hostedZoneId = hostedZoneId;
-            o.recordSetType = recordSetType;
-            o.recordSets = recordSets;
-            o.spotinstAcctId = spotinstAcctId;
-            return o;
+            final var _resultValue = new ElastigroupIntegrationRoute53Domain();
+            _resultValue.hostedZoneId = hostedZoneId;
+            _resultValue.recordSetType = recordSetType;
+            _resultValue.recordSets = recordSets;
+            _resultValue.spotinstAcctId = spotinstAcctId;
+            return _resultValue;
         }
     }
 }

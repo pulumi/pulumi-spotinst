@@ -48,9 +48,9 @@ public final class OceanLogging {
             return this;
         }
         public OceanLogging build() {
-            final var o = new OceanLogging();
-            o.export = export;
-            return o;
+            final var _resultValue = new OceanLogging();
+            _resultValue.export = export;
+            return _resultValue;
         }
     }
 }

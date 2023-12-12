@@ -67,10 +67,10 @@ public final class OceanVirtualNodeGroupLaunchSpecificationTag {
             return this;
         }
         public OceanVirtualNodeGroupLaunchSpecificationTag build() {
-            final var o = new OceanVirtualNodeGroupLaunchSpecificationTag();
-            o.key = key;
-            o.value = value;
-            return o;
+            final var _resultValue = new OceanVirtualNodeGroupLaunchSpecificationTag();
+            _resultValue.key = key;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

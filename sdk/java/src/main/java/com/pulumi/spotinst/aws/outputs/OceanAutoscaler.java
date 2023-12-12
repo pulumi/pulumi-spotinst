@@ -137,17 +137,17 @@ public final class OceanAutoscaler {
             return this;
         }
         public OceanAutoscaler build() {
-            final var o = new OceanAutoscaler();
-            o.autoHeadroomPercentage = autoHeadroomPercentage;
-            o.autoscaleCooldown = autoscaleCooldown;
-            o.autoscaleDown = autoscaleDown;
-            o.autoscaleHeadroom = autoscaleHeadroom;
-            o.autoscaleIsAutoConfig = autoscaleIsAutoConfig;
-            o.autoscaleIsEnabled = autoscaleIsEnabled;
-            o.enableAutomaticAndManualHeadroom = enableAutomaticAndManualHeadroom;
-            o.extendedResourceDefinitions = extendedResourceDefinitions;
-            o.resourceLimits = resourceLimits;
-            return o;
+            final var _resultValue = new OceanAutoscaler();
+            _resultValue.autoHeadroomPercentage = autoHeadroomPercentage;
+            _resultValue.autoscaleCooldown = autoscaleCooldown;
+            _resultValue.autoscaleDown = autoscaleDown;
+            _resultValue.autoscaleHeadroom = autoscaleHeadroom;
+            _resultValue.autoscaleIsAutoConfig = autoscaleIsAutoConfig;
+            _resultValue.autoscaleIsEnabled = autoscaleIsEnabled;
+            _resultValue.enableAutomaticAndManualHeadroom = enableAutomaticAndManualHeadroom;
+            _resultValue.extendedResourceDefinitions = extendedResourceDefinitions;
+            _resultValue.resourceLimits = resourceLimits;
+            return _resultValue;
         }
     }
 }

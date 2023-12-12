@@ -162,13 +162,13 @@ public final class ElastigroupUpdatePolicyRollConfigStrategyOnFailure {
             return this;
         }
         public ElastigroupUpdatePolicyRollConfigStrategyOnFailure build() {
-            final var o = new ElastigroupUpdatePolicyRollConfigStrategyOnFailure();
-            o.actionType = actionType;
-            o.batchNum = batchNum;
-            o.drainingTimeout = drainingTimeout;
-            o.shouldDecrementTargetCapacity = shouldDecrementTargetCapacity;
-            o.shouldHandleAllBatches = shouldHandleAllBatches;
-            return o;
+            final var _resultValue = new ElastigroupUpdatePolicyRollConfigStrategyOnFailure();
+            _resultValue.actionType = actionType;
+            _resultValue.batchNum = batchNum;
+            _resultValue.drainingTimeout = drainingTimeout;
+            _resultValue.shouldDecrementTargetCapacity = shouldDecrementTargetCapacity;
+            _resultValue.shouldHandleAllBatches = shouldHandleAllBatches;
+            return _resultValue;
         }
     }
 }

@@ -48,9 +48,9 @@ public final class OceanLaunchSpecStrategy {
             return this;
         }
         public OceanLaunchSpecStrategy build() {
-            final var o = new OceanLaunchSpecStrategy();
-            o.preemptiblePercentage = preemptiblePercentage;
-            return o;
+            final var _resultValue = new OceanLaunchSpecStrategy();
+            _resultValue.preemptiblePercentage = preemptiblePercentage;
+            return _resultValue;
         }
     }
 }

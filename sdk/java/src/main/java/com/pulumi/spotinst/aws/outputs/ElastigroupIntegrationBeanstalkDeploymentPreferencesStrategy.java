@@ -68,10 +68,10 @@ public final class ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategy 
             return this;
         }
         public ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategy build() {
-            final var o = new ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategy();
-            o.action = action;
-            o.shouldDrainInstances = shouldDrainInstances;
-            return o;
+            final var _resultValue = new ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategy();
+            _resultValue.action = action;
+            _resultValue.shouldDrainInstances = shouldDrainInstances;
+            return _resultValue;
         }
     }
 }

@@ -98,13 +98,13 @@ public final class ElastigroupNetwork {
             return this;
         }
         public ElastigroupNetwork build() {
-            final var o = new ElastigroupNetwork();
-            o.additionalIpConfigs = additionalIpConfigs;
-            o.assignPublicIp = assignPublicIp;
-            o.resourceGroupName = resourceGroupName;
-            o.subnetName = subnetName;
-            o.virtualNetworkName = virtualNetworkName;
-            return o;
+            final var _resultValue = new ElastigroupNetwork();
+            _resultValue.additionalIpConfigs = additionalIpConfigs;
+            _resultValue.assignPublicIp = assignPublicIp;
+            _resultValue.resourceGroupName = resourceGroupName;
+            _resultValue.subnetName = subnetName;
+            _resultValue.virtualNetworkName = virtualNetworkName;
+            return _resultValue;
         }
     }
 }

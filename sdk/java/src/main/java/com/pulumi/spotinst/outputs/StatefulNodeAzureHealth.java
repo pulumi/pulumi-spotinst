@@ -79,12 +79,12 @@ public final class StatefulNodeAzureHealth {
             return this;
         }
         public StatefulNodeAzureHealth build() {
-            final var o = new StatefulNodeAzureHealth();
-            o.autoHealing = autoHealing;
-            o.gracePeriod = gracePeriod;
-            o.healthCheckTypes = healthCheckTypes;
-            o.unhealthyDuration = unhealthyDuration;
-            return o;
+            final var _resultValue = new StatefulNodeAzureHealth();
+            _resultValue.autoHealing = autoHealing;
+            _resultValue.gracePeriod = gracePeriod;
+            _resultValue.healthCheckTypes = healthCheckTypes;
+            _resultValue.unhealthyDuration = unhealthyDuration;
+            return _resultValue;
         }
     }
 }

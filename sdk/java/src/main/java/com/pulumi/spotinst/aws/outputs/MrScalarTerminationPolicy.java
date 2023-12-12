@@ -42,9 +42,9 @@ public final class MrScalarTerminationPolicy {
             return statements(List.of(statements));
         }
         public MrScalarTerminationPolicy build() {
-            final var o = new MrScalarTerminationPolicy();
-            o.statements = statements;
-            return o;
+            final var _resultValue = new MrScalarTerminationPolicy();
+            _resultValue.statements = statements;
+            return _resultValue;
         }
     }
 }

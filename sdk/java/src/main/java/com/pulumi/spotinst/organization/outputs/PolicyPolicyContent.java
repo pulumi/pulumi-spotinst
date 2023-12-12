@@ -50,9 +50,9 @@ public final class PolicyPolicyContent {
             return statements(List.of(statements));
         }
         public PolicyPolicyContent build() {
-            final var o = new PolicyPolicyContent();
-            o.statements = statements;
-            return o;
+            final var _resultValue = new PolicyPolicyContent();
+            _resultValue.statements = statements;
+            return _resultValue;
         }
     }
 }

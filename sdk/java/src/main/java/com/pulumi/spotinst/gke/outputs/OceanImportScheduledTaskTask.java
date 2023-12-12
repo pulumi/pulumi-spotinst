@@ -101,12 +101,12 @@ public final class OceanImportScheduledTaskTask {
             return this;
         }
         public OceanImportScheduledTaskTask build() {
-            final var o = new OceanImportScheduledTaskTask();
-            o.cronExpression = cronExpression;
-            o.isEnabled = isEnabled;
-            o.taskParameters = taskParameters;
-            o.taskType = taskType;
-            return o;
+            final var _resultValue = new OceanImportScheduledTaskTask();
+            _resultValue.cronExpression = cronExpression;
+            _resultValue.isEnabled = isEnabled;
+            _resultValue.taskParameters = taskParameters;
+            _resultValue.taskType = taskType;
+            return _resultValue;
         }
     }
 }

@@ -49,10 +49,10 @@ public final class StatefulNodeAzureNetworkNetworkInterfacePublicIp {
             return this;
         }
         public StatefulNodeAzureNetworkNetworkInterfacePublicIp build() {
-            final var o = new StatefulNodeAzureNetworkNetworkInterfacePublicIp();
-            o.name = name;
-            o.networkResourceGroupName = networkResourceGroupName;
-            return o;
+            final var _resultValue = new StatefulNodeAzureNetworkNetworkInterfacePublicIp();
+            _resultValue.name = name;
+            _resultValue.networkResourceGroupName = networkResourceGroupName;
+            return _resultValue;
         }
     }
 }

@@ -70,11 +70,11 @@ public final class ElastigroupNetworkInterface {
             return this;
         }
         public ElastigroupNetworkInterface build() {
-            final var o = new ElastigroupNetworkInterface();
-            o.accessConfigs = accessConfigs;
-            o.aliasIpRanges = aliasIpRanges;
-            o.network = network;
-            return o;
+            final var _resultValue = new ElastigroupNetworkInterface();
+            _resultValue.accessConfigs = accessConfigs;
+            _resultValue.aliasIpRanges = aliasIpRanges;
+            _resultValue.network = network;
+            return _resultValue;
         }
     }
 }

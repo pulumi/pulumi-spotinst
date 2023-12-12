@@ -67,10 +67,10 @@ public final class OceanNetworkNetworkInterfaceAdditionalIpConfig {
             return this;
         }
         public OceanNetworkNetworkInterfaceAdditionalIpConfig build() {
-            final var o = new OceanNetworkNetworkInterfaceAdditionalIpConfig();
-            o.name = name;
-            o.privateIpVersion = privateIpVersion;
-            return o;
+            final var _resultValue = new OceanNetworkNetworkInterfaceAdditionalIpConfig();
+            _resultValue.name = name;
+            _resultValue.privateIpVersion = privateIpVersion;
+            return _resultValue;
         }
     }
 }

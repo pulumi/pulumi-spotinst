@@ -52,9 +52,9 @@ public final class OceanLaunchSpecStrategy {
             return this;
         }
         public OceanLaunchSpecStrategy build() {
-            final var o = new OceanLaunchSpecStrategy();
-            o.spotPercentage = spotPercentage;
-            return o;
+            final var _resultValue = new OceanLaunchSpecStrategy();
+            _resultValue.spotPercentage = spotPercentage;
+            return _resultValue;
         }
     }
 }

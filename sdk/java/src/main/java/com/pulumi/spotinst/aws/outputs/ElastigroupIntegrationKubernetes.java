@@ -316,18 +316,18 @@ public final class ElastigroupIntegrationKubernetes {
             return this;
         }
         public ElastigroupIntegrationKubernetes build() {
-            final var o = new ElastigroupIntegrationKubernetes();
-            o.apiServer = apiServer;
-            o.autoscaleCooldown = autoscaleCooldown;
-            o.autoscaleDown = autoscaleDown;
-            o.autoscaleHeadroom = autoscaleHeadroom;
-            o.autoscaleIsAutoConfig = autoscaleIsAutoConfig;
-            o.autoscaleIsEnabled = autoscaleIsEnabled;
-            o.autoscaleLabels = autoscaleLabels;
-            o.clusterIdentifier = clusterIdentifier;
-            o.integrationMode = integrationMode;
-            o.token = token;
-            return o;
+            final var _resultValue = new ElastigroupIntegrationKubernetes();
+            _resultValue.apiServer = apiServer;
+            _resultValue.autoscaleCooldown = autoscaleCooldown;
+            _resultValue.autoscaleDown = autoscaleDown;
+            _resultValue.autoscaleHeadroom = autoscaleHeadroom;
+            _resultValue.autoscaleIsAutoConfig = autoscaleIsAutoConfig;
+            _resultValue.autoscaleIsEnabled = autoscaleIsEnabled;
+            _resultValue.autoscaleLabels = autoscaleLabels;
+            _resultValue.clusterIdentifier = clusterIdentifier;
+            _resultValue.integrationMode = integrationMode;
+            _resultValue.token = token;
+            return _resultValue;
         }
     }
 }

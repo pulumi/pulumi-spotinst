@@ -50,10 +50,10 @@ public final class ElastigroupItfDefaultStaticTargetGroup {
             return this;
         }
         public ElastigroupItfDefaultStaticTargetGroup build() {
-            final var o = new ElastigroupItfDefaultStaticTargetGroup();
-            o.arn = arn;
-            o.percentage = percentage;
-            return o;
+            final var _resultValue = new ElastigroupItfDefaultStaticTargetGroup();
+            _resultValue.arn = arn;
+            _resultValue.percentage = percentage;
+            return _resultValue;
         }
     }
 }

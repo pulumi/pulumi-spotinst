@@ -57,10 +57,10 @@ public final class ElastigroupInstanceTypesCustom {
             return this;
         }
         public ElastigroupInstanceTypesCustom build() {
-            final var o = new ElastigroupInstanceTypesCustom();
-            o.memoryGib = memoryGib;
-            o.vcpu = vcpu;
-            return o;
+            final var _resultValue = new ElastigroupInstanceTypesCustom();
+            _resultValue.memoryGib = memoryGib;
+            _resultValue.vcpu = vcpu;
+            return _resultValue;
         }
     }
 }

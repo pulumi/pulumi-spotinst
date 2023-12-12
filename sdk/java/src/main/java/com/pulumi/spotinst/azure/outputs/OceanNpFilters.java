@@ -198,22 +198,22 @@ public final class OceanNpFilters {
             return vmTypes(List.of(vmTypes));
         }
         public OceanNpFilters build() {
-            final var o = new OceanNpFilters();
-            o.acceleratedNetworking = acceleratedNetworking;
-            o.architectures = architectures;
-            o.diskPerformance = diskPerformance;
-            o.excludeSeries = excludeSeries;
-            o.maxGpu = maxGpu;
-            o.maxMemoryGib = maxMemoryGib;
-            o.maxVcpu = maxVcpu;
-            o.minDisk = minDisk;
-            o.minGpu = minGpu;
-            o.minMemoryGib = minMemoryGib;
-            o.minNics = minNics;
-            o.minVcpu = minVcpu;
-            o.series = series;
-            o.vmTypes = vmTypes;
-            return o;
+            final var _resultValue = new OceanNpFilters();
+            _resultValue.acceleratedNetworking = acceleratedNetworking;
+            _resultValue.architectures = architectures;
+            _resultValue.diskPerformance = diskPerformance;
+            _resultValue.excludeSeries = excludeSeries;
+            _resultValue.maxGpu = maxGpu;
+            _resultValue.maxMemoryGib = maxMemoryGib;
+            _resultValue.maxVcpu = maxVcpu;
+            _resultValue.minDisk = minDisk;
+            _resultValue.minGpu = minGpu;
+            _resultValue.minMemoryGib = minMemoryGib;
+            _resultValue.minNics = minNics;
+            _resultValue.minVcpu = minVcpu;
+            _resultValue.series = series;
+            _resultValue.vmTypes = vmTypes;
+            return _resultValue;
         }
     }
 }

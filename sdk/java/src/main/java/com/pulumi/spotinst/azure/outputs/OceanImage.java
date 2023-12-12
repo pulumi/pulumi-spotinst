@@ -51,9 +51,9 @@ public final class OceanImage {
             return marketplaces(List.of(marketplaces));
         }
         public OceanImage build() {
-            final var o = new OceanImage();
-            o.marketplaces = marketplaces;
-            return o;
+            final var _resultValue = new OceanImage();
+            _resultValue.marketplaces = marketplaces;
+            return _resultValue;
         }
     }
 }

@@ -65,10 +65,10 @@ public final class MrScalarStepsFile {
             return this;
         }
         public MrScalarStepsFile build() {
-            final var o = new MrScalarStepsFile();
-            o.bucket = bucket;
-            o.key = key;
-            return o;
+            final var _resultValue = new MrScalarStepsFile();
+            _resultValue.bucket = bucket;
+            _resultValue.key = key;
+            return _resultValue;
         }
     }
 }

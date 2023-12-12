@@ -48,9 +48,9 @@ public final class OceanLaunchSpecElasticIpPool {
             return this;
         }
         public OceanLaunchSpecElasticIpPool build() {
-            final var o = new OceanLaunchSpecElasticIpPool();
-            o.tagSelector = tagSelector;
-            return o;
+            final var _resultValue = new OceanLaunchSpecElasticIpPool();
+            _resultValue.tagSelector = tagSelector;
+            return _resultValue;
         }
     }
 }

@@ -52,10 +52,10 @@ public final class OceanLaunchSpecUpdatePolicy {
             return this;
         }
         public OceanLaunchSpecUpdatePolicy build() {
-            final var o = new OceanLaunchSpecUpdatePolicy();
-            o.rollConfig = rollConfig;
-            o.shouldRoll = shouldRoll;
-            return o;
+            final var _resultValue = new OceanLaunchSpecUpdatePolicy();
+            _resultValue.rollConfig = rollConfig;
+            _resultValue.shouldRoll = shouldRoll;
+            return _resultValue;
         }
     }
 }

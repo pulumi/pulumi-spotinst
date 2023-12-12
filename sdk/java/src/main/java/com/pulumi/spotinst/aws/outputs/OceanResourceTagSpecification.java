@@ -48,9 +48,9 @@ public final class OceanResourceTagSpecification {
             return this;
         }
         public OceanResourceTagSpecification build() {
-            final var o = new OceanResourceTagSpecification();
-            o.shouldTagVolumes = shouldTagVolumes;
-            return o;
+            final var _resultValue = new OceanResourceTagSpecification();
+            _resultValue.shouldTagVolumes = shouldTagVolumes;
+            return _resultValue;
         }
     }
 }

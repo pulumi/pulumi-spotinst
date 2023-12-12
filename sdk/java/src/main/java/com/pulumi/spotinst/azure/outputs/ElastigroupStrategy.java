@@ -62,11 +62,11 @@ public final class ElastigroupStrategy {
             return this;
         }
         public ElastigroupStrategy build() {
-            final var o = new ElastigroupStrategy();
-            o.drainingTimeout = drainingTimeout;
-            o.lowPriorityPercentage = lowPriorityPercentage;
-            o.odCount = odCount;
-            return o;
+            final var _resultValue = new ElastigroupStrategy();
+            _resultValue.drainingTimeout = drainingTimeout;
+            _resultValue.lowPriorityPercentage = lowPriorityPercentage;
+            _resultValue.odCount = odCount;
+            return _resultValue;
         }
     }
 }

@@ -72,10 +72,10 @@ public final class OceanWebhook {
             return this;
         }
         public OceanWebhook build() {
-            final var o = new OceanWebhook();
-            o.hostNetworkPorts = hostNetworkPorts;
-            o.useHostNetwork = useHostNetwork;
-            return o;
+            final var _resultValue = new OceanWebhook();
+            _resultValue.hostNetworkPorts = hostNetworkPorts;
+            _resultValue.useHostNetwork = useHostNetwork;
+            return _resultValue;
         }
     }
 }

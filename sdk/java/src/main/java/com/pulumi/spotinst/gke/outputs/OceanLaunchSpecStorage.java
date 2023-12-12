@@ -48,9 +48,9 @@ public final class OceanLaunchSpecStorage {
             return this;
         }
         public OceanLaunchSpecStorage build() {
-            final var o = new OceanLaunchSpecStorage();
-            o.localSsdCount = localSsdCount;
-            return o;
+            final var _resultValue = new OceanLaunchSpecStorage();
+            _resultValue.localSsdCount = localSsdCount;
+            return _resultValue;
         }
     }
 }

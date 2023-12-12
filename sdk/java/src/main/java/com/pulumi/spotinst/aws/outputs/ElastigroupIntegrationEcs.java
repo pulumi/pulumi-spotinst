@@ -210,17 +210,17 @@ public final class ElastigroupIntegrationEcs {
             return this;
         }
         public ElastigroupIntegrationEcs build() {
-            final var o = new ElastigroupIntegrationEcs();
-            o.autoscaleAttributes = autoscaleAttributes;
-            o.autoscaleCooldown = autoscaleCooldown;
-            o.autoscaleDown = autoscaleDown;
-            o.autoscaleHeadroom = autoscaleHeadroom;
-            o.autoscaleIsAutoConfig = autoscaleIsAutoConfig;
-            o.autoscaleIsEnabled = autoscaleIsEnabled;
-            o.autoscaleScaleDownNonServiceTasks = autoscaleScaleDownNonServiceTasks;
-            o.batch = batch;
-            o.clusterName = clusterName;
-            return o;
+            final var _resultValue = new ElastigroupIntegrationEcs();
+            _resultValue.autoscaleAttributes = autoscaleAttributes;
+            _resultValue.autoscaleCooldown = autoscaleCooldown;
+            _resultValue.autoscaleDown = autoscaleDown;
+            _resultValue.autoscaleHeadroom = autoscaleHeadroom;
+            _resultValue.autoscaleIsAutoConfig = autoscaleIsAutoConfig;
+            _resultValue.autoscaleIsEnabled = autoscaleIsEnabled;
+            _resultValue.autoscaleScaleDownNonServiceTasks = autoscaleScaleDownNonServiceTasks;
+            _resultValue.batch = batch;
+            _resultValue.clusterName = clusterName;
+            return _resultValue;
         }
     }
 }

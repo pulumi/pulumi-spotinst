@@ -286,22 +286,22 @@ public final class ElastigroupScalingDownPolicy {
             return this;
         }
         public ElastigroupScalingDownPolicy build() {
-            final var o = new ElastigroupScalingDownPolicy();
-            o.actionType = actionType;
-            o.adjustment = adjustment;
-            o.cooldown = cooldown;
-            o.dimensions = dimensions;
-            o.evaluationPeriods = evaluationPeriods;
-            o.metricName = metricName;
-            o.namespace = namespace;
-            o.operator = operator;
-            o.period = period;
-            o.policyName = policyName;
-            o.source = source;
-            o.statistic = statistic;
-            o.threshold = threshold;
-            o.unit = unit;
-            return o;
+            final var _resultValue = new ElastigroupScalingDownPolicy();
+            _resultValue.actionType = actionType;
+            _resultValue.adjustment = adjustment;
+            _resultValue.cooldown = cooldown;
+            _resultValue.dimensions = dimensions;
+            _resultValue.evaluationPeriods = evaluationPeriods;
+            _resultValue.metricName = metricName;
+            _resultValue.namespace = namespace;
+            _resultValue.operator = operator;
+            _resultValue.period = period;
+            _resultValue.policyName = policyName;
+            _resultValue.source = source;
+            _resultValue.statistic = statistic;
+            _resultValue.threshold = threshold;
+            _resultValue.unit = unit;
+            return _resultValue;
         }
     }
 }

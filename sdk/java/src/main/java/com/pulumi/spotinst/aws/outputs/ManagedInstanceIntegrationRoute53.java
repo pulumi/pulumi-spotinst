@@ -42,9 +42,9 @@ public final class ManagedInstanceIntegrationRoute53 {
             return domains(List.of(domains));
         }
         public ManagedInstanceIntegrationRoute53 build() {
-            final var o = new ManagedInstanceIntegrationRoute53();
-            o.domains = domains;
-            return o;
+            final var _resultValue = new ManagedInstanceIntegrationRoute53();
+            _resultValue.domains = domains;
+            return _resultValue;
         }
     }
 }

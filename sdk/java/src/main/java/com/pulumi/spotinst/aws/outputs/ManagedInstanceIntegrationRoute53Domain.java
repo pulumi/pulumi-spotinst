@@ -78,12 +78,12 @@ public final class ManagedInstanceIntegrationRoute53Domain {
             return this;
         }
         public ManagedInstanceIntegrationRoute53Domain build() {
-            final var o = new ManagedInstanceIntegrationRoute53Domain();
-            o.hostedZoneId = hostedZoneId;
-            o.recordSetType = recordSetType;
-            o.recordSets = recordSets;
-            o.spotinstAcctId = spotinstAcctId;
-            return o;
+            final var _resultValue = new ManagedInstanceIntegrationRoute53Domain();
+            _resultValue.hostedZoneId = hostedZoneId;
+            _resultValue.recordSetType = recordSetType;
+            _resultValue.recordSets = recordSets;
+            _resultValue.spotinstAcctId = spotinstAcctId;
+            return _resultValue;
         }
     }
 }

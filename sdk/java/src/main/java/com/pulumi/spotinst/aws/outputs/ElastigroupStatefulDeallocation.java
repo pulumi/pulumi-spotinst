@@ -153,12 +153,12 @@ public final class ElastigroupStatefulDeallocation {
             return this;
         }
         public ElastigroupStatefulDeallocation build() {
-            final var o = new ElastigroupStatefulDeallocation();
-            o.shouldDeleteImages = shouldDeleteImages;
-            o.shouldDeleteNetworkInterfaces = shouldDeleteNetworkInterfaces;
-            o.shouldDeleteSnapshots = shouldDeleteSnapshots;
-            o.shouldDeleteVolumes = shouldDeleteVolumes;
-            return o;
+            final var _resultValue = new ElastigroupStatefulDeallocation();
+            _resultValue.shouldDeleteImages = shouldDeleteImages;
+            _resultValue.shouldDeleteNetworkInterfaces = shouldDeleteNetworkInterfaces;
+            _resultValue.shouldDeleteSnapshots = shouldDeleteSnapshots;
+            _resultValue.shouldDeleteVolumes = shouldDeleteVolumes;
+            return _resultValue;
         }
     }
 }

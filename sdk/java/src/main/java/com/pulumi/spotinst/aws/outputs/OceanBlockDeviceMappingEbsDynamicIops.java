@@ -77,11 +77,11 @@ public final class OceanBlockDeviceMappingEbsDynamicIops {
             return this;
         }
         public OceanBlockDeviceMappingEbsDynamicIops build() {
-            final var o = new OceanBlockDeviceMappingEbsDynamicIops();
-            o.baseSize = baseSize;
-            o.resource = resource;
-            o.sizePerResourceUnit = sizePerResourceUnit;
-            return o;
+            final var _resultValue = new OceanBlockDeviceMappingEbsDynamicIops();
+            _resultValue.baseSize = baseSize;
+            _resultValue.resource = resource;
+            _resultValue.sizePerResourceUnit = sizePerResourceUnit;
+            return _resultValue;
         }
     }
 }

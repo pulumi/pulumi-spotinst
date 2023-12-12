@@ -192,14 +192,14 @@ public final class ElastigroupScheduledTask {
             return this;
         }
         public ElastigroupScheduledTask build() {
-            final var o = new ElastigroupScheduledTask();
-            o.cronExpression = cronExpression;
-            o.isEnabled = isEnabled;
-            o.maxCapacity = maxCapacity;
-            o.minCapacity = minCapacity;
-            o.targetCapacity = targetCapacity;
-            o.taskType = taskType;
-            return o;
+            final var _resultValue = new ElastigroupScheduledTask();
+            _resultValue.cronExpression = cronExpression;
+            _resultValue.isEnabled = isEnabled;
+            _resultValue.maxCapacity = maxCapacity;
+            _resultValue.minCapacity = minCapacity;
+            _resultValue.targetCapacity = targetCapacity;
+            _resultValue.taskType = taskType;
+            return _resultValue;
         }
     }
 }

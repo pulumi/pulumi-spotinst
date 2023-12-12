@@ -48,9 +48,9 @@ public final class ElastigroupIntegrationGkeAutoscaleDown {
             return this;
         }
         public ElastigroupIntegrationGkeAutoscaleDown build() {
-            final var o = new ElastigroupIntegrationGkeAutoscaleDown();
-            o.evaluationPeriods = evaluationPeriods;
-            return o;
+            final var _resultValue = new ElastigroupIntegrationGkeAutoscaleDown();
+            _resultValue.evaluationPeriods = evaluationPeriods;
+            return _resultValue;
         }
     }
 }

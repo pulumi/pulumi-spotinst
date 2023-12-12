@@ -67,10 +67,10 @@ public final class OceanNetworkNetworkInterfaceSecurityGroup {
             return this;
         }
         public OceanNetworkNetworkInterfaceSecurityGroup build() {
-            final var o = new OceanNetworkNetworkInterfaceSecurityGroup();
-            o.name = name;
-            o.resourceGroupName = resourceGroupName;
-            return o;
+            final var _resultValue = new OceanNetworkNetworkInterfaceSecurityGroup();
+            _resultValue.name = name;
+            _resultValue.resourceGroupName = resourceGroupName;
+            return _resultValue;
         }
     }
 }

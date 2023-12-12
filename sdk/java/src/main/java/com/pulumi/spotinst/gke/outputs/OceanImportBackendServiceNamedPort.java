@@ -61,10 +61,10 @@ public final class OceanImportBackendServiceNamedPort {
             return ports(List.of(ports));
         }
         public OceanImportBackendServiceNamedPort build() {
-            final var o = new OceanImportBackendServiceNamedPort();
-            o.name = name;
-            o.ports = ports;
-            return o;
+            final var _resultValue = new OceanImportBackendServiceNamedPort();
+            _resultValue.name = name;
+            _resultValue.ports = ports;
+            return _resultValue;
         }
     }
 }

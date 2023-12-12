@@ -67,10 +67,10 @@ public final class OceanLaunchSpecMetadata {
             return this;
         }
         public OceanLaunchSpecMetadata build() {
-            final var o = new OceanLaunchSpecMetadata();
-            o.key = key;
-            o.value = value;
-            return o;
+            final var _resultValue = new OceanLaunchSpecMetadata();
+            _resultValue.key = key;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

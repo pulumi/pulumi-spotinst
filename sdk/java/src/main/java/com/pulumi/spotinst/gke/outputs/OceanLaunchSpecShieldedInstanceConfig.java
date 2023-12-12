@@ -67,10 +67,10 @@ public final class OceanLaunchSpecShieldedInstanceConfig {
             return this;
         }
         public OceanLaunchSpecShieldedInstanceConfig build() {
-            final var o = new OceanLaunchSpecShieldedInstanceConfig();
-            o.enableIntegrityMonitoring = enableIntegrityMonitoring;
-            o.enableSecureBoot = enableSecureBoot;
-            return o;
+            final var _resultValue = new OceanLaunchSpecShieldedInstanceConfig();
+            _resultValue.enableIntegrityMonitoring = enableIntegrityMonitoring;
+            _resultValue.enableSecureBoot = enableSecureBoot;
+            return _resultValue;
         }
     }
 }

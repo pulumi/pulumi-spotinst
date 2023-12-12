@@ -111,12 +111,12 @@ public final class BeanstalkDeploymentPreferences {
             return strategies(List.of(strategies));
         }
         public BeanstalkDeploymentPreferences build() {
-            final var o = new BeanstalkDeploymentPreferences();
-            o.automaticRoll = automaticRoll;
-            o.batchSizePercentage = batchSizePercentage;
-            o.gracePeriod = gracePeriod;
-            o.strategies = strategies;
-            return o;
+            final var _resultValue = new BeanstalkDeploymentPreferences();
+            _resultValue.automaticRoll = automaticRoll;
+            _resultValue.batchSizePercentage = batchSizePercentage;
+            _resultValue.gracePeriod = gracePeriod;
+            _resultValue.strategies = strategies;
+            return _resultValue;
         }
     }
 }

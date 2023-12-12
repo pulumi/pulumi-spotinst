@@ -91,11 +91,11 @@ public final class OceanNetwork {
             return this;
         }
         public OceanNetwork build() {
-            final var o = new OceanNetwork();
-            o.networkInterfaces = networkInterfaces;
-            o.resourceGroupName = resourceGroupName;
-            o.virtualNetworkName = virtualNetworkName;
-            return o;
+            final var _resultValue = new OceanNetwork();
+            _resultValue.networkInterfaces = networkInterfaces;
+            _resultValue.resourceGroupName = resourceGroupName;
+            _resultValue.virtualNetworkName = virtualNetworkName;
+            return _resultValue;
         }
     }
 }

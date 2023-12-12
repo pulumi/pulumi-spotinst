@@ -63,11 +63,11 @@ public final class StatefulNodeAzureSecurity {
             return this;
         }
         public StatefulNodeAzureSecurity build() {
-            final var o = new StatefulNodeAzureSecurity();
-            o.secureBootEnabled = secureBootEnabled;
-            o.securityType = securityType;
-            o.vtpmEnabled = vtpmEnabled;
-            return o;
+            final var _resultValue = new StatefulNodeAzureSecurity();
+            _resultValue.secureBootEnabled = secureBootEnabled;
+            _resultValue.securityType = securityType;
+            _resultValue.vtpmEnabled = vtpmEnabled;
+            return _resultValue;
         }
     }
 }

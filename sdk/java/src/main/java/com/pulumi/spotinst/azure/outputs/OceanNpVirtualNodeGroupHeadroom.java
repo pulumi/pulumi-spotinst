@@ -73,12 +73,12 @@ public final class OceanNpVirtualNodeGroupHeadroom {
             return this;
         }
         public OceanNpVirtualNodeGroupHeadroom build() {
-            final var o = new OceanNpVirtualNodeGroupHeadroom();
-            o.cpuPerUnit = cpuPerUnit;
-            o.gpuPerUnit = gpuPerUnit;
-            o.memoryPerUnit = memoryPerUnit;
-            o.numOfUnits = numOfUnits;
-            return o;
+            final var _resultValue = new OceanNpVirtualNodeGroupHeadroom();
+            _resultValue.cpuPerUnit = cpuPerUnit;
+            _resultValue.gpuPerUnit = gpuPerUnit;
+            _resultValue.memoryPerUnit = memoryPerUnit;
+            _resultValue.numOfUnits = numOfUnits;
+            return _resultValue;
         }
     }
 }

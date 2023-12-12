@@ -65,11 +65,11 @@ public final class StatefulNodeAzureNetwork {
             return this;
         }
         public StatefulNodeAzureNetwork build() {
-            final var o = new StatefulNodeAzureNetwork();
-            o.networkInterfaces = networkInterfaces;
-            o.networkResourceGroupName = networkResourceGroupName;
-            o.virtualNetworkName = virtualNetworkName;
-            return o;
+            final var _resultValue = new StatefulNodeAzureNetwork();
+            _resultValue.networkInterfaces = networkInterfaces;
+            _resultValue.networkResourceGroupName = networkResourceGroupName;
+            _resultValue.virtualNetworkName = virtualNetworkName;
+            return _resultValue;
         }
     }
 }

@@ -134,11 +134,11 @@ public final class ElastigroupDiskInitializeParam {
             return this;
         }
         public ElastigroupDiskInitializeParam build() {
-            final var o = new ElastigroupDiskInitializeParam();
-            o.diskSizeGb = diskSizeGb;
-            o.diskType = diskType;
-            o.sourceImage = sourceImage;
-            return o;
+            final var _resultValue = new ElastigroupDiskInitializeParam();
+            _resultValue.diskSizeGb = diskSizeGb;
+            _resultValue.diskType = diskType;
+            _resultValue.sourceImage = sourceImage;
+            return _resultValue;
         }
     }
 }

@@ -146,14 +146,14 @@ public final class ElastigroupUpdatePolicyRollConfig {
             return this;
         }
         public ElastigroupUpdatePolicyRollConfig build() {
-            final var o = new ElastigroupUpdatePolicyRollConfig();
-            o.batchSizePercentage = batchSizePercentage;
-            o.gracePeriod = gracePeriod;
-            o.healthCheckType = healthCheckType;
-            o.strategy = strategy;
-            o.waitForRollPercentage = waitForRollPercentage;
-            o.waitForRollTimeout = waitForRollTimeout;
-            return o;
+            final var _resultValue = new ElastigroupUpdatePolicyRollConfig();
+            _resultValue.batchSizePercentage = batchSizePercentage;
+            _resultValue.gracePeriod = gracePeriod;
+            _resultValue.healthCheckType = healthCheckType;
+            _resultValue.strategy = strategy;
+            _resultValue.waitForRollPercentage = waitForRollPercentage;
+            _resultValue.waitForRollTimeout = waitForRollTimeout;
+            return _resultValue;
         }
     }
 }

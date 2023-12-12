@@ -63,11 +63,11 @@ public final class ManagedInstanceNetworkInterface {
             return this;
         }
         public ManagedInstanceNetworkInterface build() {
-            final var o = new ManagedInstanceNetworkInterface();
-            o.associateIpv6Address = associateIpv6Address;
-            o.associatePublicIpAddress = associatePublicIpAddress;
-            o.deviceIndex = deviceIndex;
-            return o;
+            final var _resultValue = new ManagedInstanceNetworkInterface();
+            _resultValue.associateIpv6Address = associateIpv6Address;
+            _resultValue.associatePublicIpAddress = associatePublicIpAddress;
+            _resultValue.deviceIndex = deviceIndex;
+            return _resultValue;
         }
     }
 }

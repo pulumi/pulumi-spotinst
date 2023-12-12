@@ -88,11 +88,11 @@ public final class OceanIngressLoadBalancer {
             return this;
         }
         public OceanIngressLoadBalancer build() {
-            final var o = new OceanIngressLoadBalancer();
-            o.managed = managed;
-            o.serviceAnnotations = serviceAnnotations;
-            o.targetGroupArn = targetGroupArn;
-            return o;
+            final var _resultValue = new OceanIngressLoadBalancer();
+            _resultValue.managed = managed;
+            _resultValue.serviceAnnotations = serviceAnnotations;
+            _resultValue.targetGroupArn = targetGroupArn;
+            return _resultValue;
         }
     }
 }

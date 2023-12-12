@@ -90,11 +90,11 @@ public final class MrScalarApplication {
             return this;
         }
         public MrScalarApplication build() {
-            final var o = new MrScalarApplication();
-            o.args = args;
-            o.name = name;
-            o.version = version;
-            return o;
+            final var _resultValue = new MrScalarApplication();
+            _resultValue.args = args;
+            _resultValue.name = name;
+            _resultValue.version = version;
+            return _resultValue;
         }
     }
 }

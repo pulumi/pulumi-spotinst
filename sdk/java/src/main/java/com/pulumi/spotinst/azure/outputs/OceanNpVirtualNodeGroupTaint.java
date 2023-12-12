@@ -60,11 +60,11 @@ public final class OceanNpVirtualNodeGroupTaint {
             return this;
         }
         public OceanNpVirtualNodeGroupTaint build() {
-            final var o = new OceanNpVirtualNodeGroupTaint();
-            o.effect = effect;
-            o.key = key;
-            o.value = value;
-            return o;
+            final var _resultValue = new OceanNpVirtualNodeGroupTaint();
+            _resultValue.effect = effect;
+            _resultValue.key = key;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

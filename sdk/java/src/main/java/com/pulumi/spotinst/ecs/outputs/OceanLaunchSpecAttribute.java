@@ -65,10 +65,10 @@ public final class OceanLaunchSpecAttribute {
             return this;
         }
         public OceanLaunchSpecAttribute build() {
-            final var o = new OceanLaunchSpecAttribute();
-            o.key = key;
-            o.value = value;
-            return o;
+            final var _resultValue = new OceanLaunchSpecAttribute();
+            _resultValue.key = key;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

@@ -49,10 +49,10 @@ public final class ElastigroupAzureV3ManagedServiceIdentity {
             return this;
         }
         public ElastigroupAzureV3ManagedServiceIdentity build() {
-            final var o = new ElastigroupAzureV3ManagedServiceIdentity();
-            o.name = name;
-            o.resourceGroupName = resourceGroupName;
-            return o;
+            final var _resultValue = new ElastigroupAzureV3ManagedServiceIdentity();
+            _resultValue.name = name;
+            _resultValue.resourceGroupName = resourceGroupName;
+            return _resultValue;
         }
     }
 }

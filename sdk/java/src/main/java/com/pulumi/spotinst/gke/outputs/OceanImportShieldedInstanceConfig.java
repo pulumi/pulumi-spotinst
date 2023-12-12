@@ -67,10 +67,10 @@ public final class OceanImportShieldedInstanceConfig {
             return this;
         }
         public OceanImportShieldedInstanceConfig build() {
-            final var o = new OceanImportShieldedInstanceConfig();
-            o.enableIntegrityMonitoring = enableIntegrityMonitoring;
-            o.enableSecureBoot = enableSecureBoot;
-            return o;
+            final var _resultValue = new OceanImportShieldedInstanceConfig();
+            _resultValue.enableIntegrityMonitoring = enableIntegrityMonitoring;
+            _resultValue.enableSecureBoot = enableSecureBoot;
+            return _resultValue;
         }
     }
 }

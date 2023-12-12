@@ -379,21 +379,21 @@ public final class ElastigroupScalingTargetPolicy {
             return this;
         }
         public ElastigroupScalingTargetPolicy build() {
-            final var o = new ElastigroupScalingTargetPolicy();
-            o.cooldown = cooldown;
-            o.dimensions = dimensions;
-            o.evaluationPeriods = evaluationPeriods;
-            o.maxCapacityPerScale = maxCapacityPerScale;
-            o.metricName = metricName;
-            o.namespace = namespace;
-            o.period = period;
-            o.policyName = policyName;
-            o.predictiveMode = predictiveMode;
-            o.source = source;
-            o.statistic = statistic;
-            o.target = target;
-            o.unit = unit;
-            return o;
+            final var _resultValue = new ElastigroupScalingTargetPolicy();
+            _resultValue.cooldown = cooldown;
+            _resultValue.dimensions = dimensions;
+            _resultValue.evaluationPeriods = evaluationPeriods;
+            _resultValue.maxCapacityPerScale = maxCapacityPerScale;
+            _resultValue.metricName = metricName;
+            _resultValue.namespace = namespace;
+            _resultValue.period = period;
+            _resultValue.policyName = policyName;
+            _resultValue.predictiveMode = predictiveMode;
+            _resultValue.source = source;
+            _resultValue.statistic = statistic;
+            _resultValue.target = target;
+            _resultValue.unit = unit;
+            return _resultValue;
         }
     }
 }

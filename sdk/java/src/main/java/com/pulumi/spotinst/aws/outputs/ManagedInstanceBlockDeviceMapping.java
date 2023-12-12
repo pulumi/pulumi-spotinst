@@ -52,10 +52,10 @@ public final class ManagedInstanceBlockDeviceMapping {
             return this;
         }
         public ManagedInstanceBlockDeviceMapping build() {
-            final var o = new ManagedInstanceBlockDeviceMapping();
-            o.deviceName = deviceName;
-            o.ebs = ebs;
-            return o;
+            final var _resultValue = new ManagedInstanceBlockDeviceMapping();
+            _resultValue.deviceName = deviceName;
+            _resultValue.ebs = ebs;
+            return _resultValue;
         }
     }
 }

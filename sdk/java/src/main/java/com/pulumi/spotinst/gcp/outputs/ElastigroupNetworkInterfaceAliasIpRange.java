@@ -49,10 +49,10 @@ public final class ElastigroupNetworkInterfaceAliasIpRange {
             return this;
         }
         public ElastigroupNetworkInterfaceAliasIpRange build() {
-            final var o = new ElastigroupNetworkInterfaceAliasIpRange();
-            o.ipCidrRange = ipCidrRange;
-            o.subnetworkRangeName = subnetworkRangeName;
-            return o;
+            final var _resultValue = new ElastigroupNetworkInterfaceAliasIpRange();
+            _resultValue.ipCidrRange = ipCidrRange;
+            _resultValue.subnetworkRangeName = subnetworkRangeName;
+            return _resultValue;
         }
     }
 }

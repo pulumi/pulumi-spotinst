@@ -89,11 +89,11 @@ public final class ElastigroupIntegrationCodedeploy {
             return this;
         }
         public ElastigroupIntegrationCodedeploy build() {
-            final var o = new ElastigroupIntegrationCodedeploy();
-            o.cleanupOnFailure = cleanupOnFailure;
-            o.deploymentGroups = deploymentGroups;
-            o.terminateInstanceOnFailure = terminateInstanceOnFailure;
-            return o;
+            final var _resultValue = new ElastigroupIntegrationCodedeploy();
+            _resultValue.cleanupOnFailure = cleanupOnFailure;
+            _resultValue.deploymentGroups = deploymentGroups;
+            _resultValue.terminateInstanceOnFailure = terminateInstanceOnFailure;
+            return _resultValue;
         }
     }
 }

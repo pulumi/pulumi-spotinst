@@ -129,17 +129,17 @@ public final class StatefulNodeAzureDelete {
             return this;
         }
         public StatefulNodeAzureDelete build() {
-            final var o = new StatefulNodeAzureDelete();
-            o.diskShouldDeallocate = diskShouldDeallocate;
-            o.diskTtlInHours = diskTtlInHours;
-            o.networkShouldDeallocate = networkShouldDeallocate;
-            o.networkTtlInHours = networkTtlInHours;
-            o.publicIpShouldDeallocate = publicIpShouldDeallocate;
-            o.publicIpTtlInHours = publicIpTtlInHours;
-            o.shouldTerminateVm = shouldTerminateVm;
-            o.snapshotShouldDeallocate = snapshotShouldDeallocate;
-            o.snapshotTtlInHours = snapshotTtlInHours;
-            return o;
+            final var _resultValue = new StatefulNodeAzureDelete();
+            _resultValue.diskShouldDeallocate = diskShouldDeallocate;
+            _resultValue.diskTtlInHours = diskTtlInHours;
+            _resultValue.networkShouldDeallocate = networkShouldDeallocate;
+            _resultValue.networkTtlInHours = networkTtlInHours;
+            _resultValue.publicIpShouldDeallocate = publicIpShouldDeallocate;
+            _resultValue.publicIpTtlInHours = publicIpTtlInHours;
+            _resultValue.shouldTerminateVm = shouldTerminateVm;
+            _resultValue.snapshotShouldDeallocate = snapshotShouldDeallocate;
+            _resultValue.snapshotTtlInHours = snapshotTtlInHours;
+            return _resultValue;
         }
     }
 }

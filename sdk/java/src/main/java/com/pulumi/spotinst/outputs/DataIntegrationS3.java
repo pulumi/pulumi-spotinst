@@ -59,10 +59,10 @@ public final class DataIntegrationS3 {
             return this;
         }
         public DataIntegrationS3 build() {
-            final var o = new DataIntegrationS3();
-            o.bucketName = bucketName;
-            o.subdir = subdir;
-            return o;
+            final var _resultValue = new DataIntegrationS3();
+            _resultValue.bucketName = bucketName;
+            _resultValue.subdir = subdir;
+            return _resultValue;
         }
     }
 }

@@ -40,9 +40,9 @@ public final class OceanNpHealth {
             return this;
         }
         public OceanNpHealth build() {
-            final var o = new OceanNpHealth();
-            o.gracePeriod = gracePeriod;
-            return o;
+            final var _resultValue = new OceanNpHealth();
+            _resultValue.gracePeriod = gracePeriod;
+            return _resultValue;
         }
     }
 }

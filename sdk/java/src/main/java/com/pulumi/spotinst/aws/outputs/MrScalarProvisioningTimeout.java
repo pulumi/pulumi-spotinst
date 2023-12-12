@@ -66,10 +66,10 @@ public final class MrScalarProvisioningTimeout {
             return this;
         }
         public MrScalarProvisioningTimeout build() {
-            final var o = new MrScalarProvisioningTimeout();
-            o.timeout = timeout;
-            o.timeoutAction = timeoutAction;
-            return o;
+            final var _resultValue = new MrScalarProvisioningTimeout();
+            _resultValue.timeout = timeout;
+            _resultValue.timeoutAction = timeoutAction;
+            return _resultValue;
         }
     }
 }

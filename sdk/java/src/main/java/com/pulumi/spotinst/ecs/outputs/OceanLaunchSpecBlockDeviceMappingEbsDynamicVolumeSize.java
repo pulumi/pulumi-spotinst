@@ -61,11 +61,11 @@ public final class OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize {
             return this;
         }
         public OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize build() {
-            final var o = new OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize();
-            o.baseSize = baseSize;
-            o.resource = resource;
-            o.sizePerResourceUnit = sizePerResourceUnit;
-            return o;
+            final var _resultValue = new OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize();
+            _resultValue.baseSize = baseSize;
+            _resultValue.resource = resource;
+            _resultValue.sizePerResourceUnit = sizePerResourceUnit;
+            return _resultValue;
         }
     }
 }

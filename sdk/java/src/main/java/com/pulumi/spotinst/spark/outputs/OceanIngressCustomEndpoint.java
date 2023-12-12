@@ -68,10 +68,10 @@ public final class OceanIngressCustomEndpoint {
             return this;
         }
         public OceanIngressCustomEndpoint build() {
-            final var o = new OceanIngressCustomEndpoint();
-            o.address = address;
-            o.enabled = enabled;
-            return o;
+            final var _resultValue = new OceanIngressCustomEndpoint();
+            _resultValue.address = address;
+            _resultValue.enabled = enabled;
+            return _resultValue;
         }
     }
 }

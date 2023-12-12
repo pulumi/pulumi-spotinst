@@ -70,10 +70,10 @@ public final class ElastigroupRevertToSpot {
             return timeWindows(List.of(timeWindows));
         }
         public ElastigroupRevertToSpot build() {
-            final var o = new ElastigroupRevertToSpot();
-            o.performAt = performAt;
-            o.timeWindows = timeWindows;
-            return o;
+            final var _resultValue = new ElastigroupRevertToSpot();
+            _resultValue.performAt = performAt;
+            _resultValue.timeWindows = timeWindows;
+            return _resultValue;
         }
     }
 }

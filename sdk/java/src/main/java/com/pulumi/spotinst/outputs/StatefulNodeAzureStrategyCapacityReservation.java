@@ -67,11 +67,11 @@ public final class StatefulNodeAzureStrategyCapacityReservation {
             return this;
         }
         public StatefulNodeAzureStrategyCapacityReservation build() {
-            final var o = new StatefulNodeAzureStrategyCapacityReservation();
-            o.capacityReservationGroups = capacityReservationGroups;
-            o.shouldUtilize = shouldUtilize;
-            o.utilizationStrategy = utilizationStrategy;
-            return o;
+            final var _resultValue = new StatefulNodeAzureStrategyCapacityReservation();
+            _resultValue.capacityReservationGroups = capacityReservationGroups;
+            _resultValue.shouldUtilize = shouldUtilize;
+            _resultValue.utilizationStrategy = utilizationStrategy;
+            return _resultValue;
         }
     }
 }

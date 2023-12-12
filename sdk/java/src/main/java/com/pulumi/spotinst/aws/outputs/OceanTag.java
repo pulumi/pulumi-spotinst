@@ -65,10 +65,10 @@ public final class OceanTag {
             return this;
         }
         public OceanTag build() {
-            final var o = new OceanTag();
-            o.key = key;
-            o.value = value;
-            return o;
+            final var _resultValue = new OceanTag();
+            _resultValue.key = key;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

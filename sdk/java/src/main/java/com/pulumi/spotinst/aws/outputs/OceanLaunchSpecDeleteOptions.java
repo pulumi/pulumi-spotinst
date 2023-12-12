@@ -67,10 +67,10 @@ public final class OceanLaunchSpecDeleteOptions {
             return this;
         }
         public OceanLaunchSpecDeleteOptions build() {
-            final var o = new OceanLaunchSpecDeleteOptions();
-            o.deleteNodes = deleteNodes;
-            o.forceDelete = forceDelete;
-            return o;
+            final var _resultValue = new OceanLaunchSpecDeleteOptions();
+            _resultValue.deleteNodes = deleteNodes;
+            _resultValue.forceDelete = forceDelete;
+            return _resultValue;
         }
     }
 }

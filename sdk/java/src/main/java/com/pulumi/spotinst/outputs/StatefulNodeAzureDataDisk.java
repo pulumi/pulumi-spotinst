@@ -61,11 +61,11 @@ public final class StatefulNodeAzureDataDisk {
             return this;
         }
         public StatefulNodeAzureDataDisk build() {
-            final var o = new StatefulNodeAzureDataDisk();
-            o.lun = lun;
-            o.sizeGb = sizeGb;
-            o.type = type;
-            return o;
+            final var _resultValue = new StatefulNodeAzureDataDisk();
+            _resultValue.lun = lun;
+            _resultValue.sizeGb = sizeGb;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

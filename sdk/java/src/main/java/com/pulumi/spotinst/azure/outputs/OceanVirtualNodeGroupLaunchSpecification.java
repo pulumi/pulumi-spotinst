@@ -92,11 +92,11 @@ public final class OceanVirtualNodeGroupLaunchSpecification {
             return tags(List.of(tags));
         }
         public OceanVirtualNodeGroupLaunchSpecification build() {
-            final var o = new OceanVirtualNodeGroupLaunchSpecification();
-            o.maxPods = maxPods;
-            o.osDisk = osDisk;
-            o.tags = tags;
-            return o;
+            final var _resultValue = new OceanVirtualNodeGroupLaunchSpecification();
+            _resultValue.maxPods = maxPods;
+            _resultValue.osDisk = osDisk;
+            _resultValue.tags = tags;
+            return _resultValue;
         }
     }
 }

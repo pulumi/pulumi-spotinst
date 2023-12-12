@@ -113,10 +113,10 @@ public final class ElastigroupMultaiTargetSet {
             return this;
         }
         public ElastigroupMultaiTargetSet build() {
-            final var o = new ElastigroupMultaiTargetSet();
-            o.balancerId = balancerId;
-            o.targetSetId = targetSetId;
-            return o;
+            final var _resultValue = new ElastigroupMultaiTargetSet();
+            _resultValue.balancerId = balancerId;
+            _resultValue.targetSetId = targetSetId;
+            return _resultValue;
         }
     }
 }

@@ -108,12 +108,12 @@ public final class ElastigroupUpdatePolicyRollConfigStrategy {
             return this;
         }
         public ElastigroupUpdatePolicyRollConfigStrategy build() {
-            final var o = new ElastigroupUpdatePolicyRollConfigStrategy();
-            o.action = action;
-            o.batchMinHealthyPercentage = batchMinHealthyPercentage;
-            o.onFailure = onFailure;
-            o.shouldDrainInstances = shouldDrainInstances;
-            return o;
+            final var _resultValue = new ElastigroupUpdatePolicyRollConfigStrategy();
+            _resultValue.action = action;
+            _resultValue.batchMinHealthyPercentage = batchMinHealthyPercentage;
+            _resultValue.onFailure = onFailure;
+            _resultValue.shouldDrainInstances = shouldDrainInstances;
+            return _resultValue;
         }
     }
 }

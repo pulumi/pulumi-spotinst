@@ -98,9 +98,9 @@ public final class ElastigroupIntegrationEcsBatch {
             return jobQueueNames(List.of(jobQueueNames));
         }
         public ElastigroupIntegrationEcsBatch build() {
-            final var o = new ElastigroupIntegrationEcsBatch();
-            o.jobQueueNames = jobQueueNames;
-            return o;
+            final var _resultValue = new ElastigroupIntegrationEcsBatch();
+            _resultValue.jobQueueNames = jobQueueNames;
+            return _resultValue;
         }
     }
 }

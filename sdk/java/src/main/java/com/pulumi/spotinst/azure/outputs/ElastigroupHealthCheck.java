@@ -64,11 +64,11 @@ public final class ElastigroupHealthCheck {
             return this;
         }
         public ElastigroupHealthCheck build() {
-            final var o = new ElastigroupHealthCheck();
-            o.autoHealing = autoHealing;
-            o.gracePeriod = gracePeriod;
-            o.healthCheckType = healthCheckType;
-            return o;
+            final var _resultValue = new ElastigroupHealthCheck();
+            _resultValue.autoHealing = autoHealing;
+            _resultValue.gracePeriod = gracePeriod;
+            _resultValue.healthCheckType = healthCheckType;
+            return _resultValue;
         }
     }
 }

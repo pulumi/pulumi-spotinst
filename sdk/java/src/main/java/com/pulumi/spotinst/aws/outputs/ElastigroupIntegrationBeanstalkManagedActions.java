@@ -48,9 +48,9 @@ public final class ElastigroupIntegrationBeanstalkManagedActions {
             return this;
         }
         public ElastigroupIntegrationBeanstalkManagedActions build() {
-            final var o = new ElastigroupIntegrationBeanstalkManagedActions();
-            o.platformUpdate = platformUpdate;
-            return o;
+            final var _resultValue = new ElastigroupIntegrationBeanstalkManagedActions();
+            _resultValue.platformUpdate = platformUpdate;
+            return _resultValue;
         }
     }
 }

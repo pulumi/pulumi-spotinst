@@ -129,12 +129,12 @@ public final class OceanImportScheduledTaskTaskTaskParametersClusterRoll {
             return this;
         }
         public OceanImportScheduledTaskTaskTaskParametersClusterRoll build() {
-            final var o = new OceanImportScheduledTaskTaskTaskParametersClusterRoll();
-            o.batchMinHealthyPercentage = batchMinHealthyPercentage;
-            o.batchSizePercentage = batchSizePercentage;
-            o.comment = comment;
-            o.respectPdb = respectPdb;
-            return o;
+            final var _resultValue = new OceanImportScheduledTaskTaskTaskParametersClusterRoll();
+            _resultValue.batchMinHealthyPercentage = batchMinHealthyPercentage;
+            _resultValue.batchSizePercentage = batchSizePercentage;
+            _resultValue.comment = comment;
+            _resultValue.respectPdb = respectPdb;
+            return _resultValue;
         }
     }
 }

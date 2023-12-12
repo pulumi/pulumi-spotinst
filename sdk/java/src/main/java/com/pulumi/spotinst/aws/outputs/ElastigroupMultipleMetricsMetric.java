@@ -167,15 +167,15 @@ public final class ElastigroupMultipleMetricsMetric {
             return this;
         }
         public ElastigroupMultipleMetricsMetric build() {
-            final var o = new ElastigroupMultipleMetricsMetric();
-            o.dimensions = dimensions;
-            o.extendedStatistic = extendedStatistic;
-            o.metricName = metricName;
-            o.name = name;
-            o.namespace = namespace;
-            o.statistic = statistic;
-            o.unit = unit;
-            return o;
+            final var _resultValue = new ElastigroupMultipleMetricsMetric();
+            _resultValue.dimensions = dimensions;
+            _resultValue.extendedStatistic = extendedStatistic;
+            _resultValue.metricName = metricName;
+            _resultValue.name = name;
+            _resultValue.namespace = namespace;
+            _resultValue.statistic = statistic;
+            _resultValue.unit = unit;
+            return _resultValue;
         }
     }
 }

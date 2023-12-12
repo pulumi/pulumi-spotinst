@@ -116,10 +116,10 @@ public final class ElastigroupSignal {
             return this;
         }
         public ElastigroupSignal build() {
-            final var o = new ElastigroupSignal();
-            o.name = name;
-            o.timeout = timeout;
-            return o;
+            final var _resultValue = new ElastigroupSignal();
+            _resultValue.name = name;
+            _resultValue.timeout = timeout;
+            return _resultValue;
         }
     }
 }

@@ -48,9 +48,9 @@ public final class ElastigroupLogging {
             return this;
         }
         public ElastigroupLogging build() {
-            final var o = new ElastigroupLogging();
-            o.export = export;
-            return o;
+            final var _resultValue = new ElastigroupLogging();
+            _resultValue.export = export;
+            return _resultValue;
         }
     }
 }

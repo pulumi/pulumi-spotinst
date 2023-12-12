@@ -49,10 +49,10 @@ public final class StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGr
             return this;
         }
         public StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroup build() {
-            final var o = new StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroup();
-            o.name = name;
-            o.networkResourceGroupName = networkResourceGroupName;
-            return o;
+            final var _resultValue = new StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroup();
+            _resultValue.name = name;
+            _resultValue.networkResourceGroupName = networkResourceGroupName;
+            return _resultValue;
         }
     }
 }

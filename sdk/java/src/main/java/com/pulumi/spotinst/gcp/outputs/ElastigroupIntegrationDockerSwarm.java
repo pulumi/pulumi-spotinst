@@ -114,10 +114,10 @@ public final class ElastigroupIntegrationDockerSwarm {
             return this;
         }
         public ElastigroupIntegrationDockerSwarm build() {
-            final var o = new ElastigroupIntegrationDockerSwarm();
-            o.masterHost = masterHost;
-            o.masterPort = masterPort;
-            return o;
+            final var _resultValue = new ElastigroupIntegrationDockerSwarm();
+            _resultValue.masterHost = masterHost;
+            _resultValue.masterPort = masterPort;
+            return _resultValue;
         }
     }
 }

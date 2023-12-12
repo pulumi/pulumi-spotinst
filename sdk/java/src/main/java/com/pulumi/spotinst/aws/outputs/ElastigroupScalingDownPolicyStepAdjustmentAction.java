@@ -162,15 +162,15 @@ public final class ElastigroupScalingDownPolicyStepAdjustmentAction {
             return this;
         }
         public ElastigroupScalingDownPolicyStepAdjustmentAction build() {
-            final var o = new ElastigroupScalingDownPolicyStepAdjustmentAction();
-            o.adjustment = adjustment;
-            o.maxTargetCapacity = maxTargetCapacity;
-            o.maximum = maximum;
-            o.minTargetCapacity = minTargetCapacity;
-            o.minimum = minimum;
-            o.target = target;
-            o.type = type;
-            return o;
+            final var _resultValue = new ElastigroupScalingDownPolicyStepAdjustmentAction();
+            _resultValue.adjustment = adjustment;
+            _resultValue.maxTargetCapacity = maxTargetCapacity;
+            _resultValue.maximum = maximum;
+            _resultValue.minTargetCapacity = minTargetCapacity;
+            _resultValue.minimum = minimum;
+            _resultValue.target = target;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

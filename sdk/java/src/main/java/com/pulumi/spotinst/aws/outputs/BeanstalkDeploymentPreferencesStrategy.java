@@ -68,10 +68,10 @@ public final class BeanstalkDeploymentPreferencesStrategy {
             return this;
         }
         public BeanstalkDeploymentPreferencesStrategy build() {
-            final var o = new BeanstalkDeploymentPreferencesStrategy();
-            o.action = action;
-            o.shouldDrainInstances = shouldDrainInstances;
-            return o;
+            final var _resultValue = new BeanstalkDeploymentPreferencesStrategy();
+            _resultValue.action = action;
+            _resultValue.shouldDrainInstances = shouldDrainInstances;
+            return _resultValue;
         }
     }
 }

@@ -86,11 +86,11 @@ public final class BeanstalkManagedActionsPlatformUpdate {
             return this;
         }
         public BeanstalkManagedActionsPlatformUpdate build() {
-            final var o = new BeanstalkManagedActionsPlatformUpdate();
-            o.performAt = performAt;
-            o.timeWindow = timeWindow;
-            o.updateLevel = updateLevel;
-            return o;
+            final var _resultValue = new BeanstalkManagedActionsPlatformUpdate();
+            _resultValue.performAt = performAt;
+            _resultValue.timeWindow = timeWindow;
+            _resultValue.updateLevel = updateLevel;
+            return _resultValue;
         }
     }
 }

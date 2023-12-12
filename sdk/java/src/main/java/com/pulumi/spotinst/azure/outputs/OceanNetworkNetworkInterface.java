@@ -123,13 +123,13 @@ public final class OceanNetworkNetworkInterface {
             return this;
         }
         public OceanNetworkNetworkInterface build() {
-            final var o = new OceanNetworkNetworkInterface();
-            o.additionalIpConfigs = additionalIpConfigs;
-            o.assignPublicIp = assignPublicIp;
-            o.isPrimary = isPrimary;
-            o.securityGroup = securityGroup;
-            o.subnetName = subnetName;
-            return o;
+            final var _resultValue = new OceanNetworkNetworkInterface();
+            _resultValue.additionalIpConfigs = additionalIpConfigs;
+            _resultValue.assignPublicIp = assignPublicIp;
+            _resultValue.isPrimary = isPrimary;
+            _resultValue.securityGroup = securityGroup;
+            _resultValue.subnetName = subnetName;
+            return _resultValue;
         }
     }
 }

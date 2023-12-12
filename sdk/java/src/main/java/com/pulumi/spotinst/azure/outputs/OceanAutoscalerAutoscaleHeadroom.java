@@ -48,9 +48,9 @@ public final class OceanAutoscalerAutoscaleHeadroom {
             return this;
         }
         public OceanAutoscalerAutoscaleHeadroom build() {
-            final var o = new OceanAutoscalerAutoscaleHeadroom();
-            o.automatic = automatic;
-            return o;
+            final var _resultValue = new OceanAutoscalerAutoscaleHeadroom();
+            _resultValue.automatic = automatic;
+            return _resultValue;
         }
     }
 }

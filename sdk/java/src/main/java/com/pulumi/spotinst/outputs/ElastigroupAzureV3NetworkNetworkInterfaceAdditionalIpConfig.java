@@ -51,10 +51,10 @@ public final class ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfig {
             return this;
         }
         public ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfig build() {
-            final var o = new ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfig();
-            o.name = name;
-            o.privateIpVersion = privateIpVersion;
-            return o;
+            final var _resultValue = new ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfig();
+            _resultValue.name = name;
+            _resultValue.privateIpVersion = privateIpVersion;
+            return _resultValue;
         }
     }
 }

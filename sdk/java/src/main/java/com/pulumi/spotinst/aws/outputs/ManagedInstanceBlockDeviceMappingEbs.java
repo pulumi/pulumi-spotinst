@@ -86,13 +86,13 @@ public final class ManagedInstanceBlockDeviceMappingEbs {
             return this;
         }
         public ManagedInstanceBlockDeviceMappingEbs build() {
-            final var o = new ManagedInstanceBlockDeviceMappingEbs();
-            o.deleteOnTermination = deleteOnTermination;
-            o.iops = iops;
-            o.throughput = throughput;
-            o.volumeSize = volumeSize;
-            o.volumeType = volumeType;
-            return o;
+            final var _resultValue = new ManagedInstanceBlockDeviceMappingEbs();
+            _resultValue.deleteOnTermination = deleteOnTermination;
+            _resultValue.iops = iops;
+            _resultValue.throughput = throughput;
+            _resultValue.volumeSize = volumeSize;
+            _resultValue.volumeType = volumeType;
+            return _resultValue;
         }
     }
 }

@@ -48,9 +48,9 @@ public final class OceanLaunchSpecImage {
             return this;
         }
         public OceanLaunchSpecImage build() {
-            final var o = new OceanLaunchSpecImage();
-            o.imageId = imageId;
-            return o;
+            final var _resultValue = new OceanLaunchSpecImage();
+            _resultValue.imageId = imageId;
+            return _resultValue;
         }
     }
 }

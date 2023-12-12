@@ -49,10 +49,10 @@ public final class StatefulNodeAzureProximityPlacementGroup {
             return this;
         }
         public StatefulNodeAzureProximityPlacementGroup build() {
-            final var o = new StatefulNodeAzureProximityPlacementGroup();
-            o.name = name;
-            o.resourceGroupName = resourceGroupName;
-            return o;
+            final var _resultValue = new StatefulNodeAzureProximityPlacementGroup();
+            _resultValue.name = name;
+            _resultValue.resourceGroupName = resourceGroupName;
+            return _resultValue;
         }
     }
 }

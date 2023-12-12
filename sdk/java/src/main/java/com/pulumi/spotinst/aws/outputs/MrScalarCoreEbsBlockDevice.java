@@ -106,12 +106,12 @@ public final class MrScalarCoreEbsBlockDevice {
             return this;
         }
         public MrScalarCoreEbsBlockDevice build() {
-            final var o = new MrScalarCoreEbsBlockDevice();
-            o.iops = iops;
-            o.sizeInGb = sizeInGb;
-            o.volumeType = volumeType;
-            o.volumesPerInstance = volumesPerInstance;
-            return o;
+            final var _resultValue = new MrScalarCoreEbsBlockDevice();
+            _resultValue.iops = iops;
+            _resultValue.sizeInGb = sizeInGb;
+            _resultValue.volumeType = volumeType;
+            _resultValue.volumesPerInstance = volumesPerInstance;
+            return _resultValue;
         }
     }
 }

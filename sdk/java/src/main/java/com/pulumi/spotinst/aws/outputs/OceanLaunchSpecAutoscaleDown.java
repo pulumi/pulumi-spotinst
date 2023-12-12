@@ -48,9 +48,9 @@ public final class OceanLaunchSpecAutoscaleDown {
             return this;
         }
         public OceanLaunchSpecAutoscaleDown build() {
-            final var o = new OceanLaunchSpecAutoscaleDown();
-            o.maxScaleDownPercentage = maxScaleDownPercentage;
-            return o;
+            final var _resultValue = new OceanLaunchSpecAutoscaleDown();
+            _resultValue.maxScaleDownPercentage = maxScaleDownPercentage;
+            return _resultValue;
         }
     }
 }
