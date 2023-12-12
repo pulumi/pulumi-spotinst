@@ -42,9 +42,9 @@ public final class ElastigroupImage {
             return images(List.of(images));
         }
         public ElastigroupImage build() {
-            final var o = new ElastigroupImage();
-            o.images = images;
-            return o;
+            final var _resultValue = new ElastigroupImage();
+            _resultValue.images = images;
+            return _resultValue;
         }
     }
 }

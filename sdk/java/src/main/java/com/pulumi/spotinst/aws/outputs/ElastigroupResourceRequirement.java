@@ -211,17 +211,17 @@ public final class ElastigroupResourceRequirement {
             return this;
         }
         public ElastigroupResourceRequirement build() {
-            final var o = new ElastigroupResourceRequirement();
-            o.excludedInstanceFamilies = excludedInstanceFamilies;
-            o.excludedInstanceGenerations = excludedInstanceGenerations;
-            o.excludedInstanceTypes = excludedInstanceTypes;
-            o.requiredGpuMaximum = requiredGpuMaximum;
-            o.requiredGpuMinimum = requiredGpuMinimum;
-            o.requiredMemoryMaximum = requiredMemoryMaximum;
-            o.requiredMemoryMinimum = requiredMemoryMinimum;
-            o.requiredVcpuMaximum = requiredVcpuMaximum;
-            o.requiredVcpuMinimum = requiredVcpuMinimum;
-            return o;
+            final var _resultValue = new ElastigroupResourceRequirement();
+            _resultValue.excludedInstanceFamilies = excludedInstanceFamilies;
+            _resultValue.excludedInstanceGenerations = excludedInstanceGenerations;
+            _resultValue.excludedInstanceTypes = excludedInstanceTypes;
+            _resultValue.requiredGpuMaximum = requiredGpuMaximum;
+            _resultValue.requiredGpuMinimum = requiredGpuMinimum;
+            _resultValue.requiredMemoryMaximum = requiredMemoryMaximum;
+            _resultValue.requiredMemoryMinimum = requiredMemoryMinimum;
+            _resultValue.requiredVcpuMaximum = requiredVcpuMaximum;
+            _resultValue.requiredVcpuMinimum = requiredVcpuMinimum;
+            return _resultValue;
         }
     }
 }

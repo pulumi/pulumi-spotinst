@@ -57,10 +57,10 @@ public final class ElastigroupImageCustom {
             return this;
         }
         public ElastigroupImageCustom build() {
-            final var o = new ElastigroupImageCustom();
-            o.imageName = imageName;
-            o.resourceGroupName = resourceGroupName;
-            return o;
+            final var _resultValue = new ElastigroupImageCustom();
+            _resultValue.imageName = imageName;
+            _resultValue.resourceGroupName = resourceGroupName;
+            return _resultValue;
         }
     }
 }

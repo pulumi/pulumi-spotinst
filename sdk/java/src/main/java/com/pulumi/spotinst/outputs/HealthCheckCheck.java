@@ -185,17 +185,17 @@ public final class HealthCheckCheck {
             return this;
         }
         public HealthCheckCheck build() {
-            final var o = new HealthCheckCheck();
-            o.endPoint = endPoint;
-            o.endpoint = endpoint;
-            o.healthy = healthy;
-            o.interval = interval;
-            o.port = port;
-            o.protocol = protocol;
-            o.timeOut = timeOut;
-            o.timeout = timeout;
-            o.unhealthy = unhealthy;
-            return o;
+            final var _resultValue = new HealthCheckCheck();
+            _resultValue.endPoint = endPoint;
+            _resultValue.endpoint = endpoint;
+            _resultValue.healthy = healthy;
+            _resultValue.interval = interval;
+            _resultValue.port = port;
+            _resultValue.protocol = protocol;
+            _resultValue.timeOut = timeOut;
+            _resultValue.timeout = timeout;
+            _resultValue.unhealthy = unhealthy;
+            return _resultValue;
         }
     }
 }

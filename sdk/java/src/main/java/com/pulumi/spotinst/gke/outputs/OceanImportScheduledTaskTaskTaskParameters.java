@@ -40,9 +40,9 @@ public final class OceanImportScheduledTaskTaskTaskParameters {
             return this;
         }
         public OceanImportScheduledTaskTaskTaskParameters build() {
-            final var o = new OceanImportScheduledTaskTaskTaskParameters();
-            o.clusterRoll = clusterRoll;
-            return o;
+            final var _resultValue = new OceanImportScheduledTaskTaskTaskParameters();
+            _resultValue.clusterRoll = clusterRoll;
+            return _resultValue;
         }
     }
 }

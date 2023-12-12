@@ -65,11 +65,11 @@ public final class ElastigroupAzureV3Network {
             return this;
         }
         public ElastigroupAzureV3Network build() {
-            final var o = new ElastigroupAzureV3Network();
-            o.networkInterfaces = networkInterfaces;
-            o.resourceGroupName = resourceGroupName;
-            o.virtualNetworkName = virtualNetworkName;
-            return o;
+            final var _resultValue = new ElastigroupAzureV3Network();
+            _resultValue.networkInterfaces = networkInterfaces;
+            _resultValue.resourceGroupName = resourceGroupName;
+            _resultValue.virtualNetworkName = virtualNetworkName;
+            return _resultValue;
         }
     }
 }

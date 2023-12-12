@@ -62,11 +62,11 @@ public final class StatefulNodeAzureLogin {
             return this;
         }
         public StatefulNodeAzureLogin build() {
-            final var o = new StatefulNodeAzureLogin();
-            o.password = password;
-            o.sshPublicKey = sshPublicKey;
-            o.userName = userName;
-            return o;
+            final var _resultValue = new StatefulNodeAzureLogin();
+            _resultValue.password = password;
+            _resultValue.sshPublicKey = sshPublicKey;
+            _resultValue.userName = userName;
+            return _resultValue;
         }
     }
 }

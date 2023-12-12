@@ -97,13 +97,13 @@ public final class OceanIngress {
             return this;
         }
         public OceanIngress build() {
-            final var o = new OceanIngress();
-            o.controller = controller;
-            o.customEndpoint = customEndpoint;
-            o.loadBalancer = loadBalancer;
-            o.privateLink = privateLink;
-            o.serviceAnnotations = serviceAnnotations;
-            return o;
+            final var _resultValue = new OceanIngress();
+            _resultValue.controller = controller;
+            _resultValue.customEndpoint = customEndpoint;
+            _resultValue.loadBalancer = loadBalancer;
+            _resultValue.privateLink = privateLink;
+            _resultValue.serviceAnnotations = serviceAnnotations;
+            return _resultValue;
         }
     }
 }

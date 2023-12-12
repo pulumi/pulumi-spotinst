@@ -185,16 +185,16 @@ public final class OceanImportAutoscaler {
             return this;
         }
         public OceanImportAutoscaler build() {
-            final var o = new OceanImportAutoscaler();
-            o.autoHeadroomPercentage = autoHeadroomPercentage;
-            o.cooldown = cooldown;
-            o.down = down;
-            o.enableAutomaticAndManualHeadroom = enableAutomaticAndManualHeadroom;
-            o.headroom = headroom;
-            o.isAutoConfig = isAutoConfig;
-            o.isEnabled = isEnabled;
-            o.resourceLimits = resourceLimits;
-            return o;
+            final var _resultValue = new OceanImportAutoscaler();
+            _resultValue.autoHeadroomPercentage = autoHeadroomPercentage;
+            _resultValue.cooldown = cooldown;
+            _resultValue.down = down;
+            _resultValue.enableAutomaticAndManualHeadroom = enableAutomaticAndManualHeadroom;
+            _resultValue.headroom = headroom;
+            _resultValue.isAutoConfig = isAutoConfig;
+            _resultValue.isEnabled = isEnabled;
+            _resultValue.resourceLimits = resourceLimits;
+            return _resultValue;
         }
     }
 }

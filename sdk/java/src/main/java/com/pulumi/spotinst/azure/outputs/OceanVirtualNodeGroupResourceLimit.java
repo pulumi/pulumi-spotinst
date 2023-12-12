@@ -48,9 +48,9 @@ public final class OceanVirtualNodeGroupResourceLimit {
             return this;
         }
         public OceanVirtualNodeGroupResourceLimit build() {
-            final var o = new OceanVirtualNodeGroupResourceLimit();
-            o.maxInstanceCount = maxInstanceCount;
-            return o;
+            final var _resultValue = new OceanVirtualNodeGroupResourceLimit();
+            _resultValue.maxInstanceCount = maxInstanceCount;
+            return _resultValue;
         }
     }
 }

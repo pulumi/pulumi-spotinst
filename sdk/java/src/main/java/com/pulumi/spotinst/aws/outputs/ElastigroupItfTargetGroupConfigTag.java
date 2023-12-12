@@ -51,10 +51,10 @@ public final class ElastigroupItfTargetGroupConfigTag {
             return this;
         }
         public ElastigroupItfTargetGroupConfigTag build() {
-            final var o = new ElastigroupItfTargetGroupConfigTag();
-            o.tagKey = tagKey;
-            o.tagValue = tagValue;
-            return o;
+            final var _resultValue = new ElastigroupItfTargetGroupConfigTag();
+            _resultValue.tagKey = tagKey;
+            _resultValue.tagValue = tagValue;
+            return _resultValue;
         }
     }
 }

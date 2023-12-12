@@ -203,17 +203,17 @@ public final class OceanBlockDeviceMappingEbs {
             return this;
         }
         public OceanBlockDeviceMappingEbs build() {
-            final var o = new OceanBlockDeviceMappingEbs();
-            o.deleteOnTermination = deleteOnTermination;
-            o.dynamicVolumeSize = dynamicVolumeSize;
-            o.encrypted = encrypted;
-            o.iops = iops;
-            o.kmsKeyId = kmsKeyId;
-            o.snapshotId = snapshotId;
-            o.throughput = throughput;
-            o.volumeSize = volumeSize;
-            o.volumeType = volumeType;
-            return o;
+            final var _resultValue = new OceanBlockDeviceMappingEbs();
+            _resultValue.deleteOnTermination = deleteOnTermination;
+            _resultValue.dynamicVolumeSize = dynamicVolumeSize;
+            _resultValue.encrypted = encrypted;
+            _resultValue.iops = iops;
+            _resultValue.kmsKeyId = kmsKeyId;
+            _resultValue.snapshotId = snapshotId;
+            _resultValue.throughput = throughput;
+            _resultValue.volumeSize = volumeSize;
+            _resultValue.volumeType = volumeType;
+            return _resultValue;
         }
     }
 }

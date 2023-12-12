@@ -48,9 +48,9 @@ public final class OceanLaunchSpecAutoscaleHeadroomsAutomatic {
             return this;
         }
         public OceanLaunchSpecAutoscaleHeadroomsAutomatic build() {
-            final var o = new OceanLaunchSpecAutoscaleHeadroomsAutomatic();
-            o.autoHeadroomPercentage = autoHeadroomPercentage;
-            return o;
+            final var _resultValue = new OceanLaunchSpecAutoscaleHeadroomsAutomatic();
+            _resultValue.autoHeadroomPercentage = autoHeadroomPercentage;
+            return _resultValue;
         }
     }
 }

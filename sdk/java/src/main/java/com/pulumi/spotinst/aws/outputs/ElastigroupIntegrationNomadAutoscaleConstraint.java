@@ -57,10 +57,10 @@ public final class ElastigroupIntegrationNomadAutoscaleConstraint {
             return this;
         }
         public ElastigroupIntegrationNomadAutoscaleConstraint build() {
-            final var o = new ElastigroupIntegrationNomadAutoscaleConstraint();
-            o.key = key;
-            o.value = value;
-            return o;
+            final var _resultValue = new ElastigroupIntegrationNomadAutoscaleConstraint();
+            _resultValue.key = key;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

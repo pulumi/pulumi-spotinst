@@ -49,10 +49,10 @@ public final class ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityG
             return this;
         }
         public ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroup build() {
-            final var o = new ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroup();
-            o.name = name;
-            o.resourceGroupName = resourceGroupName;
-            return o;
+            final var _resultValue = new ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroup();
+            _resultValue.name = name;
+            _resultValue.resourceGroupName = resourceGroupName;
+            return _resultValue;
         }
     }
 }

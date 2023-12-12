@@ -60,11 +60,11 @@ public final class ElastigroupImageMarketplace {
             return this;
         }
         public ElastigroupImageMarketplace build() {
-            final var o = new ElastigroupImageMarketplace();
-            o.offer = offer;
-            o.publisher = publisher;
-            o.sku = sku;
-            return o;
+            final var _resultValue = new ElastigroupImageMarketplace();
+            _resultValue.offer = offer;
+            _resultValue.publisher = publisher;
+            _resultValue.sku = sku;
+            return _resultValue;
         }
     }
 }

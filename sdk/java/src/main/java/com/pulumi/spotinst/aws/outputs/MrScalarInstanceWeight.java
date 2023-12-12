@@ -66,10 +66,10 @@ public final class MrScalarInstanceWeight {
             return this;
         }
         public MrScalarInstanceWeight build() {
-            final var o = new MrScalarInstanceWeight();
-            o.instanceType = instanceType;
-            o.weightedCapacity = weightedCapacity;
-            return o;
+            final var _resultValue = new MrScalarInstanceWeight();
+            _resultValue.instanceType = instanceType;
+            _resultValue.weightedCapacity = weightedCapacity;
+            return _resultValue;
         }
     }
 }

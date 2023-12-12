@@ -94,9 +94,9 @@ public final class ElastigroupIntegrationMesosphere {
             return this;
         }
         public ElastigroupIntegrationMesosphere build() {
-            final var o = new ElastigroupIntegrationMesosphere();
-            o.apiServer = apiServer;
-            return o;
+            final var _resultValue = new ElastigroupIntegrationMesosphere();
+            _resultValue.apiServer = apiServer;
+            return _resultValue;
         }
     }
 }

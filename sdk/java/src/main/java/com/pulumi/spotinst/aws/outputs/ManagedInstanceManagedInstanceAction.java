@@ -38,9 +38,9 @@ public final class ManagedInstanceManagedInstanceAction {
             return this;
         }
         public ManagedInstanceManagedInstanceAction build() {
-            final var o = new ManagedInstanceManagedInstanceAction();
-            o.type = type;
-            return o;
+            final var _resultValue = new ManagedInstanceManagedInstanceAction();
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

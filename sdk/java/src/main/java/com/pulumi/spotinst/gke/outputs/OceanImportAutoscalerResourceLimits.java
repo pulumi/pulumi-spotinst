@@ -115,10 +115,10 @@ public final class OceanImportAutoscalerResourceLimits {
             return this;
         }
         public OceanImportAutoscalerResourceLimits build() {
-            final var o = new OceanImportAutoscalerResourceLimits();
-            o.maxMemoryGib = maxMemoryGib;
-            o.maxVcpu = maxVcpu;
-            return o;
+            final var _resultValue = new OceanImportAutoscalerResourceLimits();
+            _resultValue.maxMemoryGib = maxMemoryGib;
+            _resultValue.maxVcpu = maxVcpu;
+            return _resultValue;
         }
     }
 }

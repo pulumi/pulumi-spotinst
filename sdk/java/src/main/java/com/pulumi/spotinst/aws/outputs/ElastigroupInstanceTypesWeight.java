@@ -66,10 +66,10 @@ public final class ElastigroupInstanceTypesWeight {
             return this;
         }
         public ElastigroupInstanceTypesWeight build() {
-            final var o = new ElastigroupInstanceTypesWeight();
-            o.instanceType = instanceType;
-            o.weight = weight;
-            return o;
+            final var _resultValue = new ElastigroupInstanceTypesWeight();
+            _resultValue.instanceType = instanceType;
+            _resultValue.weight = weight;
+            return _resultValue;
         }
     }
 }

@@ -63,11 +63,11 @@ public final class StatefulNodeAzureBootDiagnostic {
             return this;
         }
         public StatefulNodeAzureBootDiagnostic build() {
-            final var o = new StatefulNodeAzureBootDiagnostic();
-            o.isEnabled = isEnabled;
-            o.storageUrl = storageUrl;
-            o.type = type;
-            return o;
+            final var _resultValue = new StatefulNodeAzureBootDiagnostic();
+            _resultValue.isEnabled = isEnabled;
+            _resultValue.storageUrl = storageUrl;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

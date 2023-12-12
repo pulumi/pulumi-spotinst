@@ -114,12 +114,12 @@ public final class OceanLaunchSpecNetworkInterface {
             return this;
         }
         public OceanLaunchSpecNetworkInterface build() {
-            final var o = new OceanLaunchSpecNetworkInterface();
-            o.accessConfigs = accessConfigs;
-            o.aliasIpRanges = aliasIpRanges;
-            o.network = network;
-            o.projectId = projectId;
-            return o;
+            final var _resultValue = new OceanLaunchSpecNetworkInterface();
+            _resultValue.accessConfigs = accessConfigs;
+            _resultValue.aliasIpRanges = aliasIpRanges;
+            _resultValue.network = network;
+            _resultValue.projectId = projectId;
+            return _resultValue;
         }
     }
 }

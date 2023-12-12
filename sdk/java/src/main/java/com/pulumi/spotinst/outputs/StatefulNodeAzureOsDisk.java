@@ -52,10 +52,10 @@ public final class StatefulNodeAzureOsDisk {
             return this;
         }
         public StatefulNodeAzureOsDisk build() {
-            final var o = new StatefulNodeAzureOsDisk();
-            o.sizeGb = sizeGb;
-            o.type = type;
-            return o;
+            final var _resultValue = new StatefulNodeAzureOsDisk();
+            _resultValue.sizeGb = sizeGb;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

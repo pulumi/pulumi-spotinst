@@ -73,12 +73,12 @@ public final class OceanNpHeadroom {
             return this;
         }
         public OceanNpHeadroom build() {
-            final var o = new OceanNpHeadroom();
-            o.cpuPerUnit = cpuPerUnit;
-            o.gpuPerUnit = gpuPerUnit;
-            o.memoryPerUnit = memoryPerUnit;
-            o.numOfUnits = numOfUnits;
-            return o;
+            final var _resultValue = new OceanNpHeadroom();
+            _resultValue.cpuPerUnit = cpuPerUnit;
+            _resultValue.gpuPerUnit = gpuPerUnit;
+            _resultValue.memoryPerUnit = memoryPerUnit;
+            _resultValue.numOfUnits = numOfUnits;
+            return _resultValue;
         }
     }
 }

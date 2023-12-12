@@ -67,10 +67,10 @@ public final class OceanVirtualNodeGroupLabel {
             return this;
         }
         public OceanVirtualNodeGroupLabel build() {
-            final var o = new OceanVirtualNodeGroupLabel();
-            o.key = key;
-            o.value = value;
-            return o;
+            final var _resultValue = new OceanVirtualNodeGroupLabel();
+            _resultValue.key = key;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

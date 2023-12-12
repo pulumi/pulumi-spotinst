@@ -105,12 +105,12 @@ public final class OceanImportAutoscalerHeadroom {
             return this;
         }
         public OceanImportAutoscalerHeadroom build() {
-            final var o = new OceanImportAutoscalerHeadroom();
-            o.cpuPerUnit = cpuPerUnit;
-            o.gpuPerUnit = gpuPerUnit;
-            o.memoryPerUnit = memoryPerUnit;
-            o.numOfUnits = numOfUnits;
-            return o;
+            final var _resultValue = new OceanImportAutoscalerHeadroom();
+            _resultValue.cpuPerUnit = cpuPerUnit;
+            _resultValue.gpuPerUnit = gpuPerUnit;
+            _resultValue.memoryPerUnit = memoryPerUnit;
+            _resultValue.numOfUnits = numOfUnits;
+            return _resultValue;
         }
     }
 }

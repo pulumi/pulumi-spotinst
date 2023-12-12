@@ -48,9 +48,9 @@ public final class OceanLaunchSpecCreateOptions {
             return this;
         }
         public OceanLaunchSpecCreateOptions build() {
-            final var o = new OceanLaunchSpecCreateOptions();
-            o.initialNodes = initialNodes;
-            return o;
+            final var _resultValue = new OceanLaunchSpecCreateOptions();
+            _resultValue.initialNodes = initialNodes;
+            return _resultValue;
         }
     }
 }

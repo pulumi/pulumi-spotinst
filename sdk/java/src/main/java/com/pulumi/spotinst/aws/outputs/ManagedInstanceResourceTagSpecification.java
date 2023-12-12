@@ -73,12 +73,12 @@ public final class ManagedInstanceResourceTagSpecification {
             return this;
         }
         public ManagedInstanceResourceTagSpecification build() {
-            final var o = new ManagedInstanceResourceTagSpecification();
-            o.shouldTagAmis = shouldTagAmis;
-            o.shouldTagEnis = shouldTagEnis;
-            o.shouldTagSnapshots = shouldTagSnapshots;
-            o.shouldTagVolumes = shouldTagVolumes;
-            return o;
+            final var _resultValue = new ManagedInstanceResourceTagSpecification();
+            _resultValue.shouldTagAmis = shouldTagAmis;
+            _resultValue.shouldTagEnis = shouldTagEnis;
+            _resultValue.shouldTagSnapshots = shouldTagSnapshots;
+            _resultValue.shouldTagVolumes = shouldTagVolumes;
+            return _resultValue;
         }
     }
 }

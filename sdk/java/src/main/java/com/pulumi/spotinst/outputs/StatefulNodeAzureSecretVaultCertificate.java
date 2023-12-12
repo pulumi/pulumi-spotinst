@@ -51,10 +51,10 @@ public final class StatefulNodeAzureSecretVaultCertificate {
             return this;
         }
         public StatefulNodeAzureSecretVaultCertificate build() {
-            final var o = new StatefulNodeAzureSecretVaultCertificate();
-            o.certificateStore = certificateStore;
-            o.certificateUrl = certificateUrl;
-            return o;
+            final var _resultValue = new StatefulNodeAzureSecretVaultCertificate();
+            _resultValue.certificateStore = certificateStore;
+            _resultValue.certificateUrl = certificateUrl;
+            return _resultValue;
         }
     }
 }

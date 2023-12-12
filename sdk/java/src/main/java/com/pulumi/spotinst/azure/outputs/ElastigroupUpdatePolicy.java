@@ -52,10 +52,10 @@ public final class ElastigroupUpdatePolicy {
             return this;
         }
         public ElastigroupUpdatePolicy build() {
-            final var o = new ElastigroupUpdatePolicy();
-            o.rollConfig = rollConfig;
-            o.shouldRoll = shouldRoll;
-            return o;
+            final var _resultValue = new ElastigroupUpdatePolicy();
+            _resultValue.rollConfig = rollConfig;
+            _resultValue.shouldRoll = shouldRoll;
+            return _resultValue;
         }
     }
 }

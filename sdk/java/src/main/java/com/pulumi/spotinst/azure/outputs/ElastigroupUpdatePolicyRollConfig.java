@@ -63,11 +63,11 @@ public final class ElastigroupUpdatePolicyRollConfig {
             return this;
         }
         public ElastigroupUpdatePolicyRollConfig build() {
-            final var o = new ElastigroupUpdatePolicyRollConfig();
-            o.batchSizePercentage = batchSizePercentage;
-            o.gracePeriod = gracePeriod;
-            o.healthCheckType = healthCheckType;
-            return o;
+            final var _resultValue = new ElastigroupUpdatePolicyRollConfig();
+            _resultValue.batchSizePercentage = batchSizePercentage;
+            _resultValue.gracePeriod = gracePeriod;
+            _resultValue.healthCheckType = healthCheckType;
+            return _resultValue;
         }
     }
 }

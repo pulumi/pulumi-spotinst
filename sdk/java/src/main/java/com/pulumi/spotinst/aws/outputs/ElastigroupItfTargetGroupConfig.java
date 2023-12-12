@@ -190,21 +190,21 @@ public final class ElastigroupItfTargetGroupConfig {
             return this;
         }
         public ElastigroupItfTargetGroupConfig build() {
-            final var o = new ElastigroupItfTargetGroupConfig();
-            o.healthCheckIntervalSeconds = healthCheckIntervalSeconds;
-            o.healthCheckPath = healthCheckPath;
-            o.healthCheckPort = healthCheckPort;
-            o.healthCheckProtocol = healthCheckProtocol;
-            o.healthCheckTimeoutSeconds = healthCheckTimeoutSeconds;
-            o.healthyThresholdCount = healthyThresholdCount;
-            o.matchers = matchers;
-            o.port = port;
-            o.protocol = protocol;
-            o.protocolVersion = protocolVersion;
-            o.tags = tags;
-            o.unhealthyThresholdCount = unhealthyThresholdCount;
-            o.vpcId = vpcId;
-            return o;
+            final var _resultValue = new ElastigroupItfTargetGroupConfig();
+            _resultValue.healthCheckIntervalSeconds = healthCheckIntervalSeconds;
+            _resultValue.healthCheckPath = healthCheckPath;
+            _resultValue.healthCheckPort = healthCheckPort;
+            _resultValue.healthCheckProtocol = healthCheckProtocol;
+            _resultValue.healthCheckTimeoutSeconds = healthCheckTimeoutSeconds;
+            _resultValue.healthyThresholdCount = healthyThresholdCount;
+            _resultValue.matchers = matchers;
+            _resultValue.port = port;
+            _resultValue.protocol = protocol;
+            _resultValue.protocolVersion = protocolVersion;
+            _resultValue.tags = tags;
+            _resultValue.unhealthyThresholdCount = unhealthyThresholdCount;
+            _resultValue.vpcId = vpcId;
+            return _resultValue;
         }
     }
 }

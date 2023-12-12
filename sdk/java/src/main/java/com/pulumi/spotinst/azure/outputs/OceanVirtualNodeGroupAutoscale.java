@@ -64,10 +64,10 @@ public final class OceanVirtualNodeGroupAutoscale {
             return autoscaleHeadrooms(List.of(autoscaleHeadrooms));
         }
         public OceanVirtualNodeGroupAutoscale build() {
-            final var o = new OceanVirtualNodeGroupAutoscale();
-            o.autoHeadroomPercentage = autoHeadroomPercentage;
-            o.autoscaleHeadrooms = autoscaleHeadrooms;
-            return o;
+            final var _resultValue = new OceanVirtualNodeGroupAutoscale();
+            _resultValue.autoHeadroomPercentage = autoHeadroomPercentage;
+            _resultValue.autoscaleHeadrooms = autoscaleHeadrooms;
+            return _resultValue;
         }
     }
 }

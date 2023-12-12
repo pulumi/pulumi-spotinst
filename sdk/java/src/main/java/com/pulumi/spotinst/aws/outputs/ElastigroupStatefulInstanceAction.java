@@ -113,10 +113,10 @@ public final class ElastigroupStatefulInstanceAction {
             return this;
         }
         public ElastigroupStatefulInstanceAction build() {
-            final var o = new ElastigroupStatefulInstanceAction();
-            o.statefulInstanceId = statefulInstanceId;
-            o.type = type;
-            return o;
+            final var _resultValue = new ElastigroupStatefulInstanceAction();
+            _resultValue.statefulInstanceId = statefulInstanceId;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

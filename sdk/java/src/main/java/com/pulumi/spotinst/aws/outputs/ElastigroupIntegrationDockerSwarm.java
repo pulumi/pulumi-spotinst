@@ -147,14 +147,14 @@ public final class ElastigroupIntegrationDockerSwarm {
             return this;
         }
         public ElastigroupIntegrationDockerSwarm build() {
-            final var o = new ElastigroupIntegrationDockerSwarm();
-            o.autoscaleCooldown = autoscaleCooldown;
-            o.autoscaleDown = autoscaleDown;
-            o.autoscaleHeadroom = autoscaleHeadroom;
-            o.autoscaleIsEnabled = autoscaleIsEnabled;
-            o.masterHost = masterHost;
-            o.masterPort = masterPort;
-            return o;
+            final var _resultValue = new ElastigroupIntegrationDockerSwarm();
+            _resultValue.autoscaleCooldown = autoscaleCooldown;
+            _resultValue.autoscaleDown = autoscaleDown;
+            _resultValue.autoscaleHeadroom = autoscaleHeadroom;
+            _resultValue.autoscaleIsEnabled = autoscaleIsEnabled;
+            _resultValue.masterHost = masterHost;
+            _resultValue.masterPort = masterPort;
+            return _resultValue;
         }
     }
 }

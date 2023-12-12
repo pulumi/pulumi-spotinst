@@ -80,11 +80,11 @@ public final class ElastigroupIntegrationBeanstalk {
             return this;
         }
         public ElastigroupIntegrationBeanstalk build() {
-            final var o = new ElastigroupIntegrationBeanstalk();
-            o.deploymentPreferences = deploymentPreferences;
-            o.environmentId = environmentId;
-            o.managedActions = managedActions;
-            return o;
+            final var _resultValue = new ElastigroupIntegrationBeanstalk();
+            _resultValue.deploymentPreferences = deploymentPreferences;
+            _resultValue.environmentId = environmentId;
+            _resultValue.managedActions = managedActions;
+            return _resultValue;
         }
     }
 }

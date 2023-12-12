@@ -106,12 +106,12 @@ public final class ElastigroupUpdatePolicy {
             return this;
         }
         public ElastigroupUpdatePolicy build() {
-            final var o = new ElastigroupUpdatePolicy();
-            o.autoApplyTags = autoApplyTags;
-            o.rollConfig = rollConfig;
-            o.shouldResumeStateful = shouldResumeStateful;
-            o.shouldRoll = shouldRoll;
-            return o;
+            final var _resultValue = new ElastigroupUpdatePolicy();
+            _resultValue.autoApplyTags = autoApplyTags;
+            _resultValue.rollConfig = rollConfig;
+            _resultValue.shouldResumeStateful = shouldResumeStateful;
+            _resultValue.shouldRoll = shouldRoll;
+            return _resultValue;
         }
     }
 }

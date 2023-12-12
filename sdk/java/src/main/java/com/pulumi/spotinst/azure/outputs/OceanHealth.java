@@ -48,9 +48,9 @@ public final class OceanHealth {
             return this;
         }
         public OceanHealth build() {
-            final var o = new OceanHealth();
-            o.gracePeriod = gracePeriod;
-            return o;
+            final var _resultValue = new OceanHealth();
+            _resultValue.gracePeriod = gracePeriod;
+            return _resultValue;
         }
     }
 }

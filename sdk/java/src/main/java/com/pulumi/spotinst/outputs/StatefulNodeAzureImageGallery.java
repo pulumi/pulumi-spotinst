@@ -71,12 +71,12 @@ public final class StatefulNodeAzureImageGallery {
             return this;
         }
         public StatefulNodeAzureImageGallery build() {
-            final var o = new StatefulNodeAzureImageGallery();
-            o.galleryName = galleryName;
-            o.galleryResourceGroupName = galleryResourceGroupName;
-            o.imageName = imageName;
-            o.versionName = versionName;
-            return o;
+            final var _resultValue = new StatefulNodeAzureImageGallery();
+            _resultValue.galleryName = galleryName;
+            _resultValue.galleryResourceGroupName = galleryResourceGroupName;
+            _resultValue.imageName = imageName;
+            _resultValue.versionName = versionName;
+            return _resultValue;
         }
     }
 }

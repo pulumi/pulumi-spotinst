@@ -51,10 +51,10 @@ public final class ElastigroupNetworkInterfaceAccessConfig {
             return this;
         }
         public ElastigroupNetworkInterfaceAccessConfig build() {
-            final var o = new ElastigroupNetworkInterfaceAccessConfig();
-            o.name = name;
-            o.type = type;
-            return o;
+            final var _resultValue = new ElastigroupNetworkInterfaceAccessConfig();
+            _resultValue.name = name;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

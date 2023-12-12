@@ -65,10 +65,10 @@ public final class ElastigroupMultipleMetricsExpression {
             return this;
         }
         public ElastigroupMultipleMetricsExpression build() {
-            final var o = new ElastigroupMultipleMetricsExpression();
-            o.expression = expression;
-            o.name = name;
-            return o;
+            final var _resultValue = new ElastigroupMultipleMetricsExpression();
+            _resultValue.expression = expression;
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

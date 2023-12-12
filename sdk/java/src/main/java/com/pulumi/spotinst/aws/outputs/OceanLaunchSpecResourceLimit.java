@@ -67,10 +67,10 @@ public final class OceanLaunchSpecResourceLimit {
             return this;
         }
         public OceanLaunchSpecResourceLimit build() {
-            final var o = new OceanLaunchSpecResourceLimit();
-            o.maxInstanceCount = maxInstanceCount;
-            o.minInstanceCount = minInstanceCount;
-            return o;
+            final var _resultValue = new OceanLaunchSpecResourceLimit();
+            _resultValue.maxInstanceCount = maxInstanceCount;
+            _resultValue.minInstanceCount = minInstanceCount;
+            return _resultValue;
         }
     }
 }

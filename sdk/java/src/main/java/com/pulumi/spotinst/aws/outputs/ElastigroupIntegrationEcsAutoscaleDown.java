@@ -68,10 +68,10 @@ public final class ElastigroupIntegrationEcsAutoscaleDown {
             return this;
         }
         public ElastigroupIntegrationEcsAutoscaleDown build() {
-            final var o = new ElastigroupIntegrationEcsAutoscaleDown();
-            o.evaluationPeriods = evaluationPeriods;
-            o.maxScaleDownPercentage = maxScaleDownPercentage;
-            return o;
+            final var _resultValue = new ElastigroupIntegrationEcsAutoscaleDown();
+            _resultValue.evaluationPeriods = evaluationPeriods;
+            _resultValue.maxScaleDownPercentage = maxScaleDownPercentage;
+            return _resultValue;
         }
     }
 }

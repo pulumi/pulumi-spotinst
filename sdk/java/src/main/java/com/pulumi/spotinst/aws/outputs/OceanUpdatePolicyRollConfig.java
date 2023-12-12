@@ -79,12 +79,12 @@ public final class OceanUpdatePolicyRollConfig {
             return this;
         }
         public OceanUpdatePolicyRollConfig build() {
-            final var o = new OceanUpdatePolicyRollConfig();
-            o.batchMinHealthyPercentage = batchMinHealthyPercentage;
-            o.batchSizePercentage = batchSizePercentage;
-            o.launchSpecIds = launchSpecIds;
-            o.respectPdb = respectPdb;
-            return o;
+            final var _resultValue = new OceanUpdatePolicyRollConfig();
+            _resultValue.batchMinHealthyPercentage = batchMinHealthyPercentage;
+            _resultValue.batchSizePercentage = batchSizePercentage;
+            _resultValue.launchSpecIds = launchSpecIds;
+            _resultValue.respectPdb = respectPdb;
+            return _resultValue;
         }
     }
 }

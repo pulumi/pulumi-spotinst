@@ -86,11 +86,11 @@ public final class ElastigroupIntegrationKubernetesAutoscaleHeadroom {
             return this;
         }
         public ElastigroupIntegrationKubernetesAutoscaleHeadroom build() {
-            final var o = new ElastigroupIntegrationKubernetesAutoscaleHeadroom();
-            o.cpuPerUnit = cpuPerUnit;
-            o.memoryPerUnit = memoryPerUnit;
-            o.numOfUnits = numOfUnits;
-            return o;
+            final var _resultValue = new ElastigroupIntegrationKubernetesAutoscaleHeadroom();
+            _resultValue.cpuPerUnit = cpuPerUnit;
+            _resultValue.memoryPerUnit = memoryPerUnit;
+            _resultValue.numOfUnits = numOfUnits;
+            return _resultValue;
         }
     }
 }

@@ -75,12 +75,12 @@ public final class StatefulNodeAzureDetachDataDisk {
             return this;
         }
         public StatefulNodeAzureDetachDataDisk build() {
-            final var o = new StatefulNodeAzureDetachDataDisk();
-            o.dataDiskName = dataDiskName;
-            o.dataDiskResourceGroupName = dataDiskResourceGroupName;
-            o.shouldDeallocate = shouldDeallocate;
-            o.ttlInHours = ttlInHours;
-            return o;
+            final var _resultValue = new StatefulNodeAzureDetachDataDisk();
+            _resultValue.dataDiskName = dataDiskName;
+            _resultValue.dataDiskResourceGroupName = dataDiskResourceGroupName;
+            _resultValue.shouldDeallocate = shouldDeallocate;
+            _resultValue.ttlInHours = ttlInHours;
+            return _resultValue;
         }
     }
 }

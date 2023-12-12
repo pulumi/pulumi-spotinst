@@ -123,16 +123,16 @@ public final class ElastigroupDisk {
             return this;
         }
         public ElastigroupDisk build() {
-            final var o = new ElastigroupDisk();
-            o.autoDelete = autoDelete;
-            o.boot = boot;
-            o.deviceName = deviceName;
-            o.initializeParams = initializeParams;
-            o.interface_ = interface_;
-            o.mode = mode;
-            o.source = source;
-            o.type = type;
-            return o;
+            final var _resultValue = new ElastigroupDisk();
+            _resultValue.autoDelete = autoDelete;
+            _resultValue.boot = boot;
+            _resultValue.deviceName = deviceName;
+            _resultValue.initializeParams = initializeParams;
+            _resultValue.interface_ = interface_;
+            _resultValue.mode = mode;
+            _resultValue.source = source;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

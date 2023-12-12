@@ -68,10 +68,10 @@ public final class OceanAutoscalerAutoscaleHeadroomAutomatic {
             return this;
         }
         public OceanAutoscalerAutoscaleHeadroomAutomatic build() {
-            final var o = new OceanAutoscalerAutoscaleHeadroomAutomatic();
-            o.isEnabled = isEnabled;
-            o.percentage = percentage;
-            return o;
+            final var _resultValue = new OceanAutoscalerAutoscaleHeadroomAutomatic();
+            _resultValue.isEnabled = isEnabled;
+            _resultValue.percentage = percentage;
+            return _resultValue;
         }
     }
 }

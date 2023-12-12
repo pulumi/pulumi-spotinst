@@ -53,10 +53,10 @@ public final class ElastigroupBackendServiceNamedPort {
             return ports(List.of(ports));
         }
         public ElastigroupBackendServiceNamedPort build() {
-            final var o = new ElastigroupBackendServiceNamedPort();
-            o.name = name;
-            o.ports = ports;
-            return o;
+            final var _resultValue = new ElastigroupBackendServiceNamedPort();
+            _resultValue.name = name;
+            _resultValue.ports = ports;
+            return _resultValue;
         }
     }
 }

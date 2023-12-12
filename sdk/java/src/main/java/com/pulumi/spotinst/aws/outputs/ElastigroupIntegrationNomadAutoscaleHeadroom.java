@@ -86,11 +86,11 @@ public final class ElastigroupIntegrationNomadAutoscaleHeadroom {
             return this;
         }
         public ElastigroupIntegrationNomadAutoscaleHeadroom build() {
-            final var o = new ElastigroupIntegrationNomadAutoscaleHeadroom();
-            o.cpuPerUnit = cpuPerUnit;
-            o.memoryPerUnit = memoryPerUnit;
-            o.numOfUnits = numOfUnits;
-            return o;
+            final var _resultValue = new ElastigroupIntegrationNomadAutoscaleHeadroom();
+            _resultValue.cpuPerUnit = cpuPerUnit;
+            _resultValue.memoryPerUnit = memoryPerUnit;
+            _resultValue.numOfUnits = numOfUnits;
+            return _resultValue;
         }
     }
 }

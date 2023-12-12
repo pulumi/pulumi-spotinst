@@ -48,9 +48,9 @@ public final class BeanstalkManagedActions {
             return this;
         }
         public BeanstalkManagedActions build() {
-            final var o = new BeanstalkManagedActions();
-            o.platformUpdate = platformUpdate;
-            return o;
+            final var _resultValue = new BeanstalkManagedActions();
+            _resultValue.platformUpdate = platformUpdate;
+            return _resultValue;
         }
     }
 }

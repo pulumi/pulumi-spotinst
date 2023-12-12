@@ -59,10 +59,10 @@ public final class ElastigroupTag {
             return this;
         }
         public ElastigroupTag build() {
-            final var o = new ElastigroupTag();
-            o.key = key;
-            o.value = value;
-            return o;
+            final var _resultValue = new ElastigroupTag();
+            _resultValue.key = key;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

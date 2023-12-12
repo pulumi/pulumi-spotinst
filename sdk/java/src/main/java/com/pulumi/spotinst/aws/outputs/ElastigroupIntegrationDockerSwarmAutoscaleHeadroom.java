@@ -86,11 +86,11 @@ public final class ElastigroupIntegrationDockerSwarmAutoscaleHeadroom {
             return this;
         }
         public ElastigroupIntegrationDockerSwarmAutoscaleHeadroom build() {
-            final var o = new ElastigroupIntegrationDockerSwarmAutoscaleHeadroom();
-            o.cpuPerUnit = cpuPerUnit;
-            o.memoryPerUnit = memoryPerUnit;
-            o.numOfUnits = numOfUnits;
-            return o;
+            final var _resultValue = new ElastigroupIntegrationDockerSwarmAutoscaleHeadroom();
+            _resultValue.cpuPerUnit = cpuPerUnit;
+            _resultValue.memoryPerUnit = memoryPerUnit;
+            _resultValue.numOfUnits = numOfUnits;
+            return _resultValue;
         }
     }
 }

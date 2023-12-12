@@ -51,10 +51,10 @@ public final class OceanNpAutoscalerResourceLimits {
             return this;
         }
         public OceanNpAutoscalerResourceLimits build() {
-            final var o = new OceanNpAutoscalerResourceLimits();
-            o.maxMemoryGib = maxMemoryGib;
-            o.maxVcpu = maxVcpu;
-            return o;
+            final var _resultValue = new OceanNpAutoscalerResourceLimits();
+            _resultValue.maxMemoryGib = maxMemoryGib;
+            _resultValue.maxVcpu = maxVcpu;
+            return _resultValue;
         }
     }
 }

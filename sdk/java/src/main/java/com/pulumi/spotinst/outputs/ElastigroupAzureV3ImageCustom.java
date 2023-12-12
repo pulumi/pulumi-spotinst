@@ -49,10 +49,10 @@ public final class ElastigroupAzureV3ImageCustom {
             return this;
         }
         public ElastigroupAzureV3ImageCustom build() {
-            final var o = new ElastigroupAzureV3ImageCustom();
-            o.imageName = imageName;
-            o.resourceGroupName = resourceGroupName;
-            return o;
+            final var _resultValue = new ElastigroupAzureV3ImageCustom();
+            _resultValue.imageName = imageName;
+            _resultValue.resourceGroupName = resourceGroupName;
+            return _resultValue;
         }
     }
 }

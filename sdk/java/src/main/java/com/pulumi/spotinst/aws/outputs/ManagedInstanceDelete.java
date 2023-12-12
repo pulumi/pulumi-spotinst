@@ -95,14 +95,14 @@ public final class ManagedInstanceDelete {
             return this;
         }
         public ManagedInstanceDelete build() {
-            final var o = new ManagedInstanceDelete();
-            o.amiBackupShouldDeleteImages = amiBackupShouldDeleteImages;
-            o.deallocationConfigShouldDeleteImages = deallocationConfigShouldDeleteImages;
-            o.shouldDeleteNetworkInterfaces = shouldDeleteNetworkInterfaces;
-            o.shouldDeleteSnapshots = shouldDeleteSnapshots;
-            o.shouldDeleteVolumes = shouldDeleteVolumes;
-            o.shouldTerminateInstance = shouldTerminateInstance;
-            return o;
+            final var _resultValue = new ManagedInstanceDelete();
+            _resultValue.amiBackupShouldDeleteImages = amiBackupShouldDeleteImages;
+            _resultValue.deallocationConfigShouldDeleteImages = deallocationConfigShouldDeleteImages;
+            _resultValue.shouldDeleteNetworkInterfaces = shouldDeleteNetworkInterfaces;
+            _resultValue.shouldDeleteSnapshots = shouldDeleteSnapshots;
+            _resultValue.shouldDeleteVolumes = shouldDeleteVolumes;
+            _resultValue.shouldTerminateInstance = shouldTerminateInstance;
+            return _resultValue;
         }
     }
 }

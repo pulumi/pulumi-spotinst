@@ -40,9 +40,9 @@ public final class OceanNpAutoscalerAutoscaleHeadroomAutomatic {
             return this;
         }
         public OceanNpAutoscalerAutoscaleHeadroomAutomatic build() {
-            final var o = new OceanNpAutoscalerAutoscaleHeadroomAutomatic();
-            o.percentage = percentage;
-            return o;
+            final var _resultValue = new OceanNpAutoscalerAutoscaleHeadroomAutomatic();
+            _resultValue.percentage = percentage;
+            return _resultValue;
         }
     }
 }

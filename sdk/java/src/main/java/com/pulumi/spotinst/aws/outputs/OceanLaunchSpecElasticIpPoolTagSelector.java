@@ -67,10 +67,10 @@ public final class OceanLaunchSpecElasticIpPoolTagSelector {
             return this;
         }
         public OceanLaunchSpecElasticIpPoolTagSelector build() {
-            final var o = new OceanLaunchSpecElasticIpPoolTagSelector();
-            o.tagKey = tagKey;
-            o.tagValue = tagValue;
-            return o;
+            final var _resultValue = new OceanLaunchSpecElasticIpPoolTagSelector();
+            _resultValue.tagKey = tagKey;
+            _resultValue.tagValue = tagValue;
+            return _resultValue;
         }
     }
 }

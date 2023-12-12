@@ -106,12 +106,12 @@ public final class MrScalarTaskEbsBlockDevice {
             return this;
         }
         public MrScalarTaskEbsBlockDevice build() {
-            final var o = new MrScalarTaskEbsBlockDevice();
-            o.iops = iops;
-            o.sizeInGb = sizeInGb;
-            o.volumeType = volumeType;
-            o.volumesPerInstance = volumesPerInstance;
-            return o;
+            final var _resultValue = new MrScalarTaskEbsBlockDevice();
+            _resultValue.iops = iops;
+            _resultValue.sizeInGb = sizeInGb;
+            _resultValue.volumeType = volumeType;
+            _resultValue.volumesPerInstance = volumesPerInstance;
+            return _resultValue;
         }
     }
 }

@@ -68,10 +68,10 @@ public final class OceanBlockDeviceMapping {
             return this;
         }
         public OceanBlockDeviceMapping build() {
-            final var o = new OceanBlockDeviceMapping();
-            o.deviceName = deviceName;
-            o.ebs = ebs;
-            return o;
+            final var _resultValue = new OceanBlockDeviceMapping();
+            _resultValue.deviceName = deviceName;
+            _resultValue.ebs = ebs;
+            return _resultValue;
         }
     }
 }

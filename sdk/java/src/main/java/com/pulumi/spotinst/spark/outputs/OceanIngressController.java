@@ -48,9 +48,9 @@ public final class OceanIngressController {
             return this;
         }
         public OceanIngressController build() {
-            final var o = new OceanIngressController();
-            o.managed = managed;
-            return o;
+            final var _resultValue = new OceanIngressController();
+            _resultValue.managed = managed;
+            return _resultValue;
         }
     }
 }

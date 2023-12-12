@@ -48,9 +48,9 @@ public final class ElastigroupIntegrationNomadAutoscaleDown {
             return this;
         }
         public ElastigroupIntegrationNomadAutoscaleDown build() {
-            final var o = new ElastigroupIntegrationNomadAutoscaleDown();
-            o.evaluationPeriods = evaluationPeriods;
-            return o;
+            final var _resultValue = new ElastigroupIntegrationNomadAutoscaleDown();
+            _resultValue.evaluationPeriods = evaluationPeriods;
+            return _resultValue;
         }
     }
 }

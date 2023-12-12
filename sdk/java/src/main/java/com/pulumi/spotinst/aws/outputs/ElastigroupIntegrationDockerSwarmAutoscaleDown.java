@@ -68,10 +68,10 @@ public final class ElastigroupIntegrationDockerSwarmAutoscaleDown {
             return this;
         }
         public ElastigroupIntegrationDockerSwarmAutoscaleDown build() {
-            final var o = new ElastigroupIntegrationDockerSwarmAutoscaleDown();
-            o.evaluationPeriods = evaluationPeriods;
-            o.maxScaleDownPercentage = maxScaleDownPercentage;
-            return o;
+            final var _resultValue = new ElastigroupIntegrationDockerSwarmAutoscaleDown();
+            _resultValue.evaluationPeriods = evaluationPeriods;
+            _resultValue.maxScaleDownPercentage = maxScaleDownPercentage;
+            return _resultValue;
         }
     }
 }

@@ -51,9 +51,9 @@ public final class ElastigroupLoggingExport {
             return s3s(List.of(s3s));
         }
         public ElastigroupLoggingExport build() {
-            final var o = new ElastigroupLoggingExport();
-            o.s3s = s3s;
-            return o;
+            final var _resultValue = new ElastigroupLoggingExport();
+            _resultValue.s3s = s3s;
+            return _resultValue;
         }
     }
 }

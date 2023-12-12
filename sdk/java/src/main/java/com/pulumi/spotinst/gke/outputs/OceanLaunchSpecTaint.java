@@ -86,11 +86,11 @@ public final class OceanLaunchSpecTaint {
             return this;
         }
         public OceanLaunchSpecTaint build() {
-            final var o = new OceanLaunchSpecTaint();
-            o.effect = effect;
-            o.key = key;
-            o.value = value;
-            return o;
+            final var _resultValue = new OceanLaunchSpecTaint();
+            _resultValue.effect = effect;
+            _resultValue.key = key;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

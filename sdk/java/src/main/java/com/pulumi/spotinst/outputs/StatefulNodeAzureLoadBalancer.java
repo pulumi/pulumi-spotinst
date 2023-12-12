@@ -88,13 +88,13 @@ public final class StatefulNodeAzureLoadBalancer {
             return this;
         }
         public StatefulNodeAzureLoadBalancer build() {
-            final var o = new StatefulNodeAzureLoadBalancer();
-            o.backendPoolNames = backendPoolNames;
-            o.name = name;
-            o.resourceGroupName = resourceGroupName;
-            o.sku = sku;
-            o.type = type;
-            return o;
+            final var _resultValue = new StatefulNodeAzureLoadBalancer();
+            _resultValue.backendPoolNames = backendPoolNames;
+            _resultValue.name = name;
+            _resultValue.resourceGroupName = resourceGroupName;
+            _resultValue.sku = sku;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

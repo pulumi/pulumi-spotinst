@@ -46,9 +46,9 @@ public final class ElastigroupCpuOptions {
             return this;
         }
         public ElastigroupCpuOptions build() {
-            final var o = new ElastigroupCpuOptions();
-            o.threadsPerCore = threadsPerCore;
-            return o;
+            final var _resultValue = new ElastigroupCpuOptions();
+            _resultValue.threadsPerCore = threadsPerCore;
+            return _resultValue;
         }
     }
 }

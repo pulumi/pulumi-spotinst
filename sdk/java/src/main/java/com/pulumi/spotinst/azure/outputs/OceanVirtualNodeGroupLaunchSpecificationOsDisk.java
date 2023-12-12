@@ -88,11 +88,11 @@ public final class OceanVirtualNodeGroupLaunchSpecificationOsDisk {
             return this;
         }
         public OceanVirtualNodeGroupLaunchSpecificationOsDisk build() {
-            final var o = new OceanVirtualNodeGroupLaunchSpecificationOsDisk();
-            o.sizeGb = sizeGb;
-            o.type = type;
-            o.utilizeEphemeralStorage = utilizeEphemeralStorage;
-            return o;
+            final var _resultValue = new OceanVirtualNodeGroupLaunchSpecificationOsDisk();
+            _resultValue.sizeGb = sizeGb;
+            _resultValue.type = type;
+            _resultValue.utilizeEphemeralStorage = utilizeEphemeralStorage;
+            return _resultValue;
         }
     }
 }

@@ -40,9 +40,9 @@ public final class OceanNpScheduling {
             return this;
         }
         public OceanNpScheduling build() {
-            final var o = new OceanNpScheduling();
-            o.shutdownHours = shutdownHours;
-            return o;
+            final var _resultValue = new OceanNpScheduling();
+            _resultValue.shutdownHours = shutdownHours;
+            return _resultValue;
         }
     }
 }

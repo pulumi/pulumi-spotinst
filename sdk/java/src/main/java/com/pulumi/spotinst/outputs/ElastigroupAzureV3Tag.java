@@ -49,10 +49,10 @@ public final class ElastigroupAzureV3Tag {
             return this;
         }
         public ElastigroupAzureV3Tag build() {
-            final var o = new ElastigroupAzureV3Tag();
-            o.key = key;
-            o.value = value;
-            return o;
+            final var _resultValue = new ElastigroupAzureV3Tag();
+            _resultValue.key = key;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

@@ -67,10 +67,10 @@ public final class OceanLaunchSpecNetworkInterfaceAccessConfig {
             return this;
         }
         public OceanLaunchSpecNetworkInterfaceAccessConfig build() {
-            final var o = new OceanLaunchSpecNetworkInterfaceAccessConfig();
-            o.name = name;
-            o.type = type;
-            return o;
+            final var _resultValue = new OceanLaunchSpecNetworkInterfaceAccessConfig();
+            _resultValue.name = name;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

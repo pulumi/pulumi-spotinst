@@ -51,9 +51,9 @@ public final class OceanLoggingExport {
             return s3s(List.of(s3s));
         }
         public OceanLoggingExport build() {
-            final var o = new OceanLoggingExport();
-            o.s3s = s3s;
-            return o;
+            final var _resultValue = new OceanLoggingExport();
+            _resultValue.s3s = s3s;
+            return _resultValue;
         }
     }
 }

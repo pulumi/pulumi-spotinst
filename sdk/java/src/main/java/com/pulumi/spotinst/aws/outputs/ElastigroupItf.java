@@ -107,14 +107,14 @@ public final class ElastigroupItf {
             return this;
         }
         public ElastigroupItf build() {
-            final var o = new ElastigroupItf();
-            o.defaultStaticTargetGroup = defaultStaticTargetGroup;
-            o.fixedTargetGroups = fixedTargetGroups;
-            o.loadBalancers = loadBalancers;
-            o.migrationHealthinessThreshold = migrationHealthinessThreshold;
-            o.targetGroupConfigs = targetGroupConfigs;
-            o.weightStrategy = weightStrategy;
-            return o;
+            final var _resultValue = new ElastigroupItf();
+            _resultValue.defaultStaticTargetGroup = defaultStaticTargetGroup;
+            _resultValue.fixedTargetGroups = fixedTargetGroups;
+            _resultValue.loadBalancers = loadBalancers;
+            _resultValue.migrationHealthinessThreshold = migrationHealthinessThreshold;
+            _resultValue.targetGroupConfigs = targetGroupConfigs;
+            _resultValue.weightStrategy = weightStrategy;
+            return _resultValue;
         }
     }
 }

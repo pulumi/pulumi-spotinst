@@ -110,12 +110,12 @@ public final class OceanLaunchSpecSchedulingTask {
             return this;
         }
         public OceanLaunchSpecSchedulingTask build() {
-            final var o = new OceanLaunchSpecSchedulingTask();
-            o.cronExpression = cronExpression;
-            o.isEnabled = isEnabled;
-            o.taskHeadrooms = taskHeadrooms;
-            o.taskType = taskType;
-            return o;
+            final var _resultValue = new OceanLaunchSpecSchedulingTask();
+            _resultValue.cronExpression = cronExpression;
+            _resultValue.isEnabled = isEnabled;
+            _resultValue.taskHeadrooms = taskHeadrooms;
+            _resultValue.taskType = taskType;
+            return _resultValue;
         }
     }
 }

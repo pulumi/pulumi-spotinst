@@ -63,11 +63,11 @@ public final class ManagedInstanceIntegrationRoute53DomainRecordSet {
             return this;
         }
         public ManagedInstanceIntegrationRoute53DomainRecordSet build() {
-            final var o = new ManagedInstanceIntegrationRoute53DomainRecordSet();
-            o.name = name;
-            o.usePublicDns = usePublicDns;
-            o.usePublicIp = usePublicIp;
-            return o;
+            final var _resultValue = new ManagedInstanceIntegrationRoute53DomainRecordSet();
+            _resultValue.name = name;
+            _resultValue.usePublicDns = usePublicDns;
+            _resultValue.usePublicIp = usePublicIp;
+            return _resultValue;
         }
     }
 }

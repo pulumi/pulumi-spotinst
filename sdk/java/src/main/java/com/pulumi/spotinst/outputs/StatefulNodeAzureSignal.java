@@ -50,10 +50,10 @@ public final class StatefulNodeAzureSignal {
             return this;
         }
         public StatefulNodeAzureSignal build() {
-            final var o = new StatefulNodeAzureSignal();
-            o.timeout = timeout;
-            o.type = type;
-            return o;
+            final var _resultValue = new StatefulNodeAzureSignal();
+            _resultValue.timeout = timeout;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

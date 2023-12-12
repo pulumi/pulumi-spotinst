@@ -105,12 +105,12 @@ public final class OceanLaunchSpecSchedulingTaskTaskHeadroom {
             return this;
         }
         public OceanLaunchSpecSchedulingTaskTaskHeadroom build() {
-            final var o = new OceanLaunchSpecSchedulingTaskTaskHeadroom();
-            o.cpuPerUnit = cpuPerUnit;
-            o.gpuPerUnit = gpuPerUnit;
-            o.memoryPerUnit = memoryPerUnit;
-            o.numOfUnits = numOfUnits;
-            return o;
+            final var _resultValue = new OceanLaunchSpecSchedulingTaskTaskHeadroom();
+            _resultValue.cpuPerUnit = cpuPerUnit;
+            _resultValue.gpuPerUnit = gpuPerUnit;
+            _resultValue.memoryPerUnit = memoryPerUnit;
+            _resultValue.numOfUnits = numOfUnits;
+            return _resultValue;
         }
     }
 }

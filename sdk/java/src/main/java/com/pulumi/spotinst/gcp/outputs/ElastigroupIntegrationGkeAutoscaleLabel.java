@@ -65,10 +65,10 @@ public final class ElastigroupIntegrationGkeAutoscaleLabel {
             return this;
         }
         public ElastigroupIntegrationGkeAutoscaleLabel build() {
-            final var o = new ElastigroupIntegrationGkeAutoscaleLabel();
-            o.key = key;
-            o.value = value;
-            return o;
+            final var _resultValue = new ElastigroupIntegrationGkeAutoscaleLabel();
+            _resultValue.key = key;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

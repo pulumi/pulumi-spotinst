@@ -115,10 +115,10 @@ public final class ElastigroupEphemeralBlockDevice {
             return this;
         }
         public ElastigroupEphemeralBlockDevice build() {
-            final var o = new ElastigroupEphemeralBlockDevice();
-            o.deviceName = deviceName;
-            o.virtualName = virtualName;
-            return o;
+            final var _resultValue = new ElastigroupEphemeralBlockDevice();
+            _resultValue.deviceName = deviceName;
+            _resultValue.virtualName = virtualName;
+            return _resultValue;
         }
     }
 }

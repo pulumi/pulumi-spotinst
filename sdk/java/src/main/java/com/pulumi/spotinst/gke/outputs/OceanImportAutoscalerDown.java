@@ -68,10 +68,10 @@ public final class OceanImportAutoscalerDown {
             return this;
         }
         public OceanImportAutoscalerDown build() {
-            final var o = new OceanImportAutoscalerDown();
-            o.evaluationPeriods = evaluationPeriods;
-            o.maxScaleDownPercentage = maxScaleDownPercentage;
-            return o;
+            final var _resultValue = new OceanImportAutoscalerDown();
+            _resultValue.evaluationPeriods = evaluationPeriods;
+            _resultValue.maxScaleDownPercentage = maxScaleDownPercentage;
+            return _resultValue;
         }
     }
 }

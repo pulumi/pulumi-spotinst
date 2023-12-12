@@ -68,10 +68,10 @@ public final class ElastigroupScalingStrategy {
             return this;
         }
         public ElastigroupScalingStrategy build() {
-            final var o = new ElastigroupScalingStrategy();
-            o.terminateAtEndOfBillingHour = terminateAtEndOfBillingHour;
-            o.terminationPolicy = terminationPolicy;
-            return o;
+            final var _resultValue = new ElastigroupScalingStrategy();
+            _resultValue.terminateAtEndOfBillingHour = terminateAtEndOfBillingHour;
+            _resultValue.terminationPolicy = terminationPolicy;
+            return _resultValue;
         }
     }
 }

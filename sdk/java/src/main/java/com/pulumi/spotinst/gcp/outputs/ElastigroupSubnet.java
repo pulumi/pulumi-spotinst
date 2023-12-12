@@ -69,10 +69,10 @@ public final class ElastigroupSubnet {
             return subnetNames(List.of(subnetNames));
         }
         public ElastigroupSubnet build() {
-            final var o = new ElastigroupSubnet();
-            o.region = region;
-            o.subnetNames = subnetNames;
-            return o;
+            final var _resultValue = new ElastigroupSubnet();
+            _resultValue.region = region;
+            _resultValue.subnetNames = subnetNames;
+            return _resultValue;
         }
     }
 }

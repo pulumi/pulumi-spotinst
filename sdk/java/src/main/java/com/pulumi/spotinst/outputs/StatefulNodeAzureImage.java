@@ -73,11 +73,11 @@ public final class StatefulNodeAzureImage {
             return marketplaceImages(List.of(marketplaceImages));
         }
         public StatefulNodeAzureImage build() {
-            final var o = new StatefulNodeAzureImage();
-            o.customImages = customImages;
-            o.galleries = galleries;
-            o.marketplaceImages = marketplaceImages;
-            return o;
+            final var _resultValue = new StatefulNodeAzureImage();
+            _resultValue.customImages = customImages;
+            _resultValue.galleries = galleries;
+            _resultValue.marketplaceImages = marketplaceImages;
+            return _resultValue;
         }
     }
 }

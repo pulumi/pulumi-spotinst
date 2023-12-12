@@ -86,11 +86,11 @@ public final class OceanLoadBalancer {
             return this;
         }
         public OceanLoadBalancer build() {
-            final var o = new OceanLoadBalancer();
-            o.arn = arn;
-            o.name = name;
-            o.type = type;
-            return o;
+            final var _resultValue = new OceanLoadBalancer();
+            _resultValue.arn = arn;
+            _resultValue.name = name;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

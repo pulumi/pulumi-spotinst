@@ -238,16 +238,16 @@ public final class ElastigroupIntegrationNomad {
             return this;
         }
         public ElastigroupIntegrationNomad build() {
-            final var o = new ElastigroupIntegrationNomad();
-            o.aclToken = aclToken;
-            o.autoscaleConstraints = autoscaleConstraints;
-            o.autoscaleCooldown = autoscaleCooldown;
-            o.autoscaleDown = autoscaleDown;
-            o.autoscaleHeadroom = autoscaleHeadroom;
-            o.autoscaleIsEnabled = autoscaleIsEnabled;
-            o.masterHost = masterHost;
-            o.masterPort = masterPort;
-            return o;
+            final var _resultValue = new ElastigroupIntegrationNomad();
+            _resultValue.aclToken = aclToken;
+            _resultValue.autoscaleConstraints = autoscaleConstraints;
+            _resultValue.autoscaleCooldown = autoscaleCooldown;
+            _resultValue.autoscaleDown = autoscaleDown;
+            _resultValue.autoscaleHeadroom = autoscaleHeadroom;
+            _resultValue.autoscaleIsEnabled = autoscaleIsEnabled;
+            _resultValue.masterHost = masterHost;
+            _resultValue.masterPort = masterPort;
+            return _resultValue;
         }
     }
 }

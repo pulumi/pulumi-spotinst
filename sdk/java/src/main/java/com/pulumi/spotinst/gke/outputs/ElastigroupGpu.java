@@ -50,10 +50,10 @@ public final class ElastigroupGpu {
             return this;
         }
         public ElastigroupGpu build() {
-            final var o = new ElastigroupGpu();
-            o.count = count;
-            o.type = type;
-            return o;
+            final var _resultValue = new ElastigroupGpu();
+            _resultValue.count = count;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

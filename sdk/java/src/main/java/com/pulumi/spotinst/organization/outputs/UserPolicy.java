@@ -63,10 +63,10 @@ public final class UserPolicy {
             return this;
         }
         public UserPolicy build() {
-            final var o = new UserPolicy();
-            o.policyAccountIds = policyAccountIds;
-            o.policyId = policyId;
-            return o;
+            final var _resultValue = new UserPolicy();
+            _resultValue.policyAccountIds = policyAccountIds;
+            _resultValue.policyId = policyId;
+            return _resultValue;
         }
     }
 }

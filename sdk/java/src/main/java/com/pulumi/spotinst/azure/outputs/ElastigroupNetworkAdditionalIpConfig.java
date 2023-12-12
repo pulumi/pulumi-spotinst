@@ -59,10 +59,10 @@ public final class ElastigroupNetworkAdditionalIpConfig {
             return this;
         }
         public ElastigroupNetworkAdditionalIpConfig build() {
-            final var o = new ElastigroupNetworkAdditionalIpConfig();
-            o.name = name;
-            o.privateIpVersion = privateIpVersion;
-            return o;
+            final var _resultValue = new ElastigroupNetworkAdditionalIpConfig();
+            _resultValue.name = name;
+            _resultValue.privateIpVersion = privateIpVersion;
+            return _resultValue;
         }
     }
 }

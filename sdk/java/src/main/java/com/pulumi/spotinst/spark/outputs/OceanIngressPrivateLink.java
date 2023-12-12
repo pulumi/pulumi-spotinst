@@ -68,10 +68,10 @@ public final class OceanIngressPrivateLink {
             return this;
         }
         public OceanIngressPrivateLink build() {
-            final var o = new OceanIngressPrivateLink();
-            o.enabled = enabled;
-            o.vpcEndpointService = vpcEndpointService;
-            return o;
+            final var _resultValue = new OceanIngressPrivateLink();
+            _resultValue.enabled = enabled;
+            _resultValue.vpcEndpointService = vpcEndpointService;
+            return _resultValue;
         }
     }
 }

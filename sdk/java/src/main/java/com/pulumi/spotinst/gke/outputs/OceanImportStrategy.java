@@ -71,11 +71,11 @@ public final class OceanImportStrategy {
             return this;
         }
         public OceanImportStrategy build() {
-            final var o = new OceanImportStrategy();
-            o.drainingTimeout = drainingTimeout;
-            o.preemptiblePercentage = preemptiblePercentage;
-            o.provisioningModel = provisioningModel;
-            return o;
+            final var _resultValue = new OceanImportStrategy();
+            _resultValue.drainingTimeout = drainingTimeout;
+            _resultValue.preemptiblePercentage = preemptiblePercentage;
+            _resultValue.provisioningModel = provisioningModel;
+            return _resultValue;
         }
     }
 }

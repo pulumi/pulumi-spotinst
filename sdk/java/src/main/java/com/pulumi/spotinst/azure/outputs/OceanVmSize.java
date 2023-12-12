@@ -51,9 +51,9 @@ public final class OceanVmSize {
             return whitelists(List.of(whitelists));
         }
         public OceanVmSize build() {
-            final var o = new OceanVmSize();
-            o.whitelists = whitelists;
-            return o;
+            final var _resultValue = new OceanVmSize();
+            _resultValue.whitelists = whitelists;
+            return _resultValue;
         }
     }
 }

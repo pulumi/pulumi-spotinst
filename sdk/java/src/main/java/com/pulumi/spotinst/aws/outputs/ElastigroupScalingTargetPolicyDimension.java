@@ -67,10 +67,10 @@ public final class ElastigroupScalingTargetPolicyDimension {
             return this;
         }
         public ElastigroupScalingTargetPolicyDimension build() {
-            final var o = new ElastigroupScalingTargetPolicyDimension();
-            o.name = name;
-            o.value = value;
-            return o;
+            final var _resultValue = new ElastigroupScalingTargetPolicyDimension();
+            _resultValue.name = name;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

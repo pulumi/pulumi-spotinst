@@ -46,9 +46,9 @@ public final class SuspensionSuspension {
             return this;
         }
         public SuspensionSuspension build() {
-            final var o = new SuspensionSuspension();
-            o.name = name;
-            return o;
+            final var _resultValue = new SuspensionSuspension();
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

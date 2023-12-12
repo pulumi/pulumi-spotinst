@@ -49,10 +49,10 @@ public final class ElastigroupLabel {
             return this;
         }
         public ElastigroupLabel build() {
-            final var o = new ElastigroupLabel();
-            o.key = key;
-            o.value = value;
-            return o;
+            final var _resultValue = new ElastigroupLabel();
+            _resultValue.key = key;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

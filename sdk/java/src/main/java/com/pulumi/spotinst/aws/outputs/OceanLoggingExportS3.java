@@ -46,9 +46,9 @@ public final class OceanLoggingExportS3 {
             return this;
         }
         public OceanLoggingExportS3 build() {
-            final var o = new OceanLoggingExportS3();
-            o.id = id;
-            return o;
+            final var _resultValue = new OceanLoggingExportS3();
+            _resultValue.id = id;
+            return _resultValue;
         }
     }
 }

@@ -38,9 +38,9 @@ public final class StatefulNodeAzureStrategyRevertToSpot {
             return this;
         }
         public StatefulNodeAzureStrategyRevertToSpot build() {
-            final var o = new StatefulNodeAzureStrategyRevertToSpot();
-            o.performAt = performAt;
-            return o;
+            final var _resultValue = new StatefulNodeAzureStrategyRevertToSpot();
+            _resultValue.performAt = performAt;
+            return _resultValue;
         }
     }
 }

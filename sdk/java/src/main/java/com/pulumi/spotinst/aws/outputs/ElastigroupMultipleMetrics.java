@@ -74,10 +74,10 @@ public final class ElastigroupMultipleMetrics {
             return metrics(List.of(metrics));
         }
         public ElastigroupMultipleMetrics build() {
-            final var o = new ElastigroupMultipleMetrics();
-            o.expressions = expressions;
-            o.metrics = metrics;
-            return o;
+            final var _resultValue = new ElastigroupMultipleMetrics();
+            _resultValue.expressions = expressions;
+            _resultValue.metrics = metrics;
+            return _resultValue;
         }
     }
 }

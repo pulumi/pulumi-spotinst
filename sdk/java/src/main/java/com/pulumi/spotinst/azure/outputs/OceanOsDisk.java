@@ -68,10 +68,10 @@ public final class OceanOsDisk {
             return this;
         }
         public OceanOsDisk build() {
-            final var o = new OceanOsDisk();
-            o.sizeGb = sizeGb;
-            o.type = type;
-            return o;
+            final var _resultValue = new OceanOsDisk();
+            _resultValue.sizeGb = sizeGb;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

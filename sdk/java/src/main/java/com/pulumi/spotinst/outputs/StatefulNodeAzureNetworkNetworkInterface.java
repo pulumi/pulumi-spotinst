@@ -160,18 +160,18 @@ public final class StatefulNodeAzureNetworkNetworkInterface {
             return this;
         }
         public StatefulNodeAzureNetworkNetworkInterface build() {
-            final var o = new StatefulNodeAzureNetworkNetworkInterface();
-            o.additionalIpConfigurations = additionalIpConfigurations;
-            o.applicationSecurityGroups = applicationSecurityGroups;
-            o.assignPublicIp = assignPublicIp;
-            o.enableIpForwarding = enableIpForwarding;
-            o.isPrimary = isPrimary;
-            o.networkSecurityGroups = networkSecurityGroups;
-            o.privateIpAddresses = privateIpAddresses;
-            o.publicIpSku = publicIpSku;
-            o.publicIps = publicIps;
-            o.subnetName = subnetName;
-            return o;
+            final var _resultValue = new StatefulNodeAzureNetworkNetworkInterface();
+            _resultValue.additionalIpConfigurations = additionalIpConfigurations;
+            _resultValue.applicationSecurityGroups = applicationSecurityGroups;
+            _resultValue.assignPublicIp = assignPublicIp;
+            _resultValue.enableIpForwarding = enableIpForwarding;
+            _resultValue.isPrimary = isPrimary;
+            _resultValue.networkSecurityGroups = networkSecurityGroups;
+            _resultValue.privateIpAddresses = privateIpAddresses;
+            _resultValue.publicIpSku = publicIpSku;
+            _resultValue.publicIps = publicIps;
+            _resultValue.subnetName = subnetName;
+            return _resultValue;
         }
     }
 }

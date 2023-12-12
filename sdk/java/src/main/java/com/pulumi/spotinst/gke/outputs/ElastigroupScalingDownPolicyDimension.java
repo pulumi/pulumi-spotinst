@@ -51,10 +51,10 @@ public final class ElastigroupScalingDownPolicyDimension {
             return this;
         }
         public ElastigroupScalingDownPolicyDimension build() {
-            final var o = new ElastigroupScalingDownPolicyDimension();
-            o.name = name;
-            o.value = value;
-            return o;
+            final var _resultValue = new ElastigroupScalingDownPolicyDimension();
+            _resultValue.name = name;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

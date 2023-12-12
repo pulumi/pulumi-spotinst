@@ -102,12 +102,12 @@ public final class OceanImportBackendService {
             return this;
         }
         public OceanImportBackendService build() {
-            final var o = new OceanImportBackendService();
-            o.locationType = locationType;
-            o.namedPorts = namedPorts;
-            o.scheme = scheme;
-            o.serviceName = serviceName;
-            return o;
+            final var _resultValue = new OceanImportBackendService();
+            _resultValue.locationType = locationType;
+            _resultValue.namedPorts = namedPorts;
+            _resultValue.scheme = scheme;
+            _resultValue.serviceName = serviceName;
+            return _resultValue;
         }
     }
 }

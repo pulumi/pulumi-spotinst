@@ -54,10 +54,10 @@ public final class ElastigroupItfLoadBalancer {
             return this;
         }
         public ElastigroupItfLoadBalancer build() {
-            final var o = new ElastigroupItfLoadBalancer();
-            o.listenerRules = listenerRules;
-            o.loadBalancerArn = loadBalancerArn;
-            return o;
+            final var _resultValue = new ElastigroupItfLoadBalancer();
+            _resultValue.listenerRules = listenerRules;
+            _resultValue.loadBalancerArn = loadBalancerArn;
+            return _resultValue;
         }
     }
 }

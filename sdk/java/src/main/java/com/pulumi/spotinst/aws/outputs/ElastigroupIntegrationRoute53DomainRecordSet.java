@@ -135,11 +135,11 @@ public final class ElastigroupIntegrationRoute53DomainRecordSet {
             return this;
         }
         public ElastigroupIntegrationRoute53DomainRecordSet build() {
-            final var o = new ElastigroupIntegrationRoute53DomainRecordSet();
-            o.name = name;
-            o.usePublicDns = usePublicDns;
-            o.usePublicIp = usePublicIp;
-            return o;
+            final var _resultValue = new ElastigroupIntegrationRoute53DomainRecordSet();
+            _resultValue.name = name;
+            _resultValue.usePublicDns = usePublicDns;
+            _resultValue.usePublicIp = usePublicIp;
+            return _resultValue;
         }
     }
 }

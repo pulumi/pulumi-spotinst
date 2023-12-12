@@ -74,12 +74,12 @@ public final class ElastigroupLoadBalancer {
             return this;
         }
         public ElastigroupLoadBalancer build() {
-            final var o = new ElastigroupLoadBalancer();
-            o.autoWeight = autoWeight;
-            o.balancerId = balancerId;
-            o.targetSetId = targetSetId;
-            o.type = type;
-            return o;
+            final var _resultValue = new ElastigroupLoadBalancer();
+            _resultValue.autoWeight = autoWeight;
+            _resultValue.balancerId = balancerId;
+            _resultValue.targetSetId = targetSetId;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

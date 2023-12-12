@@ -72,10 +72,10 @@ public final class OceanScheduledTask {
             return tasks(List.of(tasks));
         }
         public OceanScheduledTask build() {
-            final var o = new OceanScheduledTask();
-            o.shutdownHours = shutdownHours;
-            o.tasks = tasks;
-            return o;
+            final var _resultValue = new OceanScheduledTask();
+            _resultValue.shutdownHours = shutdownHours;
+            _resultValue.tasks = tasks;
+            return _resultValue;
         }
     }
 }

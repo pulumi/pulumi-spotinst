@@ -57,10 +57,10 @@ public final class ElastigroupIntegrationEcsAutoscaleAttribute {
             return this;
         }
         public ElastigroupIntegrationEcsAutoscaleAttribute build() {
-            final var o = new ElastigroupIntegrationEcsAutoscaleAttribute();
-            o.key = key;
-            o.value = value;
-            return o;
+            final var _resultValue = new ElastigroupIntegrationEcsAutoscaleAttribute();
+            _resultValue.key = key;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

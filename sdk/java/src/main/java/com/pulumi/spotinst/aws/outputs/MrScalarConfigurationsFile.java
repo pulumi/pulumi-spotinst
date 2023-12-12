@@ -65,10 +65,10 @@ public final class MrScalarConfigurationsFile {
             return this;
         }
         public MrScalarConfigurationsFile build() {
-            final var o = new MrScalarConfigurationsFile();
-            o.bucket = bucket;
-            o.key = key;
-            return o;
+            final var _resultValue = new MrScalarConfigurationsFile();
+            _resultValue.bucket = bucket;
+            _resultValue.key = key;
+            return _resultValue;
         }
     }
 }

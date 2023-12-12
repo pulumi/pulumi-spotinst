@@ -51,10 +51,10 @@ public final class ElastigroupItfTargetGroupConfigMatcher {
             return this;
         }
         public ElastigroupItfTargetGroupConfigMatcher build() {
-            final var o = new ElastigroupItfTargetGroupConfigMatcher();
-            o.grpcCode = grpcCode;
-            o.httpCode = httpCode;
-            return o;
+            final var _resultValue = new ElastigroupItfTargetGroupConfigMatcher();
+            _resultValue.grpcCode = grpcCode;
+            _resultValue.httpCode = httpCode;
+            return _resultValue;
         }
     }
 }

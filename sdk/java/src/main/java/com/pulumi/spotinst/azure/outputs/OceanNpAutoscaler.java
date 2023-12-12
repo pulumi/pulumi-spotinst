@@ -76,12 +76,12 @@ public final class OceanNpAutoscaler {
             return this;
         }
         public OceanNpAutoscaler build() {
-            final var o = new OceanNpAutoscaler();
-            o.autoscaleDown = autoscaleDown;
-            o.autoscaleHeadroom = autoscaleHeadroom;
-            o.autoscaleIsEnabled = autoscaleIsEnabled;
-            o.resourceLimits = resourceLimits;
-            return o;
+            final var _resultValue = new OceanNpAutoscaler();
+            _resultValue.autoscaleDown = autoscaleDown;
+            _resultValue.autoscaleHeadroom = autoscaleHeadroom;
+            _resultValue.autoscaleIsEnabled = autoscaleIsEnabled;
+            _resultValue.resourceLimits = resourceLimits;
+            return _resultValue;
         }
     }
 }

@@ -38,9 +38,9 @@ public final class ElastigroupIntegrationKubernetes {
             return this;
         }
         public ElastigroupIntegrationKubernetes build() {
-            final var o = new ElastigroupIntegrationKubernetes();
-            o.clusterIdentifier = clusterIdentifier;
-            return o;
+            final var _resultValue = new ElastigroupIntegrationKubernetes();
+            _resultValue.clusterIdentifier = clusterIdentifier;
+            return _resultValue;
         }
     }
 }

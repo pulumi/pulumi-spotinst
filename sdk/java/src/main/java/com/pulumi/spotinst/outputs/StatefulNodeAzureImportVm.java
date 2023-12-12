@@ -74,12 +74,12 @@ public final class StatefulNodeAzureImportVm {
             return this;
         }
         public StatefulNodeAzureImportVm build() {
-            final var o = new StatefulNodeAzureImportVm();
-            o.drainingTimeout = drainingTimeout;
-            o.originalVmName = originalVmName;
-            o.resourceGroupName = resourceGroupName;
-            o.resourcesRetentionTime = resourcesRetentionTime;
-            return o;
+            final var _resultValue = new StatefulNodeAzureImportVm();
+            _resultValue.drainingTimeout = drainingTimeout;
+            _resultValue.originalVmName = originalVmName;
+            _resultValue.resourceGroupName = resourceGroupName;
+            _resultValue.resourcesRetentionTime = resourcesRetentionTime;
+            return _resultValue;
         }
     }
 }

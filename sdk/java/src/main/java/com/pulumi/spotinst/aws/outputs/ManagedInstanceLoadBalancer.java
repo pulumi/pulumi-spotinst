@@ -107,15 +107,15 @@ public final class ManagedInstanceLoadBalancer {
             return this;
         }
         public ManagedInstanceLoadBalancer build() {
-            final var o = new ManagedInstanceLoadBalancer();
-            o.arn = arn;
-            o.autoWeight = autoWeight;
-            o.azAwareness = azAwareness;
-            o.balancerId = balancerId;
-            o.name = name;
-            o.targetSetId = targetSetId;
-            o.type = type;
-            return o;
+            final var _resultValue = new ManagedInstanceLoadBalancer();
+            _resultValue.arn = arn;
+            _resultValue.autoWeight = autoWeight;
+            _resultValue.azAwareness = azAwareness;
+            _resultValue.balancerId = balancerId;
+            _resultValue.name = name;
+            _resultValue.targetSetId = targetSetId;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

@@ -46,9 +46,9 @@ public final class ElastigroupImageImage {
             return this;
         }
         public ElastigroupImageImage build() {
-            final var o = new ElastigroupImageImage();
-            o.id = id;
-            return o;
+            final var _resultValue = new ElastigroupImageImage();
+            _resultValue.id = id;
+            return _resultValue;
         }
     }
 }

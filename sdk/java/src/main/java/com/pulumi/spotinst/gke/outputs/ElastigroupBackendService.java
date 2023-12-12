@@ -78,12 +78,12 @@ public final class ElastigroupBackendService {
             return this;
         }
         public ElastigroupBackendService build() {
-            final var o = new ElastigroupBackendService();
-            o.locationType = locationType;
-            o.namedPorts = namedPorts;
-            o.scheme = scheme;
-            o.serviceName = serviceName;
-            return o;
+            final var _resultValue = new ElastigroupBackendService();
+            _resultValue.locationType = locationType;
+            _resultValue.namedPorts = namedPorts;
+            _resultValue.scheme = scheme;
+            _resultValue.serviceName = serviceName;
+            return _resultValue;
         }
     }
 }

@@ -49,10 +49,10 @@ public final class StatefulNodeAzureImageCustomImage {
             return this;
         }
         public StatefulNodeAzureImageCustomImage build() {
-            final var o = new StatefulNodeAzureImageCustomImage();
-            o.customImageResourceGroupName = customImageResourceGroupName;
-            o.name = name;
-            return o;
+            final var _resultValue = new StatefulNodeAzureImageCustomImage();
+            _resultValue.customImageResourceGroupName = customImageResourceGroupName;
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

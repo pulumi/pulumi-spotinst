@@ -183,16 +183,16 @@ public final class MrScalarTerminationPolicyStatement {
             return this;
         }
         public MrScalarTerminationPolicyStatement build() {
-            final var o = new MrScalarTerminationPolicyStatement();
-            o.evaluationPeriods = evaluationPeriods;
-            o.metricName = metricName;
-            o.namespace = namespace;
-            o.operator = operator;
-            o.period = period;
-            o.statistic = statistic;
-            o.threshold = threshold;
-            o.unit = unit;
-            return o;
+            final var _resultValue = new MrScalarTerminationPolicyStatement();
+            _resultValue.evaluationPeriods = evaluationPeriods;
+            _resultValue.metricName = metricName;
+            _resultValue.namespace = namespace;
+            _resultValue.operator = operator;
+            _resultValue.period = period;
+            _resultValue.statistic = statistic;
+            _resultValue.threshold = threshold;
+            _resultValue.unit = unit;
+            return _resultValue;
         }
     }
 }

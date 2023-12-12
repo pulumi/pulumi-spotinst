@@ -96,14 +96,14 @@ public final class StatefulNodeAzureAttachDataDisk {
             return this;
         }
         public StatefulNodeAzureAttachDataDisk build() {
-            final var o = new StatefulNodeAzureAttachDataDisk();
-            o.dataDiskName = dataDiskName;
-            o.dataDiskResourceGroupName = dataDiskResourceGroupName;
-            o.lun = lun;
-            o.sizeGb = sizeGb;
-            o.storageAccountType = storageAccountType;
-            o.zone = zone;
-            return o;
+            final var _resultValue = new StatefulNodeAzureAttachDataDisk();
+            _resultValue.dataDiskName = dataDiskName;
+            _resultValue.dataDiskResourceGroupName = dataDiskResourceGroupName;
+            _resultValue.lun = lun;
+            _resultValue.sizeGb = sizeGb;
+            _resultValue.storageAccountType = storageAccountType;
+            _resultValue.zone = zone;
+            return _resultValue;
         }
     }
 }

@@ -73,10 +73,10 @@ public final class UserGroupPolicy {
             return this;
         }
         public UserGroupPolicy build() {
-            final var o = new UserGroupPolicy();
-            o.accountIds = accountIds;
-            o.policyId = policyId;
-            return o;
+            final var _resultValue = new UserGroupPolicy();
+            _resultValue.accountIds = accountIds;
+            _resultValue.policyId = policyId;
+            return _resultValue;
         }
     }
 }

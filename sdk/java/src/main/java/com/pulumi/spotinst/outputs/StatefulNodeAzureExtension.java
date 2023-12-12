@@ -108,15 +108,15 @@ public final class StatefulNodeAzureExtension {
             return this;
         }
         public StatefulNodeAzureExtension build() {
-            final var o = new StatefulNodeAzureExtension();
-            o.apiVersion = apiVersion;
-            o.minorVersionAutoUpgrade = minorVersionAutoUpgrade;
-            o.name = name;
-            o.protectedSettings = protectedSettings;
-            o.publicSettings = publicSettings;
-            o.publisher = publisher;
-            o.type = type;
-            return o;
+            final var _resultValue = new StatefulNodeAzureExtension();
+            _resultValue.apiVersion = apiVersion;
+            _resultValue.minorVersionAutoUpgrade = minorVersionAutoUpgrade;
+            _resultValue.name = name;
+            _resultValue.protectedSettings = protectedSettings;
+            _resultValue.publicSettings = publicSettings;
+            _resultValue.publisher = publisher;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

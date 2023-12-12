@@ -193,17 +193,17 @@ public final class ElastigroupIntegrationGke {
             return this;
         }
         public ElastigroupIntegrationGke build() {
-            final var o = new ElastigroupIntegrationGke();
-            o.autoUpdate = autoUpdate;
-            o.autoscaleCooldown = autoscaleCooldown;
-            o.autoscaleDown = autoscaleDown;
-            o.autoscaleHeadroom = autoscaleHeadroom;
-            o.autoscaleIsAutoConfig = autoscaleIsAutoConfig;
-            o.autoscaleIsEnabled = autoscaleIsEnabled;
-            o.autoscaleLabels = autoscaleLabels;
-            o.clusterId = clusterId;
-            o.location = location;
-            return o;
+            final var _resultValue = new ElastigroupIntegrationGke();
+            _resultValue.autoUpdate = autoUpdate;
+            _resultValue.autoscaleCooldown = autoscaleCooldown;
+            _resultValue.autoscaleDown = autoscaleDown;
+            _resultValue.autoscaleHeadroom = autoscaleHeadroom;
+            _resultValue.autoscaleIsAutoConfig = autoscaleIsAutoConfig;
+            _resultValue.autoscaleIsEnabled = autoscaleIsEnabled;
+            _resultValue.autoscaleLabels = autoscaleLabels;
+            _resultValue.clusterId = clusterId;
+            _resultValue.location = location;
+            return _resultValue;
         }
     }
 }

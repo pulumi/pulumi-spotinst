@@ -74,10 +74,10 @@ public final class OceanImportScheduledTaskShutdownHours {
             return timeWindows(List.of(timeWindows));
         }
         public OceanImportScheduledTaskShutdownHours build() {
-            final var o = new OceanImportScheduledTaskShutdownHours();
-            o.isEnabled = isEnabled;
-            o.timeWindows = timeWindows;
-            return o;
+            final var _resultValue = new OceanImportScheduledTaskShutdownHours();
+            _resultValue.isEnabled = isEnabled;
+            _resultValue.timeWindows = timeWindows;
+            return _resultValue;
         }
     }
 }

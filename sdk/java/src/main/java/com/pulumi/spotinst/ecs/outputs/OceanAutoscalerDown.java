@@ -48,9 +48,9 @@ public final class OceanAutoscalerDown {
             return this;
         }
         public OceanAutoscalerDown build() {
-            final var o = new OceanAutoscalerDown();
-            o.maxScaleDownPercentage = maxScaleDownPercentage;
-            return o;
+            final var _resultValue = new OceanAutoscalerDown();
+            _resultValue.maxScaleDownPercentage = maxScaleDownPercentage;
+            return _resultValue;
         }
     }
 }

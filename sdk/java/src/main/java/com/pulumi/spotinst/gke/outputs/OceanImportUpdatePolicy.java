@@ -63,11 +63,11 @@ public final class OceanImportUpdatePolicy {
             return this;
         }
         public OceanImportUpdatePolicy build() {
-            final var o = new OceanImportUpdatePolicy();
-            o.conditionedRoll = conditionedRoll;
-            o.rollConfig = rollConfig;
-            o.shouldRoll = shouldRoll;
-            return o;
+            final var _resultValue = new OceanImportUpdatePolicy();
+            _resultValue.conditionedRoll = conditionedRoll;
+            _resultValue.rollConfig = rollConfig;
+            _resultValue.shouldRoll = shouldRoll;
+            return _resultValue;
         }
     }
 }

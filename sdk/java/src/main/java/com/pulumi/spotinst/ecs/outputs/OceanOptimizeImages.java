@@ -90,11 +90,11 @@ public final class OceanOptimizeImages {
             return timeWindows(List.of(timeWindows));
         }
         public OceanOptimizeImages build() {
-            final var o = new OceanOptimizeImages();
-            o.performAt = performAt;
-            o.shouldOptimizeEcsAmi = shouldOptimizeEcsAmi;
-            o.timeWindows = timeWindows;
-            return o;
+            final var _resultValue = new OceanOptimizeImages();
+            _resultValue.performAt = performAt;
+            _resultValue.shouldOptimizeEcsAmi = shouldOptimizeEcsAmi;
+            _resultValue.timeWindows = timeWindows;
+            return _resultValue;
         }
     }
 }
