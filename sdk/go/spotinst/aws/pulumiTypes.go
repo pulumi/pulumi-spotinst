@@ -1517,7 +1517,7 @@ func (o ElastigroupImageArrayOutput) Index(i pulumi.IntInput) ElastigroupImageOu
 }
 
 type ElastigroupImageImage struct {
-	// The group ID.
+	// The identifier of The S3 data integration to export the logs to.
 	Id string `pulumi:"id"`
 }
 
@@ -1533,7 +1533,7 @@ type ElastigroupImageImageInput interface {
 }
 
 type ElastigroupImageImageArgs struct {
-	// The group ID.
+	// The identifier of The S3 data integration to export the logs to.
 	Id pulumi.StringInput `pulumi:"id"`
 }
 
@@ -1588,7 +1588,7 @@ func (o ElastigroupImageImageOutput) ToElastigroupImageImageOutputWithContext(ct
 	return o
 }
 
-// The group ID.
+// The identifier of The S3 data integration to export the logs to.
 func (o ElastigroupImageImageOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v ElastigroupImageImage) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -8476,6 +8476,377 @@ func (o ElastigroupItfTargetGroupConfigTagArrayOutput) Index(i pulumi.IntInput) 
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ElastigroupItfTargetGroupConfigTag {
 		return vs[0].([]ElastigroupItfTargetGroupConfigTag)[vs[1].(int)]
 	}).(ElastigroupItfTargetGroupConfigTagOutput)
+}
+
+type ElastigroupLogging struct {
+	// Logging Export configuration.
+	Export *ElastigroupLoggingExport `pulumi:"export"`
+}
+
+// ElastigroupLoggingInput is an input type that accepts ElastigroupLoggingArgs and ElastigroupLoggingOutput values.
+// You can construct a concrete instance of `ElastigroupLoggingInput` via:
+//
+//	ElastigroupLoggingArgs{...}
+type ElastigroupLoggingInput interface {
+	pulumi.Input
+
+	ToElastigroupLoggingOutput() ElastigroupLoggingOutput
+	ToElastigroupLoggingOutputWithContext(context.Context) ElastigroupLoggingOutput
+}
+
+type ElastigroupLoggingArgs struct {
+	// Logging Export configuration.
+	Export ElastigroupLoggingExportPtrInput `pulumi:"export"`
+}
+
+func (ElastigroupLoggingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupLogging)(nil)).Elem()
+}
+
+func (i ElastigroupLoggingArgs) ToElastigroupLoggingOutput() ElastigroupLoggingOutput {
+	return i.ToElastigroupLoggingOutputWithContext(context.Background())
+}
+
+func (i ElastigroupLoggingArgs) ToElastigroupLoggingOutputWithContext(ctx context.Context) ElastigroupLoggingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupLoggingOutput)
+}
+
+func (i ElastigroupLoggingArgs) ToElastigroupLoggingPtrOutput() ElastigroupLoggingPtrOutput {
+	return i.ToElastigroupLoggingPtrOutputWithContext(context.Background())
+}
+
+func (i ElastigroupLoggingArgs) ToElastigroupLoggingPtrOutputWithContext(ctx context.Context) ElastigroupLoggingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupLoggingOutput).ToElastigroupLoggingPtrOutputWithContext(ctx)
+}
+
+// ElastigroupLoggingPtrInput is an input type that accepts ElastigroupLoggingArgs, ElastigroupLoggingPtr and ElastigroupLoggingPtrOutput values.
+// You can construct a concrete instance of `ElastigroupLoggingPtrInput` via:
+//
+//	        ElastigroupLoggingArgs{...}
+//
+//	or:
+//
+//	        nil
+type ElastigroupLoggingPtrInput interface {
+	pulumi.Input
+
+	ToElastigroupLoggingPtrOutput() ElastigroupLoggingPtrOutput
+	ToElastigroupLoggingPtrOutputWithContext(context.Context) ElastigroupLoggingPtrOutput
+}
+
+type elastigroupLoggingPtrType ElastigroupLoggingArgs
+
+func ElastigroupLoggingPtr(v *ElastigroupLoggingArgs) ElastigroupLoggingPtrInput {
+	return (*elastigroupLoggingPtrType)(v)
+}
+
+func (*elastigroupLoggingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElastigroupLogging)(nil)).Elem()
+}
+
+func (i *elastigroupLoggingPtrType) ToElastigroupLoggingPtrOutput() ElastigroupLoggingPtrOutput {
+	return i.ToElastigroupLoggingPtrOutputWithContext(context.Background())
+}
+
+func (i *elastigroupLoggingPtrType) ToElastigroupLoggingPtrOutputWithContext(ctx context.Context) ElastigroupLoggingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupLoggingPtrOutput)
+}
+
+type ElastigroupLoggingOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupLoggingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupLogging)(nil)).Elem()
+}
+
+func (o ElastigroupLoggingOutput) ToElastigroupLoggingOutput() ElastigroupLoggingOutput {
+	return o
+}
+
+func (o ElastigroupLoggingOutput) ToElastigroupLoggingOutputWithContext(ctx context.Context) ElastigroupLoggingOutput {
+	return o
+}
+
+func (o ElastigroupLoggingOutput) ToElastigroupLoggingPtrOutput() ElastigroupLoggingPtrOutput {
+	return o.ToElastigroupLoggingPtrOutputWithContext(context.Background())
+}
+
+func (o ElastigroupLoggingOutput) ToElastigroupLoggingPtrOutputWithContext(ctx context.Context) ElastigroupLoggingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElastigroupLogging) *ElastigroupLogging {
+		return &v
+	}).(ElastigroupLoggingPtrOutput)
+}
+
+// Logging Export configuration.
+func (o ElastigroupLoggingOutput) Export() ElastigroupLoggingExportPtrOutput {
+	return o.ApplyT(func(v ElastigroupLogging) *ElastigroupLoggingExport { return v.Export }).(ElastigroupLoggingExportPtrOutput)
+}
+
+type ElastigroupLoggingPtrOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupLoggingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElastigroupLogging)(nil)).Elem()
+}
+
+func (o ElastigroupLoggingPtrOutput) ToElastigroupLoggingPtrOutput() ElastigroupLoggingPtrOutput {
+	return o
+}
+
+func (o ElastigroupLoggingPtrOutput) ToElastigroupLoggingPtrOutputWithContext(ctx context.Context) ElastigroupLoggingPtrOutput {
+	return o
+}
+
+func (o ElastigroupLoggingPtrOutput) Elem() ElastigroupLoggingOutput {
+	return o.ApplyT(func(v *ElastigroupLogging) ElastigroupLogging {
+		if v != nil {
+			return *v
+		}
+		var ret ElastigroupLogging
+		return ret
+	}).(ElastigroupLoggingOutput)
+}
+
+// Logging Export configuration.
+func (o ElastigroupLoggingPtrOutput) Export() ElastigroupLoggingExportPtrOutput {
+	return o.ApplyT(func(v *ElastigroupLogging) *ElastigroupLoggingExport {
+		if v == nil {
+			return nil
+		}
+		return v.Export
+	}).(ElastigroupLoggingExportPtrOutput)
+}
+
+type ElastigroupLoggingExport struct {
+	// Exports your cluster's logs to the S3 bucket and subdir configured on the S3 data integration given.
+	S3s []ElastigroupLoggingExportS3 `pulumi:"s3s"`
+}
+
+// ElastigroupLoggingExportInput is an input type that accepts ElastigroupLoggingExportArgs and ElastigroupLoggingExportOutput values.
+// You can construct a concrete instance of `ElastigroupLoggingExportInput` via:
+//
+//	ElastigroupLoggingExportArgs{...}
+type ElastigroupLoggingExportInput interface {
+	pulumi.Input
+
+	ToElastigroupLoggingExportOutput() ElastigroupLoggingExportOutput
+	ToElastigroupLoggingExportOutputWithContext(context.Context) ElastigroupLoggingExportOutput
+}
+
+type ElastigroupLoggingExportArgs struct {
+	// Exports your cluster's logs to the S3 bucket and subdir configured on the S3 data integration given.
+	S3s ElastigroupLoggingExportS3ArrayInput `pulumi:"s3s"`
+}
+
+func (ElastigroupLoggingExportArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupLoggingExport)(nil)).Elem()
+}
+
+func (i ElastigroupLoggingExportArgs) ToElastigroupLoggingExportOutput() ElastigroupLoggingExportOutput {
+	return i.ToElastigroupLoggingExportOutputWithContext(context.Background())
+}
+
+func (i ElastigroupLoggingExportArgs) ToElastigroupLoggingExportOutputWithContext(ctx context.Context) ElastigroupLoggingExportOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupLoggingExportOutput)
+}
+
+func (i ElastigroupLoggingExportArgs) ToElastigroupLoggingExportPtrOutput() ElastigroupLoggingExportPtrOutput {
+	return i.ToElastigroupLoggingExportPtrOutputWithContext(context.Background())
+}
+
+func (i ElastigroupLoggingExportArgs) ToElastigroupLoggingExportPtrOutputWithContext(ctx context.Context) ElastigroupLoggingExportPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupLoggingExportOutput).ToElastigroupLoggingExportPtrOutputWithContext(ctx)
+}
+
+// ElastigroupLoggingExportPtrInput is an input type that accepts ElastigroupLoggingExportArgs, ElastigroupLoggingExportPtr and ElastigroupLoggingExportPtrOutput values.
+// You can construct a concrete instance of `ElastigroupLoggingExportPtrInput` via:
+//
+//	        ElastigroupLoggingExportArgs{...}
+//
+//	or:
+//
+//	        nil
+type ElastigroupLoggingExportPtrInput interface {
+	pulumi.Input
+
+	ToElastigroupLoggingExportPtrOutput() ElastigroupLoggingExportPtrOutput
+	ToElastigroupLoggingExportPtrOutputWithContext(context.Context) ElastigroupLoggingExportPtrOutput
+}
+
+type elastigroupLoggingExportPtrType ElastigroupLoggingExportArgs
+
+func ElastigroupLoggingExportPtr(v *ElastigroupLoggingExportArgs) ElastigroupLoggingExportPtrInput {
+	return (*elastigroupLoggingExportPtrType)(v)
+}
+
+func (*elastigroupLoggingExportPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElastigroupLoggingExport)(nil)).Elem()
+}
+
+func (i *elastigroupLoggingExportPtrType) ToElastigroupLoggingExportPtrOutput() ElastigroupLoggingExportPtrOutput {
+	return i.ToElastigroupLoggingExportPtrOutputWithContext(context.Background())
+}
+
+func (i *elastigroupLoggingExportPtrType) ToElastigroupLoggingExportPtrOutputWithContext(ctx context.Context) ElastigroupLoggingExportPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupLoggingExportPtrOutput)
+}
+
+type ElastigroupLoggingExportOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupLoggingExportOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupLoggingExport)(nil)).Elem()
+}
+
+func (o ElastigroupLoggingExportOutput) ToElastigroupLoggingExportOutput() ElastigroupLoggingExportOutput {
+	return o
+}
+
+func (o ElastigroupLoggingExportOutput) ToElastigroupLoggingExportOutputWithContext(ctx context.Context) ElastigroupLoggingExportOutput {
+	return o
+}
+
+func (o ElastigroupLoggingExportOutput) ToElastigroupLoggingExportPtrOutput() ElastigroupLoggingExportPtrOutput {
+	return o.ToElastigroupLoggingExportPtrOutputWithContext(context.Background())
+}
+
+func (o ElastigroupLoggingExportOutput) ToElastigroupLoggingExportPtrOutputWithContext(ctx context.Context) ElastigroupLoggingExportPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElastigroupLoggingExport) *ElastigroupLoggingExport {
+		return &v
+	}).(ElastigroupLoggingExportPtrOutput)
+}
+
+// Exports your cluster's logs to the S3 bucket and subdir configured on the S3 data integration given.
+func (o ElastigroupLoggingExportOutput) S3s() ElastigroupLoggingExportS3ArrayOutput {
+	return o.ApplyT(func(v ElastigroupLoggingExport) []ElastigroupLoggingExportS3 { return v.S3s }).(ElastigroupLoggingExportS3ArrayOutput)
+}
+
+type ElastigroupLoggingExportPtrOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupLoggingExportPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ElastigroupLoggingExport)(nil)).Elem()
+}
+
+func (o ElastigroupLoggingExportPtrOutput) ToElastigroupLoggingExportPtrOutput() ElastigroupLoggingExportPtrOutput {
+	return o
+}
+
+func (o ElastigroupLoggingExportPtrOutput) ToElastigroupLoggingExportPtrOutputWithContext(ctx context.Context) ElastigroupLoggingExportPtrOutput {
+	return o
+}
+
+func (o ElastigroupLoggingExportPtrOutput) Elem() ElastigroupLoggingExportOutput {
+	return o.ApplyT(func(v *ElastigroupLoggingExport) ElastigroupLoggingExport {
+		if v != nil {
+			return *v
+		}
+		var ret ElastigroupLoggingExport
+		return ret
+	}).(ElastigroupLoggingExportOutput)
+}
+
+// Exports your cluster's logs to the S3 bucket and subdir configured on the S3 data integration given.
+func (o ElastigroupLoggingExportPtrOutput) S3s() ElastigroupLoggingExportS3ArrayOutput {
+	return o.ApplyT(func(v *ElastigroupLoggingExport) []ElastigroupLoggingExportS3 {
+		if v == nil {
+			return nil
+		}
+		return v.S3s
+	}).(ElastigroupLoggingExportS3ArrayOutput)
+}
+
+type ElastigroupLoggingExportS3 struct {
+	// The identifier of The S3 data integration to export the logs to.
+	Id string `pulumi:"id"`
+}
+
+// ElastigroupLoggingExportS3Input is an input type that accepts ElastigroupLoggingExportS3Args and ElastigroupLoggingExportS3Output values.
+// You can construct a concrete instance of `ElastigroupLoggingExportS3Input` via:
+//
+//	ElastigroupLoggingExportS3Args{...}
+type ElastigroupLoggingExportS3Input interface {
+	pulumi.Input
+
+	ToElastigroupLoggingExportS3Output() ElastigroupLoggingExportS3Output
+	ToElastigroupLoggingExportS3OutputWithContext(context.Context) ElastigroupLoggingExportS3Output
+}
+
+type ElastigroupLoggingExportS3Args struct {
+	// The identifier of The S3 data integration to export the logs to.
+	Id pulumi.StringInput `pulumi:"id"`
+}
+
+func (ElastigroupLoggingExportS3Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupLoggingExportS3)(nil)).Elem()
+}
+
+func (i ElastigroupLoggingExportS3Args) ToElastigroupLoggingExportS3Output() ElastigroupLoggingExportS3Output {
+	return i.ToElastigroupLoggingExportS3OutputWithContext(context.Background())
+}
+
+func (i ElastigroupLoggingExportS3Args) ToElastigroupLoggingExportS3OutputWithContext(ctx context.Context) ElastigroupLoggingExportS3Output {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupLoggingExportS3Output)
+}
+
+// ElastigroupLoggingExportS3ArrayInput is an input type that accepts ElastigroupLoggingExportS3Array and ElastigroupLoggingExportS3ArrayOutput values.
+// You can construct a concrete instance of `ElastigroupLoggingExportS3ArrayInput` via:
+//
+//	ElastigroupLoggingExportS3Array{ ElastigroupLoggingExportS3Args{...} }
+type ElastigroupLoggingExportS3ArrayInput interface {
+	pulumi.Input
+
+	ToElastigroupLoggingExportS3ArrayOutput() ElastigroupLoggingExportS3ArrayOutput
+	ToElastigroupLoggingExportS3ArrayOutputWithContext(context.Context) ElastigroupLoggingExportS3ArrayOutput
+}
+
+type ElastigroupLoggingExportS3Array []ElastigroupLoggingExportS3Input
+
+func (ElastigroupLoggingExportS3Array) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ElastigroupLoggingExportS3)(nil)).Elem()
+}
+
+func (i ElastigroupLoggingExportS3Array) ToElastigroupLoggingExportS3ArrayOutput() ElastigroupLoggingExportS3ArrayOutput {
+	return i.ToElastigroupLoggingExportS3ArrayOutputWithContext(context.Background())
+}
+
+func (i ElastigroupLoggingExportS3Array) ToElastigroupLoggingExportS3ArrayOutputWithContext(ctx context.Context) ElastigroupLoggingExportS3ArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupLoggingExportS3ArrayOutput)
+}
+
+type ElastigroupLoggingExportS3Output struct{ *pulumi.OutputState }
+
+func (ElastigroupLoggingExportS3Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*ElastigroupLoggingExportS3)(nil)).Elem()
+}
+
+func (o ElastigroupLoggingExportS3Output) ToElastigroupLoggingExportS3Output() ElastigroupLoggingExportS3Output {
+	return o
+}
+
+func (o ElastigroupLoggingExportS3Output) ToElastigroupLoggingExportS3OutputWithContext(ctx context.Context) ElastigroupLoggingExportS3Output {
+	return o
+}
+
+// The identifier of The S3 data integration to export the logs to.
+func (o ElastigroupLoggingExportS3Output) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v ElastigroupLoggingExportS3) string { return v.Id }).(pulumi.StringOutput)
+}
+
+type ElastigroupLoggingExportS3ArrayOutput struct{ *pulumi.OutputState }
+
+func (ElastigroupLoggingExportS3ArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ElastigroupLoggingExportS3)(nil)).Elem()
+}
+
+func (o ElastigroupLoggingExportS3ArrayOutput) ToElastigroupLoggingExportS3ArrayOutput() ElastigroupLoggingExportS3ArrayOutput {
+	return o
+}
+
+func (o ElastigroupLoggingExportS3ArrayOutput) ToElastigroupLoggingExportS3ArrayOutputWithContext(ctx context.Context) ElastigroupLoggingExportS3ArrayOutput {
+	return o
+}
+
+func (o ElastigroupLoggingExportS3ArrayOutput) Index(i pulumi.IntInput) ElastigroupLoggingExportS3Output {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ElastigroupLoggingExportS3 {
+		return vs[0].([]ElastigroupLoggingExportS3)[vs[1].(int)]
+	}).(ElastigroupLoggingExportS3Output)
 }
 
 type ElastigroupMetadataOptions struct {
@@ -25020,6 +25391,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupItfTargetGroupConfigMatcherArrayInput)(nil)).Elem(), ElastigroupItfTargetGroupConfigMatcherArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupItfTargetGroupConfigTagInput)(nil)).Elem(), ElastigroupItfTargetGroupConfigTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupItfTargetGroupConfigTagArrayInput)(nil)).Elem(), ElastigroupItfTargetGroupConfigTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupLoggingInput)(nil)).Elem(), ElastigroupLoggingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupLoggingPtrInput)(nil)).Elem(), ElastigroupLoggingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupLoggingExportInput)(nil)).Elem(), ElastigroupLoggingExportArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupLoggingExportPtrInput)(nil)).Elem(), ElastigroupLoggingExportArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupLoggingExportS3Input)(nil)).Elem(), ElastigroupLoggingExportS3Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupLoggingExportS3ArrayInput)(nil)).Elem(), ElastigroupLoggingExportS3Array{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupMetadataOptionsInput)(nil)).Elem(), ElastigroupMetadataOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupMetadataOptionsPtrInput)(nil)).Elem(), ElastigroupMetadataOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupMultaiTargetSetInput)(nil)).Elem(), ElastigroupMultaiTargetSetArgs{})
@@ -25330,6 +25707,12 @@ func init() {
 	pulumi.RegisterOutputType(ElastigroupItfTargetGroupConfigMatcherArrayOutput{})
 	pulumi.RegisterOutputType(ElastigroupItfTargetGroupConfigTagOutput{})
 	pulumi.RegisterOutputType(ElastigroupItfTargetGroupConfigTagArrayOutput{})
+	pulumi.RegisterOutputType(ElastigroupLoggingOutput{})
+	pulumi.RegisterOutputType(ElastigroupLoggingPtrOutput{})
+	pulumi.RegisterOutputType(ElastigroupLoggingExportOutput{})
+	pulumi.RegisterOutputType(ElastigroupLoggingExportPtrOutput{})
+	pulumi.RegisterOutputType(ElastigroupLoggingExportS3Output{})
+	pulumi.RegisterOutputType(ElastigroupLoggingExportS3ArrayOutput{})
 	pulumi.RegisterOutputType(ElastigroupMetadataOptionsOutput{})
 	pulumi.RegisterOutputType(ElastigroupMetadataOptionsPtrOutput{})
 	pulumi.RegisterOutputType(ElastigroupMultaiTargetSetOutput{})

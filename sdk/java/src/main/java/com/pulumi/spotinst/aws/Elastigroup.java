@@ -27,6 +27,7 @@ import com.pulumi.spotinst.aws.outputs.ElastigroupIntegrationNomad;
 import com.pulumi.spotinst.aws.outputs.ElastigroupIntegrationRancher;
 import com.pulumi.spotinst.aws.outputs.ElastigroupIntegrationRoute53;
 import com.pulumi.spotinst.aws.outputs.ElastigroupItf;
+import com.pulumi.spotinst.aws.outputs.ElastigroupLogging;
 import com.pulumi.spotinst.aws.outputs.ElastigroupMetadataOptions;
 import com.pulumi.spotinst.aws.outputs.ElastigroupMultaiTargetSet;
 import com.pulumi.spotinst.aws.outputs.ElastigroupMultipleMetrics;
@@ -66,6 +67,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.spotinst.aws.ElastigroupArgs;
  * import com.pulumi.spotinst.aws.inputs.ElastigroupCpuOptionsArgs;
  * import com.pulumi.spotinst.aws.inputs.ElastigroupInstanceTypesWeightArgs;
+ * import com.pulumi.spotinst.aws.inputs.ElastigroupLoggingArgs;
+ * import com.pulumi.spotinst.aws.inputs.ElastigroupLoggingExportArgs;
  * import com.pulumi.spotinst.aws.inputs.ElastigroupMetadataOptionsArgs;
  * import com.pulumi.spotinst.aws.inputs.ElastigroupResourceRequirementArgs;
  * import com.pulumi.spotinst.aws.inputs.ElastigroupResourceTagSpecificationArgs;
@@ -115,6 +118,11 @@ import javax.annotation.Nullable;
  *                     .build())
  *             .keyName(&#34;my-key.ssh&#34;)
  *             .lifecycle(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+ *             .logging(ElastigroupLoggingArgs.builder()
+ *                 .export(ElastigroupLoggingExportArgs.builder()
+ *                     .s3(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+ *                     .build())
+ *                 .build())
  *             .maxSize(0)
  *             .metadataOptions(ElastigroupMetadataOptionsArgs.builder()
  *                 .httpPutResponseHopLimit(10)
@@ -729,6 +737,20 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
 
     public Output<Optional<String>> lifetimePeriod() {
         return Codegen.optional(this.lifetimePeriod);
+    }
+    /**
+     * Logging configuration.
+     * 
+     */
+    @Export(name="logging", refs={ElastigroupLogging.class}, tree="[0]")
+    private Output</* @Nullable */ ElastigroupLogging> logging;
+
+    /**
+     * @return Logging configuration.
+     * 
+     */
+    public Output<Optional<ElastigroupLogging>> logging() {
+        return Codegen.optional(this.logging);
     }
     /**
      * The maximum number of instances the group should have at any time.

@@ -11,17 +11,17 @@ namespace Pulumi.SpotInst.Aws.Outputs
 {
 
     [OutputType]
-    public sealed class ElastigroupImageImage
+    public sealed class ElastigroupLoggingExport
     {
         /// <summary>
-        /// The identifier of The S3 data integration to export the logs to.
+        /// Exports your cluster's logs to the S3 bucket and subdir configured on the S3 data integration given.
         /// </summary>
-        public readonly string Id;
+        public readonly ImmutableArray<Outputs.ElastigroupLoggingExportS3> S3s;
 
         [OutputConstructor]
-        private ElastigroupImageImage(string id)
+        private ElastigroupLoggingExport(ImmutableArray<Outputs.ElastigroupLoggingExportS3> s3s)
         {
-            Id = id;
+            S3s = s3s;
         }
     }
 }

@@ -7,20 +7,21 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.SpotInst.Aws.Inputs
+namespace Pulumi.SpotInst.Aws.Outputs
 {
 
-    public sealed class ElastigroupImageImageGetArgs : global::Pulumi.ResourceArgs
+    [OutputType]
+    public sealed class ElastigroupLoggingExportS3
     {
         /// <summary>
         /// The identifier of The S3 data integration to export the logs to.
         /// </summary>
-        [Input("id", required: true)]
-        public Input<string> Id { get; set; } = null!;
+        public readonly string Id;
 
-        public ElastigroupImageImageGetArgs()
+        [OutputConstructor]
+        private ElastigroupLoggingExportS3(string id)
         {
+            Id = id;
         }
-        public static new ElastigroupImageImageGetArgs Empty => new ElastigroupImageImageGetArgs();
     }
 }

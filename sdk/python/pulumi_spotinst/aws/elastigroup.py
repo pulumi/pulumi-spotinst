@@ -60,6 +60,7 @@ class ElastigroupArgs:
                  itfs: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupItfArgs']]]] = None,
                  key_name: Optional[pulumi.Input[str]] = None,
                  lifetime_period: Optional[pulumi.Input[str]] = None,
+                 logging: Optional[pulumi.Input['ElastigroupLoggingArgs']] = None,
                  max_size: Optional[pulumi.Input[int]] = None,
                  metadata_options: Optional[pulumi.Input['ElastigroupMetadataOptionsArgs']] = None,
                  min_size: Optional[pulumi.Input[int]] = None,
@@ -142,6 +143,7 @@ class ElastigroupArgs:
         :param pulumi.Input['ElastigroupIntegrationRancherArgs'] integration_rancher: Describes the [Rancher](http://rancherlabs.com/) integration.
         :param pulumi.Input['ElastigroupIntegrationRoute53Args'] integration_route53: Describes the [Route53](https://aws.amazon.com/documentation/route53/?id=docs_gateway) integration.
         :param pulumi.Input[str] key_name: The key name that should be used for the instance.
+        :param pulumi.Input['ElastigroupLoggingArgs'] logging: Logging configuration.
         :param pulumi.Input[int] max_size: The maximum number of instances the group should have at any time.
         :param pulumi.Input['ElastigroupMetadataOptionsArgs'] metadata_options: Data that used to configure or manage the running instances:
         :param pulumi.Input[int] min_size: The minimum number of instances the group should have at any time.
@@ -264,6 +266,8 @@ class ElastigroupArgs:
             pulumi.set(__self__, "key_name", key_name)
         if lifetime_period is not None:
             pulumi.set(__self__, "lifetime_period", lifetime_period)
+        if logging is not None:
+            pulumi.set(__self__, "logging", logging)
         if max_size is not None:
             pulumi.set(__self__, "max_size", max_size)
         if metadata_options is not None:
@@ -855,6 +859,18 @@ class ElastigroupArgs:
         pulumi.set(self, "lifetime_period", value)
 
     @property
+    @pulumi.getter
+    def logging(self) -> Optional[pulumi.Input['ElastigroupLoggingArgs']]:
+        """
+        Logging configuration.
+        """
+        return pulumi.get(self, "logging")
+
+    @logging.setter
+    def logging(self, value: Optional[pulumi.Input['ElastigroupLoggingArgs']]):
+        pulumi.set(self, "logging", value)
+
+    @property
     @pulumi.getter(name="maxSize")
     def max_size(self) -> Optional[pulumi.Input[int]]:
         """
@@ -1343,6 +1359,7 @@ class _ElastigroupState:
                  itfs: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupItfArgs']]]] = None,
                  key_name: Optional[pulumi.Input[str]] = None,
                  lifetime_period: Optional[pulumi.Input[str]] = None,
+                 logging: Optional[pulumi.Input['ElastigroupLoggingArgs']] = None,
                  max_size: Optional[pulumi.Input[int]] = None,
                  metadata_options: Optional[pulumi.Input['ElastigroupMetadataOptionsArgs']] = None,
                  min_size: Optional[pulumi.Input[int]] = None,
@@ -1424,6 +1441,7 @@ class _ElastigroupState:
         :param pulumi.Input['ElastigroupIntegrationRancherArgs'] integration_rancher: Describes the [Rancher](http://rancherlabs.com/) integration.
         :param pulumi.Input['ElastigroupIntegrationRoute53Args'] integration_route53: Describes the [Route53](https://aws.amazon.com/documentation/route53/?id=docs_gateway) integration.
         :param pulumi.Input[str] key_name: The key name that should be used for the instance.
+        :param pulumi.Input['ElastigroupLoggingArgs'] logging: Logging configuration.
         :param pulumi.Input[int] max_size: The maximum number of instances the group should have at any time.
         :param pulumi.Input['ElastigroupMetadataOptionsArgs'] metadata_options: Data that used to configure or manage the running instances:
         :param pulumi.Input[int] min_size: The minimum number of instances the group should have at any time.
@@ -1548,6 +1566,8 @@ class _ElastigroupState:
             pulumi.set(__self__, "key_name", key_name)
         if lifetime_period is not None:
             pulumi.set(__self__, "lifetime_period", lifetime_period)
+        if logging is not None:
+            pulumi.set(__self__, "logging", logging)
         if max_size is not None:
             pulumi.set(__self__, "max_size", max_size)
         if metadata_options is not None:
@@ -2108,6 +2128,18 @@ class _ElastigroupState:
         pulumi.set(self, "lifetime_period", value)
 
     @property
+    @pulumi.getter
+    def logging(self) -> Optional[pulumi.Input['ElastigroupLoggingArgs']]:
+        """
+        Logging configuration.
+        """
+        return pulumi.get(self, "logging")
+
+    @logging.setter
+    def logging(self, value: Optional[pulumi.Input['ElastigroupLoggingArgs']]):
+        pulumi.set(self, "logging", value)
+
+    @property
     @pulumi.getter(name="maxSize")
     def max_size(self) -> Optional[pulumi.Input[int]]:
         """
@@ -2635,6 +2667,7 @@ class Elastigroup(pulumi.CustomResource):
                  itfs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupItfArgs']]]]] = None,
                  key_name: Optional[pulumi.Input[str]] = None,
                  lifetime_period: Optional[pulumi.Input[str]] = None,
+                 logging: Optional[pulumi.Input[pulumi.InputType['ElastigroupLoggingArgs']]] = None,
                  max_size: Optional[pulumi.Input[int]] = None,
                  metadata_options: Optional[pulumi.Input[pulumi.InputType['ElastigroupMetadataOptionsArgs']]] = None,
                  min_size: Optional[pulumi.Input[int]] = None,
@@ -2720,6 +2753,7 @@ class Elastigroup(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ElastigroupIntegrationRancherArgs']] integration_rancher: Describes the [Rancher](http://rancherlabs.com/) integration.
         :param pulumi.Input[pulumi.InputType['ElastigroupIntegrationRoute53Args']] integration_route53: Describes the [Route53](https://aws.amazon.com/documentation/route53/?id=docs_gateway) integration.
         :param pulumi.Input[str] key_name: The key name that should be used for the instance.
+        :param pulumi.Input[pulumi.InputType['ElastigroupLoggingArgs']] logging: Logging configuration.
         :param pulumi.Input[int] max_size: The maximum number of instances the group should have at any time.
         :param pulumi.Input[pulumi.InputType['ElastigroupMetadataOptionsArgs']] metadata_options: Data that used to configure or manage the running instances:
         :param pulumi.Input[int] min_size: The minimum number of instances the group should have at any time.
@@ -2827,6 +2861,7 @@ class Elastigroup(pulumi.CustomResource):
                  itfs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupItfArgs']]]]] = None,
                  key_name: Optional[pulumi.Input[str]] = None,
                  lifetime_period: Optional[pulumi.Input[str]] = None,
+                 logging: Optional[pulumi.Input[pulumi.InputType['ElastigroupLoggingArgs']]] = None,
                  max_size: Optional[pulumi.Input[int]] = None,
                  metadata_options: Optional[pulumi.Input[pulumi.InputType['ElastigroupMetadataOptionsArgs']]] = None,
                  min_size: Optional[pulumi.Input[int]] = None,
@@ -2921,6 +2956,7 @@ class Elastigroup(pulumi.CustomResource):
             __props__.__dict__["itfs"] = itfs
             __props__.__dict__["key_name"] = key_name
             __props__.__dict__["lifetime_period"] = lifetime_period
+            __props__.__dict__["logging"] = logging
             __props__.__dict__["max_size"] = max_size
             __props__.__dict__["metadata_options"] = metadata_options
             __props__.__dict__["min_size"] = min_size
@@ -3020,6 +3056,7 @@ class Elastigroup(pulumi.CustomResource):
             itfs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupItfArgs']]]]] = None,
             key_name: Optional[pulumi.Input[str]] = None,
             lifetime_period: Optional[pulumi.Input[str]] = None,
+            logging: Optional[pulumi.Input[pulumi.InputType['ElastigroupLoggingArgs']]] = None,
             max_size: Optional[pulumi.Input[int]] = None,
             metadata_options: Optional[pulumi.Input[pulumi.InputType['ElastigroupMetadataOptionsArgs']]] = None,
             min_size: Optional[pulumi.Input[int]] = None,
@@ -3106,6 +3143,7 @@ class Elastigroup(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ElastigroupIntegrationRancherArgs']] integration_rancher: Describes the [Rancher](http://rancherlabs.com/) integration.
         :param pulumi.Input[pulumi.InputType['ElastigroupIntegrationRoute53Args']] integration_route53: Describes the [Route53](https://aws.amazon.com/documentation/route53/?id=docs_gateway) integration.
         :param pulumi.Input[str] key_name: The key name that should be used for the instance.
+        :param pulumi.Input[pulumi.InputType['ElastigroupLoggingArgs']] logging: Logging configuration.
         :param pulumi.Input[int] max_size: The maximum number of instances the group should have at any time.
         :param pulumi.Input[pulumi.InputType['ElastigroupMetadataOptionsArgs']] metadata_options: Data that used to configure or manage the running instances:
         :param pulumi.Input[int] min_size: The minimum number of instances the group should have at any time.
@@ -3193,6 +3231,7 @@ class Elastigroup(pulumi.CustomResource):
         __props__.__dict__["itfs"] = itfs
         __props__.__dict__["key_name"] = key_name
         __props__.__dict__["lifetime_period"] = lifetime_period
+        __props__.__dict__["logging"] = logging
         __props__.__dict__["max_size"] = max_size
         __props__.__dict__["metadata_options"] = metadata_options
         __props__.__dict__["min_size"] = min_size
@@ -3546,6 +3585,14 @@ class Elastigroup(pulumi.CustomResource):
     @pulumi.getter(name="lifetimePeriod")
     def lifetime_period(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "lifetime_period")
+
+    @property
+    @pulumi.getter
+    def logging(self) -> pulumi.Output[Optional['outputs.ElastigroupLogging']]:
+        """
+        Logging configuration.
+        """
+        return pulumi.get(self, "logging")
 
     @property
     @pulumi.getter(name="maxSize")

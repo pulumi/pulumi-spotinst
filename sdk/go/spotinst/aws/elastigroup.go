@@ -94,6 +94,8 @@ type Elastigroup struct {
 	// The key name that should be used for the instance.
 	KeyName        pulumi.StringPtrOutput `pulumi:"keyName"`
 	LifetimePeriod pulumi.StringPtrOutput `pulumi:"lifetimePeriod"`
+	// Logging configuration.
+	Logging ElastigroupLoggingPtrOutput `pulumi:"logging"`
 	// The maximum number of instances the group should have at any time.
 	MaxSize pulumi.IntOutput `pulumi:"maxSize"`
 	// Data that used to configure or manage the running instances:
@@ -309,6 +311,8 @@ type elastigroupState struct {
 	// The key name that should be used for the instance.
 	KeyName        *string `pulumi:"keyName"`
 	LifetimePeriod *string `pulumi:"lifetimePeriod"`
+	// Logging configuration.
+	Logging *ElastigroupLogging `pulumi:"logging"`
 	// The maximum number of instances the group should have at any time.
 	MaxSize *int `pulumi:"maxSize"`
 	// Data that used to configure or manage the running instances:
@@ -483,6 +487,8 @@ type ElastigroupState struct {
 	// The key name that should be used for the instance.
 	KeyName        pulumi.StringPtrInput
 	LifetimePeriod pulumi.StringPtrInput
+	// Logging configuration.
+	Logging ElastigroupLoggingPtrInput
 	// The maximum number of instances the group should have at any time.
 	MaxSize pulumi.IntPtrInput
 	// Data that used to configure or manage the running instances:
@@ -661,6 +667,8 @@ type elastigroupArgs struct {
 	// The key name that should be used for the instance.
 	KeyName        *string `pulumi:"keyName"`
 	LifetimePeriod *string `pulumi:"lifetimePeriod"`
+	// Logging configuration.
+	Logging *ElastigroupLogging `pulumi:"logging"`
 	// The maximum number of instances the group should have at any time.
 	MaxSize *int `pulumi:"maxSize"`
 	// Data that used to configure or manage the running instances:
@@ -836,6 +844,8 @@ type ElastigroupArgs struct {
 	// The key name that should be used for the instance.
 	KeyName        pulumi.StringPtrInput
 	LifetimePeriod pulumi.StringPtrInput
+	// Logging configuration.
+	Logging ElastigroupLoggingPtrInput
 	// The maximum number of instances the group should have at any time.
 	MaxSize pulumi.IntPtrInput
 	// Data that used to configure or manage the running instances:
@@ -1217,6 +1227,11 @@ func (o ElastigroupOutput) KeyName() pulumi.StringPtrOutput {
 
 func (o ElastigroupOutput) LifetimePeriod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Elastigroup) pulumi.StringPtrOutput { return v.LifetimePeriod }).(pulumi.StringPtrOutput)
+}
+
+// Logging configuration.
+func (o ElastigroupOutput) Logging() ElastigroupLoggingPtrOutput {
+	return o.ApplyT(func(v *Elastigroup) ElastigroupLoggingPtrOutput { return v.Logging }).(ElastigroupLoggingPtrOutput)
 }
 
 // The maximum number of instances the group should have at any time.

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SpotInst.Aws.Inputs
 {
 
-    public sealed class ElastigroupImageImageGetArgs : global::Pulumi.ResourceArgs
+    public sealed class ElastigroupLoggingExportS3Args : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The identifier of The S3 data integration to export the logs to.
@@ -18,9 +18,9 @@ namespace Pulumi.SpotInst.Aws.Inputs
         [Input("id", required: true)]
         public Input<string> Id { get; set; } = null!;
 
-        public ElastigroupImageImageGetArgs()
+        public ElastigroupLoggingExportS3Args()
         {
         }
-        public static new ElastigroupImageImageGetArgs Empty => new ElastigroupImageImageGetArgs();
+        public static new ElastigroupLoggingExportS3Args Empty => new ElastigroupLoggingExportS3Args();
     }
 }
