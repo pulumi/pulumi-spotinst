@@ -9,9 +9,9 @@ import java.lang.String;
 import java.util.Objects;
 
 
-public final class ElastigroupImageImageArgs extends com.pulumi.resources.ResourceArgs {
+public final class ElastigroupLoggingExportS3Args extends com.pulumi.resources.ResourceArgs {
 
-    public static final ElastigroupImageImageArgs Empty = new ElastigroupImageImageArgs();
+    public static final ElastigroupLoggingExportS3Args Empty = new ElastigroupLoggingExportS3Args();
 
     /**
      * The identifier of The S3 data integration to export the logs to.
@@ -28,28 +28,28 @@ public final class ElastigroupImageImageArgs extends com.pulumi.resources.Resour
         return this.id;
     }
 
-    private ElastigroupImageImageArgs() {}
+    private ElastigroupLoggingExportS3Args() {}
 
-    private ElastigroupImageImageArgs(ElastigroupImageImageArgs $) {
+    private ElastigroupLoggingExportS3Args(ElastigroupLoggingExportS3Args $) {
         this.id = $.id;
     }
 
     public static Builder builder() {
         return new Builder();
     }
-    public static Builder builder(ElastigroupImageImageArgs defaults) {
+    public static Builder builder(ElastigroupLoggingExportS3Args defaults) {
         return new Builder(defaults);
     }
 
     public static final class Builder {
-        private ElastigroupImageImageArgs $;
+        private ElastigroupLoggingExportS3Args $;
 
         public Builder() {
-            $ = new ElastigroupImageImageArgs();
+            $ = new ElastigroupLoggingExportS3Args();
         }
 
-        public Builder(ElastigroupImageImageArgs defaults) {
-            $ = new ElastigroupImageImageArgs(Objects.requireNonNull(defaults));
+        public Builder(ElastigroupLoggingExportS3Args defaults) {
+            $ = new ElastigroupLoggingExportS3Args(Objects.requireNonNull(defaults));
         }
 
         /**
@@ -73,7 +73,7 @@ public final class ElastigroupImageImageArgs extends com.pulumi.resources.Resour
             return id(Output.of(id));
         }
 
-        public ElastigroupImageImageArgs build() {
+        public ElastigroupLoggingExportS3Args build() {
             $.id = Objects.requireNonNull($.id, "expected parameter 'id' to be non-null");
             return $;
         }

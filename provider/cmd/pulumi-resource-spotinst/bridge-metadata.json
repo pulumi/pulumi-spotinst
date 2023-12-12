@@ -494,6 +494,23 @@
                     },
                     "key_name": {},
                     "lifetime_period": {},
+                    "logging": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "export": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "s3": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
                     "max_size": {},
                     "metadata_options": {
                         "maxItemsOne": true,
@@ -5134,6 +5151,9 @@
             "spotinst:aws/ElastigroupItfTargetGroupConfigTag:ElastigroupItfTargetGroupConfigTag": {
                 "tagKey": "tag_key",
                 "tagValue": "tag_value"
+            },
+            "spotinst:aws/ElastigroupLoggingExport:ElastigroupLoggingExport": {
+                "s3s": "s3"
             },
             "spotinst:aws/ElastigroupMetadataOptions:ElastigroupMetadataOptions": {
                 "httpPutResponseHopLimit": "http_put_response_hop_limit",

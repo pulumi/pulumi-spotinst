@@ -61,6 +61,9 @@ __all__ = [
     'ElastigroupItfTargetGroupConfig',
     'ElastigroupItfTargetGroupConfigMatcher',
     'ElastigroupItfTargetGroupConfigTag',
+    'ElastigroupLogging',
+    'ElastigroupLoggingExport',
+    'ElastigroupLoggingExportS3',
     'ElastigroupMetadataOptions',
     'ElastigroupMultaiTargetSet',
     'ElastigroupMultipleMetrics',
@@ -903,7 +906,7 @@ class ElastigroupImageImage(dict):
     def __init__(__self__, *,
                  id: str):
         """
-        :param str id: The group ID.
+        :param str id: The identifier of The S3 data integration to export the logs to.
         """
         pulumi.set(__self__, "id", id)
 
@@ -911,7 +914,7 @@ class ElastigroupImageImage(dict):
     @pulumi.getter
     def id(self) -> str:
         """
-        The group ID.
+        The identifier of The S3 data integration to export the logs to.
         """
         return pulumi.get(self, "id")
 
@@ -3327,6 +3330,62 @@ class ElastigroupItfTargetGroupConfigTag(dict):
     @pulumi.getter(name="tagValue")
     def tag_value(self) -> Optional[str]:
         return pulumi.get(self, "tag_value")
+
+
+@pulumi.output_type
+class ElastigroupLogging(dict):
+    def __init__(__self__, *,
+                 export: Optional['outputs.ElastigroupLoggingExport'] = None):
+        """
+        :param 'ElastigroupLoggingExportArgs' export: Logging Export configuration.
+        """
+        if export is not None:
+            pulumi.set(__self__, "export", export)
+
+    @property
+    @pulumi.getter
+    def export(self) -> Optional['outputs.ElastigroupLoggingExport']:
+        """
+        Logging Export configuration.
+        """
+        return pulumi.get(self, "export")
+
+
+@pulumi.output_type
+class ElastigroupLoggingExport(dict):
+    def __init__(__self__, *,
+                 s3s: Optional[Sequence['outputs.ElastigroupLoggingExportS3']] = None):
+        """
+        :param Sequence['ElastigroupLoggingExportS3Args'] s3s: Exports your cluster's logs to the S3 bucket and subdir configured on the S3 data integration given.
+        """
+        if s3s is not None:
+            pulumi.set(__self__, "s3s", s3s)
+
+    @property
+    @pulumi.getter
+    def s3s(self) -> Optional[Sequence['outputs.ElastigroupLoggingExportS3']]:
+        """
+        Exports your cluster's logs to the S3 bucket and subdir configured on the S3 data integration given.
+        """
+        return pulumi.get(self, "s3s")
+
+
+@pulumi.output_type
+class ElastigroupLoggingExportS3(dict):
+    def __init__(__self__, *,
+                 id: str):
+        """
+        :param str id: The identifier of The S3 data integration to export the logs to.
+        """
+        pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The identifier of The S3 data integration to export the logs to.
+        """
+        return pulumi.get(self, "id")
 
 
 @pulumi.output_type

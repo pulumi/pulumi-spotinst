@@ -1,28 +1,14 @@
-From bcdae6a92b540151347b806d1070f8659555dcd0 Mon Sep 17 00:00:00 2001
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: aq17 <aqiu@pulumi.com>
 Date: Thu, 25 May 2023 13:42:29 -0700
 Subject: [PATCH] fork
 
----
- CHANGELOG.md                                |  24 +--
- docs/resources/elastigroup_aws.md           | 162 +++++++++-----------
- docs/resources/elastigroup_aws_beanstalk.md |   5 +-
- docs/resources/elastigroup_azure.md         |  27 ++--
- docs/resources/elastigroup_gcp.md           |  24 +--
- docs/resources/elastigroup_gke.md           |  10 +-
- docs/resources/health_check.md              |   2 +-
- docs/resources/mrscaler_aws.md              |  90 +++++------
- docs/resources/ocean_aws.md                 |  27 ++--
- docs/resources/ocean_ecs.md                 |  37 ++---
- docs/resources/ocean_gke_import.md          |  29 ++--
- docs/resources/stateful_node_aws.md         |  46 +++---
- 12 files changed, 212 insertions(+), 271 deletions(-)
 
 diff --git a/CHANGELOG.md b/CHANGELOG.md
-index 772dc240..fc016e16 100644
+index bf5fb1e0..092b4400 100644
 --- a/CHANGELOG.md
 +++ b/CHANGELOG.md
-@@ -500,7 +500,7 @@ BUG FIXES:
+@@ -637,7 +637,7 @@ BUG FIXES:
  ## 1.53.0 (July 15, 2021)
  
  ENHANCEMENTS:
@@ -31,7 +17,7 @@ index 772dc240..fc016e16 100644
  
  ## 1.52.0 (July 7, 2021)
  
-@@ -539,19 +539,19 @@ BUG FIXES:
+@@ -676,19 +676,19 @@ BUG FIXES:
  ## 1.48.0 (June 10, 2021)
  
  ENHANCEMENTS:
@@ -61,7 +47,7 @@ index 772dc240..fc016e16 100644
  ## 1.47.0 (June 6, 2021)
  
  ENHANCEMENTS:
-@@ -600,7 +600,7 @@ BUG FIXES:
+@@ -737,7 +737,7 @@ BUG FIXES:
  ## 1.40.0 (April 25, 2021)
  
  BUG FIXES:
@@ -71,7 +57,7 @@ index 772dc240..fc016e16 100644
  ## 1.39.0 (April 20, 2021)
  
 diff --git a/docs/resources/elastigroup_aws.md b/docs/resources/elastigroup_aws.md
-index 3df1eebd..74a4b1bf 100644
+index 66029fdb..56e6582c 100644
 --- a/docs/resources/elastigroup_aws.md
 +++ b/docs/resources/elastigroup_aws.md
 @@ -17,7 +17,7 @@ Provides a Spotinst AWS group resource.
@@ -83,7 +69,7 @@ index 3df1eebd..74a4b1bf 100644
    product     = "Linux/UNIX"
  
    max_size         = 0
-@@ -136,7 +136,7 @@ The following arguments are supported:
+@@ -157,7 +157,7 @@ The following arguments are supported:
  
  * `name` - (Required) The group name.
  * `description` - (Optional) The group description.
@@ -92,7 +78,7 @@ index 3df1eebd..74a4b1bf 100644
  For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.    
  
  * `availability_zones` - (Optional) List of Strings of availability zones. When this parameter is set, `subnet_ids` should be left unused.
-@@ -149,7 +149,7 @@ Note: When this parameter is set, `availability_zones` should be left unused.
+@@ -170,7 +170,7 @@ Note: When this parameter is set, `availability_zones` should be left unused.
  * `region` - (Optional) The AWS region your group will be created in.
  Note: This parameter is required if you specify subnets (through subnet_ids). This parameter is optional if you specify Availability Zones (through availability_zones).
  
@@ -101,7 +87,7 @@ index 3df1eebd..74a4b1bf 100644
  Note: Must be a sublist of `availability_zones` and `orientation` value must not be `"equalAzDistribution"`.
  
  * `max_size` - (Optional, Required if using scaling policies) The maximum number of instances the group should have at any time.
-@@ -185,7 +185,7 @@ Note: Elastigroup can be configured with either imageId or images, but not both.
+@@ -218,7 +218,7 @@ Note: Elastigroup can be configured with either imageId or images, but not both.
  * `cpu_credits` - (Optional) Controls how T3 instances are launched. Valid values: `standard`, `unlimited`.
  * `fallback_to_ondemand` - (Required) In a case of no Spot instances available, Elastigroup will launch on-demand instances instead.
  * `wait_for_capacity` - (Optional) Minimum number of instances in a 'HEALTHY' status that is required before continuing. This is ignored when updating with blue/green deployment. Cannot exceed `desired_capacity`.
@@ -110,7 +96,7 @@ index 3df1eebd..74a4b1bf 100644
  * `orientation` - (Required, Default: `balanced`) Select a prediction strategy. Valid values: `balanced`, `costOriented`, `equalAzDistribution`, `availabilityOriented`. You can read more in our documentation.
  * `spot_percentage` - (Optional; Required if not using `ondemand_count`) The percentage of Spot instances that would spin up from the `desired_capacity` number.
  * `ondemand_count` - (Optional; Required if not using `spot_percentage`) Number of on demand instances to launch in the group. All other instances will be spot instances. When this parameter is set the `spot_percentage` parameter is being ignored.
-@@ -202,7 +202,7 @@ Note: Elastigroup can be configured with either imageId or images, but not both.
+@@ -235,7 +235,7 @@ Note: Elastigroup can be configured with either imageId or images, but not both.
  
  * `tags` - (Optional) A key/value mapping of tags to assign to the resource.
  * `elastic_ips` - (Optional) A list of [AWS Elastic IP](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html) allocation IDs to associate to the group instances.
@@ -119,17 +105,14 @@ index 3df1eebd..74a4b1bf 100644
  * `revert_to_spot` - (Optional) Hold settings for strategy correction – replacing On-Demand for Spot instances. Supported Values: `"never"`, `"always"`, `"timeWindow"`
      * `perform_at` - (Required) In the event of a fallback to On-Demand instances, select the time period to revert back to Spot. Supported Arguments – always (default), timeWindow, never. For timeWindow or never to be valid the group must have availabilityOriented OR persistence defined.
      * `time_windows` - (Optional) Specify a list of time windows for to execute revertToSpot strategy. Time window format: `ddd:hh:mm-ddd:hh:mm`. Example: `Mon:03:00-Wed:02:30`
-@@ -212,35 +212,33 @@ Note: Elastigroup can be configured with either imageId or images, but not both.
-     * `should_tag_volumes`   - (Optional) Tag specification for Volume resources.
-     * `should_tag_snapshots` - (Optional) Tag specification for Snapshot resources.
-     * `should_tag_amis`      - (Optional) Tag specification for AMI resources.
--    
+@@ -251,34 +251,32 @@ Note: Elastigroup can be configured with either imageId or images, but not both.
+         * `s3` - (Optional) Exports your cluster's logs to the S3 bucket and subdir configured on the S3 data integration given.
+             * `id` - (Required) The identifier of The S3 data integration to export the logs to.
+     
 -<a id="load-balancers"></a>
 -## Load Balancers
--    
-+
 +### Load Balancers
-+
+     
  * `elastic_load_balancers` - (Optional) List of Elastic Load Balancers names (ELB).
  * `target_group_arns` - (Optional) List of Target Group ARNs to register the instances to.
 -* `multai_target_sets` - (Optional) Set of targets to register. 
@@ -163,7 +146,7 @@ index 3df1eebd..74a4b1bf 100644
  
  Each `signal` supports the following:
  
-@@ -256,8 +254,7 @@ Usage:
+@@ -294,8 +292,7 @@ Usage:
    }
  ```
  
@@ -173,7 +156,7 @@ index 3df1eebd..74a4b1bf 100644
  
  Each `scheduled_task` supports the following:
  
-@@ -297,8 +294,7 @@ Usage:
+@@ -335,8 +332,7 @@ Usage:
    }
  ```
  
@@ -183,7 +166,7 @@ index 3df1eebd..74a4b1bf 100644
  
  `scaling_up_policy` supports the following:
  
-@@ -416,17 +412,17 @@ Usage:
+@@ -454,17 +450,17 @@ Usage:
      statistic   = "average"
      unit        = ""
      cooldown    = 60
@@ -204,7 +187,7 @@ index 3df1eebd..74a4b1bf 100644
      step_adjustments {
          threshold = 50
          action {
-@@ -434,25 +430,25 @@ Usage:
+@@ -472,25 +468,25 @@ Usage:
              min_target_capacity = "3"
          }
      }
@@ -234,7 +217,7 @@ index 3df1eebd..74a4b1bf 100644
    }
  ```
  
-@@ -481,7 +477,7 @@ Usage:
+@@ -519,7 +515,7 @@ Usage:
      * `name` - (Required) The expression name.
  * `metrics` - (Optional) Array of objects (Metric config)
      * `metric_name` - (Required) The name of the source metric.
@@ -243,7 +226,7 @@ index 3df1eebd..74a4b1bf 100644
      * `name_space` - (Required, default: `AWS/EC2`) The namespace for the alarm's associated metric.
      * `statistic` - (Optional) The metric statistics to return. Valid values: `"average"`, `"sum"`, `"sampleCount"`, `"maximum"`, `"minimum"`, `"percentile"`.
      * `extended_statistic` - (Optional) Percentile statistic. Valid values: `"p0.1"` - `"p100"`.
-@@ -506,8 +502,7 @@ Usage:
+@@ -544,8 +540,7 @@ Usage:
    }
  ```
  
@@ -253,7 +236,7 @@ index 3df1eebd..74a4b1bf 100644
  
  Each of the `network_interface` attributes controls a portion of the AWS
  Instance's "Elastic Network Interfaces". It's a good idea to familiarize yourself with [AWS's Elastic Network
-@@ -526,8 +521,8 @@ to understand the implications of using these attributes.
+@@ -564,8 +559,8 @@ to understand the implications of using these attributes.
  Usage:
  
  ```hcl
@@ -264,7 +247,7 @@ index 3df1eebd..74a4b1bf 100644
      device_index                       = 1
      description                        = "nic description in here"
      private_ip_address                 = "1.1.1.1"
-@@ -537,8 +532,7 @@ Usage:
+@@ -575,8 +570,7 @@ Usage:
    }
  ```
  
@@ -274,7 +257,7 @@ index 3df1eebd..74a4b1bf 100644
  
  Each of the `*_block_device` attributes controls a portion of the AWS
  Instance's "Block Device Mapping". It's a good idea to familiarize yourself with [AWS's Block Device
-@@ -563,8 +557,8 @@ Usage:
+@@ -601,8 +595,8 @@ Usage:
  
  ```hcl
    ebs_block_device {
@@ -285,7 +268,7 @@ index 3df1eebd..74a4b1bf 100644
       volume_type           = "gp2"  
       volume_size           = 8
       iops                  = 1
-@@ -572,10 +566,10 @@ Usage:
+@@ -610,10 +604,10 @@ Usage:
       encrypted             = false
       kms_key_id            = "kms-key-01"
     }
@@ -299,7 +282,7 @@ index 3df1eebd..74a4b1bf 100644
       volume_type           = "gp3"  
       volume_size           = 8  
       iops                  = 1
-@@ -591,7 +585,7 @@ Each `ephemeral_block_device` supports the following:
+@@ -629,7 +623,7 @@ Each `ephemeral_block_device` supports the following:
  * `device_name` - (Required) The name of the block device to mount on the instance.
  * `virtual_name` - (Required) The [Instance Store Device Name](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html#InstanceStoreDeviceNames)
    (e.g. `"ephemeral0"`).
@@ -308,7 +291,7 @@ index 3df1eebd..74a4b1bf 100644
  Usage:
  
  ```hcl
-@@ -601,8 +595,7 @@ Usage:
+@@ -639,8 +633,7 @@ Usage:
    }
  ```
  
@@ -318,7 +301,7 @@ index 3df1eebd..74a4b1bf 100644
  
  We support instance persistence via the following configurations. all values are boolean.
  For more information on instance persistence please see: [Stateful configuration](https://docs.spot.io/elastigroup/features/stateful-instance/stateful-instances)
-@@ -623,15 +616,14 @@ Usage:
+@@ -661,15 +654,14 @@ Usage:
    private_ips           = ["1.1.1.1", "2.2.2.2"]
  ```
  
@@ -336,7 +319,7 @@ index 3df1eebd..74a4b1bf 100644
  Usage:
  
  ```hcl
-@@ -643,8 +635,7 @@ Usage:
+@@ -681,8 +673,7 @@ Usage:
     }
  ```    
  
@@ -346,7 +329,7 @@ index 3df1eebd..74a4b1bf 100644
  
  * `stateful_instance_action` - (Optional)
      * `stateful_instance_id` - (Required) String, Stateful Instance ID on which the action should be performed.
-@@ -664,8 +655,7 @@ Usage:
+@@ -702,8 +693,7 @@ Usage:
    }    
  ```  
  
@@ -356,7 +339,7 @@ index 3df1eebd..74a4b1bf 100644
  
  * `health_check_type` - (Optional) The service that will perform health checks for the instance. Supported values : `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"CUSTOM"`, `"K8S_NODE"`, `"MLB"`, `"EC2"`, `"MULTAI_TARGET_SET"`, `"MLB_RUNTIME"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
  * `health_check_grace_period` - (Optional) The amount of time, in seconds, after the instance has launched to starts and check its health
-@@ -674,13 +664,12 @@ Usage:
+@@ -712,13 +702,12 @@ Usage:
  Usage:
  
  ```hcl
@@ -372,7 +355,7 @@ index 3df1eebd..74a4b1bf 100644
  
  * `integration_rancher` - (Optional) Describes the [Rancher](http://rancherlabs.com/) integration.
  
-@@ -720,23 +709,23 @@ Usage:
+@@ -758,23 +747,23 @@ Usage:
  Usage:
  
  ```hcl
@@ -400,7 +383,7 @@ index 3df1eebd..74a4b1bf 100644
      autoscale_attributes {
        key   = "test.ecs.key"
        value = "test.ecs.value"
-@@ -765,7 +754,7 @@ Usage:
+@@ -803,7 +792,7 @@ Usage:
    integration_codedeploy {
      cleanup_on_failure            = false
      terminate_instance_on_failure = false
@@ -409,7 +392,7 @@ index 3df1eebd..74a4b1bf 100644
      deployment_groups {
        application_name      = "my-app"
        deployment_group_name = "my-group"
-@@ -790,7 +779,7 @@ Usage:
+@@ -828,7 +817,7 @@ Usage:
    integration_route53 {
  
      # Option 1: Use A records.
@@ -418,7 +401,7 @@ index 3df1eebd..74a4b1bf 100644
        hosted_zone_id   = "zone-id"
        spotinst_acct_id = "act-123456"
        record_set_type  = "a"
-@@ -802,7 +791,7 @@ Usage:
+@@ -840,7 +829,7 @@ Usage:
      }
  
      # Option 2: Use CNAME records.
@@ -427,7 +410,7 @@ index 3df1eebd..74a4b1bf 100644
        hosted_zone_id   = "zone-id"
        spotinst_acct_id = "act-123456"
        record_set_type  = "cname"
-@@ -837,17 +826,17 @@ integration_docker_swarm {
+@@ -875,17 +864,17 @@ integration_docker_swarm {
      master_port          = 2376
      autoscale_is_enabled = true
      autoscale_cooldown   = 180
@@ -448,7 +431,7 @@ index 3df1eebd..74a4b1bf 100644
  }
  ```
  
-@@ -874,34 +863,34 @@ Usage:
+@@ -913,35 +902,35 @@ Usage:
    integration_kubernetes {
      integration_mode   = "pod"
      cluster_identifier = "my-identifier.ek8s.com"
@@ -475,6 +458,7 @@ index 3df1eebd..74a4b1bf 100644
 +
      autoscale_down {
        evaluation_periods = 300
+       max_scale_down_percentage = 50
      }
 -    
 +
@@ -489,7 +473,7 @@ index 3df1eebd..74a4b1bf 100644
  * `integration_nomad` - (Optional) Describes the [Nomad](https://www.nomadproject.io/) integration.
  
      * `master_host` - (Required) The URL for the Nomad master host.
-@@ -926,27 +915,27 @@ Usage:
+@@ -966,27 +955,27 @@ Usage:
      acl_token            = "top-secret"
      autoscale_is_enabled = false
      autoscale_cooldown   = 300
@@ -523,7 +507,7 @@ index 3df1eebd..74a4b1bf 100644
  
  Usage:
  
-@@ -957,7 +946,7 @@ Usage:
+@@ -997,7 +986,7 @@ Usage:
  ```
  
  * `integration_multai_runtime` - (Optional) Describes the [Multai Runtime](https://spotinst.com/) integration.
@@ -532,7 +516,7 @@ index 3df1eebd..74a4b1bf 100644
      * `deployment_id` - (Optional) The deployment id you want to get
  
  Usage:
-@@ -967,12 +956,12 @@ Usage:
+@@ -1007,12 +996,12 @@ Usage:
      deployment_id = ""
    }
  ```
@@ -549,7 +533,7 @@ index 3df1eebd..74a4b1bf 100644
  Usage:
  
  ```hcl
-@@ -984,21 +973,21 @@ Usage:
+@@ -1024,21 +1013,21 @@ Usage:
  ```
  
  * `integration_beanstalk` - (Optional) Describes the [Beanstalk](https://api.spotinst.com/provisioning-ci-cd-sdk/provisioning-tools/terraform/resources/terraform-v-2/elastic-beanstalk/) integration.
@@ -575,7 +559,7 @@ index 3df1eebd..74a4b1bf 100644
  Usage:
  
  ```hcl
-@@ -1025,8 +1014,7 @@ Usage:
+@@ -1065,8 +1054,7 @@ Usage:
    }
  ```
  
@@ -585,7 +569,7 @@ index 3df1eebd..74a4b1bf 100644
  
  * `update_policy` - (Optional)
  
-@@ -1042,7 +1030,7 @@ Usage:
+@@ -1082,7 +1070,7 @@ Usage:
          * `strategy` - (Optional) Strategy parameters
             * `action` - (Required) Action to take. Valid values: `REPLACE_SERVER`, `RESTART_SERVER`.
             * `should_drain_instances` - (Optional) Specify whether to drain incoming TCP connections before terminating a server.
@@ -594,7 +578,7 @@ index 3df1eebd..74a4b1bf 100644
             * `on_failure` - (Optional) Set detach options to the deployment.
                 * `action_type` - (Required) Sets the action that will take place, Accepted values are: `DETACH_OLD`, `DETACH_NEW`.
                 * `should_handle_all_batches` - (Optional, Default: `false`) Indicator if the action should apply to all batches of the deployment or only the latest batch.
-@@ -1076,9 +1064,9 @@ Usage:
+@@ -1116,7 +1104,7 @@ Usage:
      }
    }
  ```       
@@ -603,10 +587,6 @@ index 3df1eebd..74a4b1bf 100644
  ## Attributes Reference
  
  The following attributes are exported:
- 
--* `id` - The group ID.
-+* `id` - The group ID.
-\ No newline at end of file
 diff --git a/docs/resources/elastigroup_aws_beanstalk.md b/docs/resources/elastigroup_aws_beanstalk.md
 index caf128e0..277fa01a 100644
 --- a/docs/resources/elastigroup_aws_beanstalk.md
@@ -1098,7 +1078,7 @@ index 05d783c0..7cd006b9 100644
  ```hcl
    termination_policies {
 diff --git a/docs/resources/ocean_aws.md b/docs/resources/ocean_aws.md
-index 7b59a4ad..e8cc4960 100644
+index e6554080..1b5a5188 100644
 --- a/docs/resources/ocean_aws.md
 +++ b/docs/resources/ocean_aws.md
 @@ -46,7 +46,7 @@ resource "spotinst_ocean_aws" "example" {
@@ -1156,7 +1136,7 @@ index 7b59a4ad..e8cc4960 100644
    block_device_mappings {
      device_name = "/dev/xvda"
      ebs {
-@@ -139,7 +139,7 @@ resource "spotinst_ocean_aws" "example" {
+@@ -144,7 +144,7 @@ resource "spotinst_ocean_aws" "example" {
        }
      }
    }
@@ -1165,7 +1145,7 @@ index 7b59a4ad..e8cc4960 100644
    logging {
      export {
        s3 {
-@@ -283,13 +283,12 @@ autoscaler {
+@@ -293,13 +293,12 @@ autoscaler {
      max_vcpu       = 1024
      max_memory_gib = 1500
    }
@@ -1181,7 +1161,7 @@ index 7b59a4ad..e8cc4960 100644
  
  * `update_policy` - (Optional)
      * `should_roll` - (Required) Enables the roll.
-@@ -325,13 +324,13 @@ update_policy {
+@@ -335,13 +334,13 @@ update_policy {
          * `is_enabled` - (Required)  Describes whether the task is enabled. When true the task should run when false it should not run. Required for `cluster.scheduling.tasks` object.
          * `cron_expression` - (Required) A valid cron expression. The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of `frequency` or `cronExpression` should be used at a time. Required for `cluster.scheduling.tasks` object. (Example: `0 1 * * *`).
          * `task_type` - (Required) Valid values: `clusterRoll`. Required for `cluster.scheduling.tasks` object. (Example: `clusterRoll`).
@@ -1393,7 +1373,7 @@ index 91266c3a..2aa41f11 100644
  * `autoscaler` - (Optional) The Ocean Kubernetes Autoscaler object.
      * `is_enabled` - (Optional, Default: `true`) Enable the Ocean Kubernetes Autoscaler.
 diff --git a/docs/resources/stateful_node_aws.md b/docs/resources/stateful_node_aws.md
-index 696f90f8..f645c45c 100644
+index b40131ae..a57aa329 100644
 --- a/docs/resources/stateful_node_aws.md
 +++ b/docs/resources/stateful_node_aws.md
 @@ -16,7 +16,7 @@ Provides a Spotinst AWS ManagedInstance resource.
@@ -1413,7 +1393,7 @@ index 696f90f8..f645c45c 100644
 +* `utilize_reserved_instances` - (Optional) In case of any available Reserved Instances, Managed Instance will utilize them before purchasing Spot instances. Default: `"false"`.
  * `optimization_windows` - (Optional) When `performAt` is `"timeWindow"`: must specify a list of `"timeWindows"` with at least one time window. Each string should be formatted as `ddd:hh:mm-ddd:hh:mm` (ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59).
  * `perform_at` - (Optional) Valid values: `"always"`, `"never"`, `"timeWindow"`. Default `"never"`.
- * `minimum_instnace_lifetime` - (Optional) Defines the preferred minimum instance lifetime. Markets which comply with this preference will be prioritized. Optional values: `1`, `3`, `6`, `12`, `24`.
+ * `minimum_instance_lifetime` - (Optional) Defines the preferred minimum instance lifetime. Markets which comply with this preference will be prioritized. Optional values: `1`, `3`, `6`, `12`, `24`.
  * `persist_private_ip` - (Optional) Should the instance maintain its private IP.
 -* `persist_block_devices` - (Optional) Should the instance maintain its Data volumes. 
 +* `persist_block_devices` - (Optional) Should the instance maintain its Data volumes.
@@ -1543,6 +1523,3 @@ index 696f90f8..f645c45c 100644
    type  = "pause"
  }    
  ```
--- 
-2.39.1
-

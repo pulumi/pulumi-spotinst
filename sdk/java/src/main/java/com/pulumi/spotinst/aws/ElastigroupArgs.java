@@ -22,6 +22,7 @@ import com.pulumi.spotinst.aws.inputs.ElastigroupIntegrationNomadArgs;
 import com.pulumi.spotinst.aws.inputs.ElastigroupIntegrationRancherArgs;
 import com.pulumi.spotinst.aws.inputs.ElastigroupIntegrationRoute53Args;
 import com.pulumi.spotinst.aws.inputs.ElastigroupItfArgs;
+import com.pulumi.spotinst.aws.inputs.ElastigroupLoggingArgs;
 import com.pulumi.spotinst.aws.inputs.ElastigroupMetadataOptionsArgs;
 import com.pulumi.spotinst.aws.inputs.ElastigroupMultaiTargetSetArgs;
 import com.pulumi.spotinst.aws.inputs.ElastigroupMultipleMetricsArgs;
@@ -615,6 +616,21 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
 
     public Optional<Output<String>> lifetimePeriod() {
         return Optional.ofNullable(this.lifetimePeriod);
+    }
+
+    /**
+     * Logging configuration.
+     * 
+     */
+    @Import(name="logging")
+    private @Nullable Output<ElastigroupLoggingArgs> logging;
+
+    /**
+     * @return Logging configuration.
+     * 
+     */
+    public Optional<Output<ElastigroupLoggingArgs>> logging() {
+        return Optional.ofNullable(this.logging);
     }
 
     /**
@@ -1259,6 +1275,7 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
         this.itfs = $.itfs;
         this.keyName = $.keyName;
         this.lifetimePeriod = $.lifetimePeriod;
+        this.logging = $.logging;
         this.maxSize = $.maxSize;
         this.metadataOptions = $.metadataOptions;
         this.minSize = $.minSize;
@@ -2187,6 +2204,27 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder lifetimePeriod(String lifetimePeriod) {
             return lifetimePeriod(Output.of(lifetimePeriod));
+        }
+
+        /**
+         * @param logging Logging configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder logging(@Nullable Output<ElastigroupLoggingArgs> logging) {
+            $.logging = logging;
+            return this;
+        }
+
+        /**
+         * @param logging Logging configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder logging(ElastigroupLoggingArgs logging) {
+            return logging(Output.of(logging));
         }
 
         /**

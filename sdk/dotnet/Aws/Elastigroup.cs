@@ -244,6 +244,12 @@ namespace Pulumi.SpotInst.Aws
         public Output<string?> LifetimePeriod { get; private set; } = null!;
 
         /// <summary>
+        /// Logging configuration.
+        /// </summary>
+        [Output("logging")]
+        public Output<Outputs.ElastigroupLogging?> Logging { get; private set; } = null!;
+
+        /// <summary>
         /// The maximum number of instances the group should have at any time.
         /// </summary>
         [Output("maxSize")]
@@ -808,6 +814,12 @@ namespace Pulumi.SpotInst.Aws
 
         [Input("lifetimePeriod")]
         public Input<string>? LifetimePeriod { get; set; }
+
+        /// <summary>
+        /// Logging configuration.
+        /// </summary>
+        [Input("logging")]
+        public Input<Inputs.ElastigroupLoggingArgs>? Logging { get; set; }
 
         /// <summary>
         /// The maximum number of instances the group should have at any time.
@@ -1437,6 +1449,12 @@ namespace Pulumi.SpotInst.Aws
 
         [Input("lifetimePeriod")]
         public Input<string>? LifetimePeriod { get; set; }
+
+        /// <summary>
+        /// Logging configuration.
+        /// </summary>
+        [Input("logging")]
+        public Input<Inputs.ElastigroupLoggingGetArgs>? Logging { get; set; }
 
         /// <summary>
         /// The maximum number of instances the group should have at any time.

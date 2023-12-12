@@ -526,7 +526,7 @@ export namespace aws {
 
     export interface ElastigroupImageImage {
         /**
-         * The group ID.
+         * The identifier of The S3 data integration to export the logs to.
          */
         id: string;
     }
@@ -1107,6 +1107,27 @@ export namespace aws {
     export interface ElastigroupItfTargetGroupConfigTag {
         tagKey: string;
         tagValue?: string;
+    }
+
+    export interface ElastigroupLogging {
+        /**
+         * Logging Export configuration.
+         */
+        export?: outputs.aws.ElastigroupLoggingExport;
+    }
+
+    export interface ElastigroupLoggingExport {
+        /**
+         * Exports your cluster's logs to the S3 bucket and subdir configured on the S3 data integration given.
+         */
+        s3s?: outputs.aws.ElastigroupLoggingExportS3[];
+    }
+
+    export interface ElastigroupLoggingExportS3 {
+        /**
+         * The identifier of The S3 data integration to export the logs to.
+         */
+        id: string;
     }
 
     export interface ElastigroupMetadataOptions {

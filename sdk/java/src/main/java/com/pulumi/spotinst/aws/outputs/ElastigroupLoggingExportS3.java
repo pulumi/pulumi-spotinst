@@ -8,14 +8,14 @@ import java.lang.String;
 import java.util.Objects;
 
 @CustomType
-public final class ElastigroupImageImage {
+public final class ElastigroupLoggingExportS3 {
     /**
      * @return The identifier of The S3 data integration to export the logs to.
      * 
      */
     private String id;
 
-    private ElastigroupImageImage() {}
+    private ElastigroupLoggingExportS3() {}
     /**
      * @return The identifier of The S3 data integration to export the logs to.
      * 
@@ -28,14 +28,14 @@ public final class ElastigroupImageImage {
         return new Builder();
     }
 
-    public static Builder builder(ElastigroupImageImage defaults) {
+    public static Builder builder(ElastigroupLoggingExportS3 defaults) {
         return new Builder(defaults);
     }
     @CustomType.Builder
     public static final class Builder {
         private String id;
         public Builder() {}
-        public Builder(ElastigroupImageImage defaults) {
+        public Builder(ElastigroupLoggingExportS3 defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
         }
@@ -45,8 +45,8 @@ public final class ElastigroupImageImage {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        public ElastigroupImageImage build() {
-            final var o = new ElastigroupImageImage();
+        public ElastigroupLoggingExportS3 build() {
+            final var o = new ElastigroupLoggingExportS3();
             o.id = id;
             return o;
         }
