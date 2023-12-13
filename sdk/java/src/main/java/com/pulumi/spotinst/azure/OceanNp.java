@@ -94,10 +94,10 @@ public class OceanNp extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.headrooms);
     }
     @Export(name="health", refs={OceanNpHealth.class}, tree="[0]")
-    private Output<OceanNpHealth> health;
+    private Output</* @Nullable */ OceanNpHealth> health;
 
-    public Output<OceanNpHealth> health() {
-        return this.health;
+    public Output<Optional<OceanNpHealth>> health() {
+        return Codegen.optional(this.health);
     }
     @Export(name="kubernetesVersion", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> kubernetesVersion;

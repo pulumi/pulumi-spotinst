@@ -5188,7 +5188,8 @@ func (o OceanNpAutoscalerAutoscaleHeadroomPtrOutput) Automatic() OceanNpAutoscal
 }
 
 type OceanNpAutoscalerAutoscaleHeadroomAutomatic struct {
-	Percentage *int `pulumi:"percentage"`
+	IsEnabled  *bool `pulumi:"isEnabled"`
+	Percentage *int  `pulumi:"percentage"`
 }
 
 // OceanNpAutoscalerAutoscaleHeadroomAutomaticInput is an input type that accepts OceanNpAutoscalerAutoscaleHeadroomAutomaticArgs and OceanNpAutoscalerAutoscaleHeadroomAutomaticOutput values.
@@ -5203,7 +5204,8 @@ type OceanNpAutoscalerAutoscaleHeadroomAutomaticInput interface {
 }
 
 type OceanNpAutoscalerAutoscaleHeadroomAutomaticArgs struct {
-	Percentage pulumi.IntPtrInput `pulumi:"percentage"`
+	IsEnabled  pulumi.BoolPtrInput `pulumi:"isEnabled"`
+	Percentage pulumi.IntPtrInput  `pulumi:"percentage"`
 }
 
 func (OceanNpAutoscalerAutoscaleHeadroomAutomaticArgs) ElementType() reflect.Type {
@@ -5283,6 +5285,10 @@ func (o OceanNpAutoscalerAutoscaleHeadroomAutomaticOutput) ToOceanNpAutoscalerAu
 	}).(OceanNpAutoscalerAutoscaleHeadroomAutomaticPtrOutput)
 }
 
+func (o OceanNpAutoscalerAutoscaleHeadroomAutomaticOutput) IsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OceanNpAutoscalerAutoscaleHeadroomAutomatic) *bool { return v.IsEnabled }).(pulumi.BoolPtrOutput)
+}
+
 func (o OceanNpAutoscalerAutoscaleHeadroomAutomaticOutput) Percentage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanNpAutoscalerAutoscaleHeadroomAutomatic) *int { return v.Percentage }).(pulumi.IntPtrOutput)
 }
@@ -5309,6 +5315,15 @@ func (o OceanNpAutoscalerAutoscaleHeadroomAutomaticPtrOutput) Elem() OceanNpAuto
 		var ret OceanNpAutoscalerAutoscaleHeadroomAutomatic
 		return ret
 	}).(OceanNpAutoscalerAutoscaleHeadroomAutomaticOutput)
+}
+
+func (o OceanNpAutoscalerAutoscaleHeadroomAutomaticPtrOutput) IsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OceanNpAutoscalerAutoscaleHeadroomAutomatic) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsEnabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 func (o OceanNpAutoscalerAutoscaleHeadroomAutomaticPtrOutput) Percentage() pulumi.IntPtrOutput {

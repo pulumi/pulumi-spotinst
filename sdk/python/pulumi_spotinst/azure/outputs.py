@@ -2109,10 +2109,35 @@ class OceanNpAutoscalerAutoscaleHeadroom(dict):
 
 @pulumi.output_type
 class OceanNpAutoscalerAutoscaleHeadroomAutomatic(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "isEnabled":
+            suggest = "is_enabled"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OceanNpAutoscalerAutoscaleHeadroomAutomatic. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OceanNpAutoscalerAutoscaleHeadroomAutomatic.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OceanNpAutoscalerAutoscaleHeadroomAutomatic.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
+                 is_enabled: Optional[bool] = None,
                  percentage: Optional[int] = None):
+        if is_enabled is not None:
+            pulumi.set(__self__, "is_enabled", is_enabled)
         if percentage is not None:
             pulumi.set(__self__, "percentage", percentage)
+
+    @property
+    @pulumi.getter(name="isEnabled")
+    def is_enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "is_enabled")
 
     @property
     @pulumi.getter

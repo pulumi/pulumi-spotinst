@@ -971,7 +971,7 @@ class OceanNp(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def health(self) -> pulumi.Output['outputs.OceanNpHealth']:
+    def health(self) -> pulumi.Output[Optional['outputs.OceanNpHealth']]:
         return pulumi.get(self, "health")
 
     @property

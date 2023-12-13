@@ -33,7 +33,7 @@ public final class SubscriptionArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The event to send the notification when triggered. Valid values: `&#34;AWS_EC2_INSTANCE_TERMINATE&#34;`, `&#34;AWS_EC2_INSTANCE_TERMINATED&#34;`, `&#34;AWS_EC2_INSTANCE_LAUNCH&#34;`, `&#34;AWS_EC2_INSTANCE_READY_SIGNAL_TIMEOUT&#34;`, `&#34;AWS_EC2_CANT_SPIN_OD&#34;`, `&#34;AWS_EC2_INSTANCE_UNHEALTHY_IN_ELB&#34;`, `&#34;GROUP_ROLL_FAILED&#34;`, `&#34;GROUP_ROLL_FINISHED&#34;`,
+     * The event to send the notification when triggered. Valid values: `&#34;AWS_EC2_INSTANCE_TERMINATE&#34;`, `&#34;AWS_EC2_INSTANCE_TERMINATED&#34;`, `&#34;AWS_EC2_INSTANCE_LAUNCH&#34;`, `&#34;AWS_EC2_INSTANCE_READY_SIGNAL_TIMEOUT&#34;`, `&#34;SIGNAL_TIMEOUT_SHUTDOWN_SCRIPT&#34;`, `&#34;AWS_EC2_CANT_SPIN_OD&#34;`, `&#34;AWS_EC2_INSTANCE_UNHEALTHY_IN_ELB&#34;`, `&#34;GROUP_ROLL_FAILED&#34;`, `&#34;GROUP_ROLL_FINISHED&#34;`,
      * `&#34;CANT_SCALE_UP_GROUP_MAX_CAPACITY&#34;`,
      * `&#34;GROUP_UPDATED&#34;`,
      * `&#34;AWS_EMR_PROVISION_TIMEOUT&#34;`,
@@ -51,7 +51,7 @@ public final class SubscriptionArgs extends com.pulumi.resources.ResourceArgs {
     private Output<String> eventType;
 
     /**
-     * @return The event to send the notification when triggered. Valid values: `&#34;AWS_EC2_INSTANCE_TERMINATE&#34;`, `&#34;AWS_EC2_INSTANCE_TERMINATED&#34;`, `&#34;AWS_EC2_INSTANCE_LAUNCH&#34;`, `&#34;AWS_EC2_INSTANCE_READY_SIGNAL_TIMEOUT&#34;`, `&#34;AWS_EC2_CANT_SPIN_OD&#34;`, `&#34;AWS_EC2_INSTANCE_UNHEALTHY_IN_ELB&#34;`, `&#34;GROUP_ROLL_FAILED&#34;`, `&#34;GROUP_ROLL_FINISHED&#34;`,
+     * @return The event to send the notification when triggered. Valid values: `&#34;AWS_EC2_INSTANCE_TERMINATE&#34;`, `&#34;AWS_EC2_INSTANCE_TERMINATED&#34;`, `&#34;AWS_EC2_INSTANCE_LAUNCH&#34;`, `&#34;AWS_EC2_INSTANCE_READY_SIGNAL_TIMEOUT&#34;`, `&#34;SIGNAL_TIMEOUT_SHUTDOWN_SCRIPT&#34;`, `&#34;AWS_EC2_CANT_SPIN_OD&#34;`, `&#34;AWS_EC2_INSTANCE_UNHEALTHY_IN_ELB&#34;`, `&#34;GROUP_ROLL_FAILED&#34;`, `&#34;GROUP_ROLL_FINISHED&#34;`,
      * `&#34;CANT_SCALE_UP_GROUP_MAX_CAPACITY&#34;`,
      * `&#34;GROUP_UPDATED&#34;`,
      * `&#34;AWS_EMR_PROVISION_TIMEOUT&#34;`,
@@ -174,7 +174,7 @@ public final class SubscriptionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param eventType The event to send the notification when triggered. Valid values: `&#34;AWS_EC2_INSTANCE_TERMINATE&#34;`, `&#34;AWS_EC2_INSTANCE_TERMINATED&#34;`, `&#34;AWS_EC2_INSTANCE_LAUNCH&#34;`, `&#34;AWS_EC2_INSTANCE_READY_SIGNAL_TIMEOUT&#34;`, `&#34;AWS_EC2_CANT_SPIN_OD&#34;`, `&#34;AWS_EC2_INSTANCE_UNHEALTHY_IN_ELB&#34;`, `&#34;GROUP_ROLL_FAILED&#34;`, `&#34;GROUP_ROLL_FINISHED&#34;`,
+         * @param eventType The event to send the notification when triggered. Valid values: `&#34;AWS_EC2_INSTANCE_TERMINATE&#34;`, `&#34;AWS_EC2_INSTANCE_TERMINATED&#34;`, `&#34;AWS_EC2_INSTANCE_LAUNCH&#34;`, `&#34;AWS_EC2_INSTANCE_READY_SIGNAL_TIMEOUT&#34;`, `&#34;SIGNAL_TIMEOUT_SHUTDOWN_SCRIPT&#34;`, `&#34;AWS_EC2_CANT_SPIN_OD&#34;`, `&#34;AWS_EC2_INSTANCE_UNHEALTHY_IN_ELB&#34;`, `&#34;GROUP_ROLL_FAILED&#34;`, `&#34;GROUP_ROLL_FINISHED&#34;`,
          * `&#34;CANT_SCALE_UP_GROUP_MAX_CAPACITY&#34;`,
          * `&#34;GROUP_UPDATED&#34;`,
          * `&#34;AWS_EMR_PROVISION_TIMEOUT&#34;`,
@@ -196,7 +196,7 @@ public final class SubscriptionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param eventType The event to send the notification when triggered. Valid values: `&#34;AWS_EC2_INSTANCE_TERMINATE&#34;`, `&#34;AWS_EC2_INSTANCE_TERMINATED&#34;`, `&#34;AWS_EC2_INSTANCE_LAUNCH&#34;`, `&#34;AWS_EC2_INSTANCE_READY_SIGNAL_TIMEOUT&#34;`, `&#34;AWS_EC2_CANT_SPIN_OD&#34;`, `&#34;AWS_EC2_INSTANCE_UNHEALTHY_IN_ELB&#34;`, `&#34;GROUP_ROLL_FAILED&#34;`, `&#34;GROUP_ROLL_FINISHED&#34;`,
+         * @param eventType The event to send the notification when triggered. Valid values: `&#34;AWS_EC2_INSTANCE_TERMINATE&#34;`, `&#34;AWS_EC2_INSTANCE_TERMINATED&#34;`, `&#34;AWS_EC2_INSTANCE_LAUNCH&#34;`, `&#34;AWS_EC2_INSTANCE_READY_SIGNAL_TIMEOUT&#34;`, `&#34;SIGNAL_TIMEOUT_SHUTDOWN_SCRIPT&#34;`, `&#34;AWS_EC2_CANT_SPIN_OD&#34;`, `&#34;AWS_EC2_INSTANCE_UNHEALTHY_IN_ELB&#34;`, `&#34;GROUP_ROLL_FAILED&#34;`, `&#34;GROUP_ROLL_FINISHED&#34;`,
          * `&#34;CANT_SCALE_UP_GROUP_MAX_CAPACITY&#34;`,
          * `&#34;GROUP_UPDATED&#34;`,
          * `&#34;AWS_EMR_PROVISION_TIMEOUT&#34;`,
