@@ -6003,6 +6003,9 @@
             "spotinst:azure/OceanNpAutoscalerAutoscaleDown:OceanNpAutoscalerAutoscaleDown": {
                 "maxScaleDownPercentage": "max_scale_down_percentage"
             },
+            "spotinst:azure/OceanNpAutoscalerAutoscaleHeadroomAutomatic:OceanNpAutoscalerAutoscaleHeadroomAutomatic": {
+                "isEnabled": "is_enabled"
+            },
             "spotinst:azure/OceanNpAutoscalerResourceLimits:OceanNpAutoscalerResourceLimits": {
                 "maxMemoryGib": "max_memory_gib",
                 "maxVcpu": "max_vcpu"
