@@ -12,6 +12,9 @@ namespace Pulumi.SpotInst.Azure.Inputs
 
     public sealed class OceanNpAutoscalerAutoscaleHeadroomAutomaticArgs : global::Pulumi.ResourceArgs
     {
+        [Input("isEnabled")]
+        public Input<bool>? IsEnabled { get; set; }
+
         [Input("percentage")]
         public Input<int>? Percentage { get; set; }
 

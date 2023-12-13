@@ -45,7 +45,7 @@ export class OceanNp extends pulumi.CustomResource {
     public readonly fallbackToOndemand!: pulumi.Output<boolean | undefined>;
     public readonly filters!: pulumi.Output<outputs.azure.OceanNpFilters | undefined>;
     public readonly headrooms!: pulumi.Output<outputs.azure.OceanNpHeadroom[] | undefined>;
-    public readonly health!: pulumi.Output<outputs.azure.OceanNpHealth>;
+    public readonly health!: pulumi.Output<outputs.azure.OceanNpHealth | undefined>;
     public readonly kubernetesVersion!: pulumi.Output<string | undefined>;
     public readonly labels!: pulumi.Output<{[key: string]: any} | undefined>;
     public readonly maxCount!: pulumi.Output<number | undefined>;

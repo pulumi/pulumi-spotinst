@@ -2046,9 +2046,21 @@ class OceanNpAutoscalerAutoscaleHeadroomArgs:
 @pulumi.input_type
 class OceanNpAutoscalerAutoscaleHeadroomAutomaticArgs:
     def __init__(__self__, *,
+                 is_enabled: Optional[pulumi.Input[bool]] = None,
                  percentage: Optional[pulumi.Input[int]] = None):
+        if is_enabled is not None:
+            pulumi.set(__self__, "is_enabled", is_enabled)
         if percentage is not None:
             pulumi.set(__self__, "percentage", percentage)
+
+    @property
+    @pulumi.getter(name="isEnabled")
+    def is_enabled(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "is_enabled")
+
+    @is_enabled.setter
+    def is_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_enabled", value)
 
     @property
     @pulumi.getter

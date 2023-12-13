@@ -13,11 +13,16 @@ namespace Pulumi.SpotInst.Azure.Outputs
     [OutputType]
     public sealed class OceanNpAutoscalerAutoscaleHeadroomAutomatic
     {
+        public readonly bool? IsEnabled;
         public readonly int? Percentage;
 
         [OutputConstructor]
-        private OceanNpAutoscalerAutoscaleHeadroomAutomatic(int? percentage)
+        private OceanNpAutoscalerAutoscaleHeadroomAutomatic(
+            bool? isEnabled,
+
+            int? percentage)
         {
+            IsEnabled = isEnabled;
             Percentage = percentage;
         }
     }

@@ -46,7 +46,7 @@ namespace Pulumi.SpotInst.Azure
         public Output<ImmutableArray<Outputs.OceanNpHeadroom>> Headrooms { get; private set; } = null!;
 
         [Output("health")]
-        public Output<Outputs.OceanNpHealth> Health { get; private set; } = null!;
+        public Output<Outputs.OceanNpHealth?> Health { get; private set; } = null!;
 
         [Output("kubernetesVersion")]
         public Output<string?> KubernetesVersion { get; private set; } = null!;

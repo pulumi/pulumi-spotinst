@@ -3582,6 +3582,7 @@ export namespace azure {
     }
 
     export interface OceanNpAutoscalerAutoscaleHeadroomAutomatic {
+        isEnabled?: pulumi.Input<boolean>;
         percentage?: pulumi.Input<number>;
     }
 

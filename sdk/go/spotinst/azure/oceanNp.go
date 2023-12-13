@@ -26,7 +26,7 @@ type OceanNp struct {
 	FallbackToOndemand                 pulumi.BoolPtrOutput       `pulumi:"fallbackToOndemand"`
 	Filters                            OceanNpFiltersPtrOutput    `pulumi:"filters"`
 	Headrooms                          OceanNpHeadroomArrayOutput `pulumi:"headrooms"`
-	Health                             OceanNpHealthOutput        `pulumi:"health"`
+	Health                             OceanNpHealthPtrOutput     `pulumi:"health"`
 	KubernetesVersion                  pulumi.StringPtrOutput     `pulumi:"kubernetesVersion"`
 	Labels                             pulumi.MapOutput           `pulumi:"labels"`
 	MaxCount                           pulumi.IntPtrOutput        `pulumi:"maxCount"`
@@ -352,8 +352,8 @@ func (o OceanNpOutput) Headrooms() OceanNpHeadroomArrayOutput {
 	return o.ApplyT(func(v *OceanNp) OceanNpHeadroomArrayOutput { return v.Headrooms }).(OceanNpHeadroomArrayOutput)
 }
 
-func (o OceanNpOutput) Health() OceanNpHealthOutput {
-	return o.ApplyT(func(v *OceanNp) OceanNpHealthOutput { return v.Health }).(OceanNpHealthOutput)
+func (o OceanNpOutput) Health() OceanNpHealthPtrOutput {
+	return o.ApplyT(func(v *OceanNp) OceanNpHealthPtrOutput { return v.Health }).(OceanNpHealthPtrOutput)
 }
 
 func (o OceanNpOutput) KubernetesVersion() pulumi.StringPtrOutput {

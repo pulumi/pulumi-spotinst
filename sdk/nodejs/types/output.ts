@@ -3584,6 +3584,7 @@ export namespace azure {
     }
 
     export interface OceanNpAutoscalerAutoscaleHeadroomAutomatic {
+        isEnabled?: boolean;
         percentage?: number;
     }
 
