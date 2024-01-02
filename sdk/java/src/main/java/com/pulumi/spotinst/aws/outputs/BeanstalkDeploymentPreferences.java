@@ -89,21 +89,25 @@ public final class BeanstalkDeploymentPreferences {
 
         @CustomType.Setter
         public Builder automaticRoll(@Nullable Boolean automaticRoll) {
+
             this.automaticRoll = automaticRoll;
             return this;
         }
         @CustomType.Setter
         public Builder batchSizePercentage(@Nullable Integer batchSizePercentage) {
+
             this.batchSizePercentage = batchSizePercentage;
             return this;
         }
         @CustomType.Setter
         public Builder gracePeriod(@Nullable Integer gracePeriod) {
+
             this.gracePeriod = gracePeriod;
             return this;
         }
         @CustomType.Setter
         public Builder strategies(@Nullable List<BeanstalkDeploymentPreferencesStrategy> strategies) {
+
             this.strategies = strategies;
             return this;
         }

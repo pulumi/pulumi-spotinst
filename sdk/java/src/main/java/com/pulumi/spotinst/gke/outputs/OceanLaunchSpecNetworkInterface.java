@@ -4,6 +4,7 @@
 package com.pulumi.spotinst.gke.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.spotinst.gke.outputs.OceanLaunchSpecNetworkInterfaceAccessConfig;
 import com.pulumi.spotinst.gke.outputs.OceanLaunchSpecNetworkInterfaceAliasIpRange;
 import java.lang.String;
@@ -89,6 +90,7 @@ public final class OceanLaunchSpecNetworkInterface {
 
         @CustomType.Setter
         public Builder accessConfigs(@Nullable List<OceanLaunchSpecNetworkInterfaceAccessConfig> accessConfigs) {
+
             this.accessConfigs = accessConfigs;
             return this;
         }
@@ -97,6 +99,7 @@ public final class OceanLaunchSpecNetworkInterface {
         }
         @CustomType.Setter
         public Builder aliasIpRanges(@Nullable List<OceanLaunchSpecNetworkInterfaceAliasIpRange> aliasIpRanges) {
+
             this.aliasIpRanges = aliasIpRanges;
             return this;
         }
@@ -105,11 +108,15 @@ public final class OceanLaunchSpecNetworkInterface {
         }
         @CustomType.Setter
         public Builder network(String network) {
-            this.network = Objects.requireNonNull(network);
+            if (network == null) {
+              throw new MissingRequiredPropertyException("OceanLaunchSpecNetworkInterface", "network");
+            }
+            this.network = network;
             return this;
         }
         @CustomType.Setter
         public Builder projectId(@Nullable String projectId) {
+
             this.projectId = projectId;
             return this;
         }

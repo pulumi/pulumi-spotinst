@@ -5,6 +5,7 @@ package com.pulumi.spotinst.aws.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.spotinst.aws.inputs.ElastigroupUpdatePolicyRollConfigStrategyArgs;
 import java.lang.Double;
 import java.lang.Integer;
@@ -264,7 +265,9 @@ public final class ElastigroupUpdatePolicyRollConfigArgs extends com.pulumi.reso
         }
 
         public ElastigroupUpdatePolicyRollConfigArgs build() {
-            $.batchSizePercentage = Objects.requireNonNull($.batchSizePercentage, "expected parameter 'batchSizePercentage' to be non-null");
+            if ($.batchSizePercentage == null) {
+                throw new MissingRequiredPropertyException("ElastigroupUpdatePolicyRollConfigArgs", "batchSizePercentage");
+            }
             return $;
         }
     }

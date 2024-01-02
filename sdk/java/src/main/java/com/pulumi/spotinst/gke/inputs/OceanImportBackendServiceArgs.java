@@ -5,6 +5,7 @@ package com.pulumi.spotinst.gke.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.spotinst.gke.inputs.OceanImportBackendServiceNamedPortArgs;
 import java.lang.String;
 import java.util.List;
@@ -173,7 +174,9 @@ public final class OceanImportBackendServiceArgs extends com.pulumi.resources.Re
         }
 
         public OceanImportBackendServiceArgs build() {
-            $.serviceName = Objects.requireNonNull($.serviceName, "expected parameter 'serviceName' to be non-null");
+            if ($.serviceName == null) {
+                throw new MissingRequiredPropertyException("OceanImportBackendServiceArgs", "serviceName");
+            }
             return $;
         }
     }

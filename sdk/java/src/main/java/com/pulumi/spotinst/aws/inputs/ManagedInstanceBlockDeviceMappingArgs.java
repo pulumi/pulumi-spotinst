@@ -5,6 +5,7 @@ package com.pulumi.spotinst.aws.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.spotinst.aws.inputs.ManagedInstanceBlockDeviceMappingEbsArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -74,7 +75,9 @@ public final class ManagedInstanceBlockDeviceMappingArgs extends com.pulumi.reso
         }
 
         public ManagedInstanceBlockDeviceMappingArgs build() {
-            $.deviceName = Objects.requireNonNull($.deviceName, "expected parameter 'deviceName' to be non-null");
+            if ($.deviceName == null) {
+                throw new MissingRequiredPropertyException("ManagedInstanceBlockDeviceMappingArgs", "deviceName");
+            }
             return $;
         }
     }

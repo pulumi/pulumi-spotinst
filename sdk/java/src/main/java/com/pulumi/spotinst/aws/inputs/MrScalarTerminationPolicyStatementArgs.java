@@ -5,6 +5,7 @@ package com.pulumi.spotinst.aws.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Double;
 import java.lang.Integer;
 import java.lang.String;
@@ -337,9 +338,15 @@ public final class MrScalarTerminationPolicyStatementArgs extends com.pulumi.res
         }
 
         public MrScalarTerminationPolicyStatementArgs build() {
-            $.metricName = Objects.requireNonNull($.metricName, "expected parameter 'metricName' to be non-null");
-            $.namespace = Objects.requireNonNull($.namespace, "expected parameter 'namespace' to be non-null");
-            $.threshold = Objects.requireNonNull($.threshold, "expected parameter 'threshold' to be non-null");
+            if ($.metricName == null) {
+                throw new MissingRequiredPropertyException("MrScalarTerminationPolicyStatementArgs", "metricName");
+            }
+            if ($.namespace == null) {
+                throw new MissingRequiredPropertyException("MrScalarTerminationPolicyStatementArgs", "namespace");
+            }
+            if ($.threshold == null) {
+                throw new MissingRequiredPropertyException("MrScalarTerminationPolicyStatementArgs", "threshold");
+            }
             return $;
         }
     }

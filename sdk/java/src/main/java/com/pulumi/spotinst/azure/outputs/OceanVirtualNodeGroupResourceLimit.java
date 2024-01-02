@@ -44,6 +44,7 @@ public final class OceanVirtualNodeGroupResourceLimit {
 
         @CustomType.Setter
         public Builder maxInstanceCount(@Nullable Integer maxInstanceCount) {
+
             this.maxInstanceCount = maxInstanceCount;
             return this;
         }

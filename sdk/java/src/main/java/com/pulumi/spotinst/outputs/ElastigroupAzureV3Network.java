@@ -4,6 +4,7 @@
 package com.pulumi.spotinst.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.spotinst.outputs.ElastigroupAzureV3NetworkNetworkInterface;
 import java.lang.String;
 import java.util.List;
@@ -48,7 +49,10 @@ public final class ElastigroupAzureV3Network {
 
         @CustomType.Setter
         public Builder networkInterfaces(List<ElastigroupAzureV3NetworkNetworkInterface> networkInterfaces) {
-            this.networkInterfaces = Objects.requireNonNull(networkInterfaces);
+            if (networkInterfaces == null) {
+              throw new MissingRequiredPropertyException("ElastigroupAzureV3Network", "networkInterfaces");
+            }
+            this.networkInterfaces = networkInterfaces;
             return this;
         }
         public Builder networkInterfaces(ElastigroupAzureV3NetworkNetworkInterface... networkInterfaces) {
@@ -56,12 +60,18 @@ public final class ElastigroupAzureV3Network {
         }
         @CustomType.Setter
         public Builder resourceGroupName(String resourceGroupName) {
-            this.resourceGroupName = Objects.requireNonNull(resourceGroupName);
+            if (resourceGroupName == null) {
+              throw new MissingRequiredPropertyException("ElastigroupAzureV3Network", "resourceGroupName");
+            }
+            this.resourceGroupName = resourceGroupName;
             return this;
         }
         @CustomType.Setter
         public Builder virtualNetworkName(String virtualNetworkName) {
-            this.virtualNetworkName = Objects.requireNonNull(virtualNetworkName);
+            if (virtualNetworkName == null) {
+              throw new MissingRequiredPropertyException("ElastigroupAzureV3Network", "virtualNetworkName");
+            }
+            this.virtualNetworkName = virtualNetworkName;
             return this;
         }
         public ElastigroupAzureV3Network build() {

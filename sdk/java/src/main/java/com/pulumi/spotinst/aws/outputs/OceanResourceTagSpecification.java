@@ -44,6 +44,7 @@ public final class OceanResourceTagSpecification {
 
         @CustomType.Setter
         public Builder shouldTagVolumes(@Nullable Boolean shouldTagVolumes) {
+
             this.shouldTagVolumes = shouldTagVolumes;
             return this;
         }

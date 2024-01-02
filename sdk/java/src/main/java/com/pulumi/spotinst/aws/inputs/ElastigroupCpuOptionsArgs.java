@@ -5,6 +5,7 @@ package com.pulumi.spotinst.aws.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.util.Objects;
 
@@ -74,7 +75,9 @@ public final class ElastigroupCpuOptionsArgs extends com.pulumi.resources.Resour
         }
 
         public ElastigroupCpuOptionsArgs build() {
-            $.threadsPerCore = Objects.requireNonNull($.threadsPerCore, "expected parameter 'threadsPerCore' to be non-null");
+            if ($.threadsPerCore == null) {
+                throw new MissingRequiredPropertyException("ElastigroupCpuOptionsArgs", "threadsPerCore");
+            }
             return $;
         }
     }

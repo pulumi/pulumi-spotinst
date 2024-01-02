@@ -5,6 +5,7 @@ package com.pulumi.spotinst.aws.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -114,7 +115,9 @@ public final class OceanUpdatePolicyRollConfigArgs extends com.pulumi.resources.
         }
 
         public OceanUpdatePolicyRollConfigArgs build() {
-            $.batchSizePercentage = Objects.requireNonNull($.batchSizePercentage, "expected parameter 'batchSizePercentage' to be non-null");
+            if ($.batchSizePercentage == null) {
+                throw new MissingRequiredPropertyException("OceanUpdatePolicyRollConfigArgs", "batchSizePercentage");
+            }
             return $;
         }
     }

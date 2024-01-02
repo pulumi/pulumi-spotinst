@@ -44,6 +44,7 @@ public final class OceanLogCollection {
 
         @CustomType.Setter
         public Builder collectAppLogs(@Nullable Boolean collectAppLogs) {
+
             this.collectAppLogs = collectAppLogs;
             return this;
         }

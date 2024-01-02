@@ -4,6 +4,7 @@
 package com.pulumi.spotinst.organization.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -59,7 +60,10 @@ public final class ProgrammaticUserPolicy {
 
         @CustomType.Setter
         public Builder policyAccountIds(List<String> policyAccountIds) {
-            this.policyAccountIds = Objects.requireNonNull(policyAccountIds);
+            if (policyAccountIds == null) {
+              throw new MissingRequiredPropertyException("ProgrammaticUserPolicy", "policyAccountIds");
+            }
+            this.policyAccountIds = policyAccountIds;
             return this;
         }
         public Builder policyAccountIds(String... policyAccountIds) {
@@ -67,7 +71,10 @@ public final class ProgrammaticUserPolicy {
         }
         @CustomType.Setter
         public Builder policyId(String policyId) {
-            this.policyId = Objects.requireNonNull(policyId);
+            if (policyId == null) {
+              throw new MissingRequiredPropertyException("ProgrammaticUserPolicy", "policyId");
+            }
+            this.policyId = policyId;
             return this;
         }
         public ProgrammaticUserPolicy build() {

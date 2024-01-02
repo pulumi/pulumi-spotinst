@@ -36,6 +36,7 @@ public final class OceanImportScheduledTaskTaskTaskParameters {
 
         @CustomType.Setter
         public Builder clusterRoll(@Nullable OceanImportScheduledTaskTaskTaskParametersClusterRoll clusterRoll) {
+
             this.clusterRoll = clusterRoll;
             return this;
         }

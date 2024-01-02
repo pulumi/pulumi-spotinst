@@ -5,6 +5,7 @@ package com.pulumi.spotinst.aws.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.spotinst.aws.inputs.ElastigroupIntegrationCodedeployDeploymentGroupArgs;
 import java.lang.Boolean;
 import java.util.List;
@@ -160,9 +161,15 @@ public final class ElastigroupIntegrationCodedeployArgs extends com.pulumi.resou
         }
 
         public ElastigroupIntegrationCodedeployArgs build() {
-            $.cleanupOnFailure = Objects.requireNonNull($.cleanupOnFailure, "expected parameter 'cleanupOnFailure' to be non-null");
-            $.deploymentGroups = Objects.requireNonNull($.deploymentGroups, "expected parameter 'deploymentGroups' to be non-null");
-            $.terminateInstanceOnFailure = Objects.requireNonNull($.terminateInstanceOnFailure, "expected parameter 'terminateInstanceOnFailure' to be non-null");
+            if ($.cleanupOnFailure == null) {
+                throw new MissingRequiredPropertyException("ElastigroupIntegrationCodedeployArgs", "cleanupOnFailure");
+            }
+            if ($.deploymentGroups == null) {
+                throw new MissingRequiredPropertyException("ElastigroupIntegrationCodedeployArgs", "deploymentGroups");
+            }
+            if ($.terminateInstanceOnFailure == null) {
+                throw new MissingRequiredPropertyException("ElastigroupIntegrationCodedeployArgs", "terminateInstanceOnFailure");
+            }
             return $;
         }
     }

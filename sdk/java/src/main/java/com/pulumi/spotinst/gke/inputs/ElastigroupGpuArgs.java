@@ -5,6 +5,7 @@ package com.pulumi.spotinst.gke.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -72,8 +73,12 @@ public final class ElastigroupGpuArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public ElastigroupGpuArgs build() {
-            $.count = Objects.requireNonNull($.count, "expected parameter 'count' to be non-null");
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
+            if ($.count == null) {
+                throw new MissingRequiredPropertyException("ElastigroupGpuArgs", "count");
+            }
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("ElastigroupGpuArgs", "type");
+            }
             return $;
         }
     }

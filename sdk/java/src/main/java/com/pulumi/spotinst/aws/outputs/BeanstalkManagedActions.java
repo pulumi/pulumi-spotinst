@@ -44,6 +44,7 @@ public final class BeanstalkManagedActions {
 
         @CustomType.Setter
         public Builder platformUpdate(@Nullable BeanstalkManagedActionsPlatformUpdate platformUpdate) {
+
             this.platformUpdate = platformUpdate;
             return this;
         }

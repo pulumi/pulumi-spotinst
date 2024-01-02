@@ -5,6 +5,7 @@ package com.pulumi.spotinst.gke.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -73,7 +74,9 @@ public final class ElastigroupScalingUpPolicyDimensionArgs extends com.pulumi.re
         }
 
         public ElastigroupScalingUpPolicyDimensionArgs build() {
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("ElastigroupScalingUpPolicyDimensionArgs", "name");
+            }
             return $;
         }
     }

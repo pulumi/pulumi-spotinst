@@ -5,6 +5,7 @@ package com.pulumi.spotinst.azure;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.spotinst.azure.inputs.OceanNpAutoscalerArgs;
 import com.pulumi.spotinst.azure.inputs.OceanNpFiltersArgs;
 import com.pulumi.spotinst.azure.inputs.OceanNpHeadroomArgs;
@@ -546,12 +547,24 @@ public final class OceanNpArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public OceanNpArgs build() {
-            $.aksClusterName = Objects.requireNonNull($.aksClusterName, "expected parameter 'aksClusterName' to be non-null");
-            $.aksInfrastructureResourceGroupName = Objects.requireNonNull($.aksInfrastructureResourceGroupName, "expected parameter 'aksInfrastructureResourceGroupName' to be non-null");
-            $.aksRegion = Objects.requireNonNull($.aksRegion, "expected parameter 'aksRegion' to be non-null");
-            $.aksResourceGroupName = Objects.requireNonNull($.aksResourceGroupName, "expected parameter 'aksResourceGroupName' to be non-null");
-            $.availabilityZones = Objects.requireNonNull($.availabilityZones, "expected parameter 'availabilityZones' to be non-null");
-            $.controllerClusterId = Objects.requireNonNull($.controllerClusterId, "expected parameter 'controllerClusterId' to be non-null");
+            if ($.aksClusterName == null) {
+                throw new MissingRequiredPropertyException("OceanNpArgs", "aksClusterName");
+            }
+            if ($.aksInfrastructureResourceGroupName == null) {
+                throw new MissingRequiredPropertyException("OceanNpArgs", "aksInfrastructureResourceGroupName");
+            }
+            if ($.aksRegion == null) {
+                throw new MissingRequiredPropertyException("OceanNpArgs", "aksRegion");
+            }
+            if ($.aksResourceGroupName == null) {
+                throw new MissingRequiredPropertyException("OceanNpArgs", "aksResourceGroupName");
+            }
+            if ($.availabilityZones == null) {
+                throw new MissingRequiredPropertyException("OceanNpArgs", "availabilityZones");
+            }
+            if ($.controllerClusterId == null) {
+                throw new MissingRequiredPropertyException("OceanNpArgs", "controllerClusterId");
+            }
             return $;
         }
     }

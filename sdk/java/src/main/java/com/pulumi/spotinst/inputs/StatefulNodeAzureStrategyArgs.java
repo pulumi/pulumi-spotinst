@@ -5,6 +5,7 @@ package com.pulumi.spotinst.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.spotinst.inputs.StatefulNodeAzureStrategyCapacityReservationArgs;
 import com.pulumi.spotinst.inputs.StatefulNodeAzureStrategyRevertToSpotArgs;
 import java.lang.Boolean;
@@ -154,7 +155,9 @@ public final class StatefulNodeAzureStrategyArgs extends com.pulumi.resources.Re
         }
 
         public StatefulNodeAzureStrategyArgs build() {
-            $.fallbackToOnDemand = Objects.requireNonNull($.fallbackToOnDemand, "expected parameter 'fallbackToOnDemand' to be non-null");
+            if ($.fallbackToOnDemand == null) {
+                throw new MissingRequiredPropertyException("StatefulNodeAzureStrategyArgs", "fallbackToOnDemand");
+            }
             return $;
         }
     }

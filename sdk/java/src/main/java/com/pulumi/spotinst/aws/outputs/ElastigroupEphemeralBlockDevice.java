@@ -4,6 +4,7 @@
 package com.pulumi.spotinst.aws.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -106,12 +107,18 @@ public final class ElastigroupEphemeralBlockDevice {
 
         @CustomType.Setter
         public Builder deviceName(String deviceName) {
-            this.deviceName = Objects.requireNonNull(deviceName);
+            if (deviceName == null) {
+              throw new MissingRequiredPropertyException("ElastigroupEphemeralBlockDevice", "deviceName");
+            }
+            this.deviceName = deviceName;
             return this;
         }
         @CustomType.Setter
         public Builder virtualName(String virtualName) {
-            this.virtualName = Objects.requireNonNull(virtualName);
+            if (virtualName == null) {
+              throw new MissingRequiredPropertyException("ElastigroupEphemeralBlockDevice", "virtualName");
+            }
+            this.virtualName = virtualName;
             return this;
         }
         public ElastigroupEphemeralBlockDevice build() {

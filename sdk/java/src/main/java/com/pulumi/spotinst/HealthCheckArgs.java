@@ -5,6 +5,7 @@ package com.pulumi.spotinst;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.spotinst.inputs.HealthCheckCheckArgs;
 import java.lang.Integer;
 import java.lang.String;
@@ -186,8 +187,12 @@ public final class HealthCheckArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public HealthCheckArgs build() {
-            $.proxyAddress = Objects.requireNonNull($.proxyAddress, "expected parameter 'proxyAddress' to be non-null");
-            $.resourceId = Objects.requireNonNull($.resourceId, "expected parameter 'resourceId' to be non-null");
+            if ($.proxyAddress == null) {
+                throw new MissingRequiredPropertyException("HealthCheckArgs", "proxyAddress");
+            }
+            if ($.resourceId == null) {
+                throw new MissingRequiredPropertyException("HealthCheckArgs", "resourceId");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.spotinst.azure.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -48,12 +49,18 @@ public final class ElastigroupImageCustom {
 
         @CustomType.Setter
         public Builder imageName(String imageName) {
-            this.imageName = Objects.requireNonNull(imageName);
+            if (imageName == null) {
+              throw new MissingRequiredPropertyException("ElastigroupImageCustom", "imageName");
+            }
+            this.imageName = imageName;
             return this;
         }
         @CustomType.Setter
         public Builder resourceGroupName(String resourceGroupName) {
-            this.resourceGroupName = Objects.requireNonNull(resourceGroupName);
+            if (resourceGroupName == null) {
+              throw new MissingRequiredPropertyException("ElastigroupImageCustom", "resourceGroupName");
+            }
+            this.resourceGroupName = resourceGroupName;
             return this;
         }
         public ElastigroupImageCustom build() {

@@ -44,6 +44,7 @@ public final class OceanLaunchSpecAutoscaleHeadroomsAutomatic {
 
         @CustomType.Setter
         public Builder autoHeadroomPercentage(@Nullable Integer autoHeadroomPercentage) {
+
             this.autoHeadroomPercentage = autoHeadroomPercentage;
             return this;
         }

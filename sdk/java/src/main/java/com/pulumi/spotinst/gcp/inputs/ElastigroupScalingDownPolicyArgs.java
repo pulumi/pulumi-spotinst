@@ -5,6 +5,7 @@ package com.pulumi.spotinst.gcp.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.spotinst.gcp.inputs.ElastigroupScalingDownPolicyDimensionArgs;
 import java.lang.Double;
 import java.lang.Integer;
@@ -531,11 +532,21 @@ public final class ElastigroupScalingDownPolicyArgs extends com.pulumi.resources
         }
 
         public ElastigroupScalingDownPolicyArgs build() {
-            $.metricName = Objects.requireNonNull($.metricName, "expected parameter 'metricName' to be non-null");
-            $.namespace = Objects.requireNonNull($.namespace, "expected parameter 'namespace' to be non-null");
-            $.policyName = Objects.requireNonNull($.policyName, "expected parameter 'policyName' to be non-null");
-            $.threshold = Objects.requireNonNull($.threshold, "expected parameter 'threshold' to be non-null");
-            $.unit = Objects.requireNonNull($.unit, "expected parameter 'unit' to be non-null");
+            if ($.metricName == null) {
+                throw new MissingRequiredPropertyException("ElastigroupScalingDownPolicyArgs", "metricName");
+            }
+            if ($.namespace == null) {
+                throw new MissingRequiredPropertyException("ElastigroupScalingDownPolicyArgs", "namespace");
+            }
+            if ($.policyName == null) {
+                throw new MissingRequiredPropertyException("ElastigroupScalingDownPolicyArgs", "policyName");
+            }
+            if ($.threshold == null) {
+                throw new MissingRequiredPropertyException("ElastigroupScalingDownPolicyArgs", "threshold");
+            }
+            if ($.unit == null) {
+                throw new MissingRequiredPropertyException("ElastigroupScalingDownPolicyArgs", "unit");
+            }
             return $;
         }
     }

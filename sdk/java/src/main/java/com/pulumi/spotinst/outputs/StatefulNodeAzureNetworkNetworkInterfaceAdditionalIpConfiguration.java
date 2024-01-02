@@ -4,6 +4,7 @@
 package com.pulumi.spotinst.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -40,12 +41,18 @@ public final class StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigura
 
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfiguration", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder privateIpAddressVersion(String privateIpAddressVersion) {
-            this.privateIpAddressVersion = Objects.requireNonNull(privateIpAddressVersion);
+            if (privateIpAddressVersion == null) {
+              throw new MissingRequiredPropertyException("StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfiguration", "privateIpAddressVersion");
+            }
+            this.privateIpAddressVersion = privateIpAddressVersion;
             return this;
         }
         public StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfiguration build() {

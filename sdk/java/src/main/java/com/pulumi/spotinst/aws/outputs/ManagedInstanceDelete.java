@@ -66,31 +66,37 @@ public final class ManagedInstanceDelete {
 
         @CustomType.Setter
         public Builder amiBackupShouldDeleteImages(@Nullable Boolean amiBackupShouldDeleteImages) {
+
             this.amiBackupShouldDeleteImages = amiBackupShouldDeleteImages;
             return this;
         }
         @CustomType.Setter
         public Builder deallocationConfigShouldDeleteImages(@Nullable Boolean deallocationConfigShouldDeleteImages) {
+
             this.deallocationConfigShouldDeleteImages = deallocationConfigShouldDeleteImages;
             return this;
         }
         @CustomType.Setter
         public Builder shouldDeleteNetworkInterfaces(@Nullable Boolean shouldDeleteNetworkInterfaces) {
+
             this.shouldDeleteNetworkInterfaces = shouldDeleteNetworkInterfaces;
             return this;
         }
         @CustomType.Setter
         public Builder shouldDeleteSnapshots(@Nullable Boolean shouldDeleteSnapshots) {
+
             this.shouldDeleteSnapshots = shouldDeleteSnapshots;
             return this;
         }
         @CustomType.Setter
         public Builder shouldDeleteVolumes(@Nullable Boolean shouldDeleteVolumes) {
+
             this.shouldDeleteVolumes = shouldDeleteVolumes;
             return this;
         }
         @CustomType.Setter
         public Builder shouldTerminateInstance(@Nullable Boolean shouldTerminateInstance) {
+
             this.shouldTerminateInstance = shouldTerminateInstance;
             return this;
         }

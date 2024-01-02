@@ -5,6 +5,7 @@ package com.pulumi.spotinst.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -91,8 +92,12 @@ public final class StatefulNodeAzureStrategyCapacityReservationCapacityReservati
         }
 
         public StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupArgs build() {
-            $.crgName = Objects.requireNonNull($.crgName, "expected parameter 'crgName' to be non-null");
-            $.crgResourceGroupName = Objects.requireNonNull($.crgResourceGroupName, "expected parameter 'crgResourceGroupName' to be non-null");
+            if ($.crgName == null) {
+                throw new MissingRequiredPropertyException("StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupArgs", "crgName");
+            }
+            if ($.crgResourceGroupName == null) {
+                throw new MissingRequiredPropertyException("StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupArgs", "crgResourceGroupName");
+            }
             return $;
         }
     }

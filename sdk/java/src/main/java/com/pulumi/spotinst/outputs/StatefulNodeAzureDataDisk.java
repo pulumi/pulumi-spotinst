@@ -4,6 +4,7 @@
 package com.pulumi.spotinst.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -47,17 +48,26 @@ public final class StatefulNodeAzureDataDisk {
 
         @CustomType.Setter
         public Builder lun(Integer lun) {
-            this.lun = Objects.requireNonNull(lun);
+            if (lun == null) {
+              throw new MissingRequiredPropertyException("StatefulNodeAzureDataDisk", "lun");
+            }
+            this.lun = lun;
             return this;
         }
         @CustomType.Setter
         public Builder sizeGb(Integer sizeGb) {
-            this.sizeGb = Objects.requireNonNull(sizeGb);
+            if (sizeGb == null) {
+              throw new MissingRequiredPropertyException("StatefulNodeAzureDataDisk", "sizeGb");
+            }
+            this.sizeGb = sizeGb;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("StatefulNodeAzureDataDisk", "type");
+            }
+            this.type = type;
             return this;
         }
         public StatefulNodeAzureDataDisk build() {

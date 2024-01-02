@@ -4,6 +4,7 @@
 package com.pulumi.spotinst.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.spotinst.outputs.StatefulNodeAzureStrategyCapacityReservation;
 import com.pulumi.spotinst.outputs.StatefulNodeAzureStrategyRevertToSpot;
 import java.lang.Boolean;
@@ -71,6 +72,7 @@ public final class StatefulNodeAzureStrategy {
 
         @CustomType.Setter
         public Builder capacityReservations(@Nullable List<StatefulNodeAzureStrategyCapacityReservation> capacityReservations) {
+
             this.capacityReservations = capacityReservations;
             return this;
         }
@@ -79,16 +81,21 @@ public final class StatefulNodeAzureStrategy {
         }
         @CustomType.Setter
         public Builder drainingTimeout(@Nullable Integer drainingTimeout) {
+
             this.drainingTimeout = drainingTimeout;
             return this;
         }
         @CustomType.Setter
         public Builder fallbackToOnDemand(Boolean fallbackToOnDemand) {
-            this.fallbackToOnDemand = Objects.requireNonNull(fallbackToOnDemand);
+            if (fallbackToOnDemand == null) {
+              throw new MissingRequiredPropertyException("StatefulNodeAzureStrategy", "fallbackToOnDemand");
+            }
+            this.fallbackToOnDemand = fallbackToOnDemand;
             return this;
         }
         @CustomType.Setter
         public Builder optimizationWindows(@Nullable List<String> optimizationWindows) {
+
             this.optimizationWindows = optimizationWindows;
             return this;
         }
@@ -97,11 +104,13 @@ public final class StatefulNodeAzureStrategy {
         }
         @CustomType.Setter
         public Builder preferredLifeCycle(@Nullable String preferredLifeCycle) {
+
             this.preferredLifeCycle = preferredLifeCycle;
             return this;
         }
         @CustomType.Setter
         public Builder revertToSpot(@Nullable StatefulNodeAzureStrategyRevertToSpot revertToSpot) {
+
             this.revertToSpot = revertToSpot;
             return this;
         }

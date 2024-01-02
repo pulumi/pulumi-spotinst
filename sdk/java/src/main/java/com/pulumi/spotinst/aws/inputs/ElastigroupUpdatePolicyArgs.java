@@ -5,6 +5,7 @@ package com.pulumi.spotinst.aws.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.spotinst.aws.inputs.ElastigroupUpdatePolicyRollConfigArgs;
 import java.lang.Boolean;
 import java.util.Objects;
@@ -188,8 +189,12 @@ public final class ElastigroupUpdatePolicyArgs extends com.pulumi.resources.Reso
         }
 
         public ElastigroupUpdatePolicyArgs build() {
-            $.shouldResumeStateful = Objects.requireNonNull($.shouldResumeStateful, "expected parameter 'shouldResumeStateful' to be non-null");
-            $.shouldRoll = Objects.requireNonNull($.shouldRoll, "expected parameter 'shouldRoll' to be non-null");
+            if ($.shouldResumeStateful == null) {
+                throw new MissingRequiredPropertyException("ElastigroupUpdatePolicyArgs", "shouldResumeStateful");
+            }
+            if ($.shouldRoll == null) {
+                throw new MissingRequiredPropertyException("ElastigroupUpdatePolicyArgs", "shouldRoll");
+            }
             return $;
         }
     }

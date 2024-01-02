@@ -4,6 +4,7 @@
 package com.pulumi.spotinst.gcp.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -163,32 +164,40 @@ public final class ElastigroupScheduledTask {
 
         @CustomType.Setter
         public Builder cronExpression(@Nullable String cronExpression) {
+
             this.cronExpression = cronExpression;
             return this;
         }
         @CustomType.Setter
         public Builder isEnabled(@Nullable Boolean isEnabled) {
+
             this.isEnabled = isEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder maxCapacity(@Nullable String maxCapacity) {
+
             this.maxCapacity = maxCapacity;
             return this;
         }
         @CustomType.Setter
         public Builder minCapacity(@Nullable String minCapacity) {
+
             this.minCapacity = minCapacity;
             return this;
         }
         @CustomType.Setter
         public Builder targetCapacity(@Nullable String targetCapacity) {
+
             this.targetCapacity = targetCapacity;
             return this;
         }
         @CustomType.Setter
         public Builder taskType(String taskType) {
-            this.taskType = Objects.requireNonNull(taskType);
+            if (taskType == null) {
+              throw new MissingRequiredPropertyException("ElastigroupScheduledTask", "taskType");
+            }
+            this.taskType = taskType;
             return this;
         }
         public ElastigroupScheduledTask build() {

@@ -4,6 +4,7 @@
 package com.pulumi.spotinst.ecs.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.spotinst.ecs.outputs.OceanUpdatePolicyRollConfig;
 import java.lang.Boolean;
 import java.util.Objects;
@@ -79,22 +80,28 @@ public final class OceanUpdatePolicy {
 
         @CustomType.Setter
         public Builder autoApplyTags(@Nullable Boolean autoApplyTags) {
+
             this.autoApplyTags = autoApplyTags;
             return this;
         }
         @CustomType.Setter
         public Builder conditionedRoll(@Nullable Boolean conditionedRoll) {
+
             this.conditionedRoll = conditionedRoll;
             return this;
         }
         @CustomType.Setter
         public Builder rollConfig(@Nullable OceanUpdatePolicyRollConfig rollConfig) {
+
             this.rollConfig = rollConfig;
             return this;
         }
         @CustomType.Setter
         public Builder shouldRoll(Boolean shouldRoll) {
-            this.shouldRoll = Objects.requireNonNull(shouldRoll);
+            if (shouldRoll == null) {
+              throw new MissingRequiredPropertyException("OceanUpdatePolicy", "shouldRoll");
+            }
+            this.shouldRoll = shouldRoll;
             return this;
         }
         public OceanUpdatePolicy build() {

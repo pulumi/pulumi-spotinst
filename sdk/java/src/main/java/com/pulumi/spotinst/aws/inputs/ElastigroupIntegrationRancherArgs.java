@@ -5,6 +5,7 @@ package com.pulumi.spotinst.aws.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -279,9 +280,15 @@ public final class ElastigroupIntegrationRancherArgs extends com.pulumi.resource
         }
 
         public ElastigroupIntegrationRancherArgs build() {
-            $.accessKey = Objects.requireNonNull($.accessKey, "expected parameter 'accessKey' to be non-null");
-            $.masterHost = Objects.requireNonNull($.masterHost, "expected parameter 'masterHost' to be non-null");
-            $.secretKey = Objects.requireNonNull($.secretKey, "expected parameter 'secretKey' to be non-null");
+            if ($.accessKey == null) {
+                throw new MissingRequiredPropertyException("ElastigroupIntegrationRancherArgs", "accessKey");
+            }
+            if ($.masterHost == null) {
+                throw new MissingRequiredPropertyException("ElastigroupIntegrationRancherArgs", "masterHost");
+            }
+            if ($.secretKey == null) {
+                throw new MissingRequiredPropertyException("ElastigroupIntegrationRancherArgs", "secretKey");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.spotinst.aws.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -54,7 +55,9 @@ public final class ManagedInstanceRevertToSpotArgs extends com.pulumi.resources.
         }
 
         public ManagedInstanceRevertToSpotArgs build() {
-            $.performAt = Objects.requireNonNull($.performAt, "expected parameter 'performAt' to be non-null");
+            if ($.performAt == null) {
+                throw new MissingRequiredPropertyException("ManagedInstanceRevertToSpotArgs", "performAt");
+            }
             return $;
         }
     }

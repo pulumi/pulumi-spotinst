@@ -4,6 +4,7 @@
 package com.pulumi.spotinst.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -57,17 +58,24 @@ public final class StatefulNodeAzureHealth {
 
         @CustomType.Setter
         public Builder autoHealing(Boolean autoHealing) {
-            this.autoHealing = Objects.requireNonNull(autoHealing);
+            if (autoHealing == null) {
+              throw new MissingRequiredPropertyException("StatefulNodeAzureHealth", "autoHealing");
+            }
+            this.autoHealing = autoHealing;
             return this;
         }
         @CustomType.Setter
         public Builder gracePeriod(@Nullable Integer gracePeriod) {
+
             this.gracePeriod = gracePeriod;
             return this;
         }
         @CustomType.Setter
         public Builder healthCheckTypes(List<String> healthCheckTypes) {
-            this.healthCheckTypes = Objects.requireNonNull(healthCheckTypes);
+            if (healthCheckTypes == null) {
+              throw new MissingRequiredPropertyException("StatefulNodeAzureHealth", "healthCheckTypes");
+            }
+            this.healthCheckTypes = healthCheckTypes;
             return this;
         }
         public Builder healthCheckTypes(String... healthCheckTypes) {
@@ -75,6 +83,7 @@ public final class StatefulNodeAzureHealth {
         }
         @CustomType.Setter
         public Builder unhealthyDuration(@Nullable Integer unhealthyDuration) {
+
             this.unhealthyDuration = unhealthyDuration;
             return this;
         }

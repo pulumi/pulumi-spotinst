@@ -134,21 +134,25 @@ public final class ElastigroupStatefulDeallocation {
 
         @CustomType.Setter
         public Builder shouldDeleteImages(@Nullable Boolean shouldDeleteImages) {
+
             this.shouldDeleteImages = shouldDeleteImages;
             return this;
         }
         @CustomType.Setter
         public Builder shouldDeleteNetworkInterfaces(@Nullable Boolean shouldDeleteNetworkInterfaces) {
+
             this.shouldDeleteNetworkInterfaces = shouldDeleteNetworkInterfaces;
             return this;
         }
         @CustomType.Setter
         public Builder shouldDeleteSnapshots(@Nullable Boolean shouldDeleteSnapshots) {
+
             this.shouldDeleteSnapshots = shouldDeleteSnapshots;
             return this;
         }
         @CustomType.Setter
         public Builder shouldDeleteVolumes(@Nullable Boolean shouldDeleteVolumes) {
+
             this.shouldDeleteVolumes = shouldDeleteVolumes;
             return this;
         }

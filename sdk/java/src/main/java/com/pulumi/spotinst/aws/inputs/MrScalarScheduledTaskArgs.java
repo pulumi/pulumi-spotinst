@@ -5,6 +5,7 @@ package com.pulumi.spotinst.aws.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -299,9 +300,15 @@ public final class MrScalarScheduledTaskArgs extends com.pulumi.resources.Resour
         }
 
         public MrScalarScheduledTaskArgs build() {
-            $.cron = Objects.requireNonNull($.cron, "expected parameter 'cron' to be non-null");
-            $.instanceGroupType = Objects.requireNonNull($.instanceGroupType, "expected parameter 'instanceGroupType' to be non-null");
-            $.taskType = Objects.requireNonNull($.taskType, "expected parameter 'taskType' to be non-null");
+            if ($.cron == null) {
+                throw new MissingRequiredPropertyException("MrScalarScheduledTaskArgs", "cron");
+            }
+            if ($.instanceGroupType == null) {
+                throw new MissingRequiredPropertyException("MrScalarScheduledTaskArgs", "instanceGroupType");
+            }
+            if ($.taskType == null) {
+                throw new MissingRequiredPropertyException("MrScalarScheduledTaskArgs", "taskType");
+            }
             return $;
         }
     }

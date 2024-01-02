@@ -5,6 +5,7 @@ package com.pulumi.spotinst.gcp.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.spotinst.gcp.inputs.ElastigroupNetworkInterfaceAccessConfigArgs;
 import com.pulumi.spotinst.gcp.inputs.ElastigroupNetworkInterfaceAliasIpRangeArgs;
 import java.lang.String;
@@ -147,7 +148,9 @@ public final class ElastigroupNetworkInterfaceArgs extends com.pulumi.resources.
         }
 
         public ElastigroupNetworkInterfaceArgs build() {
-            $.network = Objects.requireNonNull($.network, "expected parameter 'network' to be non-null");
+            if ($.network == null) {
+                throw new MissingRequiredPropertyException("ElastigroupNetworkInterfaceArgs", "network");
+            }
             return $;
         }
     }

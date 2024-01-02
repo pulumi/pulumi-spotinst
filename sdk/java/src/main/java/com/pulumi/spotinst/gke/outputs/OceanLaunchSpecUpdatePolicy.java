@@ -4,6 +4,7 @@
 package com.pulumi.spotinst.gke.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.spotinst.gke.outputs.OceanLaunchSpecUpdatePolicyRollConfig;
 import java.lang.Boolean;
 import java.util.Objects;
@@ -43,12 +44,16 @@ public final class OceanLaunchSpecUpdatePolicy {
 
         @CustomType.Setter
         public Builder rollConfig(@Nullable OceanLaunchSpecUpdatePolicyRollConfig rollConfig) {
+
             this.rollConfig = rollConfig;
             return this;
         }
         @CustomType.Setter
         public Builder shouldRoll(Boolean shouldRoll) {
-            this.shouldRoll = Objects.requireNonNull(shouldRoll);
+            if (shouldRoll == null) {
+              throw new MissingRequiredPropertyException("OceanLaunchSpecUpdatePolicy", "shouldRoll");
+            }
+            this.shouldRoll = shouldRoll;
             return this;
         }
         public OceanLaunchSpecUpdatePolicy build() {

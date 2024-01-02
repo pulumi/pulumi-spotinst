@@ -5,6 +5,7 @@ package com.pulumi.spotinst.gke.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.spotinst.gke.inputs.OceanImportScheduledTaskTaskTaskParametersArgs;
 import java.lang.Boolean;
 import java.lang.String;
@@ -173,9 +174,15 @@ public final class OceanImportScheduledTaskTaskArgs extends com.pulumi.resources
         }
 
         public OceanImportScheduledTaskTaskArgs build() {
-            $.cronExpression = Objects.requireNonNull($.cronExpression, "expected parameter 'cronExpression' to be non-null");
-            $.isEnabled = Objects.requireNonNull($.isEnabled, "expected parameter 'isEnabled' to be non-null");
-            $.taskType = Objects.requireNonNull($.taskType, "expected parameter 'taskType' to be non-null");
+            if ($.cronExpression == null) {
+                throw new MissingRequiredPropertyException("OceanImportScheduledTaskTaskArgs", "cronExpression");
+            }
+            if ($.isEnabled == null) {
+                throw new MissingRequiredPropertyException("OceanImportScheduledTaskTaskArgs", "isEnabled");
+            }
+            if ($.taskType == null) {
+                throw new MissingRequiredPropertyException("OceanImportScheduledTaskTaskArgs", "taskType");
+            }
             return $;
         }
     }

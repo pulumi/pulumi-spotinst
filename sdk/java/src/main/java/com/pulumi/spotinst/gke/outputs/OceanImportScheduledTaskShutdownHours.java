@@ -4,6 +4,7 @@
 package com.pulumi.spotinst.gke.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -62,12 +63,16 @@ public final class OceanImportScheduledTaskShutdownHours {
 
         @CustomType.Setter
         public Builder isEnabled(@Nullable Boolean isEnabled) {
+
             this.isEnabled = isEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder timeWindows(List<String> timeWindows) {
-            this.timeWindows = Objects.requireNonNull(timeWindows);
+            if (timeWindows == null) {
+              throw new MissingRequiredPropertyException("OceanImportScheduledTaskShutdownHours", "timeWindows");
+            }
+            this.timeWindows = timeWindows;
             return this;
         }
         public Builder timeWindows(String... timeWindows) {

@@ -4,6 +4,7 @@
 package com.pulumi.spotinst.gke.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -41,12 +42,18 @@ public final class ElastigroupGpu {
 
         @CustomType.Setter
         public Builder count(Integer count) {
-            this.count = Objects.requireNonNull(count);
+            if (count == null) {
+              throw new MissingRequiredPropertyException("ElastigroupGpu", "count");
+            }
+            this.count = count;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("ElastigroupGpu", "type");
+            }
+            this.type = type;
             return this;
         }
         public ElastigroupGpu build() {

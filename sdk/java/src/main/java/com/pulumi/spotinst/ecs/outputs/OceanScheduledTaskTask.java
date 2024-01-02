@@ -4,6 +4,7 @@
 package com.pulumi.spotinst.ecs.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -119,17 +120,26 @@ public final class OceanScheduledTaskTask {
 
         @CustomType.Setter
         public Builder cronExpression(String cronExpression) {
-            this.cronExpression = Objects.requireNonNull(cronExpression);
+            if (cronExpression == null) {
+              throw new MissingRequiredPropertyException("OceanScheduledTaskTask", "cronExpression");
+            }
+            this.cronExpression = cronExpression;
             return this;
         }
         @CustomType.Setter
         public Builder isEnabled(Boolean isEnabled) {
-            this.isEnabled = Objects.requireNonNull(isEnabled);
+            if (isEnabled == null) {
+              throw new MissingRequiredPropertyException("OceanScheduledTaskTask", "isEnabled");
+            }
+            this.isEnabled = isEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder taskType(String taskType) {
-            this.taskType = Objects.requireNonNull(taskType);
+            if (taskType == null) {
+              throw new MissingRequiredPropertyException("OceanScheduledTaskTask", "taskType");
+            }
+            this.taskType = taskType;
             return this;
         }
         public OceanScheduledTaskTask build() {

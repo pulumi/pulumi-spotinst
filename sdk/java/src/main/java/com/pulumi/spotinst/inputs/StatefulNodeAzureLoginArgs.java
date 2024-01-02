@@ -5,6 +5,7 @@ package com.pulumi.spotinst.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -90,7 +91,9 @@ public final class StatefulNodeAzureLoginArgs extends com.pulumi.resources.Resou
         }
 
         public StatefulNodeAzureLoginArgs build() {
-            $.userName = Objects.requireNonNull($.userName, "expected parameter 'userName' to be non-null");
+            if ($.userName == null) {
+                throw new MissingRequiredPropertyException("StatefulNodeAzureLoginArgs", "userName");
+            }
             return $;
         }
     }

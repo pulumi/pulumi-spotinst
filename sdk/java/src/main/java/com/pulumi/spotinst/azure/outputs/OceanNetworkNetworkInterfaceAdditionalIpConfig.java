@@ -58,11 +58,13 @@ public final class OceanNetworkNetworkInterfaceAdditionalIpConfig {
 
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder privateIpVersion(@Nullable String privateIpVersion) {
+
             this.privateIpVersion = privateIpVersion;
             return this;
         }

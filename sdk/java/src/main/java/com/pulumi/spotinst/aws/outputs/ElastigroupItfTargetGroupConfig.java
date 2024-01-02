@@ -4,6 +4,7 @@
 package com.pulumi.spotinst.aws.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.spotinst.aws.outputs.ElastigroupItfTargetGroupConfigMatcher;
 import com.pulumi.spotinst.aws.outputs.ElastigroupItfTargetGroupConfigTag;
 import java.lang.Integer;
@@ -120,36 +121,45 @@ public final class ElastigroupItfTargetGroupConfig {
 
         @CustomType.Setter
         public Builder healthCheckIntervalSeconds(@Nullable Integer healthCheckIntervalSeconds) {
+
             this.healthCheckIntervalSeconds = healthCheckIntervalSeconds;
             return this;
         }
         @CustomType.Setter
         public Builder healthCheckPath(String healthCheckPath) {
-            this.healthCheckPath = Objects.requireNonNull(healthCheckPath);
+            if (healthCheckPath == null) {
+              throw new MissingRequiredPropertyException("ElastigroupItfTargetGroupConfig", "healthCheckPath");
+            }
+            this.healthCheckPath = healthCheckPath;
             return this;
         }
         @CustomType.Setter
         public Builder healthCheckPort(@Nullable String healthCheckPort) {
+
             this.healthCheckPort = healthCheckPort;
             return this;
         }
         @CustomType.Setter
         public Builder healthCheckProtocol(@Nullable String healthCheckProtocol) {
+
             this.healthCheckProtocol = healthCheckProtocol;
             return this;
         }
         @CustomType.Setter
         public Builder healthCheckTimeoutSeconds(@Nullable Integer healthCheckTimeoutSeconds) {
+
             this.healthCheckTimeoutSeconds = healthCheckTimeoutSeconds;
             return this;
         }
         @CustomType.Setter
         public Builder healthyThresholdCount(@Nullable Integer healthyThresholdCount) {
+
             this.healthyThresholdCount = healthyThresholdCount;
             return this;
         }
         @CustomType.Setter
         public Builder matchers(@Nullable List<ElastigroupItfTargetGroupConfigMatcher> matchers) {
+
             this.matchers = matchers;
             return this;
         }
@@ -158,21 +168,29 @@ public final class ElastigroupItfTargetGroupConfig {
         }
         @CustomType.Setter
         public Builder port(Integer port) {
-            this.port = Objects.requireNonNull(port);
+            if (port == null) {
+              throw new MissingRequiredPropertyException("ElastigroupItfTargetGroupConfig", "port");
+            }
+            this.port = port;
             return this;
         }
         @CustomType.Setter
         public Builder protocol(String protocol) {
-            this.protocol = Objects.requireNonNull(protocol);
+            if (protocol == null) {
+              throw new MissingRequiredPropertyException("ElastigroupItfTargetGroupConfig", "protocol");
+            }
+            this.protocol = protocol;
             return this;
         }
         @CustomType.Setter
         public Builder protocolVersion(@Nullable String protocolVersion) {
+
             this.protocolVersion = protocolVersion;
             return this;
         }
         @CustomType.Setter
         public Builder tags(@Nullable List<ElastigroupItfTargetGroupConfigTag> tags) {
+
             this.tags = tags;
             return this;
         }
@@ -181,12 +199,16 @@ public final class ElastigroupItfTargetGroupConfig {
         }
         @CustomType.Setter
         public Builder unhealthyThresholdCount(@Nullable Integer unhealthyThresholdCount) {
+
             this.unhealthyThresholdCount = unhealthyThresholdCount;
             return this;
         }
         @CustomType.Setter
         public Builder vpcId(String vpcId) {
-            this.vpcId = Objects.requireNonNull(vpcId);
+            if (vpcId == null) {
+              throw new MissingRequiredPropertyException("ElastigroupItfTargetGroupConfig", "vpcId");
+            }
+            this.vpcId = vpcId;
             return this;
         }
         public ElastigroupItfTargetGroupConfig build() {

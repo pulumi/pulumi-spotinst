@@ -5,6 +5,7 @@ package com.pulumi.spotinst.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.spotinst.inputs.StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroupArgs;
 import java.lang.Boolean;
 import java.lang.String;
@@ -97,8 +98,12 @@ public final class StatefulNodeAzureStrategyCapacityReservationArgs extends com.
         }
 
         public StatefulNodeAzureStrategyCapacityReservationArgs build() {
-            $.shouldUtilize = Objects.requireNonNull($.shouldUtilize, "expected parameter 'shouldUtilize' to be non-null");
-            $.utilizationStrategy = Objects.requireNonNull($.utilizationStrategy, "expected parameter 'utilizationStrategy' to be non-null");
+            if ($.shouldUtilize == null) {
+                throw new MissingRequiredPropertyException("StatefulNodeAzureStrategyCapacityReservationArgs", "shouldUtilize");
+            }
+            if ($.utilizationStrategy == null) {
+                throw new MissingRequiredPropertyException("StatefulNodeAzureStrategyCapacityReservationArgs", "utilizationStrategy");
+            }
             return $;
         }
     }

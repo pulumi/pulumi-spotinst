@@ -59,11 +59,13 @@ public final class ElastigroupScalingStrategy {
 
         @CustomType.Setter
         public Builder terminateAtEndOfBillingHour(@Nullable Boolean terminateAtEndOfBillingHour) {
+
             this.terminateAtEndOfBillingHour = terminateAtEndOfBillingHour;
             return this;
         }
         @CustomType.Setter
         public Builder terminationPolicy(@Nullable String terminationPolicy) {
+
             this.terminationPolicy = terminationPolicy;
             return this;
         }

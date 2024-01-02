@@ -5,6 +5,7 @@ package com.pulumi.spotinst.aws.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -73,7 +74,9 @@ public final class ElastigroupItfTargetGroupConfigTagArgs extends com.pulumi.res
         }
 
         public ElastigroupItfTargetGroupConfigTagArgs build() {
-            $.tagKey = Objects.requireNonNull($.tagKey, "expected parameter 'tagKey' to be non-null");
+            if ($.tagKey == null) {
+                throw new MissingRequiredPropertyException("ElastigroupItfTargetGroupConfigTagArgs", "tagKey");
+            }
             return $;
         }
     }

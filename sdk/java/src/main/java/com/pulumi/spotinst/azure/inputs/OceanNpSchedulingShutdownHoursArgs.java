@@ -5,6 +5,7 @@ package com.pulumi.spotinst.azure.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -79,7 +80,9 @@ public final class OceanNpSchedulingShutdownHoursArgs extends com.pulumi.resourc
         }
 
         public OceanNpSchedulingShutdownHoursArgs build() {
-            $.timeWindows = Objects.requireNonNull($.timeWindows, "expected parameter 'timeWindows' to be non-null");
+            if ($.timeWindows == null) {
+                throw new MissingRequiredPropertyException("OceanNpSchedulingShutdownHoursArgs", "timeWindows");
+            }
             return $;
         }
     }

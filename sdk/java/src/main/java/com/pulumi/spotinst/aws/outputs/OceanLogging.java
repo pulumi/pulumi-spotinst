@@ -44,6 +44,7 @@ public final class OceanLogging {
 
         @CustomType.Setter
         public Builder export(@Nullable OceanLoggingExport export) {
+
             this.export = export;
             return this;
         }

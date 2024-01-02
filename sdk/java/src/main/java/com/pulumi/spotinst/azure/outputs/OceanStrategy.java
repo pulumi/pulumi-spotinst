@@ -59,11 +59,13 @@ public final class OceanStrategy {
 
         @CustomType.Setter
         public Builder fallbackToOndemand(@Nullable Boolean fallbackToOndemand) {
+
             this.fallbackToOndemand = fallbackToOndemand;
             return this;
         }
         @CustomType.Setter
         public Builder spotPercentage(@Nullable Integer spotPercentage) {
+
             this.spotPercentage = spotPercentage;
             return this;
         }

@@ -5,6 +5,7 @@ package com.pulumi.spotinst.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.spotinst.inputs.StatefulNodeAzureNetworkNetworkInterfaceArgs;
 import java.lang.String;
 import java.util.List;
@@ -94,9 +95,15 @@ public final class StatefulNodeAzureNetworkArgs extends com.pulumi.resources.Res
         }
 
         public StatefulNodeAzureNetworkArgs build() {
-            $.networkInterfaces = Objects.requireNonNull($.networkInterfaces, "expected parameter 'networkInterfaces' to be non-null");
-            $.networkResourceGroupName = Objects.requireNonNull($.networkResourceGroupName, "expected parameter 'networkResourceGroupName' to be non-null");
-            $.virtualNetworkName = Objects.requireNonNull($.virtualNetworkName, "expected parameter 'virtualNetworkName' to be non-null");
+            if ($.networkInterfaces == null) {
+                throw new MissingRequiredPropertyException("StatefulNodeAzureNetworkArgs", "networkInterfaces");
+            }
+            if ($.networkResourceGroupName == null) {
+                throw new MissingRequiredPropertyException("StatefulNodeAzureNetworkArgs", "networkResourceGroupName");
+            }
+            if ($.virtualNetworkName == null) {
+                throw new MissingRequiredPropertyException("StatefulNodeAzureNetworkArgs", "virtualNetworkName");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.spotinst.aws.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -207,8 +208,12 @@ public final class ElastigroupIntegrationCodedeployDeploymentGroupArgs extends c
         }
 
         public ElastigroupIntegrationCodedeployDeploymentGroupArgs build() {
-            $.applicationName = Objects.requireNonNull($.applicationName, "expected parameter 'applicationName' to be non-null");
-            $.deploymentGroupName = Objects.requireNonNull($.deploymentGroupName, "expected parameter 'deploymentGroupName' to be non-null");
+            if ($.applicationName == null) {
+                throw new MissingRequiredPropertyException("ElastigroupIntegrationCodedeployDeploymentGroupArgs", "applicationName");
+            }
+            if ($.deploymentGroupName == null) {
+                throw new MissingRequiredPropertyException("ElastigroupIntegrationCodedeployDeploymentGroupArgs", "deploymentGroupName");
+            }
             return $;
         }
     }

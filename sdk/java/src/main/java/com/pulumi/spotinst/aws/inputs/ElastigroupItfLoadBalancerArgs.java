@@ -5,6 +5,7 @@ package com.pulumi.spotinst.aws.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.spotinst.aws.inputs.ElastigroupItfLoadBalancerListenerRuleArgs;
 import java.lang.String;
 import java.util.List;
@@ -77,8 +78,12 @@ public final class ElastigroupItfLoadBalancerArgs extends com.pulumi.resources.R
         }
 
         public ElastigroupItfLoadBalancerArgs build() {
-            $.listenerRules = Objects.requireNonNull($.listenerRules, "expected parameter 'listenerRules' to be non-null");
-            $.loadBalancerArn = Objects.requireNonNull($.loadBalancerArn, "expected parameter 'loadBalancerArn' to be non-null");
+            if ($.listenerRules == null) {
+                throw new MissingRequiredPropertyException("ElastigroupItfLoadBalancerArgs", "listenerRules");
+            }
+            if ($.loadBalancerArn == null) {
+                throw new MissingRequiredPropertyException("ElastigroupItfLoadBalancerArgs", "loadBalancerArn");
+            }
             return $;
         }
     }

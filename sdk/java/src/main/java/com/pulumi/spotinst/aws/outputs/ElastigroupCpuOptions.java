@@ -4,6 +4,7 @@
 package com.pulumi.spotinst.aws.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.util.Objects;
 
@@ -42,7 +43,10 @@ public final class ElastigroupCpuOptions {
 
         @CustomType.Setter
         public Builder threadsPerCore(Integer threadsPerCore) {
-            this.threadsPerCore = Objects.requireNonNull(threadsPerCore);
+            if (threadsPerCore == null) {
+              throw new MissingRequiredPropertyException("ElastigroupCpuOptions", "threadsPerCore");
+            }
+            this.threadsPerCore = threadsPerCore;
             return this;
         }
         public ElastigroupCpuOptions build() {

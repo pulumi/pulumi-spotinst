@@ -4,6 +4,7 @@
 package com.pulumi.spotinst.aws.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.spotinst.aws.outputs.ElastigroupMultipleMetricsMetricDimension;
 import java.lang.String;
 import java.util.List;
@@ -130,6 +131,7 @@ public final class ElastigroupMultipleMetricsMetric {
 
         @CustomType.Setter
         public Builder dimensions(@Nullable List<ElastigroupMultipleMetricsMetricDimension> dimensions) {
+
             this.dimensions = dimensions;
             return this;
         }
@@ -138,31 +140,43 @@ public final class ElastigroupMultipleMetricsMetric {
         }
         @CustomType.Setter
         public Builder extendedStatistic(@Nullable String extendedStatistic) {
+
             this.extendedStatistic = extendedStatistic;
             return this;
         }
         @CustomType.Setter
         public Builder metricName(String metricName) {
-            this.metricName = Objects.requireNonNull(metricName);
+            if (metricName == null) {
+              throw new MissingRequiredPropertyException("ElastigroupMultipleMetricsMetric", "metricName");
+            }
+            this.metricName = metricName;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("ElastigroupMultipleMetricsMetric", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder namespace(String namespace) {
-            this.namespace = Objects.requireNonNull(namespace);
+            if (namespace == null) {
+              throw new MissingRequiredPropertyException("ElastigroupMultipleMetricsMetric", "namespace");
+            }
+            this.namespace = namespace;
             return this;
         }
         @CustomType.Setter
         public Builder statistic(@Nullable String statistic) {
+
             this.statistic = statistic;
             return this;
         }
         @CustomType.Setter
         public Builder unit(@Nullable String unit) {
+
             this.unit = unit;
             return this;
         }

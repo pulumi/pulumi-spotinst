@@ -204,46 +204,55 @@ public final class OceanAutoscaler {
 
         @CustomType.Setter
         public Builder autoHeadroomPercentage(@Nullable Integer autoHeadroomPercentage) {
+
             this.autoHeadroomPercentage = autoHeadroomPercentage;
             return this;
         }
         @CustomType.Setter
         public Builder cooldown(@Nullable Integer cooldown) {
+
             this.cooldown = cooldown;
             return this;
         }
         @CustomType.Setter
         public Builder down(@Nullable OceanAutoscalerDown down) {
+
             this.down = down;
             return this;
         }
         @CustomType.Setter
         public Builder enableAutomaticAndManualHeadroom(@Nullable Boolean enableAutomaticAndManualHeadroom) {
+
             this.enableAutomaticAndManualHeadroom = enableAutomaticAndManualHeadroom;
             return this;
         }
         @CustomType.Setter
         public Builder headroom(@Nullable OceanAutoscalerHeadroom headroom) {
+
             this.headroom = headroom;
             return this;
         }
         @CustomType.Setter
         public Builder isAutoConfig(@Nullable Boolean isAutoConfig) {
+
             this.isAutoConfig = isAutoConfig;
             return this;
         }
         @CustomType.Setter
         public Builder isEnabled(@Nullable Boolean isEnabled) {
+
             this.isEnabled = isEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder resourceLimits(@Nullable OceanAutoscalerResourceLimits resourceLimits) {
+
             this.resourceLimits = resourceLimits;
             return this;
         }
         @CustomType.Setter
         public Builder shouldScaleDownNonServiceTasks(@Nullable Boolean shouldScaleDownNonServiceTasks) {
+
             this.shouldScaleDownNonServiceTasks = shouldScaleDownNonServiceTasks;
             return this;
         }

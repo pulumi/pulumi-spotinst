@@ -4,6 +4,7 @@
 package com.pulumi.spotinst.aws.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -87,21 +88,29 @@ public final class MrScalarMasterEbsBlockDevice {
 
         @CustomType.Setter
         public Builder iops(@Nullable Integer iops) {
+
             this.iops = iops;
             return this;
         }
         @CustomType.Setter
         public Builder sizeInGb(Integer sizeInGb) {
-            this.sizeInGb = Objects.requireNonNull(sizeInGb);
+            if (sizeInGb == null) {
+              throw new MissingRequiredPropertyException("MrScalarMasterEbsBlockDevice", "sizeInGb");
+            }
+            this.sizeInGb = sizeInGb;
             return this;
         }
         @CustomType.Setter
         public Builder volumeType(String volumeType) {
-            this.volumeType = Objects.requireNonNull(volumeType);
+            if (volumeType == null) {
+              throw new MissingRequiredPropertyException("MrScalarMasterEbsBlockDevice", "volumeType");
+            }
+            this.volumeType = volumeType;
             return this;
         }
         @CustomType.Setter
         public Builder volumesPerInstance(@Nullable Integer volumesPerInstance) {
+
             this.volumesPerInstance = volumesPerInstance;
             return this;
         }

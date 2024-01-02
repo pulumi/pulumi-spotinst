@@ -44,6 +44,7 @@ public final class ElastigroupIntegrationGitlab {
 
         @CustomType.Setter
         public Builder runner(@Nullable ElastigroupIntegrationGitlabRunner runner) {
+
             this.runner = runner;
             return this;
         }

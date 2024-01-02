@@ -49,16 +49,19 @@ public final class StatefulNodeAzureBootDiagnostic {
 
         @CustomType.Setter
         public Builder isEnabled(@Nullable Boolean isEnabled) {
+
             this.isEnabled = isEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder storageUrl(@Nullable String storageUrl) {
+
             this.storageUrl = storageUrl;
             return this;
         }
         @CustomType.Setter
         public Builder type(@Nullable String type) {
+
             this.type = type;
             return this;
         }

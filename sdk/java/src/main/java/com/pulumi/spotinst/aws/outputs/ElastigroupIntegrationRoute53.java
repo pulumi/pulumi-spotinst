@@ -4,6 +4,7 @@
 package com.pulumi.spotinst.aws.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.spotinst.aws.outputs.ElastigroupIntegrationRoute53Domain;
 import java.util.List;
 import java.util.Objects;
@@ -43,7 +44,10 @@ public final class ElastigroupIntegrationRoute53 {
 
         @CustomType.Setter
         public Builder domains(List<ElastigroupIntegrationRoute53Domain> domains) {
-            this.domains = Objects.requireNonNull(domains);
+            if (domains == null) {
+              throw new MissingRequiredPropertyException("ElastigroupIntegrationRoute53", "domains");
+            }
+            this.domains = domains;
             return this;
         }
         public Builder domains(ElastigroupIntegrationRoute53Domain... domains) {

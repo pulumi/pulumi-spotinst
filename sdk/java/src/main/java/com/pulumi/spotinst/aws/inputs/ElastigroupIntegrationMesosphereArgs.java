@@ -5,6 +5,7 @@ package com.pulumi.spotinst.aws.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -170,7 +171,9 @@ public final class ElastigroupIntegrationMesosphereArgs extends com.pulumi.resou
         }
 
         public ElastigroupIntegrationMesosphereArgs build() {
-            $.apiServer = Objects.requireNonNull($.apiServer, "expected parameter 'apiServer' to be non-null");
+            if ($.apiServer == null) {
+                throw new MissingRequiredPropertyException("ElastigroupIntegrationMesosphereArgs", "apiServer");
+            }
             return $;
         }
     }

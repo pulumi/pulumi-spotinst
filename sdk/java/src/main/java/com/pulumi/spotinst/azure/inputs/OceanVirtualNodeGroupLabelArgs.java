@@ -5,6 +5,7 @@ package com.pulumi.spotinst.azure.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -113,7 +114,9 @@ public final class OceanVirtualNodeGroupLabelArgs extends com.pulumi.resources.R
         }
 
         public OceanVirtualNodeGroupLabelArgs build() {
-            $.key = Objects.requireNonNull($.key, "expected parameter 'key' to be non-null");
+            if ($.key == null) {
+                throw new MissingRequiredPropertyException("OceanVirtualNodeGroupLabelArgs", "key");
+            }
             return $;
         }
     }

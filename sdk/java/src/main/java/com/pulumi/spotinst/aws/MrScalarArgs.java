@@ -5,6 +5,7 @@ package com.pulumi.spotinst.aws;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.spotinst.aws.inputs.MrScalarApplicationArgs;
 import com.pulumi.spotinst.aws.inputs.MrScalarBootstrapActionsFileArgs;
 import com.pulumi.spotinst.aws.inputs.MrScalarConfigurationsFileArgs;
@@ -2384,7 +2385,9 @@ public final class MrScalarArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public MrScalarArgs build() {
-            $.strategy = Objects.requireNonNull($.strategy, "expected parameter 'strategy' to be non-null");
+            if ($.strategy == null) {
+                throw new MissingRequiredPropertyException("MrScalarArgs", "strategy");
+            }
             return $;
         }
     }

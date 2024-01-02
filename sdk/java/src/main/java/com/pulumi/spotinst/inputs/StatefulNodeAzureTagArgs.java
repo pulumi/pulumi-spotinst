@@ -5,6 +5,7 @@ package com.pulumi.spotinst.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -73,7 +74,9 @@ public final class StatefulNodeAzureTagArgs extends com.pulumi.resources.Resourc
         }
 
         public StatefulNodeAzureTagArgs build() {
-            $.tagKey = Objects.requireNonNull($.tagKey, "expected parameter 'tagKey' to be non-null");
+            if ($.tagKey == null) {
+                throw new MissingRequiredPropertyException("StatefulNodeAzureTagArgs", "tagKey");
+            }
             return $;
         }
     }

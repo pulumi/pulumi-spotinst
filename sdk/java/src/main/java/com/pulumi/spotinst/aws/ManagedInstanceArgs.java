@@ -5,6 +5,7 @@ package com.pulumi.spotinst.aws;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.spotinst.aws.inputs.ManagedInstanceBlockDeviceMappingArgs;
 import com.pulumi.spotinst.aws.inputs.ManagedInstanceDeleteArgs;
 import com.pulumi.spotinst.aws.inputs.ManagedInstanceIntegrationRoute53Args;
@@ -861,12 +862,24 @@ public final class ManagedInstanceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public ManagedInstanceArgs build() {
-            $.imageId = Objects.requireNonNull($.imageId, "expected parameter 'imageId' to be non-null");
-            $.instanceTypes = Objects.requireNonNull($.instanceTypes, "expected parameter 'instanceTypes' to be non-null");
-            $.persistBlockDevices = Objects.requireNonNull($.persistBlockDevices, "expected parameter 'persistBlockDevices' to be non-null");
-            $.product = Objects.requireNonNull($.product, "expected parameter 'product' to be non-null");
-            $.subnetIds = Objects.requireNonNull($.subnetIds, "expected parameter 'subnetIds' to be non-null");
-            $.vpcId = Objects.requireNonNull($.vpcId, "expected parameter 'vpcId' to be non-null");
+            if ($.imageId == null) {
+                throw new MissingRequiredPropertyException("ManagedInstanceArgs", "imageId");
+            }
+            if ($.instanceTypes == null) {
+                throw new MissingRequiredPropertyException("ManagedInstanceArgs", "instanceTypes");
+            }
+            if ($.persistBlockDevices == null) {
+                throw new MissingRequiredPropertyException("ManagedInstanceArgs", "persistBlockDevices");
+            }
+            if ($.product == null) {
+                throw new MissingRequiredPropertyException("ManagedInstanceArgs", "product");
+            }
+            if ($.subnetIds == null) {
+                throw new MissingRequiredPropertyException("ManagedInstanceArgs", "subnetIds");
+            }
+            if ($.vpcId == null) {
+                throw new MissingRequiredPropertyException("ManagedInstanceArgs", "vpcId");
+            }
             return $;
         }
     }

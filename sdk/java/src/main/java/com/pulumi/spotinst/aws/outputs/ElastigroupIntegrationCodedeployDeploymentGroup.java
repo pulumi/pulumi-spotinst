@@ -4,6 +4,7 @@
 package com.pulumi.spotinst.aws.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -104,12 +105,18 @@ public final class ElastigroupIntegrationCodedeployDeploymentGroup {
 
         @CustomType.Setter
         public Builder applicationName(String applicationName) {
-            this.applicationName = Objects.requireNonNull(applicationName);
+            if (applicationName == null) {
+              throw new MissingRequiredPropertyException("ElastigroupIntegrationCodedeployDeploymentGroup", "applicationName");
+            }
+            this.applicationName = applicationName;
             return this;
         }
         @CustomType.Setter
         public Builder deploymentGroupName(String deploymentGroupName) {
-            this.deploymentGroupName = Objects.requireNonNull(deploymentGroupName);
+            if (deploymentGroupName == null) {
+              throw new MissingRequiredPropertyException("ElastigroupIntegrationCodedeployDeploymentGroup", "deploymentGroupName");
+            }
+            this.deploymentGroupName = deploymentGroupName;
             return this;
         }
         public ElastigroupIntegrationCodedeployDeploymentGroup build() {

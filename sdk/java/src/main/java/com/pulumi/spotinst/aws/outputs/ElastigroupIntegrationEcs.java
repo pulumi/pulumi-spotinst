@@ -4,6 +4,7 @@
 package com.pulumi.spotinst.aws.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.spotinst.aws.outputs.ElastigroupIntegrationEcsAutoscaleAttribute;
 import com.pulumi.spotinst.aws.outputs.ElastigroupIntegrationEcsAutoscaleDown;
 import com.pulumi.spotinst.aws.outputs.ElastigroupIntegrationEcsAutoscaleHeadroom;
@@ -163,6 +164,7 @@ public final class ElastigroupIntegrationEcs {
 
         @CustomType.Setter
         public Builder autoscaleAttributes(@Nullable List<ElastigroupIntegrationEcsAutoscaleAttribute> autoscaleAttributes) {
+
             this.autoscaleAttributes = autoscaleAttributes;
             return this;
         }
@@ -171,42 +173,52 @@ public final class ElastigroupIntegrationEcs {
         }
         @CustomType.Setter
         public Builder autoscaleCooldown(@Nullable Integer autoscaleCooldown) {
+
             this.autoscaleCooldown = autoscaleCooldown;
             return this;
         }
         @CustomType.Setter
         public Builder autoscaleDown(@Nullable ElastigroupIntegrationEcsAutoscaleDown autoscaleDown) {
+
             this.autoscaleDown = autoscaleDown;
             return this;
         }
         @CustomType.Setter
         public Builder autoscaleHeadroom(@Nullable ElastigroupIntegrationEcsAutoscaleHeadroom autoscaleHeadroom) {
+
             this.autoscaleHeadroom = autoscaleHeadroom;
             return this;
         }
         @CustomType.Setter
         public Builder autoscaleIsAutoConfig(@Nullable Boolean autoscaleIsAutoConfig) {
+
             this.autoscaleIsAutoConfig = autoscaleIsAutoConfig;
             return this;
         }
         @CustomType.Setter
         public Builder autoscaleIsEnabled(@Nullable Boolean autoscaleIsEnabled) {
+
             this.autoscaleIsEnabled = autoscaleIsEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder autoscaleScaleDownNonServiceTasks(@Nullable Boolean autoscaleScaleDownNonServiceTasks) {
+
             this.autoscaleScaleDownNonServiceTasks = autoscaleScaleDownNonServiceTasks;
             return this;
         }
         @CustomType.Setter
         public Builder batch(@Nullable ElastigroupIntegrationEcsBatch batch) {
+
             this.batch = batch;
             return this;
         }
         @CustomType.Setter
         public Builder clusterName(String clusterName) {
-            this.clusterName = Objects.requireNonNull(clusterName);
+            if (clusterName == null) {
+              throw new MissingRequiredPropertyException("ElastigroupIntegrationEcs", "clusterName");
+            }
+            this.clusterName = clusterName;
             return this;
         }
         public ElastigroupIntegrationEcs build() {

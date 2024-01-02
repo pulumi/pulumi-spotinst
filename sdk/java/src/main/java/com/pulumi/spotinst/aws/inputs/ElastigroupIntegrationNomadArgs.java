@@ -5,6 +5,7 @@ package com.pulumi.spotinst.aws.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.spotinst.aws.inputs.ElastigroupIntegrationNomadAutoscaleConstraintArgs;
 import com.pulumi.spotinst.aws.inputs.ElastigroupIntegrationNomadAutoscaleDownArgs;
 import com.pulumi.spotinst.aws.inputs.ElastigroupIntegrationNomadAutoscaleHeadroomArgs;
@@ -471,8 +472,12 @@ public final class ElastigroupIntegrationNomadArgs extends com.pulumi.resources.
         }
 
         public ElastigroupIntegrationNomadArgs build() {
-            $.masterHost = Objects.requireNonNull($.masterHost, "expected parameter 'masterHost' to be non-null");
-            $.masterPort = Objects.requireNonNull($.masterPort, "expected parameter 'masterPort' to be non-null");
+            if ($.masterHost == null) {
+                throw new MissingRequiredPropertyException("ElastigroupIntegrationNomadArgs", "masterHost");
+            }
+            if ($.masterPort == null) {
+                throw new MissingRequiredPropertyException("ElastigroupIntegrationNomadArgs", "masterPort");
+            }
             return $;
         }
     }

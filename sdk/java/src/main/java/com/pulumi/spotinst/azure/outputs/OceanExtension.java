@@ -101,26 +101,31 @@ public final class OceanExtension {
 
         @CustomType.Setter
         public Builder apiVersion(@Nullable String apiVersion) {
+
             this.apiVersion = apiVersion;
             return this;
         }
         @CustomType.Setter
         public Builder minorVersionAutoUpgrade(@Nullable Boolean minorVersionAutoUpgrade) {
+
             this.minorVersionAutoUpgrade = minorVersionAutoUpgrade;
             return this;
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder publisher(@Nullable String publisher) {
+
             this.publisher = publisher;
             return this;
         }
         @CustomType.Setter
         public Builder type(@Nullable String type) {
+
             this.type = type;
             return this;
         }

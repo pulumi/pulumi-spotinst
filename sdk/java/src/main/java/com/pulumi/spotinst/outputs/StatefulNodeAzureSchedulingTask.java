@@ -4,6 +4,7 @@
 package com.pulumi.spotinst.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -47,17 +48,26 @@ public final class StatefulNodeAzureSchedulingTask {
 
         @CustomType.Setter
         public Builder cronExpression(String cronExpression) {
-            this.cronExpression = Objects.requireNonNull(cronExpression);
+            if (cronExpression == null) {
+              throw new MissingRequiredPropertyException("StatefulNodeAzureSchedulingTask", "cronExpression");
+            }
+            this.cronExpression = cronExpression;
             return this;
         }
         @CustomType.Setter
         public Builder isEnabled(Boolean isEnabled) {
-            this.isEnabled = Objects.requireNonNull(isEnabled);
+            if (isEnabled == null) {
+              throw new MissingRequiredPropertyException("StatefulNodeAzureSchedulingTask", "isEnabled");
+            }
+            this.isEnabled = isEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("StatefulNodeAzureSchedulingTask", "type");
+            }
+            this.type = type;
             return this;
         }
         public StatefulNodeAzureSchedulingTask build() {

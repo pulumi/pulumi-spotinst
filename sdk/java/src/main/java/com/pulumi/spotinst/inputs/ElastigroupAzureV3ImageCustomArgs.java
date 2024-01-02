@@ -5,6 +5,7 @@ package com.pulumi.spotinst.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -71,8 +72,12 @@ public final class ElastigroupAzureV3ImageCustomArgs extends com.pulumi.resource
         }
 
         public ElastigroupAzureV3ImageCustomArgs build() {
-            $.imageName = Objects.requireNonNull($.imageName, "expected parameter 'imageName' to be non-null");
-            $.resourceGroupName = Objects.requireNonNull($.resourceGroupName, "expected parameter 'resourceGroupName' to be non-null");
+            if ($.imageName == null) {
+                throw new MissingRequiredPropertyException("ElastigroupAzureV3ImageCustomArgs", "imageName");
+            }
+            if ($.resourceGroupName == null) {
+                throw new MissingRequiredPropertyException("ElastigroupAzureV3ImageCustomArgs", "resourceGroupName");
+            }
             return $;
         }
     }

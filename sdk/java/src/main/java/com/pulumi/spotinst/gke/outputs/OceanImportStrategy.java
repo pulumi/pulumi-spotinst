@@ -57,16 +57,19 @@ public final class OceanImportStrategy {
 
         @CustomType.Setter
         public Builder drainingTimeout(@Nullable Integer drainingTimeout) {
+
             this.drainingTimeout = drainingTimeout;
             return this;
         }
         @CustomType.Setter
         public Builder preemptiblePercentage(@Nullable Integer preemptiblePercentage) {
+
             this.preemptiblePercentage = preemptiblePercentage;
             return this;
         }
         @CustomType.Setter
         public Builder provisioningModel(@Nullable String provisioningModel) {
+
             this.provisioningModel = provisioningModel;
             return this;
         }

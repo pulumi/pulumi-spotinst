@@ -145,21 +145,25 @@ public final class ElastigroupDisk {
 
         @CustomType.Setter
         public Builder autoDelete(@Nullable Boolean autoDelete) {
+
             this.autoDelete = autoDelete;
             return this;
         }
         @CustomType.Setter
         public Builder boot(@Nullable Boolean boot) {
+
             this.boot = boot;
             return this;
         }
         @CustomType.Setter
         public Builder deviceName(@Nullable String deviceName) {
+
             this.deviceName = deviceName;
             return this;
         }
         @CustomType.Setter
         public Builder initializeParams(@Nullable List<ElastigroupDiskInitializeParam> initializeParams) {
+
             this.initializeParams = initializeParams;
             return this;
         }
@@ -168,21 +172,25 @@ public final class ElastigroupDisk {
         }
         @CustomType.Setter("interface")
         public Builder interface_(@Nullable String interface_) {
+
             this.interface_ = interface_;
             return this;
         }
         @CustomType.Setter
         public Builder mode(@Nullable String mode) {
+
             this.mode = mode;
             return this;
         }
         @CustomType.Setter
         public Builder source(@Nullable String source) {
+
             this.source = source;
             return this;
         }
         @CustomType.Setter
         public Builder type(@Nullable String type) {
+
             this.type = type;
             return this;
         }

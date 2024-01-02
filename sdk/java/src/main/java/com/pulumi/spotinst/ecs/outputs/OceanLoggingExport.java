@@ -44,6 +44,7 @@ public final class OceanLoggingExport {
 
         @CustomType.Setter
         public Builder s3s(@Nullable List<OceanLoggingExportS3> s3s) {
+
             this.s3s = s3s;
             return this;
         }

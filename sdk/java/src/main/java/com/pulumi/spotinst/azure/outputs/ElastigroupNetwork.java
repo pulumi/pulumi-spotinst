@@ -4,6 +4,7 @@
 package com.pulumi.spotinst.azure.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.spotinst.azure.outputs.ElastigroupNetworkAdditionalIpConfig;
 import java.lang.Boolean;
 import java.lang.String;
@@ -71,6 +72,7 @@ public final class ElastigroupNetwork {
 
         @CustomType.Setter
         public Builder additionalIpConfigs(@Nullable List<ElastigroupNetworkAdditionalIpConfig> additionalIpConfigs) {
+
             this.additionalIpConfigs = additionalIpConfigs;
             return this;
         }
@@ -79,22 +81,32 @@ public final class ElastigroupNetwork {
         }
         @CustomType.Setter
         public Builder assignPublicIp(@Nullable Boolean assignPublicIp) {
+
             this.assignPublicIp = assignPublicIp;
             return this;
         }
         @CustomType.Setter
         public Builder resourceGroupName(String resourceGroupName) {
-            this.resourceGroupName = Objects.requireNonNull(resourceGroupName);
+            if (resourceGroupName == null) {
+              throw new MissingRequiredPropertyException("ElastigroupNetwork", "resourceGroupName");
+            }
+            this.resourceGroupName = resourceGroupName;
             return this;
         }
         @CustomType.Setter
         public Builder subnetName(String subnetName) {
-            this.subnetName = Objects.requireNonNull(subnetName);
+            if (subnetName == null) {
+              throw new MissingRequiredPropertyException("ElastigroupNetwork", "subnetName");
+            }
+            this.subnetName = subnetName;
             return this;
         }
         @CustomType.Setter
         public Builder virtualNetworkName(String virtualNetworkName) {
-            this.virtualNetworkName = Objects.requireNonNull(virtualNetworkName);
+            if (virtualNetworkName == null) {
+              throw new MissingRequiredPropertyException("ElastigroupNetwork", "virtualNetworkName");
+            }
+            this.virtualNetworkName = virtualNetworkName;
             return this;
         }
         public ElastigroupNetwork build() {

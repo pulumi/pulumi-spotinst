@@ -5,6 +5,7 @@ package com.pulumi.spotinst.aws;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecAutoscaleDownArgs;
 import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecAutoscaleHeadroomArgs;
 import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs;
@@ -1227,7 +1228,9 @@ public final class OceanLaunchSpecArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public OceanLaunchSpecArgs build() {
-            $.oceanId = Objects.requireNonNull($.oceanId, "expected parameter 'oceanId' to be non-null");
+            if ($.oceanId == null) {
+                throw new MissingRequiredPropertyException("OceanLaunchSpecArgs", "oceanId");
+            }
             return $;
         }
     }

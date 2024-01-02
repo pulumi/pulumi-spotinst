@@ -4,6 +4,7 @@
 package com.pulumi.spotinst.aws.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -138,26 +139,33 @@ public final class ElastigroupUpdatePolicyRollConfigStrategyOnFailure {
 
         @CustomType.Setter
         public Builder actionType(String actionType) {
-            this.actionType = Objects.requireNonNull(actionType);
+            if (actionType == null) {
+              throw new MissingRequiredPropertyException("ElastigroupUpdatePolicyRollConfigStrategyOnFailure", "actionType");
+            }
+            this.actionType = actionType;
             return this;
         }
         @CustomType.Setter
         public Builder batchNum(@Nullable Integer batchNum) {
+
             this.batchNum = batchNum;
             return this;
         }
         @CustomType.Setter
         public Builder drainingTimeout(@Nullable Integer drainingTimeout) {
+
             this.drainingTimeout = drainingTimeout;
             return this;
         }
         @CustomType.Setter
         public Builder shouldDecrementTargetCapacity(@Nullable Boolean shouldDecrementTargetCapacity) {
+
             this.shouldDecrementTargetCapacity = shouldDecrementTargetCapacity;
             return this;
         }
         @CustomType.Setter
         public Builder shouldHandleAllBatches(@Nullable Boolean shouldHandleAllBatches) {
+
             this.shouldHandleAllBatches = shouldHandleAllBatches;
             return this;
         }

@@ -4,6 +4,7 @@
 package com.pulumi.spotinst.aws.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -73,16 +74,21 @@ public final class ElastigroupMetadataOptions {
 
         @CustomType.Setter
         public Builder httpPutResponseHopLimit(@Nullable Integer httpPutResponseHopLimit) {
+
             this.httpPutResponseHopLimit = httpPutResponseHopLimit;
             return this;
         }
         @CustomType.Setter
         public Builder httpTokens(String httpTokens) {
-            this.httpTokens = Objects.requireNonNull(httpTokens);
+            if (httpTokens == null) {
+              throw new MissingRequiredPropertyException("ElastigroupMetadataOptions", "httpTokens");
+            }
+            this.httpTokens = httpTokens;
             return this;
         }
         @CustomType.Setter
         public Builder instanceMetadataTags(@Nullable String instanceMetadataTags) {
+
             this.instanceMetadataTags = instanceMetadataTags;
             return this;
         }

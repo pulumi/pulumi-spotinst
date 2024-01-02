@@ -44,6 +44,7 @@ public final class OceanClusterOrientation {
 
         @CustomType.Setter
         public Builder availabilityVsCost(@Nullable String availabilityVsCost) {
+
             this.availabilityVsCost = availabilityVsCost;
             return this;
         }

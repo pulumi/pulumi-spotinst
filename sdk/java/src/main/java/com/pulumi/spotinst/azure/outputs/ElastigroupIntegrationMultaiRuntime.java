@@ -4,6 +4,7 @@
 package com.pulumi.spotinst.azure.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -34,7 +35,10 @@ public final class ElastigroupIntegrationMultaiRuntime {
 
         @CustomType.Setter
         public Builder deploymentId(String deploymentId) {
-            this.deploymentId = Objects.requireNonNull(deploymentId);
+            if (deploymentId == null) {
+              throw new MissingRequiredPropertyException("ElastigroupIntegrationMultaiRuntime", "deploymentId");
+            }
+            this.deploymentId = deploymentId;
             return this;
         }
         public ElastigroupIntegrationMultaiRuntime build() {

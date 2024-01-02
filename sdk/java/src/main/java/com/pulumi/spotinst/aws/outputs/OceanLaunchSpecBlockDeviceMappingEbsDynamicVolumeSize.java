@@ -4,6 +4,7 @@
 package com.pulumi.spotinst.aws.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -71,17 +72,26 @@ public final class OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize {
 
         @CustomType.Setter
         public Builder baseSize(Integer baseSize) {
-            this.baseSize = Objects.requireNonNull(baseSize);
+            if (baseSize == null) {
+              throw new MissingRequiredPropertyException("OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize", "baseSize");
+            }
+            this.baseSize = baseSize;
             return this;
         }
         @CustomType.Setter
         public Builder resource(String resource) {
-            this.resource = Objects.requireNonNull(resource);
+            if (resource == null) {
+              throw new MissingRequiredPropertyException("OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize", "resource");
+            }
+            this.resource = resource;
             return this;
         }
         @CustomType.Setter
         public Builder sizePerResourceUnit(Integer sizePerResourceUnit) {
-            this.sizePerResourceUnit = Objects.requireNonNull(sizePerResourceUnit);
+            if (sizePerResourceUnit == null) {
+              throw new MissingRequiredPropertyException("OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize", "sizePerResourceUnit");
+            }
+            this.sizePerResourceUnit = sizePerResourceUnit;
             return this;
         }
         public OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize build() {

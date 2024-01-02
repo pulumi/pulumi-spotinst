@@ -59,11 +59,13 @@ public final class OceanAutoscalerAutoscaleHeadroomAutomatic {
 
         @CustomType.Setter
         public Builder isEnabled(@Nullable Boolean isEnabled) {
+
             this.isEnabled = isEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder percentage(@Nullable Integer percentage) {
+
             this.percentage = percentage;
             return this;
         }

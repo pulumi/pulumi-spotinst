@@ -5,6 +5,7 @@ package com.pulumi.spotinst.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -129,10 +130,18 @@ public final class StatefulNodeAzureLoadBalancerArgs extends com.pulumi.resource
         }
 
         public StatefulNodeAzureLoadBalancerArgs build() {
-            $.backendPoolNames = Objects.requireNonNull($.backendPoolNames, "expected parameter 'backendPoolNames' to be non-null");
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
-            $.resourceGroupName = Objects.requireNonNull($.resourceGroupName, "expected parameter 'resourceGroupName' to be non-null");
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
+            if ($.backendPoolNames == null) {
+                throw new MissingRequiredPropertyException("StatefulNodeAzureLoadBalancerArgs", "backendPoolNames");
+            }
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("StatefulNodeAzureLoadBalancerArgs", "name");
+            }
+            if ($.resourceGroupName == null) {
+                throw new MissingRequiredPropertyException("StatefulNodeAzureLoadBalancerArgs", "resourceGroupName");
+            }
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("StatefulNodeAzureLoadBalancerArgs", "type");
+            }
             return $;
         }
     }

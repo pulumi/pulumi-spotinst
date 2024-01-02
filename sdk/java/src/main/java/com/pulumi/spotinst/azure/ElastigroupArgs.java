@@ -5,6 +5,7 @@ package com.pulumi.spotinst.azure;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.spotinst.azure.inputs.ElastigroupHealthCheckArgs;
 import com.pulumi.spotinst.azure.inputs.ElastigroupImageArgs;
 import com.pulumi.spotinst.azure.inputs.ElastigroupIntegrationKubernetesArgs;
@@ -677,13 +678,27 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ElastigroupArgs build() {
-            $.lowPrioritySizes = Objects.requireNonNull($.lowPrioritySizes, "expected parameter 'lowPrioritySizes' to be non-null");
-            $.network = Objects.requireNonNull($.network, "expected parameter 'network' to be non-null");
-            $.odSizes = Objects.requireNonNull($.odSizes, "expected parameter 'odSizes' to be non-null");
-            $.product = Objects.requireNonNull($.product, "expected parameter 'product' to be non-null");
-            $.region = Objects.requireNonNull($.region, "expected parameter 'region' to be non-null");
-            $.resourceGroupName = Objects.requireNonNull($.resourceGroupName, "expected parameter 'resourceGroupName' to be non-null");
-            $.strategy = Objects.requireNonNull($.strategy, "expected parameter 'strategy' to be non-null");
+            if ($.lowPrioritySizes == null) {
+                throw new MissingRequiredPropertyException("ElastigroupArgs", "lowPrioritySizes");
+            }
+            if ($.network == null) {
+                throw new MissingRequiredPropertyException("ElastigroupArgs", "network");
+            }
+            if ($.odSizes == null) {
+                throw new MissingRequiredPropertyException("ElastigroupArgs", "odSizes");
+            }
+            if ($.product == null) {
+                throw new MissingRequiredPropertyException("ElastigroupArgs", "product");
+            }
+            if ($.region == null) {
+                throw new MissingRequiredPropertyException("ElastigroupArgs", "region");
+            }
+            if ($.resourceGroupName == null) {
+                throw new MissingRequiredPropertyException("ElastigroupArgs", "resourceGroupName");
+            }
+            if ($.strategy == null) {
+                throw new MissingRequiredPropertyException("ElastigroupArgs", "strategy");
+            }
             return $;
         }
     }

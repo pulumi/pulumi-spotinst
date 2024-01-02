@@ -4,6 +4,7 @@
 package com.pulumi.spotinst.aws.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -58,11 +59,15 @@ public final class OceanLaunchSpecElasticIpPoolTagSelector {
 
         @CustomType.Setter
         public Builder tagKey(String tagKey) {
-            this.tagKey = Objects.requireNonNull(tagKey);
+            if (tagKey == null) {
+              throw new MissingRequiredPropertyException("OceanLaunchSpecElasticIpPoolTagSelector", "tagKey");
+            }
+            this.tagKey = tagKey;
             return this;
         }
         @CustomType.Setter
         public Builder tagValue(@Nullable String tagValue) {
+
             this.tagValue = tagValue;
             return this;
         }

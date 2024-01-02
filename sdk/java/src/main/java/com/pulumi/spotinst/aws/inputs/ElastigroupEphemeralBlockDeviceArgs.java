@@ -5,6 +5,7 @@ package com.pulumi.spotinst.aws.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -211,8 +212,12 @@ public final class ElastigroupEphemeralBlockDeviceArgs extends com.pulumi.resour
         }
 
         public ElastigroupEphemeralBlockDeviceArgs build() {
-            $.deviceName = Objects.requireNonNull($.deviceName, "expected parameter 'deviceName' to be non-null");
-            $.virtualName = Objects.requireNonNull($.virtualName, "expected parameter 'virtualName' to be non-null");
+            if ($.deviceName == null) {
+                throw new MissingRequiredPropertyException("ElastigroupEphemeralBlockDeviceArgs", "deviceName");
+            }
+            if ($.virtualName == null) {
+                throw new MissingRequiredPropertyException("ElastigroupEphemeralBlockDeviceArgs", "virtualName");
+            }
             return $;
         }
     }

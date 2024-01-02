@@ -44,6 +44,7 @@ public final class OceanLaunchSpecStorage {
 
         @CustomType.Setter
         public Builder localSsdCount(@Nullable Integer localSsdCount) {
+
             this.localSsdCount = localSsdCount;
             return this;
         }

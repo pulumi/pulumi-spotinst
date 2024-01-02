@@ -5,6 +5,7 @@ package com.pulumi.spotinst.aws.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -207,8 +208,12 @@ public final class ElastigroupMultaiTargetSetArgs extends com.pulumi.resources.R
         }
 
         public ElastigroupMultaiTargetSetArgs build() {
-            $.balancerId = Objects.requireNonNull($.balancerId, "expected parameter 'balancerId' to be non-null");
-            $.targetSetId = Objects.requireNonNull($.targetSetId, "expected parameter 'targetSetId' to be non-null");
+            if ($.balancerId == null) {
+                throw new MissingRequiredPropertyException("ElastigroupMultaiTargetSetArgs", "balancerId");
+            }
+            if ($.targetSetId == null) {
+                throw new MissingRequiredPropertyException("ElastigroupMultaiTargetSetArgs", "targetSetId");
+            }
             return $;
         }
     }

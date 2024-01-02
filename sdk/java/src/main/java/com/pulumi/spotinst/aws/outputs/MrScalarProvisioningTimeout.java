@@ -4,6 +4,7 @@
 package com.pulumi.spotinst.aws.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -57,12 +58,18 @@ public final class MrScalarProvisioningTimeout {
 
         @CustomType.Setter
         public Builder timeout(Integer timeout) {
-            this.timeout = Objects.requireNonNull(timeout);
+            if (timeout == null) {
+              throw new MissingRequiredPropertyException("MrScalarProvisioningTimeout", "timeout");
+            }
+            this.timeout = timeout;
             return this;
         }
         @CustomType.Setter
         public Builder timeoutAction(String timeoutAction) {
-            this.timeoutAction = Objects.requireNonNull(timeoutAction);
+            if (timeoutAction == null) {
+              throw new MissingRequiredPropertyException("MrScalarProvisioningTimeout", "timeoutAction");
+            }
+            this.timeoutAction = timeoutAction;
             return this;
         }
         public MrScalarProvisioningTimeout build() {
