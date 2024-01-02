@@ -4,6 +4,7 @@
 package com.pulumi.spotinst.aws.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Double;
 import java.lang.String;
 import java.util.Objects;
@@ -41,12 +42,18 @@ public final class ElastigroupItfLoadBalancerListenerRuleStaticTargetGroup {
 
         @CustomType.Setter
         public Builder arn(String arn) {
-            this.arn = Objects.requireNonNull(arn);
+            if (arn == null) {
+              throw new MissingRequiredPropertyException("ElastigroupItfLoadBalancerListenerRuleStaticTargetGroup", "arn");
+            }
+            this.arn = arn;
             return this;
         }
         @CustomType.Setter
         public Builder percentage(Double percentage) {
-            this.percentage = Objects.requireNonNull(percentage);
+            if (percentage == null) {
+              throw new MissingRequiredPropertyException("ElastigroupItfLoadBalancerListenerRuleStaticTargetGroup", "percentage");
+            }
+            this.percentage = percentage;
             return this;
         }
         public ElastigroupItfLoadBalancerListenerRuleStaticTargetGroup build() {

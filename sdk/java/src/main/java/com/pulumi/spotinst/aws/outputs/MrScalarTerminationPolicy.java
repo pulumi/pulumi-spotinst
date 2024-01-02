@@ -4,6 +4,7 @@
 package com.pulumi.spotinst.aws.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.spotinst.aws.outputs.MrScalarTerminationPolicyStatement;
 import java.util.List;
 import java.util.Objects;
@@ -35,7 +36,10 @@ public final class MrScalarTerminationPolicy {
 
         @CustomType.Setter
         public Builder statements(List<MrScalarTerminationPolicyStatement> statements) {
-            this.statements = Objects.requireNonNull(statements);
+            if (statements == null) {
+              throw new MissingRequiredPropertyException("MrScalarTerminationPolicy", "statements");
+            }
+            this.statements = statements;
             return this;
         }
         public Builder statements(MrScalarTerminationPolicyStatement... statements) {

@@ -36,6 +36,7 @@ public final class OceanNpScheduling {
 
         @CustomType.Setter
         public Builder shutdownHours(@Nullable OceanNpSchedulingShutdownHours shutdownHours) {
+
             this.shutdownHours = shutdownHours;
             return this;
         }

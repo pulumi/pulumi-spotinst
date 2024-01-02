@@ -5,6 +5,7 @@ package com.pulumi.spotinst.organization.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -131,8 +132,12 @@ public final class UserGroupPolicyArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public UserGroupPolicyArgs build() {
-            $.accountIds = Objects.requireNonNull($.accountIds, "expected parameter 'accountIds' to be non-null");
-            $.policyId = Objects.requireNonNull($.policyId, "expected parameter 'policyId' to be non-null");
+            if ($.accountIds == null) {
+                throw new MissingRequiredPropertyException("UserGroupPolicyArgs", "accountIds");
+            }
+            if ($.policyId == null) {
+                throw new MissingRequiredPropertyException("UserGroupPolicyArgs", "policyId");
+            }
             return $;
         }
     }

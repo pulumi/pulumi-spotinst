@@ -4,6 +4,7 @@
 package com.pulumi.spotinst.aws.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -158,6 +159,7 @@ public final class ElastigroupResourceRequirement {
 
         @CustomType.Setter
         public Builder excludedInstanceFamilies(@Nullable List<String> excludedInstanceFamilies) {
+
             this.excludedInstanceFamilies = excludedInstanceFamilies;
             return this;
         }
@@ -166,6 +168,7 @@ public final class ElastigroupResourceRequirement {
         }
         @CustomType.Setter
         public Builder excludedInstanceGenerations(@Nullable List<String> excludedInstanceGenerations) {
+
             this.excludedInstanceGenerations = excludedInstanceGenerations;
             return this;
         }
@@ -174,6 +177,7 @@ public final class ElastigroupResourceRequirement {
         }
         @CustomType.Setter
         public Builder excludedInstanceTypes(@Nullable List<String> excludedInstanceTypes) {
+
             this.excludedInstanceTypes = excludedInstanceTypes;
             return this;
         }
@@ -182,32 +186,46 @@ public final class ElastigroupResourceRequirement {
         }
         @CustomType.Setter
         public Builder requiredGpuMaximum(@Nullable Integer requiredGpuMaximum) {
+
             this.requiredGpuMaximum = requiredGpuMaximum;
             return this;
         }
         @CustomType.Setter
         public Builder requiredGpuMinimum(@Nullable Integer requiredGpuMinimum) {
+
             this.requiredGpuMinimum = requiredGpuMinimum;
             return this;
         }
         @CustomType.Setter
         public Builder requiredMemoryMaximum(Integer requiredMemoryMaximum) {
-            this.requiredMemoryMaximum = Objects.requireNonNull(requiredMemoryMaximum);
+            if (requiredMemoryMaximum == null) {
+              throw new MissingRequiredPropertyException("ElastigroupResourceRequirement", "requiredMemoryMaximum");
+            }
+            this.requiredMemoryMaximum = requiredMemoryMaximum;
             return this;
         }
         @CustomType.Setter
         public Builder requiredMemoryMinimum(Integer requiredMemoryMinimum) {
-            this.requiredMemoryMinimum = Objects.requireNonNull(requiredMemoryMinimum);
+            if (requiredMemoryMinimum == null) {
+              throw new MissingRequiredPropertyException("ElastigroupResourceRequirement", "requiredMemoryMinimum");
+            }
+            this.requiredMemoryMinimum = requiredMemoryMinimum;
             return this;
         }
         @CustomType.Setter
         public Builder requiredVcpuMaximum(Integer requiredVcpuMaximum) {
-            this.requiredVcpuMaximum = Objects.requireNonNull(requiredVcpuMaximum);
+            if (requiredVcpuMaximum == null) {
+              throw new MissingRequiredPropertyException("ElastigroupResourceRequirement", "requiredVcpuMaximum");
+            }
+            this.requiredVcpuMaximum = requiredVcpuMaximum;
             return this;
         }
         @CustomType.Setter
         public Builder requiredVcpuMinimum(Integer requiredVcpuMinimum) {
-            this.requiredVcpuMinimum = Objects.requireNonNull(requiredVcpuMinimum);
+            if (requiredVcpuMinimum == null) {
+              throw new MissingRequiredPropertyException("ElastigroupResourceRequirement", "requiredVcpuMinimum");
+            }
+            this.requiredVcpuMinimum = requiredVcpuMinimum;
             return this;
         }
         public ElastigroupResourceRequirement build() {

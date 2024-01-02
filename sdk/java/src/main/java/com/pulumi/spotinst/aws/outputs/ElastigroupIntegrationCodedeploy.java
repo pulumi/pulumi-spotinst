@@ -4,6 +4,7 @@
 package com.pulumi.spotinst.aws.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.spotinst.aws.outputs.ElastigroupIntegrationCodedeployDeploymentGroup;
 import java.lang.Boolean;
 import java.util.List;
@@ -72,12 +73,18 @@ public final class ElastigroupIntegrationCodedeploy {
 
         @CustomType.Setter
         public Builder cleanupOnFailure(Boolean cleanupOnFailure) {
-            this.cleanupOnFailure = Objects.requireNonNull(cleanupOnFailure);
+            if (cleanupOnFailure == null) {
+              throw new MissingRequiredPropertyException("ElastigroupIntegrationCodedeploy", "cleanupOnFailure");
+            }
+            this.cleanupOnFailure = cleanupOnFailure;
             return this;
         }
         @CustomType.Setter
         public Builder deploymentGroups(List<ElastigroupIntegrationCodedeployDeploymentGroup> deploymentGroups) {
-            this.deploymentGroups = Objects.requireNonNull(deploymentGroups);
+            if (deploymentGroups == null) {
+              throw new MissingRequiredPropertyException("ElastigroupIntegrationCodedeploy", "deploymentGroups");
+            }
+            this.deploymentGroups = deploymentGroups;
             return this;
         }
         public Builder deploymentGroups(ElastigroupIntegrationCodedeployDeploymentGroup... deploymentGroups) {
@@ -85,7 +92,10 @@ public final class ElastigroupIntegrationCodedeploy {
         }
         @CustomType.Setter
         public Builder terminateInstanceOnFailure(Boolean terminateInstanceOnFailure) {
-            this.terminateInstanceOnFailure = Objects.requireNonNull(terminateInstanceOnFailure);
+            if (terminateInstanceOnFailure == null) {
+              throw new MissingRequiredPropertyException("ElastigroupIntegrationCodedeploy", "terminateInstanceOnFailure");
+            }
+            this.terminateInstanceOnFailure = terminateInstanceOnFailure;
             return this;
         }
         public ElastigroupIntegrationCodedeploy build() {

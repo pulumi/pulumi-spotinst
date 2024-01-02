@@ -5,6 +5,7 @@ package com.pulumi.spotinst.organization;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.spotinst.organization.inputs.UserPolicyArgs;
 import java.lang.String;
 import java.util.List;
@@ -325,9 +326,15 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public UserArgs build() {
-            $.email = Objects.requireNonNull($.email, "expected parameter 'email' to be non-null");
-            $.firstName = Objects.requireNonNull($.firstName, "expected parameter 'firstName' to be non-null");
-            $.lastName = Objects.requireNonNull($.lastName, "expected parameter 'lastName' to be non-null");
+            if ($.email == null) {
+                throw new MissingRequiredPropertyException("UserArgs", "email");
+            }
+            if ($.firstName == null) {
+                throw new MissingRequiredPropertyException("UserArgs", "firstName");
+            }
+            if ($.lastName == null) {
+                throw new MissingRequiredPropertyException("UserArgs", "lastName");
+            }
             return $;
         }
     }

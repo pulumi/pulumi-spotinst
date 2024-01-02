@@ -5,6 +5,7 @@ package com.pulumi.spotinst.aws.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -112,8 +113,12 @@ public final class MrScalarProvisioningTimeoutArgs extends com.pulumi.resources.
         }
 
         public MrScalarProvisioningTimeoutArgs build() {
-            $.timeout = Objects.requireNonNull($.timeout, "expected parameter 'timeout' to be non-null");
-            $.timeoutAction = Objects.requireNonNull($.timeoutAction, "expected parameter 'timeoutAction' to be non-null");
+            if ($.timeout == null) {
+                throw new MissingRequiredPropertyException("MrScalarProvisioningTimeoutArgs", "timeout");
+            }
+            if ($.timeoutAction == null) {
+                throw new MissingRequiredPropertyException("MrScalarProvisioningTimeoutArgs", "timeoutAction");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.spotinst.aws;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.spotinst.aws.inputs.OceanAutoscalerArgs;
 import com.pulumi.spotinst.aws.inputs.OceanBlockDeviceMappingArgs;
 import com.pulumi.spotinst.aws.inputs.OceanClusterOrientationArgs;
@@ -1471,8 +1472,12 @@ public final class OceanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public OceanArgs build() {
-            $.securityGroups = Objects.requireNonNull($.securityGroups, "expected parameter 'securityGroups' to be non-null");
-            $.subnetIds = Objects.requireNonNull($.subnetIds, "expected parameter 'subnetIds' to be non-null");
+            if ($.securityGroups == null) {
+                throw new MissingRequiredPropertyException("OceanArgs", "securityGroups");
+            }
+            if ($.subnetIds == null) {
+                throw new MissingRequiredPropertyException("OceanArgs", "subnetIds");
+            }
             return $;
         }
     }

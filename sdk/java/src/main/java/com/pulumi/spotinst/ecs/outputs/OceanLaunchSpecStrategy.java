@@ -48,6 +48,7 @@ public final class OceanLaunchSpecStrategy {
 
         @CustomType.Setter
         public Builder spotPercentage(@Nullable Integer spotPercentage) {
+
             this.spotPercentage = spotPercentage;
             return this;
         }

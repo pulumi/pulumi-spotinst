@@ -5,6 +5,7 @@ package com.pulumi.spotinst.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -114,8 +115,12 @@ public final class StatefulNodeAzureHealthArgs extends com.pulumi.resources.Reso
         }
 
         public StatefulNodeAzureHealthArgs build() {
-            $.autoHealing = Objects.requireNonNull($.autoHealing, "expected parameter 'autoHealing' to be non-null");
-            $.healthCheckTypes = Objects.requireNonNull($.healthCheckTypes, "expected parameter 'healthCheckTypes' to be non-null");
+            if ($.autoHealing == null) {
+                throw new MissingRequiredPropertyException("StatefulNodeAzureHealthArgs", "autoHealing");
+            }
+            if ($.healthCheckTypes == null) {
+                throw new MissingRequiredPropertyException("StatefulNodeAzureHealthArgs", "healthCheckTypes");
+            }
             return $;
         }
     }

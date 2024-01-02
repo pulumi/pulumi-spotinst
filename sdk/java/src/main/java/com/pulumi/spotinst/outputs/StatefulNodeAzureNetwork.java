@@ -4,6 +4,7 @@
 package com.pulumi.spotinst.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.spotinst.outputs.StatefulNodeAzureNetworkNetworkInterface;
 import java.lang.String;
 import java.util.List;
@@ -48,7 +49,10 @@ public final class StatefulNodeAzureNetwork {
 
         @CustomType.Setter
         public Builder networkInterfaces(List<StatefulNodeAzureNetworkNetworkInterface> networkInterfaces) {
-            this.networkInterfaces = Objects.requireNonNull(networkInterfaces);
+            if (networkInterfaces == null) {
+              throw new MissingRequiredPropertyException("StatefulNodeAzureNetwork", "networkInterfaces");
+            }
+            this.networkInterfaces = networkInterfaces;
             return this;
         }
         public Builder networkInterfaces(StatefulNodeAzureNetworkNetworkInterface... networkInterfaces) {
@@ -56,12 +60,18 @@ public final class StatefulNodeAzureNetwork {
         }
         @CustomType.Setter
         public Builder networkResourceGroupName(String networkResourceGroupName) {
-            this.networkResourceGroupName = Objects.requireNonNull(networkResourceGroupName);
+            if (networkResourceGroupName == null) {
+              throw new MissingRequiredPropertyException("StatefulNodeAzureNetwork", "networkResourceGroupName");
+            }
+            this.networkResourceGroupName = networkResourceGroupName;
             return this;
         }
         @CustomType.Setter
         public Builder virtualNetworkName(String virtualNetworkName) {
-            this.virtualNetworkName = Objects.requireNonNull(virtualNetworkName);
+            if (virtualNetworkName == null) {
+              throw new MissingRequiredPropertyException("StatefulNodeAzureNetwork", "virtualNetworkName");
+            }
+            this.virtualNetworkName = virtualNetworkName;
             return this;
         }
         public StatefulNodeAzureNetwork build() {

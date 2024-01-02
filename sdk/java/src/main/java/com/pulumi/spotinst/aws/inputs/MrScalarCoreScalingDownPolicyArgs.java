@@ -5,6 +5,7 @@ package com.pulumi.spotinst.aws.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Double;
 import java.lang.Integer;
 import java.lang.Object;
@@ -709,11 +710,21 @@ public final class MrScalarCoreScalingDownPolicyArgs extends com.pulumi.resource
         }
 
         public MrScalarCoreScalingDownPolicyArgs build() {
-            $.metricName = Objects.requireNonNull($.metricName, "expected parameter 'metricName' to be non-null");
-            $.namespace = Objects.requireNonNull($.namespace, "expected parameter 'namespace' to be non-null");
-            $.policyName = Objects.requireNonNull($.policyName, "expected parameter 'policyName' to be non-null");
-            $.threshold = Objects.requireNonNull($.threshold, "expected parameter 'threshold' to be non-null");
-            $.unit = Objects.requireNonNull($.unit, "expected parameter 'unit' to be non-null");
+            if ($.metricName == null) {
+                throw new MissingRequiredPropertyException("MrScalarCoreScalingDownPolicyArgs", "metricName");
+            }
+            if ($.namespace == null) {
+                throw new MissingRequiredPropertyException("MrScalarCoreScalingDownPolicyArgs", "namespace");
+            }
+            if ($.policyName == null) {
+                throw new MissingRequiredPropertyException("MrScalarCoreScalingDownPolicyArgs", "policyName");
+            }
+            if ($.threshold == null) {
+                throw new MissingRequiredPropertyException("MrScalarCoreScalingDownPolicyArgs", "threshold");
+            }
+            if ($.unit == null) {
+                throw new MissingRequiredPropertyException("MrScalarCoreScalingDownPolicyArgs", "unit");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.spotinst.ecs.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.spotinst.ecs.inputs.OceanUpdatePolicyRollConfigArgs;
 import java.lang.Boolean;
 import java.util.Objects;
@@ -168,7 +169,9 @@ public final class OceanUpdatePolicyArgs extends com.pulumi.resources.ResourceAr
         }
 
         public OceanUpdatePolicyArgs build() {
-            $.shouldRoll = Objects.requireNonNull($.shouldRoll, "expected parameter 'shouldRoll' to be non-null");
+            if ($.shouldRoll == null) {
+                throw new MissingRequiredPropertyException("OceanUpdatePolicyArgs", "shouldRoll");
+            }
             return $;
         }
     }

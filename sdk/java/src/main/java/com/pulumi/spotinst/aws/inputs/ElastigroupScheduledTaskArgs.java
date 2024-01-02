@@ -5,6 +5,7 @@ package com.pulumi.spotinst.aws.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -691,7 +692,9 @@ public final class ElastigroupScheduledTaskArgs extends com.pulumi.resources.Res
         }
 
         public ElastigroupScheduledTaskArgs build() {
-            $.taskType = Objects.requireNonNull($.taskType, "expected parameter 'taskType' to be non-null");
+            if ($.taskType == null) {
+                throw new MissingRequiredPropertyException("ElastigroupScheduledTaskArgs", "taskType");
+            }
             return $;
         }
     }

@@ -44,6 +44,7 @@ public final class ElastigroupIntegrationBeanstalkManagedActions {
 
         @CustomType.Setter
         public Builder platformUpdate(@Nullable ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdate platformUpdate) {
+
             this.platformUpdate = platformUpdate;
             return this;
         }

@@ -5,6 +5,7 @@ package com.pulumi.spotinst.aws.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.spotinst.aws.inputs.ElastigroupMultipleMetricsMetricDimensionArgs;
 import java.lang.String;
 import java.util.List;
@@ -310,9 +311,15 @@ public final class ElastigroupMultipleMetricsMetricArgs extends com.pulumi.resou
         }
 
         public ElastigroupMultipleMetricsMetricArgs build() {
-            $.metricName = Objects.requireNonNull($.metricName, "expected parameter 'metricName' to be non-null");
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
-            $.namespace = Objects.requireNonNull($.namespace, "expected parameter 'namespace' to be non-null");
+            if ($.metricName == null) {
+                throw new MissingRequiredPropertyException("ElastigroupMultipleMetricsMetricArgs", "metricName");
+            }
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("ElastigroupMultipleMetricsMetricArgs", "name");
+            }
+            if ($.namespace == null) {
+                throw new MissingRequiredPropertyException("ElastigroupMultipleMetricsMetricArgs", "namespace");
+            }
             return $;
         }
     }

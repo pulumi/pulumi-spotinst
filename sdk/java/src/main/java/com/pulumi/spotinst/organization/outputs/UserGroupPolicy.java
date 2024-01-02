@@ -4,6 +4,7 @@
 package com.pulumi.spotinst.organization.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -61,7 +62,10 @@ public final class UserGroupPolicy {
 
         @CustomType.Setter
         public Builder accountIds(List<String> accountIds) {
-            this.accountIds = Objects.requireNonNull(accountIds);
+            if (accountIds == null) {
+              throw new MissingRequiredPropertyException("UserGroupPolicy", "accountIds");
+            }
+            this.accountIds = accountIds;
             return this;
         }
         public Builder accountIds(String... accountIds) {
@@ -69,7 +73,10 @@ public final class UserGroupPolicy {
         }
         @CustomType.Setter
         public Builder policyId(String policyId) {
-            this.policyId = Objects.requireNonNull(policyId);
+            if (policyId == null) {
+              throw new MissingRequiredPropertyException("UserGroupPolicy", "policyId");
+            }
+            this.policyId = policyId;
             return this;
         }
         public UserGroupPolicy build() {

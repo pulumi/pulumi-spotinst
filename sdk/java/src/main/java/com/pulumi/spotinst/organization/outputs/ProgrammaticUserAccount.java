@@ -4,6 +4,7 @@
 package com.pulumi.spotinst.organization.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -58,12 +59,18 @@ public final class ProgrammaticUserAccount {
 
         @CustomType.Setter
         public Builder accountId(String accountId) {
-            this.accountId = Objects.requireNonNull(accountId);
+            if (accountId == null) {
+              throw new MissingRequiredPropertyException("ProgrammaticUserAccount", "accountId");
+            }
+            this.accountId = accountId;
             return this;
         }
         @CustomType.Setter
         public Builder accountRole(String accountRole) {
-            this.accountRole = Objects.requireNonNull(accountRole);
+            if (accountRole == null) {
+              throw new MissingRequiredPropertyException("ProgrammaticUserAccount", "accountRole");
+            }
+            this.accountRole = accountRole;
             return this;
         }
         public ProgrammaticUserAccount build() {

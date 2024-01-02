@@ -5,6 +5,7 @@ package com.pulumi.spotinst.aws.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -89,9 +90,15 @@ public final class OceanScheduledTaskTaskArgs extends com.pulumi.resources.Resou
         }
 
         public OceanScheduledTaskTaskArgs build() {
-            $.cronExpression = Objects.requireNonNull($.cronExpression, "expected parameter 'cronExpression' to be non-null");
-            $.isEnabled = Objects.requireNonNull($.isEnabled, "expected parameter 'isEnabled' to be non-null");
-            $.taskType = Objects.requireNonNull($.taskType, "expected parameter 'taskType' to be non-null");
+            if ($.cronExpression == null) {
+                throw new MissingRequiredPropertyException("OceanScheduledTaskTaskArgs", "cronExpression");
+            }
+            if ($.isEnabled == null) {
+                throw new MissingRequiredPropertyException("OceanScheduledTaskTaskArgs", "isEnabled");
+            }
+            if ($.taskType == null) {
+                throw new MissingRequiredPropertyException("OceanScheduledTaskTaskArgs", "taskType");
+            }
             return $;
         }
     }

@@ -60,11 +60,13 @@ public final class OceanImportScheduledTask {
 
         @CustomType.Setter
         public Builder shutdownHours(@Nullable OceanImportScheduledTaskShutdownHours shutdownHours) {
+
             this.shutdownHours = shutdownHours;
             return this;
         }
         @CustomType.Setter
         public Builder tasks(@Nullable List<OceanImportScheduledTaskTask> tasks) {
+
             this.tasks = tasks;
             return this;
         }

@@ -5,6 +5,7 @@ package com.pulumi.spotinst.gke.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.spotinst.gke.inputs.OceanLaunchSpecNetworkInterfaceAccessConfigArgs;
 import com.pulumi.spotinst.gke.inputs.OceanLaunchSpecNetworkInterfaceAliasIpRangeArgs;
 import java.lang.String;
@@ -210,7 +211,9 @@ public final class OceanLaunchSpecNetworkInterfaceArgs extends com.pulumi.resour
         }
 
         public OceanLaunchSpecNetworkInterfaceArgs build() {
-            $.network = Objects.requireNonNull($.network, "expected parameter 'network' to be non-null");
+            if ($.network == null) {
+                throw new MissingRequiredPropertyException("OceanLaunchSpecNetworkInterfaceArgs", "network");
+            }
             return $;
         }
     }

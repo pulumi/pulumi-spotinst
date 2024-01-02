@@ -5,6 +5,7 @@ package com.pulumi.spotinst.gke.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.spotinst.gke.inputs.OceanImportUpdatePolicyRollConfigArgs;
 import java.lang.Boolean;
 import java.util.Objects;
@@ -91,7 +92,9 @@ public final class OceanImportUpdatePolicyArgs extends com.pulumi.resources.Reso
         }
 
         public OceanImportUpdatePolicyArgs build() {
-            $.shouldRoll = Objects.requireNonNull($.shouldRoll, "expected parameter 'shouldRoll' to be non-null");
+            if ($.shouldRoll == null) {
+                throw new MissingRequiredPropertyException("OceanImportUpdatePolicyArgs", "shouldRoll");
+            }
             return $;
         }
     }

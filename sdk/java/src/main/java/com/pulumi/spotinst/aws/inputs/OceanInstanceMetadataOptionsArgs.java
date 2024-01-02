@@ -5,6 +5,7 @@ package com.pulumi.spotinst.aws.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -114,7 +115,9 @@ public final class OceanInstanceMetadataOptionsArgs extends com.pulumi.resources
         }
 
         public OceanInstanceMetadataOptionsArgs build() {
-            $.httpTokens = Objects.requireNonNull($.httpTokens, "expected parameter 'httpTokens' to be non-null");
+            if ($.httpTokens == null) {
+                throw new MissingRequiredPropertyException("OceanInstanceMetadataOptionsArgs", "httpTokens");
+            }
             return $;
         }
     }

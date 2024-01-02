@@ -4,6 +4,7 @@
 package com.pulumi.spotinst.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.util.Objects;
@@ -85,46 +86,65 @@ public final class StatefulNodeAzureDelete {
 
         @CustomType.Setter
         public Builder diskShouldDeallocate(Boolean diskShouldDeallocate) {
-            this.diskShouldDeallocate = Objects.requireNonNull(diskShouldDeallocate);
+            if (diskShouldDeallocate == null) {
+              throw new MissingRequiredPropertyException("StatefulNodeAzureDelete", "diskShouldDeallocate");
+            }
+            this.diskShouldDeallocate = diskShouldDeallocate;
             return this;
         }
         @CustomType.Setter
         public Builder diskTtlInHours(@Nullable Integer diskTtlInHours) {
+
             this.diskTtlInHours = diskTtlInHours;
             return this;
         }
         @CustomType.Setter
         public Builder networkShouldDeallocate(Boolean networkShouldDeallocate) {
-            this.networkShouldDeallocate = Objects.requireNonNull(networkShouldDeallocate);
+            if (networkShouldDeallocate == null) {
+              throw new MissingRequiredPropertyException("StatefulNodeAzureDelete", "networkShouldDeallocate");
+            }
+            this.networkShouldDeallocate = networkShouldDeallocate;
             return this;
         }
         @CustomType.Setter
         public Builder networkTtlInHours(@Nullable Integer networkTtlInHours) {
+
             this.networkTtlInHours = networkTtlInHours;
             return this;
         }
         @CustomType.Setter
         public Builder publicIpShouldDeallocate(Boolean publicIpShouldDeallocate) {
-            this.publicIpShouldDeallocate = Objects.requireNonNull(publicIpShouldDeallocate);
+            if (publicIpShouldDeallocate == null) {
+              throw new MissingRequiredPropertyException("StatefulNodeAzureDelete", "publicIpShouldDeallocate");
+            }
+            this.publicIpShouldDeallocate = publicIpShouldDeallocate;
             return this;
         }
         @CustomType.Setter
         public Builder publicIpTtlInHours(@Nullable Integer publicIpTtlInHours) {
+
             this.publicIpTtlInHours = publicIpTtlInHours;
             return this;
         }
         @CustomType.Setter
         public Builder shouldTerminateVm(Boolean shouldTerminateVm) {
-            this.shouldTerminateVm = Objects.requireNonNull(shouldTerminateVm);
+            if (shouldTerminateVm == null) {
+              throw new MissingRequiredPropertyException("StatefulNodeAzureDelete", "shouldTerminateVm");
+            }
+            this.shouldTerminateVm = shouldTerminateVm;
             return this;
         }
         @CustomType.Setter
         public Builder snapshotShouldDeallocate(Boolean snapshotShouldDeallocate) {
-            this.snapshotShouldDeallocate = Objects.requireNonNull(snapshotShouldDeallocate);
+            if (snapshotShouldDeallocate == null) {
+              throw new MissingRequiredPropertyException("StatefulNodeAzureDelete", "snapshotShouldDeallocate");
+            }
+            this.snapshotShouldDeallocate = snapshotShouldDeallocate;
             return this;
         }
         @CustomType.Setter
         public Builder snapshotTtlInHours(@Nullable Integer snapshotTtlInHours) {
+
             this.snapshotTtlInHours = snapshotTtlInHours;
             return this;
         }

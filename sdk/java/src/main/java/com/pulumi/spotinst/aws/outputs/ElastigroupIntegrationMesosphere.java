@@ -4,6 +4,7 @@
 package com.pulumi.spotinst.aws.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -90,7 +91,10 @@ public final class ElastigroupIntegrationMesosphere {
 
         @CustomType.Setter
         public Builder apiServer(String apiServer) {
-            this.apiServer = Objects.requireNonNull(apiServer);
+            if (apiServer == null) {
+              throw new MissingRequiredPropertyException("ElastigroupIntegrationMesosphere", "apiServer");
+            }
+            this.apiServer = apiServer;
             return this;
         }
         public ElastigroupIntegrationMesosphere build() {

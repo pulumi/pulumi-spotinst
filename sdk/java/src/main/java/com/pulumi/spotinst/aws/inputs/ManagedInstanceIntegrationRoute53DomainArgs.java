@@ -5,6 +5,7 @@ package com.pulumi.spotinst.aws.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.spotinst.aws.inputs.ManagedInstanceIntegrationRoute53DomainRecordSetArgs;
 import java.lang.String;
 import java.util.List;
@@ -113,8 +114,12 @@ public final class ManagedInstanceIntegrationRoute53DomainArgs extends com.pulum
         }
 
         public ManagedInstanceIntegrationRoute53DomainArgs build() {
-            $.hostedZoneId = Objects.requireNonNull($.hostedZoneId, "expected parameter 'hostedZoneId' to be non-null");
-            $.recordSets = Objects.requireNonNull($.recordSets, "expected parameter 'recordSets' to be non-null");
+            if ($.hostedZoneId == null) {
+                throw new MissingRequiredPropertyException("ManagedInstanceIntegrationRoute53DomainArgs", "hostedZoneId");
+            }
+            if ($.recordSets == null) {
+                throw new MissingRequiredPropertyException("ManagedInstanceIntegrationRoute53DomainArgs", "recordSets");
+            }
             return $;
         }
     }

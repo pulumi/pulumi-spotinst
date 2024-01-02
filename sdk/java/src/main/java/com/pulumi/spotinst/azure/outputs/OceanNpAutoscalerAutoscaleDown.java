@@ -36,6 +36,7 @@ public final class OceanNpAutoscalerAutoscaleDown {
 
         @CustomType.Setter
         public Builder maxScaleDownPercentage(@Nullable Integer maxScaleDownPercentage) {
+
             this.maxScaleDownPercentage = maxScaleDownPercentage;
             return this;
         }

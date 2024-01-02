@@ -5,6 +5,7 @@ package com.pulumi.spotinst.spark;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.spotinst.spark.inputs.OceanComputeArgs;
 import com.pulumi.spotinst.spark.inputs.OceanIngressArgs;
 import com.pulumi.spotinst.spark.inputs.OceanLogCollectionArgs;
@@ -166,7 +167,9 @@ public final class OceanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public OceanArgs build() {
-            $.oceanClusterId = Objects.requireNonNull($.oceanClusterId, "expected parameter 'oceanClusterId' to be non-null");
+            if ($.oceanClusterId == null) {
+                throw new MissingRequiredPropertyException("OceanArgs", "oceanClusterId");
+            }
             return $;
         }
     }

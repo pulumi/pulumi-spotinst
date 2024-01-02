@@ -5,6 +5,7 @@ package com.pulumi.spotinst.aws;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -91,8 +92,12 @@ public final class CredentialsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public CredentialsArgs build() {
-            $.accountId = Objects.requireNonNull($.accountId, "expected parameter 'accountId' to be non-null");
-            $.iamrole = Objects.requireNonNull($.iamrole, "expected parameter 'iamrole' to be non-null");
+            if ($.accountId == null) {
+                throw new MissingRequiredPropertyException("CredentialsArgs", "accountId");
+            }
+            if ($.iamrole == null) {
+                throw new MissingRequiredPropertyException("CredentialsArgs", "iamrole");
+            }
             return $;
         }
     }

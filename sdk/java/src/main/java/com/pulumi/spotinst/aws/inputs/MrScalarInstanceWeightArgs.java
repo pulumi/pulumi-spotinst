@@ -5,6 +5,7 @@ package com.pulumi.spotinst.aws.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -112,8 +113,12 @@ public final class MrScalarInstanceWeightArgs extends com.pulumi.resources.Resou
         }
 
         public MrScalarInstanceWeightArgs build() {
-            $.instanceType = Objects.requireNonNull($.instanceType, "expected parameter 'instanceType' to be non-null");
-            $.weightedCapacity = Objects.requireNonNull($.weightedCapacity, "expected parameter 'weightedCapacity' to be non-null");
+            if ($.instanceType == null) {
+                throw new MissingRequiredPropertyException("MrScalarInstanceWeightArgs", "instanceType");
+            }
+            if ($.weightedCapacity == null) {
+                throw new MissingRequiredPropertyException("MrScalarInstanceWeightArgs", "weightedCapacity");
+            }
             return $;
         }
     }

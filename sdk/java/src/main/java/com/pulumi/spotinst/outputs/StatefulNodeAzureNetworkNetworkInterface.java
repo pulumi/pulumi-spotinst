@@ -4,6 +4,7 @@
 package com.pulumi.spotinst.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.spotinst.outputs.StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfiguration;
 import com.pulumi.spotinst.outputs.StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroup;
 import com.pulumi.spotinst.outputs.StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroup;
@@ -96,6 +97,7 @@ public final class StatefulNodeAzureNetworkNetworkInterface {
 
         @CustomType.Setter
         public Builder additionalIpConfigurations(@Nullable List<StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfiguration> additionalIpConfigurations) {
+
             this.additionalIpConfigurations = additionalIpConfigurations;
             return this;
         }
@@ -104,6 +106,7 @@ public final class StatefulNodeAzureNetworkNetworkInterface {
         }
         @CustomType.Setter
         public Builder applicationSecurityGroups(@Nullable List<StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroup> applicationSecurityGroups) {
+
             this.applicationSecurityGroups = applicationSecurityGroups;
             return this;
         }
@@ -112,21 +115,27 @@ public final class StatefulNodeAzureNetworkNetworkInterface {
         }
         @CustomType.Setter
         public Builder assignPublicIp(@Nullable Boolean assignPublicIp) {
+
             this.assignPublicIp = assignPublicIp;
             return this;
         }
         @CustomType.Setter
         public Builder enableIpForwarding(@Nullable Boolean enableIpForwarding) {
+
             this.enableIpForwarding = enableIpForwarding;
             return this;
         }
         @CustomType.Setter
         public Builder isPrimary(Boolean isPrimary) {
-            this.isPrimary = Objects.requireNonNull(isPrimary);
+            if (isPrimary == null) {
+              throw new MissingRequiredPropertyException("StatefulNodeAzureNetworkNetworkInterface", "isPrimary");
+            }
+            this.isPrimary = isPrimary;
             return this;
         }
         @CustomType.Setter
         public Builder networkSecurityGroups(@Nullable List<StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroup> networkSecurityGroups) {
+
             this.networkSecurityGroups = networkSecurityGroups;
             return this;
         }
@@ -135,6 +144,7 @@ public final class StatefulNodeAzureNetworkNetworkInterface {
         }
         @CustomType.Setter
         public Builder privateIpAddresses(@Nullable List<String> privateIpAddresses) {
+
             this.privateIpAddresses = privateIpAddresses;
             return this;
         }
@@ -143,11 +153,13 @@ public final class StatefulNodeAzureNetworkNetworkInterface {
         }
         @CustomType.Setter
         public Builder publicIpSku(@Nullable String publicIpSku) {
+
             this.publicIpSku = publicIpSku;
             return this;
         }
         @CustomType.Setter
         public Builder publicIps(@Nullable List<StatefulNodeAzureNetworkNetworkInterfacePublicIp> publicIps) {
+
             this.publicIps = publicIps;
             return this;
         }
@@ -156,7 +168,10 @@ public final class StatefulNodeAzureNetworkNetworkInterface {
         }
         @CustomType.Setter
         public Builder subnetName(String subnetName) {
-            this.subnetName = Objects.requireNonNull(subnetName);
+            if (subnetName == null) {
+              throw new MissingRequiredPropertyException("StatefulNodeAzureNetworkNetworkInterface", "subnetName");
+            }
+            this.subnetName = subnetName;
             return this;
         }
         public StatefulNodeAzureNetworkNetworkInterface build() {

@@ -5,6 +5,7 @@ package com.pulumi.spotinst.aws.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -404,10 +405,18 @@ public final class ElastigroupResourceRequirementArgs extends com.pulumi.resourc
         }
 
         public ElastigroupResourceRequirementArgs build() {
-            $.requiredMemoryMaximum = Objects.requireNonNull($.requiredMemoryMaximum, "expected parameter 'requiredMemoryMaximum' to be non-null");
-            $.requiredMemoryMinimum = Objects.requireNonNull($.requiredMemoryMinimum, "expected parameter 'requiredMemoryMinimum' to be non-null");
-            $.requiredVcpuMaximum = Objects.requireNonNull($.requiredVcpuMaximum, "expected parameter 'requiredVcpuMaximum' to be non-null");
-            $.requiredVcpuMinimum = Objects.requireNonNull($.requiredVcpuMinimum, "expected parameter 'requiredVcpuMinimum' to be non-null");
+            if ($.requiredMemoryMaximum == null) {
+                throw new MissingRequiredPropertyException("ElastigroupResourceRequirementArgs", "requiredMemoryMaximum");
+            }
+            if ($.requiredMemoryMinimum == null) {
+                throw new MissingRequiredPropertyException("ElastigroupResourceRequirementArgs", "requiredMemoryMinimum");
+            }
+            if ($.requiredVcpuMaximum == null) {
+                throw new MissingRequiredPropertyException("ElastigroupResourceRequirementArgs", "requiredVcpuMaximum");
+            }
+            if ($.requiredVcpuMinimum == null) {
+                throw new MissingRequiredPropertyException("ElastigroupResourceRequirementArgs", "requiredVcpuMinimum");
+            }
             return $;
         }
     }

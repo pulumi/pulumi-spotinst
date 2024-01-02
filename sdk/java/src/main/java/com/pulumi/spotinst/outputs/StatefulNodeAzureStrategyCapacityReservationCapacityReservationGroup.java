@@ -4,6 +4,7 @@
 package com.pulumi.spotinst.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -49,16 +50,23 @@ public final class StatefulNodeAzureStrategyCapacityReservationCapacityReservati
 
         @CustomType.Setter
         public Builder crgName(String crgName) {
-            this.crgName = Objects.requireNonNull(crgName);
+            if (crgName == null) {
+              throw new MissingRequiredPropertyException("StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroup", "crgName");
+            }
+            this.crgName = crgName;
             return this;
         }
         @CustomType.Setter
         public Builder crgResourceGroupName(String crgResourceGroupName) {
-            this.crgResourceGroupName = Objects.requireNonNull(crgResourceGroupName);
+            if (crgResourceGroupName == null) {
+              throw new MissingRequiredPropertyException("StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroup", "crgResourceGroupName");
+            }
+            this.crgResourceGroupName = crgResourceGroupName;
             return this;
         }
         @CustomType.Setter
         public Builder crgShouldPrioritize(@Nullable Boolean crgShouldPrioritize) {
+
             this.crgShouldPrioritize = crgShouldPrioritize;
             return this;
         }

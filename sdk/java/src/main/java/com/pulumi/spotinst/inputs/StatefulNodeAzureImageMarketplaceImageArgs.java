@@ -5,6 +5,7 @@ package com.pulumi.spotinst.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -105,10 +106,18 @@ public final class StatefulNodeAzureImageMarketplaceImageArgs extends com.pulumi
         }
 
         public StatefulNodeAzureImageMarketplaceImageArgs build() {
-            $.offer = Objects.requireNonNull($.offer, "expected parameter 'offer' to be non-null");
-            $.publisher = Objects.requireNonNull($.publisher, "expected parameter 'publisher' to be non-null");
-            $.sku = Objects.requireNonNull($.sku, "expected parameter 'sku' to be non-null");
-            $.version = Objects.requireNonNull($.version, "expected parameter 'version' to be non-null");
+            if ($.offer == null) {
+                throw new MissingRequiredPropertyException("StatefulNodeAzureImageMarketplaceImageArgs", "offer");
+            }
+            if ($.publisher == null) {
+                throw new MissingRequiredPropertyException("StatefulNodeAzureImageMarketplaceImageArgs", "publisher");
+            }
+            if ($.sku == null) {
+                throw new MissingRequiredPropertyException("StatefulNodeAzureImageMarketplaceImageArgs", "sku");
+            }
+            if ($.version == null) {
+                throw new MissingRequiredPropertyException("StatefulNodeAzureImageMarketplaceImageArgs", "version");
+            }
             return $;
         }
     }

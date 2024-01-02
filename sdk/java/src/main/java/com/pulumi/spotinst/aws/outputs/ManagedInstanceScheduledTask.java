@@ -4,6 +4,7 @@
 package com.pulumi.spotinst.aws.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -61,27 +62,34 @@ public final class ManagedInstanceScheduledTask {
 
         @CustomType.Setter
         public Builder cronExpression(@Nullable String cronExpression) {
+
             this.cronExpression = cronExpression;
             return this;
         }
         @CustomType.Setter
         public Builder frequency(@Nullable String frequency) {
+
             this.frequency = frequency;
             return this;
         }
         @CustomType.Setter
         public Builder isEnabled(@Nullable Boolean isEnabled) {
+
             this.isEnabled = isEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder startTime(@Nullable String startTime) {
+
             this.startTime = startTime;
             return this;
         }
         @CustomType.Setter
         public Builder taskType(String taskType) {
-            this.taskType = Objects.requireNonNull(taskType);
+            if (taskType == null) {
+              throw new MissingRequiredPropertyException("ManagedInstanceScheduledTask", "taskType");
+            }
+            this.taskType = taskType;
             return this;
         }
         public ManagedInstanceScheduledTask build() {

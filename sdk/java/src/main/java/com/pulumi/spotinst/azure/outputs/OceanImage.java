@@ -44,6 +44,7 @@ public final class OceanImage {
 
         @CustomType.Setter
         public Builder marketplaces(@Nullable List<OceanImageMarketplace> marketplaces) {
+
             this.marketplaces = marketplaces;
             return this;
         }

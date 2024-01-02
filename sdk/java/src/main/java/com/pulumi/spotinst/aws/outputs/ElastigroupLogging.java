@@ -44,6 +44,7 @@ public final class ElastigroupLogging {
 
         @CustomType.Setter
         public Builder export(@Nullable ElastigroupLoggingExport export) {
+
             this.export = export;
             return this;
         }

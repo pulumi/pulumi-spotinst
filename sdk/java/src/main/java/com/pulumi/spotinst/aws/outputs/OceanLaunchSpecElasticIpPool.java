@@ -44,6 +44,7 @@ public final class OceanLaunchSpecElasticIpPool {
 
         @CustomType.Setter
         public Builder tagSelector(@Nullable OceanLaunchSpecElasticIpPoolTagSelector tagSelector) {
+
             this.tagSelector = tagSelector;
             return this;
         }

@@ -4,6 +4,7 @@
 package com.pulumi.spotinst.gke.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.spotinst.gke.outputs.ElastigroupNetworkInterfaceAccessConfig;
 import com.pulumi.spotinst.gke.outputs.ElastigroupNetworkInterfaceAliasIpRange;
 import java.lang.String;
@@ -50,6 +51,7 @@ public final class ElastigroupNetworkInterface {
 
         @CustomType.Setter
         public Builder accessConfigs(@Nullable List<ElastigroupNetworkInterfaceAccessConfig> accessConfigs) {
+
             this.accessConfigs = accessConfigs;
             return this;
         }
@@ -58,6 +60,7 @@ public final class ElastigroupNetworkInterface {
         }
         @CustomType.Setter
         public Builder aliasIpRanges(@Nullable List<ElastigroupNetworkInterfaceAliasIpRange> aliasIpRanges) {
+
             this.aliasIpRanges = aliasIpRanges;
             return this;
         }
@@ -66,7 +69,10 @@ public final class ElastigroupNetworkInterface {
         }
         @CustomType.Setter
         public Builder network(String network) {
-            this.network = Objects.requireNonNull(network);
+            if (network == null) {
+              throw new MissingRequiredPropertyException("ElastigroupNetworkInterface", "network");
+            }
+            this.network = network;
             return this;
         }
         public ElastigroupNetworkInterface build() {

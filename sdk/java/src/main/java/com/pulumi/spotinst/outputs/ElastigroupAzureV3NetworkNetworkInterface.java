@@ -4,6 +4,7 @@
 package com.pulumi.spotinst.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.spotinst.outputs.ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfig;
 import com.pulumi.spotinst.outputs.ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroup;
 import java.lang.Boolean;
@@ -63,6 +64,7 @@ public final class ElastigroupAzureV3NetworkNetworkInterface {
 
         @CustomType.Setter
         public Builder additionalIpConfigs(@Nullable List<ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfig> additionalIpConfigs) {
+
             this.additionalIpConfigs = additionalIpConfigs;
             return this;
         }
@@ -71,6 +73,7 @@ public final class ElastigroupAzureV3NetworkNetworkInterface {
         }
         @CustomType.Setter
         public Builder applicationSecurityGroups(@Nullable List<ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroup> applicationSecurityGroups) {
+
             this.applicationSecurityGroups = applicationSecurityGroups;
             return this;
         }
@@ -79,17 +82,26 @@ public final class ElastigroupAzureV3NetworkNetworkInterface {
         }
         @CustomType.Setter
         public Builder assignPublicIp(Boolean assignPublicIp) {
-            this.assignPublicIp = Objects.requireNonNull(assignPublicIp);
+            if (assignPublicIp == null) {
+              throw new MissingRequiredPropertyException("ElastigroupAzureV3NetworkNetworkInterface", "assignPublicIp");
+            }
+            this.assignPublicIp = assignPublicIp;
             return this;
         }
         @CustomType.Setter
         public Builder isPrimary(Boolean isPrimary) {
-            this.isPrimary = Objects.requireNonNull(isPrimary);
+            if (isPrimary == null) {
+              throw new MissingRequiredPropertyException("ElastigroupAzureV3NetworkNetworkInterface", "isPrimary");
+            }
+            this.isPrimary = isPrimary;
             return this;
         }
         @CustomType.Setter
         public Builder subnetName(String subnetName) {
-            this.subnetName = Objects.requireNonNull(subnetName);
+            if (subnetName == null) {
+              throw new MissingRequiredPropertyException("ElastigroupAzureV3NetworkNetworkInterface", "subnetName");
+            }
+            this.subnetName = subnetName;
             return this;
         }
         public ElastigroupAzureV3NetworkNetworkInterface build() {

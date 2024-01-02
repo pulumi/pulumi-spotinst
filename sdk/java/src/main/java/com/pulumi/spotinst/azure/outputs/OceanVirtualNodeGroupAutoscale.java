@@ -52,11 +52,13 @@ public final class OceanVirtualNodeGroupAutoscale {
 
         @CustomType.Setter
         public Builder autoHeadroomPercentage(@Nullable Integer autoHeadroomPercentage) {
+
             this.autoHeadroomPercentage = autoHeadroomPercentage;
             return this;
         }
         @CustomType.Setter
         public Builder autoscaleHeadrooms(@Nullable List<OceanVirtualNodeGroupAutoscaleAutoscaleHeadroom> autoscaleHeadrooms) {
+
             this.autoscaleHeadrooms = autoscaleHeadrooms;
             return this;
         }

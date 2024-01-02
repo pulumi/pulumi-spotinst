@@ -5,6 +5,7 @@ package com.pulumi.spotinst.aws.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.spotinst.aws.inputs.ElastigroupScalingUpPolicyStepAdjustmentActionArgs;
 import java.lang.Integer;
 import java.util.Objects;
@@ -136,8 +137,12 @@ public final class ElastigroupScalingUpPolicyStepAdjustmentArgs extends com.pulu
         }
 
         public ElastigroupScalingUpPolicyStepAdjustmentArgs build() {
-            $.action = Objects.requireNonNull($.action, "expected parameter 'action' to be non-null");
-            $.threshold = Objects.requireNonNull($.threshold, "expected parameter 'threshold' to be non-null");
+            if ($.action == null) {
+                throw new MissingRequiredPropertyException("ElastigroupScalingUpPolicyStepAdjustmentArgs", "action");
+            }
+            if ($.threshold == null) {
+                throw new MissingRequiredPropertyException("ElastigroupScalingUpPolicyStepAdjustmentArgs", "threshold");
+            }
             return $;
         }
     }

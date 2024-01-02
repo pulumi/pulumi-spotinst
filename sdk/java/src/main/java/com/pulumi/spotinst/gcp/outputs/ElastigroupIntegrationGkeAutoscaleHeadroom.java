@@ -48,16 +48,19 @@ public final class ElastigroupIntegrationGkeAutoscaleHeadroom {
 
         @CustomType.Setter
         public Builder cpuPerUnit(@Nullable Integer cpuPerUnit) {
+
             this.cpuPerUnit = cpuPerUnit;
             return this;
         }
         @CustomType.Setter
         public Builder memoryPerUnit(@Nullable Integer memoryPerUnit) {
+
             this.memoryPerUnit = memoryPerUnit;
             return this;
         }
         @CustomType.Setter
         public Builder numOfUnits(@Nullable Integer numOfUnits) {
+
             this.numOfUnits = numOfUnits;
             return this;
         }

@@ -5,6 +5,7 @@ package com.pulumi.spotinst.aws.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -207,8 +208,12 @@ public final class ElastigroupStatefulInstanceActionArgs extends com.pulumi.reso
         }
 
         public ElastigroupStatefulInstanceActionArgs build() {
-            $.statefulInstanceId = Objects.requireNonNull($.statefulInstanceId, "expected parameter 'statefulInstanceId' to be non-null");
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
+            if ($.statefulInstanceId == null) {
+                throw new MissingRequiredPropertyException("ElastigroupStatefulInstanceActionArgs", "statefulInstanceId");
+            }
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("ElastigroupStatefulInstanceActionArgs", "type");
+            }
             return $;
         }
     }

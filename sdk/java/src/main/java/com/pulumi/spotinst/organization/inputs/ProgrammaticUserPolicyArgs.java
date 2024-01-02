@@ -5,6 +5,7 @@ package com.pulumi.spotinst.organization.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -127,8 +128,12 @@ public final class ProgrammaticUserPolicyArgs extends com.pulumi.resources.Resou
         }
 
         public ProgrammaticUserPolicyArgs build() {
-            $.policyAccountIds = Objects.requireNonNull($.policyAccountIds, "expected parameter 'policyAccountIds' to be non-null");
-            $.policyId = Objects.requireNonNull($.policyId, "expected parameter 'policyId' to be non-null");
+            if ($.policyAccountIds == null) {
+                throw new MissingRequiredPropertyException("ProgrammaticUserPolicyArgs", "policyAccountIds");
+            }
+            if ($.policyId == null) {
+                throw new MissingRequiredPropertyException("ProgrammaticUserPolicyArgs", "policyId");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.spotinst.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.spotinst.inputs.ElastigroupAzureV3NetworkNetworkInterfaceArgs;
 import java.lang.String;
 import java.util.List;
@@ -94,9 +95,15 @@ public final class ElastigroupAzureV3NetworkArgs extends com.pulumi.resources.Re
         }
 
         public ElastigroupAzureV3NetworkArgs build() {
-            $.networkInterfaces = Objects.requireNonNull($.networkInterfaces, "expected parameter 'networkInterfaces' to be non-null");
-            $.resourceGroupName = Objects.requireNonNull($.resourceGroupName, "expected parameter 'resourceGroupName' to be non-null");
-            $.virtualNetworkName = Objects.requireNonNull($.virtualNetworkName, "expected parameter 'virtualNetworkName' to be non-null");
+            if ($.networkInterfaces == null) {
+                throw new MissingRequiredPropertyException("ElastigroupAzureV3NetworkArgs", "networkInterfaces");
+            }
+            if ($.resourceGroupName == null) {
+                throw new MissingRequiredPropertyException("ElastigroupAzureV3NetworkArgs", "resourceGroupName");
+            }
+            if ($.virtualNetworkName == null) {
+                throw new MissingRequiredPropertyException("ElastigroupAzureV3NetworkArgs", "virtualNetworkName");
+            }
             return $;
         }
     }

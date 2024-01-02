@@ -5,6 +5,7 @@ package com.pulumi.spotinst.azure;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.spotinst.azure.inputs.OceanVirtualNodeGroupAutoscaleArgs;
 import com.pulumi.spotinst.azure.inputs.OceanVirtualNodeGroupLabelArgs;
 import com.pulumi.spotinst.azure.inputs.OceanVirtualNodeGroupLaunchSpecificationArgs;
@@ -401,7 +402,9 @@ public final class OceanVirtualNodeGroupArgs extends com.pulumi.resources.Resour
         }
 
         public OceanVirtualNodeGroupArgs build() {
-            $.oceanId = Objects.requireNonNull($.oceanId, "expected parameter 'oceanId' to be non-null");
+            if ($.oceanId == null) {
+                throw new MissingRequiredPropertyException("OceanVirtualNodeGroupArgs", "oceanId");
+            }
             return $;
         }
     }

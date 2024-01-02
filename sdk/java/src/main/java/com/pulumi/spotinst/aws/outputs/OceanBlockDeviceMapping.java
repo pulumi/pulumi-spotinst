@@ -59,11 +59,13 @@ public final class OceanBlockDeviceMapping {
 
         @CustomType.Setter
         public Builder deviceName(@Nullable String deviceName) {
+
             this.deviceName = deviceName;
             return this;
         }
         @CustomType.Setter
         public Builder ebs(@Nullable OceanBlockDeviceMappingEbs ebs) {
+
             this.ebs = ebs;
             return this;
         }

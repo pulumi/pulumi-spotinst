@@ -4,6 +4,7 @@
 package com.pulumi.spotinst.aws.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -132,21 +133,31 @@ public final class ElastigroupIntegrationRancher {
 
         @CustomType.Setter
         public Builder accessKey(String accessKey) {
-            this.accessKey = Objects.requireNonNull(accessKey);
+            if (accessKey == null) {
+              throw new MissingRequiredPropertyException("ElastigroupIntegrationRancher", "accessKey");
+            }
+            this.accessKey = accessKey;
             return this;
         }
         @CustomType.Setter
         public Builder masterHost(String masterHost) {
-            this.masterHost = Objects.requireNonNull(masterHost);
+            if (masterHost == null) {
+              throw new MissingRequiredPropertyException("ElastigroupIntegrationRancher", "masterHost");
+            }
+            this.masterHost = masterHost;
             return this;
         }
         @CustomType.Setter
         public Builder secretKey(String secretKey) {
-            this.secretKey = Objects.requireNonNull(secretKey);
+            if (secretKey == null) {
+              throw new MissingRequiredPropertyException("ElastigroupIntegrationRancher", "secretKey");
+            }
+            this.secretKey = secretKey;
             return this;
         }
         @CustomType.Setter
         public Builder version(@Nullable String version) {
+
             this.version = version;
             return this;
         }

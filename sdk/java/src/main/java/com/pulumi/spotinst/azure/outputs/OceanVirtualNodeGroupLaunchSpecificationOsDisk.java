@@ -4,6 +4,7 @@
 package com.pulumi.spotinst.azure.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -74,16 +75,21 @@ public final class OceanVirtualNodeGroupLaunchSpecificationOsDisk {
 
         @CustomType.Setter
         public Builder sizeGb(Integer sizeGb) {
-            this.sizeGb = Objects.requireNonNull(sizeGb);
+            if (sizeGb == null) {
+              throw new MissingRequiredPropertyException("OceanVirtualNodeGroupLaunchSpecificationOsDisk", "sizeGb");
+            }
+            this.sizeGb = sizeGb;
             return this;
         }
         @CustomType.Setter
         public Builder type(@Nullable String type) {
+
             this.type = type;
             return this;
         }
         @CustomType.Setter
         public Builder utilizeEphemeralStorage(@Nullable Boolean utilizeEphemeralStorage) {
+
             this.utilizeEphemeralStorage = utilizeEphemeralStorage;
             return this;
         }

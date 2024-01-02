@@ -74,6 +74,7 @@ public final class OceanNetwork {
 
         @CustomType.Setter
         public Builder networkInterfaces(@Nullable List<OceanNetworkNetworkInterface> networkInterfaces) {
+
             this.networkInterfaces = networkInterfaces;
             return this;
         }
@@ -82,11 +83,13 @@ public final class OceanNetwork {
         }
         @CustomType.Setter
         public Builder resourceGroupName(@Nullable String resourceGroupName) {
+
             this.resourceGroupName = resourceGroupName;
             return this;
         }
         @CustomType.Setter
         public Builder virtualNetworkName(@Nullable String virtualNetworkName) {
+
             this.virtualNetworkName = virtualNetworkName;
             return this;
         }

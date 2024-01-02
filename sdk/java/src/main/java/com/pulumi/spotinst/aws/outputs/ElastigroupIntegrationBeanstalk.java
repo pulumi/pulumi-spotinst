@@ -66,16 +66,19 @@ public final class ElastigroupIntegrationBeanstalk {
 
         @CustomType.Setter
         public Builder deploymentPreferences(@Nullable ElastigroupIntegrationBeanstalkDeploymentPreferences deploymentPreferences) {
+
             this.deploymentPreferences = deploymentPreferences;
             return this;
         }
         @CustomType.Setter
         public Builder environmentId(@Nullable String environmentId) {
+
             this.environmentId = environmentId;
             return this;
         }
         @CustomType.Setter
         public Builder managedActions(@Nullable ElastigroupIntegrationBeanstalkManagedActions managedActions) {
+
             this.managedActions = managedActions;
             return this;
         }

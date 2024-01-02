@@ -44,6 +44,7 @@ public final class OceanLaunchSpecStrategy {
 
         @CustomType.Setter
         public Builder preemptiblePercentage(@Nullable Integer preemptiblePercentage) {
+
             this.preemptiblePercentage = preemptiblePercentage;
             return this;
         }

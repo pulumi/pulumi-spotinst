@@ -4,6 +4,7 @@
 package com.pulumi.spotinst.gke.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.spotinst.gke.outputs.OceanImportBackendServiceNamedPort;
 import java.lang.String;
 import java.util.List;
@@ -80,11 +81,13 @@ public final class OceanImportBackendService {
 
         @CustomType.Setter
         public Builder locationType(@Nullable String locationType) {
+
             this.locationType = locationType;
             return this;
         }
         @CustomType.Setter
         public Builder namedPorts(@Nullable List<OceanImportBackendServiceNamedPort> namedPorts) {
+
             this.namedPorts = namedPorts;
             return this;
         }
@@ -93,12 +96,16 @@ public final class OceanImportBackendService {
         }
         @CustomType.Setter
         public Builder scheme(@Nullable String scheme) {
+
             this.scheme = scheme;
             return this;
         }
         @CustomType.Setter
         public Builder serviceName(String serviceName) {
-            this.serviceName = Objects.requireNonNull(serviceName);
+            if (serviceName == null) {
+              throw new MissingRequiredPropertyException("OceanImportBackendService", "serviceName");
+            }
+            this.serviceName = serviceName;
             return this;
         }
         public OceanImportBackendService build() {

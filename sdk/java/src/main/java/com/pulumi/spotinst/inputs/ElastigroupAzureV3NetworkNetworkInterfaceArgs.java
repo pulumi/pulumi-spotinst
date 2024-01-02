@@ -5,6 +5,7 @@ package com.pulumi.spotinst.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.spotinst.inputs.ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArgs;
 import com.pulumi.spotinst.inputs.ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArgs;
 import java.lang.Boolean;
@@ -136,9 +137,15 @@ public final class ElastigroupAzureV3NetworkNetworkInterfaceArgs extends com.pul
         }
 
         public ElastigroupAzureV3NetworkNetworkInterfaceArgs build() {
-            $.assignPublicIp = Objects.requireNonNull($.assignPublicIp, "expected parameter 'assignPublicIp' to be non-null");
-            $.isPrimary = Objects.requireNonNull($.isPrimary, "expected parameter 'isPrimary' to be non-null");
-            $.subnetName = Objects.requireNonNull($.subnetName, "expected parameter 'subnetName' to be non-null");
+            if ($.assignPublicIp == null) {
+                throw new MissingRequiredPropertyException("ElastigroupAzureV3NetworkNetworkInterfaceArgs", "assignPublicIp");
+            }
+            if ($.isPrimary == null) {
+                throw new MissingRequiredPropertyException("ElastigroupAzureV3NetworkNetworkInterfaceArgs", "isPrimary");
+            }
+            if ($.subnetName == null) {
+                throw new MissingRequiredPropertyException("ElastigroupAzureV3NetworkNetworkInterfaceArgs", "subnetName");
+            }
             return $;
         }
     }

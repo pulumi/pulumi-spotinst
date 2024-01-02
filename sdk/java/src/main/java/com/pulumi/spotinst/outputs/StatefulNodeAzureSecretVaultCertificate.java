@@ -42,11 +42,13 @@ public final class StatefulNodeAzureSecretVaultCertificate {
 
         @CustomType.Setter
         public Builder certificateStore(@Nullable String certificateStore) {
+
             this.certificateStore = certificateStore;
             return this;
         }
         @CustomType.Setter
         public Builder certificateUrl(@Nullable String certificateUrl) {
+
             this.certificateUrl = certificateUrl;
             return this;
         }

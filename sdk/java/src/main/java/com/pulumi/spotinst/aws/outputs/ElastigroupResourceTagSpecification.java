@@ -86,21 +86,25 @@ public final class ElastigroupResourceTagSpecification {
 
         @CustomType.Setter
         public Builder shouldTagAmis(@Nullable Boolean shouldTagAmis) {
+
             this.shouldTagAmis = shouldTagAmis;
             return this;
         }
         @CustomType.Setter
         public Builder shouldTagEnis(@Nullable Boolean shouldTagEnis) {
+
             this.shouldTagEnis = shouldTagEnis;
             return this;
         }
         @CustomType.Setter
         public Builder shouldTagSnapshots(@Nullable Boolean shouldTagSnapshots) {
+
             this.shouldTagSnapshots = shouldTagSnapshots;
             return this;
         }
         @CustomType.Setter
         public Builder shouldTagVolumes(@Nullable Boolean shouldTagVolumes) {
+
             this.shouldTagVolumes = shouldTagVolumes;
             return this;
         }

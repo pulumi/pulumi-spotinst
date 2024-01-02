@@ -5,6 +5,7 @@ package com.pulumi.spotinst;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
@@ -290,10 +291,18 @@ public final class SubscriptionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public SubscriptionArgs build() {
-            $.endpoint = Objects.requireNonNull($.endpoint, "expected parameter 'endpoint' to be non-null");
-            $.eventType = Objects.requireNonNull($.eventType, "expected parameter 'eventType' to be non-null");
-            $.protocol = Objects.requireNonNull($.protocol, "expected parameter 'protocol' to be non-null");
-            $.resourceId = Objects.requireNonNull($.resourceId, "expected parameter 'resourceId' to be non-null");
+            if ($.endpoint == null) {
+                throw new MissingRequiredPropertyException("SubscriptionArgs", "endpoint");
+            }
+            if ($.eventType == null) {
+                throw new MissingRequiredPropertyException("SubscriptionArgs", "eventType");
+            }
+            if ($.protocol == null) {
+                throw new MissingRequiredPropertyException("SubscriptionArgs", "protocol");
+            }
+            if ($.resourceId == null) {
+                throw new MissingRequiredPropertyException("SubscriptionArgs", "resourceId");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.spotinst.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.spotinst.inputs.StatefulNodeAzureNetworkNetworkInterfaceAdditionalIpConfigurationArgs;
 import com.pulumi.spotinst.inputs.StatefulNodeAzureNetworkNetworkInterfaceApplicationSecurityGroupArgs;
 import com.pulumi.spotinst.inputs.StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroupArgs;
@@ -235,8 +236,12 @@ public final class StatefulNodeAzureNetworkNetworkInterfaceArgs extends com.pulu
         }
 
         public StatefulNodeAzureNetworkNetworkInterfaceArgs build() {
-            $.isPrimary = Objects.requireNonNull($.isPrimary, "expected parameter 'isPrimary' to be non-null");
-            $.subnetName = Objects.requireNonNull($.subnetName, "expected parameter 'subnetName' to be non-null");
+            if ($.isPrimary == null) {
+                throw new MissingRequiredPropertyException("StatefulNodeAzureNetworkNetworkInterfaceArgs", "isPrimary");
+            }
+            if ($.subnetName == null) {
+                throw new MissingRequiredPropertyException("StatefulNodeAzureNetworkNetworkInterfaceArgs", "subnetName");
+            }
             return $;
         }
     }

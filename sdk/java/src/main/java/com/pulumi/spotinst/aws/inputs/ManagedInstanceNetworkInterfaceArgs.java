@@ -5,6 +5,7 @@ package com.pulumi.spotinst.aws.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -91,7 +92,9 @@ public final class ManagedInstanceNetworkInterfaceArgs extends com.pulumi.resour
         }
 
         public ManagedInstanceNetworkInterfaceArgs build() {
-            $.deviceIndex = Objects.requireNonNull($.deviceIndex, "expected parameter 'deviceIndex' to be non-null");
+            if ($.deviceIndex == null) {
+                throw new MissingRequiredPropertyException("ManagedInstanceNetworkInterfaceArgs", "deviceIndex");
+            }
             return $;
         }
     }

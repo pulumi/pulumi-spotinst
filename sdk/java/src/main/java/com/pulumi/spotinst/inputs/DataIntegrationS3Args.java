@@ -5,6 +5,7 @@ package com.pulumi.spotinst.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -93,7 +94,9 @@ public final class DataIntegrationS3Args extends com.pulumi.resources.ResourceAr
         }
 
         public DataIntegrationS3Args build() {
-            $.bucketName = Objects.requireNonNull($.bucketName, "expected parameter 'bucketName' to be non-null");
+            if ($.bucketName == null) {
+                throw new MissingRequiredPropertyException("DataIntegrationS3Args", "bucketName");
+            }
             return $;
         }
     }

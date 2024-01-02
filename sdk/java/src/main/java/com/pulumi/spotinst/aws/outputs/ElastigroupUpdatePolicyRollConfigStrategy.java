@@ -4,6 +4,7 @@
 package com.pulumi.spotinst.aws.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.spotinst.aws.outputs.ElastigroupUpdatePolicyRollConfigStrategyOnFailure;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -89,21 +90,27 @@ public final class ElastigroupUpdatePolicyRollConfigStrategy {
 
         @CustomType.Setter
         public Builder action(String action) {
-            this.action = Objects.requireNonNull(action);
+            if (action == null) {
+              throw new MissingRequiredPropertyException("ElastigroupUpdatePolicyRollConfigStrategy", "action");
+            }
+            this.action = action;
             return this;
         }
         @CustomType.Setter
         public Builder batchMinHealthyPercentage(@Nullable Integer batchMinHealthyPercentage) {
+
             this.batchMinHealthyPercentage = batchMinHealthyPercentage;
             return this;
         }
         @CustomType.Setter
         public Builder onFailure(@Nullable ElastigroupUpdatePolicyRollConfigStrategyOnFailure onFailure) {
+
             this.onFailure = onFailure;
             return this;
         }
         @CustomType.Setter
         public Builder shouldDrainInstances(@Nullable Boolean shouldDrainInstances) {
+
             this.shouldDrainInstances = shouldDrainInstances;
             return this;
         }

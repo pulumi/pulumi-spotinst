@@ -4,6 +4,7 @@
 package com.pulumi.spotinst.aws.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.spotinst.aws.outputs.ElastigroupScalingTargetPolicyDimension;
 import java.lang.Double;
 import java.lang.Integer;
@@ -312,11 +313,13 @@ public final class ElastigroupScalingTargetPolicy {
 
         @CustomType.Setter
         public Builder cooldown(@Nullable Integer cooldown) {
+
             this.cooldown = cooldown;
             return this;
         }
         @CustomType.Setter
         public Builder dimensions(@Nullable List<ElastigroupScalingTargetPolicyDimension> dimensions) {
+
             this.dimensions = dimensions;
             return this;
         }
@@ -325,56 +328,75 @@ public final class ElastigroupScalingTargetPolicy {
         }
         @CustomType.Setter
         public Builder evaluationPeriods(@Nullable Integer evaluationPeriods) {
+
             this.evaluationPeriods = evaluationPeriods;
             return this;
         }
         @CustomType.Setter
         public Builder maxCapacityPerScale(@Nullable String maxCapacityPerScale) {
+
             this.maxCapacityPerScale = maxCapacityPerScale;
             return this;
         }
         @CustomType.Setter
         public Builder metricName(String metricName) {
-            this.metricName = Objects.requireNonNull(metricName);
+            if (metricName == null) {
+              throw new MissingRequiredPropertyException("ElastigroupScalingTargetPolicy", "metricName");
+            }
+            this.metricName = metricName;
             return this;
         }
         @CustomType.Setter
         public Builder namespace(String namespace) {
-            this.namespace = Objects.requireNonNull(namespace);
+            if (namespace == null) {
+              throw new MissingRequiredPropertyException("ElastigroupScalingTargetPolicy", "namespace");
+            }
+            this.namespace = namespace;
             return this;
         }
         @CustomType.Setter
         public Builder period(@Nullable Integer period) {
+
             this.period = period;
             return this;
         }
         @CustomType.Setter
         public Builder policyName(String policyName) {
-            this.policyName = Objects.requireNonNull(policyName);
+            if (policyName == null) {
+              throw new MissingRequiredPropertyException("ElastigroupScalingTargetPolicy", "policyName");
+            }
+            this.policyName = policyName;
             return this;
         }
         @CustomType.Setter
         public Builder predictiveMode(@Nullable String predictiveMode) {
+
             this.predictiveMode = predictiveMode;
             return this;
         }
         @CustomType.Setter
         public Builder source(@Nullable String source) {
+
             this.source = source;
             return this;
         }
         @CustomType.Setter
         public Builder statistic(@Nullable String statistic) {
+
             this.statistic = statistic;
             return this;
         }
         @CustomType.Setter
         public Builder target(Double target) {
-            this.target = Objects.requireNonNull(target);
+            if (target == null) {
+              throw new MissingRequiredPropertyException("ElastigroupScalingTargetPolicy", "target");
+            }
+            this.target = target;
             return this;
         }
         @CustomType.Setter
         public Builder unit(@Nullable String unit) {
+
             this.unit = unit;
             return this;
         }

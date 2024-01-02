@@ -4,6 +4,7 @@
 package com.pulumi.spotinst.aws.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.spotinst.aws.outputs.ElastigroupItfDefaultStaticTargetGroup;
 import com.pulumi.spotinst.aws.outputs.ElastigroupItfLoadBalancer;
 import com.pulumi.spotinst.aws.outputs.ElastigroupItfTargetGroupConfig;
@@ -72,17 +73,24 @@ public final class ElastigroupItf {
 
         @CustomType.Setter
         public Builder defaultStaticTargetGroup(@Nullable ElastigroupItfDefaultStaticTargetGroup defaultStaticTargetGroup) {
+
             this.defaultStaticTargetGroup = defaultStaticTargetGroup;
             return this;
         }
         @CustomType.Setter
         public Builder fixedTargetGroups(Boolean fixedTargetGroups) {
-            this.fixedTargetGroups = Objects.requireNonNull(fixedTargetGroups);
+            if (fixedTargetGroups == null) {
+              throw new MissingRequiredPropertyException("ElastigroupItf", "fixedTargetGroups");
+            }
+            this.fixedTargetGroups = fixedTargetGroups;
             return this;
         }
         @CustomType.Setter
         public Builder loadBalancers(List<ElastigroupItfLoadBalancer> loadBalancers) {
-            this.loadBalancers = Objects.requireNonNull(loadBalancers);
+            if (loadBalancers == null) {
+              throw new MissingRequiredPropertyException("ElastigroupItf", "loadBalancers");
+            }
+            this.loadBalancers = loadBalancers;
             return this;
         }
         public Builder loadBalancers(ElastigroupItfLoadBalancer... loadBalancers) {
@@ -90,12 +98,16 @@ public final class ElastigroupItf {
         }
         @CustomType.Setter
         public Builder migrationHealthinessThreshold(@Nullable Integer migrationHealthinessThreshold) {
+
             this.migrationHealthinessThreshold = migrationHealthinessThreshold;
             return this;
         }
         @CustomType.Setter
         public Builder targetGroupConfigs(List<ElastigroupItfTargetGroupConfig> targetGroupConfigs) {
-            this.targetGroupConfigs = Objects.requireNonNull(targetGroupConfigs);
+            if (targetGroupConfigs == null) {
+              throw new MissingRequiredPropertyException("ElastigroupItf", "targetGroupConfigs");
+            }
+            this.targetGroupConfigs = targetGroupConfigs;
             return this;
         }
         public Builder targetGroupConfigs(ElastigroupItfTargetGroupConfig... targetGroupConfigs) {
@@ -103,7 +115,10 @@ public final class ElastigroupItf {
         }
         @CustomType.Setter
         public Builder weightStrategy(String weightStrategy) {
-            this.weightStrategy = Objects.requireNonNull(weightStrategy);
+            if (weightStrategy == null) {
+              throw new MissingRequiredPropertyException("ElastigroupItf", "weightStrategy");
+            }
+            this.weightStrategy = weightStrategy;
             return this;
         }
         public ElastigroupItf build() {

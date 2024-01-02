@@ -5,6 +5,7 @@ package com.pulumi.spotinst.aws.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -129,9 +130,15 @@ public final class OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs extends com.p
         }
 
         public OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs build() {
-            $.baseSize = Objects.requireNonNull($.baseSize, "expected parameter 'baseSize' to be non-null");
-            $.resource = Objects.requireNonNull($.resource, "expected parameter 'resource' to be non-null");
-            $.sizePerResourceUnit = Objects.requireNonNull($.sizePerResourceUnit, "expected parameter 'sizePerResourceUnit' to be non-null");
+            if ($.baseSize == null) {
+                throw new MissingRequiredPropertyException("OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs", "baseSize");
+            }
+            if ($.resource == null) {
+                throw new MissingRequiredPropertyException("OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs", "resource");
+            }
+            if ($.sizePerResourceUnit == null) {
+                throw new MissingRequiredPropertyException("OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs", "sizePerResourceUnit");
+            }
             return $;
         }
     }

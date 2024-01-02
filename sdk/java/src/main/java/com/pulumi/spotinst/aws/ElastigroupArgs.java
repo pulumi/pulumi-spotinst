@@ -5,6 +5,7 @@ package com.pulumi.spotinst.aws;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.spotinst.aws.inputs.ElastigroupCpuOptionsArgs;
 import com.pulumi.spotinst.aws.inputs.ElastigroupEbsBlockDeviceArgs;
 import com.pulumi.spotinst.aws.inputs.ElastigroupEphemeralBlockDeviceArgs;
@@ -3198,10 +3199,18 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ElastigroupArgs build() {
-            $.fallbackToOndemand = Objects.requireNonNull($.fallbackToOndemand, "expected parameter 'fallbackToOndemand' to be non-null");
-            $.orientation = Objects.requireNonNull($.orientation, "expected parameter 'orientation' to be non-null");
-            $.product = Objects.requireNonNull($.product, "expected parameter 'product' to be non-null");
-            $.securityGroups = Objects.requireNonNull($.securityGroups, "expected parameter 'securityGroups' to be non-null");
+            if ($.fallbackToOndemand == null) {
+                throw new MissingRequiredPropertyException("ElastigroupArgs", "fallbackToOndemand");
+            }
+            if ($.orientation == null) {
+                throw new MissingRequiredPropertyException("ElastigroupArgs", "orientation");
+            }
+            if ($.product == null) {
+                throw new MissingRequiredPropertyException("ElastigroupArgs", "product");
+            }
+            if ($.securityGroups == null) {
+                throw new MissingRequiredPropertyException("ElastigroupArgs", "securityGroups");
+            }
             return $;
         }
     }

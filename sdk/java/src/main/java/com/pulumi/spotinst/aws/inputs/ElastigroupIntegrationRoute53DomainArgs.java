@@ -5,6 +5,7 @@ package com.pulumi.spotinst.aws.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.spotinst.aws.inputs.ElastigroupIntegrationRoute53DomainRecordSetArgs;
 import java.lang.String;
 import java.util.List;
@@ -199,8 +200,12 @@ public final class ElastigroupIntegrationRoute53DomainArgs extends com.pulumi.re
         }
 
         public ElastigroupIntegrationRoute53DomainArgs build() {
-            $.hostedZoneId = Objects.requireNonNull($.hostedZoneId, "expected parameter 'hostedZoneId' to be non-null");
-            $.recordSets = Objects.requireNonNull($.recordSets, "expected parameter 'recordSets' to be non-null");
+            if ($.hostedZoneId == null) {
+                throw new MissingRequiredPropertyException("ElastigroupIntegrationRoute53DomainArgs", "hostedZoneId");
+            }
+            if ($.recordSets == null) {
+                throw new MissingRequiredPropertyException("ElastigroupIntegrationRoute53DomainArgs", "recordSets");
+            }
             return $;
         }
     }

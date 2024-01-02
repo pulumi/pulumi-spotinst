@@ -4,6 +4,7 @@
 package com.pulumi.spotinst.aws.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.spotinst.aws.outputs.ElastigroupItfLoadBalancerListenerRule;
 import java.lang.String;
 import java.util.List;
@@ -42,7 +43,10 @@ public final class ElastigroupItfLoadBalancer {
 
         @CustomType.Setter
         public Builder listenerRules(List<ElastigroupItfLoadBalancerListenerRule> listenerRules) {
-            this.listenerRules = Objects.requireNonNull(listenerRules);
+            if (listenerRules == null) {
+              throw new MissingRequiredPropertyException("ElastigroupItfLoadBalancer", "listenerRules");
+            }
+            this.listenerRules = listenerRules;
             return this;
         }
         public Builder listenerRules(ElastigroupItfLoadBalancerListenerRule... listenerRules) {
@@ -50,7 +54,10 @@ public final class ElastigroupItfLoadBalancer {
         }
         @CustomType.Setter
         public Builder loadBalancerArn(String loadBalancerArn) {
-            this.loadBalancerArn = Objects.requireNonNull(loadBalancerArn);
+            if (loadBalancerArn == null) {
+              throw new MissingRequiredPropertyException("ElastigroupItfLoadBalancer", "loadBalancerArn");
+            }
+            this.loadBalancerArn = loadBalancerArn;
             return this;
         }
         public ElastigroupItfLoadBalancer build() {

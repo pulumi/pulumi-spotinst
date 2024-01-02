@@ -4,6 +4,7 @@
 package com.pulumi.spotinst.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -141,47 +142,66 @@ public final class HealthCheckCheck {
 
         @CustomType.Setter
         public Builder endPoint(@Nullable String endPoint) {
+
             this.endPoint = endPoint;
             return this;
         }
         @CustomType.Setter
         public Builder endpoint(@Nullable String endpoint) {
+
             this.endpoint = endpoint;
             return this;
         }
         @CustomType.Setter
         public Builder healthy(Integer healthy) {
-            this.healthy = Objects.requireNonNull(healthy);
+            if (healthy == null) {
+              throw new MissingRequiredPropertyException("HealthCheckCheck", "healthy");
+            }
+            this.healthy = healthy;
             return this;
         }
         @CustomType.Setter
         public Builder interval(Integer interval) {
-            this.interval = Objects.requireNonNull(interval);
+            if (interval == null) {
+              throw new MissingRequiredPropertyException("HealthCheckCheck", "interval");
+            }
+            this.interval = interval;
             return this;
         }
         @CustomType.Setter
         public Builder port(Integer port) {
-            this.port = Objects.requireNonNull(port);
+            if (port == null) {
+              throw new MissingRequiredPropertyException("HealthCheckCheck", "port");
+            }
+            this.port = port;
             return this;
         }
         @CustomType.Setter
         public Builder protocol(String protocol) {
-            this.protocol = Objects.requireNonNull(protocol);
+            if (protocol == null) {
+              throw new MissingRequiredPropertyException("HealthCheckCheck", "protocol");
+            }
+            this.protocol = protocol;
             return this;
         }
         @CustomType.Setter
         public Builder timeOut(@Nullable Integer timeOut) {
+
             this.timeOut = timeOut;
             return this;
         }
         @CustomType.Setter
         public Builder timeout(@Nullable Integer timeout) {
+
             this.timeout = timeout;
             return this;
         }
         @CustomType.Setter
         public Builder unhealthy(Integer unhealthy) {
-            this.unhealthy = Objects.requireNonNull(unhealthy);
+            if (unhealthy == null) {
+              throw new MissingRequiredPropertyException("HealthCheckCheck", "unhealthy");
+            }
+            this.unhealthy = unhealthy;
             return this;
         }
         public HealthCheckCheck build() {

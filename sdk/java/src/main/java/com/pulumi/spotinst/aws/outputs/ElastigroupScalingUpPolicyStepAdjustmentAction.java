@@ -4,6 +4,7 @@
 package com.pulumi.spotinst.aws.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -128,37 +129,46 @@ public final class ElastigroupScalingUpPolicyStepAdjustmentAction {
 
         @CustomType.Setter
         public Builder adjustment(@Nullable String adjustment) {
+
             this.adjustment = adjustment;
             return this;
         }
         @CustomType.Setter
         public Builder maxTargetCapacity(@Nullable String maxTargetCapacity) {
+
             this.maxTargetCapacity = maxTargetCapacity;
             return this;
         }
         @CustomType.Setter
         public Builder maximum(@Nullable String maximum) {
+
             this.maximum = maximum;
             return this;
         }
         @CustomType.Setter
         public Builder minTargetCapacity(@Nullable String minTargetCapacity) {
+
             this.minTargetCapacity = minTargetCapacity;
             return this;
         }
         @CustomType.Setter
         public Builder minimum(@Nullable String minimum) {
+
             this.minimum = minimum;
             return this;
         }
         @CustomType.Setter
         public Builder target(@Nullable String target) {
+
             this.target = target;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("ElastigroupScalingUpPolicyStepAdjustmentAction", "type");
+            }
+            this.type = type;
             return this;
         }
         public ElastigroupScalingUpPolicyStepAdjustmentAction build() {

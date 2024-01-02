@@ -44,6 +44,7 @@ public final class OceanLaunchSpecAutoscaleDown {
 
         @CustomType.Setter
         public Builder maxScaleDownPercentage(@Nullable Double maxScaleDownPercentage) {
+
             this.maxScaleDownPercentage = maxScaleDownPercentage;
             return this;
         }

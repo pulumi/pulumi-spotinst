@@ -5,6 +5,7 @@ package com.pulumi.spotinst.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -105,10 +106,18 @@ public final class StatefulNodeAzureImageGalleryArgs extends com.pulumi.resource
         }
 
         public StatefulNodeAzureImageGalleryArgs build() {
-            $.galleryName = Objects.requireNonNull($.galleryName, "expected parameter 'galleryName' to be non-null");
-            $.galleryResourceGroupName = Objects.requireNonNull($.galleryResourceGroupName, "expected parameter 'galleryResourceGroupName' to be non-null");
-            $.imageName = Objects.requireNonNull($.imageName, "expected parameter 'imageName' to be non-null");
-            $.versionName = Objects.requireNonNull($.versionName, "expected parameter 'versionName' to be non-null");
+            if ($.galleryName == null) {
+                throw new MissingRequiredPropertyException("StatefulNodeAzureImageGalleryArgs", "galleryName");
+            }
+            if ($.galleryResourceGroupName == null) {
+                throw new MissingRequiredPropertyException("StatefulNodeAzureImageGalleryArgs", "galleryResourceGroupName");
+            }
+            if ($.imageName == null) {
+                throw new MissingRequiredPropertyException("StatefulNodeAzureImageGalleryArgs", "imageName");
+            }
+            if ($.versionName == null) {
+                throw new MissingRequiredPropertyException("StatefulNodeAzureImageGalleryArgs", "versionName");
+            }
             return $;
         }
     }

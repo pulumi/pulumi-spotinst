@@ -5,6 +5,7 @@ package com.pulumi.spotinst.gke;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.spotinst.gke.inputs.OceanImportAutoscalerArgs;
 import com.pulumi.spotinst.gke.inputs.OceanImportBackendServiceArgs;
 import com.pulumi.spotinst.gke.inputs.OceanImportScheduledTaskArgs;
@@ -644,8 +645,12 @@ public final class OceanImportArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public OceanImportArgs build() {
-            $.clusterName = Objects.requireNonNull($.clusterName, "expected parameter 'clusterName' to be non-null");
-            $.location = Objects.requireNonNull($.location, "expected parameter 'location' to be non-null");
+            if ($.clusterName == null) {
+                throw new MissingRequiredPropertyException("OceanImportArgs", "clusterName");
+            }
+            if ($.location == null) {
+                throw new MissingRequiredPropertyException("OceanImportArgs", "location");
+            }
             return $;
         }
     }

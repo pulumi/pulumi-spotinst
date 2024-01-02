@@ -5,6 +5,7 @@ package com.pulumi.spotinst.aws.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.spotinst.aws.inputs.ElastigroupScalingTargetPolicyDimensionArgs;
 import java.lang.Double;
 import java.lang.Integer;
@@ -726,10 +727,18 @@ public final class ElastigroupScalingTargetPolicyArgs extends com.pulumi.resourc
         }
 
         public ElastigroupScalingTargetPolicyArgs build() {
-            $.metricName = Objects.requireNonNull($.metricName, "expected parameter 'metricName' to be non-null");
-            $.namespace = Objects.requireNonNull($.namespace, "expected parameter 'namespace' to be non-null");
-            $.policyName = Objects.requireNonNull($.policyName, "expected parameter 'policyName' to be non-null");
-            $.target = Objects.requireNonNull($.target, "expected parameter 'target' to be non-null");
+            if ($.metricName == null) {
+                throw new MissingRequiredPropertyException("ElastigroupScalingTargetPolicyArgs", "metricName");
+            }
+            if ($.namespace == null) {
+                throw new MissingRequiredPropertyException("ElastigroupScalingTargetPolicyArgs", "namespace");
+            }
+            if ($.policyName == null) {
+                throw new MissingRequiredPropertyException("ElastigroupScalingTargetPolicyArgs", "policyName");
+            }
+            if ($.target == null) {
+                throw new MissingRequiredPropertyException("ElastigroupScalingTargetPolicyArgs", "target");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.spotinst.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -109,9 +110,15 @@ public final class StatefulNodeAzureDetachDataDiskArgs extends com.pulumi.resour
         }
 
         public StatefulNodeAzureDetachDataDiskArgs build() {
-            $.dataDiskName = Objects.requireNonNull($.dataDiskName, "expected parameter 'dataDiskName' to be non-null");
-            $.dataDiskResourceGroupName = Objects.requireNonNull($.dataDiskResourceGroupName, "expected parameter 'dataDiskResourceGroupName' to be non-null");
-            $.shouldDeallocate = Objects.requireNonNull($.shouldDeallocate, "expected parameter 'shouldDeallocate' to be non-null");
+            if ($.dataDiskName == null) {
+                throw new MissingRequiredPropertyException("StatefulNodeAzureDetachDataDiskArgs", "dataDiskName");
+            }
+            if ($.dataDiskResourceGroupName == null) {
+                throw new MissingRequiredPropertyException("StatefulNodeAzureDetachDataDiskArgs", "dataDiskResourceGroupName");
+            }
+            if ($.shouldDeallocate == null) {
+                throw new MissingRequiredPropertyException("StatefulNodeAzureDetachDataDiskArgs", "shouldDeallocate");
+            }
             return $;
         }
     }

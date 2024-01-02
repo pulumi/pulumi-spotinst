@@ -5,6 +5,7 @@ package com.pulumi.spotinst.gcp.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -122,8 +123,12 @@ public final class ElastigroupSubnetArgs extends com.pulumi.resources.ResourceAr
         }
 
         public ElastigroupSubnetArgs build() {
-            $.region = Objects.requireNonNull($.region, "expected parameter 'region' to be non-null");
-            $.subnetNames = Objects.requireNonNull($.subnetNames, "expected parameter 'subnetNames' to be non-null");
+            if ($.region == null) {
+                throw new MissingRequiredPropertyException("ElastigroupSubnetArgs", "region");
+            }
+            if ($.subnetNames == null) {
+                throw new MissingRequiredPropertyException("ElastigroupSubnetArgs", "subnetNames");
+            }
             return $;
         }
     }

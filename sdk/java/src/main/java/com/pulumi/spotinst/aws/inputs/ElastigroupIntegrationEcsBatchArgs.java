@@ -5,6 +5,7 @@ package com.pulumi.spotinst.aws.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -205,7 +206,9 @@ public final class ElastigroupIntegrationEcsBatchArgs extends com.pulumi.resourc
         }
 
         public ElastigroupIntegrationEcsBatchArgs build() {
-            $.jobQueueNames = Objects.requireNonNull($.jobQueueNames, "expected parameter 'jobQueueNames' to be non-null");
+            if ($.jobQueueNames == null) {
+                throw new MissingRequiredPropertyException("ElastigroupIntegrationEcsBatchArgs", "jobQueueNames");
+            }
             return $;
         }
     }

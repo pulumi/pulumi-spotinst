@@ -4,6 +4,7 @@
 package com.pulumi.spotinst.ecs.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -73,16 +74,23 @@ public final class OceanOptimizeImages {
 
         @CustomType.Setter
         public Builder performAt(String performAt) {
-            this.performAt = Objects.requireNonNull(performAt);
+            if (performAt == null) {
+              throw new MissingRequiredPropertyException("OceanOptimizeImages", "performAt");
+            }
+            this.performAt = performAt;
             return this;
         }
         @CustomType.Setter
         public Builder shouldOptimizeEcsAmi(Boolean shouldOptimizeEcsAmi) {
-            this.shouldOptimizeEcsAmi = Objects.requireNonNull(shouldOptimizeEcsAmi);
+            if (shouldOptimizeEcsAmi == null) {
+              throw new MissingRequiredPropertyException("OceanOptimizeImages", "shouldOptimizeEcsAmi");
+            }
+            this.shouldOptimizeEcsAmi = shouldOptimizeEcsAmi;
             return this;
         }
         @CustomType.Setter
         public Builder timeWindows(@Nullable List<String> timeWindows) {
+
             this.timeWindows = timeWindows;
             return this;
         }

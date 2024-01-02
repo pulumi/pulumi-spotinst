@@ -4,6 +4,7 @@
 package com.pulumi.spotinst.aws.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -57,12 +58,18 @@ public final class MrScalarInstanceWeight {
 
         @CustomType.Setter
         public Builder instanceType(String instanceType) {
-            this.instanceType = Objects.requireNonNull(instanceType);
+            if (instanceType == null) {
+              throw new MissingRequiredPropertyException("MrScalarInstanceWeight", "instanceType");
+            }
+            this.instanceType = instanceType;
             return this;
         }
         @CustomType.Setter
         public Builder weightedCapacity(Integer weightedCapacity) {
-            this.weightedCapacity = Objects.requireNonNull(weightedCapacity);
+            if (weightedCapacity == null) {
+              throw new MissingRequiredPropertyException("MrScalarInstanceWeight", "weightedCapacity");
+            }
+            this.weightedCapacity = weightedCapacity;
             return this;
         }
         public MrScalarInstanceWeight build() {

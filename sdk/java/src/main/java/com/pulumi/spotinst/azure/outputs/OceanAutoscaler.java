@@ -89,21 +89,25 @@ public final class OceanAutoscaler {
 
         @CustomType.Setter
         public Builder autoscaleDown(@Nullable OceanAutoscalerAutoscaleDown autoscaleDown) {
+
             this.autoscaleDown = autoscaleDown;
             return this;
         }
         @CustomType.Setter
         public Builder autoscaleHeadroom(@Nullable OceanAutoscalerAutoscaleHeadroom autoscaleHeadroom) {
+
             this.autoscaleHeadroom = autoscaleHeadroom;
             return this;
         }
         @CustomType.Setter
         public Builder autoscaleIsEnabled(@Nullable Boolean autoscaleIsEnabled) {
+
             this.autoscaleIsEnabled = autoscaleIsEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder resourceLimits(@Nullable OceanAutoscalerResourceLimits resourceLimits) {
+
             this.resourceLimits = resourceLimits;
             return this;
         }

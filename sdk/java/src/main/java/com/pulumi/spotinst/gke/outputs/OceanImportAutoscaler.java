@@ -146,41 +146,49 @@ public final class OceanImportAutoscaler {
 
         @CustomType.Setter
         public Builder autoHeadroomPercentage(@Nullable Integer autoHeadroomPercentage) {
+
             this.autoHeadroomPercentage = autoHeadroomPercentage;
             return this;
         }
         @CustomType.Setter
         public Builder cooldown(@Nullable Integer cooldown) {
+
             this.cooldown = cooldown;
             return this;
         }
         @CustomType.Setter
         public Builder down(@Nullable OceanImportAutoscalerDown down) {
+
             this.down = down;
             return this;
         }
         @CustomType.Setter
         public Builder enableAutomaticAndManualHeadroom(@Nullable Boolean enableAutomaticAndManualHeadroom) {
+
             this.enableAutomaticAndManualHeadroom = enableAutomaticAndManualHeadroom;
             return this;
         }
         @CustomType.Setter
         public Builder headroom(@Nullable OceanImportAutoscalerHeadroom headroom) {
+
             this.headroom = headroom;
             return this;
         }
         @CustomType.Setter
         public Builder isAutoConfig(@Nullable Boolean isAutoConfig) {
+
             this.isAutoConfig = isAutoConfig;
             return this;
         }
         @CustomType.Setter
         public Builder isEnabled(@Nullable Boolean isEnabled) {
+
             this.isEnabled = isEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder resourceLimits(@Nullable OceanImportAutoscalerResourceLimits resourceLimits) {
+
             this.resourceLimits = resourceLimits;
             return this;
         }

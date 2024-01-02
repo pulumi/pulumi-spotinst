@@ -5,6 +5,7 @@ package com.pulumi.spotinst.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.util.Objects;
@@ -193,11 +194,21 @@ public final class StatefulNodeAzureDeleteArgs extends com.pulumi.resources.Reso
         }
 
         public StatefulNodeAzureDeleteArgs build() {
-            $.diskShouldDeallocate = Objects.requireNonNull($.diskShouldDeallocate, "expected parameter 'diskShouldDeallocate' to be non-null");
-            $.networkShouldDeallocate = Objects.requireNonNull($.networkShouldDeallocate, "expected parameter 'networkShouldDeallocate' to be non-null");
-            $.publicIpShouldDeallocate = Objects.requireNonNull($.publicIpShouldDeallocate, "expected parameter 'publicIpShouldDeallocate' to be non-null");
-            $.shouldTerminateVm = Objects.requireNonNull($.shouldTerminateVm, "expected parameter 'shouldTerminateVm' to be non-null");
-            $.snapshotShouldDeallocate = Objects.requireNonNull($.snapshotShouldDeallocate, "expected parameter 'snapshotShouldDeallocate' to be non-null");
+            if ($.diskShouldDeallocate == null) {
+                throw new MissingRequiredPropertyException("StatefulNodeAzureDeleteArgs", "diskShouldDeallocate");
+            }
+            if ($.networkShouldDeallocate == null) {
+                throw new MissingRequiredPropertyException("StatefulNodeAzureDeleteArgs", "networkShouldDeallocate");
+            }
+            if ($.publicIpShouldDeallocate == null) {
+                throw new MissingRequiredPropertyException("StatefulNodeAzureDeleteArgs", "publicIpShouldDeallocate");
+            }
+            if ($.shouldTerminateVm == null) {
+                throw new MissingRequiredPropertyException("StatefulNodeAzureDeleteArgs", "shouldTerminateVm");
+            }
+            if ($.snapshotShouldDeallocate == null) {
+                throw new MissingRequiredPropertyException("StatefulNodeAzureDeleteArgs", "snapshotShouldDeallocate");
+            }
             return $;
         }
     }

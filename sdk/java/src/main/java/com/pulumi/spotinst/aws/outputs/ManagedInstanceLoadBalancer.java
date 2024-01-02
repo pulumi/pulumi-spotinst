@@ -4,6 +4,7 @@
 package com.pulumi.spotinst.aws.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -73,37 +74,46 @@ public final class ManagedInstanceLoadBalancer {
 
         @CustomType.Setter
         public Builder arn(@Nullable String arn) {
+
             this.arn = arn;
             return this;
         }
         @CustomType.Setter
         public Builder autoWeight(@Nullable Boolean autoWeight) {
+
             this.autoWeight = autoWeight;
             return this;
         }
         @CustomType.Setter
         public Builder azAwareness(@Nullable Boolean azAwareness) {
+
             this.azAwareness = azAwareness;
             return this;
         }
         @CustomType.Setter
         public Builder balancerId(@Nullable String balancerId) {
+
             this.balancerId = balancerId;
             return this;
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder targetSetId(@Nullable String targetSetId) {
+
             this.targetSetId = targetSetId;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("ManagedInstanceLoadBalancer", "type");
+            }
+            this.type = type;
             return this;
         }
         public ManagedInstanceLoadBalancer build() {

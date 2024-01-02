@@ -5,6 +5,7 @@ package com.pulumi.spotinst.aws.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -432,7 +433,9 @@ public final class ElastigroupNetworkInterfaceArgs extends com.pulumi.resources.
         }
 
         public ElastigroupNetworkInterfaceArgs build() {
-            $.deviceIndex = Objects.requireNonNull($.deviceIndex, "expected parameter 'deviceIndex' to be non-null");
+            if ($.deviceIndex == null) {
+                throw new MissingRequiredPropertyException("ElastigroupNetworkInterfaceArgs", "deviceIndex");
+            }
             return $;
         }
     }

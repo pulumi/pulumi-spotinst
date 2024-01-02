@@ -4,6 +4,7 @@
 package com.pulumi.spotinst.aws.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.spotinst.aws.outputs.ElastigroupIntegrationNomadAutoscaleConstraint;
 import com.pulumi.spotinst.aws.outputs.ElastigroupIntegrationNomadAutoscaleDown;
 import com.pulumi.spotinst.aws.outputs.ElastigroupIntegrationNomadAutoscaleHeadroom;
@@ -196,11 +197,13 @@ public final class ElastigroupIntegrationNomad {
 
         @CustomType.Setter
         public Builder aclToken(@Nullable String aclToken) {
+
             this.aclToken = aclToken;
             return this;
         }
         @CustomType.Setter
         public Builder autoscaleConstraints(@Nullable List<ElastigroupIntegrationNomadAutoscaleConstraint> autoscaleConstraints) {
+
             this.autoscaleConstraints = autoscaleConstraints;
             return this;
         }
@@ -209,32 +212,42 @@ public final class ElastigroupIntegrationNomad {
         }
         @CustomType.Setter
         public Builder autoscaleCooldown(@Nullable Integer autoscaleCooldown) {
+
             this.autoscaleCooldown = autoscaleCooldown;
             return this;
         }
         @CustomType.Setter
         public Builder autoscaleDown(@Nullable ElastigroupIntegrationNomadAutoscaleDown autoscaleDown) {
+
             this.autoscaleDown = autoscaleDown;
             return this;
         }
         @CustomType.Setter
         public Builder autoscaleHeadroom(@Nullable ElastigroupIntegrationNomadAutoscaleHeadroom autoscaleHeadroom) {
+
             this.autoscaleHeadroom = autoscaleHeadroom;
             return this;
         }
         @CustomType.Setter
         public Builder autoscaleIsEnabled(@Nullable Boolean autoscaleIsEnabled) {
+
             this.autoscaleIsEnabled = autoscaleIsEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder masterHost(String masterHost) {
-            this.masterHost = Objects.requireNonNull(masterHost);
+            if (masterHost == null) {
+              throw new MissingRequiredPropertyException("ElastigroupIntegrationNomad", "masterHost");
+            }
+            this.masterHost = masterHost;
             return this;
         }
         @CustomType.Setter
         public Builder masterPort(Integer masterPort) {
-            this.masterPort = Objects.requireNonNull(masterPort);
+            if (masterPort == null) {
+              throw new MissingRequiredPropertyException("ElastigroupIntegrationNomad", "masterPort");
+            }
+            this.masterPort = masterPort;
             return this;
         }
         public ElastigroupIntegrationNomad build() {

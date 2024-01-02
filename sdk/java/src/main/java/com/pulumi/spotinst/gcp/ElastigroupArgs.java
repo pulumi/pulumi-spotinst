@@ -5,6 +5,7 @@ package com.pulumi.spotinst.gcp;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.spotinst.gcp.inputs.ElastigroupBackendServiceArgs;
 import com.pulumi.spotinst.gcp.inputs.ElastigroupDiskArgs;
 import com.pulumi.spotinst.gcp.inputs.ElastigroupGpuArgs;
@@ -1541,7 +1542,9 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ElastigroupArgs build() {
-            $.desiredCapacity = Objects.requireNonNull($.desiredCapacity, "expected parameter 'desiredCapacity' to be non-null");
+            if ($.desiredCapacity == null) {
+                throw new MissingRequiredPropertyException("ElastigroupArgs", "desiredCapacity");
+            }
             return $;
         }
     }

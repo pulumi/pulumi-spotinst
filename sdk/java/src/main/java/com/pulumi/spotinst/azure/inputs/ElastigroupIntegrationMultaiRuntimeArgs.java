@@ -5,6 +5,7 @@ package com.pulumi.spotinst.azure.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -54,7 +55,9 @@ public final class ElastigroupIntegrationMultaiRuntimeArgs extends com.pulumi.re
         }
 
         public ElastigroupIntegrationMultaiRuntimeArgs build() {
-            $.deploymentId = Objects.requireNonNull($.deploymentId, "expected parameter 'deploymentId' to be non-null");
+            if ($.deploymentId == null) {
+                throw new MissingRequiredPropertyException("ElastigroupIntegrationMultaiRuntimeArgs", "deploymentId");
+            }
             return $;
         }
     }

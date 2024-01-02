@@ -5,6 +5,7 @@ package com.pulumi.spotinst.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -108,8 +109,12 @@ public final class StatefulNodeAzureImportVmArgs extends com.pulumi.resources.Re
         }
 
         public StatefulNodeAzureImportVmArgs build() {
-            $.originalVmName = Objects.requireNonNull($.originalVmName, "expected parameter 'originalVmName' to be non-null");
-            $.resourceGroupName = Objects.requireNonNull($.resourceGroupName, "expected parameter 'resourceGroupName' to be non-null");
+            if ($.originalVmName == null) {
+                throw new MissingRequiredPropertyException("StatefulNodeAzureImportVmArgs", "originalVmName");
+            }
+            if ($.resourceGroupName == null) {
+                throw new MissingRequiredPropertyException("StatefulNodeAzureImportVmArgs", "resourceGroupName");
+            }
             return $;
         }
     }

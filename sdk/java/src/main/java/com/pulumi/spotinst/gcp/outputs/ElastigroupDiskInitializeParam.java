@@ -4,6 +4,7 @@
 package com.pulumi.spotinst.gcp.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -120,17 +121,22 @@ public final class ElastigroupDiskInitializeParam {
 
         @CustomType.Setter
         public Builder diskSizeGb(@Nullable String diskSizeGb) {
+
             this.diskSizeGb = diskSizeGb;
             return this;
         }
         @CustomType.Setter
         public Builder diskType(@Nullable String diskType) {
+
             this.diskType = diskType;
             return this;
         }
         @CustomType.Setter
         public Builder sourceImage(String sourceImage) {
-            this.sourceImage = Objects.requireNonNull(sourceImage);
+            if (sourceImage == null) {
+              throw new MissingRequiredPropertyException("ElastigroupDiskInitializeParam", "sourceImage");
+            }
+            this.sourceImage = sourceImage;
             return this;
         }
         public ElastigroupDiskInitializeParam build() {

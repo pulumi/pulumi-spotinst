@@ -4,6 +4,7 @@
 package com.pulumi.spotinst.aws.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.spotinst.aws.outputs.ElastigroupScalingUpPolicyStepAdjustmentAction;
 import java.lang.Integer;
 import java.util.Objects;
@@ -69,12 +70,18 @@ public final class ElastigroupScalingUpPolicyStepAdjustment {
 
         @CustomType.Setter
         public Builder action(ElastigroupScalingUpPolicyStepAdjustmentAction action) {
-            this.action = Objects.requireNonNull(action);
+            if (action == null) {
+              throw new MissingRequiredPropertyException("ElastigroupScalingUpPolicyStepAdjustment", "action");
+            }
+            this.action = action;
             return this;
         }
         @CustomType.Setter
         public Builder threshold(Integer threshold) {
-            this.threshold = Objects.requireNonNull(threshold);
+            if (threshold == null) {
+              throw new MissingRequiredPropertyException("ElastigroupScalingUpPolicyStepAdjustment", "threshold");
+            }
+            this.threshold = threshold;
             return this;
         }
         public ElastigroupScalingUpPolicyStepAdjustment build() {

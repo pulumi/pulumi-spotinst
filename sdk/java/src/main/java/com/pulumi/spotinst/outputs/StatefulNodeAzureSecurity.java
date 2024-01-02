@@ -49,16 +49,19 @@ public final class StatefulNodeAzureSecurity {
 
         @CustomType.Setter
         public Builder secureBootEnabled(@Nullable Boolean secureBootEnabled) {
+
             this.secureBootEnabled = secureBootEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder securityType(@Nullable String securityType) {
+
             this.securityType = securityType;
             return this;
         }
         @CustomType.Setter
         public Builder vtpmEnabled(@Nullable Boolean vtpmEnabled) {
+
             this.vtpmEnabled = vtpmEnabled;
             return this;
         }

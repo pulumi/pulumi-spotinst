@@ -5,6 +5,7 @@ package com.pulumi.spotinst.azure.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.spotinst.azure.inputs.ElastigroupUpdatePolicyRollConfigArgs;
 import java.lang.Boolean;
 import java.util.Objects;
@@ -74,7 +75,9 @@ public final class ElastigroupUpdatePolicyArgs extends com.pulumi.resources.Reso
         }
 
         public ElastigroupUpdatePolicyArgs build() {
-            $.shouldRoll = Objects.requireNonNull($.shouldRoll, "expected parameter 'shouldRoll' to be non-null");
+            if ($.shouldRoll == null) {
+                throw new MissingRequiredPropertyException("ElastigroupUpdatePolicyArgs", "shouldRoll");
+            }
             return $;
         }
     }

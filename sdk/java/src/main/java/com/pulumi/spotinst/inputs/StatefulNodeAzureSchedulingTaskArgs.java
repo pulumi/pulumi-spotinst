@@ -5,6 +5,7 @@ package com.pulumi.spotinst.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -89,9 +90,15 @@ public final class StatefulNodeAzureSchedulingTaskArgs extends com.pulumi.resour
         }
 
         public StatefulNodeAzureSchedulingTaskArgs build() {
-            $.cronExpression = Objects.requireNonNull($.cronExpression, "expected parameter 'cronExpression' to be non-null");
-            $.isEnabled = Objects.requireNonNull($.isEnabled, "expected parameter 'isEnabled' to be non-null");
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
+            if ($.cronExpression == null) {
+                throw new MissingRequiredPropertyException("StatefulNodeAzureSchedulingTaskArgs", "cronExpression");
+            }
+            if ($.isEnabled == null) {
+                throw new MissingRequiredPropertyException("StatefulNodeAzureSchedulingTaskArgs", "isEnabled");
+            }
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("StatefulNodeAzureSchedulingTaskArgs", "type");
+            }
             return $;
         }
     }

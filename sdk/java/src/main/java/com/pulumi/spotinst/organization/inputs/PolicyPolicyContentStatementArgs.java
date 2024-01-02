@@ -5,6 +5,7 @@ package com.pulumi.spotinst.organization.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -174,9 +175,15 @@ public final class PolicyPolicyContentStatementArgs extends com.pulumi.resources
         }
 
         public PolicyPolicyContentStatementArgs build() {
-            $.actions = Objects.requireNonNull($.actions, "expected parameter 'actions' to be non-null");
-            $.effect = Objects.requireNonNull($.effect, "expected parameter 'effect' to be non-null");
-            $.resources = Objects.requireNonNull($.resources, "expected parameter 'resources' to be non-null");
+            if ($.actions == null) {
+                throw new MissingRequiredPropertyException("PolicyPolicyContentStatementArgs", "actions");
+            }
+            if ($.effect == null) {
+                throw new MissingRequiredPropertyException("PolicyPolicyContentStatementArgs", "effect");
+            }
+            if ($.resources == null) {
+                throw new MissingRequiredPropertyException("PolicyPolicyContentStatementArgs", "resources");
+            }
             return $;
         }
     }

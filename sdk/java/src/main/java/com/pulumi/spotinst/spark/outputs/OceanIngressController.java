@@ -44,6 +44,7 @@ public final class OceanIngressController {
 
         @CustomType.Setter
         public Builder managed(@Nullable Boolean managed) {
+
             this.managed = managed;
             return this;
         }

@@ -48,16 +48,19 @@ public final class ElastigroupStrategy {
 
         @CustomType.Setter
         public Builder drainingTimeout(@Nullable Integer drainingTimeout) {
+
             this.drainingTimeout = drainingTimeout;
             return this;
         }
         @CustomType.Setter
         public Builder lowPriorityPercentage(@Nullable Integer lowPriorityPercentage) {
+
             this.lowPriorityPercentage = lowPriorityPercentage;
             return this;
         }
         @CustomType.Setter
         public Builder odCount(@Nullable Integer odCount) {
+
             this.odCount = odCount;
             return this;
         }

@@ -5,6 +5,7 @@ package com.pulumi.spotinst.aws;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.spotinst.aws.inputs.BeanstalkDeploymentPreferencesArgs;
 import com.pulumi.spotinst.aws.inputs.BeanstalkManagedActionsArgs;
 import com.pulumi.spotinst.aws.inputs.BeanstalkScheduledTaskArgs;
@@ -503,12 +504,24 @@ public final class BeanstalkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public BeanstalkArgs build() {
-            $.desiredCapacity = Objects.requireNonNull($.desiredCapacity, "expected parameter 'desiredCapacity' to be non-null");
-            $.instanceTypesSpots = Objects.requireNonNull($.instanceTypesSpots, "expected parameter 'instanceTypesSpots' to be non-null");
-            $.maxSize = Objects.requireNonNull($.maxSize, "expected parameter 'maxSize' to be non-null");
-            $.minSize = Objects.requireNonNull($.minSize, "expected parameter 'minSize' to be non-null");
-            $.product = Objects.requireNonNull($.product, "expected parameter 'product' to be non-null");
-            $.region = Objects.requireNonNull($.region, "expected parameter 'region' to be non-null");
+            if ($.desiredCapacity == null) {
+                throw new MissingRequiredPropertyException("BeanstalkArgs", "desiredCapacity");
+            }
+            if ($.instanceTypesSpots == null) {
+                throw new MissingRequiredPropertyException("BeanstalkArgs", "instanceTypesSpots");
+            }
+            if ($.maxSize == null) {
+                throw new MissingRequiredPropertyException("BeanstalkArgs", "maxSize");
+            }
+            if ($.minSize == null) {
+                throw new MissingRequiredPropertyException("BeanstalkArgs", "minSize");
+            }
+            if ($.product == null) {
+                throw new MissingRequiredPropertyException("BeanstalkArgs", "product");
+            }
+            if ($.region == null) {
+                throw new MissingRequiredPropertyException("BeanstalkArgs", "region");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.spotinst.gke;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -111,8 +112,12 @@ public final class OceanLaunchSpecImportArgs extends com.pulumi.resources.Resour
         }
 
         public OceanLaunchSpecImportArgs build() {
-            $.nodePoolName = Objects.requireNonNull($.nodePoolName, "expected parameter 'nodePoolName' to be non-null");
-            $.oceanId = Objects.requireNonNull($.oceanId, "expected parameter 'oceanId' to be non-null");
+            if ($.nodePoolName == null) {
+                throw new MissingRequiredPropertyException("OceanLaunchSpecImportArgs", "nodePoolName");
+            }
+            if ($.oceanId == null) {
+                throw new MissingRequiredPropertyException("OceanLaunchSpecImportArgs", "oceanId");
+            }
             return $;
         }
     }

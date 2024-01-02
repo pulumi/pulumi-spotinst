@@ -4,6 +4,7 @@
 package com.pulumi.spotinst.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -61,7 +62,10 @@ public final class StatefulNodeAzureLoadBalancer {
 
         @CustomType.Setter
         public Builder backendPoolNames(List<String> backendPoolNames) {
-            this.backendPoolNames = Objects.requireNonNull(backendPoolNames);
+            if (backendPoolNames == null) {
+              throw new MissingRequiredPropertyException("StatefulNodeAzureLoadBalancer", "backendPoolNames");
+            }
+            this.backendPoolNames = backendPoolNames;
             return this;
         }
         public Builder backendPoolNames(String... backendPoolNames) {
@@ -69,22 +73,32 @@ public final class StatefulNodeAzureLoadBalancer {
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("StatefulNodeAzureLoadBalancer", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder resourceGroupName(String resourceGroupName) {
-            this.resourceGroupName = Objects.requireNonNull(resourceGroupName);
+            if (resourceGroupName == null) {
+              throw new MissingRequiredPropertyException("StatefulNodeAzureLoadBalancer", "resourceGroupName");
+            }
+            this.resourceGroupName = resourceGroupName;
             return this;
         }
         @CustomType.Setter
         public Builder sku(@Nullable String sku) {
+
             this.sku = sku;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("StatefulNodeAzureLoadBalancer", "type");
+            }
+            this.type = type;
             return this;
         }
         public StatefulNodeAzureLoadBalancer build() {

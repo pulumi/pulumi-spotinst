@@ -90,41 +90,49 @@ public final class OceanAutoscaler {
 
         @CustomType.Setter
         public Builder autoHeadroomPercentage(@Nullable Integer autoHeadroomPercentage) {
+
             this.autoHeadroomPercentage = autoHeadroomPercentage;
             return this;
         }
         @CustomType.Setter
         public Builder autoscaleCooldown(@Nullable Integer autoscaleCooldown) {
+
             this.autoscaleCooldown = autoscaleCooldown;
             return this;
         }
         @CustomType.Setter
         public Builder autoscaleDown(@Nullable OceanAutoscalerAutoscaleDown autoscaleDown) {
+
             this.autoscaleDown = autoscaleDown;
             return this;
         }
         @CustomType.Setter
         public Builder autoscaleHeadroom(@Nullable OceanAutoscalerAutoscaleHeadroom autoscaleHeadroom) {
+
             this.autoscaleHeadroom = autoscaleHeadroom;
             return this;
         }
         @CustomType.Setter
         public Builder autoscaleIsAutoConfig(@Nullable Boolean autoscaleIsAutoConfig) {
+
             this.autoscaleIsAutoConfig = autoscaleIsAutoConfig;
             return this;
         }
         @CustomType.Setter
         public Builder autoscaleIsEnabled(@Nullable Boolean autoscaleIsEnabled) {
+
             this.autoscaleIsEnabled = autoscaleIsEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder enableAutomaticAndManualHeadroom(@Nullable Boolean enableAutomaticAndManualHeadroom) {
+
             this.enableAutomaticAndManualHeadroom = enableAutomaticAndManualHeadroom;
             return this;
         }
         @CustomType.Setter
         public Builder extendedResourceDefinitions(@Nullable List<String> extendedResourceDefinitions) {
+
             this.extendedResourceDefinitions = extendedResourceDefinitions;
             return this;
         }
@@ -133,6 +141,7 @@ public final class OceanAutoscaler {
         }
         @CustomType.Setter
         public Builder resourceLimits(@Nullable OceanAutoscalerResourceLimits resourceLimits) {
+
             this.resourceLimits = resourceLimits;
             return this;
         }

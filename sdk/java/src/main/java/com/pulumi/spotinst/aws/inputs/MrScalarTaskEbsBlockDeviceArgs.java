@@ -5,6 +5,7 @@ package com.pulumi.spotinst.aws.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -188,8 +189,12 @@ public final class MrScalarTaskEbsBlockDeviceArgs extends com.pulumi.resources.R
         }
 
         public MrScalarTaskEbsBlockDeviceArgs build() {
-            $.sizeInGb = Objects.requireNonNull($.sizeInGb, "expected parameter 'sizeInGb' to be non-null");
-            $.volumeType = Objects.requireNonNull($.volumeType, "expected parameter 'volumeType' to be non-null");
+            if ($.sizeInGb == null) {
+                throw new MissingRequiredPropertyException("MrScalarTaskEbsBlockDeviceArgs", "sizeInGb");
+            }
+            if ($.volumeType == null) {
+                throw new MissingRequiredPropertyException("MrScalarTaskEbsBlockDeviceArgs", "volumeType");
+            }
             return $;
         }
     }

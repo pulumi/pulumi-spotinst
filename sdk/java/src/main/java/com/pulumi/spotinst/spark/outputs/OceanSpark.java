@@ -44,6 +44,7 @@ public final class OceanSpark {
 
         @CustomType.Setter
         public Builder additionalAppNamespaces(@Nullable List<String> additionalAppNamespaces) {
+
             this.additionalAppNamespaces = additionalAppNamespaces;
             return this;
         }

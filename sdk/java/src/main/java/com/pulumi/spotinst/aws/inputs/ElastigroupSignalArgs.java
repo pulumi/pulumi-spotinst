@@ -5,6 +5,7 @@ package com.pulumi.spotinst.aws.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -210,7 +211,9 @@ public final class ElastigroupSignalArgs extends com.pulumi.resources.ResourceAr
         }
 
         public ElastigroupSignalArgs build() {
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("ElastigroupSignalArgs", "name");
+            }
             return $;
         }
     }

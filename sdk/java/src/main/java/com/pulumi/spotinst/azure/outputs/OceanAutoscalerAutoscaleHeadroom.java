@@ -44,6 +44,7 @@ public final class OceanAutoscalerAutoscaleHeadroom {
 
         @CustomType.Setter
         public Builder automatic(@Nullable OceanAutoscalerAutoscaleHeadroomAutomatic automatic) {
+
             this.automatic = automatic;
             return this;
         }

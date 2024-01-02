@@ -60,6 +60,7 @@ public final class OceanWebhook {
 
         @CustomType.Setter
         public Builder hostNetworkPorts(@Nullable List<Integer> hostNetworkPorts) {
+
             this.hostNetworkPorts = hostNetworkPorts;
             return this;
         }
@@ -68,6 +69,7 @@ public final class OceanWebhook {
         }
         @CustomType.Setter
         public Builder useHostNetwork(@Nullable Boolean useHostNetwork) {
+
             this.useHostNetwork = useHostNetwork;
             return this;
         }

@@ -4,6 +4,7 @@
 package com.pulumi.spotinst.gke.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.util.Objects;
 
@@ -40,12 +41,18 @@ public final class ElastigroupInstanceTypesCustom {
 
         @CustomType.Setter
         public Builder memoryGib(Integer memoryGib) {
-            this.memoryGib = Objects.requireNonNull(memoryGib);
+            if (memoryGib == null) {
+              throw new MissingRequiredPropertyException("ElastigroupInstanceTypesCustom", "memoryGib");
+            }
+            this.memoryGib = memoryGib;
             return this;
         }
         @CustomType.Setter
         public Builder vcpu(Integer vcpu) {
-            this.vcpu = Objects.requireNonNull(vcpu);
+            if (vcpu == null) {
+              throw new MissingRequiredPropertyException("ElastigroupInstanceTypesCustom", "vcpu");
+            }
+            this.vcpu = vcpu;
             return this;
         }
         public ElastigroupInstanceTypesCustom build() {

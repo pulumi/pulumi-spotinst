@@ -4,6 +4,7 @@
 package com.pulumi.spotinst.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -56,21 +57,31 @@ public final class StatefulNodeAzureDetachDataDisk {
 
         @CustomType.Setter
         public Builder dataDiskName(String dataDiskName) {
-            this.dataDiskName = Objects.requireNonNull(dataDiskName);
+            if (dataDiskName == null) {
+              throw new MissingRequiredPropertyException("StatefulNodeAzureDetachDataDisk", "dataDiskName");
+            }
+            this.dataDiskName = dataDiskName;
             return this;
         }
         @CustomType.Setter
         public Builder dataDiskResourceGroupName(String dataDiskResourceGroupName) {
-            this.dataDiskResourceGroupName = Objects.requireNonNull(dataDiskResourceGroupName);
+            if (dataDiskResourceGroupName == null) {
+              throw new MissingRequiredPropertyException("StatefulNodeAzureDetachDataDisk", "dataDiskResourceGroupName");
+            }
+            this.dataDiskResourceGroupName = dataDiskResourceGroupName;
             return this;
         }
         @CustomType.Setter
         public Builder shouldDeallocate(Boolean shouldDeallocate) {
-            this.shouldDeallocate = Objects.requireNonNull(shouldDeallocate);
+            if (shouldDeallocate == null) {
+              throw new MissingRequiredPropertyException("StatefulNodeAzureDetachDataDisk", "shouldDeallocate");
+            }
+            this.shouldDeallocate = shouldDeallocate;
             return this;
         }
         @CustomType.Setter
         public Builder ttlInHours(@Nullable Integer ttlInHours) {
+
             this.ttlInHours = ttlInHours;
             return this;
         }

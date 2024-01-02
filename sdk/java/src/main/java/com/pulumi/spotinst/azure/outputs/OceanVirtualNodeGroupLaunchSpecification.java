@@ -75,16 +75,19 @@ public final class OceanVirtualNodeGroupLaunchSpecification {
 
         @CustomType.Setter
         public Builder maxPods(@Nullable Integer maxPods) {
+
             this.maxPods = maxPods;
             return this;
         }
         @CustomType.Setter
         public Builder osDisk(@Nullable OceanVirtualNodeGroupLaunchSpecificationOsDisk osDisk) {
+
             this.osDisk = osDisk;
             return this;
         }
         @CustomType.Setter
         public Builder tags(@Nullable List<OceanVirtualNodeGroupLaunchSpecificationTag> tags) {
+
             this.tags = tags;
             return this;
         }
