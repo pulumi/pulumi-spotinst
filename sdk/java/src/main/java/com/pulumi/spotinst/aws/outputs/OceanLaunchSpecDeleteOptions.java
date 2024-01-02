@@ -4,6 +4,7 @@
 package com.pulumi.spotinst.aws.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.util.Objects;
 import java.util.Optional;
@@ -58,12 +59,16 @@ public final class OceanLaunchSpecDeleteOptions {
 
         @CustomType.Setter
         public Builder deleteNodes(@Nullable Boolean deleteNodes) {
+
             this.deleteNodes = deleteNodes;
             return this;
         }
         @CustomType.Setter
         public Builder forceDelete(Boolean forceDelete) {
-            this.forceDelete = Objects.requireNonNull(forceDelete);
+            if (forceDelete == null) {
+              throw new MissingRequiredPropertyException("OceanLaunchSpecDeleteOptions", "forceDelete");
+            }
+            this.forceDelete = forceDelete;
             return this;
         }
         public OceanLaunchSpecDeleteOptions build() {

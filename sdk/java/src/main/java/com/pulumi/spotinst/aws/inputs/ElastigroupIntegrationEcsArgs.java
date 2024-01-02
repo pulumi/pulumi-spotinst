@@ -5,6 +5,7 @@ package com.pulumi.spotinst.aws.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.spotinst.aws.inputs.ElastigroupIntegrationEcsAutoscaleAttributeArgs;
 import com.pulumi.spotinst.aws.inputs.ElastigroupIntegrationEcsAutoscaleDownArgs;
 import com.pulumi.spotinst.aws.inputs.ElastigroupIntegrationEcsAutoscaleHeadroomArgs;
@@ -389,7 +390,9 @@ public final class ElastigroupIntegrationEcsArgs extends com.pulumi.resources.Re
         }
 
         public ElastigroupIntegrationEcsArgs build() {
-            $.clusterName = Objects.requireNonNull($.clusterName, "expected parameter 'clusterName' to be non-null");
+            if ($.clusterName == null) {
+                throw new MissingRequiredPropertyException("ElastigroupIntegrationEcsArgs", "clusterName");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.spotinst.aws.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -294,7 +295,9 @@ public final class ElastigroupUpdatePolicyRollConfigStrategyOnFailureArgs extend
         }
 
         public ElastigroupUpdatePolicyRollConfigStrategyOnFailureArgs build() {
-            $.actionType = Objects.requireNonNull($.actionType, "expected parameter 'actionType' to be non-null");
+            if ($.actionType == null) {
+                throw new MissingRequiredPropertyException("ElastigroupUpdatePolicyRollConfigStrategyOnFailureArgs", "actionType");
+            }
             return $;
         }
     }

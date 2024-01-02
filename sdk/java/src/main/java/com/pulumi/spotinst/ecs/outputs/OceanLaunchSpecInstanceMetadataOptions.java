@@ -4,6 +4,7 @@
 package com.pulumi.spotinst.ecs.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -59,12 +60,16 @@ public final class OceanLaunchSpecInstanceMetadataOptions {
 
         @CustomType.Setter
         public Builder httpPutResponseHopLimit(@Nullable Integer httpPutResponseHopLimit) {
+
             this.httpPutResponseHopLimit = httpPutResponseHopLimit;
             return this;
         }
         @CustomType.Setter
         public Builder httpTokens(String httpTokens) {
-            this.httpTokens = Objects.requireNonNull(httpTokens);
+            if (httpTokens == null) {
+              throw new MissingRequiredPropertyException("OceanLaunchSpecInstanceMetadataOptions", "httpTokens");
+            }
+            this.httpTokens = httpTokens;
             return this;
         }
         public OceanLaunchSpecInstanceMetadataOptions build() {

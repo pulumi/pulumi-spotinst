@@ -5,6 +5,7 @@ package com.pulumi.spotinst.gcp.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -71,8 +72,12 @@ public final class ElastigroupNetworkInterfaceAliasIpRangeArgs extends com.pulum
         }
 
         public ElastigroupNetworkInterfaceAliasIpRangeArgs build() {
-            $.ipCidrRange = Objects.requireNonNull($.ipCidrRange, "expected parameter 'ipCidrRange' to be non-null");
-            $.subnetworkRangeName = Objects.requireNonNull($.subnetworkRangeName, "expected parameter 'subnetworkRangeName' to be non-null");
+            if ($.ipCidrRange == null) {
+                throw new MissingRequiredPropertyException("ElastigroupNetworkInterfaceAliasIpRangeArgs", "ipCidrRange");
+            }
+            if ($.subnetworkRangeName == null) {
+                throw new MissingRequiredPropertyException("ElastigroupNetworkInterfaceAliasIpRangeArgs", "subnetworkRangeName");
+            }
             return $;
         }
     }

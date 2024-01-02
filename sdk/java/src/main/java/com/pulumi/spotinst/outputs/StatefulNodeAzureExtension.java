@@ -4,6 +4,7 @@
 package com.pulumi.spotinst.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Object;
 import java.lang.String;
@@ -74,37 +75,54 @@ public final class StatefulNodeAzureExtension {
 
         @CustomType.Setter
         public Builder apiVersion(String apiVersion) {
-            this.apiVersion = Objects.requireNonNull(apiVersion);
+            if (apiVersion == null) {
+              throw new MissingRequiredPropertyException("StatefulNodeAzureExtension", "apiVersion");
+            }
+            this.apiVersion = apiVersion;
             return this;
         }
         @CustomType.Setter
         public Builder minorVersionAutoUpgrade(Boolean minorVersionAutoUpgrade) {
-            this.minorVersionAutoUpgrade = Objects.requireNonNull(minorVersionAutoUpgrade);
+            if (minorVersionAutoUpgrade == null) {
+              throw new MissingRequiredPropertyException("StatefulNodeAzureExtension", "minorVersionAutoUpgrade");
+            }
+            this.minorVersionAutoUpgrade = minorVersionAutoUpgrade;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("StatefulNodeAzureExtension", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder protectedSettings(@Nullable Map<String,Object> protectedSettings) {
+
             this.protectedSettings = protectedSettings;
             return this;
         }
         @CustomType.Setter
         public Builder publicSettings(@Nullable Map<String,Object> publicSettings) {
+
             this.publicSettings = publicSettings;
             return this;
         }
         @CustomType.Setter
         public Builder publisher(String publisher) {
-            this.publisher = Objects.requireNonNull(publisher);
+            if (publisher == null) {
+              throw new MissingRequiredPropertyException("StatefulNodeAzureExtension", "publisher");
+            }
+            this.publisher = publisher;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("StatefulNodeAzureExtension", "type");
+            }
+            this.type = type;
             return this;
         }
         public StatefulNodeAzureExtension build() {

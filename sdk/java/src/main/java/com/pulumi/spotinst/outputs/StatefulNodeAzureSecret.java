@@ -4,6 +4,7 @@
 package com.pulumi.spotinst.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.spotinst.outputs.StatefulNodeAzureSecretSourceVault;
 import com.pulumi.spotinst.outputs.StatefulNodeAzureSecretVaultCertificate;
 import java.util.List;
@@ -42,7 +43,10 @@ public final class StatefulNodeAzureSecret {
 
         @CustomType.Setter
         public Builder sourceVaults(List<StatefulNodeAzureSecretSourceVault> sourceVaults) {
-            this.sourceVaults = Objects.requireNonNull(sourceVaults);
+            if (sourceVaults == null) {
+              throw new MissingRequiredPropertyException("StatefulNodeAzureSecret", "sourceVaults");
+            }
+            this.sourceVaults = sourceVaults;
             return this;
         }
         public Builder sourceVaults(StatefulNodeAzureSecretSourceVault... sourceVaults) {
@@ -50,7 +54,10 @@ public final class StatefulNodeAzureSecret {
         }
         @CustomType.Setter
         public Builder vaultCertificates(List<StatefulNodeAzureSecretVaultCertificate> vaultCertificates) {
-            this.vaultCertificates = Objects.requireNonNull(vaultCertificates);
+            if (vaultCertificates == null) {
+              throw new MissingRequiredPropertyException("StatefulNodeAzureSecret", "vaultCertificates");
+            }
+            this.vaultCertificates = vaultCertificates;
             return this;
         }
         public Builder vaultCertificates(StatefulNodeAzureSecretVaultCertificate... vaultCertificates) {

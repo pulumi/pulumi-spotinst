@@ -4,6 +4,7 @@
 package com.pulumi.spotinst.aws.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -104,12 +105,18 @@ public final class ElastigroupMultaiTargetSet {
 
         @CustomType.Setter
         public Builder balancerId(String balancerId) {
-            this.balancerId = Objects.requireNonNull(balancerId);
+            if (balancerId == null) {
+              throw new MissingRequiredPropertyException("ElastigroupMultaiTargetSet", "balancerId");
+            }
+            this.balancerId = balancerId;
             return this;
         }
         @CustomType.Setter
         public Builder targetSetId(String targetSetId) {
-            this.targetSetId = Objects.requireNonNull(targetSetId);
+            if (targetSetId == null) {
+              throw new MissingRequiredPropertyException("ElastigroupMultaiTargetSet", "targetSetId");
+            }
+            this.targetSetId = targetSetId;
             return this;
         }
         public ElastigroupMultaiTargetSet build() {

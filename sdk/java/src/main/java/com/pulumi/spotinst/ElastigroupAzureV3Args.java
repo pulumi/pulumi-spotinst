@@ -5,6 +5,7 @@ package com.pulumi.spotinst;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.spotinst.inputs.ElastigroupAzureV3ImageArgs;
 import com.pulumi.spotinst.inputs.ElastigroupAzureV3LoginArgs;
 import com.pulumi.spotinst.inputs.ElastigroupAzureV3ManagedServiceIdentityArgs;
@@ -390,13 +391,27 @@ public final class ElastigroupAzureV3Args extends com.pulumi.resources.ResourceA
         }
 
         public ElastigroupAzureV3Args build() {
-            $.fallbackToOnDemand = Objects.requireNonNull($.fallbackToOnDemand, "expected parameter 'fallbackToOnDemand' to be non-null");
-            $.network = Objects.requireNonNull($.network, "expected parameter 'network' to be non-null");
-            $.odSizes = Objects.requireNonNull($.odSizes, "expected parameter 'odSizes' to be non-null");
-            $.os = Objects.requireNonNull($.os, "expected parameter 'os' to be non-null");
-            $.region = Objects.requireNonNull($.region, "expected parameter 'region' to be non-null");
-            $.resourceGroupName = Objects.requireNonNull($.resourceGroupName, "expected parameter 'resourceGroupName' to be non-null");
-            $.spotSizes = Objects.requireNonNull($.spotSizes, "expected parameter 'spotSizes' to be non-null");
+            if ($.fallbackToOnDemand == null) {
+                throw new MissingRequiredPropertyException("ElastigroupAzureV3Args", "fallbackToOnDemand");
+            }
+            if ($.network == null) {
+                throw new MissingRequiredPropertyException("ElastigroupAzureV3Args", "network");
+            }
+            if ($.odSizes == null) {
+                throw new MissingRequiredPropertyException("ElastigroupAzureV3Args", "odSizes");
+            }
+            if ($.os == null) {
+                throw new MissingRequiredPropertyException("ElastigroupAzureV3Args", "os");
+            }
+            if ($.region == null) {
+                throw new MissingRequiredPropertyException("ElastigroupAzureV3Args", "region");
+            }
+            if ($.resourceGroupName == null) {
+                throw new MissingRequiredPropertyException("ElastigroupAzureV3Args", "resourceGroupName");
+            }
+            if ($.spotSizes == null) {
+                throw new MissingRequiredPropertyException("ElastigroupAzureV3Args", "spotSizes");
+            }
             return $;
         }
     }

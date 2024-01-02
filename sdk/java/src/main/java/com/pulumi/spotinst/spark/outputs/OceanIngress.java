@@ -73,26 +73,31 @@ public final class OceanIngress {
 
         @CustomType.Setter
         public Builder controller(@Nullable OceanIngressController controller) {
+
             this.controller = controller;
             return this;
         }
         @CustomType.Setter
         public Builder customEndpoint(@Nullable OceanIngressCustomEndpoint customEndpoint) {
+
             this.customEndpoint = customEndpoint;
             return this;
         }
         @CustomType.Setter
         public Builder loadBalancer(@Nullable OceanIngressLoadBalancer loadBalancer) {
+
             this.loadBalancer = loadBalancer;
             return this;
         }
         @CustomType.Setter
         public Builder privateLink(@Nullable OceanIngressPrivateLink privateLink) {
+
             this.privateLink = privateLink;
             return this;
         }
         @CustomType.Setter
         public Builder serviceAnnotations(@Nullable Map<String,String> serviceAnnotations) {
+
             this.serviceAnnotations = serviceAnnotations;
             return this;
         }

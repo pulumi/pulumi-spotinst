@@ -4,6 +4,7 @@
 package com.pulumi.spotinst.azure.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -91,52 +92,66 @@ public final class ElastigroupScheduledTask {
 
         @CustomType.Setter
         public Builder adjustment(@Nullable String adjustment) {
+
             this.adjustment = adjustment;
             return this;
         }
         @CustomType.Setter
         public Builder adjustmentPercentage(@Nullable String adjustmentPercentage) {
+
             this.adjustmentPercentage = adjustmentPercentage;
             return this;
         }
         @CustomType.Setter
         public Builder batchSizePercentage(@Nullable String batchSizePercentage) {
+
             this.batchSizePercentage = batchSizePercentage;
             return this;
         }
         @CustomType.Setter
         public Builder cronExpression(String cronExpression) {
-            this.cronExpression = Objects.requireNonNull(cronExpression);
+            if (cronExpression == null) {
+              throw new MissingRequiredPropertyException("ElastigroupScheduledTask", "cronExpression");
+            }
+            this.cronExpression = cronExpression;
             return this;
         }
         @CustomType.Setter
         public Builder gracePeriod(@Nullable String gracePeriod) {
+
             this.gracePeriod = gracePeriod;
             return this;
         }
         @CustomType.Setter
         public Builder isEnabled(@Nullable Boolean isEnabled) {
+
             this.isEnabled = isEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder scaleMaxCapacity(@Nullable String scaleMaxCapacity) {
+
             this.scaleMaxCapacity = scaleMaxCapacity;
             return this;
         }
         @CustomType.Setter
         public Builder scaleMinCapacity(@Nullable String scaleMinCapacity) {
+
             this.scaleMinCapacity = scaleMinCapacity;
             return this;
         }
         @CustomType.Setter
         public Builder scaleTargetCapacity(@Nullable String scaleTargetCapacity) {
+
             this.scaleTargetCapacity = scaleTargetCapacity;
             return this;
         }
         @CustomType.Setter
         public Builder taskType(String taskType) {
-            this.taskType = Objects.requireNonNull(taskType);
+            if (taskType == null) {
+              throw new MissingRequiredPropertyException("ElastigroupScheduledTask", "taskType");
+            }
+            this.taskType = taskType;
             return this;
         }
         public ElastigroupScheduledTask build() {

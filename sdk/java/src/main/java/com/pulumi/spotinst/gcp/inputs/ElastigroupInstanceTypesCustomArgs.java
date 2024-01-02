@@ -5,6 +5,7 @@ package com.pulumi.spotinst.gcp.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.util.Objects;
 
@@ -91,8 +92,12 @@ public final class ElastigroupInstanceTypesCustomArgs extends com.pulumi.resourc
         }
 
         public ElastigroupInstanceTypesCustomArgs build() {
-            $.memoryGib = Objects.requireNonNull($.memoryGib, "expected parameter 'memoryGib' to be non-null");
-            $.vcpu = Objects.requireNonNull($.vcpu, "expected parameter 'vcpu' to be non-null");
+            if ($.memoryGib == null) {
+                throw new MissingRequiredPropertyException("ElastigroupInstanceTypesCustomArgs", "memoryGib");
+            }
+            if ($.vcpu == null) {
+                throw new MissingRequiredPropertyException("ElastigroupInstanceTypesCustomArgs", "vcpu");
+            }
             return $;
         }
     }

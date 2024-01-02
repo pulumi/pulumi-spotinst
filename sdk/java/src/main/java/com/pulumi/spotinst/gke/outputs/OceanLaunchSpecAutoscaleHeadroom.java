@@ -4,6 +4,7 @@
 package com.pulumi.spotinst.gke.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.util.Objects;
 import java.util.Optional;
@@ -86,22 +87,28 @@ public final class OceanLaunchSpecAutoscaleHeadroom {
 
         @CustomType.Setter
         public Builder cpuPerUnit(@Nullable Integer cpuPerUnit) {
+
             this.cpuPerUnit = cpuPerUnit;
             return this;
         }
         @CustomType.Setter
         public Builder gpuPerUnit(@Nullable Integer gpuPerUnit) {
+
             this.gpuPerUnit = gpuPerUnit;
             return this;
         }
         @CustomType.Setter
         public Builder memoryPerUnit(@Nullable Integer memoryPerUnit) {
+
             this.memoryPerUnit = memoryPerUnit;
             return this;
         }
         @CustomType.Setter
         public Builder numOfUnits(Integer numOfUnits) {
-            this.numOfUnits = Objects.requireNonNull(numOfUnits);
+            if (numOfUnits == null) {
+              throw new MissingRequiredPropertyException("OceanLaunchSpecAutoscaleHeadroom", "numOfUnits");
+            }
+            this.numOfUnits = numOfUnits;
             return this;
         }
         public OceanLaunchSpecAutoscaleHeadroom build() {

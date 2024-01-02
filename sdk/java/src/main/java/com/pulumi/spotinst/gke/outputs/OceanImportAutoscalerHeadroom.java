@@ -86,21 +86,25 @@ public final class OceanImportAutoscalerHeadroom {
 
         @CustomType.Setter
         public Builder cpuPerUnit(@Nullable Integer cpuPerUnit) {
+
             this.cpuPerUnit = cpuPerUnit;
             return this;
         }
         @CustomType.Setter
         public Builder gpuPerUnit(@Nullable Integer gpuPerUnit) {
+
             this.gpuPerUnit = gpuPerUnit;
             return this;
         }
         @CustomType.Setter
         public Builder memoryPerUnit(@Nullable Integer memoryPerUnit) {
+
             this.memoryPerUnit = memoryPerUnit;
             return this;
         }
         @CustomType.Setter
         public Builder numOfUnits(@Nullable Integer numOfUnits) {
+
             this.numOfUnits = numOfUnits;
             return this;
         }

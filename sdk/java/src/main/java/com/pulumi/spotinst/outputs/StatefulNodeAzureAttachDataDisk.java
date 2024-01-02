@@ -4,6 +4,7 @@
 package com.pulumi.spotinst.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -67,31 +68,45 @@ public final class StatefulNodeAzureAttachDataDisk {
 
         @CustomType.Setter
         public Builder dataDiskName(String dataDiskName) {
-            this.dataDiskName = Objects.requireNonNull(dataDiskName);
+            if (dataDiskName == null) {
+              throw new MissingRequiredPropertyException("StatefulNodeAzureAttachDataDisk", "dataDiskName");
+            }
+            this.dataDiskName = dataDiskName;
             return this;
         }
         @CustomType.Setter
         public Builder dataDiskResourceGroupName(String dataDiskResourceGroupName) {
-            this.dataDiskResourceGroupName = Objects.requireNonNull(dataDiskResourceGroupName);
+            if (dataDiskResourceGroupName == null) {
+              throw new MissingRequiredPropertyException("StatefulNodeAzureAttachDataDisk", "dataDiskResourceGroupName");
+            }
+            this.dataDiskResourceGroupName = dataDiskResourceGroupName;
             return this;
         }
         @CustomType.Setter
         public Builder lun(@Nullable Integer lun) {
+
             this.lun = lun;
             return this;
         }
         @CustomType.Setter
         public Builder sizeGb(Integer sizeGb) {
-            this.sizeGb = Objects.requireNonNull(sizeGb);
+            if (sizeGb == null) {
+              throw new MissingRequiredPropertyException("StatefulNodeAzureAttachDataDisk", "sizeGb");
+            }
+            this.sizeGb = sizeGb;
             return this;
         }
         @CustomType.Setter
         public Builder storageAccountType(String storageAccountType) {
-            this.storageAccountType = Objects.requireNonNull(storageAccountType);
+            if (storageAccountType == null) {
+              throw new MissingRequiredPropertyException("StatefulNodeAzureAttachDataDisk", "storageAccountType");
+            }
+            this.storageAccountType = storageAccountType;
             return this;
         }
         @CustomType.Setter
         public Builder zone(@Nullable String zone) {
+
             this.zone = zone;
             return this;
         }

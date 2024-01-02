@@ -5,6 +5,7 @@ package com.pulumi.spotinst.organization.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -115,8 +116,12 @@ public final class ProgrammaticUserAccountArgs extends com.pulumi.resources.Reso
         }
 
         public ProgrammaticUserAccountArgs build() {
-            $.accountId = Objects.requireNonNull($.accountId, "expected parameter 'accountId' to be non-null");
-            $.accountRole = Objects.requireNonNull($.accountRole, "expected parameter 'accountRole' to be non-null");
+            if ($.accountId == null) {
+                throw new MissingRequiredPropertyException("ProgrammaticUserAccountArgs", "accountId");
+            }
+            if ($.accountRole == null) {
+                throw new MissingRequiredPropertyException("ProgrammaticUserAccountArgs", "accountRole");
+            }
             return $;
         }
     }

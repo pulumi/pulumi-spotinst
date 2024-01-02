@@ -96,6 +96,7 @@ public final class OceanNetworkNetworkInterface {
 
         @CustomType.Setter
         public Builder additionalIpConfigs(@Nullable List<OceanNetworkNetworkInterfaceAdditionalIpConfig> additionalIpConfigs) {
+
             this.additionalIpConfigs = additionalIpConfigs;
             return this;
         }
@@ -104,21 +105,25 @@ public final class OceanNetworkNetworkInterface {
         }
         @CustomType.Setter
         public Builder assignPublicIp(@Nullable Boolean assignPublicIp) {
+
             this.assignPublicIp = assignPublicIp;
             return this;
         }
         @CustomType.Setter
         public Builder isPrimary(@Nullable Boolean isPrimary) {
+
             this.isPrimary = isPrimary;
             return this;
         }
         @CustomType.Setter
         public Builder securityGroup(@Nullable OceanNetworkNetworkInterfaceSecurityGroup securityGroup) {
+
             this.securityGroup = securityGroup;
             return this;
         }
         @CustomType.Setter
         public Builder subnetName(@Nullable String subnetName) {
+
             this.subnetName = subnetName;
             return this;
         }

@@ -4,6 +4,7 @@
 package com.pulumi.spotinst.aws.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -57,16 +58,21 @@ public final class OceanUpdatePolicyRollConfig {
 
         @CustomType.Setter
         public Builder batchMinHealthyPercentage(@Nullable Integer batchMinHealthyPercentage) {
+
             this.batchMinHealthyPercentage = batchMinHealthyPercentage;
             return this;
         }
         @CustomType.Setter
         public Builder batchSizePercentage(Integer batchSizePercentage) {
-            this.batchSizePercentage = Objects.requireNonNull(batchSizePercentage);
+            if (batchSizePercentage == null) {
+              throw new MissingRequiredPropertyException("OceanUpdatePolicyRollConfig", "batchSizePercentage");
+            }
+            this.batchSizePercentage = batchSizePercentage;
             return this;
         }
         @CustomType.Setter
         public Builder launchSpecIds(@Nullable List<String> launchSpecIds) {
+
             this.launchSpecIds = launchSpecIds;
             return this;
         }
@@ -75,6 +81,7 @@ public final class OceanUpdatePolicyRollConfig {
         }
         @CustomType.Setter
         public Builder respectPdb(@Nullable Boolean respectPdb) {
+
             this.respectPdb = respectPdb;
             return this;
         }

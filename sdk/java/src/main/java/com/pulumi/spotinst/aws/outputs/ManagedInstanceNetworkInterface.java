@@ -4,6 +4,7 @@
 package com.pulumi.spotinst.aws.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -49,17 +50,22 @@ public final class ManagedInstanceNetworkInterface {
 
         @CustomType.Setter
         public Builder associateIpv6Address(@Nullable Boolean associateIpv6Address) {
+
             this.associateIpv6Address = associateIpv6Address;
             return this;
         }
         @CustomType.Setter
         public Builder associatePublicIpAddress(@Nullable Boolean associatePublicIpAddress) {
+
             this.associatePublicIpAddress = associatePublicIpAddress;
             return this;
         }
         @CustomType.Setter
         public Builder deviceIndex(String deviceIndex) {
-            this.deviceIndex = Objects.requireNonNull(deviceIndex);
+            if (deviceIndex == null) {
+              throw new MissingRequiredPropertyException("ManagedInstanceNetworkInterface", "deviceIndex");
+            }
+            this.deviceIndex = deviceIndex;
             return this;
         }
         public ManagedInstanceNetworkInterface build() {

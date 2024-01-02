@@ -4,6 +4,7 @@
 package com.pulumi.spotinst.azure.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -46,17 +47,26 @@ public final class ElastigroupImageMarketplace {
 
         @CustomType.Setter
         public Builder offer(String offer) {
-            this.offer = Objects.requireNonNull(offer);
+            if (offer == null) {
+              throw new MissingRequiredPropertyException("ElastigroupImageMarketplace", "offer");
+            }
+            this.offer = offer;
             return this;
         }
         @CustomType.Setter
         public Builder publisher(String publisher) {
-            this.publisher = Objects.requireNonNull(publisher);
+            if (publisher == null) {
+              throw new MissingRequiredPropertyException("ElastigroupImageMarketplace", "publisher");
+            }
+            this.publisher = publisher;
             return this;
         }
         @CustomType.Setter
         public Builder sku(String sku) {
-            this.sku = Objects.requireNonNull(sku);
+            if (sku == null) {
+              throw new MissingRequiredPropertyException("ElastigroupImageMarketplace", "sku");
+            }
+            this.sku = sku;
             return this;
         }
         public ElastigroupImageMarketplace build() {

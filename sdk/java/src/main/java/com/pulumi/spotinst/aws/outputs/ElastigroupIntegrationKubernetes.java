@@ -264,36 +264,43 @@ public final class ElastigroupIntegrationKubernetes {
 
         @CustomType.Setter
         public Builder apiServer(@Nullable String apiServer) {
+
             this.apiServer = apiServer;
             return this;
         }
         @CustomType.Setter
         public Builder autoscaleCooldown(@Nullable Integer autoscaleCooldown) {
+
             this.autoscaleCooldown = autoscaleCooldown;
             return this;
         }
         @CustomType.Setter
         public Builder autoscaleDown(@Nullable ElastigroupIntegrationKubernetesAutoscaleDown autoscaleDown) {
+
             this.autoscaleDown = autoscaleDown;
             return this;
         }
         @CustomType.Setter
         public Builder autoscaleHeadroom(@Nullable ElastigroupIntegrationKubernetesAutoscaleHeadroom autoscaleHeadroom) {
+
             this.autoscaleHeadroom = autoscaleHeadroom;
             return this;
         }
         @CustomType.Setter
         public Builder autoscaleIsAutoConfig(@Nullable Boolean autoscaleIsAutoConfig) {
+
             this.autoscaleIsAutoConfig = autoscaleIsAutoConfig;
             return this;
         }
         @CustomType.Setter
         public Builder autoscaleIsEnabled(@Nullable Boolean autoscaleIsEnabled) {
+
             this.autoscaleIsEnabled = autoscaleIsEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder autoscaleLabels(@Nullable List<ElastigroupIntegrationKubernetesAutoscaleLabel> autoscaleLabels) {
+
             this.autoscaleLabels = autoscaleLabels;
             return this;
         }
@@ -302,16 +309,19 @@ public final class ElastigroupIntegrationKubernetes {
         }
         @CustomType.Setter
         public Builder clusterIdentifier(@Nullable String clusterIdentifier) {
+
             this.clusterIdentifier = clusterIdentifier;
             return this;
         }
         @CustomType.Setter
         public Builder integrationMode(@Nullable String integrationMode) {
+
             this.integrationMode = integrationMode;
             return this;
         }
         @CustomType.Setter
         public Builder token(@Nullable String token) {
+
             this.token = token;
             return this;
         }

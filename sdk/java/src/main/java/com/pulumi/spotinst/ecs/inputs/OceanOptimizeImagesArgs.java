@@ -5,6 +5,7 @@ package com.pulumi.spotinst.ecs.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -162,8 +163,12 @@ public final class OceanOptimizeImagesArgs extends com.pulumi.resources.Resource
         }
 
         public OceanOptimizeImagesArgs build() {
-            $.performAt = Objects.requireNonNull($.performAt, "expected parameter 'performAt' to be non-null");
-            $.shouldOptimizeEcsAmi = Objects.requireNonNull($.shouldOptimizeEcsAmi, "expected parameter 'shouldOptimizeEcsAmi' to be non-null");
+            if ($.performAt == null) {
+                throw new MissingRequiredPropertyException("OceanOptimizeImagesArgs", "performAt");
+            }
+            if ($.shouldOptimizeEcsAmi == null) {
+                throw new MissingRequiredPropertyException("OceanOptimizeImagesArgs", "shouldOptimizeEcsAmi");
+            }
             return $;
         }
     }

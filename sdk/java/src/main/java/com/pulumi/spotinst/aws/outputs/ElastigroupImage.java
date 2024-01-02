@@ -4,6 +4,7 @@
 package com.pulumi.spotinst.aws.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.spotinst.aws.outputs.ElastigroupImageImage;
 import java.util.List;
 import java.util.Objects;
@@ -35,7 +36,10 @@ public final class ElastigroupImage {
 
         @CustomType.Setter
         public Builder images(List<ElastigroupImageImage> images) {
-            this.images = Objects.requireNonNull(images);
+            if (images == null) {
+              throw new MissingRequiredPropertyException("ElastigroupImage", "images");
+            }
+            this.images = images;
             return this;
         }
         public Builder images(ElastigroupImageImage... images) {

@@ -300,6 +300,7 @@ public final class OceanFilters {
 
         @CustomType.Setter
         public Builder architectures(@Nullable List<String> architectures) {
+
             this.architectures = architectures;
             return this;
         }
@@ -308,6 +309,7 @@ public final class OceanFilters {
         }
         @CustomType.Setter
         public Builder categories(@Nullable List<String> categories) {
+
             this.categories = categories;
             return this;
         }
@@ -316,6 +318,7 @@ public final class OceanFilters {
         }
         @CustomType.Setter
         public Builder diskTypes(@Nullable List<String> diskTypes) {
+
             this.diskTypes = diskTypes;
             return this;
         }
@@ -324,6 +327,7 @@ public final class OceanFilters {
         }
         @CustomType.Setter
         public Builder excludeFamilies(@Nullable List<String> excludeFamilies) {
+
             this.excludeFamilies = excludeFamilies;
             return this;
         }
@@ -332,11 +336,13 @@ public final class OceanFilters {
         }
         @CustomType.Setter
         public Builder excludeMetal(@Nullable Boolean excludeMetal) {
+
             this.excludeMetal = excludeMetal;
             return this;
         }
         @CustomType.Setter
         public Builder hypervisors(@Nullable List<String> hypervisors) {
+
             this.hypervisors = hypervisors;
             return this;
         }
@@ -345,6 +351,7 @@ public final class OceanFilters {
         }
         @CustomType.Setter
         public Builder includeFamilies(@Nullable List<String> includeFamilies) {
+
             this.includeFamilies = includeFamilies;
             return this;
         }
@@ -353,56 +360,67 @@ public final class OceanFilters {
         }
         @CustomType.Setter
         public Builder isEnaSupported(@Nullable String isEnaSupported) {
+
             this.isEnaSupported = isEnaSupported;
             return this;
         }
         @CustomType.Setter
         public Builder maxGpu(@Nullable Integer maxGpu) {
+
             this.maxGpu = maxGpu;
             return this;
         }
         @CustomType.Setter
         public Builder maxMemoryGib(@Nullable Double maxMemoryGib) {
+
             this.maxMemoryGib = maxMemoryGib;
             return this;
         }
         @CustomType.Setter
         public Builder maxNetworkPerformance(@Nullable Integer maxNetworkPerformance) {
+
             this.maxNetworkPerformance = maxNetworkPerformance;
             return this;
         }
         @CustomType.Setter
         public Builder maxVcpu(@Nullable Integer maxVcpu) {
+
             this.maxVcpu = maxVcpu;
             return this;
         }
         @CustomType.Setter
         public Builder minEnis(@Nullable Integer minEnis) {
+
             this.minEnis = minEnis;
             return this;
         }
         @CustomType.Setter
         public Builder minGpu(@Nullable Integer minGpu) {
+
             this.minGpu = minGpu;
             return this;
         }
         @CustomType.Setter
         public Builder minMemoryGib(@Nullable Double minMemoryGib) {
+
             this.minMemoryGib = minMemoryGib;
             return this;
         }
         @CustomType.Setter
         public Builder minNetworkPerformance(@Nullable Integer minNetworkPerformance) {
+
             this.minNetworkPerformance = minNetworkPerformance;
             return this;
         }
         @CustomType.Setter
         public Builder minVcpu(@Nullable Integer minVcpu) {
+
             this.minVcpu = minVcpu;
             return this;
         }
         @CustomType.Setter
         public Builder rootDeviceTypes(@Nullable List<String> rootDeviceTypes) {
+
             this.rootDeviceTypes = rootDeviceTypes;
             return this;
         }
@@ -411,6 +429,7 @@ public final class OceanFilters {
         }
         @CustomType.Setter
         public Builder virtualizationTypes(@Nullable List<String> virtualizationTypes) {
+
             this.virtualizationTypes = virtualizationTypes;
             return this;
         }

@@ -146,36 +146,43 @@ public final class ElastigroupIntegrationGke {
 
         @CustomType.Setter
         public Builder autoUpdate(@Nullable Boolean autoUpdate) {
+
             this.autoUpdate = autoUpdate;
             return this;
         }
         @CustomType.Setter
         public Builder autoscaleCooldown(@Nullable Integer autoscaleCooldown) {
+
             this.autoscaleCooldown = autoscaleCooldown;
             return this;
         }
         @CustomType.Setter
         public Builder autoscaleDown(@Nullable ElastigroupIntegrationGkeAutoscaleDown autoscaleDown) {
+
             this.autoscaleDown = autoscaleDown;
             return this;
         }
         @CustomType.Setter
         public Builder autoscaleHeadroom(@Nullable ElastigroupIntegrationGkeAutoscaleHeadroom autoscaleHeadroom) {
+
             this.autoscaleHeadroom = autoscaleHeadroom;
             return this;
         }
         @CustomType.Setter
         public Builder autoscaleIsAutoConfig(@Nullable Boolean autoscaleIsAutoConfig) {
+
             this.autoscaleIsAutoConfig = autoscaleIsAutoConfig;
             return this;
         }
         @CustomType.Setter
         public Builder autoscaleIsEnabled(@Nullable Boolean autoscaleIsEnabled) {
+
             this.autoscaleIsEnabled = autoscaleIsEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder autoscaleLabels(@Nullable List<ElastigroupIntegrationGkeAutoscaleLabel> autoscaleLabels) {
+
             this.autoscaleLabels = autoscaleLabels;
             return this;
         }
@@ -184,11 +191,13 @@ public final class ElastigroupIntegrationGke {
         }
         @CustomType.Setter
         public Builder clusterId(@Nullable String clusterId) {
+
             this.clusterId = clusterId;
             return this;
         }
         @CustomType.Setter
         public Builder location(@Nullable String location) {
+
             this.location = location;
             return this;
         }

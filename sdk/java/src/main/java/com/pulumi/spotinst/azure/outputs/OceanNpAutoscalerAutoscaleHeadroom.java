@@ -36,6 +36,7 @@ public final class OceanNpAutoscalerAutoscaleHeadroom {
 
         @CustomType.Setter
         public Builder automatic(@Nullable OceanNpAutoscalerAutoscaleHeadroomAutomatic automatic) {
+
             this.automatic = automatic;
             return this;
         }

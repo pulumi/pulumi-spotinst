@@ -4,6 +4,7 @@
 package com.pulumi.spotinst.gcp.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -57,12 +58,18 @@ public final class ElastigroupSubnet {
 
         @CustomType.Setter
         public Builder region(String region) {
-            this.region = Objects.requireNonNull(region);
+            if (region == null) {
+              throw new MissingRequiredPropertyException("ElastigroupSubnet", "region");
+            }
+            this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder subnetNames(List<String> subnetNames) {
-            this.subnetNames = Objects.requireNonNull(subnetNames);
+            if (subnetNames == null) {
+              throw new MissingRequiredPropertyException("ElastigroupSubnet", "subnetNames");
+            }
+            this.subnetNames = subnetNames;
             return this;
         }
         public Builder subnetNames(String... subnetNames) {

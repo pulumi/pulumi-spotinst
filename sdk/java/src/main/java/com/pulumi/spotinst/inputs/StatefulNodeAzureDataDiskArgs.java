@@ -5,6 +5,7 @@ package com.pulumi.spotinst.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -89,9 +90,15 @@ public final class StatefulNodeAzureDataDiskArgs extends com.pulumi.resources.Re
         }
 
         public StatefulNodeAzureDataDiskArgs build() {
-            $.lun = Objects.requireNonNull($.lun, "expected parameter 'lun' to be non-null");
-            $.sizeGb = Objects.requireNonNull($.sizeGb, "expected parameter 'sizeGb' to be non-null");
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
+            if ($.lun == null) {
+                throw new MissingRequiredPropertyException("StatefulNodeAzureDataDiskArgs", "lun");
+            }
+            if ($.sizeGb == null) {
+                throw new MissingRequiredPropertyException("StatefulNodeAzureDataDiskArgs", "sizeGb");
+            }
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("StatefulNodeAzureDataDiskArgs", "type");
+            }
             return $;
         }
     }

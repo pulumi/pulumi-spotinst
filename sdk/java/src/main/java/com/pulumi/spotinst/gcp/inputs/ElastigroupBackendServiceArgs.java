@@ -5,6 +5,7 @@ package com.pulumi.spotinst.gcp.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.spotinst.gcp.inputs.ElastigroupBackendServiceNamedPortArgs;
 import java.lang.String;
 import java.util.List;
@@ -199,7 +200,9 @@ public final class ElastigroupBackendServiceArgs extends com.pulumi.resources.Re
         }
 
         public ElastigroupBackendServiceArgs build() {
-            $.serviceName = Objects.requireNonNull($.serviceName, "expected parameter 'serviceName' to be non-null");
+            if ($.serviceName == null) {
+                throw new MissingRequiredPropertyException("ElastigroupBackendServiceArgs", "serviceName");
+            }
             return $;
         }
     }

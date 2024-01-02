@@ -5,6 +5,7 @@ package com.pulumi.spotinst.aws.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -111,8 +112,12 @@ public final class MrScalarConfigurationsFileArgs extends com.pulumi.resources.R
         }
 
         public MrScalarConfigurationsFileArgs build() {
-            $.bucket = Objects.requireNonNull($.bucket, "expected parameter 'bucket' to be non-null");
-            $.key = Objects.requireNonNull($.key, "expected parameter 'key' to be non-null");
+            if ($.bucket == null) {
+                throw new MissingRequiredPropertyException("MrScalarConfigurationsFileArgs", "bucket");
+            }
+            if ($.key == null) {
+                throw new MissingRequiredPropertyException("MrScalarConfigurationsFileArgs", "key");
+            }
             return $;
         }
     }

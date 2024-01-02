@@ -117,11 +117,13 @@ public final class OceanNpVirtualNodeGroupFilters {
 
         @CustomType.Setter
         public Builder acceleratedNetworking(@Nullable String acceleratedNetworking) {
+
             this.acceleratedNetworking = acceleratedNetworking;
             return this;
         }
         @CustomType.Setter
         public Builder architectures(@Nullable List<String> architectures) {
+
             this.architectures = architectures;
             return this;
         }
@@ -130,11 +132,13 @@ public final class OceanNpVirtualNodeGroupFilters {
         }
         @CustomType.Setter
         public Builder diskPerformance(@Nullable String diskPerformance) {
+
             this.diskPerformance = diskPerformance;
             return this;
         }
         @CustomType.Setter
         public Builder excludeSeries(@Nullable List<String> excludeSeries) {
+
             this.excludeSeries = excludeSeries;
             return this;
         }
@@ -143,46 +147,55 @@ public final class OceanNpVirtualNodeGroupFilters {
         }
         @CustomType.Setter
         public Builder maxGpu(@Nullable Double maxGpu) {
+
             this.maxGpu = maxGpu;
             return this;
         }
         @CustomType.Setter
         public Builder maxMemoryGib(@Nullable Double maxMemoryGib) {
+
             this.maxMemoryGib = maxMemoryGib;
             return this;
         }
         @CustomType.Setter
         public Builder maxVcpu(@Nullable Integer maxVcpu) {
+
             this.maxVcpu = maxVcpu;
             return this;
         }
         @CustomType.Setter
         public Builder minDisk(@Nullable Integer minDisk) {
+
             this.minDisk = minDisk;
             return this;
         }
         @CustomType.Setter
         public Builder minGpu(@Nullable Double minGpu) {
+
             this.minGpu = minGpu;
             return this;
         }
         @CustomType.Setter
         public Builder minMemoryGib(@Nullable Double minMemoryGib) {
+
             this.minMemoryGib = minMemoryGib;
             return this;
         }
         @CustomType.Setter
         public Builder minNics(@Nullable Integer minNics) {
+
             this.minNics = minNics;
             return this;
         }
         @CustomType.Setter
         public Builder minVcpu(@Nullable Integer minVcpu) {
+
             this.minVcpu = minVcpu;
             return this;
         }
         @CustomType.Setter
         public Builder series(@Nullable List<String> series) {
+
             this.series = series;
             return this;
         }
@@ -191,6 +204,7 @@ public final class OceanNpVirtualNodeGroupFilters {
         }
         @CustomType.Setter
         public Builder vmTypes(@Nullable List<String> vmTypes) {
+
             this.vmTypes = vmTypes;
             return this;
         }

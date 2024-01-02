@@ -4,6 +4,7 @@
 package com.pulumi.spotinst.aws.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -34,7 +35,10 @@ public final class ManagedInstanceRevertToSpot {
 
         @CustomType.Setter
         public Builder performAt(String performAt) {
-            this.performAt = Objects.requireNonNull(performAt);
+            if (performAt == null) {
+              throw new MissingRequiredPropertyException("ManagedInstanceRevertToSpot", "performAt");
+            }
+            this.performAt = performAt;
             return this;
         }
         public ManagedInstanceRevertToSpot build() {

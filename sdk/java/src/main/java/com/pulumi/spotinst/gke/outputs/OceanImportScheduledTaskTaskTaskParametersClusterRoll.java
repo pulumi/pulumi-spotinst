@@ -110,21 +110,25 @@ public final class OceanImportScheduledTaskTaskTaskParametersClusterRoll {
 
         @CustomType.Setter
         public Builder batchMinHealthyPercentage(@Nullable Integer batchMinHealthyPercentage) {
+
             this.batchMinHealthyPercentage = batchMinHealthyPercentage;
             return this;
         }
         @CustomType.Setter
         public Builder batchSizePercentage(@Nullable Integer batchSizePercentage) {
+
             this.batchSizePercentage = batchSizePercentage;
             return this;
         }
         @CustomType.Setter
         public Builder comment(@Nullable String comment) {
+
             this.comment = comment;
             return this;
         }
         @CustomType.Setter
         public Builder respectPdb(@Nullable Boolean respectPdb) {
+
             this.respectPdb = respectPdb;
             return this;
         }

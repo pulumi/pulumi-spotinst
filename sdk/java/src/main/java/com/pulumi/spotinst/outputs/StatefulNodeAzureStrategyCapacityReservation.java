@@ -4,6 +4,7 @@
 package com.pulumi.spotinst.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.spotinst.outputs.StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroup;
 import java.lang.Boolean;
 import java.lang.String;
@@ -50,6 +51,7 @@ public final class StatefulNodeAzureStrategyCapacityReservation {
 
         @CustomType.Setter
         public Builder capacityReservationGroups(@Nullable List<StatefulNodeAzureStrategyCapacityReservationCapacityReservationGroup> capacityReservationGroups) {
+
             this.capacityReservationGroups = capacityReservationGroups;
             return this;
         }
@@ -58,12 +60,18 @@ public final class StatefulNodeAzureStrategyCapacityReservation {
         }
         @CustomType.Setter
         public Builder shouldUtilize(Boolean shouldUtilize) {
-            this.shouldUtilize = Objects.requireNonNull(shouldUtilize);
+            if (shouldUtilize == null) {
+              throw new MissingRequiredPropertyException("StatefulNodeAzureStrategyCapacityReservation", "shouldUtilize");
+            }
+            this.shouldUtilize = shouldUtilize;
             return this;
         }
         @CustomType.Setter
         public Builder utilizationStrategy(String utilizationStrategy) {
-            this.utilizationStrategy = Objects.requireNonNull(utilizationStrategy);
+            if (utilizationStrategy == null) {
+              throw new MissingRequiredPropertyException("StatefulNodeAzureStrategyCapacityReservation", "utilizationStrategy");
+            }
+            this.utilizationStrategy = utilizationStrategy;
             return this;
         }
         public StatefulNodeAzureStrategyCapacityReservation build() {

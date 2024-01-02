@@ -44,6 +44,7 @@ public final class OceanLaunchSpecCreateOptions {
 
         @CustomType.Setter
         public Builder initialNodes(@Nullable Integer initialNodes) {
+
             this.initialNodes = initialNodes;
             return this;
         }

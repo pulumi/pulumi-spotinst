@@ -5,6 +5,7 @@ package com.pulumi.spotinst.aws;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.spotinst.aws.inputs.SuspensionSuspensionArgs;
 import java.lang.String;
 import java.util.List;
@@ -123,8 +124,12 @@ public final class SuspensionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public SuspensionArgs build() {
-            $.groupId = Objects.requireNonNull($.groupId, "expected parameter 'groupId' to be non-null");
-            $.suspensions = Objects.requireNonNull($.suspensions, "expected parameter 'suspensions' to be non-null");
+            if ($.groupId == null) {
+                throw new MissingRequiredPropertyException("SuspensionArgs", "groupId");
+            }
+            if ($.suspensions == null) {
+                throw new MissingRequiredPropertyException("SuspensionArgs", "suspensions");
+            }
             return $;
         }
     }

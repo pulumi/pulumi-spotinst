@@ -4,6 +4,7 @@
 package com.pulumi.spotinst.gke.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.util.Objects;
 
@@ -34,7 +35,10 @@ public final class OceanLaunchSpecUpdatePolicyRollConfig {
 
         @CustomType.Setter
         public Builder batchSizePercentage(Integer batchSizePercentage) {
-            this.batchSizePercentage = Objects.requireNonNull(batchSizePercentage);
+            if (batchSizePercentage == null) {
+              throw new MissingRequiredPropertyException("OceanLaunchSpecUpdatePolicyRollConfig", "batchSizePercentage");
+            }
+            this.batchSizePercentage = batchSizePercentage;
             return this;
         }
         public OceanLaunchSpecUpdatePolicyRollConfig build() {

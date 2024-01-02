@@ -4,6 +4,7 @@
 package com.pulumi.spotinst.aws.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.spotinst.aws.outputs.ElastigroupUpdatePolicyRollConfig;
 import java.lang.Boolean;
 import java.util.Objects;
@@ -87,22 +88,30 @@ public final class ElastigroupUpdatePolicy {
 
         @CustomType.Setter
         public Builder autoApplyTags(@Nullable Boolean autoApplyTags) {
+
             this.autoApplyTags = autoApplyTags;
             return this;
         }
         @CustomType.Setter
         public Builder rollConfig(@Nullable ElastigroupUpdatePolicyRollConfig rollConfig) {
+
             this.rollConfig = rollConfig;
             return this;
         }
         @CustomType.Setter
         public Builder shouldResumeStateful(Boolean shouldResumeStateful) {
-            this.shouldResumeStateful = Objects.requireNonNull(shouldResumeStateful);
+            if (shouldResumeStateful == null) {
+              throw new MissingRequiredPropertyException("ElastigroupUpdatePolicy", "shouldResumeStateful");
+            }
+            this.shouldResumeStateful = shouldResumeStateful;
             return this;
         }
         @CustomType.Setter
         public Builder shouldRoll(Boolean shouldRoll) {
-            this.shouldRoll = Objects.requireNonNull(shouldRoll);
+            if (shouldRoll == null) {
+              throw new MissingRequiredPropertyException("ElastigroupUpdatePolicy", "shouldRoll");
+            }
+            this.shouldRoll = shouldRoll;
             return this;
         }
         public ElastigroupUpdatePolicy build() {

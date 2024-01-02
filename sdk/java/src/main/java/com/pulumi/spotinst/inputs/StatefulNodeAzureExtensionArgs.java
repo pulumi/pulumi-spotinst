@@ -5,6 +5,7 @@ package com.pulumi.spotinst.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Object;
 import java.lang.String;
@@ -161,11 +162,21 @@ public final class StatefulNodeAzureExtensionArgs extends com.pulumi.resources.R
         }
 
         public StatefulNodeAzureExtensionArgs build() {
-            $.apiVersion = Objects.requireNonNull($.apiVersion, "expected parameter 'apiVersion' to be non-null");
-            $.minorVersionAutoUpgrade = Objects.requireNonNull($.minorVersionAutoUpgrade, "expected parameter 'minorVersionAutoUpgrade' to be non-null");
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
-            $.publisher = Objects.requireNonNull($.publisher, "expected parameter 'publisher' to be non-null");
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
+            if ($.apiVersion == null) {
+                throw new MissingRequiredPropertyException("StatefulNodeAzureExtensionArgs", "apiVersion");
+            }
+            if ($.minorVersionAutoUpgrade == null) {
+                throw new MissingRequiredPropertyException("StatefulNodeAzureExtensionArgs", "minorVersionAutoUpgrade");
+            }
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("StatefulNodeAzureExtensionArgs", "name");
+            }
+            if ($.publisher == null) {
+                throw new MissingRequiredPropertyException("StatefulNodeAzureExtensionArgs", "publisher");
+            }
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("StatefulNodeAzureExtensionArgs", "type");
+            }
             return $;
         }
     }

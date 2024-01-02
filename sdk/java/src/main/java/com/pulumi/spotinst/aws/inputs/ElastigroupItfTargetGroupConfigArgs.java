@@ -5,6 +5,7 @@ package com.pulumi.spotinst.aws.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.spotinst.aws.inputs.ElastigroupItfTargetGroupConfigMatcherArgs;
 import com.pulumi.spotinst.aws.inputs.ElastigroupItfTargetGroupConfigTagArgs;
 import java.lang.Integer;
@@ -298,10 +299,18 @@ public final class ElastigroupItfTargetGroupConfigArgs extends com.pulumi.resour
         }
 
         public ElastigroupItfTargetGroupConfigArgs build() {
-            $.healthCheckPath = Objects.requireNonNull($.healthCheckPath, "expected parameter 'healthCheckPath' to be non-null");
-            $.port = Objects.requireNonNull($.port, "expected parameter 'port' to be non-null");
-            $.protocol = Objects.requireNonNull($.protocol, "expected parameter 'protocol' to be non-null");
-            $.vpcId = Objects.requireNonNull($.vpcId, "expected parameter 'vpcId' to be non-null");
+            if ($.healthCheckPath == null) {
+                throw new MissingRequiredPropertyException("ElastigroupItfTargetGroupConfigArgs", "healthCheckPath");
+            }
+            if ($.port == null) {
+                throw new MissingRequiredPropertyException("ElastigroupItfTargetGroupConfigArgs", "port");
+            }
+            if ($.protocol == null) {
+                throw new MissingRequiredPropertyException("ElastigroupItfTargetGroupConfigArgs", "protocol");
+            }
+            if ($.vpcId == null) {
+                throw new MissingRequiredPropertyException("ElastigroupItfTargetGroupConfigArgs", "vpcId");
+            }
             return $;
         }
     }

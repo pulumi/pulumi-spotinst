@@ -5,6 +5,7 @@ package com.pulumi.spotinst;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.spotinst.inputs.StatefulNodeAzureAttachDataDiskArgs;
 import com.pulumi.spotinst.inputs.StatefulNodeAzureBootDiagnosticArgs;
 import com.pulumi.spotinst.inputs.StatefulNodeAzureDataDiskArgs;
@@ -853,15 +854,33 @@ public final class StatefulNodeAzureArgs extends com.pulumi.resources.ResourceAr
         }
 
         public StatefulNodeAzureArgs build() {
-            $.odSizes = Objects.requireNonNull($.odSizes, "expected parameter 'odSizes' to be non-null");
-            $.os = Objects.requireNonNull($.os, "expected parameter 'os' to be non-null");
-            $.region = Objects.requireNonNull($.region, "expected parameter 'region' to be non-null");
-            $.resourceGroupName = Objects.requireNonNull($.resourceGroupName, "expected parameter 'resourceGroupName' to be non-null");
-            $.shouldPersistDataDisks = Objects.requireNonNull($.shouldPersistDataDisks, "expected parameter 'shouldPersistDataDisks' to be non-null");
-            $.shouldPersistNetwork = Objects.requireNonNull($.shouldPersistNetwork, "expected parameter 'shouldPersistNetwork' to be non-null");
-            $.shouldPersistOsDisk = Objects.requireNonNull($.shouldPersistOsDisk, "expected parameter 'shouldPersistOsDisk' to be non-null");
-            $.spotSizes = Objects.requireNonNull($.spotSizes, "expected parameter 'spotSizes' to be non-null");
-            $.strategy = Objects.requireNonNull($.strategy, "expected parameter 'strategy' to be non-null");
+            if ($.odSizes == null) {
+                throw new MissingRequiredPropertyException("StatefulNodeAzureArgs", "odSizes");
+            }
+            if ($.os == null) {
+                throw new MissingRequiredPropertyException("StatefulNodeAzureArgs", "os");
+            }
+            if ($.region == null) {
+                throw new MissingRequiredPropertyException("StatefulNodeAzureArgs", "region");
+            }
+            if ($.resourceGroupName == null) {
+                throw new MissingRequiredPropertyException("StatefulNodeAzureArgs", "resourceGroupName");
+            }
+            if ($.shouldPersistDataDisks == null) {
+                throw new MissingRequiredPropertyException("StatefulNodeAzureArgs", "shouldPersistDataDisks");
+            }
+            if ($.shouldPersistNetwork == null) {
+                throw new MissingRequiredPropertyException("StatefulNodeAzureArgs", "shouldPersistNetwork");
+            }
+            if ($.shouldPersistOsDisk == null) {
+                throw new MissingRequiredPropertyException("StatefulNodeAzureArgs", "shouldPersistOsDisk");
+            }
+            if ($.spotSizes == null) {
+                throw new MissingRequiredPropertyException("StatefulNodeAzureArgs", "spotSizes");
+            }
+            if ($.strategy == null) {
+                throw new MissingRequiredPropertyException("StatefulNodeAzureArgs", "strategy");
+            }
             return $;
         }
     }

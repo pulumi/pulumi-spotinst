@@ -4,6 +4,7 @@
 package com.pulumi.spotinst.azure.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -49,16 +50,21 @@ public final class ElastigroupUpdatePolicyRollConfig {
 
         @CustomType.Setter
         public Builder batchSizePercentage(Integer batchSizePercentage) {
-            this.batchSizePercentage = Objects.requireNonNull(batchSizePercentage);
+            if (batchSizePercentage == null) {
+              throw new MissingRequiredPropertyException("ElastigroupUpdatePolicyRollConfig", "batchSizePercentage");
+            }
+            this.batchSizePercentage = batchSizePercentage;
             return this;
         }
         @CustomType.Setter
         public Builder gracePeriod(@Nullable Integer gracePeriod) {
+
             this.gracePeriod = gracePeriod;
             return this;
         }
         @CustomType.Setter
         public Builder healthCheckType(@Nullable String healthCheckType) {
+
             this.healthCheckType = healthCheckType;
             return this;
         }

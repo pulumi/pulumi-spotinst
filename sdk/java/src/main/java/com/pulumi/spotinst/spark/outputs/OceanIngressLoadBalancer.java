@@ -74,16 +74,19 @@ public final class OceanIngressLoadBalancer {
 
         @CustomType.Setter
         public Builder managed(@Nullable Boolean managed) {
+
             this.managed = managed;
             return this;
         }
         @CustomType.Setter
         public Builder serviceAnnotations(@Nullable Map<String,String> serviceAnnotations) {
+
             this.serviceAnnotations = serviceAnnotations;
             return this;
         }
         @CustomType.Setter
         public Builder targetGroupArn(@Nullable String targetGroupArn) {
+
             this.targetGroupArn = targetGroupArn;
             return this;
         }

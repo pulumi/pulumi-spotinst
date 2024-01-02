@@ -4,6 +4,7 @@
 package com.pulumi.spotinst.gcp.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -105,12 +106,18 @@ public final class ElastigroupIntegrationDockerSwarm {
 
         @CustomType.Setter
         public Builder masterHost(String masterHost) {
-            this.masterHost = Objects.requireNonNull(masterHost);
+            if (masterHost == null) {
+              throw new MissingRequiredPropertyException("ElastigroupIntegrationDockerSwarm", "masterHost");
+            }
+            this.masterHost = masterHost;
             return this;
         }
         @CustomType.Setter
         public Builder masterPort(Integer masterPort) {
-            this.masterPort = Objects.requireNonNull(masterPort);
+            if (masterPort == null) {
+              throw new MissingRequiredPropertyException("ElastigroupIntegrationDockerSwarm", "masterPort");
+            }
+            this.masterPort = masterPort;
             return this;
         }
         public ElastigroupIntegrationDockerSwarm build() {

@@ -5,6 +5,7 @@ package com.pulumi.spotinst.aws;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
@@ -119,7 +120,9 @@ public final class OceanExtendedResourceDefinitionArgs extends com.pulumi.resour
         }
 
         public OceanExtendedResourceDefinitionArgs build() {
-            $.resourceMapping = Objects.requireNonNull($.resourceMapping, "expected parameter 'resourceMapping' to be non-null");
+            if ($.resourceMapping == null) {
+                throw new MissingRequiredPropertyException("OceanExtendedResourceDefinitionArgs", "resourceMapping");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.spotinst.aws.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -107,11 +108,15 @@ public final class ElastigroupSignal {
 
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("ElastigroupSignal", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder timeout(@Nullable Integer timeout) {
+
             this.timeout = timeout;
             return this;
         }

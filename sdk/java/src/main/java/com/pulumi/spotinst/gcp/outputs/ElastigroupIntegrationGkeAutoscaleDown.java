@@ -44,6 +44,7 @@ public final class ElastigroupIntegrationGkeAutoscaleDown {
 
         @CustomType.Setter
         public Builder evaluationPeriods(@Nullable Integer evaluationPeriods) {
+
             this.evaluationPeriods = evaluationPeriods;
             return this;
         }

@@ -5,6 +5,7 @@ package com.pulumi.spotinst.azure.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.util.Objects;
 import java.util.Optional;
@@ -187,7 +188,9 @@ public final class OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArgs extends c
         }
 
         public OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArgs build() {
-            $.numOfUnits = Objects.requireNonNull($.numOfUnits, "expected parameter 'numOfUnits' to be non-null");
+            if ($.numOfUnits == null) {
+                throw new MissingRequiredPropertyException("OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArgs", "numOfUnits");
+            }
             return $;
         }
     }

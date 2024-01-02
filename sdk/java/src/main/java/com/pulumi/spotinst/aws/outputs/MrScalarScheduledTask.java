@@ -4,6 +4,7 @@
 package com.pulumi.spotinst.aws.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -129,37 +130,50 @@ public final class MrScalarScheduledTask {
 
         @CustomType.Setter
         public Builder cron(String cron) {
-            this.cron = Objects.requireNonNull(cron);
+            if (cron == null) {
+              throw new MissingRequiredPropertyException("MrScalarScheduledTask", "cron");
+            }
+            this.cron = cron;
             return this;
         }
         @CustomType.Setter
         public Builder desiredCapacity(@Nullable String desiredCapacity) {
+
             this.desiredCapacity = desiredCapacity;
             return this;
         }
         @CustomType.Setter
         public Builder instanceGroupType(String instanceGroupType) {
-            this.instanceGroupType = Objects.requireNonNull(instanceGroupType);
+            if (instanceGroupType == null) {
+              throw new MissingRequiredPropertyException("MrScalarScheduledTask", "instanceGroupType");
+            }
+            this.instanceGroupType = instanceGroupType;
             return this;
         }
         @CustomType.Setter
         public Builder isEnabled(@Nullable Boolean isEnabled) {
+
             this.isEnabled = isEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder maxCapacity(@Nullable String maxCapacity) {
+
             this.maxCapacity = maxCapacity;
             return this;
         }
         @CustomType.Setter
         public Builder minCapacity(@Nullable String minCapacity) {
+
             this.minCapacity = minCapacity;
             return this;
         }
         @CustomType.Setter
         public Builder taskType(String taskType) {
-            this.taskType = Objects.requireNonNull(taskType);
+            if (taskType == null) {
+              throw new MissingRequiredPropertyException("MrScalarScheduledTask", "taskType");
+            }
+            this.taskType = taskType;
             return this;
         }
         public MrScalarScheduledTask build() {

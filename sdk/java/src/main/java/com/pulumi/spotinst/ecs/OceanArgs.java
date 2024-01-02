@@ -5,6 +5,7 @@ package com.pulumi.spotinst.ecs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.spotinst.ecs.inputs.OceanAutoscalerArgs;
 import com.pulumi.spotinst.ecs.inputs.OceanBlockDeviceMappingArgs;
 import com.pulumi.spotinst.ecs.inputs.OceanClusterOrientationArgs;
@@ -1290,10 +1291,18 @@ public final class OceanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public OceanArgs build() {
-            $.clusterName = Objects.requireNonNull($.clusterName, "expected parameter 'clusterName' to be non-null");
-            $.region = Objects.requireNonNull($.region, "expected parameter 'region' to be non-null");
-            $.securityGroupIds = Objects.requireNonNull($.securityGroupIds, "expected parameter 'securityGroupIds' to be non-null");
-            $.subnetIds = Objects.requireNonNull($.subnetIds, "expected parameter 'subnetIds' to be non-null");
+            if ($.clusterName == null) {
+                throw new MissingRequiredPropertyException("OceanArgs", "clusterName");
+            }
+            if ($.region == null) {
+                throw new MissingRequiredPropertyException("OceanArgs", "region");
+            }
+            if ($.securityGroupIds == null) {
+                throw new MissingRequiredPropertyException("OceanArgs", "securityGroupIds");
+            }
+            if ($.subnetIds == null) {
+                throw new MissingRequiredPropertyException("OceanArgs", "subnetIds");
+            }
             return $;
         }
     }

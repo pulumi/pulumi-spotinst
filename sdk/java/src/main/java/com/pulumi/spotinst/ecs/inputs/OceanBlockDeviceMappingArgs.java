@@ -5,6 +5,7 @@ package com.pulumi.spotinst.ecs.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.spotinst.ecs.inputs.OceanBlockDeviceMappingEbsArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -168,7 +169,9 @@ public final class OceanBlockDeviceMappingArgs extends com.pulumi.resources.Reso
         }
 
         public OceanBlockDeviceMappingArgs build() {
-            $.deviceName = Objects.requireNonNull($.deviceName, "expected parameter 'deviceName' to be non-null");
+            if ($.deviceName == null) {
+                throw new MissingRequiredPropertyException("OceanBlockDeviceMappingArgs", "deviceName");
+            }
             return $;
         }
     }

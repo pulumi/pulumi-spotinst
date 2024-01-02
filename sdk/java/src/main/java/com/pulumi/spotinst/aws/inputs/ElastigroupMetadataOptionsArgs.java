@@ -5,6 +5,7 @@ package com.pulumi.spotinst.aws.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -151,7 +152,9 @@ public final class ElastigroupMetadataOptionsArgs extends com.pulumi.resources.R
         }
 
         public ElastigroupMetadataOptionsArgs build() {
-            $.httpTokens = Objects.requireNonNull($.httpTokens, "expected parameter 'httpTokens' to be non-null");
+            if ($.httpTokens == null) {
+                throw new MissingRequiredPropertyException("ElastigroupMetadataOptionsArgs", "httpTokens");
+            }
             return $;
         }
     }

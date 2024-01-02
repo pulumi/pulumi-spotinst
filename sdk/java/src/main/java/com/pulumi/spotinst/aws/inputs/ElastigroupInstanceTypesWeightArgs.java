@@ -5,6 +5,7 @@ package com.pulumi.spotinst.aws.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -112,8 +113,12 @@ public final class ElastigroupInstanceTypesWeightArgs extends com.pulumi.resourc
         }
 
         public ElastigroupInstanceTypesWeightArgs build() {
-            $.instanceType = Objects.requireNonNull($.instanceType, "expected parameter 'instanceType' to be non-null");
-            $.weight = Objects.requireNonNull($.weight, "expected parameter 'weight' to be non-null");
+            if ($.instanceType == null) {
+                throw new MissingRequiredPropertyException("ElastigroupInstanceTypesWeightArgs", "instanceType");
+            }
+            if ($.weight == null) {
+                throw new MissingRequiredPropertyException("ElastigroupInstanceTypesWeightArgs", "weight");
+            }
             return $;
         }
     }

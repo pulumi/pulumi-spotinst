@@ -4,6 +4,7 @@
 package com.pulumi.spotinst.azure.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -50,17 +51,22 @@ public final class ElastigroupHealthCheck {
 
         @CustomType.Setter
         public Builder autoHealing(@Nullable Boolean autoHealing) {
+
             this.autoHealing = autoHealing;
             return this;
         }
         @CustomType.Setter
         public Builder gracePeriod(@Nullable Integer gracePeriod) {
+
             this.gracePeriod = gracePeriod;
             return this;
         }
         @CustomType.Setter
         public Builder healthCheckType(String healthCheckType) {
-            this.healthCheckType = Objects.requireNonNull(healthCheckType);
+            if (healthCheckType == null) {
+              throw new MissingRequiredPropertyException("ElastigroupHealthCheck", "healthCheckType");
+            }
+            this.healthCheckType = healthCheckType;
             return this;
         }
         public ElastigroupHealthCheck build() {

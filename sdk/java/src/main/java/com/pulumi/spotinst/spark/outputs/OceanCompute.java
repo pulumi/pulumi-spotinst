@@ -58,11 +58,13 @@ public final class OceanCompute {
 
         @CustomType.Setter
         public Builder createVngs(@Nullable Boolean createVngs) {
+
             this.createVngs = createVngs;
             return this;
         }
         @CustomType.Setter
         public Builder useTaints(@Nullable Boolean useTaints) {
+
             this.useTaints = useTaints;
             return this;
         }

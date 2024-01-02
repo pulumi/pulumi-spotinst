@@ -4,6 +4,7 @@
 package com.pulumi.spotinst.organization.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.spotinst.organization.outputs.PolicyPolicyContentStatement;
 import java.util.List;
 import java.util.Objects;
@@ -43,7 +44,10 @@ public final class PolicyPolicyContent {
 
         @CustomType.Setter
         public Builder statements(List<PolicyPolicyContentStatement> statements) {
-            this.statements = Objects.requireNonNull(statements);
+            if (statements == null) {
+              throw new MissingRequiredPropertyException("PolicyPolicyContent", "statements");
+            }
+            this.statements = statements;
             return this;
         }
         public Builder statements(PolicyPolicyContentStatement... statements) {

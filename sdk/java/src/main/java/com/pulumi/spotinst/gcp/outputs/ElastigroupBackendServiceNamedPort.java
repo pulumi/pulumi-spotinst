@@ -4,6 +4,7 @@
 package com.pulumi.spotinst.gcp.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -105,12 +106,18 @@ public final class ElastigroupBackendServiceNamedPort {
 
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("ElastigroupBackendServiceNamedPort", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder ports(List<String> ports) {
-            this.ports = Objects.requireNonNull(ports);
+            if (ports == null) {
+              throw new MissingRequiredPropertyException("ElastigroupBackendServiceNamedPort", "ports");
+            }
+            this.ports = ports;
             return this;
         }
         public Builder ports(String... ports) {

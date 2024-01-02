@@ -4,6 +4,7 @@
 package com.pulumi.spotinst.aws.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -91,7 +92,10 @@ public final class ElastigroupIntegrationEcsBatch {
 
         @CustomType.Setter
         public Builder jobQueueNames(List<String> jobQueueNames) {
-            this.jobQueueNames = Objects.requireNonNull(jobQueueNames);
+            if (jobQueueNames == null) {
+              throw new MissingRequiredPropertyException("ElastigroupIntegrationEcsBatch", "jobQueueNames");
+            }
+            this.jobQueueNames = jobQueueNames;
             return this;
         }
         public Builder jobQueueNames(String... jobQueueNames) {

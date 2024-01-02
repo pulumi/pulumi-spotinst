@@ -50,6 +50,7 @@ public final class StatefulNodeAzureImage {
 
         @CustomType.Setter
         public Builder customImages(@Nullable List<StatefulNodeAzureImageCustomImage> customImages) {
+
             this.customImages = customImages;
             return this;
         }
@@ -58,6 +59,7 @@ public final class StatefulNodeAzureImage {
         }
         @CustomType.Setter
         public Builder galleries(@Nullable List<StatefulNodeAzureImageGallery> galleries) {
+
             this.galleries = galleries;
             return this;
         }
@@ -66,6 +68,7 @@ public final class StatefulNodeAzureImage {
         }
         @CustomType.Setter
         public Builder marketplaceImages(@Nullable List<StatefulNodeAzureImageMarketplaceImage> marketplaceImages) {
+
             this.marketplaceImages = marketplaceImages;
             return this;
         }

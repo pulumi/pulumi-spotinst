@@ -4,6 +4,7 @@
 package com.pulumi.spotinst.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -52,22 +53,34 @@ public final class StatefulNodeAzureImageGallery {
 
         @CustomType.Setter
         public Builder galleryName(String galleryName) {
-            this.galleryName = Objects.requireNonNull(galleryName);
+            if (galleryName == null) {
+              throw new MissingRequiredPropertyException("StatefulNodeAzureImageGallery", "galleryName");
+            }
+            this.galleryName = galleryName;
             return this;
         }
         @CustomType.Setter
         public Builder galleryResourceGroupName(String galleryResourceGroupName) {
-            this.galleryResourceGroupName = Objects.requireNonNull(galleryResourceGroupName);
+            if (galleryResourceGroupName == null) {
+              throw new MissingRequiredPropertyException("StatefulNodeAzureImageGallery", "galleryResourceGroupName");
+            }
+            this.galleryResourceGroupName = galleryResourceGroupName;
             return this;
         }
         @CustomType.Setter
         public Builder imageName(String imageName) {
-            this.imageName = Objects.requireNonNull(imageName);
+            if (imageName == null) {
+              throw new MissingRequiredPropertyException("StatefulNodeAzureImageGallery", "imageName");
+            }
+            this.imageName = imageName;
             return this;
         }
         @CustomType.Setter
         public Builder versionName(String versionName) {
-            this.versionName = Objects.requireNonNull(versionName);
+            if (versionName == null) {
+              throw new MissingRequiredPropertyException("StatefulNodeAzureImageGallery", "versionName");
+            }
+            this.versionName = versionName;
             return this;
         }
         public StatefulNodeAzureImageGallery build() {

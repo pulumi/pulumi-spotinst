@@ -5,6 +5,7 @@ package com.pulumi.spotinst.aws.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.spotinst.aws.inputs.ElastigroupIntegrationDockerSwarmAutoscaleDownArgs;
 import com.pulumi.spotinst.aws.inputs.ElastigroupIntegrationDockerSwarmAutoscaleHeadroomArgs;
 import java.lang.Boolean;
@@ -265,8 +266,12 @@ public final class ElastigroupIntegrationDockerSwarmArgs extends com.pulumi.reso
         }
 
         public ElastigroupIntegrationDockerSwarmArgs build() {
-            $.masterHost = Objects.requireNonNull($.masterHost, "expected parameter 'masterHost' to be non-null");
-            $.masterPort = Objects.requireNonNull($.masterPort, "expected parameter 'masterPort' to be non-null");
+            if ($.masterHost == null) {
+                throw new MissingRequiredPropertyException("ElastigroupIntegrationDockerSwarmArgs", "masterHost");
+            }
+            if ($.masterPort == null) {
+                throw new MissingRequiredPropertyException("ElastigroupIntegrationDockerSwarmArgs", "masterPort");
+            }
             return $;
         }
     }

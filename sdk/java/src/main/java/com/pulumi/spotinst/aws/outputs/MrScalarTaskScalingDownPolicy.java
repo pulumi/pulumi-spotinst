@@ -4,6 +4,7 @@
 package com.pulumi.spotinst.aws.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Double;
 import java.lang.Integer;
 import java.lang.Object;
@@ -286,92 +287,120 @@ public final class MrScalarTaskScalingDownPolicy {
 
         @CustomType.Setter
         public Builder actionType(@Nullable String actionType) {
+
             this.actionType = actionType;
             return this;
         }
         @CustomType.Setter
         public Builder adjustment(@Nullable String adjustment) {
+
             this.adjustment = adjustment;
             return this;
         }
         @CustomType.Setter
         public Builder cooldown(@Nullable Integer cooldown) {
+
             this.cooldown = cooldown;
             return this;
         }
         @CustomType.Setter
         public Builder dimensions(@Nullable Map<String,Object> dimensions) {
+
             this.dimensions = dimensions;
             return this;
         }
         @CustomType.Setter
         public Builder evaluationPeriods(@Nullable Integer evaluationPeriods) {
+
             this.evaluationPeriods = evaluationPeriods;
             return this;
         }
         @CustomType.Setter
         public Builder maxTargetCapacity(@Nullable String maxTargetCapacity) {
+
             this.maxTargetCapacity = maxTargetCapacity;
             return this;
         }
         @CustomType.Setter
         public Builder maximum(@Nullable String maximum) {
+
             this.maximum = maximum;
             return this;
         }
         @CustomType.Setter
         public Builder metricName(String metricName) {
-            this.metricName = Objects.requireNonNull(metricName);
+            if (metricName == null) {
+              throw new MissingRequiredPropertyException("MrScalarTaskScalingDownPolicy", "metricName");
+            }
+            this.metricName = metricName;
             return this;
         }
         @CustomType.Setter
         public Builder minTargetCapacity(@Nullable String minTargetCapacity) {
+
             this.minTargetCapacity = minTargetCapacity;
             return this;
         }
         @CustomType.Setter
         public Builder minimum(@Nullable String minimum) {
+
             this.minimum = minimum;
             return this;
         }
         @CustomType.Setter
         public Builder namespace(String namespace) {
-            this.namespace = Objects.requireNonNull(namespace);
+            if (namespace == null) {
+              throw new MissingRequiredPropertyException("MrScalarTaskScalingDownPolicy", "namespace");
+            }
+            this.namespace = namespace;
             return this;
         }
         @CustomType.Setter
         public Builder operator(@Nullable String operator) {
+
             this.operator = operator;
             return this;
         }
         @CustomType.Setter
         public Builder period(@Nullable Integer period) {
+
             this.period = period;
             return this;
         }
         @CustomType.Setter
         public Builder policyName(String policyName) {
-            this.policyName = Objects.requireNonNull(policyName);
+            if (policyName == null) {
+              throw new MissingRequiredPropertyException("MrScalarTaskScalingDownPolicy", "policyName");
+            }
+            this.policyName = policyName;
             return this;
         }
         @CustomType.Setter
         public Builder statistic(@Nullable String statistic) {
+
             this.statistic = statistic;
             return this;
         }
         @CustomType.Setter
         public Builder target(@Nullable String target) {
+
             this.target = target;
             return this;
         }
         @CustomType.Setter
         public Builder threshold(Double threshold) {
-            this.threshold = Objects.requireNonNull(threshold);
+            if (threshold == null) {
+              throw new MissingRequiredPropertyException("MrScalarTaskScalingDownPolicy", "threshold");
+            }
+            this.threshold = threshold;
             return this;
         }
         @CustomType.Setter
         public Builder unit(String unit) {
-            this.unit = Objects.requireNonNull(unit);
+            if (unit == null) {
+              throw new MissingRequiredPropertyException("MrScalarTaskScalingDownPolicy", "unit");
+            }
+            this.unit = unit;
             return this;
         }
         public MrScalarTaskScalingDownPolicy build() {

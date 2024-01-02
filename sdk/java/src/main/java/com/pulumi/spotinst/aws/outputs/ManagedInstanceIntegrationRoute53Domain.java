@@ -4,6 +4,7 @@
 package com.pulumi.spotinst.aws.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.spotinst.aws.outputs.ManagedInstanceIntegrationRoute53DomainRecordSet;
 import java.lang.String;
 import java.util.List;
@@ -56,17 +57,24 @@ public final class ManagedInstanceIntegrationRoute53Domain {
 
         @CustomType.Setter
         public Builder hostedZoneId(String hostedZoneId) {
-            this.hostedZoneId = Objects.requireNonNull(hostedZoneId);
+            if (hostedZoneId == null) {
+              throw new MissingRequiredPropertyException("ManagedInstanceIntegrationRoute53Domain", "hostedZoneId");
+            }
+            this.hostedZoneId = hostedZoneId;
             return this;
         }
         @CustomType.Setter
         public Builder recordSetType(@Nullable String recordSetType) {
+
             this.recordSetType = recordSetType;
             return this;
         }
         @CustomType.Setter
         public Builder recordSets(List<ManagedInstanceIntegrationRoute53DomainRecordSet> recordSets) {
-            this.recordSets = Objects.requireNonNull(recordSets);
+            if (recordSets == null) {
+              throw new MissingRequiredPropertyException("ManagedInstanceIntegrationRoute53Domain", "recordSets");
+            }
+            this.recordSets = recordSets;
             return this;
         }
         public Builder recordSets(ManagedInstanceIntegrationRoute53DomainRecordSet... recordSets) {
@@ -74,6 +82,7 @@ public final class ManagedInstanceIntegrationRoute53Domain {
         }
         @CustomType.Setter
         public Builder spotinstAcctId(@Nullable String spotinstAcctId) {
+
             this.spotinstAcctId = spotinstAcctId;
             return this;
         }

@@ -4,6 +4,7 @@
 package com.pulumi.spotinst.aws.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.spotinst.aws.outputs.ElastigroupUpdatePolicyRollConfigStrategy;
 import java.lang.Double;
 import java.lang.Integer;
@@ -117,31 +118,39 @@ public final class ElastigroupUpdatePolicyRollConfig {
 
         @CustomType.Setter
         public Builder batchSizePercentage(Integer batchSizePercentage) {
-            this.batchSizePercentage = Objects.requireNonNull(batchSizePercentage);
+            if (batchSizePercentage == null) {
+              throw new MissingRequiredPropertyException("ElastigroupUpdatePolicyRollConfig", "batchSizePercentage");
+            }
+            this.batchSizePercentage = batchSizePercentage;
             return this;
         }
         @CustomType.Setter
         public Builder gracePeriod(@Nullable Integer gracePeriod) {
+
             this.gracePeriod = gracePeriod;
             return this;
         }
         @CustomType.Setter
         public Builder healthCheckType(@Nullable String healthCheckType) {
+
             this.healthCheckType = healthCheckType;
             return this;
         }
         @CustomType.Setter
         public Builder strategy(@Nullable ElastigroupUpdatePolicyRollConfigStrategy strategy) {
+
             this.strategy = strategy;
             return this;
         }
         @CustomType.Setter
         public Builder waitForRollPercentage(@Nullable Double waitForRollPercentage) {
+
             this.waitForRollPercentage = waitForRollPercentage;
             return this;
         }
         @CustomType.Setter
         public Builder waitForRollTimeout(@Nullable Integer waitForRollTimeout) {
+
             this.waitForRollTimeout = waitForRollTimeout;
             return this;
         }

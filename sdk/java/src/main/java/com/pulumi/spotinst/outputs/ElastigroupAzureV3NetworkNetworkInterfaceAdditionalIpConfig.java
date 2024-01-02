@@ -4,6 +4,7 @@
 package com.pulumi.spotinst.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -42,11 +43,15 @@ public final class ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfig {
 
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfig", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder privateIpVersion(@Nullable String privateIpVersion) {
+
             this.privateIpVersion = privateIpVersion;
             return this;
         }

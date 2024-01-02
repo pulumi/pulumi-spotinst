@@ -44,6 +44,7 @@ public final class OceanVmSize {
 
         @CustomType.Setter
         public Builder whitelists(@Nullable List<String> whitelists) {
+
             this.whitelists = whitelists;
             return this;
         }

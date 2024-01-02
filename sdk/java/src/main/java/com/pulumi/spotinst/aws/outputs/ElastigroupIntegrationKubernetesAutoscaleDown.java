@@ -59,11 +59,13 @@ public final class ElastigroupIntegrationKubernetesAutoscaleDown {
 
         @CustomType.Setter
         public Builder evaluationPeriods(@Nullable Integer evaluationPeriods) {
+
             this.evaluationPeriods = evaluationPeriods;
             return this;
         }
         @CustomType.Setter
         public Builder maxScaleDownPercentage(@Nullable Double maxScaleDownPercentage) {
+
             this.maxScaleDownPercentage = maxScaleDownPercentage;
             return this;
         }

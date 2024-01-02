@@ -5,6 +5,7 @@ package com.pulumi.spotinst.azure;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.spotinst.azure.inputs.OceanAutoscalerArgs;
 import com.pulumi.spotinst.azure.inputs.OceanExtensionArgs;
 import com.pulumi.spotinst.azure.inputs.OceanHealthArgs;
@@ -946,10 +947,18 @@ public final class OceanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public OceanArgs build() {
-            $.acdIdentifier = Objects.requireNonNull($.acdIdentifier, "expected parameter 'acdIdentifier' to be non-null");
-            $.aksName = Objects.requireNonNull($.aksName, "expected parameter 'aksName' to be non-null");
-            $.aksResourceGroupName = Objects.requireNonNull($.aksResourceGroupName, "expected parameter 'aksResourceGroupName' to be non-null");
-            $.sshPublicKey = Objects.requireNonNull($.sshPublicKey, "expected parameter 'sshPublicKey' to be non-null");
+            if ($.acdIdentifier == null) {
+                throw new MissingRequiredPropertyException("OceanArgs", "acdIdentifier");
+            }
+            if ($.aksName == null) {
+                throw new MissingRequiredPropertyException("OceanArgs", "aksName");
+            }
+            if ($.aksResourceGroupName == null) {
+                throw new MissingRequiredPropertyException("OceanArgs", "aksResourceGroupName");
+            }
+            if ($.sshPublicKey == null) {
+                throw new MissingRequiredPropertyException("OceanArgs", "sshPublicKey");
+            }
             return $;
         }
     }

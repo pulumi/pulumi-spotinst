@@ -42,11 +42,13 @@ public final class StatefulNodeAzureNetworkNetworkInterfaceNetworkSecurityGroup 
 
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder networkResourceGroupName(@Nullable String networkResourceGroupName) {
+
             this.networkResourceGroupName = networkResourceGroupName;
             return this;
         }

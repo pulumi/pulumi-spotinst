@@ -5,6 +5,7 @@ package com.pulumi.spotinst.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -333,11 +334,21 @@ public final class HealthCheckCheckArgs extends com.pulumi.resources.ResourceArg
         }
 
         public HealthCheckCheckArgs build() {
-            $.healthy = Objects.requireNonNull($.healthy, "expected parameter 'healthy' to be non-null");
-            $.interval = Objects.requireNonNull($.interval, "expected parameter 'interval' to be non-null");
-            $.port = Objects.requireNonNull($.port, "expected parameter 'port' to be non-null");
-            $.protocol = Objects.requireNonNull($.protocol, "expected parameter 'protocol' to be non-null");
-            $.unhealthy = Objects.requireNonNull($.unhealthy, "expected parameter 'unhealthy' to be non-null");
+            if ($.healthy == null) {
+                throw new MissingRequiredPropertyException("HealthCheckCheckArgs", "healthy");
+            }
+            if ($.interval == null) {
+                throw new MissingRequiredPropertyException("HealthCheckCheckArgs", "interval");
+            }
+            if ($.port == null) {
+                throw new MissingRequiredPropertyException("HealthCheckCheckArgs", "port");
+            }
+            if ($.protocol == null) {
+                throw new MissingRequiredPropertyException("HealthCheckCheckArgs", "protocol");
+            }
+            if ($.unhealthy == null) {
+                throw new MissingRequiredPropertyException("HealthCheckCheckArgs", "unhealthy");
+            }
             return $;
         }
     }

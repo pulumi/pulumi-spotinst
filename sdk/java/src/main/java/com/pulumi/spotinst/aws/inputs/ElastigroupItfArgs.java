@@ -5,6 +5,7 @@ package com.pulumi.spotinst.aws.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.spotinst.aws.inputs.ElastigroupItfDefaultStaticTargetGroupArgs;
 import com.pulumi.spotinst.aws.inputs.ElastigroupItfLoadBalancerArgs;
 import com.pulumi.spotinst.aws.inputs.ElastigroupItfTargetGroupConfigArgs;
@@ -155,10 +156,18 @@ public final class ElastigroupItfArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public ElastigroupItfArgs build() {
-            $.fixedTargetGroups = Objects.requireNonNull($.fixedTargetGroups, "expected parameter 'fixedTargetGroups' to be non-null");
-            $.loadBalancers = Objects.requireNonNull($.loadBalancers, "expected parameter 'loadBalancers' to be non-null");
-            $.targetGroupConfigs = Objects.requireNonNull($.targetGroupConfigs, "expected parameter 'targetGroupConfigs' to be non-null");
-            $.weightStrategy = Objects.requireNonNull($.weightStrategy, "expected parameter 'weightStrategy' to be non-null");
+            if ($.fixedTargetGroups == null) {
+                throw new MissingRequiredPropertyException("ElastigroupItfArgs", "fixedTargetGroups");
+            }
+            if ($.loadBalancers == null) {
+                throw new MissingRequiredPropertyException("ElastigroupItfArgs", "loadBalancers");
+            }
+            if ($.targetGroupConfigs == null) {
+                throw new MissingRequiredPropertyException("ElastigroupItfArgs", "targetGroupConfigs");
+            }
+            if ($.weightStrategy == null) {
+                throw new MissingRequiredPropertyException("ElastigroupItfArgs", "weightStrategy");
+            }
             return $;
         }
     }

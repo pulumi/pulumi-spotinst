@@ -5,6 +5,7 @@ package com.pulumi.spotinst.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -142,10 +143,18 @@ public final class StatefulNodeAzureAttachDataDiskArgs extends com.pulumi.resour
         }
 
         public StatefulNodeAzureAttachDataDiskArgs build() {
-            $.dataDiskName = Objects.requireNonNull($.dataDiskName, "expected parameter 'dataDiskName' to be non-null");
-            $.dataDiskResourceGroupName = Objects.requireNonNull($.dataDiskResourceGroupName, "expected parameter 'dataDiskResourceGroupName' to be non-null");
-            $.sizeGb = Objects.requireNonNull($.sizeGb, "expected parameter 'sizeGb' to be non-null");
-            $.storageAccountType = Objects.requireNonNull($.storageAccountType, "expected parameter 'storageAccountType' to be non-null");
+            if ($.dataDiskName == null) {
+                throw new MissingRequiredPropertyException("StatefulNodeAzureAttachDataDiskArgs", "dataDiskName");
+            }
+            if ($.dataDiskResourceGroupName == null) {
+                throw new MissingRequiredPropertyException("StatefulNodeAzureAttachDataDiskArgs", "dataDiskResourceGroupName");
+            }
+            if ($.sizeGb == null) {
+                throw new MissingRequiredPropertyException("StatefulNodeAzureAttachDataDiskArgs", "sizeGb");
+            }
+            if ($.storageAccountType == null) {
+                throw new MissingRequiredPropertyException("StatefulNodeAzureAttachDataDiskArgs", "storageAccountType");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.spotinst.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.spotinst.inputs.StatefulNodeAzureSecretSourceVaultArgs;
 import com.pulumi.spotinst.inputs.StatefulNodeAzureSecretVaultCertificateArgs;
 import java.util.List;
@@ -81,8 +82,12 @@ public final class StatefulNodeAzureSecretArgs extends com.pulumi.resources.Reso
         }
 
         public StatefulNodeAzureSecretArgs build() {
-            $.sourceVaults = Objects.requireNonNull($.sourceVaults, "expected parameter 'sourceVaults' to be non-null");
-            $.vaultCertificates = Objects.requireNonNull($.vaultCertificates, "expected parameter 'vaultCertificates' to be non-null");
+            if ($.sourceVaults == null) {
+                throw new MissingRequiredPropertyException("StatefulNodeAzureSecretArgs", "sourceVaults");
+            }
+            if ($.vaultCertificates == null) {
+                throw new MissingRequiredPropertyException("StatefulNodeAzureSecretArgs", "vaultCertificates");
+            }
             return $;
         }
     }

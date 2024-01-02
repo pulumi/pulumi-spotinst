@@ -4,6 +4,7 @@
 package com.pulumi.spotinst.aws.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -289,77 +290,94 @@ public final class BeanstalkScheduledTask {
 
         @CustomType.Setter
         public Builder adjustment(@Nullable String adjustment) {
+
             this.adjustment = adjustment;
             return this;
         }
         @CustomType.Setter
         public Builder adjustmentPercentage(@Nullable String adjustmentPercentage) {
+
             this.adjustmentPercentage = adjustmentPercentage;
             return this;
         }
         @CustomType.Setter
         public Builder batchSizePercentage(@Nullable String batchSizePercentage) {
+
             this.batchSizePercentage = batchSizePercentage;
             return this;
         }
         @CustomType.Setter
         public Builder cronExpression(@Nullable String cronExpression) {
+
             this.cronExpression = cronExpression;
             return this;
         }
         @CustomType.Setter
         public Builder frequency(@Nullable String frequency) {
+
             this.frequency = frequency;
             return this;
         }
         @CustomType.Setter
         public Builder gracePeriod(@Nullable String gracePeriod) {
+
             this.gracePeriod = gracePeriod;
             return this;
         }
         @CustomType.Setter
         public Builder isEnabled(@Nullable Boolean isEnabled) {
+
             this.isEnabled = isEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder maxCapacity(@Nullable String maxCapacity) {
+
             this.maxCapacity = maxCapacity;
             return this;
         }
         @CustomType.Setter
         public Builder minCapacity(@Nullable String minCapacity) {
+
             this.minCapacity = minCapacity;
             return this;
         }
         @CustomType.Setter
         public Builder scaleMaxCapacity(@Nullable String scaleMaxCapacity) {
+
             this.scaleMaxCapacity = scaleMaxCapacity;
             return this;
         }
         @CustomType.Setter
         public Builder scaleMinCapacity(@Nullable String scaleMinCapacity) {
+
             this.scaleMinCapacity = scaleMinCapacity;
             return this;
         }
         @CustomType.Setter
         public Builder scaleTargetCapacity(@Nullable String scaleTargetCapacity) {
+
             this.scaleTargetCapacity = scaleTargetCapacity;
             return this;
         }
         @CustomType.Setter
         public Builder startTime(@Nullable String startTime) {
+
             this.startTime = startTime;
             return this;
         }
         @CustomType.Setter
         public Builder targetCapacity(@Nullable String targetCapacity) {
+
             this.targetCapacity = targetCapacity;
             return this;
         }
         @CustomType.Setter
         public Builder taskType(String taskType) {
-            this.taskType = Objects.requireNonNull(taskType);
+            if (taskType == null) {
+              throw new MissingRequiredPropertyException("BeanstalkScheduledTask", "taskType");
+            }
+            this.taskType = taskType;
             return this;
         }
         public BeanstalkScheduledTask build() {

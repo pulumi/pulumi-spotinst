@@ -4,6 +4,7 @@
 package com.pulumi.spotinst.aws.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.spotinst.aws.outputs.OceanLaunchSpecSchedulingTaskTaskHeadroom;
 import java.lang.Boolean;
 import java.lang.String;
@@ -88,16 +89,23 @@ public final class OceanLaunchSpecSchedulingTask {
 
         @CustomType.Setter
         public Builder cronExpression(String cronExpression) {
-            this.cronExpression = Objects.requireNonNull(cronExpression);
+            if (cronExpression == null) {
+              throw new MissingRequiredPropertyException("OceanLaunchSpecSchedulingTask", "cronExpression");
+            }
+            this.cronExpression = cronExpression;
             return this;
         }
         @CustomType.Setter
         public Builder isEnabled(Boolean isEnabled) {
-            this.isEnabled = Objects.requireNonNull(isEnabled);
+            if (isEnabled == null) {
+              throw new MissingRequiredPropertyException("OceanLaunchSpecSchedulingTask", "isEnabled");
+            }
+            this.isEnabled = isEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder taskHeadrooms(@Nullable List<OceanLaunchSpecSchedulingTaskTaskHeadroom> taskHeadrooms) {
+
             this.taskHeadrooms = taskHeadrooms;
             return this;
         }
@@ -106,7 +114,10 @@ public final class OceanLaunchSpecSchedulingTask {
         }
         @CustomType.Setter
         public Builder taskType(String taskType) {
-            this.taskType = Objects.requireNonNull(taskType);
+            if (taskType == null) {
+              throw new MissingRequiredPropertyException("OceanLaunchSpecSchedulingTask", "taskType");
+            }
+            this.taskType = taskType;
             return this;
         }
         public OceanLaunchSpecSchedulingTask build() {

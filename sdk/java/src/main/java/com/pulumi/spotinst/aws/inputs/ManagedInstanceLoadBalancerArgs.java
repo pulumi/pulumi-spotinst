@@ -5,6 +5,7 @@ package com.pulumi.spotinst.aws.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -159,7 +160,9 @@ public final class ManagedInstanceLoadBalancerArgs extends com.pulumi.resources.
         }
 
         public ManagedInstanceLoadBalancerArgs build() {
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("ManagedInstanceLoadBalancerArgs", "type");
+            }
             return $;
         }
     }

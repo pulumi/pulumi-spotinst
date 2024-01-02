@@ -43,6 +43,7 @@ public final class ElastigroupAzureV3Image {
 
         @CustomType.Setter
         public Builder customs(@Nullable List<ElastigroupAzureV3ImageCustom> customs) {
+
             this.customs = customs;
             return this;
         }
@@ -51,6 +52,7 @@ public final class ElastigroupAzureV3Image {
         }
         @CustomType.Setter
         public Builder marketplaces(@Nullable List<ElastigroupAzureV3ImageMarketplace> marketplaces) {
+
             this.marketplaces = marketplaces;
             return this;
         }

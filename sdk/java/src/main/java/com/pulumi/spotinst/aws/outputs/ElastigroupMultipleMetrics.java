@@ -59,6 +59,7 @@ public final class ElastigroupMultipleMetrics {
 
         @CustomType.Setter
         public Builder expressions(@Nullable List<ElastigroupMultipleMetricsExpression> expressions) {
+
             this.expressions = expressions;
             return this;
         }
@@ -67,6 +68,7 @@ public final class ElastigroupMultipleMetrics {
         }
         @CustomType.Setter
         public Builder metrics(@Nullable List<ElastigroupMultipleMetricsMetric> metrics) {
+
             this.metrics = metrics;
             return this;
         }

@@ -4,6 +4,7 @@
 package com.pulumi.spotinst.azure.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -34,7 +35,10 @@ public final class ElastigroupIntegrationKubernetes {
 
         @CustomType.Setter
         public Builder clusterIdentifier(String clusterIdentifier) {
-            this.clusterIdentifier = Objects.requireNonNull(clusterIdentifier);
+            if (clusterIdentifier == null) {
+              throw new MissingRequiredPropertyException("ElastigroupIntegrationKubernetes", "clusterIdentifier");
+            }
+            this.clusterIdentifier = clusterIdentifier;
             return this;
         }
         public ElastigroupIntegrationKubernetes build() {

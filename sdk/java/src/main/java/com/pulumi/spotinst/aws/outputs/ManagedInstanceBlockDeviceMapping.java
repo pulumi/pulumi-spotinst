@@ -4,6 +4,7 @@
 package com.pulumi.spotinst.aws.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.spotinst.aws.outputs.ManagedInstanceBlockDeviceMappingEbs;
 import java.lang.String;
 import java.util.Objects;
@@ -43,11 +44,15 @@ public final class ManagedInstanceBlockDeviceMapping {
 
         @CustomType.Setter
         public Builder deviceName(String deviceName) {
-            this.deviceName = Objects.requireNonNull(deviceName);
+            if (deviceName == null) {
+              throw new MissingRequiredPropertyException("ManagedInstanceBlockDeviceMapping", "deviceName");
+            }
+            this.deviceName = deviceName;
             return this;
         }
         @CustomType.Setter
         public Builder ebs(@Nullable ManagedInstanceBlockDeviceMappingEbs ebs) {
+
             this.ebs = ebs;
             return this;
         }

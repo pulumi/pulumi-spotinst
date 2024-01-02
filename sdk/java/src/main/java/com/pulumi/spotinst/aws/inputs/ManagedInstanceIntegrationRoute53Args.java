@@ -5,6 +5,7 @@ package com.pulumi.spotinst.aws.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.spotinst.aws.inputs.ManagedInstanceIntegrationRoute53DomainArgs;
 import java.util.List;
 import java.util.Objects;
@@ -59,7 +60,9 @@ public final class ManagedInstanceIntegrationRoute53Args extends com.pulumi.reso
         }
 
         public ManagedInstanceIntegrationRoute53Args build() {
-            $.domains = Objects.requireNonNull($.domains, "expected parameter 'domains' to be non-null");
+            if ($.domains == null) {
+                throw new MissingRequiredPropertyException("ManagedInstanceIntegrationRoute53Args", "domains");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.spotinst.aws.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.util.Objects;
 import java.util.Optional;
@@ -113,7 +114,9 @@ public final class OceanLaunchSpecDeleteOptionsArgs extends com.pulumi.resources
         }
 
         public OceanLaunchSpecDeleteOptionsArgs build() {
-            $.forceDelete = Objects.requireNonNull($.forceDelete, "expected parameter 'forceDelete' to be non-null");
+            if ($.forceDelete == null) {
+                throw new MissingRequiredPropertyException("OceanLaunchSpecDeleteOptionsArgs", "forceDelete");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.spotinst.gke.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -226,7 +227,9 @@ public final class OceanImportUpdatePolicyRollConfigArgs extends com.pulumi.reso
         }
 
         public OceanImportUpdatePolicyRollConfigArgs build() {
-            $.batchSizePercentage = Objects.requireNonNull($.batchSizePercentage, "expected parameter 'batchSizePercentage' to be non-null");
+            if ($.batchSizePercentage == null) {
+                throw new MissingRequiredPropertyException("OceanImportUpdatePolicyRollConfigArgs", "batchSizePercentage");
+            }
             return $;
         }
     }

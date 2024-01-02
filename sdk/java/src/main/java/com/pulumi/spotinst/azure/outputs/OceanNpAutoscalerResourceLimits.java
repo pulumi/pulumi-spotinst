@@ -42,11 +42,13 @@ public final class OceanNpAutoscalerResourceLimits {
 
         @CustomType.Setter
         public Builder maxMemoryGib(@Nullable Integer maxMemoryGib) {
+
             this.maxMemoryGib = maxMemoryGib;
             return this;
         }
         @CustomType.Setter
         public Builder maxVcpu(@Nullable Integer maxVcpu) {
+
             this.maxVcpu = maxVcpu;
             return this;
         }

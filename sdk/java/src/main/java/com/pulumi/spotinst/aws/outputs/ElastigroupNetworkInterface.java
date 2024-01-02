@@ -4,6 +4,7 @@
 package com.pulumi.spotinst.aws.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -191,41 +192,51 @@ public final class ElastigroupNetworkInterface {
 
         @CustomType.Setter
         public Builder associateIpv6Address(@Nullable Boolean associateIpv6Address) {
+
             this.associateIpv6Address = associateIpv6Address;
             return this;
         }
         @CustomType.Setter
         public Builder associatePublicIpAddress(@Nullable Boolean associatePublicIpAddress) {
+
             this.associatePublicIpAddress = associatePublicIpAddress;
             return this;
         }
         @CustomType.Setter
         public Builder deleteOnTermination(@Nullable Boolean deleteOnTermination) {
+
             this.deleteOnTermination = deleteOnTermination;
             return this;
         }
         @CustomType.Setter
         public Builder description(@Nullable String description) {
+
             this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder deviceIndex(String deviceIndex) {
-            this.deviceIndex = Objects.requireNonNull(deviceIndex);
+            if (deviceIndex == null) {
+              throw new MissingRequiredPropertyException("ElastigroupNetworkInterface", "deviceIndex");
+            }
+            this.deviceIndex = deviceIndex;
             return this;
         }
         @CustomType.Setter
         public Builder networkInterfaceId(@Nullable String networkInterfaceId) {
+
             this.networkInterfaceId = networkInterfaceId;
             return this;
         }
         @CustomType.Setter
         public Builder privateIpAddress(@Nullable String privateIpAddress) {
+
             this.privateIpAddress = privateIpAddress;
             return this;
         }
         @CustomType.Setter
         public Builder secondaryPrivateIpAddressCount(@Nullable String secondaryPrivateIpAddressCount) {
+
             this.secondaryPrivateIpAddressCount = secondaryPrivateIpAddressCount;
             return this;
         }

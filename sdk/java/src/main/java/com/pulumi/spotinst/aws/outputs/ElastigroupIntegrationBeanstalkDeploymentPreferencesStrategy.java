@@ -59,11 +59,13 @@ public final class ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategy 
 
         @CustomType.Setter
         public Builder action(@Nullable String action) {
+
             this.action = action;
             return this;
         }
         @CustomType.Setter
         public Builder shouldDrainInstances(@Nullable Boolean shouldDrainInstances) {
+
             this.shouldDrainInstances = shouldDrainInstances;
             return this;
         }

@@ -58,11 +58,13 @@ public final class OceanNetworkNetworkInterfaceSecurityGroup {
 
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder resourceGroupName(@Nullable String resourceGroupName) {
+
             this.resourceGroupName = resourceGroupName;
             return this;
         }

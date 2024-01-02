@@ -120,16 +120,19 @@ public final class ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdate {
 
         @CustomType.Setter
         public Builder performAt(@Nullable String performAt) {
+
             this.performAt = performAt;
             return this;
         }
         @CustomType.Setter
         public Builder timeWindow(@Nullable String timeWindow) {
+
             this.timeWindow = timeWindow;
             return this;
         }
         @CustomType.Setter
         public Builder updateLevel(@Nullable String updateLevel) {
+
             this.updateLevel = updateLevel;
             return this;
         }

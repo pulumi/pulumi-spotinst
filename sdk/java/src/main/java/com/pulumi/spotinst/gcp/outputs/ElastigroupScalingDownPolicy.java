@@ -4,6 +4,7 @@
 package com.pulumi.spotinst.gcp.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.spotinst.gcp.outputs.ElastigroupScalingDownPolicyDimension;
 import java.lang.Double;
 import java.lang.Integer;
@@ -214,21 +215,25 @@ public final class ElastigroupScalingDownPolicy {
 
         @CustomType.Setter
         public Builder actionType(@Nullable String actionType) {
+
             this.actionType = actionType;
             return this;
         }
         @CustomType.Setter
         public Builder adjustment(@Nullable Integer adjustment) {
+
             this.adjustment = adjustment;
             return this;
         }
         @CustomType.Setter
         public Builder cooldown(@Nullable Integer cooldown) {
+
             this.cooldown = cooldown;
             return this;
         }
         @CustomType.Setter
         public Builder dimensions(@Nullable List<ElastigroupScalingDownPolicyDimension> dimensions) {
+
             this.dimensions = dimensions;
             return this;
         }
@@ -237,52 +242,72 @@ public final class ElastigroupScalingDownPolicy {
         }
         @CustomType.Setter
         public Builder evaluationPeriods(@Nullable Integer evaluationPeriods) {
+
             this.evaluationPeriods = evaluationPeriods;
             return this;
         }
         @CustomType.Setter
         public Builder metricName(String metricName) {
-            this.metricName = Objects.requireNonNull(metricName);
+            if (metricName == null) {
+              throw new MissingRequiredPropertyException("ElastigroupScalingDownPolicy", "metricName");
+            }
+            this.metricName = metricName;
             return this;
         }
         @CustomType.Setter
         public Builder namespace(String namespace) {
-            this.namespace = Objects.requireNonNull(namespace);
+            if (namespace == null) {
+              throw new MissingRequiredPropertyException("ElastigroupScalingDownPolicy", "namespace");
+            }
+            this.namespace = namespace;
             return this;
         }
         @CustomType.Setter
         public Builder operator(@Nullable String operator) {
+
             this.operator = operator;
             return this;
         }
         @CustomType.Setter
         public Builder period(@Nullable Integer period) {
+
             this.period = period;
             return this;
         }
         @CustomType.Setter
         public Builder policyName(String policyName) {
-            this.policyName = Objects.requireNonNull(policyName);
+            if (policyName == null) {
+              throw new MissingRequiredPropertyException("ElastigroupScalingDownPolicy", "policyName");
+            }
+            this.policyName = policyName;
             return this;
         }
         @CustomType.Setter
         public Builder source(@Nullable String source) {
+
             this.source = source;
             return this;
         }
         @CustomType.Setter
         public Builder statistic(@Nullable String statistic) {
+
             this.statistic = statistic;
             return this;
         }
         @CustomType.Setter
         public Builder threshold(Double threshold) {
-            this.threshold = Objects.requireNonNull(threshold);
+            if (threshold == null) {
+              throw new MissingRequiredPropertyException("ElastigroupScalingDownPolicy", "threshold");
+            }
+            this.threshold = threshold;
             return this;
         }
         @CustomType.Setter
         public Builder unit(String unit) {
-            this.unit = Objects.requireNonNull(unit);
+            if (unit == null) {
+              throw new MissingRequiredPropertyException("ElastigroupScalingDownPolicy", "unit");
+            }
+            this.unit = unit;
             return this;
         }
         public ElastigroupScalingDownPolicy build() {
