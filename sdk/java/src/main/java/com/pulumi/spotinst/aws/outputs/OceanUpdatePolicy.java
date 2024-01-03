@@ -7,6 +7,8 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.spotinst.aws.outputs.OceanUpdatePolicyRollConfig;
 import java.lang.Boolean;
+import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -15,6 +17,7 @@ import javax.annotation.Nullable;
 public final class OceanUpdatePolicy {
     private @Nullable Boolean autoApplyTags;
     private @Nullable Boolean conditionedRoll;
+    private @Nullable List<String> conditionedRollParams;
     private @Nullable OceanUpdatePolicyRollConfig rollConfig;
     private Boolean shouldRoll;
 
@@ -24,6 +27,9 @@ public final class OceanUpdatePolicy {
     }
     public Optional<Boolean> conditionedRoll() {
         return Optional.ofNullable(this.conditionedRoll);
+    }
+    public List<String> conditionedRollParams() {
+        return this.conditionedRollParams == null ? List.of() : this.conditionedRollParams;
     }
     public Optional<OceanUpdatePolicyRollConfig> rollConfig() {
         return Optional.ofNullable(this.rollConfig);
@@ -43,6 +49,7 @@ public final class OceanUpdatePolicy {
     public static final class Builder {
         private @Nullable Boolean autoApplyTags;
         private @Nullable Boolean conditionedRoll;
+        private @Nullable List<String> conditionedRollParams;
         private @Nullable OceanUpdatePolicyRollConfig rollConfig;
         private Boolean shouldRoll;
         public Builder() {}
@@ -50,6 +57,7 @@ public final class OceanUpdatePolicy {
     	      Objects.requireNonNull(defaults);
     	      this.autoApplyTags = defaults.autoApplyTags;
     	      this.conditionedRoll = defaults.conditionedRoll;
+    	      this.conditionedRollParams = defaults.conditionedRollParams;
     	      this.rollConfig = defaults.rollConfig;
     	      this.shouldRoll = defaults.shouldRoll;
         }
@@ -65,6 +73,15 @@ public final class OceanUpdatePolicy {
 
             this.conditionedRoll = conditionedRoll;
             return this;
+        }
+        @CustomType.Setter
+        public Builder conditionedRollParams(@Nullable List<String> conditionedRollParams) {
+
+            this.conditionedRollParams = conditionedRollParams;
+            return this;
+        }
+        public Builder conditionedRollParams(String... conditionedRollParams) {
+            return conditionedRollParams(List.of(conditionedRollParams));
         }
         @CustomType.Setter
         public Builder rollConfig(@Nullable OceanUpdatePolicyRollConfig rollConfig) {
@@ -84,6 +101,7 @@ public final class OceanUpdatePolicy {
             final var _resultValue = new OceanUpdatePolicy();
             _resultValue.autoApplyTags = autoApplyTags;
             _resultValue.conditionedRoll = conditionedRoll;
+            _resultValue.conditionedRollParams = conditionedRollParams;
             _resultValue.rollConfig = rollConfig;
             _resultValue.shouldRoll = shouldRoll;
             return _resultValue;

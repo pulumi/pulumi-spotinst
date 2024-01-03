@@ -3174,6 +3174,7 @@ export namespace aws {
     export interface OceanUpdatePolicy {
         autoApplyTags?: pulumi.Input<boolean>;
         conditionedRoll?: pulumi.Input<boolean>;
+        conditionedRollParams?: pulumi.Input<pulumi.Input<string>[]>;
         rollConfig?: pulumi.Input<inputs.aws.OceanUpdatePolicyRollConfig>;
         shouldRoll: pulumi.Input<boolean>;
     }

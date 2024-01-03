@@ -18,6 +18,14 @@ namespace Pulumi.SpotInst.Aws.Inputs
         [Input("conditionedRoll")]
         public Input<bool>? ConditionedRoll { get; set; }
 
+        [Input("conditionedRollParams")]
+        private InputList<string>? _conditionedRollParams;
+        public InputList<string> ConditionedRollParams
+        {
+            get => _conditionedRollParams ?? (_conditionedRollParams = new InputList<string>());
+            set => _conditionedRollParams = value;
+        }
+
         [Input("rollConfig")]
         public Input<Inputs.OceanUpdatePolicyRollConfigArgs>? RollConfig { get; set; }
 

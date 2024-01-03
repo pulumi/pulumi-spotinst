@@ -11107,12 +11107,15 @@ class OceanUpdatePolicyArgs:
                  should_roll: pulumi.Input[bool],
                  auto_apply_tags: Optional[pulumi.Input[bool]] = None,
                  conditioned_roll: Optional[pulumi.Input[bool]] = None,
+                 conditioned_roll_params: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  roll_config: Optional[pulumi.Input['OceanUpdatePolicyRollConfigArgs']] = None):
         pulumi.set(__self__, "should_roll", should_roll)
         if auto_apply_tags is not None:
             pulumi.set(__self__, "auto_apply_tags", auto_apply_tags)
         if conditioned_roll is not None:
             pulumi.set(__self__, "conditioned_roll", conditioned_roll)
+        if conditioned_roll_params is not None:
+            pulumi.set(__self__, "conditioned_roll_params", conditioned_roll_params)
         if roll_config is not None:
             pulumi.set(__self__, "roll_config", roll_config)
 
@@ -11142,6 +11145,15 @@ class OceanUpdatePolicyArgs:
     @conditioned_roll.setter
     def conditioned_roll(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "conditioned_roll", value)
+
+    @property
+    @pulumi.getter(name="conditionedRollParams")
+    def conditioned_roll_params(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "conditioned_roll_params")
+
+    @conditioned_roll_params.setter
+    def conditioned_roll_params(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "conditioned_roll_params", value)
 
     @property
     @pulumi.getter(name="rollConfig")

@@ -24838,10 +24838,11 @@ func (o OceanTagArrayOutput) Index(i pulumi.IntInput) OceanTagOutput {
 }
 
 type OceanUpdatePolicy struct {
-	AutoApplyTags   *bool                        `pulumi:"autoApplyTags"`
-	ConditionedRoll *bool                        `pulumi:"conditionedRoll"`
-	RollConfig      *OceanUpdatePolicyRollConfig `pulumi:"rollConfig"`
-	ShouldRoll      bool                         `pulumi:"shouldRoll"`
+	AutoApplyTags         *bool                        `pulumi:"autoApplyTags"`
+	ConditionedRoll       *bool                        `pulumi:"conditionedRoll"`
+	ConditionedRollParams []string                     `pulumi:"conditionedRollParams"`
+	RollConfig            *OceanUpdatePolicyRollConfig `pulumi:"rollConfig"`
+	ShouldRoll            bool                         `pulumi:"shouldRoll"`
 }
 
 // OceanUpdatePolicyInput is an input type that accepts OceanUpdatePolicyArgs and OceanUpdatePolicyOutput values.
@@ -24856,10 +24857,11 @@ type OceanUpdatePolicyInput interface {
 }
 
 type OceanUpdatePolicyArgs struct {
-	AutoApplyTags   pulumi.BoolPtrInput                 `pulumi:"autoApplyTags"`
-	ConditionedRoll pulumi.BoolPtrInput                 `pulumi:"conditionedRoll"`
-	RollConfig      OceanUpdatePolicyRollConfigPtrInput `pulumi:"rollConfig"`
-	ShouldRoll      pulumi.BoolInput                    `pulumi:"shouldRoll"`
+	AutoApplyTags         pulumi.BoolPtrInput                 `pulumi:"autoApplyTags"`
+	ConditionedRoll       pulumi.BoolPtrInput                 `pulumi:"conditionedRoll"`
+	ConditionedRollParams pulumi.StringArrayInput             `pulumi:"conditionedRollParams"`
+	RollConfig            OceanUpdatePolicyRollConfigPtrInput `pulumi:"rollConfig"`
+	ShouldRoll            pulumi.BoolInput                    `pulumi:"shouldRoll"`
 }
 
 func (OceanUpdatePolicyArgs) ElementType() reflect.Type {
@@ -24947,6 +24949,10 @@ func (o OceanUpdatePolicyOutput) ConditionedRoll() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OceanUpdatePolicy) *bool { return v.ConditionedRoll }).(pulumi.BoolPtrOutput)
 }
 
+func (o OceanUpdatePolicyOutput) ConditionedRollParams() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OceanUpdatePolicy) []string { return v.ConditionedRollParams }).(pulumi.StringArrayOutput)
+}
+
 func (o OceanUpdatePolicyOutput) RollConfig() OceanUpdatePolicyRollConfigPtrOutput {
 	return o.ApplyT(func(v OceanUpdatePolicy) *OceanUpdatePolicyRollConfig { return v.RollConfig }).(OceanUpdatePolicyRollConfigPtrOutput)
 }
@@ -24995,6 +25001,15 @@ func (o OceanUpdatePolicyPtrOutput) ConditionedRoll() pulumi.BoolPtrOutput {
 		}
 		return v.ConditionedRoll
 	}).(pulumi.BoolPtrOutput)
+}
+
+func (o OceanUpdatePolicyPtrOutput) ConditionedRollParams() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OceanUpdatePolicy) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ConditionedRollParams
+	}).(pulumi.StringArrayOutput)
 }
 
 func (o OceanUpdatePolicyPtrOutput) RollConfig() OceanUpdatePolicyRollConfigPtrOutput {
