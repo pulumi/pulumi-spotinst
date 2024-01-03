@@ -54,6 +54,7 @@ import (
 // * `updatePolicy` - (Optional)
 //   - `shouldRoll` - (Required) Enables the roll.
 //   - `conditionedRoll` - (Optional, Default: false) Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as AMI, Key Pair, user data, instance types, load balancers, etc).
+//   - `conditionedRollParams` - (Optional) A custom list of attributes will trigger the cluster roll operation (overrides the predefined list of parameters). Valid only when the `conditionedRoll` parameter is set to true. (Valid values: `"subnetIds"`,`"whitelist"`,`"blacklist"`,`"userData"`,`"imageId"`,`"securityGroups"`,`"keyName"`,`"iamInstanceProfile"`,`"associatePublicIpAddress"`,`"loadBalancers"`,`"instanceMetadataOptions"`,`"ebsOptimized"`,`"rootVolumeSize"`)
 //   - `autoApplyTags` - (Optional, Default: false) will update instance tags on the fly without rolling the cluster.
 //   - `rollConfig` - (Required) While used, you can control whether the group should perform a deployment after an update to the configuration.
 //   - `batchSizePercentage` - (Required) Sets the percentage of the instances to deploy in each batch.

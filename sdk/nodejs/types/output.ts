@@ -3175,6 +3175,7 @@ export namespace aws {
     export interface OceanUpdatePolicy {
         autoApplyTags?: boolean;
         conditionedRoll?: boolean;
+        conditionedRollParams?: string[];
         rollConfig?: outputs.aws.OceanUpdatePolicyRollConfig;
         shouldRoll: boolean;
     }

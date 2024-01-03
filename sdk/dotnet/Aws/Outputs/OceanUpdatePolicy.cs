@@ -15,6 +15,7 @@ namespace Pulumi.SpotInst.Aws.Outputs
     {
         public readonly bool? AutoApplyTags;
         public readonly bool? ConditionedRoll;
+        public readonly ImmutableArray<string> ConditionedRollParams;
         public readonly Outputs.OceanUpdatePolicyRollConfig? RollConfig;
         public readonly bool ShouldRoll;
 
@@ -24,12 +25,15 @@ namespace Pulumi.SpotInst.Aws.Outputs
 
             bool? conditionedRoll,
 
+            ImmutableArray<string> conditionedRollParams,
+
             Outputs.OceanUpdatePolicyRollConfig? rollConfig,
 
             bool shouldRoll)
         {
             AutoApplyTags = autoApplyTags;
             ConditionedRoll = conditionedRoll;
+            ConditionedRollParams = conditionedRollParams;
             RollConfig = rollConfig;
             ShouldRoll = shouldRoll;
         }

@@ -8,6 +8,8 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.spotinst.aws.inputs.OceanUpdatePolicyRollConfigArgs;
 import java.lang.Boolean;
+import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -31,6 +33,13 @@ public final class OceanUpdatePolicyArgs extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.conditionedRoll);
     }
 
+    @Import(name="conditionedRollParams")
+    private @Nullable Output<List<String>> conditionedRollParams;
+
+    public Optional<Output<List<String>>> conditionedRollParams() {
+        return Optional.ofNullable(this.conditionedRollParams);
+    }
+
     @Import(name="rollConfig")
     private @Nullable Output<OceanUpdatePolicyRollConfigArgs> rollConfig;
 
@@ -50,6 +59,7 @@ public final class OceanUpdatePolicyArgs extends com.pulumi.resources.ResourceAr
     private OceanUpdatePolicyArgs(OceanUpdatePolicyArgs $) {
         this.autoApplyTags = $.autoApplyTags;
         this.conditionedRoll = $.conditionedRoll;
+        this.conditionedRollParams = $.conditionedRollParams;
         this.rollConfig = $.rollConfig;
         this.shouldRoll = $.shouldRoll;
     }
@@ -88,6 +98,19 @@ public final class OceanUpdatePolicyArgs extends com.pulumi.resources.ResourceAr
 
         public Builder conditionedRoll(Boolean conditionedRoll) {
             return conditionedRoll(Output.of(conditionedRoll));
+        }
+
+        public Builder conditionedRollParams(@Nullable Output<List<String>> conditionedRollParams) {
+            $.conditionedRollParams = conditionedRollParams;
+            return this;
+        }
+
+        public Builder conditionedRollParams(List<String> conditionedRollParams) {
+            return conditionedRollParams(Output.of(conditionedRollParams));
+        }
+
+        public Builder conditionedRollParams(String... conditionedRollParams) {
+            return conditionedRollParams(List.of(conditionedRollParams));
         }
 
         public Builder rollConfig(@Nullable Output<OceanUpdatePolicyRollConfigArgs> rollConfig) {

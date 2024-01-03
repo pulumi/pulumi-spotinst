@@ -11142,6 +11142,8 @@ class OceanUpdatePolicy(dict):
             suggest = "auto_apply_tags"
         elif key == "conditionedRoll":
             suggest = "conditioned_roll"
+        elif key == "conditionedRollParams":
+            suggest = "conditioned_roll_params"
         elif key == "rollConfig":
             suggest = "roll_config"
 
@@ -11160,12 +11162,15 @@ class OceanUpdatePolicy(dict):
                  should_roll: bool,
                  auto_apply_tags: Optional[bool] = None,
                  conditioned_roll: Optional[bool] = None,
+                 conditioned_roll_params: Optional[Sequence[str]] = None,
                  roll_config: Optional['outputs.OceanUpdatePolicyRollConfig'] = None):
         pulumi.set(__self__, "should_roll", should_roll)
         if auto_apply_tags is not None:
             pulumi.set(__self__, "auto_apply_tags", auto_apply_tags)
         if conditioned_roll is not None:
             pulumi.set(__self__, "conditioned_roll", conditioned_roll)
+        if conditioned_roll_params is not None:
+            pulumi.set(__self__, "conditioned_roll_params", conditioned_roll_params)
         if roll_config is not None:
             pulumi.set(__self__, "roll_config", roll_config)
 
@@ -11183,6 +11188,11 @@ class OceanUpdatePolicy(dict):
     @pulumi.getter(name="conditionedRoll")
     def conditioned_roll(self) -> Optional[bool]:
         return pulumi.get(self, "conditioned_roll")
+
+    @property
+    @pulumi.getter(name="conditionedRollParams")
+    def conditioned_roll_params(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "conditioned_roll_params")
 
     @property
     @pulumi.getter(name="rollConfig")
