@@ -32,7 +32,7 @@ class ManagedInstanceArgs:
                  ebs_optimized: Optional[pulumi.Input[bool]] = None,
                  elastic_ip: Optional[pulumi.Input[str]] = None,
                  enable_monitoring: Optional[pulumi.Input[bool]] = None,
-                 fall_back_to_od: Optional[pulumi.Input[bool]] = None,
+                 fallback_to_ondemand: Optional[pulumi.Input[bool]] = None,
                  grace_period: Optional[pulumi.Input[int]] = None,
                  health_check_type: Optional[pulumi.Input[str]] = None,
                  iam_instance_profile: Optional[pulumi.Input[str]] = None,
@@ -90,8 +90,8 @@ class ManagedInstanceArgs:
             pulumi.set(__self__, "elastic_ip", elastic_ip)
         if enable_monitoring is not None:
             pulumi.set(__self__, "enable_monitoring", enable_monitoring)
-        if fall_back_to_od is not None:
-            pulumi.set(__self__, "fall_back_to_od", fall_back_to_od)
+        if fallback_to_ondemand is not None:
+            pulumi.set(__self__, "fallback_to_ondemand", fallback_to_ondemand)
         if grace_period is not None:
             pulumi.set(__self__, "grace_period", grace_period)
         if health_check_type is not None:
@@ -294,13 +294,13 @@ class ManagedInstanceArgs:
         pulumi.set(self, "enable_monitoring", value)
 
     @property
-    @pulumi.getter(name="fallBackToOd")
-    def fall_back_to_od(self) -> Optional[pulumi.Input[bool]]:
-        return pulumi.get(self, "fall_back_to_od")
+    @pulumi.getter(name="fallbackToOndemand")
+    def fallback_to_ondemand(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "fallback_to_ondemand")
 
-    @fall_back_to_od.setter
-    def fall_back_to_od(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "fall_back_to_od", value)
+    @fallback_to_ondemand.setter
+    def fallback_to_ondemand(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "fallback_to_ondemand", value)
 
     @property
     @pulumi.getter(name="gracePeriod")
@@ -568,7 +568,7 @@ class _ManagedInstanceState:
                  ebs_optimized: Optional[pulumi.Input[bool]] = None,
                  elastic_ip: Optional[pulumi.Input[str]] = None,
                  enable_monitoring: Optional[pulumi.Input[bool]] = None,
-                 fall_back_to_od: Optional[pulumi.Input[bool]] = None,
+                 fallback_to_ondemand: Optional[pulumi.Input[bool]] = None,
                  grace_period: Optional[pulumi.Input[int]] = None,
                  health_check_type: Optional[pulumi.Input[str]] = None,
                  iam_instance_profile: Optional[pulumi.Input[str]] = None,
@@ -626,8 +626,8 @@ class _ManagedInstanceState:
             pulumi.set(__self__, "elastic_ip", elastic_ip)
         if enable_monitoring is not None:
             pulumi.set(__self__, "enable_monitoring", enable_monitoring)
-        if fall_back_to_od is not None:
-            pulumi.set(__self__, "fall_back_to_od", fall_back_to_od)
+        if fallback_to_ondemand is not None:
+            pulumi.set(__self__, "fallback_to_ondemand", fallback_to_ondemand)
         if grace_period is not None:
             pulumi.set(__self__, "grace_period", grace_period)
         if health_check_type is not None:
@@ -788,13 +788,13 @@ class _ManagedInstanceState:
         pulumi.set(self, "enable_monitoring", value)
 
     @property
-    @pulumi.getter(name="fallBackToOd")
-    def fall_back_to_od(self) -> Optional[pulumi.Input[bool]]:
-        return pulumi.get(self, "fall_back_to_od")
+    @pulumi.getter(name="fallbackToOndemand")
+    def fallback_to_ondemand(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "fallback_to_ondemand")
 
-    @fall_back_to_od.setter
-    def fall_back_to_od(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "fall_back_to_od", value)
+    @fallback_to_ondemand.setter
+    def fallback_to_ondemand(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "fallback_to_ondemand", value)
 
     @property
     @pulumi.getter(name="gracePeriod")
@@ -1118,7 +1118,7 @@ class ManagedInstance(pulumi.CustomResource):
                  ebs_optimized: Optional[pulumi.Input[bool]] = None,
                  elastic_ip: Optional[pulumi.Input[str]] = None,
                  enable_monitoring: Optional[pulumi.Input[bool]] = None,
-                 fall_back_to_od: Optional[pulumi.Input[bool]] = None,
+                 fallback_to_ondemand: Optional[pulumi.Input[bool]] = None,
                  grace_period: Optional[pulumi.Input[int]] = None,
                  health_check_type: Optional[pulumi.Input[str]] = None,
                  iam_instance_profile: Optional[pulumi.Input[str]] = None,
@@ -1192,7 +1192,7 @@ class ManagedInstance(pulumi.CustomResource):
                  ebs_optimized: Optional[pulumi.Input[bool]] = None,
                  elastic_ip: Optional[pulumi.Input[str]] = None,
                  enable_monitoring: Optional[pulumi.Input[bool]] = None,
-                 fall_back_to_od: Optional[pulumi.Input[bool]] = None,
+                 fallback_to_ondemand: Optional[pulumi.Input[bool]] = None,
                  grace_period: Optional[pulumi.Input[int]] = None,
                  health_check_type: Optional[pulumi.Input[str]] = None,
                  iam_instance_profile: Optional[pulumi.Input[str]] = None,
@@ -1246,7 +1246,7 @@ class ManagedInstance(pulumi.CustomResource):
             __props__.__dict__["ebs_optimized"] = ebs_optimized
             __props__.__dict__["elastic_ip"] = elastic_ip
             __props__.__dict__["enable_monitoring"] = enable_monitoring
-            __props__.__dict__["fall_back_to_od"] = fall_back_to_od
+            __props__.__dict__["fallback_to_ondemand"] = fallback_to_ondemand
             __props__.__dict__["grace_period"] = grace_period
             __props__.__dict__["health_check_type"] = health_check_type
             __props__.__dict__["iam_instance_profile"] = iam_instance_profile
@@ -1313,7 +1313,7 @@ class ManagedInstance(pulumi.CustomResource):
             ebs_optimized: Optional[pulumi.Input[bool]] = None,
             elastic_ip: Optional[pulumi.Input[str]] = None,
             enable_monitoring: Optional[pulumi.Input[bool]] = None,
-            fall_back_to_od: Optional[pulumi.Input[bool]] = None,
+            fallback_to_ondemand: Optional[pulumi.Input[bool]] = None,
             grace_period: Optional[pulumi.Input[int]] = None,
             health_check_type: Optional[pulumi.Input[str]] = None,
             iam_instance_profile: Optional[pulumi.Input[str]] = None,
@@ -1370,7 +1370,7 @@ class ManagedInstance(pulumi.CustomResource):
         __props__.__dict__["ebs_optimized"] = ebs_optimized
         __props__.__dict__["elastic_ip"] = elastic_ip
         __props__.__dict__["enable_monitoring"] = enable_monitoring
-        __props__.__dict__["fall_back_to_od"] = fall_back_to_od
+        __props__.__dict__["fallback_to_ondemand"] = fallback_to_ondemand
         __props__.__dict__["grace_period"] = grace_period
         __props__.__dict__["health_check_type"] = health_check_type
         __props__.__dict__["iam_instance_profile"] = iam_instance_profile
@@ -1458,9 +1458,9 @@ class ManagedInstance(pulumi.CustomResource):
         return pulumi.get(self, "enable_monitoring")
 
     @property
-    @pulumi.getter(name="fallBackToOd")
-    def fall_back_to_od(self) -> pulumi.Output[Optional[bool]]:
-        return pulumi.get(self, "fall_back_to_od")
+    @pulumi.getter(name="fallbackToOndemand")
+    def fallback_to_ondemand(self) -> pulumi.Output[Optional[bool]]:
+        return pulumi.get(self, "fallback_to_ondemand")
 
     @property
     @pulumi.getter(name="gracePeriod")

@@ -42,8 +42,8 @@ namespace Pulumi.SpotInst.Aws
         [Output("enableMonitoring")]
         public Output<bool?> EnableMonitoring { get; private set; } = null!;
 
-        [Output("fallBackToOd")]
-        public Output<bool?> FallBackToOd { get; private set; } = null!;
+        [Output("fallbackToOndemand")]
+        public Output<bool?> FallbackToOndemand { get; private set; } = null!;
 
         [Output("gracePeriod")]
         public Output<int?> GracePeriod { get; private set; } = null!;
@@ -233,8 +233,8 @@ namespace Pulumi.SpotInst.Aws
         [Input("enableMonitoring")]
         public Input<bool>? EnableMonitoring { get; set; }
 
-        [Input("fallBackToOd")]
-        public Input<bool>? FallBackToOd { get; set; }
+        [Input("fallbackToOndemand")]
+        public Input<bool>? FallbackToOndemand { get; set; }
 
         [Input("gracePeriod")]
         public Input<int>? GracePeriod { get; set; }
@@ -431,8 +431,8 @@ namespace Pulumi.SpotInst.Aws
         [Input("enableMonitoring")]
         public Input<bool>? EnableMonitoring { get; set; }
 
-        [Input("fallBackToOd")]
-        public Input<bool>? FallBackToOd { get; set; }
+        [Input("fallbackToOndemand")]
+        public Input<bool>? FallbackToOndemand { get; set; }
 
         [Input("gracePeriod")]
         public Input<int>? GracePeriod { get; set; }

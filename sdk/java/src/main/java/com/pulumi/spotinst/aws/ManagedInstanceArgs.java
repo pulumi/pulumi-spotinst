@@ -99,11 +99,11 @@ public final class ManagedInstanceArgs extends com.pulumi.resources.ResourceArgs
         return Optional.ofNullable(this.enableMonitoring);
     }
 
-    @Import(name="fallBackToOd")
-    private @Nullable Output<Boolean> fallBackToOd;
+    @Import(name="fallbackToOndemand")
+    private @Nullable Output<Boolean> fallbackToOndemand;
 
-    public Optional<Output<Boolean>> fallBackToOd() {
-        return Optional.ofNullable(this.fallBackToOd);
+    public Optional<Output<Boolean>> fallbackToOndemand() {
+        return Optional.ofNullable(this.fallbackToOndemand);
     }
 
     @Import(name="gracePeriod")
@@ -357,7 +357,7 @@ public final class ManagedInstanceArgs extends com.pulumi.resources.ResourceArgs
         this.ebsOptimized = $.ebsOptimized;
         this.elasticIp = $.elasticIp;
         this.enableMonitoring = $.enableMonitoring;
-        this.fallBackToOd = $.fallBackToOd;
+        this.fallbackToOndemand = $.fallbackToOndemand;
         this.gracePeriod = $.gracePeriod;
         this.healthCheckType = $.healthCheckType;
         this.iamInstanceProfile = $.iamInstanceProfile;
@@ -510,13 +510,13 @@ public final class ManagedInstanceArgs extends com.pulumi.resources.ResourceArgs
             return enableMonitoring(Output.of(enableMonitoring));
         }
 
-        public Builder fallBackToOd(@Nullable Output<Boolean> fallBackToOd) {
-            $.fallBackToOd = fallBackToOd;
+        public Builder fallbackToOndemand(@Nullable Output<Boolean> fallbackToOndemand) {
+            $.fallbackToOndemand = fallbackToOndemand;
             return this;
         }
 
-        public Builder fallBackToOd(Boolean fallBackToOd) {
-            return fallBackToOd(Output.of(fallBackToOd));
+        public Builder fallbackToOndemand(Boolean fallbackToOndemand) {
+            return fallbackToOndemand(Output.of(fallbackToOndemand));
         }
 
         public Builder gracePeriod(@Nullable Output<Integer> gracePeriod) {

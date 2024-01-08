@@ -44,7 +44,7 @@ export class ManagedInstance extends pulumi.CustomResource {
     public readonly ebsOptimized!: pulumi.Output<boolean>;
     public readonly elasticIp!: pulumi.Output<string | undefined>;
     public readonly enableMonitoring!: pulumi.Output<boolean | undefined>;
-    public readonly fallBackToOd!: pulumi.Output<boolean | undefined>;
+    public readonly fallbackToOndemand!: pulumi.Output<boolean | undefined>;
     public readonly gracePeriod!: pulumi.Output<number | undefined>;
     public readonly healthCheckType!: pulumi.Output<string | undefined>;
     public readonly iamInstanceProfile!: pulumi.Output<string | undefined>;
@@ -103,7 +103,7 @@ export class ManagedInstance extends pulumi.CustomResource {
             resourceInputs["ebsOptimized"] = state ? state.ebsOptimized : undefined;
             resourceInputs["elasticIp"] = state ? state.elasticIp : undefined;
             resourceInputs["enableMonitoring"] = state ? state.enableMonitoring : undefined;
-            resourceInputs["fallBackToOd"] = state ? state.fallBackToOd : undefined;
+            resourceInputs["fallbackToOndemand"] = state ? state.fallbackToOndemand : undefined;
             resourceInputs["gracePeriod"] = state ? state.gracePeriod : undefined;
             resourceInputs["healthCheckType"] = state ? state.healthCheckType : undefined;
             resourceInputs["iamInstanceProfile"] = state ? state.iamInstanceProfile : undefined;
@@ -168,7 +168,7 @@ export class ManagedInstance extends pulumi.CustomResource {
             resourceInputs["ebsOptimized"] = args ? args.ebsOptimized : undefined;
             resourceInputs["elasticIp"] = args ? args.elasticIp : undefined;
             resourceInputs["enableMonitoring"] = args ? args.enableMonitoring : undefined;
-            resourceInputs["fallBackToOd"] = args ? args.fallBackToOd : undefined;
+            resourceInputs["fallbackToOndemand"] = args ? args.fallbackToOndemand : undefined;
             resourceInputs["gracePeriod"] = args ? args.gracePeriod : undefined;
             resourceInputs["healthCheckType"] = args ? args.healthCheckType : undefined;
             resourceInputs["iamInstanceProfile"] = args ? args.iamInstanceProfile : undefined;
@@ -223,7 +223,7 @@ export interface ManagedInstanceState {
     ebsOptimized?: pulumi.Input<boolean>;
     elasticIp?: pulumi.Input<string>;
     enableMonitoring?: pulumi.Input<boolean>;
-    fallBackToOd?: pulumi.Input<boolean>;
+    fallbackToOndemand?: pulumi.Input<boolean>;
     gracePeriod?: pulumi.Input<number>;
     healthCheckType?: pulumi.Input<string>;
     iamInstanceProfile?: pulumi.Input<string>;
@@ -274,7 +274,7 @@ export interface ManagedInstanceArgs {
     ebsOptimized?: pulumi.Input<boolean>;
     elasticIp?: pulumi.Input<string>;
     enableMonitoring?: pulumi.Input<boolean>;
-    fallBackToOd?: pulumi.Input<boolean>;
+    fallbackToOndemand?: pulumi.Input<boolean>;
     gracePeriod?: pulumi.Input<number>;
     healthCheckType?: pulumi.Input<string>;
     iamInstanceProfile?: pulumi.Input<string>;
