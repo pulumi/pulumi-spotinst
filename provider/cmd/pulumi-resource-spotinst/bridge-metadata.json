@@ -3050,7 +3050,7 @@
                 "ebsOptimized": "ebs_optimized",
                 "elasticIp": "elastic_ip",
                 "enableMonitoring": "enable_monitoring",
-                "fallBackToOd": "fall_back_to_od",
+                "fallbackToOndemand": "fallback_to_ondemand",
                 "gracePeriod": "grace_period",
                 "healthCheckType": "health_check_type",
                 "iamInstanceProfile": "iam_instance_profile",

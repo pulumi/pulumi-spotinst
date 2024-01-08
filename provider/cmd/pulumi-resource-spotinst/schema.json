@@ -10583,7 +10583,7 @@
                 "enableMonitoring": {
                     "type": "boolean"
                 },
-                "fallBackToOd": {
+                "fallbackToOndemand": {
                     "type": "boolean"
                 },
                 "gracePeriod": {
@@ -10763,7 +10763,7 @@
                 "enableMonitoring": {
                     "type": "boolean"
                 },
-                "fallBackToOd": {
+                "fallbackToOndemand": {
                     "type": "boolean"
                 },
                 "gracePeriod": {
@@ -10943,7 +10943,7 @@
                     "enableMonitoring": {
                         "type": "boolean"
                     },
-                    "fallBackToOd": {
+                    "fallbackToOndemand": {
                         "type": "boolean"
                     },
                     "gracePeriod": {
