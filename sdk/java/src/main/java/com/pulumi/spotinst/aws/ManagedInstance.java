@@ -89,11 +89,11 @@ public class ManagedInstance extends com.pulumi.resources.CustomResource {
     public Output<Optional<Boolean>> enableMonitoring() {
         return Codegen.optional(this.enableMonitoring);
     }
-    @Export(name="fallBackToOd", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> fallBackToOd;
+    @Export(name="fallbackToOndemand", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> fallbackToOndemand;
 
-    public Output<Optional<Boolean>> fallBackToOd() {
-        return Codegen.optional(this.fallBackToOd);
+    public Output<Optional<Boolean>> fallbackToOndemand() {
+        return Codegen.optional(this.fallbackToOndemand);
     }
     @Export(name="gracePeriod", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> gracePeriod;

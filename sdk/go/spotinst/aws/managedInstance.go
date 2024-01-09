@@ -25,7 +25,7 @@ type ManagedInstance struct {
 	EbsOptimized              pulumi.BoolOutput                                  `pulumi:"ebsOptimized"`
 	ElasticIp                 pulumi.StringPtrOutput                             `pulumi:"elasticIp"`
 	EnableMonitoring          pulumi.BoolPtrOutput                               `pulumi:"enableMonitoring"`
-	FallBackToOd              pulumi.BoolPtrOutput                               `pulumi:"fallBackToOd"`
+	FallbackToOndemand        pulumi.BoolPtrOutput                               `pulumi:"fallbackToOndemand"`
 	GracePeriod               pulumi.IntPtrOutput                                `pulumi:"gracePeriod"`
 	HealthCheckType           pulumi.StringPtrOutput                             `pulumi:"healthCheckType"`
 	IamInstanceProfile        pulumi.StringPtrOutput                             `pulumi:"iamInstanceProfile"`
@@ -120,7 +120,7 @@ type managedInstanceState struct {
 	EbsOptimized              *bool                                     `pulumi:"ebsOptimized"`
 	ElasticIp                 *string                                   `pulumi:"elasticIp"`
 	EnableMonitoring          *bool                                     `pulumi:"enableMonitoring"`
-	FallBackToOd              *bool                                     `pulumi:"fallBackToOd"`
+	FallbackToOndemand        *bool                                     `pulumi:"fallbackToOndemand"`
 	GracePeriod               *int                                      `pulumi:"gracePeriod"`
 	HealthCheckType           *string                                   `pulumi:"healthCheckType"`
 	IamInstanceProfile        *string                                   `pulumi:"iamInstanceProfile"`
@@ -168,7 +168,7 @@ type ManagedInstanceState struct {
 	EbsOptimized              pulumi.BoolPtrInput
 	ElasticIp                 pulumi.StringPtrInput
 	EnableMonitoring          pulumi.BoolPtrInput
-	FallBackToOd              pulumi.BoolPtrInput
+	FallbackToOndemand        pulumi.BoolPtrInput
 	GracePeriod               pulumi.IntPtrInput
 	HealthCheckType           pulumi.StringPtrInput
 	IamInstanceProfile        pulumi.StringPtrInput
@@ -220,7 +220,7 @@ type managedInstanceArgs struct {
 	EbsOptimized              *bool                                     `pulumi:"ebsOptimized"`
 	ElasticIp                 *string                                   `pulumi:"elasticIp"`
 	EnableMonitoring          *bool                                     `pulumi:"enableMonitoring"`
-	FallBackToOd              *bool                                     `pulumi:"fallBackToOd"`
+	FallbackToOndemand        *bool                                     `pulumi:"fallbackToOndemand"`
 	GracePeriod               *int                                      `pulumi:"gracePeriod"`
 	HealthCheckType           *string                                   `pulumi:"healthCheckType"`
 	IamInstanceProfile        *string                                   `pulumi:"iamInstanceProfile"`
@@ -269,7 +269,7 @@ type ManagedInstanceArgs struct {
 	EbsOptimized              pulumi.BoolPtrInput
 	ElasticIp                 pulumi.StringPtrInput
 	EnableMonitoring          pulumi.BoolPtrInput
-	FallBackToOd              pulumi.BoolPtrInput
+	FallbackToOndemand        pulumi.BoolPtrInput
 	GracePeriod               pulumi.IntPtrInput
 	HealthCheckType           pulumi.StringPtrInput
 	IamInstanceProfile        pulumi.StringPtrInput
@@ -433,8 +433,8 @@ func (o ManagedInstanceOutput) EnableMonitoring() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ManagedInstance) pulumi.BoolPtrOutput { return v.EnableMonitoring }).(pulumi.BoolPtrOutput)
 }
 
-func (o ManagedInstanceOutput) FallBackToOd() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ManagedInstance) pulumi.BoolPtrOutput { return v.FallBackToOd }).(pulumi.BoolPtrOutput)
+func (o ManagedInstanceOutput) FallbackToOndemand() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ManagedInstance) pulumi.BoolPtrOutput { return v.FallbackToOndemand }).(pulumi.BoolPtrOutput)
 }
 
 func (o ManagedInstanceOutput) GracePeriod() pulumi.IntPtrOutput {
