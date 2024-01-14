@@ -16,11 +16,14 @@ package spotinst
 
 import (
 	"fmt"
-	// embed is used to store bridge-metadata.json in the compiled binary
-	_ "embed"
 	"path/filepath"
 	"strings"
 	"unicode"
+
+	// embed is used to store bridge-metadata.json in the compiled binary
+	_ "embed"
+
+	"github.com/spotinst/terraform-provider-spotinst/spotinst"
 
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	tks "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
@@ -28,7 +31,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
 
 	"github.com/pulumi/pulumi-spotinst/provider/v3/pkg/version"
-	"github.com/spotinst/terraform-provider-spotinst/spotinst"
 )
 
 // all of the token components used below.
