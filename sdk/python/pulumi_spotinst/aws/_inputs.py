@@ -1853,7 +1853,7 @@ class ElastigroupIntegrationKubernetesArgs:
                  integration_mode: Optional[pulumi.Input[str]] = None,
                  token: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] api_server: The public IP of the DC/OS Master.
+        :param pulumi.Input[str] api_server: The public IP of the DC/OS Master. 
                
                Usage:
                
@@ -1900,7 +1900,7 @@ class ElastigroupIntegrationKubernetesArgs:
     @pulumi.getter(name="apiServer")
     def api_server(self) -> Optional[pulumi.Input[str]]:
         """
-        The public IP of the DC/OS Master.
+        The public IP of the DC/OS Master. 
 
         Usage:
 
@@ -2158,7 +2158,7 @@ class ElastigroupIntegrationMesosphereArgs:
     def __init__(__self__, *,
                  api_server: pulumi.Input[str]):
         """
-        :param pulumi.Input[str] api_server: The public IP of the DC/OS Master.
+        :param pulumi.Input[str] api_server: The public IP of the DC/OS Master. 
                
                Usage:
                
@@ -2172,7 +2172,7 @@ class ElastigroupIntegrationMesosphereArgs:
     @pulumi.getter(name="apiServer")
     def api_server(self) -> pulumi.Input[str]:
         """
-        The public IP of the DC/OS Master.
+        The public IP of the DC/OS Master. 
 
         Usage:
 

@@ -2037,7 +2037,7 @@ class ElastigroupIntegrationKubernetes(dict):
                  integration_mode: Optional[str] = None,
                  token: Optional[str] = None):
         """
-        :param str api_server: The public IP of the DC/OS Master.
+        :param str api_server: The public IP of the DC/OS Master. 
                
                Usage:
                
@@ -2084,7 +2084,7 @@ class ElastigroupIntegrationKubernetes(dict):
     @pulumi.getter(name="apiServer")
     def api_server(self) -> Optional[str]:
         """
-        The public IP of the DC/OS Master.
+        The public IP of the DC/OS Master. 
 
         Usage:
 
@@ -2331,7 +2331,7 @@ class ElastigroupIntegrationMesosphere(dict):
     def __init__(__self__, *,
                  api_server: str):
         """
-        :param str api_server: The public IP of the DC/OS Master.
+        :param str api_server: The public IP of the DC/OS Master. 
                
                Usage:
                
@@ -2345,7 +2345,7 @@ class ElastigroupIntegrationMesosphere(dict):
     @pulumi.getter(name="apiServer")
     def api_server(self) -> str:
         """
-        The public IP of the DC/OS Master.
+        The public IP of the DC/OS Master. 
 
         Usage:
 

@@ -799,7 +799,7 @@ export namespace aws {
 
     export interface ElastigroupIntegrationKubernetes {
         /**
-         * The public IP of the DC/OS Master.
+         * The public IP of the DC/OS Master. 
          *
          * Usage:
          *
@@ -885,7 +885,7 @@ export namespace aws {
 
     export interface ElastigroupIntegrationMesosphere {
         /**
-         * The public IP of the DC/OS Master.
+         * The public IP of the DC/OS Master. 
          *
          * Usage:
          *

@@ -13,7 +13,7 @@ namespace Pulumi.SpotInst.Aws.Inputs
     public sealed class ElastigroupIntegrationMesosphereArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The public IP of the DC/OS Master.
+        /// The public IP of the DC/OS Master. 
         /// 
         /// Usage:
         /// 

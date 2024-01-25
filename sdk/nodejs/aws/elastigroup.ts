@@ -242,7 +242,7 @@ export class Elastigroup extends pulumi.CustomResource {
      */
     public readonly placementTenancy!: pulumi.Output<string | undefined>;
     /**
-     * The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs.
+     * The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs. 
      * Note: Must be a sublist of `availabilityZones` and `orientation` value must not be `"equalAzDistribution"`.
      */
     public readonly preferredAvailabilityZones!: pulumi.Output<string[] | undefined>;
@@ -257,7 +257,7 @@ export class Elastigroup extends pulumi.CustomResource {
      */
     public readonly privateIps!: pulumi.Output<string[] | undefined>;
     /**
-     * Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`.
+     * Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`. 
      * For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
      */
     public readonly product!: pulumi.Output<string>;
@@ -743,7 +743,7 @@ export interface ElastigroupState {
      */
     placementTenancy?: pulumi.Input<string>;
     /**
-     * The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs.
+     * The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs. 
      * Note: Must be a sublist of `availabilityZones` and `orientation` value must not be `"equalAzDistribution"`.
      */
     preferredAvailabilityZones?: pulumi.Input<pulumi.Input<string>[]>;
@@ -758,7 +758,7 @@ export interface ElastigroupState {
      */
     privateIps?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`.
+     * Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`. 
      * For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
      */
     product?: pulumi.Input<string>;
@@ -1044,7 +1044,7 @@ export interface ElastigroupArgs {
      */
     placementTenancy?: pulumi.Input<string>;
     /**
-     * The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs.
+     * The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs. 
      * Note: Must be a sublist of `availabilityZones` and `orientation` value must not be `"equalAzDistribution"`.
      */
     preferredAvailabilityZones?: pulumi.Input<pulumi.Input<string>[]>;
@@ -1059,7 +1059,7 @@ export interface ElastigroupArgs {
      */
     privateIps?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`.
+     * Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`. 
      * For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
      */
     product: pulumi.Input<string>;
