@@ -1367,7 +1367,31 @@
                                     }
                                 },
                                 "tasks": {
-                                    "maxItemsOne": false
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "parameters": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "ami_auto_update": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "ami_auto_update_cluster_roll": {
+                                                                        "maxItemsOne": true
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "parameters_cluster_roll": {
+                                                            "maxItemsOne": true
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -2934,6 +2958,25 @@
                 "cronExpression": "cron_expression",
                 "isEnabled": "is_enabled",
                 "taskType": "task_type"
+            },
+            "spotinst:aws/OceanScheduledTaskTaskParameters:OceanScheduledTaskTaskParameters": {
+                "amiAutoUpdate": "ami_auto_update",
+                "parametersClusterRoll": "parameters_cluster_roll"
+            },
+            "spotinst:aws/OceanScheduledTaskTaskParametersAmiAutoUpdate:OceanScheduledTaskTaskParametersAmiAutoUpdate": {
+                "amiAutoUpdateClusterRoll": "ami_auto_update_cluster_roll",
+                "applyRoll": "apply_roll",
+                "minorVersion": "minor_version"
+            },
+            "spotinst:aws/OceanScheduledTaskTaskParametersAmiAutoUpdateAmiAutoUpdateClusterRoll:OceanScheduledTaskTaskParametersAmiAutoUpdateAmiAutoUpdateClusterRoll": {
+                "batchMinHealthyPercentage": "batch_min_healthy_percentage",
+                "batchSizePercentage": "batch_size_percentage",
+                "respectPdb": "respect_pdb"
+            },
+            "spotinst:aws/OceanScheduledTaskTaskParametersParametersClusterRoll:OceanScheduledTaskTaskParametersParametersClusterRoll": {
+                "batchMinHealthyPercentage": "batch_min_healthy_percentage",
+                "batchSizePercentage": "batch_size_percentage",
+                "respectPdb": "respect_pdb"
             },
             "spotinst:aws/OceanUpdatePolicy:OceanUpdatePolicy": {
                 "autoApplyTags": "auto_apply_tags",

@@ -5,10 +5,10 @@ Subject: [PATCH] fork
 
 
 diff --git a/CHANGELOG.md b/CHANGELOG.md
-index bf5fb1e0..092b4400 100644
+index 1ecf2b81..f1c99534 100644
 --- a/CHANGELOG.md
 +++ b/CHANGELOG.md
-@@ -637,7 +637,7 @@ BUG FIXES:
+@@ -669,7 +669,7 @@ BUG FIXES:
  ## 1.53.0 (July 15, 2021)
  
  ENHANCEMENTS:
@@ -17,7 +17,7 @@ index bf5fb1e0..092b4400 100644
  
  ## 1.52.0 (July 7, 2021)
  
-@@ -676,19 +676,19 @@ BUG FIXES:
+@@ -708,19 +708,19 @@ BUG FIXES:
  ## 1.48.0 (June 10, 2021)
  
  ENHANCEMENTS:
@@ -47,7 +47,7 @@ index bf5fb1e0..092b4400 100644
  ## 1.47.0 (June 6, 2021)
  
  ENHANCEMENTS:
-@@ -737,7 +737,7 @@ BUG FIXES:
+@@ -769,7 +769,7 @@ BUG FIXES:
  ## 1.40.0 (April 25, 2021)
  
  BUG FIXES:
@@ -57,7 +57,7 @@ index bf5fb1e0..092b4400 100644
  ## 1.39.0 (April 20, 2021)
  
 diff --git a/docs/resources/elastigroup_aws.md b/docs/resources/elastigroup_aws.md
-index 66029fdb..56e6582c 100644
+index 8ab39067..1214d8a0 100644
 --- a/docs/resources/elastigroup_aws.md
 +++ b/docs/resources/elastigroup_aws.md
 @@ -17,7 +17,7 @@ Provides a Spotinst AWS group resource.
@@ -166,7 +166,7 @@ index 66029fdb..56e6582c 100644
  
  `scaling_up_policy` supports the following:
  
-@@ -454,17 +450,17 @@ Usage:
+@@ -456,17 +452,17 @@ Usage:
      statistic   = "average"
      unit        = ""
      cooldown    = 60
@@ -187,7 +187,7 @@ index 66029fdb..56e6582c 100644
      step_adjustments {
          threshold = 50
          action {
-@@ -472,25 +468,25 @@ Usage:
+@@ -474,25 +470,25 @@ Usage:
              min_target_capacity = "3"
          }
      }
@@ -217,7 +217,7 @@ index 66029fdb..56e6582c 100644
    }
  ```
  
-@@ -519,7 +515,7 @@ Usage:
+@@ -523,7 +519,7 @@ Usage:
      * `name` - (Required) The expression name.
  * `metrics` - (Optional) Array of objects (Metric config)
      * `metric_name` - (Required) The name of the source metric.
@@ -226,7 +226,7 @@ index 66029fdb..56e6582c 100644
      * `name_space` - (Required, default: `AWS/EC2`) The namespace for the alarm's associated metric.
      * `statistic` - (Optional) The metric statistics to return. Valid values: `"average"`, `"sum"`, `"sampleCount"`, `"maximum"`, `"minimum"`, `"percentile"`.
      * `extended_statistic` - (Optional) Percentile statistic. Valid values: `"p0.1"` - `"p100"`.
-@@ -544,8 +540,7 @@ Usage:
+@@ -548,8 +544,7 @@ Usage:
    }
  ```
  
@@ -236,7 +236,7 @@ index 66029fdb..56e6582c 100644
  
  Each of the `network_interface` attributes controls a portion of the AWS
  Instance's "Elastic Network Interfaces". It's a good idea to familiarize yourself with [AWS's Elastic Network
-@@ -564,8 +559,8 @@ to understand the implications of using these attributes.
+@@ -568,8 +563,8 @@ to understand the implications of using these attributes.
  Usage:
  
  ```hcl
@@ -247,7 +247,7 @@ index 66029fdb..56e6582c 100644
      device_index                       = 1
      description                        = "nic description in here"
      private_ip_address                 = "1.1.1.1"
-@@ -575,8 +570,7 @@ Usage:
+@@ -579,8 +574,7 @@ Usage:
    }
  ```
  
@@ -257,7 +257,7 @@ index 66029fdb..56e6582c 100644
  
  Each of the `*_block_device` attributes controls a portion of the AWS
  Instance's "Block Device Mapping". It's a good idea to familiarize yourself with [AWS's Block Device
-@@ -601,8 +595,8 @@ Usage:
+@@ -605,8 +599,8 @@ Usage:
  
  ```hcl
    ebs_block_device {
@@ -268,7 +268,7 @@ index 66029fdb..56e6582c 100644
       volume_type           = "gp2"  
       volume_size           = 8
       iops                  = 1
-@@ -610,10 +604,10 @@ Usage:
+@@ -614,10 +608,10 @@ Usage:
       encrypted             = false
       kms_key_id            = "kms-key-01"
     }
@@ -282,7 +282,7 @@ index 66029fdb..56e6582c 100644
       volume_type           = "gp3"  
       volume_size           = 8  
       iops                  = 1
-@@ -629,7 +623,7 @@ Each `ephemeral_block_device` supports the following:
+@@ -633,7 +627,7 @@ Each `ephemeral_block_device` supports the following:
  * `device_name` - (Required) The name of the block device to mount on the instance.
  * `virtual_name` - (Required) The [Instance Store Device Name](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html#InstanceStoreDeviceNames)
    (e.g. `"ephemeral0"`).
@@ -291,7 +291,7 @@ index 66029fdb..56e6582c 100644
  Usage:
  
  ```hcl
-@@ -639,8 +633,7 @@ Usage:
+@@ -643,8 +637,7 @@ Usage:
    }
  ```
  
@@ -301,7 +301,7 @@ index 66029fdb..56e6582c 100644
  
  We support instance persistence via the following configurations. all values are boolean.
  For more information on instance persistence please see: [Stateful configuration](https://docs.spot.io/elastigroup/features/stateful-instance/stateful-instances)
-@@ -661,15 +654,14 @@ Usage:
+@@ -665,15 +658,14 @@ Usage:
    private_ips           = ["1.1.1.1", "2.2.2.2"]
  ```
  
@@ -319,7 +319,7 @@ index 66029fdb..56e6582c 100644
  Usage:
  
  ```hcl
-@@ -681,8 +673,7 @@ Usage:
+@@ -685,8 +677,7 @@ Usage:
     }
  ```    
  
@@ -329,7 +329,7 @@ index 66029fdb..56e6582c 100644
  
  * `stateful_instance_action` - (Optional)
      * `stateful_instance_id` - (Required) String, Stateful Instance ID on which the action should be performed.
-@@ -702,8 +693,7 @@ Usage:
+@@ -706,8 +697,7 @@ Usage:
    }    
  ```  
  
@@ -339,7 +339,7 @@ index 66029fdb..56e6582c 100644
  
  * `health_check_type` - (Optional) The service that will perform health checks for the instance. Supported values : `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"CUSTOM"`, `"K8S_NODE"`, `"MLB"`, `"EC2"`, `"MULTAI_TARGET_SET"`, `"MLB_RUNTIME"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
  * `health_check_grace_period` - (Optional) The amount of time, in seconds, after the instance has launched to starts and check its health
-@@ -712,13 +702,12 @@ Usage:
+@@ -716,13 +706,12 @@ Usage:
  Usage:
  
  ```hcl
@@ -355,7 +355,7 @@ index 66029fdb..56e6582c 100644
  
  * `integration_rancher` - (Optional) Describes the [Rancher](http://rancherlabs.com/) integration.
  
-@@ -758,23 +747,23 @@ Usage:
+@@ -762,23 +751,23 @@ Usage:
  Usage:
  
  ```hcl
@@ -383,7 +383,7 @@ index 66029fdb..56e6582c 100644
      autoscale_attributes {
        key   = "test.ecs.key"
        value = "test.ecs.value"
-@@ -803,7 +792,7 @@ Usage:
+@@ -807,7 +796,7 @@ Usage:
    integration_codedeploy {
      cleanup_on_failure            = false
      terminate_instance_on_failure = false
@@ -392,7 +392,7 @@ index 66029fdb..56e6582c 100644
      deployment_groups {
        application_name      = "my-app"
        deployment_group_name = "my-group"
-@@ -828,7 +817,7 @@ Usage:
+@@ -832,7 +821,7 @@ Usage:
    integration_route53 {
  
      # Option 1: Use A records.
@@ -401,7 +401,7 @@ index 66029fdb..56e6582c 100644
        hosted_zone_id   = "zone-id"
        spotinst_acct_id = "act-123456"
        record_set_type  = "a"
-@@ -840,7 +829,7 @@ Usage:
+@@ -844,7 +833,7 @@ Usage:
      }
  
      # Option 2: Use CNAME records.
@@ -410,7 +410,7 @@ index 66029fdb..56e6582c 100644
        hosted_zone_id   = "zone-id"
        spotinst_acct_id = "act-123456"
        record_set_type  = "cname"
-@@ -875,17 +864,17 @@ integration_docker_swarm {
+@@ -879,17 +868,17 @@ integration_docker_swarm {
      master_port          = 2376
      autoscale_is_enabled = true
      autoscale_cooldown   = 180
@@ -431,7 +431,7 @@ index 66029fdb..56e6582c 100644
  }
  ```
  
-@@ -913,35 +902,35 @@ Usage:
+@@ -917,35 +906,35 @@ Usage:
    integration_kubernetes {
      integration_mode   = "pod"
      cluster_identifier = "my-identifier.ek8s.com"
@@ -473,7 +473,7 @@ index 66029fdb..56e6582c 100644
  * `integration_nomad` - (Optional) Describes the [Nomad](https://www.nomadproject.io/) integration.
  
      * `master_host` - (Required) The URL for the Nomad master host.
-@@ -966,27 +955,27 @@ Usage:
+@@ -970,27 +959,27 @@ Usage:
      acl_token            = "top-secret"
      autoscale_is_enabled = false
      autoscale_cooldown   = 300
@@ -507,7 +507,7 @@ index 66029fdb..56e6582c 100644
  
  Usage:
  
-@@ -997,7 +986,7 @@ Usage:
+@@ -1001,7 +990,7 @@ Usage:
  ```
  
  * `integration_multai_runtime` - (Optional) Describes the [Multai Runtime](https://spotinst.com/) integration.
@@ -516,7 +516,7 @@ index 66029fdb..56e6582c 100644
      * `deployment_id` - (Optional) The deployment id you want to get
  
  Usage:
-@@ -1007,12 +996,12 @@ Usage:
+@@ -1011,12 +1000,12 @@ Usage:
      deployment_id = ""
    }
  ```
@@ -533,7 +533,7 @@ index 66029fdb..56e6582c 100644
  Usage:
  
  ```hcl
-@@ -1024,21 +1013,21 @@ Usage:
+@@ -1028,21 +1017,21 @@ Usage:
  ```
  
  * `integration_beanstalk` - (Optional) Describes the [Beanstalk](https://api.spotinst.com/provisioning-ci-cd-sdk/provisioning-tools/terraform/resources/terraform-v-2/elastic-beanstalk/) integration.
@@ -559,7 +559,7 @@ index 66029fdb..56e6582c 100644
  Usage:
  
  ```hcl
-@@ -1065,8 +1054,7 @@ Usage:
+@@ -1069,8 +1058,7 @@ Usage:
    }
  ```
  
@@ -569,7 +569,7 @@ index 66029fdb..56e6582c 100644
  
  * `update_policy` - (Optional)
  
-@@ -1082,7 +1070,7 @@ Usage:
+@@ -1086,7 +1074,7 @@ Usage:
          * `strategy` - (Optional) Strategy parameters
             * `action` - (Required) Action to take. Valid values: `REPLACE_SERVER`, `RESTART_SERVER`.
             * `should_drain_instances` - (Optional) Specify whether to drain incoming TCP connections before terminating a server.
@@ -578,7 +578,7 @@ index 66029fdb..56e6582c 100644
             * `on_failure` - (Optional) Set detach options to the deployment.
                 * `action_type` - (Required) Sets the action that will take place, Accepted values are: `DETACH_OLD`, `DETACH_NEW`.
                 * `should_handle_all_batches` - (Optional, Default: `false`) Indicator if the action should apply to all batches of the deployment or only the latest batch.
-@@ -1116,7 +1104,7 @@ Usage:
+@@ -1120,7 +1108,7 @@ Usage:
      }
    }
  ```       
@@ -1078,7 +1078,7 @@ index 05d783c0..7cd006b9 100644
  ```hcl
    termination_policies {
 diff --git a/docs/resources/ocean_aws.md b/docs/resources/ocean_aws.md
-index e6554080..1b5a5188 100644
+index 8dd743db..8cf15956 100644
 --- a/docs/resources/ocean_aws.md
 +++ b/docs/resources/ocean_aws.md
 @@ -46,7 +46,7 @@ resource "spotinst_ocean_aws" "example" {
@@ -1161,14 +1161,7 @@ index e6554080..1b5a5188 100644
  
  * `update_policy` - (Optional)
      * `should_roll` - (Required) Enables the roll.
-@@ -335,13 +334,13 @@ update_policy {
-         * `is_enabled` - (Required)  Describes whether the task is enabled. When true the task should run when false it should not run. Required for `cluster.scheduling.tasks` object.
-         * `cron_expression` - (Required) A valid cron expression. The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of `frequency` or `cronExpression` should be used at a time. Required for `cluster.scheduling.tasks` object. (Example: `0 1 * * *`).
-         * `task_type` - (Required) Valid values: `clusterRoll`. Required for `cluster.scheduling.tasks` object. (Example: `clusterRoll`).
--             
-+
- ```hcl
- scheduled_task {
+@@ -358,7 +357,7 @@ scheduled_task {
    shutdown_hours {
      is_enabled   = true
      time_windows = [
