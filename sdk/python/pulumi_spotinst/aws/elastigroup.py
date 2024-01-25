@@ -132,6 +132,7 @@ class ElastigroupArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types_preferred_spots: Prioritize a subset of spot instance types. Must be a subset of the selected spot instance types.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types_spots: One or more instance types. Note: Cannot be defined if 'resourceRequirements' is defined.
         :param pulumi.Input[Sequence[pulumi.Input['ElastigroupInstanceTypesWeightArgs']]] instance_types_weights: List of weights per instance type for weighted groups. Each object in the list should have the following attributes:
+        :param pulumi.Input['ElastigroupIntegrationBeanstalkArgs'] integration_beanstalk: Describes the Beanstalk integration.
         :param pulumi.Input['ElastigroupIntegrationCodedeployArgs'] integration_codedeploy: Describes the [Code Deploy](https://aws.amazon.com/documentation/codedeploy/?id=docs_gateway) integration.
         :param pulumi.Input['ElastigroupIntegrationDockerSwarmArgs'] integration_docker_swarm: Describes the [Docker Swarm](https://api.spotinst.com/integration-docs/elastigroup/container-management/docker-swarm/docker-swarm-integration/) integration.
         :param pulumi.Input['ElastigroupIntegrationEcsArgs'] integration_ecs: Describes the [EC2 Container Service](https://aws.amazon.com/documentation/ecs/?id=docs_gateway) integration.
@@ -702,6 +703,9 @@ class ElastigroupArgs:
     @property
     @pulumi.getter(name="integrationBeanstalk")
     def integration_beanstalk(self) -> Optional[pulumi.Input['ElastigroupIntegrationBeanstalkArgs']]:
+        """
+        Describes the Beanstalk integration.
+        """
         return pulumi.get(self, "integration_beanstalk")
 
     @integration_beanstalk.setter
@@ -1430,6 +1434,7 @@ class _ElastigroupState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types_preferred_spots: Prioritize a subset of spot instance types. Must be a subset of the selected spot instance types.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types_spots: One or more instance types. Note: Cannot be defined if 'resourceRequirements' is defined.
         :param pulumi.Input[Sequence[pulumi.Input['ElastigroupInstanceTypesWeightArgs']]] instance_types_weights: List of weights per instance type for weighted groups. Each object in the list should have the following attributes:
+        :param pulumi.Input['ElastigroupIntegrationBeanstalkArgs'] integration_beanstalk: Describes the Beanstalk integration.
         :param pulumi.Input['ElastigroupIntegrationCodedeployArgs'] integration_codedeploy: Describes the [Code Deploy](https://aws.amazon.com/documentation/codedeploy/?id=docs_gateway) integration.
         :param pulumi.Input['ElastigroupIntegrationDockerSwarmArgs'] integration_docker_swarm: Describes the [Docker Swarm](https://api.spotinst.com/integration-docs/elastigroup/container-management/docker-swarm/docker-swarm-integration/) integration.
         :param pulumi.Input['ElastigroupIntegrationEcsArgs'] integration_ecs: Describes the [EC2 Container Service](https://aws.amazon.com/documentation/ecs/?id=docs_gateway) integration.
@@ -1971,6 +1976,9 @@ class _ElastigroupState:
     @property
     @pulumi.getter(name="integrationBeanstalk")
     def integration_beanstalk(self) -> Optional[pulumi.Input['ElastigroupIntegrationBeanstalkArgs']]:
+        """
+        Describes the Beanstalk integration.
+        """
         return pulumi.get(self, "integration_beanstalk")
 
     @integration_beanstalk.setter
@@ -2742,6 +2750,7 @@ class Elastigroup(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types_preferred_spots: Prioritize a subset of spot instance types. Must be a subset of the selected spot instance types.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types_spots: One or more instance types. Note: Cannot be defined if 'resourceRequirements' is defined.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupInstanceTypesWeightArgs']]]] instance_types_weights: List of weights per instance type for weighted groups. Each object in the list should have the following attributes:
+        :param pulumi.Input[pulumi.InputType['ElastigroupIntegrationBeanstalkArgs']] integration_beanstalk: Describes the Beanstalk integration.
         :param pulumi.Input[pulumi.InputType['ElastigroupIntegrationCodedeployArgs']] integration_codedeploy: Describes the [Code Deploy](https://aws.amazon.com/documentation/codedeploy/?id=docs_gateway) integration.
         :param pulumi.Input[pulumi.InputType['ElastigroupIntegrationDockerSwarmArgs']] integration_docker_swarm: Describes the [Docker Swarm](https://api.spotinst.com/integration-docs/elastigroup/container-management/docker-swarm/docker-swarm-integration/) integration.
         :param pulumi.Input[pulumi.InputType['ElastigroupIntegrationEcsArgs']] integration_ecs: Describes the [EC2 Container Service](https://aws.amazon.com/documentation/ecs/?id=docs_gateway) integration.
@@ -3132,6 +3141,7 @@ class Elastigroup(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types_preferred_spots: Prioritize a subset of spot instance types. Must be a subset of the selected spot instance types.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types_spots: One or more instance types. Note: Cannot be defined if 'resourceRequirements' is defined.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupInstanceTypesWeightArgs']]]] instance_types_weights: List of weights per instance type for weighted groups. Each object in the list should have the following attributes:
+        :param pulumi.Input[pulumi.InputType['ElastigroupIntegrationBeanstalkArgs']] integration_beanstalk: Describes the Beanstalk integration.
         :param pulumi.Input[pulumi.InputType['ElastigroupIntegrationCodedeployArgs']] integration_codedeploy: Describes the [Code Deploy](https://aws.amazon.com/documentation/codedeploy/?id=docs_gateway) integration.
         :param pulumi.Input[pulumi.InputType['ElastigroupIntegrationDockerSwarmArgs']] integration_docker_swarm: Describes the [Docker Swarm](https://api.spotinst.com/integration-docs/elastigroup/container-management/docker-swarm/docker-swarm-integration/) integration.
         :param pulumi.Input[pulumi.InputType['ElastigroupIntegrationEcsArgs']] integration_ecs: Describes the [EC2 Container Service](https://aws.amazon.com/documentation/ecs/?id=docs_gateway) integration.
@@ -3486,6 +3496,9 @@ class Elastigroup(pulumi.CustomResource):
     @property
     @pulumi.getter(name="integrationBeanstalk")
     def integration_beanstalk(self) -> pulumi.Output[Optional['outputs.ElastigroupIntegrationBeanstalk']]:
+        """
+        Describes the Beanstalk integration.
+        """
         return pulumi.get(self, "integration_beanstalk")
 
     @property

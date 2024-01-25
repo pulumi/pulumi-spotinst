@@ -168,6 +168,9 @@ namespace Pulumi.SpotInst.Aws
         [Output("instanceTypesWeights")]
         public Output<ImmutableArray<Outputs.ElastigroupInstanceTypesWeight>> InstanceTypesWeights { get; private set; } = null!;
 
+        /// <summary>
+        /// Describes the Beanstalk integration.
+        /// </summary>
         [Output("integrationBeanstalk")]
         public Output<Outputs.ElastigroupIntegrationBeanstalk?> IntegrationBeanstalk { get; private set; } = null!;
 
@@ -735,6 +738,9 @@ namespace Pulumi.SpotInst.Aws
             set => _instanceTypesWeights = value;
         }
 
+        /// <summary>
+        /// Describes the Beanstalk integration.
+        /// </summary>
         [Input("integrationBeanstalk")]
         public Input<Inputs.ElastigroupIntegrationBeanstalkArgs>? IntegrationBeanstalk { get; set; }
 
@@ -1370,6 +1376,9 @@ namespace Pulumi.SpotInst.Aws
             set => _instanceTypesWeights = value;
         }
 
+        /// <summary>
+        /// Describes the Beanstalk integration.
+        /// </summary>
         [Input("integrationBeanstalk")]
         public Input<Inputs.ElastigroupIntegrationBeanstalkGetArgs>? IntegrationBeanstalk { get; set; }
 

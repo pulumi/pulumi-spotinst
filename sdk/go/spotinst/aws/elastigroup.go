@@ -69,7 +69,8 @@ type Elastigroup struct {
 	InstanceTypesSpots pulumi.StringArrayOutput `pulumi:"instanceTypesSpots"`
 	// List of weights per instance type for weighted groups. Each object in the list should have the following attributes:
 	InstanceTypesWeights ElastigroupInstanceTypesWeightArrayOutput `pulumi:"instanceTypesWeights"`
-	IntegrationBeanstalk ElastigroupIntegrationBeanstalkPtrOutput  `pulumi:"integrationBeanstalk"`
+	// Describes the Beanstalk integration.
+	IntegrationBeanstalk ElastigroupIntegrationBeanstalkPtrOutput `pulumi:"integrationBeanstalk"`
 	// Describes the [Code Deploy](https://aws.amazon.com/documentation/codedeploy/?id=docs_gateway) integration.
 	IntegrationCodedeploy ElastigroupIntegrationCodedeployPtrOutput `pulumi:"integrationCodedeploy"`
 	// Describes the [Docker Swarm](https://api.spotinst.com/integration-docs/elastigroup/container-management/docker-swarm/docker-swarm-integration/) integration.
@@ -286,6 +287,7 @@ type elastigroupState struct {
 	InstanceTypesSpots []string `pulumi:"instanceTypesSpots"`
 	// List of weights per instance type for weighted groups. Each object in the list should have the following attributes:
 	InstanceTypesWeights []ElastigroupInstanceTypesWeight `pulumi:"instanceTypesWeights"`
+	// Describes the Beanstalk integration.
 	IntegrationBeanstalk *ElastigroupIntegrationBeanstalk `pulumi:"integrationBeanstalk"`
 	// Describes the [Code Deploy](https://aws.amazon.com/documentation/codedeploy/?id=docs_gateway) integration.
 	IntegrationCodedeploy *ElastigroupIntegrationCodedeploy `pulumi:"integrationCodedeploy"`
@@ -462,6 +464,7 @@ type ElastigroupState struct {
 	InstanceTypesSpots pulumi.StringArrayInput
 	// List of weights per instance type for weighted groups. Each object in the list should have the following attributes:
 	InstanceTypesWeights ElastigroupInstanceTypesWeightArrayInput
+	// Describes the Beanstalk integration.
 	IntegrationBeanstalk ElastigroupIntegrationBeanstalkPtrInput
 	// Describes the [Code Deploy](https://aws.amazon.com/documentation/codedeploy/?id=docs_gateway) integration.
 	IntegrationCodedeploy ElastigroupIntegrationCodedeployPtrInput
@@ -642,6 +645,7 @@ type elastigroupArgs struct {
 	InstanceTypesSpots []string `pulumi:"instanceTypesSpots"`
 	// List of weights per instance type for weighted groups. Each object in the list should have the following attributes:
 	InstanceTypesWeights []ElastigroupInstanceTypesWeight `pulumi:"instanceTypesWeights"`
+	// Describes the Beanstalk integration.
 	IntegrationBeanstalk *ElastigroupIntegrationBeanstalk `pulumi:"integrationBeanstalk"`
 	// Describes the [Code Deploy](https://aws.amazon.com/documentation/codedeploy/?id=docs_gateway) integration.
 	IntegrationCodedeploy *ElastigroupIntegrationCodedeploy `pulumi:"integrationCodedeploy"`
@@ -819,6 +823,7 @@ type ElastigroupArgs struct {
 	InstanceTypesSpots pulumi.StringArrayInput
 	// List of weights per instance type for weighted groups. Each object in the list should have the following attributes:
 	InstanceTypesWeights ElastigroupInstanceTypesWeightArrayInput
+	// Describes the Beanstalk integration.
 	IntegrationBeanstalk ElastigroupIntegrationBeanstalkPtrInput
 	// Describes the [Code Deploy](https://aws.amazon.com/documentation/codedeploy/?id=docs_gateway) integration.
 	IntegrationCodedeploy ElastigroupIntegrationCodedeployPtrInput
@@ -1162,6 +1167,7 @@ func (o ElastigroupOutput) InstanceTypesWeights() ElastigroupInstanceTypesWeight
 	return o.ApplyT(func(v *Elastigroup) ElastigroupInstanceTypesWeightArrayOutput { return v.InstanceTypesWeights }).(ElastigroupInstanceTypesWeightArrayOutput)
 }
 
+// Describes the Beanstalk integration.
 func (o ElastigroupOutput) IntegrationBeanstalk() ElastigroupIntegrationBeanstalkPtrOutput {
 	return o.ApplyT(func(v *Elastigroup) ElastigroupIntegrationBeanstalkPtrOutput { return v.IntegrationBeanstalk }).(ElastigroupIntegrationBeanstalkPtrOutput)
 }

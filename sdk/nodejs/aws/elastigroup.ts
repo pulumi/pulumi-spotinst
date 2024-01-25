@@ -136,6 +136,9 @@ export class Elastigroup extends pulumi.CustomResource {
      * List of weights per instance type for weighted groups. Each object in the list should have the following attributes:
      */
     public readonly instanceTypesWeights!: pulumi.Output<outputs.aws.ElastigroupInstanceTypesWeight[] | undefined>;
+    /**
+     * Describes the Beanstalk integration.
+     */
     public readonly integrationBeanstalk!: pulumi.Output<outputs.aws.ElastigroupIntegrationBeanstalk | undefined>;
     /**
      * Describes the [Code Deploy](https://aws.amazon.com/documentation/codedeploy/?id=docs_gateway) integration.
@@ -637,6 +640,9 @@ export interface ElastigroupState {
      * List of weights per instance type for weighted groups. Each object in the list should have the following attributes:
      */
     instanceTypesWeights?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupInstanceTypesWeight>[]>;
+    /**
+     * Describes the Beanstalk integration.
+     */
     integrationBeanstalk?: pulumi.Input<inputs.aws.ElastigroupIntegrationBeanstalk>;
     /**
      * Describes the [Code Deploy](https://aws.amazon.com/documentation/codedeploy/?id=docs_gateway) integration.
@@ -938,6 +944,9 @@ export interface ElastigroupArgs {
      * List of weights per instance type for weighted groups. Each object in the list should have the following attributes:
      */
     instanceTypesWeights?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupInstanceTypesWeight>[]>;
+    /**
+     * Describes the Beanstalk integration.
+     */
     integrationBeanstalk?: pulumi.Input<inputs.aws.ElastigroupIntegrationBeanstalk>;
     /**
      * Describes the [Code Deploy](https://aws.amazon.com/documentation/codedeploy/?id=docs_gateway) integration.
