@@ -9443,7 +9443,8 @@
                     "description": "List of weights per instance type for weighted groups. Each object in the list should have the following attributes:\n"
                 },
                 "integrationBeanstalk": {
-                    "$ref": "#/types/spotinst:aws/ElastigroupIntegrationBeanstalk:ElastigroupIntegrationBeanstalk"
+                    "$ref": "#/types/spotinst:aws/ElastigroupIntegrationBeanstalk:ElastigroupIntegrationBeanstalk",
+                    "description": "Describes the Beanstalk integration.\n"
                 },
                 "integrationCodedeploy": {
                     "$ref": "#/types/spotinst:aws/ElastigroupIntegrationCodedeploy:ElastigroupIntegrationCodedeploy",
@@ -9859,7 +9860,8 @@
                     "description": "List of weights per instance type for weighted groups. Each object in the list should have the following attributes:\n"
                 },
                 "integrationBeanstalk": {
-                    "$ref": "#/types/spotinst:aws/ElastigroupIntegrationBeanstalk:ElastigroupIntegrationBeanstalk"
+                    "$ref": "#/types/spotinst:aws/ElastigroupIntegrationBeanstalk:ElastigroupIntegrationBeanstalk",
+                    "description": "Describes the Beanstalk integration.\n"
                 },
                 "integrationCodedeploy": {
                     "$ref": "#/types/spotinst:aws/ElastigroupIntegrationCodedeploy:ElastigroupIntegrationCodedeploy",
@@ -10271,7 +10273,8 @@
                         "description": "List of weights per instance type for weighted groups. Each object in the list should have the following attributes:\n"
                     },
                     "integrationBeanstalk": {
-                        "$ref": "#/types/spotinst:aws/ElastigroupIntegrationBeanstalk:ElastigroupIntegrationBeanstalk"
+                        "$ref": "#/types/spotinst:aws/ElastigroupIntegrationBeanstalk:ElastigroupIntegrationBeanstalk",
+                        "description": "Describes the Beanstalk integration.\n"
                     },
                     "integrationCodedeploy": {
                         "$ref": "#/types/spotinst:aws/ElastigroupIntegrationCodedeploy:ElastigroupIntegrationCodedeploy",
