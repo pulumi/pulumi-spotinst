@@ -166,6 +166,10 @@ __all__ = [
     'OceanScheduledTask',
     'OceanScheduledTaskShutdownHours',
     'OceanScheduledTaskTask',
+    'OceanScheduledTaskTaskParameters',
+    'OceanScheduledTaskTaskParametersAmiAutoUpdate',
+    'OceanScheduledTaskTaskParametersAmiAutoUpdateAmiAutoUpdateClusterRoll',
+    'OceanScheduledTaskTaskParametersParametersClusterRoll',
     'OceanTag',
     'OceanUpdatePolicy',
     'OceanUpdatePolicyRollConfig',
@@ -11081,10 +11085,13 @@ class OceanScheduledTaskTask(dict):
     def __init__(__self__, *,
                  cron_expression: str,
                  is_enabled: bool,
-                 task_type: str):
+                 task_type: str,
+                 parameters: Optional['outputs.OceanScheduledTaskTaskParameters'] = None):
         pulumi.set(__self__, "cron_expression", cron_expression)
         pulumi.set(__self__, "is_enabled", is_enabled)
         pulumi.set(__self__, "task_type", task_type)
+        if parameters is not None:
+            pulumi.set(__self__, "parameters", parameters)
 
     @property
     @pulumi.getter(name="cronExpression")
@@ -11100,6 +11107,225 @@ class OceanScheduledTaskTask(dict):
     @pulumi.getter(name="taskType")
     def task_type(self) -> str:
         return pulumi.get(self, "task_type")
+
+    @property
+    @pulumi.getter
+    def parameters(self) -> Optional['outputs.OceanScheduledTaskTaskParameters']:
+        return pulumi.get(self, "parameters")
+
+
+@pulumi.output_type
+class OceanScheduledTaskTaskParameters(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "amiAutoUpdate":
+            suggest = "ami_auto_update"
+        elif key == "parametersClusterRoll":
+            suggest = "parameters_cluster_roll"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OceanScheduledTaskTaskParameters. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OceanScheduledTaskTaskParameters.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OceanScheduledTaskTaskParameters.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ami_auto_update: Optional['outputs.OceanScheduledTaskTaskParametersAmiAutoUpdate'] = None,
+                 parameters_cluster_roll: Optional['outputs.OceanScheduledTaskTaskParametersParametersClusterRoll'] = None):
+        if ami_auto_update is not None:
+            pulumi.set(__self__, "ami_auto_update", ami_auto_update)
+        if parameters_cluster_roll is not None:
+            pulumi.set(__self__, "parameters_cluster_roll", parameters_cluster_roll)
+
+    @property
+    @pulumi.getter(name="amiAutoUpdate")
+    def ami_auto_update(self) -> Optional['outputs.OceanScheduledTaskTaskParametersAmiAutoUpdate']:
+        return pulumi.get(self, "ami_auto_update")
+
+    @property
+    @pulumi.getter(name="parametersClusterRoll")
+    def parameters_cluster_roll(self) -> Optional['outputs.OceanScheduledTaskTaskParametersParametersClusterRoll']:
+        return pulumi.get(self, "parameters_cluster_roll")
+
+
+@pulumi.output_type
+class OceanScheduledTaskTaskParametersAmiAutoUpdate(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "amiAutoUpdateClusterRoll":
+            suggest = "ami_auto_update_cluster_roll"
+        elif key == "applyRoll":
+            suggest = "apply_roll"
+        elif key == "minorVersion":
+            suggest = "minor_version"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OceanScheduledTaskTaskParametersAmiAutoUpdate. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OceanScheduledTaskTaskParametersAmiAutoUpdate.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OceanScheduledTaskTaskParametersAmiAutoUpdate.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ami_auto_update_cluster_roll: Optional['outputs.OceanScheduledTaskTaskParametersAmiAutoUpdateAmiAutoUpdateClusterRoll'] = None,
+                 apply_roll: Optional[bool] = None,
+                 minor_version: Optional[bool] = None,
+                 patch: Optional[bool] = None):
+        if ami_auto_update_cluster_roll is not None:
+            pulumi.set(__self__, "ami_auto_update_cluster_roll", ami_auto_update_cluster_roll)
+        if apply_roll is not None:
+            pulumi.set(__self__, "apply_roll", apply_roll)
+        if minor_version is not None:
+            pulumi.set(__self__, "minor_version", minor_version)
+        if patch is not None:
+            pulumi.set(__self__, "patch", patch)
+
+    @property
+    @pulumi.getter(name="amiAutoUpdateClusterRoll")
+    def ami_auto_update_cluster_roll(self) -> Optional['outputs.OceanScheduledTaskTaskParametersAmiAutoUpdateAmiAutoUpdateClusterRoll']:
+        return pulumi.get(self, "ami_auto_update_cluster_roll")
+
+    @property
+    @pulumi.getter(name="applyRoll")
+    def apply_roll(self) -> Optional[bool]:
+        return pulumi.get(self, "apply_roll")
+
+    @property
+    @pulumi.getter(name="minorVersion")
+    def minor_version(self) -> Optional[bool]:
+        return pulumi.get(self, "minor_version")
+
+    @property
+    @pulumi.getter
+    def patch(self) -> Optional[bool]:
+        return pulumi.get(self, "patch")
+
+
+@pulumi.output_type
+class OceanScheduledTaskTaskParametersAmiAutoUpdateAmiAutoUpdateClusterRoll(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "batchMinHealthyPercentage":
+            suggest = "batch_min_healthy_percentage"
+        elif key == "batchSizePercentage":
+            suggest = "batch_size_percentage"
+        elif key == "respectPdb":
+            suggest = "respect_pdb"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OceanScheduledTaskTaskParametersAmiAutoUpdateAmiAutoUpdateClusterRoll. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OceanScheduledTaskTaskParametersAmiAutoUpdateAmiAutoUpdateClusterRoll.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OceanScheduledTaskTaskParametersAmiAutoUpdateAmiAutoUpdateClusterRoll.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 batch_min_healthy_percentage: Optional[int] = None,
+                 batch_size_percentage: Optional[int] = None,
+                 comment: Optional[str] = None,
+                 respect_pdb: Optional[bool] = None):
+        if batch_min_healthy_percentage is not None:
+            pulumi.set(__self__, "batch_min_healthy_percentage", batch_min_healthy_percentage)
+        if batch_size_percentage is not None:
+            pulumi.set(__self__, "batch_size_percentage", batch_size_percentage)
+        if comment is not None:
+            pulumi.set(__self__, "comment", comment)
+        if respect_pdb is not None:
+            pulumi.set(__self__, "respect_pdb", respect_pdb)
+
+    @property
+    @pulumi.getter(name="batchMinHealthyPercentage")
+    def batch_min_healthy_percentage(self) -> Optional[int]:
+        return pulumi.get(self, "batch_min_healthy_percentage")
+
+    @property
+    @pulumi.getter(name="batchSizePercentage")
+    def batch_size_percentage(self) -> Optional[int]:
+        return pulumi.get(self, "batch_size_percentage")
+
+    @property
+    @pulumi.getter
+    def comment(self) -> Optional[str]:
+        return pulumi.get(self, "comment")
+
+    @property
+    @pulumi.getter(name="respectPdb")
+    def respect_pdb(self) -> Optional[bool]:
+        return pulumi.get(self, "respect_pdb")
+
+
+@pulumi.output_type
+class OceanScheduledTaskTaskParametersParametersClusterRoll(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "batchMinHealthyPercentage":
+            suggest = "batch_min_healthy_percentage"
+        elif key == "batchSizePercentage":
+            suggest = "batch_size_percentage"
+        elif key == "respectPdb":
+            suggest = "respect_pdb"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OceanScheduledTaskTaskParametersParametersClusterRoll. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OceanScheduledTaskTaskParametersParametersClusterRoll.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OceanScheduledTaskTaskParametersParametersClusterRoll.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 batch_min_healthy_percentage: Optional[int] = None,
+                 batch_size_percentage: Optional[int] = None,
+                 comment: Optional[str] = None,
+                 respect_pdb: Optional[bool] = None):
+        if batch_min_healthy_percentage is not None:
+            pulumi.set(__self__, "batch_min_healthy_percentage", batch_min_healthy_percentage)
+        if batch_size_percentage is not None:
+            pulumi.set(__self__, "batch_size_percentage", batch_size_percentage)
+        if comment is not None:
+            pulumi.set(__self__, "comment", comment)
+        if respect_pdb is not None:
+            pulumi.set(__self__, "respect_pdb", respect_pdb)
+
+    @property
+    @pulumi.getter(name="batchMinHealthyPercentage")
+    def batch_min_healthy_percentage(self) -> Optional[int]:
+        return pulumi.get(self, "batch_min_healthy_percentage")
+
+    @property
+    @pulumi.getter(name="batchSizePercentage")
+    def batch_size_percentage(self) -> Optional[int]:
+        return pulumi.get(self, "batch_size_percentage")
+
+    @property
+    @pulumi.getter
+    def comment(self) -> Optional[str]:
+        return pulumi.get(self, "comment")
+
+    @property
+    @pulumi.getter(name="respectPdb")
+    def respect_pdb(self) -> Optional[bool]:
+        return pulumi.get(self, "respect_pdb")
 
 
 @pulumi.output_type

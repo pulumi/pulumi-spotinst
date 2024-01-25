@@ -15,6 +15,7 @@ namespace Pulumi.SpotInst.Aws.Outputs
     {
         public readonly string CronExpression;
         public readonly bool IsEnabled;
+        public readonly Outputs.OceanScheduledTaskTaskParameters? Parameters;
         public readonly string TaskType;
 
         [OutputConstructor]
@@ -23,10 +24,13 @@ namespace Pulumi.SpotInst.Aws.Outputs
 
             bool isEnabled,
 
+            Outputs.OceanScheduledTaskTaskParameters? parameters,
+
             string taskType)
         {
             CronExpression = cronExpression;
             IsEnabled = isEnabled;
+            Parameters = parameters;
             TaskType = taskType;
         }
     }

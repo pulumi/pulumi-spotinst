@@ -3158,7 +3158,34 @@ export namespace aws {
     export interface OceanScheduledTaskTask {
         cronExpression: string;
         isEnabled: boolean;
+        parameters?: outputs.aws.OceanScheduledTaskTaskParameters;
         taskType: string;
+    }
+
+    export interface OceanScheduledTaskTaskParameters {
+        amiAutoUpdate?: outputs.aws.OceanScheduledTaskTaskParametersAmiAutoUpdate;
+        parametersClusterRoll?: outputs.aws.OceanScheduledTaskTaskParametersParametersClusterRoll;
+    }
+
+    export interface OceanScheduledTaskTaskParametersAmiAutoUpdate {
+        amiAutoUpdateClusterRoll?: outputs.aws.OceanScheduledTaskTaskParametersAmiAutoUpdateAmiAutoUpdateClusterRoll;
+        applyRoll?: boolean;
+        minorVersion?: boolean;
+        patch?: boolean;
+    }
+
+    export interface OceanScheduledTaskTaskParametersAmiAutoUpdateAmiAutoUpdateClusterRoll {
+        batchMinHealthyPercentage?: number;
+        batchSizePercentage?: number;
+        comment?: string;
+        respectPdb?: boolean;
+    }
+
+    export interface OceanScheduledTaskTaskParametersParametersClusterRoll {
+        batchMinHealthyPercentage?: number;
+        batchSizePercentage?: number;
+        comment?: string;
+        respectPdb?: boolean;
     }
 
     export interface OceanTag {
