@@ -432,9 +432,17 @@ public final class ElastigroupState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.instanceTypesWeights);
     }
 
+    /**
+     * Describes the Beanstalk integration.
+     * 
+     */
     @Import(name="integrationBeanstalk")
     private @Nullable Output<ElastigroupIntegrationBeanstalkArgs> integrationBeanstalk;
 
+    /**
+     * @return Describes the Beanstalk integration.
+     * 
+     */
     public Optional<Output<ElastigroupIntegrationBeanstalkArgs>> integrationBeanstalk() {
         return Optional.ofNullable(this.integrationBeanstalk);
     }
@@ -1944,11 +1952,23 @@ public final class ElastigroupState extends com.pulumi.resources.ResourceArgs {
             return instanceTypesWeights(List.of(instanceTypesWeights));
         }
 
+        /**
+         * @param integrationBeanstalk Describes the Beanstalk integration.
+         * 
+         * @return builder
+         * 
+         */
         public Builder integrationBeanstalk(@Nullable Output<ElastigroupIntegrationBeanstalkArgs> integrationBeanstalk) {
             $.integrationBeanstalk = integrationBeanstalk;
             return this;
         }
 
+        /**
+         * @param integrationBeanstalk Describes the Beanstalk integration.
+         * 
+         * @return builder
+         * 
+         */
         public Builder integrationBeanstalk(ElastigroupIntegrationBeanstalkArgs integrationBeanstalk) {
             return integrationBeanstalk(Output.of(integrationBeanstalk));
         }
