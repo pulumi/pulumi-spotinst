@@ -14,7 +14,7 @@ namespace Pulumi.SpotInst.Aws.Outputs
     public sealed class ElastigroupIntegrationMesosphere
     {
         /// <summary>
-        /// The public IP of the DC/OS Master.
+        /// The public IP of the DC/OS Master. 
         /// 
         /// Usage:
         /// 

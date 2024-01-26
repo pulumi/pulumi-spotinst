@@ -18,6 +18,9 @@ namespace Pulumi.SpotInst.Aws.Inputs
         [Input("isEnabled", required: true)]
         public Input<bool> IsEnabled { get; set; } = null!;
 
+        [Input("parameters")]
+        public Input<Inputs.OceanScheduledTaskTaskParametersArgs>? Parameters { get; set; }
+
         [Input("taskType", required: true)]
         public Input<string> TaskType { get; set; } = null!;
 

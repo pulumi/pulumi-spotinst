@@ -6,9 +6,12 @@ package com.pulumi.spotinst.aws.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.spotinst.aws.inputs.OceanScheduledTaskTaskParametersArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class OceanScheduledTaskTaskArgs extends com.pulumi.resources.ResourceArgs {
@@ -29,6 +32,13 @@ public final class OceanScheduledTaskTaskArgs extends com.pulumi.resources.Resou
         return this.isEnabled;
     }
 
+    @Import(name="parameters")
+    private @Nullable Output<OceanScheduledTaskTaskParametersArgs> parameters;
+
+    public Optional<Output<OceanScheduledTaskTaskParametersArgs>> parameters() {
+        return Optional.ofNullable(this.parameters);
+    }
+
     @Import(name="taskType", required=true)
     private Output<String> taskType;
 
@@ -41,6 +51,7 @@ public final class OceanScheduledTaskTaskArgs extends com.pulumi.resources.Resou
     private OceanScheduledTaskTaskArgs(OceanScheduledTaskTaskArgs $) {
         this.cronExpression = $.cronExpression;
         this.isEnabled = $.isEnabled;
+        this.parameters = $.parameters;
         this.taskType = $.taskType;
     }
 
@@ -78,6 +89,15 @@ public final class OceanScheduledTaskTaskArgs extends com.pulumi.resources.Resou
 
         public Builder isEnabled(Boolean isEnabled) {
             return isEnabled(Output.of(isEnabled));
+        }
+
+        public Builder parameters(@Nullable Output<OceanScheduledTaskTaskParametersArgs> parameters) {
+            $.parameters = parameters;
+            return this;
+        }
+
+        public Builder parameters(OceanScheduledTaskTaskParametersArgs parameters) {
+            return parameters(Output.of(parameters));
         }
 
         public Builder taskType(Output<String> taskType) {

@@ -165,6 +165,10 @@ __all__ = [
     'OceanScheduledTaskArgs',
     'OceanScheduledTaskShutdownHoursArgs',
     'OceanScheduledTaskTaskArgs',
+    'OceanScheduledTaskTaskParametersArgs',
+    'OceanScheduledTaskTaskParametersAmiAutoUpdateArgs',
+    'OceanScheduledTaskTaskParametersAmiAutoUpdateAmiAutoUpdateClusterRollArgs',
+    'OceanScheduledTaskTaskParametersParametersClusterRollArgs',
     'OceanTagArgs',
     'OceanUpdatePolicyArgs',
     'OceanUpdatePolicyRollConfigArgs',
@@ -1849,7 +1853,7 @@ class ElastigroupIntegrationKubernetesArgs:
                  integration_mode: Optional[pulumi.Input[str]] = None,
                  token: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] api_server: The public IP of the DC/OS Master.
+        :param pulumi.Input[str] api_server: The public IP of the DC/OS Master. 
                
                Usage:
                
@@ -1896,7 +1900,7 @@ class ElastigroupIntegrationKubernetesArgs:
     @pulumi.getter(name="apiServer")
     def api_server(self) -> Optional[pulumi.Input[str]]:
         """
-        The public IP of the DC/OS Master.
+        The public IP of the DC/OS Master. 
 
         Usage:
 
@@ -2154,7 +2158,7 @@ class ElastigroupIntegrationMesosphereArgs:
     def __init__(__self__, *,
                  api_server: pulumi.Input[str]):
         """
-        :param pulumi.Input[str] api_server: The public IP of the DC/OS Master.
+        :param pulumi.Input[str] api_server: The public IP of the DC/OS Master. 
                
                Usage:
                
@@ -2168,7 +2172,7 @@ class ElastigroupIntegrationMesosphereArgs:
     @pulumi.getter(name="apiServer")
     def api_server(self) -> pulumi.Input[str]:
         """
-        The public IP of the DC/OS Master.
+        The public IP of the DC/OS Master. 
 
         Usage:
 
@@ -11031,10 +11035,13 @@ class OceanScheduledTaskTaskArgs:
     def __init__(__self__, *,
                  cron_expression: pulumi.Input[str],
                  is_enabled: pulumi.Input[bool],
-                 task_type: pulumi.Input[str]):
+                 task_type: pulumi.Input[str],
+                 parameters: Optional[pulumi.Input['OceanScheduledTaskTaskParametersArgs']] = None):
         pulumi.set(__self__, "cron_expression", cron_expression)
         pulumi.set(__self__, "is_enabled", is_enabled)
         pulumi.set(__self__, "task_type", task_type)
+        if parameters is not None:
+            pulumi.set(__self__, "parameters", parameters)
 
     @property
     @pulumi.getter(name="cronExpression")
@@ -11062,6 +11069,203 @@ class OceanScheduledTaskTaskArgs:
     @task_type.setter
     def task_type(self, value: pulumi.Input[str]):
         pulumi.set(self, "task_type", value)
+
+    @property
+    @pulumi.getter
+    def parameters(self) -> Optional[pulumi.Input['OceanScheduledTaskTaskParametersArgs']]:
+        return pulumi.get(self, "parameters")
+
+    @parameters.setter
+    def parameters(self, value: Optional[pulumi.Input['OceanScheduledTaskTaskParametersArgs']]):
+        pulumi.set(self, "parameters", value)
+
+
+@pulumi.input_type
+class OceanScheduledTaskTaskParametersArgs:
+    def __init__(__self__, *,
+                 ami_auto_update: Optional[pulumi.Input['OceanScheduledTaskTaskParametersAmiAutoUpdateArgs']] = None,
+                 parameters_cluster_roll: Optional[pulumi.Input['OceanScheduledTaskTaskParametersParametersClusterRollArgs']] = None):
+        if ami_auto_update is not None:
+            pulumi.set(__self__, "ami_auto_update", ami_auto_update)
+        if parameters_cluster_roll is not None:
+            pulumi.set(__self__, "parameters_cluster_roll", parameters_cluster_roll)
+
+    @property
+    @pulumi.getter(name="amiAutoUpdate")
+    def ami_auto_update(self) -> Optional[pulumi.Input['OceanScheduledTaskTaskParametersAmiAutoUpdateArgs']]:
+        return pulumi.get(self, "ami_auto_update")
+
+    @ami_auto_update.setter
+    def ami_auto_update(self, value: Optional[pulumi.Input['OceanScheduledTaskTaskParametersAmiAutoUpdateArgs']]):
+        pulumi.set(self, "ami_auto_update", value)
+
+    @property
+    @pulumi.getter(name="parametersClusterRoll")
+    def parameters_cluster_roll(self) -> Optional[pulumi.Input['OceanScheduledTaskTaskParametersParametersClusterRollArgs']]:
+        return pulumi.get(self, "parameters_cluster_roll")
+
+    @parameters_cluster_roll.setter
+    def parameters_cluster_roll(self, value: Optional[pulumi.Input['OceanScheduledTaskTaskParametersParametersClusterRollArgs']]):
+        pulumi.set(self, "parameters_cluster_roll", value)
+
+
+@pulumi.input_type
+class OceanScheduledTaskTaskParametersAmiAutoUpdateArgs:
+    def __init__(__self__, *,
+                 ami_auto_update_cluster_roll: Optional[pulumi.Input['OceanScheduledTaskTaskParametersAmiAutoUpdateAmiAutoUpdateClusterRollArgs']] = None,
+                 apply_roll: Optional[pulumi.Input[bool]] = None,
+                 minor_version: Optional[pulumi.Input[bool]] = None,
+                 patch: Optional[pulumi.Input[bool]] = None):
+        if ami_auto_update_cluster_roll is not None:
+            pulumi.set(__self__, "ami_auto_update_cluster_roll", ami_auto_update_cluster_roll)
+        if apply_roll is not None:
+            pulumi.set(__self__, "apply_roll", apply_roll)
+        if minor_version is not None:
+            pulumi.set(__self__, "minor_version", minor_version)
+        if patch is not None:
+            pulumi.set(__self__, "patch", patch)
+
+    @property
+    @pulumi.getter(name="amiAutoUpdateClusterRoll")
+    def ami_auto_update_cluster_roll(self) -> Optional[pulumi.Input['OceanScheduledTaskTaskParametersAmiAutoUpdateAmiAutoUpdateClusterRollArgs']]:
+        return pulumi.get(self, "ami_auto_update_cluster_roll")
+
+    @ami_auto_update_cluster_roll.setter
+    def ami_auto_update_cluster_roll(self, value: Optional[pulumi.Input['OceanScheduledTaskTaskParametersAmiAutoUpdateAmiAutoUpdateClusterRollArgs']]):
+        pulumi.set(self, "ami_auto_update_cluster_roll", value)
+
+    @property
+    @pulumi.getter(name="applyRoll")
+    def apply_roll(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "apply_roll")
+
+    @apply_roll.setter
+    def apply_roll(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "apply_roll", value)
+
+    @property
+    @pulumi.getter(name="minorVersion")
+    def minor_version(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "minor_version")
+
+    @minor_version.setter
+    def minor_version(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "minor_version", value)
+
+    @property
+    @pulumi.getter
+    def patch(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "patch")
+
+    @patch.setter
+    def patch(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "patch", value)
+
+
+@pulumi.input_type
+class OceanScheduledTaskTaskParametersAmiAutoUpdateAmiAutoUpdateClusterRollArgs:
+    def __init__(__self__, *,
+                 batch_min_healthy_percentage: Optional[pulumi.Input[int]] = None,
+                 batch_size_percentage: Optional[pulumi.Input[int]] = None,
+                 comment: Optional[pulumi.Input[str]] = None,
+                 respect_pdb: Optional[pulumi.Input[bool]] = None):
+        if batch_min_healthy_percentage is not None:
+            pulumi.set(__self__, "batch_min_healthy_percentage", batch_min_healthy_percentage)
+        if batch_size_percentage is not None:
+            pulumi.set(__self__, "batch_size_percentage", batch_size_percentage)
+        if comment is not None:
+            pulumi.set(__self__, "comment", comment)
+        if respect_pdb is not None:
+            pulumi.set(__self__, "respect_pdb", respect_pdb)
+
+    @property
+    @pulumi.getter(name="batchMinHealthyPercentage")
+    def batch_min_healthy_percentage(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "batch_min_healthy_percentage")
+
+    @batch_min_healthy_percentage.setter
+    def batch_min_healthy_percentage(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "batch_min_healthy_percentage", value)
+
+    @property
+    @pulumi.getter(name="batchSizePercentage")
+    def batch_size_percentage(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "batch_size_percentage")
+
+    @batch_size_percentage.setter
+    def batch_size_percentage(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "batch_size_percentage", value)
+
+    @property
+    @pulumi.getter
+    def comment(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "comment")
+
+    @comment.setter
+    def comment(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "comment", value)
+
+    @property
+    @pulumi.getter(name="respectPdb")
+    def respect_pdb(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "respect_pdb")
+
+    @respect_pdb.setter
+    def respect_pdb(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "respect_pdb", value)
+
+
+@pulumi.input_type
+class OceanScheduledTaskTaskParametersParametersClusterRollArgs:
+    def __init__(__self__, *,
+                 batch_min_healthy_percentage: Optional[pulumi.Input[int]] = None,
+                 batch_size_percentage: Optional[pulumi.Input[int]] = None,
+                 comment: Optional[pulumi.Input[str]] = None,
+                 respect_pdb: Optional[pulumi.Input[bool]] = None):
+        if batch_min_healthy_percentage is not None:
+            pulumi.set(__self__, "batch_min_healthy_percentage", batch_min_healthy_percentage)
+        if batch_size_percentage is not None:
+            pulumi.set(__self__, "batch_size_percentage", batch_size_percentage)
+        if comment is not None:
+            pulumi.set(__self__, "comment", comment)
+        if respect_pdb is not None:
+            pulumi.set(__self__, "respect_pdb", respect_pdb)
+
+    @property
+    @pulumi.getter(name="batchMinHealthyPercentage")
+    def batch_min_healthy_percentage(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "batch_min_healthy_percentage")
+
+    @batch_min_healthy_percentage.setter
+    def batch_min_healthy_percentage(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "batch_min_healthy_percentage", value)
+
+    @property
+    @pulumi.getter(name="batchSizePercentage")
+    def batch_size_percentage(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "batch_size_percentage")
+
+    @batch_size_percentage.setter
+    def batch_size_percentage(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "batch_size_percentage", value)
+
+    @property
+    @pulumi.getter
+    def comment(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "comment")
+
+    @comment.setter
+    def comment(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "comment", value)
+
+    @property
+    @pulumi.getter(name="respectPdb")
+    def respect_pdb(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "respect_pdb")
+
+    @respect_pdb.setter
+    def respect_pdb(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "respect_pdb", value)
 
 
 @pulumi.input_type

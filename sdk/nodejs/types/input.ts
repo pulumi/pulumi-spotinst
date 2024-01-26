@@ -798,7 +798,7 @@ export namespace aws {
 
     export interface ElastigroupIntegrationKubernetes {
         /**
-         * The public IP of the DC/OS Master.
+         * The public IP of the DC/OS Master. 
          *
          * Usage:
          *
@@ -884,7 +884,7 @@ export namespace aws {
 
     export interface ElastigroupIntegrationMesosphere {
         /**
-         * The public IP of the DC/OS Master.
+         * The public IP of the DC/OS Master. 
          *
          * Usage:
          *
@@ -3157,7 +3157,34 @@ export namespace aws {
     export interface OceanScheduledTaskTask {
         cronExpression: pulumi.Input<string>;
         isEnabled: pulumi.Input<boolean>;
+        parameters?: pulumi.Input<inputs.aws.OceanScheduledTaskTaskParameters>;
         taskType: pulumi.Input<string>;
+    }
+
+    export interface OceanScheduledTaskTaskParameters {
+        amiAutoUpdate?: pulumi.Input<inputs.aws.OceanScheduledTaskTaskParametersAmiAutoUpdate>;
+        parametersClusterRoll?: pulumi.Input<inputs.aws.OceanScheduledTaskTaskParametersParametersClusterRoll>;
+    }
+
+    export interface OceanScheduledTaskTaskParametersAmiAutoUpdate {
+        amiAutoUpdateClusterRoll?: pulumi.Input<inputs.aws.OceanScheduledTaskTaskParametersAmiAutoUpdateAmiAutoUpdateClusterRoll>;
+        applyRoll?: pulumi.Input<boolean>;
+        minorVersion?: pulumi.Input<boolean>;
+        patch?: pulumi.Input<boolean>;
+    }
+
+    export interface OceanScheduledTaskTaskParametersAmiAutoUpdateAmiAutoUpdateClusterRoll {
+        batchMinHealthyPercentage?: pulumi.Input<number>;
+        batchSizePercentage?: pulumi.Input<number>;
+        comment?: pulumi.Input<string>;
+        respectPdb?: pulumi.Input<boolean>;
+    }
+
+    export interface OceanScheduledTaskTaskParametersParametersClusterRoll {
+        batchMinHealthyPercentage?: pulumi.Input<number>;
+        batchSizePercentage?: pulumi.Input<number>;
+        comment?: pulumi.Input<string>;
+        respectPdb?: pulumi.Input<boolean>;
     }
 
     export interface OceanTag {

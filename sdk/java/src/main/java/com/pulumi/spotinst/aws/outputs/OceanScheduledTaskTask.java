@@ -5,14 +5,18 @@ package com.pulumi.spotinst.aws.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.spotinst.aws.outputs.OceanScheduledTaskTaskParameters;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class OceanScheduledTaskTask {
     private String cronExpression;
     private Boolean isEnabled;
+    private @Nullable OceanScheduledTaskTaskParameters parameters;
     private String taskType;
 
     private OceanScheduledTaskTask() {}
@@ -21,6 +25,9 @@ public final class OceanScheduledTaskTask {
     }
     public Boolean isEnabled() {
         return this.isEnabled;
+    }
+    public Optional<OceanScheduledTaskTaskParameters> parameters() {
+        return Optional.ofNullable(this.parameters);
     }
     public String taskType() {
         return this.taskType;
@@ -37,12 +44,14 @@ public final class OceanScheduledTaskTask {
     public static final class Builder {
         private String cronExpression;
         private Boolean isEnabled;
+        private @Nullable OceanScheduledTaskTaskParameters parameters;
         private String taskType;
         public Builder() {}
         public Builder(OceanScheduledTaskTask defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cronExpression = defaults.cronExpression;
     	      this.isEnabled = defaults.isEnabled;
+    	      this.parameters = defaults.parameters;
     	      this.taskType = defaults.taskType;
         }
 
@@ -63,6 +72,12 @@ public final class OceanScheduledTaskTask {
             return this;
         }
         @CustomType.Setter
+        public Builder parameters(@Nullable OceanScheduledTaskTaskParameters parameters) {
+
+            this.parameters = parameters;
+            return this;
+        }
+        @CustomType.Setter
         public Builder taskType(String taskType) {
             if (taskType == null) {
               throw new MissingRequiredPropertyException("OceanScheduledTaskTask", "taskType");
@@ -74,6 +89,7 @@ public final class OceanScheduledTaskTask {
             final var _resultValue = new OceanScheduledTaskTask();
             _resultValue.cronExpression = cronExpression;
             _resultValue.isEnabled = isEnabled;
+            _resultValue.parameters = parameters;
             _resultValue.taskType = taskType;
             return _resultValue;
         }
