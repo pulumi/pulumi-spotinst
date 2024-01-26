@@ -566,9 +566,17 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
     public Output<Optional<List<ElastigroupInstanceTypesWeight>>> instanceTypesWeights() {
         return Codegen.optional(this.instanceTypesWeights);
     }
+    /**
+     * Describes the Beanstalk integration.
+     * 
+     */
     @Export(name="integrationBeanstalk", refs={ElastigroupIntegrationBeanstalk.class}, tree="[0]")
     private Output</* @Nullable */ ElastigroupIntegrationBeanstalk> integrationBeanstalk;
 
+    /**
+     * @return Describes the Beanstalk integration.
+     * 
+     */
     public Output<Optional<ElastigroupIntegrationBeanstalk>> integrationBeanstalk() {
         return Codegen.optional(this.integrationBeanstalk);
     }
