@@ -16,12 +16,12 @@ import (
 //
 // ## Import
 //
-// # Clusters can be imported using the Ocean `id`, e.g., hcl
+// Clusters can be imported using the Ocean `id`, e.g.,
+//
+//	hcl
 //
 // ```sh
-//
-//	$ pulumi import spotinst:ecs/ocean:Ocean this o-12345678
-//
+// $ pulumi import spotinst:ecs/ocean:Ocean this o-12345678
 // ```
 type Ocean struct {
 	pulumi.CustomResourceState
