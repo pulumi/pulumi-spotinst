@@ -159,10 +159,12 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Clusters can be imported using the Ocean `id`, e.g., hcl
+ * Clusters can be imported using the Ocean `id`, e.g.,
+ * 
+ *  hcl
  * 
  * ```sh
- *  $ pulumi import spotinst:aws/ocean:Ocean this o-12345678
+ * $ pulumi import spotinst:aws/ocean:Ocean this o-12345678
  * ```
  * 
  */
