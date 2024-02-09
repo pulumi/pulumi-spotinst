@@ -1335,10 +1335,12 @@ class Ocean(pulumi.CustomResource):
 
         ## Import
 
-        Clusters can be imported using the Ocean `id`, e.g., hcl
+        Clusters can be imported using the Ocean `id`, e.g.,
+
+         hcl
 
         ```sh
-         $ pulumi import spotinst:aws/ocean:Ocean this o-12345678
+        $ pulumi import spotinst:aws/ocean:Ocean this o-12345678
         ```
 
         :param str resource_name: The name of the resource.
@@ -1461,10 +1463,12 @@ class Ocean(pulumi.CustomResource):
 
         ## Import
 
-        Clusters can be imported using the Ocean `id`, e.g., hcl
+        Clusters can be imported using the Ocean `id`, e.g.,
+
+         hcl
 
         ```sh
-         $ pulumi import spotinst:aws/ocean:Ocean this o-12345678
+        $ pulumi import spotinst:aws/ocean:Ocean this o-12345678
         ```
 
         :param str resource_name: The name of the resource.
