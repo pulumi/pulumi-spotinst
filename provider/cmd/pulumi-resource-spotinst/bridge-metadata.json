@@ -2261,7 +2261,15 @@
             }
         }
     },
-    "auto-settings": {},
+    "auto-settings": {
+        "resources": {
+            "spotinst_ocean_aws": {
+                "maxItemsOneOverrides": {
+                    "scheduled_task": false
+                }
+            }
+        }
+    },
     "renames": {
         "resources": {
             "spotinst:aws/account:Account": "spotinst_account_aws",
