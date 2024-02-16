@@ -2792,6 +2792,7 @@
             },
             "spotinst:aws/OceanAutoscalerAutoscaleDown:OceanAutoscalerAutoscaleDown": {
                 "evaluationPeriods": "evaluation_periods",
+                "isAggressiveScaleDownEnabled": "is_aggressive_scale_down_enabled",
                 "maxScaleDownPercentage": "max_scale_down_percentage"
             },
             "spotinst:aws/OceanAutoscalerAutoscaleHeadroom:OceanAutoscalerAutoscaleHeadroom": {
