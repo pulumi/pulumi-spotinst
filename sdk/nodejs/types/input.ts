@@ -2557,6 +2557,7 @@ export namespace aws {
 
     export interface OceanAutoscalerAutoscaleDown {
         evaluationPeriods?: pulumi.Input<number>;
+        isAggressiveScaleDownEnabled?: pulumi.Input<boolean>;
         maxScaleDownPercentage?: pulumi.Input<number>;
     }
 

@@ -15,6 +15,9 @@ namespace Pulumi.SpotInst.Aws.Inputs
         [Input("evaluationPeriods")]
         public Input<int>? EvaluationPeriods { get; set; }
 
+        [Input("isAggressiveScaleDownEnabled")]
+        public Input<bool>? IsAggressiveScaleDownEnabled { get; set; }
+
         [Input("maxScaleDownPercentage")]
         public Input<double>? MaxScaleDownPercentage { get; set; }
 

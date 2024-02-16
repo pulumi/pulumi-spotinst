@@ -2558,6 +2558,7 @@ export namespace aws {
 
     export interface OceanAutoscalerAutoscaleDown {
         evaluationPeriods?: number;
+        isAggressiveScaleDownEnabled?: boolean;
         maxScaleDownPercentage?: number;
     }
 

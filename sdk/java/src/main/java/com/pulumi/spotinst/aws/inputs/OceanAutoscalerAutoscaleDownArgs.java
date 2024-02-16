@@ -5,6 +5,7 @@ package com.pulumi.spotinst.aws.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.Integer;
 import java.util.Objects;
@@ -23,6 +24,13 @@ public final class OceanAutoscalerAutoscaleDownArgs extends com.pulumi.resources
         return Optional.ofNullable(this.evaluationPeriods);
     }
 
+    @Import(name="isAggressiveScaleDownEnabled")
+    private @Nullable Output<Boolean> isAggressiveScaleDownEnabled;
+
+    public Optional<Output<Boolean>> isAggressiveScaleDownEnabled() {
+        return Optional.ofNullable(this.isAggressiveScaleDownEnabled);
+    }
+
     @Import(name="maxScaleDownPercentage")
     private @Nullable Output<Double> maxScaleDownPercentage;
 
@@ -34,6 +42,7 @@ public final class OceanAutoscalerAutoscaleDownArgs extends com.pulumi.resources
 
     private OceanAutoscalerAutoscaleDownArgs(OceanAutoscalerAutoscaleDownArgs $) {
         this.evaluationPeriods = $.evaluationPeriods;
+        this.isAggressiveScaleDownEnabled = $.isAggressiveScaleDownEnabled;
         this.maxScaleDownPercentage = $.maxScaleDownPercentage;
     }
 
@@ -62,6 +71,15 @@ public final class OceanAutoscalerAutoscaleDownArgs extends com.pulumi.resources
 
         public Builder evaluationPeriods(Integer evaluationPeriods) {
             return evaluationPeriods(Output.of(evaluationPeriods));
+        }
+
+        public Builder isAggressiveScaleDownEnabled(@Nullable Output<Boolean> isAggressiveScaleDownEnabled) {
+            $.isAggressiveScaleDownEnabled = isAggressiveScaleDownEnabled;
+            return this;
+        }
+
+        public Builder isAggressiveScaleDownEnabled(Boolean isAggressiveScaleDownEnabled) {
+            return isAggressiveScaleDownEnabled(Output.of(isAggressiveScaleDownEnabled));
         }
 
         public Builder maxScaleDownPercentage(@Nullable Output<Double> maxScaleDownPercentage) {
