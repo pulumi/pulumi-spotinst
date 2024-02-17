@@ -1163,6 +1163,29 @@
                     "taints": {
                         "maxItemsOne": false
                     },
+                    "update_policy": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "roll_config": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "node_names": {
+                                                "maxItemsOne": false
+                                            },
+                                            "node_pool_names": {
+                                                "maxItemsOne": false
+                                            },
+                                            "vng_ids": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
                     "vnet_subnet_ids": {
                         "maxItemsOne": false
                     }
@@ -1201,6 +1224,29 @@
                     },
                     "taints": {
                         "maxItemsOne": false
+                    },
+                    "update_policy": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "roll_config": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "node_names": {
+                                                "maxItemsOne": false
+                                            },
+                                            "node_pool_names": {
+                                                "maxItemsOne": false
+                                            },
+                                            "vng_ids": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     },
                     "vnet_subnet_ids": {
                         "maxItemsOne": false
@@ -2792,6 +2838,7 @@
             },
             "spotinst:aws/OceanAutoscalerAutoscaleDown:OceanAutoscalerAutoscaleDown": {
                 "evaluationPeriods": "evaluation_periods",
+                "isAggressiveScaleDownEnabled": "is_aggressive_scale_down_enabled",
                 "maxScaleDownPercentage": "max_scale_down_percentage"
             },
             "spotinst:aws/OceanAutoscalerAutoscaleHeadroom:OceanAutoscalerAutoscaleHeadroom": {
@@ -3435,6 +3482,20 @@
                 "isEnabled": "is_enabled",
                 "timeWindows": "time_windows"
             },
+            "spotinst:azure/OceanNpUpdatePolicy:OceanNpUpdatePolicy": {
+                "conditionedRoll": "conditioned_roll",
+                "rollConfig": "roll_config",
+                "shouldRoll": "should_roll"
+            },
+            "spotinst:azure/OceanNpUpdatePolicyRollConfig:OceanNpUpdatePolicyRollConfig": {
+                "batchMinHealthyPercentage": "batch_min_healthy_percentage",
+                "batchSizePercentage": "batch_size_percentage",
+                "nodeNames": "node_names",
+                "nodePoolNames": "node_pool_names",
+                "respectPdb": "respect_pdb",
+                "respectRestrictScaleDown": "respect_restrict_scale_down",
+                "vngIds": "vng_ids"
+            },
             "spotinst:azure/OceanNpVirtualNodeGroupFilters:OceanNpVirtualNodeGroupFilters": {
                 "acceleratedNetworking": "accelerated_networking",
                 "diskPerformance": "disk_performance",
@@ -3454,6 +3515,20 @@
                 "gpuPerUnit": "gpu_per_unit",
                 "memoryPerUnit": "memory_per_unit",
                 "numOfUnits": "num_of_units"
+            },
+            "spotinst:azure/OceanNpVirtualNodeGroupUpdatePolicy:OceanNpVirtualNodeGroupUpdatePolicy": {
+                "conditionedRoll": "conditioned_roll",
+                "rollConfig": "roll_config",
+                "shouldRoll": "should_roll"
+            },
+            "spotinst:azure/OceanNpVirtualNodeGroupUpdatePolicyRollConfig:OceanNpVirtualNodeGroupUpdatePolicyRollConfig": {
+                "batchMinHealthyPercentage": "batch_min_healthy_percentage",
+                "batchSizePercentage": "batch_size_percentage",
+                "nodeNames": "node_names",
+                "nodePoolNames": "node_pool_names",
+                "respectPdb": "respect_pdb",
+                "respectRestrictScaleDown": "respect_restrict_scale_down",
+                "vngIds": "vng_ids"
             },
             "spotinst:azure/OceanOsDisk:OceanOsDisk": {
                 "sizeGb": "size_gb"
@@ -3546,6 +3621,7 @@
                 "osType": "os_type",
                 "podSubnetIds": "pod_subnet_ids",
                 "spotPercentage": "spot_percentage",
+                "updatePolicy": "update_policy",
                 "vnetSubnetIds": "vnet_subnet_ids"
             },
             "spotinst:azure/oceanNpVirtualNodeGroup:OceanNpVirtualNodeGroup": {
@@ -3563,6 +3639,7 @@
                 "osType": "os_type",
                 "podSubnetIds": "pod_subnet_ids",
                 "spotPercentage": "spot_percentage",
+                "updatePolicy": "update_policy",
                 "vnetSubnetIds": "vnet_subnet_ids"
             },
             "spotinst:azure/oceanVirtualNodeGroup:OceanVirtualNodeGroup": {
