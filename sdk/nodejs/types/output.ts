@@ -2558,6 +2558,7 @@ export namespace aws {
 
     export interface OceanAutoscalerAutoscaleDown {
         evaluationPeriods?: number;
+        isAggressiveScaleDownEnabled?: boolean;
         maxScaleDownPercentage?: number;
     }
 
@@ -3664,6 +3665,23 @@ export namespace azure {
         value: string;
     }
 
+    export interface OceanNpUpdatePolicy {
+        conditionedRoll?: boolean;
+        rollConfig?: outputs.azure.OceanNpUpdatePolicyRollConfig;
+        shouldRoll: boolean;
+    }
+
+    export interface OceanNpUpdatePolicyRollConfig {
+        batchMinHealthyPercentage?: number;
+        batchSizePercentage?: number;
+        comment?: string;
+        nodeNames?: string[];
+        nodePoolNames?: string[];
+        respectPdb?: boolean;
+        respectRestrictScaleDown?: boolean;
+        vngIds?: string[];
+    }
+
     export interface OceanNpVirtualNodeGroupFilters {
         acceleratedNetworking?: string;
         architectures?: string[];
@@ -3692,6 +3710,23 @@ export namespace azure {
         effect: string;
         key: string;
         value: string;
+    }
+
+    export interface OceanNpVirtualNodeGroupUpdatePolicy {
+        conditionedRoll?: boolean;
+        rollConfig?: outputs.azure.OceanNpVirtualNodeGroupUpdatePolicyRollConfig;
+        shouldRoll: boolean;
+    }
+
+    export interface OceanNpVirtualNodeGroupUpdatePolicyRollConfig {
+        batchMinHealthyPercentage?: number;
+        batchSizePercentage?: number;
+        comment?: string;
+        nodeNames?: string[];
+        nodePoolNames?: string[];
+        respectPdb?: boolean;
+        respectRestrictScaleDown?: boolean;
+        vngIds?: string[];
     }
 
     export interface OceanOsDisk {

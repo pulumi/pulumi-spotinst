@@ -93,6 +93,9 @@ namespace Pulumi.SpotInst.Azure
         [Output("taints")]
         public Output<ImmutableArray<Outputs.OceanNpTaint>> Taints { get; private set; } = null!;
 
+        [Output("updatePolicy")]
+        public Output<Outputs.OceanNpUpdatePolicy?> UpdatePolicy { get; private set; } = null!;
+
         [Output("vnetSubnetIds")]
         public Output<ImmutableArray<string>> VnetSubnetIds { get; private set; } = null!;
 
@@ -253,6 +256,9 @@ namespace Pulumi.SpotInst.Azure
             set => _taints = value;
         }
 
+        [Input("updatePolicy")]
+        public Input<Inputs.OceanNpUpdatePolicyArgs>? UpdatePolicy { get; set; }
+
         [Input("vnetSubnetIds")]
         private InputList<string>? _vnetSubnetIds;
         public InputList<string> VnetSubnetIds
@@ -379,6 +385,9 @@ namespace Pulumi.SpotInst.Azure
             get => _taints ?? (_taints = new InputList<Inputs.OceanNpTaintGetArgs>());
             set => _taints = value;
         }
+
+        [Input("updatePolicy")]
+        public Input<Inputs.OceanNpUpdatePolicyGetArgs>? UpdatePolicy { get; set; }
 
         [Input("vnetSubnetIds")]
         private InputList<string>? _vnetSubnetIds;

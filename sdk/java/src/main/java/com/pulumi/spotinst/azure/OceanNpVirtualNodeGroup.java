@@ -13,6 +13,7 @@ import com.pulumi.spotinst.azure.inputs.OceanNpVirtualNodeGroupState;
 import com.pulumi.spotinst.azure.outputs.OceanNpVirtualNodeGroupFilters;
 import com.pulumi.spotinst.azure.outputs.OceanNpVirtualNodeGroupHeadroom;
 import com.pulumi.spotinst.azure.outputs.OceanNpVirtualNodeGroupTaint;
+import com.pulumi.spotinst.azure.outputs.OceanNpVirtualNodeGroupUpdatePolicy;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
@@ -143,6 +144,12 @@ public class OceanNpVirtualNodeGroup extends com.pulumi.resources.CustomResource
 
     public Output<Optional<List<OceanNpVirtualNodeGroupTaint>>> taints() {
         return Codegen.optional(this.taints);
+    }
+    @Export(name="updatePolicy", refs={OceanNpVirtualNodeGroupUpdatePolicy.class}, tree="[0]")
+    private Output</* @Nullable */ OceanNpVirtualNodeGroupUpdatePolicy> updatePolicy;
+
+    public Output<Optional<OceanNpVirtualNodeGroupUpdatePolicy>> updatePolicy() {
+        return Codegen.optional(this.updatePolicy);
     }
     @Export(name="vnetSubnetIds", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> vnetSubnetIds;

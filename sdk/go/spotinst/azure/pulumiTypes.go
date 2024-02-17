@@ -6443,6 +6443,407 @@ func (o OceanNpTaintArrayOutput) Index(i pulumi.IntInput) OceanNpTaintOutput {
 	}).(OceanNpTaintOutput)
 }
 
+type OceanNpUpdatePolicy struct {
+	ConditionedRoll *bool                          `pulumi:"conditionedRoll"`
+	RollConfig      *OceanNpUpdatePolicyRollConfig `pulumi:"rollConfig"`
+	ShouldRoll      bool                           `pulumi:"shouldRoll"`
+}
+
+// OceanNpUpdatePolicyInput is an input type that accepts OceanNpUpdatePolicyArgs and OceanNpUpdatePolicyOutput values.
+// You can construct a concrete instance of `OceanNpUpdatePolicyInput` via:
+//
+//	OceanNpUpdatePolicyArgs{...}
+type OceanNpUpdatePolicyInput interface {
+	pulumi.Input
+
+	ToOceanNpUpdatePolicyOutput() OceanNpUpdatePolicyOutput
+	ToOceanNpUpdatePolicyOutputWithContext(context.Context) OceanNpUpdatePolicyOutput
+}
+
+type OceanNpUpdatePolicyArgs struct {
+	ConditionedRoll pulumi.BoolPtrInput                   `pulumi:"conditionedRoll"`
+	RollConfig      OceanNpUpdatePolicyRollConfigPtrInput `pulumi:"rollConfig"`
+	ShouldRoll      pulumi.BoolInput                      `pulumi:"shouldRoll"`
+}
+
+func (OceanNpUpdatePolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanNpUpdatePolicy)(nil)).Elem()
+}
+
+func (i OceanNpUpdatePolicyArgs) ToOceanNpUpdatePolicyOutput() OceanNpUpdatePolicyOutput {
+	return i.ToOceanNpUpdatePolicyOutputWithContext(context.Background())
+}
+
+func (i OceanNpUpdatePolicyArgs) ToOceanNpUpdatePolicyOutputWithContext(ctx context.Context) OceanNpUpdatePolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanNpUpdatePolicyOutput)
+}
+
+func (i OceanNpUpdatePolicyArgs) ToOceanNpUpdatePolicyPtrOutput() OceanNpUpdatePolicyPtrOutput {
+	return i.ToOceanNpUpdatePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i OceanNpUpdatePolicyArgs) ToOceanNpUpdatePolicyPtrOutputWithContext(ctx context.Context) OceanNpUpdatePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanNpUpdatePolicyOutput).ToOceanNpUpdatePolicyPtrOutputWithContext(ctx)
+}
+
+// OceanNpUpdatePolicyPtrInput is an input type that accepts OceanNpUpdatePolicyArgs, OceanNpUpdatePolicyPtr and OceanNpUpdatePolicyPtrOutput values.
+// You can construct a concrete instance of `OceanNpUpdatePolicyPtrInput` via:
+//
+//	        OceanNpUpdatePolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type OceanNpUpdatePolicyPtrInput interface {
+	pulumi.Input
+
+	ToOceanNpUpdatePolicyPtrOutput() OceanNpUpdatePolicyPtrOutput
+	ToOceanNpUpdatePolicyPtrOutputWithContext(context.Context) OceanNpUpdatePolicyPtrOutput
+}
+
+type oceanNpUpdatePolicyPtrType OceanNpUpdatePolicyArgs
+
+func OceanNpUpdatePolicyPtr(v *OceanNpUpdatePolicyArgs) OceanNpUpdatePolicyPtrInput {
+	return (*oceanNpUpdatePolicyPtrType)(v)
+}
+
+func (*oceanNpUpdatePolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanNpUpdatePolicy)(nil)).Elem()
+}
+
+func (i *oceanNpUpdatePolicyPtrType) ToOceanNpUpdatePolicyPtrOutput() OceanNpUpdatePolicyPtrOutput {
+	return i.ToOceanNpUpdatePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *oceanNpUpdatePolicyPtrType) ToOceanNpUpdatePolicyPtrOutputWithContext(ctx context.Context) OceanNpUpdatePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanNpUpdatePolicyPtrOutput)
+}
+
+type OceanNpUpdatePolicyOutput struct{ *pulumi.OutputState }
+
+func (OceanNpUpdatePolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanNpUpdatePolicy)(nil)).Elem()
+}
+
+func (o OceanNpUpdatePolicyOutput) ToOceanNpUpdatePolicyOutput() OceanNpUpdatePolicyOutput {
+	return o
+}
+
+func (o OceanNpUpdatePolicyOutput) ToOceanNpUpdatePolicyOutputWithContext(ctx context.Context) OceanNpUpdatePolicyOutput {
+	return o
+}
+
+func (o OceanNpUpdatePolicyOutput) ToOceanNpUpdatePolicyPtrOutput() OceanNpUpdatePolicyPtrOutput {
+	return o.ToOceanNpUpdatePolicyPtrOutputWithContext(context.Background())
+}
+
+func (o OceanNpUpdatePolicyOutput) ToOceanNpUpdatePolicyPtrOutputWithContext(ctx context.Context) OceanNpUpdatePolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OceanNpUpdatePolicy) *OceanNpUpdatePolicy {
+		return &v
+	}).(OceanNpUpdatePolicyPtrOutput)
+}
+
+func (o OceanNpUpdatePolicyOutput) ConditionedRoll() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OceanNpUpdatePolicy) *bool { return v.ConditionedRoll }).(pulumi.BoolPtrOutput)
+}
+
+func (o OceanNpUpdatePolicyOutput) RollConfig() OceanNpUpdatePolicyRollConfigPtrOutput {
+	return o.ApplyT(func(v OceanNpUpdatePolicy) *OceanNpUpdatePolicyRollConfig { return v.RollConfig }).(OceanNpUpdatePolicyRollConfigPtrOutput)
+}
+
+func (o OceanNpUpdatePolicyOutput) ShouldRoll() pulumi.BoolOutput {
+	return o.ApplyT(func(v OceanNpUpdatePolicy) bool { return v.ShouldRoll }).(pulumi.BoolOutput)
+}
+
+type OceanNpUpdatePolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (OceanNpUpdatePolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanNpUpdatePolicy)(nil)).Elem()
+}
+
+func (o OceanNpUpdatePolicyPtrOutput) ToOceanNpUpdatePolicyPtrOutput() OceanNpUpdatePolicyPtrOutput {
+	return o
+}
+
+func (o OceanNpUpdatePolicyPtrOutput) ToOceanNpUpdatePolicyPtrOutputWithContext(ctx context.Context) OceanNpUpdatePolicyPtrOutput {
+	return o
+}
+
+func (o OceanNpUpdatePolicyPtrOutput) Elem() OceanNpUpdatePolicyOutput {
+	return o.ApplyT(func(v *OceanNpUpdatePolicy) OceanNpUpdatePolicy {
+		if v != nil {
+			return *v
+		}
+		var ret OceanNpUpdatePolicy
+		return ret
+	}).(OceanNpUpdatePolicyOutput)
+}
+
+func (o OceanNpUpdatePolicyPtrOutput) ConditionedRoll() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OceanNpUpdatePolicy) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ConditionedRoll
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o OceanNpUpdatePolicyPtrOutput) RollConfig() OceanNpUpdatePolicyRollConfigPtrOutput {
+	return o.ApplyT(func(v *OceanNpUpdatePolicy) *OceanNpUpdatePolicyRollConfig {
+		if v == nil {
+			return nil
+		}
+		return v.RollConfig
+	}).(OceanNpUpdatePolicyRollConfigPtrOutput)
+}
+
+func (o OceanNpUpdatePolicyPtrOutput) ShouldRoll() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OceanNpUpdatePolicy) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.ShouldRoll
+	}).(pulumi.BoolPtrOutput)
+}
+
+type OceanNpUpdatePolicyRollConfig struct {
+	BatchMinHealthyPercentage *int     `pulumi:"batchMinHealthyPercentage"`
+	BatchSizePercentage       *int     `pulumi:"batchSizePercentage"`
+	Comment                   *string  `pulumi:"comment"`
+	NodeNames                 []string `pulumi:"nodeNames"`
+	NodePoolNames             []string `pulumi:"nodePoolNames"`
+	RespectPdb                *bool    `pulumi:"respectPdb"`
+	RespectRestrictScaleDown  *bool    `pulumi:"respectRestrictScaleDown"`
+	VngIds                    []string `pulumi:"vngIds"`
+}
+
+// OceanNpUpdatePolicyRollConfigInput is an input type that accepts OceanNpUpdatePolicyRollConfigArgs and OceanNpUpdatePolicyRollConfigOutput values.
+// You can construct a concrete instance of `OceanNpUpdatePolicyRollConfigInput` via:
+//
+//	OceanNpUpdatePolicyRollConfigArgs{...}
+type OceanNpUpdatePolicyRollConfigInput interface {
+	pulumi.Input
+
+	ToOceanNpUpdatePolicyRollConfigOutput() OceanNpUpdatePolicyRollConfigOutput
+	ToOceanNpUpdatePolicyRollConfigOutputWithContext(context.Context) OceanNpUpdatePolicyRollConfigOutput
+}
+
+type OceanNpUpdatePolicyRollConfigArgs struct {
+	BatchMinHealthyPercentage pulumi.IntPtrInput      `pulumi:"batchMinHealthyPercentage"`
+	BatchSizePercentage       pulumi.IntPtrInput      `pulumi:"batchSizePercentage"`
+	Comment                   pulumi.StringPtrInput   `pulumi:"comment"`
+	NodeNames                 pulumi.StringArrayInput `pulumi:"nodeNames"`
+	NodePoolNames             pulumi.StringArrayInput `pulumi:"nodePoolNames"`
+	RespectPdb                pulumi.BoolPtrInput     `pulumi:"respectPdb"`
+	RespectRestrictScaleDown  pulumi.BoolPtrInput     `pulumi:"respectRestrictScaleDown"`
+	VngIds                    pulumi.StringArrayInput `pulumi:"vngIds"`
+}
+
+func (OceanNpUpdatePolicyRollConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanNpUpdatePolicyRollConfig)(nil)).Elem()
+}
+
+func (i OceanNpUpdatePolicyRollConfigArgs) ToOceanNpUpdatePolicyRollConfigOutput() OceanNpUpdatePolicyRollConfigOutput {
+	return i.ToOceanNpUpdatePolicyRollConfigOutputWithContext(context.Background())
+}
+
+func (i OceanNpUpdatePolicyRollConfigArgs) ToOceanNpUpdatePolicyRollConfigOutputWithContext(ctx context.Context) OceanNpUpdatePolicyRollConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanNpUpdatePolicyRollConfigOutput)
+}
+
+func (i OceanNpUpdatePolicyRollConfigArgs) ToOceanNpUpdatePolicyRollConfigPtrOutput() OceanNpUpdatePolicyRollConfigPtrOutput {
+	return i.ToOceanNpUpdatePolicyRollConfigPtrOutputWithContext(context.Background())
+}
+
+func (i OceanNpUpdatePolicyRollConfigArgs) ToOceanNpUpdatePolicyRollConfigPtrOutputWithContext(ctx context.Context) OceanNpUpdatePolicyRollConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanNpUpdatePolicyRollConfigOutput).ToOceanNpUpdatePolicyRollConfigPtrOutputWithContext(ctx)
+}
+
+// OceanNpUpdatePolicyRollConfigPtrInput is an input type that accepts OceanNpUpdatePolicyRollConfigArgs, OceanNpUpdatePolicyRollConfigPtr and OceanNpUpdatePolicyRollConfigPtrOutput values.
+// You can construct a concrete instance of `OceanNpUpdatePolicyRollConfigPtrInput` via:
+//
+//	        OceanNpUpdatePolicyRollConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type OceanNpUpdatePolicyRollConfigPtrInput interface {
+	pulumi.Input
+
+	ToOceanNpUpdatePolicyRollConfigPtrOutput() OceanNpUpdatePolicyRollConfigPtrOutput
+	ToOceanNpUpdatePolicyRollConfigPtrOutputWithContext(context.Context) OceanNpUpdatePolicyRollConfigPtrOutput
+}
+
+type oceanNpUpdatePolicyRollConfigPtrType OceanNpUpdatePolicyRollConfigArgs
+
+func OceanNpUpdatePolicyRollConfigPtr(v *OceanNpUpdatePolicyRollConfigArgs) OceanNpUpdatePolicyRollConfigPtrInput {
+	return (*oceanNpUpdatePolicyRollConfigPtrType)(v)
+}
+
+func (*oceanNpUpdatePolicyRollConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanNpUpdatePolicyRollConfig)(nil)).Elem()
+}
+
+func (i *oceanNpUpdatePolicyRollConfigPtrType) ToOceanNpUpdatePolicyRollConfigPtrOutput() OceanNpUpdatePolicyRollConfigPtrOutput {
+	return i.ToOceanNpUpdatePolicyRollConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *oceanNpUpdatePolicyRollConfigPtrType) ToOceanNpUpdatePolicyRollConfigPtrOutputWithContext(ctx context.Context) OceanNpUpdatePolicyRollConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanNpUpdatePolicyRollConfigPtrOutput)
+}
+
+type OceanNpUpdatePolicyRollConfigOutput struct{ *pulumi.OutputState }
+
+func (OceanNpUpdatePolicyRollConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanNpUpdatePolicyRollConfig)(nil)).Elem()
+}
+
+func (o OceanNpUpdatePolicyRollConfigOutput) ToOceanNpUpdatePolicyRollConfigOutput() OceanNpUpdatePolicyRollConfigOutput {
+	return o
+}
+
+func (o OceanNpUpdatePolicyRollConfigOutput) ToOceanNpUpdatePolicyRollConfigOutputWithContext(ctx context.Context) OceanNpUpdatePolicyRollConfigOutput {
+	return o
+}
+
+func (o OceanNpUpdatePolicyRollConfigOutput) ToOceanNpUpdatePolicyRollConfigPtrOutput() OceanNpUpdatePolicyRollConfigPtrOutput {
+	return o.ToOceanNpUpdatePolicyRollConfigPtrOutputWithContext(context.Background())
+}
+
+func (o OceanNpUpdatePolicyRollConfigOutput) ToOceanNpUpdatePolicyRollConfigPtrOutputWithContext(ctx context.Context) OceanNpUpdatePolicyRollConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OceanNpUpdatePolicyRollConfig) *OceanNpUpdatePolicyRollConfig {
+		return &v
+	}).(OceanNpUpdatePolicyRollConfigPtrOutput)
+}
+
+func (o OceanNpUpdatePolicyRollConfigOutput) BatchMinHealthyPercentage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OceanNpUpdatePolicyRollConfig) *int { return v.BatchMinHealthyPercentage }).(pulumi.IntPtrOutput)
+}
+
+func (o OceanNpUpdatePolicyRollConfigOutput) BatchSizePercentage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OceanNpUpdatePolicyRollConfig) *int { return v.BatchSizePercentage }).(pulumi.IntPtrOutput)
+}
+
+func (o OceanNpUpdatePolicyRollConfigOutput) Comment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OceanNpUpdatePolicyRollConfig) *string { return v.Comment }).(pulumi.StringPtrOutput)
+}
+
+func (o OceanNpUpdatePolicyRollConfigOutput) NodeNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OceanNpUpdatePolicyRollConfig) []string { return v.NodeNames }).(pulumi.StringArrayOutput)
+}
+
+func (o OceanNpUpdatePolicyRollConfigOutput) NodePoolNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OceanNpUpdatePolicyRollConfig) []string { return v.NodePoolNames }).(pulumi.StringArrayOutput)
+}
+
+func (o OceanNpUpdatePolicyRollConfigOutput) RespectPdb() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OceanNpUpdatePolicyRollConfig) *bool { return v.RespectPdb }).(pulumi.BoolPtrOutput)
+}
+
+func (o OceanNpUpdatePolicyRollConfigOutput) RespectRestrictScaleDown() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OceanNpUpdatePolicyRollConfig) *bool { return v.RespectRestrictScaleDown }).(pulumi.BoolPtrOutput)
+}
+
+func (o OceanNpUpdatePolicyRollConfigOutput) VngIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OceanNpUpdatePolicyRollConfig) []string { return v.VngIds }).(pulumi.StringArrayOutput)
+}
+
+type OceanNpUpdatePolicyRollConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (OceanNpUpdatePolicyRollConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanNpUpdatePolicyRollConfig)(nil)).Elem()
+}
+
+func (o OceanNpUpdatePolicyRollConfigPtrOutput) ToOceanNpUpdatePolicyRollConfigPtrOutput() OceanNpUpdatePolicyRollConfigPtrOutput {
+	return o
+}
+
+func (o OceanNpUpdatePolicyRollConfigPtrOutput) ToOceanNpUpdatePolicyRollConfigPtrOutputWithContext(ctx context.Context) OceanNpUpdatePolicyRollConfigPtrOutput {
+	return o
+}
+
+func (o OceanNpUpdatePolicyRollConfigPtrOutput) Elem() OceanNpUpdatePolicyRollConfigOutput {
+	return o.ApplyT(func(v *OceanNpUpdatePolicyRollConfig) OceanNpUpdatePolicyRollConfig {
+		if v != nil {
+			return *v
+		}
+		var ret OceanNpUpdatePolicyRollConfig
+		return ret
+	}).(OceanNpUpdatePolicyRollConfigOutput)
+}
+
+func (o OceanNpUpdatePolicyRollConfigPtrOutput) BatchMinHealthyPercentage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OceanNpUpdatePolicyRollConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.BatchMinHealthyPercentage
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o OceanNpUpdatePolicyRollConfigPtrOutput) BatchSizePercentage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OceanNpUpdatePolicyRollConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.BatchSizePercentage
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o OceanNpUpdatePolicyRollConfigPtrOutput) Comment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OceanNpUpdatePolicyRollConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Comment
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o OceanNpUpdatePolicyRollConfigPtrOutput) NodeNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OceanNpUpdatePolicyRollConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.NodeNames
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o OceanNpUpdatePolicyRollConfigPtrOutput) NodePoolNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OceanNpUpdatePolicyRollConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.NodePoolNames
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o OceanNpUpdatePolicyRollConfigPtrOutput) RespectPdb() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OceanNpUpdatePolicyRollConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RespectPdb
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o OceanNpUpdatePolicyRollConfigPtrOutput) RespectRestrictScaleDown() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OceanNpUpdatePolicyRollConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RespectRestrictScaleDown
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o OceanNpUpdatePolicyRollConfigPtrOutput) VngIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OceanNpUpdatePolicyRollConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.VngIds
+	}).(pulumi.StringArrayOutput)
+}
+
 type OceanNpVirtualNodeGroupFilters struct {
 	AcceleratedNetworking *string  `pulumi:"acceleratedNetworking"`
 	Architectures         []string `pulumi:"architectures"`
@@ -6987,6 +7388,409 @@ func (o OceanNpVirtualNodeGroupTaintArrayOutput) Index(i pulumi.IntInput) OceanN
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OceanNpVirtualNodeGroupTaint {
 		return vs[0].([]OceanNpVirtualNodeGroupTaint)[vs[1].(int)]
 	}).(OceanNpVirtualNodeGroupTaintOutput)
+}
+
+type OceanNpVirtualNodeGroupUpdatePolicy struct {
+	ConditionedRoll *bool                                          `pulumi:"conditionedRoll"`
+	RollConfig      *OceanNpVirtualNodeGroupUpdatePolicyRollConfig `pulumi:"rollConfig"`
+	ShouldRoll      bool                                           `pulumi:"shouldRoll"`
+}
+
+// OceanNpVirtualNodeGroupUpdatePolicyInput is an input type that accepts OceanNpVirtualNodeGroupUpdatePolicyArgs and OceanNpVirtualNodeGroupUpdatePolicyOutput values.
+// You can construct a concrete instance of `OceanNpVirtualNodeGroupUpdatePolicyInput` via:
+//
+//	OceanNpVirtualNodeGroupUpdatePolicyArgs{...}
+type OceanNpVirtualNodeGroupUpdatePolicyInput interface {
+	pulumi.Input
+
+	ToOceanNpVirtualNodeGroupUpdatePolicyOutput() OceanNpVirtualNodeGroupUpdatePolicyOutput
+	ToOceanNpVirtualNodeGroupUpdatePolicyOutputWithContext(context.Context) OceanNpVirtualNodeGroupUpdatePolicyOutput
+}
+
+type OceanNpVirtualNodeGroupUpdatePolicyArgs struct {
+	ConditionedRoll pulumi.BoolPtrInput                                   `pulumi:"conditionedRoll"`
+	RollConfig      OceanNpVirtualNodeGroupUpdatePolicyRollConfigPtrInput `pulumi:"rollConfig"`
+	ShouldRoll      pulumi.BoolInput                                      `pulumi:"shouldRoll"`
+}
+
+func (OceanNpVirtualNodeGroupUpdatePolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanNpVirtualNodeGroupUpdatePolicy)(nil)).Elem()
+}
+
+func (i OceanNpVirtualNodeGroupUpdatePolicyArgs) ToOceanNpVirtualNodeGroupUpdatePolicyOutput() OceanNpVirtualNodeGroupUpdatePolicyOutput {
+	return i.ToOceanNpVirtualNodeGroupUpdatePolicyOutputWithContext(context.Background())
+}
+
+func (i OceanNpVirtualNodeGroupUpdatePolicyArgs) ToOceanNpVirtualNodeGroupUpdatePolicyOutputWithContext(ctx context.Context) OceanNpVirtualNodeGroupUpdatePolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanNpVirtualNodeGroupUpdatePolicyOutput)
+}
+
+func (i OceanNpVirtualNodeGroupUpdatePolicyArgs) ToOceanNpVirtualNodeGroupUpdatePolicyPtrOutput() OceanNpVirtualNodeGroupUpdatePolicyPtrOutput {
+	return i.ToOceanNpVirtualNodeGroupUpdatePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i OceanNpVirtualNodeGroupUpdatePolicyArgs) ToOceanNpVirtualNodeGroupUpdatePolicyPtrOutputWithContext(ctx context.Context) OceanNpVirtualNodeGroupUpdatePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanNpVirtualNodeGroupUpdatePolicyOutput).ToOceanNpVirtualNodeGroupUpdatePolicyPtrOutputWithContext(ctx)
+}
+
+// OceanNpVirtualNodeGroupUpdatePolicyPtrInput is an input type that accepts OceanNpVirtualNodeGroupUpdatePolicyArgs, OceanNpVirtualNodeGroupUpdatePolicyPtr and OceanNpVirtualNodeGroupUpdatePolicyPtrOutput values.
+// You can construct a concrete instance of `OceanNpVirtualNodeGroupUpdatePolicyPtrInput` via:
+//
+//	        OceanNpVirtualNodeGroupUpdatePolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type OceanNpVirtualNodeGroupUpdatePolicyPtrInput interface {
+	pulumi.Input
+
+	ToOceanNpVirtualNodeGroupUpdatePolicyPtrOutput() OceanNpVirtualNodeGroupUpdatePolicyPtrOutput
+	ToOceanNpVirtualNodeGroupUpdatePolicyPtrOutputWithContext(context.Context) OceanNpVirtualNodeGroupUpdatePolicyPtrOutput
+}
+
+type oceanNpVirtualNodeGroupUpdatePolicyPtrType OceanNpVirtualNodeGroupUpdatePolicyArgs
+
+func OceanNpVirtualNodeGroupUpdatePolicyPtr(v *OceanNpVirtualNodeGroupUpdatePolicyArgs) OceanNpVirtualNodeGroupUpdatePolicyPtrInput {
+	return (*oceanNpVirtualNodeGroupUpdatePolicyPtrType)(v)
+}
+
+func (*oceanNpVirtualNodeGroupUpdatePolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanNpVirtualNodeGroupUpdatePolicy)(nil)).Elem()
+}
+
+func (i *oceanNpVirtualNodeGroupUpdatePolicyPtrType) ToOceanNpVirtualNodeGroupUpdatePolicyPtrOutput() OceanNpVirtualNodeGroupUpdatePolicyPtrOutput {
+	return i.ToOceanNpVirtualNodeGroupUpdatePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *oceanNpVirtualNodeGroupUpdatePolicyPtrType) ToOceanNpVirtualNodeGroupUpdatePolicyPtrOutputWithContext(ctx context.Context) OceanNpVirtualNodeGroupUpdatePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanNpVirtualNodeGroupUpdatePolicyPtrOutput)
+}
+
+type OceanNpVirtualNodeGroupUpdatePolicyOutput struct{ *pulumi.OutputState }
+
+func (OceanNpVirtualNodeGroupUpdatePolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanNpVirtualNodeGroupUpdatePolicy)(nil)).Elem()
+}
+
+func (o OceanNpVirtualNodeGroupUpdatePolicyOutput) ToOceanNpVirtualNodeGroupUpdatePolicyOutput() OceanNpVirtualNodeGroupUpdatePolicyOutput {
+	return o
+}
+
+func (o OceanNpVirtualNodeGroupUpdatePolicyOutput) ToOceanNpVirtualNodeGroupUpdatePolicyOutputWithContext(ctx context.Context) OceanNpVirtualNodeGroupUpdatePolicyOutput {
+	return o
+}
+
+func (o OceanNpVirtualNodeGroupUpdatePolicyOutput) ToOceanNpVirtualNodeGroupUpdatePolicyPtrOutput() OceanNpVirtualNodeGroupUpdatePolicyPtrOutput {
+	return o.ToOceanNpVirtualNodeGroupUpdatePolicyPtrOutputWithContext(context.Background())
+}
+
+func (o OceanNpVirtualNodeGroupUpdatePolicyOutput) ToOceanNpVirtualNodeGroupUpdatePolicyPtrOutputWithContext(ctx context.Context) OceanNpVirtualNodeGroupUpdatePolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OceanNpVirtualNodeGroupUpdatePolicy) *OceanNpVirtualNodeGroupUpdatePolicy {
+		return &v
+	}).(OceanNpVirtualNodeGroupUpdatePolicyPtrOutput)
+}
+
+func (o OceanNpVirtualNodeGroupUpdatePolicyOutput) ConditionedRoll() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OceanNpVirtualNodeGroupUpdatePolicy) *bool { return v.ConditionedRoll }).(pulumi.BoolPtrOutput)
+}
+
+func (o OceanNpVirtualNodeGroupUpdatePolicyOutput) RollConfig() OceanNpVirtualNodeGroupUpdatePolicyRollConfigPtrOutput {
+	return o.ApplyT(func(v OceanNpVirtualNodeGroupUpdatePolicy) *OceanNpVirtualNodeGroupUpdatePolicyRollConfig {
+		return v.RollConfig
+	}).(OceanNpVirtualNodeGroupUpdatePolicyRollConfigPtrOutput)
+}
+
+func (o OceanNpVirtualNodeGroupUpdatePolicyOutput) ShouldRoll() pulumi.BoolOutput {
+	return o.ApplyT(func(v OceanNpVirtualNodeGroupUpdatePolicy) bool { return v.ShouldRoll }).(pulumi.BoolOutput)
+}
+
+type OceanNpVirtualNodeGroupUpdatePolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (OceanNpVirtualNodeGroupUpdatePolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanNpVirtualNodeGroupUpdatePolicy)(nil)).Elem()
+}
+
+func (o OceanNpVirtualNodeGroupUpdatePolicyPtrOutput) ToOceanNpVirtualNodeGroupUpdatePolicyPtrOutput() OceanNpVirtualNodeGroupUpdatePolicyPtrOutput {
+	return o
+}
+
+func (o OceanNpVirtualNodeGroupUpdatePolicyPtrOutput) ToOceanNpVirtualNodeGroupUpdatePolicyPtrOutputWithContext(ctx context.Context) OceanNpVirtualNodeGroupUpdatePolicyPtrOutput {
+	return o
+}
+
+func (o OceanNpVirtualNodeGroupUpdatePolicyPtrOutput) Elem() OceanNpVirtualNodeGroupUpdatePolicyOutput {
+	return o.ApplyT(func(v *OceanNpVirtualNodeGroupUpdatePolicy) OceanNpVirtualNodeGroupUpdatePolicy {
+		if v != nil {
+			return *v
+		}
+		var ret OceanNpVirtualNodeGroupUpdatePolicy
+		return ret
+	}).(OceanNpVirtualNodeGroupUpdatePolicyOutput)
+}
+
+func (o OceanNpVirtualNodeGroupUpdatePolicyPtrOutput) ConditionedRoll() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OceanNpVirtualNodeGroupUpdatePolicy) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ConditionedRoll
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o OceanNpVirtualNodeGroupUpdatePolicyPtrOutput) RollConfig() OceanNpVirtualNodeGroupUpdatePolicyRollConfigPtrOutput {
+	return o.ApplyT(func(v *OceanNpVirtualNodeGroupUpdatePolicy) *OceanNpVirtualNodeGroupUpdatePolicyRollConfig {
+		if v == nil {
+			return nil
+		}
+		return v.RollConfig
+	}).(OceanNpVirtualNodeGroupUpdatePolicyRollConfigPtrOutput)
+}
+
+func (o OceanNpVirtualNodeGroupUpdatePolicyPtrOutput) ShouldRoll() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OceanNpVirtualNodeGroupUpdatePolicy) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.ShouldRoll
+	}).(pulumi.BoolPtrOutput)
+}
+
+type OceanNpVirtualNodeGroupUpdatePolicyRollConfig struct {
+	BatchMinHealthyPercentage *int     `pulumi:"batchMinHealthyPercentage"`
+	BatchSizePercentage       *int     `pulumi:"batchSizePercentage"`
+	Comment                   *string  `pulumi:"comment"`
+	NodeNames                 []string `pulumi:"nodeNames"`
+	NodePoolNames             []string `pulumi:"nodePoolNames"`
+	RespectPdb                *bool    `pulumi:"respectPdb"`
+	RespectRestrictScaleDown  *bool    `pulumi:"respectRestrictScaleDown"`
+	VngIds                    []string `pulumi:"vngIds"`
+}
+
+// OceanNpVirtualNodeGroupUpdatePolicyRollConfigInput is an input type that accepts OceanNpVirtualNodeGroupUpdatePolicyRollConfigArgs and OceanNpVirtualNodeGroupUpdatePolicyRollConfigOutput values.
+// You can construct a concrete instance of `OceanNpVirtualNodeGroupUpdatePolicyRollConfigInput` via:
+//
+//	OceanNpVirtualNodeGroupUpdatePolicyRollConfigArgs{...}
+type OceanNpVirtualNodeGroupUpdatePolicyRollConfigInput interface {
+	pulumi.Input
+
+	ToOceanNpVirtualNodeGroupUpdatePolicyRollConfigOutput() OceanNpVirtualNodeGroupUpdatePolicyRollConfigOutput
+	ToOceanNpVirtualNodeGroupUpdatePolicyRollConfigOutputWithContext(context.Context) OceanNpVirtualNodeGroupUpdatePolicyRollConfigOutput
+}
+
+type OceanNpVirtualNodeGroupUpdatePolicyRollConfigArgs struct {
+	BatchMinHealthyPercentage pulumi.IntPtrInput      `pulumi:"batchMinHealthyPercentage"`
+	BatchSizePercentage       pulumi.IntPtrInput      `pulumi:"batchSizePercentage"`
+	Comment                   pulumi.StringPtrInput   `pulumi:"comment"`
+	NodeNames                 pulumi.StringArrayInput `pulumi:"nodeNames"`
+	NodePoolNames             pulumi.StringArrayInput `pulumi:"nodePoolNames"`
+	RespectPdb                pulumi.BoolPtrInput     `pulumi:"respectPdb"`
+	RespectRestrictScaleDown  pulumi.BoolPtrInput     `pulumi:"respectRestrictScaleDown"`
+	VngIds                    pulumi.StringArrayInput `pulumi:"vngIds"`
+}
+
+func (OceanNpVirtualNodeGroupUpdatePolicyRollConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanNpVirtualNodeGroupUpdatePolicyRollConfig)(nil)).Elem()
+}
+
+func (i OceanNpVirtualNodeGroupUpdatePolicyRollConfigArgs) ToOceanNpVirtualNodeGroupUpdatePolicyRollConfigOutput() OceanNpVirtualNodeGroupUpdatePolicyRollConfigOutput {
+	return i.ToOceanNpVirtualNodeGroupUpdatePolicyRollConfigOutputWithContext(context.Background())
+}
+
+func (i OceanNpVirtualNodeGroupUpdatePolicyRollConfigArgs) ToOceanNpVirtualNodeGroupUpdatePolicyRollConfigOutputWithContext(ctx context.Context) OceanNpVirtualNodeGroupUpdatePolicyRollConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanNpVirtualNodeGroupUpdatePolicyRollConfigOutput)
+}
+
+func (i OceanNpVirtualNodeGroupUpdatePolicyRollConfigArgs) ToOceanNpVirtualNodeGroupUpdatePolicyRollConfigPtrOutput() OceanNpVirtualNodeGroupUpdatePolicyRollConfigPtrOutput {
+	return i.ToOceanNpVirtualNodeGroupUpdatePolicyRollConfigPtrOutputWithContext(context.Background())
+}
+
+func (i OceanNpVirtualNodeGroupUpdatePolicyRollConfigArgs) ToOceanNpVirtualNodeGroupUpdatePolicyRollConfigPtrOutputWithContext(ctx context.Context) OceanNpVirtualNodeGroupUpdatePolicyRollConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanNpVirtualNodeGroupUpdatePolicyRollConfigOutput).ToOceanNpVirtualNodeGroupUpdatePolicyRollConfigPtrOutputWithContext(ctx)
+}
+
+// OceanNpVirtualNodeGroupUpdatePolicyRollConfigPtrInput is an input type that accepts OceanNpVirtualNodeGroupUpdatePolicyRollConfigArgs, OceanNpVirtualNodeGroupUpdatePolicyRollConfigPtr and OceanNpVirtualNodeGroupUpdatePolicyRollConfigPtrOutput values.
+// You can construct a concrete instance of `OceanNpVirtualNodeGroupUpdatePolicyRollConfigPtrInput` via:
+//
+//	        OceanNpVirtualNodeGroupUpdatePolicyRollConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type OceanNpVirtualNodeGroupUpdatePolicyRollConfigPtrInput interface {
+	pulumi.Input
+
+	ToOceanNpVirtualNodeGroupUpdatePolicyRollConfigPtrOutput() OceanNpVirtualNodeGroupUpdatePolicyRollConfigPtrOutput
+	ToOceanNpVirtualNodeGroupUpdatePolicyRollConfigPtrOutputWithContext(context.Context) OceanNpVirtualNodeGroupUpdatePolicyRollConfigPtrOutput
+}
+
+type oceanNpVirtualNodeGroupUpdatePolicyRollConfigPtrType OceanNpVirtualNodeGroupUpdatePolicyRollConfigArgs
+
+func OceanNpVirtualNodeGroupUpdatePolicyRollConfigPtr(v *OceanNpVirtualNodeGroupUpdatePolicyRollConfigArgs) OceanNpVirtualNodeGroupUpdatePolicyRollConfigPtrInput {
+	return (*oceanNpVirtualNodeGroupUpdatePolicyRollConfigPtrType)(v)
+}
+
+func (*oceanNpVirtualNodeGroupUpdatePolicyRollConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanNpVirtualNodeGroupUpdatePolicyRollConfig)(nil)).Elem()
+}
+
+func (i *oceanNpVirtualNodeGroupUpdatePolicyRollConfigPtrType) ToOceanNpVirtualNodeGroupUpdatePolicyRollConfigPtrOutput() OceanNpVirtualNodeGroupUpdatePolicyRollConfigPtrOutput {
+	return i.ToOceanNpVirtualNodeGroupUpdatePolicyRollConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *oceanNpVirtualNodeGroupUpdatePolicyRollConfigPtrType) ToOceanNpVirtualNodeGroupUpdatePolicyRollConfigPtrOutputWithContext(ctx context.Context) OceanNpVirtualNodeGroupUpdatePolicyRollConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanNpVirtualNodeGroupUpdatePolicyRollConfigPtrOutput)
+}
+
+type OceanNpVirtualNodeGroupUpdatePolicyRollConfigOutput struct{ *pulumi.OutputState }
+
+func (OceanNpVirtualNodeGroupUpdatePolicyRollConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanNpVirtualNodeGroupUpdatePolicyRollConfig)(nil)).Elem()
+}
+
+func (o OceanNpVirtualNodeGroupUpdatePolicyRollConfigOutput) ToOceanNpVirtualNodeGroupUpdatePolicyRollConfigOutput() OceanNpVirtualNodeGroupUpdatePolicyRollConfigOutput {
+	return o
+}
+
+func (o OceanNpVirtualNodeGroupUpdatePolicyRollConfigOutput) ToOceanNpVirtualNodeGroupUpdatePolicyRollConfigOutputWithContext(ctx context.Context) OceanNpVirtualNodeGroupUpdatePolicyRollConfigOutput {
+	return o
+}
+
+func (o OceanNpVirtualNodeGroupUpdatePolicyRollConfigOutput) ToOceanNpVirtualNodeGroupUpdatePolicyRollConfigPtrOutput() OceanNpVirtualNodeGroupUpdatePolicyRollConfigPtrOutput {
+	return o.ToOceanNpVirtualNodeGroupUpdatePolicyRollConfigPtrOutputWithContext(context.Background())
+}
+
+func (o OceanNpVirtualNodeGroupUpdatePolicyRollConfigOutput) ToOceanNpVirtualNodeGroupUpdatePolicyRollConfigPtrOutputWithContext(ctx context.Context) OceanNpVirtualNodeGroupUpdatePolicyRollConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OceanNpVirtualNodeGroupUpdatePolicyRollConfig) *OceanNpVirtualNodeGroupUpdatePolicyRollConfig {
+		return &v
+	}).(OceanNpVirtualNodeGroupUpdatePolicyRollConfigPtrOutput)
+}
+
+func (o OceanNpVirtualNodeGroupUpdatePolicyRollConfigOutput) BatchMinHealthyPercentage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OceanNpVirtualNodeGroupUpdatePolicyRollConfig) *int { return v.BatchMinHealthyPercentage }).(pulumi.IntPtrOutput)
+}
+
+func (o OceanNpVirtualNodeGroupUpdatePolicyRollConfigOutput) BatchSizePercentage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OceanNpVirtualNodeGroupUpdatePolicyRollConfig) *int { return v.BatchSizePercentage }).(pulumi.IntPtrOutput)
+}
+
+func (o OceanNpVirtualNodeGroupUpdatePolicyRollConfigOutput) Comment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OceanNpVirtualNodeGroupUpdatePolicyRollConfig) *string { return v.Comment }).(pulumi.StringPtrOutput)
+}
+
+func (o OceanNpVirtualNodeGroupUpdatePolicyRollConfigOutput) NodeNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OceanNpVirtualNodeGroupUpdatePolicyRollConfig) []string { return v.NodeNames }).(pulumi.StringArrayOutput)
+}
+
+func (o OceanNpVirtualNodeGroupUpdatePolicyRollConfigOutput) NodePoolNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OceanNpVirtualNodeGroupUpdatePolicyRollConfig) []string { return v.NodePoolNames }).(pulumi.StringArrayOutput)
+}
+
+func (o OceanNpVirtualNodeGroupUpdatePolicyRollConfigOutput) RespectPdb() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OceanNpVirtualNodeGroupUpdatePolicyRollConfig) *bool { return v.RespectPdb }).(pulumi.BoolPtrOutput)
+}
+
+func (o OceanNpVirtualNodeGroupUpdatePolicyRollConfigOutput) RespectRestrictScaleDown() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OceanNpVirtualNodeGroupUpdatePolicyRollConfig) *bool { return v.RespectRestrictScaleDown }).(pulumi.BoolPtrOutput)
+}
+
+func (o OceanNpVirtualNodeGroupUpdatePolicyRollConfigOutput) VngIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OceanNpVirtualNodeGroupUpdatePolicyRollConfig) []string { return v.VngIds }).(pulumi.StringArrayOutput)
+}
+
+type OceanNpVirtualNodeGroupUpdatePolicyRollConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (OceanNpVirtualNodeGroupUpdatePolicyRollConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OceanNpVirtualNodeGroupUpdatePolicyRollConfig)(nil)).Elem()
+}
+
+func (o OceanNpVirtualNodeGroupUpdatePolicyRollConfigPtrOutput) ToOceanNpVirtualNodeGroupUpdatePolicyRollConfigPtrOutput() OceanNpVirtualNodeGroupUpdatePolicyRollConfigPtrOutput {
+	return o
+}
+
+func (o OceanNpVirtualNodeGroupUpdatePolicyRollConfigPtrOutput) ToOceanNpVirtualNodeGroupUpdatePolicyRollConfigPtrOutputWithContext(ctx context.Context) OceanNpVirtualNodeGroupUpdatePolicyRollConfigPtrOutput {
+	return o
+}
+
+func (o OceanNpVirtualNodeGroupUpdatePolicyRollConfigPtrOutput) Elem() OceanNpVirtualNodeGroupUpdatePolicyRollConfigOutput {
+	return o.ApplyT(func(v *OceanNpVirtualNodeGroupUpdatePolicyRollConfig) OceanNpVirtualNodeGroupUpdatePolicyRollConfig {
+		if v != nil {
+			return *v
+		}
+		var ret OceanNpVirtualNodeGroupUpdatePolicyRollConfig
+		return ret
+	}).(OceanNpVirtualNodeGroupUpdatePolicyRollConfigOutput)
+}
+
+func (o OceanNpVirtualNodeGroupUpdatePolicyRollConfigPtrOutput) BatchMinHealthyPercentage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OceanNpVirtualNodeGroupUpdatePolicyRollConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.BatchMinHealthyPercentage
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o OceanNpVirtualNodeGroupUpdatePolicyRollConfigPtrOutput) BatchSizePercentage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OceanNpVirtualNodeGroupUpdatePolicyRollConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.BatchSizePercentage
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o OceanNpVirtualNodeGroupUpdatePolicyRollConfigPtrOutput) Comment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OceanNpVirtualNodeGroupUpdatePolicyRollConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Comment
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o OceanNpVirtualNodeGroupUpdatePolicyRollConfigPtrOutput) NodeNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OceanNpVirtualNodeGroupUpdatePolicyRollConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.NodeNames
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o OceanNpVirtualNodeGroupUpdatePolicyRollConfigPtrOutput) NodePoolNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OceanNpVirtualNodeGroupUpdatePolicyRollConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.NodePoolNames
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o OceanNpVirtualNodeGroupUpdatePolicyRollConfigPtrOutput) RespectPdb() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OceanNpVirtualNodeGroupUpdatePolicyRollConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RespectPdb
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o OceanNpVirtualNodeGroupUpdatePolicyRollConfigPtrOutput) RespectRestrictScaleDown() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OceanNpVirtualNodeGroupUpdatePolicyRollConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RespectRestrictScaleDown
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o OceanNpVirtualNodeGroupUpdatePolicyRollConfigPtrOutput) VngIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OceanNpVirtualNodeGroupUpdatePolicyRollConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.VngIds
+	}).(pulumi.StringArrayOutput)
 }
 
 type OceanOsDisk struct {
@@ -8492,12 +9296,20 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpSchedulingShutdownHoursPtrInput)(nil)).Elem(), OceanNpSchedulingShutdownHoursArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpTaintInput)(nil)).Elem(), OceanNpTaintArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpTaintArrayInput)(nil)).Elem(), OceanNpTaintArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpUpdatePolicyInput)(nil)).Elem(), OceanNpUpdatePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpUpdatePolicyPtrInput)(nil)).Elem(), OceanNpUpdatePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpUpdatePolicyRollConfigInput)(nil)).Elem(), OceanNpUpdatePolicyRollConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpUpdatePolicyRollConfigPtrInput)(nil)).Elem(), OceanNpUpdatePolicyRollConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpVirtualNodeGroupFiltersInput)(nil)).Elem(), OceanNpVirtualNodeGroupFiltersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpVirtualNodeGroupFiltersPtrInput)(nil)).Elem(), OceanNpVirtualNodeGroupFiltersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpVirtualNodeGroupHeadroomInput)(nil)).Elem(), OceanNpVirtualNodeGroupHeadroomArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpVirtualNodeGroupHeadroomArrayInput)(nil)).Elem(), OceanNpVirtualNodeGroupHeadroomArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpVirtualNodeGroupTaintInput)(nil)).Elem(), OceanNpVirtualNodeGroupTaintArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpVirtualNodeGroupTaintArrayInput)(nil)).Elem(), OceanNpVirtualNodeGroupTaintArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpVirtualNodeGroupUpdatePolicyInput)(nil)).Elem(), OceanNpVirtualNodeGroupUpdatePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpVirtualNodeGroupUpdatePolicyPtrInput)(nil)).Elem(), OceanNpVirtualNodeGroupUpdatePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpVirtualNodeGroupUpdatePolicyRollConfigInput)(nil)).Elem(), OceanNpVirtualNodeGroupUpdatePolicyRollConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanNpVirtualNodeGroupUpdatePolicyRollConfigPtrInput)(nil)).Elem(), OceanNpVirtualNodeGroupUpdatePolicyRollConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanOsDiskInput)(nil)).Elem(), OceanOsDiskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanOsDiskPtrInput)(nil)).Elem(), OceanOsDiskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanStrategyInput)(nil)).Elem(), OceanStrategyArgs{})
@@ -8612,12 +9424,20 @@ func init() {
 	pulumi.RegisterOutputType(OceanNpSchedulingShutdownHoursPtrOutput{})
 	pulumi.RegisterOutputType(OceanNpTaintOutput{})
 	pulumi.RegisterOutputType(OceanNpTaintArrayOutput{})
+	pulumi.RegisterOutputType(OceanNpUpdatePolicyOutput{})
+	pulumi.RegisterOutputType(OceanNpUpdatePolicyPtrOutput{})
+	pulumi.RegisterOutputType(OceanNpUpdatePolicyRollConfigOutput{})
+	pulumi.RegisterOutputType(OceanNpUpdatePolicyRollConfigPtrOutput{})
 	pulumi.RegisterOutputType(OceanNpVirtualNodeGroupFiltersOutput{})
 	pulumi.RegisterOutputType(OceanNpVirtualNodeGroupFiltersPtrOutput{})
 	pulumi.RegisterOutputType(OceanNpVirtualNodeGroupHeadroomOutput{})
 	pulumi.RegisterOutputType(OceanNpVirtualNodeGroupHeadroomArrayOutput{})
 	pulumi.RegisterOutputType(OceanNpVirtualNodeGroupTaintOutput{})
 	pulumi.RegisterOutputType(OceanNpVirtualNodeGroupTaintArrayOutput{})
+	pulumi.RegisterOutputType(OceanNpVirtualNodeGroupUpdatePolicyOutput{})
+	pulumi.RegisterOutputType(OceanNpVirtualNodeGroupUpdatePolicyPtrOutput{})
+	pulumi.RegisterOutputType(OceanNpVirtualNodeGroupUpdatePolicyRollConfigOutput{})
+	pulumi.RegisterOutputType(OceanNpVirtualNodeGroupUpdatePolicyRollConfigPtrOutput{})
 	pulumi.RegisterOutputType(OceanOsDiskOutput{})
 	pulumi.RegisterOutputType(OceanOsDiskPtrOutput{})
 	pulumi.RegisterOutputType(OceanStrategyOutput{})

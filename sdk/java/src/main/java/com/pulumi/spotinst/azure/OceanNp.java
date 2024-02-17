@@ -16,6 +16,7 @@ import com.pulumi.spotinst.azure.outputs.OceanNpHeadroom;
 import com.pulumi.spotinst.azure.outputs.OceanNpHealth;
 import com.pulumi.spotinst.azure.outputs.OceanNpScheduling;
 import com.pulumi.spotinst.azure.outputs.OceanNpTaint;
+import com.pulumi.spotinst.azure.outputs.OceanNpUpdatePolicy;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
@@ -188,6 +189,12 @@ public class OceanNp extends com.pulumi.resources.CustomResource {
 
     public Output<Optional<List<OceanNpTaint>>> taints() {
         return Codegen.optional(this.taints);
+    }
+    @Export(name="updatePolicy", refs={OceanNpUpdatePolicy.class}, tree="[0]")
+    private Output</* @Nullable */ OceanNpUpdatePolicy> updatePolicy;
+
+    public Output<Optional<OceanNpUpdatePolicy>> updatePolicy() {
+        return Codegen.optional(this.updatePolicy);
     }
     @Export(name="vnetSubnetIds", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> vnetSubnetIds;

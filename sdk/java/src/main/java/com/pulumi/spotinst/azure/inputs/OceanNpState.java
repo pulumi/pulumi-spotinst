@@ -11,6 +11,7 @@ import com.pulumi.spotinst.azure.inputs.OceanNpHeadroomArgs;
 import com.pulumi.spotinst.azure.inputs.OceanNpHealthArgs;
 import com.pulumi.spotinst.azure.inputs.OceanNpSchedulingArgs;
 import com.pulumi.spotinst.azure.inputs.OceanNpTaintArgs;
+import com.pulumi.spotinst.azure.inputs.OceanNpUpdatePolicyArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
@@ -215,6 +216,13 @@ public final class OceanNpState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.taints);
     }
 
+    @Import(name="updatePolicy")
+    private @Nullable Output<OceanNpUpdatePolicyArgs> updatePolicy;
+
+    public Optional<Output<OceanNpUpdatePolicyArgs>> updatePolicy() {
+        return Optional.ofNullable(this.updatePolicy);
+    }
+
     @Import(name="vnetSubnetIds")
     private @Nullable Output<List<String>> vnetSubnetIds;
 
@@ -252,6 +260,7 @@ public final class OceanNpState extends com.pulumi.resources.ResourceArgs {
         this.spotPercentage = $.spotPercentage;
         this.tags = $.tags;
         this.taints = $.taints;
+        this.updatePolicy = $.updatePolicy;
         this.vnetSubnetIds = $.vnetSubnetIds;
     }
 
@@ -530,6 +539,15 @@ public final class OceanNpState extends com.pulumi.resources.ResourceArgs {
 
         public Builder taints(OceanNpTaintArgs... taints) {
             return taints(List.of(taints));
+        }
+
+        public Builder updatePolicy(@Nullable Output<OceanNpUpdatePolicyArgs> updatePolicy) {
+            $.updatePolicy = updatePolicy;
+            return this;
+        }
+
+        public Builder updatePolicy(OceanNpUpdatePolicyArgs updatePolicy) {
+            return updatePolicy(Output.of(updatePolicy));
         }
 
         public Builder vnetSubnetIds(@Nullable Output<List<String>> vnetSubnetIds) {

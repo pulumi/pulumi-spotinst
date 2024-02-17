@@ -15,27 +15,28 @@ import (
 type OceanNpVirtualNodeGroup struct {
 	pulumi.CustomResourceState
 
-	AvailabilityZones  pulumi.StringArrayOutput                   `pulumi:"availabilityZones"`
-	EnableNodePublicIp pulumi.BoolPtrOutput                       `pulumi:"enableNodePublicIp"`
-	FallbackToOndemand pulumi.BoolPtrOutput                       `pulumi:"fallbackToOndemand"`
-	Filters            OceanNpVirtualNodeGroupFiltersPtrOutput    `pulumi:"filters"`
-	Headrooms          OceanNpVirtualNodeGroupHeadroomArrayOutput `pulumi:"headrooms"`
-	KubernetesVersion  pulumi.StringPtrOutput                     `pulumi:"kubernetesVersion"`
-	Labels             pulumi.MapOutput                           `pulumi:"labels"`
-	MaxCount           pulumi.IntPtrOutput                        `pulumi:"maxCount"`
-	MaxPodsPerNode     pulumi.IntPtrOutput                        `pulumi:"maxPodsPerNode"`
-	MinCount           pulumi.IntPtrOutput                        `pulumi:"minCount"`
-	Name               pulumi.StringOutput                        `pulumi:"name"`
-	OceanId            pulumi.StringOutput                        `pulumi:"oceanId"`
-	OsDiskSizeGb       pulumi.IntPtrOutput                        `pulumi:"osDiskSizeGb"`
-	OsDiskType         pulumi.StringPtrOutput                     `pulumi:"osDiskType"`
-	OsSku              pulumi.StringPtrOutput                     `pulumi:"osSku"`
-	OsType             pulumi.StringPtrOutput                     `pulumi:"osType"`
-	PodSubnetIds       pulumi.StringArrayOutput                   `pulumi:"podSubnetIds"`
-	SpotPercentage     pulumi.IntPtrOutput                        `pulumi:"spotPercentage"`
-	Tags               pulumi.MapOutput                           `pulumi:"tags"`
-	Taints             OceanNpVirtualNodeGroupTaintArrayOutput    `pulumi:"taints"`
-	VnetSubnetIds      pulumi.StringArrayOutput                   `pulumi:"vnetSubnetIds"`
+	AvailabilityZones  pulumi.StringArrayOutput                     `pulumi:"availabilityZones"`
+	EnableNodePublicIp pulumi.BoolPtrOutput                         `pulumi:"enableNodePublicIp"`
+	FallbackToOndemand pulumi.BoolPtrOutput                         `pulumi:"fallbackToOndemand"`
+	Filters            OceanNpVirtualNodeGroupFiltersPtrOutput      `pulumi:"filters"`
+	Headrooms          OceanNpVirtualNodeGroupHeadroomArrayOutput   `pulumi:"headrooms"`
+	KubernetesVersion  pulumi.StringPtrOutput                       `pulumi:"kubernetesVersion"`
+	Labels             pulumi.MapOutput                             `pulumi:"labels"`
+	MaxCount           pulumi.IntPtrOutput                          `pulumi:"maxCount"`
+	MaxPodsPerNode     pulumi.IntPtrOutput                          `pulumi:"maxPodsPerNode"`
+	MinCount           pulumi.IntPtrOutput                          `pulumi:"minCount"`
+	Name               pulumi.StringOutput                          `pulumi:"name"`
+	OceanId            pulumi.StringOutput                          `pulumi:"oceanId"`
+	OsDiskSizeGb       pulumi.IntPtrOutput                          `pulumi:"osDiskSizeGb"`
+	OsDiskType         pulumi.StringPtrOutput                       `pulumi:"osDiskType"`
+	OsSku              pulumi.StringPtrOutput                       `pulumi:"osSku"`
+	OsType             pulumi.StringPtrOutput                       `pulumi:"osType"`
+	PodSubnetIds       pulumi.StringArrayOutput                     `pulumi:"podSubnetIds"`
+	SpotPercentage     pulumi.IntPtrOutput                          `pulumi:"spotPercentage"`
+	Tags               pulumi.MapOutput                             `pulumi:"tags"`
+	Taints             OceanNpVirtualNodeGroupTaintArrayOutput      `pulumi:"taints"`
+	UpdatePolicy       OceanNpVirtualNodeGroupUpdatePolicyPtrOutput `pulumi:"updatePolicy"`
+	VnetSubnetIds      pulumi.StringArrayOutput                     `pulumi:"vnetSubnetIds"`
 }
 
 // NewOceanNpVirtualNodeGroup registers a new resource with the given unique name, arguments, and options.
@@ -71,27 +72,28 @@ func GetOceanNpVirtualNodeGroup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering OceanNpVirtualNodeGroup resources.
 type oceanNpVirtualNodeGroupState struct {
-	AvailabilityZones  []string                          `pulumi:"availabilityZones"`
-	EnableNodePublicIp *bool                             `pulumi:"enableNodePublicIp"`
-	FallbackToOndemand *bool                             `pulumi:"fallbackToOndemand"`
-	Filters            *OceanNpVirtualNodeGroupFilters   `pulumi:"filters"`
-	Headrooms          []OceanNpVirtualNodeGroupHeadroom `pulumi:"headrooms"`
-	KubernetesVersion  *string                           `pulumi:"kubernetesVersion"`
-	Labels             map[string]interface{}            `pulumi:"labels"`
-	MaxCount           *int                              `pulumi:"maxCount"`
-	MaxPodsPerNode     *int                              `pulumi:"maxPodsPerNode"`
-	MinCount           *int                              `pulumi:"minCount"`
-	Name               *string                           `pulumi:"name"`
-	OceanId            *string                           `pulumi:"oceanId"`
-	OsDiskSizeGb       *int                              `pulumi:"osDiskSizeGb"`
-	OsDiskType         *string                           `pulumi:"osDiskType"`
-	OsSku              *string                           `pulumi:"osSku"`
-	OsType             *string                           `pulumi:"osType"`
-	PodSubnetIds       []string                          `pulumi:"podSubnetIds"`
-	SpotPercentage     *int                              `pulumi:"spotPercentage"`
-	Tags               map[string]interface{}            `pulumi:"tags"`
-	Taints             []OceanNpVirtualNodeGroupTaint    `pulumi:"taints"`
-	VnetSubnetIds      []string                          `pulumi:"vnetSubnetIds"`
+	AvailabilityZones  []string                             `pulumi:"availabilityZones"`
+	EnableNodePublicIp *bool                                `pulumi:"enableNodePublicIp"`
+	FallbackToOndemand *bool                                `pulumi:"fallbackToOndemand"`
+	Filters            *OceanNpVirtualNodeGroupFilters      `pulumi:"filters"`
+	Headrooms          []OceanNpVirtualNodeGroupHeadroom    `pulumi:"headrooms"`
+	KubernetesVersion  *string                              `pulumi:"kubernetesVersion"`
+	Labels             map[string]interface{}               `pulumi:"labels"`
+	MaxCount           *int                                 `pulumi:"maxCount"`
+	MaxPodsPerNode     *int                                 `pulumi:"maxPodsPerNode"`
+	MinCount           *int                                 `pulumi:"minCount"`
+	Name               *string                              `pulumi:"name"`
+	OceanId            *string                              `pulumi:"oceanId"`
+	OsDiskSizeGb       *int                                 `pulumi:"osDiskSizeGb"`
+	OsDiskType         *string                              `pulumi:"osDiskType"`
+	OsSku              *string                              `pulumi:"osSku"`
+	OsType             *string                              `pulumi:"osType"`
+	PodSubnetIds       []string                             `pulumi:"podSubnetIds"`
+	SpotPercentage     *int                                 `pulumi:"spotPercentage"`
+	Tags               map[string]interface{}               `pulumi:"tags"`
+	Taints             []OceanNpVirtualNodeGroupTaint       `pulumi:"taints"`
+	UpdatePolicy       *OceanNpVirtualNodeGroupUpdatePolicy `pulumi:"updatePolicy"`
+	VnetSubnetIds      []string                             `pulumi:"vnetSubnetIds"`
 }
 
 type OceanNpVirtualNodeGroupState struct {
@@ -115,6 +117,7 @@ type OceanNpVirtualNodeGroupState struct {
 	SpotPercentage     pulumi.IntPtrInput
 	Tags               pulumi.MapInput
 	Taints             OceanNpVirtualNodeGroupTaintArrayInput
+	UpdatePolicy       OceanNpVirtualNodeGroupUpdatePolicyPtrInput
 	VnetSubnetIds      pulumi.StringArrayInput
 }
 
@@ -123,27 +126,28 @@ func (OceanNpVirtualNodeGroupState) ElementType() reflect.Type {
 }
 
 type oceanNpVirtualNodeGroupArgs struct {
-	AvailabilityZones  []string                          `pulumi:"availabilityZones"`
-	EnableNodePublicIp *bool                             `pulumi:"enableNodePublicIp"`
-	FallbackToOndemand *bool                             `pulumi:"fallbackToOndemand"`
-	Filters            *OceanNpVirtualNodeGroupFilters   `pulumi:"filters"`
-	Headrooms          []OceanNpVirtualNodeGroupHeadroom `pulumi:"headrooms"`
-	KubernetesVersion  *string                           `pulumi:"kubernetesVersion"`
-	Labels             map[string]interface{}            `pulumi:"labels"`
-	MaxCount           *int                              `pulumi:"maxCount"`
-	MaxPodsPerNode     *int                              `pulumi:"maxPodsPerNode"`
-	MinCount           *int                              `pulumi:"minCount"`
-	Name               *string                           `pulumi:"name"`
-	OceanId            string                            `pulumi:"oceanId"`
-	OsDiskSizeGb       *int                              `pulumi:"osDiskSizeGb"`
-	OsDiskType         *string                           `pulumi:"osDiskType"`
-	OsSku              *string                           `pulumi:"osSku"`
-	OsType             *string                           `pulumi:"osType"`
-	PodSubnetIds       []string                          `pulumi:"podSubnetIds"`
-	SpotPercentage     *int                              `pulumi:"spotPercentage"`
-	Tags               map[string]interface{}            `pulumi:"tags"`
-	Taints             []OceanNpVirtualNodeGroupTaint    `pulumi:"taints"`
-	VnetSubnetIds      []string                          `pulumi:"vnetSubnetIds"`
+	AvailabilityZones  []string                             `pulumi:"availabilityZones"`
+	EnableNodePublicIp *bool                                `pulumi:"enableNodePublicIp"`
+	FallbackToOndemand *bool                                `pulumi:"fallbackToOndemand"`
+	Filters            *OceanNpVirtualNodeGroupFilters      `pulumi:"filters"`
+	Headrooms          []OceanNpVirtualNodeGroupHeadroom    `pulumi:"headrooms"`
+	KubernetesVersion  *string                              `pulumi:"kubernetesVersion"`
+	Labels             map[string]interface{}               `pulumi:"labels"`
+	MaxCount           *int                                 `pulumi:"maxCount"`
+	MaxPodsPerNode     *int                                 `pulumi:"maxPodsPerNode"`
+	MinCount           *int                                 `pulumi:"minCount"`
+	Name               *string                              `pulumi:"name"`
+	OceanId            string                               `pulumi:"oceanId"`
+	OsDiskSizeGb       *int                                 `pulumi:"osDiskSizeGb"`
+	OsDiskType         *string                              `pulumi:"osDiskType"`
+	OsSku              *string                              `pulumi:"osSku"`
+	OsType             *string                              `pulumi:"osType"`
+	PodSubnetIds       []string                             `pulumi:"podSubnetIds"`
+	SpotPercentage     *int                                 `pulumi:"spotPercentage"`
+	Tags               map[string]interface{}               `pulumi:"tags"`
+	Taints             []OceanNpVirtualNodeGroupTaint       `pulumi:"taints"`
+	UpdatePolicy       *OceanNpVirtualNodeGroupUpdatePolicy `pulumi:"updatePolicy"`
+	VnetSubnetIds      []string                             `pulumi:"vnetSubnetIds"`
 }
 
 // The set of arguments for constructing a OceanNpVirtualNodeGroup resource.
@@ -168,6 +172,7 @@ type OceanNpVirtualNodeGroupArgs struct {
 	SpotPercentage     pulumi.IntPtrInput
 	Tags               pulumi.MapInput
 	Taints             OceanNpVirtualNodeGroupTaintArrayInput
+	UpdatePolicy       OceanNpVirtualNodeGroupUpdatePolicyPtrInput
 	VnetSubnetIds      pulumi.StringArrayInput
 }
 
@@ -336,6 +341,10 @@ func (o OceanNpVirtualNodeGroupOutput) Tags() pulumi.MapOutput {
 
 func (o OceanNpVirtualNodeGroupOutput) Taints() OceanNpVirtualNodeGroupTaintArrayOutput {
 	return o.ApplyT(func(v *OceanNpVirtualNodeGroup) OceanNpVirtualNodeGroupTaintArrayOutput { return v.Taints }).(OceanNpVirtualNodeGroupTaintArrayOutput)
+}
+
+func (o OceanNpVirtualNodeGroupOutput) UpdatePolicy() OceanNpVirtualNodeGroupUpdatePolicyPtrOutput {
+	return o.ApplyT(func(v *OceanNpVirtualNodeGroup) OceanNpVirtualNodeGroupUpdatePolicyPtrOutput { return v.UpdatePolicy }).(OceanNpVirtualNodeGroupUpdatePolicyPtrOutput)
 }
 
 func (o OceanNpVirtualNodeGroupOutput) VnetSubnetIds() pulumi.StringArrayOutput {

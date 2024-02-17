@@ -18434,8 +18434,9 @@ func (o OceanAutoscalerPtrOutput) ResourceLimits() OceanAutoscalerResourceLimits
 }
 
 type OceanAutoscalerAutoscaleDown struct {
-	EvaluationPeriods      *int     `pulumi:"evaluationPeriods"`
-	MaxScaleDownPercentage *float64 `pulumi:"maxScaleDownPercentage"`
+	EvaluationPeriods            *int     `pulumi:"evaluationPeriods"`
+	IsAggressiveScaleDownEnabled *bool    `pulumi:"isAggressiveScaleDownEnabled"`
+	MaxScaleDownPercentage       *float64 `pulumi:"maxScaleDownPercentage"`
 }
 
 // OceanAutoscalerAutoscaleDownInput is an input type that accepts OceanAutoscalerAutoscaleDownArgs and OceanAutoscalerAutoscaleDownOutput values.
@@ -18450,8 +18451,9 @@ type OceanAutoscalerAutoscaleDownInput interface {
 }
 
 type OceanAutoscalerAutoscaleDownArgs struct {
-	EvaluationPeriods      pulumi.IntPtrInput     `pulumi:"evaluationPeriods"`
-	MaxScaleDownPercentage pulumi.Float64PtrInput `pulumi:"maxScaleDownPercentage"`
+	EvaluationPeriods            pulumi.IntPtrInput     `pulumi:"evaluationPeriods"`
+	IsAggressiveScaleDownEnabled pulumi.BoolPtrInput    `pulumi:"isAggressiveScaleDownEnabled"`
+	MaxScaleDownPercentage       pulumi.Float64PtrInput `pulumi:"maxScaleDownPercentage"`
 }
 
 func (OceanAutoscalerAutoscaleDownArgs) ElementType() reflect.Type {
@@ -18535,6 +18537,10 @@ func (o OceanAutoscalerAutoscaleDownOutput) EvaluationPeriods() pulumi.IntPtrOut
 	return o.ApplyT(func(v OceanAutoscalerAutoscaleDown) *int { return v.EvaluationPeriods }).(pulumi.IntPtrOutput)
 }
 
+func (o OceanAutoscalerAutoscaleDownOutput) IsAggressiveScaleDownEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OceanAutoscalerAutoscaleDown) *bool { return v.IsAggressiveScaleDownEnabled }).(pulumi.BoolPtrOutput)
+}
+
 func (o OceanAutoscalerAutoscaleDownOutput) MaxScaleDownPercentage() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v OceanAutoscalerAutoscaleDown) *float64 { return v.MaxScaleDownPercentage }).(pulumi.Float64PtrOutput)
 }
@@ -18570,6 +18576,15 @@ func (o OceanAutoscalerAutoscaleDownPtrOutput) EvaluationPeriods() pulumi.IntPtr
 		}
 		return v.EvaluationPeriods
 	}).(pulumi.IntPtrOutput)
+}
+
+func (o OceanAutoscalerAutoscaleDownPtrOutput) IsAggressiveScaleDownEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OceanAutoscalerAutoscaleDown) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsAggressiveScaleDownEnabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 func (o OceanAutoscalerAutoscaleDownPtrOutput) MaxScaleDownPercentage() pulumi.Float64PtrOutput {
