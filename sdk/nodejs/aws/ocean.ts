@@ -22,6 +22,7 @@ import * as utilities from "../utilities";
  *         * `numOfUnits` - (Optional) The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
  *     * `autoscaleDown` - (Optional) Auto Scaling scale down operations.
  *         * `maxScaleDownPercentage` - (Optional) Would represent the maximum % to scale-down. Number between 1-100.
+ *         * `isAggressiveScaleDownEnabled` - (Optional, Default: `false`) When set to 'true', the Aggressive Scale Down feature is enabled.
  *     * `resourceLimits` - (Optional) Optionally set upper and lower bounds on the resource usage of the cluster.
  *         * `maxVcpu` - (Optional) The maximum cpu in vCPU units that can be allocated to the cluster.
  *         * `maxMemoryGib` - (Optional) The maximum memory in GiB units that can be allocated to the cluster.

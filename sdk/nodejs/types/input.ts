@@ -2557,6 +2557,7 @@ export namespace aws {
 
     export interface OceanAutoscalerAutoscaleDown {
         evaluationPeriods?: pulumi.Input<number>;
+        isAggressiveScaleDownEnabled?: pulumi.Input<boolean>;
         maxScaleDownPercentage?: pulumi.Input<number>;
     }
 
@@ -3662,6 +3663,23 @@ export namespace azure {
         value: pulumi.Input<string>;
     }
 
+    export interface OceanNpUpdatePolicy {
+        conditionedRoll?: pulumi.Input<boolean>;
+        rollConfig?: pulumi.Input<inputs.azure.OceanNpUpdatePolicyRollConfig>;
+        shouldRoll: pulumi.Input<boolean>;
+    }
+
+    export interface OceanNpUpdatePolicyRollConfig {
+        batchMinHealthyPercentage?: pulumi.Input<number>;
+        batchSizePercentage?: pulumi.Input<number>;
+        comment?: pulumi.Input<string>;
+        nodeNames?: pulumi.Input<pulumi.Input<string>[]>;
+        nodePoolNames?: pulumi.Input<pulumi.Input<string>[]>;
+        respectPdb?: pulumi.Input<boolean>;
+        respectRestrictScaleDown?: pulumi.Input<boolean>;
+        vngIds?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
     export interface OceanNpVirtualNodeGroupFilters {
         acceleratedNetworking?: pulumi.Input<string>;
         architectures?: pulumi.Input<pulumi.Input<string>[]>;
@@ -3690,6 +3708,23 @@ export namespace azure {
         effect: pulumi.Input<string>;
         key: pulumi.Input<string>;
         value: pulumi.Input<string>;
+    }
+
+    export interface OceanNpVirtualNodeGroupUpdatePolicy {
+        conditionedRoll?: pulumi.Input<boolean>;
+        rollConfig?: pulumi.Input<inputs.azure.OceanNpVirtualNodeGroupUpdatePolicyRollConfig>;
+        shouldRoll: pulumi.Input<boolean>;
+    }
+
+    export interface OceanNpVirtualNodeGroupUpdatePolicyRollConfig {
+        batchMinHealthyPercentage?: pulumi.Input<number>;
+        batchSizePercentage?: pulumi.Input<number>;
+        comment?: pulumi.Input<string>;
+        nodeNames?: pulumi.Input<pulumi.Input<string>[]>;
+        nodePoolNames?: pulumi.Input<pulumi.Input<string>[]>;
+        respectPdb?: pulumi.Input<boolean>;
+        respectRestrictScaleDown?: pulumi.Input<boolean>;
+        vngIds?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface OceanOsDisk {

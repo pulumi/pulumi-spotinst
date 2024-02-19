@@ -61,6 +61,7 @@ export class OceanNp extends pulumi.CustomResource {
     public readonly spotPercentage!: pulumi.Output<number | undefined>;
     public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
     public readonly taints!: pulumi.Output<outputs.azure.OceanNpTaint[] | undefined>;
+    public readonly updatePolicy!: pulumi.Output<outputs.azure.OceanNpUpdatePolicy | undefined>;
     public readonly vnetSubnetIds!: pulumi.Output<string[] | undefined>;
 
     /**
@@ -103,6 +104,7 @@ export class OceanNp extends pulumi.CustomResource {
             resourceInputs["spotPercentage"] = state ? state.spotPercentage : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["taints"] = state ? state.taints : undefined;
+            resourceInputs["updatePolicy"] = state ? state.updatePolicy : undefined;
             resourceInputs["vnetSubnetIds"] = state ? state.vnetSubnetIds : undefined;
         } else {
             const args = argsOrState as OceanNpArgs | undefined;
@@ -151,6 +153,7 @@ export class OceanNp extends pulumi.CustomResource {
             resourceInputs["spotPercentage"] = args ? args.spotPercentage : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["taints"] = args ? args.taints : undefined;
+            resourceInputs["updatePolicy"] = args ? args.updatePolicy : undefined;
             resourceInputs["vnetSubnetIds"] = args ? args.vnetSubnetIds : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -189,6 +192,7 @@ export interface OceanNpState {
     spotPercentage?: pulumi.Input<number>;
     tags?: pulumi.Input<{[key: string]: any}>;
     taints?: pulumi.Input<pulumi.Input<inputs.azure.OceanNpTaint>[]>;
+    updatePolicy?: pulumi.Input<inputs.azure.OceanNpUpdatePolicy>;
     vnetSubnetIds?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
@@ -223,5 +227,6 @@ export interface OceanNpArgs {
     spotPercentage?: pulumi.Input<number>;
     tags?: pulumi.Input<{[key: string]: any}>;
     taints?: pulumi.Input<pulumi.Input<inputs.azure.OceanNpTaint>[]>;
+    updatePolicy?: pulumi.Input<inputs.azure.OceanNpUpdatePolicy>;
     vnetSubnetIds?: pulumi.Input<pulumi.Input<string>[]>;
 }

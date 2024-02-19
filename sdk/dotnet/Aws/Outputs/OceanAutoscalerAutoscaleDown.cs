@@ -14,15 +14,19 @@ namespace Pulumi.SpotInst.Aws.Outputs
     public sealed class OceanAutoscalerAutoscaleDown
     {
         public readonly int? EvaluationPeriods;
+        public readonly bool? IsAggressiveScaleDownEnabled;
         public readonly double? MaxScaleDownPercentage;
 
         [OutputConstructor]
         private OceanAutoscalerAutoscaleDown(
             int? evaluationPeriods,
 
+            bool? isAggressiveScaleDownEnabled,
+
             double? maxScaleDownPercentage)
         {
             EvaluationPeriods = evaluationPeriods;
+            IsAggressiveScaleDownEnabled = isAggressiveScaleDownEnabled;
             MaxScaleDownPercentage = maxScaleDownPercentage;
         }
     }

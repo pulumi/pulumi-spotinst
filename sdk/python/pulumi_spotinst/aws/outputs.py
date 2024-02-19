@@ -8617,6 +8617,8 @@ class OceanAutoscalerAutoscaleDown(dict):
         suggest = None
         if key == "evaluationPeriods":
             suggest = "evaluation_periods"
+        elif key == "isAggressiveScaleDownEnabled":
+            suggest = "is_aggressive_scale_down_enabled"
         elif key == "maxScaleDownPercentage":
             suggest = "max_scale_down_percentage"
 
@@ -8633,9 +8635,12 @@ class OceanAutoscalerAutoscaleDown(dict):
 
     def __init__(__self__, *,
                  evaluation_periods: Optional[int] = None,
+                 is_aggressive_scale_down_enabled: Optional[bool] = None,
                  max_scale_down_percentage: Optional[float] = None):
         if evaluation_periods is not None:
             pulumi.set(__self__, "evaluation_periods", evaluation_periods)
+        if is_aggressive_scale_down_enabled is not None:
+            pulumi.set(__self__, "is_aggressive_scale_down_enabled", is_aggressive_scale_down_enabled)
         if max_scale_down_percentage is not None:
             pulumi.set(__self__, "max_scale_down_percentage", max_scale_down_percentage)
 
@@ -8643,6 +8648,11 @@ class OceanAutoscalerAutoscaleDown(dict):
     @pulumi.getter(name="evaluationPeriods")
     def evaluation_periods(self) -> Optional[int]:
         return pulumi.get(self, "evaluation_periods")
+
+    @property
+    @pulumi.getter(name="isAggressiveScaleDownEnabled")
+    def is_aggressive_scale_down_enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "is_aggressive_scale_down_enabled")
 
     @property
     @pulumi.getter(name="maxScaleDownPercentage")

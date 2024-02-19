@@ -55,9 +55,13 @@ __all__ = [
     'OceanNpSchedulingArgs',
     'OceanNpSchedulingShutdownHoursArgs',
     'OceanNpTaintArgs',
+    'OceanNpUpdatePolicyArgs',
+    'OceanNpUpdatePolicyRollConfigArgs',
     'OceanNpVirtualNodeGroupFiltersArgs',
     'OceanNpVirtualNodeGroupHeadroomArgs',
     'OceanNpVirtualNodeGroupTaintArgs',
+    'OceanNpVirtualNodeGroupUpdatePolicyArgs',
+    'OceanNpVirtualNodeGroupUpdatePolicyRollConfigArgs',
     'OceanOsDiskArgs',
     'OceanStrategyArgs',
     'OceanTagArgs',
@@ -2428,6 +2432,147 @@ class OceanNpTaintArgs:
 
 
 @pulumi.input_type
+class OceanNpUpdatePolicyArgs:
+    def __init__(__self__, *,
+                 should_roll: pulumi.Input[bool],
+                 conditioned_roll: Optional[pulumi.Input[bool]] = None,
+                 roll_config: Optional[pulumi.Input['OceanNpUpdatePolicyRollConfigArgs']] = None):
+        pulumi.set(__self__, "should_roll", should_roll)
+        if conditioned_roll is not None:
+            pulumi.set(__self__, "conditioned_roll", conditioned_roll)
+        if roll_config is not None:
+            pulumi.set(__self__, "roll_config", roll_config)
+
+    @property
+    @pulumi.getter(name="shouldRoll")
+    def should_roll(self) -> pulumi.Input[bool]:
+        return pulumi.get(self, "should_roll")
+
+    @should_roll.setter
+    def should_roll(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "should_roll", value)
+
+    @property
+    @pulumi.getter(name="conditionedRoll")
+    def conditioned_roll(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "conditioned_roll")
+
+    @conditioned_roll.setter
+    def conditioned_roll(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "conditioned_roll", value)
+
+    @property
+    @pulumi.getter(name="rollConfig")
+    def roll_config(self) -> Optional[pulumi.Input['OceanNpUpdatePolicyRollConfigArgs']]:
+        return pulumi.get(self, "roll_config")
+
+    @roll_config.setter
+    def roll_config(self, value: Optional[pulumi.Input['OceanNpUpdatePolicyRollConfigArgs']]):
+        pulumi.set(self, "roll_config", value)
+
+
+@pulumi.input_type
+class OceanNpUpdatePolicyRollConfigArgs:
+    def __init__(__self__, *,
+                 batch_min_healthy_percentage: Optional[pulumi.Input[int]] = None,
+                 batch_size_percentage: Optional[pulumi.Input[int]] = None,
+                 comment: Optional[pulumi.Input[str]] = None,
+                 node_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 node_pool_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 respect_pdb: Optional[pulumi.Input[bool]] = None,
+                 respect_restrict_scale_down: Optional[pulumi.Input[bool]] = None,
+                 vng_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        if batch_min_healthy_percentage is not None:
+            pulumi.set(__self__, "batch_min_healthy_percentage", batch_min_healthy_percentage)
+        if batch_size_percentage is not None:
+            pulumi.set(__self__, "batch_size_percentage", batch_size_percentage)
+        if comment is not None:
+            pulumi.set(__self__, "comment", comment)
+        if node_names is not None:
+            pulumi.set(__self__, "node_names", node_names)
+        if node_pool_names is not None:
+            pulumi.set(__self__, "node_pool_names", node_pool_names)
+        if respect_pdb is not None:
+            pulumi.set(__self__, "respect_pdb", respect_pdb)
+        if respect_restrict_scale_down is not None:
+            pulumi.set(__self__, "respect_restrict_scale_down", respect_restrict_scale_down)
+        if vng_ids is not None:
+            pulumi.set(__self__, "vng_ids", vng_ids)
+
+    @property
+    @pulumi.getter(name="batchMinHealthyPercentage")
+    def batch_min_healthy_percentage(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "batch_min_healthy_percentage")
+
+    @batch_min_healthy_percentage.setter
+    def batch_min_healthy_percentage(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "batch_min_healthy_percentage", value)
+
+    @property
+    @pulumi.getter(name="batchSizePercentage")
+    def batch_size_percentage(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "batch_size_percentage")
+
+    @batch_size_percentage.setter
+    def batch_size_percentage(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "batch_size_percentage", value)
+
+    @property
+    @pulumi.getter
+    def comment(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "comment")
+
+    @comment.setter
+    def comment(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "comment", value)
+
+    @property
+    @pulumi.getter(name="nodeNames")
+    def node_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "node_names")
+
+    @node_names.setter
+    def node_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "node_names", value)
+
+    @property
+    @pulumi.getter(name="nodePoolNames")
+    def node_pool_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "node_pool_names")
+
+    @node_pool_names.setter
+    def node_pool_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "node_pool_names", value)
+
+    @property
+    @pulumi.getter(name="respectPdb")
+    def respect_pdb(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "respect_pdb")
+
+    @respect_pdb.setter
+    def respect_pdb(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "respect_pdb", value)
+
+    @property
+    @pulumi.getter(name="respectRestrictScaleDown")
+    def respect_restrict_scale_down(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "respect_restrict_scale_down")
+
+    @respect_restrict_scale_down.setter
+    def respect_restrict_scale_down(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "respect_restrict_scale_down", value)
+
+    @property
+    @pulumi.getter(name="vngIds")
+    def vng_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "vng_ids")
+
+    @vng_ids.setter
+    def vng_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "vng_ids", value)
+
+
+@pulumi.input_type
 class OceanNpVirtualNodeGroupFiltersArgs:
     def __init__(__self__, *,
                  accelerated_networking: Optional[pulumi.Input[str]] = None,
@@ -2689,6 +2834,147 @@ class OceanNpVirtualNodeGroupTaintArgs:
     @value.setter
     def value(self, value: pulumi.Input[str]):
         pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
+class OceanNpVirtualNodeGroupUpdatePolicyArgs:
+    def __init__(__self__, *,
+                 should_roll: pulumi.Input[bool],
+                 conditioned_roll: Optional[pulumi.Input[bool]] = None,
+                 roll_config: Optional[pulumi.Input['OceanNpVirtualNodeGroupUpdatePolicyRollConfigArgs']] = None):
+        pulumi.set(__self__, "should_roll", should_roll)
+        if conditioned_roll is not None:
+            pulumi.set(__self__, "conditioned_roll", conditioned_roll)
+        if roll_config is not None:
+            pulumi.set(__self__, "roll_config", roll_config)
+
+    @property
+    @pulumi.getter(name="shouldRoll")
+    def should_roll(self) -> pulumi.Input[bool]:
+        return pulumi.get(self, "should_roll")
+
+    @should_roll.setter
+    def should_roll(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "should_roll", value)
+
+    @property
+    @pulumi.getter(name="conditionedRoll")
+    def conditioned_roll(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "conditioned_roll")
+
+    @conditioned_roll.setter
+    def conditioned_roll(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "conditioned_roll", value)
+
+    @property
+    @pulumi.getter(name="rollConfig")
+    def roll_config(self) -> Optional[pulumi.Input['OceanNpVirtualNodeGroupUpdatePolicyRollConfigArgs']]:
+        return pulumi.get(self, "roll_config")
+
+    @roll_config.setter
+    def roll_config(self, value: Optional[pulumi.Input['OceanNpVirtualNodeGroupUpdatePolicyRollConfigArgs']]):
+        pulumi.set(self, "roll_config", value)
+
+
+@pulumi.input_type
+class OceanNpVirtualNodeGroupUpdatePolicyRollConfigArgs:
+    def __init__(__self__, *,
+                 batch_min_healthy_percentage: Optional[pulumi.Input[int]] = None,
+                 batch_size_percentage: Optional[pulumi.Input[int]] = None,
+                 comment: Optional[pulumi.Input[str]] = None,
+                 node_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 node_pool_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 respect_pdb: Optional[pulumi.Input[bool]] = None,
+                 respect_restrict_scale_down: Optional[pulumi.Input[bool]] = None,
+                 vng_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        if batch_min_healthy_percentage is not None:
+            pulumi.set(__self__, "batch_min_healthy_percentage", batch_min_healthy_percentage)
+        if batch_size_percentage is not None:
+            pulumi.set(__self__, "batch_size_percentage", batch_size_percentage)
+        if comment is not None:
+            pulumi.set(__self__, "comment", comment)
+        if node_names is not None:
+            pulumi.set(__self__, "node_names", node_names)
+        if node_pool_names is not None:
+            pulumi.set(__self__, "node_pool_names", node_pool_names)
+        if respect_pdb is not None:
+            pulumi.set(__self__, "respect_pdb", respect_pdb)
+        if respect_restrict_scale_down is not None:
+            pulumi.set(__self__, "respect_restrict_scale_down", respect_restrict_scale_down)
+        if vng_ids is not None:
+            pulumi.set(__self__, "vng_ids", vng_ids)
+
+    @property
+    @pulumi.getter(name="batchMinHealthyPercentage")
+    def batch_min_healthy_percentage(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "batch_min_healthy_percentage")
+
+    @batch_min_healthy_percentage.setter
+    def batch_min_healthy_percentage(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "batch_min_healthy_percentage", value)
+
+    @property
+    @pulumi.getter(name="batchSizePercentage")
+    def batch_size_percentage(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "batch_size_percentage")
+
+    @batch_size_percentage.setter
+    def batch_size_percentage(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "batch_size_percentage", value)
+
+    @property
+    @pulumi.getter
+    def comment(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "comment")
+
+    @comment.setter
+    def comment(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "comment", value)
+
+    @property
+    @pulumi.getter(name="nodeNames")
+    def node_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "node_names")
+
+    @node_names.setter
+    def node_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "node_names", value)
+
+    @property
+    @pulumi.getter(name="nodePoolNames")
+    def node_pool_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "node_pool_names")
+
+    @node_pool_names.setter
+    def node_pool_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "node_pool_names", value)
+
+    @property
+    @pulumi.getter(name="respectPdb")
+    def respect_pdb(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "respect_pdb")
+
+    @respect_pdb.setter
+    def respect_pdb(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "respect_pdb", value)
+
+    @property
+    @pulumi.getter(name="respectRestrictScaleDown")
+    def respect_restrict_scale_down(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "respect_restrict_scale_down")
+
+    @respect_restrict_scale_down.setter
+    def respect_restrict_scale_down(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "respect_restrict_scale_down", value)
+
+    @property
+    @pulumi.getter(name="vngIds")
+    def vng_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "vng_ids")
+
+    @vng_ids.setter
+    def vng_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "vng_ids", value)
 
 
 @pulumi.input_type

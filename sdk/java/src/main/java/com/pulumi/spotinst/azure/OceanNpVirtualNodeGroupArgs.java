@@ -9,6 +9,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.spotinst.azure.inputs.OceanNpVirtualNodeGroupFiltersArgs;
 import com.pulumi.spotinst.azure.inputs.OceanNpVirtualNodeGroupHeadroomArgs;
 import com.pulumi.spotinst.azure.inputs.OceanNpVirtualNodeGroupTaintArgs;
+import com.pulumi.spotinst.azure.inputs.OceanNpVirtualNodeGroupUpdatePolicyArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
@@ -164,6 +165,13 @@ public final class OceanNpVirtualNodeGroupArgs extends com.pulumi.resources.Reso
         return Optional.ofNullable(this.taints);
     }
 
+    @Import(name="updatePolicy")
+    private @Nullable Output<OceanNpVirtualNodeGroupUpdatePolicyArgs> updatePolicy;
+
+    public Optional<Output<OceanNpVirtualNodeGroupUpdatePolicyArgs>> updatePolicy() {
+        return Optional.ofNullable(this.updatePolicy);
+    }
+
     @Import(name="vnetSubnetIds")
     private @Nullable Output<List<String>> vnetSubnetIds;
 
@@ -194,6 +202,7 @@ public final class OceanNpVirtualNodeGroupArgs extends com.pulumi.resources.Reso
         this.spotPercentage = $.spotPercentage;
         this.tags = $.tags;
         this.taints = $.taints;
+        this.updatePolicy = $.updatePolicy;
         this.vnetSubnetIds = $.vnetSubnetIds;
     }
 
@@ -409,6 +418,15 @@ public final class OceanNpVirtualNodeGroupArgs extends com.pulumi.resources.Reso
 
         public Builder taints(OceanNpVirtualNodeGroupTaintArgs... taints) {
             return taints(List.of(taints));
+        }
+
+        public Builder updatePolicy(@Nullable Output<OceanNpVirtualNodeGroupUpdatePolicyArgs> updatePolicy) {
+            $.updatePolicy = updatePolicy;
+            return this;
+        }
+
+        public Builder updatePolicy(OceanNpVirtualNodeGroupUpdatePolicyArgs updatePolicy) {
+            return updatePolicy(Output.of(updatePolicy));
         }
 
         public Builder vnetSubnetIds(@Nullable Output<List<String>> vnetSubnetIds) {

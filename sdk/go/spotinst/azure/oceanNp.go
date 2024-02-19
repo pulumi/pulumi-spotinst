@@ -15,34 +15,35 @@ import (
 type OceanNp struct {
 	pulumi.CustomResourceState
 
-	AksClusterName                     pulumi.StringOutput        `pulumi:"aksClusterName"`
-	AksInfrastructureResourceGroupName pulumi.StringOutput        `pulumi:"aksInfrastructureResourceGroupName"`
-	AksRegion                          pulumi.StringOutput        `pulumi:"aksRegion"`
-	AksResourceGroupName               pulumi.StringOutput        `pulumi:"aksResourceGroupName"`
-	Autoscaler                         OceanNpAutoscalerPtrOutput `pulumi:"autoscaler"`
-	AvailabilityZones                  pulumi.StringArrayOutput   `pulumi:"availabilityZones"`
-	ControllerClusterId                pulumi.StringOutput        `pulumi:"controllerClusterId"`
-	EnableNodePublicIp                 pulumi.BoolPtrOutput       `pulumi:"enableNodePublicIp"`
-	FallbackToOndemand                 pulumi.BoolPtrOutput       `pulumi:"fallbackToOndemand"`
-	Filters                            OceanNpFiltersPtrOutput    `pulumi:"filters"`
-	Headrooms                          OceanNpHeadroomArrayOutput `pulumi:"headrooms"`
-	Health                             OceanNpHealthPtrOutput     `pulumi:"health"`
-	KubernetesVersion                  pulumi.StringPtrOutput     `pulumi:"kubernetesVersion"`
-	Labels                             pulumi.MapOutput           `pulumi:"labels"`
-	MaxCount                           pulumi.IntPtrOutput        `pulumi:"maxCount"`
-	MaxPodsPerNode                     pulumi.IntPtrOutput        `pulumi:"maxPodsPerNode"`
-	MinCount                           pulumi.IntPtrOutput        `pulumi:"minCount"`
-	Name                               pulumi.StringOutput        `pulumi:"name"`
-	OsDiskSizeGb                       pulumi.IntPtrOutput        `pulumi:"osDiskSizeGb"`
-	OsDiskType                         pulumi.StringPtrOutput     `pulumi:"osDiskType"`
-	OsSku                              pulumi.StringPtrOutput     `pulumi:"osSku"`
-	OsType                             pulumi.StringPtrOutput     `pulumi:"osType"`
-	PodSubnetIds                       pulumi.StringArrayOutput   `pulumi:"podSubnetIds"`
-	Scheduling                         OceanNpSchedulingPtrOutput `pulumi:"scheduling"`
-	SpotPercentage                     pulumi.IntPtrOutput        `pulumi:"spotPercentage"`
-	Tags                               pulumi.MapOutput           `pulumi:"tags"`
-	Taints                             OceanNpTaintArrayOutput    `pulumi:"taints"`
-	VnetSubnetIds                      pulumi.StringArrayOutput   `pulumi:"vnetSubnetIds"`
+	AksClusterName                     pulumi.StringOutput          `pulumi:"aksClusterName"`
+	AksInfrastructureResourceGroupName pulumi.StringOutput          `pulumi:"aksInfrastructureResourceGroupName"`
+	AksRegion                          pulumi.StringOutput          `pulumi:"aksRegion"`
+	AksResourceGroupName               pulumi.StringOutput          `pulumi:"aksResourceGroupName"`
+	Autoscaler                         OceanNpAutoscalerPtrOutput   `pulumi:"autoscaler"`
+	AvailabilityZones                  pulumi.StringArrayOutput     `pulumi:"availabilityZones"`
+	ControllerClusterId                pulumi.StringOutput          `pulumi:"controllerClusterId"`
+	EnableNodePublicIp                 pulumi.BoolPtrOutput         `pulumi:"enableNodePublicIp"`
+	FallbackToOndemand                 pulumi.BoolPtrOutput         `pulumi:"fallbackToOndemand"`
+	Filters                            OceanNpFiltersPtrOutput      `pulumi:"filters"`
+	Headrooms                          OceanNpHeadroomArrayOutput   `pulumi:"headrooms"`
+	Health                             OceanNpHealthPtrOutput       `pulumi:"health"`
+	KubernetesVersion                  pulumi.StringPtrOutput       `pulumi:"kubernetesVersion"`
+	Labels                             pulumi.MapOutput             `pulumi:"labels"`
+	MaxCount                           pulumi.IntPtrOutput          `pulumi:"maxCount"`
+	MaxPodsPerNode                     pulumi.IntPtrOutput          `pulumi:"maxPodsPerNode"`
+	MinCount                           pulumi.IntPtrOutput          `pulumi:"minCount"`
+	Name                               pulumi.StringOutput          `pulumi:"name"`
+	OsDiskSizeGb                       pulumi.IntPtrOutput          `pulumi:"osDiskSizeGb"`
+	OsDiskType                         pulumi.StringPtrOutput       `pulumi:"osDiskType"`
+	OsSku                              pulumi.StringPtrOutput       `pulumi:"osSku"`
+	OsType                             pulumi.StringPtrOutput       `pulumi:"osType"`
+	PodSubnetIds                       pulumi.StringArrayOutput     `pulumi:"podSubnetIds"`
+	Scheduling                         OceanNpSchedulingPtrOutput   `pulumi:"scheduling"`
+	SpotPercentage                     pulumi.IntPtrOutput          `pulumi:"spotPercentage"`
+	Tags                               pulumi.MapOutput             `pulumi:"tags"`
+	Taints                             OceanNpTaintArrayOutput      `pulumi:"taints"`
+	UpdatePolicy                       OceanNpUpdatePolicyPtrOutput `pulumi:"updatePolicy"`
+	VnetSubnetIds                      pulumi.StringArrayOutput     `pulumi:"vnetSubnetIds"`
 }
 
 // NewOceanNp registers a new resource with the given unique name, arguments, and options.
@@ -120,6 +121,7 @@ type oceanNpState struct {
 	SpotPercentage                     *int                   `pulumi:"spotPercentage"`
 	Tags                               map[string]interface{} `pulumi:"tags"`
 	Taints                             []OceanNpTaint         `pulumi:"taints"`
+	UpdatePolicy                       *OceanNpUpdatePolicy   `pulumi:"updatePolicy"`
 	VnetSubnetIds                      []string               `pulumi:"vnetSubnetIds"`
 }
 
@@ -151,6 +153,7 @@ type OceanNpState struct {
 	SpotPercentage                     pulumi.IntPtrInput
 	Tags                               pulumi.MapInput
 	Taints                             OceanNpTaintArrayInput
+	UpdatePolicy                       OceanNpUpdatePolicyPtrInput
 	VnetSubnetIds                      pulumi.StringArrayInput
 }
 
@@ -186,6 +189,7 @@ type oceanNpArgs struct {
 	SpotPercentage                     *int                   `pulumi:"spotPercentage"`
 	Tags                               map[string]interface{} `pulumi:"tags"`
 	Taints                             []OceanNpTaint         `pulumi:"taints"`
+	UpdatePolicy                       *OceanNpUpdatePolicy   `pulumi:"updatePolicy"`
 	VnetSubnetIds                      []string               `pulumi:"vnetSubnetIds"`
 }
 
@@ -218,6 +222,7 @@ type OceanNpArgs struct {
 	SpotPercentage                     pulumi.IntPtrInput
 	Tags                               pulumi.MapInput
 	Taints                             OceanNpTaintArrayInput
+	UpdatePolicy                       OceanNpUpdatePolicyPtrInput
 	VnetSubnetIds                      pulumi.StringArrayInput
 }
 
@@ -414,6 +419,10 @@ func (o OceanNpOutput) Tags() pulumi.MapOutput {
 
 func (o OceanNpOutput) Taints() OceanNpTaintArrayOutput {
 	return o.ApplyT(func(v *OceanNp) OceanNpTaintArrayOutput { return v.Taints }).(OceanNpTaintArrayOutput)
+}
+
+func (o OceanNpOutput) UpdatePolicy() OceanNpUpdatePolicyPtrOutput {
+	return o.ApplyT(func(v *OceanNp) OceanNpUpdatePolicyPtrOutput { return v.UpdatePolicy }).(OceanNpUpdatePolicyPtrOutput)
 }
 
 func (o OceanNpOutput) VnetSubnetIds() pulumi.StringArrayOutput {

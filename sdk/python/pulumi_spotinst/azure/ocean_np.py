@@ -43,6 +43,7 @@ class OceanNpArgs:
                  spot_percentage: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  taints: Optional[pulumi.Input[Sequence[pulumi.Input['OceanNpTaintArgs']]]] = None,
+                 update_policy: Optional[pulumi.Input['OceanNpUpdatePolicyArgs']] = None,
                  vnet_subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a OceanNp resource.
@@ -95,6 +96,8 @@ class OceanNpArgs:
             pulumi.set(__self__, "tags", tags)
         if taints is not None:
             pulumi.set(__self__, "taints", taints)
+        if update_policy is not None:
+            pulumi.set(__self__, "update_policy", update_policy)
         if vnet_subnet_ids is not None:
             pulumi.set(__self__, "vnet_subnet_ids", vnet_subnet_ids)
 
@@ -342,6 +345,15 @@ class OceanNpArgs:
         pulumi.set(self, "taints", value)
 
     @property
+    @pulumi.getter(name="updatePolicy")
+    def update_policy(self) -> Optional[pulumi.Input['OceanNpUpdatePolicyArgs']]:
+        return pulumi.get(self, "update_policy")
+
+    @update_policy.setter
+    def update_policy(self, value: Optional[pulumi.Input['OceanNpUpdatePolicyArgs']]):
+        pulumi.set(self, "update_policy", value)
+
+    @property
     @pulumi.getter(name="vnetSubnetIds")
     def vnet_subnet_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         return pulumi.get(self, "vnet_subnet_ids")
@@ -381,6 +393,7 @@ class _OceanNpState:
                  spot_percentage: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  taints: Optional[pulumi.Input[Sequence[pulumi.Input['OceanNpTaintArgs']]]] = None,
+                 update_policy: Optional[pulumi.Input['OceanNpUpdatePolicyArgs']] = None,
                  vnet_subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering OceanNp resources.
@@ -439,6 +452,8 @@ class _OceanNpState:
             pulumi.set(__self__, "tags", tags)
         if taints is not None:
             pulumi.set(__self__, "taints", taints)
+        if update_policy is not None:
+            pulumi.set(__self__, "update_policy", update_policy)
         if vnet_subnet_ids is not None:
             pulumi.set(__self__, "vnet_subnet_ids", vnet_subnet_ids)
 
@@ -686,6 +701,15 @@ class _OceanNpState:
         pulumi.set(self, "taints", value)
 
     @property
+    @pulumi.getter(name="updatePolicy")
+    def update_policy(self) -> Optional[pulumi.Input['OceanNpUpdatePolicyArgs']]:
+        return pulumi.get(self, "update_policy")
+
+    @update_policy.setter
+    def update_policy(self, value: Optional[pulumi.Input['OceanNpUpdatePolicyArgs']]):
+        pulumi.set(self, "update_policy", value)
+
+    @property
     @pulumi.getter(name="vnetSubnetIds")
     def vnet_subnet_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         return pulumi.get(self, "vnet_subnet_ids")
@@ -727,6 +751,7 @@ class OceanNp(pulumi.CustomResource):
                  spot_percentage: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  taints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanNpTaintArgs']]]]] = None,
+                 update_policy: Optional[pulumi.Input[pulumi.InputType['OceanNpUpdatePolicyArgs']]] = None,
                  vnet_subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
@@ -784,6 +809,7 @@ class OceanNp(pulumi.CustomResource):
                  spot_percentage: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  taints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanNpTaintArgs']]]]] = None,
+                 update_policy: Optional[pulumi.Input[pulumi.InputType['OceanNpUpdatePolicyArgs']]] = None,
                  vnet_subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -833,6 +859,7 @@ class OceanNp(pulumi.CustomResource):
             __props__.__dict__["spot_percentage"] = spot_percentage
             __props__.__dict__["tags"] = tags
             __props__.__dict__["taints"] = taints
+            __props__.__dict__["update_policy"] = update_policy
             __props__.__dict__["vnet_subnet_ids"] = vnet_subnet_ids
         super(OceanNp, __self__).__init__(
             'spotinst:azure/oceanNp:OceanNp',
@@ -871,6 +898,7 @@ class OceanNp(pulumi.CustomResource):
             spot_percentage: Optional[pulumi.Input[int]] = None,
             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             taints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanNpTaintArgs']]]]] = None,
+            update_policy: Optional[pulumi.Input[pulumi.InputType['OceanNpUpdatePolicyArgs']]] = None,
             vnet_subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'OceanNp':
         """
         Get an existing OceanNp resource's state with the given name, id, and optional extra
@@ -911,6 +939,7 @@ class OceanNp(pulumi.CustomResource):
         __props__.__dict__["spot_percentage"] = spot_percentage
         __props__.__dict__["tags"] = tags
         __props__.__dict__["taints"] = taints
+        __props__.__dict__["update_policy"] = update_policy
         __props__.__dict__["vnet_subnet_ids"] = vnet_subnet_ids
         return OceanNp(resource_name, opts=opts, __props__=__props__)
 
@@ -1048,6 +1077,11 @@ class OceanNp(pulumi.CustomResource):
     @pulumi.getter
     def taints(self) -> pulumi.Output[Optional[Sequence['outputs.OceanNpTaint']]]:
         return pulumi.get(self, "taints")
+
+    @property
+    @pulumi.getter(name="updatePolicy")
+    def update_policy(self) -> pulumi.Output[Optional['outputs.OceanNpUpdatePolicy']]:
+        return pulumi.get(self, "update_policy")
 
     @property
     @pulumi.getter(name="vnetSubnetIds")

@@ -36,6 +36,7 @@ class OceanNpVirtualNodeGroupArgs:
                  spot_percentage: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  taints: Optional[pulumi.Input[Sequence[pulumi.Input['OceanNpVirtualNodeGroupTaintArgs']]]] = None,
+                 update_policy: Optional[pulumi.Input['OceanNpVirtualNodeGroupUpdatePolicyArgs']] = None,
                  vnet_subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a OceanNpVirtualNodeGroup resource.
@@ -79,6 +80,8 @@ class OceanNpVirtualNodeGroupArgs:
             pulumi.set(__self__, "tags", tags)
         if taints is not None:
             pulumi.set(__self__, "taints", taints)
+        if update_policy is not None:
+            pulumi.set(__self__, "update_policy", update_policy)
         if vnet_subnet_ids is not None:
             pulumi.set(__self__, "vnet_subnet_ids", vnet_subnet_ids)
 
@@ -263,6 +266,15 @@ class OceanNpVirtualNodeGroupArgs:
         pulumi.set(self, "taints", value)
 
     @property
+    @pulumi.getter(name="updatePolicy")
+    def update_policy(self) -> Optional[pulumi.Input['OceanNpVirtualNodeGroupUpdatePolicyArgs']]:
+        return pulumi.get(self, "update_policy")
+
+    @update_policy.setter
+    def update_policy(self, value: Optional[pulumi.Input['OceanNpVirtualNodeGroupUpdatePolicyArgs']]):
+        pulumi.set(self, "update_policy", value)
+
+    @property
     @pulumi.getter(name="vnetSubnetIds")
     def vnet_subnet_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         return pulumi.get(self, "vnet_subnet_ids")
@@ -295,6 +307,7 @@ class _OceanNpVirtualNodeGroupState:
                  spot_percentage: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  taints: Optional[pulumi.Input[Sequence[pulumi.Input['OceanNpVirtualNodeGroupTaintArgs']]]] = None,
+                 update_policy: Optional[pulumi.Input['OceanNpVirtualNodeGroupUpdatePolicyArgs']] = None,
                  vnet_subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering OceanNpVirtualNodeGroup resources.
@@ -339,6 +352,8 @@ class _OceanNpVirtualNodeGroupState:
             pulumi.set(__self__, "tags", tags)
         if taints is not None:
             pulumi.set(__self__, "taints", taints)
+        if update_policy is not None:
+            pulumi.set(__self__, "update_policy", update_policy)
         if vnet_subnet_ids is not None:
             pulumi.set(__self__, "vnet_subnet_ids", vnet_subnet_ids)
 
@@ -523,6 +538,15 @@ class _OceanNpVirtualNodeGroupState:
         pulumi.set(self, "taints", value)
 
     @property
+    @pulumi.getter(name="updatePolicy")
+    def update_policy(self) -> Optional[pulumi.Input['OceanNpVirtualNodeGroupUpdatePolicyArgs']]:
+        return pulumi.get(self, "update_policy")
+
+    @update_policy.setter
+    def update_policy(self, value: Optional[pulumi.Input['OceanNpVirtualNodeGroupUpdatePolicyArgs']]):
+        pulumi.set(self, "update_policy", value)
+
+    @property
     @pulumi.getter(name="vnetSubnetIds")
     def vnet_subnet_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         return pulumi.get(self, "vnet_subnet_ids")
@@ -557,6 +581,7 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
                  spot_percentage: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  taints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanNpVirtualNodeGroupTaintArgs']]]]] = None,
+                 update_policy: Optional[pulumi.Input[pulumi.InputType['OceanNpVirtualNodeGroupUpdatePolicyArgs']]] = None,
                  vnet_subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
@@ -607,6 +632,7 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
                  spot_percentage: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  taints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanNpVirtualNodeGroupTaintArgs']]]]] = None,
+                 update_policy: Optional[pulumi.Input[pulumi.InputType['OceanNpVirtualNodeGroupUpdatePolicyArgs']]] = None,
                  vnet_subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -639,6 +665,7 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
             __props__.__dict__["spot_percentage"] = spot_percentage
             __props__.__dict__["tags"] = tags
             __props__.__dict__["taints"] = taints
+            __props__.__dict__["update_policy"] = update_policy
             __props__.__dict__["vnet_subnet_ids"] = vnet_subnet_ids
         super(OceanNpVirtualNodeGroup, __self__).__init__(
             'spotinst:azure/oceanNpVirtualNodeGroup:OceanNpVirtualNodeGroup',
@@ -670,6 +697,7 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
             spot_percentage: Optional[pulumi.Input[int]] = None,
             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             taints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanNpVirtualNodeGroupTaintArgs']]]]] = None,
+            update_policy: Optional[pulumi.Input[pulumi.InputType['OceanNpVirtualNodeGroupUpdatePolicyArgs']]] = None,
             vnet_subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'OceanNpVirtualNodeGroup':
         """
         Get an existing OceanNpVirtualNodeGroup resource's state with the given name, id, and optional extra
@@ -703,6 +731,7 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
         __props__.__dict__["spot_percentage"] = spot_percentage
         __props__.__dict__["tags"] = tags
         __props__.__dict__["taints"] = taints
+        __props__.__dict__["update_policy"] = update_policy
         __props__.__dict__["vnet_subnet_ids"] = vnet_subnet_ids
         return OceanNpVirtualNodeGroup(resource_name, opts=opts, __props__=__props__)
 
@@ -805,6 +834,11 @@ class OceanNpVirtualNodeGroup(pulumi.CustomResource):
     @pulumi.getter
     def taints(self) -> pulumi.Output[Optional[Sequence['outputs.OceanNpVirtualNodeGroupTaint']]]:
         return pulumi.get(self, "taints")
+
+    @property
+    @pulumi.getter(name="updatePolicy")
+    def update_policy(self) -> pulumi.Output[Optional['outputs.OceanNpVirtualNodeGroupUpdatePolicy']]:
+        return pulumi.get(self, "update_policy")
 
     @property
     @pulumi.getter(name="vnetSubnetIds")
