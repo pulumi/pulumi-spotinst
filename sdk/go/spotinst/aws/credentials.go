@@ -28,6 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// set credential AWS
 //			_, err := aws.NewCredentials(ctx, "credential", &aws.CredentialsArgs{
 //				Accountid: pulumi.String("act-123456"),
 //				Iamrole:   pulumi.String("arn:aws:iam::1234567890:role/Spot_Iam_Role"),

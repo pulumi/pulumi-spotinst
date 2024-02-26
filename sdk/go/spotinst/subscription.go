@@ -28,6 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Create a Subscription
 //			_, err := spotinst.NewSubscription(ctx, "default-subscription", &spotinst.SubscriptionArgs{
 //				Endpoint:  pulumi.String("http://endpoint.com"),
 //				EventType: pulumi.String("AWS_EC2_INSTANCE_LAUNCH"),
