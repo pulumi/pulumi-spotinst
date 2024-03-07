@@ -20,6 +20,7 @@ import (
 //
 // Installation of the Ocean controller is required by this resource. You can accomplish this by using the spotinst/ocean-controller module as follows:
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -36,6 +37,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // > You must configure the same `clusterIdentifier` and `acdIdentifier` both for the Ocean controller and for the `azure.Ocean` resource.
 type Ocean struct {

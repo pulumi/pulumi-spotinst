@@ -42,6 +42,8 @@ import javax.annotation.Nullable;
  * Provides a Spotinst stateful node Azure resource.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -276,6 +278,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * # Argument Reference
  * 

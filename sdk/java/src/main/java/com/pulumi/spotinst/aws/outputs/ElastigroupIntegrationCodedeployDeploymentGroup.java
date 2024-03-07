@@ -19,6 +19,8 @@ public final class ElastigroupIntegrationCodedeployDeploymentGroup {
      * @return The deployment group name.
      * 
      * Usage:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -41,6 +43,7 @@ public final class ElastigroupIntegrationCodedeployDeploymentGroup {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     private String deploymentGroupName;
@@ -57,6 +60,8 @@ public final class ElastigroupIntegrationCodedeployDeploymentGroup {
      * @return The deployment group name.
      * 
      * Usage:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -79,6 +84,7 @@ public final class ElastigroupIntegrationCodedeployDeploymentGroup {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public String deploymentGroupName() {

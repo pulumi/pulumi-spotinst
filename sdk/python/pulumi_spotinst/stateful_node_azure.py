@@ -1081,6 +1081,7 @@ class StatefulNodeAzure(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_spotinst as spotinst
@@ -1283,7 +1284,9 @@ class StatefulNodeAzure(pulumi.CustomResource):
                 public_ip_should_deallocate=True,
                 public_ip_ttl_in_hours=0,
             )])
+        # -------------------------------------------------------------------
         ```
+        <!--End PulumiCodeChooser -->
 
         # Argument Reference
 
@@ -1566,6 +1569,7 @@ class StatefulNodeAzure(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_spotinst as spotinst
@@ -1768,7 +1772,9 @@ class StatefulNodeAzure(pulumi.CustomResource):
                 public_ip_should_deallocate=True,
                 public_ip_ttl_in_hours=0,
             )])
+        # -------------------------------------------------------------------
         ```
+        <!--End PulumiCodeChooser -->
 
         # Argument Reference
 

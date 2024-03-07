@@ -132,6 +132,7 @@ type Elastigroup struct {
 	//
 	// Usage:
 	//
+	// <!--Start PulumiCodeChooser -->
 	// ```go
 	// package main
 	//
@@ -145,6 +146,7 @@ type Elastigroup struct {
 	// 	})
 	// }
 	// ```
+	// <!--End PulumiCodeChooser -->
 	PrivateIps pulumi.StringArrayOutput `pulumi:"privateIps"`
 	// Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`.
 	// For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
@@ -350,6 +352,7 @@ type elastigroupState struct {
 	//
 	// Usage:
 	//
+	// <!--Start PulumiCodeChooser -->
 	// ```go
 	// package main
 	//
@@ -363,6 +366,7 @@ type elastigroupState struct {
 	// 	})
 	// }
 	// ```
+	// <!--End PulumiCodeChooser -->
 	PrivateIps []string `pulumi:"privateIps"`
 	// Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`.
 	// For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
@@ -527,6 +531,7 @@ type ElastigroupState struct {
 	//
 	// Usage:
 	//
+	// <!--Start PulumiCodeChooser -->
 	// ```go
 	// package main
 	//
@@ -540,6 +545,7 @@ type ElastigroupState struct {
 	// 	})
 	// }
 	// ```
+	// <!--End PulumiCodeChooser -->
 	PrivateIps pulumi.StringArrayInput
 	// Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`.
 	// For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
@@ -708,6 +714,7 @@ type elastigroupArgs struct {
 	//
 	// Usage:
 	//
+	// <!--Start PulumiCodeChooser -->
 	// ```go
 	// package main
 	//
@@ -721,6 +728,7 @@ type elastigroupArgs struct {
 	// 	})
 	// }
 	// ```
+	// <!--End PulumiCodeChooser -->
 	PrivateIps []string `pulumi:"privateIps"`
 	// Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`.
 	// For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
@@ -886,6 +894,7 @@ type ElastigroupArgs struct {
 	//
 	// Usage:
 	//
+	// <!--Start PulumiCodeChooser -->
 	// ```go
 	// package main
 	//
@@ -899,6 +908,7 @@ type ElastigroupArgs struct {
 	// 	})
 	// }
 	// ```
+	// <!--End PulumiCodeChooser -->
 	PrivateIps pulumi.StringArrayInput
 	// Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`.
 	// For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
@@ -1323,6 +1333,7 @@ func (o ElastigroupOutput) PreferredAvailabilityZones() pulumi.StringArrayOutput
 //
 // Usage:
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -1339,6 +1350,7 @@ func (o ElastigroupOutput) PreferredAvailabilityZones() pulumi.StringArrayOutput
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func (o ElastigroupOutput) PrivateIps() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Elastigroup) pulumi.StringArrayOutput { return v.PrivateIps }).(pulumi.StringArrayOutput)
 }

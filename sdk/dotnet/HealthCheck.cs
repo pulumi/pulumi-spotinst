@@ -13,34 +13,6 @@ namespace Pulumi.SpotInst
     /// Provides a Spotinst Health Check resource.
     /// 
     /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using SpotInst = Pulumi.SpotInst;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var httpCheck = new SpotInst.HealthCheck("httpCheck", new()
-    ///     {
-    ///         Check = new SpotInst.Inputs.HealthCheckCheckArgs
-    ///         {
-    ///             Endpoint = "http://endpoint.com",
-    ///             Healthy = 1,
-    ///             Interval = 10,
-    ///             Port = 1337,
-    ///             Protocol = "http",
-    ///             Timeout = 10,
-    ///             Unhealthy = 1,
-    ///         },
-    ///         ProxyAddress = "http://proxy.com",
-    ///         ProxyPort = 80,
-    ///         ResourceId = "sig-123",
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// </summary>
     [SpotInstResourceType("spotinst:index/healthCheck:HealthCheck")]
     public partial class HealthCheck : global::Pulumi.CustomResource

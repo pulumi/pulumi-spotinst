@@ -41,6 +41,8 @@ public final class ElastigroupIntegrationNomadArgs extends com.pulumi.resources.
      * A key/value mapping of tags to assign to the resource.
      * 
      * Usage:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -63,6 +65,7 @@ public final class ElastigroupIntegrationNomadArgs extends com.pulumi.resources.
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     @Import(name="autoscaleConstraints")
@@ -72,6 +75,8 @@ public final class ElastigroupIntegrationNomadArgs extends com.pulumi.resources.
      * @return A key/value mapping of tags to assign to the resource.
      * 
      * Usage:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -94,6 +99,7 @@ public final class ElastigroupIntegrationNomadArgs extends com.pulumi.resources.
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public Optional<Output<List<ElastigroupIntegrationNomadAutoscaleConstraintArgs>>> autoscaleConstraints() {
@@ -246,6 +252,8 @@ public final class ElastigroupIntegrationNomadArgs extends com.pulumi.resources.
          * @param autoscaleConstraints A key/value mapping of tags to assign to the resource.
          * 
          * Usage:
+         * 
+         * &lt;!--Start PulumiCodeChooser --&gt;
          * ```java
          * package generated_program;
          * 
@@ -268,6 +276,7 @@ public final class ElastigroupIntegrationNomadArgs extends com.pulumi.resources.
          *     }
          * }
          * ```
+         * &lt;!--End PulumiCodeChooser --&gt;
          * 
          * @return builder
          * 
@@ -281,6 +290,8 @@ public final class ElastigroupIntegrationNomadArgs extends com.pulumi.resources.
          * @param autoscaleConstraints A key/value mapping of tags to assign to the resource.
          * 
          * Usage:
+         * 
+         * &lt;!--Start PulumiCodeChooser --&gt;
          * ```java
          * package generated_program;
          * 
@@ -303,6 +314,7 @@ public final class ElastigroupIntegrationNomadArgs extends com.pulumi.resources.
          *     }
          * }
          * ```
+         * &lt;!--End PulumiCodeChooser --&gt;
          * 
          * @return builder
          * 
@@ -315,6 +327,8 @@ public final class ElastigroupIntegrationNomadArgs extends com.pulumi.resources.
          * @param autoscaleConstraints A key/value mapping of tags to assign to the resource.
          * 
          * Usage:
+         * 
+         * &lt;!--Start PulumiCodeChooser --&gt;
          * ```java
          * package generated_program;
          * 
@@ -337,6 +351,7 @@ public final class ElastigroupIntegrationNomadArgs extends com.pulumi.resources.
          *     }
          * }
          * ```
+         * &lt;!--End PulumiCodeChooser --&gt;
          * 
          * @return builder
          * 

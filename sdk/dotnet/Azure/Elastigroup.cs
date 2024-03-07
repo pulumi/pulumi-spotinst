@@ -12,14 +12,6 @@ namespace Pulumi.SpotInst.Azure
     /// <summary>
     /// Provides a Spotinst elastigroup Azure resource.
     /// 
-    /// ## Strategy
-    /// 
-    /// * `spot_percentage` - (Optional) Percentage of Spot-VMs to maintain. Required if `on_demand_count` is not specified.
-    /// * `on_demand_count` - (Optional) Number of On-Demand VMs to maintain. Required if `spot_percentage` is not specified.
-    /// * `fallback_to_on_demand` -
-    /// * `draining_timeout` - (Optional, Default `120`) Time (seconds) to allow the instance to be drained from incoming TCP connections and detached from MLB before terminating it during a scale-down operation.
-    /// 
-    /// &lt;a id="image"&gt;&lt;/a&gt;
     /// ## Image
     /// 
     /// * `image` - (Required) Image of a VM. An image is a template for creating new VMs. Choose from Azure image catalogue (marketplace) or use a custom image.
@@ -30,6 +22,7 @@ namespace Pulumi.SpotInst.Azure
     ///     * `resource_group_name` - (Optional) Name of Resource Group for custom image. Required if publisher not specified.
     ///     * `image_name` - (Optional) Name of the custom image. Required if resource_group_name is specified.
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -39,6 +32,7 @@ namespace Pulumi.SpotInst.Azure
     /// {
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// &lt;a id="network"&gt;&lt;/a&gt;
     /// ## Network
@@ -57,6 +51,7 @@ namespace Pulumi.SpotInst.Azure
     ///             * `name` - (Required) - The name of the Application Security group.
     ///             * `resource_group_name` - (Required) - The resource group of the Application Security Group.
     ///               }
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -66,6 +61,7 @@ namespace Pulumi.SpotInst.Azure
     /// {
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ### Login
     /// 
@@ -74,6 +70,7 @@ namespace Pulumi.SpotInst.Azure
     ///     * `ssh_public_key` - (Optional) SSH for admin access to Linux VMs. Required for Linux OS types.
     ///     * `password` - (Optional) Password for admin access to Windows VMs. Required for Windows OS types.
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -83,6 +80,7 @@ namespace Pulumi.SpotInst.Azure
     /// {
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [SpotInstResourceType("spotinst:azure/elastigroup:Elastigroup")]
     public partial class Elastigroup : global::Pulumi.CustomResource

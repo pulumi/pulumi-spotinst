@@ -9,6 +9,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as spotinst from "@pulumi/spotinst";
@@ -16,6 +17,7 @@ import * as utilities from "../utilities";
  * // Create a Account
  * const myAwsAcct = new spotinst.aws.Account("myAwsAcct", {});
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export class Account extends pulumi.CustomResource {
     /**

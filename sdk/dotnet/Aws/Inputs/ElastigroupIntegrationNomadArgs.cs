@@ -26,6 +26,7 @@ namespace Pulumi.SpotInst.Aws.Inputs
         /// 
         /// Usage:
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -35,6 +36,7 @@ namespace Pulumi.SpotInst.Aws.Inputs
         /// {
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public InputList<Inputs.ElastigroupIntegrationNomadAutoscaleConstraintArgs> AutoscaleConstraints
         {

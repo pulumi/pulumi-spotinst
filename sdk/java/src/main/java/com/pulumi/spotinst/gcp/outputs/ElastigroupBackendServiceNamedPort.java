@@ -20,6 +20,8 @@ public final class ElastigroupBackendServiceNamedPort {
      * @return A list of ports.
      * 
      * Usage:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -42,6 +44,7 @@ public final class ElastigroupBackendServiceNamedPort {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     private List<String> ports;
@@ -58,6 +61,8 @@ public final class ElastigroupBackendServiceNamedPort {
      * @return A list of ports.
      * 
      * Usage:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -80,6 +85,7 @@ public final class ElastigroupBackendServiceNamedPort {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public List<String> ports() {

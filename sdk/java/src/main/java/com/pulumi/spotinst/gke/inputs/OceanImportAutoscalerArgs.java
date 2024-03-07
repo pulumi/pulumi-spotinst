@@ -20,14 +20,14 @@ public final class OceanImportAutoscalerArgs extends com.pulumi.resources.Resour
     public static final OceanImportAutoscalerArgs Empty = new OceanImportAutoscalerArgs();
 
     /**
-     * Optionally set the auto headroom percentage, set a number between 0-200 to control the headroom % from the cluster. Relevant when isAutoConfig=true.
+     * Optionally set the auto headroom percentage, set a number between 0-200 to control the headroom %!f(MISSING)rom the cluster. Relevant when isAutoConfig=true.
      * 
      */
     @Import(name="autoHeadroomPercentage")
     private @Nullable Output<Integer> autoHeadroomPercentage;
 
     /**
-     * @return Optionally set the auto headroom percentage, set a number between 0-200 to control the headroom % from the cluster. Relevant when isAutoConfig=true.
+     * @return Optionally set the auto headroom percentage, set a number between 0-200 to control the headroom %!f(MISSING)rom the cluster. Relevant when isAutoConfig=true.
      * 
      */
     public Optional<Output<Integer>> autoHeadroomPercentage() {
@@ -171,7 +171,7 @@ public final class OceanImportAutoscalerArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param autoHeadroomPercentage Optionally set the auto headroom percentage, set a number between 0-200 to control the headroom % from the cluster. Relevant when isAutoConfig=true.
+         * @param autoHeadroomPercentage Optionally set the auto headroom percentage, set a number between 0-200 to control the headroom %!f(MISSING)rom the cluster. Relevant when isAutoConfig=true.
          * 
          * @return builder
          * 
@@ -182,7 +182,7 @@ public final class OceanImportAutoscalerArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param autoHeadroomPercentage Optionally set the auto headroom percentage, set a number between 0-200 to control the headroom % from the cluster. Relevant when isAutoConfig=true.
+         * @param autoHeadroomPercentage Optionally set the auto headroom percentage, set a number between 0-200 to control the headroom %!f(MISSING)rom the cluster. Relevant when isAutoConfig=true.
          * 
          * @return builder
          * 

@@ -20,6 +20,8 @@ public final class ElastigroupEphemeralBlockDevice {
      * (e.g. `&#34;ephemeral0&#34;`).
      * 
      * Usage:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -42,6 +44,7 @@ public final class ElastigroupEphemeralBlockDevice {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     private String virtualName;
@@ -59,6 +62,8 @@ public final class ElastigroupEphemeralBlockDevice {
      * (e.g. `&#34;ephemeral0&#34;`).
      * 
      * Usage:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -81,6 +86,7 @@ public final class ElastigroupEphemeralBlockDevice {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public String virtualName() {

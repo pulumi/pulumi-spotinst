@@ -27,8 +27,10 @@ public final class OceanImportUpdatePolicyRollConfigArgs extends com.pulumi.reso
     }
 
     /**
-     * Value in % to set size of batch in roll. Valid values are 0-100
+     * Value in %!t(MISSING)o set size of batch in roll. Valid values are 0-100
      * Example: 20.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -51,14 +53,17 @@ public final class OceanImportUpdatePolicyRollConfigArgs extends com.pulumi.reso
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     @Import(name="batchSizePercentage", required=true)
     private Output<Integer> batchSizePercentage;
 
     /**
-     * @return Value in % to set size of batch in roll. Valid values are 0-100
+     * @return Value in %!t(MISSING)o set size of batch in roll. Valid values are 0-100
      * Example: 20.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -81,6 +86,7 @@ public final class OceanImportUpdatePolicyRollConfigArgs extends com.pulumi.reso
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public Output<Integer> batchSizePercentage() {
@@ -138,8 +144,10 @@ public final class OceanImportUpdatePolicyRollConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param batchSizePercentage Value in % to set size of batch in roll. Valid values are 0-100
+         * @param batchSizePercentage Value in %!t(MISSING)o set size of batch in roll. Valid values are 0-100
          * Example: 20.
+         * 
+         * &lt;!--Start PulumiCodeChooser --&gt;
          * ```java
          * package generated_program;
          * 
@@ -162,6 +170,7 @@ public final class OceanImportUpdatePolicyRollConfigArgs extends com.pulumi.reso
          *     }
          * }
          * ```
+         * &lt;!--End PulumiCodeChooser --&gt;
          * 
          * @return builder
          * 
@@ -172,8 +181,10 @@ public final class OceanImportUpdatePolicyRollConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param batchSizePercentage Value in % to set size of batch in roll. Valid values are 0-100
+         * @param batchSizePercentage Value in %!t(MISSING)o set size of batch in roll. Valid values are 0-100
          * Example: 20.
+         * 
+         * &lt;!--Start PulumiCodeChooser --&gt;
          * ```java
          * package generated_program;
          * 
@@ -196,6 +207,7 @@ public final class OceanImportUpdatePolicyRollConfigArgs extends com.pulumi.reso
          *     }
          * }
          * ```
+         * &lt;!--End PulumiCodeChooser --&gt;
          * 
          * @return builder
          * 

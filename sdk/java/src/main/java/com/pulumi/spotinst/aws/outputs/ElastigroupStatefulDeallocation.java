@@ -25,6 +25,8 @@ public final class ElastigroupStatefulDeallocation {
      * @return For stateful groups: remove snapshots.
      * 
      * Usage:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -47,6 +49,7 @@ public final class ElastigroupStatefulDeallocation {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     private @Nullable Boolean shouldDeleteSnapshots;
@@ -75,6 +78,8 @@ public final class ElastigroupStatefulDeallocation {
      * @return For stateful groups: remove snapshots.
      * 
      * Usage:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -97,6 +102,7 @@ public final class ElastigroupStatefulDeallocation {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public Optional<Boolean> shouldDeleteSnapshots() {

@@ -14,6 +14,8 @@ public final class ElastigroupMultaiTargetSet {
      * @return ID of Multai Load Balancer.
      * 
      * Usage:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -36,6 +38,7 @@ public final class ElastigroupMultaiTargetSet {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     private String balancerId;
@@ -50,6 +53,8 @@ public final class ElastigroupMultaiTargetSet {
      * @return ID of Multai Load Balancer.
      * 
      * Usage:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -72,6 +77,7 @@ public final class ElastigroupMultaiTargetSet {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public String balancerId() {

@@ -25,6 +25,8 @@ public final class ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdate {
      * @return Level to update
      * 
      * Usage:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -47,6 +49,7 @@ public final class ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdate {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     private @Nullable String updateLevel;
@@ -70,6 +73,8 @@ public final class ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdate {
      * @return Level to update
      * 
      * Usage:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -92,6 +97,7 @@ public final class ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdate {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public Optional<String> updateLevel() {

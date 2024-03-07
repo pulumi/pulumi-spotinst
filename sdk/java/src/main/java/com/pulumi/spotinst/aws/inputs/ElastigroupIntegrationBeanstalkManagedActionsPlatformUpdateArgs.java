@@ -49,6 +49,8 @@ public final class ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdateAr
      * Level to update
      * 
      * Usage:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -71,6 +73,7 @@ public final class ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdateAr
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     @Import(name="updateLevel")
@@ -80,6 +83,8 @@ public final class ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdateAr
      * @return Level to update
      * 
      * Usage:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -102,6 +107,7 @@ public final class ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdateAr
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public Optional<Output<String>> updateLevel() {
@@ -180,6 +186,8 @@ public final class ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdateAr
          * @param updateLevel Level to update
          * 
          * Usage:
+         * 
+         * &lt;!--Start PulumiCodeChooser --&gt;
          * ```java
          * package generated_program;
          * 
@@ -202,6 +210,7 @@ public final class ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdateAr
          *     }
          * }
          * ```
+         * &lt;!--End PulumiCodeChooser --&gt;
          * 
          * @return builder
          * 
@@ -215,6 +224,8 @@ public final class ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdateAr
          * @param updateLevel Level to update
          * 
          * Usage:
+         * 
+         * &lt;!--Start PulumiCodeChooser --&gt;
          * ```java
          * package generated_program;
          * 
@@ -237,6 +248,7 @@ public final class ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdateAr
          *     }
          * }
          * ```
+         * &lt;!--End PulumiCodeChooser --&gt;
          * 
          * @return builder
          * 

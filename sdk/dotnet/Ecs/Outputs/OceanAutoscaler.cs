@@ -14,7 +14,7 @@ namespace Pulumi.SpotInst.Ecs.Outputs
     public sealed class OceanAutoscaler
     {
         /// <summary>
-        /// The auto-headroom percentage. Set a number between 0-200 to control the headroom % of the cluster. Relevant when `isAutoConfig`= true.
+        /// The auto-headroom percentage. Set a number between 0-200 to control the headroom %!o(MISSING)f the cluster. Relevant when `isAutoConfig`= true.
         /// </summary>
         public readonly int? AutoHeadroomPercentage;
         /// <summary>
@@ -28,6 +28,7 @@ namespace Pulumi.SpotInst.Ecs.Outputs
         /// <summary>
         /// When set to true, both automatic and per custom launch specification manual headroom to be saved concurrently and independently in the cluster. prerequisite: isAutoConfig must be true
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -37,6 +38,7 @@ namespace Pulumi.SpotInst.Ecs.Outputs
         /// {
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public readonly bool? EnableAutomaticAndManualHeadroom;
         /// <summary>

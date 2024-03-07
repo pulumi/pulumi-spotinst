@@ -57,6 +57,8 @@ public final class ElastigroupUpdatePolicyRollConfigStrategyOnFailureArgs extend
 
     /**
      * Decrementing the group target capacity after detaching the instances.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -79,6 +81,7 @@ public final class ElastigroupUpdatePolicyRollConfigStrategyOnFailureArgs extend
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     @Import(name="shouldDecrementTargetCapacity")
@@ -86,6 +89,8 @@ public final class ElastigroupUpdatePolicyRollConfigStrategyOnFailureArgs extend
 
     /**
      * @return Decrementing the group target capacity after detaching the instances.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -108,6 +113,7 @@ public final class ElastigroupUpdatePolicyRollConfigStrategyOnFailureArgs extend
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public Optional<Output<Boolean>> shouldDecrementTargetCapacity() {
@@ -210,6 +216,8 @@ public final class ElastigroupUpdatePolicyRollConfigStrategyOnFailureArgs extend
 
         /**
          * @param shouldDecrementTargetCapacity Decrementing the group target capacity after detaching the instances.
+         * 
+         * &lt;!--Start PulumiCodeChooser --&gt;
          * ```java
          * package generated_program;
          * 
@@ -232,6 +240,7 @@ public final class ElastigroupUpdatePolicyRollConfigStrategyOnFailureArgs extend
          *     }
          * }
          * ```
+         * &lt;!--End PulumiCodeChooser --&gt;
          * 
          * @return builder
          * 
@@ -243,6 +252,8 @@ public final class ElastigroupUpdatePolicyRollConfigStrategyOnFailureArgs extend
 
         /**
          * @param shouldDecrementTargetCapacity Decrementing the group target capacity after detaching the instances.
+         * 
+         * &lt;!--Start PulumiCodeChooser --&gt;
          * ```java
          * package generated_program;
          * 
@@ -265,6 +276,7 @@ public final class ElastigroupUpdatePolicyRollConfigStrategyOnFailureArgs extend
          *     }
          * }
          * ```
+         * &lt;!--End PulumiCodeChooser --&gt;
          * 
          * @return builder
          * 

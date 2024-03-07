@@ -26,6 +26,8 @@ public final class ElastigroupDiskInitializeParam {
      * @return A source image used to create the disk. You can provide a private (custom) image, and Compute Engine will use the corresponding image from your project.
      * 
      * Usage:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -48,6 +50,7 @@ public final class ElastigroupDiskInitializeParam {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     private String sourceImage;
@@ -71,6 +74,8 @@ public final class ElastigroupDiskInitializeParam {
      * @return A source image used to create the disk. You can provide a private (custom) image, and Compute Engine will use the corresponding image from your project.
      * 
      * Usage:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -93,6 +98,7 @@ public final class ElastigroupDiskInitializeParam {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public String sourceImage() {

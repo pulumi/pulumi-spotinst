@@ -19,6 +19,8 @@ public final class ElastigroupIntegrationEcsBatchArgs extends com.pulumi.resourc
      * Array of strings.
      * 
      * Usage:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -41,6 +43,7 @@ public final class ElastigroupIntegrationEcsBatchArgs extends com.pulumi.resourc
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     @Import(name="jobQueueNames", required=true)
@@ -50,6 +53,8 @@ public final class ElastigroupIntegrationEcsBatchArgs extends com.pulumi.resourc
      * @return Array of strings.
      * 
      * Usage:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -72,6 +77,7 @@ public final class ElastigroupIntegrationEcsBatchArgs extends com.pulumi.resourc
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public Output<List<String>> jobQueueNames() {
@@ -106,6 +112,8 @@ public final class ElastigroupIntegrationEcsBatchArgs extends com.pulumi.resourc
          * @param jobQueueNames Array of strings.
          * 
          * Usage:
+         * 
+         * &lt;!--Start PulumiCodeChooser --&gt;
          * ```java
          * package generated_program;
          * 
@@ -128,6 +136,7 @@ public final class ElastigroupIntegrationEcsBatchArgs extends com.pulumi.resourc
          *     }
          * }
          * ```
+         * &lt;!--End PulumiCodeChooser --&gt;
          * 
          * @return builder
          * 
@@ -141,6 +150,8 @@ public final class ElastigroupIntegrationEcsBatchArgs extends com.pulumi.resourc
          * @param jobQueueNames Array of strings.
          * 
          * Usage:
+         * 
+         * &lt;!--Start PulumiCodeChooser --&gt;
          * ```java
          * package generated_program;
          * 
@@ -163,6 +174,7 @@ public final class ElastigroupIntegrationEcsBatchArgs extends com.pulumi.resourc
          *     }
          * }
          * ```
+         * &lt;!--End PulumiCodeChooser --&gt;
          * 
          * @return builder
          * 
@@ -175,6 +187,8 @@ public final class ElastigroupIntegrationEcsBatchArgs extends com.pulumi.resourc
          * @param jobQueueNames Array of strings.
          * 
          * Usage:
+         * 
+         * &lt;!--Start PulumiCodeChooser --&gt;
          * ```java
          * package generated_program;
          * 
@@ -197,6 +211,7 @@ public final class ElastigroupIntegrationEcsBatchArgs extends com.pulumi.resourc
          *     }
          * }
          * ```
+         * &lt;!--End PulumiCodeChooser --&gt;
          * 
          * @return builder
          * 

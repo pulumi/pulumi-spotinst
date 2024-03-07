@@ -16,6 +16,7 @@ namespace Pulumi.SpotInst.Gke
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -152,6 +153,8 @@ namespace Pulumi.SpotInst.Gke
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -165,6 +168,8 @@ namespace Pulumi.SpotInst.Gke
     ///     };
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
     /// ## Update Policy
     /// 
     /// * `update_policy` - (Optional)
@@ -172,6 +177,7 @@ namespace Pulumi.SpotInst.Gke
     ///   * `roll_config` - (Required) Holds the roll configuration.
     ///     * `batch_size_percentage` - (Required) Sets the percentage of the instances to deploy in each batch.
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -181,6 +187,7 @@ namespace Pulumi.SpotInst.Gke
     /// {
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [SpotInstResourceType("spotinst:gke/oceanLaunchSpec:OceanLaunchSpec")]
     public partial class OceanLaunchSpec : global::Pulumi.CustomResource

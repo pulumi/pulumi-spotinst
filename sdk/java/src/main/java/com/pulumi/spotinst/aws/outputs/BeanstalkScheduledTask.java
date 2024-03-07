@@ -22,6 +22,8 @@ public final class BeanstalkScheduledTask {
      * @return The percentage of instances to add or remove.
      * 
      * Usage:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -44,6 +46,7 @@ public final class BeanstalkScheduledTask {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     private @Nullable String adjustmentPercentage;
@@ -125,6 +128,8 @@ public final class BeanstalkScheduledTask {
      * @return The percentage of instances to add or remove.
      * 
      * Usage:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -147,6 +152,7 @@ public final class BeanstalkScheduledTask {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public Optional<String> adjustmentPercentage() {

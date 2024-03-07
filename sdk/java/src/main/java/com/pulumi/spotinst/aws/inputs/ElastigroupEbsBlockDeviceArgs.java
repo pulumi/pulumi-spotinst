@@ -114,6 +114,8 @@ public final class ElastigroupEbsBlockDeviceArgs extends com.pulumi.resources.Re
      * Modifying any `ebs_block_device` currently requires resource replacement.
      * 
      * Usage:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -136,6 +138,7 @@ public final class ElastigroupEbsBlockDeviceArgs extends com.pulumi.resources.Re
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     @Import(name="throughput")
@@ -147,6 +150,8 @@ public final class ElastigroupEbsBlockDeviceArgs extends com.pulumi.resources.Re
      * Modifying any `ebs_block_device` currently requires resource replacement.
      * 
      * Usage:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -169,6 +174,7 @@ public final class ElastigroupEbsBlockDeviceArgs extends com.pulumi.resources.Re
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public Optional<Output<Integer>> throughput() {
@@ -369,6 +375,8 @@ public final class ElastigroupEbsBlockDeviceArgs extends com.pulumi.resources.Re
          * Modifying any `ebs_block_device` currently requires resource replacement.
          * 
          * Usage:
+         * 
+         * &lt;!--Start PulumiCodeChooser --&gt;
          * ```java
          * package generated_program;
          * 
@@ -391,6 +399,7 @@ public final class ElastigroupEbsBlockDeviceArgs extends com.pulumi.resources.Re
          *     }
          * }
          * ```
+         * &lt;!--End PulumiCodeChooser --&gt;
          * 
          * @return builder
          * 
@@ -406,6 +415,8 @@ public final class ElastigroupEbsBlockDeviceArgs extends com.pulumi.resources.Re
          * Modifying any `ebs_block_device` currently requires resource replacement.
          * 
          * Usage:
+         * 
+         * &lt;!--Start PulumiCodeChooser --&gt;
          * ```java
          * package generated_program;
          * 
@@ -428,6 +439,7 @@ public final class ElastigroupEbsBlockDeviceArgs extends com.pulumi.resources.Re
          *     }
          * }
          * ```
+         * &lt;!--End PulumiCodeChooser --&gt;
          * 
          * @return builder
          * 
