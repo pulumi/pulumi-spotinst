@@ -18,6 +18,8 @@ public final class ElastigroupIntegrationMultaiRuntimeArgs extends com.pulumi.re
      * The deployment id you want to get
      * 
      * Usage:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -40,6 +42,7 @@ public final class ElastigroupIntegrationMultaiRuntimeArgs extends com.pulumi.re
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     @Import(name="deploymentId", required=true)
@@ -49,6 +52,8 @@ public final class ElastigroupIntegrationMultaiRuntimeArgs extends com.pulumi.re
      * @return The deployment id you want to get
      * 
      * Usage:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -71,6 +76,7 @@ public final class ElastigroupIntegrationMultaiRuntimeArgs extends com.pulumi.re
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public Output<String> deploymentId() {
@@ -105,6 +111,8 @@ public final class ElastigroupIntegrationMultaiRuntimeArgs extends com.pulumi.re
          * @param deploymentId The deployment id you want to get
          * 
          * Usage:
+         * 
+         * &lt;!--Start PulumiCodeChooser --&gt;
          * ```java
          * package generated_program;
          * 
@@ -127,6 +135,7 @@ public final class ElastigroupIntegrationMultaiRuntimeArgs extends com.pulumi.re
          *     }
          * }
          * ```
+         * &lt;!--End PulumiCodeChooser --&gt;
          * 
          * @return builder
          * 
@@ -140,6 +149,8 @@ public final class ElastigroupIntegrationMultaiRuntimeArgs extends com.pulumi.re
          * @param deploymentId The deployment id you want to get
          * 
          * Usage:
+         * 
+         * &lt;!--Start PulumiCodeChooser --&gt;
          * ```java
          * package generated_program;
          * 
@@ -162,6 +173,7 @@ public final class ElastigroupIntegrationMultaiRuntimeArgs extends com.pulumi.re
          *     }
          * }
          * ```
+         * &lt;!--End PulumiCodeChooser --&gt;
          * 
          * @return builder
          * 

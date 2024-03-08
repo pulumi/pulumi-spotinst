@@ -16,6 +16,7 @@ namespace Pulumi.SpotInst.Gke
     /// 
     /// Installation of the Ocean controller is required by this resource. You can accomplish this by using the spotinst/ocean-controller module as follows:
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -25,11 +26,13 @@ namespace Pulumi.SpotInst.Gke
     /// {
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// &gt; You must configure the same `cluster_identifier` both for the Ocean controller and for the `spotinst.gke.OceanImport` resource.
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -83,7 +86,9 @@ namespace Pulumi.SpotInst.Gke
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -97,6 +102,8 @@ namespace Pulumi.SpotInst.Gke
     ///     };
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
     /// ## Strategy
     /// 
     /// * `strategy` - (Optional) Strategy object.
@@ -104,6 +111,7 @@ namespace Pulumi.SpotInst.Gke
     ///     * `provisioning_model` - (Optional) Define the provisioning model of the launched instances. Valid values: `SPOT`, `PREEMPTIBLE`.
     ///     * `preemptible_percentage`- (Optional) Defines the desired preemptible percentage for the cluster.
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -113,6 +121,7 @@ namespace Pulumi.SpotInst.Gke
     /// {
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// &lt;a id="update-policy"&gt;&lt;/a&gt;
     /// ## Update Policy
@@ -124,9 +133,10 @@ namespace Pulumi.SpotInst.Gke
     ///     * `roll_config` - (Required) Holds the roll configuration.
     ///         * `batch_size_percentage` - (Required) Sets the percentage of the instances to deploy in each batch.
     ///         * `launch_spec_ids` - (Optional) List of Virtual Node Group identifiers to be rolled.
-    ///         * `batch_min_healthy_percentage` - (Optional) Default: 50. Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
+    ///         * `batch_min_healthy_percentage` - (Optional) Default: 50. Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%! (MISSING)Value of param should represent the number in percentage (%!)(MISSING) of the batch.
     ///         * `respect_pdb` - (Optional) Default: False. During the roll, if the parameter is set to True we honor PDB during the instance replacement.
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -136,6 +146,7 @@ namespace Pulumi.SpotInst.Gke
     /// {
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [SpotInstResourceType("spotinst:gke/oceanImport:OceanImport")]
     public partial class OceanImport : global::Pulumi.CustomResource

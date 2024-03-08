@@ -94,6 +94,7 @@ class Credentials(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_spotinst as spotinst
@@ -103,6 +104,7 @@ class Credentials(pulumi.CustomResource):
             accountid="act-123456",
             iamrole="arn:aws:iam::1234567890:role/Spot_Iam_Role")
         ```
+        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -119,6 +121,7 @@ class Credentials(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_spotinst as spotinst
@@ -128,6 +131,7 @@ class Credentials(pulumi.CustomResource):
             accountid="act-123456",
             iamrole="arn:aws:iam::1234567890:role/Spot_Iam_Role")
         ```
+        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param CredentialsArgs args: The arguments to use to populate this resource's properties.

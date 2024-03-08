@@ -19,6 +19,8 @@ public final class ElastigroupStatefulInstanceAction {
      * @return String, Action type. Supported action types: `pause`, `resume`, `recycle`, `deallocate`.
      * 
      * Usage:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -41,6 +43,7 @@ public final class ElastigroupStatefulInstanceAction {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     private String type;
@@ -57,6 +60,8 @@ public final class ElastigroupStatefulInstanceAction {
      * @return String, Action type. Supported action types: `pause`, `resume`, `recycle`, `deallocate`.
      * 
      * Usage:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -79,6 +84,7 @@ public final class ElastigroupStatefulInstanceAction {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public String type() {

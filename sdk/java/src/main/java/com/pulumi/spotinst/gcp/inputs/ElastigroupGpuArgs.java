@@ -19,6 +19,8 @@ public final class ElastigroupGpuArgs extends com.pulumi.resources.ResourceArgs 
      * The number of GPUs. Must be 0, 2, 4, 6, 8.
      * 
      * Usage:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -41,6 +43,7 @@ public final class ElastigroupGpuArgs extends com.pulumi.resources.ResourceArgs 
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     @Import(name="count", required=true)
@@ -50,6 +53,8 @@ public final class ElastigroupGpuArgs extends com.pulumi.resources.ResourceArgs 
      * @return The number of GPUs. Must be 0, 2, 4, 6, 8.
      * 
      * Usage:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -72,6 +77,7 @@ public final class ElastigroupGpuArgs extends com.pulumi.resources.ResourceArgs 
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public Output<Integer> count() {
@@ -122,6 +128,8 @@ public final class ElastigroupGpuArgs extends com.pulumi.resources.ResourceArgs 
          * @param count The number of GPUs. Must be 0, 2, 4, 6, 8.
          * 
          * Usage:
+         * 
+         * &lt;!--Start PulumiCodeChooser --&gt;
          * ```java
          * package generated_program;
          * 
@@ -144,6 +152,7 @@ public final class ElastigroupGpuArgs extends com.pulumi.resources.ResourceArgs 
          *     }
          * }
          * ```
+         * &lt;!--End PulumiCodeChooser --&gt;
          * 
          * @return builder
          * 
@@ -157,6 +166,8 @@ public final class ElastigroupGpuArgs extends com.pulumi.resources.ResourceArgs 
          * @param count The number of GPUs. Must be 0, 2, 4, 6, 8.
          * 
          * Usage:
+         * 
+         * &lt;!--Start PulumiCodeChooser --&gt;
          * ```java
          * package generated_program;
          * 
@@ -179,6 +190,7 @@ public final class ElastigroupGpuArgs extends com.pulumi.resources.ResourceArgs 
          *     }
          * }
          * ```
+         * &lt;!--End PulumiCodeChooser --&gt;
          * 
          * @return builder
          * 

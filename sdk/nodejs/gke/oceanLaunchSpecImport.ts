@@ -9,6 +9,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as spotinst from "@pulumi/spotinst";
@@ -18,11 +19,14 @@ import * as utilities from "../utilities";
  *     oceanId: "o-123456",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  *
  * export const oceanLaunchspecId = spotinst_ocean_gke_launch_spec_import.example.id;
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export class OceanLaunchSpecImport extends pulumi.CustomResource {
     /**

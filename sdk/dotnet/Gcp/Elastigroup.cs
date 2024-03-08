@@ -14,6 +14,7 @@ namespace Pulumi.SpotInst.Gcp
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -158,6 +159,7 @@ namespace Pulumi.SpotInst.Gcp
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [SpotInstResourceType("spotinst:gcp/elastigroup:Elastigroup")]
     public partial class Elastigroup : global::Pulumi.CustomResource
@@ -364,6 +366,7 @@ namespace Pulumi.SpotInst.Gcp
         /// <summary>
         /// Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -373,6 +376,7 @@ namespace Pulumi.SpotInst.Gcp
         /// {
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         [Output("unhealthyDuration")]
         public Output<int?> UnhealthyDuration { get; private set; } = null!;
@@ -708,6 +712,7 @@ namespace Pulumi.SpotInst.Gcp
         /// <summary>
         /// Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -717,6 +722,7 @@ namespace Pulumi.SpotInst.Gcp
         /// {
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         [Input("unhealthyDuration")]
         public Input<int>? UnhealthyDuration { get; set; }
@@ -1014,6 +1020,7 @@ namespace Pulumi.SpotInst.Gcp
         /// <summary>
         /// Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -1023,6 +1030,7 @@ namespace Pulumi.SpotInst.Gcp
         /// {
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         [Input("unhealthyDuration")]
         public Input<int>? UnhealthyDuration { get; set; }

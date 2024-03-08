@@ -21,6 +21,8 @@ public final class ElastigroupNetworkInterfaceArgs extends com.pulumi.resources.
      * Indicates whether to assign IPV6 addresses to your instance. Requires a subnet with IPV6 CIDR block ranges.
      * 
      * Usage:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -43,6 +45,7 @@ public final class ElastigroupNetworkInterfaceArgs extends com.pulumi.resources.
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     @Import(name="associateIpv6Address")
@@ -52,6 +55,8 @@ public final class ElastigroupNetworkInterfaceArgs extends com.pulumi.resources.
      * @return Indicates whether to assign IPV6 addresses to your instance. Requires a subnet with IPV6 CIDR block ranges.
      * 
      * Usage:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -74,6 +79,7 @@ public final class ElastigroupNetworkInterfaceArgs extends com.pulumi.resources.
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public Optional<Output<Boolean>> associateIpv6Address() {
@@ -220,6 +226,8 @@ public final class ElastigroupNetworkInterfaceArgs extends com.pulumi.resources.
          * @param associateIpv6Address Indicates whether to assign IPV6 addresses to your instance. Requires a subnet with IPV6 CIDR block ranges.
          * 
          * Usage:
+         * 
+         * &lt;!--Start PulumiCodeChooser --&gt;
          * ```java
          * package generated_program;
          * 
@@ -242,6 +250,7 @@ public final class ElastigroupNetworkInterfaceArgs extends com.pulumi.resources.
          *     }
          * }
          * ```
+         * &lt;!--End PulumiCodeChooser --&gt;
          * 
          * @return builder
          * 
@@ -255,6 +264,8 @@ public final class ElastigroupNetworkInterfaceArgs extends com.pulumi.resources.
          * @param associateIpv6Address Indicates whether to assign IPV6 addresses to your instance. Requires a subnet with IPV6 CIDR block ranges.
          * 
          * Usage:
+         * 
+         * &lt;!--Start PulumiCodeChooser --&gt;
          * ```java
          * package generated_program;
          * 
@@ -277,6 +288,7 @@ public final class ElastigroupNetworkInterfaceArgs extends com.pulumi.resources.
          *     }
          * }
          * ```
+         * &lt;!--End PulumiCodeChooser --&gt;
          * 
          * @return builder
          * 

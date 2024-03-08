@@ -90,9 +90,11 @@ class ElastigroupArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to mark created instances.
         :param pulumi.Input[int] unhealthy_duration: Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
                
+               <!--Start PulumiCodeChooser -->
                ```python
                import pulumi
                ```
+               <!--End PulumiCodeChooser -->
         """
         pulumi.set(__self__, "desired_capacity", desired_capacity)
         if auto_healing is not None:
@@ -587,9 +589,11 @@ class ElastigroupArgs:
         """
         Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         ```
+        <!--End PulumiCodeChooser -->
         """
         return pulumi.get(self, "unhealthy_duration")
 
@@ -675,9 +679,11 @@ class _ElastigroupState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to mark created instances.
         :param pulumi.Input[int] unhealthy_duration: Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
                
+               <!--Start PulumiCodeChooser -->
                ```python
                import pulumi
                ```
+               <!--End PulumiCodeChooser -->
         """
         if auto_healing is not None:
             pulumi.set(__self__, "auto_healing", auto_healing)
@@ -1173,9 +1179,11 @@ class _ElastigroupState:
         """
         Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         ```
+        <!--End PulumiCodeChooser -->
         """
         return pulumi.get(self, "unhealthy_duration")
 
@@ -1231,6 +1239,7 @@ class Elastigroup(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_spotinst as spotinst
@@ -1320,6 +1329,7 @@ class Elastigroup(pulumi.CustomResource):
                 "https",
             ])
         ```
+        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1359,9 +1369,11 @@ class Elastigroup(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to mark created instances.
         :param pulumi.Input[int] unhealthy_duration: Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
                
+               <!--Start PulumiCodeChooser -->
                ```python
                import pulumi
                ```
+               <!--End PulumiCodeChooser -->
         """
         ...
     @overload
@@ -1374,6 +1386,7 @@ class Elastigroup(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_spotinst as spotinst
@@ -1463,6 +1476,7 @@ class Elastigroup(pulumi.CustomResource):
                 "https",
             ])
         ```
+        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param ElastigroupArgs args: The arguments to use to populate this resource's properties.
@@ -1651,9 +1665,11 @@ class Elastigroup(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to mark created instances.
         :param pulumi.Input[int] unhealthy_duration: Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
                
+               <!--Start PulumiCodeChooser -->
                ```python
                import pulumi
                ```
+               <!--End PulumiCodeChooser -->
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1975,9 +1991,11 @@ class Elastigroup(pulumi.CustomResource):
         """
         Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         ```
+        <!--End PulumiCodeChooser -->
         """
         return pulumi.get(self, "unhealthy_duration")
 

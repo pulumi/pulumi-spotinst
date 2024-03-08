@@ -14,6 +14,7 @@ namespace Pulumi.SpotInst.Organization
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -44,6 +45,7 @@ namespace Pulumi.SpotInst.Organization
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [SpotInstResourceType("spotinst:organization/userGroup:UserGroup")]
     public partial class UserGroup : global::Pulumi.CustomResource

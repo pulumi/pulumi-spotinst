@@ -20,6 +20,8 @@ import javax.annotation.Nullable;
  * Provides a Spotinst user-group of your Spot organization.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -54,6 +56,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */
 @ResourceType(type="spotinst:organization/userGroup:UserGroup")

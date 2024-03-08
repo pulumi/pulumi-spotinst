@@ -12,6 +12,7 @@ namespace Pulumi.SpotInst.Aws
     /// <summary>
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -43,6 +44,7 @@ namespace Pulumi.SpotInst.Aws
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [SpotInstResourceType("spotinst:aws/suspension:Suspension")]
     public partial class Suspension : global::Pulumi.CustomResource

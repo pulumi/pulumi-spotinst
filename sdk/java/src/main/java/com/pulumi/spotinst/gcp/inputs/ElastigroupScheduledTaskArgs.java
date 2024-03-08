@@ -51,6 +51,8 @@ public final class ElastigroupScheduledTaskArgs extends com.pulumi.resources.Res
      * The maximum number of instances the group should have.
      * 
      * Usage:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -73,6 +75,7 @@ public final class ElastigroupScheduledTaskArgs extends com.pulumi.resources.Res
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     @Import(name="maxCapacity")
@@ -82,6 +85,8 @@ public final class ElastigroupScheduledTaskArgs extends com.pulumi.resources.Res
      * @return The maximum number of instances the group should have.
      * 
      * Usage:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -104,6 +109,7 @@ public final class ElastigroupScheduledTaskArgs extends com.pulumi.resources.Res
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public Optional<Output<String>> maxCapacity() {
@@ -230,6 +236,8 @@ public final class ElastigroupScheduledTaskArgs extends com.pulumi.resources.Res
          * @param maxCapacity The maximum number of instances the group should have.
          * 
          * Usage:
+         * 
+         * &lt;!--Start PulumiCodeChooser --&gt;
          * ```java
          * package generated_program;
          * 
@@ -252,6 +260,7 @@ public final class ElastigroupScheduledTaskArgs extends com.pulumi.resources.Res
          *     }
          * }
          * ```
+         * &lt;!--End PulumiCodeChooser --&gt;
          * 
          * @return builder
          * 
@@ -265,6 +274,8 @@ public final class ElastigroupScheduledTaskArgs extends com.pulumi.resources.Res
          * @param maxCapacity The maximum number of instances the group should have.
          * 
          * Usage:
+         * 
+         * &lt;!--Start PulumiCodeChooser --&gt;
          * ```java
          * package generated_program;
          * 
@@ -287,6 +298,7 @@ public final class ElastigroupScheduledTaskArgs extends com.pulumi.resources.Res
          *     }
          * }
          * ```
+         * &lt;!--End PulumiCodeChooser --&gt;
          * 
          * @return builder
          * 

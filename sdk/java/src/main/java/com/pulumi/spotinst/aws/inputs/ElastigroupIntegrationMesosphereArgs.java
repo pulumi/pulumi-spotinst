@@ -18,6 +18,8 @@ public final class ElastigroupIntegrationMesosphereArgs extends com.pulumi.resou
      * The public IP of the DC/OS Master.
      * 
      * Usage:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -40,6 +42,7 @@ public final class ElastigroupIntegrationMesosphereArgs extends com.pulumi.resou
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     @Import(name="apiServer", required=true)
@@ -49,6 +52,8 @@ public final class ElastigroupIntegrationMesosphereArgs extends com.pulumi.resou
      * @return The public IP of the DC/OS Master.
      * 
      * Usage:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -71,6 +76,7 @@ public final class ElastigroupIntegrationMesosphereArgs extends com.pulumi.resou
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public Output<String> apiServer() {
@@ -105,6 +111,8 @@ public final class ElastigroupIntegrationMesosphereArgs extends com.pulumi.resou
          * @param apiServer The public IP of the DC/OS Master.
          * 
          * Usage:
+         * 
+         * &lt;!--Start PulumiCodeChooser --&gt;
          * ```java
          * package generated_program;
          * 
@@ -127,6 +135,7 @@ public final class ElastigroupIntegrationMesosphereArgs extends com.pulumi.resou
          *     }
          * }
          * ```
+         * &lt;!--End PulumiCodeChooser --&gt;
          * 
          * @return builder
          * 
@@ -140,6 +149,8 @@ public final class ElastigroupIntegrationMesosphereArgs extends com.pulumi.resou
          * @param apiServer The public IP of the DC/OS Master.
          * 
          * Usage:
+         * 
+         * &lt;!--Start PulumiCodeChooser --&gt;
          * ```java
          * package generated_program;
          * 
@@ -162,6 +173,7 @@ public final class ElastigroupIntegrationMesosphereArgs extends com.pulumi.resou
          *     }
          * }
          * ```
+         * &lt;!--End PulumiCodeChooser --&gt;
          * 
          * @return builder
          * 

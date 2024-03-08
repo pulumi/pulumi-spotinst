@@ -22,6 +22,8 @@ public final class ElastigroupIntegrationRoute53DomainRecordSet {
      * @return Designates whether the DNS address should be exposed to connections outside the VPC.
      * 
      * Usage:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -44,6 +46,7 @@ public final class ElastigroupIntegrationRoute53DomainRecordSet {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     private @Nullable Boolean usePublicDns;
@@ -65,6 +68,8 @@ public final class ElastigroupIntegrationRoute53DomainRecordSet {
      * @return Designates whether the DNS address should be exposed to connections outside the VPC.
      * 
      * Usage:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -87,6 +92,7 @@ public final class ElastigroupIntegrationRoute53DomainRecordSet {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public Optional<Boolean> usePublicDns() {

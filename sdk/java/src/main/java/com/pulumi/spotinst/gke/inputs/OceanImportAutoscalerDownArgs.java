@@ -32,14 +32,14 @@ public final class OceanImportAutoscalerDownArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Would represent the maximum % to scale-down. Number between 1-100.
+     * Would represent the maximum %!t(MISSING)o scale-down. Number between 1-100.
      * 
      */
     @Import(name="maxScaleDownPercentage")
     private @Nullable Output<Double> maxScaleDownPercentage;
 
     /**
-     * @return Would represent the maximum % to scale-down. Number between 1-100.
+     * @return Would represent the maximum %!t(MISSING)o scale-down. Number between 1-100.
      * 
      */
     public Optional<Output<Double>> maxScaleDownPercentage() {
@@ -93,7 +93,7 @@ public final class OceanImportAutoscalerDownArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param maxScaleDownPercentage Would represent the maximum % to scale-down. Number between 1-100.
+         * @param maxScaleDownPercentage Would represent the maximum %!t(MISSING)o scale-down. Number between 1-100.
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class OceanImportAutoscalerDownArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param maxScaleDownPercentage Would represent the maximum % to scale-down. Number between 1-100.
+         * @param maxScaleDownPercentage Would represent the maximum %!t(MISSING)o scale-down. Number between 1-100.
          * 
          * @return builder
          * 

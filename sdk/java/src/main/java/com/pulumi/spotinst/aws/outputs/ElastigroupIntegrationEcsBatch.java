@@ -15,6 +15,8 @@ public final class ElastigroupIntegrationEcsBatch {
      * @return Array of strings.
      * 
      * Usage:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -37,6 +39,7 @@ public final class ElastigroupIntegrationEcsBatch {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     private List<String> jobQueueNames;
@@ -46,6 +49,8 @@ public final class ElastigroupIntegrationEcsBatch {
      * @return Array of strings.
      * 
      * Usage:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -68,6 +73,7 @@ public final class ElastigroupIntegrationEcsBatch {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public List<String> jobQueueNames() {

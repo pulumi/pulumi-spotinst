@@ -34,6 +34,8 @@ public final class ElastigroupBackendServiceNamedPortArgs extends com.pulumi.res
      * A list of ports.
      * 
      * Usage:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -56,6 +58,7 @@ public final class ElastigroupBackendServiceNamedPortArgs extends com.pulumi.res
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     @Import(name="ports", required=true)
@@ -65,6 +68,8 @@ public final class ElastigroupBackendServiceNamedPortArgs extends com.pulumi.res
      * @return A list of ports.
      * 
      * Usage:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -87,6 +92,7 @@ public final class ElastigroupBackendServiceNamedPortArgs extends com.pulumi.res
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public Output<List<String>> ports() {
@@ -143,6 +149,8 @@ public final class ElastigroupBackendServiceNamedPortArgs extends com.pulumi.res
          * @param ports A list of ports.
          * 
          * Usage:
+         * 
+         * &lt;!--Start PulumiCodeChooser --&gt;
          * ```java
          * package generated_program;
          * 
@@ -165,6 +173,7 @@ public final class ElastigroupBackendServiceNamedPortArgs extends com.pulumi.res
          *     }
          * }
          * ```
+         * &lt;!--End PulumiCodeChooser --&gt;
          * 
          * @return builder
          * 
@@ -178,6 +187,8 @@ public final class ElastigroupBackendServiceNamedPortArgs extends com.pulumi.res
          * @param ports A list of ports.
          * 
          * Usage:
+         * 
+         * &lt;!--Start PulumiCodeChooser --&gt;
          * ```java
          * package generated_program;
          * 
@@ -200,6 +211,7 @@ public final class ElastigroupBackendServiceNamedPortArgs extends com.pulumi.res
          *     }
          * }
          * ```
+         * &lt;!--End PulumiCodeChooser --&gt;
          * 
          * @return builder
          * 
@@ -212,6 +224,8 @@ public final class ElastigroupBackendServiceNamedPortArgs extends com.pulumi.res
          * @param ports A list of ports.
          * 
          * Usage:
+         * 
+         * &lt;!--Start PulumiCodeChooser --&gt;
          * ```java
          * package generated_program;
          * 
@@ -234,6 +248,7 @@ public final class ElastigroupBackendServiceNamedPortArgs extends com.pulumi.res
          *     }
          * }
          * ```
+         * &lt;!--End PulumiCodeChooser --&gt;
          * 
          * @return builder
          * 

@@ -348,6 +348,7 @@ namespace Pulumi.SpotInst.Aws
         /// 
         /// Usage:
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -357,6 +358,7 @@ namespace Pulumi.SpotInst.Aws
         /// {
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         [Output("privateIps")]
         public Output<ImmutableArray<string>> PrivateIps { get; private set; } = null!;
@@ -949,6 +951,7 @@ namespace Pulumi.SpotInst.Aws
         /// 
         /// Usage:
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -958,6 +961,7 @@ namespace Pulumi.SpotInst.Aws
         /// {
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public InputList<string> PrivateIps
         {
@@ -1587,6 +1591,7 @@ namespace Pulumi.SpotInst.Aws
         /// 
         /// Usage:
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -1596,6 +1601,7 @@ namespace Pulumi.SpotInst.Aws
         /// {
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public InputList<string> PrivateIps
         {

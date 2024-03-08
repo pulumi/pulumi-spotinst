@@ -18,6 +18,7 @@ namespace Pulumi.SpotInst.Azure
     /// 
     /// Installation of the Ocean controller is required by this resource. You can accomplish this by using the spotinst/ocean-controller module as follows:
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -27,6 +28,7 @@ namespace Pulumi.SpotInst.Azure
     /// {
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// &gt; You must configure the same `cluster_identifier` and `acd_identifier` both for the Ocean controller and for the `spotinst.azure.Ocean` resource.
     /// </summary>

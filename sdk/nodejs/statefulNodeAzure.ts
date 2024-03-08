@@ -11,6 +11,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as spotinst from "@pulumi/spotinst";
@@ -214,7 +215,9 @@ import * as utilities from "./utilities";
  *         publicIpTtlInHours: 0,
  *     }],
  * });
+ * // -------------------------------------------------------------------
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * # Argument Reference
  *

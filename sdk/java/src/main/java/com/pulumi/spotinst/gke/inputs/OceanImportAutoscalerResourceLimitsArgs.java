@@ -17,6 +17,8 @@ public final class OceanImportAutoscalerResourceLimitsArgs extends com.pulumi.re
 
     /**
      * The maximum memory in GiB units that can be allocated to the cluster.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -39,6 +41,7 @@ public final class OceanImportAutoscalerResourceLimitsArgs extends com.pulumi.re
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * &lt;a id=&#34;strategy&#34;&gt;&lt;/a&gt;
      * 
@@ -48,6 +51,8 @@ public final class OceanImportAutoscalerResourceLimitsArgs extends com.pulumi.re
 
     /**
      * @return The maximum memory in GiB units that can be allocated to the cluster.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -70,6 +75,7 @@ public final class OceanImportAutoscalerResourceLimitsArgs extends com.pulumi.re
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * &lt;a id=&#34;strategy&#34;&gt;&lt;/a&gt;
      * 
@@ -120,6 +126,8 @@ public final class OceanImportAutoscalerResourceLimitsArgs extends com.pulumi.re
 
         /**
          * @param maxMemoryGib The maximum memory in GiB units that can be allocated to the cluster.
+         * 
+         * &lt;!--Start PulumiCodeChooser --&gt;
          * ```java
          * package generated_program;
          * 
@@ -142,6 +150,7 @@ public final class OceanImportAutoscalerResourceLimitsArgs extends com.pulumi.re
          *     }
          * }
          * ```
+         * &lt;!--End PulumiCodeChooser --&gt;
          * 
          * &lt;a id=&#34;strategy&#34;&gt;&lt;/a&gt;
          * 
@@ -155,6 +164,8 @@ public final class OceanImportAutoscalerResourceLimitsArgs extends com.pulumi.re
 
         /**
          * @param maxMemoryGib The maximum memory in GiB units that can be allocated to the cluster.
+         * 
+         * &lt;!--Start PulumiCodeChooser --&gt;
          * ```java
          * package generated_program;
          * 
@@ -177,6 +188,7 @@ public final class OceanImportAutoscalerResourceLimitsArgs extends com.pulumi.re
          *     }
          * }
          * ```
+         * &lt;!--End PulumiCodeChooser --&gt;
          * 
          * &lt;a id=&#34;strategy&#34;&gt;&lt;/a&gt;
          * 

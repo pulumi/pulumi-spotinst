@@ -388,9 +388,11 @@ export namespace aws {
          *
          * Usage:
          *
+         * <!--Start PulumiCodeChooser -->
          * ```typescript
          * import * as pulumi from "@pulumi/pulumi";
          * ```
+         * <!--End PulumiCodeChooser -->
          */
         adjustmentPercentage?: pulumi.Input<string>;
         /**
@@ -486,9 +488,11 @@ export namespace aws {
          *
          * Usage:
          *
+         * <!--Start PulumiCodeChooser -->
          * ```typescript
          * import * as pulumi from "@pulumi/pulumi";
          * ```
+         * <!--End PulumiCodeChooser -->
          */
         throughput?: pulumi.Input<number>;
         /**
@@ -512,9 +516,11 @@ export namespace aws {
          *
          * Usage:
          *
+         * <!--Start PulumiCodeChooser -->
          * ```typescript
          * import * as pulumi from "@pulumi/pulumi";
          * ```
+         * <!--End PulumiCodeChooser -->
          */
         virtualName: pulumi.Input<string>;
     }
@@ -604,9 +610,11 @@ export namespace aws {
          *
          * Usage:
          *
+         * <!--Start PulumiCodeChooser -->
          * ```typescript
          * import * as pulumi from "@pulumi/pulumi";
          * ```
+         * <!--End PulumiCodeChooser -->
          */
         updateLevel?: pulumi.Input<string>;
     }
@@ -636,9 +644,11 @@ export namespace aws {
          *
          * Usage:
          *
+         * <!--Start PulumiCodeChooser -->
          * ```typescript
          * import * as pulumi from "@pulumi/pulumi";
          * ```
+         * <!--End PulumiCodeChooser -->
          */
         deploymentGroupName: pulumi.Input<string>;
     }
@@ -775,9 +785,11 @@ export namespace aws {
          *
          * Usage:
          *
+         * <!--Start PulumiCodeChooser -->
          * ```typescript
          * import * as pulumi from "@pulumi/pulumi";
          * ```
+         * <!--End PulumiCodeChooser -->
          */
         jobQueueNames: pulumi.Input<pulumi.Input<string>[]>;
     }
@@ -802,9 +814,11 @@ export namespace aws {
          *
          * Usage:
          *
+         * <!--Start PulumiCodeChooser -->
          * ```typescript
          * import * as pulumi from "@pulumi/pulumi";
          * ```
+         * <!--End PulumiCodeChooser -->
          */
         apiServer?: pulumi.Input<string>;
         /**
@@ -832,9 +846,11 @@ export namespace aws {
          *
          * Usage:
          *
+         * <!--Start PulumiCodeChooser -->
          * ```typescript
          * import * as pulumi from "@pulumi/pulumi";
          * ```
+         * <!--End PulumiCodeChooser -->
          */
         autoscaleLabels?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupIntegrationKubernetesAutoscaleLabel>[]>;
         clusterIdentifier?: pulumi.Input<string>;
@@ -888,9 +904,11 @@ export namespace aws {
          *
          * Usage:
          *
+         * <!--Start PulumiCodeChooser -->
          * ```typescript
          * import * as pulumi from "@pulumi/pulumi";
          * ```
+         * <!--End PulumiCodeChooser -->
          */
         apiServer: pulumi.Input<string>;
     }
@@ -901,9 +919,11 @@ export namespace aws {
          *
          * Usage:
          *
+         * <!--Start PulumiCodeChooser -->
          * ```typescript
          * import * as pulumi from "@pulumi/pulumi";
          * ```
+         * <!--End PulumiCodeChooser -->
          */
         deploymentId: pulumi.Input<string>;
     }
@@ -918,9 +938,11 @@ export namespace aws {
          *
          * Usage:
          *
+         * <!--Start PulumiCodeChooser -->
          * ```typescript
          * import * as pulumi from "@pulumi/pulumi";
          * ```
+         * <!--End PulumiCodeChooser -->
          */
         autoscaleConstraints?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupIntegrationNomadAutoscaleConstraint>[]>;
         /**
@@ -996,9 +1018,11 @@ export namespace aws {
          * The Rancher version. Must be `"1"` or `"2"`. If this field is omitted, it’s assumed that the Rancher cluster is version 1. Note that Kubernetes is required when using Rancher version 2^.
          * Usage:
          *
+         * <!--Start PulumiCodeChooser -->
          * ```typescript
          * import * as pulumi from "@pulumi/pulumi";
          * ```
+         * <!--End PulumiCodeChooser -->
          */
         version?: pulumi.Input<string>;
     }
@@ -1039,9 +1063,11 @@ export namespace aws {
          *
          * Usage:
          *
+         * <!--Start PulumiCodeChooser -->
          * ```typescript
          * import * as pulumi from "@pulumi/pulumi";
          * ```
+         * <!--End PulumiCodeChooser -->
          */
         usePublicDns?: pulumi.Input<boolean>;
         /**
@@ -1150,9 +1176,11 @@ export namespace aws {
          *
          * Usage:
          *
+         * <!--Start PulumiCodeChooser -->
          * ```typescript
          * import * as pulumi from "@pulumi/pulumi";
          * ```
+         * <!--End PulumiCodeChooser -->
          */
         balancerId: pulumi.Input<string>;
         /**
@@ -1231,9 +1259,11 @@ export namespace aws {
          *
          * Usage:
          *
+         * <!--Start PulumiCodeChooser -->
          * ```typescript
          * import * as pulumi from "@pulumi/pulumi";
          * ```
+         * <!--End PulumiCodeChooser -->
          */
         associateIpv6Address?: pulumi.Input<boolean>;
         /**
@@ -1537,13 +1567,17 @@ export namespace aws {
          *
          * Usage:
          *
+         * <!--Start PulumiCodeChooser -->
          * ```typescript
          * import * as pulumi from "@pulumi/pulumi";
          * ```
+         * <!--End PulumiCodeChooser -->
          *
+         * <!--Start PulumiCodeChooser -->
          * ```typescript
          * import * as pulumi from "@pulumi/pulumi";
          * ```
+         * <!--End PulumiCodeChooser -->
          */
         predictiveMode?: pulumi.Input<string>;
         /**
@@ -1737,9 +1771,11 @@ export namespace aws {
          *
          * Usage:
          *
+         * <!--Start PulumiCodeChooser -->
          * ```typescript
          * import * as pulumi from "@pulumi/pulumi";
          * ```
+         * <!--End PulumiCodeChooser -->
          */
         adjustmentPercentage?: pulumi.Input<string>;
         /**
@@ -1806,9 +1842,11 @@ export namespace aws {
          *
          * Usage:
          *
+         * <!--Start PulumiCodeChooser -->
          * ```typescript
          * import * as pulumi from "@pulumi/pulumi";
          * ```
+         * <!--End PulumiCodeChooser -->
          */
         timeout?: pulumi.Input<number>;
     }
@@ -1827,9 +1865,11 @@ export namespace aws {
          *
          * Usage:
          *
+         * <!--Start PulumiCodeChooser -->
          * ```typescript
          * import * as pulumi from "@pulumi/pulumi";
          * ```
+         * <!--End PulumiCodeChooser -->
          */
         shouldDeleteSnapshots?: pulumi.Input<boolean>;
         /**
@@ -1848,9 +1888,11 @@ export namespace aws {
          *
          * Usage:
          *
+         * <!--Start PulumiCodeChooser -->
          * ```typescript
          * import * as pulumi from "@pulumi/pulumi";
          * ```
+         * <!--End PulumiCodeChooser -->
          */
         type: pulumi.Input<string>;
     }
@@ -1900,11 +1942,11 @@ export namespace aws {
          */
         strategy?: pulumi.Input<inputs.aws.ElastigroupUpdatePolicyRollConfigStrategy>;
         /**
-         * For use with `shouldRoll`. Sets minimum % of roll required to complete before continuing the plan. Required if `waitForRollTimeout` is set.
+         * For use with `shouldRoll`. Sets minimum %!o(MISSING)f roll required to complete before continuing the plan. Required if `waitForRollTimeout` is set.
          */
         waitForRollPercentage?: pulumi.Input<number>;
         /**
-         * For use with `shouldRoll`. Sets how long to wait for the deployed % of a roll to exceed `waitForRollPercentage` before continuing the plan. Required if `waitForRollPercentage` is set.
+         * For use with `shouldRoll`. Sets how long to wait for the deployed %!o(MISSING)f a roll to exceed `waitForRollPercentage` before continuing the plan. Required if `waitForRollPercentage` is set.
          */
         waitForRollTimeout?: pulumi.Input<number>;
     }
@@ -1941,9 +1983,11 @@ export namespace aws {
         /**
          * Decrementing the group target capacity after detaching the instances.
          *
+         * <!--Start PulumiCodeChooser -->
          * ```typescript
          * import * as pulumi from "@pulumi/pulumi";
          * ```
+         * <!--End PulumiCodeChooser -->
          */
         shouldDecrementTargetCapacity?: pulumi.Input<boolean>;
         /**
@@ -2782,7 +2826,7 @@ export namespace aws {
 
     export interface OceanLaunchSpecAutoscaleHeadroomsAutomatic {
         /**
-         * Number between 0-200 to control the headroom % of the specific Virtual Node Group. Effective when cluster.autoScaler.headroom.automatic.`isEnabled` = true is set on the Ocean cluster.
+         * Number between 0-200 to control the headroom %!o(MISSING)f the specific Virtual Node Group. Effective when cluster.autoScaler.headroom.automatic.`isEnabled` = true is set on the Ocean cluster.
          */
         autoHeadroomPercentage?: pulumi.Input<number>;
     }
@@ -3414,7 +3458,7 @@ export namespace azure {
 
     export interface OceanAutoscalerAutoscaleDown {
         /**
-         * Would represent the maximum % to scale-down.
+         * Would represent the maximum %!t(MISSING)o scale-down.
          */
         maxScaleDownPercentage?: pulumi.Input<number>;
     }
@@ -3762,7 +3806,7 @@ export namespace azure {
 
     export interface OceanVirtualNodeGroupAutoscale {
         /**
-         * Number between 0-200 to control the headroom % of the specific Virtual Node Group. Effective when `cluster.autoScaler.headroom.automatic.is_enabled` = true is set on the Ocean cluster.
+         * Number between 0-200 to control the headroom %!o(MISSING)f the specific Virtual Node Group. Effective when `cluster.autoScaler.headroom.automatic.is_enabled` = true is set on the Ocean cluster.
          */
         autoHeadroomPercentage?: pulumi.Input<number>;
         autoscaleHeadrooms?: pulumi.Input<pulumi.Input<inputs.azure.OceanVirtualNodeGroupAutoscaleAutoscaleHeadroom>[]>;
@@ -3872,7 +3916,7 @@ export namespace azure {
 export namespace ecs {
     export interface OceanAutoscaler {
         /**
-         * The auto-headroom percentage. Set a number between 0-200 to control the headroom % of the cluster. Relevant when `isAutoConfig`= true.
+         * The auto-headroom percentage. Set a number between 0-200 to control the headroom %!o(MISSING)f the cluster. Relevant when `isAutoConfig`= true.
          */
         autoHeadroomPercentage?: pulumi.Input<number>;
         /**
@@ -3886,9 +3930,11 @@ export namespace ecs {
         /**
          * When set to true, both automatic and per custom launch specification manual headroom to be saved concurrently and independently in the cluster. prerequisite: isAutoConfig must be true
          *
+         * <!--Start PulumiCodeChooser -->
          * ```typescript
          * import * as pulumi from "@pulumi/pulumi";
          * ```
+         * <!--End PulumiCodeChooser -->
          */
         enableAutomaticAndManualHeadroom?: pulumi.Input<boolean>;
         /**
@@ -3915,7 +3961,7 @@ export namespace ecs {
 
     export interface OceanAutoscalerDown {
         /**
-         * Would represent the maximum % to scale-down. Number between 1-100.
+         * Would represent the maximum %!t(MISSING)o scale-down. Number between 1-100.
          */
         maxScaleDownPercentage?: pulumi.Input<number>;
     }
@@ -4306,9 +4352,11 @@ export namespace ecs {
         /**
          * Valid values: "clusterRoll". Required for `cluster.scheduling.tasks object`. Example: `clusterRoll`.
          *
+         * <!--Start PulumiCodeChooser -->
          * ```typescript
          * import * as pulumi from "@pulumi/pulumi";
          * ```
+         * <!--End PulumiCodeChooser -->
          *
          *
          * <a id="attributes-reference"></a>
@@ -4345,11 +4393,13 @@ export namespace ecs {
 
     export interface OceanUpdatePolicyRollConfig {
         /**
-         * Default: 50. Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
+         * Default: 50. Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%! (MISSING)Value of param should represent the number in percentage (%!)(MISSING) of the batch.
          *
+         * <!--Start PulumiCodeChooser -->
          * ```typescript
          * import * as pulumi from "@pulumi/pulumi";
          * ```
+         * <!--End PulumiCodeChooser -->
          */
         batchMinHealthyPercentage?: pulumi.Input<number>;
         /**
@@ -4389,9 +4439,11 @@ export namespace gcp {
          *
          * Usage:
          *
+         * <!--Start PulumiCodeChooser -->
          * ```typescript
          * import * as pulumi from "@pulumi/pulumi";
          * ```
+         * <!--End PulumiCodeChooser -->
          */
         ports: pulumi.Input<pulumi.Input<string>[]>;
     }
@@ -4445,9 +4497,11 @@ export namespace gcp {
          *
          * Usage:
          *
+         * <!--Start PulumiCodeChooser -->
          * ```typescript
          * import * as pulumi from "@pulumi/pulumi";
          * ```
+         * <!--End PulumiCodeChooser -->
          */
         sourceImage: pulumi.Input<string>;
     }
@@ -4458,9 +4512,11 @@ export namespace gcp {
          *
          * Usage:
          *
+         * <!--Start PulumiCodeChooser -->
          * ```typescript
          * import * as pulumi from "@pulumi/pulumi";
          * ```
+         * <!--End PulumiCodeChooser -->
          */
         count: pulumi.Input<number>;
         /**
@@ -4487,9 +4543,11 @@ export namespace gcp {
          *
          * Usage:
          *
+         * <!--Start PulumiCodeChooser -->
          * ```typescript
          * import * as pulumi from "@pulumi/pulumi";
          * ```
+         * <!--End PulumiCodeChooser -->
          */
         masterPort: pulumi.Input<number>;
     }
@@ -4722,9 +4780,11 @@ export namespace gcp {
          *
          * Usage:
          *
+         * <!--Start PulumiCodeChooser -->
          * ```typescript
          * import * as pulumi from "@pulumi/pulumi";
          * ```
+         * <!--End PulumiCodeChooser -->
          */
         maxCapacity?: pulumi.Input<string>;
         /**
@@ -4936,7 +4996,7 @@ export namespace gke {
 
     export interface OceanImportAutoscaler {
         /**
-         * Optionally set the auto headroom percentage, set a number between 0-200 to control the headroom % from the cluster. Relevant when isAutoConfig=true.
+         * Optionally set the auto headroom percentage, set a number between 0-200 to control the headroom %!f(MISSING)rom the cluster. Relevant when isAutoConfig=true.
          */
         autoHeadroomPercentage?: pulumi.Input<number>;
         /**
@@ -4975,7 +5035,7 @@ export namespace gke {
          */
         evaluationPeriods?: pulumi.Input<number>;
         /**
-         * Would represent the maximum % to scale-down. Number between 1-100.
+         * Would represent the maximum %!t(MISSING)o scale-down. Number between 1-100.
          */
         maxScaleDownPercentage?: pulumi.Input<number>;
     }
@@ -5003,9 +5063,11 @@ export namespace gke {
         /**
          * The maximum memory in GiB units that can be allocated to the cluster.
          *
+         * <!--Start PulumiCodeChooser -->
          * ```typescript
          * import * as pulumi from "@pulumi/pulumi";
          * ```
+         * <!--End PulumiCodeChooser -->
          *
          * <a id="strategy"></a>
          */
@@ -5087,12 +5149,14 @@ export namespace gke {
     export interface OceanImportScheduledTaskTaskTaskParametersClusterRoll {
         batchMinHealthyPercentage?: pulumi.Input<number>;
         /**
-         * Value in % to set size of batch in roll. Valid values are 0-100
+         * Value in %!t(MISSING)o set size of batch in roll. Valid values are 0-100
          * Example: 20.
          *
+         * <!--Start PulumiCodeChooser -->
          * ```typescript
          * import * as pulumi from "@pulumi/pulumi";
          * ```
+         * <!--End PulumiCodeChooser -->
          */
         batchSizePercentage?: pulumi.Input<number>;
         comment?: pulumi.Input<string>;
@@ -5128,12 +5192,14 @@ export namespace gke {
     export interface OceanImportUpdatePolicyRollConfig {
         batchMinHealthyPercentage?: pulumi.Input<number>;
         /**
-         * Value in % to set size of batch in roll. Valid values are 0-100
+         * Value in %!t(MISSING)o set size of batch in roll. Valid values are 0-100
          * Example: 20.
          *
+         * <!--Start PulumiCodeChooser -->
          * ```typescript
          * import * as pulumi from "@pulumi/pulumi";
          * ```
+         * <!--End PulumiCodeChooser -->
          */
         batchSizePercentage: pulumi.Input<number>;
         launchSpecIds?: pulumi.Input<pulumi.Input<string>[]>;
@@ -5161,7 +5227,7 @@ export namespace gke {
 
     export interface OceanLaunchSpecAutoscaleHeadroomsAutomatic {
         /**
-         * Number between 0-200 to control the headroom % of the specific Virtual Node Group. Effective when cluster.autoScaler.headroom.automatic.`isEnabled` = true is set on the Ocean cluster.
+         * Number between 0-200 to control the headroom %!o(MISSING)f the specific Virtual Node Group. Effective when cluster.autoScaler.headroom.automatic.`isEnabled` = true is set on the Ocean cluster.
          */
         autoHeadroomPercentage?: pulumi.Input<number>;
     }

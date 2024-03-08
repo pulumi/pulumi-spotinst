@@ -34,6 +34,8 @@ public final class ElastigroupIntegrationDockerSwarmArgs extends com.pulumi.reso
      * Network port used by your swarm.
      * 
      * Usage:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -56,6 +58,7 @@ public final class ElastigroupIntegrationDockerSwarmArgs extends com.pulumi.reso
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     @Import(name="masterPort", required=true)
@@ -65,6 +68,8 @@ public final class ElastigroupIntegrationDockerSwarmArgs extends com.pulumi.reso
      * @return Network port used by your swarm.
      * 
      * Usage:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -87,6 +92,7 @@ public final class ElastigroupIntegrationDockerSwarmArgs extends com.pulumi.reso
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public Output<Integer> masterPort() {
@@ -143,6 +149,8 @@ public final class ElastigroupIntegrationDockerSwarmArgs extends com.pulumi.reso
          * @param masterPort Network port used by your swarm.
          * 
          * Usage:
+         * 
+         * &lt;!--Start PulumiCodeChooser --&gt;
          * ```java
          * package generated_program;
          * 
@@ -165,6 +173,7 @@ public final class ElastigroupIntegrationDockerSwarmArgs extends com.pulumi.reso
          *     }
          * }
          * ```
+         * &lt;!--End PulumiCodeChooser --&gt;
          * 
          * @return builder
          * 
@@ -178,6 +187,8 @@ public final class ElastigroupIntegrationDockerSwarmArgs extends com.pulumi.reso
          * @param masterPort Network port used by your swarm.
          * 
          * Usage:
+         * 
+         * &lt;!--Start PulumiCodeChooser --&gt;
          * ```java
          * package generated_program;
          * 
@@ -200,6 +211,7 @@ public final class ElastigroupIntegrationDockerSwarmArgs extends com.pulumi.reso
          *     }
          * }
          * ```
+         * &lt;!--End PulumiCodeChooser --&gt;
          * 
          * @return builder
          * 

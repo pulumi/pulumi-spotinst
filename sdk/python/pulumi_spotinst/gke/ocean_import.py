@@ -564,14 +564,17 @@ class OceanImport(pulumi.CustomResource):
 
         Installation of the Ocean controller is required by this resource. You can accomplish this by using the spotinst/ocean-controller module as follows:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         ```
+        <!--End PulumiCodeChooser -->
 
         > You must configure the same `cluster_identifier` both for the Ocean controller and for the `gke.OceanImport` resource.
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_spotinst as spotinst
@@ -606,12 +609,16 @@ class OceanImport(pulumi.CustomResource):
                 "n1-standard-2",
             ])
         ```
+        <!--End PulumiCodeChooser -->
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
 
         pulumi.export("oceanId", spotinst_ocean_gke_import["example"]["id"])
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Strategy
 
         * `strategy` - (Optional) Strategy object.
@@ -619,9 +626,11 @@ class OceanImport(pulumi.CustomResource):
             * `provisioning_model` - (Optional) Define the provisioning model of the launched instances. Valid values: `SPOT`, `PREEMPTIBLE`.
             * `preemptible_percentage`- (Optional) Defines the desired preemptible percentage for the cluster.
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         ```
+        <!--End PulumiCodeChooser -->
 
         <a id="update-policy"></a>
         ## Update Policy
@@ -633,12 +642,14 @@ class OceanImport(pulumi.CustomResource):
             * `roll_config` - (Required) Holds the roll configuration.
                 * `batch_size_percentage` - (Required) Sets the percentage of the instances to deploy in each batch.
                 * `launch_spec_ids` - (Optional) List of Virtual Node Group identifiers to be rolled.
-                * `batch_min_healthy_percentage` - (Optional) Default: 50. Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
+                * `batch_min_healthy_percentage` - (Optional) Default: 50. Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%! (MISSING)Value of param should represent the number in percentage (%!)(MISSING) of the batch.
                 * `respect_pdb` - (Optional) Default: False. During the roll, if the parameter is set to True we honor PDB during the instance replacement.
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         ```
+        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -670,14 +681,17 @@ class OceanImport(pulumi.CustomResource):
 
         Installation of the Ocean controller is required by this resource. You can accomplish this by using the spotinst/ocean-controller module as follows:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         ```
+        <!--End PulumiCodeChooser -->
 
         > You must configure the same `cluster_identifier` both for the Ocean controller and for the `gke.OceanImport` resource.
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_spotinst as spotinst
@@ -712,12 +726,16 @@ class OceanImport(pulumi.CustomResource):
                 "n1-standard-2",
             ])
         ```
+        <!--End PulumiCodeChooser -->
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
 
         pulumi.export("oceanId", spotinst_ocean_gke_import["example"]["id"])
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Strategy
 
         * `strategy` - (Optional) Strategy object.
@@ -725,9 +743,11 @@ class OceanImport(pulumi.CustomResource):
             * `provisioning_model` - (Optional) Define the provisioning model of the launched instances. Valid values: `SPOT`, `PREEMPTIBLE`.
             * `preemptible_percentage`- (Optional) Defines the desired preemptible percentage for the cluster.
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         ```
+        <!--End PulumiCodeChooser -->
 
         <a id="update-policy"></a>
         ## Update Policy
@@ -739,12 +759,14 @@ class OceanImport(pulumi.CustomResource):
             * `roll_config` - (Required) Holds the roll configuration.
                 * `batch_size_percentage` - (Required) Sets the percentage of the instances to deploy in each batch.
                 * `launch_spec_ids` - (Optional) List of Virtual Node Group identifiers to be rolled.
-                * `batch_min_healthy_percentage` - (Optional) Default: 50. Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
+                * `batch_min_healthy_percentage` - (Optional) Default: 50. Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%! (MISSING)Value of param should represent the number in percentage (%!)(MISSING) of the batch.
                 * `respect_pdb` - (Optional) Default: False. During the roll, if the parameter is set to True we honor PDB during the instance replacement.
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         ```
+        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param OceanImportArgs args: The arguments to use to populate this resource's properties.
