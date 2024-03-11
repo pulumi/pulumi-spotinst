@@ -34,6 +34,8 @@ public final class ElastigroupEphemeralBlockDeviceArgs extends com.pulumi.resour
      * (e.g. `&#34;ephemeral0&#34;`).
      * 
      * Usage:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -56,6 +58,7 @@ public final class ElastigroupEphemeralBlockDeviceArgs extends com.pulumi.resour
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     @Import(name="virtualName", required=true)
@@ -66,6 +69,8 @@ public final class ElastigroupEphemeralBlockDeviceArgs extends com.pulumi.resour
      * (e.g. `&#34;ephemeral0&#34;`).
      * 
      * Usage:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -88,6 +93,7 @@ public final class ElastigroupEphemeralBlockDeviceArgs extends com.pulumi.resour
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public Output<String> virtualName() {
@@ -145,6 +151,8 @@ public final class ElastigroupEphemeralBlockDeviceArgs extends com.pulumi.resour
          * (e.g. `&#34;ephemeral0&#34;`).
          * 
          * Usage:
+         * 
+         * &lt;!--Start PulumiCodeChooser --&gt;
          * ```java
          * package generated_program;
          * 
@@ -167,6 +175,7 @@ public final class ElastigroupEphemeralBlockDeviceArgs extends com.pulumi.resour
          *     }
          * }
          * ```
+         * &lt;!--End PulumiCodeChooser --&gt;
          * 
          * @return builder
          * 
@@ -181,6 +190,8 @@ public final class ElastigroupEphemeralBlockDeviceArgs extends com.pulumi.resour
          * (e.g. `&#34;ephemeral0&#34;`).
          * 
          * Usage:
+         * 
+         * &lt;!--Start PulumiCodeChooser --&gt;
          * ```java
          * package generated_program;
          * 
@@ -203,6 +214,7 @@ public final class ElastigroupEphemeralBlockDeviceArgs extends com.pulumi.resour
          *     }
          * }
          * ```
+         * &lt;!--End PulumiCodeChooser --&gt;
          * 
          * @return builder
          * 

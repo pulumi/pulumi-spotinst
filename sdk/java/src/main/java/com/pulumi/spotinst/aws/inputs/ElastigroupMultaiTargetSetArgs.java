@@ -18,6 +18,8 @@ public final class ElastigroupMultaiTargetSetArgs extends com.pulumi.resources.R
      * ID of Multai Load Balancer.
      * 
      * Usage:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -40,6 +42,7 @@ public final class ElastigroupMultaiTargetSetArgs extends com.pulumi.resources.R
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     @Import(name="balancerId", required=true)
@@ -49,6 +52,8 @@ public final class ElastigroupMultaiTargetSetArgs extends com.pulumi.resources.R
      * @return ID of Multai Load Balancer.
      * 
      * Usage:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -71,6 +76,7 @@ public final class ElastigroupMultaiTargetSetArgs extends com.pulumi.resources.R
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public Output<String> balancerId() {
@@ -121,6 +127,8 @@ public final class ElastigroupMultaiTargetSetArgs extends com.pulumi.resources.R
          * @param balancerId ID of Multai Load Balancer.
          * 
          * Usage:
+         * 
+         * &lt;!--Start PulumiCodeChooser --&gt;
          * ```java
          * package generated_program;
          * 
@@ -143,6 +151,7 @@ public final class ElastigroupMultaiTargetSetArgs extends com.pulumi.resources.R
          *     }
          * }
          * ```
+         * &lt;!--End PulumiCodeChooser --&gt;
          * 
          * @return builder
          * 
@@ -156,6 +165,8 @@ public final class ElastigroupMultaiTargetSetArgs extends com.pulumi.resources.R
          * @param balancerId ID of Multai Load Balancer.
          * 
          * Usage:
+         * 
+         * &lt;!--Start PulumiCodeChooser --&gt;
          * ```java
          * package generated_program;
          * 
@@ -178,6 +189,7 @@ public final class ElastigroupMultaiTargetSetArgs extends com.pulumi.resources.R
          *     }
          * }
          * ```
+         * &lt;!--End PulumiCodeChooser --&gt;
          * 
          * @return builder
          * 

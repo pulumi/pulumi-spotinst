@@ -21,6 +21,8 @@ import javax.annotation.Nullable;
  * An existing Ocean cluster and Ocean VNG is required by this resource
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -50,6 +52,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */
 @ResourceType(type="spotinst:spark/oceanVirtualNodeGroup:OceanVirtualNodeGroup")

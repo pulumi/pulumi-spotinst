@@ -21,6 +21,8 @@ public final class ElastigroupIntegrationKubernetes {
      * @return The public IP of the DC/OS Master.
      * 
      * Usage:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -43,6 +45,7 @@ public final class ElastigroupIntegrationKubernetes {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     private @Nullable String apiServer;
@@ -75,6 +78,8 @@ public final class ElastigroupIntegrationKubernetes {
      * @return A key/value mapping of tags to assign to the resource.
      * 
      * Usage:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -97,6 +102,7 @@ public final class ElastigroupIntegrationKubernetes {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     private @Nullable List<ElastigroupIntegrationKubernetesAutoscaleLabel> autoscaleLabels;
@@ -117,6 +123,8 @@ public final class ElastigroupIntegrationKubernetes {
      * @return The public IP of the DC/OS Master.
      * 
      * Usage:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -139,6 +147,7 @@ public final class ElastigroupIntegrationKubernetes {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public Optional<String> apiServer() {
@@ -183,6 +192,8 @@ public final class ElastigroupIntegrationKubernetes {
      * @return A key/value mapping of tags to assign to the resource.
      * 
      * Usage:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -205,6 +216,7 @@ public final class ElastigroupIntegrationKubernetes {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public List<ElastigroupIntegrationKubernetesAutoscaleLabel> autoscaleLabels() {

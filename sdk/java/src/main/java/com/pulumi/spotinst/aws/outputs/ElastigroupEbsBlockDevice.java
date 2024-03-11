@@ -50,6 +50,8 @@ public final class ElastigroupEbsBlockDevice {
      * Modifying any `ebs_block_device` currently requires resource replacement.
      * 
      * Usage:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -72,6 +74,7 @@ public final class ElastigroupEbsBlockDevice {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     private @Nullable Integer throughput;
@@ -135,6 +138,8 @@ public final class ElastigroupEbsBlockDevice {
      * Modifying any `ebs_block_device` currently requires resource replacement.
      * 
      * Usage:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -157,6 +162,7 @@ public final class ElastigroupEbsBlockDevice {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public Optional<Integer> throughput() {

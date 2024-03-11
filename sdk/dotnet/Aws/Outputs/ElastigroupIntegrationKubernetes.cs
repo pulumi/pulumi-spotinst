@@ -18,6 +18,7 @@ namespace Pulumi.SpotInst.Aws.Outputs
         /// 
         /// Usage:
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -27,6 +28,7 @@ namespace Pulumi.SpotInst.Aws.Outputs
         /// {
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public readonly string? ApiServer;
         /// <summary>
@@ -54,6 +56,7 @@ namespace Pulumi.SpotInst.Aws.Outputs
         /// 
         /// Usage:
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -63,6 +66,7 @@ namespace Pulumi.SpotInst.Aws.Outputs
         /// {
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public readonly ImmutableArray<Outputs.ElastigroupIntegrationKubernetesAutoscaleLabel> AutoscaleLabels;
         public readonly string? ClusterIdentifier;

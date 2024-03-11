@@ -16,6 +16,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -140,6 +141,8 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -157,6 +160,8 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ## Block Devices
 //
 // * `blockDeviceMappings`- (Optional) Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.

@@ -864,6 +864,7 @@ class Elastigroup(pulumi.CustomResource):
         * you must include `cluster_zone_name` and `cluster_id`
         * a handful of parameters are created remotely and will not appear in the diff. A complete list can be found below.
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_spotinst as spotinst
@@ -911,6 +912,7 @@ class Elastigroup(pulumi.CustomResource):
             node_image="COS",
             preemptible_percentage=100)
         ```
+        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -937,6 +939,7 @@ class Elastigroup(pulumi.CustomResource):
         * you must include `cluster_zone_name` and `cluster_id`
         * a handful of parameters are created remotely and will not appear in the diff. A complete list can be found below.
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_spotinst as spotinst
@@ -984,6 +987,7 @@ class Elastigroup(pulumi.CustomResource):
             node_image="COS",
             preemptible_percentage=100)
         ```
+        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param ElastigroupArgs args: The arguments to use to populate this resource's properties.

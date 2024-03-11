@@ -20,46 +20,6 @@ import javax.annotation.Nullable;
  * Provides a Spotinst Health Check resource.
  * 
  * ## Example Usage
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.spotinst.HealthCheck;
- * import com.pulumi.spotinst.HealthCheckArgs;
- * import com.pulumi.spotinst.inputs.HealthCheckCheckArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var httpCheck = new HealthCheck(&#34;httpCheck&#34;, HealthCheckArgs.builder()        
- *             .check(HealthCheckCheckArgs.builder()
- *                 .endpoint(&#34;http://endpoint.com&#34;)
- *                 .healthy(1)
- *                 .interval(10)
- *                 .port(1337)
- *                 .protocol(&#34;http&#34;)
- *                 .timeout(10)
- *                 .unhealthy(1)
- *                 .build())
- *             .proxyAddress(&#34;http://proxy.com&#34;)
- *             .proxyPort(80)
- *             .resourceId(&#34;sig-123&#34;)
- *             .build());
- * 
- *     }
- * }
- * ```
  * 
  */
 @ResourceType(type="spotinst:index/healthCheck:HealthCheck")

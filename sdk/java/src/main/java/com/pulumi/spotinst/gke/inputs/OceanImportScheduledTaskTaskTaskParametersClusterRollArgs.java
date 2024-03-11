@@ -25,8 +25,10 @@ public final class OceanImportScheduledTaskTaskTaskParametersClusterRollArgs ext
     }
 
     /**
-     * Value in % to set size of batch in roll. Valid values are 0-100
+     * Value in %!t(MISSING)o set size of batch in roll. Valid values are 0-100
      * Example: 20.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -49,14 +51,17 @@ public final class OceanImportScheduledTaskTaskTaskParametersClusterRollArgs ext
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     @Import(name="batchSizePercentage")
     private @Nullable Output<Integer> batchSizePercentage;
 
     /**
-     * @return Value in % to set size of batch in roll. Valid values are 0-100
+     * @return Value in %!t(MISSING)o set size of batch in roll. Valid values are 0-100
      * Example: 20.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -79,6 +84,7 @@ public final class OceanImportScheduledTaskTaskTaskParametersClusterRollArgs ext
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public Optional<Output<Integer>> batchSizePercentage() {
@@ -136,8 +142,10 @@ public final class OceanImportScheduledTaskTaskTaskParametersClusterRollArgs ext
         }
 
         /**
-         * @param batchSizePercentage Value in % to set size of batch in roll. Valid values are 0-100
+         * @param batchSizePercentage Value in %!t(MISSING)o set size of batch in roll. Valid values are 0-100
          * Example: 20.
+         * 
+         * &lt;!--Start PulumiCodeChooser --&gt;
          * ```java
          * package generated_program;
          * 
@@ -160,6 +168,7 @@ public final class OceanImportScheduledTaskTaskTaskParametersClusterRollArgs ext
          *     }
          * }
          * ```
+         * &lt;!--End PulumiCodeChooser --&gt;
          * 
          * @return builder
          * 
@@ -170,8 +179,10 @@ public final class OceanImportScheduledTaskTaskTaskParametersClusterRollArgs ext
         }
 
         /**
-         * @param batchSizePercentage Value in % to set size of batch in roll. Valid values are 0-100
+         * @param batchSizePercentage Value in %!t(MISSING)o set size of batch in roll. Valid values are 0-100
          * Example: 20.
+         * 
+         * &lt;!--Start PulumiCodeChooser --&gt;
          * ```java
          * package generated_program;
          * 
@@ -194,6 +205,7 @@ public final class OceanImportScheduledTaskTaskTaskParametersClusterRollArgs ext
          *     }
          * }
          * ```
+         * &lt;!--End PulumiCodeChooser --&gt;
          * 
          * @return builder
          * 

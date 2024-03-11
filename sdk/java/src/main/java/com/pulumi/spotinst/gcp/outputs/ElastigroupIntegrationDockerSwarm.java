@@ -20,6 +20,8 @@ public final class ElastigroupIntegrationDockerSwarm {
      * @return Network port used by your swarm.
      * 
      * Usage:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -42,6 +44,7 @@ public final class ElastigroupIntegrationDockerSwarm {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     private Integer masterPort;
@@ -58,6 +61,8 @@ public final class ElastigroupIntegrationDockerSwarm {
      * @return Network port used by your swarm.
      * 
      * Usage:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -80,6 +85,7 @@ public final class ElastigroupIntegrationDockerSwarm {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public Integer masterPort() {

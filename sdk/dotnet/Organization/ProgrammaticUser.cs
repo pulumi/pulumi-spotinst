@@ -14,6 +14,7 @@ namespace Pulumi.SpotInst.Organization
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -45,6 +46,7 @@ namespace Pulumi.SpotInst.Organization
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [SpotInstResourceType("spotinst:organization/programmaticUser:ProgrammaticUser")]
     public partial class ProgrammaticUser : global::Pulumi.CustomResource

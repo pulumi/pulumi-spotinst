@@ -15,8 +15,10 @@ import (
 // Provides a Spotinst AWS MrScaler resource.
 //
 // ## Example Usage
+//
 // ### New Strategy
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -167,8 +169,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ### Clone Strategy
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -278,8 +283,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ### Wrap Strategy
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -322,6 +330,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 type MrScalar struct {
 	pulumi.CustomResourceState
 

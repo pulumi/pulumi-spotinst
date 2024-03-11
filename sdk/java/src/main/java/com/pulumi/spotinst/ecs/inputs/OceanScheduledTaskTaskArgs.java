@@ -47,6 +47,8 @@ public final class OceanScheduledTaskTaskArgs extends com.pulumi.resources.Resou
 
     /**
      * Valid values: &#34;clusterRoll&#34;. Required for `cluster.scheduling.tasks object`. Example: `clusterRoll`.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -69,6 +71,7 @@ public final class OceanScheduledTaskTaskArgs extends com.pulumi.resources.Resou
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * &lt;a id=&#34;attributes-reference&#34;&gt;&lt;/a&gt;
      * 
@@ -78,6 +81,8 @@ public final class OceanScheduledTaskTaskArgs extends com.pulumi.resources.Resou
 
     /**
      * @return Valid values: &#34;clusterRoll&#34;. Required for `cluster.scheduling.tasks object`. Example: `clusterRoll`.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -100,6 +105,7 @@ public final class OceanScheduledTaskTaskArgs extends com.pulumi.resources.Resou
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * &lt;a id=&#34;attributes-reference&#34;&gt;&lt;/a&gt;
      * 
@@ -178,6 +184,8 @@ public final class OceanScheduledTaskTaskArgs extends com.pulumi.resources.Resou
 
         /**
          * @param taskType Valid values: &#34;clusterRoll&#34;. Required for `cluster.scheduling.tasks object`. Example: `clusterRoll`.
+         * 
+         * &lt;!--Start PulumiCodeChooser --&gt;
          * ```java
          * package generated_program;
          * 
@@ -200,6 +208,7 @@ public final class OceanScheduledTaskTaskArgs extends com.pulumi.resources.Resou
          *     }
          * }
          * ```
+         * &lt;!--End PulumiCodeChooser --&gt;
          * 
          * &lt;a id=&#34;attributes-reference&#34;&gt;&lt;/a&gt;
          * 
@@ -213,6 +222,8 @@ public final class OceanScheduledTaskTaskArgs extends com.pulumi.resources.Resou
 
         /**
          * @param taskType Valid values: &#34;clusterRoll&#34;. Required for `cluster.scheduling.tasks object`. Example: `clusterRoll`.
+         * 
+         * &lt;!--Start PulumiCodeChooser --&gt;
          * ```java
          * package generated_program;
          * 
@@ -235,6 +246,7 @@ public final class OceanScheduledTaskTaskArgs extends com.pulumi.resources.Resou
          *     }
          * }
          * ```
+         * &lt;!--End PulumiCodeChooser --&gt;
          * 
          * &lt;a id=&#34;attributes-reference&#34;&gt;&lt;/a&gt;
          * 

@@ -535,6 +535,8 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -557,6 +559,7 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     @Import(name="unhealthyDuration")
@@ -564,6 +567,8 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -586,6 +591,7 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public Optional<Output<Integer>> unhealthyDuration() {
@@ -1478,6 +1484,8 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param unhealthyDuration Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
+         * 
+         * &lt;!--Start PulumiCodeChooser --&gt;
          * ```java
          * package generated_program;
          * 
@@ -1500,6 +1508,7 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
          *     }
          * }
          * ```
+         * &lt;!--End PulumiCodeChooser --&gt;
          * 
          * @return builder
          * 
@@ -1511,6 +1520,8 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param unhealthyDuration Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
+         * 
+         * &lt;!--Start PulumiCodeChooser --&gt;
          * ```java
          * package generated_program;
          * 
@@ -1533,6 +1544,7 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
          *     }
          * }
          * ```
+         * &lt;!--End PulumiCodeChooser --&gt;
          * 
          * @return builder
          * 

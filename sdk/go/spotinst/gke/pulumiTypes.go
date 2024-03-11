@@ -2567,7 +2567,7 @@ func (o ElastigroupScalingUpPolicyDimensionArrayOutput) Index(i pulumi.IntInput)
 }
 
 type OceanImportAutoscaler struct {
-	// Optionally set the auto headroom percentage, set a number between 0-200 to control the headroom % from the cluster. Relevant when isAutoConfig=true.
+	// Optionally set the auto headroom percentage, set a number between 0-200 to control the headroom %!f(MISSING)rom the cluster. Relevant when isAutoConfig=true.
 	AutoHeadroomPercentage *int `pulumi:"autoHeadroomPercentage"`
 	// Cooldown period between scaling actions.
 	Cooldown *int `pulumi:"cooldown"`
@@ -2597,7 +2597,7 @@ type OceanImportAutoscalerInput interface {
 }
 
 type OceanImportAutoscalerArgs struct {
-	// Optionally set the auto headroom percentage, set a number between 0-200 to control the headroom % from the cluster. Relevant when isAutoConfig=true.
+	// Optionally set the auto headroom percentage, set a number between 0-200 to control the headroom %!f(MISSING)rom the cluster. Relevant when isAutoConfig=true.
 	AutoHeadroomPercentage pulumi.IntPtrInput `pulumi:"autoHeadroomPercentage"`
 	// Cooldown period between scaling actions.
 	Cooldown pulumi.IntPtrInput `pulumi:"cooldown"`
@@ -2692,7 +2692,7 @@ func (o OceanImportAutoscalerOutput) ToOceanImportAutoscalerPtrOutputWithContext
 	}).(OceanImportAutoscalerPtrOutput)
 }
 
-// Optionally set the auto headroom percentage, set a number between 0-200 to control the headroom % from the cluster. Relevant when isAutoConfig=true.
+// Optionally set the auto headroom percentage, set a number between 0-200 to control the headroom %!f(MISSING)rom the cluster. Relevant when isAutoConfig=true.
 func (o OceanImportAutoscalerOutput) AutoHeadroomPercentage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanImportAutoscaler) *int { return v.AutoHeadroomPercentage }).(pulumi.IntPtrOutput)
 }
@@ -2756,7 +2756,7 @@ func (o OceanImportAutoscalerPtrOutput) Elem() OceanImportAutoscalerOutput {
 	}).(OceanImportAutoscalerOutput)
 }
 
-// Optionally set the auto headroom percentage, set a number between 0-200 to control the headroom % from the cluster. Relevant when isAutoConfig=true.
+// Optionally set the auto headroom percentage, set a number between 0-200 to control the headroom %!f(MISSING)rom the cluster. Relevant when isAutoConfig=true.
 func (o OceanImportAutoscalerPtrOutput) AutoHeadroomPercentage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanImportAutoscaler) *int {
 		if v == nil {
@@ -2839,7 +2839,7 @@ func (o OceanImportAutoscalerPtrOutput) ResourceLimits() OceanImportAutoscalerRe
 type OceanImportAutoscalerDown struct {
 	// The number of evaluation periods that should accumulate before a scale down action takes place.
 	EvaluationPeriods *int `pulumi:"evaluationPeriods"`
-	// Would represent the maximum % to scale-down. Number between 1-100.
+	// Would represent the maximum %!t(MISSING)o scale-down. Number between 1-100.
 	MaxScaleDownPercentage *float64 `pulumi:"maxScaleDownPercentage"`
 }
 
@@ -2857,7 +2857,7 @@ type OceanImportAutoscalerDownInput interface {
 type OceanImportAutoscalerDownArgs struct {
 	// The number of evaluation periods that should accumulate before a scale down action takes place.
 	EvaluationPeriods pulumi.IntPtrInput `pulumi:"evaluationPeriods"`
-	// Would represent the maximum % to scale-down. Number between 1-100.
+	// Would represent the maximum %!t(MISSING)o scale-down. Number between 1-100.
 	MaxScaleDownPercentage pulumi.Float64PtrInput `pulumi:"maxScaleDownPercentage"`
 }
 
@@ -2943,7 +2943,7 @@ func (o OceanImportAutoscalerDownOutput) EvaluationPeriods() pulumi.IntPtrOutput
 	return o.ApplyT(func(v OceanImportAutoscalerDown) *int { return v.EvaluationPeriods }).(pulumi.IntPtrOutput)
 }
 
-// Would represent the maximum % to scale-down. Number between 1-100.
+// Would represent the maximum %!t(MISSING)o scale-down. Number between 1-100.
 func (o OceanImportAutoscalerDownOutput) MaxScaleDownPercentage() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v OceanImportAutoscalerDown) *float64 { return v.MaxScaleDownPercentage }).(pulumi.Float64PtrOutput)
 }
@@ -2982,7 +2982,7 @@ func (o OceanImportAutoscalerDownPtrOutput) EvaluationPeriods() pulumi.IntPtrOut
 	}).(pulumi.IntPtrOutput)
 }
 
-// Would represent the maximum % to scale-down. Number between 1-100.
+// Would represent the maximum %!t(MISSING)o scale-down. Number between 1-100.
 func (o OceanImportAutoscalerDownPtrOutput) MaxScaleDownPercentage() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *OceanImportAutoscalerDown) *float64 {
 		if v == nil {
@@ -3189,6 +3189,7 @@ func (o OceanImportAutoscalerHeadroomPtrOutput) NumOfUnits() pulumi.IntPtrOutput
 type OceanImportAutoscalerResourceLimits struct {
 	// The maximum memory in GiB units that can be allocated to the cluster.
 	//
+	// <!--Start PulumiCodeChooser -->
 	// ```go
 	// package main
 	//
@@ -3202,6 +3203,7 @@ type OceanImportAutoscalerResourceLimits struct {
 	// 	})
 	// }
 	// ```
+	// <!--End PulumiCodeChooser -->
 	//
 	// <a id="strategy"></a>
 	MaxMemoryGib *int `pulumi:"maxMemoryGib"`
@@ -3223,6 +3225,7 @@ type OceanImportAutoscalerResourceLimitsInput interface {
 type OceanImportAutoscalerResourceLimitsArgs struct {
 	// The maximum memory in GiB units that can be allocated to the cluster.
 	//
+	// <!--Start PulumiCodeChooser -->
 	// ```go
 	// package main
 	//
@@ -3236,6 +3239,7 @@ type OceanImportAutoscalerResourceLimitsArgs struct {
 	// 	})
 	// }
 	// ```
+	// <!--End PulumiCodeChooser -->
 	//
 	// <a id="strategy"></a>
 	MaxMemoryGib pulumi.IntPtrInput `pulumi:"maxMemoryGib"`
@@ -3322,6 +3326,7 @@ func (o OceanImportAutoscalerResourceLimitsOutput) ToOceanImportAutoscalerResour
 
 // The maximum memory in GiB units that can be allocated to the cluster.
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -3338,6 +3343,7 @@ func (o OceanImportAutoscalerResourceLimitsOutput) ToOceanImportAutoscalerResour
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // <a id="strategy"></a>
 func (o OceanImportAutoscalerResourceLimitsOutput) MaxMemoryGib() pulumi.IntPtrOutput {
@@ -3375,6 +3381,7 @@ func (o OceanImportAutoscalerResourceLimitsPtrOutput) Elem() OceanImportAutoscal
 
 // The maximum memory in GiB units that can be allocated to the cluster.
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -3391,6 +3398,7 @@ func (o OceanImportAutoscalerResourceLimitsPtrOutput) Elem() OceanImportAutoscal
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // <a id="strategy"></a>
 func (o OceanImportAutoscalerResourceLimitsPtrOutput) MaxMemoryGib() pulumi.IntPtrOutput {
@@ -4165,9 +4173,10 @@ func (o OceanImportScheduledTaskTaskTaskParametersPtrOutput) ClusterRoll() Ocean
 
 type OceanImportScheduledTaskTaskTaskParametersClusterRoll struct {
 	BatchMinHealthyPercentage *int `pulumi:"batchMinHealthyPercentage"`
-	// Value in % to set size of batch in roll. Valid values are 0-100
+	// Value in %!t(MISSING)o set size of batch in roll. Valid values are 0-100
 	// Example: 20.
 	//
+	// <!--Start PulumiCodeChooser -->
 	// ```go
 	// package main
 	//
@@ -4181,6 +4190,7 @@ type OceanImportScheduledTaskTaskTaskParametersClusterRoll struct {
 	// 	})
 	// }
 	// ```
+	// <!--End PulumiCodeChooser -->
 	BatchSizePercentage *int    `pulumi:"batchSizePercentage"`
 	Comment             *string `pulumi:"comment"`
 	RespectPdb          *bool   `pulumi:"respectPdb"`
@@ -4199,9 +4209,10 @@ type OceanImportScheduledTaskTaskTaskParametersClusterRollInput interface {
 
 type OceanImportScheduledTaskTaskTaskParametersClusterRollArgs struct {
 	BatchMinHealthyPercentage pulumi.IntPtrInput `pulumi:"batchMinHealthyPercentage"`
-	// Value in % to set size of batch in roll. Valid values are 0-100
+	// Value in %!t(MISSING)o set size of batch in roll. Valid values are 0-100
 	// Example: 20.
 	//
+	// <!--Start PulumiCodeChooser -->
 	// ```go
 	// package main
 	//
@@ -4215,6 +4226,7 @@ type OceanImportScheduledTaskTaskTaskParametersClusterRollArgs struct {
 	// 	})
 	// }
 	// ```
+	// <!--End PulumiCodeChooser -->
 	BatchSizePercentage pulumi.IntPtrInput    `pulumi:"batchSizePercentage"`
 	Comment             pulumi.StringPtrInput `pulumi:"comment"`
 	RespectPdb          pulumi.BoolPtrInput   `pulumi:"respectPdb"`
@@ -4301,9 +4313,10 @@ func (o OceanImportScheduledTaskTaskTaskParametersClusterRollOutput) BatchMinHea
 	return o.ApplyT(func(v OceanImportScheduledTaskTaskTaskParametersClusterRoll) *int { return v.BatchMinHealthyPercentage }).(pulumi.IntPtrOutput)
 }
 
-// Value in % to set size of batch in roll. Valid values are 0-100
+// Value in %!t(MISSING)o set size of batch in roll. Valid values are 0-100
 // Example: 20.
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -4320,6 +4333,7 @@ func (o OceanImportScheduledTaskTaskTaskParametersClusterRollOutput) BatchMinHea
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func (o OceanImportScheduledTaskTaskTaskParametersClusterRollOutput) BatchSizePercentage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanImportScheduledTaskTaskTaskParametersClusterRoll) *int { return v.BatchSizePercentage }).(pulumi.IntPtrOutput)
 }
@@ -4365,9 +4379,10 @@ func (o OceanImportScheduledTaskTaskTaskParametersClusterRollPtrOutput) BatchMin
 	}).(pulumi.IntPtrOutput)
 }
 
-// Value in % to set size of batch in roll. Valid values are 0-100
+// Value in %!t(MISSING)o set size of batch in roll. Valid values are 0-100
 // Example: 20.
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -4384,6 +4399,7 @@ func (o OceanImportScheduledTaskTaskTaskParametersClusterRollPtrOutput) BatchMin
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func (o OceanImportScheduledTaskTaskTaskParametersClusterRollPtrOutput) BatchSizePercentage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanImportScheduledTaskTaskTaskParametersClusterRoll) *int {
 		if v == nil {
@@ -4841,9 +4857,10 @@ func (o OceanImportUpdatePolicyPtrOutput) ShouldRoll() pulumi.BoolPtrOutput {
 
 type OceanImportUpdatePolicyRollConfig struct {
 	BatchMinHealthyPercentage *int `pulumi:"batchMinHealthyPercentage"`
-	// Value in % to set size of batch in roll. Valid values are 0-100
+	// Value in %!t(MISSING)o set size of batch in roll. Valid values are 0-100
 	// Example: 20.
 	//
+	// <!--Start PulumiCodeChooser -->
 	// ```go
 	// package main
 	//
@@ -4857,6 +4874,7 @@ type OceanImportUpdatePolicyRollConfig struct {
 	// 	})
 	// }
 	// ```
+	// <!--End PulumiCodeChooser -->
 	BatchSizePercentage int      `pulumi:"batchSizePercentage"`
 	LaunchSpecIds       []string `pulumi:"launchSpecIds"`
 	RespectPdb          *bool    `pulumi:"respectPdb"`
@@ -4875,9 +4893,10 @@ type OceanImportUpdatePolicyRollConfigInput interface {
 
 type OceanImportUpdatePolicyRollConfigArgs struct {
 	BatchMinHealthyPercentage pulumi.IntPtrInput `pulumi:"batchMinHealthyPercentage"`
-	// Value in % to set size of batch in roll. Valid values are 0-100
+	// Value in %!t(MISSING)o set size of batch in roll. Valid values are 0-100
 	// Example: 20.
 	//
+	// <!--Start PulumiCodeChooser -->
 	// ```go
 	// package main
 	//
@@ -4891,6 +4910,7 @@ type OceanImportUpdatePolicyRollConfigArgs struct {
 	// 	})
 	// }
 	// ```
+	// <!--End PulumiCodeChooser -->
 	BatchSizePercentage pulumi.IntInput         `pulumi:"batchSizePercentage"`
 	LaunchSpecIds       pulumi.StringArrayInput `pulumi:"launchSpecIds"`
 	RespectPdb          pulumi.BoolPtrInput     `pulumi:"respectPdb"`
@@ -4977,9 +4997,10 @@ func (o OceanImportUpdatePolicyRollConfigOutput) BatchMinHealthyPercentage() pul
 	return o.ApplyT(func(v OceanImportUpdatePolicyRollConfig) *int { return v.BatchMinHealthyPercentage }).(pulumi.IntPtrOutput)
 }
 
-// Value in % to set size of batch in roll. Valid values are 0-100
+// Value in %!t(MISSING)o set size of batch in roll. Valid values are 0-100
 // Example: 20.
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -4996,6 +5017,7 @@ func (o OceanImportUpdatePolicyRollConfigOutput) BatchMinHealthyPercentage() pul
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func (o OceanImportUpdatePolicyRollConfigOutput) BatchSizePercentage() pulumi.IntOutput {
 	return o.ApplyT(func(v OceanImportUpdatePolicyRollConfig) int { return v.BatchSizePercentage }).(pulumi.IntOutput)
 }
@@ -5041,9 +5063,10 @@ func (o OceanImportUpdatePolicyRollConfigPtrOutput) BatchMinHealthyPercentage() 
 	}).(pulumi.IntPtrOutput)
 }
 
-// Value in % to set size of batch in roll. Valid values are 0-100
+// Value in %!t(MISSING)o set size of batch in roll. Valid values are 0-100
 // Example: 20.
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -5060,6 +5083,7 @@ func (o OceanImportUpdatePolicyRollConfigPtrOutput) BatchMinHealthyPercentage() 
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func (o OceanImportUpdatePolicyRollConfigPtrOutput) BatchSizePercentage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanImportUpdatePolicyRollConfig) *int {
 		if v == nil {
@@ -5212,7 +5236,7 @@ func (o OceanLaunchSpecAutoscaleHeadroomArrayOutput) Index(i pulumi.IntInput) Oc
 }
 
 type OceanLaunchSpecAutoscaleHeadroomsAutomatic struct {
-	// Number between 0-200 to control the headroom % of the specific Virtual Node Group. Effective when cluster.autoScaler.headroom.automatic.`isEnabled` = true is set on the Ocean cluster.
+	// Number between 0-200 to control the headroom %!o(MISSING)f the specific Virtual Node Group. Effective when cluster.autoScaler.headroom.automatic.`isEnabled` = true is set on the Ocean cluster.
 	AutoHeadroomPercentage *int `pulumi:"autoHeadroomPercentage"`
 }
 
@@ -5228,7 +5252,7 @@ type OceanLaunchSpecAutoscaleHeadroomsAutomaticInput interface {
 }
 
 type OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs struct {
-	// Number between 0-200 to control the headroom % of the specific Virtual Node Group. Effective when cluster.autoScaler.headroom.automatic.`isEnabled` = true is set on the Ocean cluster.
+	// Number between 0-200 to control the headroom %!o(MISSING)f the specific Virtual Node Group. Effective when cluster.autoScaler.headroom.automatic.`isEnabled` = true is set on the Ocean cluster.
 	AutoHeadroomPercentage pulumi.IntPtrInput `pulumi:"autoHeadroomPercentage"`
 }
 
@@ -5283,7 +5307,7 @@ func (o OceanLaunchSpecAutoscaleHeadroomsAutomaticOutput) ToOceanLaunchSpecAutos
 	return o
 }
 
-// Number between 0-200 to control the headroom % of the specific Virtual Node Group. Effective when cluster.autoScaler.headroom.automatic.`isEnabled` = true is set on the Ocean cluster.
+// Number between 0-200 to control the headroom %!o(MISSING)f the specific Virtual Node Group. Effective when cluster.autoScaler.headroom.automatic.`isEnabled` = true is set on the Ocean cluster.
 func (o OceanLaunchSpecAutoscaleHeadroomsAutomaticOutput) AutoHeadroomPercentage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanLaunchSpecAutoscaleHeadroomsAutomatic) *int { return v.AutoHeadroomPercentage }).(pulumi.IntPtrOutput)
 }

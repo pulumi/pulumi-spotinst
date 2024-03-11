@@ -1994,8 +1994,10 @@ class MrScalar(pulumi.CustomResource):
         Provides a Spotinst AWS MrScaler resource.
 
         ## Example Usage
+
         ### New Strategy
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_spotinst as spotinst
@@ -2108,8 +2110,11 @@ class MrScalar(pulumi.CustomResource):
             task_unit="instance",
             termination_protected=False)
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Clone Strategy
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_spotinst as spotinst
@@ -2189,8 +2194,11 @@ class MrScalar(pulumi.CustomResource):
         pulumi.export("mrscaler-name", sample__mr_scaler_01.name)
         pulumi.export("mrscaler-created-cluster-id", sample__mr_scaler_01.output_cluster_id)
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Wrap Strategy
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_spotinst as spotinst
@@ -2215,6 +2223,7 @@ class MrScalar(pulumi.CustomResource):
             task_min_size=0,
             task_unit="instance")
         ```
+        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -2283,8 +2292,10 @@ class MrScalar(pulumi.CustomResource):
         Provides a Spotinst AWS MrScaler resource.
 
         ## Example Usage
+
         ### New Strategy
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_spotinst as spotinst
@@ -2397,8 +2408,11 @@ class MrScalar(pulumi.CustomResource):
             task_unit="instance",
             termination_protected=False)
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Clone Strategy
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_spotinst as spotinst
@@ -2478,8 +2492,11 @@ class MrScalar(pulumi.CustomResource):
         pulumi.export("mrscaler-name", sample__mr_scaler_01.name)
         pulumi.export("mrscaler-created-cluster-id", sample__mr_scaler_01.output_cluster_id)
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Wrap Strategy
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_spotinst as spotinst
@@ -2504,6 +2521,7 @@ class MrScalar(pulumi.CustomResource):
             task_min_size=0,
             task_unit="instance")
         ```
+        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param MrScalarArgs args: The arguments to use to populate this resource's properties.

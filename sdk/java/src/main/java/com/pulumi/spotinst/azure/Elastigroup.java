@@ -34,6 +34,7 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -121,6 +122,8 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Strategy
  * 
  * * `spot_percentage` - (Optional) Percentage of Spot-VMs to maintain. Required if `on_demand_count` is not specified.
@@ -138,6 +141,8 @@ import javax.annotation.Nullable;
  *     * `version` -
  *     * `resource_group_name` - (Optional) Name of Resource Group for custom image. Required if publisher not specified.
  *     * `image_name` - (Optional) Name of the custom image. Required if resource_group_name is specified.
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -160,6 +165,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * &lt;a id=&#34;network&#34;&gt;&lt;/a&gt;
  * ## Network
@@ -178,6 +184,7 @@ import javax.annotation.Nullable;
  *             * `name` - (Required) - The name of the Application Security group.
  *             * `resource_group_name` - (Required) - The resource group of the Application Security Group.
  *               }
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -200,6 +207,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Login
  * 
@@ -207,6 +215,8 @@ import javax.annotation.Nullable;
  *     * `user_name` - (Required) Set admin access for accessing your VMs.
  *     * `ssh_public_key` - (Optional) SSH for admin access to Linux VMs. Required for Linux OS types.
  *     * `password` - (Optional) Password for admin access to Windows VMs. Required for Windows OS types.
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -229,6 +239,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */
 @ResourceType(type="spotinst:azure/elastigroup:Elastigroup")

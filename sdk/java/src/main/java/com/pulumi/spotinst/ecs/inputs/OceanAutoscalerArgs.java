@@ -20,14 +20,14 @@ public final class OceanAutoscalerArgs extends com.pulumi.resources.ResourceArgs
     public static final OceanAutoscalerArgs Empty = new OceanAutoscalerArgs();
 
     /**
-     * The auto-headroom percentage. Set a number between 0-200 to control the headroom % of the cluster. Relevant when `isAutoConfig`= true.
+     * The auto-headroom percentage. Set a number between 0-200 to control the headroom %!o(MISSING)f the cluster. Relevant when `isAutoConfig`= true.
      * 
      */
     @Import(name="autoHeadroomPercentage")
     private @Nullable Output<Integer> autoHeadroomPercentage;
 
     /**
-     * @return The auto-headroom percentage. Set a number between 0-200 to control the headroom % of the cluster. Relevant when `isAutoConfig`= true.
+     * @return The auto-headroom percentage. Set a number between 0-200 to control the headroom %!o(MISSING)f the cluster. Relevant when `isAutoConfig`= true.
      * 
      */
     public Optional<Output<Integer>> autoHeadroomPercentage() {
@@ -66,6 +66,8 @@ public final class OceanAutoscalerArgs extends com.pulumi.resources.ResourceArgs
 
     /**
      * When set to true, both automatic and per custom launch specification manual headroom to be saved concurrently and independently in the cluster. prerequisite: isAutoConfig must be true
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -88,6 +90,7 @@ public final class OceanAutoscalerArgs extends com.pulumi.resources.ResourceArgs
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     @Import(name="enableAutomaticAndManualHeadroom")
@@ -95,6 +98,8 @@ public final class OceanAutoscalerArgs extends com.pulumi.resources.ResourceArgs
 
     /**
      * @return When set to true, both automatic and per custom launch specification manual headroom to be saved concurrently and independently in the cluster. prerequisite: isAutoConfig must be true
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -117,6 +122,7 @@ public final class OceanAutoscalerArgs extends com.pulumi.resources.ResourceArgs
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public Optional<Output<Boolean>> enableAutomaticAndManualHeadroom() {
@@ -231,7 +237,7 @@ public final class OceanAutoscalerArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param autoHeadroomPercentage The auto-headroom percentage. Set a number between 0-200 to control the headroom % of the cluster. Relevant when `isAutoConfig`= true.
+         * @param autoHeadroomPercentage The auto-headroom percentage. Set a number between 0-200 to control the headroom %!o(MISSING)f the cluster. Relevant when `isAutoConfig`= true.
          * 
          * @return builder
          * 
@@ -242,7 +248,7 @@ public final class OceanAutoscalerArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param autoHeadroomPercentage The auto-headroom percentage. Set a number between 0-200 to control the headroom % of the cluster. Relevant when `isAutoConfig`= true.
+         * @param autoHeadroomPercentage The auto-headroom percentage. Set a number between 0-200 to control the headroom %!o(MISSING)f the cluster. Relevant when `isAutoConfig`= true.
          * 
          * @return builder
          * 
@@ -295,6 +301,8 @@ public final class OceanAutoscalerArgs extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param enableAutomaticAndManualHeadroom When set to true, both automatic and per custom launch specification manual headroom to be saved concurrently and independently in the cluster. prerequisite: isAutoConfig must be true
+         * 
+         * &lt;!--Start PulumiCodeChooser --&gt;
          * ```java
          * package generated_program;
          * 
@@ -317,6 +325,7 @@ public final class OceanAutoscalerArgs extends com.pulumi.resources.ResourceArgs
          *     }
          * }
          * ```
+         * &lt;!--End PulumiCodeChooser --&gt;
          * 
          * @return builder
          * 
@@ -328,6 +337,8 @@ public final class OceanAutoscalerArgs extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param enableAutomaticAndManualHeadroom When set to true, both automatic and per custom launch specification manual headroom to be saved concurrently and independently in the cluster. prerequisite: isAutoConfig must be true
+         * 
+         * &lt;!--Start PulumiCodeChooser --&gt;
          * ```java
          * package generated_program;
          * 
@@ -350,6 +361,7 @@ public final class OceanAutoscalerArgs extends com.pulumi.resources.ResourceArgs
          *     }
          * }
          * ```
+         * &lt;!--End PulumiCodeChooser --&gt;
          * 
          * @return builder
          * 

@@ -23,6 +23,8 @@ import javax.annotation.Nullable;
  * Provides a Spotinst AWS group resource using Elastic Beanstalk.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -80,6 +82,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */
 @ResourceType(type="spotinst:aws/beanstalk:Beanstalk")

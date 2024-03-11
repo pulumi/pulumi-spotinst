@@ -36,6 +36,8 @@ public final class BeanstalkScheduledTaskArgs extends com.pulumi.resources.Resou
      * The percentage of instances to add or remove.
      * 
      * Usage:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -58,6 +60,7 @@ public final class BeanstalkScheduledTaskArgs extends com.pulumi.resources.Resou
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     @Import(name="adjustmentPercentage")
@@ -67,6 +70,8 @@ public final class BeanstalkScheduledTaskArgs extends com.pulumi.resources.Resou
      * @return The percentage of instances to add or remove.
      * 
      * Usage:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -89,6 +94,7 @@ public final class BeanstalkScheduledTaskArgs extends com.pulumi.resources.Resou
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public Optional<Output<String>> adjustmentPercentage() {
@@ -353,6 +359,8 @@ public final class BeanstalkScheduledTaskArgs extends com.pulumi.resources.Resou
          * @param adjustmentPercentage The percentage of instances to add or remove.
          * 
          * Usage:
+         * 
+         * &lt;!--Start PulumiCodeChooser --&gt;
          * ```java
          * package generated_program;
          * 
@@ -375,6 +383,7 @@ public final class BeanstalkScheduledTaskArgs extends com.pulumi.resources.Resou
          *     }
          * }
          * ```
+         * &lt;!--End PulumiCodeChooser --&gt;
          * 
          * @return builder
          * 
@@ -388,6 +397,8 @@ public final class BeanstalkScheduledTaskArgs extends com.pulumi.resources.Resou
          * @param adjustmentPercentage The percentage of instances to add or remove.
          * 
          * Usage:
+         * 
+         * &lt;!--Start PulumiCodeChooser --&gt;
          * ```java
          * package generated_program;
          * 
@@ -410,6 +421,7 @@ public final class BeanstalkScheduledTaskArgs extends com.pulumi.resources.Resou
          *     }
          * }
          * ```
+         * &lt;!--End PulumiCodeChooser --&gt;
          * 
          * @return builder
          * 

@@ -34,6 +34,8 @@ import javax.annotation.Nullable;
  * Provides a Spotinst elastigroup GCP resource.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -147,6 +149,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */
 @ResourceType(type="spotinst:gcp/elastigroup:Elastigroup")
@@ -615,6 +618,8 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
     }
     /**
      * Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -637,6 +642,7 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     @Export(name="unhealthyDuration", refs={Integer.class}, tree="[0]")
@@ -644,6 +650,8 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -666,6 +674,7 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public Output<Optional<Integer>> unhealthyDuration() {

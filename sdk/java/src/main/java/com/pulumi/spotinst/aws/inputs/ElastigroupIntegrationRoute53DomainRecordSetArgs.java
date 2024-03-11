@@ -36,6 +36,8 @@ public final class ElastigroupIntegrationRoute53DomainRecordSetArgs extends com.
      * Designates whether the DNS address should be exposed to connections outside the VPC.
      * 
      * Usage:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -58,6 +60,7 @@ public final class ElastigroupIntegrationRoute53DomainRecordSetArgs extends com.
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     @Import(name="usePublicDns")
@@ -67,6 +70,8 @@ public final class ElastigroupIntegrationRoute53DomainRecordSetArgs extends com.
      * @return Designates whether the DNS address should be exposed to connections outside the VPC.
      * 
      * Usage:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -89,6 +94,7 @@ public final class ElastigroupIntegrationRoute53DomainRecordSetArgs extends com.
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public Optional<Output<Boolean>> usePublicDns() {
@@ -161,6 +167,8 @@ public final class ElastigroupIntegrationRoute53DomainRecordSetArgs extends com.
          * @param usePublicDns Designates whether the DNS address should be exposed to connections outside the VPC.
          * 
          * Usage:
+         * 
+         * &lt;!--Start PulumiCodeChooser --&gt;
          * ```java
          * package generated_program;
          * 
@@ -183,6 +191,7 @@ public final class ElastigroupIntegrationRoute53DomainRecordSetArgs extends com.
          *     }
          * }
          * ```
+         * &lt;!--End PulumiCodeChooser --&gt;
          * 
          * @return builder
          * 
@@ -196,6 +205,8 @@ public final class ElastigroupIntegrationRoute53DomainRecordSetArgs extends com.
          * @param usePublicDns Designates whether the DNS address should be exposed to connections outside the VPC.
          * 
          * Usage:
+         * 
+         * &lt;!--Start PulumiCodeChooser --&gt;
          * ```java
          * package generated_program;
          * 
@@ -218,6 +229,7 @@ public final class ElastigroupIntegrationRoute53DomainRecordSetArgs extends com.
          *     }
          * }
          * ```
+         * &lt;!--End PulumiCodeChooser --&gt;
          * 
          * @return builder
          * 

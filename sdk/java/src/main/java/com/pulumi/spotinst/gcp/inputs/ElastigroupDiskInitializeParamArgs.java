@@ -50,6 +50,8 @@ public final class ElastigroupDiskInitializeParamArgs extends com.pulumi.resourc
      * A source image used to create the disk. You can provide a private (custom) image, and Compute Engine will use the corresponding image from your project.
      * 
      * Usage:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -72,6 +74,7 @@ public final class ElastigroupDiskInitializeParamArgs extends com.pulumi.resourc
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     @Import(name="sourceImage", required=true)
@@ -81,6 +84,8 @@ public final class ElastigroupDiskInitializeParamArgs extends com.pulumi.resourc
      * @return A source image used to create the disk. You can provide a private (custom) image, and Compute Engine will use the corresponding image from your project.
      * 
      * Usage:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -103,6 +108,7 @@ public final class ElastigroupDiskInitializeParamArgs extends com.pulumi.resourc
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public Output<String> sourceImage() {
@@ -181,6 +187,8 @@ public final class ElastigroupDiskInitializeParamArgs extends com.pulumi.resourc
          * @param sourceImage A source image used to create the disk. You can provide a private (custom) image, and Compute Engine will use the corresponding image from your project.
          * 
          * Usage:
+         * 
+         * &lt;!--Start PulumiCodeChooser --&gt;
          * ```java
          * package generated_program;
          * 
@@ -203,6 +211,7 @@ public final class ElastigroupDiskInitializeParamArgs extends com.pulumi.resourc
          *     }
          * }
          * ```
+         * &lt;!--End PulumiCodeChooser --&gt;
          * 
          * @return builder
          * 
@@ -216,6 +225,8 @@ public final class ElastigroupDiskInitializeParamArgs extends com.pulumi.resourc
          * @param sourceImage A source image used to create the disk. You can provide a private (custom) image, and Compute Engine will use the corresponding image from your project.
          * 
          * Usage:
+         * 
+         * &lt;!--Start PulumiCodeChooser --&gt;
          * ```java
          * package generated_program;
          * 
@@ -238,6 +249,7 @@ public final class ElastigroupDiskInitializeParamArgs extends com.pulumi.resourc
          *     }
          * }
          * ```
+         * &lt;!--End PulumiCodeChooser --&gt;
          * 
          * @return builder
          * 

@@ -13,8 +13,10 @@ namespace Pulumi.SpotInst.Aws
     /// Provides a Spotinst AWS MrScaler resource.
     /// 
     /// ## Example Usage
+    /// 
     /// ### New Strategy
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -186,8 +188,11 @@ namespace Pulumi.SpotInst.Aws
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
     /// ### Clone Strategy
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -307,8 +312,11 @@ namespace Pulumi.SpotInst.Aws
     ///     };
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
     /// ### Wrap Strategy
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -346,6 +354,7 @@ namespace Pulumi.SpotInst.Aws
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [SpotInstResourceType("spotinst:aws/mrScalar:MrScalar")]
     public partial class MrScalar : global::Pulumi.CustomResource

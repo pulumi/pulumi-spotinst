@@ -19,6 +19,8 @@ import javax.annotation.Nullable;
  * Provides a Spotinst Ocean AWS Extended Resource Definition resource.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -50,6 +52,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */
 @ResourceType(type="spotinst:aws/oceanExtendedResourceDefinition:OceanExtendedResourceDefinition")

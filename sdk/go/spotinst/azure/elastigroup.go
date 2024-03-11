@@ -14,14 +14,6 @@ import (
 
 // Provides a Spotinst elastigroup Azure resource.
 //
-// ## Strategy
-//
-// * `spotPercentage` - (Optional) Percentage of Spot-VMs to maintain. Required if `onDemandCount` is not specified.
-// * `onDemandCount` - (Optional) Number of On-Demand VMs to maintain. Required if `spotPercentage` is not specified.
-// * `fallbackToOnDemand` -
-// * `drainingTimeout` - (Optional, Default `120`) Time (seconds) to allow the instance to be drained from incoming TCP connections and detached from MLB before terminating it during a scale-down operation.
-//
-// <a id="image"></a>
 // ## Image
 //
 // * `image` - (Required) Image of a VM. An image is a template for creating new VMs. Choose from Azure image catalogue (marketplace) or use a custom image.
@@ -32,6 +24,7 @@ import (
 //   - `resourceGroupName` - (Optional) Name of Resource Group for custom image. Required if publisher not specified.
 //   - `imageName` - (Optional) Name of the custom image. Required if resourceGroupName is specified.
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -48,6 +41,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // <a id="network"></a>
 // ## Network
@@ -67,6 +61,7 @@ import (
 //   - `resourceGroupName` - (Required) - The resource group of the Application Security Group.
 //     }
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -83,6 +78,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ### Login
 //
@@ -91,6 +87,7 @@ import (
 //   - `sshPublicKey` - (Optional) SSH for admin access to Linux VMs. Required for Linux OS types.
 //   - `password` - (Optional) Password for admin access to Windows VMs. Required for Windows OS types.
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -107,6 +104,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 type Elastigroup struct {
 	pulumi.CustomResourceState
 

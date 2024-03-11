@@ -17,6 +17,7 @@ namespace Pulumi.SpotInst.Aws.Inputs
         /// 
         /// Usage:
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -26,6 +27,7 @@ namespace Pulumi.SpotInst.Aws.Inputs
         /// {
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         [Input("apiServer")]
         public Input<string>? ApiServer { get; set; }
@@ -68,6 +70,7 @@ namespace Pulumi.SpotInst.Aws.Inputs
         /// 
         /// Usage:
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -77,6 +80,7 @@ namespace Pulumi.SpotInst.Aws.Inputs
         /// {
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public InputList<Inputs.ElastigroupIntegrationKubernetesAutoscaleLabelGetArgs> AutoscaleLabels
         {

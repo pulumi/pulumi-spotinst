@@ -18,6 +18,7 @@ namespace Pulumi.SpotInst.Spark
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -85,6 +86,8 @@ namespace Pulumi.SpotInst.Spark
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -98,6 +101,7 @@ namespace Pulumi.SpotInst.Spark
     ///     };
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [SpotInstResourceType("spotinst:spark/ocean:Ocean")]
     public partial class Ocean : global::Pulumi.CustomResource
