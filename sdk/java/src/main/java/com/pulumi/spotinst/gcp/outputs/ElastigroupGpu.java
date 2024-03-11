@@ -15,6 +15,8 @@ public final class ElastigroupGpu {
      * @return The number of GPUs. Must be 0, 2, 4, 6, 8.
      * 
      * Usage:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -37,6 +39,7 @@ public final class ElastigroupGpu {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     private Integer count;
@@ -51,6 +54,8 @@ public final class ElastigroupGpu {
      * @return The number of GPUs. Must be 0, 2, 4, 6, 8.
      * 
      * Usage:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -73,6 +78,7 @@ public final class ElastigroupGpu {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public Integer count() {

@@ -23,6 +23,8 @@ public final class OceanScheduledTaskTask {
     private Boolean isEnabled;
     /**
      * @return Valid values: &#34;clusterRoll&#34;. Required for `cluster.scheduling.tasks object`. Example: `clusterRoll`.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -45,6 +47,7 @@ public final class OceanScheduledTaskTask {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * &lt;a id=&#34;attributes-reference&#34;&gt;&lt;/a&gt;
      * 
@@ -68,6 +71,8 @@ public final class OceanScheduledTaskTask {
     }
     /**
      * @return Valid values: &#34;clusterRoll&#34;. Required for `cluster.scheduling.tasks object`. Example: `clusterRoll`.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -90,6 +95,7 @@ public final class OceanScheduledTaskTask {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * &lt;a id=&#34;attributes-reference&#34;&gt;&lt;/a&gt;
      * 

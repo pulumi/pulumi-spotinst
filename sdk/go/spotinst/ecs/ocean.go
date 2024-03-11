@@ -18,7 +18,7 @@ import (
 //
 // Clusters can be imported using the Ocean `id`, e.g.,
 //
-//	hcl
+// hcl
 //
 // ```sh
 // $ pulumi import spotinst:ecs/ocean:Ocean this o-12345678

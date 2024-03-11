@@ -11,6 +11,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as spotinst from "@pulumi/spotinst";
@@ -46,6 +47,7 @@ import * as utilities from "../utilities";
  *     region: "us-west-2",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export class Beanstalk extends pulumi.CustomResource {
     /**

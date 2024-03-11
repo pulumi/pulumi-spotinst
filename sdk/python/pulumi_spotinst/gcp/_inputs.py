@@ -115,9 +115,11 @@ class ElastigroupBackendServiceNamedPortArgs:
                
                Usage:
                
+               <!--Start PulumiCodeChooser -->
                ```python
                import pulumi
                ```
+               <!--End PulumiCodeChooser -->
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "ports", ports)
@@ -142,9 +144,11 @@ class ElastigroupBackendServiceNamedPortArgs:
 
         Usage:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         ```
+        <!--End PulumiCodeChooser -->
         """
         return pulumi.get(self, "ports")
 
@@ -299,9 +303,11 @@ class ElastigroupDiskInitializeParamArgs:
                
                Usage:
                
+               <!--Start PulumiCodeChooser -->
                ```python
                import pulumi
                ```
+               <!--End PulumiCodeChooser -->
         :param pulumi.Input[str] disk_size_gb: Specifies disk size in gigabytes. Must be in increments of 2.
         :param pulumi.Input[str] disk_type: Specifies the disk type to use to create the instance. Valid values: pd-ssd, local-ssd.
         """
@@ -319,9 +325,11 @@ class ElastigroupDiskInitializeParamArgs:
 
         Usage:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         ```
+        <!--End PulumiCodeChooser -->
         """
         return pulumi.get(self, "source_image")
 
@@ -364,9 +372,11 @@ class ElastigroupGpuArgs:
                
                Usage:
                
+               <!--Start PulumiCodeChooser -->
                ```python
                import pulumi
                ```
+               <!--End PulumiCodeChooser -->
         :param pulumi.Input[str] type: The type of GPU instance. Valid values: `nvidia-tesla-v100`, `nvidia-tesla-p100`, `nvidia-tesla-k80`.
         """
         pulumi.set(__self__, "count", count)
@@ -380,9 +390,11 @@ class ElastigroupGpuArgs:
 
         Usage:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         ```
+        <!--End PulumiCodeChooser -->
         """
         return pulumi.get(self, "count")
 
@@ -447,9 +459,11 @@ class ElastigroupIntegrationDockerSwarmArgs:
                
                Usage:
                
+               <!--Start PulumiCodeChooser -->
                ```python
                import pulumi
                ```
+               <!--End PulumiCodeChooser -->
         """
         pulumi.set(__self__, "master_host", master_host)
         pulumi.set(__self__, "master_port", master_port)
@@ -474,9 +488,11 @@ class ElastigroupIntegrationDockerSwarmArgs:
 
         Usage:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         ```
+        <!--End PulumiCodeChooser -->
         """
         return pulumi.get(self, "master_port")
 
@@ -1418,9 +1434,11 @@ class ElastigroupScheduledTaskArgs:
                
                Usage:
                
+               <!--Start PulumiCodeChooser -->
                ```python
                import pulumi
                ```
+               <!--End PulumiCodeChooser -->
         :param pulumi.Input[str] min_capacity: The minimum number of instances the group should have.
         :param pulumi.Input[str] target_capacity: The desired number of instances the group should have.
         """
@@ -1480,9 +1498,11 @@ class ElastigroupScheduledTaskArgs:
 
         Usage:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         ```
+        <!--End PulumiCodeChooser -->
         """
         return pulumi.get(self, "max_capacity")
 

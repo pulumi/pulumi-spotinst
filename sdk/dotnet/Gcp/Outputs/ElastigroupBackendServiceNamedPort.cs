@@ -22,6 +22,7 @@ namespace Pulumi.SpotInst.Gcp.Outputs
         /// 
         /// Usage:
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -31,6 +32,7 @@ namespace Pulumi.SpotInst.Gcp.Outputs
         /// {
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public readonly ImmutableArray<string> Ports;
 

@@ -625,6 +625,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_spotinst as spotinst
@@ -715,11 +716,15 @@ class OceanLaunchSpec(pulumi.CustomResource):
             )],
             user_data="echo hello world")
         ```
+        <!--End PulumiCodeChooser -->
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
 
         pulumi.export("oceanLaunchspecId", spotinst_ocean_ecs_launch_spec["example"]["id"])
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Block Devices
 
         * `block_device_mappings`- (Optional) Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
@@ -770,6 +775,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_spotinst as spotinst
@@ -860,11 +866,15 @@ class OceanLaunchSpec(pulumi.CustomResource):
             )],
             user_data="echo hello world")
         ```
+        <!--End PulumiCodeChooser -->
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
 
         pulumi.export("oceanLaunchspecId", spotinst_ocean_ecs_launch_spec["example"]["id"])
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Block Devices
 
         * `block_device_mappings`- (Optional) Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.

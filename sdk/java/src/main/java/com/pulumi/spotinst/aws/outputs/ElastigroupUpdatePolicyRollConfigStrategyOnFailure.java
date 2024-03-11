@@ -27,6 +27,8 @@ public final class ElastigroupUpdatePolicyRollConfigStrategyOnFailure {
     private @Nullable Integer drainingTimeout;
     /**
      * @return Decrementing the group target capacity after detaching the instances.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -49,6 +51,7 @@ public final class ElastigroupUpdatePolicyRollConfigStrategyOnFailure {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     private @Nullable Boolean shouldDecrementTargetCapacity;
@@ -78,6 +81,8 @@ public final class ElastigroupUpdatePolicyRollConfigStrategyOnFailure {
     }
     /**
      * @return Decrementing the group target capacity after detaching the instances.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -100,6 +105,7 @@ public final class ElastigroupUpdatePolicyRollConfigStrategyOnFailure {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public Optional<Boolean> shouldDecrementTargetCapacity() {

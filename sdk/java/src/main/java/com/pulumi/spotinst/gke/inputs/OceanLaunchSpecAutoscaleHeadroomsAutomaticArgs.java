@@ -16,14 +16,14 @@ public final class OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs extends com.pu
     public static final OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs Empty = new OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs();
 
     /**
-     * Number between 0-200 to control the headroom % of the specific Virtual Node Group. Effective when cluster.autoScaler.headroom.automatic.`is_enabled` = true is set on the Ocean cluster.
+     * Number between 0-200 to control the headroom %!o(MISSING)f the specific Virtual Node Group. Effective when cluster.autoScaler.headroom.automatic.`is_enabled` = true is set on the Ocean cluster.
      * 
      */
     @Import(name="autoHeadroomPercentage")
     private @Nullable Output<Integer> autoHeadroomPercentage;
 
     /**
-     * @return Number between 0-200 to control the headroom % of the specific Virtual Node Group. Effective when cluster.autoScaler.headroom.automatic.`is_enabled` = true is set on the Ocean cluster.
+     * @return Number between 0-200 to control the headroom %!o(MISSING)f the specific Virtual Node Group. Effective when cluster.autoScaler.headroom.automatic.`is_enabled` = true is set on the Ocean cluster.
      * 
      */
     public Optional<Output<Integer>> autoHeadroomPercentage() {
@@ -55,7 +55,7 @@ public final class OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs extends com.pu
         }
 
         /**
-         * @param autoHeadroomPercentage Number between 0-200 to control the headroom % of the specific Virtual Node Group. Effective when cluster.autoScaler.headroom.automatic.`is_enabled` = true is set on the Ocean cluster.
+         * @param autoHeadroomPercentage Number between 0-200 to control the headroom %!o(MISSING)f the specific Virtual Node Group. Effective when cluster.autoScaler.headroom.automatic.`is_enabled` = true is set on the Ocean cluster.
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs extends com.pu
         }
 
         /**
-         * @param autoHeadroomPercentage Number between 0-200 to control the headroom % of the specific Virtual Node Group. Effective when cluster.autoScaler.headroom.automatic.`is_enabled` = true is set on the Ocean cluster.
+         * @param autoHeadroomPercentage Number between 0-200 to control the headroom %!o(MISSING)f the specific Virtual Node Group. Effective when cluster.autoScaler.headroom.automatic.`is_enabled` = true is set on the Ocean cluster.
          * 
          * @return builder
          * 

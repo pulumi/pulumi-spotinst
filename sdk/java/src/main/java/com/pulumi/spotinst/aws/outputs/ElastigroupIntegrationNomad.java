@@ -27,6 +27,8 @@ public final class ElastigroupIntegrationNomad {
      * @return A key/value mapping of tags to assign to the resource.
      * 
      * Usage:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -49,6 +51,7 @@ public final class ElastigroupIntegrationNomad {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     private @Nullable List<ElastigroupIntegrationNomadAutoscaleConstraint> autoscaleConstraints;
@@ -95,6 +98,8 @@ public final class ElastigroupIntegrationNomad {
      * @return A key/value mapping of tags to assign to the resource.
      * 
      * Usage:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -117,6 +122,7 @@ public final class ElastigroupIntegrationNomad {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public List<ElastigroupIntegrationNomadAutoscaleConstraint> autoscaleConstraints() {

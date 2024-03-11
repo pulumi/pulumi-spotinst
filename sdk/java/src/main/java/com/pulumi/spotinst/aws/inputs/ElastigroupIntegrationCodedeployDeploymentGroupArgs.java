@@ -33,6 +33,8 @@ public final class ElastigroupIntegrationCodedeployDeploymentGroupArgs extends c
      * The deployment group name.
      * 
      * Usage:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -55,6 +57,7 @@ public final class ElastigroupIntegrationCodedeployDeploymentGroupArgs extends c
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     @Import(name="deploymentGroupName", required=true)
@@ -64,6 +67,8 @@ public final class ElastigroupIntegrationCodedeployDeploymentGroupArgs extends c
      * @return The deployment group name.
      * 
      * Usage:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -86,6 +91,7 @@ public final class ElastigroupIntegrationCodedeployDeploymentGroupArgs extends c
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public Output<String> deploymentGroupName() {
@@ -142,6 +148,8 @@ public final class ElastigroupIntegrationCodedeployDeploymentGroupArgs extends c
          * @param deploymentGroupName The deployment group name.
          * 
          * Usage:
+         * 
+         * &lt;!--Start PulumiCodeChooser --&gt;
          * ```java
          * package generated_program;
          * 
@@ -164,6 +172,7 @@ public final class ElastigroupIntegrationCodedeployDeploymentGroupArgs extends c
          *     }
          * }
          * ```
+         * &lt;!--End PulumiCodeChooser --&gt;
          * 
          * @return builder
          * 
@@ -177,6 +186,8 @@ public final class ElastigroupIntegrationCodedeployDeploymentGroupArgs extends c
          * @param deploymentGroupName The deployment group name.
          * 
          * Usage:
+         * 
+         * &lt;!--Start PulumiCodeChooser --&gt;
          * ```java
          * package generated_program;
          * 
@@ -199,6 +210,7 @@ public final class ElastigroupIntegrationCodedeployDeploymentGroupArgs extends c
          *     }
          * }
          * ```
+         * &lt;!--End PulumiCodeChooser --&gt;
          * 
          * @return builder
          * 

@@ -18,6 +18,7 @@ import (
 //
 // Installation of the Ocean controller is required by this resource. You can accomplish this by using the spotinst/ocean-controller module as follows:
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -34,11 +35,13 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // > You must configure the same `clusterIdentifier` both for the Ocean controller and for the `gke.OceanImport` resource.
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -93,7 +96,9 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -111,6 +116,8 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ## Strategy
 //
 // * `strategy` - (Optional) Strategy object.
@@ -118,6 +125,7 @@ import (
 //   - `provisioningModel` - (Optional) Define the provisioning model of the launched instances. Valid values: `SPOT`, `PREEMPTIBLE`.
 //   - `preemptiblePercentage`- (Optional) Defines the desired preemptible percentage for the cluster.
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -134,6 +142,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // <a id="update-policy"></a>
 // ## Update Policy
@@ -150,10 +159,11 @@ import (
 //
 //   - `launchSpecIds` - (Optional) List of Virtual Node Group identifiers to be rolled.
 //
-//   - `batchMinHealthyPercentage` - (Optional) Default: 50. Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
+//   - `batchMinHealthyPercentage` - (Optional) Default: 50. Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%! (MISSING)Value of param should represent the number in percentage (%!)(MISSING) of the batch.
 //
 //   - `respectPdb` - (Optional) Default: False. During the roll, if the parameter is set to True we honor PDB during the instance replacement.
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -170,6 +180,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 type OceanImport struct {
 	pulumi.CustomResourceState
 

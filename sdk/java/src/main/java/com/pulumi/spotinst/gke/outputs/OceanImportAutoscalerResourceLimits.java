@@ -13,6 +13,8 @@ import javax.annotation.Nullable;
 public final class OceanImportAutoscalerResourceLimits {
     /**
      * @return The maximum memory in GiB units that can be allocated to the cluster.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -35,6 +37,7 @@ public final class OceanImportAutoscalerResourceLimits {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * &lt;a id=&#34;strategy&#34;&gt;&lt;/a&gt;
      * 
@@ -49,6 +52,8 @@ public final class OceanImportAutoscalerResourceLimits {
     private OceanImportAutoscalerResourceLimits() {}
     /**
      * @return The maximum memory in GiB units that can be allocated to the cluster.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -71,6 +76,7 @@ public final class OceanImportAutoscalerResourceLimits {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * &lt;a id=&#34;strategy&#34;&gt;&lt;/a&gt;
      * 

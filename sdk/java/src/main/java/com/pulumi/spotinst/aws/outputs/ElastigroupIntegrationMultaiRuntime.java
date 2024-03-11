@@ -14,6 +14,8 @@ public final class ElastigroupIntegrationMultaiRuntime {
      * @return The deployment id you want to get
      * 
      * Usage:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -36,6 +38,7 @@ public final class ElastigroupIntegrationMultaiRuntime {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     private String deploymentId;
@@ -45,6 +48,8 @@ public final class ElastigroupIntegrationMultaiRuntime {
      * @return The deployment id you want to get
      * 
      * Usage:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -67,6 +72,7 @@ public final class ElastigroupIntegrationMultaiRuntime {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public String deploymentId() {

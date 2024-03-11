@@ -36,6 +36,8 @@ public final class ElastigroupSignalArgs extends com.pulumi.resources.ResourceAr
      * The signals defined timeout- default is 40 minutes (1800 seconds).
      * 
      * Usage:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -58,6 +60,7 @@ public final class ElastigroupSignalArgs extends com.pulumi.resources.ResourceAr
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     @Import(name="timeout")
@@ -67,6 +70,8 @@ public final class ElastigroupSignalArgs extends com.pulumi.resources.ResourceAr
      * @return The signals defined timeout- default is 40 minutes (1800 seconds).
      * 
      * Usage:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -89,6 +94,7 @@ public final class ElastigroupSignalArgs extends com.pulumi.resources.ResourceAr
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public Optional<Output<Integer>> timeout() {
@@ -145,6 +151,8 @@ public final class ElastigroupSignalArgs extends com.pulumi.resources.ResourceAr
          * @param timeout The signals defined timeout- default is 40 minutes (1800 seconds).
          * 
          * Usage:
+         * 
+         * &lt;!--Start PulumiCodeChooser --&gt;
          * ```java
          * package generated_program;
          * 
@@ -167,6 +175,7 @@ public final class ElastigroupSignalArgs extends com.pulumi.resources.ResourceAr
          *     }
          * }
          * ```
+         * &lt;!--End PulumiCodeChooser --&gt;
          * 
          * @return builder
          * 
@@ -180,6 +189,8 @@ public final class ElastigroupSignalArgs extends com.pulumi.resources.ResourceAr
          * @param timeout The signals defined timeout- default is 40 minutes (1800 seconds).
          * 
          * Usage:
+         * 
+         * &lt;!--Start PulumiCodeChooser --&gt;
          * ```java
          * package generated_program;
          * 
@@ -202,6 +213,7 @@ public final class ElastigroupSignalArgs extends com.pulumi.resources.ResourceAr
          *     }
          * }
          * ```
+         * &lt;!--End PulumiCodeChooser --&gt;
          * 
          * @return builder
          * 

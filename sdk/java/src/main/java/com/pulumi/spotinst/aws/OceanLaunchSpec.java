@@ -39,6 +39,8 @@ import javax.annotation.Nullable;
  * Manages a Spotinst Ocean AWS [Virtual Node Group](https://docs.spot.io/ocean/features/launch-specifications) resource.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -190,6 +192,8 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -213,12 +217,16 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Update Policy
  * 
  * * `update_policy` - (Optional)
  *     * `should_roll` - (Required) Enables the roll.
  *     * `roll_config` - (Required) Holds the roll configuration.
  *         * `batch_size_percentage` - (Required) Sets the percentage of the instances to deploy in each batch.
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -241,6 +249,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */
 @ResourceType(type="spotinst:aws/oceanLaunchSpec:OceanLaunchSpec")

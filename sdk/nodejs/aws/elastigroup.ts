@@ -254,9 +254,11 @@ export class Elastigroup extends pulumi.CustomResource {
      *
      * Usage:
      *
+     * <!--Start PulumiCodeChooser -->
      * ```typescript
      * import * as pulumi from "@pulumi/pulumi";
      * ```
+     * <!--End PulumiCodeChooser -->
      */
     public readonly privateIps!: pulumi.Output<string[] | undefined>;
     /**
@@ -758,9 +760,11 @@ export interface ElastigroupState {
      *
      * Usage:
      *
+     * <!--Start PulumiCodeChooser -->
      * ```typescript
      * import * as pulumi from "@pulumi/pulumi";
      * ```
+     * <!--End PulumiCodeChooser -->
      */
     privateIps?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -1062,9 +1066,11 @@ export interface ElastigroupArgs {
      *
      * Usage:
      *
+     * <!--Start PulumiCodeChooser -->
      * ```typescript
      * import * as pulumi from "@pulumi/pulumi";
      * ```
+     * <!--End PulumiCodeChooser -->
      */
     privateIps?: pulumi.Input<pulumi.Input<string>[]>;
     /**

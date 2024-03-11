@@ -64,6 +64,8 @@ public final class ElastigroupIntegrationRancherArgs extends com.pulumi.resource
     /**
      * The Rancher version. Must be `&#34;1&#34;` or `&#34;2&#34;`. If this field is omitted, it’s assumed that the Rancher cluster is version 1. Note that Kubernetes is required when using Rancher version 2^.
      * Usage:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -86,6 +88,7 @@ public final class ElastigroupIntegrationRancherArgs extends com.pulumi.resource
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     @Import(name="version")
@@ -94,6 +97,8 @@ public final class ElastigroupIntegrationRancherArgs extends com.pulumi.resource
     /**
      * @return The Rancher version. Must be `&#34;1&#34;` or `&#34;2&#34;`. If this field is omitted, it’s assumed that the Rancher cluster is version 1. Note that Kubernetes is required when using Rancher version 2^.
      * Usage:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -116,6 +121,7 @@ public final class ElastigroupIntegrationRancherArgs extends com.pulumi.resource
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public Optional<Output<String>> version() {
@@ -215,6 +221,8 @@ public final class ElastigroupIntegrationRancherArgs extends com.pulumi.resource
         /**
          * @param version The Rancher version. Must be `&#34;1&#34;` or `&#34;2&#34;`. If this field is omitted, it’s assumed that the Rancher cluster is version 1. Note that Kubernetes is required when using Rancher version 2^.
          * Usage:
+         * 
+         * &lt;!--Start PulumiCodeChooser --&gt;
          * ```java
          * package generated_program;
          * 
@@ -237,6 +245,7 @@ public final class ElastigroupIntegrationRancherArgs extends com.pulumi.resource
          *     }
          * }
          * ```
+         * &lt;!--End PulumiCodeChooser --&gt;
          * 
          * @return builder
          * 
@@ -249,6 +258,8 @@ public final class ElastigroupIntegrationRancherArgs extends com.pulumi.resource
         /**
          * @param version The Rancher version. Must be `&#34;1&#34;` or `&#34;2&#34;`. If this field is omitted, it’s assumed that the Rancher cluster is version 1. Note that Kubernetes is required when using Rancher version 2^.
          * Usage:
+         * 
+         * &lt;!--Start PulumiCodeChooser --&gt;
          * ```java
          * package generated_program;
          * 
@@ -271,6 +282,7 @@ public final class ElastigroupIntegrationRancherArgs extends com.pulumi.resource
          *     }
          * }
          * ```
+         * &lt;!--End PulumiCodeChooser --&gt;
          * 
          * @return builder
          * 

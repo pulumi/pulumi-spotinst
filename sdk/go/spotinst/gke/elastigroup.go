@@ -23,6 +23,7 @@ import (
 // * you must include `clusterZoneName` and `clusterId`
 // * a handful of parameters are created remotely and will not appear in the diff. A complete list can be found below.
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -92,6 +93,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 type Elastigroup struct {
 	pulumi.CustomResourceState
 

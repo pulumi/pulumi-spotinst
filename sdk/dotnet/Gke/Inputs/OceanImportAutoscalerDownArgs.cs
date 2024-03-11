@@ -19,7 +19,7 @@ namespace Pulumi.SpotInst.Gke.Inputs
         public Input<int>? EvaluationPeriods { get; set; }
 
         /// <summary>
-        /// Would represent the maximum % to scale-down. Number between 1-100.
+        /// Would represent the maximum %!t(MISSING)o scale-down. Number between 1-100.
         /// </summary>
         [Input("maxScaleDownPercentage")]
         public Input<double>? MaxScaleDownPercentage { get; set; }

@@ -14,6 +14,8 @@ public final class ElastigroupIntegrationMesosphere {
      * @return The public IP of the DC/OS Master.
      * 
      * Usage:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -36,6 +38,7 @@ public final class ElastigroupIntegrationMesosphere {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     private String apiServer;
@@ -45,6 +48,8 @@ public final class ElastigroupIntegrationMesosphere {
      * @return The public IP of the DC/OS Master.
      * 
      * Usage:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -67,6 +72,7 @@ public final class ElastigroupIntegrationMesosphere {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public String apiServer() {

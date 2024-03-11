@@ -16,6 +16,7 @@ namespace Pulumi.SpotInst.Gke.Outputs
         /// <summary>
         /// The maximum memory in GiB units that can be allocated to the cluster.
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -25,6 +26,7 @@ namespace Pulumi.SpotInst.Gke.Outputs
         /// {
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// &lt;a id="strategy"&gt;&lt;/a&gt;
         /// </summary>

@@ -18,7 +18,7 @@ namespace Pulumi.SpotInst.Gke.Outputs
         /// </summary>
         public readonly int? EvaluationPeriods;
         /// <summary>
-        /// Would represent the maximum % to scale-down. Number between 1-100.
+        /// Would represent the maximum %!t(MISSING)o scale-down. Number between 1-100.
         /// </summary>
         public readonly double? MaxScaleDownPercentage;
 

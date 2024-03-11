@@ -27,6 +27,8 @@ public final class ElastigroupScheduledTask {
      * @return The maximum number of instances the group should have.
      * 
      * Usage:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -49,6 +51,7 @@ public final class ElastigroupScheduledTask {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     private @Nullable String maxCapacity;
@@ -87,6 +90,8 @@ public final class ElastigroupScheduledTask {
      * @return The maximum number of instances the group should have.
      * 
      * Usage:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -109,6 +114,7 @@ public final class ElastigroupScheduledTask {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public Optional<String> maxCapacity() {

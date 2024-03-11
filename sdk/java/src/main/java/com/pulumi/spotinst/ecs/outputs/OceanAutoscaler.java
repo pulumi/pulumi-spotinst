@@ -16,7 +16,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class OceanAutoscaler {
     /**
-     * @return The auto-headroom percentage. Set a number between 0-200 to control the headroom % of the cluster. Relevant when `isAutoConfig`= true.
+     * @return The auto-headroom percentage. Set a number between 0-200 to control the headroom %!o(MISSING)f the cluster. Relevant when `isAutoConfig`= true.
      * 
      */
     private @Nullable Integer autoHeadroomPercentage;
@@ -32,6 +32,8 @@ public final class OceanAutoscaler {
     private @Nullable OceanAutoscalerDown down;
     /**
      * @return When set to true, both automatic and per custom launch specification manual headroom to be saved concurrently and independently in the cluster. prerequisite: isAutoConfig must be true
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -54,6 +56,7 @@ public final class OceanAutoscaler {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     private @Nullable Boolean enableAutomaticAndManualHeadroom;
@@ -85,7 +88,7 @@ public final class OceanAutoscaler {
 
     private OceanAutoscaler() {}
     /**
-     * @return The auto-headroom percentage. Set a number between 0-200 to control the headroom % of the cluster. Relevant when `isAutoConfig`= true.
+     * @return The auto-headroom percentage. Set a number between 0-200 to control the headroom %!o(MISSING)f the cluster. Relevant when `isAutoConfig`= true.
      * 
      */
     public Optional<Integer> autoHeadroomPercentage() {
@@ -107,6 +110,8 @@ public final class OceanAutoscaler {
     }
     /**
      * @return When set to true, both automatic and per custom launch specification manual headroom to be saved concurrently and independently in the cluster. prerequisite: isAutoConfig must be true
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -129,6 +134,7 @@ public final class OceanAutoscaler {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public Optional<Boolean> enableAutomaticAndManualHeadroom() {

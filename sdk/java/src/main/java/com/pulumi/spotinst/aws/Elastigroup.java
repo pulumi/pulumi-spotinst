@@ -57,6 +57,7 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -210,6 +211,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */
 @ResourceType(type="spotinst:aws/elastigroup:Elastigroup")
@@ -974,6 +976,8 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
      * List of Private IPs to associate to the group instances.(e.g. &#34;172.1.1.0&#34;). Please note: This setting will only apply if persistence.persist_private_ip is set to true.
      * 
      * Usage:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -996,6 +1000,7 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     @Export(name="privateIps", refs={List.class,String.class}, tree="[0,1]")
@@ -1005,6 +1010,8 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
      * @return List of Private IPs to associate to the group instances.(e.g. &#34;172.1.1.0&#34;). Please note: This setting will only apply if persistence.persist_private_ip is set to true.
      * 
      * Usage:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1027,6 +1034,7 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public Output<Optional<List<String>>> privateIps() {

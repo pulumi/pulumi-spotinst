@@ -49,6 +49,8 @@ public final class ElastigroupStatefulDeallocationArgs extends com.pulumi.resour
      * For stateful groups: remove snapshots.
      * 
      * Usage:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -71,6 +73,7 @@ public final class ElastigroupStatefulDeallocationArgs extends com.pulumi.resour
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     @Import(name="shouldDeleteSnapshots")
@@ -80,6 +83,8 @@ public final class ElastigroupStatefulDeallocationArgs extends com.pulumi.resour
      * @return For stateful groups: remove snapshots.
      * 
      * Usage:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -102,6 +107,7 @@ public final class ElastigroupStatefulDeallocationArgs extends com.pulumi.resour
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public Optional<Output<Boolean>> shouldDeleteSnapshots() {
@@ -196,6 +202,8 @@ public final class ElastigroupStatefulDeallocationArgs extends com.pulumi.resour
          * @param shouldDeleteSnapshots For stateful groups: remove snapshots.
          * 
          * Usage:
+         * 
+         * &lt;!--Start PulumiCodeChooser --&gt;
          * ```java
          * package generated_program;
          * 
@@ -218,6 +226,7 @@ public final class ElastigroupStatefulDeallocationArgs extends com.pulumi.resour
          *     }
          * }
          * ```
+         * &lt;!--End PulumiCodeChooser --&gt;
          * 
          * @return builder
          * 
@@ -231,6 +240,8 @@ public final class ElastigroupStatefulDeallocationArgs extends com.pulumi.resour
          * @param shouldDeleteSnapshots For stateful groups: remove snapshots.
          * 
          * Usage:
+         * 
+         * &lt;!--Start PulumiCodeChooser --&gt;
          * ```java
          * package generated_program;
          * 
@@ -253,6 +264,7 @@ public final class ElastigroupStatefulDeallocationArgs extends com.pulumi.resour
          *     }
          * }
          * ```
+         * &lt;!--End PulumiCodeChooser --&gt;
          * 
          * @return builder
          * 

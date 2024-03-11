@@ -11,6 +11,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as spotinst from "@pulumi/spotinst";
@@ -102,11 +103,15 @@ import * as utilities from "../utilities";
  *     userData: "echo hello world",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  *
  * export const oceanLaunchspecId = spotinst_ocean_ecs_launch_spec.example.id;
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Block Devices
  *
  * * `blockDeviceMappings`- (Optional) Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.

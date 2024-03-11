@@ -14,6 +14,7 @@ namespace Pulumi.SpotInst.Gke
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -30,6 +31,8 @@ namespace Pulumi.SpotInst.Gke
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -43,6 +46,7 @@ namespace Pulumi.SpotInst.Gke
     ///     };
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [SpotInstResourceType("spotinst:gke/oceanLaunchSpecImport:OceanLaunchSpecImport")]
     public partial class OceanLaunchSpecImport : global::Pulumi.CustomResource

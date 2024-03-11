@@ -759,6 +759,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_spotinst as spotinst
@@ -836,11 +837,15 @@ class OceanLaunchSpec(pulumi.CustomResource):
                 value="taintVal",
             )])
         ```
+        <!--End PulumiCodeChooser -->
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
 
         pulumi.export("oceanLaunchspecId", spotinst_ocean_gke_launch_spec["example"]["id"])
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Update Policy
 
         * `update_policy` - (Optional)
@@ -848,9 +853,11 @@ class OceanLaunchSpec(pulumi.CustomResource):
           * `roll_config` - (Required) Holds the roll configuration.
             * `batch_size_percentage` - (Required) Sets the percentage of the instances to deploy in each batch.
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         ```
+        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -889,6 +896,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_spotinst as spotinst
@@ -966,11 +974,15 @@ class OceanLaunchSpec(pulumi.CustomResource):
                 value="taintVal",
             )])
         ```
+        <!--End PulumiCodeChooser -->
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
 
         pulumi.export("oceanLaunchspecId", spotinst_ocean_gke_launch_spec["example"]["id"])
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Update Policy
 
         * `update_policy` - (Optional)
@@ -978,9 +990,11 @@ class OceanLaunchSpec(pulumi.CustomResource):
           * `roll_config` - (Required) Holds the roll configuration.
             * `batch_size_percentage` - (Required) Sets the percentage of the instances to deploy in each batch.
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         ```
+        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param OceanLaunchSpecArgs args: The arguments to use to populate this resource's properties.

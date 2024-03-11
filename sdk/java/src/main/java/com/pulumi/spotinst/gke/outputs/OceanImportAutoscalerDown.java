@@ -18,7 +18,7 @@ public final class OceanImportAutoscalerDown {
      */
     private @Nullable Integer evaluationPeriods;
     /**
-     * @return Would represent the maximum % to scale-down. Number between 1-100.
+     * @return Would represent the maximum %!t(MISSING)o scale-down. Number between 1-100.
      * 
      */
     private @Nullable Double maxScaleDownPercentage;
@@ -32,7 +32,7 @@ public final class OceanImportAutoscalerDown {
         return Optional.ofNullable(this.evaluationPeriods);
     }
     /**
-     * @return Would represent the maximum % to scale-down. Number between 1-100.
+     * @return Would represent the maximum %!t(MISSING)o scale-down. Number between 1-100.
      * 
      */
     public Optional<Double> maxScaleDownPercentage() {

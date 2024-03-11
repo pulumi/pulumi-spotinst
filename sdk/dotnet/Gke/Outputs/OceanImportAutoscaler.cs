@@ -14,7 +14,7 @@ namespace Pulumi.SpotInst.Gke.Outputs
     public sealed class OceanImportAutoscaler
     {
         /// <summary>
-        /// Optionally set the auto headroom percentage, set a number between 0-200 to control the headroom % from the cluster. Relevant when isAutoConfig=true.
+        /// Optionally set the auto headroom percentage, set a number between 0-200 to control the headroom %!f(MISSING)rom the cluster. Relevant when isAutoConfig=true.
         /// </summary>
         public readonly int? AutoHeadroomPercentage;
         /// <summary>
