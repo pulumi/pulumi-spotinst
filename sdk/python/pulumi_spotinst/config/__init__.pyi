@@ -14,6 +14,11 @@ account: Optional[str]
 Spotinst Account ID
 """
 
+enabled: Optional[bool]
+"""
+Enable or disable the Spotinst provider
+"""
+
 featureFlags: Optional[str]
 """
 Spotinst SDK Feature Flags

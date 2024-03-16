@@ -14,7 +14,10 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ManagedInstanceBlockDeviceMappingEbs {
     private @Nullable Boolean deleteOnTermination;
+    private @Nullable Boolean encrypted;
     private @Nullable Integer iops;
+    private @Nullable String kmsKeyId;
+    private @Nullable String snapshotId;
     private @Nullable Integer throughput;
     private @Nullable Integer volumeSize;
     private @Nullable String volumeType;
@@ -23,8 +26,17 @@ public final class ManagedInstanceBlockDeviceMappingEbs {
     public Optional<Boolean> deleteOnTermination() {
         return Optional.ofNullable(this.deleteOnTermination);
     }
+    public Optional<Boolean> encrypted() {
+        return Optional.ofNullable(this.encrypted);
+    }
     public Optional<Integer> iops() {
         return Optional.ofNullable(this.iops);
+    }
+    public Optional<String> kmsKeyId() {
+        return Optional.ofNullable(this.kmsKeyId);
+    }
+    public Optional<String> snapshotId() {
+        return Optional.ofNullable(this.snapshotId);
     }
     public Optional<Integer> throughput() {
         return Optional.ofNullable(this.throughput);
@@ -46,7 +58,10 @@ public final class ManagedInstanceBlockDeviceMappingEbs {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean deleteOnTermination;
+        private @Nullable Boolean encrypted;
         private @Nullable Integer iops;
+        private @Nullable String kmsKeyId;
+        private @Nullable String snapshotId;
         private @Nullable Integer throughput;
         private @Nullable Integer volumeSize;
         private @Nullable String volumeType;
@@ -54,7 +69,10 @@ public final class ManagedInstanceBlockDeviceMappingEbs {
         public Builder(ManagedInstanceBlockDeviceMappingEbs defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.deleteOnTermination = defaults.deleteOnTermination;
+    	      this.encrypted = defaults.encrypted;
     	      this.iops = defaults.iops;
+    	      this.kmsKeyId = defaults.kmsKeyId;
+    	      this.snapshotId = defaults.snapshotId;
     	      this.throughput = defaults.throughput;
     	      this.volumeSize = defaults.volumeSize;
     	      this.volumeType = defaults.volumeType;
@@ -67,9 +85,27 @@ public final class ManagedInstanceBlockDeviceMappingEbs {
             return this;
         }
         @CustomType.Setter
+        public Builder encrypted(@Nullable Boolean encrypted) {
+
+            this.encrypted = encrypted;
+            return this;
+        }
+        @CustomType.Setter
         public Builder iops(@Nullable Integer iops) {
 
             this.iops = iops;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder kmsKeyId(@Nullable String kmsKeyId) {
+
+            this.kmsKeyId = kmsKeyId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder snapshotId(@Nullable String snapshotId) {
+
+            this.snapshotId = snapshotId;
             return this;
         }
         @CustomType.Setter
@@ -93,7 +129,10 @@ public final class ManagedInstanceBlockDeviceMappingEbs {
         public ManagedInstanceBlockDeviceMappingEbs build() {
             final var _resultValue = new ManagedInstanceBlockDeviceMappingEbs();
             _resultValue.deleteOnTermination = deleteOnTermination;
+            _resultValue.encrypted = encrypted;
             _resultValue.iops = iops;
+            _resultValue.kmsKeyId = kmsKeyId;
+            _resultValue.snapshotId = snapshotId;
             _resultValue.throughput = throughput;
             _resultValue.volumeSize = volumeSize;
             _resultValue.volumeType = volumeType;

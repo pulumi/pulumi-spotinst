@@ -41,7 +41,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var credential = new Credentials(&#34;credential&#34;, CredentialsArgs.builder()        
- *             .accountid(&#34;act-123456&#34;)
+ *             .accountId(&#34;act-123456&#34;)
  *             .iamrole(&#34;arn:aws:iam::1234567890:role/Spot_Iam_Role&#34;)
  *             .build());
  * 
@@ -53,9 +53,17 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="spotinst:aws/credentials:Credentials")
 public class Credentials extends com.pulumi.resources.CustomResource {
+    /**
+     * The ID of the account associated with your token.
+     * 
+     */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
+    /**
+     * @return The ID of the account associated with your token.
+     * 
+     */
     public Output<String> accountId() {
         return this.accountId;
     }

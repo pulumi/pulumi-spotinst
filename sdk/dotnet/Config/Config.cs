@@ -42,6 +42,16 @@ namespace Pulumi.SpotInst
             set => _account.Set(value);
         }
 
+        private static readonly __Value<bool?> _enabled = new __Value<bool?>(() => __config.GetBoolean("enabled"));
+        /// <summary>
+        /// Enable or disable the Spotinst provider
+        /// </summary>
+        public static bool? Enabled
+        {
+            get => _enabled.Get();
+            set => _enabled.Set(value);
+        }
+
         private static readonly __Value<string?> _featureFlags = new __Value<string?>(() => __config.Get("featureFlags"));
         /// <summary>
         /// Spotinst SDK Feature Flags

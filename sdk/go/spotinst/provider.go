@@ -45,6 +45,8 @@ func NewProvider(ctx *pulumi.Context,
 type providerArgs struct {
 	// Spotinst Account ID
 	Account *string `pulumi:"account"`
+	// Enable or disable the Spotinst provider
+	Enabled *bool `pulumi:"enabled"`
 	// Spotinst SDK Feature Flags
 	FeatureFlags *string `pulumi:"featureFlags"`
 	// Spotinst Personal API Access Token
@@ -55,6 +57,8 @@ type providerArgs struct {
 type ProviderArgs struct {
 	// Spotinst Account ID
 	Account pulumi.StringPtrInput
+	// Enable or disable the Spotinst provider
+	Enabled pulumi.BoolPtrInput
 	// Spotinst SDK Feature Flags
 	FeatureFlags pulumi.StringPtrInput
 	// Spotinst Personal API Access Token

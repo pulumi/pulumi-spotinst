@@ -15,9 +15,17 @@ public final class CredentialsState extends com.pulumi.resources.ResourceArgs {
 
     public static final CredentialsState Empty = new CredentialsState();
 
+    /**
+     * The ID of the account associated with your token.
+     * 
+     */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
+    /**
+     * @return The ID of the account associated with your token.
+     * 
+     */
     public Optional<Output<String>> accountId() {
         return Optional.ofNullable(this.accountId);
     }
@@ -62,11 +70,23 @@ public final class CredentialsState extends com.pulumi.resources.ResourceArgs {
             $ = new CredentialsState(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param accountId The ID of the account associated with your token.
+         * 
+         * @return builder
+         * 
+         */
         public Builder accountId(@Nullable Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
 
+        /**
+         * @param accountId The ID of the account associated with your token.
+         * 
+         * @return builder
+         * 
+         */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
         }

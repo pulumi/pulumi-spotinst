@@ -4,6 +4,7 @@
 package com.pulumi.spotinst;
 
 import com.pulumi.core.internal.Codegen;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Optional;
 
@@ -16,6 +17,13 @@ public final class Config {
  */
     public Optional<String> account() {
         return Codegen.stringProp("account").config(config).get();
+    }
+/**
+ * Enable or disable the Spotinst provider
+ * 
+ */
+    public Optional<Boolean> enabled() {
+        return Codegen.booleanProp("enabled").config(config).get();
     }
 /**
  * Spotinst SDK Feature Flags

@@ -24,11 +24,32 @@ public final class ManagedInstanceBlockDeviceMappingEbsArgs extends com.pulumi.r
         return Optional.ofNullable(this.deleteOnTermination);
     }
 
+    @Import(name="encrypted")
+    private @Nullable Output<Boolean> encrypted;
+
+    public Optional<Output<Boolean>> encrypted() {
+        return Optional.ofNullable(this.encrypted);
+    }
+
     @Import(name="iops")
     private @Nullable Output<Integer> iops;
 
     public Optional<Output<Integer>> iops() {
         return Optional.ofNullable(this.iops);
+    }
+
+    @Import(name="kmsKeyId")
+    private @Nullable Output<String> kmsKeyId;
+
+    public Optional<Output<String>> kmsKeyId() {
+        return Optional.ofNullable(this.kmsKeyId);
+    }
+
+    @Import(name="snapshotId")
+    private @Nullable Output<String> snapshotId;
+
+    public Optional<Output<String>> snapshotId() {
+        return Optional.ofNullable(this.snapshotId);
     }
 
     @Import(name="throughput")
@@ -56,7 +77,10 @@ public final class ManagedInstanceBlockDeviceMappingEbsArgs extends com.pulumi.r
 
     private ManagedInstanceBlockDeviceMappingEbsArgs(ManagedInstanceBlockDeviceMappingEbsArgs $) {
         this.deleteOnTermination = $.deleteOnTermination;
+        this.encrypted = $.encrypted;
         this.iops = $.iops;
+        this.kmsKeyId = $.kmsKeyId;
+        this.snapshotId = $.snapshotId;
         this.throughput = $.throughput;
         this.volumeSize = $.volumeSize;
         this.volumeType = $.volumeType;
@@ -89,6 +113,15 @@ public final class ManagedInstanceBlockDeviceMappingEbsArgs extends com.pulumi.r
             return deleteOnTermination(Output.of(deleteOnTermination));
         }
 
+        public Builder encrypted(@Nullable Output<Boolean> encrypted) {
+            $.encrypted = encrypted;
+            return this;
+        }
+
+        public Builder encrypted(Boolean encrypted) {
+            return encrypted(Output.of(encrypted));
+        }
+
         public Builder iops(@Nullable Output<Integer> iops) {
             $.iops = iops;
             return this;
@@ -96,6 +129,24 @@ public final class ManagedInstanceBlockDeviceMappingEbsArgs extends com.pulumi.r
 
         public Builder iops(Integer iops) {
             return iops(Output.of(iops));
+        }
+
+        public Builder kmsKeyId(@Nullable Output<String> kmsKeyId) {
+            $.kmsKeyId = kmsKeyId;
+            return this;
+        }
+
+        public Builder kmsKeyId(String kmsKeyId) {
+            return kmsKeyId(Output.of(kmsKeyId));
+        }
+
+        public Builder snapshotId(@Nullable Output<String> snapshotId) {
+            $.snapshotId = snapshotId;
+            return this;
+        }
+
+        public Builder snapshotId(String snapshotId) {
+            return snapshotId(Output.of(snapshotId));
         }
 
         public Builder throughput(@Nullable Output<Integer> throughput) {

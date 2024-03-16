@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  *
  * // set credential AWS
  * const credential = new spotinst.aws.Credentials("credential", {
- *     accountid: "act-123456",
+ *     accountId: "act-123456",
  *     iamrole: "arn:aws:iam::1234567890:role/Spot_Iam_Role",
  * });
  * ```
@@ -50,6 +50,9 @@ export class Credentials extends pulumi.CustomResource {
         return obj['__pulumiType'] === Credentials.__pulumiType;
     }
 
+    /**
+     * The ID of the account associated with your token.
+     */
     public readonly accountId!: pulumi.Output<string>;
     /**
      * Provide the IAM Role ARN connected to another AWS account 922761411349 and with the latest Spot Policy - https://docs.spot.io/administration/api/spot-policy-in-aws
@@ -91,6 +94,9 @@ export class Credentials extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Credentials resources.
  */
 export interface CredentialsState {
+    /**
+     * The ID of the account associated with your token.
+     */
     accountId?: pulumi.Input<string>;
     /**
      * Provide the IAM Role ARN connected to another AWS account 922761411349 and with the latest Spot Policy - https://docs.spot.io/administration/api/spot-policy-in-aws
@@ -102,6 +108,9 @@ export interface CredentialsState {
  * The set of arguments for constructing a Credentials resource.
  */
 export interface CredentialsArgs {
+    /**
+     * The ID of the account associated with your token.
+     */
     accountId: pulumi.Input<string>;
     /**
      * Provide the IAM Role ARN connected to another AWS account 922761411349 and with the latest Spot Policy - https://docs.spot.io/administration/api/spot-policy-in-aws

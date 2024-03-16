@@ -14254,7 +14254,10 @@ func (o ManagedInstanceBlockDeviceMappingArrayOutput) Index(i pulumi.IntInput) M
 
 type ManagedInstanceBlockDeviceMappingEbs struct {
 	DeleteOnTermination *bool   `pulumi:"deleteOnTermination"`
+	Encrypted           *bool   `pulumi:"encrypted"`
 	Iops                *int    `pulumi:"iops"`
+	KmsKeyId            *string `pulumi:"kmsKeyId"`
+	SnapshotId          *string `pulumi:"snapshotId"`
 	Throughput          *int    `pulumi:"throughput"`
 	VolumeSize          *int    `pulumi:"volumeSize"`
 	VolumeType          *string `pulumi:"volumeType"`
@@ -14273,7 +14276,10 @@ type ManagedInstanceBlockDeviceMappingEbsInput interface {
 
 type ManagedInstanceBlockDeviceMappingEbsArgs struct {
 	DeleteOnTermination pulumi.BoolPtrInput   `pulumi:"deleteOnTermination"`
+	Encrypted           pulumi.BoolPtrInput   `pulumi:"encrypted"`
 	Iops                pulumi.IntPtrInput    `pulumi:"iops"`
+	KmsKeyId            pulumi.StringPtrInput `pulumi:"kmsKeyId"`
+	SnapshotId          pulumi.StringPtrInput `pulumi:"snapshotId"`
 	Throughput          pulumi.IntPtrInput    `pulumi:"throughput"`
 	VolumeSize          pulumi.IntPtrInput    `pulumi:"volumeSize"`
 	VolumeType          pulumi.StringPtrInput `pulumi:"volumeType"`
@@ -14360,8 +14366,20 @@ func (o ManagedInstanceBlockDeviceMappingEbsOutput) DeleteOnTermination() pulumi
 	return o.ApplyT(func(v ManagedInstanceBlockDeviceMappingEbs) *bool { return v.DeleteOnTermination }).(pulumi.BoolPtrOutput)
 }
 
+func (o ManagedInstanceBlockDeviceMappingEbsOutput) Encrypted() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ManagedInstanceBlockDeviceMappingEbs) *bool { return v.Encrypted }).(pulumi.BoolPtrOutput)
+}
+
 func (o ManagedInstanceBlockDeviceMappingEbsOutput) Iops() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ManagedInstanceBlockDeviceMappingEbs) *int { return v.Iops }).(pulumi.IntPtrOutput)
+}
+
+func (o ManagedInstanceBlockDeviceMappingEbsOutput) KmsKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedInstanceBlockDeviceMappingEbs) *string { return v.KmsKeyId }).(pulumi.StringPtrOutput)
+}
+
+func (o ManagedInstanceBlockDeviceMappingEbsOutput) SnapshotId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedInstanceBlockDeviceMappingEbs) *string { return v.SnapshotId }).(pulumi.StringPtrOutput)
 }
 
 func (o ManagedInstanceBlockDeviceMappingEbsOutput) Throughput() pulumi.IntPtrOutput {
@@ -14409,6 +14427,15 @@ func (o ManagedInstanceBlockDeviceMappingEbsPtrOutput) DeleteOnTermination() pul
 	}).(pulumi.BoolPtrOutput)
 }
 
+func (o ManagedInstanceBlockDeviceMappingEbsPtrOutput) Encrypted() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ManagedInstanceBlockDeviceMappingEbs) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Encrypted
+	}).(pulumi.BoolPtrOutput)
+}
+
 func (o ManagedInstanceBlockDeviceMappingEbsPtrOutput) Iops() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ManagedInstanceBlockDeviceMappingEbs) *int {
 		if v == nil {
@@ -14416,6 +14443,24 @@ func (o ManagedInstanceBlockDeviceMappingEbsPtrOutput) Iops() pulumi.IntPtrOutpu
 		}
 		return v.Iops
 	}).(pulumi.IntPtrOutput)
+}
+
+func (o ManagedInstanceBlockDeviceMappingEbsPtrOutput) KmsKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedInstanceBlockDeviceMappingEbs) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KmsKeyId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ManagedInstanceBlockDeviceMappingEbsPtrOutput) SnapshotId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedInstanceBlockDeviceMappingEbs) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SnapshotId
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ManagedInstanceBlockDeviceMappingEbsPtrOutput) Throughput() pulumi.IntPtrOutput {

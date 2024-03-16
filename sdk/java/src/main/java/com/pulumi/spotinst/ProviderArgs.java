@@ -5,6 +5,7 @@ package com.pulumi.spotinst;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -28,6 +29,21 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> account() {
         return Optional.ofNullable(this.account);
+    }
+
+    /**
+     * Enable or disable the Spotinst provider
+     * 
+     */
+    @Import(name="enabled", json=true)
+    private @Nullable Output<Boolean> enabled;
+
+    /**
+     * @return Enable or disable the Spotinst provider
+     * 
+     */
+    public Optional<Output<Boolean>> enabled() {
+        return Optional.ofNullable(this.enabled);
     }
 
     /**
@@ -64,6 +80,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
     private ProviderArgs(ProviderArgs $) {
         this.account = $.account;
+        this.enabled = $.enabled;
         this.featureFlags = $.featureFlags;
         this.token = $.token;
     }
@@ -105,6 +122,27 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder account(String account) {
             return account(Output.of(account));
+        }
+
+        /**
+         * @param enabled Enable or disable the Spotinst provider
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enabled(@Nullable Output<Boolean> enabled) {
+            $.enabled = enabled;
+            return this;
+        }
+
+        /**
+         * @param enabled Enable or disable the Spotinst provider
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enabled(Boolean enabled) {
+            return enabled(Output.of(enabled));
         }
 
         /**

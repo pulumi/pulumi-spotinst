@@ -2004,7 +2004,10 @@ export namespace aws {
 
     export interface ManagedInstanceBlockDeviceMappingEbs {
         deleteOnTermination: boolean;
+        encrypted?: boolean;
         iops?: number;
+        kmsKeyId?: string;
+        snapshotId?: string;
         throughput?: number;
         volumeSize?: number;
         volumeType: string;

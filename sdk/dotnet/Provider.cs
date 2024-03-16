@@ -71,6 +71,12 @@ namespace Pulumi.SpotInst
         public Input<string>? Account { get; set; }
 
         /// <summary>
+        /// Enable or disable the Spotinst provider
+        /// </summary>
+        [Input("enabled", json: true)]
+        public Input<bool>? Enabled { get; set; }
+
+        /// <summary>
         /// Spotinst SDK Feature Flags
         /// </summary>
         [Input("featureFlags")]

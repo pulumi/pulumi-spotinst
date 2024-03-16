@@ -15,8 +15,17 @@ namespace Pulumi.SpotInst.Aws.Inputs
         [Input("deleteOnTermination")]
         public Input<bool>? DeleteOnTermination { get; set; }
 
+        [Input("encrypted")]
+        public Input<bool>? Encrypted { get; set; }
+
         [Input("iops")]
         public Input<int>? Iops { get; set; }
+
+        [Input("kmsKeyId")]
+        public Input<string>? KmsKeyId { get; set; }
+
+        [Input("snapshotId")]
+        public Input<string>? SnapshotId { get; set; }
 
         [Input("throughput")]
         public Input<int>? Throughput { get; set; }
