@@ -64,6 +64,10 @@
                 "type": "string",
                 "description": "Spotinst Account ID\n"
             },
+            "enabled": {
+                "type": "boolean",
+                "description": "Enable or disable the Spotinst provider\n"
+            },
             "featureFlags": {
                 "type": "string",
                 "description": "Spotinst SDK Feature Flags\n"
@@ -2146,8 +2150,17 @@
                 "deleteOnTermination": {
                     "type": "boolean"
                 },
+                "encrypted": {
+                    "type": "boolean"
+                },
                 "iops": {
                     "type": "integer"
+                },
+                "kmsKeyId": {
+                    "type": "string"
+                },
+                "snapshotId": {
+                    "type": "string"
                 },
                 "throughput": {
                     "type": "integer"
@@ -9187,6 +9200,10 @@
                 "type": "string",
                 "description": "Spotinst Account ID\n"
             },
+            "enabled": {
+                "type": "boolean",
+                "description": "Enable or disable the Spotinst provider\n"
+            },
             "featureFlags": {
                 "type": "string",
                 "description": "Spotinst SDK Feature Flags\n"
@@ -9200,6 +9217,10 @@
             "account": {
                 "type": "string",
                 "description": "Spotinst Account ID\n"
+            },
+            "enabled": {
+                "type": "boolean",
+                "description": "Enable or disable the Spotinst provider\n"
             },
             "featureFlags": {
                 "type": "string",
@@ -9441,10 +9462,11 @@
             }
         },
         "spotinst:aws/credentials:Credentials": {
-            "description": "Provides a Spotinst credential AWS resource.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as spotinst from \"@pulumi/spotinst\";\n\n// set credential AWS\nconst credential = new spotinst.aws.Credentials(\"credential\", {\n    accountid: \"act-123456\",\n    iamrole: \"arn:aws:iam::1234567890:role/Spot_Iam_Role\",\n});\n```\n```python\nimport pulumi\nimport pulumi_spotinst as spotinst\n\n# set credential AWS\ncredential = spotinst.aws.Credentials(\"credential\",\n    accountid=\"act-123456\",\n    iamrole=\"arn:aws:iam::1234567890:role/Spot_Iam_Role\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing SpotInst = Pulumi.SpotInst;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // set credential AWS\n    var credential = new SpotInst.Aws.Credentials(\"credential\", new()\n    {\n        Accountid = \"act-123456\",\n        Iamrole = \"arn:aws:iam::1234567890:role/Spot_Iam_Role\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst/aws\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t// set credential AWS\n\t\t_, err := aws.NewCredentials(ctx, \"credential\", \u0026aws.CredentialsArgs{\n\t\t\tAccountid: pulumi.String(\"act-123456\"),\n\t\t\tIamrole:   pulumi.String(\"arn:aws:iam::1234567890:role/Spot_Iam_Role\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.spotinst.aws.Credentials;\nimport com.pulumi.spotinst.aws.CredentialsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var credential = new Credentials(\"credential\", CredentialsArgs.builder()        \n            .accountid(\"act-123456\")\n            .iamrole(\"arn:aws:iam::1234567890:role/Spot_Iam_Role\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # set credential AWS\n  credential:\n    type: spotinst:aws:Credentials\n    properties:\n      accountid: act-123456\n      iamrole: arn:aws:iam::1234567890:role/Spot_Iam_Role\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "Provides a Spotinst credential AWS resource.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as spotinst from \"@pulumi/spotinst\";\n\n// set credential AWS\nconst credential = new spotinst.aws.Credentials(\"credential\", {\n    accountId: \"act-123456\",\n    iamrole: \"arn:aws:iam::1234567890:role/Spot_Iam_Role\",\n});\n```\n```python\nimport pulumi\nimport pulumi_spotinst as spotinst\n\n# set credential AWS\ncredential = spotinst.aws.Credentials(\"credential\",\n    account_id=\"act-123456\",\n    iamrole=\"arn:aws:iam::1234567890:role/Spot_Iam_Role\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing SpotInst = Pulumi.SpotInst;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // set credential AWS\n    var credential = new SpotInst.Aws.Credentials(\"credential\", new()\n    {\n        AccountId = \"act-123456\",\n        Iamrole = \"arn:aws:iam::1234567890:role/Spot_Iam_Role\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst/aws\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t// set credential AWS\n\t\t_, err := aws.NewCredentials(ctx, \"credential\", \u0026aws.CredentialsArgs{\n\t\t\tAccountId: pulumi.String(\"act-123456\"),\n\t\t\tIamrole:   pulumi.String(\"arn:aws:iam::1234567890:role/Spot_Iam_Role\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.spotinst.aws.Credentials;\nimport com.pulumi.spotinst.aws.CredentialsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var credential = new Credentials(\"credential\", CredentialsArgs.builder()        \n            .accountId(\"act-123456\")\n            .iamrole(\"arn:aws:iam::1234567890:role/Spot_Iam_Role\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # set credential AWS\n  credential:\n    type: spotinst:aws:Credentials\n    properties:\n      accountId: act-123456\n      iamrole: arn:aws:iam::1234567890:role/Spot_Iam_Role\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "properties": {
                 "accountId": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The ID of the account associated with your token.\n"
                 },
                 "iamrole": {
                     "type": "string",
@@ -9458,6 +9480,7 @@
             "inputProperties": {
                 "accountId": {
                     "type": "string",
+                    "description": "The ID of the account associated with your token.\n",
                     "willReplaceOnChanges": true
                 },
                 "iamrole": {
@@ -9475,6 +9498,7 @@
                 "properties": {
                     "accountId": {
                         "type": "string",
+                        "description": "The ID of the account associated with your token.\n",
                         "willReplaceOnChanges": true
                     },
                     "iamrole": {
