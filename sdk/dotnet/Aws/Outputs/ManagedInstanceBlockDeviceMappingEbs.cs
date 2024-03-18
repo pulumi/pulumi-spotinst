@@ -14,7 +14,10 @@ namespace Pulumi.SpotInst.Aws.Outputs
     public sealed class ManagedInstanceBlockDeviceMappingEbs
     {
         public readonly bool? DeleteOnTermination;
+        public readonly bool? Encrypted;
         public readonly int? Iops;
+        public readonly string? KmsKeyId;
+        public readonly string? SnapshotId;
         public readonly int? Throughput;
         public readonly int? VolumeSize;
         public readonly string? VolumeType;
@@ -23,7 +26,13 @@ namespace Pulumi.SpotInst.Aws.Outputs
         private ManagedInstanceBlockDeviceMappingEbs(
             bool? deleteOnTermination,
 
+            bool? encrypted,
+
             int? iops,
+
+            string? kmsKeyId,
+
+            string? snapshotId,
 
             int? throughput,
 
@@ -32,7 +41,10 @@ namespace Pulumi.SpotInst.Aws.Outputs
             string? volumeType)
         {
             DeleteOnTermination = deleteOnTermination;
+            Encrypted = encrypted;
             Iops = iops;
+            KmsKeyId = kmsKeyId;
+            SnapshotId = snapshotId;
             Throughput = throughput;
             VolumeSize = volumeSize;
             VolumeType = volumeType;

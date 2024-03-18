@@ -18,6 +18,7 @@ class CredentialsArgs:
                  iamrole: pulumi.Input[str]):
         """
         The set of arguments for constructing a Credentials resource.
+        :param pulumi.Input[str] account_id: The ID of the account associated with your token.
         :param pulumi.Input[str] iamrole: Provide the IAM Role ARN connected to another AWS account 922761411349 and with the latest Spot Policy - https://docs.spot.io/administration/api/spot-policy-in-aws
         """
         pulumi.set(__self__, "account_id", account_id)
@@ -26,6 +27,9 @@ class CredentialsArgs:
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[str]:
+        """
+        The ID of the account associated with your token.
+        """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
@@ -52,6 +56,7 @@ class _CredentialsState:
                  iamrole: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Credentials resources.
+        :param pulumi.Input[str] account_id: The ID of the account associated with your token.
         :param pulumi.Input[str] iamrole: Provide the IAM Role ARN connected to another AWS account 922761411349 and with the latest Spot Policy - https://docs.spot.io/administration/api/spot-policy-in-aws
         """
         if account_id is not None:
@@ -62,6 +67,9 @@ class _CredentialsState:
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the account associated with your token.
+        """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
@@ -101,13 +109,14 @@ class Credentials(pulumi.CustomResource):
 
         # set credential AWS
         credential = spotinst.aws.Credentials("credential",
-            accountid="act-123456",
+            account_id="act-123456",
             iamrole="arn:aws:iam::1234567890:role/Spot_Iam_Role")
         ```
         <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] account_id: The ID of the account associated with your token.
         :param pulumi.Input[str] iamrole: Provide the IAM Role ARN connected to another AWS account 922761411349 and with the latest Spot Policy - https://docs.spot.io/administration/api/spot-policy-in-aws
         """
         ...
@@ -128,7 +137,7 @@ class Credentials(pulumi.CustomResource):
 
         # set credential AWS
         credential = spotinst.aws.Credentials("credential",
-            accountid="act-123456",
+            account_id="act-123456",
             iamrole="arn:aws:iam::1234567890:role/Spot_Iam_Role")
         ```
         <!--End PulumiCodeChooser -->
@@ -184,6 +193,7 @@ class Credentials(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] account_id: The ID of the account associated with your token.
         :param pulumi.Input[str] iamrole: Provide the IAM Role ARN connected to another AWS account 922761411349 and with the latest Spot Policy - https://docs.spot.io/administration/api/spot-policy-in-aws
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -197,6 +207,9 @@ class Credentials(pulumi.CustomResource):
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the account associated with your token.
+        """
         return pulumi.get(self, "account_id")
 
     @property

@@ -23,6 +23,13 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('account')
 
     @property
+    def enabled(self) -> Optional[bool]:
+        """
+        Enable or disable the Spotinst provider
+        """
+        return __config__.get_bool('enabled')
+
+    @property
     def feature_flags(self) -> Optional[str]:
         """
         Spotinst SDK Feature Flags

@@ -26,7 +26,7 @@ namespace Pulumi.SpotInst.Aws
     ///     // set credential AWS
     ///     var credential = new SpotInst.Aws.Credentials("credential", new()
     ///     {
-    ///         Accountid = "act-123456",
+    ///         AccountId = "act-123456",
     ///         Iamrole = "arn:aws:iam::1234567890:role/Spot_Iam_Role",
     ///     });
     /// 
@@ -37,6 +37,9 @@ namespace Pulumi.SpotInst.Aws
     [SpotInstResourceType("spotinst:aws/credentials:Credentials")]
     public partial class Credentials : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// The ID of the account associated with your token.
+        /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
 
@@ -92,6 +95,9 @@ namespace Pulumi.SpotInst.Aws
 
     public sealed class CredentialsArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The ID of the account associated with your token.
+        /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
@@ -109,6 +115,9 @@ namespace Pulumi.SpotInst.Aws
 
     public sealed class CredentialsState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The ID of the account associated with your token.
+        /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 

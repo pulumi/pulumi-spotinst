@@ -19,6 +19,17 @@ Object.defineProperty(exports, "account", {
 });
 
 /**
+ * Enable or disable the Spotinst provider
+ */
+export declare const enabled: boolean | undefined;
+Object.defineProperty(exports, "enabled", {
+    get() {
+        return __config.getObject<boolean>("enabled");
+    },
+    enumerable: true,
+});
+
+/**
  * Spotinst SDK Feature Flags
  */
 export declare const featureFlags: string | undefined;

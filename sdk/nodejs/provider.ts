@@ -50,6 +50,7 @@ export class Provider extends pulumi.ProviderResource {
         opts = opts || {};
         {
             resourceInputs["account"] = args ? args.account : undefined;
+            resourceInputs["enabled"] = pulumi.output(args ? args.enabled : undefined).apply(JSON.stringify);
             resourceInputs["featureFlags"] = args ? args.featureFlags : undefined;
             resourceInputs["token"] = args ? args.token : undefined;
         }
@@ -66,6 +67,10 @@ export interface ProviderArgs {
      * Spotinst Account ID
      */
     account?: pulumi.Input<string>;
+    /**
+     * Enable or disable the Spotinst provider
+     */
+    enabled?: pulumi.Input<boolean>;
     /**
      * Spotinst SDK Feature Flags
      */

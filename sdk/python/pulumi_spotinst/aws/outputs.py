@@ -6311,6 +6311,10 @@ class ManagedInstanceBlockDeviceMappingEbs(dict):
         suggest = None
         if key == "deleteOnTermination":
             suggest = "delete_on_termination"
+        elif key == "kmsKeyId":
+            suggest = "kms_key_id"
+        elif key == "snapshotId":
+            suggest = "snapshot_id"
         elif key == "volumeSize":
             suggest = "volume_size"
         elif key == "volumeType":
@@ -6329,14 +6333,23 @@ class ManagedInstanceBlockDeviceMappingEbs(dict):
 
     def __init__(__self__, *,
                  delete_on_termination: Optional[bool] = None,
+                 encrypted: Optional[bool] = None,
                  iops: Optional[int] = None,
+                 kms_key_id: Optional[str] = None,
+                 snapshot_id: Optional[str] = None,
                  throughput: Optional[int] = None,
                  volume_size: Optional[int] = None,
                  volume_type: Optional[str] = None):
         if delete_on_termination is not None:
             pulumi.set(__self__, "delete_on_termination", delete_on_termination)
+        if encrypted is not None:
+            pulumi.set(__self__, "encrypted", encrypted)
         if iops is not None:
             pulumi.set(__self__, "iops", iops)
+        if kms_key_id is not None:
+            pulumi.set(__self__, "kms_key_id", kms_key_id)
+        if snapshot_id is not None:
+            pulumi.set(__self__, "snapshot_id", snapshot_id)
         if throughput is not None:
             pulumi.set(__self__, "throughput", throughput)
         if volume_size is not None:
@@ -6351,8 +6364,23 @@ class ManagedInstanceBlockDeviceMappingEbs(dict):
 
     @property
     @pulumi.getter
+    def encrypted(self) -> Optional[bool]:
+        return pulumi.get(self, "encrypted")
+
+    @property
+    @pulumi.getter
     def iops(self) -> Optional[int]:
         return pulumi.get(self, "iops")
+
+    @property
+    @pulumi.getter(name="kmsKeyId")
+    def kms_key_id(self) -> Optional[str]:
+        return pulumi.get(self, "kms_key_id")
+
+    @property
+    @pulumi.getter(name="snapshotId")
+    def snapshot_id(self) -> Optional[str]:
+        return pulumi.get(self, "snapshot_id")
 
     @property
     @pulumi.getter

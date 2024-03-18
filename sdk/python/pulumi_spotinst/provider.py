@@ -15,16 +15,20 @@ __all__ = ['ProviderArgs', 'Provider']
 class ProviderArgs:
     def __init__(__self__, *,
                  account: Optional[pulumi.Input[str]] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None,
                  feature_flags: Optional[pulumi.Input[str]] = None,
                  token: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Provider resource.
         :param pulumi.Input[str] account: Spotinst Account ID
+        :param pulumi.Input[bool] enabled: Enable or disable the Spotinst provider
         :param pulumi.Input[str] feature_flags: Spotinst SDK Feature Flags
         :param pulumi.Input[str] token: Spotinst Personal API Access Token
         """
         if account is not None:
             pulumi.set(__self__, "account", account)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
         if feature_flags is not None:
             pulumi.set(__self__, "feature_flags", feature_flags)
         if token is not None:
@@ -41,6 +45,18 @@ class ProviderArgs:
     @account.setter
     def account(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "account", value)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable or disable the Spotinst provider
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
 
     @property
     @pulumi.getter(name="featureFlags")
@@ -73,6 +89,7 @@ class Provider(pulumi.ProviderResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account: Optional[pulumi.Input[str]] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None,
                  feature_flags: Optional[pulumi.Input[str]] = None,
                  token: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -85,6 +102,7 @@ class Provider(pulumi.ProviderResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account: Spotinst Account ID
+        :param pulumi.Input[bool] enabled: Enable or disable the Spotinst provider
         :param pulumi.Input[str] feature_flags: Spotinst SDK Feature Flags
         :param pulumi.Input[str] token: Spotinst Personal API Access Token
         """
@@ -116,6 +134,7 @@ class Provider(pulumi.ProviderResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account: Optional[pulumi.Input[str]] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None,
                  feature_flags: Optional[pulumi.Input[str]] = None,
                  token: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -128,6 +147,7 @@ class Provider(pulumi.ProviderResource):
             __props__ = ProviderArgs.__new__(ProviderArgs)
 
             __props__.__dict__["account"] = account
+            __props__.__dict__["enabled"] = pulumi.Output.from_input(enabled).apply(pulumi.runtime.to_json) if enabled is not None else None
             __props__.__dict__["feature_flags"] = feature_flags
             __props__.__dict__["token"] = token
         super(Provider, __self__).__init__(

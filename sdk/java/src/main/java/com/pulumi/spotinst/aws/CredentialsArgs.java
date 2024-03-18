@@ -14,9 +14,17 @@ public final class CredentialsArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final CredentialsArgs Empty = new CredentialsArgs();
 
+    /**
+     * The ID of the account associated with your token.
+     * 
+     */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
+    /**
+     * @return The ID of the account associated with your token.
+     * 
+     */
     public Output<String> accountId() {
         return this.accountId;
     }
@@ -61,11 +69,23 @@ public final class CredentialsArgs extends com.pulumi.resources.ResourceArgs {
             $ = new CredentialsArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param accountId The ID of the account associated with your token.
+         * 
+         * @return builder
+         * 
+         */
         public Builder accountId(Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
 
+        /**
+         * @param accountId The ID of the account associated with your token.
+         * 
+         * @return builder
+         * 
+         */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
         }

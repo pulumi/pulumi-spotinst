@@ -2003,7 +2003,10 @@ export namespace aws {
 
     export interface ManagedInstanceBlockDeviceMappingEbs {
         deleteOnTermination?: pulumi.Input<boolean>;
+        encrypted?: pulumi.Input<boolean>;
         iops?: pulumi.Input<number>;
+        kmsKeyId?: pulumi.Input<string>;
+        snapshotId?: pulumi.Input<string>;
         throughput?: pulumi.Input<number>;
         volumeSize?: pulumi.Input<number>;
         volumeType?: pulumi.Input<string>;

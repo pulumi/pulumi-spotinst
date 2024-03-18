@@ -16,6 +16,11 @@ func GetAccount(ctx *pulumi.Context) string {
 	return config.Get(ctx, "spotinst:account")
 }
 
+// Enable or disable the Spotinst provider
+func GetEnabled(ctx *pulumi.Context) bool {
+	return config.GetBool(ctx, "spotinst:enabled")
+}
+
 // Spotinst SDK Feature Flags
 func GetFeatureFlags(ctx *pulumi.Context) string {
 	return config.Get(ctx, "spotinst:featureFlags")
