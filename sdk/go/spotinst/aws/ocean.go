@@ -170,6 +170,8 @@ type Ocean struct {
 	Filters OceanFiltersPtrOutput `pulumi:"filters"`
 	// The amount of time, in seconds, after the instance has launched to start checking its health.
 	GracePeriod pulumi.IntPtrOutput `pulumi:"gracePeriod"`
+	// The amount of time, in seconds, an existing instance should remain active after becoming unhealthy. After the set time out the instance will be replaced. The minimum value allowed is 60, and it must be a multiple of 60.
+	HealthCheckUnhealthyDurationBeforeReplacement pulumi.IntPtrOutput `pulumi:"healthCheckUnhealthyDurationBeforeReplacement"`
 	// The instance profile iam role.
 	IamInstanceProfile pulumi.StringPtrOutput `pulumi:"iamInstanceProfile"`
 	// ID of the image used to launch the instances.
@@ -281,6 +283,8 @@ type oceanState struct {
 	Filters *OceanFilters `pulumi:"filters"`
 	// The amount of time, in seconds, after the instance has launched to start checking its health.
 	GracePeriod *int `pulumi:"gracePeriod"`
+	// The amount of time, in seconds, an existing instance should remain active after becoming unhealthy. After the set time out the instance will be replaced. The minimum value allowed is 60, and it must be a multiple of 60.
+	HealthCheckUnhealthyDurationBeforeReplacement *int `pulumi:"healthCheckUnhealthyDurationBeforeReplacement"`
 	// The instance profile iam role.
 	IamInstanceProfile *string `pulumi:"iamInstanceProfile"`
 	// ID of the image used to launch the instances.
@@ -357,6 +361,8 @@ type OceanState struct {
 	Filters OceanFiltersPtrInput
 	// The amount of time, in seconds, after the instance has launched to start checking its health.
 	GracePeriod pulumi.IntPtrInput
+	// The amount of time, in seconds, an existing instance should remain active after becoming unhealthy. After the set time out the instance will be replaced. The minimum value allowed is 60, and it must be a multiple of 60.
+	HealthCheckUnhealthyDurationBeforeReplacement pulumi.IntPtrInput
 	// The instance profile iam role.
 	IamInstanceProfile pulumi.StringPtrInput
 	// ID of the image used to launch the instances.
@@ -437,6 +443,8 @@ type oceanArgs struct {
 	Filters *OceanFilters `pulumi:"filters"`
 	// The amount of time, in seconds, after the instance has launched to start checking its health.
 	GracePeriod *int `pulumi:"gracePeriod"`
+	// The amount of time, in seconds, an existing instance should remain active after becoming unhealthy. After the set time out the instance will be replaced. The minimum value allowed is 60, and it must be a multiple of 60.
+	HealthCheckUnhealthyDurationBeforeReplacement *int `pulumi:"healthCheckUnhealthyDurationBeforeReplacement"`
 	// The instance profile iam role.
 	IamInstanceProfile *string `pulumi:"iamInstanceProfile"`
 	// ID of the image used to launch the instances.
@@ -514,6 +522,8 @@ type OceanArgs struct {
 	Filters OceanFiltersPtrInput
 	// The amount of time, in seconds, after the instance has launched to start checking its health.
 	GracePeriod pulumi.IntPtrInput
+	// The amount of time, in seconds, an existing instance should remain active after becoming unhealthy. After the set time out the instance will be replaced. The minimum value allowed is 60, and it must be a multiple of 60.
+	HealthCheckUnhealthyDurationBeforeReplacement pulumi.IntPtrInput
 	// The instance profile iam role.
 	IamInstanceProfile pulumi.StringPtrInput
 	// ID of the image used to launch the instances.
@@ -713,6 +723,11 @@ func (o OceanOutput) Filters() OceanFiltersPtrOutput {
 // The amount of time, in seconds, after the instance has launched to start checking its health.
 func (o OceanOutput) GracePeriod() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Ocean) pulumi.IntPtrOutput { return v.GracePeriod }).(pulumi.IntPtrOutput)
+}
+
+// The amount of time, in seconds, an existing instance should remain active after becoming unhealthy. After the set time out the instance will be replaced. The minimum value allowed is 60, and it must be a multiple of 60.
+func (o OceanOutput) HealthCheckUnhealthyDurationBeforeReplacement() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Ocean) pulumi.IntPtrOutput { return v.HealthCheckUnhealthyDurationBeforeReplacement }).(pulumi.IntPtrOutput)
 }
 
 // The instance profile iam role.

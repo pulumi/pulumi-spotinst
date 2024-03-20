@@ -348,6 +348,20 @@ public class Ocean extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.gracePeriod);
     }
     /**
+     * The amount of time, in seconds, an existing instance should remain active after becoming unhealthy. After the set time out the instance will be replaced. The minimum value allowed is 60, and it must be a multiple of 60.
+     * 
+     */
+    @Export(name="healthCheckUnhealthyDurationBeforeReplacement", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> healthCheckUnhealthyDurationBeforeReplacement;
+
+    /**
+     * @return The amount of time, in seconds, an existing instance should remain active after becoming unhealthy. After the set time out the instance will be replaced. The minimum value allowed is 60, and it must be a multiple of 60.
+     * 
+     */
+    public Output<Optional<Integer>> healthCheckUnhealthyDurationBeforeReplacement() {
+        return Codegen.optional(this.healthCheckUnhealthyDurationBeforeReplacement);
+    }
+    /**
      * The instance profile iam role.
      * 
      */

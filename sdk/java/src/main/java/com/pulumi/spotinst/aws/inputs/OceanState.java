@@ -209,6 +209,21 @@ public final class OceanState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The amount of time, in seconds, an existing instance should remain active after becoming unhealthy. After the set time out the instance will be replaced. The minimum value allowed is 60, and it must be a multiple of 60.
+     * 
+     */
+    @Import(name="healthCheckUnhealthyDurationBeforeReplacement")
+    private @Nullable Output<Integer> healthCheckUnhealthyDurationBeforeReplacement;
+
+    /**
+     * @return The amount of time, in seconds, an existing instance should remain active after becoming unhealthy. After the set time out the instance will be replaced. The minimum value allowed is 60, and it must be a multiple of 60.
+     * 
+     */
+    public Optional<Output<Integer>> healthCheckUnhealthyDurationBeforeReplacement() {
+        return Optional.ofNullable(this.healthCheckUnhealthyDurationBeforeReplacement);
+    }
+
+    /**
      * The instance profile iam role.
      * 
      */
@@ -585,6 +600,7 @@ public final class OceanState extends com.pulumi.resources.ResourceArgs {
         this.fallbackToOndemand = $.fallbackToOndemand;
         this.filters = $.filters;
         this.gracePeriod = $.gracePeriod;
+        this.healthCheckUnhealthyDurationBeforeReplacement = $.healthCheckUnhealthyDurationBeforeReplacement;
         this.iamInstanceProfile = $.iamInstanceProfile;
         this.imageId = $.imageId;
         this.instanceMetadataOptions = $.instanceMetadataOptions;
@@ -901,6 +917,27 @@ public final class OceanState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder gracePeriod(Integer gracePeriod) {
             return gracePeriod(Output.of(gracePeriod));
+        }
+
+        /**
+         * @param healthCheckUnhealthyDurationBeforeReplacement The amount of time, in seconds, an existing instance should remain active after becoming unhealthy. After the set time out the instance will be replaced. The minimum value allowed is 60, and it must be a multiple of 60.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder healthCheckUnhealthyDurationBeforeReplacement(@Nullable Output<Integer> healthCheckUnhealthyDurationBeforeReplacement) {
+            $.healthCheckUnhealthyDurationBeforeReplacement = healthCheckUnhealthyDurationBeforeReplacement;
+            return this;
+        }
+
+        /**
+         * @param healthCheckUnhealthyDurationBeforeReplacement The amount of time, in seconds, an existing instance should remain active after becoming unhealthy. After the set time out the instance will be replaced. The minimum value allowed is 60, and it must be a multiple of 60.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder healthCheckUnhealthyDurationBeforeReplacement(Integer healthCheckUnhealthyDurationBeforeReplacement) {
+            return healthCheckUnhealthyDurationBeforeReplacement(Output.of(healthCheckUnhealthyDurationBeforeReplacement));
         }
 
         /**

@@ -196,6 +196,12 @@ namespace Pulumi.SpotInst.Aws
         public Output<int?> GracePeriod { get; private set; } = null!;
 
         /// <summary>
+        /// The amount of time, in seconds, an existing instance should remain active after becoming unhealthy. After the set time out the instance will be replaced. The minimum value allowed is 60, and it must be a multiple of 60.
+        /// </summary>
+        [Output("healthCheckUnhealthyDurationBeforeReplacement")]
+        public Output<int?> HealthCheckUnhealthyDurationBeforeReplacement { get; private set; } = null!;
+
+        /// <summary>
         /// The instance profile iam role.
         /// </summary>
         [Output("iamInstanceProfile")]
@@ -474,6 +480,12 @@ namespace Pulumi.SpotInst.Aws
         /// </summary>
         [Input("gracePeriod")]
         public Input<int>? GracePeriod { get; set; }
+
+        /// <summary>
+        /// The amount of time, in seconds, an existing instance should remain active after becoming unhealthy. After the set time out the instance will be replaced. The minimum value allowed is 60, and it must be a multiple of 60.
+        /// </summary>
+        [Input("healthCheckUnhealthyDurationBeforeReplacement")]
+        public Input<int>? HealthCheckUnhealthyDurationBeforeReplacement { get; set; }
 
         /// <summary>
         /// The instance profile iam role.
@@ -757,6 +769,12 @@ namespace Pulumi.SpotInst.Aws
         /// </summary>
         [Input("gracePeriod")]
         public Input<int>? GracePeriod { get; set; }
+
+        /// <summary>
+        /// The amount of time, in seconds, an existing instance should remain active after becoming unhealthy. After the set time out the instance will be replaced. The minimum value allowed is 60, and it must be a multiple of 60.
+        /// </summary>
+        [Input("healthCheckUnhealthyDurationBeforeReplacement")]
+        public Input<int>? HealthCheckUnhealthyDurationBeforeReplacement { get; set; }
 
         /// <summary>
         /// The instance profile iam role.
