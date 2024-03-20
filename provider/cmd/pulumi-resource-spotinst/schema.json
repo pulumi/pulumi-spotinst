@@ -12273,6 +12273,10 @@
                     "type": "integer",
                     "description": "The amount of time, in seconds, after the instance has launched to start checking its health.\n"
                 },
+                "healthCheckUnhealthyDurationBeforeReplacement": {
+                    "type": "integer",
+                    "description": "The amount of time, in seconds, an existing instance should remain active after becoming unhealthy. After the set time out the instance will be replaced. The minimum value allowed is 60, and it must be a multiple of 60.\n"
+                },
                 "iamInstanceProfile": {
                     "type": "string",
                     "description": "The instance profile iam role.\n"
@@ -12460,6 +12464,10 @@
                     "type": "integer",
                     "description": "The amount of time, in seconds, after the instance has launched to start checking its health.\n"
                 },
+                "healthCheckUnhealthyDurationBeforeReplacement": {
+                    "type": "integer",
+                    "description": "The amount of time, in seconds, an existing instance should remain active after becoming unhealthy. After the set time out the instance will be replaced. The minimum value allowed is 60, and it must be a multiple of 60.\n"
+                },
                 "iamInstanceProfile": {
                     "type": "string",
                     "description": "The instance profile iam role.\n"
@@ -12645,6 +12653,10 @@
                     "gracePeriod": {
                         "type": "integer",
                         "description": "The amount of time, in seconds, after the instance has launched to start checking its health.\n"
+                    },
+                    "healthCheckUnhealthyDurationBeforeReplacement": {
+                        "type": "integer",
+                        "description": "The amount of time, in seconds, an existing instance should remain active after becoming unhealthy. After the set time out the instance will be replaced. The minimum value allowed is 60, and it must be a multiple of 60.\n"
                     },
                     "iamInstanceProfile": {
                         "type": "string",
