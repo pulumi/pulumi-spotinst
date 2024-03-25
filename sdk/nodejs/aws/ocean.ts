@@ -174,6 +174,10 @@ export class Ocean extends pulumi.CustomResource {
      */
     public readonly gracePeriod!: pulumi.Output<number | undefined>;
     /**
+     * The amount of time, in seconds, an existing instance should remain active after becoming unhealthy. After the set time out the instance will be replaced. The minimum value allowed is 60, and it must be a multiple of 60.
+     */
+    public readonly healthCheckUnhealthyDurationBeforeReplacement!: pulumi.Output<number | undefined>;
+    /**
      * The instance profile iam role.
      */
     public readonly iamInstanceProfile!: pulumi.Output<string | undefined>;
@@ -295,6 +299,7 @@ export class Ocean extends pulumi.CustomResource {
             resourceInputs["fallbackToOndemand"] = state ? state.fallbackToOndemand : undefined;
             resourceInputs["filters"] = state ? state.filters : undefined;
             resourceInputs["gracePeriod"] = state ? state.gracePeriod : undefined;
+            resourceInputs["healthCheckUnhealthyDurationBeforeReplacement"] = state ? state.healthCheckUnhealthyDurationBeforeReplacement : undefined;
             resourceInputs["iamInstanceProfile"] = state ? state.iamInstanceProfile : undefined;
             resourceInputs["imageId"] = state ? state.imageId : undefined;
             resourceInputs["instanceMetadataOptions"] = state ? state.instanceMetadataOptions : undefined;
@@ -341,6 +346,7 @@ export class Ocean extends pulumi.CustomResource {
             resourceInputs["fallbackToOndemand"] = args ? args.fallbackToOndemand : undefined;
             resourceInputs["filters"] = args ? args.filters : undefined;
             resourceInputs["gracePeriod"] = args ? args.gracePeriod : undefined;
+            resourceInputs["healthCheckUnhealthyDurationBeforeReplacement"] = args ? args.healthCheckUnhealthyDurationBeforeReplacement : undefined;
             resourceInputs["iamInstanceProfile"] = args ? args.iamInstanceProfile : undefined;
             resourceInputs["imageId"] = args ? args.imageId : undefined;
             resourceInputs["instanceMetadataOptions"] = args ? args.instanceMetadataOptions : undefined;
@@ -422,6 +428,10 @@ export interface OceanState {
      * The amount of time, in seconds, after the instance has launched to start checking its health.
      */
     gracePeriod?: pulumi.Input<number>;
+    /**
+     * The amount of time, in seconds, an existing instance should remain active after becoming unhealthy. After the set time out the instance will be replaced. The minimum value allowed is 60, and it must be a multiple of 60.
+     */
+    healthCheckUnhealthyDurationBeforeReplacement?: pulumi.Input<number>;
     /**
      * The instance profile iam role.
      */
@@ -569,6 +579,10 @@ export interface OceanArgs {
      * The amount of time, in seconds, after the instance has launched to start checking its health.
      */
     gracePeriod?: pulumi.Input<number>;
+    /**
+     * The amount of time, in seconds, an existing instance should remain active after becoming unhealthy. After the set time out the instance will be replaced. The minimum value allowed is 60, and it must be a multiple of 60.
+     */
+    healthCheckUnhealthyDurationBeforeReplacement?: pulumi.Input<number>;
     /**
      * The instance profile iam role.
      */

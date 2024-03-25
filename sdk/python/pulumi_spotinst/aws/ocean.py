@@ -31,6 +31,7 @@ class OceanArgs:
                  fallback_to_ondemand: Optional[pulumi.Input[bool]] = None,
                  filters: Optional[pulumi.Input['OceanFiltersArgs']] = None,
                  grace_period: Optional[pulumi.Input[int]] = None,
+                 health_check_unhealthy_duration_before_replacement: Optional[pulumi.Input[int]] = None,
                  iam_instance_profile: Optional[pulumi.Input[str]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
                  instance_metadata_options: Optional[pulumi.Input['OceanInstanceMetadataOptionsArgs']] = None,
@@ -69,6 +70,7 @@ class OceanArgs:
         :param pulumi.Input[bool] fallback_to_ondemand: If not Spot instance markets are available, enable Ocean to launch On-Demand instances instead.
         :param pulumi.Input['OceanFiltersArgs'] filters: List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured together with whitelist/blacklist.
         :param pulumi.Input[int] grace_period: The amount of time, in seconds, after the instance has launched to start checking its health.
+        :param pulumi.Input[int] health_check_unhealthy_duration_before_replacement: The amount of time, in seconds, an existing instance should remain active after becoming unhealthy. After the set time out the instance will be replaced. The minimum value allowed is 60, and it must be a multiple of 60.
         :param pulumi.Input[str] iam_instance_profile: The instance profile iam role.
         :param pulumi.Input[str] image_id: ID of the image used to launch the instances.
         :param pulumi.Input['OceanInstanceMetadataOptionsArgs'] instance_metadata_options: Ocean instance metadata options object for IMDSv2.
@@ -120,6 +122,8 @@ class OceanArgs:
             pulumi.set(__self__, "filters", filters)
         if grace_period is not None:
             pulumi.set(__self__, "grace_period", grace_period)
+        if health_check_unhealthy_duration_before_replacement is not None:
+            pulumi.set(__self__, "health_check_unhealthy_duration_before_replacement", health_check_unhealthy_duration_before_replacement)
         if iam_instance_profile is not None:
             pulumi.set(__self__, "iam_instance_profile", iam_instance_profile)
         if image_id is not None:
@@ -340,6 +344,18 @@ class OceanArgs:
     @grace_period.setter
     def grace_period(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "grace_period", value)
+
+    @property
+    @pulumi.getter(name="healthCheckUnhealthyDurationBeforeReplacement")
+    def health_check_unhealthy_duration_before_replacement(self) -> Optional[pulumi.Input[int]]:
+        """
+        The amount of time, in seconds, an existing instance should remain active after becoming unhealthy. After the set time out the instance will be replaced. The minimum value allowed is 60, and it must be a multiple of 60.
+        """
+        return pulumi.get(self, "health_check_unhealthy_duration_before_replacement")
+
+    @health_check_unhealthy_duration_before_replacement.setter
+    def health_check_unhealthy_duration_before_replacement(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "health_check_unhealthy_duration_before_replacement", value)
 
     @property
     @pulumi.getter(name="iamInstanceProfile")
@@ -629,6 +645,7 @@ class _OceanState:
                  fallback_to_ondemand: Optional[pulumi.Input[bool]] = None,
                  filters: Optional[pulumi.Input['OceanFiltersArgs']] = None,
                  grace_period: Optional[pulumi.Input[int]] = None,
+                 health_check_unhealthy_duration_before_replacement: Optional[pulumi.Input[int]] = None,
                  iam_instance_profile: Optional[pulumi.Input[str]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
                  instance_metadata_options: Optional[pulumi.Input['OceanInstanceMetadataOptionsArgs']] = None,
@@ -667,6 +684,7 @@ class _OceanState:
         :param pulumi.Input[bool] fallback_to_ondemand: If not Spot instance markets are available, enable Ocean to launch On-Demand instances instead.
         :param pulumi.Input['OceanFiltersArgs'] filters: List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured together with whitelist/blacklist.
         :param pulumi.Input[int] grace_period: The amount of time, in seconds, after the instance has launched to start checking its health.
+        :param pulumi.Input[int] health_check_unhealthy_duration_before_replacement: The amount of time, in seconds, an existing instance should remain active after becoming unhealthy. After the set time out the instance will be replaced. The minimum value allowed is 60, and it must be a multiple of 60.
         :param pulumi.Input[str] iam_instance_profile: The instance profile iam role.
         :param pulumi.Input[str] image_id: ID of the image used to launch the instances.
         :param pulumi.Input['OceanInstanceMetadataOptionsArgs'] instance_metadata_options: Ocean instance metadata options object for IMDSv2.
@@ -718,6 +736,8 @@ class _OceanState:
             pulumi.set(__self__, "filters", filters)
         if grace_period is not None:
             pulumi.set(__self__, "grace_period", grace_period)
+        if health_check_unhealthy_duration_before_replacement is not None:
+            pulumi.set(__self__, "health_check_unhealthy_duration_before_replacement", health_check_unhealthy_duration_before_replacement)
         if iam_instance_profile is not None:
             pulumi.set(__self__, "iam_instance_profile", iam_instance_profile)
         if image_id is not None:
@@ -918,6 +938,18 @@ class _OceanState:
     @grace_period.setter
     def grace_period(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "grace_period", value)
+
+    @property
+    @pulumi.getter(name="healthCheckUnhealthyDurationBeforeReplacement")
+    def health_check_unhealthy_duration_before_replacement(self) -> Optional[pulumi.Input[int]]:
+        """
+        The amount of time, in seconds, an existing instance should remain active after becoming unhealthy. After the set time out the instance will be replaced. The minimum value allowed is 60, and it must be a multiple of 60.
+        """
+        return pulumi.get(self, "health_check_unhealthy_duration_before_replacement")
+
+    @health_check_unhealthy_duration_before_replacement.setter
+    def health_check_unhealthy_duration_before_replacement(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "health_check_unhealthy_duration_before_replacement", value)
 
     @property
     @pulumi.getter(name="iamInstanceProfile")
@@ -1233,6 +1265,7 @@ class Ocean(pulumi.CustomResource):
                  fallback_to_ondemand: Optional[pulumi.Input[bool]] = None,
                  filters: Optional[pulumi.Input[pulumi.InputType['OceanFiltersArgs']]] = None,
                  grace_period: Optional[pulumi.Input[int]] = None,
+                 health_check_unhealthy_duration_before_replacement: Optional[pulumi.Input[int]] = None,
                  iam_instance_profile: Optional[pulumi.Input[str]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
                  instance_metadata_options: Optional[pulumi.Input[pulumi.InputType['OceanInstanceMetadataOptionsArgs']]] = None,
@@ -1365,6 +1398,7 @@ class Ocean(pulumi.CustomResource):
         :param pulumi.Input[bool] fallback_to_ondemand: If not Spot instance markets are available, enable Ocean to launch On-Demand instances instead.
         :param pulumi.Input[pulumi.InputType['OceanFiltersArgs']] filters: List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured together with whitelist/blacklist.
         :param pulumi.Input[int] grace_period: The amount of time, in seconds, after the instance has launched to start checking its health.
+        :param pulumi.Input[int] health_check_unhealthy_duration_before_replacement: The amount of time, in seconds, an existing instance should remain active after becoming unhealthy. After the set time out the instance will be replaced. The minimum value allowed is 60, and it must be a multiple of 60.
         :param pulumi.Input[str] iam_instance_profile: The instance profile iam role.
         :param pulumi.Input[str] image_id: ID of the image used to launch the instances.
         :param pulumi.Input[pulumi.InputType['OceanInstanceMetadataOptionsArgs']] instance_metadata_options: Ocean instance metadata options object for IMDSv2.
@@ -1517,6 +1551,7 @@ class Ocean(pulumi.CustomResource):
                  fallback_to_ondemand: Optional[pulumi.Input[bool]] = None,
                  filters: Optional[pulumi.Input[pulumi.InputType['OceanFiltersArgs']]] = None,
                  grace_period: Optional[pulumi.Input[int]] = None,
+                 health_check_unhealthy_duration_before_replacement: Optional[pulumi.Input[int]] = None,
                  iam_instance_profile: Optional[pulumi.Input[str]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
                  instance_metadata_options: Optional[pulumi.Input[pulumi.InputType['OceanInstanceMetadataOptionsArgs']]] = None,
@@ -1564,6 +1599,7 @@ class Ocean(pulumi.CustomResource):
             __props__.__dict__["fallback_to_ondemand"] = fallback_to_ondemand
             __props__.__dict__["filters"] = filters
             __props__.__dict__["grace_period"] = grace_period
+            __props__.__dict__["health_check_unhealthy_duration_before_replacement"] = health_check_unhealthy_duration_before_replacement
             __props__.__dict__["iam_instance_profile"] = iam_instance_profile
             __props__.__dict__["image_id"] = image_id
             __props__.__dict__["instance_metadata_options"] = instance_metadata_options
@@ -1616,6 +1652,7 @@ class Ocean(pulumi.CustomResource):
             fallback_to_ondemand: Optional[pulumi.Input[bool]] = None,
             filters: Optional[pulumi.Input[pulumi.InputType['OceanFiltersArgs']]] = None,
             grace_period: Optional[pulumi.Input[int]] = None,
+            health_check_unhealthy_duration_before_replacement: Optional[pulumi.Input[int]] = None,
             iam_instance_profile: Optional[pulumi.Input[str]] = None,
             image_id: Optional[pulumi.Input[str]] = None,
             instance_metadata_options: Optional[pulumi.Input[pulumi.InputType['OceanInstanceMetadataOptionsArgs']]] = None,
@@ -1659,6 +1696,7 @@ class Ocean(pulumi.CustomResource):
         :param pulumi.Input[bool] fallback_to_ondemand: If not Spot instance markets are available, enable Ocean to launch On-Demand instances instead.
         :param pulumi.Input[pulumi.InputType['OceanFiltersArgs']] filters: List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured together with whitelist/blacklist.
         :param pulumi.Input[int] grace_period: The amount of time, in seconds, after the instance has launched to start checking its health.
+        :param pulumi.Input[int] health_check_unhealthy_duration_before_replacement: The amount of time, in seconds, an existing instance should remain active after becoming unhealthy. After the set time out the instance will be replaced. The minimum value allowed is 60, and it must be a multiple of 60.
         :param pulumi.Input[str] iam_instance_profile: The instance profile iam role.
         :param pulumi.Input[str] image_id: ID of the image used to launch the instances.
         :param pulumi.Input[pulumi.InputType['OceanInstanceMetadataOptionsArgs']] instance_metadata_options: Ocean instance metadata options object for IMDSv2.
@@ -1701,6 +1739,7 @@ class Ocean(pulumi.CustomResource):
         __props__.__dict__["fallback_to_ondemand"] = fallback_to_ondemand
         __props__.__dict__["filters"] = filters
         __props__.__dict__["grace_period"] = grace_period
+        __props__.__dict__["health_check_unhealthy_duration_before_replacement"] = health_check_unhealthy_duration_before_replacement
         __props__.__dict__["iam_instance_profile"] = iam_instance_profile
         __props__.__dict__["image_id"] = image_id
         __props__.__dict__["instance_metadata_options"] = instance_metadata_options
@@ -1825,6 +1864,14 @@ class Ocean(pulumi.CustomResource):
         The amount of time, in seconds, after the instance has launched to start checking its health.
         """
         return pulumi.get(self, "grace_period")
+
+    @property
+    @pulumi.getter(name="healthCheckUnhealthyDurationBeforeReplacement")
+    def health_check_unhealthy_duration_before_replacement(self) -> pulumi.Output[Optional[int]]:
+        """
+        The amount of time, in seconds, an existing instance should remain active after becoming unhealthy. After the set time out the instance will be replaced. The minimum value allowed is 60, and it must be a multiple of 60.
+        """
+        return pulumi.get(self, "health_check_unhealthy_duration_before_replacement")
 
     @property
     @pulumi.getter(name="iamInstanceProfile")
