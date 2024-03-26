@@ -100,7 +100,7 @@ type Elastigroup struct {
 	BackendServices ElastigroupBackendServiceArrayOutput `pulumi:"backendServices"`
 	// The name of the GKE cluster you wish to import.
 	//
-	// Deprecated: Please define clusterId under integration_gke
+	// Deprecated: Please define cluster_id under integration_gke
 	ClusterId pulumi.StringPtrOutput `pulumi:"clusterId"`
 	// The zone where the cluster is hosted.
 	ClusterZoneName           pulumi.StringOutput                        `pulumi:"clusterZoneName"`
@@ -175,7 +175,7 @@ type elastigroupState struct {
 	BackendServices []ElastigroupBackendService `pulumi:"backendServices"`
 	// The name of the GKE cluster you wish to import.
 	//
-	// Deprecated: Please define clusterId under integration_gke
+	// Deprecated: Please define cluster_id under integration_gke
 	ClusterId *string `pulumi:"clusterId"`
 	// The zone where the cluster is hosted.
 	ClusterZoneName           *string                            `pulumi:"clusterZoneName"`
@@ -215,7 +215,7 @@ type ElastigroupState struct {
 	BackendServices ElastigroupBackendServiceArrayInput
 	// The name of the GKE cluster you wish to import.
 	//
-	// Deprecated: Please define clusterId under integration_gke
+	// Deprecated: Please define cluster_id under integration_gke
 	ClusterId pulumi.StringPtrInput
 	// The zone where the cluster is hosted.
 	ClusterZoneName           pulumi.StringPtrInput
@@ -259,7 +259,7 @@ type elastigroupArgs struct {
 	BackendServices []ElastigroupBackendService `pulumi:"backendServices"`
 	// The name of the GKE cluster you wish to import.
 	//
-	// Deprecated: Please define clusterId under integration_gke
+	// Deprecated: Please define cluster_id under integration_gke
 	ClusterId *string `pulumi:"clusterId"`
 	// The zone where the cluster is hosted.
 	ClusterZoneName           string                             `pulumi:"clusterZoneName"`
@@ -300,7 +300,7 @@ type ElastigroupArgs struct {
 	BackendServices ElastigroupBackendServiceArrayInput
 	// The name of the GKE cluster you wish to import.
 	//
-	// Deprecated: Please define clusterId under integration_gke
+	// Deprecated: Please define cluster_id under integration_gke
 	ClusterId pulumi.StringPtrInput
 	// The zone where the cluster is hosted.
 	ClusterZoneName           pulumi.StringInput
@@ -429,7 +429,7 @@ func (o ElastigroupOutput) BackendServices() ElastigroupBackendServiceArrayOutpu
 
 // The name of the GKE cluster you wish to import.
 //
-// Deprecated: Please define clusterId under integration_gke
+// Deprecated: Please define cluster_id under integration_gke
 func (o ElastigroupOutput) ClusterId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Elastigroup) pulumi.StringPtrOutput { return v.ClusterId }).(pulumi.StringPtrOutput)
 }
