@@ -101,7 +101,7 @@ export class Elastigroup extends pulumi.CustomResource {
     /**
      * The name of the GKE cluster you wish to import.
      *
-     * @deprecated Please define clusterId under integration_gke
+     * @deprecated Please define cluster_id under integration_gke
      */
     public readonly clusterId!: pulumi.Output<string | undefined>;
     /**
@@ -240,7 +240,7 @@ export interface ElastigroupState {
     /**
      * The name of the GKE cluster you wish to import.
      *
-     * @deprecated Please define clusterId under integration_gke
+     * @deprecated Please define cluster_id under integration_gke
      */
     clusterId?: pulumi.Input<string>;
     /**
@@ -291,7 +291,7 @@ export interface ElastigroupArgs {
     /**
      * The name of the GKE cluster you wish to import.
      *
-     * @deprecated Please define clusterId under integration_gke
+     * @deprecated Please define cluster_id under integration_gke
      */
     clusterId?: pulumi.Input<string>;
     /**
