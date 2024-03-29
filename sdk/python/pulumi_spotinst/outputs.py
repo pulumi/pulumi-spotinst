@@ -1773,8 +1773,11 @@ class StatefulNodeAzureOsDisk(dict):
 
     def __init__(__self__, *,
                  type: str,
+                 caching: Optional[str] = None,
                  size_gb: Optional[int] = None):
         pulumi.set(__self__, "type", type)
+        if caching is not None:
+            pulumi.set(__self__, "caching", caching)
         if size_gb is not None:
             pulumi.set(__self__, "size_gb", size_gb)
 
@@ -1782,6 +1785,11 @@ class StatefulNodeAzureOsDisk(dict):
     @pulumi.getter
     def type(self) -> str:
         return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def caching(self) -> Optional[str]:
+        return pulumi.get(self, "caching")
 
     @property
     @pulumi.getter(name="sizeGb")
@@ -2060,10 +2068,14 @@ class StatefulNodeAzureStrategy(dict):
         suggest = None
         if key == "fallbackToOnDemand":
             suggest = "fallback_to_on_demand"
+        elif key == "availabilityVsCost":
+            suggest = "availability_vs_cost"
         elif key == "capacityReservations":
             suggest = "capacity_reservations"
         elif key == "drainingTimeout":
             suggest = "draining_timeout"
+        elif key == "odWindows":
+            suggest = "od_windows"
         elif key == "optimizationWindows":
             suggest = "optimization_windows"
         elif key == "preferredLifeCycle":
@@ -2084,16 +2096,22 @@ class StatefulNodeAzureStrategy(dict):
 
     def __init__(__self__, *,
                  fallback_to_on_demand: bool,
+                 availability_vs_cost: Optional[int] = None,
                  capacity_reservations: Optional[Sequence['outputs.StatefulNodeAzureStrategyCapacityReservation']] = None,
                  draining_timeout: Optional[int] = None,
+                 od_windows: Optional[Sequence[str]] = None,
                  optimization_windows: Optional[Sequence[str]] = None,
                  preferred_life_cycle: Optional[str] = None,
                  revert_to_spot: Optional['outputs.StatefulNodeAzureStrategyRevertToSpot'] = None):
         pulumi.set(__self__, "fallback_to_on_demand", fallback_to_on_demand)
+        if availability_vs_cost is not None:
+            pulumi.set(__self__, "availability_vs_cost", availability_vs_cost)
         if capacity_reservations is not None:
             pulumi.set(__self__, "capacity_reservations", capacity_reservations)
         if draining_timeout is not None:
             pulumi.set(__self__, "draining_timeout", draining_timeout)
+        if od_windows is not None:
+            pulumi.set(__self__, "od_windows", od_windows)
         if optimization_windows is not None:
             pulumi.set(__self__, "optimization_windows", optimization_windows)
         if preferred_life_cycle is not None:
@@ -2107,6 +2125,11 @@ class StatefulNodeAzureStrategy(dict):
         return pulumi.get(self, "fallback_to_on_demand")
 
     @property
+    @pulumi.getter(name="availabilityVsCost")
+    def availability_vs_cost(self) -> Optional[int]:
+        return pulumi.get(self, "availability_vs_cost")
+
+    @property
     @pulumi.getter(name="capacityReservations")
     def capacity_reservations(self) -> Optional[Sequence['outputs.StatefulNodeAzureStrategyCapacityReservation']]:
         return pulumi.get(self, "capacity_reservations")
@@ -2115,6 +2138,11 @@ class StatefulNodeAzureStrategy(dict):
     @pulumi.getter(name="drainingTimeout")
     def draining_timeout(self) -> Optional[int]:
         return pulumi.get(self, "draining_timeout")
+
+    @property
+    @pulumi.getter(name="odWindows")
+    def od_windows(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "od_windows")
 
     @property
     @pulumi.getter(name="optimizationWindows")

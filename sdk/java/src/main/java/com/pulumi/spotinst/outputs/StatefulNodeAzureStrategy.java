@@ -17,14 +17,19 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class StatefulNodeAzureStrategy {
+    private @Nullable Integer availabilityVsCost;
     private @Nullable List<StatefulNodeAzureStrategyCapacityReservation> capacityReservations;
     private @Nullable Integer drainingTimeout;
     private Boolean fallbackToOnDemand;
+    private @Nullable List<String> odWindows;
     private @Nullable List<String> optimizationWindows;
     private @Nullable String preferredLifeCycle;
     private @Nullable StatefulNodeAzureStrategyRevertToSpot revertToSpot;
 
     private StatefulNodeAzureStrategy() {}
+    public Optional<Integer> availabilityVsCost() {
+        return Optional.ofNullable(this.availabilityVsCost);
+    }
     public List<StatefulNodeAzureStrategyCapacityReservation> capacityReservations() {
         return this.capacityReservations == null ? List.of() : this.capacityReservations;
     }
@@ -33,6 +38,9 @@ public final class StatefulNodeAzureStrategy {
     }
     public Boolean fallbackToOnDemand() {
         return this.fallbackToOnDemand;
+    }
+    public List<String> odWindows() {
+        return this.odWindows == null ? List.of() : this.odWindows;
     }
     public List<String> optimizationWindows() {
         return this.optimizationWindows == null ? List.of() : this.optimizationWindows;
@@ -53,23 +61,33 @@ public final class StatefulNodeAzureStrategy {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable Integer availabilityVsCost;
         private @Nullable List<StatefulNodeAzureStrategyCapacityReservation> capacityReservations;
         private @Nullable Integer drainingTimeout;
         private Boolean fallbackToOnDemand;
+        private @Nullable List<String> odWindows;
         private @Nullable List<String> optimizationWindows;
         private @Nullable String preferredLifeCycle;
         private @Nullable StatefulNodeAzureStrategyRevertToSpot revertToSpot;
         public Builder() {}
         public Builder(StatefulNodeAzureStrategy defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.availabilityVsCost = defaults.availabilityVsCost;
     	      this.capacityReservations = defaults.capacityReservations;
     	      this.drainingTimeout = defaults.drainingTimeout;
     	      this.fallbackToOnDemand = defaults.fallbackToOnDemand;
+    	      this.odWindows = defaults.odWindows;
     	      this.optimizationWindows = defaults.optimizationWindows;
     	      this.preferredLifeCycle = defaults.preferredLifeCycle;
     	      this.revertToSpot = defaults.revertToSpot;
         }
 
+        @CustomType.Setter
+        public Builder availabilityVsCost(@Nullable Integer availabilityVsCost) {
+
+            this.availabilityVsCost = availabilityVsCost;
+            return this;
+        }
         @CustomType.Setter
         public Builder capacityReservations(@Nullable List<StatefulNodeAzureStrategyCapacityReservation> capacityReservations) {
 
@@ -94,6 +112,15 @@ public final class StatefulNodeAzureStrategy {
             return this;
         }
         @CustomType.Setter
+        public Builder odWindows(@Nullable List<String> odWindows) {
+
+            this.odWindows = odWindows;
+            return this;
+        }
+        public Builder odWindows(String... odWindows) {
+            return odWindows(List.of(odWindows));
+        }
+        @CustomType.Setter
         public Builder optimizationWindows(@Nullable List<String> optimizationWindows) {
 
             this.optimizationWindows = optimizationWindows;
@@ -116,9 +143,11 @@ public final class StatefulNodeAzureStrategy {
         }
         public StatefulNodeAzureStrategy build() {
             final var _resultValue = new StatefulNodeAzureStrategy();
+            _resultValue.availabilityVsCost = availabilityVsCost;
             _resultValue.capacityReservations = capacityReservations;
             _resultValue.drainingTimeout = drainingTimeout;
             _resultValue.fallbackToOnDemand = fallbackToOnDemand;
+            _resultValue.odWindows = odWindows;
             _resultValue.optimizationWindows = optimizationWindows;
             _resultValue.preferredLifeCycle = preferredLifeCycle;
             _resultValue.revertToSpot = revertToSpot;

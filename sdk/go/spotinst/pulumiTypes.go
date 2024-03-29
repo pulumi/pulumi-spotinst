@@ -4216,8 +4216,9 @@ func (o StatefulNodeAzureNetworkNetworkInterfacePublicIpArrayOutput) Index(i pul
 }
 
 type StatefulNodeAzureOsDisk struct {
-	SizeGb *int   `pulumi:"sizeGb"`
-	Type   string `pulumi:"type"`
+	Caching *string `pulumi:"caching"`
+	SizeGb  *int    `pulumi:"sizeGb"`
+	Type    string  `pulumi:"type"`
 }
 
 // StatefulNodeAzureOsDiskInput is an input type that accepts StatefulNodeAzureOsDiskArgs and StatefulNodeAzureOsDiskOutput values.
@@ -4232,8 +4233,9 @@ type StatefulNodeAzureOsDiskInput interface {
 }
 
 type StatefulNodeAzureOsDiskArgs struct {
-	SizeGb pulumi.IntPtrInput `pulumi:"sizeGb"`
-	Type   pulumi.StringInput `pulumi:"type"`
+	Caching pulumi.StringPtrInput `pulumi:"caching"`
+	SizeGb  pulumi.IntPtrInput    `pulumi:"sizeGb"`
+	Type    pulumi.StringInput    `pulumi:"type"`
 }
 
 func (StatefulNodeAzureOsDiskArgs) ElementType() reflect.Type {
@@ -4313,6 +4315,10 @@ func (o StatefulNodeAzureOsDiskOutput) ToStatefulNodeAzureOsDiskPtrOutputWithCon
 	}).(StatefulNodeAzureOsDiskPtrOutput)
 }
 
+func (o StatefulNodeAzureOsDiskOutput) Caching() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StatefulNodeAzureOsDisk) *string { return v.Caching }).(pulumi.StringPtrOutput)
+}
+
 func (o StatefulNodeAzureOsDiskOutput) SizeGb() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v StatefulNodeAzureOsDisk) *int { return v.SizeGb }).(pulumi.IntPtrOutput)
 }
@@ -4343,6 +4349,15 @@ func (o StatefulNodeAzureOsDiskPtrOutput) Elem() StatefulNodeAzureOsDiskOutput {
 		var ret StatefulNodeAzureOsDisk
 		return ret
 	}).(StatefulNodeAzureOsDiskOutput)
+}
+
+func (o StatefulNodeAzureOsDiskPtrOutput) Caching() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StatefulNodeAzureOsDisk) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Caching
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o StatefulNodeAzureOsDiskPtrOutput) SizeGb() pulumi.IntPtrOutput {
@@ -5133,9 +5148,11 @@ func (o StatefulNodeAzureSignalArrayOutput) Index(i pulumi.IntInput) StatefulNod
 }
 
 type StatefulNodeAzureStrategy struct {
+	AvailabilityVsCost   *int                                           `pulumi:"availabilityVsCost"`
 	CapacityReservations []StatefulNodeAzureStrategyCapacityReservation `pulumi:"capacityReservations"`
 	DrainingTimeout      *int                                           `pulumi:"drainingTimeout"`
 	FallbackToOnDemand   bool                                           `pulumi:"fallbackToOnDemand"`
+	OdWindows            []string                                       `pulumi:"odWindows"`
 	OptimizationWindows  []string                                       `pulumi:"optimizationWindows"`
 	PreferredLifeCycle   *string                                        `pulumi:"preferredLifeCycle"`
 	RevertToSpot         *StatefulNodeAzureStrategyRevertToSpot         `pulumi:"revertToSpot"`
@@ -5153,9 +5170,11 @@ type StatefulNodeAzureStrategyInput interface {
 }
 
 type StatefulNodeAzureStrategyArgs struct {
+	AvailabilityVsCost   pulumi.IntPtrInput                                     `pulumi:"availabilityVsCost"`
 	CapacityReservations StatefulNodeAzureStrategyCapacityReservationArrayInput `pulumi:"capacityReservations"`
 	DrainingTimeout      pulumi.IntPtrInput                                     `pulumi:"drainingTimeout"`
 	FallbackToOnDemand   pulumi.BoolInput                                       `pulumi:"fallbackToOnDemand"`
+	OdWindows            pulumi.StringArrayInput                                `pulumi:"odWindows"`
 	OptimizationWindows  pulumi.StringArrayInput                                `pulumi:"optimizationWindows"`
 	PreferredLifeCycle   pulumi.StringPtrInput                                  `pulumi:"preferredLifeCycle"`
 	RevertToSpot         StatefulNodeAzureStrategyRevertToSpotPtrInput          `pulumi:"revertToSpot"`
@@ -5238,6 +5257,10 @@ func (o StatefulNodeAzureStrategyOutput) ToStatefulNodeAzureStrategyPtrOutputWit
 	}).(StatefulNodeAzureStrategyPtrOutput)
 }
 
+func (o StatefulNodeAzureStrategyOutput) AvailabilityVsCost() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StatefulNodeAzureStrategy) *int { return v.AvailabilityVsCost }).(pulumi.IntPtrOutput)
+}
+
 func (o StatefulNodeAzureStrategyOutput) CapacityReservations() StatefulNodeAzureStrategyCapacityReservationArrayOutput {
 	return o.ApplyT(func(v StatefulNodeAzureStrategy) []StatefulNodeAzureStrategyCapacityReservation {
 		return v.CapacityReservations
@@ -5250,6 +5273,10 @@ func (o StatefulNodeAzureStrategyOutput) DrainingTimeout() pulumi.IntPtrOutput {
 
 func (o StatefulNodeAzureStrategyOutput) FallbackToOnDemand() pulumi.BoolOutput {
 	return o.ApplyT(func(v StatefulNodeAzureStrategy) bool { return v.FallbackToOnDemand }).(pulumi.BoolOutput)
+}
+
+func (o StatefulNodeAzureStrategyOutput) OdWindows() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v StatefulNodeAzureStrategy) []string { return v.OdWindows }).(pulumi.StringArrayOutput)
 }
 
 func (o StatefulNodeAzureStrategyOutput) OptimizationWindows() pulumi.StringArrayOutput {
@@ -5288,6 +5315,15 @@ func (o StatefulNodeAzureStrategyPtrOutput) Elem() StatefulNodeAzureStrategyOutp
 	}).(StatefulNodeAzureStrategyOutput)
 }
 
+func (o StatefulNodeAzureStrategyPtrOutput) AvailabilityVsCost() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *StatefulNodeAzureStrategy) *int {
+		if v == nil {
+			return nil
+		}
+		return v.AvailabilityVsCost
+	}).(pulumi.IntPtrOutput)
+}
+
 func (o StatefulNodeAzureStrategyPtrOutput) CapacityReservations() StatefulNodeAzureStrategyCapacityReservationArrayOutput {
 	return o.ApplyT(func(v *StatefulNodeAzureStrategy) []StatefulNodeAzureStrategyCapacityReservation {
 		if v == nil {
@@ -5313,6 +5349,15 @@ func (o StatefulNodeAzureStrategyPtrOutput) FallbackToOnDemand() pulumi.BoolPtrO
 		}
 		return &v.FallbackToOnDemand
 	}).(pulumi.BoolPtrOutput)
+}
+
+func (o StatefulNodeAzureStrategyPtrOutput) OdWindows() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *StatefulNodeAzureStrategy) []string {
+		if v == nil {
+			return nil
+		}
+		return v.OdWindows
+	}).(pulumi.StringArrayOutput)
 }
 
 func (o StatefulNodeAzureStrategyPtrOutput) OptimizationWindows() pulumi.StringArrayOutput {
