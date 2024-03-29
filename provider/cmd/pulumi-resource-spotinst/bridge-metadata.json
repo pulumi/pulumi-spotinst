@@ -2282,6 +2282,9 @@
                                         }
                                     }
                                 },
+                                "od_windows": {
+                                    "maxItemsOne": false
+                                },
                                 "optimization_windows": {
                                     "maxItemsOne": false
                                 },
