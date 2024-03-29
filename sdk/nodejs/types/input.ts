@@ -251,6 +251,7 @@ export interface StatefulNodeAzureNetworkNetworkInterfacePublicIp {
 }
 
 export interface StatefulNodeAzureOsDisk {
+    caching?: pulumi.Input<string>;
     sizeGb?: pulumi.Input<number>;
     type: pulumi.Input<string>;
 }
@@ -293,9 +294,11 @@ export interface StatefulNodeAzureSignal {
 }
 
 export interface StatefulNodeAzureStrategy {
+    availabilityVsCost?: pulumi.Input<number>;
     capacityReservations?: pulumi.Input<pulumi.Input<inputs.StatefulNodeAzureStrategyCapacityReservation>[]>;
     drainingTimeout?: pulumi.Input<number>;
     fallbackToOnDemand: pulumi.Input<boolean>;
+    odWindows?: pulumi.Input<pulumi.Input<string>[]>;
     optimizationWindows?: pulumi.Input<pulumi.Input<string>[]>;
     preferredLifeCycle?: pulumi.Input<string>;
     revertToSpot?: pulumi.Input<inputs.StatefulNodeAzureStrategyRevertToSpot>;

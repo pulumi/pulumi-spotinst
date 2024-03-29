@@ -13,10 +13,14 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class StatefulNodeAzureOsDisk {
+    private @Nullable String caching;
     private @Nullable Integer sizeGb;
     private String type;
 
     private StatefulNodeAzureOsDisk() {}
+    public Optional<String> caching() {
+        return Optional.ofNullable(this.caching);
+    }
     public Optional<Integer> sizeGb() {
         return Optional.ofNullable(this.sizeGb);
     }
@@ -33,15 +37,23 @@ public final class StatefulNodeAzureOsDisk {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String caching;
         private @Nullable Integer sizeGb;
         private String type;
         public Builder() {}
         public Builder(StatefulNodeAzureOsDisk defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.caching = defaults.caching;
     	      this.sizeGb = defaults.sizeGb;
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
+        public Builder caching(@Nullable String caching) {
+
+            this.caching = caching;
+            return this;
+        }
         @CustomType.Setter
         public Builder sizeGb(@Nullable Integer sizeGb) {
 
@@ -58,6 +70,7 @@ public final class StatefulNodeAzureOsDisk {
         }
         public StatefulNodeAzureOsDisk build() {
             final var _resultValue = new StatefulNodeAzureOsDisk();
+            _resultValue.caching = caching;
             _resultValue.sizeGb = sizeGb;
             _resultValue.type = type;
             return _resultValue;

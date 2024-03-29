@@ -17,6 +17,13 @@ public final class StatefulNodeAzureOsDiskArgs extends com.pulumi.resources.Reso
 
     public static final StatefulNodeAzureOsDiskArgs Empty = new StatefulNodeAzureOsDiskArgs();
 
+    @Import(name="caching")
+    private @Nullable Output<String> caching;
+
+    public Optional<Output<String>> caching() {
+        return Optional.ofNullable(this.caching);
+    }
+
     @Import(name="sizeGb")
     private @Nullable Output<Integer> sizeGb;
 
@@ -34,6 +41,7 @@ public final class StatefulNodeAzureOsDiskArgs extends com.pulumi.resources.Reso
     private StatefulNodeAzureOsDiskArgs() {}
 
     private StatefulNodeAzureOsDiskArgs(StatefulNodeAzureOsDiskArgs $) {
+        this.caching = $.caching;
         this.sizeGb = $.sizeGb;
         this.type = $.type;
     }
@@ -54,6 +62,15 @@ public final class StatefulNodeAzureOsDiskArgs extends com.pulumi.resources.Reso
 
         public Builder(StatefulNodeAzureOsDiskArgs defaults) {
             $ = new StatefulNodeAzureOsDiskArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder caching(@Nullable Output<String> caching) {
+            $.caching = caching;
+            return this;
+        }
+
+        public Builder caching(String caching) {
+            return caching(Output.of(caching));
         }
 
         public Builder sizeGb(@Nullable Output<Integer> sizeGb) {

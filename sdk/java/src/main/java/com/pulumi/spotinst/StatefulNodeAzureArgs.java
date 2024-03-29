@@ -124,6 +124,13 @@ public final class StatefulNodeAzureArgs extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.importVms);
     }
 
+    @Import(name="licenseType")
+    private @Nullable Output<String> licenseType;
+
+    public Optional<Output<String>> licenseType() {
+        return Optional.ofNullable(this.licenseType);
+    }
+
     @Import(name="loadBalancers")
     private @Nullable Output<List<StatefulNodeAzureLoadBalancerArgs>> loadBalancers;
 
@@ -327,6 +334,13 @@ public final class StatefulNodeAzureArgs extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.vmName);
     }
 
+    @Import(name="vmNamePrefix")
+    private @Nullable Output<String> vmNamePrefix;
+
+    public Optional<Output<String>> vmNamePrefix() {
+        return Optional.ofNullable(this.vmNamePrefix);
+    }
+
     @Import(name="zones")
     private @Nullable Output<List<String>> zones;
 
@@ -349,6 +363,7 @@ public final class StatefulNodeAzureArgs extends com.pulumi.resources.ResourceAr
         this.health = $.health;
         this.image = $.image;
         this.importVms = $.importVms;
+        this.licenseType = $.licenseType;
         this.loadBalancers = $.loadBalancers;
         this.login = $.login;
         this.managedServiceIdentities = $.managedServiceIdentities;
@@ -378,6 +393,7 @@ public final class StatefulNodeAzureArgs extends com.pulumi.resources.ResourceAr
         this.updateStates = $.updateStates;
         this.userData = $.userData;
         this.vmName = $.vmName;
+        this.vmNamePrefix = $.vmNamePrefix;
         this.zones = $.zones;
     }
 
@@ -533,6 +549,15 @@ public final class StatefulNodeAzureArgs extends com.pulumi.resources.ResourceAr
 
         public Builder importVms(StatefulNodeAzureImportVmArgs... importVms) {
             return importVms(List.of(importVms));
+        }
+
+        public Builder licenseType(@Nullable Output<String> licenseType) {
+            $.licenseType = licenseType;
+            return this;
+        }
+
+        public Builder licenseType(String licenseType) {
+            return licenseType(Output.of(licenseType));
         }
 
         public Builder loadBalancers(@Nullable Output<List<StatefulNodeAzureLoadBalancerArgs>> loadBalancers) {
@@ -838,6 +863,15 @@ public final class StatefulNodeAzureArgs extends com.pulumi.resources.ResourceAr
 
         public Builder vmName(String vmName) {
             return vmName(Output.of(vmName));
+        }
+
+        public Builder vmNamePrefix(@Nullable Output<String> vmNamePrefix) {
+            $.vmNamePrefix = vmNamePrefix;
+            return this;
+        }
+
+        public Builder vmNamePrefix(String vmNamePrefix) {
+            return vmNamePrefix(Output.of(vmNamePrefix));
         }
 
         public Builder zones(@Nullable Output<List<String>> zones) {

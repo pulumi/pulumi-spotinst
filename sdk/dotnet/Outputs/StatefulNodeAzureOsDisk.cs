@@ -13,15 +13,19 @@ namespace Pulumi.SpotInst.Outputs
     [OutputType]
     public sealed class StatefulNodeAzureOsDisk
     {
+        public readonly string? Caching;
         public readonly int? SizeGb;
         public readonly string Type;
 
         [OutputConstructor]
         private StatefulNodeAzureOsDisk(
+            string? caching,
+
             int? sizeGb,
 
             string type)
         {
+            Caching = caching;
             SizeGb = sizeGb;
             Type = type;
         }

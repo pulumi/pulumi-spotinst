@@ -251,6 +251,7 @@ export interface StatefulNodeAzureNetworkNetworkInterfacePublicIp {
 }
 
 export interface StatefulNodeAzureOsDisk {
+    caching?: string;
     sizeGb?: number;
     type: string;
 }
@@ -293,9 +294,11 @@ export interface StatefulNodeAzureSignal {
 }
 
 export interface StatefulNodeAzureStrategy {
+    availabilityVsCost?: number;
     capacityReservations?: outputs.StatefulNodeAzureStrategyCapacityReservation[];
     drainingTimeout: number;
     fallbackToOnDemand: boolean;
+    odWindows?: string[];
     optimizationWindows?: string[];
     preferredLifeCycle: string;
     revertToSpot: outputs.StatefulNodeAzureStrategyRevertToSpot;

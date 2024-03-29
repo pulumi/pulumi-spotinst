@@ -12,6 +12,9 @@ namespace Pulumi.SpotInst.Inputs
 
     public sealed class StatefulNodeAzureStrategyGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("availabilityVsCost")]
+        public Input<int>? AvailabilityVsCost { get; set; }
+
         [Input("capacityReservations")]
         private InputList<Inputs.StatefulNodeAzureStrategyCapacityReservationGetArgs>? _capacityReservations;
         public InputList<Inputs.StatefulNodeAzureStrategyCapacityReservationGetArgs> CapacityReservations
@@ -25,6 +28,14 @@ namespace Pulumi.SpotInst.Inputs
 
         [Input("fallbackToOnDemand", required: true)]
         public Input<bool> FallbackToOnDemand { get; set; } = null!;
+
+        [Input("odWindows")]
+        private InputList<string>? _odWindows;
+        public InputList<string> OdWindows
+        {
+            get => _odWindows ?? (_odWindows = new InputList<string>());
+            set => _odWindows = value;
+        }
 
         [Input("optimizationWindows")]
         private InputList<string>? _optimizationWindows;

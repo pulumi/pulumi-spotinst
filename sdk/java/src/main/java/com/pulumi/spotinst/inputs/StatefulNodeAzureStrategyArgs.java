@@ -21,6 +21,13 @@ public final class StatefulNodeAzureStrategyArgs extends com.pulumi.resources.Re
 
     public static final StatefulNodeAzureStrategyArgs Empty = new StatefulNodeAzureStrategyArgs();
 
+    @Import(name="availabilityVsCost")
+    private @Nullable Output<Integer> availabilityVsCost;
+
+    public Optional<Output<Integer>> availabilityVsCost() {
+        return Optional.ofNullable(this.availabilityVsCost);
+    }
+
     @Import(name="capacityReservations")
     private @Nullable Output<List<StatefulNodeAzureStrategyCapacityReservationArgs>> capacityReservations;
 
@@ -40,6 +47,13 @@ public final class StatefulNodeAzureStrategyArgs extends com.pulumi.resources.Re
 
     public Output<Boolean> fallbackToOnDemand() {
         return this.fallbackToOnDemand;
+    }
+
+    @Import(name="odWindows")
+    private @Nullable Output<List<String>> odWindows;
+
+    public Optional<Output<List<String>>> odWindows() {
+        return Optional.ofNullable(this.odWindows);
     }
 
     @Import(name="optimizationWindows")
@@ -66,9 +80,11 @@ public final class StatefulNodeAzureStrategyArgs extends com.pulumi.resources.Re
     private StatefulNodeAzureStrategyArgs() {}
 
     private StatefulNodeAzureStrategyArgs(StatefulNodeAzureStrategyArgs $) {
+        this.availabilityVsCost = $.availabilityVsCost;
         this.capacityReservations = $.capacityReservations;
         this.drainingTimeout = $.drainingTimeout;
         this.fallbackToOnDemand = $.fallbackToOnDemand;
+        this.odWindows = $.odWindows;
         this.optimizationWindows = $.optimizationWindows;
         this.preferredLifeCycle = $.preferredLifeCycle;
         this.revertToSpot = $.revertToSpot;
@@ -90,6 +106,15 @@ public final class StatefulNodeAzureStrategyArgs extends com.pulumi.resources.Re
 
         public Builder(StatefulNodeAzureStrategyArgs defaults) {
             $ = new StatefulNodeAzureStrategyArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder availabilityVsCost(@Nullable Output<Integer> availabilityVsCost) {
+            $.availabilityVsCost = availabilityVsCost;
+            return this;
+        }
+
+        public Builder availabilityVsCost(Integer availabilityVsCost) {
+            return availabilityVsCost(Output.of(availabilityVsCost));
         }
 
         public Builder capacityReservations(@Nullable Output<List<StatefulNodeAzureStrategyCapacityReservationArgs>> capacityReservations) {
@@ -121,6 +146,19 @@ public final class StatefulNodeAzureStrategyArgs extends com.pulumi.resources.Re
 
         public Builder fallbackToOnDemand(Boolean fallbackToOnDemand) {
             return fallbackToOnDemand(Output.of(fallbackToOnDemand));
+        }
+
+        public Builder odWindows(@Nullable Output<List<String>> odWindows) {
+            $.odWindows = odWindows;
+            return this;
+        }
+
+        public Builder odWindows(List<String> odWindows) {
+            return odWindows(Output.of(odWindows));
+        }
+
+        public Builder odWindows(String... odWindows) {
+            return odWindows(List.of(odWindows));
         }
 
         public Builder optimizationWindows(@Nullable Output<List<String>> optimizationWindows) {

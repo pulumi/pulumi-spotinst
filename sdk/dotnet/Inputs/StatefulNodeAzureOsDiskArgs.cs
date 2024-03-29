@@ -12,6 +12,9 @@ namespace Pulumi.SpotInst.Inputs
 
     public sealed class StatefulNodeAzureOsDiskArgs : global::Pulumi.ResourceArgs
     {
+        [Input("caching")]
+        public Input<string>? Caching { get; set; }
+
         [Input("sizeGb")]
         public Input<int>? SizeGb { get; set; }
 
