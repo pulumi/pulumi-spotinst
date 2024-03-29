@@ -90,6 +90,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // Create an Elastigroup
  *         var default_elastigroup = new Elastigroup(&#34;default-elastigroup&#34;, ElastigroupArgs.builder()        
  *             .capacityUnit(&#34;weight&#34;)
  *             .cpuCredits(&#34;unlimited&#34;)
