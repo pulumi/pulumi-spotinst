@@ -103,8 +103,6 @@ public final class OceanLaunchSpecInstanceTypesFilters {
     /**
      * @return The filtered instance types will support at least one of the virtualization types from this list. Valid values: `hvm`, `paravirtual`.
      * 
-     * &lt;a id=&#34;update-policy&#34;&gt;&lt;/a&gt;
-     * 
      */
     private @Nullable List<String> virtualizationTypes;
 
@@ -230,8 +228,6 @@ public final class OceanLaunchSpecInstanceTypesFilters {
     }
     /**
      * @return The filtered instance types will support at least one of the virtualization types from this list. Valid values: `hvm`, `paravirtual`.
-     * 
-     * &lt;a id=&#34;update-policy&#34;&gt;&lt;/a&gt;
      * 
      */
     public List<String> virtualizationTypes() {

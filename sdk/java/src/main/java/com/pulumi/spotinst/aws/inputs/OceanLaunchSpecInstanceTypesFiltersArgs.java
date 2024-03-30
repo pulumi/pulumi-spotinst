@@ -277,16 +277,12 @@ public final class OceanLaunchSpecInstanceTypesFiltersArgs extends com.pulumi.re
     /**
      * The filtered instance types will support at least one of the virtualization types from this list. Valid values: `hvm`, `paravirtual`.
      * 
-     * &lt;a id=&#34;update-policy&#34;&gt;&lt;/a&gt;
-     * 
      */
     @Import(name="virtualizationTypes")
     private @Nullable Output<List<String>> virtualizationTypes;
 
     /**
      * @return The filtered instance types will support at least one of the virtualization types from this list. Valid values: `hvm`, `paravirtual`.
-     * 
-     * &lt;a id=&#34;update-policy&#34;&gt;&lt;/a&gt;
      * 
      */
     public Optional<Output<List<String>>> virtualizationTypes() {
@@ -754,8 +750,6 @@ public final class OceanLaunchSpecInstanceTypesFiltersArgs extends com.pulumi.re
         /**
          * @param virtualizationTypes The filtered instance types will support at least one of the virtualization types from this list. Valid values: `hvm`, `paravirtual`.
          * 
-         * &lt;a id=&#34;update-policy&#34;&gt;&lt;/a&gt;
-         * 
          * @return builder
          * 
          */
@@ -767,8 +761,6 @@ public final class OceanLaunchSpecInstanceTypesFiltersArgs extends com.pulumi.re
         /**
          * @param virtualizationTypes The filtered instance types will support at least one of the virtualization types from this list. Valid values: `hvm`, `paravirtual`.
          * 
-         * &lt;a id=&#34;update-policy&#34;&gt;&lt;/a&gt;
-         * 
          * @return builder
          * 
          */
@@ -778,8 +770,6 @@ public final class OceanLaunchSpecInstanceTypesFiltersArgs extends com.pulumi.re
 
         /**
          * @param virtualizationTypes The filtered instance types will support at least one of the virtualization types from this list. Valid values: `hvm`, `paravirtual`.
-         * 
-         * &lt;a id=&#34;update-policy&#34;&gt;&lt;/a&gt;
          * 
          * @return builder
          * 

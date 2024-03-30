@@ -2943,6 +2943,16 @@ export namespace aws {
         tagValue?: pulumi.Input<string>;
     }
 
+    export interface OceanLaunchSpecEphemeralStorage {
+        /**
+         * Specify an alternative device name from which ephemeral storage calculations should be derived. This parameter is used when the ephemeral storage should not utilize the root device. Provide the device name configured in the VNG's BDM or AMI's BDM that differs from the default root device.
+         *
+         *
+         * <a id="update-policy"></a>
+         */
+        ephemeralStorageDeviceName?: pulumi.Input<string>;
+    }
+
     export interface OceanLaunchSpecImage {
         /**
          * Identifier of the image in AWS. Valid values: any string which is not empty or null.
@@ -3032,9 +3042,6 @@ export namespace aws {
         rootDeviceTypes?: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * The filtered instance types will support at least one of the virtualization types from this list. Valid values: `hvm`, `paravirtual`.
-         *
-         *
-         * <a id="update-policy"></a>
          */
         virtualizationTypes?: pulumi.Input<pulumi.Input<string>[]>;
     }

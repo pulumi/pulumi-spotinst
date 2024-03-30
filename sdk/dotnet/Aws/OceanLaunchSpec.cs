@@ -91,6 +91,13 @@ namespace Pulumi.SpotInst.Aws
     ///                 },
     ///             },
     ///         },
+    ///         EphemeralStorages = new[]
+    ///         {
+    ///             new SpotInst.Aws.Inputs.OceanLaunchSpecEphemeralStorageArgs
+    ///             {
+    ///                 EphemeralStorageDeviceName = "/dev/xvda",
+    ///             },
+    ///         },
     ///         IamInstanceProfile = "iam-profile",
     ///         ImageId = "ami-123456",
     ///         Images = new[]
@@ -285,6 +292,9 @@ namespace Pulumi.SpotInst.Aws
         /// </summary>
         [Output("elasticIpPools")]
         public Output<ImmutableArray<Outputs.OceanLaunchSpecElasticIpPool>> ElasticIpPools { get; private set; } = null!;
+
+        [Output("ephemeralStorages")]
+        public Output<ImmutableArray<Outputs.OceanLaunchSpecEphemeralStorage>> EphemeralStorages { get; private set; } = null!;
 
         /// <summary>
         /// The ARN or name of an IAM instance profile to associate with launched instances.
@@ -527,6 +537,14 @@ namespace Pulumi.SpotInst.Aws
         {
             get => _elasticIpPools ?? (_elasticIpPools = new InputList<Inputs.OceanLaunchSpecElasticIpPoolArgs>());
             set => _elasticIpPools = value;
+        }
+
+        [Input("ephemeralStorages")]
+        private InputList<Inputs.OceanLaunchSpecEphemeralStorageArgs>? _ephemeralStorages;
+        public InputList<Inputs.OceanLaunchSpecEphemeralStorageArgs> EphemeralStorages
+        {
+            get => _ephemeralStorages ?? (_ephemeralStorages = new InputList<Inputs.OceanLaunchSpecEphemeralStorageArgs>());
+            set => _ephemeralStorages = value;
         }
 
         /// <summary>
@@ -796,6 +814,14 @@ namespace Pulumi.SpotInst.Aws
         {
             get => _elasticIpPools ?? (_elasticIpPools = new InputList<Inputs.OceanLaunchSpecElasticIpPoolGetArgs>());
             set => _elasticIpPools = value;
+        }
+
+        [Input("ephemeralStorages")]
+        private InputList<Inputs.OceanLaunchSpecEphemeralStorageGetArgs>? _ephemeralStorages;
+        public InputList<Inputs.OceanLaunchSpecEphemeralStorageGetArgs> EphemeralStorages
+        {
+            get => _ephemeralStorages ?? (_ephemeralStorages = new InputList<Inputs.OceanLaunchSpecEphemeralStorageGetArgs>());
+            set => _ephemeralStorages = value;
         }
 
         /// <summary>

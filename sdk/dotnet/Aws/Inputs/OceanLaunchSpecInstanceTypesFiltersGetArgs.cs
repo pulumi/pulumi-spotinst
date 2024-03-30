@@ -155,9 +155,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
 
         /// <summary>
         /// The filtered instance types will support at least one of the virtualization types from this list. Valid values: `hvm`, `paravirtual`.
-        /// 
-        /// 
-        /// &lt;a id="update-policy"&gt;&lt;/a&gt;
         /// </summary>
         public InputList<string> VirtualizationTypes
         {
