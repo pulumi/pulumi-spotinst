@@ -1524,6 +1524,9 @@
                             }
                         }
                     },
+                    "ephemeral_storage": {
+                        "maxItemsOne": false
+                    },
                     "images": {
                         "maxItemsOne": false
                     },
