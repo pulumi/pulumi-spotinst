@@ -145,6 +145,7 @@ __all__ = [
     'OceanLaunchSpecDeleteOptions',
     'OceanLaunchSpecElasticIpPool',
     'OceanLaunchSpecElasticIpPoolTagSelector',
+    'OceanLaunchSpecEphemeralStorage',
     'OceanLaunchSpecImage',
     'OceanLaunchSpecInstanceMetadataOptions',
     'OceanLaunchSpecInstanceTypesFilters',
@@ -10160,6 +10161,48 @@ class OceanLaunchSpecElasticIpPoolTagSelector(dict):
 
 
 @pulumi.output_type
+class OceanLaunchSpecEphemeralStorage(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ephemeralStorageDeviceName":
+            suggest = "ephemeral_storage_device_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OceanLaunchSpecEphemeralStorage. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OceanLaunchSpecEphemeralStorage.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OceanLaunchSpecEphemeralStorage.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ephemeral_storage_device_name: Optional[str] = None):
+        """
+        :param str ephemeral_storage_device_name: Specify an alternative device name from which ephemeral storage calculations should be derived. This parameter is used when the ephemeral storage should not utilize the root device. Provide the device name configured in the VNG's BDM or AMI's BDM that differs from the default root device.
+               
+               
+               <a id="update-policy"></a>
+        """
+        if ephemeral_storage_device_name is not None:
+            pulumi.set(__self__, "ephemeral_storage_device_name", ephemeral_storage_device_name)
+
+    @property
+    @pulumi.getter(name="ephemeralStorageDeviceName")
+    def ephemeral_storage_device_name(self) -> Optional[str]:
+        """
+        Specify an alternative device name from which ephemeral storage calculations should be derived. This parameter is used when the ephemeral storage should not utilize the root device. Provide the device name configured in the VNG's BDM or AMI's BDM that differs from the default root device.
+
+
+        <a id="update-policy"></a>
+        """
+        return pulumi.get(self, "ephemeral_storage_device_name")
+
+
+@pulumi.output_type
 class OceanLaunchSpecImage(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -10331,9 +10374,6 @@ class OceanLaunchSpecInstanceTypesFilters(dict):
         :param int min_vcpu: Minimum number of vcpus available.
         :param Sequence[str] root_device_types: The filtered instance types will have a root device types from this list. Valid values: `ebs`, or `instance-store`.
         :param Sequence[str] virtualization_types: The filtered instance types will support at least one of the virtualization types from this list. Valid values: `hvm`, `paravirtual`.
-               
-               
-               <a id="update-policy"></a>
         """
         if categories is not None:
             pulumi.set(__self__, "categories", categories)
@@ -10513,9 +10553,6 @@ class OceanLaunchSpecInstanceTypesFilters(dict):
     def virtualization_types(self) -> Optional[Sequence[str]]:
         """
         The filtered instance types will support at least one of the virtualization types from this list. Valid values: `hvm`, `paravirtual`.
-
-
-        <a id="update-policy"></a>
         """
         return pulumi.get(self, "virtualization_types")
 

@@ -12,6 +12,7 @@ import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecBlockDeviceMappingArgs;
 import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecCreateOptionsArgs;
 import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecDeleteOptionsArgs;
 import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecElasticIpPoolArgs;
+import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecEphemeralStorageArgs;
 import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecImageArgs;
 import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecInstanceMetadataOptionsArgs;
 import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecInstanceTypesFiltersArgs;
@@ -138,6 +139,13 @@ public final class OceanLaunchSpecState extends com.pulumi.resources.ResourceArg
      */
     public Optional<Output<List<OceanLaunchSpecElasticIpPoolArgs>>> elasticIpPools() {
         return Optional.ofNullable(this.elasticIpPools);
+    }
+
+    @Import(name="ephemeralStorages")
+    private @Nullable Output<List<OceanLaunchSpecEphemeralStorageArgs>> ephemeralStorages;
+
+    public Optional<Output<List<OceanLaunchSpecEphemeralStorageArgs>>> ephemeralStorages() {
+        return Optional.ofNullable(this.ephemeralStorages);
     }
 
     /**
@@ -461,6 +469,7 @@ public final class OceanLaunchSpecState extends com.pulumi.resources.ResourceArg
         this.createOptions = $.createOptions;
         this.deleteOptions = $.deleteOptions;
         this.elasticIpPools = $.elasticIpPools;
+        this.ephemeralStorages = $.ephemeralStorages;
         this.iamInstanceProfile = $.iamInstanceProfile;
         this.imageId = $.imageId;
         this.images = $.images;
@@ -695,6 +704,19 @@ public final class OceanLaunchSpecState extends com.pulumi.resources.ResourceArg
          */
         public Builder elasticIpPools(OceanLaunchSpecElasticIpPoolArgs... elasticIpPools) {
             return elasticIpPools(List.of(elasticIpPools));
+        }
+
+        public Builder ephemeralStorages(@Nullable Output<List<OceanLaunchSpecEphemeralStorageArgs>> ephemeralStorages) {
+            $.ephemeralStorages = ephemeralStorages;
+            return this;
+        }
+
+        public Builder ephemeralStorages(List<OceanLaunchSpecEphemeralStorageArgs> ephemeralStorages) {
+            return ephemeralStorages(Output.of(ephemeralStorages));
+        }
+
+        public Builder ephemeralStorages(OceanLaunchSpecEphemeralStorageArgs... ephemeralStorages) {
+            return ephemeralStorages(List.of(ephemeralStorages));
         }
 
         /**

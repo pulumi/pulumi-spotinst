@@ -83,9 +83,6 @@ namespace Pulumi.SpotInst.Aws.Outputs
         public readonly ImmutableArray<string> RootDeviceTypes;
         /// <summary>
         /// The filtered instance types will support at least one of the virtualization types from this list. Valid values: `hvm`, `paravirtual`.
-        /// 
-        /// 
-        /// &lt;a id="update-policy"&gt;&lt;/a&gt;
         /// </summary>
         public readonly ImmutableArray<string> VirtualizationTypes;
 

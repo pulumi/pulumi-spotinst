@@ -144,6 +144,7 @@ __all__ = [
     'OceanLaunchSpecDeleteOptionsArgs',
     'OceanLaunchSpecElasticIpPoolArgs',
     'OceanLaunchSpecElasticIpPoolTagSelectorArgs',
+    'OceanLaunchSpecEphemeralStorageArgs',
     'OceanLaunchSpecImageArgs',
     'OceanLaunchSpecInstanceMetadataOptionsArgs',
     'OceanLaunchSpecInstanceTypesFiltersArgs',
@@ -10194,6 +10195,35 @@ class OceanLaunchSpecElasticIpPoolTagSelectorArgs:
 
 
 @pulumi.input_type
+class OceanLaunchSpecEphemeralStorageArgs:
+    def __init__(__self__, *,
+                 ephemeral_storage_device_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] ephemeral_storage_device_name: Specify an alternative device name from which ephemeral storage calculations should be derived. This parameter is used when the ephemeral storage should not utilize the root device. Provide the device name configured in the VNG's BDM or AMI's BDM that differs from the default root device.
+               
+               
+               <a id="update-policy"></a>
+        """
+        if ephemeral_storage_device_name is not None:
+            pulumi.set(__self__, "ephemeral_storage_device_name", ephemeral_storage_device_name)
+
+    @property
+    @pulumi.getter(name="ephemeralStorageDeviceName")
+    def ephemeral_storage_device_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specify an alternative device name from which ephemeral storage calculations should be derived. This parameter is used when the ephemeral storage should not utilize the root device. Provide the device name configured in the VNG's BDM or AMI's BDM that differs from the default root device.
+
+
+        <a id="update-policy"></a>
+        """
+        return pulumi.get(self, "ephemeral_storage_device_name")
+
+    @ephemeral_storage_device_name.setter
+    def ephemeral_storage_device_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ephemeral_storage_device_name", value)
+
+
+@pulumi.input_type
 class OceanLaunchSpecImageArgs:
     def __init__(__self__, *,
                  image_id: Optional[pulumi.Input[str]] = None):
@@ -10294,9 +10324,6 @@ class OceanLaunchSpecInstanceTypesFiltersArgs:
         :param pulumi.Input[int] min_vcpu: Minimum number of vcpus available.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] root_device_types: The filtered instance types will have a root device types from this list. Valid values: `ebs`, or `instance-store`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] virtualization_types: The filtered instance types will support at least one of the virtualization types from this list. Valid values: `hvm`, `paravirtual`.
-               
-               
-               <a id="update-policy"></a>
         """
         if categories is not None:
             pulumi.set(__self__, "categories", categories)
@@ -10544,9 +10571,6 @@ class OceanLaunchSpecInstanceTypesFiltersArgs:
     def virtualization_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         The filtered instance types will support at least one of the virtualization types from this list. Valid values: `hvm`, `paravirtual`.
-
-
-        <a id="update-policy"></a>
         """
         return pulumi.get(self, "virtualization_types")
 

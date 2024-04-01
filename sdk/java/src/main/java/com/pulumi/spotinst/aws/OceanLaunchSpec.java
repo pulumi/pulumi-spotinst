@@ -17,6 +17,7 @@ import com.pulumi.spotinst.aws.outputs.OceanLaunchSpecBlockDeviceMapping;
 import com.pulumi.spotinst.aws.outputs.OceanLaunchSpecCreateOptions;
 import com.pulumi.spotinst.aws.outputs.OceanLaunchSpecDeleteOptions;
 import com.pulumi.spotinst.aws.outputs.OceanLaunchSpecElasticIpPool;
+import com.pulumi.spotinst.aws.outputs.OceanLaunchSpecEphemeralStorage;
 import com.pulumi.spotinst.aws.outputs.OceanLaunchSpecImage;
 import com.pulumi.spotinst.aws.outputs.OceanLaunchSpecInstanceMetadataOptions;
 import com.pulumi.spotinst.aws.outputs.OceanLaunchSpecInstanceTypesFilters;
@@ -59,6 +60,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecDeleteOptionsArgs;
  * import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecElasticIpPoolArgs;
  * import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecElasticIpPoolTagSelectorArgs;
+ * import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecEphemeralStorageArgs;
  * import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecImageArgs;
  * import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecInstanceMetadataOptionsArgs;
  * import com.pulumi.spotinst.aws.inputs.OceanLaunchSpecLabelArgs;
@@ -122,6 +124,9 @@ import javax.annotation.Nullable;
  *                     .tagKey(&#34;key&#34;)
  *                     .tagValue(&#34;value&#34;)
  *                     .build())
+ *                 .build())
+ *             .ephemeralStorages(OceanLaunchSpecEphemeralStorageArgs.builder()
+ *                 .ephemeralStorageDeviceName(&#34;/dev/xvda&#34;)
  *                 .build())
  *             .iamInstanceProfile(&#34;iam-profile&#34;)
  *             .imageId(&#34;ami-123456&#34;)
@@ -349,6 +354,12 @@ public class OceanLaunchSpec extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<List<OceanLaunchSpecElasticIpPool>>> elasticIpPools() {
         return Codegen.optional(this.elasticIpPools);
+    }
+    @Export(name="ephemeralStorages", refs={List.class,OceanLaunchSpecEphemeralStorage.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<OceanLaunchSpecEphemeralStorage>> ephemeralStorages;
+
+    public Output<Optional<List<OceanLaunchSpecEphemeralStorage>>> ephemeralStorages() {
+        return Codegen.optional(this.ephemeralStorages);
     }
     /**
      * The ARN or name of an IAM instance profile to associate with launched instances.

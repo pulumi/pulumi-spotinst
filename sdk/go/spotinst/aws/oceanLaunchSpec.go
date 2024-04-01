@@ -81,6 +81,11 @@ import (
 //						},
 //					},
 //				},
+//				EphemeralStorages: aws.OceanLaunchSpecEphemeralStorageArray{
+//					&aws.OceanLaunchSpecEphemeralStorageArgs{
+//						EphemeralStorageDeviceName: pulumi.String("/dev/xvda"),
+//					},
+//				},
 //				IamInstanceProfile: pulumi.String("iam-profile"),
 //				ImageId:            pulumi.String("ami-123456"),
 //				Images: aws.OceanLaunchSpecImageArray{
@@ -238,7 +243,8 @@ type OceanLaunchSpec struct {
 	CreateOptions       OceanLaunchSpecCreateOptionsPtrOutput        `pulumi:"createOptions"`
 	DeleteOptions       OceanLaunchSpecDeleteOptionsPtrOutput        `pulumi:"deleteOptions"`
 	// Assign an Elastic IP to the instances spun by the Virtual Node Group. Can be null.
-	ElasticIpPools OceanLaunchSpecElasticIpPoolArrayOutput `pulumi:"elasticIpPools"`
+	ElasticIpPools    OceanLaunchSpecElasticIpPoolArrayOutput    `pulumi:"elasticIpPools"`
+	EphemeralStorages OceanLaunchSpecEphemeralStorageArrayOutput `pulumi:"ephemeralStorages"`
 	// The ARN or name of an IAM instance profile to associate with launched instances.
 	IamInstanceProfile pulumi.StringPtrOutput `pulumi:"iamInstanceProfile"`
 	// Identifier of the image in AWS. Valid values: any string which is not empty or null.
@@ -330,7 +336,8 @@ type oceanLaunchSpecState struct {
 	CreateOptions       *OceanLaunchSpecCreateOptions       `pulumi:"createOptions"`
 	DeleteOptions       *OceanLaunchSpecDeleteOptions       `pulumi:"deleteOptions"`
 	// Assign an Elastic IP to the instances spun by the Virtual Node Group. Can be null.
-	ElasticIpPools []OceanLaunchSpecElasticIpPool `pulumi:"elasticIpPools"`
+	ElasticIpPools    []OceanLaunchSpecElasticIpPool    `pulumi:"elasticIpPools"`
+	EphemeralStorages []OceanLaunchSpecEphemeralStorage `pulumi:"ephemeralStorages"`
 	// The ARN or name of an IAM instance profile to associate with launched instances.
 	IamInstanceProfile *string `pulumi:"iamInstanceProfile"`
 	// Identifier of the image in AWS. Valid values: any string which is not empty or null.
@@ -390,7 +397,8 @@ type OceanLaunchSpecState struct {
 	CreateOptions       OceanLaunchSpecCreateOptionsPtrInput
 	DeleteOptions       OceanLaunchSpecDeleteOptionsPtrInput
 	// Assign an Elastic IP to the instances spun by the Virtual Node Group. Can be null.
-	ElasticIpPools OceanLaunchSpecElasticIpPoolArrayInput
+	ElasticIpPools    OceanLaunchSpecElasticIpPoolArrayInput
+	EphemeralStorages OceanLaunchSpecEphemeralStorageArrayInput
 	// The ARN or name of an IAM instance profile to associate with launched instances.
 	IamInstanceProfile pulumi.StringPtrInput
 	// Identifier of the image in AWS. Valid values: any string which is not empty or null.
@@ -454,7 +462,8 @@ type oceanLaunchSpecArgs struct {
 	CreateOptions       *OceanLaunchSpecCreateOptions       `pulumi:"createOptions"`
 	DeleteOptions       *OceanLaunchSpecDeleteOptions       `pulumi:"deleteOptions"`
 	// Assign an Elastic IP to the instances spun by the Virtual Node Group. Can be null.
-	ElasticIpPools []OceanLaunchSpecElasticIpPool `pulumi:"elasticIpPools"`
+	ElasticIpPools    []OceanLaunchSpecElasticIpPool    `pulumi:"elasticIpPools"`
+	EphemeralStorages []OceanLaunchSpecEphemeralStorage `pulumi:"ephemeralStorages"`
 	// The ARN or name of an IAM instance profile to associate with launched instances.
 	IamInstanceProfile *string `pulumi:"iamInstanceProfile"`
 	// Identifier of the image in AWS. Valid values: any string which is not empty or null.
@@ -515,7 +524,8 @@ type OceanLaunchSpecArgs struct {
 	CreateOptions       OceanLaunchSpecCreateOptionsPtrInput
 	DeleteOptions       OceanLaunchSpecDeleteOptionsPtrInput
 	// Assign an Elastic IP to the instances spun by the Virtual Node Group. Can be null.
-	ElasticIpPools OceanLaunchSpecElasticIpPoolArrayInput
+	ElasticIpPools    OceanLaunchSpecElasticIpPoolArrayInput
+	EphemeralStorages OceanLaunchSpecEphemeralStorageArrayInput
 	// The ARN or name of an IAM instance profile to associate with launched instances.
 	IamInstanceProfile pulumi.StringPtrInput
 	// Identifier of the image in AWS. Valid values: any string which is not empty or null.
@@ -686,6 +696,10 @@ func (o OceanLaunchSpecOutput) DeleteOptions() OceanLaunchSpecDeleteOptionsPtrOu
 // Assign an Elastic IP to the instances spun by the Virtual Node Group. Can be null.
 func (o OceanLaunchSpecOutput) ElasticIpPools() OceanLaunchSpecElasticIpPoolArrayOutput {
 	return o.ApplyT(func(v *OceanLaunchSpec) OceanLaunchSpecElasticIpPoolArrayOutput { return v.ElasticIpPools }).(OceanLaunchSpecElasticIpPoolArrayOutput)
+}
+
+func (o OceanLaunchSpecOutput) EphemeralStorages() OceanLaunchSpecEphemeralStorageArrayOutput {
+	return o.ApplyT(func(v *OceanLaunchSpec) OceanLaunchSpecEphemeralStorageArrayOutput { return v.EphemeralStorages }).(OceanLaunchSpecEphemeralStorageArrayOutput)
 }
 
 // The ARN or name of an IAM instance profile to associate with launched instances.

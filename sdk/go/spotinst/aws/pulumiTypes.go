@@ -22068,6 +22068,109 @@ func (o OceanLaunchSpecElasticIpPoolTagSelectorPtrOutput) TagValue() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
+type OceanLaunchSpecEphemeralStorage struct {
+	// Specify an alternative device name from which ephemeral storage calculations should be derived. This parameter is used when the ephemeral storage should not utilize the root device. Provide the device name configured in the VNG's BDM or AMI's BDM that differs from the default root device.
+	//
+	// <a id="update-policy"></a>
+	EphemeralStorageDeviceName *string `pulumi:"ephemeralStorageDeviceName"`
+}
+
+// OceanLaunchSpecEphemeralStorageInput is an input type that accepts OceanLaunchSpecEphemeralStorageArgs and OceanLaunchSpecEphemeralStorageOutput values.
+// You can construct a concrete instance of `OceanLaunchSpecEphemeralStorageInput` via:
+//
+//	OceanLaunchSpecEphemeralStorageArgs{...}
+type OceanLaunchSpecEphemeralStorageInput interface {
+	pulumi.Input
+
+	ToOceanLaunchSpecEphemeralStorageOutput() OceanLaunchSpecEphemeralStorageOutput
+	ToOceanLaunchSpecEphemeralStorageOutputWithContext(context.Context) OceanLaunchSpecEphemeralStorageOutput
+}
+
+type OceanLaunchSpecEphemeralStorageArgs struct {
+	// Specify an alternative device name from which ephemeral storage calculations should be derived. This parameter is used when the ephemeral storage should not utilize the root device. Provide the device name configured in the VNG's BDM or AMI's BDM that differs from the default root device.
+	//
+	// <a id="update-policy"></a>
+	EphemeralStorageDeviceName pulumi.StringPtrInput `pulumi:"ephemeralStorageDeviceName"`
+}
+
+func (OceanLaunchSpecEphemeralStorageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanLaunchSpecEphemeralStorage)(nil)).Elem()
+}
+
+func (i OceanLaunchSpecEphemeralStorageArgs) ToOceanLaunchSpecEphemeralStorageOutput() OceanLaunchSpecEphemeralStorageOutput {
+	return i.ToOceanLaunchSpecEphemeralStorageOutputWithContext(context.Background())
+}
+
+func (i OceanLaunchSpecEphemeralStorageArgs) ToOceanLaunchSpecEphemeralStorageOutputWithContext(ctx context.Context) OceanLaunchSpecEphemeralStorageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLaunchSpecEphemeralStorageOutput)
+}
+
+// OceanLaunchSpecEphemeralStorageArrayInput is an input type that accepts OceanLaunchSpecEphemeralStorageArray and OceanLaunchSpecEphemeralStorageArrayOutput values.
+// You can construct a concrete instance of `OceanLaunchSpecEphemeralStorageArrayInput` via:
+//
+//	OceanLaunchSpecEphemeralStorageArray{ OceanLaunchSpecEphemeralStorageArgs{...} }
+type OceanLaunchSpecEphemeralStorageArrayInput interface {
+	pulumi.Input
+
+	ToOceanLaunchSpecEphemeralStorageArrayOutput() OceanLaunchSpecEphemeralStorageArrayOutput
+	ToOceanLaunchSpecEphemeralStorageArrayOutputWithContext(context.Context) OceanLaunchSpecEphemeralStorageArrayOutput
+}
+
+type OceanLaunchSpecEphemeralStorageArray []OceanLaunchSpecEphemeralStorageInput
+
+func (OceanLaunchSpecEphemeralStorageArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanLaunchSpecEphemeralStorage)(nil)).Elem()
+}
+
+func (i OceanLaunchSpecEphemeralStorageArray) ToOceanLaunchSpecEphemeralStorageArrayOutput() OceanLaunchSpecEphemeralStorageArrayOutput {
+	return i.ToOceanLaunchSpecEphemeralStorageArrayOutputWithContext(context.Background())
+}
+
+func (i OceanLaunchSpecEphemeralStorageArray) ToOceanLaunchSpecEphemeralStorageArrayOutputWithContext(ctx context.Context) OceanLaunchSpecEphemeralStorageArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OceanLaunchSpecEphemeralStorageArrayOutput)
+}
+
+type OceanLaunchSpecEphemeralStorageOutput struct{ *pulumi.OutputState }
+
+func (OceanLaunchSpecEphemeralStorageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OceanLaunchSpecEphemeralStorage)(nil)).Elem()
+}
+
+func (o OceanLaunchSpecEphemeralStorageOutput) ToOceanLaunchSpecEphemeralStorageOutput() OceanLaunchSpecEphemeralStorageOutput {
+	return o
+}
+
+func (o OceanLaunchSpecEphemeralStorageOutput) ToOceanLaunchSpecEphemeralStorageOutputWithContext(ctx context.Context) OceanLaunchSpecEphemeralStorageOutput {
+	return o
+}
+
+// Specify an alternative device name from which ephemeral storage calculations should be derived. This parameter is used when the ephemeral storage should not utilize the root device. Provide the device name configured in the VNG's BDM or AMI's BDM that differs from the default root device.
+//
+// <a id="update-policy"></a>
+func (o OceanLaunchSpecEphemeralStorageOutput) EphemeralStorageDeviceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OceanLaunchSpecEphemeralStorage) *string { return v.EphemeralStorageDeviceName }).(pulumi.StringPtrOutput)
+}
+
+type OceanLaunchSpecEphemeralStorageArrayOutput struct{ *pulumi.OutputState }
+
+func (OceanLaunchSpecEphemeralStorageArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OceanLaunchSpecEphemeralStorage)(nil)).Elem()
+}
+
+func (o OceanLaunchSpecEphemeralStorageArrayOutput) ToOceanLaunchSpecEphemeralStorageArrayOutput() OceanLaunchSpecEphemeralStorageArrayOutput {
+	return o
+}
+
+func (o OceanLaunchSpecEphemeralStorageArrayOutput) ToOceanLaunchSpecEphemeralStorageArrayOutputWithContext(ctx context.Context) OceanLaunchSpecEphemeralStorageArrayOutput {
+	return o
+}
+
+func (o OceanLaunchSpecEphemeralStorageArrayOutput) Index(i pulumi.IntInput) OceanLaunchSpecEphemeralStorageOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OceanLaunchSpecEphemeralStorage {
+		return vs[0].([]OceanLaunchSpecEphemeralStorage)[vs[1].(int)]
+	}).(OceanLaunchSpecEphemeralStorageOutput)
+}
+
 type OceanLaunchSpecImage struct {
 	// Identifier of the image in AWS. Valid values: any string which is not empty or null.
 	ImageId *string `pulumi:"imageId"`
@@ -22357,8 +22460,6 @@ type OceanLaunchSpecInstanceTypesFilters struct {
 	// The filtered instance types will have a root device types from this list. Valid values: `ebs`, or `instance-store`.
 	RootDeviceTypes []string `pulumi:"rootDeviceTypes"`
 	// The filtered instance types will support at least one of the virtualization types from this list. Valid values: `hvm`, `paravirtual`.
-	//
-	// <a id="update-policy"></a>
 	VirtualizationTypes []string `pulumi:"virtualizationTypes"`
 }
 
@@ -22409,8 +22510,6 @@ type OceanLaunchSpecInstanceTypesFiltersArgs struct {
 	// The filtered instance types will have a root device types from this list. Valid values: `ebs`, or `instance-store`.
 	RootDeviceTypes pulumi.StringArrayInput `pulumi:"rootDeviceTypes"`
 	// The filtered instance types will support at least one of the virtualization types from this list. Valid values: `hvm`, `paravirtual`.
-	//
-	// <a id="update-policy"></a>
 	VirtualizationTypes pulumi.StringArrayInput `pulumi:"virtualizationTypes"`
 }
 
@@ -22577,8 +22676,6 @@ func (o OceanLaunchSpecInstanceTypesFiltersOutput) RootDeviceTypes() pulumi.Stri
 }
 
 // The filtered instance types will support at least one of the virtualization types from this list. Valid values: `hvm`, `paravirtual`.
-//
-// <a id="update-policy"></a>
 func (o OceanLaunchSpecInstanceTypesFiltersOutput) VirtualizationTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v OceanLaunchSpecInstanceTypesFilters) []string { return v.VirtualizationTypes }).(pulumi.StringArrayOutput)
 }
@@ -22778,8 +22875,6 @@ func (o OceanLaunchSpecInstanceTypesFiltersPtrOutput) RootDeviceTypes() pulumi.S
 }
 
 // The filtered instance types will support at least one of the virtualization types from this list. Valid values: `hvm`, `paravirtual`.
-//
-// <a id="update-policy"></a>
 func (o OceanLaunchSpecInstanceTypesFiltersPtrOutput) VirtualizationTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *OceanLaunchSpecInstanceTypesFilters) []string {
 		if v == nil {
@@ -26486,6 +26581,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecElasticIpPoolArrayInput)(nil)).Elem(), OceanLaunchSpecElasticIpPoolArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecElasticIpPoolTagSelectorInput)(nil)).Elem(), OceanLaunchSpecElasticIpPoolTagSelectorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecElasticIpPoolTagSelectorPtrInput)(nil)).Elem(), OceanLaunchSpecElasticIpPoolTagSelectorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecEphemeralStorageInput)(nil)).Elem(), OceanLaunchSpecEphemeralStorageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecEphemeralStorageArrayInput)(nil)).Elem(), OceanLaunchSpecEphemeralStorageArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecImageInput)(nil)).Elem(), OceanLaunchSpecImageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecImageArrayInput)(nil)).Elem(), OceanLaunchSpecImageArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OceanLaunchSpecInstanceMetadataOptionsInput)(nil)).Elem(), OceanLaunchSpecInstanceMetadataOptionsArgs{})
@@ -26810,6 +26907,8 @@ func init() {
 	pulumi.RegisterOutputType(OceanLaunchSpecElasticIpPoolArrayOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecElasticIpPoolTagSelectorOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecElasticIpPoolTagSelectorPtrOutput{})
+	pulumi.RegisterOutputType(OceanLaunchSpecEphemeralStorageOutput{})
+	pulumi.RegisterOutputType(OceanLaunchSpecEphemeralStorageArrayOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecImageOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecImageArrayOutput{})
 	pulumi.RegisterOutputType(OceanLaunchSpecInstanceMetadataOptionsOutput{})

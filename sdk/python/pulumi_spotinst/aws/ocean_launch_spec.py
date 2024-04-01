@@ -25,6 +25,7 @@ class OceanLaunchSpecArgs:
                  create_options: Optional[pulumi.Input['OceanLaunchSpecCreateOptionsArgs']] = None,
                  delete_options: Optional[pulumi.Input['OceanLaunchSpecDeleteOptionsArgs']] = None,
                  elastic_ip_pools: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecElasticIpPoolArgs']]]] = None,
+                 ephemeral_storages: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecEphemeralStorageArgs']]]] = None,
                  iam_instance_profile: Optional[pulumi.Input[str]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
                  images: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecImageArgs']]]] = None,
@@ -93,6 +94,8 @@ class OceanLaunchSpecArgs:
             pulumi.set(__self__, "delete_options", delete_options)
         if elastic_ip_pools is not None:
             pulumi.set(__self__, "elastic_ip_pools", elastic_ip_pools)
+        if ephemeral_storages is not None:
+            pulumi.set(__self__, "ephemeral_storages", ephemeral_storages)
         if iam_instance_profile is not None:
             pulumi.set(__self__, "iam_instance_profile", iam_instance_profile)
         if image_id is not None:
@@ -237,6 +240,15 @@ class OceanLaunchSpecArgs:
     @elastic_ip_pools.setter
     def elastic_ip_pools(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecElasticIpPoolArgs']]]]):
         pulumi.set(self, "elastic_ip_pools", value)
+
+    @property
+    @pulumi.getter(name="ephemeralStorages")
+    def ephemeral_storages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecEphemeralStorageArgs']]]]:
+        return pulumi.get(self, "ephemeral_storages")
+
+    @ephemeral_storages.setter
+    def ephemeral_storages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecEphemeralStorageArgs']]]]):
+        pulumi.set(self, "ephemeral_storages", value)
 
     @property
     @pulumi.getter(name="iamInstanceProfile")
@@ -495,6 +507,7 @@ class _OceanLaunchSpecState:
                  create_options: Optional[pulumi.Input['OceanLaunchSpecCreateOptionsArgs']] = None,
                  delete_options: Optional[pulumi.Input['OceanLaunchSpecDeleteOptionsArgs']] = None,
                  elastic_ip_pools: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecElasticIpPoolArgs']]]] = None,
+                 ephemeral_storages: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecEphemeralStorageArgs']]]] = None,
                  iam_instance_profile: Optional[pulumi.Input[str]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
                  images: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecImageArgs']]]] = None,
@@ -563,6 +576,8 @@ class _OceanLaunchSpecState:
             pulumi.set(__self__, "delete_options", delete_options)
         if elastic_ip_pools is not None:
             pulumi.set(__self__, "elastic_ip_pools", elastic_ip_pools)
+        if ephemeral_storages is not None:
+            pulumi.set(__self__, "ephemeral_storages", ephemeral_storages)
         if iam_instance_profile is not None:
             pulumi.set(__self__, "iam_instance_profile", iam_instance_profile)
         if image_id is not None:
@@ -697,6 +712,15 @@ class _OceanLaunchSpecState:
     @elastic_ip_pools.setter
     def elastic_ip_pools(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecElasticIpPoolArgs']]]]):
         pulumi.set(self, "elastic_ip_pools", value)
+
+    @property
+    @pulumi.getter(name="ephemeralStorages")
+    def ephemeral_storages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecEphemeralStorageArgs']]]]:
+        return pulumi.get(self, "ephemeral_storages")
+
+    @ephemeral_storages.setter
+    def ephemeral_storages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecEphemeralStorageArgs']]]]):
+        pulumi.set(self, "ephemeral_storages", value)
 
     @property
     @pulumi.getter(name="iamInstanceProfile")
@@ -969,6 +993,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
                  create_options: Optional[pulumi.Input[pulumi.InputType['OceanLaunchSpecCreateOptionsArgs']]] = None,
                  delete_options: Optional[pulumi.Input[pulumi.InputType['OceanLaunchSpecDeleteOptionsArgs']]] = None,
                  elastic_ip_pools: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecElasticIpPoolArgs']]]]] = None,
+                 ephemeral_storages: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecEphemeralStorageArgs']]]]] = None,
                  iam_instance_profile: Optional[pulumi.Input[str]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
                  images: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecImageArgs']]]]] = None,
@@ -1043,6 +1068,9 @@ class OceanLaunchSpec(pulumi.CustomResource):
                     tag_key="key",
                     tag_value="value",
                 ),
+            )],
+            ephemeral_storages=[spotinst.aws.OceanLaunchSpecEphemeralStorageArgs(
+                ephemeral_storage_device_name="/dev/xvda",
             )],
             iam_instance_profile="iam-profile",
             image_id="ami-123456",
@@ -1223,6 +1251,9 @@ class OceanLaunchSpec(pulumi.CustomResource):
                     tag_value="value",
                 ),
             )],
+            ephemeral_storages=[spotinst.aws.OceanLaunchSpecEphemeralStorageArgs(
+                ephemeral_storage_device_name="/dev/xvda",
+            )],
             iam_instance_profile="iam-profile",
             image_id="ami-123456",
             images=[
@@ -1337,6 +1368,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
                  create_options: Optional[pulumi.Input[pulumi.InputType['OceanLaunchSpecCreateOptionsArgs']]] = None,
                  delete_options: Optional[pulumi.Input[pulumi.InputType['OceanLaunchSpecDeleteOptionsArgs']]] = None,
                  elastic_ip_pools: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecElasticIpPoolArgs']]]]] = None,
+                 ephemeral_storages: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecEphemeralStorageArgs']]]]] = None,
                  iam_instance_profile: Optional[pulumi.Input[str]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
                  images: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecImageArgs']]]]] = None,
@@ -1376,6 +1408,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
             __props__.__dict__["create_options"] = create_options
             __props__.__dict__["delete_options"] = delete_options
             __props__.__dict__["elastic_ip_pools"] = elastic_ip_pools
+            __props__.__dict__["ephemeral_storages"] = ephemeral_storages
             __props__.__dict__["iam_instance_profile"] = iam_instance_profile
             __props__.__dict__["image_id"] = image_id
             __props__.__dict__["images"] = images
@@ -1418,6 +1451,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
             create_options: Optional[pulumi.Input[pulumi.InputType['OceanLaunchSpecCreateOptionsArgs']]] = None,
             delete_options: Optional[pulumi.Input[pulumi.InputType['OceanLaunchSpecDeleteOptionsArgs']]] = None,
             elastic_ip_pools: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecElasticIpPoolArgs']]]]] = None,
+            ephemeral_storages: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecEphemeralStorageArgs']]]]] = None,
             iam_instance_profile: Optional[pulumi.Input[str]] = None,
             image_id: Optional[pulumi.Input[str]] = None,
             images: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecImageArgs']]]]] = None,
@@ -1487,6 +1521,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
         __props__.__dict__["create_options"] = create_options
         __props__.__dict__["delete_options"] = delete_options
         __props__.__dict__["elastic_ip_pools"] = elastic_ip_pools
+        __props__.__dict__["ephemeral_storages"] = ephemeral_storages
         __props__.__dict__["iam_instance_profile"] = iam_instance_profile
         __props__.__dict__["image_id"] = image_id
         __props__.__dict__["images"] = images
@@ -1568,6 +1603,11 @@ class OceanLaunchSpec(pulumi.CustomResource):
         Assign an Elastic IP to the instances spun by the Virtual Node Group. Can be null.
         """
         return pulumi.get(self, "elastic_ip_pools")
+
+    @property
+    @pulumi.getter(name="ephemeralStorages")
+    def ephemeral_storages(self) -> pulumi.Output[Optional[Sequence['outputs.OceanLaunchSpecEphemeralStorage']]]:
+        return pulumi.get(self, "ephemeral_storages")
 
     @property
     @pulumi.getter(name="iamInstanceProfile")

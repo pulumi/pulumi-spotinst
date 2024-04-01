@@ -58,6 +58,9 @@ import * as utilities from "../utilities";
  *             tagValue: "value",
  *         },
  *     }],
+ *     ephemeralStorages: [{
+ *         ephemeralStorageDeviceName: "/dev/xvda",
+ *     }],
  *     iamInstanceProfile: "iam-profile",
  *     imageId: "ami-123456",
  *     images: [
@@ -204,6 +207,7 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
      * Assign an Elastic IP to the instances spun by the Virtual Node Group. Can be null.
      */
     public readonly elasticIpPools!: pulumi.Output<outputs.aws.OceanLaunchSpecElasticIpPool[] | undefined>;
+    public readonly ephemeralStorages!: pulumi.Output<outputs.aws.OceanLaunchSpecEphemeralStorage[] | undefined>;
     /**
      * The ARN or name of an IAM instance profile to associate with launched instances.
      */
@@ -307,6 +311,7 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
             resourceInputs["createOptions"] = state ? state.createOptions : undefined;
             resourceInputs["deleteOptions"] = state ? state.deleteOptions : undefined;
             resourceInputs["elasticIpPools"] = state ? state.elasticIpPools : undefined;
+            resourceInputs["ephemeralStorages"] = state ? state.ephemeralStorages : undefined;
             resourceInputs["iamInstanceProfile"] = state ? state.iamInstanceProfile : undefined;
             resourceInputs["imageId"] = state ? state.imageId : undefined;
             resourceInputs["images"] = state ? state.images : undefined;
@@ -342,6 +347,7 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
             resourceInputs["createOptions"] = args ? args.createOptions : undefined;
             resourceInputs["deleteOptions"] = args ? args.deleteOptions : undefined;
             resourceInputs["elasticIpPools"] = args ? args.elasticIpPools : undefined;
+            resourceInputs["ephemeralStorages"] = args ? args.ephemeralStorages : undefined;
             resourceInputs["iamInstanceProfile"] = args ? args.iamInstanceProfile : undefined;
             resourceInputs["imageId"] = args ? args.imageId : undefined;
             resourceInputs["images"] = args ? args.images : undefined;
@@ -400,6 +406,7 @@ export interface OceanLaunchSpecState {
      * Assign an Elastic IP to the instances spun by the Virtual Node Group. Can be null.
      */
     elasticIpPools?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecElasticIpPool>[]>;
+    ephemeralStorages?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecEphemeralStorage>[]>;
     /**
      * The ARN or name of an IAM instance profile to associate with launched instances.
      */
@@ -513,6 +520,7 @@ export interface OceanLaunchSpecArgs {
      * Assign an Elastic IP to the instances spun by the Virtual Node Group. Can be null.
      */
     elasticIpPools?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecElasticIpPool>[]>;
+    ephemeralStorages?: pulumi.Input<pulumi.Input<inputs.aws.OceanLaunchSpecEphemeralStorage>[]>;
     /**
      * The ARN or name of an IAM instance profile to associate with launched instances.
      */
