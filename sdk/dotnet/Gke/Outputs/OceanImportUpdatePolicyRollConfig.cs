@@ -15,7 +15,7 @@ namespace Pulumi.SpotInst.Gke.Outputs
     {
         public readonly int? BatchMinHealthyPercentage;
         /// <summary>
-        /// Value in %!t(MISSING)o set size of batch in roll. Valid values are 0-100
+        /// Value in % to set size of batch in roll. Valid values are 0-100
         /// Example: 20.
         /// 
         /// &lt;!--Start PulumiCodeChooser --&gt;

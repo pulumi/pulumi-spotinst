@@ -1299,7 +1299,7 @@ class OceanAutoscalerAutoscaleDown(dict):
     def __init__(__self__, *,
                  max_scale_down_percentage: Optional[float] = None):
         """
-        :param float max_scale_down_percentage: Would represent the maximum %!t(MISSING)o scale-down.
+        :param float max_scale_down_percentage: Would represent the maximum % to scale-down.
         """
         if max_scale_down_percentage is not None:
             pulumi.set(__self__, "max_scale_down_percentage", max_scale_down_percentage)
@@ -1308,7 +1308,7 @@ class OceanAutoscalerAutoscaleDown(dict):
     @pulumi.getter(name="maxScaleDownPercentage")
     def max_scale_down_percentage(self) -> Optional[float]:
         """
-        Would represent the maximum %!t(MISSING)o scale-down.
+        Would represent the maximum % to scale-down.
         """
         return pulumi.get(self, "max_scale_down_percentage")
 
@@ -3219,7 +3219,7 @@ class OceanVirtualNodeGroupAutoscale(dict):
                  auto_headroom_percentage: Optional[int] = None,
                  autoscale_headrooms: Optional[Sequence['outputs.OceanVirtualNodeGroupAutoscaleAutoscaleHeadroom']] = None):
         """
-        :param int auto_headroom_percentage: Number between 0-200 to control the headroom %!o(MISSING)f the specific Virtual Node Group. Effective when `cluster.autoScaler.headroom.automatic.is_enabled` = true is set on the Ocean cluster.
+        :param int auto_headroom_percentage: Number between 0-200 to control the headroom % of the specific Virtual Node Group. Effective when `cluster.autoScaler.headroom.automatic.is_enabled` = true is set on the Ocean cluster.
         """
         if auto_headroom_percentage is not None:
             pulumi.set(__self__, "auto_headroom_percentage", auto_headroom_percentage)
@@ -3230,7 +3230,7 @@ class OceanVirtualNodeGroupAutoscale(dict):
     @pulumi.getter(name="autoHeadroomPercentage")
     def auto_headroom_percentage(self) -> Optional[int]:
         """
-        Number between 0-200 to control the headroom %!o(MISSING)f the specific Virtual Node Group. Effective when `cluster.autoScaler.headroom.automatic.is_enabled` = true is set on the Ocean cluster.
+        Number between 0-200 to control the headroom % of the specific Virtual Node Group. Effective when `cluster.autoScaler.headroom.automatic.is_enabled` = true is set on the Ocean cluster.
         """
         return pulumi.get(self, "auto_headroom_percentage")
 

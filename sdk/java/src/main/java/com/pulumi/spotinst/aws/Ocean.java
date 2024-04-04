@@ -45,7 +45,7 @@ import javax.annotation.Nullable;
  *         * `memory_per_unit` - (Optional) Optionally configure the amount of memory (MB) to allocate the headroom.
  *         * `num_of_units` - (Optional) The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
  *     * `autoscale_down` - (Optional) Auto Scaling scale down operations.
- *         * `max_scale_down_percentage` - (Optional) Would represent the maximum %!t(MISSING)o scale-down. Number between 1-100.
+ *         * `max_scale_down_percentage` - (Optional) Would represent the maximum % to scale-down. Number between 1-100.
  *         * `is_aggressive_scale_down_enabled` - (Optional, Default: `false`) When set to &#39;true&#39;, the Aggressive Scale Down feature is enabled.
  *     * `resource_limits` - (Optional) Optionally set upper and lower bounds on the resource usage of the cluster.
  *         * `max_vcpu` - (Optional) The maximum cpu in vCPU units that can be allocated to the cluster.
@@ -87,7 +87,7 @@ import javax.annotation.Nullable;
  *     * `roll_config` - (Required) While used, you can control whether the group should perform a deployment after an update to the configuration.
  *         * `batch_size_percentage` - (Required) Sets the percentage of the instances to deploy in each batch.
  *         * `launch_spec_ids` - (Optional) List of virtual node group identifiers to be rolled.
- *         * `batch_min_healthy_percentage` - (Optional) Default: 50. Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%! (MISSING)Value of param should represent the number in percentage (%!)(MISSING) of the batch.
+ *         * `batch_min_healthy_percentage` - (Optional) Default: 50. Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
  *         * `respect_pdb` - (Optional, Default: false) During the roll, if the parameter is set to True we honor PDB during the instance replacement.
  * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
@@ -129,14 +129,14 @@ import javax.annotation.Nullable;
  *             * `ami_auto_update` - (Optional) Set amiAutoUpdate object
  *                 * `apply_roll` - (Optional, Default:false) When the AMI is updated according to the configuration set, a cluster roll can be triggered
  *                 * `ami_auto_update_cluster_roll` - (Optional) Set clusterRoll object
- *                     * `batch_min_healthy_percentage` - (Optional, Default:50) Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%! (MISSING)Value of param should represent the number in percentage (%!)(MISSING) of the batch.
+ *                     * `batch_min_healthy_percentage` - (Optional, Default:50) Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
  *                     * `batch_size_percentage` - (Optional) Value as a percent to set the size of a batch in a roll. Valid values are 0-100.
  *                     * `comment` - (Optional) Add a `comment` description for the roll. The `comment` is limited to 256 chars
  *                     * `respect_pdb` - (Optional, Default:false) During the roll, if the parameter is set to true we honor PDB during the instance replacement.
  *                 * `minor_version` - (Optional, Default:false) When set to &#39;true&#39;, the auto-update process will update the VNGs’ AMI with the AMI to match the Kubernetes control plane version. either &#34;patch&#34; or &#34;minor_version&#34; must be true.
  *                 * `patch` - (Optional, Default:false) When set to &#39;true&#39;, the auto-update process will update the VNGs’ images with the latest security patches. either &#34;patch&#34; or &#34;minorVersion&#34; must be true.
  *             * `parameters_cluster_roll` - (Optional) Set clusterRoll object
- *                 * `batch_min_healthy_percentage` - (Optional, Default:50) Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%! (MISSING)Value of param should represent the number in percentage (%!)(MISSING) of the batch.
+ *                 * `batch_min_healthy_percentage` - (Optional, Default:50) Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
  *                 * `batch_size_percentage` - (Optional) Value as a percent to set the size of a batch in a roll. Valid values are 0-100.
  *                 * `comment` - (Optional) Add a `comment` description for the roll. The `comment` is limited to 256 chars
  *                 * `respect_pdb` - (Optional, Default:false) During the roll, if the parameter is set to true we honor PDB during the instance replacement.

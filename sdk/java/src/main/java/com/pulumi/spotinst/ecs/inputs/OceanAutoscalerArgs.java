@@ -20,14 +20,14 @@ public final class OceanAutoscalerArgs extends com.pulumi.resources.ResourceArgs
     public static final OceanAutoscalerArgs Empty = new OceanAutoscalerArgs();
 
     /**
-     * The auto-headroom percentage. Set a number between 0-200 to control the headroom %!o(MISSING)f the cluster. Relevant when `isAutoConfig`= true.
+     * The auto-headroom percentage. Set a number between 0-200 to control the headroom % of the cluster. Relevant when `isAutoConfig`= true.
      * 
      */
     @Import(name="autoHeadroomPercentage")
     private @Nullable Output<Integer> autoHeadroomPercentage;
 
     /**
-     * @return The auto-headroom percentage. Set a number between 0-200 to control the headroom %!o(MISSING)f the cluster. Relevant when `isAutoConfig`= true.
+     * @return The auto-headroom percentage. Set a number between 0-200 to control the headroom % of the cluster. Relevant when `isAutoConfig`= true.
      * 
      */
     public Optional<Output<Integer>> autoHeadroomPercentage() {
@@ -237,7 +237,7 @@ public final class OceanAutoscalerArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param autoHeadroomPercentage The auto-headroom percentage. Set a number between 0-200 to control the headroom %!o(MISSING)f the cluster. Relevant when `isAutoConfig`= true.
+         * @param autoHeadroomPercentage The auto-headroom percentage. Set a number between 0-200 to control the headroom % of the cluster. Relevant when `isAutoConfig`= true.
          * 
          * @return builder
          * 
@@ -248,7 +248,7 @@ public final class OceanAutoscalerArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param autoHeadroomPercentage The auto-headroom percentage. Set a number between 0-200 to control the headroom %!o(MISSING)f the cluster. Relevant when `isAutoConfig`= true.
+         * @param autoHeadroomPercentage The auto-headroom percentage. Set a number between 0-200 to control the headroom % of the cluster. Relevant when `isAutoConfig`= true.
          * 
          * @return builder
          * 

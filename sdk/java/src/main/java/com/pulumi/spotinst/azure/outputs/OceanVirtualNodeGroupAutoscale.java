@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class OceanVirtualNodeGroupAutoscale {
     /**
-     * @return Number between 0-200 to control the headroom %!o(MISSING)f the specific Virtual Node Group. Effective when `cluster.autoScaler.headroom.automatic.is_enabled` = true is set on the Ocean cluster.
+     * @return Number between 0-200 to control the headroom % of the specific Virtual Node Group. Effective when `cluster.autoScaler.headroom.automatic.is_enabled` = true is set on the Ocean cluster.
      * 
      */
     private @Nullable Integer autoHeadroomPercentage;
@@ -22,7 +22,7 @@ public final class OceanVirtualNodeGroupAutoscale {
 
     private OceanVirtualNodeGroupAutoscale() {}
     /**
-     * @return Number between 0-200 to control the headroom %!o(MISSING)f the specific Virtual Node Group. Effective when `cluster.autoScaler.headroom.automatic.is_enabled` = true is set on the Ocean cluster.
+     * @return Number between 0-200 to control the headroom % of the specific Virtual Node Group. Effective when `cluster.autoScaler.headroom.automatic.is_enabled` = true is set on the Ocean cluster.
      * 
      */
     public Optional<Integer> autoHeadroomPercentage() {

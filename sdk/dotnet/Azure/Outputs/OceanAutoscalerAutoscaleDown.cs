@@ -14,7 +14,7 @@ namespace Pulumi.SpotInst.Azure.Outputs
     public sealed class OceanAutoscalerAutoscaleDown
     {
         /// <summary>
-        /// Would represent the maximum %!t(MISSING)o scale-down.
+        /// Would represent the maximum % to scale-down.
         /// </summary>
         public readonly double? MaxScaleDownPercentage;
 

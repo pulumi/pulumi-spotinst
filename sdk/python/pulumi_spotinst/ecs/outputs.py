@@ -84,7 +84,7 @@ class OceanAutoscaler(dict):
                  resource_limits: Optional['outputs.OceanAutoscalerResourceLimits'] = None,
                  should_scale_down_non_service_tasks: Optional[bool] = None):
         """
-        :param int auto_headroom_percentage: The auto-headroom percentage. Set a number between 0-200 to control the headroom %!o(MISSING)f the cluster. Relevant when `isAutoConfig`= true.
+        :param int auto_headroom_percentage: The auto-headroom percentage. Set a number between 0-200 to control the headroom % of the cluster. Relevant when `isAutoConfig`= true.
         :param int cooldown: Cooldown period between scaling actions.
         :param 'OceanAutoscalerDownArgs' down: Auto Scaling scale down operations.
         :param bool enable_automatic_and_manual_headroom: When set to true, both automatic and per custom launch specification manual headroom to be saved concurrently and independently in the cluster. prerequisite: isAutoConfig must be true
@@ -123,7 +123,7 @@ class OceanAutoscaler(dict):
     @pulumi.getter(name="autoHeadroomPercentage")
     def auto_headroom_percentage(self) -> Optional[int]:
         """
-        The auto-headroom percentage. Set a number between 0-200 to control the headroom %!o(MISSING)f the cluster. Relevant when `isAutoConfig`= true.
+        The auto-headroom percentage. Set a number between 0-200 to control the headroom % of the cluster. Relevant when `isAutoConfig`= true.
         """
         return pulumi.get(self, "auto_headroom_percentage")
 
@@ -220,7 +220,7 @@ class OceanAutoscalerDown(dict):
     def __init__(__self__, *,
                  max_scale_down_percentage: Optional[float] = None):
         """
-        :param float max_scale_down_percentage: Would represent the maximum %!t(MISSING)o scale-down. Number between 1-100.
+        :param float max_scale_down_percentage: Would represent the maximum % to scale-down. Number between 1-100.
         """
         if max_scale_down_percentage is not None:
             pulumi.set(__self__, "max_scale_down_percentage", max_scale_down_percentage)
@@ -229,7 +229,7 @@ class OceanAutoscalerDown(dict):
     @pulumi.getter(name="maxScaleDownPercentage")
     def max_scale_down_percentage(self) -> Optional[float]:
         """
-        Would represent the maximum %!t(MISSING)o scale-down. Number between 1-100.
+        Would represent the maximum % to scale-down. Number between 1-100.
         """
         return pulumi.get(self, "max_scale_down_percentage")
 
@@ -1999,7 +1999,7 @@ class OceanUpdatePolicyRollConfig(dict):
                  batch_min_healthy_percentage: Optional[int] = None):
         """
         :param int batch_size_percentage: Sets the percentage of the instances to deploy in each batch.
-        :param int batch_min_healthy_percentage: Default: 50. Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%! (MISSING)Value of param should represent the number in percentage (%!)(MISSING) of the batch.
+        :param int batch_min_healthy_percentage: Default: 50. Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
                
                <!--Start PulumiCodeChooser -->
                ```python
@@ -2023,7 +2023,7 @@ class OceanUpdatePolicyRollConfig(dict):
     @pulumi.getter(name="batchMinHealthyPercentage")
     def batch_min_healthy_percentage(self) -> Optional[int]:
         """
-        Default: 50. Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%! (MISSING)Value of param should represent the number in percentage (%!)(MISSING) of the batch.
+        Default: 50. Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
 
         <!--Start PulumiCodeChooser -->
         ```python

@@ -13450,9 +13450,9 @@ type ElastigroupUpdatePolicyRollConfig struct {
 	HealthCheckType *string `pulumi:"healthCheckType"`
 	// Strategy parameters
 	Strategy *ElastigroupUpdatePolicyRollConfigStrategy `pulumi:"strategy"`
-	// For use with `shouldRoll`. Sets minimum %!o(MISSING)f roll required to complete before continuing the plan. Required if `waitForRollTimeout` is set.
+	// For use with `shouldRoll`. Sets minimum % of roll required to complete before continuing the plan. Required if `waitForRollTimeout` is set.
 	WaitForRollPercentage *float64 `pulumi:"waitForRollPercentage"`
-	// For use with `shouldRoll`. Sets how long to wait for the deployed %!o(MISSING)f a roll to exceed `waitForRollPercentage` before continuing the plan. Required if `waitForRollPercentage` is set.
+	// For use with `shouldRoll`. Sets how long to wait for the deployed % of a roll to exceed `waitForRollPercentage` before continuing the plan. Required if `waitForRollPercentage` is set.
 	WaitForRollTimeout *int `pulumi:"waitForRollTimeout"`
 }
 
@@ -13476,9 +13476,9 @@ type ElastigroupUpdatePolicyRollConfigArgs struct {
 	HealthCheckType pulumi.StringPtrInput `pulumi:"healthCheckType"`
 	// Strategy parameters
 	Strategy ElastigroupUpdatePolicyRollConfigStrategyPtrInput `pulumi:"strategy"`
-	// For use with `shouldRoll`. Sets minimum %!o(MISSING)f roll required to complete before continuing the plan. Required if `waitForRollTimeout` is set.
+	// For use with `shouldRoll`. Sets minimum % of roll required to complete before continuing the plan. Required if `waitForRollTimeout` is set.
 	WaitForRollPercentage pulumi.Float64PtrInput `pulumi:"waitForRollPercentage"`
-	// For use with `shouldRoll`. Sets how long to wait for the deployed %!o(MISSING)f a roll to exceed `waitForRollPercentage` before continuing the plan. Required if `waitForRollPercentage` is set.
+	// For use with `shouldRoll`. Sets how long to wait for the deployed % of a roll to exceed `waitForRollPercentage` before continuing the plan. Required if `waitForRollPercentage` is set.
 	WaitForRollTimeout pulumi.IntPtrInput `pulumi:"waitForRollTimeout"`
 }
 
@@ -13581,12 +13581,12 @@ func (o ElastigroupUpdatePolicyRollConfigOutput) Strategy() ElastigroupUpdatePol
 	}).(ElastigroupUpdatePolicyRollConfigStrategyPtrOutput)
 }
 
-// For use with `shouldRoll`. Sets minimum %!o(MISSING)f roll required to complete before continuing the plan. Required if `waitForRollTimeout` is set.
+// For use with `shouldRoll`. Sets minimum % of roll required to complete before continuing the plan. Required if `waitForRollTimeout` is set.
 func (o ElastigroupUpdatePolicyRollConfigOutput) WaitForRollPercentage() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v ElastigroupUpdatePolicyRollConfig) *float64 { return v.WaitForRollPercentage }).(pulumi.Float64PtrOutput)
 }
 
-// For use with `shouldRoll`. Sets how long to wait for the deployed %!o(MISSING)f a roll to exceed `waitForRollPercentage` before continuing the plan. Required if `waitForRollPercentage` is set.
+// For use with `shouldRoll`. Sets how long to wait for the deployed % of a roll to exceed `waitForRollPercentage` before continuing the plan. Required if `waitForRollPercentage` is set.
 func (o ElastigroupUpdatePolicyRollConfigOutput) WaitForRollTimeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ElastigroupUpdatePolicyRollConfig) *int { return v.WaitForRollTimeout }).(pulumi.IntPtrOutput)
 }
@@ -13655,7 +13655,7 @@ func (o ElastigroupUpdatePolicyRollConfigPtrOutput) Strategy() ElastigroupUpdate
 	}).(ElastigroupUpdatePolicyRollConfigStrategyPtrOutput)
 }
 
-// For use with `shouldRoll`. Sets minimum %!o(MISSING)f roll required to complete before continuing the plan. Required if `waitForRollTimeout` is set.
+// For use with `shouldRoll`. Sets minimum % of roll required to complete before continuing the plan. Required if `waitForRollTimeout` is set.
 func (o ElastigroupUpdatePolicyRollConfigPtrOutput) WaitForRollPercentage() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *ElastigroupUpdatePolicyRollConfig) *float64 {
 		if v == nil {
@@ -13665,7 +13665,7 @@ func (o ElastigroupUpdatePolicyRollConfigPtrOutput) WaitForRollPercentage() pulu
 	}).(pulumi.Float64PtrOutput)
 }
 
-// For use with `shouldRoll`. Sets how long to wait for the deployed %!o(MISSING)f a roll to exceed `waitForRollPercentage` before continuing the plan. Required if `waitForRollPercentage` is set.
+// For use with `shouldRoll`. Sets how long to wait for the deployed % of a roll to exceed `waitForRollPercentage` before continuing the plan. Required if `waitForRollPercentage` is set.
 func (o ElastigroupUpdatePolicyRollConfigPtrOutput) WaitForRollTimeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ElastigroupUpdatePolicyRollConfig) *int {
 		if v == nil {
@@ -20839,7 +20839,7 @@ func (o OceanLaunchSpecAutoscaleHeadroomArrayOutput) Index(i pulumi.IntInput) Oc
 }
 
 type OceanLaunchSpecAutoscaleHeadroomsAutomatic struct {
-	// Number between 0-200 to control the headroom %!o(MISSING)f the specific Virtual Node Group. Effective when cluster.autoScaler.headroom.automatic.`isEnabled` = true is set on the Ocean cluster.
+	// Number between 0-200 to control the headroom % of the specific Virtual Node Group. Effective when cluster.autoScaler.headroom.automatic.`isEnabled` = true is set on the Ocean cluster.
 	AutoHeadroomPercentage *int `pulumi:"autoHeadroomPercentage"`
 }
 
@@ -20855,7 +20855,7 @@ type OceanLaunchSpecAutoscaleHeadroomsAutomaticInput interface {
 }
 
 type OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs struct {
-	// Number between 0-200 to control the headroom %!o(MISSING)f the specific Virtual Node Group. Effective when cluster.autoScaler.headroom.automatic.`isEnabled` = true is set on the Ocean cluster.
+	// Number between 0-200 to control the headroom % of the specific Virtual Node Group. Effective when cluster.autoScaler.headroom.automatic.`isEnabled` = true is set on the Ocean cluster.
 	AutoHeadroomPercentage pulumi.IntPtrInput `pulumi:"autoHeadroomPercentage"`
 }
 
@@ -20910,7 +20910,7 @@ func (o OceanLaunchSpecAutoscaleHeadroomsAutomaticOutput) ToOceanLaunchSpecAutos
 	return o
 }
 
-// Number between 0-200 to control the headroom %!o(MISSING)f the specific Virtual Node Group. Effective when cluster.autoScaler.headroom.automatic.`isEnabled` = true is set on the Ocean cluster.
+// Number between 0-200 to control the headroom % of the specific Virtual Node Group. Effective when cluster.autoScaler.headroom.automatic.`isEnabled` = true is set on the Ocean cluster.
 func (o OceanLaunchSpecAutoscaleHeadroomsAutomaticOutput) AutoHeadroomPercentage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanLaunchSpecAutoscaleHeadroomsAutomatic) *int { return v.AutoHeadroomPercentage }).(pulumi.IntPtrOutput)
 }
