@@ -351,14 +351,6 @@ class OceanVirtualNodeGroup(pulumi.CustomResource):
         ```
         <!--End PulumiCodeChooser -->
 
-        <!--Start PulumiCodeChooser -->
-        ```python
-        import pulumi
-
-        pulumi.export("oceanId", spotinst_ocean_aks_["example"]["id"])
-        ```
-        <!--End PulumiCodeChooser -->
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanVirtualNodeGroupAutoscaleArgs']]]] autoscales: .
@@ -426,14 +418,6 @@ class OceanVirtualNodeGroup(pulumi.CustomResource):
                 "2",
                 "3",
             ])
-        ```
-        <!--End PulumiCodeChooser -->
-
-        <!--Start PulumiCodeChooser -->
-        ```python
-        import pulumi
-
-        pulumi.export("oceanId", spotinst_ocean_aks_["example"]["id"])
         ```
         <!--End PulumiCodeChooser -->
 

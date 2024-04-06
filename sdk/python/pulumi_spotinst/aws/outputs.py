@@ -6030,8 +6030,8 @@ class ElastigroupUpdatePolicyRollConfig(dict):
         :param int grace_period: The period of time (seconds) to wait before checking a batch's health after it's deployment.
         :param str health_check_type: The service that will perform health checks for the instance. Valid values: `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"MLB"`, `"EC2"`, `"MULTAI_TARGET_SET"`, `"MLB_RUNTIME"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
         :param 'ElastigroupUpdatePolicyRollConfigStrategyArgs' strategy: Strategy parameters
-        :param float wait_for_roll_percentage: For use with `should_roll`. Sets minimum %!o(MISSING)f roll required to complete before continuing the plan. Required if `wait_for_roll_timeout` is set.
-        :param int wait_for_roll_timeout: For use with `should_roll`. Sets how long to wait for the deployed %!o(MISSING)f a roll to exceed `wait_for_roll_percentage` before continuing the plan. Required if `wait_for_roll_percentage` is set.
+        :param float wait_for_roll_percentage: For use with `should_roll`. Sets minimum % of roll required to complete before continuing the plan. Required if `wait_for_roll_timeout` is set.
+        :param int wait_for_roll_timeout: For use with `should_roll`. Sets how long to wait for the deployed % of a roll to exceed `wait_for_roll_percentage` before continuing the plan. Required if `wait_for_roll_percentage` is set.
         """
         pulumi.set(__self__, "batch_size_percentage", batch_size_percentage)
         if grace_period is not None:
@@ -6081,7 +6081,7 @@ class ElastigroupUpdatePolicyRollConfig(dict):
     @pulumi.getter(name="waitForRollPercentage")
     def wait_for_roll_percentage(self) -> Optional[float]:
         """
-        For use with `should_roll`. Sets minimum %!o(MISSING)f roll required to complete before continuing the plan. Required if `wait_for_roll_timeout` is set.
+        For use with `should_roll`. Sets minimum % of roll required to complete before continuing the plan. Required if `wait_for_roll_timeout` is set.
         """
         return pulumi.get(self, "wait_for_roll_percentage")
 
@@ -6089,7 +6089,7 @@ class ElastigroupUpdatePolicyRollConfig(dict):
     @pulumi.getter(name="waitForRollTimeout")
     def wait_for_roll_timeout(self) -> Optional[int]:
         """
-        For use with `should_roll`. Sets how long to wait for the deployed %!o(MISSING)f a roll to exceed `wait_for_roll_percentage` before continuing the plan. Required if `wait_for_roll_percentage` is set.
+        For use with `should_roll`. Sets how long to wait for the deployed % of a roll to exceed `wait_for_roll_percentage` before continuing the plan. Required if `wait_for_roll_percentage` is set.
         """
         return pulumi.get(self, "wait_for_roll_timeout")
 
@@ -9703,7 +9703,7 @@ class OceanLaunchSpecAutoscaleHeadroomsAutomatic(dict):
     def __init__(__self__, *,
                  auto_headroom_percentage: Optional[int] = None):
         """
-        :param int auto_headroom_percentage: Number between 0-200 to control the headroom %!o(MISSING)f the specific Virtual Node Group. Effective when cluster.autoScaler.headroom.automatic.`is_enabled` = true is set on the Ocean cluster.
+        :param int auto_headroom_percentage: Number between 0-200 to control the headroom % of the specific Virtual Node Group. Effective when cluster.autoScaler.headroom.automatic.`is_enabled` = true is set on the Ocean cluster.
         """
         if auto_headroom_percentage is not None:
             pulumi.set(__self__, "auto_headroom_percentage", auto_headroom_percentage)
@@ -9712,7 +9712,7 @@ class OceanLaunchSpecAutoscaleHeadroomsAutomatic(dict):
     @pulumi.getter(name="autoHeadroomPercentage")
     def auto_headroom_percentage(self) -> Optional[int]:
         """
-        Number between 0-200 to control the headroom %!o(MISSING)f the specific Virtual Node Group. Effective when cluster.autoScaler.headroom.automatic.`is_enabled` = true is set on the Ocean cluster.
+        Number between 0-200 to control the headroom % of the specific Virtual Node Group. Effective when cluster.autoScaler.headroom.automatic.`is_enabled` = true is set on the Ocean cluster.
         """
         return pulumi.get(self, "auto_headroom_percentage")
 

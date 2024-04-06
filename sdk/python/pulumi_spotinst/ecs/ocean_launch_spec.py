@@ -717,13 +717,6 @@ class OceanLaunchSpec(pulumi.CustomResource):
             user_data="echo hello world")
         ```
         <!--End PulumiCodeChooser -->
-        <!--Start PulumiCodeChooser -->
-        ```python
-        import pulumi
-
-        pulumi.export("oceanLaunchspecId", spotinst_ocean_ecs_launch_spec["example"]["id"])
-        ```
-        <!--End PulumiCodeChooser -->
 
         ## Block Devices
 
@@ -865,13 +858,6 @@ class OceanLaunchSpec(pulumi.CustomResource):
                 value="production",
             )],
             user_data="echo hello world")
-        ```
-        <!--End PulumiCodeChooser -->
-        <!--Start PulumiCodeChooser -->
-        ```python
-        import pulumi
-
-        pulumi.export("oceanLaunchspecId", spotinst_ocean_ecs_launch_spec["example"]["id"])
         ```
         <!--End PulumiCodeChooser -->
 

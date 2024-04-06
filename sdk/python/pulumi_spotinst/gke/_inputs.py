@@ -1178,7 +1178,7 @@ class OceanImportAutoscalerArgs:
                  is_enabled: Optional[pulumi.Input[bool]] = None,
                  resource_limits: Optional[pulumi.Input['OceanImportAutoscalerResourceLimitsArgs']] = None):
         """
-        :param pulumi.Input[int] auto_headroom_percentage: Optionally set the auto headroom percentage, set a number between 0-200 to control the headroom %!f(MISSING)rom the cluster. Relevant when isAutoConfig=true.
+        :param pulumi.Input[int] auto_headroom_percentage: Optionally set the auto headroom percentage, set a number between 0-200 to control the headroom % from the cluster. Relevant when isAutoConfig=true.
         :param pulumi.Input[int] cooldown: Cooldown period between scaling actions.
         :param pulumi.Input['OceanImportAutoscalerDownArgs'] down: Auto Scaling scale down operations.
         :param pulumi.Input[bool] enable_automatic_and_manual_headroom: enables automatic and manual headroom to work in parallel. When set to false, automatic headroom overrides all other headroom definitions manually configured, whether they are at cluster or VNG level.
@@ -1208,7 +1208,7 @@ class OceanImportAutoscalerArgs:
     @pulumi.getter(name="autoHeadroomPercentage")
     def auto_headroom_percentage(self) -> Optional[pulumi.Input[int]]:
         """
-        Optionally set the auto headroom percentage, set a number between 0-200 to control the headroom %!f(MISSING)rom the cluster. Relevant when isAutoConfig=true.
+        Optionally set the auto headroom percentage, set a number between 0-200 to control the headroom % from the cluster. Relevant when isAutoConfig=true.
         """
         return pulumi.get(self, "auto_headroom_percentage")
 
@@ -1308,7 +1308,7 @@ class OceanImportAutoscalerDownArgs:
                  max_scale_down_percentage: Optional[pulumi.Input[float]] = None):
         """
         :param pulumi.Input[int] evaluation_periods: The number of evaluation periods that should accumulate before a scale down action takes place.
-        :param pulumi.Input[float] max_scale_down_percentage: Would represent the maximum %!t(MISSING)o scale-down. Number between 1-100.
+        :param pulumi.Input[float] max_scale_down_percentage: Would represent the maximum % to scale-down. Number between 1-100.
         """
         if evaluation_periods is not None:
             pulumi.set(__self__, "evaluation_periods", evaluation_periods)
@@ -1331,7 +1331,7 @@ class OceanImportAutoscalerDownArgs:
     @pulumi.getter(name="maxScaleDownPercentage")
     def max_scale_down_percentage(self) -> Optional[pulumi.Input[float]]:
         """
-        Would represent the maximum %!t(MISSING)o scale-down. Number between 1-100.
+        Would represent the maximum % to scale-down. Number between 1-100.
         """
         return pulumi.get(self, "max_scale_down_percentage")
 
@@ -1735,7 +1735,7 @@ class OceanImportScheduledTaskTaskTaskParametersClusterRollArgs:
                  comment: Optional[pulumi.Input[str]] = None,
                  respect_pdb: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[int] batch_size_percentage: Value in %!t(MISSING)o set size of batch in roll. Valid values are 0-100
+        :param pulumi.Input[int] batch_size_percentage: Value in % to set size of batch in roll. Valid values are 0-100
                Example: 20.
                
                <!--Start PulumiCodeChooser -->
@@ -1766,7 +1766,7 @@ class OceanImportScheduledTaskTaskTaskParametersClusterRollArgs:
     @pulumi.getter(name="batchSizePercentage")
     def batch_size_percentage(self) -> Optional[pulumi.Input[int]]:
         """
-        Value in %!t(MISSING)o set size of batch in roll. Valid values are 0-100
+        Value in % to set size of batch in roll. Valid values are 0-100
         Example: 20.
 
         <!--Start PulumiCodeChooser -->
@@ -1934,7 +1934,7 @@ class OceanImportUpdatePolicyRollConfigArgs:
                  launch_spec_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  respect_pdb: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[int] batch_size_percentage: Value in %!t(MISSING)o set size of batch in roll. Valid values are 0-100
+        :param pulumi.Input[int] batch_size_percentage: Value in % to set size of batch in roll. Valid values are 0-100
                Example: 20.
                
                <!--Start PulumiCodeChooser -->
@@ -1955,7 +1955,7 @@ class OceanImportUpdatePolicyRollConfigArgs:
     @pulumi.getter(name="batchSizePercentage")
     def batch_size_percentage(self) -> pulumi.Input[int]:
         """
-        Value in %!t(MISSING)o set size of batch in roll. Valid values are 0-100
+        Value in % to set size of batch in roll. Valid values are 0-100
         Example: 20.
 
         <!--Start PulumiCodeChooser -->
@@ -2073,7 +2073,7 @@ class OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs:
     def __init__(__self__, *,
                  auto_headroom_percentage: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[int] auto_headroom_percentage: Number between 0-200 to control the headroom %!o(MISSING)f the specific Virtual Node Group. Effective when cluster.autoScaler.headroom.automatic.`is_enabled` = true is set on the Ocean cluster.
+        :param pulumi.Input[int] auto_headroom_percentage: Number between 0-200 to control the headroom % of the specific Virtual Node Group. Effective when cluster.autoScaler.headroom.automatic.`is_enabled` = true is set on the Ocean cluster.
         """
         if auto_headroom_percentage is not None:
             pulumi.set(__self__, "auto_headroom_percentage", auto_headroom_percentage)
@@ -2082,7 +2082,7 @@ class OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs:
     @pulumi.getter(name="autoHeadroomPercentage")
     def auto_headroom_percentage(self) -> Optional[pulumi.Input[int]]:
         """
-        Number between 0-200 to control the headroom %!o(MISSING)f the specific Virtual Node Group. Effective when cluster.autoScaler.headroom.automatic.`is_enabled` = true is set on the Ocean cluster.
+        Number between 0-200 to control the headroom % of the specific Virtual Node Group. Effective when cluster.autoScaler.headroom.automatic.`is_enabled` = true is set on the Ocean cluster.
         """
         return pulumi.get(self, "auto_headroom_percentage")
 

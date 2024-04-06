@@ -838,13 +838,6 @@ class OceanLaunchSpec(pulumi.CustomResource):
             )])
         ```
         <!--End PulumiCodeChooser -->
-        <!--Start PulumiCodeChooser -->
-        ```python
-        import pulumi
-
-        pulumi.export("oceanLaunchspecId", spotinst_ocean_gke_launch_spec["example"]["id"])
-        ```
-        <!--End PulumiCodeChooser -->
 
         ## Update Policy
 
@@ -973,13 +966,6 @@ class OceanLaunchSpec(pulumi.CustomResource):
                 key="taintKey",
                 value="taintVal",
             )])
-        ```
-        <!--End PulumiCodeChooser -->
-        <!--Start PulumiCodeChooser -->
-        ```python
-        import pulumi
-
-        pulumi.export("oceanLaunchspecId", spotinst_ocean_gke_launch_spec["example"]["id"])
         ```
         <!--End PulumiCodeChooser -->
 

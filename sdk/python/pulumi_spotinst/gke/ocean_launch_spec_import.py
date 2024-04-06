@@ -112,13 +112,6 @@ class OceanLaunchSpecImport(pulumi.CustomResource):
             ocean_id="o-123456")
         ```
         <!--End PulumiCodeChooser -->
-        <!--Start PulumiCodeChooser -->
-        ```python
-        import pulumi
-
-        pulumi.export("oceanLaunchspecId", spotinst_ocean_gke_launch_spec_import["example"]["id"])
-        ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -144,13 +137,6 @@ class OceanLaunchSpecImport(pulumi.CustomResource):
         example = spotinst.gke.OceanLaunchSpecImport("example",
             node_pool_name="default-pool",
             ocean_id="o-123456")
-        ```
-        <!--End PulumiCodeChooser -->
-        <!--Start PulumiCodeChooser -->
-        ```python
-        import pulumi
-
-        pulumi.export("oceanLaunchspecId", spotinst_ocean_gke_launch_spec_import["example"]["id"])
         ```
         <!--End PulumiCodeChooser -->
 

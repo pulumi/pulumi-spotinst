@@ -117,32 +117,6 @@ import javax.annotation.Nullable;
  * ```
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         ctx.export(&#34;oceanId&#34;, spotinst_ocean_gke_import.example().id());
- *     }
- * }
- * ```
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
  * ## Strategy
  * 
  * * `strategy` - (Optional) Strategy object.
@@ -185,7 +159,7 @@ import javax.annotation.Nullable;
  *     * `roll_config` - (Required) Holds the roll configuration.
  *         * `batch_size_percentage` - (Required) Sets the percentage of the instances to deploy in each batch.
  *         * `launch_spec_ids` - (Optional) List of Virtual Node Group identifiers to be rolled.
- *         * `batch_min_healthy_percentage` - (Optional) Default: 50. Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%! (MISSING)Value of param should represent the number in percentage (%!)(MISSING) of the batch.
+ *         * `batch_min_healthy_percentage` - (Optional) Default: 50. Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
  *         * `respect_pdb` - (Optional) Default: False. During the roll, if the parameter is set to True we honor PDB during the instance replacement.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;

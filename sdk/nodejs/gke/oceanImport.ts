@@ -61,14 +61,6 @@ import * as utilities from "../utilities";
  * ```
  * <!--End PulumiCodeChooser -->
  *
- * <!--Start PulumiCodeChooser -->
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- *
- * export const oceanId = spotinst_ocean_gke_import.example.id;
- * ```
- * <!--End PulumiCodeChooser -->
- *
  * ## Strategy
  *
  * * `strategy` - (Optional) Strategy object.
@@ -92,7 +84,7 @@ import * as utilities from "../utilities";
  *     * `rollConfig` - (Required) Holds the roll configuration.
  *         * `batchSizePercentage` - (Required) Sets the percentage of the instances to deploy in each batch.
  *         * `launchSpecIds` - (Optional) List of Virtual Node Group identifiers to be rolled.
- *         * `batchMinHealthyPercentage` - (Optional) Default: 50. Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%! (MISSING)Value of param should represent the number in percentage (%!)(MISSING) of the batch.
+ *         * `batchMinHealthyPercentage` - (Optional) Default: 50. Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
  *         * `respectPdb` - (Optional) Default: False. During the roll, if the parameter is set to True we honor PDB during the instance replacement.
  *
  * <!--Start PulumiCodeChooser -->

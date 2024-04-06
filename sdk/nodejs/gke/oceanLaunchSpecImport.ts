@@ -20,13 +20,6 @@ import * as utilities from "../utilities";
  * });
  * ```
  * <!--End PulumiCodeChooser -->
- * <!--Start PulumiCodeChooser -->
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- *
- * export const oceanLaunchspecId = spotinst_ocean_gke_launch_spec_import.example.id;
- * ```
- * <!--End PulumiCodeChooser -->
  */
 export class OceanLaunchSpecImport extends pulumi.CustomResource {
     /**

@@ -104,13 +104,6 @@ import * as utilities from "../utilities";
  * });
  * ```
  * <!--End PulumiCodeChooser -->
- * <!--Start PulumiCodeChooser -->
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- *
- * export const oceanLaunchspecId = spotinst_ocean_ecs_launch_spec.example.id;
- * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Block Devices
  *

@@ -2853,7 +2853,7 @@ func (o OceanAutoscalerPtrOutput) ResourceLimits() OceanAutoscalerResourceLimits
 }
 
 type OceanAutoscalerAutoscaleDown struct {
-	// Would represent the maximum %!t(MISSING)o scale-down.
+	// Would represent the maximum % to scale-down.
 	MaxScaleDownPercentage *float64 `pulumi:"maxScaleDownPercentage"`
 }
 
@@ -2869,7 +2869,7 @@ type OceanAutoscalerAutoscaleDownInput interface {
 }
 
 type OceanAutoscalerAutoscaleDownArgs struct {
-	// Would represent the maximum %!t(MISSING)o scale-down.
+	// Would represent the maximum % to scale-down.
 	MaxScaleDownPercentage pulumi.Float64PtrInput `pulumi:"maxScaleDownPercentage"`
 }
 
@@ -2950,7 +2950,7 @@ func (o OceanAutoscalerAutoscaleDownOutput) ToOceanAutoscalerAutoscaleDownPtrOut
 	}).(OceanAutoscalerAutoscaleDownPtrOutput)
 }
 
-// Would represent the maximum %!t(MISSING)o scale-down.
+// Would represent the maximum % to scale-down.
 func (o OceanAutoscalerAutoscaleDownOutput) MaxScaleDownPercentage() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v OceanAutoscalerAutoscaleDown) *float64 { return v.MaxScaleDownPercentage }).(pulumi.Float64PtrOutput)
 }
@@ -2979,7 +2979,7 @@ func (o OceanAutoscalerAutoscaleDownPtrOutput) Elem() OceanAutoscalerAutoscaleDo
 	}).(OceanAutoscalerAutoscaleDownOutput)
 }
 
-// Would represent the maximum %!t(MISSING)o scale-down.
+// Would represent the maximum % to scale-down.
 func (o OceanAutoscalerAutoscaleDownPtrOutput) MaxScaleDownPercentage() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *OceanAutoscalerAutoscaleDown) *float64 {
 		if v == nil {
@@ -8162,7 +8162,7 @@ func (o OceanTagArrayOutput) Index(i pulumi.IntInput) OceanTagOutput {
 }
 
 type OceanVirtualNodeGroupAutoscale struct {
-	// Number between 0-200 to control the headroom %!o(MISSING)f the specific Virtual Node Group. Effective when `cluster.autoScaler.headroom.automatic.is_enabled` = true is set on the Ocean cluster.
+	// Number between 0-200 to control the headroom % of the specific Virtual Node Group. Effective when `cluster.autoScaler.headroom.automatic.is_enabled` = true is set on the Ocean cluster.
 	AutoHeadroomPercentage *int                                              `pulumi:"autoHeadroomPercentage"`
 	AutoscaleHeadrooms     []OceanVirtualNodeGroupAutoscaleAutoscaleHeadroom `pulumi:"autoscaleHeadrooms"`
 }
@@ -8179,7 +8179,7 @@ type OceanVirtualNodeGroupAutoscaleInput interface {
 }
 
 type OceanVirtualNodeGroupAutoscaleArgs struct {
-	// Number between 0-200 to control the headroom %!o(MISSING)f the specific Virtual Node Group. Effective when `cluster.autoScaler.headroom.automatic.is_enabled` = true is set on the Ocean cluster.
+	// Number between 0-200 to control the headroom % of the specific Virtual Node Group. Effective when `cluster.autoScaler.headroom.automatic.is_enabled` = true is set on the Ocean cluster.
 	AutoHeadroomPercentage pulumi.IntPtrInput                                        `pulumi:"autoHeadroomPercentage"`
 	AutoscaleHeadrooms     OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArrayInput `pulumi:"autoscaleHeadrooms"`
 }
@@ -8235,7 +8235,7 @@ func (o OceanVirtualNodeGroupAutoscaleOutput) ToOceanVirtualNodeGroupAutoscaleOu
 	return o
 }
 
-// Number between 0-200 to control the headroom %!o(MISSING)f the specific Virtual Node Group. Effective when `cluster.autoScaler.headroom.automatic.is_enabled` = true is set on the Ocean cluster.
+// Number between 0-200 to control the headroom % of the specific Virtual Node Group. Effective when `cluster.autoScaler.headroom.automatic.is_enabled` = true is set on the Ocean cluster.
 func (o OceanVirtualNodeGroupAutoscaleOutput) AutoHeadroomPercentage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanVirtualNodeGroupAutoscale) *int { return v.AutoHeadroomPercentage }).(pulumi.IntPtrOutput)
 }

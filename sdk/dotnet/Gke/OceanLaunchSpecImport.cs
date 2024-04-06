@@ -32,21 +32,6 @@ namespace Pulumi.SpotInst.Gke
     /// });
     /// ```
     /// &lt;!--End PulumiCodeChooser --&gt;
-    /// &lt;!--Start PulumiCodeChooser --&gt;
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     return new Dictionary&lt;string, object?&gt;
-    ///     {
-    ///         ["oceanLaunchspecId"] = spotinst_ocean_gke_launch_spec_import.Example.Id,
-    ///     };
-    /// });
-    /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [SpotInstResourceType("spotinst:gke/oceanLaunchSpecImport:OceanLaunchSpecImport")]
     public partial class OceanLaunchSpecImport : global::Pulumi.CustomResource

@@ -14,7 +14,7 @@ namespace Pulumi.SpotInst.Ecs.Outputs
     public sealed class OceanAutoscaler
     {
         /// <summary>
-        /// The auto-headroom percentage. Set a number between 0-200 to control the headroom %!o(MISSING)f the cluster. Relevant when `isAutoConfig`= true.
+        /// The auto-headroom percentage. Set a number between 0-200 to control the headroom % of the cluster. Relevant when `isAutoConfig`= true.
         /// </summary>
         public readonly int? AutoHeadroomPercentage;
         /// <summary>
