@@ -63,13 +63,6 @@ import * as utilities from "../utilities";
  * });
  * ```
  * <!--End PulumiCodeChooser -->
- * <!--Start PulumiCodeChooser -->
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- *
- * export const oceanSparkId = spotinst_ocean_spark.example.id;
- * ```
- * <!--End PulumiCodeChooser -->
  */
 export class Ocean extends pulumi.CustomResource {
     /**

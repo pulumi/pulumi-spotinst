@@ -99,22 +99,6 @@ namespace Pulumi.SpotInst.Azure
     /// });
     /// ```
     /// &lt;!--End PulumiCodeChooser --&gt;
-    /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     return new Dictionary&lt;string, object?&gt;
-    ///     {
-    ///         ["oceanId"] = spotinst_ocean_aks_.Example.Id,
-    ///     };
-    /// });
-    /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [SpotInstResourceType("spotinst:azure/oceanVirtualNodeGroup:OceanVirtualNodeGroup")]
     public partial class OceanVirtualNodeGroup : global::Pulumi.CustomResource

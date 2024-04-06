@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class OceanAutoscalerAutoscaleDown {
     /**
-     * @return Would represent the maximum %!t(MISSING)o scale-down.
+     * @return Would represent the maximum % to scale-down.
      * 
      */
     private @Nullable Double maxScaleDownPercentage;
 
     private OceanAutoscalerAutoscaleDown() {}
     /**
-     * @return Would represent the maximum %!t(MISSING)o scale-down.
+     * @return Would represent the maximum % to scale-down.
      * 
      */
     public Optional<Double> maxScaleDownPercentage() {

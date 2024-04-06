@@ -1946,11 +1946,11 @@ export namespace aws {
          */
         strategy?: outputs.aws.ElastigroupUpdatePolicyRollConfigStrategy;
         /**
-         * For use with `shouldRoll`. Sets minimum %!o(MISSING)f roll required to complete before continuing the plan. Required if `waitForRollTimeout` is set.
+         * For use with `shouldRoll`. Sets minimum % of roll required to complete before continuing the plan. Required if `waitForRollTimeout` is set.
          */
         waitForRollPercentage?: number;
         /**
-         * For use with `shouldRoll`. Sets how long to wait for the deployed %!o(MISSING)f a roll to exceed `waitForRollPercentage` before continuing the plan. Required if `waitForRollPercentage` is set.
+         * For use with `shouldRoll`. Sets how long to wait for the deployed % of a roll to exceed `waitForRollPercentage` before continuing the plan. Required if `waitForRollPercentage` is set.
          */
         waitForRollTimeout?: number;
     }
@@ -2833,7 +2833,7 @@ export namespace aws {
 
     export interface OceanLaunchSpecAutoscaleHeadroomsAutomatic {
         /**
-         * Number between 0-200 to control the headroom %!o(MISSING)f the specific Virtual Node Group. Effective when cluster.autoScaler.headroom.automatic.`isEnabled` = true is set on the Ocean cluster.
+         * Number between 0-200 to control the headroom % of the specific Virtual Node Group. Effective when cluster.autoScaler.headroom.automatic.`isEnabled` = true is set on the Ocean cluster.
          */
         autoHeadroomPercentage?: number;
     }
@@ -3473,7 +3473,7 @@ export namespace azure {
 
     export interface OceanAutoscalerAutoscaleDown {
         /**
-         * Would represent the maximum %!t(MISSING)o scale-down.
+         * Would represent the maximum % to scale-down.
          */
         maxScaleDownPercentage: number;
     }
@@ -3821,7 +3821,7 @@ export namespace azure {
 
     export interface OceanVirtualNodeGroupAutoscale {
         /**
-         * Number between 0-200 to control the headroom %!o(MISSING)f the specific Virtual Node Group. Effective when `cluster.autoScaler.headroom.automatic.is_enabled` = true is set on the Ocean cluster.
+         * Number between 0-200 to control the headroom % of the specific Virtual Node Group. Effective when `cluster.autoScaler.headroom.automatic.is_enabled` = true is set on the Ocean cluster.
          */
         autoHeadroomPercentage?: number;
         autoscaleHeadrooms?: outputs.azure.OceanVirtualNodeGroupAutoscaleAutoscaleHeadroom[];
@@ -3932,7 +3932,7 @@ export namespace azure {
 export namespace ecs {
     export interface OceanAutoscaler {
         /**
-         * The auto-headroom percentage. Set a number between 0-200 to control the headroom %!o(MISSING)f the cluster. Relevant when `isAutoConfig`= true.
+         * The auto-headroom percentage. Set a number between 0-200 to control the headroom % of the cluster. Relevant when `isAutoConfig`= true.
          */
         autoHeadroomPercentage?: number;
         /**
@@ -3977,7 +3977,7 @@ export namespace ecs {
 
     export interface OceanAutoscalerDown {
         /**
-         * Would represent the maximum %!t(MISSING)o scale-down. Number between 1-100.
+         * Would represent the maximum % to scale-down. Number between 1-100.
          */
         maxScaleDownPercentage?: number;
     }
@@ -4409,7 +4409,7 @@ export namespace ecs {
 
     export interface OceanUpdatePolicyRollConfig {
         /**
-         * Default: 50. Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%! (MISSING)Value of param should represent the number in percentage (%!)(MISSING) of the batch.
+         * Default: 50. Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
          *
          * <!--Start PulumiCodeChooser -->
          * ```typescript
@@ -5014,7 +5014,7 @@ export namespace gke {
 
     export interface OceanImportAutoscaler {
         /**
-         * Optionally set the auto headroom percentage, set a number between 0-200 to control the headroom %!f(MISSING)rom the cluster. Relevant when isAutoConfig=true.
+         * Optionally set the auto headroom percentage, set a number between 0-200 to control the headroom % from the cluster. Relevant when isAutoConfig=true.
          */
         autoHeadroomPercentage?: number;
         /**
@@ -5053,7 +5053,7 @@ export namespace gke {
          */
         evaluationPeriods?: number;
         /**
-         * Would represent the maximum %!t(MISSING)o scale-down. Number between 1-100.
+         * Would represent the maximum % to scale-down. Number between 1-100.
          */
         maxScaleDownPercentage?: number;
     }
@@ -5167,7 +5167,7 @@ export namespace gke {
     export interface OceanImportScheduledTaskTaskTaskParametersClusterRoll {
         batchMinHealthyPercentage?: number;
         /**
-         * Value in %!t(MISSING)o set size of batch in roll. Valid values are 0-100
+         * Value in % to set size of batch in roll. Valid values are 0-100
          * Example: 20.
          *
          * <!--Start PulumiCodeChooser -->
@@ -5210,7 +5210,7 @@ export namespace gke {
     export interface OceanImportUpdatePolicyRollConfig {
         batchMinHealthyPercentage?: number;
         /**
-         * Value in %!t(MISSING)o set size of batch in roll. Valid values are 0-100
+         * Value in % to set size of batch in roll. Valid values are 0-100
          * Example: 20.
          *
          * <!--Start PulumiCodeChooser -->
@@ -5245,7 +5245,7 @@ export namespace gke {
 
     export interface OceanLaunchSpecAutoscaleHeadroomsAutomatic {
         /**
-         * Number between 0-200 to control the headroom %!o(MISSING)f the specific Virtual Node Group. Effective when cluster.autoScaler.headroom.automatic.`isEnabled` = true is set on the Ocean cluster.
+         * Number between 0-200 to control the headroom % of the specific Virtual Node Group. Effective when cluster.autoScaler.headroom.automatic.`isEnabled` = true is set on the Ocean cluster.
          */
         autoHeadroomPercentage?: number;
     }

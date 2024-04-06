@@ -85,25 +85,6 @@ import (
 //
 // ```
 // <!--End PulumiCodeChooser -->
-// <!--Start PulumiCodeChooser -->
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ctx.Export("oceanSparkId", spotinst_ocean_spark.Example.Id)
-//			return nil
-//		})
-//	}
-//
-// ```
-// <!--End PulumiCodeChooser -->
 type Ocean struct {
 	pulumi.CustomResourceState
 

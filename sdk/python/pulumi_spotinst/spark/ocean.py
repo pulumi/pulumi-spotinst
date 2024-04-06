@@ -248,13 +248,6 @@ class Ocean(pulumi.CustomResource):
             ))
         ```
         <!--End PulumiCodeChooser -->
-        <!--Start PulumiCodeChooser -->
-        ```python
-        import pulumi
-
-        pulumi.export("oceanSparkId", spotinst_ocean_spark["example"]["id"])
-        ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -320,13 +313,6 @@ class Ocean(pulumi.CustomResource):
                     "extra-spark-app-ns-2",
                 ],
             ))
-        ```
-        <!--End PulumiCodeChooser -->
-        <!--Start PulumiCodeChooser -->
-        ```python
-        import pulumi
-
-        pulumi.export("oceanSparkId", spotinst_ocean_spark["example"]["id"])
         ```
         <!--End PulumiCodeChooser -->
 

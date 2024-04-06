@@ -42,25 +42,6 @@ import (
 //
 // ```
 // <!--End PulumiCodeChooser -->
-// <!--Start PulumiCodeChooser -->
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ctx.Export("oceanLaunchspecId", spotinst_ocean_gke_launch_spec_import.Example.Id)
-//			return nil
-//		})
-//	}
-//
-// ```
-// <!--End PulumiCodeChooser -->
 type OceanLaunchSpecImport struct {
 	pulumi.CustomResourceState
 

@@ -1142,13 +1142,6 @@ class OceanLaunchSpec(pulumi.CustomResource):
             user_data="echo Hello, world!")
         ```
         <!--End PulumiCodeChooser -->
-        <!--Start PulumiCodeChooser -->
-        ```python
-        import pulumi
-
-        pulumi.export("oceanLaunchspecId", spotinst_ocean_aws_launch_spec["example"]["id"])
-        ```
-        <!--End PulumiCodeChooser -->
 
         ## Update Policy
 
@@ -1322,13 +1315,6 @@ class OceanLaunchSpec(pulumi.CustomResource):
                 value="value1",
             )],
             user_data="echo Hello, world!")
-        ```
-        <!--End PulumiCodeChooser -->
-        <!--Start PulumiCodeChooser -->
-        ```python
-        import pulumi
-
-        pulumi.export("oceanLaunchspecId", spotinst_ocean_aws_launch_spec["example"]["id"])
         ```
         <!--End PulumiCodeChooser -->
 

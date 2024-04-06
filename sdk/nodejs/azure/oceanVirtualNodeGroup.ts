@@ -59,14 +59,6 @@ import * as utilities from "../utilities";
  * });
  * ```
  * <!--End PulumiCodeChooser -->
- *
- * <!--Start PulumiCodeChooser -->
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- *
- * export const oceanId = spotinst_ocean_aks_.example.id;
- * ```
- * <!--End PulumiCodeChooser -->
  */
 export class OceanVirtualNodeGroup extends pulumi.CustomResource {
     /**

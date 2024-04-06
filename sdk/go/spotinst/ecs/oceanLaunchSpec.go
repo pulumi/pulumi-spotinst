@@ -142,25 +142,6 @@ import (
 //
 // ```
 // <!--End PulumiCodeChooser -->
-// <!--Start PulumiCodeChooser -->
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ctx.Export("oceanLaunchspecId", spotinst_ocean_ecs_launch_spec.Example.Id)
-//			return nil
-//		})
-//	}
-//
-// ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Block Devices
 //
