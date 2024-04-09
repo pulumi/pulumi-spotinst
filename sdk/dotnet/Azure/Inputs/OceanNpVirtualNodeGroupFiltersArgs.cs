@@ -34,6 +34,14 @@ namespace Pulumi.SpotInst.Azure.Inputs
             set => _excludeSeries = value;
         }
 
+        [Input("gpuTypes")]
+        private InputList<string>? _gpuTypes;
+        public InputList<string> GpuTypes
+        {
+            get => _gpuTypes ?? (_gpuTypes = new InputList<string>());
+            set => _gpuTypes = value;
+        }
+
         [Input("maxGpu")]
         public Input<double>? MaxGpu { get; set; }
 

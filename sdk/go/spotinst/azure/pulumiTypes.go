@@ -5488,6 +5488,7 @@ type OceanNpFilters struct {
 	Architectures         []string `pulumi:"architectures"`
 	DiskPerformance       *string  `pulumi:"diskPerformance"`
 	ExcludeSeries         []string `pulumi:"excludeSeries"`
+	GpuTypes              []string `pulumi:"gpuTypes"`
 	MaxGpu                *float64 `pulumi:"maxGpu"`
 	MaxMemoryGib          *float64 `pulumi:"maxMemoryGib"`
 	MaxVcpu               *int     `pulumi:"maxVcpu"`
@@ -5516,6 +5517,7 @@ type OceanNpFiltersArgs struct {
 	Architectures         pulumi.StringArrayInput `pulumi:"architectures"`
 	DiskPerformance       pulumi.StringPtrInput   `pulumi:"diskPerformance"`
 	ExcludeSeries         pulumi.StringArrayInput `pulumi:"excludeSeries"`
+	GpuTypes              pulumi.StringArrayInput `pulumi:"gpuTypes"`
 	MaxGpu                pulumi.Float64PtrInput  `pulumi:"maxGpu"`
 	MaxMemoryGib          pulumi.Float64PtrInput  `pulumi:"maxMemoryGib"`
 	MaxVcpu               pulumi.IntPtrInput      `pulumi:"maxVcpu"`
@@ -5621,6 +5623,10 @@ func (o OceanNpFiltersOutput) ExcludeSeries() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v OceanNpFilters) []string { return v.ExcludeSeries }).(pulumi.StringArrayOutput)
 }
 
+func (o OceanNpFiltersOutput) GpuTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OceanNpFilters) []string { return v.GpuTypes }).(pulumi.StringArrayOutput)
+}
+
 func (o OceanNpFiltersOutput) MaxGpu() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v OceanNpFilters) *float64 { return v.MaxGpu }).(pulumi.Float64PtrOutput)
 }
@@ -5718,6 +5724,15 @@ func (o OceanNpFiltersPtrOutput) ExcludeSeries() pulumi.StringArrayOutput {
 			return nil
 		}
 		return v.ExcludeSeries
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o OceanNpFiltersPtrOutput) GpuTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OceanNpFilters) []string {
+		if v == nil {
+			return nil
+		}
+		return v.GpuTypes
 	}).(pulumi.StringArrayOutput)
 }
 
@@ -6849,6 +6864,7 @@ type OceanNpVirtualNodeGroupFilters struct {
 	Architectures         []string `pulumi:"architectures"`
 	DiskPerformance       *string  `pulumi:"diskPerformance"`
 	ExcludeSeries         []string `pulumi:"excludeSeries"`
+	GpuTypes              []string `pulumi:"gpuTypes"`
 	MaxGpu                *float64 `pulumi:"maxGpu"`
 	MaxMemoryGib          *float64 `pulumi:"maxMemoryGib"`
 	MaxVcpu               *int     `pulumi:"maxVcpu"`
@@ -6877,6 +6893,7 @@ type OceanNpVirtualNodeGroupFiltersArgs struct {
 	Architectures         pulumi.StringArrayInput `pulumi:"architectures"`
 	DiskPerformance       pulumi.StringPtrInput   `pulumi:"diskPerformance"`
 	ExcludeSeries         pulumi.StringArrayInput `pulumi:"excludeSeries"`
+	GpuTypes              pulumi.StringArrayInput `pulumi:"gpuTypes"`
 	MaxGpu                pulumi.Float64PtrInput  `pulumi:"maxGpu"`
 	MaxMemoryGib          pulumi.Float64PtrInput  `pulumi:"maxMemoryGib"`
 	MaxVcpu               pulumi.IntPtrInput      `pulumi:"maxVcpu"`
@@ -6982,6 +6999,10 @@ func (o OceanNpVirtualNodeGroupFiltersOutput) ExcludeSeries() pulumi.StringArray
 	return o.ApplyT(func(v OceanNpVirtualNodeGroupFilters) []string { return v.ExcludeSeries }).(pulumi.StringArrayOutput)
 }
 
+func (o OceanNpVirtualNodeGroupFiltersOutput) GpuTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OceanNpVirtualNodeGroupFilters) []string { return v.GpuTypes }).(pulumi.StringArrayOutput)
+}
+
 func (o OceanNpVirtualNodeGroupFiltersOutput) MaxGpu() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v OceanNpVirtualNodeGroupFilters) *float64 { return v.MaxGpu }).(pulumi.Float64PtrOutput)
 }
@@ -7079,6 +7100,15 @@ func (o OceanNpVirtualNodeGroupFiltersPtrOutput) ExcludeSeries() pulumi.StringAr
 			return nil
 		}
 		return v.ExcludeSeries
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o OceanNpVirtualNodeGroupFiltersPtrOutput) GpuTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OceanNpVirtualNodeGroupFilters) []string {
+		if v == nil {
+			return nil
+		}
+		return v.GpuTypes
 	}).(pulumi.StringArrayOutput)
 }
 
