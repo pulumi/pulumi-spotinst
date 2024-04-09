@@ -1125,6 +1125,9 @@
                                 "exclude_series": {
                                     "maxItemsOne": false
                                 },
+                                "gpu_types": {
+                                    "maxItemsOne": false
+                                },
                                 "series": {
                                     "maxItemsOne": false
                                 },
@@ -1205,6 +1208,9 @@
                                     "maxItemsOne": false
                                 },
                                 "exclude_series": {
+                                    "maxItemsOne": false
+                                },
+                                "gpu_types": {
                                     "maxItemsOne": false
                                 },
                                 "series": {

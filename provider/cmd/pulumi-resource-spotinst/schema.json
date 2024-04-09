@@ -5056,6 +5056,12 @@
                         "type": "string"
                     }
                 },
+                "gpuTypes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
                 "maxGpu": {
                     "type": "number"
                 },
@@ -5234,6 +5240,12 @@
                     "type": "string"
                 },
                 "excludeSeries": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "gpuTypes": {
                     "type": "array",
                     "items": {
                         "type": "string"
