@@ -2112,6 +2112,7 @@ class OceanNpFiltersArgs:
                  architectures: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  disk_performance: Optional[pulumi.Input[str]] = None,
                  exclude_series: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 gpu_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  max_gpu: Optional[pulumi.Input[float]] = None,
                  max_memory_gib: Optional[pulumi.Input[float]] = None,
                  max_vcpu: Optional[pulumi.Input[int]] = None,
@@ -2130,6 +2131,8 @@ class OceanNpFiltersArgs:
             pulumi.set(__self__, "disk_performance", disk_performance)
         if exclude_series is not None:
             pulumi.set(__self__, "exclude_series", exclude_series)
+        if gpu_types is not None:
+            pulumi.set(__self__, "gpu_types", gpu_types)
         if max_gpu is not None:
             pulumi.set(__self__, "max_gpu", max_gpu)
         if max_memory_gib is not None:
@@ -2186,6 +2189,15 @@ class OceanNpFiltersArgs:
     @exclude_series.setter
     def exclude_series(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "exclude_series", value)
+
+    @property
+    @pulumi.getter(name="gpuTypes")
+    def gpu_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "gpu_types")
+
+    @gpu_types.setter
+    def gpu_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "gpu_types", value)
 
     @property
     @pulumi.getter(name="maxGpu")
@@ -2579,6 +2591,7 @@ class OceanNpVirtualNodeGroupFiltersArgs:
                  architectures: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  disk_performance: Optional[pulumi.Input[str]] = None,
                  exclude_series: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 gpu_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  max_gpu: Optional[pulumi.Input[float]] = None,
                  max_memory_gib: Optional[pulumi.Input[float]] = None,
                  max_vcpu: Optional[pulumi.Input[int]] = None,
@@ -2597,6 +2610,8 @@ class OceanNpVirtualNodeGroupFiltersArgs:
             pulumi.set(__self__, "disk_performance", disk_performance)
         if exclude_series is not None:
             pulumi.set(__self__, "exclude_series", exclude_series)
+        if gpu_types is not None:
+            pulumi.set(__self__, "gpu_types", gpu_types)
         if max_gpu is not None:
             pulumi.set(__self__, "max_gpu", max_gpu)
         if max_memory_gib is not None:
@@ -2653,6 +2668,15 @@ class OceanNpVirtualNodeGroupFiltersArgs:
     @exclude_series.setter
     def exclude_series(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "exclude_series", value)
+
+    @property
+    @pulumi.getter(name="gpuTypes")
+    def gpu_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "gpu_types")
+
+    @gpu_types.setter
+    def gpu_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "gpu_types", value)
 
     @property
     @pulumi.getter(name="maxGpu")

@@ -3682,6 +3682,7 @@ export namespace azure {
         architectures?: pulumi.Input<pulumi.Input<string>[]>;
         diskPerformance?: pulumi.Input<string>;
         excludeSeries?: pulumi.Input<pulumi.Input<string>[]>;
+        gpuTypes?: pulumi.Input<pulumi.Input<string>[]>;
         maxGpu?: pulumi.Input<number>;
         maxMemoryGib?: pulumi.Input<number>;
         maxVcpu?: pulumi.Input<number>;
@@ -3742,6 +3743,7 @@ export namespace azure {
         architectures?: pulumi.Input<pulumi.Input<string>[]>;
         diskPerformance?: pulumi.Input<string>;
         excludeSeries?: pulumi.Input<pulumi.Input<string>[]>;
+        gpuTypes?: pulumi.Input<pulumi.Input<string>[]>;
         maxGpu?: pulumi.Input<number>;
         maxMemoryGib?: pulumi.Input<number>;
         maxVcpu?: pulumi.Input<number>;

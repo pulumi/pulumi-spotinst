@@ -17,6 +17,7 @@ namespace Pulumi.SpotInst.Azure.Outputs
         public readonly ImmutableArray<string> Architectures;
         public readonly string? DiskPerformance;
         public readonly ImmutableArray<string> ExcludeSeries;
+        public readonly ImmutableArray<string> GpuTypes;
         public readonly double? MaxGpu;
         public readonly double? MaxMemoryGib;
         public readonly int? MaxVcpu;
@@ -37,6 +38,8 @@ namespace Pulumi.SpotInst.Azure.Outputs
             string? diskPerformance,
 
             ImmutableArray<string> excludeSeries,
+
+            ImmutableArray<string> gpuTypes,
 
             double? maxGpu,
 
@@ -62,6 +65,7 @@ namespace Pulumi.SpotInst.Azure.Outputs
             Architectures = architectures;
             DiskPerformance = diskPerformance;
             ExcludeSeries = excludeSeries;
+            GpuTypes = gpuTypes;
             MaxGpu = maxGpu;
             MaxMemoryGib = maxMemoryGib;
             MaxVcpu = maxVcpu;

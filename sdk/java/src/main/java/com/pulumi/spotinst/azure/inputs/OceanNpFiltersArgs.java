@@ -46,6 +46,13 @@ public final class OceanNpFiltersArgs extends com.pulumi.resources.ResourceArgs 
         return Optional.ofNullable(this.excludeSeries);
     }
 
+    @Import(name="gpuTypes")
+    private @Nullable Output<List<String>> gpuTypes;
+
+    public Optional<Output<List<String>>> gpuTypes() {
+        return Optional.ofNullable(this.gpuTypes);
+    }
+
     @Import(name="maxGpu")
     private @Nullable Output<Double> maxGpu;
 
@@ -123,6 +130,7 @@ public final class OceanNpFiltersArgs extends com.pulumi.resources.ResourceArgs 
         this.architectures = $.architectures;
         this.diskPerformance = $.diskPerformance;
         this.excludeSeries = $.excludeSeries;
+        this.gpuTypes = $.gpuTypes;
         this.maxGpu = $.maxGpu;
         this.maxMemoryGib = $.maxMemoryGib;
         this.maxVcpu = $.maxVcpu;
@@ -195,6 +203,19 @@ public final class OceanNpFiltersArgs extends com.pulumi.resources.ResourceArgs 
 
         public Builder excludeSeries(String... excludeSeries) {
             return excludeSeries(List.of(excludeSeries));
+        }
+
+        public Builder gpuTypes(@Nullable Output<List<String>> gpuTypes) {
+            $.gpuTypes = gpuTypes;
+            return this;
+        }
+
+        public Builder gpuTypes(List<String> gpuTypes) {
+            return gpuTypes(Output.of(gpuTypes));
+        }
+
+        public Builder gpuTypes(String... gpuTypes) {
+            return gpuTypes(List.of(gpuTypes));
         }
 
         public Builder maxGpu(@Nullable Output<Double> maxGpu) {

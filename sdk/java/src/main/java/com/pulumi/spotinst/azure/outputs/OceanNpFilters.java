@@ -18,6 +18,7 @@ public final class OceanNpFilters {
     private @Nullable List<String> architectures;
     private @Nullable String diskPerformance;
     private @Nullable List<String> excludeSeries;
+    private @Nullable List<String> gpuTypes;
     private @Nullable Double maxGpu;
     private @Nullable Double maxMemoryGib;
     private @Nullable Integer maxVcpu;
@@ -41,6 +42,9 @@ public final class OceanNpFilters {
     }
     public List<String> excludeSeries() {
         return this.excludeSeries == null ? List.of() : this.excludeSeries;
+    }
+    public List<String> gpuTypes() {
+        return this.gpuTypes == null ? List.of() : this.gpuTypes;
     }
     public Optional<Double> maxGpu() {
         return Optional.ofNullable(this.maxGpu);
@@ -86,6 +90,7 @@ public final class OceanNpFilters {
         private @Nullable List<String> architectures;
         private @Nullable String diskPerformance;
         private @Nullable List<String> excludeSeries;
+        private @Nullable List<String> gpuTypes;
         private @Nullable Double maxGpu;
         private @Nullable Double maxMemoryGib;
         private @Nullable Integer maxVcpu;
@@ -103,6 +108,7 @@ public final class OceanNpFilters {
     	      this.architectures = defaults.architectures;
     	      this.diskPerformance = defaults.diskPerformance;
     	      this.excludeSeries = defaults.excludeSeries;
+    	      this.gpuTypes = defaults.gpuTypes;
     	      this.maxGpu = defaults.maxGpu;
     	      this.maxMemoryGib = defaults.maxMemoryGib;
     	      this.maxVcpu = defaults.maxVcpu;
@@ -144,6 +150,15 @@ public final class OceanNpFilters {
         }
         public Builder excludeSeries(String... excludeSeries) {
             return excludeSeries(List.of(excludeSeries));
+        }
+        @CustomType.Setter
+        public Builder gpuTypes(@Nullable List<String> gpuTypes) {
+
+            this.gpuTypes = gpuTypes;
+            return this;
+        }
+        public Builder gpuTypes(String... gpuTypes) {
+            return gpuTypes(List.of(gpuTypes));
         }
         @CustomType.Setter
         public Builder maxGpu(@Nullable Double maxGpu) {
@@ -217,6 +232,7 @@ public final class OceanNpFilters {
             _resultValue.architectures = architectures;
             _resultValue.diskPerformance = diskPerformance;
             _resultValue.excludeSeries = excludeSeries;
+            _resultValue.gpuTypes = gpuTypes;
             _resultValue.maxGpu = maxGpu;
             _resultValue.maxMemoryGib = maxMemoryGib;
             _resultValue.maxVcpu = maxVcpu;

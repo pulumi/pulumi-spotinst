@@ -3684,6 +3684,7 @@ export namespace azure {
         architectures?: string[];
         diskPerformance?: string;
         excludeSeries?: string[];
+        gpuTypes?: string[];
         maxGpu?: number;
         maxMemoryGib?: number;
         maxVcpu?: number;
@@ -3744,6 +3745,7 @@ export namespace azure {
         architectures?: string[];
         diskPerformance?: string;
         excludeSeries?: string[];
+        gpuTypes?: string[];
         maxGpu?: number;
         maxMemoryGib?: number;
         maxVcpu?: number;
