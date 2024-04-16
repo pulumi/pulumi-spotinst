@@ -16,11 +16,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as spotinst from "@pulumi/spotinst";
  *
- * const terraformProgUser = new spotinst.organization.ProgrammaticUser("terraformProgUser", {
+ * const terraformProgUser = new spotinst.organization.ProgrammaticUser("terraform_prog_user", {
+ *     name: "test-prog-user",
  *     description: "creating programmatic user",
  *     policies: [{
- *         policyAccountIds: ["act-a1b2c3d4"],
  *         policyId: "pol-g75d8c06",
+ *         policyAccountIds: ["act-a1b2c3d4"],
  *     }],
  *     userGroupIds: [
  *         "ugr-abcd1234",

@@ -560,18 +560,6 @@ class OceanImport(pulumi.CustomResource):
         """
         Manages a Spotinst Ocean GKE resource.
 
-        ## Prerequisites
-
-        Installation of the Ocean controller is required by this resource. You can accomplish this by using the spotinst/ocean-controller module as follows:
-
-        <!--Start PulumiCodeChooser -->
-        ```python
-        import pulumi
-        ```
-        <!--End PulumiCodeChooser -->
-
-        > You must configure the same `cluster_identifier` both for the Ocean controller and for the `gke.OceanImport` resource.
-
         ## Example Usage
 
         <!--Start PulumiCodeChooser -->
@@ -580,8 +568,20 @@ class OceanImport(pulumi.CustomResource):
         import pulumi_spotinst as spotinst
 
         example = spotinst.gke.OceanImport("example",
+            cluster_name="example-cluster-name",
+            controller_cluster_id="example-controller-123124",
+            location="us-central1-a",
+            min_size=0,
+            max_size=2,
+            desired_capacity=0,
+            whitelists=[
+                "n1-standard-1",
+                "n1-standard-2",
+            ],
             backend_services=[spotinst.gke.OceanImportBackendServiceArgs(
+                service_name="example-backend-service",
                 location_type="regional",
+                scheme="INTERNAL",
                 named_ports=[spotinst.gke.OceanImportBackendServiceNamedPortArgs(
                     name="http",
                     ports=[
@@ -589,57 +589,13 @@ class OceanImport(pulumi.CustomResource):
                         "8080",
                     ],
                 )],
-                scheme="INTERNAL",
-                service_name="example-backend-service",
             )],
-            cluster_name="example-cluster-name",
-            controller_cluster_id="example-controller-123124",
-            desired_capacity=0,
-            location="us-central1-a",
-            max_size=2,
-            min_size=0,
             root_volume_type="pd-ssd",
             shielded_instance_config=spotinst.gke.OceanImportShieldedInstanceConfigArgs(
-                enable_integrity_monitoring=True,
                 enable_secure_boot=True,
+                enable_integrity_monitoring=True,
             ),
-            use_as_template_only=False,
-            whitelists=[
-                "n1-standard-1",
-                "n1-standard-2",
-            ])
-        ```
-        <!--End PulumiCodeChooser -->
-
-        ## Strategy
-
-        * `strategy` - (Optional) Strategy object.
-            * `draining_timeout` - (Optional) The draining timeout (in seconds) before terminating the instance. If no draining timeout is defined, the default draining timeout will be used.
-            * `provisioning_model` - (Optional) Define the provisioning model of the launched instances. Valid values: `SPOT`, `PREEMPTIBLE`.
-            * `preemptible_percentage`- (Optional) Defines the desired preemptible percentage for the cluster.
-
-        <!--Start PulumiCodeChooser -->
-        ```python
-        import pulumi
-        ```
-        <!--End PulumiCodeChooser -->
-
-        <a id="update-policy"></a>
-        ## Update Policy
-
-        * `update_policy` - (Optional)
-            * `should_roll` - (Required) Enables the roll.
-            * `conditioned_roll` - (Optional, Default: false) Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as AMI, Key Pair, user data, instance types, load balancers, etc).
-          
-            * `roll_config` - (Required) Holds the roll configuration.
-                * `batch_size_percentage` - (Required) Sets the percentage of the instances to deploy in each batch.
-                * `launch_spec_ids` - (Optional) List of Virtual Node Group identifiers to be rolled.
-                * `batch_min_healthy_percentage` - (Optional) Default: 50. Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
-                * `respect_pdb` - (Optional) Default: False. During the roll, if the parameter is set to True we honor PDB during the instance replacement.
-
-        <!--Start PulumiCodeChooser -->
-        ```python
-        import pulumi
+            use_as_template_only=False)
         ```
         <!--End PulumiCodeChooser -->
 
@@ -669,18 +625,6 @@ class OceanImport(pulumi.CustomResource):
         """
         Manages a Spotinst Ocean GKE resource.
 
-        ## Prerequisites
-
-        Installation of the Ocean controller is required by this resource. You can accomplish this by using the spotinst/ocean-controller module as follows:
-
-        <!--Start PulumiCodeChooser -->
-        ```python
-        import pulumi
-        ```
-        <!--End PulumiCodeChooser -->
-
-        > You must configure the same `cluster_identifier` both for the Ocean controller and for the `gke.OceanImport` resource.
-
         ## Example Usage
 
         <!--Start PulumiCodeChooser -->
@@ -689,8 +633,20 @@ class OceanImport(pulumi.CustomResource):
         import pulumi_spotinst as spotinst
 
         example = spotinst.gke.OceanImport("example",
+            cluster_name="example-cluster-name",
+            controller_cluster_id="example-controller-123124",
+            location="us-central1-a",
+            min_size=0,
+            max_size=2,
+            desired_capacity=0,
+            whitelists=[
+                "n1-standard-1",
+                "n1-standard-2",
+            ],
             backend_services=[spotinst.gke.OceanImportBackendServiceArgs(
+                service_name="example-backend-service",
                 location_type="regional",
+                scheme="INTERNAL",
                 named_ports=[spotinst.gke.OceanImportBackendServiceNamedPortArgs(
                     name="http",
                     ports=[
@@ -698,57 +654,13 @@ class OceanImport(pulumi.CustomResource):
                         "8080",
                     ],
                 )],
-                scheme="INTERNAL",
-                service_name="example-backend-service",
             )],
-            cluster_name="example-cluster-name",
-            controller_cluster_id="example-controller-123124",
-            desired_capacity=0,
-            location="us-central1-a",
-            max_size=2,
-            min_size=0,
             root_volume_type="pd-ssd",
             shielded_instance_config=spotinst.gke.OceanImportShieldedInstanceConfigArgs(
-                enable_integrity_monitoring=True,
                 enable_secure_boot=True,
+                enable_integrity_monitoring=True,
             ),
-            use_as_template_only=False,
-            whitelists=[
-                "n1-standard-1",
-                "n1-standard-2",
-            ])
-        ```
-        <!--End PulumiCodeChooser -->
-
-        ## Strategy
-
-        * `strategy` - (Optional) Strategy object.
-            * `draining_timeout` - (Optional) The draining timeout (in seconds) before terminating the instance. If no draining timeout is defined, the default draining timeout will be used.
-            * `provisioning_model` - (Optional) Define the provisioning model of the launched instances. Valid values: `SPOT`, `PREEMPTIBLE`.
-            * `preemptible_percentage`- (Optional) Defines the desired preemptible percentage for the cluster.
-
-        <!--Start PulumiCodeChooser -->
-        ```python
-        import pulumi
-        ```
-        <!--End PulumiCodeChooser -->
-
-        <a id="update-policy"></a>
-        ## Update Policy
-
-        * `update_policy` - (Optional)
-            * `should_roll` - (Required) Enables the roll.
-            * `conditioned_roll` - (Optional, Default: false) Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as AMI, Key Pair, user data, instance types, load balancers, etc).
-          
-            * `roll_config` - (Required) Holds the roll configuration.
-                * `batch_size_percentage` - (Required) Sets the percentage of the instances to deploy in each batch.
-                * `launch_spec_ids` - (Optional) List of Virtual Node Group identifiers to be rolled.
-                * `batch_min_healthy_percentage` - (Optional) Default: 50. Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
-                * `respect_pdb` - (Optional) Default: False. During the roll, if the parameter is set to True we honor PDB during the instance replacement.
-
-        <!--Start PulumiCodeChooser -->
-        ```python
-        import pulumi
+            use_as_template_only=False)
         ```
         <!--End PulumiCodeChooser -->
 

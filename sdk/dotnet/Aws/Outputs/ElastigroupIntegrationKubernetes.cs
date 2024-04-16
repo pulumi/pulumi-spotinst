@@ -17,18 +17,6 @@ namespace Pulumi.SpotInst.Aws.Outputs
         /// The public IP of the DC/OS Master. 
         /// 
         /// Usage:
-        /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        /// });
-        /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public readonly string? ApiServer;
         /// <summary>
@@ -55,18 +43,6 @@ namespace Pulumi.SpotInst.Aws.Outputs
         /// A key/value mapping of tags to assign to the resource.
         /// 
         /// Usage:
-        /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        /// });
-        /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public readonly ImmutableArray<Outputs.ElastigroupIntegrationKubernetesAutoscaleLabel> AutoscaleLabels;
         public readonly string? ClusterIdentifier;

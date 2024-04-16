@@ -28,7 +28,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Create a suspension for Elastigroup
-//			_, err := aws.NewSuspension(ctx, "resourceName", &aws.SuspensionArgs{
+//			_, err := aws.NewSuspension(ctx, "resource_name", &aws.SuspensionArgs{
 //				GroupId: pulumi.String("sig-12345678"),
 //				Suspensions: aws.SuspensionSuspensionArray{
 //					&aws.SuspensionSuspensionArgs{

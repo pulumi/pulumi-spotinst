@@ -3188,24 +3188,6 @@ func (o OceanImportAutoscalerHeadroomPtrOutput) NumOfUnits() pulumi.IntPtrOutput
 
 type OceanImportAutoscalerResourceLimits struct {
 	// The maximum memory in GiB units that can be allocated to the cluster.
-	//
-	// <!--Start PulumiCodeChooser -->
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
-	// <!--End PulumiCodeChooser -->
-	//
-	// <a id="strategy"></a>
 	MaxMemoryGib *int `pulumi:"maxMemoryGib"`
 	// The maximum cpu in vCpu units that can be allocated to the cluster.
 	MaxVcpu *int `pulumi:"maxVcpu"`
@@ -3224,24 +3206,6 @@ type OceanImportAutoscalerResourceLimitsInput interface {
 
 type OceanImportAutoscalerResourceLimitsArgs struct {
 	// The maximum memory in GiB units that can be allocated to the cluster.
-	//
-	// <!--Start PulumiCodeChooser -->
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
-	// <!--End PulumiCodeChooser -->
-	//
-	// <a id="strategy"></a>
 	MaxMemoryGib pulumi.IntPtrInput `pulumi:"maxMemoryGib"`
 	// The maximum cpu in vCpu units that can be allocated to the cluster.
 	MaxVcpu pulumi.IntPtrInput `pulumi:"maxVcpu"`
@@ -3325,27 +3289,6 @@ func (o OceanImportAutoscalerResourceLimitsOutput) ToOceanImportAutoscalerResour
 }
 
 // The maximum memory in GiB units that can be allocated to the cluster.
-//
-// <!--Start PulumiCodeChooser -->
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
-// <!--End PulumiCodeChooser -->
-//
-// <a id="strategy"></a>
 func (o OceanImportAutoscalerResourceLimitsOutput) MaxMemoryGib() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanImportAutoscalerResourceLimits) *int { return v.MaxMemoryGib }).(pulumi.IntPtrOutput)
 }
@@ -3380,27 +3323,6 @@ func (o OceanImportAutoscalerResourceLimitsPtrOutput) Elem() OceanImportAutoscal
 }
 
 // The maximum memory in GiB units that can be allocated to the cluster.
-//
-// <!--Start PulumiCodeChooser -->
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
-// <!--End PulumiCodeChooser -->
-//
-// <a id="strategy"></a>
 func (o OceanImportAutoscalerResourceLimitsPtrOutput) MaxMemoryGib() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanImportAutoscalerResourceLimits) *int {
 		if v == nil {
@@ -4175,22 +4097,6 @@ type OceanImportScheduledTaskTaskTaskParametersClusterRoll struct {
 	BatchMinHealthyPercentage *int `pulumi:"batchMinHealthyPercentage"`
 	// Value in % to set size of batch in roll. Valid values are 0-100
 	// Example: 20.
-	//
-	// <!--Start PulumiCodeChooser -->
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
-	// <!--End PulumiCodeChooser -->
 	BatchSizePercentage *int    `pulumi:"batchSizePercentage"`
 	Comment             *string `pulumi:"comment"`
 	RespectPdb          *bool   `pulumi:"respectPdb"`
@@ -4211,22 +4117,6 @@ type OceanImportScheduledTaskTaskTaskParametersClusterRollArgs struct {
 	BatchMinHealthyPercentage pulumi.IntPtrInput `pulumi:"batchMinHealthyPercentage"`
 	// Value in % to set size of batch in roll. Valid values are 0-100
 	// Example: 20.
-	//
-	// <!--Start PulumiCodeChooser -->
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
-	// <!--End PulumiCodeChooser -->
 	BatchSizePercentage pulumi.IntPtrInput    `pulumi:"batchSizePercentage"`
 	Comment             pulumi.StringPtrInput `pulumi:"comment"`
 	RespectPdb          pulumi.BoolPtrInput   `pulumi:"respectPdb"`
@@ -4315,25 +4205,6 @@ func (o OceanImportScheduledTaskTaskTaskParametersClusterRollOutput) BatchMinHea
 
 // Value in % to set size of batch in roll. Valid values are 0-100
 // Example: 20.
-//
-// <!--Start PulumiCodeChooser -->
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
-// <!--End PulumiCodeChooser -->
 func (o OceanImportScheduledTaskTaskTaskParametersClusterRollOutput) BatchSizePercentage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanImportScheduledTaskTaskTaskParametersClusterRoll) *int { return v.BatchSizePercentage }).(pulumi.IntPtrOutput)
 }
@@ -4381,25 +4252,6 @@ func (o OceanImportScheduledTaskTaskTaskParametersClusterRollPtrOutput) BatchMin
 
 // Value in % to set size of batch in roll. Valid values are 0-100
 // Example: 20.
-//
-// <!--Start PulumiCodeChooser -->
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
-// <!--End PulumiCodeChooser -->
 func (o OceanImportScheduledTaskTaskTaskParametersClusterRollPtrOutput) BatchSizePercentage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanImportScheduledTaskTaskTaskParametersClusterRoll) *int {
 		if v == nil {
@@ -4859,22 +4711,6 @@ type OceanImportUpdatePolicyRollConfig struct {
 	BatchMinHealthyPercentage *int `pulumi:"batchMinHealthyPercentage"`
 	// Value in % to set size of batch in roll. Valid values are 0-100
 	// Example: 20.
-	//
-	// <!--Start PulumiCodeChooser -->
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
-	// <!--End PulumiCodeChooser -->
 	BatchSizePercentage int      `pulumi:"batchSizePercentage"`
 	LaunchSpecIds       []string `pulumi:"launchSpecIds"`
 	RespectPdb          *bool    `pulumi:"respectPdb"`
@@ -4895,22 +4731,6 @@ type OceanImportUpdatePolicyRollConfigArgs struct {
 	BatchMinHealthyPercentage pulumi.IntPtrInput `pulumi:"batchMinHealthyPercentage"`
 	// Value in % to set size of batch in roll. Valid values are 0-100
 	// Example: 20.
-	//
-	// <!--Start PulumiCodeChooser -->
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
-	// <!--End PulumiCodeChooser -->
 	BatchSizePercentage pulumi.IntInput         `pulumi:"batchSizePercentage"`
 	LaunchSpecIds       pulumi.StringArrayInput `pulumi:"launchSpecIds"`
 	RespectPdb          pulumi.BoolPtrInput     `pulumi:"respectPdb"`
@@ -4999,25 +4819,6 @@ func (o OceanImportUpdatePolicyRollConfigOutput) BatchMinHealthyPercentage() pul
 
 // Value in % to set size of batch in roll. Valid values are 0-100
 // Example: 20.
-//
-// <!--Start PulumiCodeChooser -->
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
-// <!--End PulumiCodeChooser -->
 func (o OceanImportUpdatePolicyRollConfigOutput) BatchSizePercentage() pulumi.IntOutput {
 	return o.ApplyT(func(v OceanImportUpdatePolicyRollConfig) int { return v.BatchSizePercentage }).(pulumi.IntOutput)
 }
@@ -5065,25 +4866,6 @@ func (o OceanImportUpdatePolicyRollConfigPtrOutput) BatchMinHealthyPercentage() 
 
 // Value in % to set size of batch in roll. Valid values are 0-100
 // Example: 20.
-//
-// <!--Start PulumiCodeChooser -->
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
-// <!--End PulumiCodeChooser -->
 func (o OceanImportUpdatePolicyRollConfigPtrOutput) BatchSizePercentage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanImportUpdatePolicyRollConfig) *int {
 		if v == nil {

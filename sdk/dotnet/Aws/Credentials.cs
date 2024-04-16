@@ -26,8 +26,8 @@ namespace Pulumi.SpotInst.Aws
     ///     // set credential AWS
     ///     var credential = new SpotInst.Aws.Credentials("credential", new()
     ///     {
-    ///         AccountId = "act-123456",
     ///         Iamrole = "arn:aws:iam::1234567890:role/Spot_Iam_Role",
+    ///         AccountId = "act-123456",
     ///     });
     /// 
     /// });

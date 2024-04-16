@@ -32,21 +32,37 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := gke.NewOceanLaunchSpec(ctx, "example", &gke.OceanLaunchSpecArgs{
-//				AutoscaleHeadrooms: gke.OceanLaunchSpecAutoscaleHeadroomArray{
-//					&gke.OceanLaunchSpecAutoscaleHeadroomArgs{
-//						CpuPerUnit:    pulumi.Int(1000),
-//						GpuPerUnit:    pulumi.Int(0),
-//						MemoryPerUnit: pulumi.Int(2048),
-//						NumOfUnits:    pulumi.Int(5),
-//					},
-//				},
-//				AutoscaleHeadroomsAutomatics: gke.OceanLaunchSpecAutoscaleHeadroomsAutomaticArray{
-//					&gke.OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs{
-//						AutoHeadroomPercentage: pulumi.Int(5),
-//					},
-//				},
+//				OceanId:           pulumi.String("o-123456"),
+//				NodePoolName:      pulumi.String("default-pool"),
+//				Name:              pulumi.String("specialty.nodes.spotk8s.com"),
+//				SourceImage:       pulumi.String("image"),
+//				RestrictScaleDown: pulumi.Bool(true),
+//				RootVolumeSize:    pulumi.Int(10),
+//				RootVolumeType:    pulumi.String("pd-standard"),
 //				InstanceTypes: pulumi.StringArray{
 //					pulumi.String("n1-standard-1, n1-standard-2"),
+//				},
+//				Tags: pulumi.StringArray{
+//					pulumi.String("tag1"),
+//					pulumi.String("tag2"),
+//				},
+//				ShieldedInstanceConfig: &gke.OceanLaunchSpecShieldedInstanceConfigArgs{
+//					EnableSecureBoot:          pulumi.Bool(false),
+//					EnableIntegrityMonitoring: pulumi.Bool(true),
+//				},
+//				Storage: &gke.OceanLaunchSpecStorageArgs{
+//					LocalSsdCount: pulumi.Int(5),
+//				},
+//				ResourceLimits: &gke.OceanLaunchSpecResourceLimitsArgs{
+//					MaxInstanceCount: pulumi.Int(3),
+//					MinInstanceCount: pulumi.Int(0),
+//				},
+//				ServiceAccount: pulumi.String("default"),
+//				Metadatas: gke.OceanLaunchSpecMetadataArray{
+//					&gke.OceanLaunchSpecMetadataArgs{
+//						Key:   pulumi.String("gci-update-strategy"),
+//						Value: pulumi.String("update_disabled"),
+//					},
 //				},
 //				Labels: gke.OceanLaunchSpecLabelArray{
 //					&gke.OceanLaunchSpecLabelArgs{
@@ -54,14 +70,50 @@ import (
 //						Value: pulumi.String("labelVal"),
 //					},
 //				},
-//				Metadatas: gke.OceanLaunchSpecMetadataArray{
-//					&gke.OceanLaunchSpecMetadataArgs{
-//						Key:   pulumi.String("gci-update-strategy"),
-//						Value: pulumi.String("update_disabled"),
+//				Taints: gke.OceanLaunchSpecTaintArray{
+//					&gke.OceanLaunchSpecTaintArgs{
+//						Key:    pulumi.String("taintKey"),
+//						Value:  pulumi.String("taintVal"),
+//						Effect: pulumi.String("taintEffect"),
+//					},
+//				},
+//				AutoscaleHeadroomsAutomatics: gke.OceanLaunchSpecAutoscaleHeadroomsAutomaticArray{
+//					&gke.OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs{
+//						AutoHeadroomPercentage: pulumi.Int(5),
+//					},
+//				},
+//				AutoscaleHeadrooms: gke.OceanLaunchSpecAutoscaleHeadroomArray{
+//					&gke.OceanLaunchSpecAutoscaleHeadroomArgs{
+//						NumOfUnits:    pulumi.Int(5),
+//						CpuPerUnit:    pulumi.Int(1000),
+//						GpuPerUnit:    pulumi.Int(0),
+//						MemoryPerUnit: pulumi.Int(2048),
+//					},
+//				},
+//				Strategies: gke.OceanLaunchSpecStrategyArray{
+//					&gke.OceanLaunchSpecStrategyArgs{
+//						PreemptiblePercentage: pulumi.Int(30),
+//					},
+//				},
+//				SchedulingTasks: gke.OceanLaunchSpecSchedulingTaskArray{
+//					&gke.OceanLaunchSpecSchedulingTaskArgs{
+//						IsEnabled:      pulumi.Bool(true),
+//						CronExpression: pulumi.String("0 1 * * *"),
+//						TaskType:       pulumi.String("manualHeadroomUpdate"),
+//						TaskHeadrooms: gke.OceanLaunchSpecSchedulingTaskTaskHeadroomArray{
+//							&gke.OceanLaunchSpecSchedulingTaskTaskHeadroomArgs{
+//								NumOfUnits:    pulumi.Int(5),
+//								CpuPerUnit:    pulumi.Int(1000),
+//								GpuPerUnit:    pulumi.Int(0),
+//								MemoryPerUnit: pulumi.Int(2048),
+//							},
+//						},
 //					},
 //				},
 //				NetworkInterfaces: gke.OceanLaunchSpecNetworkInterfaceArray{
 //					&gke.OceanLaunchSpecNetworkInterfaceArgs{
+//						Network:   pulumi.String("test-vng-network"),
+//						ProjectId: pulumi.String("test-vng-network-project"),
 //						AccessConfigs: gke.OceanLaunchSpecNetworkInterfaceAccessConfigArray{
 //							&gke.OceanLaunchSpecNetworkInterfaceAccessConfigArgs{
 //								Name: pulumi.String("external-nat-vng"),
@@ -74,89 +126,12 @@ import (
 //								SubnetworkRangeName: pulumi.String("gke-test-native-vpc-pods-123456-vng"),
 //							},
 //						},
-//						Network:   pulumi.String("test-vng-network"),
-//						ProjectId: pulumi.String("test-vng-network-project"),
-//					},
-//				},
-//				NodePoolName: pulumi.String("default-pool"),
-//				OceanId:      pulumi.String("o-123456"),
-//				ResourceLimits: &gke.OceanLaunchSpecResourceLimitsArgs{
-//					MaxInstanceCount: pulumi.Int(3),
-//					MinInstanceCount: pulumi.Int(0),
-//				},
-//				RestrictScaleDown: pulumi.Bool(true),
-//				RootVolumeSize:    pulumi.Int(10),
-//				RootVolumeType:    pulumi.String("pd-standard"),
-//				SchedulingTasks: gke.OceanLaunchSpecSchedulingTaskArray{
-//					&gke.OceanLaunchSpecSchedulingTaskArgs{
-//						CronExpression: pulumi.String("0 1 * * *"),
-//						IsEnabled:      pulumi.Bool(true),
-//						TaskHeadrooms: gke.OceanLaunchSpecSchedulingTaskTaskHeadroomArray{
-//							&gke.OceanLaunchSpecSchedulingTaskTaskHeadroomArgs{
-//								CpuPerUnit:    pulumi.Int(1000),
-//								GpuPerUnit:    pulumi.Int(0),
-//								MemoryPerUnit: pulumi.Int(2048),
-//								NumOfUnits:    pulumi.Int(5),
-//							},
-//						},
-//						TaskType: pulumi.String("manualHeadroomUpdate"),
-//					},
-//				},
-//				ServiceAccount: pulumi.String("default"),
-//				ShieldedInstanceConfig: &gke.OceanLaunchSpecShieldedInstanceConfigArgs{
-//					EnableIntegrityMonitoring: pulumi.Bool(true),
-//					EnableSecureBoot:          pulumi.Bool(false),
-//				},
-//				SourceImage: pulumi.String("image"),
-//				Storage: &gke.OceanLaunchSpecStorageArgs{
-//					LocalSsdCount: pulumi.Int(5),
-//				},
-//				Strategies: gke.OceanLaunchSpecStrategyArray{
-//					&gke.OceanLaunchSpecStrategyArgs{
-//						PreemptiblePercentage: pulumi.Int(30),
-//					},
-//				},
-//				Tags: pulumi.StringArray{
-//					pulumi.String("tag1"),
-//					pulumi.String("tag2"),
-//				},
-//				Taints: gke.OceanLaunchSpecTaintArray{
-//					&gke.OceanLaunchSpecTaintArgs{
-//						Effect: pulumi.String("taintEffect"),
-//						Key:    pulumi.String("taintKey"),
-//						Value:  pulumi.String("taintVal"),
 //					},
 //				},
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			return nil
-//		})
-//	}
-//
-// ```
-// <!--End PulumiCodeChooser -->
-//
-// ## Update Policy
-//
-// * `updatePolicy` - (Optional)
-//   - `shouldRoll` - (Required) Enables the roll.
-//   - `rollConfig` - (Required) Holds the roll configuration.
-//   - `batchSizePercentage` - (Required) Sets the percentage of the instances to deploy in each batch.
-//
-// <!--Start PulumiCodeChooser -->
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
 //			return nil
 //		})
 //	}

@@ -23,9 +23,14 @@ namespace Pulumi.SpotInst.Organization
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var terraformUserGroup = new SpotInst.Organization.UserGroup("terraformUserGroup", new()
+    ///     var terraformUserGroup = new SpotInst.Organization.UserGroup("terraform_user_group", new()
     ///     {
+    ///         Name = "test_user_group",
     ///         Description = "user group by terraform",
+    ///         UserIds = new[]
+    ///         {
+    ///             "u-372gf6ae",
+    ///         },
     ///         Policies = new[]
     ///         {
     ///             new SpotInst.Organization.Inputs.UserGroupPolicyArgs
@@ -36,10 +41,6 @@ namespace Pulumi.SpotInst.Organization
     ///                 },
     ///                 PolicyId = "pol-vv7d8c06",
     ///             },
-    ///         },
-    ///         UserIds = new[]
-    ///         {
-    ///             "u-372gf6ae",
     ///         },
     ///     });
     /// 

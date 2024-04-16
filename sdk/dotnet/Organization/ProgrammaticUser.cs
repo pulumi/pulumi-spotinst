@@ -23,18 +23,19 @@ namespace Pulumi.SpotInst.Organization
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var terraformProgUser = new SpotInst.Organization.ProgrammaticUser("terraformProgUser", new()
+    ///     var terraformProgUser = new SpotInst.Organization.ProgrammaticUser("terraform_prog_user", new()
     ///     {
+    ///         Name = "test-prog-user",
     ///         Description = "creating programmatic user",
     ///         Policies = new[]
     ///         {
     ///             new SpotInst.Organization.Inputs.ProgrammaticUserPolicyArgs
     ///             {
+    ///                 PolicyId = "pol-g75d8c06",
     ///                 PolicyAccountIds = new[]
     ///                 {
     ///                     "act-a1b2c3d4",
     ///                 },
-    ///                 PolicyId = "pol-g75d8c06",
     ///             },
     ///         },
     ///         UserGroupIds = new[]

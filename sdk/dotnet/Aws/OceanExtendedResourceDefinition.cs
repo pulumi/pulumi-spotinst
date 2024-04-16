@@ -25,6 +25,7 @@ namespace Pulumi.SpotInst.Aws
     /// {
     ///     var example = new SpotInst.Aws.OceanExtendedResourceDefinition("example", new()
     ///     {
+    ///         Name = "terraform_extended_resource_definition",
     ///         ResourceMapping = 
     ///         {
     ///             { "c3.large", "2Ki" },

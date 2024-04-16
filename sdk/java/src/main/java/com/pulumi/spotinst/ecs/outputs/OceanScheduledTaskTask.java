@@ -24,33 +24,6 @@ public final class OceanScheduledTaskTask {
     /**
      * @return Valid values: &#34;clusterRoll&#34;. Required for `cluster.scheduling.tasks object`. Example: `clusterRoll`.
      * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *     }
-     * }
-     * ```
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
-     * &lt;a id=&#34;attributes-reference&#34;&gt;&lt;/a&gt;
-     * 
      */
     private String taskType;
 
@@ -71,33 +44,6 @@ public final class OceanScheduledTaskTask {
     }
     /**
      * @return Valid values: &#34;clusterRoll&#34;. Required for `cluster.scheduling.tasks object`. Example: `clusterRoll`.
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *     }
-     * }
-     * ```
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
-     * &lt;a id=&#34;attributes-reference&#34;&gt;&lt;/a&gt;
      * 
      */
     public String taskType() {

@@ -16,9 +16,7 @@ import (
 //
 // > This resource contains arguments (such as `image` and `extension`) that are automatically populated from the data reported by the Ocean AKS Connector deployed into your cluster. You can override the upstream configuration by defining the corresponding arguments.
 //
-// ## Prerequisites
-//
-// Installation of the Ocean controller is required by this resource. You can accomplish this by using the spotinst/ocean-controller module as follows:
+// ## Example Usage
 //
 // <!--Start PulumiCodeChooser -->
 // ```go
@@ -26,20 +24,136 @@ import (
 //
 // import (
 //
+//	"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst/azure"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := azure.NewOcean(ctx, "example", &azure.OceanArgs{
+//				Name:                pulumi.String("ocean-westus-dev-aks"),
+//				ControllerClusterId: pulumi.String("ocean-westus-dev-aks"),
+//				Zones: pulumi.StringArray{
+//					pulumi.String("1"),
+//					pulumi.String("2"),
+//					pulumi.String("3"),
+//				},
+//				AcdIdentifier:        pulumi.String("acd-12345678"),
+//				AksName:              pulumi.String("ocean-westus-dev-aks"),
+//				AksResourceGroupName: pulumi.String("ocean-westus-dev"),
+//				SshPublicKey:         pulumi.String("ssh-rsa [... redacted ...] generated-by-azure"),
+//				UserName:             pulumi.String("some-name"),
+//				ResourceGroupName:    pulumi.String("some-resource-group-name"),
+//				CustomData:           pulumi.String("[... redacted ...]"),
+//				MaxPods:              pulumi.Int(30),
+//				ManagedServiceIdentities: azure.OceanManagedServiceIdentityArray{
+//					&azure.OceanManagedServiceIdentityArgs{
+//						ResourceGroupName: pulumi.String("MC_ocean-westus-dev_ocean-westus-dev-aks_westus"),
+//						Name:              pulumi.String("ocean-westus-dev-aks-agentpool"),
+//					},
+//				},
+//				Tags: azure.OceanTagArray{
+//					&azure.OceanTagArgs{
+//						Key:   pulumi.String("Environment"),
+//						Value: pulumi.String("Dev"),
+//					},
+//				},
+//				VmSizes: azure.OceanVmSizeArray{
+//					&azure.OceanVmSizeArgs{
+//						Whitelists: pulumi.StringArray{
+//							pulumi.String("standard_ds2_v2"),
+//						},
+//					},
+//				},
+//				OsDisk: &azure.OceanOsDiskArgs{
+//					SizeGb: pulumi.Int(130),
+//					Type:   pulumi.String("Standard_LRS"),
+//				},
+//				Images: azure.OceanImageArray{
+//					&azure.OceanImageArgs{
+//						Marketplaces: azure.OceanImageMarketplaceArray{
+//							&azure.OceanImageMarketplaceArgs{
+//								Publisher: pulumi.String("Canonical"),
+//								Offer:     pulumi.String("UbuntuServer"),
+//								Sku:       pulumi.String("18.04-LTS"),
+//								Version:   pulumi.String("latest"),
+//							},
+//						},
+//					},
+//				},
+//				Strategies: azure.OceanStrategyArray{
+//					&azure.OceanStrategyArgs{
+//						FallbackToOndemand: pulumi.Bool(true),
+//						SpotPercentage:     pulumi.Int(40),
+//					},
+//				},
+//				Health: &azure.OceanHealthArgs{
+//					GracePeriod: pulumi.Int(10),
+//				},
+//				Network: &azure.OceanNetworkArgs{
+//					VirtualNetworkName: pulumi.String("vn-name"),
+//					ResourceGroupName:  pulumi.String("ocean-westus-dev"),
+//					NetworkInterfaces: azure.OceanNetworkNetworkInterfaceArray{
+//						&azure.OceanNetworkNetworkInterfaceArgs{
+//							SubnetName:     pulumi.String("subnet-name"),
+//							AssignPublicIp: pulumi.Bool(false),
+//							IsPrimary:      pulumi.Bool(false),
+//							AdditionalIpConfigs: azure.OceanNetworkNetworkInterfaceAdditionalIpConfigArray{
+//								&azure.OceanNetworkNetworkInterfaceAdditionalIpConfigArgs{
+//									Name:             pulumi.String("ip-config-name"),
+//									PrivateIpVersion: pulumi.String("ipv4"),
+//								},
+//							},
+//						},
+//					},
+//				},
+//				Extensions: azure.OceanExtensionArray{
+//					&azure.OceanExtensionArgs{
+//						ApiVersion:              pulumi.String("1.0"),
+//						MinorVersionAutoUpgrade: pulumi.Bool(true),
+//						Name:                    pulumi.String("extension-name"),
+//						Publisher:               pulumi.String("Microsoft.Azure.Extensions"),
+//						Type:                    pulumi.String("Linux"),
+//					},
+//				},
+//				LoadBalancers: azure.OceanLoadBalancerArray{
+//					&azure.OceanLoadBalancerArgs{
+//						BackendPoolNames: pulumi.StringArray{
+//							pulumi.String("terraform-backend-pool"),
+//						},
+//						LoadBalancerSku:   pulumi.String("Standard"),
+//						Name:              pulumi.String("load-balancer-name"),
+//						ResourceGroupName: pulumi.String("resource-group-name"),
+//						Type:              pulumi.String("loadBalancer"),
+//					},
+//				},
+//				Autoscaler: &azure.OceanAutoscalerArgs{
+//					AutoscaleIsEnabled: pulumi.Bool(true),
+//					AutoscaleDown: &azure.OceanAutoscalerAutoscaleDownArgs{
+//						MaxScaleDownPercentage: pulumi.Float64(10),
+//					},
+//					ResourceLimits: &azure.OceanAutoscalerResourceLimitsArgs{
+//						MaxVcpu:      pulumi.Int(1024),
+//						MaxMemoryGib: pulumi.Int(40),
+//					},
+//					AutoscaleHeadroom: &azure.OceanAutoscalerAutoscaleHeadroomArgs{
+//						Automatic: &azure.OceanAutoscalerAutoscaleHeadroomAutomaticArgs{
+//							IsEnabled:  pulumi.Bool(true),
+//							Percentage: pulumi.Int(10),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			return nil
 //		})
 //	}
 //
 // ```
 // <!--End PulumiCodeChooser -->
-//
-// > You must configure the same `clusterIdentifier` and `acdIdentifier` both for the Ocean controller and for the `azure.Ocean` resource.
 type Ocean struct {
 	pulumi.CustomResourceState
 

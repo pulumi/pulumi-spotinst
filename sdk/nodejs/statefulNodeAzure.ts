@@ -16,7 +16,8 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as spotinst from "@pulumi/spotinst";
  *
- * const testStatefulNodeAzure = new spotinst.StatefulNodeAzure("testStatefulNodeAzure", {
+ * const testStatefulNodeAzure = new spotinst.StatefulNodeAzure("test_stateful_node_azure", {
+ *     name: "example_stateful_node_azure",
  *     region: "eastus",
  *     resourceGroupName: "spotinst-azure",
  *     description: "example_stateful_node_azure_description",
@@ -233,7 +234,6 @@ import * as utilities from "./utilities";
  *         publicIpTtlInHours: 0,
  *     }],
  * });
- * // -------------------------------------------------------------------
  * ```
  * <!--End PulumiCodeChooser -->
  *

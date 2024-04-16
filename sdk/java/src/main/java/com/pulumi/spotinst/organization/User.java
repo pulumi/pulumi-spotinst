@@ -49,11 +49,11 @@ import javax.annotation.Nullable;
  *             .firstName(&#34;test&#34;)
  *             .lastName(&#34;user&#34;)
  *             .password(&#34;testUser@123&#34;)
- *             .policies(UserPolicyArgs.builder()
- *                 .policyAccountIds(&#34;act-abcf4245&#34;)
- *                 .policyId(&#34;pol-abcd1236&#34;)
- *                 .build())
  *             .role(&#34;viewer&#34;)
+ *             .policies(UserPolicyArgs.builder()
+ *                 .policyId(&#34;pol-abcd1236&#34;)
+ *                 .policyAccountIds(&#34;act-abcf4245&#34;)
+ *                 .build())
  *             .userGroupIds(            
  *                 &#34;ugr-abcd1234&#34;,
  *                 &#34;ugr-defg8763&#34;)

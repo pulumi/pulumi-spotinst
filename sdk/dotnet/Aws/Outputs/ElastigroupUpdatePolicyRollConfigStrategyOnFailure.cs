@@ -24,18 +24,6 @@ namespace Pulumi.SpotInst.Aws.Outputs
         public readonly int? DrainingTimeout;
         /// <summary>
         /// Decrementing the group target capacity after detaching the instances.
-        /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        /// });
-        /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public readonly bool? ShouldDecrementTargetCapacity;
         /// <summary>

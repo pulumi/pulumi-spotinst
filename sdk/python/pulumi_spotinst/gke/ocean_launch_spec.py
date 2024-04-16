@@ -765,25 +765,69 @@ class OceanLaunchSpec(pulumi.CustomResource):
         import pulumi_spotinst as spotinst
 
         example = spotinst.gke.OceanLaunchSpec("example",
-            autoscale_headrooms=[spotinst.gke.OceanLaunchSpecAutoscaleHeadroomArgs(
-                cpu_per_unit=1000,
-                gpu_per_unit=0,
-                memory_per_unit=2048,
-                num_of_units=5,
-            )],
-            autoscale_headrooms_automatics=[spotinst.gke.OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs(
-                auto_headroom_percentage=5,
-            )],
+            ocean_id="o-123456",
+            node_pool_name="default-pool",
+            name="specialty.nodes.spotk8s.com",
+            source_image="image",
+            restrict_scale_down=True,
+            root_volume_size=10,
+            root_volume_type="pd-standard",
             instance_types=["n1-standard-1, n1-standard-2"],
-            labels=[spotinst.gke.OceanLaunchSpecLabelArgs(
-                key="labelKey",
-                value="labelVal",
-            )],
+            tags=[
+                "tag1",
+                "tag2",
+            ],
+            shielded_instance_config=spotinst.gke.OceanLaunchSpecShieldedInstanceConfigArgs(
+                enable_secure_boot=False,
+                enable_integrity_monitoring=True,
+            ),
+            storage=spotinst.gke.OceanLaunchSpecStorageArgs(
+                local_ssd_count=5,
+            ),
+            resource_limits=spotinst.gke.OceanLaunchSpecResourceLimitsArgs(
+                max_instance_count=3,
+                min_instance_count=0,
+            ),
+            service_account="default",
             metadatas=[spotinst.gke.OceanLaunchSpecMetadataArgs(
                 key="gci-update-strategy",
                 value="update_disabled",
             )],
+            labels=[spotinst.gke.OceanLaunchSpecLabelArgs(
+                key="labelKey",
+                value="labelVal",
+            )],
+            taints=[spotinst.gke.OceanLaunchSpecTaintArgs(
+                key="taintKey",
+                value="taintVal",
+                effect="taintEffect",
+            )],
+            autoscale_headrooms_automatics=[spotinst.gke.OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs(
+                auto_headroom_percentage=5,
+            )],
+            autoscale_headrooms=[spotinst.gke.OceanLaunchSpecAutoscaleHeadroomArgs(
+                num_of_units=5,
+                cpu_per_unit=1000,
+                gpu_per_unit=0,
+                memory_per_unit=2048,
+            )],
+            strategies=[spotinst.gke.OceanLaunchSpecStrategyArgs(
+                preemptible_percentage=30,
+            )],
+            scheduling_tasks=[spotinst.gke.OceanLaunchSpecSchedulingTaskArgs(
+                is_enabled=True,
+                cron_expression="0 1 * * *",
+                task_type="manualHeadroomUpdate",
+                task_headrooms=[spotinst.gke.OceanLaunchSpecSchedulingTaskTaskHeadroomArgs(
+                    num_of_units=5,
+                    cpu_per_unit=1000,
+                    gpu_per_unit=0,
+                    memory_per_unit=2048,
+                )],
+            )],
             network_interfaces=[spotinst.gke.OceanLaunchSpecNetworkInterfaceArgs(
+                network="test-vng-network",
+                project_id="test-vng-network-project",
                 access_configs=[spotinst.gke.OceanLaunchSpecNetworkInterfaceAccessConfigArgs(
                     name="external-nat-vng",
                     type="ONE_TO_ONE_NAT",
@@ -792,63 +836,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
                     ip_cidr_range="/25",
                     subnetwork_range_name="gke-test-native-vpc-pods-123456-vng",
                 )],
-                network="test-vng-network",
-                project_id="test-vng-network-project",
-            )],
-            node_pool_name="default-pool",
-            ocean_id="o-123456",
-            resource_limits=spotinst.gke.OceanLaunchSpecResourceLimitsArgs(
-                max_instance_count=3,
-                min_instance_count=0,
-            ),
-            restrict_scale_down=True,
-            root_volume_size=10,
-            root_volume_type="pd-standard",
-            scheduling_tasks=[spotinst.gke.OceanLaunchSpecSchedulingTaskArgs(
-                cron_expression="0 1 * * *",
-                is_enabled=True,
-                task_headrooms=[spotinst.gke.OceanLaunchSpecSchedulingTaskTaskHeadroomArgs(
-                    cpu_per_unit=1000,
-                    gpu_per_unit=0,
-                    memory_per_unit=2048,
-                    num_of_units=5,
-                )],
-                task_type="manualHeadroomUpdate",
-            )],
-            service_account="default",
-            shielded_instance_config=spotinst.gke.OceanLaunchSpecShieldedInstanceConfigArgs(
-                enable_integrity_monitoring=True,
-                enable_secure_boot=False,
-            ),
-            source_image="image",
-            storage=spotinst.gke.OceanLaunchSpecStorageArgs(
-                local_ssd_count=5,
-            ),
-            strategies=[spotinst.gke.OceanLaunchSpecStrategyArgs(
-                preemptible_percentage=30,
-            )],
-            tags=[
-                "tag1",
-                "tag2",
-            ],
-            taints=[spotinst.gke.OceanLaunchSpecTaintArgs(
-                effect="taintEffect",
-                key="taintKey",
-                value="taintVal",
             )])
-        ```
-        <!--End PulumiCodeChooser -->
-
-        ## Update Policy
-
-        * `update_policy` - (Optional)
-          * `should_roll` - (Required) Enables the roll.
-          * `roll_config` - (Required) Holds the roll configuration.
-            * `batch_size_percentage` - (Required) Sets the percentage of the instances to deploy in each batch.
-
-        <!--Start PulumiCodeChooser -->
-        ```python
-        import pulumi
         ```
         <!--End PulumiCodeChooser -->
 
@@ -895,25 +883,69 @@ class OceanLaunchSpec(pulumi.CustomResource):
         import pulumi_spotinst as spotinst
 
         example = spotinst.gke.OceanLaunchSpec("example",
-            autoscale_headrooms=[spotinst.gke.OceanLaunchSpecAutoscaleHeadroomArgs(
-                cpu_per_unit=1000,
-                gpu_per_unit=0,
-                memory_per_unit=2048,
-                num_of_units=5,
-            )],
-            autoscale_headrooms_automatics=[spotinst.gke.OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs(
-                auto_headroom_percentage=5,
-            )],
+            ocean_id="o-123456",
+            node_pool_name="default-pool",
+            name="specialty.nodes.spotk8s.com",
+            source_image="image",
+            restrict_scale_down=True,
+            root_volume_size=10,
+            root_volume_type="pd-standard",
             instance_types=["n1-standard-1, n1-standard-2"],
-            labels=[spotinst.gke.OceanLaunchSpecLabelArgs(
-                key="labelKey",
-                value="labelVal",
-            )],
+            tags=[
+                "tag1",
+                "tag2",
+            ],
+            shielded_instance_config=spotinst.gke.OceanLaunchSpecShieldedInstanceConfigArgs(
+                enable_secure_boot=False,
+                enable_integrity_monitoring=True,
+            ),
+            storage=spotinst.gke.OceanLaunchSpecStorageArgs(
+                local_ssd_count=5,
+            ),
+            resource_limits=spotinst.gke.OceanLaunchSpecResourceLimitsArgs(
+                max_instance_count=3,
+                min_instance_count=0,
+            ),
+            service_account="default",
             metadatas=[spotinst.gke.OceanLaunchSpecMetadataArgs(
                 key="gci-update-strategy",
                 value="update_disabled",
             )],
+            labels=[spotinst.gke.OceanLaunchSpecLabelArgs(
+                key="labelKey",
+                value="labelVal",
+            )],
+            taints=[spotinst.gke.OceanLaunchSpecTaintArgs(
+                key="taintKey",
+                value="taintVal",
+                effect="taintEffect",
+            )],
+            autoscale_headrooms_automatics=[spotinst.gke.OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs(
+                auto_headroom_percentage=5,
+            )],
+            autoscale_headrooms=[spotinst.gke.OceanLaunchSpecAutoscaleHeadroomArgs(
+                num_of_units=5,
+                cpu_per_unit=1000,
+                gpu_per_unit=0,
+                memory_per_unit=2048,
+            )],
+            strategies=[spotinst.gke.OceanLaunchSpecStrategyArgs(
+                preemptible_percentage=30,
+            )],
+            scheduling_tasks=[spotinst.gke.OceanLaunchSpecSchedulingTaskArgs(
+                is_enabled=True,
+                cron_expression="0 1 * * *",
+                task_type="manualHeadroomUpdate",
+                task_headrooms=[spotinst.gke.OceanLaunchSpecSchedulingTaskTaskHeadroomArgs(
+                    num_of_units=5,
+                    cpu_per_unit=1000,
+                    gpu_per_unit=0,
+                    memory_per_unit=2048,
+                )],
+            )],
             network_interfaces=[spotinst.gke.OceanLaunchSpecNetworkInterfaceArgs(
+                network="test-vng-network",
+                project_id="test-vng-network-project",
                 access_configs=[spotinst.gke.OceanLaunchSpecNetworkInterfaceAccessConfigArgs(
                     name="external-nat-vng",
                     type="ONE_TO_ONE_NAT",
@@ -922,63 +954,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
                     ip_cidr_range="/25",
                     subnetwork_range_name="gke-test-native-vpc-pods-123456-vng",
                 )],
-                network="test-vng-network",
-                project_id="test-vng-network-project",
-            )],
-            node_pool_name="default-pool",
-            ocean_id="o-123456",
-            resource_limits=spotinst.gke.OceanLaunchSpecResourceLimitsArgs(
-                max_instance_count=3,
-                min_instance_count=0,
-            ),
-            restrict_scale_down=True,
-            root_volume_size=10,
-            root_volume_type="pd-standard",
-            scheduling_tasks=[spotinst.gke.OceanLaunchSpecSchedulingTaskArgs(
-                cron_expression="0 1 * * *",
-                is_enabled=True,
-                task_headrooms=[spotinst.gke.OceanLaunchSpecSchedulingTaskTaskHeadroomArgs(
-                    cpu_per_unit=1000,
-                    gpu_per_unit=0,
-                    memory_per_unit=2048,
-                    num_of_units=5,
-                )],
-                task_type="manualHeadroomUpdate",
-            )],
-            service_account="default",
-            shielded_instance_config=spotinst.gke.OceanLaunchSpecShieldedInstanceConfigArgs(
-                enable_integrity_monitoring=True,
-                enable_secure_boot=False,
-            ),
-            source_image="image",
-            storage=spotinst.gke.OceanLaunchSpecStorageArgs(
-                local_ssd_count=5,
-            ),
-            strategies=[spotinst.gke.OceanLaunchSpecStrategyArgs(
-                preemptible_percentage=30,
-            )],
-            tags=[
-                "tag1",
-                "tag2",
-            ],
-            taints=[spotinst.gke.OceanLaunchSpecTaintArgs(
-                effect="taintEffect",
-                key="taintKey",
-                value="taintVal",
             )])
-        ```
-        <!--End PulumiCodeChooser -->
-
-        ## Update Policy
-
-        * `update_policy` - (Optional)
-          * `should_roll` - (Required) Enables the roll.
-          * `roll_config` - (Required) Holds the roll configuration.
-            * `batch_size_percentage` - (Required) Sets the percentage of the instances to deploy in each batch.
-
-        <!--Start PulumiCodeChooser -->
-        ```python
-        import pulumi
         ```
         <!--End PulumiCodeChooser -->
 

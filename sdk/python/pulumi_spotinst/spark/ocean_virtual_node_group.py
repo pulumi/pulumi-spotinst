@@ -96,8 +96,8 @@ class OceanVirtualNodeGroup(pulumi.CustomResource):
         import pulumi_spotinst as spotinst
 
         example = spotinst.spark.OceanVirtualNodeGroup("example",
-            ocean_spark_cluster_id="cluster_id",
-            virtual_node_group_id="vng_id")
+            virtual_node_group_id="vng_id",
+            ocean_spark_cluster_id="cluster_id")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -125,8 +125,8 @@ class OceanVirtualNodeGroup(pulumi.CustomResource):
         import pulumi_spotinst as spotinst
 
         example = spotinst.spark.OceanVirtualNodeGroup("example",
-            ocean_spark_cluster_id="cluster_id",
-            virtual_node_group_id="vng_id")
+            virtual_node_group_id="vng_id",
+            ocean_spark_cluster_id="cluster_id")
         ```
         <!--End PulumiCodeChooser -->
 

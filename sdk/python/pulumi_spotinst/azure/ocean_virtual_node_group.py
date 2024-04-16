@@ -309,6 +309,25 @@ class OceanVirtualNodeGroup(pulumi.CustomResource):
         import pulumi_spotinst as spotinst
 
         example = spotinst.azure.OceanVirtualNodeGroup("example",
+            name="vng_name",
+            ocean_id="o-12345",
+            zones=[
+                "1",
+                "2",
+                "3",
+            ],
+            labels=[spotinst.azure.OceanVirtualNodeGroupLabelArgs(
+                key="label_key",
+                value="label_value",
+            )],
+            taints=[spotinst.azure.OceanVirtualNodeGroupTaintArgs(
+                key="taint_key",
+                value="taint_value",
+                effect="NoSchedule",
+            )],
+            resource_limits=[spotinst.azure.OceanVirtualNodeGroupResourceLimitArgs(
+                max_instance_count=4,
+            )],
             autoscales=[spotinst.azure.OceanVirtualNodeGroupAutoscaleArgs(
                 auto_headroom_percentage=5,
                 autoscale_headrooms=[spotinst.azure.OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArgs(
@@ -318,12 +337,7 @@ class OceanVirtualNodeGroup(pulumi.CustomResource):
                     num_of_units=16,
                 )],
             )],
-            labels=[spotinst.azure.OceanVirtualNodeGroupLabelArgs(
-                key="label_key",
-                value="label_value",
-            )],
             launch_specifications=[spotinst.azure.OceanVirtualNodeGroupLaunchSpecificationArgs(
-                max_pods=30,
                 os_disk=spotinst.azure.OceanVirtualNodeGroupLaunchSpecificationOsDiskArgs(
                     size_gb=100,
                     type="Standard_LRS",
@@ -333,21 +347,8 @@ class OceanVirtualNodeGroup(pulumi.CustomResource):
                     key="label_key",
                     value="label_value",
                 )],
-            )],
-            ocean_id="o-12345",
-            resource_limits=[spotinst.azure.OceanVirtualNodeGroupResourceLimitArgs(
-                max_instance_count=4,
-            )],
-            taints=[spotinst.azure.OceanVirtualNodeGroupTaintArgs(
-                effect="NoSchedule",
-                key="taint_key",
-                value="taint_value",
-            )],
-            zones=[
-                "1",
-                "2",
-                "3",
-            ])
+                max_pods=30,
+            )])
         ```
         <!--End PulumiCodeChooser -->
 
@@ -379,6 +380,25 @@ class OceanVirtualNodeGroup(pulumi.CustomResource):
         import pulumi_spotinst as spotinst
 
         example = spotinst.azure.OceanVirtualNodeGroup("example",
+            name="vng_name",
+            ocean_id="o-12345",
+            zones=[
+                "1",
+                "2",
+                "3",
+            ],
+            labels=[spotinst.azure.OceanVirtualNodeGroupLabelArgs(
+                key="label_key",
+                value="label_value",
+            )],
+            taints=[spotinst.azure.OceanVirtualNodeGroupTaintArgs(
+                key="taint_key",
+                value="taint_value",
+                effect="NoSchedule",
+            )],
+            resource_limits=[spotinst.azure.OceanVirtualNodeGroupResourceLimitArgs(
+                max_instance_count=4,
+            )],
             autoscales=[spotinst.azure.OceanVirtualNodeGroupAutoscaleArgs(
                 auto_headroom_percentage=5,
                 autoscale_headrooms=[spotinst.azure.OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArgs(
@@ -388,12 +408,7 @@ class OceanVirtualNodeGroup(pulumi.CustomResource):
                     num_of_units=16,
                 )],
             )],
-            labels=[spotinst.azure.OceanVirtualNodeGroupLabelArgs(
-                key="label_key",
-                value="label_value",
-            )],
             launch_specifications=[spotinst.azure.OceanVirtualNodeGroupLaunchSpecificationArgs(
-                max_pods=30,
                 os_disk=spotinst.azure.OceanVirtualNodeGroupLaunchSpecificationOsDiskArgs(
                     size_gb=100,
                     type="Standard_LRS",
@@ -403,21 +418,8 @@ class OceanVirtualNodeGroup(pulumi.CustomResource):
                     key="label_key",
                     value="label_value",
                 )],
-            )],
-            ocean_id="o-12345",
-            resource_limits=[spotinst.azure.OceanVirtualNodeGroupResourceLimitArgs(
-                max_instance_count=4,
-            )],
-            taints=[spotinst.azure.OceanVirtualNodeGroupTaintArgs(
-                effect="NoSchedule",
-                key="taint_key",
-                value="taint_value",
-            )],
-            zones=[
-                "1",
-                "2",
-                "3",
-            ])
+                max_pods=30,
+            )])
         ```
         <!--End PulumiCodeChooser -->
 

@@ -23,24 +23,24 @@ namespace Pulumi.SpotInst.Organization
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var terraformUser = new SpotInst.Organization.User("terraformUser", new()
+    ///     var terraformUser = new SpotInst.Organization.User("terraform_user", new()
     ///     {
     ///         Email = "abc@xyz.com",
     ///         FirstName = "test",
     ///         LastName = "user",
     ///         Password = "testUser@123",
+    ///         Role = "viewer",
     ///         Policies = new[]
     ///         {
     ///             new SpotInst.Organization.Inputs.UserPolicyArgs
     ///             {
+    ///                 PolicyId = "pol-abcd1236",
     ///                 PolicyAccountIds = new[]
     ///                 {
     ///                     "act-abcf4245",
     ///                 },
-    ///                 PolicyId = "pol-abcd1236",
     ///             },
     ///         },
-    ///         Role = "viewer",
     ///         UserGroupIds = new[]
     ///         {
     ///             "ugr-abcd1234",

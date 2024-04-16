@@ -25,12 +25,13 @@ namespace Pulumi.SpotInst
     /// {
     ///     var example = new SpotInst.DataIntegration("example", new()
     ///     {
+    ///         Name = "foo",
+    ///         Status = "enabled",
     ///         S3 = new SpotInst.Inputs.DataIntegrationS3Args
     ///         {
     ///             BucketName = "terraform-test-do-not-delete",
     ///             Subdir = "terraform-test-data-integration",
     ///         },
-    ///         Status = "enabled",
     ///     });
     /// 
     /// });

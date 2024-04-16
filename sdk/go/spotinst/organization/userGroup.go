@@ -28,8 +28,12 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := organization.NewUserGroup(ctx, "terraformUserGroup", &organization.UserGroupArgs{
+//			_, err := organization.NewUserGroup(ctx, "terraform_user_group", &organization.UserGroupArgs{
+//				Name:        pulumi.String("test_user_group"),
 //				Description: pulumi.String("user group by terraform"),
+//				UserIds: pulumi.StringArray{
+//					pulumi.String("u-372gf6ae"),
+//				},
 //				Policies: organization.UserGroupPolicyArray{
 //					&organization.UserGroupPolicyArgs{
 //						AccountIds: pulumi.StringArray{
@@ -37,9 +41,6 @@ import (
 //						},
 //						PolicyId: pulumi.String("pol-vv7d8c06"),
 //					},
-//				},
-//				UserIds: pulumi.StringArray{
-//					pulumi.String("u-372gf6ae"),
 //				},
 //			})
 //			if err != nil {

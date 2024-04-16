@@ -29,20 +29,20 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := organization.NewUser(ctx, "terraformUser", &organization.UserArgs{
+//			_, err := organization.NewUser(ctx, "terraform_user", &organization.UserArgs{
 //				Email:     pulumi.String("abc@xyz.com"),
 //				FirstName: pulumi.String("test"),
 //				LastName:  pulumi.String("user"),
 //				Password:  pulumi.String("testUser@123"),
+//				Role:      pulumi.String("viewer"),
 //				Policies: organization.UserPolicyArray{
 //					&organization.UserPolicyArgs{
+//						PolicyId: pulumi.String("pol-abcd1236"),
 //						PolicyAccountIds: pulumi.StringArray{
 //							pulumi.String("act-abcf4245"),
 //						},
-//						PolicyId: pulumi.String("pol-abcd1236"),
 //					},
 //				},
-//				Role: pulumi.String("viewer"),
 //				UserGroupIds: pulumi.StringArray{
 //					pulumi.String("ugr-abcd1234"),
 //					pulumi.String("ugr-defg8763"),

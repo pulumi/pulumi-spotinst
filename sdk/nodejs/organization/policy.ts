@@ -16,7 +16,8 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as spotinst from "@pulumi/spotinst";
  *
- * const terraformPolicy = new spotinst.organization.Policy("terraformPolicy", {
+ * const terraformPolicy = new spotinst.organization.Policy("terraform_policy", {
+ *     name: "test-policy",
  *     description: "policy by terraform",
  *     policyContents: [{
  *         statements: [

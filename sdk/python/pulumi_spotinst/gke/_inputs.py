@@ -1418,14 +1418,6 @@ class OceanImportAutoscalerResourceLimitsArgs:
                  max_vcpu: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[int] max_memory_gib: The maximum memory in GiB units that can be allocated to the cluster.
-               
-               <!--Start PulumiCodeChooser -->
-               ```python
-               import pulumi
-               ```
-               <!--End PulumiCodeChooser -->
-               
-               <a id="strategy"></a>
         :param pulumi.Input[int] max_vcpu: The maximum cpu in vCpu units that can be allocated to the cluster.
         """
         if max_memory_gib is not None:
@@ -1438,14 +1430,6 @@ class OceanImportAutoscalerResourceLimitsArgs:
     def max_memory_gib(self) -> Optional[pulumi.Input[int]]:
         """
         The maximum memory in GiB units that can be allocated to the cluster.
-
-        <!--Start PulumiCodeChooser -->
-        ```python
-        import pulumi
-        ```
-        <!--End PulumiCodeChooser -->
-
-        <a id="strategy"></a>
         """
         return pulumi.get(self, "max_memory_gib")
 
@@ -1737,12 +1721,6 @@ class OceanImportScheduledTaskTaskTaskParametersClusterRollArgs:
         """
         :param pulumi.Input[int] batch_size_percentage: Value in % to set size of batch in roll. Valid values are 0-100
                Example: 20.
-               
-               <!--Start PulumiCodeChooser -->
-               ```python
-               import pulumi
-               ```
-               <!--End PulumiCodeChooser -->
         """
         if batch_min_healthy_percentage is not None:
             pulumi.set(__self__, "batch_min_healthy_percentage", batch_min_healthy_percentage)
@@ -1768,12 +1746,6 @@ class OceanImportScheduledTaskTaskTaskParametersClusterRollArgs:
         """
         Value in % to set size of batch in roll. Valid values are 0-100
         Example: 20.
-
-        <!--Start PulumiCodeChooser -->
-        ```python
-        import pulumi
-        ```
-        <!--End PulumiCodeChooser -->
         """
         return pulumi.get(self, "batch_size_percentage")
 
@@ -1936,12 +1908,6 @@ class OceanImportUpdatePolicyRollConfigArgs:
         """
         :param pulumi.Input[int] batch_size_percentage: Value in % to set size of batch in roll. Valid values are 0-100
                Example: 20.
-               
-               <!--Start PulumiCodeChooser -->
-               ```python
-               import pulumi
-               ```
-               <!--End PulumiCodeChooser -->
         """
         pulumi.set(__self__, "batch_size_percentage", batch_size_percentage)
         if batch_min_healthy_percentage is not None:
@@ -1957,12 +1923,6 @@ class OceanImportUpdatePolicyRollConfigArgs:
         """
         Value in % to set size of batch in roll. Valid values are 0-100
         Example: 20.
-
-        <!--Start PulumiCodeChooser -->
-        ```python
-        import pulumi
-        ```
-        <!--End PulumiCodeChooser -->
         """
         return pulumi.get(self, "batch_size_percentage")
 

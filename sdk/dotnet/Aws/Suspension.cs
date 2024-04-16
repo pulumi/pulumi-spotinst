@@ -22,7 +22,7 @@ namespace Pulumi.SpotInst.Aws
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Create a suspension for Elastigroup
-    ///     var resourceName = new SpotInst.Aws.Suspension("resourceName", new()
+    ///     var resourceName = new SpotInst.Aws.Suspension("resource_name", new()
     ///     {
     ///         GroupId = "sig-12345678",
     ///         Suspensions = new[]

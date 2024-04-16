@@ -631,22 +631,6 @@ type BeanstalkScheduledTask struct {
 	// The percentage of instances to add or remove.
 	//
 	// Usage:
-	//
-	// <!--Start PulumiCodeChooser -->
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
-	// <!--End PulumiCodeChooser -->
 	AdjustmentPercentage *string `pulumi:"adjustmentPercentage"`
 	// The percentage size of each batch in the scheduled deployment roll.
 	BatchSizePercentage *string `pulumi:"batchSizePercentage"`
@@ -693,22 +677,6 @@ type BeanstalkScheduledTaskArgs struct {
 	// The percentage of instances to add or remove.
 	//
 	// Usage:
-	//
-	// <!--Start PulumiCodeChooser -->
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
-	// <!--End PulumiCodeChooser -->
 	AdjustmentPercentage pulumi.StringPtrInput `pulumi:"adjustmentPercentage"`
 	// The percentage size of each batch in the scheduled deployment roll.
 	BatchSizePercentage pulumi.StringPtrInput `pulumi:"batchSizePercentage"`
@@ -797,25 +765,6 @@ func (o BeanstalkScheduledTaskOutput) Adjustment() pulumi.StringPtrOutput {
 // The percentage of instances to add or remove.
 //
 // Usage:
-//
-// <!--Start PulumiCodeChooser -->
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
-// <!--End PulumiCodeChooser -->
 func (o BeanstalkScheduledTaskOutput) AdjustmentPercentage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BeanstalkScheduledTask) *string { return v.AdjustmentPercentage }).(pulumi.StringPtrOutput)
 }
@@ -1060,22 +1009,6 @@ type ElastigroupEbsBlockDevice struct {
 	// Modifying any `ebsBlockDevice` currently requires resource replacement.
 	//
 	// Usage:
-	//
-	// <!--Start PulumiCodeChooser -->
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
-	// <!--End PulumiCodeChooser -->
 	Throughput *int `pulumi:"throughput"`
 	// The size of the volume in gigabytes.
 	VolumeSize *int `pulumi:"volumeSize"`
@@ -1112,22 +1045,6 @@ type ElastigroupEbsBlockDeviceArgs struct {
 	// Modifying any `ebsBlockDevice` currently requires resource replacement.
 	//
 	// Usage:
-	//
-	// <!--Start PulumiCodeChooser -->
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
-	// <!--End PulumiCodeChooser -->
 	Throughput pulumi.IntPtrInput `pulumi:"throughput"`
 	// The size of the volume in gigabytes.
 	VolumeSize pulumi.IntPtrInput `pulumi:"volumeSize"`
@@ -1221,25 +1138,6 @@ func (o ElastigroupEbsBlockDeviceOutput) SnapshotId() pulumi.StringPtrOutput {
 // Modifying any `ebsBlockDevice` currently requires resource replacement.
 //
 // Usage:
-//
-// <!--Start PulumiCodeChooser -->
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
-// <!--End PulumiCodeChooser -->
 func (o ElastigroupEbsBlockDeviceOutput) Throughput() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ElastigroupEbsBlockDevice) *int { return v.Throughput }).(pulumi.IntPtrOutput)
 }
@@ -1281,22 +1179,6 @@ type ElastigroupEphemeralBlockDevice struct {
 	// (e.g. `"ephemeral0"`).
 	//
 	// Usage:
-	//
-	// <!--Start PulumiCodeChooser -->
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
-	// <!--End PulumiCodeChooser -->
 	VirtualName string `pulumi:"virtualName"`
 }
 
@@ -1318,22 +1200,6 @@ type ElastigroupEphemeralBlockDeviceArgs struct {
 	// (e.g. `"ephemeral0"`).
 	//
 	// Usage:
-	//
-	// <!--Start PulumiCodeChooser -->
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
-	// <!--End PulumiCodeChooser -->
 	VirtualName pulumi.StringInput `pulumi:"virtualName"`
 }
 
@@ -1397,25 +1263,6 @@ func (o ElastigroupEphemeralBlockDeviceOutput) DeviceName() pulumi.StringOutput 
 // (e.g. `"ephemeral0"`).
 //
 // Usage:
-//
-// <!--Start PulumiCodeChooser -->
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
-// <!--End PulumiCodeChooser -->
 func (o ElastigroupEphemeralBlockDeviceOutput) VirtualName() pulumi.StringOutput {
 	return o.ApplyT(func(v ElastigroupEphemeralBlockDevice) string { return v.VirtualName }).(pulumi.StringOutput)
 }
@@ -2413,22 +2260,6 @@ type ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdate struct {
 	// Level to update
 	//
 	// Usage:
-	//
-	// <!--Start PulumiCodeChooser -->
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
-	// <!--End PulumiCodeChooser -->
 	UpdateLevel *string `pulumi:"updateLevel"`
 }
 
@@ -2451,22 +2282,6 @@ type ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdateArgs struct {
 	// Level to update
 	//
 	// Usage:
-	//
-	// <!--Start PulumiCodeChooser -->
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
-	// <!--End PulumiCodeChooser -->
 	UpdateLevel pulumi.StringPtrInput `pulumi:"updateLevel"`
 }
 
@@ -2560,25 +2375,6 @@ func (o ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdateOutput) TimeW
 // Level to update
 //
 // Usage:
-//
-// <!--Start PulumiCodeChooser -->
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
-// <!--End PulumiCodeChooser -->
 func (o ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdateOutput) UpdateLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdate) *string { return v.UpdateLevel }).(pulumi.StringPtrOutput)
 }
@@ -2630,25 +2426,6 @@ func (o ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdatePtrOutput) Ti
 // Level to update
 //
 // Usage:
-//
-// <!--Start PulumiCodeChooser -->
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
-// <!--End PulumiCodeChooser -->
 func (o ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdatePtrOutput) UpdateLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdate) *string {
 		if v == nil {
@@ -2841,22 +2618,6 @@ type ElastigroupIntegrationCodedeployDeploymentGroup struct {
 	// The deployment group name.
 	//
 	// Usage:
-	//
-	// <!--Start PulumiCodeChooser -->
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
-	// <!--End PulumiCodeChooser -->
 	DeploymentGroupName string `pulumi:"deploymentGroupName"`
 }
 
@@ -2877,22 +2638,6 @@ type ElastigroupIntegrationCodedeployDeploymentGroupArgs struct {
 	// The deployment group name.
 	//
 	// Usage:
-	//
-	// <!--Start PulumiCodeChooser -->
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
-	// <!--End PulumiCodeChooser -->
 	DeploymentGroupName pulumi.StringInput `pulumi:"deploymentGroupName"`
 }
 
@@ -2955,25 +2700,6 @@ func (o ElastigroupIntegrationCodedeployDeploymentGroupOutput) ApplicationName()
 // The deployment group name.
 //
 // Usage:
-//
-// <!--Start PulumiCodeChooser -->
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
-// <!--End PulumiCodeChooser -->
 func (o ElastigroupIntegrationCodedeployDeploymentGroupOutput) DeploymentGroupName() pulumi.StringOutput {
 	return o.ApplyT(func(v ElastigroupIntegrationCodedeployDeploymentGroup) string { return v.DeploymentGroupName }).(pulumi.StringOutput)
 }
@@ -4296,22 +4022,6 @@ type ElastigroupIntegrationEcsBatch struct {
 	// Array of strings.
 	//
 	// Usage:
-	//
-	// <!--Start PulumiCodeChooser -->
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
-	// <!--End PulumiCodeChooser -->
 	JobQueueNames []string `pulumi:"jobQueueNames"`
 }
 
@@ -4330,22 +4040,6 @@ type ElastigroupIntegrationEcsBatchArgs struct {
 	// Array of strings.
 	//
 	// Usage:
-	//
-	// <!--Start PulumiCodeChooser -->
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
-	// <!--End PulumiCodeChooser -->
 	JobQueueNames pulumi.StringArrayInput `pulumi:"jobQueueNames"`
 }
 
@@ -4429,25 +4123,6 @@ func (o ElastigroupIntegrationEcsBatchOutput) ToElastigroupIntegrationEcsBatchPt
 // Array of strings.
 //
 // Usage:
-//
-// <!--Start PulumiCodeChooser -->
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
-// <!--End PulumiCodeChooser -->
 func (o ElastigroupIntegrationEcsBatchOutput) JobQueueNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ElastigroupIntegrationEcsBatch) []string { return v.JobQueueNames }).(pulumi.StringArrayOutput)
 }
@@ -4479,25 +4154,6 @@ func (o ElastigroupIntegrationEcsBatchPtrOutput) Elem() ElastigroupIntegrationEc
 // Array of strings.
 //
 // Usage:
-//
-// <!--Start PulumiCodeChooser -->
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
-// <!--End PulumiCodeChooser -->
 func (o ElastigroupIntegrationEcsBatchPtrOutput) JobQueueNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ElastigroupIntegrationEcsBatch) []string {
 		if v == nil {
@@ -4785,22 +4441,6 @@ type ElastigroupIntegrationKubernetes struct {
 	// The public IP of the DC/OS Master.
 	//
 	// Usage:
-	//
-	// <!--Start PulumiCodeChooser -->
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
-	// <!--End PulumiCodeChooser -->
 	ApiServer *string `pulumi:"apiServer"`
 	// The amount of time, in seconds, after a scaling activity completes before any further trigger-related scaling activities can start.
 	AutoscaleCooldown *int `pulumi:"autoscaleCooldown"`
@@ -4815,22 +4455,6 @@ type ElastigroupIntegrationKubernetes struct {
 	// A key/value mapping of tags to assign to the resource.
 	//
 	// Usage:
-	//
-	// <!--Start PulumiCodeChooser -->
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
-	// <!--End PulumiCodeChooser -->
 	AutoscaleLabels   []ElastigroupIntegrationKubernetesAutoscaleLabel `pulumi:"autoscaleLabels"`
 	ClusterIdentifier *string                                          `pulumi:"clusterIdentifier"`
 	// Valid values: `"saas"`, `"pod"`.
@@ -4854,22 +4478,6 @@ type ElastigroupIntegrationKubernetesArgs struct {
 	// The public IP of the DC/OS Master.
 	//
 	// Usage:
-	//
-	// <!--Start PulumiCodeChooser -->
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
-	// <!--End PulumiCodeChooser -->
 	ApiServer pulumi.StringPtrInput `pulumi:"apiServer"`
 	// The amount of time, in seconds, after a scaling activity completes before any further trigger-related scaling activities can start.
 	AutoscaleCooldown pulumi.IntPtrInput `pulumi:"autoscaleCooldown"`
@@ -4884,22 +4492,6 @@ type ElastigroupIntegrationKubernetesArgs struct {
 	// A key/value mapping of tags to assign to the resource.
 	//
 	// Usage:
-	//
-	// <!--Start PulumiCodeChooser -->
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
-	// <!--End PulumiCodeChooser -->
 	AutoscaleLabels   ElastigroupIntegrationKubernetesAutoscaleLabelArrayInput `pulumi:"autoscaleLabels"`
 	ClusterIdentifier pulumi.StringPtrInput                                    `pulumi:"clusterIdentifier"`
 	// Valid values: `"saas"`, `"pod"`.
@@ -4988,25 +4580,6 @@ func (o ElastigroupIntegrationKubernetesOutput) ToElastigroupIntegrationKubernet
 // The public IP of the DC/OS Master.
 //
 // Usage:
-//
-// <!--Start PulumiCodeChooser -->
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
-// <!--End PulumiCodeChooser -->
 func (o ElastigroupIntegrationKubernetesOutput) ApiServer() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElastigroupIntegrationKubernetes) *string { return v.ApiServer }).(pulumi.StringPtrOutput)
 }
@@ -5043,25 +4616,6 @@ func (o ElastigroupIntegrationKubernetesOutput) AutoscaleIsEnabled() pulumi.Bool
 // A key/value mapping of tags to assign to the resource.
 //
 // Usage:
-//
-// <!--Start PulumiCodeChooser -->
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
-// <!--End PulumiCodeChooser -->
 func (o ElastigroupIntegrationKubernetesOutput) AutoscaleLabels() ElastigroupIntegrationKubernetesAutoscaleLabelArrayOutput {
 	return o.ApplyT(func(v ElastigroupIntegrationKubernetes) []ElastigroupIntegrationKubernetesAutoscaleLabel {
 		return v.AutoscaleLabels
@@ -5109,25 +4663,6 @@ func (o ElastigroupIntegrationKubernetesPtrOutput) Elem() ElastigroupIntegration
 // The public IP of the DC/OS Master.
 //
 // Usage:
-//
-// <!--Start PulumiCodeChooser -->
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
-// <!--End PulumiCodeChooser -->
 func (o ElastigroupIntegrationKubernetesPtrOutput) ApiServer() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ElastigroupIntegrationKubernetes) *string {
 		if v == nil {
@@ -5190,25 +4725,6 @@ func (o ElastigroupIntegrationKubernetesPtrOutput) AutoscaleIsEnabled() pulumi.B
 // A key/value mapping of tags to assign to the resource.
 //
 // Usage:
-//
-// <!--Start PulumiCodeChooser -->
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
-// <!--End PulumiCodeChooser -->
 func (o ElastigroupIntegrationKubernetesPtrOutput) AutoscaleLabels() ElastigroupIntegrationKubernetesAutoscaleLabelArrayOutput {
 	return o.ApplyT(func(v *ElastigroupIntegrationKubernetes) []ElastigroupIntegrationKubernetesAutoscaleLabel {
 		if v == nil {
@@ -5685,22 +5201,6 @@ type ElastigroupIntegrationMesosphere struct {
 	// The public IP of the DC/OS Master.
 	//
 	// Usage:
-	//
-	// <!--Start PulumiCodeChooser -->
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
-	// <!--End PulumiCodeChooser -->
 	ApiServer string `pulumi:"apiServer"`
 }
 
@@ -5719,22 +5219,6 @@ type ElastigroupIntegrationMesosphereArgs struct {
 	// The public IP of the DC/OS Master.
 	//
 	// Usage:
-	//
-	// <!--Start PulumiCodeChooser -->
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
-	// <!--End PulumiCodeChooser -->
 	ApiServer pulumi.StringInput `pulumi:"apiServer"`
 }
 
@@ -5818,25 +5302,6 @@ func (o ElastigroupIntegrationMesosphereOutput) ToElastigroupIntegrationMesosphe
 // The public IP of the DC/OS Master.
 //
 // Usage:
-//
-// <!--Start PulumiCodeChooser -->
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
-// <!--End PulumiCodeChooser -->
 func (o ElastigroupIntegrationMesosphereOutput) ApiServer() pulumi.StringOutput {
 	return o.ApplyT(func(v ElastigroupIntegrationMesosphere) string { return v.ApiServer }).(pulumi.StringOutput)
 }
@@ -5868,25 +5333,6 @@ func (o ElastigroupIntegrationMesospherePtrOutput) Elem() ElastigroupIntegration
 // The public IP of the DC/OS Master.
 //
 // Usage:
-//
-// <!--Start PulumiCodeChooser -->
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
-// <!--End PulumiCodeChooser -->
 func (o ElastigroupIntegrationMesospherePtrOutput) ApiServer() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ElastigroupIntegrationMesosphere) *string {
 		if v == nil {
@@ -5900,22 +5346,6 @@ type ElastigroupIntegrationMultaiRuntime struct {
 	// The deployment id you want to get
 	//
 	// Usage:
-	//
-	// <!--Start PulumiCodeChooser -->
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
-	// <!--End PulumiCodeChooser -->
 	DeploymentId string `pulumi:"deploymentId"`
 }
 
@@ -5934,22 +5364,6 @@ type ElastigroupIntegrationMultaiRuntimeArgs struct {
 	// The deployment id you want to get
 	//
 	// Usage:
-	//
-	// <!--Start PulumiCodeChooser -->
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
-	// <!--End PulumiCodeChooser -->
 	DeploymentId pulumi.StringInput `pulumi:"deploymentId"`
 }
 
@@ -6033,25 +5447,6 @@ func (o ElastigroupIntegrationMultaiRuntimeOutput) ToElastigroupIntegrationMulta
 // The deployment id you want to get
 //
 // Usage:
-//
-// <!--Start PulumiCodeChooser -->
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
-// <!--End PulumiCodeChooser -->
 func (o ElastigroupIntegrationMultaiRuntimeOutput) DeploymentId() pulumi.StringOutput {
 	return o.ApplyT(func(v ElastigroupIntegrationMultaiRuntime) string { return v.DeploymentId }).(pulumi.StringOutput)
 }
@@ -6083,25 +5478,6 @@ func (o ElastigroupIntegrationMultaiRuntimePtrOutput) Elem() ElastigroupIntegrat
 // The deployment id you want to get
 //
 // Usage:
-//
-// <!--Start PulumiCodeChooser -->
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
-// <!--End PulumiCodeChooser -->
 func (o ElastigroupIntegrationMultaiRuntimePtrOutput) DeploymentId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ElastigroupIntegrationMultaiRuntime) *string {
 		if v == nil {
@@ -6117,22 +5493,6 @@ type ElastigroupIntegrationNomad struct {
 	// A key/value mapping of tags to assign to the resource.
 	//
 	// Usage:
-	//
-	// <!--Start PulumiCodeChooser -->
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
-	// <!--End PulumiCodeChooser -->
 	AutoscaleConstraints []ElastigroupIntegrationNomadAutoscaleConstraint `pulumi:"autoscaleConstraints"`
 	// The amount of time, in seconds, after a scaling activity completes before any further trigger-related scaling activities can start.
 	AutoscaleCooldown *int `pulumi:"autoscaleCooldown"`
@@ -6165,22 +5525,6 @@ type ElastigroupIntegrationNomadArgs struct {
 	// A key/value mapping of tags to assign to the resource.
 	//
 	// Usage:
-	//
-	// <!--Start PulumiCodeChooser -->
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
-	// <!--End PulumiCodeChooser -->
 	AutoscaleConstraints ElastigroupIntegrationNomadAutoscaleConstraintArrayInput `pulumi:"autoscaleConstraints"`
 	// The amount of time, in seconds, after a scaling activity completes before any further trigger-related scaling activities can start.
 	AutoscaleCooldown pulumi.IntPtrInput `pulumi:"autoscaleCooldown"`
@@ -6281,25 +5625,6 @@ func (o ElastigroupIntegrationNomadOutput) AclToken() pulumi.StringPtrOutput {
 // A key/value mapping of tags to assign to the resource.
 //
 // Usage:
-//
-// <!--Start PulumiCodeChooser -->
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
-// <!--End PulumiCodeChooser -->
 func (o ElastigroupIntegrationNomadOutput) AutoscaleConstraints() ElastigroupIntegrationNomadAutoscaleConstraintArrayOutput {
 	return o.ApplyT(func(v ElastigroupIntegrationNomad) []ElastigroupIntegrationNomadAutoscaleConstraint {
 		return v.AutoscaleConstraints
@@ -6375,25 +5700,6 @@ func (o ElastigroupIntegrationNomadPtrOutput) AclToken() pulumi.StringPtrOutput 
 // A key/value mapping of tags to assign to the resource.
 //
 // Usage:
-//
-// <!--Start PulumiCodeChooser -->
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
-// <!--End PulumiCodeChooser -->
 func (o ElastigroupIntegrationNomadPtrOutput) AutoscaleConstraints() ElastigroupIntegrationNomadAutoscaleConstraintArrayOutput {
 	return o.ApplyT(func(v *ElastigroupIntegrationNomad) []ElastigroupIntegrationNomadAutoscaleConstraint {
 		if v == nil {
@@ -6887,22 +6193,6 @@ type ElastigroupIntegrationRancher struct {
 	SecretKey string `pulumi:"secretKey"`
 	// The Rancher version. Must be `"1"` or `"2"`. If this field is omitted, it’s assumed that the Rancher cluster is version 1. Note that Kubernetes is required when using Rancher version 2^.
 	// Usage:
-	//
-	// <!--Start PulumiCodeChooser -->
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
-	// <!--End PulumiCodeChooser -->
 	Version *string `pulumi:"version"`
 }
 
@@ -6926,22 +6216,6 @@ type ElastigroupIntegrationRancherArgs struct {
 	SecretKey pulumi.StringInput `pulumi:"secretKey"`
 	// The Rancher version. Must be `"1"` or `"2"`. If this field is omitted, it’s assumed that the Rancher cluster is version 1. Note that Kubernetes is required when using Rancher version 2^.
 	// Usage:
-	//
-	// <!--Start PulumiCodeChooser -->
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
-	// <!--End PulumiCodeChooser -->
 	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
@@ -7039,25 +6313,6 @@ func (o ElastigroupIntegrationRancherOutput) SecretKey() pulumi.StringOutput {
 
 // The Rancher version. Must be `"1"` or `"2"`. If this field is omitted, it’s assumed that the Rancher cluster is version 1. Note that Kubernetes is required when using Rancher version 2^.
 // Usage:
-//
-// <!--Start PulumiCodeChooser -->
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
-// <!--End PulumiCodeChooser -->
 func (o ElastigroupIntegrationRancherOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElastigroupIntegrationRancher) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
@@ -7118,25 +6373,6 @@ func (o ElastigroupIntegrationRancherPtrOutput) SecretKey() pulumi.StringPtrOutp
 
 // The Rancher version. Must be `"1"` or `"2"`. If this field is omitted, it’s assumed that the Rancher cluster is version 1. Note that Kubernetes is required when using Rancher version 2^.
 // Usage:
-//
-// <!--Start PulumiCodeChooser -->
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
-// <!--End PulumiCodeChooser -->
 func (o ElastigroupIntegrationRancherPtrOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ElastigroupIntegrationRancher) *string {
 		if v == nil {
@@ -7415,22 +6651,6 @@ type ElastigroupIntegrationRoute53DomainRecordSet struct {
 	// Designates whether the DNS address should be exposed to connections outside the VPC.
 	//
 	// Usage:
-	//
-	// <!--Start PulumiCodeChooser -->
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
-	// <!--End PulumiCodeChooser -->
 	UsePublicDns *bool `pulumi:"usePublicDns"`
 	// Designates whether the IP address should be exposed to connections outside the VPC.
 	UsePublicIp *bool `pulumi:"usePublicIp"`
@@ -7453,22 +6673,6 @@ type ElastigroupIntegrationRoute53DomainRecordSetArgs struct {
 	// Designates whether the DNS address should be exposed to connections outside the VPC.
 	//
 	// Usage:
-	//
-	// <!--Start PulumiCodeChooser -->
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
-	// <!--End PulumiCodeChooser -->
 	UsePublicDns pulumi.BoolPtrInput `pulumi:"usePublicDns"`
 	// Designates whether the IP address should be exposed to connections outside the VPC.
 	UsePublicIp pulumi.BoolPtrInput `pulumi:"usePublicIp"`
@@ -7533,25 +6737,6 @@ func (o ElastigroupIntegrationRoute53DomainRecordSetOutput) Name() pulumi.String
 // Designates whether the DNS address should be exposed to connections outside the VPC.
 //
 // Usage:
-//
-// <!--Start PulumiCodeChooser -->
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
-// <!--End PulumiCodeChooser -->
 func (o ElastigroupIntegrationRoute53DomainRecordSetOutput) UsePublicDns() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ElastigroupIntegrationRoute53DomainRecordSet) *bool { return v.UsePublicDns }).(pulumi.BoolPtrOutput)
 }
@@ -9122,22 +8307,6 @@ type ElastigroupMultaiTargetSet struct {
 	// ID of Multai Load Balancer.
 	//
 	// Usage:
-	//
-	// <!--Start PulumiCodeChooser -->
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
-	// <!--End PulumiCodeChooser -->
 	BalancerId string `pulumi:"balancerId"`
 	// ID of Multai target set.
 	TargetSetId string `pulumi:"targetSetId"`
@@ -9158,22 +8327,6 @@ type ElastigroupMultaiTargetSetArgs struct {
 	// ID of Multai Load Balancer.
 	//
 	// Usage:
-	//
-	// <!--Start PulumiCodeChooser -->
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
-	// <!--End PulumiCodeChooser -->
 	BalancerId pulumi.StringInput `pulumi:"balancerId"`
 	// ID of Multai target set.
 	TargetSetId pulumi.StringInput `pulumi:"targetSetId"`
@@ -9233,25 +8386,6 @@ func (o ElastigroupMultaiTargetSetOutput) ToElastigroupMultaiTargetSetOutputWith
 // ID of Multai Load Balancer.
 //
 // Usage:
-//
-// <!--Start PulumiCodeChooser -->
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
-// <!--End PulumiCodeChooser -->
 func (o ElastigroupMultaiTargetSetOutput) BalancerId() pulumi.StringOutput {
 	return o.ApplyT(func(v ElastigroupMultaiTargetSet) string { return v.BalancerId }).(pulumi.StringOutput)
 }
@@ -9806,22 +8940,6 @@ type ElastigroupNetworkInterface struct {
 	// Indicates whether to assign IPV6 addresses to your instance. Requires a subnet with IPV6 CIDR block ranges.
 	//
 	// Usage:
-	//
-	// <!--Start PulumiCodeChooser -->
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
-	// <!--End PulumiCodeChooser -->
 	AssociateIpv6Address *bool `pulumi:"associateIpv6Address"`
 	// Indicates whether to assign a public IP address to an instance you launch in a VPC. The public IP address can only be assigned to a network interface for eth0, and can only be assigned to a new network interface, not an existing one.
 	AssociatePublicIpAddress *bool `pulumi:"associatePublicIpAddress"`
@@ -9854,22 +8972,6 @@ type ElastigroupNetworkInterfaceArgs struct {
 	// Indicates whether to assign IPV6 addresses to your instance. Requires a subnet with IPV6 CIDR block ranges.
 	//
 	// Usage:
-	//
-	// <!--Start PulumiCodeChooser -->
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
-	// <!--End PulumiCodeChooser -->
 	AssociateIpv6Address pulumi.BoolPtrInput `pulumi:"associateIpv6Address"`
 	// Indicates whether to assign a public IP address to an instance you launch in a VPC. The public IP address can only be assigned to a network interface for eth0, and can only be assigned to a new network interface, not an existing one.
 	AssociatePublicIpAddress pulumi.BoolPtrInput `pulumi:"associatePublicIpAddress"`
@@ -9941,25 +9043,6 @@ func (o ElastigroupNetworkInterfaceOutput) ToElastigroupNetworkInterfaceOutputWi
 // Indicates whether to assign IPV6 addresses to your instance. Requires a subnet with IPV6 CIDR block ranges.
 //
 // Usage:
-//
-// <!--Start PulumiCodeChooser -->
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
-// <!--End PulumiCodeChooser -->
 func (o ElastigroupNetworkInterfaceOutput) AssociateIpv6Address() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ElastigroupNetworkInterface) *bool { return v.AssociateIpv6Address }).(pulumi.BoolPtrOutput)
 }
@@ -11228,38 +10311,6 @@ type ElastigroupScalingTargetPolicy struct {
 	// Start a metric prediction process to determine the expected target metric value within the next two days. See [Predictive Autoscaling](https://api.spotinst.com/elastigroup-for-aws/concepts/scaling-concepts/predictive-autoscaling/) documentation for more info. Valid values: `FORECAST_AND_SCALE`, `FORECAST_ONLY`.
 	//
 	// Usage:
-	//
-	// <!--Start PulumiCodeChooser -->
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
-	// <!--End PulumiCodeChooser -->
-	//
-	// <!--Start PulumiCodeChooser -->
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
-	// <!--End PulumiCodeChooser -->
 	PredictiveMode *string `pulumi:"predictiveMode"`
 	// String, the source of the metric. Valid values: `"cloudWatch"`, `"spectrum"`.
 	Source *string `pulumi:"source"`
@@ -11304,38 +10355,6 @@ type ElastigroupScalingTargetPolicyArgs struct {
 	// Start a metric prediction process to determine the expected target metric value within the next two days. See [Predictive Autoscaling](https://api.spotinst.com/elastigroup-for-aws/concepts/scaling-concepts/predictive-autoscaling/) documentation for more info. Valid values: `FORECAST_AND_SCALE`, `FORECAST_ONLY`.
 	//
 	// Usage:
-	//
-	// <!--Start PulumiCodeChooser -->
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
-	// <!--End PulumiCodeChooser -->
-	//
-	// <!--Start PulumiCodeChooser -->
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
-	// <!--End PulumiCodeChooser -->
 	PredictiveMode pulumi.StringPtrInput `pulumi:"predictiveMode"`
 	// String, the source of the metric. Valid values: `"cloudWatch"`, `"spectrum"`.
 	Source pulumi.StringPtrInput `pulumi:"source"`
@@ -11443,44 +10462,6 @@ func (o ElastigroupScalingTargetPolicyOutput) PolicyName() pulumi.StringOutput {
 // Start a metric prediction process to determine the expected target metric value within the next two days. See [Predictive Autoscaling](https://api.spotinst.com/elastigroup-for-aws/concepts/scaling-concepts/predictive-autoscaling/) documentation for more info. Valid values: `FORECAST_AND_SCALE`, `FORECAST_ONLY`.
 //
 // Usage:
-//
-// <!--Start PulumiCodeChooser -->
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
-// <!--End PulumiCodeChooser -->
-//
-// <!--Start PulumiCodeChooser -->
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
-// <!--End PulumiCodeChooser -->
 func (o ElastigroupScalingTargetPolicyOutput) PredictiveMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElastigroupScalingTargetPolicy) *string { return v.PredictiveMode }).(pulumi.StringPtrOutput)
 }
@@ -12272,22 +11253,6 @@ type ElastigroupScheduledTask struct {
 	// The percentage of instances to add or remove.
 	//
 	// Usage:
-	//
-	// <!--Start PulumiCodeChooser -->
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
-	// <!--End PulumiCodeChooser -->
 	AdjustmentPercentage *string `pulumi:"adjustmentPercentage"`
 	// The percentage size of each batch in the scheduled deployment roll.
 	BatchSizePercentage *string `pulumi:"batchSizePercentage"`
@@ -12334,22 +11299,6 @@ type ElastigroupScheduledTaskArgs struct {
 	// The percentage of instances to add or remove.
 	//
 	// Usage:
-	//
-	// <!--Start PulumiCodeChooser -->
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
-	// <!--End PulumiCodeChooser -->
 	AdjustmentPercentage pulumi.StringPtrInput `pulumi:"adjustmentPercentage"`
 	// The percentage size of each batch in the scheduled deployment roll.
 	BatchSizePercentage pulumi.StringPtrInput `pulumi:"batchSizePercentage"`
@@ -12438,25 +11387,6 @@ func (o ElastigroupScheduledTaskOutput) Adjustment() pulumi.StringPtrOutput {
 // The percentage of instances to add or remove.
 //
 // Usage:
-//
-// <!--Start PulumiCodeChooser -->
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
-// <!--End PulumiCodeChooser -->
 func (o ElastigroupScheduledTaskOutput) AdjustmentPercentage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElastigroupScheduledTask) *string { return v.AdjustmentPercentage }).(pulumi.StringPtrOutput)
 }
@@ -12552,22 +11482,6 @@ type ElastigroupSignal struct {
 	// The signals defined timeout- default is 40 minutes (1800 seconds).
 	//
 	// Usage:
-	//
-	// <!--Start PulumiCodeChooser -->
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
-	// <!--End PulumiCodeChooser -->
 	Timeout *int `pulumi:"timeout"`
 }
 
@@ -12588,22 +11502,6 @@ type ElastigroupSignalArgs struct {
 	// The signals defined timeout- default is 40 minutes (1800 seconds).
 	//
 	// Usage:
-	//
-	// <!--Start PulumiCodeChooser -->
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
-	// <!--End PulumiCodeChooser -->
 	Timeout pulumi.IntPtrInput `pulumi:"timeout"`
 }
 
@@ -12666,25 +11564,6 @@ func (o ElastigroupSignalOutput) Name() pulumi.StringOutput {
 // The signals defined timeout- default is 40 minutes (1800 seconds).
 //
 // Usage:
-//
-// <!--Start PulumiCodeChooser -->
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
-// <!--End PulumiCodeChooser -->
 func (o ElastigroupSignalOutput) Timeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ElastigroupSignal) *int { return v.Timeout }).(pulumi.IntPtrOutput)
 }
@@ -12717,22 +11596,6 @@ type ElastigroupStatefulDeallocation struct {
 	// For stateful groups: remove snapshots.
 	//
 	// Usage:
-	//
-	// <!--Start PulumiCodeChooser -->
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
-	// <!--End PulumiCodeChooser -->
 	ShouldDeleteSnapshots *bool `pulumi:"shouldDeleteSnapshots"`
 	// For stateful groups: remove persistent volumes.
 	ShouldDeleteVolumes *bool `pulumi:"shouldDeleteVolumes"`
@@ -12757,22 +11620,6 @@ type ElastigroupStatefulDeallocationArgs struct {
 	// For stateful groups: remove snapshots.
 	//
 	// Usage:
-	//
-	// <!--Start PulumiCodeChooser -->
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
-	// <!--End PulumiCodeChooser -->
 	ShouldDeleteSnapshots pulumi.BoolPtrInput `pulumi:"shouldDeleteSnapshots"`
 	// For stateful groups: remove persistent volumes.
 	ShouldDeleteVolumes pulumi.BoolPtrInput `pulumi:"shouldDeleteVolumes"`
@@ -12868,25 +11715,6 @@ func (o ElastigroupStatefulDeallocationOutput) ShouldDeleteNetworkInterfaces() p
 // For stateful groups: remove snapshots.
 //
 // Usage:
-//
-// <!--Start PulumiCodeChooser -->
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
-// <!--End PulumiCodeChooser -->
 func (o ElastigroupStatefulDeallocationOutput) ShouldDeleteSnapshots() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ElastigroupStatefulDeallocation) *bool { return v.ShouldDeleteSnapshots }).(pulumi.BoolPtrOutput)
 }
@@ -12943,25 +11771,6 @@ func (o ElastigroupStatefulDeallocationPtrOutput) ShouldDeleteNetworkInterfaces(
 // For stateful groups: remove snapshots.
 //
 // Usage:
-//
-// <!--Start PulumiCodeChooser -->
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
-// <!--End PulumiCodeChooser -->
 func (o ElastigroupStatefulDeallocationPtrOutput) ShouldDeleteSnapshots() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ElastigroupStatefulDeallocation) *bool {
 		if v == nil {
@@ -12987,22 +11796,6 @@ type ElastigroupStatefulInstanceAction struct {
 	// String, Action type. Supported action types: `pause`, `resume`, `recycle`, `deallocate`.
 	//
 	// Usage:
-	//
-	// <!--Start PulumiCodeChooser -->
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
-	// <!--End PulumiCodeChooser -->
 	Type string `pulumi:"type"`
 }
 
@@ -13023,22 +11816,6 @@ type ElastigroupStatefulInstanceActionArgs struct {
 	// String, Action type. Supported action types: `pause`, `resume`, `recycle`, `deallocate`.
 	//
 	// Usage:
-	//
-	// <!--Start PulumiCodeChooser -->
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
-	// <!--End PulumiCodeChooser -->
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -13101,25 +11878,6 @@ func (o ElastigroupStatefulInstanceActionOutput) StatefulInstanceId() pulumi.Str
 // String, Action type. Supported action types: `pause`, `resume`, `recycle`, `deallocate`.
 //
 // Usage:
-//
-// <!--Start PulumiCodeChooser -->
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
-// <!--End PulumiCodeChooser -->
 func (o ElastigroupStatefulInstanceActionOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ElastigroupStatefulInstanceAction) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -13878,22 +12636,6 @@ type ElastigroupUpdatePolicyRollConfigStrategyOnFailure struct {
 	// The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
 	DrainingTimeout *int `pulumi:"drainingTimeout"`
 	// Decrementing the group target capacity after detaching the instances.
-	//
-	// <!--Start PulumiCodeChooser -->
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
-	// <!--End PulumiCodeChooser -->
 	ShouldDecrementTargetCapacity *bool `pulumi:"shouldDecrementTargetCapacity"`
 	// Indicator if the action should apply to all batches of the deployment or only the latest batch.
 	ShouldHandleAllBatches *bool `pulumi:"shouldHandleAllBatches"`
@@ -13917,22 +12659,6 @@ type ElastigroupUpdatePolicyRollConfigStrategyOnFailureArgs struct {
 	// The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
 	DrainingTimeout pulumi.IntPtrInput `pulumi:"drainingTimeout"`
 	// Decrementing the group target capacity after detaching the instances.
-	//
-	// <!--Start PulumiCodeChooser -->
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
-	// <!--End PulumiCodeChooser -->
 	ShouldDecrementTargetCapacity pulumi.BoolPtrInput `pulumi:"shouldDecrementTargetCapacity"`
 	// Indicator if the action should apply to all batches of the deployment or only the latest batch.
 	ShouldHandleAllBatches pulumi.BoolPtrInput `pulumi:"shouldHandleAllBatches"`
@@ -14030,25 +12756,6 @@ func (o ElastigroupUpdatePolicyRollConfigStrategyOnFailureOutput) DrainingTimeou
 }
 
 // Decrementing the group target capacity after detaching the instances.
-//
-// <!--Start PulumiCodeChooser -->
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
-// <!--End PulumiCodeChooser -->
 func (o ElastigroupUpdatePolicyRollConfigStrategyOnFailureOutput) ShouldDecrementTargetCapacity() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ElastigroupUpdatePolicyRollConfigStrategyOnFailure) *bool {
 		return v.ShouldDecrementTargetCapacity
@@ -14114,25 +12821,6 @@ func (o ElastigroupUpdatePolicyRollConfigStrategyOnFailurePtrOutput) DrainingTim
 }
 
 // Decrementing the group target capacity after detaching the instances.
-//
-// <!--Start PulumiCodeChooser -->
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
-// <!--End PulumiCodeChooser -->
 func (o ElastigroupUpdatePolicyRollConfigStrategyOnFailurePtrOutput) ShouldDecrementTargetCapacity() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ElastigroupUpdatePolicyRollConfigStrategyOnFailure) *bool {
 		if v == nil {

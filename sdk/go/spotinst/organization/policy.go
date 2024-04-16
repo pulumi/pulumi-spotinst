@@ -29,7 +29,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := organization.NewPolicy(ctx, "terraformPolicy", &organization.PolicyArgs{
+//			_, err := organization.NewPolicy(ctx, "terraform_policy", &organization.PolicyArgs{
+//				Name:        pulumi.String("test-policy"),
 //				Description: pulumi.String("policy by terraform"),
 //				PolicyContents: organization.PolicyPolicyContentArray{
 //					&organization.PolicyPolicyContentArgs{

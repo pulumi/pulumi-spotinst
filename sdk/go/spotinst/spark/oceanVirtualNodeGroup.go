@@ -34,8 +34,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := spark.NewOceanVirtualNodeGroup(ctx, "example", &spark.OceanVirtualNodeGroupArgs{
-//				OceanSparkClusterId: pulumi.String("cluster_id"),
 //				VirtualNodeGroupId:  pulumi.String("vng_id"),
+//				OceanSparkClusterId: pulumi.String("cluster_id"),
 //			})
 //			if err != nil {
 //				return err

@@ -17,11 +17,12 @@ import * as utilities from "./utilities";
  * import * as spotinst from "@pulumi/spotinst";
  *
  * const example = new spotinst.DataIntegration("example", {
+ *     name: "foo",
+ *     status: "enabled",
  *     s3: {
  *         bucketName: "terraform-test-do-not-delete",
  *         subdir: "terraform-test-data-integration",
  *     },
- *     status: "enabled",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

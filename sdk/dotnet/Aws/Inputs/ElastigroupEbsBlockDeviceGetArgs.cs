@@ -54,18 +54,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         /// Modifying any `ebs_block_device` currently requires resource replacement.
         /// 
         /// Usage:
-        /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        /// });
-        /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         [Input("throughput")]
         public Input<int>? Throughput { get; set; }

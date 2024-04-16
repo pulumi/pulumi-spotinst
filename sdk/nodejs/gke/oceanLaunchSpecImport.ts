@@ -15,8 +15,8 @@ import * as utilities from "../utilities";
  * import * as spotinst from "@pulumi/spotinst";
  *
  * const example = new spotinst.gke.OceanLaunchSpecImport("example", {
- *     nodePoolName: "default-pool",
  *     oceanId: "o-123456",
+ *     nodePoolName: "default-pool",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

@@ -44,13 +44,13 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.spotinst.gcp.Elastigroup;
  * import com.pulumi.spotinst.gcp.ElastigroupArgs;
+ * import com.pulumi.spotinst.gcp.inputs.ElastigroupLabelArgs;
  * import com.pulumi.spotinst.gcp.inputs.ElastigroupBackendServiceArgs;
  * import com.pulumi.spotinst.gcp.inputs.ElastigroupDiskArgs;
- * import com.pulumi.spotinst.gcp.inputs.ElastigroupInstanceTypesCustomArgs;
- * import com.pulumi.spotinst.gcp.inputs.ElastigroupLabelArgs;
  * import com.pulumi.spotinst.gcp.inputs.ElastigroupNetworkInterfaceArgs;
- * import com.pulumi.spotinst.gcp.inputs.ElastigroupScalingUpPolicyArgs;
+ * import com.pulumi.spotinst.gcp.inputs.ElastigroupInstanceTypesCustomArgs;
  * import com.pulumi.spotinst.gcp.inputs.ElastigroupSubnetArgs;
+ * import com.pulumi.spotinst.gcp.inputs.ElastigroupScalingUpPolicyArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -65,85 +65,86 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new Elastigroup(&#34;example&#34;, ElastigroupArgs.builder()        
+ *             .name(&#34;example-gcp&#34;)
+ *             .description(&#34;spotinst gcp group&#34;)
+ *             .serviceAccount(&#34;example@myProject.iam.gservicecct.com&#34;)
+ *             .startupScript(&#34;&#34;)
+ *             .instanceNamePrefix(&#34;test-123a&#34;)
+ *             .minSize(0)
+ *             .maxSize(1)
+ *             .desiredCapacity(1)
  *             .availabilityZones(            
  *                 &#34;asia-east1-c&#34;,
  *                 &#34;us-central1-a&#34;)
+ *             .preemptiblePercentage(50)
+ *             .fallbackToOndemand(true)
+ *             .drainingTimeout(180)
+ *             .provisioningModel(&#34;SPOT&#34;)
+ *             .labels(ElastigroupLabelArgs.builder()
+ *                 .key(&#34;test_key&#34;)
+ *                 .value(&#34;test_value&#34;)
+ *                 .build())
+ *             .tags(            
+ *                 &#34;http&#34;,
+ *                 &#34;https&#34;)
  *             .backendServices(ElastigroupBackendServiceArgs.builder()
+ *                 .serviceName(&#34;spotinst-elb-backend-service&#34;)
  *                 .locationType(&#34;regional&#34;)
+ *                 .scheme(&#34;INTERNAL&#34;)
  *                 .namedPorts(ElastigroupBackendServiceNamedPortArgs.builder()
  *                     .name(&#34;port-name&#34;)
  *                     .ports(                    
  *                         8000,
  *                         6000)
  *                     .build())
- *                 .scheme(&#34;INTERNAL&#34;)
- *                 .serviceName(&#34;spotinst-elb-backend-service&#34;)
  *                 .build())
- *             .description(&#34;spotinst gcp group&#34;)
- *             .desiredCapacity(1)
  *             .disks(ElastigroupDiskArgs.builder()
+ *                 .deviceName(&#34;device&#34;)
+ *                 .mode(&#34;READ_WRITE&#34;)
+ *                 .type(&#34;PERSISTENT&#34;)
  *                 .autoDelete(true)
  *                 .boot(true)
- *                 .deviceName(&#34;device&#34;)
+ *                 .interface_(&#34;SCSI&#34;)
  *                 .initializeParams(ElastigroupDiskInitializeParamArgs.builder()
  *                     .diskSizeGb(10)
  *                     .diskType(&#34;pd-standard&#34;)
  *                     .sourceImage(&#34;&#34;)
  *                     .build())
- *                 .interface_(&#34;SCSI&#34;)
- *                 .mode(&#34;READ_WRITE&#34;)
- *                 .type(&#34;PERSISTENT&#34;)
  *                 .build())
- *             .drainingTimeout(180)
- *             .fallbackToOndemand(true)
- *             .instanceNamePrefix(&#34;test-123a&#34;)
- *             .instanceTypesCustoms(ElastigroupInstanceTypesCustomArgs.builder()
- *                 .memoryGib(7)
- *                 .vcpu(2)
+ *             .networkInterfaces(ElastigroupNetworkInterfaceArgs.builder()
+ *                 .network(&#34;spot-network&#34;)
  *                 .build())
  *             .instanceTypesOndemand(&#34;n1-standard-1&#34;)
  *             .instanceTypesPreemptibles(            
  *                 &#34;n1-standard-1&#34;,
  *                 &#34;n1-standard-2&#34;)
- *             .labels(ElastigroupLabelArgs.builder()
- *                 .key(&#34;test_key&#34;)
- *                 .value(&#34;test_value&#34;)
+ *             .instanceTypesCustoms(ElastigroupInstanceTypesCustomArgs.builder()
+ *                 .vcpu(2)
+ *                 .memoryGib(7)
  *                 .build())
- *             .maxSize(1)
- *             .minSize(0)
- *             .networkInterfaces(ElastigroupNetworkInterfaceArgs.builder()
- *                 .network(&#34;spot-network&#34;)
- *                 .build())
- *             .preemptiblePercentage(50)
- *             .provisioningModel(&#34;SPOT&#34;)
- *             .scalingUpPolicies(ElastigroupScalingUpPolicyArgs.builder()
- *                 .actionType(&#34;adjustment&#34;)
- *                 .adjustment(1)
- *                 .cooldown(300)
- *                 .dimensions(ElastigroupScalingUpPolicyDimensionArgs.builder()
- *                     .name(&#34;storage_type&#34;)
- *                     .value(&#34;pd-ssd&#34;)
- *                     .build())
- *                 .evaluationPeriods(1)
- *                 .metricName(&#34;instance/disk/read_ops_count&#34;)
- *                 .namespace(&#34;compute&#34;)
- *                 .operator(&#34;gte&#34;)
- *                 .period(300)
- *                 .policyName(&#34;scale_up_1&#34;)
- *                 .source(&#34;stackdriver&#34;)
- *                 .statistic(&#34;average&#34;)
- *                 .threshold(10000)
- *                 .unit(&#34;percent&#34;)
- *                 .build())
- *             .serviceAccount(&#34;example@myProject.iam.gservicecct.com&#34;)
- *             .startupScript(&#34;&#34;)
  *             .subnets(ElastigroupSubnetArgs.builder()
  *                 .region(&#34;asia-east1&#34;)
  *                 .subnetNames(&#34;default&#34;)
  *                 .build())
- *             .tags(            
- *                 &#34;http&#34;,
- *                 &#34;https&#34;)
+ *             .scalingUpPolicies(ElastigroupScalingUpPolicyArgs.builder()
+ *                 .policyName(&#34;scale_up_1&#34;)
+ *                 .source(&#34;stackdriver&#34;)
+ *                 .metricName(&#34;instance/disk/read_ops_count&#34;)
+ *                 .namespace(&#34;compute&#34;)
+ *                 .statistic(&#34;average&#34;)
+ *                 .unit(&#34;percent&#34;)
+ *                 .threshold(10000)
+ *                 .period(300)
+ *                 .cooldown(300)
+ *                 .operator(&#34;gte&#34;)
+ *                 .evaluationPeriods(1)
+ *                 .actionType(&#34;adjustment&#34;)
+ *                 .adjustment(1)
+ *                 .dimensions(ElastigroupScalingUpPolicyDimensionArgs.builder()
+ *                     .name(&#34;storage_type&#34;)
+ *                     .value(&#34;pd-ssd&#34;)
+ *                     .build())
+ *                 .build())
  *             .build());
  * 
  *     }
@@ -619,62 +620,12 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
     /**
      * Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
      * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *     }
-     * }
-     * ```
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
      */
     @Export(name="unhealthyDuration", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> unhealthyDuration;
 
     /**
      * @return Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *     }
-     * }
-     * ```
-     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public Output<Optional<Integer>> unhealthyDuration() {

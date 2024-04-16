@@ -13,6 +13,177 @@ import (
 )
 
 // Provides a Spotinst AWS group resource.
+//
+// ## Example Usage
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst/aws"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Create an Elastigroup
+//			_, err := aws.NewElastigroup(ctx, "default-elastigroup", &aws.ElastigroupArgs{
+//				Name:            pulumi.String("default-elastigroup"),
+//				Description:     pulumi.String("created by Pulumi"),
+//				Product:         pulumi.String("Linux/UNIX"),
+//				MaxSize:         pulumi.Int(0),
+//				MinSize:         pulumi.Int(0),
+//				DesiredCapacity: pulumi.Int(0),
+//				CapacityUnit:    pulumi.String("weight"),
+//				Region:          pulumi.String("us-west-2"),
+//				SubnetIds: pulumi.StringArray{
+//					pulumi.String("sb-123456"),
+//					pulumi.String("sb-456789"),
+//				},
+//				ImageId:            pulumi.String("ami-a27d8fda"),
+//				IamInstanceProfile: pulumi.String("iam-profile"),
+//				KeyName:            pulumi.String("my-key.ssh"),
+//				SecurityGroups: pulumi.StringArray{
+//					pulumi.String("sg-123456"),
+//				},
+//				UserData:         pulumi.String("echo hello world"),
+//				EnableMonitoring: pulumi.Bool(false),
+//				EbsOptimized:     pulumi.Bool(false),
+//				PlacementTenancy: pulumi.String("default"),
+//				MetadataOptions: &aws.ElastigroupMetadataOptionsArgs{
+//					HttpTokens:              pulumi.String("optional"),
+//					HttpPutResponseHopLimit: pulumi.Int(10),
+//					InstanceMetadataTags:    pulumi.String("enabled"),
+//				},
+//				CpuOptions: &aws.ElastigroupCpuOptionsArgs{
+//					ThreadsPerCore: pulumi.Int(1),
+//				},
+//				InstanceTypesOndemand: pulumi.String("m3.2xlarge"),
+//				InstanceTypesSpots: pulumi.StringArray{
+//					pulumi.String("m3.xlarge"),
+//					pulumi.String("m3.2xlarge"),
+//				},
+//				InstanceTypesPreferredSpots: pulumi.StringArray{
+//					pulumi.String("m3.xlarge"),
+//				},
+//				OnDemandTypes: pulumi.StringArray{
+//					pulumi.String("c3.large"),
+//				},
+//				InstanceTypesWeights: aws.ElastigroupInstanceTypesWeightArray{
+//					&aws.ElastigroupInstanceTypesWeightArgs{
+//						InstanceType: pulumi.String("m3.xlarge"),
+//						Weight:       pulumi.Int(10),
+//					},
+//					&aws.ElastigroupInstanceTypesWeightArgs{
+//						InstanceType: pulumi.String("m3.2xlarge"),
+//						Weight:       pulumi.Int(16),
+//					},
+//				},
+//				ResourceRequirements: aws.ElastigroupResourceRequirementArray{
+//					&aws.ElastigroupResourceRequirementArgs{
+//						ExcludedInstanceFamilies: pulumi.StringArray{
+//							pulumi.String("a"),
+//							pulumi.String("m"),
+//						},
+//						ExcludedInstanceTypes: pulumi.StringArray{
+//							pulumi.String("m3.large"),
+//						},
+//						ExcludedInstanceGenerations: pulumi.StringArray{
+//							pulumi.String("1"),
+//							pulumi.String("2"),
+//						},
+//						RequiredGpuMinimum:    pulumi.Int(1),
+//						RequiredGpuMaximum:    pulumi.Int(16),
+//						RequiredMemoryMinimum: pulumi.Int(1),
+//						RequiredMemoryMaximum: pulumi.Int(512),
+//						RequiredVcpuMinimum:   pulumi.Int(1),
+//						RequiredVcpuMaximum:   pulumi.Int(64),
+//					},
+//				},
+//				Orientation:             pulumi.String("balanced"),
+//				FallbackToOndemand:      pulumi.Bool(false),
+//				CpuCredits:              pulumi.String("unlimited"),
+//				MinimumInstanceLifetime: pulumi.Int(12),
+//				WaitForCapacity:         pulumi.Int(5),
+//				WaitForCapacityTimeout:  pulumi.Int(300),
+//				ScalingStrategies: aws.ElastigroupScalingStrategyArray{
+//					&aws.ElastigroupScalingStrategyArgs{
+//						TerminateAtEndOfBillingHour: pulumi.Bool(true),
+//						TerminationPolicy:           pulumi.String("default"),
+//					},
+//				},
+//				ScalingUpPolicies: aws.ElastigroupScalingUpPolicyArray{
+//					&aws.ElastigroupScalingUpPolicyArgs{
+//						PolicyName:        pulumi.String("Default Scaling Up Policy"),
+//						MetricName:        pulumi.String("DefaultQueuesDepth"),
+//						Statistic:         pulumi.String("average"),
+//						Unit:              pulumi.String("none"),
+//						Adjustment:        pulumi.String("1"),
+//						Namespace:         pulumi.String("custom"),
+//						Threshold:         pulumi.Float64(100),
+//						Period:            pulumi.Int(60),
+//						EvaluationPeriods: pulumi.Int(5),
+//						Cooldown:          pulumi.Int(300),
+//					},
+//				},
+//				ScalingDownPolicies: aws.ElastigroupScalingDownPolicyArray{
+//					&aws.ElastigroupScalingDownPolicyArgs{
+//						PolicyName:        pulumi.String("Default Scaling Down Policy"),
+//						MetricName:        pulumi.String("DefaultQueuesDepth"),
+//						Statistic:         pulumi.String("average"),
+//						Unit:              pulumi.String("none"),
+//						Adjustment:        pulumi.String("1"),
+//						Namespace:         pulumi.String("custom"),
+//						Threshold:         pulumi.Float64(10),
+//						Period:            pulumi.Int(60),
+//						EvaluationPeriods: pulumi.Int(10),
+//						Cooldown:          pulumi.Int(300),
+//					},
+//				},
+//				Tags: aws.ElastigroupTagArray{
+//					&aws.ElastigroupTagArgs{
+//						Key:   pulumi.String("Env"),
+//						Value: pulumi.String("production"),
+//					},
+//					&aws.ElastigroupTagArgs{
+//						Key:   pulumi.String("Name"),
+//						Value: pulumi.String("default-production"),
+//					},
+//					&aws.ElastigroupTagArgs{
+//						Key:   pulumi.String("Project"),
+//						Value: pulumi.String("app_v2"),
+//					},
+//				},
+//				ResourceTagSpecifications: aws.ElastigroupResourceTagSpecificationArray{
+//					&aws.ElastigroupResourceTagSpecificationArgs{
+//						ShouldTagEnis:      pulumi.Bool(true),
+//						ShouldTagVolumes:   pulumi.Bool(true),
+//						ShouldTagSnapshots: pulumi.Bool(true),
+//						ShouldTagAmis:      pulumi.Bool(true),
+//					},
+//				},
+//				Logging: &aws.ElastigroupLoggingArgs{
+//					Export: &aws.ElastigroupLoggingExportArgs{
+//						S3s: aws.ElastigroupLoggingExportS3Array{
+//							&aws.ElastigroupLoggingExportS3Args{
+//								Id: pulumi.String("di-123456"),
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
 type Elastigroup struct {
 	pulumi.CustomResourceState
 
@@ -131,22 +302,6 @@ type Elastigroup struct {
 	// List of Private IPs to associate to the group instances.(e.g. "172.1.1.0"). Please note: This setting will only apply if persistence.persist_private_ip is set to true.
 	//
 	// Usage:
-	//
-	// <!--Start PulumiCodeChooser -->
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
-	// <!--End PulumiCodeChooser -->
 	PrivateIps pulumi.StringArrayOutput `pulumi:"privateIps"`
 	// Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`.
 	// For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
@@ -351,22 +506,6 @@ type elastigroupState struct {
 	// List of Private IPs to associate to the group instances.(e.g. "172.1.1.0"). Please note: This setting will only apply if persistence.persist_private_ip is set to true.
 	//
 	// Usage:
-	//
-	// <!--Start PulumiCodeChooser -->
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
-	// <!--End PulumiCodeChooser -->
 	PrivateIps []string `pulumi:"privateIps"`
 	// Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`.
 	// For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
@@ -530,22 +669,6 @@ type ElastigroupState struct {
 	// List of Private IPs to associate to the group instances.(e.g. "172.1.1.0"). Please note: This setting will only apply if persistence.persist_private_ip is set to true.
 	//
 	// Usage:
-	//
-	// <!--Start PulumiCodeChooser -->
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
-	// <!--End PulumiCodeChooser -->
 	PrivateIps pulumi.StringArrayInput
 	// Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`.
 	// For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
@@ -713,22 +836,6 @@ type elastigroupArgs struct {
 	// List of Private IPs to associate to the group instances.(e.g. "172.1.1.0"). Please note: This setting will only apply if persistence.persist_private_ip is set to true.
 	//
 	// Usage:
-	//
-	// <!--Start PulumiCodeChooser -->
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
-	// <!--End PulumiCodeChooser -->
 	PrivateIps []string `pulumi:"privateIps"`
 	// Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`.
 	// For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
@@ -893,22 +1000,6 @@ type ElastigroupArgs struct {
 	// List of Private IPs to associate to the group instances.(e.g. "172.1.1.0"). Please note: This setting will only apply if persistence.persist_private_ip is set to true.
 	//
 	// Usage:
-	//
-	// <!--Start PulumiCodeChooser -->
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
-	// <!--End PulumiCodeChooser -->
 	PrivateIps pulumi.StringArrayInput
 	// Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`.
 	// For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
@@ -1332,25 +1423,6 @@ func (o ElastigroupOutput) PreferredAvailabilityZones() pulumi.StringArrayOutput
 // List of Private IPs to associate to the group instances.(e.g. "172.1.1.0"). Please note: This setting will only apply if persistence.persist_private_ip is set to true.
 //
 // Usage:
-//
-// <!--Start PulumiCodeChooser -->
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
-// <!--End PulumiCodeChooser -->
 func (o ElastigroupOutput) PrivateIps() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Elastigroup) pulumi.StringArrayOutput { return v.PrivateIps }).(pulumi.StringArrayOutput)
 }

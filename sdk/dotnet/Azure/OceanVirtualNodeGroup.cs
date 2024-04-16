@@ -25,6 +25,38 @@ namespace Pulumi.SpotInst.Azure
     /// {
     ///     var example = new SpotInst.Azure.OceanVirtualNodeGroup("example", new()
     ///     {
+    ///         Name = "vng_name",
+    ///         OceanId = "o-12345",
+    ///         Zones = new[]
+    ///         {
+    ///             "1",
+    ///             "2",
+    ///             "3",
+    ///         },
+    ///         Labels = new[]
+    ///         {
+    ///             new SpotInst.Azure.Inputs.OceanVirtualNodeGroupLabelArgs
+    ///             {
+    ///                 Key = "label_key",
+    ///                 Value = "label_value",
+    ///             },
+    ///         },
+    ///         Taints = new[]
+    ///         {
+    ///             new SpotInst.Azure.Inputs.OceanVirtualNodeGroupTaintArgs
+    ///             {
+    ///                 Key = "taint_key",
+    ///                 Value = "taint_value",
+    ///                 Effect = "NoSchedule",
+    ///             },
+    ///         },
+    ///         ResourceLimits = new[]
+    ///         {
+    ///             new SpotInst.Azure.Inputs.OceanVirtualNodeGroupResourceLimitArgs
+    ///             {
+    ///                 MaxInstanceCount = 4,
+    ///             },
+    ///         },
     ///         Autoscales = new[]
     ///         {
     ///             new SpotInst.Azure.Inputs.OceanVirtualNodeGroupAutoscaleArgs
@@ -42,19 +74,10 @@ namespace Pulumi.SpotInst.Azure
     ///                 },
     ///             },
     ///         },
-    ///         Labels = new[]
-    ///         {
-    ///             new SpotInst.Azure.Inputs.OceanVirtualNodeGroupLabelArgs
-    ///             {
-    ///                 Key = "label_key",
-    ///                 Value = "label_value",
-    ///             },
-    ///         },
     ///         LaunchSpecifications = new[]
     ///         {
     ///             new SpotInst.Azure.Inputs.OceanVirtualNodeGroupLaunchSpecificationArgs
     ///             {
-    ///                 MaxPods = 30,
     ///                 OsDisk = new SpotInst.Azure.Inputs.OceanVirtualNodeGroupLaunchSpecificationOsDiskArgs
     ///                 {
     ///                     SizeGb = 100,
@@ -69,30 +92,8 @@ namespace Pulumi.SpotInst.Azure
     ///                         Value = "label_value",
     ///                     },
     ///                 },
+    ///                 MaxPods = 30,
     ///             },
-    ///         },
-    ///         OceanId = "o-12345",
-    ///         ResourceLimits = new[]
-    ///         {
-    ///             new SpotInst.Azure.Inputs.OceanVirtualNodeGroupResourceLimitArgs
-    ///             {
-    ///                 MaxInstanceCount = 4,
-    ///             },
-    ///         },
-    ///         Taints = new[]
-    ///         {
-    ///             new SpotInst.Azure.Inputs.OceanVirtualNodeGroupTaintArgs
-    ///             {
-    ///                 Effect = "NoSchedule",
-    ///                 Key = "taint_key",
-    ///                 Value = "taint_value",
-    ///             },
-    ///         },
-    ///         Zones = new[]
-    ///         {
-    ///             "1",
-    ///             "2",
-    ///             "3",
     ///         },
     ///     });
     /// 

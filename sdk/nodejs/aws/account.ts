@@ -15,7 +15,7 @@ import * as utilities from "../utilities";
  * import * as spotinst from "@pulumi/spotinst";
  *
  * // Create a Account
- * const myAwsAcct = new spotinst.aws.Account("myAwsAcct", {});
+ * const myAwsAcct = new spotinst.aws.Account("my_aws_acct", {name: "my_aws_acct"});
  * ```
  * <!--End PulumiCodeChooser -->
  */

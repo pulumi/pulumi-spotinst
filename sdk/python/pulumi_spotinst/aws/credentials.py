@@ -109,8 +109,8 @@ class Credentials(pulumi.CustomResource):
 
         # set credential AWS
         credential = spotinst.aws.Credentials("credential",
-            account_id="act-123456",
-            iamrole="arn:aws:iam::1234567890:role/Spot_Iam_Role")
+            iamrole="arn:aws:iam::1234567890:role/Spot_Iam_Role",
+            account_id="act-123456")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -137,8 +137,8 @@ class Credentials(pulumi.CustomResource):
 
         # set credential AWS
         credential = spotinst.aws.Credentials("credential",
-            account_id="act-123456",
-            iamrole="arn:aws:iam::1234567890:role/Spot_Iam_Role")
+            iamrole="arn:aws:iam::1234567890:role/Spot_Iam_Role",
+            account_id="act-123456")
         ```
         <!--End PulumiCodeChooser -->
 

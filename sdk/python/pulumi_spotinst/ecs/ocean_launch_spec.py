@@ -631,44 +631,13 @@ class OceanLaunchSpec(pulumi.CustomResource):
         import pulumi_spotinst as spotinst
 
         example = spotinst.ecs.OceanLaunchSpec("example",
-            attributes=[spotinst.ecs.OceanLaunchSpecAttributeArgs(
-                key="fakeKey",
-                value="fakeValue",
-            )],
-            autoscale_headrooms=[spotinst.ecs.OceanLaunchSpecAutoscaleHeadroomArgs(
-                cpu_per_unit=1000,
-                memory_per_unit=2048,
-                num_of_units=5,
-            )],
-            block_device_mappings=[spotinst.ecs.OceanLaunchSpecBlockDeviceMappingArgs(
-                device_name="/dev/xvda1",
-                ebs=spotinst.ecs.OceanLaunchSpecBlockDeviceMappingEbsArgs(
-                    delete_on_termination=True,
-                    dynamic_volume_size=spotinst.ecs.OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs(
-                        base_size=50,
-                        resource="CPU",
-                        size_per_resource_unit=20,
-                    ),
-                    encrypted=False,
-                    throughput=500,
-                    volume_size=50,
-                    volume_type="gp2",
-                ),
-            )],
-            iam_instance_profile="iam-profile",
+            ocean_id="o-123456",
             image_id="ami-123456",
-            images=[
-                spotinst.ecs.OceanLaunchSpecImageArgs(
-                    image_id="ami-12345",
-                ),
-                spotinst.ecs.OceanLaunchSpecImageArgs(
-                    image_id="ami-67890",
-                ),
-            ],
-            instance_metadata_options=spotinst.ecs.OceanLaunchSpecInstanceMetadataOptionsArgs(
-                http_put_response_hop_limit=10,
-                http_tokens="required",
-            ),
+            user_data="echo hello world",
+            iam_instance_profile="iam-profile",
+            subnet_ids=["subnet-12345"],
+            security_group_ids=["awseb-12345"],
+            restrict_scale_down=True,
             instance_types=[
                 "m3.large",
                 "m3.xlarge",
@@ -686,7 +655,6 @@ class OceanLaunchSpec(pulumi.CustomResource):
                 "m5.12xlarge",
                 "m5.24xlarge",
             ],
-            ocean_id="o-123456",
             preferred_spot_types=[
                 "m3.large",
                 "m3.xlarge",
@@ -694,27 +662,59 @@ class OceanLaunchSpec(pulumi.CustomResource):
                 "m4.large",
                 "m4.xlarge",
             ],
-            restrict_scale_down=True,
-            scheduling_tasks=[spotinst.ecs.OceanLaunchSpecSchedulingTaskArgs(
-                cron_expression="0 1 * * *",
-                is_enabled=True,
-                task_headrooms=[spotinst.ecs.OceanLaunchSpecSchedulingTaskTaskHeadroomArgs(
-                    cpu_per_unit=1000,
-                    memory_per_unit=2048,
-                    num_of_units=5,
-                )],
-                task_type="manualHeadroomUpdate",
+            block_device_mappings=[spotinst.ecs.OceanLaunchSpecBlockDeviceMappingArgs(
+                device_name="/dev/xvda1",
+                ebs=spotinst.ecs.OceanLaunchSpecBlockDeviceMappingEbsArgs(
+                    delete_on_termination=True,
+                    encrypted=False,
+                    volume_type="gp2",
+                    volume_size=50,
+                    throughput=500,
+                    dynamic_volume_size=spotinst.ecs.OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs(
+                        base_size=50,
+                        resource="CPU",
+                        size_per_resource_unit=20,
+                    ),
+                ),
             )],
-            security_group_ids=["awseb-12345"],
+            attributes=[spotinst.ecs.OceanLaunchSpecAttributeArgs(
+                key="fakeKey",
+                value="fakeValue",
+            )],
+            instance_metadata_options=spotinst.ecs.OceanLaunchSpecInstanceMetadataOptionsArgs(
+                http_tokens="required",
+                http_put_response_hop_limit=10,
+            ),
+            autoscale_headrooms=[spotinst.ecs.OceanLaunchSpecAutoscaleHeadroomArgs(
+                num_of_units=5,
+                cpu_per_unit=1000,
+                memory_per_unit=2048,
+            )],
             strategies=[spotinst.ecs.OceanLaunchSpecStrategyArgs(
                 spot_percentage=50,
             )],
-            subnet_ids=["subnet-12345"],
             tags=[spotinst.ecs.OceanLaunchSpecTagArgs(
                 key="Env",
                 value="production",
             )],
-            user_data="echo hello world")
+            images=[
+                spotinst.ecs.OceanLaunchSpecImageArgs(
+                    image_id="ami-12345",
+                ),
+                spotinst.ecs.OceanLaunchSpecImageArgs(
+                    image_id="ami-67890",
+                ),
+            ],
+            scheduling_tasks=[spotinst.ecs.OceanLaunchSpecSchedulingTaskArgs(
+                is_enabled=True,
+                cron_expression="0 1 * * *",
+                task_type="manualHeadroomUpdate",
+                task_headrooms=[spotinst.ecs.OceanLaunchSpecSchedulingTaskTaskHeadroomArgs(
+                    num_of_units=5,
+                    cpu_per_unit=1000,
+                    memory_per_unit=2048,
+                )],
+            )])
         ```
         <!--End PulumiCodeChooser -->
 
@@ -774,44 +774,13 @@ class OceanLaunchSpec(pulumi.CustomResource):
         import pulumi_spotinst as spotinst
 
         example = spotinst.ecs.OceanLaunchSpec("example",
-            attributes=[spotinst.ecs.OceanLaunchSpecAttributeArgs(
-                key="fakeKey",
-                value="fakeValue",
-            )],
-            autoscale_headrooms=[spotinst.ecs.OceanLaunchSpecAutoscaleHeadroomArgs(
-                cpu_per_unit=1000,
-                memory_per_unit=2048,
-                num_of_units=5,
-            )],
-            block_device_mappings=[spotinst.ecs.OceanLaunchSpecBlockDeviceMappingArgs(
-                device_name="/dev/xvda1",
-                ebs=spotinst.ecs.OceanLaunchSpecBlockDeviceMappingEbsArgs(
-                    delete_on_termination=True,
-                    dynamic_volume_size=spotinst.ecs.OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs(
-                        base_size=50,
-                        resource="CPU",
-                        size_per_resource_unit=20,
-                    ),
-                    encrypted=False,
-                    throughput=500,
-                    volume_size=50,
-                    volume_type="gp2",
-                ),
-            )],
-            iam_instance_profile="iam-profile",
+            ocean_id="o-123456",
             image_id="ami-123456",
-            images=[
-                spotinst.ecs.OceanLaunchSpecImageArgs(
-                    image_id="ami-12345",
-                ),
-                spotinst.ecs.OceanLaunchSpecImageArgs(
-                    image_id="ami-67890",
-                ),
-            ],
-            instance_metadata_options=spotinst.ecs.OceanLaunchSpecInstanceMetadataOptionsArgs(
-                http_put_response_hop_limit=10,
-                http_tokens="required",
-            ),
+            user_data="echo hello world",
+            iam_instance_profile="iam-profile",
+            subnet_ids=["subnet-12345"],
+            security_group_ids=["awseb-12345"],
+            restrict_scale_down=True,
             instance_types=[
                 "m3.large",
                 "m3.xlarge",
@@ -829,7 +798,6 @@ class OceanLaunchSpec(pulumi.CustomResource):
                 "m5.12xlarge",
                 "m5.24xlarge",
             ],
-            ocean_id="o-123456",
             preferred_spot_types=[
                 "m3.large",
                 "m3.xlarge",
@@ -837,27 +805,59 @@ class OceanLaunchSpec(pulumi.CustomResource):
                 "m4.large",
                 "m4.xlarge",
             ],
-            restrict_scale_down=True,
-            scheduling_tasks=[spotinst.ecs.OceanLaunchSpecSchedulingTaskArgs(
-                cron_expression="0 1 * * *",
-                is_enabled=True,
-                task_headrooms=[spotinst.ecs.OceanLaunchSpecSchedulingTaskTaskHeadroomArgs(
-                    cpu_per_unit=1000,
-                    memory_per_unit=2048,
-                    num_of_units=5,
-                )],
-                task_type="manualHeadroomUpdate",
+            block_device_mappings=[spotinst.ecs.OceanLaunchSpecBlockDeviceMappingArgs(
+                device_name="/dev/xvda1",
+                ebs=spotinst.ecs.OceanLaunchSpecBlockDeviceMappingEbsArgs(
+                    delete_on_termination=True,
+                    encrypted=False,
+                    volume_type="gp2",
+                    volume_size=50,
+                    throughput=500,
+                    dynamic_volume_size=spotinst.ecs.OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs(
+                        base_size=50,
+                        resource="CPU",
+                        size_per_resource_unit=20,
+                    ),
+                ),
             )],
-            security_group_ids=["awseb-12345"],
+            attributes=[spotinst.ecs.OceanLaunchSpecAttributeArgs(
+                key="fakeKey",
+                value="fakeValue",
+            )],
+            instance_metadata_options=spotinst.ecs.OceanLaunchSpecInstanceMetadataOptionsArgs(
+                http_tokens="required",
+                http_put_response_hop_limit=10,
+            ),
+            autoscale_headrooms=[spotinst.ecs.OceanLaunchSpecAutoscaleHeadroomArgs(
+                num_of_units=5,
+                cpu_per_unit=1000,
+                memory_per_unit=2048,
+            )],
             strategies=[spotinst.ecs.OceanLaunchSpecStrategyArgs(
                 spot_percentage=50,
             )],
-            subnet_ids=["subnet-12345"],
             tags=[spotinst.ecs.OceanLaunchSpecTagArgs(
                 key="Env",
                 value="production",
             )],
-            user_data="echo hello world")
+            images=[
+                spotinst.ecs.OceanLaunchSpecImageArgs(
+                    image_id="ami-12345",
+                ),
+                spotinst.ecs.OceanLaunchSpecImageArgs(
+                    image_id="ami-67890",
+                ),
+            ],
+            scheduling_tasks=[spotinst.ecs.OceanLaunchSpecSchedulingTaskArgs(
+                is_enabled=True,
+                cron_expression="0 1 * * *",
+                task_type="manualHeadroomUpdate",
+                task_headrooms=[spotinst.ecs.OceanLaunchSpecSchedulingTaskTaskHeadroomArgs(
+                    num_of_units=5,
+                    cpu_per_unit=1000,
+                    memory_per_unit=2048,
+                )],
+            )])
         ```
         <!--End PulumiCodeChooser -->
 

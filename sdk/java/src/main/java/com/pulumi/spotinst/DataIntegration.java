@@ -44,11 +44,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new DataIntegration(&#34;example&#34;, DataIntegrationArgs.builder()        
+ *             .name(&#34;foo&#34;)
+ *             .status(&#34;enabled&#34;)
  *             .s3(DataIntegrationS3Args.builder()
  *                 .bucketName(&#34;terraform-test-do-not-delete&#34;)
  *                 .subdir(&#34;terraform-test-data-integration&#34;)
  *                 .build())
- *             .status(&#34;enabled&#34;)
  *             .build());
  * 
  *     }

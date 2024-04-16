@@ -16,8 +16,10 @@ import * as utilities from "./utilities";
  *
  * // Create a Subscription
  * const default_subscription = new spotinst.Subscription("default-subscription", {
- *     endpoint: "http://endpoint.com",
+ *     resourceId: my_eg.id,
  *     eventType: "AWS_EC2_INSTANCE_LAUNCH",
+ *     protocol: "http",
+ *     endpoint: "http://endpoint.com",
  *     format: {
  *         event: "%event%",
  *         instance_id: "%instance-id%",
@@ -25,8 +27,6 @@ import * as utilities from "./utilities";
  *         resource_name: "%resource-name%",
  *         tags: "foo,baz,baz",
  *     },
- *     protocol: "http",
- *     resourceId: spotinst_elastigroup_aws["my-eg"].id,
  * });
  * ```
  * <!--End PulumiCodeChooser -->

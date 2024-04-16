@@ -11,6 +11,200 @@ namespace Pulumi.SpotInst.Aws
 {
     /// <summary>
     /// Provides a Spotinst AWS group resource.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using SpotInst = Pulumi.SpotInst;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Create an Elastigroup
+    ///     var default_elastigroup = new SpotInst.Aws.Elastigroup("default-elastigroup", new()
+    ///     {
+    ///         Name = "default-elastigroup",
+    ///         Description = "created by Pulumi",
+    ///         Product = "Linux/UNIX",
+    ///         MaxSize = 0,
+    ///         MinSize = 0,
+    ///         DesiredCapacity = 0,
+    ///         CapacityUnit = "weight",
+    ///         Region = "us-west-2",
+    ///         SubnetIds = new[]
+    ///         {
+    ///             "sb-123456",
+    ///             "sb-456789",
+    ///         },
+    ///         ImageId = "ami-a27d8fda",
+    ///         IamInstanceProfile = "iam-profile",
+    ///         KeyName = "my-key.ssh",
+    ///         SecurityGroups = new[]
+    ///         {
+    ///             "sg-123456",
+    ///         },
+    ///         UserData = "echo hello world",
+    ///         EnableMonitoring = false,
+    ///         EbsOptimized = false,
+    ///         PlacementTenancy = "default",
+    ///         MetadataOptions = new SpotInst.Aws.Inputs.ElastigroupMetadataOptionsArgs
+    ///         {
+    ///             HttpTokens = "optional",
+    ///             HttpPutResponseHopLimit = 10,
+    ///             InstanceMetadataTags = "enabled",
+    ///         },
+    ///         CpuOptions = new SpotInst.Aws.Inputs.ElastigroupCpuOptionsArgs
+    ///         {
+    ///             ThreadsPerCore = 1,
+    ///         },
+    ///         InstanceTypesOndemand = "m3.2xlarge",
+    ///         InstanceTypesSpots = new[]
+    ///         {
+    ///             "m3.xlarge",
+    ///             "m3.2xlarge",
+    ///         },
+    ///         InstanceTypesPreferredSpots = new[]
+    ///         {
+    ///             "m3.xlarge",
+    ///         },
+    ///         OnDemandTypes = new[]
+    ///         {
+    ///             "c3.large",
+    ///         },
+    ///         InstanceTypesWeights = new[]
+    ///         {
+    ///             new SpotInst.Aws.Inputs.ElastigroupInstanceTypesWeightArgs
+    ///             {
+    ///                 InstanceType = "m3.xlarge",
+    ///                 Weight = 10,
+    ///             },
+    ///             new SpotInst.Aws.Inputs.ElastigroupInstanceTypesWeightArgs
+    ///             {
+    ///                 InstanceType = "m3.2xlarge",
+    ///                 Weight = 16,
+    ///             },
+    ///         },
+    ///         ResourceRequirements = new[]
+    ///         {
+    ///             new SpotInst.Aws.Inputs.ElastigroupResourceRequirementArgs
+    ///             {
+    ///                 ExcludedInstanceFamilies = new[]
+    ///                 {
+    ///                     "a",
+    ///                     "m",
+    ///                 },
+    ///                 ExcludedInstanceTypes = new[]
+    ///                 {
+    ///                     "m3.large",
+    ///                 },
+    ///                 ExcludedInstanceGenerations = new[]
+    ///                 {
+    ///                     "1",
+    ///                     "2",
+    ///                 },
+    ///                 RequiredGpuMinimum = 1,
+    ///                 RequiredGpuMaximum = 16,
+    ///                 RequiredMemoryMinimum = 1,
+    ///                 RequiredMemoryMaximum = 512,
+    ///                 RequiredVcpuMinimum = 1,
+    ///                 RequiredVcpuMaximum = 64,
+    ///             },
+    ///         },
+    ///         Orientation = "balanced",
+    ///         FallbackToOndemand = false,
+    ///         CpuCredits = "unlimited",
+    ///         MinimumInstanceLifetime = 12,
+    ///         WaitForCapacity = 5,
+    ///         WaitForCapacityTimeout = 300,
+    ///         ScalingStrategies = new[]
+    ///         {
+    ///             new SpotInst.Aws.Inputs.ElastigroupScalingStrategyArgs
+    ///             {
+    ///                 TerminateAtEndOfBillingHour = true,
+    ///                 TerminationPolicy = "default",
+    ///             },
+    ///         },
+    ///         ScalingUpPolicies = new[]
+    ///         {
+    ///             new SpotInst.Aws.Inputs.ElastigroupScalingUpPolicyArgs
+    ///             {
+    ///                 PolicyName = "Default Scaling Up Policy",
+    ///                 MetricName = "DefaultQueuesDepth",
+    ///                 Statistic = "average",
+    ///                 Unit = "none",
+    ///                 Adjustment = "1",
+    ///                 Namespace = "custom",
+    ///                 Threshold = 100,
+    ///                 Period = 60,
+    ///                 EvaluationPeriods = 5,
+    ///                 Cooldown = 300,
+    ///             },
+    ///         },
+    ///         ScalingDownPolicies = new[]
+    ///         {
+    ///             new SpotInst.Aws.Inputs.ElastigroupScalingDownPolicyArgs
+    ///             {
+    ///                 PolicyName = "Default Scaling Down Policy",
+    ///                 MetricName = "DefaultQueuesDepth",
+    ///                 Statistic = "average",
+    ///                 Unit = "none",
+    ///                 Adjustment = "1",
+    ///                 Namespace = "custom",
+    ///                 Threshold = 10,
+    ///                 Period = 60,
+    ///                 EvaluationPeriods = 10,
+    ///                 Cooldown = 300,
+    ///             },
+    ///         },
+    ///         Tags = new[]
+    ///         {
+    ///             new SpotInst.Aws.Inputs.ElastigroupTagArgs
+    ///             {
+    ///                 Key = "Env",
+    ///                 Value = "production",
+    ///             },
+    ///             new SpotInst.Aws.Inputs.ElastigroupTagArgs
+    ///             {
+    ///                 Key = "Name",
+    ///                 Value = "default-production",
+    ///             },
+    ///             new SpotInst.Aws.Inputs.ElastigroupTagArgs
+    ///             {
+    ///                 Key = "Project",
+    ///                 Value = "app_v2",
+    ///             },
+    ///         },
+    ///         ResourceTagSpecifications = new[]
+    ///         {
+    ///             new SpotInst.Aws.Inputs.ElastigroupResourceTagSpecificationArgs
+    ///             {
+    ///                 ShouldTagEnis = true,
+    ///                 ShouldTagVolumes = true,
+    ///                 ShouldTagSnapshots = true,
+    ///                 ShouldTagAmis = true,
+    ///             },
+    ///         },
+    ///         Logging = new SpotInst.Aws.Inputs.ElastigroupLoggingArgs
+    ///         {
+    ///             Export = new SpotInst.Aws.Inputs.ElastigroupLoggingExportArgs
+    ///             {
+    ///                 S3s = new[]
+    ///                 {
+    ///                     new SpotInst.Aws.Inputs.ElastigroupLoggingExportS3Args
+    ///                     {
+    ///                         Id = "di-123456",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [SpotInstResourceType("spotinst:aws/elastigroup:Elastigroup")]
     public partial class Elastigroup : global::Pulumi.CustomResource
@@ -347,18 +541,6 @@ namespace Pulumi.SpotInst.Aws
         /// List of Private IPs to associate to the group instances.(e.g. "172.1.1.0"). Please note: This setting will only apply if persistence.persist_private_ip is set to true.
         /// 
         /// Usage:
-        /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        /// });
-        /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         [Output("privateIps")]
         public Output<ImmutableArray<string>> PrivateIps { get; private set; } = null!;
@@ -950,18 +1132,6 @@ namespace Pulumi.SpotInst.Aws
         /// List of Private IPs to associate to the group instances.(e.g. "172.1.1.0"). Please note: This setting will only apply if persistence.persist_private_ip is set to true.
         /// 
         /// Usage:
-        /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        /// });
-        /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public InputList<string> PrivateIps
         {
@@ -1590,18 +1760,6 @@ namespace Pulumi.SpotInst.Aws
         /// List of Private IPs to associate to the group instances.(e.g. "172.1.1.0"). Please note: This setting will only apply if persistence.persist_private_ip is set to true.
         /// 
         /// Usage:
-        /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        /// });
-        /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public InputList<string> PrivateIps
         {

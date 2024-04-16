@@ -23,18 +23,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         /// (e.g. `"ephemeral0"`).
         /// 
         /// Usage:
-        /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        /// });
-        /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         [Input("virtualName", required: true)]
         public Input<string> VirtualName { get; set; } = null!;

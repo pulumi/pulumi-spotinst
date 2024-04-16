@@ -30,13 +30,37 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := gcp.NewElastigroup(ctx, "example", &gcp.ElastigroupArgs{
+//				Name:               pulumi.String("example-gcp"),
+//				Description:        pulumi.String("spotinst gcp group"),
+//				ServiceAccount:     pulumi.String("example@myProject.iam.gservicecct.com"),
+//				StartupScript:      pulumi.String(""),
+//				InstanceNamePrefix: pulumi.String("test-123a"),
+//				MinSize:            pulumi.Int(0),
+//				MaxSize:            pulumi.Int(1),
+//				DesiredCapacity:    pulumi.Int(1),
 //				AvailabilityZones: pulumi.StringArray{
 //					pulumi.String("asia-east1-c"),
 //					pulumi.String("us-central1-a"),
 //				},
+//				PreemptiblePercentage: pulumi.Int(50),
+//				FallbackToOndemand:    pulumi.Bool(true),
+//				DrainingTimeout:       pulumi.Int(180),
+//				ProvisioningModel:     pulumi.String("SPOT"),
+//				Labels: gcp.ElastigroupLabelArray{
+//					&gcp.ElastigroupLabelArgs{
+//						Key:   pulumi.String("test_key"),
+//						Value: pulumi.String("test_value"),
+//					},
+//				},
+//				Tags: pulumi.StringArray{
+//					pulumi.String("http"),
+//					pulumi.String("https"),
+//				},
 //				BackendServices: gcp.ElastigroupBackendServiceArray{
 //					&gcp.ElastigroupBackendServiceArgs{
+//						ServiceName:  pulumi.String("spotinst-elb-backend-service"),
 //						LocationType: pulumi.String("regional"),
+//						Scheme:       pulumi.String("INTERNAL"),
 //						NamedPorts: gcp.ElastigroupBackendServiceNamedPortArray{
 //							&gcp.ElastigroupBackendServiceNamedPortArgs{
 //								Name: pulumi.String("port-name"),
@@ -46,17 +70,16 @@ import (
 //								},
 //							},
 //						},
-//						Scheme:      pulumi.String("INTERNAL"),
-//						ServiceName: pulumi.String("spotinst-elb-backend-service"),
 //					},
 //				},
-//				Description:     pulumi.String("spotinst gcp group"),
-//				DesiredCapacity: pulumi.Int(1),
 //				Disks: gcp.ElastigroupDiskArray{
 //					&gcp.ElastigroupDiskArgs{
+//						DeviceName: pulumi.String("device"),
+//						Mode:       pulumi.String("READ_WRITE"),
+//						Type:       pulumi.String("PERSISTENT"),
 //						AutoDelete: pulumi.Bool(true),
 //						Boot:       pulumi.Bool(true),
-//						DeviceName: pulumi.String("device"),
+//						Interface:  pulumi.String("SCSI"),
 //						InitializeParams: gcp.ElastigroupDiskInitializeParamArray{
 //							&gcp.ElastigroupDiskInitializeParamArgs{
 //								DiskSizeGb:  pulumi.String("10"),
@@ -64,18 +87,11 @@ import (
 //								SourceImage: pulumi.String(""),
 //							},
 //						},
-//						Interface: pulumi.String("SCSI"),
-//						Mode:      pulumi.String("READ_WRITE"),
-//						Type:      pulumi.String("PERSISTENT"),
 //					},
 //				},
-//				DrainingTimeout:    pulumi.Int(180),
-//				FallbackToOndemand: pulumi.Bool(true),
-//				InstanceNamePrefix: pulumi.String("test-123a"),
-//				InstanceTypesCustoms: gcp.ElastigroupInstanceTypesCustomArray{
-//					&gcp.ElastigroupInstanceTypesCustomArgs{
-//						MemoryGib: pulumi.Int(7),
-//						Vcpu:      pulumi.Int(2),
+//				NetworkInterfaces: gcp.ElastigroupNetworkInterfaceArray{
+//					&gcp.ElastigroupNetworkInterfaceArgs{
+//						Network: pulumi.String("spot-network"),
 //					},
 //				},
 //				InstanceTypesOndemand: pulumi.String("n1-standard-1"),
@@ -83,46 +99,12 @@ import (
 //					pulumi.String("n1-standard-1"),
 //					pulumi.String("n1-standard-2"),
 //				},
-//				Labels: gcp.ElastigroupLabelArray{
-//					&gcp.ElastigroupLabelArgs{
-//						Key:   pulumi.String("test_key"),
-//						Value: pulumi.String("test_value"),
+//				InstanceTypesCustoms: gcp.ElastigroupInstanceTypesCustomArray{
+//					&gcp.ElastigroupInstanceTypesCustomArgs{
+//						Vcpu:      pulumi.Int(2),
+//						MemoryGib: pulumi.Int(7),
 //					},
 //				},
-//				MaxSize: pulumi.Int(1),
-//				MinSize: pulumi.Int(0),
-//				NetworkInterfaces: gcp.ElastigroupNetworkInterfaceArray{
-//					&gcp.ElastigroupNetworkInterfaceArgs{
-//						Network: pulumi.String("spot-network"),
-//					},
-//				},
-//				PreemptiblePercentage: pulumi.Int(50),
-//				ProvisioningModel:     pulumi.String("SPOT"),
-//				ScalingUpPolicies: gcp.ElastigroupScalingUpPolicyArray{
-//					&gcp.ElastigroupScalingUpPolicyArgs{
-//						ActionType: pulumi.String("adjustment"),
-//						Adjustment: pulumi.Int(1),
-//						Cooldown:   pulumi.Int(300),
-//						Dimensions: gcp.ElastigroupScalingUpPolicyDimensionArray{
-//							&gcp.ElastigroupScalingUpPolicyDimensionArgs{
-//								Name:  pulumi.String("storage_type"),
-//								Value: pulumi.String("pd-ssd"),
-//							},
-//						},
-//						EvaluationPeriods: pulumi.Int(1),
-//						MetricName:        pulumi.String("instance/disk/read_ops_count"),
-//						Namespace:         pulumi.String("compute"),
-//						Operator:          pulumi.String("gte"),
-//						Period:            pulumi.Int(300),
-//						PolicyName:        pulumi.String("scale_up_1"),
-//						Source:            pulumi.String("stackdriver"),
-//						Statistic:         pulumi.String("average"),
-//						Threshold:         pulumi.Float64(10000),
-//						Unit:              pulumi.String("percent"),
-//					},
-//				},
-//				ServiceAccount: pulumi.String("example@myProject.iam.gservicecct.com"),
-//				StartupScript:  pulumi.String(""),
 //				Subnets: gcp.ElastigroupSubnetArray{
 //					&gcp.ElastigroupSubnetArgs{
 //						Region: pulumi.String("asia-east1"),
@@ -131,9 +113,28 @@ import (
 //						},
 //					},
 //				},
-//				Tags: pulumi.StringArray{
-//					pulumi.String("http"),
-//					pulumi.String("https"),
+//				ScalingUpPolicies: gcp.ElastigroupScalingUpPolicyArray{
+//					&gcp.ElastigroupScalingUpPolicyArgs{
+//						PolicyName:        pulumi.String("scale_up_1"),
+//						Source:            pulumi.String("stackdriver"),
+//						MetricName:        pulumi.String("instance/disk/read_ops_count"),
+//						Namespace:         pulumi.String("compute"),
+//						Statistic:         pulumi.String("average"),
+//						Unit:              pulumi.String("percent"),
+//						Threshold:         pulumi.Float64(10000),
+//						Period:            pulumi.Int(300),
+//						Cooldown:          pulumi.Int(300),
+//						Operator:          pulumi.String("gte"),
+//						EvaluationPeriods: pulumi.Int(1),
+//						ActionType:        pulumi.String("adjustment"),
+//						Adjustment:        pulumi.Int(1),
+//						Dimensions: gcp.ElastigroupScalingUpPolicyDimensionArray{
+//							&gcp.ElastigroupScalingUpPolicyDimensionArgs{
+//								Name:  pulumi.String("storage_type"),
+//								Value: pulumi.String("pd-ssd"),
+//							},
+//						},
+//					},
 //				},
 //			})
 //			if err != nil {
@@ -220,22 +221,6 @@ type Elastigroup struct {
 	// Tags to mark created instances.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
-	//
-	// <!--Start PulumiCodeChooser -->
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
-	// <!--End PulumiCodeChooser -->
 	UnhealthyDuration pulumi.IntPtrOutput `pulumi:"unhealthyDuration"`
 }
 
@@ -344,22 +329,6 @@ type elastigroupState struct {
 	// Tags to mark created instances.
 	Tags []string `pulumi:"tags"`
 	// Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
-	//
-	// <!--Start PulumiCodeChooser -->
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
-	// <!--End PulumiCodeChooser -->
 	UnhealthyDuration *int `pulumi:"unhealthyDuration"`
 }
 
@@ -436,22 +405,6 @@ type ElastigroupState struct {
 	// Tags to mark created instances.
 	Tags pulumi.StringArrayInput
 	// Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
-	//
-	// <!--Start PulumiCodeChooser -->
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
-	// <!--End PulumiCodeChooser -->
 	UnhealthyDuration pulumi.IntPtrInput
 }
 
@@ -532,22 +485,6 @@ type elastigroupArgs struct {
 	// Tags to mark created instances.
 	Tags []string `pulumi:"tags"`
 	// Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
-	//
-	// <!--Start PulumiCodeChooser -->
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
-	// <!--End PulumiCodeChooser -->
 	UnhealthyDuration *int `pulumi:"unhealthyDuration"`
 }
 
@@ -625,22 +562,6 @@ type ElastigroupArgs struct {
 	// Tags to mark created instances.
 	Tags pulumi.StringArrayInput
 	// Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
-	//
-	// <!--Start PulumiCodeChooser -->
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
-	// <!--End PulumiCodeChooser -->
 	UnhealthyDuration pulumi.IntPtrInput
 }
 
@@ -908,25 +829,6 @@ func (o ElastigroupOutput) Tags() pulumi.StringArrayOutput {
 }
 
 // Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
-//
-// <!--Start PulumiCodeChooser -->
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
-// <!--End PulumiCodeChooser -->
 func (o ElastigroupOutput) UnhealthyDuration() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Elastigroup) pulumi.IntPtrOutput { return v.UnhealthyDuration }).(pulumi.IntPtrOutput)
 }

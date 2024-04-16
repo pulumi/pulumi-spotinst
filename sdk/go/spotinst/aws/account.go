@@ -29,7 +29,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Create a Account
-//			_, err := aws.NewAccount(ctx, "myAwsAcct", nil)
+//			_, err := aws.NewAccount(ctx, "my_aws_acct", &aws.AccountArgs{
+//				Name: pulumi.String("my_aws_acct"),
+//			})
 //			if err != nil {
 //				return err
 //			}

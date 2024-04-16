@@ -28,14 +28,15 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := organization.NewProgrammaticUser(ctx, "terraformProgUser", &organization.ProgrammaticUserArgs{
+//			_, err := organization.NewProgrammaticUser(ctx, "terraform_prog_user", &organization.ProgrammaticUserArgs{
+//				Name:        pulumi.String("test-prog-user"),
 //				Description: pulumi.String("creating programmatic user"),
 //				Policies: organization.ProgrammaticUserPolicyArray{
 //					&organization.ProgrammaticUserPolicyArgs{
+//						PolicyId: pulumi.String("pol-g75d8c06"),
 //						PolicyAccountIds: pulumi.StringArray{
 //							pulumi.String("act-a1b2c3d4"),
 //						},
-//						PolicyId: pulumi.String("pol-g75d8c06"),
 //					},
 //				},
 //				UserGroupIds: pulumi.StringArray{

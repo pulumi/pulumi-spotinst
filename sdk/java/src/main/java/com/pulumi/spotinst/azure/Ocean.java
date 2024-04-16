@@ -32,37 +32,6 @@ import javax.annotation.Nullable;
  * 
  * &gt; This resource contains arguments (such as `image` and `extension`) that are automatically populated from the data reported by the Ocean AKS Connector deployed into your cluster. You can override the upstream configuration by defining the corresponding arguments.
  * 
- * ## Prerequisites
- * 
- * Installation of the Ocean controller is required by this resource. You can accomplish this by using the spotinst/ocean-controller module as follows:
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *     }
- * }
- * ```
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
- * &gt; You must configure the same `cluster_identifier` and `acd_identifier` both for the Ocean controller and for the `spotinst.azure.Ocean` resource.
- * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -74,21 +43,21 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.spotinst.azure.Ocean;
  * import com.pulumi.spotinst.azure.OceanArgs;
- * import com.pulumi.spotinst.azure.inputs.OceanAutoscalerArgs;
- * import com.pulumi.spotinst.azure.inputs.OceanAutoscalerAutoscaleDownArgs;
- * import com.pulumi.spotinst.azure.inputs.OceanAutoscalerAutoscaleHeadroomArgs;
- * import com.pulumi.spotinst.azure.inputs.OceanAutoscalerAutoscaleHeadroomAutomaticArgs;
- * import com.pulumi.spotinst.azure.inputs.OceanAutoscalerResourceLimitsArgs;
- * import com.pulumi.spotinst.azure.inputs.OceanExtensionArgs;
- * import com.pulumi.spotinst.azure.inputs.OceanHealthArgs;
- * import com.pulumi.spotinst.azure.inputs.OceanImageArgs;
- * import com.pulumi.spotinst.azure.inputs.OceanLoadBalancerArgs;
  * import com.pulumi.spotinst.azure.inputs.OceanManagedServiceIdentityArgs;
- * import com.pulumi.spotinst.azure.inputs.OceanNetworkArgs;
- * import com.pulumi.spotinst.azure.inputs.OceanOsDiskArgs;
- * import com.pulumi.spotinst.azure.inputs.OceanStrategyArgs;
  * import com.pulumi.spotinst.azure.inputs.OceanTagArgs;
  * import com.pulumi.spotinst.azure.inputs.OceanVmSizeArgs;
+ * import com.pulumi.spotinst.azure.inputs.OceanOsDiskArgs;
+ * import com.pulumi.spotinst.azure.inputs.OceanImageArgs;
+ * import com.pulumi.spotinst.azure.inputs.OceanStrategyArgs;
+ * import com.pulumi.spotinst.azure.inputs.OceanHealthArgs;
+ * import com.pulumi.spotinst.azure.inputs.OceanNetworkArgs;
+ * import com.pulumi.spotinst.azure.inputs.OceanExtensionArgs;
+ * import com.pulumi.spotinst.azure.inputs.OceanLoadBalancerArgs;
+ * import com.pulumi.spotinst.azure.inputs.OceanAutoscalerArgs;
+ * import com.pulumi.spotinst.azure.inputs.OceanAutoscalerAutoscaleDownArgs;
+ * import com.pulumi.spotinst.azure.inputs.OceanAutoscalerResourceLimitsArgs;
+ * import com.pulumi.spotinst.azure.inputs.OceanAutoscalerAutoscaleHeadroomArgs;
+ * import com.pulumi.spotinst.azure.inputs.OceanAutoscalerAutoscaleHeadroomAutomaticArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -103,44 +72,69 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new Ocean(&#34;example&#34;, OceanArgs.builder()        
+ *             .name(&#34;ocean-westus-dev-aks&#34;)
+ *             .controllerClusterId(&#34;ocean-westus-dev-aks&#34;)
+ *             .zones(            
+ *                 &#34;1&#34;,
+ *                 &#34;2&#34;,
+ *                 &#34;3&#34;)
  *             .acdIdentifier(&#34;acd-12345678&#34;)
  *             .aksName(&#34;ocean-westus-dev-aks&#34;)
  *             .aksResourceGroupName(&#34;ocean-westus-dev&#34;)
- *             .autoscaler(OceanAutoscalerArgs.builder()
- *                 .autoscaleDown(OceanAutoscalerAutoscaleDownArgs.builder()
- *                     .maxScaleDownPercentage(10)
- *                     .build())
- *                 .autoscaleHeadroom(OceanAutoscalerAutoscaleHeadroomArgs.builder()
- *                     .automatic(OceanAutoscalerAutoscaleHeadroomAutomaticArgs.builder()
- *                         .isEnabled(true)
- *                         .percentage(10)
- *                         .build())
- *                     .build())
- *                 .autoscaleIsEnabled(true)
- *                 .resourceLimits(OceanAutoscalerResourceLimitsArgs.builder()
- *                     .maxMemoryGib(40)
- *                     .maxVcpu(1024)
+ *             .sshPublicKey(&#34;ssh-rsa [... redacted ...] generated-by-azure&#34;)
+ *             .userName(&#34;some-name&#34;)
+ *             .resourceGroupName(&#34;some-resource-group-name&#34;)
+ *             .customData(&#34;[... redacted ...]&#34;)
+ *             .maxPods(30)
+ *             .managedServiceIdentities(OceanManagedServiceIdentityArgs.builder()
+ *                 .resourceGroupName(&#34;MC_ocean-westus-dev_ocean-westus-dev-aks_westus&#34;)
+ *                 .name(&#34;ocean-westus-dev-aks-agentpool&#34;)
+ *                 .build())
+ *             .tags(OceanTagArgs.builder()
+ *                 .key(&#34;Environment&#34;)
+ *                 .value(&#34;Dev&#34;)
+ *                 .build())
+ *             .vmSizes(OceanVmSizeArgs.builder()
+ *                 .whitelists(&#34;standard_ds2_v2&#34;)
+ *                 .build())
+ *             .osDisk(OceanOsDiskArgs.builder()
+ *                 .sizeGb(130)
+ *                 .type(&#34;Standard_LRS&#34;)
+ *                 .build())
+ *             .images(OceanImageArgs.builder()
+ *                 .marketplaces(OceanImageMarketplaceArgs.builder()
+ *                     .publisher(&#34;Canonical&#34;)
+ *                     .offer(&#34;UbuntuServer&#34;)
+ *                     .sku(&#34;18.04-LTS&#34;)
+ *                     .version(&#34;latest&#34;)
  *                     .build())
  *                 .build())
- *             .controllerClusterId(&#34;ocean-westus-dev-aks&#34;)
- *             .customData(&#34;[... redacted ...]&#34;)
+ *             .strategies(OceanStrategyArgs.builder()
+ *                 .fallbackToOndemand(true)
+ *                 .spotPercentage(40)
+ *                 .build())
+ *             .health(OceanHealthArgs.builder()
+ *                 .gracePeriod(10)
+ *                 .build())
+ *             .network(OceanNetworkArgs.builder()
+ *                 .virtualNetworkName(&#34;vn-name&#34;)
+ *                 .resourceGroupName(&#34;ocean-westus-dev&#34;)
+ *                 .networkInterfaces(OceanNetworkNetworkInterfaceArgs.builder()
+ *                     .subnetName(&#34;subnet-name&#34;)
+ *                     .assignPublicIp(false)
+ *                     .isPrimary(false)
+ *                     .additionalIpConfigs(OceanNetworkNetworkInterfaceAdditionalIpConfigArgs.builder()
+ *                         .name(&#34;ip-config-name&#34;)
+ *                         .privateIpVersion(&#34;ipv4&#34;)
+ *                         .build())
+ *                     .build())
+ *                 .build())
  *             .extensions(OceanExtensionArgs.builder()
  *                 .apiVersion(&#34;1.0&#34;)
  *                 .minorVersionAutoUpgrade(true)
  *                 .name(&#34;extension-name&#34;)
  *                 .publisher(&#34;Microsoft.Azure.Extensions&#34;)
  *                 .type(&#34;Linux&#34;)
- *                 .build())
- *             .health(OceanHealthArgs.builder()
- *                 .gracePeriod(10)
- *                 .build())
- *             .images(OceanImageArgs.builder()
- *                 .marketplaces(OceanImageMarketplaceArgs.builder()
- *                     .offer(&#34;UbuntuServer&#34;)
- *                     .publisher(&#34;Canonical&#34;)
- *                     .sku(&#34;18.04-LTS&#34;)
- *                     .version(&#34;latest&#34;)
- *                     .build())
  *                 .build())
  *             .loadBalancers(OceanLoadBalancerArgs.builder()
  *                 .backendPoolNames(&#34;terraform-backend-pool&#34;)
@@ -149,43 +143,22 @@ import javax.annotation.Nullable;
  *                 .resourceGroupName(&#34;resource-group-name&#34;)
  *                 .type(&#34;loadBalancer&#34;)
  *                 .build())
- *             .managedServiceIdentities(OceanManagedServiceIdentityArgs.builder()
- *                 .name(&#34;ocean-westus-dev-aks-agentpool&#34;)
- *                 .resourceGroupName(&#34;MC_ocean-westus-dev_ocean-westus-dev-aks_westus&#34;)
- *                 .build())
- *             .maxPods(30)
- *             .network(OceanNetworkArgs.builder()
- *                 .networkInterfaces(OceanNetworkNetworkInterfaceArgs.builder()
- *                     .additionalIpConfig(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
- *                     .assignPublicIp(false)
- *                     .isPrimary(false)
- *                     .subnetName(&#34;subnet-name&#34;)
+ *             .autoscaler(OceanAutoscalerArgs.builder()
+ *                 .autoscaleIsEnabled(true)
+ *                 .autoscaleDown(OceanAutoscalerAutoscaleDownArgs.builder()
+ *                     .maxScaleDownPercentage(10)
  *                     .build())
- *                 .resourceGroupName(&#34;ocean-westus-dev&#34;)
- *                 .virtualNetworkName(&#34;vn-name&#34;)
+ *                 .resourceLimits(OceanAutoscalerResourceLimitsArgs.builder()
+ *                     .maxVcpu(1024)
+ *                     .maxMemoryGib(40)
+ *                     .build())
+ *                 .autoscaleHeadroom(OceanAutoscalerAutoscaleHeadroomArgs.builder()
+ *                     .automatic(OceanAutoscalerAutoscaleHeadroomAutomaticArgs.builder()
+ *                         .isEnabled(true)
+ *                         .percentage(10)
+ *                         .build())
+ *                     .build())
  *                 .build())
- *             .osDisk(OceanOsDiskArgs.builder()
- *                 .sizeGb(130)
- *                 .type(&#34;Standard_LRS&#34;)
- *                 .build())
- *             .resourceGroupName(&#34;some-resource-group-name&#34;)
- *             .sshPublicKey(&#34;ssh-rsa [... redacted ...] generated-by-azure&#34;)
- *             .strategies(OceanStrategyArgs.builder()
- *                 .fallbackToOndemand(true)
- *                 .spotPercentage(40)
- *                 .build())
- *             .tags(OceanTagArgs.builder()
- *                 .key(&#34;Environment&#34;)
- *                 .value(&#34;Dev&#34;)
- *                 .build())
- *             .userName(&#34;some-name&#34;)
- *             .vmSizes(OceanVmSizeArgs.builder()
- *                 .whitelists(&#34;standard_ds2_v2&#34;)
- *                 .build())
- *             .zones(            
- *                 &#34;1&#34;,
- *                 &#34;2&#34;,
- *                 &#34;3&#34;)
  *             .build());
  * 
  *     }

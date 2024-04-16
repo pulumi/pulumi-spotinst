@@ -31,8 +31,34 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Create a Mr Scaler with New strategy
 //			_, err := aws.NewMrScalar(ctx, "sample-MrScaler-01", &aws.MrScalarArgs{
-//				AdditionalInfo: pulumi.String("{'test':'more information'}"),
+//				Name:         pulumi.String("sample-MrScaler-01"),
+//				Description:  pulumi.String("Testing MrScaler creation"),
+//				Region:       pulumi.String("us-west-2"),
+//				Strategy:     pulumi.String("new"),
+//				ReleaseLabel: pulumi.String("emr-5.17.0"),
+//				Retries:      pulumi.Int(2),
+//				AvailabilityZones: pulumi.StringArray{
+//					pulumi.String("us-west-2a:subnet-123456"),
+//				},
+//				ProvisioningTimeout: &aws.MrScalarProvisioningTimeoutArgs{
+//					Timeout:       pulumi.Int(15),
+//					TimeoutAction: pulumi.String("terminateAndRetry"),
+//				},
+//				LogUri:                      pulumi.String("s3://example-logs"),
+//				AdditionalInfo:              pulumi.String("{'test':'more information'}"),
+//				JobFlowRole:                 pulumi.String("EMR_EC2_ExampleRole"),
+//				SecurityConfig:              pulumi.String("example-config"),
+//				ServiceRole:                 pulumi.String("example-role"),
+//				TerminationProtected:        pulumi.Bool(false),
+//				KeepJobFlowAlive:            pulumi.Bool(true),
+//				CustomAmiId:                 pulumi.String("ami-123456"),
+//				RepoUpgradeOnBoot:           pulumi.String("NONE"),
+//				Ec2KeyName:                  pulumi.String("test-key"),
+//				ManagedPrimarySecurityGroup: pulumi.String("sg-123456"),
+//				ManagedReplicaSecurityGroup: pulumi.String("sg-987654"),
+//				ServiceAccessSecurityGroup:  pulumi.String("access-example"),
 //				AdditionalPrimarySecurityGroups: pulumi.StringArray{
 //					pulumi.String("sg-456321"),
 //				},
@@ -48,48 +74,13 @@ import (
 //						Name: pulumi.String("Hadoop"),
 //					},
 //					&aws.MrScalarApplicationArgs{
+//						Name: pulumi.String("Pig"),
 //						Args: pulumi.StringArray{
 //							pulumi.String("fake"),
 //							pulumi.String("args"),
 //						},
-//						Name: pulumi.String("Pig"),
 //					},
 //				},
-//				AvailabilityZones: pulumi.StringArray{
-//					pulumi.String("us-west-2a:subnet-123456"),
-//				},
-//				BootstrapActionsFiles: aws.MrScalarBootstrapActionsFileArray{
-//					&aws.MrScalarBootstrapActionsFileArgs{
-//						Bucket: pulumi.String("sample-emr-test"),
-//						Key:    pulumi.String("bootstrap-actions.json"),
-//					},
-//				},
-//				ConfigurationsFiles: aws.MrScalarConfigurationsFileArray{
-//					&aws.MrScalarConfigurationsFileArgs{
-//						Bucket: pulumi.String("example-bucket"),
-//						Key:    pulumi.String("configurations.json"),
-//					},
-//				},
-//				CoreDesiredCapacity: pulumi.Int(1),
-//				CoreEbsBlockDevices: aws.MrScalarCoreEbsBlockDeviceArray{
-//					&aws.MrScalarCoreEbsBlockDeviceArgs{
-//						SizeInGb:           pulumi.Int(40),
-//						VolumeType:         pulumi.String("gp2"),
-//						VolumesPerInstance: pulumi.Int(2),
-//					},
-//				},
-//				CoreEbsOptimized: pulumi.Bool(false),
-//				CoreInstanceTypes: pulumi.StringArray{
-//					pulumi.String("c3.xlarge"),
-//					pulumi.String("c4.xlarge"),
-//				},
-//				CoreLifecycle: pulumi.String("ON_DEMAND"),
-//				CoreMaxSize:   pulumi.Int(1),
-//				CoreMinSize:   pulumi.Int(1),
-//				CoreUnit:      pulumi.String("instance"),
-//				CustomAmiId:   pulumi.String("ami-123456"),
-//				Description:   pulumi.String("Testing MrScaler creation"),
-//				Ec2KeyName:    pulumi.String("test-key"),
 //				InstanceWeights: aws.MrScalarInstanceWeightArray{
 //					&aws.MrScalarInstanceWeightArgs{
 //						InstanceType:     pulumi.String("t2.small"),
@@ -100,66 +91,77 @@ import (
 //						WeightedCapacity: pulumi.Int(90),
 //					},
 //				},
-//				JobFlowRole:                 pulumi.String("EMR_EC2_ExampleRole"),
-//				KeepJobFlowAlive:            pulumi.Bool(true),
-//				LogUri:                      pulumi.String("s3://example-logs"),
-//				ManagedPrimarySecurityGroup: pulumi.String("sg-123456"),
-//				ManagedReplicaSecurityGroup: pulumi.String("sg-987654"),
-//				MasterEbsBlockDevices: aws.MrScalarMasterEbsBlockDeviceArray{
-//					&aws.MrScalarMasterEbsBlockDeviceArgs{
-//						SizeInGb:           pulumi.Int(30),
-//						VolumeType:         pulumi.String("gp2"),
-//						VolumesPerInstance: pulumi.Int(1),
-//					},
-//				},
-//				MasterEbsOptimized: pulumi.Bool(true),
-//				MasterInstanceTypes: pulumi.StringArray{
-//					pulumi.String("c3.xlarge"),
-//				},
-//				MasterLifecycle: pulumi.String("SPOT"),
-//				MasterTarget:    pulumi.Int(1),
-//				ProvisioningTimeout: &aws.MrScalarProvisioningTimeoutArgs{
-//					Timeout:       pulumi.Int(15),
-//					TimeoutAction: pulumi.String("terminateAndRetry"),
-//				},
-//				Region:                     pulumi.String("us-west-2"),
-//				ReleaseLabel:               pulumi.String("emr-5.17.0"),
-//				RepoUpgradeOnBoot:          pulumi.String("NONE"),
-//				Retries:                    pulumi.Int(2),
-//				SecurityConfig:             pulumi.String("example-config"),
-//				ServiceAccessSecurityGroup: pulumi.String("access-example"),
-//				ServiceRole:                pulumi.String("example-role"),
 //				StepsFiles: aws.MrScalarStepsFileArray{
 //					&aws.MrScalarStepsFileArgs{
 //						Bucket: pulumi.String("example-bucket"),
 //						Key:    pulumi.String("steps.json"),
 //					},
 //				},
-//				Strategy: pulumi.String("new"),
+//				ConfigurationsFiles: aws.MrScalarConfigurationsFileArray{
+//					&aws.MrScalarConfigurationsFileArgs{
+//						Bucket: pulumi.String("example-bucket"),
+//						Key:    pulumi.String("configurations.json"),
+//					},
+//				},
+//				BootstrapActionsFiles: aws.MrScalarBootstrapActionsFileArray{
+//					&aws.MrScalarBootstrapActionsFileArgs{
+//						Bucket: pulumi.String("sample-emr-test"),
+//						Key:    pulumi.String("bootstrap-actions.json"),
+//					},
+//				},
+//				MasterInstanceTypes: pulumi.StringArray{
+//					pulumi.String("c3.xlarge"),
+//				},
+//				MasterLifecycle:    pulumi.String("SPOT"),
+//				MasterEbsOptimized: pulumi.Bool(true),
+//				MasterTarget:       pulumi.Int(1),
+//				MasterEbsBlockDevices: aws.MrScalarMasterEbsBlockDeviceArray{
+//					&aws.MrScalarMasterEbsBlockDeviceArgs{
+//						VolumesPerInstance: pulumi.Int(1),
+//						VolumeType:         pulumi.String("gp2"),
+//						SizeInGb:           pulumi.Int(30),
+//					},
+//				},
+//				CoreInstanceTypes: pulumi.StringArray{
+//					pulumi.String("c3.xlarge"),
+//					pulumi.String("c4.xlarge"),
+//				},
+//				CoreMinSize:         pulumi.Int(1),
+//				CoreMaxSize:         pulumi.Int(1),
+//				CoreDesiredCapacity: pulumi.Int(1),
+//				CoreLifecycle:       pulumi.String("ON_DEMAND"),
+//				CoreEbsOptimized:    pulumi.Bool(false),
+//				CoreUnit:            pulumi.String("instance"),
+//				CoreEbsBlockDevices: aws.MrScalarCoreEbsBlockDeviceArray{
+//					&aws.MrScalarCoreEbsBlockDeviceArgs{
+//						VolumesPerInstance: pulumi.Int(2),
+//						VolumeType:         pulumi.String("gp2"),
+//						SizeInGb:           pulumi.Int(40),
+//					},
+//				},
+//				TaskInstanceTypes: pulumi.StringArray{
+//					pulumi.String("c3.xlarge"),
+//					pulumi.String("c4.xlarge"),
+//				},
+//				TaskMinSize:         pulumi.Int(0),
+//				TaskMaxSize:         pulumi.Int(30),
+//				TaskDesiredCapacity: pulumi.Int(1),
+//				TaskLifecycle:       pulumi.String("SPOT"),
+//				TaskEbsOptimized:    pulumi.Bool(false),
+//				TaskUnit:            pulumi.String("instance"),
+//				TaskEbsBlockDevices: aws.MrScalarTaskEbsBlockDeviceArray{
+//					&aws.MrScalarTaskEbsBlockDeviceArgs{
+//						VolumesPerInstance: pulumi.Int(2),
+//						VolumeType:         pulumi.String("gp2"),
+//						SizeInGb:           pulumi.Int(40),
+//					},
+//				},
 //				Tags: aws.MrScalarTagArray{
 //					&aws.MrScalarTagArgs{
 //						Key:   pulumi.String("Creator"),
 //						Value: pulumi.String("Pulumi"),
 //					},
 //				},
-//				TaskDesiredCapacity: pulumi.Int(1),
-//				TaskEbsBlockDevices: aws.MrScalarTaskEbsBlockDeviceArray{
-//					&aws.MrScalarTaskEbsBlockDeviceArgs{
-//						SizeInGb:           pulumi.Int(40),
-//						VolumeType:         pulumi.String("gp2"),
-//						VolumesPerInstance: pulumi.Int(2),
-//					},
-//				},
-//				TaskEbsOptimized: pulumi.Bool(false),
-//				TaskInstanceTypes: pulumi.StringArray{
-//					pulumi.String("c3.xlarge"),
-//					pulumi.String("c4.xlarge"),
-//				},
-//				TaskLifecycle:        pulumi.String("SPOT"),
-//				TaskMaxSize:          pulumi.Int(30),
-//				TaskMinSize:          pulumi.Int(0),
-//				TaskUnit:             pulumi.String("instance"),
-//				TerminationProtected: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
@@ -187,91 +189,94 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := aws.NewMrScalar(ctx, "sample-MrScaler-01", &aws.MrScalarArgs{
+//				Name:            pulumi.String("sample-MrScaler-01"),
+//				Description:     pulumi.String("Testing MrScaler creation"),
+//				Region:          pulumi.String("us-west-2"),
+//				Strategy:        pulumi.String("clone"),
+//				ClusterId:       pulumi.String("j-123456789"),
+//				ExposeClusterId: pulumi.Bool(true),
 //				AvailabilityZones: pulumi.StringArray{
 //					pulumi.String("us-west-2a:subnet-12345678"),
 //				},
-//				ClusterId:           pulumi.String("j-123456789"),
-//				CoreDesiredCapacity: pulumi.Int(1),
-//				CoreEbsBlockDevices: aws.MrScalarCoreEbsBlockDeviceArray{
-//					&aws.MrScalarCoreEbsBlockDeviceArgs{
-//						SizeInGb:           pulumi.Int(40),
+//				MasterInstanceTypes: pulumi.StringArray{
+//					pulumi.String("c3.xlarge"),
+//				},
+//				MasterLifecycle:    pulumi.String("SPOT"),
+//				MasterEbsOptimized: pulumi.Bool(true),
+//				MasterTarget:       pulumi.Int(1),
+//				MasterEbsBlockDevices: aws.MrScalarMasterEbsBlockDeviceArray{
+//					&aws.MrScalarMasterEbsBlockDeviceArgs{
+//						VolumesPerInstance: pulumi.Int(1),
 //						VolumeType:         pulumi.String("gp2"),
-//						VolumesPerInstance: pulumi.Int(2),
+//						SizeInGb:           pulumi.Int(30),
 //					},
 //				},
-//				CoreEbsOptimized: pulumi.Bool(false),
 //				CoreInstanceTypes: pulumi.StringArray{
 //					pulumi.String("c3.xlarge"),
 //					pulumi.String("c4.xlarge"),
 //				},
-//				CoreLifecycle:   pulumi.String("ON_DEMAND"),
-//				CoreMaxSize:     pulumi.Int(1),
-//				CoreMinSize:     pulumi.Int(1),
-//				CoreUnit:        pulumi.String("instance"),
-//				Description:     pulumi.String("Testing MrScaler creation"),
-//				ExposeClusterId: pulumi.Bool(true),
-//				MasterEbsBlockDevices: aws.MrScalarMasterEbsBlockDeviceArray{
-//					&aws.MrScalarMasterEbsBlockDeviceArgs{
-//						SizeInGb:           pulumi.Int(30),
+//				CoreMinSize:         pulumi.Int(1),
+//				CoreMaxSize:         pulumi.Int(1),
+//				CoreDesiredCapacity: pulumi.Int(1),
+//				CoreLifecycle:       pulumi.String("ON_DEMAND"),
+//				CoreEbsOptimized:    pulumi.Bool(false),
+//				CoreUnit:            pulumi.String("instance"),
+//				CoreEbsBlockDevices: aws.MrScalarCoreEbsBlockDeviceArray{
+//					&aws.MrScalarCoreEbsBlockDeviceArgs{
+//						VolumesPerInstance: pulumi.Int(2),
 //						VolumeType:         pulumi.String("gp2"),
-//						VolumesPerInstance: pulumi.Int(1),
+//						SizeInGb:           pulumi.Int(40),
 //					},
 //				},
-//				MasterEbsOptimized: pulumi.Bool(true),
-//				MasterInstanceTypes: pulumi.StringArray{
+//				TaskInstanceTypes: pulumi.StringArray{
 //					pulumi.String("c3.xlarge"),
+//					pulumi.String("c4.xlarge"),
 //				},
-//				MasterLifecycle: pulumi.String("SPOT"),
-//				MasterTarget:    pulumi.Int(1),
-//				Region:          pulumi.String("us-west-2"),
-//				Strategy:        pulumi.String("clone"),
+//				TaskMinSize:         pulumi.Int(0),
+//				TaskMaxSize:         pulumi.Int(30),
+//				TaskDesiredCapacity: pulumi.Int(1),
+//				TaskLifecycle:       pulumi.String("SPOT"),
+//				TaskEbsOptimized:    pulumi.Bool(false),
+//				TaskUnit:            pulumi.String("instance"),
+//				TaskEbsBlockDevices: aws.MrScalarTaskEbsBlockDeviceArray{
+//					&aws.MrScalarTaskEbsBlockDeviceArgs{
+//						VolumesPerInstance: pulumi.Int(2),
+//						VolumeType:         pulumi.String("gp2"),
+//						SizeInGb:           pulumi.Int(40),
+//					},
+//				},
 //				Tags: aws.MrScalarTagArray{
 //					&aws.MrScalarTagArgs{
 //						Key:   pulumi.String("Creator"),
 //						Value: pulumi.String("Pulumi"),
 //					},
 //				},
-//				TaskDesiredCapacity: pulumi.Int(1),
-//				TaskEbsBlockDevices: aws.MrScalarTaskEbsBlockDeviceArray{
-//					&aws.MrScalarTaskEbsBlockDeviceArgs{
-//						SizeInGb:           pulumi.Int(40),
-//						VolumeType:         pulumi.String("gp2"),
-//						VolumesPerInstance: pulumi.Int(2),
-//					},
-//				},
-//				TaskEbsOptimized: pulumi.Bool(false),
-//				TaskInstanceTypes: pulumi.StringArray{
-//					pulumi.String("c3.xlarge"),
-//					pulumi.String("c4.xlarge"),
-//				},
-//				TaskLifecycle: pulumi.String("SPOT"),
-//				TaskMaxSize:   pulumi.Int(30),
-//				TaskMinSize:   pulumi.Int(0),
 //				TaskScalingDownPolicies: aws.MrScalarTaskScalingDownPolicyArray{
 //					&aws.MrScalarTaskScalingDownPolicyArgs{
-//						ActionType: pulumi.String(""),
+//						PolicyName: pulumi.String("policy-name"),
+//						MetricName: pulumi.String("CPUUtilization"),
+//						Namespace:  pulumi.String("AWS/EC2"),
+//						Statistic:  pulumi.String("average"),
+//						Unit:       pulumi.String(""),
+//						Threshold:  pulumi.Float64(10),
 //						Adjustment: pulumi.String("1"),
 //						Cooldown:   pulumi.Int(60),
 //						Dimensions: pulumi.Map{
-//							"name":  pulumi.Any("name-1"),
-//							"value": pulumi.Any("value-1"),
+//							pulumi.Any(map[string]interface{}{
+//								"name":  "name-1",
+//								"value": "value-1",
+//							}),
 //						},
-//						EvaluationPeriods: pulumi.Int(10),
-//						MaxTargetCapacity: pulumi.String("1"),
-//						Maximum:           pulumi.String("10"),
-//						MetricName:        pulumi.String("CPUUtilization"),
-//						Minimum:           pulumi.String("0"),
-//						Namespace:         pulumi.String("AWS/EC2"),
 //						Operator:          pulumi.String("gt"),
+//						EvaluationPeriods: pulumi.Int(10),
 //						Period:            pulumi.Int(60),
-//						PolicyName:        pulumi.String("policy-name"),
-//						Statistic:         pulumi.String("average"),
+//						ActionType:        pulumi.String(""),
+//						Minimum:           pulumi.String("0"),
+//						Maximum:           pulumi.String("10"),
 //						Target:            pulumi.String("5"),
-//						Threshold:         pulumi.Float64(10),
-//						Unit:              pulumi.String(""),
+//						MaxTargetCapacity: pulumi.String("1"),
 //					},
 //				},
-//				TaskUnit: pulumi.String("instance"),
 //			})
 //			if err != nil {
 //				return err
@@ -300,27 +305,29 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Create a Mr Scaler with Wrap strategy
 //			_, err := aws.NewMrScalar(ctx, "example-scaler-2", &aws.MrScalarArgs{
-//				ClusterId:           pulumi.String("j-27UVDEHXL4OQM"),
-//				Description:         pulumi.String("created by Pulumi"),
-//				Region:              pulumi.String("us-west-2"),
-//				Strategy:            pulumi.String("wrap"),
-//				TaskDesiredCapacity: pulumi.Int(2),
-//				TaskEbsBlockDevices: aws.MrScalarTaskEbsBlockDeviceArray{
-//					&aws.MrScalarTaskEbsBlockDeviceArgs{
-//						SizeInGb:           pulumi.Int(20),
-//						VolumeType:         pulumi.String("gp2"),
-//						VolumesPerInstance: pulumi.Int(1),
-//					},
-//				},
+//				Name:        pulumi.String("spotinst-mr-scaler-2"),
+//				Description: pulumi.String("created by Pulumi"),
+//				Region:      pulumi.String("us-west-2"),
+//				Strategy:    pulumi.String("wrap"),
+//				ClusterId:   pulumi.String("j-27UVDEHXL4OQM"),
 //				TaskInstanceTypes: pulumi.StringArray{
 //					pulumi.String("c3.xlarge"),
 //					pulumi.String("c4.xlarge"),
 //				},
-//				TaskLifecycle: pulumi.String("SPOT"),
-//				TaskMaxSize:   pulumi.Int(4),
-//				TaskMinSize:   pulumi.Int(0),
-//				TaskUnit:      pulumi.String("instance"),
+//				TaskDesiredCapacity: pulumi.Int(2),
+//				TaskMinSize:         pulumi.Int(0),
+//				TaskMaxSize:         pulumi.Int(4),
+//				TaskLifecycle:       pulumi.String("SPOT"),
+//				TaskUnit:            pulumi.String("instance"),
+//				TaskEbsBlockDevices: aws.MrScalarTaskEbsBlockDeviceArray{
+//					&aws.MrScalarTaskEbsBlockDeviceArgs{
+//						VolumesPerInstance: pulumi.Int(1),
+//						VolumeType:         pulumi.String("gp2"),
+//						SizeInGb:           pulumi.Int(20),
+//					},
+//				},
 //			})
 //			if err != nil {
 //				return err

@@ -49,10 +49,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.spotinst.gke.Elastigroup;
  * import com.pulumi.spotinst.gke.ElastigroupArgs;
- * import com.pulumi.spotinst.gke.inputs.ElastigroupBackendServiceArgs;
  * import com.pulumi.spotinst.gke.inputs.ElastigroupIntegrationGkeArgs;
- * import com.pulumi.spotinst.gke.inputs.ElastigroupIntegrationGkeAutoscaleDownArgs;
  * import com.pulumi.spotinst.gke.inputs.ElastigroupIntegrationGkeAutoscaleHeadroomArgs;
+ * import com.pulumi.spotinst.gke.inputs.ElastigroupIntegrationGkeAutoscaleDownArgs;
+ * import com.pulumi.spotinst.gke.inputs.ElastigroupBackendServiceArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -67,7 +67,38 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example_gke_elastigroup = new Elastigroup(&#34;example-gke-elastigroup&#34;, ElastigroupArgs.builder()        
+ *             .name(&#34;example-gke&#34;)
+ *             .clusterZoneName(&#34;us-central1-a&#34;)
+ *             .nodeImage(&#34;COS&#34;)
+ *             .maxSize(5)
+ *             .minSize(1)
+ *             .desiredCapacity(3)
+ *             .instanceTypesOndemand(&#34;n1-standard-1&#34;)
+ *             .instanceTypesPreemptibles(            
+ *                 &#34;n1-standard-1&#34;,
+ *                 &#34;n1-standard-2&#34;)
+ *             .preemptiblePercentage(100)
+ *             .integrationGke(ElastigroupIntegrationGkeArgs.builder()
+ *                 .location(&#34;us-central1-a&#34;)
+ *                 .clusterId(&#34;example-cluster-id&#34;)
+ *                 .autoscaleIsEnabled(true)
+ *                 .autoscaleIsAutoConfig(false)
+ *                 .autoscaleCooldown(300)
+ *                 .autoscaleHeadroom(ElastigroupIntegrationGkeAutoscaleHeadroomArgs.builder()
+ *                     .cpuPerUnit(1024)
+ *                     .memoryPerUnit(512)
+ *                     .numOfUnits(2)
+ *                     .build())
+ *                 .autoscaleDown(ElastigroupIntegrationGkeAutoscaleDownArgs.builder()
+ *                     .evaluationPeriods(300)
+ *                     .build())
+ *                 .autoscaleLabels(ElastigroupIntegrationGkeAutoscaleLabelArgs.builder()
+ *                     .key(&#34;label_key&#34;)
+ *                     .value(&#34;label_value&#34;)
+ *                     .build())
+ *                 .build())
  *             .backendServices(ElastigroupBackendServiceArgs.builder()
+ *                 .serviceName(&#34;backend-service&#34;)
  *                 .locationType(&#34;global&#34;)
  *                 .namedPorts(ElastigroupBackendServiceNamedPortArgs.builder()
  *                     .name(&#34;http&#34;)
@@ -75,37 +106,7 @@ import javax.annotation.Nullable;
  *                         80,
  *                         8080)
  *                     .build())
- *                 .serviceName(&#34;backend-service&#34;)
  *                 .build())
- *             .clusterZoneName(&#34;us-central1-a&#34;)
- *             .desiredCapacity(3)
- *             .instanceTypesOndemand(&#34;n1-standard-1&#34;)
- *             .instanceTypesPreemptibles(            
- *                 &#34;n1-standard-1&#34;,
- *                 &#34;n1-standard-2&#34;)
- *             .integrationGke(ElastigroupIntegrationGkeArgs.builder()
- *                 .autoscaleCooldown(300)
- *                 .autoscaleDown(ElastigroupIntegrationGkeAutoscaleDownArgs.builder()
- *                     .evaluationPeriods(300)
- *                     .build())
- *                 .autoscaleHeadroom(ElastigroupIntegrationGkeAutoscaleHeadroomArgs.builder()
- *                     .cpuPerUnit(1024)
- *                     .memoryPerUnit(512)
- *                     .numOfUnits(2)
- *                     .build())
- *                 .autoscaleIsAutoConfig(false)
- *                 .autoscaleIsEnabled(true)
- *                 .autoscaleLabels(ElastigroupIntegrationGkeAutoscaleLabelArgs.builder()
- *                     .key(&#34;label_key&#34;)
- *                     .value(&#34;label_value&#34;)
- *                     .build())
- *                 .clusterId(&#34;example-cluster-id&#34;)
- *                 .location(&#34;us-central1-a&#34;)
- *                 .build())
- *             .maxSize(5)
- *             .minSize(1)
- *             .nodeImage(&#34;COS&#34;)
- *             .preemptiblePercentage(100)
  *             .build());
  * 
  *     }

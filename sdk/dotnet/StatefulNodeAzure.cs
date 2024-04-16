@@ -23,8 +23,9 @@ namespace Pulumi.SpotInst
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var testStatefulNodeAzure = new SpotInst.StatefulNodeAzure("testStatefulNodeAzure", new()
+    ///     var testStatefulNodeAzure = new SpotInst.StatefulNodeAzure("test_stateful_node_azure", new()
     ///     {
+    ///         Name = "example_stateful_node_azure",
     ///         Region = "eastus",
     ///         ResourceGroupName = "spotinst-azure",
     ///         Description = "example_stateful_node_azure_description",
@@ -364,7 +365,6 @@ namespace Pulumi.SpotInst
     ///         },
     ///     });
     /// 
-    ///     // -------------------------------------------------------------------
     /// });
     /// ```
     /// &lt;!--End PulumiCodeChooser --&gt;

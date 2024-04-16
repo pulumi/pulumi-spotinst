@@ -9,57 +9,88 @@ import * as utilities from "../utilities";
 /**
  * Provides a Spotinst elastigroup Azure resource.
  *
- * ## Image
- *
- * * `image` - (Required) Image of a VM. An image is a template for creating new VMs. Choose from Azure image catalogue (marketplace) or use a custom image.
- *     * `publisher` - (Optional) Image publisher. Required if resourceGroupName is not specified.
- *     * `offer` - (Optional) Name of the image to use. Required if publisher is specified.
- *     * `sku` - (Optional) Image's Stock Keeping Unit, which is the specific version of the image. Required if publisher is specified.
- *     * `version` -
- *     * `resourceGroupName` - (Optional) Name of Resource Group for custom image. Required if publisher not specified.
- *     * `imageName` - (Optional) Name of the custom image. Required if resourceGroupName is specified.
+ * ## Example Usage
  *
  * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
+ * import * as spotinst from "@pulumi/spotinst";
+ *
+ * const testAzureGroup = new spotinst.ElastigroupAzureV3("test_azure_group", {
+ *     name: "example_elastigroup_azure",
+ *     resourceGroupName: "spotinst-azure",
+ *     region: "eastus",
+ *     os: "Linux",
+ *     minSize: 0,
+ *     maxSize: 1,
+ *     desiredCapacity: 1,
+ *     odSizes: [
+ *         "standard_a1_v1",
+ *         "standard_a1_v2",
+ *     ],
+ *     spotSizes: [
+ *         "standard_a1_v1",
+ *         "standard_a1_v2",
+ *     ],
+ *     customData: "IyEvYmluL2Jhc2gKZWNobyAidGVzdCI=",
+ *     managedServiceIdentities: [{
+ *         resourceGroupName: "MC_ocean-westus-dev_ocean-westus-dev-aks_westus",
+ *         name: "ocean-westus-dev-aks-agentpool",
+ *     }],
+ *     tags: [
+ *         {
+ *             key: "key1",
+ *             value: "value1",
+ *         },
+ *         {
+ *             key: "key2",
+ *             value: "value2",
+ *         },
+ *     ],
+ *     images: [{
+ *         marketplaces: [{
+ *             publisher: "Canonical",
+ *             offer: "UbuntuServer",
+ *             sku: "18.04-LTS",
+ *             version: "latest",
+ *         }],
+ *     }],
+ *     spotPercentage: 65,
+ *     drainingTimeout: 300,
+ *     fallbackToOnDemand: true,
+ *     network: {
+ *         virtualNetworkName: "VirtualNetworkName",
+ *         resourceGroupName: "ResourceGroup",
+ *         networkInterfaces: [{
+ *             subnetName: "default",
+ *             assignPublicIp: false,
+ *             isPrimary: true,
+ *             additionalIpConfigs: [{
+ *                 name: "SecondaryIPConfig",
+ *                 privateIPVersion: "IPv4",
+ *             }],
+ *             applicationSecurityGroups: [{
+ *                 name: "ApplicationSecurityGroupName",
+ *                 resourceGroupName: "ResourceGroup",
+ *             }],
+ *         }],
+ *     },
+ *     login: {
+ *         userName: "admin",
+ *         sshPublicKey: "33a2s1f3g5a1df5g1ad3f2g1adfg56dfg==",
+ *     },
+ * });
  * ```
  * <!--End PulumiCodeChooser -->
  *
- * <a id="network"></a>
- * ## Network
+ * ## Strategy
  *
- * * `network` - (Required) Defines the Virtual Network and Subnet for your Elastigroup.
- *     * `virtualNetworkName` - (Required) Name of Vnet.
- *     * `resourceGroupName` - (Required) Vnet Resource Group Name.
- *     * `networkInterfaces` -
- *         * `subnetName` - (Required) ID of subnet.
- *         * `assignPublicUp` - (Optional, Default: `false`) Assign a public IP to each VM in the Elastigroup.
- *         * `isPrimary` -
- *         * `additionalIpConfigs` - (Optional) Array of additional IP configuration objects.
- *             * `name` - (Required) The IP configuration name.
- *             * `privateIpVersion` - (Optional) Available from Azure Api-Version 2017-03-30 onwards, it represents whether the specific ip configuration is IPv4 or IPv6. Valid values: `IPv4`, `IPv6`.
- *         * `applicationSecurityGroup` - (Optional) - List of Application Security Groups that will be associated to the primary ip configuration of the network interface.
- *             * `name` - (Required) - The name of the Application Security group.
- *             * `resourceGroupName` - (Required) - The resource group of the Application Security Group.
- *               }
- * <!--Start PulumiCodeChooser -->
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * ```
- * <!--End PulumiCodeChooser -->
+ * * `spotPercentage` - (Optional) Percentage of Spot-VMs to maintain. Required if `onDemandCount` is not specified.
+ * * `onDemandCount` - (Optional) Number of On-Demand VMs to maintain. Required if `spotPercentage` is not specified.
+ * * `fallbackToOnDemand` -
+ * * `drainingTimeout` - (Optional, Default `120`) Time (seconds) to allow the instance to be drained from incoming TCP connections and detached from MLB before terminating it during a scale-down operation.
  *
- * ### Login
- *
- * * `login` - (Required) Describes the login configuration.
- *     * `userName` - (Required) Set admin access for accessing your VMs.
- *     * `sshPublicKey` - (Optional) SSH for admin access to Linux VMs. Required for Linux OS types.
- *     * `password` - (Optional) Password for admin access to Windows VMs. Required for Windows OS types.
- *
- * <!--Start PulumiCodeChooser -->
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * ```
- * <!--End PulumiCodeChooser -->
+ * <a id="image"></a>
  */
 export class Elastigroup extends pulumi.CustomResource {
     /**

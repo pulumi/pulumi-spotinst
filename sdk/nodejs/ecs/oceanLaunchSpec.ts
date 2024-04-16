@@ -17,44 +17,13 @@ import * as utilities from "../utilities";
  * import * as spotinst from "@pulumi/spotinst";
  *
  * const example = new spotinst.ecs.OceanLaunchSpec("example", {
- *     attributes: [{
- *         key: "fakeKey",
- *         value: "fakeValue",
- *     }],
- *     autoscaleHeadrooms: [{
- *         cpuPerUnit: 1000,
- *         memoryPerUnit: 2048,
- *         numOfUnits: 5,
- *     }],
- *     blockDeviceMappings: [{
- *         deviceName: "/dev/xvda1",
- *         ebs: {
- *             deleteOnTermination: true,
- *             dynamicVolumeSize: {
- *                 baseSize: 50,
- *                 resource: "CPU",
- *                 sizePerResourceUnit: 20,
- *             },
- *             encrypted: false,
- *             throughput: 500,
- *             volumeSize: 50,
- *             volumeType: "gp2",
- *         },
- *     }],
- *     iamInstanceProfile: "iam-profile",
+ *     oceanId: "o-123456",
  *     imageId: "ami-123456",
- *     images: [
- *         {
- *             imageId: "ami-12345",
- *         },
- *         {
- *             imageId: "ami-67890",
- *         },
- *     ],
- *     instanceMetadataOptions: {
- *         httpPutResponseHopLimit: 10,
- *         httpTokens: "required",
- *     },
+ *     userData: "echo hello world",
+ *     iamInstanceProfile: "iam-profile",
+ *     subnetIds: ["subnet-12345"],
+ *     securityGroupIds: ["awseb-12345"],
+ *     restrictScaleDown: true,
  *     instanceTypes: [
  *         "m3.large",
  *         "m3.xlarge",
@@ -72,7 +41,6 @@ import * as utilities from "../utilities";
  *         "m5.12xlarge",
  *         "m5.24xlarge",
  *     ],
- *     oceanId: "o-123456",
  *     preferredSpotTypes: [
  *         "m3.large",
  *         "m3.xlarge",
@@ -80,27 +48,59 @@ import * as utilities from "../utilities";
  *         "m4.large",
  *         "m4.xlarge",
  *     ],
- *     restrictScaleDown: true,
- *     schedulingTasks: [{
- *         cronExpression: "0 1 * * *",
- *         isEnabled: true,
- *         taskHeadrooms: [{
- *             cpuPerUnit: 1000,
- *             memoryPerUnit: 2048,
- *             numOfUnits: 5,
- *         }],
- *         taskType: "manualHeadroomUpdate",
+ *     blockDeviceMappings: [{
+ *         deviceName: "/dev/xvda1",
+ *         ebs: {
+ *             deleteOnTermination: true,
+ *             encrypted: false,
+ *             volumeType: "gp2",
+ *             volumeSize: 50,
+ *             throughput: 500,
+ *             dynamicVolumeSize: {
+ *                 baseSize: 50,
+ *                 resource: "CPU",
+ *                 sizePerResourceUnit: 20,
+ *             },
+ *         },
  *     }],
- *     securityGroupIds: ["awseb-12345"],
+ *     attributes: [{
+ *         key: "fakeKey",
+ *         value: "fakeValue",
+ *     }],
+ *     instanceMetadataOptions: {
+ *         httpTokens: "required",
+ *         httpPutResponseHopLimit: 10,
+ *     },
+ *     autoscaleHeadrooms: [{
+ *         numOfUnits: 5,
+ *         cpuPerUnit: 1000,
+ *         memoryPerUnit: 2048,
+ *     }],
  *     strategies: [{
  *         spotPercentage: 50,
  *     }],
- *     subnetIds: ["subnet-12345"],
  *     tags: [{
  *         key: "Env",
  *         value: "production",
  *     }],
- *     userData: "echo hello world",
+ *     images: [
+ *         {
+ *             imageId: "ami-12345",
+ *         },
+ *         {
+ *             imageId: "ami-67890",
+ *         },
+ *     ],
+ *     schedulingTasks: [{
+ *         isEnabled: true,
+ *         cronExpression: "0 1 * * *",
+ *         taskType: "manualHeadroomUpdate",
+ *         taskHeadrooms: [{
+ *             numOfUnits: 5,
+ *             cpuPerUnit: 1000,
+ *             memoryPerUnit: 2048,
+ *         }],
+ *     }],
  * });
  * ```
  * <!--End PulumiCodeChooser -->

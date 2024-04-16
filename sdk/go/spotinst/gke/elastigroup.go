@@ -37,8 +37,42 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := gke.NewElastigroup(ctx, "example-gke-elastigroup", &gke.ElastigroupArgs{
+//				Name:                  pulumi.String("example-gke"),
+//				ClusterZoneName:       pulumi.String("us-central1-a"),
+//				NodeImage:             pulumi.String("COS"),
+//				MaxSize:               pulumi.Int(5),
+//				MinSize:               pulumi.Int(1),
+//				DesiredCapacity:       pulumi.Int(3),
+//				InstanceTypesOndemand: pulumi.String("n1-standard-1"),
+//				InstanceTypesPreemptibles: pulumi.StringArray{
+//					pulumi.String("n1-standard-1"),
+//					pulumi.String("n1-standard-2"),
+//				},
+//				PreemptiblePercentage: pulumi.Int(100),
+//				IntegrationGke: &gke.ElastigroupIntegrationGkeArgs{
+//					Location:              pulumi.String("us-central1-a"),
+//					ClusterId:             pulumi.String("example-cluster-id"),
+//					AutoscaleIsEnabled:    pulumi.Bool(true),
+//					AutoscaleIsAutoConfig: pulumi.Bool(false),
+//					AutoscaleCooldown:     pulumi.Int(300),
+//					AutoscaleHeadroom: &gke.ElastigroupIntegrationGkeAutoscaleHeadroomArgs{
+//						CpuPerUnit:    pulumi.Int(1024),
+//						MemoryPerUnit: pulumi.Int(512),
+//						NumOfUnits:    pulumi.Int(2),
+//					},
+//					AutoscaleDown: &gke.ElastigroupIntegrationGkeAutoscaleDownArgs{
+//						EvaluationPeriods: pulumi.Int(300),
+//					},
+//					AutoscaleLabels: gke.ElastigroupIntegrationGkeAutoscaleLabelArray{
+//						&gke.ElastigroupIntegrationGkeAutoscaleLabelArgs{
+//							Key:   pulumi.String("label_key"),
+//							Value: pulumi.String("label_value"),
+//						},
+//					},
+//				},
 //				BackendServices: gke.ElastigroupBackendServiceArray{
 //					&gke.ElastigroupBackendServiceArgs{
+//						ServiceName:  pulumi.String("backend-service"),
 //						LocationType: pulumi.String("global"),
 //						NamedPorts: gke.ElastigroupBackendServiceNamedPortArray{
 //							&gke.ElastigroupBackendServiceNamedPortArgs{
@@ -49,41 +83,8 @@ import (
 //								},
 //							},
 //						},
-//						ServiceName: pulumi.String("backend-service"),
 //					},
 //				},
-//				ClusterZoneName:       pulumi.String("us-central1-a"),
-//				DesiredCapacity:       pulumi.Int(3),
-//				InstanceTypesOndemand: pulumi.String("n1-standard-1"),
-//				InstanceTypesPreemptibles: pulumi.StringArray{
-//					pulumi.String("n1-standard-1"),
-//					pulumi.String("n1-standard-2"),
-//				},
-//				IntegrationGke: &gke.ElastigroupIntegrationGkeArgs{
-//					AutoscaleCooldown: pulumi.Int(300),
-//					AutoscaleDown: &gke.ElastigroupIntegrationGkeAutoscaleDownArgs{
-//						EvaluationPeriods: pulumi.Int(300),
-//					},
-//					AutoscaleHeadroom: &gke.ElastigroupIntegrationGkeAutoscaleHeadroomArgs{
-//						CpuPerUnit:    pulumi.Int(1024),
-//						MemoryPerUnit: pulumi.Int(512),
-//						NumOfUnits:    pulumi.Int(2),
-//					},
-//					AutoscaleIsAutoConfig: pulumi.Bool(false),
-//					AutoscaleIsEnabled:    pulumi.Bool(true),
-//					AutoscaleLabels: gke.ElastigroupIntegrationGkeAutoscaleLabelArray{
-//						&gke.ElastigroupIntegrationGkeAutoscaleLabelArgs{
-//							Key:   pulumi.String("label_key"),
-//							Value: pulumi.String("label_value"),
-//						},
-//					},
-//					ClusterId: pulumi.String("example-cluster-id"),
-//					Location:  pulumi.String("us-central1-a"),
-//				},
-//				MaxSize:               pulumi.Int(5),
-//				MinSize:               pulumi.Int(1),
-//				NodeImage:             pulumi.String("COS"),
-//				PreemptiblePercentage: pulumi.Int(100),
 //			})
 //			if err != nil {
 //				return err

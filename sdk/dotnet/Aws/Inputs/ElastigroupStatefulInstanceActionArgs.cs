@@ -22,18 +22,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         /// String, Action type. Supported action types: `pause`, `resume`, `recycle`, `deallocate`.
         /// 
         /// Usage:
-        /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        /// });
-        /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;

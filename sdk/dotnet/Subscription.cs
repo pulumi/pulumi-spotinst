@@ -26,8 +26,10 @@ namespace Pulumi.SpotInst
     ///     // Create a Subscription
     ///     var default_subscription = new SpotInst.Subscription("default-subscription", new()
     ///     {
-    ///         Endpoint = "http://endpoint.com",
+    ///         ResourceId = my_eg.Id,
     ///         EventType = "AWS_EC2_INSTANCE_LAUNCH",
+    ///         Protocol = "http",
+    ///         Endpoint = "http://endpoint.com",
     ///         Format = 
     ///         {
     ///             { "event", "%event%" },
@@ -36,8 +38,6 @@ namespace Pulumi.SpotInst
     ///             { "resource_name", "%resource-name%" },
     ///             { "tags", "foo,baz,baz" },
     ///         },
-    ///         Protocol = "http",
-    ///         ResourceId = spotinst_elastigroup_aws.My_eg.Id,
     ///     });
     /// 
     /// });

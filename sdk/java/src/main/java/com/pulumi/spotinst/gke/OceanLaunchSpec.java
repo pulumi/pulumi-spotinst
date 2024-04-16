@@ -45,17 +45,17 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.spotinst.gke.OceanLaunchSpec;
  * import com.pulumi.spotinst.gke.OceanLaunchSpecArgs;
- * import com.pulumi.spotinst.gke.inputs.OceanLaunchSpecAutoscaleHeadroomArgs;
- * import com.pulumi.spotinst.gke.inputs.OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs;
- * import com.pulumi.spotinst.gke.inputs.OceanLaunchSpecLabelArgs;
- * import com.pulumi.spotinst.gke.inputs.OceanLaunchSpecMetadataArgs;
- * import com.pulumi.spotinst.gke.inputs.OceanLaunchSpecNetworkInterfaceArgs;
- * import com.pulumi.spotinst.gke.inputs.OceanLaunchSpecResourceLimitsArgs;
- * import com.pulumi.spotinst.gke.inputs.OceanLaunchSpecSchedulingTaskArgs;
  * import com.pulumi.spotinst.gke.inputs.OceanLaunchSpecShieldedInstanceConfigArgs;
  * import com.pulumi.spotinst.gke.inputs.OceanLaunchSpecStorageArgs;
- * import com.pulumi.spotinst.gke.inputs.OceanLaunchSpecStrategyArgs;
+ * import com.pulumi.spotinst.gke.inputs.OceanLaunchSpecResourceLimitsArgs;
+ * import com.pulumi.spotinst.gke.inputs.OceanLaunchSpecMetadataArgs;
+ * import com.pulumi.spotinst.gke.inputs.OceanLaunchSpecLabelArgs;
  * import com.pulumi.spotinst.gke.inputs.OceanLaunchSpecTaintArgs;
+ * import com.pulumi.spotinst.gke.inputs.OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs;
+ * import com.pulumi.spotinst.gke.inputs.OceanLaunchSpecAutoscaleHeadroomArgs;
+ * import com.pulumi.spotinst.gke.inputs.OceanLaunchSpecStrategyArgs;
+ * import com.pulumi.spotinst.gke.inputs.OceanLaunchSpecSchedulingTaskArgs;
+ * import com.pulumi.spotinst.gke.inputs.OceanLaunchSpecNetworkInterfaceArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -70,25 +70,68 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new OceanLaunchSpec(&#34;example&#34;, OceanLaunchSpecArgs.builder()        
- *             .autoscaleHeadrooms(OceanLaunchSpecAutoscaleHeadroomArgs.builder()
- *                 .cpuPerUnit(1000)
- *                 .gpuPerUnit(0)
- *                 .memoryPerUnit(2048)
- *                 .numOfUnits(5)
- *                 .build())
- *             .autoscaleHeadroomsAutomatics(OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs.builder()
- *                 .autoHeadroomPercentage(5)
- *                 .build())
+ *             .oceanId(&#34;o-123456&#34;)
+ *             .nodePoolName(&#34;default-pool&#34;)
+ *             .name(&#34;specialty.nodes.spotk8s.com&#34;)
+ *             .sourceImage(&#34;image&#34;)
+ *             .restrictScaleDown(true)
+ *             .rootVolumeSize(10)
+ *             .rootVolumeType(&#34;pd-standard&#34;)
  *             .instanceTypes(&#34;n1-standard-1, n1-standard-2&#34;)
- *             .labels(OceanLaunchSpecLabelArgs.builder()
- *                 .key(&#34;labelKey&#34;)
- *                 .value(&#34;labelVal&#34;)
+ *             .tags(            
+ *                 &#34;tag1&#34;,
+ *                 &#34;tag2&#34;)
+ *             .shieldedInstanceConfig(OceanLaunchSpecShieldedInstanceConfigArgs.builder()
+ *                 .enableSecureBoot(false)
+ *                 .enableIntegrityMonitoring(true)
  *                 .build())
+ *             .storage(OceanLaunchSpecStorageArgs.builder()
+ *                 .localSsdCount(5)
+ *                 .build())
+ *             .resourceLimits(OceanLaunchSpecResourceLimitsArgs.builder()
+ *                 .maxInstanceCount(3)
+ *                 .minInstanceCount(0)
+ *                 .build())
+ *             .serviceAccount(&#34;default&#34;)
  *             .metadatas(OceanLaunchSpecMetadataArgs.builder()
  *                 .key(&#34;gci-update-strategy&#34;)
  *                 .value(&#34;update_disabled&#34;)
  *                 .build())
+ *             .labels(OceanLaunchSpecLabelArgs.builder()
+ *                 .key(&#34;labelKey&#34;)
+ *                 .value(&#34;labelVal&#34;)
+ *                 .build())
+ *             .taints(OceanLaunchSpecTaintArgs.builder()
+ *                 .key(&#34;taintKey&#34;)
+ *                 .value(&#34;taintVal&#34;)
+ *                 .effect(&#34;taintEffect&#34;)
+ *                 .build())
+ *             .autoscaleHeadroomsAutomatics(OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs.builder()
+ *                 .autoHeadroomPercentage(5)
+ *                 .build())
+ *             .autoscaleHeadrooms(OceanLaunchSpecAutoscaleHeadroomArgs.builder()
+ *                 .numOfUnits(5)
+ *                 .cpuPerUnit(1000)
+ *                 .gpuPerUnit(0)
+ *                 .memoryPerUnit(2048)
+ *                 .build())
+ *             .strategies(OceanLaunchSpecStrategyArgs.builder()
+ *                 .preemptiblePercentage(30)
+ *                 .build())
+ *             .schedulingTasks(OceanLaunchSpecSchedulingTaskArgs.builder()
+ *                 .isEnabled(true)
+ *                 .cronExpression(&#34;0 1 * * *&#34;)
+ *                 .taskType(&#34;manualHeadroomUpdate&#34;)
+ *                 .taskHeadrooms(OceanLaunchSpecSchedulingTaskTaskHeadroomArgs.builder()
+ *                     .numOfUnits(5)
+ *                     .cpuPerUnit(1000)
+ *                     .gpuPerUnit(0)
+ *                     .memoryPerUnit(2048)
+ *                     .build())
+ *                 .build())
  *             .networkInterfaces(OceanLaunchSpecNetworkInterfaceArgs.builder()
+ *                 .network(&#34;test-vng-network&#34;)
+ *                 .projectId(&#34;test-vng-network-project&#34;)
  *                 .accessConfigs(OceanLaunchSpecNetworkInterfaceAccessConfigArgs.builder()
  *                     .name(&#34;external-nat-vng&#34;)
  *                     .type(&#34;ONE_TO_ONE_NAT&#34;)
@@ -97,83 +140,9 @@ import javax.annotation.Nullable;
  *                     .ipCidrRange(&#34;/25&#34;)
  *                     .subnetworkRangeName(&#34;gke-test-native-vpc-pods-123456-vng&#34;)
  *                     .build())
- *                 .network(&#34;test-vng-network&#34;)
- *                 .projectId(&#34;test-vng-network-project&#34;)
- *                 .build())
- *             .nodePoolName(&#34;default-pool&#34;)
- *             .oceanId(&#34;o-123456&#34;)
- *             .resourceLimits(OceanLaunchSpecResourceLimitsArgs.builder()
- *                 .maxInstanceCount(3)
- *                 .minInstanceCount(0)
- *                 .build())
- *             .restrictScaleDown(true)
- *             .rootVolumeSize(10)
- *             .rootVolumeType(&#34;pd-standard&#34;)
- *             .schedulingTasks(OceanLaunchSpecSchedulingTaskArgs.builder()
- *                 .cronExpression(&#34;0 1 * * *&#34;)
- *                 .isEnabled(true)
- *                 .taskHeadrooms(OceanLaunchSpecSchedulingTaskTaskHeadroomArgs.builder()
- *                     .cpuPerUnit(1000)
- *                     .gpuPerUnit(0)
- *                     .memoryPerUnit(2048)
- *                     .numOfUnits(5)
- *                     .build())
- *                 .taskType(&#34;manualHeadroomUpdate&#34;)
- *                 .build())
- *             .serviceAccount(&#34;default&#34;)
- *             .shieldedInstanceConfig(OceanLaunchSpecShieldedInstanceConfigArgs.builder()
- *                 .enableIntegrityMonitoring(true)
- *                 .enableSecureBoot(false)
- *                 .build())
- *             .sourceImage(&#34;image&#34;)
- *             .storage(OceanLaunchSpecStorageArgs.builder()
- *                 .localSsdCount(5)
- *                 .build())
- *             .strategies(OceanLaunchSpecStrategyArgs.builder()
- *                 .preemptiblePercentage(30)
- *                 .build())
- *             .tags(            
- *                 &#34;tag1&#34;,
- *                 &#34;tag2&#34;)
- *             .taints(OceanLaunchSpecTaintArgs.builder()
- *                 .effect(&#34;taintEffect&#34;)
- *                 .key(&#34;taintKey&#34;)
- *                 .value(&#34;taintVal&#34;)
  *                 .build())
  *             .build());
  * 
- *     }
- * }
- * ```
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
- * ## Update Policy
- * 
- * * `update_policy` - (Optional)
- *   * `should_roll` - (Required) Enables the roll.
- *   * `roll_config` - (Required) Holds the roll configuration.
- *     * `batch_size_percentage` - (Required) Sets the percentage of the instances to deploy in each batch.
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
  *     }
  * }
  * ```
