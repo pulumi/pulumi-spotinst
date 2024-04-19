@@ -32,10 +32,50 @@ namespace Pulumi.SpotInst.Gke
     /// {
     ///     var example_gke_elastigroup = new SpotInst.Gke.Elastigroup("example-gke-elastigroup", new()
     ///     {
+    ///         Name = "example-gke",
+    ///         ClusterZoneName = "us-central1-a",
+    ///         NodeImage = "COS",
+    ///         MaxSize = 5,
+    ///         MinSize = 1,
+    ///         DesiredCapacity = 3,
+    ///         InstanceTypesOndemand = "n1-standard-1",
+    ///         InstanceTypesPreemptibles = new[]
+    ///         {
+    ///             "n1-standard-1",
+    ///             "n1-standard-2",
+    ///         },
+    ///         PreemptiblePercentage = 100,
+    ///         IntegrationGke = new SpotInst.Gke.Inputs.ElastigroupIntegrationGkeArgs
+    ///         {
+    ///             Location = "us-central1-a",
+    ///             ClusterId = "example-cluster-id",
+    ///             AutoscaleIsEnabled = true,
+    ///             AutoscaleIsAutoConfig = false,
+    ///             AutoscaleCooldown = 300,
+    ///             AutoscaleHeadroom = new SpotInst.Gke.Inputs.ElastigroupIntegrationGkeAutoscaleHeadroomArgs
+    ///             {
+    ///                 CpuPerUnit = 1024,
+    ///                 MemoryPerUnit = 512,
+    ///                 NumOfUnits = 2,
+    ///             },
+    ///             AutoscaleDown = new SpotInst.Gke.Inputs.ElastigroupIntegrationGkeAutoscaleDownArgs
+    ///             {
+    ///                 EvaluationPeriods = 300,
+    ///             },
+    ///             AutoscaleLabels = new[]
+    ///             {
+    ///                 new SpotInst.Gke.Inputs.ElastigroupIntegrationGkeAutoscaleLabelArgs
+    ///                 {
+    ///                     Key = "label_key",
+    ///                     Value = "label_value",
+    ///                 },
+    ///             },
+    ///         },
     ///         BackendServices = new[]
     ///         {
     ///             new SpotInst.Gke.Inputs.ElastigroupBackendServiceArgs
     ///             {
+    ///                 ServiceName = "backend-service",
     ///                 LocationType = "global",
     ///                 NamedPorts = new[]
     ///                 {
@@ -49,47 +89,8 @@ namespace Pulumi.SpotInst.Gke
     ///                         },
     ///                     },
     ///                 },
-    ///                 ServiceName = "backend-service",
     ///             },
     ///         },
-    ///         ClusterZoneName = "us-central1-a",
-    ///         DesiredCapacity = 3,
-    ///         InstanceTypesOndemand = "n1-standard-1",
-    ///         InstanceTypesPreemptibles = new[]
-    ///         {
-    ///             "n1-standard-1",
-    ///             "n1-standard-2",
-    ///         },
-    ///         IntegrationGke = new SpotInst.Gke.Inputs.ElastigroupIntegrationGkeArgs
-    ///         {
-    ///             AutoscaleCooldown = 300,
-    ///             AutoscaleDown = new SpotInst.Gke.Inputs.ElastigroupIntegrationGkeAutoscaleDownArgs
-    ///             {
-    ///                 EvaluationPeriods = 300,
-    ///             },
-    ///             AutoscaleHeadroom = new SpotInst.Gke.Inputs.ElastigroupIntegrationGkeAutoscaleHeadroomArgs
-    ///             {
-    ///                 CpuPerUnit = 1024,
-    ///                 MemoryPerUnit = 512,
-    ///                 NumOfUnits = 2,
-    ///             },
-    ///             AutoscaleIsAutoConfig = false,
-    ///             AutoscaleIsEnabled = true,
-    ///             AutoscaleLabels = new[]
-    ///             {
-    ///                 new SpotInst.Gke.Inputs.ElastigroupIntegrationGkeAutoscaleLabelArgs
-    ///                 {
-    ///                     Key = "label_key",
-    ///                     Value = "label_value",
-    ///                 },
-    ///             },
-    ///             ClusterId = "example-cluster-id",
-    ///             Location = "us-central1-a",
-    ///         },
-    ///         MaxSize = 5,
-    ///         MinSize = 1,
-    ///         NodeImage = "COS",
-    ///         PreemptiblePercentage = 100,
     ///     });
     /// 
     /// });

@@ -762,17 +762,104 @@ class Ocean(pulumi.CustomResource):
 
         > This resource contains arguments (such as `image` and `extension`) that are automatically populated from the data reported by the Ocean AKS Connector deployed into your cluster. You can override the upstream configuration by defining the corresponding arguments.
 
-        ## Prerequisites
-
-        Installation of the Ocean controller is required by this resource. You can accomplish this by using the spotinst/ocean-controller module as follows:
+        ## Example Usage
 
         <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
+        import pulumi_spotinst as spotinst
+
+        example = spotinst.azure.Ocean("example",
+            name="ocean-westus-dev-aks",
+            controller_cluster_id="ocean-westus-dev-aks",
+            zones=[
+                "1",
+                "2",
+                "3",
+            ],
+            acd_identifier="acd-12345678",
+            aks_name="ocean-westus-dev-aks",
+            aks_resource_group_name="ocean-westus-dev",
+            ssh_public_key="ssh-rsa [... redacted ...] generated-by-azure",
+            user_name="some-name",
+            resource_group_name="some-resource-group-name",
+            custom_data="[... redacted ...]",
+            max_pods=30,
+            managed_service_identities=[spotinst.azure.OceanManagedServiceIdentityArgs(
+                resource_group_name="MC_ocean-westus-dev_ocean-westus-dev-aks_westus",
+                name="ocean-westus-dev-aks-agentpool",
+            )],
+            tags=[spotinst.azure.OceanTagArgs(
+                key="Environment",
+                value="Dev",
+            )],
+            vm_sizes=[spotinst.azure.OceanVmSizeArgs(
+                whitelists=["standard_ds2_v2"],
+            )],
+            os_disk=spotinst.azure.OceanOsDiskArgs(
+                size_gb=130,
+                type="Standard_LRS",
+            ),
+            images=[spotinst.azure.OceanImageArgs(
+                marketplaces=[spotinst.azure.OceanImageMarketplaceArgs(
+                    publisher="Canonical",
+                    offer="UbuntuServer",
+                    sku="18.04-LTS",
+                    version="latest",
+                )],
+            )],
+            strategies=[spotinst.azure.OceanStrategyArgs(
+                fallback_to_ondemand=True,
+                spot_percentage=40,
+            )],
+            health=spotinst.azure.OceanHealthArgs(
+                grace_period=10,
+            ),
+            network=spotinst.azure.OceanNetworkArgs(
+                virtual_network_name="vn-name",
+                resource_group_name="ocean-westus-dev",
+                network_interfaces=[spotinst.azure.OceanNetworkNetworkInterfaceArgs(
+                    subnet_name="subnet-name",
+                    assign_public_ip=False,
+                    is_primary=False,
+                    additional_ip_configs=[spotinst.azure.OceanNetworkNetworkInterfaceAdditionalIpConfigArgs(
+                        name="ip-config-name",
+                        private_ip_version="ipv4",
+                    )],
+                )],
+            ),
+            extensions=[spotinst.azure.OceanExtensionArgs(
+                api_version="1.0",
+                minor_version_auto_upgrade=True,
+                name="extension-name",
+                publisher="Microsoft.Azure.Extensions",
+                type="Linux",
+            )],
+            load_balancers=[spotinst.azure.OceanLoadBalancerArgs(
+                backend_pool_names=["terraform-backend-pool"],
+                load_balancer_sku="Standard",
+                name="load-balancer-name",
+                resource_group_name="resource-group-name",
+                type="loadBalancer",
+            )],
+            autoscaler=spotinst.azure.OceanAutoscalerArgs(
+                autoscale_is_enabled=True,
+                autoscale_down=spotinst.azure.OceanAutoscalerAutoscaleDownArgs(
+                    max_scale_down_percentage=10,
+                ),
+                resource_limits=spotinst.azure.OceanAutoscalerResourceLimitsArgs(
+                    max_vcpu=1024,
+                    max_memory_gib=40,
+                ),
+                autoscale_headroom=spotinst.azure.OceanAutoscalerAutoscaleHeadroomArgs(
+                    automatic=spotinst.azure.OceanAutoscalerAutoscaleHeadroomAutomaticArgs(
+                        is_enabled=True,
+                        percentage=10,
+                    ),
+                ),
+            ))
         ```
         <!--End PulumiCodeChooser -->
-
-        > You must configure the same `cluster_identifier` and `acd_identifier` both for the Ocean controller and for the `azure.Ocean` resource.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -810,17 +897,104 @@ class Ocean(pulumi.CustomResource):
 
         > This resource contains arguments (such as `image` and `extension`) that are automatically populated from the data reported by the Ocean AKS Connector deployed into your cluster. You can override the upstream configuration by defining the corresponding arguments.
 
-        ## Prerequisites
-
-        Installation of the Ocean controller is required by this resource. You can accomplish this by using the spotinst/ocean-controller module as follows:
+        ## Example Usage
 
         <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
+        import pulumi_spotinst as spotinst
+
+        example = spotinst.azure.Ocean("example",
+            name="ocean-westus-dev-aks",
+            controller_cluster_id="ocean-westus-dev-aks",
+            zones=[
+                "1",
+                "2",
+                "3",
+            ],
+            acd_identifier="acd-12345678",
+            aks_name="ocean-westus-dev-aks",
+            aks_resource_group_name="ocean-westus-dev",
+            ssh_public_key="ssh-rsa [... redacted ...] generated-by-azure",
+            user_name="some-name",
+            resource_group_name="some-resource-group-name",
+            custom_data="[... redacted ...]",
+            max_pods=30,
+            managed_service_identities=[spotinst.azure.OceanManagedServiceIdentityArgs(
+                resource_group_name="MC_ocean-westus-dev_ocean-westus-dev-aks_westus",
+                name="ocean-westus-dev-aks-agentpool",
+            )],
+            tags=[spotinst.azure.OceanTagArgs(
+                key="Environment",
+                value="Dev",
+            )],
+            vm_sizes=[spotinst.azure.OceanVmSizeArgs(
+                whitelists=["standard_ds2_v2"],
+            )],
+            os_disk=spotinst.azure.OceanOsDiskArgs(
+                size_gb=130,
+                type="Standard_LRS",
+            ),
+            images=[spotinst.azure.OceanImageArgs(
+                marketplaces=[spotinst.azure.OceanImageMarketplaceArgs(
+                    publisher="Canonical",
+                    offer="UbuntuServer",
+                    sku="18.04-LTS",
+                    version="latest",
+                )],
+            )],
+            strategies=[spotinst.azure.OceanStrategyArgs(
+                fallback_to_ondemand=True,
+                spot_percentage=40,
+            )],
+            health=spotinst.azure.OceanHealthArgs(
+                grace_period=10,
+            ),
+            network=spotinst.azure.OceanNetworkArgs(
+                virtual_network_name="vn-name",
+                resource_group_name="ocean-westus-dev",
+                network_interfaces=[spotinst.azure.OceanNetworkNetworkInterfaceArgs(
+                    subnet_name="subnet-name",
+                    assign_public_ip=False,
+                    is_primary=False,
+                    additional_ip_configs=[spotinst.azure.OceanNetworkNetworkInterfaceAdditionalIpConfigArgs(
+                        name="ip-config-name",
+                        private_ip_version="ipv4",
+                    )],
+                )],
+            ),
+            extensions=[spotinst.azure.OceanExtensionArgs(
+                api_version="1.0",
+                minor_version_auto_upgrade=True,
+                name="extension-name",
+                publisher="Microsoft.Azure.Extensions",
+                type="Linux",
+            )],
+            load_balancers=[spotinst.azure.OceanLoadBalancerArgs(
+                backend_pool_names=["terraform-backend-pool"],
+                load_balancer_sku="Standard",
+                name="load-balancer-name",
+                resource_group_name="resource-group-name",
+                type="loadBalancer",
+            )],
+            autoscaler=spotinst.azure.OceanAutoscalerArgs(
+                autoscale_is_enabled=True,
+                autoscale_down=spotinst.azure.OceanAutoscalerAutoscaleDownArgs(
+                    max_scale_down_percentage=10,
+                ),
+                resource_limits=spotinst.azure.OceanAutoscalerResourceLimitsArgs(
+                    max_vcpu=1024,
+                    max_memory_gib=40,
+                ),
+                autoscale_headroom=spotinst.azure.OceanAutoscalerAutoscaleHeadroomArgs(
+                    automatic=spotinst.azure.OceanAutoscalerAutoscaleHeadroomAutomaticArgs(
+                        is_enabled=True,
+                        percentage=10,
+                    ),
+                ),
+            ))
         ```
         <!--End PulumiCodeChooser -->
-
-        > You must configure the same `cluster_identifier` and `acd_identifier` both for the Ocean controller and for the `azure.Ocean` resource.
 
         :param str resource_name: The name of the resource.
         :param OceanArgs args: The arguments to use to populate this resource's properties.

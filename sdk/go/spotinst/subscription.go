@@ -31,8 +31,10 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Create a Subscription
 //			_, err := spotinst.NewSubscription(ctx, "default-subscription", &spotinst.SubscriptionArgs{
-//				Endpoint:  pulumi.String("http://endpoint.com"),
-//				EventType: pulumi.String("AWS_EC2_INSTANCE_LAUNCH"),
+//				ResourceId: pulumi.Any(my_eg.Id),
+//				EventType:  pulumi.String("AWS_EC2_INSTANCE_LAUNCH"),
+//				Protocol:   pulumi.String("http"),
+//				Endpoint:   pulumi.String("http://endpoint.com"),
 //				Format: pulumi.Map{
 //					"event":         pulumi.Any("%event%"),
 //					"instance_id":   pulumi.Any("%instance-id%"),
@@ -40,8 +42,6 @@ import (
 //					"resource_name": pulumi.Any("%resource-name%"),
 //					"tags":          pulumi.Any("foo,baz,baz"),
 //				},
-//				Protocol:   pulumi.String("http"),
-//				ResourceId: pulumi.Any(spotinst_elastigroup_aws.MyEg.Id),
 //			})
 //			if err != nil {
 //				return err

@@ -16,13 +16,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as spotinst from "@pulumi/spotinst";
  *
- * const terraformUserGroup = new spotinst.organization.UserGroup("terraformUserGroup", {
+ * const terraformUserGroup = new spotinst.organization.UserGroup("terraform_user_group", {
+ *     name: "test_user_group",
  *     description: "user group by terraform",
+ *     userIds: ["u-372gf6ae"],
  *     policies: [{
  *         accountIds: ["act-a1b2c3d4"],
  *         policyId: "pol-vv7d8c06",
  *     }],
- *     userIds: ["u-372gf6ae"],
  * });
  * ```
  * <!--End PulumiCodeChooser -->

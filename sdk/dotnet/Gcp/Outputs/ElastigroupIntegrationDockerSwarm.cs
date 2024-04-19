@@ -21,18 +21,6 @@ namespace Pulumi.SpotInst.Gcp.Outputs
         /// Network port used by your swarm.
         /// 
         /// Usage:
-        /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        /// });
-        /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public readonly int MasterPort;
 

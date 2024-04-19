@@ -218,11 +218,12 @@ class ProgrammaticUser(pulumi.CustomResource):
         import pulumi
         import pulumi_spotinst as spotinst
 
-        terraform_prog_user = spotinst.organization.ProgrammaticUser("terraformProgUser",
+        terraform_prog_user = spotinst.organization.ProgrammaticUser("terraform_prog_user",
+            name="test-prog-user",
             description="creating programmatic user",
             policies=[spotinst.organization.ProgrammaticUserPolicyArgs(
-                policy_account_ids=["act-a1b2c3d4"],
                 policy_id="pol-g75d8c06",
+                policy_account_ids=["act-a1b2c3d4"],
             )],
             user_group_ids=[
                 "ugr-abcd1234",
@@ -257,11 +258,12 @@ class ProgrammaticUser(pulumi.CustomResource):
         import pulumi
         import pulumi_spotinst as spotinst
 
-        terraform_prog_user = spotinst.organization.ProgrammaticUser("terraformProgUser",
+        terraform_prog_user = spotinst.organization.ProgrammaticUser("terraform_prog_user",
+            name="test-prog-user",
             description="creating programmatic user",
             policies=[spotinst.organization.ProgrammaticUserPolicyArgs(
-                policy_account_ids=["act-a1b2c3d4"],
                 policy_id="pol-g75d8c06",
+                policy_account_ids=["act-a1b2c3d4"],
             )],
             user_group_ids=[
                 "ugr-abcd1234",

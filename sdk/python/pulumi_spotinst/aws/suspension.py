@@ -108,7 +108,7 @@ class Suspension(pulumi.CustomResource):
         import pulumi_spotinst as spotinst
 
         # Create a suspension for Elastigroup
-        resource_name = spotinst.aws.Suspension("resourceName",
+        resource_name = spotinst.aws.Suspension("resource_name",
             group_id="sig-12345678",
             suspensions=[
                 spotinst.aws.SuspensionSuspensionArgs(
@@ -144,7 +144,7 @@ class Suspension(pulumi.CustomResource):
         import pulumi_spotinst as spotinst
 
         # Create a suspension for Elastigroup
-        resource_name = spotinst.aws.Suspension("resourceName",
+        resource_name = spotinst.aws.Suspension("resource_name",
             group_id="sig-12345678",
             suspensions=[
                 spotinst.aws.SuspensionSuspensionArgs(

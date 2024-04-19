@@ -8,6 +8,142 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a Spotinst AWS group resource.
+ *
+ * ## Example Usage
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as spotinst from "@pulumi/spotinst";
+ *
+ * // Create an Elastigroup
+ * const default_elastigroup = new spotinst.aws.Elastigroup("default-elastigroup", {
+ *     name: "default-elastigroup",
+ *     description: "created by Pulumi",
+ *     product: "Linux/UNIX",
+ *     maxSize: 0,
+ *     minSize: 0,
+ *     desiredCapacity: 0,
+ *     capacityUnit: "weight",
+ *     region: "us-west-2",
+ *     subnetIds: [
+ *         "sb-123456",
+ *         "sb-456789",
+ *     ],
+ *     imageId: "ami-a27d8fda",
+ *     iamInstanceProfile: "iam-profile",
+ *     keyName: "my-key.ssh",
+ *     securityGroups: ["sg-123456"],
+ *     userData: "echo hello world",
+ *     enableMonitoring: false,
+ *     ebsOptimized: false,
+ *     placementTenancy: "default",
+ *     metadataOptions: {
+ *         httpTokens: "optional",
+ *         httpPutResponseHopLimit: 10,
+ *         instanceMetadataTags: "enabled",
+ *     },
+ *     cpuOptions: {
+ *         threadsPerCore: 1,
+ *     },
+ *     instanceTypesOndemand: "m3.2xlarge",
+ *     instanceTypesSpots: [
+ *         "m3.xlarge",
+ *         "m3.2xlarge",
+ *     ],
+ *     instanceTypesPreferredSpots: ["m3.xlarge"],
+ *     onDemandTypes: ["c3.large"],
+ *     instanceTypesWeights: [
+ *         {
+ *             instanceType: "m3.xlarge",
+ *             weight: 10,
+ *         },
+ *         {
+ *             instanceType: "m3.2xlarge",
+ *             weight: 16,
+ *         },
+ *     ],
+ *     resourceRequirements: [{
+ *         excludedInstanceFamilies: [
+ *             "a",
+ *             "m",
+ *         ],
+ *         excludedInstanceTypes: ["m3.large"],
+ *         excludedInstanceGenerations: [
+ *             "1",
+ *             "2",
+ *         ],
+ *         requiredGpuMinimum: 1,
+ *         requiredGpuMaximum: 16,
+ *         requiredMemoryMinimum: 1,
+ *         requiredMemoryMaximum: 512,
+ *         requiredVcpuMinimum: 1,
+ *         requiredVcpuMaximum: 64,
+ *     }],
+ *     orientation: "balanced",
+ *     fallbackToOndemand: false,
+ *     cpuCredits: "unlimited",
+ *     minimumInstanceLifetime: 12,
+ *     waitForCapacity: 5,
+ *     waitForCapacityTimeout: 300,
+ *     scalingStrategies: [{
+ *         terminateAtEndOfBillingHour: true,
+ *         terminationPolicy: "default",
+ *     }],
+ *     scalingUpPolicies: [{
+ *         policyName: "Default Scaling Up Policy",
+ *         metricName: "DefaultQueuesDepth",
+ *         statistic: "average",
+ *         unit: "none",
+ *         adjustment: "1",
+ *         namespace: "custom",
+ *         threshold: 100,
+ *         period: 60,
+ *         evaluationPeriods: 5,
+ *         cooldown: 300,
+ *     }],
+ *     scalingDownPolicies: [{
+ *         policyName: "Default Scaling Down Policy",
+ *         metricName: "DefaultQueuesDepth",
+ *         statistic: "average",
+ *         unit: "none",
+ *         adjustment: "1",
+ *         namespace: "custom",
+ *         threshold: 10,
+ *         period: 60,
+ *         evaluationPeriods: 10,
+ *         cooldown: 300,
+ *     }],
+ *     tags: [
+ *         {
+ *             key: "Env",
+ *             value: "production",
+ *         },
+ *         {
+ *             key: "Name",
+ *             value: "default-production",
+ *         },
+ *         {
+ *             key: "Project",
+ *             value: "app_v2",
+ *         },
+ *     ],
+ *     resourceTagSpecifications: [{
+ *         shouldTagEnis: true,
+ *         shouldTagVolumes: true,
+ *         shouldTagSnapshots: true,
+ *         shouldTagAmis: true,
+ *     }],
+ *     logging: {
+ *         "export": {
+ *             s3s: [{
+ *                 id: "di-123456",
+ *             }],
+ *         },
+ *     },
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
  */
 export class Elastigroup extends pulumi.CustomResource {
     /**
@@ -253,12 +389,6 @@ export class Elastigroup extends pulumi.CustomResource {
      * List of Private IPs to associate to the group instances.(e.g. "172.1.1.0"). Please note: This setting will only apply if persistence.persist_private_ip is set to true.
      *
      * Usage:
-     *
-     * <!--Start PulumiCodeChooser -->
-     * ```typescript
-     * import * as pulumi from "@pulumi/pulumi";
-     * ```
-     * <!--End PulumiCodeChooser -->
      */
     public readonly privateIps!: pulumi.Output<string[] | undefined>;
     /**
@@ -759,12 +889,6 @@ export interface ElastigroupState {
      * List of Private IPs to associate to the group instances.(e.g. "172.1.1.0"). Please note: This setting will only apply if persistence.persist_private_ip is set to true.
      *
      * Usage:
-     *
-     * <!--Start PulumiCodeChooser -->
-     * ```typescript
-     * import * as pulumi from "@pulumi/pulumi";
-     * ```
-     * <!--End PulumiCodeChooser -->
      */
     privateIps?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -1065,12 +1189,6 @@ export interface ElastigroupArgs {
      * List of Private IPs to associate to the group instances.(e.g. "172.1.1.0"). Please note: This setting will only apply if persistence.persist_private_ip is set to true.
      *
      * Usage:
-     *
-     * <!--Start PulumiCodeChooser -->
-     * ```typescript
-     * import * as pulumi from "@pulumi/pulumi";
-     * ```
-     * <!--End PulumiCodeChooser -->
      */
     privateIps?: pulumi.Input<pulumi.Input<string>[]>;
     /**

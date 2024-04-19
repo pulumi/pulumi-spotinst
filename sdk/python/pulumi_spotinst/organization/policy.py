@@ -143,7 +143,8 @@ class Policy(pulumi.CustomResource):
         import pulumi
         import pulumi_spotinst as spotinst
 
-        terraform_policy = spotinst.organization.Policy("terraformPolicy",
+        terraform_policy = spotinst.organization.Policy("terraform_policy",
+            name="test-policy",
             description="policy by terraform",
             policy_contents=[spotinst.organization.PolicyPolicyContentArgs(
                 statements=[
@@ -190,7 +191,8 @@ class Policy(pulumi.CustomResource):
         import pulumi
         import pulumi_spotinst as spotinst
 
-        terraform_policy = spotinst.organization.Policy("terraformPolicy",
+        terraform_policy = spotinst.organization.Policy("terraform_policy",
+            name="test-policy",
             description="policy by terraform",
             policy_contents=[spotinst.organization.PolicyPolicyContentArgs(
                 statements=[

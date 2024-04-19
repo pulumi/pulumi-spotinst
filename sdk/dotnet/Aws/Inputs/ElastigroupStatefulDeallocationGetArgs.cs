@@ -28,18 +28,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         /// For stateful groups: remove snapshots.
         /// 
         /// Usage:
-        /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        /// });
-        /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         [Input("shouldDeleteSnapshots")]
         public Input<bool>? ShouldDeleteSnapshots { get; set; }

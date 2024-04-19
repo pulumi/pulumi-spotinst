@@ -29,8 +29,8 @@ namespace Pulumi.SpotInst.Spark
     /// {
     ///     var example = new SpotInst.Spark.OceanVirtualNodeGroup("example", new()
     ///     {
-    ///         OceanSparkClusterId = "cluster_id",
     ///         VirtualNodeGroupId = "vng_id",
+    ///         OceanSparkClusterId = "cluster_id",
     ///     });
     /// 
     /// });

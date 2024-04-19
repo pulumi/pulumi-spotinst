@@ -145,11 +145,12 @@ class DataIntegration(pulumi.CustomResource):
         import pulumi_spotinst as spotinst
 
         example = spotinst.DataIntegration("example",
+            name="foo",
+            status="enabled",
             s3=spotinst.DataIntegrationS3Args(
                 bucket_name="terraform-test-do-not-delete",
                 subdir="terraform-test-data-integration",
-            ),
-            status="enabled")
+            ))
         ```
         <!--End PulumiCodeChooser -->
 
@@ -176,11 +177,12 @@ class DataIntegration(pulumi.CustomResource):
         import pulumi_spotinst as spotinst
 
         example = spotinst.DataIntegration("example",
+            name="foo",
+            status="enabled",
             s3=spotinst.DataIntegrationS3Args(
                 bucket_name="terraform-test-do-not-delete",
                 subdir="terraform-test-data-integration",
-            ),
-            status="enabled")
+            ))
         ```
         <!--End PulumiCodeChooser -->
 

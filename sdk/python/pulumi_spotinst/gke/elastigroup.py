@@ -870,7 +870,39 @@ class Elastigroup(pulumi.CustomResource):
         import pulumi_spotinst as spotinst
 
         example_gke_elastigroup = spotinst.gke.Elastigroup("example-gke-elastigroup",
+            name="example-gke",
+            cluster_zone_name="us-central1-a",
+            node_image="COS",
+            max_size=5,
+            min_size=1,
+            desired_capacity=3,
+            instance_types_ondemand="n1-standard-1",
+            instance_types_preemptibles=[
+                "n1-standard-1",
+                "n1-standard-2",
+            ],
+            preemptible_percentage=100,
+            integration_gke=spotinst.gke.ElastigroupIntegrationGkeArgs(
+                location="us-central1-a",
+                cluster_id="example-cluster-id",
+                autoscale_is_enabled=True,
+                autoscale_is_auto_config=False,
+                autoscale_cooldown=300,
+                autoscale_headroom=spotinst.gke.ElastigroupIntegrationGkeAutoscaleHeadroomArgs(
+                    cpu_per_unit=1024,
+                    memory_per_unit=512,
+                    num_of_units=2,
+                ),
+                autoscale_down=spotinst.gke.ElastigroupIntegrationGkeAutoscaleDownArgs(
+                    evaluation_periods=300,
+                ),
+                autoscale_labels=[spotinst.gke.ElastigroupIntegrationGkeAutoscaleLabelArgs(
+                    key="label_key",
+                    value="label_value",
+                )],
+            ),
             backend_services=[spotinst.gke.ElastigroupBackendServiceArgs(
+                service_name="backend-service",
                 location_type="global",
                 named_ports=[spotinst.gke.ElastigroupBackendServiceNamedPortArgs(
                     name="http",
@@ -879,38 +911,7 @@ class Elastigroup(pulumi.CustomResource):
                         "8080",
                     ],
                 )],
-                service_name="backend-service",
-            )],
-            cluster_zone_name="us-central1-a",
-            desired_capacity=3,
-            instance_types_ondemand="n1-standard-1",
-            instance_types_preemptibles=[
-                "n1-standard-1",
-                "n1-standard-2",
-            ],
-            integration_gke=spotinst.gke.ElastigroupIntegrationGkeArgs(
-                autoscale_cooldown=300,
-                autoscale_down=spotinst.gke.ElastigroupIntegrationGkeAutoscaleDownArgs(
-                    evaluation_periods=300,
-                ),
-                autoscale_headroom=spotinst.gke.ElastigroupIntegrationGkeAutoscaleHeadroomArgs(
-                    cpu_per_unit=1024,
-                    memory_per_unit=512,
-                    num_of_units=2,
-                ),
-                autoscale_is_auto_config=False,
-                autoscale_is_enabled=True,
-                autoscale_labels=[spotinst.gke.ElastigroupIntegrationGkeAutoscaleLabelArgs(
-                    key="label_key",
-                    value="label_value",
-                )],
-                cluster_id="example-cluster-id",
-                location="us-central1-a",
-            ),
-            max_size=5,
-            min_size=1,
-            node_image="COS",
-            preemptible_percentage=100)
+            )])
         ```
         <!--End PulumiCodeChooser -->
 
@@ -945,7 +946,39 @@ class Elastigroup(pulumi.CustomResource):
         import pulumi_spotinst as spotinst
 
         example_gke_elastigroup = spotinst.gke.Elastigroup("example-gke-elastigroup",
+            name="example-gke",
+            cluster_zone_name="us-central1-a",
+            node_image="COS",
+            max_size=5,
+            min_size=1,
+            desired_capacity=3,
+            instance_types_ondemand="n1-standard-1",
+            instance_types_preemptibles=[
+                "n1-standard-1",
+                "n1-standard-2",
+            ],
+            preemptible_percentage=100,
+            integration_gke=spotinst.gke.ElastigroupIntegrationGkeArgs(
+                location="us-central1-a",
+                cluster_id="example-cluster-id",
+                autoscale_is_enabled=True,
+                autoscale_is_auto_config=False,
+                autoscale_cooldown=300,
+                autoscale_headroom=spotinst.gke.ElastigroupIntegrationGkeAutoscaleHeadroomArgs(
+                    cpu_per_unit=1024,
+                    memory_per_unit=512,
+                    num_of_units=2,
+                ),
+                autoscale_down=spotinst.gke.ElastigroupIntegrationGkeAutoscaleDownArgs(
+                    evaluation_periods=300,
+                ),
+                autoscale_labels=[spotinst.gke.ElastigroupIntegrationGkeAutoscaleLabelArgs(
+                    key="label_key",
+                    value="label_value",
+                )],
+            ),
             backend_services=[spotinst.gke.ElastigroupBackendServiceArgs(
+                service_name="backend-service",
                 location_type="global",
                 named_ports=[spotinst.gke.ElastigroupBackendServiceNamedPortArgs(
                     name="http",
@@ -954,38 +987,7 @@ class Elastigroup(pulumi.CustomResource):
                         "8080",
                     ],
                 )],
-                service_name="backend-service",
-            )],
-            cluster_zone_name="us-central1-a",
-            desired_capacity=3,
-            instance_types_ondemand="n1-standard-1",
-            instance_types_preemptibles=[
-                "n1-standard-1",
-                "n1-standard-2",
-            ],
-            integration_gke=spotinst.gke.ElastigroupIntegrationGkeArgs(
-                autoscale_cooldown=300,
-                autoscale_down=spotinst.gke.ElastigroupIntegrationGkeAutoscaleDownArgs(
-                    evaluation_periods=300,
-                ),
-                autoscale_headroom=spotinst.gke.ElastigroupIntegrationGkeAutoscaleHeadroomArgs(
-                    cpu_per_unit=1024,
-                    memory_per_unit=512,
-                    num_of_units=2,
-                ),
-                autoscale_is_auto_config=False,
-                autoscale_is_enabled=True,
-                autoscale_labels=[spotinst.gke.ElastigroupIntegrationGkeAutoscaleLabelArgs(
-                    key="label_key",
-                    value="label_value",
-                )],
-                cluster_id="example-cluster-id",
-                location="us-central1-a",
-            ),
-            max_size=5,
-            min_size=1,
-            node_image="COS",
-            preemptible_percentage=100)
+            )])
         ```
         <!--End PulumiCodeChooser -->
 

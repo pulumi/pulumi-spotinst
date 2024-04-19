@@ -19,25 +19,69 @@ import * as utilities from "../utilities";
  * import * as spotinst from "@pulumi/spotinst";
  *
  * const example = new spotinst.gke.OceanLaunchSpec("example", {
- *     autoscaleHeadrooms: [{
- *         cpuPerUnit: 1000,
- *         gpuPerUnit: 0,
- *         memoryPerUnit: 2048,
- *         numOfUnits: 5,
- *     }],
- *     autoscaleHeadroomsAutomatics: [{
- *         autoHeadroomPercentage: 5,
- *     }],
+ *     oceanId: "o-123456",
+ *     nodePoolName: "default-pool",
+ *     name: "specialty.nodes.spotk8s.com",
+ *     sourceImage: "image",
+ *     restrictScaleDown: true,
+ *     rootVolumeSize: 10,
+ *     rootVolumeType: "pd-standard",
  *     instanceTypes: ["n1-standard-1, n1-standard-2"],
- *     labels: [{
- *         key: "labelKey",
- *         value: "labelVal",
- *     }],
+ *     tags: [
+ *         "tag1",
+ *         "tag2",
+ *     ],
+ *     shieldedInstanceConfig: {
+ *         enableSecureBoot: false,
+ *         enableIntegrityMonitoring: true,
+ *     },
+ *     storage: {
+ *         localSsdCount: 5,
+ *     },
+ *     resourceLimits: {
+ *         maxInstanceCount: 3,
+ *         minInstanceCount: 0,
+ *     },
+ *     serviceAccount: "default",
  *     metadatas: [{
  *         key: "gci-update-strategy",
  *         value: "update_disabled",
  *     }],
+ *     labels: [{
+ *         key: "labelKey",
+ *         value: "labelVal",
+ *     }],
+ *     taints: [{
+ *         key: "taintKey",
+ *         value: "taintVal",
+ *         effect: "taintEffect",
+ *     }],
+ *     autoscaleHeadroomsAutomatics: [{
+ *         autoHeadroomPercentage: 5,
+ *     }],
+ *     autoscaleHeadrooms: [{
+ *         numOfUnits: 5,
+ *         cpuPerUnit: 1000,
+ *         gpuPerUnit: 0,
+ *         memoryPerUnit: 2048,
+ *     }],
+ *     strategies: [{
+ *         preemptiblePercentage: 30,
+ *     }],
+ *     schedulingTasks: [{
+ *         isEnabled: true,
+ *         cronExpression: "0 1 * * *",
+ *         taskType: "manualHeadroomUpdate",
+ *         taskHeadrooms: [{
+ *             numOfUnits: 5,
+ *             cpuPerUnit: 1000,
+ *             gpuPerUnit: 0,
+ *             memoryPerUnit: 2048,
+ *         }],
+ *     }],
  *     networkInterfaces: [{
+ *         network: "test-vng-network",
+ *         projectId: "test-vng-network-project",
  *         accessConfigs: [{
  *             name: "external-nat-vng",
  *             type: "ONE_TO_ONE_NAT",
@@ -46,64 +90,8 @@ import * as utilities from "../utilities";
  *             ipCidrRange: "/25",
  *             subnetworkRangeName: "gke-test-native-vpc-pods-123456-vng",
  *         }],
- *         network: "test-vng-network",
- *         projectId: "test-vng-network-project",
- *     }],
- *     nodePoolName: "default-pool",
- *     oceanId: "o-123456",
- *     resourceLimits: {
- *         maxInstanceCount: 3,
- *         minInstanceCount: 0,
- *     },
- *     restrictScaleDown: true,
- *     rootVolumeSize: 10,
- *     rootVolumeType: "pd-standard",
- *     schedulingTasks: [{
- *         cronExpression: "0 1 * * *",
- *         isEnabled: true,
- *         taskHeadrooms: [{
- *             cpuPerUnit: 1000,
- *             gpuPerUnit: 0,
- *             memoryPerUnit: 2048,
- *             numOfUnits: 5,
- *         }],
- *         taskType: "manualHeadroomUpdate",
- *     }],
- *     serviceAccount: "default",
- *     shieldedInstanceConfig: {
- *         enableIntegrityMonitoring: true,
- *         enableSecureBoot: false,
- *     },
- *     sourceImage: "image",
- *     storage: {
- *         localSsdCount: 5,
- *     },
- *     strategies: [{
- *         preemptiblePercentage: 30,
- *     }],
- *     tags: [
- *         "tag1",
- *         "tag2",
- *     ],
- *     taints: [{
- *         effect: "taintEffect",
- *         key: "taintKey",
- *         value: "taintVal",
  *     }],
  * });
- * ```
- * <!--End PulumiCodeChooser -->
- *
- * ## Update Policy
- *
- * * `updatePolicy` - (Optional)
- *   * `shouldRoll` - (Required) Enables the roll.
- *   * `rollConfig` - (Required) Holds the roll configuration.
- *     * `batchSizePercentage` - (Required) Sets the percentage of the instances to deploy in each batch.
- *
- * <!--Start PulumiCodeChooser -->
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
  * ```
  * <!--End PulumiCodeChooser -->
  */

@@ -89,12 +89,6 @@ class ElastigroupArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ElastigroupSubnetArgs']]] subnets: A list of regions and subnets.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to mark created instances.
         :param pulumi.Input[int] unhealthy_duration: Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
-               
-               <!--Start PulumiCodeChooser -->
-               ```python
-               import pulumi
-               ```
-               <!--End PulumiCodeChooser -->
         """
         pulumi.set(__self__, "desired_capacity", desired_capacity)
         if auto_healing is not None:
@@ -588,12 +582,6 @@ class ElastigroupArgs:
     def unhealthy_duration(self) -> Optional[pulumi.Input[int]]:
         """
         Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
-
-        <!--Start PulumiCodeChooser -->
-        ```python
-        import pulumi
-        ```
-        <!--End PulumiCodeChooser -->
         """
         return pulumi.get(self, "unhealthy_duration")
 
@@ -678,12 +666,6 @@ class _ElastigroupState:
         :param pulumi.Input[Sequence[pulumi.Input['ElastigroupSubnetArgs']]] subnets: A list of regions and subnets.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to mark created instances.
         :param pulumi.Input[int] unhealthy_duration: Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
-               
-               <!--Start PulumiCodeChooser -->
-               ```python
-               import pulumi
-               ```
-               <!--End PulumiCodeChooser -->
         """
         if auto_healing is not None:
             pulumi.set(__self__, "auto_healing", auto_healing)
@@ -1178,12 +1160,6 @@ class _ElastigroupState:
     def unhealthy_duration(self) -> Optional[pulumi.Input[int]]:
         """
         Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
-
-        <!--Start PulumiCodeChooser -->
-        ```python
-        import pulumi
-        ```
-        <!--End PulumiCodeChooser -->
         """
         return pulumi.get(self, "unhealthy_duration")
 
@@ -1245,12 +1221,34 @@ class Elastigroup(pulumi.CustomResource):
         import pulumi_spotinst as spotinst
 
         example = spotinst.gcp.Elastigroup("example",
+            name="example-gcp",
+            description="spotinst gcp group",
+            service_account="example@myProject.iam.gservicecct.com",
+            startup_script="",
+            instance_name_prefix="test-123a",
+            min_size=0,
+            max_size=1,
+            desired_capacity=1,
             availability_zones=[
                 "asia-east1-c",
                 "us-central1-a",
             ],
+            preemptible_percentage=50,
+            fallback_to_ondemand=True,
+            draining_timeout=180,
+            provisioning_model="SPOT",
+            labels=[spotinst.gcp.ElastigroupLabelArgs(
+                key="test_key",
+                value="test_value",
+            )],
+            tags=[
+                "http",
+                "https",
+            ],
             backend_services=[spotinst.gcp.ElastigroupBackendServiceArgs(
+                service_name="spotinst-elb-backend-service",
                 location_type="regional",
+                scheme="INTERNAL",
                 named_ports=[spotinst.gcp.ElastigroupBackendServiceNamedPortArgs(
                     name="port-name",
                     ports=[
@@ -1258,76 +1256,55 @@ class Elastigroup(pulumi.CustomResource):
                         "6000",
                     ],
                 )],
-                scheme="INTERNAL",
-                service_name="spotinst-elb-backend-service",
             )],
-            description="spotinst gcp group",
-            desired_capacity=1,
             disks=[spotinst.gcp.ElastigroupDiskArgs(
+                device_name="device",
+                mode="READ_WRITE",
+                type="PERSISTENT",
                 auto_delete=True,
                 boot=True,
-                device_name="device",
+                interface="SCSI",
                 initialize_params=[spotinst.gcp.ElastigroupDiskInitializeParamArgs(
                     disk_size_gb="10",
                     disk_type="pd-standard",
                     source_image="",
                 )],
-                interface="SCSI",
-                mode="READ_WRITE",
-                type="PERSISTENT",
             )],
-            draining_timeout=180,
-            fallback_to_ondemand=True,
-            instance_name_prefix="test-123a",
-            instance_types_customs=[spotinst.gcp.ElastigroupInstanceTypesCustomArgs(
-                memory_gib=7,
-                vcpu=2,
+            network_interfaces=[spotinst.gcp.ElastigroupNetworkInterfaceArgs(
+                network="spot-network",
             )],
             instance_types_ondemand="n1-standard-1",
             instance_types_preemptibles=[
                 "n1-standard-1",
                 "n1-standard-2",
             ],
-            labels=[spotinst.gcp.ElastigroupLabelArgs(
-                key="test_key",
-                value="test_value",
+            instance_types_customs=[spotinst.gcp.ElastigroupInstanceTypesCustomArgs(
+                vcpu=2,
+                memory_gib=7,
             )],
-            max_size=1,
-            min_size=0,
-            network_interfaces=[spotinst.gcp.ElastigroupNetworkInterfaceArgs(
-                network="spot-network",
-            )],
-            preemptible_percentage=50,
-            provisioning_model="SPOT",
-            scaling_up_policies=[spotinst.gcp.ElastigroupScalingUpPolicyArgs(
-                action_type="adjustment",
-                adjustment=1,
-                cooldown=300,
-                dimensions=[spotinst.gcp.ElastigroupScalingUpPolicyDimensionArgs(
-                    name="storage_type",
-                    value="pd-ssd",
-                )],
-                evaluation_periods=1,
-                metric_name="instance/disk/read_ops_count",
-                namespace="compute",
-                operator="gte",
-                period=300,
-                policy_name="scale_up_1",
-                source="stackdriver",
-                statistic="average",
-                threshold=10000,
-                unit="percent",
-            )],
-            service_account="example@myProject.iam.gservicecct.com",
-            startup_script="",
             subnets=[spotinst.gcp.ElastigroupSubnetArgs(
                 region="asia-east1",
                 subnet_names=["default"],
             )],
-            tags=[
-                "http",
-                "https",
-            ])
+            scaling_up_policies=[spotinst.gcp.ElastigroupScalingUpPolicyArgs(
+                policy_name="scale_up_1",
+                source="stackdriver",
+                metric_name="instance/disk/read_ops_count",
+                namespace="compute",
+                statistic="average",
+                unit="percent",
+                threshold=10000,
+                period=300,
+                cooldown=300,
+                operator="gte",
+                evaluation_periods=1,
+                action_type="adjustment",
+                adjustment=1,
+                dimensions=[spotinst.gcp.ElastigroupScalingUpPolicyDimensionArgs(
+                    name="storage_type",
+                    value="pd-ssd",
+                )],
+            )])
         ```
         <!--End PulumiCodeChooser -->
 
@@ -1368,12 +1345,6 @@ class Elastigroup(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupSubnetArgs']]]] subnets: A list of regions and subnets.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to mark created instances.
         :param pulumi.Input[int] unhealthy_duration: Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
-               
-               <!--Start PulumiCodeChooser -->
-               ```python
-               import pulumi
-               ```
-               <!--End PulumiCodeChooser -->
         """
         ...
     @overload
@@ -1392,12 +1363,34 @@ class Elastigroup(pulumi.CustomResource):
         import pulumi_spotinst as spotinst
 
         example = spotinst.gcp.Elastigroup("example",
+            name="example-gcp",
+            description="spotinst gcp group",
+            service_account="example@myProject.iam.gservicecct.com",
+            startup_script="",
+            instance_name_prefix="test-123a",
+            min_size=0,
+            max_size=1,
+            desired_capacity=1,
             availability_zones=[
                 "asia-east1-c",
                 "us-central1-a",
             ],
+            preemptible_percentage=50,
+            fallback_to_ondemand=True,
+            draining_timeout=180,
+            provisioning_model="SPOT",
+            labels=[spotinst.gcp.ElastigroupLabelArgs(
+                key="test_key",
+                value="test_value",
+            )],
+            tags=[
+                "http",
+                "https",
+            ],
             backend_services=[spotinst.gcp.ElastigroupBackendServiceArgs(
+                service_name="spotinst-elb-backend-service",
                 location_type="regional",
+                scheme="INTERNAL",
                 named_ports=[spotinst.gcp.ElastigroupBackendServiceNamedPortArgs(
                     name="port-name",
                     ports=[
@@ -1405,76 +1398,55 @@ class Elastigroup(pulumi.CustomResource):
                         "6000",
                     ],
                 )],
-                scheme="INTERNAL",
-                service_name="spotinst-elb-backend-service",
             )],
-            description="spotinst gcp group",
-            desired_capacity=1,
             disks=[spotinst.gcp.ElastigroupDiskArgs(
+                device_name="device",
+                mode="READ_WRITE",
+                type="PERSISTENT",
                 auto_delete=True,
                 boot=True,
-                device_name="device",
+                interface="SCSI",
                 initialize_params=[spotinst.gcp.ElastigroupDiskInitializeParamArgs(
                     disk_size_gb="10",
                     disk_type="pd-standard",
                     source_image="",
                 )],
-                interface="SCSI",
-                mode="READ_WRITE",
-                type="PERSISTENT",
             )],
-            draining_timeout=180,
-            fallback_to_ondemand=True,
-            instance_name_prefix="test-123a",
-            instance_types_customs=[spotinst.gcp.ElastigroupInstanceTypesCustomArgs(
-                memory_gib=7,
-                vcpu=2,
+            network_interfaces=[spotinst.gcp.ElastigroupNetworkInterfaceArgs(
+                network="spot-network",
             )],
             instance_types_ondemand="n1-standard-1",
             instance_types_preemptibles=[
                 "n1-standard-1",
                 "n1-standard-2",
             ],
-            labels=[spotinst.gcp.ElastigroupLabelArgs(
-                key="test_key",
-                value="test_value",
+            instance_types_customs=[spotinst.gcp.ElastigroupInstanceTypesCustomArgs(
+                vcpu=2,
+                memory_gib=7,
             )],
-            max_size=1,
-            min_size=0,
-            network_interfaces=[spotinst.gcp.ElastigroupNetworkInterfaceArgs(
-                network="spot-network",
-            )],
-            preemptible_percentage=50,
-            provisioning_model="SPOT",
-            scaling_up_policies=[spotinst.gcp.ElastigroupScalingUpPolicyArgs(
-                action_type="adjustment",
-                adjustment=1,
-                cooldown=300,
-                dimensions=[spotinst.gcp.ElastigroupScalingUpPolicyDimensionArgs(
-                    name="storage_type",
-                    value="pd-ssd",
-                )],
-                evaluation_periods=1,
-                metric_name="instance/disk/read_ops_count",
-                namespace="compute",
-                operator="gte",
-                period=300,
-                policy_name="scale_up_1",
-                source="stackdriver",
-                statistic="average",
-                threshold=10000,
-                unit="percent",
-            )],
-            service_account="example@myProject.iam.gservicecct.com",
-            startup_script="",
             subnets=[spotinst.gcp.ElastigroupSubnetArgs(
                 region="asia-east1",
                 subnet_names=["default"],
             )],
-            tags=[
-                "http",
-                "https",
-            ])
+            scaling_up_policies=[spotinst.gcp.ElastigroupScalingUpPolicyArgs(
+                policy_name="scale_up_1",
+                source="stackdriver",
+                metric_name="instance/disk/read_ops_count",
+                namespace="compute",
+                statistic="average",
+                unit="percent",
+                threshold=10000,
+                period=300,
+                cooldown=300,
+                operator="gte",
+                evaluation_periods=1,
+                action_type="adjustment",
+                adjustment=1,
+                dimensions=[spotinst.gcp.ElastigroupScalingUpPolicyDimensionArgs(
+                    name="storage_type",
+                    value="pd-ssd",
+                )],
+            )])
         ```
         <!--End PulumiCodeChooser -->
 
@@ -1664,12 +1636,6 @@ class Elastigroup(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupSubnetArgs']]]] subnets: A list of regions and subnets.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to mark created instances.
         :param pulumi.Input[int] unhealthy_duration: Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
-               
-               <!--Start PulumiCodeChooser -->
-               ```python
-               import pulumi
-               ```
-               <!--End PulumiCodeChooser -->
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1990,12 +1956,6 @@ class Elastigroup(pulumi.CustomResource):
     def unhealthy_duration(self) -> pulumi.Output[Optional[int]]:
         """
         Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
-
-        <!--Start PulumiCodeChooser -->
-        ```python
-        import pulumi
-        ```
-        <!--End PulumiCodeChooser -->
         """
         return pulumi.get(self, "unhealthy_duration")
 

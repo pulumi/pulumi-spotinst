@@ -30,8 +30,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := gke.NewOceanLaunchSpecImport(ctx, "example", &gke.OceanLaunchSpecImportArgs{
-//				NodePoolName: pulumi.String("default-pool"),
 //				OceanId:      pulumi.String("o-123456"),
+//				NodePoolName: pulumi.String("default-pool"),
 //			})
 //			if err != nil {
 //				return err

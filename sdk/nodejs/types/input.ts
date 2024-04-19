@@ -390,12 +390,6 @@ export namespace aws {
          * The percentage of instances to add or remove.
          *
          * Usage:
-         *
-         * <!--Start PulumiCodeChooser -->
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
-         * <!--End PulumiCodeChooser -->
          */
         adjustmentPercentage?: pulumi.Input<string>;
         /**
@@ -490,12 +484,6 @@ export namespace aws {
          * Modifying any `ebsBlockDevice` currently requires resource replacement.
          *
          * Usage:
-         *
-         * <!--Start PulumiCodeChooser -->
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
-         * <!--End PulumiCodeChooser -->
          */
         throughput?: pulumi.Input<number>;
         /**
@@ -518,12 +506,6 @@ export namespace aws {
          * (e.g. `"ephemeral0"`).
          *
          * Usage:
-         *
-         * <!--Start PulumiCodeChooser -->
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
-         * <!--End PulumiCodeChooser -->
          */
         virtualName: pulumi.Input<string>;
     }
@@ -612,12 +594,6 @@ export namespace aws {
          * Level to update
          *
          * Usage:
-         *
-         * <!--Start PulumiCodeChooser -->
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
-         * <!--End PulumiCodeChooser -->
          */
         updateLevel?: pulumi.Input<string>;
     }
@@ -646,12 +622,6 @@ export namespace aws {
          * The deployment group name.
          *
          * Usage:
-         *
-         * <!--Start PulumiCodeChooser -->
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
-         * <!--End PulumiCodeChooser -->
          */
         deploymentGroupName: pulumi.Input<string>;
     }
@@ -787,12 +757,6 @@ export namespace aws {
          * Array of strings.
          *
          * Usage:
-         *
-         * <!--Start PulumiCodeChooser -->
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
-         * <!--End PulumiCodeChooser -->
          */
         jobQueueNames: pulumi.Input<pulumi.Input<string>[]>;
     }
@@ -816,12 +780,6 @@ export namespace aws {
          * The public IP of the DC/OS Master. 
          *
          * Usage:
-         *
-         * <!--Start PulumiCodeChooser -->
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
-         * <!--End PulumiCodeChooser -->
          */
         apiServer?: pulumi.Input<string>;
         /**
@@ -848,12 +806,6 @@ export namespace aws {
          * A key/value mapping of tags to assign to the resource.
          *
          * Usage:
-         *
-         * <!--Start PulumiCodeChooser -->
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
-         * <!--End PulumiCodeChooser -->
          */
         autoscaleLabels?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupIntegrationKubernetesAutoscaleLabel>[]>;
         clusterIdentifier?: pulumi.Input<string>;
@@ -906,12 +858,6 @@ export namespace aws {
          * The public IP of the DC/OS Master. 
          *
          * Usage:
-         *
-         * <!--Start PulumiCodeChooser -->
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
-         * <!--End PulumiCodeChooser -->
          */
         apiServer: pulumi.Input<string>;
     }
@@ -921,12 +867,6 @@ export namespace aws {
          * The deployment id you want to get
          *
          * Usage:
-         *
-         * <!--Start PulumiCodeChooser -->
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
-         * <!--End PulumiCodeChooser -->
          */
         deploymentId: pulumi.Input<string>;
     }
@@ -940,12 +880,6 @@ export namespace aws {
          * A key/value mapping of tags to assign to the resource.
          *
          * Usage:
-         *
-         * <!--Start PulumiCodeChooser -->
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
-         * <!--End PulumiCodeChooser -->
          */
         autoscaleConstraints?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupIntegrationNomadAutoscaleConstraint>[]>;
         /**
@@ -1020,12 +954,6 @@ export namespace aws {
         /**
          * The Rancher version. Must be `"1"` or `"2"`. If this field is omitted, it’s assumed that the Rancher cluster is version 1. Note that Kubernetes is required when using Rancher version 2^.
          * Usage:
-         *
-         * <!--Start PulumiCodeChooser -->
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
-         * <!--End PulumiCodeChooser -->
          */
         version?: pulumi.Input<string>;
     }
@@ -1065,12 +993,6 @@ export namespace aws {
          * Designates whether the DNS address should be exposed to connections outside the VPC.
          *
          * Usage:
-         *
-         * <!--Start PulumiCodeChooser -->
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
-         * <!--End PulumiCodeChooser -->
          */
         usePublicDns?: pulumi.Input<boolean>;
         /**
@@ -1178,12 +1100,6 @@ export namespace aws {
          * ID of Multai Load Balancer.
          *
          * Usage:
-         *
-         * <!--Start PulumiCodeChooser -->
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
-         * <!--End PulumiCodeChooser -->
          */
         balancerId: pulumi.Input<string>;
         /**
@@ -1261,12 +1177,6 @@ export namespace aws {
          * Indicates whether to assign IPV6 addresses to your instance. Requires a subnet with IPV6 CIDR block ranges.
          *
          * Usage:
-         *
-         * <!--Start PulumiCodeChooser -->
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
-         * <!--End PulumiCodeChooser -->
          */
         associateIpv6Address?: pulumi.Input<boolean>;
         /**
@@ -1569,18 +1479,6 @@ export namespace aws {
          * Start a metric prediction process to determine the expected target metric value within the next two days. See [Predictive Autoscaling](https://api.spotinst.com/elastigroup-for-aws/concepts/scaling-concepts/predictive-autoscaling/) documentation for more info. Valid values: `FORECAST_AND_SCALE`, `FORECAST_ONLY`.
          *
          * Usage:
-         *
-         * <!--Start PulumiCodeChooser -->
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
-         * <!--End PulumiCodeChooser -->
-         *
-         * <!--Start PulumiCodeChooser -->
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
-         * <!--End PulumiCodeChooser -->
          */
         predictiveMode?: pulumi.Input<string>;
         /**
@@ -1773,12 +1671,6 @@ export namespace aws {
          * The percentage of instances to add or remove.
          *
          * Usage:
-         *
-         * <!--Start PulumiCodeChooser -->
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
-         * <!--End PulumiCodeChooser -->
          */
         adjustmentPercentage?: pulumi.Input<string>;
         /**
@@ -1844,12 +1736,6 @@ export namespace aws {
          * The signals defined timeout- default is 40 minutes (1800 seconds).
          *
          * Usage:
-         *
-         * <!--Start PulumiCodeChooser -->
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
-         * <!--End PulumiCodeChooser -->
          */
         timeout?: pulumi.Input<number>;
     }
@@ -1867,12 +1753,6 @@ export namespace aws {
          * For stateful groups: remove snapshots.
          *
          * Usage:
-         *
-         * <!--Start PulumiCodeChooser -->
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
-         * <!--End PulumiCodeChooser -->
          */
         shouldDeleteSnapshots?: pulumi.Input<boolean>;
         /**
@@ -1890,12 +1770,6 @@ export namespace aws {
          * String, Action type. Supported action types: `pause`, `resume`, `recycle`, `deallocate`.
          *
          * Usage:
-         *
-         * <!--Start PulumiCodeChooser -->
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
-         * <!--End PulumiCodeChooser -->
          */
         type: pulumi.Input<string>;
     }
@@ -1985,12 +1859,6 @@ export namespace aws {
         drainingTimeout?: pulumi.Input<number>;
         /**
          * Decrementing the group target capacity after detaching the instances.
-         *
-         * <!--Start PulumiCodeChooser -->
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
-         * <!--End PulumiCodeChooser -->
          */
         shouldDecrementTargetCapacity?: pulumi.Input<boolean>;
         /**
@@ -3944,12 +3812,6 @@ export namespace ecs {
         down?: pulumi.Input<inputs.ecs.OceanAutoscalerDown>;
         /**
          * When set to true, both automatic and per custom launch specification manual headroom to be saved concurrently and independently in the cluster. prerequisite: isAutoConfig must be true
-         *
-         * <!--Start PulumiCodeChooser -->
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
-         * <!--End PulumiCodeChooser -->
          */
         enableAutomaticAndManualHeadroom?: pulumi.Input<boolean>;
         /**
@@ -4366,15 +4228,6 @@ export namespace ecs {
         isEnabled: pulumi.Input<boolean>;
         /**
          * Valid values: "clusterRoll". Required for `cluster.scheduling.tasks object`. Example: `clusterRoll`.
-         *
-         * <!--Start PulumiCodeChooser -->
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
-         * <!--End PulumiCodeChooser -->
-         *
-         *
-         * <a id="attributes-reference"></a>
          */
         taskType: pulumi.Input<string>;
     }
@@ -4409,12 +4262,6 @@ export namespace ecs {
     export interface OceanUpdatePolicyRollConfig {
         /**
          * Default: 50. Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
-         *
-         * <!--Start PulumiCodeChooser -->
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
-         * <!--End PulumiCodeChooser -->
          */
         batchMinHealthyPercentage?: pulumi.Input<number>;
         /**
@@ -4453,12 +4300,6 @@ export namespace gcp {
          * A list of ports.
          *
          * Usage:
-         *
-         * <!--Start PulumiCodeChooser -->
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
-         * <!--End PulumiCodeChooser -->
          */
         ports: pulumi.Input<pulumi.Input<string>[]>;
     }
@@ -4511,12 +4352,6 @@ export namespace gcp {
          * A source image used to create the disk. You can provide a private (custom) image, and Compute Engine will use the corresponding image from your project.
          *
          * Usage:
-         *
-         * <!--Start PulumiCodeChooser -->
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
-         * <!--End PulumiCodeChooser -->
          */
         sourceImage: pulumi.Input<string>;
     }
@@ -4526,12 +4361,6 @@ export namespace gcp {
          * The number of GPUs. Must be 0, 2, 4, 6, 8.
          *
          * Usage:
-         *
-         * <!--Start PulumiCodeChooser -->
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
-         * <!--End PulumiCodeChooser -->
          */
         count: pulumi.Input<number>;
         /**
@@ -4557,12 +4386,6 @@ export namespace gcp {
          * Network port used by your swarm.
          *
          * Usage:
-         *
-         * <!--Start PulumiCodeChooser -->
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
-         * <!--End PulumiCodeChooser -->
          */
         masterPort: pulumi.Input<number>;
     }
@@ -4794,12 +4617,6 @@ export namespace gcp {
          * The maximum number of instances the group should have.
          *
          * Usage:
-         *
-         * <!--Start PulumiCodeChooser -->
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
-         * <!--End PulumiCodeChooser -->
          */
         maxCapacity?: pulumi.Input<string>;
         /**
@@ -5077,14 +4894,6 @@ export namespace gke {
     export interface OceanImportAutoscalerResourceLimits {
         /**
          * The maximum memory in GiB units that can be allocated to the cluster.
-         *
-         * <!--Start PulumiCodeChooser -->
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
-         * <!--End PulumiCodeChooser -->
-         *
-         * <a id="strategy"></a>
          */
         maxMemoryGib?: pulumi.Input<number>;
         /**
@@ -5166,12 +4975,6 @@ export namespace gke {
         /**
          * Value in % to set size of batch in roll. Valid values are 0-100
          * Example: 20.
-         *
-         * <!--Start PulumiCodeChooser -->
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
-         * <!--End PulumiCodeChooser -->
          */
         batchSizePercentage?: pulumi.Input<number>;
         comment?: pulumi.Input<string>;
@@ -5209,12 +5012,6 @@ export namespace gke {
         /**
          * Value in % to set size of batch in roll. Valid values are 0-100
          * Example: 20.
-         *
-         * <!--Start PulumiCodeChooser -->
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * ```
-         * <!--End PulumiCodeChooser -->
          */
         batchSizePercentage: pulumi.Input<number>;
         launchSpecIds?: pulumi.Input<pulumi.Input<string>[]>;

@@ -46,10 +46,11 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var terraformProgUser = new ProgrammaticUser(&#34;terraformProgUser&#34;, ProgrammaticUserArgs.builder()        
+ *             .name(&#34;test-prog-user&#34;)
  *             .description(&#34;creating programmatic user&#34;)
  *             .policies(ProgrammaticUserPolicyArgs.builder()
- *                 .policyAccountIds(&#34;act-a1b2c3d4&#34;)
  *                 .policyId(&#34;pol-g75d8c06&#34;)
+ *                 .policyAccountIds(&#34;act-a1b2c3d4&#34;)
  *                 .build())
  *             .userGroupIds(            
  *                 &#34;ugr-abcd1234&#34;,

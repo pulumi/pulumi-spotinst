@@ -143,22 +143,6 @@ type ElastigroupBackendServiceNamedPort struct {
 	// A list of ports.
 	//
 	// Usage:
-	//
-	// <!--Start PulumiCodeChooser -->
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
-	// <!--End PulumiCodeChooser -->
 	Ports []string `pulumi:"ports"`
 }
 
@@ -179,22 +163,6 @@ type ElastigroupBackendServiceNamedPortArgs struct {
 	// A list of ports.
 	//
 	// Usage:
-	//
-	// <!--Start PulumiCodeChooser -->
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
-	// <!--End PulumiCodeChooser -->
 	Ports pulumi.StringArrayInput `pulumi:"ports"`
 }
 
@@ -257,25 +225,6 @@ func (o ElastigroupBackendServiceNamedPortOutput) Name() pulumi.StringOutput {
 // A list of ports.
 //
 // Usage:
-//
-// <!--Start PulumiCodeChooser -->
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
-// <!--End PulumiCodeChooser -->
 func (o ElastigroupBackendServiceNamedPortOutput) Ports() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ElastigroupBackendServiceNamedPort) []string { return v.Ports }).(pulumi.StringArrayOutput)
 }
@@ -468,22 +417,6 @@ type ElastigroupDiskInitializeParam struct {
 	// A source image used to create the disk. You can provide a private (custom) image, and Compute Engine will use the corresponding image from your project.
 	//
 	// Usage:
-	//
-	// <!--Start PulumiCodeChooser -->
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
-	// <!--End PulumiCodeChooser -->
 	SourceImage string `pulumi:"sourceImage"`
 }
 
@@ -506,22 +439,6 @@ type ElastigroupDiskInitializeParamArgs struct {
 	// A source image used to create the disk. You can provide a private (custom) image, and Compute Engine will use the corresponding image from your project.
 	//
 	// Usage:
-	//
-	// <!--Start PulumiCodeChooser -->
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
-	// <!--End PulumiCodeChooser -->
 	SourceImage pulumi.StringInput `pulumi:"sourceImage"`
 }
 
@@ -589,25 +506,6 @@ func (o ElastigroupDiskInitializeParamOutput) DiskType() pulumi.StringPtrOutput 
 // A source image used to create the disk. You can provide a private (custom) image, and Compute Engine will use the corresponding image from your project.
 //
 // Usage:
-//
-// <!--Start PulumiCodeChooser -->
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
-// <!--End PulumiCodeChooser -->
 func (o ElastigroupDiskInitializeParamOutput) SourceImage() pulumi.StringOutput {
 	return o.ApplyT(func(v ElastigroupDiskInitializeParam) string { return v.SourceImage }).(pulumi.StringOutput)
 }
@@ -636,22 +534,6 @@ type ElastigroupGpu struct {
 	// The number of GPUs. Must be 0, 2, 4, 6, 8.
 	//
 	// Usage:
-	//
-	// <!--Start PulumiCodeChooser -->
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
-	// <!--End PulumiCodeChooser -->
 	Count int `pulumi:"count"`
 	// The type of GPU instance. Valid values: `nvidia-tesla-v100`, `nvidia-tesla-p100`, `nvidia-tesla-k80`.
 	Type string `pulumi:"type"`
@@ -672,22 +554,6 @@ type ElastigroupGpuArgs struct {
 	// The number of GPUs. Must be 0, 2, 4, 6, 8.
 	//
 	// Usage:
-	//
-	// <!--Start PulumiCodeChooser -->
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
-	// <!--End PulumiCodeChooser -->
 	Count pulumi.IntInput `pulumi:"count"`
 	// The type of GPU instance. Valid values: `nvidia-tesla-v100`, `nvidia-tesla-p100`, `nvidia-tesla-k80`.
 	Type pulumi.StringInput `pulumi:"type"`
@@ -747,25 +613,6 @@ func (o ElastigroupGpuOutput) ToElastigroupGpuOutputWithContext(ctx context.Cont
 // The number of GPUs. Must be 0, 2, 4, 6, 8.
 //
 // Usage:
-//
-// <!--Start PulumiCodeChooser -->
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
-// <!--End PulumiCodeChooser -->
 func (o ElastigroupGpuOutput) Count() pulumi.IntOutput {
 	return o.ApplyT(func(v ElastigroupGpu) int { return v.Count }).(pulumi.IntOutput)
 }
@@ -904,22 +751,6 @@ type ElastigroupIntegrationDockerSwarm struct {
 	// Network port used by your swarm.
 	//
 	// Usage:
-	//
-	// <!--Start PulumiCodeChooser -->
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
-	// <!--End PulumiCodeChooser -->
 	MasterPort int `pulumi:"masterPort"`
 }
 
@@ -940,22 +771,6 @@ type ElastigroupIntegrationDockerSwarmArgs struct {
 	// Network port used by your swarm.
 	//
 	// Usage:
-	//
-	// <!--Start PulumiCodeChooser -->
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
-	// <!--End PulumiCodeChooser -->
 	MasterPort pulumi.IntInput `pulumi:"masterPort"`
 }
 
@@ -1044,25 +859,6 @@ func (o ElastigroupIntegrationDockerSwarmOutput) MasterHost() pulumi.StringOutpu
 // Network port used by your swarm.
 //
 // Usage:
-//
-// <!--Start PulumiCodeChooser -->
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
-// <!--End PulumiCodeChooser -->
 func (o ElastigroupIntegrationDockerSwarmOutput) MasterPort() pulumi.IntOutput {
 	return o.ApplyT(func(v ElastigroupIntegrationDockerSwarm) int { return v.MasterPort }).(pulumi.IntOutput)
 }
@@ -1104,25 +900,6 @@ func (o ElastigroupIntegrationDockerSwarmPtrOutput) MasterHost() pulumi.StringPt
 // Network port used by your swarm.
 //
 // Usage:
-//
-// <!--Start PulumiCodeChooser -->
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
-// <!--End PulumiCodeChooser -->
 func (o ElastigroupIntegrationDockerSwarmPtrOutput) MasterPort() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ElastigroupIntegrationDockerSwarm) *int {
 		if v == nil {
@@ -2959,22 +2736,6 @@ type ElastigroupScheduledTask struct {
 	// The maximum number of instances the group should have.
 	//
 	// Usage:
-	//
-	// <!--Start PulumiCodeChooser -->
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
-	// <!--End PulumiCodeChooser -->
 	MaxCapacity *string `pulumi:"maxCapacity"`
 	// The minimum number of instances the group should have.
 	MinCapacity *string `pulumi:"minCapacity"`
@@ -3003,22 +2764,6 @@ type ElastigroupScheduledTaskArgs struct {
 	// The maximum number of instances the group should have.
 	//
 	// Usage:
-	//
-	// <!--Start PulumiCodeChooser -->
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
-	// <!--End PulumiCodeChooser -->
 	MaxCapacity pulumi.StringPtrInput `pulumi:"maxCapacity"`
 	// The minimum number of instances the group should have.
 	MinCapacity pulumi.StringPtrInput `pulumi:"minCapacity"`
@@ -3092,25 +2837,6 @@ func (o ElastigroupScheduledTaskOutput) IsEnabled() pulumi.BoolPtrOutput {
 // The maximum number of instances the group should have.
 //
 // Usage:
-//
-// <!--Start PulumiCodeChooser -->
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
-// <!--End PulumiCodeChooser -->
 func (o ElastigroupScheduledTaskOutput) MaxCapacity() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElastigroupScheduledTask) *string { return v.MaxCapacity }).(pulumi.StringPtrOutput)
 }

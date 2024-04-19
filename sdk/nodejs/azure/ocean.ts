@@ -11,17 +11,105 @@ import * as utilities from "../utilities";
  *
  * > This resource contains arguments (such as `image` and `extension`) that are automatically populated from the data reported by the Ocean AKS Connector deployed into your cluster. You can override the upstream configuration by defining the corresponding arguments.
  *
- * ## Prerequisites
- *
- * Installation of the Ocean controller is required by this resource. You can accomplish this by using the spotinst/ocean-controller module as follows:
+ * ## Example Usage
  *
  * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
+ * import * as spotinst from "@pulumi/spotinst";
+ *
+ * const example = new spotinst.azure.Ocean("example", {
+ *     name: "ocean-westus-dev-aks",
+ *     controllerClusterId: "ocean-westus-dev-aks",
+ *     zones: [
+ *         "1",
+ *         "2",
+ *         "3",
+ *     ],
+ *     acdIdentifier: "acd-12345678",
+ *     aksName: "ocean-westus-dev-aks",
+ *     aksResourceGroupName: "ocean-westus-dev",
+ *     sshPublicKey: "ssh-rsa [... redacted ...] generated-by-azure",
+ *     userName: "some-name",
+ *     resourceGroupName: "some-resource-group-name",
+ *     customData: "[... redacted ...]",
+ *     maxPods: 30,
+ *     managedServiceIdentities: [{
+ *         resourceGroupName: "MC_ocean-westus-dev_ocean-westus-dev-aks_westus",
+ *         name: "ocean-westus-dev-aks-agentpool",
+ *     }],
+ *     tags: [{
+ *         key: "Environment",
+ *         value: "Dev",
+ *     }],
+ *     vmSizes: [{
+ *         whitelists: ["standard_ds2_v2"],
+ *     }],
+ *     osDisk: {
+ *         sizeGb: 130,
+ *         type: "Standard_LRS",
+ *     },
+ *     images: [{
+ *         marketplaces: [{
+ *             publisher: "Canonical",
+ *             offer: "UbuntuServer",
+ *             sku: "18.04-LTS",
+ *             version: "latest",
+ *         }],
+ *     }],
+ *     strategies: [{
+ *         fallbackToOndemand: true,
+ *         spotPercentage: 40,
+ *     }],
+ *     health: {
+ *         gracePeriod: 10,
+ *     },
+ *     network: {
+ *         virtualNetworkName: "vn-name",
+ *         resourceGroupName: "ocean-westus-dev",
+ *         networkInterfaces: [{
+ *             subnetName: "subnet-name",
+ *             assignPublicIp: false,
+ *             isPrimary: false,
+ *             additionalIpConfigs: [{
+ *                 name: "ip-config-name",
+ *                 privateIpVersion: "ipv4",
+ *             }],
+ *         }],
+ *     },
+ *     extensions: [{
+ *         apiVersion: "1.0",
+ *         minorVersionAutoUpgrade: true,
+ *         name: "extension-name",
+ *         publisher: "Microsoft.Azure.Extensions",
+ *         type: "Linux",
+ *     }],
+ *     loadBalancers: [{
+ *         backendPoolNames: ["terraform-backend-pool"],
+ *         loadBalancerSku: "Standard",
+ *         name: "load-balancer-name",
+ *         resourceGroupName: "resource-group-name",
+ *         type: "loadBalancer",
+ *     }],
+ *     autoscaler: {
+ *         autoscaleIsEnabled: true,
+ *         autoscaleDown: {
+ *             maxScaleDownPercentage: 10,
+ *         },
+ *         resourceLimits: {
+ *             maxVcpu: 1024,
+ *             maxMemoryGib: 40,
+ *         },
+ *         autoscaleHeadroom: {
+ *             automatic: {
+ *                 isEnabled: true,
+ *                 percentage: 10,
+ *             },
+ *         },
+ *     },
+ * });
  * ```
  * <!--End PulumiCodeChooser -->
- *
- * > You must configure the same `clusterIdentifier` and `acdIdentifier` both for the Ocean controller and for the `spotinst.azure.Ocean` resource.
  */
 export class Ocean extends pulumi.CustomResource {
     /**

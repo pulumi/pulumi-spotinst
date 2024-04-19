@@ -1136,7 +1136,8 @@ class StatefulNodeAzure(pulumi.CustomResource):
         import pulumi
         import pulumi_spotinst as spotinst
 
-        test_stateful_node_azure = spotinst.StatefulNodeAzure("testStatefulNodeAzure",
+        test_stateful_node_azure = spotinst.StatefulNodeAzure("test_stateful_node_azure",
+            name="example_stateful_node_azure",
             region="eastus",
             resource_group_name="spotinst-azure",
             description="example_stateful_node_azure_description",
@@ -1352,7 +1353,6 @@ class StatefulNodeAzure(pulumi.CustomResource):
                 public_ip_should_deallocate=True,
                 public_ip_ttl_in_hours=0,
             )])
-        # -------------------------------------------------------------------
         ```
         <!--End PulumiCodeChooser -->
 
@@ -1648,7 +1648,8 @@ class StatefulNodeAzure(pulumi.CustomResource):
         import pulumi
         import pulumi_spotinst as spotinst
 
-        test_stateful_node_azure = spotinst.StatefulNodeAzure("testStatefulNodeAzure",
+        test_stateful_node_azure = spotinst.StatefulNodeAzure("test_stateful_node_azure",
+            name="example_stateful_node_azure",
             region="eastus",
             resource_group_name="spotinst-azure",
             description="example_stateful_node_azure_description",
@@ -1864,7 +1865,6 @@ class StatefulNodeAzure(pulumi.CustomResource):
                 public_ip_should_deallocate=True,
                 public_ip_ttl_in_hours=0,
             )])
-        # -------------------------------------------------------------------
         ```
         <!--End PulumiCodeChooser -->
 

@@ -19,8 +19,8 @@ import * as utilities from "../utilities";
  * import * as spotinst from "@pulumi/spotinst";
  *
  * const example = new spotinst.spark.OceanVirtualNodeGroup("example", {
- *     oceanSparkClusterId: "cluster_id",
  *     virtualNodeGroupId: "vng_id",
+ *     oceanSparkClusterId: "cluster_id",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

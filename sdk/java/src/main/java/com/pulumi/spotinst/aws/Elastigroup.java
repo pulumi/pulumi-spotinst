@@ -66,17 +66,17 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.spotinst.aws.Elastigroup;
  * import com.pulumi.spotinst.aws.ElastigroupArgs;
+ * import com.pulumi.spotinst.aws.inputs.ElastigroupMetadataOptionsArgs;
  * import com.pulumi.spotinst.aws.inputs.ElastigroupCpuOptionsArgs;
  * import com.pulumi.spotinst.aws.inputs.ElastigroupInstanceTypesWeightArgs;
- * import com.pulumi.spotinst.aws.inputs.ElastigroupLoggingArgs;
- * import com.pulumi.spotinst.aws.inputs.ElastigroupLoggingExportArgs;
- * import com.pulumi.spotinst.aws.inputs.ElastigroupMetadataOptionsArgs;
  * import com.pulumi.spotinst.aws.inputs.ElastigroupResourceRequirementArgs;
- * import com.pulumi.spotinst.aws.inputs.ElastigroupResourceTagSpecificationArgs;
- * import com.pulumi.spotinst.aws.inputs.ElastigroupScalingDownPolicyArgs;
  * import com.pulumi.spotinst.aws.inputs.ElastigroupScalingStrategyArgs;
  * import com.pulumi.spotinst.aws.inputs.ElastigroupScalingUpPolicyArgs;
+ * import com.pulumi.spotinst.aws.inputs.ElastigroupScalingDownPolicyArgs;
  * import com.pulumi.spotinst.aws.inputs.ElastigroupTagArgs;
+ * import com.pulumi.spotinst.aws.inputs.ElastigroupResourceTagSpecificationArgs;
+ * import com.pulumi.spotinst.aws.inputs.ElastigroupLoggingArgs;
+ * import com.pulumi.spotinst.aws.inputs.ElastigroupLoggingExportArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -92,23 +92,39 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // Create an Elastigroup
  *         var default_elastigroup = new Elastigroup(&#34;default-elastigroup&#34;, ElastigroupArgs.builder()        
+ *             .name(&#34;default-elastigroup&#34;)
+ *             .description(&#34;created by Pulumi&#34;)
+ *             .product(&#34;Linux/UNIX&#34;)
+ *             .maxSize(0)
+ *             .minSize(0)
+ *             .desiredCapacity(0)
  *             .capacityUnit(&#34;weight&#34;)
- *             .cpuCredits(&#34;unlimited&#34;)
+ *             .region(&#34;us-west-2&#34;)
+ *             .subnetIds(            
+ *                 &#34;sb-123456&#34;,
+ *                 &#34;sb-456789&#34;)
+ *             .imageId(&#34;ami-a27d8fda&#34;)
+ *             .iamInstanceProfile(&#34;iam-profile&#34;)
+ *             .keyName(&#34;my-key.ssh&#34;)
+ *             .securityGroups(&#34;sg-123456&#34;)
+ *             .userData(&#34;echo hello world&#34;)
+ *             .enableMonitoring(false)
+ *             .ebsOptimized(false)
+ *             .placementTenancy(&#34;default&#34;)
+ *             .metadataOptions(ElastigroupMetadataOptionsArgs.builder()
+ *                 .httpTokens(&#34;optional&#34;)
+ *                 .httpPutResponseHopLimit(10)
+ *                 .instanceMetadataTags(&#34;enabled&#34;)
+ *                 .build())
  *             .cpuOptions(ElastigroupCpuOptionsArgs.builder()
  *                 .threadsPerCore(1)
  *                 .build())
- *             .description(&#34;created by Pulumi&#34;)
- *             .desiredCapacity(0)
- *             .ebsOptimized(false)
- *             .enableMonitoring(false)
- *             .fallbackToOndemand(false)
- *             .iamInstanceProfile(&#34;iam-profile&#34;)
- *             .imageId(&#34;ami-a27d8fda&#34;)
  *             .instanceTypesOndemand(&#34;m3.2xlarge&#34;)
- *             .instanceTypesPreferredSpots(&#34;m3.xlarge&#34;)
  *             .instanceTypesSpots(            
  *                 &#34;m3.xlarge&#34;,
  *                 &#34;m3.2xlarge&#34;)
+ *             .instanceTypesPreferredSpots(&#34;m3.xlarge&#34;)
+ *             .onDemandTypes(&#34;c3.large&#34;)
  *             .instanceTypesWeights(            
  *                 ElastigroupInstanceTypesWeightArgs.builder()
  *                     .instanceType(&#34;m3.xlarge&#34;)
@@ -118,79 +134,55 @@ import javax.annotation.Nullable;
  *                     .instanceType(&#34;m3.2xlarge&#34;)
  *                     .weight(16)
  *                     .build())
- *             .keyName(&#34;my-key.ssh&#34;)
- *             .lifecycle(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
- *             .logging(ElastigroupLoggingArgs.builder()
- *                 .export(ElastigroupLoggingExportArgs.builder()
- *                     .s3(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
- *                     .build())
- *                 .build())
- *             .maxSize(0)
- *             .metadataOptions(ElastigroupMetadataOptionsArgs.builder()
- *                 .httpPutResponseHopLimit(10)
- *                 .httpTokens(&#34;optional&#34;)
- *                 .instanceMetadataTags(&#34;enabled&#34;)
- *                 .build())
- *             .minSize(0)
- *             .minimumInstanceLifetime(12)
- *             .onDemandTypes(&#34;c3.large&#34;)
- *             .orientation(&#34;balanced&#34;)
- *             .placementTenancy(&#34;default&#34;)
- *             .product(&#34;Linux/UNIX&#34;)
- *             .region(&#34;us-west-2&#34;)
  *             .resourceRequirements(ElastigroupResourceRequirementArgs.builder()
  *                 .excludedInstanceFamilies(                
  *                     &#34;a&#34;,
  *                     &#34;m&#34;)
+ *                 .excludedInstanceTypes(&#34;m3.large&#34;)
  *                 .excludedInstanceGenerations(                
  *                     &#34;1&#34;,
  *                     &#34;2&#34;)
- *                 .excludedInstanceTypes(&#34;m3.large&#34;)
- *                 .requiredGpuMaximum(16)
  *                 .requiredGpuMinimum(1)
- *                 .requiredMemoryMaximum(512)
+ *                 .requiredGpuMaximum(16)
  *                 .requiredMemoryMinimum(1)
- *                 .requiredVcpuMaximum(64)
+ *                 .requiredMemoryMaximum(512)
  *                 .requiredVcpuMinimum(1)
+ *                 .requiredVcpuMaximum(64)
  *                 .build())
- *             .resourceTagSpecifications(ElastigroupResourceTagSpecificationArgs.builder()
- *                 .shouldTagAmis(true)
- *                 .shouldTagEnis(true)
- *                 .shouldTagSnapshots(true)
- *                 .shouldTagVolumes(true)
- *                 .build())
- *             .scalingDownPolicies(ElastigroupScalingDownPolicyArgs.builder()
- *                 .adjustment(1)
- *                 .cooldown(300)
- *                 .evaluationPeriods(10)
- *                 .metricName(&#34;DefaultQueuesDepth&#34;)
- *                 .namespace(&#34;custom&#34;)
- *                 .period(60)
- *                 .policyName(&#34;Default Scaling Down Policy&#34;)
- *                 .statistic(&#34;average&#34;)
- *                 .threshold(10)
- *                 .unit(&#34;none&#34;)
- *                 .build())
+ *             .orientation(&#34;balanced&#34;)
+ *             .fallbackToOndemand(false)
+ *             .cpuCredits(&#34;unlimited&#34;)
+ *             .minimumInstanceLifetime(12)
+ *             .waitForCapacity(5)
+ *             .waitForCapacityTimeout(300)
  *             .scalingStrategies(ElastigroupScalingStrategyArgs.builder()
  *                 .terminateAtEndOfBillingHour(true)
  *                 .terminationPolicy(&#34;default&#34;)
  *                 .build())
  *             .scalingUpPolicies(ElastigroupScalingUpPolicyArgs.builder()
- *                 .adjustment(1)
- *                 .cooldown(300)
- *                 .evaluationPeriods(5)
- *                 .metricName(&#34;DefaultQueuesDepth&#34;)
- *                 .namespace(&#34;custom&#34;)
- *                 .period(60)
  *                 .policyName(&#34;Default Scaling Up Policy&#34;)
+ *                 .metricName(&#34;DefaultQueuesDepth&#34;)
  *                 .statistic(&#34;average&#34;)
- *                 .threshold(100)
  *                 .unit(&#34;none&#34;)
+ *                 .adjustment(1)
+ *                 .namespace(&#34;custom&#34;)
+ *                 .threshold(100)
+ *                 .period(60)
+ *                 .evaluationPeriods(5)
+ *                 .cooldown(300)
  *                 .build())
- *             .securityGroups(&#34;sg-123456&#34;)
- *             .subnetIds(            
- *                 &#34;sb-123456&#34;,
- *                 &#34;sb-456789&#34;)
+ *             .scalingDownPolicies(ElastigroupScalingDownPolicyArgs.builder()
+ *                 .policyName(&#34;Default Scaling Down Policy&#34;)
+ *                 .metricName(&#34;DefaultQueuesDepth&#34;)
+ *                 .statistic(&#34;average&#34;)
+ *                 .unit(&#34;none&#34;)
+ *                 .adjustment(1)
+ *                 .namespace(&#34;custom&#34;)
+ *                 .threshold(10)
+ *                 .period(60)
+ *                 .evaluationPeriods(10)
+ *                 .cooldown(300)
+ *                 .build())
  *             .tags(            
  *                 ElastigroupTagArgs.builder()
  *                     .key(&#34;Env&#34;)
@@ -204,9 +196,19 @@ import javax.annotation.Nullable;
  *                     .key(&#34;Project&#34;)
  *                     .value(&#34;app_v2&#34;)
  *                     .build())
- *             .userData(&#34;echo hello world&#34;)
- *             .waitForCapacity(5)
- *             .waitForCapacityTimeout(300)
+ *             .resourceTagSpecifications(ElastigroupResourceTagSpecificationArgs.builder()
+ *                 .shouldTagEnis(true)
+ *                 .shouldTagVolumes(true)
+ *                 .shouldTagSnapshots(true)
+ *                 .shouldTagAmis(true)
+ *                 .build())
+ *             .logging(ElastigroupLoggingArgs.builder()
+ *                 .export(ElastigroupLoggingExportArgs.builder()
+ *                     .s3s(ElastigroupLoggingExportS3Args.builder()
+ *                         .id(&#34;di-123456&#34;)
+ *                         .build())
+ *                     .build())
+ *                 .build())
  *             .build());
  * 
  *     }
@@ -978,31 +980,6 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
      * 
      * Usage:
      * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *     }
-     * }
-     * ```
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
      */
     @Export(name="privateIps", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> privateIps;
@@ -1011,31 +988,6 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
      * @return List of Private IPs to associate to the group instances.(e.g. &#34;172.1.1.0&#34;). Please note: This setting will only apply if persistence.persist_private_ip is set to true.
      * 
      * Usage:
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *     }
-     * }
-     * ```
-     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public Output<Optional<List<String>>> privateIps() {

@@ -85,6 +85,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var testStatefulNodeAzure = new StatefulNodeAzure(&#34;testStatefulNodeAzure&#34;, StatefulNodeAzureArgs.builder()        
+ *             .name(&#34;example_stateful_node_azure&#34;)
  *             .region(&#34;eastus&#34;)
  *             .resourceGroupName(&#34;spotinst-azure&#34;)
  *             .description(&#34;example_stateful_node_azure_description&#34;)
@@ -291,7 +292,6 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         // -------------------------------------------------------------------
  *     }
  * }
  * ```

@@ -15,7 +15,7 @@ import * as utilities from "../utilities";
  * import * as spotinst from "@pulumi/spotinst";
  *
  * // Create a suspension for Elastigroup
- * const resourceName = new spotinst.aws.Suspension("resourceName", {
+ * const resourceName = new spotinst.aws.Suspension("resource_name", {
  *     groupId: "sig-12345678",
  *     suspensions: [
  *         {

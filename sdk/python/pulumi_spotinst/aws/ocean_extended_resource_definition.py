@@ -112,10 +112,12 @@ class OceanExtendedResourceDefinition(pulumi.CustomResource):
         import pulumi
         import pulumi_spotinst as spotinst
 
-        example = spotinst.aws.OceanExtendedResourceDefinition("example", resource_mapping={
-            "c3.large": "2Ki",
-            "c3.xlarge": "4Ki",
-        })
+        example = spotinst.aws.OceanExtendedResourceDefinition("example",
+            name="terraform_extended_resource_definition",
+            resource_mapping={
+                "c3.large": "2Ki",
+                "c3.xlarge": "4Ki",
+            })
         ```
         <!--End PulumiCodeChooser -->
 
@@ -141,10 +143,12 @@ class OceanExtendedResourceDefinition(pulumi.CustomResource):
         import pulumi
         import pulumi_spotinst as spotinst
 
-        example = spotinst.aws.OceanExtendedResourceDefinition("example", resource_mapping={
-            "c3.large": "2Ki",
-            "c3.xlarge": "4Ki",
-        })
+        example = spotinst.aws.OceanExtendedResourceDefinition("example",
+            name="terraform_extended_resource_definition",
+            resource_mapping={
+                "c3.large": "2Ki",
+                "c3.xlarge": "4Ki",
+            })
         ```
         <!--End PulumiCodeChooser -->
 

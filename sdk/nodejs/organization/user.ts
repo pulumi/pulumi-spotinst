@@ -16,16 +16,16 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as spotinst from "@pulumi/spotinst";
  *
- * const terraformUser = new spotinst.organization.User("terraformUser", {
+ * const terraformUser = new spotinst.organization.User("terraform_user", {
  *     email: "abc@xyz.com",
  *     firstName: "test",
  *     lastName: "user",
  *     password: "testUser@123",
- *     policies: [{
- *         policyAccountIds: ["act-abcf4245"],
- *         policyId: "pol-abcd1236",
- *     }],
  *     role: "viewer",
+ *     policies: [{
+ *         policyId: "pol-abcd1236",
+ *         policyAccountIds: ["act-abcf4245"],
+ *     }],
  *     userGroupIds: [
  *         "ugr-abcd1234",
  *         "ugr-defg8763",

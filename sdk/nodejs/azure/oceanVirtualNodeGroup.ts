@@ -17,6 +17,25 @@ import * as utilities from "../utilities";
  * import * as spotinst from "@pulumi/spotinst";
  *
  * const example = new spotinst.azure.OceanVirtualNodeGroup("example", {
+ *     name: "vng_name",
+ *     oceanId: "o-12345",
+ *     zones: [
+ *         "1",
+ *         "2",
+ *         "3",
+ *     ],
+ *     labels: [{
+ *         key: "label_key",
+ *         value: "label_value",
+ *     }],
+ *     taints: [{
+ *         key: "taint_key",
+ *         value: "taint_value",
+ *         effect: "NoSchedule",
+ *     }],
+ *     resourceLimits: [{
+ *         maxInstanceCount: 4,
+ *     }],
  *     autoscales: [{
  *         autoHeadroomPercentage: 5,
  *         autoscaleHeadrooms: [{
@@ -26,12 +45,7 @@ import * as utilities from "../utilities";
  *             numOfUnits: 16,
  *         }],
  *     }],
- *     labels: [{
- *         key: "label_key",
- *         value: "label_value",
- *     }],
  *     launchSpecifications: [{
- *         maxPods: 30,
  *         osDisk: {
  *             sizeGb: 100,
  *             type: "Standard_LRS",
@@ -41,21 +55,8 @@ import * as utilities from "../utilities";
  *             key: "label_key",
  *             value: "label_value",
  *         }],
+ *         maxPods: 30,
  *     }],
- *     oceanId: "o-12345",
- *     resourceLimits: [{
- *         maxInstanceCount: 4,
- *     }],
- *     taints: [{
- *         effect: "NoSchedule",
- *         key: "taint_key",
- *         value: "taint_value",
- *     }],
- *     zones: [
- *         "1",
- *         "2",
- *         "3",
- *     ],
  * });
  * ```
  * <!--End PulumiCodeChooser -->

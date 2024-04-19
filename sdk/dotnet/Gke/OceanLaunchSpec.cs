@@ -27,26 +27,44 @@ namespace Pulumi.SpotInst.Gke
     /// {
     ///     var example = new SpotInst.Gke.OceanLaunchSpec("example", new()
     ///     {
-    ///         AutoscaleHeadrooms = new[]
-    ///         {
-    ///             new SpotInst.Gke.Inputs.OceanLaunchSpecAutoscaleHeadroomArgs
-    ///             {
-    ///                 CpuPerUnit = 1000,
-    ///                 GpuPerUnit = 0,
-    ///                 MemoryPerUnit = 2048,
-    ///                 NumOfUnits = 5,
-    ///             },
-    ///         },
-    ///         AutoscaleHeadroomsAutomatics = new[]
-    ///         {
-    ///             new SpotInst.Gke.Inputs.OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs
-    ///             {
-    ///                 AutoHeadroomPercentage = 5,
-    ///             },
-    ///         },
+    ///         OceanId = "o-123456",
+    ///         NodePoolName = "default-pool",
+    ///         Name = "specialty.nodes.spotk8s.com",
+    ///         SourceImage = "image",
+    ///         RestrictScaleDown = true,
+    ///         RootVolumeSize = 10,
+    ///         RootVolumeType = "pd-standard",
     ///         InstanceTypes = new[]
     ///         {
     ///             "n1-standard-1, n1-standard-2",
+    ///         },
+    ///         Tags = new[]
+    ///         {
+    ///             "tag1",
+    ///             "tag2",
+    ///         },
+    ///         ShieldedInstanceConfig = new SpotInst.Gke.Inputs.OceanLaunchSpecShieldedInstanceConfigArgs
+    ///         {
+    ///             EnableSecureBoot = false,
+    ///             EnableIntegrityMonitoring = true,
+    ///         },
+    ///         Storage = new SpotInst.Gke.Inputs.OceanLaunchSpecStorageArgs
+    ///         {
+    ///             LocalSsdCount = 5,
+    ///         },
+    ///         ResourceLimits = new SpotInst.Gke.Inputs.OceanLaunchSpecResourceLimitsArgs
+    ///         {
+    ///             MaxInstanceCount = 3,
+    ///             MinInstanceCount = 0,
+    ///         },
+    ///         ServiceAccount = "default",
+    ///         Metadatas = new[]
+    ///         {
+    ///             new SpotInst.Gke.Inputs.OceanLaunchSpecMetadataArgs
+    ///             {
+    ///                 Key = "gci-update-strategy",
+    ///                 Value = "update_disabled",
+    ///             },
     ///         },
     ///         Labels = new[]
     ///         {
@@ -56,18 +74,64 @@ namespace Pulumi.SpotInst.Gke
     ///                 Value = "labelVal",
     ///             },
     ///         },
-    ///         Metadatas = new[]
+    ///         Taints = new[]
     ///         {
-    ///             new SpotInst.Gke.Inputs.OceanLaunchSpecMetadataArgs
+    ///             new SpotInst.Gke.Inputs.OceanLaunchSpecTaintArgs
     ///             {
-    ///                 Key = "gci-update-strategy",
-    ///                 Value = "update_disabled",
+    ///                 Key = "taintKey",
+    ///                 Value = "taintVal",
+    ///                 Effect = "taintEffect",
+    ///             },
+    ///         },
+    ///         AutoscaleHeadroomsAutomatics = new[]
+    ///         {
+    ///             new SpotInst.Gke.Inputs.OceanLaunchSpecAutoscaleHeadroomsAutomaticArgs
+    ///             {
+    ///                 AutoHeadroomPercentage = 5,
+    ///             },
+    ///         },
+    ///         AutoscaleHeadrooms = new[]
+    ///         {
+    ///             new SpotInst.Gke.Inputs.OceanLaunchSpecAutoscaleHeadroomArgs
+    ///             {
+    ///                 NumOfUnits = 5,
+    ///                 CpuPerUnit = 1000,
+    ///                 GpuPerUnit = 0,
+    ///                 MemoryPerUnit = 2048,
+    ///             },
+    ///         },
+    ///         Strategies = new[]
+    ///         {
+    ///             new SpotInst.Gke.Inputs.OceanLaunchSpecStrategyArgs
+    ///             {
+    ///                 PreemptiblePercentage = 30,
+    ///             },
+    ///         },
+    ///         SchedulingTasks = new[]
+    ///         {
+    ///             new SpotInst.Gke.Inputs.OceanLaunchSpecSchedulingTaskArgs
+    ///             {
+    ///                 IsEnabled = true,
+    ///                 CronExpression = "0 1 * * *",
+    ///                 TaskType = "manualHeadroomUpdate",
+    ///                 TaskHeadrooms = new[]
+    ///                 {
+    ///                     new SpotInst.Gke.Inputs.OceanLaunchSpecSchedulingTaskTaskHeadroomArgs
+    ///                     {
+    ///                         NumOfUnits = 5,
+    ///                         CpuPerUnit = 1000,
+    ///                         GpuPerUnit = 0,
+    ///                         MemoryPerUnit = 2048,
+    ///                     },
+    ///                 },
     ///             },
     ///         },
     ///         NetworkInterfaces = new[]
     ///         {
     ///             new SpotInst.Gke.Inputs.OceanLaunchSpecNetworkInterfaceArgs
     ///             {
+    ///                 Network = "test-vng-network",
+    ///                 ProjectId = "test-vng-network-project",
     ///                 AccessConfigs = new[]
     ///                 {
     ///                     new SpotInst.Gke.Inputs.OceanLaunchSpecNetworkInterfaceAccessConfigArgs
@@ -84,92 +148,10 @@ namespace Pulumi.SpotInst.Gke
     ///                         SubnetworkRangeName = "gke-test-native-vpc-pods-123456-vng",
     ///                     },
     ///                 },
-    ///                 Network = "test-vng-network",
-    ///                 ProjectId = "test-vng-network-project",
-    ///             },
-    ///         },
-    ///         NodePoolName = "default-pool",
-    ///         OceanId = "o-123456",
-    ///         ResourceLimits = new SpotInst.Gke.Inputs.OceanLaunchSpecResourceLimitsArgs
-    ///         {
-    ///             MaxInstanceCount = 3,
-    ///             MinInstanceCount = 0,
-    ///         },
-    ///         RestrictScaleDown = true,
-    ///         RootVolumeSize = 10,
-    ///         RootVolumeType = "pd-standard",
-    ///         SchedulingTasks = new[]
-    ///         {
-    ///             new SpotInst.Gke.Inputs.OceanLaunchSpecSchedulingTaskArgs
-    ///             {
-    ///                 CronExpression = "0 1 * * *",
-    ///                 IsEnabled = true,
-    ///                 TaskHeadrooms = new[]
-    ///                 {
-    ///                     new SpotInst.Gke.Inputs.OceanLaunchSpecSchedulingTaskTaskHeadroomArgs
-    ///                     {
-    ///                         CpuPerUnit = 1000,
-    ///                         GpuPerUnit = 0,
-    ///                         MemoryPerUnit = 2048,
-    ///                         NumOfUnits = 5,
-    ///                     },
-    ///                 },
-    ///                 TaskType = "manualHeadroomUpdate",
-    ///             },
-    ///         },
-    ///         ServiceAccount = "default",
-    ///         ShieldedInstanceConfig = new SpotInst.Gke.Inputs.OceanLaunchSpecShieldedInstanceConfigArgs
-    ///         {
-    ///             EnableIntegrityMonitoring = true,
-    ///             EnableSecureBoot = false,
-    ///         },
-    ///         SourceImage = "image",
-    ///         Storage = new SpotInst.Gke.Inputs.OceanLaunchSpecStorageArgs
-    ///         {
-    ///             LocalSsdCount = 5,
-    ///         },
-    ///         Strategies = new[]
-    ///         {
-    ///             new SpotInst.Gke.Inputs.OceanLaunchSpecStrategyArgs
-    ///             {
-    ///                 PreemptiblePercentage = 30,
-    ///             },
-    ///         },
-    ///         Tags = new[]
-    ///         {
-    ///             "tag1",
-    ///             "tag2",
-    ///         },
-    ///         Taints = new[]
-    ///         {
-    ///             new SpotInst.Gke.Inputs.OceanLaunchSpecTaintArgs
-    ///             {
-    ///                 Effect = "taintEffect",
-    ///                 Key = "taintKey",
-    ///                 Value = "taintVal",
     ///             },
     ///         },
     ///     });
     /// 
-    /// });
-    /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
-    /// 
-    /// ## Update Policy
-    /// 
-    /// * `update_policy` - (Optional)
-    ///   * `should_roll` - (Required) Enables the roll.
-    ///   * `roll_config` - (Required) Holds the roll configuration.
-    ///     * `batch_size_percentage` - (Required) Sets the percentage of the instances to deploy in each batch.
-    /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
     /// });
     /// ```
     /// &lt;!--End PulumiCodeChooser --&gt;

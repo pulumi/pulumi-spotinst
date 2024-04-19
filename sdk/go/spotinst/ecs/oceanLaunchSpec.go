@@ -30,50 +30,17 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := ecs.NewOceanLaunchSpec(ctx, "example", &ecs.OceanLaunchSpecArgs{
-//				Attributes: ecs.OceanLaunchSpecAttributeArray{
-//					&ecs.OceanLaunchSpecAttributeArgs{
-//						Key:   pulumi.String("fakeKey"),
-//						Value: pulumi.String("fakeValue"),
-//					},
-//				},
-//				AutoscaleHeadrooms: ecs.OceanLaunchSpecAutoscaleHeadroomArray{
-//					&ecs.OceanLaunchSpecAutoscaleHeadroomArgs{
-//						CpuPerUnit:    pulumi.Int(1000),
-//						MemoryPerUnit: pulumi.Int(2048),
-//						NumOfUnits:    pulumi.Int(5),
-//					},
-//				},
-//				BlockDeviceMappings: ecs.OceanLaunchSpecBlockDeviceMappingArray{
-//					&ecs.OceanLaunchSpecBlockDeviceMappingArgs{
-//						DeviceName: pulumi.String("/dev/xvda1"),
-//						Ebs: &ecs.OceanLaunchSpecBlockDeviceMappingEbsArgs{
-//							DeleteOnTermination: pulumi.Bool(true),
-//							DynamicVolumeSize: &ecs.OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs{
-//								BaseSize:            pulumi.Int(50),
-//								Resource:            pulumi.String("CPU"),
-//								SizePerResourceUnit: pulumi.Int(20),
-//							},
-//							Encrypted:  pulumi.Bool(false),
-//							Throughput: pulumi.Int(500),
-//							VolumeSize: pulumi.Int(50),
-//							VolumeType: pulumi.String("gp2"),
-//						},
-//					},
-//				},
-//				IamInstanceProfile: pulumi.String("iam-profile"),
+//				OceanId:            pulumi.String("o-123456"),
 //				ImageId:            pulumi.String("ami-123456"),
-//				Images: ecs.OceanLaunchSpecImageArray{
-//					&ecs.OceanLaunchSpecImageArgs{
-//						ImageId: pulumi.String("ami-12345"),
-//					},
-//					&ecs.OceanLaunchSpecImageArgs{
-//						ImageId: pulumi.String("ami-67890"),
-//					},
+//				UserData:           pulumi.String("echo hello world"),
+//				IamInstanceProfile: pulumi.String("iam-profile"),
+//				SubnetIds: pulumi.StringArray{
+//					pulumi.String("subnet-12345"),
 //				},
-//				InstanceMetadataOptions: &ecs.OceanLaunchSpecInstanceMetadataOptionsArgs{
-//					HttpPutResponseHopLimit: pulumi.Int(10),
-//					HttpTokens:              pulumi.String("required"),
+//				SecurityGroupIds: pulumi.StringArray{
+//					pulumi.String("awseb-12345"),
 //				},
+//				RestrictScaleDown: pulumi.Bool(true),
 //				InstanceTypes: pulumi.StringArray{
 //					pulumi.String("m3.large"),
 //					pulumi.String("m3.xlarge"),
@@ -91,7 +58,6 @@ import (
 //					pulumi.String("m5.12xlarge"),
 //					pulumi.String("m5.24xlarge"),
 //				},
-//				OceanId: pulumi.String("o-123456"),
 //				PreferredSpotTypes: pulumi.StringArray{
 //					pulumi.String("m3.large"),
 //					pulumi.String("m3.xlarge"),
@@ -99,31 +65,44 @@ import (
 //					pulumi.String("m4.large"),
 //					pulumi.String("m4.xlarge"),
 //				},
-//				RestrictScaleDown: pulumi.Bool(true),
-//				SchedulingTasks: ecs.OceanLaunchSpecSchedulingTaskArray{
-//					&ecs.OceanLaunchSpecSchedulingTaskArgs{
-//						CronExpression: pulumi.String("0 1 * * *"),
-//						IsEnabled:      pulumi.Bool(true),
-//						TaskHeadrooms: ecs.OceanLaunchSpecSchedulingTaskTaskHeadroomArray{
-//							&ecs.OceanLaunchSpecSchedulingTaskTaskHeadroomArgs{
-//								CpuPerUnit:    pulumi.Int(1000),
-//								MemoryPerUnit: pulumi.Int(2048),
-//								NumOfUnits:    pulumi.Int(5),
+//				BlockDeviceMappings: ecs.OceanLaunchSpecBlockDeviceMappingArray{
+//					&ecs.OceanLaunchSpecBlockDeviceMappingArgs{
+//						DeviceName: pulumi.String("/dev/xvda1"),
+//						Ebs: &ecs.OceanLaunchSpecBlockDeviceMappingEbsArgs{
+//							DeleteOnTermination: pulumi.Bool(true),
+//							Encrypted:           pulumi.Bool(false),
+//							VolumeType:          pulumi.String("gp2"),
+//							VolumeSize:          pulumi.Int(50),
+//							Throughput:          pulumi.Int(500),
+//							DynamicVolumeSize: &ecs.OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs{
+//								BaseSize:            pulumi.Int(50),
+//								Resource:            pulumi.String("CPU"),
+//								SizePerResourceUnit: pulumi.Int(20),
 //							},
 //						},
-//						TaskType: pulumi.String("manualHeadroomUpdate"),
 //					},
 //				},
-//				SecurityGroupIds: pulumi.StringArray{
-//					pulumi.String("awseb-12345"),
+//				Attributes: ecs.OceanLaunchSpecAttributeArray{
+//					&ecs.OceanLaunchSpecAttributeArgs{
+//						Key:   pulumi.String("fakeKey"),
+//						Value: pulumi.String("fakeValue"),
+//					},
+//				},
+//				InstanceMetadataOptions: &ecs.OceanLaunchSpecInstanceMetadataOptionsArgs{
+//					HttpTokens:              pulumi.String("required"),
+//					HttpPutResponseHopLimit: pulumi.Int(10),
+//				},
+//				AutoscaleHeadrooms: ecs.OceanLaunchSpecAutoscaleHeadroomArray{
+//					&ecs.OceanLaunchSpecAutoscaleHeadroomArgs{
+//						NumOfUnits:    pulumi.Int(5),
+//						CpuPerUnit:    pulumi.Int(1000),
+//						MemoryPerUnit: pulumi.Int(2048),
+//					},
 //				},
 //				Strategies: ecs.OceanLaunchSpecStrategyArray{
 //					&ecs.OceanLaunchSpecStrategyArgs{
 //						SpotPercentage: pulumi.Int(50),
 //					},
-//				},
-//				SubnetIds: pulumi.StringArray{
-//					pulumi.String("subnet-12345"),
 //				},
 //				Tags: ecs.OceanLaunchSpecTagArray{
 //					&ecs.OceanLaunchSpecTagArgs{
@@ -131,7 +110,28 @@ import (
 //						Value: pulumi.String("production"),
 //					},
 //				},
-//				UserData: pulumi.String("echo hello world"),
+//				Images: ecs.OceanLaunchSpecImageArray{
+//					&ecs.OceanLaunchSpecImageArgs{
+//						ImageId: pulumi.String("ami-12345"),
+//					},
+//					&ecs.OceanLaunchSpecImageArgs{
+//						ImageId: pulumi.String("ami-67890"),
+//					},
+//				},
+//				SchedulingTasks: ecs.OceanLaunchSpecSchedulingTaskArray{
+//					&ecs.OceanLaunchSpecSchedulingTaskArgs{
+//						IsEnabled:      pulumi.Bool(true),
+//						CronExpression: pulumi.String("0 1 * * *"),
+//						TaskType:       pulumi.String("manualHeadroomUpdate"),
+//						TaskHeadrooms: ecs.OceanLaunchSpecSchedulingTaskTaskHeadroomArray{
+//							&ecs.OceanLaunchSpecSchedulingTaskTaskHeadroomArgs{
+//								NumOfUnits:    pulumi.Int(5),
+//								CpuPerUnit:    pulumi.Int(1000),
+//								MemoryPerUnit: pulumi.Int(2048),
+//							},
+//						},
+//					},
+//				},
 //			})
 //			if err != nil {
 //				return err

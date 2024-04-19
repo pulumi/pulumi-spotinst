@@ -162,12 +162,6 @@ class ElastigroupArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] private_ips: List of Private IPs to associate to the group instances.(e.g. "172.1.1.0"). Please note: This setting will only apply if persistence.persist_private_ip is set to true.
                
                Usage:
-               
-               <!--Start PulumiCodeChooser -->
-               ```python
-               import pulumi
-               ```
-               <!--End PulumiCodeChooser -->
         :param pulumi.Input[str] region: The AWS region your group will be created in.
                Note: This parameter is required if you specify subnets (through subnet_ids). This parameter is optional if you specify Availability Zones (through availability_zones).
         :param pulumi.Input[Sequence[pulumi.Input['ElastigroupResourceRequirementArgs']]] resource_requirements: Required instance attributes. Instance types will be selected based on these requirements.
@@ -1058,12 +1052,6 @@ class ElastigroupArgs:
         List of Private IPs to associate to the group instances.(e.g. "172.1.1.0"). Please note: This setting will only apply if persistence.persist_private_ip is set to true.
 
         Usage:
-
-        <!--Start PulumiCodeChooser -->
-        ```python
-        import pulumi
-        ```
-        <!--End PulumiCodeChooser -->
         """
         return pulumi.get(self, "private_ips")
 
@@ -1469,12 +1457,6 @@ class _ElastigroupState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] private_ips: List of Private IPs to associate to the group instances.(e.g. "172.1.1.0"). Please note: This setting will only apply if persistence.persist_private_ip is set to true.
                
                Usage:
-               
-               <!--Start PulumiCodeChooser -->
-               ```python
-               import pulumi
-               ```
-               <!--End PulumiCodeChooser -->
         :param pulumi.Input[str] product: Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`. 
                For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
         :param pulumi.Input[str] region: The AWS region your group will be created in.
@@ -2347,12 +2329,6 @@ class _ElastigroupState:
         List of Private IPs to associate to the group instances.(e.g. "172.1.1.0"). Please note: This setting will only apply if persistence.persist_private_ip is set to true.
 
         Usage:
-
-        <!--Start PulumiCodeChooser -->
-        ```python
-        import pulumi
-        ```
-        <!--End PulumiCodeChooser -->
         """
         return pulumi.get(self, "private_ips")
 
@@ -2730,6 +2706,141 @@ class Elastigroup(pulumi.CustomResource):
         """
         Provides a Spotinst AWS group resource.
 
+        ## Example Usage
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_spotinst as spotinst
+
+        # Create an Elastigroup
+        default_elastigroup = spotinst.aws.Elastigroup("default-elastigroup",
+            name="default-elastigroup",
+            description="created by Pulumi",
+            product="Linux/UNIX",
+            max_size=0,
+            min_size=0,
+            desired_capacity=0,
+            capacity_unit="weight",
+            region="us-west-2",
+            subnet_ids=[
+                "sb-123456",
+                "sb-456789",
+            ],
+            image_id="ami-a27d8fda",
+            iam_instance_profile="iam-profile",
+            key_name="my-key.ssh",
+            security_groups=["sg-123456"],
+            user_data="echo hello world",
+            enable_monitoring=False,
+            ebs_optimized=False,
+            placement_tenancy="default",
+            metadata_options=spotinst.aws.ElastigroupMetadataOptionsArgs(
+                http_tokens="optional",
+                http_put_response_hop_limit=10,
+                instance_metadata_tags="enabled",
+            ),
+            cpu_options=spotinst.aws.ElastigroupCpuOptionsArgs(
+                threads_per_core=1,
+            ),
+            instance_types_ondemand="m3.2xlarge",
+            instance_types_spots=[
+                "m3.xlarge",
+                "m3.2xlarge",
+            ],
+            instance_types_preferred_spots=["m3.xlarge"],
+            on_demand_types=["c3.large"],
+            instance_types_weights=[
+                spotinst.aws.ElastigroupInstanceTypesWeightArgs(
+                    instance_type="m3.xlarge",
+                    weight=10,
+                ),
+                spotinst.aws.ElastigroupInstanceTypesWeightArgs(
+                    instance_type="m3.2xlarge",
+                    weight=16,
+                ),
+            ],
+            resource_requirements=[spotinst.aws.ElastigroupResourceRequirementArgs(
+                excluded_instance_families=[
+                    "a",
+                    "m",
+                ],
+                excluded_instance_types=["m3.large"],
+                excluded_instance_generations=[
+                    "1",
+                    "2",
+                ],
+                required_gpu_minimum=1,
+                required_gpu_maximum=16,
+                required_memory_minimum=1,
+                required_memory_maximum=512,
+                required_vcpu_minimum=1,
+                required_vcpu_maximum=64,
+            )],
+            orientation="balanced",
+            fallback_to_ondemand=False,
+            cpu_credits="unlimited",
+            minimum_instance_lifetime=12,
+            wait_for_capacity=5,
+            wait_for_capacity_timeout=300,
+            scaling_strategies=[spotinst.aws.ElastigroupScalingStrategyArgs(
+                terminate_at_end_of_billing_hour=True,
+                termination_policy="default",
+            )],
+            scaling_up_policies=[spotinst.aws.ElastigroupScalingUpPolicyArgs(
+                policy_name="Default Scaling Up Policy",
+                metric_name="DefaultQueuesDepth",
+                statistic="average",
+                unit="none",
+                adjustment="1",
+                namespace="custom",
+                threshold=100,
+                period=60,
+                evaluation_periods=5,
+                cooldown=300,
+            )],
+            scaling_down_policies=[spotinst.aws.ElastigroupScalingDownPolicyArgs(
+                policy_name="Default Scaling Down Policy",
+                metric_name="DefaultQueuesDepth",
+                statistic="average",
+                unit="none",
+                adjustment="1",
+                namespace="custom",
+                threshold=10,
+                period=60,
+                evaluation_periods=10,
+                cooldown=300,
+            )],
+            tags=[
+                spotinst.aws.ElastigroupTagArgs(
+                    key="Env",
+                    value="production",
+                ),
+                spotinst.aws.ElastigroupTagArgs(
+                    key="Name",
+                    value="default-production",
+                ),
+                spotinst.aws.ElastigroupTagArgs(
+                    key="Project",
+                    value="app_v2",
+                ),
+            ],
+            resource_tag_specifications=[spotinst.aws.ElastigroupResourceTagSpecificationArgs(
+                should_tag_enis=True,
+                should_tag_volumes=True,
+                should_tag_snapshots=True,
+                should_tag_amis=True,
+            )],
+            logging=spotinst.aws.ElastigroupLoggingArgs(
+                export=spotinst.aws.ElastigroupLoggingExportArgs(
+                    s3s=[spotinst.aws.ElastigroupLoggingExportS3Args(
+                        id="di-123456",
+                    )],
+                ),
+            ))
+        ```
+        <!--End PulumiCodeChooser -->
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] availability_zones: List of Strings of availability zones. When this parameter is set, `subnet_ids` should be left unused.
@@ -2789,12 +2900,6 @@ class Elastigroup(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] private_ips: List of Private IPs to associate to the group instances.(e.g. "172.1.1.0"). Please note: This setting will only apply if persistence.persist_private_ip is set to true.
                
                Usage:
-               
-               <!--Start PulumiCodeChooser -->
-               ```python
-               import pulumi
-               ```
-               <!--End PulumiCodeChooser -->
         :param pulumi.Input[str] product: Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`. 
                For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
         :param pulumi.Input[str] region: The AWS region your group will be created in.
@@ -2823,6 +2928,141 @@ class Elastigroup(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a Spotinst AWS group resource.
+
+        ## Example Usage
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_spotinst as spotinst
+
+        # Create an Elastigroup
+        default_elastigroup = spotinst.aws.Elastigroup("default-elastigroup",
+            name="default-elastigroup",
+            description="created by Pulumi",
+            product="Linux/UNIX",
+            max_size=0,
+            min_size=0,
+            desired_capacity=0,
+            capacity_unit="weight",
+            region="us-west-2",
+            subnet_ids=[
+                "sb-123456",
+                "sb-456789",
+            ],
+            image_id="ami-a27d8fda",
+            iam_instance_profile="iam-profile",
+            key_name="my-key.ssh",
+            security_groups=["sg-123456"],
+            user_data="echo hello world",
+            enable_monitoring=False,
+            ebs_optimized=False,
+            placement_tenancy="default",
+            metadata_options=spotinst.aws.ElastigroupMetadataOptionsArgs(
+                http_tokens="optional",
+                http_put_response_hop_limit=10,
+                instance_metadata_tags="enabled",
+            ),
+            cpu_options=spotinst.aws.ElastigroupCpuOptionsArgs(
+                threads_per_core=1,
+            ),
+            instance_types_ondemand="m3.2xlarge",
+            instance_types_spots=[
+                "m3.xlarge",
+                "m3.2xlarge",
+            ],
+            instance_types_preferred_spots=["m3.xlarge"],
+            on_demand_types=["c3.large"],
+            instance_types_weights=[
+                spotinst.aws.ElastigroupInstanceTypesWeightArgs(
+                    instance_type="m3.xlarge",
+                    weight=10,
+                ),
+                spotinst.aws.ElastigroupInstanceTypesWeightArgs(
+                    instance_type="m3.2xlarge",
+                    weight=16,
+                ),
+            ],
+            resource_requirements=[spotinst.aws.ElastigroupResourceRequirementArgs(
+                excluded_instance_families=[
+                    "a",
+                    "m",
+                ],
+                excluded_instance_types=["m3.large"],
+                excluded_instance_generations=[
+                    "1",
+                    "2",
+                ],
+                required_gpu_minimum=1,
+                required_gpu_maximum=16,
+                required_memory_minimum=1,
+                required_memory_maximum=512,
+                required_vcpu_minimum=1,
+                required_vcpu_maximum=64,
+            )],
+            orientation="balanced",
+            fallback_to_ondemand=False,
+            cpu_credits="unlimited",
+            minimum_instance_lifetime=12,
+            wait_for_capacity=5,
+            wait_for_capacity_timeout=300,
+            scaling_strategies=[spotinst.aws.ElastigroupScalingStrategyArgs(
+                terminate_at_end_of_billing_hour=True,
+                termination_policy="default",
+            )],
+            scaling_up_policies=[spotinst.aws.ElastigroupScalingUpPolicyArgs(
+                policy_name="Default Scaling Up Policy",
+                metric_name="DefaultQueuesDepth",
+                statistic="average",
+                unit="none",
+                adjustment="1",
+                namespace="custom",
+                threshold=100,
+                period=60,
+                evaluation_periods=5,
+                cooldown=300,
+            )],
+            scaling_down_policies=[spotinst.aws.ElastigroupScalingDownPolicyArgs(
+                policy_name="Default Scaling Down Policy",
+                metric_name="DefaultQueuesDepth",
+                statistic="average",
+                unit="none",
+                adjustment="1",
+                namespace="custom",
+                threshold=10,
+                period=60,
+                evaluation_periods=10,
+                cooldown=300,
+            )],
+            tags=[
+                spotinst.aws.ElastigroupTagArgs(
+                    key="Env",
+                    value="production",
+                ),
+                spotinst.aws.ElastigroupTagArgs(
+                    key="Name",
+                    value="default-production",
+                ),
+                spotinst.aws.ElastigroupTagArgs(
+                    key="Project",
+                    value="app_v2",
+                ),
+            ],
+            resource_tag_specifications=[spotinst.aws.ElastigroupResourceTagSpecificationArgs(
+                should_tag_enis=True,
+                should_tag_volumes=True,
+                should_tag_snapshots=True,
+                should_tag_amis=True,
+            )],
+            logging=spotinst.aws.ElastigroupLoggingArgs(
+                export=spotinst.aws.ElastigroupLoggingExportArgs(
+                    s3s=[spotinst.aws.ElastigroupLoggingExportS3Args(
+                        id="di-123456",
+                    )],
+                ),
+            ))
+        ```
+        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param ElastigroupArgs args: The arguments to use to populate this resource's properties.
@@ -3182,12 +3422,6 @@ class Elastigroup(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] private_ips: List of Private IPs to associate to the group instances.(e.g. "172.1.1.0"). Please note: This setting will only apply if persistence.persist_private_ip is set to true.
                
                Usage:
-               
-               <!--Start PulumiCodeChooser -->
-               ```python
-               import pulumi
-               ```
-               <!--End PulumiCodeChooser -->
         :param pulumi.Input[str] product: Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`. 
                For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
         :param pulumi.Input[str] region: The AWS region your group will be created in.
@@ -3749,12 +3983,6 @@ class Elastigroup(pulumi.CustomResource):
         List of Private IPs to associate to the group instances.(e.g. "172.1.1.0"). Please note: This setting will only apply if persistence.persist_private_ip is set to true.
 
         Usage:
-
-        <!--Start PulumiCodeChooser -->
-        ```python
-        import pulumi
-        ```
-        <!--End PulumiCodeChooser -->
         """
         return pulumi.get(self, "private_ips")
 

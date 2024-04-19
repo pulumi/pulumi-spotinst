@@ -45,12 +45,13 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var terraformUserGroup = new UserGroup(&#34;terraformUserGroup&#34;, UserGroupArgs.builder()        
+ *             .name(&#34;test_user_group&#34;)
  *             .description(&#34;user group by terraform&#34;)
+ *             .userIds(&#34;u-372gf6ae&#34;)
  *             .policies(UserGroupPolicyArgs.builder()
  *                 .accountIds(&#34;act-a1b2c3d4&#34;)
  *                 .policyId(&#34;pol-vv7d8c06&#34;)
  *                 .build())
- *             .userIds(&#34;u-372gf6ae&#34;)
  *             .build());
  * 
  *     }

@@ -25,62 +25,19 @@ namespace Pulumi.SpotInst.Ecs
     /// {
     ///     var example = new SpotInst.Ecs.OceanLaunchSpec("example", new()
     ///     {
-    ///         Attributes = new[]
-    ///         {
-    ///             new SpotInst.Ecs.Inputs.OceanLaunchSpecAttributeArgs
-    ///             {
-    ///                 Key = "fakeKey",
-    ///                 Value = "fakeValue",
-    ///             },
-    ///         },
-    ///         AutoscaleHeadrooms = new[]
-    ///         {
-    ///             new SpotInst.Ecs.Inputs.OceanLaunchSpecAutoscaleHeadroomArgs
-    ///             {
-    ///                 CpuPerUnit = 1000,
-    ///                 MemoryPerUnit = 2048,
-    ///                 NumOfUnits = 5,
-    ///             },
-    ///         },
-    ///         BlockDeviceMappings = new[]
-    ///         {
-    ///             new SpotInst.Ecs.Inputs.OceanLaunchSpecBlockDeviceMappingArgs
-    ///             {
-    ///                 DeviceName = "/dev/xvda1",
-    ///                 Ebs = new SpotInst.Ecs.Inputs.OceanLaunchSpecBlockDeviceMappingEbsArgs
-    ///                 {
-    ///                     DeleteOnTermination = true,
-    ///                     DynamicVolumeSize = new SpotInst.Ecs.Inputs.OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs
-    ///                     {
-    ///                         BaseSize = 50,
-    ///                         Resource = "CPU",
-    ///                         SizePerResourceUnit = 20,
-    ///                     },
-    ///                     Encrypted = false,
-    ///                     Throughput = 500,
-    ///                     VolumeSize = 50,
-    ///                     VolumeType = "gp2",
-    ///                 },
-    ///             },
-    ///         },
-    ///         IamInstanceProfile = "iam-profile",
+    ///         OceanId = "o-123456",
     ///         ImageId = "ami-123456",
-    ///         Images = new[]
+    ///         UserData = "echo hello world",
+    ///         IamInstanceProfile = "iam-profile",
+    ///         SubnetIds = new[]
     ///         {
-    ///             new SpotInst.Ecs.Inputs.OceanLaunchSpecImageArgs
-    ///             {
-    ///                 ImageId = "ami-12345",
-    ///             },
-    ///             new SpotInst.Ecs.Inputs.OceanLaunchSpecImageArgs
-    ///             {
-    ///                 ImageId = "ami-67890",
-    ///             },
+    ///             "subnet-12345",
     ///         },
-    ///         InstanceMetadataOptions = new SpotInst.Ecs.Inputs.OceanLaunchSpecInstanceMetadataOptionsArgs
+    ///         SecurityGroupIds = new[]
     ///         {
-    ///             HttpPutResponseHopLimit = 10,
-    ///             HttpTokens = "required",
+    ///             "awseb-12345",
     ///         },
+    ///         RestrictScaleDown = true,
     ///         InstanceTypes = new[]
     ///         {
     ///             "m3.large",
@@ -99,7 +56,6 @@ namespace Pulumi.SpotInst.Ecs
     ///             "m5.12xlarge",
     ///             "m5.24xlarge",
     ///         },
-    ///         OceanId = "o-123456",
     ///         PreferredSpotTypes = new[]
     ///         {
     ///             "m3.large",
@@ -108,28 +64,48 @@ namespace Pulumi.SpotInst.Ecs
     ///             "m4.large",
     ///             "m4.xlarge",
     ///         },
-    ///         RestrictScaleDown = true,
-    ///         SchedulingTasks = new[]
+    ///         BlockDeviceMappings = new[]
     ///         {
-    ///             new SpotInst.Ecs.Inputs.OceanLaunchSpecSchedulingTaskArgs
+    ///             new SpotInst.Ecs.Inputs.OceanLaunchSpecBlockDeviceMappingArgs
     ///             {
-    ///                 CronExpression = "0 1 * * *",
-    ///                 IsEnabled = true,
-    ///                 TaskHeadrooms = new[]
+    ///                 DeviceName = "/dev/xvda1",
+    ///                 Ebs = new SpotInst.Ecs.Inputs.OceanLaunchSpecBlockDeviceMappingEbsArgs
     ///                 {
-    ///                     new SpotInst.Ecs.Inputs.OceanLaunchSpecSchedulingTaskTaskHeadroomArgs
+    ///                     DeleteOnTermination = true,
+    ///                     Encrypted = false,
+    ///                     VolumeType = "gp2",
+    ///                     VolumeSize = 50,
+    ///                     Throughput = 500,
+    ///                     DynamicVolumeSize = new SpotInst.Ecs.Inputs.OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs
     ///                     {
-    ///                         CpuPerUnit = 1000,
-    ///                         MemoryPerUnit = 2048,
-    ///                         NumOfUnits = 5,
+    ///                         BaseSize = 50,
+    ///                         Resource = "CPU",
+    ///                         SizePerResourceUnit = 20,
     ///                     },
     ///                 },
-    ///                 TaskType = "manualHeadroomUpdate",
     ///             },
     ///         },
-    ///         SecurityGroupIds = new[]
+    ///         Attributes = new[]
     ///         {
-    ///             "awseb-12345",
+    ///             new SpotInst.Ecs.Inputs.OceanLaunchSpecAttributeArgs
+    ///             {
+    ///                 Key = "fakeKey",
+    ///                 Value = "fakeValue",
+    ///             },
+    ///         },
+    ///         InstanceMetadataOptions = new SpotInst.Ecs.Inputs.OceanLaunchSpecInstanceMetadataOptionsArgs
+    ///         {
+    ///             HttpTokens = "required",
+    ///             HttpPutResponseHopLimit = 10,
+    ///         },
+    ///         AutoscaleHeadrooms = new[]
+    ///         {
+    ///             new SpotInst.Ecs.Inputs.OceanLaunchSpecAutoscaleHeadroomArgs
+    ///             {
+    ///                 NumOfUnits = 5,
+    ///                 CpuPerUnit = 1000,
+    ///                 MemoryPerUnit = 2048,
+    ///             },
     ///         },
     ///         Strategies = new[]
     ///         {
@@ -137,10 +113,6 @@ namespace Pulumi.SpotInst.Ecs
     ///             {
     ///                 SpotPercentage = 50,
     ///             },
-    ///         },
-    ///         SubnetIds = new[]
-    ///         {
-    ///             "subnet-12345",
     ///         },
     ///         Tags = new[]
     ///         {
@@ -150,7 +122,35 @@ namespace Pulumi.SpotInst.Ecs
     ///                 Value = "production",
     ///             },
     ///         },
-    ///         UserData = "echo hello world",
+    ///         Images = new[]
+    ///         {
+    ///             new SpotInst.Ecs.Inputs.OceanLaunchSpecImageArgs
+    ///             {
+    ///                 ImageId = "ami-12345",
+    ///             },
+    ///             new SpotInst.Ecs.Inputs.OceanLaunchSpecImageArgs
+    ///             {
+    ///                 ImageId = "ami-67890",
+    ///             },
+    ///         },
+    ///         SchedulingTasks = new[]
+    ///         {
+    ///             new SpotInst.Ecs.Inputs.OceanLaunchSpecSchedulingTaskArgs
+    ///             {
+    ///                 IsEnabled = true,
+    ///                 CronExpression = "0 1 * * *",
+    ///                 TaskType = "manualHeadroomUpdate",
+    ///                 TaskHeadrooms = new[]
+    ///                 {
+    ///                     new SpotInst.Ecs.Inputs.OceanLaunchSpecSchedulingTaskTaskHeadroomArgs
+    ///                     {
+    ///                         NumOfUnits = 5,
+    ///                         CpuPerUnit = 1000,
+    ///                         MemoryPerUnit = 2048,
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
     ///     });
     /// 
     /// });

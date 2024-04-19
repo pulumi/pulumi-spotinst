@@ -14,15 +14,7 @@ import (
 
 // Provides a Spotinst elastigroup Azure resource.
 //
-// ## Image
-//
-// * `image` - (Required) Image of a VM. An image is a template for creating new VMs. Choose from Azure image catalogue (marketplace) or use a custom image.
-//   - `publisher` - (Optional) Image publisher. Required if resourceGroupName is not specified.
-//   - `offer` - (Optional) Name of the image to use. Required if publisher is specified.
-//   - `sku` - (Optional) Image's Stock Keeping Unit, which is the specific version of the image. Required if publisher is specified.
-//   - `version` -
-//   - `resourceGroupName` - (Optional) Name of Resource Group for custom image. Required if publisher not specified.
-//   - `imageName` - (Optional) Name of the custom image. Required if resourceGroupName is specified.
+// ## Example Usage
 //
 // <!--Start PulumiCodeChooser -->
 // ```go
@@ -30,12 +22,92 @@ import (
 //
 // import (
 //
+//	"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := spotinst.NewElastigroupAzureV3(ctx, "test_azure_group", &spotinst.ElastigroupAzureV3Args{
+//				Name:              pulumi.String("example_elastigroup_azure"),
+//				ResourceGroupName: pulumi.String("spotinst-azure"),
+//				Region:            pulumi.String("eastus"),
+//				Os:                pulumi.String("Linux"),
+//				MinSize:           pulumi.Int(0),
+//				MaxSize:           pulumi.Int(1),
+//				DesiredCapacity:   pulumi.Int(1),
+//				OdSizes: pulumi.StringArray{
+//					pulumi.String("standard_a1_v1"),
+//					pulumi.String("standard_a1_v2"),
+//				},
+//				SpotSizes: pulumi.StringArray{
+//					pulumi.String("standard_a1_v1"),
+//					pulumi.String("standard_a1_v2"),
+//				},
+//				CustomData: pulumi.String("IyEvYmluL2Jhc2gKZWNobyAidGVzdCI="),
+//				ManagedServiceIdentities: spotinst.ElastigroupAzureV3ManagedServiceIdentityArray{
+//					&spotinst.ElastigroupAzureV3ManagedServiceIdentityArgs{
+//						ResourceGroupName: pulumi.String("MC_ocean-westus-dev_ocean-westus-dev-aks_westus"),
+//						Name:              pulumi.String("ocean-westus-dev-aks-agentpool"),
+//					},
+//				},
+//				Tags: spotinst.ElastigroupAzureV3TagArray{
+//					&spotinst.ElastigroupAzureV3TagArgs{
+//						Key:   pulumi.String("key1"),
+//						Value: pulumi.String("value1"),
+//					},
+//					&spotinst.ElastigroupAzureV3TagArgs{
+//						Key:   pulumi.String("key2"),
+//						Value: pulumi.String("value2"),
+//					},
+//				},
+//				Images: spotinst.ElastigroupAzureV3ImageArray{
+//					&spotinst.ElastigroupAzureV3ImageArgs{
+//						Marketplaces: spotinst.ElastigroupAzureV3ImageMarketplaceArray{
+//							&spotinst.ElastigroupAzureV3ImageMarketplaceArgs{
+//								Publisher: pulumi.String("Canonical"),
+//								Offer:     pulumi.String("UbuntuServer"),
+//								Sku:       pulumi.String("18.04-LTS"),
+//								Version:   pulumi.String("latest"),
+//							},
+//						},
+//					},
+//				},
+//				SpotPercentage:     pulumi.Int(65),
+//				DrainingTimeout:    pulumi.Int(300),
+//				FallbackToOnDemand: pulumi.Bool(true),
+//				Network: &spotinst.ElastigroupAzureV3NetworkArgs{
+//					VirtualNetworkName: pulumi.String("VirtualNetworkName"),
+//					ResourceGroupName:  pulumi.String("ResourceGroup"),
+//					NetworkInterfaces: spotinst.ElastigroupAzureV3NetworkNetworkInterfaceArray{
+//						&spotinst.ElastigroupAzureV3NetworkNetworkInterfaceArgs{
+//							SubnetName:     pulumi.String("default"),
+//							AssignPublicIp: pulumi.Bool(false),
+//							IsPrimary:      pulumi.Bool(true),
+//							AdditionalIpConfigs: spotinst.ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArray{
+//								&spotinst.ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArgs{
+//									Name:             pulumi.String("SecondaryIPConfig"),
+//									PrivateIPVersion: pulumi.String("IPv4"),
+//								},
+//							},
+//							ApplicationSecurityGroups: spotinst.ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArray{
+//								&spotinst.ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArgs{
+//									Name:              pulumi.String("ApplicationSecurityGroupName"),
+//									ResourceGroupName: pulumi.String("ResourceGroup"),
+//								},
+//							},
+//						},
+//					},
+//				},
+//				Login: &spotinst.ElastigroupAzureV3LoginArgs{
+//					UserName:     pulumi.String("admin"),
+//					SshPublicKey: pulumi.String("33a2s1f3g5a1df5g1ad3f2g1adfg56dfg=="),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			return nil
 //		})
 //	}
@@ -43,68 +115,14 @@ import (
 // ```
 // <!--End PulumiCodeChooser -->
 //
-// <a id="network"></a>
-// ## Network
+// ## Strategy
 //
-// * `network` - (Required) Defines the Virtual Network and Subnet for your Elastigroup.
-//   - `virtualNetworkName` - (Required) Name of Vnet.
-//   - `resourceGroupName` - (Required) Vnet Resource Group Name.
-//   - `networkInterfaces` -
-//   - `subnetName` - (Required) ID of subnet.
-//   - `assignPublicUp` - (Optional, Default: `false`) Assign a public IP to each VM in the Elastigroup.
-//   - `isPrimary` -
-//   - `additionalIpConfigs` - (Optional) Array of additional IP configuration objects.
-//   - `name` - (Required) The IP configuration name.
-//   - `privateIpVersion` - (Optional) Available from Azure Api-Version 2017-03-30 onwards, it represents whether the specific ip configuration is IPv4 or IPv6. Valid values: `IPv4`, `IPv6`.
-//   - `applicationSecurityGroup` - (Optional) - List of Application Security Groups that will be associated to the primary ip configuration of the network interface.
-//   - `name` - (Required) - The name of the Application Security group.
-//   - `resourceGroupName` - (Required) - The resource group of the Application Security Group.
-//     }
+// * `spotPercentage` - (Optional) Percentage of Spot-VMs to maintain. Required if `onDemandCount` is not specified.
+// * `onDemandCount` - (Optional) Number of On-Demand VMs to maintain. Required if `spotPercentage` is not specified.
+// * `fallbackToOnDemand` -
+// * `drainingTimeout` - (Optional, Default `120`) Time (seconds) to allow the instance to be drained from incoming TCP connections and detached from MLB before terminating it during a scale-down operation.
 //
-// <!--Start PulumiCodeChooser -->
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
-// <!--End PulumiCodeChooser -->
-//
-// ### Login
-//
-// * `login` - (Required) Describes the login configuration.
-//   - `userName` - (Required) Set admin access for accessing your VMs.
-//   - `sshPublicKey` - (Optional) SSH for admin access to Linux VMs. Required for Linux OS types.
-//   - `password` - (Optional) Password for admin access to Windows VMs. Required for Windows OS types.
-//
-// <!--Start PulumiCodeChooser -->
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
-// <!--End PulumiCodeChooser -->
+// <a id="image"></a>
 type Elastigroup struct {
 	pulumi.CustomResourceState
 

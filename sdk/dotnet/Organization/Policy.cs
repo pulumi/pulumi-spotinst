@@ -23,8 +23,9 @@ namespace Pulumi.SpotInst.Organization
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var terraformPolicy = new SpotInst.Organization.Policy("terraformPolicy", new()
+    ///     var terraformPolicy = new SpotInst.Organization.Policy("terraform_policy", new()
     ///     {
+    ///         Name = "test-policy",
     ///         Description = "policy by terraform",
     ///         PolicyContents = new[]
     ///         {

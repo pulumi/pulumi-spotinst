@@ -30,6 +30,31 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := azure.NewOceanVirtualNodeGroup(ctx, "example", &azure.OceanVirtualNodeGroupArgs{
+//				Name:    pulumi.String("vng_name"),
+//				OceanId: pulumi.String("o-12345"),
+//				Zones: pulumi.StringArray{
+//					pulumi.String("1"),
+//					pulumi.String("2"),
+//					pulumi.String("3"),
+//				},
+//				Labels: azure.OceanVirtualNodeGroupLabelArray{
+//					&azure.OceanVirtualNodeGroupLabelArgs{
+//						Key:   pulumi.String("label_key"),
+//						Value: pulumi.String("label_value"),
+//					},
+//				},
+//				Taints: azure.OceanVirtualNodeGroupTaintArray{
+//					&azure.OceanVirtualNodeGroupTaintArgs{
+//						Key:    pulumi.String("taint_key"),
+//						Value:  pulumi.String("taint_value"),
+//						Effect: pulumi.String("NoSchedule"),
+//					},
+//				},
+//				ResourceLimits: azure.OceanVirtualNodeGroupResourceLimitArray{
+//					&azure.OceanVirtualNodeGroupResourceLimitArgs{
+//						MaxInstanceCount: pulumi.Int(4),
+//					},
+//				},
 //				Autoscales: azure.OceanVirtualNodeGroupAutoscaleArray{
 //					&azure.OceanVirtualNodeGroupAutoscaleArgs{
 //						AutoHeadroomPercentage: pulumi.Int(5),
@@ -43,15 +68,8 @@ import (
 //						},
 //					},
 //				},
-//				Labels: azure.OceanVirtualNodeGroupLabelArray{
-//					&azure.OceanVirtualNodeGroupLabelArgs{
-//						Key:   pulumi.String("label_key"),
-//						Value: pulumi.String("label_value"),
-//					},
-//				},
 //				LaunchSpecifications: azure.OceanVirtualNodeGroupLaunchSpecificationArray{
 //					&azure.OceanVirtualNodeGroupLaunchSpecificationArgs{
-//						MaxPods: pulumi.Int(30),
 //						OsDisk: &azure.OceanVirtualNodeGroupLaunchSpecificationOsDiskArgs{
 //							SizeGb:                  pulumi.Int(100),
 //							Type:                    pulumi.String("Standard_LRS"),
@@ -63,25 +81,8 @@ import (
 //								Value: pulumi.String("label_value"),
 //							},
 //						},
+//						MaxPods: pulumi.Int(30),
 //					},
-//				},
-//				OceanId: pulumi.String("o-12345"),
-//				ResourceLimits: azure.OceanVirtualNodeGroupResourceLimitArray{
-//					&azure.OceanVirtualNodeGroupResourceLimitArgs{
-//						MaxInstanceCount: pulumi.Int(4),
-//					},
-//				},
-//				Taints: azure.OceanVirtualNodeGroupTaintArray{
-//					&azure.OceanVirtualNodeGroupTaintArgs{
-//						Effect: pulumi.String("NoSchedule"),
-//						Key:    pulumi.String("taint_key"),
-//						Value:  pulumi.String("taint_value"),
-//					},
-//				},
-//				Zones: pulumi.StringArray{
-//					pulumi.String("1"),
-//					pulumi.String("2"),
-//					pulumi.String("3"),
 //				},
 //			})
 //			if err != nil {

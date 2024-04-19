@@ -16,18 +16,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         /// The public IP of the DC/OS Master. 
         /// 
         /// Usage:
-        /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        /// });
-        /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         [Input("apiServer", required: true)]
         public Input<string> ApiServer { get; set; } = null!;

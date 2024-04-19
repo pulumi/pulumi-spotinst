@@ -38,16 +38,16 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.spotinst.ecs.OceanLaunchSpec;
  * import com.pulumi.spotinst.ecs.OceanLaunchSpecArgs;
- * import com.pulumi.spotinst.ecs.inputs.OceanLaunchSpecAttributeArgs;
- * import com.pulumi.spotinst.ecs.inputs.OceanLaunchSpecAutoscaleHeadroomArgs;
  * import com.pulumi.spotinst.ecs.inputs.OceanLaunchSpecBlockDeviceMappingArgs;
  * import com.pulumi.spotinst.ecs.inputs.OceanLaunchSpecBlockDeviceMappingEbsArgs;
  * import com.pulumi.spotinst.ecs.inputs.OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs;
- * import com.pulumi.spotinst.ecs.inputs.OceanLaunchSpecImageArgs;
+ * import com.pulumi.spotinst.ecs.inputs.OceanLaunchSpecAttributeArgs;
  * import com.pulumi.spotinst.ecs.inputs.OceanLaunchSpecInstanceMetadataOptionsArgs;
- * import com.pulumi.spotinst.ecs.inputs.OceanLaunchSpecSchedulingTaskArgs;
+ * import com.pulumi.spotinst.ecs.inputs.OceanLaunchSpecAutoscaleHeadroomArgs;
  * import com.pulumi.spotinst.ecs.inputs.OceanLaunchSpecStrategyArgs;
  * import com.pulumi.spotinst.ecs.inputs.OceanLaunchSpecTagArgs;
+ * import com.pulumi.spotinst.ecs.inputs.OceanLaunchSpecImageArgs;
+ * import com.pulumi.spotinst.ecs.inputs.OceanLaunchSpecSchedulingTaskArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -62,43 +62,13 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new OceanLaunchSpec(&#34;example&#34;, OceanLaunchSpecArgs.builder()        
- *             .attributes(OceanLaunchSpecAttributeArgs.builder()
- *                 .key(&#34;fakeKey&#34;)
- *                 .value(&#34;fakeValue&#34;)
- *                 .build())
- *             .autoscaleHeadrooms(OceanLaunchSpecAutoscaleHeadroomArgs.builder()
- *                 .cpuPerUnit(1000)
- *                 .memoryPerUnit(2048)
- *                 .numOfUnits(5)
- *                 .build())
- *             .blockDeviceMappings(OceanLaunchSpecBlockDeviceMappingArgs.builder()
- *                 .deviceName(&#34;/dev/xvda1&#34;)
- *                 .ebs(OceanLaunchSpecBlockDeviceMappingEbsArgs.builder()
- *                     .deleteOnTermination(&#34;true&#34;)
- *                     .dynamicVolumeSize(OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs.builder()
- *                         .baseSize(50)
- *                         .resource(&#34;CPU&#34;)
- *                         .sizePerResourceUnit(20)
- *                         .build())
- *                     .encrypted(&#34;false&#34;)
- *                     .throughput(500)
- *                     .volumeSize(50)
- *                     .volumeType(&#34;gp2&#34;)
- *                     .build())
- *                 .build())
- *             .iamInstanceProfile(&#34;iam-profile&#34;)
+ *             .oceanId(&#34;o-123456&#34;)
  *             .imageId(&#34;ami-123456&#34;)
- *             .images(            
- *                 OceanLaunchSpecImageArgs.builder()
- *                     .imageId(&#34;ami-12345&#34;)
- *                     .build(),
- *                 OceanLaunchSpecImageArgs.builder()
- *                     .imageId(&#34;ami-67890&#34;)
- *                     .build())
- *             .instanceMetadataOptions(OceanLaunchSpecInstanceMetadataOptionsArgs.builder()
- *                 .httpPutResponseHopLimit(10)
- *                 .httpTokens(&#34;required&#34;)
- *                 .build())
+ *             .userData(&#34;echo hello world&#34;)
+ *             .iamInstanceProfile(&#34;iam-profile&#34;)
+ *             .subnetIds(&#34;subnet-12345&#34;)
+ *             .securityGroupIds(&#34;awseb-12345&#34;)
+ *             .restrictScaleDown(true)
  *             .instanceTypes(            
  *                 &#34;m3.large&#34;,
  *                 &#34;m3.xlarge&#34;,
@@ -115,34 +85,64 @@ import javax.annotation.Nullable;
  *                 &#34;m5.4xlarge&#34;,
  *                 &#34;m5.12xlarge&#34;,
  *                 &#34;m5.24xlarge&#34;)
- *             .oceanId(&#34;o-123456&#34;)
  *             .preferredSpotTypes(            
  *                 &#34;m3.large&#34;,
  *                 &#34;m3.xlarge&#34;,
  *                 &#34;m3.2xlarge&#34;,
  *                 &#34;m4.large&#34;,
  *                 &#34;m4.xlarge&#34;)
- *             .restrictScaleDown(true)
- *             .schedulingTasks(OceanLaunchSpecSchedulingTaskArgs.builder()
- *                 .cronExpression(&#34;0 1 * * *&#34;)
- *                 .isEnabled(true)
- *                 .taskHeadrooms(OceanLaunchSpecSchedulingTaskTaskHeadroomArgs.builder()
- *                     .cpuPerUnit(1000)
- *                     .memoryPerUnit(2048)
- *                     .numOfUnits(5)
+ *             .blockDeviceMappings(OceanLaunchSpecBlockDeviceMappingArgs.builder()
+ *                 .deviceName(&#34;/dev/xvda1&#34;)
+ *                 .ebs(OceanLaunchSpecBlockDeviceMappingEbsArgs.builder()
+ *                     .deleteOnTermination(&#34;true&#34;)
+ *                     .encrypted(&#34;false&#34;)
+ *                     .volumeType(&#34;gp2&#34;)
+ *                     .volumeSize(50)
+ *                     .throughput(500)
+ *                     .dynamicVolumeSize(OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSizeArgs.builder()
+ *                         .baseSize(50)
+ *                         .resource(&#34;CPU&#34;)
+ *                         .sizePerResourceUnit(20)
+ *                         .build())
  *                     .build())
- *                 .taskType(&#34;manualHeadroomUpdate&#34;)
  *                 .build())
- *             .securityGroupIds(&#34;awseb-12345&#34;)
+ *             .attributes(OceanLaunchSpecAttributeArgs.builder()
+ *                 .key(&#34;fakeKey&#34;)
+ *                 .value(&#34;fakeValue&#34;)
+ *                 .build())
+ *             .instanceMetadataOptions(OceanLaunchSpecInstanceMetadataOptionsArgs.builder()
+ *                 .httpTokens(&#34;required&#34;)
+ *                 .httpPutResponseHopLimit(10)
+ *                 .build())
+ *             .autoscaleHeadrooms(OceanLaunchSpecAutoscaleHeadroomArgs.builder()
+ *                 .numOfUnits(5)
+ *                 .cpuPerUnit(1000)
+ *                 .memoryPerUnit(2048)
+ *                 .build())
  *             .strategies(OceanLaunchSpecStrategyArgs.builder()
  *                 .spotPercentage(50)
  *                 .build())
- *             .subnetIds(&#34;subnet-12345&#34;)
  *             .tags(OceanLaunchSpecTagArgs.builder()
  *                 .key(&#34;Env&#34;)
  *                 .value(&#34;production&#34;)
  *                 .build())
- *             .userData(&#34;echo hello world&#34;)
+ *             .images(            
+ *                 OceanLaunchSpecImageArgs.builder()
+ *                     .imageId(&#34;ami-12345&#34;)
+ *                     .build(),
+ *                 OceanLaunchSpecImageArgs.builder()
+ *                     .imageId(&#34;ami-67890&#34;)
+ *                     .build())
+ *             .schedulingTasks(OceanLaunchSpecSchedulingTaskArgs.builder()
+ *                 .isEnabled(true)
+ *                 .cronExpression(&#34;0 1 * * *&#34;)
+ *                 .taskType(&#34;manualHeadroomUpdate&#34;)
+ *                 .taskHeadrooms(OceanLaunchSpecSchedulingTaskTaskHeadroomArgs.builder()
+ *                     .numOfUnits(5)
+ *                     .cpuPerUnit(1000)
+ *                     .memoryPerUnit(2048)
+ *                     .build())
+ *                 .build())
  *             .build());
  * 
  *     }

@@ -25,18 +25,6 @@ namespace Pulumi.SpotInst.Gcp.Inputs
         /// A list of ports.
         /// 
         /// Usage:
-        /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        /// });
-        /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public InputList<string> Ports
         {

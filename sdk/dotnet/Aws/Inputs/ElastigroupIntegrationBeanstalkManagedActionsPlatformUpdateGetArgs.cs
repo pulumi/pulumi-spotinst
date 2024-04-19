@@ -28,18 +28,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         /// Level to update
         /// 
         /// Usage:
-        /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        /// });
-        /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         [Input("updateLevel")]
         public Input<string>? UpdateLevel { get; set; }

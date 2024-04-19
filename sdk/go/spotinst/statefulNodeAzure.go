@@ -29,7 +29,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := spotinst.NewStatefulNodeAzure(ctx, "testStatefulNodeAzure", &spotinst.StatefulNodeAzureArgs{
+//			_, err := spotinst.NewStatefulNodeAzure(ctx, "test_stateful_node_azure", &spotinst.StatefulNodeAzureArgs{
+//				Name:              pulumi.String("example_stateful_node_azure"),
 //				Region:            pulumi.String("eastus"),
 //				ResourceGroupName: pulumi.String("spotinst-azure"),
 //				Description:       pulumi.String("example_stateful_node_azure_description"),

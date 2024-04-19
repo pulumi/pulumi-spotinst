@@ -277,16 +277,16 @@ class User(pulumi.CustomResource):
         import pulumi
         import pulumi_spotinst as spotinst
 
-        terraform_user = spotinst.organization.User("terraformUser",
+        terraform_user = spotinst.organization.User("terraform_user",
             email="abc@xyz.com",
             first_name="test",
             last_name="user",
             password="testUser@123",
-            policies=[spotinst.organization.UserPolicyArgs(
-                policy_account_ids=["act-abcf4245"],
-                policy_id="pol-abcd1236",
-            )],
             role="viewer",
+            policies=[spotinst.organization.UserPolicyArgs(
+                policy_id="pol-abcd1236",
+                policy_account_ids=["act-abcf4245"],
+            )],
             user_group_ids=[
                 "ugr-abcd1234",
                 "ugr-defg8763",
@@ -321,16 +321,16 @@ class User(pulumi.CustomResource):
         import pulumi
         import pulumi_spotinst as spotinst
 
-        terraform_user = spotinst.organization.User("terraformUser",
+        terraform_user = spotinst.organization.User("terraform_user",
             email="abc@xyz.com",
             first_name="test",
             last_name="user",
             password="testUser@123",
-            policies=[spotinst.organization.UserPolicyArgs(
-                policy_account_ids=["act-abcf4245"],
-                policy_id="pol-abcd1236",
-            )],
             role="viewer",
+            policies=[spotinst.organization.UserPolicyArgs(
+                policy_id="pol-abcd1236",
+                policy_account_ids=["act-abcf4245"],
+            )],
             user_group_ids=[
                 "ugr-abcd1234",
                 "ugr-defg8763",

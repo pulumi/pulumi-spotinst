@@ -30,6 +30,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := aws.NewOceanExtendedResourceDefinition(ctx, "example", &aws.OceanExtendedResourceDefinitionArgs{
+//				Name: pulumi.String("terraform_extended_resource_definition"),
 //				ResourceMapping: pulumi.Map{
 //					"c3.large":  pulumi.Any("2Ki"),
 //					"c3.xlarge": pulumi.Any("4Ki"),

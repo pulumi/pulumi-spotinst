@@ -22,18 +22,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         /// The percentage of instances to add or remove.
         /// 
         /// Usage:
-        /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        /// });
-        /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         [Input("adjustmentPercentage")]
         public Input<string>? AdjustmentPercentage { get; set; }

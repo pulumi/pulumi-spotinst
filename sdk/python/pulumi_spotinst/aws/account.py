@@ -77,7 +77,7 @@ class Account(pulumi.CustomResource):
         import pulumi_spotinst as spotinst
 
         # Create a Account
-        my_aws_acct = spotinst.aws.Account("myAwsAcct")
+        my_aws_acct = spotinst.aws.Account("my_aws_acct", name="my_aws_acct")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -102,7 +102,7 @@ class Account(pulumi.CustomResource):
         import pulumi_spotinst as spotinst
 
         # Create a Account
-        my_aws_acct = spotinst.aws.Account("myAwsAcct")
+        my_aws_acct = spotinst.aws.Account("my_aws_acct", name="my_aws_acct")
         ```
         <!--End PulumiCodeChooser -->
 

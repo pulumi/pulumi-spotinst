@@ -41,15 +41,15 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.spotinst.ecs.Ocean;
  * import com.pulumi.spotinst.ecs.OceanArgs;
+ * import com.pulumi.spotinst.ecs.inputs.OceanClusterOrientationArgs;
+ * import com.pulumi.spotinst.ecs.inputs.OceanInstanceMetadataOptionsArgs;
  * import com.pulumi.spotinst.ecs.inputs.OceanBlockDeviceMappingArgs;
  * import com.pulumi.spotinst.ecs.inputs.OceanBlockDeviceMappingEbsArgs;
  * import com.pulumi.spotinst.ecs.inputs.OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs;
- * import com.pulumi.spotinst.ecs.inputs.OceanClusterOrientationArgs;
- * import com.pulumi.spotinst.ecs.inputs.OceanInstanceMetadataOptionsArgs;
- * import com.pulumi.spotinst.ecs.inputs.OceanLoggingArgs;
- * import com.pulumi.spotinst.ecs.inputs.OceanLoggingExportArgs;
  * import com.pulumi.spotinst.ecs.inputs.OceanOptimizeImagesArgs;
  * import com.pulumi.spotinst.ecs.inputs.OceanTagArgs;
+ * import com.pulumi.spotinst.ecs.inputs.OceanLoggingArgs;
+ * import com.pulumi.spotinst.ecs.inputs.OceanLoggingExportArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -64,64 +64,67 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new Ocean(&#34;example&#34;, OceanArgs.builder()        
+ *             .region(&#34;us-west-2&#34;)
+ *             .name(&#34;sample-ecs-cluster&#34;)
+ *             .clusterName(&#34;sample-ecs-cluster&#34;)
+ *             .minSize(&#34;0&#34;)
+ *             .maxSize(&#34;1&#34;)
+ *             .desiredCapacity(&#34;0&#34;)
+ *             .subnetIds(&#34;subnet-12345&#34;)
+ *             .instanceTypes(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+ *             .securityGroupIds(&#34;sg-12345&#34;)
+ *             .imageId(&#34;ami-12345&#34;)
+ *             .iamInstanceProfile(&#34;iam-profile&#34;)
+ *             .keyPair(&#34;KeyPair&#34;)
+ *             .userData(&#34;echo hello world&#34;)
  *             .associatePublicIpAddress(false)
+ *             .utilizeReservedInstances(false)
+ *             .drainingTimeout(120)
+ *             .monitoring(true)
+ *             .ebsOptimized(true)
+ *             .useAsTemplateOnly(true)
+ *             .spotPercentage(100)
+ *             .utilizeCommitments(false)
+ *             .clusterOrientations(OceanClusterOrientationArgs.builder()
+ *                 .availabilityVsCost(&#34;balanced&#34;)
+ *                 .build())
+ *             .instanceMetadataOptions(OceanInstanceMetadataOptionsArgs.builder()
+ *                 .httpTokens(&#34;required&#34;)
+ *                 .httpPutResponseHopLimit(10)
+ *                 .build())
  *             .blockDeviceMappings(OceanBlockDeviceMappingArgs.builder()
  *                 .deviceName(&#34;/dev/xvda1&#34;)
  *                 .ebs(OceanBlockDeviceMappingEbsArgs.builder()
  *                     .deleteOnTermination(&#34;true&#34;)
+ *                     .encrypted(&#34;false&#34;)
+ *                     .volumeType(&#34;gp2&#34;)
+ *                     .volumeSize(50)
+ *                     .throughput(500)
  *                     .dynamicVolumeSize(OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs.builder()
  *                         .baseSize(50)
  *                         .resource(&#34;CPU&#34;)
  *                         .sizePerResourceUnit(20)
  *                         .build())
- *                     .encrypted(&#34;false&#34;)
- *                     .throughput(500)
- *                     .volumeSize(50)
- *                     .volumeType(&#34;gp2&#34;)
  *                     .build())
  *                 .build())
- *             .clusterName(&#34;sample-ecs-cluster&#34;)
- *             .clusterOrientations(OceanClusterOrientationArgs.builder()
- *                 .availabilityVsCost(&#34;balanced&#34;)
- *                 .build())
- *             .desiredCapacity(&#34;0&#34;)
- *             .drainingTimeout(120)
- *             .ebsOptimized(true)
- *             .iamInstanceProfile(&#34;iam-profile&#34;)
- *             .imageId(&#34;ami-12345&#34;)
- *             .instanceTypes(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
- *             .instanceMetadataOptions(OceanInstanceMetadataOptionsArgs.builder()
- *                 .httpPutResponseHopLimit(10)
- *                 .httpTokens(&#34;required&#34;)
- *                 .build())
- *             .keyPair(&#34;KeyPair&#34;)
- *             .logging(OceanLoggingArgs.builder()
- *                 .export(OceanLoggingExportArgs.builder()
- *                     .s3(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
- *                     .build())
- *                 .build())
- *             .maxSize(&#34;1&#34;)
- *             .minSize(&#34;0&#34;)
- *             .monitoring(true)
  *             .optimizeImages(OceanOptimizeImagesArgs.builder()
  *                 .performAt(&#34;timeWindow&#34;)
- *                 .shouldOptimizeEcsAmi(true)
  *                 .timeWindows(                
  *                     &#34;Sun:02:00-Sun:12:00&#34;,
  *                     &#34;Sun:05:00-Sun:16:00&#34;)
+ *                 .shouldOptimizeEcsAmi(true)
  *                 .build())
- *             .region(&#34;us-west-2&#34;)
- *             .securityGroupIds(&#34;sg-12345&#34;)
- *             .spotPercentage(100)
- *             .subnetIds(&#34;subnet-12345&#34;)
  *             .tags(OceanTagArgs.builder()
  *                 .key(&#34;fakeKey&#34;)
  *                 .value(&#34;fakeValue&#34;)
  *                 .build())
- *             .useAsTemplateOnly(true)
- *             .userData(&#34;echo hello world&#34;)
- *             .utilizeCommitments(false)
- *             .utilizeReservedInstances(false)
+ *             .logging(OceanLoggingArgs.builder()
+ *                 .export(OceanLoggingExportArgs.builder()
+ *                     .s3s(OceanLoggingExportS3Args.builder()
+ *                         .id(&#34;di-abcd123&#34;)
+ *                         .build())
+ *                     .build())
+ *                 .build())
  *             .build());
  * 
  *     }

@@ -22,18 +22,6 @@ namespace Pulumi.SpotInst.Gcp.Inputs
         /// Network port used by your swarm.
         /// 
         /// Usage:
-        /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        /// });
-        /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         [Input("masterPort", required: true)]
         public Input<int> MasterPort { get; set; } = null!;

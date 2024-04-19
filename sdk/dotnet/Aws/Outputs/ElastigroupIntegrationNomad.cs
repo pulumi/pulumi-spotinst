@@ -21,18 +21,6 @@ namespace Pulumi.SpotInst.Aws.Outputs
         /// A key/value mapping of tags to assign to the resource.
         /// 
         /// Usage:
-        /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        /// });
-        /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public readonly ImmutableArray<Outputs.ElastigroupIntegrationNomadAutoscaleConstraint> AutoscaleConstraints;
         /// <summary>

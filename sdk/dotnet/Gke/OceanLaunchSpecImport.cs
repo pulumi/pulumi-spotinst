@@ -25,8 +25,8 @@ namespace Pulumi.SpotInst.Gke
     /// {
     ///     var example = new SpotInst.Gke.OceanLaunchSpecImport("example", new()
     ///     {
-    ///         NodePoolName = "default-pool",
     ///         OceanId = "o-123456",
+    ///         NodePoolName = "default-pool",
     ///     });
     /// 
     /// });

@@ -16,8 +16,8 @@ import * as utilities from "../utilities";
  *
  * // set credential AWS
  * const credential = new spotinst.aws.Credentials("credential", {
- *     accountId: "act-123456",
  *     iamrole: "arn:aws:iam::1234567890:role/Spot_Iam_Role",
+ *     accountId: "act-123456",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

@@ -17,12 +17,34 @@ import * as utilities from "../utilities";
  * import * as spotinst from "@pulumi/spotinst";
  *
  * const example = new spotinst.gcp.Elastigroup("example", {
+ *     name: "example-gcp",
+ *     description: "spotinst gcp group",
+ *     serviceAccount: "example@myProject.iam.gservicecct.com",
+ *     startupScript: "",
+ *     instanceNamePrefix: "test-123a",
+ *     minSize: 0,
+ *     maxSize: 1,
+ *     desiredCapacity: 1,
  *     availabilityZones: [
  *         "asia-east1-c",
  *         "us-central1-a",
  *     ],
+ *     preemptiblePercentage: 50,
+ *     fallbackToOndemand: true,
+ *     drainingTimeout: 180,
+ *     provisioningModel: "SPOT",
+ *     labels: [{
+ *         key: "test_key",
+ *         value: "test_value",
+ *     }],
+ *     tags: [
+ *         "http",
+ *         "https",
+ *     ],
  *     backendServices: [{
+ *         serviceName: "spotinst-elb-backend-service",
  *         locationType: "regional",
+ *         scheme: "INTERNAL",
  *         namedPorts: [{
  *             name: "port-name",
  *             ports: [
@@ -30,76 +52,55 @@ import * as utilities from "../utilities";
  *                 "6000",
  *             ],
  *         }],
- *         scheme: "INTERNAL",
- *         serviceName: "spotinst-elb-backend-service",
  *     }],
- *     description: "spotinst gcp group",
- *     desiredCapacity: 1,
  *     disks: [{
+ *         deviceName: "device",
+ *         mode: "READ_WRITE",
+ *         type: "PERSISTENT",
  *         autoDelete: true,
  *         boot: true,
- *         deviceName: "device",
+ *         "interface": "SCSI",
  *         initializeParams: [{
  *             diskSizeGb: "10",
  *             diskType: "pd-standard",
  *             sourceImage: "",
  *         }],
- *         "interface": "SCSI",
- *         mode: "READ_WRITE",
- *         type: "PERSISTENT",
  *     }],
- *     drainingTimeout: 180,
- *     fallbackToOndemand: true,
- *     instanceNamePrefix: "test-123a",
- *     instanceTypesCustoms: [{
- *         memoryGib: 7,
- *         vcpu: 2,
+ *     networkInterfaces: [{
+ *         network: "spot-network",
  *     }],
  *     instanceTypesOndemand: "n1-standard-1",
  *     instanceTypesPreemptibles: [
  *         "n1-standard-1",
  *         "n1-standard-2",
  *     ],
- *     labels: [{
- *         key: "test_key",
- *         value: "test_value",
+ *     instanceTypesCustoms: [{
+ *         vcpu: 2,
+ *         memoryGib: 7,
  *     }],
- *     maxSize: 1,
- *     minSize: 0,
- *     networkInterfaces: [{
- *         network: "spot-network",
- *     }],
- *     preemptiblePercentage: 50,
- *     provisioningModel: "SPOT",
- *     scalingUpPolicies: [{
- *         actionType: "adjustment",
- *         adjustment: 1,
- *         cooldown: 300,
- *         dimensions: [{
- *             name: "storage_type",
- *             value: "pd-ssd",
- *         }],
- *         evaluationPeriods: 1,
- *         metricName: "instance/disk/read_ops_count",
- *         namespace: "compute",
- *         operator: "gte",
- *         period: 300,
- *         policyName: "scale_up_1",
- *         source: "stackdriver",
- *         statistic: "average",
- *         threshold: 10000,
- *         unit: "percent",
- *     }],
- *     serviceAccount: "example@myProject.iam.gservicecct.com",
- *     startupScript: "",
  *     subnets: [{
  *         region: "asia-east1",
  *         subnetNames: ["default"],
  *     }],
- *     tags: [
- *         "http",
- *         "https",
- *     ],
+ *     scalingUpPolicies: [{
+ *         policyName: "scale_up_1",
+ *         source: "stackdriver",
+ *         metricName: "instance/disk/read_ops_count",
+ *         namespace: "compute",
+ *         statistic: "average",
+ *         unit: "percent",
+ *         threshold: 10000,
+ *         period: 300,
+ *         cooldown: 300,
+ *         operator: "gte",
+ *         evaluationPeriods: 1,
+ *         actionType: "adjustment",
+ *         adjustment: 1,
+ *         dimensions: [{
+ *             name: "storage_type",
+ *             value: "pd-ssd",
+ *         }],
+ *     }],
  * });
  * ```
  * <!--End PulumiCodeChooser -->
@@ -265,12 +266,6 @@ export class Elastigroup extends pulumi.CustomResource {
     public readonly tags!: pulumi.Output<string[] | undefined>;
     /**
      * Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
-     *
-     * <!--Start PulumiCodeChooser -->
-     * ```typescript
-     * import * as pulumi from "@pulumi/pulumi";
-     * ```
-     * <!--End PulumiCodeChooser -->
      */
     public readonly unhealthyDuration!: pulumi.Output<number | undefined>;
 
@@ -507,12 +502,6 @@ export interface ElastigroupState {
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
-     *
-     * <!--Start PulumiCodeChooser -->
-     * ```typescript
-     * import * as pulumi from "@pulumi/pulumi";
-     * ```
-     * <!--End PulumiCodeChooser -->
      */
     unhealthyDuration?: pulumi.Input<number>;
 }
@@ -654,12 +643,6 @@ export interface ElastigroupArgs {
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
-     *
-     * <!--Start PulumiCodeChooser -->
-     * ```typescript
-     * import * as pulumi from "@pulumi/pulumi";
-     * ```
-     * <!--End PulumiCodeChooser -->
      */
     unhealthyDuration?: pulumi.Input<number>;
 }

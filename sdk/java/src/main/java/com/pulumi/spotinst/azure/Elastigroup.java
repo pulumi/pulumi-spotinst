@@ -43,11 +43,11 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.spotinst.ElastigroupAzureV3;
  * import com.pulumi.spotinst.ElastigroupAzureV3Args;
- * import com.pulumi.spotinst.inputs.ElastigroupAzureV3ImageArgs;
- * import com.pulumi.spotinst.inputs.ElastigroupAzureV3LoginArgs;
  * import com.pulumi.spotinst.inputs.ElastigroupAzureV3ManagedServiceIdentityArgs;
- * import com.pulumi.spotinst.inputs.ElastigroupAzureV3NetworkArgs;
  * import com.pulumi.spotinst.inputs.ElastigroupAzureV3TagArgs;
+ * import com.pulumi.spotinst.inputs.ElastigroupAzureV3ImageArgs;
+ * import com.pulumi.spotinst.inputs.ElastigroupAzureV3NetworkArgs;
+ * import com.pulumi.spotinst.inputs.ElastigroupAzureV3LoginArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -62,52 +62,24 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var testAzureGroup = new ElastigroupAzureV3(&#34;testAzureGroup&#34;, ElastigroupAzureV3Args.builder()        
- *             .customData(&#34;IyEvYmluL2Jhc2gKZWNobyAidGVzdCI=&#34;)
- *             .desiredCapacity(1)
- *             .drainingTimeout(300)
- *             .fallbackToOnDemand(true)
- *             .images(ElastigroupAzureV3ImageArgs.builder()
- *                 .marketplaces(ElastigroupAzureV3ImageMarketplaceArgs.builder()
- *                     .offer(&#34;UbuntuServer&#34;)
- *                     .publisher(&#34;Canonical&#34;)
- *                     .sku(&#34;18.04-LTS&#34;)
- *                     .version(&#34;latest&#34;)
- *                     .build())
- *                 .build())
- *             .login(ElastigroupAzureV3LoginArgs.builder()
- *                 .sshPublicKey(&#34;33a2s1f3g5a1df5g1ad3f2g1adfg56dfg==&#34;)
- *                 .userName(&#34;admin&#34;)
- *                 .build())
- *             .managedServiceIdentities(ElastigroupAzureV3ManagedServiceIdentityArgs.builder()
- *                 .name(&#34;ocean-westus-dev-aks-agentpool&#34;)
- *                 .resourceGroupName(&#34;MC_ocean-westus-dev_ocean-westus-dev-aks_westus&#34;)
- *                 .build())
- *             .maxSize(1)
+ *             .name(&#34;example_elastigroup_azure&#34;)
+ *             .resourceGroupName(&#34;spotinst-azure&#34;)
+ *             .region(&#34;eastus&#34;)
+ *             .os(&#34;Linux&#34;)
  *             .minSize(0)
- *             .network(ElastigroupAzureV3NetworkArgs.builder()
- *                 .networkInterfaces(ElastigroupAzureV3NetworkNetworkInterfaceArgs.builder()
- *                     .additionalIpConfigs(ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArgs.builder()
- *                         .privateIPVersion(&#34;IPv4&#34;)
- *                         .name(&#34;SecondaryIPConfig&#34;)
- *                         .build())
- *                     .applicationSecurityGroup(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
- *                     .assignPublicIp(false)
- *                     .isPrimary(true)
- *                     .subnetName(&#34;default&#34;)
- *                     .build())
- *                 .resourceGroupName(&#34;ResourceGroup&#34;)
- *                 .virtualNetworkName(&#34;VirtualNetworkName&#34;)
- *                 .build())
+ *             .maxSize(1)
+ *             .desiredCapacity(1)
  *             .odSizes(            
  *                 &#34;standard_a1_v1&#34;,
  *                 &#34;standard_a1_v2&#34;)
- *             .os(&#34;Linux&#34;)
- *             .region(&#34;eastus&#34;)
- *             .resourceGroupName(&#34;spotinst-azure&#34;)
- *             .spotPercentage(65)
  *             .spotSizes(            
  *                 &#34;standard_a1_v1&#34;,
  *                 &#34;standard_a1_v2&#34;)
+ *             .customData(&#34;IyEvYmluL2Jhc2gKZWNobyAidGVzdCI=&#34;)
+ *             .managedServiceIdentities(ElastigroupAzureV3ManagedServiceIdentityArgs.builder()
+ *                 .resourceGroupName(&#34;MC_ocean-westus-dev_ocean-westus-dev-aks_westus&#34;)
+ *                 .name(&#34;ocean-westus-dev-aks-agentpool&#34;)
+ *                 .build())
  *             .tags(            
  *                 ElastigroupAzureV3TagArgs.builder()
  *                     .key(&#34;key1&#34;)
@@ -117,6 +89,38 @@ import javax.annotation.Nullable;
  *                     .key(&#34;key2&#34;)
  *                     .value(&#34;value2&#34;)
  *                     .build())
+ *             .images(ElastigroupAzureV3ImageArgs.builder()
+ *                 .marketplaces(ElastigroupAzureV3ImageMarketplaceArgs.builder()
+ *                     .publisher(&#34;Canonical&#34;)
+ *                     .offer(&#34;UbuntuServer&#34;)
+ *                     .sku(&#34;18.04-LTS&#34;)
+ *                     .version(&#34;latest&#34;)
+ *                     .build())
+ *                 .build())
+ *             .spotPercentage(65)
+ *             .drainingTimeout(300)
+ *             .fallbackToOnDemand(true)
+ *             .network(ElastigroupAzureV3NetworkArgs.builder()
+ *                 .virtualNetworkName(&#34;VirtualNetworkName&#34;)
+ *                 .resourceGroupName(&#34;ResourceGroup&#34;)
+ *                 .networkInterfaces(ElastigroupAzureV3NetworkNetworkInterfaceArgs.builder()
+ *                     .subnetName(&#34;default&#34;)
+ *                     .assignPublicIp(false)
+ *                     .isPrimary(true)
+ *                     .additionalIpConfigs(ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArgs.builder()
+ *                         .name(&#34;SecondaryIPConfig&#34;)
+ *                         .privateIPVersion(&#34;IPv4&#34;)
+ *                         .build())
+ *                     .applicationSecurityGroups(ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArgs.builder()
+ *                         .name(&#34;ApplicationSecurityGroupName&#34;)
+ *                         .resourceGroupName(&#34;ResourceGroup&#34;)
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .login(ElastigroupAzureV3LoginArgs.builder()
+ *                 .userName(&#34;admin&#34;)
+ *                 .sshPublicKey(&#34;33a2s1f3g5a1df5g1ad3f2g1adfg56dfg==&#34;)
+ *                 .build())
  *             .build());
  * 
  *     }
@@ -132,114 +136,6 @@ import javax.annotation.Nullable;
  * * `draining_timeout` - (Optional, Default `120`) Time (seconds) to allow the instance to be drained from incoming TCP connections and detached from MLB before terminating it during a scale-down operation.
  * 
  * &lt;a id=&#34;image&#34;&gt;&lt;/a&gt;
- * ## Image
- * 
- * * `image` - (Required) Image of a VM. An image is a template for creating new VMs. Choose from Azure image catalogue (marketplace) or use a custom image.
- *     * `publisher` - (Optional) Image publisher. Required if resource_group_name is not specified.
- *     * `offer` - (Optional) Name of the image to use. Required if publisher is specified.
- *     * `sku` - (Optional) Image&#39;s Stock Keeping Unit, which is the specific version of the image. Required if publisher is specified.
- *     * `version` -
- *     * `resource_group_name` - (Optional) Name of Resource Group for custom image. Required if publisher not specified.
- *     * `image_name` - (Optional) Name of the custom image. Required if resource_group_name is specified.
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *     }
- * }
- * ```
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
- * &lt;a id=&#34;network&#34;&gt;&lt;/a&gt;
- * ## Network
- * 
- * * `network` - (Required) Defines the Virtual Network and Subnet for your Elastigroup.
- *     * `virtual_network_name` - (Required) Name of Vnet.
- *     * `resource_group_name` - (Required) Vnet Resource Group Name.
- *     * `network_interfaces` -
- *         * `subnet_name` - (Required) ID of subnet.
- *         * `assign_public_up` - (Optional, Default: `false`) Assign a public IP to each VM in the Elastigroup.
- *         * `is_primary` -
- *         * `additional_ip_configs` - (Optional) Array of additional IP configuration objects.
- *             * `name` - (Required) The IP configuration name.
- *             * `private_ip_version` - (Optional) Available from Azure Api-Version 2017-03-30 onwards, it represents whether the specific ip configuration is IPv4 or IPv6. Valid values: `IPv4`, `IPv6`.
- *         * `application_security_group` - (Optional) - List of Application Security Groups that will be associated to the primary ip configuration of the network interface.
- *             * `name` - (Required) - The name of the Application Security group.
- *             * `resource_group_name` - (Required) - The resource group of the Application Security Group.
- *               }
- * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *     }
- * }
- * ```
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
- * ### Login
- * 
- * * `login` - (Required) Describes the login configuration.
- *     * `user_name` - (Required) Set admin access for accessing your VMs.
- *     * `ssh_public_key` - (Optional) SSH for admin access to Linux VMs. Required for Linux OS types.
- *     * `password` - (Optional) Password for admin access to Windows VMs. Required for Windows OS types.
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *     }
- * }
- * ```
- * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */
 @ResourceType(type="spotinst:azure/elastigroup:Elastigroup")

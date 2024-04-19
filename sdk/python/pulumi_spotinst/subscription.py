@@ -270,17 +270,17 @@ class Subscription(pulumi.CustomResource):
 
         # Create a Subscription
         default_subscription = spotinst.Subscription("default-subscription",
-            endpoint="http://endpoint.com",
+            resource_id=my_eg["id"],
             event_type="AWS_EC2_INSTANCE_LAUNCH",
+            protocol="http",
+            endpoint="http://endpoint.com",
             format={
                 "event": "%event%",
                 "instance_id": "%instance-id%",
                 "resource_id": "%resource-id%",
                 "resource_name": "%resource-name%",
                 "tags": "foo,baz,baz",
-            },
-            protocol="http",
-            resource_id=spotinst_elastigroup_aws["my-eg"]["id"])
+            })
         ```
         <!--End PulumiCodeChooser -->
 
@@ -326,17 +326,17 @@ class Subscription(pulumi.CustomResource):
 
         # Create a Subscription
         default_subscription = spotinst.Subscription("default-subscription",
-            endpoint="http://endpoint.com",
+            resource_id=my_eg["id"],
             event_type="AWS_EC2_INSTANCE_LAUNCH",
+            protocol="http",
+            endpoint="http://endpoint.com",
             format={
                 "event": "%event%",
                 "instance_id": "%instance-id%",
                 "resource_id": "%resource-id%",
                 "resource_name": "%resource-name%",
                 "tags": "foo,baz,baz",
-            },
-            protocol="http",
-            resource_id=spotinst_elastigroup_aws["my-eg"]["id"])
+            })
         ```
         <!--End PulumiCodeChooser -->
 

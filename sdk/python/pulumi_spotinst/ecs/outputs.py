@@ -88,12 +88,6 @@ class OceanAutoscaler(dict):
         :param int cooldown: Cooldown period between scaling actions.
         :param 'OceanAutoscalerDownArgs' down: Auto Scaling scale down operations.
         :param bool enable_automatic_and_manual_headroom: When set to true, both automatic and per custom launch specification manual headroom to be saved concurrently and independently in the cluster. prerequisite: isAutoConfig must be true
-               
-               <!--Start PulumiCodeChooser -->
-               ```python
-               import pulumi
-               ```
-               <!--End PulumiCodeChooser -->
         :param 'OceanAutoscalerHeadroomArgs' headroom: Spare resource capacity management enabling fast assignment of tasks without waiting for new resources to launch.
         :param bool is_auto_config: Automatically configure and optimize headroom resources.
         :param bool is_enabled: Enable the Ocean ECS autoscaler.
@@ -148,12 +142,6 @@ class OceanAutoscaler(dict):
     def enable_automatic_and_manual_headroom(self) -> Optional[bool]:
         """
         When set to true, both automatic and per custom launch specification manual headroom to be saved concurrently and independently in the cluster. prerequisite: isAutoConfig must be true
-
-        <!--Start PulumiCodeChooser -->
-        ```python
-        import pulumi
-        ```
-        <!--End PulumiCodeChooser -->
         """
         return pulumi.get(self, "enable_automatic_and_manual_headroom")
 
@@ -1823,15 +1811,6 @@ class OceanScheduledTaskTask(dict):
         :param str cron_expression: A valid cron expression. The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of `frequency` or `cronExpression` should be used at a time. Required for `cluster.scheduling.tasks` object. Example: `0 1 * * *`.
         :param bool is_enabled: Enable the Ocean ECS autoscaler.
         :param str task_type: Valid values: "clusterRoll". Required for `cluster.scheduling.tasks object`. Example: `clusterRoll`.
-               
-               <!--Start PulumiCodeChooser -->
-               ```python
-               import pulumi
-               ```
-               <!--End PulumiCodeChooser -->
-               
-               
-               <a id="attributes-reference"></a>
         """
         pulumi.set(__self__, "cron_expression", cron_expression)
         pulumi.set(__self__, "is_enabled", is_enabled)
@@ -1858,15 +1837,6 @@ class OceanScheduledTaskTask(dict):
     def task_type(self) -> str:
         """
         Valid values: "clusterRoll". Required for `cluster.scheduling.tasks object`. Example: `clusterRoll`.
-
-        <!--Start PulumiCodeChooser -->
-        ```python
-        import pulumi
-        ```
-        <!--End PulumiCodeChooser -->
-
-
-        <a id="attributes-reference"></a>
         """
         return pulumi.get(self, "task_type")
 
@@ -2000,12 +1970,6 @@ class OceanUpdatePolicyRollConfig(dict):
         """
         :param int batch_size_percentage: Sets the percentage of the instances to deploy in each batch.
         :param int batch_min_healthy_percentage: Default: 50. Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
-               
-               <!--Start PulumiCodeChooser -->
-               ```python
-               import pulumi
-               ```
-               <!--End PulumiCodeChooser -->
         """
         pulumi.set(__self__, "batch_size_percentage", batch_size_percentage)
         if batch_min_healthy_percentage is not None:
@@ -2024,12 +1988,6 @@ class OceanUpdatePolicyRollConfig(dict):
     def batch_min_healthy_percentage(self) -> Optional[int]:
         """
         Default: 50. Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
-
-        <!--Start PulumiCodeChooser -->
-        ```python
-        import pulumi
-        ```
-        <!--End PulumiCodeChooser -->
         """
         return pulumi.get(self, "batch_min_healthy_percentage")
 

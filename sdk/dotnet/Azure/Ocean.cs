@@ -14,23 +14,167 @@ namespace Pulumi.SpotInst.Azure
     /// 
     /// &gt; This resource contains arguments (such as `image` and `extension`) that are automatically populated from the data reported by the Ocean AKS Connector deployed into your cluster. You can override the upstream configuration by defining the corresponding arguments.
     /// 
-    /// ## Prerequisites
-    /// 
-    /// Installation of the Ocean controller is required by this resource. You can accomplish this by using the spotinst/ocean-controller module as follows:
+    /// ## Example Usage
     /// 
     /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
+    /// using SpotInst = Pulumi.SpotInst;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var example = new SpotInst.Azure.Ocean("example", new()
+    ///     {
+    ///         Name = "ocean-westus-dev-aks",
+    ///         ControllerClusterId = "ocean-westus-dev-aks",
+    ///         Zones = new[]
+    ///         {
+    ///             "1",
+    ///             "2",
+    ///             "3",
+    ///         },
+    ///         AcdIdentifier = "acd-12345678",
+    ///         AksName = "ocean-westus-dev-aks",
+    ///         AksResourceGroupName = "ocean-westus-dev",
+    ///         SshPublicKey = "ssh-rsa [... redacted ...] generated-by-azure",
+    ///         UserName = "some-name",
+    ///         ResourceGroupName = "some-resource-group-name",
+    ///         CustomData = "[... redacted ...]",
+    ///         MaxPods = 30,
+    ///         ManagedServiceIdentities = new[]
+    ///         {
+    ///             new SpotInst.Azure.Inputs.OceanManagedServiceIdentityArgs
+    ///             {
+    ///                 ResourceGroupName = "MC_ocean-westus-dev_ocean-westus-dev-aks_westus",
+    ///                 Name = "ocean-westus-dev-aks-agentpool",
+    ///             },
+    ///         },
+    ///         Tags = new[]
+    ///         {
+    ///             new SpotInst.Azure.Inputs.OceanTagArgs
+    ///             {
+    ///                 Key = "Environment",
+    ///                 Value = "Dev",
+    ///             },
+    ///         },
+    ///         VmSizes = new[]
+    ///         {
+    ///             new SpotInst.Azure.Inputs.OceanVmSizeArgs
+    ///             {
+    ///                 Whitelists = new[]
+    ///                 {
+    ///                     "standard_ds2_v2",
+    ///                 },
+    ///             },
+    ///         },
+    ///         OsDisk = new SpotInst.Azure.Inputs.OceanOsDiskArgs
+    ///         {
+    ///             SizeGb = 130,
+    ///             Type = "Standard_LRS",
+    ///         },
+    ///         Images = new[]
+    ///         {
+    ///             new SpotInst.Azure.Inputs.OceanImageArgs
+    ///             {
+    ///                 Marketplaces = new[]
+    ///                 {
+    ///                     new SpotInst.Azure.Inputs.OceanImageMarketplaceArgs
+    ///                     {
+    ///                         Publisher = "Canonical",
+    ///                         Offer = "UbuntuServer",
+    ///                         Sku = "18.04-LTS",
+    ///                         Version = "latest",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         Strategies = new[]
+    ///         {
+    ///             new SpotInst.Azure.Inputs.OceanStrategyArgs
+    ///             {
+    ///                 FallbackToOndemand = true,
+    ///                 SpotPercentage = 40,
+    ///             },
+    ///         },
+    ///         Health = new SpotInst.Azure.Inputs.OceanHealthArgs
+    ///         {
+    ///             GracePeriod = 10,
+    ///         },
+    ///         Network = new SpotInst.Azure.Inputs.OceanNetworkArgs
+    ///         {
+    ///             VirtualNetworkName = "vn-name",
+    ///             ResourceGroupName = "ocean-westus-dev",
+    ///             NetworkInterfaces = new[]
+    ///             {
+    ///                 new SpotInst.Azure.Inputs.OceanNetworkNetworkInterfaceArgs
+    ///                 {
+    ///                     SubnetName = "subnet-name",
+    ///                     AssignPublicIp = false,
+    ///                     IsPrimary = false,
+    ///                     AdditionalIpConfigs = new[]
+    ///                     {
+    ///                         new SpotInst.Azure.Inputs.OceanNetworkNetworkInterfaceAdditionalIpConfigArgs
+    ///                         {
+    ///                             Name = "ip-config-name",
+    ///                             PrivateIpVersion = "ipv4",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         Extensions = new[]
+    ///         {
+    ///             new SpotInst.Azure.Inputs.OceanExtensionArgs
+    ///             {
+    ///                 ApiVersion = "1.0",
+    ///                 MinorVersionAutoUpgrade = true,
+    ///                 Name = "extension-name",
+    ///                 Publisher = "Microsoft.Azure.Extensions",
+    ///                 Type = "Linux",
+    ///             },
+    ///         },
+    ///         LoadBalancers = new[]
+    ///         {
+    ///             new SpotInst.Azure.Inputs.OceanLoadBalancerArgs
+    ///             {
+    ///                 BackendPoolNames = new[]
+    ///                 {
+    ///                     "terraform-backend-pool",
+    ///                 },
+    ///                 LoadBalancerSku = "Standard",
+    ///                 Name = "load-balancer-name",
+    ///                 ResourceGroupName = "resource-group-name",
+    ///                 Type = "loadBalancer",
+    ///             },
+    ///         },
+    ///         Autoscaler = new SpotInst.Azure.Inputs.OceanAutoscalerArgs
+    ///         {
+    ///             AutoscaleIsEnabled = true,
+    ///             AutoscaleDown = new SpotInst.Azure.Inputs.OceanAutoscalerAutoscaleDownArgs
+    ///             {
+    ///                 MaxScaleDownPercentage = 10,
+    ///             },
+    ///             ResourceLimits = new SpotInst.Azure.Inputs.OceanAutoscalerResourceLimitsArgs
+    ///             {
+    ///                 MaxVcpu = 1024,
+    ///                 MaxMemoryGib = 40,
+    ///             },
+    ///             AutoscaleHeadroom = new SpotInst.Azure.Inputs.OceanAutoscalerAutoscaleHeadroomArgs
+    ///             {
+    ///                 Automatic = new SpotInst.Azure.Inputs.OceanAutoscalerAutoscaleHeadroomAutomaticArgs
+    ///                 {
+    ///                     IsEnabled = true,
+    ///                     Percentage = 10,
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
     /// });
     /// ```
     /// &lt;!--End PulumiCodeChooser --&gt;
-    /// 
-    /// &gt; You must configure the same `cluster_identifier` and `acd_identifier` both for the Ocean controller and for the `spotinst.azure.Ocean` resource.
     /// </summary>
     [SpotInstResourceType("spotinst:azure/ocean:Ocean")]
     public partial class Ocean : global::Pulumi.CustomResource

@@ -34,12 +34,12 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.spotinst.azure.OceanVirtualNodeGroup;
  * import com.pulumi.spotinst.azure.OceanVirtualNodeGroupArgs;
- * import com.pulumi.spotinst.azure.inputs.OceanVirtualNodeGroupAutoscaleArgs;
  * import com.pulumi.spotinst.azure.inputs.OceanVirtualNodeGroupLabelArgs;
+ * import com.pulumi.spotinst.azure.inputs.OceanVirtualNodeGroupTaintArgs;
+ * import com.pulumi.spotinst.azure.inputs.OceanVirtualNodeGroupResourceLimitArgs;
+ * import com.pulumi.spotinst.azure.inputs.OceanVirtualNodeGroupAutoscaleArgs;
  * import com.pulumi.spotinst.azure.inputs.OceanVirtualNodeGroupLaunchSpecificationArgs;
  * import com.pulumi.spotinst.azure.inputs.OceanVirtualNodeGroupLaunchSpecificationOsDiskArgs;
- * import com.pulumi.spotinst.azure.inputs.OceanVirtualNodeGroupResourceLimitArgs;
- * import com.pulumi.spotinst.azure.inputs.OceanVirtualNodeGroupTaintArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -54,6 +54,24 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new OceanVirtualNodeGroup(&#34;example&#34;, OceanVirtualNodeGroupArgs.builder()        
+ *             .name(&#34;vng_name&#34;)
+ *             .oceanId(&#34;o-12345&#34;)
+ *             .zones(            
+ *                 &#34;1&#34;,
+ *                 &#34;2&#34;,
+ *                 &#34;3&#34;)
+ *             .labels(OceanVirtualNodeGroupLabelArgs.builder()
+ *                 .key(&#34;label_key&#34;)
+ *                 .value(&#34;label_value&#34;)
+ *                 .build())
+ *             .taints(OceanVirtualNodeGroupTaintArgs.builder()
+ *                 .key(&#34;taint_key&#34;)
+ *                 .value(&#34;taint_value&#34;)
+ *                 .effect(&#34;NoSchedule&#34;)
+ *                 .build())
+ *             .resourceLimits(OceanVirtualNodeGroupResourceLimitArgs.builder()
+ *                 .maxInstanceCount(4)
+ *                 .build())
  *             .autoscales(OceanVirtualNodeGroupAutoscaleArgs.builder()
  *                 .autoHeadroomPercentage(5)
  *                 .autoscaleHeadrooms(OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArgs.builder()
@@ -63,12 +81,7 @@ import javax.annotation.Nullable;
  *                     .numOfUnits(16)
  *                     .build())
  *                 .build())
- *             .labels(OceanVirtualNodeGroupLabelArgs.builder()
- *                 .key(&#34;label_key&#34;)
- *                 .value(&#34;label_value&#34;)
- *                 .build())
  *             .launchSpecifications(OceanVirtualNodeGroupLaunchSpecificationArgs.builder()
- *                 .maxPods(30)
  *                 .osDisk(OceanVirtualNodeGroupLaunchSpecificationOsDiskArgs.builder()
  *                     .sizeGb(100)
  *                     .type(&#34;Standard_LRS&#34;)
@@ -78,20 +91,8 @@ import javax.annotation.Nullable;
  *                     .key(&#34;label_key&#34;)
  *                     .value(&#34;label_value&#34;)
  *                     .build())
+ *                 .maxPods(30)
  *                 .build())
- *             .oceanId(&#34;o-12345&#34;)
- *             .resourceLimits(OceanVirtualNodeGroupResourceLimitArgs.builder()
- *                 .maxInstanceCount(4)
- *                 .build())
- *             .taints(OceanVirtualNodeGroupTaintArgs.builder()
- *                 .effect(&#34;NoSchedule&#34;)
- *                 .key(&#34;taint_key&#34;)
- *                 .value(&#34;taint_value&#34;)
- *                 .build())
- *             .zones(            
- *                 &#34;1&#34;,
- *                 &#34;2&#34;,
- *                 &#34;3&#34;)
  *             .build());
  * 
  *     }

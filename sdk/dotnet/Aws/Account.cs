@@ -24,7 +24,10 @@ namespace Pulumi.SpotInst.Aws
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Create a Account
-    ///     var myAwsAcct = new SpotInst.Aws.Account("myAwsAcct");
+    ///     var myAwsAcct = new SpotInst.Aws.Account("my_aws_acct", new()
+    ///     {
+    ///         Name = "my_aws_acct",
+    ///     });
     /// 
     /// });
     /// ```

@@ -24,7 +24,39 @@ import * as utilities from "../utilities";
  * import * as spotinst from "@pulumi/spotinst";
  *
  * const example_gke_elastigroup = new spotinst.gke.Elastigroup("example-gke-elastigroup", {
+ *     name: "example-gke",
+ *     clusterZoneName: "us-central1-a",
+ *     nodeImage: "COS",
+ *     maxSize: 5,
+ *     minSize: 1,
+ *     desiredCapacity: 3,
+ *     instanceTypesOndemand: "n1-standard-1",
+ *     instanceTypesPreemptibles: [
+ *         "n1-standard-1",
+ *         "n1-standard-2",
+ *     ],
+ *     preemptiblePercentage: 100,
+ *     integrationGke: {
+ *         location: "us-central1-a",
+ *         clusterId: "example-cluster-id",
+ *         autoscaleIsEnabled: true,
+ *         autoscaleIsAutoConfig: false,
+ *         autoscaleCooldown: 300,
+ *         autoscaleHeadroom: {
+ *             cpuPerUnit: 1024,
+ *             memoryPerUnit: 512,
+ *             numOfUnits: 2,
+ *         },
+ *         autoscaleDown: {
+ *             evaluationPeriods: 300,
+ *         },
+ *         autoscaleLabels: [{
+ *             key: "label_key",
+ *             value: "label_value",
+ *         }],
+ *     },
  *     backendServices: [{
+ *         serviceName: "backend-service",
  *         locationType: "global",
  *         namedPorts: [{
  *             name: "http",
@@ -33,38 +65,7 @@ import * as utilities from "../utilities";
  *                 "8080",
  *             ],
  *         }],
- *         serviceName: "backend-service",
  *     }],
- *     clusterZoneName: "us-central1-a",
- *     desiredCapacity: 3,
- *     instanceTypesOndemand: "n1-standard-1",
- *     instanceTypesPreemptibles: [
- *         "n1-standard-1",
- *         "n1-standard-2",
- *     ],
- *     integrationGke: {
- *         autoscaleCooldown: 300,
- *         autoscaleDown: {
- *             evaluationPeriods: 300,
- *         },
- *         autoscaleHeadroom: {
- *             cpuPerUnit: 1024,
- *             memoryPerUnit: 512,
- *             numOfUnits: 2,
- *         },
- *         autoscaleIsAutoConfig: false,
- *         autoscaleIsEnabled: true,
- *         autoscaleLabels: [{
- *             key: "label_key",
- *             value: "label_value",
- *         }],
- *         clusterId: "example-cluster-id",
- *         location: "us-central1-a",
- *     },
- *     maxSize: 5,
- *     minSize: 1,
- *     nodeImage: "COS",
- *     preemptiblePercentage: 100,
  * });
  * ```
  * <!--End PulumiCodeChooser -->

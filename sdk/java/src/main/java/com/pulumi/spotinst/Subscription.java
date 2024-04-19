@@ -45,8 +45,10 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // Create a Subscription
  *         var default_subscription = new Subscription(&#34;default-subscription&#34;, SubscriptionArgs.builder()        
- *             .endpoint(&#34;http://endpoint.com&#34;)
+ *             .resourceId(my_eg.id())
  *             .eventType(&#34;AWS_EC2_INSTANCE_LAUNCH&#34;)
+ *             .protocol(&#34;http&#34;)
+ *             .endpoint(&#34;http://endpoint.com&#34;)
  *             .format(Map.ofEntries(
  *                 Map.entry(&#34;event&#34;, &#34;%event%&#34;),
  *                 Map.entry(&#34;instance_id&#34;, &#34;%instance-id%&#34;),
@@ -54,8 +56,6 @@ import javax.annotation.Nullable;
  *                 Map.entry(&#34;resource_name&#34;, &#34;%resource-name%&#34;),
  *                 Map.entry(&#34;tags&#34;, &#34;foo,baz,baz&#34;)
  *             ))
- *             .protocol(&#34;http&#34;)
- *             .resourceId(spotinst_elastigroup_aws.my-eg().id())
  *             .build());
  * 
  *     }

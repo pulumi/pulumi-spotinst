@@ -185,13 +185,14 @@ class UserGroup(pulumi.CustomResource):
         import pulumi
         import pulumi_spotinst as spotinst
 
-        terraform_user_group = spotinst.organization.UserGroup("terraformUserGroup",
+        terraform_user_group = spotinst.organization.UserGroup("terraform_user_group",
+            name="test_user_group",
             description="user group by terraform",
+            user_ids=["u-372gf6ae"],
             policies=[spotinst.organization.UserGroupPolicyArgs(
                 account_ids=["act-a1b2c3d4"],
                 policy_id="pol-vv7d8c06",
-            )],
-            user_ids=["u-372gf6ae"])
+            )])
         ```
         <!--End PulumiCodeChooser -->
 
@@ -220,13 +221,14 @@ class UserGroup(pulumi.CustomResource):
         import pulumi
         import pulumi_spotinst as spotinst
 
-        terraform_user_group = spotinst.organization.UserGroup("terraformUserGroup",
+        terraform_user_group = spotinst.organization.UserGroup("terraform_user_group",
+            name="test_user_group",
             description="user group by terraform",
+            user_ids=["u-372gf6ae"],
             policies=[spotinst.organization.UserGroupPolicyArgs(
                 account_ids=["act-a1b2c3d4"],
                 policy_id="pol-vv7d8c06",
-            )],
-            user_ids=["u-372gf6ae"])
+            )])
         ```
         <!--End PulumiCodeChooser -->
 
