@@ -625,7 +625,6 @@ class OceanLaunchSpec(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_spotinst as spotinst
@@ -716,7 +715,6 @@ class OceanLaunchSpec(pulumi.CustomResource):
             )],
             user_data="echo hello world")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Block Devices
 
@@ -768,7 +766,6 @@ class OceanLaunchSpec(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_spotinst as spotinst
@@ -859,7 +856,6 @@ class OceanLaunchSpec(pulumi.CustomResource):
             )],
             user_data="echo hello world")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Block Devices
 

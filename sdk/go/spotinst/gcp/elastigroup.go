@@ -16,7 +16,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -144,7 +143,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 type Elastigroup struct {
 	pulumi.CustomResourceState
 
@@ -221,7 +219,6 @@ type Elastigroup struct {
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
 	//
-	// <!--Start PulumiCodeChooser -->
 	// ```go
 	// package main
 	//
@@ -235,7 +232,6 @@ type Elastigroup struct {
 	// 	})
 	// }
 	// ```
-	// <!--End PulumiCodeChooser -->
 	UnhealthyDuration pulumi.IntPtrOutput `pulumi:"unhealthyDuration"`
 }
 
@@ -345,7 +341,6 @@ type elastigroupState struct {
 	Tags []string `pulumi:"tags"`
 	// Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
 	//
-	// <!--Start PulumiCodeChooser -->
 	// ```go
 	// package main
 	//
@@ -359,7 +354,6 @@ type elastigroupState struct {
 	// 	})
 	// }
 	// ```
-	// <!--End PulumiCodeChooser -->
 	UnhealthyDuration *int `pulumi:"unhealthyDuration"`
 }
 
@@ -437,7 +431,6 @@ type ElastigroupState struct {
 	Tags pulumi.StringArrayInput
 	// Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
 	//
-	// <!--Start PulumiCodeChooser -->
 	// ```go
 	// package main
 	//
@@ -451,7 +444,6 @@ type ElastigroupState struct {
 	// 	})
 	// }
 	// ```
-	// <!--End PulumiCodeChooser -->
 	UnhealthyDuration pulumi.IntPtrInput
 }
 
@@ -533,7 +525,6 @@ type elastigroupArgs struct {
 	Tags []string `pulumi:"tags"`
 	// Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
 	//
-	// <!--Start PulumiCodeChooser -->
 	// ```go
 	// package main
 	//
@@ -547,7 +538,6 @@ type elastigroupArgs struct {
 	// 	})
 	// }
 	// ```
-	// <!--End PulumiCodeChooser -->
 	UnhealthyDuration *int `pulumi:"unhealthyDuration"`
 }
 
@@ -626,7 +616,6 @@ type ElastigroupArgs struct {
 	Tags pulumi.StringArrayInput
 	// Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
 	//
-	// <!--Start PulumiCodeChooser -->
 	// ```go
 	// package main
 	//
@@ -640,7 +629,6 @@ type ElastigroupArgs struct {
 	// 	})
 	// }
 	// ```
-	// <!--End PulumiCodeChooser -->
 	UnhealthyDuration pulumi.IntPtrInput
 }
 
@@ -909,7 +897,6 @@ func (o ElastigroupOutput) Tags() pulumi.StringArrayOutput {
 
 // Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -926,7 +913,6 @@ func (o ElastigroupOutput) Tags() pulumi.StringArrayOutput {
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func (o ElastigroupOutput) UnhealthyDuration() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Elastigroup) pulumi.IntPtrOutput { return v.UnhealthyDuration }).(pulumi.IntPtrOutput)
 }

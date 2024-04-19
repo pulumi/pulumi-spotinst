@@ -34,7 +34,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         /// The Rancher version. Must be `"1"` or `"2"`. If this field is omitted, it’s assumed that the Rancher cluster is version 1. Note that Kubernetes is required when using Rancher version 2^.
         /// Usage:
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -44,7 +43,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         /// {
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }

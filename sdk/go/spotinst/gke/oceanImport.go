@@ -18,7 +18,6 @@ import (
 //
 // Installation of the Ocean controller is required by this resource. You can accomplish this by using the spotinst/ocean-controller module as follows:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -35,13 +34,11 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // > You must configure the same `clusterIdentifier` both for the Ocean controller and for the `gke.OceanImport` resource.
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -96,7 +93,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Strategy
 //
@@ -105,7 +101,6 @@ import (
 //   - `provisioningModel` - (Optional) Define the provisioning model of the launched instances. Valid values: `SPOT`, `PREEMPTIBLE`.
 //   - `preemptiblePercentage`- (Optional) Defines the desired preemptible percentage for the cluster.
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -122,7 +117,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // <a id="update-policy"></a>
 // ## Update Policy
@@ -143,7 +137,6 @@ import (
 //
 //   - `respectPdb` - (Optional) Default: False. During the roll, if the parameter is set to True we honor PDB during the instance replacement.
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -160,7 +153,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 type OceanImport struct {
 	pulumi.CustomResourceState
 

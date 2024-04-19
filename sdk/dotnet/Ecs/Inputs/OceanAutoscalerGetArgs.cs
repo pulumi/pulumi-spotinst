@@ -33,7 +33,6 @@ namespace Pulumi.SpotInst.Ecs.Inputs
         /// <summary>
         /// When set to true, both automatic and per custom launch specification manual headroom to be saved concurrently and independently in the cluster. prerequisite: isAutoConfig must be true
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -43,7 +42,6 @@ namespace Pulumi.SpotInst.Ecs.Inputs
         /// {
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         [Input("enableAutomaticAndManualHeadroom")]
         public Input<bool>? EnableAutomaticAndManualHeadroom { get; set; }

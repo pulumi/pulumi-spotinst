@@ -15,11 +15,9 @@ import * as utilities from "../utilities";
  *
  * Installation of the Ocean controller is required by this resource. You can accomplish this by using the spotinst/ocean-controller module as follows:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * > You must configure the same `clusterIdentifier` and `acdIdentifier` both for the Ocean controller and for the `spotinst.azure.Ocean` resource.
  */

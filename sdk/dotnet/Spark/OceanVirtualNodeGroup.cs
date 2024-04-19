@@ -18,7 +18,6 @@ namespace Pulumi.SpotInst.Spark
     /// 
     /// ## Example Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -35,7 +34,6 @@ namespace Pulumi.SpotInst.Spark
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [SpotInstResourceType("spotinst:spark/oceanVirtualNodeGroup:OceanVirtualNodeGroup")]
     public partial class OceanVirtualNodeGroup : global::Pulumi.CustomResource

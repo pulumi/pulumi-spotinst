@@ -9,7 +9,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as spotinst from "@pulumi/spotinst";
@@ -29,7 +28,6 @@ import * as utilities from "./utilities";
  *     resourceId: spotinst_elastigroup_aws["my-eg"].id,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export class Subscription extends pulumi.CustomResource {
     /**

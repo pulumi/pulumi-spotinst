@@ -730,11 +730,9 @@ class Elastigroup(pulumi.CustomResource):
             * `resource_group_name` - (Optional) Name of Resource Group for custom image. Required if publisher not specified.
             * `image_name` - (Optional) Name of the custom image. Required if resource_group_name is specified.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         ```
-        <!--End PulumiCodeChooser -->
 
         <a id="network"></a>
         ## Network
@@ -753,11 +751,9 @@ class Elastigroup(pulumi.CustomResource):
                     * `name` - (Required) - The name of the Application Security group.
                     * `resource_group_name` - (Required) - The resource group of the Application Security Group.
                       }
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Login
 
@@ -766,11 +762,9 @@ class Elastigroup(pulumi.CustomResource):
             * `ssh_public_key` - (Optional) SSH for admin access to Linux VMs. Required for Linux OS types.
             * `password` - (Optional) Password for admin access to Windows VMs. Required for Windows OS types.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -802,11 +796,9 @@ class Elastigroup(pulumi.CustomResource):
             * `resource_group_name` - (Optional) Name of Resource Group for custom image. Required if publisher not specified.
             * `image_name` - (Optional) Name of the custom image. Required if resource_group_name is specified.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         ```
-        <!--End PulumiCodeChooser -->
 
         <a id="network"></a>
         ## Network
@@ -825,11 +817,9 @@ class Elastigroup(pulumi.CustomResource):
                     * `name` - (Required) - The name of the Application Security group.
                     * `resource_group_name` - (Required) - The resource group of the Application Security Group.
                       }
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Login
 
@@ -838,11 +828,9 @@ class Elastigroup(pulumi.CustomResource):
             * `ssh_public_key` - (Optional) SSH for admin access to Linux VMs. Required for Linux OS types.
             * `password` - (Optional) Password for admin access to Windows VMs. Required for Windows OS types.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param ElastigroupArgs args: The arguments to use to populate this resource's properties.

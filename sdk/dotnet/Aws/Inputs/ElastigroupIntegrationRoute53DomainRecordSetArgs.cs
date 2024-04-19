@@ -23,7 +23,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         /// 
         /// Usage:
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -33,7 +32,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         /// {
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         [Input("usePublicDns")]
         public Input<bool>? UsePublicDns { get; set; }

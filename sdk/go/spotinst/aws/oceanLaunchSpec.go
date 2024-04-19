@@ -16,7 +16,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -181,7 +180,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Update Policy
 //
@@ -190,7 +188,6 @@ import (
 //   - `rollConfig` - (Required) Holds the roll configuration.
 //   - `batchSizePercentage` - (Required) Sets the percentage of the instances to deploy in each batch.
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -207,7 +204,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 type OceanLaunchSpec struct {
 	pulumi.CustomResourceState
 

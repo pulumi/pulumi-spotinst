@@ -18,7 +18,6 @@ import * as utilities from "../utilities";
  * * you must include `clusterZoneName` and `clusterId`
  * * a handful of parameters are created remotely and will not appear in the diff. A complete list can be found below.
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as spotinst from "@pulumi/spotinst";
@@ -67,7 +66,6 @@ import * as utilities from "../utilities";
  *     preemptiblePercentage: 100,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export class Elastigroup extends pulumi.CustomResource {
     /**

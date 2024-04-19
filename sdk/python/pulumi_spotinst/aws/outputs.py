@@ -467,11 +467,9 @@ class BeanstalkScheduledTask(dict):
                
                Usage:
                
-               <!--Start PulumiCodeChooser -->
                ```python
                import pulumi
                ```
-               <!--End PulumiCodeChooser -->
         :param str batch_size_percentage: The percentage size of each batch in the scheduled deployment roll.
         :param str cron_expression: A valid cron expression. The cron is running in UTC time zone and is in [Unix cron format](https://en.wikipedia.org/wiki/Cron).
         :param str frequency: The recurrence frequency to run this task. Supported values are `"hourly"`, `"daily"`, `"weekly"` and `"continuous"`.
@@ -539,11 +537,9 @@ class BeanstalkScheduledTask(dict):
 
         Usage:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         ```
-        <!--End PulumiCodeChooser -->
         """
         return pulumi.get(self, "adjustment_percentage")
 
@@ -731,11 +727,9 @@ class ElastigroupEbsBlockDevice(dict):
                
                Usage:
                
-               <!--Start PulumiCodeChooser -->
                ```python
                import pulumi
                ```
-               <!--End PulumiCodeChooser -->
         :param int volume_size: The size of the volume in gigabytes.
         :param str volume_type: The type of volume. Can be `"standard"`, `"gp2"`, `"gp3"`, `"io1"`, `"st1"` or `"sc1"`.
         """
@@ -815,11 +809,9 @@ class ElastigroupEbsBlockDevice(dict):
 
         Usage:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         ```
-        <!--End PulumiCodeChooser -->
         """
         return pulumi.get(self, "throughput")
 
@@ -871,11 +863,9 @@ class ElastigroupEphemeralBlockDevice(dict):
                
                Usage:
                
-               <!--Start PulumiCodeChooser -->
                ```python
                import pulumi
                ```
-               <!--End PulumiCodeChooser -->
         """
         pulumi.set(__self__, "device_name", device_name)
         pulumi.set(__self__, "virtual_name", virtual_name)
@@ -897,11 +887,9 @@ class ElastigroupEphemeralBlockDevice(dict):
 
         Usage:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         ```
-        <!--End PulumiCodeChooser -->
         """
         return pulumi.get(self, "virtual_name")
 
@@ -1236,11 +1224,9 @@ class ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdate(dict):
                
                Usage:
                
-               <!--Start PulumiCodeChooser -->
                ```python
                import pulumi
                ```
-               <!--End PulumiCodeChooser -->
         """
         if perform_at is not None:
             pulumi.set(__self__, "perform_at", perform_at)
@@ -1273,11 +1259,9 @@ class ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdate(dict):
 
         Usage:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         ```
-        <!--End PulumiCodeChooser -->
         """
         return pulumi.get(self, "update_level")
 
@@ -1373,11 +1357,9 @@ class ElastigroupIntegrationCodedeployDeploymentGroup(dict):
                
                Usage:
                
-               <!--Start PulumiCodeChooser -->
                ```python
                import pulumi
                ```
-               <!--End PulumiCodeChooser -->
         """
         pulumi.set(__self__, "application_name", application_name)
         pulumi.set(__self__, "deployment_group_name", deployment_group_name)
@@ -1398,11 +1380,9 @@ class ElastigroupIntegrationCodedeployDeploymentGroup(dict):
 
         Usage:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         ```
-        <!--End PulumiCodeChooser -->
         """
         return pulumi.get(self, "deployment_group_name")
 
@@ -1935,11 +1915,9 @@ class ElastigroupIntegrationEcsBatch(dict):
                
                Usage:
                
-               <!--Start PulumiCodeChooser -->
                ```python
                import pulumi
                ```
-               <!--End PulumiCodeChooser -->
         """
         pulumi.set(__self__, "job_queue_names", job_queue_names)
 
@@ -1951,11 +1929,9 @@ class ElastigroupIntegrationEcsBatch(dict):
 
         Usage:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         ```
-        <!--End PulumiCodeChooser -->
         """
         return pulumi.get(self, "job_queue_names")
 
@@ -2066,11 +2042,9 @@ class ElastigroupIntegrationKubernetes(dict):
                
                Usage:
                
-               <!--Start PulumiCodeChooser -->
                ```python
                import pulumi
                ```
-               <!--End PulumiCodeChooser -->
         :param int autoscale_cooldown: The amount of time, in seconds, after a scaling activity completes before any further trigger-related scaling activities can start.
         :param 'ElastigroupIntegrationKubernetesAutoscaleDownArgs' autoscale_down: Settings for scale down actions.
         :param 'ElastigroupIntegrationKubernetesAutoscaleHeadroomArgs' autoscale_headroom: An option to set compute reserve for the cluster.
@@ -2080,11 +2054,9 @@ class ElastigroupIntegrationKubernetes(dict):
                
                Usage:
                
-               <!--Start PulumiCodeChooser -->
                ```python
                import pulumi
                ```
-               <!--End PulumiCodeChooser -->
         :param str integration_mode: Valid values: `"saas"`, `"pod"`.
         :param str token: Kubernetes Token
         """
@@ -2117,11 +2089,9 @@ class ElastigroupIntegrationKubernetes(dict):
 
         Usage:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         ```
-        <!--End PulumiCodeChooser -->
         """
         return pulumi.get(self, "api_server")
 
@@ -2173,11 +2143,9 @@ class ElastigroupIntegrationKubernetes(dict):
 
         Usage:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         ```
-        <!--End PulumiCodeChooser -->
         """
         return pulumi.get(self, "autoscale_labels")
 
@@ -2368,11 +2336,9 @@ class ElastigroupIntegrationMesosphere(dict):
                
                Usage:
                
-               <!--Start PulumiCodeChooser -->
                ```python
                import pulumi
                ```
-               <!--End PulumiCodeChooser -->
         """
         pulumi.set(__self__, "api_server", api_server)
 
@@ -2384,11 +2350,9 @@ class ElastigroupIntegrationMesosphere(dict):
 
         Usage:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         ```
-        <!--End PulumiCodeChooser -->
         """
         return pulumi.get(self, "api_server")
 
@@ -2419,11 +2383,9 @@ class ElastigroupIntegrationMultaiRuntime(dict):
                
                Usage:
                
-               <!--Start PulumiCodeChooser -->
                ```python
                import pulumi
                ```
-               <!--End PulumiCodeChooser -->
         """
         pulumi.set(__self__, "deployment_id", deployment_id)
 
@@ -2435,11 +2397,9 @@ class ElastigroupIntegrationMultaiRuntime(dict):
 
         Usage:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         ```
-        <!--End PulumiCodeChooser -->
         """
         return pulumi.get(self, "deployment_id")
 
@@ -2494,11 +2454,9 @@ class ElastigroupIntegrationNomad(dict):
                
                Usage:
                
-               <!--Start PulumiCodeChooser -->
                ```python
                import pulumi
                ```
-               <!--End PulumiCodeChooser -->
         :param int autoscale_cooldown: The amount of time, in seconds, after a scaling activity completes before any further trigger-related scaling activities can start.
         :param 'ElastigroupIntegrationNomadAutoscaleDownArgs' autoscale_down: Settings for scale down actions.
         :param 'ElastigroupIntegrationNomadAutoscaleHeadroomArgs' autoscale_headroom: An option to set compute reserve for the cluster.
@@ -2551,11 +2509,9 @@ class ElastigroupIntegrationNomad(dict):
 
         Usage:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         ```
-        <!--End PulumiCodeChooser -->
         """
         return pulumi.get(self, "autoscale_constraints")
 
@@ -2752,11 +2708,9 @@ class ElastigroupIntegrationRancher(dict):
         :param str version: The Rancher version. Must be `"1"` or `"2"`. If this field is omitted, it’s assumed that the Rancher cluster is version 1. Note that Kubernetes is required when using Rancher version 2^.
                Usage:
                
-               <!--Start PulumiCodeChooser -->
                ```python
                import pulumi
                ```
-               <!--End PulumiCodeChooser -->
         """
         pulumi.set(__self__, "access_key", access_key)
         pulumi.set(__self__, "master_host", master_host)
@@ -2795,11 +2749,9 @@ class ElastigroupIntegrationRancher(dict):
         The Rancher version. Must be `"1"` or `"2"`. If this field is omitted, it’s assumed that the Rancher cluster is version 1. Note that Kubernetes is required when using Rancher version 2^.
         Usage:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         ```
-        <!--End PulumiCodeChooser -->
         """
         return pulumi.get(self, "version")
 
@@ -2929,11 +2881,9 @@ class ElastigroupIntegrationRoute53DomainRecordSet(dict):
                
                Usage:
                
-               <!--Start PulumiCodeChooser -->
                ```python
                import pulumi
                ```
-               <!--End PulumiCodeChooser -->
         :param bool use_public_ip: Designates whether the IP address should be exposed to connections outside the VPC.
         """
         pulumi.set(__self__, "name", name)
@@ -2958,11 +2908,9 @@ class ElastigroupIntegrationRoute53DomainRecordSet(dict):
 
         Usage:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         ```
-        <!--End PulumiCodeChooser -->
         """
         return pulumi.get(self, "use_public_dns")
 
@@ -3537,11 +3485,9 @@ class ElastigroupMultaiTargetSet(dict):
                
                Usage:
                
-               <!--Start PulumiCodeChooser -->
                ```python
                import pulumi
                ```
-               <!--End PulumiCodeChooser -->
         :param str target_set_id: ID of Multai target set.
         """
         pulumi.set(__self__, "balancer_id", balancer_id)
@@ -3555,11 +3501,9 @@ class ElastigroupMultaiTargetSet(dict):
 
         Usage:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         ```
-        <!--End PulumiCodeChooser -->
         """
         return pulumi.get(self, "balancer_id")
 
@@ -3815,11 +3759,9 @@ class ElastigroupNetworkInterface(dict):
                
                Usage:
                
-               <!--Start PulumiCodeChooser -->
                ```python
                import pulumi
                ```
-               <!--End PulumiCodeChooser -->
         :param bool associate_public_ip_address: Indicates whether to assign a public IP address to an instance you launch in a VPC. The public IP address can only be assigned to a network interface for eth0, and can only be assigned to a new network interface, not an existing one.
         :param bool delete_on_termination: Whether the volume should be destroyed on instance termination.
         :param str description: The group description.
@@ -3859,11 +3801,9 @@ class ElastigroupNetworkInterface(dict):
 
         Usage:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         ```
-        <!--End PulumiCodeChooser -->
         """
         return pulumi.get(self, "associate_ipv6_address")
 
@@ -4773,17 +4713,13 @@ class ElastigroupScalingTargetPolicy(dict):
                
                Usage:
                
-               <!--Start PulumiCodeChooser -->
                ```python
                import pulumi
                ```
-               <!--End PulumiCodeChooser -->
                
-               <!--Start PulumiCodeChooser -->
                ```python
                import pulumi
                ```
-               <!--End PulumiCodeChooser -->
         :param str source: String, the source of the metric. Valid values: `"cloudWatch"`, `"spectrum"`.
         :param str statistic: String, the metric statistics to return. For information about specific statistics go to [Statistics](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/index.html?CHAP_TerminologyandKeyConcepts.html#Statistic) in the Amazon CloudWatch Developer Guide.
         :param str unit: String, tThe unit for the alarm's associated metric. Valid values: `"percent`, `"seconds"`, `"microseconds"`, `"milliseconds"`, `"bytes"`, `"kilobytes"`, `"megabytes"`, `"gigabytes"`, `"terabytes"`, `"bits"`, `"kilobits"`, `"megabits"`, `"gigabits"`, `"terabits"`, `"count"`, `"bytes/second"`, `"kilobytes/second"`, `"megabytes/second"`, `"gigabytes/second"`, `"terabytes/second"`, `"bits/second"`, `"kilobits/second"`, `"megabits/second"`, `"gigabits/second"`, `"terabits/second"`, `"count/second"`, `"none"`.
@@ -4893,17 +4829,13 @@ class ElastigroupScalingTargetPolicy(dict):
 
         Usage:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         ```
-        <!--End PulumiCodeChooser -->
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         ```
-        <!--End PulumiCodeChooser -->
         """
         return pulumi.get(self, "predictive_mode")
 
@@ -5509,11 +5441,9 @@ class ElastigroupScheduledTask(dict):
                
                Usage:
                
-               <!--Start PulumiCodeChooser -->
                ```python
                import pulumi
                ```
-               <!--End PulumiCodeChooser -->
         :param str batch_size_percentage: The percentage size of each batch in the scheduled deployment roll.
         :param str cron_expression: A valid cron expression. The cron is running in UTC time zone and is in [Unix cron format](https://en.wikipedia.org/wiki/Cron).
         :param str frequency: The recurrence frequency to run this task. Supported values are `"hourly"`, `"daily"`, `"weekly"` and `"continuous"`.
@@ -5581,11 +5511,9 @@ class ElastigroupScheduledTask(dict):
 
         Usage:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         ```
-        <!--End PulumiCodeChooser -->
         """
         return pulumi.get(self, "adjustment_percentage")
 
@@ -5697,11 +5625,9 @@ class ElastigroupSignal(dict):
                
                Usage:
                
-               <!--Start PulumiCodeChooser -->
                ```python
                import pulumi
                ```
-               <!--End PulumiCodeChooser -->
         """
         pulumi.set(__self__, "name", name)
         if timeout is not None:
@@ -5723,11 +5649,9 @@ class ElastigroupSignal(dict):
 
         Usage:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         ```
-        <!--End PulumiCodeChooser -->
         """
         return pulumi.get(self, "timeout")
 
@@ -5769,11 +5693,9 @@ class ElastigroupStatefulDeallocation(dict):
                
                Usage:
                
-               <!--Start PulumiCodeChooser -->
                ```python
                import pulumi
                ```
-               <!--End PulumiCodeChooser -->
         :param bool should_delete_volumes: For stateful groups: remove persistent volumes.
         """
         if should_delete_images is not None:
@@ -5809,11 +5731,9 @@ class ElastigroupStatefulDeallocation(dict):
 
         Usage:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         ```
-        <!--End PulumiCodeChooser -->
         """
         return pulumi.get(self, "should_delete_snapshots")
 
@@ -5854,11 +5774,9 @@ class ElastigroupStatefulInstanceAction(dict):
                
                Usage:
                
-               <!--Start PulumiCodeChooser -->
                ```python
                import pulumi
                ```
-               <!--End PulumiCodeChooser -->
         """
         pulumi.set(__self__, "stateful_instance_id", stateful_instance_id)
         pulumi.set(__self__, "type", type)
@@ -5879,11 +5797,9 @@ class ElastigroupStatefulInstanceAction(dict):
 
         Usage:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         ```
-        <!--End PulumiCodeChooser -->
         """
         return pulumi.get(self, "type")
 
@@ -6207,11 +6123,9 @@ class ElastigroupUpdatePolicyRollConfigStrategyOnFailure(dict):
         :param int draining_timeout: The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
         :param bool should_decrement_target_capacity: Decrementing the group target capacity after detaching the instances.
                
-               <!--Start PulumiCodeChooser -->
                ```python
                import pulumi
                ```
-               <!--End PulumiCodeChooser -->
         :param bool should_handle_all_batches: Indicator if the action should apply to all batches of the deployment or only the latest batch.
         """
         pulumi.set(__self__, "action_type", action_type)
@@ -6251,11 +6165,9 @@ class ElastigroupUpdatePolicyRollConfigStrategyOnFailure(dict):
         """
         Decrementing the group target capacity after detaching the instances.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         ```
-        <!--End PulumiCodeChooser -->
         """
         return pulumi.get(self, "should_decrement_target_capacity")
 

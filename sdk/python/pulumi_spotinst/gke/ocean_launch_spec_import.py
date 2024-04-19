@@ -102,7 +102,6 @@ class OceanLaunchSpecImport(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_spotinst as spotinst
@@ -111,7 +110,6 @@ class OceanLaunchSpecImport(pulumi.CustomResource):
             node_pool_name="default-pool",
             ocean_id="o-123456")
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -129,7 +127,6 @@ class OceanLaunchSpecImport(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_spotinst as spotinst
@@ -138,7 +135,6 @@ class OceanLaunchSpecImport(pulumi.CustomResource):
             node_pool_name="default-pool",
             ocean_id="o-123456")
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param OceanLaunchSpecImportArgs args: The arguments to use to populate this resource's properties.

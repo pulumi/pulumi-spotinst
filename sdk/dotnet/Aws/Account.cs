@@ -14,7 +14,6 @@ namespace Pulumi.SpotInst.Aws
     /// 
     /// ## Example Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -28,7 +27,6 @@ namespace Pulumi.SpotInst.Aws
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [SpotInstResourceType("spotinst:aws/account:Account")]
     public partial class Account : global::Pulumi.CustomResource

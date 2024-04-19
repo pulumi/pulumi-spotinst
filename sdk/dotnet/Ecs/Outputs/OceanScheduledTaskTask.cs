@@ -24,7 +24,6 @@ namespace Pulumi.SpotInst.Ecs.Outputs
         /// <summary>
         /// Valid values: "clusterRoll". Required for `cluster.scheduling.tasks object`. Example: `clusterRoll`.
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -34,7 +33,6 @@ namespace Pulumi.SpotInst.Ecs.Outputs
         /// {
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// 
         /// &lt;a id="attributes-reference"&gt;&lt;/a&gt;

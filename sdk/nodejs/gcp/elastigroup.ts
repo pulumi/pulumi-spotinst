@@ -11,7 +11,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as spotinst from "@pulumi/spotinst";
@@ -102,7 +101,6 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export class Elastigroup extends pulumi.CustomResource {
     /**
@@ -266,11 +264,9 @@ export class Elastigroup extends pulumi.CustomResource {
     /**
      * Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
      *
-     * <!--Start PulumiCodeChooser -->
      * ```typescript
      * import * as pulumi from "@pulumi/pulumi";
      * ```
-     * <!--End PulumiCodeChooser -->
      */
     public readonly unhealthyDuration!: pulumi.Output<number | undefined>;
 
@@ -508,11 +504,9 @@ export interface ElastigroupState {
     /**
      * Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
      *
-     * <!--Start PulumiCodeChooser -->
      * ```typescript
      * import * as pulumi from "@pulumi/pulumi";
      * ```
-     * <!--End PulumiCodeChooser -->
      */
     unhealthyDuration?: pulumi.Input<number>;
 }
@@ -655,11 +649,9 @@ export interface ElastigroupArgs {
     /**
      * Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
      *
-     * <!--Start PulumiCodeChooser -->
      * ```typescript
      * import * as pulumi from "@pulumi/pulumi";
      * ```
-     * <!--End PulumiCodeChooser -->
      */
     unhealthyDuration?: pulumi.Input<number>;
 }

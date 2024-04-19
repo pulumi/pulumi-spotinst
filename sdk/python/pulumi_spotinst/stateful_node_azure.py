@@ -1131,7 +1131,6 @@ class StatefulNodeAzure(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_spotinst as spotinst
@@ -1354,7 +1353,6 @@ class StatefulNodeAzure(pulumi.CustomResource):
             )])
         # -------------------------------------------------------------------
         ```
-        <!--End PulumiCodeChooser -->
 
         # Argument Reference
 
@@ -1643,7 +1641,6 @@ class StatefulNodeAzure(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_spotinst as spotinst
@@ -1866,7 +1863,6 @@ class StatefulNodeAzure(pulumi.CustomResource):
             )])
         # -------------------------------------------------------------------
         ```
-        <!--End PulumiCodeChooser -->
 
         # Argument Reference
 

@@ -21,7 +21,6 @@ namespace Pulumi.SpotInst.Gke
     /// * you must include `cluster_zone_name` and `cluster_id`
     /// * a handful of parameters are created remotely and will not appear in the diff. A complete list can be found below.
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -94,7 +93,6 @@ namespace Pulumi.SpotInst.Gke
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [SpotInstResourceType("spotinst:gke/elastigroup:Elastigroup")]
     public partial class Elastigroup : global::Pulumi.CustomResource

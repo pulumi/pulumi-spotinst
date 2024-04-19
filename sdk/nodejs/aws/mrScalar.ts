@@ -13,7 +13,6 @@ import * as utilities from "../utilities";
  *
  * ### New Strategy
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as spotinst from "@pulumi/spotinst";
@@ -127,11 +126,9 @@ import * as utilities from "../utilities";
  *     terminationProtected: false,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ### Clone Strategy
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as spotinst from "@pulumi/spotinst";
@@ -216,11 +213,9 @@ import * as utilities from "../utilities";
  *     };
  * }
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ### Wrap Strategy
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as spotinst from "@pulumi/spotinst";
@@ -246,7 +241,6 @@ import * as utilities from "../utilities";
  *     taskUnit: "instance",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export class MrScalar extends pulumi.CustomResource {
     /**

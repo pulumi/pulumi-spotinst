@@ -33,7 +33,6 @@ namespace Pulumi.SpotInst.Aws
     ///         * `max_memory_gib` - (Optional) The maximum memory in GiB units that can be allocated to the cluster.
     ///     * `extended_resource_definitions` - (Optional) List of Ocean extended resource definitions to use in this cluster.
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -43,7 +42,6 @@ namespace Pulumi.SpotInst.Aws
     /// {
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ### Update Policy
     /// 
@@ -57,7 +55,6 @@ namespace Pulumi.SpotInst.Aws
     ///         * `launch_spec_ids` - (Optional) List of virtual node group identifiers to be rolled.
     ///         * `batch_min_healthy_percentage` - (Optional) Default: 50. Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
     ///         * `respect_pdb` - (Optional, Default: false) During the roll, if the parameter is set to True we honor PDB during the instance replacement.
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -67,7 +64,6 @@ namespace Pulumi.SpotInst.Aws
     /// {
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// &lt;a id="scheduled-task"&gt;&lt;/a&gt;
     /// ## Scheduled Task
@@ -96,7 +92,6 @@ namespace Pulumi.SpotInst.Aws
     ///                 * `comment` - (Optional) Add a `comment` description for the roll. The `comment` is limited to 256 chars
     ///                 * `respect_pdb` - (Optional, Default:false) During the roll, if the parameter is set to true we honor PDB during the instance replacement.
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -106,7 +101,6 @@ namespace Pulumi.SpotInst.Aws
     /// {
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// &lt;a id="attributes-reference"&gt;&lt;/a&gt;
     /// 

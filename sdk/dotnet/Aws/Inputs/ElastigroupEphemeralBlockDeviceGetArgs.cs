@@ -24,7 +24,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         /// 
         /// Usage:
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -34,7 +33,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         /// {
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         [Input("virtualName", required: true)]
         public Input<string> VirtualName { get; set; } = null!;

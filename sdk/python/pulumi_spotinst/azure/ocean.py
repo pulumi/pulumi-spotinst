@@ -766,11 +766,9 @@ class Ocean(pulumi.CustomResource):
 
         Installation of the Ocean controller is required by this resource. You can accomplish this by using the spotinst/ocean-controller module as follows:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         ```
-        <!--End PulumiCodeChooser -->
 
         > You must configure the same `cluster_identifier` and `acd_identifier` both for the Ocean controller and for the `azure.Ocean` resource.
 
@@ -814,11 +812,9 @@ class Ocean(pulumi.CustomResource):
 
         Installation of the Ocean controller is required by this resource. You can accomplish this by using the spotinst/ocean-controller module as follows:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         ```
-        <!--End PulumiCodeChooser -->
 
         > You must configure the same `cluster_identifier` and `acd_identifier` both for the Ocean controller and for the `azure.Ocean` resource.
 

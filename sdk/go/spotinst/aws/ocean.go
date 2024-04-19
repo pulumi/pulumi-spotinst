@@ -35,7 +35,6 @@ import (
 //   - `maxMemoryGib` - (Optional) The maximum memory in GiB units that can be allocated to the cluster.
 //   - `extendedResourceDefinitions` - (Optional) List of Ocean extended resource definitions to use in this cluster.
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -52,7 +51,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### Update Policy
 //
@@ -67,7 +65,6 @@ import (
 //   - `batchMinHealthyPercentage` - (Optional) Default: 50. Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
 //   - `respectPdb` - (Optional, Default: false) During the roll, if the parameter is set to True we honor PDB during the instance replacement.
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -84,7 +81,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // <a id="scheduled-task"></a>
 // ## Scheduled Task
@@ -113,7 +109,6 @@ import (
 //   - `comment` - (Optional) Add a `comment` description for the roll. The `comment` is limited to 256 chars
 //   - `respectPdb` - (Optional, Default:false) During the roll, if the parameter is set to true we honor PDB during the instance replacement.
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -130,7 +125,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // <a id="attributes-reference"></a>
 //

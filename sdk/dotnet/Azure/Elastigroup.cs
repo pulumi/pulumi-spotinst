@@ -22,7 +22,6 @@ namespace Pulumi.SpotInst.Azure
     ///     * `resource_group_name` - (Optional) Name of Resource Group for custom image. Required if publisher not specified.
     ///     * `image_name` - (Optional) Name of the custom image. Required if resource_group_name is specified.
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -32,7 +31,6 @@ namespace Pulumi.SpotInst.Azure
     /// {
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// &lt;a id="network"&gt;&lt;/a&gt;
     /// ## Network
@@ -51,7 +49,6 @@ namespace Pulumi.SpotInst.Azure
     ///             * `name` - (Required) - The name of the Application Security group.
     ///             * `resource_group_name` - (Required) - The resource group of the Application Security Group.
     ///               }
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -61,7 +58,6 @@ namespace Pulumi.SpotInst.Azure
     /// {
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ### Login
     /// 
@@ -70,7 +66,6 @@ namespace Pulumi.SpotInst.Azure
     ///     * `ssh_public_key` - (Optional) SSH for admin access to Linux VMs. Required for Linux OS types.
     ///     * `password` - (Optional) Password for admin access to Windows VMs. Required for Windows OS types.
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -80,7 +75,6 @@ namespace Pulumi.SpotInst.Azure
     /// {
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [SpotInstResourceType("spotinst:azure/elastigroup:Elastigroup")]
     public partial class Elastigroup : global::Pulumi.CustomResource

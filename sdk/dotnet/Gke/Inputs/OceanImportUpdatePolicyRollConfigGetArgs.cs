@@ -19,7 +19,6 @@ namespace Pulumi.SpotInst.Gke.Inputs
         /// Value in % to set size of batch in roll. Valid values are 0-100
         /// Example: 20.
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -29,7 +28,6 @@ namespace Pulumi.SpotInst.Gke.Inputs
         /// {
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         [Input("batchSizePercentage", required: true)]
         public Input<int> BatchSizePercentage { get; set; } = null!;

@@ -9,7 +9,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as spotinst from "@pulumi/spotinst";
@@ -20,7 +19,6 @@ import * as utilities from "../utilities";
  *     iamrole: "arn:aws:iam::1234567890:role/Spot_Iam_Role",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export class Credentials extends pulumi.CustomResource {
     /**

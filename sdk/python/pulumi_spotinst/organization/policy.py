@@ -138,7 +138,6 @@ class Policy(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_spotinst as spotinst
@@ -166,7 +165,6 @@ class Policy(pulumi.CustomResource):
                 ],
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -185,7 +183,6 @@ class Policy(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_spotinst as spotinst
@@ -213,7 +210,6 @@ class Policy(pulumi.CustomResource):
                 ],
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param PolicyArgs args: The arguments to use to populate this resource's properties.

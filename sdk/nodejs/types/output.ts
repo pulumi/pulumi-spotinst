@@ -392,11 +392,9 @@ export namespace aws {
          *
          * Usage:
          *
-         * <!--Start PulumiCodeChooser -->
          * ```typescript
          * import * as pulumi from "@pulumi/pulumi";
          * ```
-         * <!--End PulumiCodeChooser -->
          */
         adjustmentPercentage?: string;
         /**
@@ -492,11 +490,9 @@ export namespace aws {
          *
          * Usage:
          *
-         * <!--Start PulumiCodeChooser -->
          * ```typescript
          * import * as pulumi from "@pulumi/pulumi";
          * ```
-         * <!--End PulumiCodeChooser -->
          */
         throughput?: number;
         /**
@@ -520,11 +516,9 @@ export namespace aws {
          *
          * Usage:
          *
-         * <!--Start PulumiCodeChooser -->
          * ```typescript
          * import * as pulumi from "@pulumi/pulumi";
          * ```
-         * <!--End PulumiCodeChooser -->
          */
         virtualName: string;
     }
@@ -614,11 +608,9 @@ export namespace aws {
          *
          * Usage:
          *
-         * <!--Start PulumiCodeChooser -->
          * ```typescript
          * import * as pulumi from "@pulumi/pulumi";
          * ```
-         * <!--End PulumiCodeChooser -->
          */
         updateLevel?: string;
     }
@@ -648,11 +640,9 @@ export namespace aws {
          *
          * Usage:
          *
-         * <!--Start PulumiCodeChooser -->
          * ```typescript
          * import * as pulumi from "@pulumi/pulumi";
          * ```
-         * <!--End PulumiCodeChooser -->
          */
         deploymentGroupName: string;
     }
@@ -789,11 +779,9 @@ export namespace aws {
          *
          * Usage:
          *
-         * <!--Start PulumiCodeChooser -->
          * ```typescript
          * import * as pulumi from "@pulumi/pulumi";
          * ```
-         * <!--End PulumiCodeChooser -->
          */
         jobQueueNames: string[];
     }
@@ -818,11 +806,9 @@ export namespace aws {
          *
          * Usage:
          *
-         * <!--Start PulumiCodeChooser -->
          * ```typescript
          * import * as pulumi from "@pulumi/pulumi";
          * ```
-         * <!--End PulumiCodeChooser -->
          */
         apiServer?: string;
         /**
@@ -850,11 +836,9 @@ export namespace aws {
          *
          * Usage:
          *
-         * <!--Start PulumiCodeChooser -->
          * ```typescript
          * import * as pulumi from "@pulumi/pulumi";
          * ```
-         * <!--End PulumiCodeChooser -->
          */
         autoscaleLabels?: outputs.aws.ElastigroupIntegrationKubernetesAutoscaleLabel[];
         clusterIdentifier?: string;
@@ -908,11 +892,9 @@ export namespace aws {
          *
          * Usage:
          *
-         * <!--Start PulumiCodeChooser -->
          * ```typescript
          * import * as pulumi from "@pulumi/pulumi";
          * ```
-         * <!--End PulumiCodeChooser -->
          */
         apiServer: string;
     }
@@ -923,11 +905,9 @@ export namespace aws {
          *
          * Usage:
          *
-         * <!--Start PulumiCodeChooser -->
          * ```typescript
          * import * as pulumi from "@pulumi/pulumi";
          * ```
-         * <!--End PulumiCodeChooser -->
          */
         deploymentId: string;
     }
@@ -942,11 +922,9 @@ export namespace aws {
          *
          * Usage:
          *
-         * <!--Start PulumiCodeChooser -->
          * ```typescript
          * import * as pulumi from "@pulumi/pulumi";
          * ```
-         * <!--End PulumiCodeChooser -->
          */
         autoscaleConstraints?: outputs.aws.ElastigroupIntegrationNomadAutoscaleConstraint[];
         /**
@@ -1022,11 +1000,9 @@ export namespace aws {
          * The Rancher version. Must be `"1"` or `"2"`. If this field is omitted, it’s assumed that the Rancher cluster is version 1. Note that Kubernetes is required when using Rancher version 2^.
          * Usage:
          *
-         * <!--Start PulumiCodeChooser -->
          * ```typescript
          * import * as pulumi from "@pulumi/pulumi";
          * ```
-         * <!--End PulumiCodeChooser -->
          */
         version?: string;
     }
@@ -1067,11 +1043,9 @@ export namespace aws {
          *
          * Usage:
          *
-         * <!--Start PulumiCodeChooser -->
          * ```typescript
          * import * as pulumi from "@pulumi/pulumi";
          * ```
-         * <!--End PulumiCodeChooser -->
          */
         usePublicDns?: boolean;
         /**
@@ -1180,11 +1154,9 @@ export namespace aws {
          *
          * Usage:
          *
-         * <!--Start PulumiCodeChooser -->
          * ```typescript
          * import * as pulumi from "@pulumi/pulumi";
          * ```
-         * <!--End PulumiCodeChooser -->
          */
         balancerId: string;
         /**
@@ -1263,11 +1235,9 @@ export namespace aws {
          *
          * Usage:
          *
-         * <!--Start PulumiCodeChooser -->
          * ```typescript
          * import * as pulumi from "@pulumi/pulumi";
          * ```
-         * <!--End PulumiCodeChooser -->
          */
         associateIpv6Address?: boolean;
         /**
@@ -1571,17 +1541,13 @@ export namespace aws {
          *
          * Usage:
          *
-         * <!--Start PulumiCodeChooser -->
          * ```typescript
          * import * as pulumi from "@pulumi/pulumi";
          * ```
-         * <!--End PulumiCodeChooser -->
          *
-         * <!--Start PulumiCodeChooser -->
          * ```typescript
          * import * as pulumi from "@pulumi/pulumi";
          * ```
-         * <!--End PulumiCodeChooser -->
          */
         predictiveMode?: string;
         /**
@@ -1775,11 +1741,9 @@ export namespace aws {
          *
          * Usage:
          *
-         * <!--Start PulumiCodeChooser -->
          * ```typescript
          * import * as pulumi from "@pulumi/pulumi";
          * ```
-         * <!--End PulumiCodeChooser -->
          */
         adjustmentPercentage?: string;
         /**
@@ -1846,11 +1810,9 @@ export namespace aws {
          *
          * Usage:
          *
-         * <!--Start PulumiCodeChooser -->
          * ```typescript
          * import * as pulumi from "@pulumi/pulumi";
          * ```
-         * <!--End PulumiCodeChooser -->
          */
         timeout?: number;
     }
@@ -1869,11 +1831,9 @@ export namespace aws {
          *
          * Usage:
          *
-         * <!--Start PulumiCodeChooser -->
          * ```typescript
          * import * as pulumi from "@pulumi/pulumi";
          * ```
-         * <!--End PulumiCodeChooser -->
          */
         shouldDeleteSnapshots?: boolean;
         /**
@@ -1892,11 +1852,9 @@ export namespace aws {
          *
          * Usage:
          *
-         * <!--Start PulumiCodeChooser -->
          * ```typescript
          * import * as pulumi from "@pulumi/pulumi";
          * ```
-         * <!--End PulumiCodeChooser -->
          */
         type: string;
     }
@@ -1987,11 +1945,9 @@ export namespace aws {
         /**
          * Decrementing the group target capacity after detaching the instances.
          *
-         * <!--Start PulumiCodeChooser -->
          * ```typescript
          * import * as pulumi from "@pulumi/pulumi";
          * ```
-         * <!--End PulumiCodeChooser -->
          */
         shouldDecrementTargetCapacity?: boolean;
         /**
@@ -3948,11 +3904,9 @@ export namespace ecs {
         /**
          * When set to true, both automatic and per custom launch specification manual headroom to be saved concurrently and independently in the cluster. prerequisite: isAutoConfig must be true
          *
-         * <!--Start PulumiCodeChooser -->
          * ```typescript
          * import * as pulumi from "@pulumi/pulumi";
          * ```
-         * <!--End PulumiCodeChooser -->
          */
         enableAutomaticAndManualHeadroom?: boolean;
         /**
@@ -4370,11 +4324,9 @@ export namespace ecs {
         /**
          * Valid values: "clusterRoll". Required for `cluster.scheduling.tasks object`. Example: `clusterRoll`.
          *
-         * <!--Start PulumiCodeChooser -->
          * ```typescript
          * import * as pulumi from "@pulumi/pulumi";
          * ```
-         * <!--End PulumiCodeChooser -->
          *
          *
          * <a id="attributes-reference"></a>
@@ -4413,11 +4365,9 @@ export namespace ecs {
         /**
          * Default: 50. Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
          *
-         * <!--Start PulumiCodeChooser -->
          * ```typescript
          * import * as pulumi from "@pulumi/pulumi";
          * ```
-         * <!--End PulumiCodeChooser -->
          */
         batchMinHealthyPercentage?: number;
         /**
@@ -4458,11 +4408,9 @@ export namespace gcp {
          *
          * Usage:
          *
-         * <!--Start PulumiCodeChooser -->
          * ```typescript
          * import * as pulumi from "@pulumi/pulumi";
          * ```
-         * <!--End PulumiCodeChooser -->
          */
         ports: string[];
     }
@@ -4516,11 +4464,9 @@ export namespace gcp {
          *
          * Usage:
          *
-         * <!--Start PulumiCodeChooser -->
          * ```typescript
          * import * as pulumi from "@pulumi/pulumi";
          * ```
-         * <!--End PulumiCodeChooser -->
          */
         sourceImage: string;
     }
@@ -4531,11 +4477,9 @@ export namespace gcp {
          *
          * Usage:
          *
-         * <!--Start PulumiCodeChooser -->
          * ```typescript
          * import * as pulumi from "@pulumi/pulumi";
          * ```
-         * <!--End PulumiCodeChooser -->
          */
         count: number;
         /**
@@ -4562,11 +4506,9 @@ export namespace gcp {
          *
          * Usage:
          *
-         * <!--Start PulumiCodeChooser -->
          * ```typescript
          * import * as pulumi from "@pulumi/pulumi";
          * ```
-         * <!--End PulumiCodeChooser -->
          */
         masterPort: number;
     }
@@ -4799,11 +4741,9 @@ export namespace gcp {
          *
          * Usage:
          *
-         * <!--Start PulumiCodeChooser -->
          * ```typescript
          * import * as pulumi from "@pulumi/pulumi";
          * ```
-         * <!--End PulumiCodeChooser -->
          */
         maxCapacity?: string;
         /**
@@ -5083,11 +5023,9 @@ export namespace gke {
         /**
          * The maximum memory in GiB units that can be allocated to the cluster.
          *
-         * <!--Start PulumiCodeChooser -->
          * ```typescript
          * import * as pulumi from "@pulumi/pulumi";
          * ```
-         * <!--End PulumiCodeChooser -->
          *
          * <a id="strategy"></a>
          */
@@ -5172,11 +5110,9 @@ export namespace gke {
          * Value in % to set size of batch in roll. Valid values are 0-100
          * Example: 20.
          *
-         * <!--Start PulumiCodeChooser -->
          * ```typescript
          * import * as pulumi from "@pulumi/pulumi";
          * ```
-         * <!--End PulumiCodeChooser -->
          */
         batchSizePercentage?: number;
         comment?: string;
@@ -5215,11 +5151,9 @@ export namespace gke {
          * Value in % to set size of batch in roll. Valid values are 0-100
          * Example: 20.
          *
-         * <!--Start PulumiCodeChooser -->
          * ```typescript
          * import * as pulumi from "@pulumi/pulumi";
          * ```
-         * <!--End PulumiCodeChooser -->
          */
         batchSizePercentage: number;
         launchSpecIds?: string[];

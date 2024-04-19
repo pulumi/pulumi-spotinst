@@ -24,7 +24,6 @@ import (
 //   - `resourceGroupName` - (Optional) Name of Resource Group for custom image. Required if publisher not specified.
 //   - `imageName` - (Optional) Name of the custom image. Required if resourceGroupName is specified.
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -41,7 +40,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // <a id="network"></a>
 // ## Network
@@ -61,7 +59,6 @@ import (
 //   - `resourceGroupName` - (Required) - The resource group of the Application Security Group.
 //     }
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -78,7 +75,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### Login
 //
@@ -87,7 +83,6 @@ import (
 //   - `sshPublicKey` - (Optional) SSH for admin access to Linux VMs. Required for Linux OS types.
 //   - `password` - (Optional) Password for admin access to Windows VMs. Required for Windows OS types.
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -104,7 +99,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 type Elastigroup struct {
 	pulumi.CustomResourceState
 

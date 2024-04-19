@@ -30,7 +30,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         /// <summary>
         /// Decrementing the group target capacity after detaching the instances.
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -40,7 +39,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         /// {
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         [Input("shouldDecrementTargetCapacity")]
         public Input<bool>? ShouldDecrementTargetCapacity { get; set; }

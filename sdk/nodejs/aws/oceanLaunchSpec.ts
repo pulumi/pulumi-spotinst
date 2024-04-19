@@ -11,7 +11,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as spotinst from "@pulumi/spotinst";
@@ -131,7 +130,6 @@ import * as utilities from "../utilities";
  *     userData: "echo Hello, world!",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Update Policy
  *
@@ -140,11 +138,9 @@ import * as utilities from "../utilities";
  *     * `rollConfig` - (Required) Holds the roll configuration.
  *         * `batchSizePercentage` - (Required) Sets the percentage of the instances to deploy in each batch.
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export class OceanLaunchSpec extends pulumi.CustomResource {
     /**

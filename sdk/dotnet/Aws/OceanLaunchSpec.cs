@@ -14,7 +14,6 @@ namespace Pulumi.SpotInst.Aws
     /// 
     /// ## Example Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -212,7 +211,6 @@ namespace Pulumi.SpotInst.Aws
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Update Policy
     /// 
@@ -221,7 +219,6 @@ namespace Pulumi.SpotInst.Aws
     ///     * `roll_config` - (Required) Holds the roll configuration.
     ///         * `batch_size_percentage` - (Required) Sets the percentage of the instances to deploy in each batch.
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -231,7 +228,6 @@ namespace Pulumi.SpotInst.Aws
     /// {
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [SpotInstResourceType("spotinst:aws/oceanLaunchSpec:OceanLaunchSpec")]
     public partial class OceanLaunchSpec : global::Pulumi.CustomResource
