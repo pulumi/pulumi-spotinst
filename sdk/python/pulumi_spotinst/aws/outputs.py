@@ -44,7 +44,6 @@ __all__ = [
     'ElastigroupIntegrationKubernetesAutoscaleHeadroom',
     'ElastigroupIntegrationKubernetesAutoscaleLabel',
     'ElastigroupIntegrationMesosphere',
-    'ElastigroupIntegrationMultaiRuntime',
     'ElastigroupIntegrationNomad',
     'ElastigroupIntegrationNomadAutoscaleConstraint',
     'ElastigroupIntegrationNomadAutoscaleDown',
@@ -65,7 +64,6 @@ __all__ = [
     'ElastigroupLoggingExport',
     'ElastigroupLoggingExportS3',
     'ElastigroupMetadataOptions',
-    'ElastigroupMultaiTargetSet',
     'ElastigroupMultipleMetrics',
     'ElastigroupMultipleMetricsExpression',
     'ElastigroupMultipleMetricsMetric',
@@ -2286,45 +2284,6 @@ class ElastigroupIntegrationMesosphere(dict):
 
 
 @pulumi.output_type
-class ElastigroupIntegrationMultaiRuntime(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "deploymentId":
-            suggest = "deployment_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ElastigroupIntegrationMultaiRuntime. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ElastigroupIntegrationMultaiRuntime.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ElastigroupIntegrationMultaiRuntime.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 deployment_id: str):
-        """
-        :param str deployment_id: The deployment id you want to get
-               
-               Usage:
-        """
-        pulumi.set(__self__, "deployment_id", deployment_id)
-
-    @property
-    @pulumi.getter(name="deploymentId")
-    def deployment_id(self) -> str:
-        """
-        The deployment id you want to get
-
-        Usage:
-        """
-        return pulumi.get(self, "deployment_id")
-
-
-@pulumi.output_type
 class ElastigroupIntegrationNomad(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -3350,58 +3309,6 @@ class ElastigroupMetadataOptions(dict):
         Indicates whether access to instance tags from the instance metadata is enabled or disabled. Can’t be null.
         """
         return pulumi.get(self, "instance_metadata_tags")
-
-
-@pulumi.output_type
-class ElastigroupMultaiTargetSet(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "balancerId":
-            suggest = "balancer_id"
-        elif key == "targetSetId":
-            suggest = "target_set_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ElastigroupMultaiTargetSet. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ElastigroupMultaiTargetSet.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ElastigroupMultaiTargetSet.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 balancer_id: str,
-                 target_set_id: str):
-        """
-        :param str balancer_id: ID of Multai Load Balancer.
-               
-               Usage:
-        :param str target_set_id: ID of Multai target set.
-        """
-        pulumi.set(__self__, "balancer_id", balancer_id)
-        pulumi.set(__self__, "target_set_id", target_set_id)
-
-    @property
-    @pulumi.getter(name="balancerId")
-    def balancer_id(self) -> str:
-        """
-        ID of Multai Load Balancer.
-
-        Usage:
-        """
-        return pulumi.get(self, "balancer_id")
-
-    @property
-    @pulumi.getter(name="targetSetId")
-    def target_set_id(self) -> str:
-        """
-        ID of Multai target set.
-        """
-        return pulumi.get(self, "target_set_id")
 
 
 @pulumi.output_type
@@ -5776,7 +5683,7 @@ class ElastigroupUpdatePolicyRollConfig(dict):
         """
         :param int batch_size_percentage: The percentage size of each batch in the scheduled deployment roll.
         :param int grace_period: The period of time (seconds) to wait before checking a batch's health after it's deployment.
-        :param str health_check_type: The service that will perform health checks for the instance. Valid values: `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"MLB"`, `"EC2"`, `"MULTAI_TARGET_SET"`, `"MLB_RUNTIME"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
+        :param str health_check_type: The service that will perform health checks for the instance. Valid values: `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"EC2"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
         :param 'ElastigroupUpdatePolicyRollConfigStrategyArgs' strategy: Strategy parameters
         :param float wait_for_roll_percentage: For use with `should_roll`. Sets minimum % of roll required to complete before continuing the plan. Required if `wait_for_roll_timeout` is set.
         :param int wait_for_roll_timeout: For use with `should_roll`. Sets how long to wait for the deployed % of a roll to exceed `wait_for_roll_percentage` before continuing the plan. Required if `wait_for_roll_percentage` is set.
@@ -5813,7 +5720,7 @@ class ElastigroupUpdatePolicyRollConfig(dict):
     @pulumi.getter(name="healthCheckType")
     def health_check_type(self) -> Optional[str]:
         """
-        The service that will perform health checks for the instance. Valid values: `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"MLB"`, `"EC2"`, `"MULTAI_TARGET_SET"`, `"MLB_RUNTIME"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
+        The service that will perform health checks for the instance. Valid values: `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"EC2"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
         """
         return pulumi.get(self, "health_check_type")
 
@@ -6334,50 +6241,15 @@ class ManagedInstanceIntegrationRoute53DomainRecordSet(dict):
 
 @pulumi.output_type
 class ManagedInstanceLoadBalancer(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "autoWeight":
-            suggest = "auto_weight"
-        elif key == "azAwareness":
-            suggest = "az_awareness"
-        elif key == "balancerId":
-            suggest = "balancer_id"
-        elif key == "targetSetId":
-            suggest = "target_set_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ManagedInstanceLoadBalancer. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ManagedInstanceLoadBalancer.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ManagedInstanceLoadBalancer.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  type: str,
                  arn: Optional[str] = None,
-                 auto_weight: Optional[bool] = None,
-                 az_awareness: Optional[bool] = None,
-                 balancer_id: Optional[str] = None,
-                 name: Optional[str] = None,
-                 target_set_id: Optional[str] = None):
+                 name: Optional[str] = None):
         pulumi.set(__self__, "type", type)
         if arn is not None:
             pulumi.set(__self__, "arn", arn)
-        if auto_weight is not None:
-            pulumi.set(__self__, "auto_weight", auto_weight)
-        if az_awareness is not None:
-            pulumi.set(__self__, "az_awareness", az_awareness)
-        if balancer_id is not None:
-            pulumi.set(__self__, "balancer_id", balancer_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
-        if target_set_id is not None:
-            pulumi.set(__self__, "target_set_id", target_set_id)
 
     @property
     @pulumi.getter
@@ -6390,29 +6262,9 @@ class ManagedInstanceLoadBalancer(dict):
         return pulumi.get(self, "arn")
 
     @property
-    @pulumi.getter(name="autoWeight")
-    def auto_weight(self) -> Optional[bool]:
-        return pulumi.get(self, "auto_weight")
-
-    @property
-    @pulumi.getter(name="azAwareness")
-    def az_awareness(self) -> Optional[bool]:
-        return pulumi.get(self, "az_awareness")
-
-    @property
-    @pulumi.getter(name="balancerId")
-    def balancer_id(self) -> Optional[str]:
-        return pulumi.get(self, "balancer_id")
-
-    @property
     @pulumi.getter
     def name(self) -> Optional[str]:
         return pulumi.get(self, "name")
-
-    @property
-    @pulumi.getter(name="targetSetId")
-    def target_set_id(self) -> Optional[str]:
-        return pulumi.get(self, "target_set_id")
 
 
 @pulumi.output_type

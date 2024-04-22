@@ -15,20 +15,8 @@ namespace Pulumi.SpotInst.Aws.Inputs
         [Input("arn")]
         public Input<string>? Arn { get; set; }
 
-        [Input("autoWeight")]
-        public Input<bool>? AutoWeight { get; set; }
-
-        [Input("azAwareness")]
-        public Input<bool>? AzAwareness { get; set; }
-
-        [Input("balancerId")]
-        public Input<string>? BalancerId { get; set; }
-
         [Input("name")]
         public Input<string>? Name { get; set; }
-
-        [Input("targetSetId")]
-        public Input<string>? TargetSetId { get; set; }
 
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;

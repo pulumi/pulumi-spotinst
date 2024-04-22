@@ -160,9 +160,6 @@
                     "integration_mesosphere": {
                         "maxItemsOne": true
                     },
-                    "integration_multai_runtime": {
-                        "maxItemsOne": true
-                    },
                     "integration_nomad": {
                         "maxItemsOne": true,
                         "elem": {
@@ -258,9 +255,6 @@
                     },
                     "metadata_options": {
                         "maxItemsOne": true
-                    },
-                    "multai_target_sets": {
-                        "maxItemsOne": false
                     },
                     "multiple_metrics": {
                         "maxItemsOne": true,

@@ -53,7 +53,6 @@ class ElastigroupArgs:
                  integration_gitlab: Optional[pulumi.Input['ElastigroupIntegrationGitlabArgs']] = None,
                  integration_kubernetes: Optional[pulumi.Input['ElastigroupIntegrationKubernetesArgs']] = None,
                  integration_mesosphere: Optional[pulumi.Input['ElastigroupIntegrationMesosphereArgs']] = None,
-                 integration_multai_runtime: Optional[pulumi.Input['ElastigroupIntegrationMultaiRuntimeArgs']] = None,
                  integration_nomad: Optional[pulumi.Input['ElastigroupIntegrationNomadArgs']] = None,
                  integration_rancher: Optional[pulumi.Input['ElastigroupIntegrationRancherArgs']] = None,
                  integration_route53: Optional[pulumi.Input['ElastigroupIntegrationRoute53Args']] = None,
@@ -65,7 +64,6 @@ class ElastigroupArgs:
                  metadata_options: Optional[pulumi.Input['ElastigroupMetadataOptionsArgs']] = None,
                  min_size: Optional[pulumi.Input[int]] = None,
                  minimum_instance_lifetime: Optional[pulumi.Input[int]] = None,
-                 multai_target_sets: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupMultaiTargetSetArgs']]]] = None,
                  multiple_metrics: Optional[pulumi.Input['ElastigroupMultipleMetricsArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupNetworkInterfaceArgs']]]] = None,
@@ -122,7 +120,7 @@ class ElastigroupArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] elastic_load_balancers: List of Elastic Load Balancers names (ELB).
         :param pulumi.Input[bool] enable_monitoring: Indicates whether monitoring is enabled for the instance.
         :param pulumi.Input[int] health_check_grace_period: The amount of time, in seconds, after the instance has launched to starts and check its health.
-        :param pulumi.Input[str] health_check_type: The service that will perform health checks for the instance. Valid values: `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"MLB"`, `"EC2"`, `"MULTAI_TARGET_SET"`, `"MLB_RUNTIME"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
+        :param pulumi.Input[str] health_check_type: The service that will perform health checks for the instance. Valid values: `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"EC2"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
         :param pulumi.Input[int] health_check_unhealthy_duration_before_replacement: The amount of time, in seconds, that we will wait before replacing an instance that is running and became unhealthy (this is only applicable for instances that were once healthy).
         :param pulumi.Input[str] iam_instance_profile: The ARN or name of an IAM instance profile to associate with launched instances.
         :param pulumi.Input[str] image_id: The ID of the AMI used to launch the instance.
@@ -139,7 +137,6 @@ class ElastigroupArgs:
         :param pulumi.Input['ElastigroupIntegrationGitlabArgs'] integration_gitlab: Describes the [Gitlab](https://api.spotinst.com/integration-docs/gitlab/) integration.
         :param pulumi.Input['ElastigroupIntegrationKubernetesArgs'] integration_kubernetes: Describes the [Kubernetes](https://kubernetes.io/) integration.
         :param pulumi.Input['ElastigroupIntegrationMesosphereArgs'] integration_mesosphere: Describes the [Mesosphere](https://mesosphere.com/) integration.
-        :param pulumi.Input['ElastigroupIntegrationMultaiRuntimeArgs'] integration_multai_runtime: Describes the [Multai Runtime](https://spotinst.com/) integration.
         :param pulumi.Input['ElastigroupIntegrationNomadArgs'] integration_nomad: Describes the [Nomad](https://www.nomadproject.io/) integration.
         :param pulumi.Input['ElastigroupIntegrationRancherArgs'] integration_rancher: Describes the [Rancher](http://rancherlabs.com/) integration.
         :param pulumi.Input['ElastigroupIntegrationRoute53Args'] integration_route53: Describes the [Route53](https://aws.amazon.com/documentation/route53/?id=docs_gateway) integration.
@@ -149,7 +146,6 @@ class ElastigroupArgs:
         :param pulumi.Input['ElastigroupMetadataOptionsArgs'] metadata_options: Data that used to configure or manage the running instances:
         :param pulumi.Input[int] min_size: The minimum number of instances the group should have at any time.
         :param pulumi.Input[int] minimum_instance_lifetime: Defines the preferred minimum instance lifetime in hours. Markets which comply with this preference will be prioritized. Optional values: 1, 3, 6, 12, 24.
-        :param pulumi.Input[Sequence[pulumi.Input['ElastigroupMultaiTargetSetArgs']]] multai_target_sets: Set of targets to register.
         :param pulumi.Input[str] name: The group name.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] on_demand_types: Available ondemand instance types. Note: Either ondemand or onDemandTypes must be defined, but not both.
         :param pulumi.Input[int] ondemand_count: Number of on demand instances to launch in the group. All other instances will be spot instances. When this parameter is set the `spot_percentage` parameter is being ignored.
@@ -174,6 +170,8 @@ class ElastigroupArgs:
                Note: When this parameter is set, `availability_zones` should be left unused.
         :param pulumi.Input[Sequence[pulumi.Input['ElastigroupTagArgs']]] tags: A key/value mapping of tags to assign to the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_group_arns: List of Target Group ARNs to register the instances to.
+               
+               Usage:
         :param pulumi.Input[str] user_data: The user data to provide when launching the instance.
         :param pulumi.Input[bool] utilize_reserved_instances: In a case of any available reserved instances, Elastigroup will utilize them first before purchasing Spot instances.
         :param pulumi.Input[int] wait_for_capacity: Minimum number of instances in a 'HEALTHY' status that is required before continuing. This is ignored when updating with blue/green deployment. Cannot exceed `desired_capacity`.
@@ -249,8 +247,6 @@ class ElastigroupArgs:
             pulumi.set(__self__, "integration_kubernetes", integration_kubernetes)
         if integration_mesosphere is not None:
             pulumi.set(__self__, "integration_mesosphere", integration_mesosphere)
-        if integration_multai_runtime is not None:
-            pulumi.set(__self__, "integration_multai_runtime", integration_multai_runtime)
         if integration_nomad is not None:
             pulumi.set(__self__, "integration_nomad", integration_nomad)
         if integration_rancher is not None:
@@ -273,8 +269,6 @@ class ElastigroupArgs:
             pulumi.set(__self__, "min_size", min_size)
         if minimum_instance_lifetime is not None:
             pulumi.set(__self__, "minimum_instance_lifetime", minimum_instance_lifetime)
-        if multai_target_sets is not None:
-            pulumi.set(__self__, "multai_target_sets", multai_target_sets)
         if multiple_metrics is not None:
             pulumi.set(__self__, "multiple_metrics", multiple_metrics)
         if name is not None:
@@ -582,7 +576,7 @@ class ElastigroupArgs:
     @pulumi.getter(name="healthCheckType")
     def health_check_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The service that will perform health checks for the instance. Valid values: `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"MLB"`, `"EC2"`, `"MULTAI_TARGET_SET"`, `"MLB_RUNTIME"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
+        The service that will perform health checks for the instance. Valid values: `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"EC2"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
         """
         return pulumi.get(self, "health_check_type")
 
@@ -781,18 +775,6 @@ class ElastigroupArgs:
         pulumi.set(self, "integration_mesosphere", value)
 
     @property
-    @pulumi.getter(name="integrationMultaiRuntime")
-    def integration_multai_runtime(self) -> Optional[pulumi.Input['ElastigroupIntegrationMultaiRuntimeArgs']]:
-        """
-        Describes the [Multai Runtime](https://spotinst.com/) integration.
-        """
-        return pulumi.get(self, "integration_multai_runtime")
-
-    @integration_multai_runtime.setter
-    def integration_multai_runtime(self, value: Optional[pulumi.Input['ElastigroupIntegrationMultaiRuntimeArgs']]):
-        pulumi.set(self, "integration_multai_runtime", value)
-
-    @property
     @pulumi.getter(name="integrationNomad")
     def integration_nomad(self) -> Optional[pulumi.Input['ElastigroupIntegrationNomadArgs']]:
         """
@@ -917,18 +899,6 @@ class ElastigroupArgs:
     @minimum_instance_lifetime.setter
     def minimum_instance_lifetime(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "minimum_instance_lifetime", value)
-
-    @property
-    @pulumi.getter(name="multaiTargetSets")
-    def multai_target_sets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupMultaiTargetSetArgs']]]]:
-        """
-        Set of targets to register.
-        """
-        return pulumi.get(self, "multai_target_sets")
-
-    @multai_target_sets.setter
-    def multai_target_sets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupMultaiTargetSetArgs']]]]):
-        pulumi.set(self, "multai_target_sets", value)
 
     @property
     @pulumi.getter(name="multipleMetrics")
@@ -1237,6 +1207,8 @@ class ElastigroupArgs:
     def target_group_arns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         List of Target Group ARNs to register the instances to.
+
+        Usage:
         """
         return pulumi.get(self, "target_group_arns")
 
@@ -1348,7 +1320,6 @@ class _ElastigroupState:
                  integration_gitlab: Optional[pulumi.Input['ElastigroupIntegrationGitlabArgs']] = None,
                  integration_kubernetes: Optional[pulumi.Input['ElastigroupIntegrationKubernetesArgs']] = None,
                  integration_mesosphere: Optional[pulumi.Input['ElastigroupIntegrationMesosphereArgs']] = None,
-                 integration_multai_runtime: Optional[pulumi.Input['ElastigroupIntegrationMultaiRuntimeArgs']] = None,
                  integration_nomad: Optional[pulumi.Input['ElastigroupIntegrationNomadArgs']] = None,
                  integration_rancher: Optional[pulumi.Input['ElastigroupIntegrationRancherArgs']] = None,
                  integration_route53: Optional[pulumi.Input['ElastigroupIntegrationRoute53Args']] = None,
@@ -1360,7 +1331,6 @@ class _ElastigroupState:
                  metadata_options: Optional[pulumi.Input['ElastigroupMetadataOptionsArgs']] = None,
                  min_size: Optional[pulumi.Input[int]] = None,
                  minimum_instance_lifetime: Optional[pulumi.Input[int]] = None,
-                 multai_target_sets: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupMultaiTargetSetArgs']]]] = None,
                  multiple_metrics: Optional[pulumi.Input['ElastigroupMultipleMetricsArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupNetworkInterfaceArgs']]]] = None,
@@ -1416,7 +1386,7 @@ class _ElastigroupState:
         :param pulumi.Input[bool] enable_monitoring: Indicates whether monitoring is enabled for the instance.
         :param pulumi.Input[bool] fallback_to_ondemand: In a case of no Spot instances available, Elastigroup will launch on-demand instances instead.
         :param pulumi.Input[int] health_check_grace_period: The amount of time, in seconds, after the instance has launched to starts and check its health.
-        :param pulumi.Input[str] health_check_type: The service that will perform health checks for the instance. Valid values: `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"MLB"`, `"EC2"`, `"MULTAI_TARGET_SET"`, `"MLB_RUNTIME"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
+        :param pulumi.Input[str] health_check_type: The service that will perform health checks for the instance. Valid values: `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"EC2"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
         :param pulumi.Input[int] health_check_unhealthy_duration_before_replacement: The amount of time, in seconds, that we will wait before replacing an instance that is running and became unhealthy (this is only applicable for instances that were once healthy).
         :param pulumi.Input[str] iam_instance_profile: The ARN or name of an IAM instance profile to associate with launched instances.
         :param pulumi.Input[str] image_id: The ID of the AMI used to launch the instance.
@@ -1433,7 +1403,6 @@ class _ElastigroupState:
         :param pulumi.Input['ElastigroupIntegrationGitlabArgs'] integration_gitlab: Describes the [Gitlab](https://api.spotinst.com/integration-docs/gitlab/) integration.
         :param pulumi.Input['ElastigroupIntegrationKubernetesArgs'] integration_kubernetes: Describes the [Kubernetes](https://kubernetes.io/) integration.
         :param pulumi.Input['ElastigroupIntegrationMesosphereArgs'] integration_mesosphere: Describes the [Mesosphere](https://mesosphere.com/) integration.
-        :param pulumi.Input['ElastigroupIntegrationMultaiRuntimeArgs'] integration_multai_runtime: Describes the [Multai Runtime](https://spotinst.com/) integration.
         :param pulumi.Input['ElastigroupIntegrationNomadArgs'] integration_nomad: Describes the [Nomad](https://www.nomadproject.io/) integration.
         :param pulumi.Input['ElastigroupIntegrationRancherArgs'] integration_rancher: Describes the [Rancher](http://rancherlabs.com/) integration.
         :param pulumi.Input['ElastigroupIntegrationRoute53Args'] integration_route53: Describes the [Route53](https://aws.amazon.com/documentation/route53/?id=docs_gateway) integration.
@@ -1443,7 +1412,6 @@ class _ElastigroupState:
         :param pulumi.Input['ElastigroupMetadataOptionsArgs'] metadata_options: Data that used to configure or manage the running instances:
         :param pulumi.Input[int] min_size: The minimum number of instances the group should have at any time.
         :param pulumi.Input[int] minimum_instance_lifetime: Defines the preferred minimum instance lifetime in hours. Markets which comply with this preference will be prioritized. Optional values: 1, 3, 6, 12, 24.
-        :param pulumi.Input[Sequence[pulumi.Input['ElastigroupMultaiTargetSetArgs']]] multai_target_sets: Set of targets to register.
         :param pulumi.Input[str] name: The group name.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] on_demand_types: Available ondemand instance types. Note: Either ondemand or onDemandTypes must be defined, but not both.
         :param pulumi.Input[int] ondemand_count: Number of on demand instances to launch in the group. All other instances will be spot instances. When this parameter is set the `spot_percentage` parameter is being ignored.
@@ -1472,6 +1440,8 @@ class _ElastigroupState:
                Note: When this parameter is set, `availability_zones` should be left unused.
         :param pulumi.Input[Sequence[pulumi.Input['ElastigroupTagArgs']]] tags: A key/value mapping of tags to assign to the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_group_arns: List of Target Group ARNs to register the instances to.
+               
+               Usage:
         :param pulumi.Input[str] user_data: The user data to provide when launching the instance.
         :param pulumi.Input[bool] utilize_reserved_instances: In a case of any available reserved instances, Elastigroup will utilize them first before purchasing Spot instances.
         :param pulumi.Input[int] wait_for_capacity: Minimum number of instances in a 'HEALTHY' status that is required before continuing. This is ignored when updating with blue/green deployment. Cannot exceed `desired_capacity`.
@@ -1545,8 +1515,6 @@ class _ElastigroupState:
             pulumi.set(__self__, "integration_kubernetes", integration_kubernetes)
         if integration_mesosphere is not None:
             pulumi.set(__self__, "integration_mesosphere", integration_mesosphere)
-        if integration_multai_runtime is not None:
-            pulumi.set(__self__, "integration_multai_runtime", integration_multai_runtime)
         if integration_nomad is not None:
             pulumi.set(__self__, "integration_nomad", integration_nomad)
         if integration_rancher is not None:
@@ -1569,8 +1537,6 @@ class _ElastigroupState:
             pulumi.set(__self__, "min_size", min_size)
         if minimum_instance_lifetime is not None:
             pulumi.set(__self__, "minimum_instance_lifetime", minimum_instance_lifetime)
-        if multai_target_sets is not None:
-            pulumi.set(__self__, "multai_target_sets", multai_target_sets)
         if multiple_metrics is not None:
             pulumi.set(__self__, "multiple_metrics", multiple_metrics)
         if name is not None:
@@ -1847,7 +1813,7 @@ class _ElastigroupState:
     @pulumi.getter(name="healthCheckType")
     def health_check_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The service that will perform health checks for the instance. Valid values: `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"MLB"`, `"EC2"`, `"MULTAI_TARGET_SET"`, `"MLB_RUNTIME"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
+        The service that will perform health checks for the instance. Valid values: `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"EC2"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
         """
         return pulumi.get(self, "health_check_type")
 
@@ -2046,18 +2012,6 @@ class _ElastigroupState:
         pulumi.set(self, "integration_mesosphere", value)
 
     @property
-    @pulumi.getter(name="integrationMultaiRuntime")
-    def integration_multai_runtime(self) -> Optional[pulumi.Input['ElastigroupIntegrationMultaiRuntimeArgs']]:
-        """
-        Describes the [Multai Runtime](https://spotinst.com/) integration.
-        """
-        return pulumi.get(self, "integration_multai_runtime")
-
-    @integration_multai_runtime.setter
-    def integration_multai_runtime(self, value: Optional[pulumi.Input['ElastigroupIntegrationMultaiRuntimeArgs']]):
-        pulumi.set(self, "integration_multai_runtime", value)
-
-    @property
     @pulumi.getter(name="integrationNomad")
     def integration_nomad(self) -> Optional[pulumi.Input['ElastigroupIntegrationNomadArgs']]:
         """
@@ -2182,18 +2136,6 @@ class _ElastigroupState:
     @minimum_instance_lifetime.setter
     def minimum_instance_lifetime(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "minimum_instance_lifetime", value)
-
-    @property
-    @pulumi.getter(name="multaiTargetSets")
-    def multai_target_sets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupMultaiTargetSetArgs']]]]:
-        """
-        Set of targets to register.
-        """
-        return pulumi.get(self, "multai_target_sets")
-
-    @multai_target_sets.setter
-    def multai_target_sets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupMultaiTargetSetArgs']]]]):
-        pulumi.set(self, "multai_target_sets", value)
 
     @property
     @pulumi.getter(name="multipleMetrics")
@@ -2539,6 +2481,8 @@ class _ElastigroupState:
     def target_group_arns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         List of Target Group ARNs to register the instances to.
+
+        Usage:
         """
         return pulumi.get(self, "target_group_arns")
 
@@ -2652,7 +2596,6 @@ class Elastigroup(pulumi.CustomResource):
                  integration_gitlab: Optional[pulumi.Input[pulumi.InputType['ElastigroupIntegrationGitlabArgs']]] = None,
                  integration_kubernetes: Optional[pulumi.Input[pulumi.InputType['ElastigroupIntegrationKubernetesArgs']]] = None,
                  integration_mesosphere: Optional[pulumi.Input[pulumi.InputType['ElastigroupIntegrationMesosphereArgs']]] = None,
-                 integration_multai_runtime: Optional[pulumi.Input[pulumi.InputType['ElastigroupIntegrationMultaiRuntimeArgs']]] = None,
                  integration_nomad: Optional[pulumi.Input[pulumi.InputType['ElastigroupIntegrationNomadArgs']]] = None,
                  integration_rancher: Optional[pulumi.Input[pulumi.InputType['ElastigroupIntegrationRancherArgs']]] = None,
                  integration_route53: Optional[pulumi.Input[pulumi.InputType['ElastigroupIntegrationRoute53Args']]] = None,
@@ -2664,7 +2607,6 @@ class Elastigroup(pulumi.CustomResource):
                  metadata_options: Optional[pulumi.Input[pulumi.InputType['ElastigroupMetadataOptionsArgs']]] = None,
                  min_size: Optional[pulumi.Input[int]] = None,
                  minimum_instance_lifetime: Optional[pulumi.Input[int]] = None,
-                 multai_target_sets: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupMultaiTargetSetArgs']]]]] = None,
                  multiple_metrics: Optional[pulumi.Input[pulumi.InputType['ElastigroupMultipleMetricsArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupNetworkInterfaceArgs']]]]] = None,
@@ -2859,7 +2801,7 @@ class Elastigroup(pulumi.CustomResource):
         :param pulumi.Input[bool] enable_monitoring: Indicates whether monitoring is enabled for the instance.
         :param pulumi.Input[bool] fallback_to_ondemand: In a case of no Spot instances available, Elastigroup will launch on-demand instances instead.
         :param pulumi.Input[int] health_check_grace_period: The amount of time, in seconds, after the instance has launched to starts and check its health.
-        :param pulumi.Input[str] health_check_type: The service that will perform health checks for the instance. Valid values: `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"MLB"`, `"EC2"`, `"MULTAI_TARGET_SET"`, `"MLB_RUNTIME"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
+        :param pulumi.Input[str] health_check_type: The service that will perform health checks for the instance. Valid values: `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"EC2"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
         :param pulumi.Input[int] health_check_unhealthy_duration_before_replacement: The amount of time, in seconds, that we will wait before replacing an instance that is running and became unhealthy (this is only applicable for instances that were once healthy).
         :param pulumi.Input[str] iam_instance_profile: The ARN or name of an IAM instance profile to associate with launched instances.
         :param pulumi.Input[str] image_id: The ID of the AMI used to launch the instance.
@@ -2876,7 +2818,6 @@ class Elastigroup(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ElastigroupIntegrationGitlabArgs']] integration_gitlab: Describes the [Gitlab](https://api.spotinst.com/integration-docs/gitlab/) integration.
         :param pulumi.Input[pulumi.InputType['ElastigroupIntegrationKubernetesArgs']] integration_kubernetes: Describes the [Kubernetes](https://kubernetes.io/) integration.
         :param pulumi.Input[pulumi.InputType['ElastigroupIntegrationMesosphereArgs']] integration_mesosphere: Describes the [Mesosphere](https://mesosphere.com/) integration.
-        :param pulumi.Input[pulumi.InputType['ElastigroupIntegrationMultaiRuntimeArgs']] integration_multai_runtime: Describes the [Multai Runtime](https://spotinst.com/) integration.
         :param pulumi.Input[pulumi.InputType['ElastigroupIntegrationNomadArgs']] integration_nomad: Describes the [Nomad](https://www.nomadproject.io/) integration.
         :param pulumi.Input[pulumi.InputType['ElastigroupIntegrationRancherArgs']] integration_rancher: Describes the [Rancher](http://rancherlabs.com/) integration.
         :param pulumi.Input[pulumi.InputType['ElastigroupIntegrationRoute53Args']] integration_route53: Describes the [Route53](https://aws.amazon.com/documentation/route53/?id=docs_gateway) integration.
@@ -2886,7 +2827,6 @@ class Elastigroup(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ElastigroupMetadataOptionsArgs']] metadata_options: Data that used to configure or manage the running instances:
         :param pulumi.Input[int] min_size: The minimum number of instances the group should have at any time.
         :param pulumi.Input[int] minimum_instance_lifetime: Defines the preferred minimum instance lifetime in hours. Markets which comply with this preference will be prioritized. Optional values: 1, 3, 6, 12, 24.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupMultaiTargetSetArgs']]]] multai_target_sets: Set of targets to register.
         :param pulumi.Input[str] name: The group name.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] on_demand_types: Available ondemand instance types. Note: Either ondemand or onDemandTypes must be defined, but not both.
         :param pulumi.Input[int] ondemand_count: Number of on demand instances to launch in the group. All other instances will be spot instances. When this parameter is set the `spot_percentage` parameter is being ignored.
@@ -2915,6 +2855,8 @@ class Elastigroup(pulumi.CustomResource):
                Note: When this parameter is set, `availability_zones` should be left unused.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupTagArgs']]]] tags: A key/value mapping of tags to assign to the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_group_arns: List of Target Group ARNs to register the instances to.
+               
+               Usage:
         :param pulumi.Input[str] user_data: The user data to provide when launching the instance.
         :param pulumi.Input[bool] utilize_reserved_instances: In a case of any available reserved instances, Elastigroup will utilize them first before purchasing Spot instances.
         :param pulumi.Input[int] wait_for_capacity: Minimum number of instances in a 'HEALTHY' status that is required before continuing. This is ignored when updating with blue/green deployment. Cannot exceed `desired_capacity`.
@@ -3113,7 +3055,6 @@ class Elastigroup(pulumi.CustomResource):
                  integration_gitlab: Optional[pulumi.Input[pulumi.InputType['ElastigroupIntegrationGitlabArgs']]] = None,
                  integration_kubernetes: Optional[pulumi.Input[pulumi.InputType['ElastigroupIntegrationKubernetesArgs']]] = None,
                  integration_mesosphere: Optional[pulumi.Input[pulumi.InputType['ElastigroupIntegrationMesosphereArgs']]] = None,
-                 integration_multai_runtime: Optional[pulumi.Input[pulumi.InputType['ElastigroupIntegrationMultaiRuntimeArgs']]] = None,
                  integration_nomad: Optional[pulumi.Input[pulumi.InputType['ElastigroupIntegrationNomadArgs']]] = None,
                  integration_rancher: Optional[pulumi.Input[pulumi.InputType['ElastigroupIntegrationRancherArgs']]] = None,
                  integration_route53: Optional[pulumi.Input[pulumi.InputType['ElastigroupIntegrationRoute53Args']]] = None,
@@ -3125,7 +3066,6 @@ class Elastigroup(pulumi.CustomResource):
                  metadata_options: Optional[pulumi.Input[pulumi.InputType['ElastigroupMetadataOptionsArgs']]] = None,
                  min_size: Optional[pulumi.Input[int]] = None,
                  minimum_instance_lifetime: Optional[pulumi.Input[int]] = None,
-                 multai_target_sets: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupMultaiTargetSetArgs']]]]] = None,
                  multiple_metrics: Optional[pulumi.Input[pulumi.InputType['ElastigroupMultipleMetricsArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupNetworkInterfaceArgs']]]]] = None,
@@ -3208,7 +3148,6 @@ class Elastigroup(pulumi.CustomResource):
             __props__.__dict__["integration_gitlab"] = integration_gitlab
             __props__.__dict__["integration_kubernetes"] = integration_kubernetes
             __props__.__dict__["integration_mesosphere"] = integration_mesosphere
-            __props__.__dict__["integration_multai_runtime"] = integration_multai_runtime
             __props__.__dict__["integration_nomad"] = integration_nomad
             __props__.__dict__["integration_rancher"] = integration_rancher
             __props__.__dict__["integration_route53"] = integration_route53
@@ -3220,7 +3159,6 @@ class Elastigroup(pulumi.CustomResource):
             __props__.__dict__["metadata_options"] = metadata_options
             __props__.__dict__["min_size"] = min_size
             __props__.__dict__["minimum_instance_lifetime"] = minimum_instance_lifetime
-            __props__.__dict__["multai_target_sets"] = multai_target_sets
             __props__.__dict__["multiple_metrics"] = multiple_metrics
             __props__.__dict__["name"] = name
             __props__.__dict__["network_interfaces"] = network_interfaces
@@ -3308,7 +3246,6 @@ class Elastigroup(pulumi.CustomResource):
             integration_gitlab: Optional[pulumi.Input[pulumi.InputType['ElastigroupIntegrationGitlabArgs']]] = None,
             integration_kubernetes: Optional[pulumi.Input[pulumi.InputType['ElastigroupIntegrationKubernetesArgs']]] = None,
             integration_mesosphere: Optional[pulumi.Input[pulumi.InputType['ElastigroupIntegrationMesosphereArgs']]] = None,
-            integration_multai_runtime: Optional[pulumi.Input[pulumi.InputType['ElastigroupIntegrationMultaiRuntimeArgs']]] = None,
             integration_nomad: Optional[pulumi.Input[pulumi.InputType['ElastigroupIntegrationNomadArgs']]] = None,
             integration_rancher: Optional[pulumi.Input[pulumi.InputType['ElastigroupIntegrationRancherArgs']]] = None,
             integration_route53: Optional[pulumi.Input[pulumi.InputType['ElastigroupIntegrationRoute53Args']]] = None,
@@ -3320,7 +3257,6 @@ class Elastigroup(pulumi.CustomResource):
             metadata_options: Optional[pulumi.Input[pulumi.InputType['ElastigroupMetadataOptionsArgs']]] = None,
             min_size: Optional[pulumi.Input[int]] = None,
             minimum_instance_lifetime: Optional[pulumi.Input[int]] = None,
-            multai_target_sets: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupMultaiTargetSetArgs']]]]] = None,
             multiple_metrics: Optional[pulumi.Input[pulumi.InputType['ElastigroupMultipleMetricsArgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupNetworkInterfaceArgs']]]]] = None,
@@ -3381,7 +3317,7 @@ class Elastigroup(pulumi.CustomResource):
         :param pulumi.Input[bool] enable_monitoring: Indicates whether monitoring is enabled for the instance.
         :param pulumi.Input[bool] fallback_to_ondemand: In a case of no Spot instances available, Elastigroup will launch on-demand instances instead.
         :param pulumi.Input[int] health_check_grace_period: The amount of time, in seconds, after the instance has launched to starts and check its health.
-        :param pulumi.Input[str] health_check_type: The service that will perform health checks for the instance. Valid values: `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"MLB"`, `"EC2"`, `"MULTAI_TARGET_SET"`, `"MLB_RUNTIME"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
+        :param pulumi.Input[str] health_check_type: The service that will perform health checks for the instance. Valid values: `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"EC2"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
         :param pulumi.Input[int] health_check_unhealthy_duration_before_replacement: The amount of time, in seconds, that we will wait before replacing an instance that is running and became unhealthy (this is only applicable for instances that were once healthy).
         :param pulumi.Input[str] iam_instance_profile: The ARN or name of an IAM instance profile to associate with launched instances.
         :param pulumi.Input[str] image_id: The ID of the AMI used to launch the instance.
@@ -3398,7 +3334,6 @@ class Elastigroup(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ElastigroupIntegrationGitlabArgs']] integration_gitlab: Describes the [Gitlab](https://api.spotinst.com/integration-docs/gitlab/) integration.
         :param pulumi.Input[pulumi.InputType['ElastigroupIntegrationKubernetesArgs']] integration_kubernetes: Describes the [Kubernetes](https://kubernetes.io/) integration.
         :param pulumi.Input[pulumi.InputType['ElastigroupIntegrationMesosphereArgs']] integration_mesosphere: Describes the [Mesosphere](https://mesosphere.com/) integration.
-        :param pulumi.Input[pulumi.InputType['ElastigroupIntegrationMultaiRuntimeArgs']] integration_multai_runtime: Describes the [Multai Runtime](https://spotinst.com/) integration.
         :param pulumi.Input[pulumi.InputType['ElastigroupIntegrationNomadArgs']] integration_nomad: Describes the [Nomad](https://www.nomadproject.io/) integration.
         :param pulumi.Input[pulumi.InputType['ElastigroupIntegrationRancherArgs']] integration_rancher: Describes the [Rancher](http://rancherlabs.com/) integration.
         :param pulumi.Input[pulumi.InputType['ElastigroupIntegrationRoute53Args']] integration_route53: Describes the [Route53](https://aws.amazon.com/documentation/route53/?id=docs_gateway) integration.
@@ -3408,7 +3343,6 @@ class Elastigroup(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ElastigroupMetadataOptionsArgs']] metadata_options: Data that used to configure or manage the running instances:
         :param pulumi.Input[int] min_size: The minimum number of instances the group should have at any time.
         :param pulumi.Input[int] minimum_instance_lifetime: Defines the preferred minimum instance lifetime in hours. Markets which comply with this preference will be prioritized. Optional values: 1, 3, 6, 12, 24.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupMultaiTargetSetArgs']]]] multai_target_sets: Set of targets to register.
         :param pulumi.Input[str] name: The group name.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] on_demand_types: Available ondemand instance types. Note: Either ondemand or onDemandTypes must be defined, but not both.
         :param pulumi.Input[int] ondemand_count: Number of on demand instances to launch in the group. All other instances will be spot instances. When this parameter is set the `spot_percentage` parameter is being ignored.
@@ -3437,6 +3371,8 @@ class Elastigroup(pulumi.CustomResource):
                Note: When this parameter is set, `availability_zones` should be left unused.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupTagArgs']]]] tags: A key/value mapping of tags to assign to the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_group_arns: List of Target Group ARNs to register the instances to.
+               
+               Usage:
         :param pulumi.Input[str] user_data: The user data to provide when launching the instance.
         :param pulumi.Input[bool] utilize_reserved_instances: In a case of any available reserved instances, Elastigroup will utilize them first before purchasing Spot instances.
         :param pulumi.Input[int] wait_for_capacity: Minimum number of instances in a 'HEALTHY' status that is required before continuing. This is ignored when updating with blue/green deployment. Cannot exceed `desired_capacity`.
@@ -3480,7 +3416,6 @@ class Elastigroup(pulumi.CustomResource):
         __props__.__dict__["integration_gitlab"] = integration_gitlab
         __props__.__dict__["integration_kubernetes"] = integration_kubernetes
         __props__.__dict__["integration_mesosphere"] = integration_mesosphere
-        __props__.__dict__["integration_multai_runtime"] = integration_multai_runtime
         __props__.__dict__["integration_nomad"] = integration_nomad
         __props__.__dict__["integration_rancher"] = integration_rancher
         __props__.__dict__["integration_route53"] = integration_route53
@@ -3492,7 +3427,6 @@ class Elastigroup(pulumi.CustomResource):
         __props__.__dict__["metadata_options"] = metadata_options
         __props__.__dict__["min_size"] = min_size
         __props__.__dict__["minimum_instance_lifetime"] = minimum_instance_lifetime
-        __props__.__dict__["multai_target_sets"] = multai_target_sets
         __props__.__dict__["multiple_metrics"] = multiple_metrics
         __props__.__dict__["name"] = name
         __props__.__dict__["network_interfaces"] = network_interfaces
@@ -3665,7 +3599,7 @@ class Elastigroup(pulumi.CustomResource):
     @pulumi.getter(name="healthCheckType")
     def health_check_type(self) -> pulumi.Output[Optional[str]]:
         """
-        The service that will perform health checks for the instance. Valid values: `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"MLB"`, `"EC2"`, `"MULTAI_TARGET_SET"`, `"MLB_RUNTIME"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
+        The service that will perform health checks for the instance. Valid values: `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"EC2"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
         """
         return pulumi.get(self, "health_check_type")
 
@@ -3796,14 +3730,6 @@ class Elastigroup(pulumi.CustomResource):
         return pulumi.get(self, "integration_mesosphere")
 
     @property
-    @pulumi.getter(name="integrationMultaiRuntime")
-    def integration_multai_runtime(self) -> pulumi.Output[Optional['outputs.ElastigroupIntegrationMultaiRuntime']]:
-        """
-        Describes the [Multai Runtime](https://spotinst.com/) integration.
-        """
-        return pulumi.get(self, "integration_multai_runtime")
-
-    @property
     @pulumi.getter(name="integrationNomad")
     def integration_nomad(self) -> pulumi.Output[Optional['outputs.ElastigroupIntegrationNomad']]:
         """
@@ -3884,14 +3810,6 @@ class Elastigroup(pulumi.CustomResource):
         Defines the preferred minimum instance lifetime in hours. Markets which comply with this preference will be prioritized. Optional values: 1, 3, 6, 12, 24.
         """
         return pulumi.get(self, "minimum_instance_lifetime")
-
-    @property
-    @pulumi.getter(name="multaiTargetSets")
-    def multai_target_sets(self) -> pulumi.Output[Optional[Sequence['outputs.ElastigroupMultaiTargetSet']]]:
-        """
-        Set of targets to register.
-        """
-        return pulumi.get(self, "multai_target_sets")
 
     @property
     @pulumi.getter(name="multipleMetrics")
@@ -4117,6 +4035,8 @@ class Elastigroup(pulumi.CustomResource):
     def target_group_arns(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         List of Target Group ARNs to register the instances to.
+
+        Usage:
         """
         return pulumi.get(self, "target_group_arns")
 

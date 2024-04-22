@@ -235,7 +235,7 @@ export class Elastigroup extends pulumi.CustomResource {
      */
     public readonly healthCheckGracePeriod!: pulumi.Output<number | undefined>;
     /**
-     * The service that will perform health checks for the instance. Valid values: `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"MLB"`, `"EC2"`, `"MULTAI_TARGET_SET"`, `"MLB_RUNTIME"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
+     * The service that will perform health checks for the instance. Valid values: `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"EC2"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
      */
     public readonly healthCheckType!: pulumi.Output<string | undefined>;
     /**
@@ -301,10 +301,6 @@ export class Elastigroup extends pulumi.CustomResource {
      */
     public readonly integrationMesosphere!: pulumi.Output<outputs.aws.ElastigroupIntegrationMesosphere | undefined>;
     /**
-     * Describes the [Multai Runtime](https://spotinst.com/) integration.
-     */
-    public readonly integrationMultaiRuntime!: pulumi.Output<outputs.aws.ElastigroupIntegrationMultaiRuntime | undefined>;
-    /**
      * Describes the [Nomad](https://www.nomadproject.io/) integration.
      */
     public readonly integrationNomad!: pulumi.Output<outputs.aws.ElastigroupIntegrationNomad | undefined>;
@@ -342,10 +338,6 @@ export class Elastigroup extends pulumi.CustomResource {
      * Defines the preferred minimum instance lifetime in hours. Markets which comply with this preference will be prioritized. Optional values: 1, 3, 6, 12, 24.
      */
     public readonly minimumInstanceLifetime!: pulumi.Output<number | undefined>;
-    /**
-     * Set of targets to register.
-     */
-    public readonly multaiTargetSets!: pulumi.Output<outputs.aws.ElastigroupMultaiTargetSet[] | undefined>;
     public readonly multipleMetrics!: pulumi.Output<outputs.aws.ElastigroupMultipleMetrics | undefined>;
     /**
      * The group name.
@@ -447,6 +439,8 @@ export class Elastigroup extends pulumi.CustomResource {
     public readonly tags!: pulumi.Output<outputs.aws.ElastigroupTag[] | undefined>;
     /**
      * List of Target Group ARNs to register the instances to.
+     *
+     * Usage:
      */
     public readonly targetGroupArns!: pulumi.Output<string[] | undefined>;
     public readonly updatePolicy!: pulumi.Output<outputs.aws.ElastigroupUpdatePolicy | undefined>;
@@ -515,7 +509,6 @@ export class Elastigroup extends pulumi.CustomResource {
             resourceInputs["integrationGitlab"] = state ? state.integrationGitlab : undefined;
             resourceInputs["integrationKubernetes"] = state ? state.integrationKubernetes : undefined;
             resourceInputs["integrationMesosphere"] = state ? state.integrationMesosphere : undefined;
-            resourceInputs["integrationMultaiRuntime"] = state ? state.integrationMultaiRuntime : undefined;
             resourceInputs["integrationNomad"] = state ? state.integrationNomad : undefined;
             resourceInputs["integrationRancher"] = state ? state.integrationRancher : undefined;
             resourceInputs["integrationRoute53"] = state ? state.integrationRoute53 : undefined;
@@ -527,7 +520,6 @@ export class Elastigroup extends pulumi.CustomResource {
             resourceInputs["metadataOptions"] = state ? state.metadataOptions : undefined;
             resourceInputs["minSize"] = state ? state.minSize : undefined;
             resourceInputs["minimumInstanceLifetime"] = state ? state.minimumInstanceLifetime : undefined;
-            resourceInputs["multaiTargetSets"] = state ? state.multaiTargetSets : undefined;
             resourceInputs["multipleMetrics"] = state ? state.multipleMetrics : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["networkInterfaces"] = state ? state.networkInterfaces : undefined;
@@ -613,7 +605,6 @@ export class Elastigroup extends pulumi.CustomResource {
             resourceInputs["integrationGitlab"] = args ? args.integrationGitlab : undefined;
             resourceInputs["integrationKubernetes"] = args ? args.integrationKubernetes : undefined;
             resourceInputs["integrationMesosphere"] = args ? args.integrationMesosphere : undefined;
-            resourceInputs["integrationMultaiRuntime"] = args ? args.integrationMultaiRuntime : undefined;
             resourceInputs["integrationNomad"] = args ? args.integrationNomad : undefined;
             resourceInputs["integrationRancher"] = args ? args.integrationRancher : undefined;
             resourceInputs["integrationRoute53"] = args ? args.integrationRoute53 : undefined;
@@ -625,7 +616,6 @@ export class Elastigroup extends pulumi.CustomResource {
             resourceInputs["metadataOptions"] = args ? args.metadataOptions : undefined;
             resourceInputs["minSize"] = args ? args.minSize : undefined;
             resourceInputs["minimumInstanceLifetime"] = args ? args.minimumInstanceLifetime : undefined;
-            resourceInputs["multaiTargetSets"] = args ? args.multaiTargetSets : undefined;
             resourceInputs["multipleMetrics"] = args ? args.multipleMetrics : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["networkInterfaces"] = args ? args.networkInterfaces : undefined;
@@ -735,7 +725,7 @@ export interface ElastigroupState {
      */
     healthCheckGracePeriod?: pulumi.Input<number>;
     /**
-     * The service that will perform health checks for the instance. Valid values: `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"MLB"`, `"EC2"`, `"MULTAI_TARGET_SET"`, `"MLB_RUNTIME"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
+     * The service that will perform health checks for the instance. Valid values: `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"EC2"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
      */
     healthCheckType?: pulumi.Input<string>;
     /**
@@ -801,10 +791,6 @@ export interface ElastigroupState {
      */
     integrationMesosphere?: pulumi.Input<inputs.aws.ElastigroupIntegrationMesosphere>;
     /**
-     * Describes the [Multai Runtime](https://spotinst.com/) integration.
-     */
-    integrationMultaiRuntime?: pulumi.Input<inputs.aws.ElastigroupIntegrationMultaiRuntime>;
-    /**
      * Describes the [Nomad](https://www.nomadproject.io/) integration.
      */
     integrationNomad?: pulumi.Input<inputs.aws.ElastigroupIntegrationNomad>;
@@ -842,10 +828,6 @@ export interface ElastigroupState {
      * Defines the preferred minimum instance lifetime in hours. Markets which comply with this preference will be prioritized. Optional values: 1, 3, 6, 12, 24.
      */
     minimumInstanceLifetime?: pulumi.Input<number>;
-    /**
-     * Set of targets to register.
-     */
-    multaiTargetSets?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupMultaiTargetSet>[]>;
     multipleMetrics?: pulumi.Input<inputs.aws.ElastigroupMultipleMetrics>;
     /**
      * The group name.
@@ -947,6 +929,8 @@ export interface ElastigroupState {
     tags?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupTag>[]>;
     /**
      * List of Target Group ARNs to register the instances to.
+     *
+     * Usage:
      */
     targetGroupArns?: pulumi.Input<pulumi.Input<string>[]>;
     updatePolicy?: pulumi.Input<inputs.aws.ElastigroupUpdatePolicy>;
@@ -1035,7 +1019,7 @@ export interface ElastigroupArgs {
      */
     healthCheckGracePeriod?: pulumi.Input<number>;
     /**
-     * The service that will perform health checks for the instance. Valid values: `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"MLB"`, `"EC2"`, `"MULTAI_TARGET_SET"`, `"MLB_RUNTIME"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
+     * The service that will perform health checks for the instance. Valid values: `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"EC2"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
      */
     healthCheckType?: pulumi.Input<string>;
     /**
@@ -1101,10 +1085,6 @@ export interface ElastigroupArgs {
      */
     integrationMesosphere?: pulumi.Input<inputs.aws.ElastigroupIntegrationMesosphere>;
     /**
-     * Describes the [Multai Runtime](https://spotinst.com/) integration.
-     */
-    integrationMultaiRuntime?: pulumi.Input<inputs.aws.ElastigroupIntegrationMultaiRuntime>;
-    /**
      * Describes the [Nomad](https://www.nomadproject.io/) integration.
      */
     integrationNomad?: pulumi.Input<inputs.aws.ElastigroupIntegrationNomad>;
@@ -1142,10 +1122,6 @@ export interface ElastigroupArgs {
      * Defines the preferred minimum instance lifetime in hours. Markets which comply with this preference will be prioritized. Optional values: 1, 3, 6, 12, 24.
      */
     minimumInstanceLifetime?: pulumi.Input<number>;
-    /**
-     * Set of targets to register.
-     */
-    multaiTargetSets?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupMultaiTargetSet>[]>;
     multipleMetrics?: pulumi.Input<inputs.aws.ElastigroupMultipleMetrics>;
     /**
      * The group name.
@@ -1247,6 +1223,8 @@ export interface ElastigroupArgs {
     tags?: pulumi.Input<pulumi.Input<inputs.aws.ElastigroupTag>[]>;
     /**
      * List of Target Group ARNs to register the instances to.
+     *
+     * Usage:
      */
     targetGroupArns?: pulumi.Input<pulumi.Input<string>[]>;
     updatePolicy?: pulumi.Input<inputs.aws.ElastigroupUpdatePolicy>;

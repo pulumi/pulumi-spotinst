@@ -862,15 +862,6 @@ export namespace aws {
         apiServer: pulumi.Input<string>;
     }
 
-    export interface ElastigroupIntegrationMultaiRuntime {
-        /**
-         * The deployment id you want to get
-         *
-         * Usage:
-         */
-        deploymentId: pulumi.Input<string>;
-    }
-
     export interface ElastigroupIntegrationNomad {
         /**
          * Nomad ACL Token
@@ -1093,19 +1084,6 @@ export namespace aws {
          * Indicates whether access to instance tags from the instance metadata is enabled or disabled. Can’t be null.
          */
         instanceMetadataTags?: pulumi.Input<string>;
-    }
-
-    export interface ElastigroupMultaiTargetSet {
-        /**
-         * ID of Multai Load Balancer.
-         *
-         * Usage:
-         */
-        balancerId: pulumi.Input<string>;
-        /**
-         * ID of Multai target set.
-         */
-        targetSetId: pulumi.Input<string>;
     }
 
     export interface ElastigroupMultipleMetrics {
@@ -1811,7 +1789,7 @@ export namespace aws {
          */
         gracePeriod?: pulumi.Input<number>;
         /**
-         * The service that will perform health checks for the instance. Valid values: `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"MLB"`, `"EC2"`, `"MULTAI_TARGET_SET"`, `"MLB_RUNTIME"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
+         * The service that will perform health checks for the instance. Valid values: `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"EC2"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
          */
         healthCheckType?: pulumi.Input<string>;
         /**
@@ -1911,11 +1889,7 @@ export namespace aws {
 
     export interface ManagedInstanceLoadBalancer {
         arn?: pulumi.Input<string>;
-        autoWeight?: pulumi.Input<boolean>;
-        azAwareness?: pulumi.Input<boolean>;
-        balancerId?: pulumi.Input<string>;
         name?: pulumi.Input<string>;
-        targetSetId?: pulumi.Input<string>;
         type: pulumi.Input<string>;
     }
 

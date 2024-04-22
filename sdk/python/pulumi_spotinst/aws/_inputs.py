@@ -43,7 +43,6 @@ __all__ = [
     'ElastigroupIntegrationKubernetesAutoscaleHeadroomArgs',
     'ElastigroupIntegrationKubernetesAutoscaleLabelArgs',
     'ElastigroupIntegrationMesosphereArgs',
-    'ElastigroupIntegrationMultaiRuntimeArgs',
     'ElastigroupIntegrationNomadArgs',
     'ElastigroupIntegrationNomadAutoscaleConstraintArgs',
     'ElastigroupIntegrationNomadAutoscaleDownArgs',
@@ -64,7 +63,6 @@ __all__ = [
     'ElastigroupLoggingExportArgs',
     'ElastigroupLoggingExportS3Args',
     'ElastigroupMetadataOptionsArgs',
-    'ElastigroupMultaiTargetSetArgs',
     'ElastigroupMultipleMetricsArgs',
     'ElastigroupMultipleMetricsExpressionArgs',
     'ElastigroupMultipleMetricsMetricArgs',
@@ -2117,32 +2115,6 @@ class ElastigroupIntegrationMesosphereArgs:
 
 
 @pulumi.input_type
-class ElastigroupIntegrationMultaiRuntimeArgs:
-    def __init__(__self__, *,
-                 deployment_id: pulumi.Input[str]):
-        """
-        :param pulumi.Input[str] deployment_id: The deployment id you want to get
-               
-               Usage:
-        """
-        pulumi.set(__self__, "deployment_id", deployment_id)
-
-    @property
-    @pulumi.getter(name="deploymentId")
-    def deployment_id(self) -> pulumi.Input[str]:
-        """
-        The deployment id you want to get
-
-        Usage:
-        """
-        return pulumi.get(self, "deployment_id")
-
-    @deployment_id.setter
-    def deployment_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "deployment_id", value)
-
-
-@pulumi.input_type
 class ElastigroupIntegrationNomadArgs:
     def __init__(__self__, *,
                  master_host: pulumi.Input[str],
@@ -3131,47 +3103,6 @@ class ElastigroupMetadataOptionsArgs:
     @instance_metadata_tags.setter
     def instance_metadata_tags(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "instance_metadata_tags", value)
-
-
-@pulumi.input_type
-class ElastigroupMultaiTargetSetArgs:
-    def __init__(__self__, *,
-                 balancer_id: pulumi.Input[str],
-                 target_set_id: pulumi.Input[str]):
-        """
-        :param pulumi.Input[str] balancer_id: ID of Multai Load Balancer.
-               
-               Usage:
-        :param pulumi.Input[str] target_set_id: ID of Multai target set.
-        """
-        pulumi.set(__self__, "balancer_id", balancer_id)
-        pulumi.set(__self__, "target_set_id", target_set_id)
-
-    @property
-    @pulumi.getter(name="balancerId")
-    def balancer_id(self) -> pulumi.Input[str]:
-        """
-        ID of Multai Load Balancer.
-
-        Usage:
-        """
-        return pulumi.get(self, "balancer_id")
-
-    @balancer_id.setter
-    def balancer_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "balancer_id", value)
-
-    @property
-    @pulumi.getter(name="targetSetId")
-    def target_set_id(self) -> pulumi.Input[str]:
-        """
-        ID of Multai target set.
-        """
-        return pulumi.get(self, "target_set_id")
-
-    @target_set_id.setter
-    def target_set_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "target_set_id", value)
 
 
 @pulumi.input_type
@@ -5734,7 +5665,7 @@ class ElastigroupUpdatePolicyRollConfigArgs:
         """
         :param pulumi.Input[int] batch_size_percentage: The percentage size of each batch in the scheduled deployment roll.
         :param pulumi.Input[int] grace_period: The period of time (seconds) to wait before checking a batch's health after it's deployment.
-        :param pulumi.Input[str] health_check_type: The service that will perform health checks for the instance. Valid values: `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"MLB"`, `"EC2"`, `"MULTAI_TARGET_SET"`, `"MLB_RUNTIME"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
+        :param pulumi.Input[str] health_check_type: The service that will perform health checks for the instance. Valid values: `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"EC2"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
         :param pulumi.Input['ElastigroupUpdatePolicyRollConfigStrategyArgs'] strategy: Strategy parameters
         :param pulumi.Input[float] wait_for_roll_percentage: For use with `should_roll`. Sets minimum % of roll required to complete before continuing the plan. Required if `wait_for_roll_timeout` is set.
         :param pulumi.Input[int] wait_for_roll_timeout: For use with `should_roll`. Sets how long to wait for the deployed % of a roll to exceed `wait_for_roll_percentage` before continuing the plan. Required if `wait_for_roll_percentage` is set.
@@ -5779,7 +5710,7 @@ class ElastigroupUpdatePolicyRollConfigArgs:
     @pulumi.getter(name="healthCheckType")
     def health_check_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The service that will perform health checks for the instance. Valid values: `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"MLB"`, `"EC2"`, `"MULTAI_TARGET_SET"`, `"MLB_RUNTIME"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
+        The service that will perform health checks for the instance. Valid values: `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"EC2"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
         """
         return pulumi.get(self, "health_check_type")
 
@@ -6294,24 +6225,12 @@ class ManagedInstanceLoadBalancerArgs:
     def __init__(__self__, *,
                  type: pulumi.Input[str],
                  arn: Optional[pulumi.Input[str]] = None,
-                 auto_weight: Optional[pulumi.Input[bool]] = None,
-                 az_awareness: Optional[pulumi.Input[bool]] = None,
-                 balancer_id: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
-                 target_set_id: Optional[pulumi.Input[str]] = None):
+                 name: Optional[pulumi.Input[str]] = None):
         pulumi.set(__self__, "type", type)
         if arn is not None:
             pulumi.set(__self__, "arn", arn)
-        if auto_weight is not None:
-            pulumi.set(__self__, "auto_weight", auto_weight)
-        if az_awareness is not None:
-            pulumi.set(__self__, "az_awareness", az_awareness)
-        if balancer_id is not None:
-            pulumi.set(__self__, "balancer_id", balancer_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
-        if target_set_id is not None:
-            pulumi.set(__self__, "target_set_id", target_set_id)
 
     @property
     @pulumi.getter
@@ -6332,33 +6251,6 @@ class ManagedInstanceLoadBalancerArgs:
         pulumi.set(self, "arn", value)
 
     @property
-    @pulumi.getter(name="autoWeight")
-    def auto_weight(self) -> Optional[pulumi.Input[bool]]:
-        return pulumi.get(self, "auto_weight")
-
-    @auto_weight.setter
-    def auto_weight(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "auto_weight", value)
-
-    @property
-    @pulumi.getter(name="azAwareness")
-    def az_awareness(self) -> Optional[pulumi.Input[bool]]:
-        return pulumi.get(self, "az_awareness")
-
-    @az_awareness.setter
-    def az_awareness(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "az_awareness", value)
-
-    @property
-    @pulumi.getter(name="balancerId")
-    def balancer_id(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "balancer_id")
-
-    @balancer_id.setter
-    def balancer_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "balancer_id", value)
-
-    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "name")
@@ -6366,15 +6258,6 @@ class ManagedInstanceLoadBalancerArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
-
-    @property
-    @pulumi.getter(name="targetSetId")
-    def target_set_id(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "target_set_id")
-
-    @target_set_id.setter
-    def target_set_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "target_set_id", value)
 
 
 @pulumi.input_type

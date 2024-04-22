@@ -14,35 +14,19 @@ namespace Pulumi.SpotInst.Aws.Outputs
     public sealed class ManagedInstanceLoadBalancer
     {
         public readonly string? Arn;
-        public readonly bool? AutoWeight;
-        public readonly bool? AzAwareness;
-        public readonly string? BalancerId;
         public readonly string? Name;
-        public readonly string? TargetSetId;
         public readonly string Type;
 
         [OutputConstructor]
         private ManagedInstanceLoadBalancer(
             string? arn,
 
-            bool? autoWeight,
-
-            bool? azAwareness,
-
-            string? balancerId,
-
             string? name,
-
-            string? targetSetId,
 
             string type)
         {
             Arn = arn;
-            AutoWeight = autoWeight;
-            AzAwareness = azAwareness;
-            BalancerId = balancerId;
             Name = name;
-            TargetSetId = targetSetId;
             Type = type;
         }
     }
