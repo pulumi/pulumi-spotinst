@@ -26,7 +26,7 @@ public final class ElastigroupUpdatePolicyRollConfig {
      */
     private @Nullable Integer gracePeriod;
     /**
-     * @return The service that will perform health checks for the instance. Valid values: `&#34;ELB&#34;`, `&#34;HCS&#34;`, `&#34;TARGET_GROUP&#34;`, `&#34;MLB&#34;`, `&#34;EC2&#34;`, `&#34;MULTAI_TARGET_SET&#34;`, `&#34;MLB_RUNTIME&#34;`, `&#34;K8S_NODE&#34;`, `&#34;NOMAD_NODE&#34;`, `&#34;ECS_CLUSTER_INSTANCE&#34;`.
+     * @return The service that will perform health checks for the instance. Valid values: `&#34;ELB&#34;`, `&#34;HCS&#34;`, `&#34;TARGET_GROUP&#34;`, `&#34;EC2&#34;`, `&#34;K8S_NODE&#34;`, `&#34;NOMAD_NODE&#34;`, `&#34;ECS_CLUSTER_INSTANCE&#34;`.
      * 
      */
     private @Nullable String healthCheckType;
@@ -62,7 +62,7 @@ public final class ElastigroupUpdatePolicyRollConfig {
         return Optional.ofNullable(this.gracePeriod);
     }
     /**
-     * @return The service that will perform health checks for the instance. Valid values: `&#34;ELB&#34;`, `&#34;HCS&#34;`, `&#34;TARGET_GROUP&#34;`, `&#34;MLB&#34;`, `&#34;EC2&#34;`, `&#34;MULTAI_TARGET_SET&#34;`, `&#34;MLB_RUNTIME&#34;`, `&#34;K8S_NODE&#34;`, `&#34;NOMAD_NODE&#34;`, `&#34;ECS_CLUSTER_INSTANCE&#34;`.
+     * @return The service that will perform health checks for the instance. Valid values: `&#34;ELB&#34;`, `&#34;HCS&#34;`, `&#34;TARGET_GROUP&#34;`, `&#34;EC2&#34;`, `&#34;K8S_NODE&#34;`, `&#34;NOMAD_NODE&#34;`, `&#34;ECS_CLUSTER_INSTANCE&#34;`.
      * 
      */
     public Optional<String> healthCheckType() {

@@ -220,7 +220,7 @@ type Elastigroup struct {
 	FallbackToOndemand pulumi.BoolOutput `pulumi:"fallbackToOndemand"`
 	// The amount of time, in seconds, after the instance has launched to starts and check its health.
 	HealthCheckGracePeriod pulumi.IntPtrOutput `pulumi:"healthCheckGracePeriod"`
-	// The service that will perform health checks for the instance. Valid values: `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"MLB"`, `"EC2"`, `"MULTAI_TARGET_SET"`, `"MLB_RUNTIME"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
+	// The service that will perform health checks for the instance. Valid values: `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"EC2"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
 	HealthCheckType pulumi.StringPtrOutput `pulumi:"healthCheckType"`
 	// The amount of time, in seconds, that we will wait before replacing an instance that is running and became unhealthy (this is only applicable for instances that were once healthy).
 	HealthCheckUnhealthyDurationBeforeReplacement pulumi.IntPtrOutput `pulumi:"healthCheckUnhealthyDurationBeforeReplacement"`
@@ -254,8 +254,6 @@ type Elastigroup struct {
 	IntegrationKubernetes ElastigroupIntegrationKubernetesPtrOutput `pulumi:"integrationKubernetes"`
 	// Describes the [Mesosphere](https://mesosphere.com/) integration.
 	IntegrationMesosphere ElastigroupIntegrationMesospherePtrOutput `pulumi:"integrationMesosphere"`
-	// Describes the [Multai Runtime](https://spotinst.com/) integration.
-	IntegrationMultaiRuntime ElastigroupIntegrationMultaiRuntimePtrOutput `pulumi:"integrationMultaiRuntime"`
 	// Describes the [Nomad](https://www.nomadproject.io/) integration.
 	IntegrationNomad ElastigroupIntegrationNomadPtrOutput `pulumi:"integrationNomad"`
 	// Describes the [Rancher](http://rancherlabs.com/) integration.
@@ -275,10 +273,8 @@ type Elastigroup struct {
 	// The minimum number of instances the group should have at any time.
 	MinSize pulumi.IntOutput `pulumi:"minSize"`
 	// Defines the preferred minimum instance lifetime in hours. Markets which comply with this preference will be prioritized. Optional values: 1, 3, 6, 12, 24.
-	MinimumInstanceLifetime pulumi.IntPtrOutput `pulumi:"minimumInstanceLifetime"`
-	// Set of targets to register.
-	MultaiTargetSets ElastigroupMultaiTargetSetArrayOutput `pulumi:"multaiTargetSets"`
-	MultipleMetrics  ElastigroupMultipleMetricsPtrOutput   `pulumi:"multipleMetrics"`
+	MinimumInstanceLifetime pulumi.IntPtrOutput                 `pulumi:"minimumInstanceLifetime"`
+	MultipleMetrics         ElastigroupMultipleMetricsPtrOutput `pulumi:"multipleMetrics"`
 	// The group name.
 	Name              pulumi.StringOutput                    `pulumi:"name"`
 	NetworkInterfaces ElastigroupNetworkInterfaceArrayOutput `pulumi:"networkInterfaces"`
@@ -336,6 +332,8 @@ type Elastigroup struct {
 	// A key/value mapping of tags to assign to the resource.
 	Tags ElastigroupTagArrayOutput `pulumi:"tags"`
 	// List of Target Group ARNs to register the instances to.
+	//
+	// Usage:
 	TargetGroupArns pulumi.StringArrayOutput         `pulumi:"targetGroupArns"`
 	UpdatePolicy    ElastigroupUpdatePolicyPtrOutput `pulumi:"updatePolicy"`
 	// The user data to provide when launching the instance.
@@ -424,7 +422,7 @@ type elastigroupState struct {
 	FallbackToOndemand *bool `pulumi:"fallbackToOndemand"`
 	// The amount of time, in seconds, after the instance has launched to starts and check its health.
 	HealthCheckGracePeriod *int `pulumi:"healthCheckGracePeriod"`
-	// The service that will perform health checks for the instance. Valid values: `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"MLB"`, `"EC2"`, `"MULTAI_TARGET_SET"`, `"MLB_RUNTIME"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
+	// The service that will perform health checks for the instance. Valid values: `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"EC2"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
 	HealthCheckType *string `pulumi:"healthCheckType"`
 	// The amount of time, in seconds, that we will wait before replacing an instance that is running and became unhealthy (this is only applicable for instances that were once healthy).
 	HealthCheckUnhealthyDurationBeforeReplacement *int `pulumi:"healthCheckUnhealthyDurationBeforeReplacement"`
@@ -458,8 +456,6 @@ type elastigroupState struct {
 	IntegrationKubernetes *ElastigroupIntegrationKubernetes `pulumi:"integrationKubernetes"`
 	// Describes the [Mesosphere](https://mesosphere.com/) integration.
 	IntegrationMesosphere *ElastigroupIntegrationMesosphere `pulumi:"integrationMesosphere"`
-	// Describes the [Multai Runtime](https://spotinst.com/) integration.
-	IntegrationMultaiRuntime *ElastigroupIntegrationMultaiRuntime `pulumi:"integrationMultaiRuntime"`
 	// Describes the [Nomad](https://www.nomadproject.io/) integration.
 	IntegrationNomad *ElastigroupIntegrationNomad `pulumi:"integrationNomad"`
 	// Describes the [Rancher](http://rancherlabs.com/) integration.
@@ -479,10 +475,8 @@ type elastigroupState struct {
 	// The minimum number of instances the group should have at any time.
 	MinSize *int `pulumi:"minSize"`
 	// Defines the preferred minimum instance lifetime in hours. Markets which comply with this preference will be prioritized. Optional values: 1, 3, 6, 12, 24.
-	MinimumInstanceLifetime *int `pulumi:"minimumInstanceLifetime"`
-	// Set of targets to register.
-	MultaiTargetSets []ElastigroupMultaiTargetSet `pulumi:"multaiTargetSets"`
-	MultipleMetrics  *ElastigroupMultipleMetrics  `pulumi:"multipleMetrics"`
+	MinimumInstanceLifetime *int                        `pulumi:"minimumInstanceLifetime"`
+	MultipleMetrics         *ElastigroupMultipleMetrics `pulumi:"multipleMetrics"`
 	// The group name.
 	Name              *string                       `pulumi:"name"`
 	NetworkInterfaces []ElastigroupNetworkInterface `pulumi:"networkInterfaces"`
@@ -540,6 +534,8 @@ type elastigroupState struct {
 	// A key/value mapping of tags to assign to the resource.
 	Tags []ElastigroupTag `pulumi:"tags"`
 	// List of Target Group ARNs to register the instances to.
+	//
+	// Usage:
 	TargetGroupArns []string                 `pulumi:"targetGroupArns"`
 	UpdatePolicy    *ElastigroupUpdatePolicy `pulumi:"updatePolicy"`
 	// The user data to provide when launching the instance.
@@ -587,7 +583,7 @@ type ElastigroupState struct {
 	FallbackToOndemand pulumi.BoolPtrInput
 	// The amount of time, in seconds, after the instance has launched to starts and check its health.
 	HealthCheckGracePeriod pulumi.IntPtrInput
-	// The service that will perform health checks for the instance. Valid values: `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"MLB"`, `"EC2"`, `"MULTAI_TARGET_SET"`, `"MLB_RUNTIME"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
+	// The service that will perform health checks for the instance. Valid values: `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"EC2"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
 	HealthCheckType pulumi.StringPtrInput
 	// The amount of time, in seconds, that we will wait before replacing an instance that is running and became unhealthy (this is only applicable for instances that were once healthy).
 	HealthCheckUnhealthyDurationBeforeReplacement pulumi.IntPtrInput
@@ -621,8 +617,6 @@ type ElastigroupState struct {
 	IntegrationKubernetes ElastigroupIntegrationKubernetesPtrInput
 	// Describes the [Mesosphere](https://mesosphere.com/) integration.
 	IntegrationMesosphere ElastigroupIntegrationMesospherePtrInput
-	// Describes the [Multai Runtime](https://spotinst.com/) integration.
-	IntegrationMultaiRuntime ElastigroupIntegrationMultaiRuntimePtrInput
 	// Describes the [Nomad](https://www.nomadproject.io/) integration.
 	IntegrationNomad ElastigroupIntegrationNomadPtrInput
 	// Describes the [Rancher](http://rancherlabs.com/) integration.
@@ -643,9 +637,7 @@ type ElastigroupState struct {
 	MinSize pulumi.IntPtrInput
 	// Defines the preferred minimum instance lifetime in hours. Markets which comply with this preference will be prioritized. Optional values: 1, 3, 6, 12, 24.
 	MinimumInstanceLifetime pulumi.IntPtrInput
-	// Set of targets to register.
-	MultaiTargetSets ElastigroupMultaiTargetSetArrayInput
-	MultipleMetrics  ElastigroupMultipleMetricsPtrInput
+	MultipleMetrics         ElastigroupMultipleMetricsPtrInput
 	// The group name.
 	Name              pulumi.StringPtrInput
 	NetworkInterfaces ElastigroupNetworkInterfaceArrayInput
@@ -703,6 +695,8 @@ type ElastigroupState struct {
 	// A key/value mapping of tags to assign to the resource.
 	Tags ElastigroupTagArrayInput
 	// List of Target Group ARNs to register the instances to.
+	//
+	// Usage:
 	TargetGroupArns pulumi.StringArrayInput
 	UpdatePolicy    ElastigroupUpdatePolicyPtrInput
 	// The user data to provide when launching the instance.
@@ -754,7 +748,7 @@ type elastigroupArgs struct {
 	FallbackToOndemand bool `pulumi:"fallbackToOndemand"`
 	// The amount of time, in seconds, after the instance has launched to starts and check its health.
 	HealthCheckGracePeriod *int `pulumi:"healthCheckGracePeriod"`
-	// The service that will perform health checks for the instance. Valid values: `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"MLB"`, `"EC2"`, `"MULTAI_TARGET_SET"`, `"MLB_RUNTIME"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
+	// The service that will perform health checks for the instance. Valid values: `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"EC2"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
 	HealthCheckType *string `pulumi:"healthCheckType"`
 	// The amount of time, in seconds, that we will wait before replacing an instance that is running and became unhealthy (this is only applicable for instances that were once healthy).
 	HealthCheckUnhealthyDurationBeforeReplacement *int `pulumi:"healthCheckUnhealthyDurationBeforeReplacement"`
@@ -788,8 +782,6 @@ type elastigroupArgs struct {
 	IntegrationKubernetes *ElastigroupIntegrationKubernetes `pulumi:"integrationKubernetes"`
 	// Describes the [Mesosphere](https://mesosphere.com/) integration.
 	IntegrationMesosphere *ElastigroupIntegrationMesosphere `pulumi:"integrationMesosphere"`
-	// Describes the [Multai Runtime](https://spotinst.com/) integration.
-	IntegrationMultaiRuntime *ElastigroupIntegrationMultaiRuntime `pulumi:"integrationMultaiRuntime"`
 	// Describes the [Nomad](https://www.nomadproject.io/) integration.
 	IntegrationNomad *ElastigroupIntegrationNomad `pulumi:"integrationNomad"`
 	// Describes the [Rancher](http://rancherlabs.com/) integration.
@@ -809,10 +801,8 @@ type elastigroupArgs struct {
 	// The minimum number of instances the group should have at any time.
 	MinSize *int `pulumi:"minSize"`
 	// Defines the preferred minimum instance lifetime in hours. Markets which comply with this preference will be prioritized. Optional values: 1, 3, 6, 12, 24.
-	MinimumInstanceLifetime *int `pulumi:"minimumInstanceLifetime"`
-	// Set of targets to register.
-	MultaiTargetSets []ElastigroupMultaiTargetSet `pulumi:"multaiTargetSets"`
-	MultipleMetrics  *ElastigroupMultipleMetrics  `pulumi:"multipleMetrics"`
+	MinimumInstanceLifetime *int                        `pulumi:"minimumInstanceLifetime"`
+	MultipleMetrics         *ElastigroupMultipleMetrics `pulumi:"multipleMetrics"`
 	// The group name.
 	Name              *string                       `pulumi:"name"`
 	NetworkInterfaces []ElastigroupNetworkInterface `pulumi:"networkInterfaces"`
@@ -870,6 +860,8 @@ type elastigroupArgs struct {
 	// A key/value mapping of tags to assign to the resource.
 	Tags []ElastigroupTag `pulumi:"tags"`
 	// List of Target Group ARNs to register the instances to.
+	//
+	// Usage:
 	TargetGroupArns []string                 `pulumi:"targetGroupArns"`
 	UpdatePolicy    *ElastigroupUpdatePolicy `pulumi:"updatePolicy"`
 	// The user data to provide when launching the instance.
@@ -918,7 +910,7 @@ type ElastigroupArgs struct {
 	FallbackToOndemand pulumi.BoolInput
 	// The amount of time, in seconds, after the instance has launched to starts and check its health.
 	HealthCheckGracePeriod pulumi.IntPtrInput
-	// The service that will perform health checks for the instance. Valid values: `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"MLB"`, `"EC2"`, `"MULTAI_TARGET_SET"`, `"MLB_RUNTIME"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
+	// The service that will perform health checks for the instance. Valid values: `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"EC2"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
 	HealthCheckType pulumi.StringPtrInput
 	// The amount of time, in seconds, that we will wait before replacing an instance that is running and became unhealthy (this is only applicable for instances that were once healthy).
 	HealthCheckUnhealthyDurationBeforeReplacement pulumi.IntPtrInput
@@ -952,8 +944,6 @@ type ElastigroupArgs struct {
 	IntegrationKubernetes ElastigroupIntegrationKubernetesPtrInput
 	// Describes the [Mesosphere](https://mesosphere.com/) integration.
 	IntegrationMesosphere ElastigroupIntegrationMesospherePtrInput
-	// Describes the [Multai Runtime](https://spotinst.com/) integration.
-	IntegrationMultaiRuntime ElastigroupIntegrationMultaiRuntimePtrInput
 	// Describes the [Nomad](https://www.nomadproject.io/) integration.
 	IntegrationNomad ElastigroupIntegrationNomadPtrInput
 	// Describes the [Rancher](http://rancherlabs.com/) integration.
@@ -974,9 +964,7 @@ type ElastigroupArgs struct {
 	MinSize pulumi.IntPtrInput
 	// Defines the preferred minimum instance lifetime in hours. Markets which comply with this preference will be prioritized. Optional values: 1, 3, 6, 12, 24.
 	MinimumInstanceLifetime pulumi.IntPtrInput
-	// Set of targets to register.
-	MultaiTargetSets ElastigroupMultaiTargetSetArrayInput
-	MultipleMetrics  ElastigroupMultipleMetricsPtrInput
+	MultipleMetrics         ElastigroupMultipleMetricsPtrInput
 	// The group name.
 	Name              pulumi.StringPtrInput
 	NetworkInterfaces ElastigroupNetworkInterfaceArrayInput
@@ -1034,6 +1022,8 @@ type ElastigroupArgs struct {
 	// A key/value mapping of tags to assign to the resource.
 	Tags ElastigroupTagArrayInput
 	// List of Target Group ARNs to register the instances to.
+	//
+	// Usage:
 	TargetGroupArns pulumi.StringArrayInput
 	UpdatePolicy    ElastigroupUpdatePolicyPtrInput
 	// The user data to provide when launching the instance.
@@ -1218,7 +1208,7 @@ func (o ElastigroupOutput) HealthCheckGracePeriod() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Elastigroup) pulumi.IntPtrOutput { return v.HealthCheckGracePeriod }).(pulumi.IntPtrOutput)
 }
 
-// The service that will perform health checks for the instance. Valid values: `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"MLB"`, `"EC2"`, `"MULTAI_TARGET_SET"`, `"MLB_RUNTIME"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
+// The service that will perform health checks for the instance. Valid values: `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"EC2"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
 func (o ElastigroupOutput) HealthCheckType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Elastigroup) pulumi.StringPtrOutput { return v.HealthCheckType }).(pulumi.StringPtrOutput)
 }
@@ -1303,11 +1293,6 @@ func (o ElastigroupOutput) IntegrationMesosphere() ElastigroupIntegrationMesosph
 	return o.ApplyT(func(v *Elastigroup) ElastigroupIntegrationMesospherePtrOutput { return v.IntegrationMesosphere }).(ElastigroupIntegrationMesospherePtrOutput)
 }
 
-// Describes the [Multai Runtime](https://spotinst.com/) integration.
-func (o ElastigroupOutput) IntegrationMultaiRuntime() ElastigroupIntegrationMultaiRuntimePtrOutput {
-	return o.ApplyT(func(v *Elastigroup) ElastigroupIntegrationMultaiRuntimePtrOutput { return v.IntegrationMultaiRuntime }).(ElastigroupIntegrationMultaiRuntimePtrOutput)
-}
-
 // Describes the [Nomad](https://www.nomadproject.io/) integration.
 func (o ElastigroupOutput) IntegrationNomad() ElastigroupIntegrationNomadPtrOutput {
 	return o.ApplyT(func(v *Elastigroup) ElastigroupIntegrationNomadPtrOutput { return v.IntegrationNomad }).(ElastigroupIntegrationNomadPtrOutput)
@@ -1359,11 +1344,6 @@ func (o ElastigroupOutput) MinSize() pulumi.IntOutput {
 // Defines the preferred minimum instance lifetime in hours. Markets which comply with this preference will be prioritized. Optional values: 1, 3, 6, 12, 24.
 func (o ElastigroupOutput) MinimumInstanceLifetime() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Elastigroup) pulumi.IntPtrOutput { return v.MinimumInstanceLifetime }).(pulumi.IntPtrOutput)
-}
-
-// Set of targets to register.
-func (o ElastigroupOutput) MultaiTargetSets() ElastigroupMultaiTargetSetArrayOutput {
-	return o.ApplyT(func(v *Elastigroup) ElastigroupMultaiTargetSetArrayOutput { return v.MultaiTargetSets }).(ElastigroupMultaiTargetSetArrayOutput)
 }
 
 func (o ElastigroupOutput) MultipleMetrics() ElastigroupMultipleMetricsPtrOutput {
@@ -1516,6 +1496,8 @@ func (o ElastigroupOutput) Tags() ElastigroupTagArrayOutput {
 }
 
 // List of Target Group ARNs to register the instances to.
+//
+// Usage:
 func (o ElastigroupOutput) TargetGroupArns() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Elastigroup) pulumi.StringArrayOutput { return v.TargetGroupArns }).(pulumi.StringArrayOutput)
 }

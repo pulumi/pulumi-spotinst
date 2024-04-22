@@ -305,7 +305,7 @@ namespace Pulumi.SpotInst.Aws
         public Output<int?> HealthCheckGracePeriod { get; private set; } = null!;
 
         /// <summary>
-        /// The service that will perform health checks for the instance. Valid values: `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"MLB"`, `"EC2"`, `"MULTAI_TARGET_SET"`, `"MLB_RUNTIME"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
+        /// The service that will perform health checks for the instance. Valid values: `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"EC2"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
         /// </summary>
         [Output("healthCheckType")]
         public Output<string?> HealthCheckType { get; private set; } = null!;
@@ -405,12 +405,6 @@ namespace Pulumi.SpotInst.Aws
         public Output<Outputs.ElastigroupIntegrationMesosphere?> IntegrationMesosphere { get; private set; } = null!;
 
         /// <summary>
-        /// Describes the [Multai Runtime](https://spotinst.com/) integration.
-        /// </summary>
-        [Output("integrationMultaiRuntime")]
-        public Output<Outputs.ElastigroupIntegrationMultaiRuntime?> IntegrationMultaiRuntime { get; private set; } = null!;
-
-        /// <summary>
         /// Describes the [Nomad](https://www.nomadproject.io/) integration.
         /// </summary>
         [Output("integrationNomad")]
@@ -469,12 +463,6 @@ namespace Pulumi.SpotInst.Aws
         /// </summary>
         [Output("minimumInstanceLifetime")]
         public Output<int?> MinimumInstanceLifetime { get; private set; } = null!;
-
-        /// <summary>
-        /// Set of targets to register.
-        /// </summary>
-        [Output("multaiTargetSets")]
-        public Output<ImmutableArray<Outputs.ElastigroupMultaiTargetSet>> MultaiTargetSets { get; private set; } = null!;
 
         [Output("multipleMetrics")]
         public Output<Outputs.ElastigroupMultipleMetrics?> MultipleMetrics { get; private set; } = null!;
@@ -637,6 +625,8 @@ namespace Pulumi.SpotInst.Aws
 
         /// <summary>
         /// List of Target Group ARNs to register the instances to.
+        /// 
+        /// Usage:
         /// </summary>
         [Output("targetGroupArns")]
         public Output<ImmutableArray<string>> TargetGroupArns { get; private set; } = null!;
@@ -841,7 +831,7 @@ namespace Pulumi.SpotInst.Aws
         public Input<int>? HealthCheckGracePeriod { get; set; }
 
         /// <summary>
-        /// The service that will perform health checks for the instance. Valid values: `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"MLB"`, `"EC2"`, `"MULTAI_TARGET_SET"`, `"MLB_RUNTIME"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
+        /// The service that will perform health checks for the instance. Valid values: `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"EC2"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
         /// </summary>
         [Input("healthCheckType")]
         public Input<string>? HealthCheckType { get; set; }
@@ -965,12 +955,6 @@ namespace Pulumi.SpotInst.Aws
         public Input<Inputs.ElastigroupIntegrationMesosphereArgs>? IntegrationMesosphere { get; set; }
 
         /// <summary>
-        /// Describes the [Multai Runtime](https://spotinst.com/) integration.
-        /// </summary>
-        [Input("integrationMultaiRuntime")]
-        public Input<Inputs.ElastigroupIntegrationMultaiRuntimeArgs>? IntegrationMultaiRuntime { get; set; }
-
-        /// <summary>
         /// Describes the [Nomad](https://www.nomadproject.io/) integration.
         /// </summary>
         [Input("integrationNomad")]
@@ -1034,18 +1018,6 @@ namespace Pulumi.SpotInst.Aws
         /// </summary>
         [Input("minimumInstanceLifetime")]
         public Input<int>? MinimumInstanceLifetime { get; set; }
-
-        [Input("multaiTargetSets")]
-        private InputList<Inputs.ElastigroupMultaiTargetSetArgs>? _multaiTargetSets;
-
-        /// <summary>
-        /// Set of targets to register.
-        /// </summary>
-        public InputList<Inputs.ElastigroupMultaiTargetSetArgs> MultaiTargetSets
-        {
-            get => _multaiTargetSets ?? (_multaiTargetSets = new InputList<Inputs.ElastigroupMultaiTargetSetArgs>());
-            set => _multaiTargetSets = value;
-        }
 
         [Input("multipleMetrics")]
         public Input<Inputs.ElastigroupMultipleMetricsArgs>? MultipleMetrics { get; set; }
@@ -1300,6 +1272,8 @@ namespace Pulumi.SpotInst.Aws
 
         /// <summary>
         /// List of Target Group ARNs to register the instances to.
+        /// 
+        /// Usage:
         /// </summary>
         public InputList<string> TargetGroupArns
         {
@@ -1469,7 +1443,7 @@ namespace Pulumi.SpotInst.Aws
         public Input<int>? HealthCheckGracePeriod { get; set; }
 
         /// <summary>
-        /// The service that will perform health checks for the instance. Valid values: `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"MLB"`, `"EC2"`, `"MULTAI_TARGET_SET"`, `"MLB_RUNTIME"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
+        /// The service that will perform health checks for the instance. Valid values: `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"EC2"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
         /// </summary>
         [Input("healthCheckType")]
         public Input<string>? HealthCheckType { get; set; }
@@ -1593,12 +1567,6 @@ namespace Pulumi.SpotInst.Aws
         public Input<Inputs.ElastigroupIntegrationMesosphereGetArgs>? IntegrationMesosphere { get; set; }
 
         /// <summary>
-        /// Describes the [Multai Runtime](https://spotinst.com/) integration.
-        /// </summary>
-        [Input("integrationMultaiRuntime")]
-        public Input<Inputs.ElastigroupIntegrationMultaiRuntimeGetArgs>? IntegrationMultaiRuntime { get; set; }
-
-        /// <summary>
         /// Describes the [Nomad](https://www.nomadproject.io/) integration.
         /// </summary>
         [Input("integrationNomad")]
@@ -1662,18 +1630,6 @@ namespace Pulumi.SpotInst.Aws
         /// </summary>
         [Input("minimumInstanceLifetime")]
         public Input<int>? MinimumInstanceLifetime { get; set; }
-
-        [Input("multaiTargetSets")]
-        private InputList<Inputs.ElastigroupMultaiTargetSetGetArgs>? _multaiTargetSets;
-
-        /// <summary>
-        /// Set of targets to register.
-        /// </summary>
-        public InputList<Inputs.ElastigroupMultaiTargetSetGetArgs> MultaiTargetSets
-        {
-            get => _multaiTargetSets ?? (_multaiTargetSets = new InputList<Inputs.ElastigroupMultaiTargetSetGetArgs>());
-            set => _multaiTargetSets = value;
-        }
 
         [Input("multipleMetrics")]
         public Input<Inputs.ElastigroupMultipleMetricsGetArgs>? MultipleMetrics { get; set; }
@@ -1928,6 +1884,8 @@ namespace Pulumi.SpotInst.Aws
 
         /// <summary>
         /// List of Target Group ARNs to register the instances to.
+        /// 
+        /// Usage:
         /// </summary>
         public InputList<string> TargetGroupArns
         {

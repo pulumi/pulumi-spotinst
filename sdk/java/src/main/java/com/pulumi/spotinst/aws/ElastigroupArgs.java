@@ -18,14 +18,12 @@ import com.pulumi.spotinst.aws.inputs.ElastigroupIntegrationEcsArgs;
 import com.pulumi.spotinst.aws.inputs.ElastigroupIntegrationGitlabArgs;
 import com.pulumi.spotinst.aws.inputs.ElastigroupIntegrationKubernetesArgs;
 import com.pulumi.spotinst.aws.inputs.ElastigroupIntegrationMesosphereArgs;
-import com.pulumi.spotinst.aws.inputs.ElastigroupIntegrationMultaiRuntimeArgs;
 import com.pulumi.spotinst.aws.inputs.ElastigroupIntegrationNomadArgs;
 import com.pulumi.spotinst.aws.inputs.ElastigroupIntegrationRancherArgs;
 import com.pulumi.spotinst.aws.inputs.ElastigroupIntegrationRoute53Args;
 import com.pulumi.spotinst.aws.inputs.ElastigroupItfArgs;
 import com.pulumi.spotinst.aws.inputs.ElastigroupLoggingArgs;
 import com.pulumi.spotinst.aws.inputs.ElastigroupMetadataOptionsArgs;
-import com.pulumi.spotinst.aws.inputs.ElastigroupMultaiTargetSetArgs;
 import com.pulumi.spotinst.aws.inputs.ElastigroupMultipleMetricsArgs;
 import com.pulumi.spotinst.aws.inputs.ElastigroupNetworkInterfaceArgs;
 import com.pulumi.spotinst.aws.inputs.ElastigroupResourceRequirementArgs;
@@ -290,14 +288,14 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The service that will perform health checks for the instance. Valid values: `&#34;ELB&#34;`, `&#34;HCS&#34;`, `&#34;TARGET_GROUP&#34;`, `&#34;MLB&#34;`, `&#34;EC2&#34;`, `&#34;MULTAI_TARGET_SET&#34;`, `&#34;MLB_RUNTIME&#34;`, `&#34;K8S_NODE&#34;`, `&#34;NOMAD_NODE&#34;`, `&#34;ECS_CLUSTER_INSTANCE&#34;`.
+     * The service that will perform health checks for the instance. Valid values: `&#34;ELB&#34;`, `&#34;HCS&#34;`, `&#34;TARGET_GROUP&#34;`, `&#34;EC2&#34;`, `&#34;K8S_NODE&#34;`, `&#34;NOMAD_NODE&#34;`, `&#34;ECS_CLUSTER_INSTANCE&#34;`.
      * 
      */
     @Import(name="healthCheckType")
     private @Nullable Output<String> healthCheckType;
 
     /**
-     * @return The service that will perform health checks for the instance. Valid values: `&#34;ELB&#34;`, `&#34;HCS&#34;`, `&#34;TARGET_GROUP&#34;`, `&#34;MLB&#34;`, `&#34;EC2&#34;`, `&#34;MULTAI_TARGET_SET&#34;`, `&#34;MLB_RUNTIME&#34;`, `&#34;K8S_NODE&#34;`, `&#34;NOMAD_NODE&#34;`, `&#34;ECS_CLUSTER_INSTANCE&#34;`.
+     * @return The service that will perform health checks for the instance. Valid values: `&#34;ELB&#34;`, `&#34;HCS&#34;`, `&#34;TARGET_GROUP&#34;`, `&#34;EC2&#34;`, `&#34;K8S_NODE&#34;`, `&#34;NOMAD_NODE&#34;`, `&#34;ECS_CLUSTER_INSTANCE&#34;`.
      * 
      */
     public Optional<Output<String>> healthCheckType() {
@@ -539,21 +537,6 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Describes the [Multai Runtime](https://spotinst.com/) integration.
-     * 
-     */
-    @Import(name="integrationMultaiRuntime")
-    private @Nullable Output<ElastigroupIntegrationMultaiRuntimeArgs> integrationMultaiRuntime;
-
-    /**
-     * @return Describes the [Multai Runtime](https://spotinst.com/) integration.
-     * 
-     */
-    public Optional<Output<ElastigroupIntegrationMultaiRuntimeArgs>> integrationMultaiRuntime() {
-        return Optional.ofNullable(this.integrationMultaiRuntime);
-    }
-
-    /**
      * Describes the [Nomad](https://www.nomadproject.io/) integration.
      * 
      */
@@ -700,21 +683,6 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Integer>> minimumInstanceLifetime() {
         return Optional.ofNullable(this.minimumInstanceLifetime);
-    }
-
-    /**
-     * Set of targets to register.
-     * 
-     */
-    @Import(name="multaiTargetSets")
-    private @Nullable Output<List<ElastigroupMultaiTargetSetArgs>> multaiTargetSets;
-
-    /**
-     * @return Set of targets to register.
-     * 
-     */
-    public Optional<Output<List<ElastigroupMultaiTargetSetArgs>>> multaiTargetSets() {
-        return Optional.ofNullable(this.multaiTargetSets);
     }
 
     @Import(name="multipleMetrics")
@@ -1110,12 +1078,16 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * List of Target Group ARNs to register the instances to.
      * 
+     * Usage:
+     * 
      */
     @Import(name="targetGroupArns")
     private @Nullable Output<List<String>> targetGroupArns;
 
     /**
      * @return List of Target Group ARNs to register the instances to.
+     * 
+     * Usage:
      * 
      */
     public Optional<Output<List<String>>> targetGroupArns() {
@@ -1233,7 +1205,6 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
         this.integrationGitlab = $.integrationGitlab;
         this.integrationKubernetes = $.integrationKubernetes;
         this.integrationMesosphere = $.integrationMesosphere;
-        this.integrationMultaiRuntime = $.integrationMultaiRuntime;
         this.integrationNomad = $.integrationNomad;
         this.integrationRancher = $.integrationRancher;
         this.integrationRoute53 = $.integrationRoute53;
@@ -1245,7 +1216,6 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
         this.metadataOptions = $.metadataOptions;
         this.minSize = $.minSize;
         this.minimumInstanceLifetime = $.minimumInstanceLifetime;
-        this.multaiTargetSets = $.multaiTargetSets;
         this.multipleMetrics = $.multipleMetrics;
         this.name = $.name;
         this.networkInterfaces = $.networkInterfaces;
@@ -1669,7 +1639,7 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param healthCheckType The service that will perform health checks for the instance. Valid values: `&#34;ELB&#34;`, `&#34;HCS&#34;`, `&#34;TARGET_GROUP&#34;`, `&#34;MLB&#34;`, `&#34;EC2&#34;`, `&#34;MULTAI_TARGET_SET&#34;`, `&#34;MLB_RUNTIME&#34;`, `&#34;K8S_NODE&#34;`, `&#34;NOMAD_NODE&#34;`, `&#34;ECS_CLUSTER_INSTANCE&#34;`.
+         * @param healthCheckType The service that will perform health checks for the instance. Valid values: `&#34;ELB&#34;`, `&#34;HCS&#34;`, `&#34;TARGET_GROUP&#34;`, `&#34;EC2&#34;`, `&#34;K8S_NODE&#34;`, `&#34;NOMAD_NODE&#34;`, `&#34;ECS_CLUSTER_INSTANCE&#34;`.
          * 
          * @return builder
          * 
@@ -1680,7 +1650,7 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param healthCheckType The service that will perform health checks for the instance. Valid values: `&#34;ELB&#34;`, `&#34;HCS&#34;`, `&#34;TARGET_GROUP&#34;`, `&#34;MLB&#34;`, `&#34;EC2&#34;`, `&#34;MULTAI_TARGET_SET&#34;`, `&#34;MLB_RUNTIME&#34;`, `&#34;K8S_NODE&#34;`, `&#34;NOMAD_NODE&#34;`, `&#34;ECS_CLUSTER_INSTANCE&#34;`.
+         * @param healthCheckType The service that will perform health checks for the instance. Valid values: `&#34;ELB&#34;`, `&#34;HCS&#34;`, `&#34;TARGET_GROUP&#34;`, `&#34;EC2&#34;`, `&#34;K8S_NODE&#34;`, `&#34;NOMAD_NODE&#34;`, `&#34;ECS_CLUSTER_INSTANCE&#34;`.
          * 
          * @return builder
          * 
@@ -2057,27 +2027,6 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param integrationMultaiRuntime Describes the [Multai Runtime](https://spotinst.com/) integration.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder integrationMultaiRuntime(@Nullable Output<ElastigroupIntegrationMultaiRuntimeArgs> integrationMultaiRuntime) {
-            $.integrationMultaiRuntime = integrationMultaiRuntime;
-            return this;
-        }
-
-        /**
-         * @param integrationMultaiRuntime Describes the [Multai Runtime](https://spotinst.com/) integration.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder integrationMultaiRuntime(ElastigroupIntegrationMultaiRuntimeArgs integrationMultaiRuntime) {
-            return integrationMultaiRuntime(Output.of(integrationMultaiRuntime));
-        }
-
-        /**
          * @param integrationNomad Describes the [Nomad](https://www.nomadproject.io/) integration.
          * 
          * @return builder
@@ -2286,37 +2235,6 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder minimumInstanceLifetime(Integer minimumInstanceLifetime) {
             return minimumInstanceLifetime(Output.of(minimumInstanceLifetime));
-        }
-
-        /**
-         * @param multaiTargetSets Set of targets to register.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder multaiTargetSets(@Nullable Output<List<ElastigroupMultaiTargetSetArgs>> multaiTargetSets) {
-            $.multaiTargetSets = multaiTargetSets;
-            return this;
-        }
-
-        /**
-         * @param multaiTargetSets Set of targets to register.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder multaiTargetSets(List<ElastigroupMultaiTargetSetArgs> multaiTargetSets) {
-            return multaiTargetSets(Output.of(multaiTargetSets));
-        }
-
-        /**
-         * @param multaiTargetSets Set of targets to register.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder multaiTargetSets(ElastigroupMultaiTargetSetArgs... multaiTargetSets) {
-            return multaiTargetSets(List.of(multaiTargetSets));
         }
 
         public Builder multipleMetrics(@Nullable Output<ElastigroupMultipleMetricsArgs> multipleMetrics) {
@@ -2978,6 +2896,8 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param targetGroupArns List of Target Group ARNs to register the instances to.
          * 
+         * Usage:
+         * 
          * @return builder
          * 
          */
@@ -2989,6 +2909,8 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param targetGroupArns List of Target Group ARNs to register the instances to.
          * 
+         * Usage:
+         * 
          * @return builder
          * 
          */
@@ -2998,6 +2920,8 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param targetGroupArns List of Target Group ARNs to register the instances to.
+         * 
+         * Usage:
          * 
          * @return builder
          * 

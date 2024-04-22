@@ -22,14 +22,12 @@ import com.pulumi.spotinst.aws.outputs.ElastigroupIntegrationEcs;
 import com.pulumi.spotinst.aws.outputs.ElastigroupIntegrationGitlab;
 import com.pulumi.spotinst.aws.outputs.ElastigroupIntegrationKubernetes;
 import com.pulumi.spotinst.aws.outputs.ElastigroupIntegrationMesosphere;
-import com.pulumi.spotinst.aws.outputs.ElastigroupIntegrationMultaiRuntime;
 import com.pulumi.spotinst.aws.outputs.ElastigroupIntegrationNomad;
 import com.pulumi.spotinst.aws.outputs.ElastigroupIntegrationRancher;
 import com.pulumi.spotinst.aws.outputs.ElastigroupIntegrationRoute53;
 import com.pulumi.spotinst.aws.outputs.ElastigroupItf;
 import com.pulumi.spotinst.aws.outputs.ElastigroupLogging;
 import com.pulumi.spotinst.aws.outputs.ElastigroupMetadataOptions;
-import com.pulumi.spotinst.aws.outputs.ElastigroupMultaiTargetSet;
 import com.pulumi.spotinst.aws.outputs.ElastigroupMultipleMetrics;
 import com.pulumi.spotinst.aws.outputs.ElastigroupNetworkInterface;
 import com.pulumi.spotinst.aws.outputs.ElastigroupResourceRequirement;
@@ -438,14 +436,14 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.healthCheckGracePeriod);
     }
     /**
-     * The service that will perform health checks for the instance. Valid values: `&#34;ELB&#34;`, `&#34;HCS&#34;`, `&#34;TARGET_GROUP&#34;`, `&#34;MLB&#34;`, `&#34;EC2&#34;`, `&#34;MULTAI_TARGET_SET&#34;`, `&#34;MLB_RUNTIME&#34;`, `&#34;K8S_NODE&#34;`, `&#34;NOMAD_NODE&#34;`, `&#34;ECS_CLUSTER_INSTANCE&#34;`.
+     * The service that will perform health checks for the instance. Valid values: `&#34;ELB&#34;`, `&#34;HCS&#34;`, `&#34;TARGET_GROUP&#34;`, `&#34;EC2&#34;`, `&#34;K8S_NODE&#34;`, `&#34;NOMAD_NODE&#34;`, `&#34;ECS_CLUSTER_INSTANCE&#34;`.
      * 
      */
     @Export(name="healthCheckType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> healthCheckType;
 
     /**
-     * @return The service that will perform health checks for the instance. Valid values: `&#34;ELB&#34;`, `&#34;HCS&#34;`, `&#34;TARGET_GROUP&#34;`, `&#34;MLB&#34;`, `&#34;EC2&#34;`, `&#34;MULTAI_TARGET_SET&#34;`, `&#34;MLB_RUNTIME&#34;`, `&#34;K8S_NODE&#34;`, `&#34;NOMAD_NODE&#34;`, `&#34;ECS_CLUSTER_INSTANCE&#34;`.
+     * @return The service that will perform health checks for the instance. Valid values: `&#34;ELB&#34;`, `&#34;HCS&#34;`, `&#34;TARGET_GROUP&#34;`, `&#34;EC2&#34;`, `&#34;K8S_NODE&#34;`, `&#34;NOMAD_NODE&#34;`, `&#34;ECS_CLUSTER_INSTANCE&#34;`.
      * 
      */
     public Output<Optional<String>> healthCheckType() {
@@ -670,20 +668,6 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.integrationMesosphere);
     }
     /**
-     * Describes the [Multai Runtime](https://spotinst.com/) integration.
-     * 
-     */
-    @Export(name="integrationMultaiRuntime", refs={ElastigroupIntegrationMultaiRuntime.class}, tree="[0]")
-    private Output</* @Nullable */ ElastigroupIntegrationMultaiRuntime> integrationMultaiRuntime;
-
-    /**
-     * @return Describes the [Multai Runtime](https://spotinst.com/) integration.
-     * 
-     */
-    public Output<Optional<ElastigroupIntegrationMultaiRuntime>> integrationMultaiRuntime() {
-        return Codegen.optional(this.integrationMultaiRuntime);
-    }
-    /**
      * Describes the [Nomad](https://www.nomadproject.io/) integration.
      * 
      */
@@ -820,20 +804,6 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Integer>> minimumInstanceLifetime() {
         return Codegen.optional(this.minimumInstanceLifetime);
-    }
-    /**
-     * Set of targets to register.
-     * 
-     */
-    @Export(name="multaiTargetSets", refs={List.class,ElastigroupMultaiTargetSet.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<ElastigroupMultaiTargetSet>> multaiTargetSets;
-
-    /**
-     * @return Set of targets to register.
-     * 
-     */
-    public Output<Optional<List<ElastigroupMultaiTargetSet>>> multaiTargetSets() {
-        return Codegen.optional(this.multaiTargetSets);
     }
     @Export(name="multipleMetrics", refs={ElastigroupMultipleMetrics.class}, tree="[0]")
     private Output</* @Nullable */ ElastigroupMultipleMetrics> multipleMetrics;
@@ -1198,12 +1168,16 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
     /**
      * List of Target Group ARNs to register the instances to.
      * 
+     * Usage:
+     * 
      */
     @Export(name="targetGroupArns", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> targetGroupArns;
 
     /**
      * @return List of Target Group ARNs to register the instances to.
+     * 
+     * Usage:
      * 
      */
     public Output<Optional<List<String>>> targetGroupArns() {

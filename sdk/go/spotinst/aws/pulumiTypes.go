@@ -5342,151 +5342,6 @@ func (o ElastigroupIntegrationMesospherePtrOutput) ApiServer() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
-type ElastigroupIntegrationMultaiRuntime struct {
-	// The deployment id you want to get
-	//
-	// Usage:
-	DeploymentId string `pulumi:"deploymentId"`
-}
-
-// ElastigroupIntegrationMultaiRuntimeInput is an input type that accepts ElastigroupIntegrationMultaiRuntimeArgs and ElastigroupIntegrationMultaiRuntimeOutput values.
-// You can construct a concrete instance of `ElastigroupIntegrationMultaiRuntimeInput` via:
-//
-//	ElastigroupIntegrationMultaiRuntimeArgs{...}
-type ElastigroupIntegrationMultaiRuntimeInput interface {
-	pulumi.Input
-
-	ToElastigroupIntegrationMultaiRuntimeOutput() ElastigroupIntegrationMultaiRuntimeOutput
-	ToElastigroupIntegrationMultaiRuntimeOutputWithContext(context.Context) ElastigroupIntegrationMultaiRuntimeOutput
-}
-
-type ElastigroupIntegrationMultaiRuntimeArgs struct {
-	// The deployment id you want to get
-	//
-	// Usage:
-	DeploymentId pulumi.StringInput `pulumi:"deploymentId"`
-}
-
-func (ElastigroupIntegrationMultaiRuntimeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ElastigroupIntegrationMultaiRuntime)(nil)).Elem()
-}
-
-func (i ElastigroupIntegrationMultaiRuntimeArgs) ToElastigroupIntegrationMultaiRuntimeOutput() ElastigroupIntegrationMultaiRuntimeOutput {
-	return i.ToElastigroupIntegrationMultaiRuntimeOutputWithContext(context.Background())
-}
-
-func (i ElastigroupIntegrationMultaiRuntimeArgs) ToElastigroupIntegrationMultaiRuntimeOutputWithContext(ctx context.Context) ElastigroupIntegrationMultaiRuntimeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupIntegrationMultaiRuntimeOutput)
-}
-
-func (i ElastigroupIntegrationMultaiRuntimeArgs) ToElastigroupIntegrationMultaiRuntimePtrOutput() ElastigroupIntegrationMultaiRuntimePtrOutput {
-	return i.ToElastigroupIntegrationMultaiRuntimePtrOutputWithContext(context.Background())
-}
-
-func (i ElastigroupIntegrationMultaiRuntimeArgs) ToElastigroupIntegrationMultaiRuntimePtrOutputWithContext(ctx context.Context) ElastigroupIntegrationMultaiRuntimePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupIntegrationMultaiRuntimeOutput).ToElastigroupIntegrationMultaiRuntimePtrOutputWithContext(ctx)
-}
-
-// ElastigroupIntegrationMultaiRuntimePtrInput is an input type that accepts ElastigroupIntegrationMultaiRuntimeArgs, ElastigroupIntegrationMultaiRuntimePtr and ElastigroupIntegrationMultaiRuntimePtrOutput values.
-// You can construct a concrete instance of `ElastigroupIntegrationMultaiRuntimePtrInput` via:
-//
-//	        ElastigroupIntegrationMultaiRuntimeArgs{...}
-//
-//	or:
-//
-//	        nil
-type ElastigroupIntegrationMultaiRuntimePtrInput interface {
-	pulumi.Input
-
-	ToElastigroupIntegrationMultaiRuntimePtrOutput() ElastigroupIntegrationMultaiRuntimePtrOutput
-	ToElastigroupIntegrationMultaiRuntimePtrOutputWithContext(context.Context) ElastigroupIntegrationMultaiRuntimePtrOutput
-}
-
-type elastigroupIntegrationMultaiRuntimePtrType ElastigroupIntegrationMultaiRuntimeArgs
-
-func ElastigroupIntegrationMultaiRuntimePtr(v *ElastigroupIntegrationMultaiRuntimeArgs) ElastigroupIntegrationMultaiRuntimePtrInput {
-	return (*elastigroupIntegrationMultaiRuntimePtrType)(v)
-}
-
-func (*elastigroupIntegrationMultaiRuntimePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ElastigroupIntegrationMultaiRuntime)(nil)).Elem()
-}
-
-func (i *elastigroupIntegrationMultaiRuntimePtrType) ToElastigroupIntegrationMultaiRuntimePtrOutput() ElastigroupIntegrationMultaiRuntimePtrOutput {
-	return i.ToElastigroupIntegrationMultaiRuntimePtrOutputWithContext(context.Background())
-}
-
-func (i *elastigroupIntegrationMultaiRuntimePtrType) ToElastigroupIntegrationMultaiRuntimePtrOutputWithContext(ctx context.Context) ElastigroupIntegrationMultaiRuntimePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupIntegrationMultaiRuntimePtrOutput)
-}
-
-type ElastigroupIntegrationMultaiRuntimeOutput struct{ *pulumi.OutputState }
-
-func (ElastigroupIntegrationMultaiRuntimeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ElastigroupIntegrationMultaiRuntime)(nil)).Elem()
-}
-
-func (o ElastigroupIntegrationMultaiRuntimeOutput) ToElastigroupIntegrationMultaiRuntimeOutput() ElastigroupIntegrationMultaiRuntimeOutput {
-	return o
-}
-
-func (o ElastigroupIntegrationMultaiRuntimeOutput) ToElastigroupIntegrationMultaiRuntimeOutputWithContext(ctx context.Context) ElastigroupIntegrationMultaiRuntimeOutput {
-	return o
-}
-
-func (o ElastigroupIntegrationMultaiRuntimeOutput) ToElastigroupIntegrationMultaiRuntimePtrOutput() ElastigroupIntegrationMultaiRuntimePtrOutput {
-	return o.ToElastigroupIntegrationMultaiRuntimePtrOutputWithContext(context.Background())
-}
-
-func (o ElastigroupIntegrationMultaiRuntimeOutput) ToElastigroupIntegrationMultaiRuntimePtrOutputWithContext(ctx context.Context) ElastigroupIntegrationMultaiRuntimePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ElastigroupIntegrationMultaiRuntime) *ElastigroupIntegrationMultaiRuntime {
-		return &v
-	}).(ElastigroupIntegrationMultaiRuntimePtrOutput)
-}
-
-// The deployment id you want to get
-//
-// Usage:
-func (o ElastigroupIntegrationMultaiRuntimeOutput) DeploymentId() pulumi.StringOutput {
-	return o.ApplyT(func(v ElastigroupIntegrationMultaiRuntime) string { return v.DeploymentId }).(pulumi.StringOutput)
-}
-
-type ElastigroupIntegrationMultaiRuntimePtrOutput struct{ *pulumi.OutputState }
-
-func (ElastigroupIntegrationMultaiRuntimePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ElastigroupIntegrationMultaiRuntime)(nil)).Elem()
-}
-
-func (o ElastigroupIntegrationMultaiRuntimePtrOutput) ToElastigroupIntegrationMultaiRuntimePtrOutput() ElastigroupIntegrationMultaiRuntimePtrOutput {
-	return o
-}
-
-func (o ElastigroupIntegrationMultaiRuntimePtrOutput) ToElastigroupIntegrationMultaiRuntimePtrOutputWithContext(ctx context.Context) ElastigroupIntegrationMultaiRuntimePtrOutput {
-	return o
-}
-
-func (o ElastigroupIntegrationMultaiRuntimePtrOutput) Elem() ElastigroupIntegrationMultaiRuntimeOutput {
-	return o.ApplyT(func(v *ElastigroupIntegrationMultaiRuntime) ElastigroupIntegrationMultaiRuntime {
-		if v != nil {
-			return *v
-		}
-		var ret ElastigroupIntegrationMultaiRuntime
-		return ret
-	}).(ElastigroupIntegrationMultaiRuntimeOutput)
-}
-
-// The deployment id you want to get
-//
-// Usage:
-func (o ElastigroupIntegrationMultaiRuntimePtrOutput) DeploymentId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ElastigroupIntegrationMultaiRuntime) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.DeploymentId
-	}).(pulumi.StringPtrOutput)
-}
-
 type ElastigroupIntegrationNomad struct {
 	// Nomad ACL Token
 	AclToken *string `pulumi:"aclToken"`
@@ -8301,118 +8156,6 @@ func (o ElastigroupMetadataOptionsPtrOutput) InstanceMetadataTags() pulumi.Strin
 		}
 		return v.InstanceMetadataTags
 	}).(pulumi.StringPtrOutput)
-}
-
-type ElastigroupMultaiTargetSet struct {
-	// ID of Multai Load Balancer.
-	//
-	// Usage:
-	BalancerId string `pulumi:"balancerId"`
-	// ID of Multai target set.
-	TargetSetId string `pulumi:"targetSetId"`
-}
-
-// ElastigroupMultaiTargetSetInput is an input type that accepts ElastigroupMultaiTargetSetArgs and ElastigroupMultaiTargetSetOutput values.
-// You can construct a concrete instance of `ElastigroupMultaiTargetSetInput` via:
-//
-//	ElastigroupMultaiTargetSetArgs{...}
-type ElastigroupMultaiTargetSetInput interface {
-	pulumi.Input
-
-	ToElastigroupMultaiTargetSetOutput() ElastigroupMultaiTargetSetOutput
-	ToElastigroupMultaiTargetSetOutputWithContext(context.Context) ElastigroupMultaiTargetSetOutput
-}
-
-type ElastigroupMultaiTargetSetArgs struct {
-	// ID of Multai Load Balancer.
-	//
-	// Usage:
-	BalancerId pulumi.StringInput `pulumi:"balancerId"`
-	// ID of Multai target set.
-	TargetSetId pulumi.StringInput `pulumi:"targetSetId"`
-}
-
-func (ElastigroupMultaiTargetSetArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ElastigroupMultaiTargetSet)(nil)).Elem()
-}
-
-func (i ElastigroupMultaiTargetSetArgs) ToElastigroupMultaiTargetSetOutput() ElastigroupMultaiTargetSetOutput {
-	return i.ToElastigroupMultaiTargetSetOutputWithContext(context.Background())
-}
-
-func (i ElastigroupMultaiTargetSetArgs) ToElastigroupMultaiTargetSetOutputWithContext(ctx context.Context) ElastigroupMultaiTargetSetOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupMultaiTargetSetOutput)
-}
-
-// ElastigroupMultaiTargetSetArrayInput is an input type that accepts ElastigroupMultaiTargetSetArray and ElastigroupMultaiTargetSetArrayOutput values.
-// You can construct a concrete instance of `ElastigroupMultaiTargetSetArrayInput` via:
-//
-//	ElastigroupMultaiTargetSetArray{ ElastigroupMultaiTargetSetArgs{...} }
-type ElastigroupMultaiTargetSetArrayInput interface {
-	pulumi.Input
-
-	ToElastigroupMultaiTargetSetArrayOutput() ElastigroupMultaiTargetSetArrayOutput
-	ToElastigroupMultaiTargetSetArrayOutputWithContext(context.Context) ElastigroupMultaiTargetSetArrayOutput
-}
-
-type ElastigroupMultaiTargetSetArray []ElastigroupMultaiTargetSetInput
-
-func (ElastigroupMultaiTargetSetArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ElastigroupMultaiTargetSet)(nil)).Elem()
-}
-
-func (i ElastigroupMultaiTargetSetArray) ToElastigroupMultaiTargetSetArrayOutput() ElastigroupMultaiTargetSetArrayOutput {
-	return i.ToElastigroupMultaiTargetSetArrayOutputWithContext(context.Background())
-}
-
-func (i ElastigroupMultaiTargetSetArray) ToElastigroupMultaiTargetSetArrayOutputWithContext(ctx context.Context) ElastigroupMultaiTargetSetArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ElastigroupMultaiTargetSetArrayOutput)
-}
-
-type ElastigroupMultaiTargetSetOutput struct{ *pulumi.OutputState }
-
-func (ElastigroupMultaiTargetSetOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ElastigroupMultaiTargetSet)(nil)).Elem()
-}
-
-func (o ElastigroupMultaiTargetSetOutput) ToElastigroupMultaiTargetSetOutput() ElastigroupMultaiTargetSetOutput {
-	return o
-}
-
-func (o ElastigroupMultaiTargetSetOutput) ToElastigroupMultaiTargetSetOutputWithContext(ctx context.Context) ElastigroupMultaiTargetSetOutput {
-	return o
-}
-
-// ID of Multai Load Balancer.
-//
-// Usage:
-func (o ElastigroupMultaiTargetSetOutput) BalancerId() pulumi.StringOutput {
-	return o.ApplyT(func(v ElastigroupMultaiTargetSet) string { return v.BalancerId }).(pulumi.StringOutput)
-}
-
-// ID of Multai target set.
-func (o ElastigroupMultaiTargetSetOutput) TargetSetId() pulumi.StringOutput {
-	return o.ApplyT(func(v ElastigroupMultaiTargetSet) string { return v.TargetSetId }).(pulumi.StringOutput)
-}
-
-type ElastigroupMultaiTargetSetArrayOutput struct{ *pulumi.OutputState }
-
-func (ElastigroupMultaiTargetSetArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ElastigroupMultaiTargetSet)(nil)).Elem()
-}
-
-func (o ElastigroupMultaiTargetSetArrayOutput) ToElastigroupMultaiTargetSetArrayOutput() ElastigroupMultaiTargetSetArrayOutput {
-	return o
-}
-
-func (o ElastigroupMultaiTargetSetArrayOutput) ToElastigroupMultaiTargetSetArrayOutputWithContext(ctx context.Context) ElastigroupMultaiTargetSetArrayOutput {
-	return o
-}
-
-func (o ElastigroupMultaiTargetSetArrayOutput) Index(i pulumi.IntInput) ElastigroupMultaiTargetSetOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ElastigroupMultaiTargetSet {
-		return vs[0].([]ElastigroupMultaiTargetSet)[vs[1].(int)]
-	}).(ElastigroupMultaiTargetSetOutput)
 }
 
 type ElastigroupMultipleMetrics struct {
@@ -12204,7 +11947,7 @@ type ElastigroupUpdatePolicyRollConfig struct {
 	BatchSizePercentage int `pulumi:"batchSizePercentage"`
 	// The period of time (seconds) to wait before checking a batch's health after it's deployment.
 	GracePeriod *int `pulumi:"gracePeriod"`
-	// The service that will perform health checks for the instance. Valid values: `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"MLB"`, `"EC2"`, `"MULTAI_TARGET_SET"`, `"MLB_RUNTIME"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
+	// The service that will perform health checks for the instance. Valid values: `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"EC2"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
 	HealthCheckType *string `pulumi:"healthCheckType"`
 	// Strategy parameters
 	Strategy *ElastigroupUpdatePolicyRollConfigStrategy `pulumi:"strategy"`
@@ -12230,7 +11973,7 @@ type ElastigroupUpdatePolicyRollConfigArgs struct {
 	BatchSizePercentage pulumi.IntInput `pulumi:"batchSizePercentage"`
 	// The period of time (seconds) to wait before checking a batch's health after it's deployment.
 	GracePeriod pulumi.IntPtrInput `pulumi:"gracePeriod"`
-	// The service that will perform health checks for the instance. Valid values: `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"MLB"`, `"EC2"`, `"MULTAI_TARGET_SET"`, `"MLB_RUNTIME"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
+	// The service that will perform health checks for the instance. Valid values: `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"EC2"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
 	HealthCheckType pulumi.StringPtrInput `pulumi:"healthCheckType"`
 	// Strategy parameters
 	Strategy ElastigroupUpdatePolicyRollConfigStrategyPtrInput `pulumi:"strategy"`
@@ -12327,7 +12070,7 @@ func (o ElastigroupUpdatePolicyRollConfigOutput) GracePeriod() pulumi.IntPtrOutp
 	return o.ApplyT(func(v ElastigroupUpdatePolicyRollConfig) *int { return v.GracePeriod }).(pulumi.IntPtrOutput)
 }
 
-// The service that will perform health checks for the instance. Valid values: `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"MLB"`, `"EC2"`, `"MULTAI_TARGET_SET"`, `"MLB_RUNTIME"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
+// The service that will perform health checks for the instance. Valid values: `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"EC2"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
 func (o ElastigroupUpdatePolicyRollConfigOutput) HealthCheckType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElastigroupUpdatePolicyRollConfig) *string { return v.HealthCheckType }).(pulumi.StringPtrOutput)
 }
@@ -12393,7 +12136,7 @@ func (o ElastigroupUpdatePolicyRollConfigPtrOutput) GracePeriod() pulumi.IntPtrO
 	}).(pulumi.IntPtrOutput)
 }
 
-// The service that will perform health checks for the instance. Valid values: `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"MLB"`, `"EC2"`, `"MULTAI_TARGET_SET"`, `"MLB_RUNTIME"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
+// The service that will perform health checks for the instance. Valid values: `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"EC2"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
 func (o ElastigroupUpdatePolicyRollConfigPtrOutput) HealthCheckType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ElastigroupUpdatePolicyRollConfig) *string {
 		if v == nil {
@@ -13656,13 +13399,9 @@ func (o ManagedInstanceIntegrationRoute53DomainRecordSetArrayOutput) Index(i pul
 }
 
 type ManagedInstanceLoadBalancer struct {
-	Arn         *string `pulumi:"arn"`
-	AutoWeight  *bool   `pulumi:"autoWeight"`
-	AzAwareness *bool   `pulumi:"azAwareness"`
-	BalancerId  *string `pulumi:"balancerId"`
-	Name        *string `pulumi:"name"`
-	TargetSetId *string `pulumi:"targetSetId"`
-	Type        string  `pulumi:"type"`
+	Arn  *string `pulumi:"arn"`
+	Name *string `pulumi:"name"`
+	Type string  `pulumi:"type"`
 }
 
 // ManagedInstanceLoadBalancerInput is an input type that accepts ManagedInstanceLoadBalancerArgs and ManagedInstanceLoadBalancerOutput values.
@@ -13677,13 +13416,9 @@ type ManagedInstanceLoadBalancerInput interface {
 }
 
 type ManagedInstanceLoadBalancerArgs struct {
-	Arn         pulumi.StringPtrInput `pulumi:"arn"`
-	AutoWeight  pulumi.BoolPtrInput   `pulumi:"autoWeight"`
-	AzAwareness pulumi.BoolPtrInput   `pulumi:"azAwareness"`
-	BalancerId  pulumi.StringPtrInput `pulumi:"balancerId"`
-	Name        pulumi.StringPtrInput `pulumi:"name"`
-	TargetSetId pulumi.StringPtrInput `pulumi:"targetSetId"`
-	Type        pulumi.StringInput    `pulumi:"type"`
+	Arn  pulumi.StringPtrInput `pulumi:"arn"`
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	Type pulumi.StringInput    `pulumi:"type"`
 }
 
 func (ManagedInstanceLoadBalancerArgs) ElementType() reflect.Type {
@@ -13741,24 +13476,8 @@ func (o ManagedInstanceLoadBalancerOutput) Arn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedInstanceLoadBalancer) *string { return v.Arn }).(pulumi.StringPtrOutput)
 }
 
-func (o ManagedInstanceLoadBalancerOutput) AutoWeight() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ManagedInstanceLoadBalancer) *bool { return v.AutoWeight }).(pulumi.BoolPtrOutput)
-}
-
-func (o ManagedInstanceLoadBalancerOutput) AzAwareness() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ManagedInstanceLoadBalancer) *bool { return v.AzAwareness }).(pulumi.BoolPtrOutput)
-}
-
-func (o ManagedInstanceLoadBalancerOutput) BalancerId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ManagedInstanceLoadBalancer) *string { return v.BalancerId }).(pulumi.StringPtrOutput)
-}
-
 func (o ManagedInstanceLoadBalancerOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedInstanceLoadBalancer) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-func (o ManagedInstanceLoadBalancerOutput) TargetSetId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ManagedInstanceLoadBalancer) *string { return v.TargetSetId }).(pulumi.StringPtrOutput)
 }
 
 func (o ManagedInstanceLoadBalancerOutput) Type() pulumi.StringOutput {
@@ -25069,8 +24788,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupIntegrationKubernetesAutoscaleLabelArrayInput)(nil)).Elem(), ElastigroupIntegrationKubernetesAutoscaleLabelArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupIntegrationMesosphereInput)(nil)).Elem(), ElastigroupIntegrationMesosphereArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupIntegrationMesospherePtrInput)(nil)).Elem(), ElastigroupIntegrationMesosphereArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupIntegrationMultaiRuntimeInput)(nil)).Elem(), ElastigroupIntegrationMultaiRuntimeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupIntegrationMultaiRuntimePtrInput)(nil)).Elem(), ElastigroupIntegrationMultaiRuntimeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupIntegrationNomadInput)(nil)).Elem(), ElastigroupIntegrationNomadArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupIntegrationNomadPtrInput)(nil)).Elem(), ElastigroupIntegrationNomadArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupIntegrationNomadAutoscaleConstraintInput)(nil)).Elem(), ElastigroupIntegrationNomadAutoscaleConstraintArgs{})
@@ -25111,8 +24828,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupLoggingExportS3ArrayInput)(nil)).Elem(), ElastigroupLoggingExportS3Array{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupMetadataOptionsInput)(nil)).Elem(), ElastigroupMetadataOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupMetadataOptionsPtrInput)(nil)).Elem(), ElastigroupMetadataOptionsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupMultaiTargetSetInput)(nil)).Elem(), ElastigroupMultaiTargetSetArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupMultaiTargetSetArrayInput)(nil)).Elem(), ElastigroupMultaiTargetSetArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupMultipleMetricsInput)(nil)).Elem(), ElastigroupMultipleMetricsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupMultipleMetricsPtrInput)(nil)).Elem(), ElastigroupMultipleMetricsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElastigroupMultipleMetricsExpressionInput)(nil)).Elem(), ElastigroupMultipleMetricsExpressionArgs{})
@@ -25395,8 +25110,6 @@ func init() {
 	pulumi.RegisterOutputType(ElastigroupIntegrationKubernetesAutoscaleLabelArrayOutput{})
 	pulumi.RegisterOutputType(ElastigroupIntegrationMesosphereOutput{})
 	pulumi.RegisterOutputType(ElastigroupIntegrationMesospherePtrOutput{})
-	pulumi.RegisterOutputType(ElastigroupIntegrationMultaiRuntimeOutput{})
-	pulumi.RegisterOutputType(ElastigroupIntegrationMultaiRuntimePtrOutput{})
 	pulumi.RegisterOutputType(ElastigroupIntegrationNomadOutput{})
 	pulumi.RegisterOutputType(ElastigroupIntegrationNomadPtrOutput{})
 	pulumi.RegisterOutputType(ElastigroupIntegrationNomadAutoscaleConstraintOutput{})
@@ -25437,8 +25150,6 @@ func init() {
 	pulumi.RegisterOutputType(ElastigroupLoggingExportS3ArrayOutput{})
 	pulumi.RegisterOutputType(ElastigroupMetadataOptionsOutput{})
 	pulumi.RegisterOutputType(ElastigroupMetadataOptionsPtrOutput{})
-	pulumi.RegisterOutputType(ElastigroupMultaiTargetSetOutput{})
-	pulumi.RegisterOutputType(ElastigroupMultaiTargetSetArrayOutput{})
 	pulumi.RegisterOutputType(ElastigroupMultipleMetricsOutput{})
 	pulumi.RegisterOutputType(ElastigroupMultipleMetricsPtrOutput{})
 	pulumi.RegisterOutputType(ElastigroupMultipleMetricsExpressionOutput{})

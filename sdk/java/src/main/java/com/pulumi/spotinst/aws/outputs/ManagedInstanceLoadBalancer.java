@@ -5,7 +5,6 @@ package com.pulumi.spotinst.aws.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -14,31 +13,15 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ManagedInstanceLoadBalancer {
     private @Nullable String arn;
-    private @Nullable Boolean autoWeight;
-    private @Nullable Boolean azAwareness;
-    private @Nullable String balancerId;
     private @Nullable String name;
-    private @Nullable String targetSetId;
     private String type;
 
     private ManagedInstanceLoadBalancer() {}
     public Optional<String> arn() {
         return Optional.ofNullable(this.arn);
     }
-    public Optional<Boolean> autoWeight() {
-        return Optional.ofNullable(this.autoWeight);
-    }
-    public Optional<Boolean> azAwareness() {
-        return Optional.ofNullable(this.azAwareness);
-    }
-    public Optional<String> balancerId() {
-        return Optional.ofNullable(this.balancerId);
-    }
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
-    }
-    public Optional<String> targetSetId() {
-        return Optional.ofNullable(this.targetSetId);
     }
     public String type() {
         return this.type;
@@ -54,21 +37,13 @@ public final class ManagedInstanceLoadBalancer {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String arn;
-        private @Nullable Boolean autoWeight;
-        private @Nullable Boolean azAwareness;
-        private @Nullable String balancerId;
         private @Nullable String name;
-        private @Nullable String targetSetId;
         private String type;
         public Builder() {}
         public Builder(ManagedInstanceLoadBalancer defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.arn = defaults.arn;
-    	      this.autoWeight = defaults.autoWeight;
-    	      this.azAwareness = defaults.azAwareness;
-    	      this.balancerId = defaults.balancerId;
     	      this.name = defaults.name;
-    	      this.targetSetId = defaults.targetSetId;
     	      this.type = defaults.type;
         }
 
@@ -79,33 +54,9 @@ public final class ManagedInstanceLoadBalancer {
             return this;
         }
         @CustomType.Setter
-        public Builder autoWeight(@Nullable Boolean autoWeight) {
-
-            this.autoWeight = autoWeight;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder azAwareness(@Nullable Boolean azAwareness) {
-
-            this.azAwareness = azAwareness;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder balancerId(@Nullable String balancerId) {
-
-            this.balancerId = balancerId;
-            return this;
-        }
-        @CustomType.Setter
         public Builder name(@Nullable String name) {
 
             this.name = name;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder targetSetId(@Nullable String targetSetId) {
-
-            this.targetSetId = targetSetId;
             return this;
         }
         @CustomType.Setter
@@ -119,11 +70,7 @@ public final class ManagedInstanceLoadBalancer {
         public ManagedInstanceLoadBalancer build() {
             final var _resultValue = new ManagedInstanceLoadBalancer();
             _resultValue.arn = arn;
-            _resultValue.autoWeight = autoWeight;
-            _resultValue.azAwareness = azAwareness;
-            _resultValue.balancerId = balancerId;
             _resultValue.name = name;
-            _resultValue.targetSetId = targetSetId;
             _resultValue.type = type;
             return _resultValue;
         }
