@@ -1,12 +1,11 @@
 From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: Ian Wahbe <ian@wahbe.com>
-Date: Thu, 25 Jan 2024 12:16:15 -0800
-Subject: [PATCH] docs fixups
+Date: Mon, 22 Apr 2024 12:12:44 -0700
+Subject: [PATCH] docs fixes
 
-This patch was carried over from the original fork.
 
 diff --git a/docs/resources/elastigroup_aws.md b/docs/resources/elastigroup_aws.md
-index 8ab39067..9bebc203 100644
+index 8ab39067..4a2d07b0 100644
 --- a/docs/resources/elastigroup_aws.md
 +++ b/docs/resources/elastigroup_aws.md
 @@ -17,7 +17,7 @@ Provides a Spotinst AWS group resource.
@@ -18,7 +17,7 @@ index 8ab39067..9bebc203 100644
    product     = "Linux/UNIX"
  
    max_size         = 0
-@@ -251,34 +251,32 @@ Note: Elastigroup can be configured with either imageId or images, but not both.
+@@ -251,8 +251,7 @@ Note: Elastigroup can be configured with either imageId or images, but not both.
          * `s3` - (Optional) Exports your cluster's logs to the S3 bucket and subdir configured on the S3 data integration given.
              * `id` - (Required) The identifier of The S3 data integration to export the logs to.
      
@@ -28,28 +27,7 @@ index 8ab39067..9bebc203 100644
      
  * `elastic_load_balancers` - (Optional) List of Elastic Load Balancers names (ELB).
  * `target_group_arns` - (Optional) List of Target Group ARNs to register the instances to.
--* `multai_target_sets` - (Optional) Set of targets to register. 
-+* `multai_target_sets` - (Optional) Set of targets to register.
-     * `target_set_id` - (Required) ID of Multai target set.
-     * `balancer_id` - (Required) ID of Multai Load Balancer.
--    
-+
- Usage:
- 
- ```hcl
-   elastic_load_balancers = ["bal5", "bal2"]
-   target_group_arns      = ["tg-arn"]
--  
-+
-   multai_target_sets {
-     target_set_id = "ts-123",
-     balancer_id   = "bal-123"
-   }
--  
-+
-   multai_target_sets {
-     target_set_id = "ts-234",
-     balancer_id   = "bal-234"
+@@ -277,8 +276,7 @@ Usage:
    }
  ```
  
@@ -109,7 +87,7 @@ index 8ab39067..9bebc203 100644
  
  We support instance persistence via the following configurations. all values are boolean.
  For more information on instance persistence please see: [Stateful configuration](https://docs.spot.io/elastigroup/features/stateful-instance/stateful-instances)
-@@ -665,15 +658,14 @@ Usage:
+@@ -665,8 +658,7 @@ Usage:
    private_ips           = ["1.1.1.1", "2.2.2.2"]
  ```
  
@@ -119,14 +97,6 @@ index 8ab39067..9bebc203 100644
  
  * `stateful_deallocation` - (Optional)
      * `should_delete_images` - (Optional) For stateful groups: remove persistent images.
-     * `should_delete_network_interfaces` - (Optional) For stateful groups: remove network interfaces.
-     * `should_delete_volumes` - (Optional) For stateful groups: remove persistent volumes.
-     * `should_delete_snapshots` - (Optional) For stateful groups: remove snapshots.
--    
-+
- Usage:
- 
- ```hcl
 @@ -685,8 +677,7 @@ Usage:
     }
  ```    
@@ -147,13 +117,7 @@ index 8ab39067..9bebc203 100644
  
  * `health_check_type` - (Optional) The service that will perform health checks for the instance. Supported values : `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"CUSTOM"`, `"K8S_NODE"`, `"MLB"`, `"EC2"`, `"MULTAI_TARGET_SET"`, `"MLB_RUNTIME"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
  * `health_check_grace_period` - (Optional) The amount of time, in seconds, after the instance has launched to starts and check its health
-@@ -716,13 +706,12 @@ Usage:
- Usage:
- 
- ```hcl
--  health_check_type                                  = "ELB" 
-+  health_check_type                                  = "ELB"
-   health_check_grace_period                          = 100
+@@ -721,8 +711,7 @@ Usage:
    health_check_unhealthy_duration_before_replacement = 120
  ```
  
@@ -574,10 +538,10 @@ index 05d783c0..7cd006b9 100644
  ```hcl
    termination_policies {
 diff --git a/docs/resources/ocean_aws.md b/docs/resources/ocean_aws.md
-index 8dd743db..7e1c0dc4 100644
+index 463561dd..24a6eb8d 100644
 --- a/docs/resources/ocean_aws.md
 +++ b/docs/resources/ocean_aws.md
-@@ -293,13 +293,12 @@ autoscaler {
+@@ -297,13 +297,12 @@ autoscaler {
      max_vcpu       = 1024
      max_memory_gib = 1500
    }
@@ -789,7 +753,7 @@ index 91266c3a..2aa41f11 100644
  * `autoscaler` - (Optional) The Ocean Kubernetes Autoscaler object.
      * `is_enabled` - (Optional, Default: `true`) Enable the Ocean Kubernetes Autoscaler.
 diff --git a/docs/resources/stateful_node_aws.md b/docs/resources/stateful_node_aws.md
-index b40131ae..a0796f88 100644
+index 489121ae..2e7eabeb 100644
 --- a/docs/resources/stateful_node_aws.md
 +++ b/docs/resources/stateful_node_aws.md
 @@ -16,7 +16,7 @@ Provides a Spotinst AWS ManagedInstance resource.
@@ -801,35 +765,7 @@ index b40131ae..a0796f88 100644
    product     = "Linux/UNIX"
  
    region     = "us-west-2"
-@@ -109,22 +109,22 @@ The following arguments are supported:
- * `orientation` - (Optional) Select a prediction strategy. Valid values: `"balanced"`, `"costOriented"`, `"availabilityOriented"`, `"cheapest"`. Default: `"availabilityOriented"`.    
- * `draining_timeout` - (Optional) The time in seconds to allow the instance be drained from incoming TCP connections and detached from ELB before terminating it, during a scale down operation.
- * `fallback_to_ondemand` - (Optional) In case of no spots available, Managed Instance will launch an On-demand instance instead. Default: `"true"`.
--* `utilize_reserved_instances` - (Optional) In case of any available Reserved Instances, Managed Instance will utilize them before purchasing Spot instances. Default: `"false"`. 
-+* `utilize_reserved_instances` - (Optional) In case of any available Reserved Instances, Managed Instance will utilize them before purchasing Spot instances. Default: `"false"`.
- * `optimization_windows` - (Optional) When `performAt` is `"timeWindow"`: must specify a list of `"timeWindows"` with at least one time window. Each string should be formatted as `ddd:hh:mm-ddd:hh:mm` (ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59).
- * `perform_at` - (Optional) Valid values: `"always"`, `"never"`, `"timeWindow"`. Default `"never"`.
- * `minimum_instance_lifetime` - (Optional) Defines the preferred minimum instance lifetime. Markets which comply with this preference will be prioritized. Optional values: `1`, `3`, `6`, `12`, `24`.
- * `persist_private_ip` - (Optional) Should the instance maintain its private IP.
--* `persist_block_devices` - (Optional) Should the instance maintain its Data volumes. 
-+* `persist_block_devices` - (Optional) Should the instance maintain its Data volumes.
- * `persist_root_device` - (Optional) Should the instance maintain its root device volumes.
- * `block_devices_mode` - (Optional) Determine the way we attach the data volumes to the data devices. Valid values: `"reattach"`, `"onLaunch"`. Default: `"onLaunch"`.
--* `health_check_type` - (Optional) The service to use for the health check. Valid values: `"EC2"`, `"ELB"`, `"TARGET_GROUP"`, `"MULTAI_TARGET_SET"`. Default: `"EC2"`. 
--* `auto_healing` - (Optional) Enable the auto healing which auto replaces the instance in case the health check fails, default: `"true"`. 
-+* `health_check_type` - (Optional) The service to use for the health check. Valid values: `"EC2"`, `"ELB"`, `"TARGET_GROUP"`, `"MULTAI_TARGET_SET"`. Default: `"EC2"`.
-+* `auto_healing` - (Optional) Enable the auto healing which auto replaces the instance in case the health check fails, default: `"true"`.
- * `grace_period` - (Optional) The amount of time, in seconds, after the instance has launched to starts and check its health, default `"120"`.
- * `unhealthy_duration` - (Optional) The amount of time, in seconds, an existing instance should remain active after becoming unhealthy. After the set time out the instance will be replaced, default `"120"`.
- * `subnet_ids` - (Required) A comma-separated list of subnet identifiers for your instance.
- * `vpcId` - (Required) VPC id for your instance.
- * `elastic_ip` - (Optional) Elastic IP Allocation Id to associate to the instance.
--* `private_ip` - (Optional) Private IP Allocation Id to associate to the instance. 
-+* `private_ip` - (Optional) Private IP Allocation Id to associate to the instance.
- * `product` - (Required) Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`, `"Red Hat Enterprise Linux"`, `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`,  `"Red Hat Enterprise Linux (Amazon VPC)"`.    
- * `instance_types` - (Required) Comma separated list of available instance types for instance.
- * `preferred_type` - (Required) Preferred instance types for the instance. We will automatically select optional similar instance types to ensure optimized cost efficiency
-@@ -145,8 +145,7 @@ Default: default
+@@ -148,8 +148,7 @@ Default: default
  * `shutdown_script` - (Optional) The Base64-encoded shutdown script to execute prior to instance termination.
  * `cpu_credits` - (Optional) cpuCredits can have one of two values: `"unlimited"`, `"standard"`.
  
@@ -839,7 +775,7 @@ index b40131ae..a0796f88 100644
  
  * `block_device_mappings` - (Optional) Attributes controls a portion of the AWS:
      * `device_name` - (Required) The name of the device to mount.
-@@ -172,8 +171,7 @@ block_device_mappings {
+@@ -181,8 +180,7 @@ block_device_mappings {
  }
  ```      
  
@@ -849,7 +785,7 @@ index b40131ae..a0796f88 100644
  
  * `resource_tag_specification` - (Optional) User will specify which resources should be tagged with group tags.
      * `should_tag_enis`      - (Optional) Tag specification for ENI resources.
-@@ -192,8 +190,7 @@ resource_tag_specification {
+@@ -201,8 +199,7 @@ resource_tag_specification {
  }
  ```        
  
@@ -859,7 +795,7 @@ index b40131ae..a0796f88 100644
  
  * `network-interface`- (Optional) List of network interfaces in an EC2 instance.
      * `device_index` - (Optional) The position of the network interface in the attachment order. A primary network interface has a device index of 0. If you specify a network interface when launching an instance, you must specify the device index.
-@@ -210,8 +207,7 @@ network_interface {
+@@ -219,8 +216,7 @@ network_interface {
  }
  ```       
  
@@ -869,7 +805,7 @@ index b40131ae..a0796f88 100644
  
  Each `scheduled_task` supports the following:
  
-@@ -235,8 +231,8 @@ scheduled_task {
+@@ -244,8 +240,8 @@ scheduled_task {
  }
  ```
  
@@ -880,7 +816,7 @@ index b40131ae..a0796f88 100644
  * `load_balancers` - (Optional) List of load balancers configs.
      * `name` - The AWS resource name. Required for Classic Load Balancer. Optional for Application Load Balancer.
      * `arn` - The AWS resource ARN (Required only for ALB target groups).
-@@ -259,9 +255,8 @@ load_balancers {
+@@ -268,9 +264,8 @@ load_balancers {
  }
  ```
  
@@ -892,7 +828,7 @@ index b40131ae..a0796f88 100644
  * `integration_route53` - (Optional) Describes the [Route53](https://aws.amazon.com/documentation/route53/?id=docs_gateway) integration.
     * `domains` - (Required) Route 53 Domain configurations.
         * `hosted_zone_id` - (Required) The Route 53 Hosted Zone Id for the registered Domain.
-@@ -303,8 +298,7 @@ integration_route53 {
+@@ -312,8 +307,7 @@ integration_route53 {
  }
  ```
  
@@ -902,3 +838,10 @@ index b40131ae..a0796f88 100644
  
  * `managed_instance_action` - (Optional)
      * `type` - (Required) String, Action type. Supported action types: `pause`, `resume`, `recycle`.
+@@ -354,4 +348,4 @@ delete {
+ 
+ The following attributes are exported:
+ 
+-* `id` - The group ID.
+\ No newline at end of file
++* `id` - The group ID.

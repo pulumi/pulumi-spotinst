@@ -748,18 +748,6 @@
                 "apiServer"
             ]
         },
-        "spotinst:aws/ElastigroupIntegrationMultaiRuntime:ElastigroupIntegrationMultaiRuntime": {
-            "properties": {
-                "deploymentId": {
-                    "type": "string",
-                    "description": "The deployment id you want to get\n\nUsage:\n\n"
-                }
-            },
-            "type": "object",
-            "required": [
-                "deploymentId"
-            ]
-        },
         "spotinst:aws/ElastigroupIntegrationNomad:ElastigroupIntegrationNomad": {
             "properties": {
                 "aclToken": {
@@ -1165,23 +1153,6 @@
             "type": "object",
             "required": [
                 "httpTokens"
-            ]
-        },
-        "spotinst:aws/ElastigroupMultaiTargetSet:ElastigroupMultaiTargetSet": {
-            "properties": {
-                "balancerId": {
-                    "type": "string",
-                    "description": "ID of Multai Load Balancer.\n\nUsage:\n\n"
-                },
-                "targetSetId": {
-                    "type": "string",
-                    "description": "ID of Multai target set.\n"
-                }
-            },
-            "type": "object",
-            "required": [
-                "balancerId",
-                "targetSetId"
             ]
         },
         "spotinst:aws/ElastigroupMultipleMetrics:ElastigroupMultipleMetrics": {
@@ -2060,7 +2031,7 @@
                 },
                 "healthCheckType": {
                     "type": "string",
-                    "description": "The service that will perform health checks for the instance. Valid values: `\"ELB\"`, `\"HCS\"`, `\"TARGET_GROUP\"`, `\"MLB\"`, `\"EC2\"`, `\"MULTAI_TARGET_SET\"`, `\"MLB_RUNTIME\"`, `\"K8S_NODE\"`, `\"NOMAD_NODE\"`, `\"ECS_CLUSTER_INSTANCE\"`.\n"
+                    "description": "The service that will perform health checks for the instance. Valid values: `\"ELB\"`, `\"HCS\"`, `\"TARGET_GROUP\"`, `\"EC2\"`, `\"K8S_NODE\"`, `\"NOMAD_NODE\"`, `\"ECS_CLUSTER_INSTANCE\"`.\n"
                 },
                 "strategy": {
                     "$ref": "#/types/spotinst:aws/ElastigroupUpdatePolicyRollConfigStrategy:ElastigroupUpdatePolicyRollConfigStrategy",
@@ -2265,19 +2236,7 @@
                 "arn": {
                     "type": "string"
                 },
-                "autoWeight": {
-                    "type": "boolean"
-                },
-                "azAwareness": {
-                    "type": "boolean"
-                },
-                "balancerId": {
-                    "type": "string"
-                },
                 "name": {
-                    "type": "string"
-                },
-                "targetSetId": {
                     "type": "string"
                 },
                 "type": {
@@ -9628,7 +9587,7 @@
                 },
                 "healthCheckType": {
                     "type": "string",
-                    "description": "The service that will perform health checks for the instance. Valid values: `\"ELB\"`, `\"HCS\"`, `\"TARGET_GROUP\"`, `\"MLB\"`, `\"EC2\"`, `\"MULTAI_TARGET_SET\"`, `\"MLB_RUNTIME\"`, `\"K8S_NODE\"`, `\"NOMAD_NODE\"`, `\"ECS_CLUSTER_INSTANCE\"`.\n"
+                    "description": "The service that will perform health checks for the instance. Valid values: `\"ELB\"`, `\"HCS\"`, `\"TARGET_GROUP\"`, `\"EC2\"`, `\"K8S_NODE\"`, `\"NOMAD_NODE\"`, `\"ECS_CLUSTER_INSTANCE\"`.\n"
                 },
                 "healthCheckUnhealthyDurationBeforeReplacement": {
                     "type": "integer",
@@ -9705,10 +9664,6 @@
                     "$ref": "#/types/spotinst:aws/ElastigroupIntegrationMesosphere:ElastigroupIntegrationMesosphere",
                     "description": "Describes the [Mesosphere](https://mesosphere.com/) integration.\n"
                 },
-                "integrationMultaiRuntime": {
-                    "$ref": "#/types/spotinst:aws/ElastigroupIntegrationMultaiRuntime:ElastigroupIntegrationMultaiRuntime",
-                    "description": "Describes the [Multai Runtime](https://spotinst.com/) integration.\n"
-                },
                 "integrationNomad": {
                     "$ref": "#/types/spotinst:aws/ElastigroupIntegrationNomad:ElastigroupIntegrationNomad",
                     "description": "Describes the [Nomad](https://www.nomadproject.io/) integration.\n"
@@ -9753,13 +9708,6 @@
                 "minimumInstanceLifetime": {
                     "type": "integer",
                     "description": "Defines the preferred minimum instance lifetime in hours. Markets which comply with this preference will be prioritized. Optional values: 1, 3, 6, 12, 24.\n"
-                },
-                "multaiTargetSets": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/spotinst:aws/ElastigroupMultaiTargetSet:ElastigroupMultaiTargetSet"
-                    },
-                    "description": "Set of targets to register.\n"
                 },
                 "multipleMetrics": {
                     "$ref": "#/types/spotinst:aws/ElastigroupMultipleMetrics:ElastigroupMultipleMetrics"
@@ -9925,7 +9873,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "List of Target Group ARNs to register the instances to.\n"
+                    "description": "List of Target Group ARNs to register the instances to.\n\nUsage:\n\n"
                 },
                 "updatePolicy": {
                     "$ref": "#/types/spotinst:aws/ElastigroupUpdatePolicy:ElastigroupUpdatePolicy"
@@ -10045,7 +9993,7 @@
                 },
                 "healthCheckType": {
                     "type": "string",
-                    "description": "The service that will perform health checks for the instance. Valid values: `\"ELB\"`, `\"HCS\"`, `\"TARGET_GROUP\"`, `\"MLB\"`, `\"EC2\"`, `\"MULTAI_TARGET_SET\"`, `\"MLB_RUNTIME\"`, `\"K8S_NODE\"`, `\"NOMAD_NODE\"`, `\"ECS_CLUSTER_INSTANCE\"`.\n"
+                    "description": "The service that will perform health checks for the instance. Valid values: `\"ELB\"`, `\"HCS\"`, `\"TARGET_GROUP\"`, `\"EC2\"`, `\"K8S_NODE\"`, `\"NOMAD_NODE\"`, `\"ECS_CLUSTER_INSTANCE\"`.\n"
                 },
                 "healthCheckUnhealthyDurationBeforeReplacement": {
                     "type": "integer",
@@ -10122,10 +10070,6 @@
                     "$ref": "#/types/spotinst:aws/ElastigroupIntegrationMesosphere:ElastigroupIntegrationMesosphere",
                     "description": "Describes the [Mesosphere](https://mesosphere.com/) integration.\n"
                 },
-                "integrationMultaiRuntime": {
-                    "$ref": "#/types/spotinst:aws/ElastigroupIntegrationMultaiRuntime:ElastigroupIntegrationMultaiRuntime",
-                    "description": "Describes the [Multai Runtime](https://spotinst.com/) integration.\n"
-                },
                 "integrationNomad": {
                     "$ref": "#/types/spotinst:aws/ElastigroupIntegrationNomad:ElastigroupIntegrationNomad",
                     "description": "Describes the [Nomad](https://www.nomadproject.io/) integration.\n"
@@ -10170,13 +10114,6 @@
                 "minimumInstanceLifetime": {
                     "type": "integer",
                     "description": "Defines the preferred minimum instance lifetime in hours. Markets which comply with this preference will be prioritized. Optional values: 1, 3, 6, 12, 24.\n"
-                },
-                "multaiTargetSets": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/spotinst:aws/ElastigroupMultaiTargetSet:ElastigroupMultaiTargetSet"
-                    },
-                    "description": "Set of targets to register.\n"
                 },
                 "multipleMetrics": {
                     "$ref": "#/types/spotinst:aws/ElastigroupMultipleMetrics:ElastigroupMultipleMetrics"
@@ -10342,7 +10279,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "List of Target Group ARNs to register the instances to.\n"
+                    "description": "List of Target Group ARNs to register the instances to.\n\nUsage:\n\n"
                 },
                 "updatePolicy": {
                     "$ref": "#/types/spotinst:aws/ElastigroupUpdatePolicy:ElastigroupUpdatePolicy"
@@ -10458,7 +10395,7 @@
                     },
                     "healthCheckType": {
                         "type": "string",
-                        "description": "The service that will perform health checks for the instance. Valid values: `\"ELB\"`, `\"HCS\"`, `\"TARGET_GROUP\"`, `\"MLB\"`, `\"EC2\"`, `\"MULTAI_TARGET_SET\"`, `\"MLB_RUNTIME\"`, `\"K8S_NODE\"`, `\"NOMAD_NODE\"`, `\"ECS_CLUSTER_INSTANCE\"`.\n"
+                        "description": "The service that will perform health checks for the instance. Valid values: `\"ELB\"`, `\"HCS\"`, `\"TARGET_GROUP\"`, `\"EC2\"`, `\"K8S_NODE\"`, `\"NOMAD_NODE\"`, `\"ECS_CLUSTER_INSTANCE\"`.\n"
                     },
                     "healthCheckUnhealthyDurationBeforeReplacement": {
                         "type": "integer",
@@ -10535,10 +10472,6 @@
                         "$ref": "#/types/spotinst:aws/ElastigroupIntegrationMesosphere:ElastigroupIntegrationMesosphere",
                         "description": "Describes the [Mesosphere](https://mesosphere.com/) integration.\n"
                     },
-                    "integrationMultaiRuntime": {
-                        "$ref": "#/types/spotinst:aws/ElastigroupIntegrationMultaiRuntime:ElastigroupIntegrationMultaiRuntime",
-                        "description": "Describes the [Multai Runtime](https://spotinst.com/) integration.\n"
-                    },
                     "integrationNomad": {
                         "$ref": "#/types/spotinst:aws/ElastigroupIntegrationNomad:ElastigroupIntegrationNomad",
                         "description": "Describes the [Nomad](https://www.nomadproject.io/) integration.\n"
@@ -10583,13 +10516,6 @@
                     "minimumInstanceLifetime": {
                         "type": "integer",
                         "description": "Defines the preferred minimum instance lifetime in hours. Markets which comply with this preference will be prioritized. Optional values: 1, 3, 6, 12, 24.\n"
-                    },
-                    "multaiTargetSets": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/types/spotinst:aws/ElastigroupMultaiTargetSet:ElastigroupMultaiTargetSet"
-                        },
-                        "description": "Set of targets to register.\n"
                     },
                     "multipleMetrics": {
                         "$ref": "#/types/spotinst:aws/ElastigroupMultipleMetrics:ElastigroupMultipleMetrics"
@@ -10755,7 +10681,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "List of Target Group ARNs to register the instances to.\n"
+                        "description": "List of Target Group ARNs to register the instances to.\n\nUsage:\n\n"
                     },
                     "updatePolicy": {
                         "$ref": "#/types/spotinst:aws/ElastigroupUpdatePolicy:ElastigroupUpdatePolicy"
