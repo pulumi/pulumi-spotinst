@@ -16,7 +16,7 @@ namespace Pulumi.SpotInst.Azure.Outputs
         public readonly ImmutableArray<Outputs.ElastigroupNetworkAdditionalIpConfig> AdditionalIpConfigs;
         public readonly bool? AssignPublicIp;
         /// <summary>
-        /// Name of the Azure Resource Group where the Managed Service Identity is located.
+        /// Name of the Resource Group for Elastigroup.
         /// </summary>
         public readonly string ResourceGroupName;
         public readonly string SubnetName;

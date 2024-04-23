@@ -13,13 +13,7 @@ namespace Pulumi.SpotInst.Aws.Outputs
     [OutputType]
     public sealed class ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategy
     {
-        /// <summary>
-        /// The action to take when scale up according to step's threshold is needed.
-        /// </summary>
         public readonly string? Action;
-        /// <summary>
-        /// Bool value if to wait to drain instance
-        /// </summary>
         public readonly bool? ShouldDrainInstances;
 
         [OutputConstructor]

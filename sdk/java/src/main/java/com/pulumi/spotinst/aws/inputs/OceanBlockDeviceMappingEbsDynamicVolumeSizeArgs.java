@@ -15,17 +15,9 @@ public final class OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs extends com.p
 
     public static final OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs Empty = new OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs();
 
-    /**
-     * Initial size for IOPS.
-     * 
-     */
     @Import(name="baseSize", required=true)
     private Output<Integer> baseSize;
 
-    /**
-     * @return Initial size for IOPS.
-     * 
-     */
     public Output<Integer> baseSize() {
         return this.baseSize;
     }
@@ -37,17 +29,9 @@ public final class OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs extends com.p
         return this.resource;
     }
 
-    /**
-     * Additional size per resource unit (in IOPS). (Example: `baseSize=50`, `sizePerResourceUnit=20`, and an instance with 2 CPU is launched; its IOPS size will be: 90).
-     * 
-     */
     @Import(name="sizePerResourceUnit", required=true)
     private Output<Integer> sizePerResourceUnit;
 
-    /**
-     * @return Additional size per resource unit (in IOPS). (Example: `baseSize=50`, `sizePerResourceUnit=20`, and an instance with 2 CPU is launched; its IOPS size will be: 90).
-     * 
-     */
     public Output<Integer> sizePerResourceUnit() {
         return this.sizePerResourceUnit;
     }
@@ -78,23 +62,11 @@ public final class OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs extends com.p
             $ = new OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param baseSize Initial size for IOPS.
-         * 
-         * @return builder
-         * 
-         */
         public Builder baseSize(Output<Integer> baseSize) {
             $.baseSize = baseSize;
             return this;
         }
 
-        /**
-         * @param baseSize Initial size for IOPS.
-         * 
-         * @return builder
-         * 
-         */
         public Builder baseSize(Integer baseSize) {
             return baseSize(Output.of(baseSize));
         }
@@ -108,23 +80,11 @@ public final class OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs extends com.p
             return resource(Output.of(resource));
         }
 
-        /**
-         * @param sizePerResourceUnit Additional size per resource unit (in IOPS). (Example: `baseSize=50`, `sizePerResourceUnit=20`, and an instance with 2 CPU is launched; its IOPS size will be: 90).
-         * 
-         * @return builder
-         * 
-         */
         public Builder sizePerResourceUnit(Output<Integer> sizePerResourceUnit) {
             $.sizePerResourceUnit = sizePerResourceUnit;
             return this;
         }
 
-        /**
-         * @param sizePerResourceUnit Additional size per resource unit (in IOPS). (Example: `baseSize=50`, `sizePerResourceUnit=20`, and an instance with 2 CPU is launched; its IOPS size will be: 90).
-         * 
-         * @return builder
-         * 
-         */
         public Builder sizePerResourceUnit(Integer sizePerResourceUnit) {
             return sizePerResourceUnit(Output.of(sizePerResourceUnit));
         }

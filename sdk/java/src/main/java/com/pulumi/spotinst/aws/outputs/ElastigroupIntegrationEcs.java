@@ -19,113 +19,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ElastigroupIntegrationEcs {
-    /**
-     * @return A key/value mapping of tags to assign to the resource.
-     * 
-     */
     private @Nullable List<ElastigroupIntegrationEcsAutoscaleAttribute> autoscaleAttributes;
-    /**
-     * @return The amount of time, in seconds, after a scaling activity completes before any further trigger-related scaling activities can start.
-     * 
-     */
     private @Nullable Integer autoscaleCooldown;
-    /**
-     * @return Settings for scale down actions.
-     * 
-     */
     private @Nullable ElastigroupIntegrationEcsAutoscaleDown autoscaleDown;
-    /**
-     * @return An option to set compute reserve for the cluster.
-     * 
-     */
     private @Nullable ElastigroupIntegrationEcsAutoscaleHeadroom autoscaleHeadroom;
-    /**
-     * @return Enabling the automatic k8s auto-scaler functionality. For more information please see: [Kubernetes auto scaler](https://api.spotinst.com/integration-docs/elastigroup/container-management/kubernetes/autoscaler/).
-     * 
-     */
     private @Nullable Boolean autoscaleIsAutoConfig;
-    /**
-     * @return Specifies whether the auto scaling feature is enabled.
-     * 
-     */
     private @Nullable Boolean autoscaleIsEnabled;
-    /**
-     * @return Determines whether to scale down non-service tasks.
-     * 
-     */
     private @Nullable Boolean autoscaleScaleDownNonServiceTasks;
-    /**
-     * @return Batch configuration object:
-     * 
-     */
     private @Nullable ElastigroupIntegrationEcsBatch batch;
-    /**
-     * @return The name of the EC2 Container Service cluster.
-     * 
-     */
     private String clusterName;
 
     private ElastigroupIntegrationEcs() {}
-    /**
-     * @return A key/value mapping of tags to assign to the resource.
-     * 
-     */
     public List<ElastigroupIntegrationEcsAutoscaleAttribute> autoscaleAttributes() {
         return this.autoscaleAttributes == null ? List.of() : this.autoscaleAttributes;
     }
-    /**
-     * @return The amount of time, in seconds, after a scaling activity completes before any further trigger-related scaling activities can start.
-     * 
-     */
     public Optional<Integer> autoscaleCooldown() {
         return Optional.ofNullable(this.autoscaleCooldown);
     }
-    /**
-     * @return Settings for scale down actions.
-     * 
-     */
     public Optional<ElastigroupIntegrationEcsAutoscaleDown> autoscaleDown() {
         return Optional.ofNullable(this.autoscaleDown);
     }
-    /**
-     * @return An option to set compute reserve for the cluster.
-     * 
-     */
     public Optional<ElastigroupIntegrationEcsAutoscaleHeadroom> autoscaleHeadroom() {
         return Optional.ofNullable(this.autoscaleHeadroom);
     }
-    /**
-     * @return Enabling the automatic k8s auto-scaler functionality. For more information please see: [Kubernetes auto scaler](https://api.spotinst.com/integration-docs/elastigroup/container-management/kubernetes/autoscaler/).
-     * 
-     */
     public Optional<Boolean> autoscaleIsAutoConfig() {
         return Optional.ofNullable(this.autoscaleIsAutoConfig);
     }
-    /**
-     * @return Specifies whether the auto scaling feature is enabled.
-     * 
-     */
     public Optional<Boolean> autoscaleIsEnabled() {
         return Optional.ofNullable(this.autoscaleIsEnabled);
     }
-    /**
-     * @return Determines whether to scale down non-service tasks.
-     * 
-     */
     public Optional<Boolean> autoscaleScaleDownNonServiceTasks() {
         return Optional.ofNullable(this.autoscaleScaleDownNonServiceTasks);
     }
-    /**
-     * @return Batch configuration object:
-     * 
-     */
     public Optional<ElastigroupIntegrationEcsBatch> batch() {
         return Optional.ofNullable(this.batch);
     }
-    /**
-     * @return The name of the EC2 Container Service cluster.
-     * 
-     */
     public String clusterName() {
         return this.clusterName;
     }

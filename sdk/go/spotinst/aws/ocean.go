@@ -31,8 +31,7 @@ type Ocean struct {
 	// Configure public IP address allocation.
 	AssociatePublicIpAddress pulumi.BoolPtrOutput     `pulumi:"associatePublicIpAddress"`
 	Autoscaler               OceanAutoscalerPtrOutput `pulumi:"autoscaler"`
-	// Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist` is configured.
-	Blacklists pulumi.StringArrayOutput `pulumi:"blacklists"`
+	Blacklists               pulumi.StringArrayOutput `pulumi:"blacklists"`
 	// Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
 	BlockDeviceMappings OceanBlockDeviceMappingArrayOutput `pulumi:"blockDeviceMappings"`
 	ClusterOrientations OceanClusterOrientationArrayOutput `pulumi:"clusterOrientations"`
@@ -45,9 +44,8 @@ type Ocean struct {
 	// Enable EBS optimized for cluster. Flag will enable optimized capacity for high bandwidth connectivity to the EB service for non EBS optimized instance types. For instances that are EBS optimized this flag will be ignored.
 	EbsOptimized pulumi.BoolPtrOutput `pulumi:"ebsOptimized"`
 	// If not Spot instance markets are available, enable Ocean to launch On-Demand instances instead.
-	FallbackToOndemand pulumi.BoolPtrOutput `pulumi:"fallbackToOndemand"`
-	// List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured together with whitelist/blacklist.
-	Filters OceanFiltersPtrOutput `pulumi:"filters"`
+	FallbackToOndemand pulumi.BoolPtrOutput  `pulumi:"fallbackToOndemand"`
+	Filters            OceanFiltersPtrOutput `pulumi:"filters"`
 	// The amount of time, in seconds, after the instance has launched to start checking its health.
 	GracePeriod pulumi.IntPtrOutput `pulumi:"gracePeriod"`
 	// The amount of time, in seconds, an existing instance should remain active after becoming unhealthy. After the set time out the instance will be replaced. The minimum value allowed is 60, and it must be a multiple of 60.
@@ -70,7 +68,7 @@ type Ocean struct {
 	MinSize pulumi.IntOutput `pulumi:"minSize"`
 	// Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
 	Monitoring pulumi.BoolPtrOutput `pulumi:"monitoring"`
-	// Required if type is set to `CLASSIC`
+	// The cluster name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The region the cluster will run in.
 	Region pulumi.StringPtrOutput `pulumi:"region"`
@@ -98,9 +96,8 @@ type Ocean struct {
 	// If savings plans exist, Ocean will utilize them before launching Spot instances.
 	UtilizeCommitments pulumi.BoolPtrOutput `pulumi:"utilizeCommitments"`
 	// If Reserved instances exist, Ocean will utilize them before launching Spot instances.
-	UtilizeReservedInstances pulumi.BoolPtrOutput `pulumi:"utilizeReservedInstances"`
-	// Instance types allowed in the Ocean cluster. Cannot be configured if `blacklist` is configured.
-	Whitelists pulumi.StringArrayOutput `pulumi:"whitelists"`
+	UtilizeReservedInstances pulumi.BoolPtrOutput     `pulumi:"utilizeReservedInstances"`
+	Whitelists               pulumi.StringArrayOutput `pulumi:"whitelists"`
 }
 
 // NewOcean registers a new resource with the given unique name, arguments, and options.
@@ -144,8 +141,7 @@ type oceanState struct {
 	// Configure public IP address allocation.
 	AssociatePublicIpAddress *bool            `pulumi:"associatePublicIpAddress"`
 	Autoscaler               *OceanAutoscaler `pulumi:"autoscaler"`
-	// Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist` is configured.
-	Blacklists []string `pulumi:"blacklists"`
+	Blacklists               []string         `pulumi:"blacklists"`
 	// Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
 	BlockDeviceMappings []OceanBlockDeviceMapping `pulumi:"blockDeviceMappings"`
 	ClusterOrientations []OceanClusterOrientation `pulumi:"clusterOrientations"`
@@ -158,9 +154,8 @@ type oceanState struct {
 	// Enable EBS optimized for cluster. Flag will enable optimized capacity for high bandwidth connectivity to the EB service for non EBS optimized instance types. For instances that are EBS optimized this flag will be ignored.
 	EbsOptimized *bool `pulumi:"ebsOptimized"`
 	// If not Spot instance markets are available, enable Ocean to launch On-Demand instances instead.
-	FallbackToOndemand *bool `pulumi:"fallbackToOndemand"`
-	// List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured together with whitelist/blacklist.
-	Filters *OceanFilters `pulumi:"filters"`
+	FallbackToOndemand *bool         `pulumi:"fallbackToOndemand"`
+	Filters            *OceanFilters `pulumi:"filters"`
 	// The amount of time, in seconds, after the instance has launched to start checking its health.
 	GracePeriod *int `pulumi:"gracePeriod"`
 	// The amount of time, in seconds, an existing instance should remain active after becoming unhealthy. After the set time out the instance will be replaced. The minimum value allowed is 60, and it must be a multiple of 60.
@@ -183,7 +178,7 @@ type oceanState struct {
 	MinSize *int `pulumi:"minSize"`
 	// Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
 	Monitoring *bool `pulumi:"monitoring"`
-	// Required if type is set to `CLASSIC`
+	// The cluster name.
 	Name *string `pulumi:"name"`
 	// The region the cluster will run in.
 	Region *string `pulumi:"region"`
@@ -211,9 +206,8 @@ type oceanState struct {
 	// If savings plans exist, Ocean will utilize them before launching Spot instances.
 	UtilizeCommitments *bool `pulumi:"utilizeCommitments"`
 	// If Reserved instances exist, Ocean will utilize them before launching Spot instances.
-	UtilizeReservedInstances *bool `pulumi:"utilizeReservedInstances"`
-	// Instance types allowed in the Ocean cluster. Cannot be configured if `blacklist` is configured.
-	Whitelists []string `pulumi:"whitelists"`
+	UtilizeReservedInstances *bool    `pulumi:"utilizeReservedInstances"`
+	Whitelists               []string `pulumi:"whitelists"`
 }
 
 type OceanState struct {
@@ -222,8 +216,7 @@ type OceanState struct {
 	// Configure public IP address allocation.
 	AssociatePublicIpAddress pulumi.BoolPtrInput
 	Autoscaler               OceanAutoscalerPtrInput
-	// Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist` is configured.
-	Blacklists pulumi.StringArrayInput
+	Blacklists               pulumi.StringArrayInput
 	// Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
 	BlockDeviceMappings OceanBlockDeviceMappingArrayInput
 	ClusterOrientations OceanClusterOrientationArrayInput
@@ -237,8 +230,7 @@ type OceanState struct {
 	EbsOptimized pulumi.BoolPtrInput
 	// If not Spot instance markets are available, enable Ocean to launch On-Demand instances instead.
 	FallbackToOndemand pulumi.BoolPtrInput
-	// List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured together with whitelist/blacklist.
-	Filters OceanFiltersPtrInput
+	Filters            OceanFiltersPtrInput
 	// The amount of time, in seconds, after the instance has launched to start checking its health.
 	GracePeriod pulumi.IntPtrInput
 	// The amount of time, in seconds, an existing instance should remain active after becoming unhealthy. After the set time out the instance will be replaced. The minimum value allowed is 60, and it must be a multiple of 60.
@@ -261,7 +253,7 @@ type OceanState struct {
 	MinSize pulumi.IntPtrInput
 	// Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
 	Monitoring pulumi.BoolPtrInput
-	// Required if type is set to `CLASSIC`
+	// The cluster name.
 	Name pulumi.StringPtrInput
 	// The region the cluster will run in.
 	Region pulumi.StringPtrInput
@@ -290,8 +282,7 @@ type OceanState struct {
 	UtilizeCommitments pulumi.BoolPtrInput
 	// If Reserved instances exist, Ocean will utilize them before launching Spot instances.
 	UtilizeReservedInstances pulumi.BoolPtrInput
-	// Instance types allowed in the Ocean cluster. Cannot be configured if `blacklist` is configured.
-	Whitelists pulumi.StringArrayInput
+	Whitelists               pulumi.StringArrayInput
 }
 
 func (OceanState) ElementType() reflect.Type {
@@ -304,8 +295,7 @@ type oceanArgs struct {
 	// Configure public IP address allocation.
 	AssociatePublicIpAddress *bool            `pulumi:"associatePublicIpAddress"`
 	Autoscaler               *OceanAutoscaler `pulumi:"autoscaler"`
-	// Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist` is configured.
-	Blacklists []string `pulumi:"blacklists"`
+	Blacklists               []string         `pulumi:"blacklists"`
 	// Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
 	BlockDeviceMappings []OceanBlockDeviceMapping `pulumi:"blockDeviceMappings"`
 	ClusterOrientations []OceanClusterOrientation `pulumi:"clusterOrientations"`
@@ -318,9 +308,8 @@ type oceanArgs struct {
 	// Enable EBS optimized for cluster. Flag will enable optimized capacity for high bandwidth connectivity to the EB service for non EBS optimized instance types. For instances that are EBS optimized this flag will be ignored.
 	EbsOptimized *bool `pulumi:"ebsOptimized"`
 	// If not Spot instance markets are available, enable Ocean to launch On-Demand instances instead.
-	FallbackToOndemand *bool `pulumi:"fallbackToOndemand"`
-	// List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured together with whitelist/blacklist.
-	Filters *OceanFilters `pulumi:"filters"`
+	FallbackToOndemand *bool         `pulumi:"fallbackToOndemand"`
+	Filters            *OceanFilters `pulumi:"filters"`
 	// The amount of time, in seconds, after the instance has launched to start checking its health.
 	GracePeriod *int `pulumi:"gracePeriod"`
 	// The amount of time, in seconds, an existing instance should remain active after becoming unhealthy. After the set time out the instance will be replaced. The minimum value allowed is 60, and it must be a multiple of 60.
@@ -343,7 +332,7 @@ type oceanArgs struct {
 	MinSize *int `pulumi:"minSize"`
 	// Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
 	Monitoring *bool `pulumi:"monitoring"`
-	// Required if type is set to `CLASSIC`
+	// The cluster name.
 	Name *string `pulumi:"name"`
 	// The region the cluster will run in.
 	Region *string `pulumi:"region"`
@@ -371,9 +360,8 @@ type oceanArgs struct {
 	// If savings plans exist, Ocean will utilize them before launching Spot instances.
 	UtilizeCommitments *bool `pulumi:"utilizeCommitments"`
 	// If Reserved instances exist, Ocean will utilize them before launching Spot instances.
-	UtilizeReservedInstances *bool `pulumi:"utilizeReservedInstances"`
-	// Instance types allowed in the Ocean cluster. Cannot be configured if `blacklist` is configured.
-	Whitelists []string `pulumi:"whitelists"`
+	UtilizeReservedInstances *bool    `pulumi:"utilizeReservedInstances"`
+	Whitelists               []string `pulumi:"whitelists"`
 }
 
 // The set of arguments for constructing a Ocean resource.
@@ -383,8 +371,7 @@ type OceanArgs struct {
 	// Configure public IP address allocation.
 	AssociatePublicIpAddress pulumi.BoolPtrInput
 	Autoscaler               OceanAutoscalerPtrInput
-	// Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist` is configured.
-	Blacklists pulumi.StringArrayInput
+	Blacklists               pulumi.StringArrayInput
 	// Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
 	BlockDeviceMappings OceanBlockDeviceMappingArrayInput
 	ClusterOrientations OceanClusterOrientationArrayInput
@@ -398,8 +385,7 @@ type OceanArgs struct {
 	EbsOptimized pulumi.BoolPtrInput
 	// If not Spot instance markets are available, enable Ocean to launch On-Demand instances instead.
 	FallbackToOndemand pulumi.BoolPtrInput
-	// List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured together with whitelist/blacklist.
-	Filters OceanFiltersPtrInput
+	Filters            OceanFiltersPtrInput
 	// The amount of time, in seconds, after the instance has launched to start checking its health.
 	GracePeriod pulumi.IntPtrInput
 	// The amount of time, in seconds, an existing instance should remain active after becoming unhealthy. After the set time out the instance will be replaced. The minimum value allowed is 60, and it must be a multiple of 60.
@@ -422,7 +408,7 @@ type OceanArgs struct {
 	MinSize pulumi.IntPtrInput
 	// Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
 	Monitoring pulumi.BoolPtrInput
-	// Required if type is set to `CLASSIC`
+	// The cluster name.
 	Name pulumi.StringPtrInput
 	// The region the cluster will run in.
 	Region pulumi.StringPtrInput
@@ -451,8 +437,7 @@ type OceanArgs struct {
 	UtilizeCommitments pulumi.BoolPtrInput
 	// If Reserved instances exist, Ocean will utilize them before launching Spot instances.
 	UtilizeReservedInstances pulumi.BoolPtrInput
-	// Instance types allowed in the Ocean cluster. Cannot be configured if `blacklist` is configured.
-	Whitelists pulumi.StringArrayInput
+	Whitelists               pulumi.StringArrayInput
 }
 
 func (OceanArgs) ElementType() reflect.Type {
@@ -556,7 +541,6 @@ func (o OceanOutput) Autoscaler() OceanAutoscalerPtrOutput {
 	return o.ApplyT(func(v *Ocean) OceanAutoscalerPtrOutput { return v.Autoscaler }).(OceanAutoscalerPtrOutput)
 }
 
-// Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist` is configured.
 func (o OceanOutput) Blacklists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Ocean) pulumi.StringArrayOutput { return v.Blacklists }).(pulumi.StringArrayOutput)
 }
@@ -595,7 +579,6 @@ func (o OceanOutput) FallbackToOndemand() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Ocean) pulumi.BoolPtrOutput { return v.FallbackToOndemand }).(pulumi.BoolPtrOutput)
 }
 
-// List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured together with whitelist/blacklist.
 func (o OceanOutput) Filters() OceanFiltersPtrOutput {
 	return o.ApplyT(func(v *Ocean) OceanFiltersPtrOutput { return v.Filters }).(OceanFiltersPtrOutput)
 }
@@ -655,7 +638,7 @@ func (o OceanOutput) Monitoring() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Ocean) pulumi.BoolPtrOutput { return v.Monitoring }).(pulumi.BoolPtrOutput)
 }
 
-// Required if type is set to `CLASSIC`
+// The cluster name.
 func (o OceanOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Ocean) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -729,7 +712,6 @@ func (o OceanOutput) UtilizeReservedInstances() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Ocean) pulumi.BoolPtrOutput { return v.UtilizeReservedInstances }).(pulumi.BoolPtrOutput)
 }
 
-// Instance types allowed in the Ocean cluster. Cannot be configured if `blacklist` is configured.
 func (o OceanOutput) Whitelists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Ocean) pulumi.StringArrayOutput { return v.Whitelists }).(pulumi.StringArrayOutput)
 }

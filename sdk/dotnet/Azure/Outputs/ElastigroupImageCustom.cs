@@ -15,7 +15,7 @@ namespace Pulumi.SpotInst.Azure.Outputs
     {
         public readonly string ImageName;
         /// <summary>
-        /// Name of the Azure Resource Group where the Managed Service Identity is located.
+        /// Name of the Resource Group for Elastigroup.
         /// </summary>
         public readonly string ResourceGroupName;
 

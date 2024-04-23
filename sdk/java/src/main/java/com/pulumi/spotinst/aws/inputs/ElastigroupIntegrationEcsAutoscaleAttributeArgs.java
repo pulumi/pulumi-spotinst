@@ -21,17 +21,9 @@ public final class ElastigroupIntegrationEcsAutoscaleAttributeArgs extends com.p
         return this.key;
     }
 
-    /**
-     * The dimension value.
-     * 
-     */
     @Import(name="value", required=true)
     private Output<String> value;
 
-    /**
-     * @return The dimension value.
-     * 
-     */
     public Output<String> value() {
         return this.value;
     }
@@ -70,23 +62,11 @@ public final class ElastigroupIntegrationEcsAutoscaleAttributeArgs extends com.p
             return key(Output.of(key));
         }
 
-        /**
-         * @param value The dimension value.
-         * 
-         * @return builder
-         * 
-         */
         public Builder value(Output<String> value) {
             $.value = value;
             return this;
         }
 
-        /**
-         * @param value The dimension value.
-         * 
-         * @return builder
-         * 
-         */
         public Builder value(String value) {
             return value(Output.of(value));
         }

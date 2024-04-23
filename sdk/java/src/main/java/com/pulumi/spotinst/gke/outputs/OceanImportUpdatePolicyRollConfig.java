@@ -16,11 +16,6 @@ import javax.annotation.Nullable;
 @CustomType
 public final class OceanImportUpdatePolicyRollConfig {
     private @Nullable Integer batchMinHealthyPercentage;
-    /**
-     * @return Value in % to set size of batch in roll. Valid values are 0-100
-     * Example: 20.
-     * 
-     */
     private Integer batchSizePercentage;
     private @Nullable List<String> launchSpecIds;
     private @Nullable Boolean respectPdb;
@@ -29,11 +24,6 @@ public final class OceanImportUpdatePolicyRollConfig {
     public Optional<Integer> batchMinHealthyPercentage() {
         return Optional.ofNullable(this.batchMinHealthyPercentage);
     }
-    /**
-     * @return Value in % to set size of batch in roll. Valid values are 0-100
-     * Example: 20.
-     * 
-     */
     public Integer batchSizePercentage() {
         return this.batchSizePercentage;
     }

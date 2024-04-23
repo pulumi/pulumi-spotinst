@@ -53,10 +53,10 @@ class OceanArgs:
         :param pulumi.Input[Sequence[pulumi.Input['OceanLoadBalancerArgs']]] load_balancers: Configure Load Balancer.
         :param pulumi.Input[Sequence[pulumi.Input['OceanManagedServiceIdentityArgs']]] managed_service_identities: List of Managed Service Identity objects.
         :param pulumi.Input[int] max_pods: The maximum number of pods per node in an AKS cluster.
-        :param pulumi.Input[str] name: Name of the Load Balancer.
+        :param pulumi.Input[str] name: The Ocean cluster name.
         :param pulumi.Input['OceanNetworkArgs'] network: Define the Virtual Network and Subnet.
         :param pulumi.Input['OceanOsDiskArgs'] os_disk: OS disk specifications.
-        :param pulumi.Input[str] resource_group_name: The Resource Group name of the Load Balancer.
+        :param pulumi.Input[str] resource_group_name: Name of the Azure Resource Group into which VMs will be launched. Cannot be updated.
         :param pulumi.Input[Sequence[pulumi.Input['OceanStrategyArgs']]] strategies: The Ocean AKS strategy object.
         :param pulumi.Input[Sequence[pulumi.Input['OceanTagArgs']]] tags: Unique key-value pairs that will be used to tag VMs that are launched in the cluster.
         :param pulumi.Input[str] user_name: Username for admin access to VMs.
@@ -264,7 +264,7 @@ class OceanArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the Load Balancer.
+        The Ocean cluster name.
         """
         return pulumi.get(self, "name")
 
@@ -300,7 +300,7 @@ class OceanArgs:
     @pulumi.getter(name="resourceGroupName")
     def resource_group_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The Resource Group name of the Load Balancer.
+        Name of the Azure Resource Group into which VMs will be launched. Cannot be updated.
         """
         return pulumi.get(self, "resource_group_name")
 
@@ -408,10 +408,10 @@ class _OceanState:
         :param pulumi.Input[Sequence[pulumi.Input['OceanLoadBalancerArgs']]] load_balancers: Configure Load Balancer.
         :param pulumi.Input[Sequence[pulumi.Input['OceanManagedServiceIdentityArgs']]] managed_service_identities: List of Managed Service Identity objects.
         :param pulumi.Input[int] max_pods: The maximum number of pods per node in an AKS cluster.
-        :param pulumi.Input[str] name: Name of the Load Balancer.
+        :param pulumi.Input[str] name: The Ocean cluster name.
         :param pulumi.Input['OceanNetworkArgs'] network: Define the Virtual Network and Subnet.
         :param pulumi.Input['OceanOsDiskArgs'] os_disk: OS disk specifications.
-        :param pulumi.Input[str] resource_group_name: The Resource Group name of the Load Balancer.
+        :param pulumi.Input[str] resource_group_name: Name of the Azure Resource Group into which VMs will be launched. Cannot be updated.
         :param pulumi.Input[str] ssh_public_key: SSH public key for admin access to Linux VMs.
         :param pulumi.Input[Sequence[pulumi.Input['OceanStrategyArgs']]] strategies: The Ocean AKS strategy object.
         :param pulumi.Input[Sequence[pulumi.Input['OceanTagArgs']]] tags: Unique key-value pairs that will be used to tag VMs that are launched in the cluster.
@@ -612,7 +612,7 @@ class _OceanState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the Load Balancer.
+        The Ocean cluster name.
         """
         return pulumi.get(self, "name")
 
@@ -648,7 +648,7 @@ class _OceanState:
     @pulumi.getter(name="resourceGroupName")
     def resource_group_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The Resource Group name of the Load Balancer.
+        Name of the Azure Resource Group into which VMs will be launched. Cannot be updated.
         """
         return pulumi.get(self, "resource_group_name")
 
@@ -764,7 +764,6 @@ class Ocean(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_spotinst as spotinst
@@ -859,7 +858,6 @@ class Ocean(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -875,10 +873,10 @@ class Ocean(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLoadBalancerArgs']]]] load_balancers: Configure Load Balancer.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanManagedServiceIdentityArgs']]]] managed_service_identities: List of Managed Service Identity objects.
         :param pulumi.Input[int] max_pods: The maximum number of pods per node in an AKS cluster.
-        :param pulumi.Input[str] name: Name of the Load Balancer.
+        :param pulumi.Input[str] name: The Ocean cluster name.
         :param pulumi.Input[pulumi.InputType['OceanNetworkArgs']] network: Define the Virtual Network and Subnet.
         :param pulumi.Input[pulumi.InputType['OceanOsDiskArgs']] os_disk: OS disk specifications.
-        :param pulumi.Input[str] resource_group_name: The Resource Group name of the Load Balancer.
+        :param pulumi.Input[str] resource_group_name: Name of the Azure Resource Group into which VMs will be launched. Cannot be updated.
         :param pulumi.Input[str] ssh_public_key: SSH public key for admin access to Linux VMs.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanStrategyArgs']]]] strategies: The Ocean AKS strategy object.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanTagArgs']]]] tags: Unique key-value pairs that will be used to tag VMs that are launched in the cluster.
@@ -899,7 +897,6 @@ class Ocean(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_spotinst as spotinst
@@ -994,7 +991,6 @@ class Ocean(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param OceanArgs args: The arguments to use to populate this resource's properties.
@@ -1123,10 +1119,10 @@ class Ocean(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLoadBalancerArgs']]]] load_balancers: Configure Load Balancer.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanManagedServiceIdentityArgs']]]] managed_service_identities: List of Managed Service Identity objects.
         :param pulumi.Input[int] max_pods: The maximum number of pods per node in an AKS cluster.
-        :param pulumi.Input[str] name: Name of the Load Balancer.
+        :param pulumi.Input[str] name: The Ocean cluster name.
         :param pulumi.Input[pulumi.InputType['OceanNetworkArgs']] network: Define the Virtual Network and Subnet.
         :param pulumi.Input[pulumi.InputType['OceanOsDiskArgs']] os_disk: OS disk specifications.
-        :param pulumi.Input[str] resource_group_name: The Resource Group name of the Load Balancer.
+        :param pulumi.Input[str] resource_group_name: Name of the Azure Resource Group into which VMs will be launched. Cannot be updated.
         :param pulumi.Input[str] ssh_public_key: SSH public key for admin access to Linux VMs.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanStrategyArgs']]]] strategies: The Ocean AKS strategy object.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanTagArgs']]]] tags: Unique key-value pairs that will be used to tag VMs that are launched in the cluster.
@@ -1262,7 +1258,7 @@ class Ocean(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Name of the Load Balancer.
+        The Ocean cluster name.
         """
         return pulumi.get(self, "name")
 
@@ -1286,7 +1282,7 @@ class Ocean(pulumi.CustomResource):
     @pulumi.getter(name="resourceGroupName")
     def resource_group_name(self) -> pulumi.Output[str]:
         """
-        The Resource Group name of the Load Balancer.
+        Name of the Azure Resource Group into which VMs will be launched. Cannot be updated.
         """
         return pulumi.get(self, "resource_group_name")
 

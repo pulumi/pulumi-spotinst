@@ -30,17 +30,9 @@ public final class ElastigroupNetworkInterfaceAccessConfigArgs extends com.pulum
         return Optional.ofNullable(this.name);
     }
 
-    /**
-     * Specifies the type of disk, either SCRATCH or PERSISTENT.
-     * 
-     */
     @Import(name="type")
     private @Nullable Output<String> type;
 
-    /**
-     * @return Specifies the type of disk, either SCRATCH or PERSISTENT.
-     * 
-     */
     public Optional<Output<String>> type() {
         return Optional.ofNullable(this.type);
     }
@@ -91,23 +83,11 @@ public final class ElastigroupNetworkInterfaceAccessConfigArgs extends com.pulum
             return name(Output.of(name));
         }
 
-        /**
-         * @param type Specifies the type of disk, either SCRATCH or PERSISTENT.
-         * 
-         * @return builder
-         * 
-         */
         public Builder type(@Nullable Output<String> type) {
             $.type = type;
             return this;
         }
 
-        /**
-         * @param type Specifies the type of disk, either SCRATCH or PERSISTENT.
-         * 
-         * @return builder
-         * 
-         */
         public Builder type(String type) {
             return type(Output.of(type));
         }

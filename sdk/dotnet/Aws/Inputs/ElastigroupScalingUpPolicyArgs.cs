@@ -54,9 +54,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         [Input("isEnabled")]
         public Input<bool>? IsEnabled { get; set; }
 
-        /// <summary>
-        /// . The number of the desired target (and maximum) capacity
-        /// </summary>
         [Input("maxTargetCapacity")]
         public Input<string>? MaxTargetCapacity { get; set; }
 
@@ -135,15 +132,7 @@ namespace Pulumi.SpotInst.Aws.Inputs
         public Input<string>? Target { get; set; }
 
         /// <summary>
-        /// The value against which the specified statistic is compared in order to determine if a step should be applied.
-        /// 
-        /// 
-        /// If you do not specify an action type, you can only use – `adjustment`, `minTargetCapacity`, `maxTargetCapacity`.
-        /// While using action_type, please also set the following:
-        /// 
-        /// When using `adjustment`           – set the field `adjustment`
-        /// When using `setMinTarget`         – set the field `min_target_capacity`
-        /// When using `updateCapacity`       – set the fields `minimum`, `maximum`, and `target`
+        /// The value against which the specified statistic is compared. If a `step_adjustment` object is defined, then it cannot be specified.
         /// </summary>
         [Input("threshold")]
         public Input<double>? Threshold { get; set; }

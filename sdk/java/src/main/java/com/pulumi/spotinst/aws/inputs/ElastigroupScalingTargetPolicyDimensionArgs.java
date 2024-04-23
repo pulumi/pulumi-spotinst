@@ -17,14 +17,14 @@ public final class ElastigroupScalingTargetPolicyDimensionArgs extends com.pulum
     public static final ElastigroupScalingTargetPolicyDimensionArgs Empty = new ElastigroupScalingTargetPolicyDimensionArgs();
 
     /**
-     * The group name.
+     * String, the dimension name.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return The group name.
+     * @return String, the dimension name.
      * 
      */
     public Output<String> name() {
@@ -32,14 +32,14 @@ public final class ElastigroupScalingTargetPolicyDimensionArgs extends com.pulum
     }
 
     /**
-     * The dimension value.
+     * String, the dimension value.
      * 
      */
     @Import(name="value")
     private @Nullable Output<String> value;
 
     /**
-     * @return The dimension value.
+     * @return String, the dimension value.
      * 
      */
     public Optional<Output<String>> value() {
@@ -72,7 +72,7 @@ public final class ElastigroupScalingTargetPolicyDimensionArgs extends com.pulum
         }
 
         /**
-         * @param name The group name.
+         * @param name String, the dimension name.
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class ElastigroupScalingTargetPolicyDimensionArgs extends com.pulum
         }
 
         /**
-         * @param name The group name.
+         * @param name String, the dimension name.
          * 
          * @return builder
          * 
@@ -93,7 +93,7 @@ public final class ElastigroupScalingTargetPolicyDimensionArgs extends com.pulum
         }
 
         /**
-         * @param value The dimension value.
+         * @param value String, the dimension value.
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class ElastigroupScalingTargetPolicyDimensionArgs extends com.pulum
         }
 
         /**
-         * @param value The dimension value.
+         * @param value String, the dimension value.
          * 
          * @return builder
          * 

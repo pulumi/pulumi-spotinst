@@ -12,15 +12,9 @@ namespace Pulumi.SpotInst.Aws.Inputs
 
     public sealed class OceanAutoscalerResourceLimitsGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Maximum amount of Memory (GiB).
-        /// </summary>
         [Input("maxMemoryGib")]
         public Input<int>? MaxMemoryGib { get; set; }
 
-        /// <summary>
-        /// Maximum number of vcpus available.
-        /// </summary>
         [Input("maxVcpu")]
         public Input<int>? MaxVcpu { get; set; }
 

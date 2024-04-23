@@ -106,14 +106,14 @@ public final class OceanLaunchSpecState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The name of the access configuration.
+     * The launch specification name.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the access configuration.
+     * @return The launch specification name.
      * 
      */
     public Optional<Output<String>> name() {
@@ -553,7 +553,7 @@ public final class OceanLaunchSpecState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param name The name of the access configuration.
+         * @param name The launch specification name.
          * 
          * @return builder
          * 
@@ -564,7 +564,7 @@ public final class OceanLaunchSpecState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param name The name of the access configuration.
+         * @param name The launch specification name.
          * 
          * @return builder
          * 

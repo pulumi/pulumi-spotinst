@@ -11,20 +11,12 @@ import java.util.Objects;
 @CustomType
 public final class ElastigroupIntegrationNomadAutoscaleConstraint {
     private String key;
-    /**
-     * @return The dimension value.
-     * 
-     */
     private String value;
 
     private ElastigroupIntegrationNomadAutoscaleConstraint() {}
     public String key() {
         return this.key;
     }
-    /**
-     * @return The dimension value.
-     * 
-     */
     public String value() {
         return this.value;
     }

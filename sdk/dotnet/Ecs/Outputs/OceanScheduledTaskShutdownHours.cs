@@ -13,13 +13,7 @@ namespace Pulumi.SpotInst.Ecs.Outputs
     [OutputType]
     public sealed class OceanScheduledTaskShutdownHours
     {
-        /// <summary>
-        /// Enable the Ocean ECS autoscaler.
-        /// </summary>
         public readonly bool? IsEnabled;
-        /// <summary>
-        /// Array of strings. Set time windows for image update, at least one time window. Each string is in the format of ddd:hh:mm-ddd:hh:mm ddd. Time windows should not overlap.
-        /// </summary>
         public readonly ImmutableArray<string> TimeWindows;
 
         [OutputConstructor]

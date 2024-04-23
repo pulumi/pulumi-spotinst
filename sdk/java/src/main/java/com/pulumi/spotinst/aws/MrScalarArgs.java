@@ -35,92 +35,44 @@ public final class MrScalarArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final MrScalarArgs Empty = new MrScalarArgs();
 
-    /**
-     * This is meta information about third-party applications that third-party vendors use for testing purposes.
-     * 
-     */
     @Import(name="additionalInfo")
     private @Nullable Output<String> additionalInfo;
 
-    /**
-     * @return This is meta information about third-party applications that third-party vendors use for testing purposes.
-     * 
-     */
     public Optional<Output<String>> additionalInfo() {
         return Optional.ofNullable(this.additionalInfo);
     }
 
-    /**
-     * A list of additional Amazon EC2 security group IDs for the master node.
-     * 
-     */
     @Import(name="additionalPrimarySecurityGroups")
     private @Nullable Output<List<String>> additionalPrimarySecurityGroups;
 
-    /**
-     * @return A list of additional Amazon EC2 security group IDs for the master node.
-     * 
-     */
     public Optional<Output<List<String>>> additionalPrimarySecurityGroups() {
         return Optional.ofNullable(this.additionalPrimarySecurityGroups);
     }
 
-    /**
-     * A list of additional Amazon EC2 security group IDs for the core and task nodes.
-     * 
-     */
     @Import(name="additionalReplicaSecurityGroups")
     private @Nullable Output<List<String>> additionalReplicaSecurityGroups;
 
-    /**
-     * @return A list of additional Amazon EC2 security group IDs for the core and task nodes.
-     * 
-     */
     public Optional<Output<List<String>>> additionalReplicaSecurityGroups() {
         return Optional.ofNullable(this.additionalReplicaSecurityGroups);
     }
 
-    /**
-     * A case-insensitive list of applications for Amazon EMR to install and configure when launching the cluster
-     * 
-     */
     @Import(name="applications")
     private @Nullable Output<List<MrScalarApplicationArgs>> applications;
 
-    /**
-     * @return A case-insensitive list of applications for Amazon EMR to install and configure when launching the cluster
-     * 
-     */
     public Optional<Output<List<MrScalarApplicationArgs>>> applications() {
         return Optional.ofNullable(this.applications);
     }
 
-    /**
-     * List of AZs and their subnet Ids. See example above for usage.
-     * 
-     */
     @Import(name="availabilityZones")
     private @Nullable Output<List<String>> availabilityZones;
 
-    /**
-     * @return List of AZs and their subnet Ids. See example above for usage.
-     * 
-     */
     public Optional<Output<List<String>>> availabilityZones() {
         return Optional.ofNullable(this.availabilityZones);
     }
 
-    /**
-     * Describes path to S3 file containing description of bootstrap actions. [More Information](https://api.spotinst.com/elastigroup-for-aws/services-integrations/elastic-mapreduce/import-an-emr-cluster/advanced/)
-     * 
-     */
     @Import(name="bootstrapActionsFiles")
     private @Nullable Output<List<MrScalarBootstrapActionsFileArgs>> bootstrapActionsFiles;
 
-    /**
-     * @return Describes path to S3 file containing description of bootstrap actions. [More Information](https://api.spotinst.com/elastigroup-for-aws/services-integrations/elastic-mapreduce/import-an-emr-cluster/advanced/)
-     * 
-     */
     public Optional<Output<List<MrScalarBootstrapActionsFileArgs>>> bootstrapActionsFiles() {
         return Optional.ofNullable(this.bootstrapActionsFiles);
     }
@@ -140,137 +92,65 @@ public final class MrScalarArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.clusterId);
     }
 
-    /**
-     * Describes path to S3 file containing description of configurations. [More Information](https://api.spotinst.com/elastigroup-for-aws/services-integrations/elastic-mapreduce/import-an-emr-cluster/advanced/)
-     * 
-     */
     @Import(name="configurationsFiles")
     private @Nullable Output<List<MrScalarConfigurationsFileArgs>> configurationsFiles;
 
-    /**
-     * @return Describes path to S3 file containing description of configurations. [More Information](https://api.spotinst.com/elastigroup-for-aws/services-integrations/elastic-mapreduce/import-an-emr-cluster/advanced/)
-     * 
-     */
     public Optional<Output<List<MrScalarConfigurationsFileArgs>>> configurationsFiles() {
         return Optional.ofNullable(this.configurationsFiles);
     }
 
-    /**
-     * amount of instances in core group.
-     * 
-     */
     @Import(name="coreDesiredCapacity")
     private @Nullable Output<Integer> coreDesiredCapacity;
 
-    /**
-     * @return amount of instances in core group.
-     * 
-     */
     public Optional<Output<Integer>> coreDesiredCapacity() {
         return Optional.ofNullable(this.coreDesiredCapacity);
     }
 
-    /**
-     * This determines the ebs configuration for your core group instances. Only a single block is allowed.
-     * 
-     */
     @Import(name="coreEbsBlockDevices")
     private @Nullable Output<List<MrScalarCoreEbsBlockDeviceArgs>> coreEbsBlockDevices;
 
-    /**
-     * @return This determines the ebs configuration for your core group instances. Only a single block is allowed.
-     * 
-     */
     public Optional<Output<List<MrScalarCoreEbsBlockDeviceArgs>>> coreEbsBlockDevices() {
         return Optional.ofNullable(this.coreEbsBlockDevices);
     }
 
-    /**
-     * EBS Optimization setting for instances in group.
-     * 
-     */
     @Import(name="coreEbsOptimized")
     private @Nullable Output<Boolean> coreEbsOptimized;
 
-    /**
-     * @return EBS Optimization setting for instances in group.
-     * 
-     */
     public Optional<Output<Boolean>> coreEbsOptimized() {
         return Optional.ofNullable(this.coreEbsOptimized);
     }
 
-    /**
-     * The MrScaler instance types for the core nodes.
-     * 
-     */
     @Import(name="coreInstanceTypes")
     private @Nullable Output<List<String>> coreInstanceTypes;
 
-    /**
-     * @return The MrScaler instance types for the core nodes.
-     * 
-     */
     public Optional<Output<List<String>>> coreInstanceTypes() {
         return Optional.ofNullable(this.coreInstanceTypes);
     }
 
-    /**
-     * The MrScaler lifecycle for instances in core group. Allowed values are &#39;SPOT&#39; and &#39;ON_DEMAND&#39;.
-     * 
-     */
     @Import(name="coreLifecycle")
     private @Nullable Output<String> coreLifecycle;
 
-    /**
-     * @return The MrScaler lifecycle for instances in core group. Allowed values are &#39;SPOT&#39; and &#39;ON_DEMAND&#39;.
-     * 
-     */
     public Optional<Output<String>> coreLifecycle() {
         return Optional.ofNullable(this.coreLifecycle);
     }
 
-    /**
-     * maximal amount of instances in core group.
-     * 
-     */
     @Import(name="coreMaxSize")
     private @Nullable Output<Integer> coreMaxSize;
 
-    /**
-     * @return maximal amount of instances in core group.
-     * 
-     */
     public Optional<Output<Integer>> coreMaxSize() {
         return Optional.ofNullable(this.coreMaxSize);
     }
 
-    /**
-     * The minimal amount of instances in core group.
-     * 
-     */
     @Import(name="coreMinSize")
     private @Nullable Output<Integer> coreMinSize;
 
-    /**
-     * @return The minimal amount of instances in core group.
-     * 
-     */
     public Optional<Output<Integer>> coreMinSize() {
         return Optional.ofNullable(this.coreMinSize);
     }
 
-    /**
-     * Each `*_scaling_*_policy` supports the following:
-     * 
-     */
     @Import(name="coreScalingDownPolicies")
     private @Nullable Output<List<MrScalarCoreScalingDownPolicyArgs>> coreScalingDownPolicies;
 
-    /**
-     * @return Each `*_scaling_*_policy` supports the following:
-     * 
-     */
     public Optional<Output<List<MrScalarCoreScalingDownPolicyArgs>>> coreScalingDownPolicies() {
         return Optional.ofNullable(this.coreScalingDownPolicies);
     }
@@ -282,32 +162,16 @@ public final class MrScalarArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.coreScalingUpPolicies);
     }
 
-    /**
-     * Unit of task group for target, min and max. The unit could be `instance` or `weight`. instance - amount of instances. weight - amount of vCPU.
-     * 
-     */
     @Import(name="coreUnit")
     private @Nullable Output<String> coreUnit;
 
-    /**
-     * @return Unit of task group for target, min and max. The unit could be `instance` or `weight`. instance - amount of instances. weight - amount of vCPU.
-     * 
-     */
     public Optional<Output<String>> coreUnit() {
         return Optional.ofNullable(this.coreUnit);
     }
 
-    /**
-     * The ID of a custom Amazon EBS-backed Linux AMI if the cluster uses a custom AMI.
-     * 
-     */
     @Import(name="customAmiId")
     private @Nullable Output<String> customAmiId;
 
-    /**
-     * @return The ID of a custom Amazon EBS-backed Linux AMI if the cluster uses a custom AMI.
-     * 
-     */
     public Optional<Output<String>> customAmiId() {
         return Optional.ofNullable(this.customAmiId);
     }
@@ -334,17 +198,9 @@ public final class MrScalarArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.ebsRootVolumeSize);
     }
 
-    /**
-     * The name of an Amazon EC2 key pair that can be used to ssh to the master node.
-     * 
-     */
     @Import(name="ec2KeyName")
     private @Nullable Output<String> ec2KeyName;
 
-    /**
-     * @return The name of an Amazon EC2 key pair that can be used to ssh to the master node.
-     * 
-     */
     public Optional<Output<String>> ec2KeyName() {
         return Optional.ofNullable(this.ec2KeyName);
     }
@@ -364,167 +220,79 @@ public final class MrScalarArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.exposeClusterId);
     }
 
-    /**
-     * Describes the instance and weights. Check out [Elastigroup Weighted Instances](https://api.spotinst.com/elastigroup-for-aws/concepts/general-concepts/elastigroup-capacity-instances-or-weighted) for more info.
-     * 
-     */
     @Import(name="instanceWeights")
     private @Nullable Output<List<MrScalarInstanceWeightArgs>> instanceWeights;
 
-    /**
-     * @return Describes the instance and weights. Check out [Elastigroup Weighted Instances](https://api.spotinst.com/elastigroup-for-aws/concepts/general-concepts/elastigroup-capacity-instances-or-weighted) for more info.
-     * 
-     */
     public Optional<Output<List<MrScalarInstanceWeightArgs>>> instanceWeights() {
         return Optional.ofNullable(this.instanceWeights);
     }
 
-    /**
-     * The IAM role that was specified when the job flow was launched. The EC2 instances of the job flow assume this role.
-     * 
-     */
     @Import(name="jobFlowRole")
     private @Nullable Output<String> jobFlowRole;
 
-    /**
-     * @return The IAM role that was specified when the job flow was launched. The EC2 instances of the job flow assume this role.
-     * 
-     */
     public Optional<Output<String>> jobFlowRole() {
         return Optional.ofNullable(this.jobFlowRole);
     }
 
-    /**
-     * Specifies whether the cluster should remain available after completing all steps.
-     * 
-     */
     @Import(name="keepJobFlowAlive")
     private @Nullable Output<Boolean> keepJobFlowAlive;
 
-    /**
-     * @return Specifies whether the cluster should remain available after completing all steps.
-     * 
-     */
     public Optional<Output<Boolean>> keepJobFlowAlive() {
         return Optional.ofNullable(this.keepJobFlowAlive);
     }
 
-    /**
-     * The path to the Amazon S3 location where logs for this cluster are stored.
-     * 
-     */
     @Import(name="logUri")
     private @Nullable Output<String> logUri;
 
-    /**
-     * @return The path to the Amazon S3 location where logs for this cluster are stored.
-     * 
-     */
     public Optional<Output<String>> logUri() {
         return Optional.ofNullable(this.logUri);
     }
 
-    /**
-     * EMR Managed Security group that will be set to the primary instance group.
-     * 
-     */
     @Import(name="managedPrimarySecurityGroup")
     private @Nullable Output<String> managedPrimarySecurityGroup;
 
-    /**
-     * @return EMR Managed Security group that will be set to the primary instance group.
-     * 
-     */
     public Optional<Output<String>> managedPrimarySecurityGroup() {
         return Optional.ofNullable(this.managedPrimarySecurityGroup);
     }
 
-    /**
-     * EMR Managed Security group that will be set to the replica instance group.
-     * 
-     */
     @Import(name="managedReplicaSecurityGroup")
     private @Nullable Output<String> managedReplicaSecurityGroup;
 
-    /**
-     * @return EMR Managed Security group that will be set to the replica instance group.
-     * 
-     */
     public Optional<Output<String>> managedReplicaSecurityGroup() {
         return Optional.ofNullable(this.managedReplicaSecurityGroup);
     }
 
-    /**
-     * This determines the ebs configuration for your master group instances. Only a single block is allowed.
-     * 
-     */
     @Import(name="masterEbsBlockDevices")
     private @Nullable Output<List<MrScalarMasterEbsBlockDeviceArgs>> masterEbsBlockDevices;
 
-    /**
-     * @return This determines the ebs configuration for your master group instances. Only a single block is allowed.
-     * 
-     */
     public Optional<Output<List<MrScalarMasterEbsBlockDeviceArgs>>> masterEbsBlockDevices() {
         return Optional.ofNullable(this.masterEbsBlockDevices);
     }
 
-    /**
-     * EBS Optimization setting for instances in group.
-     * 
-     */
     @Import(name="masterEbsOptimized")
     private @Nullable Output<Boolean> masterEbsOptimized;
 
-    /**
-     * @return EBS Optimization setting for instances in group.
-     * 
-     */
     public Optional<Output<Boolean>> masterEbsOptimized() {
         return Optional.ofNullable(this.masterEbsOptimized);
     }
 
-    /**
-     * The MrScaler instance types for the master nodes.
-     * 
-     */
     @Import(name="masterInstanceTypes")
     private @Nullable Output<List<String>> masterInstanceTypes;
 
-    /**
-     * @return The MrScaler instance types for the master nodes.
-     * 
-     */
     public Optional<Output<List<String>>> masterInstanceTypes() {
         return Optional.ofNullable(this.masterInstanceTypes);
     }
 
-    /**
-     * The MrScaler lifecycle for instances in master group. Allowed values are &#39;SPOT&#39; and &#39;ON_DEMAND&#39;.
-     * 
-     */
     @Import(name="masterLifecycle")
     private @Nullable Output<String> masterLifecycle;
 
-    /**
-     * @return The MrScaler lifecycle for instances in master group. Allowed values are &#39;SPOT&#39; and &#39;ON_DEMAND&#39;.
-     * 
-     */
     public Optional<Output<String>> masterLifecycle() {
         return Optional.ofNullable(this.masterLifecycle);
     }
 
-    /**
-     * Number of instances in the master group.
-     * 
-     */
     @Import(name="masterTarget")
     private @Nullable Output<Integer> masterTarget;
 
-    /**
-     * @return Number of instances in the master group.
-     * 
-     */
     public Optional<Output<Integer>> masterTarget() {
         return Optional.ofNullable(this.masterTarget);
     }
@@ -573,107 +341,51 @@ public final class MrScalarArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.releaseLabel);
     }
 
-    /**
-     * Applies only when `custom_ami_id` is used. Specifies the type of updates that are applied from the Amazon Linux AMI package repositories when an instance boots using the AMI. Possible values include: `SECURITY`, `NONE`.
-     * 
-     */
     @Import(name="repoUpgradeOnBoot")
     private @Nullable Output<String> repoUpgradeOnBoot;
 
-    /**
-     * @return Applies only when `custom_ami_id` is used. Specifies the type of updates that are applied from the Amazon Linux AMI package repositories when an instance boots using the AMI. Possible values include: `SECURITY`, `NONE`.
-     * 
-     */
     public Optional<Output<String>> repoUpgradeOnBoot() {
         return Optional.ofNullable(this.repoUpgradeOnBoot);
     }
 
-    /**
-     * Specifies the maximum number of times a capacity provisioning should be retried if the provisioning timeout is exceeded. Valid values: `1-5`.
-     * 
-     */
     @Import(name="retries")
     private @Nullable Output<Integer> retries;
 
-    /**
-     * @return Specifies the maximum number of times a capacity provisioning should be retried if the provisioning timeout is exceeded. Valid values: `1-5`.
-     * 
-     */
     public Optional<Output<Integer>> retries() {
         return Optional.ofNullable(this.retries);
     }
 
-    /**
-     * An array of scheduled tasks.
-     * 
-     */
     @Import(name="scheduledTasks")
     private @Nullable Output<List<MrScalarScheduledTaskArgs>> scheduledTasks;
 
-    /**
-     * @return An array of scheduled tasks.
-     * 
-     */
     public Optional<Output<List<MrScalarScheduledTaskArgs>>> scheduledTasks() {
         return Optional.ofNullable(this.scheduledTasks);
     }
 
-    /**
-     * The name of the security configuration applied to the cluster.
-     * 
-     */
     @Import(name="securityConfig")
     private @Nullable Output<String> securityConfig;
 
-    /**
-     * @return The name of the security configuration applied to the cluster.
-     * 
-     */
     public Optional<Output<String>> securityConfig() {
         return Optional.ofNullable(this.securityConfig);
     }
 
-    /**
-     * The identifier of the Amazon EC2 security group for the Amazon EMR service to access clusters in VPC private subnets.
-     * 
-     */
     @Import(name="serviceAccessSecurityGroup")
     private @Nullable Output<String> serviceAccessSecurityGroup;
 
-    /**
-     * @return The identifier of the Amazon EC2 security group for the Amazon EMR service to access clusters in VPC private subnets.
-     * 
-     */
     public Optional<Output<String>> serviceAccessSecurityGroup() {
         return Optional.ofNullable(this.serviceAccessSecurityGroup);
     }
 
-    /**
-     * The IAM role that will be assumed by the Amazon EMR service to access AWS resources on your behalf.
-     * 
-     */
     @Import(name="serviceRole")
     private @Nullable Output<String> serviceRole;
 
-    /**
-     * @return The IAM role that will be assumed by the Amazon EMR service to access AWS resources on your behalf.
-     * 
-     */
     public Optional<Output<String>> serviceRole() {
         return Optional.ofNullable(this.serviceRole);
     }
 
-    /**
-     * Steps from S3.
-     * 
-     */
     @Import(name="stepsFiles")
     private @Nullable Output<List<MrScalarStepsFileArgs>> stepsFiles;
 
-    /**
-     * @return Steps from S3.
-     * 
-     */
     public Optional<Output<List<MrScalarStepsFileArgs>>> stepsFiles() {
         return Optional.ofNullable(this.stepsFiles);
     }
@@ -693,137 +405,65 @@ public final class MrScalarArgs extends com.pulumi.resources.ResourceArgs {
         return this.strategy;
     }
 
-    /**
-     * A list of tags to assign to the resource. You may define multiple tags.
-     * 
-     */
     @Import(name="tags")
     private @Nullable Output<List<MrScalarTagArgs>> tags;
 
-    /**
-     * @return A list of tags to assign to the resource. You may define multiple tags.
-     * 
-     */
     public Optional<Output<List<MrScalarTagArgs>>> tags() {
         return Optional.ofNullable(this.tags);
     }
 
-    /**
-     * amount of instances in task group.
-     * 
-     */
     @Import(name="taskDesiredCapacity")
     private @Nullable Output<Integer> taskDesiredCapacity;
 
-    /**
-     * @return amount of instances in task group.
-     * 
-     */
     public Optional<Output<Integer>> taskDesiredCapacity() {
         return Optional.ofNullable(this.taskDesiredCapacity);
     }
 
-    /**
-     * This determines the ebs configuration for your task group instances. Only a single block is allowed.
-     * 
-     */
     @Import(name="taskEbsBlockDevices")
     private @Nullable Output<List<MrScalarTaskEbsBlockDeviceArgs>> taskEbsBlockDevices;
 
-    /**
-     * @return This determines the ebs configuration for your task group instances. Only a single block is allowed.
-     * 
-     */
     public Optional<Output<List<MrScalarTaskEbsBlockDeviceArgs>>> taskEbsBlockDevices() {
         return Optional.ofNullable(this.taskEbsBlockDevices);
     }
 
-    /**
-     * EBS Optimization setting for instances in group.
-     * 
-     */
     @Import(name="taskEbsOptimized")
     private @Nullable Output<Boolean> taskEbsOptimized;
 
-    /**
-     * @return EBS Optimization setting for instances in group.
-     * 
-     */
     public Optional<Output<Boolean>> taskEbsOptimized() {
         return Optional.ofNullable(this.taskEbsOptimized);
     }
 
-    /**
-     * The MrScaler instance types for the task nodes.
-     * 
-     */
     @Import(name="taskInstanceTypes")
     private @Nullable Output<List<String>> taskInstanceTypes;
 
-    /**
-     * @return The MrScaler instance types for the task nodes.
-     * 
-     */
     public Optional<Output<List<String>>> taskInstanceTypes() {
         return Optional.ofNullable(this.taskInstanceTypes);
     }
 
-    /**
-     * The MrScaler lifecycle for instances in task group. Allowed values are &#39;SPOT&#39; and &#39;ON_DEMAND&#39;.
-     * 
-     */
     @Import(name="taskLifecycle")
     private @Nullable Output<String> taskLifecycle;
 
-    /**
-     * @return The MrScaler lifecycle for instances in task group. Allowed values are &#39;SPOT&#39; and &#39;ON_DEMAND&#39;.
-     * 
-     */
     public Optional<Output<String>> taskLifecycle() {
         return Optional.ofNullable(this.taskLifecycle);
     }
 
-    /**
-     * maximal amount of instances in task group.
-     * 
-     */
     @Import(name="taskMaxSize")
     private @Nullable Output<Integer> taskMaxSize;
 
-    /**
-     * @return maximal amount of instances in task group.
-     * 
-     */
     public Optional<Output<Integer>> taskMaxSize() {
         return Optional.ofNullable(this.taskMaxSize);
     }
 
-    /**
-     * The minimal amount of instances in task group.
-     * 
-     */
     @Import(name="taskMinSize")
     private @Nullable Output<Integer> taskMinSize;
 
-    /**
-     * @return The minimal amount of instances in task group.
-     * 
-     */
     public Optional<Output<Integer>> taskMinSize() {
         return Optional.ofNullable(this.taskMinSize);
     }
 
-    /**
-     * Possible core group scaling policies (Clone, New strategies):
-     * 
-     */
     @Import(name="taskScalingDownPolicies")
     private @Nullable Output<List<MrScalarTaskScalingDownPolicyArgs>> taskScalingDownPolicies;
 
-    /**
-     * @return Possible core group scaling policies (Clone, New strategies):
-     * 
-     */
     public Optional<Output<List<MrScalarTaskScalingDownPolicyArgs>>> taskScalingDownPolicies() {
         return Optional.ofNullable(this.taskScalingDownPolicies);
     }
@@ -835,17 +475,9 @@ public final class MrScalarArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.taskScalingUpPolicies);
     }
 
-    /**
-     * Unit of task group for target, min and max. The unit could be `instance` or `weight`. instance - amount of instances. weight - amount of vCPU.
-     * 
-     */
     @Import(name="taskUnit")
     private @Nullable Output<String> taskUnit;
 
-    /**
-     * @return Unit of task group for target, min and max. The unit could be `instance` or `weight`. instance - amount of instances. weight - amount of vCPU.
-     * 
-     */
     public Optional<Output<String>> taskUnit() {
         return Optional.ofNullable(this.taskUnit);
     }
@@ -865,17 +497,9 @@ public final class MrScalarArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.terminationPolicies);
     }
 
-    /**
-     * Specifies whether the Amazon EC2 instances in the cluster are protected from termination by API calls, user intervention, or in the event of a job-flow error.
-     * 
-     */
     @Import(name="terminationProtected")
     private @Nullable Output<Boolean> terminationProtected;
 
-    /**
-     * @return Specifies whether the Amazon EC2 instances in the cluster are protected from termination by API calls, user intervention, or in the event of a job-flow error.
-     * 
-     */
     public Optional<Output<Boolean>> terminationProtected() {
         return Optional.ofNullable(this.terminationProtected);
     }
@@ -982,178 +606,76 @@ public final class MrScalarArgs extends com.pulumi.resources.ResourceArgs {
             $ = new MrScalarArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param additionalInfo This is meta information about third-party applications that third-party vendors use for testing purposes.
-         * 
-         * @return builder
-         * 
-         */
         public Builder additionalInfo(@Nullable Output<String> additionalInfo) {
             $.additionalInfo = additionalInfo;
             return this;
         }
 
-        /**
-         * @param additionalInfo This is meta information about third-party applications that third-party vendors use for testing purposes.
-         * 
-         * @return builder
-         * 
-         */
         public Builder additionalInfo(String additionalInfo) {
             return additionalInfo(Output.of(additionalInfo));
         }
 
-        /**
-         * @param additionalPrimarySecurityGroups A list of additional Amazon EC2 security group IDs for the master node.
-         * 
-         * @return builder
-         * 
-         */
         public Builder additionalPrimarySecurityGroups(@Nullable Output<List<String>> additionalPrimarySecurityGroups) {
             $.additionalPrimarySecurityGroups = additionalPrimarySecurityGroups;
             return this;
         }
 
-        /**
-         * @param additionalPrimarySecurityGroups A list of additional Amazon EC2 security group IDs for the master node.
-         * 
-         * @return builder
-         * 
-         */
         public Builder additionalPrimarySecurityGroups(List<String> additionalPrimarySecurityGroups) {
             return additionalPrimarySecurityGroups(Output.of(additionalPrimarySecurityGroups));
         }
 
-        /**
-         * @param additionalPrimarySecurityGroups A list of additional Amazon EC2 security group IDs for the master node.
-         * 
-         * @return builder
-         * 
-         */
         public Builder additionalPrimarySecurityGroups(String... additionalPrimarySecurityGroups) {
             return additionalPrimarySecurityGroups(List.of(additionalPrimarySecurityGroups));
         }
 
-        /**
-         * @param additionalReplicaSecurityGroups A list of additional Amazon EC2 security group IDs for the core and task nodes.
-         * 
-         * @return builder
-         * 
-         */
         public Builder additionalReplicaSecurityGroups(@Nullable Output<List<String>> additionalReplicaSecurityGroups) {
             $.additionalReplicaSecurityGroups = additionalReplicaSecurityGroups;
             return this;
         }
 
-        /**
-         * @param additionalReplicaSecurityGroups A list of additional Amazon EC2 security group IDs for the core and task nodes.
-         * 
-         * @return builder
-         * 
-         */
         public Builder additionalReplicaSecurityGroups(List<String> additionalReplicaSecurityGroups) {
             return additionalReplicaSecurityGroups(Output.of(additionalReplicaSecurityGroups));
         }
 
-        /**
-         * @param additionalReplicaSecurityGroups A list of additional Amazon EC2 security group IDs for the core and task nodes.
-         * 
-         * @return builder
-         * 
-         */
         public Builder additionalReplicaSecurityGroups(String... additionalReplicaSecurityGroups) {
             return additionalReplicaSecurityGroups(List.of(additionalReplicaSecurityGroups));
         }
 
-        /**
-         * @param applications A case-insensitive list of applications for Amazon EMR to install and configure when launching the cluster
-         * 
-         * @return builder
-         * 
-         */
         public Builder applications(@Nullable Output<List<MrScalarApplicationArgs>> applications) {
             $.applications = applications;
             return this;
         }
 
-        /**
-         * @param applications A case-insensitive list of applications for Amazon EMR to install and configure when launching the cluster
-         * 
-         * @return builder
-         * 
-         */
         public Builder applications(List<MrScalarApplicationArgs> applications) {
             return applications(Output.of(applications));
         }
 
-        /**
-         * @param applications A case-insensitive list of applications for Amazon EMR to install and configure when launching the cluster
-         * 
-         * @return builder
-         * 
-         */
         public Builder applications(MrScalarApplicationArgs... applications) {
             return applications(List.of(applications));
         }
 
-        /**
-         * @param availabilityZones List of AZs and their subnet Ids. See example above for usage.
-         * 
-         * @return builder
-         * 
-         */
         public Builder availabilityZones(@Nullable Output<List<String>> availabilityZones) {
             $.availabilityZones = availabilityZones;
             return this;
         }
 
-        /**
-         * @param availabilityZones List of AZs and their subnet Ids. See example above for usage.
-         * 
-         * @return builder
-         * 
-         */
         public Builder availabilityZones(List<String> availabilityZones) {
             return availabilityZones(Output.of(availabilityZones));
         }
 
-        /**
-         * @param availabilityZones List of AZs and their subnet Ids. See example above for usage.
-         * 
-         * @return builder
-         * 
-         */
         public Builder availabilityZones(String... availabilityZones) {
             return availabilityZones(List.of(availabilityZones));
         }
 
-        /**
-         * @param bootstrapActionsFiles Describes path to S3 file containing description of bootstrap actions. [More Information](https://api.spotinst.com/elastigroup-for-aws/services-integrations/elastic-mapreduce/import-an-emr-cluster/advanced/)
-         * 
-         * @return builder
-         * 
-         */
         public Builder bootstrapActionsFiles(@Nullable Output<List<MrScalarBootstrapActionsFileArgs>> bootstrapActionsFiles) {
             $.bootstrapActionsFiles = bootstrapActionsFiles;
             return this;
         }
 
-        /**
-         * @param bootstrapActionsFiles Describes path to S3 file containing description of bootstrap actions. [More Information](https://api.spotinst.com/elastigroup-for-aws/services-integrations/elastic-mapreduce/import-an-emr-cluster/advanced/)
-         * 
-         * @return builder
-         * 
-         */
         public Builder bootstrapActionsFiles(List<MrScalarBootstrapActionsFileArgs> bootstrapActionsFiles) {
             return bootstrapActionsFiles(Output.of(bootstrapActionsFiles));
         }
 
-        /**
-         * @param bootstrapActionsFiles Describes path to S3 file containing description of bootstrap actions. [More Information](https://api.spotinst.com/elastigroup-for-aws/services-integrations/elastic-mapreduce/import-an-emr-cluster/advanced/)
-         * 
-         * @return builder
-         * 
-         */
         public Builder bootstrapActionsFiles(MrScalarBootstrapActionsFileArgs... bootstrapActionsFiles) {
             return bootstrapActionsFiles(List.of(bootstrapActionsFiles));
         }
@@ -1179,231 +701,99 @@ public final class MrScalarArgs extends com.pulumi.resources.ResourceArgs {
             return clusterId(Output.of(clusterId));
         }
 
-        /**
-         * @param configurationsFiles Describes path to S3 file containing description of configurations. [More Information](https://api.spotinst.com/elastigroup-for-aws/services-integrations/elastic-mapreduce/import-an-emr-cluster/advanced/)
-         * 
-         * @return builder
-         * 
-         */
         public Builder configurationsFiles(@Nullable Output<List<MrScalarConfigurationsFileArgs>> configurationsFiles) {
             $.configurationsFiles = configurationsFiles;
             return this;
         }
 
-        /**
-         * @param configurationsFiles Describes path to S3 file containing description of configurations. [More Information](https://api.spotinst.com/elastigroup-for-aws/services-integrations/elastic-mapreduce/import-an-emr-cluster/advanced/)
-         * 
-         * @return builder
-         * 
-         */
         public Builder configurationsFiles(List<MrScalarConfigurationsFileArgs> configurationsFiles) {
             return configurationsFiles(Output.of(configurationsFiles));
         }
 
-        /**
-         * @param configurationsFiles Describes path to S3 file containing description of configurations. [More Information](https://api.spotinst.com/elastigroup-for-aws/services-integrations/elastic-mapreduce/import-an-emr-cluster/advanced/)
-         * 
-         * @return builder
-         * 
-         */
         public Builder configurationsFiles(MrScalarConfigurationsFileArgs... configurationsFiles) {
             return configurationsFiles(List.of(configurationsFiles));
         }
 
-        /**
-         * @param coreDesiredCapacity amount of instances in core group.
-         * 
-         * @return builder
-         * 
-         */
         public Builder coreDesiredCapacity(@Nullable Output<Integer> coreDesiredCapacity) {
             $.coreDesiredCapacity = coreDesiredCapacity;
             return this;
         }
 
-        /**
-         * @param coreDesiredCapacity amount of instances in core group.
-         * 
-         * @return builder
-         * 
-         */
         public Builder coreDesiredCapacity(Integer coreDesiredCapacity) {
             return coreDesiredCapacity(Output.of(coreDesiredCapacity));
         }
 
-        /**
-         * @param coreEbsBlockDevices This determines the ebs configuration for your core group instances. Only a single block is allowed.
-         * 
-         * @return builder
-         * 
-         */
         public Builder coreEbsBlockDevices(@Nullable Output<List<MrScalarCoreEbsBlockDeviceArgs>> coreEbsBlockDevices) {
             $.coreEbsBlockDevices = coreEbsBlockDevices;
             return this;
         }
 
-        /**
-         * @param coreEbsBlockDevices This determines the ebs configuration for your core group instances. Only a single block is allowed.
-         * 
-         * @return builder
-         * 
-         */
         public Builder coreEbsBlockDevices(List<MrScalarCoreEbsBlockDeviceArgs> coreEbsBlockDevices) {
             return coreEbsBlockDevices(Output.of(coreEbsBlockDevices));
         }
 
-        /**
-         * @param coreEbsBlockDevices This determines the ebs configuration for your core group instances. Only a single block is allowed.
-         * 
-         * @return builder
-         * 
-         */
         public Builder coreEbsBlockDevices(MrScalarCoreEbsBlockDeviceArgs... coreEbsBlockDevices) {
             return coreEbsBlockDevices(List.of(coreEbsBlockDevices));
         }
 
-        /**
-         * @param coreEbsOptimized EBS Optimization setting for instances in group.
-         * 
-         * @return builder
-         * 
-         */
         public Builder coreEbsOptimized(@Nullable Output<Boolean> coreEbsOptimized) {
             $.coreEbsOptimized = coreEbsOptimized;
             return this;
         }
 
-        /**
-         * @param coreEbsOptimized EBS Optimization setting for instances in group.
-         * 
-         * @return builder
-         * 
-         */
         public Builder coreEbsOptimized(Boolean coreEbsOptimized) {
             return coreEbsOptimized(Output.of(coreEbsOptimized));
         }
 
-        /**
-         * @param coreInstanceTypes The MrScaler instance types for the core nodes.
-         * 
-         * @return builder
-         * 
-         */
         public Builder coreInstanceTypes(@Nullable Output<List<String>> coreInstanceTypes) {
             $.coreInstanceTypes = coreInstanceTypes;
             return this;
         }
 
-        /**
-         * @param coreInstanceTypes The MrScaler instance types for the core nodes.
-         * 
-         * @return builder
-         * 
-         */
         public Builder coreInstanceTypes(List<String> coreInstanceTypes) {
             return coreInstanceTypes(Output.of(coreInstanceTypes));
         }
 
-        /**
-         * @param coreInstanceTypes The MrScaler instance types for the core nodes.
-         * 
-         * @return builder
-         * 
-         */
         public Builder coreInstanceTypes(String... coreInstanceTypes) {
             return coreInstanceTypes(List.of(coreInstanceTypes));
         }
 
-        /**
-         * @param coreLifecycle The MrScaler lifecycle for instances in core group. Allowed values are &#39;SPOT&#39; and &#39;ON_DEMAND&#39;.
-         * 
-         * @return builder
-         * 
-         */
         public Builder coreLifecycle(@Nullable Output<String> coreLifecycle) {
             $.coreLifecycle = coreLifecycle;
             return this;
         }
 
-        /**
-         * @param coreLifecycle The MrScaler lifecycle for instances in core group. Allowed values are &#39;SPOT&#39; and &#39;ON_DEMAND&#39;.
-         * 
-         * @return builder
-         * 
-         */
         public Builder coreLifecycle(String coreLifecycle) {
             return coreLifecycle(Output.of(coreLifecycle));
         }
 
-        /**
-         * @param coreMaxSize maximal amount of instances in core group.
-         * 
-         * @return builder
-         * 
-         */
         public Builder coreMaxSize(@Nullable Output<Integer> coreMaxSize) {
             $.coreMaxSize = coreMaxSize;
             return this;
         }
 
-        /**
-         * @param coreMaxSize maximal amount of instances in core group.
-         * 
-         * @return builder
-         * 
-         */
         public Builder coreMaxSize(Integer coreMaxSize) {
             return coreMaxSize(Output.of(coreMaxSize));
         }
 
-        /**
-         * @param coreMinSize The minimal amount of instances in core group.
-         * 
-         * @return builder
-         * 
-         */
         public Builder coreMinSize(@Nullable Output<Integer> coreMinSize) {
             $.coreMinSize = coreMinSize;
             return this;
         }
 
-        /**
-         * @param coreMinSize The minimal amount of instances in core group.
-         * 
-         * @return builder
-         * 
-         */
         public Builder coreMinSize(Integer coreMinSize) {
             return coreMinSize(Output.of(coreMinSize));
         }
 
-        /**
-         * @param coreScalingDownPolicies Each `*_scaling_*_policy` supports the following:
-         * 
-         * @return builder
-         * 
-         */
         public Builder coreScalingDownPolicies(@Nullable Output<List<MrScalarCoreScalingDownPolicyArgs>> coreScalingDownPolicies) {
             $.coreScalingDownPolicies = coreScalingDownPolicies;
             return this;
         }
 
-        /**
-         * @param coreScalingDownPolicies Each `*_scaling_*_policy` supports the following:
-         * 
-         * @return builder
-         * 
-         */
         public Builder coreScalingDownPolicies(List<MrScalarCoreScalingDownPolicyArgs> coreScalingDownPolicies) {
             return coreScalingDownPolicies(Output.of(coreScalingDownPolicies));
         }
 
-        /**
-         * @param coreScalingDownPolicies Each `*_scaling_*_policy` supports the following:
-         * 
-         * @return builder
-         * 
-         */
         public Builder coreScalingDownPolicies(MrScalarCoreScalingDownPolicyArgs... coreScalingDownPolicies) {
             return coreScalingDownPolicies(List.of(coreScalingDownPolicies));
         }
@@ -1421,44 +811,20 @@ public final class MrScalarArgs extends com.pulumi.resources.ResourceArgs {
             return coreScalingUpPolicies(List.of(coreScalingUpPolicies));
         }
 
-        /**
-         * @param coreUnit Unit of task group for target, min and max. The unit could be `instance` or `weight`. instance - amount of instances. weight - amount of vCPU.
-         * 
-         * @return builder
-         * 
-         */
         public Builder coreUnit(@Nullable Output<String> coreUnit) {
             $.coreUnit = coreUnit;
             return this;
         }
 
-        /**
-         * @param coreUnit Unit of task group for target, min and max. The unit could be `instance` or `weight`. instance - amount of instances. weight - amount of vCPU.
-         * 
-         * @return builder
-         * 
-         */
         public Builder coreUnit(String coreUnit) {
             return coreUnit(Output.of(coreUnit));
         }
 
-        /**
-         * @param customAmiId The ID of a custom Amazon EBS-backed Linux AMI if the cluster uses a custom AMI.
-         * 
-         * @return builder
-         * 
-         */
         public Builder customAmiId(@Nullable Output<String> customAmiId) {
             $.customAmiId = customAmiId;
             return this;
         }
 
-        /**
-         * @param customAmiId The ID of a custom Amazon EBS-backed Linux AMI if the cluster uses a custom AMI.
-         * 
-         * @return builder
-         * 
-         */
         public Builder customAmiId(String customAmiId) {
             return customAmiId(Output.of(customAmiId));
         }
@@ -1493,23 +859,11 @@ public final class MrScalarArgs extends com.pulumi.resources.ResourceArgs {
             return ebsRootVolumeSize(Output.of(ebsRootVolumeSize));
         }
 
-        /**
-         * @param ec2KeyName The name of an Amazon EC2 key pair that can be used to ssh to the master node.
-         * 
-         * @return builder
-         * 
-         */
         public Builder ec2KeyName(@Nullable Output<String> ec2KeyName) {
             $.ec2KeyName = ec2KeyName;
             return this;
         }
 
-        /**
-         * @param ec2KeyName The name of an Amazon EC2 key pair that can be used to ssh to the master node.
-         * 
-         * @return builder
-         * 
-         */
         public Builder ec2KeyName(String ec2KeyName) {
             return ec2KeyName(Output.of(ec2KeyName));
         }
@@ -1535,263 +889,113 @@ public final class MrScalarArgs extends com.pulumi.resources.ResourceArgs {
             return exposeClusterId(Output.of(exposeClusterId));
         }
 
-        /**
-         * @param instanceWeights Describes the instance and weights. Check out [Elastigroup Weighted Instances](https://api.spotinst.com/elastigroup-for-aws/concepts/general-concepts/elastigroup-capacity-instances-or-weighted) for more info.
-         * 
-         * @return builder
-         * 
-         */
         public Builder instanceWeights(@Nullable Output<List<MrScalarInstanceWeightArgs>> instanceWeights) {
             $.instanceWeights = instanceWeights;
             return this;
         }
 
-        /**
-         * @param instanceWeights Describes the instance and weights. Check out [Elastigroup Weighted Instances](https://api.spotinst.com/elastigroup-for-aws/concepts/general-concepts/elastigroup-capacity-instances-or-weighted) for more info.
-         * 
-         * @return builder
-         * 
-         */
         public Builder instanceWeights(List<MrScalarInstanceWeightArgs> instanceWeights) {
             return instanceWeights(Output.of(instanceWeights));
         }
 
-        /**
-         * @param instanceWeights Describes the instance and weights. Check out [Elastigroup Weighted Instances](https://api.spotinst.com/elastigroup-for-aws/concepts/general-concepts/elastigroup-capacity-instances-or-weighted) for more info.
-         * 
-         * @return builder
-         * 
-         */
         public Builder instanceWeights(MrScalarInstanceWeightArgs... instanceWeights) {
             return instanceWeights(List.of(instanceWeights));
         }
 
-        /**
-         * @param jobFlowRole The IAM role that was specified when the job flow was launched. The EC2 instances of the job flow assume this role.
-         * 
-         * @return builder
-         * 
-         */
         public Builder jobFlowRole(@Nullable Output<String> jobFlowRole) {
             $.jobFlowRole = jobFlowRole;
             return this;
         }
 
-        /**
-         * @param jobFlowRole The IAM role that was specified when the job flow was launched. The EC2 instances of the job flow assume this role.
-         * 
-         * @return builder
-         * 
-         */
         public Builder jobFlowRole(String jobFlowRole) {
             return jobFlowRole(Output.of(jobFlowRole));
         }
 
-        /**
-         * @param keepJobFlowAlive Specifies whether the cluster should remain available after completing all steps.
-         * 
-         * @return builder
-         * 
-         */
         public Builder keepJobFlowAlive(@Nullable Output<Boolean> keepJobFlowAlive) {
             $.keepJobFlowAlive = keepJobFlowAlive;
             return this;
         }
 
-        /**
-         * @param keepJobFlowAlive Specifies whether the cluster should remain available after completing all steps.
-         * 
-         * @return builder
-         * 
-         */
         public Builder keepJobFlowAlive(Boolean keepJobFlowAlive) {
             return keepJobFlowAlive(Output.of(keepJobFlowAlive));
         }
 
-        /**
-         * @param logUri The path to the Amazon S3 location where logs for this cluster are stored.
-         * 
-         * @return builder
-         * 
-         */
         public Builder logUri(@Nullable Output<String> logUri) {
             $.logUri = logUri;
             return this;
         }
 
-        /**
-         * @param logUri The path to the Amazon S3 location where logs for this cluster are stored.
-         * 
-         * @return builder
-         * 
-         */
         public Builder logUri(String logUri) {
             return logUri(Output.of(logUri));
         }
 
-        /**
-         * @param managedPrimarySecurityGroup EMR Managed Security group that will be set to the primary instance group.
-         * 
-         * @return builder
-         * 
-         */
         public Builder managedPrimarySecurityGroup(@Nullable Output<String> managedPrimarySecurityGroup) {
             $.managedPrimarySecurityGroup = managedPrimarySecurityGroup;
             return this;
         }
 
-        /**
-         * @param managedPrimarySecurityGroup EMR Managed Security group that will be set to the primary instance group.
-         * 
-         * @return builder
-         * 
-         */
         public Builder managedPrimarySecurityGroup(String managedPrimarySecurityGroup) {
             return managedPrimarySecurityGroup(Output.of(managedPrimarySecurityGroup));
         }
 
-        /**
-         * @param managedReplicaSecurityGroup EMR Managed Security group that will be set to the replica instance group.
-         * 
-         * @return builder
-         * 
-         */
         public Builder managedReplicaSecurityGroup(@Nullable Output<String> managedReplicaSecurityGroup) {
             $.managedReplicaSecurityGroup = managedReplicaSecurityGroup;
             return this;
         }
 
-        /**
-         * @param managedReplicaSecurityGroup EMR Managed Security group that will be set to the replica instance group.
-         * 
-         * @return builder
-         * 
-         */
         public Builder managedReplicaSecurityGroup(String managedReplicaSecurityGroup) {
             return managedReplicaSecurityGroup(Output.of(managedReplicaSecurityGroup));
         }
 
-        /**
-         * @param masterEbsBlockDevices This determines the ebs configuration for your master group instances. Only a single block is allowed.
-         * 
-         * @return builder
-         * 
-         */
         public Builder masterEbsBlockDevices(@Nullable Output<List<MrScalarMasterEbsBlockDeviceArgs>> masterEbsBlockDevices) {
             $.masterEbsBlockDevices = masterEbsBlockDevices;
             return this;
         }
 
-        /**
-         * @param masterEbsBlockDevices This determines the ebs configuration for your master group instances. Only a single block is allowed.
-         * 
-         * @return builder
-         * 
-         */
         public Builder masterEbsBlockDevices(List<MrScalarMasterEbsBlockDeviceArgs> masterEbsBlockDevices) {
             return masterEbsBlockDevices(Output.of(masterEbsBlockDevices));
         }
 
-        /**
-         * @param masterEbsBlockDevices This determines the ebs configuration for your master group instances. Only a single block is allowed.
-         * 
-         * @return builder
-         * 
-         */
         public Builder masterEbsBlockDevices(MrScalarMasterEbsBlockDeviceArgs... masterEbsBlockDevices) {
             return masterEbsBlockDevices(List.of(masterEbsBlockDevices));
         }
 
-        /**
-         * @param masterEbsOptimized EBS Optimization setting for instances in group.
-         * 
-         * @return builder
-         * 
-         */
         public Builder masterEbsOptimized(@Nullable Output<Boolean> masterEbsOptimized) {
             $.masterEbsOptimized = masterEbsOptimized;
             return this;
         }
 
-        /**
-         * @param masterEbsOptimized EBS Optimization setting for instances in group.
-         * 
-         * @return builder
-         * 
-         */
         public Builder masterEbsOptimized(Boolean masterEbsOptimized) {
             return masterEbsOptimized(Output.of(masterEbsOptimized));
         }
 
-        /**
-         * @param masterInstanceTypes The MrScaler instance types for the master nodes.
-         * 
-         * @return builder
-         * 
-         */
         public Builder masterInstanceTypes(@Nullable Output<List<String>> masterInstanceTypes) {
             $.masterInstanceTypes = masterInstanceTypes;
             return this;
         }
 
-        /**
-         * @param masterInstanceTypes The MrScaler instance types for the master nodes.
-         * 
-         * @return builder
-         * 
-         */
         public Builder masterInstanceTypes(List<String> masterInstanceTypes) {
             return masterInstanceTypes(Output.of(masterInstanceTypes));
         }
 
-        /**
-         * @param masterInstanceTypes The MrScaler instance types for the master nodes.
-         * 
-         * @return builder
-         * 
-         */
         public Builder masterInstanceTypes(String... masterInstanceTypes) {
             return masterInstanceTypes(List.of(masterInstanceTypes));
         }
 
-        /**
-         * @param masterLifecycle The MrScaler lifecycle for instances in master group. Allowed values are &#39;SPOT&#39; and &#39;ON_DEMAND&#39;.
-         * 
-         * @return builder
-         * 
-         */
         public Builder masterLifecycle(@Nullable Output<String> masterLifecycle) {
             $.masterLifecycle = masterLifecycle;
             return this;
         }
 
-        /**
-         * @param masterLifecycle The MrScaler lifecycle for instances in master group. Allowed values are &#39;SPOT&#39; and &#39;ON_DEMAND&#39;.
-         * 
-         * @return builder
-         * 
-         */
         public Builder masterLifecycle(String masterLifecycle) {
             return masterLifecycle(Output.of(masterLifecycle));
         }
 
-        /**
-         * @param masterTarget Number of instances in the master group.
-         * 
-         * @return builder
-         * 
-         */
         public Builder masterTarget(@Nullable Output<Integer> masterTarget) {
             $.masterTarget = masterTarget;
             return this;
         }
 
-        /**
-         * @param masterTarget Number of instances in the master group.
-         * 
-         * @return builder
-         * 
-         */
         public Builder masterTarget(Integer masterTarget) {
             return masterTarget(Output.of(masterTarget));
         }
@@ -1856,169 +1060,73 @@ public final class MrScalarArgs extends com.pulumi.resources.ResourceArgs {
             return releaseLabel(Output.of(releaseLabel));
         }
 
-        /**
-         * @param repoUpgradeOnBoot Applies only when `custom_ami_id` is used. Specifies the type of updates that are applied from the Amazon Linux AMI package repositories when an instance boots using the AMI. Possible values include: `SECURITY`, `NONE`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder repoUpgradeOnBoot(@Nullable Output<String> repoUpgradeOnBoot) {
             $.repoUpgradeOnBoot = repoUpgradeOnBoot;
             return this;
         }
 
-        /**
-         * @param repoUpgradeOnBoot Applies only when `custom_ami_id` is used. Specifies the type of updates that are applied from the Amazon Linux AMI package repositories when an instance boots using the AMI. Possible values include: `SECURITY`, `NONE`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder repoUpgradeOnBoot(String repoUpgradeOnBoot) {
             return repoUpgradeOnBoot(Output.of(repoUpgradeOnBoot));
         }
 
-        /**
-         * @param retries Specifies the maximum number of times a capacity provisioning should be retried if the provisioning timeout is exceeded. Valid values: `1-5`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder retries(@Nullable Output<Integer> retries) {
             $.retries = retries;
             return this;
         }
 
-        /**
-         * @param retries Specifies the maximum number of times a capacity provisioning should be retried if the provisioning timeout is exceeded. Valid values: `1-5`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder retries(Integer retries) {
             return retries(Output.of(retries));
         }
 
-        /**
-         * @param scheduledTasks An array of scheduled tasks.
-         * 
-         * @return builder
-         * 
-         */
         public Builder scheduledTasks(@Nullable Output<List<MrScalarScheduledTaskArgs>> scheduledTasks) {
             $.scheduledTasks = scheduledTasks;
             return this;
         }
 
-        /**
-         * @param scheduledTasks An array of scheduled tasks.
-         * 
-         * @return builder
-         * 
-         */
         public Builder scheduledTasks(List<MrScalarScheduledTaskArgs> scheduledTasks) {
             return scheduledTasks(Output.of(scheduledTasks));
         }
 
-        /**
-         * @param scheduledTasks An array of scheduled tasks.
-         * 
-         * @return builder
-         * 
-         */
         public Builder scheduledTasks(MrScalarScheduledTaskArgs... scheduledTasks) {
             return scheduledTasks(List.of(scheduledTasks));
         }
 
-        /**
-         * @param securityConfig The name of the security configuration applied to the cluster.
-         * 
-         * @return builder
-         * 
-         */
         public Builder securityConfig(@Nullable Output<String> securityConfig) {
             $.securityConfig = securityConfig;
             return this;
         }
 
-        /**
-         * @param securityConfig The name of the security configuration applied to the cluster.
-         * 
-         * @return builder
-         * 
-         */
         public Builder securityConfig(String securityConfig) {
             return securityConfig(Output.of(securityConfig));
         }
 
-        /**
-         * @param serviceAccessSecurityGroup The identifier of the Amazon EC2 security group for the Amazon EMR service to access clusters in VPC private subnets.
-         * 
-         * @return builder
-         * 
-         */
         public Builder serviceAccessSecurityGroup(@Nullable Output<String> serviceAccessSecurityGroup) {
             $.serviceAccessSecurityGroup = serviceAccessSecurityGroup;
             return this;
         }
 
-        /**
-         * @param serviceAccessSecurityGroup The identifier of the Amazon EC2 security group for the Amazon EMR service to access clusters in VPC private subnets.
-         * 
-         * @return builder
-         * 
-         */
         public Builder serviceAccessSecurityGroup(String serviceAccessSecurityGroup) {
             return serviceAccessSecurityGroup(Output.of(serviceAccessSecurityGroup));
         }
 
-        /**
-         * @param serviceRole The IAM role that will be assumed by the Amazon EMR service to access AWS resources on your behalf.
-         * 
-         * @return builder
-         * 
-         */
         public Builder serviceRole(@Nullable Output<String> serviceRole) {
             $.serviceRole = serviceRole;
             return this;
         }
 
-        /**
-         * @param serviceRole The IAM role that will be assumed by the Amazon EMR service to access AWS resources on your behalf.
-         * 
-         * @return builder
-         * 
-         */
         public Builder serviceRole(String serviceRole) {
             return serviceRole(Output.of(serviceRole));
         }
 
-        /**
-         * @param stepsFiles Steps from S3.
-         * 
-         * @return builder
-         * 
-         */
         public Builder stepsFiles(@Nullable Output<List<MrScalarStepsFileArgs>> stepsFiles) {
             $.stepsFiles = stepsFiles;
             return this;
         }
 
-        /**
-         * @param stepsFiles Steps from S3.
-         * 
-         * @return builder
-         * 
-         */
         public Builder stepsFiles(List<MrScalarStepsFileArgs> stepsFiles) {
             return stepsFiles(Output.of(stepsFiles));
         }
 
-        /**
-         * @param stepsFiles Steps from S3.
-         * 
-         * @return builder
-         * 
-         */
         public Builder stepsFiles(MrScalarStepsFileArgs... stepsFiles) {
             return stepsFiles(List.of(stepsFiles));
         }
@@ -2044,231 +1152,99 @@ public final class MrScalarArgs extends com.pulumi.resources.ResourceArgs {
             return strategy(Output.of(strategy));
         }
 
-        /**
-         * @param tags A list of tags to assign to the resource. You may define multiple tags.
-         * 
-         * @return builder
-         * 
-         */
         public Builder tags(@Nullable Output<List<MrScalarTagArgs>> tags) {
             $.tags = tags;
             return this;
         }
 
-        /**
-         * @param tags A list of tags to assign to the resource. You may define multiple tags.
-         * 
-         * @return builder
-         * 
-         */
         public Builder tags(List<MrScalarTagArgs> tags) {
             return tags(Output.of(tags));
         }
 
-        /**
-         * @param tags A list of tags to assign to the resource. You may define multiple tags.
-         * 
-         * @return builder
-         * 
-         */
         public Builder tags(MrScalarTagArgs... tags) {
             return tags(List.of(tags));
         }
 
-        /**
-         * @param taskDesiredCapacity amount of instances in task group.
-         * 
-         * @return builder
-         * 
-         */
         public Builder taskDesiredCapacity(@Nullable Output<Integer> taskDesiredCapacity) {
             $.taskDesiredCapacity = taskDesiredCapacity;
             return this;
         }
 
-        /**
-         * @param taskDesiredCapacity amount of instances in task group.
-         * 
-         * @return builder
-         * 
-         */
         public Builder taskDesiredCapacity(Integer taskDesiredCapacity) {
             return taskDesiredCapacity(Output.of(taskDesiredCapacity));
         }
 
-        /**
-         * @param taskEbsBlockDevices This determines the ebs configuration for your task group instances. Only a single block is allowed.
-         * 
-         * @return builder
-         * 
-         */
         public Builder taskEbsBlockDevices(@Nullable Output<List<MrScalarTaskEbsBlockDeviceArgs>> taskEbsBlockDevices) {
             $.taskEbsBlockDevices = taskEbsBlockDevices;
             return this;
         }
 
-        /**
-         * @param taskEbsBlockDevices This determines the ebs configuration for your task group instances. Only a single block is allowed.
-         * 
-         * @return builder
-         * 
-         */
         public Builder taskEbsBlockDevices(List<MrScalarTaskEbsBlockDeviceArgs> taskEbsBlockDevices) {
             return taskEbsBlockDevices(Output.of(taskEbsBlockDevices));
         }
 
-        /**
-         * @param taskEbsBlockDevices This determines the ebs configuration for your task group instances. Only a single block is allowed.
-         * 
-         * @return builder
-         * 
-         */
         public Builder taskEbsBlockDevices(MrScalarTaskEbsBlockDeviceArgs... taskEbsBlockDevices) {
             return taskEbsBlockDevices(List.of(taskEbsBlockDevices));
         }
 
-        /**
-         * @param taskEbsOptimized EBS Optimization setting for instances in group.
-         * 
-         * @return builder
-         * 
-         */
         public Builder taskEbsOptimized(@Nullable Output<Boolean> taskEbsOptimized) {
             $.taskEbsOptimized = taskEbsOptimized;
             return this;
         }
 
-        /**
-         * @param taskEbsOptimized EBS Optimization setting for instances in group.
-         * 
-         * @return builder
-         * 
-         */
         public Builder taskEbsOptimized(Boolean taskEbsOptimized) {
             return taskEbsOptimized(Output.of(taskEbsOptimized));
         }
 
-        /**
-         * @param taskInstanceTypes The MrScaler instance types for the task nodes.
-         * 
-         * @return builder
-         * 
-         */
         public Builder taskInstanceTypes(@Nullable Output<List<String>> taskInstanceTypes) {
             $.taskInstanceTypes = taskInstanceTypes;
             return this;
         }
 
-        /**
-         * @param taskInstanceTypes The MrScaler instance types for the task nodes.
-         * 
-         * @return builder
-         * 
-         */
         public Builder taskInstanceTypes(List<String> taskInstanceTypes) {
             return taskInstanceTypes(Output.of(taskInstanceTypes));
         }
 
-        /**
-         * @param taskInstanceTypes The MrScaler instance types for the task nodes.
-         * 
-         * @return builder
-         * 
-         */
         public Builder taskInstanceTypes(String... taskInstanceTypes) {
             return taskInstanceTypes(List.of(taskInstanceTypes));
         }
 
-        /**
-         * @param taskLifecycle The MrScaler lifecycle for instances in task group. Allowed values are &#39;SPOT&#39; and &#39;ON_DEMAND&#39;.
-         * 
-         * @return builder
-         * 
-         */
         public Builder taskLifecycle(@Nullable Output<String> taskLifecycle) {
             $.taskLifecycle = taskLifecycle;
             return this;
         }
 
-        /**
-         * @param taskLifecycle The MrScaler lifecycle for instances in task group. Allowed values are &#39;SPOT&#39; and &#39;ON_DEMAND&#39;.
-         * 
-         * @return builder
-         * 
-         */
         public Builder taskLifecycle(String taskLifecycle) {
             return taskLifecycle(Output.of(taskLifecycle));
         }
 
-        /**
-         * @param taskMaxSize maximal amount of instances in task group.
-         * 
-         * @return builder
-         * 
-         */
         public Builder taskMaxSize(@Nullable Output<Integer> taskMaxSize) {
             $.taskMaxSize = taskMaxSize;
             return this;
         }
 
-        /**
-         * @param taskMaxSize maximal amount of instances in task group.
-         * 
-         * @return builder
-         * 
-         */
         public Builder taskMaxSize(Integer taskMaxSize) {
             return taskMaxSize(Output.of(taskMaxSize));
         }
 
-        /**
-         * @param taskMinSize The minimal amount of instances in task group.
-         * 
-         * @return builder
-         * 
-         */
         public Builder taskMinSize(@Nullable Output<Integer> taskMinSize) {
             $.taskMinSize = taskMinSize;
             return this;
         }
 
-        /**
-         * @param taskMinSize The minimal amount of instances in task group.
-         * 
-         * @return builder
-         * 
-         */
         public Builder taskMinSize(Integer taskMinSize) {
             return taskMinSize(Output.of(taskMinSize));
         }
 
-        /**
-         * @param taskScalingDownPolicies Possible core group scaling policies (Clone, New strategies):
-         * 
-         * @return builder
-         * 
-         */
         public Builder taskScalingDownPolicies(@Nullable Output<List<MrScalarTaskScalingDownPolicyArgs>> taskScalingDownPolicies) {
             $.taskScalingDownPolicies = taskScalingDownPolicies;
             return this;
         }
 
-        /**
-         * @param taskScalingDownPolicies Possible core group scaling policies (Clone, New strategies):
-         * 
-         * @return builder
-         * 
-         */
         public Builder taskScalingDownPolicies(List<MrScalarTaskScalingDownPolicyArgs> taskScalingDownPolicies) {
             return taskScalingDownPolicies(Output.of(taskScalingDownPolicies));
         }
 
-        /**
-         * @param taskScalingDownPolicies Possible core group scaling policies (Clone, New strategies):
-         * 
-         * @return builder
-         * 
-         */
         public Builder taskScalingDownPolicies(MrScalarTaskScalingDownPolicyArgs... taskScalingDownPolicies) {
             return taskScalingDownPolicies(List.of(taskScalingDownPolicies));
         }
@@ -2286,23 +1262,11 @@ public final class MrScalarArgs extends com.pulumi.resources.ResourceArgs {
             return taskScalingUpPolicies(List.of(taskScalingUpPolicies));
         }
 
-        /**
-         * @param taskUnit Unit of task group for target, min and max. The unit could be `instance` or `weight`. instance - amount of instances. weight - amount of vCPU.
-         * 
-         * @return builder
-         * 
-         */
         public Builder taskUnit(@Nullable Output<String> taskUnit) {
             $.taskUnit = taskUnit;
             return this;
         }
 
-        /**
-         * @param taskUnit Unit of task group for target, min and max. The unit could be `instance` or `weight`. instance - amount of instances. weight - amount of vCPU.
-         * 
-         * @return builder
-         * 
-         */
         public Builder taskUnit(String taskUnit) {
             return taskUnit(Output.of(taskUnit));
         }
@@ -2338,23 +1302,11 @@ public final class MrScalarArgs extends com.pulumi.resources.ResourceArgs {
             return terminationPolicies(List.of(terminationPolicies));
         }
 
-        /**
-         * @param terminationProtected Specifies whether the Amazon EC2 instances in the cluster are protected from termination by API calls, user intervention, or in the event of a job-flow error.
-         * 
-         * @return builder
-         * 
-         */
         public Builder terminationProtected(@Nullable Output<Boolean> terminationProtected) {
             $.terminationProtected = terminationProtected;
             return this;
         }
 
-        /**
-         * @param terminationProtected Specifies whether the Amazon EC2 instances in the cluster are protected from termination by API calls, user intervention, or in the event of a job-flow error.
-         * 
-         * @return builder
-         * 
-         */
         public Builder terminationProtected(Boolean terminationProtected) {
             return terminationProtected(Output.of(terminationProtected));
         }

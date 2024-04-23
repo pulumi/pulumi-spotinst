@@ -12,18 +12,12 @@ namespace Pulumi.SpotInst.Aws.Inputs
 
     public sealed class OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Initial size for IOPS.
-        /// </summary>
         [Input("baseSize", required: true)]
         public Input<int> BaseSize { get; set; } = null!;
 
         [Input("resource", required: true)]
         public Input<string> Resource { get; set; } = null!;
 
-        /// <summary>
-        /// Additional size per resource unit (in IOPS). (Example: `baseSize=50`, `sizePerResourceUnit=20`, and an instance with 2 CPU is launched; its IOPS size will be: 90).
-        /// </summary>
         [Input("sizePerResourceUnit", required: true)]
         public Input<int> SizePerResourceUnit { get; set; } = null!;
 

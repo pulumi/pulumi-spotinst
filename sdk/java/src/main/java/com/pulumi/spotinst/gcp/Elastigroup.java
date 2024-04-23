@@ -155,17 +155,9 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="spotinst:gcp/elastigroup:Elastigroup")
 public class Elastigroup extends com.pulumi.resources.CustomResource {
-    /**
-     * Enable auto-replacement of unhealthy instances.
-     * 
-     */
     @Export(name="autoHealing", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> autoHealing;
 
-    /**
-     * @return Enable auto-replacement of unhealthy instances.
-     * 
-     */
     public Output<Optional<Boolean>> autoHealing() {
         return Codegen.optional(this.autoHealing);
     }
@@ -187,17 +179,9 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
     public Output<Optional<List<String>>> availabilityZones() {
         return Codegen.optional(this.availabilityZones);
     }
-    /**
-     * Describes the backend service configurations.
-     * 
-     */
     @Export(name="backendServices", refs={List.class,ElastigroupBackendService.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ElastigroupBackendService>> backendServices;
 
-    /**
-     * @return Describes the backend service configurations.
-     * 
-     */
     public Output<Optional<List<ElastigroupBackendService>>> backendServices() {
         return Codegen.optional(this.backendServices);
     }
@@ -263,45 +247,21 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
     public Output<Optional<Boolean>> fallbackToOndemand() {
         return Codegen.optional(this.fallbackToOndemand);
     }
-    /**
-     * Defines the GPU configuration.
-     * 
-     */
     @Export(name="gpu", refs={List.class,ElastigroupGpu.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ElastigroupGpu>> gpu;
 
-    /**
-     * @return Defines the GPU configuration.
-     * 
-     */
     public Output<Optional<List<ElastigroupGpu>>> gpu() {
         return Codegen.optional(this.gpu);
     }
-    /**
-     * Period of time (seconds) to wait for VM to reach healthiness before monitoring for unhealthiness.
-     * 
-     */
     @Export(name="healthCheckGracePeriod", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> healthCheckGracePeriod;
 
-    /**
-     * @return Period of time (seconds) to wait for VM to reach healthiness before monitoring for unhealthiness.
-     * 
-     */
     public Output<Optional<Integer>> healthCheckGracePeriod() {
         return Codegen.optional(this.healthCheckGracePeriod);
     }
-    /**
-     * The kind of health check to perform when monitoring for unhealthiness.
-     * 
-     */
     @Export(name="healthCheckType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> healthCheckType;
 
-    /**
-     * @return The kind of health check to perform when monitoring for unhealthiness.
-     * 
-     */
     public Output<Optional<String>> healthCheckType() {
         return Codegen.optional(this.healthCheckType);
     }
@@ -365,17 +325,9 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
     public Output<Optional<List<String>>> instanceTypesPreemptibles() {
         return Codegen.optional(this.instanceTypesPreemptibles);
     }
-    /**
-     * Describes the [Docker Swarm](https://api.spotinst.com/integration-docs/elastigroup/container-management/docker-swarm/docker-swarm-integration/) integration.
-     * 
-     */
     @Export(name="integrationDockerSwarm", refs={ElastigroupIntegrationDockerSwarm.class}, tree="[0]")
     private Output</* @Nullable */ ElastigroupIntegrationDockerSwarm> integrationDockerSwarm;
 
-    /**
-     * @return Describes the [Docker Swarm](https://api.spotinst.com/integration-docs/elastigroup/container-management/docker-swarm/docker-swarm-integration/) integration.
-     * 
-     */
     public Output<Optional<ElastigroupIntegrationDockerSwarm>> integrationDockerSwarm() {
         return Codegen.optional(this.integrationDockerSwarm);
     }
@@ -461,17 +413,9 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
     public Output<String> name() {
         return this.name;
     }
-    /**
-     * Array of objects representing the network configuration for the elastigroup.
-     * 
-     */
     @Export(name="networkInterfaces", refs={List.class,ElastigroupNetworkInterface.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ElastigroupNetworkInterface>> networkInterfaces;
 
-    /**
-     * @return Array of objects representing the network configuration for the elastigroup.
-     * 
-     */
     public Output<Optional<List<ElastigroupNetworkInterface>>> networkInterfaces() {
         return Codegen.optional(this.networkInterfaces);
     }
@@ -509,35 +453,15 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> provisioningModel() {
         return Codegen.optional(this.provisioningModel);
     }
-    /**
-     * Contains scaling policies for scaling the Elastigroup down.
-     * 
-     * Each `scaling_*_policy` supports the following:
-     * 
-     */
     @Export(name="scalingDownPolicies", refs={List.class,ElastigroupScalingDownPolicy.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ElastigroupScalingDownPolicy>> scalingDownPolicies;
 
-    /**
-     * @return Contains scaling policies for scaling the Elastigroup down.
-     * 
-     * Each `scaling_*_policy` supports the following:
-     * 
-     */
     public Output<Optional<List<ElastigroupScalingDownPolicy>>> scalingDownPolicies() {
         return Codegen.optional(this.scalingDownPolicies);
     }
-    /**
-     * Contains scaling policies for scaling the Elastigroup up.
-     * 
-     */
     @Export(name="scalingUpPolicies", refs={List.class,ElastigroupScalingUpPolicy.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ElastigroupScalingUpPolicy>> scalingUpPolicies;
 
-    /**
-     * @return Contains scaling policies for scaling the Elastigroup up.
-     * 
-     */
     public Output<Optional<List<ElastigroupScalingUpPolicy>>> scalingUpPolicies() {
         return Codegen.optional(this.scalingUpPolicies);
     }
@@ -617,17 +541,9 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
     public Output<Optional<List<String>>> tags() {
         return Codegen.optional(this.tags);
     }
-    /**
-     * Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
-     * 
-     */
     @Export(name="unhealthyDuration", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> unhealthyDuration;
 
-    /**
-     * @return Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
-     * 
-     */
     public Output<Optional<Integer>> unhealthyDuration() {
         return Codegen.optional(this.unhealthyDuration);
     }

@@ -221,14 +221,14 @@ public class OceanLaunchSpec extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.iamInstanceProfile);
     }
     /**
-     * Identifier of the image in AWS. Valid values: any string which is not empty or null.
+     * ID of the image used to launch the instances.
      * 
      */
     @Export(name="imageId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> imageId;
 
     /**
-     * @return Identifier of the image in AWS. Valid values: any string which is not empty or null.
+     * @return ID of the image used to launch the instances.
      * 
      */
     public Output<Optional<String>> imageId() {

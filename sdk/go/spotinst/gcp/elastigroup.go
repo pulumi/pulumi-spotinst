@@ -16,7 +16,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -145,18 +144,15 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 type Elastigroup struct {
 	pulumi.CustomResourceState
 
-	// Enable auto-replacement of unhealthy instances.
 	AutoHealing pulumi.BoolPtrOutput `pulumi:"autoHealing"`
 	// List of availability zones for the group.
 	//
 	// Deprecated: This field will soon be handled by Region in Subnets
-	AvailabilityZones pulumi.StringArrayOutput `pulumi:"availabilityZones"`
-	// Describes the backend service configurations.
-	BackendServices ElastigroupBackendServiceArrayOutput `pulumi:"backendServices"`
+	AvailabilityZones pulumi.StringArrayOutput             `pulumi:"availabilityZones"`
+	BackendServices   ElastigroupBackendServiceArrayOutput `pulumi:"backendServices"`
 	// The region your GCP group will be created in.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The desired number of instances the group should have at any time.
@@ -165,13 +161,10 @@ type Elastigroup struct {
 	// Time (seconds) the instance is allowed to run after it is detached from the group. This is to allow the instance time to drain all the current TCP connections before terminating it.
 	DrainingTimeout pulumi.IntPtrOutput `pulumi:"drainingTimeout"`
 	// Activate fallback-to-on-demand. When provisioning an instance, if no Preemptible market is available, fallback-to-on-demand will provision an On-Demand instance to maintain the group capacity.
-	FallbackToOndemand pulumi.BoolPtrOutput `pulumi:"fallbackToOndemand"`
-	// Defines the GPU configuration.
-	Gpu ElastigroupGpuArrayOutput `pulumi:"gpu"`
-	// Period of time (seconds) to wait for VM to reach healthiness before monitoring for unhealthiness.
-	HealthCheckGracePeriod pulumi.IntPtrOutput `pulumi:"healthCheckGracePeriod"`
-	// The kind of health check to perform when monitoring for unhealthiness.
-	HealthCheckType pulumi.StringPtrOutput `pulumi:"healthCheckType"`
+	FallbackToOndemand     pulumi.BoolPtrOutput      `pulumi:"fallbackToOndemand"`
+	Gpu                    ElastigroupGpuArrayOutput `pulumi:"gpu"`
+	HealthCheckGracePeriod pulumi.IntPtrOutput       `pulumi:"healthCheckGracePeriod"`
+	HealthCheckType        pulumi.StringPtrOutput    `pulumi:"healthCheckType"`
 	// Set an instance name prefix to be used for all launched instances and their boot disk. The prefix value should comply with the following limitations:
 	// * A maximal length of 25 characters.
 	// * The first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
@@ -181,11 +174,10 @@ type Elastigroup struct {
 	// The regular VM instance type to use for mixed-type groups and when falling back to on-demand. Required if instanceTypesPreemptible is not set.
 	InstanceTypesOndemand pulumi.StringPtrOutput `pulumi:"instanceTypesOndemand"`
 	// The preemptible VMs instance type. To maximize cost savings and market availability, select as many types as possible. Required if instanceTypesOndemand is not set.
-	InstanceTypesPreemptibles pulumi.StringArrayOutput `pulumi:"instanceTypesPreemptibles"`
-	// Describes the [Docker Swarm](https://api.spotinst.com/integration-docs/elastigroup/container-management/docker-swarm/docker-swarm-integration/) integration.
-	IntegrationDockerSwarm ElastigroupIntegrationDockerSwarmPtrOutput `pulumi:"integrationDockerSwarm"`
-	IntegrationGke         ElastigroupIntegrationGkePtrOutput         `pulumi:"integrationGke"`
-	IpForwarding           pulumi.BoolPtrOutput                       `pulumi:"ipForwarding"`
+	InstanceTypesPreemptibles pulumi.StringArrayOutput                   `pulumi:"instanceTypesPreemptibles"`
+	IntegrationDockerSwarm    ElastigroupIntegrationDockerSwarmPtrOutput `pulumi:"integrationDockerSwarm"`
+	IntegrationGke            ElastigroupIntegrationGkePtrOutput         `pulumi:"integrationGke"`
+	IpForwarding              pulumi.BoolPtrOutput                       `pulumi:"ipForwarding"`
 	// Array of objects with key-value pairs.
 	Labels ElastigroupLabelArrayOutput `pulumi:"labels"`
 	// The maximum number of instances the group should have at any time.
@@ -195,21 +187,16 @@ type Elastigroup struct {
 	// The minimum number of instances the group should have at any time.
 	MinSize pulumi.IntOutput `pulumi:"minSize"`
 	// The group name.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// Array of objects representing the network configuration for the elastigroup.
+	Name              pulumi.StringOutput                    `pulumi:"name"`
 	NetworkInterfaces ElastigroupNetworkInterfaceArrayOutput `pulumi:"networkInterfaces"`
 	OndemandCount     pulumi.IntPtrOutput                    `pulumi:"ondemandCount"`
 	// Percentage of Preemptible VMs to spin up from the "desiredCapacity".
 	PreemptiblePercentage pulumi.IntPtrOutput `pulumi:"preemptiblePercentage"`
 	// Valid values: "SPOT", "PREEMPTIBLE". Define the provisioning model of the launched instances. Default value is "PREEMPTIBLE".
-	ProvisioningModel pulumi.StringPtrOutput `pulumi:"provisioningModel"`
-	// Contains scaling policies for scaling the Elastigroup down.
-	//
-	// Each `scaling_*_policy` supports the following:
+	ProvisioningModel   pulumi.StringPtrOutput                  `pulumi:"provisioningModel"`
 	ScalingDownPolicies ElastigroupScalingDownPolicyArrayOutput `pulumi:"scalingDownPolicies"`
-	// Contains scaling policies for scaling the Elastigroup up.
-	ScalingUpPolicies ElastigroupScalingUpPolicyArrayOutput `pulumi:"scalingUpPolicies"`
-	ScheduledTasks    ElastigroupScheduledTaskArrayOutput   `pulumi:"scheduledTasks"`
+	ScalingUpPolicies   ElastigroupScalingUpPolicyArrayOutput   `pulumi:"scalingUpPolicies"`
+	ScheduledTasks      ElastigroupScheduledTaskArrayOutput     `pulumi:"scheduledTasks"`
 	// The email of the service account in which the group instances will be launched.
 	ServiceAccount pulumi.StringPtrOutput `pulumi:"serviceAccount"`
 	// The Base64-encoded shutdown script that executes prior to instance termination, for more information please see: [Shutdown Script](https://api.spotinst.com/integration-docs/elastigroup/concepts/compute-concepts/shutdown-scripts/)
@@ -219,9 +206,8 @@ type Elastigroup struct {
 	// A list of regions and subnets.
 	Subnets ElastigroupSubnetArrayOutput `pulumi:"subnets"`
 	// Tags to mark created instances.
-	Tags pulumi.StringArrayOutput `pulumi:"tags"`
-	// Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
-	UnhealthyDuration pulumi.IntPtrOutput `pulumi:"unhealthyDuration"`
+	Tags              pulumi.StringArrayOutput `pulumi:"tags"`
+	UnhealthyDuration pulumi.IntPtrOutput      `pulumi:"unhealthyDuration"`
 }
 
 // NewElastigroup registers a new resource with the given unique name, arguments, and options.
@@ -257,14 +243,12 @@ func GetElastigroup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Elastigroup resources.
 type elastigroupState struct {
-	// Enable auto-replacement of unhealthy instances.
 	AutoHealing *bool `pulumi:"autoHealing"`
 	// List of availability zones for the group.
 	//
 	// Deprecated: This field will soon be handled by Region in Subnets
-	AvailabilityZones []string `pulumi:"availabilityZones"`
-	// Describes the backend service configurations.
-	BackendServices []ElastigroupBackendService `pulumi:"backendServices"`
+	AvailabilityZones []string                    `pulumi:"availabilityZones"`
+	BackendServices   []ElastigroupBackendService `pulumi:"backendServices"`
 	// The region your GCP group will be created in.
 	Description *string `pulumi:"description"`
 	// The desired number of instances the group should have at any time.
@@ -273,13 +257,10 @@ type elastigroupState struct {
 	// Time (seconds) the instance is allowed to run after it is detached from the group. This is to allow the instance time to drain all the current TCP connections before terminating it.
 	DrainingTimeout *int `pulumi:"drainingTimeout"`
 	// Activate fallback-to-on-demand. When provisioning an instance, if no Preemptible market is available, fallback-to-on-demand will provision an On-Demand instance to maintain the group capacity.
-	FallbackToOndemand *bool `pulumi:"fallbackToOndemand"`
-	// Defines the GPU configuration.
-	Gpu []ElastigroupGpu `pulumi:"gpu"`
-	// Period of time (seconds) to wait for VM to reach healthiness before monitoring for unhealthiness.
-	HealthCheckGracePeriod *int `pulumi:"healthCheckGracePeriod"`
-	// The kind of health check to perform when monitoring for unhealthiness.
-	HealthCheckType *string `pulumi:"healthCheckType"`
+	FallbackToOndemand     *bool            `pulumi:"fallbackToOndemand"`
+	Gpu                    []ElastigroupGpu `pulumi:"gpu"`
+	HealthCheckGracePeriod *int             `pulumi:"healthCheckGracePeriod"`
+	HealthCheckType        *string          `pulumi:"healthCheckType"`
 	// Set an instance name prefix to be used for all launched instances and their boot disk. The prefix value should comply with the following limitations:
 	// * A maximal length of 25 characters.
 	// * The first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
@@ -289,11 +270,10 @@ type elastigroupState struct {
 	// The regular VM instance type to use for mixed-type groups and when falling back to on-demand. Required if instanceTypesPreemptible is not set.
 	InstanceTypesOndemand *string `pulumi:"instanceTypesOndemand"`
 	// The preemptible VMs instance type. To maximize cost savings and market availability, select as many types as possible. Required if instanceTypesOndemand is not set.
-	InstanceTypesPreemptibles []string `pulumi:"instanceTypesPreemptibles"`
-	// Describes the [Docker Swarm](https://api.spotinst.com/integration-docs/elastigroup/container-management/docker-swarm/docker-swarm-integration/) integration.
-	IntegrationDockerSwarm *ElastigroupIntegrationDockerSwarm `pulumi:"integrationDockerSwarm"`
-	IntegrationGke         *ElastigroupIntegrationGke         `pulumi:"integrationGke"`
-	IpForwarding           *bool                              `pulumi:"ipForwarding"`
+	InstanceTypesPreemptibles []string                           `pulumi:"instanceTypesPreemptibles"`
+	IntegrationDockerSwarm    *ElastigroupIntegrationDockerSwarm `pulumi:"integrationDockerSwarm"`
+	IntegrationGke            *ElastigroupIntegrationGke         `pulumi:"integrationGke"`
+	IpForwarding              *bool                              `pulumi:"ipForwarding"`
 	// Array of objects with key-value pairs.
 	Labels []ElastigroupLabel `pulumi:"labels"`
 	// The maximum number of instances the group should have at any time.
@@ -303,21 +283,16 @@ type elastigroupState struct {
 	// The minimum number of instances the group should have at any time.
 	MinSize *int `pulumi:"minSize"`
 	// The group name.
-	Name *string `pulumi:"name"`
-	// Array of objects representing the network configuration for the elastigroup.
+	Name              *string                       `pulumi:"name"`
 	NetworkInterfaces []ElastigroupNetworkInterface `pulumi:"networkInterfaces"`
 	OndemandCount     *int                          `pulumi:"ondemandCount"`
 	// Percentage of Preemptible VMs to spin up from the "desiredCapacity".
 	PreemptiblePercentage *int `pulumi:"preemptiblePercentage"`
 	// Valid values: "SPOT", "PREEMPTIBLE". Define the provisioning model of the launched instances. Default value is "PREEMPTIBLE".
-	ProvisioningModel *string `pulumi:"provisioningModel"`
-	// Contains scaling policies for scaling the Elastigroup down.
-	//
-	// Each `scaling_*_policy` supports the following:
+	ProvisioningModel   *string                        `pulumi:"provisioningModel"`
 	ScalingDownPolicies []ElastigroupScalingDownPolicy `pulumi:"scalingDownPolicies"`
-	// Contains scaling policies for scaling the Elastigroup up.
-	ScalingUpPolicies []ElastigroupScalingUpPolicy `pulumi:"scalingUpPolicies"`
-	ScheduledTasks    []ElastigroupScheduledTask   `pulumi:"scheduledTasks"`
+	ScalingUpPolicies   []ElastigroupScalingUpPolicy   `pulumi:"scalingUpPolicies"`
+	ScheduledTasks      []ElastigroupScheduledTask     `pulumi:"scheduledTasks"`
 	// The email of the service account in which the group instances will be launched.
 	ServiceAccount *string `pulumi:"serviceAccount"`
 	// The Base64-encoded shutdown script that executes prior to instance termination, for more information please see: [Shutdown Script](https://api.spotinst.com/integration-docs/elastigroup/concepts/compute-concepts/shutdown-scripts/)
@@ -327,20 +302,17 @@ type elastigroupState struct {
 	// A list of regions and subnets.
 	Subnets []ElastigroupSubnet `pulumi:"subnets"`
 	// Tags to mark created instances.
-	Tags []string `pulumi:"tags"`
-	// Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
-	UnhealthyDuration *int `pulumi:"unhealthyDuration"`
+	Tags              []string `pulumi:"tags"`
+	UnhealthyDuration *int     `pulumi:"unhealthyDuration"`
 }
 
 type ElastigroupState struct {
-	// Enable auto-replacement of unhealthy instances.
 	AutoHealing pulumi.BoolPtrInput
 	// List of availability zones for the group.
 	//
 	// Deprecated: This field will soon be handled by Region in Subnets
 	AvailabilityZones pulumi.StringArrayInput
-	// Describes the backend service configurations.
-	BackendServices ElastigroupBackendServiceArrayInput
+	BackendServices   ElastigroupBackendServiceArrayInput
 	// The region your GCP group will be created in.
 	Description pulumi.StringPtrInput
 	// The desired number of instances the group should have at any time.
@@ -349,13 +321,10 @@ type ElastigroupState struct {
 	// Time (seconds) the instance is allowed to run after it is detached from the group. This is to allow the instance time to drain all the current TCP connections before terminating it.
 	DrainingTimeout pulumi.IntPtrInput
 	// Activate fallback-to-on-demand. When provisioning an instance, if no Preemptible market is available, fallback-to-on-demand will provision an On-Demand instance to maintain the group capacity.
-	FallbackToOndemand pulumi.BoolPtrInput
-	// Defines the GPU configuration.
-	Gpu ElastigroupGpuArrayInput
-	// Period of time (seconds) to wait for VM to reach healthiness before monitoring for unhealthiness.
+	FallbackToOndemand     pulumi.BoolPtrInput
+	Gpu                    ElastigroupGpuArrayInput
 	HealthCheckGracePeriod pulumi.IntPtrInput
-	// The kind of health check to perform when monitoring for unhealthiness.
-	HealthCheckType pulumi.StringPtrInput
+	HealthCheckType        pulumi.StringPtrInput
 	// Set an instance name prefix to be used for all launched instances and their boot disk. The prefix value should comply with the following limitations:
 	// * A maximal length of 25 characters.
 	// * The first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
@@ -366,10 +335,9 @@ type ElastigroupState struct {
 	InstanceTypesOndemand pulumi.StringPtrInput
 	// The preemptible VMs instance type. To maximize cost savings and market availability, select as many types as possible. Required if instanceTypesOndemand is not set.
 	InstanceTypesPreemptibles pulumi.StringArrayInput
-	// Describes the [Docker Swarm](https://api.spotinst.com/integration-docs/elastigroup/container-management/docker-swarm/docker-swarm-integration/) integration.
-	IntegrationDockerSwarm ElastigroupIntegrationDockerSwarmPtrInput
-	IntegrationGke         ElastigroupIntegrationGkePtrInput
-	IpForwarding           pulumi.BoolPtrInput
+	IntegrationDockerSwarm    ElastigroupIntegrationDockerSwarmPtrInput
+	IntegrationGke            ElastigroupIntegrationGkePtrInput
+	IpForwarding              pulumi.BoolPtrInput
 	// Array of objects with key-value pairs.
 	Labels ElastigroupLabelArrayInput
 	// The maximum number of instances the group should have at any time.
@@ -379,21 +347,16 @@ type ElastigroupState struct {
 	// The minimum number of instances the group should have at any time.
 	MinSize pulumi.IntPtrInput
 	// The group name.
-	Name pulumi.StringPtrInput
-	// Array of objects representing the network configuration for the elastigroup.
+	Name              pulumi.StringPtrInput
 	NetworkInterfaces ElastigroupNetworkInterfaceArrayInput
 	OndemandCount     pulumi.IntPtrInput
 	// Percentage of Preemptible VMs to spin up from the "desiredCapacity".
 	PreemptiblePercentage pulumi.IntPtrInput
 	// Valid values: "SPOT", "PREEMPTIBLE". Define the provisioning model of the launched instances. Default value is "PREEMPTIBLE".
-	ProvisioningModel pulumi.StringPtrInput
-	// Contains scaling policies for scaling the Elastigroup down.
-	//
-	// Each `scaling_*_policy` supports the following:
+	ProvisioningModel   pulumi.StringPtrInput
 	ScalingDownPolicies ElastigroupScalingDownPolicyArrayInput
-	// Contains scaling policies for scaling the Elastigroup up.
-	ScalingUpPolicies ElastigroupScalingUpPolicyArrayInput
-	ScheduledTasks    ElastigroupScheduledTaskArrayInput
+	ScalingUpPolicies   ElastigroupScalingUpPolicyArrayInput
+	ScheduledTasks      ElastigroupScheduledTaskArrayInput
 	// The email of the service account in which the group instances will be launched.
 	ServiceAccount pulumi.StringPtrInput
 	// The Base64-encoded shutdown script that executes prior to instance termination, for more information please see: [Shutdown Script](https://api.spotinst.com/integration-docs/elastigroup/concepts/compute-concepts/shutdown-scripts/)
@@ -403,8 +366,7 @@ type ElastigroupState struct {
 	// A list of regions and subnets.
 	Subnets ElastigroupSubnetArrayInput
 	// Tags to mark created instances.
-	Tags pulumi.StringArrayInput
-	// Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
+	Tags              pulumi.StringArrayInput
 	UnhealthyDuration pulumi.IntPtrInput
 }
 
@@ -413,14 +375,12 @@ func (ElastigroupState) ElementType() reflect.Type {
 }
 
 type elastigroupArgs struct {
-	// Enable auto-replacement of unhealthy instances.
 	AutoHealing *bool `pulumi:"autoHealing"`
 	// List of availability zones for the group.
 	//
 	// Deprecated: This field will soon be handled by Region in Subnets
-	AvailabilityZones []string `pulumi:"availabilityZones"`
-	// Describes the backend service configurations.
-	BackendServices []ElastigroupBackendService `pulumi:"backendServices"`
+	AvailabilityZones []string                    `pulumi:"availabilityZones"`
+	BackendServices   []ElastigroupBackendService `pulumi:"backendServices"`
 	// The region your GCP group will be created in.
 	Description *string `pulumi:"description"`
 	// The desired number of instances the group should have at any time.
@@ -429,13 +389,10 @@ type elastigroupArgs struct {
 	// Time (seconds) the instance is allowed to run after it is detached from the group. This is to allow the instance time to drain all the current TCP connections before terminating it.
 	DrainingTimeout *int `pulumi:"drainingTimeout"`
 	// Activate fallback-to-on-demand. When provisioning an instance, if no Preemptible market is available, fallback-to-on-demand will provision an On-Demand instance to maintain the group capacity.
-	FallbackToOndemand *bool `pulumi:"fallbackToOndemand"`
-	// Defines the GPU configuration.
-	Gpu []ElastigroupGpu `pulumi:"gpu"`
-	// Period of time (seconds) to wait for VM to reach healthiness before monitoring for unhealthiness.
-	HealthCheckGracePeriod *int `pulumi:"healthCheckGracePeriod"`
-	// The kind of health check to perform when monitoring for unhealthiness.
-	HealthCheckType *string `pulumi:"healthCheckType"`
+	FallbackToOndemand     *bool            `pulumi:"fallbackToOndemand"`
+	Gpu                    []ElastigroupGpu `pulumi:"gpu"`
+	HealthCheckGracePeriod *int             `pulumi:"healthCheckGracePeriod"`
+	HealthCheckType        *string          `pulumi:"healthCheckType"`
 	// Set an instance name prefix to be used for all launched instances and their boot disk. The prefix value should comply with the following limitations:
 	// * A maximal length of 25 characters.
 	// * The first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
@@ -445,11 +402,10 @@ type elastigroupArgs struct {
 	// The regular VM instance type to use for mixed-type groups and when falling back to on-demand. Required if instanceTypesPreemptible is not set.
 	InstanceTypesOndemand *string `pulumi:"instanceTypesOndemand"`
 	// The preemptible VMs instance type. To maximize cost savings and market availability, select as many types as possible. Required if instanceTypesOndemand is not set.
-	InstanceTypesPreemptibles []string `pulumi:"instanceTypesPreemptibles"`
-	// Describes the [Docker Swarm](https://api.spotinst.com/integration-docs/elastigroup/container-management/docker-swarm/docker-swarm-integration/) integration.
-	IntegrationDockerSwarm *ElastigroupIntegrationDockerSwarm `pulumi:"integrationDockerSwarm"`
-	IntegrationGke         *ElastigroupIntegrationGke         `pulumi:"integrationGke"`
-	IpForwarding           *bool                              `pulumi:"ipForwarding"`
+	InstanceTypesPreemptibles []string                           `pulumi:"instanceTypesPreemptibles"`
+	IntegrationDockerSwarm    *ElastigroupIntegrationDockerSwarm `pulumi:"integrationDockerSwarm"`
+	IntegrationGke            *ElastigroupIntegrationGke         `pulumi:"integrationGke"`
+	IpForwarding              *bool                              `pulumi:"ipForwarding"`
 	// Array of objects with key-value pairs.
 	Labels []ElastigroupLabel `pulumi:"labels"`
 	// The maximum number of instances the group should have at any time.
@@ -459,21 +415,16 @@ type elastigroupArgs struct {
 	// The minimum number of instances the group should have at any time.
 	MinSize *int `pulumi:"minSize"`
 	// The group name.
-	Name *string `pulumi:"name"`
-	// Array of objects representing the network configuration for the elastigroup.
+	Name              *string                       `pulumi:"name"`
 	NetworkInterfaces []ElastigroupNetworkInterface `pulumi:"networkInterfaces"`
 	OndemandCount     *int                          `pulumi:"ondemandCount"`
 	// Percentage of Preemptible VMs to spin up from the "desiredCapacity".
 	PreemptiblePercentage *int `pulumi:"preemptiblePercentage"`
 	// Valid values: "SPOT", "PREEMPTIBLE". Define the provisioning model of the launched instances. Default value is "PREEMPTIBLE".
-	ProvisioningModel *string `pulumi:"provisioningModel"`
-	// Contains scaling policies for scaling the Elastigroup down.
-	//
-	// Each `scaling_*_policy` supports the following:
+	ProvisioningModel   *string                        `pulumi:"provisioningModel"`
 	ScalingDownPolicies []ElastigroupScalingDownPolicy `pulumi:"scalingDownPolicies"`
-	// Contains scaling policies for scaling the Elastigroup up.
-	ScalingUpPolicies []ElastigroupScalingUpPolicy `pulumi:"scalingUpPolicies"`
-	ScheduledTasks    []ElastigroupScheduledTask   `pulumi:"scheduledTasks"`
+	ScalingUpPolicies   []ElastigroupScalingUpPolicy   `pulumi:"scalingUpPolicies"`
+	ScheduledTasks      []ElastigroupScheduledTask     `pulumi:"scheduledTasks"`
 	// The email of the service account in which the group instances will be launched.
 	ServiceAccount *string `pulumi:"serviceAccount"`
 	// The Base64-encoded shutdown script that executes prior to instance termination, for more information please see: [Shutdown Script](https://api.spotinst.com/integration-docs/elastigroup/concepts/compute-concepts/shutdown-scripts/)
@@ -483,21 +434,18 @@ type elastigroupArgs struct {
 	// A list of regions and subnets.
 	Subnets []ElastigroupSubnet `pulumi:"subnets"`
 	// Tags to mark created instances.
-	Tags []string `pulumi:"tags"`
-	// Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
-	UnhealthyDuration *int `pulumi:"unhealthyDuration"`
+	Tags              []string `pulumi:"tags"`
+	UnhealthyDuration *int     `pulumi:"unhealthyDuration"`
 }
 
 // The set of arguments for constructing a Elastigroup resource.
 type ElastigroupArgs struct {
-	// Enable auto-replacement of unhealthy instances.
 	AutoHealing pulumi.BoolPtrInput
 	// List of availability zones for the group.
 	//
 	// Deprecated: This field will soon be handled by Region in Subnets
 	AvailabilityZones pulumi.StringArrayInput
-	// Describes the backend service configurations.
-	BackendServices ElastigroupBackendServiceArrayInput
+	BackendServices   ElastigroupBackendServiceArrayInput
 	// The region your GCP group will be created in.
 	Description pulumi.StringPtrInput
 	// The desired number of instances the group should have at any time.
@@ -506,13 +454,10 @@ type ElastigroupArgs struct {
 	// Time (seconds) the instance is allowed to run after it is detached from the group. This is to allow the instance time to drain all the current TCP connections before terminating it.
 	DrainingTimeout pulumi.IntPtrInput
 	// Activate fallback-to-on-demand. When provisioning an instance, if no Preemptible market is available, fallback-to-on-demand will provision an On-Demand instance to maintain the group capacity.
-	FallbackToOndemand pulumi.BoolPtrInput
-	// Defines the GPU configuration.
-	Gpu ElastigroupGpuArrayInput
-	// Period of time (seconds) to wait for VM to reach healthiness before monitoring for unhealthiness.
+	FallbackToOndemand     pulumi.BoolPtrInput
+	Gpu                    ElastigroupGpuArrayInput
 	HealthCheckGracePeriod pulumi.IntPtrInput
-	// The kind of health check to perform when monitoring for unhealthiness.
-	HealthCheckType pulumi.StringPtrInput
+	HealthCheckType        pulumi.StringPtrInput
 	// Set an instance name prefix to be used for all launched instances and their boot disk. The prefix value should comply with the following limitations:
 	// * A maximal length of 25 characters.
 	// * The first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
@@ -523,10 +468,9 @@ type ElastigroupArgs struct {
 	InstanceTypesOndemand pulumi.StringPtrInput
 	// The preemptible VMs instance type. To maximize cost savings and market availability, select as many types as possible. Required if instanceTypesOndemand is not set.
 	InstanceTypesPreemptibles pulumi.StringArrayInput
-	// Describes the [Docker Swarm](https://api.spotinst.com/integration-docs/elastigroup/container-management/docker-swarm/docker-swarm-integration/) integration.
-	IntegrationDockerSwarm ElastigroupIntegrationDockerSwarmPtrInput
-	IntegrationGke         ElastigroupIntegrationGkePtrInput
-	IpForwarding           pulumi.BoolPtrInput
+	IntegrationDockerSwarm    ElastigroupIntegrationDockerSwarmPtrInput
+	IntegrationGke            ElastigroupIntegrationGkePtrInput
+	IpForwarding              pulumi.BoolPtrInput
 	// Array of objects with key-value pairs.
 	Labels ElastigroupLabelArrayInput
 	// The maximum number of instances the group should have at any time.
@@ -536,21 +480,16 @@ type ElastigroupArgs struct {
 	// The minimum number of instances the group should have at any time.
 	MinSize pulumi.IntPtrInput
 	// The group name.
-	Name pulumi.StringPtrInput
-	// Array of objects representing the network configuration for the elastigroup.
+	Name              pulumi.StringPtrInput
 	NetworkInterfaces ElastigroupNetworkInterfaceArrayInput
 	OndemandCount     pulumi.IntPtrInput
 	// Percentage of Preemptible VMs to spin up from the "desiredCapacity".
 	PreemptiblePercentage pulumi.IntPtrInput
 	// Valid values: "SPOT", "PREEMPTIBLE". Define the provisioning model of the launched instances. Default value is "PREEMPTIBLE".
-	ProvisioningModel pulumi.StringPtrInput
-	// Contains scaling policies for scaling the Elastigroup down.
-	//
-	// Each `scaling_*_policy` supports the following:
+	ProvisioningModel   pulumi.StringPtrInput
 	ScalingDownPolicies ElastigroupScalingDownPolicyArrayInput
-	// Contains scaling policies for scaling the Elastigroup up.
-	ScalingUpPolicies ElastigroupScalingUpPolicyArrayInput
-	ScheduledTasks    ElastigroupScheduledTaskArrayInput
+	ScalingUpPolicies   ElastigroupScalingUpPolicyArrayInput
+	ScheduledTasks      ElastigroupScheduledTaskArrayInput
 	// The email of the service account in which the group instances will be launched.
 	ServiceAccount pulumi.StringPtrInput
 	// The Base64-encoded shutdown script that executes prior to instance termination, for more information please see: [Shutdown Script](https://api.spotinst.com/integration-docs/elastigroup/concepts/compute-concepts/shutdown-scripts/)
@@ -560,8 +499,7 @@ type ElastigroupArgs struct {
 	// A list of regions and subnets.
 	Subnets ElastigroupSubnetArrayInput
 	// Tags to mark created instances.
-	Tags pulumi.StringArrayInput
-	// Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
+	Tags              pulumi.StringArrayInput
 	UnhealthyDuration pulumi.IntPtrInput
 }
 
@@ -652,7 +590,6 @@ func (o ElastigroupOutput) ToElastigroupOutputWithContext(ctx context.Context) E
 	return o
 }
 
-// Enable auto-replacement of unhealthy instances.
 func (o ElastigroupOutput) AutoHealing() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Elastigroup) pulumi.BoolPtrOutput { return v.AutoHealing }).(pulumi.BoolPtrOutput)
 }
@@ -664,7 +601,6 @@ func (o ElastigroupOutput) AvailabilityZones() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Elastigroup) pulumi.StringArrayOutput { return v.AvailabilityZones }).(pulumi.StringArrayOutput)
 }
 
-// Describes the backend service configurations.
 func (o ElastigroupOutput) BackendServices() ElastigroupBackendServiceArrayOutput {
 	return o.ApplyT(func(v *Elastigroup) ElastigroupBackendServiceArrayOutput { return v.BackendServices }).(ElastigroupBackendServiceArrayOutput)
 }
@@ -693,17 +629,14 @@ func (o ElastigroupOutput) FallbackToOndemand() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Elastigroup) pulumi.BoolPtrOutput { return v.FallbackToOndemand }).(pulumi.BoolPtrOutput)
 }
 
-// Defines the GPU configuration.
 func (o ElastigroupOutput) Gpu() ElastigroupGpuArrayOutput {
 	return o.ApplyT(func(v *Elastigroup) ElastigroupGpuArrayOutput { return v.Gpu }).(ElastigroupGpuArrayOutput)
 }
 
-// Period of time (seconds) to wait for VM to reach healthiness before monitoring for unhealthiness.
 func (o ElastigroupOutput) HealthCheckGracePeriod() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Elastigroup) pulumi.IntPtrOutput { return v.HealthCheckGracePeriod }).(pulumi.IntPtrOutput)
 }
 
-// The kind of health check to perform when monitoring for unhealthiness.
 func (o ElastigroupOutput) HealthCheckType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Elastigroup) pulumi.StringPtrOutput { return v.HealthCheckType }).(pulumi.StringPtrOutput)
 }
@@ -730,7 +663,6 @@ func (o ElastigroupOutput) InstanceTypesPreemptibles() pulumi.StringArrayOutput 
 	return o.ApplyT(func(v *Elastigroup) pulumi.StringArrayOutput { return v.InstanceTypesPreemptibles }).(pulumi.StringArrayOutput)
 }
 
-// Describes the [Docker Swarm](https://api.spotinst.com/integration-docs/elastigroup/container-management/docker-swarm/docker-swarm-integration/) integration.
 func (o ElastigroupOutput) IntegrationDockerSwarm() ElastigroupIntegrationDockerSwarmPtrOutput {
 	return o.ApplyT(func(v *Elastigroup) ElastigroupIntegrationDockerSwarmPtrOutput { return v.IntegrationDockerSwarm }).(ElastigroupIntegrationDockerSwarmPtrOutput)
 }
@@ -768,7 +700,6 @@ func (o ElastigroupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Elastigroup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Array of objects representing the network configuration for the elastigroup.
 func (o ElastigroupOutput) NetworkInterfaces() ElastigroupNetworkInterfaceArrayOutput {
 	return o.ApplyT(func(v *Elastigroup) ElastigroupNetworkInterfaceArrayOutput { return v.NetworkInterfaces }).(ElastigroupNetworkInterfaceArrayOutput)
 }
@@ -787,14 +718,10 @@ func (o ElastigroupOutput) ProvisioningModel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Elastigroup) pulumi.StringPtrOutput { return v.ProvisioningModel }).(pulumi.StringPtrOutput)
 }
 
-// Contains scaling policies for scaling the Elastigroup down.
-//
-// Each `scaling_*_policy` supports the following:
 func (o ElastigroupOutput) ScalingDownPolicies() ElastigroupScalingDownPolicyArrayOutput {
 	return o.ApplyT(func(v *Elastigroup) ElastigroupScalingDownPolicyArrayOutput { return v.ScalingDownPolicies }).(ElastigroupScalingDownPolicyArrayOutput)
 }
 
-// Contains scaling policies for scaling the Elastigroup up.
 func (o ElastigroupOutput) ScalingUpPolicies() ElastigroupScalingUpPolicyArrayOutput {
 	return o.ApplyT(func(v *Elastigroup) ElastigroupScalingUpPolicyArrayOutput { return v.ScalingUpPolicies }).(ElastigroupScalingUpPolicyArrayOutput)
 }
@@ -828,7 +755,6 @@ func (o ElastigroupOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Elastigroup) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
-// Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
 func (o ElastigroupOutput) UnhealthyDuration() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Elastigroup) pulumi.IntPtrOutput { return v.UnhealthyDuration }).(pulumi.IntPtrOutput)
 }

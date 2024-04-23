@@ -12,9 +12,6 @@ namespace Pulumi.SpotInst.Gcp.Inputs
 
     public sealed class ElastigroupIntegrationGkeAutoscaleDownGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Number of consecutive periods in which the threshold must be met in order to trigger a scaling action.
-        /// </summary>
         [Input("evaluationPeriods")]
         public Input<int>? EvaluationPeriods { get; set; }
 

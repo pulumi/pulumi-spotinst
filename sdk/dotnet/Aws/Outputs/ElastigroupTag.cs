@@ -14,9 +14,6 @@ namespace Pulumi.SpotInst.Aws.Outputs
     public sealed class ElastigroupTag
     {
         public readonly string? Key;
-        /// <summary>
-        /// The dimension value.
-        /// </summary>
         public readonly string? Value;
 
         [OutputConstructor]

@@ -157,17 +157,9 @@ public final class ElastigroupScalingDownPolicyArgs extends com.pulumi.resources
         return this.metricName;
     }
 
-    /**
-     * . The number of the desired target (and minimum) capacity
-     * 
-     */
     @Import(name="minTargetCapacity")
     private @Nullable Output<String> minTargetCapacity;
 
-    /**
-     * @return . The number of the desired target (and minimum) capacity
-     * 
-     */
     public Optional<Output<String>> minTargetCapacity() {
         return Optional.ofNullable(this.minTargetCapacity);
     }
@@ -300,26 +292,14 @@ public final class ElastigroupScalingDownPolicyArgs extends com.pulumi.resources
     }
 
     /**
-     * The value against which the specified statistic is compared in order to determine if a step should be applied.
-     * 
-     * If you do not specify an action type, you can only use – `adjustment`, `minTargetCapacity`, `maxTargetCapacity`.
-     * While using action_type, please also set the following:
-     * 
-     * When using `adjustment`           – set the field `adjustment`
-     * When using `updateCapacity`       – set the fields `minimum`, `maximum`, and `target`
+     * The value against which the specified statistic is compared. If a `step_adjustment` object is defined, then it cannot be specified.
      * 
      */
     @Import(name="threshold")
     private @Nullable Output<Double> threshold;
 
     /**
-     * @return The value against which the specified statistic is compared in order to determine if a step should be applied.
-     * 
-     * If you do not specify an action type, you can only use – `adjustment`, `minTargetCapacity`, `maxTargetCapacity`.
-     * While using action_type, please also set the following:
-     * 
-     * When using `adjustment`           – set the field `adjustment`
-     * When using `updateCapacity`       – set the fields `minimum`, `maximum`, and `target`
+     * @return The value against which the specified statistic is compared. If a `step_adjustment` object is defined, then it cannot be specified.
      * 
      */
     public Optional<Output<Double>> threshold() {
@@ -584,23 +564,11 @@ public final class ElastigroupScalingDownPolicyArgs extends com.pulumi.resources
             return metricName(Output.of(metricName));
         }
 
-        /**
-         * @param minTargetCapacity . The number of the desired target (and minimum) capacity
-         * 
-         * @return builder
-         * 
-         */
         public Builder minTargetCapacity(@Nullable Output<String> minTargetCapacity) {
             $.minTargetCapacity = minTargetCapacity;
             return this;
         }
 
-        /**
-         * @param minTargetCapacity . The number of the desired target (and minimum) capacity
-         * 
-         * @return builder
-         * 
-         */
         public Builder minTargetCapacity(String minTargetCapacity) {
             return minTargetCapacity(Output.of(minTargetCapacity));
         }
@@ -787,13 +755,7 @@ public final class ElastigroupScalingDownPolicyArgs extends com.pulumi.resources
         }
 
         /**
-         * @param threshold The value against which the specified statistic is compared in order to determine if a step should be applied.
-         * 
-         * If you do not specify an action type, you can only use – `adjustment`, `minTargetCapacity`, `maxTargetCapacity`.
-         * While using action_type, please also set the following:
-         * 
-         * When using `adjustment`           – set the field `adjustment`
-         * When using `updateCapacity`       – set the fields `minimum`, `maximum`, and `target`
+         * @param threshold The value against which the specified statistic is compared. If a `step_adjustment` object is defined, then it cannot be specified.
          * 
          * @return builder
          * 
@@ -804,13 +766,7 @@ public final class ElastigroupScalingDownPolicyArgs extends com.pulumi.resources
         }
 
         /**
-         * @param threshold The value against which the specified statistic is compared in order to determine if a step should be applied.
-         * 
-         * If you do not specify an action type, you can only use – `adjustment`, `minTargetCapacity`, `maxTargetCapacity`.
-         * While using action_type, please also set the following:
-         * 
-         * When using `adjustment`           – set the field `adjustment`
-         * When using `updateCapacity`       – set the fields `minimum`, `maximum`, and `target`
+         * @param threshold The value against which the specified statistic is compared. If a `step_adjustment` object is defined, then it cannot be specified.
          * 
          * @return builder
          * 

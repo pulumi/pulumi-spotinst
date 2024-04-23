@@ -16,77 +16,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ElastigroupIntegrationDockerSwarm {
-    /**
-     * @return The amount of time, in seconds, after a scaling activity completes before any further trigger-related scaling activities can start.
-     * 
-     */
     private @Nullable Integer autoscaleCooldown;
-    /**
-     * @return Settings for scale down actions.
-     * 
-     */
     private @Nullable ElastigroupIntegrationDockerSwarmAutoscaleDown autoscaleDown;
-    /**
-     * @return An option to set compute reserve for the cluster.
-     * 
-     */
     private @Nullable ElastigroupIntegrationDockerSwarmAutoscaleHeadroom autoscaleHeadroom;
-    /**
-     * @return Specifies whether the auto scaling feature is enabled.
-     * 
-     */
     private @Nullable Boolean autoscaleIsEnabled;
-    /**
-     * @return The URL for the Nomad master host.
-     * 
-     */
     private String masterHost;
-    /**
-     * @return The network port for the master host.
-     * 
-     */
     private Integer masterPort;
 
     private ElastigroupIntegrationDockerSwarm() {}
-    /**
-     * @return The amount of time, in seconds, after a scaling activity completes before any further trigger-related scaling activities can start.
-     * 
-     */
     public Optional<Integer> autoscaleCooldown() {
         return Optional.ofNullable(this.autoscaleCooldown);
     }
-    /**
-     * @return Settings for scale down actions.
-     * 
-     */
     public Optional<ElastigroupIntegrationDockerSwarmAutoscaleDown> autoscaleDown() {
         return Optional.ofNullable(this.autoscaleDown);
     }
-    /**
-     * @return An option to set compute reserve for the cluster.
-     * 
-     */
     public Optional<ElastigroupIntegrationDockerSwarmAutoscaleHeadroom> autoscaleHeadroom() {
         return Optional.ofNullable(this.autoscaleHeadroom);
     }
-    /**
-     * @return Specifies whether the auto scaling feature is enabled.
-     * 
-     */
     public Optional<Boolean> autoscaleIsEnabled() {
         return Optional.ofNullable(this.autoscaleIsEnabled);
     }
-    /**
-     * @return The URL for the Nomad master host.
-     * 
-     */
     public String masterHost() {
         return this.masterHost;
     }
-    /**
-     * @return The network port for the master host.
-     * 
-     */
     public Integer masterPort() {
         return this.masterPort;
     }

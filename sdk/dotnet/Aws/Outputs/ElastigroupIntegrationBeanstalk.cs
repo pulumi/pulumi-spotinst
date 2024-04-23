@@ -13,14 +13,8 @@ namespace Pulumi.SpotInst.Aws.Outputs
     [OutputType]
     public sealed class ElastigroupIntegrationBeanstalk
     {
-        /// <summary>
-        /// Preferences when performing a roll
-        /// </summary>
         public readonly Outputs.ElastigroupIntegrationBeanstalkDeploymentPreferences? DeploymentPreferences;
         public readonly string? EnvironmentId;
-        /// <summary>
-        /// Managed Actions parameters
-        /// </summary>
         public readonly Outputs.ElastigroupIntegrationBeanstalkManagedActions? ManagedActions;
 
         [OutputConstructor]

@@ -12,53 +12,21 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class OceanLaunchSpecSchedulingTaskTaskHeadroom {
-    /**
-     * @return Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
-     * 
-     */
     private @Nullable Integer cpuPerUnit;
-    /**
-     * @return Optionally configure the number of GPUS to allocate for each headroom unit.
-     * 
-     */
     private @Nullable Integer gpuPerUnit;
-    /**
-     * @return Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
-     * 
-     */
     private @Nullable Integer memoryPerUnit;
-    /**
-     * @return The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
-     * 
-     */
     private Integer numOfUnits;
 
     private OceanLaunchSpecSchedulingTaskTaskHeadroom() {}
-    /**
-     * @return Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
-     * 
-     */
     public Optional<Integer> cpuPerUnit() {
         return Optional.ofNullable(this.cpuPerUnit);
     }
-    /**
-     * @return Optionally configure the number of GPUS to allocate for each headroom unit.
-     * 
-     */
     public Optional<Integer> gpuPerUnit() {
         return Optional.ofNullable(this.gpuPerUnit);
     }
-    /**
-     * @return Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
-     * 
-     */
     public Optional<Integer> memoryPerUnit() {
         return Optional.ofNullable(this.memoryPerUnit);
     }
-    /**
-     * @return The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
-     * 
-     */
     public Integer numOfUnits() {
         return this.numOfUnits;
     }

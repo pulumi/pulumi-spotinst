@@ -46,7 +46,7 @@ class OceanLaunchSpecArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: List of supported machine types for the Launch Spec.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecLabelArgs']]] labels: Optionally adds labels to instances launched in an Ocean cluster.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecMetadataArgs']]] metadatas: Cluster's metadata.
-        :param pulumi.Input[str] name: The name of the access configuration.
+        :param pulumi.Input[str] name: The launch specification name.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecNetworkInterfaceArgs']]] network_interfaces: Settings for network interfaces.
         :param pulumi.Input[str] node_pool_name: The node pool you wish to use in your Launch Spec.
         :param pulumi.Input['OceanLaunchSpecResourceLimitsArgs'] resource_limits: The Ocean virtual node group resource limits object.
@@ -182,7 +182,7 @@ class OceanLaunchSpecArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the access configuration.
+        The launch specification name.
         """
         return pulumi.get(self, "name")
 
@@ -400,7 +400,7 @@ class _OceanLaunchSpecState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: List of supported machine types for the Launch Spec.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecLabelArgs']]] labels: Optionally adds labels to instances launched in an Ocean cluster.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecMetadataArgs']]] metadatas: Cluster's metadata.
-        :param pulumi.Input[str] name: The name of the access configuration.
+        :param pulumi.Input[str] name: The launch specification name.
         :param pulumi.Input[Sequence[pulumi.Input['OceanLaunchSpecNetworkInterfaceArgs']]] network_interfaces: Settings for network interfaces.
         :param pulumi.Input[str] node_pool_name: The node pool you wish to use in your Launch Spec.
         :param pulumi.Input[str] ocean_id: The Ocean cluster ID.
@@ -526,7 +526,7 @@ class _OceanLaunchSpecState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the access configuration.
+        The launch specification name.
         """
         return pulumi.get(self, "name")
 
@@ -759,7 +759,6 @@ class OceanLaunchSpec(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_spotinst as spotinst
@@ -838,7 +837,6 @@ class OceanLaunchSpec(pulumi.CustomResource):
                 )],
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -847,7 +845,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: List of supported machine types for the Launch Spec.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecLabelArgs']]]] labels: Optionally adds labels to instances launched in an Ocean cluster.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecMetadataArgs']]]] metadatas: Cluster's metadata.
-        :param pulumi.Input[str] name: The name of the access configuration.
+        :param pulumi.Input[str] name: The launch specification name.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecNetworkInterfaceArgs']]]] network_interfaces: Settings for network interfaces.
         :param pulumi.Input[str] node_pool_name: The node pool you wish to use in your Launch Spec.
         :param pulumi.Input[str] ocean_id: The Ocean cluster ID.
@@ -877,7 +875,6 @@ class OceanLaunchSpec(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_spotinst as spotinst
@@ -956,7 +953,6 @@ class OceanLaunchSpec(pulumi.CustomResource):
                 )],
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param OceanLaunchSpecArgs args: The arguments to use to populate this resource's properties.
@@ -1072,7 +1068,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: List of supported machine types for the Launch Spec.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecLabelArgs']]]] labels: Optionally adds labels to instances launched in an Ocean cluster.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecMetadataArgs']]]] metadatas: Cluster's metadata.
-        :param pulumi.Input[str] name: The name of the access configuration.
+        :param pulumi.Input[str] name: The launch specification name.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanLaunchSpecNetworkInterfaceArgs']]]] network_interfaces: Settings for network interfaces.
         :param pulumi.Input[str] node_pool_name: The node pool you wish to use in your Launch Spec.
         :param pulumi.Input[str] ocean_id: The Ocean cluster ID.
@@ -1161,7 +1157,7 @@ class OceanLaunchSpec(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The name of the access configuration.
+        The launch specification name.
         """
         return pulumi.get(self, "name")
 

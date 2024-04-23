@@ -11,17 +11,9 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ElastigroupIntegrationBeanstalkManagedActions {
-    /**
-     * @return Platform Update parameters
-     * 
-     */
     private @Nullable ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdate platformUpdate;
 
     private ElastigroupIntegrationBeanstalkManagedActions() {}
-    /**
-     * @return Platform Update parameters
-     * 
-     */
     public Optional<ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdate> platformUpdate() {
         return Optional.ofNullable(this.platformUpdate);
     }

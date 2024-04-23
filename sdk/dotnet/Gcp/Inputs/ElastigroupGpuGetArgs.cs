@@ -12,17 +12,9 @@ namespace Pulumi.SpotInst.Gcp.Inputs
 
     public sealed class ElastigroupGpuGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The number of GPUs. Must be 0, 2, 4, 6, 8.
-        /// 
-        /// Usage:
-        /// </summary>
         [Input("count", required: true)]
         public Input<int> Count { get; set; } = null!;
 
-        /// <summary>
-        /// The type of GPU instance. Valid values: `nvidia-tesla-v100`, `nvidia-tesla-p100`, `nvidia-tesla-k80`.
-        /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
 

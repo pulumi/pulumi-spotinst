@@ -14,7 +14,6 @@ namespace Pulumi.SpotInst.Azure
     /// 
     /// ## Example Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -99,7 +98,6 @@ namespace Pulumi.SpotInst.Azure
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [SpotInstResourceType("spotinst:azure/oceanVirtualNodeGroup:OceanVirtualNodeGroup")]
     public partial class OceanVirtualNodeGroup : global::Pulumi.CustomResource

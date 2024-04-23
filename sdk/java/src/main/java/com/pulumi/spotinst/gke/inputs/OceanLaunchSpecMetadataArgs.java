@@ -16,14 +16,14 @@ public final class OceanLaunchSpecMetadataArgs extends com.pulumi.resources.Reso
     public static final OceanLaunchSpecMetadataArgs Empty = new OceanLaunchSpecMetadataArgs();
 
     /**
-     * The label key.
+     * The metadata key.
      * 
      */
     @Import(name="key")
     private @Nullable Output<String> key;
 
     /**
-     * @return The label key.
+     * @return The metadata key.
      * 
      */
     public Optional<Output<String>> key() {
@@ -31,14 +31,14 @@ public final class OceanLaunchSpecMetadataArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The label value.
+     * The metadata value.
      * 
      */
     @Import(name="value")
     private @Nullable Output<String> value;
 
     /**
-     * @return The label value.
+     * @return The metadata value.
      * 
      */
     public Optional<Output<String>> value() {
@@ -71,7 +71,7 @@ public final class OceanLaunchSpecMetadataArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param key The label key.
+         * @param key The metadata key.
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class OceanLaunchSpecMetadataArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param key The label key.
+         * @param key The metadata key.
          * 
          * @return builder
          * 
@@ -92,7 +92,7 @@ public final class OceanLaunchSpecMetadataArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param value The label value.
+         * @param value The metadata value.
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class OceanLaunchSpecMetadataArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param value The label value.
+         * @param value The metadata value.
          * 
          * @return builder
          * 

@@ -13,13 +13,7 @@ namespace Pulumi.SpotInst.Aws.Outputs
     [OutputType]
     public sealed class MrScalarInstanceWeight
     {
-        /// <summary>
-        /// The type of the instance.
-        /// </summary>
         public readonly string InstanceType;
-        /// <summary>
-        /// The weight given to the associated instance type.
-        /// </summary>
         public readonly int WeightedCapacity;
 
         [OutputConstructor]

@@ -11,33 +11,13 @@ import java.util.Objects;
 
 @CustomType
 public final class ElastigroupGpu {
-    /**
-     * @return The number of GPUs. Must be 0, 2, 4, 6, 8.
-     * 
-     * Usage:
-     * 
-     */
     private Integer count;
-    /**
-     * @return The type of GPU instance. Valid values: `nvidia-tesla-v100`, `nvidia-tesla-p100`, `nvidia-tesla-k80`.
-     * 
-     */
     private String type;
 
     private ElastigroupGpu() {}
-    /**
-     * @return The number of GPUs. Must be 0, 2, 4, 6, 8.
-     * 
-     * Usage:
-     * 
-     */
     public Integer count() {
         return this.count;
     }
-    /**
-     * @return The type of GPU instance. Valid values: `nvidia-tesla-v100`, `nvidia-tesla-p100`, `nvidia-tesla-k80`.
-     * 
-     */
     public String type() {
         return this.type;
     }

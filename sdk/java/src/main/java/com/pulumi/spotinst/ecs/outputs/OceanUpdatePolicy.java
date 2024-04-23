@@ -13,45 +13,21 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class OceanUpdatePolicy {
-    /**
-     * @return will update instance tags on the fly without rolling the cluster.
-     * 
-     */
     private @Nullable Boolean autoApplyTags;
-    /**
-     * @return Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as AMI, Key Pair, user data, instance types, load balancers, etc).
-     * 
-     */
     private @Nullable Boolean conditionedRoll;
     private @Nullable OceanUpdatePolicyRollConfig rollConfig;
-    /**
-     * @return Enables the roll.
-     * 
-     */
     private Boolean shouldRoll;
 
     private OceanUpdatePolicy() {}
-    /**
-     * @return will update instance tags on the fly without rolling the cluster.
-     * 
-     */
     public Optional<Boolean> autoApplyTags() {
         return Optional.ofNullable(this.autoApplyTags);
     }
-    /**
-     * @return Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as AMI, Key Pair, user data, instance types, load balancers, etc).
-     * 
-     */
     public Optional<Boolean> conditionedRoll() {
         return Optional.ofNullable(this.conditionedRoll);
     }
     public Optional<OceanUpdatePolicyRollConfig> rollConfig() {
         return Optional.ofNullable(this.rollConfig);
     }
-    /**
-     * @return Enables the roll.
-     * 
-     */
     public Boolean shouldRoll() {
         return this.shouldRoll;
     }

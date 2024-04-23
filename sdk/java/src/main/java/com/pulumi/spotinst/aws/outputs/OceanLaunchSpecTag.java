@@ -10,29 +10,13 @@ import java.util.Objects;
 
 @CustomType
 public final class OceanLaunchSpecTag {
-    /**
-     * @return The taint key.
-     * 
-     */
     private String key;
-    /**
-     * @return The taint value.
-     * 
-     */
     private String value;
 
     private OceanLaunchSpecTag() {}
-    /**
-     * @return The taint key.
-     * 
-     */
     public String key() {
         return this.key;
     }
-    /**
-     * @return The taint value.
-     * 
-     */
     public String value() {
         return this.value;
     }

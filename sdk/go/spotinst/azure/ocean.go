@@ -18,7 +18,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -153,7 +152,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 type Ocean struct {
 	pulumi.CustomResourceState
 
@@ -181,13 +179,13 @@ type Ocean struct {
 	ManagedServiceIdentities OceanManagedServiceIdentityArrayOutput `pulumi:"managedServiceIdentities"`
 	// The maximum number of pods per node in an AKS cluster.
 	MaxPods pulumi.IntPtrOutput `pulumi:"maxPods"`
-	// Name of the Load Balancer.
+	// The Ocean cluster name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Define the Virtual Network and Subnet.
 	Network OceanNetworkOutput `pulumi:"network"`
 	// OS disk specifications.
 	OsDisk OceanOsDiskPtrOutput `pulumi:"osDisk"`
-	// The Resource Group name of the Load Balancer.
+	// Name of the Azure Resource Group into which VMs will be launched. Cannot be updated.
 	ResourceGroupName pulumi.StringOutput `pulumi:"resourceGroupName"`
 	// SSH public key for admin access to Linux VMs.
 	SshPublicKey pulumi.StringOutput `pulumi:"sshPublicKey"`
@@ -269,13 +267,13 @@ type oceanState struct {
 	ManagedServiceIdentities []OceanManagedServiceIdentity `pulumi:"managedServiceIdentities"`
 	// The maximum number of pods per node in an AKS cluster.
 	MaxPods *int `pulumi:"maxPods"`
-	// Name of the Load Balancer.
+	// The Ocean cluster name.
 	Name *string `pulumi:"name"`
 	// Define the Virtual Network and Subnet.
 	Network *OceanNetwork `pulumi:"network"`
 	// OS disk specifications.
 	OsDisk *OceanOsDisk `pulumi:"osDisk"`
-	// The Resource Group name of the Load Balancer.
+	// Name of the Azure Resource Group into which VMs will be launched. Cannot be updated.
 	ResourceGroupName *string `pulumi:"resourceGroupName"`
 	// SSH public key for admin access to Linux VMs.
 	SshPublicKey *string `pulumi:"sshPublicKey"`
@@ -316,13 +314,13 @@ type OceanState struct {
 	ManagedServiceIdentities OceanManagedServiceIdentityArrayInput
 	// The maximum number of pods per node in an AKS cluster.
 	MaxPods pulumi.IntPtrInput
-	// Name of the Load Balancer.
+	// The Ocean cluster name.
 	Name pulumi.StringPtrInput
 	// Define the Virtual Network and Subnet.
 	Network OceanNetworkPtrInput
 	// OS disk specifications.
 	OsDisk OceanOsDiskPtrInput
-	// The Resource Group name of the Load Balancer.
+	// Name of the Azure Resource Group into which VMs will be launched. Cannot be updated.
 	ResourceGroupName pulumi.StringPtrInput
 	// SSH public key for admin access to Linux VMs.
 	SshPublicKey pulumi.StringPtrInput
@@ -367,13 +365,13 @@ type oceanArgs struct {
 	ManagedServiceIdentities []OceanManagedServiceIdentity `pulumi:"managedServiceIdentities"`
 	// The maximum number of pods per node in an AKS cluster.
 	MaxPods *int `pulumi:"maxPods"`
-	// Name of the Load Balancer.
+	// The Ocean cluster name.
 	Name *string `pulumi:"name"`
 	// Define the Virtual Network and Subnet.
 	Network *OceanNetwork `pulumi:"network"`
 	// OS disk specifications.
 	OsDisk *OceanOsDisk `pulumi:"osDisk"`
-	// The Resource Group name of the Load Balancer.
+	// Name of the Azure Resource Group into which VMs will be launched. Cannot be updated.
 	ResourceGroupName *string `pulumi:"resourceGroupName"`
 	// SSH public key for admin access to Linux VMs.
 	SshPublicKey string `pulumi:"sshPublicKey"`
@@ -415,13 +413,13 @@ type OceanArgs struct {
 	ManagedServiceIdentities OceanManagedServiceIdentityArrayInput
 	// The maximum number of pods per node in an AKS cluster.
 	MaxPods pulumi.IntPtrInput
-	// Name of the Load Balancer.
+	// The Ocean cluster name.
 	Name pulumi.StringPtrInput
 	// Define the Virtual Network and Subnet.
 	Network OceanNetworkPtrInput
 	// OS disk specifications.
 	OsDisk OceanOsDiskPtrInput
-	// The Resource Group name of the Load Balancer.
+	// Name of the Azure Resource Group into which VMs will be launched. Cannot be updated.
 	ResourceGroupName pulumi.StringPtrInput
 	// SSH public key for admin access to Linux VMs.
 	SshPublicKey pulumi.StringInput
@@ -584,7 +582,7 @@ func (o OceanOutput) MaxPods() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Ocean) pulumi.IntPtrOutput { return v.MaxPods }).(pulumi.IntPtrOutput)
 }
 
-// Name of the Load Balancer.
+// The Ocean cluster name.
 func (o OceanOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Ocean) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -599,7 +597,7 @@ func (o OceanOutput) OsDisk() OceanOsDiskPtrOutput {
 	return o.ApplyT(func(v *Ocean) OceanOsDiskPtrOutput { return v.OsDisk }).(OceanOsDiskPtrOutput)
 }
 
-// The Resource Group name of the Load Balancer.
+// Name of the Azure Resource Group into which VMs will be launched. Cannot be updated.
 func (o OceanOutput) ResourceGroupName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Ocean) pulumi.StringOutput { return v.ResourceGroupName }).(pulumi.StringOutput)
 }

@@ -14,21 +14,9 @@ public final class ElastigroupIntegrationMesosphereArgs extends com.pulumi.resou
 
     public static final ElastigroupIntegrationMesosphereArgs Empty = new ElastigroupIntegrationMesosphereArgs();
 
-    /**
-     * The public IP of the DC/OS Master.
-     * 
-     * Usage:
-     * 
-     */
     @Import(name="apiServer", required=true)
     private Output<String> apiServer;
 
-    /**
-     * @return The public IP of the DC/OS Master.
-     * 
-     * Usage:
-     * 
-     */
     public Output<String> apiServer() {
         return this.apiServer;
     }
@@ -57,27 +45,11 @@ public final class ElastigroupIntegrationMesosphereArgs extends com.pulumi.resou
             $ = new ElastigroupIntegrationMesosphereArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param apiServer The public IP of the DC/OS Master.
-         * 
-         * Usage:
-         * 
-         * @return builder
-         * 
-         */
         public Builder apiServer(Output<String> apiServer) {
             $.apiServer = apiServer;
             return this;
         }
 
-        /**
-         * @param apiServer The public IP of the DC/OS Master.
-         * 
-         * Usage:
-         * 
-         * @return builder
-         * 
-         */
         public Builder apiServer(String apiServer) {
             return apiServer(Output.of(apiServer));
         }

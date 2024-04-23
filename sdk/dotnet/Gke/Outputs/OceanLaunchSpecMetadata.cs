@@ -14,11 +14,11 @@ namespace Pulumi.SpotInst.Gke.Outputs
     public sealed class OceanLaunchSpecMetadata
     {
         /// <summary>
-        /// The label key.
+        /// The metadata key.
         /// </summary>
         public readonly string? Key;
         /// <summary>
-        /// The label value.
+        /// The metadata value.
         /// </summary>
         public readonly string? Value;
 

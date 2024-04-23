@@ -15,17 +15,9 @@ public final class ElastigroupIntegrationRoute53Args extends com.pulumi.resource
 
     public static final ElastigroupIntegrationRoute53Args Empty = new ElastigroupIntegrationRoute53Args();
 
-    /**
-     * Collection of one or more domains to register.
-     * 
-     */
     @Import(name="domains", required=true)
     private Output<List<ElastigroupIntegrationRoute53DomainArgs>> domains;
 
-    /**
-     * @return Collection of one or more domains to register.
-     * 
-     */
     public Output<List<ElastigroupIntegrationRoute53DomainArgs>> domains() {
         return this.domains;
     }
@@ -54,33 +46,15 @@ public final class ElastigroupIntegrationRoute53Args extends com.pulumi.resource
             $ = new ElastigroupIntegrationRoute53Args(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param domains Collection of one or more domains to register.
-         * 
-         * @return builder
-         * 
-         */
         public Builder domains(Output<List<ElastigroupIntegrationRoute53DomainArgs>> domains) {
             $.domains = domains;
             return this;
         }
 
-        /**
-         * @param domains Collection of one or more domains to register.
-         * 
-         * @return builder
-         * 
-         */
         public Builder domains(List<ElastigroupIntegrationRoute53DomainArgs> domains) {
             return domains(Output.of(domains));
         }
 
-        /**
-         * @param domains Collection of one or more domains to register.
-         * 
-         * @return builder
-         * 
-         */
         public Builder domains(ElastigroupIntegrationRoute53DomainArgs... domains) {
             return domains(List.of(domains));
         }

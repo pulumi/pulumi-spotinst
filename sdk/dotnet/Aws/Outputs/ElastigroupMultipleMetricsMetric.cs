@@ -13,33 +13,15 @@ namespace Pulumi.SpotInst.Aws.Outputs
     [OutputType]
     public sealed class ElastigroupMultipleMetricsMetric
     {
-        /// <summary>
-        /// A list of dimensions describing qualities of the metric.
-        /// </summary>
         public readonly ImmutableArray<Outputs.ElastigroupMultipleMetricsMetricDimension> Dimensions;
-        /// <summary>
-        /// Percentile statistic. Valid values: `"p0.1"` - `"p100"`.
-        /// </summary>
         public readonly string? ExtendedStatistic;
-        /// <summary>
-        /// The name of the metric, with or without spaces.
-        /// </summary>
         public readonly string MetricName;
         /// <summary>
         /// The group name.
         /// </summary>
         public readonly string Name;
-        /// <summary>
-        /// The namespace for the alarm's associated metric.
-        /// </summary>
         public readonly string Namespace;
-        /// <summary>
-        /// The metric statistics to return. For information about specific statistics go to [Statistics](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/index.html?CHAP_TerminologyandKeyConcepts.html#Statistic) in the Amazon CloudWatch Developer Guide.
-        /// </summary>
         public readonly string? Statistic;
-        /// <summary>
-        /// The unit for the alarm's associated metric. Valid values: `"percent`, `"seconds"`, `"microseconds"`, `"milliseconds"`, `"bytes"`, `"kilobytes"`, `"megabytes"`, `"gigabytes"`, `"terabytes"`, `"bits"`, `"kilobits"`, `"megabits"`, `"gigabits"`, `"terabits"`, `"count"`, `"bytes/second"`, `"kilobytes/second"`, `"megabytes/second"`, `"gigabytes/second"`, `"terabytes/second"`, `"bits/second"`, `"kilobits/second"`, `"megabits/second"`, `"gigabits/second"`, `"terabits/second"`, `"count/second"`, `"none"`.
-        /// </summary>
         public readonly string? Unit;
 
         [OutputConstructor]

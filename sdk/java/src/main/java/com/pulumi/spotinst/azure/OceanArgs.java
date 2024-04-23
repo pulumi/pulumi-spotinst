@@ -210,14 +210,14 @@ public final class OceanArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of the Load Balancer.
+     * The Ocean cluster name.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the Load Balancer.
+     * @return The Ocean cluster name.
      * 
      */
     public Optional<Output<String>> name() {
@@ -255,14 +255,14 @@ public final class OceanArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Resource Group name of the Load Balancer.
+     * Name of the Azure Resource Group into which VMs will be launched. Cannot be updated.
      * 
      */
     @Import(name="resourceGroupName")
     private @Nullable Output<String> resourceGroupName;
 
     /**
-     * @return The Resource Group name of the Load Balancer.
+     * @return Name of the Azure Resource Group into which VMs will be launched. Cannot be updated.
      * 
      */
     public Optional<Output<String>> resourceGroupName() {
@@ -697,7 +697,7 @@ public final class OceanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the Load Balancer.
+         * @param name The Ocean cluster name.
          * 
          * @return builder
          * 
@@ -708,7 +708,7 @@ public final class OceanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the Load Balancer.
+         * @param name The Ocean cluster name.
          * 
          * @return builder
          * 
@@ -760,7 +760,7 @@ public final class OceanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceGroupName The Resource Group name of the Load Balancer.
+         * @param resourceGroupName Name of the Azure Resource Group into which VMs will be launched. Cannot be updated.
          * 
          * @return builder
          * 
@@ -771,7 +771,7 @@ public final class OceanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceGroupName The Resource Group name of the Load Balancer.
+         * @param resourceGroupName Name of the Azure Resource Group into which VMs will be launched. Cannot be updated.
          * 
          * @return builder
          * 

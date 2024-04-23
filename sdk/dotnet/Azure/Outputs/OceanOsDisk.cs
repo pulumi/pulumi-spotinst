@@ -18,7 +18,7 @@ namespace Pulumi.SpotInst.Azure.Outputs
         /// </summary>
         public readonly int SizeGb;
         /// <summary>
-        /// The type of load balancer. Supported value: `loadBalancer`
+        /// The type of the OS disk. Supported values: `Standard_LRS`, `Premium_LRS`, `StandardSSD_LRS`.
         /// </summary>
         public readonly string? Type;
 

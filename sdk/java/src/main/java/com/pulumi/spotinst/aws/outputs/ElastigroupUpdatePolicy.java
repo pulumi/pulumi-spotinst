@@ -13,53 +13,21 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ElastigroupUpdatePolicy {
-    /**
-     * @return Enables updates to tags without rolling the group when set to `true`.
-     * 
-     */
     private @Nullable Boolean autoApplyTags;
-    /**
-     * @return While used, you can control whether the group should perform a deployment after an update to the configuration.
-     * 
-     */
     private @Nullable ElastigroupUpdatePolicyRollConfig rollConfig;
-    /**
-     * @return This will apply resuming action for Stateful instances in the Elastigroup upon scale up or capacity changes. Example usage will be for Elastigroups that will have scheduling rules to set a target capacity of 0 instances in the night and automatically restore the same state of the instances in the morning.
-     * 
-     */
     private Boolean shouldResumeStateful;
-    /**
-     * @return Sets the enablement of the roll option.
-     * 
-     */
     private Boolean shouldRoll;
 
     private ElastigroupUpdatePolicy() {}
-    /**
-     * @return Enables updates to tags without rolling the group when set to `true`.
-     * 
-     */
     public Optional<Boolean> autoApplyTags() {
         return Optional.ofNullable(this.autoApplyTags);
     }
-    /**
-     * @return While used, you can control whether the group should perform a deployment after an update to the configuration.
-     * 
-     */
     public Optional<ElastigroupUpdatePolicyRollConfig> rollConfig() {
         return Optional.ofNullable(this.rollConfig);
     }
-    /**
-     * @return This will apply resuming action for Stateful instances in the Elastigroup upon scale up or capacity changes. Example usage will be for Elastigroups that will have scheduling rules to set a target capacity of 0 instances in the night and automatically restore the same state of the instances in the morning.
-     * 
-     */
     public Boolean shouldResumeStateful() {
         return this.shouldResumeStateful;
     }
-    /**
-     * @return Sets the enablement of the roll option.
-     * 
-     */
     public Boolean shouldRoll() {
         return this.shouldRoll;
     }

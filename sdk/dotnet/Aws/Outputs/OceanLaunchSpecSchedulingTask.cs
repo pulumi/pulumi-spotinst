@@ -18,7 +18,7 @@ namespace Pulumi.SpotInst.Aws.Outputs
         /// </summary>
         public readonly string CronExpression;
         /// <summary>
-        /// Flag to enable or disable the shutdown hours mechanism. When False, the mechanism is deactivated, and the virtual node group remains in its current state.
+        /// Describes whether the task is enabled. When True, the task runs. When False, it does not run.
         /// </summary>
         public readonly bool IsEnabled;
         /// <summary>

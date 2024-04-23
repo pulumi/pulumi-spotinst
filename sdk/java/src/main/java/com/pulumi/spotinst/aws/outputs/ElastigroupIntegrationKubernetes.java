@@ -17,125 +17,45 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ElastigroupIntegrationKubernetes {
-    /**
-     * @return The public IP of the DC/OS Master.
-     * 
-     * Usage:
-     * 
-     */
     private @Nullable String apiServer;
-    /**
-     * @return The amount of time, in seconds, after a scaling activity completes before any further trigger-related scaling activities can start.
-     * 
-     */
     private @Nullable Integer autoscaleCooldown;
-    /**
-     * @return Settings for scale down actions.
-     * 
-     */
     private @Nullable ElastigroupIntegrationKubernetesAutoscaleDown autoscaleDown;
-    /**
-     * @return An option to set compute reserve for the cluster.
-     * 
-     */
     private @Nullable ElastigroupIntegrationKubernetesAutoscaleHeadroom autoscaleHeadroom;
-    /**
-     * @return Enabling the automatic k8s auto-scaler functionality. For more information please see: [Kubernetes auto scaler](https://api.spotinst.com/integration-docs/elastigroup/container-management/kubernetes/autoscaler/).
-     * 
-     */
     private @Nullable Boolean autoscaleIsAutoConfig;
-    /**
-     * @return Specifies whether the auto scaling feature is enabled.
-     * 
-     */
     private @Nullable Boolean autoscaleIsEnabled;
-    /**
-     * @return A key/value mapping of tags to assign to the resource.
-     * 
-     * Usage:
-     * 
-     */
     private @Nullable List<ElastigroupIntegrationKubernetesAutoscaleLabel> autoscaleLabels;
     private @Nullable String clusterIdentifier;
-    /**
-     * @return Valid values: `&#34;saas&#34;`, `&#34;pod&#34;`.
-     * 
-     */
     private @Nullable String integrationMode;
-    /**
-     * @return Kubernetes Token
-     * 
-     */
     private @Nullable String token;
 
     private ElastigroupIntegrationKubernetes() {}
-    /**
-     * @return The public IP of the DC/OS Master.
-     * 
-     * Usage:
-     * 
-     */
     public Optional<String> apiServer() {
         return Optional.ofNullable(this.apiServer);
     }
-    /**
-     * @return The amount of time, in seconds, after a scaling activity completes before any further trigger-related scaling activities can start.
-     * 
-     */
     public Optional<Integer> autoscaleCooldown() {
         return Optional.ofNullable(this.autoscaleCooldown);
     }
-    /**
-     * @return Settings for scale down actions.
-     * 
-     */
     public Optional<ElastigroupIntegrationKubernetesAutoscaleDown> autoscaleDown() {
         return Optional.ofNullable(this.autoscaleDown);
     }
-    /**
-     * @return An option to set compute reserve for the cluster.
-     * 
-     */
     public Optional<ElastigroupIntegrationKubernetesAutoscaleHeadroom> autoscaleHeadroom() {
         return Optional.ofNullable(this.autoscaleHeadroom);
     }
-    /**
-     * @return Enabling the automatic k8s auto-scaler functionality. For more information please see: [Kubernetes auto scaler](https://api.spotinst.com/integration-docs/elastigroup/container-management/kubernetes/autoscaler/).
-     * 
-     */
     public Optional<Boolean> autoscaleIsAutoConfig() {
         return Optional.ofNullable(this.autoscaleIsAutoConfig);
     }
-    /**
-     * @return Specifies whether the auto scaling feature is enabled.
-     * 
-     */
     public Optional<Boolean> autoscaleIsEnabled() {
         return Optional.ofNullable(this.autoscaleIsEnabled);
     }
-    /**
-     * @return A key/value mapping of tags to assign to the resource.
-     * 
-     * Usage:
-     * 
-     */
     public List<ElastigroupIntegrationKubernetesAutoscaleLabel> autoscaleLabels() {
         return this.autoscaleLabels == null ? List.of() : this.autoscaleLabels;
     }
     public Optional<String> clusterIdentifier() {
         return Optional.ofNullable(this.clusterIdentifier);
     }
-    /**
-     * @return Valid values: `&#34;saas&#34;`, `&#34;pod&#34;`.
-     * 
-     */
     public Optional<String> integrationMode() {
         return Optional.ofNullable(this.integrationMode);
     }
-    /**
-     * @return Kubernetes Token
-     * 
-     */
     public Optional<String> token() {
         return Optional.ofNullable(this.token);
     }

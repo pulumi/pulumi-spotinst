@@ -16,154 +16,58 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ElastigroupScalingDownPolicy {
-    /**
-     * @return Type of scaling action to take when the scaling policy is triggered. Valid values: &#34;adjustment&#34;, &#34;setMinTarget&#34;, &#34;updateCapacity&#34;, &#34;percentageAdjustment&#34;
-     * 
-     */
     private @Nullable String actionType;
-    /**
-     * @return Value to which the action type will be adjusted. Required if using &#34;numeric&#34; or &#34;percentageAdjustment&#34; action types.
-     * 
-     */
     private @Nullable Integer adjustment;
-    /**
-     * @return Time (seconds) to wait after a scaling action before resuming monitoring.
-     * 
-     */
     private @Nullable Integer cooldown;
-    /**
-     * @return A list of dimensions describing qualities of the metric.
-     * 
-     */
     private @Nullable List<ElastigroupScalingDownPolicyDimension> dimensions;
-    /**
-     * @return Number of consecutive periods in which the threshold must be met in order to trigger a scaling action.
-     * 
-     */
     private @Nullable Integer evaluationPeriods;
-    /**
-     * @return Metric to monitor. Valid values: &#34;Percentage CPU&#34;, &#34;Network In&#34;, &#34;Network Out&#34;, &#34;Disk Read Bytes&#34;, &#34;Disk Write Bytes&#34;, &#34;Disk Write Operations/Sec&#34;, &#34;Disk Read Operations/Sec&#34;.
-     * 
-     */
     private String metricName;
     private String namespace;
-    /**
-     * @return The operator used to evaluate the threshold against the current metric value. Valid values: &#34;gt&#34; (greater than), &#34;get&#34; (greater-than or equal), &#34;lt&#34; (less than), &#34;lte&#34; (less than or equal).
-     * 
-     */
     private @Nullable String operator;
-    /**
-     * @return Amount of time (seconds) for which the threshold must be met in order to trigger the scaling action.
-     * 
-     */
     private @Nullable Integer period;
-    /**
-     * @return Name of scaling policy.
-     * 
-     */
     private String policyName;
-    /**
-     * @return Specifies a valid partial or full URL to an existing Persistent Disk resource. This field is only applicable for persistent disks.
-     * 
-     */
     private @Nullable String source;
-    /**
-     * @return Statistic by which to evaluate the selected metric. Valid values: &#34;AVERAGE&#34;, &#34;SAMPLE_COUNT&#34;, &#34;SUM&#34;, &#34;MINIMUM&#34;, &#34;MAXIMUM&#34;, &#34;PERCENTILE&#34;, &#34;COUNT&#34;.
-     * 
-     */
     private @Nullable String statistic;
-    /**
-     * @return The value at which the scaling action is triggered.
-     * 
-     */
     private Double threshold;
     private String unit;
 
     private ElastigroupScalingDownPolicy() {}
-    /**
-     * @return Type of scaling action to take when the scaling policy is triggered. Valid values: &#34;adjustment&#34;, &#34;setMinTarget&#34;, &#34;updateCapacity&#34;, &#34;percentageAdjustment&#34;
-     * 
-     */
     public Optional<String> actionType() {
         return Optional.ofNullable(this.actionType);
     }
-    /**
-     * @return Value to which the action type will be adjusted. Required if using &#34;numeric&#34; or &#34;percentageAdjustment&#34; action types.
-     * 
-     */
     public Optional<Integer> adjustment() {
         return Optional.ofNullable(this.adjustment);
     }
-    /**
-     * @return Time (seconds) to wait after a scaling action before resuming monitoring.
-     * 
-     */
     public Optional<Integer> cooldown() {
         return Optional.ofNullable(this.cooldown);
     }
-    /**
-     * @return A list of dimensions describing qualities of the metric.
-     * 
-     */
     public List<ElastigroupScalingDownPolicyDimension> dimensions() {
         return this.dimensions == null ? List.of() : this.dimensions;
     }
-    /**
-     * @return Number of consecutive periods in which the threshold must be met in order to trigger a scaling action.
-     * 
-     */
     public Optional<Integer> evaluationPeriods() {
         return Optional.ofNullable(this.evaluationPeriods);
     }
-    /**
-     * @return Metric to monitor. Valid values: &#34;Percentage CPU&#34;, &#34;Network In&#34;, &#34;Network Out&#34;, &#34;Disk Read Bytes&#34;, &#34;Disk Write Bytes&#34;, &#34;Disk Write Operations/Sec&#34;, &#34;Disk Read Operations/Sec&#34;.
-     * 
-     */
     public String metricName() {
         return this.metricName;
     }
     public String namespace() {
         return this.namespace;
     }
-    /**
-     * @return The operator used to evaluate the threshold against the current metric value. Valid values: &#34;gt&#34; (greater than), &#34;get&#34; (greater-than or equal), &#34;lt&#34; (less than), &#34;lte&#34; (less than or equal).
-     * 
-     */
     public Optional<String> operator() {
         return Optional.ofNullable(this.operator);
     }
-    /**
-     * @return Amount of time (seconds) for which the threshold must be met in order to trigger the scaling action.
-     * 
-     */
     public Optional<Integer> period() {
         return Optional.ofNullable(this.period);
     }
-    /**
-     * @return Name of scaling policy.
-     * 
-     */
     public String policyName() {
         return this.policyName;
     }
-    /**
-     * @return Specifies a valid partial or full URL to an existing Persistent Disk resource. This field is only applicable for persistent disks.
-     * 
-     */
     public Optional<String> source() {
         return Optional.ofNullable(this.source);
     }
-    /**
-     * @return Statistic by which to evaluate the selected metric. Valid values: &#34;AVERAGE&#34;, &#34;SAMPLE_COUNT&#34;, &#34;SUM&#34;, &#34;MINIMUM&#34;, &#34;MAXIMUM&#34;, &#34;PERCENTILE&#34;, &#34;COUNT&#34;.
-     * 
-     */
     public Optional<String> statistic() {
         return Optional.ofNullable(this.statistic);
     }
-    /**
-     * @return The value at which the scaling action is triggered.
-     * 
-     */
     public Double threshold() {
         return this.threshold;
     }

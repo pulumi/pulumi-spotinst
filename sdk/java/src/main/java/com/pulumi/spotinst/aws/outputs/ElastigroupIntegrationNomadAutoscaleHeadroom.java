@@ -11,41 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ElastigroupIntegrationNomadAutoscaleHeadroom {
-    /**
-     * @return How much CPU (MHz) to allocate for headroom unit.
-     * 
-     */
     private @Nullable Integer cpuPerUnit;
-    /**
-     * @return How much Memory allocate for headroom unit.
-     * 
-     */
     private @Nullable Integer memoryPerUnit;
-    /**
-     * @return How many units of headroom to allocate.
-     * 
-     */
     private @Nullable Integer numOfUnits;
 
     private ElastigroupIntegrationNomadAutoscaleHeadroom() {}
-    /**
-     * @return How much CPU (MHz) to allocate for headroom unit.
-     * 
-     */
     public Optional<Integer> cpuPerUnit() {
         return Optional.ofNullable(this.cpuPerUnit);
     }
-    /**
-     * @return How much Memory allocate for headroom unit.
-     * 
-     */
     public Optional<Integer> memoryPerUnit() {
         return Optional.ofNullable(this.memoryPerUnit);
     }
-    /**
-     * @return How many units of headroom to allocate.
-     * 
-     */
     public Optional<Integer> numOfUnits() {
         return Optional.ofNullable(this.numOfUnits);
     }

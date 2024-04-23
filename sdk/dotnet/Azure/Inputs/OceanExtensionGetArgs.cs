@@ -25,19 +25,16 @@ namespace Pulumi.SpotInst.Azure.Inputs
         public Input<bool>? MinorVersionAutoUpgrade { get; set; }
 
         /// <summary>
-        /// Name of the Load Balancer.
+        /// Extension name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Image publisher.
-        /// </summary>
         [Input("publisher")]
         public Input<string>? Publisher { get; set; }
 
         /// <summary>
-        /// The type of load balancer. Supported value: `loadBalancer`
+        /// Extension type.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

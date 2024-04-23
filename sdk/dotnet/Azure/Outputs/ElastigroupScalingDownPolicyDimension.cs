@@ -14,12 +14,9 @@ namespace Pulumi.SpotInst.Azure.Outputs
     public sealed class ElastigroupScalingDownPolicyDimension
     {
         /// <summary>
-        /// Name of the Managed Service Identity.
+        /// The group name.
         /// </summary>
         public readonly string Name;
-        /// <summary>
-        /// Tag Value for Vms in Elastigroup.
-        /// </summary>
         public readonly string? Value;
 
         [OutputConstructor]

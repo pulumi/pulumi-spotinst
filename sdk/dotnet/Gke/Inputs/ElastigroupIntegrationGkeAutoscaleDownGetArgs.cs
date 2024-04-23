@@ -12,9 +12,6 @@ namespace Pulumi.SpotInst.Gke.Inputs
 
     public sealed class ElastigroupIntegrationGkeAutoscaleDownGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Amount of cooldown evaluation periods for scale down.
-        /// </summary>
         [Input("evaluationPeriods")]
         public Input<int>? EvaluationPeriods { get; set; }
 

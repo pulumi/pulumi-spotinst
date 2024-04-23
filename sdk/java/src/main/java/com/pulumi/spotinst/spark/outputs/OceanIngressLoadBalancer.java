@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class OceanIngressLoadBalancer {
     /**
-     * @return - Should an ingress controller managed by Ocean for Apache Spark be installed on the cluster.
+     * @return - Should a load balancer managed by Ocean for Apache Spark be provisioned for the cluster. Set this to false if you want to use an existing load balancer (only available on AWS).
      * 
      */
     private @Nullable Boolean managed;
@@ -31,7 +31,7 @@ public final class OceanIngressLoadBalancer {
 
     private OceanIngressLoadBalancer() {}
     /**
-     * @return - Should an ingress controller managed by Ocean for Apache Spark be installed on the cluster.
+     * @return - Should a load balancer managed by Ocean for Apache Spark be provisioned for the cluster. Set this to false if you want to use an existing load balancer (only available on AWS).
      * 
      */
     public Optional<Boolean> managed() {

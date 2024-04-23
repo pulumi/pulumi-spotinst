@@ -12,18 +12,12 @@ namespace Pulumi.SpotInst.Aws.Inputs
 
     public sealed class ElastigroupIntegrationBeanstalkGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Preferences when performing a roll
-        /// </summary>
         [Input("deploymentPreferences")]
         public Input<Inputs.ElastigroupIntegrationBeanstalkDeploymentPreferencesGetArgs>? DeploymentPreferences { get; set; }
 
         [Input("environmentId")]
         public Input<string>? EnvironmentId { get; set; }
 
-        /// <summary>
-        /// Managed Actions parameters
-        /// </summary>
         [Input("managedActions")]
         public Input<Inputs.ElastigroupIntegrationBeanstalkManagedActionsGetArgs>? ManagedActions { get; set; }
 

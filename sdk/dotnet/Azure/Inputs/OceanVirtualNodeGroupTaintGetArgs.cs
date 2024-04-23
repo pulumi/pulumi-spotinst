@@ -19,13 +19,13 @@ namespace Pulumi.SpotInst.Azure.Inputs
         public Input<string> Effect { get; set; } = null!;
 
         /// <summary>
-        /// Tag Key for Vms in the cluster.
+        /// The taint key.
         /// </summary>
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;
 
         /// <summary>
-        /// Tag Value for VMs in the cluster.
+        /// The taint value.
         /// </summary>
         [Input("value", required: true)]
         public Input<string> Value { get; set; } = null!;

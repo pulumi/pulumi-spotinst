@@ -17,9 +17,6 @@ namespace Pulumi.SpotInst.Gke.Outputs
         public readonly int? Adjustment;
         public readonly int? Cooldown;
         public readonly ImmutableArray<Outputs.ElastigroupScalingDownPolicyDimension> Dimensions;
-        /// <summary>
-        /// Amount of cooldown evaluation periods for scale down.
-        /// </summary>
         public readonly int? EvaluationPeriods;
         public readonly string MetricName;
         public readonly string Namespace;

@@ -14,10 +14,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
     {
         [Input("s3s")]
         private InputList<Inputs.ElastigroupLoggingExportS3GetArgs>? _s3s;
-
-        /// <summary>
-        /// Exports your cluster's logs to the S3 bucket and subdir configured on the S3 data integration given.
-        /// </summary>
         public InputList<Inputs.ElastigroupLoggingExportS3GetArgs> S3s
         {
             get => _s3s ?? (_s3s = new InputList<Inputs.ElastigroupLoggingExportS3GetArgs>());

@@ -11,43 +11,17 @@ import java.util.Objects;
 
 @CustomType
 public final class PolicyPolicyContentStatement {
-    /**
-     * @return Set a list of required actions for this permissions statement.
-     * Full list of actions can be found in [https://docs.spot.io/account-user-management/user-management/access-policies-actions/](https://docs.spot.io/account-user-management/user-management/access-policies-actions/).
-     * 
-     */
     private List<String> actions;
-    /**
-     * @return Valid values &#34;ALLOW&#34;, &#34;DENY&#34;.
-     * 
-     */
     private String effect;
-    /**
-     * @return Set a list of resources IDs. In order to include all resources in this statement - use &#34;*&#34;.
-     * 
-     */
     private List<String> resources;
 
     private PolicyPolicyContentStatement() {}
-    /**
-     * @return Set a list of required actions for this permissions statement.
-     * Full list of actions can be found in [https://docs.spot.io/account-user-management/user-management/access-policies-actions/](https://docs.spot.io/account-user-management/user-management/access-policies-actions/).
-     * 
-     */
     public List<String> actions() {
         return this.actions;
     }
-    /**
-     * @return Valid values &#34;ALLOW&#34;, &#34;DENY&#34;.
-     * 
-     */
     public String effect() {
         return this.effect;
     }
-    /**
-     * @return Set a list of resources IDs. In order to include all resources in this statement - use &#34;*&#34;.
-     * 
-     */
     public List<String> resources() {
         return this.resources;
     }

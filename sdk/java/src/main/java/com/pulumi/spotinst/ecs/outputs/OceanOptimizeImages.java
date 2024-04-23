@@ -13,41 +13,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class OceanOptimizeImages {
-    /**
-     * @return String. Valid values: &#34;always&#34; &#34;never&#34; &#34;timeWindow&#34;.
-     * 
-     */
     private String performAt;
-    /**
-     * @return Boolean. Enable auto image (AMI) update for the ECS container instances. The auto update applies for ECS-Optimized AMIs.
-     * 
-     */
     private Boolean shouldOptimizeEcsAmi;
-    /**
-     * @return Array of strings. Set time windows for image update, at least one time window. Each string is in the format of ddd:hh:mm-ddd:hh:mm ddd. Time windows should not overlap.
-     * 
-     */
     private @Nullable List<String> timeWindows;
 
     private OceanOptimizeImages() {}
-    /**
-     * @return String. Valid values: &#34;always&#34; &#34;never&#34; &#34;timeWindow&#34;.
-     * 
-     */
     public String performAt() {
         return this.performAt;
     }
-    /**
-     * @return Boolean. Enable auto image (AMI) update for the ECS container instances. The auto update applies for ECS-Optimized AMIs.
-     * 
-     */
     public Boolean shouldOptimizeEcsAmi() {
         return this.shouldOptimizeEcsAmi;
     }
-    /**
-     * @return Array of strings. Set time windows for image update, at least one time window. Each string is in the format of ddd:hh:mm-ddd:hh:mm ddd. Time windows should not overlap.
-     * 
-     */
     public List<String> timeWindows() {
         return this.timeWindows == null ? List.of() : this.timeWindows;
     }

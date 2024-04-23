@@ -33,7 +33,7 @@ type OceanLaunchSpec struct {
 	EphemeralStorages OceanLaunchSpecEphemeralStorageArrayOutput `pulumi:"ephemeralStorages"`
 	// The ARN or name of an IAM instance profile to associate with launched instances.
 	IamInstanceProfile pulumi.StringPtrOutput `pulumi:"iamInstanceProfile"`
-	// Identifier of the image in AWS. Valid values: any string which is not empty or null.
+	// ID of the image used to launch the instances.
 	ImageId pulumi.StringPtrOutput `pulumi:"imageId"`
 	// Array of objects (Image object, containing the id of the image used to launch instances.) You can configure VNG with either the imageId or images objects, but not both simultaneously.
 	// For each architecture type (amd64, arm64) only one AMI is allowed. Valid values: null, or an array with at least one element.
@@ -126,7 +126,7 @@ type oceanLaunchSpecState struct {
 	EphemeralStorages []OceanLaunchSpecEphemeralStorage `pulumi:"ephemeralStorages"`
 	// The ARN or name of an IAM instance profile to associate with launched instances.
 	IamInstanceProfile *string `pulumi:"iamInstanceProfile"`
-	// Identifier of the image in AWS. Valid values: any string which is not empty or null.
+	// ID of the image used to launch the instances.
 	ImageId *string `pulumi:"imageId"`
 	// Array of objects (Image object, containing the id of the image used to launch instances.) You can configure VNG with either the imageId or images objects, but not both simultaneously.
 	// For each architecture type (amd64, arm64) only one AMI is allowed. Valid values: null, or an array with at least one element.
@@ -187,7 +187,7 @@ type OceanLaunchSpecState struct {
 	EphemeralStorages OceanLaunchSpecEphemeralStorageArrayInput
 	// The ARN or name of an IAM instance profile to associate with launched instances.
 	IamInstanceProfile pulumi.StringPtrInput
-	// Identifier of the image in AWS. Valid values: any string which is not empty or null.
+	// ID of the image used to launch the instances.
 	ImageId pulumi.StringPtrInput
 	// Array of objects (Image object, containing the id of the image used to launch instances.) You can configure VNG with either the imageId or images objects, but not both simultaneously.
 	// For each architecture type (amd64, arm64) only one AMI is allowed. Valid values: null, or an array with at least one element.
@@ -252,7 +252,7 @@ type oceanLaunchSpecArgs struct {
 	EphemeralStorages []OceanLaunchSpecEphemeralStorage `pulumi:"ephemeralStorages"`
 	// The ARN or name of an IAM instance profile to associate with launched instances.
 	IamInstanceProfile *string `pulumi:"iamInstanceProfile"`
-	// Identifier of the image in AWS. Valid values: any string which is not empty or null.
+	// ID of the image used to launch the instances.
 	ImageId *string `pulumi:"imageId"`
 	// Array of objects (Image object, containing the id of the image used to launch instances.) You can configure VNG with either the imageId or images objects, but not both simultaneously.
 	// For each architecture type (amd64, arm64) only one AMI is allowed. Valid values: null, or an array with at least one element.
@@ -314,7 +314,7 @@ type OceanLaunchSpecArgs struct {
 	EphemeralStorages OceanLaunchSpecEphemeralStorageArrayInput
 	// The ARN or name of an IAM instance profile to associate with launched instances.
 	IamInstanceProfile pulumi.StringPtrInput
-	// Identifier of the image in AWS. Valid values: any string which is not empty or null.
+	// ID of the image used to launch the instances.
 	ImageId pulumi.StringPtrInput
 	// Array of objects (Image object, containing the id of the image used to launch instances.) You can configure VNG with either the imageId or images objects, but not both simultaneously.
 	// For each architecture type (amd64, arm64) only one AMI is allowed. Valid values: null, or an array with at least one element.
@@ -493,7 +493,7 @@ func (o OceanLaunchSpecOutput) IamInstanceProfile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OceanLaunchSpec) pulumi.StringPtrOutput { return v.IamInstanceProfile }).(pulumi.StringPtrOutput)
 }
 
-// Identifier of the image in AWS. Valid values: any string which is not empty or null.
+// ID of the image used to launch the instances.
 func (o OceanLaunchSpecOutput) ImageId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OceanLaunchSpec) pulumi.StringPtrOutput { return v.ImageId }).(pulumi.StringPtrOutput)
 }

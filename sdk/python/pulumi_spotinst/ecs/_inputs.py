@@ -55,17 +55,6 @@ class OceanAutoscalerArgs:
                  is_enabled: Optional[pulumi.Input[bool]] = None,
                  resource_limits: Optional[pulumi.Input['OceanAutoscalerResourceLimitsArgs']] = None,
                  should_scale_down_non_service_tasks: Optional[pulumi.Input[bool]] = None):
-        """
-        :param pulumi.Input[int] auto_headroom_percentage: The auto-headroom percentage. Set a number between 0-200 to control the headroom % of the cluster. Relevant when `isAutoConfig`= true.
-        :param pulumi.Input[int] cooldown: Cooldown period between scaling actions.
-        :param pulumi.Input['OceanAutoscalerDownArgs'] down: Auto Scaling scale down operations.
-        :param pulumi.Input[bool] enable_automatic_and_manual_headroom: When set to true, both automatic and per custom launch specification manual headroom to be saved concurrently and independently in the cluster. prerequisite: isAutoConfig must be true
-        :param pulumi.Input['OceanAutoscalerHeadroomArgs'] headroom: Spare resource capacity management enabling fast assignment of tasks without waiting for new resources to launch.
-        :param pulumi.Input[bool] is_auto_config: Automatically configure and optimize headroom resources.
-        :param pulumi.Input[bool] is_enabled: Enable the Ocean ECS autoscaler.
-        :param pulumi.Input['OceanAutoscalerResourceLimitsArgs'] resource_limits: Optionally set upper and lower bounds on the resource usage of the cluster.
-        :param pulumi.Input[bool] should_scale_down_non_service_tasks: Option to scale down non-service tasks. If not set, Ocean does not scale down standalone tasks.
-        """
         if auto_headroom_percentage is not None:
             pulumi.set(__self__, "auto_headroom_percentage", auto_headroom_percentage)
         if cooldown is not None:
@@ -88,9 +77,6 @@ class OceanAutoscalerArgs:
     @property
     @pulumi.getter(name="autoHeadroomPercentage")
     def auto_headroom_percentage(self) -> Optional[pulumi.Input[int]]:
-        """
-        The auto-headroom percentage. Set a number between 0-200 to control the headroom % of the cluster. Relevant when `isAutoConfig`= true.
-        """
         return pulumi.get(self, "auto_headroom_percentage")
 
     @auto_headroom_percentage.setter
@@ -100,9 +86,6 @@ class OceanAutoscalerArgs:
     @property
     @pulumi.getter
     def cooldown(self) -> Optional[pulumi.Input[int]]:
-        """
-        Cooldown period between scaling actions.
-        """
         return pulumi.get(self, "cooldown")
 
     @cooldown.setter
@@ -112,9 +95,6 @@ class OceanAutoscalerArgs:
     @property
     @pulumi.getter
     def down(self) -> Optional[pulumi.Input['OceanAutoscalerDownArgs']]:
-        """
-        Auto Scaling scale down operations.
-        """
         return pulumi.get(self, "down")
 
     @down.setter
@@ -124,9 +104,6 @@ class OceanAutoscalerArgs:
     @property
     @pulumi.getter(name="enableAutomaticAndManualHeadroom")
     def enable_automatic_and_manual_headroom(self) -> Optional[pulumi.Input[bool]]:
-        """
-        When set to true, both automatic and per custom launch specification manual headroom to be saved concurrently and independently in the cluster. prerequisite: isAutoConfig must be true
-        """
         return pulumi.get(self, "enable_automatic_and_manual_headroom")
 
     @enable_automatic_and_manual_headroom.setter
@@ -136,9 +113,6 @@ class OceanAutoscalerArgs:
     @property
     @pulumi.getter
     def headroom(self) -> Optional[pulumi.Input['OceanAutoscalerHeadroomArgs']]:
-        """
-        Spare resource capacity management enabling fast assignment of tasks without waiting for new resources to launch.
-        """
         return pulumi.get(self, "headroom")
 
     @headroom.setter
@@ -148,9 +122,6 @@ class OceanAutoscalerArgs:
     @property
     @pulumi.getter(name="isAutoConfig")
     def is_auto_config(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Automatically configure and optimize headroom resources.
-        """
         return pulumi.get(self, "is_auto_config")
 
     @is_auto_config.setter
@@ -160,9 +131,6 @@ class OceanAutoscalerArgs:
     @property
     @pulumi.getter(name="isEnabled")
     def is_enabled(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Enable the Ocean ECS autoscaler.
-        """
         return pulumi.get(self, "is_enabled")
 
     @is_enabled.setter
@@ -172,9 +140,6 @@ class OceanAutoscalerArgs:
     @property
     @pulumi.getter(name="resourceLimits")
     def resource_limits(self) -> Optional[pulumi.Input['OceanAutoscalerResourceLimitsArgs']]:
-        """
-        Optionally set upper and lower bounds on the resource usage of the cluster.
-        """
         return pulumi.get(self, "resource_limits")
 
     @resource_limits.setter
@@ -184,9 +149,6 @@ class OceanAutoscalerArgs:
     @property
     @pulumi.getter(name="shouldScaleDownNonServiceTasks")
     def should_scale_down_non_service_tasks(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Option to scale down non-service tasks. If not set, Ocean does not scale down standalone tasks.
-        """
         return pulumi.get(self, "should_scale_down_non_service_tasks")
 
     @should_scale_down_non_service_tasks.setter
@@ -198,18 +160,12 @@ class OceanAutoscalerArgs:
 class OceanAutoscalerDownArgs:
     def __init__(__self__, *,
                  max_scale_down_percentage: Optional[pulumi.Input[float]] = None):
-        """
-        :param pulumi.Input[float] max_scale_down_percentage: Would represent the maximum % to scale-down. Number between 1-100.
-        """
         if max_scale_down_percentage is not None:
             pulumi.set(__self__, "max_scale_down_percentage", max_scale_down_percentage)
 
     @property
     @pulumi.getter(name="maxScaleDownPercentage")
     def max_scale_down_percentage(self) -> Optional[pulumi.Input[float]]:
-        """
-        Would represent the maximum % to scale-down. Number between 1-100.
-        """
         return pulumi.get(self, "max_scale_down_percentage")
 
     @max_scale_down_percentage.setter
@@ -223,11 +179,6 @@ class OceanAutoscalerHeadroomArgs:
                  cpu_per_unit: Optional[pulumi.Input[int]] = None,
                  memory_per_unit: Optional[pulumi.Input[int]] = None,
                  num_of_units: Optional[pulumi.Input[int]] = None):
-        """
-        :param pulumi.Input[int] cpu_per_unit: Optionally configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
-        :param pulumi.Input[int] memory_per_unit: Optionally configure the amount of memory (MB) to allocate the headroom.
-        :param pulumi.Input[int] num_of_units: The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
-        """
         if cpu_per_unit is not None:
             pulumi.set(__self__, "cpu_per_unit", cpu_per_unit)
         if memory_per_unit is not None:
@@ -238,9 +189,6 @@ class OceanAutoscalerHeadroomArgs:
     @property
     @pulumi.getter(name="cpuPerUnit")
     def cpu_per_unit(self) -> Optional[pulumi.Input[int]]:
-        """
-        Optionally configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
-        """
         return pulumi.get(self, "cpu_per_unit")
 
     @cpu_per_unit.setter
@@ -250,9 +198,6 @@ class OceanAutoscalerHeadroomArgs:
     @property
     @pulumi.getter(name="memoryPerUnit")
     def memory_per_unit(self) -> Optional[pulumi.Input[int]]:
-        """
-        Optionally configure the amount of memory (MB) to allocate the headroom.
-        """
         return pulumi.get(self, "memory_per_unit")
 
     @memory_per_unit.setter
@@ -262,9 +207,6 @@ class OceanAutoscalerHeadroomArgs:
     @property
     @pulumi.getter(name="numOfUnits")
     def num_of_units(self) -> Optional[pulumi.Input[int]]:
-        """
-        The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
-        """
         return pulumi.get(self, "num_of_units")
 
     @num_of_units.setter
@@ -277,10 +219,6 @@ class OceanAutoscalerResourceLimitsArgs:
     def __init__(__self__, *,
                  max_memory_gib: Optional[pulumi.Input[int]] = None,
                  max_vcpu: Optional[pulumi.Input[int]] = None):
-        """
-        :param pulumi.Input[int] max_memory_gib: Maximum amount of Memory (GiB).
-        :param pulumi.Input[int] max_vcpu: Maximum number of vcpus available.
-        """
         if max_memory_gib is not None:
             pulumi.set(__self__, "max_memory_gib", max_memory_gib)
         if max_vcpu is not None:
@@ -289,9 +227,6 @@ class OceanAutoscalerResourceLimitsArgs:
     @property
     @pulumi.getter(name="maxMemoryGib")
     def max_memory_gib(self) -> Optional[pulumi.Input[int]]:
-        """
-        Maximum amount of Memory (GiB).
-        """
         return pulumi.get(self, "max_memory_gib")
 
     @max_memory_gib.setter
@@ -301,9 +236,6 @@ class OceanAutoscalerResourceLimitsArgs:
     @property
     @pulumi.getter(name="maxVcpu")
     def max_vcpu(self) -> Optional[pulumi.Input[int]]:
-        """
-        Maximum number of vcpus available.
-        """
         return pulumi.get(self, "max_vcpu")
 
     @max_vcpu.setter
@@ -318,11 +250,6 @@ class OceanBlockDeviceMappingArgs:
                  ebs: Optional[pulumi.Input['OceanBlockDeviceMappingEbsArgs']] = None,
                  no_device: Optional[pulumi.Input[str]] = None,
                  virtual_name: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] device_name: String. Set device name. Example: `/dev/xvda1`.
-        :param pulumi.Input['OceanBlockDeviceMappingEbsArgs'] ebs: Object. Set Elastic Block Store properties.
-        :param pulumi.Input[str] no_device: String. Suppresses the specified device included in the block device mapping of the AMI.
-        """
         pulumi.set(__self__, "device_name", device_name)
         if ebs is not None:
             pulumi.set(__self__, "ebs", ebs)
@@ -334,9 +261,6 @@ class OceanBlockDeviceMappingArgs:
     @property
     @pulumi.getter(name="deviceName")
     def device_name(self) -> pulumi.Input[str]:
-        """
-        String. Set device name. Example: `/dev/xvda1`.
-        """
         return pulumi.get(self, "device_name")
 
     @device_name.setter
@@ -346,9 +270,6 @@ class OceanBlockDeviceMappingArgs:
     @property
     @pulumi.getter
     def ebs(self) -> Optional[pulumi.Input['OceanBlockDeviceMappingEbsArgs']]:
-        """
-        Object. Set Elastic Block Store properties.
-        """
         return pulumi.get(self, "ebs")
 
     @ebs.setter
@@ -358,9 +279,6 @@ class OceanBlockDeviceMappingArgs:
     @property
     @pulumi.getter(name="noDevice")
     def no_device(self) -> Optional[pulumi.Input[str]]:
-        """
-        String. Suppresses the specified device included in the block device mapping of the AMI.
-        """
         return pulumi.get(self, "no_device")
 
     @no_device.setter
@@ -389,17 +307,6 @@ class OceanBlockDeviceMappingEbsArgs:
                  throughput: Optional[pulumi.Input[int]] = None,
                  volume_size: Optional[pulumi.Input[int]] = None,
                  volume_type: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[bool] delete_on_termination: Boolean. Toggles EBS deletion upon instance termination.
-        :param pulumi.Input['OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs'] dynamic_volume_size: Object. Set dynamic volume size properties. When using this object, you cannot use volumeSize. You must use one or the other.
-        :param pulumi.Input[bool] encrypted: Boolean. Enables [EBS encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) on the volume.
-        :param pulumi.Input[int] iops: Int. The number of I/O operations per second (IOPS) that the volume supports.
-        :param pulumi.Input[str] kms_key_id: String. Identifier (key ID, key alias, ID ARN, or alias ARN) for a customer managed CMK under which the EBS volume is encrypted.
-        :param pulumi.Input[str] snapshot_id: (Optional) String. The snapshot ID to mount by.
-        :param pulumi.Input[int] throughput: The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volume_type` = gp3.
-        :param pulumi.Input[int] volume_size: Int. The size (in GB) of the volume.
-        :param pulumi.Input[str] volume_type: String. The type of the volume. Example: `gp2`.
-        """
         if delete_on_termination is not None:
             pulumi.set(__self__, "delete_on_termination", delete_on_termination)
         if dynamic_volume_size is not None:
@@ -422,9 +329,6 @@ class OceanBlockDeviceMappingEbsArgs:
     @property
     @pulumi.getter(name="deleteOnTermination")
     def delete_on_termination(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Boolean. Toggles EBS deletion upon instance termination.
-        """
         return pulumi.get(self, "delete_on_termination")
 
     @delete_on_termination.setter
@@ -434,9 +338,6 @@ class OceanBlockDeviceMappingEbsArgs:
     @property
     @pulumi.getter(name="dynamicVolumeSize")
     def dynamic_volume_size(self) -> Optional[pulumi.Input['OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs']]:
-        """
-        Object. Set dynamic volume size properties. When using this object, you cannot use volumeSize. You must use one or the other.
-        """
         return pulumi.get(self, "dynamic_volume_size")
 
     @dynamic_volume_size.setter
@@ -446,9 +347,6 @@ class OceanBlockDeviceMappingEbsArgs:
     @property
     @pulumi.getter
     def encrypted(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Boolean. Enables [EBS encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) on the volume.
-        """
         return pulumi.get(self, "encrypted")
 
     @encrypted.setter
@@ -458,9 +356,6 @@ class OceanBlockDeviceMappingEbsArgs:
     @property
     @pulumi.getter
     def iops(self) -> Optional[pulumi.Input[int]]:
-        """
-        Int. The number of I/O operations per second (IOPS) that the volume supports.
-        """
         return pulumi.get(self, "iops")
 
     @iops.setter
@@ -470,9 +365,6 @@ class OceanBlockDeviceMappingEbsArgs:
     @property
     @pulumi.getter(name="kmsKeyId")
     def kms_key_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        String. Identifier (key ID, key alias, ID ARN, or alias ARN) for a customer managed CMK under which the EBS volume is encrypted.
-        """
         return pulumi.get(self, "kms_key_id")
 
     @kms_key_id.setter
@@ -482,9 +374,6 @@ class OceanBlockDeviceMappingEbsArgs:
     @property
     @pulumi.getter(name="snapshotId")
     def snapshot_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        (Optional) String. The snapshot ID to mount by.
-        """
         return pulumi.get(self, "snapshot_id")
 
     @snapshot_id.setter
@@ -494,9 +383,6 @@ class OceanBlockDeviceMappingEbsArgs:
     @property
     @pulumi.getter
     def throughput(self) -> Optional[pulumi.Input[int]]:
-        """
-        The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volume_type` = gp3.
-        """
         return pulumi.get(self, "throughput")
 
     @throughput.setter
@@ -506,9 +392,6 @@ class OceanBlockDeviceMappingEbsArgs:
     @property
     @pulumi.getter(name="volumeSize")
     def volume_size(self) -> Optional[pulumi.Input[int]]:
-        """
-        Int. The size (in GB) of the volume.
-        """
         return pulumi.get(self, "volume_size")
 
     @volume_size.setter
@@ -518,9 +401,6 @@ class OceanBlockDeviceMappingEbsArgs:
     @property
     @pulumi.getter(name="volumeType")
     def volume_type(self) -> Optional[pulumi.Input[str]]:
-        """
-        String. The type of the volume. Example: `gp2`.
-        """
         return pulumi.get(self, "volume_type")
 
     @volume_type.setter
@@ -534,11 +414,6 @@ class OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs:
                  base_size: pulumi.Input[int],
                  resource: pulumi.Input[str],
                  size_per_resource_unit: pulumi.Input[int]):
-        """
-        :param pulumi.Input[int] base_size: Int. Initial size for volume. Example: `50`.
-        :param pulumi.Input[str] resource: String. Resource type to increase volume size dynamically by. Valid values: `CPU`.
-        :param pulumi.Input[int] size_per_resource_unit: Int. Additional size (in GB) per resource unit. Example: When the `baseSize=50`, `sizePerResourceUnit=20`, and instance with two CPUs is launched, its total disk size will be: 90GB.
-        """
         pulumi.set(__self__, "base_size", base_size)
         pulumi.set(__self__, "resource", resource)
         pulumi.set(__self__, "size_per_resource_unit", size_per_resource_unit)
@@ -546,9 +421,6 @@ class OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs:
     @property
     @pulumi.getter(name="baseSize")
     def base_size(self) -> pulumi.Input[int]:
-        """
-        Int. Initial size for volume. Example: `50`.
-        """
         return pulumi.get(self, "base_size")
 
     @base_size.setter
@@ -558,9 +430,6 @@ class OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs:
     @property
     @pulumi.getter
     def resource(self) -> pulumi.Input[str]:
-        """
-        String. Resource type to increase volume size dynamically by. Valid values: `CPU`.
-        """
         return pulumi.get(self, "resource")
 
     @resource.setter
@@ -570,9 +439,6 @@ class OceanBlockDeviceMappingEbsDynamicVolumeSizeArgs:
     @property
     @pulumi.getter(name="sizePerResourceUnit")
     def size_per_resource_unit(self) -> pulumi.Input[int]:
-        """
-        Int. Additional size (in GB) per resource unit. Example: When the `baseSize=50`, `sizePerResourceUnit=20`, and instance with two CPUs is launched, its total disk size will be: 90GB.
-        """
         return pulumi.get(self, "size_per_resource_unit")
 
     @size_per_resource_unit.setter
@@ -625,27 +491,6 @@ class OceanFiltersArgs:
                  min_vcpu: Optional[pulumi.Input[int]] = None,
                  root_device_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  virtualization_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
-        """
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] architectures: The filtered instance types will support at least one of the architectures from this list.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] categories: The filtered instance types will belong to one of the categories types from this list.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] disk_types: The filtered instance types will have one of the disk type from this list.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] exclude_families: Types belonging to a family from the ExcludeFamilies will not be available for scaling (asterisk wildcard is also supported). For example, C* will exclude instance types from these families: c5, c4, c4a, etc.
-        :param pulumi.Input[bool] exclude_metal: In case excludeMetal is set to true, metal types will not be available for scaling.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] hypervisors: The filtered instance types will have a hypervisor type from this list.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] include_families: Types belonging to a family from the IncludeFamilies will be available for scaling (asterisk wildcard is also supported). For example, C* will include instance types from these families: c5, c4, c4a, etc.
-        :param pulumi.Input[str] is_ena_supported: Ena is supported or not.
-        :param pulumi.Input[int] max_gpu: Maximum total number of GPUs.
-        :param pulumi.Input[float] max_memory_gib: Maximum amount of Memory (GiB).
-        :param pulumi.Input[int] max_network_performance: Maximum Bandwidth in Gib/s of network performance.
-        :param pulumi.Input[int] max_vcpu: Maximum number of vcpus available.
-        :param pulumi.Input[int] min_enis: Minimum number of network interfaces (ENIs).
-        :param pulumi.Input[int] min_gpu: Minimum total number of GPUs.
-        :param pulumi.Input[float] min_memory_gib: Minimum amount of Memory (GiB).
-        :param pulumi.Input[int] min_network_performance: Minimum Bandwidth in Gib/s of network performance.
-        :param pulumi.Input[int] min_vcpu: Minimum number of vcpus available.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] root_device_types: The filtered instance types will have a root device types from this list.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] virtualization_types: The filtered instance types will support at least one of the virtualization types from this list.
-        """
         if architectures is not None:
             pulumi.set(__self__, "architectures", architectures)
         if categories is not None:
@@ -688,9 +533,6 @@ class OceanFiltersArgs:
     @property
     @pulumi.getter
     def architectures(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        The filtered instance types will support at least one of the architectures from this list.
-        """
         return pulumi.get(self, "architectures")
 
     @architectures.setter
@@ -700,9 +542,6 @@ class OceanFiltersArgs:
     @property
     @pulumi.getter
     def categories(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        The filtered instance types will belong to one of the categories types from this list.
-        """
         return pulumi.get(self, "categories")
 
     @categories.setter
@@ -712,9 +551,6 @@ class OceanFiltersArgs:
     @property
     @pulumi.getter(name="diskTypes")
     def disk_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        The filtered instance types will have one of the disk type from this list.
-        """
         return pulumi.get(self, "disk_types")
 
     @disk_types.setter
@@ -724,9 +560,6 @@ class OceanFiltersArgs:
     @property
     @pulumi.getter(name="excludeFamilies")
     def exclude_families(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Types belonging to a family from the ExcludeFamilies will not be available for scaling (asterisk wildcard is also supported). For example, C* will exclude instance types from these families: c5, c4, c4a, etc.
-        """
         return pulumi.get(self, "exclude_families")
 
     @exclude_families.setter
@@ -736,9 +569,6 @@ class OceanFiltersArgs:
     @property
     @pulumi.getter(name="excludeMetal")
     def exclude_metal(self) -> Optional[pulumi.Input[bool]]:
-        """
-        In case excludeMetal is set to true, metal types will not be available for scaling.
-        """
         return pulumi.get(self, "exclude_metal")
 
     @exclude_metal.setter
@@ -748,9 +578,6 @@ class OceanFiltersArgs:
     @property
     @pulumi.getter
     def hypervisors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        The filtered instance types will have a hypervisor type from this list.
-        """
         return pulumi.get(self, "hypervisors")
 
     @hypervisors.setter
@@ -760,9 +587,6 @@ class OceanFiltersArgs:
     @property
     @pulumi.getter(name="includeFamilies")
     def include_families(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Types belonging to a family from the IncludeFamilies will be available for scaling (asterisk wildcard is also supported). For example, C* will include instance types from these families: c5, c4, c4a, etc.
-        """
         return pulumi.get(self, "include_families")
 
     @include_families.setter
@@ -772,9 +596,6 @@ class OceanFiltersArgs:
     @property
     @pulumi.getter(name="isEnaSupported")
     def is_ena_supported(self) -> Optional[pulumi.Input[str]]:
-        """
-        Ena is supported or not.
-        """
         return pulumi.get(self, "is_ena_supported")
 
     @is_ena_supported.setter
@@ -784,9 +605,6 @@ class OceanFiltersArgs:
     @property
     @pulumi.getter(name="maxGpu")
     def max_gpu(self) -> Optional[pulumi.Input[int]]:
-        """
-        Maximum total number of GPUs.
-        """
         return pulumi.get(self, "max_gpu")
 
     @max_gpu.setter
@@ -796,9 +614,6 @@ class OceanFiltersArgs:
     @property
     @pulumi.getter(name="maxMemoryGib")
     def max_memory_gib(self) -> Optional[pulumi.Input[float]]:
-        """
-        Maximum amount of Memory (GiB).
-        """
         return pulumi.get(self, "max_memory_gib")
 
     @max_memory_gib.setter
@@ -808,9 +623,6 @@ class OceanFiltersArgs:
     @property
     @pulumi.getter(name="maxNetworkPerformance")
     def max_network_performance(self) -> Optional[pulumi.Input[int]]:
-        """
-        Maximum Bandwidth in Gib/s of network performance.
-        """
         return pulumi.get(self, "max_network_performance")
 
     @max_network_performance.setter
@@ -820,9 +632,6 @@ class OceanFiltersArgs:
     @property
     @pulumi.getter(name="maxVcpu")
     def max_vcpu(self) -> Optional[pulumi.Input[int]]:
-        """
-        Maximum number of vcpus available.
-        """
         return pulumi.get(self, "max_vcpu")
 
     @max_vcpu.setter
@@ -832,9 +641,6 @@ class OceanFiltersArgs:
     @property
     @pulumi.getter(name="minEnis")
     def min_enis(self) -> Optional[pulumi.Input[int]]:
-        """
-        Minimum number of network interfaces (ENIs).
-        """
         return pulumi.get(self, "min_enis")
 
     @min_enis.setter
@@ -844,9 +650,6 @@ class OceanFiltersArgs:
     @property
     @pulumi.getter(name="minGpu")
     def min_gpu(self) -> Optional[pulumi.Input[int]]:
-        """
-        Minimum total number of GPUs.
-        """
         return pulumi.get(self, "min_gpu")
 
     @min_gpu.setter
@@ -856,9 +659,6 @@ class OceanFiltersArgs:
     @property
     @pulumi.getter(name="minMemoryGib")
     def min_memory_gib(self) -> Optional[pulumi.Input[float]]:
-        """
-        Minimum amount of Memory (GiB).
-        """
         return pulumi.get(self, "min_memory_gib")
 
     @min_memory_gib.setter
@@ -868,9 +668,6 @@ class OceanFiltersArgs:
     @property
     @pulumi.getter(name="minNetworkPerformance")
     def min_network_performance(self) -> Optional[pulumi.Input[int]]:
-        """
-        Minimum Bandwidth in Gib/s of network performance.
-        """
         return pulumi.get(self, "min_network_performance")
 
     @min_network_performance.setter
@@ -880,9 +677,6 @@ class OceanFiltersArgs:
     @property
     @pulumi.getter(name="minVcpu")
     def min_vcpu(self) -> Optional[pulumi.Input[int]]:
-        """
-        Minimum number of vcpus available.
-        """
         return pulumi.get(self, "min_vcpu")
 
     @min_vcpu.setter
@@ -892,9 +686,6 @@ class OceanFiltersArgs:
     @property
     @pulumi.getter(name="rootDeviceTypes")
     def root_device_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        The filtered instance types will have a root device types from this list.
-        """
         return pulumi.get(self, "root_device_types")
 
     @root_device_types.setter
@@ -904,9 +695,6 @@ class OceanFiltersArgs:
     @property
     @pulumi.getter(name="virtualizationTypes")
     def virtualization_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        The filtered instance types will support at least one of the virtualization types from this list.
-        """
         return pulumi.get(self, "virtualization_types")
 
     @virtualization_types.setter
@@ -996,8 +784,8 @@ class OceanLaunchSpecAutoscaleHeadroomArgs:
                  cpu_per_unit: Optional[pulumi.Input[int]] = None,
                  memory_per_unit: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[int] num_of_units: The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
-        :param pulumi.Input[int] cpu_per_unit: Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+        :param pulumi.Input[int] num_of_units: The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
+        :param pulumi.Input[int] cpu_per_unit: Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in CPU units, where 1024 units = 1 vCPU.
         :param pulumi.Input[int] memory_per_unit: Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
         """
         pulumi.set(__self__, "num_of_units", num_of_units)
@@ -1010,7 +798,7 @@ class OceanLaunchSpecAutoscaleHeadroomArgs:
     @pulumi.getter(name="numOfUnits")
     def num_of_units(self) -> pulumi.Input[int]:
         """
-        The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
+        The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
         """
         return pulumi.get(self, "num_of_units")
 
@@ -1022,7 +810,7 @@ class OceanLaunchSpecAutoscaleHeadroomArgs:
     @pulumi.getter(name="cpuPerUnit")
     def cpu_per_unit(self) -> Optional[pulumi.Input[int]]:
         """
-        Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+        Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in CPU units, where 1024 units = 1 vCPU.
         """
         return pulumi.get(self, "cpu_per_unit")
 
@@ -1381,11 +1169,6 @@ class OceanLaunchSpecSchedulingTaskTaskHeadroomArgs:
                  num_of_units: pulumi.Input[int],
                  cpu_per_unit: Optional[pulumi.Input[int]] = None,
                  memory_per_unit: Optional[pulumi.Input[int]] = None):
-        """
-        :param pulumi.Input[int] num_of_units: The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
-        :param pulumi.Input[int] cpu_per_unit: Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
-        :param pulumi.Input[int] memory_per_unit: Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
-        """
         pulumi.set(__self__, "num_of_units", num_of_units)
         if cpu_per_unit is not None:
             pulumi.set(__self__, "cpu_per_unit", cpu_per_unit)
@@ -1395,9 +1178,6 @@ class OceanLaunchSpecSchedulingTaskTaskHeadroomArgs:
     @property
     @pulumi.getter(name="numOfUnits")
     def num_of_units(self) -> pulumi.Input[int]:
-        """
-        The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
-        """
         return pulumi.get(self, "num_of_units")
 
     @num_of_units.setter
@@ -1407,9 +1187,6 @@ class OceanLaunchSpecSchedulingTaskTaskHeadroomArgs:
     @property
     @pulumi.getter(name="cpuPerUnit")
     def cpu_per_unit(self) -> Optional[pulumi.Input[int]]:
-        """
-        Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
-        """
         return pulumi.get(self, "cpu_per_unit")
 
     @cpu_per_unit.setter
@@ -1419,9 +1196,6 @@ class OceanLaunchSpecSchedulingTaskTaskHeadroomArgs:
     @property
     @pulumi.getter(name="memoryPerUnit")
     def memory_per_unit(self) -> Optional[pulumi.Input[int]]:
-        """
-        Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
-        """
         return pulumi.get(self, "memory_per_unit")
 
     @memory_per_unit.setter
@@ -1461,19 +1235,12 @@ class OceanLaunchSpecTagArgs:
     def __init__(__self__, *,
                  key: pulumi.Input[str],
                  value: pulumi.Input[str]):
-        """
-        :param pulumi.Input[str] key: The label key.
-        :param pulumi.Input[str] value: The label value.
-        """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
     def key(self) -> pulumi.Input[str]:
-        """
-        The label key.
-        """
         return pulumi.get(self, "key")
 
     @key.setter
@@ -1483,9 +1250,6 @@ class OceanLaunchSpecTagArgs:
     @property
     @pulumi.getter
     def value(self) -> pulumi.Input[str]:
-        """
-        The label value.
-        """
         return pulumi.get(self, "value")
 
     @value.setter
@@ -1520,18 +1284,12 @@ class OceanLoggingArgs:
 class OceanLoggingExportArgs:
     def __init__(__self__, *,
                  s3s: Optional[pulumi.Input[Sequence[pulumi.Input['OceanLoggingExportS3Args']]]] = None):
-        """
-        :param pulumi.Input[Sequence[pulumi.Input['OceanLoggingExportS3Args']]] s3s: Exports your cluster's logs to the S3 bucket and subdir configured on the S3 data integration given.
-        """
         if s3s is not None:
             pulumi.set(__self__, "s3s", s3s)
 
     @property
     @pulumi.getter
     def s3s(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanLoggingExportS3Args']]]]:
-        """
-        Exports your cluster's logs to the S3 bucket and subdir configured on the S3 data integration given.
-        """
         return pulumi.get(self, "s3s")
 
     @s3s.setter
@@ -1544,7 +1302,7 @@ class OceanLoggingExportS3Args:
     def __init__(__self__, *,
                  id: pulumi.Input[str]):
         """
-        :param pulumi.Input[str] id: The identifier of The S3 data integration to export the logs to.
+        :param pulumi.Input[str] id: The Spotinst Ocean ID.
         """
         pulumi.set(__self__, "id", id)
 
@@ -1552,7 +1310,7 @@ class OceanLoggingExportS3Args:
     @pulumi.getter
     def id(self) -> pulumi.Input[str]:
         """
-        The identifier of The S3 data integration to export the logs to.
+        The Spotinst Ocean ID.
         """
         return pulumi.get(self, "id")
 
@@ -1567,11 +1325,6 @@ class OceanOptimizeImagesArgs:
                  perform_at: pulumi.Input[str],
                  should_optimize_ecs_ami: pulumi.Input[bool],
                  time_windows: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
-        """
-        :param pulumi.Input[str] perform_at: String. Valid values: "always" "never" "timeWindow".
-        :param pulumi.Input[bool] should_optimize_ecs_ami: Boolean. Enable auto image (AMI) update for the ECS container instances. The auto update applies for ECS-Optimized AMIs.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] time_windows: Array of strings. Set time windows for image update, at least one time window. Each string is in the format of ddd:hh:mm-ddd:hh:mm ddd. Time windows should not overlap.
-        """
         pulumi.set(__self__, "perform_at", perform_at)
         pulumi.set(__self__, "should_optimize_ecs_ami", should_optimize_ecs_ami)
         if time_windows is not None:
@@ -1580,9 +1333,6 @@ class OceanOptimizeImagesArgs:
     @property
     @pulumi.getter(name="performAt")
     def perform_at(self) -> pulumi.Input[str]:
-        """
-        String. Valid values: "always" "never" "timeWindow".
-        """
         return pulumi.get(self, "perform_at")
 
     @perform_at.setter
@@ -1592,9 +1342,6 @@ class OceanOptimizeImagesArgs:
     @property
     @pulumi.getter(name="shouldOptimizeEcsAmi")
     def should_optimize_ecs_ami(self) -> pulumi.Input[bool]:
-        """
-        Boolean. Enable auto image (AMI) update for the ECS container instances. The auto update applies for ECS-Optimized AMIs.
-        """
         return pulumi.get(self, "should_optimize_ecs_ami")
 
     @should_optimize_ecs_ami.setter
@@ -1604,9 +1351,6 @@ class OceanOptimizeImagesArgs:
     @property
     @pulumi.getter(name="timeWindows")
     def time_windows(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Array of strings. Set time windows for image update, at least one time window. Each string is in the format of ddd:hh:mm-ddd:hh:mm ddd. Time windows should not overlap.
-        """
         return pulumi.get(self, "time_windows")
 
     @time_windows.setter
@@ -1619,10 +1363,6 @@ class OceanScheduledTaskArgs:
     def __init__(__self__, *,
                  shutdown_hours: Optional[pulumi.Input['OceanScheduledTaskShutdownHoursArgs']] = None,
                  tasks: Optional[pulumi.Input[Sequence[pulumi.Input['OceanScheduledTaskTaskArgs']]]] = None):
-        """
-        :param pulumi.Input['OceanScheduledTaskShutdownHoursArgs'] shutdown_hours: Set shutdown hours for cluster object.
-        :param pulumi.Input[Sequence[pulumi.Input['OceanScheduledTaskTaskArgs']]] tasks: The scheduling tasks for the cluster.
-        """
         if shutdown_hours is not None:
             pulumi.set(__self__, "shutdown_hours", shutdown_hours)
         if tasks is not None:
@@ -1631,9 +1371,6 @@ class OceanScheduledTaskArgs:
     @property
     @pulumi.getter(name="shutdownHours")
     def shutdown_hours(self) -> Optional[pulumi.Input['OceanScheduledTaskShutdownHoursArgs']]:
-        """
-        Set shutdown hours for cluster object.
-        """
         return pulumi.get(self, "shutdown_hours")
 
     @shutdown_hours.setter
@@ -1643,9 +1380,6 @@ class OceanScheduledTaskArgs:
     @property
     @pulumi.getter
     def tasks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OceanScheduledTaskTaskArgs']]]]:
-        """
-        The scheduling tasks for the cluster.
-        """
         return pulumi.get(self, "tasks")
 
     @tasks.setter
@@ -1658,10 +1392,6 @@ class OceanScheduledTaskShutdownHoursArgs:
     def __init__(__self__, *,
                  time_windows: pulumi.Input[Sequence[pulumi.Input[str]]],
                  is_enabled: Optional[pulumi.Input[bool]] = None):
-        """
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] time_windows: Array of strings. Set time windows for image update, at least one time window. Each string is in the format of ddd:hh:mm-ddd:hh:mm ddd. Time windows should not overlap.
-        :param pulumi.Input[bool] is_enabled: Enable the Ocean ECS autoscaler.
-        """
         pulumi.set(__self__, "time_windows", time_windows)
         if is_enabled is not None:
             pulumi.set(__self__, "is_enabled", is_enabled)
@@ -1669,9 +1399,6 @@ class OceanScheduledTaskShutdownHoursArgs:
     @property
     @pulumi.getter(name="timeWindows")
     def time_windows(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
-        """
-        Array of strings. Set time windows for image update, at least one time window. Each string is in the format of ddd:hh:mm-ddd:hh:mm ddd. Time windows should not overlap.
-        """
         return pulumi.get(self, "time_windows")
 
     @time_windows.setter
@@ -1681,9 +1408,6 @@ class OceanScheduledTaskShutdownHoursArgs:
     @property
     @pulumi.getter(name="isEnabled")
     def is_enabled(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Enable the Ocean ECS autoscaler.
-        """
         return pulumi.get(self, "is_enabled")
 
     @is_enabled.setter
@@ -1697,11 +1421,6 @@ class OceanScheduledTaskTaskArgs:
                  cron_expression: pulumi.Input[str],
                  is_enabled: pulumi.Input[bool],
                  task_type: pulumi.Input[str]):
-        """
-        :param pulumi.Input[str] cron_expression: A valid cron expression. The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of `frequency` or `cronExpression` should be used at a time. Required for `cluster.scheduling.tasks` object. Example: `0 1 * * *`.
-        :param pulumi.Input[bool] is_enabled: Enable the Ocean ECS autoscaler.
-        :param pulumi.Input[str] task_type: Valid values: "clusterRoll". Required for `cluster.scheduling.tasks object`. Example: `clusterRoll`.
-        """
         pulumi.set(__self__, "cron_expression", cron_expression)
         pulumi.set(__self__, "is_enabled", is_enabled)
         pulumi.set(__self__, "task_type", task_type)
@@ -1709,9 +1428,6 @@ class OceanScheduledTaskTaskArgs:
     @property
     @pulumi.getter(name="cronExpression")
     def cron_expression(self) -> pulumi.Input[str]:
-        """
-        A valid cron expression. The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of `frequency` or `cronExpression` should be used at a time. Required for `cluster.scheduling.tasks` object. Example: `0 1 * * *`.
-        """
         return pulumi.get(self, "cron_expression")
 
     @cron_expression.setter
@@ -1721,9 +1437,6 @@ class OceanScheduledTaskTaskArgs:
     @property
     @pulumi.getter(name="isEnabled")
     def is_enabled(self) -> pulumi.Input[bool]:
-        """
-        Enable the Ocean ECS autoscaler.
-        """
         return pulumi.get(self, "is_enabled")
 
     @is_enabled.setter
@@ -1733,9 +1446,6 @@ class OceanScheduledTaskTaskArgs:
     @property
     @pulumi.getter(name="taskType")
     def task_type(self) -> pulumi.Input[str]:
-        """
-        Valid values: "clusterRoll". Required for `cluster.scheduling.tasks object`. Example: `clusterRoll`.
-        """
         return pulumi.get(self, "task_type")
 
     @task_type.setter
@@ -1787,11 +1497,6 @@ class OceanUpdatePolicyArgs:
                  auto_apply_tags: Optional[pulumi.Input[bool]] = None,
                  conditioned_roll: Optional[pulumi.Input[bool]] = None,
                  roll_config: Optional[pulumi.Input['OceanUpdatePolicyRollConfigArgs']] = None):
-        """
-        :param pulumi.Input[bool] should_roll: Enables the roll.
-        :param pulumi.Input[bool] auto_apply_tags: will update instance tags on the fly without rolling the cluster.
-        :param pulumi.Input[bool] conditioned_roll: Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as AMI, Key Pair, user data, instance types, load balancers, etc).
-        """
         pulumi.set(__self__, "should_roll", should_roll)
         if auto_apply_tags is not None:
             pulumi.set(__self__, "auto_apply_tags", auto_apply_tags)
@@ -1803,9 +1508,6 @@ class OceanUpdatePolicyArgs:
     @property
     @pulumi.getter(name="shouldRoll")
     def should_roll(self) -> pulumi.Input[bool]:
-        """
-        Enables the roll.
-        """
         return pulumi.get(self, "should_roll")
 
     @should_roll.setter
@@ -1815,9 +1517,6 @@ class OceanUpdatePolicyArgs:
     @property
     @pulumi.getter(name="autoApplyTags")
     def auto_apply_tags(self) -> Optional[pulumi.Input[bool]]:
-        """
-        will update instance tags on the fly without rolling the cluster.
-        """
         return pulumi.get(self, "auto_apply_tags")
 
     @auto_apply_tags.setter
@@ -1827,9 +1526,6 @@ class OceanUpdatePolicyArgs:
     @property
     @pulumi.getter(name="conditionedRoll")
     def conditioned_roll(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as AMI, Key Pair, user data, instance types, load balancers, etc).
-        """
         return pulumi.get(self, "conditioned_roll")
 
     @conditioned_roll.setter
@@ -1851,10 +1547,6 @@ class OceanUpdatePolicyRollConfigArgs:
     def __init__(__self__, *,
                  batch_size_percentage: pulumi.Input[int],
                  batch_min_healthy_percentage: Optional[pulumi.Input[int]] = None):
-        """
-        :param pulumi.Input[int] batch_size_percentage: Sets the percentage of the instances to deploy in each batch.
-        :param pulumi.Input[int] batch_min_healthy_percentage: Default: 50. Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
-        """
         pulumi.set(__self__, "batch_size_percentage", batch_size_percentage)
         if batch_min_healthy_percentage is not None:
             pulumi.set(__self__, "batch_min_healthy_percentage", batch_min_healthy_percentage)
@@ -1862,9 +1554,6 @@ class OceanUpdatePolicyRollConfigArgs:
     @property
     @pulumi.getter(name="batchSizePercentage")
     def batch_size_percentage(self) -> pulumi.Input[int]:
-        """
-        Sets the percentage of the instances to deploy in each batch.
-        """
         return pulumi.get(self, "batch_size_percentage")
 
     @batch_size_percentage.setter
@@ -1874,9 +1563,6 @@ class OceanUpdatePolicyRollConfigArgs:
     @property
     @pulumi.getter(name="batchMinHealthyPercentage")
     def batch_min_healthy_percentage(self) -> Optional[pulumi.Input[int]]:
-        """
-        Default: 50. Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
-        """
         return pulumi.get(self, "batch_min_healthy_percentage")
 
     @batch_min_healthy_percentage.setter

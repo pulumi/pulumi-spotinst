@@ -14,25 +14,15 @@ namespace Pulumi.SpotInst.Aws.Inputs
     {
         [Input("dimensions")]
         private InputList<Inputs.ElastigroupMultipleMetricsMetricDimensionArgs>? _dimensions;
-
-        /// <summary>
-        /// A list of dimensions describing qualities of the metric.
-        /// </summary>
         public InputList<Inputs.ElastigroupMultipleMetricsMetricDimensionArgs> Dimensions
         {
             get => _dimensions ?? (_dimensions = new InputList<Inputs.ElastigroupMultipleMetricsMetricDimensionArgs>());
             set => _dimensions = value;
         }
 
-        /// <summary>
-        /// Percentile statistic. Valid values: `"p0.1"` - `"p100"`.
-        /// </summary>
         [Input("extendedStatistic")]
         public Input<string>? ExtendedStatistic { get; set; }
 
-        /// <summary>
-        /// The name of the metric, with or without spaces.
-        /// </summary>
         [Input("metricName", required: true)]
         public Input<string> MetricName { get; set; } = null!;
 
@@ -42,21 +32,12 @@ namespace Pulumi.SpotInst.Aws.Inputs
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
-        /// <summary>
-        /// The namespace for the alarm's associated metric.
-        /// </summary>
         [Input("namespace", required: true)]
         public Input<string> Namespace { get; set; } = null!;
 
-        /// <summary>
-        /// The metric statistics to return. For information about specific statistics go to [Statistics](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/index.html?CHAP_TerminologyandKeyConcepts.html#Statistic) in the Amazon CloudWatch Developer Guide.
-        /// </summary>
         [Input("statistic")]
         public Input<string>? Statistic { get; set; }
 
-        /// <summary>
-        /// The unit for the alarm's associated metric. Valid values: `"percent`, `"seconds"`, `"microseconds"`, `"milliseconds"`, `"bytes"`, `"kilobytes"`, `"megabytes"`, `"gigabytes"`, `"terabytes"`, `"bits"`, `"kilobits"`, `"megabits"`, `"gigabits"`, `"terabits"`, `"count"`, `"bytes/second"`, `"kilobytes/second"`, `"megabytes/second"`, `"gigabytes/second"`, `"terabytes/second"`, `"bits/second"`, `"kilobits/second"`, `"megabits/second"`, `"gigabits/second"`, `"terabits/second"`, `"count/second"`, `"none"`.
-        /// </summary>
         [Input("unit")]
         public Input<string>? Unit { get; set; }
 

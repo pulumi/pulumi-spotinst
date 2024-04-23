@@ -15,47 +15,23 @@ public final class ElastigroupIntegrationDockerSwarmAutoscaleHeadroomArgs extend
 
     public static final ElastigroupIntegrationDockerSwarmAutoscaleHeadroomArgs Empty = new ElastigroupIntegrationDockerSwarmAutoscaleHeadroomArgs();
 
-    /**
-     * How much CPU (MHz) to allocate for headroom unit.
-     * 
-     */
     @Import(name="cpuPerUnit")
     private @Nullable Output<Integer> cpuPerUnit;
 
-    /**
-     * @return How much CPU (MHz) to allocate for headroom unit.
-     * 
-     */
     public Optional<Output<Integer>> cpuPerUnit() {
         return Optional.ofNullable(this.cpuPerUnit);
     }
 
-    /**
-     * How much Memory allocate for headroom unit.
-     * 
-     */
     @Import(name="memoryPerUnit")
     private @Nullable Output<Integer> memoryPerUnit;
 
-    /**
-     * @return How much Memory allocate for headroom unit.
-     * 
-     */
     public Optional<Output<Integer>> memoryPerUnit() {
         return Optional.ofNullable(this.memoryPerUnit);
     }
 
-    /**
-     * How many units of headroom to allocate.
-     * 
-     */
     @Import(name="numOfUnits")
     private @Nullable Output<Integer> numOfUnits;
 
-    /**
-     * @return How many units of headroom to allocate.
-     * 
-     */
     public Optional<Output<Integer>> numOfUnits() {
         return Optional.ofNullable(this.numOfUnits);
     }
@@ -86,65 +62,29 @@ public final class ElastigroupIntegrationDockerSwarmAutoscaleHeadroomArgs extend
             $ = new ElastigroupIntegrationDockerSwarmAutoscaleHeadroomArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param cpuPerUnit How much CPU (MHz) to allocate for headroom unit.
-         * 
-         * @return builder
-         * 
-         */
         public Builder cpuPerUnit(@Nullable Output<Integer> cpuPerUnit) {
             $.cpuPerUnit = cpuPerUnit;
             return this;
         }
 
-        /**
-         * @param cpuPerUnit How much CPU (MHz) to allocate for headroom unit.
-         * 
-         * @return builder
-         * 
-         */
         public Builder cpuPerUnit(Integer cpuPerUnit) {
             return cpuPerUnit(Output.of(cpuPerUnit));
         }
 
-        /**
-         * @param memoryPerUnit How much Memory allocate for headroom unit.
-         * 
-         * @return builder
-         * 
-         */
         public Builder memoryPerUnit(@Nullable Output<Integer> memoryPerUnit) {
             $.memoryPerUnit = memoryPerUnit;
             return this;
         }
 
-        /**
-         * @param memoryPerUnit How much Memory allocate for headroom unit.
-         * 
-         * @return builder
-         * 
-         */
         public Builder memoryPerUnit(Integer memoryPerUnit) {
             return memoryPerUnit(Output.of(memoryPerUnit));
         }
 
-        /**
-         * @param numOfUnits How many units of headroom to allocate.
-         * 
-         * @return builder
-         * 
-         */
         public Builder numOfUnits(@Nullable Output<Integer> numOfUnits) {
             $.numOfUnits = numOfUnits;
             return this;
         }
 
-        /**
-         * @param numOfUnits How many units of headroom to allocate.
-         * 
-         * @return builder
-         * 
-         */
         public Builder numOfUnits(Integer numOfUnits) {
             return numOfUnits(Output.of(numOfUnits));
         }

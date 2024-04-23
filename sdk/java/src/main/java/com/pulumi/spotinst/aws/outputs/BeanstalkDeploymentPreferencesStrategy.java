@@ -12,29 +12,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class BeanstalkDeploymentPreferencesStrategy {
-    /**
-     * @return Action to take
-     * 
-     */
     private @Nullable String action;
-    /**
-     * @return Bool value if to wait to drain instance
-     * 
-     */
     private @Nullable Boolean shouldDrainInstances;
 
     private BeanstalkDeploymentPreferencesStrategy() {}
-    /**
-     * @return Action to take
-     * 
-     */
     public Optional<String> action() {
         return Optional.ofNullable(this.action);
     }
-    /**
-     * @return Bool value if to wait to drain instance
-     * 
-     */
     public Optional<Boolean> shouldDrainInstances() {
         return Optional.ofNullable(this.shouldDrainInstances);
     }

@@ -16,17 +16,9 @@ public final class OceanLoggingExportArgs extends com.pulumi.resources.ResourceA
 
     public static final OceanLoggingExportArgs Empty = new OceanLoggingExportArgs();
 
-    /**
-     * Exports your cluster&#39;s logs to the S3 bucket and subdir configured on the S3 data integration given.
-     * 
-     */
     @Import(name="s3s")
     private @Nullable Output<List<OceanLoggingExportS3Args>> s3s;
 
-    /**
-     * @return Exports your cluster&#39;s logs to the S3 bucket and subdir configured on the S3 data integration given.
-     * 
-     */
     public Optional<Output<List<OceanLoggingExportS3Args>>> s3s() {
         return Optional.ofNullable(this.s3s);
     }
@@ -55,33 +47,15 @@ public final class OceanLoggingExportArgs extends com.pulumi.resources.ResourceA
             $ = new OceanLoggingExportArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param s3s Exports your cluster&#39;s logs to the S3 bucket and subdir configured on the S3 data integration given.
-         * 
-         * @return builder
-         * 
-         */
         public Builder s3s(@Nullable Output<List<OceanLoggingExportS3Args>> s3s) {
             $.s3s = s3s;
             return this;
         }
 
-        /**
-         * @param s3s Exports your cluster&#39;s logs to the S3 bucket and subdir configured on the S3 data integration given.
-         * 
-         * @return builder
-         * 
-         */
         public Builder s3s(List<OceanLoggingExportS3Args> s3s) {
             return s3s(Output.of(s3s));
         }
 
-        /**
-         * @param s3s Exports your cluster&#39;s logs to the S3 bucket and subdir configured on the S3 data integration given.
-         * 
-         * @return builder
-         * 
-         */
         public Builder s3s(OceanLoggingExportS3Args... s3s) {
             return s3s(List.of(s3s));
         }

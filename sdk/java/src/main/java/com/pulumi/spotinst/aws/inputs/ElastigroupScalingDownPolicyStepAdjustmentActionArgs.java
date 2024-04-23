@@ -16,107 +16,51 @@ public final class ElastigroupScalingDownPolicyStepAdjustmentActionArgs extends 
 
     public static final ElastigroupScalingDownPolicyStepAdjustmentActionArgs Empty = new ElastigroupScalingDownPolicyStepAdjustmentActionArgs();
 
-    /**
-     * The number of instances to add/remove to/from the target capacity when scale is needed. Can be used as advanced expression for scaling of instances to add/remove to/from the target capacity when scale is needed. You can see more information here: Advanced expression. Example value: `&#34;MAX(currCapacity / 5, value * 10)&#34;`
-     * 
-     */
     @Import(name="adjustment")
     private @Nullable Output<String> adjustment;
 
-    /**
-     * @return The number of instances to add/remove to/from the target capacity when scale is needed. Can be used as advanced expression for scaling of instances to add/remove to/from the target capacity when scale is needed. You can see more information here: Advanced expression. Example value: `&#34;MAX(currCapacity / 5, value * 10)&#34;`
-     * 
-     */
     public Optional<Output<String>> adjustment() {
         return Optional.ofNullable(this.adjustment);
     }
 
-    /**
-     * . The number of the desired target (and maximum) capacity
-     * 
-     */
     @Import(name="maxTargetCapacity")
     private @Nullable Output<String> maxTargetCapacity;
 
-    /**
-     * @return . The number of the desired target (and maximum) capacity
-     * 
-     */
     public Optional<Output<String>> maxTargetCapacity() {
         return Optional.ofNullable(this.maxTargetCapacity);
     }
 
-    /**
-     * The maximal number of instances to have in the group.
-     * 
-     */
     @Import(name="maximum")
     private @Nullable Output<String> maximum;
 
-    /**
-     * @return The maximal number of instances to have in the group.
-     * 
-     */
     public Optional<Output<String>> maximum() {
         return Optional.ofNullable(this.maximum);
     }
 
-    /**
-     * . The number of the desired target (and minimum) capacity
-     * 
-     */
     @Import(name="minTargetCapacity")
     private @Nullable Output<String> minTargetCapacity;
 
-    /**
-     * @return . The number of the desired target (and minimum) capacity
-     * 
-     */
     public Optional<Output<String>> minTargetCapacity() {
         return Optional.ofNullable(this.minTargetCapacity);
     }
 
-    /**
-     * The minimal number of instances to have in the group.
-     * 
-     */
     @Import(name="minimum")
     private @Nullable Output<String> minimum;
 
-    /**
-     * @return The minimal number of instances to have in the group.
-     * 
-     */
     public Optional<Output<String>> minimum() {
         return Optional.ofNullable(this.minimum);
     }
 
-    /**
-     * The target number of instances to have in the group.
-     * 
-     */
     @Import(name="target")
     private @Nullable Output<String> target;
 
-    /**
-     * @return The target number of instances to have in the group.
-     * 
-     */
     public Optional<Output<String>> target() {
         return Optional.ofNullable(this.target);
     }
 
-    /**
-     * The type of the action to take when scale up is needed. Valid types: `&#34;adjustment&#34;`, `&#34;updateCapacity&#34;`, `&#34;setMaxTarget&#34;`, `&#34;percentageAdjustment&#34;`.
-     * 
-     */
     @Import(name="type", required=true)
     private Output<String> type;
 
-    /**
-     * @return The type of the action to take when scale up is needed. Valid types: `&#34;adjustment&#34;`, `&#34;updateCapacity&#34;`, `&#34;setMaxTarget&#34;`, `&#34;percentageAdjustment&#34;`.
-     * 
-     */
     public Output<String> type() {
         return this.type;
     }
@@ -151,149 +95,65 @@ public final class ElastigroupScalingDownPolicyStepAdjustmentActionArgs extends 
             $ = new ElastigroupScalingDownPolicyStepAdjustmentActionArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param adjustment The number of instances to add/remove to/from the target capacity when scale is needed. Can be used as advanced expression for scaling of instances to add/remove to/from the target capacity when scale is needed. You can see more information here: Advanced expression. Example value: `&#34;MAX(currCapacity / 5, value * 10)&#34;`
-         * 
-         * @return builder
-         * 
-         */
         public Builder adjustment(@Nullable Output<String> adjustment) {
             $.adjustment = adjustment;
             return this;
         }
 
-        /**
-         * @param adjustment The number of instances to add/remove to/from the target capacity when scale is needed. Can be used as advanced expression for scaling of instances to add/remove to/from the target capacity when scale is needed. You can see more information here: Advanced expression. Example value: `&#34;MAX(currCapacity / 5, value * 10)&#34;`
-         * 
-         * @return builder
-         * 
-         */
         public Builder adjustment(String adjustment) {
             return adjustment(Output.of(adjustment));
         }
 
-        /**
-         * @param maxTargetCapacity . The number of the desired target (and maximum) capacity
-         * 
-         * @return builder
-         * 
-         */
         public Builder maxTargetCapacity(@Nullable Output<String> maxTargetCapacity) {
             $.maxTargetCapacity = maxTargetCapacity;
             return this;
         }
 
-        /**
-         * @param maxTargetCapacity . The number of the desired target (and maximum) capacity
-         * 
-         * @return builder
-         * 
-         */
         public Builder maxTargetCapacity(String maxTargetCapacity) {
             return maxTargetCapacity(Output.of(maxTargetCapacity));
         }
 
-        /**
-         * @param maximum The maximal number of instances to have in the group.
-         * 
-         * @return builder
-         * 
-         */
         public Builder maximum(@Nullable Output<String> maximum) {
             $.maximum = maximum;
             return this;
         }
 
-        /**
-         * @param maximum The maximal number of instances to have in the group.
-         * 
-         * @return builder
-         * 
-         */
         public Builder maximum(String maximum) {
             return maximum(Output.of(maximum));
         }
 
-        /**
-         * @param minTargetCapacity . The number of the desired target (and minimum) capacity
-         * 
-         * @return builder
-         * 
-         */
         public Builder minTargetCapacity(@Nullable Output<String> minTargetCapacity) {
             $.minTargetCapacity = minTargetCapacity;
             return this;
         }
 
-        /**
-         * @param minTargetCapacity . The number of the desired target (and minimum) capacity
-         * 
-         * @return builder
-         * 
-         */
         public Builder minTargetCapacity(String minTargetCapacity) {
             return minTargetCapacity(Output.of(minTargetCapacity));
         }
 
-        /**
-         * @param minimum The minimal number of instances to have in the group.
-         * 
-         * @return builder
-         * 
-         */
         public Builder minimum(@Nullable Output<String> minimum) {
             $.minimum = minimum;
             return this;
         }
 
-        /**
-         * @param minimum The minimal number of instances to have in the group.
-         * 
-         * @return builder
-         * 
-         */
         public Builder minimum(String minimum) {
             return minimum(Output.of(minimum));
         }
 
-        /**
-         * @param target The target number of instances to have in the group.
-         * 
-         * @return builder
-         * 
-         */
         public Builder target(@Nullable Output<String> target) {
             $.target = target;
             return this;
         }
 
-        /**
-         * @param target The target number of instances to have in the group.
-         * 
-         * @return builder
-         * 
-         */
         public Builder target(String target) {
             return target(Output.of(target));
         }
 
-        /**
-         * @param type The type of the action to take when scale up is needed. Valid types: `&#34;adjustment&#34;`, `&#34;updateCapacity&#34;`, `&#34;setMaxTarget&#34;`, `&#34;percentageAdjustment&#34;`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder type(Output<String> type) {
             $.type = type;
             return this;
         }
 
-        /**
-         * @param type The type of the action to take when scale up is needed. Valid types: `&#34;adjustment&#34;`, `&#34;updateCapacity&#34;`, `&#34;setMaxTarget&#34;`, `&#34;percentageAdjustment&#34;`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder type(String type) {
             return type(Output.of(type));
         }

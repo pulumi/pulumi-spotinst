@@ -10,33 +10,13 @@ import java.util.Objects;
 
 @CustomType
 public final class ElastigroupStatefulInstanceAction {
-    /**
-     * @return String, Stateful Instance ID on which the action should be performed.
-     * 
-     */
     private String statefulInstanceId;
-    /**
-     * @return String, Action type. Supported action types: `pause`, `resume`, `recycle`, `deallocate`.
-     * 
-     * Usage:
-     * 
-     */
     private String type;
 
     private ElastigroupStatefulInstanceAction() {}
-    /**
-     * @return String, Stateful Instance ID on which the action should be performed.
-     * 
-     */
     public String statefulInstanceId() {
         return this.statefulInstanceId;
     }
-    /**
-     * @return String, Action type. Supported action types: `pause`, `resume`, `recycle`, `deallocate`.
-     * 
-     * Usage:
-     * 
-     */
     public String type() {
         return this.type;
     }

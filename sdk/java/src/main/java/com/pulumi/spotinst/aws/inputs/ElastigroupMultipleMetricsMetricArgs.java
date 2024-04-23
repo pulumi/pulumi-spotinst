@@ -18,47 +18,23 @@ public final class ElastigroupMultipleMetricsMetricArgs extends com.pulumi.resou
 
     public static final ElastigroupMultipleMetricsMetricArgs Empty = new ElastigroupMultipleMetricsMetricArgs();
 
-    /**
-     * A list of dimensions describing qualities of the metric.
-     * 
-     */
     @Import(name="dimensions")
     private @Nullable Output<List<ElastigroupMultipleMetricsMetricDimensionArgs>> dimensions;
 
-    /**
-     * @return A list of dimensions describing qualities of the metric.
-     * 
-     */
     public Optional<Output<List<ElastigroupMultipleMetricsMetricDimensionArgs>>> dimensions() {
         return Optional.ofNullable(this.dimensions);
     }
 
-    /**
-     * Percentile statistic. Valid values: `&#34;p0.1&#34;` - `&#34;p100&#34;`.
-     * 
-     */
     @Import(name="extendedStatistic")
     private @Nullable Output<String> extendedStatistic;
 
-    /**
-     * @return Percentile statistic. Valid values: `&#34;p0.1&#34;` - `&#34;p100&#34;`.
-     * 
-     */
     public Optional<Output<String>> extendedStatistic() {
         return Optional.ofNullable(this.extendedStatistic);
     }
 
-    /**
-     * The name of the metric, with or without spaces.
-     * 
-     */
     @Import(name="metricName", required=true)
     private Output<String> metricName;
 
-    /**
-     * @return The name of the metric, with or without spaces.
-     * 
-     */
     public Output<String> metricName() {
         return this.metricName;
     }
@@ -78,47 +54,23 @@ public final class ElastigroupMultipleMetricsMetricArgs extends com.pulumi.resou
         return this.name;
     }
 
-    /**
-     * The namespace for the alarm&#39;s associated metric.
-     * 
-     */
     @Import(name="namespace", required=true)
     private Output<String> namespace;
 
-    /**
-     * @return The namespace for the alarm&#39;s associated metric.
-     * 
-     */
     public Output<String> namespace() {
         return this.namespace;
     }
 
-    /**
-     * The metric statistics to return. For information about specific statistics go to [Statistics](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/index.html?CHAP_TerminologyandKeyConcepts.html#Statistic) in the Amazon CloudWatch Developer Guide.
-     * 
-     */
     @Import(name="statistic")
     private @Nullable Output<String> statistic;
 
-    /**
-     * @return The metric statistics to return. For information about specific statistics go to [Statistics](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/index.html?CHAP_TerminologyandKeyConcepts.html#Statistic) in the Amazon CloudWatch Developer Guide.
-     * 
-     */
     public Optional<Output<String>> statistic() {
         return Optional.ofNullable(this.statistic);
     }
 
-    /**
-     * The unit for the alarm&#39;s associated metric. Valid values: `&#34;percent`, `&#34;seconds&#34;`, `&#34;microseconds&#34;`, `&#34;milliseconds&#34;`, `&#34;bytes&#34;`, `&#34;kilobytes&#34;`, `&#34;megabytes&#34;`, `&#34;gigabytes&#34;`, `&#34;terabytes&#34;`, `&#34;bits&#34;`, `&#34;kilobits&#34;`, `&#34;megabits&#34;`, `&#34;gigabits&#34;`, `&#34;terabits&#34;`, `&#34;count&#34;`, `&#34;bytes/second&#34;`, `&#34;kilobytes/second&#34;`, `&#34;megabytes/second&#34;`, `&#34;gigabytes/second&#34;`, `&#34;terabytes/second&#34;`, `&#34;bits/second&#34;`, `&#34;kilobits/second&#34;`, `&#34;megabits/second&#34;`, `&#34;gigabits/second&#34;`, `&#34;terabits/second&#34;`, `&#34;count/second&#34;`, `&#34;none&#34;`.
-     * 
-     */
     @Import(name="unit")
     private @Nullable Output<String> unit;
 
-    /**
-     * @return The unit for the alarm&#39;s associated metric. Valid values: `&#34;percent`, `&#34;seconds&#34;`, `&#34;microseconds&#34;`, `&#34;milliseconds&#34;`, `&#34;bytes&#34;`, `&#34;kilobytes&#34;`, `&#34;megabytes&#34;`, `&#34;gigabytes&#34;`, `&#34;terabytes&#34;`, `&#34;bits&#34;`, `&#34;kilobits&#34;`, `&#34;megabits&#34;`, `&#34;gigabits&#34;`, `&#34;terabits&#34;`, `&#34;count&#34;`, `&#34;bytes/second&#34;`, `&#34;kilobytes/second&#34;`, `&#34;megabytes/second&#34;`, `&#34;gigabytes/second&#34;`, `&#34;terabytes/second&#34;`, `&#34;bits/second&#34;`, `&#34;kilobits/second&#34;`, `&#34;megabits/second&#34;`, `&#34;gigabits/second&#34;`, `&#34;terabits/second&#34;`, `&#34;count/second&#34;`, `&#34;none&#34;`.
-     * 
-     */
     public Optional<Output<String>> unit() {
         return Optional.ofNullable(this.unit);
     }
@@ -153,75 +105,33 @@ public final class ElastigroupMultipleMetricsMetricArgs extends com.pulumi.resou
             $ = new ElastigroupMultipleMetricsMetricArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param dimensions A list of dimensions describing qualities of the metric.
-         * 
-         * @return builder
-         * 
-         */
         public Builder dimensions(@Nullable Output<List<ElastigroupMultipleMetricsMetricDimensionArgs>> dimensions) {
             $.dimensions = dimensions;
             return this;
         }
 
-        /**
-         * @param dimensions A list of dimensions describing qualities of the metric.
-         * 
-         * @return builder
-         * 
-         */
         public Builder dimensions(List<ElastigroupMultipleMetricsMetricDimensionArgs> dimensions) {
             return dimensions(Output.of(dimensions));
         }
 
-        /**
-         * @param dimensions A list of dimensions describing qualities of the metric.
-         * 
-         * @return builder
-         * 
-         */
         public Builder dimensions(ElastigroupMultipleMetricsMetricDimensionArgs... dimensions) {
             return dimensions(List.of(dimensions));
         }
 
-        /**
-         * @param extendedStatistic Percentile statistic. Valid values: `&#34;p0.1&#34;` - `&#34;p100&#34;`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder extendedStatistic(@Nullable Output<String> extendedStatistic) {
             $.extendedStatistic = extendedStatistic;
             return this;
         }
 
-        /**
-         * @param extendedStatistic Percentile statistic. Valid values: `&#34;p0.1&#34;` - `&#34;p100&#34;`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder extendedStatistic(String extendedStatistic) {
             return extendedStatistic(Output.of(extendedStatistic));
         }
 
-        /**
-         * @param metricName The name of the metric, with or without spaces.
-         * 
-         * @return builder
-         * 
-         */
         public Builder metricName(Output<String> metricName) {
             $.metricName = metricName;
             return this;
         }
 
-        /**
-         * @param metricName The name of the metric, with or without spaces.
-         * 
-         * @return builder
-         * 
-         */
         public Builder metricName(String metricName) {
             return metricName(Output.of(metricName));
         }
@@ -247,65 +157,29 @@ public final class ElastigroupMultipleMetricsMetricArgs extends com.pulumi.resou
             return name(Output.of(name));
         }
 
-        /**
-         * @param namespace The namespace for the alarm&#39;s associated metric.
-         * 
-         * @return builder
-         * 
-         */
         public Builder namespace(Output<String> namespace) {
             $.namespace = namespace;
             return this;
         }
 
-        /**
-         * @param namespace The namespace for the alarm&#39;s associated metric.
-         * 
-         * @return builder
-         * 
-         */
         public Builder namespace(String namespace) {
             return namespace(Output.of(namespace));
         }
 
-        /**
-         * @param statistic The metric statistics to return. For information about specific statistics go to [Statistics](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/index.html?CHAP_TerminologyandKeyConcepts.html#Statistic) in the Amazon CloudWatch Developer Guide.
-         * 
-         * @return builder
-         * 
-         */
         public Builder statistic(@Nullable Output<String> statistic) {
             $.statistic = statistic;
             return this;
         }
 
-        /**
-         * @param statistic The metric statistics to return. For information about specific statistics go to [Statistics](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/index.html?CHAP_TerminologyandKeyConcepts.html#Statistic) in the Amazon CloudWatch Developer Guide.
-         * 
-         * @return builder
-         * 
-         */
         public Builder statistic(String statistic) {
             return statistic(Output.of(statistic));
         }
 
-        /**
-         * @param unit The unit for the alarm&#39;s associated metric. Valid values: `&#34;percent`, `&#34;seconds&#34;`, `&#34;microseconds&#34;`, `&#34;milliseconds&#34;`, `&#34;bytes&#34;`, `&#34;kilobytes&#34;`, `&#34;megabytes&#34;`, `&#34;gigabytes&#34;`, `&#34;terabytes&#34;`, `&#34;bits&#34;`, `&#34;kilobits&#34;`, `&#34;megabits&#34;`, `&#34;gigabits&#34;`, `&#34;terabits&#34;`, `&#34;count&#34;`, `&#34;bytes/second&#34;`, `&#34;kilobytes/second&#34;`, `&#34;megabytes/second&#34;`, `&#34;gigabytes/second&#34;`, `&#34;terabytes/second&#34;`, `&#34;bits/second&#34;`, `&#34;kilobits/second&#34;`, `&#34;megabits/second&#34;`, `&#34;gigabits/second&#34;`, `&#34;terabits/second&#34;`, `&#34;count/second&#34;`, `&#34;none&#34;`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder unit(@Nullable Output<String> unit) {
             $.unit = unit;
             return this;
         }
 
-        /**
-         * @param unit The unit for the alarm&#39;s associated metric. Valid values: `&#34;percent`, `&#34;seconds&#34;`, `&#34;microseconds&#34;`, `&#34;milliseconds&#34;`, `&#34;bytes&#34;`, `&#34;kilobytes&#34;`, `&#34;megabytes&#34;`, `&#34;gigabytes&#34;`, `&#34;terabytes&#34;`, `&#34;bits&#34;`, `&#34;kilobits&#34;`, `&#34;megabits&#34;`, `&#34;gigabits&#34;`, `&#34;terabits&#34;`, `&#34;count&#34;`, `&#34;bytes/second&#34;`, `&#34;kilobytes/second&#34;`, `&#34;megabytes/second&#34;`, `&#34;gigabytes/second&#34;`, `&#34;terabytes/second&#34;`, `&#34;bits/second&#34;`, `&#34;kilobits/second&#34;`, `&#34;megabits/second&#34;`, `&#34;gigabits/second&#34;`, `&#34;terabits/second&#34;`, `&#34;count/second&#34;`, `&#34;none&#34;`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder unit(String unit) {
             return unit(Output.of(unit));
         }

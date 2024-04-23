@@ -11,17 +11,9 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ElastigroupIntegrationGkeAutoscaleDown {
-    /**
-     * @return Number of consecutive periods in which the threshold must be met in order to trigger a scaling action.
-     * 
-     */
     private @Nullable Integer evaluationPeriods;
 
     private ElastigroupIntegrationGkeAutoscaleDown() {}
-    /**
-     * @return Number of consecutive periods in which the threshold must be met in order to trigger a scaling action.
-     * 
-     */
     public Optional<Integer> evaluationPeriods() {
         return Optional.ofNullable(this.evaluationPeriods);
     }

@@ -18,105 +18,37 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ElastigroupIntegrationNomad {
-    /**
-     * @return Nomad ACL Token
-     * 
-     */
     private @Nullable String aclToken;
-    /**
-     * @return A key/value mapping of tags to assign to the resource.
-     * 
-     * Usage:
-     * 
-     */
     private @Nullable List<ElastigroupIntegrationNomadAutoscaleConstraint> autoscaleConstraints;
-    /**
-     * @return The amount of time, in seconds, after a scaling activity completes before any further trigger-related scaling activities can start.
-     * 
-     */
     private @Nullable Integer autoscaleCooldown;
-    /**
-     * @return Settings for scale down actions.
-     * 
-     */
     private @Nullable ElastigroupIntegrationNomadAutoscaleDown autoscaleDown;
-    /**
-     * @return An option to set compute reserve for the cluster.
-     * 
-     */
     private @Nullable ElastigroupIntegrationNomadAutoscaleHeadroom autoscaleHeadroom;
-    /**
-     * @return Specifies whether the auto scaling feature is enabled.
-     * 
-     */
     private @Nullable Boolean autoscaleIsEnabled;
-    /**
-     * @return The URL for the Nomad master host.
-     * 
-     */
     private String masterHost;
-    /**
-     * @return The network port for the master host.
-     * 
-     */
     private Integer masterPort;
 
     private ElastigroupIntegrationNomad() {}
-    /**
-     * @return Nomad ACL Token
-     * 
-     */
     public Optional<String> aclToken() {
         return Optional.ofNullable(this.aclToken);
     }
-    /**
-     * @return A key/value mapping of tags to assign to the resource.
-     * 
-     * Usage:
-     * 
-     */
     public List<ElastigroupIntegrationNomadAutoscaleConstraint> autoscaleConstraints() {
         return this.autoscaleConstraints == null ? List.of() : this.autoscaleConstraints;
     }
-    /**
-     * @return The amount of time, in seconds, after a scaling activity completes before any further trigger-related scaling activities can start.
-     * 
-     */
     public Optional<Integer> autoscaleCooldown() {
         return Optional.ofNullable(this.autoscaleCooldown);
     }
-    /**
-     * @return Settings for scale down actions.
-     * 
-     */
     public Optional<ElastigroupIntegrationNomadAutoscaleDown> autoscaleDown() {
         return Optional.ofNullable(this.autoscaleDown);
     }
-    /**
-     * @return An option to set compute reserve for the cluster.
-     * 
-     */
     public Optional<ElastigroupIntegrationNomadAutoscaleHeadroom> autoscaleHeadroom() {
         return Optional.ofNullable(this.autoscaleHeadroom);
     }
-    /**
-     * @return Specifies whether the auto scaling feature is enabled.
-     * 
-     */
     public Optional<Boolean> autoscaleIsEnabled() {
         return Optional.ofNullable(this.autoscaleIsEnabled);
     }
-    /**
-     * @return The URL for the Nomad master host.
-     * 
-     */
     public String masterHost() {
         return this.masterHost;
     }
-    /**
-     * @return The network port for the master host.
-     * 
-     */
     public Integer masterPort() {
         return this.masterPort;
     }

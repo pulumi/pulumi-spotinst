@@ -16,7 +16,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -113,7 +112,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Strategy
 //
@@ -142,7 +140,7 @@ type Elastigroup struct {
 	MaxSize pulumi.IntOutput `pulumi:"maxSize"`
 	// The minimum number of instances the group should have at any time.
 	MinSize pulumi.IntOutput `pulumi:"minSize"`
-	// Name of the Managed Service Identity.
+	// The group name.
 	Name    pulumi.StringOutput      `pulumi:"name"`
 	Network ElastigroupNetworkOutput `pulumi:"network"`
 	// Available On-Demand sizes
@@ -150,7 +148,7 @@ type Elastigroup struct {
 	Product pulumi.StringOutput      `pulumi:"product"`
 	// The region your Azure group will be created in.
 	Region pulumi.StringOutput `pulumi:"region"`
-	// Name of the Azure Resource Group where the Managed Service Identity is located.
+	// Name of the Resource Group for Elastigroup.
 	ResourceGroupName   pulumi.StringOutput                     `pulumi:"resourceGroupName"`
 	ScalingDownPolicies ElastigroupScalingDownPolicyArrayOutput `pulumi:"scalingDownPolicies"`
 	ScalingUpPolicies   ElastigroupScalingUpPolicyArrayOutput   `pulumi:"scalingUpPolicies"`
@@ -228,7 +226,7 @@ type elastigroupState struct {
 	MaxSize *int `pulumi:"maxSize"`
 	// The minimum number of instances the group should have at any time.
 	MinSize *int `pulumi:"minSize"`
-	// Name of the Managed Service Identity.
+	// The group name.
 	Name    *string             `pulumi:"name"`
 	Network *ElastigroupNetwork `pulumi:"network"`
 	// Available On-Demand sizes
@@ -236,7 +234,7 @@ type elastigroupState struct {
 	Product *string  `pulumi:"product"`
 	// The region your Azure group will be created in.
 	Region *string `pulumi:"region"`
-	// Name of the Azure Resource Group where the Managed Service Identity is located.
+	// Name of the Resource Group for Elastigroup.
 	ResourceGroupName   *string                        `pulumi:"resourceGroupName"`
 	ScalingDownPolicies []ElastigroupScalingDownPolicy `pulumi:"scalingDownPolicies"`
 	ScalingUpPolicies   []ElastigroupScalingUpPolicy   `pulumi:"scalingUpPolicies"`
@@ -264,7 +262,7 @@ type ElastigroupState struct {
 	MaxSize pulumi.IntPtrInput
 	// The minimum number of instances the group should have at any time.
 	MinSize pulumi.IntPtrInput
-	// Name of the Managed Service Identity.
+	// The group name.
 	Name    pulumi.StringPtrInput
 	Network ElastigroupNetworkPtrInput
 	// Available On-Demand sizes
@@ -272,7 +270,7 @@ type ElastigroupState struct {
 	Product pulumi.StringPtrInput
 	// The region your Azure group will be created in.
 	Region pulumi.StringPtrInput
-	// Name of the Azure Resource Group where the Managed Service Identity is located.
+	// Name of the Resource Group for Elastigroup.
 	ResourceGroupName   pulumi.StringPtrInput
 	ScalingDownPolicies ElastigroupScalingDownPolicyArrayInput
 	ScalingUpPolicies   ElastigroupScalingUpPolicyArrayInput
@@ -304,7 +302,7 @@ type elastigroupArgs struct {
 	MaxSize *int `pulumi:"maxSize"`
 	// The minimum number of instances the group should have at any time.
 	MinSize *int `pulumi:"minSize"`
-	// Name of the Managed Service Identity.
+	// The group name.
 	Name    *string            `pulumi:"name"`
 	Network ElastigroupNetwork `pulumi:"network"`
 	// Available On-Demand sizes
@@ -312,7 +310,7 @@ type elastigroupArgs struct {
 	Product string   `pulumi:"product"`
 	// The region your Azure group will be created in.
 	Region string `pulumi:"region"`
-	// Name of the Azure Resource Group where the Managed Service Identity is located.
+	// Name of the Resource Group for Elastigroup.
 	ResourceGroupName   string                         `pulumi:"resourceGroupName"`
 	ScalingDownPolicies []ElastigroupScalingDownPolicy `pulumi:"scalingDownPolicies"`
 	ScalingUpPolicies   []ElastigroupScalingUpPolicy   `pulumi:"scalingUpPolicies"`
@@ -341,7 +339,7 @@ type ElastigroupArgs struct {
 	MaxSize pulumi.IntPtrInput
 	// The minimum number of instances the group should have at any time.
 	MinSize pulumi.IntPtrInput
-	// Name of the Managed Service Identity.
+	// The group name.
 	Name    pulumi.StringPtrInput
 	Network ElastigroupNetworkInput
 	// Available On-Demand sizes
@@ -349,7 +347,7 @@ type ElastigroupArgs struct {
 	Product pulumi.StringInput
 	// The region your Azure group will be created in.
 	Region pulumi.StringInput
-	// Name of the Azure Resource Group where the Managed Service Identity is located.
+	// Name of the Resource Group for Elastigroup.
 	ResourceGroupName   pulumi.StringInput
 	ScalingDownPolicies ElastigroupScalingDownPolicyArrayInput
 	ScalingUpPolicies   ElastigroupScalingUpPolicyArrayInput
@@ -499,7 +497,7 @@ func (o ElastigroupOutput) MinSize() pulumi.IntOutput {
 	return o.ApplyT(func(v *Elastigroup) pulumi.IntOutput { return v.MinSize }).(pulumi.IntOutput)
 }
 
-// Name of the Managed Service Identity.
+// The group name.
 func (o ElastigroupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Elastigroup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -522,7 +520,7 @@ func (o ElastigroupOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *Elastigroup) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
-// Name of the Azure Resource Group where the Managed Service Identity is located.
+// Name of the Resource Group for Elastigroup.
 func (o ElastigroupOutput) ResourceGroupName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Elastigroup) pulumi.StringOutput { return v.ResourceGroupName }).(pulumi.StringOutput)
 }

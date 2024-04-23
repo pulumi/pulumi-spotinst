@@ -14,7 +14,7 @@ namespace Pulumi.SpotInst.Ecs.Outputs
     public sealed class OceanLoggingExportS3
     {
         /// <summary>
-        /// The identifier of The S3 data integration to export the logs to.
+        /// The Spotinst Ocean ID.
         /// </summary>
         public readonly string Id;
 

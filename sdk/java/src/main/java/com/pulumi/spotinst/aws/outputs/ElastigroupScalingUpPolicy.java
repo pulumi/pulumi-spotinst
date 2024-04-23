@@ -48,10 +48,6 @@ public final class ElastigroupScalingUpPolicy {
      * 
      */
     private @Nullable Boolean isEnabled;
-    /**
-     * @return . The number of the desired target (and maximum) capacity
-     * 
-     */
     private @Nullable String maxTargetCapacity;
     /**
      * @return The maximal number of instances to have in the group.
@@ -110,14 +106,7 @@ public final class ElastigroupScalingUpPolicy {
      */
     private @Nullable String target;
     /**
-     * @return The value against which the specified statistic is compared in order to determine if a step should be applied.
-     * 
-     * If you do not specify an action type, you can only use – `adjustment`, `minTargetCapacity`, `maxTargetCapacity`.
-     * While using action_type, please also set the following:
-     * 
-     * When using `adjustment`           – set the field `adjustment`
-     * When using `setMinTarget`         – set the field `min_target_capacity`
-     * When using `updateCapacity`       – set the fields `minimum`, `maximum`, and `target`
+     * @return The value against which the specified statistic is compared. If a `step_adjustment` object is defined, then it cannot be specified.
      * 
      */
     private @Nullable Double threshold;
@@ -170,10 +159,6 @@ public final class ElastigroupScalingUpPolicy {
     public Optional<Boolean> isEnabled() {
         return Optional.ofNullable(this.isEnabled);
     }
-    /**
-     * @return . The number of the desired target (and maximum) capacity
-     * 
-     */
     public Optional<String> maxTargetCapacity() {
         return Optional.ofNullable(this.maxTargetCapacity);
     }
@@ -258,14 +243,7 @@ public final class ElastigroupScalingUpPolicy {
         return Optional.ofNullable(this.target);
     }
     /**
-     * @return The value against which the specified statistic is compared in order to determine if a step should be applied.
-     * 
-     * If you do not specify an action type, you can only use – `adjustment`, `minTargetCapacity`, `maxTargetCapacity`.
-     * While using action_type, please also set the following:
-     * 
-     * When using `adjustment`           – set the field `adjustment`
-     * When using `setMinTarget`         – set the field `min_target_capacity`
-     * When using `updateCapacity`       – set the fields `minimum`, `maximum`, and `target`
+     * @return The value against which the specified statistic is compared. If a `step_adjustment` object is defined, then it cannot be specified.
      * 
      */
     public Optional<Double> threshold() {

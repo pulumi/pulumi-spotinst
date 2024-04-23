@@ -13,9 +13,6 @@ namespace Pulumi.SpotInst.Aws.Outputs
     [OutputType]
     public sealed class ElastigroupIntegrationRoute53
     {
-        /// <summary>
-        /// Collection of one or more domains to register.
-        /// </summary>
         public readonly ImmutableArray<Outputs.ElastigroupIntegrationRoute53Domain> Domains;
 
         [OutputConstructor]

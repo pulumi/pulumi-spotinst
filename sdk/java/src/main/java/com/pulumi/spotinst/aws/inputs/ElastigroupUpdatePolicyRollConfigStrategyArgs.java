@@ -19,62 +19,30 @@ public final class ElastigroupUpdatePolicyRollConfigStrategyArgs extends com.pul
 
     public static final ElastigroupUpdatePolicyRollConfigStrategyArgs Empty = new ElastigroupUpdatePolicyRollConfigStrategyArgs();
 
-    /**
-     * The action to take when scale up according to step&#39;s threshold is needed.
-     * 
-     */
     @Import(name="action", required=true)
     private Output<String> action;
 
-    /**
-     * @return The action to take when scale up according to step&#39;s threshold is needed.
-     * 
-     */
     public Output<String> action() {
         return this.action;
     }
 
-    /**
-     * Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the deployment will fail. Range `1` - `100`.
-     * 
-     */
     @Import(name="batchMinHealthyPercentage")
     private @Nullable Output<Integer> batchMinHealthyPercentage;
 
-    /**
-     * @return Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the deployment will fail. Range `1` - `100`.
-     * 
-     */
     public Optional<Output<Integer>> batchMinHealthyPercentage() {
         return Optional.ofNullable(this.batchMinHealthyPercentage);
     }
 
-    /**
-     * Set detach options to the deployment.
-     * 
-     */
     @Import(name="onFailure")
     private @Nullable Output<ElastigroupUpdatePolicyRollConfigStrategyOnFailureArgs> onFailure;
 
-    /**
-     * @return Set detach options to the deployment.
-     * 
-     */
     public Optional<Output<ElastigroupUpdatePolicyRollConfigStrategyOnFailureArgs>> onFailure() {
         return Optional.ofNullable(this.onFailure);
     }
 
-    /**
-     * Bool value if to wait to drain instance
-     * 
-     */
     @Import(name="shouldDrainInstances")
     private @Nullable Output<Boolean> shouldDrainInstances;
 
-    /**
-     * @return Bool value if to wait to drain instance
-     * 
-     */
     public Optional<Output<Boolean>> shouldDrainInstances() {
         return Optional.ofNullable(this.shouldDrainInstances);
     }
@@ -106,86 +74,38 @@ public final class ElastigroupUpdatePolicyRollConfigStrategyArgs extends com.pul
             $ = new ElastigroupUpdatePolicyRollConfigStrategyArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param action The action to take when scale up according to step&#39;s threshold is needed.
-         * 
-         * @return builder
-         * 
-         */
         public Builder action(Output<String> action) {
             $.action = action;
             return this;
         }
 
-        /**
-         * @param action The action to take when scale up according to step&#39;s threshold is needed.
-         * 
-         * @return builder
-         * 
-         */
         public Builder action(String action) {
             return action(Output.of(action));
         }
 
-        /**
-         * @param batchMinHealthyPercentage Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the deployment will fail. Range `1` - `100`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder batchMinHealthyPercentage(@Nullable Output<Integer> batchMinHealthyPercentage) {
             $.batchMinHealthyPercentage = batchMinHealthyPercentage;
             return this;
         }
 
-        /**
-         * @param batchMinHealthyPercentage Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the deployment will fail. Range `1` - `100`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder batchMinHealthyPercentage(Integer batchMinHealthyPercentage) {
             return batchMinHealthyPercentage(Output.of(batchMinHealthyPercentage));
         }
 
-        /**
-         * @param onFailure Set detach options to the deployment.
-         * 
-         * @return builder
-         * 
-         */
         public Builder onFailure(@Nullable Output<ElastigroupUpdatePolicyRollConfigStrategyOnFailureArgs> onFailure) {
             $.onFailure = onFailure;
             return this;
         }
 
-        /**
-         * @param onFailure Set detach options to the deployment.
-         * 
-         * @return builder
-         * 
-         */
         public Builder onFailure(ElastigroupUpdatePolicyRollConfigStrategyOnFailureArgs onFailure) {
             return onFailure(Output.of(onFailure));
         }
 
-        /**
-         * @param shouldDrainInstances Bool value if to wait to drain instance
-         * 
-         * @return builder
-         * 
-         */
         public Builder shouldDrainInstances(@Nullable Output<Boolean> shouldDrainInstances) {
             $.shouldDrainInstances = shouldDrainInstances;
             return this;
         }
 
-        /**
-         * @param shouldDrainInstances Bool value if to wait to drain instance
-         * 
-         * @return builder
-         * 
-         */
         public Builder shouldDrainInstances(Boolean shouldDrainInstances) {
             return shouldDrainInstances(Output.of(shouldDrainInstances));
         }

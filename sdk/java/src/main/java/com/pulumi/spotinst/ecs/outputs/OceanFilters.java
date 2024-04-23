@@ -15,233 +15,81 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class OceanFilters {
-    /**
-     * @return The filtered instance types will support at least one of the architectures from this list.
-     * 
-     */
     private @Nullable List<String> architectures;
-    /**
-     * @return The filtered instance types will belong to one of the categories types from this list.
-     * 
-     */
     private @Nullable List<String> categories;
-    /**
-     * @return The filtered instance types will have one of the disk type from this list.
-     * 
-     */
     private @Nullable List<String> diskTypes;
-    /**
-     * @return Types belonging to a family from the ExcludeFamilies will not be available for scaling (asterisk wildcard is also supported). For example, C* will exclude instance types from these families: c5, c4, c4a, etc.
-     * 
-     */
     private @Nullable List<String> excludeFamilies;
-    /**
-     * @return In case excludeMetal is set to true, metal types will not be available for scaling.
-     * 
-     */
     private @Nullable Boolean excludeMetal;
-    /**
-     * @return The filtered instance types will have a hypervisor type from this list.
-     * 
-     */
     private @Nullable List<String> hypervisors;
-    /**
-     * @return Types belonging to a family from the IncludeFamilies will be available for scaling (asterisk wildcard is also supported). For example, C* will include instance types from these families: c5, c4, c4a, etc.
-     * 
-     */
     private @Nullable List<String> includeFamilies;
-    /**
-     * @return Ena is supported or not.
-     * 
-     */
     private @Nullable String isEnaSupported;
-    /**
-     * @return Maximum total number of GPUs.
-     * 
-     */
     private @Nullable Integer maxGpu;
-    /**
-     * @return Maximum amount of Memory (GiB).
-     * 
-     */
     private @Nullable Double maxMemoryGib;
-    /**
-     * @return Maximum Bandwidth in Gib/s of network performance.
-     * 
-     */
     private @Nullable Integer maxNetworkPerformance;
-    /**
-     * @return Maximum number of vcpus available.
-     * 
-     */
     private @Nullable Integer maxVcpu;
-    /**
-     * @return Minimum number of network interfaces (ENIs).
-     * 
-     */
     private @Nullable Integer minEnis;
-    /**
-     * @return Minimum total number of GPUs.
-     * 
-     */
     private @Nullable Integer minGpu;
-    /**
-     * @return Minimum amount of Memory (GiB).
-     * 
-     */
     private @Nullable Double minMemoryGib;
-    /**
-     * @return Minimum Bandwidth in Gib/s of network performance.
-     * 
-     */
     private @Nullable Integer minNetworkPerformance;
-    /**
-     * @return Minimum number of vcpus available.
-     * 
-     */
     private @Nullable Integer minVcpu;
-    /**
-     * @return The filtered instance types will have a root device types from this list.
-     * 
-     */
     private @Nullable List<String> rootDeviceTypes;
-    /**
-     * @return The filtered instance types will support at least one of the virtualization types from this list.
-     * 
-     */
     private @Nullable List<String> virtualizationTypes;
 
     private OceanFilters() {}
-    /**
-     * @return The filtered instance types will support at least one of the architectures from this list.
-     * 
-     */
     public List<String> architectures() {
         return this.architectures == null ? List.of() : this.architectures;
     }
-    /**
-     * @return The filtered instance types will belong to one of the categories types from this list.
-     * 
-     */
     public List<String> categories() {
         return this.categories == null ? List.of() : this.categories;
     }
-    /**
-     * @return The filtered instance types will have one of the disk type from this list.
-     * 
-     */
     public List<String> diskTypes() {
         return this.diskTypes == null ? List.of() : this.diskTypes;
     }
-    /**
-     * @return Types belonging to a family from the ExcludeFamilies will not be available for scaling (asterisk wildcard is also supported). For example, C* will exclude instance types from these families: c5, c4, c4a, etc.
-     * 
-     */
     public List<String> excludeFamilies() {
         return this.excludeFamilies == null ? List.of() : this.excludeFamilies;
     }
-    /**
-     * @return In case excludeMetal is set to true, metal types will not be available for scaling.
-     * 
-     */
     public Optional<Boolean> excludeMetal() {
         return Optional.ofNullable(this.excludeMetal);
     }
-    /**
-     * @return The filtered instance types will have a hypervisor type from this list.
-     * 
-     */
     public List<String> hypervisors() {
         return this.hypervisors == null ? List.of() : this.hypervisors;
     }
-    /**
-     * @return Types belonging to a family from the IncludeFamilies will be available for scaling (asterisk wildcard is also supported). For example, C* will include instance types from these families: c5, c4, c4a, etc.
-     * 
-     */
     public List<String> includeFamilies() {
         return this.includeFamilies == null ? List.of() : this.includeFamilies;
     }
-    /**
-     * @return Ena is supported or not.
-     * 
-     */
     public Optional<String> isEnaSupported() {
         return Optional.ofNullable(this.isEnaSupported);
     }
-    /**
-     * @return Maximum total number of GPUs.
-     * 
-     */
     public Optional<Integer> maxGpu() {
         return Optional.ofNullable(this.maxGpu);
     }
-    /**
-     * @return Maximum amount of Memory (GiB).
-     * 
-     */
     public Optional<Double> maxMemoryGib() {
         return Optional.ofNullable(this.maxMemoryGib);
     }
-    /**
-     * @return Maximum Bandwidth in Gib/s of network performance.
-     * 
-     */
     public Optional<Integer> maxNetworkPerformance() {
         return Optional.ofNullable(this.maxNetworkPerformance);
     }
-    /**
-     * @return Maximum number of vcpus available.
-     * 
-     */
     public Optional<Integer> maxVcpu() {
         return Optional.ofNullable(this.maxVcpu);
     }
-    /**
-     * @return Minimum number of network interfaces (ENIs).
-     * 
-     */
     public Optional<Integer> minEnis() {
         return Optional.ofNullable(this.minEnis);
     }
-    /**
-     * @return Minimum total number of GPUs.
-     * 
-     */
     public Optional<Integer> minGpu() {
         return Optional.ofNullable(this.minGpu);
     }
-    /**
-     * @return Minimum amount of Memory (GiB).
-     * 
-     */
     public Optional<Double> minMemoryGib() {
         return Optional.ofNullable(this.minMemoryGib);
     }
-    /**
-     * @return Minimum Bandwidth in Gib/s of network performance.
-     * 
-     */
     public Optional<Integer> minNetworkPerformance() {
         return Optional.ofNullable(this.minNetworkPerformance);
     }
-    /**
-     * @return Minimum number of vcpus available.
-     * 
-     */
     public Optional<Integer> minVcpu() {
         return Optional.ofNullable(this.minVcpu);
     }
-    /**
-     * @return The filtered instance types will have a root device types from this list.
-     * 
-     */
     public List<String> rootDeviceTypes() {
         return this.rootDeviceTypes == null ? List.of() : this.rootDeviceTypes;
     }
-    /**
-     * @return The filtered instance types will support at least one of the virtualization types from this list.
-     * 
-     */
     public List<String> virtualizationTypes() {
         return this.virtualizationTypes == null ? List.of() : this.virtualizationTypes;
     }

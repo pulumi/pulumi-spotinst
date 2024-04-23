@@ -20,92 +20,44 @@ public final class ElastigroupIntegrationDockerSwarmArgs extends com.pulumi.reso
 
     public static final ElastigroupIntegrationDockerSwarmArgs Empty = new ElastigroupIntegrationDockerSwarmArgs();
 
-    /**
-     * The amount of time, in seconds, after a scaling activity completes before any further trigger-related scaling activities can start.
-     * 
-     */
     @Import(name="autoscaleCooldown")
     private @Nullable Output<Integer> autoscaleCooldown;
 
-    /**
-     * @return The amount of time, in seconds, after a scaling activity completes before any further trigger-related scaling activities can start.
-     * 
-     */
     public Optional<Output<Integer>> autoscaleCooldown() {
         return Optional.ofNullable(this.autoscaleCooldown);
     }
 
-    /**
-     * Settings for scale down actions.
-     * 
-     */
     @Import(name="autoscaleDown")
     private @Nullable Output<ElastigroupIntegrationDockerSwarmAutoscaleDownArgs> autoscaleDown;
 
-    /**
-     * @return Settings for scale down actions.
-     * 
-     */
     public Optional<Output<ElastigroupIntegrationDockerSwarmAutoscaleDownArgs>> autoscaleDown() {
         return Optional.ofNullable(this.autoscaleDown);
     }
 
-    /**
-     * An option to set compute reserve for the cluster.
-     * 
-     */
     @Import(name="autoscaleHeadroom")
     private @Nullable Output<ElastigroupIntegrationDockerSwarmAutoscaleHeadroomArgs> autoscaleHeadroom;
 
-    /**
-     * @return An option to set compute reserve for the cluster.
-     * 
-     */
     public Optional<Output<ElastigroupIntegrationDockerSwarmAutoscaleHeadroomArgs>> autoscaleHeadroom() {
         return Optional.ofNullable(this.autoscaleHeadroom);
     }
 
-    /**
-     * Specifies whether the auto scaling feature is enabled.
-     * 
-     */
     @Import(name="autoscaleIsEnabled")
     private @Nullable Output<Boolean> autoscaleIsEnabled;
 
-    /**
-     * @return Specifies whether the auto scaling feature is enabled.
-     * 
-     */
     public Optional<Output<Boolean>> autoscaleIsEnabled() {
         return Optional.ofNullable(this.autoscaleIsEnabled);
     }
 
-    /**
-     * The URL for the Nomad master host.
-     * 
-     */
     @Import(name="masterHost", required=true)
     private Output<String> masterHost;
 
-    /**
-     * @return The URL for the Nomad master host.
-     * 
-     */
     public Output<String> masterHost() {
         return this.masterHost;
     }
 
-    /**
-     * The network port for the master host.
-     * 
-     */
     @Import(name="masterPort", required=true)
     private Output<Integer> masterPort;
 
-    /**
-     * @return The network port for the master host.
-     * 
-     */
     public Output<Integer> masterPort() {
         return this.masterPort;
     }
@@ -139,128 +91,56 @@ public final class ElastigroupIntegrationDockerSwarmArgs extends com.pulumi.reso
             $ = new ElastigroupIntegrationDockerSwarmArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param autoscaleCooldown The amount of time, in seconds, after a scaling activity completes before any further trigger-related scaling activities can start.
-         * 
-         * @return builder
-         * 
-         */
         public Builder autoscaleCooldown(@Nullable Output<Integer> autoscaleCooldown) {
             $.autoscaleCooldown = autoscaleCooldown;
             return this;
         }
 
-        /**
-         * @param autoscaleCooldown The amount of time, in seconds, after a scaling activity completes before any further trigger-related scaling activities can start.
-         * 
-         * @return builder
-         * 
-         */
         public Builder autoscaleCooldown(Integer autoscaleCooldown) {
             return autoscaleCooldown(Output.of(autoscaleCooldown));
         }
 
-        /**
-         * @param autoscaleDown Settings for scale down actions.
-         * 
-         * @return builder
-         * 
-         */
         public Builder autoscaleDown(@Nullable Output<ElastigroupIntegrationDockerSwarmAutoscaleDownArgs> autoscaleDown) {
             $.autoscaleDown = autoscaleDown;
             return this;
         }
 
-        /**
-         * @param autoscaleDown Settings for scale down actions.
-         * 
-         * @return builder
-         * 
-         */
         public Builder autoscaleDown(ElastigroupIntegrationDockerSwarmAutoscaleDownArgs autoscaleDown) {
             return autoscaleDown(Output.of(autoscaleDown));
         }
 
-        /**
-         * @param autoscaleHeadroom An option to set compute reserve for the cluster.
-         * 
-         * @return builder
-         * 
-         */
         public Builder autoscaleHeadroom(@Nullable Output<ElastigroupIntegrationDockerSwarmAutoscaleHeadroomArgs> autoscaleHeadroom) {
             $.autoscaleHeadroom = autoscaleHeadroom;
             return this;
         }
 
-        /**
-         * @param autoscaleHeadroom An option to set compute reserve for the cluster.
-         * 
-         * @return builder
-         * 
-         */
         public Builder autoscaleHeadroom(ElastigroupIntegrationDockerSwarmAutoscaleHeadroomArgs autoscaleHeadroom) {
             return autoscaleHeadroom(Output.of(autoscaleHeadroom));
         }
 
-        /**
-         * @param autoscaleIsEnabled Specifies whether the auto scaling feature is enabled.
-         * 
-         * @return builder
-         * 
-         */
         public Builder autoscaleIsEnabled(@Nullable Output<Boolean> autoscaleIsEnabled) {
             $.autoscaleIsEnabled = autoscaleIsEnabled;
             return this;
         }
 
-        /**
-         * @param autoscaleIsEnabled Specifies whether the auto scaling feature is enabled.
-         * 
-         * @return builder
-         * 
-         */
         public Builder autoscaleIsEnabled(Boolean autoscaleIsEnabled) {
             return autoscaleIsEnabled(Output.of(autoscaleIsEnabled));
         }
 
-        /**
-         * @param masterHost The URL for the Nomad master host.
-         * 
-         * @return builder
-         * 
-         */
         public Builder masterHost(Output<String> masterHost) {
             $.masterHost = masterHost;
             return this;
         }
 
-        /**
-         * @param masterHost The URL for the Nomad master host.
-         * 
-         * @return builder
-         * 
-         */
         public Builder masterHost(String masterHost) {
             return masterHost(Output.of(masterHost));
         }
 
-        /**
-         * @param masterPort The network port for the master host.
-         * 
-         * @return builder
-         * 
-         */
         public Builder masterPort(Output<Integer> masterPort) {
             $.masterPort = masterPort;
             return this;
         }
 
-        /**
-         * @param masterPort The network port for the master host.
-         * 
-         * @return builder
-         * 
-         */
         public Builder masterPort(Integer masterPort) {
             return masterPort(Output.of(masterPort));
         }

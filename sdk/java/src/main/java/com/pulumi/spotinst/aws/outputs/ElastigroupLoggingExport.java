@@ -11,17 +11,9 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ElastigroupLoggingExport {
-    /**
-     * @return Exports your cluster&#39;s logs to the S3 bucket and subdir configured on the S3 data integration given.
-     * 
-     */
     private @Nullable List<ElastigroupLoggingExportS3> s3s;
 
     private ElastigroupLoggingExport() {}
-    /**
-     * @return Exports your cluster&#39;s logs to the S3 bucket and subdir configured on the S3 data integration given.
-     * 
-     */
     public List<ElastigroupLoggingExportS3> s3s() {
         return this.s3s == null ? List.of() : this.s3s;
     }

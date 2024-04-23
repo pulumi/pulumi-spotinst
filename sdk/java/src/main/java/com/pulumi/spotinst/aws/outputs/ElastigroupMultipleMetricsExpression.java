@@ -10,10 +10,6 @@ import java.util.Objects;
 
 @CustomType
 public final class ElastigroupMultipleMetricsExpression {
-    /**
-     * @return An expression consisting of the metric names listed in the &#39;metrics&#39; array.
-     * 
-     */
     private String expression;
     /**
      * @return The group name.
@@ -22,10 +18,6 @@ public final class ElastigroupMultipleMetricsExpression {
     private String name;
 
     private ElastigroupMultipleMetricsExpression() {}
-    /**
-     * @return An expression consisting of the metric names listed in the &#39;metrics&#39; array.
-     * 
-     */
     public String expression() {
         return this.expression;
     }

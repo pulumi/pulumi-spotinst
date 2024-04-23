@@ -17,31 +17,23 @@ public final class ElastigroupScalingDownPolicyDimensionArgs extends com.pulumi.
     public static final ElastigroupScalingDownPolicyDimensionArgs Empty = new ElastigroupScalingDownPolicyDimensionArgs();
 
     /**
-     * Name of the Managed Service Identity.
+     * The group name.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return Name of the Managed Service Identity.
+     * @return The group name.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
 
-    /**
-     * Tag Value for Vms in Elastigroup.
-     * 
-     */
     @Import(name="value")
     private @Nullable Output<String> value;
 
-    /**
-     * @return Tag Value for Vms in Elastigroup.
-     * 
-     */
     public Optional<Output<String>> value() {
         return Optional.ofNullable(this.value);
     }
@@ -72,7 +64,7 @@ public final class ElastigroupScalingDownPolicyDimensionArgs extends com.pulumi.
         }
 
         /**
-         * @param name Name of the Managed Service Identity.
+         * @param name The group name.
          * 
          * @return builder
          * 
@@ -83,7 +75,7 @@ public final class ElastigroupScalingDownPolicyDimensionArgs extends com.pulumi.
         }
 
         /**
-         * @param name Name of the Managed Service Identity.
+         * @param name The group name.
          * 
          * @return builder
          * 
@@ -92,23 +84,11 @@ public final class ElastigroupScalingDownPolicyDimensionArgs extends com.pulumi.
             return name(Output.of(name));
         }
 
-        /**
-         * @param value Tag Value for Vms in Elastigroup.
-         * 
-         * @return builder
-         * 
-         */
         public Builder value(@Nullable Output<String> value) {
             $.value = value;
             return this;
         }
 
-        /**
-         * @param value Tag Value for Vms in Elastigroup.
-         * 
-         * @return builder
-         * 
-         */
         public Builder value(String value) {
             return value(Output.of(value));
         }

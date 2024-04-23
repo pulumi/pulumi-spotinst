@@ -14,7 +14,6 @@ namespace Pulumi.SpotInst.Azure
     /// 
     /// ## Example Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -122,7 +121,6 @@ namespace Pulumi.SpotInst.Azure
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Strategy
     /// 
@@ -185,7 +183,7 @@ namespace Pulumi.SpotInst.Azure
         public Output<int> MinSize { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the Managed Service Identity.
+        /// The group name.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -209,7 +207,7 @@ namespace Pulumi.SpotInst.Azure
         public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the Azure Resource Group where the Managed Service Identity is located.
+        /// Name of the Resource Group for Elastigroup.
         /// </summary>
         [Output("resourceGroupName")]
         public Output<string> ResourceGroupName { get; private set; } = null!;
@@ -350,7 +348,7 @@ namespace Pulumi.SpotInst.Azure
         public Input<int>? MinSize { get; set; }
 
         /// <summary>
-        /// Name of the Managed Service Identity.
+        /// The group name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -380,7 +378,7 @@ namespace Pulumi.SpotInst.Azure
         public Input<string> Region { get; set; } = null!;
 
         /// <summary>
-        /// Name of the Azure Resource Group where the Managed Service Identity is located.
+        /// Name of the Resource Group for Elastigroup.
         /// </summary>
         [Input("resourceGroupName", required: true)]
         public Input<string> ResourceGroupName { get; set; } = null!;
@@ -498,7 +496,7 @@ namespace Pulumi.SpotInst.Azure
         public Input<int>? MinSize { get; set; }
 
         /// <summary>
-        /// Name of the Managed Service Identity.
+        /// The group name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -528,7 +526,7 @@ namespace Pulumi.SpotInst.Azure
         public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// Name of the Azure Resource Group where the Managed Service Identity is located.
+        /// Name of the Resource Group for Elastigroup.
         /// </summary>
         [Input("resourceGroupName")]
         public Input<string>? ResourceGroupName { get; set; }

@@ -816,22 +816,15 @@ func (o ElastigroupIntegrationDockerSwarmPtrOutput) MasterPort() pulumi.IntPtrOu
 }
 
 type ElastigroupIntegrationGke struct {
-	AutoUpdate *bool `pulumi:"autoUpdate"`
-	// The amount of time, in seconds, after a scaling activity completes before any further trigger-related scaling activities can start.
-	AutoscaleCooldown *int `pulumi:"autoscaleCooldown"`
-	// Enabling scale down.
-	AutoscaleDown *ElastigroupIntegrationGkeAutoscaleDown `pulumi:"autoscaleDown"`
-	// Headroom for the cluster.
+	AutoUpdate            *bool                                       `pulumi:"autoUpdate"`
+	AutoscaleCooldown     *int                                        `pulumi:"autoscaleCooldown"`
+	AutoscaleDown         *ElastigroupIntegrationGkeAutoscaleDown     `pulumi:"autoscaleDown"`
 	AutoscaleHeadroom     *ElastigroupIntegrationGkeAutoscaleHeadroom `pulumi:"autoscaleHeadroom"`
 	AutoscaleIsAutoConfig *bool                                       `pulumi:"autoscaleIsAutoConfig"`
-	// Specifies whether the auto scaling feature is enabled.
-	AutoscaleIsEnabled *bool `pulumi:"autoscaleIsEnabled"`
-	// Labels to assign to the resource.
-	AutoscaleLabels []ElastigroupIntegrationGkeAutoscaleLabel `pulumi:"autoscaleLabels"`
-	// The name of the GKE cluster you wish to import.
-	ClusterId *string `pulumi:"clusterId"`
-	// The location of your GKE cluster.
-	Location *string `pulumi:"location"`
+	AutoscaleIsEnabled    *bool                                       `pulumi:"autoscaleIsEnabled"`
+	AutoscaleLabels       []ElastigroupIntegrationGkeAutoscaleLabel   `pulumi:"autoscaleLabels"`
+	ClusterId             *string                                     `pulumi:"clusterId"`
+	Location              *string                                     `pulumi:"location"`
 }
 
 // ElastigroupIntegrationGkeInput is an input type that accepts ElastigroupIntegrationGkeArgs and ElastigroupIntegrationGkeOutput values.
@@ -846,22 +839,15 @@ type ElastigroupIntegrationGkeInput interface {
 }
 
 type ElastigroupIntegrationGkeArgs struct {
-	AutoUpdate pulumi.BoolPtrInput `pulumi:"autoUpdate"`
-	// The amount of time, in seconds, after a scaling activity completes before any further trigger-related scaling activities can start.
-	AutoscaleCooldown pulumi.IntPtrInput `pulumi:"autoscaleCooldown"`
-	// Enabling scale down.
-	AutoscaleDown ElastigroupIntegrationGkeAutoscaleDownPtrInput `pulumi:"autoscaleDown"`
-	// Headroom for the cluster.
+	AutoUpdate            pulumi.BoolPtrInput                                `pulumi:"autoUpdate"`
+	AutoscaleCooldown     pulumi.IntPtrInput                                 `pulumi:"autoscaleCooldown"`
+	AutoscaleDown         ElastigroupIntegrationGkeAutoscaleDownPtrInput     `pulumi:"autoscaleDown"`
 	AutoscaleHeadroom     ElastigroupIntegrationGkeAutoscaleHeadroomPtrInput `pulumi:"autoscaleHeadroom"`
 	AutoscaleIsAutoConfig pulumi.BoolPtrInput                                `pulumi:"autoscaleIsAutoConfig"`
-	// Specifies whether the auto scaling feature is enabled.
-	AutoscaleIsEnabled pulumi.BoolPtrInput `pulumi:"autoscaleIsEnabled"`
-	// Labels to assign to the resource.
-	AutoscaleLabels ElastigroupIntegrationGkeAutoscaleLabelArrayInput `pulumi:"autoscaleLabels"`
-	// The name of the GKE cluster you wish to import.
-	ClusterId pulumi.StringPtrInput `pulumi:"clusterId"`
-	// The location of your GKE cluster.
-	Location pulumi.StringPtrInput `pulumi:"location"`
+	AutoscaleIsEnabled    pulumi.BoolPtrInput                                `pulumi:"autoscaleIsEnabled"`
+	AutoscaleLabels       ElastigroupIntegrationGkeAutoscaleLabelArrayInput  `pulumi:"autoscaleLabels"`
+	ClusterId             pulumi.StringPtrInput                              `pulumi:"clusterId"`
+	Location              pulumi.StringPtrInput                              `pulumi:"location"`
 }
 
 func (ElastigroupIntegrationGkeArgs) ElementType() reflect.Type {
@@ -945,17 +931,14 @@ func (o ElastigroupIntegrationGkeOutput) AutoUpdate() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ElastigroupIntegrationGke) *bool { return v.AutoUpdate }).(pulumi.BoolPtrOutput)
 }
 
-// The amount of time, in seconds, after a scaling activity completes before any further trigger-related scaling activities can start.
 func (o ElastigroupIntegrationGkeOutput) AutoscaleCooldown() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ElastigroupIntegrationGke) *int { return v.AutoscaleCooldown }).(pulumi.IntPtrOutput)
 }
 
-// Enabling scale down.
 func (o ElastigroupIntegrationGkeOutput) AutoscaleDown() ElastigroupIntegrationGkeAutoscaleDownPtrOutput {
 	return o.ApplyT(func(v ElastigroupIntegrationGke) *ElastigroupIntegrationGkeAutoscaleDown { return v.AutoscaleDown }).(ElastigroupIntegrationGkeAutoscaleDownPtrOutput)
 }
 
-// Headroom for the cluster.
 func (o ElastigroupIntegrationGkeOutput) AutoscaleHeadroom() ElastigroupIntegrationGkeAutoscaleHeadroomPtrOutput {
 	return o.ApplyT(func(v ElastigroupIntegrationGke) *ElastigroupIntegrationGkeAutoscaleHeadroom {
 		return v.AutoscaleHeadroom
@@ -966,22 +949,18 @@ func (o ElastigroupIntegrationGkeOutput) AutoscaleIsAutoConfig() pulumi.BoolPtrO
 	return o.ApplyT(func(v ElastigroupIntegrationGke) *bool { return v.AutoscaleIsAutoConfig }).(pulumi.BoolPtrOutput)
 }
 
-// Specifies whether the auto scaling feature is enabled.
 func (o ElastigroupIntegrationGkeOutput) AutoscaleIsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ElastigroupIntegrationGke) *bool { return v.AutoscaleIsEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// Labels to assign to the resource.
 func (o ElastigroupIntegrationGkeOutput) AutoscaleLabels() ElastigroupIntegrationGkeAutoscaleLabelArrayOutput {
 	return o.ApplyT(func(v ElastigroupIntegrationGke) []ElastigroupIntegrationGkeAutoscaleLabel { return v.AutoscaleLabels }).(ElastigroupIntegrationGkeAutoscaleLabelArrayOutput)
 }
 
-// The name of the GKE cluster you wish to import.
 func (o ElastigroupIntegrationGkeOutput) ClusterId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElastigroupIntegrationGke) *string { return v.ClusterId }).(pulumi.StringPtrOutput)
 }
 
-// The location of your GKE cluster.
 func (o ElastigroupIntegrationGkeOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElastigroupIntegrationGke) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
@@ -1019,7 +998,6 @@ func (o ElastigroupIntegrationGkePtrOutput) AutoUpdate() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// The amount of time, in seconds, after a scaling activity completes before any further trigger-related scaling activities can start.
 func (o ElastigroupIntegrationGkePtrOutput) AutoscaleCooldown() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ElastigroupIntegrationGke) *int {
 		if v == nil {
@@ -1029,7 +1007,6 @@ func (o ElastigroupIntegrationGkePtrOutput) AutoscaleCooldown() pulumi.IntPtrOut
 	}).(pulumi.IntPtrOutput)
 }
 
-// Enabling scale down.
 func (o ElastigroupIntegrationGkePtrOutput) AutoscaleDown() ElastigroupIntegrationGkeAutoscaleDownPtrOutput {
 	return o.ApplyT(func(v *ElastigroupIntegrationGke) *ElastigroupIntegrationGkeAutoscaleDown {
 		if v == nil {
@@ -1039,7 +1016,6 @@ func (o ElastigroupIntegrationGkePtrOutput) AutoscaleDown() ElastigroupIntegrati
 	}).(ElastigroupIntegrationGkeAutoscaleDownPtrOutput)
 }
 
-// Headroom for the cluster.
 func (o ElastigroupIntegrationGkePtrOutput) AutoscaleHeadroom() ElastigroupIntegrationGkeAutoscaleHeadroomPtrOutput {
 	return o.ApplyT(func(v *ElastigroupIntegrationGke) *ElastigroupIntegrationGkeAutoscaleHeadroom {
 		if v == nil {
@@ -1058,7 +1034,6 @@ func (o ElastigroupIntegrationGkePtrOutput) AutoscaleIsAutoConfig() pulumi.BoolP
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Specifies whether the auto scaling feature is enabled.
 func (o ElastigroupIntegrationGkePtrOutput) AutoscaleIsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ElastigroupIntegrationGke) *bool {
 		if v == nil {
@@ -1068,7 +1043,6 @@ func (o ElastigroupIntegrationGkePtrOutput) AutoscaleIsEnabled() pulumi.BoolPtrO
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Labels to assign to the resource.
 func (o ElastigroupIntegrationGkePtrOutput) AutoscaleLabels() ElastigroupIntegrationGkeAutoscaleLabelArrayOutput {
 	return o.ApplyT(func(v *ElastigroupIntegrationGke) []ElastigroupIntegrationGkeAutoscaleLabel {
 		if v == nil {
@@ -1078,7 +1052,6 @@ func (o ElastigroupIntegrationGkePtrOutput) AutoscaleLabels() ElastigroupIntegra
 	}).(ElastigroupIntegrationGkeAutoscaleLabelArrayOutput)
 }
 
-// The name of the GKE cluster you wish to import.
 func (o ElastigroupIntegrationGkePtrOutput) ClusterId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ElastigroupIntegrationGke) *string {
 		if v == nil {
@@ -1088,7 +1061,6 @@ func (o ElastigroupIntegrationGkePtrOutput) ClusterId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The location of your GKE cluster.
 func (o ElastigroupIntegrationGkePtrOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ElastigroupIntegrationGke) *string {
 		if v == nil {
@@ -1099,7 +1071,6 @@ func (o ElastigroupIntegrationGkePtrOutput) Location() pulumi.StringPtrOutput {
 }
 
 type ElastigroupIntegrationGkeAutoscaleDown struct {
-	// Amount of cooldown evaluation periods for scale down.
 	EvaluationPeriods *int `pulumi:"evaluationPeriods"`
 }
 
@@ -1115,7 +1086,6 @@ type ElastigroupIntegrationGkeAutoscaleDownInput interface {
 }
 
 type ElastigroupIntegrationGkeAutoscaleDownArgs struct {
-	// Amount of cooldown evaluation periods for scale down.
 	EvaluationPeriods pulumi.IntPtrInput `pulumi:"evaluationPeriods"`
 }
 
@@ -1196,7 +1166,6 @@ func (o ElastigroupIntegrationGkeAutoscaleDownOutput) ToElastigroupIntegrationGk
 	}).(ElastigroupIntegrationGkeAutoscaleDownPtrOutput)
 }
 
-// Amount of cooldown evaluation periods for scale down.
 func (o ElastigroupIntegrationGkeAutoscaleDownOutput) EvaluationPeriods() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ElastigroupIntegrationGkeAutoscaleDown) *int { return v.EvaluationPeriods }).(pulumi.IntPtrOutput)
 }
@@ -1225,7 +1194,6 @@ func (o ElastigroupIntegrationGkeAutoscaleDownPtrOutput) Elem() ElastigroupInteg
 	}).(ElastigroupIntegrationGkeAutoscaleDownOutput)
 }
 
-// Amount of cooldown evaluation periods for scale down.
 func (o ElastigroupIntegrationGkeAutoscaleDownPtrOutput) EvaluationPeriods() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ElastigroupIntegrationGkeAutoscaleDown) *int {
 		if v == nil {
@@ -1236,12 +1204,9 @@ func (o ElastigroupIntegrationGkeAutoscaleDownPtrOutput) EvaluationPeriods() pul
 }
 
 type ElastigroupIntegrationGkeAutoscaleHeadroom struct {
-	// Cpu units for compute.
-	CpuPerUnit *int `pulumi:"cpuPerUnit"`
-	// RAM units for compute.
+	CpuPerUnit    *int `pulumi:"cpuPerUnit"`
 	MemoryPerUnit *int `pulumi:"memoryPerUnit"`
-	// Amount of units for compute.
-	NumOfUnits *int `pulumi:"numOfUnits"`
+	NumOfUnits    *int `pulumi:"numOfUnits"`
 }
 
 // ElastigroupIntegrationGkeAutoscaleHeadroomInput is an input type that accepts ElastigroupIntegrationGkeAutoscaleHeadroomArgs and ElastigroupIntegrationGkeAutoscaleHeadroomOutput values.
@@ -1256,12 +1221,9 @@ type ElastigroupIntegrationGkeAutoscaleHeadroomInput interface {
 }
 
 type ElastigroupIntegrationGkeAutoscaleHeadroomArgs struct {
-	// Cpu units for compute.
-	CpuPerUnit pulumi.IntPtrInput `pulumi:"cpuPerUnit"`
-	// RAM units for compute.
+	CpuPerUnit    pulumi.IntPtrInput `pulumi:"cpuPerUnit"`
 	MemoryPerUnit pulumi.IntPtrInput `pulumi:"memoryPerUnit"`
-	// Amount of units for compute.
-	NumOfUnits pulumi.IntPtrInput `pulumi:"numOfUnits"`
+	NumOfUnits    pulumi.IntPtrInput `pulumi:"numOfUnits"`
 }
 
 func (ElastigroupIntegrationGkeAutoscaleHeadroomArgs) ElementType() reflect.Type {
@@ -1341,17 +1303,14 @@ func (o ElastigroupIntegrationGkeAutoscaleHeadroomOutput) ToElastigroupIntegrati
 	}).(ElastigroupIntegrationGkeAutoscaleHeadroomPtrOutput)
 }
 
-// Cpu units for compute.
 func (o ElastigroupIntegrationGkeAutoscaleHeadroomOutput) CpuPerUnit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ElastigroupIntegrationGkeAutoscaleHeadroom) *int { return v.CpuPerUnit }).(pulumi.IntPtrOutput)
 }
 
-// RAM units for compute.
 func (o ElastigroupIntegrationGkeAutoscaleHeadroomOutput) MemoryPerUnit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ElastigroupIntegrationGkeAutoscaleHeadroom) *int { return v.MemoryPerUnit }).(pulumi.IntPtrOutput)
 }
 
-// Amount of units for compute.
 func (o ElastigroupIntegrationGkeAutoscaleHeadroomOutput) NumOfUnits() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ElastigroupIntegrationGkeAutoscaleHeadroom) *int { return v.NumOfUnits }).(pulumi.IntPtrOutput)
 }
@@ -1380,7 +1339,6 @@ func (o ElastigroupIntegrationGkeAutoscaleHeadroomPtrOutput) Elem() ElastigroupI
 	}).(ElastigroupIntegrationGkeAutoscaleHeadroomOutput)
 }
 
-// Cpu units for compute.
 func (o ElastigroupIntegrationGkeAutoscaleHeadroomPtrOutput) CpuPerUnit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ElastigroupIntegrationGkeAutoscaleHeadroom) *int {
 		if v == nil {
@@ -1390,7 +1348,6 @@ func (o ElastigroupIntegrationGkeAutoscaleHeadroomPtrOutput) CpuPerUnit() pulumi
 	}).(pulumi.IntPtrOutput)
 }
 
-// RAM units for compute.
 func (o ElastigroupIntegrationGkeAutoscaleHeadroomPtrOutput) MemoryPerUnit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ElastigroupIntegrationGkeAutoscaleHeadroom) *int {
 		if v == nil {
@@ -1400,7 +1357,6 @@ func (o ElastigroupIntegrationGkeAutoscaleHeadroomPtrOutput) MemoryPerUnit() pul
 	}).(pulumi.IntPtrOutput)
 }
 
-// Amount of units for compute.
 func (o ElastigroupIntegrationGkeAutoscaleHeadroomPtrOutput) NumOfUnits() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ElastigroupIntegrationGkeAutoscaleHeadroom) *int {
 		if v == nil {
@@ -2017,21 +1973,20 @@ func (o ElastigroupNetworkInterfaceAliasIpRangeArrayOutput) Index(i pulumi.IntIn
 }
 
 type ElastigroupScalingDownPolicy struct {
-	ActionType *string                                 `pulumi:"actionType"`
-	Adjustment *int                                    `pulumi:"adjustment"`
-	Cooldown   *int                                    `pulumi:"cooldown"`
-	Dimensions []ElastigroupScalingDownPolicyDimension `pulumi:"dimensions"`
-	// Amount of cooldown evaluation periods for scale down.
-	EvaluationPeriods *int    `pulumi:"evaluationPeriods"`
-	MetricName        string  `pulumi:"metricName"`
-	Namespace         string  `pulumi:"namespace"`
-	Operator          *string `pulumi:"operator"`
-	Period            *int    `pulumi:"period"`
-	PolicyName        string  `pulumi:"policyName"`
-	Source            *string `pulumi:"source"`
-	Statistic         *string `pulumi:"statistic"`
-	Threshold         float64 `pulumi:"threshold"`
-	Unit              string  `pulumi:"unit"`
+	ActionType        *string                                 `pulumi:"actionType"`
+	Adjustment        *int                                    `pulumi:"adjustment"`
+	Cooldown          *int                                    `pulumi:"cooldown"`
+	Dimensions        []ElastigroupScalingDownPolicyDimension `pulumi:"dimensions"`
+	EvaluationPeriods *int                                    `pulumi:"evaluationPeriods"`
+	MetricName        string                                  `pulumi:"metricName"`
+	Namespace         string                                  `pulumi:"namespace"`
+	Operator          *string                                 `pulumi:"operator"`
+	Period            *int                                    `pulumi:"period"`
+	PolicyName        string                                  `pulumi:"policyName"`
+	Source            *string                                 `pulumi:"source"`
+	Statistic         *string                                 `pulumi:"statistic"`
+	Threshold         float64                                 `pulumi:"threshold"`
+	Unit              string                                  `pulumi:"unit"`
 }
 
 // ElastigroupScalingDownPolicyInput is an input type that accepts ElastigroupScalingDownPolicyArgs and ElastigroupScalingDownPolicyOutput values.
@@ -2046,21 +2001,20 @@ type ElastigroupScalingDownPolicyInput interface {
 }
 
 type ElastigroupScalingDownPolicyArgs struct {
-	ActionType pulumi.StringPtrInput                           `pulumi:"actionType"`
-	Adjustment pulumi.IntPtrInput                              `pulumi:"adjustment"`
-	Cooldown   pulumi.IntPtrInput                              `pulumi:"cooldown"`
-	Dimensions ElastigroupScalingDownPolicyDimensionArrayInput `pulumi:"dimensions"`
-	// Amount of cooldown evaluation periods for scale down.
-	EvaluationPeriods pulumi.IntPtrInput    `pulumi:"evaluationPeriods"`
-	MetricName        pulumi.StringInput    `pulumi:"metricName"`
-	Namespace         pulumi.StringInput    `pulumi:"namespace"`
-	Operator          pulumi.StringPtrInput `pulumi:"operator"`
-	Period            pulumi.IntPtrInput    `pulumi:"period"`
-	PolicyName        pulumi.StringInput    `pulumi:"policyName"`
-	Source            pulumi.StringPtrInput `pulumi:"source"`
-	Statistic         pulumi.StringPtrInput `pulumi:"statistic"`
-	Threshold         pulumi.Float64Input   `pulumi:"threshold"`
-	Unit              pulumi.StringInput    `pulumi:"unit"`
+	ActionType        pulumi.StringPtrInput                           `pulumi:"actionType"`
+	Adjustment        pulumi.IntPtrInput                              `pulumi:"adjustment"`
+	Cooldown          pulumi.IntPtrInput                              `pulumi:"cooldown"`
+	Dimensions        ElastigroupScalingDownPolicyDimensionArrayInput `pulumi:"dimensions"`
+	EvaluationPeriods pulumi.IntPtrInput                              `pulumi:"evaluationPeriods"`
+	MetricName        pulumi.StringInput                              `pulumi:"metricName"`
+	Namespace         pulumi.StringInput                              `pulumi:"namespace"`
+	Operator          pulumi.StringPtrInput                           `pulumi:"operator"`
+	Period            pulumi.IntPtrInput                              `pulumi:"period"`
+	PolicyName        pulumi.StringInput                              `pulumi:"policyName"`
+	Source            pulumi.StringPtrInput                           `pulumi:"source"`
+	Statistic         pulumi.StringPtrInput                           `pulumi:"statistic"`
+	Threshold         pulumi.Float64Input                             `pulumi:"threshold"`
+	Unit              pulumi.StringInput                              `pulumi:"unit"`
 }
 
 func (ElastigroupScalingDownPolicyArgs) ElementType() reflect.Type {
@@ -2130,7 +2084,6 @@ func (o ElastigroupScalingDownPolicyOutput) Dimensions() ElastigroupScalingDownP
 	return o.ApplyT(func(v ElastigroupScalingDownPolicy) []ElastigroupScalingDownPolicyDimension { return v.Dimensions }).(ElastigroupScalingDownPolicyDimensionArrayOutput)
 }
 
-// Amount of cooldown evaluation periods for scale down.
 func (o ElastigroupScalingDownPolicyOutput) EvaluationPeriods() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ElastigroupScalingDownPolicy) *int { return v.EvaluationPeriods }).(pulumi.IntPtrOutput)
 }
@@ -2292,21 +2245,20 @@ func (o ElastigroupScalingDownPolicyDimensionArrayOutput) Index(i pulumi.IntInpu
 }
 
 type ElastigroupScalingUpPolicy struct {
-	ActionType *string                               `pulumi:"actionType"`
-	Adjustment *int                                  `pulumi:"adjustment"`
-	Cooldown   *int                                  `pulumi:"cooldown"`
-	Dimensions []ElastigroupScalingUpPolicyDimension `pulumi:"dimensions"`
-	// Amount of cooldown evaluation periods for scale down.
-	EvaluationPeriods *int    `pulumi:"evaluationPeriods"`
-	MetricName        string  `pulumi:"metricName"`
-	Namespace         string  `pulumi:"namespace"`
-	Operator          *string `pulumi:"operator"`
-	Period            *int    `pulumi:"period"`
-	PolicyName        string  `pulumi:"policyName"`
-	Source            *string `pulumi:"source"`
-	Statistic         *string `pulumi:"statistic"`
-	Threshold         float64 `pulumi:"threshold"`
-	Unit              string  `pulumi:"unit"`
+	ActionType        *string                               `pulumi:"actionType"`
+	Adjustment        *int                                  `pulumi:"adjustment"`
+	Cooldown          *int                                  `pulumi:"cooldown"`
+	Dimensions        []ElastigroupScalingUpPolicyDimension `pulumi:"dimensions"`
+	EvaluationPeriods *int                                  `pulumi:"evaluationPeriods"`
+	MetricName        string                                `pulumi:"metricName"`
+	Namespace         string                                `pulumi:"namespace"`
+	Operator          *string                               `pulumi:"operator"`
+	Period            *int                                  `pulumi:"period"`
+	PolicyName        string                                `pulumi:"policyName"`
+	Source            *string                               `pulumi:"source"`
+	Statistic         *string                               `pulumi:"statistic"`
+	Threshold         float64                               `pulumi:"threshold"`
+	Unit              string                                `pulumi:"unit"`
 }
 
 // ElastigroupScalingUpPolicyInput is an input type that accepts ElastigroupScalingUpPolicyArgs and ElastigroupScalingUpPolicyOutput values.
@@ -2321,21 +2273,20 @@ type ElastigroupScalingUpPolicyInput interface {
 }
 
 type ElastigroupScalingUpPolicyArgs struct {
-	ActionType pulumi.StringPtrInput                         `pulumi:"actionType"`
-	Adjustment pulumi.IntPtrInput                            `pulumi:"adjustment"`
-	Cooldown   pulumi.IntPtrInput                            `pulumi:"cooldown"`
-	Dimensions ElastigroupScalingUpPolicyDimensionArrayInput `pulumi:"dimensions"`
-	// Amount of cooldown evaluation periods for scale down.
-	EvaluationPeriods pulumi.IntPtrInput    `pulumi:"evaluationPeriods"`
-	MetricName        pulumi.StringInput    `pulumi:"metricName"`
-	Namespace         pulumi.StringInput    `pulumi:"namespace"`
-	Operator          pulumi.StringPtrInput `pulumi:"operator"`
-	Period            pulumi.IntPtrInput    `pulumi:"period"`
-	PolicyName        pulumi.StringInput    `pulumi:"policyName"`
-	Source            pulumi.StringPtrInput `pulumi:"source"`
-	Statistic         pulumi.StringPtrInput `pulumi:"statistic"`
-	Threshold         pulumi.Float64Input   `pulumi:"threshold"`
-	Unit              pulumi.StringInput    `pulumi:"unit"`
+	ActionType        pulumi.StringPtrInput                         `pulumi:"actionType"`
+	Adjustment        pulumi.IntPtrInput                            `pulumi:"adjustment"`
+	Cooldown          pulumi.IntPtrInput                            `pulumi:"cooldown"`
+	Dimensions        ElastigroupScalingUpPolicyDimensionArrayInput `pulumi:"dimensions"`
+	EvaluationPeriods pulumi.IntPtrInput                            `pulumi:"evaluationPeriods"`
+	MetricName        pulumi.StringInput                            `pulumi:"metricName"`
+	Namespace         pulumi.StringInput                            `pulumi:"namespace"`
+	Operator          pulumi.StringPtrInput                         `pulumi:"operator"`
+	Period            pulumi.IntPtrInput                            `pulumi:"period"`
+	PolicyName        pulumi.StringInput                            `pulumi:"policyName"`
+	Source            pulumi.StringPtrInput                         `pulumi:"source"`
+	Statistic         pulumi.StringPtrInput                         `pulumi:"statistic"`
+	Threshold         pulumi.Float64Input                           `pulumi:"threshold"`
+	Unit              pulumi.StringInput                            `pulumi:"unit"`
 }
 
 func (ElastigroupScalingUpPolicyArgs) ElementType() reflect.Type {
@@ -2405,7 +2356,6 @@ func (o ElastigroupScalingUpPolicyOutput) Dimensions() ElastigroupScalingUpPolic
 	return o.ApplyT(func(v ElastigroupScalingUpPolicy) []ElastigroupScalingUpPolicyDimension { return v.Dimensions }).(ElastigroupScalingUpPolicyDimensionArrayOutput)
 }
 
-// Amount of cooldown evaluation periods for scale down.
 func (o ElastigroupScalingUpPolicyOutput) EvaluationPeriods() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ElastigroupScalingUpPolicy) *int { return v.EvaluationPeriods }).(pulumi.IntPtrOutput)
 }
@@ -2567,22 +2517,14 @@ func (o ElastigroupScalingUpPolicyDimensionArrayOutput) Index(i pulumi.IntInput)
 }
 
 type OceanImportAutoscaler struct {
-	// Optionally set the auto headroom percentage, set a number between 0-200 to control the headroom % from the cluster. Relevant when isAutoConfig=true.
-	AutoHeadroomPercentage *int `pulumi:"autoHeadroomPercentage"`
-	// Cooldown period between scaling actions.
-	Cooldown *int `pulumi:"cooldown"`
-	// Auto Scaling scale down operations.
-	Down *OceanImportAutoscalerDown `pulumi:"down"`
-	// enables automatic and manual headroom to work in parallel. When set to false, automatic headroom overrides all other headroom definitions manually configured, whether they are at cluster or VNG level.
-	EnableAutomaticAndManualHeadroom *bool `pulumi:"enableAutomaticAndManualHeadroom"`
-	// Spare resource capacity management enabling fast assignment of Pods without waiting for new resources to launch.
-	Headroom *OceanImportAutoscalerHeadroom `pulumi:"headroom"`
-	// Automatically configure and optimize headroom resources.
-	IsAutoConfig *bool `pulumi:"isAutoConfig"`
-	// Enable the Ocean Kubernetes Autoscaler.
-	IsEnabled *bool `pulumi:"isEnabled"`
-	// Optionally set upper and lower bounds on the resource usage of the cluster.
-	ResourceLimits *OceanImportAutoscalerResourceLimits `pulumi:"resourceLimits"`
+	AutoHeadroomPercentage           *int                                 `pulumi:"autoHeadroomPercentage"`
+	Cooldown                         *int                                 `pulumi:"cooldown"`
+	Down                             *OceanImportAutoscalerDown           `pulumi:"down"`
+	EnableAutomaticAndManualHeadroom *bool                                `pulumi:"enableAutomaticAndManualHeadroom"`
+	Headroom                         *OceanImportAutoscalerHeadroom       `pulumi:"headroom"`
+	IsAutoConfig                     *bool                                `pulumi:"isAutoConfig"`
+	IsEnabled                        *bool                                `pulumi:"isEnabled"`
+	ResourceLimits                   *OceanImportAutoscalerResourceLimits `pulumi:"resourceLimits"`
 }
 
 // OceanImportAutoscalerInput is an input type that accepts OceanImportAutoscalerArgs and OceanImportAutoscalerOutput values.
@@ -2597,22 +2539,14 @@ type OceanImportAutoscalerInput interface {
 }
 
 type OceanImportAutoscalerArgs struct {
-	// Optionally set the auto headroom percentage, set a number between 0-200 to control the headroom % from the cluster. Relevant when isAutoConfig=true.
-	AutoHeadroomPercentage pulumi.IntPtrInput `pulumi:"autoHeadroomPercentage"`
-	// Cooldown period between scaling actions.
-	Cooldown pulumi.IntPtrInput `pulumi:"cooldown"`
-	// Auto Scaling scale down operations.
-	Down OceanImportAutoscalerDownPtrInput `pulumi:"down"`
-	// enables automatic and manual headroom to work in parallel. When set to false, automatic headroom overrides all other headroom definitions manually configured, whether they are at cluster or VNG level.
-	EnableAutomaticAndManualHeadroom pulumi.BoolPtrInput `pulumi:"enableAutomaticAndManualHeadroom"`
-	// Spare resource capacity management enabling fast assignment of Pods without waiting for new resources to launch.
-	Headroom OceanImportAutoscalerHeadroomPtrInput `pulumi:"headroom"`
-	// Automatically configure and optimize headroom resources.
-	IsAutoConfig pulumi.BoolPtrInput `pulumi:"isAutoConfig"`
-	// Enable the Ocean Kubernetes Autoscaler.
-	IsEnabled pulumi.BoolPtrInput `pulumi:"isEnabled"`
-	// Optionally set upper and lower bounds on the resource usage of the cluster.
-	ResourceLimits OceanImportAutoscalerResourceLimitsPtrInput `pulumi:"resourceLimits"`
+	AutoHeadroomPercentage           pulumi.IntPtrInput                          `pulumi:"autoHeadroomPercentage"`
+	Cooldown                         pulumi.IntPtrInput                          `pulumi:"cooldown"`
+	Down                             OceanImportAutoscalerDownPtrInput           `pulumi:"down"`
+	EnableAutomaticAndManualHeadroom pulumi.BoolPtrInput                         `pulumi:"enableAutomaticAndManualHeadroom"`
+	Headroom                         OceanImportAutoscalerHeadroomPtrInput       `pulumi:"headroom"`
+	IsAutoConfig                     pulumi.BoolPtrInput                         `pulumi:"isAutoConfig"`
+	IsEnabled                        pulumi.BoolPtrInput                         `pulumi:"isEnabled"`
+	ResourceLimits                   OceanImportAutoscalerResourceLimitsPtrInput `pulumi:"resourceLimits"`
 }
 
 func (OceanImportAutoscalerArgs) ElementType() reflect.Type {
@@ -2692,42 +2626,34 @@ func (o OceanImportAutoscalerOutput) ToOceanImportAutoscalerPtrOutputWithContext
 	}).(OceanImportAutoscalerPtrOutput)
 }
 
-// Optionally set the auto headroom percentage, set a number between 0-200 to control the headroom % from the cluster. Relevant when isAutoConfig=true.
 func (o OceanImportAutoscalerOutput) AutoHeadroomPercentage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanImportAutoscaler) *int { return v.AutoHeadroomPercentage }).(pulumi.IntPtrOutput)
 }
 
-// Cooldown period between scaling actions.
 func (o OceanImportAutoscalerOutput) Cooldown() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanImportAutoscaler) *int { return v.Cooldown }).(pulumi.IntPtrOutput)
 }
 
-// Auto Scaling scale down operations.
 func (o OceanImportAutoscalerOutput) Down() OceanImportAutoscalerDownPtrOutput {
 	return o.ApplyT(func(v OceanImportAutoscaler) *OceanImportAutoscalerDown { return v.Down }).(OceanImportAutoscalerDownPtrOutput)
 }
 
-// enables automatic and manual headroom to work in parallel. When set to false, automatic headroom overrides all other headroom definitions manually configured, whether they are at cluster or VNG level.
 func (o OceanImportAutoscalerOutput) EnableAutomaticAndManualHeadroom() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OceanImportAutoscaler) *bool { return v.EnableAutomaticAndManualHeadroom }).(pulumi.BoolPtrOutput)
 }
 
-// Spare resource capacity management enabling fast assignment of Pods without waiting for new resources to launch.
 func (o OceanImportAutoscalerOutput) Headroom() OceanImportAutoscalerHeadroomPtrOutput {
 	return o.ApplyT(func(v OceanImportAutoscaler) *OceanImportAutoscalerHeadroom { return v.Headroom }).(OceanImportAutoscalerHeadroomPtrOutput)
 }
 
-// Automatically configure and optimize headroom resources.
 func (o OceanImportAutoscalerOutput) IsAutoConfig() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OceanImportAutoscaler) *bool { return v.IsAutoConfig }).(pulumi.BoolPtrOutput)
 }
 
-// Enable the Ocean Kubernetes Autoscaler.
 func (o OceanImportAutoscalerOutput) IsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OceanImportAutoscaler) *bool { return v.IsEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// Optionally set upper and lower bounds on the resource usage of the cluster.
 func (o OceanImportAutoscalerOutput) ResourceLimits() OceanImportAutoscalerResourceLimitsPtrOutput {
 	return o.ApplyT(func(v OceanImportAutoscaler) *OceanImportAutoscalerResourceLimits { return v.ResourceLimits }).(OceanImportAutoscalerResourceLimitsPtrOutput)
 }
@@ -2756,7 +2682,6 @@ func (o OceanImportAutoscalerPtrOutput) Elem() OceanImportAutoscalerOutput {
 	}).(OceanImportAutoscalerOutput)
 }
 
-// Optionally set the auto headroom percentage, set a number between 0-200 to control the headroom % from the cluster. Relevant when isAutoConfig=true.
 func (o OceanImportAutoscalerPtrOutput) AutoHeadroomPercentage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanImportAutoscaler) *int {
 		if v == nil {
@@ -2766,7 +2691,6 @@ func (o OceanImportAutoscalerPtrOutput) AutoHeadroomPercentage() pulumi.IntPtrOu
 	}).(pulumi.IntPtrOutput)
 }
 
-// Cooldown period between scaling actions.
 func (o OceanImportAutoscalerPtrOutput) Cooldown() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanImportAutoscaler) *int {
 		if v == nil {
@@ -2776,7 +2700,6 @@ func (o OceanImportAutoscalerPtrOutput) Cooldown() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Auto Scaling scale down operations.
 func (o OceanImportAutoscalerPtrOutput) Down() OceanImportAutoscalerDownPtrOutput {
 	return o.ApplyT(func(v *OceanImportAutoscaler) *OceanImportAutoscalerDown {
 		if v == nil {
@@ -2786,7 +2709,6 @@ func (o OceanImportAutoscalerPtrOutput) Down() OceanImportAutoscalerDownPtrOutpu
 	}).(OceanImportAutoscalerDownPtrOutput)
 }
 
-// enables automatic and manual headroom to work in parallel. When set to false, automatic headroom overrides all other headroom definitions manually configured, whether they are at cluster or VNG level.
 func (o OceanImportAutoscalerPtrOutput) EnableAutomaticAndManualHeadroom() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OceanImportAutoscaler) *bool {
 		if v == nil {
@@ -2796,7 +2718,6 @@ func (o OceanImportAutoscalerPtrOutput) EnableAutomaticAndManualHeadroom() pulum
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Spare resource capacity management enabling fast assignment of Pods without waiting for new resources to launch.
 func (o OceanImportAutoscalerPtrOutput) Headroom() OceanImportAutoscalerHeadroomPtrOutput {
 	return o.ApplyT(func(v *OceanImportAutoscaler) *OceanImportAutoscalerHeadroom {
 		if v == nil {
@@ -2806,7 +2727,6 @@ func (o OceanImportAutoscalerPtrOutput) Headroom() OceanImportAutoscalerHeadroom
 	}).(OceanImportAutoscalerHeadroomPtrOutput)
 }
 
-// Automatically configure and optimize headroom resources.
 func (o OceanImportAutoscalerPtrOutput) IsAutoConfig() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OceanImportAutoscaler) *bool {
 		if v == nil {
@@ -2816,7 +2736,6 @@ func (o OceanImportAutoscalerPtrOutput) IsAutoConfig() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Enable the Ocean Kubernetes Autoscaler.
 func (o OceanImportAutoscalerPtrOutput) IsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OceanImportAutoscaler) *bool {
 		if v == nil {
@@ -2826,7 +2745,6 @@ func (o OceanImportAutoscalerPtrOutput) IsEnabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Optionally set upper and lower bounds on the resource usage of the cluster.
 func (o OceanImportAutoscalerPtrOutput) ResourceLimits() OceanImportAutoscalerResourceLimitsPtrOutput {
 	return o.ApplyT(func(v *OceanImportAutoscaler) *OceanImportAutoscalerResourceLimits {
 		if v == nil {
@@ -2837,9 +2755,7 @@ func (o OceanImportAutoscalerPtrOutput) ResourceLimits() OceanImportAutoscalerRe
 }
 
 type OceanImportAutoscalerDown struct {
-	// The number of evaluation periods that should accumulate before a scale down action takes place.
-	EvaluationPeriods *int `pulumi:"evaluationPeriods"`
-	// Would represent the maximum % to scale-down. Number between 1-100.
+	EvaluationPeriods      *int     `pulumi:"evaluationPeriods"`
 	MaxScaleDownPercentage *float64 `pulumi:"maxScaleDownPercentage"`
 }
 
@@ -2855,9 +2771,7 @@ type OceanImportAutoscalerDownInput interface {
 }
 
 type OceanImportAutoscalerDownArgs struct {
-	// The number of evaluation periods that should accumulate before a scale down action takes place.
-	EvaluationPeriods pulumi.IntPtrInput `pulumi:"evaluationPeriods"`
-	// Would represent the maximum % to scale-down. Number between 1-100.
+	EvaluationPeriods      pulumi.IntPtrInput     `pulumi:"evaluationPeriods"`
 	MaxScaleDownPercentage pulumi.Float64PtrInput `pulumi:"maxScaleDownPercentage"`
 }
 
@@ -2938,12 +2852,10 @@ func (o OceanImportAutoscalerDownOutput) ToOceanImportAutoscalerDownPtrOutputWit
 	}).(OceanImportAutoscalerDownPtrOutput)
 }
 
-// The number of evaluation periods that should accumulate before a scale down action takes place.
 func (o OceanImportAutoscalerDownOutput) EvaluationPeriods() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanImportAutoscalerDown) *int { return v.EvaluationPeriods }).(pulumi.IntPtrOutput)
 }
 
-// Would represent the maximum % to scale-down. Number between 1-100.
 func (o OceanImportAutoscalerDownOutput) MaxScaleDownPercentage() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v OceanImportAutoscalerDown) *float64 { return v.MaxScaleDownPercentage }).(pulumi.Float64PtrOutput)
 }
@@ -2972,7 +2884,6 @@ func (o OceanImportAutoscalerDownPtrOutput) Elem() OceanImportAutoscalerDownOutp
 	}).(OceanImportAutoscalerDownOutput)
 }
 
-// The number of evaluation periods that should accumulate before a scale down action takes place.
 func (o OceanImportAutoscalerDownPtrOutput) EvaluationPeriods() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanImportAutoscalerDown) *int {
 		if v == nil {
@@ -2982,7 +2893,6 @@ func (o OceanImportAutoscalerDownPtrOutput) EvaluationPeriods() pulumi.IntPtrOut
 	}).(pulumi.IntPtrOutput)
 }
 
-// Would represent the maximum % to scale-down. Number between 1-100.
 func (o OceanImportAutoscalerDownPtrOutput) MaxScaleDownPercentage() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *OceanImportAutoscalerDown) *float64 {
 		if v == nil {
@@ -2993,14 +2903,10 @@ func (o OceanImportAutoscalerDownPtrOutput) MaxScaleDownPercentage() pulumi.Floa
 }
 
 type OceanImportAutoscalerHeadroom struct {
-	// Optionally configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
-	CpuPerUnit *int `pulumi:"cpuPerUnit"`
-	// How much GPU allocate for headroom unit.
-	GpuPerUnit *int `pulumi:"gpuPerUnit"`
-	// Optionally configure the amount of memory (MiB) to allocate the headroom.
+	CpuPerUnit    *int `pulumi:"cpuPerUnit"`
+	GpuPerUnit    *int `pulumi:"gpuPerUnit"`
 	MemoryPerUnit *int `pulumi:"memoryPerUnit"`
-	// The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
-	NumOfUnits *int `pulumi:"numOfUnits"`
+	NumOfUnits    *int `pulumi:"numOfUnits"`
 }
 
 // OceanImportAutoscalerHeadroomInput is an input type that accepts OceanImportAutoscalerHeadroomArgs and OceanImportAutoscalerHeadroomOutput values.
@@ -3015,14 +2921,10 @@ type OceanImportAutoscalerHeadroomInput interface {
 }
 
 type OceanImportAutoscalerHeadroomArgs struct {
-	// Optionally configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
-	CpuPerUnit pulumi.IntPtrInput `pulumi:"cpuPerUnit"`
-	// How much GPU allocate for headroom unit.
-	GpuPerUnit pulumi.IntPtrInput `pulumi:"gpuPerUnit"`
-	// Optionally configure the amount of memory (MiB) to allocate the headroom.
+	CpuPerUnit    pulumi.IntPtrInput `pulumi:"cpuPerUnit"`
+	GpuPerUnit    pulumi.IntPtrInput `pulumi:"gpuPerUnit"`
 	MemoryPerUnit pulumi.IntPtrInput `pulumi:"memoryPerUnit"`
-	// The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
-	NumOfUnits pulumi.IntPtrInput `pulumi:"numOfUnits"`
+	NumOfUnits    pulumi.IntPtrInput `pulumi:"numOfUnits"`
 }
 
 func (OceanImportAutoscalerHeadroomArgs) ElementType() reflect.Type {
@@ -3102,22 +3004,18 @@ func (o OceanImportAutoscalerHeadroomOutput) ToOceanImportAutoscalerHeadroomPtrO
 	}).(OceanImportAutoscalerHeadroomPtrOutput)
 }
 
-// Optionally configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
 func (o OceanImportAutoscalerHeadroomOutput) CpuPerUnit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanImportAutoscalerHeadroom) *int { return v.CpuPerUnit }).(pulumi.IntPtrOutput)
 }
 
-// How much GPU allocate for headroom unit.
 func (o OceanImportAutoscalerHeadroomOutput) GpuPerUnit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanImportAutoscalerHeadroom) *int { return v.GpuPerUnit }).(pulumi.IntPtrOutput)
 }
 
-// Optionally configure the amount of memory (MiB) to allocate the headroom.
 func (o OceanImportAutoscalerHeadroomOutput) MemoryPerUnit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanImportAutoscalerHeadroom) *int { return v.MemoryPerUnit }).(pulumi.IntPtrOutput)
 }
 
-// The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
 func (o OceanImportAutoscalerHeadroomOutput) NumOfUnits() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanImportAutoscalerHeadroom) *int { return v.NumOfUnits }).(pulumi.IntPtrOutput)
 }
@@ -3146,7 +3044,6 @@ func (o OceanImportAutoscalerHeadroomPtrOutput) Elem() OceanImportAutoscalerHead
 	}).(OceanImportAutoscalerHeadroomOutput)
 }
 
-// Optionally configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
 func (o OceanImportAutoscalerHeadroomPtrOutput) CpuPerUnit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanImportAutoscalerHeadroom) *int {
 		if v == nil {
@@ -3156,7 +3053,6 @@ func (o OceanImportAutoscalerHeadroomPtrOutput) CpuPerUnit() pulumi.IntPtrOutput
 	}).(pulumi.IntPtrOutput)
 }
 
-// How much GPU allocate for headroom unit.
 func (o OceanImportAutoscalerHeadroomPtrOutput) GpuPerUnit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanImportAutoscalerHeadroom) *int {
 		if v == nil {
@@ -3166,7 +3062,6 @@ func (o OceanImportAutoscalerHeadroomPtrOutput) GpuPerUnit() pulumi.IntPtrOutput
 	}).(pulumi.IntPtrOutput)
 }
 
-// Optionally configure the amount of memory (MiB) to allocate the headroom.
 func (o OceanImportAutoscalerHeadroomPtrOutput) MemoryPerUnit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanImportAutoscalerHeadroom) *int {
 		if v == nil {
@@ -3176,7 +3071,6 @@ func (o OceanImportAutoscalerHeadroomPtrOutput) MemoryPerUnit() pulumi.IntPtrOut
 	}).(pulumi.IntPtrOutput)
 }
 
-// The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
 func (o OceanImportAutoscalerHeadroomPtrOutput) NumOfUnits() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanImportAutoscalerHeadroom) *int {
 		if v == nil {
@@ -3187,10 +3081,8 @@ func (o OceanImportAutoscalerHeadroomPtrOutput) NumOfUnits() pulumi.IntPtrOutput
 }
 
 type OceanImportAutoscalerResourceLimits struct {
-	// The maximum memory in GiB units that can be allocated to the cluster.
 	MaxMemoryGib *int `pulumi:"maxMemoryGib"`
-	// The maximum cpu in vCpu units that can be allocated to the cluster.
-	MaxVcpu *int `pulumi:"maxVcpu"`
+	MaxVcpu      *int `pulumi:"maxVcpu"`
 }
 
 // OceanImportAutoscalerResourceLimitsInput is an input type that accepts OceanImportAutoscalerResourceLimitsArgs and OceanImportAutoscalerResourceLimitsOutput values.
@@ -3205,10 +3097,8 @@ type OceanImportAutoscalerResourceLimitsInput interface {
 }
 
 type OceanImportAutoscalerResourceLimitsArgs struct {
-	// The maximum memory in GiB units that can be allocated to the cluster.
 	MaxMemoryGib pulumi.IntPtrInput `pulumi:"maxMemoryGib"`
-	// The maximum cpu in vCpu units that can be allocated to the cluster.
-	MaxVcpu pulumi.IntPtrInput `pulumi:"maxVcpu"`
+	MaxVcpu      pulumi.IntPtrInput `pulumi:"maxVcpu"`
 }
 
 func (OceanImportAutoscalerResourceLimitsArgs) ElementType() reflect.Type {
@@ -3288,12 +3178,10 @@ func (o OceanImportAutoscalerResourceLimitsOutput) ToOceanImportAutoscalerResour
 	}).(OceanImportAutoscalerResourceLimitsPtrOutput)
 }
 
-// The maximum memory in GiB units that can be allocated to the cluster.
 func (o OceanImportAutoscalerResourceLimitsOutput) MaxMemoryGib() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanImportAutoscalerResourceLimits) *int { return v.MaxMemoryGib }).(pulumi.IntPtrOutput)
 }
 
-// The maximum cpu in vCpu units that can be allocated to the cluster.
 func (o OceanImportAutoscalerResourceLimitsOutput) MaxVcpu() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanImportAutoscalerResourceLimits) *int { return v.MaxVcpu }).(pulumi.IntPtrOutput)
 }
@@ -3322,7 +3210,6 @@ func (o OceanImportAutoscalerResourceLimitsPtrOutput) Elem() OceanImportAutoscal
 	}).(OceanImportAutoscalerResourceLimitsOutput)
 }
 
-// The maximum memory in GiB units that can be allocated to the cluster.
 func (o OceanImportAutoscalerResourceLimitsPtrOutput) MaxMemoryGib() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanImportAutoscalerResourceLimits) *int {
 		if v == nil {
@@ -3332,7 +3219,6 @@ func (o OceanImportAutoscalerResourceLimitsPtrOutput) MaxMemoryGib() pulumi.IntP
 	}).(pulumi.IntPtrOutput)
 }
 
-// The maximum cpu in vCpu units that can be allocated to the cluster.
 func (o OceanImportAutoscalerResourceLimitsPtrOutput) MaxVcpu() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanImportAutoscalerResourceLimits) *int {
 		if v == nil {
@@ -3464,8 +3350,7 @@ func (o OceanImportBackendServiceArrayOutput) Index(i pulumi.IntInput) OceanImpo
 }
 
 type OceanImportBackendServiceNamedPort struct {
-	Name string `pulumi:"name"`
-	// A list of ports.
+	Name  string   `pulumi:"name"`
 	Ports []string `pulumi:"ports"`
 }
 
@@ -3481,8 +3366,7 @@ type OceanImportBackendServiceNamedPortInput interface {
 }
 
 type OceanImportBackendServiceNamedPortArgs struct {
-	Name pulumi.StringInput `pulumi:"name"`
-	// A list of ports.
+	Name  pulumi.StringInput      `pulumi:"name"`
 	Ports pulumi.StringArrayInput `pulumi:"ports"`
 }
 
@@ -3541,7 +3425,6 @@ func (o OceanImportBackendServiceNamedPortOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v OceanImportBackendServiceNamedPort) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// A list of ports.
 func (o OceanImportBackendServiceNamedPortOutput) Ports() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v OceanImportBackendServiceNamedPort) []string { return v.Ports }).(pulumi.StringArrayOutput)
 }
@@ -3567,10 +3450,8 @@ func (o OceanImportBackendServiceNamedPortArrayOutput) Index(i pulumi.IntInput) 
 }
 
 type OceanImportScheduledTask struct {
-	// Set shutdown hours for cluster object.
 	ShutdownHours *OceanImportScheduledTaskShutdownHours `pulumi:"shutdownHours"`
-	// The scheduling tasks for the cluster.
-	Tasks []OceanImportScheduledTaskTask `pulumi:"tasks"`
+	Tasks         []OceanImportScheduledTaskTask         `pulumi:"tasks"`
 }
 
 // OceanImportScheduledTaskInput is an input type that accepts OceanImportScheduledTaskArgs and OceanImportScheduledTaskOutput values.
@@ -3585,10 +3466,8 @@ type OceanImportScheduledTaskInput interface {
 }
 
 type OceanImportScheduledTaskArgs struct {
-	// Set shutdown hours for cluster object.
 	ShutdownHours OceanImportScheduledTaskShutdownHoursPtrInput `pulumi:"shutdownHours"`
-	// The scheduling tasks for the cluster.
-	Tasks OceanImportScheduledTaskTaskArrayInput `pulumi:"tasks"`
+	Tasks         OceanImportScheduledTaskTaskArrayInput        `pulumi:"tasks"`
 }
 
 func (OceanImportScheduledTaskArgs) ElementType() reflect.Type {
@@ -3642,12 +3521,10 @@ func (o OceanImportScheduledTaskOutput) ToOceanImportScheduledTaskOutputWithCont
 	return o
 }
 
-// Set shutdown hours for cluster object.
 func (o OceanImportScheduledTaskOutput) ShutdownHours() OceanImportScheduledTaskShutdownHoursPtrOutput {
 	return o.ApplyT(func(v OceanImportScheduledTask) *OceanImportScheduledTaskShutdownHours { return v.ShutdownHours }).(OceanImportScheduledTaskShutdownHoursPtrOutput)
 }
 
-// The scheduling tasks for the cluster.
 func (o OceanImportScheduledTaskOutput) Tasks() OceanImportScheduledTaskTaskArrayOutput {
 	return o.ApplyT(func(v OceanImportScheduledTask) []OceanImportScheduledTaskTask { return v.Tasks }).(OceanImportScheduledTaskTaskArrayOutput)
 }
@@ -3673,10 +3550,7 @@ func (o OceanImportScheduledTaskArrayOutput) Index(i pulumi.IntInput) OceanImpor
 }
 
 type OceanImportScheduledTaskShutdownHours struct {
-	// Enable the Ocean Kubernetes Autoscaler.
-	IsEnabled *bool `pulumi:"isEnabled"`
-	// Set time windows for shutdown hours. specify a list of 'timeWindows' with at least one time window Each string is in the format of - ddd:hh:mm-ddd:hh:mm ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59. Time windows should not overlap. required on cluster.scheduling.isEnabled = True. API Times are in UTC
-	// Example: Fri:15:30-Wed:14:30
+	IsEnabled   *bool    `pulumi:"isEnabled"`
 	TimeWindows []string `pulumi:"timeWindows"`
 }
 
@@ -3692,10 +3566,7 @@ type OceanImportScheduledTaskShutdownHoursInput interface {
 }
 
 type OceanImportScheduledTaskShutdownHoursArgs struct {
-	// Enable the Ocean Kubernetes Autoscaler.
-	IsEnabled pulumi.BoolPtrInput `pulumi:"isEnabled"`
-	// Set time windows for shutdown hours. specify a list of 'timeWindows' with at least one time window Each string is in the format of - ddd:hh:mm-ddd:hh:mm ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59. Time windows should not overlap. required on cluster.scheduling.isEnabled = True. API Times are in UTC
-	// Example: Fri:15:30-Wed:14:30
+	IsEnabled   pulumi.BoolPtrInput     `pulumi:"isEnabled"`
 	TimeWindows pulumi.StringArrayInput `pulumi:"timeWindows"`
 }
 
@@ -3776,13 +3647,10 @@ func (o OceanImportScheduledTaskShutdownHoursOutput) ToOceanImportScheduledTaskS
 	}).(OceanImportScheduledTaskShutdownHoursPtrOutput)
 }
 
-// Enable the Ocean Kubernetes Autoscaler.
 func (o OceanImportScheduledTaskShutdownHoursOutput) IsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OceanImportScheduledTaskShutdownHours) *bool { return v.IsEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// Set time windows for shutdown hours. specify a list of 'timeWindows' with at least one time window Each string is in the format of - ddd:hh:mm-ddd:hh:mm ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59. Time windows should not overlap. required on cluster.scheduling.isEnabled = True. API Times are in UTC
-// Example: Fri:15:30-Wed:14:30
 func (o OceanImportScheduledTaskShutdownHoursOutput) TimeWindows() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v OceanImportScheduledTaskShutdownHours) []string { return v.TimeWindows }).(pulumi.StringArrayOutput)
 }
@@ -3811,7 +3679,6 @@ func (o OceanImportScheduledTaskShutdownHoursPtrOutput) Elem() OceanImportSchedu
 	}).(OceanImportScheduledTaskShutdownHoursOutput)
 }
 
-// Enable the Ocean Kubernetes Autoscaler.
 func (o OceanImportScheduledTaskShutdownHoursPtrOutput) IsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OceanImportScheduledTaskShutdownHours) *bool {
 		if v == nil {
@@ -3821,8 +3688,6 @@ func (o OceanImportScheduledTaskShutdownHoursPtrOutput) IsEnabled() pulumi.BoolP
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Set time windows for shutdown hours. specify a list of 'timeWindows' with at least one time window Each string is in the format of - ddd:hh:mm-ddd:hh:mm ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59. Time windows should not overlap. required on cluster.scheduling.isEnabled = True. API Times are in UTC
-// Example: Fri:15:30-Wed:14:30
 func (o OceanImportScheduledTaskShutdownHoursPtrOutput) TimeWindows() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *OceanImportScheduledTaskShutdownHours) []string {
 		if v == nil {
@@ -3833,14 +3698,10 @@ func (o OceanImportScheduledTaskShutdownHoursPtrOutput) TimeWindows() pulumi.Str
 }
 
 type OceanImportScheduledTaskTask struct {
-	// A valid cron expression. For example : " * * * * * ".The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of ‘frequency’ or ‘cronExpression’ should be used at a time. Required for cluster.scheduling.tasks object
-	// Example: 0 1 * * *
-	CronExpression string `pulumi:"cronExpression"`
-	// Enable the Ocean Kubernetes Autoscaler.
+	CronExpression string                                      `pulumi:"cronExpression"`
 	IsEnabled      bool                                        `pulumi:"isEnabled"`
 	TaskParameters *OceanImportScheduledTaskTaskTaskParameters `pulumi:"taskParameters"`
-	// Valid values: "clusterRoll". Required for cluster.scheduling.tasks object.
-	TaskType string `pulumi:"taskType"`
+	TaskType       string                                      `pulumi:"taskType"`
 }
 
 // OceanImportScheduledTaskTaskInput is an input type that accepts OceanImportScheduledTaskTaskArgs and OceanImportScheduledTaskTaskOutput values.
@@ -3855,14 +3716,10 @@ type OceanImportScheduledTaskTaskInput interface {
 }
 
 type OceanImportScheduledTaskTaskArgs struct {
-	// A valid cron expression. For example : " * * * * * ".The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of ‘frequency’ or ‘cronExpression’ should be used at a time. Required for cluster.scheduling.tasks object
-	// Example: 0 1 * * *
-	CronExpression pulumi.StringInput `pulumi:"cronExpression"`
-	// Enable the Ocean Kubernetes Autoscaler.
+	CronExpression pulumi.StringInput                                 `pulumi:"cronExpression"`
 	IsEnabled      pulumi.BoolInput                                   `pulumi:"isEnabled"`
 	TaskParameters OceanImportScheduledTaskTaskTaskParametersPtrInput `pulumi:"taskParameters"`
-	// Valid values: "clusterRoll". Required for cluster.scheduling.tasks object.
-	TaskType pulumi.StringInput `pulumi:"taskType"`
+	TaskType       pulumi.StringInput                                 `pulumi:"taskType"`
 }
 
 func (OceanImportScheduledTaskTaskArgs) ElementType() reflect.Type {
@@ -3916,13 +3773,10 @@ func (o OceanImportScheduledTaskTaskOutput) ToOceanImportScheduledTaskTaskOutput
 	return o
 }
 
-// A valid cron expression. For example : " * * * * * ".The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of ‘frequency’ or ‘cronExpression’ should be used at a time. Required for cluster.scheduling.tasks object
-// Example: 0 1 * * *
 func (o OceanImportScheduledTaskTaskOutput) CronExpression() pulumi.StringOutput {
 	return o.ApplyT(func(v OceanImportScheduledTaskTask) string { return v.CronExpression }).(pulumi.StringOutput)
 }
 
-// Enable the Ocean Kubernetes Autoscaler.
 func (o OceanImportScheduledTaskTaskOutput) IsEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v OceanImportScheduledTaskTask) bool { return v.IsEnabled }).(pulumi.BoolOutput)
 }
@@ -3933,7 +3787,6 @@ func (o OceanImportScheduledTaskTaskOutput) TaskParameters() OceanImportSchedule
 	}).(OceanImportScheduledTaskTaskTaskParametersPtrOutput)
 }
 
-// Valid values: "clusterRoll". Required for cluster.scheduling.tasks object.
 func (o OceanImportScheduledTaskTaskOutput) TaskType() pulumi.StringOutput {
 	return o.ApplyT(func(v OceanImportScheduledTaskTask) string { return v.TaskType }).(pulumi.StringOutput)
 }
@@ -4094,12 +3947,10 @@ func (o OceanImportScheduledTaskTaskTaskParametersPtrOutput) ClusterRoll() Ocean
 }
 
 type OceanImportScheduledTaskTaskTaskParametersClusterRoll struct {
-	BatchMinHealthyPercentage *int `pulumi:"batchMinHealthyPercentage"`
-	// Value in % to set size of batch in roll. Valid values are 0-100
-	// Example: 20.
-	BatchSizePercentage *int    `pulumi:"batchSizePercentage"`
-	Comment             *string `pulumi:"comment"`
-	RespectPdb          *bool   `pulumi:"respectPdb"`
+	BatchMinHealthyPercentage *int    `pulumi:"batchMinHealthyPercentage"`
+	BatchSizePercentage       *int    `pulumi:"batchSizePercentage"`
+	Comment                   *string `pulumi:"comment"`
+	RespectPdb                *bool   `pulumi:"respectPdb"`
 }
 
 // OceanImportScheduledTaskTaskTaskParametersClusterRollInput is an input type that accepts OceanImportScheduledTaskTaskTaskParametersClusterRollArgs and OceanImportScheduledTaskTaskTaskParametersClusterRollOutput values.
@@ -4114,12 +3965,10 @@ type OceanImportScheduledTaskTaskTaskParametersClusterRollInput interface {
 }
 
 type OceanImportScheduledTaskTaskTaskParametersClusterRollArgs struct {
-	BatchMinHealthyPercentage pulumi.IntPtrInput `pulumi:"batchMinHealthyPercentage"`
-	// Value in % to set size of batch in roll. Valid values are 0-100
-	// Example: 20.
-	BatchSizePercentage pulumi.IntPtrInput    `pulumi:"batchSizePercentage"`
-	Comment             pulumi.StringPtrInput `pulumi:"comment"`
-	RespectPdb          pulumi.BoolPtrInput   `pulumi:"respectPdb"`
+	BatchMinHealthyPercentage pulumi.IntPtrInput    `pulumi:"batchMinHealthyPercentage"`
+	BatchSizePercentage       pulumi.IntPtrInput    `pulumi:"batchSizePercentage"`
+	Comment                   pulumi.StringPtrInput `pulumi:"comment"`
+	RespectPdb                pulumi.BoolPtrInput   `pulumi:"respectPdb"`
 }
 
 func (OceanImportScheduledTaskTaskTaskParametersClusterRollArgs) ElementType() reflect.Type {
@@ -4203,8 +4052,6 @@ func (o OceanImportScheduledTaskTaskTaskParametersClusterRollOutput) BatchMinHea
 	return o.ApplyT(func(v OceanImportScheduledTaskTaskTaskParametersClusterRoll) *int { return v.BatchMinHealthyPercentage }).(pulumi.IntPtrOutput)
 }
 
-// Value in % to set size of batch in roll. Valid values are 0-100
-// Example: 20.
 func (o OceanImportScheduledTaskTaskTaskParametersClusterRollOutput) BatchSizePercentage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanImportScheduledTaskTaskTaskParametersClusterRoll) *int { return v.BatchSizePercentage }).(pulumi.IntPtrOutput)
 }
@@ -4250,8 +4097,6 @@ func (o OceanImportScheduledTaskTaskTaskParametersClusterRollPtrOutput) BatchMin
 	}).(pulumi.IntPtrOutput)
 }
 
-// Value in % to set size of batch in roll. Valid values are 0-100
-// Example: 20.
 func (o OceanImportScheduledTaskTaskTaskParametersClusterRollPtrOutput) BatchSizePercentage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanImportScheduledTaskTaskTaskParametersClusterRoll) *int {
 		if v == nil {
@@ -4708,12 +4553,10 @@ func (o OceanImportUpdatePolicyPtrOutput) ShouldRoll() pulumi.BoolPtrOutput {
 }
 
 type OceanImportUpdatePolicyRollConfig struct {
-	BatchMinHealthyPercentage *int `pulumi:"batchMinHealthyPercentage"`
-	// Value in % to set size of batch in roll. Valid values are 0-100
-	// Example: 20.
-	BatchSizePercentage int      `pulumi:"batchSizePercentage"`
-	LaunchSpecIds       []string `pulumi:"launchSpecIds"`
-	RespectPdb          *bool    `pulumi:"respectPdb"`
+	BatchMinHealthyPercentage *int     `pulumi:"batchMinHealthyPercentage"`
+	BatchSizePercentage       int      `pulumi:"batchSizePercentage"`
+	LaunchSpecIds             []string `pulumi:"launchSpecIds"`
+	RespectPdb                *bool    `pulumi:"respectPdb"`
 }
 
 // OceanImportUpdatePolicyRollConfigInput is an input type that accepts OceanImportUpdatePolicyRollConfigArgs and OceanImportUpdatePolicyRollConfigOutput values.
@@ -4728,12 +4571,10 @@ type OceanImportUpdatePolicyRollConfigInput interface {
 }
 
 type OceanImportUpdatePolicyRollConfigArgs struct {
-	BatchMinHealthyPercentage pulumi.IntPtrInput `pulumi:"batchMinHealthyPercentage"`
-	// Value in % to set size of batch in roll. Valid values are 0-100
-	// Example: 20.
-	BatchSizePercentage pulumi.IntInput         `pulumi:"batchSizePercentage"`
-	LaunchSpecIds       pulumi.StringArrayInput `pulumi:"launchSpecIds"`
-	RespectPdb          pulumi.BoolPtrInput     `pulumi:"respectPdb"`
+	BatchMinHealthyPercentage pulumi.IntPtrInput      `pulumi:"batchMinHealthyPercentage"`
+	BatchSizePercentage       pulumi.IntInput         `pulumi:"batchSizePercentage"`
+	LaunchSpecIds             pulumi.StringArrayInput `pulumi:"launchSpecIds"`
+	RespectPdb                pulumi.BoolPtrInput     `pulumi:"respectPdb"`
 }
 
 func (OceanImportUpdatePolicyRollConfigArgs) ElementType() reflect.Type {
@@ -4817,8 +4658,6 @@ func (o OceanImportUpdatePolicyRollConfigOutput) BatchMinHealthyPercentage() pul
 	return o.ApplyT(func(v OceanImportUpdatePolicyRollConfig) *int { return v.BatchMinHealthyPercentage }).(pulumi.IntPtrOutput)
 }
 
-// Value in % to set size of batch in roll. Valid values are 0-100
-// Example: 20.
 func (o OceanImportUpdatePolicyRollConfigOutput) BatchSizePercentage() pulumi.IntOutput {
 	return o.ApplyT(func(v OceanImportUpdatePolicyRollConfig) int { return v.BatchSizePercentage }).(pulumi.IntOutput)
 }
@@ -4864,8 +4703,6 @@ func (o OceanImportUpdatePolicyRollConfigPtrOutput) BatchMinHealthyPercentage() 
 	}).(pulumi.IntPtrOutput)
 }
 
-// Value in % to set size of batch in roll. Valid values are 0-100
-// Example: 20.
 func (o OceanImportUpdatePolicyRollConfigPtrOutput) BatchSizePercentage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OceanImportUpdatePolicyRollConfig) *int {
 		if v == nil {
@@ -5221,9 +5058,9 @@ func (o OceanLaunchSpecLabelArrayOutput) Index(i pulumi.IntInput) OceanLaunchSpe
 }
 
 type OceanLaunchSpecMetadata struct {
-	// The label key.
+	// The metadata key.
 	Key *string `pulumi:"key"`
-	// The label value.
+	// The metadata value.
 	Value *string `pulumi:"value"`
 }
 
@@ -5239,9 +5076,9 @@ type OceanLaunchSpecMetadataInput interface {
 }
 
 type OceanLaunchSpecMetadataArgs struct {
-	// The label key.
+	// The metadata key.
 	Key pulumi.StringPtrInput `pulumi:"key"`
-	// The label value.
+	// The metadata value.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -5296,12 +5133,12 @@ func (o OceanLaunchSpecMetadataOutput) ToOceanLaunchSpecMetadataOutputWithContex
 	return o
 }
 
-// The label key.
+// The metadata key.
 func (o OceanLaunchSpecMetadataOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OceanLaunchSpecMetadata) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
 
-// The label value.
+// The metadata value.
 func (o OceanLaunchSpecMetadataOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OceanLaunchSpecMetadata) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -5455,9 +5292,8 @@ func (o OceanLaunchSpecNetworkInterfaceArrayOutput) Index(i pulumi.IntInput) Oce
 }
 
 type OceanLaunchSpecNetworkInterfaceAccessConfig struct {
-	// The name of the access configuration.
+	// The launch specification name.
 	Name *string `pulumi:"name"`
-	// The type of the access configuration.
 	Type *string `pulumi:"type"`
 }
 
@@ -5473,9 +5309,8 @@ type OceanLaunchSpecNetworkInterfaceAccessConfigInput interface {
 }
 
 type OceanLaunchSpecNetworkInterfaceAccessConfigArgs struct {
-	// The name of the access configuration.
+	// The launch specification name.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// The type of the access configuration.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
@@ -5530,12 +5365,11 @@ func (o OceanLaunchSpecNetworkInterfaceAccessConfigOutput) ToOceanLaunchSpecNetw
 	return o
 }
 
-// The name of the access configuration.
+// The launch specification name.
 func (o OceanLaunchSpecNetworkInterfaceAccessConfigOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OceanLaunchSpecNetworkInterfaceAccessConfig) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// The type of the access configuration.
 func (o OceanLaunchSpecNetworkInterfaceAccessConfigOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OceanLaunchSpecNetworkInterfaceAccessConfig) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -5561,11 +5395,7 @@ func (o OceanLaunchSpecNetworkInterfaceAccessConfigArrayOutput) Index(i pulumi.I
 }
 
 type OceanLaunchSpecNetworkInterfaceAliasIpRange struct {
-	// specify the IP address range in CIDR notation that can be used for the alias IP addresses associated with the imported node pool.
-	IpCidrRange string `pulumi:"ipCidrRange"`
-	// specify the IP address range for the subnet secondary IP range.
-	//
-	// <a id="update-policy"></a>
+	IpCidrRange         string `pulumi:"ipCidrRange"`
 	SubnetworkRangeName string `pulumi:"subnetworkRangeName"`
 }
 
@@ -5581,11 +5411,7 @@ type OceanLaunchSpecNetworkInterfaceAliasIpRangeInput interface {
 }
 
 type OceanLaunchSpecNetworkInterfaceAliasIpRangeArgs struct {
-	// specify the IP address range in CIDR notation that can be used for the alias IP addresses associated with the imported node pool.
-	IpCidrRange pulumi.StringInput `pulumi:"ipCidrRange"`
-	// specify the IP address range for the subnet secondary IP range.
-	//
-	// <a id="update-policy"></a>
+	IpCidrRange         pulumi.StringInput `pulumi:"ipCidrRange"`
 	SubnetworkRangeName pulumi.StringInput `pulumi:"subnetworkRangeName"`
 }
 
@@ -5640,14 +5466,10 @@ func (o OceanLaunchSpecNetworkInterfaceAliasIpRangeOutput) ToOceanLaunchSpecNetw
 	return o
 }
 
-// specify the IP address range in CIDR notation that can be used for the alias IP addresses associated with the imported node pool.
 func (o OceanLaunchSpecNetworkInterfaceAliasIpRangeOutput) IpCidrRange() pulumi.StringOutput {
 	return o.ApplyT(func(v OceanLaunchSpecNetworkInterfaceAliasIpRange) string { return v.IpCidrRange }).(pulumi.StringOutput)
 }
 
-// specify the IP address range for the subnet secondary IP range.
-//
-// <a id="update-policy"></a>
 func (o OceanLaunchSpecNetworkInterfaceAliasIpRangeOutput) SubnetworkRangeName() pulumi.StringOutput {
 	return o.ApplyT(func(v OceanLaunchSpecNetworkInterfaceAliasIpRange) string { return v.SubnetworkRangeName }).(pulumi.StringOutput)
 }
@@ -5955,14 +5777,10 @@ func (o OceanLaunchSpecSchedulingTaskArrayOutput) Index(i pulumi.IntInput) Ocean
 }
 
 type OceanLaunchSpecSchedulingTaskTaskHeadroom struct {
-	// Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
-	CpuPerUnit *int `pulumi:"cpuPerUnit"`
-	// Optionally configure the number of GPUS to allocate for each headroom unit.
-	GpuPerUnit *int `pulumi:"gpuPerUnit"`
-	// Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
+	CpuPerUnit    *int `pulumi:"cpuPerUnit"`
+	GpuPerUnit    *int `pulumi:"gpuPerUnit"`
 	MemoryPerUnit *int `pulumi:"memoryPerUnit"`
-	// The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
-	NumOfUnits int `pulumi:"numOfUnits"`
+	NumOfUnits    int  `pulumi:"numOfUnits"`
 }
 
 // OceanLaunchSpecSchedulingTaskTaskHeadroomInput is an input type that accepts OceanLaunchSpecSchedulingTaskTaskHeadroomArgs and OceanLaunchSpecSchedulingTaskTaskHeadroomOutput values.
@@ -5977,14 +5795,10 @@ type OceanLaunchSpecSchedulingTaskTaskHeadroomInput interface {
 }
 
 type OceanLaunchSpecSchedulingTaskTaskHeadroomArgs struct {
-	// Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
-	CpuPerUnit pulumi.IntPtrInput `pulumi:"cpuPerUnit"`
-	// Optionally configure the number of GPUS to allocate for each headroom unit.
-	GpuPerUnit pulumi.IntPtrInput `pulumi:"gpuPerUnit"`
-	// Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
+	CpuPerUnit    pulumi.IntPtrInput `pulumi:"cpuPerUnit"`
+	GpuPerUnit    pulumi.IntPtrInput `pulumi:"gpuPerUnit"`
 	MemoryPerUnit pulumi.IntPtrInput `pulumi:"memoryPerUnit"`
-	// The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
-	NumOfUnits pulumi.IntInput `pulumi:"numOfUnits"`
+	NumOfUnits    pulumi.IntInput    `pulumi:"numOfUnits"`
 }
 
 func (OceanLaunchSpecSchedulingTaskTaskHeadroomArgs) ElementType() reflect.Type {
@@ -6038,22 +5852,18 @@ func (o OceanLaunchSpecSchedulingTaskTaskHeadroomOutput) ToOceanLaunchSpecSchedu
 	return o
 }
 
-// Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
 func (o OceanLaunchSpecSchedulingTaskTaskHeadroomOutput) CpuPerUnit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanLaunchSpecSchedulingTaskTaskHeadroom) *int { return v.CpuPerUnit }).(pulumi.IntPtrOutput)
 }
 
-// Optionally configure the number of GPUS to allocate for each headroom unit.
 func (o OceanLaunchSpecSchedulingTaskTaskHeadroomOutput) GpuPerUnit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanLaunchSpecSchedulingTaskTaskHeadroom) *int { return v.GpuPerUnit }).(pulumi.IntPtrOutput)
 }
 
-// Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
 func (o OceanLaunchSpecSchedulingTaskTaskHeadroomOutput) MemoryPerUnit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OceanLaunchSpecSchedulingTaskTaskHeadroom) *int { return v.MemoryPerUnit }).(pulumi.IntPtrOutput)
 }
 
-// The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
 func (o OceanLaunchSpecSchedulingTaskTaskHeadroomOutput) NumOfUnits() pulumi.IntOutput {
 	return o.ApplyT(func(v OceanLaunchSpecSchedulingTaskTaskHeadroom) int { return v.NumOfUnits }).(pulumi.IntOutput)
 }
@@ -6471,9 +6281,9 @@ func (o OceanLaunchSpecStrategyArrayOutput) Index(i pulumi.IntInput) OceanLaunch
 type OceanLaunchSpecTaint struct {
 	// The effect of the taint. Valid values: `"NoSchedule"`, `"PreferNoSchedule"`, `"NoExecute"`.
 	Effect *string `pulumi:"effect"`
-	// The label key.
+	// The taint key.
 	Key *string `pulumi:"key"`
-	// The label value.
+	// The taint value.
 	Value *string `pulumi:"value"`
 }
 
@@ -6491,9 +6301,9 @@ type OceanLaunchSpecTaintInput interface {
 type OceanLaunchSpecTaintArgs struct {
 	// The effect of the taint. Valid values: `"NoSchedule"`, `"PreferNoSchedule"`, `"NoExecute"`.
 	Effect pulumi.StringPtrInput `pulumi:"effect"`
-	// The label key.
+	// The taint key.
 	Key pulumi.StringPtrInput `pulumi:"key"`
-	// The label value.
+	// The taint value.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -6553,12 +6363,12 @@ func (o OceanLaunchSpecTaintOutput) Effect() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OceanLaunchSpecTaint) *string { return v.Effect }).(pulumi.StringPtrOutput)
 }
 
-// The label key.
+// The taint key.
 func (o OceanLaunchSpecTaintOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OceanLaunchSpecTaint) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
 
-// The label value.
+// The taint value.
 func (o OceanLaunchSpecTaintOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OceanLaunchSpecTaint) *string { return v.Value }).(pulumi.StringPtrOutput)
 }

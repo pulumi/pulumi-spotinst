@@ -15,9 +15,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         [Input("key")]
         public Input<string>? Key { get; set; }
 
-        /// <summary>
-        /// The dimension value.
-        /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }
 

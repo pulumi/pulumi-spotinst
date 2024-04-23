@@ -22,17 +22,9 @@ public final class OceanImportBackendServiceNamedPortArgs extends com.pulumi.res
         return this.name;
     }
 
-    /**
-     * A list of ports.
-     * 
-     */
     @Import(name="ports", required=true)
     private Output<List<String>> ports;
 
-    /**
-     * @return A list of ports.
-     * 
-     */
     public Output<List<String>> ports() {
         return this.ports;
     }
@@ -71,33 +63,15 @@ public final class OceanImportBackendServiceNamedPortArgs extends com.pulumi.res
             return name(Output.of(name));
         }
 
-        /**
-         * @param ports A list of ports.
-         * 
-         * @return builder
-         * 
-         */
         public Builder ports(Output<List<String>> ports) {
             $.ports = ports;
             return this;
         }
 
-        /**
-         * @param ports A list of ports.
-         * 
-         * @return builder
-         * 
-         */
         public Builder ports(List<String> ports) {
             return ports(Output.of(ports));
         }
 
-        /**
-         * @param ports A list of ports.
-         * 
-         * @return builder
-         * 
-         */
         public Builder ports(String... ports) {
             return ports(List.of(ports));
         }

@@ -17,17 +17,9 @@ public final class ElastigroupIntegrationBeanstalkArgs extends com.pulumi.resour
 
     public static final ElastigroupIntegrationBeanstalkArgs Empty = new ElastigroupIntegrationBeanstalkArgs();
 
-    /**
-     * Preferences when performing a roll
-     * 
-     */
     @Import(name="deploymentPreferences")
     private @Nullable Output<ElastigroupIntegrationBeanstalkDeploymentPreferencesArgs> deploymentPreferences;
 
-    /**
-     * @return Preferences when performing a roll
-     * 
-     */
     public Optional<Output<ElastigroupIntegrationBeanstalkDeploymentPreferencesArgs>> deploymentPreferences() {
         return Optional.ofNullable(this.deploymentPreferences);
     }
@@ -39,17 +31,9 @@ public final class ElastigroupIntegrationBeanstalkArgs extends com.pulumi.resour
         return Optional.ofNullable(this.environmentId);
     }
 
-    /**
-     * Managed Actions parameters
-     * 
-     */
     @Import(name="managedActions")
     private @Nullable Output<ElastigroupIntegrationBeanstalkManagedActionsArgs> managedActions;
 
-    /**
-     * @return Managed Actions parameters
-     * 
-     */
     public Optional<Output<ElastigroupIntegrationBeanstalkManagedActionsArgs>> managedActions() {
         return Optional.ofNullable(this.managedActions);
     }
@@ -80,23 +64,11 @@ public final class ElastigroupIntegrationBeanstalkArgs extends com.pulumi.resour
             $ = new ElastigroupIntegrationBeanstalkArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param deploymentPreferences Preferences when performing a roll
-         * 
-         * @return builder
-         * 
-         */
         public Builder deploymentPreferences(@Nullable Output<ElastigroupIntegrationBeanstalkDeploymentPreferencesArgs> deploymentPreferences) {
             $.deploymentPreferences = deploymentPreferences;
             return this;
         }
 
-        /**
-         * @param deploymentPreferences Preferences when performing a roll
-         * 
-         * @return builder
-         * 
-         */
         public Builder deploymentPreferences(ElastigroupIntegrationBeanstalkDeploymentPreferencesArgs deploymentPreferences) {
             return deploymentPreferences(Output.of(deploymentPreferences));
         }
@@ -110,23 +82,11 @@ public final class ElastigroupIntegrationBeanstalkArgs extends com.pulumi.resour
             return environmentId(Output.of(environmentId));
         }
 
-        /**
-         * @param managedActions Managed Actions parameters
-         * 
-         * @return builder
-         * 
-         */
         public Builder managedActions(@Nullable Output<ElastigroupIntegrationBeanstalkManagedActionsArgs> managedActions) {
             $.managedActions = managedActions;
             return this;
         }
 
-        /**
-         * @param managedActions Managed Actions parameters
-         * 
-         * @return builder
-         * 
-         */
         public Builder managedActions(ElastigroupIntegrationBeanstalkManagedActionsArgs managedActions) {
             return managedActions(Output.of(managedActions));
         }

@@ -21,9 +21,6 @@ namespace Pulumi.SpotInst.Inputs
         [Input("endpoint")]
         public Input<string>? Endpoint { get; set; }
 
-        /// <summary>
-        /// The number of consecutive successful health checks that must occur before declaring an instance healthy.
-        /// </summary>
         [Input("healthy", required: true)]
         public Input<int> Healthy { get; set; } = null!;
 
@@ -34,7 +31,7 @@ namespace Pulumi.SpotInst.Inputs
         public Input<int> Interval { get; set; } = null!;
 
         /// <summary>
-        /// The port of the Spotinst HCS (default: 80).
+        /// The port to use to connect with the instance.
         /// </summary>
         [Input("port", required: true)]
         public Input<int> Port { get; set; } = null!;
@@ -54,9 +51,6 @@ namespace Pulumi.SpotInst.Inputs
         [Input("timeout")]
         public Input<int>? Timeout { get; set; }
 
-        /// <summary>
-        /// The number of consecutive failed health checks that must occur before declaring an instance unhealthy.
-        /// </summary>
         [Input("unhealthy", required: true)]
         public Input<int> Unhealthy { get; set; } = null!;
 

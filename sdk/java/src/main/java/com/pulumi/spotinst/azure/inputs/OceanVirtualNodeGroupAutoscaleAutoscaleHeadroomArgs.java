@@ -16,62 +16,30 @@ public final class OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArgs extends c
 
     public static final OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArgs Empty = new OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArgs();
 
-    /**
-     * Configure the number of CPUs to allocate for the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
-     * 
-     */
     @Import(name="cpuPerUnit")
     private @Nullable Output<Integer> cpuPerUnit;
 
-    /**
-     * @return Configure the number of CPUs to allocate for the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
-     * 
-     */
     public Optional<Output<Integer>> cpuPerUnit() {
         return Optional.ofNullable(this.cpuPerUnit);
     }
 
-    /**
-     * How many GPU cores should be allocated for headroom unit.
-     * 
-     */
     @Import(name="gpuPerUnit")
     private @Nullable Output<Integer> gpuPerUnit;
 
-    /**
-     * @return How many GPU cores should be allocated for headroom unit.
-     * 
-     */
     public Optional<Output<Integer>> gpuPerUnit() {
         return Optional.ofNullable(this.gpuPerUnit);
     }
 
-    /**
-     * Configure the amount of memory (MiB) to allocate the headroom.
-     * 
-     */
     @Import(name="memoryPerUnit")
     private @Nullable Output<Integer> memoryPerUnit;
 
-    /**
-     * @return Configure the amount of memory (MiB) to allocate the headroom.
-     * 
-     */
     public Optional<Output<Integer>> memoryPerUnit() {
         return Optional.ofNullable(this.memoryPerUnit);
     }
 
-    /**
-     * The number of headroom units to maintain, where each unit has the defined CPU, memory and GPU.
-     * 
-     */
     @Import(name="numOfUnits", required=true)
     private Output<Integer> numOfUnits;
 
-    /**
-     * @return The number of headroom units to maintain, where each unit has the defined CPU, memory and GPU.
-     * 
-     */
     public Output<Integer> numOfUnits() {
         return this.numOfUnits;
     }
@@ -103,86 +71,38 @@ public final class OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArgs extends c
             $ = new OceanVirtualNodeGroupAutoscaleAutoscaleHeadroomArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param cpuPerUnit Configure the number of CPUs to allocate for the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
-         * 
-         * @return builder
-         * 
-         */
         public Builder cpuPerUnit(@Nullable Output<Integer> cpuPerUnit) {
             $.cpuPerUnit = cpuPerUnit;
             return this;
         }
 
-        /**
-         * @param cpuPerUnit Configure the number of CPUs to allocate for the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
-         * 
-         * @return builder
-         * 
-         */
         public Builder cpuPerUnit(Integer cpuPerUnit) {
             return cpuPerUnit(Output.of(cpuPerUnit));
         }
 
-        /**
-         * @param gpuPerUnit How many GPU cores should be allocated for headroom unit.
-         * 
-         * @return builder
-         * 
-         */
         public Builder gpuPerUnit(@Nullable Output<Integer> gpuPerUnit) {
             $.gpuPerUnit = gpuPerUnit;
             return this;
         }
 
-        /**
-         * @param gpuPerUnit How many GPU cores should be allocated for headroom unit.
-         * 
-         * @return builder
-         * 
-         */
         public Builder gpuPerUnit(Integer gpuPerUnit) {
             return gpuPerUnit(Output.of(gpuPerUnit));
         }
 
-        /**
-         * @param memoryPerUnit Configure the amount of memory (MiB) to allocate the headroom.
-         * 
-         * @return builder
-         * 
-         */
         public Builder memoryPerUnit(@Nullable Output<Integer> memoryPerUnit) {
             $.memoryPerUnit = memoryPerUnit;
             return this;
         }
 
-        /**
-         * @param memoryPerUnit Configure the amount of memory (MiB) to allocate the headroom.
-         * 
-         * @return builder
-         * 
-         */
         public Builder memoryPerUnit(Integer memoryPerUnit) {
             return memoryPerUnit(Output.of(memoryPerUnit));
         }
 
-        /**
-         * @param numOfUnits The number of headroom units to maintain, where each unit has the defined CPU, memory and GPU.
-         * 
-         * @return builder
-         * 
-         */
         public Builder numOfUnits(Output<Integer> numOfUnits) {
             $.numOfUnits = numOfUnits;
             return this;
         }
 
-        /**
-         * @param numOfUnits The number of headroom units to maintain, where each unit has the defined CPU, memory and GPU.
-         * 
-         * @return builder
-         * 
-         */
         public Builder numOfUnits(Integer numOfUnits) {
             return numOfUnits(Output.of(numOfUnits));
         }

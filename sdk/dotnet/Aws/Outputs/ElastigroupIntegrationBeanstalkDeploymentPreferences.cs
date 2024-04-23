@@ -13,21 +13,9 @@ namespace Pulumi.SpotInst.Aws.Outputs
     [OutputType]
     public sealed class ElastigroupIntegrationBeanstalkDeploymentPreferences
     {
-        /// <summary>
-        /// Should roll perform automatically
-        /// </summary>
         public readonly bool? AutomaticRoll;
-        /// <summary>
-        /// The percentage size of each batch in the scheduled deployment roll.
-        /// </summary>
         public readonly int? BatchSizePercentage;
-        /// <summary>
-        /// The period of time (seconds) to wait before checking a batch's health after it's deployment.
-        /// </summary>
         public readonly int? GracePeriod;
-        /// <summary>
-        /// Strategy parameters
-        /// </summary>
         public readonly Outputs.ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategy? Strategy;
 
         [OutputConstructor]

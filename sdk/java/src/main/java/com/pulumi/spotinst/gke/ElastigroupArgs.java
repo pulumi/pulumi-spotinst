@@ -38,8 +38,6 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the GKE cluster you wish to import.
-     * 
      * @deprecated
      * Please define cluster_id under integration_gke
      * 
@@ -49,8 +47,6 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> clusterId;
 
     /**
-     * @return The name of the GKE cluster you wish to import.
-     * 
      * @deprecated
      * Please define cluster_id under integration_gke
      * 
@@ -60,17 +56,9 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.clusterId);
     }
 
-    /**
-     * The zone where the cluster is hosted.
-     * 
-     */
     @Import(name="clusterZoneName", required=true)
     private Output<String> clusterZoneName;
 
-    /**
-     * @return The zone where the cluster is hosted.
-     * 
-     */
     public Output<String> clusterZoneName() {
         return this.clusterZoneName;
     }
@@ -145,17 +133,9 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.integrationDockerSwarm);
     }
 
-    /**
-     * Describes the GKE integration.
-     * 
-     */
     @Import(name="integrationGke")
     private @Nullable Output<ElastigroupIntegrationGkeArgs> integrationGke;
 
-    /**
-     * @return Describes the GKE integration.
-     * 
-     */
     public Optional<Output<ElastigroupIntegrationGkeArgs>> integrationGke() {
         return Optional.ofNullable(this.integrationGke);
     }
@@ -209,17 +189,9 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.networkInterfaces);
     }
 
-    /**
-     * The image that will be used for the node VMs. Possible values: COS, UBUNTU.
-     * 
-     */
     @Import(name="nodeImage")
     private @Nullable Output<String> nodeImage;
 
-    /**
-     * @return The image that will be used for the node VMs. Possible values: COS, UBUNTU.
-     * 
-     */
     public Optional<Output<String>> nodeImage() {
         return Optional.ofNullable(this.nodeImage);
     }
@@ -355,8 +327,6 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clusterId The name of the GKE cluster you wish to import.
-         * 
          * @return builder
          * 
          * @deprecated
@@ -370,8 +340,6 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clusterId The name of the GKE cluster you wish to import.
-         * 
          * @return builder
          * 
          * @deprecated
@@ -383,23 +351,11 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
             return clusterId(Output.of(clusterId));
         }
 
-        /**
-         * @param clusterZoneName The zone where the cluster is hosted.
-         * 
-         * @return builder
-         * 
-         */
         public Builder clusterZoneName(Output<String> clusterZoneName) {
             $.clusterZoneName = clusterZoneName;
             return this;
         }
 
-        /**
-         * @param clusterZoneName The zone where the cluster is hosted.
-         * 
-         * @return builder
-         * 
-         */
         public Builder clusterZoneName(String clusterZoneName) {
             return clusterZoneName(Output.of(clusterZoneName));
         }
@@ -510,23 +466,11 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
             return integrationDockerSwarm(Output.of(integrationDockerSwarm));
         }
 
-        /**
-         * @param integrationGke Describes the GKE integration.
-         * 
-         * @return builder
-         * 
-         */
         public Builder integrationGke(@Nullable Output<ElastigroupIntegrationGkeArgs> integrationGke) {
             $.integrationGke = integrationGke;
             return this;
         }
 
-        /**
-         * @param integrationGke Describes the GKE integration.
-         * 
-         * @return builder
-         * 
-         */
         public Builder integrationGke(ElastigroupIntegrationGkeArgs integrationGke) {
             return integrationGke(Output.of(integrationGke));
         }
@@ -606,23 +550,11 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
             return networkInterfaces(List.of(networkInterfaces));
         }
 
-        /**
-         * @param nodeImage The image that will be used for the node VMs. Possible values: COS, UBUNTU.
-         * 
-         * @return builder
-         * 
-         */
         public Builder nodeImage(@Nullable Output<String> nodeImage) {
             $.nodeImage = nodeImage;
             return this;
         }
 
-        /**
-         * @param nodeImage The image that will be used for the node VMs. Possible values: COS, UBUNTU.
-         * 
-         * @return builder
-         * 
-         */
         public Builder nodeImage(String nodeImage) {
             return nodeImage(Output.of(nodeImage));
         }

@@ -71,17 +71,9 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.availabilityZones);
     }
 
-    /**
-     * String, determine the way we attach the data volumes to the data devices, possible values: `&#34;reattach&#34;` and `&#34;onLaunch&#34;` (default is onLaunch).
-     * 
-     */
     @Import(name="blockDevicesMode")
     private @Nullable Output<String> blockDevicesMode;
 
-    /**
-     * @return String, determine the way we attach the data volumes to the data devices, possible values: `&#34;reattach&#34;` and `&#34;onLaunch&#34;` (default is onLaunch).
-     * 
-     */
     public Optional<Output<String>> blockDevicesMode() {
         return Optional.ofNullable(this.blockDevicesMode);
     }
@@ -220,17 +212,9 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.elasticIps);
     }
 
-    /**
-     * List of Elastic Load Balancers names (ELB).
-     * 
-     */
     @Import(name="elasticLoadBalancers")
     private @Nullable Output<List<String>> elasticLoadBalancers;
 
-    /**
-     * @return List of Elastic Load Balancers names (ELB).
-     * 
-     */
     public Optional<Output<List<String>>> elasticLoadBalancers() {
         return Optional.ofNullable(this.elasticLoadBalancers);
     }
@@ -431,152 +415,72 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.instanceTypesWeights);
     }
 
-    /**
-     * Describes the Beanstalk integration.
-     * 
-     */
     @Import(name="integrationBeanstalk")
     private @Nullable Output<ElastigroupIntegrationBeanstalkArgs> integrationBeanstalk;
 
-    /**
-     * @return Describes the Beanstalk integration.
-     * 
-     */
     public Optional<Output<ElastigroupIntegrationBeanstalkArgs>> integrationBeanstalk() {
         return Optional.ofNullable(this.integrationBeanstalk);
     }
 
-    /**
-     * Describes the [Code Deploy](https://aws.amazon.com/documentation/codedeploy/?id=docs_gateway) integration.
-     * 
-     */
     @Import(name="integrationCodedeploy")
     private @Nullable Output<ElastigroupIntegrationCodedeployArgs> integrationCodedeploy;
 
-    /**
-     * @return Describes the [Code Deploy](https://aws.amazon.com/documentation/codedeploy/?id=docs_gateway) integration.
-     * 
-     */
     public Optional<Output<ElastigroupIntegrationCodedeployArgs>> integrationCodedeploy() {
         return Optional.ofNullable(this.integrationCodedeploy);
     }
 
-    /**
-     * Describes the [Docker Swarm](https://api.spotinst.com/integration-docs/elastigroup/container-management/docker-swarm/docker-swarm-integration/) integration.
-     * 
-     */
     @Import(name="integrationDockerSwarm")
     private @Nullable Output<ElastigroupIntegrationDockerSwarmArgs> integrationDockerSwarm;
 
-    /**
-     * @return Describes the [Docker Swarm](https://api.spotinst.com/integration-docs/elastigroup/container-management/docker-swarm/docker-swarm-integration/) integration.
-     * 
-     */
     public Optional<Output<ElastigroupIntegrationDockerSwarmArgs>> integrationDockerSwarm() {
         return Optional.ofNullable(this.integrationDockerSwarm);
     }
 
-    /**
-     * Describes the [EC2 Container Service](https://aws.amazon.com/documentation/ecs/?id=docs_gateway) integration.
-     * 
-     */
     @Import(name="integrationEcs")
     private @Nullable Output<ElastigroupIntegrationEcsArgs> integrationEcs;
 
-    /**
-     * @return Describes the [EC2 Container Service](https://aws.amazon.com/documentation/ecs/?id=docs_gateway) integration.
-     * 
-     */
     public Optional<Output<ElastigroupIntegrationEcsArgs>> integrationEcs() {
         return Optional.ofNullable(this.integrationEcs);
     }
 
-    /**
-     * Describes the [Gitlab](https://api.spotinst.com/integration-docs/gitlab/) integration.
-     * 
-     */
     @Import(name="integrationGitlab")
     private @Nullable Output<ElastigroupIntegrationGitlabArgs> integrationGitlab;
 
-    /**
-     * @return Describes the [Gitlab](https://api.spotinst.com/integration-docs/gitlab/) integration.
-     * 
-     */
     public Optional<Output<ElastigroupIntegrationGitlabArgs>> integrationGitlab() {
         return Optional.ofNullable(this.integrationGitlab);
     }
 
-    /**
-     * Describes the [Kubernetes](https://kubernetes.io/) integration.
-     * 
-     */
     @Import(name="integrationKubernetes")
     private @Nullable Output<ElastigroupIntegrationKubernetesArgs> integrationKubernetes;
 
-    /**
-     * @return Describes the [Kubernetes](https://kubernetes.io/) integration.
-     * 
-     */
     public Optional<Output<ElastigroupIntegrationKubernetesArgs>> integrationKubernetes() {
         return Optional.ofNullable(this.integrationKubernetes);
     }
 
-    /**
-     * Describes the [Mesosphere](https://mesosphere.com/) integration.
-     * 
-     */
     @Import(name="integrationMesosphere")
     private @Nullable Output<ElastigroupIntegrationMesosphereArgs> integrationMesosphere;
 
-    /**
-     * @return Describes the [Mesosphere](https://mesosphere.com/) integration.
-     * 
-     */
     public Optional<Output<ElastigroupIntegrationMesosphereArgs>> integrationMesosphere() {
         return Optional.ofNullable(this.integrationMesosphere);
     }
 
-    /**
-     * Describes the [Nomad](https://www.nomadproject.io/) integration.
-     * 
-     */
     @Import(name="integrationNomad")
     private @Nullable Output<ElastigroupIntegrationNomadArgs> integrationNomad;
 
-    /**
-     * @return Describes the [Nomad](https://www.nomadproject.io/) integration.
-     * 
-     */
     public Optional<Output<ElastigroupIntegrationNomadArgs>> integrationNomad() {
         return Optional.ofNullable(this.integrationNomad);
     }
 
-    /**
-     * Describes the [Rancher](http://rancherlabs.com/) integration.
-     * 
-     */
     @Import(name="integrationRancher")
     private @Nullable Output<ElastigroupIntegrationRancherArgs> integrationRancher;
 
-    /**
-     * @return Describes the [Rancher](http://rancherlabs.com/) integration.
-     * 
-     */
     public Optional<Output<ElastigroupIntegrationRancherArgs>> integrationRancher() {
         return Optional.ofNullable(this.integrationRancher);
     }
 
-    /**
-     * Describes the [Route53](https://aws.amazon.com/documentation/route53/?id=docs_gateway) integration.
-     * 
-     */
     @Import(name="integrationRoute53")
     private @Nullable Output<ElastigroupIntegrationRoute53Args> integrationRoute53;
 
-    /**
-     * @return Describes the [Route53](https://aws.amazon.com/documentation/route53/?id=docs_gateway) integration.
-     * 
-     */
     public Optional<Output<ElastigroupIntegrationRoute53Args>> integrationRoute53() {
         return Optional.ofNullable(this.integrationRoute53);
     }
@@ -759,47 +663,23 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
         return this.orientation;
     }
 
-    /**
-     * Boolean, should the instance maintain its Data volumes.
-     * 
-     */
     @Import(name="persistBlockDevices")
     private @Nullable Output<Boolean> persistBlockDevices;
 
-    /**
-     * @return Boolean, should the instance maintain its Data volumes.
-     * 
-     */
     public Optional<Output<Boolean>> persistBlockDevices() {
         return Optional.ofNullable(this.persistBlockDevices);
     }
 
-    /**
-     * Boolean, should the instance maintain its private IP.
-     * 
-     */
     @Import(name="persistPrivateIp")
     private @Nullable Output<Boolean> persistPrivateIp;
 
-    /**
-     * @return Boolean, should the instance maintain its private IP.
-     * 
-     */
     public Optional<Output<Boolean>> persistPrivateIp() {
         return Optional.ofNullable(this.persistPrivateIp);
     }
 
-    /**
-     * Boolean, should the instance maintain its root device volumes.
-     * 
-     */
     @Import(name="persistRootDevice")
     private @Nullable Output<Boolean> persistRootDevice;
 
-    /**
-     * @return Boolean, should the instance maintain its root device volumes.
-     * 
-     */
     public Optional<Output<Boolean>> persistRootDevice() {
         return Optional.ofNullable(this.persistRootDevice);
     }
@@ -836,21 +716,9 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.preferredAvailabilityZones);
     }
 
-    /**
-     * List of Private IPs to associate to the group instances.(e.g. &#34;172.1.1.0&#34;). Please note: This setting will only apply if persistence.persist_private_ip is set to true.
-     * 
-     * Usage:
-     * 
-     */
     @Import(name="privateIps")
     private @Nullable Output<List<String>> privateIps;
 
-    /**
-     * @return List of Private IPs to associate to the group instances.(e.g. &#34;172.1.1.0&#34;). Please note: This setting will only apply if persistence.persist_private_ip is set to true.
-     * 
-     * Usage:
-     * 
-     */
     public Optional<Output<List<String>>> privateIps() {
         return Optional.ofNullable(this.privateIps);
     }
@@ -1075,21 +943,9 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.tags);
     }
 
-    /**
-     * List of Target Group ARNs to register the instances to.
-     * 
-     * Usage:
-     * 
-     */
     @Import(name="targetGroupArns")
     private @Nullable Output<List<String>> targetGroupArns;
 
-    /**
-     * @return List of Target Group ARNs to register the instances to.
-     * 
-     * Usage:
-     * 
-     */
     public Optional<Output<List<String>>> targetGroupArns() {
         return Optional.ofNullable(this.targetGroupArns);
     }
@@ -1310,23 +1166,11 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
             return availabilityZones(List.of(availabilityZones));
         }
 
-        /**
-         * @param blockDevicesMode String, determine the way we attach the data volumes to the data devices, possible values: `&#34;reattach&#34;` and `&#34;onLaunch&#34;` (default is onLaunch).
-         * 
-         * @return builder
-         * 
-         */
         public Builder blockDevicesMode(@Nullable Output<String> blockDevicesMode) {
             $.blockDevicesMode = blockDevicesMode;
             return this;
         }
 
-        /**
-         * @param blockDevicesMode String, determine the way we attach the data volumes to the data devices, possible values: `&#34;reattach&#34;` and `&#34;onLaunch&#34;` (default is onLaunch).
-         * 
-         * @return builder
-         * 
-         */
         public Builder blockDevicesMode(String blockDevicesMode) {
             return blockDevicesMode(Output.of(blockDevicesMode));
         }
@@ -1531,33 +1375,15 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
             return elasticIps(List.of(elasticIps));
         }
 
-        /**
-         * @param elasticLoadBalancers List of Elastic Load Balancers names (ELB).
-         * 
-         * @return builder
-         * 
-         */
         public Builder elasticLoadBalancers(@Nullable Output<List<String>> elasticLoadBalancers) {
             $.elasticLoadBalancers = elasticLoadBalancers;
             return this;
         }
 
-        /**
-         * @param elasticLoadBalancers List of Elastic Load Balancers names (ELB).
-         * 
-         * @return builder
-         * 
-         */
         public Builder elasticLoadBalancers(List<String> elasticLoadBalancers) {
             return elasticLoadBalancers(Output.of(elasticLoadBalancers));
         }
 
-        /**
-         * @param elasticLoadBalancers List of Elastic Load Balancers names (ELB).
-         * 
-         * @return builder
-         * 
-         */
         public Builder elasticLoadBalancers(String... elasticLoadBalancers) {
             return elasticLoadBalancers(List.of(elasticLoadBalancers));
         }
@@ -1879,212 +1705,92 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
             return instanceTypesWeights(List.of(instanceTypesWeights));
         }
 
-        /**
-         * @param integrationBeanstalk Describes the Beanstalk integration.
-         * 
-         * @return builder
-         * 
-         */
         public Builder integrationBeanstalk(@Nullable Output<ElastigroupIntegrationBeanstalkArgs> integrationBeanstalk) {
             $.integrationBeanstalk = integrationBeanstalk;
             return this;
         }
 
-        /**
-         * @param integrationBeanstalk Describes the Beanstalk integration.
-         * 
-         * @return builder
-         * 
-         */
         public Builder integrationBeanstalk(ElastigroupIntegrationBeanstalkArgs integrationBeanstalk) {
             return integrationBeanstalk(Output.of(integrationBeanstalk));
         }
 
-        /**
-         * @param integrationCodedeploy Describes the [Code Deploy](https://aws.amazon.com/documentation/codedeploy/?id=docs_gateway) integration.
-         * 
-         * @return builder
-         * 
-         */
         public Builder integrationCodedeploy(@Nullable Output<ElastigroupIntegrationCodedeployArgs> integrationCodedeploy) {
             $.integrationCodedeploy = integrationCodedeploy;
             return this;
         }
 
-        /**
-         * @param integrationCodedeploy Describes the [Code Deploy](https://aws.amazon.com/documentation/codedeploy/?id=docs_gateway) integration.
-         * 
-         * @return builder
-         * 
-         */
         public Builder integrationCodedeploy(ElastigroupIntegrationCodedeployArgs integrationCodedeploy) {
             return integrationCodedeploy(Output.of(integrationCodedeploy));
         }
 
-        /**
-         * @param integrationDockerSwarm Describes the [Docker Swarm](https://api.spotinst.com/integration-docs/elastigroup/container-management/docker-swarm/docker-swarm-integration/) integration.
-         * 
-         * @return builder
-         * 
-         */
         public Builder integrationDockerSwarm(@Nullable Output<ElastigroupIntegrationDockerSwarmArgs> integrationDockerSwarm) {
             $.integrationDockerSwarm = integrationDockerSwarm;
             return this;
         }
 
-        /**
-         * @param integrationDockerSwarm Describes the [Docker Swarm](https://api.spotinst.com/integration-docs/elastigroup/container-management/docker-swarm/docker-swarm-integration/) integration.
-         * 
-         * @return builder
-         * 
-         */
         public Builder integrationDockerSwarm(ElastigroupIntegrationDockerSwarmArgs integrationDockerSwarm) {
             return integrationDockerSwarm(Output.of(integrationDockerSwarm));
         }
 
-        /**
-         * @param integrationEcs Describes the [EC2 Container Service](https://aws.amazon.com/documentation/ecs/?id=docs_gateway) integration.
-         * 
-         * @return builder
-         * 
-         */
         public Builder integrationEcs(@Nullable Output<ElastigroupIntegrationEcsArgs> integrationEcs) {
             $.integrationEcs = integrationEcs;
             return this;
         }
 
-        /**
-         * @param integrationEcs Describes the [EC2 Container Service](https://aws.amazon.com/documentation/ecs/?id=docs_gateway) integration.
-         * 
-         * @return builder
-         * 
-         */
         public Builder integrationEcs(ElastigroupIntegrationEcsArgs integrationEcs) {
             return integrationEcs(Output.of(integrationEcs));
         }
 
-        /**
-         * @param integrationGitlab Describes the [Gitlab](https://api.spotinst.com/integration-docs/gitlab/) integration.
-         * 
-         * @return builder
-         * 
-         */
         public Builder integrationGitlab(@Nullable Output<ElastigroupIntegrationGitlabArgs> integrationGitlab) {
             $.integrationGitlab = integrationGitlab;
             return this;
         }
 
-        /**
-         * @param integrationGitlab Describes the [Gitlab](https://api.spotinst.com/integration-docs/gitlab/) integration.
-         * 
-         * @return builder
-         * 
-         */
         public Builder integrationGitlab(ElastigroupIntegrationGitlabArgs integrationGitlab) {
             return integrationGitlab(Output.of(integrationGitlab));
         }
 
-        /**
-         * @param integrationKubernetes Describes the [Kubernetes](https://kubernetes.io/) integration.
-         * 
-         * @return builder
-         * 
-         */
         public Builder integrationKubernetes(@Nullable Output<ElastigroupIntegrationKubernetesArgs> integrationKubernetes) {
             $.integrationKubernetes = integrationKubernetes;
             return this;
         }
 
-        /**
-         * @param integrationKubernetes Describes the [Kubernetes](https://kubernetes.io/) integration.
-         * 
-         * @return builder
-         * 
-         */
         public Builder integrationKubernetes(ElastigroupIntegrationKubernetesArgs integrationKubernetes) {
             return integrationKubernetes(Output.of(integrationKubernetes));
         }
 
-        /**
-         * @param integrationMesosphere Describes the [Mesosphere](https://mesosphere.com/) integration.
-         * 
-         * @return builder
-         * 
-         */
         public Builder integrationMesosphere(@Nullable Output<ElastigroupIntegrationMesosphereArgs> integrationMesosphere) {
             $.integrationMesosphere = integrationMesosphere;
             return this;
         }
 
-        /**
-         * @param integrationMesosphere Describes the [Mesosphere](https://mesosphere.com/) integration.
-         * 
-         * @return builder
-         * 
-         */
         public Builder integrationMesosphere(ElastigroupIntegrationMesosphereArgs integrationMesosphere) {
             return integrationMesosphere(Output.of(integrationMesosphere));
         }
 
-        /**
-         * @param integrationNomad Describes the [Nomad](https://www.nomadproject.io/) integration.
-         * 
-         * @return builder
-         * 
-         */
         public Builder integrationNomad(@Nullable Output<ElastigroupIntegrationNomadArgs> integrationNomad) {
             $.integrationNomad = integrationNomad;
             return this;
         }
 
-        /**
-         * @param integrationNomad Describes the [Nomad](https://www.nomadproject.io/) integration.
-         * 
-         * @return builder
-         * 
-         */
         public Builder integrationNomad(ElastigroupIntegrationNomadArgs integrationNomad) {
             return integrationNomad(Output.of(integrationNomad));
         }
 
-        /**
-         * @param integrationRancher Describes the [Rancher](http://rancherlabs.com/) integration.
-         * 
-         * @return builder
-         * 
-         */
         public Builder integrationRancher(@Nullable Output<ElastigroupIntegrationRancherArgs> integrationRancher) {
             $.integrationRancher = integrationRancher;
             return this;
         }
 
-        /**
-         * @param integrationRancher Describes the [Rancher](http://rancherlabs.com/) integration.
-         * 
-         * @return builder
-         * 
-         */
         public Builder integrationRancher(ElastigroupIntegrationRancherArgs integrationRancher) {
             return integrationRancher(Output.of(integrationRancher));
         }
 
-        /**
-         * @param integrationRoute53 Describes the [Route53](https://aws.amazon.com/documentation/route53/?id=docs_gateway) integration.
-         * 
-         * @return builder
-         * 
-         */
         public Builder integrationRoute53(@Nullable Output<ElastigroupIntegrationRoute53Args> integrationRoute53) {
             $.integrationRoute53 = integrationRoute53;
             return this;
         }
 
-        /**
-         * @param integrationRoute53 Describes the [Route53](https://aws.amazon.com/documentation/route53/?id=docs_gateway) integration.
-         * 
-         * @return builder
-         * 
-         */
         public Builder integrationRoute53(ElastigroupIntegrationRoute53Args integrationRoute53) {
             return integrationRoute53(Output.of(integrationRoute53));
         }
@@ -2353,65 +2059,29 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
             return orientation(Output.of(orientation));
         }
 
-        /**
-         * @param persistBlockDevices Boolean, should the instance maintain its Data volumes.
-         * 
-         * @return builder
-         * 
-         */
         public Builder persistBlockDevices(@Nullable Output<Boolean> persistBlockDevices) {
             $.persistBlockDevices = persistBlockDevices;
             return this;
         }
 
-        /**
-         * @param persistBlockDevices Boolean, should the instance maintain its Data volumes.
-         * 
-         * @return builder
-         * 
-         */
         public Builder persistBlockDevices(Boolean persistBlockDevices) {
             return persistBlockDevices(Output.of(persistBlockDevices));
         }
 
-        /**
-         * @param persistPrivateIp Boolean, should the instance maintain its private IP.
-         * 
-         * @return builder
-         * 
-         */
         public Builder persistPrivateIp(@Nullable Output<Boolean> persistPrivateIp) {
             $.persistPrivateIp = persistPrivateIp;
             return this;
         }
 
-        /**
-         * @param persistPrivateIp Boolean, should the instance maintain its private IP.
-         * 
-         * @return builder
-         * 
-         */
         public Builder persistPrivateIp(Boolean persistPrivateIp) {
             return persistPrivateIp(Output.of(persistPrivateIp));
         }
 
-        /**
-         * @param persistRootDevice Boolean, should the instance maintain its root device volumes.
-         * 
-         * @return builder
-         * 
-         */
         public Builder persistRootDevice(@Nullable Output<Boolean> persistRootDevice) {
             $.persistRootDevice = persistRootDevice;
             return this;
         }
 
-        /**
-         * @param persistRootDevice Boolean, should the instance maintain its root device volumes.
-         * 
-         * @return builder
-         * 
-         */
         public Builder persistRootDevice(Boolean persistRootDevice) {
             return persistRootDevice(Output.of(persistRootDevice));
         }
@@ -2471,39 +2141,15 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
             return preferredAvailabilityZones(List.of(preferredAvailabilityZones));
         }
 
-        /**
-         * @param privateIps List of Private IPs to associate to the group instances.(e.g. &#34;172.1.1.0&#34;). Please note: This setting will only apply if persistence.persist_private_ip is set to true.
-         * 
-         * Usage:
-         * 
-         * @return builder
-         * 
-         */
         public Builder privateIps(@Nullable Output<List<String>> privateIps) {
             $.privateIps = privateIps;
             return this;
         }
 
-        /**
-         * @param privateIps List of Private IPs to associate to the group instances.(e.g. &#34;172.1.1.0&#34;). Please note: This setting will only apply if persistence.persist_private_ip is set to true.
-         * 
-         * Usage:
-         * 
-         * @return builder
-         * 
-         */
         public Builder privateIps(List<String> privateIps) {
             return privateIps(Output.of(privateIps));
         }
 
-        /**
-         * @param privateIps List of Private IPs to associate to the group instances.(e.g. &#34;172.1.1.0&#34;). Please note: This setting will only apply if persistence.persist_private_ip is set to true.
-         * 
-         * Usage:
-         * 
-         * @return builder
-         * 
-         */
         public Builder privateIps(String... privateIps) {
             return privateIps(List.of(privateIps));
         }
@@ -2893,39 +2539,15 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
             return tags(List.of(tags));
         }
 
-        /**
-         * @param targetGroupArns List of Target Group ARNs to register the instances to.
-         * 
-         * Usage:
-         * 
-         * @return builder
-         * 
-         */
         public Builder targetGroupArns(@Nullable Output<List<String>> targetGroupArns) {
             $.targetGroupArns = targetGroupArns;
             return this;
         }
 
-        /**
-         * @param targetGroupArns List of Target Group ARNs to register the instances to.
-         * 
-         * Usage:
-         * 
-         * @return builder
-         * 
-         */
         public Builder targetGroupArns(List<String> targetGroupArns) {
             return targetGroupArns(Output.of(targetGroupArns));
         }
 
-        /**
-         * @param targetGroupArns List of Target Group ARNs to register the instances to.
-         * 
-         * Usage:
-         * 
-         * @return builder
-         * 
-         */
         public Builder targetGroupArns(String... targetGroupArns) {
             return targetGroupArns(List.of(targetGroupArns));
         }

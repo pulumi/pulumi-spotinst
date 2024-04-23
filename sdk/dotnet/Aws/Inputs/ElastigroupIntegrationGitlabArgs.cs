@@ -12,9 +12,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
 
     public sealed class ElastigroupIntegrationGitlabArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Settings for Gitlab runner.
-        /// </summary>
         [Input("runner")]
         public Input<Inputs.ElastigroupIntegrationGitlabRunnerArgs>? Runner { get; set; }
 

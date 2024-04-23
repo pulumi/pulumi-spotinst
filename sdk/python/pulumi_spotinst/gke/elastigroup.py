@@ -49,10 +49,6 @@ class ElastigroupArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a Elastigroup resource.
-        :param pulumi.Input[str] cluster_zone_name: The zone where the cluster is hosted.
-        :param pulumi.Input[str] cluster_id: The name of the GKE cluster you wish to import.
-        :param pulumi.Input['ElastigroupIntegrationGkeArgs'] integration_gke: Describes the GKE integration.
-        :param pulumi.Input[str] node_image: The image that will be used for the node VMs. Possible values: COS, UBUNTU.
         """
         pulumi.set(__self__, "cluster_zone_name", cluster_zone_name)
         pulumi.set(__self__, "desired_capacity", desired_capacity)
@@ -121,9 +117,6 @@ class ElastigroupArgs:
     @property
     @pulumi.getter(name="clusterZoneName")
     def cluster_zone_name(self) -> pulumi.Input[str]:
-        """
-        The zone where the cluster is hosted.
-        """
         return pulumi.get(self, "cluster_zone_name")
 
     @cluster_zone_name.setter
@@ -151,9 +144,6 @@ class ElastigroupArgs:
     @property
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The name of the GKE cluster you wish to import.
-        """
         warnings.warn("""Please define cluster_id under integration_gke""", DeprecationWarning)
         pulumi.log.warn("""cluster_id is deprecated: Please define cluster_id under integration_gke""")
 
@@ -247,9 +237,6 @@ class ElastigroupArgs:
     @property
     @pulumi.getter(name="integrationGke")
     def integration_gke(self) -> Optional[pulumi.Input['ElastigroupIntegrationGkeArgs']]:
-        """
-        Describes the GKE integration.
-        """
         return pulumi.get(self, "integration_gke")
 
     @integration_gke.setter
@@ -322,9 +309,6 @@ class ElastigroupArgs:
     @property
     @pulumi.getter(name="nodeImage")
     def node_image(self) -> Optional[pulumi.Input[str]]:
-        """
-        The image that will be used for the node VMs. Possible values: COS, UBUNTU.
-        """
         return pulumi.get(self, "node_image")
 
     @node_image.setter
@@ -449,10 +433,6 @@ class _ElastigroupState:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering Elastigroup resources.
-        :param pulumi.Input[str] cluster_id: The name of the GKE cluster you wish to import.
-        :param pulumi.Input[str] cluster_zone_name: The zone where the cluster is hosted.
-        :param pulumi.Input['ElastigroupIntegrationGkeArgs'] integration_gke: Describes the GKE integration.
-        :param pulumi.Input[str] node_image: The image that will be used for the node VMs. Possible values: COS, UBUNTU.
         """
         if backend_services is not None:
             pulumi.set(__self__, "backend_services", backend_services)
@@ -532,9 +512,6 @@ class _ElastigroupState:
     @property
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The name of the GKE cluster you wish to import.
-        """
         warnings.warn("""Please define cluster_id under integration_gke""", DeprecationWarning)
         pulumi.log.warn("""cluster_id is deprecated: Please define cluster_id under integration_gke""")
 
@@ -547,9 +524,6 @@ class _ElastigroupState:
     @property
     @pulumi.getter(name="clusterZoneName")
     def cluster_zone_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The zone where the cluster is hosted.
-        """
         return pulumi.get(self, "cluster_zone_name")
 
     @cluster_zone_name.setter
@@ -649,9 +623,6 @@ class _ElastigroupState:
     @property
     @pulumi.getter(name="integrationGke")
     def integration_gke(self) -> Optional[pulumi.Input['ElastigroupIntegrationGkeArgs']]:
-        """
-        Describes the GKE integration.
-        """
         return pulumi.get(self, "integration_gke")
 
     @integration_gke.setter
@@ -724,9 +695,6 @@ class _ElastigroupState:
     @property
     @pulumi.getter(name="nodeImage")
     def node_image(self) -> Optional[pulumi.Input[str]]:
-        """
-        The image that will be used for the node VMs. Possible values: COS, UBUNTU.
-        """
         return pulumi.get(self, "node_image")
 
     @node_image.setter
@@ -864,7 +832,6 @@ class Elastigroup(pulumi.CustomResource):
         * you must include `cluster_zone_name` and `cluster_id`
         * a handful of parameters are created remotely and will not appear in the diff. A complete list can be found below.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_spotinst as spotinst
@@ -913,14 +880,9 @@ class Elastigroup(pulumi.CustomResource):
                 )],
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] cluster_id: The name of the GKE cluster you wish to import.
-        :param pulumi.Input[str] cluster_zone_name: The zone where the cluster is hosted.
-        :param pulumi.Input[pulumi.InputType['ElastigroupIntegrationGkeArgs']] integration_gke: Describes the GKE integration.
-        :param pulumi.Input[str] node_image: The image that will be used for the node VMs. Possible values: COS, UBUNTU.
         """
         ...
     @overload
@@ -940,7 +902,6 @@ class Elastigroup(pulumi.CustomResource):
         * you must include `cluster_zone_name` and `cluster_id`
         * a handful of parameters are created remotely and will not appear in the diff. A complete list can be found below.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_spotinst as spotinst
@@ -989,7 +950,6 @@ class Elastigroup(pulumi.CustomResource):
                 )],
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param ElastigroupArgs args: The arguments to use to populate this resource's properties.
@@ -1129,10 +1089,6 @@ class Elastigroup(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] cluster_id: The name of the GKE cluster you wish to import.
-        :param pulumi.Input[str] cluster_zone_name: The zone where the cluster is hosted.
-        :param pulumi.Input[pulumi.InputType['ElastigroupIntegrationGkeArgs']] integration_gke: Describes the GKE integration.
-        :param pulumi.Input[str] node_image: The image that will be used for the node VMs. Possible values: COS, UBUNTU.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1179,9 +1135,6 @@ class Elastigroup(pulumi.CustomResource):
     @property
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> pulumi.Output[Optional[str]]:
-        """
-        The name of the GKE cluster you wish to import.
-        """
         warnings.warn("""Please define cluster_id under integration_gke""", DeprecationWarning)
         pulumi.log.warn("""cluster_id is deprecated: Please define cluster_id under integration_gke""")
 
@@ -1190,9 +1143,6 @@ class Elastigroup(pulumi.CustomResource):
     @property
     @pulumi.getter(name="clusterZoneName")
     def cluster_zone_name(self) -> pulumi.Output[str]:
-        """
-        The zone where the cluster is hosted.
-        """
         return pulumi.get(self, "cluster_zone_name")
 
     @property
@@ -1248,9 +1198,6 @@ class Elastigroup(pulumi.CustomResource):
     @property
     @pulumi.getter(name="integrationGke")
     def integration_gke(self) -> pulumi.Output[Optional['outputs.ElastigroupIntegrationGke']]:
-        """
-        Describes the GKE integration.
-        """
         return pulumi.get(self, "integration_gke")
 
     @property
@@ -1291,9 +1238,6 @@ class Elastigroup(pulumi.CustomResource):
     @property
     @pulumi.getter(name="nodeImage")
     def node_image(self) -> pulumi.Output[Optional[str]]:
-        """
-        The image that will be used for the node VMs. Possible values: COS, UBUNTU.
-        """
         return pulumi.get(self, "node_image")
 
     @property

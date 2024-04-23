@@ -11,20 +11,12 @@ import java.util.Objects;
 @CustomType
 public final class ElastigroupIntegrationEcsAutoscaleAttribute {
     private String key;
-    /**
-     * @return The dimension value.
-     * 
-     */
     private String value;
 
     private ElastigroupIntegrationEcsAutoscaleAttribute() {}
     public String key() {
         return this.key;
     }
-    /**
-     * @return The dimension value.
-     * 
-     */
     public String value() {
         return this.value;
     }

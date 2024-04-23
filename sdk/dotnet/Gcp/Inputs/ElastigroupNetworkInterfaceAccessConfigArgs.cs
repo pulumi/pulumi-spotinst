@@ -18,9 +18,6 @@ namespace Pulumi.SpotInst.Gcp.Inputs
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Specifies the type of disk, either SCRATCH or PERSISTENT.
-        /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 

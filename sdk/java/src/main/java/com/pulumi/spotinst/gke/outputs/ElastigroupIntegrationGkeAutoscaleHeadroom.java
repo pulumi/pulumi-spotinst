@@ -11,41 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ElastigroupIntegrationGkeAutoscaleHeadroom {
-    /**
-     * @return Cpu units for compute.
-     * 
-     */
     private @Nullable Integer cpuPerUnit;
-    /**
-     * @return RAM units for compute.
-     * 
-     */
     private @Nullable Integer memoryPerUnit;
-    /**
-     * @return Amount of units for compute.
-     * 
-     */
     private @Nullable Integer numOfUnits;
 
     private ElastigroupIntegrationGkeAutoscaleHeadroom() {}
-    /**
-     * @return Cpu units for compute.
-     * 
-     */
     public Optional<Integer> cpuPerUnit() {
         return Optional.ofNullable(this.cpuPerUnit);
     }
-    /**
-     * @return RAM units for compute.
-     * 
-     */
     public Optional<Integer> memoryPerUnit() {
         return Optional.ofNullable(this.memoryPerUnit);
     }
-    /**
-     * @return Amount of units for compute.
-     * 
-     */
     public Optional<Integer> numOfUnits() {
         return Optional.ofNullable(this.numOfUnits);
     }

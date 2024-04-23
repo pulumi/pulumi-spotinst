@@ -11,7 +11,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as spotinst from "@pulumi/spotinst";
@@ -81,7 +80,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Strategy
  *
@@ -145,7 +143,7 @@ export class Elastigroup extends pulumi.CustomResource {
      */
     public readonly minSize!: pulumi.Output<number>;
     /**
-     * Name of the Managed Service Identity.
+     * The group name.
      */
     public readonly name!: pulumi.Output<string>;
     public readonly network!: pulumi.Output<outputs.azure.ElastigroupNetwork>;
@@ -159,7 +157,7 @@ export class Elastigroup extends pulumi.CustomResource {
      */
     public readonly region!: pulumi.Output<string>;
     /**
-     * Name of the Azure Resource Group where the Managed Service Identity is located.
+     * Name of the Resource Group for Elastigroup.
      */
     public readonly resourceGroupName!: pulumi.Output<string>;
     public readonly scalingDownPolicies!: pulumi.Output<outputs.azure.ElastigroupScalingDownPolicy[] | undefined>;
@@ -291,7 +289,7 @@ export interface ElastigroupState {
      */
     minSize?: pulumi.Input<number>;
     /**
-     * Name of the Managed Service Identity.
+     * The group name.
      */
     name?: pulumi.Input<string>;
     network?: pulumi.Input<inputs.azure.ElastigroupNetwork>;
@@ -305,7 +303,7 @@ export interface ElastigroupState {
      */
     region?: pulumi.Input<string>;
     /**
-     * Name of the Azure Resource Group where the Managed Service Identity is located.
+     * Name of the Resource Group for Elastigroup.
      */
     resourceGroupName?: pulumi.Input<string>;
     scalingDownPolicies?: pulumi.Input<pulumi.Input<inputs.azure.ElastigroupScalingDownPolicy>[]>;
@@ -346,7 +344,7 @@ export interface ElastigroupArgs {
      */
     minSize?: pulumi.Input<number>;
     /**
-     * Name of the Managed Service Identity.
+     * The group name.
      */
     name?: pulumi.Input<string>;
     network: pulumi.Input<inputs.azure.ElastigroupNetwork>;
@@ -360,7 +358,7 @@ export interface ElastigroupArgs {
      */
     region: pulumi.Input<string>;
     /**
-     * Name of the Azure Resource Group where the Managed Service Identity is located.
+     * Name of the Resource Group for Elastigroup.
      */
     resourceGroupName: pulumi.Input<string>;
     scalingDownPolicies?: pulumi.Input<pulumi.Input<inputs.azure.ElastigroupScalingDownPolicy>[]>;

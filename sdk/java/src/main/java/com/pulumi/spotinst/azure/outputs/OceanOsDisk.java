@@ -19,7 +19,7 @@ public final class OceanOsDisk {
      */
     private Integer sizeGb;
     /**
-     * @return The type of load balancer. Supported value: `loadBalancer`
+     * @return The type of the OS disk. Supported values: `Standard_LRS`, `Premium_LRS`, `StandardSSD_LRS`.
      * 
      */
     private @Nullable String type;
@@ -33,7 +33,7 @@ public final class OceanOsDisk {
         return this.sizeGb;
     }
     /**
-     * @return The type of load balancer. Supported value: `loadBalancer`
+     * @return The type of the OS disk. Supported values: `Standard_LRS`, `Premium_LRS`, `StandardSSD_LRS`.
      * 
      */
     public Optional<String> type() {

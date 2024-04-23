@@ -15,101 +15,37 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class OceanImportAutoscaler {
-    /**
-     * @return Optionally set the auto headroom percentage, set a number between 0-200 to control the headroom % from the cluster. Relevant when isAutoConfig=true.
-     * 
-     */
     private @Nullable Integer autoHeadroomPercentage;
-    /**
-     * @return Cooldown period between scaling actions.
-     * 
-     */
     private @Nullable Integer cooldown;
-    /**
-     * @return Auto Scaling scale down operations.
-     * 
-     */
     private @Nullable OceanImportAutoscalerDown down;
-    /**
-     * @return enables automatic and manual headroom to work in parallel. When set to false, automatic headroom overrides all other headroom definitions manually configured, whether they are at cluster or VNG level.
-     * 
-     */
     private @Nullable Boolean enableAutomaticAndManualHeadroom;
-    /**
-     * @return Spare resource capacity management enabling fast assignment of Pods without waiting for new resources to launch.
-     * 
-     */
     private @Nullable OceanImportAutoscalerHeadroom headroom;
-    /**
-     * @return Automatically configure and optimize headroom resources.
-     * 
-     */
     private @Nullable Boolean isAutoConfig;
-    /**
-     * @return Enable the Ocean Kubernetes Autoscaler.
-     * 
-     */
     private @Nullable Boolean isEnabled;
-    /**
-     * @return Optionally set upper and lower bounds on the resource usage of the cluster.
-     * 
-     */
     private @Nullable OceanImportAutoscalerResourceLimits resourceLimits;
 
     private OceanImportAutoscaler() {}
-    /**
-     * @return Optionally set the auto headroom percentage, set a number between 0-200 to control the headroom % from the cluster. Relevant when isAutoConfig=true.
-     * 
-     */
     public Optional<Integer> autoHeadroomPercentage() {
         return Optional.ofNullable(this.autoHeadroomPercentage);
     }
-    /**
-     * @return Cooldown period between scaling actions.
-     * 
-     */
     public Optional<Integer> cooldown() {
         return Optional.ofNullable(this.cooldown);
     }
-    /**
-     * @return Auto Scaling scale down operations.
-     * 
-     */
     public Optional<OceanImportAutoscalerDown> down() {
         return Optional.ofNullable(this.down);
     }
-    /**
-     * @return enables automatic and manual headroom to work in parallel. When set to false, automatic headroom overrides all other headroom definitions manually configured, whether they are at cluster or VNG level.
-     * 
-     */
     public Optional<Boolean> enableAutomaticAndManualHeadroom() {
         return Optional.ofNullable(this.enableAutomaticAndManualHeadroom);
     }
-    /**
-     * @return Spare resource capacity management enabling fast assignment of Pods without waiting for new resources to launch.
-     * 
-     */
     public Optional<OceanImportAutoscalerHeadroom> headroom() {
         return Optional.ofNullable(this.headroom);
     }
-    /**
-     * @return Automatically configure and optimize headroom resources.
-     * 
-     */
     public Optional<Boolean> isAutoConfig() {
         return Optional.ofNullable(this.isAutoConfig);
     }
-    /**
-     * @return Enable the Ocean Kubernetes Autoscaler.
-     * 
-     */
     public Optional<Boolean> isEnabled() {
         return Optional.ofNullable(this.isEnabled);
     }
-    /**
-     * @return Optionally set upper and lower bounds on the resource usage of the cluster.
-     * 
-     */
     public Optional<OceanImportAutoscalerResourceLimits> resourceLimits() {
         return Optional.ofNullable(this.resourceLimits);
     }

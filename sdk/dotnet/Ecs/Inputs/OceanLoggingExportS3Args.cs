@@ -13,7 +13,7 @@ namespace Pulumi.SpotInst.Ecs.Inputs
     public sealed class OceanLoggingExportS3Args : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The identifier of The S3 data integration to export the logs to.
+        /// The Spotinst Ocean ID.
         /// </summary>
         [Input("id", required: true)]
         public Input<string> Id { get; set; } = null!;

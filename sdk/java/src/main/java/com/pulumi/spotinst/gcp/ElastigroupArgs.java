@@ -32,17 +32,9 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ElastigroupArgs Empty = new ElastigroupArgs();
 
-    /**
-     * Enable auto-replacement of unhealthy instances.
-     * 
-     */
     @Import(name="autoHealing")
     private @Nullable Output<Boolean> autoHealing;
 
-    /**
-     * @return Enable auto-replacement of unhealthy instances.
-     * 
-     */
     public Optional<Output<Boolean>> autoHealing() {
         return Optional.ofNullable(this.autoHealing);
     }
@@ -70,17 +62,9 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.availabilityZones);
     }
 
-    /**
-     * Describes the backend service configurations.
-     * 
-     */
     @Import(name="backendServices")
     private @Nullable Output<List<ElastigroupBackendServiceArgs>> backendServices;
 
-    /**
-     * @return Describes the backend service configurations.
-     * 
-     */
     public Optional<Output<List<ElastigroupBackendServiceArgs>>> backendServices() {
         return Optional.ofNullable(this.backendServices);
     }
@@ -152,47 +136,23 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.fallbackToOndemand);
     }
 
-    /**
-     * Defines the GPU configuration.
-     * 
-     */
     @Import(name="gpu")
     private @Nullable Output<List<ElastigroupGpuArgs>> gpu;
 
-    /**
-     * @return Defines the GPU configuration.
-     * 
-     */
     public Optional<Output<List<ElastigroupGpuArgs>>> gpu() {
         return Optional.ofNullable(this.gpu);
     }
 
-    /**
-     * Period of time (seconds) to wait for VM to reach healthiness before monitoring for unhealthiness.
-     * 
-     */
     @Import(name="healthCheckGracePeriod")
     private @Nullable Output<Integer> healthCheckGracePeriod;
 
-    /**
-     * @return Period of time (seconds) to wait for VM to reach healthiness before monitoring for unhealthiness.
-     * 
-     */
     public Optional<Output<Integer>> healthCheckGracePeriod() {
         return Optional.ofNullable(this.healthCheckGracePeriod);
     }
 
-    /**
-     * The kind of health check to perform when monitoring for unhealthiness.
-     * 
-     */
     @Import(name="healthCheckType")
     private @Nullable Output<String> healthCheckType;
 
-    /**
-     * @return The kind of health check to perform when monitoring for unhealthiness.
-     * 
-     */
     public Optional<Output<String>> healthCheckType() {
         return Optional.ofNullable(this.healthCheckType);
     }
@@ -261,17 +221,9 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.instanceTypesPreemptibles);
     }
 
-    /**
-     * Describes the [Docker Swarm](https://api.spotinst.com/integration-docs/elastigroup/container-management/docker-swarm/docker-swarm-integration/) integration.
-     * 
-     */
     @Import(name="integrationDockerSwarm")
     private @Nullable Output<ElastigroupIntegrationDockerSwarmArgs> integrationDockerSwarm;
 
-    /**
-     * @return Describes the [Docker Swarm](https://api.spotinst.com/integration-docs/elastigroup/container-management/docker-swarm/docker-swarm-integration/) integration.
-     * 
-     */
     public Optional<Output<ElastigroupIntegrationDockerSwarmArgs>> integrationDockerSwarm() {
         return Optional.ofNullable(this.integrationDockerSwarm);
     }
@@ -365,17 +317,9 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.name);
     }
 
-    /**
-     * Array of objects representing the network configuration for the elastigroup.
-     * 
-     */
     @Import(name="networkInterfaces")
     private @Nullable Output<List<ElastigroupNetworkInterfaceArgs>> networkInterfaces;
 
-    /**
-     * @return Array of objects representing the network configuration for the elastigroup.
-     * 
-     */
     public Optional<Output<List<ElastigroupNetworkInterfaceArgs>>> networkInterfaces() {
         return Optional.ofNullable(this.networkInterfaces);
     }
@@ -417,36 +361,16 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.provisioningModel);
     }
 
-    /**
-     * Contains scaling policies for scaling the Elastigroup down.
-     * 
-     * Each `scaling_*_policy` supports the following:
-     * 
-     */
     @Import(name="scalingDownPolicies")
     private @Nullable Output<List<ElastigroupScalingDownPolicyArgs>> scalingDownPolicies;
 
-    /**
-     * @return Contains scaling policies for scaling the Elastigroup down.
-     * 
-     * Each `scaling_*_policy` supports the following:
-     * 
-     */
     public Optional<Output<List<ElastigroupScalingDownPolicyArgs>>> scalingDownPolicies() {
         return Optional.ofNullable(this.scalingDownPolicies);
     }
 
-    /**
-     * Contains scaling policies for scaling the Elastigroup up.
-     * 
-     */
     @Import(name="scalingUpPolicies")
     private @Nullable Output<List<ElastigroupScalingUpPolicyArgs>> scalingUpPolicies;
 
-    /**
-     * @return Contains scaling policies for scaling the Elastigroup up.
-     * 
-     */
     public Optional<Output<List<ElastigroupScalingUpPolicyArgs>>> scalingUpPolicies() {
         return Optional.ofNullable(this.scalingUpPolicies);
     }
@@ -533,17 +457,9 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.tags);
     }
 
-    /**
-     * Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
-     * 
-     */
     @Import(name="unhealthyDuration")
     private @Nullable Output<Integer> unhealthyDuration;
 
-    /**
-     * @return Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
-     * 
-     */
     public Optional<Output<Integer>> unhealthyDuration() {
         return Optional.ofNullable(this.unhealthyDuration);
     }
@@ -607,23 +523,11 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
             $ = new ElastigroupArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param autoHealing Enable auto-replacement of unhealthy instances.
-         * 
-         * @return builder
-         * 
-         */
         public Builder autoHealing(@Nullable Output<Boolean> autoHealing) {
             $.autoHealing = autoHealing;
             return this;
         }
 
-        /**
-         * @param autoHealing Enable auto-replacement of unhealthy instances.
-         * 
-         * @return builder
-         * 
-         */
         public Builder autoHealing(Boolean autoHealing) {
             return autoHealing(Output.of(autoHealing));
         }
@@ -671,33 +575,15 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
             return availabilityZones(List.of(availabilityZones));
         }
 
-        /**
-         * @param backendServices Describes the backend service configurations.
-         * 
-         * @return builder
-         * 
-         */
         public Builder backendServices(@Nullable Output<List<ElastigroupBackendServiceArgs>> backendServices) {
             $.backendServices = backendServices;
             return this;
         }
 
-        /**
-         * @param backendServices Describes the backend service configurations.
-         * 
-         * @return builder
-         * 
-         */
         public Builder backendServices(List<ElastigroupBackendServiceArgs> backendServices) {
             return backendServices(Output.of(backendServices));
         }
 
-        /**
-         * @param backendServices Describes the backend service configurations.
-         * 
-         * @return builder
-         * 
-         */
         public Builder backendServices(ElastigroupBackendServiceArgs... backendServices) {
             return backendServices(List.of(backendServices));
         }
@@ -799,75 +685,33 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
             return fallbackToOndemand(Output.of(fallbackToOndemand));
         }
 
-        /**
-         * @param gpu Defines the GPU configuration.
-         * 
-         * @return builder
-         * 
-         */
         public Builder gpu(@Nullable Output<List<ElastigroupGpuArgs>> gpu) {
             $.gpu = gpu;
             return this;
         }
 
-        /**
-         * @param gpu Defines the GPU configuration.
-         * 
-         * @return builder
-         * 
-         */
         public Builder gpu(List<ElastigroupGpuArgs> gpu) {
             return gpu(Output.of(gpu));
         }
 
-        /**
-         * @param gpu Defines the GPU configuration.
-         * 
-         * @return builder
-         * 
-         */
         public Builder gpu(ElastigroupGpuArgs... gpu) {
             return gpu(List.of(gpu));
         }
 
-        /**
-         * @param healthCheckGracePeriod Period of time (seconds) to wait for VM to reach healthiness before monitoring for unhealthiness.
-         * 
-         * @return builder
-         * 
-         */
         public Builder healthCheckGracePeriod(@Nullable Output<Integer> healthCheckGracePeriod) {
             $.healthCheckGracePeriod = healthCheckGracePeriod;
             return this;
         }
 
-        /**
-         * @param healthCheckGracePeriod Period of time (seconds) to wait for VM to reach healthiness before monitoring for unhealthiness.
-         * 
-         * @return builder
-         * 
-         */
         public Builder healthCheckGracePeriod(Integer healthCheckGracePeriod) {
             return healthCheckGracePeriod(Output.of(healthCheckGracePeriod));
         }
 
-        /**
-         * @param healthCheckType The kind of health check to perform when monitoring for unhealthiness.
-         * 
-         * @return builder
-         * 
-         */
         public Builder healthCheckType(@Nullable Output<String> healthCheckType) {
             $.healthCheckType = healthCheckType;
             return this;
         }
 
-        /**
-         * @param healthCheckType The kind of health check to perform when monitoring for unhealthiness.
-         * 
-         * @return builder
-         * 
-         */
         public Builder healthCheckType(String healthCheckType) {
             return healthCheckType(Output.of(healthCheckType));
         }
@@ -980,23 +824,11 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
             return instanceTypesPreemptibles(List.of(instanceTypesPreemptibles));
         }
 
-        /**
-         * @param integrationDockerSwarm Describes the [Docker Swarm](https://api.spotinst.com/integration-docs/elastigroup/container-management/docker-swarm/docker-swarm-integration/) integration.
-         * 
-         * @return builder
-         * 
-         */
         public Builder integrationDockerSwarm(@Nullable Output<ElastigroupIntegrationDockerSwarmArgs> integrationDockerSwarm) {
             $.integrationDockerSwarm = integrationDockerSwarm;
             return this;
         }
 
-        /**
-         * @param integrationDockerSwarm Describes the [Docker Swarm](https://api.spotinst.com/integration-docs/elastigroup/container-management/docker-swarm/docker-swarm-integration/) integration.
-         * 
-         * @return builder
-         * 
-         */
         public Builder integrationDockerSwarm(ElastigroupIntegrationDockerSwarmArgs integrationDockerSwarm) {
             return integrationDockerSwarm(Output.of(integrationDockerSwarm));
         }
@@ -1144,33 +976,15 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
             return name(Output.of(name));
         }
 
-        /**
-         * @param networkInterfaces Array of objects representing the network configuration for the elastigroup.
-         * 
-         * @return builder
-         * 
-         */
         public Builder networkInterfaces(@Nullable Output<List<ElastigroupNetworkInterfaceArgs>> networkInterfaces) {
             $.networkInterfaces = networkInterfaces;
             return this;
         }
 
-        /**
-         * @param networkInterfaces Array of objects representing the network configuration for the elastigroup.
-         * 
-         * @return builder
-         * 
-         */
         public Builder networkInterfaces(List<ElastigroupNetworkInterfaceArgs> networkInterfaces) {
             return networkInterfaces(Output.of(networkInterfaces));
         }
 
-        /**
-         * @param networkInterfaces Array of objects representing the network configuration for the elastigroup.
-         * 
-         * @return builder
-         * 
-         */
         public Builder networkInterfaces(ElastigroupNetworkInterfaceArgs... networkInterfaces) {
             return networkInterfaces(List.of(networkInterfaces));
         }
@@ -1226,70 +1040,28 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
             return provisioningModel(Output.of(provisioningModel));
         }
 
-        /**
-         * @param scalingDownPolicies Contains scaling policies for scaling the Elastigroup down.
-         * 
-         * Each `scaling_*_policy` supports the following:
-         * 
-         * @return builder
-         * 
-         */
         public Builder scalingDownPolicies(@Nullable Output<List<ElastigroupScalingDownPolicyArgs>> scalingDownPolicies) {
             $.scalingDownPolicies = scalingDownPolicies;
             return this;
         }
 
-        /**
-         * @param scalingDownPolicies Contains scaling policies for scaling the Elastigroup down.
-         * 
-         * Each `scaling_*_policy` supports the following:
-         * 
-         * @return builder
-         * 
-         */
         public Builder scalingDownPolicies(List<ElastigroupScalingDownPolicyArgs> scalingDownPolicies) {
             return scalingDownPolicies(Output.of(scalingDownPolicies));
         }
 
-        /**
-         * @param scalingDownPolicies Contains scaling policies for scaling the Elastigroup down.
-         * 
-         * Each `scaling_*_policy` supports the following:
-         * 
-         * @return builder
-         * 
-         */
         public Builder scalingDownPolicies(ElastigroupScalingDownPolicyArgs... scalingDownPolicies) {
             return scalingDownPolicies(List.of(scalingDownPolicies));
         }
 
-        /**
-         * @param scalingUpPolicies Contains scaling policies for scaling the Elastigroup up.
-         * 
-         * @return builder
-         * 
-         */
         public Builder scalingUpPolicies(@Nullable Output<List<ElastigroupScalingUpPolicyArgs>> scalingUpPolicies) {
             $.scalingUpPolicies = scalingUpPolicies;
             return this;
         }
 
-        /**
-         * @param scalingUpPolicies Contains scaling policies for scaling the Elastigroup up.
-         * 
-         * @return builder
-         * 
-         */
         public Builder scalingUpPolicies(List<ElastigroupScalingUpPolicyArgs> scalingUpPolicies) {
             return scalingUpPolicies(Output.of(scalingUpPolicies));
         }
 
-        /**
-         * @param scalingUpPolicies Contains scaling policies for scaling the Elastigroup up.
-         * 
-         * @return builder
-         * 
-         */
         public Builder scalingUpPolicies(ElastigroupScalingUpPolicyArgs... scalingUpPolicies) {
             return scalingUpPolicies(List.of(scalingUpPolicies));
         }
@@ -1432,23 +1204,11 @@ public final class ElastigroupArgs extends com.pulumi.resources.ResourceArgs {
             return tags(List.of(tags));
         }
 
-        /**
-         * @param unhealthyDuration Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
-         * 
-         * @return builder
-         * 
-         */
         public Builder unhealthyDuration(@Nullable Output<Integer> unhealthyDuration) {
             $.unhealthyDuration = unhealthyDuration;
             return this;
         }
 
-        /**
-         * @param unhealthyDuration Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
-         * 
-         * @return builder
-         * 
-         */
         public Builder unhealthyDuration(Integer unhealthyDuration) {
             return unhealthyDuration(Output.of(unhealthyDuration));
         }

@@ -12,89 +12,33 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ElastigroupScalingDownPolicyStepAdjustmentAction {
-    /**
-     * @return The number of instances to add/remove to/from the target capacity when scale is needed. Can be used as advanced expression for scaling of instances to add/remove to/from the target capacity when scale is needed. You can see more information here: Advanced expression. Example value: `&#34;MAX(currCapacity / 5, value * 10)&#34;`
-     * 
-     */
     private @Nullable String adjustment;
-    /**
-     * @return . The number of the desired target (and maximum) capacity
-     * 
-     */
     private @Nullable String maxTargetCapacity;
-    /**
-     * @return The maximal number of instances to have in the group.
-     * 
-     */
     private @Nullable String maximum;
-    /**
-     * @return . The number of the desired target (and minimum) capacity
-     * 
-     */
     private @Nullable String minTargetCapacity;
-    /**
-     * @return The minimal number of instances to have in the group.
-     * 
-     */
     private @Nullable String minimum;
-    /**
-     * @return The target number of instances to have in the group.
-     * 
-     */
     private @Nullable String target;
-    /**
-     * @return The type of the action to take when scale up is needed. Valid types: `&#34;adjustment&#34;`, `&#34;updateCapacity&#34;`, `&#34;setMaxTarget&#34;`, `&#34;percentageAdjustment&#34;`.
-     * 
-     */
     private String type;
 
     private ElastigroupScalingDownPolicyStepAdjustmentAction() {}
-    /**
-     * @return The number of instances to add/remove to/from the target capacity when scale is needed. Can be used as advanced expression for scaling of instances to add/remove to/from the target capacity when scale is needed. You can see more information here: Advanced expression. Example value: `&#34;MAX(currCapacity / 5, value * 10)&#34;`
-     * 
-     */
     public Optional<String> adjustment() {
         return Optional.ofNullable(this.adjustment);
     }
-    /**
-     * @return . The number of the desired target (and maximum) capacity
-     * 
-     */
     public Optional<String> maxTargetCapacity() {
         return Optional.ofNullable(this.maxTargetCapacity);
     }
-    /**
-     * @return The maximal number of instances to have in the group.
-     * 
-     */
     public Optional<String> maximum() {
         return Optional.ofNullable(this.maximum);
     }
-    /**
-     * @return . The number of the desired target (and minimum) capacity
-     * 
-     */
     public Optional<String> minTargetCapacity() {
         return Optional.ofNullable(this.minTargetCapacity);
     }
-    /**
-     * @return The minimal number of instances to have in the group.
-     * 
-     */
     public Optional<String> minimum() {
         return Optional.ofNullable(this.minimum);
     }
-    /**
-     * @return The target number of instances to have in the group.
-     * 
-     */
     public Optional<String> target() {
         return Optional.ofNullable(this.target);
     }
-    /**
-     * @return The type of the action to take when scale up is needed. Valid types: `&#34;adjustment&#34;`, `&#34;updateCapacity&#34;`, `&#34;setMaxTarget&#34;`, `&#34;percentageAdjustment&#34;`.
-     * 
-     */
     public String type() {
         return this.type;
     }

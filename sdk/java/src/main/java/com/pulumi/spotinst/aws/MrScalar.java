@@ -347,87 +347,39 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="spotinst:aws/mrScalar:MrScalar")
 public class MrScalar extends com.pulumi.resources.CustomResource {
-    /**
-     * This is meta information about third-party applications that third-party vendors use for testing purposes.
-     * 
-     */
     @Export(name="additionalInfo", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> additionalInfo;
 
-    /**
-     * @return This is meta information about third-party applications that third-party vendors use for testing purposes.
-     * 
-     */
     public Output<Optional<String>> additionalInfo() {
         return Codegen.optional(this.additionalInfo);
     }
-    /**
-     * A list of additional Amazon EC2 security group IDs for the master node.
-     * 
-     */
     @Export(name="additionalPrimarySecurityGroups", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> additionalPrimarySecurityGroups;
 
-    /**
-     * @return A list of additional Amazon EC2 security group IDs for the master node.
-     * 
-     */
     public Output<Optional<List<String>>> additionalPrimarySecurityGroups() {
         return Codegen.optional(this.additionalPrimarySecurityGroups);
     }
-    /**
-     * A list of additional Amazon EC2 security group IDs for the core and task nodes.
-     * 
-     */
     @Export(name="additionalReplicaSecurityGroups", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> additionalReplicaSecurityGroups;
 
-    /**
-     * @return A list of additional Amazon EC2 security group IDs for the core and task nodes.
-     * 
-     */
     public Output<Optional<List<String>>> additionalReplicaSecurityGroups() {
         return Codegen.optional(this.additionalReplicaSecurityGroups);
     }
-    /**
-     * A case-insensitive list of applications for Amazon EMR to install and configure when launching the cluster
-     * 
-     */
     @Export(name="applications", refs={List.class,MrScalarApplication.class}, tree="[0,1]")
     private Output</* @Nullable */ List<MrScalarApplication>> applications;
 
-    /**
-     * @return A case-insensitive list of applications for Amazon EMR to install and configure when launching the cluster
-     * 
-     */
     public Output<Optional<List<MrScalarApplication>>> applications() {
         return Codegen.optional(this.applications);
     }
-    /**
-     * List of AZs and their subnet Ids. See example above for usage.
-     * 
-     */
     @Export(name="availabilityZones", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> availabilityZones;
 
-    /**
-     * @return List of AZs and their subnet Ids. See example above for usage.
-     * 
-     */
     public Output<Optional<List<String>>> availabilityZones() {
         return Codegen.optional(this.availabilityZones);
     }
-    /**
-     * Describes path to S3 file containing description of bootstrap actions. [More Information](https://api.spotinst.com/elastigroup-for-aws/services-integrations/elastic-mapreduce/import-an-emr-cluster/advanced/)
-     * 
-     */
     @Export(name="bootstrapActionsFiles", refs={List.class,MrScalarBootstrapActionsFile.class}, tree="[0,1]")
     private Output</* @Nullable */ List<MrScalarBootstrapActionsFile>> bootstrapActionsFiles;
 
-    /**
-     * @return Describes path to S3 file containing description of bootstrap actions. [More Information](https://api.spotinst.com/elastigroup-for-aws/services-integrations/elastic-mapreduce/import-an-emr-cluster/advanced/)
-     * 
-     */
     public Output<Optional<List<MrScalarBootstrapActionsFile>>> bootstrapActionsFiles() {
         return Codegen.optional(this.bootstrapActionsFiles);
     }
@@ -445,129 +397,57 @@ public class MrScalar extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> clusterId() {
         return Codegen.optional(this.clusterId);
     }
-    /**
-     * Describes path to S3 file containing description of configurations. [More Information](https://api.spotinst.com/elastigroup-for-aws/services-integrations/elastic-mapreduce/import-an-emr-cluster/advanced/)
-     * 
-     */
     @Export(name="configurationsFiles", refs={List.class,MrScalarConfigurationsFile.class}, tree="[0,1]")
     private Output</* @Nullable */ List<MrScalarConfigurationsFile>> configurationsFiles;
 
-    /**
-     * @return Describes path to S3 file containing description of configurations. [More Information](https://api.spotinst.com/elastigroup-for-aws/services-integrations/elastic-mapreduce/import-an-emr-cluster/advanced/)
-     * 
-     */
     public Output<Optional<List<MrScalarConfigurationsFile>>> configurationsFiles() {
         return Codegen.optional(this.configurationsFiles);
     }
-    /**
-     * amount of instances in core group.
-     * 
-     */
     @Export(name="coreDesiredCapacity", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> coreDesiredCapacity;
 
-    /**
-     * @return amount of instances in core group.
-     * 
-     */
     public Output<Optional<Integer>> coreDesiredCapacity() {
         return Codegen.optional(this.coreDesiredCapacity);
     }
-    /**
-     * This determines the ebs configuration for your core group instances. Only a single block is allowed.
-     * 
-     */
     @Export(name="coreEbsBlockDevices", refs={List.class,MrScalarCoreEbsBlockDevice.class}, tree="[0,1]")
     private Output</* @Nullable */ List<MrScalarCoreEbsBlockDevice>> coreEbsBlockDevices;
 
-    /**
-     * @return This determines the ebs configuration for your core group instances. Only a single block is allowed.
-     * 
-     */
     public Output<Optional<List<MrScalarCoreEbsBlockDevice>>> coreEbsBlockDevices() {
         return Codegen.optional(this.coreEbsBlockDevices);
     }
-    /**
-     * EBS Optimization setting for instances in group.
-     * 
-     */
     @Export(name="coreEbsOptimized", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> coreEbsOptimized;
 
-    /**
-     * @return EBS Optimization setting for instances in group.
-     * 
-     */
     public Output<Optional<Boolean>> coreEbsOptimized() {
         return Codegen.optional(this.coreEbsOptimized);
     }
-    /**
-     * The MrScaler instance types for the core nodes.
-     * 
-     */
     @Export(name="coreInstanceTypes", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> coreInstanceTypes;
 
-    /**
-     * @return The MrScaler instance types for the core nodes.
-     * 
-     */
     public Output<Optional<List<String>>> coreInstanceTypes() {
         return Codegen.optional(this.coreInstanceTypes);
     }
-    /**
-     * The MrScaler lifecycle for instances in core group. Allowed values are &#39;SPOT&#39; and &#39;ON_DEMAND&#39;.
-     * 
-     */
     @Export(name="coreLifecycle", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> coreLifecycle;
 
-    /**
-     * @return The MrScaler lifecycle for instances in core group. Allowed values are &#39;SPOT&#39; and &#39;ON_DEMAND&#39;.
-     * 
-     */
     public Output<Optional<String>> coreLifecycle() {
         return Codegen.optional(this.coreLifecycle);
     }
-    /**
-     * maximal amount of instances in core group.
-     * 
-     */
     @Export(name="coreMaxSize", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> coreMaxSize;
 
-    /**
-     * @return maximal amount of instances in core group.
-     * 
-     */
     public Output<Optional<Integer>> coreMaxSize() {
         return Codegen.optional(this.coreMaxSize);
     }
-    /**
-     * The minimal amount of instances in core group.
-     * 
-     */
     @Export(name="coreMinSize", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> coreMinSize;
 
-    /**
-     * @return The minimal amount of instances in core group.
-     * 
-     */
     public Output<Optional<Integer>> coreMinSize() {
         return Codegen.optional(this.coreMinSize);
     }
-    /**
-     * Each `*_scaling_*_policy` supports the following:
-     * 
-     */
     @Export(name="coreScalingDownPolicies", refs={List.class,MrScalarCoreScalingDownPolicy.class}, tree="[0,1]")
     private Output</* @Nullable */ List<MrScalarCoreScalingDownPolicy>> coreScalingDownPolicies;
 
-    /**
-     * @return Each `*_scaling_*_policy` supports the following:
-     * 
-     */
     public Output<Optional<List<MrScalarCoreScalingDownPolicy>>> coreScalingDownPolicies() {
         return Codegen.optional(this.coreScalingDownPolicies);
     }
@@ -577,31 +457,15 @@ public class MrScalar extends com.pulumi.resources.CustomResource {
     public Output<Optional<List<MrScalarCoreScalingUpPolicy>>> coreScalingUpPolicies() {
         return Codegen.optional(this.coreScalingUpPolicies);
     }
-    /**
-     * Unit of task group for target, min and max. The unit could be `instance` or `weight`. instance - amount of instances. weight - amount of vCPU.
-     * 
-     */
     @Export(name="coreUnit", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> coreUnit;
 
-    /**
-     * @return Unit of task group for target, min and max. The unit could be `instance` or `weight`. instance - amount of instances. weight - amount of vCPU.
-     * 
-     */
     public Output<Optional<String>> coreUnit() {
         return Codegen.optional(this.coreUnit);
     }
-    /**
-     * The ID of a custom Amazon EBS-backed Linux AMI if the cluster uses a custom AMI.
-     * 
-     */
     @Export(name="customAmiId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> customAmiId;
 
-    /**
-     * @return The ID of a custom Amazon EBS-backed Linux AMI if the cluster uses a custom AMI.
-     * 
-     */
     public Output<Optional<String>> customAmiId() {
         return Codegen.optional(this.customAmiId);
     }
@@ -625,17 +489,9 @@ public class MrScalar extends com.pulumi.resources.CustomResource {
     public Output<Optional<Integer>> ebsRootVolumeSize() {
         return Codegen.optional(this.ebsRootVolumeSize);
     }
-    /**
-     * The name of an Amazon EC2 key pair that can be used to ssh to the master node.
-     * 
-     */
     @Export(name="ec2KeyName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ec2KeyName;
 
-    /**
-     * @return The name of an Amazon EC2 key pair that can be used to ssh to the master node.
-     * 
-     */
     public Output<Optional<String>> ec2KeyName() {
         return Codegen.optional(this.ec2KeyName);
     }
@@ -653,157 +509,69 @@ public class MrScalar extends com.pulumi.resources.CustomResource {
     public Output<Optional<Boolean>> exposeClusterId() {
         return Codegen.optional(this.exposeClusterId);
     }
-    /**
-     * Describes the instance and weights. Check out [Elastigroup Weighted Instances](https://api.spotinst.com/elastigroup-for-aws/concepts/general-concepts/elastigroup-capacity-instances-or-weighted) for more info.
-     * 
-     */
     @Export(name="instanceWeights", refs={List.class,MrScalarInstanceWeight.class}, tree="[0,1]")
     private Output</* @Nullable */ List<MrScalarInstanceWeight>> instanceWeights;
 
-    /**
-     * @return Describes the instance and weights. Check out [Elastigroup Weighted Instances](https://api.spotinst.com/elastigroup-for-aws/concepts/general-concepts/elastigroup-capacity-instances-or-weighted) for more info.
-     * 
-     */
     public Output<Optional<List<MrScalarInstanceWeight>>> instanceWeights() {
         return Codegen.optional(this.instanceWeights);
     }
-    /**
-     * The IAM role that was specified when the job flow was launched. The EC2 instances of the job flow assume this role.
-     * 
-     */
     @Export(name="jobFlowRole", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> jobFlowRole;
 
-    /**
-     * @return The IAM role that was specified when the job flow was launched. The EC2 instances of the job flow assume this role.
-     * 
-     */
     public Output<Optional<String>> jobFlowRole() {
         return Codegen.optional(this.jobFlowRole);
     }
-    /**
-     * Specifies whether the cluster should remain available after completing all steps.
-     * 
-     */
     @Export(name="keepJobFlowAlive", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> keepJobFlowAlive;
 
-    /**
-     * @return Specifies whether the cluster should remain available after completing all steps.
-     * 
-     */
     public Output<Optional<Boolean>> keepJobFlowAlive() {
         return Codegen.optional(this.keepJobFlowAlive);
     }
-    /**
-     * The path to the Amazon S3 location where logs for this cluster are stored.
-     * 
-     */
     @Export(name="logUri", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> logUri;
 
-    /**
-     * @return The path to the Amazon S3 location where logs for this cluster are stored.
-     * 
-     */
     public Output<Optional<String>> logUri() {
         return Codegen.optional(this.logUri);
     }
-    /**
-     * EMR Managed Security group that will be set to the primary instance group.
-     * 
-     */
     @Export(name="managedPrimarySecurityGroup", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> managedPrimarySecurityGroup;
 
-    /**
-     * @return EMR Managed Security group that will be set to the primary instance group.
-     * 
-     */
     public Output<Optional<String>> managedPrimarySecurityGroup() {
         return Codegen.optional(this.managedPrimarySecurityGroup);
     }
-    /**
-     * EMR Managed Security group that will be set to the replica instance group.
-     * 
-     */
     @Export(name="managedReplicaSecurityGroup", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> managedReplicaSecurityGroup;
 
-    /**
-     * @return EMR Managed Security group that will be set to the replica instance group.
-     * 
-     */
     public Output<Optional<String>> managedReplicaSecurityGroup() {
         return Codegen.optional(this.managedReplicaSecurityGroup);
     }
-    /**
-     * This determines the ebs configuration for your master group instances. Only a single block is allowed.
-     * 
-     */
     @Export(name="masterEbsBlockDevices", refs={List.class,MrScalarMasterEbsBlockDevice.class}, tree="[0,1]")
     private Output</* @Nullable */ List<MrScalarMasterEbsBlockDevice>> masterEbsBlockDevices;
 
-    /**
-     * @return This determines the ebs configuration for your master group instances. Only a single block is allowed.
-     * 
-     */
     public Output<Optional<List<MrScalarMasterEbsBlockDevice>>> masterEbsBlockDevices() {
         return Codegen.optional(this.masterEbsBlockDevices);
     }
-    /**
-     * EBS Optimization setting for instances in group.
-     * 
-     */
     @Export(name="masterEbsOptimized", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> masterEbsOptimized;
 
-    /**
-     * @return EBS Optimization setting for instances in group.
-     * 
-     */
     public Output<Optional<Boolean>> masterEbsOptimized() {
         return Codegen.optional(this.masterEbsOptimized);
     }
-    /**
-     * The MrScaler instance types for the master nodes.
-     * 
-     */
     @Export(name="masterInstanceTypes", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> masterInstanceTypes;
 
-    /**
-     * @return The MrScaler instance types for the master nodes.
-     * 
-     */
     public Output<Optional<List<String>>> masterInstanceTypes() {
         return Codegen.optional(this.masterInstanceTypes);
     }
-    /**
-     * The MrScaler lifecycle for instances in master group. Allowed values are &#39;SPOT&#39; and &#39;ON_DEMAND&#39;.
-     * 
-     */
     @Export(name="masterLifecycle", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> masterLifecycle;
 
-    /**
-     * @return The MrScaler lifecycle for instances in master group. Allowed values are &#39;SPOT&#39; and &#39;ON_DEMAND&#39;.
-     * 
-     */
     public Output<Optional<String>> masterLifecycle() {
         return Codegen.optional(this.masterLifecycle);
     }
-    /**
-     * Number of instances in the master group.
-     * 
-     */
     @Export(name="masterTarget", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> masterTarget;
 
-    /**
-     * @return Number of instances in the master group.
-     * 
-     */
     public Output<Optional<Integer>> masterTarget() {
         return Codegen.optional(this.masterTarget);
     }
@@ -853,101 +621,45 @@ public class MrScalar extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> releaseLabel() {
         return Codegen.optional(this.releaseLabel);
     }
-    /**
-     * Applies only when `custom_ami_id` is used. Specifies the type of updates that are applied from the Amazon Linux AMI package repositories when an instance boots using the AMI. Possible values include: `SECURITY`, `NONE`.
-     * 
-     */
     @Export(name="repoUpgradeOnBoot", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> repoUpgradeOnBoot;
 
-    /**
-     * @return Applies only when `custom_ami_id` is used. Specifies the type of updates that are applied from the Amazon Linux AMI package repositories when an instance boots using the AMI. Possible values include: `SECURITY`, `NONE`.
-     * 
-     */
     public Output<Optional<String>> repoUpgradeOnBoot() {
         return Codegen.optional(this.repoUpgradeOnBoot);
     }
-    /**
-     * Specifies the maximum number of times a capacity provisioning should be retried if the provisioning timeout is exceeded. Valid values: `1-5`.
-     * 
-     */
     @Export(name="retries", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> retries;
 
-    /**
-     * @return Specifies the maximum number of times a capacity provisioning should be retried if the provisioning timeout is exceeded. Valid values: `1-5`.
-     * 
-     */
     public Output<Optional<Integer>> retries() {
         return Codegen.optional(this.retries);
     }
-    /**
-     * An array of scheduled tasks.
-     * 
-     */
     @Export(name="scheduledTasks", refs={List.class,MrScalarScheduledTask.class}, tree="[0,1]")
     private Output</* @Nullable */ List<MrScalarScheduledTask>> scheduledTasks;
 
-    /**
-     * @return An array of scheduled tasks.
-     * 
-     */
     public Output<Optional<List<MrScalarScheduledTask>>> scheduledTasks() {
         return Codegen.optional(this.scheduledTasks);
     }
-    /**
-     * The name of the security configuration applied to the cluster.
-     * 
-     */
     @Export(name="securityConfig", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> securityConfig;
 
-    /**
-     * @return The name of the security configuration applied to the cluster.
-     * 
-     */
     public Output<Optional<String>> securityConfig() {
         return Codegen.optional(this.securityConfig);
     }
-    /**
-     * The identifier of the Amazon EC2 security group for the Amazon EMR service to access clusters in VPC private subnets.
-     * 
-     */
     @Export(name="serviceAccessSecurityGroup", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> serviceAccessSecurityGroup;
 
-    /**
-     * @return The identifier of the Amazon EC2 security group for the Amazon EMR service to access clusters in VPC private subnets.
-     * 
-     */
     public Output<Optional<String>> serviceAccessSecurityGroup() {
         return Codegen.optional(this.serviceAccessSecurityGroup);
     }
-    /**
-     * The IAM role that will be assumed by the Amazon EMR service to access AWS resources on your behalf.
-     * 
-     */
     @Export(name="serviceRole", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> serviceRole;
 
-    /**
-     * @return The IAM role that will be assumed by the Amazon EMR service to access AWS resources on your behalf.
-     * 
-     */
     public Output<Optional<String>> serviceRole() {
         return Codegen.optional(this.serviceRole);
     }
-    /**
-     * Steps from S3.
-     * 
-     */
     @Export(name="stepsFiles", refs={List.class,MrScalarStepsFile.class}, tree="[0,1]")
     private Output</* @Nullable */ List<MrScalarStepsFile>> stepsFiles;
 
-    /**
-     * @return Steps from S3.
-     * 
-     */
     public Output<Optional<List<MrScalarStepsFile>>> stepsFiles() {
         return Codegen.optional(this.stepsFiles);
     }
@@ -965,129 +677,57 @@ public class MrScalar extends com.pulumi.resources.CustomResource {
     public Output<String> strategy() {
         return this.strategy;
     }
-    /**
-     * A list of tags to assign to the resource. You may define multiple tags.
-     * 
-     */
     @Export(name="tags", refs={List.class,MrScalarTag.class}, tree="[0,1]")
     private Output</* @Nullable */ List<MrScalarTag>> tags;
 
-    /**
-     * @return A list of tags to assign to the resource. You may define multiple tags.
-     * 
-     */
     public Output<Optional<List<MrScalarTag>>> tags() {
         return Codegen.optional(this.tags);
     }
-    /**
-     * amount of instances in task group.
-     * 
-     */
     @Export(name="taskDesiredCapacity", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> taskDesiredCapacity;
 
-    /**
-     * @return amount of instances in task group.
-     * 
-     */
     public Output<Optional<Integer>> taskDesiredCapacity() {
         return Codegen.optional(this.taskDesiredCapacity);
     }
-    /**
-     * This determines the ebs configuration for your task group instances. Only a single block is allowed.
-     * 
-     */
     @Export(name="taskEbsBlockDevices", refs={List.class,MrScalarTaskEbsBlockDevice.class}, tree="[0,1]")
     private Output</* @Nullable */ List<MrScalarTaskEbsBlockDevice>> taskEbsBlockDevices;
 
-    /**
-     * @return This determines the ebs configuration for your task group instances. Only a single block is allowed.
-     * 
-     */
     public Output<Optional<List<MrScalarTaskEbsBlockDevice>>> taskEbsBlockDevices() {
         return Codegen.optional(this.taskEbsBlockDevices);
     }
-    /**
-     * EBS Optimization setting for instances in group.
-     * 
-     */
     @Export(name="taskEbsOptimized", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> taskEbsOptimized;
 
-    /**
-     * @return EBS Optimization setting for instances in group.
-     * 
-     */
     public Output<Optional<Boolean>> taskEbsOptimized() {
         return Codegen.optional(this.taskEbsOptimized);
     }
-    /**
-     * The MrScaler instance types for the task nodes.
-     * 
-     */
     @Export(name="taskInstanceTypes", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> taskInstanceTypes;
 
-    /**
-     * @return The MrScaler instance types for the task nodes.
-     * 
-     */
     public Output<Optional<List<String>>> taskInstanceTypes() {
         return Codegen.optional(this.taskInstanceTypes);
     }
-    /**
-     * The MrScaler lifecycle for instances in task group. Allowed values are &#39;SPOT&#39; and &#39;ON_DEMAND&#39;.
-     * 
-     */
     @Export(name="taskLifecycle", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> taskLifecycle;
 
-    /**
-     * @return The MrScaler lifecycle for instances in task group. Allowed values are &#39;SPOT&#39; and &#39;ON_DEMAND&#39;.
-     * 
-     */
     public Output<Optional<String>> taskLifecycle() {
         return Codegen.optional(this.taskLifecycle);
     }
-    /**
-     * maximal amount of instances in task group.
-     * 
-     */
     @Export(name="taskMaxSize", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> taskMaxSize;
 
-    /**
-     * @return maximal amount of instances in task group.
-     * 
-     */
     public Output<Optional<Integer>> taskMaxSize() {
         return Codegen.optional(this.taskMaxSize);
     }
-    /**
-     * The minimal amount of instances in task group.
-     * 
-     */
     @Export(name="taskMinSize", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> taskMinSize;
 
-    /**
-     * @return The minimal amount of instances in task group.
-     * 
-     */
     public Output<Optional<Integer>> taskMinSize() {
         return Codegen.optional(this.taskMinSize);
     }
-    /**
-     * Possible core group scaling policies (Clone, New strategies):
-     * 
-     */
     @Export(name="taskScalingDownPolicies", refs={List.class,MrScalarTaskScalingDownPolicy.class}, tree="[0,1]")
     private Output</* @Nullable */ List<MrScalarTaskScalingDownPolicy>> taskScalingDownPolicies;
 
-    /**
-     * @return Possible core group scaling policies (Clone, New strategies):
-     * 
-     */
     public Output<Optional<List<MrScalarTaskScalingDownPolicy>>> taskScalingDownPolicies() {
         return Codegen.optional(this.taskScalingDownPolicies);
     }
@@ -1097,17 +737,9 @@ public class MrScalar extends com.pulumi.resources.CustomResource {
     public Output<Optional<List<MrScalarTaskScalingUpPolicy>>> taskScalingUpPolicies() {
         return Codegen.optional(this.taskScalingUpPolicies);
     }
-    /**
-     * Unit of task group for target, min and max. The unit could be `instance` or `weight`. instance - amount of instances. weight - amount of vCPU.
-     * 
-     */
     @Export(name="taskUnit", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> taskUnit;
 
-    /**
-     * @return Unit of task group for target, min and max. The unit could be `instance` or `weight`. instance - amount of instances. weight - amount of vCPU.
-     * 
-     */
     public Output<Optional<String>> taskUnit() {
         return Codegen.optional(this.taskUnit);
     }
@@ -1125,17 +757,9 @@ public class MrScalar extends com.pulumi.resources.CustomResource {
     public Output<Optional<List<MrScalarTerminationPolicy>>> terminationPolicies() {
         return Codegen.optional(this.terminationPolicies);
     }
-    /**
-     * Specifies whether the Amazon EC2 instances in the cluster are protected from termination by API calls, user intervention, or in the event of a job-flow error.
-     * 
-     */
     @Export(name="terminationProtected", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> terminationProtected;
 
-    /**
-     * @return Specifies whether the Amazon EC2 instances in the cluster are protected from termination by API calls, user intervention, or in the event of a job-flow error.
-     * 
-     */
     public Output<Optional<Boolean>> terminationProtected() {
         return Codegen.optional(this.terminationProtected);
     }
