@@ -17,10 +17,6 @@ public final class ElastigroupMultipleMetricsMetricDimension {
      * 
      */
     private String name;
-    /**
-     * @return The dimension value.
-     * 
-     */
     private @Nullable String value;
 
     private ElastigroupMultipleMetricsMetricDimension() {}
@@ -31,10 +27,6 @@ public final class ElastigroupMultipleMetricsMetricDimension {
     public String name() {
         return this.name;
     }
-    /**
-     * @return The dimension value.
-     * 
-     */
     public Optional<String> value() {
         return Optional.ofNullable(this.value);
     }

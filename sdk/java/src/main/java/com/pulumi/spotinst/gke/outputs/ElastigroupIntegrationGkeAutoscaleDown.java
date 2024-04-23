@@ -11,17 +11,9 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ElastigroupIntegrationGkeAutoscaleDown {
-    /**
-     * @return Amount of cooldown evaluation periods for scale down.
-     * 
-     */
     private @Nullable Integer evaluationPeriods;
 
     private ElastigroupIntegrationGkeAutoscaleDown() {}
-    /**
-     * @return Amount of cooldown evaluation periods for scale down.
-     * 
-     */
     public Optional<Integer> evaluationPeriods() {
         return Optional.ofNullable(this.evaluationPeriods);
     }

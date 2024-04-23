@@ -13,22 +13,13 @@ namespace Pulumi.SpotInst.Aws.Outputs
     [OutputType]
     public sealed class ElastigroupUpdatePolicyRollConfigStrategyOnFailure
     {
-        /// <summary>
-        /// The type of action to perform for scaling. Valid values: `"adjustment"`, `"percentageAdjustment"`, `"setMaxTarget"`, `"setMinTarget"`, `"updateCapacity"`. If a `step_adjustment` object is defined, then it cannot be specified.
-        /// </summary>
         public readonly string ActionType;
         public readonly int? BatchNum;
         /// <summary>
         /// The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
         /// </summary>
         public readonly int? DrainingTimeout;
-        /// <summary>
-        /// Decrementing the group target capacity after detaching the instances.
-        /// </summary>
         public readonly bool? ShouldDecrementTargetCapacity;
-        /// <summary>
-        /// Indicator if the action should apply to all batches of the deployment or only the latest batch.
-        /// </summary>
         public readonly bool? ShouldHandleAllBatches;
 
         [OutputConstructor]

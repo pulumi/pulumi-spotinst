@@ -11,41 +11,17 @@ import java.util.Objects;
 
 @CustomType
 public final class OceanScheduledTaskTask {
-    /**
-     * @return A valid cron expression. The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of `frequency` or `cronExpression` should be used at a time. Required for `cluster.scheduling.tasks` object. Example: `0 1 * * *`.
-     * 
-     */
     private String cronExpression;
-    /**
-     * @return Enable the Ocean ECS autoscaler.
-     * 
-     */
     private Boolean isEnabled;
-    /**
-     * @return Valid values: &#34;clusterRoll&#34;. Required for `cluster.scheduling.tasks object`. Example: `clusterRoll`.
-     * 
-     */
     private String taskType;
 
     private OceanScheduledTaskTask() {}
-    /**
-     * @return A valid cron expression. The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of `frequency` or `cronExpression` should be used at a time. Required for `cluster.scheduling.tasks` object. Example: `0 1 * * *`.
-     * 
-     */
     public String cronExpression() {
         return this.cronExpression;
     }
-    /**
-     * @return Enable the Ocean ECS autoscaler.
-     * 
-     */
     public Boolean isEnabled() {
         return this.isEnabled;
     }
-    /**
-     * @return Valid values: &#34;clusterRoll&#34;. Required for `cluster.scheduling.tasks object`. Example: `clusterRoll`.
-     * 
-     */
     public String taskType() {
         return this.taskType;
     }

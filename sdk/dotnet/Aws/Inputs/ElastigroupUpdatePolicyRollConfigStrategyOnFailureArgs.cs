@@ -12,9 +12,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
 
     public sealed class ElastigroupUpdatePolicyRollConfigStrategyOnFailureArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The type of action to perform for scaling. Valid values: `"adjustment"`, `"percentageAdjustment"`, `"setMaxTarget"`, `"setMinTarget"`, `"updateCapacity"`. If a `step_adjustment` object is defined, then it cannot be specified.
-        /// </summary>
         [Input("actionType", required: true)]
         public Input<string> ActionType { get; set; } = null!;
 
@@ -27,15 +24,9 @@ namespace Pulumi.SpotInst.Aws.Inputs
         [Input("drainingTimeout")]
         public Input<int>? DrainingTimeout { get; set; }
 
-        /// <summary>
-        /// Decrementing the group target capacity after detaching the instances.
-        /// </summary>
         [Input("shouldDecrementTargetCapacity")]
         public Input<bool>? ShouldDecrementTargetCapacity { get; set; }
 
-        /// <summary>
-        /// Indicator if the action should apply to all batches of the deployment or only the latest batch.
-        /// </summary>
         [Input("shouldHandleAllBatches")]
         public Input<bool>? ShouldHandleAllBatches { get; set; }
 

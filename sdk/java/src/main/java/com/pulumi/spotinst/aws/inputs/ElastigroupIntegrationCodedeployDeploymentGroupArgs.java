@@ -14,36 +14,16 @@ public final class ElastigroupIntegrationCodedeployDeploymentGroupArgs extends c
 
     public static final ElastigroupIntegrationCodedeployDeploymentGroupArgs Empty = new ElastigroupIntegrationCodedeployDeploymentGroupArgs();
 
-    /**
-     * The application name.
-     * 
-     */
     @Import(name="applicationName", required=true)
     private Output<String> applicationName;
 
-    /**
-     * @return The application name.
-     * 
-     */
     public Output<String> applicationName() {
         return this.applicationName;
     }
 
-    /**
-     * The deployment group name.
-     * 
-     * Usage:
-     * 
-     */
     @Import(name="deploymentGroupName", required=true)
     private Output<String> deploymentGroupName;
 
-    /**
-     * @return The deployment group name.
-     * 
-     * Usage:
-     * 
-     */
     public Output<String> deploymentGroupName() {
         return this.deploymentGroupName;
     }
@@ -73,48 +53,20 @@ public final class ElastigroupIntegrationCodedeployDeploymentGroupArgs extends c
             $ = new ElastigroupIntegrationCodedeployDeploymentGroupArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param applicationName The application name.
-         * 
-         * @return builder
-         * 
-         */
         public Builder applicationName(Output<String> applicationName) {
             $.applicationName = applicationName;
             return this;
         }
 
-        /**
-         * @param applicationName The application name.
-         * 
-         * @return builder
-         * 
-         */
         public Builder applicationName(String applicationName) {
             return applicationName(Output.of(applicationName));
         }
 
-        /**
-         * @param deploymentGroupName The deployment group name.
-         * 
-         * Usage:
-         * 
-         * @return builder
-         * 
-         */
         public Builder deploymentGroupName(Output<String> deploymentGroupName) {
             $.deploymentGroupName = deploymentGroupName;
             return this;
         }
 
-        /**
-         * @param deploymentGroupName The deployment group name.
-         * 
-         * Usage:
-         * 
-         * @return builder
-         * 
-         */
         public Builder deploymentGroupName(String deploymentGroupName) {
             return deploymentGroupName(Output.of(deploymentGroupName));
         }

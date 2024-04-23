@@ -21,115 +21,51 @@ public final class ElastigroupIntegrationKubernetesArgs extends com.pulumi.resou
 
     public static final ElastigroupIntegrationKubernetesArgs Empty = new ElastigroupIntegrationKubernetesArgs();
 
-    /**
-     * The public IP of the DC/OS Master.
-     * 
-     * Usage:
-     * 
-     */
     @Import(name="apiServer")
     private @Nullable Output<String> apiServer;
 
-    /**
-     * @return The public IP of the DC/OS Master.
-     * 
-     * Usage:
-     * 
-     */
     public Optional<Output<String>> apiServer() {
         return Optional.ofNullable(this.apiServer);
     }
 
-    /**
-     * The amount of time, in seconds, after a scaling activity completes before any further trigger-related scaling activities can start.
-     * 
-     */
     @Import(name="autoscaleCooldown")
     private @Nullable Output<Integer> autoscaleCooldown;
 
-    /**
-     * @return The amount of time, in seconds, after a scaling activity completes before any further trigger-related scaling activities can start.
-     * 
-     */
     public Optional<Output<Integer>> autoscaleCooldown() {
         return Optional.ofNullable(this.autoscaleCooldown);
     }
 
-    /**
-     * Settings for scale down actions.
-     * 
-     */
     @Import(name="autoscaleDown")
     private @Nullable Output<ElastigroupIntegrationKubernetesAutoscaleDownArgs> autoscaleDown;
 
-    /**
-     * @return Settings for scale down actions.
-     * 
-     */
     public Optional<Output<ElastigroupIntegrationKubernetesAutoscaleDownArgs>> autoscaleDown() {
         return Optional.ofNullable(this.autoscaleDown);
     }
 
-    /**
-     * An option to set compute reserve for the cluster.
-     * 
-     */
     @Import(name="autoscaleHeadroom")
     private @Nullable Output<ElastigroupIntegrationKubernetesAutoscaleHeadroomArgs> autoscaleHeadroom;
 
-    /**
-     * @return An option to set compute reserve for the cluster.
-     * 
-     */
     public Optional<Output<ElastigroupIntegrationKubernetesAutoscaleHeadroomArgs>> autoscaleHeadroom() {
         return Optional.ofNullable(this.autoscaleHeadroom);
     }
 
-    /**
-     * Enabling the automatic k8s auto-scaler functionality. For more information please see: [Kubernetes auto scaler](https://api.spotinst.com/integration-docs/elastigroup/container-management/kubernetes/autoscaler/).
-     * 
-     */
     @Import(name="autoscaleIsAutoConfig")
     private @Nullable Output<Boolean> autoscaleIsAutoConfig;
 
-    /**
-     * @return Enabling the automatic k8s auto-scaler functionality. For more information please see: [Kubernetes auto scaler](https://api.spotinst.com/integration-docs/elastigroup/container-management/kubernetes/autoscaler/).
-     * 
-     */
     public Optional<Output<Boolean>> autoscaleIsAutoConfig() {
         return Optional.ofNullable(this.autoscaleIsAutoConfig);
     }
 
-    /**
-     * Specifies whether the auto scaling feature is enabled.
-     * 
-     */
     @Import(name="autoscaleIsEnabled")
     private @Nullable Output<Boolean> autoscaleIsEnabled;
 
-    /**
-     * @return Specifies whether the auto scaling feature is enabled.
-     * 
-     */
     public Optional<Output<Boolean>> autoscaleIsEnabled() {
         return Optional.ofNullable(this.autoscaleIsEnabled);
     }
 
-    /**
-     * A key/value mapping of tags to assign to the resource.
-     * 
-     * Usage:
-     * 
-     */
     @Import(name="autoscaleLabels")
     private @Nullable Output<List<ElastigroupIntegrationKubernetesAutoscaleLabelArgs>> autoscaleLabels;
 
-    /**
-     * @return A key/value mapping of tags to assign to the resource.
-     * 
-     * Usage:
-     * 
-     */
     public Optional<Output<List<ElastigroupIntegrationKubernetesAutoscaleLabelArgs>>> autoscaleLabels() {
         return Optional.ofNullable(this.autoscaleLabels);
     }
@@ -141,32 +77,16 @@ public final class ElastigroupIntegrationKubernetesArgs extends com.pulumi.resou
         return Optional.ofNullable(this.clusterIdentifier);
     }
 
-    /**
-     * Valid values: `&#34;saas&#34;`, `&#34;pod&#34;`.
-     * 
-     */
     @Import(name="integrationMode")
     private @Nullable Output<String> integrationMode;
 
-    /**
-     * @return Valid values: `&#34;saas&#34;`, `&#34;pod&#34;`.
-     * 
-     */
     public Optional<Output<String>> integrationMode() {
         return Optional.ofNullable(this.integrationMode);
     }
 
-    /**
-     * Kubernetes Token
-     * 
-     */
     @Import(name="token")
     private @Nullable Output<String> token;
 
-    /**
-     * @return Kubernetes Token
-     * 
-     */
     public Optional<Output<String>> token() {
         return Optional.ofNullable(this.token);
     }
@@ -204,169 +124,69 @@ public final class ElastigroupIntegrationKubernetesArgs extends com.pulumi.resou
             $ = new ElastigroupIntegrationKubernetesArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param apiServer The public IP of the DC/OS Master.
-         * 
-         * Usage:
-         * 
-         * @return builder
-         * 
-         */
         public Builder apiServer(@Nullable Output<String> apiServer) {
             $.apiServer = apiServer;
             return this;
         }
 
-        /**
-         * @param apiServer The public IP of the DC/OS Master.
-         * 
-         * Usage:
-         * 
-         * @return builder
-         * 
-         */
         public Builder apiServer(String apiServer) {
             return apiServer(Output.of(apiServer));
         }
 
-        /**
-         * @param autoscaleCooldown The amount of time, in seconds, after a scaling activity completes before any further trigger-related scaling activities can start.
-         * 
-         * @return builder
-         * 
-         */
         public Builder autoscaleCooldown(@Nullable Output<Integer> autoscaleCooldown) {
             $.autoscaleCooldown = autoscaleCooldown;
             return this;
         }
 
-        /**
-         * @param autoscaleCooldown The amount of time, in seconds, after a scaling activity completes before any further trigger-related scaling activities can start.
-         * 
-         * @return builder
-         * 
-         */
         public Builder autoscaleCooldown(Integer autoscaleCooldown) {
             return autoscaleCooldown(Output.of(autoscaleCooldown));
         }
 
-        /**
-         * @param autoscaleDown Settings for scale down actions.
-         * 
-         * @return builder
-         * 
-         */
         public Builder autoscaleDown(@Nullable Output<ElastigroupIntegrationKubernetesAutoscaleDownArgs> autoscaleDown) {
             $.autoscaleDown = autoscaleDown;
             return this;
         }
 
-        /**
-         * @param autoscaleDown Settings for scale down actions.
-         * 
-         * @return builder
-         * 
-         */
         public Builder autoscaleDown(ElastigroupIntegrationKubernetesAutoscaleDownArgs autoscaleDown) {
             return autoscaleDown(Output.of(autoscaleDown));
         }
 
-        /**
-         * @param autoscaleHeadroom An option to set compute reserve for the cluster.
-         * 
-         * @return builder
-         * 
-         */
         public Builder autoscaleHeadroom(@Nullable Output<ElastigroupIntegrationKubernetesAutoscaleHeadroomArgs> autoscaleHeadroom) {
             $.autoscaleHeadroom = autoscaleHeadroom;
             return this;
         }
 
-        /**
-         * @param autoscaleHeadroom An option to set compute reserve for the cluster.
-         * 
-         * @return builder
-         * 
-         */
         public Builder autoscaleHeadroom(ElastigroupIntegrationKubernetesAutoscaleHeadroomArgs autoscaleHeadroom) {
             return autoscaleHeadroom(Output.of(autoscaleHeadroom));
         }
 
-        /**
-         * @param autoscaleIsAutoConfig Enabling the automatic k8s auto-scaler functionality. For more information please see: [Kubernetes auto scaler](https://api.spotinst.com/integration-docs/elastigroup/container-management/kubernetes/autoscaler/).
-         * 
-         * @return builder
-         * 
-         */
         public Builder autoscaleIsAutoConfig(@Nullable Output<Boolean> autoscaleIsAutoConfig) {
             $.autoscaleIsAutoConfig = autoscaleIsAutoConfig;
             return this;
         }
 
-        /**
-         * @param autoscaleIsAutoConfig Enabling the automatic k8s auto-scaler functionality. For more information please see: [Kubernetes auto scaler](https://api.spotinst.com/integration-docs/elastigroup/container-management/kubernetes/autoscaler/).
-         * 
-         * @return builder
-         * 
-         */
         public Builder autoscaleIsAutoConfig(Boolean autoscaleIsAutoConfig) {
             return autoscaleIsAutoConfig(Output.of(autoscaleIsAutoConfig));
         }
 
-        /**
-         * @param autoscaleIsEnabled Specifies whether the auto scaling feature is enabled.
-         * 
-         * @return builder
-         * 
-         */
         public Builder autoscaleIsEnabled(@Nullable Output<Boolean> autoscaleIsEnabled) {
             $.autoscaleIsEnabled = autoscaleIsEnabled;
             return this;
         }
 
-        /**
-         * @param autoscaleIsEnabled Specifies whether the auto scaling feature is enabled.
-         * 
-         * @return builder
-         * 
-         */
         public Builder autoscaleIsEnabled(Boolean autoscaleIsEnabled) {
             return autoscaleIsEnabled(Output.of(autoscaleIsEnabled));
         }
 
-        /**
-         * @param autoscaleLabels A key/value mapping of tags to assign to the resource.
-         * 
-         * Usage:
-         * 
-         * @return builder
-         * 
-         */
         public Builder autoscaleLabels(@Nullable Output<List<ElastigroupIntegrationKubernetesAutoscaleLabelArgs>> autoscaleLabels) {
             $.autoscaleLabels = autoscaleLabels;
             return this;
         }
 
-        /**
-         * @param autoscaleLabels A key/value mapping of tags to assign to the resource.
-         * 
-         * Usage:
-         * 
-         * @return builder
-         * 
-         */
         public Builder autoscaleLabels(List<ElastigroupIntegrationKubernetesAutoscaleLabelArgs> autoscaleLabels) {
             return autoscaleLabels(Output.of(autoscaleLabels));
         }
 
-        /**
-         * @param autoscaleLabels A key/value mapping of tags to assign to the resource.
-         * 
-         * Usage:
-         * 
-         * @return builder
-         * 
-         */
         public Builder autoscaleLabels(ElastigroupIntegrationKubernetesAutoscaleLabelArgs... autoscaleLabels) {
             return autoscaleLabels(List.of(autoscaleLabels));
         }
@@ -380,44 +200,20 @@ public final class ElastigroupIntegrationKubernetesArgs extends com.pulumi.resou
             return clusterIdentifier(Output.of(clusterIdentifier));
         }
 
-        /**
-         * @param integrationMode Valid values: `&#34;saas&#34;`, `&#34;pod&#34;`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder integrationMode(@Nullable Output<String> integrationMode) {
             $.integrationMode = integrationMode;
             return this;
         }
 
-        /**
-         * @param integrationMode Valid values: `&#34;saas&#34;`, `&#34;pod&#34;`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder integrationMode(String integrationMode) {
             return integrationMode(Output.of(integrationMode));
         }
 
-        /**
-         * @param token Kubernetes Token
-         * 
-         * @return builder
-         * 
-         */
         public Builder token(@Nullable Output<String> token) {
             $.token = token;
             return this;
         }
 
-        /**
-         * @param token Kubernetes Token
-         * 
-         * @return builder
-         * 
-         */
         public Builder token(String token) {
             return token(Output.of(token));
         }

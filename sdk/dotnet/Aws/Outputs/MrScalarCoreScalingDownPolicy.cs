@@ -13,77 +13,23 @@ namespace Pulumi.SpotInst.Aws.Outputs
     [OutputType]
     public sealed class MrScalarCoreScalingDownPolicy
     {
-        /// <summary>
-        /// The type of action to perform. Allowed values are : 'adjustment', 'setMinTarget', 'setMaxTarget', 'updateCapacity', 'percentageAdjustment'
-        /// </summary>
         public readonly string? ActionType;
-        /// <summary>
-        /// The number of instances to add/remove to/from the target capacity when scale is needed.
-        /// </summary>
         public readonly string? Adjustment;
-        /// <summary>
-        /// The amount of time, in seconds, after a scaling activity completes and before the next scaling activity can start.
-        /// </summary>
         public readonly int? Cooldown;
-        /// <summary>
-        /// A mapping of dimensions describing qualities of the metric.
-        /// </summary>
         public readonly ImmutableDictionary<string, object>? Dimensions;
-        /// <summary>
-        /// The number of periods over which data is compared to the specified threshold.
-        /// </summary>
         public readonly int? EvaluationPeriods;
-        /// <summary>
-        /// Max target capacity for scale down.
-        /// </summary>
         public readonly string? MaxTargetCapacity;
-        /// <summary>
-        /// The maximum to set when scale is needed.
-        /// </summary>
         public readonly string? Maximum;
-        /// <summary>
-        /// The name of the metric in CloudWatch which the statement will be based on.
-        /// </summary>
         public readonly string MetricName;
-        /// <summary>
-        /// Min target capacity for scale up.
-        /// </summary>
         public readonly string? MinTargetCapacity;
-        /// <summary>
-        /// The minimum to set when scale is needed.
-        /// </summary>
         public readonly string? Minimum;
-        /// <summary>
-        /// Must contain the value: `AWS/ElasticMapReduce`.
-        /// </summary>
         public readonly string Namespace;
-        /// <summary>
-        /// The operator to use in order to determine if the policy is applicable. Valid values: `gt` | `gte` | `lt` | `lte`
-        /// </summary>
         public readonly string? Operator;
-        /// <summary>
-        /// The time window in seconds over which the statistic is applied.
-        /// </summary>
         public readonly int? Period;
-        /// <summary>
-        /// The name of the policy.
-        /// </summary>
         public readonly string PolicyName;
-        /// <summary>
-        /// The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`
-        /// </summary>
         public readonly string? Statistic;
-        /// <summary>
-        /// The number of instances to set when scale is needed.
-        /// </summary>
         public readonly string? Target;
-        /// <summary>
-        /// The value that the specified statistic is compared to.
-        /// </summary>
         public readonly double Threshold;
-        /// <summary>
-        /// The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`
-        /// </summary>
         public readonly string Unit;
 
         [OutputConstructor]

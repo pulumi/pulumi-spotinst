@@ -19,32 +19,16 @@ public final class ElastigroupUpdatePolicyRollConfigArgs extends com.pulumi.reso
 
     public static final ElastigroupUpdatePolicyRollConfigArgs Empty = new ElastigroupUpdatePolicyRollConfigArgs();
 
-    /**
-     * The percentage size of each batch in the scheduled deployment roll.
-     * 
-     */
     @Import(name="batchSizePercentage", required=true)
     private Output<Integer> batchSizePercentage;
 
-    /**
-     * @return The percentage size of each batch in the scheduled deployment roll.
-     * 
-     */
     public Output<Integer> batchSizePercentage() {
         return this.batchSizePercentage;
     }
 
-    /**
-     * The period of time (seconds) to wait before checking a batch&#39;s health after it&#39;s deployment.
-     * 
-     */
     @Import(name="gracePeriod")
     private @Nullable Output<Integer> gracePeriod;
 
-    /**
-     * @return The period of time (seconds) to wait before checking a batch&#39;s health after it&#39;s deployment.
-     * 
-     */
     public Optional<Output<Integer>> gracePeriod() {
         return Optional.ofNullable(this.gracePeriod);
     }
@@ -64,47 +48,23 @@ public final class ElastigroupUpdatePolicyRollConfigArgs extends com.pulumi.reso
         return Optional.ofNullable(this.healthCheckType);
     }
 
-    /**
-     * Strategy parameters
-     * 
-     */
     @Import(name="strategy")
     private @Nullable Output<ElastigroupUpdatePolicyRollConfigStrategyArgs> strategy;
 
-    /**
-     * @return Strategy parameters
-     * 
-     */
     public Optional<Output<ElastigroupUpdatePolicyRollConfigStrategyArgs>> strategy() {
         return Optional.ofNullable(this.strategy);
     }
 
-    /**
-     * For use with `should_roll`. Sets minimum % of roll required to complete before continuing the plan. Required if `wait_for_roll_timeout` is set.
-     * 
-     */
     @Import(name="waitForRollPercentage")
     private @Nullable Output<Double> waitForRollPercentage;
 
-    /**
-     * @return For use with `should_roll`. Sets minimum % of roll required to complete before continuing the plan. Required if `wait_for_roll_timeout` is set.
-     * 
-     */
     public Optional<Output<Double>> waitForRollPercentage() {
         return Optional.ofNullable(this.waitForRollPercentage);
     }
 
-    /**
-     * For use with `should_roll`. Sets how long to wait for the deployed % of a roll to exceed `wait_for_roll_percentage` before continuing the plan. Required if `wait_for_roll_percentage` is set.
-     * 
-     */
     @Import(name="waitForRollTimeout")
     private @Nullable Output<Integer> waitForRollTimeout;
 
-    /**
-     * @return For use with `should_roll`. Sets how long to wait for the deployed % of a roll to exceed `wait_for_roll_percentage` before continuing the plan. Required if `wait_for_roll_percentage` is set.
-     * 
-     */
     public Optional<Output<Integer>> waitForRollTimeout() {
         return Optional.ofNullable(this.waitForRollTimeout);
     }
@@ -138,44 +98,20 @@ public final class ElastigroupUpdatePolicyRollConfigArgs extends com.pulumi.reso
             $ = new ElastigroupUpdatePolicyRollConfigArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param batchSizePercentage The percentage size of each batch in the scheduled deployment roll.
-         * 
-         * @return builder
-         * 
-         */
         public Builder batchSizePercentage(Output<Integer> batchSizePercentage) {
             $.batchSizePercentage = batchSizePercentage;
             return this;
         }
 
-        /**
-         * @param batchSizePercentage The percentage size of each batch in the scheduled deployment roll.
-         * 
-         * @return builder
-         * 
-         */
         public Builder batchSizePercentage(Integer batchSizePercentage) {
             return batchSizePercentage(Output.of(batchSizePercentage));
         }
 
-        /**
-         * @param gracePeriod The period of time (seconds) to wait before checking a batch&#39;s health after it&#39;s deployment.
-         * 
-         * @return builder
-         * 
-         */
         public Builder gracePeriod(@Nullable Output<Integer> gracePeriod) {
             $.gracePeriod = gracePeriod;
             return this;
         }
 
-        /**
-         * @param gracePeriod The period of time (seconds) to wait before checking a batch&#39;s health after it&#39;s deployment.
-         * 
-         * @return builder
-         * 
-         */
         public Builder gracePeriod(Integer gracePeriod) {
             return gracePeriod(Output.of(gracePeriod));
         }
@@ -201,65 +137,29 @@ public final class ElastigroupUpdatePolicyRollConfigArgs extends com.pulumi.reso
             return healthCheckType(Output.of(healthCheckType));
         }
 
-        /**
-         * @param strategy Strategy parameters
-         * 
-         * @return builder
-         * 
-         */
         public Builder strategy(@Nullable Output<ElastigroupUpdatePolicyRollConfigStrategyArgs> strategy) {
             $.strategy = strategy;
             return this;
         }
 
-        /**
-         * @param strategy Strategy parameters
-         * 
-         * @return builder
-         * 
-         */
         public Builder strategy(ElastigroupUpdatePolicyRollConfigStrategyArgs strategy) {
             return strategy(Output.of(strategy));
         }
 
-        /**
-         * @param waitForRollPercentage For use with `should_roll`. Sets minimum % of roll required to complete before continuing the plan. Required if `wait_for_roll_timeout` is set.
-         * 
-         * @return builder
-         * 
-         */
         public Builder waitForRollPercentage(@Nullable Output<Double> waitForRollPercentage) {
             $.waitForRollPercentage = waitForRollPercentage;
             return this;
         }
 
-        /**
-         * @param waitForRollPercentage For use with `should_roll`. Sets minimum % of roll required to complete before continuing the plan. Required if `wait_for_roll_timeout` is set.
-         * 
-         * @return builder
-         * 
-         */
         public Builder waitForRollPercentage(Double waitForRollPercentage) {
             return waitForRollPercentage(Output.of(waitForRollPercentage));
         }
 
-        /**
-         * @param waitForRollTimeout For use with `should_roll`. Sets how long to wait for the deployed % of a roll to exceed `wait_for_roll_percentage` before continuing the plan. Required if `wait_for_roll_percentage` is set.
-         * 
-         * @return builder
-         * 
-         */
         public Builder waitForRollTimeout(@Nullable Output<Integer> waitForRollTimeout) {
             $.waitForRollTimeout = waitForRollTimeout;
             return this;
         }
 
-        /**
-         * @param waitForRollTimeout For use with `should_roll`. Sets how long to wait for the deployed % of a roll to exceed `wait_for_roll_percentage` before continuing the plan. Required if `wait_for_roll_percentage` is set.
-         * 
-         * @return builder
-         * 
-         */
         public Builder waitForRollTimeout(Integer waitForRollTimeout) {
             return waitForRollTimeout(Output.of(waitForRollTimeout));
         }

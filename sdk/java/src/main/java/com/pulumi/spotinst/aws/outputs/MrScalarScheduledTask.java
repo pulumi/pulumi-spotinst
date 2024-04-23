@@ -13,89 +13,33 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class MrScalarScheduledTask {
-    /**
-     * @return A cron expression representing the schedule for the task.
-     * 
-     */
     private String cron;
-    /**
-     * @return New desired capacity for the elastigroup.
-     * 
-     */
     private @Nullable String desiredCapacity;
-    /**
-     * @return Select the EMR instance groups to execute the scheduled task on. Valid values: `task`.
-     * 
-     */
     private String instanceGroupType;
-    /**
-     * @return Enable/Disable the specified scheduling task.
-     * 
-     */
     private @Nullable Boolean isEnabled;
-    /**
-     * @return New max capacity for the elastigroup.
-     * 
-     */
     private @Nullable String maxCapacity;
-    /**
-     * @return New min capacity for the elastigroup.
-     * 
-     */
     private @Nullable String minCapacity;
-    /**
-     * @return The type of task to be scheduled. Valid values: `setCapacity`.
-     * 
-     */
     private String taskType;
 
     private MrScalarScheduledTask() {}
-    /**
-     * @return A cron expression representing the schedule for the task.
-     * 
-     */
     public String cron() {
         return this.cron;
     }
-    /**
-     * @return New desired capacity for the elastigroup.
-     * 
-     */
     public Optional<String> desiredCapacity() {
         return Optional.ofNullable(this.desiredCapacity);
     }
-    /**
-     * @return Select the EMR instance groups to execute the scheduled task on. Valid values: `task`.
-     * 
-     */
     public String instanceGroupType() {
         return this.instanceGroupType;
     }
-    /**
-     * @return Enable/Disable the specified scheduling task.
-     * 
-     */
     public Optional<Boolean> isEnabled() {
         return Optional.ofNullable(this.isEnabled);
     }
-    /**
-     * @return New max capacity for the elastigroup.
-     * 
-     */
     public Optional<String> maxCapacity() {
         return Optional.ofNullable(this.maxCapacity);
     }
-    /**
-     * @return New min capacity for the elastigroup.
-     * 
-     */
     public Optional<String> minCapacity() {
         return Optional.ofNullable(this.minCapacity);
     }
-    /**
-     * @return The type of task to be scheduled. Valid values: `setCapacity`.
-     * 
-     */
     public String taskType() {
         return this.taskType;
     }

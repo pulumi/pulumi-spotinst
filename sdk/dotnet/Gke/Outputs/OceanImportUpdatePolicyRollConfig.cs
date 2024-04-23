@@ -14,10 +14,6 @@ namespace Pulumi.SpotInst.Gke.Outputs
     public sealed class OceanImportUpdatePolicyRollConfig
     {
         public readonly int? BatchMinHealthyPercentage;
-        /// <summary>
-        /// Value in % to set size of batch in roll. Valid values are 0-100
-        /// Example: 20.
-        /// </summary>
         public readonly int BatchSizePercentage;
         public readonly ImmutableArray<string> LaunchSpecIds;
         public readonly bool? RespectPdb;

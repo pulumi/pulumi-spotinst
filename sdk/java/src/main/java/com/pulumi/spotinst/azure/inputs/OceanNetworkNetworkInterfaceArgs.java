@@ -19,47 +19,23 @@ public final class OceanNetworkNetworkInterfaceArgs extends com.pulumi.resources
 
     public static final OceanNetworkNetworkInterfaceArgs Empty = new OceanNetworkNetworkInterfaceArgs();
 
-    /**
-     * Additional configuration of network interface. The name fields between all the `additional_ip_config` must be unique.
-     * 
-     */
     @Import(name="additionalIpConfigs")
     private @Nullable Output<List<OceanNetworkNetworkInterfaceAdditionalIpConfigArgs>> additionalIpConfigs;
 
-    /**
-     * @return Additional configuration of network interface. The name fields between all the `additional_ip_config` must be unique.
-     * 
-     */
     public Optional<Output<List<OceanNetworkNetworkInterfaceAdditionalIpConfigArgs>>> additionalIpConfigs() {
         return Optional.ofNullable(this.additionalIpConfigs);
     }
 
-    /**
-     * Assign public IP.
-     * 
-     */
     @Import(name="assignPublicIp")
     private @Nullable Output<Boolean> assignPublicIp;
 
-    /**
-     * @return Assign public IP.
-     * 
-     */
     public Optional<Output<Boolean>> assignPublicIp() {
         return Optional.ofNullable(this.assignPublicIp);
     }
 
-    /**
-     * Defines whether the network interface is primary or not.
-     * 
-     */
     @Import(name="isPrimary")
     private @Nullable Output<Boolean> isPrimary;
 
-    /**
-     * @return Defines whether the network interface is primary or not.
-     * 
-     */
     public Optional<Output<Boolean>> isPrimary() {
         return Optional.ofNullable(this.isPrimary);
     }
@@ -71,17 +47,9 @@ public final class OceanNetworkNetworkInterfaceArgs extends com.pulumi.resources
         return Optional.ofNullable(this.securityGroup);
     }
 
-    /**
-     * Subnet name.
-     * 
-     */
     @Import(name="subnetName")
     private @Nullable Output<String> subnetName;
 
-    /**
-     * @return Subnet name.
-     * 
-     */
     public Optional<Output<String>> subnetName() {
         return Optional.ofNullable(this.subnetName);
     }
@@ -114,75 +82,33 @@ public final class OceanNetworkNetworkInterfaceArgs extends com.pulumi.resources
             $ = new OceanNetworkNetworkInterfaceArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param additionalIpConfigs Additional configuration of network interface. The name fields between all the `additional_ip_config` must be unique.
-         * 
-         * @return builder
-         * 
-         */
         public Builder additionalIpConfigs(@Nullable Output<List<OceanNetworkNetworkInterfaceAdditionalIpConfigArgs>> additionalIpConfigs) {
             $.additionalIpConfigs = additionalIpConfigs;
             return this;
         }
 
-        /**
-         * @param additionalIpConfigs Additional configuration of network interface. The name fields between all the `additional_ip_config` must be unique.
-         * 
-         * @return builder
-         * 
-         */
         public Builder additionalIpConfigs(List<OceanNetworkNetworkInterfaceAdditionalIpConfigArgs> additionalIpConfigs) {
             return additionalIpConfigs(Output.of(additionalIpConfigs));
         }
 
-        /**
-         * @param additionalIpConfigs Additional configuration of network interface. The name fields between all the `additional_ip_config` must be unique.
-         * 
-         * @return builder
-         * 
-         */
         public Builder additionalIpConfigs(OceanNetworkNetworkInterfaceAdditionalIpConfigArgs... additionalIpConfigs) {
             return additionalIpConfigs(List.of(additionalIpConfigs));
         }
 
-        /**
-         * @param assignPublicIp Assign public IP.
-         * 
-         * @return builder
-         * 
-         */
         public Builder assignPublicIp(@Nullable Output<Boolean> assignPublicIp) {
             $.assignPublicIp = assignPublicIp;
             return this;
         }
 
-        /**
-         * @param assignPublicIp Assign public IP.
-         * 
-         * @return builder
-         * 
-         */
         public Builder assignPublicIp(Boolean assignPublicIp) {
             return assignPublicIp(Output.of(assignPublicIp));
         }
 
-        /**
-         * @param isPrimary Defines whether the network interface is primary or not.
-         * 
-         * @return builder
-         * 
-         */
         public Builder isPrimary(@Nullable Output<Boolean> isPrimary) {
             $.isPrimary = isPrimary;
             return this;
         }
 
-        /**
-         * @param isPrimary Defines whether the network interface is primary or not.
-         * 
-         * @return builder
-         * 
-         */
         public Builder isPrimary(Boolean isPrimary) {
             return isPrimary(Output.of(isPrimary));
         }
@@ -196,23 +122,11 @@ public final class OceanNetworkNetworkInterfaceArgs extends com.pulumi.resources
             return securityGroup(Output.of(securityGroup));
         }
 
-        /**
-         * @param subnetName Subnet name.
-         * 
-         * @return builder
-         * 
-         */
         public Builder subnetName(@Nullable Output<String> subnetName) {
             $.subnetName = subnetName;
             return this;
         }
 
-        /**
-         * @param subnetName Subnet name.
-         * 
-         * @return builder
-         * 
-         */
         public Builder subnetName(String subnetName) {
             return subnetName(Output.of(subnetName));
         }

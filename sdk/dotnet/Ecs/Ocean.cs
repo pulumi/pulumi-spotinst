@@ -31,21 +31,12 @@ namespace Pulumi.SpotInst.Ecs
         [Output("associatePublicIpAddress")]
         public Output<bool?> AssociatePublicIpAddress { get; private set; } = null!;
 
-        /// <summary>
-        /// Describes the Ocean ECS autoscaler.
-        /// </summary>
         [Output("autoscaler")]
         public Output<Outputs.OceanAutoscaler?> Autoscaler { get; private set; } = null!;
 
-        /// <summary>
-        /// Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist`/`filters` is configured.
-        /// </summary>
         [Output("blacklists")]
         public Output<ImmutableArray<string>> Blacklists { get; private set; } = null!;
 
-        /// <summary>
-        /// Object. List of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
-        /// </summary>
         [Output("blockDeviceMappings")]
         public Output<ImmutableArray<Outputs.OceanBlockDeviceMapping>> BlockDeviceMappings { get; private set; } = null!;
 
@@ -76,9 +67,6 @@ namespace Pulumi.SpotInst.Ecs
         [Output("ebsOptimized")]
         public Output<bool?> EbsOptimized { get; private set; } = null!;
 
-        /// <summary>
-        /// List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured together with `whitelist`/`blacklist`.
-        /// </summary>
         [Output("filters")]
         public Output<Outputs.OceanFilters?> Filters { get; private set; } = null!;
 
@@ -136,9 +124,6 @@ namespace Pulumi.SpotInst.Ecs
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// Object. Set auto image update settings.
-        /// </summary>
         [Output("optimizeImages")]
         public Output<Outputs.OceanOptimizeImages?> OptimizeImages { get; private set; } = null!;
 
@@ -148,9 +133,6 @@ namespace Pulumi.SpotInst.Ecs
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
 
-        /// <summary>
-        /// While used, you can control whether the group should perform a deployment after an update to the configuration.
-        /// </summary>
         [Output("scheduledTasks")]
         public Output<ImmutableArray<Outputs.OceanScheduledTask>> ScheduledTasks { get; private set; } = null!;
 
@@ -178,9 +160,6 @@ namespace Pulumi.SpotInst.Ecs
         [Output("tags")]
         public Output<ImmutableArray<Outputs.OceanTag>> Tags { get; private set; } = null!;
 
-        /// <summary>
-        /// While used, you can control whether the group should perform a deployment after an update to the configuration.
-        /// </summary>
         [Output("updatePolicy")]
         public Output<Outputs.OceanUpdatePolicy?> UpdatePolicy { get; private set; } = null!;
 
@@ -208,9 +187,6 @@ namespace Pulumi.SpotInst.Ecs
         [Output("utilizeReservedInstances")]
         public Output<bool?> UtilizeReservedInstances { get; private set; } = null!;
 
-        /// <summary>
-        /// Instance types allowed in the Ocean cluster. Cannot be configured if `blacklist`/`filters` is configured.
-        /// </summary>
         [Output("whitelists")]
         public Output<ImmutableArray<string>> Whitelists { get; private set; } = null!;
 
@@ -266,18 +242,11 @@ namespace Pulumi.SpotInst.Ecs
         [Input("associatePublicIpAddress")]
         public Input<bool>? AssociatePublicIpAddress { get; set; }
 
-        /// <summary>
-        /// Describes the Ocean ECS autoscaler.
-        /// </summary>
         [Input("autoscaler")]
         public Input<Inputs.OceanAutoscalerArgs>? Autoscaler { get; set; }
 
         [Input("blacklists")]
         private InputList<string>? _blacklists;
-
-        /// <summary>
-        /// Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist`/`filters` is configured.
-        /// </summary>
         public InputList<string> Blacklists
         {
             get => _blacklists ?? (_blacklists = new InputList<string>());
@@ -286,10 +255,6 @@ namespace Pulumi.SpotInst.Ecs
 
         [Input("blockDeviceMappings")]
         private InputList<Inputs.OceanBlockDeviceMappingArgs>? _blockDeviceMappings;
-
-        /// <summary>
-        /// Object. List of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
-        /// </summary>
         public InputList<Inputs.OceanBlockDeviceMappingArgs> BlockDeviceMappings
         {
             get => _blockDeviceMappings ?? (_blockDeviceMappings = new InputList<Inputs.OceanBlockDeviceMappingArgs>());
@@ -328,9 +293,6 @@ namespace Pulumi.SpotInst.Ecs
         [Input("ebsOptimized")]
         public Input<bool>? EbsOptimized { get; set; }
 
-        /// <summary>
-        /// List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured together with `whitelist`/`blacklist`.
-        /// </summary>
         [Input("filters")]
         public Input<Inputs.OceanFiltersArgs>? Filters { get; set; }
 
@@ -388,9 +350,6 @@ namespace Pulumi.SpotInst.Ecs
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Object. Set auto image update settings.
-        /// </summary>
         [Input("optimizeImages")]
         public Input<Inputs.OceanOptimizeImagesArgs>? OptimizeImages { get; set; }
 
@@ -402,10 +361,6 @@ namespace Pulumi.SpotInst.Ecs
 
         [Input("scheduledTasks")]
         private InputList<Inputs.OceanScheduledTaskArgs>? _scheduledTasks;
-
-        /// <summary>
-        /// While used, you can control whether the group should perform a deployment after an update to the configuration.
-        /// </summary>
         public InputList<Inputs.OceanScheduledTaskArgs> ScheduledTasks
         {
             get => _scheduledTasks ?? (_scheduledTasks = new InputList<Inputs.OceanScheduledTaskArgs>());
@@ -454,9 +409,6 @@ namespace Pulumi.SpotInst.Ecs
             set => _tags = value;
         }
 
-        /// <summary>
-        /// While used, you can control whether the group should perform a deployment after an update to the configuration.
-        /// </summary>
         [Input("updatePolicy")]
         public Input<Inputs.OceanUpdatePolicyArgs>? UpdatePolicy { get; set; }
 
@@ -486,10 +438,6 @@ namespace Pulumi.SpotInst.Ecs
 
         [Input("whitelists")]
         private InputList<string>? _whitelists;
-
-        /// <summary>
-        /// Instance types allowed in the Ocean cluster. Cannot be configured if `blacklist`/`filters` is configured.
-        /// </summary>
         public InputList<string> Whitelists
         {
             get => _whitelists ?? (_whitelists = new InputList<string>());
@@ -510,18 +458,11 @@ namespace Pulumi.SpotInst.Ecs
         [Input("associatePublicIpAddress")]
         public Input<bool>? AssociatePublicIpAddress { get; set; }
 
-        /// <summary>
-        /// Describes the Ocean ECS autoscaler.
-        /// </summary>
         [Input("autoscaler")]
         public Input<Inputs.OceanAutoscalerGetArgs>? Autoscaler { get; set; }
 
         [Input("blacklists")]
         private InputList<string>? _blacklists;
-
-        /// <summary>
-        /// Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist`/`filters` is configured.
-        /// </summary>
         public InputList<string> Blacklists
         {
             get => _blacklists ?? (_blacklists = new InputList<string>());
@@ -530,10 +471,6 @@ namespace Pulumi.SpotInst.Ecs
 
         [Input("blockDeviceMappings")]
         private InputList<Inputs.OceanBlockDeviceMappingGetArgs>? _blockDeviceMappings;
-
-        /// <summary>
-        /// Object. List of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
-        /// </summary>
         public InputList<Inputs.OceanBlockDeviceMappingGetArgs> BlockDeviceMappings
         {
             get => _blockDeviceMappings ?? (_blockDeviceMappings = new InputList<Inputs.OceanBlockDeviceMappingGetArgs>());
@@ -572,9 +509,6 @@ namespace Pulumi.SpotInst.Ecs
         [Input("ebsOptimized")]
         public Input<bool>? EbsOptimized { get; set; }
 
-        /// <summary>
-        /// List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured together with `whitelist`/`blacklist`.
-        /// </summary>
         [Input("filters")]
         public Input<Inputs.OceanFiltersGetArgs>? Filters { get; set; }
 
@@ -632,9 +566,6 @@ namespace Pulumi.SpotInst.Ecs
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Object. Set auto image update settings.
-        /// </summary>
         [Input("optimizeImages")]
         public Input<Inputs.OceanOptimizeImagesGetArgs>? OptimizeImages { get; set; }
 
@@ -646,10 +577,6 @@ namespace Pulumi.SpotInst.Ecs
 
         [Input("scheduledTasks")]
         private InputList<Inputs.OceanScheduledTaskGetArgs>? _scheduledTasks;
-
-        /// <summary>
-        /// While used, you can control whether the group should perform a deployment after an update to the configuration.
-        /// </summary>
         public InputList<Inputs.OceanScheduledTaskGetArgs> ScheduledTasks
         {
             get => _scheduledTasks ?? (_scheduledTasks = new InputList<Inputs.OceanScheduledTaskGetArgs>());
@@ -698,9 +625,6 @@ namespace Pulumi.SpotInst.Ecs
             set => _tags = value;
         }
 
-        /// <summary>
-        /// While used, you can control whether the group should perform a deployment after an update to the configuration.
-        /// </summary>
         [Input("updatePolicy")]
         public Input<Inputs.OceanUpdatePolicyGetArgs>? UpdatePolicy { get; set; }
 
@@ -730,10 +654,6 @@ namespace Pulumi.SpotInst.Ecs
 
         [Input("whitelists")]
         private InputList<string>? _whitelists;
-
-        /// <summary>
-        /// Instance types allowed in the Ocean cluster. Cannot be configured if `blacklist`/`filters` is configured.
-        /// </summary>
         public InputList<string> Whitelists
         {
             get => _whitelists ?? (_whitelists = new InputList<string>());

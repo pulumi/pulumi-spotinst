@@ -12,15 +12,9 @@ namespace Pulumi.SpotInst.Aws.Inputs
 
     public sealed class MrScalarStepsFileArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// S3 Bucket name for bootstrap actions.
-        /// </summary>
         [Input("bucket", required: true)]
         public Input<string> Bucket { get; set; } = null!;
 
-        /// <summary>
-        /// S3 key for bootstrap actions.
-        /// </summary>
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;
 

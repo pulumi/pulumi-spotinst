@@ -16,32 +16,16 @@ public final class BeanstalkDeploymentPreferencesStrategyArgs extends com.pulumi
 
     public static final BeanstalkDeploymentPreferencesStrategyArgs Empty = new BeanstalkDeploymentPreferencesStrategyArgs();
 
-    /**
-     * Action to take
-     * 
-     */
     @Import(name="action")
     private @Nullable Output<String> action;
 
-    /**
-     * @return Action to take
-     * 
-     */
     public Optional<Output<String>> action() {
         return Optional.ofNullable(this.action);
     }
 
-    /**
-     * Bool value if to wait to drain instance
-     * 
-     */
     @Import(name="shouldDrainInstances")
     private @Nullable Output<Boolean> shouldDrainInstances;
 
-    /**
-     * @return Bool value if to wait to drain instance
-     * 
-     */
     public Optional<Output<Boolean>> shouldDrainInstances() {
         return Optional.ofNullable(this.shouldDrainInstances);
     }
@@ -71,44 +55,20 @@ public final class BeanstalkDeploymentPreferencesStrategyArgs extends com.pulumi
             $ = new BeanstalkDeploymentPreferencesStrategyArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param action Action to take
-         * 
-         * @return builder
-         * 
-         */
         public Builder action(@Nullable Output<String> action) {
             $.action = action;
             return this;
         }
 
-        /**
-         * @param action Action to take
-         * 
-         * @return builder
-         * 
-         */
         public Builder action(String action) {
             return action(Output.of(action));
         }
 
-        /**
-         * @param shouldDrainInstances Bool value if to wait to drain instance
-         * 
-         * @return builder
-         * 
-         */
         public Builder shouldDrainInstances(@Nullable Output<Boolean> shouldDrainInstances) {
             $.shouldDrainInstances = shouldDrainInstances;
             return this;
         }
 
-        /**
-         * @param shouldDrainInstances Bool value if to wait to drain instance
-         * 
-         * @return builder
-         * 
-         */
         public Builder shouldDrainInstances(Boolean shouldDrainInstances) {
             return shouldDrainInstances(Output.of(shouldDrainInstances));
         }

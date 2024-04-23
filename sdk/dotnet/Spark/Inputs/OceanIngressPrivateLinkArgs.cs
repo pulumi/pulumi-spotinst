@@ -13,7 +13,7 @@ namespace Pulumi.SpotInst.Spark.Inputs
     public sealed class OceanIngressPrivateLinkArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// - Should the Ocean for Apache Spark control plane address the cluster using a custom endpoint. Use this to specify the DNS address of an externally provisioned (unmanaged) load balancer.
+        /// - Should the Ocean for Apache Spark control plane address the cluster via an AWS Private Link. Only available on AWS.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }

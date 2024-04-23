@@ -13,42 +13,18 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class OceanBlockDeviceMapping {
-    /**
-     * @return String. Set device name. Example: `/dev/xvda1`.
-     * 
-     */
     private String deviceName;
-    /**
-     * @return Object. Set Elastic Block Store properties.
-     * 
-     */
     private @Nullable OceanBlockDeviceMappingEbs ebs;
-    /**
-     * @return String. Suppresses the specified device included in the block device mapping of the AMI.
-     * 
-     */
     private @Nullable String noDevice;
     private @Nullable String virtualName;
 
     private OceanBlockDeviceMapping() {}
-    /**
-     * @return String. Set device name. Example: `/dev/xvda1`.
-     * 
-     */
     public String deviceName() {
         return this.deviceName;
     }
-    /**
-     * @return Object. Set Elastic Block Store properties.
-     * 
-     */
     public Optional<OceanBlockDeviceMappingEbs> ebs() {
         return Optional.ofNullable(this.ebs);
     }
-    /**
-     * @return String. Suppresses the specified device included in the block device mapping of the AMI.
-     * 
-     */
     public Optional<String> noDevice() {
         return Optional.ofNullable(this.noDevice);
     }

@@ -13,13 +13,7 @@ namespace Pulumi.SpotInst.Gke.Outputs
     [OutputType]
     public sealed class OceanImportAutoscalerDown
     {
-        /// <summary>
-        /// The number of evaluation periods that should accumulate before a scale down action takes place.
-        /// </summary>
         public readonly int? EvaluationPeriods;
-        /// <summary>
-        /// Would represent the maximum % to scale-down. Number between 1-100.
-        /// </summary>
         public readonly double? MaxScaleDownPercentage;
 
         [OutputConstructor]

@@ -17,9 +17,6 @@ namespace Pulumi.SpotInst.Gcp.Outputs
         /// The group name.
         /// </summary>
         public readonly string Name;
-        /// <summary>
-        /// Labels value.
-        /// </summary>
         public readonly string? Value;
 
         [OutputConstructor]

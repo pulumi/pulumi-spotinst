@@ -15,17 +15,9 @@ public final class ElastigroupIntegrationNomadAutoscaleDownArgs extends com.pulu
 
     public static final ElastigroupIntegrationNomadAutoscaleDownArgs Empty = new ElastigroupIntegrationNomadAutoscaleDownArgs();
 
-    /**
-     * The number of periods over which data is compared to the specified threshold.
-     * 
-     */
     @Import(name="evaluationPeriods")
     private @Nullable Output<Integer> evaluationPeriods;
 
-    /**
-     * @return The number of periods over which data is compared to the specified threshold.
-     * 
-     */
     public Optional<Output<Integer>> evaluationPeriods() {
         return Optional.ofNullable(this.evaluationPeriods);
     }
@@ -54,23 +46,11 @@ public final class ElastigroupIntegrationNomadAutoscaleDownArgs extends com.pulu
             $ = new ElastigroupIntegrationNomadAutoscaleDownArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param evaluationPeriods The number of periods over which data is compared to the specified threshold.
-         * 
-         * @return builder
-         * 
-         */
         public Builder evaluationPeriods(@Nullable Output<Integer> evaluationPeriods) {
             $.evaluationPeriods = evaluationPeriods;
             return this;
         }
 
-        /**
-         * @param evaluationPeriods The number of periods over which data is compared to the specified threshold.
-         * 
-         * @return builder
-         * 
-         */
         public Builder evaluationPeriods(Integer evaluationPeriods) {
             return evaluationPeriods(Output.of(evaluationPeriods));
         }

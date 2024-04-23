@@ -13,13 +13,7 @@ namespace Pulumi.SpotInst.Aws.Outputs
     [OutputType]
     public sealed class MrScalarTag
     {
-        /// <summary>
-        /// S3 key for bootstrap actions.
-        /// </summary>
         public readonly string Key;
-        /// <summary>
-        /// Tag value.
-        /// </summary>
         public readonly string Value;
 
         [OutputConstructor]

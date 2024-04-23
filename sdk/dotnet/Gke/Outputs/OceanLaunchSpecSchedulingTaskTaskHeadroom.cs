@@ -13,21 +13,9 @@ namespace Pulumi.SpotInst.Gke.Outputs
     [OutputType]
     public sealed class OceanLaunchSpecSchedulingTaskTaskHeadroom
     {
-        /// <summary>
-        /// Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
-        /// </summary>
         public readonly int? CpuPerUnit;
-        /// <summary>
-        /// Optionally configure the number of GPUS to allocate for each headroom unit.
-        /// </summary>
         public readonly int? GpuPerUnit;
-        /// <summary>
-        /// Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
-        /// </summary>
         public readonly int? MemoryPerUnit;
-        /// <summary>
-        /// The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
-        /// </summary>
         public readonly int NumOfUnits;
 
         [OutputConstructor]

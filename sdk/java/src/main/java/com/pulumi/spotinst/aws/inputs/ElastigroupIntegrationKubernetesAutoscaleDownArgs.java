@@ -16,32 +16,16 @@ public final class ElastigroupIntegrationKubernetesAutoscaleDownArgs extends com
 
     public static final ElastigroupIntegrationKubernetesAutoscaleDownArgs Empty = new ElastigroupIntegrationKubernetesAutoscaleDownArgs();
 
-    /**
-     * The number of periods over which data is compared to the specified threshold.
-     * 
-     */
     @Import(name="evaluationPeriods")
     private @Nullable Output<Integer> evaluationPeriods;
 
-    /**
-     * @return The number of periods over which data is compared to the specified threshold.
-     * 
-     */
     public Optional<Output<Integer>> evaluationPeriods() {
         return Optional.ofNullable(this.evaluationPeriods);
     }
 
-    /**
-     * Represents the maximum percent to scale-down. Number between 1-100.
-     * 
-     */
     @Import(name="maxScaleDownPercentage")
     private @Nullable Output<Double> maxScaleDownPercentage;
 
-    /**
-     * @return Represents the maximum percent to scale-down. Number between 1-100.
-     * 
-     */
     public Optional<Output<Double>> maxScaleDownPercentage() {
         return Optional.ofNullable(this.maxScaleDownPercentage);
     }
@@ -71,44 +55,20 @@ public final class ElastigroupIntegrationKubernetesAutoscaleDownArgs extends com
             $ = new ElastigroupIntegrationKubernetesAutoscaleDownArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param evaluationPeriods The number of periods over which data is compared to the specified threshold.
-         * 
-         * @return builder
-         * 
-         */
         public Builder evaluationPeriods(@Nullable Output<Integer> evaluationPeriods) {
             $.evaluationPeriods = evaluationPeriods;
             return this;
         }
 
-        /**
-         * @param evaluationPeriods The number of periods over which data is compared to the specified threshold.
-         * 
-         * @return builder
-         * 
-         */
         public Builder evaluationPeriods(Integer evaluationPeriods) {
             return evaluationPeriods(Output.of(evaluationPeriods));
         }
 
-        /**
-         * @param maxScaleDownPercentage Represents the maximum percent to scale-down. Number between 1-100.
-         * 
-         * @return builder
-         * 
-         */
         public Builder maxScaleDownPercentage(@Nullable Output<Double> maxScaleDownPercentage) {
             $.maxScaleDownPercentage = maxScaleDownPercentage;
             return this;
         }
 
-        /**
-         * @param maxScaleDownPercentage Represents the maximum percent to scale-down. Number between 1-100.
-         * 
-         * @return builder
-         * 
-         */
         public Builder maxScaleDownPercentage(Double maxScaleDownPercentage) {
             return maxScaleDownPercentage(Output.of(maxScaleDownPercentage));
         }

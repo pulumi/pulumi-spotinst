@@ -33,14 +33,14 @@ public final class OceanNetworkArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Resource Group name of the Load Balancer.
+     * Vnet resource group name.
      * 
      */
     @Import(name="resourceGroupName")
     private @Nullable Output<String> resourceGroupName;
 
     /**
-     * @return The Resource Group name of the Load Balancer.
+     * @return Vnet resource group name.
      * 
      */
     public Optional<Output<String>> resourceGroupName() {
@@ -120,7 +120,7 @@ public final class OceanNetworkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceGroupName The Resource Group name of the Load Balancer.
+         * @param resourceGroupName Vnet resource group name.
          * 
          * @return builder
          * 
@@ -131,7 +131,7 @@ public final class OceanNetworkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceGroupName The Resource Group name of the Load Balancer.
+         * @param resourceGroupName Vnet resource group name.
          * 
          * @return builder
          * 

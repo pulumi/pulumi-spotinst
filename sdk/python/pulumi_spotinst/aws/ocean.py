@@ -61,14 +61,12 @@ class OceanArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: A comma-separated list of subnet identifiers for the Ocean cluster. Subnet IDs should be configured with auto assign public IP.
         :param pulumi.Input[bool] associate_ipv6_address: Configure IPv6 address allocation.
         :param pulumi.Input[bool] associate_public_ip_address: Configure public IP address allocation.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] blacklists: Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist` is configured.
         :param pulumi.Input[Sequence[pulumi.Input['OceanBlockDeviceMappingArgs']]] block_device_mappings: Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
         :param pulumi.Input[str] controller_id: A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
         :param pulumi.Input[int] desired_capacity: The number of instances to launch and maintain in the cluster.
         :param pulumi.Input[int] draining_timeout: The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
         :param pulumi.Input[bool] ebs_optimized: Enable EBS optimized for cluster. Flag will enable optimized capacity for high bandwidth connectivity to the EB service for non EBS optimized instance types. For instances that are EBS optimized this flag will be ignored.
         :param pulumi.Input[bool] fallback_to_ondemand: If not Spot instance markets are available, enable Ocean to launch On-Demand instances instead.
-        :param pulumi.Input['OceanFiltersArgs'] filters: List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured together with whitelist/blacklist.
         :param pulumi.Input[int] grace_period: The amount of time, in seconds, after the instance has launched to start checking its health.
         :param pulumi.Input[int] health_check_unhealthy_duration_before_replacement: The amount of time, in seconds, an existing instance should remain active after becoming unhealthy. After the set time out the instance will be replaced. The minimum value allowed is 60, and it must be a multiple of 60.
         :param pulumi.Input[str] iam_instance_profile: The instance profile iam role.
@@ -80,7 +78,7 @@ class OceanArgs:
         :param pulumi.Input[int] max_size: The upper limit of instances the cluster can scale up to.
         :param pulumi.Input[int] min_size: The lower limit of instances the cluster can scale down to.
         :param pulumi.Input[bool] monitoring: Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
-        :param pulumi.Input[str] name: Required if type is set to `CLASSIC`
+        :param pulumi.Input[str] name: The cluster name.
         :param pulumi.Input[str] region: The region the cluster will run in.
         :param pulumi.Input[Sequence[pulumi.Input['OceanResourceTagSpecificationArgs']]] resource_tag_specifications: Specify which resources should be tagged with Virtual Node Group tags or Ocean tags. If tags are set on the VNG, the resources will be tagged with the VNG tags; otherwise, they will be tagged with the Ocean tags.
         :param pulumi.Input[int] root_volume_size: The size (in Gb) to allocate for the root volume. Minimum `20`.
@@ -92,7 +90,6 @@ class OceanArgs:
         :param pulumi.Input[str] user_data: Base64-encoded MIME user data to make available to the instances.
         :param pulumi.Input[bool] utilize_commitments: If savings plans exist, Ocean will utilize them before launching Spot instances.
         :param pulumi.Input[bool] utilize_reserved_instances: If Reserved instances exist, Ocean will utilize them before launching Spot instances.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] whitelists: Instance types allowed in the Ocean cluster. Cannot be configured if `blacklist` is configured.
         """
         pulumi.set(__self__, "security_groups", security_groups)
         pulumi.set(__self__, "subnet_ids", subnet_ids)
@@ -231,9 +228,6 @@ class OceanArgs:
     @property
     @pulumi.getter
     def blacklists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist` is configured.
-        """
         return pulumi.get(self, "blacklists")
 
     @blacklists.setter
@@ -324,9 +318,6 @@ class OceanArgs:
     @property
     @pulumi.getter
     def filters(self) -> Optional[pulumi.Input['OceanFiltersArgs']]:
-        """
-        List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured together with whitelist/blacklist.
-        """
         return pulumi.get(self, "filters")
 
     @filters.setter
@@ -469,7 +460,7 @@ class OceanArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Required if type is set to `CLASSIC`
+        The cluster name.
         """
         return pulumi.get(self, "name")
 
@@ -619,9 +610,6 @@ class OceanArgs:
     @property
     @pulumi.getter
     def whitelists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Instance types allowed in the Ocean cluster. Cannot be configured if `blacklist` is configured.
-        """
         return pulumi.get(self, "whitelists")
 
     @whitelists.setter
@@ -675,14 +663,12 @@ class _OceanState:
         Input properties used for looking up and filtering Ocean resources.
         :param pulumi.Input[bool] associate_ipv6_address: Configure IPv6 address allocation.
         :param pulumi.Input[bool] associate_public_ip_address: Configure public IP address allocation.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] blacklists: Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist` is configured.
         :param pulumi.Input[Sequence[pulumi.Input['OceanBlockDeviceMappingArgs']]] block_device_mappings: Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
         :param pulumi.Input[str] controller_id: A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
         :param pulumi.Input[int] desired_capacity: The number of instances to launch and maintain in the cluster.
         :param pulumi.Input[int] draining_timeout: The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
         :param pulumi.Input[bool] ebs_optimized: Enable EBS optimized for cluster. Flag will enable optimized capacity for high bandwidth connectivity to the EB service for non EBS optimized instance types. For instances that are EBS optimized this flag will be ignored.
         :param pulumi.Input[bool] fallback_to_ondemand: If not Spot instance markets are available, enable Ocean to launch On-Demand instances instead.
-        :param pulumi.Input['OceanFiltersArgs'] filters: List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured together with whitelist/blacklist.
         :param pulumi.Input[int] grace_period: The amount of time, in seconds, after the instance has launched to start checking its health.
         :param pulumi.Input[int] health_check_unhealthy_duration_before_replacement: The amount of time, in seconds, an existing instance should remain active after becoming unhealthy. After the set time out the instance will be replaced. The minimum value allowed is 60, and it must be a multiple of 60.
         :param pulumi.Input[str] iam_instance_profile: The instance profile iam role.
@@ -694,7 +680,7 @@ class _OceanState:
         :param pulumi.Input[int] max_size: The upper limit of instances the cluster can scale up to.
         :param pulumi.Input[int] min_size: The lower limit of instances the cluster can scale down to.
         :param pulumi.Input[bool] monitoring: Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
-        :param pulumi.Input[str] name: Required if type is set to `CLASSIC`
+        :param pulumi.Input[str] name: The cluster name.
         :param pulumi.Input[str] region: The region the cluster will run in.
         :param pulumi.Input[Sequence[pulumi.Input['OceanResourceTagSpecificationArgs']]] resource_tag_specifications: Specify which resources should be tagged with Virtual Node Group tags or Ocean tags. If tags are set on the VNG, the resources will be tagged with the VNG tags; otherwise, they will be tagged with the Ocean tags.
         :param pulumi.Input[int] root_volume_size: The size (in Gb) to allocate for the root volume. Minimum `20`.
@@ -708,7 +694,6 @@ class _OceanState:
         :param pulumi.Input[str] user_data: Base64-encoded MIME user data to make available to the instances.
         :param pulumi.Input[bool] utilize_commitments: If savings plans exist, Ocean will utilize them before launching Spot instances.
         :param pulumi.Input[bool] utilize_reserved_instances: If Reserved instances exist, Ocean will utilize them before launching Spot instances.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] whitelists: Instance types allowed in the Ocean cluster. Cannot be configured if `blacklist` is configured.
         """
         if associate_ipv6_address is not None:
             pulumi.set(__self__, "associate_ipv6_address", associate_ipv6_address)
@@ -825,9 +810,6 @@ class _OceanState:
     @property
     @pulumi.getter
     def blacklists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist` is configured.
-        """
         return pulumi.get(self, "blacklists")
 
     @blacklists.setter
@@ -918,9 +900,6 @@ class _OceanState:
     @property
     @pulumi.getter
     def filters(self) -> Optional[pulumi.Input['OceanFiltersArgs']]:
-        """
-        List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured together with whitelist/blacklist.
-        """
         return pulumi.get(self, "filters")
 
     @filters.setter
@@ -1063,7 +1042,7 @@ class _OceanState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Required if type is set to `CLASSIC`
+        The cluster name.
         """
         return pulumi.get(self, "name")
 
@@ -1237,9 +1216,6 @@ class _OceanState:
     @property
     @pulumi.getter
     def whitelists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Instance types allowed in the Ocean cluster. Cannot be configured if `blacklist` is configured.
-        """
         return pulumi.get(self, "whitelists")
 
     @whitelists.setter
@@ -1309,14 +1285,12 @@ class Ocean(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] associate_ipv6_address: Configure IPv6 address allocation.
         :param pulumi.Input[bool] associate_public_ip_address: Configure public IP address allocation.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] blacklists: Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist` is configured.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanBlockDeviceMappingArgs']]]] block_device_mappings: Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
         :param pulumi.Input[str] controller_id: A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
         :param pulumi.Input[int] desired_capacity: The number of instances to launch and maintain in the cluster.
         :param pulumi.Input[int] draining_timeout: The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
         :param pulumi.Input[bool] ebs_optimized: Enable EBS optimized for cluster. Flag will enable optimized capacity for high bandwidth connectivity to the EB service for non EBS optimized instance types. For instances that are EBS optimized this flag will be ignored.
         :param pulumi.Input[bool] fallback_to_ondemand: If not Spot instance markets are available, enable Ocean to launch On-Demand instances instead.
-        :param pulumi.Input[pulumi.InputType['OceanFiltersArgs']] filters: List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured together with whitelist/blacklist.
         :param pulumi.Input[int] grace_period: The amount of time, in seconds, after the instance has launched to start checking its health.
         :param pulumi.Input[int] health_check_unhealthy_duration_before_replacement: The amount of time, in seconds, an existing instance should remain active after becoming unhealthy. After the set time out the instance will be replaced. The minimum value allowed is 60, and it must be a multiple of 60.
         :param pulumi.Input[str] iam_instance_profile: The instance profile iam role.
@@ -1328,7 +1302,7 @@ class Ocean(pulumi.CustomResource):
         :param pulumi.Input[int] max_size: The upper limit of instances the cluster can scale up to.
         :param pulumi.Input[int] min_size: The lower limit of instances the cluster can scale down to.
         :param pulumi.Input[bool] monitoring: Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
-        :param pulumi.Input[str] name: Required if type is set to `CLASSIC`
+        :param pulumi.Input[str] name: The cluster name.
         :param pulumi.Input[str] region: The region the cluster will run in.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanResourceTagSpecificationArgs']]]] resource_tag_specifications: Specify which resources should be tagged with Virtual Node Group tags or Ocean tags. If tags are set on the VNG, the resources will be tagged with the VNG tags; otherwise, they will be tagged with the Ocean tags.
         :param pulumi.Input[int] root_volume_size: The size (in Gb) to allocate for the root volume. Minimum `20`.
@@ -1342,7 +1316,6 @@ class Ocean(pulumi.CustomResource):
         :param pulumi.Input[str] user_data: Base64-encoded MIME user data to make available to the instances.
         :param pulumi.Input[bool] utilize_commitments: If savings plans exist, Ocean will utilize them before launching Spot instances.
         :param pulumi.Input[bool] utilize_reserved_instances: If Reserved instances exist, Ocean will utilize them before launching Spot instances.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] whitelists: Instance types allowed in the Ocean cluster. Cannot be configured if `blacklist` is configured.
         """
         ...
     @overload
@@ -1527,14 +1500,12 @@ class Ocean(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] associate_ipv6_address: Configure IPv6 address allocation.
         :param pulumi.Input[bool] associate_public_ip_address: Configure public IP address allocation.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] blacklists: Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist` is configured.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanBlockDeviceMappingArgs']]]] block_device_mappings: Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
         :param pulumi.Input[str] controller_id: A unique identifier used for connecting the Ocean SaaS platform and the Kubernetes cluster. Typically, the cluster name is used as its identifier.
         :param pulumi.Input[int] desired_capacity: The number of instances to launch and maintain in the cluster.
         :param pulumi.Input[int] draining_timeout: The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
         :param pulumi.Input[bool] ebs_optimized: Enable EBS optimized for cluster. Flag will enable optimized capacity for high bandwidth connectivity to the EB service for non EBS optimized instance types. For instances that are EBS optimized this flag will be ignored.
         :param pulumi.Input[bool] fallback_to_ondemand: If not Spot instance markets are available, enable Ocean to launch On-Demand instances instead.
-        :param pulumi.Input[pulumi.InputType['OceanFiltersArgs']] filters: List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured together with whitelist/blacklist.
         :param pulumi.Input[int] grace_period: The amount of time, in seconds, after the instance has launched to start checking its health.
         :param pulumi.Input[int] health_check_unhealthy_duration_before_replacement: The amount of time, in seconds, an existing instance should remain active after becoming unhealthy. After the set time out the instance will be replaced. The minimum value allowed is 60, and it must be a multiple of 60.
         :param pulumi.Input[str] iam_instance_profile: The instance profile iam role.
@@ -1546,7 +1517,7 @@ class Ocean(pulumi.CustomResource):
         :param pulumi.Input[int] max_size: The upper limit of instances the cluster can scale up to.
         :param pulumi.Input[int] min_size: The lower limit of instances the cluster can scale down to.
         :param pulumi.Input[bool] monitoring: Enable detailed monitoring for cluster. Flag will enable Cloud Watch detailed monitoring (one minute increments). Note: there are additional hourly costs for this service based on the region used.
-        :param pulumi.Input[str] name: Required if type is set to `CLASSIC`
+        :param pulumi.Input[str] name: The cluster name.
         :param pulumi.Input[str] region: The region the cluster will run in.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OceanResourceTagSpecificationArgs']]]] resource_tag_specifications: Specify which resources should be tagged with Virtual Node Group tags or Ocean tags. If tags are set on the VNG, the resources will be tagged with the VNG tags; otherwise, they will be tagged with the Ocean tags.
         :param pulumi.Input[int] root_volume_size: The size (in Gb) to allocate for the root volume. Minimum `20`.
@@ -1560,7 +1531,6 @@ class Ocean(pulumi.CustomResource):
         :param pulumi.Input[str] user_data: Base64-encoded MIME user data to make available to the instances.
         :param pulumi.Input[bool] utilize_commitments: If savings plans exist, Ocean will utilize them before launching Spot instances.
         :param pulumi.Input[bool] utilize_reserved_instances: If Reserved instances exist, Ocean will utilize them before launching Spot instances.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] whitelists: Instance types allowed in the Ocean cluster. Cannot be configured if `blacklist` is configured.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1631,9 +1601,6 @@ class Ocean(pulumi.CustomResource):
     @property
     @pulumi.getter
     def blacklists(self) -> pulumi.Output[Optional[Sequence[str]]]:
-        """
-        Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist` is configured.
-        """
         return pulumi.get(self, "blacklists")
 
     @property
@@ -1692,9 +1659,6 @@ class Ocean(pulumi.CustomResource):
     @property
     @pulumi.getter
     def filters(self) -> pulumi.Output[Optional['outputs.OceanFilters']]:
-        """
-        List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured together with whitelist/blacklist.
-        """
         return pulumi.get(self, "filters")
 
     @property
@@ -1789,7 +1753,7 @@ class Ocean(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Required if type is set to `CLASSIC`
+        The cluster name.
         """
         return pulumi.get(self, "name")
 
@@ -1903,8 +1867,5 @@ class Ocean(pulumi.CustomResource):
     @property
     @pulumi.getter
     def whitelists(self) -> pulumi.Output[Optional[Sequence[str]]]:
-        """
-        Instance types allowed in the Ocean cluster. Cannot be configured if `blacklist` is configured.
-        """
         return pulumi.get(self, "whitelists")
 

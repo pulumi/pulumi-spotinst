@@ -13,17 +13,8 @@ namespace Pulumi.SpotInst.Ecs.Outputs
     [OutputType]
     public sealed class OceanAutoscalerHeadroom
     {
-        /// <summary>
-        /// Optionally configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
-        /// </summary>
         public readonly int? CpuPerUnit;
-        /// <summary>
-        /// Optionally configure the amount of memory (MB) to allocate the headroom.
-        /// </summary>
         public readonly int? MemoryPerUnit;
-        /// <summary>
-        /// The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
-        /// </summary>
         public readonly int? NumOfUnits;
 
         [OutputConstructor]

@@ -18,14 +18,14 @@ public final class OceanIngressLoadBalancerArgs extends com.pulumi.resources.Res
     public static final OceanIngressLoadBalancerArgs Empty = new OceanIngressLoadBalancerArgs();
 
     /**
-     * - Should an ingress controller managed by Ocean for Apache Spark be installed on the cluster.
+     * - Should a load balancer managed by Ocean for Apache Spark be provisioned for the cluster. Set this to false if you want to use an existing load balancer (only available on AWS).
      * 
      */
     @Import(name="managed")
     private @Nullable Output<Boolean> managed;
 
     /**
-     * @return - Should an ingress controller managed by Ocean for Apache Spark be installed on the cluster.
+     * @return - Should a load balancer managed by Ocean for Apache Spark be provisioned for the cluster. Set this to false if you want to use an existing load balancer (only available on AWS).
      * 
      */
     public Optional<Output<Boolean>> managed() {
@@ -89,7 +89,7 @@ public final class OceanIngressLoadBalancerArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param managed - Should an ingress controller managed by Ocean for Apache Spark be installed on the cluster.
+         * @param managed - Should a load balancer managed by Ocean for Apache Spark be provisioned for the cluster. Set this to false if you want to use an existing load balancer (only available on AWS).
          * 
          * @return builder
          * 
@@ -100,7 +100,7 @@ public final class OceanIngressLoadBalancerArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param managed - Should an ingress controller managed by Ocean for Apache Spark be installed on the cluster.
+         * @param managed - Should a load balancer managed by Ocean for Apache Spark be provisioned for the cluster. Set this to false if you want to use an existing load balancer (only available on AWS).
          * 
          * @return builder
          * 

@@ -20,12 +20,6 @@ namespace Pulumi.SpotInst.Gcp.Inputs
 
         [Input("ports", required: true)]
         private InputList<string>? _ports;
-
-        /// <summary>
-        /// A list of ports.
-        /// 
-        /// Usage:
-        /// </summary>
         public InputList<string> Ports
         {
             get => _ports ?? (_ports = new InputList<string>());

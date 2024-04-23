@@ -12,15 +12,9 @@ namespace Pulumi.SpotInst.Aws.Inputs
 
     public sealed class ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategyGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The action to take when scale up according to step's threshold is needed.
-        /// </summary>
         [Input("action")]
         public Input<string>? Action { get; set; }
 
-        /// <summary>
-        /// Bool value if to wait to drain instance
-        /// </summary>
         [Input("shouldDrainInstances")]
         public Input<bool>? ShouldDrainInstances { get; set; }
 

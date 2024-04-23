@@ -13,13 +13,13 @@ namespace Pulumi.SpotInst.Azure.Inputs
     public sealed class OceanVirtualNodeGroupLabelGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Tag Key for Vms in the cluster.
+        /// The label key.
         /// </summary>
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;
 
         /// <summary>
-        /// Tag Value for VMs in the cluster.
+        /// The label value.
         /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }

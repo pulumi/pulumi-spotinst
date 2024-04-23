@@ -55,40 +55,28 @@ class ElastigroupArgs:
         """
         The set of arguments for constructing a Elastigroup resource.
         :param pulumi.Input[int] desired_capacity: The desired number of instances the group should have at any time.
-        :param pulumi.Input[bool] auto_healing: Enable auto-replacement of unhealthy instances.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] availability_zones: List of availability zones for the group.
-        :param pulumi.Input[Sequence[pulumi.Input['ElastigroupBackendServiceArgs']]] backend_services: Describes the backend service configurations.
         :param pulumi.Input[str] description: The region your GCP group will be created in.
         :param pulumi.Input[int] draining_timeout: Time (seconds) the instance is allowed to run after it is detached from the group. This is to allow the instance time to drain all the current TCP connections before terminating it.
         :param pulumi.Input[bool] fallback_to_ondemand: Activate fallback-to-on-demand. When provisioning an instance, if no Preemptible market is available, fallback-to-on-demand will provision an On-Demand instance to maintain the group capacity.
-        :param pulumi.Input[Sequence[pulumi.Input['ElastigroupGpuArgs']]] gpu: Defines the GPU configuration.
-        :param pulumi.Input[int] health_check_grace_period: Period of time (seconds) to wait for VM to reach healthiness before monitoring for unhealthiness.
-        :param pulumi.Input[str] health_check_type: The kind of health check to perform when monitoring for unhealthiness.
         :param pulumi.Input[str] instance_name_prefix: Set an instance name prefix to be used for all launched instances and their boot disk. The prefix value should comply with the following limitations: 
                * A maximal length of 25 characters.
                * The first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
         :param pulumi.Input[Sequence[pulumi.Input['ElastigroupInstanceTypesCustomArgs']]] instance_types_customs: Defines a set of custom instance types. Required if instance_types_preemptible and instance_types_ondemand are not set.
         :param pulumi.Input[str] instance_types_ondemand: The regular VM instance type to use for mixed-type groups and when falling back to on-demand. Required if instance_types_preemptible is not set.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types_preemptibles: The preemptible VMs instance type. To maximize cost savings and market availability, select as many types as possible. Required if instance_types_ondemand is not set.
-        :param pulumi.Input['ElastigroupIntegrationDockerSwarmArgs'] integration_docker_swarm: Describes the [Docker Swarm](https://api.spotinst.com/integration-docs/elastigroup/container-management/docker-swarm/docker-swarm-integration/) integration.
         :param pulumi.Input[Sequence[pulumi.Input['ElastigroupLabelArgs']]] labels: Array of objects with key-value pairs.
         :param pulumi.Input[int] max_size: The maximum number of instances the group should have at any time.
         :param pulumi.Input[Sequence[pulumi.Input['ElastigroupMetadataArgs']]] metadatas: Array of objects with key-value pairs.
         :param pulumi.Input[int] min_size: The minimum number of instances the group should have at any time.
         :param pulumi.Input[str] name: The group name.
-        :param pulumi.Input[Sequence[pulumi.Input['ElastigroupNetworkInterfaceArgs']]] network_interfaces: Array of objects representing the network configuration for the elastigroup.
         :param pulumi.Input[int] preemptible_percentage: Percentage of Preemptible VMs to spin up from the "desired_capacity".
         :param pulumi.Input[str] provisioning_model: Valid values: "SPOT", "PREEMPTIBLE". Define the provisioning model of the launched instances. Default value is "PREEMPTIBLE".
-        :param pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingDownPolicyArgs']]] scaling_down_policies: Contains scaling policies for scaling the Elastigroup down.
-               
-               Each `scaling_*_policy` supports the following:
-        :param pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingUpPolicyArgs']]] scaling_up_policies: Contains scaling policies for scaling the Elastigroup up.
         :param pulumi.Input[str] service_account: The email of the service account in which the group instances will be launched.
         :param pulumi.Input[str] shutdown_script: The Base64-encoded shutdown script that executes prior to instance termination, for more information please see: [Shutdown Script](https://api.spotinst.com/integration-docs/elastigroup/concepts/compute-concepts/shutdown-scripts/)
         :param pulumi.Input[str] startup_script: Create and run your own startup scripts on your virtual machines to perform automated tasks every time your instance boots up.
         :param pulumi.Input[Sequence[pulumi.Input['ElastigroupSubnetArgs']]] subnets: A list of regions and subnets.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to mark created instances.
-        :param pulumi.Input[int] unhealthy_duration: Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
         """
         pulumi.set(__self__, "desired_capacity", desired_capacity)
         if auto_healing is not None:
@@ -180,9 +168,6 @@ class ElastigroupArgs:
     @property
     @pulumi.getter(name="autoHealing")
     def auto_healing(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Enable auto-replacement of unhealthy instances.
-        """
         return pulumi.get(self, "auto_healing")
 
     @auto_healing.setter
@@ -207,9 +192,6 @@ class ElastigroupArgs:
     @property
     @pulumi.getter(name="backendServices")
     def backend_services(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupBackendServiceArgs']]]]:
-        """
-        Describes the backend service configurations.
-        """
         return pulumi.get(self, "backend_services")
 
     @backend_services.setter
@@ -264,9 +246,6 @@ class ElastigroupArgs:
     @property
     @pulumi.getter
     def gpu(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupGpuArgs']]]]:
-        """
-        Defines the GPU configuration.
-        """
         return pulumi.get(self, "gpu")
 
     @gpu.setter
@@ -276,9 +255,6 @@ class ElastigroupArgs:
     @property
     @pulumi.getter(name="healthCheckGracePeriod")
     def health_check_grace_period(self) -> Optional[pulumi.Input[int]]:
-        """
-        Period of time (seconds) to wait for VM to reach healthiness before monitoring for unhealthiness.
-        """
         return pulumi.get(self, "health_check_grace_period")
 
     @health_check_grace_period.setter
@@ -288,9 +264,6 @@ class ElastigroupArgs:
     @property
     @pulumi.getter(name="healthCheckType")
     def health_check_type(self) -> Optional[pulumi.Input[str]]:
-        """
-        The kind of health check to perform when monitoring for unhealthiness.
-        """
         return pulumi.get(self, "health_check_type")
 
     @health_check_type.setter
@@ -350,9 +323,6 @@ class ElastigroupArgs:
     @property
     @pulumi.getter(name="integrationDockerSwarm")
     def integration_docker_swarm(self) -> Optional[pulumi.Input['ElastigroupIntegrationDockerSwarmArgs']]:
-        """
-        Describes the [Docker Swarm](https://api.spotinst.com/integration-docs/elastigroup/container-management/docker-swarm/docker-swarm-integration/) integration.
-        """
         return pulumi.get(self, "integration_docker_swarm")
 
     @integration_docker_swarm.setter
@@ -440,9 +410,6 @@ class ElastigroupArgs:
     @property
     @pulumi.getter(name="networkInterfaces")
     def network_interfaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupNetworkInterfaceArgs']]]]:
-        """
-        Array of objects representing the network configuration for the elastigroup.
-        """
         return pulumi.get(self, "network_interfaces")
 
     @network_interfaces.setter
@@ -485,11 +452,6 @@ class ElastigroupArgs:
     @property
     @pulumi.getter(name="scalingDownPolicies")
     def scaling_down_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingDownPolicyArgs']]]]:
-        """
-        Contains scaling policies for scaling the Elastigroup down.
-
-        Each `scaling_*_policy` supports the following:
-        """
         return pulumi.get(self, "scaling_down_policies")
 
     @scaling_down_policies.setter
@@ -499,9 +461,6 @@ class ElastigroupArgs:
     @property
     @pulumi.getter(name="scalingUpPolicies")
     def scaling_up_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingUpPolicyArgs']]]]:
-        """
-        Contains scaling policies for scaling the Elastigroup up.
-        """
         return pulumi.get(self, "scaling_up_policies")
 
     @scaling_up_policies.setter
@@ -580,9 +539,6 @@ class ElastigroupArgs:
     @property
     @pulumi.getter(name="unhealthyDuration")
     def unhealthy_duration(self) -> Optional[pulumi.Input[int]]:
-        """
-        Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
-        """
         return pulumi.get(self, "unhealthy_duration")
 
     @unhealthy_duration.setter
@@ -631,41 +587,29 @@ class _ElastigroupState:
                  unhealthy_duration: Optional[pulumi.Input[int]] = None):
         """
         Input properties used for looking up and filtering Elastigroup resources.
-        :param pulumi.Input[bool] auto_healing: Enable auto-replacement of unhealthy instances.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] availability_zones: List of availability zones for the group.
-        :param pulumi.Input[Sequence[pulumi.Input['ElastigroupBackendServiceArgs']]] backend_services: Describes the backend service configurations.
         :param pulumi.Input[str] description: The region your GCP group will be created in.
         :param pulumi.Input[int] desired_capacity: The desired number of instances the group should have at any time.
         :param pulumi.Input[int] draining_timeout: Time (seconds) the instance is allowed to run after it is detached from the group. This is to allow the instance time to drain all the current TCP connections before terminating it.
         :param pulumi.Input[bool] fallback_to_ondemand: Activate fallback-to-on-demand. When provisioning an instance, if no Preemptible market is available, fallback-to-on-demand will provision an On-Demand instance to maintain the group capacity.
-        :param pulumi.Input[Sequence[pulumi.Input['ElastigroupGpuArgs']]] gpu: Defines the GPU configuration.
-        :param pulumi.Input[int] health_check_grace_period: Period of time (seconds) to wait for VM to reach healthiness before monitoring for unhealthiness.
-        :param pulumi.Input[str] health_check_type: The kind of health check to perform when monitoring for unhealthiness.
         :param pulumi.Input[str] instance_name_prefix: Set an instance name prefix to be used for all launched instances and their boot disk. The prefix value should comply with the following limitations: 
                * A maximal length of 25 characters.
                * The first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
         :param pulumi.Input[Sequence[pulumi.Input['ElastigroupInstanceTypesCustomArgs']]] instance_types_customs: Defines a set of custom instance types. Required if instance_types_preemptible and instance_types_ondemand are not set.
         :param pulumi.Input[str] instance_types_ondemand: The regular VM instance type to use for mixed-type groups and when falling back to on-demand. Required if instance_types_preemptible is not set.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types_preemptibles: The preemptible VMs instance type. To maximize cost savings and market availability, select as many types as possible. Required if instance_types_ondemand is not set.
-        :param pulumi.Input['ElastigroupIntegrationDockerSwarmArgs'] integration_docker_swarm: Describes the [Docker Swarm](https://api.spotinst.com/integration-docs/elastigroup/container-management/docker-swarm/docker-swarm-integration/) integration.
         :param pulumi.Input[Sequence[pulumi.Input['ElastigroupLabelArgs']]] labels: Array of objects with key-value pairs.
         :param pulumi.Input[int] max_size: The maximum number of instances the group should have at any time.
         :param pulumi.Input[Sequence[pulumi.Input['ElastigroupMetadataArgs']]] metadatas: Array of objects with key-value pairs.
         :param pulumi.Input[int] min_size: The minimum number of instances the group should have at any time.
         :param pulumi.Input[str] name: The group name.
-        :param pulumi.Input[Sequence[pulumi.Input['ElastigroupNetworkInterfaceArgs']]] network_interfaces: Array of objects representing the network configuration for the elastigroup.
         :param pulumi.Input[int] preemptible_percentage: Percentage of Preemptible VMs to spin up from the "desired_capacity".
         :param pulumi.Input[str] provisioning_model: Valid values: "SPOT", "PREEMPTIBLE". Define the provisioning model of the launched instances. Default value is "PREEMPTIBLE".
-        :param pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingDownPolicyArgs']]] scaling_down_policies: Contains scaling policies for scaling the Elastigroup down.
-               
-               Each `scaling_*_policy` supports the following:
-        :param pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingUpPolicyArgs']]] scaling_up_policies: Contains scaling policies for scaling the Elastigroup up.
         :param pulumi.Input[str] service_account: The email of the service account in which the group instances will be launched.
         :param pulumi.Input[str] shutdown_script: The Base64-encoded shutdown script that executes prior to instance termination, for more information please see: [Shutdown Script](https://api.spotinst.com/integration-docs/elastigroup/concepts/compute-concepts/shutdown-scripts/)
         :param pulumi.Input[str] startup_script: Create and run your own startup scripts on your virtual machines to perform automated tasks every time your instance boots up.
         :param pulumi.Input[Sequence[pulumi.Input['ElastigroupSubnetArgs']]] subnets: A list of regions and subnets.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to mark created instances.
-        :param pulumi.Input[int] unhealthy_duration: Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
         """
         if auto_healing is not None:
             pulumi.set(__self__, "auto_healing", auto_healing)
@@ -746,9 +690,6 @@ class _ElastigroupState:
     @property
     @pulumi.getter(name="autoHealing")
     def auto_healing(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Enable auto-replacement of unhealthy instances.
-        """
         return pulumi.get(self, "auto_healing")
 
     @auto_healing.setter
@@ -773,9 +714,6 @@ class _ElastigroupState:
     @property
     @pulumi.getter(name="backendServices")
     def backend_services(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupBackendServiceArgs']]]]:
-        """
-        Describes the backend service configurations.
-        """
         return pulumi.get(self, "backend_services")
 
     @backend_services.setter
@@ -842,9 +780,6 @@ class _ElastigroupState:
     @property
     @pulumi.getter
     def gpu(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupGpuArgs']]]]:
-        """
-        Defines the GPU configuration.
-        """
         return pulumi.get(self, "gpu")
 
     @gpu.setter
@@ -854,9 +789,6 @@ class _ElastigroupState:
     @property
     @pulumi.getter(name="healthCheckGracePeriod")
     def health_check_grace_period(self) -> Optional[pulumi.Input[int]]:
-        """
-        Period of time (seconds) to wait for VM to reach healthiness before monitoring for unhealthiness.
-        """
         return pulumi.get(self, "health_check_grace_period")
 
     @health_check_grace_period.setter
@@ -866,9 +798,6 @@ class _ElastigroupState:
     @property
     @pulumi.getter(name="healthCheckType")
     def health_check_type(self) -> Optional[pulumi.Input[str]]:
-        """
-        The kind of health check to perform when monitoring for unhealthiness.
-        """
         return pulumi.get(self, "health_check_type")
 
     @health_check_type.setter
@@ -928,9 +857,6 @@ class _ElastigroupState:
     @property
     @pulumi.getter(name="integrationDockerSwarm")
     def integration_docker_swarm(self) -> Optional[pulumi.Input['ElastigroupIntegrationDockerSwarmArgs']]:
-        """
-        Describes the [Docker Swarm](https://api.spotinst.com/integration-docs/elastigroup/container-management/docker-swarm/docker-swarm-integration/) integration.
-        """
         return pulumi.get(self, "integration_docker_swarm")
 
     @integration_docker_swarm.setter
@@ -1018,9 +944,6 @@ class _ElastigroupState:
     @property
     @pulumi.getter(name="networkInterfaces")
     def network_interfaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupNetworkInterfaceArgs']]]]:
-        """
-        Array of objects representing the network configuration for the elastigroup.
-        """
         return pulumi.get(self, "network_interfaces")
 
     @network_interfaces.setter
@@ -1063,11 +986,6 @@ class _ElastigroupState:
     @property
     @pulumi.getter(name="scalingDownPolicies")
     def scaling_down_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingDownPolicyArgs']]]]:
-        """
-        Contains scaling policies for scaling the Elastigroup down.
-
-        Each `scaling_*_policy` supports the following:
-        """
         return pulumi.get(self, "scaling_down_policies")
 
     @scaling_down_policies.setter
@@ -1077,9 +995,6 @@ class _ElastigroupState:
     @property
     @pulumi.getter(name="scalingUpPolicies")
     def scaling_up_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElastigroupScalingUpPolicyArgs']]]]:
-        """
-        Contains scaling policies for scaling the Elastigroup up.
-        """
         return pulumi.get(self, "scaling_up_policies")
 
     @scaling_up_policies.setter
@@ -1158,9 +1073,6 @@ class _ElastigroupState:
     @property
     @pulumi.getter(name="unhealthyDuration")
     def unhealthy_duration(self) -> Optional[pulumi.Input[int]]:
-        """
-        Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
-        """
         return pulumi.get(self, "unhealthy_duration")
 
     @unhealthy_duration.setter
@@ -1215,7 +1127,6 @@ class Elastigroup(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_spotinst as spotinst
@@ -1306,45 +1217,32 @@ class Elastigroup(pulumi.CustomResource):
                 )],
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] auto_healing: Enable auto-replacement of unhealthy instances.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] availability_zones: List of availability zones for the group.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupBackendServiceArgs']]]] backend_services: Describes the backend service configurations.
         :param pulumi.Input[str] description: The region your GCP group will be created in.
         :param pulumi.Input[int] desired_capacity: The desired number of instances the group should have at any time.
         :param pulumi.Input[int] draining_timeout: Time (seconds) the instance is allowed to run after it is detached from the group. This is to allow the instance time to drain all the current TCP connections before terminating it.
         :param pulumi.Input[bool] fallback_to_ondemand: Activate fallback-to-on-demand. When provisioning an instance, if no Preemptible market is available, fallback-to-on-demand will provision an On-Demand instance to maintain the group capacity.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupGpuArgs']]]] gpu: Defines the GPU configuration.
-        :param pulumi.Input[int] health_check_grace_period: Period of time (seconds) to wait for VM to reach healthiness before monitoring for unhealthiness.
-        :param pulumi.Input[str] health_check_type: The kind of health check to perform when monitoring for unhealthiness.
         :param pulumi.Input[str] instance_name_prefix: Set an instance name prefix to be used for all launched instances and their boot disk. The prefix value should comply with the following limitations: 
                * A maximal length of 25 characters.
                * The first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupInstanceTypesCustomArgs']]]] instance_types_customs: Defines a set of custom instance types. Required if instance_types_preemptible and instance_types_ondemand are not set.
         :param pulumi.Input[str] instance_types_ondemand: The regular VM instance type to use for mixed-type groups and when falling back to on-demand. Required if instance_types_preemptible is not set.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types_preemptibles: The preemptible VMs instance type. To maximize cost savings and market availability, select as many types as possible. Required if instance_types_ondemand is not set.
-        :param pulumi.Input[pulumi.InputType['ElastigroupIntegrationDockerSwarmArgs']] integration_docker_swarm: Describes the [Docker Swarm](https://api.spotinst.com/integration-docs/elastigroup/container-management/docker-swarm/docker-swarm-integration/) integration.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupLabelArgs']]]] labels: Array of objects with key-value pairs.
         :param pulumi.Input[int] max_size: The maximum number of instances the group should have at any time.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupMetadataArgs']]]] metadatas: Array of objects with key-value pairs.
         :param pulumi.Input[int] min_size: The minimum number of instances the group should have at any time.
         :param pulumi.Input[str] name: The group name.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupNetworkInterfaceArgs']]]] network_interfaces: Array of objects representing the network configuration for the elastigroup.
         :param pulumi.Input[int] preemptible_percentage: Percentage of Preemptible VMs to spin up from the "desired_capacity".
         :param pulumi.Input[str] provisioning_model: Valid values: "SPOT", "PREEMPTIBLE". Define the provisioning model of the launched instances. Default value is "PREEMPTIBLE".
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupScalingDownPolicyArgs']]]] scaling_down_policies: Contains scaling policies for scaling the Elastigroup down.
-               
-               Each `scaling_*_policy` supports the following:
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupScalingUpPolicyArgs']]]] scaling_up_policies: Contains scaling policies for scaling the Elastigroup up.
         :param pulumi.Input[str] service_account: The email of the service account in which the group instances will be launched.
         :param pulumi.Input[str] shutdown_script: The Base64-encoded shutdown script that executes prior to instance termination, for more information please see: [Shutdown Script](https://api.spotinst.com/integration-docs/elastigroup/concepts/compute-concepts/shutdown-scripts/)
         :param pulumi.Input[str] startup_script: Create and run your own startup scripts on your virtual machines to perform automated tasks every time your instance boots up.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupSubnetArgs']]]] subnets: A list of regions and subnets.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to mark created instances.
-        :param pulumi.Input[int] unhealthy_duration: Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
         """
         ...
     @overload
@@ -1357,7 +1255,6 @@ class Elastigroup(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_spotinst as spotinst
@@ -1448,7 +1345,6 @@ class Elastigroup(pulumi.CustomResource):
                 )],
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param ElastigroupArgs args: The arguments to use to populate this resource's properties.
@@ -1601,41 +1497,29 @@ class Elastigroup(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] auto_healing: Enable auto-replacement of unhealthy instances.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] availability_zones: List of availability zones for the group.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupBackendServiceArgs']]]] backend_services: Describes the backend service configurations.
         :param pulumi.Input[str] description: The region your GCP group will be created in.
         :param pulumi.Input[int] desired_capacity: The desired number of instances the group should have at any time.
         :param pulumi.Input[int] draining_timeout: Time (seconds) the instance is allowed to run after it is detached from the group. This is to allow the instance time to drain all the current TCP connections before terminating it.
         :param pulumi.Input[bool] fallback_to_ondemand: Activate fallback-to-on-demand. When provisioning an instance, if no Preemptible market is available, fallback-to-on-demand will provision an On-Demand instance to maintain the group capacity.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupGpuArgs']]]] gpu: Defines the GPU configuration.
-        :param pulumi.Input[int] health_check_grace_period: Period of time (seconds) to wait for VM to reach healthiness before monitoring for unhealthiness.
-        :param pulumi.Input[str] health_check_type: The kind of health check to perform when monitoring for unhealthiness.
         :param pulumi.Input[str] instance_name_prefix: Set an instance name prefix to be used for all launched instances and their boot disk. The prefix value should comply with the following limitations: 
                * A maximal length of 25 characters.
                * The first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupInstanceTypesCustomArgs']]]] instance_types_customs: Defines a set of custom instance types. Required if instance_types_preemptible and instance_types_ondemand are not set.
         :param pulumi.Input[str] instance_types_ondemand: The regular VM instance type to use for mixed-type groups and when falling back to on-demand. Required if instance_types_preemptible is not set.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types_preemptibles: The preemptible VMs instance type. To maximize cost savings and market availability, select as many types as possible. Required if instance_types_ondemand is not set.
-        :param pulumi.Input[pulumi.InputType['ElastigroupIntegrationDockerSwarmArgs']] integration_docker_swarm: Describes the [Docker Swarm](https://api.spotinst.com/integration-docs/elastigroup/container-management/docker-swarm/docker-swarm-integration/) integration.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupLabelArgs']]]] labels: Array of objects with key-value pairs.
         :param pulumi.Input[int] max_size: The maximum number of instances the group should have at any time.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupMetadataArgs']]]] metadatas: Array of objects with key-value pairs.
         :param pulumi.Input[int] min_size: The minimum number of instances the group should have at any time.
         :param pulumi.Input[str] name: The group name.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupNetworkInterfaceArgs']]]] network_interfaces: Array of objects representing the network configuration for the elastigroup.
         :param pulumi.Input[int] preemptible_percentage: Percentage of Preemptible VMs to spin up from the "desired_capacity".
         :param pulumi.Input[str] provisioning_model: Valid values: "SPOT", "PREEMPTIBLE". Define the provisioning model of the launched instances. Default value is "PREEMPTIBLE".
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupScalingDownPolicyArgs']]]] scaling_down_policies: Contains scaling policies for scaling the Elastigroup down.
-               
-               Each `scaling_*_policy` supports the following:
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupScalingUpPolicyArgs']]]] scaling_up_policies: Contains scaling policies for scaling the Elastigroup up.
         :param pulumi.Input[str] service_account: The email of the service account in which the group instances will be launched.
         :param pulumi.Input[str] shutdown_script: The Base64-encoded shutdown script that executes prior to instance termination, for more information please see: [Shutdown Script](https://api.spotinst.com/integration-docs/elastigroup/concepts/compute-concepts/shutdown-scripts/)
         :param pulumi.Input[str] startup_script: Create and run your own startup scripts on your virtual machines to perform automated tasks every time your instance boots up.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupSubnetArgs']]]] subnets: A list of regions and subnets.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to mark created instances.
-        :param pulumi.Input[int] unhealthy_duration: Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1682,9 +1566,6 @@ class Elastigroup(pulumi.CustomResource):
     @property
     @pulumi.getter(name="autoHealing")
     def auto_healing(self) -> pulumi.Output[Optional[bool]]:
-        """
-        Enable auto-replacement of unhealthy instances.
-        """
         return pulumi.get(self, "auto_healing")
 
     @property
@@ -1701,9 +1582,6 @@ class Elastigroup(pulumi.CustomResource):
     @property
     @pulumi.getter(name="backendServices")
     def backend_services(self) -> pulumi.Output[Optional[Sequence['outputs.ElastigroupBackendService']]]:
-        """
-        Describes the backend service configurations.
-        """
         return pulumi.get(self, "backend_services")
 
     @property
@@ -1746,25 +1624,16 @@ class Elastigroup(pulumi.CustomResource):
     @property
     @pulumi.getter
     def gpu(self) -> pulumi.Output[Optional[Sequence['outputs.ElastigroupGpu']]]:
-        """
-        Defines the GPU configuration.
-        """
         return pulumi.get(self, "gpu")
 
     @property
     @pulumi.getter(name="healthCheckGracePeriod")
     def health_check_grace_period(self) -> pulumi.Output[Optional[int]]:
-        """
-        Period of time (seconds) to wait for VM to reach healthiness before monitoring for unhealthiness.
-        """
         return pulumi.get(self, "health_check_grace_period")
 
     @property
     @pulumi.getter(name="healthCheckType")
     def health_check_type(self) -> pulumi.Output[Optional[str]]:
-        """
-        The kind of health check to perform when monitoring for unhealthiness.
-        """
         return pulumi.get(self, "health_check_type")
 
     @property
@@ -1804,9 +1673,6 @@ class Elastigroup(pulumi.CustomResource):
     @property
     @pulumi.getter(name="integrationDockerSwarm")
     def integration_docker_swarm(self) -> pulumi.Output[Optional['outputs.ElastigroupIntegrationDockerSwarm']]:
-        """
-        Describes the [Docker Swarm](https://api.spotinst.com/integration-docs/elastigroup/container-management/docker-swarm/docker-swarm-integration/) integration.
-        """
         return pulumi.get(self, "integration_docker_swarm")
 
     @property
@@ -1862,9 +1728,6 @@ class Elastigroup(pulumi.CustomResource):
     @property
     @pulumi.getter(name="networkInterfaces")
     def network_interfaces(self) -> pulumi.Output[Optional[Sequence['outputs.ElastigroupNetworkInterface']]]:
-        """
-        Array of objects representing the network configuration for the elastigroup.
-        """
         return pulumi.get(self, "network_interfaces")
 
     @property
@@ -1891,19 +1754,11 @@ class Elastigroup(pulumi.CustomResource):
     @property
     @pulumi.getter(name="scalingDownPolicies")
     def scaling_down_policies(self) -> pulumi.Output[Optional[Sequence['outputs.ElastigroupScalingDownPolicy']]]:
-        """
-        Contains scaling policies for scaling the Elastigroup down.
-
-        Each `scaling_*_policy` supports the following:
-        """
         return pulumi.get(self, "scaling_down_policies")
 
     @property
     @pulumi.getter(name="scalingUpPolicies")
     def scaling_up_policies(self) -> pulumi.Output[Optional[Sequence['outputs.ElastigroupScalingUpPolicy']]]:
-        """
-        Contains scaling policies for scaling the Elastigroup up.
-        """
         return pulumi.get(self, "scaling_up_policies")
 
     @property
@@ -1954,8 +1809,5 @@ class Elastigroup(pulumi.CustomResource):
     @property
     @pulumi.getter(name="unhealthyDuration")
     def unhealthy_duration(self) -> pulumi.Output[Optional[int]]:
-        """
-        Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
-        """
         return pulumi.get(self, "unhealthy_duration")
 

@@ -12,15 +12,9 @@ namespace Pulumi.SpotInst.Aws.Inputs
 
     public sealed class ElastigroupIntegrationEcsAutoscaleDownArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The number of periods over which data is compared to the specified threshold.
-        /// </summary>
         [Input("evaluationPeriods")]
         public Input<int>? EvaluationPeriods { get; set; }
 
-        /// <summary>
-        /// Represents the maximum percent to scale-down. Number between 1-100.
-        /// </summary>
         [Input("maxScaleDownPercentage")]
         public Input<double>? MaxScaleDownPercentage { get; set; }
 

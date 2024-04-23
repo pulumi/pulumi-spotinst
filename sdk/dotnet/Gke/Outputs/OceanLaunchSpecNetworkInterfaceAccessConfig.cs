@@ -14,12 +14,9 @@ namespace Pulumi.SpotInst.Gke.Outputs
     public sealed class OceanLaunchSpecNetworkInterfaceAccessConfig
     {
         /// <summary>
-        /// The name of the access configuration.
+        /// The launch specification name.
         /// </summary>
         public readonly string? Name;
-        /// <summary>
-        /// The type of the access configuration.
-        /// </summary>
         public readonly string? Type;
 
         [OutputConstructor]

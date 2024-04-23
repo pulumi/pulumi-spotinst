@@ -22,17 +22,9 @@ public final class ElastigroupTagArgs extends com.pulumi.resources.ResourceArgs 
         return Optional.ofNullable(this.key);
     }
 
-    /**
-     * The dimension value.
-     * 
-     */
     @Import(name="value")
     private @Nullable Output<String> value;
 
-    /**
-     * @return The dimension value.
-     * 
-     */
     public Optional<Output<String>> value() {
         return Optional.ofNullable(this.value);
     }
@@ -71,23 +63,11 @@ public final class ElastigroupTagArgs extends com.pulumi.resources.ResourceArgs 
             return key(Output.of(key));
         }
 
-        /**
-         * @param value The dimension value.
-         * 
-         * @return builder
-         * 
-         */
         public Builder value(@Nullable Output<String> value) {
             $.value = value;
             return this;
         }
 
-        /**
-         * @param value The dimension value.
-         * 
-         * @return builder
-         * 
-         */
         public Builder value(String value) {
             return value(Output.of(value));
         }

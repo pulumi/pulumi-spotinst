@@ -47,44 +47,36 @@ public final class OceanExtensionArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Name of the Load Balancer.
+     * Extension name.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the Load Balancer.
+     * @return Extension name.
      * 
      */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
-    /**
-     * Image publisher.
-     * 
-     */
     @Import(name="publisher")
     private @Nullable Output<String> publisher;
 
-    /**
-     * @return Image publisher.
-     * 
-     */
     public Optional<Output<String>> publisher() {
         return Optional.ofNullable(this.publisher);
     }
 
     /**
-     * The type of load balancer. Supported value: `loadBalancer`
+     * Extension type.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return The type of load balancer. Supported value: `loadBalancer`
+     * @return Extension type.
      * 
      */
     public Optional<Output<String>> type() {
@@ -162,7 +154,7 @@ public final class OceanExtensionArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param name Name of the Load Balancer.
+         * @param name Extension name.
          * 
          * @return builder
          * 
@@ -173,7 +165,7 @@ public final class OceanExtensionArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param name Name of the Load Balancer.
+         * @param name Extension name.
          * 
          * @return builder
          * 
@@ -182,29 +174,17 @@ public final class OceanExtensionArgs extends com.pulumi.resources.ResourceArgs 
             return name(Output.of(name));
         }
 
-        /**
-         * @param publisher Image publisher.
-         * 
-         * @return builder
-         * 
-         */
         public Builder publisher(@Nullable Output<String> publisher) {
             $.publisher = publisher;
             return this;
         }
 
-        /**
-         * @param publisher Image publisher.
-         * 
-         * @return builder
-         * 
-         */
         public Builder publisher(String publisher) {
             return publisher(Output.of(publisher));
         }
 
         /**
-         * @param type The type of load balancer. Supported value: `loadBalancer`
+         * @param type Extension type.
          * 
          * @return builder
          * 
@@ -215,7 +195,7 @@ public final class OceanExtensionArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param type The type of load balancer. Supported value: `loadBalancer`
+         * @param type Extension type.
          * 
          * @return builder
          * 

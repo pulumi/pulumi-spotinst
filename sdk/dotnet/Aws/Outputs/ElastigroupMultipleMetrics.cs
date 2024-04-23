@@ -13,13 +13,7 @@ namespace Pulumi.SpotInst.Aws.Outputs
     [OutputType]
     public sealed class ElastigroupMultipleMetrics
     {
-        /// <summary>
-        /// Array of objects (Expression config)
-        /// </summary>
         public readonly ImmutableArray<Outputs.ElastigroupMultipleMetricsExpression> Expressions;
-        /// <summary>
-        /// Array of objects (Metric config)
-        /// </summary>
         public readonly ImmutableArray<Outputs.ElastigroupMultipleMetricsMetric> Metrics;
 
         [OutputConstructor]

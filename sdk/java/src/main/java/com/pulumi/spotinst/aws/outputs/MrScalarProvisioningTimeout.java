@@ -11,29 +11,13 @@ import java.util.Objects;
 
 @CustomType
 public final class MrScalarProvisioningTimeout {
-    /**
-     * @return The amount of time (minutes) after which the cluster is automatically terminated if it&#39;s still in provisioning status. Minimum: &#39;15&#39;.
-     * 
-     */
     private Integer timeout;
-    /**
-     * @return The action to take if the timeout is exceeded. Valid values: `terminate`, `terminateAndRetry`.
-     * 
-     */
     private String timeoutAction;
 
     private MrScalarProvisioningTimeout() {}
-    /**
-     * @return The amount of time (minutes) after which the cluster is automatically terminated if it&#39;s still in provisioning status. Minimum: &#39;15&#39;.
-     * 
-     */
     public Integer timeout() {
         return this.timeout;
     }
-    /**
-     * @return The action to take if the timeout is exceeded. Valid values: `terminate`, `terminateAndRetry`.
-     * 
-     */
     public String timeoutAction() {
         return this.timeoutAction;
     }

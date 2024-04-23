@@ -12,15 +12,9 @@ namespace Pulumi.SpotInst.Aws.Inputs
 
     public sealed class OceanLaunchSpecElasticIpPoolTagSelectorGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Elastic IP tag key. The Virtual Node Group will consider all Elastic IPs tagged with this tag as a part of the Elastic IP pool to use.
-        /// </summary>
         [Input("tagKey", required: true)]
         public Input<string> TagKey { get; set; } = null!;
 
-        /// <summary>
-        /// Elastic IP tag value. Can be null.
-        /// </summary>
         [Input("tagValue")]
         public Input<string>? TagValue { get; set; }
 

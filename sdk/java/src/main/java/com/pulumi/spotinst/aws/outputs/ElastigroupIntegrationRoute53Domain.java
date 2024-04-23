@@ -14,53 +14,21 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ElastigroupIntegrationRoute53Domain {
-    /**
-     * @return The id associated with a hosted zone.
-     * 
-     */
     private String hostedZoneId;
-    /**
-     * @return The type of the record set. Valid values: `&#34;a&#34;`, `&#34;cname&#34;`.
-     * 
-     */
     private @Nullable String recordSetType;
-    /**
-     * @return Collection of records containing authoritative DNS information for the specified domain name.
-     * 
-     */
     private List<ElastigroupIntegrationRoute53DomainRecordSet> recordSets;
-    /**
-     * @return The Spotinst account ID that is linked to the AWS account that holds the Route 53 Hosted Zone ID. The default is the user Spotinst account provided as a URL parameter.
-     * 
-     */
     private @Nullable String spotinstAcctId;
 
     private ElastigroupIntegrationRoute53Domain() {}
-    /**
-     * @return The id associated with a hosted zone.
-     * 
-     */
     public String hostedZoneId() {
         return this.hostedZoneId;
     }
-    /**
-     * @return The type of the record set. Valid values: `&#34;a&#34;`, `&#34;cname&#34;`.
-     * 
-     */
     public Optional<String> recordSetType() {
         return Optional.ofNullable(this.recordSetType);
     }
-    /**
-     * @return Collection of records containing authoritative DNS information for the specified domain name.
-     * 
-     */
     public List<ElastigroupIntegrationRoute53DomainRecordSet> recordSets() {
         return this.recordSets;
     }
-    /**
-     * @return The Spotinst account ID that is linked to the AWS account that holds the Route 53 Hosted Zone ID. The default is the user Spotinst account provided as a URL parameter.
-     * 
-     */
     public Optional<String> spotinstAcctId() {
         return Optional.ofNullable(this.spotinstAcctId);
     }

@@ -245,14 +245,14 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
         return this.minSize;
     }
     /**
-     * Name of the Managed Service Identity.
+     * The group name.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Name of the Managed Service Identity.
+     * @return The group name.
      * 
      */
     public Output<String> name() {
@@ -299,14 +299,14 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
         return this.region;
     }
     /**
-     * Name of the Azure Resource Group where the Managed Service Identity is located.
+     * Name of the Resource Group for Elastigroup.
      * 
      */
     @Export(name="resourceGroupName", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupName;
 
     /**
-     * @return Name of the Azure Resource Group where the Managed Service Identity is located.
+     * @return Name of the Resource Group for Elastigroup.
      * 
      */
     public Output<String> resourceGroupName() {

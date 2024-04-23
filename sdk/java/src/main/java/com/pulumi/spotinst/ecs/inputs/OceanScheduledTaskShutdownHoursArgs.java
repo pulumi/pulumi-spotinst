@@ -18,32 +18,16 @@ public final class OceanScheduledTaskShutdownHoursArgs extends com.pulumi.resour
 
     public static final OceanScheduledTaskShutdownHoursArgs Empty = new OceanScheduledTaskShutdownHoursArgs();
 
-    /**
-     * Enable the Ocean ECS autoscaler.
-     * 
-     */
     @Import(name="isEnabled")
     private @Nullable Output<Boolean> isEnabled;
 
-    /**
-     * @return Enable the Ocean ECS autoscaler.
-     * 
-     */
     public Optional<Output<Boolean>> isEnabled() {
         return Optional.ofNullable(this.isEnabled);
     }
 
-    /**
-     * Array of strings. Set time windows for image update, at least one time window. Each string is in the format of ddd:hh:mm-ddd:hh:mm ddd. Time windows should not overlap.
-     * 
-     */
     @Import(name="timeWindows", required=true)
     private Output<List<String>> timeWindows;
 
-    /**
-     * @return Array of strings. Set time windows for image update, at least one time window. Each string is in the format of ddd:hh:mm-ddd:hh:mm ddd. Time windows should not overlap.
-     * 
-     */
     public Output<List<String>> timeWindows() {
         return this.timeWindows;
     }
@@ -73,54 +57,24 @@ public final class OceanScheduledTaskShutdownHoursArgs extends com.pulumi.resour
             $ = new OceanScheduledTaskShutdownHoursArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param isEnabled Enable the Ocean ECS autoscaler.
-         * 
-         * @return builder
-         * 
-         */
         public Builder isEnabled(@Nullable Output<Boolean> isEnabled) {
             $.isEnabled = isEnabled;
             return this;
         }
 
-        /**
-         * @param isEnabled Enable the Ocean ECS autoscaler.
-         * 
-         * @return builder
-         * 
-         */
         public Builder isEnabled(Boolean isEnabled) {
             return isEnabled(Output.of(isEnabled));
         }
 
-        /**
-         * @param timeWindows Array of strings. Set time windows for image update, at least one time window. Each string is in the format of ddd:hh:mm-ddd:hh:mm ddd. Time windows should not overlap.
-         * 
-         * @return builder
-         * 
-         */
         public Builder timeWindows(Output<List<String>> timeWindows) {
             $.timeWindows = timeWindows;
             return this;
         }
 
-        /**
-         * @param timeWindows Array of strings. Set time windows for image update, at least one time window. Each string is in the format of ddd:hh:mm-ddd:hh:mm ddd. Time windows should not overlap.
-         * 
-         * @return builder
-         * 
-         */
         public Builder timeWindows(List<String> timeWindows) {
             return timeWindows(Output.of(timeWindows));
         }
 
-        /**
-         * @param timeWindows Array of strings. Set time windows for image update, at least one time window. Each string is in the format of ddd:hh:mm-ddd:hh:mm ddd. Time windows should not overlap.
-         * 
-         * @return builder
-         * 
-         */
         public Builder timeWindows(String... timeWindows) {
             return timeWindows(List.of(timeWindows));
         }

@@ -13,9 +13,6 @@ namespace Pulumi.SpotInst.Aws.Outputs
     [OutputType]
     public sealed class ElastigroupMultipleMetricsExpression
     {
-        /// <summary>
-        /// An expression consisting of the metric names listed in the 'metrics' array.
-        /// </summary>
         public readonly string Expression;
         /// <summary>
         /// The group name.

@@ -10,29 +10,13 @@ import java.util.Objects;
 
 @CustomType
 public final class MrScalarBootstrapActionsFile {
-    /**
-     * @return S3 Bucket name for bootstrap actions.
-     * 
-     */
     private String bucket;
-    /**
-     * @return S3 key for bootstrap actions.
-     * 
-     */
     private String key;
 
     private MrScalarBootstrapActionsFile() {}
-    /**
-     * @return S3 Bucket name for bootstrap actions.
-     * 
-     */
     public String bucket() {
         return this.bucket;
     }
-    /**
-     * @return S3 key for bootstrap actions.
-     * 
-     */
     public String key() {
         return this.key;
     }

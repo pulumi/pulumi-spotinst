@@ -18,62 +18,30 @@ public final class ElastigroupIntegrationRoute53DomainArgs extends com.pulumi.re
 
     public static final ElastigroupIntegrationRoute53DomainArgs Empty = new ElastigroupIntegrationRoute53DomainArgs();
 
-    /**
-     * The id associated with a hosted zone.
-     * 
-     */
     @Import(name="hostedZoneId", required=true)
     private Output<String> hostedZoneId;
 
-    /**
-     * @return The id associated with a hosted zone.
-     * 
-     */
     public Output<String> hostedZoneId() {
         return this.hostedZoneId;
     }
 
-    /**
-     * The type of the record set. Valid values: `&#34;a&#34;`, `&#34;cname&#34;`.
-     * 
-     */
     @Import(name="recordSetType")
     private @Nullable Output<String> recordSetType;
 
-    /**
-     * @return The type of the record set. Valid values: `&#34;a&#34;`, `&#34;cname&#34;`.
-     * 
-     */
     public Optional<Output<String>> recordSetType() {
         return Optional.ofNullable(this.recordSetType);
     }
 
-    /**
-     * Collection of records containing authoritative DNS information for the specified domain name.
-     * 
-     */
     @Import(name="recordSets", required=true)
     private Output<List<ElastigroupIntegrationRoute53DomainRecordSetArgs>> recordSets;
 
-    /**
-     * @return Collection of records containing authoritative DNS information for the specified domain name.
-     * 
-     */
     public Output<List<ElastigroupIntegrationRoute53DomainRecordSetArgs>> recordSets() {
         return this.recordSets;
     }
 
-    /**
-     * The Spotinst account ID that is linked to the AWS account that holds the Route 53 Hosted Zone ID. The default is the user Spotinst account provided as a URL parameter.
-     * 
-     */
     @Import(name="spotinstAcctId")
     private @Nullable Output<String> spotinstAcctId;
 
-    /**
-     * @return The Spotinst account ID that is linked to the AWS account that holds the Route 53 Hosted Zone ID. The default is the user Spotinst account provided as a URL parameter.
-     * 
-     */
     public Optional<Output<String>> spotinstAcctId() {
         return Optional.ofNullable(this.spotinstAcctId);
     }
@@ -105,96 +73,42 @@ public final class ElastigroupIntegrationRoute53DomainArgs extends com.pulumi.re
             $ = new ElastigroupIntegrationRoute53DomainArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param hostedZoneId The id associated with a hosted zone.
-         * 
-         * @return builder
-         * 
-         */
         public Builder hostedZoneId(Output<String> hostedZoneId) {
             $.hostedZoneId = hostedZoneId;
             return this;
         }
 
-        /**
-         * @param hostedZoneId The id associated with a hosted zone.
-         * 
-         * @return builder
-         * 
-         */
         public Builder hostedZoneId(String hostedZoneId) {
             return hostedZoneId(Output.of(hostedZoneId));
         }
 
-        /**
-         * @param recordSetType The type of the record set. Valid values: `&#34;a&#34;`, `&#34;cname&#34;`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder recordSetType(@Nullable Output<String> recordSetType) {
             $.recordSetType = recordSetType;
             return this;
         }
 
-        /**
-         * @param recordSetType The type of the record set. Valid values: `&#34;a&#34;`, `&#34;cname&#34;`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder recordSetType(String recordSetType) {
             return recordSetType(Output.of(recordSetType));
         }
 
-        /**
-         * @param recordSets Collection of records containing authoritative DNS information for the specified domain name.
-         * 
-         * @return builder
-         * 
-         */
         public Builder recordSets(Output<List<ElastigroupIntegrationRoute53DomainRecordSetArgs>> recordSets) {
             $.recordSets = recordSets;
             return this;
         }
 
-        /**
-         * @param recordSets Collection of records containing authoritative DNS information for the specified domain name.
-         * 
-         * @return builder
-         * 
-         */
         public Builder recordSets(List<ElastigroupIntegrationRoute53DomainRecordSetArgs> recordSets) {
             return recordSets(Output.of(recordSets));
         }
 
-        /**
-         * @param recordSets Collection of records containing authoritative DNS information for the specified domain name.
-         * 
-         * @return builder
-         * 
-         */
         public Builder recordSets(ElastigroupIntegrationRoute53DomainRecordSetArgs... recordSets) {
             return recordSets(List.of(recordSets));
         }
 
-        /**
-         * @param spotinstAcctId The Spotinst account ID that is linked to the AWS account that holds the Route 53 Hosted Zone ID. The default is the user Spotinst account provided as a URL parameter.
-         * 
-         * @return builder
-         * 
-         */
         public Builder spotinstAcctId(@Nullable Output<String> spotinstAcctId) {
             $.spotinstAcctId = spotinstAcctId;
             return this;
         }
 
-        /**
-         * @param spotinstAcctId The Spotinst account ID that is linked to the AWS account that holds the Route 53 Hosted Zone ID. The default is the user Spotinst account provided as a URL parameter.
-         * 
-         * @return builder
-         * 
-         */
         public Builder spotinstAcctId(String spotinstAcctId) {
             return spotinstAcctId(Output.of(spotinstAcctId));
         }

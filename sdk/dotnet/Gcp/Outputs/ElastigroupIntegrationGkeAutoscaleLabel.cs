@@ -13,13 +13,7 @@ namespace Pulumi.SpotInst.Gcp.Outputs
     [OutputType]
     public sealed class ElastigroupIntegrationGkeAutoscaleLabel
     {
-        /// <summary>
-        /// Labels key.
-        /// </summary>
         public readonly string Key;
-        /// <summary>
-        /// Labels value.
-        /// </summary>
         public readonly string Value;
 
         [OutputConstructor]

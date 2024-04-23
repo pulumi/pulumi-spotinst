@@ -33,14 +33,14 @@ public final class OceanOsDiskArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The type of load balancer. Supported value: `loadBalancer`
+     * The type of the OS disk. Supported values: `Standard_LRS`, `Premium_LRS`, `StandardSSD_LRS`.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return The type of load balancer. Supported value: `loadBalancer`
+     * @return The type of the OS disk. Supported values: `Standard_LRS`, `Premium_LRS`, `StandardSSD_LRS`.
      * 
      */
     public Optional<Output<String>> type() {
@@ -94,7 +94,7 @@ public final class OceanOsDiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type The type of load balancer. Supported value: `loadBalancer`
+         * @param type The type of the OS disk. Supported values: `Standard_LRS`, `Premium_LRS`, `StandardSSD_LRS`.
          * 
          * @return builder
          * 
@@ -105,7 +105,7 @@ public final class OceanOsDiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type The type of load balancer. Supported value: `loadBalancer`
+         * @param type The type of the OS disk. Supported values: `Standard_LRS`, `Premium_LRS`, `StandardSSD_LRS`.
          * 
          * @return builder
          * 

@@ -20,10 +20,6 @@ public final class ElastigroupScalingDownPolicy {
     private @Nullable Integer adjustment;
     private @Nullable Integer cooldown;
     private @Nullable List<ElastigroupScalingDownPolicyDimension> dimensions;
-    /**
-     * @return Amount of cooldown evaluation periods for scale down.
-     * 
-     */
     private @Nullable Integer evaluationPeriods;
     private String metricName;
     private String namespace;
@@ -48,10 +44,6 @@ public final class ElastigroupScalingDownPolicy {
     public List<ElastigroupScalingDownPolicyDimension> dimensions() {
         return this.dimensions == null ? List.of() : this.dimensions;
     }
-    /**
-     * @return Amount of cooldown evaluation periods for scale down.
-     * 
-     */
     public Optional<Integer> evaluationPeriods() {
         return Optional.ofNullable(this.evaluationPeriods);
     }

@@ -13,21 +13,9 @@ namespace Pulumi.SpotInst.Aws.Outputs
     [OutputType]
     public sealed class ElastigroupUpdatePolicyRollConfigStrategy
     {
-        /// <summary>
-        /// The action to take when scale up according to step's threshold is needed.
-        /// </summary>
         public readonly string Action;
-        /// <summary>
-        /// Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the deployment will fail. Range `1` - `100`.
-        /// </summary>
         public readonly int? BatchMinHealthyPercentage;
-        /// <summary>
-        /// Set detach options to the deployment.
-        /// </summary>
         public readonly Outputs.ElastigroupUpdatePolicyRollConfigStrategyOnFailure? OnFailure;
-        /// <summary>
-        /// Bool value if to wait to drain instance
-        /// </summary>
         public readonly bool? ShouldDrainInstances;
 
         [OutputConstructor]

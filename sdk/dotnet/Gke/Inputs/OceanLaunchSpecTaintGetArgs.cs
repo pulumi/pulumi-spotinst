@@ -19,13 +19,13 @@ namespace Pulumi.SpotInst.Gke.Inputs
         public Input<string>? Effect { get; set; }
 
         /// <summary>
-        /// The label key.
+        /// The taint key.
         /// </summary>
         [Input("key")]
         public Input<string>? Key { get; set; }
 
         /// <summary>
-        /// The label value.
+        /// The taint value.
         /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }

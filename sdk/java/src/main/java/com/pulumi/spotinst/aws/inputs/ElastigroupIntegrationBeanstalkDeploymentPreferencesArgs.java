@@ -17,62 +17,30 @@ public final class ElastigroupIntegrationBeanstalkDeploymentPreferencesArgs exte
 
     public static final ElastigroupIntegrationBeanstalkDeploymentPreferencesArgs Empty = new ElastigroupIntegrationBeanstalkDeploymentPreferencesArgs();
 
-    /**
-     * Should roll perform automatically
-     * 
-     */
     @Import(name="automaticRoll")
     private @Nullable Output<Boolean> automaticRoll;
 
-    /**
-     * @return Should roll perform automatically
-     * 
-     */
     public Optional<Output<Boolean>> automaticRoll() {
         return Optional.ofNullable(this.automaticRoll);
     }
 
-    /**
-     * The percentage size of each batch in the scheduled deployment roll.
-     * 
-     */
     @Import(name="batchSizePercentage")
     private @Nullable Output<Integer> batchSizePercentage;
 
-    /**
-     * @return The percentage size of each batch in the scheduled deployment roll.
-     * 
-     */
     public Optional<Output<Integer>> batchSizePercentage() {
         return Optional.ofNullable(this.batchSizePercentage);
     }
 
-    /**
-     * The period of time (seconds) to wait before checking a batch&#39;s health after it&#39;s deployment.
-     * 
-     */
     @Import(name="gracePeriod")
     private @Nullable Output<Integer> gracePeriod;
 
-    /**
-     * @return The period of time (seconds) to wait before checking a batch&#39;s health after it&#39;s deployment.
-     * 
-     */
     public Optional<Output<Integer>> gracePeriod() {
         return Optional.ofNullable(this.gracePeriod);
     }
 
-    /**
-     * Strategy parameters
-     * 
-     */
     @Import(name="strategy")
     private @Nullable Output<ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategyArgs> strategy;
 
-    /**
-     * @return Strategy parameters
-     * 
-     */
     public Optional<Output<ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategyArgs>> strategy() {
         return Optional.ofNullable(this.strategy);
     }
@@ -104,86 +72,38 @@ public final class ElastigroupIntegrationBeanstalkDeploymentPreferencesArgs exte
             $ = new ElastigroupIntegrationBeanstalkDeploymentPreferencesArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param automaticRoll Should roll perform automatically
-         * 
-         * @return builder
-         * 
-         */
         public Builder automaticRoll(@Nullable Output<Boolean> automaticRoll) {
             $.automaticRoll = automaticRoll;
             return this;
         }
 
-        /**
-         * @param automaticRoll Should roll perform automatically
-         * 
-         * @return builder
-         * 
-         */
         public Builder automaticRoll(Boolean automaticRoll) {
             return automaticRoll(Output.of(automaticRoll));
         }
 
-        /**
-         * @param batchSizePercentage The percentage size of each batch in the scheduled deployment roll.
-         * 
-         * @return builder
-         * 
-         */
         public Builder batchSizePercentage(@Nullable Output<Integer> batchSizePercentage) {
             $.batchSizePercentage = batchSizePercentage;
             return this;
         }
 
-        /**
-         * @param batchSizePercentage The percentage size of each batch in the scheduled deployment roll.
-         * 
-         * @return builder
-         * 
-         */
         public Builder batchSizePercentage(Integer batchSizePercentage) {
             return batchSizePercentage(Output.of(batchSizePercentage));
         }
 
-        /**
-         * @param gracePeriod The period of time (seconds) to wait before checking a batch&#39;s health after it&#39;s deployment.
-         * 
-         * @return builder
-         * 
-         */
         public Builder gracePeriod(@Nullable Output<Integer> gracePeriod) {
             $.gracePeriod = gracePeriod;
             return this;
         }
 
-        /**
-         * @param gracePeriod The period of time (seconds) to wait before checking a batch&#39;s health after it&#39;s deployment.
-         * 
-         * @return builder
-         * 
-         */
         public Builder gracePeriod(Integer gracePeriod) {
             return gracePeriod(Output.of(gracePeriod));
         }
 
-        /**
-         * @param strategy Strategy parameters
-         * 
-         * @return builder
-         * 
-         */
         public Builder strategy(@Nullable Output<ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategyArgs> strategy) {
             $.strategy = strategy;
             return this;
         }
 
-        /**
-         * @param strategy Strategy parameters
-         * 
-         * @return builder
-         * 
-         */
         public Builder strategy(ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategyArgs strategy) {
             return strategy(Output.of(strategy));
         }

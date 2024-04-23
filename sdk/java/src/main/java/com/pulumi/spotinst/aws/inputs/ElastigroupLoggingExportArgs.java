@@ -16,17 +16,9 @@ public final class ElastigroupLoggingExportArgs extends com.pulumi.resources.Res
 
     public static final ElastigroupLoggingExportArgs Empty = new ElastigroupLoggingExportArgs();
 
-    /**
-     * Exports your cluster&#39;s logs to the S3 bucket and subdir configured on the S3 data integration given.
-     * 
-     */
     @Import(name="s3s")
     private @Nullable Output<List<ElastigroupLoggingExportS3Args>> s3s;
 
-    /**
-     * @return Exports your cluster&#39;s logs to the S3 bucket and subdir configured on the S3 data integration given.
-     * 
-     */
     public Optional<Output<List<ElastigroupLoggingExportS3Args>>> s3s() {
         return Optional.ofNullable(this.s3s);
     }
@@ -55,33 +47,15 @@ public final class ElastigroupLoggingExportArgs extends com.pulumi.resources.Res
             $ = new ElastigroupLoggingExportArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param s3s Exports your cluster&#39;s logs to the S3 bucket and subdir configured on the S3 data integration given.
-         * 
-         * @return builder
-         * 
-         */
         public Builder s3s(@Nullable Output<List<ElastigroupLoggingExportS3Args>> s3s) {
             $.s3s = s3s;
             return this;
         }
 
-        /**
-         * @param s3s Exports your cluster&#39;s logs to the S3 bucket and subdir configured on the S3 data integration given.
-         * 
-         * @return builder
-         * 
-         */
         public Builder s3s(List<ElastigroupLoggingExportS3Args> s3s) {
             return s3s(Output.of(s3s));
         }
 
-        /**
-         * @param s3s Exports your cluster&#39;s logs to the S3 bucket and subdir configured on the S3 data integration given.
-         * 
-         * @return builder
-         * 
-         */
         public Builder s3s(ElastigroupLoggingExportS3Args... s3s) {
             return s3s(List.of(s3s));
         }

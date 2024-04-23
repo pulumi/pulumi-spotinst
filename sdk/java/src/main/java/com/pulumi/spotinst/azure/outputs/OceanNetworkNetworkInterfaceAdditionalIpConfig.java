@@ -12,28 +12,20 @@ import javax.annotation.Nullable;
 @CustomType
 public final class OceanNetworkNetworkInterfaceAdditionalIpConfig {
     /**
-     * @return Name of the Load Balancer.
+     * @return The Ocean cluster name.
      * 
      */
     private @Nullable String name;
-    /**
-     * @return Supported values: `IPv4`, `IPv6`.
-     * 
-     */
     private @Nullable String privateIpVersion;
 
     private OceanNetworkNetworkInterfaceAdditionalIpConfig() {}
     /**
-     * @return Name of the Load Balancer.
+     * @return The Ocean cluster name.
      * 
      */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
-    /**
-     * @return Supported values: `IPv4`, `IPv6`.
-     * 
-     */
     public Optional<String> privateIpVersion() {
         return Optional.ofNullable(this.privateIpVersion);
     }

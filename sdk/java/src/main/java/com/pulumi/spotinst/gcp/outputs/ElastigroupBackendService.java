@@ -14,53 +14,21 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ElastigroupBackendService {
-    /**
-     * @return Sets which location the backend services will be active. Valid values: `regional`, `global`.
-     * 
-     */
     private @Nullable String locationType;
-    /**
-     * @return Describes a named port and a list of ports.
-     * 
-     */
     private @Nullable List<ElastigroupBackendServiceNamedPort> namedPorts;
-    /**
-     * @return Use when `location_type` is &#34;regional&#34;. Set the traffic for the backend service to either between the instances in the vpc or to traffic from the internet. Valid values: `INTERNAL`, `EXTERNAL`.
-     * 
-     */
     private @Nullable String scheme;
-    /**
-     * @return The name of the backend service.
-     * 
-     */
     private String serviceName;
 
     private ElastigroupBackendService() {}
-    /**
-     * @return Sets which location the backend services will be active. Valid values: `regional`, `global`.
-     * 
-     */
     public Optional<String> locationType() {
         return Optional.ofNullable(this.locationType);
     }
-    /**
-     * @return Describes a named port and a list of ports.
-     * 
-     */
     public List<ElastigroupBackendServiceNamedPort> namedPorts() {
         return this.namedPorts == null ? List.of() : this.namedPorts;
     }
-    /**
-     * @return Use when `location_type` is &#34;regional&#34;. Set the traffic for the backend service to either between the instances in the vpc or to traffic from the internet. Valid values: `INTERNAL`, `EXTERNAL`.
-     * 
-     */
     public Optional<String> scheme() {
         return Optional.ofNullable(this.scheme);
     }
-    /**
-     * @return The name of the backend service.
-     * 
-     */
     public String serviceName() {
         return this.serviceName;
     }

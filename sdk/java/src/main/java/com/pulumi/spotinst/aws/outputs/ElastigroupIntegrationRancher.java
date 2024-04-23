@@ -12,55 +12,21 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ElastigroupIntegrationRancher {
-    /**
-     * @return The access key of the Rancher API.
-     * 
-     */
     private String accessKey;
-    /**
-     * @return The URL for the Nomad master host.
-     * 
-     */
     private String masterHost;
-    /**
-     * @return The secret key of the Rancher API.
-     * 
-     */
     private String secretKey;
-    /**
-     * @return The Rancher version. Must be `&#34;1&#34;` or `&#34;2&#34;`. If this field is omitted, it’s assumed that the Rancher cluster is version 1. Note that Kubernetes is required when using Rancher version 2^.
-     * Usage:
-     * 
-     */
     private @Nullable String version;
 
     private ElastigroupIntegrationRancher() {}
-    /**
-     * @return The access key of the Rancher API.
-     * 
-     */
     public String accessKey() {
         return this.accessKey;
     }
-    /**
-     * @return The URL for the Nomad master host.
-     * 
-     */
     public String masterHost() {
         return this.masterHost;
     }
-    /**
-     * @return The secret key of the Rancher API.
-     * 
-     */
     public String secretKey() {
         return this.secretKey;
     }
-    /**
-     * @return The Rancher version. Must be `&#34;1&#34;` or `&#34;2&#34;`. If this field is omitted, it’s assumed that the Rancher cluster is version 1. Note that Kubernetes is required when using Rancher version 2^.
-     * Usage:
-     * 
-     */
     public Optional<String> version() {
         return Optional.ofNullable(this.version);
     }

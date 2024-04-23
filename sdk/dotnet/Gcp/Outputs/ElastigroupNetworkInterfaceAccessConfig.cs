@@ -17,9 +17,6 @@ namespace Pulumi.SpotInst.Gcp.Outputs
         /// The group name.
         /// </summary>
         public readonly string? Name;
-        /// <summary>
-        /// Specifies the type of disk, either SCRATCH or PERSISTENT.
-        /// </summary>
         public readonly string? Type;
 
         [OutputConstructor]

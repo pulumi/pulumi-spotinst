@@ -16,47 +16,23 @@ public final class ElastigroupIntegrationCodedeployArgs extends com.pulumi.resou
 
     public static final ElastigroupIntegrationCodedeployArgs Empty = new ElastigroupIntegrationCodedeployArgs();
 
-    /**
-     * Cleanup automatically after a failed deploy.
-     * 
-     */
     @Import(name="cleanupOnFailure", required=true)
     private Output<Boolean> cleanupOnFailure;
 
-    /**
-     * @return Cleanup automatically after a failed deploy.
-     * 
-     */
     public Output<Boolean> cleanupOnFailure() {
         return this.cleanupOnFailure;
     }
 
-    /**
-     * Specify the deployment groups details.
-     * 
-     */
     @Import(name="deploymentGroups", required=true)
     private Output<List<ElastigroupIntegrationCodedeployDeploymentGroupArgs>> deploymentGroups;
 
-    /**
-     * @return Specify the deployment groups details.
-     * 
-     */
     public Output<List<ElastigroupIntegrationCodedeployDeploymentGroupArgs>> deploymentGroups() {
         return this.deploymentGroups;
     }
 
-    /**
-     * Terminate the instance automatically after a failed deploy.
-     * 
-     */
     @Import(name="terminateInstanceOnFailure", required=true)
     private Output<Boolean> terminateInstanceOnFailure;
 
-    /**
-     * @return Terminate the instance automatically after a failed deploy.
-     * 
-     */
     public Output<Boolean> terminateInstanceOnFailure() {
         return this.terminateInstanceOnFailure;
     }
@@ -87,75 +63,33 @@ public final class ElastigroupIntegrationCodedeployArgs extends com.pulumi.resou
             $ = new ElastigroupIntegrationCodedeployArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param cleanupOnFailure Cleanup automatically after a failed deploy.
-         * 
-         * @return builder
-         * 
-         */
         public Builder cleanupOnFailure(Output<Boolean> cleanupOnFailure) {
             $.cleanupOnFailure = cleanupOnFailure;
             return this;
         }
 
-        /**
-         * @param cleanupOnFailure Cleanup automatically after a failed deploy.
-         * 
-         * @return builder
-         * 
-         */
         public Builder cleanupOnFailure(Boolean cleanupOnFailure) {
             return cleanupOnFailure(Output.of(cleanupOnFailure));
         }
 
-        /**
-         * @param deploymentGroups Specify the deployment groups details.
-         * 
-         * @return builder
-         * 
-         */
         public Builder deploymentGroups(Output<List<ElastigroupIntegrationCodedeployDeploymentGroupArgs>> deploymentGroups) {
             $.deploymentGroups = deploymentGroups;
             return this;
         }
 
-        /**
-         * @param deploymentGroups Specify the deployment groups details.
-         * 
-         * @return builder
-         * 
-         */
         public Builder deploymentGroups(List<ElastigroupIntegrationCodedeployDeploymentGroupArgs> deploymentGroups) {
             return deploymentGroups(Output.of(deploymentGroups));
         }
 
-        /**
-         * @param deploymentGroups Specify the deployment groups details.
-         * 
-         * @return builder
-         * 
-         */
         public Builder deploymentGroups(ElastigroupIntegrationCodedeployDeploymentGroupArgs... deploymentGroups) {
             return deploymentGroups(List.of(deploymentGroups));
         }
 
-        /**
-         * @param terminateInstanceOnFailure Terminate the instance automatically after a failed deploy.
-         * 
-         * @return builder
-         * 
-         */
         public Builder terminateInstanceOnFailure(Output<Boolean> terminateInstanceOnFailure) {
             $.terminateInstanceOnFailure = terminateInstanceOnFailure;
             return this;
         }
 
-        /**
-         * @param terminateInstanceOnFailure Terminate the instance automatically after a failed deploy.
-         * 
-         * @return builder
-         * 
-         */
         public Builder terminateInstanceOnFailure(Boolean terminateInstanceOnFailure) {
             return terminateInstanceOnFailure(Output.of(terminateInstanceOnFailure));
         }

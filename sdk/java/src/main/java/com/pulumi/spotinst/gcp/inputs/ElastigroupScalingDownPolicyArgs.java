@@ -20,92 +20,44 @@ public final class ElastigroupScalingDownPolicyArgs extends com.pulumi.resources
 
     public static final ElastigroupScalingDownPolicyArgs Empty = new ElastigroupScalingDownPolicyArgs();
 
-    /**
-     * Type of scaling action to take when the scaling policy is triggered. Valid values: &#34;adjustment&#34;, &#34;setMinTarget&#34;, &#34;updateCapacity&#34;, &#34;percentageAdjustment&#34;
-     * 
-     */
     @Import(name="actionType")
     private @Nullable Output<String> actionType;
 
-    /**
-     * @return Type of scaling action to take when the scaling policy is triggered. Valid values: &#34;adjustment&#34;, &#34;setMinTarget&#34;, &#34;updateCapacity&#34;, &#34;percentageAdjustment&#34;
-     * 
-     */
     public Optional<Output<String>> actionType() {
         return Optional.ofNullable(this.actionType);
     }
 
-    /**
-     * Value to which the action type will be adjusted. Required if using &#34;numeric&#34; or &#34;percentageAdjustment&#34; action types.
-     * 
-     */
     @Import(name="adjustment")
     private @Nullable Output<Integer> adjustment;
 
-    /**
-     * @return Value to which the action type will be adjusted. Required if using &#34;numeric&#34; or &#34;percentageAdjustment&#34; action types.
-     * 
-     */
     public Optional<Output<Integer>> adjustment() {
         return Optional.ofNullable(this.adjustment);
     }
 
-    /**
-     * Time (seconds) to wait after a scaling action before resuming monitoring.
-     * 
-     */
     @Import(name="cooldown")
     private @Nullable Output<Integer> cooldown;
 
-    /**
-     * @return Time (seconds) to wait after a scaling action before resuming monitoring.
-     * 
-     */
     public Optional<Output<Integer>> cooldown() {
         return Optional.ofNullable(this.cooldown);
     }
 
-    /**
-     * A list of dimensions describing qualities of the metric.
-     * 
-     */
     @Import(name="dimensions")
     private @Nullable Output<List<ElastigroupScalingDownPolicyDimensionArgs>> dimensions;
 
-    /**
-     * @return A list of dimensions describing qualities of the metric.
-     * 
-     */
     public Optional<Output<List<ElastigroupScalingDownPolicyDimensionArgs>>> dimensions() {
         return Optional.ofNullable(this.dimensions);
     }
 
-    /**
-     * Number of consecutive periods in which the threshold must be met in order to trigger a scaling action.
-     * 
-     */
     @Import(name="evaluationPeriods")
     private @Nullable Output<Integer> evaluationPeriods;
 
-    /**
-     * @return Number of consecutive periods in which the threshold must be met in order to trigger a scaling action.
-     * 
-     */
     public Optional<Output<Integer>> evaluationPeriods() {
         return Optional.ofNullable(this.evaluationPeriods);
     }
 
-    /**
-     * Metric to monitor. Valid values: &#34;Percentage CPU&#34;, &#34;Network In&#34;, &#34;Network Out&#34;, &#34;Disk Read Bytes&#34;, &#34;Disk Write Bytes&#34;, &#34;Disk Write Operations/Sec&#34;, &#34;Disk Read Operations/Sec&#34;.
-     * 
-     */
     @Import(name="metricName", required=true)
     private Output<String> metricName;
 
-    /**
-     * @return Metric to monitor. Valid values: &#34;Percentage CPU&#34;, &#34;Network In&#34;, &#34;Network Out&#34;, &#34;Disk Read Bytes&#34;, &#34;Disk Write Bytes&#34;, &#34;Disk Write Operations/Sec&#34;, &#34;Disk Read Operations/Sec&#34;.
-     * 
-     */
     public Output<String> metricName() {
         return this.metricName;
     }
@@ -117,92 +69,44 @@ public final class ElastigroupScalingDownPolicyArgs extends com.pulumi.resources
         return this.namespace;
     }
 
-    /**
-     * The operator used to evaluate the threshold against the current metric value. Valid values: &#34;gt&#34; (greater than), &#34;get&#34; (greater-than or equal), &#34;lt&#34; (less than), &#34;lte&#34; (less than or equal).
-     * 
-     */
     @Import(name="operator")
     private @Nullable Output<String> operator;
 
-    /**
-     * @return The operator used to evaluate the threshold against the current metric value. Valid values: &#34;gt&#34; (greater than), &#34;get&#34; (greater-than or equal), &#34;lt&#34; (less than), &#34;lte&#34; (less than or equal).
-     * 
-     */
     public Optional<Output<String>> operator() {
         return Optional.ofNullable(this.operator);
     }
 
-    /**
-     * Amount of time (seconds) for which the threshold must be met in order to trigger the scaling action.
-     * 
-     */
     @Import(name="period")
     private @Nullable Output<Integer> period;
 
-    /**
-     * @return Amount of time (seconds) for which the threshold must be met in order to trigger the scaling action.
-     * 
-     */
     public Optional<Output<Integer>> period() {
         return Optional.ofNullable(this.period);
     }
 
-    /**
-     * Name of scaling policy.
-     * 
-     */
     @Import(name="policyName", required=true)
     private Output<String> policyName;
 
-    /**
-     * @return Name of scaling policy.
-     * 
-     */
     public Output<String> policyName() {
         return this.policyName;
     }
 
-    /**
-     * Specifies a valid partial or full URL to an existing Persistent Disk resource. This field is only applicable for persistent disks.
-     * 
-     */
     @Import(name="source")
     private @Nullable Output<String> source;
 
-    /**
-     * @return Specifies a valid partial or full URL to an existing Persistent Disk resource. This field is only applicable for persistent disks.
-     * 
-     */
     public Optional<Output<String>> source() {
         return Optional.ofNullable(this.source);
     }
 
-    /**
-     * Statistic by which to evaluate the selected metric. Valid values: &#34;AVERAGE&#34;, &#34;SAMPLE_COUNT&#34;, &#34;SUM&#34;, &#34;MINIMUM&#34;, &#34;MAXIMUM&#34;, &#34;PERCENTILE&#34;, &#34;COUNT&#34;.
-     * 
-     */
     @Import(name="statistic")
     private @Nullable Output<String> statistic;
 
-    /**
-     * @return Statistic by which to evaluate the selected metric. Valid values: &#34;AVERAGE&#34;, &#34;SAMPLE_COUNT&#34;, &#34;SUM&#34;, &#34;MINIMUM&#34;, &#34;MAXIMUM&#34;, &#34;PERCENTILE&#34;, &#34;COUNT&#34;.
-     * 
-     */
     public Optional<Output<String>> statistic() {
         return Optional.ofNullable(this.statistic);
     }
 
-    /**
-     * The value at which the scaling action is triggered.
-     * 
-     */
     @Import(name="threshold", required=true)
     private Output<Double> threshold;
 
-    /**
-     * @return The value at which the scaling action is triggered.
-     * 
-     */
     public Output<Double> threshold() {
         return this.threshold;
     }
@@ -251,138 +155,60 @@ public final class ElastigroupScalingDownPolicyArgs extends com.pulumi.resources
             $ = new ElastigroupScalingDownPolicyArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param actionType Type of scaling action to take when the scaling policy is triggered. Valid values: &#34;adjustment&#34;, &#34;setMinTarget&#34;, &#34;updateCapacity&#34;, &#34;percentageAdjustment&#34;
-         * 
-         * @return builder
-         * 
-         */
         public Builder actionType(@Nullable Output<String> actionType) {
             $.actionType = actionType;
             return this;
         }
 
-        /**
-         * @param actionType Type of scaling action to take when the scaling policy is triggered. Valid values: &#34;adjustment&#34;, &#34;setMinTarget&#34;, &#34;updateCapacity&#34;, &#34;percentageAdjustment&#34;
-         * 
-         * @return builder
-         * 
-         */
         public Builder actionType(String actionType) {
             return actionType(Output.of(actionType));
         }
 
-        /**
-         * @param adjustment Value to which the action type will be adjusted. Required if using &#34;numeric&#34; or &#34;percentageAdjustment&#34; action types.
-         * 
-         * @return builder
-         * 
-         */
         public Builder adjustment(@Nullable Output<Integer> adjustment) {
             $.adjustment = adjustment;
             return this;
         }
 
-        /**
-         * @param adjustment Value to which the action type will be adjusted. Required if using &#34;numeric&#34; or &#34;percentageAdjustment&#34; action types.
-         * 
-         * @return builder
-         * 
-         */
         public Builder adjustment(Integer adjustment) {
             return adjustment(Output.of(adjustment));
         }
 
-        /**
-         * @param cooldown Time (seconds) to wait after a scaling action before resuming monitoring.
-         * 
-         * @return builder
-         * 
-         */
         public Builder cooldown(@Nullable Output<Integer> cooldown) {
             $.cooldown = cooldown;
             return this;
         }
 
-        /**
-         * @param cooldown Time (seconds) to wait after a scaling action before resuming monitoring.
-         * 
-         * @return builder
-         * 
-         */
         public Builder cooldown(Integer cooldown) {
             return cooldown(Output.of(cooldown));
         }
 
-        /**
-         * @param dimensions A list of dimensions describing qualities of the metric.
-         * 
-         * @return builder
-         * 
-         */
         public Builder dimensions(@Nullable Output<List<ElastigroupScalingDownPolicyDimensionArgs>> dimensions) {
             $.dimensions = dimensions;
             return this;
         }
 
-        /**
-         * @param dimensions A list of dimensions describing qualities of the metric.
-         * 
-         * @return builder
-         * 
-         */
         public Builder dimensions(List<ElastigroupScalingDownPolicyDimensionArgs> dimensions) {
             return dimensions(Output.of(dimensions));
         }
 
-        /**
-         * @param dimensions A list of dimensions describing qualities of the metric.
-         * 
-         * @return builder
-         * 
-         */
         public Builder dimensions(ElastigroupScalingDownPolicyDimensionArgs... dimensions) {
             return dimensions(List.of(dimensions));
         }
 
-        /**
-         * @param evaluationPeriods Number of consecutive periods in which the threshold must be met in order to trigger a scaling action.
-         * 
-         * @return builder
-         * 
-         */
         public Builder evaluationPeriods(@Nullable Output<Integer> evaluationPeriods) {
             $.evaluationPeriods = evaluationPeriods;
             return this;
         }
 
-        /**
-         * @param evaluationPeriods Number of consecutive periods in which the threshold must be met in order to trigger a scaling action.
-         * 
-         * @return builder
-         * 
-         */
         public Builder evaluationPeriods(Integer evaluationPeriods) {
             return evaluationPeriods(Output.of(evaluationPeriods));
         }
 
-        /**
-         * @param metricName Metric to monitor. Valid values: &#34;Percentage CPU&#34;, &#34;Network In&#34;, &#34;Network Out&#34;, &#34;Disk Read Bytes&#34;, &#34;Disk Write Bytes&#34;, &#34;Disk Write Operations/Sec&#34;, &#34;Disk Read Operations/Sec&#34;.
-         * 
-         * @return builder
-         * 
-         */
         public Builder metricName(Output<String> metricName) {
             $.metricName = metricName;
             return this;
         }
 
-        /**
-         * @param metricName Metric to monitor. Valid values: &#34;Percentage CPU&#34;, &#34;Network In&#34;, &#34;Network Out&#34;, &#34;Disk Read Bytes&#34;, &#34;Disk Write Bytes&#34;, &#34;Disk Write Operations/Sec&#34;, &#34;Disk Read Operations/Sec&#34;.
-         * 
-         * @return builder
-         * 
-         */
         public Builder metricName(String metricName) {
             return metricName(Output.of(metricName));
         }
@@ -396,128 +222,56 @@ public final class ElastigroupScalingDownPolicyArgs extends com.pulumi.resources
             return namespace(Output.of(namespace));
         }
 
-        /**
-         * @param operator The operator used to evaluate the threshold against the current metric value. Valid values: &#34;gt&#34; (greater than), &#34;get&#34; (greater-than or equal), &#34;lt&#34; (less than), &#34;lte&#34; (less than or equal).
-         * 
-         * @return builder
-         * 
-         */
         public Builder operator(@Nullable Output<String> operator) {
             $.operator = operator;
             return this;
         }
 
-        /**
-         * @param operator The operator used to evaluate the threshold against the current metric value. Valid values: &#34;gt&#34; (greater than), &#34;get&#34; (greater-than or equal), &#34;lt&#34; (less than), &#34;lte&#34; (less than or equal).
-         * 
-         * @return builder
-         * 
-         */
         public Builder operator(String operator) {
             return operator(Output.of(operator));
         }
 
-        /**
-         * @param period Amount of time (seconds) for which the threshold must be met in order to trigger the scaling action.
-         * 
-         * @return builder
-         * 
-         */
         public Builder period(@Nullable Output<Integer> period) {
             $.period = period;
             return this;
         }
 
-        /**
-         * @param period Amount of time (seconds) for which the threshold must be met in order to trigger the scaling action.
-         * 
-         * @return builder
-         * 
-         */
         public Builder period(Integer period) {
             return period(Output.of(period));
         }
 
-        /**
-         * @param policyName Name of scaling policy.
-         * 
-         * @return builder
-         * 
-         */
         public Builder policyName(Output<String> policyName) {
             $.policyName = policyName;
             return this;
         }
 
-        /**
-         * @param policyName Name of scaling policy.
-         * 
-         * @return builder
-         * 
-         */
         public Builder policyName(String policyName) {
             return policyName(Output.of(policyName));
         }
 
-        /**
-         * @param source Specifies a valid partial or full URL to an existing Persistent Disk resource. This field is only applicable for persistent disks.
-         * 
-         * @return builder
-         * 
-         */
         public Builder source(@Nullable Output<String> source) {
             $.source = source;
             return this;
         }
 
-        /**
-         * @param source Specifies a valid partial or full URL to an existing Persistent Disk resource. This field is only applicable for persistent disks.
-         * 
-         * @return builder
-         * 
-         */
         public Builder source(String source) {
             return source(Output.of(source));
         }
 
-        /**
-         * @param statistic Statistic by which to evaluate the selected metric. Valid values: &#34;AVERAGE&#34;, &#34;SAMPLE_COUNT&#34;, &#34;SUM&#34;, &#34;MINIMUM&#34;, &#34;MAXIMUM&#34;, &#34;PERCENTILE&#34;, &#34;COUNT&#34;.
-         * 
-         * @return builder
-         * 
-         */
         public Builder statistic(@Nullable Output<String> statistic) {
             $.statistic = statistic;
             return this;
         }
 
-        /**
-         * @param statistic Statistic by which to evaluate the selected metric. Valid values: &#34;AVERAGE&#34;, &#34;SAMPLE_COUNT&#34;, &#34;SUM&#34;, &#34;MINIMUM&#34;, &#34;MAXIMUM&#34;, &#34;PERCENTILE&#34;, &#34;COUNT&#34;.
-         * 
-         * @return builder
-         * 
-         */
         public Builder statistic(String statistic) {
             return statistic(Output.of(statistic));
         }
 
-        /**
-         * @param threshold The value at which the scaling action is triggered.
-         * 
-         * @return builder
-         * 
-         */
         public Builder threshold(Output<Double> threshold) {
             $.threshold = threshold;
             return this;
         }
 
-        /**
-         * @param threshold The value at which the scaling action is triggered.
-         * 
-         * @return builder
-         * 
-         */
         public Builder threshold(Double threshold) {
             return threshold(Output.of(threshold));
         }

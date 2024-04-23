@@ -16,7 +16,6 @@ namespace Pulumi.SpotInst.Aws
     /// 
     /// ### New Strategy
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -190,11 +189,9 @@ namespace Pulumi.SpotInst.Aws
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ### Clone Strategy
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -318,11 +315,9 @@ namespace Pulumi.SpotInst.Aws
     ///     };
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ### Wrap Strategy
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -362,44 +357,25 @@ namespace Pulumi.SpotInst.Aws
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [SpotInstResourceType("spotinst:aws/mrScalar:MrScalar")]
     public partial class MrScalar : global::Pulumi.CustomResource
     {
-        /// <summary>
-        /// This is meta information about third-party applications that third-party vendors use for testing purposes.
-        /// </summary>
         [Output("additionalInfo")]
         public Output<string?> AdditionalInfo { get; private set; } = null!;
 
-        /// <summary>
-        /// A list of additional Amazon EC2 security group IDs for the master node.
-        /// </summary>
         [Output("additionalPrimarySecurityGroups")]
         public Output<ImmutableArray<string>> AdditionalPrimarySecurityGroups { get; private set; } = null!;
 
-        /// <summary>
-        /// A list of additional Amazon EC2 security group IDs for the core and task nodes.
-        /// </summary>
         [Output("additionalReplicaSecurityGroups")]
         public Output<ImmutableArray<string>> AdditionalReplicaSecurityGroups { get; private set; } = null!;
 
-        /// <summary>
-        /// A case-insensitive list of applications for Amazon EMR to install and configure when launching the cluster
-        /// </summary>
         [Output("applications")]
         public Output<ImmutableArray<Outputs.MrScalarApplication>> Applications { get; private set; } = null!;
 
-        /// <summary>
-        /// List of AZs and their subnet Ids. See example above for usage.
-        /// </summary>
         [Output("availabilityZones")]
         public Output<ImmutableArray<string>> AvailabilityZones { get; private set; } = null!;
 
-        /// <summary>
-        /// Describes path to S3 file containing description of bootstrap actions. [More Information](https://api.spotinst.com/elastigroup-for-aws/services-integrations/elastic-mapreduce/import-an-emr-cluster/advanced/)
-        /// </summary>
         [Output("bootstrapActionsFiles")]
         public Output<ImmutableArray<Outputs.MrScalarBootstrapActionsFile>> BootstrapActionsFiles { get; private set; } = null!;
 
@@ -409,72 +385,39 @@ namespace Pulumi.SpotInst.Aws
         [Output("clusterId")]
         public Output<string?> ClusterId { get; private set; } = null!;
 
-        /// <summary>
-        /// Describes path to S3 file containing description of configurations. [More Information](https://api.spotinst.com/elastigroup-for-aws/services-integrations/elastic-mapreduce/import-an-emr-cluster/advanced/)
-        /// </summary>
         [Output("configurationsFiles")]
         public Output<ImmutableArray<Outputs.MrScalarConfigurationsFile>> ConfigurationsFiles { get; private set; } = null!;
 
-        /// <summary>
-        /// amount of instances in core group.
-        /// </summary>
         [Output("coreDesiredCapacity")]
         public Output<int?> CoreDesiredCapacity { get; private set; } = null!;
 
-        /// <summary>
-        /// This determines the ebs configuration for your core group instances. Only a single block is allowed.
-        /// </summary>
         [Output("coreEbsBlockDevices")]
         public Output<ImmutableArray<Outputs.MrScalarCoreEbsBlockDevice>> CoreEbsBlockDevices { get; private set; } = null!;
 
-        /// <summary>
-        /// EBS Optimization setting for instances in group.
-        /// </summary>
         [Output("coreEbsOptimized")]
         public Output<bool?> CoreEbsOptimized { get; private set; } = null!;
 
-        /// <summary>
-        /// The MrScaler instance types for the core nodes.
-        /// </summary>
         [Output("coreInstanceTypes")]
         public Output<ImmutableArray<string>> CoreInstanceTypes { get; private set; } = null!;
 
-        /// <summary>
-        /// The MrScaler lifecycle for instances in core group. Allowed values are 'SPOT' and 'ON_DEMAND'.
-        /// </summary>
         [Output("coreLifecycle")]
         public Output<string?> CoreLifecycle { get; private set; } = null!;
 
-        /// <summary>
-        /// maximal amount of instances in core group.
-        /// </summary>
         [Output("coreMaxSize")]
         public Output<int?> CoreMaxSize { get; private set; } = null!;
 
-        /// <summary>
-        /// The minimal amount of instances in core group.
-        /// </summary>
         [Output("coreMinSize")]
         public Output<int?> CoreMinSize { get; private set; } = null!;
 
-        /// <summary>
-        /// Each `*_scaling_*_policy` supports the following:
-        /// </summary>
         [Output("coreScalingDownPolicies")]
         public Output<ImmutableArray<Outputs.MrScalarCoreScalingDownPolicy>> CoreScalingDownPolicies { get; private set; } = null!;
 
         [Output("coreScalingUpPolicies")]
         public Output<ImmutableArray<Outputs.MrScalarCoreScalingUpPolicy>> CoreScalingUpPolicies { get; private set; } = null!;
 
-        /// <summary>
-        /// Unit of task group for target, min and max. The unit could be `instance` or `weight`. instance - amount of instances. weight - amount of vCPU.
-        /// </summary>
         [Output("coreUnit")]
         public Output<string?> CoreUnit { get; private set; } = null!;
 
-        /// <summary>
-        /// The ID of a custom Amazon EBS-backed Linux AMI if the cluster uses a custom AMI.
-        /// </summary>
         [Output("customAmiId")]
         public Output<string?> CustomAmiId { get; private set; } = null!;
 
@@ -487,9 +430,6 @@ namespace Pulumi.SpotInst.Aws
         [Output("ebsRootVolumeSize")]
         public Output<int?> EbsRootVolumeSize { get; private set; } = null!;
 
-        /// <summary>
-        /// The name of an Amazon EC2 key pair that can be used to ssh to the master node.
-        /// </summary>
         [Output("ec2KeyName")]
         public Output<string?> Ec2KeyName { get; private set; } = null!;
 
@@ -499,69 +439,36 @@ namespace Pulumi.SpotInst.Aws
         [Output("exposeClusterId")]
         public Output<bool?> ExposeClusterId { get; private set; } = null!;
 
-        /// <summary>
-        /// Describes the instance and weights. Check out [Elastigroup Weighted Instances](https://api.spotinst.com/elastigroup-for-aws/concepts/general-concepts/elastigroup-capacity-instances-or-weighted) for more info.
-        /// </summary>
         [Output("instanceWeights")]
         public Output<ImmutableArray<Outputs.MrScalarInstanceWeight>> InstanceWeights { get; private set; } = null!;
 
-        /// <summary>
-        /// The IAM role that was specified when the job flow was launched. The EC2 instances of the job flow assume this role.
-        /// </summary>
         [Output("jobFlowRole")]
         public Output<string?> JobFlowRole { get; private set; } = null!;
 
-        /// <summary>
-        /// Specifies whether the cluster should remain available after completing all steps.
-        /// </summary>
         [Output("keepJobFlowAlive")]
         public Output<bool?> KeepJobFlowAlive { get; private set; } = null!;
 
-        /// <summary>
-        /// The path to the Amazon S3 location where logs for this cluster are stored.
-        /// </summary>
         [Output("logUri")]
         public Output<string?> LogUri { get; private set; } = null!;
 
-        /// <summary>
-        /// EMR Managed Security group that will be set to the primary instance group.
-        /// </summary>
         [Output("managedPrimarySecurityGroup")]
         public Output<string?> ManagedPrimarySecurityGroup { get; private set; } = null!;
 
-        /// <summary>
-        /// EMR Managed Security group that will be set to the replica instance group.
-        /// </summary>
         [Output("managedReplicaSecurityGroup")]
         public Output<string?> ManagedReplicaSecurityGroup { get; private set; } = null!;
 
-        /// <summary>
-        /// This determines the ebs configuration for your master group instances. Only a single block is allowed.
-        /// </summary>
         [Output("masterEbsBlockDevices")]
         public Output<ImmutableArray<Outputs.MrScalarMasterEbsBlockDevice>> MasterEbsBlockDevices { get; private set; } = null!;
 
-        /// <summary>
-        /// EBS Optimization setting for instances in group.
-        /// </summary>
         [Output("masterEbsOptimized")]
         public Output<bool?> MasterEbsOptimized { get; private set; } = null!;
 
-        /// <summary>
-        /// The MrScaler instance types for the master nodes.
-        /// </summary>
         [Output("masterInstanceTypes")]
         public Output<ImmutableArray<string>> MasterInstanceTypes { get; private set; } = null!;
 
-        /// <summary>
-        /// The MrScaler lifecycle for instances in master group. Allowed values are 'SPOT' and 'ON_DEMAND'.
-        /// </summary>
         [Output("masterLifecycle")]
         public Output<string?> MasterLifecycle { get; private set; } = null!;
 
-        /// <summary>
-        /// Number of instances in the master group.
-        /// </summary>
         [Output("masterTarget")]
         public Output<int?> MasterTarget { get; private set; } = null!;
 
@@ -586,45 +493,24 @@ namespace Pulumi.SpotInst.Aws
         [Output("releaseLabel")]
         public Output<string?> ReleaseLabel { get; private set; } = null!;
 
-        /// <summary>
-        /// Applies only when `custom_ami_id` is used. Specifies the type of updates that are applied from the Amazon Linux AMI package repositories when an instance boots using the AMI. Possible values include: `SECURITY`, `NONE`.
-        /// </summary>
         [Output("repoUpgradeOnBoot")]
         public Output<string?> RepoUpgradeOnBoot { get; private set; } = null!;
 
-        /// <summary>
-        /// Specifies the maximum number of times a capacity provisioning should be retried if the provisioning timeout is exceeded. Valid values: `1-5`.
-        /// </summary>
         [Output("retries")]
         public Output<int?> Retries { get; private set; } = null!;
 
-        /// <summary>
-        /// An array of scheduled tasks.
-        /// </summary>
         [Output("scheduledTasks")]
         public Output<ImmutableArray<Outputs.MrScalarScheduledTask>> ScheduledTasks { get; private set; } = null!;
 
-        /// <summary>
-        /// The name of the security configuration applied to the cluster.
-        /// </summary>
         [Output("securityConfig")]
         public Output<string?> SecurityConfig { get; private set; } = null!;
 
-        /// <summary>
-        /// The identifier of the Amazon EC2 security group for the Amazon EMR service to access clusters in VPC private subnets.
-        /// </summary>
         [Output("serviceAccessSecurityGroup")]
         public Output<string?> ServiceAccessSecurityGroup { get; private set; } = null!;
 
-        /// <summary>
-        /// The IAM role that will be assumed by the Amazon EMR service to access AWS resources on your behalf.
-        /// </summary>
         [Output("serviceRole")]
         public Output<string?> ServiceRole { get; private set; } = null!;
 
-        /// <summary>
-        /// Steps from S3.
-        /// </summary>
         [Output("stepsFiles")]
         public Output<ImmutableArray<Outputs.MrScalarStepsFile>> StepsFiles { get; private set; } = null!;
 
@@ -634,66 +520,36 @@ namespace Pulumi.SpotInst.Aws
         [Output("strategy")]
         public Output<string> Strategy { get; private set; } = null!;
 
-        /// <summary>
-        /// A list of tags to assign to the resource. You may define multiple tags.
-        /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<Outputs.MrScalarTag>> Tags { get; private set; } = null!;
 
-        /// <summary>
-        /// amount of instances in task group.
-        /// </summary>
         [Output("taskDesiredCapacity")]
         public Output<int?> TaskDesiredCapacity { get; private set; } = null!;
 
-        /// <summary>
-        /// This determines the ebs configuration for your task group instances. Only a single block is allowed.
-        /// </summary>
         [Output("taskEbsBlockDevices")]
         public Output<ImmutableArray<Outputs.MrScalarTaskEbsBlockDevice>> TaskEbsBlockDevices { get; private set; } = null!;
 
-        /// <summary>
-        /// EBS Optimization setting for instances in group.
-        /// </summary>
         [Output("taskEbsOptimized")]
         public Output<bool?> TaskEbsOptimized { get; private set; } = null!;
 
-        /// <summary>
-        /// The MrScaler instance types for the task nodes.
-        /// </summary>
         [Output("taskInstanceTypes")]
         public Output<ImmutableArray<string>> TaskInstanceTypes { get; private set; } = null!;
 
-        /// <summary>
-        /// The MrScaler lifecycle for instances in task group. Allowed values are 'SPOT' and 'ON_DEMAND'.
-        /// </summary>
         [Output("taskLifecycle")]
         public Output<string?> TaskLifecycle { get; private set; } = null!;
 
-        /// <summary>
-        /// maximal amount of instances in task group.
-        /// </summary>
         [Output("taskMaxSize")]
         public Output<int?> TaskMaxSize { get; private set; } = null!;
 
-        /// <summary>
-        /// The minimal amount of instances in task group.
-        /// </summary>
         [Output("taskMinSize")]
         public Output<int?> TaskMinSize { get; private set; } = null!;
 
-        /// <summary>
-        /// Possible core group scaling policies (Clone, New strategies):
-        /// </summary>
         [Output("taskScalingDownPolicies")]
         public Output<ImmutableArray<Outputs.MrScalarTaskScalingDownPolicy>> TaskScalingDownPolicies { get; private set; } = null!;
 
         [Output("taskScalingUpPolicies")]
         public Output<ImmutableArray<Outputs.MrScalarTaskScalingUpPolicy>> TaskScalingUpPolicies { get; private set; } = null!;
 
-        /// <summary>
-        /// Unit of task group for target, min and max. The unit could be `instance` or `weight`. instance - amount of instances. weight - amount of vCPU.
-        /// </summary>
         [Output("taskUnit")]
         public Output<string?> TaskUnit { get; private set; } = null!;
 
@@ -703,9 +559,6 @@ namespace Pulumi.SpotInst.Aws
         [Output("terminationPolicies")]
         public Output<ImmutableArray<Outputs.MrScalarTerminationPolicy>> TerminationPolicies { get; private set; } = null!;
 
-        /// <summary>
-        /// Specifies whether the Amazon EC2 instances in the cluster are protected from termination by API calls, user intervention, or in the event of a job-flow error.
-        /// </summary>
         [Output("terminationProtected")]
         public Output<bool?> TerminationProtected { get; private set; } = null!;
 
@@ -758,18 +611,11 @@ namespace Pulumi.SpotInst.Aws
 
     public sealed class MrScalarArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// This is meta information about third-party applications that third-party vendors use for testing purposes.
-        /// </summary>
         [Input("additionalInfo")]
         public Input<string>? AdditionalInfo { get; set; }
 
         [Input("additionalPrimarySecurityGroups")]
         private InputList<string>? _additionalPrimarySecurityGroups;
-
-        /// <summary>
-        /// A list of additional Amazon EC2 security group IDs for the master node.
-        /// </summary>
         public InputList<string> AdditionalPrimarySecurityGroups
         {
             get => _additionalPrimarySecurityGroups ?? (_additionalPrimarySecurityGroups = new InputList<string>());
@@ -778,10 +624,6 @@ namespace Pulumi.SpotInst.Aws
 
         [Input("additionalReplicaSecurityGroups")]
         private InputList<string>? _additionalReplicaSecurityGroups;
-
-        /// <summary>
-        /// A list of additional Amazon EC2 security group IDs for the core and task nodes.
-        /// </summary>
         public InputList<string> AdditionalReplicaSecurityGroups
         {
             get => _additionalReplicaSecurityGroups ?? (_additionalReplicaSecurityGroups = new InputList<string>());
@@ -790,10 +632,6 @@ namespace Pulumi.SpotInst.Aws
 
         [Input("applications")]
         private InputList<Inputs.MrScalarApplicationArgs>? _applications;
-
-        /// <summary>
-        /// A case-insensitive list of applications for Amazon EMR to install and configure when launching the cluster
-        /// </summary>
         public InputList<Inputs.MrScalarApplicationArgs> Applications
         {
             get => _applications ?? (_applications = new InputList<Inputs.MrScalarApplicationArgs>());
@@ -802,10 +640,6 @@ namespace Pulumi.SpotInst.Aws
 
         [Input("availabilityZones")]
         private InputList<string>? _availabilityZones;
-
-        /// <summary>
-        /// List of AZs and their subnet Ids. See example above for usage.
-        /// </summary>
         public InputList<string> AvailabilityZones
         {
             get => _availabilityZones ?? (_availabilityZones = new InputList<string>());
@@ -814,10 +648,6 @@ namespace Pulumi.SpotInst.Aws
 
         [Input("bootstrapActionsFiles")]
         private InputList<Inputs.MrScalarBootstrapActionsFileArgs>? _bootstrapActionsFiles;
-
-        /// <summary>
-        /// Describes path to S3 file containing description of bootstrap actions. [More Information](https://api.spotinst.com/elastigroup-for-aws/services-integrations/elastic-mapreduce/import-an-emr-cluster/advanced/)
-        /// </summary>
         public InputList<Inputs.MrScalarBootstrapActionsFileArgs> BootstrapActionsFiles
         {
             get => _bootstrapActionsFiles ?? (_bootstrapActionsFiles = new InputList<Inputs.MrScalarBootstrapActionsFileArgs>());
@@ -832,76 +662,45 @@ namespace Pulumi.SpotInst.Aws
 
         [Input("configurationsFiles")]
         private InputList<Inputs.MrScalarConfigurationsFileArgs>? _configurationsFiles;
-
-        /// <summary>
-        /// Describes path to S3 file containing description of configurations. [More Information](https://api.spotinst.com/elastigroup-for-aws/services-integrations/elastic-mapreduce/import-an-emr-cluster/advanced/)
-        /// </summary>
         public InputList<Inputs.MrScalarConfigurationsFileArgs> ConfigurationsFiles
         {
             get => _configurationsFiles ?? (_configurationsFiles = new InputList<Inputs.MrScalarConfigurationsFileArgs>());
             set => _configurationsFiles = value;
         }
 
-        /// <summary>
-        /// amount of instances in core group.
-        /// </summary>
         [Input("coreDesiredCapacity")]
         public Input<int>? CoreDesiredCapacity { get; set; }
 
         [Input("coreEbsBlockDevices")]
         private InputList<Inputs.MrScalarCoreEbsBlockDeviceArgs>? _coreEbsBlockDevices;
-
-        /// <summary>
-        /// This determines the ebs configuration for your core group instances. Only a single block is allowed.
-        /// </summary>
         public InputList<Inputs.MrScalarCoreEbsBlockDeviceArgs> CoreEbsBlockDevices
         {
             get => _coreEbsBlockDevices ?? (_coreEbsBlockDevices = new InputList<Inputs.MrScalarCoreEbsBlockDeviceArgs>());
             set => _coreEbsBlockDevices = value;
         }
 
-        /// <summary>
-        /// EBS Optimization setting for instances in group.
-        /// </summary>
         [Input("coreEbsOptimized")]
         public Input<bool>? CoreEbsOptimized { get; set; }
 
         [Input("coreInstanceTypes")]
         private InputList<string>? _coreInstanceTypes;
-
-        /// <summary>
-        /// The MrScaler instance types for the core nodes.
-        /// </summary>
         public InputList<string> CoreInstanceTypes
         {
             get => _coreInstanceTypes ?? (_coreInstanceTypes = new InputList<string>());
             set => _coreInstanceTypes = value;
         }
 
-        /// <summary>
-        /// The MrScaler lifecycle for instances in core group. Allowed values are 'SPOT' and 'ON_DEMAND'.
-        /// </summary>
         [Input("coreLifecycle")]
         public Input<string>? CoreLifecycle { get; set; }
 
-        /// <summary>
-        /// maximal amount of instances in core group.
-        /// </summary>
         [Input("coreMaxSize")]
         public Input<int>? CoreMaxSize { get; set; }
 
-        /// <summary>
-        /// The minimal amount of instances in core group.
-        /// </summary>
         [Input("coreMinSize")]
         public Input<int>? CoreMinSize { get; set; }
 
         [Input("coreScalingDownPolicies")]
         private InputList<Inputs.MrScalarCoreScalingDownPolicyArgs>? _coreScalingDownPolicies;
-
-        /// <summary>
-        /// Each `*_scaling_*_policy` supports the following:
-        /// </summary>
         public InputList<Inputs.MrScalarCoreScalingDownPolicyArgs> CoreScalingDownPolicies
         {
             get => _coreScalingDownPolicies ?? (_coreScalingDownPolicies = new InputList<Inputs.MrScalarCoreScalingDownPolicyArgs>());
@@ -916,15 +715,9 @@ namespace Pulumi.SpotInst.Aws
             set => _coreScalingUpPolicies = value;
         }
 
-        /// <summary>
-        /// Unit of task group for target, min and max. The unit could be `instance` or `weight`. instance - amount of instances. weight - amount of vCPU.
-        /// </summary>
         [Input("coreUnit")]
         public Input<string>? CoreUnit { get; set; }
 
-        /// <summary>
-        /// The ID of a custom Amazon EBS-backed Linux AMI if the cluster uses a custom AMI.
-        /// </summary>
         [Input("customAmiId")]
         public Input<string>? CustomAmiId { get; set; }
 
@@ -937,9 +730,6 @@ namespace Pulumi.SpotInst.Aws
         [Input("ebsRootVolumeSize")]
         public Input<int>? EbsRootVolumeSize { get; set; }
 
-        /// <summary>
-        /// The name of an Amazon EC2 key pair that can be used to ssh to the master node.
-        /// </summary>
         [Input("ec2KeyName")]
         public Input<string>? Ec2KeyName { get; set; }
 
@@ -951,85 +741,49 @@ namespace Pulumi.SpotInst.Aws
 
         [Input("instanceWeights")]
         private InputList<Inputs.MrScalarInstanceWeightArgs>? _instanceWeights;
-
-        /// <summary>
-        /// Describes the instance and weights. Check out [Elastigroup Weighted Instances](https://api.spotinst.com/elastigroup-for-aws/concepts/general-concepts/elastigroup-capacity-instances-or-weighted) for more info.
-        /// </summary>
         public InputList<Inputs.MrScalarInstanceWeightArgs> InstanceWeights
         {
             get => _instanceWeights ?? (_instanceWeights = new InputList<Inputs.MrScalarInstanceWeightArgs>());
             set => _instanceWeights = value;
         }
 
-        /// <summary>
-        /// The IAM role that was specified when the job flow was launched. The EC2 instances of the job flow assume this role.
-        /// </summary>
         [Input("jobFlowRole")]
         public Input<string>? JobFlowRole { get; set; }
 
-        /// <summary>
-        /// Specifies whether the cluster should remain available after completing all steps.
-        /// </summary>
         [Input("keepJobFlowAlive")]
         public Input<bool>? KeepJobFlowAlive { get; set; }
 
-        /// <summary>
-        /// The path to the Amazon S3 location where logs for this cluster are stored.
-        /// </summary>
         [Input("logUri")]
         public Input<string>? LogUri { get; set; }
 
-        /// <summary>
-        /// EMR Managed Security group that will be set to the primary instance group.
-        /// </summary>
         [Input("managedPrimarySecurityGroup")]
         public Input<string>? ManagedPrimarySecurityGroup { get; set; }
 
-        /// <summary>
-        /// EMR Managed Security group that will be set to the replica instance group.
-        /// </summary>
         [Input("managedReplicaSecurityGroup")]
         public Input<string>? ManagedReplicaSecurityGroup { get; set; }
 
         [Input("masterEbsBlockDevices")]
         private InputList<Inputs.MrScalarMasterEbsBlockDeviceArgs>? _masterEbsBlockDevices;
-
-        /// <summary>
-        /// This determines the ebs configuration for your master group instances. Only a single block is allowed.
-        /// </summary>
         public InputList<Inputs.MrScalarMasterEbsBlockDeviceArgs> MasterEbsBlockDevices
         {
             get => _masterEbsBlockDevices ?? (_masterEbsBlockDevices = new InputList<Inputs.MrScalarMasterEbsBlockDeviceArgs>());
             set => _masterEbsBlockDevices = value;
         }
 
-        /// <summary>
-        /// EBS Optimization setting for instances in group.
-        /// </summary>
         [Input("masterEbsOptimized")]
         public Input<bool>? MasterEbsOptimized { get; set; }
 
         [Input("masterInstanceTypes")]
         private InputList<string>? _masterInstanceTypes;
-
-        /// <summary>
-        /// The MrScaler instance types for the master nodes.
-        /// </summary>
         public InputList<string> MasterInstanceTypes
         {
             get => _masterInstanceTypes ?? (_masterInstanceTypes = new InputList<string>());
             set => _masterInstanceTypes = value;
         }
 
-        /// <summary>
-        /// The MrScaler lifecycle for instances in master group. Allowed values are 'SPOT' and 'ON_DEMAND'.
-        /// </summary>
         [Input("masterLifecycle")]
         public Input<string>? MasterLifecycle { get; set; }
 
-        /// <summary>
-        /// Number of instances in the master group.
-        /// </summary>
         [Input("masterTarget")]
         public Input<int>? MasterTarget { get; set; }
 
@@ -1051,54 +805,31 @@ namespace Pulumi.SpotInst.Aws
         [Input("releaseLabel")]
         public Input<string>? ReleaseLabel { get; set; }
 
-        /// <summary>
-        /// Applies only when `custom_ami_id` is used. Specifies the type of updates that are applied from the Amazon Linux AMI package repositories when an instance boots using the AMI. Possible values include: `SECURITY`, `NONE`.
-        /// </summary>
         [Input("repoUpgradeOnBoot")]
         public Input<string>? RepoUpgradeOnBoot { get; set; }
 
-        /// <summary>
-        /// Specifies the maximum number of times a capacity provisioning should be retried if the provisioning timeout is exceeded. Valid values: `1-5`.
-        /// </summary>
         [Input("retries")]
         public Input<int>? Retries { get; set; }
 
         [Input("scheduledTasks")]
         private InputList<Inputs.MrScalarScheduledTaskArgs>? _scheduledTasks;
-
-        /// <summary>
-        /// An array of scheduled tasks.
-        /// </summary>
         public InputList<Inputs.MrScalarScheduledTaskArgs> ScheduledTasks
         {
             get => _scheduledTasks ?? (_scheduledTasks = new InputList<Inputs.MrScalarScheduledTaskArgs>());
             set => _scheduledTasks = value;
         }
 
-        /// <summary>
-        /// The name of the security configuration applied to the cluster.
-        /// </summary>
         [Input("securityConfig")]
         public Input<string>? SecurityConfig { get; set; }
 
-        /// <summary>
-        /// The identifier of the Amazon EC2 security group for the Amazon EMR service to access clusters in VPC private subnets.
-        /// </summary>
         [Input("serviceAccessSecurityGroup")]
         public Input<string>? ServiceAccessSecurityGroup { get; set; }
 
-        /// <summary>
-        /// The IAM role that will be assumed by the Amazon EMR service to access AWS resources on your behalf.
-        /// </summary>
         [Input("serviceRole")]
         public Input<string>? ServiceRole { get; set; }
 
         [Input("stepsFiles")]
         private InputList<Inputs.MrScalarStepsFileArgs>? _stepsFiles;
-
-        /// <summary>
-        /// Steps from S3.
-        /// </summary>
         public InputList<Inputs.MrScalarStepsFileArgs> StepsFiles
         {
             get => _stepsFiles ?? (_stepsFiles = new InputList<Inputs.MrScalarStepsFileArgs>());
@@ -1113,76 +844,45 @@ namespace Pulumi.SpotInst.Aws
 
         [Input("tags")]
         private InputList<Inputs.MrScalarTagArgs>? _tags;
-
-        /// <summary>
-        /// A list of tags to assign to the resource. You may define multiple tags.
-        /// </summary>
         public InputList<Inputs.MrScalarTagArgs> Tags
         {
             get => _tags ?? (_tags = new InputList<Inputs.MrScalarTagArgs>());
             set => _tags = value;
         }
 
-        /// <summary>
-        /// amount of instances in task group.
-        /// </summary>
         [Input("taskDesiredCapacity")]
         public Input<int>? TaskDesiredCapacity { get; set; }
 
         [Input("taskEbsBlockDevices")]
         private InputList<Inputs.MrScalarTaskEbsBlockDeviceArgs>? _taskEbsBlockDevices;
-
-        /// <summary>
-        /// This determines the ebs configuration for your task group instances. Only a single block is allowed.
-        /// </summary>
         public InputList<Inputs.MrScalarTaskEbsBlockDeviceArgs> TaskEbsBlockDevices
         {
             get => _taskEbsBlockDevices ?? (_taskEbsBlockDevices = new InputList<Inputs.MrScalarTaskEbsBlockDeviceArgs>());
             set => _taskEbsBlockDevices = value;
         }
 
-        /// <summary>
-        /// EBS Optimization setting for instances in group.
-        /// </summary>
         [Input("taskEbsOptimized")]
         public Input<bool>? TaskEbsOptimized { get; set; }
 
         [Input("taskInstanceTypes")]
         private InputList<string>? _taskInstanceTypes;
-
-        /// <summary>
-        /// The MrScaler instance types for the task nodes.
-        /// </summary>
         public InputList<string> TaskInstanceTypes
         {
             get => _taskInstanceTypes ?? (_taskInstanceTypes = new InputList<string>());
             set => _taskInstanceTypes = value;
         }
 
-        /// <summary>
-        /// The MrScaler lifecycle for instances in task group. Allowed values are 'SPOT' and 'ON_DEMAND'.
-        /// </summary>
         [Input("taskLifecycle")]
         public Input<string>? TaskLifecycle { get; set; }
 
-        /// <summary>
-        /// maximal amount of instances in task group.
-        /// </summary>
         [Input("taskMaxSize")]
         public Input<int>? TaskMaxSize { get; set; }
 
-        /// <summary>
-        /// The minimal amount of instances in task group.
-        /// </summary>
         [Input("taskMinSize")]
         public Input<int>? TaskMinSize { get; set; }
 
         [Input("taskScalingDownPolicies")]
         private InputList<Inputs.MrScalarTaskScalingDownPolicyArgs>? _taskScalingDownPolicies;
-
-        /// <summary>
-        /// Possible core group scaling policies (Clone, New strategies):
-        /// </summary>
         public InputList<Inputs.MrScalarTaskScalingDownPolicyArgs> TaskScalingDownPolicies
         {
             get => _taskScalingDownPolicies ?? (_taskScalingDownPolicies = new InputList<Inputs.MrScalarTaskScalingDownPolicyArgs>());
@@ -1197,9 +897,6 @@ namespace Pulumi.SpotInst.Aws
             set => _taskScalingUpPolicies = value;
         }
 
-        /// <summary>
-        /// Unit of task group for target, min and max. The unit could be `instance` or `weight`. instance - amount of instances. weight - amount of vCPU.
-        /// </summary>
         [Input("taskUnit")]
         public Input<string>? TaskUnit { get; set; }
 
@@ -1215,9 +912,6 @@ namespace Pulumi.SpotInst.Aws
             set => _terminationPolicies = value;
         }
 
-        /// <summary>
-        /// Specifies whether the Amazon EC2 instances in the cluster are protected from termination by API calls, user intervention, or in the event of a job-flow error.
-        /// </summary>
         [Input("terminationProtected")]
         public Input<bool>? TerminationProtected { get; set; }
 
@@ -1232,18 +926,11 @@ namespace Pulumi.SpotInst.Aws
 
     public sealed class MrScalarState : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// This is meta information about third-party applications that third-party vendors use for testing purposes.
-        /// </summary>
         [Input("additionalInfo")]
         public Input<string>? AdditionalInfo { get; set; }
 
         [Input("additionalPrimarySecurityGroups")]
         private InputList<string>? _additionalPrimarySecurityGroups;
-
-        /// <summary>
-        /// A list of additional Amazon EC2 security group IDs for the master node.
-        /// </summary>
         public InputList<string> AdditionalPrimarySecurityGroups
         {
             get => _additionalPrimarySecurityGroups ?? (_additionalPrimarySecurityGroups = new InputList<string>());
@@ -1252,10 +939,6 @@ namespace Pulumi.SpotInst.Aws
 
         [Input("additionalReplicaSecurityGroups")]
         private InputList<string>? _additionalReplicaSecurityGroups;
-
-        /// <summary>
-        /// A list of additional Amazon EC2 security group IDs for the core and task nodes.
-        /// </summary>
         public InputList<string> AdditionalReplicaSecurityGroups
         {
             get => _additionalReplicaSecurityGroups ?? (_additionalReplicaSecurityGroups = new InputList<string>());
@@ -1264,10 +947,6 @@ namespace Pulumi.SpotInst.Aws
 
         [Input("applications")]
         private InputList<Inputs.MrScalarApplicationGetArgs>? _applications;
-
-        /// <summary>
-        /// A case-insensitive list of applications for Amazon EMR to install and configure when launching the cluster
-        /// </summary>
         public InputList<Inputs.MrScalarApplicationGetArgs> Applications
         {
             get => _applications ?? (_applications = new InputList<Inputs.MrScalarApplicationGetArgs>());
@@ -1276,10 +955,6 @@ namespace Pulumi.SpotInst.Aws
 
         [Input("availabilityZones")]
         private InputList<string>? _availabilityZones;
-
-        /// <summary>
-        /// List of AZs and their subnet Ids. See example above for usage.
-        /// </summary>
         public InputList<string> AvailabilityZones
         {
             get => _availabilityZones ?? (_availabilityZones = new InputList<string>());
@@ -1288,10 +963,6 @@ namespace Pulumi.SpotInst.Aws
 
         [Input("bootstrapActionsFiles")]
         private InputList<Inputs.MrScalarBootstrapActionsFileGetArgs>? _bootstrapActionsFiles;
-
-        /// <summary>
-        /// Describes path to S3 file containing description of bootstrap actions. [More Information](https://api.spotinst.com/elastigroup-for-aws/services-integrations/elastic-mapreduce/import-an-emr-cluster/advanced/)
-        /// </summary>
         public InputList<Inputs.MrScalarBootstrapActionsFileGetArgs> BootstrapActionsFiles
         {
             get => _bootstrapActionsFiles ?? (_bootstrapActionsFiles = new InputList<Inputs.MrScalarBootstrapActionsFileGetArgs>());
@@ -1306,76 +977,45 @@ namespace Pulumi.SpotInst.Aws
 
         [Input("configurationsFiles")]
         private InputList<Inputs.MrScalarConfigurationsFileGetArgs>? _configurationsFiles;
-
-        /// <summary>
-        /// Describes path to S3 file containing description of configurations. [More Information](https://api.spotinst.com/elastigroup-for-aws/services-integrations/elastic-mapreduce/import-an-emr-cluster/advanced/)
-        /// </summary>
         public InputList<Inputs.MrScalarConfigurationsFileGetArgs> ConfigurationsFiles
         {
             get => _configurationsFiles ?? (_configurationsFiles = new InputList<Inputs.MrScalarConfigurationsFileGetArgs>());
             set => _configurationsFiles = value;
         }
 
-        /// <summary>
-        /// amount of instances in core group.
-        /// </summary>
         [Input("coreDesiredCapacity")]
         public Input<int>? CoreDesiredCapacity { get; set; }
 
         [Input("coreEbsBlockDevices")]
         private InputList<Inputs.MrScalarCoreEbsBlockDeviceGetArgs>? _coreEbsBlockDevices;
-
-        /// <summary>
-        /// This determines the ebs configuration for your core group instances. Only a single block is allowed.
-        /// </summary>
         public InputList<Inputs.MrScalarCoreEbsBlockDeviceGetArgs> CoreEbsBlockDevices
         {
             get => _coreEbsBlockDevices ?? (_coreEbsBlockDevices = new InputList<Inputs.MrScalarCoreEbsBlockDeviceGetArgs>());
             set => _coreEbsBlockDevices = value;
         }
 
-        /// <summary>
-        /// EBS Optimization setting for instances in group.
-        /// </summary>
         [Input("coreEbsOptimized")]
         public Input<bool>? CoreEbsOptimized { get; set; }
 
         [Input("coreInstanceTypes")]
         private InputList<string>? _coreInstanceTypes;
-
-        /// <summary>
-        /// The MrScaler instance types for the core nodes.
-        /// </summary>
         public InputList<string> CoreInstanceTypes
         {
             get => _coreInstanceTypes ?? (_coreInstanceTypes = new InputList<string>());
             set => _coreInstanceTypes = value;
         }
 
-        /// <summary>
-        /// The MrScaler lifecycle for instances in core group. Allowed values are 'SPOT' and 'ON_DEMAND'.
-        /// </summary>
         [Input("coreLifecycle")]
         public Input<string>? CoreLifecycle { get; set; }
 
-        /// <summary>
-        /// maximal amount of instances in core group.
-        /// </summary>
         [Input("coreMaxSize")]
         public Input<int>? CoreMaxSize { get; set; }
 
-        /// <summary>
-        /// The minimal amount of instances in core group.
-        /// </summary>
         [Input("coreMinSize")]
         public Input<int>? CoreMinSize { get; set; }
 
         [Input("coreScalingDownPolicies")]
         private InputList<Inputs.MrScalarCoreScalingDownPolicyGetArgs>? _coreScalingDownPolicies;
-
-        /// <summary>
-        /// Each `*_scaling_*_policy` supports the following:
-        /// </summary>
         public InputList<Inputs.MrScalarCoreScalingDownPolicyGetArgs> CoreScalingDownPolicies
         {
             get => _coreScalingDownPolicies ?? (_coreScalingDownPolicies = new InputList<Inputs.MrScalarCoreScalingDownPolicyGetArgs>());
@@ -1390,15 +1030,9 @@ namespace Pulumi.SpotInst.Aws
             set => _coreScalingUpPolicies = value;
         }
 
-        /// <summary>
-        /// Unit of task group for target, min and max. The unit could be `instance` or `weight`. instance - amount of instances. weight - amount of vCPU.
-        /// </summary>
         [Input("coreUnit")]
         public Input<string>? CoreUnit { get; set; }
 
-        /// <summary>
-        /// The ID of a custom Amazon EBS-backed Linux AMI if the cluster uses a custom AMI.
-        /// </summary>
         [Input("customAmiId")]
         public Input<string>? CustomAmiId { get; set; }
 
@@ -1411,9 +1045,6 @@ namespace Pulumi.SpotInst.Aws
         [Input("ebsRootVolumeSize")]
         public Input<int>? EbsRootVolumeSize { get; set; }
 
-        /// <summary>
-        /// The name of an Amazon EC2 key pair that can be used to ssh to the master node.
-        /// </summary>
         [Input("ec2KeyName")]
         public Input<string>? Ec2KeyName { get; set; }
 
@@ -1425,85 +1056,49 @@ namespace Pulumi.SpotInst.Aws
 
         [Input("instanceWeights")]
         private InputList<Inputs.MrScalarInstanceWeightGetArgs>? _instanceWeights;
-
-        /// <summary>
-        /// Describes the instance and weights. Check out [Elastigroup Weighted Instances](https://api.spotinst.com/elastigroup-for-aws/concepts/general-concepts/elastigroup-capacity-instances-or-weighted) for more info.
-        /// </summary>
         public InputList<Inputs.MrScalarInstanceWeightGetArgs> InstanceWeights
         {
             get => _instanceWeights ?? (_instanceWeights = new InputList<Inputs.MrScalarInstanceWeightGetArgs>());
             set => _instanceWeights = value;
         }
 
-        /// <summary>
-        /// The IAM role that was specified when the job flow was launched. The EC2 instances of the job flow assume this role.
-        /// </summary>
         [Input("jobFlowRole")]
         public Input<string>? JobFlowRole { get; set; }
 
-        /// <summary>
-        /// Specifies whether the cluster should remain available after completing all steps.
-        /// </summary>
         [Input("keepJobFlowAlive")]
         public Input<bool>? KeepJobFlowAlive { get; set; }
 
-        /// <summary>
-        /// The path to the Amazon S3 location where logs for this cluster are stored.
-        /// </summary>
         [Input("logUri")]
         public Input<string>? LogUri { get; set; }
 
-        /// <summary>
-        /// EMR Managed Security group that will be set to the primary instance group.
-        /// </summary>
         [Input("managedPrimarySecurityGroup")]
         public Input<string>? ManagedPrimarySecurityGroup { get; set; }
 
-        /// <summary>
-        /// EMR Managed Security group that will be set to the replica instance group.
-        /// </summary>
         [Input("managedReplicaSecurityGroup")]
         public Input<string>? ManagedReplicaSecurityGroup { get; set; }
 
         [Input("masterEbsBlockDevices")]
         private InputList<Inputs.MrScalarMasterEbsBlockDeviceGetArgs>? _masterEbsBlockDevices;
-
-        /// <summary>
-        /// This determines the ebs configuration for your master group instances. Only a single block is allowed.
-        /// </summary>
         public InputList<Inputs.MrScalarMasterEbsBlockDeviceGetArgs> MasterEbsBlockDevices
         {
             get => _masterEbsBlockDevices ?? (_masterEbsBlockDevices = new InputList<Inputs.MrScalarMasterEbsBlockDeviceGetArgs>());
             set => _masterEbsBlockDevices = value;
         }
 
-        /// <summary>
-        /// EBS Optimization setting for instances in group.
-        /// </summary>
         [Input("masterEbsOptimized")]
         public Input<bool>? MasterEbsOptimized { get; set; }
 
         [Input("masterInstanceTypes")]
         private InputList<string>? _masterInstanceTypes;
-
-        /// <summary>
-        /// The MrScaler instance types for the master nodes.
-        /// </summary>
         public InputList<string> MasterInstanceTypes
         {
             get => _masterInstanceTypes ?? (_masterInstanceTypes = new InputList<string>());
             set => _masterInstanceTypes = value;
         }
 
-        /// <summary>
-        /// The MrScaler lifecycle for instances in master group. Allowed values are 'SPOT' and 'ON_DEMAND'.
-        /// </summary>
         [Input("masterLifecycle")]
         public Input<string>? MasterLifecycle { get; set; }
 
-        /// <summary>
-        /// Number of instances in the master group.
-        /// </summary>
         [Input("masterTarget")]
         public Input<int>? MasterTarget { get; set; }
 
@@ -1528,54 +1123,31 @@ namespace Pulumi.SpotInst.Aws
         [Input("releaseLabel")]
         public Input<string>? ReleaseLabel { get; set; }
 
-        /// <summary>
-        /// Applies only when `custom_ami_id` is used. Specifies the type of updates that are applied from the Amazon Linux AMI package repositories when an instance boots using the AMI. Possible values include: `SECURITY`, `NONE`.
-        /// </summary>
         [Input("repoUpgradeOnBoot")]
         public Input<string>? RepoUpgradeOnBoot { get; set; }
 
-        /// <summary>
-        /// Specifies the maximum number of times a capacity provisioning should be retried if the provisioning timeout is exceeded. Valid values: `1-5`.
-        /// </summary>
         [Input("retries")]
         public Input<int>? Retries { get; set; }
 
         [Input("scheduledTasks")]
         private InputList<Inputs.MrScalarScheduledTaskGetArgs>? _scheduledTasks;
-
-        /// <summary>
-        /// An array of scheduled tasks.
-        /// </summary>
         public InputList<Inputs.MrScalarScheduledTaskGetArgs> ScheduledTasks
         {
             get => _scheduledTasks ?? (_scheduledTasks = new InputList<Inputs.MrScalarScheduledTaskGetArgs>());
             set => _scheduledTasks = value;
         }
 
-        /// <summary>
-        /// The name of the security configuration applied to the cluster.
-        /// </summary>
         [Input("securityConfig")]
         public Input<string>? SecurityConfig { get; set; }
 
-        /// <summary>
-        /// The identifier of the Amazon EC2 security group for the Amazon EMR service to access clusters in VPC private subnets.
-        /// </summary>
         [Input("serviceAccessSecurityGroup")]
         public Input<string>? ServiceAccessSecurityGroup { get; set; }
 
-        /// <summary>
-        /// The IAM role that will be assumed by the Amazon EMR service to access AWS resources on your behalf.
-        /// </summary>
         [Input("serviceRole")]
         public Input<string>? ServiceRole { get; set; }
 
         [Input("stepsFiles")]
         private InputList<Inputs.MrScalarStepsFileGetArgs>? _stepsFiles;
-
-        /// <summary>
-        /// Steps from S3.
-        /// </summary>
         public InputList<Inputs.MrScalarStepsFileGetArgs> StepsFiles
         {
             get => _stepsFiles ?? (_stepsFiles = new InputList<Inputs.MrScalarStepsFileGetArgs>());
@@ -1590,76 +1162,45 @@ namespace Pulumi.SpotInst.Aws
 
         [Input("tags")]
         private InputList<Inputs.MrScalarTagGetArgs>? _tags;
-
-        /// <summary>
-        /// A list of tags to assign to the resource. You may define multiple tags.
-        /// </summary>
         public InputList<Inputs.MrScalarTagGetArgs> Tags
         {
             get => _tags ?? (_tags = new InputList<Inputs.MrScalarTagGetArgs>());
             set => _tags = value;
         }
 
-        /// <summary>
-        /// amount of instances in task group.
-        /// </summary>
         [Input("taskDesiredCapacity")]
         public Input<int>? TaskDesiredCapacity { get; set; }
 
         [Input("taskEbsBlockDevices")]
         private InputList<Inputs.MrScalarTaskEbsBlockDeviceGetArgs>? _taskEbsBlockDevices;
-
-        /// <summary>
-        /// This determines the ebs configuration for your task group instances. Only a single block is allowed.
-        /// </summary>
         public InputList<Inputs.MrScalarTaskEbsBlockDeviceGetArgs> TaskEbsBlockDevices
         {
             get => _taskEbsBlockDevices ?? (_taskEbsBlockDevices = new InputList<Inputs.MrScalarTaskEbsBlockDeviceGetArgs>());
             set => _taskEbsBlockDevices = value;
         }
 
-        /// <summary>
-        /// EBS Optimization setting for instances in group.
-        /// </summary>
         [Input("taskEbsOptimized")]
         public Input<bool>? TaskEbsOptimized { get; set; }
 
         [Input("taskInstanceTypes")]
         private InputList<string>? _taskInstanceTypes;
-
-        /// <summary>
-        /// The MrScaler instance types for the task nodes.
-        /// </summary>
         public InputList<string> TaskInstanceTypes
         {
             get => _taskInstanceTypes ?? (_taskInstanceTypes = new InputList<string>());
             set => _taskInstanceTypes = value;
         }
 
-        /// <summary>
-        /// The MrScaler lifecycle for instances in task group. Allowed values are 'SPOT' and 'ON_DEMAND'.
-        /// </summary>
         [Input("taskLifecycle")]
         public Input<string>? TaskLifecycle { get; set; }
 
-        /// <summary>
-        /// maximal amount of instances in task group.
-        /// </summary>
         [Input("taskMaxSize")]
         public Input<int>? TaskMaxSize { get; set; }
 
-        /// <summary>
-        /// The minimal amount of instances in task group.
-        /// </summary>
         [Input("taskMinSize")]
         public Input<int>? TaskMinSize { get; set; }
 
         [Input("taskScalingDownPolicies")]
         private InputList<Inputs.MrScalarTaskScalingDownPolicyGetArgs>? _taskScalingDownPolicies;
-
-        /// <summary>
-        /// Possible core group scaling policies (Clone, New strategies):
-        /// </summary>
         public InputList<Inputs.MrScalarTaskScalingDownPolicyGetArgs> TaskScalingDownPolicies
         {
             get => _taskScalingDownPolicies ?? (_taskScalingDownPolicies = new InputList<Inputs.MrScalarTaskScalingDownPolicyGetArgs>());
@@ -1674,9 +1215,6 @@ namespace Pulumi.SpotInst.Aws
             set => _taskScalingUpPolicies = value;
         }
 
-        /// <summary>
-        /// Unit of task group for target, min and max. The unit could be `instance` or `weight`. instance - amount of instances. weight - amount of vCPU.
-        /// </summary>
         [Input("taskUnit")]
         public Input<string>? TaskUnit { get; set; }
 
@@ -1692,9 +1230,6 @@ namespace Pulumi.SpotInst.Aws
             set => _terminationPolicies = value;
         }
 
-        /// <summary>
-        /// Specifies whether the Amazon EC2 instances in the cluster are protected from termination by API calls, user intervention, or in the event of a job-flow error.
-        /// </summary>
         [Input("terminationProtected")]
         public Input<bool>? TerminationProtected { get; set; }
 

@@ -12,15 +12,9 @@ namespace Pulumi.SpotInst.Aws.Inputs
 
     public sealed class BeanstalkDeploymentPreferencesStrategyGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Action to take
-        /// </summary>
         [Input("action")]
         public Input<string>? Action { get; set; }
 
-        /// <summary>
-        /// Bool value if to wait to drain instance
-        /// </summary>
         [Input("shouldDrainInstances")]
         public Input<bool>? ShouldDrainInstances { get; set; }
 

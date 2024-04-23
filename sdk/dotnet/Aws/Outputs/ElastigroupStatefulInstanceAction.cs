@@ -13,15 +13,7 @@ namespace Pulumi.SpotInst.Aws.Outputs
     [OutputType]
     public sealed class ElastigroupStatefulInstanceAction
     {
-        /// <summary>
-        /// String, Stateful Instance ID on which the action should be performed.
-        /// </summary>
         public readonly string StatefulInstanceId;
-        /// <summary>
-        /// String, Action type. Supported action types: `pause`, `resume`, `recycle`, `deallocate`.
-        /// 
-        /// Usage:
-        /// </summary>
         public readonly string Type;
 
         [OutputConstructor]

@@ -13,13 +13,13 @@ namespace Pulumi.SpotInst.Gke.Inputs
     public sealed class OceanLaunchSpecMetadataArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The label key.
+        /// The metadata key.
         /// </summary>
         [Input("key")]
         public Input<string>? Key { get; set; }
 
         /// <summary>
-        /// The label value.
+        /// The metadata value.
         /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }

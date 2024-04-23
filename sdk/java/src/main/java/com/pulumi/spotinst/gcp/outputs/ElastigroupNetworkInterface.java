@@ -14,33 +14,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ElastigroupNetworkInterface {
-    /**
-     * @return Array of configurations.
-     * 
-     */
     private @Nullable List<ElastigroupNetworkInterfaceAccessConfig> accessConfigs;
     private @Nullable List<ElastigroupNetworkInterfaceAliasIpRange> aliasIpRanges;
-    /**
-     * @return Network resource for this group.
-     * 
-     */
     private String network;
 
     private ElastigroupNetworkInterface() {}
-    /**
-     * @return Array of configurations.
-     * 
-     */
     public List<ElastigroupNetworkInterfaceAccessConfig> accessConfigs() {
         return this.accessConfigs == null ? List.of() : this.accessConfigs;
     }
     public List<ElastigroupNetworkInterfaceAliasIpRange> aliasIpRanges() {
         return this.aliasIpRanges == null ? List.of() : this.aliasIpRanges;
     }
-    /**
-     * @return Network resource for this group.
-     * 
-     */
     public String network() {
         return this.network;
     }

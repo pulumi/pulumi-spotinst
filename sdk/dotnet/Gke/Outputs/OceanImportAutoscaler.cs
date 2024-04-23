@@ -13,37 +13,13 @@ namespace Pulumi.SpotInst.Gke.Outputs
     [OutputType]
     public sealed class OceanImportAutoscaler
     {
-        /// <summary>
-        /// Optionally set the auto headroom percentage, set a number between 0-200 to control the headroom % from the cluster. Relevant when isAutoConfig=true.
-        /// </summary>
         public readonly int? AutoHeadroomPercentage;
-        /// <summary>
-        /// Cooldown period between scaling actions.
-        /// </summary>
         public readonly int? Cooldown;
-        /// <summary>
-        /// Auto Scaling scale down operations.
-        /// </summary>
         public readonly Outputs.OceanImportAutoscalerDown? Down;
-        /// <summary>
-        /// enables automatic and manual headroom to work in parallel. When set to false, automatic headroom overrides all other headroom definitions manually configured, whether they are at cluster or VNG level.
-        /// </summary>
         public readonly bool? EnableAutomaticAndManualHeadroom;
-        /// <summary>
-        /// Spare resource capacity management enabling fast assignment of Pods without waiting for new resources to launch.
-        /// </summary>
         public readonly Outputs.OceanImportAutoscalerHeadroom? Headroom;
-        /// <summary>
-        /// Automatically configure and optimize headroom resources.
-        /// </summary>
         public readonly bool? IsAutoConfig;
-        /// <summary>
-        /// Enable the Ocean Kubernetes Autoscaler.
-        /// </summary>
         public readonly bool? IsEnabled;
-        /// <summary>
-        /// Optionally set upper and lower bounds on the resource usage of the cluster.
-        /// </summary>
         public readonly Outputs.OceanImportAutoscalerResourceLimits? ResourceLimits;
 
         [OutputConstructor]

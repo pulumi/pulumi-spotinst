@@ -14,11 +14,11 @@ namespace Pulumi.SpotInst.Azure.Outputs
     public sealed class OceanVirtualNodeGroupLabel
     {
         /// <summary>
-        /// Tag Key for Vms in the cluster.
+        /// The label key.
         /// </summary>
         public readonly string Key;
         /// <summary>
-        /// Tag Value for VMs in the cluster.
+        /// The label value.
         /// </summary>
         public readonly string? Value;
 

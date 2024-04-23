@@ -17,32 +17,16 @@ public final class OceanImportScheduledTaskArgs extends com.pulumi.resources.Res
 
     public static final OceanImportScheduledTaskArgs Empty = new OceanImportScheduledTaskArgs();
 
-    /**
-     * Set shutdown hours for cluster object.
-     * 
-     */
     @Import(name="shutdownHours")
     private @Nullable Output<OceanImportScheduledTaskShutdownHoursArgs> shutdownHours;
 
-    /**
-     * @return Set shutdown hours for cluster object.
-     * 
-     */
     public Optional<Output<OceanImportScheduledTaskShutdownHoursArgs>> shutdownHours() {
         return Optional.ofNullable(this.shutdownHours);
     }
 
-    /**
-     * The scheduling tasks for the cluster.
-     * 
-     */
     @Import(name="tasks")
     private @Nullable Output<List<OceanImportScheduledTaskTaskArgs>> tasks;
 
-    /**
-     * @return The scheduling tasks for the cluster.
-     * 
-     */
     public Optional<Output<List<OceanImportScheduledTaskTaskArgs>>> tasks() {
         return Optional.ofNullable(this.tasks);
     }
@@ -72,54 +56,24 @@ public final class OceanImportScheduledTaskArgs extends com.pulumi.resources.Res
             $ = new OceanImportScheduledTaskArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param shutdownHours Set shutdown hours for cluster object.
-         * 
-         * @return builder
-         * 
-         */
         public Builder shutdownHours(@Nullable Output<OceanImportScheduledTaskShutdownHoursArgs> shutdownHours) {
             $.shutdownHours = shutdownHours;
             return this;
         }
 
-        /**
-         * @param shutdownHours Set shutdown hours for cluster object.
-         * 
-         * @return builder
-         * 
-         */
         public Builder shutdownHours(OceanImportScheduledTaskShutdownHoursArgs shutdownHours) {
             return shutdownHours(Output.of(shutdownHours));
         }
 
-        /**
-         * @param tasks The scheduling tasks for the cluster.
-         * 
-         * @return builder
-         * 
-         */
         public Builder tasks(@Nullable Output<List<OceanImportScheduledTaskTaskArgs>> tasks) {
             $.tasks = tasks;
             return this;
         }
 
-        /**
-         * @param tasks The scheduling tasks for the cluster.
-         * 
-         * @return builder
-         * 
-         */
         public Builder tasks(List<OceanImportScheduledTaskTaskArgs> tasks) {
             return tasks(Output.of(tasks));
         }
 
-        /**
-         * @param tasks The scheduling tasks for the cluster.
-         * 
-         * @return builder
-         * 
-         */
         public Builder tasks(OceanImportScheduledTaskTaskArgs... tasks) {
             return tasks(List.of(tasks));
         }

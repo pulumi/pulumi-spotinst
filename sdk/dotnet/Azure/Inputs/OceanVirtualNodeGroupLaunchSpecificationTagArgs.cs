@@ -12,15 +12,9 @@ namespace Pulumi.SpotInst.Azure.Inputs
 
     public sealed class OceanVirtualNodeGroupLaunchSpecificationTagArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Tag Key for Vms in the cluster.
-        /// </summary>
         [Input("key")]
         public Input<string>? Key { get; set; }
 
-        /// <summary>
-        /// Tag Value for VMs in the cluster.
-        /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }
 

@@ -17,14 +17,14 @@ public final class OceanVirtualNodeGroupLabelArgs extends com.pulumi.resources.R
     public static final OceanVirtualNodeGroupLabelArgs Empty = new OceanVirtualNodeGroupLabelArgs();
 
     /**
-     * Tag Key for Vms in the cluster.
+     * The label key.
      * 
      */
     @Import(name="key", required=true)
     private Output<String> key;
 
     /**
-     * @return Tag Key for Vms in the cluster.
+     * @return The label key.
      * 
      */
     public Output<String> key() {
@@ -32,14 +32,14 @@ public final class OceanVirtualNodeGroupLabelArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Tag Value for VMs in the cluster.
+     * The label value.
      * 
      */
     @Import(name="value")
     private @Nullable Output<String> value;
 
     /**
-     * @return Tag Value for VMs in the cluster.
+     * @return The label value.
      * 
      */
     public Optional<Output<String>> value() {
@@ -72,7 +72,7 @@ public final class OceanVirtualNodeGroupLabelArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param key Tag Key for Vms in the cluster.
+         * @param key The label key.
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class OceanVirtualNodeGroupLabelArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param key Tag Key for Vms in the cluster.
+         * @param key The label key.
          * 
          * @return builder
          * 
@@ -93,7 +93,7 @@ public final class OceanVirtualNodeGroupLabelArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param value Tag Value for VMs in the cluster.
+         * @param value The label value.
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class OceanVirtualNodeGroupLabelArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param value Tag Value for VMs in the cluster.
+         * @param value The label value.
          * 
          * @return builder
          * 

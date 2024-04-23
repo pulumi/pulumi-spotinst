@@ -13,13 +13,13 @@ namespace Pulumi.SpotInst.Aws.Inputs
     public sealed class ElastigroupScalingTargetPolicyDimensionGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The group name.
+        /// String, the dimension name.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// The dimension value.
+        /// String, the dimension value.
         /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }

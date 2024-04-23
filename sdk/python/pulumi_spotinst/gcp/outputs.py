@@ -63,12 +63,6 @@ class ElastigroupBackendService(dict):
                  location_type: Optional[str] = None,
                  named_ports: Optional[Sequence['outputs.ElastigroupBackendServiceNamedPort']] = None,
                  scheme: Optional[str] = None):
-        """
-        :param str service_name: The name of the backend service.
-        :param str location_type: Sets which location the backend services will be active. Valid values: `regional`, `global`.
-        :param Sequence['ElastigroupBackendServiceNamedPortArgs'] named_ports: Describes a named port and a list of ports.
-        :param str scheme: Use when `location_type` is "regional". Set the traffic for the backend service to either between the instances in the vpc or to traffic from the internet. Valid values: `INTERNAL`, `EXTERNAL`.
-        """
         pulumi.set(__self__, "service_name", service_name)
         if location_type is not None:
             pulumi.set(__self__, "location_type", location_type)
@@ -80,33 +74,21 @@ class ElastigroupBackendService(dict):
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> str:
-        """
-        The name of the backend service.
-        """
         return pulumi.get(self, "service_name")
 
     @property
     @pulumi.getter(name="locationType")
     def location_type(self) -> Optional[str]:
-        """
-        Sets which location the backend services will be active. Valid values: `regional`, `global`.
-        """
         return pulumi.get(self, "location_type")
 
     @property
     @pulumi.getter(name="namedPorts")
     def named_ports(self) -> Optional[Sequence['outputs.ElastigroupBackendServiceNamedPort']]:
-        """
-        Describes a named port and a list of ports.
-        """
         return pulumi.get(self, "named_ports")
 
     @property
     @pulumi.getter
     def scheme(self) -> Optional[str]:
-        """
-        Use when `location_type` is "regional". Set the traffic for the backend service to either between the instances in the vpc or to traffic from the internet. Valid values: `INTERNAL`, `EXTERNAL`.
-        """
         return pulumi.get(self, "scheme")
 
 
@@ -117,9 +99,6 @@ class ElastigroupBackendServiceNamedPort(dict):
                  ports: Sequence[str]):
         """
         :param str name: The group name.
-        :param Sequence[str] ports: A list of ports.
-               
-               Usage:
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "ports", ports)
@@ -135,11 +114,6 @@ class ElastigroupBackendServiceNamedPort(dict):
     @property
     @pulumi.getter
     def ports(self) -> Sequence[str]:
-        """
-        A list of ports.
-
-        Usage:
-        """
         return pulumi.get(self, "ports")
 
 
@@ -175,16 +149,6 @@ class ElastigroupDisk(dict):
                  mode: Optional[str] = None,
                  source: Optional[str] = None,
                  type: Optional[str] = None):
-        """
-        :param bool auto_delete: Specifies whether the disk will be auto-deleted when the instance is deleted.
-        :param bool boot: Indicates that this is a boot disk. The virtual machine will use the first partition of the disk for its root filesystem.
-        :param str device_name: Specifies a unique device name of your choice.
-        :param Sequence['ElastigroupDiskInitializeParamArgs'] initialize_params: Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new instance.
-        :param str interface: Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME.
-        :param str mode: The mode in which to attach this disk, either READ_WRITE or READ_ONLY.
-        :param str source: Specifies a valid partial or full URL to an existing Persistent Disk resource. This field is only applicable for persistent disks.
-        :param str type: Specifies the type of disk, either SCRATCH or PERSISTENT.
-        """
         if auto_delete is not None:
             pulumi.set(__self__, "auto_delete", auto_delete)
         if boot is not None:
@@ -205,65 +169,41 @@ class ElastigroupDisk(dict):
     @property
     @pulumi.getter(name="autoDelete")
     def auto_delete(self) -> Optional[bool]:
-        """
-        Specifies whether the disk will be auto-deleted when the instance is deleted.
-        """
         return pulumi.get(self, "auto_delete")
 
     @property
     @pulumi.getter
     def boot(self) -> Optional[bool]:
-        """
-        Indicates that this is a boot disk. The virtual machine will use the first partition of the disk for its root filesystem.
-        """
         return pulumi.get(self, "boot")
 
     @property
     @pulumi.getter(name="deviceName")
     def device_name(self) -> Optional[str]:
-        """
-        Specifies a unique device name of your choice.
-        """
         return pulumi.get(self, "device_name")
 
     @property
     @pulumi.getter(name="initializeParams")
     def initialize_params(self) -> Optional[Sequence['outputs.ElastigroupDiskInitializeParam']]:
-        """
-        Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new instance.
-        """
         return pulumi.get(self, "initialize_params")
 
     @property
     @pulumi.getter
     def interface(self) -> Optional[str]:
-        """
-        Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME.
-        """
         return pulumi.get(self, "interface")
 
     @property
     @pulumi.getter
     def mode(self) -> Optional[str]:
-        """
-        The mode in which to attach this disk, either READ_WRITE or READ_ONLY.
-        """
         return pulumi.get(self, "mode")
 
     @property
     @pulumi.getter
     def source(self) -> Optional[str]:
-        """
-        Specifies a valid partial or full URL to an existing Persistent Disk resource. This field is only applicable for persistent disks.
-        """
         return pulumi.get(self, "source")
 
     @property
     @pulumi.getter
     def type(self) -> Optional[str]:
-        """
-        Specifies the type of disk, either SCRATCH or PERSISTENT.
-        """
         return pulumi.get(self, "type")
 
 
@@ -294,13 +234,6 @@ class ElastigroupDiskInitializeParam(dict):
                  source_image: str,
                  disk_size_gb: Optional[str] = None,
                  disk_type: Optional[str] = None):
-        """
-        :param str source_image: A source image used to create the disk. You can provide a private (custom) image, and Compute Engine will use the corresponding image from your project.
-               
-               Usage:
-        :param str disk_size_gb: Specifies disk size in gigabytes. Must be in increments of 2.
-        :param str disk_type: Specifies the disk type to use to create the instance. Valid values: pd-ssd, local-ssd.
-        """
         pulumi.set(__self__, "source_image", source_image)
         if disk_size_gb is not None:
             pulumi.set(__self__, "disk_size_gb", disk_size_gb)
@@ -310,27 +243,16 @@ class ElastigroupDiskInitializeParam(dict):
     @property
     @pulumi.getter(name="sourceImage")
     def source_image(self) -> str:
-        """
-        A source image used to create the disk. You can provide a private (custom) image, and Compute Engine will use the corresponding image from your project.
-
-        Usage:
-        """
         return pulumi.get(self, "source_image")
 
     @property
     @pulumi.getter(name="diskSizeGb")
     def disk_size_gb(self) -> Optional[str]:
-        """
-        Specifies disk size in gigabytes. Must be in increments of 2.
-        """
         return pulumi.get(self, "disk_size_gb")
 
     @property
     @pulumi.getter(name="diskType")
     def disk_type(self) -> Optional[str]:
-        """
-        Specifies the disk type to use to create the instance. Valid values: pd-ssd, local-ssd.
-        """
         return pulumi.get(self, "disk_type")
 
 
@@ -339,31 +261,17 @@ class ElastigroupGpu(dict):
     def __init__(__self__, *,
                  count: int,
                  type: str):
-        """
-        :param int count: The number of GPUs. Must be 0, 2, 4, 6, 8.
-               
-               Usage:
-        :param str type: The type of GPU instance. Valid values: `nvidia-tesla-v100`, `nvidia-tesla-p100`, `nvidia-tesla-k80`.
-        """
         pulumi.set(__self__, "count", count)
         pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter
     def count(self) -> int:
-        """
-        The number of GPUs. Must be 0, 2, 4, 6, 8.
-
-        Usage:
-        """
         return pulumi.get(self, "count")
 
     @property
     @pulumi.getter
     def type(self) -> str:
-        """
-        The type of GPU instance. Valid values: `nvidia-tesla-v100`, `nvidia-tesla-p100`, `nvidia-tesla-k80`.
-        """
         return pulumi.get(self, "type")
 
 
@@ -433,31 +341,17 @@ class ElastigroupIntegrationDockerSwarm(dict):
     def __init__(__self__, *,
                  master_host: str,
                  master_port: int):
-        """
-        :param str master_host: IP or FQDN of one of your swarm managers.
-        :param int master_port: Network port used by your swarm.
-               
-               Usage:
-        """
         pulumi.set(__self__, "master_host", master_host)
         pulumi.set(__self__, "master_port", master_port)
 
     @property
     @pulumi.getter(name="masterHost")
     def master_host(self) -> str:
-        """
-        IP or FQDN of one of your swarm managers.
-        """
         return pulumi.get(self, "master_host")
 
     @property
     @pulumi.getter(name="masterPort")
     def master_port(self) -> int:
-        """
-        Network port used by your swarm.
-
-        Usage:
-        """
         return pulumi.get(self, "master_port")
 
 
@@ -590,18 +484,12 @@ class ElastigroupIntegrationGkeAutoscaleDown(dict):
 
     def __init__(__self__, *,
                  evaluation_periods: Optional[int] = None):
-        """
-        :param int evaluation_periods: Number of consecutive periods in which the threshold must be met in order to trigger a scaling action.
-        """
         if evaluation_periods is not None:
             pulumi.set(__self__, "evaluation_periods", evaluation_periods)
 
     @property
     @pulumi.getter(name="evaluationPeriods")
     def evaluation_periods(self) -> Optional[int]:
-        """
-        Number of consecutive periods in which the threshold must be met in order to trigger a scaling action.
-        """
         return pulumi.get(self, "evaluation_periods")
 
 
@@ -660,27 +548,17 @@ class ElastigroupIntegrationGkeAutoscaleLabel(dict):
     def __init__(__self__, *,
                  key: str,
                  value: str):
-        """
-        :param str key: Labels key.
-        :param str value: Labels value.
-        """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
     def key(self) -> str:
-        """
-        Labels key.
-        """
         return pulumi.get(self, "key")
 
     @property
     @pulumi.getter
     def value(self) -> str:
-        """
-        Labels value.
-        """
         return pulumi.get(self, "value")
 
 
@@ -719,8 +597,8 @@ class ElastigroupMetadata(dict):
                  key: str,
                  value: str):
         """
-        :param str key: Labels key.
-        :param str value: Labels value.
+        :param str key: Metadata key.
+        :param str value: Metadata value.
         """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "value", value)
@@ -729,7 +607,7 @@ class ElastigroupMetadata(dict):
     @pulumi.getter
     def key(self) -> str:
         """
-        Labels key.
+        Metadata key.
         """
         return pulumi.get(self, "key")
 
@@ -737,7 +615,7 @@ class ElastigroupMetadata(dict):
     @pulumi.getter
     def value(self) -> str:
         """
-        Labels value.
+        Metadata value.
         """
         return pulumi.get(self, "value")
 
@@ -767,10 +645,6 @@ class ElastigroupNetworkInterface(dict):
                  network: str,
                  access_configs: Optional[Sequence['outputs.ElastigroupNetworkInterfaceAccessConfig']] = None,
                  alias_ip_ranges: Optional[Sequence['outputs.ElastigroupNetworkInterfaceAliasIpRange']] = None):
-        """
-        :param str network: Network resource for this group.
-        :param Sequence['ElastigroupNetworkInterfaceAccessConfigArgs'] access_configs: Array of configurations.
-        """
         pulumi.set(__self__, "network", network)
         if access_configs is not None:
             pulumi.set(__self__, "access_configs", access_configs)
@@ -780,17 +654,11 @@ class ElastigroupNetworkInterface(dict):
     @property
     @pulumi.getter
     def network(self) -> str:
-        """
-        Network resource for this group.
-        """
         return pulumi.get(self, "network")
 
     @property
     @pulumi.getter(name="accessConfigs")
     def access_configs(self) -> Optional[Sequence['outputs.ElastigroupNetworkInterfaceAccessConfig']]:
-        """
-        Array of configurations.
-        """
         return pulumi.get(self, "access_configs")
 
     @property
@@ -806,7 +674,6 @@ class ElastigroupNetworkInterfaceAccessConfig(dict):
                  type: Optional[str] = None):
         """
         :param str name: The group name.
-        :param str type: Specifies the type of disk, either SCRATCH or PERSISTENT.
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -824,9 +691,6 @@ class ElastigroupNetworkInterfaceAccessConfig(dict):
     @property
     @pulumi.getter
     def type(self) -> Optional[str]:
-        """
-        Specifies the type of disk, either SCRATCH or PERSISTENT.
-        """
         return pulumi.get(self, "type")
 
 
@@ -908,20 +772,6 @@ class ElastigroupScalingDownPolicy(dict):
                  period: Optional[int] = None,
                  source: Optional[str] = None,
                  statistic: Optional[str] = None):
-        """
-        :param str metric_name: Metric to monitor. Valid values: "Percentage CPU", "Network In", "Network Out", "Disk Read Bytes", "Disk Write Bytes", "Disk Write Operations/Sec", "Disk Read Operations/Sec".
-        :param str policy_name: Name of scaling policy.
-        :param float threshold: The value at which the scaling action is triggered.
-        :param str action_type: Type of scaling action to take when the scaling policy is triggered. Valid values: "adjustment", "setMinTarget", "updateCapacity", "percentageAdjustment"
-        :param int adjustment: Value to which the action type will be adjusted. Required if using "numeric" or "percentageAdjustment" action types.
-        :param int cooldown: Time (seconds) to wait after a scaling action before resuming monitoring.
-        :param Sequence['ElastigroupScalingDownPolicyDimensionArgs'] dimensions: A list of dimensions describing qualities of the metric.
-        :param int evaluation_periods: Number of consecutive periods in which the threshold must be met in order to trigger a scaling action.
-        :param str operator: The operator used to evaluate the threshold against the current metric value. Valid values: "gt" (greater than), "get" (greater-than or equal), "lt" (less than), "lte" (less than or equal).
-        :param int period: Amount of time (seconds) for which the threshold must be met in order to trigger the scaling action.
-        :param str source: Specifies a valid partial or full URL to an existing Persistent Disk resource. This field is only applicable for persistent disks.
-        :param str statistic: Statistic by which to evaluate the selected metric. Valid values: "AVERAGE", "SAMPLE_COUNT", "SUM", "MINIMUM", "MAXIMUM", "PERCENTILE", "COUNT".
-        """
         pulumi.set(__self__, "metric_name", metric_name)
         pulumi.set(__self__, "namespace", namespace)
         pulumi.set(__self__, "policy_name", policy_name)
@@ -949,9 +799,6 @@ class ElastigroupScalingDownPolicy(dict):
     @property
     @pulumi.getter(name="metricName")
     def metric_name(self) -> str:
-        """
-        Metric to monitor. Valid values: "Percentage CPU", "Network In", "Network Out", "Disk Read Bytes", "Disk Write Bytes", "Disk Write Operations/Sec", "Disk Read Operations/Sec".
-        """
         return pulumi.get(self, "metric_name")
 
     @property
@@ -962,17 +809,11 @@ class ElastigroupScalingDownPolicy(dict):
     @property
     @pulumi.getter(name="policyName")
     def policy_name(self) -> str:
-        """
-        Name of scaling policy.
-        """
         return pulumi.get(self, "policy_name")
 
     @property
     @pulumi.getter
     def threshold(self) -> float:
-        """
-        The value at which the scaling action is triggered.
-        """
         return pulumi.get(self, "threshold")
 
     @property
@@ -983,73 +824,46 @@ class ElastigroupScalingDownPolicy(dict):
     @property
     @pulumi.getter(name="actionType")
     def action_type(self) -> Optional[str]:
-        """
-        Type of scaling action to take when the scaling policy is triggered. Valid values: "adjustment", "setMinTarget", "updateCapacity", "percentageAdjustment"
-        """
         return pulumi.get(self, "action_type")
 
     @property
     @pulumi.getter
     def adjustment(self) -> Optional[int]:
-        """
-        Value to which the action type will be adjusted. Required if using "numeric" or "percentageAdjustment" action types.
-        """
         return pulumi.get(self, "adjustment")
 
     @property
     @pulumi.getter
     def cooldown(self) -> Optional[int]:
-        """
-        Time (seconds) to wait after a scaling action before resuming monitoring.
-        """
         return pulumi.get(self, "cooldown")
 
     @property
     @pulumi.getter
     def dimensions(self) -> Optional[Sequence['outputs.ElastigroupScalingDownPolicyDimension']]:
-        """
-        A list of dimensions describing qualities of the metric.
-        """
         return pulumi.get(self, "dimensions")
 
     @property
     @pulumi.getter(name="evaluationPeriods")
     def evaluation_periods(self) -> Optional[int]:
-        """
-        Number of consecutive periods in which the threshold must be met in order to trigger a scaling action.
-        """
         return pulumi.get(self, "evaluation_periods")
 
     @property
     @pulumi.getter
     def operator(self) -> Optional[str]:
-        """
-        The operator used to evaluate the threshold against the current metric value. Valid values: "gt" (greater than), "get" (greater-than or equal), "lt" (less than), "lte" (less than or equal).
-        """
         return pulumi.get(self, "operator")
 
     @property
     @pulumi.getter
     def period(self) -> Optional[int]:
-        """
-        Amount of time (seconds) for which the threshold must be met in order to trigger the scaling action.
-        """
         return pulumi.get(self, "period")
 
     @property
     @pulumi.getter
     def source(self) -> Optional[str]:
-        """
-        Specifies a valid partial or full URL to an existing Persistent Disk resource. This field is only applicable for persistent disks.
-        """
         return pulumi.get(self, "source")
 
     @property
     @pulumi.getter
     def statistic(self) -> Optional[str]:
-        """
-        Statistic by which to evaluate the selected metric. Valid values: "AVERAGE", "SAMPLE_COUNT", "SUM", "MINIMUM", "MAXIMUM", "PERCENTILE", "COUNT".
-        """
         return pulumi.get(self, "statistic")
 
 
@@ -1060,7 +874,6 @@ class ElastigroupScalingDownPolicyDimension(dict):
                  value: Optional[str] = None):
         """
         :param str name: The group name.
-        :param str value: Labels value.
         """
         pulumi.set(__self__, "name", name)
         if value is not None:
@@ -1077,9 +890,6 @@ class ElastigroupScalingDownPolicyDimension(dict):
     @property
     @pulumi.getter
     def value(self) -> Optional[str]:
-        """
-        Labels value.
-        """
         return pulumi.get(self, "value")
 
 
@@ -1123,20 +933,6 @@ class ElastigroupScalingUpPolicy(dict):
                  period: Optional[int] = None,
                  source: Optional[str] = None,
                  statistic: Optional[str] = None):
-        """
-        :param str metric_name: Metric to monitor. Valid values: "Percentage CPU", "Network In", "Network Out", "Disk Read Bytes", "Disk Write Bytes", "Disk Write Operations/Sec", "Disk Read Operations/Sec".
-        :param str policy_name: Name of scaling policy.
-        :param float threshold: The value at which the scaling action is triggered.
-        :param str action_type: Type of scaling action to take when the scaling policy is triggered. Valid values: "adjustment", "setMinTarget", "updateCapacity", "percentageAdjustment"
-        :param int adjustment: Value to which the action type will be adjusted. Required if using "numeric" or "percentageAdjustment" action types.
-        :param int cooldown: Time (seconds) to wait after a scaling action before resuming monitoring.
-        :param Sequence['ElastigroupScalingUpPolicyDimensionArgs'] dimensions: A list of dimensions describing qualities of the metric.
-        :param int evaluation_periods: Number of consecutive periods in which the threshold must be met in order to trigger a scaling action.
-        :param str operator: The operator used to evaluate the threshold against the current metric value. Valid values: "gt" (greater than), "get" (greater-than or equal), "lt" (less than), "lte" (less than or equal).
-        :param int period: Amount of time (seconds) for which the threshold must be met in order to trigger the scaling action.
-        :param str source: Specifies a valid partial or full URL to an existing Persistent Disk resource. This field is only applicable for persistent disks.
-        :param str statistic: Statistic by which to evaluate the selected metric. Valid values: "AVERAGE", "SAMPLE_COUNT", "SUM", "MINIMUM", "MAXIMUM", "PERCENTILE", "COUNT".
-        """
         pulumi.set(__self__, "metric_name", metric_name)
         pulumi.set(__self__, "namespace", namespace)
         pulumi.set(__self__, "policy_name", policy_name)
@@ -1164,9 +960,6 @@ class ElastigroupScalingUpPolicy(dict):
     @property
     @pulumi.getter(name="metricName")
     def metric_name(self) -> str:
-        """
-        Metric to monitor. Valid values: "Percentage CPU", "Network In", "Network Out", "Disk Read Bytes", "Disk Write Bytes", "Disk Write Operations/Sec", "Disk Read Operations/Sec".
-        """
         return pulumi.get(self, "metric_name")
 
     @property
@@ -1177,17 +970,11 @@ class ElastigroupScalingUpPolicy(dict):
     @property
     @pulumi.getter(name="policyName")
     def policy_name(self) -> str:
-        """
-        Name of scaling policy.
-        """
         return pulumi.get(self, "policy_name")
 
     @property
     @pulumi.getter
     def threshold(self) -> float:
-        """
-        The value at which the scaling action is triggered.
-        """
         return pulumi.get(self, "threshold")
 
     @property
@@ -1198,73 +985,46 @@ class ElastigroupScalingUpPolicy(dict):
     @property
     @pulumi.getter(name="actionType")
     def action_type(self) -> Optional[str]:
-        """
-        Type of scaling action to take when the scaling policy is triggered. Valid values: "adjustment", "setMinTarget", "updateCapacity", "percentageAdjustment"
-        """
         return pulumi.get(self, "action_type")
 
     @property
     @pulumi.getter
     def adjustment(self) -> Optional[int]:
-        """
-        Value to which the action type will be adjusted. Required if using "numeric" or "percentageAdjustment" action types.
-        """
         return pulumi.get(self, "adjustment")
 
     @property
     @pulumi.getter
     def cooldown(self) -> Optional[int]:
-        """
-        Time (seconds) to wait after a scaling action before resuming monitoring.
-        """
         return pulumi.get(self, "cooldown")
 
     @property
     @pulumi.getter
     def dimensions(self) -> Optional[Sequence['outputs.ElastigroupScalingUpPolicyDimension']]:
-        """
-        A list of dimensions describing qualities of the metric.
-        """
         return pulumi.get(self, "dimensions")
 
     @property
     @pulumi.getter(name="evaluationPeriods")
     def evaluation_periods(self) -> Optional[int]:
-        """
-        Number of consecutive periods in which the threshold must be met in order to trigger a scaling action.
-        """
         return pulumi.get(self, "evaluation_periods")
 
     @property
     @pulumi.getter
     def operator(self) -> Optional[str]:
-        """
-        The operator used to evaluate the threshold against the current metric value. Valid values: "gt" (greater than), "get" (greater-than or equal), "lt" (less than), "lte" (less than or equal).
-        """
         return pulumi.get(self, "operator")
 
     @property
     @pulumi.getter
     def period(self) -> Optional[int]:
-        """
-        Amount of time (seconds) for which the threshold must be met in order to trigger the scaling action.
-        """
         return pulumi.get(self, "period")
 
     @property
     @pulumi.getter
     def source(self) -> Optional[str]:
-        """
-        Specifies a valid partial or full URL to an existing Persistent Disk resource. This field is only applicable for persistent disks.
-        """
         return pulumi.get(self, "source")
 
     @property
     @pulumi.getter
     def statistic(self) -> Optional[str]:
-        """
-        Statistic by which to evaluate the selected metric. Valid values: "AVERAGE", "SAMPLE_COUNT", "SUM", "MINIMUM", "MAXIMUM", "PERCENTILE", "COUNT".
-        """
         return pulumi.get(self, "statistic")
 
 
@@ -1275,7 +1035,6 @@ class ElastigroupScalingUpPolicyDimension(dict):
                  value: Optional[str] = None):
         """
         :param str name: The group name.
-        :param str value: Labels value.
         """
         pulumi.set(__self__, "name", name)
         if value is not None:
@@ -1292,9 +1051,6 @@ class ElastigroupScalingUpPolicyDimension(dict):
     @property
     @pulumi.getter
     def value(self) -> Optional[str]:
-        """
-        Labels value.
-        """
         return pulumi.get(self, "value")
 
 

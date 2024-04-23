@@ -18,16 +18,13 @@ namespace Pulumi.SpotInst.Outputs
         /// The destination for the request.
         /// </summary>
         public readonly string? Endpoint;
-        /// <summary>
-        /// The number of consecutive successful health checks that must occur before declaring an instance healthy.
-        /// </summary>
         public readonly int Healthy;
         /// <summary>
         /// The amount of time (in seconds) between each health check (minimum: 10).
         /// </summary>
         public readonly int Interval;
         /// <summary>
-        /// The port of the Spotinst HCS (default: 80).
+        /// The port to use to connect with the instance.
         /// </summary>
         public readonly int Port;
         /// <summary>
@@ -39,9 +36,6 @@ namespace Pulumi.SpotInst.Outputs
         /// the amount of time (in seconds) to wait when receiving a response from the health check.
         /// </summary>
         public readonly int? Timeout;
-        /// <summary>
-        /// The number of consecutive failed health checks that must occur before declaring an instance unhealthy.
-        /// </summary>
         public readonly int Unhealthy;
 
         [OutputConstructor]

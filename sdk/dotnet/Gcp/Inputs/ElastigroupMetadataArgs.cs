@@ -13,13 +13,13 @@ namespace Pulumi.SpotInst.Gcp.Inputs
     public sealed class ElastigroupMetadataArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Labels key.
+        /// Metadata key.
         /// </summary>
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;
 
         /// <summary>
-        /// Labels value.
+        /// Metadata value.
         /// </summary>
         [Input("value", required: true)]
         public Input<string> Value { get; set; } = null!;

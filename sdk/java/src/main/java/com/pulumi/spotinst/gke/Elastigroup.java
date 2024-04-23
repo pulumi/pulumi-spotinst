@@ -124,8 +124,6 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.backendServices);
     }
     /**
-     * The name of the GKE cluster you wish to import.
-     * 
      * @deprecated
      * Please define cluster_id under integration_gke
      * 
@@ -134,24 +132,12 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
     @Export(name="clusterId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> clusterId;
 
-    /**
-     * @return The name of the GKE cluster you wish to import.
-     * 
-     */
     public Output<Optional<String>> clusterId() {
         return Codegen.optional(this.clusterId);
     }
-    /**
-     * The zone where the cluster is hosted.
-     * 
-     */
     @Export(name="clusterZoneName", refs={String.class}, tree="[0]")
     private Output<String> clusterZoneName;
 
-    /**
-     * @return The zone where the cluster is hosted.
-     * 
-     */
     public Output<String> clusterZoneName() {
         return this.clusterZoneName;
     }
@@ -215,17 +201,9 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
     public Output<Optional<ElastigroupIntegrationDockerSwarm>> integrationDockerSwarm() {
         return Codegen.optional(this.integrationDockerSwarm);
     }
-    /**
-     * Describes the GKE integration.
-     * 
-     */
     @Export(name="integrationGke", refs={ElastigroupIntegrationGke.class}, tree="[0]")
     private Output</* @Nullable */ ElastigroupIntegrationGke> integrationGke;
 
-    /**
-     * @return Describes the GKE integration.
-     * 
-     */
     public Output<Optional<ElastigroupIntegrationGke>> integrationGke() {
         return Codegen.optional(this.integrationGke);
     }
@@ -271,17 +249,9 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
     public Output<Optional<List<ElastigroupNetworkInterface>>> networkInterfaces() {
         return Codegen.optional(this.networkInterfaces);
     }
-    /**
-     * The image that will be used for the node VMs. Possible values: COS, UBUNTU.
-     * 
-     */
     @Export(name="nodeImage", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> nodeImage;
 
-    /**
-     * @return The image that will be used for the node VMs. Possible values: COS, UBUNTU.
-     * 
-     */
     public Output<Optional<String>> nodeImage() {
         return Codegen.optional(this.nodeImage);
     }

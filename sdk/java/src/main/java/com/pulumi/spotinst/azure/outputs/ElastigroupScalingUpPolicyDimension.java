@@ -13,28 +13,20 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ElastigroupScalingUpPolicyDimension {
     /**
-     * @return Name of the Managed Service Identity.
+     * @return The group name.
      * 
      */
     private String name;
-    /**
-     * @return Tag Value for Vms in Elastigroup.
-     * 
-     */
     private @Nullable String value;
 
     private ElastigroupScalingUpPolicyDimension() {}
     /**
-     * @return Name of the Managed Service Identity.
+     * @return The group name.
      * 
      */
     public String name() {
         return this.name;
     }
-    /**
-     * @return Tag Value for Vms in Elastigroup.
-     * 
-     */
     public Optional<String> value() {
         return Optional.ofNullable(this.value);
     }

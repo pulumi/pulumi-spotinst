@@ -18,7 +18,7 @@ namespace Pulumi.SpotInst.Azure.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.OceanNetworkNetworkInterface> NetworkInterfaces;
         /// <summary>
-        /// The Resource Group name of the Load Balancer.
+        /// Vnet resource group name.
         /// </summary>
         public readonly string? ResourceGroupName;
         /// <summary>

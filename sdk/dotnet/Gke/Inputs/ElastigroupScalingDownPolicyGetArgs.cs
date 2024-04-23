@@ -29,9 +29,6 @@ namespace Pulumi.SpotInst.Gke.Inputs
             set => _dimensions = value;
         }
 
-        /// <summary>
-        /// Amount of cooldown evaluation periods for scale down.
-        /// </summary>
         [Input("evaluationPeriods")]
         public Input<int>? EvaluationPeriods { get; set; }
 

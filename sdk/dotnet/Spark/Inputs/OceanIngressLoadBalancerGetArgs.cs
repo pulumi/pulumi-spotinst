@@ -13,7 +13,7 @@ namespace Pulumi.SpotInst.Spark.Inputs
     public sealed class OceanIngressLoadBalancerGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// - Should an ingress controller managed by Ocean for Apache Spark be installed on the cluster.
+        /// - Should a load balancer managed by Ocean for Apache Spark be provisioned for the cluster. Set this to false if you want to use an existing load balancer (only available on AWS).
         /// </summary>
         [Input("managed")]
         public Input<bool>? Managed { get; set; }

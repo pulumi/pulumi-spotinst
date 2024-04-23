@@ -16,7 +16,6 @@ namespace Pulumi.SpotInst.Gke
     /// 
     /// ## Example Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -154,7 +153,6 @@ namespace Pulumi.SpotInst.Gke
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [SpotInstResourceType("spotinst:gke/oceanLaunchSpec:OceanLaunchSpec")]
     public partial class OceanLaunchSpec : global::Pulumi.CustomResource
@@ -190,7 +188,7 @@ namespace Pulumi.SpotInst.Gke
         public Output<ImmutableArray<Outputs.OceanLaunchSpecMetadata>> Metadatas { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the access configuration.
+        /// The launch specification name.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -395,7 +393,7 @@ namespace Pulumi.SpotInst.Gke
         }
 
         /// <summary>
-        /// The name of the access configuration.
+        /// The launch specification name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -592,7 +590,7 @@ namespace Pulumi.SpotInst.Gke
         }
 
         /// <summary>
-        /// The name of the access configuration.
+        /// The launch specification name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

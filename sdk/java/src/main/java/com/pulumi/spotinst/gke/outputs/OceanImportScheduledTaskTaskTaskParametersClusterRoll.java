@@ -14,11 +14,6 @@ import javax.annotation.Nullable;
 @CustomType
 public final class OceanImportScheduledTaskTaskTaskParametersClusterRoll {
     private @Nullable Integer batchMinHealthyPercentage;
-    /**
-     * @return Value in % to set size of batch in roll. Valid values are 0-100
-     * Example: 20.
-     * 
-     */
     private @Nullable Integer batchSizePercentage;
     private @Nullable String comment;
     private @Nullable Boolean respectPdb;
@@ -27,11 +22,6 @@ public final class OceanImportScheduledTaskTaskTaskParametersClusterRoll {
     public Optional<Integer> batchMinHealthyPercentage() {
         return Optional.ofNullable(this.batchMinHealthyPercentage);
     }
-    /**
-     * @return Value in % to set size of batch in roll. Valid values are 0-100
-     * Example: 20.
-     * 
-     */
     public Optional<Integer> batchSizePercentage() {
         return Optional.ofNullable(this.batchSizePercentage);
     }

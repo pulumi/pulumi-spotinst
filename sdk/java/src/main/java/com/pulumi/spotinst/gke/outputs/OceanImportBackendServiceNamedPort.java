@@ -12,20 +12,12 @@ import java.util.Objects;
 @CustomType
 public final class OceanImportBackendServiceNamedPort {
     private String name;
-    /**
-     * @return A list of ports.
-     * 
-     */
     private List<String> ports;
 
     private OceanImportBackendServiceNamedPort() {}
     public String name() {
         return this.name;
     }
-    /**
-     * @return A list of ports.
-     * 
-     */
     public List<String> ports() {
         return this.ports;
     }

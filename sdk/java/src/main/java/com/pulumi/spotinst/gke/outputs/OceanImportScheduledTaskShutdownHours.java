@@ -14,31 +14,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class OceanImportScheduledTaskShutdownHours {
-    /**
-     * @return Enable the Ocean Kubernetes Autoscaler.
-     * 
-     */
     private @Nullable Boolean isEnabled;
-    /**
-     * @return Set time windows for shutdown hours. specify a list of &#39;timeWindows&#39; with at least one time window Each string is in the format of - ddd:hh:mm-ddd:hh:mm ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59. Time windows should not overlap. required on cluster.scheduling.isEnabled = True. API Times are in UTC
-     * Example: Fri:15:30-Wed:14:30
-     * 
-     */
     private List<String> timeWindows;
 
     private OceanImportScheduledTaskShutdownHours() {}
-    /**
-     * @return Enable the Ocean Kubernetes Autoscaler.
-     * 
-     */
     public Optional<Boolean> isEnabled() {
         return Optional.ofNullable(this.isEnabled);
     }
-    /**
-     * @return Set time windows for shutdown hours. specify a list of &#39;timeWindows&#39; with at least one time window Each string is in the format of - ddd:hh:mm-ddd:hh:mm ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59. Time windows should not overlap. required on cluster.scheduling.isEnabled = True. API Times are in UTC
-     * Example: Fri:15:30-Wed:14:30
-     * 
-     */
     public List<String> timeWindows() {
         return this.timeWindows;
     }

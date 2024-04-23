@@ -12,21 +12,12 @@ namespace Pulumi.SpotInst.Aws.Inputs
 
     public sealed class BeanstalkManagedActionsPlatformUpdateGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Actions to perform (options: timeWindow, never)
-        /// </summary>
         [Input("performAt")]
         public Input<string>? PerformAt { get; set; }
 
-        /// <summary>
-        /// Time Window for when action occurs ex. Mon:23:50-Tue:00:20
-        /// </summary>
         [Input("timeWindow")]
         public Input<string>? TimeWindow { get; set; }
 
-        /// <summary>
-        /// Level to update
-        /// </summary>
         [Input("updateLevel")]
         public Input<string>? UpdateLevel { get; set; }
 

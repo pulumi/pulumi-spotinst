@@ -12,9 +12,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
 
     public sealed class ElastigroupMultipleMetricsExpressionArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// An expression consisting of the metric names listed in the 'metrics' array.
-        /// </summary>
         [Input("expression", required: true)]
         public Input<string> Expression { get; set; } = null!;
 

@@ -222,7 +222,7 @@ class OceanIngressLoadBalancer(dict):
                  service_annotations: Optional[Mapping[str, str]] = None,
                  target_group_arn: Optional[str] = None):
         """
-        :param bool managed: - Should an ingress controller managed by Ocean for Apache Spark be installed on the cluster.
+        :param bool managed: - Should a load balancer managed by Ocean for Apache Spark be provisioned for the cluster. Set this to false if you want to use an existing load balancer (only available on AWS).
         :param Mapping[str, str] service_annotations: - Annotations to add to the ingress controller load balancer service. This is useful to configure properties of the managed load balancer, like the nature of the load balancer (e.g. ELB, NLB, ALB on AWS), the security groups, or various timeouts.
         :param str target_group_arn: - The ARN of a target group that the Ocean for Apache Spark ingress controller will be bound to. Set this to use an existing load balancer with Ocean for Apache Spark. Has no effect if using a managed load balancer. Only available on AWS.
         """
@@ -237,7 +237,7 @@ class OceanIngressLoadBalancer(dict):
     @pulumi.getter
     def managed(self) -> Optional[bool]:
         """
-        - Should an ingress controller managed by Ocean for Apache Spark be installed on the cluster.
+        - Should a load balancer managed by Ocean for Apache Spark be provisioned for the cluster. Set this to false if you want to use an existing load balancer (only available on AWS).
         """
         return pulumi.get(self, "managed")
 
@@ -281,7 +281,7 @@ class OceanIngressPrivateLink(dict):
                  enabled: Optional[bool] = None,
                  vpc_endpoint_service: Optional[str] = None):
         """
-        :param bool enabled: - Should the Ocean for Apache Spark control plane address the cluster using a custom endpoint. Use this to specify the DNS address of an externally provisioned (unmanaged) load balancer.
+        :param bool enabled: - Should the Ocean for Apache Spark control plane address the cluster via an AWS Private Link. Only available on AWS.
         :param str vpc_endpoint_service: - The name of the VPC Endpoint Service the Ocean for Apache Spark control plane should bind to.
         """
         if enabled is not None:
@@ -293,7 +293,7 @@ class OceanIngressPrivateLink(dict):
     @pulumi.getter
     def enabled(self) -> Optional[bool]:
         """
-        - Should the Ocean for Apache Spark control plane address the cluster using a custom endpoint. Use this to specify the DNS address of an externally provisioned (unmanaged) load balancer.
+        - Should the Ocean for Apache Spark control plane address the cluster via an AWS Private Link. Only available on AWS.
         """
         return pulumi.get(self, "enabled")
 

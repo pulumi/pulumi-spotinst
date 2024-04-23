@@ -13,23 +13,9 @@ namespace Pulumi.SpotInst.Aws.Outputs
     [OutputType]
     public sealed class ElastigroupStatefulDeallocation
     {
-        /// <summary>
-        /// For stateful groups: remove persistent images.
-        /// </summary>
         public readonly bool? ShouldDeleteImages;
-        /// <summary>
-        /// For stateful groups: remove network interfaces.
-        /// </summary>
         public readonly bool? ShouldDeleteNetworkInterfaces;
-        /// <summary>
-        /// For stateful groups: remove snapshots.
-        /// 
-        /// Usage:
-        /// </summary>
         public readonly bool? ShouldDeleteSnapshots;
-        /// <summary>
-        /// For stateful groups: remove persistent volumes.
-        /// </summary>
         public readonly bool? ShouldDeleteVolumes;
 
         [OutputConstructor]

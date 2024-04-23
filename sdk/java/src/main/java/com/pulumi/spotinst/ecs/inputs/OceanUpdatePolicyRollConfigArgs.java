@@ -16,32 +16,16 @@ public final class OceanUpdatePolicyRollConfigArgs extends com.pulumi.resources.
 
     public static final OceanUpdatePolicyRollConfigArgs Empty = new OceanUpdatePolicyRollConfigArgs();
 
-    /**
-     * Default: 50. Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
-     * 
-     */
     @Import(name="batchMinHealthyPercentage")
     private @Nullable Output<Integer> batchMinHealthyPercentage;
 
-    /**
-     * @return Default: 50. Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
-     * 
-     */
     public Optional<Output<Integer>> batchMinHealthyPercentage() {
         return Optional.ofNullable(this.batchMinHealthyPercentage);
     }
 
-    /**
-     * Sets the percentage of the instances to deploy in each batch.
-     * 
-     */
     @Import(name="batchSizePercentage", required=true)
     private Output<Integer> batchSizePercentage;
 
-    /**
-     * @return Sets the percentage of the instances to deploy in each batch.
-     * 
-     */
     public Output<Integer> batchSizePercentage() {
         return this.batchSizePercentage;
     }
@@ -71,44 +55,20 @@ public final class OceanUpdatePolicyRollConfigArgs extends com.pulumi.resources.
             $ = new OceanUpdatePolicyRollConfigArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param batchMinHealthyPercentage Default: 50. Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
-         * 
-         * @return builder
-         * 
-         */
         public Builder batchMinHealthyPercentage(@Nullable Output<Integer> batchMinHealthyPercentage) {
             $.batchMinHealthyPercentage = batchMinHealthyPercentage;
             return this;
         }
 
-        /**
-         * @param batchMinHealthyPercentage Default: 50. Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
-         * 
-         * @return builder
-         * 
-         */
         public Builder batchMinHealthyPercentage(Integer batchMinHealthyPercentage) {
             return batchMinHealthyPercentage(Output.of(batchMinHealthyPercentage));
         }
 
-        /**
-         * @param batchSizePercentage Sets the percentage of the instances to deploy in each batch.
-         * 
-         * @return builder
-         * 
-         */
         public Builder batchSizePercentage(Output<Integer> batchSizePercentage) {
             $.batchSizePercentage = batchSizePercentage;
             return this;
         }
 
-        /**
-         * @param batchSizePercentage Sets the percentage of the instances to deploy in each batch.
-         * 
-         * @return builder
-         * 
-         */
         public Builder batchSizePercentage(Integer batchSizePercentage) {
             return batchSizePercentage(Output.of(batchSizePercentage));
         }

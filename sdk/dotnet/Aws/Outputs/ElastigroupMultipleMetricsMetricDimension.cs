@@ -17,9 +17,6 @@ namespace Pulumi.SpotInst.Aws.Outputs
         /// The group name.
         /// </summary>
         public readonly string Name;
-        /// <summary>
-        /// The dimension value.
-        /// </summary>
         public readonly string? Value;
 
         [OutputConstructor]

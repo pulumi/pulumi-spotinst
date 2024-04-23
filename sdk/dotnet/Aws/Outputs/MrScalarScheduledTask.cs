@@ -13,33 +13,12 @@ namespace Pulumi.SpotInst.Aws.Outputs
     [OutputType]
     public sealed class MrScalarScheduledTask
     {
-        /// <summary>
-        /// A cron expression representing the schedule for the task.
-        /// </summary>
         public readonly string Cron;
-        /// <summary>
-        /// New desired capacity for the elastigroup.
-        /// </summary>
         public readonly string? DesiredCapacity;
-        /// <summary>
-        /// Select the EMR instance groups to execute the scheduled task on. Valid values: `task`.
-        /// </summary>
         public readonly string InstanceGroupType;
-        /// <summary>
-        /// Enable/Disable the specified scheduling task.
-        /// </summary>
         public readonly bool? IsEnabled;
-        /// <summary>
-        /// New max capacity for the elastigroup.
-        /// </summary>
         public readonly string? MaxCapacity;
-        /// <summary>
-        /// New min capacity for the elastigroup.
-        /// </summary>
         public readonly string? MinCapacity;
-        /// <summary>
-        /// The type of task to be scheduled. Valid values: `setCapacity`.
-        /// </summary>
         public readonly string TaskType;
 
         [OutputConstructor]

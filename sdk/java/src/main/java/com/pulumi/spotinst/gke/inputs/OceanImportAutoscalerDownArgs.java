@@ -16,32 +16,16 @@ public final class OceanImportAutoscalerDownArgs extends com.pulumi.resources.Re
 
     public static final OceanImportAutoscalerDownArgs Empty = new OceanImportAutoscalerDownArgs();
 
-    /**
-     * The number of evaluation periods that should accumulate before a scale down action takes place.
-     * 
-     */
     @Import(name="evaluationPeriods")
     private @Nullable Output<Integer> evaluationPeriods;
 
-    /**
-     * @return The number of evaluation periods that should accumulate before a scale down action takes place.
-     * 
-     */
     public Optional<Output<Integer>> evaluationPeriods() {
         return Optional.ofNullable(this.evaluationPeriods);
     }
 
-    /**
-     * Would represent the maximum % to scale-down. Number between 1-100.
-     * 
-     */
     @Import(name="maxScaleDownPercentage")
     private @Nullable Output<Double> maxScaleDownPercentage;
 
-    /**
-     * @return Would represent the maximum % to scale-down. Number between 1-100.
-     * 
-     */
     public Optional<Output<Double>> maxScaleDownPercentage() {
         return Optional.ofNullable(this.maxScaleDownPercentage);
     }
@@ -71,44 +55,20 @@ public final class OceanImportAutoscalerDownArgs extends com.pulumi.resources.Re
             $ = new OceanImportAutoscalerDownArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param evaluationPeriods The number of evaluation periods that should accumulate before a scale down action takes place.
-         * 
-         * @return builder
-         * 
-         */
         public Builder evaluationPeriods(@Nullable Output<Integer> evaluationPeriods) {
             $.evaluationPeriods = evaluationPeriods;
             return this;
         }
 
-        /**
-         * @param evaluationPeriods The number of evaluation periods that should accumulate before a scale down action takes place.
-         * 
-         * @return builder
-         * 
-         */
         public Builder evaluationPeriods(Integer evaluationPeriods) {
             return evaluationPeriods(Output.of(evaluationPeriods));
         }
 
-        /**
-         * @param maxScaleDownPercentage Would represent the maximum % to scale-down. Number between 1-100.
-         * 
-         * @return builder
-         * 
-         */
         public Builder maxScaleDownPercentage(@Nullable Output<Double> maxScaleDownPercentage) {
             $.maxScaleDownPercentage = maxScaleDownPercentage;
             return this;
         }
 
-        /**
-         * @param maxScaleDownPercentage Would represent the maximum % to scale-down. Number between 1-100.
-         * 
-         * @return builder
-         * 
-         */
         public Builder maxScaleDownPercentage(Double maxScaleDownPercentage) {
             return maxScaleDownPercentage(Output.of(maxScaleDownPercentage));
         }

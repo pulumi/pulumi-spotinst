@@ -13,13 +13,7 @@ namespace Pulumi.SpotInst.Aws.Outputs
     [OutputType]
     public sealed class MrScalarStepsFile
     {
-        /// <summary>
-        /// S3 Bucket name for bootstrap actions.
-        /// </summary>
         public readonly string Bucket;
-        /// <summary>
-        /// S3 key for bootstrap actions.
-        /// </summary>
         public readonly string Key;
 
         [OutputConstructor]

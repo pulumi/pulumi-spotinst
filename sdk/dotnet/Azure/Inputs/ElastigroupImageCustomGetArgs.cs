@@ -16,7 +16,7 @@ namespace Pulumi.SpotInst.Azure.Inputs
         public Input<string> ImageName { get; set; } = null!;
 
         /// <summary>
-        /// Name of the Azure Resource Group where the Managed Service Identity is located.
+        /// Name of the Resource Group for Elastigroup.
         /// </summary>
         [Input("resourceGroupName", required: true)]
         public Input<string> ResourceGroupName { get; set; } = null!;

@@ -13,9 +13,6 @@ namespace Pulumi.SpotInst.Aws.Outputs
     [OutputType]
     public sealed class ElastigroupIntegrationNomadAutoscaleDown
     {
-        /// <summary>
-        /// The number of periods over which data is compared to the specified threshold.
-        /// </summary>
         public readonly int? EvaluationPeriods;
 
         [OutputConstructor]

@@ -13,13 +13,7 @@ namespace Pulumi.SpotInst.Aws.Outputs
     [OutputType]
     public sealed class OceanAutoscalerResourceLimits
     {
-        /// <summary>
-        /// Maximum amount of Memory (GiB).
-        /// </summary>
         public readonly int? MaxMemoryGib;
-        /// <summary>
-        /// Maximum number of vcpus available.
-        /// </summary>
         public readonly int? MaxVcpu;
 
         [OutputConstructor]

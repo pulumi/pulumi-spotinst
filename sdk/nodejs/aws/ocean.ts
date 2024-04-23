@@ -56,9 +56,6 @@ export class Ocean extends pulumi.CustomResource {
      */
     public readonly associatePublicIpAddress!: pulumi.Output<boolean | undefined>;
     public readonly autoscaler!: pulumi.Output<outputs.aws.OceanAutoscaler | undefined>;
-    /**
-     * Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist` is configured.
-     */
     public readonly blacklists!: pulumi.Output<string[] | undefined>;
     /**
      * Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
@@ -85,9 +82,6 @@ export class Ocean extends pulumi.CustomResource {
      * If not Spot instance markets are available, enable Ocean to launch On-Demand instances instead.
      */
     public readonly fallbackToOndemand!: pulumi.Output<boolean | undefined>;
-    /**
-     * List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured together with whitelist/blacklist.
-     */
     public readonly filters!: pulumi.Output<outputs.aws.OceanFilters | undefined>;
     /**
      * The amount of time, in seconds, after the instance has launched to start checking its health.
@@ -134,7 +128,7 @@ export class Ocean extends pulumi.CustomResource {
      */
     public readonly monitoring!: pulumi.Output<boolean | undefined>;
     /**
-     * Required if type is set to `CLASSIC`
+     * The cluster name.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -188,9 +182,6 @@ export class Ocean extends pulumi.CustomResource {
      * If Reserved instances exist, Ocean will utilize them before launching Spot instances.
      */
     public readonly utilizeReservedInstances!: pulumi.Output<boolean | undefined>;
-    /**
-     * Instance types allowed in the Ocean cluster. Cannot be configured if `blacklist` is configured.
-     */
     public readonly whitelists!: pulumi.Output<string[] | undefined>;
 
     /**
@@ -311,9 +302,6 @@ export interface OceanState {
      */
     associatePublicIpAddress?: pulumi.Input<boolean>;
     autoscaler?: pulumi.Input<inputs.aws.OceanAutoscaler>;
-    /**
-     * Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist` is configured.
-     */
     blacklists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
@@ -340,9 +328,6 @@ export interface OceanState {
      * If not Spot instance markets are available, enable Ocean to launch On-Demand instances instead.
      */
     fallbackToOndemand?: pulumi.Input<boolean>;
-    /**
-     * List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured together with whitelist/blacklist.
-     */
     filters?: pulumi.Input<inputs.aws.OceanFilters>;
     /**
      * The amount of time, in seconds, after the instance has launched to start checking its health.
@@ -389,7 +374,7 @@ export interface OceanState {
      */
     monitoring?: pulumi.Input<boolean>;
     /**
-     * Required if type is set to `CLASSIC`
+     * The cluster name.
      */
     name?: pulumi.Input<string>;
     /**
@@ -443,9 +428,6 @@ export interface OceanState {
      * If Reserved instances exist, Ocean will utilize them before launching Spot instances.
      */
     utilizeReservedInstances?: pulumi.Input<boolean>;
-    /**
-     * Instance types allowed in the Ocean cluster. Cannot be configured if `blacklist` is configured.
-     */
     whitelists?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
@@ -462,9 +444,6 @@ export interface OceanArgs {
      */
     associatePublicIpAddress?: pulumi.Input<boolean>;
     autoscaler?: pulumi.Input<inputs.aws.OceanAutoscaler>;
-    /**
-     * Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist` is configured.
-     */
     blacklists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Object. Array list of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
@@ -491,9 +470,6 @@ export interface OceanArgs {
      * If not Spot instance markets are available, enable Ocean to launch On-Demand instances instead.
      */
     fallbackToOndemand?: pulumi.Input<boolean>;
-    /**
-     * List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured together with whitelist/blacklist.
-     */
     filters?: pulumi.Input<inputs.aws.OceanFilters>;
     /**
      * The amount of time, in seconds, after the instance has launched to start checking its health.
@@ -540,7 +516,7 @@ export interface OceanArgs {
      */
     monitoring?: pulumi.Input<boolean>;
     /**
-     * Required if type is set to `CLASSIC`
+     * The cluster name.
      */
     name?: pulumi.Input<string>;
     /**
@@ -594,8 +570,5 @@ export interface OceanArgs {
      * If Reserved instances exist, Ocean will utilize them before launching Spot instances.
      */
     utilizeReservedInstances?: pulumi.Input<boolean>;
-    /**
-     * Instance types allowed in the Ocean cluster. Cannot be configured if `blacklist` is configured.
-     */
     whitelists?: pulumi.Input<pulumi.Input<string>[]>;
 }

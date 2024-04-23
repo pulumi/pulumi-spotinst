@@ -26,19 +26,9 @@ public final class OceanImportUpdatePolicyRollConfigArgs extends com.pulumi.reso
         return Optional.ofNullable(this.batchMinHealthyPercentage);
     }
 
-    /**
-     * Value in % to set size of batch in roll. Valid values are 0-100
-     * Example: 20.
-     * 
-     */
     @Import(name="batchSizePercentage", required=true)
     private Output<Integer> batchSizePercentage;
 
-    /**
-     * @return Value in % to set size of batch in roll. Valid values are 0-100
-     * Example: 20.
-     * 
-     */
     public Output<Integer> batchSizePercentage() {
         return this.batchSizePercentage;
     }
@@ -93,25 +83,11 @@ public final class OceanImportUpdatePolicyRollConfigArgs extends com.pulumi.reso
             return batchMinHealthyPercentage(Output.of(batchMinHealthyPercentage));
         }
 
-        /**
-         * @param batchSizePercentage Value in % to set size of batch in roll. Valid values are 0-100
-         * Example: 20.
-         * 
-         * @return builder
-         * 
-         */
         public Builder batchSizePercentage(Output<Integer> batchSizePercentage) {
             $.batchSizePercentage = batchSizePercentage;
             return this;
         }
 
-        /**
-         * @param batchSizePercentage Value in % to set size of batch in roll. Valid values are 0-100
-         * Example: 20.
-         * 
-         * @return builder
-         * 
-         */
         public Builder batchSizePercentage(Integer batchSizePercentage) {
             return batchSizePercentage(Output.of(batchSizePercentage));
         }

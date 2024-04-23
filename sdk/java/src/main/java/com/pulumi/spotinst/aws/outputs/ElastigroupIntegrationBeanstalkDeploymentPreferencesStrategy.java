@@ -12,29 +12,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategy {
-    /**
-     * @return The action to take when scale up according to step&#39;s threshold is needed.
-     * 
-     */
     private @Nullable String action;
-    /**
-     * @return Bool value if to wait to drain instance
-     * 
-     */
     private @Nullable Boolean shouldDrainInstances;
 
     private ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategy() {}
-    /**
-     * @return The action to take when scale up according to step&#39;s threshold is needed.
-     * 
-     */
     public Optional<String> action() {
         return Optional.ofNullable(this.action);
     }
-    /**
-     * @return Bool value if to wait to drain instance
-     * 
-     */
     public Optional<Boolean> shouldDrainInstances() {
         return Optional.ofNullable(this.shouldDrainInstances);
     }
