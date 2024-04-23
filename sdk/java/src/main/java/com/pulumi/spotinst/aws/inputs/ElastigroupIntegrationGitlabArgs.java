@@ -15,17 +15,9 @@ public final class ElastigroupIntegrationGitlabArgs extends com.pulumi.resources
 
     public static final ElastigroupIntegrationGitlabArgs Empty = new ElastigroupIntegrationGitlabArgs();
 
-    /**
-     * Settings for Gitlab runner.
-     * 
-     */
     @Import(name="runner")
     private @Nullable Output<ElastigroupIntegrationGitlabRunnerArgs> runner;
 
-    /**
-     * @return Settings for Gitlab runner.
-     * 
-     */
     public Optional<Output<ElastigroupIntegrationGitlabRunnerArgs>> runner() {
         return Optional.ofNullable(this.runner);
     }
@@ -54,23 +46,11 @@ public final class ElastigroupIntegrationGitlabArgs extends com.pulumi.resources
             $ = new ElastigroupIntegrationGitlabArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param runner Settings for Gitlab runner.
-         * 
-         * @return builder
-         * 
-         */
         public Builder runner(@Nullable Output<ElastigroupIntegrationGitlabRunnerArgs> runner) {
             $.runner = runner;
             return this;
         }
 
-        /**
-         * @param runner Settings for Gitlab runner.
-         * 
-         * @return builder
-         * 
-         */
         public Builder runner(ElastigroupIntegrationGitlabRunnerArgs runner) {
             return runner(Output.of(runner));
         }

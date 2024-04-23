@@ -11,29 +11,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class OceanAutoscalerResourceLimits {
-    /**
-     * @return Maximum amount of Memory (GiB).
-     * 
-     */
     private @Nullable Integer maxMemoryGib;
-    /**
-     * @return Maximum number of vcpus available.
-     * 
-     */
     private @Nullable Integer maxVcpu;
 
     private OceanAutoscalerResourceLimits() {}
-    /**
-     * @return Maximum amount of Memory (GiB).
-     * 
-     */
     public Optional<Integer> maxMemoryGib() {
         return Optional.ofNullable(this.maxMemoryGib);
     }
-    /**
-     * @return Maximum number of vcpus available.
-     * 
-     */
     public Optional<Integer> maxVcpu() {
         return Optional.ofNullable(this.maxVcpu);
     }

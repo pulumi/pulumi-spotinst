@@ -12,23 +12,12 @@ namespace Pulumi.SpotInst.Aws.Inputs
 
     public sealed class ElastigroupNetworkInterfaceGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Indicates whether to assign IPV6 addresses to your instance. Requires a subnet with IPV6 CIDR block ranges.
-        /// 
-        /// Usage:
-        /// </summary>
         [Input("associateIpv6Address")]
         public Input<bool>? AssociateIpv6Address { get; set; }
 
-        /// <summary>
-        /// Indicates whether to assign a public IP address to an instance you launch in a VPC. The public IP address can only be assigned to a network interface for eth0, and can only be assigned to a new network interface, not an existing one.
-        /// </summary>
         [Input("associatePublicIpAddress")]
         public Input<bool>? AssociatePublicIpAddress { get; set; }
 
-        /// <summary>
-        /// Whether the volume should be destroyed on instance termination.
-        /// </summary>
         [Input("deleteOnTermination")]
         public Input<bool>? DeleteOnTermination { get; set; }
 
@@ -38,27 +27,15 @@ namespace Pulumi.SpotInst.Aws.Inputs
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// The index of the device on the instance for the network interface attachment.
-        /// </summary>
         [Input("deviceIndex", required: true)]
         public Input<string> DeviceIndex { get; set; } = null!;
 
-        /// <summary>
-        /// The ID of the network interface.
-        /// </summary>
         [Input("networkInterfaceId")]
         public Input<string>? NetworkInterfaceId { get; set; }
 
-        /// <summary>
-        /// The private IP address of the network interface.
-        /// </summary>
         [Input("privateIpAddress")]
         public Input<string>? PrivateIpAddress { get; set; }
 
-        /// <summary>
-        /// The number of secondary private IP addresses.
-        /// </summary>
         [Input("secondaryPrivateIpAddressCount")]
         public Input<string>? SecondaryPrivateIpAddressCount { get; set; }
 

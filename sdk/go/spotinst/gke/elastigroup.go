@@ -23,7 +23,6 @@ import (
 // * you must include `clusterZoneName` and `clusterId`
 // * a handful of parameters are created remotely and will not appear in the diff. A complete list can be found below.
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -94,16 +93,12 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 type Elastigroup struct {
 	pulumi.CustomResourceState
 
 	BackendServices ElastigroupBackendServiceArrayOutput `pulumi:"backendServices"`
-	// The name of the GKE cluster you wish to import.
-	//
 	// Deprecated: Please define clusterId under integration_gke
-	ClusterId pulumi.StringPtrOutput `pulumi:"clusterId"`
-	// The zone where the cluster is hosted.
+	ClusterId                 pulumi.StringPtrOutput                     `pulumi:"clusterId"`
 	ClusterZoneName           pulumi.StringOutput                        `pulumi:"clusterZoneName"`
 	DesiredCapacity           pulumi.IntOutput                           `pulumi:"desiredCapacity"`
 	Disks                     ElastigroupDiskArrayOutput                 `pulumi:"disks"`
@@ -115,26 +110,24 @@ type Elastigroup struct {
 	InstanceTypesOndemand     pulumi.StringPtrOutput                     `pulumi:"instanceTypesOndemand"`
 	InstanceTypesPreemptibles pulumi.StringArrayOutput                   `pulumi:"instanceTypesPreemptibles"`
 	IntegrationDockerSwarm    ElastigroupIntegrationDockerSwarmPtrOutput `pulumi:"integrationDockerSwarm"`
-	// Describes the GKE integration.
-	IntegrationGke    ElastigroupIntegrationGkePtrOutput     `pulumi:"integrationGke"`
-	IpForwarding      pulumi.BoolPtrOutput                   `pulumi:"ipForwarding"`
-	Labels            ElastigroupLabelArrayOutput            `pulumi:"labels"`
-	MaxSize           pulumi.IntOutput                       `pulumi:"maxSize"`
-	Metadatas         ElastigroupMetadataArrayOutput         `pulumi:"metadatas"`
-	MinSize           pulumi.IntOutput                       `pulumi:"minSize"`
-	Name              pulumi.StringOutput                    `pulumi:"name"`
-	NetworkInterfaces ElastigroupNetworkInterfaceArrayOutput `pulumi:"networkInterfaces"`
-	// The image that will be used for the node VMs. Possible values: COS, UBUNTU.
-	NodeImage             pulumi.StringPtrOutput                  `pulumi:"nodeImage"`
-	OndemandCount         pulumi.IntPtrOutput                     `pulumi:"ondemandCount"`
-	PreemptiblePercentage pulumi.IntPtrOutput                     `pulumi:"preemptiblePercentage"`
-	ProvisioningModel     pulumi.StringPtrOutput                  `pulumi:"provisioningModel"`
-	ScalingDownPolicies   ElastigroupScalingDownPolicyArrayOutput `pulumi:"scalingDownPolicies"`
-	ScalingUpPolicies     ElastigroupScalingUpPolicyArrayOutput   `pulumi:"scalingUpPolicies"`
-	ServiceAccount        pulumi.StringPtrOutput                  `pulumi:"serviceAccount"`
-	ShutdownScript        pulumi.StringPtrOutput                  `pulumi:"shutdownScript"`
-	StartupScript         pulumi.StringPtrOutput                  `pulumi:"startupScript"`
-	Tags                  pulumi.StringArrayOutput                `pulumi:"tags"`
+	IntegrationGke            ElastigroupIntegrationGkePtrOutput         `pulumi:"integrationGke"`
+	IpForwarding              pulumi.BoolPtrOutput                       `pulumi:"ipForwarding"`
+	Labels                    ElastigroupLabelArrayOutput                `pulumi:"labels"`
+	MaxSize                   pulumi.IntOutput                           `pulumi:"maxSize"`
+	Metadatas                 ElastigroupMetadataArrayOutput             `pulumi:"metadatas"`
+	MinSize                   pulumi.IntOutput                           `pulumi:"minSize"`
+	Name                      pulumi.StringOutput                        `pulumi:"name"`
+	NetworkInterfaces         ElastigroupNetworkInterfaceArrayOutput     `pulumi:"networkInterfaces"`
+	NodeImage                 pulumi.StringPtrOutput                     `pulumi:"nodeImage"`
+	OndemandCount             pulumi.IntPtrOutput                        `pulumi:"ondemandCount"`
+	PreemptiblePercentage     pulumi.IntPtrOutput                        `pulumi:"preemptiblePercentage"`
+	ProvisioningModel         pulumi.StringPtrOutput                     `pulumi:"provisioningModel"`
+	ScalingDownPolicies       ElastigroupScalingDownPolicyArrayOutput    `pulumi:"scalingDownPolicies"`
+	ScalingUpPolicies         ElastigroupScalingUpPolicyArrayOutput      `pulumi:"scalingUpPolicies"`
+	ServiceAccount            pulumi.StringPtrOutput                     `pulumi:"serviceAccount"`
+	ShutdownScript            pulumi.StringPtrOutput                     `pulumi:"shutdownScript"`
+	StartupScript             pulumi.StringPtrOutput                     `pulumi:"startupScript"`
+	Tags                      pulumi.StringArrayOutput                   `pulumi:"tags"`
 }
 
 // NewElastigroup registers a new resource with the given unique name, arguments, and options.
@@ -174,11 +167,8 @@ func GetElastigroup(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Elastigroup resources.
 type elastigroupState struct {
 	BackendServices []ElastigroupBackendService `pulumi:"backendServices"`
-	// The name of the GKE cluster you wish to import.
-	//
 	// Deprecated: Please define clusterId under integration_gke
-	ClusterId *string `pulumi:"clusterId"`
-	// The zone where the cluster is hosted.
+	ClusterId                 *string                            `pulumi:"clusterId"`
 	ClusterZoneName           *string                            `pulumi:"clusterZoneName"`
 	DesiredCapacity           *int                               `pulumi:"desiredCapacity"`
 	Disks                     []ElastigroupDisk                  `pulumi:"disks"`
@@ -190,35 +180,30 @@ type elastigroupState struct {
 	InstanceTypesOndemand     *string                            `pulumi:"instanceTypesOndemand"`
 	InstanceTypesPreemptibles []string                           `pulumi:"instanceTypesPreemptibles"`
 	IntegrationDockerSwarm    *ElastigroupIntegrationDockerSwarm `pulumi:"integrationDockerSwarm"`
-	// Describes the GKE integration.
-	IntegrationGke    *ElastigroupIntegrationGke    `pulumi:"integrationGke"`
-	IpForwarding      *bool                         `pulumi:"ipForwarding"`
-	Labels            []ElastigroupLabel            `pulumi:"labels"`
-	MaxSize           *int                          `pulumi:"maxSize"`
-	Metadatas         []ElastigroupMetadata         `pulumi:"metadatas"`
-	MinSize           *int                          `pulumi:"minSize"`
-	Name              *string                       `pulumi:"name"`
-	NetworkInterfaces []ElastigroupNetworkInterface `pulumi:"networkInterfaces"`
-	// The image that will be used for the node VMs. Possible values: COS, UBUNTU.
-	NodeImage             *string                        `pulumi:"nodeImage"`
-	OndemandCount         *int                           `pulumi:"ondemandCount"`
-	PreemptiblePercentage *int                           `pulumi:"preemptiblePercentage"`
-	ProvisioningModel     *string                        `pulumi:"provisioningModel"`
-	ScalingDownPolicies   []ElastigroupScalingDownPolicy `pulumi:"scalingDownPolicies"`
-	ScalingUpPolicies     []ElastigroupScalingUpPolicy   `pulumi:"scalingUpPolicies"`
-	ServiceAccount        *string                        `pulumi:"serviceAccount"`
-	ShutdownScript        *string                        `pulumi:"shutdownScript"`
-	StartupScript         *string                        `pulumi:"startupScript"`
-	Tags                  []string                       `pulumi:"tags"`
+	IntegrationGke            *ElastigroupIntegrationGke         `pulumi:"integrationGke"`
+	IpForwarding              *bool                              `pulumi:"ipForwarding"`
+	Labels                    []ElastigroupLabel                 `pulumi:"labels"`
+	MaxSize                   *int                               `pulumi:"maxSize"`
+	Metadatas                 []ElastigroupMetadata              `pulumi:"metadatas"`
+	MinSize                   *int                               `pulumi:"minSize"`
+	Name                      *string                            `pulumi:"name"`
+	NetworkInterfaces         []ElastigroupNetworkInterface      `pulumi:"networkInterfaces"`
+	NodeImage                 *string                            `pulumi:"nodeImage"`
+	OndemandCount             *int                               `pulumi:"ondemandCount"`
+	PreemptiblePercentage     *int                               `pulumi:"preemptiblePercentage"`
+	ProvisioningModel         *string                            `pulumi:"provisioningModel"`
+	ScalingDownPolicies       []ElastigroupScalingDownPolicy     `pulumi:"scalingDownPolicies"`
+	ScalingUpPolicies         []ElastigroupScalingUpPolicy       `pulumi:"scalingUpPolicies"`
+	ServiceAccount            *string                            `pulumi:"serviceAccount"`
+	ShutdownScript            *string                            `pulumi:"shutdownScript"`
+	StartupScript             *string                            `pulumi:"startupScript"`
+	Tags                      []string                           `pulumi:"tags"`
 }
 
 type ElastigroupState struct {
 	BackendServices ElastigroupBackendServiceArrayInput
-	// The name of the GKE cluster you wish to import.
-	//
 	// Deprecated: Please define clusterId under integration_gke
-	ClusterId pulumi.StringPtrInput
-	// The zone where the cluster is hosted.
+	ClusterId                 pulumi.StringPtrInput
 	ClusterZoneName           pulumi.StringPtrInput
 	DesiredCapacity           pulumi.IntPtrInput
 	Disks                     ElastigroupDiskArrayInput
@@ -230,26 +215,24 @@ type ElastigroupState struct {
 	InstanceTypesOndemand     pulumi.StringPtrInput
 	InstanceTypesPreemptibles pulumi.StringArrayInput
 	IntegrationDockerSwarm    ElastigroupIntegrationDockerSwarmPtrInput
-	// Describes the GKE integration.
-	IntegrationGke    ElastigroupIntegrationGkePtrInput
-	IpForwarding      pulumi.BoolPtrInput
-	Labels            ElastigroupLabelArrayInput
-	MaxSize           pulumi.IntPtrInput
-	Metadatas         ElastigroupMetadataArrayInput
-	MinSize           pulumi.IntPtrInput
-	Name              pulumi.StringPtrInput
-	NetworkInterfaces ElastigroupNetworkInterfaceArrayInput
-	// The image that will be used for the node VMs. Possible values: COS, UBUNTU.
-	NodeImage             pulumi.StringPtrInput
-	OndemandCount         pulumi.IntPtrInput
-	PreemptiblePercentage pulumi.IntPtrInput
-	ProvisioningModel     pulumi.StringPtrInput
-	ScalingDownPolicies   ElastigroupScalingDownPolicyArrayInput
-	ScalingUpPolicies     ElastigroupScalingUpPolicyArrayInput
-	ServiceAccount        pulumi.StringPtrInput
-	ShutdownScript        pulumi.StringPtrInput
-	StartupScript         pulumi.StringPtrInput
-	Tags                  pulumi.StringArrayInput
+	IntegrationGke            ElastigroupIntegrationGkePtrInput
+	IpForwarding              pulumi.BoolPtrInput
+	Labels                    ElastigroupLabelArrayInput
+	MaxSize                   pulumi.IntPtrInput
+	Metadatas                 ElastigroupMetadataArrayInput
+	MinSize                   pulumi.IntPtrInput
+	Name                      pulumi.StringPtrInput
+	NetworkInterfaces         ElastigroupNetworkInterfaceArrayInput
+	NodeImage                 pulumi.StringPtrInput
+	OndemandCount             pulumi.IntPtrInput
+	PreemptiblePercentage     pulumi.IntPtrInput
+	ProvisioningModel         pulumi.StringPtrInput
+	ScalingDownPolicies       ElastigroupScalingDownPolicyArrayInput
+	ScalingUpPolicies         ElastigroupScalingUpPolicyArrayInput
+	ServiceAccount            pulumi.StringPtrInput
+	ShutdownScript            pulumi.StringPtrInput
+	StartupScript             pulumi.StringPtrInput
+	Tags                      pulumi.StringArrayInput
 }
 
 func (ElastigroupState) ElementType() reflect.Type {
@@ -258,11 +241,8 @@ func (ElastigroupState) ElementType() reflect.Type {
 
 type elastigroupArgs struct {
 	BackendServices []ElastigroupBackendService `pulumi:"backendServices"`
-	// The name of the GKE cluster you wish to import.
-	//
 	// Deprecated: Please define clusterId under integration_gke
-	ClusterId *string `pulumi:"clusterId"`
-	// The zone where the cluster is hosted.
+	ClusterId                 *string                            `pulumi:"clusterId"`
 	ClusterZoneName           string                             `pulumi:"clusterZoneName"`
 	DesiredCapacity           int                                `pulumi:"desiredCapacity"`
 	Disks                     []ElastigroupDisk                  `pulumi:"disks"`
@@ -274,36 +254,31 @@ type elastigroupArgs struct {
 	InstanceTypesOndemand     *string                            `pulumi:"instanceTypesOndemand"`
 	InstanceTypesPreemptibles []string                           `pulumi:"instanceTypesPreemptibles"`
 	IntegrationDockerSwarm    *ElastigroupIntegrationDockerSwarm `pulumi:"integrationDockerSwarm"`
-	// Describes the GKE integration.
-	IntegrationGke    *ElastigroupIntegrationGke    `pulumi:"integrationGke"`
-	IpForwarding      *bool                         `pulumi:"ipForwarding"`
-	Labels            []ElastigroupLabel            `pulumi:"labels"`
-	MaxSize           *int                          `pulumi:"maxSize"`
-	Metadatas         []ElastigroupMetadata         `pulumi:"metadatas"`
-	MinSize           *int                          `pulumi:"minSize"`
-	Name              *string                       `pulumi:"name"`
-	NetworkInterfaces []ElastigroupNetworkInterface `pulumi:"networkInterfaces"`
-	// The image that will be used for the node VMs. Possible values: COS, UBUNTU.
-	NodeImage             *string                        `pulumi:"nodeImage"`
-	OndemandCount         *int                           `pulumi:"ondemandCount"`
-	PreemptiblePercentage *int                           `pulumi:"preemptiblePercentage"`
-	ProvisioningModel     *string                        `pulumi:"provisioningModel"`
-	ScalingDownPolicies   []ElastigroupScalingDownPolicy `pulumi:"scalingDownPolicies"`
-	ScalingUpPolicies     []ElastigroupScalingUpPolicy   `pulumi:"scalingUpPolicies"`
-	ServiceAccount        *string                        `pulumi:"serviceAccount"`
-	ShutdownScript        *string                        `pulumi:"shutdownScript"`
-	StartupScript         *string                        `pulumi:"startupScript"`
-	Tags                  []string                       `pulumi:"tags"`
+	IntegrationGke            *ElastigroupIntegrationGke         `pulumi:"integrationGke"`
+	IpForwarding              *bool                              `pulumi:"ipForwarding"`
+	Labels                    []ElastigroupLabel                 `pulumi:"labels"`
+	MaxSize                   *int                               `pulumi:"maxSize"`
+	Metadatas                 []ElastigroupMetadata              `pulumi:"metadatas"`
+	MinSize                   *int                               `pulumi:"minSize"`
+	Name                      *string                            `pulumi:"name"`
+	NetworkInterfaces         []ElastigroupNetworkInterface      `pulumi:"networkInterfaces"`
+	NodeImage                 *string                            `pulumi:"nodeImage"`
+	OndemandCount             *int                               `pulumi:"ondemandCount"`
+	PreemptiblePercentage     *int                               `pulumi:"preemptiblePercentage"`
+	ProvisioningModel         *string                            `pulumi:"provisioningModel"`
+	ScalingDownPolicies       []ElastigroupScalingDownPolicy     `pulumi:"scalingDownPolicies"`
+	ScalingUpPolicies         []ElastigroupScalingUpPolicy       `pulumi:"scalingUpPolicies"`
+	ServiceAccount            *string                            `pulumi:"serviceAccount"`
+	ShutdownScript            *string                            `pulumi:"shutdownScript"`
+	StartupScript             *string                            `pulumi:"startupScript"`
+	Tags                      []string                           `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a Elastigroup resource.
 type ElastigroupArgs struct {
 	BackendServices ElastigroupBackendServiceArrayInput
-	// The name of the GKE cluster you wish to import.
-	//
 	// Deprecated: Please define clusterId under integration_gke
-	ClusterId pulumi.StringPtrInput
-	// The zone where the cluster is hosted.
+	ClusterId                 pulumi.StringPtrInput
 	ClusterZoneName           pulumi.StringInput
 	DesiredCapacity           pulumi.IntInput
 	Disks                     ElastigroupDiskArrayInput
@@ -315,26 +290,24 @@ type ElastigroupArgs struct {
 	InstanceTypesOndemand     pulumi.StringPtrInput
 	InstanceTypesPreemptibles pulumi.StringArrayInput
 	IntegrationDockerSwarm    ElastigroupIntegrationDockerSwarmPtrInput
-	// Describes the GKE integration.
-	IntegrationGke    ElastigroupIntegrationGkePtrInput
-	IpForwarding      pulumi.BoolPtrInput
-	Labels            ElastigroupLabelArrayInput
-	MaxSize           pulumi.IntPtrInput
-	Metadatas         ElastigroupMetadataArrayInput
-	MinSize           pulumi.IntPtrInput
-	Name              pulumi.StringPtrInput
-	NetworkInterfaces ElastigroupNetworkInterfaceArrayInput
-	// The image that will be used for the node VMs. Possible values: COS, UBUNTU.
-	NodeImage             pulumi.StringPtrInput
-	OndemandCount         pulumi.IntPtrInput
-	PreemptiblePercentage pulumi.IntPtrInput
-	ProvisioningModel     pulumi.StringPtrInput
-	ScalingDownPolicies   ElastigroupScalingDownPolicyArrayInput
-	ScalingUpPolicies     ElastigroupScalingUpPolicyArrayInput
-	ServiceAccount        pulumi.StringPtrInput
-	ShutdownScript        pulumi.StringPtrInput
-	StartupScript         pulumi.StringPtrInput
-	Tags                  pulumi.StringArrayInput
+	IntegrationGke            ElastigroupIntegrationGkePtrInput
+	IpForwarding              pulumi.BoolPtrInput
+	Labels                    ElastigroupLabelArrayInput
+	MaxSize                   pulumi.IntPtrInput
+	Metadatas                 ElastigroupMetadataArrayInput
+	MinSize                   pulumi.IntPtrInput
+	Name                      pulumi.StringPtrInput
+	NetworkInterfaces         ElastigroupNetworkInterfaceArrayInput
+	NodeImage                 pulumi.StringPtrInput
+	OndemandCount             pulumi.IntPtrInput
+	PreemptiblePercentage     pulumi.IntPtrInput
+	ProvisioningModel         pulumi.StringPtrInput
+	ScalingDownPolicies       ElastigroupScalingDownPolicyArrayInput
+	ScalingUpPolicies         ElastigroupScalingUpPolicyArrayInput
+	ServiceAccount            pulumi.StringPtrInput
+	ShutdownScript            pulumi.StringPtrInput
+	StartupScript             pulumi.StringPtrInput
+	Tags                      pulumi.StringArrayInput
 }
 
 func (ElastigroupArgs) ElementType() reflect.Type {
@@ -428,14 +401,11 @@ func (o ElastigroupOutput) BackendServices() ElastigroupBackendServiceArrayOutpu
 	return o.ApplyT(func(v *Elastigroup) ElastigroupBackendServiceArrayOutput { return v.BackendServices }).(ElastigroupBackendServiceArrayOutput)
 }
 
-// The name of the GKE cluster you wish to import.
-//
 // Deprecated: Please define clusterId under integration_gke
 func (o ElastigroupOutput) ClusterId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Elastigroup) pulumi.StringPtrOutput { return v.ClusterId }).(pulumi.StringPtrOutput)
 }
 
-// The zone where the cluster is hosted.
 func (o ElastigroupOutput) ClusterZoneName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Elastigroup) pulumi.StringOutput { return v.ClusterZoneName }).(pulumi.StringOutput)
 }
@@ -480,7 +450,6 @@ func (o ElastigroupOutput) IntegrationDockerSwarm() ElastigroupIntegrationDocker
 	return o.ApplyT(func(v *Elastigroup) ElastigroupIntegrationDockerSwarmPtrOutput { return v.IntegrationDockerSwarm }).(ElastigroupIntegrationDockerSwarmPtrOutput)
 }
 
-// Describes the GKE integration.
 func (o ElastigroupOutput) IntegrationGke() ElastigroupIntegrationGkePtrOutput {
 	return o.ApplyT(func(v *Elastigroup) ElastigroupIntegrationGkePtrOutput { return v.IntegrationGke }).(ElastigroupIntegrationGkePtrOutput)
 }
@@ -513,7 +482,6 @@ func (o ElastigroupOutput) NetworkInterfaces() ElastigroupNetworkInterfaceArrayO
 	return o.ApplyT(func(v *Elastigroup) ElastigroupNetworkInterfaceArrayOutput { return v.NetworkInterfaces }).(ElastigroupNetworkInterfaceArrayOutput)
 }
 
-// The image that will be used for the node VMs. Possible values: COS, UBUNTU.
 func (o ElastigroupOutput) NodeImage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Elastigroup) pulumi.StringPtrOutput { return v.NodeImage }).(pulumi.StringPtrOutput)
 }

@@ -17,10 +17,6 @@ public final class ElastigroupScalingDownPolicyDimension {
      * 
      */
     private String name;
-    /**
-     * @return Labels value.
-     * 
-     */
     private @Nullable String value;
 
     private ElastigroupScalingDownPolicyDimension() {}
@@ -31,10 +27,6 @@ public final class ElastigroupScalingDownPolicyDimension {
     public String name() {
         return this.name;
     }
-    /**
-     * @return Labels value.
-     * 
-     */
     public Optional<String> value() {
         return Optional.ofNullable(this.value);
     }

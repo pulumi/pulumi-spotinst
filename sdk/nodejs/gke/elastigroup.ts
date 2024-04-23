@@ -18,7 +18,6 @@ import * as utilities from "../utilities";
  * * you must include `clusterZoneName` and `clusterId`
  * * a handful of parameters are created remotely and will not appear in the diff. A complete list can be found below.
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as spotinst from "@pulumi/spotinst";
@@ -68,7 +67,6 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export class Elastigroup extends pulumi.CustomResource {
     /**
@@ -100,14 +98,9 @@ export class Elastigroup extends pulumi.CustomResource {
 
     public readonly backendServices!: pulumi.Output<outputs.gke.ElastigroupBackendService[] | undefined>;
     /**
-     * The name of the GKE cluster you wish to import.
-     *
      * @deprecated Please define clusterId under integration_gke
      */
     public readonly clusterId!: pulumi.Output<string | undefined>;
-    /**
-     * The zone where the cluster is hosted.
-     */
     public readonly clusterZoneName!: pulumi.Output<string>;
     public readonly desiredCapacity!: pulumi.Output<number>;
     public readonly disks!: pulumi.Output<outputs.gke.ElastigroupDisk[] | undefined>;
@@ -119,9 +112,6 @@ export class Elastigroup extends pulumi.CustomResource {
     public readonly instanceTypesOndemand!: pulumi.Output<string | undefined>;
     public readonly instanceTypesPreemptibles!: pulumi.Output<string[] | undefined>;
     public readonly integrationDockerSwarm!: pulumi.Output<outputs.gke.ElastigroupIntegrationDockerSwarm | undefined>;
-    /**
-     * Describes the GKE integration.
-     */
     public readonly integrationGke!: pulumi.Output<outputs.gke.ElastigroupIntegrationGke | undefined>;
     public readonly ipForwarding!: pulumi.Output<boolean | undefined>;
     public readonly labels!: pulumi.Output<outputs.gke.ElastigroupLabel[] | undefined>;
@@ -130,9 +120,6 @@ export class Elastigroup extends pulumi.CustomResource {
     public readonly minSize!: pulumi.Output<number>;
     public readonly name!: pulumi.Output<string>;
     public readonly networkInterfaces!: pulumi.Output<outputs.gke.ElastigroupNetworkInterface[] | undefined>;
-    /**
-     * The image that will be used for the node VMs. Possible values: COS, UBUNTU.
-     */
     public readonly nodeImage!: pulumi.Output<string | undefined>;
     public readonly ondemandCount!: pulumi.Output<number | undefined>;
     public readonly preemptiblePercentage!: pulumi.Output<number | undefined>;
@@ -239,14 +226,9 @@ export class Elastigroup extends pulumi.CustomResource {
 export interface ElastigroupState {
     backendServices?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupBackendService>[]>;
     /**
-     * The name of the GKE cluster you wish to import.
-     *
      * @deprecated Please define clusterId under integration_gke
      */
     clusterId?: pulumi.Input<string>;
-    /**
-     * The zone where the cluster is hosted.
-     */
     clusterZoneName?: pulumi.Input<string>;
     desiredCapacity?: pulumi.Input<number>;
     disks?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupDisk>[]>;
@@ -258,9 +240,6 @@ export interface ElastigroupState {
     instanceTypesOndemand?: pulumi.Input<string>;
     instanceTypesPreemptibles?: pulumi.Input<pulumi.Input<string>[]>;
     integrationDockerSwarm?: pulumi.Input<inputs.gke.ElastigroupIntegrationDockerSwarm>;
-    /**
-     * Describes the GKE integration.
-     */
     integrationGke?: pulumi.Input<inputs.gke.ElastigroupIntegrationGke>;
     ipForwarding?: pulumi.Input<boolean>;
     labels?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupLabel>[]>;
@@ -269,9 +248,6 @@ export interface ElastigroupState {
     minSize?: pulumi.Input<number>;
     name?: pulumi.Input<string>;
     networkInterfaces?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupNetworkInterface>[]>;
-    /**
-     * The image that will be used for the node VMs. Possible values: COS, UBUNTU.
-     */
     nodeImage?: pulumi.Input<string>;
     ondemandCount?: pulumi.Input<number>;
     preemptiblePercentage?: pulumi.Input<number>;
@@ -290,14 +266,9 @@ export interface ElastigroupState {
 export interface ElastigroupArgs {
     backendServices?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupBackendService>[]>;
     /**
-     * The name of the GKE cluster you wish to import.
-     *
      * @deprecated Please define clusterId under integration_gke
      */
     clusterId?: pulumi.Input<string>;
-    /**
-     * The zone where the cluster is hosted.
-     */
     clusterZoneName: pulumi.Input<string>;
     desiredCapacity: pulumi.Input<number>;
     disks?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupDisk>[]>;
@@ -309,9 +280,6 @@ export interface ElastigroupArgs {
     instanceTypesOndemand?: pulumi.Input<string>;
     instanceTypesPreemptibles?: pulumi.Input<pulumi.Input<string>[]>;
     integrationDockerSwarm?: pulumi.Input<inputs.gke.ElastigroupIntegrationDockerSwarm>;
-    /**
-     * Describes the GKE integration.
-     */
     integrationGke?: pulumi.Input<inputs.gke.ElastigroupIntegrationGke>;
     ipForwarding?: pulumi.Input<boolean>;
     labels?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupLabel>[]>;
@@ -320,9 +288,6 @@ export interface ElastigroupArgs {
     minSize?: pulumi.Input<number>;
     name?: pulumi.Input<string>;
     networkInterfaces?: pulumi.Input<pulumi.Input<inputs.gke.ElastigroupNetworkInterface>[]>;
-    /**
-     * The image that will be used for the node VMs. Possible values: COS, UBUNTU.
-     */
     nodeImage?: pulumi.Input<string>;
     ondemandCount?: pulumi.Input<number>;
     preemptiblePercentage?: pulumi.Input<number>;

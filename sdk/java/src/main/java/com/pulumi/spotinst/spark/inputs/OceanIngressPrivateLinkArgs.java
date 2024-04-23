@@ -17,14 +17,14 @@ public final class OceanIngressPrivateLinkArgs extends com.pulumi.resources.Reso
     public static final OceanIngressPrivateLinkArgs Empty = new OceanIngressPrivateLinkArgs();
 
     /**
-     * - Should the Ocean for Apache Spark control plane address the cluster using a custom endpoint. Use this to specify the DNS address of an externally provisioned (unmanaged) load balancer.
+     * - Should the Ocean for Apache Spark control plane address the cluster via an AWS Private Link. Only available on AWS.
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return - Should the Ocean for Apache Spark control plane address the cluster using a custom endpoint. Use this to specify the DNS address of an externally provisioned (unmanaged) load balancer.
+     * @return - Should the Ocean for Apache Spark control plane address the cluster via an AWS Private Link. Only available on AWS.
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -72,7 +72,7 @@ public final class OceanIngressPrivateLinkArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param enabled - Should the Ocean for Apache Spark control plane address the cluster using a custom endpoint. Use this to specify the DNS address of an externally provisioned (unmanaged) load balancer.
+         * @param enabled - Should the Ocean for Apache Spark control plane address the cluster via an AWS Private Link. Only available on AWS.
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class OceanIngressPrivateLinkArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param enabled - Should the Ocean for Apache Spark control plane address the cluster using a custom endpoint. Use this to specify the DNS address of an externally provisioned (unmanaged) load balancer.
+         * @param enabled - Should the Ocean for Apache Spark control plane address the cluster via an AWS Private Link. Only available on AWS.
          * 
          * @return builder
          * 

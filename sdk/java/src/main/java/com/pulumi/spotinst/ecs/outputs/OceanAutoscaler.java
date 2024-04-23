@@ -15,113 +15,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class OceanAutoscaler {
-    /**
-     * @return The auto-headroom percentage. Set a number between 0-200 to control the headroom % of the cluster. Relevant when `isAutoConfig`= true.
-     * 
-     */
     private @Nullable Integer autoHeadroomPercentage;
-    /**
-     * @return Cooldown period between scaling actions.
-     * 
-     */
     private @Nullable Integer cooldown;
-    /**
-     * @return Auto Scaling scale down operations.
-     * 
-     */
     private @Nullable OceanAutoscalerDown down;
-    /**
-     * @return When set to true, both automatic and per custom launch specification manual headroom to be saved concurrently and independently in the cluster. prerequisite: isAutoConfig must be true
-     * 
-     */
     private @Nullable Boolean enableAutomaticAndManualHeadroom;
-    /**
-     * @return Spare resource capacity management enabling fast assignment of tasks without waiting for new resources to launch.
-     * 
-     */
     private @Nullable OceanAutoscalerHeadroom headroom;
-    /**
-     * @return Automatically configure and optimize headroom resources.
-     * 
-     */
     private @Nullable Boolean isAutoConfig;
-    /**
-     * @return Enable the Ocean ECS autoscaler.
-     * 
-     */
     private @Nullable Boolean isEnabled;
-    /**
-     * @return Optionally set upper and lower bounds on the resource usage of the cluster.
-     * 
-     */
     private @Nullable OceanAutoscalerResourceLimits resourceLimits;
-    /**
-     * @return Option to scale down non-service tasks. If not set, Ocean does not scale down standalone tasks.
-     * 
-     */
     private @Nullable Boolean shouldScaleDownNonServiceTasks;
 
     private OceanAutoscaler() {}
-    /**
-     * @return The auto-headroom percentage. Set a number between 0-200 to control the headroom % of the cluster. Relevant when `isAutoConfig`= true.
-     * 
-     */
     public Optional<Integer> autoHeadroomPercentage() {
         return Optional.ofNullable(this.autoHeadroomPercentage);
     }
-    /**
-     * @return Cooldown period between scaling actions.
-     * 
-     */
     public Optional<Integer> cooldown() {
         return Optional.ofNullable(this.cooldown);
     }
-    /**
-     * @return Auto Scaling scale down operations.
-     * 
-     */
     public Optional<OceanAutoscalerDown> down() {
         return Optional.ofNullable(this.down);
     }
-    /**
-     * @return When set to true, both automatic and per custom launch specification manual headroom to be saved concurrently and independently in the cluster. prerequisite: isAutoConfig must be true
-     * 
-     */
     public Optional<Boolean> enableAutomaticAndManualHeadroom() {
         return Optional.ofNullable(this.enableAutomaticAndManualHeadroom);
     }
-    /**
-     * @return Spare resource capacity management enabling fast assignment of tasks without waiting for new resources to launch.
-     * 
-     */
     public Optional<OceanAutoscalerHeadroom> headroom() {
         return Optional.ofNullable(this.headroom);
     }
-    /**
-     * @return Automatically configure and optimize headroom resources.
-     * 
-     */
     public Optional<Boolean> isAutoConfig() {
         return Optional.ofNullable(this.isAutoConfig);
     }
-    /**
-     * @return Enable the Ocean ECS autoscaler.
-     * 
-     */
     public Optional<Boolean> isEnabled() {
         return Optional.ofNullable(this.isEnabled);
     }
-    /**
-     * @return Optionally set upper and lower bounds on the resource usage of the cluster.
-     * 
-     */
     public Optional<OceanAutoscalerResourceLimits> resourceLimits() {
         return Optional.ofNullable(this.resourceLimits);
     }
-    /**
-     * @return Option to scale down non-service tasks. If not set, Ocean does not scale down standalone tasks.
-     * 
-     */
     public Optional<Boolean> shouldScaleDownNonServiceTasks() {
         return Optional.ofNullable(this.shouldScaleDownNonServiceTasks);
     }

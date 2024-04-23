@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class OceanIngressPrivateLink {
     /**
-     * @return - Should the Ocean for Apache Spark control plane address the cluster using a custom endpoint. Use this to specify the DNS address of an externally provisioned (unmanaged) load balancer.
+     * @return - Should the Ocean for Apache Spark control plane address the cluster via an AWS Private Link. Only available on AWS.
      * 
      */
     private @Nullable Boolean enabled;
@@ -25,7 +25,7 @@ public final class OceanIngressPrivateLink {
 
     private OceanIngressPrivateLink() {}
     /**
-     * @return - Should the Ocean for Apache Spark control plane address the cluster using a custom endpoint. Use this to specify the DNS address of an externally provisioned (unmanaged) load balancer.
+     * @return - Should the Ocean for Apache Spark control plane address the cluster via an AWS Private Link. Only available on AWS.
      * 
      */
     public Optional<Boolean> enabled() {

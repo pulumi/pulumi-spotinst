@@ -10,29 +10,13 @@ import java.util.Objects;
 
 @CustomType
 public final class ElastigroupIntegrationGkeAutoscaleLabel {
-    /**
-     * @return Labels key.
-     * 
-     */
     private String key;
-    /**
-     * @return Labels value.
-     * 
-     */
     private String value;
 
     private ElastigroupIntegrationGkeAutoscaleLabel() {}
-    /**
-     * @return Labels key.
-     * 
-     */
     public String key() {
         return this.key;
     }
-    /**
-     * @return Labels value.
-     * 
-     */
     public String value() {
         return this.value;
     }

@@ -19,7 +19,7 @@ namespace Pulumi.SpotInst.Azure.Inputs
         public Input<int> SizeGb { get; set; } = null!;
 
         /// <summary>
-        /// The type of load balancer. Supported value: `loadBalancer`
+        /// The type of the OS disk. Supported values: `Standard_LRS`, `Premium_LRS`, `StandardSSD_LRS`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

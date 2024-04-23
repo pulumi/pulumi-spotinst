@@ -13,9 +13,6 @@ namespace Pulumi.SpotInst.Aws.Outputs
     [OutputType]
     public sealed class ElastigroupIntegrationGitlabRunner
     {
-        /// <summary>
-        /// Specifies whether the scaling policy described in this block is enabled.
-        /// </summary>
         public readonly bool? IsEnabled;
 
         [OutputConstructor]

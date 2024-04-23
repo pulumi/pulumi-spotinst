@@ -12,27 +12,17 @@ namespace Pulumi.SpotInst.Aws.Inputs
 
     public sealed class ElastigroupIntegrationCodedeployArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Cleanup automatically after a failed deploy.
-        /// </summary>
         [Input("cleanupOnFailure", required: true)]
         public Input<bool> CleanupOnFailure { get; set; } = null!;
 
         [Input("deploymentGroups", required: true)]
         private InputList<Inputs.ElastigroupIntegrationCodedeployDeploymentGroupArgs>? _deploymentGroups;
-
-        /// <summary>
-        /// Specify the deployment groups details.
-        /// </summary>
         public InputList<Inputs.ElastigroupIntegrationCodedeployDeploymentGroupArgs> DeploymentGroups
         {
             get => _deploymentGroups ?? (_deploymentGroups = new InputList<Inputs.ElastigroupIntegrationCodedeployDeploymentGroupArgs>());
             set => _deploymentGroups = value;
         }
 
-        /// <summary>
-        /// Terminate the instance automatically after a failed deploy.
-        /// </summary>
         [Input("terminateInstanceOnFailure", required: true)]
         public Input<bool> TerminateInstanceOnFailure { get; set; } = null!;
 

@@ -11,7 +11,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as spotinst from "@pulumi/spotinst";
@@ -103,7 +102,6 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Block Devices
  *
@@ -166,7 +164,7 @@ export class OceanLaunchSpec extends pulumi.CustomResource {
      */
     public readonly iamInstanceProfile!: pulumi.Output<string | undefined>;
     /**
-     * Identifier of the image in AWS. Valid values: any string which is not empty or null.
+     * ID of the image used to launch the instances.
      */
     public readonly imageId!: pulumi.Output<string | undefined>;
     /**
@@ -300,7 +298,7 @@ export interface OceanLaunchSpecState {
      */
     iamInstanceProfile?: pulumi.Input<string>;
     /**
-     * Identifier of the image in AWS. Valid values: any string which is not empty or null.
+     * ID of the image used to launch the instances.
      */
     imageId?: pulumi.Input<string>;
     /**
@@ -375,7 +373,7 @@ export interface OceanLaunchSpecArgs {
      */
     iamInstanceProfile?: pulumi.Input<string>;
     /**
-     * Identifier of the image in AWS. Valid values: any string which is not empty or null.
+     * ID of the image used to launch the instances.
      */
     imageId?: pulumi.Input<string>;
     /**

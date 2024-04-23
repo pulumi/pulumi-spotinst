@@ -18,34 +18,16 @@ public final class OceanImportScheduledTaskShutdownHoursArgs extends com.pulumi.
 
     public static final OceanImportScheduledTaskShutdownHoursArgs Empty = new OceanImportScheduledTaskShutdownHoursArgs();
 
-    /**
-     * Enable the Ocean Kubernetes Autoscaler.
-     * 
-     */
     @Import(name="isEnabled")
     private @Nullable Output<Boolean> isEnabled;
 
-    /**
-     * @return Enable the Ocean Kubernetes Autoscaler.
-     * 
-     */
     public Optional<Output<Boolean>> isEnabled() {
         return Optional.ofNullable(this.isEnabled);
     }
 
-    /**
-     * Set time windows for shutdown hours. specify a list of &#39;timeWindows&#39; with at least one time window Each string is in the format of - ddd:hh:mm-ddd:hh:mm ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59. Time windows should not overlap. required on cluster.scheduling.isEnabled = True. API Times are in UTC
-     * Example: Fri:15:30-Wed:14:30
-     * 
-     */
     @Import(name="timeWindows", required=true)
     private Output<List<String>> timeWindows;
 
-    /**
-     * @return Set time windows for shutdown hours. specify a list of &#39;timeWindows&#39; with at least one time window Each string is in the format of - ddd:hh:mm-ddd:hh:mm ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59. Time windows should not overlap. required on cluster.scheduling.isEnabled = True. API Times are in UTC
-     * Example: Fri:15:30-Wed:14:30
-     * 
-     */
     public Output<List<String>> timeWindows() {
         return this.timeWindows;
     }
@@ -75,57 +57,24 @@ public final class OceanImportScheduledTaskShutdownHoursArgs extends com.pulumi.
             $ = new OceanImportScheduledTaskShutdownHoursArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param isEnabled Enable the Ocean Kubernetes Autoscaler.
-         * 
-         * @return builder
-         * 
-         */
         public Builder isEnabled(@Nullable Output<Boolean> isEnabled) {
             $.isEnabled = isEnabled;
             return this;
         }
 
-        /**
-         * @param isEnabled Enable the Ocean Kubernetes Autoscaler.
-         * 
-         * @return builder
-         * 
-         */
         public Builder isEnabled(Boolean isEnabled) {
             return isEnabled(Output.of(isEnabled));
         }
 
-        /**
-         * @param timeWindows Set time windows for shutdown hours. specify a list of &#39;timeWindows&#39; with at least one time window Each string is in the format of - ddd:hh:mm-ddd:hh:mm ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59. Time windows should not overlap. required on cluster.scheduling.isEnabled = True. API Times are in UTC
-         * Example: Fri:15:30-Wed:14:30
-         * 
-         * @return builder
-         * 
-         */
         public Builder timeWindows(Output<List<String>> timeWindows) {
             $.timeWindows = timeWindows;
             return this;
         }
 
-        /**
-         * @param timeWindows Set time windows for shutdown hours. specify a list of &#39;timeWindows&#39; with at least one time window Each string is in the format of - ddd:hh:mm-ddd:hh:mm ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59. Time windows should not overlap. required on cluster.scheduling.isEnabled = True. API Times are in UTC
-         * Example: Fri:15:30-Wed:14:30
-         * 
-         * @return builder
-         * 
-         */
         public Builder timeWindows(List<String> timeWindows) {
             return timeWindows(Output.of(timeWindows));
         }
 
-        /**
-         * @param timeWindows Set time windows for shutdown hours. specify a list of &#39;timeWindows&#39; with at least one time window Each string is in the format of - ddd:hh:mm-ddd:hh:mm ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59. Time windows should not overlap. required on cluster.scheduling.isEnabled = True. API Times are in UTC
-         * Example: Fri:15:30-Wed:14:30
-         * 
-         * @return builder
-         * 
-         */
         public Builder timeWindows(String... timeWindows) {
             return timeWindows(List.of(timeWindows));
         }

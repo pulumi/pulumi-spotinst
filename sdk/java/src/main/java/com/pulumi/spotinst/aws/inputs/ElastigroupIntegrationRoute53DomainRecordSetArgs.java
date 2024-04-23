@@ -32,36 +32,16 @@ public final class ElastigroupIntegrationRoute53DomainRecordSetArgs extends com.
         return this.name;
     }
 
-    /**
-     * Designates whether the DNS address should be exposed to connections outside the VPC.
-     * 
-     * Usage:
-     * 
-     */
     @Import(name="usePublicDns")
     private @Nullable Output<Boolean> usePublicDns;
 
-    /**
-     * @return Designates whether the DNS address should be exposed to connections outside the VPC.
-     * 
-     * Usage:
-     * 
-     */
     public Optional<Output<Boolean>> usePublicDns() {
         return Optional.ofNullable(this.usePublicDns);
     }
 
-    /**
-     * Designates whether the IP address should be exposed to connections outside the VPC.
-     * 
-     */
     @Import(name="usePublicIp")
     private @Nullable Output<Boolean> usePublicIp;
 
-    /**
-     * @return Designates whether the IP address should be exposed to connections outside the VPC.
-     * 
-     */
     public Optional<Output<Boolean>> usePublicIp() {
         return Optional.ofNullable(this.usePublicIp);
     }
@@ -113,48 +93,20 @@ public final class ElastigroupIntegrationRoute53DomainRecordSetArgs extends com.
             return name(Output.of(name));
         }
 
-        /**
-         * @param usePublicDns Designates whether the DNS address should be exposed to connections outside the VPC.
-         * 
-         * Usage:
-         * 
-         * @return builder
-         * 
-         */
         public Builder usePublicDns(@Nullable Output<Boolean> usePublicDns) {
             $.usePublicDns = usePublicDns;
             return this;
         }
 
-        /**
-         * @param usePublicDns Designates whether the DNS address should be exposed to connections outside the VPC.
-         * 
-         * Usage:
-         * 
-         * @return builder
-         * 
-         */
         public Builder usePublicDns(Boolean usePublicDns) {
             return usePublicDns(Output.of(usePublicDns));
         }
 
-        /**
-         * @param usePublicIp Designates whether the IP address should be exposed to connections outside the VPC.
-         * 
-         * @return builder
-         * 
-         */
         public Builder usePublicIp(@Nullable Output<Boolean> usePublicIp) {
             $.usePublicIp = usePublicIp;
             return this;
         }
 
-        /**
-         * @param usePublicIp Designates whether the IP address should be exposed to connections outside the VPC.
-         * 
-         * @return builder
-         * 
-         */
         public Builder usePublicIp(Boolean usePublicIp) {
             return usePublicIp(Output.of(usePublicIp));
         }

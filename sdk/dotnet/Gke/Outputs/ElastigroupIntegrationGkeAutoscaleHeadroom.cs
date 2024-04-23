@@ -13,17 +13,8 @@ namespace Pulumi.SpotInst.Gke.Outputs
     [OutputType]
     public sealed class ElastigroupIntegrationGkeAutoscaleHeadroom
     {
-        /// <summary>
-        /// Cpu units for compute.
-        /// </summary>
         public readonly int? CpuPerUnit;
-        /// <summary>
-        /// RAM units for compute.
-        /// </summary>
         public readonly int? MemoryPerUnit;
-        /// <summary>
-        /// Amount of units for compute.
-        /// </summary>
         public readonly int? NumOfUnits;
 
         [OutputConstructor]

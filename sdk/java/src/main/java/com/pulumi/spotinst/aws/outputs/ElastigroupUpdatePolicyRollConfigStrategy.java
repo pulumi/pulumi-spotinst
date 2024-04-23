@@ -15,53 +15,21 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ElastigroupUpdatePolicyRollConfigStrategy {
-    /**
-     * @return The action to take when scale up according to step&#39;s threshold is needed.
-     * 
-     */
     private String action;
-    /**
-     * @return Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the deployment will fail. Range `1` - `100`.
-     * 
-     */
     private @Nullable Integer batchMinHealthyPercentage;
-    /**
-     * @return Set detach options to the deployment.
-     * 
-     */
     private @Nullable ElastigroupUpdatePolicyRollConfigStrategyOnFailure onFailure;
-    /**
-     * @return Bool value if to wait to drain instance
-     * 
-     */
     private @Nullable Boolean shouldDrainInstances;
 
     private ElastigroupUpdatePolicyRollConfigStrategy() {}
-    /**
-     * @return The action to take when scale up according to step&#39;s threshold is needed.
-     * 
-     */
     public String action() {
         return this.action;
     }
-    /**
-     * @return Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the deployment will fail. Range `1` - `100`.
-     * 
-     */
     public Optional<Integer> batchMinHealthyPercentage() {
         return Optional.ofNullable(this.batchMinHealthyPercentage);
     }
-    /**
-     * @return Set detach options to the deployment.
-     * 
-     */
     public Optional<ElastigroupUpdatePolicyRollConfigStrategyOnFailure> onFailure() {
         return Optional.ofNullable(this.onFailure);
     }
-    /**
-     * @return Bool value if to wait to drain instance
-     * 
-     */
     public Optional<Boolean> shouldDrainInstances() {
         return Optional.ofNullable(this.shouldDrainInstances);
     }

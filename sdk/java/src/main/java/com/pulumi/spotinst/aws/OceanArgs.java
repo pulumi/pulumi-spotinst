@@ -67,17 +67,9 @@ public final class OceanArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.autoscaler);
     }
 
-    /**
-     * Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist` is configured.
-     * 
-     */
     @Import(name="blacklists")
     private @Nullable Output<List<String>> blacklists;
 
-    /**
-     * @return Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist` is configured.
-     * 
-     */
     public Optional<Output<List<String>>> blacklists() {
         return Optional.ofNullable(this.blacklists);
     }
@@ -179,17 +171,9 @@ public final class OceanArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.fallbackToOndemand);
     }
 
-    /**
-     * List of filters. The Instance types that match with all filters compose the Ocean&#39;s whitelist parameter. Cannot be configured together with whitelist/blacklist.
-     * 
-     */
     @Import(name="filters")
     private @Nullable Output<OceanFiltersArgs> filters;
 
-    /**
-     * @return List of filters. The Instance types that match with all filters compose the Ocean&#39;s whitelist parameter. Cannot be configured together with whitelist/blacklist.
-     * 
-     */
     public Optional<Output<OceanFiltersArgs>> filters() {
         return Optional.ofNullable(this.filters);
     }
@@ -360,14 +344,14 @@ public final class OceanArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Required if type is set to `CLASSIC`
+     * The cluster name.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Required if type is set to `CLASSIC`
+     * @return The cluster name.
      * 
      */
     public Optional<Output<String>> name() {
@@ -570,17 +554,9 @@ public final class OceanArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.utilizeReservedInstances);
     }
 
-    /**
-     * Instance types allowed in the Ocean cluster. Cannot be configured if `blacklist` is configured.
-     * 
-     */
     @Import(name="whitelists")
     private @Nullable Output<List<String>> whitelists;
 
-    /**
-     * @return Instance types allowed in the Ocean cluster. Cannot be configured if `blacklist` is configured.
-     * 
-     */
     public Optional<Output<List<String>>> whitelists() {
         return Optional.ofNullable(this.whitelists);
     }
@@ -698,33 +674,15 @@ public final class OceanArgs extends com.pulumi.resources.ResourceArgs {
             return autoscaler(Output.of(autoscaler));
         }
 
-        /**
-         * @param blacklists Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist` is configured.
-         * 
-         * @return builder
-         * 
-         */
         public Builder blacklists(@Nullable Output<List<String>> blacklists) {
             $.blacklists = blacklists;
             return this;
         }
 
-        /**
-         * @param blacklists Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist` is configured.
-         * 
-         * @return builder
-         * 
-         */
         public Builder blacklists(List<String> blacklists) {
             return blacklists(Output.of(blacklists));
         }
 
-        /**
-         * @param blacklists Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist` is configured.
-         * 
-         * @return builder
-         * 
-         */
         public Builder blacklists(String... blacklists) {
             return blacklists(List.of(blacklists));
         }
@@ -878,23 +836,11 @@ public final class OceanArgs extends com.pulumi.resources.ResourceArgs {
             return fallbackToOndemand(Output.of(fallbackToOndemand));
         }
 
-        /**
-         * @param filters List of filters. The Instance types that match with all filters compose the Ocean&#39;s whitelist parameter. Cannot be configured together with whitelist/blacklist.
-         * 
-         * @return builder
-         * 
-         */
         public Builder filters(@Nullable Output<OceanFiltersArgs> filters) {
             $.filters = filters;
             return this;
         }
 
-        /**
-         * @param filters List of filters. The Instance types that match with all filters compose the Ocean&#39;s whitelist parameter. Cannot be configured together with whitelist/blacklist.
-         * 
-         * @return builder
-         * 
-         */
         public Builder filters(OceanFiltersArgs filters) {
             return filters(Output.of(filters));
         }
@@ -1141,7 +1087,7 @@ public final class OceanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Required if type is set to `CLASSIC`
+         * @param name The cluster name.
          * 
          * @return builder
          * 
@@ -1152,7 +1098,7 @@ public final class OceanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Required if type is set to `CLASSIC`
+         * @param name The cluster name.
          * 
          * @return builder
          * 
@@ -1477,33 +1423,15 @@ public final class OceanArgs extends com.pulumi.resources.ResourceArgs {
             return utilizeReservedInstances(Output.of(utilizeReservedInstances));
         }
 
-        /**
-         * @param whitelists Instance types allowed in the Ocean cluster. Cannot be configured if `blacklist` is configured.
-         * 
-         * @return builder
-         * 
-         */
         public Builder whitelists(@Nullable Output<List<String>> whitelists) {
             $.whitelists = whitelists;
             return this;
         }
 
-        /**
-         * @param whitelists Instance types allowed in the Ocean cluster. Cannot be configured if `blacklist` is configured.
-         * 
-         * @return builder
-         * 
-         */
         public Builder whitelists(List<String> whitelists) {
             return whitelists(Output.of(whitelists));
         }
 
-        /**
-         * @param whitelists Instance types allowed in the Ocean cluster. Cannot be configured if `blacklist` is configured.
-         * 
-         * @return builder
-         * 
-         */
         public Builder whitelists(String... whitelists) {
             return whitelists(List.of(whitelists));
         }

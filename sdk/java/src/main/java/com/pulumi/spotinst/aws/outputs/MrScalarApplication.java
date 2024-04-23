@@ -13,27 +13,15 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class MrScalarApplication {
-    /**
-     * @return Arguments for EMR to pass to the application.
-     * 
-     */
     private @Nullable List<String> args;
     /**
      * @return The MrScaler name.
      * 
      */
     private String name;
-    /**
-     * @return T he version of the application.
-     * 
-     */
     private @Nullable String version;
 
     private MrScalarApplication() {}
-    /**
-     * @return Arguments for EMR to pass to the application.
-     * 
-     */
     public List<String> args() {
         return this.args == null ? List.of() : this.args;
     }
@@ -44,10 +32,6 @@ public final class MrScalarApplication {
     public String name() {
         return this.name;
     }
-    /**
-     * @return T he version of the application.
-     * 
-     */
     public Optional<String> version() {
         return Optional.ofNullable(this.version);
     }

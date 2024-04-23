@@ -16,31 +16,23 @@ public final class OceanLaunchSpecNetworkInterfaceAccessConfigArgs extends com.p
     public static final OceanLaunchSpecNetworkInterfaceAccessConfigArgs Empty = new OceanLaunchSpecNetworkInterfaceAccessConfigArgs();
 
     /**
-     * The name of the access configuration.
+     * The launch specification name.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the access configuration.
+     * @return The launch specification name.
      * 
      */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
-    /**
-     * The type of the access configuration.
-     * 
-     */
     @Import(name="type")
     private @Nullable Output<String> type;
 
-    /**
-     * @return The type of the access configuration.
-     * 
-     */
     public Optional<Output<String>> type() {
         return Optional.ofNullable(this.type);
     }
@@ -71,7 +63,7 @@ public final class OceanLaunchSpecNetworkInterfaceAccessConfigArgs extends com.p
         }
 
         /**
-         * @param name The name of the access configuration.
+         * @param name The launch specification name.
          * 
          * @return builder
          * 
@@ -82,7 +74,7 @@ public final class OceanLaunchSpecNetworkInterfaceAccessConfigArgs extends com.p
         }
 
         /**
-         * @param name The name of the access configuration.
+         * @param name The launch specification name.
          * 
          * @return builder
          * 
@@ -91,23 +83,11 @@ public final class OceanLaunchSpecNetworkInterfaceAccessConfigArgs extends com.p
             return name(Output.of(name));
         }
 
-        /**
-         * @param type The type of the access configuration.
-         * 
-         * @return builder
-         * 
-         */
         public Builder type(@Nullable Output<String> type) {
             $.type = type;
             return this;
         }
 
-        /**
-         * @param type The type of the access configuration.
-         * 
-         * @return builder
-         * 
-         */
         public Builder type(String type) {
             return type(Output.of(type));
         }

@@ -13,21 +13,9 @@ namespace Pulumi.SpotInst.Aws.Outputs
     [OutputType]
     public sealed class ElastigroupIntegrationRoute53Domain
     {
-        /// <summary>
-        /// The id associated with a hosted zone.
-        /// </summary>
         public readonly string HostedZoneId;
-        /// <summary>
-        /// The type of the record set. Valid values: `"a"`, `"cname"`.
-        /// </summary>
         public readonly string? RecordSetType;
-        /// <summary>
-        /// Collection of records containing authoritative DNS information for the specified domain name.
-        /// </summary>
         public readonly ImmutableArray<Outputs.ElastigroupIntegrationRoute53DomainRecordSet> RecordSets;
-        /// <summary>
-        /// The Spotinst account ID that is linked to the AWS account that holds the Route 53 Hosted Zone ID. The default is the user Spotinst account provided as a URL parameter.
-        /// </summary>
         public readonly string? SpotinstAcctId;
 
         [OutputConstructor]

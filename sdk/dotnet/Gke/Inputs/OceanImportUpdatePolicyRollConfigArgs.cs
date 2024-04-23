@@ -15,10 +15,6 @@ namespace Pulumi.SpotInst.Gke.Inputs
         [Input("batchMinHealthyPercentage")]
         public Input<int>? BatchMinHealthyPercentage { get; set; }
 
-        /// <summary>
-        /// Value in % to set size of batch in roll. Valid values are 0-100
-        /// Example: 20.
-        /// </summary>
         [Input("batchSizePercentage", required: true)]
         public Input<int> BatchSizePercentage { get; set; } = null!;
 

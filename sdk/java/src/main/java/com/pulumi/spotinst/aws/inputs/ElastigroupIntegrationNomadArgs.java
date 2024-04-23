@@ -22,126 +22,58 @@ public final class ElastigroupIntegrationNomadArgs extends com.pulumi.resources.
 
     public static final ElastigroupIntegrationNomadArgs Empty = new ElastigroupIntegrationNomadArgs();
 
-    /**
-     * Nomad ACL Token
-     * 
-     */
     @Import(name="aclToken")
     private @Nullable Output<String> aclToken;
 
-    /**
-     * @return Nomad ACL Token
-     * 
-     */
     public Optional<Output<String>> aclToken() {
         return Optional.ofNullable(this.aclToken);
     }
 
-    /**
-     * A key/value mapping of tags to assign to the resource.
-     * 
-     * Usage:
-     * 
-     */
     @Import(name="autoscaleConstraints")
     private @Nullable Output<List<ElastigroupIntegrationNomadAutoscaleConstraintArgs>> autoscaleConstraints;
 
-    /**
-     * @return A key/value mapping of tags to assign to the resource.
-     * 
-     * Usage:
-     * 
-     */
     public Optional<Output<List<ElastigroupIntegrationNomadAutoscaleConstraintArgs>>> autoscaleConstraints() {
         return Optional.ofNullable(this.autoscaleConstraints);
     }
 
-    /**
-     * The amount of time, in seconds, after a scaling activity completes before any further trigger-related scaling activities can start.
-     * 
-     */
     @Import(name="autoscaleCooldown")
     private @Nullable Output<Integer> autoscaleCooldown;
 
-    /**
-     * @return The amount of time, in seconds, after a scaling activity completes before any further trigger-related scaling activities can start.
-     * 
-     */
     public Optional<Output<Integer>> autoscaleCooldown() {
         return Optional.ofNullable(this.autoscaleCooldown);
     }
 
-    /**
-     * Settings for scale down actions.
-     * 
-     */
     @Import(name="autoscaleDown")
     private @Nullable Output<ElastigroupIntegrationNomadAutoscaleDownArgs> autoscaleDown;
 
-    /**
-     * @return Settings for scale down actions.
-     * 
-     */
     public Optional<Output<ElastigroupIntegrationNomadAutoscaleDownArgs>> autoscaleDown() {
         return Optional.ofNullable(this.autoscaleDown);
     }
 
-    /**
-     * An option to set compute reserve for the cluster.
-     * 
-     */
     @Import(name="autoscaleHeadroom")
     private @Nullable Output<ElastigroupIntegrationNomadAutoscaleHeadroomArgs> autoscaleHeadroom;
 
-    /**
-     * @return An option to set compute reserve for the cluster.
-     * 
-     */
     public Optional<Output<ElastigroupIntegrationNomadAutoscaleHeadroomArgs>> autoscaleHeadroom() {
         return Optional.ofNullable(this.autoscaleHeadroom);
     }
 
-    /**
-     * Specifies whether the auto scaling feature is enabled.
-     * 
-     */
     @Import(name="autoscaleIsEnabled")
     private @Nullable Output<Boolean> autoscaleIsEnabled;
 
-    /**
-     * @return Specifies whether the auto scaling feature is enabled.
-     * 
-     */
     public Optional<Output<Boolean>> autoscaleIsEnabled() {
         return Optional.ofNullable(this.autoscaleIsEnabled);
     }
 
-    /**
-     * The URL for the Nomad master host.
-     * 
-     */
     @Import(name="masterHost", required=true)
     private Output<String> masterHost;
 
-    /**
-     * @return The URL for the Nomad master host.
-     * 
-     */
     public Output<String> masterHost() {
         return this.masterHost;
     }
 
-    /**
-     * The network port for the master host.
-     * 
-     */
     @Import(name="masterPort", required=true)
     private Output<Integer> masterPort;
 
-    /**
-     * @return The network port for the master host.
-     * 
-     */
     public Output<Integer> masterPort() {
         return this.masterPort;
     }
@@ -177,186 +109,78 @@ public final class ElastigroupIntegrationNomadArgs extends com.pulumi.resources.
             $ = new ElastigroupIntegrationNomadArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param aclToken Nomad ACL Token
-         * 
-         * @return builder
-         * 
-         */
         public Builder aclToken(@Nullable Output<String> aclToken) {
             $.aclToken = aclToken;
             return this;
         }
 
-        /**
-         * @param aclToken Nomad ACL Token
-         * 
-         * @return builder
-         * 
-         */
         public Builder aclToken(String aclToken) {
             return aclToken(Output.of(aclToken));
         }
 
-        /**
-         * @param autoscaleConstraints A key/value mapping of tags to assign to the resource.
-         * 
-         * Usage:
-         * 
-         * @return builder
-         * 
-         */
         public Builder autoscaleConstraints(@Nullable Output<List<ElastigroupIntegrationNomadAutoscaleConstraintArgs>> autoscaleConstraints) {
             $.autoscaleConstraints = autoscaleConstraints;
             return this;
         }
 
-        /**
-         * @param autoscaleConstraints A key/value mapping of tags to assign to the resource.
-         * 
-         * Usage:
-         * 
-         * @return builder
-         * 
-         */
         public Builder autoscaleConstraints(List<ElastigroupIntegrationNomadAutoscaleConstraintArgs> autoscaleConstraints) {
             return autoscaleConstraints(Output.of(autoscaleConstraints));
         }
 
-        /**
-         * @param autoscaleConstraints A key/value mapping of tags to assign to the resource.
-         * 
-         * Usage:
-         * 
-         * @return builder
-         * 
-         */
         public Builder autoscaleConstraints(ElastigroupIntegrationNomadAutoscaleConstraintArgs... autoscaleConstraints) {
             return autoscaleConstraints(List.of(autoscaleConstraints));
         }
 
-        /**
-         * @param autoscaleCooldown The amount of time, in seconds, after a scaling activity completes before any further trigger-related scaling activities can start.
-         * 
-         * @return builder
-         * 
-         */
         public Builder autoscaleCooldown(@Nullable Output<Integer> autoscaleCooldown) {
             $.autoscaleCooldown = autoscaleCooldown;
             return this;
         }
 
-        /**
-         * @param autoscaleCooldown The amount of time, in seconds, after a scaling activity completes before any further trigger-related scaling activities can start.
-         * 
-         * @return builder
-         * 
-         */
         public Builder autoscaleCooldown(Integer autoscaleCooldown) {
             return autoscaleCooldown(Output.of(autoscaleCooldown));
         }
 
-        /**
-         * @param autoscaleDown Settings for scale down actions.
-         * 
-         * @return builder
-         * 
-         */
         public Builder autoscaleDown(@Nullable Output<ElastigroupIntegrationNomadAutoscaleDownArgs> autoscaleDown) {
             $.autoscaleDown = autoscaleDown;
             return this;
         }
 
-        /**
-         * @param autoscaleDown Settings for scale down actions.
-         * 
-         * @return builder
-         * 
-         */
         public Builder autoscaleDown(ElastigroupIntegrationNomadAutoscaleDownArgs autoscaleDown) {
             return autoscaleDown(Output.of(autoscaleDown));
         }
 
-        /**
-         * @param autoscaleHeadroom An option to set compute reserve for the cluster.
-         * 
-         * @return builder
-         * 
-         */
         public Builder autoscaleHeadroom(@Nullable Output<ElastigroupIntegrationNomadAutoscaleHeadroomArgs> autoscaleHeadroom) {
             $.autoscaleHeadroom = autoscaleHeadroom;
             return this;
         }
 
-        /**
-         * @param autoscaleHeadroom An option to set compute reserve for the cluster.
-         * 
-         * @return builder
-         * 
-         */
         public Builder autoscaleHeadroom(ElastigroupIntegrationNomadAutoscaleHeadroomArgs autoscaleHeadroom) {
             return autoscaleHeadroom(Output.of(autoscaleHeadroom));
         }
 
-        /**
-         * @param autoscaleIsEnabled Specifies whether the auto scaling feature is enabled.
-         * 
-         * @return builder
-         * 
-         */
         public Builder autoscaleIsEnabled(@Nullable Output<Boolean> autoscaleIsEnabled) {
             $.autoscaleIsEnabled = autoscaleIsEnabled;
             return this;
         }
 
-        /**
-         * @param autoscaleIsEnabled Specifies whether the auto scaling feature is enabled.
-         * 
-         * @return builder
-         * 
-         */
         public Builder autoscaleIsEnabled(Boolean autoscaleIsEnabled) {
             return autoscaleIsEnabled(Output.of(autoscaleIsEnabled));
         }
 
-        /**
-         * @param masterHost The URL for the Nomad master host.
-         * 
-         * @return builder
-         * 
-         */
         public Builder masterHost(Output<String> masterHost) {
             $.masterHost = masterHost;
             return this;
         }
 
-        /**
-         * @param masterHost The URL for the Nomad master host.
-         * 
-         * @return builder
-         * 
-         */
         public Builder masterHost(String masterHost) {
             return masterHost(Output.of(masterHost));
         }
 
-        /**
-         * @param masterPort The network port for the master host.
-         * 
-         * @return builder
-         * 
-         */
         public Builder masterPort(Output<Integer> masterPort) {
             $.masterPort = masterPort;
             return this;
         }
 
-        /**
-         * @param masterPort The network port for the master host.
-         * 
-         * @return builder
-         * 
-         */
         public Builder masterPort(Integer masterPort) {
             return masterPort(Output.of(masterPort));
         }

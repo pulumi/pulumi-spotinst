@@ -16,12 +16,12 @@ public final class OceanVirtualNodeGroupTaint {
      */
     private String effect;
     /**
-     * @return Tag Key for Vms in the cluster.
+     * @return The taint key.
      * 
      */
     private String key;
     /**
-     * @return Tag Value for VMs in the cluster.
+     * @return The taint value.
      * 
      */
     private String value;
@@ -35,14 +35,14 @@ public final class OceanVirtualNodeGroupTaint {
         return this.effect;
     }
     /**
-     * @return Tag Key for Vms in the cluster.
+     * @return The taint key.
      * 
      */
     public String key() {
         return this.key;
     }
     /**
-     * @return Tag Value for VMs in the cluster.
+     * @return The taint value.
      * 
      */
     public String value() {

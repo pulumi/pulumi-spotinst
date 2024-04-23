@@ -16,7 +16,6 @@ namespace Pulumi.SpotInst.Azure
     /// 
     /// ## Example Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -174,7 +173,6 @@ namespace Pulumi.SpotInst.Azure
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [SpotInstResourceType("spotinst:azure/ocean:Ocean")]
     public partial class Ocean : global::Pulumi.CustomResource
@@ -252,7 +250,7 @@ namespace Pulumi.SpotInst.Azure
         public Output<int?> MaxPods { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the Load Balancer.
+        /// The Ocean cluster name.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -270,7 +268,7 @@ namespace Pulumi.SpotInst.Azure
         public Output<Outputs.OceanOsDisk?> OsDisk { get; private set; } = null!;
 
         /// <summary>
-        /// The Resource Group name of the Load Balancer.
+        /// Name of the Azure Resource Group into which VMs will be launched. Cannot be updated.
         /// </summary>
         [Output("resourceGroupName")]
         public Output<string> ResourceGroupName { get; private set; } = null!;
@@ -454,7 +452,7 @@ namespace Pulumi.SpotInst.Azure
         public Input<int>? MaxPods { get; set; }
 
         /// <summary>
-        /// Name of the Load Balancer.
+        /// The Ocean cluster name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -472,7 +470,7 @@ namespace Pulumi.SpotInst.Azure
         public Input<Inputs.OceanOsDiskArgs>? OsDisk { get; set; }
 
         /// <summary>
-        /// The Resource Group name of the Load Balancer.
+        /// Name of the Azure Resource Group into which VMs will be launched. Cannot be updated.
         /// </summary>
         [Input("resourceGroupName")]
         public Input<string>? ResourceGroupName { get; set; }
@@ -642,7 +640,7 @@ namespace Pulumi.SpotInst.Azure
         public Input<int>? MaxPods { get; set; }
 
         /// <summary>
-        /// Name of the Load Balancer.
+        /// The Ocean cluster name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -660,7 +658,7 @@ namespace Pulumi.SpotInst.Azure
         public Input<Inputs.OceanOsDiskGetArgs>? OsDisk { get; set; }
 
         /// <summary>
-        /// The Resource Group name of the Load Balancer.
+        /// Name of the Azure Resource Group into which VMs will be launched. Cannot be updated.
         /// </summary>
         [Input("resourceGroupName")]
         public Input<string>? ResourceGroupName { get; set; }

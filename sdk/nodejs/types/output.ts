@@ -76,16 +76,13 @@ export interface HealthCheckCheck {
      * The destination for the request.
      */
     endpoint?: string;
-    /**
-     * The number of consecutive successful health checks that must occur before declaring an instance healthy.
-     */
     healthy: number;
     /**
      * The amount of time (in seconds) between each health check (minimum: 10).
      */
     interval: number;
     /**
-     * The port of the Spotinst HCS (default: 80).
+     * The port to use to connect with the instance.
      */
     port: number;
     /**
@@ -97,9 +94,6 @@ export interface HealthCheckCheck {
      * the amount of time (in seconds) to wait when receiving a response from the health check.
      */
     timeout?: number;
-    /**
-     * The number of consecutive failed health checks that must occur before declaring an instance unhealthy.
-     */
     unhealthy: number;
 }
 
@@ -350,13 +344,7 @@ export namespace aws {
     }
 
     export interface BeanstalkDeploymentPreferencesStrategy {
-        /**
-         * Action to take
-         */
         action?: string;
-        /**
-         * Bool value if to wait to drain instance
-         */
         shouldDrainInstances?: boolean;
     }
 
@@ -368,17 +356,8 @@ export namespace aws {
     }
 
     export interface BeanstalkManagedActionsPlatformUpdate {
-        /**
-         * Actions to perform (options: timeWindow, never)
-         */
         performAt?: string;
-        /**
-         * Time Window for when action occurs ex. Mon:23:50-Tue:00:20
-         */
         timeWindow?: string;
-        /**
-         * Level to update
-         */
         updateLevel?: string;
     }
 
@@ -517,7 +496,7 @@ export namespace aws {
 
     export interface ElastigroupImageImage {
         /**
-         * The identifier of The S3 data integration to export the logs to.
+         * The group ID.
          */
         id: string;
     }
@@ -534,445 +513,178 @@ export namespace aws {
     }
 
     export interface ElastigroupIntegrationBeanstalk {
-        /**
-         * Preferences when performing a roll
-         */
         deploymentPreferences?: outputs.aws.ElastigroupIntegrationBeanstalkDeploymentPreferences;
         environmentId?: string;
-        /**
-         * Managed Actions parameters
-         */
         managedActions?: outputs.aws.ElastigroupIntegrationBeanstalkManagedActions;
     }
 
     export interface ElastigroupIntegrationBeanstalkDeploymentPreferences {
-        /**
-         * Should roll perform automatically
-         */
         automaticRoll?: boolean;
-        /**
-         * The percentage size of each batch in the scheduled deployment roll.
-         */
         batchSizePercentage?: number;
-        /**
-         * The period of time (seconds) to wait before checking a batch's health after it's deployment.
-         */
         gracePeriod?: number;
-        /**
-         * Strategy parameters
-         */
         strategy?: outputs.aws.ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategy;
     }
 
     export interface ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategy {
-        /**
-         * The action to take when scale up according to step's threshold is needed.
-         */
         action?: string;
-        /**
-         * Bool value if to wait to drain instance
-         */
         shouldDrainInstances?: boolean;
     }
 
     export interface ElastigroupIntegrationBeanstalkManagedActions {
-        /**
-         * Platform Update parameters
-         */
         platformUpdate?: outputs.aws.ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdate;
     }
 
     export interface ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdate {
-        /**
-         * In the event of a fallback to On-Demand instances, select the time period to revert back to Spot. Supported Arguments – always (default), timeWindow, never. For timeWindow or never to be valid the group must have availabilityOriented OR persistence defined.
-         */
         performAt?: string;
-        /**
-         * Time Window for when action occurs ex. Mon:23:50-Tue:00:20
-         */
         timeWindow?: string;
-        /**
-         * Level to update
-         *
-         * Usage:
-         */
         updateLevel?: string;
     }
 
     export interface ElastigroupIntegrationCodedeploy {
-        /**
-         * Cleanup automatically after a failed deploy.
-         */
         cleanupOnFailure: boolean;
-        /**
-         * Specify the deployment groups details.
-         */
         deploymentGroups: outputs.aws.ElastigroupIntegrationCodedeployDeploymentGroup[];
-        /**
-         * Terminate the instance automatically after a failed deploy.
-         */
         terminateInstanceOnFailure: boolean;
     }
 
     export interface ElastigroupIntegrationCodedeployDeploymentGroup {
-        /**
-         * The application name.
-         */
         applicationName: string;
-        /**
-         * The deployment group name.
-         *
-         * Usage:
-         */
         deploymentGroupName: string;
     }
 
     export interface ElastigroupIntegrationDockerSwarm {
-        /**
-         * The amount of time, in seconds, after a scaling activity completes before any further trigger-related scaling activities can start.
-         */
         autoscaleCooldown?: number;
-        /**
-         * Settings for scale down actions.
-         */
         autoscaleDown?: outputs.aws.ElastigroupIntegrationDockerSwarmAutoscaleDown;
-        /**
-         * An option to set compute reserve for the cluster.
-         */
         autoscaleHeadroom?: outputs.aws.ElastigroupIntegrationDockerSwarmAutoscaleHeadroom;
-        /**
-         * Specifies whether the auto scaling feature is enabled.
-         */
         autoscaleIsEnabled?: boolean;
-        /**
-         * The URL for the Nomad master host.
-         */
         masterHost: string;
-        /**
-         * The network port for the master host.
-         */
         masterPort: number;
     }
 
     export interface ElastigroupIntegrationDockerSwarmAutoscaleDown {
-        /**
-         * The number of periods over which data is compared to the specified threshold.
-         */
         evaluationPeriods?: number;
-        /**
-         * Represents the maximum percent to scale-down. Number between 1-100.
-         */
         maxScaleDownPercentage?: number;
     }
 
     export interface ElastigroupIntegrationDockerSwarmAutoscaleHeadroom {
-        /**
-         * How much CPU (MHz) to allocate for headroom unit.
-         */
         cpuPerUnit?: number;
-        /**
-         * How much Memory allocate for headroom unit.
-         */
         memoryPerUnit?: number;
-        /**
-         * How many units of headroom to allocate.
-         */
         numOfUnits?: number;
     }
 
     export interface ElastigroupIntegrationEcs {
-        /**
-         * A key/value mapping of tags to assign to the resource.
-         */
         autoscaleAttributes?: outputs.aws.ElastigroupIntegrationEcsAutoscaleAttribute[];
-        /**
-         * The amount of time, in seconds, after a scaling activity completes before any further trigger-related scaling activities can start.
-         */
         autoscaleCooldown?: number;
-        /**
-         * Settings for scale down actions.
-         */
         autoscaleDown?: outputs.aws.ElastigroupIntegrationEcsAutoscaleDown;
-        /**
-         * An option to set compute reserve for the cluster.
-         */
         autoscaleHeadroom?: outputs.aws.ElastigroupIntegrationEcsAutoscaleHeadroom;
-        /**
-         * Enabling the automatic k8s auto-scaler functionality. For more information please see: [Kubernetes auto scaler](https://api.spotinst.com/integration-docs/elastigroup/container-management/kubernetes/autoscaler/).
-         */
         autoscaleIsAutoConfig?: boolean;
-        /**
-         * Specifies whether the auto scaling feature is enabled.
-         */
         autoscaleIsEnabled?: boolean;
-        /**
-         * Determines whether to scale down non-service tasks.
-         */
         autoscaleScaleDownNonServiceTasks?: boolean;
-        /**
-         * Batch configuration object:
-         */
         batch?: outputs.aws.ElastigroupIntegrationEcsBatch;
-        /**
-         * The name of the EC2 Container Service cluster.
-         */
         clusterName: string;
     }
 
     export interface ElastigroupIntegrationEcsAutoscaleAttribute {
         key: string;
-        /**
-         * The dimension value.
-         */
         value: string;
     }
 
     export interface ElastigroupIntegrationEcsAutoscaleDown {
-        /**
-         * The number of periods over which data is compared to the specified threshold.
-         */
         evaluationPeriods?: number;
-        /**
-         * Represents the maximum percent to scale-down. Number between 1-100.
-         */
         maxScaleDownPercentage?: number;
     }
 
     export interface ElastigroupIntegrationEcsAutoscaleHeadroom {
-        /**
-         * How much CPU (MHz) to allocate for headroom unit.
-         */
         cpuPerUnit?: number;
-        /**
-         * How much Memory allocate for headroom unit.
-         */
         memoryPerUnit?: number;
-        /**
-         * How many units of headroom to allocate.
-         */
         numOfUnits?: number;
     }
 
     export interface ElastigroupIntegrationEcsBatch {
-        /**
-         * Array of strings.
-         *
-         * Usage:
-         */
         jobQueueNames: string[];
     }
 
     export interface ElastigroupIntegrationGitlab {
-        /**
-         * Settings for Gitlab runner.
-         */
         runner?: outputs.aws.ElastigroupIntegrationGitlabRunner;
     }
 
     export interface ElastigroupIntegrationGitlabRunner {
-        /**
-         * Specifies whether the scaling policy described in this block is enabled.
-         */
         isEnabled?: boolean;
     }
 
     export interface ElastigroupIntegrationKubernetes {
-        /**
-         * The public IP of the DC/OS Master. 
-         *
-         * Usage:
-         */
         apiServer?: string;
-        /**
-         * The amount of time, in seconds, after a scaling activity completes before any further trigger-related scaling activities can start.
-         */
         autoscaleCooldown?: number;
-        /**
-         * Settings for scale down actions.
-         */
         autoscaleDown?: outputs.aws.ElastigroupIntegrationKubernetesAutoscaleDown;
-        /**
-         * An option to set compute reserve for the cluster.
-         */
         autoscaleHeadroom?: outputs.aws.ElastigroupIntegrationKubernetesAutoscaleHeadroom;
-        /**
-         * Enabling the automatic k8s auto-scaler functionality. For more information please see: [Kubernetes auto scaler](https://api.spotinst.com/integration-docs/elastigroup/container-management/kubernetes/autoscaler/).
-         */
         autoscaleIsAutoConfig?: boolean;
-        /**
-         * Specifies whether the auto scaling feature is enabled.
-         */
         autoscaleIsEnabled?: boolean;
-        /**
-         * A key/value mapping of tags to assign to the resource.
-         *
-         * Usage:
-         */
         autoscaleLabels?: outputs.aws.ElastigroupIntegrationKubernetesAutoscaleLabel[];
         clusterIdentifier?: string;
-        /**
-         * Valid values: `"saas"`, `"pod"`.
-         */
         integrationMode?: string;
-        /**
-         * Kubernetes Token
-         */
         token?: string;
     }
 
     export interface ElastigroupIntegrationKubernetesAutoscaleDown {
-        /**
-         * The number of periods over which data is compared to the specified threshold.
-         */
         evaluationPeriods?: number;
-        /**
-         * Represents the maximum percent to scale-down. Number between 1-100.
-         */
         maxScaleDownPercentage?: number;
     }
 
     export interface ElastigroupIntegrationKubernetesAutoscaleHeadroom {
-        /**
-         * How much CPU (MHz) to allocate for headroom unit.
-         */
         cpuPerUnit?: number;
-        /**
-         * How much Memory allocate for headroom unit.
-         */
         memoryPerUnit?: number;
-        /**
-         * How many units of headroom to allocate.
-         */
         numOfUnits?: number;
     }
 
     export interface ElastigroupIntegrationKubernetesAutoscaleLabel {
         key: string;
-        /**
-         * The dimension value.
-         */
         value: string;
     }
 
     export interface ElastigroupIntegrationMesosphere {
-        /**
-         * The public IP of the DC/OS Master. 
-         *
-         * Usage:
-         */
         apiServer: string;
     }
 
     export interface ElastigroupIntegrationNomad {
-        /**
-         * Nomad ACL Token
-         */
         aclToken?: string;
-        /**
-         * A key/value mapping of tags to assign to the resource.
-         *
-         * Usage:
-         */
         autoscaleConstraints?: outputs.aws.ElastigroupIntegrationNomadAutoscaleConstraint[];
-        /**
-         * The amount of time, in seconds, after a scaling activity completes before any further trigger-related scaling activities can start.
-         */
         autoscaleCooldown?: number;
-        /**
-         * Settings for scale down actions.
-         */
         autoscaleDown?: outputs.aws.ElastigroupIntegrationNomadAutoscaleDown;
-        /**
-         * An option to set compute reserve for the cluster.
-         */
         autoscaleHeadroom?: outputs.aws.ElastigroupIntegrationNomadAutoscaleHeadroom;
-        /**
-         * Specifies whether the auto scaling feature is enabled.
-         */
         autoscaleIsEnabled?: boolean;
-        /**
-         * The URL for the Nomad master host.
-         */
         masterHost: string;
-        /**
-         * The network port for the master host.
-         */
         masterPort: number;
     }
 
     export interface ElastigroupIntegrationNomadAutoscaleConstraint {
         key: string;
-        /**
-         * The dimension value.
-         */
         value: string;
     }
 
     export interface ElastigroupIntegrationNomadAutoscaleDown {
-        /**
-         * The number of periods over which data is compared to the specified threshold.
-         */
         evaluationPeriods?: number;
     }
 
     export interface ElastigroupIntegrationNomadAutoscaleHeadroom {
-        /**
-         * How much CPU (MHz) to allocate for headroom unit.
-         */
         cpuPerUnit?: number;
-        /**
-         * How much Memory allocate for headroom unit.
-         */
         memoryPerUnit?: number;
-        /**
-         * How many units of headroom to allocate.
-         */
         numOfUnits?: number;
     }
 
     export interface ElastigroupIntegrationRancher {
-        /**
-         * The access key of the Rancher API.
-         */
         accessKey: string;
-        /**
-         * The URL for the Nomad master host.
-         */
         masterHost: string;
-        /**
-         * The secret key of the Rancher API.
-         */
         secretKey: string;
-        /**
-         * The Rancher version. Must be `"1"` or `"2"`. If this field is omitted, it’s assumed that the Rancher cluster is version 1. Note that Kubernetes is required when using Rancher version 2^.
-         * Usage:
-         */
         version?: string;
     }
 
     export interface ElastigroupIntegrationRoute53 {
-        /**
-         * Collection of one or more domains to register.
-         */
         domains: outputs.aws.ElastigroupIntegrationRoute53Domain[];
     }
 
     export interface ElastigroupIntegrationRoute53Domain {
-        /**
-         * The id associated with a hosted zone.
-         */
         hostedZoneId: string;
-        /**
-         * The type of the record set. Valid values: `"a"`, `"cname"`.
-         */
         recordSetType?: string;
-        /**
-         * Collection of records containing authoritative DNS information for the specified domain name.
-         */
         recordSets: outputs.aws.ElastigroupIntegrationRoute53DomainRecordSet[];
-        /**
-         * The Spotinst account ID that is linked to the AWS account that holds the Route 53 Hosted Zone ID. The default is the user Spotinst account provided as a URL parameter.
-         */
         spotinstAcctId?: string;
     }
 
@@ -981,15 +693,7 @@ export namespace aws {
          * The group name.
          */
         name: string;
-        /**
-         * Designates whether the DNS address should be exposed to connections outside the VPC.
-         *
-         * Usage:
-         */
         usePublicDns?: boolean;
-        /**
-         * Designates whether the IP address should be exposed to connections outside the VPC.
-         */
         usePublicIp?: boolean;
     }
 
@@ -1059,15 +763,12 @@ export namespace aws {
     }
 
     export interface ElastigroupLoggingExport {
-        /**
-         * Exports your cluster's logs to the S3 bucket and subdir configured on the S3 data integration given.
-         */
         s3s?: outputs.aws.ElastigroupLoggingExportS3[];
     }
 
     export interface ElastigroupLoggingExportS3 {
         /**
-         * The identifier of The S3 data integration to export the logs to.
+         * The group ID.
          */
         id: string;
     }
@@ -1088,20 +789,11 @@ export namespace aws {
     }
 
     export interface ElastigroupMultipleMetrics {
-        /**
-         * Array of objects (Expression config)
-         */
         expressions?: outputs.aws.ElastigroupMultipleMetricsExpression[];
-        /**
-         * Array of objects (Metric config)
-         */
         metrics?: outputs.aws.ElastigroupMultipleMetricsMetric[];
     }
 
     export interface ElastigroupMultipleMetricsExpression {
-        /**
-         * An expression consisting of the metric names listed in the 'metrics' array.
-         */
         expression: string;
         /**
          * The group name.
@@ -1110,33 +802,15 @@ export namespace aws {
     }
 
     export interface ElastigroupMultipleMetricsMetric {
-        /**
-         * A list of dimensions describing qualities of the metric.
-         */
         dimensions?: outputs.aws.ElastigroupMultipleMetricsMetricDimension[];
-        /**
-         * Percentile statistic. Valid values: `"p0.1"` - `"p100"`.
-         */
         extendedStatistic?: string;
-        /**
-         * The name of the metric, with or without spaces.
-         */
         metricName: string;
         /**
          * The group name.
          */
         name: string;
-        /**
-         * The namespace for the alarm's associated metric.
-         */
         namespace: string;
-        /**
-         * The metric statistics to return. For information about specific statistics go to [Statistics](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/index.html?CHAP_TerminologyandKeyConcepts.html#Statistic) in the Amazon CloudWatch Developer Guide.
-         */
         statistic?: string;
-        /**
-         * The unit for the alarm's associated metric. Valid values: `"percent`, `"seconds"`, `"microseconds"`, `"milliseconds"`, `"bytes"`, `"kilobytes"`, `"megabytes"`, `"gigabytes"`, `"terabytes"`, `"bits"`, `"kilobits"`, `"megabits"`, `"gigabits"`, `"terabits"`, `"count"`, `"bytes/second"`, `"kilobytes/second"`, `"megabytes/second"`, `"gigabytes/second"`, `"terabytes/second"`, `"bits/second"`, `"kilobits/second"`, `"megabits/second"`, `"gigabits/second"`, `"terabits/second"`, `"count/second"`, `"none"`.
-         */
         unit?: string;
     }
 
@@ -1145,46 +819,20 @@ export namespace aws {
          * The group name.
          */
         name: string;
-        /**
-         * The dimension value.
-         */
         value?: string;
     }
 
     export interface ElastigroupNetworkInterface {
-        /**
-         * Indicates whether to assign IPV6 addresses to your instance. Requires a subnet with IPV6 CIDR block ranges.
-         *
-         * Usage:
-         */
         associateIpv6Address?: boolean;
-        /**
-         * Indicates whether to assign a public IP address to an instance you launch in a VPC. The public IP address can only be assigned to a network interface for eth0, and can only be assigned to a new network interface, not an existing one.
-         */
         associatePublicIpAddress?: boolean;
-        /**
-         * Whether the volume should be destroyed on instance termination.
-         */
         deleteOnTermination: boolean;
         /**
          * The group description.
          */
         description?: string;
-        /**
-         * The index of the device on the instance for the network interface attachment.
-         */
         deviceIndex: string;
-        /**
-         * The ID of the network interface.
-         */
         networkInterfaceId?: string;
-        /**
-         * The private IP address of the network interface.
-         */
         privateIpAddress?: string;
-        /**
-         * The number of secondary private IP addresses.
-         */
         secondaryPrivateIpAddressCount?: string;
     }
 
@@ -1294,9 +942,6 @@ export namespace aws {
          * The name of the metric, with or without spaces.
          */
         metricName: string;
-        /**
-         * . The number of the desired target (and minimum) capacity
-         */
         minTargetCapacity?: string;
         /**
          * The minimal number of instances to have in the group.
@@ -1332,14 +977,7 @@ export namespace aws {
          */
         target?: string;
         /**
-         * The value against which the specified statistic is compared in order to determine if a step should be applied.
-         *
-         *
-         * If you do not specify an action type, you can only use – `adjustment`, `minTargetCapacity`, `maxTargetCapacity`.
-         * While using action_type, please also set the following:
-         *
-         * When using `adjustment`           – set the field `adjustment`
-         * When using `updateCapacity`       – set the fields `minimum`, `maximum`, and `target`
+         * The value against which the specified statistic is compared. If a `stepAdjustment` object is defined, then it cannot be specified.
          */
         threshold?: number;
         /**
@@ -1350,7 +988,7 @@ export namespace aws {
 
     export interface ElastigroupScalingDownPolicyDimension {
         /**
-         * The group name.
+         * The dimension name.
          */
         name: string;
         /**
@@ -1360,51 +998,17 @@ export namespace aws {
     }
 
     export interface ElastigroupScalingDownPolicyStepAdjustment {
-        /**
-         * The action to take when scale up according to step's threshold is needed.
-         */
         action: outputs.aws.ElastigroupScalingDownPolicyStepAdjustmentAction;
-        /**
-         * The value against which the specified statistic is compared in order to determine if a step should be applied.
-         *
-         *
-         * If you do not specify an action type, you can only use – `adjustment`, `minTargetCapacity`, `maxTargetCapacity`.
-         * While using action_type, please also set the following:
-         *
-         * When using `adjustment`           – set the field `adjustment`
-         * When using `updateCapacity`       – set the fields `minimum`, `maximum`, and `target`
-         */
         threshold: number;
     }
 
     export interface ElastigroupScalingDownPolicyStepAdjustmentAction {
-        /**
-         * The number of instances to add/remove to/from the target capacity when scale is needed. Can be used as advanced expression for scaling of instances to add/remove to/from the target capacity when scale is needed. You can see more information here: Advanced expression. Example value: `"MAX(currCapacity / 5, value * 10)"`
-         */
         adjustment?: string;
-        /**
-         * . The number of the desired target (and maximum) capacity
-         */
         maxTargetCapacity?: string;
-        /**
-         * The maximal number of instances to have in the group.
-         */
         maximum?: string;
-        /**
-         * . The number of the desired target (and minimum) capacity
-         */
         minTargetCapacity?: string;
-        /**
-         * The minimal number of instances to have in the group.
-         */
         minimum?: string;
-        /**
-         * The target number of instances to have in the group.
-         */
         target?: string;
-        /**
-         * The type of the action to take when scale up is needed. Valid types: `"adjustment"`, `"updateCapacity"`, `"setMaxTarget"`, `"percentageAdjustment"`.
-         */
         type: string;
     }
 
@@ -1480,11 +1084,11 @@ export namespace aws {
 
     export interface ElastigroupScalingTargetPolicyDimension {
         /**
-         * The group name.
+         * String, the dimension name.
          */
         name: string;
         /**
-         * The dimension value.
+         * String, the dimension value.
          */
         value?: string;
     }
@@ -1514,9 +1118,6 @@ export namespace aws {
          * Specifies whether the scaling policy described in this block is enabled.
          */
         isEnabled?: boolean;
-        /**
-         * . The number of the desired target (and maximum) capacity
-         */
         maxTargetCapacity?: string;
         /**
          * The maximal number of instances to have in the group.
@@ -1564,15 +1165,7 @@ export namespace aws {
          */
         target?: string;
         /**
-         * The value against which the specified statistic is compared in order to determine if a step should be applied.
-         *
-         *
-         * If you do not specify an action type, you can only use – `adjustment`, `minTargetCapacity`, `maxTargetCapacity`.
-         * While using action_type, please also set the following:
-         *
-         * When using `adjustment`           – set the field `adjustment`
-         * When using `setMinTarget`         – set the field `minTargetCapacity`
-         * When using `updateCapacity`       – set the fields `minimum`, `maximum`, and `target`
+         * The value against which the specified statistic is compared. If a `stepAdjustment` object is defined, then it cannot be specified.
          */
         threshold?: number;
         /**
@@ -1583,7 +1176,7 @@ export namespace aws {
 
     export interface ElastigroupScalingUpPolicyDimension {
         /**
-         * The group name.
+         * The dimension name.
          */
         name: string;
         /**
@@ -1593,51 +1186,17 @@ export namespace aws {
     }
 
     export interface ElastigroupScalingUpPolicyStepAdjustment {
-        /**
-         * The action to take when scale up according to step's threshold is needed.
-         */
         action: outputs.aws.ElastigroupScalingUpPolicyStepAdjustmentAction;
-        /**
-         * The value against which the specified statistic is compared in order to determine if a step should be applied.
-         *
-         *
-         * If you do not specify an action type, you can only use – `adjustment`, `minTargetCapacity`, `maxTargetCapacity`.
-         * While using action_type, please also set the following:
-         *
-         * When using `adjustment`           – set the field `adjustment`
-         * When using `updateCapacity`       – set the fields `minimum`, `maximum`, and `target`
-         */
         threshold: number;
     }
 
     export interface ElastigroupScalingUpPolicyStepAdjustmentAction {
-        /**
-         * The number of instances to add/remove to/from the target capacity when scale is needed. Can be used as advanced expression for scaling of instances to add/remove to/from the target capacity when scale is needed. You can see more information here: Advanced expression. Example value: `"MAX(currCapacity / 5, value * 10)"`
-         */
         adjustment?: string;
-        /**
-         * . The number of the desired target (and maximum) capacity
-         */
         maxTargetCapacity?: string;
-        /**
-         * The maximal number of instances to have in the group.
-         */
         maximum?: string;
-        /**
-         * . The number of the desired target (and minimum) capacity
-         */
         minTargetCapacity?: string;
-        /**
-         * The minimal number of instances to have in the group.
-         */
         minimum?: string;
-        /**
-         * The target number of instances to have in the group.
-         */
         target?: string;
-        /**
-         * The type of the action to take when scale up is needed. Valid types: `"adjustment"`, `"updateCapacity"`, `"setMaxTarget"`, `"percentageAdjustment"`.
-         */
         type: string;
     }
 
@@ -1720,129 +1279,56 @@ export namespace aws {
     }
 
     export interface ElastigroupStatefulDeallocation {
-        /**
-         * For stateful groups: remove persistent images.
-         */
         shouldDeleteImages?: boolean;
-        /**
-         * For stateful groups: remove network interfaces.
-         */
         shouldDeleteNetworkInterfaces?: boolean;
-        /**
-         * For stateful groups: remove snapshots.
-         *
-         * Usage:
-         */
         shouldDeleteSnapshots?: boolean;
-        /**
-         * For stateful groups: remove persistent volumes.
-         */
         shouldDeleteVolumes?: boolean;
     }
 
     export interface ElastigroupStatefulInstanceAction {
-        /**
-         * String, Stateful Instance ID on which the action should be performed.
-         */
         statefulInstanceId: string;
-        /**
-         * String, Action type. Supported action types: `pause`, `resume`, `recycle`, `deallocate`.
-         *
-         * Usage:
-         */
         type: string;
     }
 
     export interface ElastigroupTag {
         key?: string;
-        /**
-         * The dimension value.
-         */
         value?: string;
     }
 
     export interface ElastigroupUpdatePolicy {
-        /**
-         * Enables updates to tags without rolling the group when set to `true`.
-         */
         autoApplyTags?: boolean;
-        /**
-         * While used, you can control whether the group should perform a deployment after an update to the configuration.
-         */
         rollConfig?: outputs.aws.ElastigroupUpdatePolicyRollConfig;
-        /**
-         * This will apply resuming action for Stateful instances in the Elastigroup upon scale up or capacity changes. Example usage will be for Elastigroups that will have scheduling rules to set a target capacity of 0 instances in the night and automatically restore the same state of the instances in the morning.
-         */
         shouldResumeStateful: boolean;
-        /**
-         * Sets the enablement of the roll option.
-         */
         shouldRoll: boolean;
     }
 
     export interface ElastigroupUpdatePolicyRollConfig {
-        /**
-         * The percentage size of each batch in the scheduled deployment roll.
-         */
         batchSizePercentage: number;
-        /**
-         * The period of time (seconds) to wait before checking a batch's health after it's deployment.
-         */
         gracePeriod?: number;
         /**
          * The service that will perform health checks for the instance. Valid values: `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"EC2"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
          */
         healthCheckType?: string;
-        /**
-         * Strategy parameters
-         */
         strategy?: outputs.aws.ElastigroupUpdatePolicyRollConfigStrategy;
-        /**
-         * For use with `shouldRoll`. Sets minimum % of roll required to complete before continuing the plan. Required if `waitForRollTimeout` is set.
-         */
         waitForRollPercentage?: number;
-        /**
-         * For use with `shouldRoll`. Sets how long to wait for the deployed % of a roll to exceed `waitForRollPercentage` before continuing the plan. Required if `waitForRollPercentage` is set.
-         */
         waitForRollTimeout?: number;
     }
 
     export interface ElastigroupUpdatePolicyRollConfigStrategy {
-        /**
-         * The action to take when scale up according to step's threshold is needed.
-         */
         action: string;
-        /**
-         * Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the deployment will fail. Range `1` - `100`.
-         */
         batchMinHealthyPercentage?: number;
-        /**
-         * Set detach options to the deployment.
-         */
         onFailure?: outputs.aws.ElastigroupUpdatePolicyRollConfigStrategyOnFailure;
-        /**
-         * Bool value if to wait to drain instance
-         */
         shouldDrainInstances?: boolean;
     }
 
     export interface ElastigroupUpdatePolicyRollConfigStrategyOnFailure {
-        /**
-         * The type of action to perform for scaling. Valid values: `"adjustment"`, `"percentageAdjustment"`, `"setMaxTarget"`, `"setMinTarget"`, `"updateCapacity"`. If a `stepAdjustment` object is defined, then it cannot be specified.
-         */
         actionType: string;
         batchNum?: number;
         /**
          * The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
          */
         drainingTimeout?: number;
-        /**
-         * Decrementing the group target capacity after detaching the instances.
-         */
         shouldDecrementTargetCapacity?: boolean;
-        /**
-         * Indicator if the action should apply to all batches of the deployment or only the latest batch.
-         */
         shouldHandleAllBatches?: boolean;
     }
 
@@ -1929,471 +1415,156 @@ export namespace aws {
     }
 
     export interface MrScalarApplication {
-        /**
-         * Arguments for EMR to pass to the application.
-         */
         args?: string[];
         /**
          * The MrScaler name.
          */
         name: string;
-        /**
-         * T he version of the application.
-         */
         version?: string;
     }
 
     export interface MrScalarBootstrapActionsFile {
-        /**
-         * S3 Bucket name for bootstrap actions.
-         */
         bucket: string;
-        /**
-         * S3 key for bootstrap actions.
-         */
         key: string;
     }
 
     export interface MrScalarConfigurationsFile {
-        /**
-         * S3 Bucket name for bootstrap actions.
-         */
         bucket: string;
-        /**
-         * S3 key for bootstrap actions.
-         */
         key: string;
     }
 
     export interface MrScalarCoreEbsBlockDevice {
-        /**
-         * IOPS for the volume. Required in some volume types, such as io1.
-         */
         iops?: number;
-        /**
-         * Size of the volume, in GBs.
-         */
         sizeInGb: number;
-        /**
-         * volume type. Allowed values are 'gp2', 'io1' and others.
-         */
         volumeType: string;
-        /**
-         * Amount of volumes per instance in the core group.
-         */
         volumesPerInstance?: number;
     }
 
     export interface MrScalarCoreScalingDownPolicy {
-        /**
-         * The type of action to perform. Allowed values are : 'adjustment', 'setMinTarget', 'setMaxTarget', 'updateCapacity', 'percentageAdjustment'
-         */
         actionType?: string;
-        /**
-         * The number of instances to add/remove to/from the target capacity when scale is needed.
-         */
         adjustment?: string;
-        /**
-         * The amount of time, in seconds, after a scaling activity completes and before the next scaling activity can start.
-         */
         cooldown: number;
-        /**
-         * A mapping of dimensions describing qualities of the metric.
-         */
         dimensions?: {[key: string]: any};
-        /**
-         * The number of periods over which data is compared to the specified threshold.
-         */
         evaluationPeriods: number;
-        /**
-         * Max target capacity for scale down.
-         */
         maxTargetCapacity?: string;
-        /**
-         * The maximum to set when scale is needed.
-         */
         maximum?: string;
-        /**
-         * The name of the metric in CloudWatch which the statement will be based on.
-         */
         metricName: string;
-        /**
-         * Min target capacity for scale up.
-         */
         minTargetCapacity?: string;
-        /**
-         * The minimum to set when scale is needed.
-         */
         minimum?: string;
-        /**
-         * Must contain the value: `AWS/ElasticMapReduce`.
-         */
         namespace: string;
-        /**
-         * The operator to use in order to determine if the policy is applicable. Valid values: `gt` | `gte` | `lt` | `lte`
-         */
         operator: string;
-        /**
-         * The time window in seconds over which the statistic is applied.
-         */
         period: number;
-        /**
-         * The name of the policy.
-         */
         policyName: string;
-        /**
-         * The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`
-         */
         statistic: string;
-        /**
-         * The number of instances to set when scale is needed.
-         */
         target?: string;
-        /**
-         * The value that the specified statistic is compared to.
-         */
         threshold: number;
-        /**
-         * The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`
-         */
         unit: string;
     }
 
     export interface MrScalarCoreScalingUpPolicy {
-        /**
-         * The type of action to perform. Allowed values are : 'adjustment', 'setMinTarget', 'setMaxTarget', 'updateCapacity', 'percentageAdjustment'
-         */
         actionType?: string;
-        /**
-         * The number of instances to add/remove to/from the target capacity when scale is needed.
-         */
         adjustment?: string;
-        /**
-         * The amount of time, in seconds, after a scaling activity completes and before the next scaling activity can start.
-         */
         cooldown: number;
-        /**
-         * A mapping of dimensions describing qualities of the metric.
-         */
         dimensions?: {[key: string]: any};
-        /**
-         * The number of periods over which data is compared to the specified threshold.
-         */
         evaluationPeriods: number;
-        /**
-         * Max target capacity for scale down.
-         */
         maxTargetCapacity?: string;
-        /**
-         * The maximum to set when scale is needed.
-         */
         maximum?: string;
-        /**
-         * The name of the metric in CloudWatch which the statement will be based on.
-         */
         metricName: string;
-        /**
-         * Min target capacity for scale up.
-         */
         minTargetCapacity?: string;
-        /**
-         * The minimum to set when scale is needed.
-         */
         minimum?: string;
-        /**
-         * Must contain the value: `AWS/ElasticMapReduce`.
-         */
         namespace: string;
-        /**
-         * The operator to use in order to determine if the policy is applicable. Valid values: `gt` | `gte` | `lt` | `lte`
-         */
         operator: string;
-        /**
-         * The time window in seconds over which the statistic is applied.
-         */
         period: number;
-        /**
-         * The name of the policy.
-         */
         policyName: string;
-        /**
-         * The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`
-         */
         statistic: string;
-        /**
-         * The number of instances to set when scale is needed.
-         */
         target?: string;
-        /**
-         * The value that the specified statistic is compared to.
-         */
         threshold: number;
-        /**
-         * The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`
-         */
         unit: string;
     }
 
     export interface MrScalarInstanceWeight {
-        /**
-         * The type of the instance.
-         */
         instanceType: string;
-        /**
-         * The weight given to the associated instance type.
-         */
         weightedCapacity: number;
     }
 
     export interface MrScalarMasterEbsBlockDevice {
-        /**
-         * IOPS for the volume. Required in some volume types, such as io1.
-         */
         iops?: number;
-        /**
-         * Size of the volume, in GBs.
-         */
         sizeInGb: number;
-        /**
-         * volume type. Allowed values are 'gp2', 'io1' and others.
-         */
         volumeType: string;
-        /**
-         * Amount of volumes per instance in the core group.
-         */
         volumesPerInstance?: number;
     }
 
     export interface MrScalarProvisioningTimeout {
-        /**
-         * The amount of time (minutes) after which the cluster is automatically terminated if it's still in provisioning status. Minimum: '15'.
-         */
         timeout: number;
-        /**
-         * The action to take if the timeout is exceeded. Valid values: `terminate`, `terminateAndRetry`.
-         */
         timeoutAction: string;
     }
 
     export interface MrScalarScheduledTask {
-        /**
-         * A cron expression representing the schedule for the task.
-         */
         cron: string;
-        /**
-         * New desired capacity for the elastigroup.
-         */
         desiredCapacity?: string;
-        /**
-         * Select the EMR instance groups to execute the scheduled task on. Valid values: `task`.
-         */
         instanceGroupType: string;
-        /**
-         * Enable/Disable the specified scheduling task.
-         */
         isEnabled?: boolean;
-        /**
-         * New max capacity for the elastigroup.
-         */
         maxCapacity?: string;
-        /**
-         * New min capacity for the elastigroup.
-         */
         minCapacity?: string;
-        /**
-         * The type of task to be scheduled. Valid values: `setCapacity`.
-         */
         taskType: string;
     }
 
     export interface MrScalarStepsFile {
-        /**
-         * S3 Bucket name for bootstrap actions.
-         */
         bucket: string;
-        /**
-         * S3 key for bootstrap actions.
-         */
         key: string;
     }
 
     export interface MrScalarTag {
-        /**
-         * S3 key for bootstrap actions.
-         */
         key: string;
-        /**
-         * Tag value.
-         */
         value: string;
     }
 
     export interface MrScalarTaskEbsBlockDevice {
-        /**
-         * IOPS for the volume. Required in some volume types, such as io1.
-         */
         iops?: number;
-        /**
-         * Size of the volume, in GBs.
-         */
         sizeInGb: number;
-        /**
-         * volume type. Allowed values are 'gp2', 'io1' and others.
-         */
         volumeType: string;
-        /**
-         * Amount of volumes per instance in the core group.
-         */
         volumesPerInstance?: number;
     }
 
     export interface MrScalarTaskScalingDownPolicy {
-        /**
-         * The type of action to perform. Allowed values are : 'adjustment', 'setMinTarget', 'setMaxTarget', 'updateCapacity', 'percentageAdjustment'
-         */
         actionType?: string;
-        /**
-         * The number of instances to add/remove to/from the target capacity when scale is needed.
-         */
         adjustment?: string;
-        /**
-         * The amount of time, in seconds, after a scaling activity completes and before the next scaling activity can start.
-         */
         cooldown: number;
-        /**
-         * A mapping of dimensions describing qualities of the metric.
-         */
         dimensions?: {[key: string]: any};
-        /**
-         * The number of periods over which data is compared to the specified threshold.
-         */
         evaluationPeriods: number;
-        /**
-         * Max target capacity for scale down.
-         */
         maxTargetCapacity?: string;
-        /**
-         * The maximum to set when scale is needed.
-         */
         maximum?: string;
-        /**
-         * The name of the metric in CloudWatch which the statement will be based on.
-         */
         metricName: string;
-        /**
-         * Min target capacity for scale up.
-         */
         minTargetCapacity?: string;
-        /**
-         * The minimum to set when scale is needed.
-         */
         minimum?: string;
-        /**
-         * Must contain the value: `AWS/ElasticMapReduce`.
-         */
         namespace: string;
-        /**
-         * The operator to use in order to determine if the policy is applicable. Valid values: `gt` | `gte` | `lt` | `lte`
-         */
         operator: string;
-        /**
-         * The time window in seconds over which the statistic is applied.
-         */
         period: number;
-        /**
-         * The name of the policy.
-         */
         policyName: string;
-        /**
-         * The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`
-         */
         statistic: string;
-        /**
-         * The number of instances to set when scale is needed.
-         */
         target?: string;
-        /**
-         * The value that the specified statistic is compared to.
-         */
         threshold: number;
-        /**
-         * The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`
-         */
         unit: string;
     }
 
     export interface MrScalarTaskScalingUpPolicy {
-        /**
-         * The type of action to perform. Allowed values are : 'adjustment', 'setMinTarget', 'setMaxTarget', 'updateCapacity', 'percentageAdjustment'
-         */
         actionType?: string;
-        /**
-         * The number of instances to add/remove to/from the target capacity when scale is needed.
-         */
         adjustment?: string;
-        /**
-         * The amount of time, in seconds, after a scaling activity completes and before the next scaling activity can start.
-         */
         cooldown: number;
-        /**
-         * A mapping of dimensions describing qualities of the metric.
-         */
         dimensions?: {[key: string]: any};
-        /**
-         * The number of periods over which data is compared to the specified threshold.
-         */
         evaluationPeriods: number;
-        /**
-         * Max target capacity for scale down.
-         */
         maxTargetCapacity?: string;
-        /**
-         * The maximum to set when scale is needed.
-         */
         maximum?: string;
-        /**
-         * The name of the metric in CloudWatch which the statement will be based on.
-         */
         metricName: string;
-        /**
-         * Min target capacity for scale up.
-         */
         minTargetCapacity?: string;
-        /**
-         * The minimum to set when scale is needed.
-         */
         minimum?: string;
-        /**
-         * Must contain the value: `AWS/ElasticMapReduce`.
-         */
         namespace: string;
-        /**
-         * The operator to use in order to determine if the policy is applicable. Valid values: `gt` | `gte` | `lt` | `lte`
-         */
         operator: string;
-        /**
-         * The time window in seconds over which the statistic is applied.
-         */
         period: number;
-        /**
-         * The name of the policy.
-         */
         policyName: string;
-        /**
-         * The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`
-         */
         statistic: string;
-        /**
-         * The number of instances to set when scale is needed.
-         */
         target?: string;
-        /**
-         * The value that the specified statistic is compared to.
-         */
         threshold: number;
-        /**
-         * The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`
-         */
         unit: string;
     }
 
@@ -2402,37 +1573,13 @@ export namespace aws {
     }
 
     export interface MrScalarTerminationPolicyStatement {
-        /**
-         * The number of periods over which data is compared to the specified threshold.
-         */
         evaluationPeriods?: number;
-        /**
-         * The name of the metric in CloudWatch which the statement will be based on.
-         */
         metricName: string;
-        /**
-         * Must contain the value: `AWS/ElasticMapReduce`.
-         */
         namespace: string;
-        /**
-         * The operator to use in order to determine if the policy is applicable. Valid values: `gt` | `gte` | `lt` | `lte`
-         */
         operator?: string;
-        /**
-         * The time window in seconds over which the statistic is applied.
-         */
         period?: number;
-        /**
-         * The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`
-         */
         statistic?: string;
-        /**
-         * The value that the specified statistic is compared to.
-         */
         threshold: number;
-        /**
-         * The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`
-         */
         unit?: string;
     }
 
@@ -2462,13 +1609,7 @@ export namespace aws {
     }
 
     export interface OceanAutoscalerResourceLimits {
-        /**
-         * Maximum amount of Memory (GiB).
-         */
         maxMemoryGib?: number;
-        /**
-         * Maximum number of vcpus available.
-         */
         maxVcpu?: number;
     }
 
@@ -2484,69 +1625,27 @@ export namespace aws {
     }
 
     export interface OceanBlockDeviceMappingEbs {
-        /**
-         * Boolean. Flag to delete the EBS on instance termination.
-         */
         deleteOnTermination: boolean;
-        /**
-         * Set dynamic IOPS properties. When using this object, you cannot use the `iops` attribute. You must use one or the other.
-         */
         dynamicIops?: outputs.aws.OceanBlockDeviceMappingEbsDynamicIops;
-        /**
-         * Object. Set dynamic volume size properties. When using this object, you cannot use volumeSize. You must use one or the other.
-         */
         dynamicVolumeSize?: outputs.aws.OceanBlockDeviceMappingEbsDynamicVolumeSize;
-        /**
-         * Boolean. Enables [EBS encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) on the volume.
-         */
         encrypted: boolean;
-        /**
-         * Must be greater than or equal to 0.
-         */
         iops?: number;
-        /**
-         * String. Identifier (key ID, key alias, ID ARN, or alias ARN) for a customer managed CMK under which the EBS volume is encrypted.
-         */
         kmsKeyId?: string;
-        /**
-         * (Optional) String. The Snapshot ID to mount by.
-         */
         snapshotId?: string;
-        /**
-         * The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volumeType` = `gp3`.
-         */
         throughput?: number;
-        /**
-         * Int. The size, in GB of the volume.
-         */
         volumeSize?: number;
-        /**
-         * String. The type of the volume. (Example: `gp2`).
-         */
         volumeType: string;
     }
 
     export interface OceanBlockDeviceMappingEbsDynamicIops {
-        /**
-         * Initial size for IOPS.
-         */
         baseSize: number;
         resource: string;
-        /**
-         * Additional size per resource unit (in IOPS). (Example: `baseSize=50`, `sizePerResourceUnit=20`, and an instance with 2 CPU is launched; its IOPS size will be: 90).
-         */
         sizePerResourceUnit: number;
     }
 
     export interface OceanBlockDeviceMappingEbsDynamicVolumeSize {
-        /**
-         * Initial size for IOPS.
-         */
         baseSize: number;
         resource: string;
-        /**
-         * Additional size per resource unit (in IOPS). (Example: `baseSize=50`, `sizePerResourceUnit=20`, and an instance with 2 CPU is launched; its IOPS size will be: 90).
-         */
         sizePerResourceUnit: number;
     }
 
@@ -2558,81 +1657,24 @@ export namespace aws {
     }
 
     export interface OceanFilters {
-        /**
-         * The filtered instance types will support at least one of the architectures from this list.
-         */
         architectures?: string[];
-        /**
-         * The filtered instance types will belong to one of the categories types from this list.
-         */
         categories?: string[];
-        /**
-         * The filtered instance types will have one of the disk type from this list.
-         */
         diskTypes?: string[];
-        /**
-         * Types belonging to a family from the ExcludeFamilies will not be available for scaling (asterisk wildcard is also supported). For example, C* will exclude instance types from these families: c5, c4, c4a, etc.
-         */
         excludeFamilies?: string[];
-        /**
-         * In case excludeMetal is set to true, metal types will not be available for scaling.
-         */
         excludeMetal?: boolean;
-        /**
-         * The filtered instance types will have a hypervisor type from this list.
-         */
         hypervisors?: string[];
-        /**
-         * Types belonging to a family from the IncludeFamilies will be available for scaling (asterisk wildcard is also supported). For example, C* will include instance types from these families: c5, c4, c4a, etc.
-         */
         includeFamilies?: string[];
-        /**
-         * Ena is supported or not.
-         */
         isEnaSupported?: string;
-        /**
-         * Maximum total number of GPUs.
-         */
         maxGpu?: number;
-        /**
-         * Maximum amount of Memory (GiB).
-         */
         maxMemoryGib?: number;
-        /**
-         * Maximum Bandwidth in Gib/s of network performance.
-         */
         maxNetworkPerformance?: number;
-        /**
-         * Maximum number of vcpus available.
-         */
         maxVcpu?: number;
-        /**
-         * Minimum number of network interfaces (ENIs).
-         */
         minEnis?: number;
-        /**
-         * Minimum total number of GPUs.
-         */
         minGpu?: number;
-        /**
-         * Minimum amount of Memory (GiB).
-         */
         minMemoryGib?: number;
-        /**
-         * Minimum Bandwidth in Gib/s of network performance.
-         */
         minNetworkPerformance?: number;
-        /**
-         * Minimum number of vcpus available.
-         */
         minVcpu?: number;
-        /**
-         * The filtered instance types will have a root device types from this list.
-         */
         rootDeviceTypes?: string[];
-        /**
-         * The filtered instance types will support at least one of the virtualization types from this list.
-         */
         virtualizationTypes?: string[];
     }
 
@@ -2697,56 +1739,20 @@ export namespace aws {
     }
 
     export interface OceanLaunchSpecBlockDeviceMappingEbs {
-        /**
-         * Boolean. Flag to delete the EBS on instance termination.
-         */
         deleteOnTermination: boolean;
-        /**
-         * Object. Set dynamic volume size properties. When using this object, you cannot use volumeSize. You must use one or the other.
-         */
         dynamicVolumeSize?: outputs.aws.OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize;
-        /**
-         * Boolean. Enables [EBS encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) on the volume.
-         */
         encrypted: boolean;
-        /**
-         * Int. The number of I/O operations per second (IOPS) that the volume supports.
-         */
         iops?: number;
-        /**
-         * String. Identifier (key ID, key alias, ID ARN, or alias ARN) for a customer managed CMK under which the EBS volume is encrypted.
-         */
         kmsKeyId?: string;
-        /**
-         * (Optional) String. The Snapshot ID to mount by.
-         */
         snapshotId?: string;
-        /**
-         * The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volumeType` = `gp3`.
-         */
         throughput?: number;
-        /**
-         * Int. The size, in GB of the volume.
-         */
         volumeSize?: number;
-        /**
-         * String. The type of the volume. (Example: `gp2`).
-         */
         volumeType: string;
     }
 
     export interface OceanLaunchSpecBlockDeviceMappingEbsDynamicVolumeSize {
-        /**
-         * Int. Initial size for volume. (Example: 50)
-         */
         baseSize: number;
-        /**
-         * String. Resource type to increase volume size dynamically by. (Valid values: `CPU`)
-         */
         resource: string;
-        /**
-         * Int. Additional size (in GB) per resource unit. (Example: `baseSize=50`, `sizePerResourceUnit=20`, and instance with 2 CPU is launched; its total disk size will be: 90GB)
-         */
         sizePerResourceUnit: number;
     }
 
@@ -2776,13 +1782,7 @@ export namespace aws {
     }
 
     export interface OceanLaunchSpecElasticIpPoolTagSelector {
-        /**
-         * Elastic IP tag key. The Virtual Node Group will consider all Elastic IPs tagged with this tag as a part of the Elastic IP pool to use.
-         */
         tagKey: string;
-        /**
-         * Elastic IP tag value. Can be null.
-         */
         tagValue?: string;
     }
 
@@ -2891,11 +1891,11 @@ export namespace aws {
 
     export interface OceanLaunchSpecLabel {
         /**
-         * The taint key.
+         * The label key.
          */
         key: string;
         /**
-         * The taint value.
+         * The label value.
          */
         value: string;
     }
@@ -2928,7 +1928,7 @@ export namespace aws {
          */
         cronExpression: string;
         /**
-         * Flag to enable or disable the shutdown hours mechanism. When False, the mechanism is deactivated, and the virtual node group remains in its current state.
+         * Describes whether the task is enabled. When True, the task runs. When False, it does not run.
          */
         isEnabled: boolean;
         /**
@@ -2942,21 +1942,9 @@ export namespace aws {
     }
 
     export interface OceanLaunchSpecSchedulingTaskTaskHeadroom {
-        /**
-         * Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
-         */
         cpuPerUnit?: number;
-        /**
-         * Optionally configure the number of GPUS to allocate for each headroom unit.
-         */
         gpuPerUnit?: number;
-        /**
-         * Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
-         */
         memoryPerUnit?: number;
-        /**
-         * The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
-         */
         numOfUnits: number;
     }
 
@@ -2968,13 +1956,7 @@ export namespace aws {
     }
 
     export interface OceanLaunchSpecTag {
-        /**
-         * The taint key.
-         */
         key: string;
-        /**
-         * The taint value.
-         */
         value: string;
     }
 
@@ -3025,15 +2007,12 @@ export namespace aws {
     }
 
     export interface OceanLoggingExport {
-        /**
-         * Exports your cluster's logs to the S3 bucket and subdir configured on the S3 data integration given.
-         */
         s3s?: outputs.aws.OceanLoggingExportS3[];
     }
 
     export interface OceanLoggingExportS3 {
         /**
-         * The identifier of The S3 data integration to export the logs to.
+         * The Cluster ID.
          */
         id: string;
     }
@@ -3138,7 +2117,7 @@ export namespace azure {
     export interface ElastigroupImageCustom {
         imageName: string;
         /**
-         * Name of the Azure Resource Group where the Managed Service Identity is located.
+         * Name of the Resource Group for Elastigroup.
          */
         resourceGroupName: string;
     }
@@ -3172,11 +2151,11 @@ export namespace azure {
 
     export interface ElastigroupManagedServiceIdentity {
         /**
-         * Name of the Managed Service Identity.
+         * The group name.
          */
         name: string;
         /**
-         * Name of the Azure Resource Group where the Managed Service Identity is located.
+         * Name of the Resource Group for Elastigroup.
          */
         resourceGroupName: string;
     }
@@ -3185,7 +2164,7 @@ export namespace azure {
         additionalIpConfigs?: outputs.azure.ElastigroupNetworkAdditionalIpConfig[];
         assignPublicIp?: boolean;
         /**
-         * Name of the Azure Resource Group where the Managed Service Identity is located.
+         * Name of the Resource Group for Elastigroup.
          */
         resourceGroupName: string;
         subnetName: string;
@@ -3194,7 +2173,7 @@ export namespace azure {
 
     export interface ElastigroupNetworkAdditionalIpConfig {
         /**
-         * Name of the Managed Service Identity.
+         * The group name.
          */
         name: string;
         privateIpVersion?: string;
@@ -3223,12 +2202,9 @@ export namespace azure {
 
     export interface ElastigroupScalingDownPolicyDimension {
         /**
-         * Name of the Managed Service Identity.
+         * The group name.
          */
         name: string;
-        /**
-         * Tag Value for Vms in Elastigroup.
-         */
         value?: string;
     }
 
@@ -3255,12 +2231,9 @@ export namespace azure {
 
     export interface ElastigroupScalingUpPolicyDimension {
         /**
-         * Name of the Managed Service Identity.
+         * The group name.
          */
         name: string;
-        /**
-         * Tag Value for Vms in Elastigroup.
-         */
         value?: string;
     }
 
@@ -3314,38 +2287,20 @@ export namespace azure {
     }
 
     export interface OceanAutoscalerAutoscaleDown {
-        /**
-         * Would represent the maximum % to scale-down.
-         */
         maxScaleDownPercentage: number;
     }
 
     export interface OceanAutoscalerAutoscaleHeadroom {
-        /**
-         * Automatic headroom configuration.
-         */
         automatic: outputs.azure.OceanAutoscalerAutoscaleHeadroomAutomatic;
     }
 
     export interface OceanAutoscalerAutoscaleHeadroomAutomatic {
-        /**
-         * Enable automatic headroom. When set to `true`, Ocean configures and optimizes headroom automatically.
-         */
         isEnabled: boolean;
-        /**
-         * Optionally set a number between 0-100 to control the percentage of total cluster resources dedicated to headroom. Relevant when `isEnabled` is toggled on.
-         */
         percentage: number;
     }
 
     export interface OceanAutoscalerResourceLimits {
-        /**
-         * The maximum memory in GiB units that can be allocated to the cluster.
-         */
         maxMemoryGib: number;
-        /**
-         * The maximum cpu in vCpu units that can be allocated to the cluster.
-         */
         maxVcpu?: number;
     }
 
@@ -3359,15 +2314,12 @@ export namespace azure {
          */
         minorVersionAutoUpgrade: boolean;
         /**
-         * Name of the Load Balancer.
+         * Extension name.
          */
         name: string;
-        /**
-         * Image publisher.
-         */
         publisher: string;
         /**
-         * The type of load balancer. Supported value: `loadBalancer`
+         * Extension type.
          */
         type: string;
     }
@@ -3387,21 +2339,9 @@ export namespace azure {
     }
 
     export interface OceanImageMarketplace {
-        /**
-         * Image name.
-         */
         offer: string;
-        /**
-         * Image publisher.
-         */
         publisher: string;
-        /**
-         * Image Stock Keeping Unit (which is the specific version of the image).
-         */
         sku: string;
-        /**
-         * Image version.
-         */
         version: string;
     }
 
@@ -3430,11 +2370,11 @@ export namespace azure {
 
     export interface OceanManagedServiceIdentity {
         /**
-         * Name of the Load Balancer.
+         * Name of the Managed Service Identity.
          */
         name: string;
         /**
-         * The Resource Group name of the Load Balancer.
+         * Name of the Azure Resource Group where the Managed Service Identity is located.
          */
         resourceGroupName: string;
     }
@@ -3445,7 +2385,7 @@ export namespace azure {
          */
         networkInterfaces: outputs.azure.OceanNetworkNetworkInterface[];
         /**
-         * The Resource Group name of the Load Balancer.
+         * Vnet resource group name.
          */
         resourceGroupName: string;
         /**
@@ -3455,43 +2395,28 @@ export namespace azure {
     }
 
     export interface OceanNetworkNetworkInterface {
-        /**
-         * Additional configuration of network interface. The name fields between all the `additionalIpConfig` must be unique.
-         */
         additionalIpConfigs: outputs.azure.OceanNetworkNetworkInterfaceAdditionalIpConfig[];
-        /**
-         * Assign public IP.
-         */
         assignPublicIp: boolean;
-        /**
-         * Defines whether the network interface is primary or not.
-         */
         isPrimary: boolean;
         securityGroup: outputs.azure.OceanNetworkNetworkInterfaceSecurityGroup;
-        /**
-         * Subnet name.
-         */
         subnetName: string;
     }
 
     export interface OceanNetworkNetworkInterfaceAdditionalIpConfig {
         /**
-         * Name of the Load Balancer.
+         * The Ocean cluster name.
          */
         name: string;
-        /**
-         * Supported values: `IPv4`, `IPv6`.
-         */
         privateIpVersion: string;
     }
 
     export interface OceanNetworkNetworkInterfaceSecurityGroup {
         /**
-         * Name of the Load Balancer.
+         * The Ocean cluster name.
          */
         name: string;
         /**
-         * The Resource Group name of the Load Balancer.
+         * Name of the Azure Resource Group into which VMs will be launched. Cannot be updated.
          */
         resourceGroupName: string;
     }
@@ -3636,7 +2561,7 @@ export namespace azure {
          */
         sizeGb: number;
         /**
-         * The type of load balancer. Supported value: `loadBalancer`
+         * The type of the OS disk. Supported values: `Standard_LRS`, `Premium_LRS`, `StandardSSD_LRS`.
          */
         type?: string;
     }
@@ -3672,31 +2597,19 @@ export namespace azure {
     }
 
     export interface OceanVirtualNodeGroupAutoscaleAutoscaleHeadroom {
-        /**
-         * Configure the number of CPUs to allocate for the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
-         */
         cpuPerUnit?: number;
-        /**
-         * How many GPU cores should be allocated for headroom unit.
-         */
         gpuPerUnit?: number;
-        /**
-         * Configure the amount of memory (MiB) to allocate the headroom.
-         */
         memoryPerUnit?: number;
-        /**
-         * The number of headroom units to maintain, where each unit has the defined CPU, memory and GPU.
-         */
         numOfUnits: number;
     }
 
     export interface OceanVirtualNodeGroupLabel {
         /**
-         * Tag Key for Vms in the cluster.
+         * The label key.
          */
         key: string;
         /**
-         * Tag Value for VMs in the cluster.
+         * The label value.
          */
         value?: string;
     }
@@ -3717,28 +2630,13 @@ export namespace azure {
     }
 
     export interface OceanVirtualNodeGroupLaunchSpecificationOsDisk {
-        /**
-         * The size of the OS disk in GB, Required if dataDisks is specified.
-         */
         sizeGb: number;
-        /**
-         * The type of the OS disk. Valid values: `"Standard_LRS"`, `"Premium_LRS"`, `"StandardSSD_LRS"`.
-         */
         type?: string;
-        /**
-         * Flag to enable/disable the Ephemeral OS Disk utilization.
-         */
         utilizeEphemeralStorage?: boolean;
     }
 
     export interface OceanVirtualNodeGroupLaunchSpecificationTag {
-        /**
-         * Tag Key for Vms in the cluster.
-         */
         key?: string;
-        /**
-         * Tag Value for VMs in the cluster.
-         */
         value?: string;
     }
 
@@ -3755,11 +2653,11 @@ export namespace azure {
          */
         effect: string;
         /**
-         * Tag Key for Vms in the cluster.
+         * The taint key.
          */
         key: string;
         /**
-         * Tag Value for VMs in the cluster.
+         * The taint value.
          */
         value: string;
     }
@@ -3775,144 +2673,54 @@ export namespace azure {
 
 export namespace ecs {
     export interface OceanAutoscaler {
-        /**
-         * The auto-headroom percentage. Set a number between 0-200 to control the headroom % of the cluster. Relevant when `isAutoConfig`= true.
-         */
         autoHeadroomPercentage?: number;
-        /**
-         * Cooldown period between scaling actions.
-         */
         cooldown?: number;
-        /**
-         * Auto Scaling scale down operations.
-         */
         down?: outputs.ecs.OceanAutoscalerDown;
-        /**
-         * When set to true, both automatic and per custom launch specification manual headroom to be saved concurrently and independently in the cluster. prerequisite: isAutoConfig must be true
-         */
         enableAutomaticAndManualHeadroom?: boolean;
-        /**
-         * Spare resource capacity management enabling fast assignment of tasks without waiting for new resources to launch.
-         */
         headroom?: outputs.ecs.OceanAutoscalerHeadroom;
-        /**
-         * Automatically configure and optimize headroom resources.
-         */
         isAutoConfig?: boolean;
-        /**
-         * Enable the Ocean ECS autoscaler.
-         */
         isEnabled?: boolean;
-        /**
-         * Optionally set upper and lower bounds on the resource usage of the cluster.
-         */
         resourceLimits?: outputs.ecs.OceanAutoscalerResourceLimits;
-        /**
-         * Option to scale down non-service tasks. If not set, Ocean does not scale down standalone tasks.
-         */
         shouldScaleDownNonServiceTasks?: boolean;
     }
 
     export interface OceanAutoscalerDown {
-        /**
-         * Would represent the maximum % to scale-down. Number between 1-100.
-         */
         maxScaleDownPercentage?: number;
     }
 
     export interface OceanAutoscalerHeadroom {
-        /**
-         * Optionally configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
-         */
         cpuPerUnit?: number;
-        /**
-         * Optionally configure the amount of memory (MB) to allocate the headroom.
-         */
         memoryPerUnit?: number;
-        /**
-         * The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
-         */
         numOfUnits?: number;
     }
 
     export interface OceanAutoscalerResourceLimits {
-        /**
-         * Maximum amount of Memory (GiB).
-         */
         maxMemoryGib?: number;
-        /**
-         * Maximum number of vcpus available.
-         */
         maxVcpu?: number;
     }
 
     export interface OceanBlockDeviceMapping {
-        /**
-         * String. Set device name. Example: `/dev/xvda1`.
-         */
         deviceName: string;
-        /**
-         * Object. Set Elastic Block Store properties.
-         */
         ebs?: outputs.ecs.OceanBlockDeviceMappingEbs;
-        /**
-         * String. Suppresses the specified device included in the block device mapping of the AMI.
-         */
         noDevice?: string;
         virtualName?: string;
     }
 
     export interface OceanBlockDeviceMappingEbs {
-        /**
-         * Boolean. Toggles EBS deletion upon instance termination.
-         */
         deleteOnTermination: boolean;
-        /**
-         * Object. Set dynamic volume size properties. When using this object, you cannot use volumeSize. You must use one or the other.
-         */
         dynamicVolumeSize?: outputs.ecs.OceanBlockDeviceMappingEbsDynamicVolumeSize;
-        /**
-         * Boolean. Enables [EBS encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) on the volume.
-         */
         encrypted: boolean;
-        /**
-         * Int. The number of I/O operations per second (IOPS) that the volume supports.
-         */
         iops?: number;
-        /**
-         * String. Identifier (key ID, key alias, ID ARN, or alias ARN) for a customer managed CMK under which the EBS volume is encrypted.
-         */
         kmsKeyId?: string;
-        /**
-         * (Optional) String. The snapshot ID to mount by.
-         */
         snapshotId?: string;
-        /**
-         * The amount of data transferred to or from a storage device per second, you can use this param just in a case that `volumeType` = gp3.
-         */
         throughput?: number;
-        /**
-         * Int. The size (in GB) of the volume.
-         */
         volumeSize?: number;
-        /**
-         * String. The type of the volume. Example: `gp2`.
-         */
         volumeType: string;
     }
 
     export interface OceanBlockDeviceMappingEbsDynamicVolumeSize {
-        /**
-         * Int. Initial size for volume. Example: `50`.
-         */
         baseSize: number;
-        /**
-         * String. Resource type to increase volume size dynamically by. Valid values: `CPU`.
-         */
         resource: string;
-        /**
-         * Int. Additional size (in GB) per resource unit. Example: When the `baseSize=50`, `sizePerResourceUnit=20`, and instance with two CPUs is launched, its total disk size will be: 90GB.
-         */
         sizePerResourceUnit: number;
     }
 
@@ -3924,81 +2732,24 @@ export namespace ecs {
     }
 
     export interface OceanFilters {
-        /**
-         * The filtered instance types will support at least one of the architectures from this list.
-         */
         architectures?: string[];
-        /**
-         * The filtered instance types will belong to one of the categories types from this list.
-         */
         categories?: string[];
-        /**
-         * The filtered instance types will have one of the disk type from this list.
-         */
         diskTypes?: string[];
-        /**
-         * Types belonging to a family from the ExcludeFamilies will not be available for scaling (asterisk wildcard is also supported). For example, C* will exclude instance types from these families: c5, c4, c4a, etc.
-         */
         excludeFamilies?: string[];
-        /**
-         * In case excludeMetal is set to true, metal types will not be available for scaling.
-         */
         excludeMetal?: boolean;
-        /**
-         * The filtered instance types will have a hypervisor type from this list.
-         */
         hypervisors?: string[];
-        /**
-         * Types belonging to a family from the IncludeFamilies will be available for scaling (asterisk wildcard is also supported). For example, C* will include instance types from these families: c5, c4, c4a, etc.
-         */
         includeFamilies?: string[];
-        /**
-         * Ena is supported or not.
-         */
         isEnaSupported?: string;
-        /**
-         * Maximum total number of GPUs.
-         */
         maxGpu?: number;
-        /**
-         * Maximum amount of Memory (GiB).
-         */
         maxMemoryGib?: number;
-        /**
-         * Maximum Bandwidth in Gib/s of network performance.
-         */
         maxNetworkPerformance?: number;
-        /**
-         * Maximum number of vcpus available.
-         */
         maxVcpu?: number;
-        /**
-         * Minimum number of network interfaces (ENIs).
-         */
         minEnis?: number;
-        /**
-         * Minimum total number of GPUs.
-         */
         minGpu?: number;
-        /**
-         * Minimum amount of Memory (GiB).
-         */
         minMemoryGib?: number;
-        /**
-         * Minimum Bandwidth in Gib/s of network performance.
-         */
         minNetworkPerformance?: number;
-        /**
-         * Minimum number of vcpus available.
-         */
         minVcpu?: number;
-        /**
-         * The filtered instance types will have a root device types from this list.
-         */
         rootDeviceTypes?: string[];
-        /**
-         * The filtered instance types will support at least one of the virtualization types from this list.
-         */
         virtualizationTypes?: string[];
     }
 
@@ -4026,7 +2777,7 @@ export namespace ecs {
 
     export interface OceanLaunchSpecAutoscaleHeadroom {
         /**
-         * Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
+         * Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in CPU units, where 1024 units = 1 vCPU.
          */
         cpuPerUnit?: number;
         /**
@@ -4034,7 +2785,7 @@ export namespace ecs {
          */
         memoryPerUnit?: number;
         /**
-         * The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
+         * The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
          */
         numOfUnits: number;
     }
@@ -4102,17 +2853,8 @@ export namespace ecs {
     }
 
     export interface OceanLaunchSpecSchedulingTaskTaskHeadroom {
-        /**
-         * Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
-         */
         cpuPerUnit?: number;
-        /**
-         * Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
-         */
         memoryPerUnit?: number;
-        /**
-         * The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
-         */
         numOfUnits: number;
     }
 
@@ -4126,13 +2868,7 @@ export namespace ecs {
     }
 
     export interface OceanLaunchSpecTag {
-        /**
-         * The label key.
-         */
         key: string;
-        /**
-         * The label value.
-         */
         value: string;
     }
 
@@ -4144,68 +2880,35 @@ export namespace ecs {
     }
 
     export interface OceanLoggingExport {
-        /**
-         * Exports your cluster's logs to the S3 bucket and subdir configured on the S3 data integration given.
-         */
         s3s?: outputs.ecs.OceanLoggingExportS3[];
     }
 
     export interface OceanLoggingExportS3 {
         /**
-         * The identifier of The S3 data integration to export the logs to.
+         * The Spotinst Ocean ID.
          */
         id: string;
     }
 
     export interface OceanOptimizeImages {
-        /**
-         * String. Valid values: "always" "never" "timeWindow".
-         */
         performAt: string;
-        /**
-         * Boolean. Enable auto image (AMI) update for the ECS container instances. The auto update applies for ECS-Optimized AMIs.
-         */
         shouldOptimizeEcsAmi: boolean;
-        /**
-         * Array of strings. Set time windows for image update, at least one time window. Each string is in the format of ddd:hh:mm-ddd:hh:mm ddd. Time windows should not overlap.
-         */
         timeWindows?: string[];
     }
 
     export interface OceanScheduledTask {
-        /**
-         * Set shutdown hours for cluster object.
-         */
         shutdownHours?: outputs.ecs.OceanScheduledTaskShutdownHours;
-        /**
-         * The scheduling tasks for the cluster.
-         */
         tasks?: outputs.ecs.OceanScheduledTaskTask[];
     }
 
     export interface OceanScheduledTaskShutdownHours {
-        /**
-         * Enable the Ocean ECS autoscaler.
-         */
         isEnabled?: boolean;
-        /**
-         * Array of strings. Set time windows for image update, at least one time window. Each string is in the format of ddd:hh:mm-ddd:hh:mm ddd. Time windows should not overlap.
-         */
         timeWindows: string[];
     }
 
     export interface OceanScheduledTaskTask {
-        /**
-         * A valid cron expression. The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of `frequency` or `cronExpression` should be used at a time. Required for `cluster.scheduling.tasks` object. Example: `0 1 * * *`.
-         */
         cronExpression: string;
-        /**
-         * Enable the Ocean ECS autoscaler.
-         */
         isEnabled: boolean;
-        /**
-         * Valid values: "clusterRoll". Required for `cluster.scheduling.tasks object`. Example: `clusterRoll`.
-         */
         taskType: string;
     }
 
@@ -4221,29 +2924,14 @@ export namespace ecs {
     }
 
     export interface OceanUpdatePolicy {
-        /**
-         * will update instance tags on the fly without rolling the cluster.
-         */
         autoApplyTags?: boolean;
-        /**
-         * Spot will perform a cluster Roll in accordance with a relevant modification of the cluster’s settings. When set to true , only specific changes in the cluster’s configuration will trigger a cluster roll (such as AMI, Key Pair, user data, instance types, load balancers, etc).
-         */
         conditionedRoll?: boolean;
         rollConfig?: outputs.ecs.OceanUpdatePolicyRollConfig;
-        /**
-         * Enables the roll.
-         */
         shouldRoll: boolean;
     }
 
     export interface OceanUpdatePolicyRollConfig {
-        /**
-         * Default: 50. Indicates the threshold of minimum healthy instances in single batch. If the amount of healthy instances in single batch is under the threshold, the cluster roll will fail. If exists, the parameter value will be in range of 1-100. In case of null as value, the default value in the backend will be 50%. Value of param should represent the number in percentage (%) of the batch.
-         */
         batchMinHealthyPercentage?: number;
-        /**
-         * Sets the percentage of the instances to deploy in each batch.
-         */
         batchSizePercentage: number;
     }
 
@@ -4251,21 +2939,9 @@ export namespace ecs {
 
 export namespace gcp {
     export interface ElastigroupBackendService {
-        /**
-         * Sets which location the backend services will be active. Valid values: `regional`, `global`.
-         */
         locationType?: string;
-        /**
-         * Describes a named port and a list of ports.
-         */
         namedPorts?: outputs.gcp.ElastigroupBackendServiceNamedPort[];
-        /**
-         * Use when `locationType` is "regional". Set the traffic for the backend service to either between the instances in the vpc or to traffic from the internet. Valid values: `INTERNAL`, `EXTERNAL`.
-         */
         scheme?: string;
-        /**
-         * The name of the backend service.
-         */
         serviceName: string;
     }
 
@@ -4274,76 +2950,28 @@ export namespace gcp {
          * The group name.
          */
         name: string;
-        /**
-         * A list of ports.
-         *
-         * Usage:
-         */
         ports: string[];
     }
 
     export interface ElastigroupDisk {
-        /**
-         * Specifies whether the disk will be auto-deleted when the instance is deleted.
-         */
         autoDelete?: boolean;
-        /**
-         * Indicates that this is a boot disk. The virtual machine will use the first partition of the disk for its root filesystem.
-         */
         boot?: boolean;
-        /**
-         * Specifies a unique device name of your choice.
-         */
         deviceName?: string;
-        /**
-         * Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new instance.
-         */
         initializeParams?: outputs.gcp.ElastigroupDiskInitializeParam[];
-        /**
-         * Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME.
-         */
         interface?: string;
-        /**
-         * The mode in which to attach this disk, either READ_WRITE or READ_ONLY.
-         */
         mode?: string;
-        /**
-         * Specifies a valid partial or full URL to an existing Persistent Disk resource. This field is only applicable for persistent disks.
-         */
         source?: string;
-        /**
-         * Specifies the type of disk, either SCRATCH or PERSISTENT.
-         */
         type?: string;
     }
 
     export interface ElastigroupDiskInitializeParam {
-        /**
-         * Specifies disk size in gigabytes. Must be in increments of 2.
-         */
         diskSizeGb?: string;
-        /**
-         * Specifies the disk type to use to create the instance. Valid values: pd-ssd, local-ssd.
-         */
         diskType?: string;
-        /**
-         * A source image used to create the disk. You can provide a private (custom) image, and Compute Engine will use the corresponding image from your project.
-         *
-         * Usage:
-         */
         sourceImage: string;
     }
 
     export interface ElastigroupGpu {
-        /**
-         * The number of GPUs. Must be 0, 2, 4, 6, 8.
-         *
-         * Usage:
-         */
         count: number;
-        /**
-         * The type of GPU instance. Valid values: `nvidia-tesla-v100`, `nvidia-tesla-p100`, `nvidia-tesla-k80`.
-         */
         type: string;
     }
 
@@ -4356,15 +2984,7 @@ export namespace gcp {
     }
 
     export interface ElastigroupIntegrationDockerSwarm {
-        /**
-         * IP or FQDN of one of your swarm managers.
-         */
         masterHost: string;
-        /**
-         * Network port used by your swarm.
-         *
-         * Usage:
-         */
         masterPort: number;
     }
 
@@ -4381,9 +3001,6 @@ export namespace gcp {
     }
 
     export interface ElastigroupIntegrationGkeAutoscaleDown {
-        /**
-         * Number of consecutive periods in which the threshold must be met in order to trigger a scaling action.
-         */
         evaluationPeriods?: number;
     }
 
@@ -4394,13 +3011,7 @@ export namespace gcp {
     }
 
     export interface ElastigroupIntegrationGkeAutoscaleLabel {
-        /**
-         * Labels key.
-         */
         key: string;
-        /**
-         * Labels value.
-         */
         value: string;
     }
 
@@ -4417,24 +3028,18 @@ export namespace gcp {
 
     export interface ElastigroupMetadata {
         /**
-         * Labels key.
+         * Metadata key.
          */
         key: string;
         /**
-         * Labels value.
+         * Metadata value.
          */
         value: string;
     }
 
     export interface ElastigroupNetworkInterface {
-        /**
-         * Array of configurations.
-         */
         accessConfigs?: outputs.gcp.ElastigroupNetworkInterfaceAccessConfig[];
         aliasIpRanges?: outputs.gcp.ElastigroupNetworkInterfaceAliasIpRange[];
-        /**
-         * Network resource for this group.
-         */
         network: string;
     }
 
@@ -4443,9 +3048,6 @@ export namespace gcp {
          * The group name.
          */
         name?: string;
-        /**
-         * Specifies the type of disk, either SCRATCH or PERSISTENT.
-         */
         type?: string;
     }
 
@@ -4455,54 +3057,18 @@ export namespace gcp {
     }
 
     export interface ElastigroupScalingDownPolicy {
-        /**
-         * Type of scaling action to take when the scaling policy is triggered. Valid values: "adjustment", "setMinTarget", "updateCapacity", "percentageAdjustment"
-         */
         actionType?: string;
-        /**
-         * Value to which the action type will be adjusted. Required if using "numeric" or "percentageAdjustment" action types.
-         */
         adjustment?: number;
-        /**
-         * Time (seconds) to wait after a scaling action before resuming monitoring.
-         */
         cooldown: number;
-        /**
-         * A list of dimensions describing qualities of the metric.
-         */
         dimensions?: outputs.gcp.ElastigroupScalingDownPolicyDimension[];
-        /**
-         * Number of consecutive periods in which the threshold must be met in order to trigger a scaling action.
-         */
         evaluationPeriods: number;
-        /**
-         * Metric to monitor. Valid values: "Percentage CPU", "Network In", "Network Out", "Disk Read Bytes", "Disk Write Bytes", "Disk Write Operations/Sec", "Disk Read Operations/Sec".
-         */
         metricName: string;
         namespace: string;
-        /**
-         * The operator used to evaluate the threshold against the current metric value. Valid values: "gt" (greater than), "get" (greater-than or equal), "lt" (less than), "lte" (less than or equal).
-         */
         operator: string;
-        /**
-         * Amount of time (seconds) for which the threshold must be met in order to trigger the scaling action.
-         */
         period: number;
-        /**
-         * Name of scaling policy.
-         */
         policyName: string;
-        /**
-         * Specifies a valid partial or full URL to an existing Persistent Disk resource. This field is only applicable for persistent disks.
-         */
         source: string;
-        /**
-         * Statistic by which to evaluate the selected metric. Valid values: "AVERAGE", "SAMPLE_COUNT", "SUM", "MINIMUM", "MAXIMUM", "PERCENTILE", "COUNT".
-         */
         statistic: string;
-        /**
-         * The value at which the scaling action is triggered.
-         */
         threshold: number;
         unit: string;
     }
@@ -4512,61 +3078,22 @@ export namespace gcp {
          * The group name.
          */
         name: string;
-        /**
-         * Labels value.
-         */
         value?: string;
     }
 
     export interface ElastigroupScalingUpPolicy {
-        /**
-         * Type of scaling action to take when the scaling policy is triggered. Valid values: "adjustment", "setMinTarget", "updateCapacity", "percentageAdjustment"
-         */
         actionType?: string;
-        /**
-         * Value to which the action type will be adjusted. Required if using "numeric" or "percentageAdjustment" action types.
-         */
         adjustment?: number;
-        /**
-         * Time (seconds) to wait after a scaling action before resuming monitoring.
-         */
         cooldown: number;
-        /**
-         * A list of dimensions describing qualities of the metric.
-         */
         dimensions?: outputs.gcp.ElastigroupScalingUpPolicyDimension[];
-        /**
-         * Number of consecutive periods in which the threshold must be met in order to trigger a scaling action.
-         */
         evaluationPeriods: number;
-        /**
-         * Metric to monitor. Valid values: "Percentage CPU", "Network In", "Network Out", "Disk Read Bytes", "Disk Write Bytes", "Disk Write Operations/Sec", "Disk Read Operations/Sec".
-         */
         metricName: string;
         namespace: string;
-        /**
-         * The operator used to evaluate the threshold against the current metric value. Valid values: "gt" (greater than), "get" (greater-than or equal), "lt" (less than), "lte" (less than or equal).
-         */
         operator: string;
-        /**
-         * Amount of time (seconds) for which the threshold must be met in order to trigger the scaling action.
-         */
         period: number;
-        /**
-         * Name of scaling policy.
-         */
         policyName: string;
-        /**
-         * Specifies a valid partial or full URL to an existing Persistent Disk resource. This field is only applicable for persistent disks.
-         */
         source: string;
-        /**
-         * Statistic by which to evaluate the selected metric. Valid values: "AVERAGE", "SAMPLE_COUNT", "SUM", "MINIMUM", "MAXIMUM", "PERCENTILE", "COUNT".
-         */
         statistic: string;
-        /**
-         * The value at which the scaling action is triggered.
-         */
         threshold: number;
         unit: string;
     }
@@ -4576,9 +3103,6 @@ export namespace gcp {
          * The group name.
          */
         name: string;
-        /**
-         * Labels value.
-         */
         value?: string;
     }
 
@@ -4671,56 +3195,23 @@ export namespace gke {
 
     export interface ElastigroupIntegrationGke {
         autoUpdate?: boolean;
-        /**
-         * The amount of time, in seconds, after a scaling activity completes before any further trigger-related scaling activities can start.
-         */
         autoscaleCooldown?: number;
-        /**
-         * Enabling scale down.
-         */
         autoscaleDown?: outputs.gke.ElastigroupIntegrationGkeAutoscaleDown;
-        /**
-         * Headroom for the cluster.
-         */
         autoscaleHeadroom?: outputs.gke.ElastigroupIntegrationGkeAutoscaleHeadroom;
         autoscaleIsAutoConfig?: boolean;
-        /**
-         * Specifies whether the auto scaling feature is enabled.
-         */
         autoscaleIsEnabled?: boolean;
-        /**
-         * Labels to assign to the resource.
-         */
         autoscaleLabels?: outputs.gke.ElastigroupIntegrationGkeAutoscaleLabel[];
-        /**
-         * The name of the GKE cluster you wish to import.
-         */
         clusterId?: string;
-        /**
-         * The location of your GKE cluster.
-         */
         location?: string;
     }
 
     export interface ElastigroupIntegrationGkeAutoscaleDown {
-        /**
-         * Amount of cooldown evaluation periods for scale down.
-         */
         evaluationPeriods?: number;
     }
 
     export interface ElastigroupIntegrationGkeAutoscaleHeadroom {
-        /**
-         * Cpu units for compute.
-         */
         cpuPerUnit?: number;
-        /**
-         * RAM units for compute.
-         */
         memoryPerUnit?: number;
-        /**
-         * Amount of units for compute.
-         */
         numOfUnits?: number;
     }
 
@@ -4760,9 +3251,6 @@ export namespace gke {
         adjustment?: number;
         cooldown: number;
         dimensions?: outputs.gke.ElastigroupScalingDownPolicyDimension[];
-        /**
-         * Amount of cooldown evaluation periods for scale down.
-         */
         evaluationPeriods: number;
         metricName: string;
         namespace: string;
@@ -4785,9 +3273,6 @@ export namespace gke {
         adjustment?: number;
         cooldown: number;
         dimensions?: outputs.gke.ElastigroupScalingUpPolicyDimension[];
-        /**
-         * Amount of cooldown evaluation periods for scale down.
-         */
         evaluationPeriods: number;
         metricName: string;
         namespace: string;
@@ -4806,78 +3291,30 @@ export namespace gke {
     }
 
     export interface OceanImportAutoscaler {
-        /**
-         * Optionally set the auto headroom percentage, set a number between 0-200 to control the headroom % from the cluster. Relevant when isAutoConfig=true.
-         */
         autoHeadroomPercentage?: number;
-        /**
-         * Cooldown period between scaling actions.
-         */
         cooldown?: number;
-        /**
-         * Auto Scaling scale down operations.
-         */
         down?: outputs.gke.OceanImportAutoscalerDown;
-        /**
-         * enables automatic and manual headroom to work in parallel. When set to false, automatic headroom overrides all other headroom definitions manually configured, whether they are at cluster or VNG level.
-         */
         enableAutomaticAndManualHeadroom?: boolean;
-        /**
-         * Spare resource capacity management enabling fast assignment of Pods without waiting for new resources to launch.
-         */
         headroom?: outputs.gke.OceanImportAutoscalerHeadroom;
-        /**
-         * Automatically configure and optimize headroom resources.
-         */
         isAutoConfig?: boolean;
-        /**
-         * Enable the Ocean Kubernetes Autoscaler.
-         */
         isEnabled?: boolean;
-        /**
-         * Optionally set upper and lower bounds on the resource usage of the cluster.
-         */
         resourceLimits?: outputs.gke.OceanImportAutoscalerResourceLimits;
     }
 
     export interface OceanImportAutoscalerDown {
-        /**
-         * The number of evaluation periods that should accumulate before a scale down action takes place.
-         */
         evaluationPeriods?: number;
-        /**
-         * Would represent the maximum % to scale-down. Number between 1-100.
-         */
         maxScaleDownPercentage?: number;
     }
 
     export interface OceanImportAutoscalerHeadroom {
-        /**
-         * Optionally configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
-         */
         cpuPerUnit?: number;
-        /**
-         * How much GPU allocate for headroom unit.
-         */
         gpuPerUnit?: number;
-        /**
-         * Optionally configure the amount of memory (MiB) to allocate the headroom.
-         */
         memoryPerUnit?: number;
-        /**
-         * The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
-         */
         numOfUnits?: number;
     }
 
     export interface OceanImportAutoscalerResourceLimits {
-        /**
-         * The maximum memory in GiB units that can be allocated to the cluster.
-         */
         maxMemoryGib?: number;
-        /**
-         * The maximum cpu in vCpu units that can be allocated to the cluster.
-         */
         maxVcpu?: number;
     }
 
@@ -4899,49 +3336,23 @@ export namespace gke {
 
     export interface OceanImportBackendServiceNamedPort {
         name: string;
-        /**
-         * A list of ports.
-         */
         ports: string[];
     }
 
     export interface OceanImportScheduledTask {
-        /**
-         * Set shutdown hours for cluster object.
-         */
         shutdownHours?: outputs.gke.OceanImportScheduledTaskShutdownHours;
-        /**
-         * The scheduling tasks for the cluster.
-         */
         tasks?: outputs.gke.OceanImportScheduledTaskTask[];
     }
 
     export interface OceanImportScheduledTaskShutdownHours {
-        /**
-         * Enable the Ocean Kubernetes Autoscaler.
-         */
         isEnabled?: boolean;
-        /**
-         * Set time windows for shutdown hours. specify a list of 'timeWindows' with at least one time window Each string is in the format of - ddd:hh:mm-ddd:hh:mm ddd = day of week = Sun | Mon | Tue | Wed | Thu | Fri | Sat hh = hour 24 = 0 -23 mm = minute = 0 - 59. Time windows should not overlap. required on cluster.scheduling.isEnabled = True. API Times are in UTC
-         * Example: Fri:15:30-Wed:14:30
-         */
         timeWindows: string[];
     }
 
     export interface OceanImportScheduledTaskTask {
-        /**
-         * A valid cron expression. For example : " * * * * * ".The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of ‘frequency’ or ‘cronExpression’ should be used at a time. Required for cluster.scheduling.tasks object
-         * Example: 0 1 * * *
-         */
         cronExpression: string;
-        /**
-         * Enable the Ocean Kubernetes Autoscaler.
-         */
         isEnabled: boolean;
         taskParameters?: outputs.gke.OceanImportScheduledTaskTaskTaskParameters;
-        /**
-         * Valid values: "clusterRoll". Required for cluster.scheduling.tasks object.
-         */
         taskType: string;
     }
 
@@ -4951,10 +3362,6 @@ export namespace gke {
 
     export interface OceanImportScheduledTaskTaskTaskParametersClusterRoll {
         batchMinHealthyPercentage?: number;
-        /**
-         * Value in % to set size of batch in roll. Valid values are 0-100
-         * Example: 20.
-         */
         batchSizePercentage?: number;
         comment?: string;
         respectPdb?: boolean;
@@ -4988,10 +3395,6 @@ export namespace gke {
 
     export interface OceanImportUpdatePolicyRollConfig {
         batchMinHealthyPercentage?: number;
-        /**
-         * Value in % to set size of batch in roll. Valid values are 0-100
-         * Example: 20.
-         */
         batchSizePercentage: number;
         launchSpecIds?: string[];
         respectPdb?: boolean;
@@ -5036,11 +3439,11 @@ export namespace gke {
 
     export interface OceanLaunchSpecMetadata {
         /**
-         * The label key.
+         * The metadata key.
          */
         key: string;
         /**
-         * The label value.
+         * The metadata value.
          */
         value: string;
     }
@@ -5066,25 +3469,14 @@ export namespace gke {
 
     export interface OceanLaunchSpecNetworkInterfaceAccessConfig {
         /**
-         * The name of the access configuration.
+         * The launch specification name.
          */
         name?: string;
-        /**
-         * The type of the access configuration.
-         */
         type?: string;
     }
 
     export interface OceanLaunchSpecNetworkInterfaceAliasIpRange {
-        /**
-         * specify the IP address range in CIDR notation that can be used for the alias IP addresses associated with the imported node pool.
-         */
         ipCidrRange: string;
-        /**
-         * specify the IP address range for the subnet secondary IP range.
-         *
-         * <a id="update-policy"></a>
-         */
         subnetworkRangeName: string;
     }
 
@@ -5119,21 +3511,9 @@ export namespace gke {
     }
 
     export interface OceanLaunchSpecSchedulingTaskTaskHeadroom {
-        /**
-         * Optionally configure the number of CPUs to allocate for each headroom unit. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
-         */
         cpuPerUnit?: number;
-        /**
-         * Optionally configure the number of GPUS to allocate for each headroom unit.
-         */
         gpuPerUnit?: number;
-        /**
-         * Optionally configure the amount of memory (MiB) to allocate for each headroom unit.
-         */
         memoryPerUnit?: number;
-        /**
-         * The number of units to retain as headroom, where each unit has the defined headroom CPU, memory and GPU.
-         */
         numOfUnits: number;
     }
 
@@ -5168,11 +3548,11 @@ export namespace gke {
          */
         effect: string;
         /**
-         * The label key.
+         * The taint key.
          */
         key: string;
         /**
-         * The label value.
+         * The taint value.
          */
         value: string;
     }
@@ -5197,18 +3577,8 @@ export namespace organization {
     }
 
     export interface PolicyPolicyContentStatement {
-        /**
-         * Set a list of required actions for this permissions statement.
-         * Full list of actions can be found in [https://docs.spot.io/account-user-management/user-management/access-policies-actions/](https://docs.spot.io/account-user-management/user-management/access-policies-actions/).
-         */
         actions: string[];
-        /**
-         * Valid values "ALLOW", "DENY".
-         */
         effect: string;
-        /**
-         * Set a list of resources IDs. In order to include all resources in this statement - use "*".
-         */
         resources: string[];
     }
 
@@ -5303,7 +3673,7 @@ export namespace spark {
 
     export interface OceanIngressLoadBalancer {
         /**
-         * - Should an ingress controller managed by Ocean for Apache Spark be installed on the cluster.
+         * - Should a load balancer managed by Ocean for Apache Spark be provisioned for the cluster. Set this to false if you want to use an existing load balancer (only available on AWS).
          */
         managed?: boolean;
         /**
@@ -5318,7 +3688,7 @@ export namespace spark {
 
     export interface OceanIngressPrivateLink {
         /**
-         * - Should the Ocean for Apache Spark control plane address the cluster using a custom endpoint. Use this to specify the DNS address of an externally provisioned (unmanaged) load balancer.
+         * - Should the Ocean for Apache Spark control plane address the cluster via an AWS Private Link. Only available on AWS.
          */
         enabled?: boolean;
         /**

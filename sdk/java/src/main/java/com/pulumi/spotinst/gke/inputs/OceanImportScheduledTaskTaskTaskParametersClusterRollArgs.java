@@ -24,19 +24,9 @@ public final class OceanImportScheduledTaskTaskTaskParametersClusterRollArgs ext
         return Optional.ofNullable(this.batchMinHealthyPercentage);
     }
 
-    /**
-     * Value in % to set size of batch in roll. Valid values are 0-100
-     * Example: 20.
-     * 
-     */
     @Import(name="batchSizePercentage")
     private @Nullable Output<Integer> batchSizePercentage;
 
-    /**
-     * @return Value in % to set size of batch in roll. Valid values are 0-100
-     * Example: 20.
-     * 
-     */
     public Optional<Output<Integer>> batchSizePercentage() {
         return Optional.ofNullable(this.batchSizePercentage);
     }
@@ -91,25 +81,11 @@ public final class OceanImportScheduledTaskTaskTaskParametersClusterRollArgs ext
             return batchMinHealthyPercentage(Output.of(batchMinHealthyPercentage));
         }
 
-        /**
-         * @param batchSizePercentage Value in % to set size of batch in roll. Valid values are 0-100
-         * Example: 20.
-         * 
-         * @return builder
-         * 
-         */
         public Builder batchSizePercentage(@Nullable Output<Integer> batchSizePercentage) {
             $.batchSizePercentage = batchSizePercentage;
             return this;
         }
 
-        /**
-         * @param batchSizePercentage Value in % to set size of batch in roll. Valid values are 0-100
-         * Example: 20.
-         * 
-         * @return builder
-         * 
-         */
         public Builder batchSizePercentage(Integer batchSizePercentage) {
             return batchSizePercentage(Output.of(batchSizePercentage));
         }

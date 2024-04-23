@@ -12,15 +12,9 @@ namespace Pulumi.SpotInst.Aws.Inputs
 
     public sealed class ElastigroupUpdatePolicyRollConfigGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The percentage size of each batch in the scheduled deployment roll.
-        /// </summary>
         [Input("batchSizePercentage", required: true)]
         public Input<int> BatchSizePercentage { get; set; } = null!;
 
-        /// <summary>
-        /// The period of time (seconds) to wait before checking a batch's health after it's deployment.
-        /// </summary>
         [Input("gracePeriod")]
         public Input<int>? GracePeriod { get; set; }
 
@@ -30,21 +24,12 @@ namespace Pulumi.SpotInst.Aws.Inputs
         [Input("healthCheckType")]
         public Input<string>? HealthCheckType { get; set; }
 
-        /// <summary>
-        /// Strategy parameters
-        /// </summary>
         [Input("strategy")]
         public Input<Inputs.ElastigroupUpdatePolicyRollConfigStrategyGetArgs>? Strategy { get; set; }
 
-        /// <summary>
-        /// For use with `should_roll`. Sets minimum % of roll required to complete before continuing the plan. Required if `wait_for_roll_timeout` is set.
-        /// </summary>
         [Input("waitForRollPercentage")]
         public Input<double>? WaitForRollPercentage { get; set; }
 
-        /// <summary>
-        /// For use with `should_roll`. Sets how long to wait for the deployed % of a roll to exceed `wait_for_roll_percentage` before continuing the plan. Required if `wait_for_roll_percentage` is set.
-        /// </summary>
         [Input("waitForRollTimeout")]
         public Input<int>? WaitForRollTimeout { get; set; }
 

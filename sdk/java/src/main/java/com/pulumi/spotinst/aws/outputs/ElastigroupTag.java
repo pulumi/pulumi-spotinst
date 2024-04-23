@@ -12,20 +12,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ElastigroupTag {
     private @Nullable String key;
-    /**
-     * @return The dimension value.
-     * 
-     */
     private @Nullable String value;
 
     private ElastigroupTag() {}
     public Optional<String> key() {
         return Optional.ofNullable(this.key);
     }
-    /**
-     * @return The dimension value.
-     * 
-     */
     public Optional<String> value() {
         return Optional.ofNullable(this.value);
     }

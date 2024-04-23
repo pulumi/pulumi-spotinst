@@ -11,14 +11,14 @@ import java.util.Objects;
 @CustomType
 public final class ElastigroupImageImage {
     /**
-     * @return The identifier of The S3 data integration to export the logs to.
+     * @return The group ID.
      * 
      */
     private String id;
 
     private ElastigroupImageImage() {}
     /**
-     * @return The identifier of The S3 data integration to export the logs to.
+     * @return The group ID.
      * 
      */
     public String id() {

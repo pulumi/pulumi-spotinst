@@ -12,21 +12,12 @@ namespace Pulumi.SpotInst.Ecs.Inputs
 
     public sealed class OceanAutoscalerHeadroomArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Optionally configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
-        /// </summary>
         [Input("cpuPerUnit")]
         public Input<int>? CpuPerUnit { get; set; }
 
-        /// <summary>
-        /// Optionally configure the amount of memory (MB) to allocate the headroom.
-        /// </summary>
         [Input("memoryPerUnit")]
         public Input<int>? MemoryPerUnit { get; set; }
 
-        /// <summary>
-        /// The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.
-        /// </summary>
         [Input("numOfUnits")]
         public Input<int>? NumOfUnits { get; set; }
 

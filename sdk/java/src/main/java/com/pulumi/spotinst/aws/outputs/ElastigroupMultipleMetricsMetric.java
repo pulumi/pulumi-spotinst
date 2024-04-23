@@ -14,61 +14,25 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ElastigroupMultipleMetricsMetric {
-    /**
-     * @return A list of dimensions describing qualities of the metric.
-     * 
-     */
     private @Nullable List<ElastigroupMultipleMetricsMetricDimension> dimensions;
-    /**
-     * @return Percentile statistic. Valid values: `&#34;p0.1&#34;` - `&#34;p100&#34;`.
-     * 
-     */
     private @Nullable String extendedStatistic;
-    /**
-     * @return The name of the metric, with or without spaces.
-     * 
-     */
     private String metricName;
     /**
      * @return The group name.
      * 
      */
     private String name;
-    /**
-     * @return The namespace for the alarm&#39;s associated metric.
-     * 
-     */
     private String namespace;
-    /**
-     * @return The metric statistics to return. For information about specific statistics go to [Statistics](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/index.html?CHAP_TerminologyandKeyConcepts.html#Statistic) in the Amazon CloudWatch Developer Guide.
-     * 
-     */
     private @Nullable String statistic;
-    /**
-     * @return The unit for the alarm&#39;s associated metric. Valid values: `&#34;percent`, `&#34;seconds&#34;`, `&#34;microseconds&#34;`, `&#34;milliseconds&#34;`, `&#34;bytes&#34;`, `&#34;kilobytes&#34;`, `&#34;megabytes&#34;`, `&#34;gigabytes&#34;`, `&#34;terabytes&#34;`, `&#34;bits&#34;`, `&#34;kilobits&#34;`, `&#34;megabits&#34;`, `&#34;gigabits&#34;`, `&#34;terabits&#34;`, `&#34;count&#34;`, `&#34;bytes/second&#34;`, `&#34;kilobytes/second&#34;`, `&#34;megabytes/second&#34;`, `&#34;gigabytes/second&#34;`, `&#34;terabytes/second&#34;`, `&#34;bits/second&#34;`, `&#34;kilobits/second&#34;`, `&#34;megabits/second&#34;`, `&#34;gigabits/second&#34;`, `&#34;terabits/second&#34;`, `&#34;count/second&#34;`, `&#34;none&#34;`.
-     * 
-     */
     private @Nullable String unit;
 
     private ElastigroupMultipleMetricsMetric() {}
-    /**
-     * @return A list of dimensions describing qualities of the metric.
-     * 
-     */
     public List<ElastigroupMultipleMetricsMetricDimension> dimensions() {
         return this.dimensions == null ? List.of() : this.dimensions;
     }
-    /**
-     * @return Percentile statistic. Valid values: `&#34;p0.1&#34;` - `&#34;p100&#34;`.
-     * 
-     */
     public Optional<String> extendedStatistic() {
         return Optional.ofNullable(this.extendedStatistic);
     }
-    /**
-     * @return The name of the metric, with or without spaces.
-     * 
-     */
     public String metricName() {
         return this.metricName;
     }
@@ -79,24 +43,12 @@ public final class ElastigroupMultipleMetricsMetric {
     public String name() {
         return this.name;
     }
-    /**
-     * @return The namespace for the alarm&#39;s associated metric.
-     * 
-     */
     public String namespace() {
         return this.namespace;
     }
-    /**
-     * @return The metric statistics to return. For information about specific statistics go to [Statistics](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/index.html?CHAP_TerminologyandKeyConcepts.html#Statistic) in the Amazon CloudWatch Developer Guide.
-     * 
-     */
     public Optional<String> statistic() {
         return Optional.ofNullable(this.statistic);
     }
-    /**
-     * @return The unit for the alarm&#39;s associated metric. Valid values: `&#34;percent`, `&#34;seconds&#34;`, `&#34;microseconds&#34;`, `&#34;milliseconds&#34;`, `&#34;bytes&#34;`, `&#34;kilobytes&#34;`, `&#34;megabytes&#34;`, `&#34;gigabytes&#34;`, `&#34;terabytes&#34;`, `&#34;bits&#34;`, `&#34;kilobits&#34;`, `&#34;megabits&#34;`, `&#34;gigabits&#34;`, `&#34;terabits&#34;`, `&#34;count&#34;`, `&#34;bytes/second&#34;`, `&#34;kilobytes/second&#34;`, `&#34;megabytes/second&#34;`, `&#34;gigabytes/second&#34;`, `&#34;terabytes/second&#34;`, `&#34;bits/second&#34;`, `&#34;kilobits/second&#34;`, `&#34;megabits/second&#34;`, `&#34;gigabits/second&#34;`, `&#34;terabits/second&#34;`, `&#34;count/second&#34;`, `&#34;none&#34;`.
-     * 
-     */
     public Optional<String> unit() {
         return Optional.ofNullable(this.unit);
     }

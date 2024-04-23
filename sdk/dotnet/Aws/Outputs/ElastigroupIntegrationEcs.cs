@@ -13,41 +13,14 @@ namespace Pulumi.SpotInst.Aws.Outputs
     [OutputType]
     public sealed class ElastigroupIntegrationEcs
     {
-        /// <summary>
-        /// A key/value mapping of tags to assign to the resource.
-        /// </summary>
         public readonly ImmutableArray<Outputs.ElastigroupIntegrationEcsAutoscaleAttribute> AutoscaleAttributes;
-        /// <summary>
-        /// The amount of time, in seconds, after a scaling activity completes before any further trigger-related scaling activities can start.
-        /// </summary>
         public readonly int? AutoscaleCooldown;
-        /// <summary>
-        /// Settings for scale down actions.
-        /// </summary>
         public readonly Outputs.ElastigroupIntegrationEcsAutoscaleDown? AutoscaleDown;
-        /// <summary>
-        /// An option to set compute reserve for the cluster.
-        /// </summary>
         public readonly Outputs.ElastigroupIntegrationEcsAutoscaleHeadroom? AutoscaleHeadroom;
-        /// <summary>
-        /// Enabling the automatic k8s auto-scaler functionality. For more information please see: [Kubernetes auto scaler](https://api.spotinst.com/integration-docs/elastigroup/container-management/kubernetes/autoscaler/).
-        /// </summary>
         public readonly bool? AutoscaleIsAutoConfig;
-        /// <summary>
-        /// Specifies whether the auto scaling feature is enabled.
-        /// </summary>
         public readonly bool? AutoscaleIsEnabled;
-        /// <summary>
-        /// Determines whether to scale down non-service tasks.
-        /// </summary>
         public readonly bool? AutoscaleScaleDownNonServiceTasks;
-        /// <summary>
-        /// Batch configuration object:
-        /// </summary>
         public readonly Outputs.ElastigroupIntegrationEcsBatch? Batch;
-        /// <summary>
-        /// The name of the EC2 Container Service cluster.
-        /// </summary>
         public readonly string ClusterName;
 
         [OutputConstructor]

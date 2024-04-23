@@ -14,7 +14,7 @@ namespace Pulumi.SpotInst.Azure.Outputs
     public sealed class ElastigroupNetworkAdditionalIpConfig
     {
         /// <summary>
-        /// Name of the Managed Service Identity.
+        /// The group name.
         /// </summary>
         public readonly string Name;
         public readonly string? PrivateIpVersion;

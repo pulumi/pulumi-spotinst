@@ -11,17 +11,9 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ElastigroupIntegrationGitlabRunner {
-    /**
-     * @return Specifies whether the scaling policy described in this block is enabled.
-     * 
-     */
     private @Nullable Boolean isEnabled;
 
     private ElastigroupIntegrationGitlabRunner() {}
-    /**
-     * @return Specifies whether the scaling policy described in this block is enabled.
-     * 
-     */
     public Optional<Boolean> isEnabled() {
         return Optional.ofNullable(this.isEnabled);
     }

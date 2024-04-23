@@ -11,45 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdate {
-    /**
-     * @return In the event of a fallback to On-Demand instances, select the time period to revert back to Spot. Supported Arguments – always (default), timeWindow, never. For timeWindow or never to be valid the group must have availabilityOriented OR persistence defined.
-     * 
-     */
     private @Nullable String performAt;
-    /**
-     * @return Time Window for when action occurs ex. Mon:23:50-Tue:00:20
-     * 
-     */
     private @Nullable String timeWindow;
-    /**
-     * @return Level to update
-     * 
-     * Usage:
-     * 
-     */
     private @Nullable String updateLevel;
 
     private ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdate() {}
-    /**
-     * @return In the event of a fallback to On-Demand instances, select the time period to revert back to Spot. Supported Arguments – always (default), timeWindow, never. For timeWindow or never to be valid the group must have availabilityOriented OR persistence defined.
-     * 
-     */
     public Optional<String> performAt() {
         return Optional.ofNullable(this.performAt);
     }
-    /**
-     * @return Time Window for when action occurs ex. Mon:23:50-Tue:00:20
-     * 
-     */
     public Optional<String> timeWindow() {
         return Optional.ofNullable(this.timeWindow);
     }
-    /**
-     * @return Level to update
-     * 
-     * Usage:
-     * 
-     */
     public Optional<String> updateLevel() {
         return Optional.ofNullable(this.updateLevel);
     }

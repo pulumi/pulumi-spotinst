@@ -14,7 +14,6 @@ namespace Pulumi.SpotInst.Gcp
     /// 
     /// ## Example Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -160,14 +159,10 @@ namespace Pulumi.SpotInst.Gcp
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [SpotInstResourceType("spotinst:gcp/elastigroup:Elastigroup")]
     public partial class Elastigroup : global::Pulumi.CustomResource
     {
-        /// <summary>
-        /// Enable auto-replacement of unhealthy instances.
-        /// </summary>
         [Output("autoHealing")]
         public Output<bool?> AutoHealing { get; private set; } = null!;
 
@@ -177,9 +172,6 @@ namespace Pulumi.SpotInst.Gcp
         [Output("availabilityZones")]
         public Output<ImmutableArray<string>> AvailabilityZones { get; private set; } = null!;
 
-        /// <summary>
-        /// Describes the backend service configurations.
-        /// </summary>
         [Output("backendServices")]
         public Output<ImmutableArray<Outputs.ElastigroupBackendService>> BackendServices { get; private set; } = null!;
 
@@ -210,21 +202,12 @@ namespace Pulumi.SpotInst.Gcp
         [Output("fallbackToOndemand")]
         public Output<bool?> FallbackToOndemand { get; private set; } = null!;
 
-        /// <summary>
-        /// Defines the GPU configuration.
-        /// </summary>
         [Output("gpu")]
         public Output<ImmutableArray<Outputs.ElastigroupGpu>> Gpu { get; private set; } = null!;
 
-        /// <summary>
-        /// Period of time (seconds) to wait for VM to reach healthiness before monitoring for unhealthiness.
-        /// </summary>
         [Output("healthCheckGracePeriod")]
         public Output<int?> HealthCheckGracePeriod { get; private set; } = null!;
 
-        /// <summary>
-        /// The kind of health check to perform when monitoring for unhealthiness.
-        /// </summary>
         [Output("healthCheckType")]
         public Output<string?> HealthCheckType { get; private set; } = null!;
 
@@ -254,9 +237,6 @@ namespace Pulumi.SpotInst.Gcp
         [Output("instanceTypesPreemptibles")]
         public Output<ImmutableArray<string>> InstanceTypesPreemptibles { get; private set; } = null!;
 
-        /// <summary>
-        /// Describes the [Docker Swarm](https://api.spotinst.com/integration-docs/elastigroup/container-management/docker-swarm/docker-swarm-integration/) integration.
-        /// </summary>
         [Output("integrationDockerSwarm")]
         public Output<Outputs.ElastigroupIntegrationDockerSwarm?> IntegrationDockerSwarm { get; private set; } = null!;
 
@@ -296,9 +276,6 @@ namespace Pulumi.SpotInst.Gcp
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// Array of objects representing the network configuration for the elastigroup.
-        /// </summary>
         [Output("networkInterfaces")]
         public Output<ImmutableArray<Outputs.ElastigroupNetworkInterface>> NetworkInterfaces { get; private set; } = null!;
 
@@ -317,17 +294,9 @@ namespace Pulumi.SpotInst.Gcp
         [Output("provisioningModel")]
         public Output<string?> ProvisioningModel { get; private set; } = null!;
 
-        /// <summary>
-        /// Contains scaling policies for scaling the Elastigroup down.
-        /// 
-        /// Each `scaling_*_policy` supports the following:
-        /// </summary>
         [Output("scalingDownPolicies")]
         public Output<ImmutableArray<Outputs.ElastigroupScalingDownPolicy>> ScalingDownPolicies { get; private set; } = null!;
 
-        /// <summary>
-        /// Contains scaling policies for scaling the Elastigroup up.
-        /// </summary>
         [Output("scalingUpPolicies")]
         public Output<ImmutableArray<Outputs.ElastigroupScalingUpPolicy>> ScalingUpPolicies { get; private set; } = null!;
 
@@ -364,9 +333,6 @@ namespace Pulumi.SpotInst.Gcp
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
 
-        /// <summary>
-        /// Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
-        /// </summary>
         [Output("unhealthyDuration")]
         public Output<int?> UnhealthyDuration { get; private set; } = null!;
 
@@ -416,9 +382,6 @@ namespace Pulumi.SpotInst.Gcp
 
     public sealed class ElastigroupArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Enable auto-replacement of unhealthy instances.
-        /// </summary>
         [Input("autoHealing")]
         public Input<bool>? AutoHealing { get; set; }
 
@@ -437,10 +400,6 @@ namespace Pulumi.SpotInst.Gcp
 
         [Input("backendServices")]
         private InputList<Inputs.ElastigroupBackendServiceArgs>? _backendServices;
-
-        /// <summary>
-        /// Describes the backend service configurations.
-        /// </summary>
         public InputList<Inputs.ElastigroupBackendServiceArgs> BackendServices
         {
             get => _backendServices ?? (_backendServices = new InputList<Inputs.ElastigroupBackendServiceArgs>());
@@ -481,25 +440,15 @@ namespace Pulumi.SpotInst.Gcp
 
         [Input("gpu")]
         private InputList<Inputs.ElastigroupGpuArgs>? _gpu;
-
-        /// <summary>
-        /// Defines the GPU configuration.
-        /// </summary>
         public InputList<Inputs.ElastigroupGpuArgs> Gpu
         {
             get => _gpu ?? (_gpu = new InputList<Inputs.ElastigroupGpuArgs>());
             set => _gpu = value;
         }
 
-        /// <summary>
-        /// Period of time (seconds) to wait for VM to reach healthiness before monitoring for unhealthiness.
-        /// </summary>
         [Input("healthCheckGracePeriod")]
         public Input<int>? HealthCheckGracePeriod { get; set; }
 
-        /// <summary>
-        /// The kind of health check to perform when monitoring for unhealthiness.
-        /// </summary>
         [Input("healthCheckType")]
         public Input<string>? HealthCheckType { get; set; }
 
@@ -541,9 +490,6 @@ namespace Pulumi.SpotInst.Gcp
             set => _instanceTypesPreemptibles = value;
         }
 
-        /// <summary>
-        /// Describes the [Docker Swarm](https://api.spotinst.com/integration-docs/elastigroup/container-management/docker-swarm/docker-swarm-integration/) integration.
-        /// </summary>
         [Input("integrationDockerSwarm")]
         public Input<Inputs.ElastigroupIntegrationDockerSwarmArgs>? IntegrationDockerSwarm { get; set; }
 
@@ -597,10 +543,6 @@ namespace Pulumi.SpotInst.Gcp
 
         [Input("networkInterfaces")]
         private InputList<Inputs.ElastigroupNetworkInterfaceArgs>? _networkInterfaces;
-
-        /// <summary>
-        /// Array of objects representing the network configuration for the elastigroup.
-        /// </summary>
         public InputList<Inputs.ElastigroupNetworkInterfaceArgs> NetworkInterfaces
         {
             get => _networkInterfaces ?? (_networkInterfaces = new InputList<Inputs.ElastigroupNetworkInterfaceArgs>());
@@ -624,12 +566,6 @@ namespace Pulumi.SpotInst.Gcp
 
         [Input("scalingDownPolicies")]
         private InputList<Inputs.ElastigroupScalingDownPolicyArgs>? _scalingDownPolicies;
-
-        /// <summary>
-        /// Contains scaling policies for scaling the Elastigroup down.
-        /// 
-        /// Each `scaling_*_policy` supports the following:
-        /// </summary>
         public InputList<Inputs.ElastigroupScalingDownPolicyArgs> ScalingDownPolicies
         {
             get => _scalingDownPolicies ?? (_scalingDownPolicies = new InputList<Inputs.ElastigroupScalingDownPolicyArgs>());
@@ -638,10 +574,6 @@ namespace Pulumi.SpotInst.Gcp
 
         [Input("scalingUpPolicies")]
         private InputList<Inputs.ElastigroupScalingUpPolicyArgs>? _scalingUpPolicies;
-
-        /// <summary>
-        /// Contains scaling policies for scaling the Elastigroup up.
-        /// </summary>
         public InputList<Inputs.ElastigroupScalingUpPolicyArgs> ScalingUpPolicies
         {
             get => _scalingUpPolicies ?? (_scalingUpPolicies = new InputList<Inputs.ElastigroupScalingUpPolicyArgs>());
@@ -698,9 +630,6 @@ namespace Pulumi.SpotInst.Gcp
             set => _tags = value;
         }
 
-        /// <summary>
-        /// Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
-        /// </summary>
         [Input("unhealthyDuration")]
         public Input<int>? UnhealthyDuration { get; set; }
 
@@ -712,9 +641,6 @@ namespace Pulumi.SpotInst.Gcp
 
     public sealed class ElastigroupState : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Enable auto-replacement of unhealthy instances.
-        /// </summary>
         [Input("autoHealing")]
         public Input<bool>? AutoHealing { get; set; }
 
@@ -733,10 +659,6 @@ namespace Pulumi.SpotInst.Gcp
 
         [Input("backendServices")]
         private InputList<Inputs.ElastigroupBackendServiceGetArgs>? _backendServices;
-
-        /// <summary>
-        /// Describes the backend service configurations.
-        /// </summary>
         public InputList<Inputs.ElastigroupBackendServiceGetArgs> BackendServices
         {
             get => _backendServices ?? (_backendServices = new InputList<Inputs.ElastigroupBackendServiceGetArgs>());
@@ -777,25 +699,15 @@ namespace Pulumi.SpotInst.Gcp
 
         [Input("gpu")]
         private InputList<Inputs.ElastigroupGpuGetArgs>? _gpu;
-
-        /// <summary>
-        /// Defines the GPU configuration.
-        /// </summary>
         public InputList<Inputs.ElastigroupGpuGetArgs> Gpu
         {
             get => _gpu ?? (_gpu = new InputList<Inputs.ElastigroupGpuGetArgs>());
             set => _gpu = value;
         }
 
-        /// <summary>
-        /// Period of time (seconds) to wait for VM to reach healthiness before monitoring for unhealthiness.
-        /// </summary>
         [Input("healthCheckGracePeriod")]
         public Input<int>? HealthCheckGracePeriod { get; set; }
 
-        /// <summary>
-        /// The kind of health check to perform when monitoring for unhealthiness.
-        /// </summary>
         [Input("healthCheckType")]
         public Input<string>? HealthCheckType { get; set; }
 
@@ -837,9 +749,6 @@ namespace Pulumi.SpotInst.Gcp
             set => _instanceTypesPreemptibles = value;
         }
 
-        /// <summary>
-        /// Describes the [Docker Swarm](https://api.spotinst.com/integration-docs/elastigroup/container-management/docker-swarm/docker-swarm-integration/) integration.
-        /// </summary>
         [Input("integrationDockerSwarm")]
         public Input<Inputs.ElastigroupIntegrationDockerSwarmGetArgs>? IntegrationDockerSwarm { get; set; }
 
@@ -893,10 +802,6 @@ namespace Pulumi.SpotInst.Gcp
 
         [Input("networkInterfaces")]
         private InputList<Inputs.ElastigroupNetworkInterfaceGetArgs>? _networkInterfaces;
-
-        /// <summary>
-        /// Array of objects representing the network configuration for the elastigroup.
-        /// </summary>
         public InputList<Inputs.ElastigroupNetworkInterfaceGetArgs> NetworkInterfaces
         {
             get => _networkInterfaces ?? (_networkInterfaces = new InputList<Inputs.ElastigroupNetworkInterfaceGetArgs>());
@@ -920,12 +825,6 @@ namespace Pulumi.SpotInst.Gcp
 
         [Input("scalingDownPolicies")]
         private InputList<Inputs.ElastigroupScalingDownPolicyGetArgs>? _scalingDownPolicies;
-
-        /// <summary>
-        /// Contains scaling policies for scaling the Elastigroup down.
-        /// 
-        /// Each `scaling_*_policy` supports the following:
-        /// </summary>
         public InputList<Inputs.ElastigroupScalingDownPolicyGetArgs> ScalingDownPolicies
         {
             get => _scalingDownPolicies ?? (_scalingDownPolicies = new InputList<Inputs.ElastigroupScalingDownPolicyGetArgs>());
@@ -934,10 +833,6 @@ namespace Pulumi.SpotInst.Gcp
 
         [Input("scalingUpPolicies")]
         private InputList<Inputs.ElastigroupScalingUpPolicyGetArgs>? _scalingUpPolicies;
-
-        /// <summary>
-        /// Contains scaling policies for scaling the Elastigroup up.
-        /// </summary>
         public InputList<Inputs.ElastigroupScalingUpPolicyGetArgs> ScalingUpPolicies
         {
             get => _scalingUpPolicies ?? (_scalingUpPolicies = new InputList<Inputs.ElastigroupScalingUpPolicyGetArgs>());
@@ -994,9 +889,6 @@ namespace Pulumi.SpotInst.Gcp
             set => _tags = value;
         }
 
-        /// <summary>
-        /// Period of time (seconds) to remain in an unhealthy status before a replacement is triggered.
-        /// </summary>
         [Input("unhealthyDuration")]
         public Input<int>? UnhealthyDuration { get; set; }
 

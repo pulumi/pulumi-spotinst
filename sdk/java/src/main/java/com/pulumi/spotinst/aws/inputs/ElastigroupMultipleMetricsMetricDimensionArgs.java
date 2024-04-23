@@ -31,17 +31,9 @@ public final class ElastigroupMultipleMetricsMetricDimensionArgs extends com.pul
         return this.name;
     }
 
-    /**
-     * The dimension value.
-     * 
-     */
     @Import(name="value")
     private @Nullable Output<String> value;
 
-    /**
-     * @return The dimension value.
-     * 
-     */
     public Optional<Output<String>> value() {
         return Optional.ofNullable(this.value);
     }
@@ -92,23 +84,11 @@ public final class ElastigroupMultipleMetricsMetricDimensionArgs extends com.pul
             return name(Output.of(name));
         }
 
-        /**
-         * @param value The dimension value.
-         * 
-         * @return builder
-         * 
-         */
         public Builder value(@Nullable Output<String> value) {
             $.value = value;
             return this;
         }
 
-        /**
-         * @param value The dimension value.
-         * 
-         * @return builder
-         * 
-         */
         public Builder value(String value) {
             return value(Output.of(value));
         }

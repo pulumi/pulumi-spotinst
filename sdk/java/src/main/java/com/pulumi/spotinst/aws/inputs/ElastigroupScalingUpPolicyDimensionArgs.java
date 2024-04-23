@@ -17,14 +17,14 @@ public final class ElastigroupScalingUpPolicyDimensionArgs extends com.pulumi.re
     public static final ElastigroupScalingUpPolicyDimensionArgs Empty = new ElastigroupScalingUpPolicyDimensionArgs();
 
     /**
-     * The group name.
+     * The dimension name.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return The group name.
+     * @return The dimension name.
      * 
      */
     public Output<String> name() {
@@ -72,7 +72,7 @@ public final class ElastigroupScalingUpPolicyDimensionArgs extends com.pulumi.re
         }
 
         /**
-         * @param name The group name.
+         * @param name The dimension name.
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class ElastigroupScalingUpPolicyDimensionArgs extends com.pulumi.re
         }
 
         /**
-         * @param name The group name.
+         * @param name The dimension name.
          * 
          * @return builder
          * 

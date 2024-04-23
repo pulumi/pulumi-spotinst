@@ -13,29 +13,11 @@ namespace Pulumi.SpotInst.Aws.Outputs
     [OutputType]
     public sealed class ElastigroupIntegrationDockerSwarm
     {
-        /// <summary>
-        /// The amount of time, in seconds, after a scaling activity completes before any further trigger-related scaling activities can start.
-        /// </summary>
         public readonly int? AutoscaleCooldown;
-        /// <summary>
-        /// Settings for scale down actions.
-        /// </summary>
         public readonly Outputs.ElastigroupIntegrationDockerSwarmAutoscaleDown? AutoscaleDown;
-        /// <summary>
-        /// An option to set compute reserve for the cluster.
-        /// </summary>
         public readonly Outputs.ElastigroupIntegrationDockerSwarmAutoscaleHeadroom? AutoscaleHeadroom;
-        /// <summary>
-        /// Specifies whether the auto scaling feature is enabled.
-        /// </summary>
         public readonly bool? AutoscaleIsEnabled;
-        /// <summary>
-        /// The URL for the Nomad master host.
-        /// </summary>
         public readonly string MasterHost;
-        /// <summary>
-        /// The network port for the master host.
-        /// </summary>
         public readonly int MasterPort;
 
         [OutputConstructor]

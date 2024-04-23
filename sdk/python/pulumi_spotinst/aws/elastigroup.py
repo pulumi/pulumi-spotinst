@@ -108,7 +108,6 @@ class ElastigroupArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] availability_zones: List of Strings of availability zones. When this parameter is set, `subnet_ids` should be left unused.
                Note: `availability_zones` naming syntax follows the convention `availability-zone:subnet:placement-group-name`. For example, to set an AZ in `us-east-1` with subnet `subnet-123456` and placement group `ClusterI03`, you would set:
                `availability_zones = ["us-east-1a:subnet-123456:ClusterI03"]`
-        :param pulumi.Input[str] block_devices_mode: String, determine the way we attach the data volumes to the data devices, possible values: `"reattach"` and `"onLaunch"` (default is onLaunch).
         :param pulumi.Input[str] capacity_unit: The capacity unit to launch instances by. If not specified, when choosing the weight unit, each instance will weight as the number of its vCPUs. Valid values: `instance`, `weight`.
         :param pulumi.Input[str] cpu_credits: Controls how T3 instances are launched. Valid values: `standard`, `unlimited`.
         :param pulumi.Input['ElastigroupCpuOptionsArgs'] cpu_options: The CPU options for the instances that are launched within the group:
@@ -117,7 +116,6 @@ class ElastigroupArgs:
         :param pulumi.Input[int] draining_timeout: The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
         :param pulumi.Input[bool] ebs_optimized: Enable high bandwidth connectivity between instances and AWS’s Elastic Block Store (EBS). For instance types that are EBS-optimized by default this parameter will be ignored.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] elastic_ips: A list of [AWS Elastic IP](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html) allocation IDs to associate to the group instances.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] elastic_load_balancers: List of Elastic Load Balancers names (ELB).
         :param pulumi.Input[bool] enable_monitoring: Indicates whether monitoring is enabled for the instance.
         :param pulumi.Input[int] health_check_grace_period: The amount of time, in seconds, after the instance has launched to starts and check its health.
         :param pulumi.Input[str] health_check_type: The service that will perform health checks for the instance. Valid values: `"ELB"`, `"HCS"`, `"TARGET_GROUP"`, `"EC2"`, `"K8S_NODE"`, `"NOMAD_NODE"`, `"ECS_CLUSTER_INSTANCE"`.
@@ -130,16 +128,6 @@ class ElastigroupArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types_preferred_spots: Prioritize a subset of spot instance types. Must be a subset of the selected spot instance types.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types_spots: One or more instance types. Note: Cannot be defined if 'resourceRequirements' is defined.
         :param pulumi.Input[Sequence[pulumi.Input['ElastigroupInstanceTypesWeightArgs']]] instance_types_weights: List of weights per instance type for weighted groups. Each object in the list should have the following attributes:
-        :param pulumi.Input['ElastigroupIntegrationBeanstalkArgs'] integration_beanstalk: Describes the Beanstalk integration.
-        :param pulumi.Input['ElastigroupIntegrationCodedeployArgs'] integration_codedeploy: Describes the [Code Deploy](https://aws.amazon.com/documentation/codedeploy/?id=docs_gateway) integration.
-        :param pulumi.Input['ElastigroupIntegrationDockerSwarmArgs'] integration_docker_swarm: Describes the [Docker Swarm](https://api.spotinst.com/integration-docs/elastigroup/container-management/docker-swarm/docker-swarm-integration/) integration.
-        :param pulumi.Input['ElastigroupIntegrationEcsArgs'] integration_ecs: Describes the [EC2 Container Service](https://aws.amazon.com/documentation/ecs/?id=docs_gateway) integration.
-        :param pulumi.Input['ElastigroupIntegrationGitlabArgs'] integration_gitlab: Describes the [Gitlab](https://api.spotinst.com/integration-docs/gitlab/) integration.
-        :param pulumi.Input['ElastigroupIntegrationKubernetesArgs'] integration_kubernetes: Describes the [Kubernetes](https://kubernetes.io/) integration.
-        :param pulumi.Input['ElastigroupIntegrationMesosphereArgs'] integration_mesosphere: Describes the [Mesosphere](https://mesosphere.com/) integration.
-        :param pulumi.Input['ElastigroupIntegrationNomadArgs'] integration_nomad: Describes the [Nomad](https://www.nomadproject.io/) integration.
-        :param pulumi.Input['ElastigroupIntegrationRancherArgs'] integration_rancher: Describes the [Rancher](http://rancherlabs.com/) integration.
-        :param pulumi.Input['ElastigroupIntegrationRoute53Args'] integration_route53: Describes the [Route53](https://aws.amazon.com/documentation/route53/?id=docs_gateway) integration.
         :param pulumi.Input[str] key_name: The key name that should be used for the instance.
         :param pulumi.Input['ElastigroupLoggingArgs'] logging: Logging configuration.
         :param pulumi.Input[int] max_size: The maximum number of instances the group should have at any time.
@@ -149,15 +137,9 @@ class ElastigroupArgs:
         :param pulumi.Input[str] name: The group name.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] on_demand_types: Available ondemand instance types. Note: Either ondemand or onDemandTypes must be defined, but not both.
         :param pulumi.Input[int] ondemand_count: Number of on demand instances to launch in the group. All other instances will be spot instances. When this parameter is set the `spot_percentage` parameter is being ignored.
-        :param pulumi.Input[bool] persist_block_devices: Boolean, should the instance maintain its Data volumes.
-        :param pulumi.Input[bool] persist_private_ip: Boolean, should the instance maintain its private IP.
-        :param pulumi.Input[bool] persist_root_device: Boolean, should the instance maintain its root device volumes.
         :param pulumi.Input[str] placement_tenancy: Enable dedicated tenancy. Note: There is a flat hourly fee for each region in which dedicated tenancy is used. Valid values: "default", "dedicated" .
         :param pulumi.Input[Sequence[pulumi.Input[str]]] preferred_availability_zones: The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs. 
                Note: Must be a sublist of `availability_zones` and `orientation` value must not be `"equalAzDistribution"`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] private_ips: List of Private IPs to associate to the group instances.(e.g. "172.1.1.0"). Please note: This setting will only apply if persistence.persist_private_ip is set to true.
-               
-               Usage:
         :param pulumi.Input[str] region: The AWS region your group will be created in.
                Note: This parameter is required if you specify subnets (through subnet_ids). This parameter is optional if you specify Availability Zones (through availability_zones).
         :param pulumi.Input[Sequence[pulumi.Input['ElastigroupResourceRequirementArgs']]] resource_requirements: Required instance attributes. Instance types will be selected based on these requirements.
@@ -169,9 +151,6 @@ class ElastigroupArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: List of Strings of subnet identifiers.
                Note: When this parameter is set, `availability_zones` should be left unused.
         :param pulumi.Input[Sequence[pulumi.Input['ElastigroupTagArgs']]] tags: A key/value mapping of tags to assign to the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] target_group_arns: List of Target Group ARNs to register the instances to.
-               
-               Usage:
         :param pulumi.Input[str] user_data: The user data to provide when launching the instance.
         :param pulumi.Input[bool] utilize_reserved_instances: In a case of any available reserved instances, Elastigroup will utilize them first before purchasing Spot instances.
         :param pulumi.Input[int] wait_for_capacity: Minimum number of instances in a 'HEALTHY' status that is required before continuing. This is ignored when updating with blue/green deployment. Cannot exceed `desired_capacity`.
@@ -404,9 +383,6 @@ class ElastigroupArgs:
     @property
     @pulumi.getter(name="blockDevicesMode")
     def block_devices_mode(self) -> Optional[pulumi.Input[str]]:
-        """
-        String, determine the way we attach the data volumes to the data devices, possible values: `"reattach"` and `"onLaunch"` (default is onLaunch).
-        """
         return pulumi.get(self, "block_devices_mode")
 
     @block_devices_mode.setter
@@ -530,9 +506,6 @@ class ElastigroupArgs:
     @property
     @pulumi.getter(name="elasticLoadBalancers")
     def elastic_load_balancers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        List of Elastic Load Balancers names (ELB).
-        """
         return pulumi.get(self, "elastic_load_balancers")
 
     @elastic_load_balancers.setter
@@ -693,9 +666,6 @@ class ElastigroupArgs:
     @property
     @pulumi.getter(name="integrationBeanstalk")
     def integration_beanstalk(self) -> Optional[pulumi.Input['ElastigroupIntegrationBeanstalkArgs']]:
-        """
-        Describes the Beanstalk integration.
-        """
         return pulumi.get(self, "integration_beanstalk")
 
     @integration_beanstalk.setter
@@ -705,9 +675,6 @@ class ElastigroupArgs:
     @property
     @pulumi.getter(name="integrationCodedeploy")
     def integration_codedeploy(self) -> Optional[pulumi.Input['ElastigroupIntegrationCodedeployArgs']]:
-        """
-        Describes the [Code Deploy](https://aws.amazon.com/documentation/codedeploy/?id=docs_gateway) integration.
-        """
         return pulumi.get(self, "integration_codedeploy")
 
     @integration_codedeploy.setter
@@ -717,9 +684,6 @@ class ElastigroupArgs:
     @property
     @pulumi.getter(name="integrationDockerSwarm")
     def integration_docker_swarm(self) -> Optional[pulumi.Input['ElastigroupIntegrationDockerSwarmArgs']]:
-        """
-        Describes the [Docker Swarm](https://api.spotinst.com/integration-docs/elastigroup/container-management/docker-swarm/docker-swarm-integration/) integration.
-        """
         return pulumi.get(self, "integration_docker_swarm")
 
     @integration_docker_swarm.setter
@@ -729,9 +693,6 @@ class ElastigroupArgs:
     @property
     @pulumi.getter(name="integrationEcs")
     def integration_ecs(self) -> Optional[pulumi.Input['ElastigroupIntegrationEcsArgs']]:
-        """
-        Describes the [EC2 Container Service](https://aws.amazon.com/documentation/ecs/?id=docs_gateway) integration.
-        """
         return pulumi.get(self, "integration_ecs")
 
     @integration_ecs.setter
@@ -741,9 +702,6 @@ class ElastigroupArgs:
     @property
     @pulumi.getter(name="integrationGitlab")
     def integration_gitlab(self) -> Optional[pulumi.Input['ElastigroupIntegrationGitlabArgs']]:
-        """
-        Describes the [Gitlab](https://api.spotinst.com/integration-docs/gitlab/) integration.
-        """
         return pulumi.get(self, "integration_gitlab")
 
     @integration_gitlab.setter
@@ -753,9 +711,6 @@ class ElastigroupArgs:
     @property
     @pulumi.getter(name="integrationKubernetes")
     def integration_kubernetes(self) -> Optional[pulumi.Input['ElastigroupIntegrationKubernetesArgs']]:
-        """
-        Describes the [Kubernetes](https://kubernetes.io/) integration.
-        """
         return pulumi.get(self, "integration_kubernetes")
 
     @integration_kubernetes.setter
@@ -765,9 +720,6 @@ class ElastigroupArgs:
     @property
     @pulumi.getter(name="integrationMesosphere")
     def integration_mesosphere(self) -> Optional[pulumi.Input['ElastigroupIntegrationMesosphereArgs']]:
-        """
-        Describes the [Mesosphere](https://mesosphere.com/) integration.
-        """
         return pulumi.get(self, "integration_mesosphere")
 
     @integration_mesosphere.setter
@@ -777,9 +729,6 @@ class ElastigroupArgs:
     @property
     @pulumi.getter(name="integrationNomad")
     def integration_nomad(self) -> Optional[pulumi.Input['ElastigroupIntegrationNomadArgs']]:
-        """
-        Describes the [Nomad](https://www.nomadproject.io/) integration.
-        """
         return pulumi.get(self, "integration_nomad")
 
     @integration_nomad.setter
@@ -789,9 +738,6 @@ class ElastigroupArgs:
     @property
     @pulumi.getter(name="integrationRancher")
     def integration_rancher(self) -> Optional[pulumi.Input['ElastigroupIntegrationRancherArgs']]:
-        """
-        Describes the [Rancher](http://rancherlabs.com/) integration.
-        """
         return pulumi.get(self, "integration_rancher")
 
     @integration_rancher.setter
@@ -801,9 +747,6 @@ class ElastigroupArgs:
     @property
     @pulumi.getter(name="integrationRoute53")
     def integration_route53(self) -> Optional[pulumi.Input['ElastigroupIntegrationRoute53Args']]:
-        """
-        Describes the [Route53](https://aws.amazon.com/documentation/route53/?id=docs_gateway) integration.
-        """
         return pulumi.get(self, "integration_route53")
 
     @integration_route53.setter
@@ -957,9 +900,6 @@ class ElastigroupArgs:
     @property
     @pulumi.getter(name="persistBlockDevices")
     def persist_block_devices(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Boolean, should the instance maintain its Data volumes.
-        """
         return pulumi.get(self, "persist_block_devices")
 
     @persist_block_devices.setter
@@ -969,9 +909,6 @@ class ElastigroupArgs:
     @property
     @pulumi.getter(name="persistPrivateIp")
     def persist_private_ip(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Boolean, should the instance maintain its private IP.
-        """
         return pulumi.get(self, "persist_private_ip")
 
     @persist_private_ip.setter
@@ -981,9 +918,6 @@ class ElastigroupArgs:
     @property
     @pulumi.getter(name="persistRootDevice")
     def persist_root_device(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Boolean, should the instance maintain its root device volumes.
-        """
         return pulumi.get(self, "persist_root_device")
 
     @persist_root_device.setter
@@ -1018,11 +952,6 @@ class ElastigroupArgs:
     @property
     @pulumi.getter(name="privateIps")
     def private_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        List of Private IPs to associate to the group instances.(e.g. "172.1.1.0"). Please note: This setting will only apply if persistence.persist_private_ip is set to true.
-
-        Usage:
-        """
         return pulumi.get(self, "private_ips")
 
     @private_ips.setter
@@ -1205,11 +1134,6 @@ class ElastigroupArgs:
     @property
     @pulumi.getter(name="targetGroupArns")
     def target_group_arns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        List of Target Group ARNs to register the instances to.
-
-        Usage:
-        """
         return pulumi.get(self, "target_group_arns")
 
     @target_group_arns.setter
@@ -1373,7 +1297,6 @@ class _ElastigroupState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] availability_zones: List of Strings of availability zones. When this parameter is set, `subnet_ids` should be left unused.
                Note: `availability_zones` naming syntax follows the convention `availability-zone:subnet:placement-group-name`. For example, to set an AZ in `us-east-1` with subnet `subnet-123456` and placement group `ClusterI03`, you would set:
                `availability_zones = ["us-east-1a:subnet-123456:ClusterI03"]`
-        :param pulumi.Input[str] block_devices_mode: String, determine the way we attach the data volumes to the data devices, possible values: `"reattach"` and `"onLaunch"` (default is onLaunch).
         :param pulumi.Input[str] capacity_unit: The capacity unit to launch instances by. If not specified, when choosing the weight unit, each instance will weight as the number of its vCPUs. Valid values: `instance`, `weight`.
         :param pulumi.Input[str] cpu_credits: Controls how T3 instances are launched. Valid values: `standard`, `unlimited`.
         :param pulumi.Input['ElastigroupCpuOptionsArgs'] cpu_options: The CPU options for the instances that are launched within the group:
@@ -1382,7 +1305,6 @@ class _ElastigroupState:
         :param pulumi.Input[int] draining_timeout: The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
         :param pulumi.Input[bool] ebs_optimized: Enable high bandwidth connectivity between instances and AWS’s Elastic Block Store (EBS). For instance types that are EBS-optimized by default this parameter will be ignored.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] elastic_ips: A list of [AWS Elastic IP](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html) allocation IDs to associate to the group instances.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] elastic_load_balancers: List of Elastic Load Balancers names (ELB).
         :param pulumi.Input[bool] enable_monitoring: Indicates whether monitoring is enabled for the instance.
         :param pulumi.Input[bool] fallback_to_ondemand: In a case of no Spot instances available, Elastigroup will launch on-demand instances instead.
         :param pulumi.Input[int] health_check_grace_period: The amount of time, in seconds, after the instance has launched to starts and check its health.
@@ -1396,16 +1318,6 @@ class _ElastigroupState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types_preferred_spots: Prioritize a subset of spot instance types. Must be a subset of the selected spot instance types.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types_spots: One or more instance types. Note: Cannot be defined if 'resourceRequirements' is defined.
         :param pulumi.Input[Sequence[pulumi.Input['ElastigroupInstanceTypesWeightArgs']]] instance_types_weights: List of weights per instance type for weighted groups. Each object in the list should have the following attributes:
-        :param pulumi.Input['ElastigroupIntegrationBeanstalkArgs'] integration_beanstalk: Describes the Beanstalk integration.
-        :param pulumi.Input['ElastigroupIntegrationCodedeployArgs'] integration_codedeploy: Describes the [Code Deploy](https://aws.amazon.com/documentation/codedeploy/?id=docs_gateway) integration.
-        :param pulumi.Input['ElastigroupIntegrationDockerSwarmArgs'] integration_docker_swarm: Describes the [Docker Swarm](https://api.spotinst.com/integration-docs/elastigroup/container-management/docker-swarm/docker-swarm-integration/) integration.
-        :param pulumi.Input['ElastigroupIntegrationEcsArgs'] integration_ecs: Describes the [EC2 Container Service](https://aws.amazon.com/documentation/ecs/?id=docs_gateway) integration.
-        :param pulumi.Input['ElastigroupIntegrationGitlabArgs'] integration_gitlab: Describes the [Gitlab](https://api.spotinst.com/integration-docs/gitlab/) integration.
-        :param pulumi.Input['ElastigroupIntegrationKubernetesArgs'] integration_kubernetes: Describes the [Kubernetes](https://kubernetes.io/) integration.
-        :param pulumi.Input['ElastigroupIntegrationMesosphereArgs'] integration_mesosphere: Describes the [Mesosphere](https://mesosphere.com/) integration.
-        :param pulumi.Input['ElastigroupIntegrationNomadArgs'] integration_nomad: Describes the [Nomad](https://www.nomadproject.io/) integration.
-        :param pulumi.Input['ElastigroupIntegrationRancherArgs'] integration_rancher: Describes the [Rancher](http://rancherlabs.com/) integration.
-        :param pulumi.Input['ElastigroupIntegrationRoute53Args'] integration_route53: Describes the [Route53](https://aws.amazon.com/documentation/route53/?id=docs_gateway) integration.
         :param pulumi.Input[str] key_name: The key name that should be used for the instance.
         :param pulumi.Input['ElastigroupLoggingArgs'] logging: Logging configuration.
         :param pulumi.Input[int] max_size: The maximum number of instances the group should have at any time.
@@ -1416,15 +1328,9 @@ class _ElastigroupState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] on_demand_types: Available ondemand instance types. Note: Either ondemand or onDemandTypes must be defined, but not both.
         :param pulumi.Input[int] ondemand_count: Number of on demand instances to launch in the group. All other instances will be spot instances. When this parameter is set the `spot_percentage` parameter is being ignored.
         :param pulumi.Input[str] orientation: Select a prediction strategy. Valid values: `balanced`, `costOriented`, `equalAzDistribution`, `availabilityOriented`. You can read more in our documentation.
-        :param pulumi.Input[bool] persist_block_devices: Boolean, should the instance maintain its Data volumes.
-        :param pulumi.Input[bool] persist_private_ip: Boolean, should the instance maintain its private IP.
-        :param pulumi.Input[bool] persist_root_device: Boolean, should the instance maintain its root device volumes.
         :param pulumi.Input[str] placement_tenancy: Enable dedicated tenancy. Note: There is a flat hourly fee for each region in which dedicated tenancy is used. Valid values: "default", "dedicated" .
         :param pulumi.Input[Sequence[pulumi.Input[str]]] preferred_availability_zones: The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs. 
                Note: Must be a sublist of `availability_zones` and `orientation` value must not be `"equalAzDistribution"`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] private_ips: List of Private IPs to associate to the group instances.(e.g. "172.1.1.0"). Please note: This setting will only apply if persistence.persist_private_ip is set to true.
-               
-               Usage:
         :param pulumi.Input[str] product: Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`. 
                For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
         :param pulumi.Input[str] region: The AWS region your group will be created in.
@@ -1439,9 +1345,6 @@ class _ElastigroupState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: List of Strings of subnet identifiers.
                Note: When this parameter is set, `availability_zones` should be left unused.
         :param pulumi.Input[Sequence[pulumi.Input['ElastigroupTagArgs']]] tags: A key/value mapping of tags to assign to the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] target_group_arns: List of Target Group ARNs to register the instances to.
-               
-               Usage:
         :param pulumi.Input[str] user_data: The user data to provide when launching the instance.
         :param pulumi.Input[bool] utilize_reserved_instances: In a case of any available reserved instances, Elastigroup will utilize them first before purchasing Spot instances.
         :param pulumi.Input[int] wait_for_capacity: Minimum number of instances in a 'HEALTHY' status that is required before continuing. This is ignored when updating with blue/green deployment. Cannot exceed `desired_capacity`.
@@ -1629,9 +1532,6 @@ class _ElastigroupState:
     @property
     @pulumi.getter(name="blockDevicesMode")
     def block_devices_mode(self) -> Optional[pulumi.Input[str]]:
-        """
-        String, determine the way we attach the data volumes to the data devices, possible values: `"reattach"` and `"onLaunch"` (default is onLaunch).
-        """
         return pulumi.get(self, "block_devices_mode")
 
     @block_devices_mode.setter
@@ -1755,9 +1655,6 @@ class _ElastigroupState:
     @property
     @pulumi.getter(name="elasticLoadBalancers")
     def elastic_load_balancers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        List of Elastic Load Balancers names (ELB).
-        """
         return pulumi.get(self, "elastic_load_balancers")
 
     @elastic_load_balancers.setter
@@ -1930,9 +1827,6 @@ class _ElastigroupState:
     @property
     @pulumi.getter(name="integrationBeanstalk")
     def integration_beanstalk(self) -> Optional[pulumi.Input['ElastigroupIntegrationBeanstalkArgs']]:
-        """
-        Describes the Beanstalk integration.
-        """
         return pulumi.get(self, "integration_beanstalk")
 
     @integration_beanstalk.setter
@@ -1942,9 +1836,6 @@ class _ElastigroupState:
     @property
     @pulumi.getter(name="integrationCodedeploy")
     def integration_codedeploy(self) -> Optional[pulumi.Input['ElastigroupIntegrationCodedeployArgs']]:
-        """
-        Describes the [Code Deploy](https://aws.amazon.com/documentation/codedeploy/?id=docs_gateway) integration.
-        """
         return pulumi.get(self, "integration_codedeploy")
 
     @integration_codedeploy.setter
@@ -1954,9 +1845,6 @@ class _ElastigroupState:
     @property
     @pulumi.getter(name="integrationDockerSwarm")
     def integration_docker_swarm(self) -> Optional[pulumi.Input['ElastigroupIntegrationDockerSwarmArgs']]:
-        """
-        Describes the [Docker Swarm](https://api.spotinst.com/integration-docs/elastigroup/container-management/docker-swarm/docker-swarm-integration/) integration.
-        """
         return pulumi.get(self, "integration_docker_swarm")
 
     @integration_docker_swarm.setter
@@ -1966,9 +1854,6 @@ class _ElastigroupState:
     @property
     @pulumi.getter(name="integrationEcs")
     def integration_ecs(self) -> Optional[pulumi.Input['ElastigroupIntegrationEcsArgs']]:
-        """
-        Describes the [EC2 Container Service](https://aws.amazon.com/documentation/ecs/?id=docs_gateway) integration.
-        """
         return pulumi.get(self, "integration_ecs")
 
     @integration_ecs.setter
@@ -1978,9 +1863,6 @@ class _ElastigroupState:
     @property
     @pulumi.getter(name="integrationGitlab")
     def integration_gitlab(self) -> Optional[pulumi.Input['ElastigroupIntegrationGitlabArgs']]:
-        """
-        Describes the [Gitlab](https://api.spotinst.com/integration-docs/gitlab/) integration.
-        """
         return pulumi.get(self, "integration_gitlab")
 
     @integration_gitlab.setter
@@ -1990,9 +1872,6 @@ class _ElastigroupState:
     @property
     @pulumi.getter(name="integrationKubernetes")
     def integration_kubernetes(self) -> Optional[pulumi.Input['ElastigroupIntegrationKubernetesArgs']]:
-        """
-        Describes the [Kubernetes](https://kubernetes.io/) integration.
-        """
         return pulumi.get(self, "integration_kubernetes")
 
     @integration_kubernetes.setter
@@ -2002,9 +1881,6 @@ class _ElastigroupState:
     @property
     @pulumi.getter(name="integrationMesosphere")
     def integration_mesosphere(self) -> Optional[pulumi.Input['ElastigroupIntegrationMesosphereArgs']]:
-        """
-        Describes the [Mesosphere](https://mesosphere.com/) integration.
-        """
         return pulumi.get(self, "integration_mesosphere")
 
     @integration_mesosphere.setter
@@ -2014,9 +1890,6 @@ class _ElastigroupState:
     @property
     @pulumi.getter(name="integrationNomad")
     def integration_nomad(self) -> Optional[pulumi.Input['ElastigroupIntegrationNomadArgs']]:
-        """
-        Describes the [Nomad](https://www.nomadproject.io/) integration.
-        """
         return pulumi.get(self, "integration_nomad")
 
     @integration_nomad.setter
@@ -2026,9 +1899,6 @@ class _ElastigroupState:
     @property
     @pulumi.getter(name="integrationRancher")
     def integration_rancher(self) -> Optional[pulumi.Input['ElastigroupIntegrationRancherArgs']]:
-        """
-        Describes the [Rancher](http://rancherlabs.com/) integration.
-        """
         return pulumi.get(self, "integration_rancher")
 
     @integration_rancher.setter
@@ -2038,9 +1908,6 @@ class _ElastigroupState:
     @property
     @pulumi.getter(name="integrationRoute53")
     def integration_route53(self) -> Optional[pulumi.Input['ElastigroupIntegrationRoute53Args']]:
-        """
-        Describes the [Route53](https://aws.amazon.com/documentation/route53/?id=docs_gateway) integration.
-        """
         return pulumi.get(self, "integration_route53")
 
     @integration_route53.setter
@@ -2206,9 +2073,6 @@ class _ElastigroupState:
     @property
     @pulumi.getter(name="persistBlockDevices")
     def persist_block_devices(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Boolean, should the instance maintain its Data volumes.
-        """
         return pulumi.get(self, "persist_block_devices")
 
     @persist_block_devices.setter
@@ -2218,9 +2082,6 @@ class _ElastigroupState:
     @property
     @pulumi.getter(name="persistPrivateIp")
     def persist_private_ip(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Boolean, should the instance maintain its private IP.
-        """
         return pulumi.get(self, "persist_private_ip")
 
     @persist_private_ip.setter
@@ -2230,9 +2091,6 @@ class _ElastigroupState:
     @property
     @pulumi.getter(name="persistRootDevice")
     def persist_root_device(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Boolean, should the instance maintain its root device volumes.
-        """
         return pulumi.get(self, "persist_root_device")
 
     @persist_root_device.setter
@@ -2267,11 +2125,6 @@ class _ElastigroupState:
     @property
     @pulumi.getter(name="privateIps")
     def private_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        List of Private IPs to associate to the group instances.(e.g. "172.1.1.0"). Please note: This setting will only apply if persistence.persist_private_ip is set to true.
-
-        Usage:
-        """
         return pulumi.get(self, "private_ips")
 
     @private_ips.setter
@@ -2479,11 +2332,6 @@ class _ElastigroupState:
     @property
     @pulumi.getter(name="targetGroupArns")
     def target_group_arns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        List of Target Group ARNs to register the instances to.
-
-        Usage:
-        """
         return pulumi.get(self, "target_group_arns")
 
     @target_group_arns.setter
@@ -2650,7 +2498,6 @@ class Elastigroup(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_spotinst as spotinst
@@ -2781,14 +2628,12 @@ class Elastigroup(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] availability_zones: List of Strings of availability zones. When this parameter is set, `subnet_ids` should be left unused.
                Note: `availability_zones` naming syntax follows the convention `availability-zone:subnet:placement-group-name`. For example, to set an AZ in `us-east-1` with subnet `subnet-123456` and placement group `ClusterI03`, you would set:
                `availability_zones = ["us-east-1a:subnet-123456:ClusterI03"]`
-        :param pulumi.Input[str] block_devices_mode: String, determine the way we attach the data volumes to the data devices, possible values: `"reattach"` and `"onLaunch"` (default is onLaunch).
         :param pulumi.Input[str] capacity_unit: The capacity unit to launch instances by. If not specified, when choosing the weight unit, each instance will weight as the number of its vCPUs. Valid values: `instance`, `weight`.
         :param pulumi.Input[str] cpu_credits: Controls how T3 instances are launched. Valid values: `standard`, `unlimited`.
         :param pulumi.Input[pulumi.InputType['ElastigroupCpuOptionsArgs']] cpu_options: The CPU options for the instances that are launched within the group:
@@ -2797,7 +2642,6 @@ class Elastigroup(pulumi.CustomResource):
         :param pulumi.Input[int] draining_timeout: The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
         :param pulumi.Input[bool] ebs_optimized: Enable high bandwidth connectivity between instances and AWS’s Elastic Block Store (EBS). For instance types that are EBS-optimized by default this parameter will be ignored.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] elastic_ips: A list of [AWS Elastic IP](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html) allocation IDs to associate to the group instances.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] elastic_load_balancers: List of Elastic Load Balancers names (ELB).
         :param pulumi.Input[bool] enable_monitoring: Indicates whether monitoring is enabled for the instance.
         :param pulumi.Input[bool] fallback_to_ondemand: In a case of no Spot instances available, Elastigroup will launch on-demand instances instead.
         :param pulumi.Input[int] health_check_grace_period: The amount of time, in seconds, after the instance has launched to starts and check its health.
@@ -2811,16 +2655,6 @@ class Elastigroup(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types_preferred_spots: Prioritize a subset of spot instance types. Must be a subset of the selected spot instance types.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types_spots: One or more instance types. Note: Cannot be defined if 'resourceRequirements' is defined.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupInstanceTypesWeightArgs']]]] instance_types_weights: List of weights per instance type for weighted groups. Each object in the list should have the following attributes:
-        :param pulumi.Input[pulumi.InputType['ElastigroupIntegrationBeanstalkArgs']] integration_beanstalk: Describes the Beanstalk integration.
-        :param pulumi.Input[pulumi.InputType['ElastigroupIntegrationCodedeployArgs']] integration_codedeploy: Describes the [Code Deploy](https://aws.amazon.com/documentation/codedeploy/?id=docs_gateway) integration.
-        :param pulumi.Input[pulumi.InputType['ElastigroupIntegrationDockerSwarmArgs']] integration_docker_swarm: Describes the [Docker Swarm](https://api.spotinst.com/integration-docs/elastigroup/container-management/docker-swarm/docker-swarm-integration/) integration.
-        :param pulumi.Input[pulumi.InputType['ElastigroupIntegrationEcsArgs']] integration_ecs: Describes the [EC2 Container Service](https://aws.amazon.com/documentation/ecs/?id=docs_gateway) integration.
-        :param pulumi.Input[pulumi.InputType['ElastigroupIntegrationGitlabArgs']] integration_gitlab: Describes the [Gitlab](https://api.spotinst.com/integration-docs/gitlab/) integration.
-        :param pulumi.Input[pulumi.InputType['ElastigroupIntegrationKubernetesArgs']] integration_kubernetes: Describes the [Kubernetes](https://kubernetes.io/) integration.
-        :param pulumi.Input[pulumi.InputType['ElastigroupIntegrationMesosphereArgs']] integration_mesosphere: Describes the [Mesosphere](https://mesosphere.com/) integration.
-        :param pulumi.Input[pulumi.InputType['ElastigroupIntegrationNomadArgs']] integration_nomad: Describes the [Nomad](https://www.nomadproject.io/) integration.
-        :param pulumi.Input[pulumi.InputType['ElastigroupIntegrationRancherArgs']] integration_rancher: Describes the [Rancher](http://rancherlabs.com/) integration.
-        :param pulumi.Input[pulumi.InputType['ElastigroupIntegrationRoute53Args']] integration_route53: Describes the [Route53](https://aws.amazon.com/documentation/route53/?id=docs_gateway) integration.
         :param pulumi.Input[str] key_name: The key name that should be used for the instance.
         :param pulumi.Input[pulumi.InputType['ElastigroupLoggingArgs']] logging: Logging configuration.
         :param pulumi.Input[int] max_size: The maximum number of instances the group should have at any time.
@@ -2831,15 +2665,9 @@ class Elastigroup(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] on_demand_types: Available ondemand instance types. Note: Either ondemand or onDemandTypes must be defined, but not both.
         :param pulumi.Input[int] ondemand_count: Number of on demand instances to launch in the group. All other instances will be spot instances. When this parameter is set the `spot_percentage` parameter is being ignored.
         :param pulumi.Input[str] orientation: Select a prediction strategy. Valid values: `balanced`, `costOriented`, `equalAzDistribution`, `availabilityOriented`. You can read more in our documentation.
-        :param pulumi.Input[bool] persist_block_devices: Boolean, should the instance maintain its Data volumes.
-        :param pulumi.Input[bool] persist_private_ip: Boolean, should the instance maintain its private IP.
-        :param pulumi.Input[bool] persist_root_device: Boolean, should the instance maintain its root device volumes.
         :param pulumi.Input[str] placement_tenancy: Enable dedicated tenancy. Note: There is a flat hourly fee for each region in which dedicated tenancy is used. Valid values: "default", "dedicated" .
         :param pulumi.Input[Sequence[pulumi.Input[str]]] preferred_availability_zones: The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs. 
                Note: Must be a sublist of `availability_zones` and `orientation` value must not be `"equalAzDistribution"`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] private_ips: List of Private IPs to associate to the group instances.(e.g. "172.1.1.0"). Please note: This setting will only apply if persistence.persist_private_ip is set to true.
-               
-               Usage:
         :param pulumi.Input[str] product: Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`. 
                For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
         :param pulumi.Input[str] region: The AWS region your group will be created in.
@@ -2854,9 +2682,6 @@ class Elastigroup(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: List of Strings of subnet identifiers.
                Note: When this parameter is set, `availability_zones` should be left unused.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupTagArgs']]]] tags: A key/value mapping of tags to assign to the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] target_group_arns: List of Target Group ARNs to register the instances to.
-               
-               Usage:
         :param pulumi.Input[str] user_data: The user data to provide when launching the instance.
         :param pulumi.Input[bool] utilize_reserved_instances: In a case of any available reserved instances, Elastigroup will utilize them first before purchasing Spot instances.
         :param pulumi.Input[int] wait_for_capacity: Minimum number of instances in a 'HEALTHY' status that is required before continuing. This is ignored when updating with blue/green deployment. Cannot exceed `desired_capacity`.
@@ -2873,7 +2698,6 @@ class Elastigroup(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_spotinst as spotinst
@@ -3004,7 +2828,6 @@ class Elastigroup(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param ElastigroupArgs args: The arguments to use to populate this resource's properties.
@@ -3304,7 +3127,6 @@ class Elastigroup(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] availability_zones: List of Strings of availability zones. When this parameter is set, `subnet_ids` should be left unused.
                Note: `availability_zones` naming syntax follows the convention `availability-zone:subnet:placement-group-name`. For example, to set an AZ in `us-east-1` with subnet `subnet-123456` and placement group `ClusterI03`, you would set:
                `availability_zones = ["us-east-1a:subnet-123456:ClusterI03"]`
-        :param pulumi.Input[str] block_devices_mode: String, determine the way we attach the data volumes to the data devices, possible values: `"reattach"` and `"onLaunch"` (default is onLaunch).
         :param pulumi.Input[str] capacity_unit: The capacity unit to launch instances by. If not specified, when choosing the weight unit, each instance will weight as the number of its vCPUs. Valid values: `instance`, `weight`.
         :param pulumi.Input[str] cpu_credits: Controls how T3 instances are launched. Valid values: `standard`, `unlimited`.
         :param pulumi.Input[pulumi.InputType['ElastigroupCpuOptionsArgs']] cpu_options: The CPU options for the instances that are launched within the group:
@@ -3313,7 +3135,6 @@ class Elastigroup(pulumi.CustomResource):
         :param pulumi.Input[int] draining_timeout: The time in seconds, the instance is allowed to run while detached from the ELB. This is to allow the instance time to be drained from incoming TCP connections before terminating it, during a scale down operation.
         :param pulumi.Input[bool] ebs_optimized: Enable high bandwidth connectivity between instances and AWS’s Elastic Block Store (EBS). For instance types that are EBS-optimized by default this parameter will be ignored.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] elastic_ips: A list of [AWS Elastic IP](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html) allocation IDs to associate to the group instances.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] elastic_load_balancers: List of Elastic Load Balancers names (ELB).
         :param pulumi.Input[bool] enable_monitoring: Indicates whether monitoring is enabled for the instance.
         :param pulumi.Input[bool] fallback_to_ondemand: In a case of no Spot instances available, Elastigroup will launch on-demand instances instead.
         :param pulumi.Input[int] health_check_grace_period: The amount of time, in seconds, after the instance has launched to starts and check its health.
@@ -3327,16 +3148,6 @@ class Elastigroup(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types_preferred_spots: Prioritize a subset of spot instance types. Must be a subset of the selected spot instance types.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types_spots: One or more instance types. Note: Cannot be defined if 'resourceRequirements' is defined.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupInstanceTypesWeightArgs']]]] instance_types_weights: List of weights per instance type for weighted groups. Each object in the list should have the following attributes:
-        :param pulumi.Input[pulumi.InputType['ElastigroupIntegrationBeanstalkArgs']] integration_beanstalk: Describes the Beanstalk integration.
-        :param pulumi.Input[pulumi.InputType['ElastigroupIntegrationCodedeployArgs']] integration_codedeploy: Describes the [Code Deploy](https://aws.amazon.com/documentation/codedeploy/?id=docs_gateway) integration.
-        :param pulumi.Input[pulumi.InputType['ElastigroupIntegrationDockerSwarmArgs']] integration_docker_swarm: Describes the [Docker Swarm](https://api.spotinst.com/integration-docs/elastigroup/container-management/docker-swarm/docker-swarm-integration/) integration.
-        :param pulumi.Input[pulumi.InputType['ElastigroupIntegrationEcsArgs']] integration_ecs: Describes the [EC2 Container Service](https://aws.amazon.com/documentation/ecs/?id=docs_gateway) integration.
-        :param pulumi.Input[pulumi.InputType['ElastigroupIntegrationGitlabArgs']] integration_gitlab: Describes the [Gitlab](https://api.spotinst.com/integration-docs/gitlab/) integration.
-        :param pulumi.Input[pulumi.InputType['ElastigroupIntegrationKubernetesArgs']] integration_kubernetes: Describes the [Kubernetes](https://kubernetes.io/) integration.
-        :param pulumi.Input[pulumi.InputType['ElastigroupIntegrationMesosphereArgs']] integration_mesosphere: Describes the [Mesosphere](https://mesosphere.com/) integration.
-        :param pulumi.Input[pulumi.InputType['ElastigroupIntegrationNomadArgs']] integration_nomad: Describes the [Nomad](https://www.nomadproject.io/) integration.
-        :param pulumi.Input[pulumi.InputType['ElastigroupIntegrationRancherArgs']] integration_rancher: Describes the [Rancher](http://rancherlabs.com/) integration.
-        :param pulumi.Input[pulumi.InputType['ElastigroupIntegrationRoute53Args']] integration_route53: Describes the [Route53](https://aws.amazon.com/documentation/route53/?id=docs_gateway) integration.
         :param pulumi.Input[str] key_name: The key name that should be used for the instance.
         :param pulumi.Input[pulumi.InputType['ElastigroupLoggingArgs']] logging: Logging configuration.
         :param pulumi.Input[int] max_size: The maximum number of instances the group should have at any time.
@@ -3347,15 +3158,9 @@ class Elastigroup(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] on_demand_types: Available ondemand instance types. Note: Either ondemand or onDemandTypes must be defined, but not both.
         :param pulumi.Input[int] ondemand_count: Number of on demand instances to launch in the group. All other instances will be spot instances. When this parameter is set the `spot_percentage` parameter is being ignored.
         :param pulumi.Input[str] orientation: Select a prediction strategy. Valid values: `balanced`, `costOriented`, `equalAzDistribution`, `availabilityOriented`. You can read more in our documentation.
-        :param pulumi.Input[bool] persist_block_devices: Boolean, should the instance maintain its Data volumes.
-        :param pulumi.Input[bool] persist_private_ip: Boolean, should the instance maintain its private IP.
-        :param pulumi.Input[bool] persist_root_device: Boolean, should the instance maintain its root device volumes.
         :param pulumi.Input[str] placement_tenancy: Enable dedicated tenancy. Note: There is a flat hourly fee for each region in which dedicated tenancy is used. Valid values: "default", "dedicated" .
         :param pulumi.Input[Sequence[pulumi.Input[str]]] preferred_availability_zones: The AZs to prioritize when launching Spot instances. If no markets are available in the Preferred AZs, Spot instances are launched in the non-preferred AZs. 
                Note: Must be a sublist of `availability_zones` and `orientation` value must not be `"equalAzDistribution"`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] private_ips: List of Private IPs to associate to the group instances.(e.g. "172.1.1.0"). Please note: This setting will only apply if persistence.persist_private_ip is set to true.
-               
-               Usage:
         :param pulumi.Input[str] product: Operation system type. Valid values: `"Linux/UNIX"`, `"SUSE Linux"`, `"Windows"`. 
                For EC2 Classic instances:  `"Linux/UNIX (Amazon VPC)"`, `"SUSE Linux (Amazon VPC)"`, `"Windows (Amazon VPC)"`.
         :param pulumi.Input[str] region: The AWS region your group will be created in.
@@ -3370,9 +3175,6 @@ class Elastigroup(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: List of Strings of subnet identifiers.
                Note: When this parameter is set, `availability_zones` should be left unused.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ElastigroupTagArgs']]]] tags: A key/value mapping of tags to assign to the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] target_group_arns: List of Target Group ARNs to register the instances to.
-               
-               Usage:
         :param pulumi.Input[str] user_data: The user data to provide when launching the instance.
         :param pulumi.Input[bool] utilize_reserved_instances: In a case of any available reserved instances, Elastigroup will utilize them first before purchasing Spot instances.
         :param pulumi.Input[int] wait_for_capacity: Minimum number of instances in a 'HEALTHY' status that is required before continuing. This is ignored when updating with blue/green deployment. Cannot exceed `desired_capacity`.
@@ -3479,9 +3281,6 @@ class Elastigroup(pulumi.CustomResource):
     @property
     @pulumi.getter(name="blockDevicesMode")
     def block_devices_mode(self) -> pulumi.Output[Optional[str]]:
-        """
-        String, determine the way we attach the data volumes to the data devices, possible values: `"reattach"` and `"onLaunch"` (default is onLaunch).
-        """
         return pulumi.get(self, "block_devices_mode")
 
     @property
@@ -3561,9 +3360,6 @@ class Elastigroup(pulumi.CustomResource):
     @property
     @pulumi.getter(name="elasticLoadBalancers")
     def elastic_load_balancers(self) -> pulumi.Output[Optional[Sequence[str]]]:
-        """
-        List of Elastic Load Balancers names (ELB).
-        """
         return pulumi.get(self, "elastic_load_balancers")
 
     @property
@@ -3676,81 +3472,51 @@ class Elastigroup(pulumi.CustomResource):
     @property
     @pulumi.getter(name="integrationBeanstalk")
     def integration_beanstalk(self) -> pulumi.Output[Optional['outputs.ElastigroupIntegrationBeanstalk']]:
-        """
-        Describes the Beanstalk integration.
-        """
         return pulumi.get(self, "integration_beanstalk")
 
     @property
     @pulumi.getter(name="integrationCodedeploy")
     def integration_codedeploy(self) -> pulumi.Output[Optional['outputs.ElastigroupIntegrationCodedeploy']]:
-        """
-        Describes the [Code Deploy](https://aws.amazon.com/documentation/codedeploy/?id=docs_gateway) integration.
-        """
         return pulumi.get(self, "integration_codedeploy")
 
     @property
     @pulumi.getter(name="integrationDockerSwarm")
     def integration_docker_swarm(self) -> pulumi.Output[Optional['outputs.ElastigroupIntegrationDockerSwarm']]:
-        """
-        Describes the [Docker Swarm](https://api.spotinst.com/integration-docs/elastigroup/container-management/docker-swarm/docker-swarm-integration/) integration.
-        """
         return pulumi.get(self, "integration_docker_swarm")
 
     @property
     @pulumi.getter(name="integrationEcs")
     def integration_ecs(self) -> pulumi.Output[Optional['outputs.ElastigroupIntegrationEcs']]:
-        """
-        Describes the [EC2 Container Service](https://aws.amazon.com/documentation/ecs/?id=docs_gateway) integration.
-        """
         return pulumi.get(self, "integration_ecs")
 
     @property
     @pulumi.getter(name="integrationGitlab")
     def integration_gitlab(self) -> pulumi.Output[Optional['outputs.ElastigroupIntegrationGitlab']]:
-        """
-        Describes the [Gitlab](https://api.spotinst.com/integration-docs/gitlab/) integration.
-        """
         return pulumi.get(self, "integration_gitlab")
 
     @property
     @pulumi.getter(name="integrationKubernetes")
     def integration_kubernetes(self) -> pulumi.Output[Optional['outputs.ElastigroupIntegrationKubernetes']]:
-        """
-        Describes the [Kubernetes](https://kubernetes.io/) integration.
-        """
         return pulumi.get(self, "integration_kubernetes")
 
     @property
     @pulumi.getter(name="integrationMesosphere")
     def integration_mesosphere(self) -> pulumi.Output[Optional['outputs.ElastigroupIntegrationMesosphere']]:
-        """
-        Describes the [Mesosphere](https://mesosphere.com/) integration.
-        """
         return pulumi.get(self, "integration_mesosphere")
 
     @property
     @pulumi.getter(name="integrationNomad")
     def integration_nomad(self) -> pulumi.Output[Optional['outputs.ElastigroupIntegrationNomad']]:
-        """
-        Describes the [Nomad](https://www.nomadproject.io/) integration.
-        """
         return pulumi.get(self, "integration_nomad")
 
     @property
     @pulumi.getter(name="integrationRancher")
     def integration_rancher(self) -> pulumi.Output[Optional['outputs.ElastigroupIntegrationRancher']]:
-        """
-        Describes the [Rancher](http://rancherlabs.com/) integration.
-        """
         return pulumi.get(self, "integration_rancher")
 
     @property
     @pulumi.getter(name="integrationRoute53")
     def integration_route53(self) -> pulumi.Output[Optional['outputs.ElastigroupIntegrationRoute53']]:
-        """
-        Describes the [Route53](https://aws.amazon.com/documentation/route53/?id=docs_gateway) integration.
-        """
         return pulumi.get(self, "integration_route53")
 
     @property
@@ -3856,25 +3622,16 @@ class Elastigroup(pulumi.CustomResource):
     @property
     @pulumi.getter(name="persistBlockDevices")
     def persist_block_devices(self) -> pulumi.Output[Optional[bool]]:
-        """
-        Boolean, should the instance maintain its Data volumes.
-        """
         return pulumi.get(self, "persist_block_devices")
 
     @property
     @pulumi.getter(name="persistPrivateIp")
     def persist_private_ip(self) -> pulumi.Output[Optional[bool]]:
-        """
-        Boolean, should the instance maintain its private IP.
-        """
         return pulumi.get(self, "persist_private_ip")
 
     @property
     @pulumi.getter(name="persistRootDevice")
     def persist_root_device(self) -> pulumi.Output[Optional[bool]]:
-        """
-        Boolean, should the instance maintain its root device volumes.
-        """
         return pulumi.get(self, "persist_root_device")
 
     @property
@@ -3897,11 +3654,6 @@ class Elastigroup(pulumi.CustomResource):
     @property
     @pulumi.getter(name="privateIps")
     def private_ips(self) -> pulumi.Output[Optional[Sequence[str]]]:
-        """
-        List of Private IPs to associate to the group instances.(e.g. "172.1.1.0"). Please note: This setting will only apply if persistence.persist_private_ip is set to true.
-
-        Usage:
-        """
         return pulumi.get(self, "private_ips")
 
     @property
@@ -4033,11 +3785,6 @@ class Elastigroup(pulumi.CustomResource):
     @property
     @pulumi.getter(name="targetGroupArns")
     def target_group_arns(self) -> pulumi.Output[Optional[Sequence[str]]]:
-        """
-        List of Target Group ARNs to register the instances to.
-
-        Usage:
-        """
         return pulumi.get(self, "target_group_arns")
 
     @property

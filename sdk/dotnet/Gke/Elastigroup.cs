@@ -21,7 +21,6 @@ namespace Pulumi.SpotInst.Gke
     /// * you must include `cluster_zone_name` and `cluster_id`
     /// * a handful of parameters are created remotely and will not appear in the diff. A complete list can be found below.
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -95,7 +94,6 @@ namespace Pulumi.SpotInst.Gke
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [SpotInstResourceType("spotinst:gke/elastigroup:Elastigroup")]
     public partial class Elastigroup : global::Pulumi.CustomResource
@@ -103,15 +101,9 @@ namespace Pulumi.SpotInst.Gke
         [Output("backendServices")]
         public Output<ImmutableArray<Outputs.ElastigroupBackendService>> BackendServices { get; private set; } = null!;
 
-        /// <summary>
-        /// The name of the GKE cluster you wish to import.
-        /// </summary>
         [Output("clusterId")]
         public Output<string?> ClusterId { get; private set; } = null!;
 
-        /// <summary>
-        /// The zone where the cluster is hosted.
-        /// </summary>
         [Output("clusterZoneName")]
         public Output<string> ClusterZoneName { get; private set; } = null!;
 
@@ -145,9 +137,6 @@ namespace Pulumi.SpotInst.Gke
         [Output("integrationDockerSwarm")]
         public Output<Outputs.ElastigroupIntegrationDockerSwarm?> IntegrationDockerSwarm { get; private set; } = null!;
 
-        /// <summary>
-        /// Describes the GKE integration.
-        /// </summary>
         [Output("integrationGke")]
         public Output<Outputs.ElastigroupIntegrationGke?> IntegrationGke { get; private set; } = null!;
 
@@ -172,9 +161,6 @@ namespace Pulumi.SpotInst.Gke
         [Output("networkInterfaces")]
         public Output<ImmutableArray<Outputs.ElastigroupNetworkInterface>> NetworkInterfaces { get; private set; } = null!;
 
-        /// <summary>
-        /// The image that will be used for the node VMs. Possible values: COS, UBUNTU.
-        /// </summary>
         [Output("nodeImage")]
         public Output<string?> NodeImage { get; private set; } = null!;
 
@@ -259,15 +245,9 @@ namespace Pulumi.SpotInst.Gke
             set => _backendServices = value;
         }
 
-        /// <summary>
-        /// The name of the GKE cluster you wish to import.
-        /// </summary>
         [Input("clusterId")]
         public Input<string>? ClusterId { get; set; }
 
-        /// <summary>
-        /// The zone where the cluster is hosted.
-        /// </summary>
         [Input("clusterZoneName", required: true)]
         public Input<string> ClusterZoneName { get; set; } = null!;
 
@@ -321,9 +301,6 @@ namespace Pulumi.SpotInst.Gke
         [Input("integrationDockerSwarm")]
         public Input<Inputs.ElastigroupIntegrationDockerSwarmArgs>? IntegrationDockerSwarm { get; set; }
 
-        /// <summary>
-        /// Describes the GKE integration.
-        /// </summary>
         [Input("integrationGke")]
         public Input<Inputs.ElastigroupIntegrationGkeArgs>? IntegrationGke { get; set; }
 
@@ -363,9 +340,6 @@ namespace Pulumi.SpotInst.Gke
             set => _networkInterfaces = value;
         }
 
-        /// <summary>
-        /// The image that will be used for the node VMs. Possible values: COS, UBUNTU.
-        /// </summary>
         [Input("nodeImage")]
         public Input<string>? NodeImage { get; set; }
 
@@ -427,15 +401,9 @@ namespace Pulumi.SpotInst.Gke
             set => _backendServices = value;
         }
 
-        /// <summary>
-        /// The name of the GKE cluster you wish to import.
-        /// </summary>
         [Input("clusterId")]
         public Input<string>? ClusterId { get; set; }
 
-        /// <summary>
-        /// The zone where the cluster is hosted.
-        /// </summary>
         [Input("clusterZoneName")]
         public Input<string>? ClusterZoneName { get; set; }
 
@@ -489,9 +457,6 @@ namespace Pulumi.SpotInst.Gke
         [Input("integrationDockerSwarm")]
         public Input<Inputs.ElastigroupIntegrationDockerSwarmGetArgs>? IntegrationDockerSwarm { get; set; }
 
-        /// <summary>
-        /// Describes the GKE integration.
-        /// </summary>
         [Input("integrationGke")]
         public Input<Inputs.ElastigroupIntegrationGkeGetArgs>? IntegrationGke { get; set; }
 
@@ -531,9 +496,6 @@ namespace Pulumi.SpotInst.Gke
             set => _networkInterfaces = value;
         }
 
-        /// <summary>
-        /// The image that will be used for the node VMs. Possible values: COS, UBUNTU.
-        /// </summary>
         [Input("nodeImage")]
         public Input<string>? NodeImage { get; set; }
 

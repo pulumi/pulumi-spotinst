@@ -14,29 +14,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class OceanScheduledTaskShutdownHours {
-    /**
-     * @return Enable the Ocean ECS autoscaler.
-     * 
-     */
     private @Nullable Boolean isEnabled;
-    /**
-     * @return Array of strings. Set time windows for image update, at least one time window. Each string is in the format of ddd:hh:mm-ddd:hh:mm ddd. Time windows should not overlap.
-     * 
-     */
     private List<String> timeWindows;
 
     private OceanScheduledTaskShutdownHours() {}
-    /**
-     * @return Enable the Ocean ECS autoscaler.
-     * 
-     */
     public Optional<Boolean> isEnabled() {
         return Optional.ofNullable(this.isEnabled);
     }
-    /**
-     * @return Array of strings. Set time windows for image update, at least one time window. Each string is in the format of ddd:hh:mm-ddd:hh:mm ddd. Time windows should not overlap.
-     * 
-     */
     public List<String> timeWindows() {
         return this.timeWindows;
     }

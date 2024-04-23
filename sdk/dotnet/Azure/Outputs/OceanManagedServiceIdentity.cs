@@ -14,11 +14,11 @@ namespace Pulumi.SpotInst.Azure.Outputs
     public sealed class OceanManagedServiceIdentity
     {
         /// <summary>
-        /// Name of the Load Balancer.
+        /// Name of the Managed Service Identity.
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// The Resource Group name of the Load Balancer.
+        /// Name of the Azure Resource Group where the Managed Service Identity is located.
         /// </summary>
         public readonly string ResourceGroupName;
 

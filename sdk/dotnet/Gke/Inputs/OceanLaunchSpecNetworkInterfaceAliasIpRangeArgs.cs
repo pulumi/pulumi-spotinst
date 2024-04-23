@@ -12,17 +12,9 @@ namespace Pulumi.SpotInst.Gke.Inputs
 
     public sealed class OceanLaunchSpecNetworkInterfaceAliasIpRangeArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// specify the IP address range in CIDR notation that can be used for the alias IP addresses associated with the imported node pool.
-        /// </summary>
         [Input("ipCidrRange", required: true)]
         public Input<string> IpCidrRange { get; set; } = null!;
 
-        /// <summary>
-        /// specify the IP address range for the subnet secondary IP range.
-        /// 
-        /// &lt;a id="update-policy"&gt;&lt;/a&gt;
-        /// </summary>
         [Input("subnetworkRangeName", required: true)]
         public Input<string> SubnetworkRangeName { get; set; } = null!;
 

@@ -15,44 +15,16 @@ public final class ElastigroupScalingDownPolicyStepAdjustmentArgs extends com.pu
 
     public static final ElastigroupScalingDownPolicyStepAdjustmentArgs Empty = new ElastigroupScalingDownPolicyStepAdjustmentArgs();
 
-    /**
-     * The action to take when scale up according to step&#39;s threshold is needed.
-     * 
-     */
     @Import(name="action", required=true)
     private Output<ElastigroupScalingDownPolicyStepAdjustmentActionArgs> action;
 
-    /**
-     * @return The action to take when scale up according to step&#39;s threshold is needed.
-     * 
-     */
     public Output<ElastigroupScalingDownPolicyStepAdjustmentActionArgs> action() {
         return this.action;
     }
 
-    /**
-     * The value against which the specified statistic is compared in order to determine if a step should be applied.
-     * 
-     * If you do not specify an action type, you can only use – `adjustment`, `minTargetCapacity`, `maxTargetCapacity`.
-     * While using action_type, please also set the following:
-     * 
-     * When using `adjustment`           – set the field `adjustment`
-     * When using `updateCapacity`       – set the fields `minimum`, `maximum`, and `target`
-     * 
-     */
     @Import(name="threshold", required=true)
     private Output<Integer> threshold;
 
-    /**
-     * @return The value against which the specified statistic is compared in order to determine if a step should be applied.
-     * 
-     * If you do not specify an action type, you can only use – `adjustment`, `minTargetCapacity`, `maxTargetCapacity`.
-     * While using action_type, please also set the following:
-     * 
-     * When using `adjustment`           – set the field `adjustment`
-     * When using `updateCapacity`       – set the fields `minimum`, `maximum`, and `target`
-     * 
-     */
     public Output<Integer> threshold() {
         return this.threshold;
     }
@@ -82,56 +54,20 @@ public final class ElastigroupScalingDownPolicyStepAdjustmentArgs extends com.pu
             $ = new ElastigroupScalingDownPolicyStepAdjustmentArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param action The action to take when scale up according to step&#39;s threshold is needed.
-         * 
-         * @return builder
-         * 
-         */
         public Builder action(Output<ElastigroupScalingDownPolicyStepAdjustmentActionArgs> action) {
             $.action = action;
             return this;
         }
 
-        /**
-         * @param action The action to take when scale up according to step&#39;s threshold is needed.
-         * 
-         * @return builder
-         * 
-         */
         public Builder action(ElastigroupScalingDownPolicyStepAdjustmentActionArgs action) {
             return action(Output.of(action));
         }
 
-        /**
-         * @param threshold The value against which the specified statistic is compared in order to determine if a step should be applied.
-         * 
-         * If you do not specify an action type, you can only use – `adjustment`, `minTargetCapacity`, `maxTargetCapacity`.
-         * While using action_type, please also set the following:
-         * 
-         * When using `adjustment`           – set the field `adjustment`
-         * When using `updateCapacity`       – set the fields `minimum`, `maximum`, and `target`
-         * 
-         * @return builder
-         * 
-         */
         public Builder threshold(Output<Integer> threshold) {
             $.threshold = threshold;
             return this;
         }
 
-        /**
-         * @param threshold The value against which the specified statistic is compared in order to determine if a step should be applied.
-         * 
-         * If you do not specify an action type, you can only use – `adjustment`, `minTargetCapacity`, `maxTargetCapacity`.
-         * While using action_type, please also set the following:
-         * 
-         * When using `adjustment`           – set the field `adjustment`
-         * When using `updateCapacity`       – set the fields `minimum`, `maximum`, and `target`
-         * 
-         * @return builder
-         * 
-         */
         public Builder threshold(Integer threshold) {
             return threshold(Output.of(threshold));
         }

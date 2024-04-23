@@ -15,62 +15,30 @@ public final class OceanImageMarketplaceArgs extends com.pulumi.resources.Resour
 
     public static final OceanImageMarketplaceArgs Empty = new OceanImageMarketplaceArgs();
 
-    /**
-     * Image name.
-     * 
-     */
     @Import(name="offer")
     private @Nullable Output<String> offer;
 
-    /**
-     * @return Image name.
-     * 
-     */
     public Optional<Output<String>> offer() {
         return Optional.ofNullable(this.offer);
     }
 
-    /**
-     * Image publisher.
-     * 
-     */
     @Import(name="publisher")
     private @Nullable Output<String> publisher;
 
-    /**
-     * @return Image publisher.
-     * 
-     */
     public Optional<Output<String>> publisher() {
         return Optional.ofNullable(this.publisher);
     }
 
-    /**
-     * Image Stock Keeping Unit (which is the specific version of the image).
-     * 
-     */
     @Import(name="sku")
     private @Nullable Output<String> sku;
 
-    /**
-     * @return Image Stock Keeping Unit (which is the specific version of the image).
-     * 
-     */
     public Optional<Output<String>> sku() {
         return Optional.ofNullable(this.sku);
     }
 
-    /**
-     * Image version.
-     * 
-     */
     @Import(name="version")
     private @Nullable Output<String> version;
 
-    /**
-     * @return Image version.
-     * 
-     */
     public Optional<Output<String>> version() {
         return Optional.ofNullable(this.version);
     }
@@ -102,86 +70,38 @@ public final class OceanImageMarketplaceArgs extends com.pulumi.resources.Resour
             $ = new OceanImageMarketplaceArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param offer Image name.
-         * 
-         * @return builder
-         * 
-         */
         public Builder offer(@Nullable Output<String> offer) {
             $.offer = offer;
             return this;
         }
 
-        /**
-         * @param offer Image name.
-         * 
-         * @return builder
-         * 
-         */
         public Builder offer(String offer) {
             return offer(Output.of(offer));
         }
 
-        /**
-         * @param publisher Image publisher.
-         * 
-         * @return builder
-         * 
-         */
         public Builder publisher(@Nullable Output<String> publisher) {
             $.publisher = publisher;
             return this;
         }
 
-        /**
-         * @param publisher Image publisher.
-         * 
-         * @return builder
-         * 
-         */
         public Builder publisher(String publisher) {
             return publisher(Output.of(publisher));
         }
 
-        /**
-         * @param sku Image Stock Keeping Unit (which is the specific version of the image).
-         * 
-         * @return builder
-         * 
-         */
         public Builder sku(@Nullable Output<String> sku) {
             $.sku = sku;
             return this;
         }
 
-        /**
-         * @param sku Image Stock Keeping Unit (which is the specific version of the image).
-         * 
-         * @return builder
-         * 
-         */
         public Builder sku(String sku) {
             return sku(Output.of(sku));
         }
 
-        /**
-         * @param version Image version.
-         * 
-         * @return builder
-         * 
-         */
         public Builder version(@Nullable Output<String> version) {
             $.version = version;
             return this;
         }
 
-        /**
-         * @param version Image version.
-         * 
-         * @return builder
-         * 
-         */
         public Builder version(String version) {
             return version(Output.of(version));
         }

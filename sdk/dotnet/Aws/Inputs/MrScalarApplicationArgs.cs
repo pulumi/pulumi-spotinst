@@ -14,10 +14,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
     {
         [Input("args")]
         private InputList<string>? _args;
-
-        /// <summary>
-        /// Arguments for EMR to pass to the application.
-        /// </summary>
         public InputList<string> Args
         {
             get => _args ?? (_args = new InputList<string>());
@@ -30,9 +26,6 @@ namespace Pulumi.SpotInst.Aws.Inputs
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
-        /// <summary>
-        /// T he version of the application.
-        /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }
 

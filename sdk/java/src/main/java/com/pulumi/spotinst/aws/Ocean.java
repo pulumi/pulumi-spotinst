@@ -78,17 +78,9 @@ public class Ocean extends com.pulumi.resources.CustomResource {
     public Output<Optional<OceanAutoscaler>> autoscaler() {
         return Codegen.optional(this.autoscaler);
     }
-    /**
-     * Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist` is configured.
-     * 
-     */
     @Export(name="blacklists", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> blacklists;
 
-    /**
-     * @return Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist` is configured.
-     * 
-     */
     public Output<Optional<List<String>>> blacklists() {
         return Codegen.optional(this.blacklists);
     }
@@ -182,17 +174,9 @@ public class Ocean extends com.pulumi.resources.CustomResource {
     public Output<Optional<Boolean>> fallbackToOndemand() {
         return Codegen.optional(this.fallbackToOndemand);
     }
-    /**
-     * List of filters. The Instance types that match with all filters compose the Ocean&#39;s whitelist parameter. Cannot be configured together with whitelist/blacklist.
-     * 
-     */
     @Export(name="filters", refs={OceanFilters.class}, tree="[0]")
     private Output</* @Nullable */ OceanFilters> filters;
 
-    /**
-     * @return List of filters. The Instance types that match with all filters compose the Ocean&#39;s whitelist parameter. Cannot be configured together with whitelist/blacklist.
-     * 
-     */
     public Output<Optional<OceanFilters>> filters() {
         return Codegen.optional(this.filters);
     }
@@ -351,14 +335,14 @@ public class Ocean extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.monitoring);
     }
     /**
-     * Required if type is set to `CLASSIC`
+     * The cluster name.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Required if type is set to `CLASSIC`
+     * @return The cluster name.
      * 
      */
     public Output<String> name() {
@@ -546,17 +530,9 @@ public class Ocean extends com.pulumi.resources.CustomResource {
     public Output<Optional<Boolean>> utilizeReservedInstances() {
         return Codegen.optional(this.utilizeReservedInstances);
     }
-    /**
-     * Instance types allowed in the Ocean cluster. Cannot be configured if `blacklist` is configured.
-     * 
-     */
     @Export(name="whitelists", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> whitelists;
 
-    /**
-     * @return Instance types allowed in the Ocean cluster. Cannot be configured if `blacklist` is configured.
-     * 
-     */
     public Output<Optional<List<String>>> whitelists() {
         return Codegen.optional(this.whitelists);
     }

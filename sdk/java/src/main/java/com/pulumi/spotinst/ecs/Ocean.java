@@ -159,45 +159,21 @@ public class Ocean extends com.pulumi.resources.CustomResource {
     public Output<Optional<Boolean>> associatePublicIpAddress() {
         return Codegen.optional(this.associatePublicIpAddress);
     }
-    /**
-     * Describes the Ocean ECS autoscaler.
-     * 
-     */
     @Export(name="autoscaler", refs={OceanAutoscaler.class}, tree="[0]")
     private Output</* @Nullable */ OceanAutoscaler> autoscaler;
 
-    /**
-     * @return Describes the Ocean ECS autoscaler.
-     * 
-     */
     public Output<Optional<OceanAutoscaler>> autoscaler() {
         return Codegen.optional(this.autoscaler);
     }
-    /**
-     * Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist`/`filters` is configured.
-     * 
-     */
     @Export(name="blacklists", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> blacklists;
 
-    /**
-     * @return Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist`/`filters` is configured.
-     * 
-     */
     public Output<Optional<List<String>>> blacklists() {
         return Codegen.optional(this.blacklists);
     }
-    /**
-     * Object. List of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
-     * 
-     */
     @Export(name="blockDeviceMappings", refs={List.class,OceanBlockDeviceMapping.class}, tree="[0,1]")
     private Output</* @Nullable */ List<OceanBlockDeviceMapping>> blockDeviceMappings;
 
-    /**
-     * @return Object. List of block devices that are exposed to the instance, specify either virtual devices and EBS volumes.
-     * 
-     */
     public Output<Optional<List<OceanBlockDeviceMapping>>> blockDeviceMappings() {
         return Codegen.optional(this.blockDeviceMappings);
     }
@@ -263,17 +239,9 @@ public class Ocean extends com.pulumi.resources.CustomResource {
     public Output<Optional<Boolean>> ebsOptimized() {
         return Codegen.optional(this.ebsOptimized);
     }
-    /**
-     * List of filters. The Instance types that match with all filters compose the Ocean&#39;s whitelist parameter. Cannot be configured together with `whitelist`/`blacklist`.
-     * 
-     */
     @Export(name="filters", refs={OceanFilters.class}, tree="[0]")
     private Output</* @Nullable */ OceanFilters> filters;
 
-    /**
-     * @return List of filters. The Instance types that match with all filters compose the Ocean&#39;s whitelist parameter. Cannot be configured together with `whitelist`/`blacklist`.
-     * 
-     */
     public Output<Optional<OceanFilters>> filters() {
         return Codegen.optional(this.filters);
     }
@@ -403,17 +371,9 @@ public class Ocean extends com.pulumi.resources.CustomResource {
     public Output<String> name() {
         return this.name;
     }
-    /**
-     * Object. Set auto image update settings.
-     * 
-     */
     @Export(name="optimizeImages", refs={OceanOptimizeImages.class}, tree="[0]")
     private Output</* @Nullable */ OceanOptimizeImages> optimizeImages;
 
-    /**
-     * @return Object. Set auto image update settings.
-     * 
-     */
     public Output<Optional<OceanOptimizeImages>> optimizeImages() {
         return Codegen.optional(this.optimizeImages);
     }
@@ -431,17 +391,9 @@ public class Ocean extends com.pulumi.resources.CustomResource {
     public Output<String> region() {
         return this.region;
     }
-    /**
-     * While used, you can control whether the group should perform a deployment after an update to the configuration.
-     * 
-     */
     @Export(name="scheduledTasks", refs={List.class,OceanScheduledTask.class}, tree="[0,1]")
     private Output</* @Nullable */ List<OceanScheduledTask>> scheduledTasks;
 
-    /**
-     * @return While used, you can control whether the group should perform a deployment after an update to the configuration.
-     * 
-     */
     public Output<Optional<List<OceanScheduledTask>>> scheduledTasks() {
         return Codegen.optional(this.scheduledTasks);
     }
@@ -501,17 +453,9 @@ public class Ocean extends com.pulumi.resources.CustomResource {
     public Output<Optional<List<OceanTag>>> tags() {
         return Codegen.optional(this.tags);
     }
-    /**
-     * While used, you can control whether the group should perform a deployment after an update to the configuration.
-     * 
-     */
     @Export(name="updatePolicy", refs={OceanUpdatePolicy.class}, tree="[0]")
     private Output</* @Nullable */ OceanUpdatePolicy> updatePolicy;
 
-    /**
-     * @return While used, you can control whether the group should perform a deployment after an update to the configuration.
-     * 
-     */
     public Output<Optional<OceanUpdatePolicy>> updatePolicy() {
         return Codegen.optional(this.updatePolicy);
     }
@@ -571,17 +515,9 @@ public class Ocean extends com.pulumi.resources.CustomResource {
     public Output<Optional<Boolean>> utilizeReservedInstances() {
         return Codegen.optional(this.utilizeReservedInstances);
     }
-    /**
-     * Instance types allowed in the Ocean cluster. Cannot be configured if `blacklist`/`filters` is configured.
-     * 
-     */
     @Export(name="whitelists", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> whitelists;
 
-    /**
-     * @return Instance types allowed in the Ocean cluster. Cannot be configured if `blacklist`/`filters` is configured.
-     * 
-     */
     public Output<Optional<List<String>>> whitelists() {
         return Codegen.optional(this.whitelists);
     }

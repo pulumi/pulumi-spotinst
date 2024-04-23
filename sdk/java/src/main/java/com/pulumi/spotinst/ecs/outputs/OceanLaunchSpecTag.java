@@ -10,29 +10,13 @@ import java.util.Objects;
 
 @CustomType
 public final class OceanLaunchSpecTag {
-    /**
-     * @return The label key.
-     * 
-     */
     private String key;
-    /**
-     * @return The label value.
-     * 
-     */
     private String value;
 
     private OceanLaunchSpecTag() {}
-    /**
-     * @return The label key.
-     * 
-     */
     public String key() {
         return this.key;
     }
-    /**
-     * @return The label value.
-     * 
-     */
     public String value() {
         return this.value;
     }

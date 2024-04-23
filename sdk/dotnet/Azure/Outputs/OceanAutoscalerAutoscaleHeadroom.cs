@@ -13,9 +13,6 @@ namespace Pulumi.SpotInst.Azure.Outputs
     [OutputType]
     public sealed class OceanAutoscalerAutoscaleHeadroom
     {
-        /// <summary>
-        /// Automatic headroom configuration.
-        /// </summary>
         public readonly Outputs.OceanAutoscalerAutoscaleHeadroomAutomatic? Automatic;
 
         [OutputConstructor]

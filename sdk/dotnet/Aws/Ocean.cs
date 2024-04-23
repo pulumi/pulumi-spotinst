@@ -40,9 +40,6 @@ namespace Pulumi.SpotInst.Aws
         [Output("autoscaler")]
         public Output<Outputs.OceanAutoscaler?> Autoscaler { get; private set; } = null!;
 
-        /// <summary>
-        /// Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist` is configured.
-        /// </summary>
         [Output("blacklists")]
         public Output<ImmutableArray<string>> Blacklists { get; private set; } = null!;
 
@@ -85,9 +82,6 @@ namespace Pulumi.SpotInst.Aws
         [Output("fallbackToOndemand")]
         public Output<bool?> FallbackToOndemand { get; private set; } = null!;
 
-        /// <summary>
-        /// List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured together with whitelist/blacklist.
-        /// </summary>
         [Output("filters")]
         public Output<Outputs.OceanFilters?> Filters { get; private set; } = null!;
 
@@ -158,7 +152,7 @@ namespace Pulumi.SpotInst.Aws
         public Output<bool?> Monitoring { get; private set; } = null!;
 
         /// <summary>
-        /// Required if type is set to `CLASSIC`
+        /// The cluster name.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -242,9 +236,6 @@ namespace Pulumi.SpotInst.Aws
         [Output("utilizeReservedInstances")]
         public Output<bool?> UtilizeReservedInstances { get; private set; } = null!;
 
-        /// <summary>
-        /// Instance types allowed in the Ocean cluster. Cannot be configured if `blacklist` is configured.
-        /// </summary>
         [Output("whitelists")]
         public Output<ImmutableArray<string>> Whitelists { get; private set; } = null!;
 
@@ -311,10 +302,6 @@ namespace Pulumi.SpotInst.Aws
 
         [Input("blacklists")]
         private InputList<string>? _blacklists;
-
-        /// <summary>
-        /// Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist` is configured.
-        /// </summary>
         public InputList<string> Blacklists
         {
             get => _blacklists ?? (_blacklists = new InputList<string>());
@@ -371,9 +358,6 @@ namespace Pulumi.SpotInst.Aws
         [Input("fallbackToOndemand")]
         public Input<bool>? FallbackToOndemand { get; set; }
 
-        /// <summary>
-        /// List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured together with whitelist/blacklist.
-        /// </summary>
         [Input("filters")]
         public Input<Inputs.OceanFiltersArgs>? Filters { get; set; }
 
@@ -450,7 +434,7 @@ namespace Pulumi.SpotInst.Aws
         public Input<bool>? Monitoring { get; set; }
 
         /// <summary>
-        /// Required if type is set to `CLASSIC`
+        /// The cluster name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -565,10 +549,6 @@ namespace Pulumi.SpotInst.Aws
 
         [Input("whitelists")]
         private InputList<string>? _whitelists;
-
-        /// <summary>
-        /// Instance types allowed in the Ocean cluster. Cannot be configured if `blacklist` is configured.
-        /// </summary>
         public InputList<string> Whitelists
         {
             get => _whitelists ?? (_whitelists = new InputList<string>());
@@ -600,10 +580,6 @@ namespace Pulumi.SpotInst.Aws
 
         [Input("blacklists")]
         private InputList<string>? _blacklists;
-
-        /// <summary>
-        /// Instance types not allowed in the Ocean cluster. Cannot be configured if `whitelist` is configured.
-        /// </summary>
         public InputList<string> Blacklists
         {
             get => _blacklists ?? (_blacklists = new InputList<string>());
@@ -660,9 +636,6 @@ namespace Pulumi.SpotInst.Aws
         [Input("fallbackToOndemand")]
         public Input<bool>? FallbackToOndemand { get; set; }
 
-        /// <summary>
-        /// List of filters. The Instance types that match with all filters compose the Ocean's whitelist parameter. Cannot be configured together with whitelist/blacklist.
-        /// </summary>
         [Input("filters")]
         public Input<Inputs.OceanFiltersGetArgs>? Filters { get; set; }
 
@@ -739,7 +712,7 @@ namespace Pulumi.SpotInst.Aws
         public Input<bool>? Monitoring { get; set; }
 
         /// <summary>
-        /// Required if type is set to `CLASSIC`
+        /// The cluster name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -854,10 +827,6 @@ namespace Pulumi.SpotInst.Aws
 
         [Input("whitelists")]
         private InputList<string>? _whitelists;
-
-        /// <summary>
-        /// Instance types allowed in the Ocean cluster. Cannot be configured if `blacklist` is configured.
-        /// </summary>
         public InputList<string> Whitelists
         {
             get => _whitelists ?? (_whitelists = new InputList<string>());

@@ -18,11 +18,11 @@ namespace Pulumi.SpotInst.Azure.Outputs
         /// </summary>
         public readonly string Effect;
         /// <summary>
-        /// Tag Key for Vms in the cluster.
+        /// The taint key.
         /// </summary>
         public readonly string Key;
         /// <summary>
-        /// Tag Value for VMs in the cluster.
+        /// The taint value.
         /// </summary>
         public readonly string Value;
 

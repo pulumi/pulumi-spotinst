@@ -12,29 +12,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ElastigroupMultipleMetrics {
-    /**
-     * @return Array of objects (Expression config)
-     * 
-     */
     private @Nullable List<ElastigroupMultipleMetricsExpression> expressions;
-    /**
-     * @return Array of objects (Metric config)
-     * 
-     */
     private @Nullable List<ElastigroupMultipleMetricsMetric> metrics;
 
     private ElastigroupMultipleMetrics() {}
-    /**
-     * @return Array of objects (Expression config)
-     * 
-     */
     public List<ElastigroupMultipleMetricsExpression> expressions() {
         return this.expressions == null ? List.of() : this.expressions;
     }
-    /**
-     * @return Array of objects (Metric config)
-     * 
-     */
     public List<ElastigroupMultipleMetricsMetric> metrics() {
         return this.metrics == null ? List.of() : this.metrics;
     }

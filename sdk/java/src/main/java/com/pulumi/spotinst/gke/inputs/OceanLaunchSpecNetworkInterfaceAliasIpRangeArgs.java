@@ -14,36 +14,16 @@ public final class OceanLaunchSpecNetworkInterfaceAliasIpRangeArgs extends com.p
 
     public static final OceanLaunchSpecNetworkInterfaceAliasIpRangeArgs Empty = new OceanLaunchSpecNetworkInterfaceAliasIpRangeArgs();
 
-    /**
-     * specify the IP address range in CIDR notation that can be used for the alias IP addresses associated with the imported node pool.
-     * 
-     */
     @Import(name="ipCidrRange", required=true)
     private Output<String> ipCidrRange;
 
-    /**
-     * @return specify the IP address range in CIDR notation that can be used for the alias IP addresses associated with the imported node pool.
-     * 
-     */
     public Output<String> ipCidrRange() {
         return this.ipCidrRange;
     }
 
-    /**
-     * specify the IP address range for the subnet secondary IP range.
-     * 
-     * &lt;a id=&#34;update-policy&#34;&gt;&lt;/a&gt;
-     * 
-     */
     @Import(name="subnetworkRangeName", required=true)
     private Output<String> subnetworkRangeName;
 
-    /**
-     * @return specify the IP address range for the subnet secondary IP range.
-     * 
-     * &lt;a id=&#34;update-policy&#34;&gt;&lt;/a&gt;
-     * 
-     */
     public Output<String> subnetworkRangeName() {
         return this.subnetworkRangeName;
     }
@@ -73,48 +53,20 @@ public final class OceanLaunchSpecNetworkInterfaceAliasIpRangeArgs extends com.p
             $ = new OceanLaunchSpecNetworkInterfaceAliasIpRangeArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param ipCidrRange specify the IP address range in CIDR notation that can be used for the alias IP addresses associated with the imported node pool.
-         * 
-         * @return builder
-         * 
-         */
         public Builder ipCidrRange(Output<String> ipCidrRange) {
             $.ipCidrRange = ipCidrRange;
             return this;
         }
 
-        /**
-         * @param ipCidrRange specify the IP address range in CIDR notation that can be used for the alias IP addresses associated with the imported node pool.
-         * 
-         * @return builder
-         * 
-         */
         public Builder ipCidrRange(String ipCidrRange) {
             return ipCidrRange(Output.of(ipCidrRange));
         }
 
-        /**
-         * @param subnetworkRangeName specify the IP address range for the subnet secondary IP range.
-         * 
-         * &lt;a id=&#34;update-policy&#34;&gt;&lt;/a&gt;
-         * 
-         * @return builder
-         * 
-         */
         public Builder subnetworkRangeName(Output<String> subnetworkRangeName) {
             $.subnetworkRangeName = subnetworkRangeName;
             return this;
         }
 
-        /**
-         * @param subnetworkRangeName specify the IP address range for the subnet secondary IP range.
-         * 
-         * &lt;a id=&#34;update-policy&#34;&gt;&lt;/a&gt;
-         * 
-         * @return builder
-         * 
-         */
         public Builder subnetworkRangeName(String subnetworkRangeName) {
             return subnetworkRangeName(Output.of(subnetworkRangeName));
         }

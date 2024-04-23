@@ -15,17 +15,9 @@ public final class ElastigroupIntegrationGitlabRunnerArgs extends com.pulumi.res
 
     public static final ElastigroupIntegrationGitlabRunnerArgs Empty = new ElastigroupIntegrationGitlabRunnerArgs();
 
-    /**
-     * Specifies whether the scaling policy described in this block is enabled.
-     * 
-     */
     @Import(name="isEnabled")
     private @Nullable Output<Boolean> isEnabled;
 
-    /**
-     * @return Specifies whether the scaling policy described in this block is enabled.
-     * 
-     */
     public Optional<Output<Boolean>> isEnabled() {
         return Optional.ofNullable(this.isEnabled);
     }
@@ -54,23 +46,11 @@ public final class ElastigroupIntegrationGitlabRunnerArgs extends com.pulumi.res
             $ = new ElastigroupIntegrationGitlabRunnerArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param isEnabled Specifies whether the scaling policy described in this block is enabled.
-         * 
-         * @return builder
-         * 
-         */
         public Builder isEnabled(@Nullable Output<Boolean> isEnabled) {
             $.isEnabled = isEnabled;
             return this;
         }
 
-        /**
-         * @param isEnabled Specifies whether the scaling policy described in this block is enabled.
-         * 
-         * @return builder
-         * 
-         */
         public Builder isEnabled(Boolean isEnabled) {
             return isEnabled(Output.of(isEnabled));
         }

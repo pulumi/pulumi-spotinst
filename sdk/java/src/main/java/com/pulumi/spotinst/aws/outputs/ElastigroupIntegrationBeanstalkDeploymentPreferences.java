@@ -13,53 +13,21 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ElastigroupIntegrationBeanstalkDeploymentPreferences {
-    /**
-     * @return Should roll perform automatically
-     * 
-     */
     private @Nullable Boolean automaticRoll;
-    /**
-     * @return The percentage size of each batch in the scheduled deployment roll.
-     * 
-     */
     private @Nullable Integer batchSizePercentage;
-    /**
-     * @return The period of time (seconds) to wait before checking a batch&#39;s health after it&#39;s deployment.
-     * 
-     */
     private @Nullable Integer gracePeriod;
-    /**
-     * @return Strategy parameters
-     * 
-     */
     private @Nullable ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategy strategy;
 
     private ElastigroupIntegrationBeanstalkDeploymentPreferences() {}
-    /**
-     * @return Should roll perform automatically
-     * 
-     */
     public Optional<Boolean> automaticRoll() {
         return Optional.ofNullable(this.automaticRoll);
     }
-    /**
-     * @return The percentage size of each batch in the scheduled deployment roll.
-     * 
-     */
     public Optional<Integer> batchSizePercentage() {
         return Optional.ofNullable(this.batchSizePercentage);
     }
-    /**
-     * @return The period of time (seconds) to wait before checking a batch&#39;s health after it&#39;s deployment.
-     * 
-     */
     public Optional<Integer> gracePeriod() {
         return Optional.ofNullable(this.gracePeriod);
     }
-    /**
-     * @return Strategy parameters
-     * 
-     */
     public Optional<ElastigroupIntegrationBeanstalkDeploymentPreferencesStrategy> strategy() {
         return Optional.ofNullable(this.strategy);
     }

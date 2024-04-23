@@ -15,51 +15,23 @@ public final class ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdateAr
 
     public static final ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdateArgs Empty = new ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdateArgs();
 
-    /**
-     * In the event of a fallback to On-Demand instances, select the time period to revert back to Spot. Supported Arguments – always (default), timeWindow, never. For timeWindow or never to be valid the group must have availabilityOriented OR persistence defined.
-     * 
-     */
     @Import(name="performAt")
     private @Nullable Output<String> performAt;
 
-    /**
-     * @return In the event of a fallback to On-Demand instances, select the time period to revert back to Spot. Supported Arguments – always (default), timeWindow, never. For timeWindow or never to be valid the group must have availabilityOriented OR persistence defined.
-     * 
-     */
     public Optional<Output<String>> performAt() {
         return Optional.ofNullable(this.performAt);
     }
 
-    /**
-     * Time Window for when action occurs ex. Mon:23:50-Tue:00:20
-     * 
-     */
     @Import(name="timeWindow")
     private @Nullable Output<String> timeWindow;
 
-    /**
-     * @return Time Window for when action occurs ex. Mon:23:50-Tue:00:20
-     * 
-     */
     public Optional<Output<String>> timeWindow() {
         return Optional.ofNullable(this.timeWindow);
     }
 
-    /**
-     * Level to update
-     * 
-     * Usage:
-     * 
-     */
     @Import(name="updateLevel")
     private @Nullable Output<String> updateLevel;
 
-    /**
-     * @return Level to update
-     * 
-     * Usage:
-     * 
-     */
     public Optional<Output<String>> updateLevel() {
         return Optional.ofNullable(this.updateLevel);
     }
@@ -90,69 +62,29 @@ public final class ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdateAr
             $ = new ElastigroupIntegrationBeanstalkManagedActionsPlatformUpdateArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param performAt In the event of a fallback to On-Demand instances, select the time period to revert back to Spot. Supported Arguments – always (default), timeWindow, never. For timeWindow or never to be valid the group must have availabilityOriented OR persistence defined.
-         * 
-         * @return builder
-         * 
-         */
         public Builder performAt(@Nullable Output<String> performAt) {
             $.performAt = performAt;
             return this;
         }
 
-        /**
-         * @param performAt In the event of a fallback to On-Demand instances, select the time period to revert back to Spot. Supported Arguments – always (default), timeWindow, never. For timeWindow or never to be valid the group must have availabilityOriented OR persistence defined.
-         * 
-         * @return builder
-         * 
-         */
         public Builder performAt(String performAt) {
             return performAt(Output.of(performAt));
         }
 
-        /**
-         * @param timeWindow Time Window for when action occurs ex. Mon:23:50-Tue:00:20
-         * 
-         * @return builder
-         * 
-         */
         public Builder timeWindow(@Nullable Output<String> timeWindow) {
             $.timeWindow = timeWindow;
             return this;
         }
 
-        /**
-         * @param timeWindow Time Window for when action occurs ex. Mon:23:50-Tue:00:20
-         * 
-         * @return builder
-         * 
-         */
         public Builder timeWindow(String timeWindow) {
             return timeWindow(Output.of(timeWindow));
         }
 
-        /**
-         * @param updateLevel Level to update
-         * 
-         * Usage:
-         * 
-         * @return builder
-         * 
-         */
         public Builder updateLevel(@Nullable Output<String> updateLevel) {
             $.updateLevel = updateLevel;
             return this;
         }
 
-        /**
-         * @param updateLevel Level to update
-         * 
-         * Usage:
-         * 
-         * @return builder
-         * 
-         */
         public Builder updateLevel(String updateLevel) {
             return updateLevel(Output.of(updateLevel));
         }

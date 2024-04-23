@@ -15,32 +15,16 @@ public final class OceanAutoscalerResourceLimitsArgs extends com.pulumi.resource
 
     public static final OceanAutoscalerResourceLimitsArgs Empty = new OceanAutoscalerResourceLimitsArgs();
 
-    /**
-     * Maximum amount of Memory (GiB).
-     * 
-     */
     @Import(name="maxMemoryGib")
     private @Nullable Output<Integer> maxMemoryGib;
 
-    /**
-     * @return Maximum amount of Memory (GiB).
-     * 
-     */
     public Optional<Output<Integer>> maxMemoryGib() {
         return Optional.ofNullable(this.maxMemoryGib);
     }
 
-    /**
-     * Maximum number of vcpus available.
-     * 
-     */
     @Import(name="maxVcpu")
     private @Nullable Output<Integer> maxVcpu;
 
-    /**
-     * @return Maximum number of vcpus available.
-     * 
-     */
     public Optional<Output<Integer>> maxVcpu() {
         return Optional.ofNullable(this.maxVcpu);
     }
@@ -70,44 +54,20 @@ public final class OceanAutoscalerResourceLimitsArgs extends com.pulumi.resource
             $ = new OceanAutoscalerResourceLimitsArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param maxMemoryGib Maximum amount of Memory (GiB).
-         * 
-         * @return builder
-         * 
-         */
         public Builder maxMemoryGib(@Nullable Output<Integer> maxMemoryGib) {
             $.maxMemoryGib = maxMemoryGib;
             return this;
         }
 
-        /**
-         * @param maxMemoryGib Maximum amount of Memory (GiB).
-         * 
-         * @return builder
-         * 
-         */
         public Builder maxMemoryGib(Integer maxMemoryGib) {
             return maxMemoryGib(Output.of(maxMemoryGib));
         }
 
-        /**
-         * @param maxVcpu Maximum number of vcpus available.
-         * 
-         * @return builder
-         * 
-         */
         public Builder maxVcpu(@Nullable Output<Integer> maxVcpu) {
             $.maxVcpu = maxVcpu;
             return this;
         }
 
-        /**
-         * @param maxVcpu Maximum number of vcpus available.
-         * 
-         * @return builder
-         * 
-         */
         public Builder maxVcpu(Integer maxVcpu) {
             return maxVcpu(Output.of(maxVcpu));
         }

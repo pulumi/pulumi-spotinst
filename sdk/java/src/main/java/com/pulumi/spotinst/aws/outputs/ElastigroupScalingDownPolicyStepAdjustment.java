@@ -11,41 +11,13 @@ import java.util.Objects;
 
 @CustomType
 public final class ElastigroupScalingDownPolicyStepAdjustment {
-    /**
-     * @return The action to take when scale up according to step&#39;s threshold is needed.
-     * 
-     */
     private ElastigroupScalingDownPolicyStepAdjustmentAction action;
-    /**
-     * @return The value against which the specified statistic is compared in order to determine if a step should be applied.
-     * 
-     * If you do not specify an action type, you can only use – `adjustment`, `minTargetCapacity`, `maxTargetCapacity`.
-     * While using action_type, please also set the following:
-     * 
-     * When using `adjustment`           – set the field `adjustment`
-     * When using `updateCapacity`       – set the fields `minimum`, `maximum`, and `target`
-     * 
-     */
     private Integer threshold;
 
     private ElastigroupScalingDownPolicyStepAdjustment() {}
-    /**
-     * @return The action to take when scale up according to step&#39;s threshold is needed.
-     * 
-     */
     public ElastigroupScalingDownPolicyStepAdjustmentAction action() {
         return this.action;
     }
-    /**
-     * @return The value against which the specified statistic is compared in order to determine if a step should be applied.
-     * 
-     * If you do not specify an action type, you can only use – `adjustment`, `minTargetCapacity`, `maxTargetCapacity`.
-     * While using action_type, please also set the following:
-     * 
-     * When using `adjustment`           – set the field `adjustment`
-     * When using `updateCapacity`       – set the fields `minimum`, `maximum`, and `target`
-     * 
-     */
     public Integer threshold() {
         return this.threshold;
     }

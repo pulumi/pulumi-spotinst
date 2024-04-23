@@ -14,10 +14,6 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ElastigroupUpdatePolicyRollConfigStrategyOnFailure {
-    /**
-     * @return The type of action to perform for scaling. Valid values: `&#34;adjustment&#34;`, `&#34;percentageAdjustment&#34;`, `&#34;setMaxTarget&#34;`, `&#34;setMinTarget&#34;`, `&#34;updateCapacity&#34;`. If a `step_adjustment` object is defined, then it cannot be specified.
-     * 
-     */
     private String actionType;
     private @Nullable Integer batchNum;
     /**
@@ -25,22 +21,10 @@ public final class ElastigroupUpdatePolicyRollConfigStrategyOnFailure {
      * 
      */
     private @Nullable Integer drainingTimeout;
-    /**
-     * @return Decrementing the group target capacity after detaching the instances.
-     * 
-     */
     private @Nullable Boolean shouldDecrementTargetCapacity;
-    /**
-     * @return Indicator if the action should apply to all batches of the deployment or only the latest batch.
-     * 
-     */
     private @Nullable Boolean shouldHandleAllBatches;
 
     private ElastigroupUpdatePolicyRollConfigStrategyOnFailure() {}
-    /**
-     * @return The type of action to perform for scaling. Valid values: `&#34;adjustment&#34;`, `&#34;percentageAdjustment&#34;`, `&#34;setMaxTarget&#34;`, `&#34;setMinTarget&#34;`, `&#34;updateCapacity&#34;`. If a `step_adjustment` object is defined, then it cannot be specified.
-     * 
-     */
     public String actionType() {
         return this.actionType;
     }
@@ -54,17 +38,9 @@ public final class ElastigroupUpdatePolicyRollConfigStrategyOnFailure {
     public Optional<Integer> drainingTimeout() {
         return Optional.ofNullable(this.drainingTimeout);
     }
-    /**
-     * @return Decrementing the group target capacity after detaching the instances.
-     * 
-     */
     public Optional<Boolean> shouldDecrementTargetCapacity() {
         return Optional.ofNullable(this.shouldDecrementTargetCapacity);
     }
-    /**
-     * @return Indicator if the action should apply to all batches of the deployment or only the latest batch.
-     * 
-     */
     public Optional<Boolean> shouldHandleAllBatches() {
         return Optional.ofNullable(this.shouldHandleAllBatches);
     }

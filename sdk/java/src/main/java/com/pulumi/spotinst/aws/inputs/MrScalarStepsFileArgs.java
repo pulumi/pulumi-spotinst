@@ -14,32 +14,16 @@ public final class MrScalarStepsFileArgs extends com.pulumi.resources.ResourceAr
 
     public static final MrScalarStepsFileArgs Empty = new MrScalarStepsFileArgs();
 
-    /**
-     * S3 Bucket name for bootstrap actions.
-     * 
-     */
     @Import(name="bucket", required=true)
     private Output<String> bucket;
 
-    /**
-     * @return S3 Bucket name for bootstrap actions.
-     * 
-     */
     public Output<String> bucket() {
         return this.bucket;
     }
 
-    /**
-     * S3 key for bootstrap actions.
-     * 
-     */
     @Import(name="key", required=true)
     private Output<String> key;
 
-    /**
-     * @return S3 key for bootstrap actions.
-     * 
-     */
     public Output<String> key() {
         return this.key;
     }
@@ -69,44 +53,20 @@ public final class MrScalarStepsFileArgs extends com.pulumi.resources.ResourceAr
             $ = new MrScalarStepsFileArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param bucket S3 Bucket name for bootstrap actions.
-         * 
-         * @return builder
-         * 
-         */
         public Builder bucket(Output<String> bucket) {
             $.bucket = bucket;
             return this;
         }
 
-        /**
-         * @param bucket S3 Bucket name for bootstrap actions.
-         * 
-         * @return builder
-         * 
-         */
         public Builder bucket(String bucket) {
             return bucket(Output.of(bucket));
         }
 
-        /**
-         * @param key S3 key for bootstrap actions.
-         * 
-         * @return builder
-         * 
-         */
         public Builder key(Output<String> key) {
             $.key = key;
             return this;
         }
 
-        /**
-         * @param key S3 key for bootstrap actions.
-         * 
-         * @return builder
-         * 
-         */
         public Builder key(String key) {
             return key(Output.of(key));
         }

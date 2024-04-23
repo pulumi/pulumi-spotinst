@@ -14,32 +14,16 @@ public final class ElastigroupIntegrationGkeAutoscaleLabelArgs extends com.pulum
 
     public static final ElastigroupIntegrationGkeAutoscaleLabelArgs Empty = new ElastigroupIntegrationGkeAutoscaleLabelArgs();
 
-    /**
-     * Labels key.
-     * 
-     */
     @Import(name="key", required=true)
     private Output<String> key;
 
-    /**
-     * @return Labels key.
-     * 
-     */
     public Output<String> key() {
         return this.key;
     }
 
-    /**
-     * Labels value.
-     * 
-     */
     @Import(name="value", required=true)
     private Output<String> value;
 
-    /**
-     * @return Labels value.
-     * 
-     */
     public Output<String> value() {
         return this.value;
     }
@@ -69,44 +53,20 @@ public final class ElastigroupIntegrationGkeAutoscaleLabelArgs extends com.pulum
             $ = new ElastigroupIntegrationGkeAutoscaleLabelArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param key Labels key.
-         * 
-         * @return builder
-         * 
-         */
         public Builder key(Output<String> key) {
             $.key = key;
             return this;
         }
 
-        /**
-         * @param key Labels key.
-         * 
-         * @return builder
-         * 
-         */
         public Builder key(String key) {
             return key(Output.of(key));
         }
 
-        /**
-         * @param value Labels value.
-         * 
-         * @return builder
-         * 
-         */
         public Builder value(Output<String> value) {
             $.value = value;
             return this;
         }
 
-        /**
-         * @param value Labels value.
-         * 
-         * @return builder
-         * 
-         */
         public Builder value(String value) {
             return value(Output.of(value));
         }

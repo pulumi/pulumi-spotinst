@@ -13,53 +13,21 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class MrScalarMasterEbsBlockDevice {
-    /**
-     * @return IOPS for the volume. Required in some volume types, such as io1.
-     * 
-     */
     private @Nullable Integer iops;
-    /**
-     * @return Size of the volume, in GBs.
-     * 
-     */
     private Integer sizeInGb;
-    /**
-     * @return volume type. Allowed values are &#39;gp2&#39;, &#39;io1&#39; and others.
-     * 
-     */
     private String volumeType;
-    /**
-     * @return Amount of volumes per instance in the core group.
-     * 
-     */
     private @Nullable Integer volumesPerInstance;
 
     private MrScalarMasterEbsBlockDevice() {}
-    /**
-     * @return IOPS for the volume. Required in some volume types, such as io1.
-     * 
-     */
     public Optional<Integer> iops() {
         return Optional.ofNullable(this.iops);
     }
-    /**
-     * @return Size of the volume, in GBs.
-     * 
-     */
     public Integer sizeInGb() {
         return this.sizeInGb;
     }
-    /**
-     * @return volume type. Allowed values are &#39;gp2&#39;, &#39;io1&#39; and others.
-     * 
-     */
     public String volumeType() {
         return this.volumeType;
     }
-    /**
-     * @return Amount of volumes per instance in the core group.
-     * 
-     */
     public Optional<Integer> volumesPerInstance() {
         return Optional.ofNullable(this.volumesPerInstance);
     }

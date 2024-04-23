@@ -13,13 +13,13 @@ namespace Pulumi.SpotInst.Azure.Inputs
     public sealed class OceanManagedServiceIdentityGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Name of the Load Balancer.
+        /// Name of the Managed Service Identity.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// The Resource Group name of the Load Balancer.
+        /// Name of the Azure Resource Group where the Managed Service Identity is located.
         /// </summary>
         [Input("resourceGroupName", required: true)]
         public Input<string> ResourceGroupName { get; set; } = null!;

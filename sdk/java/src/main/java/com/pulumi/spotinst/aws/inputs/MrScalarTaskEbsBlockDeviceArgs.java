@@ -17,62 +17,30 @@ public final class MrScalarTaskEbsBlockDeviceArgs extends com.pulumi.resources.R
 
     public static final MrScalarTaskEbsBlockDeviceArgs Empty = new MrScalarTaskEbsBlockDeviceArgs();
 
-    /**
-     * IOPS for the volume. Required in some volume types, such as io1.
-     * 
-     */
     @Import(name="iops")
     private @Nullable Output<Integer> iops;
 
-    /**
-     * @return IOPS for the volume. Required in some volume types, such as io1.
-     * 
-     */
     public Optional<Output<Integer>> iops() {
         return Optional.ofNullable(this.iops);
     }
 
-    /**
-     * Size of the volume, in GBs.
-     * 
-     */
     @Import(name="sizeInGb", required=true)
     private Output<Integer> sizeInGb;
 
-    /**
-     * @return Size of the volume, in GBs.
-     * 
-     */
     public Output<Integer> sizeInGb() {
         return this.sizeInGb;
     }
 
-    /**
-     * volume type. Allowed values are &#39;gp2&#39;, &#39;io1&#39; and others.
-     * 
-     */
     @Import(name="volumeType", required=true)
     private Output<String> volumeType;
 
-    /**
-     * @return volume type. Allowed values are &#39;gp2&#39;, &#39;io1&#39; and others.
-     * 
-     */
     public Output<String> volumeType() {
         return this.volumeType;
     }
 
-    /**
-     * Amount of volumes per instance in the core group.
-     * 
-     */
     @Import(name="volumesPerInstance")
     private @Nullable Output<Integer> volumesPerInstance;
 
-    /**
-     * @return Amount of volumes per instance in the core group.
-     * 
-     */
     public Optional<Output<Integer>> volumesPerInstance() {
         return Optional.ofNullable(this.volumesPerInstance);
     }
@@ -104,86 +72,38 @@ public final class MrScalarTaskEbsBlockDeviceArgs extends com.pulumi.resources.R
             $ = new MrScalarTaskEbsBlockDeviceArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param iops IOPS for the volume. Required in some volume types, such as io1.
-         * 
-         * @return builder
-         * 
-         */
         public Builder iops(@Nullable Output<Integer> iops) {
             $.iops = iops;
             return this;
         }
 
-        /**
-         * @param iops IOPS for the volume. Required in some volume types, such as io1.
-         * 
-         * @return builder
-         * 
-         */
         public Builder iops(Integer iops) {
             return iops(Output.of(iops));
         }
 
-        /**
-         * @param sizeInGb Size of the volume, in GBs.
-         * 
-         * @return builder
-         * 
-         */
         public Builder sizeInGb(Output<Integer> sizeInGb) {
             $.sizeInGb = sizeInGb;
             return this;
         }
 
-        /**
-         * @param sizeInGb Size of the volume, in GBs.
-         * 
-         * @return builder
-         * 
-         */
         public Builder sizeInGb(Integer sizeInGb) {
             return sizeInGb(Output.of(sizeInGb));
         }
 
-        /**
-         * @param volumeType volume type. Allowed values are &#39;gp2&#39;, &#39;io1&#39; and others.
-         * 
-         * @return builder
-         * 
-         */
         public Builder volumeType(Output<String> volumeType) {
             $.volumeType = volumeType;
             return this;
         }
 
-        /**
-         * @param volumeType volume type. Allowed values are &#39;gp2&#39;, &#39;io1&#39; and others.
-         * 
-         * @return builder
-         * 
-         */
         public Builder volumeType(String volumeType) {
             return volumeType(Output.of(volumeType));
         }
 
-        /**
-         * @param volumesPerInstance Amount of volumes per instance in the core group.
-         * 
-         * @return builder
-         * 
-         */
         public Builder volumesPerInstance(@Nullable Output<Integer> volumesPerInstance) {
             $.volumesPerInstance = volumesPerInstance;
             return this;
         }
 
-        /**
-         * @param volumesPerInstance Amount of volumes per instance in the core group.
-         * 
-         * @return builder
-         * 
-         */
         public Builder volumesPerInstance(Integer volumesPerInstance) {
             return volumesPerInstance(Output.of(volumesPerInstance));
         }

@@ -19,7 +19,7 @@ public final class OceanNetwork {
      */
     private @Nullable List<OceanNetworkNetworkInterface> networkInterfaces;
     /**
-     * @return The Resource Group name of the Load Balancer.
+     * @return Vnet resource group name.
      * 
      */
     private @Nullable String resourceGroupName;
@@ -38,7 +38,7 @@ public final class OceanNetwork {
         return this.networkInterfaces == null ? List.of() : this.networkInterfaces;
     }
     /**
-     * @return The Resource Group name of the Load Balancer.
+     * @return Vnet resource group name.
      * 
      */
     public Optional<String> resourceGroupName() {

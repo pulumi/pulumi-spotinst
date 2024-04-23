@@ -14,12 +14,9 @@ namespace Pulumi.SpotInst.Azure.Outputs
     public sealed class OceanNetworkNetworkInterfaceAdditionalIpConfig
     {
         /// <summary>
-        /// Name of the Load Balancer.
+        /// The Ocean cluster name.
         /// </summary>
         public readonly string? Name;
-        /// <summary>
-        /// Supported values: `IPv4`, `IPv6`.
-        /// </summary>
         public readonly string? PrivateIpVersion;
 
         [OutputConstructor]

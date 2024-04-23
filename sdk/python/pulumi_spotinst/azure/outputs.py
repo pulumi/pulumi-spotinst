@@ -172,7 +172,7 @@ class ElastigroupImageCustom(dict):
                  image_name: str,
                  resource_group_name: str):
         """
-        :param str resource_group_name: Name of the Azure Resource Group where the Managed Service Identity is located.
+        :param str resource_group_name: Name of the Resource Group for Elastigroup.
         """
         pulumi.set(__self__, "image_name", image_name)
         pulumi.set(__self__, "resource_group_name", resource_group_name)
@@ -186,7 +186,7 @@ class ElastigroupImageCustom(dict):
     @pulumi.getter(name="resourceGroupName")
     def resource_group_name(self) -> str:
         """
-        Name of the Azure Resource Group where the Managed Service Identity is located.
+        Name of the Resource Group for Elastigroup.
         """
         return pulumi.get(self, "resource_group_name")
 
@@ -402,8 +402,8 @@ class ElastigroupManagedServiceIdentity(dict):
                  name: str,
                  resource_group_name: str):
         """
-        :param str name: Name of the Managed Service Identity.
-        :param str resource_group_name: Name of the Azure Resource Group where the Managed Service Identity is located.
+        :param str name: The group name.
+        :param str resource_group_name: Name of the Resource Group for Elastigroup.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "resource_group_name", resource_group_name)
@@ -412,7 +412,7 @@ class ElastigroupManagedServiceIdentity(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        Name of the Managed Service Identity.
+        The group name.
         """
         return pulumi.get(self, "name")
 
@@ -420,7 +420,7 @@ class ElastigroupManagedServiceIdentity(dict):
     @pulumi.getter(name="resourceGroupName")
     def resource_group_name(self) -> str:
         """
-        Name of the Azure Resource Group where the Managed Service Identity is located.
+        Name of the Resource Group for Elastigroup.
         """
         return pulumi.get(self, "resource_group_name")
 
@@ -459,7 +459,7 @@ class ElastigroupNetwork(dict):
                  additional_ip_configs: Optional[Sequence['outputs.ElastigroupNetworkAdditionalIpConfig']] = None,
                  assign_public_ip: Optional[bool] = None):
         """
-        :param str resource_group_name: Name of the Azure Resource Group where the Managed Service Identity is located.
+        :param str resource_group_name: Name of the Resource Group for Elastigroup.
         """
         pulumi.set(__self__, "resource_group_name", resource_group_name)
         pulumi.set(__self__, "subnet_name", subnet_name)
@@ -473,7 +473,7 @@ class ElastigroupNetwork(dict):
     @pulumi.getter(name="resourceGroupName")
     def resource_group_name(self) -> str:
         """
-        Name of the Azure Resource Group where the Managed Service Identity is located.
+        Name of the Resource Group for Elastigroup.
         """
         return pulumi.get(self, "resource_group_name")
 
@@ -521,7 +521,7 @@ class ElastigroupNetworkAdditionalIpConfig(dict):
                  name: str,
                  private_ip_version: Optional[str] = None):
         """
-        :param str name: Name of the Managed Service Identity.
+        :param str name: The group name.
         """
         pulumi.set(__self__, "name", name)
         if private_ip_version is not None:
@@ -531,7 +531,7 @@ class ElastigroupNetworkAdditionalIpConfig(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        Name of the Managed Service Identity.
+        The group name.
         """
         return pulumi.get(self, "name")
 
@@ -719,8 +719,7 @@ class ElastigroupScalingDownPolicyDimension(dict):
                  name: str,
                  value: Optional[str] = None):
         """
-        :param str name: Name of the Managed Service Identity.
-        :param str value: Tag Value for Vms in Elastigroup.
+        :param str name: The group name.
         """
         pulumi.set(__self__, "name", name)
         if value is not None:
@@ -730,16 +729,13 @@ class ElastigroupScalingDownPolicyDimension(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        Name of the Managed Service Identity.
+        The group name.
         """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def value(self) -> Optional[str]:
-        """
-        Tag Value for Vms in Elastigroup.
-        """
         return pulumi.get(self, "value")
 
 
@@ -921,8 +917,7 @@ class ElastigroupScalingUpPolicyDimension(dict):
                  name: str,
                  value: Optional[str] = None):
         """
-        :param str name: Name of the Managed Service Identity.
-        :param str value: Tag Value for Vms in Elastigroup.
+        :param str name: The group name.
         """
         pulumi.set(__self__, "name", name)
         if value is not None:
@@ -932,16 +927,13 @@ class ElastigroupScalingUpPolicyDimension(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        Name of the Managed Service Identity.
+        The group name.
         """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def value(self) -> Optional[str]:
-        """
-        Tag Value for Vms in Elastigroup.
-        """
         return pulumi.get(self, "value")
 
 
@@ -1298,18 +1290,12 @@ class OceanAutoscalerAutoscaleDown(dict):
 
     def __init__(__self__, *,
                  max_scale_down_percentage: Optional[float] = None):
-        """
-        :param float max_scale_down_percentage: Would represent the maximum % to scale-down.
-        """
         if max_scale_down_percentage is not None:
             pulumi.set(__self__, "max_scale_down_percentage", max_scale_down_percentage)
 
     @property
     @pulumi.getter(name="maxScaleDownPercentage")
     def max_scale_down_percentage(self) -> Optional[float]:
-        """
-        Would represent the maximum % to scale-down.
-        """
         return pulumi.get(self, "max_scale_down_percentage")
 
 
@@ -1317,18 +1303,12 @@ class OceanAutoscalerAutoscaleDown(dict):
 class OceanAutoscalerAutoscaleHeadroom(dict):
     def __init__(__self__, *,
                  automatic: Optional['outputs.OceanAutoscalerAutoscaleHeadroomAutomatic'] = None):
-        """
-        :param 'OceanAutoscalerAutoscaleHeadroomAutomaticArgs' automatic: Automatic headroom configuration.
-        """
         if automatic is not None:
             pulumi.set(__self__, "automatic", automatic)
 
     @property
     @pulumi.getter
     def automatic(self) -> Optional['outputs.OceanAutoscalerAutoscaleHeadroomAutomatic']:
-        """
-        Automatic headroom configuration.
-        """
         return pulumi.get(self, "automatic")
 
 
@@ -1354,10 +1334,6 @@ class OceanAutoscalerAutoscaleHeadroomAutomatic(dict):
     def __init__(__self__, *,
                  is_enabled: Optional[bool] = None,
                  percentage: Optional[int] = None):
-        """
-        :param bool is_enabled: Enable automatic headroom. When set to `true`, Ocean configures and optimizes headroom automatically.
-        :param int percentage: Optionally set a number between 0-100 to control the percentage of total cluster resources dedicated to headroom. Relevant when `isEnabled` is toggled on.
-        """
         if is_enabled is not None:
             pulumi.set(__self__, "is_enabled", is_enabled)
         if percentage is not None:
@@ -1366,17 +1342,11 @@ class OceanAutoscalerAutoscaleHeadroomAutomatic(dict):
     @property
     @pulumi.getter(name="isEnabled")
     def is_enabled(self) -> Optional[bool]:
-        """
-        Enable automatic headroom. When set to `true`, Ocean configures and optimizes headroom automatically.
-        """
         return pulumi.get(self, "is_enabled")
 
     @property
     @pulumi.getter
     def percentage(self) -> Optional[int]:
-        """
-        Optionally set a number between 0-100 to control the percentage of total cluster resources dedicated to headroom. Relevant when `isEnabled` is toggled on.
-        """
         return pulumi.get(self, "percentage")
 
 
@@ -1404,10 +1374,6 @@ class OceanAutoscalerResourceLimits(dict):
     def __init__(__self__, *,
                  max_memory_gib: Optional[int] = None,
                  max_vcpu: Optional[int] = None):
-        """
-        :param int max_memory_gib: The maximum memory in GiB units that can be allocated to the cluster.
-        :param int max_vcpu: The maximum cpu in vCpu units that can be allocated to the cluster.
-        """
         if max_memory_gib is not None:
             pulumi.set(__self__, "max_memory_gib", max_memory_gib)
         if max_vcpu is not None:
@@ -1416,17 +1382,11 @@ class OceanAutoscalerResourceLimits(dict):
     @property
     @pulumi.getter(name="maxMemoryGib")
     def max_memory_gib(self) -> Optional[int]:
-        """
-        The maximum memory in GiB units that can be allocated to the cluster.
-        """
         return pulumi.get(self, "max_memory_gib")
 
     @property
     @pulumi.getter(name="maxVcpu")
     def max_vcpu(self) -> Optional[int]:
-        """
-        The maximum cpu in vCpu units that can be allocated to the cluster.
-        """
         return pulumi.get(self, "max_vcpu")
 
 
@@ -1460,9 +1420,8 @@ class OceanExtension(dict):
         """
         :param str api_version: API version of the extension.
         :param bool minor_version_auto_upgrade: Toggles whether auto upgrades are allowed.
-        :param str name: Name of the Load Balancer.
-        :param str publisher: Image publisher.
-        :param str type: The type of load balancer. Supported value: `loadBalancer`
+        :param str name: Extension name.
+        :param str type: Extension type.
         """
         if api_version is not None:
             pulumi.set(__self__, "api_version", api_version)
@@ -1495,23 +1454,20 @@ class OceanExtension(dict):
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        Name of the Load Balancer.
+        Extension name.
         """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def publisher(self) -> Optional[str]:
-        """
-        Image publisher.
-        """
         return pulumi.get(self, "publisher")
 
     @property
     @pulumi.getter
     def type(self) -> Optional[str]:
         """
-        The type of load balancer. Supported value: `loadBalancer`
+        Extension type.
         """
         return pulumi.get(self, "type")
 
@@ -1578,12 +1534,6 @@ class OceanImageMarketplace(dict):
                  publisher: Optional[str] = None,
                  sku: Optional[str] = None,
                  version: Optional[str] = None):
-        """
-        :param str offer: Image name.
-        :param str publisher: Image publisher.
-        :param str sku: Image Stock Keeping Unit (which is the specific version of the image).
-        :param str version: Image version.
-        """
         if offer is not None:
             pulumi.set(__self__, "offer", offer)
         if publisher is not None:
@@ -1596,33 +1546,21 @@ class OceanImageMarketplace(dict):
     @property
     @pulumi.getter
     def offer(self) -> Optional[str]:
-        """
-        Image name.
-        """
         return pulumi.get(self, "offer")
 
     @property
     @pulumi.getter
     def publisher(self) -> Optional[str]:
-        """
-        Image publisher.
-        """
         return pulumi.get(self, "publisher")
 
     @property
     @pulumi.getter
     def sku(self) -> Optional[str]:
-        """
-        Image Stock Keeping Unit (which is the specific version of the image).
-        """
         return pulumi.get(self, "sku")
 
     @property
     @pulumi.getter
     def version(self) -> Optional[str]:
-        """
-        Image version.
-        """
         return pulumi.get(self, "version")
 
 
@@ -1737,8 +1675,8 @@ class OceanManagedServiceIdentity(dict):
                  name: str,
                  resource_group_name: str):
         """
-        :param str name: Name of the Load Balancer.
-        :param str resource_group_name: The Resource Group name of the Load Balancer.
+        :param str name: Name of the Managed Service Identity.
+        :param str resource_group_name: Name of the Azure Resource Group where the Managed Service Identity is located.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "resource_group_name", resource_group_name)
@@ -1747,7 +1685,7 @@ class OceanManagedServiceIdentity(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        Name of the Load Balancer.
+        Name of the Managed Service Identity.
         """
         return pulumi.get(self, "name")
 
@@ -1755,7 +1693,7 @@ class OceanManagedServiceIdentity(dict):
     @pulumi.getter(name="resourceGroupName")
     def resource_group_name(self) -> str:
         """
-        The Resource Group name of the Load Balancer.
+        Name of the Azure Resource Group where the Managed Service Identity is located.
         """
         return pulumi.get(self, "resource_group_name")
 
@@ -1789,7 +1727,7 @@ class OceanNetwork(dict):
                  virtual_network_name: Optional[str] = None):
         """
         :param Sequence['OceanNetworkNetworkInterfaceArgs'] network_interfaces: A list of virtual network interfaces. The publicIpSku must be identical between all the network interfaces. One network interface must be set as the primary.
-        :param str resource_group_name: The Resource Group name of the Load Balancer.
+        :param str resource_group_name: Vnet resource group name.
         :param str virtual_network_name: Virtual network.
         """
         if network_interfaces is not None:
@@ -1811,7 +1749,7 @@ class OceanNetwork(dict):
     @pulumi.getter(name="resourceGroupName")
     def resource_group_name(self) -> Optional[str]:
         """
-        The Resource Group name of the Load Balancer.
+        Vnet resource group name.
         """
         return pulumi.get(self, "resource_group_name")
 
@@ -1857,12 +1795,6 @@ class OceanNetworkNetworkInterface(dict):
                  is_primary: Optional[bool] = None,
                  security_group: Optional['outputs.OceanNetworkNetworkInterfaceSecurityGroup'] = None,
                  subnet_name: Optional[str] = None):
-        """
-        :param Sequence['OceanNetworkNetworkInterfaceAdditionalIpConfigArgs'] additional_ip_configs: Additional configuration of network interface. The name fields between all the `additional_ip_config` must be unique.
-        :param bool assign_public_ip: Assign public IP.
-        :param bool is_primary: Defines whether the network interface is primary or not.
-        :param str subnet_name: Subnet name.
-        """
         if additional_ip_configs is not None:
             pulumi.set(__self__, "additional_ip_configs", additional_ip_configs)
         if assign_public_ip is not None:
@@ -1877,25 +1809,16 @@ class OceanNetworkNetworkInterface(dict):
     @property
     @pulumi.getter(name="additionalIpConfigs")
     def additional_ip_configs(self) -> Optional[Sequence['outputs.OceanNetworkNetworkInterfaceAdditionalIpConfig']]:
-        """
-        Additional configuration of network interface. The name fields between all the `additional_ip_config` must be unique.
-        """
         return pulumi.get(self, "additional_ip_configs")
 
     @property
     @pulumi.getter(name="assignPublicIp")
     def assign_public_ip(self) -> Optional[bool]:
-        """
-        Assign public IP.
-        """
         return pulumi.get(self, "assign_public_ip")
 
     @property
     @pulumi.getter(name="isPrimary")
     def is_primary(self) -> Optional[bool]:
-        """
-        Defines whether the network interface is primary or not.
-        """
         return pulumi.get(self, "is_primary")
 
     @property
@@ -1906,9 +1829,6 @@ class OceanNetworkNetworkInterface(dict):
     @property
     @pulumi.getter(name="subnetName")
     def subnet_name(self) -> Optional[str]:
-        """
-        Subnet name.
-        """
         return pulumi.get(self, "subnet_name")
 
 
@@ -1935,8 +1855,7 @@ class OceanNetworkNetworkInterfaceAdditionalIpConfig(dict):
                  name: Optional[str] = None,
                  private_ip_version: Optional[str] = None):
         """
-        :param str name: Name of the Load Balancer.
-        :param str private_ip_version: Supported values: `IPv4`, `IPv6`.
+        :param str name: The Ocean cluster name.
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -1947,16 +1866,13 @@ class OceanNetworkNetworkInterfaceAdditionalIpConfig(dict):
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        Name of the Load Balancer.
+        The Ocean cluster name.
         """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="privateIpVersion")
     def private_ip_version(self) -> Optional[str]:
-        """
-        Supported values: `IPv4`, `IPv6`.
-        """
         return pulumi.get(self, "private_ip_version")
 
 
@@ -1983,8 +1899,8 @@ class OceanNetworkNetworkInterfaceSecurityGroup(dict):
                  name: Optional[str] = None,
                  resource_group_name: Optional[str] = None):
         """
-        :param str name: Name of the Load Balancer.
-        :param str resource_group_name: The Resource Group name of the Load Balancer.
+        :param str name: The Ocean cluster name.
+        :param str resource_group_name: Name of the Azure Resource Group into which VMs will be launched. Cannot be updated.
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -1995,7 +1911,7 @@ class OceanNetworkNetworkInterfaceSecurityGroup(dict):
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        Name of the Load Balancer.
+        The Ocean cluster name.
         """
         return pulumi.get(self, "name")
 
@@ -2003,7 +1919,7 @@ class OceanNetworkNetworkInterfaceSecurityGroup(dict):
     @pulumi.getter(name="resourceGroupName")
     def resource_group_name(self) -> Optional[str]:
         """
-        The Resource Group name of the Load Balancer.
+        Name of the Azure Resource Group into which VMs will be launched. Cannot be updated.
         """
         return pulumi.get(self, "resource_group_name")
 
@@ -3110,7 +3026,7 @@ class OceanOsDisk(dict):
                  type: Optional[str] = None):
         """
         :param int size_gb: The size of the OS disk in GB.
-        :param str type: The type of load balancer. Supported value: `loadBalancer`
+        :param str type: The type of the OS disk. Supported values: `Standard_LRS`, `Premium_LRS`, `StandardSSD_LRS`.
         """
         pulumi.set(__self__, "size_gb", size_gb)
         if type is not None:
@@ -3128,7 +3044,7 @@ class OceanOsDisk(dict):
     @pulumi.getter
     def type(self) -> Optional[str]:
         """
-        The type of load balancer. Supported value: `loadBalancer`
+        The type of the OS disk. Supported values: `Standard_LRS`, `Premium_LRS`, `StandardSSD_LRS`.
         """
         return pulumi.get(self, "type")
 
@@ -3290,12 +3206,6 @@ class OceanVirtualNodeGroupAutoscaleAutoscaleHeadroom(dict):
                  cpu_per_unit: Optional[int] = None,
                  gpu_per_unit: Optional[int] = None,
                  memory_per_unit: Optional[int] = None):
-        """
-        :param int num_of_units: The number of headroom units to maintain, where each unit has the defined CPU, memory and GPU.
-        :param int cpu_per_unit: Configure the number of CPUs to allocate for the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
-        :param int gpu_per_unit: How many GPU cores should be allocated for headroom unit.
-        :param int memory_per_unit: Configure the amount of memory (MiB) to allocate the headroom.
-        """
         pulumi.set(__self__, "num_of_units", num_of_units)
         if cpu_per_unit is not None:
             pulumi.set(__self__, "cpu_per_unit", cpu_per_unit)
@@ -3307,33 +3217,21 @@ class OceanVirtualNodeGroupAutoscaleAutoscaleHeadroom(dict):
     @property
     @pulumi.getter(name="numOfUnits")
     def num_of_units(self) -> int:
-        """
-        The number of headroom units to maintain, where each unit has the defined CPU, memory and GPU.
-        """
         return pulumi.get(self, "num_of_units")
 
     @property
     @pulumi.getter(name="cpuPerUnit")
     def cpu_per_unit(self) -> Optional[int]:
-        """
-        Configure the number of CPUs to allocate for the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.
-        """
         return pulumi.get(self, "cpu_per_unit")
 
     @property
     @pulumi.getter(name="gpuPerUnit")
     def gpu_per_unit(self) -> Optional[int]:
-        """
-        How many GPU cores should be allocated for headroom unit.
-        """
         return pulumi.get(self, "gpu_per_unit")
 
     @property
     @pulumi.getter(name="memoryPerUnit")
     def memory_per_unit(self) -> Optional[int]:
-        """
-        Configure the amount of memory (MiB) to allocate the headroom.
-        """
         return pulumi.get(self, "memory_per_unit")
 
 
@@ -3343,8 +3241,8 @@ class OceanVirtualNodeGroupLabel(dict):
                  key: str,
                  value: Optional[str] = None):
         """
-        :param str key: Tag Key for Vms in the cluster.
-        :param str value: Tag Value for VMs in the cluster.
+        :param str key: The label key.
+        :param str value: The label value.
         """
         pulumi.set(__self__, "key", key)
         if value is not None:
@@ -3354,7 +3252,7 @@ class OceanVirtualNodeGroupLabel(dict):
     @pulumi.getter
     def key(self) -> str:
         """
-        Tag Key for Vms in the cluster.
+        The label key.
         """
         return pulumi.get(self, "key")
 
@@ -3362,7 +3260,7 @@ class OceanVirtualNodeGroupLabel(dict):
     @pulumi.getter
     def value(self) -> Optional[str]:
         """
-        Tag Value for VMs in the cluster.
+        The label value.
         """
         return pulumi.get(self, "value")
 
@@ -3454,11 +3352,6 @@ class OceanVirtualNodeGroupLaunchSpecificationOsDisk(dict):
                  size_gb: int,
                  type: Optional[str] = None,
                  utilize_ephemeral_storage: Optional[bool] = None):
-        """
-        :param int size_gb: The size of the OS disk in GB, Required if dataDisks is specified.
-        :param str type: The type of the OS disk. Valid values: `"Standard_LRS"`, `"Premium_LRS"`, `"StandardSSD_LRS"`.
-        :param bool utilize_ephemeral_storage: Flag to enable/disable the Ephemeral OS Disk utilization.
-        """
         pulumi.set(__self__, "size_gb", size_gb)
         if type is not None:
             pulumi.set(__self__, "type", type)
@@ -3468,25 +3361,16 @@ class OceanVirtualNodeGroupLaunchSpecificationOsDisk(dict):
     @property
     @pulumi.getter(name="sizeGb")
     def size_gb(self) -> int:
-        """
-        The size of the OS disk in GB, Required if dataDisks is specified.
-        """
         return pulumi.get(self, "size_gb")
 
     @property
     @pulumi.getter
     def type(self) -> Optional[str]:
-        """
-        The type of the OS disk. Valid values: `"Standard_LRS"`, `"Premium_LRS"`, `"StandardSSD_LRS"`.
-        """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter(name="utilizeEphemeralStorage")
     def utilize_ephemeral_storage(self) -> Optional[bool]:
-        """
-        Flag to enable/disable the Ephemeral OS Disk utilization.
-        """
         return pulumi.get(self, "utilize_ephemeral_storage")
 
 
@@ -3495,10 +3379,6 @@ class OceanVirtualNodeGroupLaunchSpecificationTag(dict):
     def __init__(__self__, *,
                  key: Optional[str] = None,
                  value: Optional[str] = None):
-        """
-        :param str key: Tag Key for Vms in the cluster.
-        :param str value: Tag Value for VMs in the cluster.
-        """
         if key is not None:
             pulumi.set(__self__, "key", key)
         if value is not None:
@@ -3507,17 +3387,11 @@ class OceanVirtualNodeGroupLaunchSpecificationTag(dict):
     @property
     @pulumi.getter
     def key(self) -> Optional[str]:
-        """
-        Tag Key for Vms in the cluster.
-        """
         return pulumi.get(self, "key")
 
     @property
     @pulumi.getter
     def value(self) -> Optional[str]:
-        """
-        Tag Value for VMs in the cluster.
-        """
         return pulumi.get(self, "value")
 
 
@@ -3565,8 +3439,8 @@ class OceanVirtualNodeGroupTaint(dict):
                  value: str):
         """
         :param str effect: The effect of the taint. Valid values: `"NoSchedule"`, `"PreferNoSchedule"`, `"NoExecute"`, `"PreferNoExecute"`.
-        :param str key: Tag Key for Vms in the cluster.
-        :param str value: Tag Value for VMs in the cluster.
+        :param str key: The taint key.
+        :param str value: The taint value.
         """
         pulumi.set(__self__, "effect", effect)
         pulumi.set(__self__, "key", key)
@@ -3584,7 +3458,7 @@ class OceanVirtualNodeGroupTaint(dict):
     @pulumi.getter
     def key(self) -> str:
         """
-        Tag Key for Vms in the cluster.
+        The taint key.
         """
         return pulumi.get(self, "key")
 
@@ -3592,7 +3466,7 @@ class OceanVirtualNodeGroupTaint(dict):
     @pulumi.getter
     def value(self) -> str:
         """
-        Tag Value for VMs in the cluster.
+        The taint value.
         """
         return pulumi.get(self, "value")
 

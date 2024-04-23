@@ -17,14 +17,14 @@ public final class ElastigroupNetworkAdditionalIpConfigArgs extends com.pulumi.r
     public static final ElastigroupNetworkAdditionalIpConfigArgs Empty = new ElastigroupNetworkAdditionalIpConfigArgs();
 
     /**
-     * Name of the Managed Service Identity.
+     * The group name.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return Name of the Managed Service Identity.
+     * @return The group name.
      * 
      */
     public Output<String> name() {
@@ -64,7 +64,7 @@ public final class ElastigroupNetworkAdditionalIpConfigArgs extends com.pulumi.r
         }
 
         /**
-         * @param name Name of the Managed Service Identity.
+         * @param name The group name.
          * 
          * @return builder
          * 
@@ -75,7 +75,7 @@ public final class ElastigroupNetworkAdditionalIpConfigArgs extends com.pulumi.r
         }
 
         /**
-         * @param name Name of the Managed Service Identity.
+         * @param name The group name.
          * 
          * @return builder
          * 

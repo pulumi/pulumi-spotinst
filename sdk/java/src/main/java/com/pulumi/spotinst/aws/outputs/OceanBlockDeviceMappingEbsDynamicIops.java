@@ -11,33 +11,17 @@ import java.util.Objects;
 
 @CustomType
 public final class OceanBlockDeviceMappingEbsDynamicIops {
-    /**
-     * @return Initial size for IOPS.
-     * 
-     */
     private Integer baseSize;
     private String resource;
-    /**
-     * @return Additional size per resource unit (in IOPS). (Example: `baseSize=50`, `sizePerResourceUnit=20`, and an instance with 2 CPU is launched; its IOPS size will be: 90).
-     * 
-     */
     private Integer sizePerResourceUnit;
 
     private OceanBlockDeviceMappingEbsDynamicIops() {}
-    /**
-     * @return Initial size for IOPS.
-     * 
-     */
     public Integer baseSize() {
         return this.baseSize;
     }
     public String resource() {
         return this.resource;
     }
-    /**
-     * @return Additional size per resource unit (in IOPS). (Example: `baseSize=50`, `sizePerResourceUnit=20`, and an instance with 2 CPU is launched; its IOPS size will be: 90).
-     * 
-     */
     public Integer sizePerResourceUnit() {
         return this.sizePerResourceUnit;
     }

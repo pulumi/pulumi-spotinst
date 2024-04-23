@@ -16,221 +16,77 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class MrScalarCoreScalingUpPolicy {
-    /**
-     * @return The type of action to perform. Allowed values are : &#39;adjustment&#39;, &#39;setMinTarget&#39;, &#39;setMaxTarget&#39;, &#39;updateCapacity&#39;, &#39;percentageAdjustment&#39;
-     * 
-     */
     private @Nullable String actionType;
-    /**
-     * @return The number of instances to add/remove to/from the target capacity when scale is needed.
-     * 
-     */
     private @Nullable String adjustment;
-    /**
-     * @return The amount of time, in seconds, after a scaling activity completes and before the next scaling activity can start.
-     * 
-     */
     private @Nullable Integer cooldown;
-    /**
-     * @return A mapping of dimensions describing qualities of the metric.
-     * 
-     */
     private @Nullable Map<String,Object> dimensions;
-    /**
-     * @return The number of periods over which data is compared to the specified threshold.
-     * 
-     */
     private @Nullable Integer evaluationPeriods;
-    /**
-     * @return Max target capacity for scale down.
-     * 
-     */
     private @Nullable String maxTargetCapacity;
-    /**
-     * @return The maximum to set when scale is needed.
-     * 
-     */
     private @Nullable String maximum;
-    /**
-     * @return The name of the metric in CloudWatch which the statement will be based on.
-     * 
-     */
     private String metricName;
-    /**
-     * @return Min target capacity for scale up.
-     * 
-     */
     private @Nullable String minTargetCapacity;
-    /**
-     * @return The minimum to set when scale is needed.
-     * 
-     */
     private @Nullable String minimum;
-    /**
-     * @return Must contain the value: `AWS/ElasticMapReduce`.
-     * 
-     */
     private String namespace;
-    /**
-     * @return The operator to use in order to determine if the policy is applicable. Valid values: `gt` | `gte` | `lt` | `lte`
-     * 
-     */
     private @Nullable String operator;
-    /**
-     * @return The time window in seconds over which the statistic is applied.
-     * 
-     */
     private @Nullable Integer period;
-    /**
-     * @return The name of the policy.
-     * 
-     */
     private String policyName;
-    /**
-     * @return The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`
-     * 
-     */
     private @Nullable String statistic;
-    /**
-     * @return The number of instances to set when scale is needed.
-     * 
-     */
     private @Nullable String target;
-    /**
-     * @return The value that the specified statistic is compared to.
-     * 
-     */
     private Double threshold;
-    /**
-     * @return The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`
-     * 
-     */
     private String unit;
 
     private MrScalarCoreScalingUpPolicy() {}
-    /**
-     * @return The type of action to perform. Allowed values are : &#39;adjustment&#39;, &#39;setMinTarget&#39;, &#39;setMaxTarget&#39;, &#39;updateCapacity&#39;, &#39;percentageAdjustment&#39;
-     * 
-     */
     public Optional<String> actionType() {
         return Optional.ofNullable(this.actionType);
     }
-    /**
-     * @return The number of instances to add/remove to/from the target capacity when scale is needed.
-     * 
-     */
     public Optional<String> adjustment() {
         return Optional.ofNullable(this.adjustment);
     }
-    /**
-     * @return The amount of time, in seconds, after a scaling activity completes and before the next scaling activity can start.
-     * 
-     */
     public Optional<Integer> cooldown() {
         return Optional.ofNullable(this.cooldown);
     }
-    /**
-     * @return A mapping of dimensions describing qualities of the metric.
-     * 
-     */
     public Map<String,Object> dimensions() {
         return this.dimensions == null ? Map.of() : this.dimensions;
     }
-    /**
-     * @return The number of periods over which data is compared to the specified threshold.
-     * 
-     */
     public Optional<Integer> evaluationPeriods() {
         return Optional.ofNullable(this.evaluationPeriods);
     }
-    /**
-     * @return Max target capacity for scale down.
-     * 
-     */
     public Optional<String> maxTargetCapacity() {
         return Optional.ofNullable(this.maxTargetCapacity);
     }
-    /**
-     * @return The maximum to set when scale is needed.
-     * 
-     */
     public Optional<String> maximum() {
         return Optional.ofNullable(this.maximum);
     }
-    /**
-     * @return The name of the metric in CloudWatch which the statement will be based on.
-     * 
-     */
     public String metricName() {
         return this.metricName;
     }
-    /**
-     * @return Min target capacity for scale up.
-     * 
-     */
     public Optional<String> minTargetCapacity() {
         return Optional.ofNullable(this.minTargetCapacity);
     }
-    /**
-     * @return The minimum to set when scale is needed.
-     * 
-     */
     public Optional<String> minimum() {
         return Optional.ofNullable(this.minimum);
     }
-    /**
-     * @return Must contain the value: `AWS/ElasticMapReduce`.
-     * 
-     */
     public String namespace() {
         return this.namespace;
     }
-    /**
-     * @return The operator to use in order to determine if the policy is applicable. Valid values: `gt` | `gte` | `lt` | `lte`
-     * 
-     */
     public Optional<String> operator() {
         return Optional.ofNullable(this.operator);
     }
-    /**
-     * @return The time window in seconds over which the statistic is applied.
-     * 
-     */
     public Optional<Integer> period() {
         return Optional.ofNullable(this.period);
     }
-    /**
-     * @return The name of the policy.
-     * 
-     */
     public String policyName() {
         return this.policyName;
     }
-    /**
-     * @return The aggregation method of the given metric. Valid Values: `average` | `sum` | `sampleCount` | `maximum` | `minimum`
-     * 
-     */
     public Optional<String> statistic() {
         return Optional.ofNullable(this.statistic);
     }
-    /**
-     * @return The number of instances to set when scale is needed.
-     * 
-     */
     public Optional<String> target() {
         return Optional.ofNullable(this.target);
     }
-    /**
-     * @return The value that the specified statistic is compared to.
-     * 
-     */
     public Double threshold() {
         return this.threshold;
     }
-    /**
-     * @return The unit for a given metric. Valid Values: `seconds` | `microseconds` | `milliseconds` | `bytes` | `kilobytes` | `megabytes` | `gigabytes` | `terabytes` | `bits` | `kilobits` | `megabits` | `gigabits` | `terabits` | `percent` | `count` | `bytes/second` | `kilobytes/second` | `megabytes/second` | `gigabytes/second` | `terabytes/second` | `bits/second` | `kilobits/second` | `megabits/second` | `gigabits/second` | `terabits/second` | `count/second` | `none`
-     * 
-     */
     public String unit() {
         return this.unit;
     }

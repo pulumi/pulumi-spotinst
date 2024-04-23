@@ -18,11 +18,11 @@ namespace Pulumi.SpotInst.Gke.Outputs
         /// </summary>
         public readonly string? Effect;
         /// <summary>
-        /// The label key.
+        /// The taint key.
         /// </summary>
         public readonly string? Key;
         /// <summary>
-        /// The label value.
+        /// The taint value.
         /// </summary>
         public readonly string? Value;
 

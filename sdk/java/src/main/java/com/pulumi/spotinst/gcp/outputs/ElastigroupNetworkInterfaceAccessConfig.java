@@ -16,10 +16,6 @@ public final class ElastigroupNetworkInterfaceAccessConfig {
      * 
      */
     private @Nullable String name;
-    /**
-     * @return Specifies the type of disk, either SCRATCH or PERSISTENT.
-     * 
-     */
     private @Nullable String type;
 
     private ElastigroupNetworkInterfaceAccessConfig() {}
@@ -30,10 +26,6 @@ public final class ElastigroupNetworkInterfaceAccessConfig {
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
-    /**
-     * @return Specifies the type of disk, either SCRATCH or PERSISTENT.
-     * 
-     */
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }

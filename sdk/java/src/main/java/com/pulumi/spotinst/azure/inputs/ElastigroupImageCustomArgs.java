@@ -22,14 +22,14 @@ public final class ElastigroupImageCustomArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * Name of the Azure Resource Group where the Managed Service Identity is located.
+     * Name of the Resource Group for Elastigroup.
      * 
      */
     @Import(name="resourceGroupName", required=true)
     private Output<String> resourceGroupName;
 
     /**
-     * @return Name of the Azure Resource Group where the Managed Service Identity is located.
+     * @return Name of the Resource Group for Elastigroup.
      * 
      */
     public Output<String> resourceGroupName() {
@@ -71,7 +71,7 @@ public final class ElastigroupImageCustomArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param resourceGroupName Name of the Azure Resource Group where the Managed Service Identity is located.
+         * @param resourceGroupName Name of the Resource Group for Elastigroup.
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class ElastigroupImageCustomArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param resourceGroupName Name of the Azure Resource Group where the Managed Service Identity is located.
+         * @param resourceGroupName Name of the Resource Group for Elastigroup.
          * 
          * @return builder
          * 

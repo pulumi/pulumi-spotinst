@@ -12,27 +12,15 @@ namespace Pulumi.SpotInst.Aws.Inputs
 
     public sealed class ElastigroupUpdatePolicyGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Enables updates to tags without rolling the group when set to `true`.
-        /// </summary>
         [Input("autoApplyTags")]
         public Input<bool>? AutoApplyTags { get; set; }
 
-        /// <summary>
-        /// While used, you can control whether the group should perform a deployment after an update to the configuration.
-        /// </summary>
         [Input("rollConfig")]
         public Input<Inputs.ElastigroupUpdatePolicyRollConfigGetArgs>? RollConfig { get; set; }
 
-        /// <summary>
-        /// This will apply resuming action for Stateful instances in the Elastigroup upon scale up or capacity changes. Example usage will be for Elastigroups that will have scheduling rules to set a target capacity of 0 instances in the night and automatically restore the same state of the instances in the morning.
-        /// </summary>
         [Input("shouldResumeStateful", required: true)]
         public Input<bool> ShouldResumeStateful { get; set; } = null!;
 
-        /// <summary>
-        /// Sets the enablement of the roll option.
-        /// </summary>
         [Input("shouldRoll", required: true)]
         public Input<bool> ShouldRoll { get; set; } = null!;
 

@@ -43,12 +43,6 @@ class PolicyPolicyContentStatement(dict):
                  actions: Sequence[str],
                  effect: str,
                  resources: Sequence[str]):
-        """
-        :param Sequence[str] actions: Set a list of required actions for this permissions statement.
-               Full list of actions can be found in [https://docs.spot.io/account-user-management/user-management/access-policies-actions/](https://docs.spot.io/account-user-management/user-management/access-policies-actions/).
-        :param str effect: Valid values "ALLOW", "DENY".
-        :param Sequence[str] resources: Set a list of resources IDs. In order to include all resources in this statement - use "*".
-        """
         pulumi.set(__self__, "actions", actions)
         pulumi.set(__self__, "effect", effect)
         pulumi.set(__self__, "resources", resources)
@@ -56,26 +50,16 @@ class PolicyPolicyContentStatement(dict):
     @property
     @pulumi.getter
     def actions(self) -> Sequence[str]:
-        """
-        Set a list of required actions for this permissions statement.
-        Full list of actions can be found in [https://docs.spot.io/account-user-management/user-management/access-policies-actions/](https://docs.spot.io/account-user-management/user-management/access-policies-actions/).
-        """
         return pulumi.get(self, "actions")
 
     @property
     @pulumi.getter
     def effect(self) -> str:
-        """
-        Valid values "ALLOW", "DENY".
-        """
         return pulumi.get(self, "effect")
 
     @property
     @pulumi.getter
     def resources(self) -> Sequence[str]:
-        """
-        Set a list of resources IDs. In order to include all resources in this statement - use "*".
-        """
         return pulumi.get(self, "resources")
 
 

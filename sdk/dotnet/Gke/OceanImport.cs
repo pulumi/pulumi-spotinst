@@ -14,7 +14,6 @@ namespace Pulumi.SpotInst.Gke
     /// 
     /// ## Example Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -68,14 +67,10 @@ namespace Pulumi.SpotInst.Gke
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [SpotInstResourceType("spotinst:gke/oceanImport:OceanImport")]
     public partial class OceanImport : global::Pulumi.CustomResource
     {
-        /// <summary>
-        /// The Ocean Kubernetes Autoscaler object.
-        /// </summary>
         [Output("autoscaler")]
         public Output<Outputs.OceanImportAutoscaler> Autoscaler { get; private set; } = null!;
 
@@ -136,9 +131,6 @@ namespace Pulumi.SpotInst.Gke
         [Output("rootVolumeType")]
         public Output<string?> RootVolumeType { get; private set; } = null!;
 
-        /// <summary>
-        /// Set scheduling object.
-        /// </summary>
         [Output("scheduledTasks")]
         public Output<ImmutableArray<Outputs.OceanImportScheduledTask>> ScheduledTasks { get; private set; } = null!;
 
@@ -212,9 +204,6 @@ namespace Pulumi.SpotInst.Gke
 
     public sealed class OceanImportArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The Ocean Kubernetes Autoscaler object.
-        /// </summary>
         [Input("autoscaler")]
         public Input<Inputs.OceanImportAutoscalerArgs>? Autoscaler { get; set; }
 
@@ -286,10 +275,6 @@ namespace Pulumi.SpotInst.Gke
 
         [Input("scheduledTasks")]
         private InputList<Inputs.OceanImportScheduledTaskArgs>? _scheduledTasks;
-
-        /// <summary>
-        /// Set scheduling object.
-        /// </summary>
         public InputList<Inputs.OceanImportScheduledTaskArgs> ScheduledTasks
         {
             get => _scheduledTasks ?? (_scheduledTasks = new InputList<Inputs.OceanImportScheduledTaskArgs>());
@@ -339,9 +324,6 @@ namespace Pulumi.SpotInst.Gke
 
     public sealed class OceanImportState : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The Ocean Kubernetes Autoscaler object.
-        /// </summary>
         [Input("autoscaler")]
         public Input<Inputs.OceanImportAutoscalerGetArgs>? Autoscaler { get; set; }
 
@@ -416,10 +398,6 @@ namespace Pulumi.SpotInst.Gke
 
         [Input("scheduledTasks")]
         private InputList<Inputs.OceanImportScheduledTaskGetArgs>? _scheduledTasks;
-
-        /// <summary>
-        /// Set scheduling object.
-        /// </summary>
         public InputList<Inputs.OceanImportScheduledTaskGetArgs> ScheduledTasks
         {
             get => _scheduledTasks ?? (_scheduledTasks = new InputList<Inputs.OceanImportScheduledTaskGetArgs>());

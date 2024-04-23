@@ -11,26 +11,26 @@ import java.util.Objects;
 @CustomType
 public final class ElastigroupManagedServiceIdentity {
     /**
-     * @return Name of the Managed Service Identity.
+     * @return The group name.
      * 
      */
     private String name;
     /**
-     * @return Name of the Azure Resource Group where the Managed Service Identity is located.
+     * @return Name of the Resource Group for Elastigroup.
      * 
      */
     private String resourceGroupName;
 
     private ElastigroupManagedServiceIdentity() {}
     /**
-     * @return Name of the Managed Service Identity.
+     * @return The group name.
      * 
      */
     public String name() {
         return this.name;
     }
     /**
-     * @return Name of the Azure Resource Group where the Managed Service Identity is located.
+     * @return Name of the Resource Group for Elastigroup.
      * 
      */
     public String resourceGroupName() {

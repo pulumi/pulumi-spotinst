@@ -11,17 +11,9 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ElastigroupIntegrationNomadAutoscaleDown {
-    /**
-     * @return The number of periods over which data is compared to the specified threshold.
-     * 
-     */
     private @Nullable Integer evaluationPeriods;
 
     private ElastigroupIntegrationNomadAutoscaleDown() {}
-    /**
-     * @return The number of periods over which data is compared to the specified threshold.
-     * 
-     */
     public Optional<Integer> evaluationPeriods() {
         return Optional.ofNullable(this.evaluationPeriods);
     }

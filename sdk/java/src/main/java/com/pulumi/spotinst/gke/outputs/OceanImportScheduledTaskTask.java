@@ -14,47 +14,21 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class OceanImportScheduledTaskTask {
-    /**
-     * @return A valid cron expression. For example : &#34; * * * * * &#34;.The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of ‘frequency’ or ‘cronExpression’ should be used at a time. Required for cluster.scheduling.tasks object
-     * Example: 0 1 * * *
-     * 
-     */
     private String cronExpression;
-    /**
-     * @return Enable the Ocean Kubernetes Autoscaler.
-     * 
-     */
     private Boolean isEnabled;
     private @Nullable OceanImportScheduledTaskTaskTaskParameters taskParameters;
-    /**
-     * @return Valid values: &#34;clusterRoll&#34;. Required for cluster.scheduling.tasks object.
-     * 
-     */
     private String taskType;
 
     private OceanImportScheduledTaskTask() {}
-    /**
-     * @return A valid cron expression. For example : &#34; * * * * * &#34;.The cron is running in UTC time zone and is in Unix cron format Cron Expression Validator Script. Only one of ‘frequency’ or ‘cronExpression’ should be used at a time. Required for cluster.scheduling.tasks object
-     * Example: 0 1 * * *
-     * 
-     */
     public String cronExpression() {
         return this.cronExpression;
     }
-    /**
-     * @return Enable the Ocean Kubernetes Autoscaler.
-     * 
-     */
     public Boolean isEnabled() {
         return this.isEnabled;
     }
     public Optional<OceanImportScheduledTaskTaskTaskParameters> taskParameters() {
         return Optional.ofNullable(this.taskParameters);
     }
-    /**
-     * @return Valid values: &#34;clusterRoll&#34;. Required for cluster.scheduling.tasks object.
-     * 
-     */
     public String taskType() {
         return this.taskType;
     }

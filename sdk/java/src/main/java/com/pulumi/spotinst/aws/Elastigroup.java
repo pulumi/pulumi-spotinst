@@ -235,17 +235,9 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
     public Output<Optional<List<String>>> availabilityZones() {
         return Codegen.optional(this.availabilityZones);
     }
-    /**
-     * String, determine the way we attach the data volumes to the data devices, possible values: `&#34;reattach&#34;` and `&#34;onLaunch&#34;` (default is onLaunch).
-     * 
-     */
     @Export(name="blockDevicesMode", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> blockDevicesMode;
 
-    /**
-     * @return String, determine the way we attach the data volumes to the data devices, possible values: `&#34;reattach&#34;` and `&#34;onLaunch&#34;` (default is onLaunch).
-     * 
-     */
     public Output<Optional<String>> blockDevicesMode() {
         return Codegen.optional(this.blockDevicesMode);
     }
@@ -373,17 +365,9 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
     public Output<Optional<List<String>>> elasticIps() {
         return Codegen.optional(this.elasticIps);
     }
-    /**
-     * List of Elastic Load Balancers names (ELB).
-     * 
-     */
     @Export(name="elasticLoadBalancers", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> elasticLoadBalancers;
 
-    /**
-     * @return List of Elastic Load Balancers names (ELB).
-     * 
-     */
     public Output<Optional<List<String>>> elasticLoadBalancers() {
         return Codegen.optional(this.elasticLoadBalancers);
     }
@@ -569,143 +553,63 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
     public Output<Optional<List<ElastigroupInstanceTypesWeight>>> instanceTypesWeights() {
         return Codegen.optional(this.instanceTypesWeights);
     }
-    /**
-     * Describes the Beanstalk integration.
-     * 
-     */
     @Export(name="integrationBeanstalk", refs={ElastigroupIntegrationBeanstalk.class}, tree="[0]")
     private Output</* @Nullable */ ElastigroupIntegrationBeanstalk> integrationBeanstalk;
 
-    /**
-     * @return Describes the Beanstalk integration.
-     * 
-     */
     public Output<Optional<ElastigroupIntegrationBeanstalk>> integrationBeanstalk() {
         return Codegen.optional(this.integrationBeanstalk);
     }
-    /**
-     * Describes the [Code Deploy](https://aws.amazon.com/documentation/codedeploy/?id=docs_gateway) integration.
-     * 
-     */
     @Export(name="integrationCodedeploy", refs={ElastigroupIntegrationCodedeploy.class}, tree="[0]")
     private Output</* @Nullable */ ElastigroupIntegrationCodedeploy> integrationCodedeploy;
 
-    /**
-     * @return Describes the [Code Deploy](https://aws.amazon.com/documentation/codedeploy/?id=docs_gateway) integration.
-     * 
-     */
     public Output<Optional<ElastigroupIntegrationCodedeploy>> integrationCodedeploy() {
         return Codegen.optional(this.integrationCodedeploy);
     }
-    /**
-     * Describes the [Docker Swarm](https://api.spotinst.com/integration-docs/elastigroup/container-management/docker-swarm/docker-swarm-integration/) integration.
-     * 
-     */
     @Export(name="integrationDockerSwarm", refs={ElastigroupIntegrationDockerSwarm.class}, tree="[0]")
     private Output</* @Nullable */ ElastigroupIntegrationDockerSwarm> integrationDockerSwarm;
 
-    /**
-     * @return Describes the [Docker Swarm](https://api.spotinst.com/integration-docs/elastigroup/container-management/docker-swarm/docker-swarm-integration/) integration.
-     * 
-     */
     public Output<Optional<ElastigroupIntegrationDockerSwarm>> integrationDockerSwarm() {
         return Codegen.optional(this.integrationDockerSwarm);
     }
-    /**
-     * Describes the [EC2 Container Service](https://aws.amazon.com/documentation/ecs/?id=docs_gateway) integration.
-     * 
-     */
     @Export(name="integrationEcs", refs={ElastigroupIntegrationEcs.class}, tree="[0]")
     private Output</* @Nullable */ ElastigroupIntegrationEcs> integrationEcs;
 
-    /**
-     * @return Describes the [EC2 Container Service](https://aws.amazon.com/documentation/ecs/?id=docs_gateway) integration.
-     * 
-     */
     public Output<Optional<ElastigroupIntegrationEcs>> integrationEcs() {
         return Codegen.optional(this.integrationEcs);
     }
-    /**
-     * Describes the [Gitlab](https://api.spotinst.com/integration-docs/gitlab/) integration.
-     * 
-     */
     @Export(name="integrationGitlab", refs={ElastigroupIntegrationGitlab.class}, tree="[0]")
     private Output</* @Nullable */ ElastigroupIntegrationGitlab> integrationGitlab;
 
-    /**
-     * @return Describes the [Gitlab](https://api.spotinst.com/integration-docs/gitlab/) integration.
-     * 
-     */
     public Output<Optional<ElastigroupIntegrationGitlab>> integrationGitlab() {
         return Codegen.optional(this.integrationGitlab);
     }
-    /**
-     * Describes the [Kubernetes](https://kubernetes.io/) integration.
-     * 
-     */
     @Export(name="integrationKubernetes", refs={ElastigroupIntegrationKubernetes.class}, tree="[0]")
     private Output</* @Nullable */ ElastigroupIntegrationKubernetes> integrationKubernetes;
 
-    /**
-     * @return Describes the [Kubernetes](https://kubernetes.io/) integration.
-     * 
-     */
     public Output<Optional<ElastigroupIntegrationKubernetes>> integrationKubernetes() {
         return Codegen.optional(this.integrationKubernetes);
     }
-    /**
-     * Describes the [Mesosphere](https://mesosphere.com/) integration.
-     * 
-     */
     @Export(name="integrationMesosphere", refs={ElastigroupIntegrationMesosphere.class}, tree="[0]")
     private Output</* @Nullable */ ElastigroupIntegrationMesosphere> integrationMesosphere;
 
-    /**
-     * @return Describes the [Mesosphere](https://mesosphere.com/) integration.
-     * 
-     */
     public Output<Optional<ElastigroupIntegrationMesosphere>> integrationMesosphere() {
         return Codegen.optional(this.integrationMesosphere);
     }
-    /**
-     * Describes the [Nomad](https://www.nomadproject.io/) integration.
-     * 
-     */
     @Export(name="integrationNomad", refs={ElastigroupIntegrationNomad.class}, tree="[0]")
     private Output</* @Nullable */ ElastigroupIntegrationNomad> integrationNomad;
 
-    /**
-     * @return Describes the [Nomad](https://www.nomadproject.io/) integration.
-     * 
-     */
     public Output<Optional<ElastigroupIntegrationNomad>> integrationNomad() {
         return Codegen.optional(this.integrationNomad);
     }
-    /**
-     * Describes the [Rancher](http://rancherlabs.com/) integration.
-     * 
-     */
     @Export(name="integrationRancher", refs={ElastigroupIntegrationRancher.class}, tree="[0]")
     private Output</* @Nullable */ ElastigroupIntegrationRancher> integrationRancher;
 
-    /**
-     * @return Describes the [Rancher](http://rancherlabs.com/) integration.
-     * 
-     */
     public Output<Optional<ElastigroupIntegrationRancher>> integrationRancher() {
         return Codegen.optional(this.integrationRancher);
     }
-    /**
-     * Describes the [Route53](https://aws.amazon.com/documentation/route53/?id=docs_gateway) integration.
-     * 
-     */
     @Export(name="integrationRoute53", refs={ElastigroupIntegrationRoute53.class}, tree="[0]")
     private Output</* @Nullable */ ElastigroupIntegrationRoute53> integrationRoute53;
 
-    /**
-     * @return Describes the [Route53](https://aws.amazon.com/documentation/route53/?id=docs_gateway) integration.
-     * 
-     */
     public Output<Optional<ElastigroupIntegrationRoute53>> integrationRoute53() {
         return Codegen.optional(this.integrationRoute53);
     }
@@ -873,45 +777,21 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
     public Output<String> orientation() {
         return this.orientation;
     }
-    /**
-     * Boolean, should the instance maintain its Data volumes.
-     * 
-     */
     @Export(name="persistBlockDevices", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> persistBlockDevices;
 
-    /**
-     * @return Boolean, should the instance maintain its Data volumes.
-     * 
-     */
     public Output<Optional<Boolean>> persistBlockDevices() {
         return Codegen.optional(this.persistBlockDevices);
     }
-    /**
-     * Boolean, should the instance maintain its private IP.
-     * 
-     */
     @Export(name="persistPrivateIp", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> persistPrivateIp;
 
-    /**
-     * @return Boolean, should the instance maintain its private IP.
-     * 
-     */
     public Output<Optional<Boolean>> persistPrivateIp() {
         return Codegen.optional(this.persistPrivateIp);
     }
-    /**
-     * Boolean, should the instance maintain its root device volumes.
-     * 
-     */
     @Export(name="persistRootDevice", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> persistRootDevice;
 
-    /**
-     * @return Boolean, should the instance maintain its root device volumes.
-     * 
-     */
     public Output<Optional<Boolean>> persistRootDevice() {
         return Codegen.optional(this.persistRootDevice);
     }
@@ -945,21 +825,9 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
     public Output<Optional<List<String>>> preferredAvailabilityZones() {
         return Codegen.optional(this.preferredAvailabilityZones);
     }
-    /**
-     * List of Private IPs to associate to the group instances.(e.g. &#34;172.1.1.0&#34;). Please note: This setting will only apply if persistence.persist_private_ip is set to true.
-     * 
-     * Usage:
-     * 
-     */
     @Export(name="privateIps", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> privateIps;
 
-    /**
-     * @return List of Private IPs to associate to the group instances.(e.g. &#34;172.1.1.0&#34;). Please note: This setting will only apply if persistence.persist_private_ip is set to true.
-     * 
-     * Usage:
-     * 
-     */
     public Output<Optional<List<String>>> privateIps() {
         return Codegen.optional(this.privateIps);
     }
@@ -1165,21 +1033,9 @@ public class Elastigroup extends com.pulumi.resources.CustomResource {
     public Output<Optional<List<ElastigroupTag>>> tags() {
         return Codegen.optional(this.tags);
     }
-    /**
-     * List of Target Group ARNs to register the instances to.
-     * 
-     * Usage:
-     * 
-     */
     @Export(name="targetGroupArns", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> targetGroupArns;
 
-    /**
-     * @return List of Target Group ARNs to register the instances to.
-     * 
-     * Usage:
-     * 
-     */
     public Output<Optional<List<String>>> targetGroupArns() {
         return Codegen.optional(this.targetGroupArns);
     }

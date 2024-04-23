@@ -14,61 +14,33 @@ namespace Pulumi.SpotInst.Aws.Inputs
     {
         [Input("autoscaleAttributes")]
         private InputList<Inputs.ElastigroupIntegrationEcsAutoscaleAttributeArgs>? _autoscaleAttributes;
-
-        /// <summary>
-        /// A key/value mapping of tags to assign to the resource.
-        /// </summary>
         public InputList<Inputs.ElastigroupIntegrationEcsAutoscaleAttributeArgs> AutoscaleAttributes
         {
             get => _autoscaleAttributes ?? (_autoscaleAttributes = new InputList<Inputs.ElastigroupIntegrationEcsAutoscaleAttributeArgs>());
             set => _autoscaleAttributes = value;
         }
 
-        /// <summary>
-        /// The amount of time, in seconds, after a scaling activity completes before any further trigger-related scaling activities can start.
-        /// </summary>
         [Input("autoscaleCooldown")]
         public Input<int>? AutoscaleCooldown { get; set; }
 
-        /// <summary>
-        /// Settings for scale down actions.
-        /// </summary>
         [Input("autoscaleDown")]
         public Input<Inputs.ElastigroupIntegrationEcsAutoscaleDownArgs>? AutoscaleDown { get; set; }
 
-        /// <summary>
-        /// An option to set compute reserve for the cluster.
-        /// </summary>
         [Input("autoscaleHeadroom")]
         public Input<Inputs.ElastigroupIntegrationEcsAutoscaleHeadroomArgs>? AutoscaleHeadroom { get; set; }
 
-        /// <summary>
-        /// Enabling the automatic k8s auto-scaler functionality. For more information please see: [Kubernetes auto scaler](https://api.spotinst.com/integration-docs/elastigroup/container-management/kubernetes/autoscaler/).
-        /// </summary>
         [Input("autoscaleIsAutoConfig")]
         public Input<bool>? AutoscaleIsAutoConfig { get; set; }
 
-        /// <summary>
-        /// Specifies whether the auto scaling feature is enabled.
-        /// </summary>
         [Input("autoscaleIsEnabled")]
         public Input<bool>? AutoscaleIsEnabled { get; set; }
 
-        /// <summary>
-        /// Determines whether to scale down non-service tasks.
-        /// </summary>
         [Input("autoscaleScaleDownNonServiceTasks")]
         public Input<bool>? AutoscaleScaleDownNonServiceTasks { get; set; }
 
-        /// <summary>
-        /// Batch configuration object:
-        /// </summary>
         [Input("batch")]
         public Input<Inputs.ElastigroupIntegrationEcsBatchArgs>? Batch { get; set; }
 
-        /// <summary>
-        /// The name of the EC2 Container Service cluster.
-        /// </summary>
         [Input("clusterName", required: true)]
         public Input<string> ClusterName { get; set; } = null!;
 

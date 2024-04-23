@@ -15,14 +15,14 @@ public final class ElastigroupMetadataArgs extends com.pulumi.resources.Resource
     public static final ElastigroupMetadataArgs Empty = new ElastigroupMetadataArgs();
 
     /**
-     * Labels key.
+     * Metadata key.
      * 
      */
     @Import(name="key", required=true)
     private Output<String> key;
 
     /**
-     * @return Labels key.
+     * @return Metadata key.
      * 
      */
     public Output<String> key() {
@@ -30,14 +30,14 @@ public final class ElastigroupMetadataArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Labels value.
+     * Metadata value.
      * 
      */
     @Import(name="value", required=true)
     private Output<String> value;
 
     /**
-     * @return Labels value.
+     * @return Metadata value.
      * 
      */
     public Output<String> value() {
@@ -70,7 +70,7 @@ public final class ElastigroupMetadataArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param key Labels key.
+         * @param key Metadata key.
          * 
          * @return builder
          * 
@@ -81,7 +81,7 @@ public final class ElastigroupMetadataArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param key Labels key.
+         * @param key Metadata key.
          * 
          * @return builder
          * 
@@ -91,7 +91,7 @@ public final class ElastigroupMetadataArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param value Labels value.
+         * @param value Metadata value.
          * 
          * @return builder
          * 
@@ -102,7 +102,7 @@ public final class ElastigroupMetadataArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param value Labels value.
+         * @param value Metadata value.
          * 
          * @return builder
          * 
