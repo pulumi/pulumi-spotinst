@@ -3784,475 +3784,6 @@
                 "name"
             ]
         },
-        "spotinst:azure/ElastigroupHealthCheck:ElastigroupHealthCheck": {
-            "properties": {
-                "autoHealing": {
-                    "type": "boolean"
-                },
-                "gracePeriod": {
-                    "type": "integer"
-                },
-                "healthCheckType": {
-                    "type": "string"
-                }
-            },
-            "type": "object",
-            "required": [
-                "healthCheckType"
-            ]
-        },
-        "spotinst:azure/ElastigroupImage:ElastigroupImage": {
-            "properties": {
-                "customs": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/spotinst:azure/ElastigroupImageCustom:ElastigroupImageCustom"
-                    }
-                },
-                "marketplaces": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/spotinst:azure/ElastigroupImageMarketplace:ElastigroupImageMarketplace"
-                    }
-                }
-            },
-            "type": "object"
-        },
-        "spotinst:azure/ElastigroupImageCustom:ElastigroupImageCustom": {
-            "properties": {
-                "imageName": {
-                    "type": "string"
-                },
-                "resourceGroupName": {
-                    "type": "string",
-                    "description": "Name of the Resource Group for Elastigroup.\n"
-                }
-            },
-            "type": "object",
-            "required": [
-                "imageName",
-                "resourceGroupName"
-            ]
-        },
-        "spotinst:azure/ElastigroupImageMarketplace:ElastigroupImageMarketplace": {
-            "properties": {
-                "offer": {
-                    "type": "string"
-                },
-                "publisher": {
-                    "type": "string"
-                },
-                "sku": {
-                    "type": "string"
-                }
-            },
-            "type": "object",
-            "required": [
-                "offer",
-                "publisher",
-                "sku"
-            ]
-        },
-        "spotinst:azure/ElastigroupIntegrationKubernetes:ElastigroupIntegrationKubernetes": {
-            "properties": {
-                "clusterIdentifier": {
-                    "type": "string"
-                }
-            },
-            "type": "object",
-            "required": [
-                "clusterIdentifier"
-            ]
-        },
-        "spotinst:azure/ElastigroupIntegrationMultaiRuntime:ElastigroupIntegrationMultaiRuntime": {
-            "properties": {
-                "deploymentId": {
-                    "type": "string"
-                }
-            },
-            "type": "object",
-            "required": [
-                "deploymentId"
-            ]
-        },
-        "spotinst:azure/ElastigroupLoadBalancer:ElastigroupLoadBalancer": {
-            "properties": {
-                "autoWeight": {
-                    "type": "boolean"
-                },
-                "balancerId": {
-                    "type": "string"
-                },
-                "targetSetId": {
-                    "type": "string"
-                },
-                "type": {
-                    "type": "string"
-                }
-            },
-            "type": "object",
-            "required": [
-                "type"
-            ]
-        },
-        "spotinst:azure/ElastigroupLogin:ElastigroupLogin": {
-            "properties": {
-                "password": {
-                    "type": "string"
-                },
-                "sshPublicKey": {
-                    "type": "string"
-                },
-                "userName": {
-                    "type": "string"
-                }
-            },
-            "type": "object",
-            "required": [
-                "userName"
-            ]
-        },
-        "spotinst:azure/ElastigroupManagedServiceIdentity:ElastigroupManagedServiceIdentity": {
-            "properties": {
-                "name": {
-                    "type": "string",
-                    "description": "The group name.\n"
-                },
-                "resourceGroupName": {
-                    "type": "string",
-                    "description": "Name of the Resource Group for Elastigroup.\n"
-                }
-            },
-            "type": "object",
-            "required": [
-                "name",
-                "resourceGroupName"
-            ]
-        },
-        "spotinst:azure/ElastigroupNetwork:ElastigroupNetwork": {
-            "properties": {
-                "additionalIpConfigs": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/spotinst:azure/ElastigroupNetworkAdditionalIpConfig:ElastigroupNetworkAdditionalIpConfig"
-                    }
-                },
-                "assignPublicIp": {
-                    "type": "boolean"
-                },
-                "resourceGroupName": {
-                    "type": "string",
-                    "description": "Name of the Resource Group for Elastigroup.\n"
-                },
-                "subnetName": {
-                    "type": "string"
-                },
-                "virtualNetworkName": {
-                    "type": "string"
-                }
-            },
-            "type": "object",
-            "required": [
-                "resourceGroupName",
-                "subnetName",
-                "virtualNetworkName"
-            ]
-        },
-        "spotinst:azure/ElastigroupNetworkAdditionalIpConfig:ElastigroupNetworkAdditionalIpConfig": {
-            "properties": {
-                "name": {
-                    "type": "string",
-                    "description": "The group name.\n"
-                },
-                "privateIpVersion": {
-                    "type": "string"
-                }
-            },
-            "type": "object",
-            "required": [
-                "name"
-            ]
-        },
-        "spotinst:azure/ElastigroupScalingDownPolicy:ElastigroupScalingDownPolicy": {
-            "properties": {
-                "actionType": {
-                    "type": "string"
-                },
-                "adjustment": {
-                    "type": "string"
-                },
-                "cooldown": {
-                    "type": "integer"
-                },
-                "dimensions": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/spotinst:azure/ElastigroupScalingDownPolicyDimension:ElastigroupScalingDownPolicyDimension"
-                    }
-                },
-                "evaluationPeriods": {
-                    "type": "integer"
-                },
-                "maxTargetCapacity": {
-                    "type": "string"
-                },
-                "maximum": {
-                    "type": "string"
-                },
-                "metricName": {
-                    "type": "string"
-                },
-                "minTargetCapacity": {
-                    "type": "string"
-                },
-                "minimum": {
-                    "type": "string"
-                },
-                "namespace": {
-                    "type": "string"
-                },
-                "operator": {
-                    "type": "string"
-                },
-                "period": {
-                    "type": "integer"
-                },
-                "policyName": {
-                    "type": "string"
-                },
-                "statistic": {
-                    "type": "string"
-                },
-                "target": {
-                    "type": "string"
-                },
-                "threshold": {
-                    "type": "number"
-                },
-                "unit": {
-                    "type": "string"
-                }
-            },
-            "type": "object",
-            "required": [
-                "metricName",
-                "namespace",
-                "policyName",
-                "threshold"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "cooldown",
-                        "evaluationPeriods",
-                        "metricName",
-                        "namespace",
-                        "operator",
-                        "period",
-                        "policyName",
-                        "statistic",
-                        "threshold"
-                    ]
-                }
-            }
-        },
-        "spotinst:azure/ElastigroupScalingDownPolicyDimension:ElastigroupScalingDownPolicyDimension": {
-            "properties": {
-                "name": {
-                    "type": "string",
-                    "description": "The group name.\n"
-                },
-                "value": {
-                    "type": "string"
-                }
-            },
-            "type": "object",
-            "required": [
-                "name"
-            ]
-        },
-        "spotinst:azure/ElastigroupScalingUpPolicy:ElastigroupScalingUpPolicy": {
-            "properties": {
-                "actionType": {
-                    "type": "string"
-                },
-                "adjustment": {
-                    "type": "string"
-                },
-                "cooldown": {
-                    "type": "integer"
-                },
-                "dimensions": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/spotinst:azure/ElastigroupScalingUpPolicyDimension:ElastigroupScalingUpPolicyDimension"
-                    }
-                },
-                "evaluationPeriods": {
-                    "type": "integer"
-                },
-                "maxTargetCapacity": {
-                    "type": "string"
-                },
-                "maximum": {
-                    "type": "string"
-                },
-                "metricName": {
-                    "type": "string"
-                },
-                "minTargetCapacity": {
-                    "type": "string"
-                },
-                "minimum": {
-                    "type": "string"
-                },
-                "namespace": {
-                    "type": "string"
-                },
-                "operator": {
-                    "type": "string"
-                },
-                "period": {
-                    "type": "integer"
-                },
-                "policyName": {
-                    "type": "string"
-                },
-                "statistic": {
-                    "type": "string"
-                },
-                "target": {
-                    "type": "string"
-                },
-                "threshold": {
-                    "type": "number"
-                },
-                "unit": {
-                    "type": "string"
-                }
-            },
-            "type": "object",
-            "required": [
-                "metricName",
-                "namespace",
-                "policyName",
-                "threshold"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "cooldown",
-                        "evaluationPeriods",
-                        "metricName",
-                        "namespace",
-                        "operator",
-                        "period",
-                        "policyName",
-                        "statistic",
-                        "threshold"
-                    ]
-                }
-            }
-        },
-        "spotinst:azure/ElastigroupScalingUpPolicyDimension:ElastigroupScalingUpPolicyDimension": {
-            "properties": {
-                "name": {
-                    "type": "string",
-                    "description": "The group name.\n"
-                },
-                "value": {
-                    "type": "string"
-                }
-            },
-            "type": "object",
-            "required": [
-                "name"
-            ]
-        },
-        "spotinst:azure/ElastigroupScheduledTask:ElastigroupScheduledTask": {
-            "properties": {
-                "adjustment": {
-                    "type": "string"
-                },
-                "adjustmentPercentage": {
-                    "type": "string"
-                },
-                "batchSizePercentage": {
-                    "type": "string"
-                },
-                "cronExpression": {
-                    "type": "string"
-                },
-                "gracePeriod": {
-                    "type": "string"
-                },
-                "isEnabled": {
-                    "type": "boolean"
-                },
-                "scaleMaxCapacity": {
-                    "type": "string"
-                },
-                "scaleMinCapacity": {
-                    "type": "string"
-                },
-                "scaleTargetCapacity": {
-                    "type": "string"
-                },
-                "taskType": {
-                    "type": "string"
-                }
-            },
-            "type": "object",
-            "required": [
-                "cronExpression",
-                "taskType"
-            ]
-        },
-        "spotinst:azure/ElastigroupStrategy:ElastigroupStrategy": {
-            "properties": {
-                "drainingTimeout": {
-                    "type": "integer"
-                },
-                "lowPriorityPercentage": {
-                    "type": "integer"
-                },
-                "odCount": {
-                    "type": "integer"
-                }
-            },
-            "type": "object"
-        },
-        "spotinst:azure/ElastigroupUpdatePolicy:ElastigroupUpdatePolicy": {
-            "properties": {
-                "rollConfig": {
-                    "$ref": "#/types/spotinst:azure/ElastigroupUpdatePolicyRollConfig:ElastigroupUpdatePolicyRollConfig"
-                },
-                "shouldRoll": {
-                    "type": "boolean"
-                }
-            },
-            "type": "object",
-            "required": [
-                "shouldRoll"
-            ]
-        },
-        "spotinst:azure/ElastigroupUpdatePolicyRollConfig:ElastigroupUpdatePolicyRollConfig": {
-            "properties": {
-                "batchSizePercentage": {
-                    "type": "integer"
-                },
-                "gracePeriod": {
-                    "type": "integer"
-                },
-                "healthCheckType": {
-                    "type": "string"
-                }
-            },
-            "type": "object",
-            "required": [
-                "batchSizePercentage"
-            ]
-        },
         "spotinst:azure/OceanAutoscaler:OceanAutoscaler": {
             "properties": {
                 "autoscaleDown": {
@@ -4604,16 +4135,20 @@
         "spotinst:azure/OceanNpAutoscaler:OceanNpAutoscaler": {
             "properties": {
                 "autoscaleDown": {
-                    "$ref": "#/types/spotinst:azure/OceanNpAutoscalerAutoscaleDown:OceanNpAutoscalerAutoscaleDown"
+                    "$ref": "#/types/spotinst:azure/OceanNpAutoscalerAutoscaleDown:OceanNpAutoscalerAutoscaleDown",
+                    "description": "Auto Scaling scale down operations.\n"
                 },
                 "autoscaleHeadroom": {
-                    "$ref": "#/types/spotinst:azure/OceanNpAutoscalerAutoscaleHeadroom:OceanNpAutoscalerAutoscaleHeadroom"
+                    "$ref": "#/types/spotinst:azure/OceanNpAutoscalerAutoscaleHeadroom:OceanNpAutoscalerAutoscaleHeadroom",
+                    "description": "Spare resource capacity management enabling fast assignment of pods without waiting for new resources to launch.\n"
                 },
                 "autoscaleIsEnabled": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Enable the Ocean Kubernetes Autoscaler.\n"
                 },
                 "resourceLimits": {
-                    "$ref": "#/types/spotinst:azure/OceanNpAutoscalerResourceLimits:OceanNpAutoscalerResourceLimits"
+                    "$ref": "#/types/spotinst:azure/OceanNpAutoscalerResourceLimits:OceanNpAutoscalerResourceLimits",
+                    "description": "Optionally set upper and lower bounds on the resource usage of the cluster.\n"
                 }
             },
             "type": "object"
@@ -4659,64 +4194,79 @@
         "spotinst:azure/OceanNpFilters:OceanNpFilters": {
             "properties": {
                 "acceleratedNetworking": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "In case acceleratedNetworking is set to Enabled, accelerated networking applies only to the VM that enables it.\n"
                 },
                 "architectures": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "The filtered vm sizes will support at least one of the architectures from this list. x86_64 includes both intel64 and amd64.\n"
                 },
                 "diskPerformance": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The filtered vm sizes will support at least one of the classes from this list.\n"
                 },
                 "excludeSeries": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "Vm sizes belonging to a series from the list will not be available for scaling\n"
                 },
                 "gpuTypes": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "The filtered gpu types will belong to one of the gpu types from this list.\n\n\u003ca id=\"update-policy\"\u003e\u003c/a\u003e\n"
                 },
                 "maxGpu": {
-                    "type": "number"
+                    "type": "number",
+                    "description": "Maximum number of GPUs available.\n"
                 },
                 "maxMemoryGib": {
-                    "type": "number"
+                    "type": "number",
+                    "description": "Maximum amount of Memory (GiB).\n"
                 },
                 "maxVcpu": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Maximum number of vcpus available.\n"
                 },
                 "minDisk": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Minimum number of data disks available.\n"
                 },
                 "minGpu": {
-                    "type": "number"
+                    "type": "number",
+                    "description": "Minimum number of GPUs available.\n"
                 },
                 "minMemoryGib": {
-                    "type": "number"
+                    "type": "number",
+                    "description": "Minimum amount of Memory (GiB).\n"
                 },
                 "minNics": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Minimum number of network interfaces.\n"
                 },
                 "minVcpu": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Minimum number of vcpus available.\n"
                 },
                 "series": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "Vm sizes belonging to a series from the list will be available for scaling. We can specify include list and series can be specified with capital or small letters, with space, without space or with underscore '_' .  For example all of these \"DSv2\", \"Ds v2\", \"ds_v2\" refer to same DS_v2 series.\n"
                 },
                 "vmTypes": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "The filtered vm types will belong to one of the vm types from this list.\n"
                 }
             },
             "type": "object"
@@ -4724,16 +4274,20 @@
         "spotinst:azure/OceanNpHeadroom:OceanNpHeadroom": {
             "properties": {
                 "cpuPerUnit": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.\n"
                 },
                 "gpuPerUnit": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Amount of GPU to allocate for headroom unit.\n"
                 },
                 "memoryPerUnit": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Configure the amount of memory (MiB) to allocate the headroom.\n"
                 },
                 "numOfUnits": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.\n"
                 }
             },
             "type": "object"
@@ -4741,7 +4295,8 @@
         "spotinst:azure/OceanNpHealth:OceanNpHealth": {
             "properties": {
                 "gracePeriod": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The amount of time to wait, in seconds, from the moment the instance has launched until monitoring of its health checks begins.\n"
                 }
             },
             "type": "object"
@@ -4749,7 +4304,8 @@
         "spotinst:azure/OceanNpScheduling:OceanNpScheduling": {
             "properties": {
                 "shutdownHours": {
-                    "$ref": "#/types/spotinst:azure/OceanNpSchedulingShutdownHours:OceanNpSchedulingShutdownHours"
+                    "$ref": "#/types/spotinst:azure/OceanNpSchedulingShutdownHours:OceanNpSchedulingShutdownHours",
+                    "description": "[Shutdown Hours](https://docs.spot.io/ocean/features/running-hours?id=shutdown-hours)An object used to specify times that the nodes in the cluster will be taken down.\n"
                 }
             },
             "type": "object"
@@ -4774,13 +4330,16 @@
         "spotinst:azure/OceanNpTaint:OceanNpTaint": {
             "properties": {
                 "effect": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Set taint effect.\n"
                 },
                 "key": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Set taint key. The following taint keys are not allowed: [\"node.kubernetes.io/not-ready\",  \"node.kubernetes.io/unreachable\", \"node.kubernetes.io/unschedulable\",  \"node.kubernetes.io/memory-pressure\",  \"node.kubernetes.io/disk-pressure\",  \"node.kubernetes.io/network-unavailable\",  \"node.kubernetes.io/pid-pressure\",  \"node.kubernetes.io/out-of-service\",  \"node.cloudprovider.kubernetes.io/uninitialized\",  \"node.cloudprovider.kubernetes.io/shutdown\", \"kubernetes.azure.com/scalesetpriority\"]\n"
                 },
                 "value": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Set taint value.\n"
                 }
             },
             "type": "object",
@@ -4848,64 +4407,79 @@
         "spotinst:azure/OceanNpVirtualNodeGroupFilters:OceanNpVirtualNodeGroupFilters": {
             "properties": {
                 "acceleratedNetworking": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "In case acceleratedNetworking is set to Enabled, accelerated networking applies only to the VM that enables it.\n"
                 },
                 "architectures": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "The filtered vm sizes will support at least one of the architectures from this list. x86_64 includes both intel64 and amd64.\n"
                 },
                 "diskPerformance": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The filtered vm sizes will support at least one of the classes from this list.\n"
                 },
                 "excludeSeries": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "Vm sizes belonging to a series from the list will not be available for scaling.\n"
                 },
                 "gpuTypes": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "The filtered gpu types will belong to one of the gpu types from this list.\n\u003ca id=\"update-policy\"\u003e\u003c/a\u003e\n"
                 },
                 "maxGpu": {
-                    "type": "number"
+                    "type": "number",
+                    "description": "Maximum number of GPUs available.\n"
                 },
                 "maxMemoryGib": {
-                    "type": "number"
+                    "type": "number",
+                    "description": "Maximum amount of Memory (GiB).\n"
                 },
                 "maxVcpu": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Maximum number of vcpus available.\n"
                 },
                 "minDisk": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Minimum number of data disks available.\n"
                 },
                 "minGpu": {
-                    "type": "number"
+                    "type": "number",
+                    "description": "Minimum number of GPUs available.\n"
                 },
                 "minMemoryGib": {
-                    "type": "number"
+                    "type": "number",
+                    "description": "Minimum amount of Memory (GiB).\n"
                 },
                 "minNics": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Minimum number of network interfaces.\n"
                 },
                 "minVcpu": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Minimum number of vcpus available.\n"
                 },
                 "series": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "Vm sizes belonging to a series from the list will be available for scaling.\n"
                 },
                 "vmTypes": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "The filtered vm types will belong to one of the vm types from this list.\n"
                 }
             },
             "type": "object"
@@ -4913,16 +4487,20 @@
         "spotinst:azure/OceanNpVirtualNodeGroupHeadroom:OceanNpVirtualNodeGroupHeadroom": {
             "properties": {
                 "cpuPerUnit": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Configure the number of CPUs to allocate the headroom. CPUs are denoted in millicores, where 1000 millicores = 1 vCPU.\n"
                 },
                 "gpuPerUnit": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Amount of GPU to allocate for headroom unit.\n"
                 },
                 "memoryPerUnit": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Configure the amount of memory (MiB) to allocate the headroom.\n"
                 },
                 "numOfUnits": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The number of units to retain as headroom, where each unit has the defined headroom CPU and memory.\n"
                 }
             },
             "type": "object"
@@ -4930,13 +4508,16 @@
         "spotinst:azure/OceanNpVirtualNodeGroupTaint:OceanNpVirtualNodeGroupTaint": {
             "properties": {
                 "effect": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Set taint effect.\n"
                 },
                 "key": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Set taint key. The following are not allowed: \"kubernetes.azure.com/scalesetpriority\".\n"
                 },
                 "value": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Set taint value.\n"
                 }
             },
             "type": "object",
@@ -12656,361 +12237,6 @@
                 "type": "object"
             }
         },
-        "spotinst:azure/elastigroup:Elastigroup": {
-            "description": "Provides a Spotinst elastigroup Azure resource.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as spotinst from \"@pulumi/spotinst\";\n\nconst testAzureGroup = new spotinst.ElastigroupAzureV3(\"test_azure_group\", {\n    name: \"example_elastigroup_azure\",\n    resourceGroupName: \"spotinst-azure\",\n    region: \"eastus\",\n    os: \"Linux\",\n    minSize: 0,\n    maxSize: 1,\n    desiredCapacity: 1,\n    odSizes: [\n        \"standard_a1_v1\",\n        \"standard_a1_v2\",\n    ],\n    spotSizes: [\n        \"standard_a1_v1\",\n        \"standard_a1_v2\",\n    ],\n    customData: \"IyEvYmluL2Jhc2gKZWNobyAidGVzdCI=\",\n    managedServiceIdentities: [{\n        resourceGroupName: \"MC_ocean-westus-dev_ocean-westus-dev-aks_westus\",\n        name: \"ocean-westus-dev-aks-agentpool\",\n    }],\n    tags: [\n        {\n            key: \"key1\",\n            value: \"value1\",\n        },\n        {\n            key: \"key2\",\n            value: \"value2\",\n        },\n    ],\n    images: [{\n        marketplaces: [{\n            publisher: \"Canonical\",\n            offer: \"UbuntuServer\",\n            sku: \"18.04-LTS\",\n            version: \"latest\",\n        }],\n    }],\n    spotPercentage: 65,\n    drainingTimeout: 300,\n    fallbackToOnDemand: true,\n    network: {\n        virtualNetworkName: \"VirtualNetworkName\",\n        resourceGroupName: \"ResourceGroup\",\n        networkInterfaces: [{\n            subnetName: \"default\",\n            assignPublicIp: false,\n            isPrimary: true,\n            additionalIpConfigs: [{\n                name: \"SecondaryIPConfig\",\n                privateIPVersion: \"IPv4\",\n            }],\n            applicationSecurityGroups: [{\n                name: \"ApplicationSecurityGroupName\",\n                resourceGroupName: \"ResourceGroup\",\n            }],\n        }],\n    },\n    login: {\n        userName: \"admin\",\n        sshPublicKey: \"33a2s1f3g5a1df5g1ad3f2g1adfg56dfg==\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_spotinst as spotinst\n\ntest_azure_group = spotinst.ElastigroupAzureV3(\"test_azure_group\",\n    name=\"example_elastigroup_azure\",\n    resource_group_name=\"spotinst-azure\",\n    region=\"eastus\",\n    os=\"Linux\",\n    min_size=0,\n    max_size=1,\n    desired_capacity=1,\n    od_sizes=[\n        \"standard_a1_v1\",\n        \"standard_a1_v2\",\n    ],\n    spot_sizes=[\n        \"standard_a1_v1\",\n        \"standard_a1_v2\",\n    ],\n    custom_data=\"IyEvYmluL2Jhc2gKZWNobyAidGVzdCI=\",\n    managed_service_identities=[spotinst.ElastigroupAzureV3ManagedServiceIdentityArgs(\n        resource_group_name=\"MC_ocean-westus-dev_ocean-westus-dev-aks_westus\",\n        name=\"ocean-westus-dev-aks-agentpool\",\n    )],\n    tags=[\n        spotinst.ElastigroupAzureV3TagArgs(\n            key=\"key1\",\n            value=\"value1\",\n        ),\n        spotinst.ElastigroupAzureV3TagArgs(\n            key=\"key2\",\n            value=\"value2\",\n        ),\n    ],\n    images=[spotinst.ElastigroupAzureV3ImageArgs(\n        marketplaces=[spotinst.ElastigroupAzureV3ImageMarketplaceArgs(\n            publisher=\"Canonical\",\n            offer=\"UbuntuServer\",\n            sku=\"18.04-LTS\",\n            version=\"latest\",\n        )],\n    )],\n    spot_percentage=65,\n    draining_timeout=300,\n    fallback_to_on_demand=True,\n    network=spotinst.ElastigroupAzureV3NetworkArgs(\n        virtual_network_name=\"VirtualNetworkName\",\n        resource_group_name=\"ResourceGroup\",\n        network_interfaces=[spotinst.ElastigroupAzureV3NetworkNetworkInterfaceArgs(\n            subnet_name=\"default\",\n            assign_public_ip=False,\n            is_primary=True,\n            additional_ip_configs=[spotinst.ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArgs(\n                name=\"SecondaryIPConfig\",\n                private_ip_version=\"IPv4\",\n            )],\n            application_security_groups=[spotinst.ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArgs(\n                name=\"ApplicationSecurityGroupName\",\n                resource_group_name=\"ResourceGroup\",\n            )],\n        )],\n    ),\n    login=spotinst.ElastigroupAzureV3LoginArgs(\n        user_name=\"admin\",\n        ssh_public_key=\"33a2s1f3g5a1df5g1ad3f2g1adfg56dfg==\",\n    ))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing SpotInst = Pulumi.SpotInst;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var testAzureGroup = new SpotInst.ElastigroupAzureV3(\"test_azure_group\", new()\n    {\n        Name = \"example_elastigroup_azure\",\n        ResourceGroupName = \"spotinst-azure\",\n        Region = \"eastus\",\n        Os = \"Linux\",\n        MinSize = 0,\n        MaxSize = 1,\n        DesiredCapacity = 1,\n        OdSizes = new[]\n        {\n            \"standard_a1_v1\",\n            \"standard_a1_v2\",\n        },\n        SpotSizes = new[]\n        {\n            \"standard_a1_v1\",\n            \"standard_a1_v2\",\n        },\n        CustomData = \"IyEvYmluL2Jhc2gKZWNobyAidGVzdCI=\",\n        ManagedServiceIdentities = new[]\n        {\n            new SpotInst.Inputs.ElastigroupAzureV3ManagedServiceIdentityArgs\n            {\n                ResourceGroupName = \"MC_ocean-westus-dev_ocean-westus-dev-aks_westus\",\n                Name = \"ocean-westus-dev-aks-agentpool\",\n            },\n        },\n        Tags = new[]\n        {\n            new SpotInst.Inputs.ElastigroupAzureV3TagArgs\n            {\n                Key = \"key1\",\n                Value = \"value1\",\n            },\n            new SpotInst.Inputs.ElastigroupAzureV3TagArgs\n            {\n                Key = \"key2\",\n                Value = \"value2\",\n            },\n        },\n        Images = new[]\n        {\n            new SpotInst.Inputs.ElastigroupAzureV3ImageArgs\n            {\n                Marketplaces = new[]\n                {\n                    new SpotInst.Inputs.ElastigroupAzureV3ImageMarketplaceArgs\n                    {\n                        Publisher = \"Canonical\",\n                        Offer = \"UbuntuServer\",\n                        Sku = \"18.04-LTS\",\n                        Version = \"latest\",\n                    },\n                },\n            },\n        },\n        SpotPercentage = 65,\n        DrainingTimeout = 300,\n        FallbackToOnDemand = true,\n        Network = new SpotInst.Inputs.ElastigroupAzureV3NetworkArgs\n        {\n            VirtualNetworkName = \"VirtualNetworkName\",\n            ResourceGroupName = \"ResourceGroup\",\n            NetworkInterfaces = new[]\n            {\n                new SpotInst.Inputs.ElastigroupAzureV3NetworkNetworkInterfaceArgs\n                {\n                    SubnetName = \"default\",\n                    AssignPublicIp = false,\n                    IsPrimary = true,\n                    AdditionalIpConfigs = new[]\n                    {\n                        new SpotInst.Inputs.ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArgs\n                        {\n                            Name = \"SecondaryIPConfig\",\n                            PrivateIPVersion = \"IPv4\",\n                        },\n                    },\n                    ApplicationSecurityGroups = new[]\n                    {\n                        new SpotInst.Inputs.ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArgs\n                        {\n                            Name = \"ApplicationSecurityGroupName\",\n                            ResourceGroupName = \"ResourceGroup\",\n                        },\n                    },\n                },\n            },\n        },\n        Login = new SpotInst.Inputs.ElastigroupAzureV3LoginArgs\n        {\n            UserName = \"admin\",\n            SshPublicKey = \"33a2s1f3g5a1df5g1ad3f2g1adfg56dfg==\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := spotinst.NewElastigroupAzureV3(ctx, \"test_azure_group\", \u0026spotinst.ElastigroupAzureV3Args{\n\t\t\tName:              pulumi.String(\"example_elastigroup_azure\"),\n\t\t\tResourceGroupName: pulumi.String(\"spotinst-azure\"),\n\t\t\tRegion:            pulumi.String(\"eastus\"),\n\t\t\tOs:                pulumi.String(\"Linux\"),\n\t\t\tMinSize:           pulumi.Int(0),\n\t\t\tMaxSize:           pulumi.Int(1),\n\t\t\tDesiredCapacity:   pulumi.Int(1),\n\t\t\tOdSizes: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"standard_a1_v1\"),\n\t\t\t\tpulumi.String(\"standard_a1_v2\"),\n\t\t\t},\n\t\t\tSpotSizes: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"standard_a1_v1\"),\n\t\t\t\tpulumi.String(\"standard_a1_v2\"),\n\t\t\t},\n\t\t\tCustomData: pulumi.String(\"IyEvYmluL2Jhc2gKZWNobyAidGVzdCI=\"),\n\t\t\tManagedServiceIdentities: spotinst.ElastigroupAzureV3ManagedServiceIdentityArray{\n\t\t\t\t\u0026spotinst.ElastigroupAzureV3ManagedServiceIdentityArgs{\n\t\t\t\t\tResourceGroupName: pulumi.String(\"MC_ocean-westus-dev_ocean-westus-dev-aks_westus\"),\n\t\t\t\t\tName:              pulumi.String(\"ocean-westus-dev-aks-agentpool\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tTags: spotinst.ElastigroupAzureV3TagArray{\n\t\t\t\t\u0026spotinst.ElastigroupAzureV3TagArgs{\n\t\t\t\t\tKey:   pulumi.String(\"key1\"),\n\t\t\t\t\tValue: pulumi.String(\"value1\"),\n\t\t\t\t},\n\t\t\t\t\u0026spotinst.ElastigroupAzureV3TagArgs{\n\t\t\t\t\tKey:   pulumi.String(\"key2\"),\n\t\t\t\t\tValue: pulumi.String(\"value2\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tImages: spotinst.ElastigroupAzureV3ImageArray{\n\t\t\t\t\u0026spotinst.ElastigroupAzureV3ImageArgs{\n\t\t\t\t\tMarketplaces: spotinst.ElastigroupAzureV3ImageMarketplaceArray{\n\t\t\t\t\t\t\u0026spotinst.ElastigroupAzureV3ImageMarketplaceArgs{\n\t\t\t\t\t\t\tPublisher: pulumi.String(\"Canonical\"),\n\t\t\t\t\t\t\tOffer:     pulumi.String(\"UbuntuServer\"),\n\t\t\t\t\t\t\tSku:       pulumi.String(\"18.04-LTS\"),\n\t\t\t\t\t\t\tVersion:   pulumi.String(\"latest\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tSpotPercentage:     pulumi.Int(65),\n\t\t\tDrainingTimeout:    pulumi.Int(300),\n\t\t\tFallbackToOnDemand: pulumi.Bool(true),\n\t\t\tNetwork: \u0026spotinst.ElastigroupAzureV3NetworkArgs{\n\t\t\t\tVirtualNetworkName: pulumi.String(\"VirtualNetworkName\"),\n\t\t\t\tResourceGroupName:  pulumi.String(\"ResourceGroup\"),\n\t\t\t\tNetworkInterfaces: spotinst.ElastigroupAzureV3NetworkNetworkInterfaceArray{\n\t\t\t\t\t\u0026spotinst.ElastigroupAzureV3NetworkNetworkInterfaceArgs{\n\t\t\t\t\t\tSubnetName:     pulumi.String(\"default\"),\n\t\t\t\t\t\tAssignPublicIp: pulumi.Bool(false),\n\t\t\t\t\t\tIsPrimary:      pulumi.Bool(true),\n\t\t\t\t\t\tAdditionalIpConfigs: spotinst.ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArray{\n\t\t\t\t\t\t\t\u0026spotinst.ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArgs{\n\t\t\t\t\t\t\t\tName:             pulumi.String(\"SecondaryIPConfig\"),\n\t\t\t\t\t\t\t\tPrivateIPVersion: pulumi.String(\"IPv4\"),\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t},\n\t\t\t\t\t\tApplicationSecurityGroups: spotinst.ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArray{\n\t\t\t\t\t\t\t\u0026spotinst.ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArgs{\n\t\t\t\t\t\t\t\tName:              pulumi.String(\"ApplicationSecurityGroupName\"),\n\t\t\t\t\t\t\t\tResourceGroupName: pulumi.String(\"ResourceGroup\"),\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tLogin: \u0026spotinst.ElastigroupAzureV3LoginArgs{\n\t\t\t\tUserName:     pulumi.String(\"admin\"),\n\t\t\t\tSshPublicKey: pulumi.String(\"33a2s1f3g5a1df5g1ad3f2g1adfg56dfg==\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.spotinst.ElastigroupAzureV3;\nimport com.pulumi.spotinst.ElastigroupAzureV3Args;\nimport com.pulumi.spotinst.inputs.ElastigroupAzureV3ManagedServiceIdentityArgs;\nimport com.pulumi.spotinst.inputs.ElastigroupAzureV3TagArgs;\nimport com.pulumi.spotinst.inputs.ElastigroupAzureV3ImageArgs;\nimport com.pulumi.spotinst.inputs.ElastigroupAzureV3NetworkArgs;\nimport com.pulumi.spotinst.inputs.ElastigroupAzureV3LoginArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var testAzureGroup = new ElastigroupAzureV3(\"testAzureGroup\", ElastigroupAzureV3Args.builder()        \n            .name(\"example_elastigroup_azure\")\n            .resourceGroupName(\"spotinst-azure\")\n            .region(\"eastus\")\n            .os(\"Linux\")\n            .minSize(0)\n            .maxSize(1)\n            .desiredCapacity(1)\n            .odSizes(            \n                \"standard_a1_v1\",\n                \"standard_a1_v2\")\n            .spotSizes(            \n                \"standard_a1_v1\",\n                \"standard_a1_v2\")\n            .customData(\"IyEvYmluL2Jhc2gKZWNobyAidGVzdCI=\")\n            .managedServiceIdentities(ElastigroupAzureV3ManagedServiceIdentityArgs.builder()\n                .resourceGroupName(\"MC_ocean-westus-dev_ocean-westus-dev-aks_westus\")\n                .name(\"ocean-westus-dev-aks-agentpool\")\n                .build())\n            .tags(            \n                ElastigroupAzureV3TagArgs.builder()\n                    .key(\"key1\")\n                    .value(\"value1\")\n                    .build(),\n                ElastigroupAzureV3TagArgs.builder()\n                    .key(\"key2\")\n                    .value(\"value2\")\n                    .build())\n            .images(ElastigroupAzureV3ImageArgs.builder()\n                .marketplaces(ElastigroupAzureV3ImageMarketplaceArgs.builder()\n                    .publisher(\"Canonical\")\n                    .offer(\"UbuntuServer\")\n                    .sku(\"18.04-LTS\")\n                    .version(\"latest\")\n                    .build())\n                .build())\n            .spotPercentage(65)\n            .drainingTimeout(300)\n            .fallbackToOnDemand(true)\n            .network(ElastigroupAzureV3NetworkArgs.builder()\n                .virtualNetworkName(\"VirtualNetworkName\")\n                .resourceGroupName(\"ResourceGroup\")\n                .networkInterfaces(ElastigroupAzureV3NetworkNetworkInterfaceArgs.builder()\n                    .subnetName(\"default\")\n                    .assignPublicIp(false)\n                    .isPrimary(true)\n                    .additionalIpConfigs(ElastigroupAzureV3NetworkNetworkInterfaceAdditionalIpConfigArgs.builder()\n                        .name(\"SecondaryIPConfig\")\n                        .privateIPVersion(\"IPv4\")\n                        .build())\n                    .applicationSecurityGroups(ElastigroupAzureV3NetworkNetworkInterfaceApplicationSecurityGroupArgs.builder()\n                        .name(\"ApplicationSecurityGroupName\")\n                        .resourceGroupName(\"ResourceGroup\")\n                        .build())\n                    .build())\n                .build())\n            .login(ElastigroupAzureV3LoginArgs.builder()\n                .userName(\"admin\")\n                .sshPublicKey(\"33a2s1f3g5a1df5g1ad3f2g1adfg56dfg==\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  testAzureGroup:\n    type: spotinst:ElastigroupAzureV3\n    name: test_azure_group\n    properties:\n      name: example_elastigroup_azure\n      resourceGroupName: spotinst-azure\n      region: eastus\n      os: Linux\n      minSize: 0\n      maxSize: 1\n      desiredCapacity: 1 # --- INSTANCE TYPES ------------------------------------------------\n      odSizes:\n        - standard_a1_v1\n        - standard_a1_v2\n      spotSizes:\n        - standard_a1_v1\n        - standard_a1_v2\n      customData: IyEvYmluL2Jhc2gKZWNobyAidGVzdCI=\n      managedServiceIdentities:\n        - resourceGroupName: MC_ocean-westus-dev_ocean-westus-dev-aks_westus\n          name: ocean-westus-dev-aks-agentpool\n      tags:\n        - key: key1\n          value: value1\n        - key: key2\n          value: value2\n      images:\n        - marketplaces:\n            - publisher: Canonical\n              offer: UbuntuServer\n              sku: 18.04-LTS\n              version: latest\n      spotPercentage: 65\n      drainingTimeout: 300\n      fallbackToOnDemand: true # --- NETWORK -------------------------------------------------------\n      network:\n        virtualNetworkName: VirtualNetworkName\n        resourceGroupName: ResourceGroup\n        networkInterfaces:\n          - subnetName: default\n            assignPublicIp: false\n            isPrimary: true\n            additionalIpConfigs:\n              - name: SecondaryIPConfig\n                privateIPVersion: IPv4\n            applicationSecurityGroups:\n              - name: ApplicationSecurityGroupName\n                resourceGroupName: ResourceGroup\n      login:\n        userName: admin\n        sshPublicKey: 33a2s1f3g5a1df5g1ad3f2g1adfg56dfg==\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Strategy\n\n* `spot_percentage` - (Optional) Percentage of Spot-VMs to maintain. Required if `on_demand_count` is not specified.\n* `on_demand_count` - (Optional) Number of On-Demand VMs to maintain. Required if `spot_percentage` is not specified.\n* `fallback_to_on_demand` - \n* `draining_timeout` - (Optional, Default `120`) Time (seconds) to allow the instance to be drained from incoming TCP connections and detached from MLB before terminating it during a scale-down operation.\n\n\u003ca id=\"image\"\u003e\u003c/a\u003e\n",
-            "properties": {
-                "customData": {
-                    "type": "string",
-                    "description": "Custom init script file or text in Base64 encoded format.\n"
-                },
-                "desiredCapacity": {
-                    "type": "integer",
-                    "description": "The desired number of instances the group should have at any time.\n"
-                },
-                "healthCheck": {
-                    "$ref": "#/types/spotinst:azure/ElastigroupHealthCheck:ElastigroupHealthCheck"
-                },
-                "images": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/spotinst:azure/ElastigroupImage:ElastigroupImage"
-                    }
-                },
-                "integrationKubernetes": {
-                    "$ref": "#/types/spotinst:azure/ElastigroupIntegrationKubernetes:ElastigroupIntegrationKubernetes"
-                },
-                "integrationMultaiRuntime": {
-                    "$ref": "#/types/spotinst:azure/ElastigroupIntegrationMultaiRuntime:ElastigroupIntegrationMultaiRuntime"
-                },
-                "loadBalancers": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/spotinst:azure/ElastigroupLoadBalancer:ElastigroupLoadBalancer"
-                    }
-                },
-                "login": {
-                    "$ref": "#/types/spotinst:azure/ElastigroupLogin:ElastigroupLogin"
-                },
-                "lowPrioritySizes": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    }
-                },
-                "managedServiceIdentities": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/spotinst:azure/ElastigroupManagedServiceIdentity:ElastigroupManagedServiceIdentity"
-                    }
-                },
-                "maxSize": {
-                    "type": "integer",
-                    "description": "The maximum number of instances the group should have at any time.\n"
-                },
-                "minSize": {
-                    "type": "integer",
-                    "description": "The minimum number of instances the group should have at any time.\n"
-                },
-                "name": {
-                    "type": "string",
-                    "description": "The group name.\n"
-                },
-                "network": {
-                    "$ref": "#/types/spotinst:azure/ElastigroupNetwork:ElastigroupNetwork"
-                },
-                "odSizes": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    },
-                    "description": "Available On-Demand sizes\n"
-                },
-                "product": {
-                    "type": "string"
-                },
-                "region": {
-                    "type": "string",
-                    "description": "The region your Azure group will be created in.\n"
-                },
-                "resourceGroupName": {
-                    "type": "string",
-                    "description": "Name of the Resource Group for Elastigroup.\n"
-                },
-                "scalingDownPolicies": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/spotinst:azure/ElastigroupScalingDownPolicy:ElastigroupScalingDownPolicy"
-                    }
-                },
-                "scalingUpPolicies": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/spotinst:azure/ElastigroupScalingUpPolicy:ElastigroupScalingUpPolicy"
-                    }
-                },
-                "scheduledTasks": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/spotinst:azure/ElastigroupScheduledTask:ElastigroupScheduledTask"
-                    }
-                },
-                "shutdownScript": {
-                    "type": "string"
-                },
-                "strategy": {
-                    "$ref": "#/types/spotinst:azure/ElastigroupStrategy:ElastigroupStrategy"
-                },
-                "updatePolicy": {
-                    "$ref": "#/types/spotinst:azure/ElastigroupUpdatePolicy:ElastigroupUpdatePolicy"
-                },
-                "userData": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "lowPrioritySizes",
-                "maxSize",
-                "minSize",
-                "name",
-                "network",
-                "odSizes",
-                "product",
-                "region",
-                "resourceGroupName",
-                "strategy"
-            ],
-            "inputProperties": {
-                "customData": {
-                    "type": "string",
-                    "description": "Custom init script file or text in Base64 encoded format.\n"
-                },
-                "desiredCapacity": {
-                    "type": "integer",
-                    "description": "The desired number of instances the group should have at any time.\n"
-                },
-                "healthCheck": {
-                    "$ref": "#/types/spotinst:azure/ElastigroupHealthCheck:ElastigroupHealthCheck"
-                },
-                "images": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/spotinst:azure/ElastigroupImage:ElastigroupImage"
-                    }
-                },
-                "integrationKubernetes": {
-                    "$ref": "#/types/spotinst:azure/ElastigroupIntegrationKubernetes:ElastigroupIntegrationKubernetes"
-                },
-                "integrationMultaiRuntime": {
-                    "$ref": "#/types/spotinst:azure/ElastigroupIntegrationMultaiRuntime:ElastigroupIntegrationMultaiRuntime"
-                },
-                "loadBalancers": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/spotinst:azure/ElastigroupLoadBalancer:ElastigroupLoadBalancer"
-                    }
-                },
-                "login": {
-                    "$ref": "#/types/spotinst:azure/ElastigroupLogin:ElastigroupLogin"
-                },
-                "lowPrioritySizes": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    }
-                },
-                "managedServiceIdentities": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/spotinst:azure/ElastigroupManagedServiceIdentity:ElastigroupManagedServiceIdentity"
-                    }
-                },
-                "maxSize": {
-                    "type": "integer",
-                    "description": "The maximum number of instances the group should have at any time.\n"
-                },
-                "minSize": {
-                    "type": "integer",
-                    "description": "The minimum number of instances the group should have at any time.\n"
-                },
-                "name": {
-                    "type": "string",
-                    "description": "The group name.\n"
-                },
-                "network": {
-                    "$ref": "#/types/spotinst:azure/ElastigroupNetwork:ElastigroupNetwork"
-                },
-                "odSizes": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    },
-                    "description": "Available On-Demand sizes\n"
-                },
-                "product": {
-                    "type": "string"
-                },
-                "region": {
-                    "type": "string",
-                    "description": "The region your Azure group will be created in.\n"
-                },
-                "resourceGroupName": {
-                    "type": "string",
-                    "description": "Name of the Resource Group for Elastigroup.\n"
-                },
-                "scalingDownPolicies": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/spotinst:azure/ElastigroupScalingDownPolicy:ElastigroupScalingDownPolicy"
-                    }
-                },
-                "scalingUpPolicies": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/spotinst:azure/ElastigroupScalingUpPolicy:ElastigroupScalingUpPolicy"
-                    }
-                },
-                "scheduledTasks": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/spotinst:azure/ElastigroupScheduledTask:ElastigroupScheduledTask"
-                    }
-                },
-                "shutdownScript": {
-                    "type": "string"
-                },
-                "strategy": {
-                    "$ref": "#/types/spotinst:azure/ElastigroupStrategy:ElastigroupStrategy"
-                },
-                "updatePolicy": {
-                    "$ref": "#/types/spotinst:azure/ElastigroupUpdatePolicy:ElastigroupUpdatePolicy"
-                },
-                "userData": {
-                    "type": "string"
-                }
-            },
-            "requiredInputs": [
-                "lowPrioritySizes",
-                "network",
-                "odSizes",
-                "product",
-                "region",
-                "resourceGroupName",
-                "strategy"
-            ],
-            "stateInputs": {
-                "description": "Input properties used for looking up and filtering Elastigroup resources.\n",
-                "properties": {
-                    "customData": {
-                        "type": "string",
-                        "description": "Custom init script file or text in Base64 encoded format.\n"
-                    },
-                    "desiredCapacity": {
-                        "type": "integer",
-                        "description": "The desired number of instances the group should have at any time.\n"
-                    },
-                    "healthCheck": {
-                        "$ref": "#/types/spotinst:azure/ElastigroupHealthCheck:ElastigroupHealthCheck"
-                    },
-                    "images": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/types/spotinst:azure/ElastigroupImage:ElastigroupImage"
-                        }
-                    },
-                    "integrationKubernetes": {
-                        "$ref": "#/types/spotinst:azure/ElastigroupIntegrationKubernetes:ElastigroupIntegrationKubernetes"
-                    },
-                    "integrationMultaiRuntime": {
-                        "$ref": "#/types/spotinst:azure/ElastigroupIntegrationMultaiRuntime:ElastigroupIntegrationMultaiRuntime"
-                    },
-                    "loadBalancers": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/types/spotinst:azure/ElastigroupLoadBalancer:ElastigroupLoadBalancer"
-                        }
-                    },
-                    "login": {
-                        "$ref": "#/types/spotinst:azure/ElastigroupLogin:ElastigroupLogin"
-                    },
-                    "lowPrioritySizes": {
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        }
-                    },
-                    "managedServiceIdentities": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/types/spotinst:azure/ElastigroupManagedServiceIdentity:ElastigroupManagedServiceIdentity"
-                        }
-                    },
-                    "maxSize": {
-                        "type": "integer",
-                        "description": "The maximum number of instances the group should have at any time.\n"
-                    },
-                    "minSize": {
-                        "type": "integer",
-                        "description": "The minimum number of instances the group should have at any time.\n"
-                    },
-                    "name": {
-                        "type": "string",
-                        "description": "The group name.\n"
-                    },
-                    "network": {
-                        "$ref": "#/types/spotinst:azure/ElastigroupNetwork:ElastigroupNetwork"
-                    },
-                    "odSizes": {
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        },
-                        "description": "Available On-Demand sizes\n"
-                    },
-                    "product": {
-                        "type": "string"
-                    },
-                    "region": {
-                        "type": "string",
-                        "description": "The region your Azure group will be created in.\n"
-                    },
-                    "resourceGroupName": {
-                        "type": "string",
-                        "description": "Name of the Resource Group for Elastigroup.\n"
-                    },
-                    "scalingDownPolicies": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/types/spotinst:azure/ElastigroupScalingDownPolicy:ElastigroupScalingDownPolicy"
-                        }
-                    },
-                    "scalingUpPolicies": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/types/spotinst:azure/ElastigroupScalingUpPolicy:ElastigroupScalingUpPolicy"
-                        }
-                    },
-                    "scheduledTasks": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/types/spotinst:azure/ElastigroupScheduledTask:ElastigroupScheduledTask"
-                        }
-                    },
-                    "shutdownScript": {
-                        "type": "string"
-                    },
-                    "strategy": {
-                        "$ref": "#/types/spotinst:azure/ElastigroupStrategy:ElastigroupStrategy"
-                    },
-                    "updatePolicy": {
-                        "$ref": "#/types/spotinst:azure/ElastigroupUpdatePolicy:ElastigroupUpdatePolicy"
-                    },
-                    "userData": {
-                        "type": "string"
-                    }
-                },
-                "type": "object"
-            }
-        },
         "spotinst:azure/ocean:Ocean": {
             "description": "Manages a Spotinst Ocean AKS resource.\n\n\u003e This resource contains arguments (such as `image` and `extension`) that are automatically populated from the data reported by the Ocean AKS Connector deployed into your cluster. You can override the upstream configuration by defining the corresponding arguments.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as spotinst from \"@pulumi/spotinst\";\n\nconst example = new spotinst.azure.Ocean(\"example\", {\n    name: \"ocean-westus-dev-aks\",\n    controllerClusterId: \"ocean-westus-dev-aks\",\n    zones: [\n        \"1\",\n        \"2\",\n        \"3\",\n    ],\n    acdIdentifier: \"acd-12345678\",\n    aksName: \"ocean-westus-dev-aks\",\n    aksResourceGroupName: \"ocean-westus-dev\",\n    sshPublicKey: \"ssh-rsa [... redacted ...] generated-by-azure\",\n    userName: \"some-name\",\n    resourceGroupName: \"some-resource-group-name\",\n    customData: \"[... redacted ...]\",\n    maxPods: 30,\n    managedServiceIdentities: [{\n        resourceGroupName: \"MC_ocean-westus-dev_ocean-westus-dev-aks_westus\",\n        name: \"ocean-westus-dev-aks-agentpool\",\n    }],\n    tags: [{\n        key: \"Environment\",\n        value: \"Dev\",\n    }],\n    vmSizes: [{\n        whitelists: [\"standard_ds2_v2\"],\n    }],\n    osDisk: {\n        sizeGb: 130,\n        type: \"Standard_LRS\",\n    },\n    images: [{\n        marketplaces: [{\n            publisher: \"Canonical\",\n            offer: \"UbuntuServer\",\n            sku: \"18.04-LTS\",\n            version: \"latest\",\n        }],\n    }],\n    strategies: [{\n        fallbackToOndemand: true,\n        spotPercentage: 40,\n    }],\n    health: {\n        gracePeriod: 10,\n    },\n    network: {\n        virtualNetworkName: \"vn-name\",\n        resourceGroupName: \"ocean-westus-dev\",\n        networkInterfaces: [{\n            subnetName: \"subnet-name\",\n            assignPublicIp: false,\n            isPrimary: false,\n            additionalIpConfigs: [{\n                name: \"ip-config-name\",\n                privateIpVersion: \"ipv4\",\n            }],\n        }],\n    },\n    extensions: [{\n        apiVersion: \"1.0\",\n        minorVersionAutoUpgrade: true,\n        name: \"extension-name\",\n        publisher: \"Microsoft.Azure.Extensions\",\n        type: \"Linux\",\n    }],\n    loadBalancers: [{\n        backendPoolNames: [\"terraform-backend-pool\"],\n        loadBalancerSku: \"Standard\",\n        name: \"load-balancer-name\",\n        resourceGroupName: \"resource-group-name\",\n        type: \"loadBalancer\",\n    }],\n    autoscaler: {\n        autoscaleIsEnabled: true,\n        autoscaleDown: {\n            maxScaleDownPercentage: 10,\n        },\n        resourceLimits: {\n            maxVcpu: 1024,\n            maxMemoryGib: 40,\n        },\n        autoscaleHeadroom: {\n            automatic: {\n                isEnabled: true,\n                percentage: 10,\n            },\n        },\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_spotinst as spotinst\n\nexample = spotinst.azure.Ocean(\"example\",\n    name=\"ocean-westus-dev-aks\",\n    controller_cluster_id=\"ocean-westus-dev-aks\",\n    zones=[\n        \"1\",\n        \"2\",\n        \"3\",\n    ],\n    acd_identifier=\"acd-12345678\",\n    aks_name=\"ocean-westus-dev-aks\",\n    aks_resource_group_name=\"ocean-westus-dev\",\n    ssh_public_key=\"ssh-rsa [... redacted ...] generated-by-azure\",\n    user_name=\"some-name\",\n    resource_group_name=\"some-resource-group-name\",\n    custom_data=\"[... redacted ...]\",\n    max_pods=30,\n    managed_service_identities=[spotinst.azure.OceanManagedServiceIdentityArgs(\n        resource_group_name=\"MC_ocean-westus-dev_ocean-westus-dev-aks_westus\",\n        name=\"ocean-westus-dev-aks-agentpool\",\n    )],\n    tags=[spotinst.azure.OceanTagArgs(\n        key=\"Environment\",\n        value=\"Dev\",\n    )],\n    vm_sizes=[spotinst.azure.OceanVmSizeArgs(\n        whitelists=[\"standard_ds2_v2\"],\n    )],\n    os_disk=spotinst.azure.OceanOsDiskArgs(\n        size_gb=130,\n        type=\"Standard_LRS\",\n    ),\n    images=[spotinst.azure.OceanImageArgs(\n        marketplaces=[spotinst.azure.OceanImageMarketplaceArgs(\n            publisher=\"Canonical\",\n            offer=\"UbuntuServer\",\n            sku=\"18.04-LTS\",\n            version=\"latest\",\n        )],\n    )],\n    strategies=[spotinst.azure.OceanStrategyArgs(\n        fallback_to_ondemand=True,\n        spot_percentage=40,\n    )],\n    health=spotinst.azure.OceanHealthArgs(\n        grace_period=10,\n    ),\n    network=spotinst.azure.OceanNetworkArgs(\n        virtual_network_name=\"vn-name\",\n        resource_group_name=\"ocean-westus-dev\",\n        network_interfaces=[spotinst.azure.OceanNetworkNetworkInterfaceArgs(\n            subnet_name=\"subnet-name\",\n            assign_public_ip=False,\n            is_primary=False,\n            additional_ip_configs=[spotinst.azure.OceanNetworkNetworkInterfaceAdditionalIpConfigArgs(\n                name=\"ip-config-name\",\n                private_ip_version=\"ipv4\",\n            )],\n        )],\n    ),\n    extensions=[spotinst.azure.OceanExtensionArgs(\n        api_version=\"1.0\",\n        minor_version_auto_upgrade=True,\n        name=\"extension-name\",\n        publisher=\"Microsoft.Azure.Extensions\",\n        type=\"Linux\",\n    )],\n    load_balancers=[spotinst.azure.OceanLoadBalancerArgs(\n        backend_pool_names=[\"terraform-backend-pool\"],\n        load_balancer_sku=\"Standard\",\n        name=\"load-balancer-name\",\n        resource_group_name=\"resource-group-name\",\n        type=\"loadBalancer\",\n    )],\n    autoscaler=spotinst.azure.OceanAutoscalerArgs(\n        autoscale_is_enabled=True,\n        autoscale_down=spotinst.azure.OceanAutoscalerAutoscaleDownArgs(\n            max_scale_down_percentage=10,\n        ),\n        resource_limits=spotinst.azure.OceanAutoscalerResourceLimitsArgs(\n            max_vcpu=1024,\n            max_memory_gib=40,\n        ),\n        autoscale_headroom=spotinst.azure.OceanAutoscalerAutoscaleHeadroomArgs(\n            automatic=spotinst.azure.OceanAutoscalerAutoscaleHeadroomAutomaticArgs(\n                is_enabled=True,\n                percentage=10,\n            ),\n        ),\n    ))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing SpotInst = Pulumi.SpotInst;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new SpotInst.Azure.Ocean(\"example\", new()\n    {\n        Name = \"ocean-westus-dev-aks\",\n        ControllerClusterId = \"ocean-westus-dev-aks\",\n        Zones = new[]\n        {\n            \"1\",\n            \"2\",\n            \"3\",\n        },\n        AcdIdentifier = \"acd-12345678\",\n        AksName = \"ocean-westus-dev-aks\",\n        AksResourceGroupName = \"ocean-westus-dev\",\n        SshPublicKey = \"ssh-rsa [... redacted ...] generated-by-azure\",\n        UserName = \"some-name\",\n        ResourceGroupName = \"some-resource-group-name\",\n        CustomData = \"[... redacted ...]\",\n        MaxPods = 30,\n        ManagedServiceIdentities = new[]\n        {\n            new SpotInst.Azure.Inputs.OceanManagedServiceIdentityArgs\n            {\n                ResourceGroupName = \"MC_ocean-westus-dev_ocean-westus-dev-aks_westus\",\n                Name = \"ocean-westus-dev-aks-agentpool\",\n            },\n        },\n        Tags = new[]\n        {\n            new SpotInst.Azure.Inputs.OceanTagArgs\n            {\n                Key = \"Environment\",\n                Value = \"Dev\",\n            },\n        },\n        VmSizes = new[]\n        {\n            new SpotInst.Azure.Inputs.OceanVmSizeArgs\n            {\n                Whitelists = new[]\n                {\n                    \"standard_ds2_v2\",\n                },\n            },\n        },\n        OsDisk = new SpotInst.Azure.Inputs.OceanOsDiskArgs\n        {\n            SizeGb = 130,\n            Type = \"Standard_LRS\",\n        },\n        Images = new[]\n        {\n            new SpotInst.Azure.Inputs.OceanImageArgs\n            {\n                Marketplaces = new[]\n                {\n                    new SpotInst.Azure.Inputs.OceanImageMarketplaceArgs\n                    {\n                        Publisher = \"Canonical\",\n                        Offer = \"UbuntuServer\",\n                        Sku = \"18.04-LTS\",\n                        Version = \"latest\",\n                    },\n                },\n            },\n        },\n        Strategies = new[]\n        {\n            new SpotInst.Azure.Inputs.OceanStrategyArgs\n            {\n                FallbackToOndemand = true,\n                SpotPercentage = 40,\n            },\n        },\n        Health = new SpotInst.Azure.Inputs.OceanHealthArgs\n        {\n            GracePeriod = 10,\n        },\n        Network = new SpotInst.Azure.Inputs.OceanNetworkArgs\n        {\n            VirtualNetworkName = \"vn-name\",\n            ResourceGroupName = \"ocean-westus-dev\",\n            NetworkInterfaces = new[]\n            {\n                new SpotInst.Azure.Inputs.OceanNetworkNetworkInterfaceArgs\n                {\n                    SubnetName = \"subnet-name\",\n                    AssignPublicIp = false,\n                    IsPrimary = false,\n                    AdditionalIpConfigs = new[]\n                    {\n                        new SpotInst.Azure.Inputs.OceanNetworkNetworkInterfaceAdditionalIpConfigArgs\n                        {\n                            Name = \"ip-config-name\",\n                            PrivateIpVersion = \"ipv4\",\n                        },\n                    },\n                },\n            },\n        },\n        Extensions = new[]\n        {\n            new SpotInst.Azure.Inputs.OceanExtensionArgs\n            {\n                ApiVersion = \"1.0\",\n                MinorVersionAutoUpgrade = true,\n                Name = \"extension-name\",\n                Publisher = \"Microsoft.Azure.Extensions\",\n                Type = \"Linux\",\n            },\n        },\n        LoadBalancers = new[]\n        {\n            new SpotInst.Azure.Inputs.OceanLoadBalancerArgs\n            {\n                BackendPoolNames = new[]\n                {\n                    \"terraform-backend-pool\",\n                },\n                LoadBalancerSku = \"Standard\",\n                Name = \"load-balancer-name\",\n                ResourceGroupName = \"resource-group-name\",\n                Type = \"loadBalancer\",\n            },\n        },\n        Autoscaler = new SpotInst.Azure.Inputs.OceanAutoscalerArgs\n        {\n            AutoscaleIsEnabled = true,\n            AutoscaleDown = new SpotInst.Azure.Inputs.OceanAutoscalerAutoscaleDownArgs\n            {\n                MaxScaleDownPercentage = 10,\n            },\n            ResourceLimits = new SpotInst.Azure.Inputs.OceanAutoscalerResourceLimitsArgs\n            {\n                MaxVcpu = 1024,\n                MaxMemoryGib = 40,\n            },\n            AutoscaleHeadroom = new SpotInst.Azure.Inputs.OceanAutoscalerAutoscaleHeadroomArgs\n            {\n                Automatic = new SpotInst.Azure.Inputs.OceanAutoscalerAutoscaleHeadroomAutomaticArgs\n                {\n                    IsEnabled = true,\n                    Percentage = 10,\n                },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst/azure\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := azure.NewOcean(ctx, \"example\", \u0026azure.OceanArgs{\n\t\t\tName:                pulumi.String(\"ocean-westus-dev-aks\"),\n\t\t\tControllerClusterId: pulumi.String(\"ocean-westus-dev-aks\"),\n\t\t\tZones: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"1\"),\n\t\t\t\tpulumi.String(\"2\"),\n\t\t\t\tpulumi.String(\"3\"),\n\t\t\t},\n\t\t\tAcdIdentifier:        pulumi.String(\"acd-12345678\"),\n\t\t\tAksName:              pulumi.String(\"ocean-westus-dev-aks\"),\n\t\t\tAksResourceGroupName: pulumi.String(\"ocean-westus-dev\"),\n\t\t\tSshPublicKey:         pulumi.String(\"ssh-rsa [... redacted ...] generated-by-azure\"),\n\t\t\tUserName:             pulumi.String(\"some-name\"),\n\t\t\tResourceGroupName:    pulumi.String(\"some-resource-group-name\"),\n\t\t\tCustomData:           pulumi.String(\"[... redacted ...]\"),\n\t\t\tMaxPods:              pulumi.Int(30),\n\t\t\tManagedServiceIdentities: azure.OceanManagedServiceIdentityArray{\n\t\t\t\t\u0026azure.OceanManagedServiceIdentityArgs{\n\t\t\t\t\tResourceGroupName: pulumi.String(\"MC_ocean-westus-dev_ocean-westus-dev-aks_westus\"),\n\t\t\t\t\tName:              pulumi.String(\"ocean-westus-dev-aks-agentpool\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tTags: azure.OceanTagArray{\n\t\t\t\t\u0026azure.OceanTagArgs{\n\t\t\t\t\tKey:   pulumi.String(\"Environment\"),\n\t\t\t\t\tValue: pulumi.String(\"Dev\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tVmSizes: azure.OceanVmSizeArray{\n\t\t\t\t\u0026azure.OceanVmSizeArgs{\n\t\t\t\t\tWhitelists: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"standard_ds2_v2\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tOsDisk: \u0026azure.OceanOsDiskArgs{\n\t\t\t\tSizeGb: pulumi.Int(130),\n\t\t\t\tType:   pulumi.String(\"Standard_LRS\"),\n\t\t\t},\n\t\t\tImages: azure.OceanImageArray{\n\t\t\t\t\u0026azure.OceanImageArgs{\n\t\t\t\t\tMarketplaces: azure.OceanImageMarketplaceArray{\n\t\t\t\t\t\t\u0026azure.OceanImageMarketplaceArgs{\n\t\t\t\t\t\t\tPublisher: pulumi.String(\"Canonical\"),\n\t\t\t\t\t\t\tOffer:     pulumi.String(\"UbuntuServer\"),\n\t\t\t\t\t\t\tSku:       pulumi.String(\"18.04-LTS\"),\n\t\t\t\t\t\t\tVersion:   pulumi.String(\"latest\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tStrategies: azure.OceanStrategyArray{\n\t\t\t\t\u0026azure.OceanStrategyArgs{\n\t\t\t\t\tFallbackToOndemand: pulumi.Bool(true),\n\t\t\t\t\tSpotPercentage:     pulumi.Int(40),\n\t\t\t\t},\n\t\t\t},\n\t\t\tHealth: \u0026azure.OceanHealthArgs{\n\t\t\t\tGracePeriod: pulumi.Int(10),\n\t\t\t},\n\t\t\tNetwork: \u0026azure.OceanNetworkArgs{\n\t\t\t\tVirtualNetworkName: pulumi.String(\"vn-name\"),\n\t\t\t\tResourceGroupName:  pulumi.String(\"ocean-westus-dev\"),\n\t\t\t\tNetworkInterfaces: azure.OceanNetworkNetworkInterfaceArray{\n\t\t\t\t\t\u0026azure.OceanNetworkNetworkInterfaceArgs{\n\t\t\t\t\t\tSubnetName:     pulumi.String(\"subnet-name\"),\n\t\t\t\t\t\tAssignPublicIp: pulumi.Bool(false),\n\t\t\t\t\t\tIsPrimary:      pulumi.Bool(false),\n\t\t\t\t\t\tAdditionalIpConfigs: azure.OceanNetworkNetworkInterfaceAdditionalIpConfigArray{\n\t\t\t\t\t\t\t\u0026azure.OceanNetworkNetworkInterfaceAdditionalIpConfigArgs{\n\t\t\t\t\t\t\t\tName:             pulumi.String(\"ip-config-name\"),\n\t\t\t\t\t\t\t\tPrivateIpVersion: pulumi.String(\"ipv4\"),\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tExtensions: azure.OceanExtensionArray{\n\t\t\t\t\u0026azure.OceanExtensionArgs{\n\t\t\t\t\tApiVersion:              pulumi.String(\"1.0\"),\n\t\t\t\t\tMinorVersionAutoUpgrade: pulumi.Bool(true),\n\t\t\t\t\tName:                    pulumi.String(\"extension-name\"),\n\t\t\t\t\tPublisher:               pulumi.String(\"Microsoft.Azure.Extensions\"),\n\t\t\t\t\tType:                    pulumi.String(\"Linux\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tLoadBalancers: azure.OceanLoadBalancerArray{\n\t\t\t\t\u0026azure.OceanLoadBalancerArgs{\n\t\t\t\t\tBackendPoolNames: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"terraform-backend-pool\"),\n\t\t\t\t\t},\n\t\t\t\t\tLoadBalancerSku:   pulumi.String(\"Standard\"),\n\t\t\t\t\tName:              pulumi.String(\"load-balancer-name\"),\n\t\t\t\t\tResourceGroupName: pulumi.String(\"resource-group-name\"),\n\t\t\t\t\tType:              pulumi.String(\"loadBalancer\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tAutoscaler: \u0026azure.OceanAutoscalerArgs{\n\t\t\t\tAutoscaleIsEnabled: pulumi.Bool(true),\n\t\t\t\tAutoscaleDown: \u0026azure.OceanAutoscalerAutoscaleDownArgs{\n\t\t\t\t\tMaxScaleDownPercentage: pulumi.Float64(10),\n\t\t\t\t},\n\t\t\t\tResourceLimits: \u0026azure.OceanAutoscalerResourceLimitsArgs{\n\t\t\t\t\tMaxVcpu:      pulumi.Int(1024),\n\t\t\t\t\tMaxMemoryGib: pulumi.Int(40),\n\t\t\t\t},\n\t\t\t\tAutoscaleHeadroom: \u0026azure.OceanAutoscalerAutoscaleHeadroomArgs{\n\t\t\t\t\tAutomatic: \u0026azure.OceanAutoscalerAutoscaleHeadroomAutomaticArgs{\n\t\t\t\t\t\tIsEnabled:  pulumi.Bool(true),\n\t\t\t\t\t\tPercentage: pulumi.Int(10),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.spotinst.azure.Ocean;\nimport com.pulumi.spotinst.azure.OceanArgs;\nimport com.pulumi.spotinst.azure.inputs.OceanManagedServiceIdentityArgs;\nimport com.pulumi.spotinst.azure.inputs.OceanTagArgs;\nimport com.pulumi.spotinst.azure.inputs.OceanVmSizeArgs;\nimport com.pulumi.spotinst.azure.inputs.OceanOsDiskArgs;\nimport com.pulumi.spotinst.azure.inputs.OceanImageArgs;\nimport com.pulumi.spotinst.azure.inputs.OceanStrategyArgs;\nimport com.pulumi.spotinst.azure.inputs.OceanHealthArgs;\nimport com.pulumi.spotinst.azure.inputs.OceanNetworkArgs;\nimport com.pulumi.spotinst.azure.inputs.OceanExtensionArgs;\nimport com.pulumi.spotinst.azure.inputs.OceanLoadBalancerArgs;\nimport com.pulumi.spotinst.azure.inputs.OceanAutoscalerArgs;\nimport com.pulumi.spotinst.azure.inputs.OceanAutoscalerAutoscaleDownArgs;\nimport com.pulumi.spotinst.azure.inputs.OceanAutoscalerResourceLimitsArgs;\nimport com.pulumi.spotinst.azure.inputs.OceanAutoscalerAutoscaleHeadroomArgs;\nimport com.pulumi.spotinst.azure.inputs.OceanAutoscalerAutoscaleHeadroomAutomaticArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new Ocean(\"example\", OceanArgs.builder()        \n            .name(\"ocean-westus-dev-aks\")\n            .controllerClusterId(\"ocean-westus-dev-aks\")\n            .zones(            \n                \"1\",\n                \"2\",\n                \"3\")\n            .acdIdentifier(\"acd-12345678\")\n            .aksName(\"ocean-westus-dev-aks\")\n            .aksResourceGroupName(\"ocean-westus-dev\")\n            .sshPublicKey(\"ssh-rsa [... redacted ...] generated-by-azure\")\n            .userName(\"some-name\")\n            .resourceGroupName(\"some-resource-group-name\")\n            .customData(\"[... redacted ...]\")\n            .maxPods(30)\n            .managedServiceIdentities(OceanManagedServiceIdentityArgs.builder()\n                .resourceGroupName(\"MC_ocean-westus-dev_ocean-westus-dev-aks_westus\")\n                .name(\"ocean-westus-dev-aks-agentpool\")\n                .build())\n            .tags(OceanTagArgs.builder()\n                .key(\"Environment\")\n                .value(\"Dev\")\n                .build())\n            .vmSizes(OceanVmSizeArgs.builder()\n                .whitelists(\"standard_ds2_v2\")\n                .build())\n            .osDisk(OceanOsDiskArgs.builder()\n                .sizeGb(130)\n                .type(\"Standard_LRS\")\n                .build())\n            .images(OceanImageArgs.builder()\n                .marketplaces(OceanImageMarketplaceArgs.builder()\n                    .publisher(\"Canonical\")\n                    .offer(\"UbuntuServer\")\n                    .sku(\"18.04-LTS\")\n                    .version(\"latest\")\n                    .build())\n                .build())\n            .strategies(OceanStrategyArgs.builder()\n                .fallbackToOndemand(true)\n                .spotPercentage(40)\n                .build())\n            .health(OceanHealthArgs.builder()\n                .gracePeriod(10)\n                .build())\n            .network(OceanNetworkArgs.builder()\n                .virtualNetworkName(\"vn-name\")\n                .resourceGroupName(\"ocean-westus-dev\")\n                .networkInterfaces(OceanNetworkNetworkInterfaceArgs.builder()\n                    .subnetName(\"subnet-name\")\n                    .assignPublicIp(false)\n                    .isPrimary(false)\n                    .additionalIpConfigs(OceanNetworkNetworkInterfaceAdditionalIpConfigArgs.builder()\n                        .name(\"ip-config-name\")\n                        .privateIpVersion(\"ipv4\")\n                        .build())\n                    .build())\n                .build())\n            .extensions(OceanExtensionArgs.builder()\n                .apiVersion(\"1.0\")\n                .minorVersionAutoUpgrade(true)\n                .name(\"extension-name\")\n                .publisher(\"Microsoft.Azure.Extensions\")\n                .type(\"Linux\")\n                .build())\n            .loadBalancers(OceanLoadBalancerArgs.builder()\n                .backendPoolNames(\"terraform-backend-pool\")\n                .loadBalancerSku(\"Standard\")\n                .name(\"load-balancer-name\")\n                .resourceGroupName(\"resource-group-name\")\n                .type(\"loadBalancer\")\n                .build())\n            .autoscaler(OceanAutoscalerArgs.builder()\n                .autoscaleIsEnabled(true)\n                .autoscaleDown(OceanAutoscalerAutoscaleDownArgs.builder()\n                    .maxScaleDownPercentage(10)\n                    .build())\n                .resourceLimits(OceanAutoscalerResourceLimitsArgs.builder()\n                    .maxVcpu(1024)\n                    .maxMemoryGib(40)\n                    .build())\n                .autoscaleHeadroom(OceanAutoscalerAutoscaleHeadroomArgs.builder()\n                    .automatic(OceanAutoscalerAutoscaleHeadroomAutomaticArgs.builder()\n                        .isEnabled(true)\n                        .percentage(10)\n                        .build())\n                    .build())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: spotinst:azure:Ocean\n    properties:\n      name: ocean-westus-dev-aks\n      controllerClusterId: ocean-westus-dev-aks\n      zones:\n        - '1'\n        - '2'\n        - '3'\n      acdIdentifier: acd-12345678\n      aksName: ocean-westus-dev-aks\n      aksResourceGroupName: ocean-westus-dev\n      sshPublicKey: ssh-rsa [... redacted ...] generated-by-azure\n      userName: some-name\n      resourceGroupName: some-resource-group-name\n      customData: '[... redacted ...]'\n      maxPods: 30\n      managedServiceIdentities:\n        - resourceGroupName: MC_ocean-westus-dev_ocean-westus-dev-aks_westus\n          name: ocean-westus-dev-aks-agentpool\n      tags:\n        - key: Environment\n          value: Dev\n      vmSizes:\n        - whitelists:\n            - standard_ds2_v2\n      osDisk:\n        sizeGb: 130\n        type: Standard_LRS\n      images:\n        - marketplaces:\n            - publisher: Canonical\n              offer: UbuntuServer\n              sku: 18.04-LTS\n              version: latest\n      strategies:\n        - fallbackToOndemand: true\n          spotPercentage: 40\n      health:\n        gracePeriod: 10\n      network:\n        virtualNetworkName: vn-name\n        resourceGroupName: ocean-westus-dev\n        networkInterfaces:\n          - subnetName: subnet-name\n            assignPublicIp: false\n            isPrimary: false\n            additionalIpConfigs:\n              - name: ip-config-name\n                privateIpVersion: ipv4\n      extensions:\n        - apiVersion: '1.0'\n          minorVersionAutoUpgrade: true\n          name: extension-name\n          publisher: Microsoft.Azure.Extensions\n          type: Linux\n      loadBalancers:\n        - backendPoolNames:\n            - terraform-backend-pool\n          loadBalancerSku: Standard\n          name: load-balancer-name\n          resourceGroupName: resource-group-name\n          type: loadBalancer\n      autoscaler:\n        autoscaleIsEnabled: true\n        autoscaleDown:\n          maxScaleDownPercentage: 10\n        resourceLimits:\n          maxVcpu: 1024\n          maxMemoryGib: 40\n        autoscaleHeadroom:\n          automatic:\n            isEnabled: true\n            percentage: 10\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n```\noutput \"ocean_id\" {\n  value = spotinst_ocean_aks.example.id\n}\n```\n",
             "properties": {
@@ -13384,6 +12610,7 @@
             }
         },
         "spotinst:azure/oceanNp:OceanNp": {
+            "description": "Manages a Spotinst Ocean AKS resource.\n\n## Basic Ocean Cluster Creation Usage Example - using minimum configuration with only required parameters\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as spotinst from \"@pulumi/spotinst\";\n\nconst example = new spotinst.azure.OceanNp(\"example\", {\n    name: \"test\",\n    aksRegion: \"eastus\",\n    aksClusterName: \"test-cluster\",\n    aksInfrastructureResourceGroupName: \"MC_TestResourceGroup_test-cluster_eastus\",\n    aksResourceGroupName: \"TestResourceGroup\",\n    controllerClusterId: \"test-123124\",\n    availabilityZones: [\n        \"1\",\n        \"2\",\n        \"3\",\n    ],\n});\n```\n```python\nimport pulumi\nimport pulumi_spotinst as spotinst\n\nexample = spotinst.azure.OceanNp(\"example\",\n    name=\"test\",\n    aks_region=\"eastus\",\n    aks_cluster_name=\"test-cluster\",\n    aks_infrastructure_resource_group_name=\"MC_TestResourceGroup_test-cluster_eastus\",\n    aks_resource_group_name=\"TestResourceGroup\",\n    controller_cluster_id=\"test-123124\",\n    availability_zones=[\n        \"1\",\n        \"2\",\n        \"3\",\n    ])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing SpotInst = Pulumi.SpotInst;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new SpotInst.Azure.OceanNp(\"example\", new()\n    {\n        Name = \"test\",\n        AksRegion = \"eastus\",\n        AksClusterName = \"test-cluster\",\n        AksInfrastructureResourceGroupName = \"MC_TestResourceGroup_test-cluster_eastus\",\n        AksResourceGroupName = \"TestResourceGroup\",\n        ControllerClusterId = \"test-123124\",\n        AvailabilityZones = new[]\n        {\n            \"1\",\n            \"2\",\n            \"3\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst/azure\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := azure.NewOceanNp(ctx, \"example\", \u0026azure.OceanNpArgs{\n\t\t\tName:                               pulumi.String(\"test\"),\n\t\t\tAksRegion:                          pulumi.String(\"eastus\"),\n\t\t\tAksClusterName:                     pulumi.String(\"test-cluster\"),\n\t\t\tAksInfrastructureResourceGroupName: pulumi.String(\"MC_TestResourceGroup_test-cluster_eastus\"),\n\t\t\tAksResourceGroupName:               pulumi.String(\"TestResourceGroup\"),\n\t\t\tControllerClusterId:                pulumi.String(\"test-123124\"),\n\t\t\tAvailabilityZones: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"1\"),\n\t\t\t\tpulumi.String(\"2\"),\n\t\t\t\tpulumi.String(\"3\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.spotinst.azure.OceanNp;\nimport com.pulumi.spotinst.azure.OceanNpArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new OceanNp(\"example\", OceanNpArgs.builder()        \n            .name(\"test\")\n            .aksRegion(\"eastus\")\n            .aksClusterName(\"test-cluster\")\n            .aksInfrastructureResourceGroupName(\"MC_TestResourceGroup_test-cluster_eastus\")\n            .aksResourceGroupName(\"TestResourceGroup\")\n            .controllerClusterId(\"test-123124\")\n            .availabilityZones(            \n                \"1\",\n                \"2\",\n                \"3\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: spotinst:azure:OceanNp\n    properties:\n      name: test\n      aksRegion: eastus\n      aksClusterName: test-cluster\n      aksInfrastructureResourceGroupName: MC_TestResourceGroup_test-cluster_eastus\n      aksResourceGroupName: TestResourceGroup\n      controllerClusterId: test-123124\n      availabilityZones: # -------------------------------------------------------------------\n        - '1'\n        - '2'\n        - '3'\n```\n\u003c!--End PulumiCodeChooser --\u003e  \n  \n## Detailed Ocean Cluster Creation Usage Example - using all available parameters with sample values\n\n```hcl  \nresource \"spotinst_ocean_aks_np\" \"example\" {\n  \n  name = \"test\"\n  \n  // --- AKS -------------------------------------------------------------------------\n  \n  aks_region                             = \"eastus\"\n  aks_cluster_name                       = \"test-cluster\"\n  aks_infrastructure_resource_group_name = \"MC_TestResourceGroup_test-cluster_eastus\"\n  aks_resource_group_name                = \"TestResourceGroup\"\n  \n  // ---------------------------------------------------------------------------------\n\n  controller_cluster_id = \"test-123124\"\n\n  // --- Auto Scaler ---------------------------------------------------\n  \n  autoscaler {\n    autoscale_is_enabled = true\n    resource_limits {\n      max_vcpu       = 750\n      max_memory_gib = 1500\n    }\n    autoscale_down {\n      max_scale_down_percentage = 30\n    }\n    autoscale_headroom {\n      automatic {\n        is_enabled = true\n        percentage = 5\n      }\n    }\n  }\n  \n  // ----------------------------------------------------------------------\n\n  // --- Health -----------------------------------------------------------\n  \n  health {\n    grace_period = 600\n  }\n  \n  // ----------------------------------------------------------------------\n\n  // --- Scheduling -------------------------------------------------------\n  \n  scheduling {\n    shutdown_hours{\n      is_enabled   = true\n      time_windows = [\"Sat:08:00-Sun:08:00\"]\n    }\n  }\n  \n  // ----------------------------------------------------------------------\n\n  // --- virtualNodeGroupTemplate -----------------------------------------\n\n  // --- autoscale --------------------------------------------------------\n  headrooms {\n    cpu_per_unit    = 1024\n    memory_per_unit = 512\n    gpu_per_unit    = 0\n    num_of_units    = 2\n  }\n  // ----------------------------------------------------------------------\n  \n  availability_zones = [\n    \"1\",\n    \"2\",\n    \"3\"\n  ]\n  labels = {\n    key   = \"env\"\n    value = \"test\"\n  }\n  \n  // --- nodeCountLimits --------------------------------------------------\n  \n  min_count = 1\n  max_count = 100\n  \n  // ----------------------------------------------------------------------\n\n  // --- nodePoolProperties -----------------------------------------------\n  \n  max_pods_per_node     = 30\n  enable_node_public_ip = true\n  os_disk_size_gb       = 30\n  os_disk_type          = \"Managed\"\n  os_type               = \"Windows\"\n  os_sku                = \"Windows2022\"\n  kubernetes_version    = \"1.26\"\n  pod_subnet_ids       = [\"/subscriptions/123456-1234-1234-1234-123456789/resourceGroups/ExampleResourceGroup/providers/Microsoft.Network/virtualNetworks/ExampleVirtualNetwork/subnets/default\"]\n  vnet_subnet_ids       = [\"/subscriptions/123456-1234-1234-1234-123456789/resourceGroups/ExampleResourceGroup/providers/Microsoft.Network/virtualNetworks/ExampleVirtualNetwork/subnets/default\"]\n\n  // ----------------------------------------------------------------------\n\n  // --- strategy ---------------------------------------------------------\n  \n  spot_percentage      = 50\n  fallback_to_ondemand = true\n\n  // ----------------------------------------------------------------------\n\n  taints {\n    key    = \"taintKey\"\n    value  = \"taintValue\"\n    effect = \"NoSchedule\"\n  }\n\n  tags = {\n    tagKey   = \"env\"\n    tagValue = \"staging\"\n  }\n  // --- vmSizes ----------------------------------------------------------\n  \n  filters {\n    min_vcpu               = 2\n    max_vcpu               = 16\n    min_memory_gib         = 8\n    max_memory_gib         = 128\n    architectures          = [\"x86_64\", \"arm64\"]\n    series                 = [\"D v3\", \"Dds_v4\", \"Dsv2\"]\n    exclude_series         = [\"Av2\", \"A\", \"Bs\", \"D\", \"E\"]\n    accelerated_networking = \"Enabled\"\n    disk_performance       = \"Premium\"\n    min_gpu                = 1\n    max_gpu                = 2\n    min_nics               = 1\n    vm_types               = [\"generalPurpose\", \"GPU\"]\n    min_disk               = 1\n    gpu_types              = [\"nvidia-tesla-t4\"]\n  }\n  \n  // ----------------------------------------------------------------------\n}\n```\n\n```\noutput \"ocean_id\" {\n  value = spotinst_ocean_aks_np.example.id\n}\n```\n\n",
             "properties": {
                 "aksClusterName": {
                     "type": "string"
@@ -13398,79 +12625,100 @@
                     "type": "string"
                 },
                 "autoscaler": {
-                    "$ref": "#/types/spotinst:azure/OceanNpAutoscaler:OceanNpAutoscaler"
+                    "$ref": "#/types/spotinst:azure/OceanNpAutoscaler:OceanNpAutoscaler",
+                    "description": "The Ocean Kubernetes Autoscaler object.\n"
                 },
                 "availabilityZones": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "An Array holding Availability Zones, this configures the availability zones the Ocean may launch instances in per VNG.\n"
                 },
                 "controllerClusterId": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Enter a unique Ocean cluster identifier. Cannot be updated. This needs to match with string that was used to install the controller in the cluster, typically clusterName + 8 digit string.\n"
                 },
                 "enableNodePublicIp": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Enable node public IP.\n"
                 },
                 "fallbackToOndemand": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "If no spot VM markets are available, enable Ocean to launch regular (pay-as-you-go) nodes instead.\n"
                 },
                 "filters": {
-                    "$ref": "#/types/spotinst:azure/OceanNpFilters:OceanNpFilters"
+                    "$ref": "#/types/spotinst:azure/OceanNpFilters:OceanNpFilters",
+                    "description": "Filters for the VM sizes that can be launched from the virtual node group.\n"
                 },
                 "headrooms": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/spotinst:azure/OceanNpHeadroom:OceanNpHeadroom"
-                    }
+                    },
+                    "description": "Specify the custom headroom per VNG. Provide a list of headroom objects.\n"
                 },
                 "health": {
-                    "$ref": "#/types/spotinst:azure/OceanNpHealth:OceanNpHealth"
+                    "$ref": "#/types/spotinst:azure/OceanNpHealth:OceanNpHealth",
+                    "description": "The Ocean AKS Health object.\n"
                 },
                 "kubernetesVersion": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The desired Kubernetes version of the launched nodes. In case the value is null, the Kubernetes version of the control plane is used.\n"
                 },
                 "labels": {
                     "type": "object",
                     "additionalProperties": {
                         "$ref": "pulumi.json#/Any"
-                    }
+                    },
+                    "description": "An array of labels to add to the virtual node group. Only custom user labels are allowed, and not [Kubernetes well-known labels](https://kubernetes.io/docs/reference/labels-annotations-taints/) or [ Azure AKS labels](https://learn.microsoft.com/en-us/azure/aks/use-labels) or [Spot labels](https://docs.spot.io/ocean/features/labels-and-taints?id=spot-labels).\n"
                 },
                 "maxCount": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Maximum node count limit.\n"
                 },
                 "maxPodsPerNode": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The maximum number of pods per node in the node pools.\n"
                 },
                 "minCount": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Minimum node count limit.\n"
                 },
                 "name": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Add a name for the Ocean cluster.\n"
                 },
                 "osDiskSizeGb": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The size of the OS disk in GB.\n"
                 },
                 "osDiskType": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The type of the OS disk.\n"
                 },
                 "osSku": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The OS SKU of the OS type. Must correlate with the os type.\n"
                 },
                 "osType": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The OS type of the OS disk. Can't be modified once set.\n"
                 },
                 "podSubnetIds": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "The IDs of subnets in an existing VNet into which to assign pods in the cluster (requires azure network-plugin).\n"
                 },
                 "scheduling": {
-                    "$ref": "#/types/spotinst:azure/OceanNpScheduling:OceanNpScheduling"
+                    "$ref": "#/types/spotinst:azure/OceanNpScheduling:OceanNpScheduling",
+                    "description": "An object used to specify times when the cluster will turn off. Once the shutdown time will be over, the cluster will return to its previous state.\n"
                 },
                 "spotPercentage": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Percentage of spot VMs to maintain.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -13482,7 +12730,8 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/spotinst:azure/OceanNpTaint:OceanNpTaint"
-                    }
+                    },
+                    "description": "Add taints to a virtual node group. Only custom user taints are allowed, and not [Kubernetes well-known taints](https://kubernetes.io/docs/reference/labels-annotations-taints/) or Azure AKS [ScaleSetPrioirty (Spot VM) taint](https://learn.microsoft.com/en-us/azure/aks/spot-node-pool). For all Spot VMs, AKS injects a taint kubernetes.azure.com/scalesetpriority=spot:NoSchedule, to ensure that only workloads that can handle interruptions are scheduled on Spot nodes. To [schedule a pod to run on Spot node](https://learn.microsoft.com/en-us/azure/aks/spot-node-pool#schedule-a-pod-to-run-on-the-spot-node), add a toleration but dont include the nodeAffinity (not supported for Spot Ocean), this will prevent the pod from being scheduled using Spot Ocean.\n"
                 },
                 "updatePolicy": {
                     "$ref": "#/types/spotinst:azure/OceanNpUpdatePolicy:OceanNpUpdatePolicy"
@@ -13491,7 +12740,8 @@
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "The IDs of subnets in an existing VNet into which to assign nodes in the cluster (requires azure network-plugin).\n"
                 }
             },
             "required": [
@@ -13517,79 +12767,100 @@
                     "type": "string"
                 },
                 "autoscaler": {
-                    "$ref": "#/types/spotinst:azure/OceanNpAutoscaler:OceanNpAutoscaler"
+                    "$ref": "#/types/spotinst:azure/OceanNpAutoscaler:OceanNpAutoscaler",
+                    "description": "The Ocean Kubernetes Autoscaler object.\n"
                 },
                 "availabilityZones": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "An Array holding Availability Zones, this configures the availability zones the Ocean may launch instances in per VNG.\n"
                 },
                 "controllerClusterId": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Enter a unique Ocean cluster identifier. Cannot be updated. This needs to match with string that was used to install the controller in the cluster, typically clusterName + 8 digit string.\n"
                 },
                 "enableNodePublicIp": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Enable node public IP.\n"
                 },
                 "fallbackToOndemand": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "If no spot VM markets are available, enable Ocean to launch regular (pay-as-you-go) nodes instead.\n"
                 },
                 "filters": {
-                    "$ref": "#/types/spotinst:azure/OceanNpFilters:OceanNpFilters"
+                    "$ref": "#/types/spotinst:azure/OceanNpFilters:OceanNpFilters",
+                    "description": "Filters for the VM sizes that can be launched from the virtual node group.\n"
                 },
                 "headrooms": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/spotinst:azure/OceanNpHeadroom:OceanNpHeadroom"
-                    }
+                    },
+                    "description": "Specify the custom headroom per VNG. Provide a list of headroom objects.\n"
                 },
                 "health": {
-                    "$ref": "#/types/spotinst:azure/OceanNpHealth:OceanNpHealth"
+                    "$ref": "#/types/spotinst:azure/OceanNpHealth:OceanNpHealth",
+                    "description": "The Ocean AKS Health object.\n"
                 },
                 "kubernetesVersion": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The desired Kubernetes version of the launched nodes. In case the value is null, the Kubernetes version of the control plane is used.\n"
                 },
                 "labels": {
                     "type": "object",
                     "additionalProperties": {
                         "$ref": "pulumi.json#/Any"
-                    }
+                    },
+                    "description": "An array of labels to add to the virtual node group. Only custom user labels are allowed, and not [Kubernetes well-known labels](https://kubernetes.io/docs/reference/labels-annotations-taints/) or [ Azure AKS labels](https://learn.microsoft.com/en-us/azure/aks/use-labels) or [Spot labels](https://docs.spot.io/ocean/features/labels-and-taints?id=spot-labels).\n"
                 },
                 "maxCount": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Maximum node count limit.\n"
                 },
                 "maxPodsPerNode": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The maximum number of pods per node in the node pools.\n"
                 },
                 "minCount": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Minimum node count limit.\n"
                 },
                 "name": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Add a name for the Ocean cluster.\n"
                 },
                 "osDiskSizeGb": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The size of the OS disk in GB.\n"
                 },
                 "osDiskType": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The type of the OS disk.\n"
                 },
                 "osSku": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The OS SKU of the OS type. Must correlate with the os type.\n"
                 },
                 "osType": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The OS type of the OS disk. Can't be modified once set.\n"
                 },
                 "podSubnetIds": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "The IDs of subnets in an existing VNet into which to assign pods in the cluster (requires azure network-plugin).\n"
                 },
                 "scheduling": {
-                    "$ref": "#/types/spotinst:azure/OceanNpScheduling:OceanNpScheduling"
+                    "$ref": "#/types/spotinst:azure/OceanNpScheduling:OceanNpScheduling",
+                    "description": "An object used to specify times when the cluster will turn off. Once the shutdown time will be over, the cluster will return to its previous state.\n"
                 },
                 "spotPercentage": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Percentage of spot VMs to maintain.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -13601,7 +12872,8 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/spotinst:azure/OceanNpTaint:OceanNpTaint"
-                    }
+                    },
+                    "description": "Add taints to a virtual node group. Only custom user taints are allowed, and not [Kubernetes well-known taints](https://kubernetes.io/docs/reference/labels-annotations-taints/) or Azure AKS [ScaleSetPrioirty (Spot VM) taint](https://learn.microsoft.com/en-us/azure/aks/spot-node-pool). For all Spot VMs, AKS injects a taint kubernetes.azure.com/scalesetpriority=spot:NoSchedule, to ensure that only workloads that can handle interruptions are scheduled on Spot nodes. To [schedule a pod to run on Spot node](https://learn.microsoft.com/en-us/azure/aks/spot-node-pool#schedule-a-pod-to-run-on-the-spot-node), add a toleration but dont include the nodeAffinity (not supported for Spot Ocean), this will prevent the pod from being scheduled using Spot Ocean.\n"
                 },
                 "updatePolicy": {
                     "$ref": "#/types/spotinst:azure/OceanNpUpdatePolicy:OceanNpUpdatePolicy"
@@ -13610,7 +12882,8 @@
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "The IDs of subnets in an existing VNet into which to assign nodes in the cluster (requires azure network-plugin).\n"
                 }
             },
             "requiredInputs": [
@@ -13637,79 +12910,100 @@
                         "type": "string"
                     },
                     "autoscaler": {
-                        "$ref": "#/types/spotinst:azure/OceanNpAutoscaler:OceanNpAutoscaler"
+                        "$ref": "#/types/spotinst:azure/OceanNpAutoscaler:OceanNpAutoscaler",
+                        "description": "The Ocean Kubernetes Autoscaler object.\n"
                     },
                     "availabilityZones": {
                         "type": "array",
                         "items": {
                             "type": "string"
-                        }
+                        },
+                        "description": "An Array holding Availability Zones, this configures the availability zones the Ocean may launch instances in per VNG.\n"
                     },
                     "controllerClusterId": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Enter a unique Ocean cluster identifier. Cannot be updated. This needs to match with string that was used to install the controller in the cluster, typically clusterName + 8 digit string.\n"
                     },
                     "enableNodePublicIp": {
-                        "type": "boolean"
+                        "type": "boolean",
+                        "description": "Enable node public IP.\n"
                     },
                     "fallbackToOndemand": {
-                        "type": "boolean"
+                        "type": "boolean",
+                        "description": "If no spot VM markets are available, enable Ocean to launch regular (pay-as-you-go) nodes instead.\n"
                     },
                     "filters": {
-                        "$ref": "#/types/spotinst:azure/OceanNpFilters:OceanNpFilters"
+                        "$ref": "#/types/spotinst:azure/OceanNpFilters:OceanNpFilters",
+                        "description": "Filters for the VM sizes that can be launched from the virtual node group.\n"
                     },
                     "headrooms": {
                         "type": "array",
                         "items": {
                             "$ref": "#/types/spotinst:azure/OceanNpHeadroom:OceanNpHeadroom"
-                        }
+                        },
+                        "description": "Specify the custom headroom per VNG. Provide a list of headroom objects.\n"
                     },
                     "health": {
-                        "$ref": "#/types/spotinst:azure/OceanNpHealth:OceanNpHealth"
+                        "$ref": "#/types/spotinst:azure/OceanNpHealth:OceanNpHealth",
+                        "description": "The Ocean AKS Health object.\n"
                     },
                     "kubernetesVersion": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "The desired Kubernetes version of the launched nodes. In case the value is null, the Kubernetes version of the control plane is used.\n"
                     },
                     "labels": {
                         "type": "object",
                         "additionalProperties": {
                             "$ref": "pulumi.json#/Any"
-                        }
+                        },
+                        "description": "An array of labels to add to the virtual node group. Only custom user labels are allowed, and not [Kubernetes well-known labels](https://kubernetes.io/docs/reference/labels-annotations-taints/) or [ Azure AKS labels](https://learn.microsoft.com/en-us/azure/aks/use-labels) or [Spot labels](https://docs.spot.io/ocean/features/labels-and-taints?id=spot-labels).\n"
                     },
                     "maxCount": {
-                        "type": "integer"
+                        "type": "integer",
+                        "description": "Maximum node count limit.\n"
                     },
                     "maxPodsPerNode": {
-                        "type": "integer"
+                        "type": "integer",
+                        "description": "The maximum number of pods per node in the node pools.\n"
                     },
                     "minCount": {
-                        "type": "integer"
+                        "type": "integer",
+                        "description": "Minimum node count limit.\n"
                     },
                     "name": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Add a name for the Ocean cluster.\n"
                     },
                     "osDiskSizeGb": {
-                        "type": "integer"
+                        "type": "integer",
+                        "description": "The size of the OS disk in GB.\n"
                     },
                     "osDiskType": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "The type of the OS disk.\n"
                     },
                     "osSku": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "The OS SKU of the OS type. Must correlate with the os type.\n"
                     },
                     "osType": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "The OS type of the OS disk. Can't be modified once set.\n"
                     },
                     "podSubnetIds": {
                         "type": "array",
                         "items": {
                             "type": "string"
-                        }
+                        },
+                        "description": "The IDs of subnets in an existing VNet into which to assign pods in the cluster (requires azure network-plugin).\n"
                     },
                     "scheduling": {
-                        "$ref": "#/types/spotinst:azure/OceanNpScheduling:OceanNpScheduling"
+                        "$ref": "#/types/spotinst:azure/OceanNpScheduling:OceanNpScheduling",
+                        "description": "An object used to specify times when the cluster will turn off. Once the shutdown time will be over, the cluster will return to its previous state.\n"
                     },
                     "spotPercentage": {
-                        "type": "integer"
+                        "type": "integer",
+                        "description": "Percentage of spot VMs to maintain.\n"
                     },
                     "tags": {
                         "type": "object",
@@ -13721,7 +13015,8 @@
                         "type": "array",
                         "items": {
                             "$ref": "#/types/spotinst:azure/OceanNpTaint:OceanNpTaint"
-                        }
+                        },
+                        "description": "Add taints to a virtual node group. Only custom user taints are allowed, and not [Kubernetes well-known taints](https://kubernetes.io/docs/reference/labels-annotations-taints/) or Azure AKS [ScaleSetPrioirty (Spot VM) taint](https://learn.microsoft.com/en-us/azure/aks/spot-node-pool). For all Spot VMs, AKS injects a taint kubernetes.azure.com/scalesetpriority=spot:NoSchedule, to ensure that only workloads that can handle interruptions are scheduled on Spot nodes. To [schedule a pod to run on Spot node](https://learn.microsoft.com/en-us/azure/aks/spot-node-pool#schedule-a-pod-to-run-on-the-spot-node), add a toleration but dont include the nodeAffinity (not supported for Spot Ocean), this will prevent the pod from being scheduled using Spot Ocean.\n"
                     },
                     "updatePolicy": {
                         "$ref": "#/types/spotinst:azure/OceanNpUpdatePolicy:OceanNpUpdatePolicy"
@@ -13730,79 +13025,99 @@
                         "type": "array",
                         "items": {
                             "type": "string"
-                        }
+                        },
+                        "description": "The IDs of subnets in an existing VNet into which to assign nodes in the cluster (requires azure network-plugin).\n"
                     }
                 },
                 "type": "object"
             }
         },
         "spotinst:azure/oceanNpVirtualNodeGroup:OceanNpVirtualNodeGroup": {
+            "description": "Manages a Spotinst Ocean AKS Virtual Node Groups resource.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as spotinst from \"@pulumi/spotinst\";\n\nconst example = new spotinst.azure.OceanNpVirtualNodeGroup(\"example\", {\n    name: \"testVng\",\n    oceanId: \"o-134abcd\",\n    headrooms: [{\n        cpuPerUnit: 1024,\n        memoryPerUnit: 512,\n        gpuPerUnit: 0,\n        numOfUnits: 2,\n    }],\n    availabilityZones: [\n        \"1\",\n        \"2\",\n        \"3\",\n    ],\n    labels: {\n        key: \"env\",\n        value: \"test\",\n    },\n    minCount: 1,\n    maxCount: 100,\n    maxPodsPerNode: 30,\n    enableNodePublicIp: true,\n    osDiskSizeGb: 30,\n    osDiskType: \"Managed\",\n    osType: \"Linux\",\n    osSku: \"Ubuntu\",\n    kubernetesVersion: \"1.26\",\n    podSubnetIds: [\"/subscriptions/123456-1234-1234-1234-123456789/resourceGroups/ExampleResourceGroup/providers/Microsoft.Network/virtualNetworks/ExampleVirtualNetwork/subnets/default\"],\n    vnetSubnetIds: [\"/subscriptions/123456-1234-1234-1234-123456789/resourceGroups/ExampleResourceGroup/providers/Microsoft.Network/virtualNetworks/ExampleVirtualNetwork/subnets/default\"],\n    spotPercentage: 50,\n    fallbackToOndemand: true,\n    taints: [{\n        key: \"taintKey\",\n        value: \"taintValue\",\n        effect: \"NoSchedule\",\n    }],\n    tags: {\n        tagKey: \"env\",\n        tagValue: \"staging\",\n    },\n    filters: {\n        minVcpu: 2,\n        maxVcpu: 16,\n        minMemoryGib: 8,\n        maxMemoryGib: 128,\n        architectures: [\n            \"x86_64\",\n            \"arm64\",\n        ],\n        series: [\n            \"D v3\",\n            \"Dds_v4\",\n            \"Dsv2\",\n        ],\n        excludeSeries: [\n            \"Av2\",\n            \"A\",\n            \"Bs\",\n            \"D\",\n            \"E\",\n        ],\n        acceleratedNetworking: \"Enabled\",\n        diskPerformance: \"Premium\",\n        minGpu: 1,\n        maxGpu: 2,\n        minNics: 1,\n        vmTypes: [\n            \"generalPurpose\",\n            \"GPU\",\n        ],\n        minDisk: 1,\n        gpuTypes: [\"nvidia-tesla-t4\"],\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_spotinst as spotinst\n\nexample = spotinst.azure.OceanNpVirtualNodeGroup(\"example\",\n    name=\"testVng\",\n    ocean_id=\"o-134abcd\",\n    headrooms=[spotinst.azure.OceanNpVirtualNodeGroupHeadroomArgs(\n        cpu_per_unit=1024,\n        memory_per_unit=512,\n        gpu_per_unit=0,\n        num_of_units=2,\n    )],\n    availability_zones=[\n        \"1\",\n        \"2\",\n        \"3\",\n    ],\n    labels={\n        \"key\": \"env\",\n        \"value\": \"test\",\n    },\n    min_count=1,\n    max_count=100,\n    max_pods_per_node=30,\n    enable_node_public_ip=True,\n    os_disk_size_gb=30,\n    os_disk_type=\"Managed\",\n    os_type=\"Linux\",\n    os_sku=\"Ubuntu\",\n    kubernetes_version=\"1.26\",\n    pod_subnet_ids=[\"/subscriptions/123456-1234-1234-1234-123456789/resourceGroups/ExampleResourceGroup/providers/Microsoft.Network/virtualNetworks/ExampleVirtualNetwork/subnets/default\"],\n    vnet_subnet_ids=[\"/subscriptions/123456-1234-1234-1234-123456789/resourceGroups/ExampleResourceGroup/providers/Microsoft.Network/virtualNetworks/ExampleVirtualNetwork/subnets/default\"],\n    spot_percentage=50,\n    fallback_to_ondemand=True,\n    taints=[spotinst.azure.OceanNpVirtualNodeGroupTaintArgs(\n        key=\"taintKey\",\n        value=\"taintValue\",\n        effect=\"NoSchedule\",\n    )],\n    tags={\n        \"tagKey\": \"env\",\n        \"tagValue\": \"staging\",\n    },\n    filters=spotinst.azure.OceanNpVirtualNodeGroupFiltersArgs(\n        min_vcpu=2,\n        max_vcpu=16,\n        min_memory_gib=8,\n        max_memory_gib=128,\n        architectures=[\n            \"x86_64\",\n            \"arm64\",\n        ],\n        series=[\n            \"D v3\",\n            \"Dds_v4\",\n            \"Dsv2\",\n        ],\n        exclude_series=[\n            \"Av2\",\n            \"A\",\n            \"Bs\",\n            \"D\",\n            \"E\",\n        ],\n        accelerated_networking=\"Enabled\",\n        disk_performance=\"Premium\",\n        min_gpu=1,\n        max_gpu=2,\n        min_nics=1,\n        vm_types=[\n            \"generalPurpose\",\n            \"GPU\",\n        ],\n        min_disk=1,\n        gpu_types=[\"nvidia-tesla-t4\"],\n    ))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing SpotInst = Pulumi.SpotInst;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new SpotInst.Azure.OceanNpVirtualNodeGroup(\"example\", new()\n    {\n        Name = \"testVng\",\n        OceanId = \"o-134abcd\",\n        Headrooms = new[]\n        {\n            new SpotInst.Azure.Inputs.OceanNpVirtualNodeGroupHeadroomArgs\n            {\n                CpuPerUnit = 1024,\n                MemoryPerUnit = 512,\n                GpuPerUnit = 0,\n                NumOfUnits = 2,\n            },\n        },\n        AvailabilityZones = new[]\n        {\n            \"1\",\n            \"2\",\n            \"3\",\n        },\n        Labels = \n        {\n            { \"key\", \"env\" },\n            { \"value\", \"test\" },\n        },\n        MinCount = 1,\n        MaxCount = 100,\n        MaxPodsPerNode = 30,\n        EnableNodePublicIp = true,\n        OsDiskSizeGb = 30,\n        OsDiskType = \"Managed\",\n        OsType = \"Linux\",\n        OsSku = \"Ubuntu\",\n        KubernetesVersion = \"1.26\",\n        PodSubnetIds = new[]\n        {\n            \"/subscriptions/123456-1234-1234-1234-123456789/resourceGroups/ExampleResourceGroup/providers/Microsoft.Network/virtualNetworks/ExampleVirtualNetwork/subnets/default\",\n        },\n        VnetSubnetIds = new[]\n        {\n            \"/subscriptions/123456-1234-1234-1234-123456789/resourceGroups/ExampleResourceGroup/providers/Microsoft.Network/virtualNetworks/ExampleVirtualNetwork/subnets/default\",\n        },\n        SpotPercentage = 50,\n        FallbackToOndemand = true,\n        Taints = new[]\n        {\n            new SpotInst.Azure.Inputs.OceanNpVirtualNodeGroupTaintArgs\n            {\n                Key = \"taintKey\",\n                Value = \"taintValue\",\n                Effect = \"NoSchedule\",\n            },\n        },\n        Tags = \n        {\n            { \"tagKey\", \"env\" },\n            { \"tagValue\", \"staging\" },\n        },\n        Filters = new SpotInst.Azure.Inputs.OceanNpVirtualNodeGroupFiltersArgs\n        {\n            MinVcpu = 2,\n            MaxVcpu = 16,\n            MinMemoryGib = 8,\n            MaxMemoryGib = 128,\n            Architectures = new[]\n            {\n                \"x86_64\",\n                \"arm64\",\n            },\n            Series = new[]\n            {\n                \"D v3\",\n                \"Dds_v4\",\n                \"Dsv2\",\n            },\n            ExcludeSeries = new[]\n            {\n                \"Av2\",\n                \"A\",\n                \"Bs\",\n                \"D\",\n                \"E\",\n            },\n            AcceleratedNetworking = \"Enabled\",\n            DiskPerformance = \"Premium\",\n            MinGpu = 1,\n            MaxGpu = 2,\n            MinNics = 1,\n            VmTypes = new[]\n            {\n                \"generalPurpose\",\n                \"GPU\",\n            },\n            MinDisk = 1,\n            GpuTypes = new[]\n            {\n                \"nvidia-tesla-t4\",\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-spotinst/sdk/v3/go/spotinst/azure\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := azure.NewOceanNpVirtualNodeGroup(ctx, \"example\", \u0026azure.OceanNpVirtualNodeGroupArgs{\n\t\t\tName:    pulumi.String(\"testVng\"),\n\t\t\tOceanId: pulumi.String(\"o-134abcd\"),\n\t\t\tHeadrooms: azure.OceanNpVirtualNodeGroupHeadroomArray{\n\t\t\t\t\u0026azure.OceanNpVirtualNodeGroupHeadroomArgs{\n\t\t\t\t\tCpuPerUnit:    pulumi.Int(1024),\n\t\t\t\t\tMemoryPerUnit: pulumi.Int(512),\n\t\t\t\t\tGpuPerUnit:    pulumi.Int(0),\n\t\t\t\t\tNumOfUnits:    pulumi.Int(2),\n\t\t\t\t},\n\t\t\t},\n\t\t\tAvailabilityZones: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"1\"),\n\t\t\t\tpulumi.String(\"2\"),\n\t\t\t\tpulumi.String(\"3\"),\n\t\t\t},\n\t\t\tLabels: pulumi.Map{\n\t\t\t\t\"key\":   pulumi.Any(\"env\"),\n\t\t\t\t\"value\": pulumi.Any(\"test\"),\n\t\t\t},\n\t\t\tMinCount:           pulumi.Int(1),\n\t\t\tMaxCount:           pulumi.Int(100),\n\t\t\tMaxPodsPerNode:     pulumi.Int(30),\n\t\t\tEnableNodePublicIp: pulumi.Bool(true),\n\t\t\tOsDiskSizeGb:       pulumi.Int(30),\n\t\t\tOsDiskType:         pulumi.String(\"Managed\"),\n\t\t\tOsType:             pulumi.String(\"Linux\"),\n\t\t\tOsSku:              pulumi.String(\"Ubuntu\"),\n\t\t\tKubernetesVersion:  pulumi.String(\"1.26\"),\n\t\t\tPodSubnetIds: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"/subscriptions/123456-1234-1234-1234-123456789/resourceGroups/ExampleResourceGroup/providers/Microsoft.Network/virtualNetworks/ExampleVirtualNetwork/subnets/default\"),\n\t\t\t},\n\t\t\tVnetSubnetIds: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"/subscriptions/123456-1234-1234-1234-123456789/resourceGroups/ExampleResourceGroup/providers/Microsoft.Network/virtualNetworks/ExampleVirtualNetwork/subnets/default\"),\n\t\t\t},\n\t\t\tSpotPercentage:     pulumi.Int(50),\n\t\t\tFallbackToOndemand: pulumi.Bool(true),\n\t\t\tTaints: azure.OceanNpVirtualNodeGroupTaintArray{\n\t\t\t\t\u0026azure.OceanNpVirtualNodeGroupTaintArgs{\n\t\t\t\t\tKey:    pulumi.String(\"taintKey\"),\n\t\t\t\t\tValue:  pulumi.String(\"taintValue\"),\n\t\t\t\t\tEffect: pulumi.String(\"NoSchedule\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tTags: pulumi.Map{\n\t\t\t\t\"tagKey\":   pulumi.Any(\"env\"),\n\t\t\t\t\"tagValue\": pulumi.Any(\"staging\"),\n\t\t\t},\n\t\t\tFilters: \u0026azure.OceanNpVirtualNodeGroupFiltersArgs{\n\t\t\t\tMinVcpu:      pulumi.Int(2),\n\t\t\t\tMaxVcpu:      pulumi.Int(16),\n\t\t\t\tMinMemoryGib: pulumi.Float64(8),\n\t\t\t\tMaxMemoryGib: pulumi.Float64(128),\n\t\t\t\tArchitectures: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"x86_64\"),\n\t\t\t\t\tpulumi.String(\"arm64\"),\n\t\t\t\t},\n\t\t\t\tSeries: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"D v3\"),\n\t\t\t\t\tpulumi.String(\"Dds_v4\"),\n\t\t\t\t\tpulumi.String(\"Dsv2\"),\n\t\t\t\t},\n\t\t\t\tExcludeSeries: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"Av2\"),\n\t\t\t\t\tpulumi.String(\"A\"),\n\t\t\t\t\tpulumi.String(\"Bs\"),\n\t\t\t\t\tpulumi.String(\"D\"),\n\t\t\t\t\tpulumi.String(\"E\"),\n\t\t\t\t},\n\t\t\t\tAcceleratedNetworking: pulumi.String(\"Enabled\"),\n\t\t\t\tDiskPerformance:       pulumi.String(\"Premium\"),\n\t\t\t\tMinGpu:                pulumi.Float64(1),\n\t\t\t\tMaxGpu:                pulumi.Float64(2),\n\t\t\t\tMinNics:               pulumi.Int(1),\n\t\t\t\tVmTypes: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"generalPurpose\"),\n\t\t\t\t\tpulumi.String(\"GPU\"),\n\t\t\t\t},\n\t\t\t\tMinDisk: pulumi.Int(1),\n\t\t\t\tGpuTypes: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"nvidia-tesla-t4\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.spotinst.azure.OceanNpVirtualNodeGroup;\nimport com.pulumi.spotinst.azure.OceanNpVirtualNodeGroupArgs;\nimport com.pulumi.spotinst.azure.inputs.OceanNpVirtualNodeGroupHeadroomArgs;\nimport com.pulumi.spotinst.azure.inputs.OceanNpVirtualNodeGroupTaintArgs;\nimport com.pulumi.spotinst.azure.inputs.OceanNpVirtualNodeGroupFiltersArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new OceanNpVirtualNodeGroup(\"example\", OceanNpVirtualNodeGroupArgs.builder()        \n            .name(\"testVng\")\n            .oceanId(\"o-134abcd\")\n            .headrooms(OceanNpVirtualNodeGroupHeadroomArgs.builder()\n                .cpuPerUnit(1024)\n                .memoryPerUnit(512)\n                .gpuPerUnit(0)\n                .numOfUnits(2)\n                .build())\n            .availabilityZones(            \n                \"1\",\n                \"2\",\n                \"3\")\n            .labels(Map.ofEntries(\n                Map.entry(\"key\", \"env\"),\n                Map.entry(\"value\", \"test\")\n            ))\n            .minCount(1)\n            .maxCount(100)\n            .maxPodsPerNode(30)\n            .enableNodePublicIp(true)\n            .osDiskSizeGb(30)\n            .osDiskType(\"Managed\")\n            .osType(\"Linux\")\n            .osSku(\"Ubuntu\")\n            .kubernetesVersion(\"1.26\")\n            .podSubnetIds(\"/subscriptions/123456-1234-1234-1234-123456789/resourceGroups/ExampleResourceGroup/providers/Microsoft.Network/virtualNetworks/ExampleVirtualNetwork/subnets/default\")\n            .vnetSubnetIds(\"/subscriptions/123456-1234-1234-1234-123456789/resourceGroups/ExampleResourceGroup/providers/Microsoft.Network/virtualNetworks/ExampleVirtualNetwork/subnets/default\")\n            .spotPercentage(50)\n            .fallbackToOndemand(true)\n            .taints(OceanNpVirtualNodeGroupTaintArgs.builder()\n                .key(\"taintKey\")\n                .value(\"taintValue\")\n                .effect(\"NoSchedule\")\n                .build())\n            .tags(Map.ofEntries(\n                Map.entry(\"tagKey\", \"env\"),\n                Map.entry(\"tagValue\", \"staging\")\n            ))\n            .filters(OceanNpVirtualNodeGroupFiltersArgs.builder()\n                .minVcpu(2)\n                .maxVcpu(16)\n                .minMemoryGib(8)\n                .maxMemoryGib(128)\n                .architectures(                \n                    \"x86_64\",\n                    \"arm64\")\n                .series(                \n                    \"D v3\",\n                    \"Dds_v4\",\n                    \"Dsv2\")\n                .excludeSeries(                \n                    \"Av2\",\n                    \"A\",\n                    \"Bs\",\n                    \"D\",\n                    \"E\")\n                .acceleratedNetworking(\"Enabled\")\n                .diskPerformance(\"Premium\")\n                .minGpu(1)\n                .maxGpu(2)\n                .minNics(1)\n                .vmTypes(                \n                    \"generalPurpose\",\n                    \"GPU\")\n                .minDisk(1)\n                .gpuTypes(\"nvidia-tesla-t4\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: spotinst:azure:OceanNpVirtualNodeGroup\n    properties:\n      name: testVng\n      oceanId: o-134abcd\n      headrooms:\n        - cpuPerUnit: 1024\n          memoryPerUnit: 512\n          gpuPerUnit: 0\n          numOfUnits: 2\n      availabilityZones:\n        - '1'\n        - '2'\n        - '3'\n      labels:\n        key: env\n        value: test\n      minCount: 1\n      maxCount: 100 # --- nodePoolProperties --------------------------------------------------\n      maxPodsPerNode: 30\n      enableNodePublicIp: true\n      osDiskSizeGb: 30\n      osDiskType: Managed\n      osType: Linux\n      osSku: Ubuntu\n      kubernetesVersion: '1.26'\n      podSubnetIds:\n        - /subscriptions/123456-1234-1234-1234-123456789/resourceGroups/ExampleResourceGroup/providers/Microsoft.Network/virtualNetworks/ExampleVirtualNetwork/subnets/default\n      vnetSubnetIds:\n        - /subscriptions/123456-1234-1234-1234-123456789/resourceGroups/ExampleResourceGroup/providers/Microsoft.Network/virtualNetworks/ExampleVirtualNetwork/subnets/default\n      spotPercentage: 50\n      fallbackToOndemand: true # ---------------------------------------------------------------------------\n      taints:\n        - key: taintKey\n          value: taintValue\n          effect: NoSchedule\n      tags:\n        tagKey: env\n        tagValue: staging\n      filters:\n        minVcpu: 2\n        maxVcpu: 16\n        minMemoryGib: 8\n        maxMemoryGib: 128\n        architectures:\n          - x86_64\n          - arm64\n        series:\n          - D v3\n          - Dds_v4\n          - Dsv2\n        excludeSeries:\n          - Av2\n          - A\n          - Bs\n          - D\n          - E\n        acceleratedNetworking: Enabled\n        diskPerformance: Premium\n        minGpu: 1\n        maxGpu: 2\n        minNics: 1\n        vmTypes:\n          - generalPurpose\n          - GPU\n        minDisk: 1\n        gpuTypes:\n          - nvidia-tesla-t4\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n```\noutput \"vng_id\" {\n  value = spotinst_ocean_aks_np_virtual_node_group.example.id\n}\n```\n\n",
             "properties": {
                 "availabilityZones": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "An Array holding Availability Zones, this configures the availability zones the Ocean may launch instances in per VNG.\n"
                 },
                 "enableNodePublicIp": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Enable node public IP.\n"
                 },
                 "fallbackToOndemand": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "If no spot instance markets are available, enable Ocean to launch on-demand instances instead.\n"
                 },
                 "filters": {
-                    "$ref": "#/types/spotinst:azure/OceanNpVirtualNodeGroupFilters:OceanNpVirtualNodeGroupFilters"
+                    "$ref": "#/types/spotinst:azure/OceanNpVirtualNodeGroupFilters:OceanNpVirtualNodeGroupFilters",
+                    "description": "Filters for the VM sizes that can be launched from the virtual node group.\n"
                 },
                 "headrooms": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/spotinst:azure/OceanNpVirtualNodeGroupHeadroom:OceanNpVirtualNodeGroupHeadroom"
-                    }
+                    },
+                    "description": "Specify the custom headroom per VNG. Provide a list of headroom objects.\n"
                 },
                 "kubernetesVersion": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The desired Kubernetes version of the launched nodes. In case the value is null, the Kubernetes version of the control plane is used.\n"
                 },
                 "labels": {
                     "type": "object",
                     "additionalProperties": {
                         "$ref": "pulumi.json#/Any"
-                    }
+                    },
+                    "description": "An array of labels to add to the virtual node group.Only custom user labels are allowed, and not Kubernetes built-in labels or Spot internal labels.\n"
                 },
                 "maxCount": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Maximum node count limit.\n"
                 },
                 "maxPodsPerNode": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The maximum number of pods per node in the node pools.\n"
                 },
                 "minCount": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Minimum node count limit.\n"
                 },
                 "name": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Enter a name for the virtual node group.\n"
                 },
                 "oceanId": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The Ocean cluster identifier. Required for Launch Spec creation.\n"
                 },
                 "osDiskSizeGb": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The size of the OS disk in GB.\n"
                 },
                 "osDiskType": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The type of the OS disk.\n"
                 },
                 "osSku": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The OS SKU of the OS type. Must correlate with the os type.\n"
                 },
                 "osType": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The OS type of the OS disk. Can't be modified once set.\n"
                 },
                 "podSubnetIds": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "The IDs of subnets in an existing VNet into which to assign pods in the cluster (requires azure network-plugin).\n"
                 },
                 "spotPercentage": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Percentage of spot VMs to maintain.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -13814,7 +13129,8 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/spotinst:azure/OceanNpVirtualNodeGroupTaint:OceanNpVirtualNodeGroupTaint"
-                    }
+                    },
+                    "description": "Add taints to a virtual node group.\n"
                 },
                 "updatePolicy": {
                     "$ref": "#/types/spotinst:azure/OceanNpVirtualNodeGroupUpdatePolicy:OceanNpVirtualNodeGroupUpdatePolicy"
@@ -13823,7 +13139,8 @@
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "The IDs of subnets in an existing VNet into which to assign nodes in the cluster (requires azure network-plugin).\n"
                 }
             },
             "required": [
@@ -13835,67 +13152,85 @@
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "An Array holding Availability Zones, this configures the availability zones the Ocean may launch instances in per VNG.\n"
                 },
                 "enableNodePublicIp": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Enable node public IP.\n"
                 },
                 "fallbackToOndemand": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "If no spot instance markets are available, enable Ocean to launch on-demand instances instead.\n"
                 },
                 "filters": {
-                    "$ref": "#/types/spotinst:azure/OceanNpVirtualNodeGroupFilters:OceanNpVirtualNodeGroupFilters"
+                    "$ref": "#/types/spotinst:azure/OceanNpVirtualNodeGroupFilters:OceanNpVirtualNodeGroupFilters",
+                    "description": "Filters for the VM sizes that can be launched from the virtual node group.\n"
                 },
                 "headrooms": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/spotinst:azure/OceanNpVirtualNodeGroupHeadroom:OceanNpVirtualNodeGroupHeadroom"
-                    }
+                    },
+                    "description": "Specify the custom headroom per VNG. Provide a list of headroom objects.\n"
                 },
                 "kubernetesVersion": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The desired Kubernetes version of the launched nodes. In case the value is null, the Kubernetes version of the control plane is used.\n"
                 },
                 "labels": {
                     "type": "object",
                     "additionalProperties": {
                         "$ref": "pulumi.json#/Any"
-                    }
+                    },
+                    "description": "An array of labels to add to the virtual node group.Only custom user labels are allowed, and not Kubernetes built-in labels or Spot internal labels.\n"
                 },
                 "maxCount": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Maximum node count limit.\n"
                 },
                 "maxPodsPerNode": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The maximum number of pods per node in the node pools.\n"
                 },
                 "minCount": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Minimum node count limit.\n"
                 },
                 "name": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Enter a name for the virtual node group.\n"
                 },
                 "oceanId": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The Ocean cluster identifier. Required for Launch Spec creation.\n"
                 },
                 "osDiskSizeGb": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The size of the OS disk in GB.\n"
                 },
                 "osDiskType": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The type of the OS disk.\n"
                 },
                 "osSku": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The OS SKU of the OS type. Must correlate with the os type.\n"
                 },
                 "osType": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The OS type of the OS disk. Can't be modified once set.\n"
                 },
                 "podSubnetIds": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "The IDs of subnets in an existing VNet into which to assign pods in the cluster (requires azure network-plugin).\n"
                 },
                 "spotPercentage": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Percentage of spot VMs to maintain.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -13907,7 +13242,8 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/spotinst:azure/OceanNpVirtualNodeGroupTaint:OceanNpVirtualNodeGroupTaint"
-                    }
+                    },
+                    "description": "Add taints to a virtual node group.\n"
                 },
                 "updatePolicy": {
                     "$ref": "#/types/spotinst:azure/OceanNpVirtualNodeGroupUpdatePolicy:OceanNpVirtualNodeGroupUpdatePolicy"
@@ -13916,7 +13252,8 @@
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "The IDs of subnets in an existing VNet into which to assign nodes in the cluster (requires azure network-plugin).\n"
                 }
             },
             "requiredInputs": [
@@ -13929,67 +13266,85 @@
                         "type": "array",
                         "items": {
                             "type": "string"
-                        }
+                        },
+                        "description": "An Array holding Availability Zones, this configures the availability zones the Ocean may launch instances in per VNG.\n"
                     },
                     "enableNodePublicIp": {
-                        "type": "boolean"
+                        "type": "boolean",
+                        "description": "Enable node public IP.\n"
                     },
                     "fallbackToOndemand": {
-                        "type": "boolean"
+                        "type": "boolean",
+                        "description": "If no spot instance markets are available, enable Ocean to launch on-demand instances instead.\n"
                     },
                     "filters": {
-                        "$ref": "#/types/spotinst:azure/OceanNpVirtualNodeGroupFilters:OceanNpVirtualNodeGroupFilters"
+                        "$ref": "#/types/spotinst:azure/OceanNpVirtualNodeGroupFilters:OceanNpVirtualNodeGroupFilters",
+                        "description": "Filters for the VM sizes that can be launched from the virtual node group.\n"
                     },
                     "headrooms": {
                         "type": "array",
                         "items": {
                             "$ref": "#/types/spotinst:azure/OceanNpVirtualNodeGroupHeadroom:OceanNpVirtualNodeGroupHeadroom"
-                        }
+                        },
+                        "description": "Specify the custom headroom per VNG. Provide a list of headroom objects.\n"
                     },
                     "kubernetesVersion": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "The desired Kubernetes version of the launched nodes. In case the value is null, the Kubernetes version of the control plane is used.\n"
                     },
                     "labels": {
                         "type": "object",
                         "additionalProperties": {
                             "$ref": "pulumi.json#/Any"
-                        }
+                        },
+                        "description": "An array of labels to add to the virtual node group.Only custom user labels are allowed, and not Kubernetes built-in labels or Spot internal labels.\n"
                     },
                     "maxCount": {
-                        "type": "integer"
+                        "type": "integer",
+                        "description": "Maximum node count limit.\n"
                     },
                     "maxPodsPerNode": {
-                        "type": "integer"
+                        "type": "integer",
+                        "description": "The maximum number of pods per node in the node pools.\n"
                     },
                     "minCount": {
-                        "type": "integer"
+                        "type": "integer",
+                        "description": "Minimum node count limit.\n"
                     },
                     "name": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Enter a name for the virtual node group.\n"
                     },
                     "oceanId": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "The Ocean cluster identifier. Required for Launch Spec creation.\n"
                     },
                     "osDiskSizeGb": {
-                        "type": "integer"
+                        "type": "integer",
+                        "description": "The size of the OS disk in GB.\n"
                     },
                     "osDiskType": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "The type of the OS disk.\n"
                     },
                     "osSku": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "The OS SKU of the OS type. Must correlate with the os type.\n"
                     },
                     "osType": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "The OS type of the OS disk. Can't be modified once set.\n"
                     },
                     "podSubnetIds": {
                         "type": "array",
                         "items": {
                             "type": "string"
-                        }
+                        },
+                        "description": "The IDs of subnets in an existing VNet into which to assign pods in the cluster (requires azure network-plugin).\n"
                     },
                     "spotPercentage": {
-                        "type": "integer"
+                        "type": "integer",
+                        "description": "Percentage of spot VMs to maintain.\n"
                     },
                     "tags": {
                         "type": "object",
@@ -14001,7 +13356,8 @@
                         "type": "array",
                         "items": {
                             "$ref": "#/types/spotinst:azure/OceanNpVirtualNodeGroupTaint:OceanNpVirtualNodeGroupTaint"
-                        }
+                        },
+                        "description": "Add taints to a virtual node group.\n"
                     },
                     "updatePolicy": {
                         "$ref": "#/types/spotinst:azure/OceanNpVirtualNodeGroupUpdatePolicy:OceanNpVirtualNodeGroupUpdatePolicy"
@@ -14010,7 +13366,8 @@
                         "type": "array",
                         "items": {
                             "type": "string"
-                        }
+                        },
+                        "description": "The IDs of subnets in an existing VNet into which to assign nodes in the cluster (requires azure network-plugin).\n"
                     }
                 },
                 "type": "object"
